@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-HK" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-42CSNJ8DF9"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-42CSNJ8DF9');</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="index,follow">
+<meta name="format-detection" content="telephone=no">
+<title>機械人選股・紙上交易｜The Crowd Tape</title>
+<meta name="description" content="機械人主要做動能波段交易：只揀動能最強嘅大型美股，等佢突破先買，揸幾日至幾星期。">
+<meta property="og:title" content="機械人選股・紙上交易｜The Crowd Tape">
+<meta property="og:description" content="機械人主要做動能波段交易：只揀動能最強嘅大型美股，等佢突破先買，揸幾日至幾星期。">
+<meta property="og:url" content="https://xmktradar.github.io/robot.html">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://xmktradar.github.io/robot.html">
+<style>:root{
+  
+  --bg:#fbf6ec;            
+  --bg-dot:#f1e7d3;        
+  --panel:#fffaf2;         
+  --panel2:#f6eedf;        
+  --hover:#f9f1e3;         
+  --line:#ece1cc;          
+  --line-soft:#f2e9d8;     
+  --line-strong:#dccbab;   
+  
+  --tx:#3b2f24;            
+  --tx-strong:#2a2119;     
+  --mut:#87776a;           
+  --faint:#c2b49c;         
+  
+  --link:#a5672c;          
+  --link-bg:#f8ecda; --link-line:#ecd4b0;
+  
+  --bull:#3a9a52; --bull-ink:#25803c; --bull-bg:#e5f4e7; --bull-line:#bfe2c6;
+  
+  --bear:#d9443d; --bear-ink:#c22f2a; --bear-bg:#fde6e4; --bear-line:#f6c3be;
+  
+  --neu:#dccfb8; --neu-ink:#87776a; --neu-bg:#f4ede0; --neu-line:#e7dcc8;
+  
+  --div-ink:#9a6b12; --div-bg:#fdf1d2; --div-line:#f0dba0;
+  --warn:#9a6b12; --warn-bg:#fdf4d9; --warn-line:#f0dca6;
+  
+  --brief-bg:#fdf3df; --brief-line:#f0e0bb;
+  
+  --t-opinion-ink:#a5672c; --t-opinion-bg:#f8ecda; --t-opinion-line:#ecd4b0;
+  --t-news-ink:#8f6a00;    --t-news-bg:#fdf1c8;    --t-news-line:#efd98f;
+  --t-disc-ink:#6e6256;    --t-disc-bg:#efe9df;    --t-disc-line:#e0d7c9;
+  
+  --chart-line:#a5672c;
+  
+  --radius:16px; --radius-sm:8px;
+  --shadow:0 1px 3px rgba(120,90,50,.06);
+  --shadow-hover:0 10px 24px rgba(120,90,50,.12);
+  
+  --sans:-apple-system,"Segoe UI","PingFang TC","Noto Sans TC","Noto Sans CJK TC","Microsoft JhengHei",sans-serif;
+  --serif:"Noto Serif TC","Source Han Serif TC","Songti TC","PMingLiU",Georgia,"Noto Serif",serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+:root,:root[data-theme="light"]{
+  --bg:#fbf6ec; --surface:#fffaf2; --sunk:#f4ede0; --ink:#3b2f24; --muted:#87776a; --line:#ece1cc;
+  --accent:#a5672c; --accent-soft:#f8ecda;
+  --bull:#25803c; --bull-soft:#e5f4e7; --bear:#c22f2a; --bear-soft:#fde6e4; --neu:#9a8b78; --neu-soft:#f1e9db;
+  --warn:#9a6b12; --warn-soft:#fdf4d9;
+  color-scheme:light;
+}
+body{background:var(--bg) radial-gradient(var(--bg-dot) 1px,transparent 1px) 0 0/14px 14px}
+header.top{background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px)}
+.brand{color:var(--tx-strong)}
+nav.tabs button{border-radius:10px 10px 0 0}
+nav.tabs button[aria-selected="true"]{border-bottom-width:3px}
+.panel,.acc-card{border-radius:var(--radius);box-shadow:var(--shadow)}
+.panel h2{font-family:var(--f-display);font-size:15px}
+.kpis{border-radius:var(--radius);box-shadow:var(--shadow)}
+.analysis{background:var(--brief-bg);border-color:var(--brief-line);border-left-color:var(--accent);border-radius:0 var(--radius) var(--radius) 0}
+.pill{border:1px solid transparent}
+.pill.bull{border-color:var(--bull-line)}.pill.bear{border-color:var(--bear-line)}.pill.neu{border-color:var(--neu-line)}.pill.chg{border-color:var(--link-line)}
+.dot{border-radius:6px}
+.bar,.hbar .track{border-radius:999px}
+.back{border-radius:999px}
+.mermaid{border-radius:var(--radius)}
+.acc .tk{text-decoration:none;cursor:pointer}
+.acc .tk:hover{filter:brightness(.96)}
+
+
+td:first-child{white-space:normal}
+td:first-child .pill.unc{font-size:10.5px;padding:0 6px;margin-top:2px}
+
+.kpis.k3{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+
+a.xh{display:inline-flex;align-items:center;gap:4px;vertical-align:baseline;white-space:nowrap}
+.xh-av{width:1.7em;height:1.7em;border-radius:50%;object-fit:cover;flex:none;border:1px solid var(--line);background:var(--neu-bg);position:relative;top:.42em;margin-top:-.4em}
+.xh-av.ini{display:inline-grid;place-items:center;font-size:.7em;font-weight:700;color:var(--neu-ink);line-height:1}
+table .xh-av,.matrix .xh-av{width:26px;height:26px;top:0;margin-top:0}
+.analysis .xh-av,.brief .xh-av{width:1.8em;height:1.8em}
+
+
+.brief{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;line-height:1.75;font-size:15px}
+details.more{margin-top:10px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel)}
+details.more>summary{cursor:pointer;list-style:none;padding:10px 16px;font-weight:600;color:var(--link);display:flex;align-items:center;gap:6px}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::before{content:"▸";transition:transform .15s}
+details.more[open]>summary::before{transform:rotate(90deg)}
+details.more[open]>summary{border-bottom:1px solid var(--line)}
+details.more>.analysis{padding:12px 16px}
+
+.kpis.k4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.kpis.k5{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media(max-width:720px){.kpis.k4,.kpis.k5{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+body .divehead .av{width:72px;height:72px}
+
+
+.post-av{width:44px;height:44px;border-radius:50%;object-fit:cover;flex:none;border:1px solid var(--line);background:var(--neu-bg);display:inline-grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:18px;color:var(--neu-ink)}
+.post-who{display:inline-flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+.post-who b{display:block;font-size:14px;color:var(--tx-strong);line-height:1.25}
+.post-who small{display:block;font-size:12px;color:var(--mut)}
+.post-who:hover b{color:var(--link)}
+@media(max-width:640px){.post-av{width:38px;height:38px;font-size:16px}}
+
+
+.tabs .tab-rng{font-size:inherit;font-weight:inherit}
+.tabs .tab-robo{color:#2e7449}
+.tabs .tab-robo[aria-selected="true"]{border-bottom-color:#6fbf8a}
+@media(max-width:640px){
+  .tabs{gap:0;justify-content:space-between}
+  .tabs button{padding-left:8px;padding-right:8px;font-size:14px;white-space:nowrap}
+  .tabs .tab-rng{display:none}
+}
+:root{--robo:#6fbf8a;--robo-ink:#2e7449;--robo-bg:#e3f3e8;--robo-line:#bfe2cb;--robo-soft:#f1f9f3}
+.rb-band{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;background:var(--robo-bg);color:var(--robo-ink);border:1px solid var(--robo-line);padding:10px 18px;border-radius:12px;font-size:13.5px;font-weight:600;letter-spacing:.02em}
+.rb-band .ic{width:22px;height:22px;border-radius:6px;background:var(--robo);color:#fff;display:inline-grid;place-items:center;font-size:13px}
+.rb-band .sep{opacity:.45}
+.rb-band .na{margin-left:auto;font-weight:500;opacity:.85;font-size:12.5px}
+.rb-hero{margin:18px 0;padding:22px 24px;border:1px solid var(--robo-line);border-left:6px solid var(--robo);border-radius:14px;background:var(--robo-soft)}
+.rb-hero h2{margin:0 0 6px;font-family:var(--serif);font-size:26px;color:var(--robo-ink)}
+.rb-hero h2 small{font-family:inherit;font-size:15px;font-weight:500;color:var(--mut);margin-left:6px}
+.rb-hero p{margin:0 0 14px;color:var(--tx);font-size:14.5px;line-height:1.6}
+.rb-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.rb-three div{background:var(--panel);border:1px solid var(--robo-line);border-radius:12px;padding:12px 14px}
+.rb-three b{display:block;font-family:var(--serif);font-size:17px;color:var(--robo-ink);margin-bottom:4px}
+.rb-three span{font-size:13px;line-height:1.55;color:var(--tx)}
+.rb-ai{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--robo-ink);background:var(--robo-bg);border:1px solid var(--robo-line);border-radius:999px;padding:2px 10px;margin-top:12px}
+.rb-who{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+.rb-who>div{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:12px 16px}
+.rb-who h3{margin:0 0 6px;font-size:14px}.rb-who .bot h3{color:var(--robo-ink)}.rb-who .hum h3{color:var(--mut)}
+.rb-who ul{margin:0;padding-left:18px;font-size:13px;line-height:1.7}
+
+.rb-kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:18px 0}
+.rb-kpi{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:12px 14px}
+.rb-kpi .l{font-size:12px;color:var(--mut)}
+.rb-kpi .v{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--robo-ink);margin-top:2px}
+.rb-kpi .d{font-size:11.5px;color:var(--mut)}
+.rb-ver{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}
+.rb-ver button{font:inherit;font-size:12.5px;padding:3px 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--panel);color:var(--tx);cursor:pointer}
+.rb-ver button.on{background:var(--robo-bg);border-color:var(--robo);color:var(--robo-ink)}
+
+.rb-curve{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:14px 16px;margin:18px 0}
+.rb-curve svg{width:100%;height:220px;display:block}
+.rb-curve .ln{fill:none;stroke:var(--robo);stroke-width:2.2}
+.rb-curve .ar{fill:var(--robo-bg)}
+.rb-curve .zero{stroke:var(--line-strong);stroke-dasharray:4 4}
+.rb-curve .chg{stroke:var(--mut);stroke-dasharray:2 3}
+.rb-curve text{font-size:11px;fill:var(--mut);font-family:var(--mono)}
+
+.rb-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+table.rb{width:100%;min-width:860px;border-collapse:collapse;font-size:13px}
+table.rb th{position:sticky;top:0;background:var(--bg);text-align:left;font-size:12px;font-weight:600;color:var(--mut);padding:9px 12px;border-bottom:1px solid var(--line)}
+table.rb td{padding:9px 12px;border-bottom:1px solid var(--line-soft);vertical-align:middle}
+table.rb td.num{font-family:var(--mono);text-align:right;white-space:nowrap}
+table.rb .tk{font-family:var(--serif);font-weight:700;font-size:15px;color:var(--tx-strong)}
+.rb-r{font-family:var(--mono);font-weight:700}
+.rb-r.win{color:var(--robo-ink);background:var(--robo-bg);border-radius:6px;padding:1px 6px}
+.rb-r.loss{color:var(--mut)}
+.rb-r.flat{color:var(--tx)}
+.rb-exit{font-size:11.5px;border-radius:999px;padding:1px 8px;border:1px solid var(--line-strong);color:var(--tx);white-space:nowrap}
+.rb-exit.tg{background:var(--robo-bg);border-color:var(--robo-line);color:var(--robo-ink)}
+.rb-exit.op{border-style:dashed;color:var(--mut)}
+.rb-vtag{font-family:var(--mono);font-size:11px;color:var(--mut);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:0 6px}
+.rb-hash{font-family:var(--mono);font-size:11px;color:var(--mut)}
+
+.rb-rules{border:1px solid var(--line);border-radius:14px;background:var(--panel);margin:18px 0}
+.rb-rules>details{border-top:1px solid var(--line-soft)}.rb-rules>details:first-of-type{border-top:0}
+.rb-rules summary{cursor:pointer;padding:12px 16px;font-weight:600;font-size:14.5px;color:var(--tx-strong);list-style:none}
+.rb-rules summary::before{content:'▸';display:inline-block;margin-right:8px;color:var(--robo);transition:transform .15s}
+.rb-rules details[open] summary::before{transform:rotate(90deg)}
+.rb-rules .bd{padding:0 18px 14px 34px;font-size:13.5px;line-height:1.7}
+.rb-log li{margin-bottom:4px}.rb-log b{font-family:var(--mono);color:var(--robo-ink);margin-right:6px}
+.rb-disc{font-size:12px;line-height:1.6;color:var(--mut);border-top:1px dashed var(--line-strong);padding-top:12px;margin-top:22px}
+@media(max-width:900px){.rb-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:640px){.rb-three,.rb-who{grid-template-columns:1fr}.rb-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.rb-band .na{margin-left:0}.rb-hero{padding:16px}}
+
+.rb-empty{border:1px dashed var(--robo-line);border-radius:14px;background:var(--robo-soft);padding:22px;text-align:center;color:var(--tx);font-size:14px;line-height:1.7}
+.rb-empty b{display:block;font-family:var(--serif);font-size:18px;color:var(--robo-ink);margin-bottom:4px}
+.rb-open{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--robo-ink);background:var(--robo-bg);border:1px solid var(--robo-line);border-radius:999px;padding:2px 12px}
+.rb-open i{width:7px;height:7px;border-radius:50%;background:var(--robo);display:inline-block}
+
+
+.rb-kpis.k6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.rb-px{font-family:var(--mono);white-space:nowrap}
+.rb-px.stop{color:var(--mut)}
+.rb-px.be{color:var(--tx)}
+.rb-px.tgt{color:var(--robo-ink);font-weight:700}
+.rb-px small{display:block;font-size:10.5px;color:var(--mut);font-weight:400}
+table.rb tr.skip td{color:var(--mut)}
+table.rb tr.skip .tk::after{content:'現金不足跳過';margin-left:6px;font-family:inherit;font-size:11px;font-weight:600;border:1px dashed var(--line-strong);border-radius:999px;padding:0 7px;color:var(--mut)}
+.rb-money.win{color:var(--robo-ink)}.rb-money.loss{color:var(--mut)}
+@media(max-width:900px){.rb-kpis.k6{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+@media(max-width:640px){
+  .rb-kpis.k6{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rb-wrap{overflow:visible;border:0;background:none}
+  table.rb{min-width:0}
+  table.rb thead{display:none}
+  table.rb,table.rb tbody,table.rb tr,table.rb td{display:block;width:100%}
+  table.rb tr{border:1px solid var(--line);border-radius:12px;background:var(--panel);margin-bottom:10px;padding:8px 12px}
+  table.rb td{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px solid var(--line-soft);text-align:right}
+  table.rb td:last-child{border-bottom:0}
+  table.rb td::before{content:attr(data-l);color:var(--mut);font-size:12px;text-align:left;flex:none}
+  table.rb td.num{text-align:right}
+  table.rb td:first-child{border-bottom:1px solid var(--line)}
+  table.rb td:first-child::before{content:none}
+}
+:root{--f-display:"Noto Serif TC","Songti TC",serif;--f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;--f-data:ui-monospace,Consolas,monospace}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--tx);font-family:var(--f-body);font-size:14px;line-height:1.55}
+a{color:var(--link)}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;padding-block:12px}
+.top .wrap.navrow{padding-block:0}
+.brand{font-family:var(--f-display);font-size:20px;font-weight:700;letter-spacing:.02em;margin:0}
+.brand a{color:inherit;text-decoration:none}
+.brand-wrap{min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:11.5px;color:var(--mut);flex:1;min-width:0}
+.meta b{font-family:var(--f-data);font-weight:500;color:var(--tx)}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav.tabs a{display:block;padding:10px 14px;font-weight:500;color:var(--mut);border-bottom:2px solid transparent;white-space:nowrap;text-decoration:none;border-radius:10px 10px 0 0}
+nav.tabs a[aria-selected="true"]{color:var(--tx-strong);border-bottom:3px solid var(--robo)}
+main.wrap{padding-block:16px 8px}
+.rb-sec{margin:22px 0}
+.rb-sec>h2,.rb-rules-h{font-family:var(--f-display);font-size:18px;color:var(--tx-strong);margin:0 0 10px}
+.rb-intro{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 18px;font-size:14.5px;line-height:1.75}
+.rb-intro p{margin:.2em 0}
+.rb-who ul{margin:0}
+.rb-statshead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:4px}
+.rb-statshead h2{margin:0}
+.rb-kpis{margin:12px 0}
+.rb-curve h3{margin:0 0 8px;font-size:14px;color:var(--tx-strong)}
+.rb-curve .rb-empty{padding:28px 16px}
+table.rb tr.emptyrow td{text-align:center;color:var(--mut);padding:22px 12px}
+table.rb th{white-space:normal;vertical-align:bottom}
+@media(min-width:641px){table.rb{min-width:0}}
+@media(max-width:640px){table.rb tr.emptyrow td{justify-content:center}table.rb tr.emptyrow td::before{content:none}}
+.rb-wrap{-webkit-overflow-scrolling:touch}
+.rb-rules .bd ul,.rb-rules .bd ol{padding-left:20px;margin:.3em 0}
+.rb-rules .bd p{margin:.3em 0}
+.rb-disc .lead{font-weight:700;color:var(--tx)}
+.rb-disc p{margin:.3em 0}
+.foot{color:var(--mut);font-size:12px;border-top:1px solid var(--line);padding-block:12px 40px;margin-top:24px}
+.foot p{margin:.35em 0}
+.rb-hero ul{margin:0;padding:0;list-style:none}
+@media(max-width:640px){
+ .brand{font-size:18px}
+ .rb-hero h2{font-size:22px}
+ .rb-hero h2 small{display:block;margin:2px 0 0}
+ .rb-rules .bd{padding:0 14px 12px 22px}
+ .rb-kpis .rb-kpi:last-child:nth-child(odd){grid-column:1/-1}
+ nav.tabs{width:100%}
+ nav.tabs a{padding-left:8px;padding-right:8px;font-size:14px;white-space:nowrap}
+ .meta{font-size:11px}
+}
+.meta span{white-space:nowrap}</style></head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand-wrap"><p class="brand"><a href="./">The Crowd Tape</a></p></div>
+    <div class="meta"><span>帳本更新 <b>2026-10-06 21:17 HKT</b></span><span>持倉中 <b>5</b> 單</span></div>
+  </div>
+  <div class="wrap navrow">
+    <nav class="tabs" role="tablist" aria-label="檢視">
+      <a role="tab" aria-selected="false" href="./#daily">每日</a>
+      <a role="tab" aria-selected="false" href="./#weekly">每週<small class="tab-rng">（7 天）</small></a>
+      <a role="tab" aria-selected="false" href="./#monthly">每月<small class="tab-rng">（28 天）</small></a>
+      <a role="tab" aria-selected="false" href="./#tracked">追蹤名單</a>
+      <a role="tab" aria-selected="true" aria-current="page" class="tab-robo" href="robot.html">機械人選股</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<div class="rb-band"><span>機械人選股・紙上交易</span><span class="sep">｜</span><span>動能波段交易（Momentum Swing）</span><span class="sep">｜</span><span>唔係投資建議</span></div>
+<section class="rb-hero" aria-label="動能波段交易（Momentum Swing Trading）"><h2>動能波段交易<small>（Momentum Swing Trading）</small></h2><p>機械人主要做動能波段交易：只揀動能最強嘅大型美股，等佢突破先買，揸幾日至幾星期。</p><div class="rb-three"><div><b>強勢先揀</b><span>每月按過去 12 個月回報（唔計最近 1 個月）排名，取頭 10 隻，而且股價要高過 200 日平均線</span></div><div><b>突破先入</b><span>收市價高過之前 20 日最高價、成交量高過 20 日平均，下一個交易日開市價買入</span></div><div><b>波段出場</b><span>去到 +2R 目標、碰到止損，或者揸滿 20 個交易日仍未到目標或止損，就賣</span></div></div><p style="margin:14px 0 0">每單都係同一套動能規則（mom-swing-v1），下面列晒細節。</p></section>
+<section class="rb-intro"><p>呢頁同上面嘅「X 大神觀點」完全分開。</p>
+<p>呢度每一單都係機械人按一套固定規則揀出嚟、自己紙上買入同賣出，冇真人揀股，亦冇用真錢。</p>
+<p>揀股、計數同記帳嘅機械人，用緊 SpaceX 旗下 xAI 嘅 AI 模型 Grok。</p>
+<p>我哋公開每一單，贏輸都放，等大家睇下純機械人揀股到底得唔得。</p></section>
+<section class="rb-sec"><h2>邊啲係機械人做、邊啲係真人做</h2><div class="rb-who"><div class="bot"><h3>機械人做</h3><ul><li>每月排動量候選名單、每日掃描有冇股票觸發入場</li><li>計止損同目標、紙上入場同出場、記帳、計風險</li><li>為每單加技術同基本面意見標籤（只係標籤，唔會阻止入場）</li></ul></div><div class="hum"><h3>真人做</h3><ul><li>訂立同修改規則</li><li>決定幾時用真錢（而家未用）</li><li>如果將來用真錢，落單由真人親手做</li></ul></div></div></section>
+<section class="rb-sec" id="stats"><div class="rb-statshead"><h2>戰績</h2><span class="rb-open"><i></i>持倉中 5 單</span><span class="rb-open"><i></i>已平倉 0 單</span></div><div class="rb-kpis k6"><div class="rb-kpi"><div class="l">本金</div><div class="v">10,000.00</div><div class=d>美元</div></div><div class="rb-kpi"><div class="l">已用成本</div><div class="v">9,954.89</div><div class=d>美元</div></div><div class="rb-kpi"><div class="l">剩餘現金</div><div class="v">45.11</div><div class=d>美元</div></div><div class="rb-kpi"><div class="l">勝率</div><div class="v">—</div></div><div class="rb-kpi"><div class="l">平均 R</div><div class="v">—</div></div><div class="rb-kpi"><div class="l">累積盈虧</div><div class="v">0.00</div><div class=d>美元</div></div></div><div class="rb-empty"><b>暫未有已平倉交易</b></div></section>
+<section class="rb-curve"><h3>累積 R</h3><div class="rb-empty"><b>暫未有已平倉交易</b></div></section>
+<section class="rb-sec" id="open"><div class="rb-statshead"><h2>持倉中</h2><span class="rb-open"><i></i>持倉中 5 單</span></div><div class="rb-wrap"><table class="rb"><thead><tr><th>股票</th><th>訊號日</th><th>買入日</th><th>買入價</th><th>股數</th><th>成本（美元）</th><th>初始止損</th><th>而家止損</th><th>保本觸發（+1R）</th><th>目標（+2R）</th><th>時間止損日</th><th>已揸交易日</th></tr></thead><tbody><tr><td data-l="股票" class="tk">INTC</td><td data-l="訊號日">2026-09-24</td><td data-l="買入日">2026-09-25 開盤</td><td data-l="買入價" class="num">126.83</td><td data-l="股數" class="num">16</td><td data-l="成本（美元）" class="num">2,029.28</td><td data-l="初始止損" class="num"><span class="rb-px stop">102.97</span></td><td data-l="而家止損" class="num"><span class="rb-px stop">102.97</span></td><td data-l="保本觸發（+1R）" class="num"><span class="rb-px be">150.69</span></td><td data-l="目標（+2R）" class="num"><span class="rb-px tgt">174.55<small>原 3R：198.41</small></span></td><td data-l="時間止損日">2026-10-22</td><td data-l="已揸交易日" class="num">7</td></tr><tr><td data-l="股票" class="tk">BE</td><td data-l="訊號日">2026-09-25</td><td data-l="買入日">2026-09-28 開盤</td><td data-l="買入價" class="num">282.51</td><td data-l="股數" class="num">11</td><td data-l="成本（美元）" class="num">3,107.61</td><td data-l="初始止損" class="num"><span class="rb-px stop">246.50</span></td><td data-l="而家止損" class="num"><span class="rb-px stop">246.50</span></td><td data-l="保本觸發（+1R）" class="num"><span class="rb-px be">318.52</span></td><td data-l="目標（+2R）" class="num"><span class="rb-px tgt">354.53<small>原 3R：390.54</small></span></td><td data-l="時間止損日">2026-10-23</td><td data-l="已揸交易日" class="num">6</td></tr><tr><td data-l="股票" class="tk">AMAT</td><td data-l="訊號日">2026-09-29</td><td data-l="買入日">2026-09-30 開盤</td><td data-l="買入價" class="num">513.82</td><td data-l="股數" class="num">1</td><td data-l="成本（美元）" class="num">513.82</td><td data-l="初始止損" class="num"><span class="rb-px stop">448.27</span></td><td data-l="而家止損" class="num"><span class="rb-px stop">448.27</span></td><td data-l="保本觸發（+1R）" class="num"><span class="rb-px be">579.37</span></td><td data-l="目標（+2R）" class="num"><span class="rb-px tgt">644.92<small>原 3R：710.47</small></span></td><td data-l="時間止損日">2026-10-27</td><td data-l="已揸交易日" class="num">4</td></tr><tr><td data-l="股票" class="tk">TER</td><td data-l="訊號日">2026-09-29</td><td data-l="買入日">2026-09-30 開盤</td><td data-l="買入價" class="num">402.60</td><td data-l="股數" class="num">10</td><td data-l="成本（美元）" class="num">4,026.00</td><td data-l="初始止損" class="num"><span class="rb-px stop">365.46</span></td><td data-l="而家止損" class="num"><span class="rb-px stop">402.60<small>已移保本</small></span></td><td data-l="保本觸發（+1R）" class="num"><span class="rb-px be">439.74</span></td><td data-l="目標（+2R）" class="num"><span class="rb-px tgt">476.88<small>原 3R：514.02</small></span></td><td data-l="時間止損日">2026-10-27</td><td data-l="已揸交易日" class="num">4</td></tr><tr><td data-l="股票" class="tk">MRVL</td><td data-l="訊號日">2026-10-01</td><td data-l="買入日">2026-10-02 開盤</td><td data-l="買入價" class="num">278.18</td><td data-l="股數" class="num">1</td><td data-l="成本（美元）" class="num">278.18</td><td data-l="初始止損" class="num"><span class="rb-px stop">244.87</span></td><td data-l="而家止損" class="num"><span class="rb-px stop">244.87</span></td><td data-l="保本觸發（+1R）" class="num"><span class="rb-px be">311.49</span></td><td data-l="目標（+2R）" class="num"><span class="rb-px tgt">344.80<small>原 3R：378.11</small></span></td><td data-l="時間止損日">2026-10-29</td><td data-l="已揸交易日" class="num">2</td></tr></tbody></table></div></section>
+<section class="rb-sec" id="skipped"><div class="rb-statshead"><h2>現金不足跳過</h2><span class="rb-open"><i></i>2 個訊號</span></div><div class="rb-wrap"><table class="rb"><thead><tr><th>股票</th><th>訊號日</th><th>原定買入日</th><th>參考入場價</th><th>參考股數</th><th>止損</th><th>目標</th></tr></thead><tbody><tr class="skip"><td data-l="股票" class="tk">LITE</td><td data-l="訊號日">2026-10-01</td><td data-l="原定買入日">2026-10-02 開盤</td><td data-l="參考入場價" class="num">1051.19</td><td data-l="參考股數" class="num">2</td><td data-l="止損" class="num"><span class="rb-px stop">864.44</span></td><td data-l="目標" class="num"><span class="rb-px tgt">1424.69<small>原 3R：1611.44</small></span></td></tr><tr class="skip"><td data-l="股票" class="tk">COHR</td><td data-l="訊號日">2026-10-02</td><td data-l="原定買入日">2026-10-05 開盤</td><td data-l="參考入場價" class="num">340.92</td><td data-l="參考股數" class="num">5</td><td data-l="止損" class="num"><span class="rb-px stop">270.42</span></td><td data-l="目標" class="num"><span class="rb-px tgt">481.92<small>原 3R：552.42</small></span></td></tr></tbody></table></div></section>
+<section class="rb-sec" id="trades"><h2>已平倉交易</h2><div class="rb-wrap"><table class="rb is-empty"><thead><tr><th>股票</th><th>訊號日</th><th>買入日</th><th>買入價</th><th>股數</th><th>成本（美元）</th><th>賣出日</th><th>賣出價</th><th>點解賣</th><th>R</th><th>百分比</th><th>盈虧（美元）</th></tr></thead><tbody><tr class="emptyrow"><td data-l="" colspan="12">暫未有已平倉交易</td></tr></tbody></table></div></section>
+<section class="rb-sec" id="rules"><h2 class="rb-rules-h">交易規則：動能波段交易 mom-swing-v1（截至 10/6）</h2><div class="rb-rules"><details open><summary>1. 揀股範圍</summary><div class="bd"><ul>
+<li>只做美股普通股，市值最少 500 億美元</li>
+<li>只用現金做多，揸幾日至幾星期</li>
+<li>唔做 ETF（例如 QQQ、SPY）、唔沽空、唔用孖展</li>
+<li>每單計劃風險約為戶口 4%（呢個就係 1R），只買整股。開市跳空會令實際蝕多過 1R</li>
+<li>一隻股票最多佔戶口一半</li>
+<li>資金上限固定；只有已經賺到手嘅錢先會加返入可用資金</li>
+<li>將來用真錢時，最多同時揸 1 至 3 隻；而家紙上測試期，只要有現金，每個訊號都會入，現金唔夠就記低「現金不足跳過」，照樣追蹤結果（而家紙上揸緊 5 隻）</li>
+</ul></div></details><details open><summary>2. 幾時買</summary><div class="bd"><ul>
+<li>候選名單：每月揀過去 12 個月升得最勁嘅 10 隻（唔計最近 1 個月），而且股價要高過 200 日平均線</li>
+<li>要同一日收市時符合晒三個條件：<ol><li>收市價高過之前 20 日最高價（突破）</li><li>成交量高過 20 日平均</li><li>收市價高過 200 日平均線</li></ol></li>
+<li>符合後，下一個交易日開市價買入</li>
+<li>已經揸住嘅股再出訊號，唔會加注</li>
+<li>同一日有幾隻出訊號，按評分高低排先後</li>
+</ul></div></details><details open><summary>3. 止損</summary><div class="bd"><ul>
+<li>止損位 = 出訊號前 5 日最低價，再減 0.25 倍 14 日 ATR（股價過去 14 日平均每日波幅）</li>
+<li>1R = 買入價減止損位</li>
+<li>止損只會向上移，唔會向下；開市跳空低過止損，就用開市價賣</li>
+</ul></div></details><details open><summary>4. 幾時賣</summary><div class="bd"><ul>
+<li>目標：賺到 2R 就賣</li>
+<li>當日最高價去到 +1R：止損移去買入價（保本）</li>
+<li>當日最高價去到 +1.5R：止損鎖喺 +0.5R</li>
+<li>以上兩步都係收市後確認，下一個交易日生效</li>
+<li>揸滿 20 個交易日仍未到目標或止損，就賣</li>
+<li>股票跌出 10 大唔會即刻賣，照規則揸到出場</li>
+<li>移動止盈（跟住股價向上追嘅止盈）：而家未用，10/22 檢討時先討論</li>
+</ul></div></details><details open><summary>5. 用唔用真錢</summary><div class="bd"><p>而家全部係紙上交易，冇用真錢。要等測試期結果出咗、檢討完，再由真人確認先會開始。機械人唔可以自己決定用真錢。</p></div></details><details open><summary>6. 規則改動紀錄</summary><div class="bd"><p>規則改動會寫明日子同適用範圍。</p><ul class="rb-log"><li><b>9/24</b>定好 mom-swing-v1（目標 3R，揸最多 20 個交易日）；入場前要過技術、基本面、風控三關</li><li><b>9/30</b>放寬基本面審查，只否決明顯問題；評為「觀望」嘅股票用一半風險入場；開影子簿記低每個機械訊號</li><li><b>10/1</b>影子簿併入唯一正式紙上戶口；所有機械訊號自動入場，三關意見只作標籤；驗證期延長至由 9/24 起計 20 個交易日（到 10/21 收市）</li><li><b>10/3</b>目標由 3R 改做 2R（回測只有約 6% 交易去到 3R）；止損改做兩步：+1R 保本、+1.5R 鎖 +0.5R，即時適用於所有持倉</li><li><b>10/22（預定）</b>檢討 20 日測試結果，再決定規則改唔改</li></ul></div></details><details open><summary>戰績點計</summary><div class="bd"><ul>
+<li>紙上戶口本金：10,000 美元；驗證期由 2026-09-24 起計 20 個交易日，到 10/21 收市</li>
+<li>只有已經賺到手嘅錢先會加入本金（而家已實現盈利：0.00 美元）</li>
+<li>每單計劃風險約為本金 4%，即 400 美元（呢個就係 1R）</li>
+<li>持倉中，每單列出：股票、訊號日、買入日、買入價、股數、成本（買入價 × 股數）、初始止損價、而家止損價、保本觸發價（+1R）、目標價（+2R）、時間止損日、已揸幾多個交易日</li>
+<li>已平倉，每單再加：賣出日、賣出價、點解賣（到目標／碰止損／時間到）、結果（R、百分比、美元）</li>
+<li>「現金不足跳過」嘅訊號都照列，寫明訊號日、參考入場價、止損同目標；因為冇真係入場，唔計成本同盈虧</li>
+<li>頁頂總結：本金、而家用咗幾多成本、剩幾多現金、已平倉單數、勝率、平均 R、累積盈虧</li>
+<li>止損同目標價會跟規則改動更新，改過嘅會註明。例如 10/3 目標由 3R 改做 2R，5 單持倉同現金不足跳過嘅 LITE 都一齊改，目標價底下會細字寫低原本 3R 嘅價</li>
+<li>BE、INTC、TER 同 AMAT 喺 10/1 由舊紀錄轉入而家呢本帳：BE、INTC、TER 嘅買入日、價錢同股數照原本；AMAT 原本係現金不足跳過，轉入時改為持有 1 股</li>
+</ul></div></details></div><div class="rb-disc"><p class="lead">紙上交易，機械人選股，唔係投資建議</p><p>本頁所有交易均為紙上交易，由機械人按固定規則選股及模擬買賣，冇用真錢，亦唔代表任何人嘅持倉。內容只供參考及研究，唔係投資建議，亦唔係買賣任何股票嘅邀請。過往紀錄唔代表將來表現。投資有風險，請自行判斷。</p></div></section>
+</main>
+<footer class="wrap foot"><p><a href="./">The Crowd Tape</a></p></footer>
+</body></html>
