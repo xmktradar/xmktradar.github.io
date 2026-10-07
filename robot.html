@@ -233,6 +233,24 @@ body .hbar .tk .flag{margin-left:0;max-width:100%;white-space:normal;line-height
  .donate-qr img{max-width:100%}
  .donate-btn{display:inline-block;box-sizing:border-box;padding:5px 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--bg);color:var(--ink,#3b2f25);font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap;max-width:100%;min-width:0;overflow:hidden;text-overflow:ellipsis}
 }
+
+
+header.top .meta{flex-wrap:wrap}
+header.top .meta .social{flex-basis:100%;width:100%;min-width:112px;box-sizing:border-box;margin-top:10px}
+header.top .meta .social .social-l{display:block;margin-bottom:4px;font-size:11.5px;line-height:1.3;color:var(--mut)}
+header.top .meta .social .social-row{display:flex;gap:8px;flex-wrap:nowrap;justify-content:flex-start;align-items:center}
+header.top .meta .social .soc{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:32px;height:32px;border-radius:50%;border:1px solid var(--line-strong);background:var(--panel);color:var(--ink,#3b2f25);text-decoration:none;-webkit-tap-highlight-color:transparent}
+header.top .meta .social .soc:hover,header.top .meta .social .soc:active{background:var(--bg-dot)}
+header.top .meta .social .soc:focus-visible{outline:2px solid var(--ink,#3b2f25);outline-offset:2px}
+header.top .meta .social .soc svg{display:block;width:18px;height:18px}
+@media(min-width:960px){
+ header.top .meta{display:grid;grid-template-columns:max-content max-content max-content;column-gap:14px;row-gap:0;justify-content:start;align-items:start}
+ header.top .meta .social{grid-column:3;grid-row:2;width:max-content;justify-self:start;align-self:start}
+}
+@media(max-width:640px){
+ header.top .meta{min-width:112px}
+ header.top .meta .social{margin-top:4px}
+}
 :root{--robo:#6fbf8a;--robo-ink:#2e7449;--robo-bg:#e3f3e8;--robo-line:#bfe2cb;--robo-soft:#f1f9f3}
 .rb-band{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;background:var(--robo-bg);color:var(--robo-ink);border:1px solid var(--robo-line);padding:10px 18px;border-radius:12px;font-size:13.5px;font-weight:600;letter-spacing:.02em}
 .rb-band .ic{width:22px;height:22px;border-radius:6px;background:var(--robo);color:#fff;display:inline-grid;place-items:center;font-size:13px}
