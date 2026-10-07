@@ -156,6 +156,24 @@ body .divehead .av{width:72px;height:72px}
 .tabs button,.tabs a{flex:0 0 auto;white-space:nowrap}
 .tabs .tab-robo .rb-full{display:none}.tabs .tab-robo .rb-short{display:inline}
 }
+
+
+.matrix .dot.none{color:var(--line-strong)}
+@media(max-width:640px){
+ .panel:has(table.matrix)>h2::after{content:"👉 向右滑睇晒所有股票";display:block;width:fit-content;margin-top:8px;padding:3px 11px;font-size:12.5px;font-weight:600;color:var(--ink,#3b2f25);background:var(--bg-dot);border:1px dashed var(--line-strong);border-radius:999px;animation:mxNudge 1.6s ease-in-out 3}
+ @keyframes mxNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+ .tablewrap:has(table.matrix){
+  background:
+   linear-gradient(to left,var(--panel) 35%,rgba(255,250,242,0)) right center/44px 100% no-repeat local,
+   radial-gradient(farthest-side at 100% 50%,rgba(70,45,15,.22),rgba(70,45,15,0)) right center/18px 100% no-repeat scroll;
+  -webkit-overflow-scrolling:touch}
+ .matrix th:first-child,.matrix td:first-child{position:sticky;left:0;z-index:2;background:var(--panel);min-width:112px;max-width:112px;padding-left:4px;padding-right:6px;box-shadow:7px 0 7px -7px rgba(70,45,15,.35)}
+ .matrix td:first-child .handle{display:inline-block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:middle;font-size:12px}
+ .matrix td:first-child .accin{font-size:11px;padding:1px 7px}
+ .matrix td.cell{padding:4px 3px}
+ .matrix thead .tk{display:inline-flex;flex-direction:column;align-items:center;gap:2px}
+ .matrix thead .tk .flag,.matrix thead .tk small{white-space:normal;word-break:keep-all;max-width:66px;font-size:10px;line-height:1.2;margin:0;text-align:center}
+}
 :root{--robo:#6fbf8a;--robo-ink:#2e7449;--robo-bg:#e3f3e8;--robo-line:#bfe2cb;--robo-soft:#f1f9f3}
 .rb-band{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;background:var(--robo-bg);color:var(--robo-ink);border:1px solid var(--robo-line);padding:10px 18px;border-radius:12px;font-size:13.5px;font-weight:600;letter-spacing:.02em}
 .rb-band .ic{width:22px;height:22px;border-radius:6px;background:var(--robo);color:#fff;display:inline-grid;place-items:center;font-size:13px}
