@@ -31,22 +31,23 @@
   },
   "2026-10-07": {
    "bull": [
-    "PENG",
     "MU",
-    "LITE",
-    "CIEN",
     "NVDA",
-    "NBIS",
+    "PENG",
+    "LITE",
     "AAOI",
+    "CIEN",
+    "NBIS",
     "AVGO",
     "CRDO",
+    "COHR",
     "TSEM",
     "SNDK",
-    "META",
-    "MSFT",
+    "AMD",
+    "GOOGL",
     "AMZN",
+    "DRAM",
     "ALAB",
-    "COHR",
     "ORCL",
     "APP",
     "FN",
@@ -54,21 +55,23 @@
    ],
    "bear": [],
    "split": [
+    "MRVL",
     "BE",
     "CEG",
-    "VST",
-    "MRVL",
     "SKHY",
-    "AXTI"
+    "VST",
+    "INTC",
+    "AXTI",
+    "NOK"
    ],
    "window": [
     "2026-10-06T23:32",
-    "2026-10-07T07:28"
+    "2026-10-07T11:29"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-07 10:06"
+   "updated_hkt": "2026-10-07 12:15"
   }
  },
- "updated_hkt": "2026-10-07 10:06",
+ "updated_hkt": "2026-10-07 12:15",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
