@@ -6,6 +6,9 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '5 */4 * * *'
+  push:
+    branches: [main]
+    paths: ['tools/**', '.github/workflows/update-site.yml']
 permissions:
   contents: write
 concurrency:
