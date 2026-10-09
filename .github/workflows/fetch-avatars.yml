@@ -1,0 +1,19 @@
+name: Fetch avatars
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - run: python3 tools/fetch_avatars.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git checkout -B avatars-download
+          git add avatars
+          git commit -m "Download tracked account avatars"
+          git push -f origin avatars-download
