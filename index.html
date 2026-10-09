@@ -62,7 +62,7 @@ main{padding-block:20px 60px}
 .grid{display:grid;gap:16px;grid-template-columns:repeat(12,minmax(0,1fr))}
 .c12{grid-column:span 12}.c8{grid-column:span 8}.c7{grid-column:span 7}.c6{grid-column:span 6}.c5{grid-column:span 5}.c4{grid-column:span 4}
 @media (max-width:900px){.c8,.c7,.c6,.c5,.c4{grid-column:span 12}}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;min-width:0}
+.scrollbox{max-height:440px;overflow-y:auto;overscroll-behavior:contain;padding-right:4px} .tablewrap.scrollbox table.matrix thead th{position:sticky;top:0;z-index:2;background:var(--panel)} .tablewrap.scrollbox table.matrix thead th:first-child{z-index:3} .panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;min-width:0}
 .panel h2{font-size:13px;font-weight:700;margin:0 0 12px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
 .panel h2 .sub{font-weight:400;color:var(--muted);font-size:12px}
 .mod{font-family:var(--f-data);font-size:10.5px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
@@ -1050,9 +1050,9 @@ function viewDaily(){
  </section>
  ${highlightsHtml(w.day)}
  <section class="c5 panel"><h2>市場關注度變化 <span class="sub">提及次數與觀點分布，括號為對比前期</span></h2>
-  ${att.length?`<div style="display:grid;gap:8px">${att.map(x=>{const k={bull:0,neu:0,none:0,bear:0};cur.filter(y=>y.t===x.t).forEach(y=>k[y.s]=(k[y.s]||0)+1);const seg=(c,n,l)=>n?`<span class="${c}" style="width:${n/mx*100}%" title="${l} ${n}"></span>`:'';return `<div class="hbar">${tkBtn(x.t)}<div class="track stk">${seg('b',k.bull,'看多')}${seg('m',k.neu,'中性')}${seg('u',k.none,'未表態')}${seg('r',k.bear,'看空')}</div><span class="n">${x.n} ${hasPrev?`(${signed(x.d)})`:''}</span></div>`}).join('')}</div><div style="margin-top:10px">${legend}</div>${hasPrev?'':`<p class="note">前期（${w.timed?`${fmtR(pf)} – ${fmtR(pt)}`:`${fmt(pf)}${len>1?'–'+fmt(pt):''}`}）沒有資料，暫時無法比較。</p>`}`:empty('此範圍內沒有股票被提及。')}</section>
+  ${att.length?`<div class="scrollbox" style="display:grid;gap:8px;align-content:start">${att.map(x=>{const k={bull:0,neu:0,none:0,bear:0};cur.filter(y=>y.t===x.t).forEach(y=>k[y.s]=(k[y.s]||0)+1);const seg=(c,n,l)=>n?`<span class="${c}" style="width:${n/mx*100}%" title="${l} ${n}"></span>`:'';return `<div class="hbar">${tkBtn(x.t)}<div class="track stk">${seg('b',k.bull,'看多')}${seg('m',k.neu,'中性')}${seg('u',k.none,'未表態')}${seg('r',k.bear,'看空')}</div><span class="n">${x.n} ${hasPrev?`(${signed(x.d)})`:''}</span></div>`}).join('')}</div><div style="margin-top:10px">${legend}</div>${hasPrev?'':`<p class="note">前期（${w.timed?`${fmtR(pf)} – ${fmtR(pt)}`:`${fmt(pf)}${len>1?'–'+fmt(pt):''}`}）沒有資料，暫時無法比較。</p>`}`:empty('此範圍內沒有股票被提及。')}</section>
  <section class="c7 panel"><h2>各帳號立場 <span class="sub">${label}被提及的所有股票・空白代表未提及</span></h2>
-  ${tkNow.length?`<div class="tablewrap"><table class="matrix"><thead><tr><th>帳號</th>${tkNow.map(t=>`<th class="cell">${tkBtn(t)}</th>`).join('')}</tr></thead>
+  ${tkNow.length?`<div class="tablewrap scrollbox"><table class="matrix"><thead><tr><th>帳號</th>${tkNow.map(t=>`<th class="cell">${tkBtn(t)}</th>`).join('')}</tr></thead>
   <tbody>${shownAccs.map(a=>`<tr><td>${accLink(a)}${accIn(a)}</td>${tkNow.map(t=>{const x=latest(a,t,w.from,w.to);return `<td class="cell">${x?`<span class="dot ${x.s==='none'?'unk':x.s}" title="${SLABEL[x.s]}${x.star?'（整篇帖立場）':''}：${esc(x.why.slice(0,80))}">${SCHAR[x.s]}${x.star?'＊':''}</span>`:'<span class="dot none">·</span>'}</td>`}).join('')}</tr>`).join('')}</tbody></table></div>`:empty('此範圍內沒有貼文提及股票代號。')}
   <div style="margin-top:10px">${legend}</div>${noTk.length?`<p class="note">有發文但沒有提及股票代號：${noTk.map(accLink).join(' ')}</p>`:''}</section>
  ${consHtml(w.from,w.to,label,len,'1 日回報')}
