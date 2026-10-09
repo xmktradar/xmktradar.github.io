@@ -766,7 +766,7 @@ nav.tabs a.tab-robo:hover{filter:brightness(.9)}
 <body>
 <header class="top">
   <div class="wrap">
-    <div class="brand-wrap"><h1 class="brand">The Crowd Tape</h1><p class="brand-sub">What the street is doing, not what I think</p><p class="brand-sub-zh">睇X大神做緊乜，唔係睇我點諗</p><div class="views">已瀏覽次數：<b>397</b></div><div class="jump-row"><button type="button" class="promo-jump" data-jump="promo">🎁 富途開戶禮遇 <span class="pj-tag">推廣 ↓</span></button><button type="button" class="promo-jump donate-jump" data-jump="donate">☕ 支持我哋 <span class="pj-tag">捐贈 ↓</span></button></div></div>
+    <div class="brand-wrap"><h1 class="brand">The Crowd Tape</h1><p class="brand-sub">What the street is doing, not what I think</p><p class="brand-sub-zh">睇X大神做緊乜，唔係睇我點諗</p><div class="views">已瀏覽次數：<b id="viewcount">397</b></div><div class="jump-row"><button type="button" class="promo-jump" data-jump="promo">🎁 富途開戶禮遇 <span class="pj-tag">推廣 ↓</span></button><button type="button" class="promo-jump donate-jump" data-jump="donate">☕ 支持我哋 <span class="pj-tag">捐贈 ↓</span></button></div></div>
     <div class="meta">
       <span>資料截止 <b id="cutoff"></b></span>
       <span>下次更新 <b id="nextup"></b></span>
@@ -1347,5 +1347,11 @@ let rT=null;window.addEventListener('resize',()=>{clearTimeout(rT);rT=setTimeout
 ${MAC&&MAC.rows.length?`<p>大市數據：${[...new Set(MAC.rows.map(r=>(r.src||'').replace(/（.*?）|\(.*?\)/g,'').trim()).filter(Boolean))].map(esc).join('、')||'—'}${MAC.as_of?`，截至 ${esc(MAC.as_of)} HKT`:''}。</p>`:''}<p>時間均為香港時間（HKT, UTC+8）。帳號頭像與簡介來自各帳號的 X 個人頁。</p>`;linkHandles(document.getElementById('foot'))})();
 render();
 
+</script>
+<script>
+// 已瀏覽次數：網頁自己數（abacus 免費計數器），由 Google Analytics 最後一個數字 397 接住數；同一個瀏覽器分頁只計一次
+(function(){var BASE=397,API='https://abacus.jasoncameron.dev/',KEY='xmktradar/views';var el=document.getElementById('viewcount');if(!el||!window.fetch)return;
+var seen=false;try{seen=sessionStorage.getItem('ct_viewed')==='1'}catch(e){}
+fetch(API+(seen?'get/':'hit/')+KEY).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||typeof j.value!=='number')return;el.textContent=(BASE+j.value).toLocaleString('en-US');try{sessionStorage.setItem('ct_viewed','1')}catch(e){}}).catch(function(){});})();
 </script>
 </body></html>
