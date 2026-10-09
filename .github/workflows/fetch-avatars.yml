@@ -10,6 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: python3 tools/fetch_avatars.py
+        env:
+          ONLY: BillGates,JeffBezos,satyanadella,pmarca,saylor,DavidSacks,PalmerLuckey,DarioAmodei,bhorowitz,friedberg,LisaSu,RayDalio,michaeljburry,charliebilello,steve_hanke,biancoresearch,LukeGromen,TruthGundlach,lisaabramowicz1,TheStalwart,Schuldensuehner,AswathDamodaran,DiMartinoBooth,jasonfurman,MichaelKantro,paulkrugman,jimcramer,nntaleb,SawyerMerritt,leadlagreport,TrendSpider,garyblack00,carlquintanilla,IBDinvestors,GerberKawasaki,awealthofcs,JoeSquawk,sentimentrader,bespokeinvest,jam_croissant,RyanDetrick,Beth_Kindig,Stephanie_Link,michaelbatnick,jposhaughnessy,MarkYusko,MacroCharts,UrbanKaoboy,DanielTNiles,StockSavvyShay,patrick_oshag,mingchikuo,I_Am_The_ICT,traderstewie,Jake__Wujastyk,GuyAdami,GavinSBaker,xiaomustock,RedDogT3,InvestorsLive,petenajarian,RichardMoglen,hkuppy,LindaRaschke,karenfinerman,canuck2usa,spotgamma,GavinSBaker,InvestorsLive,petenajarian,canuck2usa
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
