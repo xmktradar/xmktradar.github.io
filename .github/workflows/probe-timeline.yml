@@ -1,0 +1,10 @@
+name: Probe timeline sources
+on:
+  push:
+    branches: [probe-timeline]
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/probe_timeline.py
