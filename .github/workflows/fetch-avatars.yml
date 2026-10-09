@@ -1,5 +1,7 @@
 name: Fetch avatars
-on: workflow_dispatch
+on:
+  push:
+    branches: [avatar-fetch]
 permissions:
   contents: write
 jobs:
