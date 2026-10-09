@@ -487,7 +487,7 @@ header.top .meta .social .soc svg{display:block;width:18px;height:18px}
 .hl h3{font-family:var(--serif);font-size:19px;line-height:1.35;margin:0;color:var(--tx-strong)}
 
 .hl-tks{display:grid;gap:6px}
-.hl-tk{display:grid;grid-template-columns:64px 1fr auto;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--line-soft);border-radius:var(--radius-sm);padding:6px 10px;cursor:pointer;text-decoration:none;color:inherit}
+.hl-tk{display:grid;grid-template-columns:64px minmax(70px,1fr) auto;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--line-soft);border-radius:var(--radius-sm);padding:6px 10px;cursor:pointer;text-decoration:none;color:inherit}
 .hl-tk:hover{border-color:var(--line-strong)}
 .hl-tk b{font-family:var(--mono);font-size:13px;color:var(--link)}
 .hl-tk svg{width:100%;height:28px;display:block}
@@ -1020,6 +1020,7 @@ function viewDaily(){
  const split=DD.filter(x=>agreeLabel(x.c).l==='明顯分歧');
  const chg=cur.map(x=>({x,ch:chgOf(x)})).filter(y=>y.ch);
  const att=[...new Set([...tkNow,...tkPrev])].map(t=>({t,n:cur.filter(x=>x.t===t).length,d:cur.filter(x=>x.t===t).length-prev.filter(x=>x.t===t).length})).filter(x=>x.n||x.d).sort((a,b)=>b.n-a.n||a.t.localeCompare(b.t));
+ const attGone=att.filter(x=>!x.n).map(x=>x.t);att.splice(0,att.length,...att.filter(x=>x.n));
  const mx=Math.max(...att.map(x=>x.n),1);
  const vposts=rawIn(w.from,w.to).filter(valid),prevV=rawIn(pf,pt).filter(valid).length;
  const nB=cur.filter(x=>x.s==='bull').length,nR=cur.filter(x=>x.s==='bear').length,nU=cur.filter(x=>x.s==='none').length,nM=cur.filter(x=>x.s==='neu').length;
@@ -1049,7 +1050,7 @@ function viewDaily(){
   <div class="kpi"><div class="l">未表態</div><div class="v">${nU}</div><div class="d note">${nM?`另中性 ${nM}`:'觀點數'}</div></div>
  </section>
  ${highlightsHtml(w.day)}
- <section class="c5 panel"><h2>市場關注度變化 <span class="sub">提及次數與觀點分布，括號為對比前期</span></h2>
+ <section class="c5 panel"><h2>市場關注度變化 <span class="sub">只列仍有帳號關注的股票${attGone.length?`，已篩走 ${attGone.length} 隻已沒有人再關注的股票`:''}；括號為對比前期</span></h2>
   ${att.length?`<div class="scrollbox" style="display:grid;gap:8px;align-content:start">${att.map(x=>{const k={bull:0,neu:0,none:0,bear:0};cur.filter(y=>y.t===x.t).forEach(y=>k[y.s]=(k[y.s]||0)+1);const seg=(c,n,l)=>n?`<span class="${c}" style="width:${n/mx*100}%" title="${l} ${n}"></span>`:'';return `<div class="hbar">${tkBtn(x.t)}<div class="track stk">${seg('b',k.bull,'看多')}${seg('m',k.neu,'中性')}${seg('u',k.none,'未表態')}${seg('r',k.bear,'看空')}</div><span class="n">${x.n} ${hasPrev?`(${signed(x.d)})`:''}</span></div>`}).join('')}</div><div style="margin-top:10px">${legend}</div>${hasPrev?'':`<p class="note">前期（${w.timed?`${fmtR(pf)} – ${fmtR(pt)}`:`${fmt(pf)}${len>1?'–'+fmt(pt):''}`}）沒有資料，暫時無法比較。</p>`}`:empty('此範圍內沒有股票被提及。')}</section>
  <section class="c7 panel"><h2>各帳號立場 <span class="sub">${label}被提及的所有股票・空白代表未提及</span></h2>
   ${tkNow.length?`<div class="tablewrap scrollbox"><table class="matrix"><thead><tr><th>帳號</th>${tkNow.map(t=>`<th class="cell">${tkBtn(t)}</th>`).join('')}</tr></thead>
