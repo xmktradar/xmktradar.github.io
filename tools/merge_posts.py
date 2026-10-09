@@ -76,6 +76,12 @@ def main():
                      updated_hkt=gen, source_accounts=new.get('accounts') or x.get('source_accounts'),
                      cutoff_hkt=max(p['time_hkt'] for p in ps), n_posts=len(ps))
         d['days'] = [days[k] for k in sorted(days)]
+        # Keep today's daily view current: stretch the latest write-up's window to the new cutoff.
+        # Grok rewrites the text itself in write_analysis.py when it is available.
+        last_day = latest[:10]
+        for x in d.get('summaries', {}).get('daily', []):
+            if x.get('date') == last_day and isinstance(x.get('win'), dict):
+                x['win']['to'] = latest[:16]
     save(d)
     write_json(work('merge.json'), {'added': len(added), 'pending': len(keep), 'old_cutoff': old_cutoff,
                                      'cutoff': d['meta']['cutoff_hkt'], 'days': sorted({p['day'] for p in added}),

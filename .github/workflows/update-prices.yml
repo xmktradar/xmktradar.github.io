@@ -1,8 +1,7 @@
 name: Update prices
+# Prices also refresh inside "Update site" every 4 hours; this one is for a manual refresh.
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '5 */4 * * *'
   push:
     branches: [main]
     paths: ['tools/update_prices.py', '.github/workflows/update-prices.yml']

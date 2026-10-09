@@ -1,0 +1,27 @@
+<!doctype html><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Noto+Sans+TC:wght@400;500&family=Noto+Serif+TC:wght@700;900&display=block">
+<style>
+html,body{margin:0}body{width:1200px;height:630px;background:#f8f1e6;font-family:"Noto Sans TC",sans-serif;position:relative;overflow:hidden}
+.bar{height:14px;background:#3a9a52}
+.wrap{padding:52px 64px 0}
+.top{display:flex;justify-content:space-between;align-items:flex-start}
+.brand{font-family:"Noto Serif TC",serif;font-weight:700;font-size:46px;color:#2b2218;line-height:1.1}
+.sub{font-size:21px;color:#8c7f6e;margin-top:10px}
+.date{font-family:"IBM Plex Mono",monospace;font-size:26px;color:#8c7f6e;margin-top:22px}
+.h{font-family:"Noto Serif TC",serif;font-weight:900;font-size:68px;color:#2b2218;margin-top:40px;line-height:1.15}
+.picks{display:inline-block;background:#e3f0e1;color:#2a7d3f;font-family:"Noto Serif TC",serif;font-weight:900;font-size:54px;padding:4px 16px;border-radius:12px;margin-top:2px;white-space:nowrap}
+.chips{display:flex;gap:14px;margin-top:22px}
+.chip{white-space:nowrap;font-size:24px;padding:6px 22px;border-radius:999px;border:2px solid #e6d9c6;background:#fffaf2;color:#2b2218}
+.chip.bear{background:#fbe4e1;border-color:#f0c4be;color:#c03b30}
+.chip.split{background:#f6ead6;border-color:#e8d2ac;color:#94621a}
+.foot{position:absolute;left:64px;right:64px;bottom:40px;border-top:2px dashed #e3d7c5;padding-top:20px;display:flex;justify-content:space-between;align-items:center}
+.foot .l{font-size:23px;color:#8c7f6e}.foot .r{font-family:"IBM Plex Mono",monospace;font-size:23px;color:#2b2218}
+</style>
+<div class="bar"></div><div class="wrap">
+<div class="top"><div><div class="brand">The Crowd Tape</div><div class="sub">睇X大神做緊乜，唔係睇我點諗</div></div><div class="date" id="date"></div></div>
+<div class="h">今日 X 大神共同睇好：</div>
+<div class="picks" id="picks"></div>
+<div class="chips"><span class="chip" id="n"></span><span class="chip bear" id="bear"></span><span class="chip split" id="split"></span></div>
+</div>
+<div class="foot"><span class="l">每 4 小時更新・全中文・唔係投資建議</span><span class="r">xmktradar.github.io</span></div>
+<script>const q=new URLSearchParams(location.search);for(const k of ['date','picks','n','bear','split'])document.getElementById(k).textContent=q.get(k)||'';</script>
