@@ -62,7 +62,7 @@ main{padding-block:20px 60px}
 .grid{display:grid;gap:16px;grid-template-columns:repeat(12,minmax(0,1fr))}
 .c12{grid-column:span 12}.c8{grid-column:span 8}.c7{grid-column:span 7}.c6{grid-column:span 6}.c5{grid-column:span 5}.c4{grid-column:span 4}
 @media (max-width:900px){.c8,.c7,.c6,.c5,.c4{grid-column:span 12}}
-.scrollbox{max-height:440px;overflow-y:auto;overscroll-behavior:contain;padding-right:4px} .tablewrap.scrollbox table.matrix thead th{position:sticky;top:0;z-index:2;background:var(--panel)} .tablewrap.scrollbox table.matrix thead th:first-child{z-index:3} .panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;min-width:0}
+.scrollbox{max-height:440px;overflow-y:auto;overscroll-behavior:contain;padding-right:4px} .tablewrap.scrollbox table.matrix thead th{position:sticky;top:0;z-index:2;background:var(--panel)} .tablewrap.scrollbox table.matrix thead th:first-child{z-index:3} .matrix th:first-child,.matrix td:first-child{position:sticky;left:0;z-index:2;background:var(--panel);box-shadow:7px 0 7px -7px rgba(70,45,15,.35)} .matrix thead th:first-child{z-index:3} .panel{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;min-width:0}
 .panel h2{font-size:13px;font-weight:700;margin:0 0 12px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
 .panel h2 .sub{font-weight:400;color:var(--muted);font-size:12px}
 .mod{font-family:var(--f-data);font-size:10.5px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
