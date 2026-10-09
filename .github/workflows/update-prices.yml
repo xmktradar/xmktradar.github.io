@@ -1,0 +1,28 @@
+name: Update prices
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '5 */4 * * *'
+  push:
+    branches: [main]
+    paths: ['tools/update_prices.py', '.github/workflows/update-prices.yml']
+permissions:
+  contents: write
+concurrency:
+  group: site-update
+  cancel-in-progress: false
+jobs:
+  prices:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/update_prices.py index.html
+      - name: Publish
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet && exit 0
+          git commit -m "更新股價 $(TZ=Asia/Hong_Kong date '+%Y-%m-%d %H:%M') HKT"
+          git pull --rebase origin main
+          git push origin HEAD:main
