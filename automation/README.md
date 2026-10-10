@@ -2,6 +2,7 @@
 
 > 呢份文件係畀負責自動更新嘅 Grok（xAI）同 GitHub Actions 讀嘅。每次更新照住呢度嘅步驟做，唔好自己加減。
 > 最後更新：2026-10-10。決定人：Tim Li。第 9 節（普通話、英文、韓文、刪帖規則）係 2026-10-10 新加，同其他章節有衝突時以第 9 節為準。
+> 2026-10-10 Tim 決定：所有 AI 工作（帖文摘要、每日／每週／每月分析、翻譯、每日檢查）只用 SuperGrok 訂閱做，唔用 xAI API key。SuperGrok 嘅做法寫喺 `automation/super-grok.md`，同本文件衝突時以嗰份為準。
 
 ## 1. 規格
 
@@ -22,6 +23,8 @@
 - 唔做投資建議、唔做交易。
 - 唔刪共識歷史（`cons_hist`、`data/consensus-history.json`）。帖文只按第 9 節嘅保留規則刪。
 - 唔郁「已瀏覽次數」（網頁自己數）、推廣同 PayPal 捐贈區。
+- 唔出社交媒體帖（X 同其他平台都唔做）。
+- SuperGrok 唔自己搜 X 帖代替 GitHub 抓帖（佢嘅搜尋一次只返幾則，會漏回覆同長文）。
 
 ## 2. 排程（香港時間）
 
@@ -64,30 +67,30 @@ GitHub Actions 用 UTC，所以 cron 寫 `5 */4 * * *`（UTC 00:05 即香港 08:
 | 步驟 | 檔案 |
 |---|---|
 | 2 攞新帖 | `tools/fetch_posts.py` |
-| 3 Grok 分析 | `tools/analyse_posts.py`（規則：`automation/post-analysis-prompt.md`） |
+| 3 帖文摘要 | `tools/analyse_posts.py`：只讀 SuperGrok 交嘅 `data/super-grok-analysis.json`，唔叫 API（規則：`automation/super-grok.md` 第 2 步、`automation/post-analysis-prompt.md`） |
 | 4 加入帖文 | `tools/merge_posts.py`（未分析嘅帖放 `data/pending-posts.json`，下次再試） |
 | 5、6 股價同大市 | `tools/update_prices.py` |
 | 7 共識數字 | `tools/stats.js`（直接用網頁自己嘅計法） |
-| 7 Grok 寫分析 | 未做（等 `XAI_API_KEY`） |
+| 7 寫分析 | `tools/apply_writeups.py`：讀 SuperGrok 每日交嘅 `data/super-grok-writeups.json`，驗格式、清走危險 HTML 先放入網站（規則：`automation/super-grok.md` 第 5 節） |
+| 7a 畀 SuperGrok 嘅檔 | `tools/write_status.py`：寫 `data/writeup-input.json`（網頁計好嘅共識數字）同 `data/site-status.json`（網站狀態，每日檢查用） |
 | 8 共識歷史、分享圖、sitemap | `tools/publish_extras.py`、`tools/og.js`、`tools/og.html` |
 | 8a 三個語言版本 | `tools/build_langs.py`（由 `index.html` 生成 `/zh/`、`/en/`、`/ko/`；固定文字譯文放 `i18n/en.json`、`i18n/ko.json`；`--extract` 重新列出要譯嘅中文介面文字去 `i18n/zh.json`） |
 | 9 發佈前檢查 | `tools/check.js`（四個頁面都檢查） |
 | 排程 | `.github/workflows/update-site.yml` |
 
-模型：預設自動揀帳戶可用嘅 Grok 文字模型（優先 Grok 4 fast）；要指定就喺 GitHub → Settings → Secrets and variables → Actions → Variables 加 `XAI_MODEL`。
 
 ## 4. 鎖匙同設定
 
 | 名 | 放喺邊 | 用途 |
 |---|---|---|
-| `XAI_API_KEY` | GitHub → Settings → Secrets and variables → Actions | Grok 分析同寫文 |
+| （冇） | | 唔使任何 API key。SuperGrok 用 Tim 嘅訂閱，經 Grok 嘅 GitHub 連接器寫檔入 repo。 |
 
 唔好將任何鎖匙寫入程式、帖文或者 commit。
 
 ## 5. 出錯點算
 
 - 攞帖、攞股價失敗：照用舊資料，網站照常發佈，喺 `meta.warnings` 寫低。
-- Grok 用量用完或者 API 錯：唔好發佈半套分析；新帖照加但標 `未分析`，下一次再補分析。
+- SuperGrok 用量用完或者冇交檔：新帖照加但標 `未分析`，SuperGrok 回復後補做；分析留喺最後一份。SuperGrok 交嘅檔格式唔啱嘅部分會跳過，記入 `data/site-status.json`。
 - GitHub Actions 失敗會自動 email 通知 repo 擁有人。
 
 ## 6. 舊 Grok bot（Tim 電腦）
@@ -156,8 +159,8 @@ GitHub Actions 用 UTC，所以 cron 寫 `5 */4 * * *`（UTC 00:05 即香港 08:
 ### 9.3 刪帖規則（每次更新最後一步做）
 
 - 每則帖要有 `macro` 欄位：講宏觀經濟、利率、通脹、債息、油價、匯率、央行、整體大市就係 `true`。
-- **冇提股票（`tickers` 同 `stance_by_ticker` 都係空）而且唔係宏觀**：發帖後保留 7 日，之後刪。
-- **有提股票或者係宏觀**：保留 28 日，之後刪。
+- **冇提股票（`tickers` 同 `stance_by_ticker` 都係空）而且唔係宏觀**：發帖後保留 2 日，之後刪。
+- **有提股票或者係宏觀**：保留 7 日，之後刪。
 - 刪帖之後，`days` 入面冇帖嘅日子都要刪；共識歷史保留。
 - 如果一次要刪超過一半帖，即係有嘢錯咗，停止唔發佈。
 
@@ -184,7 +187,7 @@ L1 至 L7 唔使 Grok key；L8 要等 `XAI_API_KEY`。網頁改咗介面文字�
 - [ ] 中文版冇廣東話字，全部繁體字
 - [ ] 舊帖摘要同分析改寫完，意思冇變
 - [ ] 每則帖有 `macro` 欄位
-- [ ] 7 日前冇股票又唔係宏觀嘅帖已刪；28 日前嘅帖已刪
+- [ ] 2 日前冇股票又唔係宏觀嘅帖已刪；7 日前嘅帖已刪
 - [ ] `/zh/`、`/en/`、`/ko/` 三個網址開到，切換掣用得
 - [ ] 根網址按瀏覽器語言跳轉，舊連結照用
 - [ ] 三個版本都有 `hreflang` 同正確 `<html lang>`

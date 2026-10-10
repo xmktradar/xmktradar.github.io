@@ -1,5 +1,5 @@
 name: Update site
-# Every 4 hours (HKT 00:05, 04:05, 08:05 ...): fetch new posts, apply SuperGrok summaries,
+# Every 4 hours (HKT 00:05, 04:05, 08:05 ...): fetch new posts, apply SuperGrok summaries and write-ups,
 # refresh prices, consensus history and share image, check the page, then publish.
 # Steps are described in automation/README.md.
 on:
@@ -8,7 +8,7 @@ on:
     - cron: '5 */4 * * *'
   push:
     branches: [main]
-    paths: ['tools/**', '.github/workflows/update-site.yml', 'data/super-grok-analysis.json']
+    paths: ['tools/**', '.github/workflows/update-site.yml', 'data/super-grok-analysis.json', 'data/super-grok-writeups.json']
 permissions:
   contents: write
 concurrency:
@@ -39,6 +39,9 @@ jobs:
         run: python3 tools/analyse_posts.py
       - name: Add posts to the site
         run: python3 tools/merge_posts.py
+      - name: Apply SuperGrok write-ups
+        continue-on-error: true
+        run: python3 tools/apply_writeups.py
       - name: Update prices
         continue-on-error: true
         run: python3 tools/update_prices.py index.html
@@ -48,6 +51,9 @@ jobs:
           node tools/stats.js index.html "$WORK_DIR/windows.json" "$WORK_DIR/stats.json" || { echo "::error::共識計算失敗"; exit 1; }
       - name: Consensus history, share text, sitemap
         run: python3 tools/publish_extras.py
+      - name: Files for SuperGrok (consensus numbers, site status)
+        continue-on-error: true
+        run: python3 tools/write_status.py
       - name: Share image
         run: |
           if [ -f "$WORK_DIR/og.json" ]; then

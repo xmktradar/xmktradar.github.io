@@ -10,3 +10,48 @@
 4. **上傳網頁**：GitHub Actions「Update site」讀呢個檔，合併入網站，再發布。`tools/analyse_posts.py` 唔會再呼叫 xAI API。
 
 唔好再開電腦上舊嘋 Grok bot。
+
+## 5. 每日寫分析（香港時間 09:05，每日一次）
+
+1. 讀 `data/writeup-input.json`：網頁自己計好嘅每日、每週（7 日）、每月（28 日）共識數字（`bull` 共同看好、`bear` 共同看淡、`split` 分歧、`top` 最多人講）。分析入面嘅數字只可以用呢個檔，唔准作。再讀網站 `index.html` 入面嘅帖做理由同引用。
+2. 寫 `data/super-grok-writeups.json`，每日整份覆蓋一次：
+
+```json
+{
+  "updated_hkt": "YYYY-MM-DD HH:MM",
+  "zh": {
+    "daily":   {"date": "今日香港日期", "win": {"from": "YYYY-MM-DDTHH:MM", "to": "YYYY-MM-DDTHH:MM"}, "brief": "<p>…</p>", "full": "<h5>共識</h5><p>…</p>", "html": "<h4>短摘要</h4><p>…</p>"},
+    "weekly":  {同 daily 一樣嘅欄位},
+    "monthly": {同 daily 一樣嘅欄位},
+    "highlights": {"date": "今日", "range": "…", "stats_note": "…", "cards": [{"headline": "…", "theme": "…", "tone": "看好", "points": ["@帳號：…"], "tickers": ["NVDA"], "handles": ["帳號"], "source_note": "據 @… 貼文", "big": {"value": "5 個帳號", "label": "看好 $NVDA"}}]},
+    "briefing": {"date": "今日", "html": "<h3>…</h3><p>…</p>"}
+  },
+  "en": {同 zh 一樣嘅結構，英文},
+  "ko": {同 zh 一樣嘅結構，韓文}
+}
+```
+
+- `win` 用 `writeup-input.json` 對應期間嘅 `from`、`to`；英文同韓文唔使寫 `win`，會自動跟中文。
+- 內容結構同 `automation/README.md` 第 3 節第 7 步一樣：`brief` 一段講共識、分歧、最大變化同數據範圍；`full` 分「共識／共同看淡／分歧／其他值得留意」，每個論點附 `@帳號` 同原帖連結。重點卡 3 張，`tone` 只可以係 `看好`、`看淡`、`分歧`、`中性`。
+- 中文用普通話書面語、繁體字；英文、韓文意思同中文一樣，數字一樣。全部唔用破折號。
+- HTML 只可以用 `p h3 h4 h5 ul ol li strong em br a code`。連結只可以去 `#stock/<代號>`（加 `class="tk"`）或者 `https://x.com/...`，其他連結同標籤會被清走。
+- 推上 `main` 之後網站自動更新。格式唔啱嘅部分會被跳過，寫喺 `data/site-status.json` 嘅 `writeups_rejected`。
+
+## 6. 每日檢查（香港時間 10:05，每日一次）
+
+讀 `data/site-status.json`（GitHub 每次更新都會寫）。任務結果設定用 email 通知 Tim。以下任何一樣成立，結果第一行寫「有問題」，再逐樣寫清楚數字：
+
+- `generated_hkt` 早過而家 5 個鐘以上（網站停咗更新）。
+- `waiting_for_summary` 大過 300，或者 `fetch_failed` 唔係空。
+- `latest_writeups` 入面 `zh`、`en`、`ko` 嘅 `daily` 唔係今日或者昨日。
+- `writeups_rejected` 唔係空。
+
+全部正常就第一行寫「一切正常」。
+
+要改程式或者版面先修得好嘅問題：開 PR（branch 名 `grok-fix-<日期>`），寫清楚改咗咩，等 Tim 講「合併」先生效。唔准直接改 `main` 上面嘅 `tools/`、`.github/`、`index.html`。資料檔（`data/super-grok-analysis.json`、`data/super-grok-writeups.json`）照舊直接推。
+
+## 7. 唔做
+
+- 唔出社交媒體帖。
+- 唔自己搜 X 帖代替 GitHub 抓帖。
+- 唔加減追蹤帳號。
