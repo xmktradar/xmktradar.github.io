@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     env:
-      WORK_DIR: ${{ runner.temp }}/work
+      WORK_DIR: /tmp/site-work
       XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
       XAI_MODEL: ${{ vars.XAI_MODEL }}
       TZ: Asia/Hong_Kong
