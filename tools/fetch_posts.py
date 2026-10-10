@@ -13,6 +13,8 @@ from datetime import datetime, timezone
 from sitedata import load, notice, parse_iso, read_json, work, write_json
 
 API = 'https://api.fxtwitter.com/2/profile/{}/statuses'
+STATUS = 'https://api.fxtwitter.com/2/status/{}'
+BACKFILL = 800  # older site posts per run that get their original text (English page)
 UA = 'TheCrowdTape/1.0 (+https://xmktradar.github.io/)'
 PENDING = 'data/pending-posts.json'
 
@@ -129,6 +131,23 @@ def main():
         notice('攞帖失敗：' + '、'.join(failed[:20]), 'warning')
     if len(failed) > len(accounts) * 0.8:
         raise SystemExit('大部分帳號都攞唔到帖，停止更新')
+    backfill_text(d)
+
+
+def backfill_text(d):
+    """Posts added before the English page existed have no original text; fetch some each run."""
+    todo = [p for p in d['posts'] if 'text' not in p][:BACKFILL]
+    got, bad = {}, 0
+    for p in todo:
+        try:
+            st = (get(STATUS.format(p['url'].rstrip('/').split('/')[-1]), tries=2) or {}).get('status') or {}
+            got[p['url'].lower()] = text_of(st)[:1500]
+        except Exception:
+            bad += 1
+        time.sleep(0.2)
+    write_json(work('text_backfill.json'), got)
+    if todo:
+        notice(f'補原文：{len(got)} 則，失敗 {bad} 則，仲有 {sum("text" not in p for p in d["posts"]) - len(got)} 則未補')
 
 
 if __name__ == '__main__':
