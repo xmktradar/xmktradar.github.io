@@ -1,0 +1,150 @@
+{
+  "note": "SuperGrok 每 4 小時寫入。posts 的 key 是帖文 id。上傳程式只讀這個檔，不再呼叫 xAI API。",
+  "updated_hkt": "2026-10-10 23:20",
+  "posts": {
+    "2108908617621512644": {
+      "zh_summary": "據報 Anthropic 與 14 家供應商簽下約 5850 億美元算力協議，涵蓋 $GOOGL TPU、$AMZN Trainium、$NVDA GPU 與 $AMD。Google 據報 2000 億美元、五年，年化約 400 億美元；Amazon 1000 億美元、十年，年化約 100 億美元，所以 TPU 在這次擴建裡的比重大過預期。",
+      "ko_summary": "보도에 따르면 Anthropic이 공급업체 14곳과 약 5850억 달러 규모의 컴퓨팅 계약을 맺었고, $GOOGL TPU, $AMZN Trainium, $NVDA GPU, $AMD가 포함된다. Google은 5년에 2000억 달러(연 약 400억 달러), Amazon은 10년에 1000억 달러(연 약 100억 달러)로, 이번 증설에서 TPU 비중이 예상보다 크다.",
+      "tickers": ["GOOGL", "AMZN", "NVDA", "AMD"],
+      "stance": "中性",
+      "stance_by_ticker": {"GOOGL": "中性", "AMZN": "中性", "NVDA": "中性", "AMD": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "ticker_notes": {}
+    },
+    "2108908962397786280": {
+      "zh_summary": "回覆討論 $SIVE 的三道護城河：產能、客製 DFB 雷射認證，以及技術。2027 年第四季將有超過 1 億顆 CW DFB 雷射上線；若按 2:1 的說法外推，長期自有加外部代工可到每年 3 億顆。作者認為在被說成長達 3 至 5 年的短缺裡，這項產能很有價值，同時提到 $AAOI、$AVGO 等人也在擴產，$LITE 則表示已有需求。",
+      "ko_summary": "$SIVE의 해자 세 가지를 답글로 설명했다. 생산능력, 맞춤형 DFB 레이저 인증, 기술이다. 2027년 4분기에 CW DFB 레이저 1억 개 이상이 가동되고, 2:1 발언을 연장하면 장기적으로 자체와 외부 파운드리를 합쳐 연 3억 개다. 저자는 3~5년으로 언급된 공급 부족에서 이 생산능력이 매우 가치 있다고 보며, $AAOI와 $AVGO 등도 증설 중이고 $LITE는 이미 수요가 있다고 밝혔다고 전한다.",
+      "tickers": ["SIVE", "AAOI", "AVGO", "LITE"],
+      "stance": "中性",
+      "stance_by_ticker": {"SIVE": "睇好", "AAOI": "中性", "AVGO": "中性", "LITE": "中性"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "ticker_notes": {"SIVE": "短缺下自有雷射產能有價值"}
+    },
+    "2108900808956039390": {
+      "zh_summary": "回覆近況：$LITE 訂單賣到 2029 年，作者認為市場還沒充分反映 $AAOI 2027 年放量，以及目前瓶頸有多嚴重。$AAOI 是他目前最大持倉之一。他說這不是投資建議。",
+      "ko_summary": "근황 답글. $LITE 주문이 2029년까지 찼고, 저자는 시장이 $AAOI의 2027년 증산과 현재 병목의 심각성을 아직 충분히 반영하지 못했다고 본다. $AAOI는 그의 최대 보유 종목 중 하나다. 투자 조언은 아니라고 밝혔다.",
+      "tickers": ["LITE", "AAOI"],
+      "stance": "睇好",
+      "stance_by_ticker": {"LITE": "睇好", "AAOI": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "ticker_notes": {"LITE": "訂單賣到2029年", "AAOI": "作者最大持倉之一，看2027放量"}
+    },
+    "2108597170475573559": {
+      "zh_summary": "AI 贏家指數今年至今上漲 58%，接近 6 月高點；標普 500 剔除 AI 賦能公司後只漲 5%，落後 53 個百分點。半導體指數漲 78%，其中 $MU +263%、$MRVL +224%、$INTC 與 $AMD 各約 +190%。同期標普 500 漲 13%，納指 100 漲 22%。作者的結論是 AI 交易把市場其餘部分遠遠拋在後面。",
+      "ko_summary": "AI 승자 지수는 연초 이후 58% 올라 6월 고점에 가깝다. AI 수혜 기업을 뺀 S&P 500은 5%만 올라 53%포인트 뒤처졌다. 반도체 지수는 78% 올랐고 $MU +263%, $MRVL +224%, $INTC와 $AMD는 각각 약 +190%다. 같은 기간 S&P 500은 13%, 나스닥 100은 22%다. AI 거래가 나머지 시장을 크게 앞선다는 내용이다.",
+      "tickers": ["MU", "MRVL", "INTC", "AMD"],
+      "stance": "中性",
+      "stance_by_ticker": {"MU": "中性", "MRVL": "中性", "INTC": "中性", "AMD": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "ticker_notes": {}
+    },
+    "2108592097271935345": {
+      "zh_summary": "作者認為這次 AI 下跌是披著營收外衣的信用故事。OpenAI 年化收入接近 500 億美元，不是流傳的 700 億。同一天 $AVGO 與 $ORCL 在安排晶片融資。舉債資本開支要看長債，30 年期國債得標利率 5.618%。提到 $TLT。",
+      "ko_summary": "이번 AI 하락은 매출로 포장된 신용 이야기라는 주장이다. OpenAI 연환산 매출은 통용되던 700억 달러가 아니라 500억 달러에 가깝다. 같은 날 $AVGO와 $ORCL이 칩 자금 조달을 추진했다. 부채로 조달한 설비투자는 장기 금리에 연동되고, 30년 국채 낙찰 금리는 5.618%다. $TLT도 언급했다.",
+      "tickers": ["AVGO", "ORCL", "TLT"],
+      "stance": "中性",
+      "stance_by_ticker": {"AVGO": "中性", "ORCL": "中性", "TLT": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "ticker_notes": {}
+    },
+    "2108629509670863218": {
+      "zh_summary": "銀行股從 200 日線反彈的第三天，下周有業績。$JPM 守得最好，$MS 形成較高的低點，$GS 在追。這有助 $SPY 看到 779 一帶。",
+      "ko_summary": "은행주가 200일선에서 반등한 셋째 날이고 다음 주 실적이 있다. $JPM이 가장 잘 버톌고 $MS는 더 높은 저점을 만들었으며 $GS는 따라붙는 중이다. 이것이 $SPY가 779 부근을 보게 돕는다고 했다.",
+      "tickers": ["JPM", "MS", "GS", "SPY"],
+      "stance": "睇好",
+      "stance_by_ticker": {"JPM": "睇好", "MS": "睇好", "GS": "睇好", "SPY": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "ticker_notes": {"JPM": "200日線反彈守得最好", "MS": "較高低點", "GS": "落後追趕", "SPY": "銀行股帶動看779"}
+    },
+    "2108666990407925911": {
+      "zh_summary": "（@Jake__Wujastyk 轉發）$QQQ、$NDX、納指期貨的週線 MACD 本週剛剛向上交叉。過去 3 年，橫向突破同時出現 MACD 交叉時，10 週內平均漲約 12%。",
+      "ko_summary": "（@Jake__Wujastyk 리포스트）$QQQ, $NDX, 나스닥 선물의 주봉 MACD가 이번 주 막 상향 교차했다. 과거 3년 동안 횡보 돌파와 MACD 교차가 함께 나오면 10주 안에 평균 약 12% 올랐다.",
+      "tickers": ["QQQ", "NDX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"QQQ": "睇好", "NDX": "睇好"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "ticker_notes": {"QQQ": "週線MACD上叉，歷史10週平均約12%", "NDX": "與QQQ同一週線訊號"}
+    },
+    "2108910167714582857": {
+      "zh_summary": "約 2410 億美元的法國公司債收益率低於法國國債，較 2026 年初的 140 億美元增加 1621%，大約 38% 的法國高評級公司債比同年期國債更低收益率。作者歸因於市場擔心法國財政。$OR 與 $TTE 這類國際業務公司被看成比法國國債更安全，法國銀行則不然。",
+      "ko_summary": "약 2410억 달러의 프랑스 회사채 수익률이 프랑스 국채보다 낮다. 2026년 초 140억 달러에서 1621% 늘었고, 프랑스 우량 회사채의 약 38%가 비슷한 만기의 국채보다 수익률이 낮다. 프랑스 재정 우려 때문이다. $OR와 $TTE 같은 해외 매출 기업은 국채보다 안전하다는 평가를 받고, 프랑스 은행은 그렇지 않다.",
+      "tickers": ["OR", "TTE"],
+      "stance": "中性",
+      "stance_by_ticker": {"OR": "中性", "TTE": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "ticker_notes": {}
+    },
+    "2108908654816825617": {
+      "zh_summary": "（@carlquintanilla 轉發）$NVDA 相對 $AMD 的比值回到大約 2015 年 10 月的水平。作者不是說 Nvidia 弱，而是說 AMD 這段時間非常強。",
+      "ko_summary": "（@carlquintanilla 리포스트）$NVDA의 $AMD 대비 비율이 대략 2015년 10월 수준으로 돌아왔다. Nvidia가 약하다는 뜻이 아니라, 그동안 AMD가 매우 강했다는 뜻이다.",
+      "tickers": ["NVDA", "AMD"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "AMD": "睇好"},
+      "horizon": "中線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "ticker_notes": {"AMD": "相對NVDA強到回到2015年比值"}
+    },
+    "2108596089603375372": {
+      "zh_summary": "$SPY 在 1 小時樞軸之上探頭。半導體今天最弱，所以 $QQQ 與 $SOXL 落後。",
+      "ko_summary": "$SPY가 1시간 피벗 위로 고개를 내밀었다. 오늘 반도체가 가장 약해서 $QQQ와 $SOXL은 뒤처진다.",
+      "tickers": ["SPY", "QQQ", "SOXL"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "QQQ": "睇淡", "SOXL": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "ticker_notes": {"QQQ": "半導體弱所以落後", "SOXL": "半導體弱所以落後"}
+    },
+    "2108905395725230574": {
+      "zh_summary": "$SPY 與 $QQQ 在測試上方壓力，$IWM 在測試下方支持。沒有給出方向性交易。",
+      "ko_summary": "$SPY와 $QQQ는 위쪽 저항을, $IWM은 아래쪽 지지를 시험 중이다. 방향성 매매 결론은 없다.",
+      "tickers": ["SPY", "QQQ", "IWM"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "QQQ": "中性", "IWM": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "ticker_notes": {}
+    },
+    "2108580749385642116": {
+      "zh_summary": "大型電信公司 7 月曾表示實體上基本上做不到。貼文配上 @elonmusk 的回應，並標了 $T、$VZ、$TMUS 與 $SPCX。沒有明確叫人買或賣。",
+      "ko_summary": "대형 통신사들이 7월에 물리적으로 사실상 불가능하다고 했다는 내용이다. @elonmusk의 반응과 함께 $T, $VZ, $TMUS, $SPCX를 달았다. 매수나 매도 결론은 없다.",
+      "tickers": ["T", "VZ", "TMUS", "SPCX"],
+      "stance": null,
+      "stance_by_ticker": {"T": "未表態", "VZ": "未表態", "TMUS": "未表態", "SPCX": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "ticker_notes": {}
+    }
+  }
+}

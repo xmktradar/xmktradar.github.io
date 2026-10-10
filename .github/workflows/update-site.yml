@@ -1,5 +1,5 @@
 name: Update site
-# Every 4 hours (HKT 00:05, 04:05, 08:05 ...): fetch new posts, analyse them with Grok,
+# Every 4 hours (HKT 00:05, 04:05, 08:05 ...): fetch new posts, apply SuperGrok summaries,
 # refresh prices, consensus history and share image, check the page, then publish.
 # Steps are described in automation/README.md.
 on:
@@ -8,7 +8,7 @@ on:
     - cron: '5 */4 * * *'
   push:
     branches: [main]
-    paths: ['tools/**', '.github/workflows/update-site.yml']
+    paths: ['tools/**', '.github/workflows/update-site.yml', 'data/super-grok-analysis.json']
 permissions:
   contents: write
 concurrency:
@@ -69,5 +69,5 @@ jobs:
           git add index.html zh/ en/ ko/ data/ og/ sitemap.xml
           git diff --cached --quiet && exit 0
           git commit -m "定時重建 $(date '+%Y-%m-%d %H:%M') HKT"
-          git pull --rebase origin main || { git rebase --abort; echo "::error::main 喺更新期間有新改動，今次唔發佈，下次再試"; exit 1; }
+          git pull --rebase origin main || { git rebase --abort; echo "::error::main 嘋更新期間有新改動，今次唔發佈，下次再試"; exit 1; }
           git push origin HEAD:main
