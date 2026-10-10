@@ -1,696 +1,82 @@
 {
  "note": "Numbers computed by the page. SuperGrok write-ups must use these numbers.",
- "generated_hkt": "2026-10-11 01:31",
- "today": "2026-10-10",
+ "generated_hkt": "2026-10-11 01:41",
+ "today": "2026-10-11",
  "daily": {
-  "from": "2026-10-10",
-  "to": "2026-10-10",
-  "posts": 886,
-  "accounts": 242,
-  "originals": 751,
-  "reposts": 135,
-  "bull_views": 67,
-  "bear_views": 15,
-  "clear_accounts": 33,
-  "bull": [
-   {
-    "t": "PLTR",
-    "nb": 4,
-    "nr": 0,
-    "n_posts": 10,
-    "rows": [
-     {
-      "acc": "amitisinvesting",
-      "s": "bull",
-      "why": "回覆 @supothanan：作者貼出自己關於 $PLTR 的舊帖，寫明為何投入 2.5 萬美元，現在是 3 萬美元，並稱自己做大量研究。這是在說明他持有並看好。",
-      "url": "https://x.com/amitisinvesting/status/2108747715001676266",
-      "ms": 1791599608000
-     },
-     {
-      "acc": "IBDinvestors",
-      "s": "bull",
-      "why": "作者介紹一種非常規的加倉入場法，用來在微軟（MSFT）與 Palantir（PLTR）突破之後繼續加倉。這是技術面的做法，沒有給出目標價或時間。",
-      "url": "https://x.com/IBDinvestors/status/2108679015305277683",
-      "ms": 1791583229000
-     },
-     {
-      "acc": "PLTRs_Palantir",
-      "s": "bull",
-      "why": "作者以激烈措辭稱空頭被徹底打敗，並標了 $PLTR。沒有價位或理由。",
-      "url": "https://x.com/PLTRs_Palantir/status/2108643354850345437",
-      "ms": 1791574727000
-     },
-     {
-      "acc": "supothanan",
-      "s": "bull",
-      "why": "回覆 @amitisinvesting：作者高喊加油，並問對方第一則關於 $PLTR 的帖文是什麼。語氣偏多，但沒有新理由。",
-      "url": "https://x.com/supothanan/status/2108623432980300162",
-      "ms": 1791569977000
-     },
-     {
-      "acc": "StockSavvyShay",
-      "s": "neu",
-      "why": "作者稱 $PLTR 收盤市值剛站上 5000 億美元。只報價位，沒有方向。",
-      "url": "https://x.com/StockSavvyShay/status/2108672419095613583",
-      "ms": 1791581656000
-     },
-     {
-      "acc": "NickSchmidt",
-      "s": "none",
-      "why": "作者用對話自嘲：三週前因為預期 $PLTR 突破歷史高位而買入，卻在突破前一天賣出。這是玩笑，沒有新的方向。",
-      "url": "https://x.com/NickSchmidt/status/2108649510511718659",
-      "ms": 1791576194000
-     }
-    ]
-   },
-   {
-    "t": "LITE",
-    "nb": 2,
-    "nr": 0,
-    "n_posts": 6,
-    "rows": [
-     {
-      "acc": "KawzInvests",
-      "s": "bull",
-      "why": "作者稱客戶已在鎖定 2030 年的供應，因此 $LITE 對定價有很大話語權，並認為市場低估了 2027 年利潤率的擴張幅度。所引內容稱執行長表示人工智能光學元件產能基本售罄至 2029 年初，部分產品到 2027 年約七成需求仍無法滿足。",
-      "url": "https://x.com/KawzInvests/status/2108933141624758781",
-      "ms": 1791643817000
-     },
-     {
-      "acc": "TrendSpider",
-      "s": "bull",
-      "why": "作者建議把 $LITE 放進下週觀察名單，理由是產能售罄至 2029 年，而且週一有 OCP 峰會。",
-      "url": "https://x.com/TrendSpider/status/2108657502678094203",
-      "ms": 1791578100000
-     },
-     {
-      "acc": "aleabitoreddit",
-      "s": "neu",
-      "why": "回覆 @StanleyShih8：作者認為自己 2025 年的 $AXTI 論點幾乎被驗證，包括磷化銦基板瓶頸、可能牽制超大規模雲端建設，以及與 $LITE、$COHR 的供應合作。公司稱到 2027 年底磷化銦收入產能可達每季 1.3 億美元，年化約 5.2 億美元。他認為若提價幅度接近 $SNDK 的 NAND，估",
-      "url": "https://x.com/aleabitoreddit/status/2108916977616179207",
-      "ms": 1791639963000
-     }
-    ]
-   },
-   {
-    "t": "AMD",
-    "nb": 2,
-    "nr": 0,
-    "n_posts": 5,
-    "rows": [
-     {
-      "acc": "StockSavvyShay",
-      "s": "bull",
-      "why": "作者稱人工智能代幣價格自 5 月以來下跌超過 50%，降至每百萬代幣 1 美元以下，但主因是用量轉向更便宜的模型，而非全面降價。開源模型約佔頭部流量 60%，價格約 0.83 美元，付費模型平均 6.03 美元，$GOOGL、OpenAI 與 Anthropic 在高端競爭。他認為平均價格下跌不一定意味 $NVDA、$",
-      "url": "https://x.com/StockSavvyShay/status/2108923989531713568",
-      "ms": 1791641635000
-     },
-     {
-      "acc": "carlquintanilla",
-      "s": "bull",
-      "why": "（@carlquintanilla 轉發）$NVDA 相對 $AMD 的比值回到大約 2015 年 10 月的水平。作者不是說 Nvidia 弱，而是說 AMD 這段時間非常強。",
-      "url": "https://x.com/Mr_Derivatives/status/2108908654816825617",
-      "ms": 1791637979000
-     },
-     {
-      "acc": "KobeissiLetter",
-      "s": "neu",
-      "why": "AI 贏家指數今年至今上漲 58%，接近 6 月高點；標普 500 剔除 AI 賦能公司後只漲 5%，落後 53 個百分點。半導體指數漲 78%，其中 $MU +263%、$MRVL +224%、$INTC 與 $AMD 各約 +190%。同期標普 500 漲 13%，納指 100 漲 22%。作者的結論是 AI 交易",
-      "url": "https://x.com/KobeissiLetter/status/2108597170475573559",
-      "ms": 1791563715000
-     },
-     {
-      "acc": "MELANIATRUMP",
-      "s": "none",
-      "why": "作者宣布 AMD 董事長兼首席執行官蘇姿丰獲頒國家科學獎章，稱這是美國科學成就的最高榮譽之一。稱她拓展高性能計算的邊界，並推進驅動超級智能的技術。這是榮譽消息，沒有對股價表態。",
-      "url": "https://x.com/MELANIATRUMP/status/2108652720458473804",
-      "ms": 1791576960000
-     }
-    ]
-   },
-   {
-    "t": "AAPL",
-    "nb": 2,
-    "nr": 0,
-    "n_posts": 2,
-    "rows": [
-     {
-      "acc": "munster_gene",
-      "s": "bull",
-      "why": "作者稱 iPhone 週期已進入三週，Pro 與 Pro Max 的交貨時間近期下降，但他仍認為週期起步穩健，接下來看下週五 Duo 預購。標的是 $AAPL。",
-      "url": "https://x.com/munster_gene/status/2108646685094388164",
-      "ms": 1791575521000
-     },
-     {
-      "acc": "film_girl",
-      "s": "bull",
-      "why": "作者也這麼認為，並說 iPhone 17 系列異常強勁，並非每年都如此。他認為 Duo 幾乎一定會接住每年換機的買家，以及大眾先觀望的需求。引用稱有報導指蘋果因需求下調 iPhone 18 Pro 的生產量，因為假期買家想先看過 Duo 再決定買哪一款。",
-      "url": "https://x.com/film_girl/status/2108613843891245448",
-      "ms": 1791567691000
-     }
-    ]
-   },
-   {
-    "t": "TE",
-    "nb": 2,
-    "nr": 0,
-    "n_posts": 2,
-    "rows": [
-     {
-      "acc": "StockSavvyShay",
-      "s": "bull",
-      "why": "回覆 @VanquishTrader：作者覺得一旦利率局勢受控，$TE 可能是那種很快起飛的股票。",
-      "url": "https://x.com/StockSavvyShay/status/2108590091467940303",
-      "ms": 1791562028000
-     },
-     {
-      "acc": "VanquishTrader",
-      "s": "bull",
-      "why": "作者解釋為什麼 $TE 可能成為下一個人工智能電力多倍股。他認為市場仍把它定價成虧損的太陽能製造商，真正論點是 G2 Austin 上線後，公司變成更垂直整合的美國電力基建供應商。G1 Dallas 已顯示模式可擴張，第二季收入近乎翻倍至約 2.5 億美元，毛利率改善至接近 20%。管理層認為首期 2.1 吉瓦最終可支",
-      "url": "https://x.com/VanquishTrader/status/2108589533218603149",
-      "ms": 1791561895000
-     }
-    ]
-   }
-  ],
+  "from": "2026-10-11",
+  "to": "2026-10-11",
+  "posts": 51,
+  "accounts": 34,
+  "originals": 49,
+  "reposts": 2,
+  "bull_views": 4,
+  "bear_views": 1,
+  "clear_accounts": 3,
+  "bull": [],
   "bear": [],
-  "split": [
-   {
-    "t": "QQQ",
-    "nb": 2,
-    "nr": 1,
-    "n_posts": 6,
-    "rows": [
-     {
-      "acc": "Jake__Wujastyk",
-      "s": "bull",
-      "why": "（@Jake__Wujastyk 轉發）$QQQ、$NDX、納指期貨的週線 MACD 本週剛剛向上交叉。過去 3 年，橫向突破同時出現 MACD 交叉時，10 週內平均漲約 12%。",
-      "url": "https://x.com/Jake__Wujastyk/status/2108666990407925911",
-      "ms": 1791580362000
-     },
-     {
-      "acc": "AlmanacTrader",
-      "s": "bull",
-      "why": "作者在 @FoxBusiness 節目說，10 月恐懼是真的，但 10 月是中期選舉年最好的月份。他歡迎人工智能超級繁榮，並提出納指目標 74000。",
-      "url": "https://x.com/AlmanacTrader/status/2108614949152997778",
-      "ms": 1791567954000
-     },
-     {
-      "acc": "ripster47",
-      "s": "bear",
-      "why": "$SPY 在 1 小時樞軸之上探頭。半導體今天最弱，所以 $QQQ 與 $SOXL 落後。",
-      "url": "https://x.com/ripster47/status/2108596089603375372",
-      "ms": 1791563458000
-     },
-     {
-      "acc": "TrendSpider",
-      "s": "neu",
-      "why": "$SPY 與 $QQQ 在測試上方壓力，$IWM 在測試下方支持。沒有給出方向性交易。",
-      "url": "https://x.com/TrendSpider/status/2108905395725230574",
-      "ms": 1791637202000
-     },
-     {
-      "acc": "OrderbookTech",
-      "s": "none",
-      "why": "回覆 @Jake__Wujastyk：作者嘲諷對方的技術分析是事後諸葛，並叫對方帶著 $QQQ 離開，沒有提出自己的市場方向。",
-      "url": "https://x.com/OrderbookTech/status/2108736705926734022",
-      "ms": 1791596983000
-     },
-     {
-      "acc": "alphatrends",
-      "s": "none",
-      "why": "（@alphatrends 轉發）這是截至 2026 年 10 月 9 日當週的股市分析標題，標出 $SPY、$QQQ、$IWM、$SMH、$XBI、$MU、$NVDA、$XLF、$TLT、比特幣、$ALAB、$NKE 與 $MAGS。正文沒有方向。",
-      "url": "https://x.com/alphatrends/status/2108657865707970706",
-      "ms": 1791578186000
-     }
-    ]
-   },
-   {
-    "t": "ORCL",
-    "nb": 2,
-    "nr": 1,
-    "n_posts": 5,
-    "rows": [
-     {
-      "acc": "ChillBanking",
-      "s": "bull",
-      "why": "回覆 @ripster47：作者稱今早 TD Cowen 關於 $ORCL 的報告非常好。",
-      "url": "https://x.com/ChillBanking/status/2108609576564093296",
-      "ms": 1791566673000
-     },
-     {
-      "acc": "ripster47",
-      "s": "bull",
-      "why": "作者談 $ORCL 最近的波段交易，稱昨日因 OpenAI 的負面傳聞止損，但會尋找機會重新建倉。完整持倉在 @tenet_research。",
-      "url": "https://x.com/ripster47/status/2108604748160962577",
-      "ms": 1791565522000
-     },
-     {
-      "acc": "Schuldensuehner",
-      "s": "bear",
-      "why": "作者稱人工智能熱潮正在變成債務熱潮，信用市場開始緊張。甲骨文五年期信用違約掉期接近紀錄的261個基點，隱含違約率20.4%，SpaceX為16.5%，即使英偉達也超過7%。今年人工智能相關借款人已發行近5000億美元債務，他質問有多少未來的人工智能收入已被提前花掉。",
-      "url": "https://x.com/Schuldensuehner/status/2108710790018568561",
-      "ms": 1791590804000
-     },
-     {
-      "acc": "stocks_zsd",
-      "s": "neu",
-      "why": "回覆 @ripster47：作者說從 134.50 這個價位進場，做了五個來回，說明的是盤面而不是盈虧。$ORCL 在 135 至 145 之間來回，這是均值回歸而不是趨勢追蹤。在放量突破 145 之前，只是在賺價差。他在看 163 的 200 日均線。",
-      "url": "https://x.com/stocks_zsd/status/2108606282018312446",
-      "ms": 1791565888000
-     },
-     {
-      "acc": "leadlagreport",
-      "s": "neu",
-      "why": "作者認為這次 AI 下跌是披著營收外衣的信用故事。OpenAI 年化收入接近 500 億美元，不是流傳的 700 億。同一天 $AVGO 與 $ORCL 在安排晶片融資。舉債資本開支要看長債，30 年期國債得標利率 5.618%。提到 $TLT。",
-      "url": "https://x.com/leadlagreport/status/2108592097271935345",
-      "ms": 1791562506000
-     }
-    ]
-   },
-   {
-    "t": "SPCX",
-    "nb": 1,
-    "nr": 1,
-    "n_posts": 29,
-    "rows": [
-     {
-      "acc": "wintonARK",
-      "s": "bull",
-      "why": "作者以垂直整合說明 SpaceXsi（$SPCX）的算力業務。內部會用到算力，且資產負債表強，因此基礎設施即服務可以簽更進取的合約，相對只靠出租市場收回資本開支的業者取得很高溢價。引文還提到與 $NVDA 的合作，以及需求不足時可把供給轉回內部使用。",
-      "url": "https://x.com/wintonARK/status/2108603983455768615",
-      "ms": 1791565340000
-     },
-     {
-      "acc": "Schuldensuehner",
-      "s": "bear",
-      "why": "作者稱人工智能熱潮正在變成債務熱潮，信用市場開始緊張。甲骨文五年期信用違約掉期接近紀錄的261個基點，隱含違約率20.4%，SpaceX為16.5%，即使英偉達也超過7%。今年人工智能相關借款人已發行近5000億美元債務，他質問有多少未來的人工智能收入已被提前花掉。",
-      "url": "https://x.com/Schuldensuehner/status/2108710790018568561",
-      "ms": 1791590804000
-     },
-     {
-      "acc": "elonmusk",
-      "s": "neu",
-      "why": "（@Rothmus 轉發）作者稱安巴尼主導印度互聯網政策。Starlink 去年已拿到電信牌照與太空批准，政府仍不讓它賣出任何一個訂閱。Jio 此前大力遊說強制拍賣以拖慢外來者。經過 4 年文書作業，馬斯克質問安巴尼是否才是印度真正的老闆。官方稱程序公平、不允許壟斷，但作者認為全球最大電信仍擋住唯一能覆蓋其基站到不了的",
-      "url": "https://x.com/Rothmus/status/2108929414608097425",
-      "ms": 1791642929000
-     },
-     {
-      "acc": "StockSavvyShay",
-      "s": "neu",
-      "why": "作者轉述高盛估計，短期人工智能算力在 $SPCX、$NBIS 與 $CRWV 約為每年每吉瓦 400 億至 500 億美元，接近長期價格的兩倍，也約為有電數據中心空殼的 20 倍。他指出 Nebius 一併拿到現貨與合約價格，而 $IREN 鎖定較長期收入，每個吉瓦的回報可因合約而差很多。沒有明確叫買或叫賣。",
-      "url": "https://x.com/StockSavvyShay/status/2108913993309979073",
-      "ms": 1791639252000
-     },
-     {
-      "acc": "beffjezos",
-      "s": "neu",
-      "why": "作者問 SpaceX 的可服務市場有多大，並引出 @elonmusk 回覆 @SPCX100T 的話：超過 1000 兆美元現在看來已落入可能結果，而他以前認為不是；這個概率對時間的二階導數升得很快，儘管起點仍然很小。作者是在轉述，沒有另外寫出自己的買賣結論。",
-      "url": "https://x.com/beffjezos/status/2108732193204019217",
-      "ms": 1791595907000
-     },
-     {
-      "acc": "pitdesi",
-      "s": "neu",
-      "why": "作者稱印度已有全球最快且最便宜的網絡之一，每月4美元可得60GB高速流量。他希望印度向Starlink發牌，但質疑有多少人願意支付每月27美元，並指最有用的農村地區也最負擔不起。",
-      "url": "https://x.com/pitdesi/status/2108710322559504604",
-      "ms": 1791590693000
-     },
-     {
-      "acc": "SawyerMerritt",
-      "s": "neu",
-      "why": "作者轉述T-Mobile技術長對SpaceX收購全美低頻譜、以便把Starlink做成美國主要移動運營商的看法。技術長稱擁有頻譜與提供良好體驗是兩回事：Grain交易約14MHz，收購後Starlink Mobile大約只有80MHz，其中部分只做上行，而T-Mobile近400MHz。他還說行業已走向更寬的5G信道，",
-      "url": "https://x.com/SawyerMerritt/status/2108700274764198048",
-      "ms": 1791588297000
-     },
-     {
-      "acc": "InvestorsLive",
-      "s": "neu",
-      "why": "作者說 $SPCX 沒有給到他 158 美元，交易計畫在 @IUTraders。沒有說明之後看多或看空。",
-      "url": "https://x.com/InvestorsLive/status/2108650610920988770",
-      "ms": 1791576457000
-     },
-     {
-      "acc": "TrendSpider",
-      "s": "neu",
-      "why": "作者對 $T 寫「停止拋售」，並附成交量節奏曲線。所引內容稱 Starlink 正在爭奪手機方案，盤後 $SPCX 上升、$T 下跌。口號方向不明，沒有明確叫買或叫賣。",
-      "url": "https://x.com/TrendSpider/status/2108645575163887616",
-      "ms": 1791575256000
-     },
-     {
-      "acc": "michaelsikand",
-      "s": "neu",
-      "why": "作者認為 $ASTS 的拋售不理性。若 $SPCX 真的打算直接競爭移動網絡運營商市場，$ASTS 對運營商策略會更重要，從「不錯的合作」變成每家全球運營商的營運必需。",
-      "url": "https://x.com/michaelsikand/status/2108592720998781380",
-      "ms": 1791562655000
-     },
-     {
-      "acc": "TThompson",
-      "s": "none",
-      "why": "作者認為所有國際航班都應該強制配備星鏈，並說自己需要網絡看盤。提到 $SPCX，沒有表態。",
-      "url": "https://x.com/TThompson/status/2108760139478307099",
-      "ms": 1791602570000
-     },
-     {
-      "acc": "finallybye",
-      "s": "none",
-      "why": "回覆 @wholemars：作者問為何印度消費者不能在現有供應商之外選擇Starlink，並認為更多競爭值得一場公平討論。",
-      "url": "https://x.com/finallybye/status/2108706599556554860",
-      "ms": 1791589805000
-     },
-     {
-      "acc": "DirtyTesLa",
-      "s": "none",
-      "why": "回覆 @SawyerMerritt：作者在提到SpaceX時說，他們正在大舉恐慌。",
-      "url": "https://x.com/DirtyTesLa/status/2108700639559565649",
-      "ms": 1791588384000
-     }
-    ]
-   },
-   {
-    "t": "SPY",
-    "nb": 1,
-    "nr": 1,
-    "n_posts": 17,
-    "rows": [
-     {
-      "acc": "Jake__Wujastyk",
-      "s": "bull",
-      "why": "作者說回覆裡機器人與小號很多時，市場就準備走出巨大行情。他稱這與兩週前那個週三他寫「$SPY 週一直線拉升」的帖文時點吻合。",
-      "url": "https://x.com/Jake__Wujastyk/status/2108937844119261510",
-      "ms": 1791644938000
-     },
-     {
-      "acc": "steve_hanke",
-      "s": "bear",
-      "why": "作者警告，歷史上最昂貴的股市即將遇上數十年來最高的債券收益率，並轉發標普500指數股息率跌至歷史最低的圖表。",
-      "url": "https://x.com/steve_hanke/status/2108682668602970358",
-      "ms": 1791584100000
-     },
-     {
-      "acc": "leadlagreport",
-      "s": "neu",
-      "why": "作者稱密歇根現況指數降至 44.7，為紀錄最低，而標普上週五收在歷史高位附近。他認為這不是脫節，油價與借貸成本壓住底層，資產價格則回饋頂層。12 月若加息，會落在已經在付代價的那一半人身上。帖文標了 $SPY 與 $XRT，沒有明確叫買或叫賣。",
-      "url": "https://x.com/leadlagreport/status/2108920510608281745",
-      "ms": 1791640806000
-     },
-     {
-      "acc": "RyanDetrick",
-      "s": "neu",
-      "why": "他說今年很多人困惑，收益率上升時股市為何還能大漲。他指出 @sonusvarghese 全年都在說收益率與股價會一起走高，並連結一篇解釋標普 500（$SPY）在利率上升時仍創新高的文章。",
-      "url": "https://x.com/RyanDetrick/status/2108908055500919278",
-      "ms": 1791637836000
-     },
-     {
-      "acc": "TrendSpider",
-      "s": "neu",
-      "why": "$SPY 與 $QQQ 在測試上方壓力，$IWM 在測試下方支持。沒有給出方向性交易。",
-      "url": "https://x.com/TrendSpider/status/2108905395725230574",
-      "ms": 1791637202000
-     },
-     {
-      "acc": "jam_croissant",
-      "s": "neu",
-      "why": "（@jam_croissant 轉發）貼文轉述Cem Karsan的看法：標普500指數表面像單一市場，底下卻是分裂的。按他的計算，約58%的成分股跌幅超過20%，過去三個月約45%的股票貝塔為負。只看指數就會錯過這層分裂。",
-      "url": "https://x.com/tastyliveshow/status/2108725450667151495",
-      "ms": 1791594300000
-     },
-     {
-      "acc": "ripster47",
-      "s": "neu",
-      "why": "$SPY 在 1 小時樞軸之上探頭。半導體今天最弱，所以 $QQQ 與 $SOXL 落後。",
-      "url": "https://x.com/ripster47/status/2108596089603375372",
-      "ms": 1791563458000
-     },
-     {
-      "acc": "chamath",
-      "s": "none",
-      "why": "作者以眼睛表情轉發一則比較：2026年網絡安全類股票的表現約為標普500指數的4倍。",
-      "url": "https://x.com/chamath/status/2108712320574877867",
-      "ms": 1791591169000
-     },
-     {
-      "acc": "CDOPTIONTRADING",
-      "s": "none",
-      "why": "回覆 @alphatrends，表示會讓週線收盤自己說明問題。作者觀察 SPY 能否守住該週收盤作為支持，認為這比板塊清單更能提供資訊。尚未判斷會守住還是跌破。",
-      "url": "https://x.com/CDOPTIONTRADING/status/2108663870453600647",
-      "ms": 1791579618000
-     },
-     {
-      "acc": "RedDogT3",
-      "s": "none",
-      "why": "作者只寫 $SPY 收盤後，沒有說明方向或價位。",
-      "url": "https://x.com/RedDogT3/status/2108661700924948730",
-      "ms": 1791579101000
-     },
-     {
-      "acc": "alphatrends",
-      "s": "none",
-      "why": "（@alphatrends 轉發）這是截至 2026 年 10 月 9 日當週的股市分析標題，標出 $SPY、$QQQ、$IWM、$SMH、$XBI、$MU、$NVDA、$XLF、$TLT、比特幣、$ALAB、$NKE 與 $MAGS。正文沒有方向。",
-      "url": "https://x.com/alphatrends/status/2108657865707970706",
-      "ms": 1791578186000
-     }
-    ]
-   },
-   {
-    "t": "NVDA",
-    "nb": 1,
-    "nr": 1,
-    "n_posts": 8,
-    "rows": [
-     {
-      "acc": "StockSavvyShay",
-      "s": "bull",
-      "why": "作者稱 $AMZN、$GOOGL、$MSFT 與 $META 約佔人工智能算力需求的 60%，但四家都在自研晶片，使其餘 40% 對 $NVDA 更有價值。企業已是最大單一板塊，佔 20%，主權人工智能再添 10%，推論移近客戶數據，為 $DELL、$HPE 與 $SMCI 帶來成長機會。",
-      "url": "https://x.com/StockSavvyShay/status/2108936116040568907",
-      "ms": 1791644526000
-     },
-     {
-      "acc": "Schuldensuehner",
-      "s": "bear",
-      "why": "作者稱人工智能熱潮正在變成債務熱潮，信用市場開始緊張。甲骨文五年期信用違約掉期接近紀錄的261個基點，隱含違約率20.4%，SpaceX為16.5%，即使英偉達也超過7%。今年人工智能相關借款人已發行近5000億美元債務，他質問有多少未來的人工智能收入已被提前花掉。",
-      "url": "https://x.com/Schuldensuehner/status/2108710790018568561",
-      "ms": 1791590804000
-     },
-     {
-      "acc": "carlquintanilla",
-      "s": "neu",
-      "why": "（@carlquintanilla 轉發）$NVDA 相對 $AMD 的比值回到大約 2015 年 10 月的水平。作者不是說 Nvidia 弱，而是說 AMD 這段時間非常強。",
-      "url": "https://x.com/Mr_Derivatives/status/2108908654816825617",
-      "ms": 1791637979000
-     },
-     {
-      "acc": "garyblack00",
-      "s": "neu",
-      "why": "回覆 @rdshipway：作者稱聰明錢並不那樣看。已有 6 家以上車廠加上 $NVDA 解決無人監督自動駕駛後，網約車會像現在的 Uber X 與 Uber Black 一樣一併提供有人與無人選項。他質疑 $TSLA 多頭為何不承認這項能力會變成商品，並認為 Uber 與 Lyft 仍會在各產品線提供兩種選擇。",
-      "url": "https://x.com/garyblack00/status/2108848759706701833",
-      "ms": 1791623699000
-     },
-     {
-      "acc": "alphatrends",
-      "s": "none",
-      "why": "（@alphatrends 轉發）這是截至 2026 年 10 月 9 日當週的股市分析標題，標出 $SPY、$QQQ、$IWM、$SMH、$XBI、$MU、$NVDA、$XLF、$TLT、比特幣、$ALAB、$NKE 與 $MAGS。正文沒有方向。",
-      "url": "https://x.com/alphatrends/status/2108657865707970706",
-      "ms": 1791578186000
-     },
-     {
-      "acc": "wintonARK",
-      "s": "none",
-      "why": "作者以垂直整合說明 SpaceXsi（$SPCX）的算力業務。內部會用到算力，且資產負債表強，因此基礎設施即服務可以簽更進取的合約，相對只靠出租市場收回資本開支的業者取得很高溢價。引文還提到與 $NVDA 的合作，以及需求不足時可把供給轉回內部使用。",
-      "url": "https://x.com/wintonARK/status/2108603983455768615",
-      "ms": 1791565340000
-     }
-    ]
-   }
-  ],
+  "split": [],
   "top": [
    {
-    "t": "SPCX",
-    "mentions": 29,
-    "accounts": 13,
-    "bull": 6,
-    "bear": 1
-   },
-   {
-    "t": "SPY",
-    "mentions": 17,
-    "accounts": 11,
-    "bull": 4,
-    "bear": 1
-   },
-   {
-    "t": "TSLA",
-    "mentions": 16,
-    "accounts": 7,
-    "bull": 1,
-    "bear": 3
-   },
-   {
-    "t": "PLTR",
-    "mentions": 10,
-    "accounts": 6,
-    "bull": 6,
-    "bear": 0
-   },
-   {
-    "t": "NVDA",
-    "mentions": 8,
-    "accounts": 6,
-    "bull": 2,
-    "bear": 1
-   },
-   {
-    "t": "QQQ",
-    "mentions": 6,
-    "accounts": 6,
-    "bull": 2,
-    "bear": 1
-   },
-   {
-    "t": "ORCL",
-    "mentions": 5,
-    "accounts": 5,
-    "bull": 2,
-    "bear": 1
-   },
-   {
-    "t": "AMD",
-    "mentions": 5,
-    "accounts": 4,
-    "bull": 2,
-    "bear": 0
-   },
-   {
-    "t": "UBER",
-    "mentions": 5,
-    "accounts": 4,
-    "bull": 0,
-    "bear": 1
-   },
-   {
-    "t": "MU",
-    "mentions": 4,
-    "accounts": 4,
+    "t": "AAPL",
+    "mentions": 1,
+    "accounts": 1,
     "bull": 1,
     "bear": 0
    },
    {
-    "t": "ASTS",
-    "mentions": 6,
-    "accounts": 3,
-    "bull": 2,
+    "t": "HIMS",
+    "mentions": 1,
+    "accounts": 1,
+    "bull": 1,
     "bear": 0
    },
    {
-    "t": "LITE",
-    "mentions": 6,
-    "accounts": 3,
-    "bull": 3,
-    "bear": 0
-   },
-   {
-    "t": "MSFT",
-    "mentions": 4,
-    "accounts": 3,
+    "t": "LINC",
+    "mentions": 1,
+    "accounts": 1,
     "bull": 1,
     "bear": 0
    },
    {
     "t": "TLT",
-    "mentions": 4,
-    "accounts": 3,
+    "mentions": 1,
+    "accounts": 1,
     "bull": 0,
     "bear": 0
    },
    {
-    "t": "AVGO",
-    "mentions": 3,
-    "accounts": 3,
-    "bull": 1,
-    "bear": 0
-   },
-   {
-    "t": "BTC",
-    "mentions": 3,
-    "accounts": 3,
+    "t": "TSLA",
+    "mentions": 1,
+    "accounts": 1,
     "bull": 0,
     "bear": 1
    },
    {
-    "t": "DELL",
-    "mentions": 3,
-    "accounts": 3,
+    "t": "USO",
+    "mentions": 1,
+    "accounts": 1,
+    "bull": 0,
+    "bear": 0
+   },
+   {
+    "t": "UTI",
+    "mentions": 1,
+    "accounts": 1,
     "bull": 1,
-    "bear": 0
-   },
-   {
-    "t": "NFLX",
-    "mentions": 3,
-    "accounts": 3,
-    "bull": 1,
-    "bear": 0
-   },
-   {
-    "t": "XLF",
-    "mentions": 3,
-    "accounts": 3,
-    "bull": 0,
-    "bear": 0
-   },
-   {
-    "t": "WFF",
-    "mentions": 6,
-    "accounts": 2,
-    "bull": 1,
-    "bear": 1
-   },
-   {
-    "t": "AAOI",
-    "mentions": 5,
-    "accounts": 2,
-    "bull": 2,
-    "bear": 0
-   },
-   {
-    "t": "LUV",
-    "mentions": 5,
-    "accounts": 2,
-    "bull": 0,
-    "bear": 0
-   },
-   {
-    "t": "AMZN",
-    "mentions": 3,
-    "accounts": 2,
-    "bull": 0,
-    "bear": 0
-   },
-   {
-    "t": "LYFT",
-    "mentions": 3,
-    "accounts": 2,
-    "bull": 0,
-    "bear": 1
-   },
-   {
-    "t": "AAPL",
-    "mentions": 2,
-    "accounts": 2,
-    "bull": 2,
     "bear": 0
    }
   ]
  },
  "weekly": {
-  "from": "2026-10-04",
-  "to": "2026-10-10",
-  "posts": 3134,
-  "accounts": 308,
-  "originals": 2791,
-  "reposts": 343,
-  "bull_views": 762,
-  "bear_views": 107,
-  "clear_accounts": 76,
+  "from": "2026-10-05",
+  "to": "2026-10-11",
+  "posts": 3229,
+  "accounts": 329,
+  "originals": 2882,
+  "reposts": 347,
+  "bull_views": 766,
+  "bear_views": 108,
+  "clear_accounts": 77,
   "bull": [
    {
     "t": "MRVL",
@@ -2342,6 +1728,133 @@
     ]
    },
    {
+    "t": "AAPL",
+    "nb": 4,
+    "nr": 0,
+    "n_posts": 25,
+    "rows": [
+     {
+      "acc": "garyblack00",
+      "s": "bull",
+      "why": "巨大差異：$AAPL 因有出色產品和出色營銷而主導手機業務。$TSLA 永遠在營銷上投資不足。",
+      "url": "https://x.com/garyblack00/status/2108959897110860085",
+      "ms": 1791650196000
+     },
+     {
+      "acc": "munster_gene",
+      "s": "bull",
+      "why": "作者稱 iPhone 週期已進入三週，Pro 與 Pro Max 的交貨時間近期下降，但他仍認為週期起步穩健，接下來看下週五 Duo 預購。標的是 $AAPL。",
+      "url": "https://x.com/munster_gene/status/2108646685094388164",
+      "ms": 1791575521000
+     },
+     {
+      "acc": "film_girl",
+      "s": "bull",
+      "why": "作者也這麼認為，並說 iPhone 17 系列異常強勁，並非每年都如此。他認為 Duo 幾乎一定會接住每年換機的買家，以及大眾先觀望的需求。引用稱有報導指蘋果因需求下調 iPhone 18 Pro 的生產量，因為假期買家想先看過 Duo 再決定買哪一款。",
+      "url": "https://x.com/film_girl/status/2108613843891245448",
+      "ms": 1791567691000
+     },
+     {
+      "acc": "jimcramer",
+      "s": "bull",
+      "why": "Cramer 表示在 13 號 home 發布與 16 號 Duo 預購之前賣出 Apple，就是「永久腦袋放假」。",
+      "url": "https://x.com/jimcramer/status/2108549905702961171",
+      "ms": 1791552447000
+     },
+     {
+      "acc": "IBDinvestors",
+      "s": "neu",
+      "why": "IBD 文章：Apple、Nvidia、Meta 等巨頭強勢回歸。",
+      "url": "https://x.com/IBDinvestors/status/2108541816333119666",
+      "ms": 1791550518000
+     },
+     {
+      "acc": "carlquintanilla",
+      "s": "neu",
+      "why": "（@carlquintanilla 轉發）標普五大股 $NVDA $AAPL $GOOGL $MSFT $AMZN 市值等於最小 434 檔股票的總和，集中度史上最高。",
+      "url": "https://x.com/Barchart/status/2108478372145979506",
+      "ms": 1791535392000
+     },
+     {
+      "acc": "KobeissiLetter",
+      "s": "neu",
+      "why": "他表示分散投資越來越少：每投資 1 美元到標普 500，約 41 美分流入最大 10 檔股票；$NVDA 佔 8 美分、$AAPL 7、$MSFT 與 $GOOGL 各 6、$AMZN 4，$AVGO、$META、$TSLA、$MU、$AMD 合共 10 美分；第 11–20 大只佔 10 美分，其餘 402 間合共 ",
+      "url": "https://x.com/KobeissiLetter/status/2107519296595284450",
+      "ms": 1791306730000
+     },
+     {
+      "acc": "ripster47",
+      "s": "none",
+      "why": "（@ripster47 轉發）Tenet 10 月 9 日早盤摘要，列出 $SPX $AAPL $NVDA $META $DAL 等一大堆代號與比特幣。",
+      "url": "https://x.com/TENETTRADEGROUP/status/2108538996456632693",
+      "ms": 1791549846000
+     },
+     {
+      "acc": "StockSavvyShay",
+      "s": "none",
+      "why": "$META 打造 AI 眼鏡，主打用戶寧願親身體驗而不是透過手機觀看；他表示這讓 Meta 可以掌握鏡頭、個人情境與 AI 助理，不必依賴 $AAPL 生態。",
+      "url": "https://x.com/StockSavvyShay/status/2108536485096140885",
+      "ms": 1791549247000
+     },
+     {
+      "acc": "Jake__Wujastyk",
+      "s": "none",
+      "why": "$AAPL 圖表（只有圖，沒有文字）。",
+      "url": "https://x.com/Jake__Wujastyk/status/2108520543465160830",
+      "ms": 1791545446000
+     },
+     {
+      "acc": "firstadopter",
+      "s": "none",
+      "why": "自問自答：如果三星大減手機產量，對 Apple 是好是壞？他笑說可能是利空 Apple。",
+      "url": "https://x.com/firstadopter/status/2108498354388770872",
+      "ms": 1791540156000
+     },
+     {
+      "acc": "RyanDetrick",
+      "s": "none",
+      "why": "他表示 Steve Jobs 離世15年，問大家猜 $AAPL 之後漲了多少，答案由 @sonusvarghese 揭曉。標 $AAPL 未表態。",
+      "url": "https://x.com/RyanDetrick/status/2108401103322665146",
+      "ms": 1791516969000
+     },
+     {
+      "acc": "amitisinvesting",
+      "s": "none",
+      "why": "今日股市大事回顧：FT 指 OpenAI 9月底年化營收近$50B，低於傳聞的$70B，拖累半導體股跌約5–7%；FOMC 紀要顯示多數官員預期年底前再升息；高盛上調 $PLTR 至買入、目標$230，Barclays 目標$265；$ZETA 推出 AthenaOS；$SBUX 傳研究收購 $CMG；$AVGO 為 ",
+      "url": "https://x.com/amitisinvesting/status/2108380052958187998",
+      "ms": 1791511951000
+     },
+     {
+      "acc": "financialjuice",
+      "s": "none",
+      "why": "Microsoft 高層：搭載 Nvidia 晶片的 RTX Spark 電腦生成圖像比 Apple 最快晶片更快，下星期開始出貨。點名 Microsoft、Nvidia、Apple。",
+      "url": "https://x.com/financialjuice/status/2107893043290607916",
+      "ms": 1791395838000
+     },
+     {
+      "acc": "unusual_whales",
+      "s": "none",
+      "why": "快訊：據彭博，Apple（$AAPL）進軍智慧家居，與 LG 電子合作推出門鈴、恆溫器等配件，10 月 13 日發布。沒有表示看好或看淡。",
+      "url": "https://x.com/unusual_whales/status/2107619702310879702",
+      "ms": 1791330669000
+     },
+     {
+      "acc": "StockMKTNewz",
+      "s": "none",
+      "why": "快訊：轉述 Dan Ives 表示 2027 年前五大科技布局為 $NVDA、$MSFT、$PLTR、$AAPL、$CRWD；並提及市場低估未來數年約 4 兆開支浪潮。快訊轉述，沒有自身立場。",
+      "url": "https://x.com/StockMKTNewz/status/2107590835994804475",
+      "ms": 1791323787000
+     },
+     {
+      "acc": "DeItaone",
+      "s": "none",
+      "why": "快訊：瑞銀維持 $AAPL「中性」評級與 $296 目標價。9 月 App Store 營收年增長改善至 5%，但 9 月季度只增 2%，連續兩季低個位數；美國營收年減約 7%，其他地區上升約 7%。單一來源。",
+      "url": "https://x.com/DeItaone/status/2107457824838066267",
+      "ms": 1791292074000
+     }
+    ]
+   },
+   {
     "t": "WOLF",
     "nb": 4,
     "nr": 0,
@@ -2612,126 +2125,6 @@
     ]
    },
    {
-    "t": "AAPL",
-    "nb": 3,
-    "nr": 0,
-    "n_posts": 24,
-    "rows": [
-     {
-      "acc": "munster_gene",
-      "s": "bull",
-      "why": "作者稱 iPhone 週期已進入三週，Pro 與 Pro Max 的交貨時間近期下降，但他仍認為週期起步穩健，接下來看下週五 Duo 預購。標的是 $AAPL。",
-      "url": "https://x.com/munster_gene/status/2108646685094388164",
-      "ms": 1791575521000
-     },
-     {
-      "acc": "film_girl",
-      "s": "bull",
-      "why": "作者也這麼認為，並說 iPhone 17 系列異常強勁，並非每年都如此。他認為 Duo 幾乎一定會接住每年換機的買家，以及大眾先觀望的需求。引用稱有報導指蘋果因需求下調 iPhone 18 Pro 的生產量，因為假期買家想先看過 Duo 再決定買哪一款。",
-      "url": "https://x.com/film_girl/status/2108613843891245448",
-      "ms": 1791567691000
-     },
-     {
-      "acc": "jimcramer",
-      "s": "bull",
-      "why": "Cramer 表示在 13 號 home 發布與 16 號 Duo 預購之前賣出 Apple，就是「永久腦袋放假」。",
-      "url": "https://x.com/jimcramer/status/2108549905702961171",
-      "ms": 1791552447000
-     },
-     {
-      "acc": "IBDinvestors",
-      "s": "neu",
-      "why": "IBD 文章：Apple、Nvidia、Meta 等巨頭強勢回歸。",
-      "url": "https://x.com/IBDinvestors/status/2108541816333119666",
-      "ms": 1791550518000
-     },
-     {
-      "acc": "carlquintanilla",
-      "s": "neu",
-      "why": "（@carlquintanilla 轉發）標普五大股 $NVDA $AAPL $GOOGL $MSFT $AMZN 市值等於最小 434 檔股票的總和，集中度史上最高。",
-      "url": "https://x.com/Barchart/status/2108478372145979506",
-      "ms": 1791535392000
-     },
-     {
-      "acc": "KobeissiLetter",
-      "s": "neu",
-      "why": "他表示分散投資越來越少：每投資 1 美元到標普 500，約 41 美分流入最大 10 檔股票；$NVDA 佔 8 美分、$AAPL 7、$MSFT 與 $GOOGL 各 6、$AMZN 4，$AVGO、$META、$TSLA、$MU、$AMD 合共 10 美分；第 11–20 大只佔 10 美分，其餘 402 間合共 ",
-      "url": "https://x.com/KobeissiLetter/status/2107519296595284450",
-      "ms": 1791306730000
-     },
-     {
-      "acc": "ripster47",
-      "s": "none",
-      "why": "（@ripster47 轉發）Tenet 10 月 9 日早盤摘要，列出 $SPX $AAPL $NVDA $META $DAL 等一大堆代號與比特幣。",
-      "url": "https://x.com/TENETTRADEGROUP/status/2108538996456632693",
-      "ms": 1791549846000
-     },
-     {
-      "acc": "StockSavvyShay",
-      "s": "none",
-      "why": "$META 打造 AI 眼鏡，主打用戶寧願親身體驗而不是透過手機觀看；他表示這讓 Meta 可以掌握鏡頭、個人情境與 AI 助理，不必依賴 $AAPL 生態。",
-      "url": "https://x.com/StockSavvyShay/status/2108536485096140885",
-      "ms": 1791549247000
-     },
-     {
-      "acc": "Jake__Wujastyk",
-      "s": "none",
-      "why": "$AAPL 圖表（只有圖，沒有文字）。",
-      "url": "https://x.com/Jake__Wujastyk/status/2108520543465160830",
-      "ms": 1791545446000
-     },
-     {
-      "acc": "firstadopter",
-      "s": "none",
-      "why": "自問自答：如果三星大減手機產量，對 Apple 是好是壞？他笑說可能是利空 Apple。",
-      "url": "https://x.com/firstadopter/status/2108498354388770872",
-      "ms": 1791540156000
-     },
-     {
-      "acc": "RyanDetrick",
-      "s": "none",
-      "why": "他表示 Steve Jobs 離世15年，問大家猜 $AAPL 之後漲了多少，答案由 @sonusvarghese 揭曉。標 $AAPL 未表態。",
-      "url": "https://x.com/RyanDetrick/status/2108401103322665146",
-      "ms": 1791516969000
-     },
-     {
-      "acc": "amitisinvesting",
-      "s": "none",
-      "why": "今日股市大事回顧：FT 指 OpenAI 9月底年化營收近$50B，低於傳聞的$70B，拖累半導體股跌約5–7%；FOMC 紀要顯示多數官員預期年底前再升息；高盛上調 $PLTR 至買入、目標$230，Barclays 目標$265；$ZETA 推出 AthenaOS；$SBUX 傳研究收購 $CMG；$AVGO 為 ",
-      "url": "https://x.com/amitisinvesting/status/2108380052958187998",
-      "ms": 1791511951000
-     },
-     {
-      "acc": "financialjuice",
-      "s": "none",
-      "why": "Microsoft 高層：搭載 Nvidia 晶片的 RTX Spark 電腦生成圖像比 Apple 最快晶片更快，下星期開始出貨。點名 Microsoft、Nvidia、Apple。",
-      "url": "https://x.com/financialjuice/status/2107893043290607916",
-      "ms": 1791395838000
-     },
-     {
-      "acc": "unusual_whales",
-      "s": "none",
-      "why": "快訊：據彭博，Apple（$AAPL）進軍智慧家居，與 LG 電子合作推出門鈴、恆溫器等配件，10 月 13 日發布。沒有表示看好或看淡。",
-      "url": "https://x.com/unusual_whales/status/2107619702310879702",
-      "ms": 1791330669000
-     },
-     {
-      "acc": "StockMKTNewz",
-      "s": "none",
-      "why": "快訊：轉述 Dan Ives 表示 2027 年前五大科技布局為 $NVDA、$MSFT、$PLTR、$AAPL、$CRWD；並提及市場低估未來數年約 4 兆開支浪潮。快訊轉述，沒有自身立場。",
-      "url": "https://x.com/StockMKTNewz/status/2107590835994804475",
-      "ms": 1791323787000
-     },
-     {
-      "acc": "DeItaone",
-      "s": "none",
-      "why": "快訊：瑞銀維持 $AAPL「中性」評級與 $296 目標價。9 月 App Store 營收年增長改善至 5%，但 9 月季度只增 2%，連續兩季低個位數；美國營收年減約 7%，其他地區上升約 7%。單一來源。",
-      "url": "https://x.com/DeItaone/status/2107457824838066267",
-      "ms": 1791292074000
-     }
-    ]
-   },
-   {
     "t": "DRAM",
     "nb": 3,
     "nr": 0,
@@ -2914,7 +2307,7 @@
     "t": "SOFI",
     "nb": 3,
     "nr": 0,
-    "n_posts": 5,
+    "n_posts": 6,
     "rows": [
      {
       "acc": "StockSavvyShay",
@@ -2939,10 +2332,10 @@
      },
      {
       "acc": "Jake__Wujastyk",
-      "s": "neu",
-      "why": "（@Jake__Wujastyk 轉發）他表示 $SOFI 跌回8個月區間底部。標 $SOFI 中性。",
-      "url": "https://x.com/Jake__Wujastyk/status/2108321335781023960",
-      "ms": 1791497951000
+      "s": "none",
+      "why": "提到 $SOFI $HOOD $JPM $WFC。",
+      "url": "https://x.com/Jake__Wujastyk/status/2108945492092567723",
+      "ms": 1791646762000
      },
      {
       "acc": "ripster47",
@@ -3305,7 +2698,7 @@
     "t": "ASTS",
     "nb": 2,
     "nr": 0,
-    "n_posts": 14,
+    "n_posts": 15,
     "rows": [
      {
       "acc": "michaelsikand",
@@ -3324,9 +2717,9 @@
      {
       "acc": "StockSavvyShay",
       "s": "neu",
-      "why": "作者稱 $ASTS 的 BlueBird 14、15、16 已運抵卡納維拉爾角，德州產線已排到 BlueBird 50。AST 正在擴大製造與發射，把衛星寬頻直接接到普通智慧手機。這是進度更新，沒有目標價。",
-      "url": "https://x.com/StockSavvyShay/status/2108685024635781232",
-      "ms": 1791584662000
+      "why": "完整太空價值鏈。有趣看到主要太空公司在發射、製造、頻譜和服務上如何不同定位，邁向2028： $RKLB 結合火箭、衛星製造和國防與Iridium全球頻譜及255萬+現有訂戶； $SPCX 通過垂直整合網絡控制發射、衛星製造和Starlink； $ASTS 用大型陣列和運營商頻譜直接連接日常智能手機到衛星； $PL 運營",
+      "url": "https://x.com/StockSavvyShay/status/2108943057974345937",
+      "ms": 1791646181000
      },
      {
       "acc": "DeepValueBagger",
@@ -4632,7 +4025,7 @@
     "t": "SPCX",
     "nb": 5,
     "nr": 1,
-    "n_posts": 91,
+    "n_posts": 92,
     "rows": [
      {
       "acc": "wintonARK",
@@ -4677,18 +4070,18 @@
       "ms": 1791590804000
      },
      {
+      "acc": "StockSavvyShay",
+      "s": "neu",
+      "why": "完整太空價值鏈。有趣看到主要太空公司在發射、製造、頻譜和服務上如何不同定位，邁向2028： $RKLB 結合火箭、衛星製造和國防與Iridium全球頻譜及255萬+現有訂戶； $SPCX 通過垂直整合網絡控制發射、衛星製造和Starlink； $ASTS 用大型陣列和運營商頻譜直接連接日常智能手機到衛星； $PL 運營",
+      "url": "https://x.com/StockSavvyShay/status/2108943057974345937",
+      "ms": 1791646181000
+     },
+     {
       "acc": "elonmusk",
       "s": "neu",
       "why": "（@Rothmus 轉發）作者稱安巴尼主導印度互聯網政策。Starlink 去年已拿到電信牌照與太空批准，政府仍不讓它賣出任何一個訂閱。Jio 此前大力遊說強制拍賣以拖慢外來者。經過 4 年文書作業，馬斯克質問安巴尼是否才是印度真正的老闆。官方稱程序公平、不允許壟斷，但作者認為全球最大電信仍擋住唯一能覆蓋其基站到不了的",
       "url": "https://x.com/Rothmus/status/2108929414608097425",
       "ms": 1791642929000
-     },
-     {
-      "acc": "StockSavvyShay",
-      "s": "neu",
-      "why": "作者轉述高盛估計，短期人工智能算力在 $SPCX、$NBIS 與 $CRWV 約為每年每吉瓦 400 億至 500 億美元，接近長期價格的兩倍，也約為有電數據中心空殼的 20 倍。他指出 Nebius 一併拿到現貨與合約價格，而 $IREN 鎖定較長期收入，每個吉瓦的回報可因合約而差很多。沒有明確叫買或叫賣。",
-      "url": "https://x.com/StockSavvyShay/status/2108913993309979073",
-      "ms": 1791639252000
      },
      {
       "acc": "beffjezos",
@@ -5615,7 +5008,7 @@
     "t": "TSLA",
     "nb": 2,
     "nr": 1,
-    "n_posts": 43,
+    "n_posts": 44,
     "rows": [
      {
       "acc": "dannycheng2022",
@@ -5634,9 +5027,9 @@
      {
       "acc": "garyblack00",
       "s": "bear",
-      "why": "作者認為 $TSLA 多頭仍未明白，3 至 5 年內各網約車服務都會一併提供有司機與自動駕駛選項，無人監督的自動駕駛會像汽車業以往的創新一樣變成商品。他說自己並非不看重 FSD，而是認為特斯拉必須靠廣告與執行吃到先發優勢，否則可能像過去 5 年電動車那樣被中國與其他廠商搶走生意。",
-      "url": "https://x.com/garyblack00/status/2108871660031902010",
-      "ms": 1791629159000
+      "why": "巨大差異：$AAPL 因有出色產品和出色營銷而主導手機業務。$TSLA 永遠在營銷上投資不足。",
+      "url": "https://x.com/garyblack00/status/2108959897110860085",
+      "ms": 1791650196000
      },
      {
       "acc": "teslayoda",
@@ -6066,7 +5459,7 @@
    },
    {
     "t": "SPCX",
-    "mentions": 91,
+    "mentions": 92,
     "accounts": 29,
     "bull": 21,
     "bear": 1
@@ -6142,18 +5535,18 @@
     "bear": 3
    },
    {
+    "t": "AAPL",
+    "mentions": 25,
+    "accounts": 17,
+    "bull": 4,
+    "bear": 1
+   },
+   {
     "t": "NBIS",
     "mentions": 35,
     "accounts": 16,
     "bull": 27,
     "bear": 0
-   },
-   {
-    "t": "AAPL",
-    "mentions": 24,
-    "accounts": 16,
-    "bull": 3,
-    "bear": 1
    },
    {
     "t": "BTC",
@@ -6185,10 +5578,10 @@
    },
    {
     "t": "TSLA",
-    "mentions": 43,
+    "mentions": 44,
     "accounts": 14,
     "bull": 7,
-    "bear": 4
+    "bear": 5
    },
    {
     "t": "PENG",
@@ -6235,15 +5628,15 @@
   ]
  },
  "monthly": {
-  "from": "2026-09-13",
-  "to": "2026-10-10",
-  "posts": 3134,
-  "accounts": 308,
-  "originals": 2791,
-  "reposts": 343,
-  "bull_views": 762,
-  "bear_views": 107,
-  "clear_accounts": 76,
+  "from": "2026-09-14",
+  "to": "2026-10-11",
+  "posts": 3229,
+  "accounts": 329,
+  "originals": 2882,
+  "reposts": 347,
+  "bull_views": 766,
+  "bear_views": 108,
+  "clear_accounts": 77,
   "bull": [
    {
     "t": "MRVL",
@@ -7895,6 +7288,133 @@
     ]
    },
    {
+    "t": "AAPL",
+    "nb": 4,
+    "nr": 0,
+    "n_posts": 25,
+    "rows": [
+     {
+      "acc": "garyblack00",
+      "s": "bull",
+      "why": "巨大差異：$AAPL 因有出色產品和出色營銷而主導手機業務。$TSLA 永遠在營銷上投資不足。",
+      "url": "https://x.com/garyblack00/status/2108959897110860085",
+      "ms": 1791650196000
+     },
+     {
+      "acc": "munster_gene",
+      "s": "bull",
+      "why": "作者稱 iPhone 週期已進入三週，Pro 與 Pro Max 的交貨時間近期下降，但他仍認為週期起步穩健，接下來看下週五 Duo 預購。標的是 $AAPL。",
+      "url": "https://x.com/munster_gene/status/2108646685094388164",
+      "ms": 1791575521000
+     },
+     {
+      "acc": "film_girl",
+      "s": "bull",
+      "why": "作者也這麼認為，並說 iPhone 17 系列異常強勁，並非每年都如此。他認為 Duo 幾乎一定會接住每年換機的買家，以及大眾先觀望的需求。引用稱有報導指蘋果因需求下調 iPhone 18 Pro 的生產量，因為假期買家想先看過 Duo 再決定買哪一款。",
+      "url": "https://x.com/film_girl/status/2108613843891245448",
+      "ms": 1791567691000
+     },
+     {
+      "acc": "jimcramer",
+      "s": "bull",
+      "why": "Cramer 表示在 13 號 home 發布與 16 號 Duo 預購之前賣出 Apple，就是「永久腦袋放假」。",
+      "url": "https://x.com/jimcramer/status/2108549905702961171",
+      "ms": 1791552447000
+     },
+     {
+      "acc": "IBDinvestors",
+      "s": "neu",
+      "why": "IBD 文章：Apple、Nvidia、Meta 等巨頭強勢回歸。",
+      "url": "https://x.com/IBDinvestors/status/2108541816333119666",
+      "ms": 1791550518000
+     },
+     {
+      "acc": "carlquintanilla",
+      "s": "neu",
+      "why": "（@carlquintanilla 轉發）標普五大股 $NVDA $AAPL $GOOGL $MSFT $AMZN 市值等於最小 434 檔股票的總和，集中度史上最高。",
+      "url": "https://x.com/Barchart/status/2108478372145979506",
+      "ms": 1791535392000
+     },
+     {
+      "acc": "KobeissiLetter",
+      "s": "neu",
+      "why": "他表示分散投資越來越少：每投資 1 美元到標普 500，約 41 美分流入最大 10 檔股票；$NVDA 佔 8 美分、$AAPL 7、$MSFT 與 $GOOGL 各 6、$AMZN 4，$AVGO、$META、$TSLA、$MU、$AMD 合共 10 美分；第 11–20 大只佔 10 美分，其餘 402 間合共 ",
+      "url": "https://x.com/KobeissiLetter/status/2107519296595284450",
+      "ms": 1791306730000
+     },
+     {
+      "acc": "ripster47",
+      "s": "none",
+      "why": "（@ripster47 轉發）Tenet 10 月 9 日早盤摘要，列出 $SPX $AAPL $NVDA $META $DAL 等一大堆代號與比特幣。",
+      "url": "https://x.com/TENETTRADEGROUP/status/2108538996456632693",
+      "ms": 1791549846000
+     },
+     {
+      "acc": "StockSavvyShay",
+      "s": "none",
+      "why": "$META 打造 AI 眼鏡，主打用戶寧願親身體驗而不是透過手機觀看；他表示這讓 Meta 可以掌握鏡頭、個人情境與 AI 助理，不必依賴 $AAPL 生態。",
+      "url": "https://x.com/StockSavvyShay/status/2108536485096140885",
+      "ms": 1791549247000
+     },
+     {
+      "acc": "Jake__Wujastyk",
+      "s": "none",
+      "why": "$AAPL 圖表（只有圖，沒有文字）。",
+      "url": "https://x.com/Jake__Wujastyk/status/2108520543465160830",
+      "ms": 1791545446000
+     },
+     {
+      "acc": "firstadopter",
+      "s": "none",
+      "why": "自問自答：如果三星大減手機產量，對 Apple 是好是壞？他笑說可能是利空 Apple。",
+      "url": "https://x.com/firstadopter/status/2108498354388770872",
+      "ms": 1791540156000
+     },
+     {
+      "acc": "RyanDetrick",
+      "s": "none",
+      "why": "他表示 Steve Jobs 離世15年，問大家猜 $AAPL 之後漲了多少，答案由 @sonusvarghese 揭曉。標 $AAPL 未表態。",
+      "url": "https://x.com/RyanDetrick/status/2108401103322665146",
+      "ms": 1791516969000
+     },
+     {
+      "acc": "amitisinvesting",
+      "s": "none",
+      "why": "今日股市大事回顧：FT 指 OpenAI 9月底年化營收近$50B，低於傳聞的$70B，拖累半導體股跌約5–7%；FOMC 紀要顯示多數官員預期年底前再升息；高盛上調 $PLTR 至買入、目標$230，Barclays 目標$265；$ZETA 推出 AthenaOS；$SBUX 傳研究收購 $CMG；$AVGO 為 ",
+      "url": "https://x.com/amitisinvesting/status/2108380052958187998",
+      "ms": 1791511951000
+     },
+     {
+      "acc": "financialjuice",
+      "s": "none",
+      "why": "Microsoft 高層：搭載 Nvidia 晶片的 RTX Spark 電腦生成圖像比 Apple 最快晶片更快，下星期開始出貨。點名 Microsoft、Nvidia、Apple。",
+      "url": "https://x.com/financialjuice/status/2107893043290607916",
+      "ms": 1791395838000
+     },
+     {
+      "acc": "unusual_whales",
+      "s": "none",
+      "why": "快訊：據彭博，Apple（$AAPL）進軍智慧家居，與 LG 電子合作推出門鈴、恆溫器等配件，10 月 13 日發布。沒有表示看好或看淡。",
+      "url": "https://x.com/unusual_whales/status/2107619702310879702",
+      "ms": 1791330669000
+     },
+     {
+      "acc": "StockMKTNewz",
+      "s": "none",
+      "why": "快訊：轉述 Dan Ives 表示 2027 年前五大科技布局為 $NVDA、$MSFT、$PLTR、$AAPL、$CRWD；並提及市場低估未來數年約 4 兆開支浪潮。快訊轉述，沒有自身立場。",
+      "url": "https://x.com/StockMKTNewz/status/2107590835994804475",
+      "ms": 1791323787000
+     },
+     {
+      "acc": "DeItaone",
+      "s": "none",
+      "why": "快訊：瑞銀維持 $AAPL「中性」評級與 $296 目標價。9 月 App Store 營收年增長改善至 5%，但 9 月季度只增 2%，連續兩季低個位數；美國營收年減約 7%，其他地區上升約 7%。單一來源。",
+      "url": "https://x.com/DeItaone/status/2107457824838066267",
+      "ms": 1791292074000
+     }
+    ]
+   },
+   {
     "t": "WOLF",
     "nb": 4,
     "nr": 0,
@@ -8165,126 +7685,6 @@
     ]
    },
    {
-    "t": "AAPL",
-    "nb": 3,
-    "nr": 0,
-    "n_posts": 24,
-    "rows": [
-     {
-      "acc": "munster_gene",
-      "s": "bull",
-      "why": "作者稱 iPhone 週期已進入三週，Pro 與 Pro Max 的交貨時間近期下降，但他仍認為週期起步穩健，接下來看下週五 Duo 預購。標的是 $AAPL。",
-      "url": "https://x.com/munster_gene/status/2108646685094388164",
-      "ms": 1791575521000
-     },
-     {
-      "acc": "film_girl",
-      "s": "bull",
-      "why": "作者也這麼認為，並說 iPhone 17 系列異常強勁，並非每年都如此。他認為 Duo 幾乎一定會接住每年換機的買家，以及大眾先觀望的需求。引用稱有報導指蘋果因需求下調 iPhone 18 Pro 的生產量，因為假期買家想先看過 Duo 再決定買哪一款。",
-      "url": "https://x.com/film_girl/status/2108613843891245448",
-      "ms": 1791567691000
-     },
-     {
-      "acc": "jimcramer",
-      "s": "bull",
-      "why": "Cramer 表示在 13 號 home 發布與 16 號 Duo 預購之前賣出 Apple，就是「永久腦袋放假」。",
-      "url": "https://x.com/jimcramer/status/2108549905702961171",
-      "ms": 1791552447000
-     },
-     {
-      "acc": "IBDinvestors",
-      "s": "neu",
-      "why": "IBD 文章：Apple、Nvidia、Meta 等巨頭強勢回歸。",
-      "url": "https://x.com/IBDinvestors/status/2108541816333119666",
-      "ms": 1791550518000
-     },
-     {
-      "acc": "carlquintanilla",
-      "s": "neu",
-      "why": "（@carlquintanilla 轉發）標普五大股 $NVDA $AAPL $GOOGL $MSFT $AMZN 市值等於最小 434 檔股票的總和，集中度史上最高。",
-      "url": "https://x.com/Barchart/status/2108478372145979506",
-      "ms": 1791535392000
-     },
-     {
-      "acc": "KobeissiLetter",
-      "s": "neu",
-      "why": "他表示分散投資越來越少：每投資 1 美元到標普 500，約 41 美分流入最大 10 檔股票；$NVDA 佔 8 美分、$AAPL 7、$MSFT 與 $GOOGL 各 6、$AMZN 4，$AVGO、$META、$TSLA、$MU、$AMD 合共 10 美分；第 11–20 大只佔 10 美分，其餘 402 間合共 ",
-      "url": "https://x.com/KobeissiLetter/status/2107519296595284450",
-      "ms": 1791306730000
-     },
-     {
-      "acc": "ripster47",
-      "s": "none",
-      "why": "（@ripster47 轉發）Tenet 10 月 9 日早盤摘要，列出 $SPX $AAPL $NVDA $META $DAL 等一大堆代號與比特幣。",
-      "url": "https://x.com/TENETTRADEGROUP/status/2108538996456632693",
-      "ms": 1791549846000
-     },
-     {
-      "acc": "StockSavvyShay",
-      "s": "none",
-      "why": "$META 打造 AI 眼鏡，主打用戶寧願親身體驗而不是透過手機觀看；他表示這讓 Meta 可以掌握鏡頭、個人情境與 AI 助理，不必依賴 $AAPL 生態。",
-      "url": "https://x.com/StockSavvyShay/status/2108536485096140885",
-      "ms": 1791549247000
-     },
-     {
-      "acc": "Jake__Wujastyk",
-      "s": "none",
-      "why": "$AAPL 圖表（只有圖，沒有文字）。",
-      "url": "https://x.com/Jake__Wujastyk/status/2108520543465160830",
-      "ms": 1791545446000
-     },
-     {
-      "acc": "firstadopter",
-      "s": "none",
-      "why": "自問自答：如果三星大減手機產量，對 Apple 是好是壞？他笑說可能是利空 Apple。",
-      "url": "https://x.com/firstadopter/status/2108498354388770872",
-      "ms": 1791540156000
-     },
-     {
-      "acc": "RyanDetrick",
-      "s": "none",
-      "why": "他表示 Steve Jobs 離世15年，問大家猜 $AAPL 之後漲了多少，答案由 @sonusvarghese 揭曉。標 $AAPL 未表態。",
-      "url": "https://x.com/RyanDetrick/status/2108401103322665146",
-      "ms": 1791516969000
-     },
-     {
-      "acc": "amitisinvesting",
-      "s": "none",
-      "why": "今日股市大事回顧：FT 指 OpenAI 9月底年化營收近$50B，低於傳聞的$70B，拖累半導體股跌約5–7%；FOMC 紀要顯示多數官員預期年底前再升息；高盛上調 $PLTR 至買入、目標$230，Barclays 目標$265；$ZETA 推出 AthenaOS；$SBUX 傳研究收購 $CMG；$AVGO 為 ",
-      "url": "https://x.com/amitisinvesting/status/2108380052958187998",
-      "ms": 1791511951000
-     },
-     {
-      "acc": "financialjuice",
-      "s": "none",
-      "why": "Microsoft 高層：搭載 Nvidia 晶片的 RTX Spark 電腦生成圖像比 Apple 最快晶片更快，下星期開始出貨。點名 Microsoft、Nvidia、Apple。",
-      "url": "https://x.com/financialjuice/status/2107893043290607916",
-      "ms": 1791395838000
-     },
-     {
-      "acc": "unusual_whales",
-      "s": "none",
-      "why": "快訊：據彭博，Apple（$AAPL）進軍智慧家居，與 LG 電子合作推出門鈴、恆溫器等配件，10 月 13 日發布。沒有表示看好或看淡。",
-      "url": "https://x.com/unusual_whales/status/2107619702310879702",
-      "ms": 1791330669000
-     },
-     {
-      "acc": "StockMKTNewz",
-      "s": "none",
-      "why": "快訊：轉述 Dan Ives 表示 2027 年前五大科技布局為 $NVDA、$MSFT、$PLTR、$AAPL、$CRWD；並提及市場低估未來數年約 4 兆開支浪潮。快訊轉述，沒有自身立場。",
-      "url": "https://x.com/StockMKTNewz/status/2107590835994804475",
-      "ms": 1791323787000
-     },
-     {
-      "acc": "DeItaone",
-      "s": "none",
-      "why": "快訊：瑞銀維持 $AAPL「中性」評級與 $296 目標價。9 月 App Store 營收年增長改善至 5%，但 9 月季度只增 2%，連續兩季低個位數；美國營收年減約 7%，其他地區上升約 7%。單一來源。",
-      "url": "https://x.com/DeItaone/status/2107457824838066267",
-      "ms": 1791292074000
-     }
-    ]
-   },
-   {
     "t": "DRAM",
     "nb": 3,
     "nr": 0,
@@ -8467,7 +7867,7 @@
     "t": "SOFI",
     "nb": 3,
     "nr": 0,
-    "n_posts": 5,
+    "n_posts": 6,
     "rows": [
      {
       "acc": "StockSavvyShay",
@@ -8492,10 +7892,10 @@
      },
      {
       "acc": "Jake__Wujastyk",
-      "s": "neu",
-      "why": "（@Jake__Wujastyk 轉發）他表示 $SOFI 跌回8個月區間底部。標 $SOFI 中性。",
-      "url": "https://x.com/Jake__Wujastyk/status/2108321335781023960",
-      "ms": 1791497951000
+      "s": "none",
+      "why": "提到 $SOFI $HOOD $JPM $WFC。",
+      "url": "https://x.com/Jake__Wujastyk/status/2108945492092567723",
+      "ms": 1791646762000
      },
      {
       "acc": "ripster47",
@@ -8858,7 +8258,7 @@
     "t": "ASTS",
     "nb": 2,
     "nr": 0,
-    "n_posts": 14,
+    "n_posts": 15,
     "rows": [
      {
       "acc": "michaelsikand",
@@ -8877,9 +8277,9 @@
      {
       "acc": "StockSavvyShay",
       "s": "neu",
-      "why": "作者稱 $ASTS 的 BlueBird 14、15、16 已運抵卡納維拉爾角，德州產線已排到 BlueBird 50。AST 正在擴大製造與發射，把衛星寬頻直接接到普通智慧手機。這是進度更新，沒有目標價。",
-      "url": "https://x.com/StockSavvyShay/status/2108685024635781232",
-      "ms": 1791584662000
+      "why": "完整太空價值鏈。有趣看到主要太空公司在發射、製造、頻譜和服務上如何不同定位，邁向2028： $RKLB 結合火箭、衛星製造和國防與Iridium全球頻譜及255萬+現有訂戶； $SPCX 通過垂直整合網絡控制發射、衛星製造和Starlink； $ASTS 用大型陣列和運營商頻譜直接連接日常智能手機到衛星； $PL 運營",
+      "url": "https://x.com/StockSavvyShay/status/2108943057974345937",
+      "ms": 1791646181000
      },
      {
       "acc": "DeepValueBagger",
@@ -10185,7 +9585,7 @@
     "t": "SPCX",
     "nb": 5,
     "nr": 1,
-    "n_posts": 91,
+    "n_posts": 92,
     "rows": [
      {
       "acc": "wintonARK",
@@ -10230,18 +9630,18 @@
       "ms": 1791590804000
      },
      {
+      "acc": "StockSavvyShay",
+      "s": "neu",
+      "why": "完整太空價值鏈。有趣看到主要太空公司在發射、製造、頻譜和服務上如何不同定位，邁向2028： $RKLB 結合火箭、衛星製造和國防與Iridium全球頻譜及255萬+現有訂戶； $SPCX 通過垂直整合網絡控制發射、衛星製造和Starlink； $ASTS 用大型陣列和運營商頻譜直接連接日常智能手機到衛星； $PL 運營",
+      "url": "https://x.com/StockSavvyShay/status/2108943057974345937",
+      "ms": 1791646181000
+     },
+     {
       "acc": "elonmusk",
       "s": "neu",
       "why": "（@Rothmus 轉發）作者稱安巴尼主導印度互聯網政策。Starlink 去年已拿到電信牌照與太空批准，政府仍不讓它賣出任何一個訂閱。Jio 此前大力遊說強制拍賣以拖慢外來者。經過 4 年文書作業，馬斯克質問安巴尼是否才是印度真正的老闆。官方稱程序公平、不允許壟斷，但作者認為全球最大電信仍擋住唯一能覆蓋其基站到不了的",
       "url": "https://x.com/Rothmus/status/2108929414608097425",
       "ms": 1791642929000
-     },
-     {
-      "acc": "StockSavvyShay",
-      "s": "neu",
-      "why": "作者轉述高盛估計，短期人工智能算力在 $SPCX、$NBIS 與 $CRWV 約為每年每吉瓦 400 億至 500 億美元，接近長期價格的兩倍，也約為有電數據中心空殼的 20 倍。他指出 Nebius 一併拿到現貨與合約價格，而 $IREN 鎖定較長期收入，每個吉瓦的回報可因合約而差很多。沒有明確叫買或叫賣。",
-      "url": "https://x.com/StockSavvyShay/status/2108913993309979073",
-      "ms": 1791639252000
      },
      {
       "acc": "beffjezos",
@@ -11168,7 +10568,7 @@
     "t": "TSLA",
     "nb": 2,
     "nr": 1,
-    "n_posts": 43,
+    "n_posts": 44,
     "rows": [
      {
       "acc": "dannycheng2022",
@@ -11187,9 +10587,9 @@
      {
       "acc": "garyblack00",
       "s": "bear",
-      "why": "作者認為 $TSLA 多頭仍未明白，3 至 5 年內各網約車服務都會一併提供有司機與自動駕駛選項，無人監督的自動駕駛會像汽車業以往的創新一樣變成商品。他說自己並非不看重 FSD，而是認為特斯拉必須靠廣告與執行吃到先發優勢，否則可能像過去 5 年電動車那樣被中國與其他廠商搶走生意。",
-      "url": "https://x.com/garyblack00/status/2108871660031902010",
-      "ms": 1791629159000
+      "why": "巨大差異：$AAPL 因有出色產品和出色營銷而主導手機業務。$TSLA 永遠在營銷上投資不足。",
+      "url": "https://x.com/garyblack00/status/2108959897110860085",
+      "ms": 1791650196000
      },
      {
       "acc": "teslayoda",
@@ -11619,7 +11019,7 @@
    },
    {
     "t": "SPCX",
-    "mentions": 91,
+    "mentions": 92,
     "accounts": 29,
     "bull": 21,
     "bear": 1
@@ -11695,18 +11095,18 @@
     "bear": 3
    },
    {
+    "t": "AAPL",
+    "mentions": 25,
+    "accounts": 17,
+    "bull": 4,
+    "bear": 1
+   },
+   {
     "t": "NBIS",
     "mentions": 35,
     "accounts": 16,
     "bull": 27,
     "bear": 0
-   },
-   {
-    "t": "AAPL",
-    "mentions": 24,
-    "accounts": 16,
-    "bull": 3,
-    "bear": 1
    },
    {
     "t": "BTC",
@@ -11738,10 +11138,10 @@
    },
    {
     "t": "TSLA",
-    "mentions": 43,
+    "mentions": 44,
     "accounts": 14,
     "bull": 7,
-    "bear": 4
+    "bear": 5
    },
    {
     "t": "PENG",
