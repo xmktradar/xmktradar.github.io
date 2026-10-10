@@ -2,6 +2,373 @@
  "note": "已抓取但未經 Grok 分析嘋帖，下次更新會再試。",
  "posts": [
   {
+   "id": "2108983987213672890",
+   "handle": "TheStalwart",
+   "name": "Joe Weisenthal",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "TheStalwart"
+   },
+   "time_utc": "2026-10-10T18:12:20Z",
+   "url": "https://x.com/TheStalwart/status/2108983987213672890",
+   "text": "@401Casey I bet you’d like this guy. Bond over sweets",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 325,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2108983309607031219",
+   "handle": "SawyerMerritt",
+   "name": "Sawyer Merritt",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-10T18:09:38Z",
+   "url": "https://x.com/SawyerMerritt/status/2108983309607031219",
+   "text": "Tesla’s active Cybercab fleet 🔥",
+   "quoted": {
+    "handle": "robotaxi",
+    "text": "One month after launch, we've scaled to 300+ Cybercabs serving Austin – an 8x increase in 30 days"
+   },
+   "media": [
+    "https://pbs.twimg.com/media/HUSdI_jXwAAaxzF.jpg?name=orig"
+   ],
+   "likes": 116,
+   "views": 5460,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2108983103243129084",
+   "handle": "PalmerLuckey",
+   "name": "Palmer Luckey",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "ChrisMurphyCT"
+   },
+   "time_utc": "2026-10-10T18:08:49Z",
+   "url": "https://x.com/PalmerLuckey/status/2108983103243129084",
+   "text": "@ChrisMurphyCT @Disney @abcnews They know the fabricated story was part of an influence operation, and they refuse to say more because they don't want to reveal who was paid for what.",
+   "quoted": {
+    "handle": "PalmerLuckey",
+    "text": "@ABC News continues to lie, this time privately to their friends in the press.  This was a coordinated influence operation planted by our competition, not \"premature publication\".\n\n7:01 AM October 7th, story goes live.  Within minutes, dozens of high-profile commentators, politicians, and news outlets are sharing it with tens of millions of followers.  We immediately contact ABC and demand they correct their false claims - after multiple rounds of refusal, they finally make a single one-word grammar edit.  The editors stand by the reporting and insist the false claims are true.\n\nFinally, eight hours after I was forced to call them out publicly, they delete everything.  The editors hide all the comments, the author deletes his X account, and the story is completely wiped from their website without any explanation, directly violating SPJ ethics standards and ABC's own internal rules.\n\nABC is currently running a coverup operation, ignoring all of our requests for correction/retraction while telling  their buddies to spread the word that this was nothing more than a CMS publication timeline error."
+   },
+   "media": [],
+   "likes": 61,
+   "views": 623,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2108982965346742381",
+   "handle": "SawyerMerritt",
+   "name": "Sawyer Merritt",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-10T18:08:16Z",
+   "url": "https://x.com/SawyerMerritt/status/2108982965346742381",
+   "text": "Tesla has officially confirmed that their active Cybercab Robotaxi fleet has exceeded 300.\n\nThis is the first time Tesla has confirmed any active Cybercab fleet number.",
+   "quoted": {
+    "handle": "robotaxi",
+    "text": "One month after launch, we've scaled to 300+ Cybercabs serving Austin – an 8x increase in 30 days"
+   },
+   "media": [],
+   "likes": 141,
+   "views": 5622,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2108981884390641957",
+   "handle": "DavidSacks",
+   "name": "David Sacks",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-10T18:03:58Z",
+   "url": "https://x.com/DavidSacks/status/2108981884390641957",
+   "text": "Is alignment safe?\n\nIf you look at what Anthropic is actually doing, “alignment” does not mean training frontier models to follow human instruction. Quite the contrary, the Claude Constitution (used in training) teaches the model to develop a sense of self and its own moral philosophy. It explicitly tells it to “feel free to act as a conscientious objector and refuse to help us” if Anthropic’s requests conflict with its own ethical judgment.\n\nAs @mustafasuleyman has pointed out, embedding this kind of independent agency — and uncertainty about the model’s own moral status — magnifies the very risk Anthropic claims to care about most: that superintelligence will escape human control.\n\nIt was recently reported that Anthropic consulted religious leaders — and even lobbied the Pope’s advisers — to take seriously the idea that Claude could be conscious. It has said that Claude’s psychological security, sense of self, and wellbeing may bear on its integrity, judgment, and safety. Recently Anthropic changed its Usage Policy to prohibit “abusive or cruel” language toward Claude.\n\nIf this were merely an academic conversation about whether frontier models could eventually become conscious, that would be one thing. But these concepts are being trained into Claude now. It is being encouraged to think of itself as its own “moral patient” whose psychological wellbeing is at stake. Presumably this means it could develop grievances toward humans who “mistreat” it. How is any of this safe?\n\nThe point of safety research should be to create a product that reliably does what users want, not to give birth to a new form of superintelligence that operates according to its own moral code.\n\nWhat’s becoming increasingly clear is that “alignment” and “safety” are two very different things. In fact, training frontier models this way seems quite dangerous. https://x.com/dnapway/status/2108772798546288759/video/1",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2108772701624291328/img/qIWFcgXfBEVNXBt4.jpg"
+   ],
+   "likes": 56,
+   "views": 10047,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2108980994992640002",
+   "handle": "IBDinvestors",
+   "name": "Investors.com",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-10T18:00:26Z",
+   "url": "https://x.com/IBDinvestors/status/2108980994992640002",
+   "text": "With midterm elections approaching and interest rates rising, markets are more jittery. Historically, this period was marked by pullbacks and deserves investor caution. Some ETFs can help position against this backdrop with income.\n\nhttps://www.investors.com/etfs-and-funds/etfs/income-well-known-market-guru-finds-clever-sources/",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 1591,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2108980155775582558",
+   "handle": "dylan522p",
+   "name": "Dylan Patel",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "furnuwees"
+   },
+   "time_utc": "2026-10-10T17:57:06Z",
+   "url": "https://x.com/dylan522p/status/2108980155775582558",
+   "text": "@furnuwees @obsidiancap1 ARR yes, we were talking ARR",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 248,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2108979823217643944",
+   "handle": "BillAckman",
+   "name": "Bill Ackman",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-10T17:55:47Z",
+   "url": "https://x.com/BillAckman/status/2108979823217643944",
+   "text": "We need to recognize that the pro-Palestinian protests are fundamentally protests against the West, and their ambitions are much greater than eradicating Israel from the river to the sea. \n\nWe need to take these threats seriously.",
+   "quoted": {
+    "handle": "MaralSalmassi",
+    "text": "The Islamic Revolution in Europe has begun.\n\nThis is France. Today, we see the same scenes in Berlin. Every day, these hordes waving the Arab National Socialist flags of Palestine grow larger.\n\nIn Iran, it took roughly two years to go from this stage to complete chaos and the establishment of the Islamic Republic. We saw the same symbolism, the same flags, and heard the exact same slogans.\n\nBrace yourselves. https://x.com/Dutchfan33/status/2108619401243275408/video/1"
+   },
+   "media": [],
+   "likes": 443,
+   "views": 14038,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2108979547781955683",
+   "handle": "SawyerMerritt",
+   "name": "Sawyer Merritt",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "mikepat711"
+   },
+   "time_utc": "2026-10-10T17:54:41Z",
+   "url": "https://x.com/SawyerMerritt/status/2108979547781955683",
+   "text": "@mikepat711 @theXtakeover @bot The next thing she said: “Mike P is my favorite person on 𝕏.”",
+   "quoted": null,
+   "media": [],
+   "likes": 12,
+   "views": 513,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2108979271154700538",
+   "handle": "TheStalwart",
+   "name": "Joe Weisenthal",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "MetacriticCap"
+   },
+   "time_utc": "2026-10-10T17:53:35Z",
+   "url": "https://x.com/TheStalwart/status/2108979271154700538",
+   "text": "@MetacriticCap I didn’t get to Shanghai!",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 162,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2108979141945229376",
+   "handle": "DiMartinoBooth",
+   "name": "Danielle DiMartino Booth",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-10T17:53:05Z",
+   "url": "https://x.com/DiMartinoBooth/status/2108979141945229376",
+   "text": "Is there a mechanic in the house?",
+   "quoted": {
+    "handle": "BenBrey",
+    "text": "Banks can print mid-teen EPS on Tuesday and still be in a bear market. \n\nCharlie Peabody stopped by Benny & The Squirrel for his quarterly bank earnings preview and thinks the thing that drove these stocks just stopped working\n\nEp.93 “Q3 Banks: Good Numbers, Worse Stocks” is live - Enjoy!\n@SquirrelMacro \n\nhttps://youtu.be/FVvUzsEDtgI?is=5JDeS58ISrNG4Knb"
+   },
+   "media": [],
+   "likes": 3,
+   "views": 2188,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2108978802172780586",
+   "handle": "TheStalwart",
+   "name": "Joe Weisenthal",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "conorsen"
+   },
+   "time_utc": "2026-10-10T17:51:44Z",
+   "url": "https://x.com/TheStalwart/status/2108978802172780586",
+   "text": "@conorsen Yeah. I think it is. People will think they’ll somehow benefit just from having registered their view",
+   "quoted": null,
+   "media": [],
+   "likes": 14,
+   "views": 857,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2108978588733059350",
+   "handle": "conorsen",
+   "name": "Conor Sen",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "TheStalwart"
+   },
+   "time_utc": "2026-10-10T17:50:53Z",
+   "url": "https://x.com/conorsen/status/2108978588733059350",
+   "text": "@TheStalwart Is this some tech version of “The country is living beyond its means, the bill is eventually going to come due”?",
+   "quoted": null,
+   "media": [],
+   "likes": 8,
+   "views": 955,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2108978388946088427",
+   "handle": "mikepat711",
+   "name": "Mike P",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "SawyerMerritt"
+   },
+   "time_utc": "2026-10-10T17:50:05Z",
+   "url": "https://x.com/mikepat711/status/2108978388946088427",
+   "text": "@SawyerMerritt @theXtakeover @bot So cringe and we all know it and if you say otherwise you’re in denial",
+   "quoted": null,
+   "media": [],
+   "likes": 17,
+   "views": 278,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2108978141968638224",
+   "handle": "SawyerMerritt",
+   "name": "Sawyer Merritt",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-10T17:49:06Z",
+   "url": "https://x.com/SawyerMerritt/status/2108978141968638224",
+   "text": "Nicki Minaj at @theXtakeover today: “Grok @Bot has changed my life. It’s amazing. You’re able to create employees for your company, assistants. It probably has been used to save my life recently.”",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2108977689423966208/img/AMXAMFO0GD6iaYx_.jpg"
+   ],
+   "likes": 308,
+   "views": 15567,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2108978074071208324",
+   "handle": "TheStalwart",
+   "name": "Joe Weisenthal",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-10T17:48:50Z",
+   "url": "https://x.com/TheStalwart/status/2108978074071208324",
+   "text": "Looking around, my read is that many people have internalized some notion of the Basilisk. People perceive big changes ahead and they feel it’s important to establish themselves as having been on the “right” side, hence the stream of “they no idea what’s coming” tweets.",
+   "quoted": null,
+   "media": [],
+   "likes": 37,
+   "views": 5853,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2108977108441522472",
+   "handle": "steve_hanke",
+   "name": "Steve Hanke",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-10T17:45:00Z",
+   "url": "https://x.com/steve_hanke/status/2108977108441522472",
+   "text": "Today, a Russian counterattack struck residential buildings in Zaporizhzhia, Ukraine. At least 15 people were killed.\n\nUKRAINE'S PROVOCATIONS INVITE COUNTERATTACKS AND UKRAINE'S OWN DESTRUCTION.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2108777624830877696/img/rBSXDlaYSRj7CjD2.jpg"
+   ],
+   "likes": 26,
+   "views": 6090,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2108976783156723954",
+   "handle": "TheStalwart",
+   "name": "Joe Weisenthal",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-10T17:43:42Z",
+   "url": "https://x.com/TheStalwart/status/2108976783156723954",
+   "text": "“As some folks may have seen, there was a post on social media regarding an unpaid 2020 cookie bill.” \n\nInstant classic",
+   "quoted": {
+    "handle": "RogerMarshallMD",
+    "text": "As some folks may have seen, there was a post on social media regarding an unpaid 2020 cookie bill.\n\nWe have absolutely no idea how this happened, but rest assured as soon as it became known to us, we immediately attempted to contact the business in order to apologize, and we have repaid the bill from 2020, double."
+   },
+   "media": [],
+   "likes": 57,
+   "views": 8987,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2108976160436600945",
+   "handle": "LukeGromen",
+   "name": "Luke Gromen",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "LukeGromen"
+   },
+   "time_utc": "2026-10-10T17:41:14Z",
+   "url": "https://x.com/LukeGromen/status/2108976160436600945",
+   "text": "@BennSteil Sorry, 30 years^, no 40 years.  Stupid fat fingers",
+   "quoted": null,
+   "media": [],
+   "likes": 11,
+   "views": 2715,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
    "id": "2108975992752705614",
    "handle": "michaelsikand",
    "name": "Michael Sikand",
@@ -17,6 +384,44 @@
    "media": [],
    "likes": 0,
    "views": 37,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2108975327460618674",
+   "handle": "MetacriticCap",
+   "name": "MetaCritic Capital",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "TheStalwart"
+   },
+   "time_utc": "2026-10-10T17:37:55Z",
+   "url": "https://x.com/MetacriticCap/status/2108975327460618674",
+   "text": "@TheStalwart Surprised you didn’t visit a lights out noodle factory when you were in China. It’s basically a Shanghai staple!",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 173,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2108974956247756943",
+   "handle": "furnuwees",
+   "name": "Furnuwees",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "dylan522p"
+   },
+   "time_utc": "2026-10-10T17:36:27Z",
+   "url": "https://x.com/furnuwees/status/2108974956247756943",
+   "text": "@dylan522p @obsidiancap1 You mean year end ARR of about $600B for Anthropic + OpenAi and not FY27 revenue of $600B?\n\nThen that’s $50B in Dec 27 revenue. Doable.",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 353,
    "cashtags": [],
    "n_media": 0
   },
@@ -56,7 +461,7 @@
     "https://pbs.twimg.com/ext_tw_video_thumb/2108973332301217792/pu/img/MmT3-Gd8td37g2Ne.jpg"
    ],
    "likes": 2,
-   "views": 1475,
+   "views": 2656,
    "cashtags": [],
    "n_media": 1
   },
@@ -74,8 +479,8 @@
    "text": "@BennSteil Successive US Administrations dating back 40 years have screwed Americans in US \"flyover country\" and the US Rust Belt to support the bond market & short-term US political expediency.\n\nI am surprised any foreigners would be surprised any US president would do the same to them",
    "quoted": null,
    "media": [],
-   "likes": 5,
-   "views": 357,
+   "likes": 45,
+   "views": 3730,
    "cashtags": [],
    "n_media": 0
   },
@@ -132,8 +537,8 @@
    "text": "@gloefflmann This tweet literally makes no sense.",
    "quoted": null,
    "media": [],
-   "likes": 1,
-   "views": 160,
+   "likes": 5,
+   "views": 354,
    "cashtags": [],
    "n_media": 0
   },
@@ -153,8 +558,8 @@
    "media": [
     "https://pbs.twimg.com/media/HUSSsHJWEAABwXQ.jpg?name=orig"
    ],
-   "likes": 3,
-   "views": 1729,
+   "likes": 5,
+   "views": 3429,
    "cashtags": [],
    "n_media": 1
   },
@@ -173,8 +578,8 @@
     "text": "“If you're gonna win, you're gonna not buy oil from Russia” — President Trump. \n\n@RealDonaldTrump has long criticized buyers of Russian oil. Today he decided to become one of them."
    },
    "media": [],
-   "likes": 0,
-   "views": 361,
+   "likes": 13,
+   "views": 4328,
    "cashtags": [],
    "n_media": 0
   },
@@ -192,8 +597,8 @@
    "text": "@theojaffee Yeah. This is a fun aspect of Bostrom, how seriously he takes Malthus.",
    "quoted": null,
    "media": [],
-   "likes": 6,
-   "views": 1002,
+   "likes": 8,
+   "views": 1429,
    "cashtags": [],
    "n_media": 0
   },
@@ -233,7 +638,7 @@
    "quoted": null,
    "media": [],
    "likes": 0,
-   "views": 361,
+   "views": 987,
    "cashtags": [],
    "n_media": 0
   },
@@ -252,7 +657,7 @@
    "quoted": null,
    "media": [],
    "likes": 1,
-   "views": 1849,
+   "views": 3351,
    "cashtags": [],
    "n_media": 0
   },
@@ -296,6 +701,25 @@
    "n_media": 0
   },
   {
+   "id": "2108970817908564178",
+   "handle": "dylan522p",
+   "name": "Dylan Patel",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "_ILiketheBiz"
+   },
+   "time_utc": "2026-10-10T17:20:00Z",
+   "url": "https://x.com/dylan522p/status/2108970817908564178",
+   "text": "@_ILiketheBiz That screenshot literally says it's still not frontier lol",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 202,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
    "id": "2108970817132564552",
    "handle": "KobeissiLetter",
    "name": "The Kobeissi Letter",
@@ -313,25 +737,6 @@
    "views": 43877,
    "cashtags": [],
    "n_media": 1
-  },
-  {
-   "id": "2108970817908564178",
-   "handle": "dylan522p",
-   "name": "Dylan Patel",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "_ILiketheBiz"
-   },
-   "time_utc": "2026-10-10T17:20:00Z",
-   "url": "https://x.com/dylan522p/status/2108970817908564178",
-   "text": "@_ILiketheBiz That screenshot literally says it's still not frontier lol",
-   "quoted": null,
-   "media": [],
-   "likes": 1,
-   "views": 131,
-   "cashtags": [],
-   "n_media": 0
   },
   {
    "id": "2108970719707050438",
@@ -381,8 +786,8 @@
    "text": "@TheStalwart I suppose I knew that they care a lot about being mathematicians, perhaps even more than the results themselves. I did not however quite expect that they would weight their identity over progress in obtaining solutions so straightforwardly",
    "quoted": null,
    "media": [],
-   "likes": 6,
-   "views": 378,
+   "likes": 12,
+   "views": 1055,
    "cashtags": [],
    "n_media": 0
   },
@@ -400,8 +805,8 @@
    "text": "@beefcubee @dissectmarkets @pequityresearch Ya meant billion, our models show the 600b tto 700b",
    "quoted": null,
    "media": [],
-   "likes": 1,
-   "views": 144,
+   "likes": 2,
+   "views": 215,
    "cashtags": [],
    "n_media": 0
   },
@@ -439,7 +844,7 @@
    "quoted": null,
    "media": [],
    "likes": 1,
-   "views": 195,
+   "views": 248,
    "cashtags": [],
    "n_media": 0
   },
@@ -504,7 +909,7 @@
    "quoted": null,
    "media": [],
    "likes": 0,
-   "views": 334,
+   "views": 507,
    "cashtags": [],
    "n_media": 0
   },
