@@ -5,13 +5,9 @@ market idea, and writes Traditional Chinese plus Korean summaries into
 data/super-grok-analysis.json. This step only copies well-formed rows into
 work/analysed.json. Posts that are not in that file stay in data/pending-posts.json.
 """
-import json
 import os
-import urllib.request
 
 from sitedata import notice, read_json, work, write_json
-
-REMOTE = "https://raw.githubusercontent.com/timlika1121-alt/crowd-tape-inbox/main/analysis.json"
 
 INBOX = os.path.join(os.path.dirname(__file__), '..', 'data', 'super-grok-analysis.json')
 VALID = {'睇好', '睇淡', '中性', '未表態'}
@@ -61,15 +57,6 @@ def main():
     inbox = raw.get('posts') if isinstance(raw, dict) else None
     if not isinstance(inbox, dict):
         inbox = {}
-    try:
-        with urllib.request.urlopen(REMOTE, timeout=60) as r:
-            remote = json.loads(r.read().decode())
-        extra = remote.get('posts') if isinstance(remote, dict) else None
-        if isinstance(extra, dict):
-            inbox.update(extra)
-            notice(f'分析：讀到 SuperGrok 遠端摘要 {len(extra)} 則')
-    except Exception as e:
-        notice('讀唔到 SuperGrok 遠端摘要：' + str(e)[:200], 'warning')
     applied = 0
     for p in posts:
         pid = str(p.get('id'))
