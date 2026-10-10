@@ -8,7 +8,7 @@
   summaries_<lang>, highlights_<lang>, briefings_<lang> replace the Chinese ones when present.
 - Every version gets <html lang>, canonical, hreflang, the language switch and absolute asset paths.
 - index.html itself gets the same switch and hreflang plus a script that sends visitors to the
-  version matching their browser language (automation/README.md section 9).
+  version matching their browser language.
 """
 import copy
 import json

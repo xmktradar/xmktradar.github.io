@@ -1,4 +1,4 @@
-"""Write two small files SuperGrok reads (rules: automation/super-grok.md):
+"""Write two small files SuperGrok reads:
 
 - data/writeup-input.json: the consensus numbers the page computed (daily, weekly,
   monthly), so SuperGrok's write-ups use the same numbers as the page.
