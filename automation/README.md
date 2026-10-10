@@ -59,6 +59,22 @@ GitHub Actions 用 UTC，所以 cron 寫 `5 */4 * * *`（UTC 00:05 即香港 08:
    - `sitemap.xml` 嘅 `lastmod`。
 9. **檢查後先發佈**：用無頭瀏覽器開每日、每週、每月、追蹤名單同一個個股頁，冇 JavaScript 錯誤、冇橫向溢出先 commit 同 push 去 `main`。有錯就唔好 push，保留上一版。commit 訊息：`定時重建 <YYYY-MM-DD HH:MM> HKT`。
 
+## 3a. 程式檔案（GitHub Actions「Update site」照呢個次序行）
+
+| 步驟 | 檔案 |
+|---|---|
+| 2 攞新帖 | `tools/fetch_posts.py` |
+| 3 Grok 分析 | `tools/analyse_posts.py`（規則：`automation/post-analysis-prompt.md`） |
+| 4 加入帖文 | `tools/merge_posts.py`（未分析嘅帖放 `data/pending-posts.json`，下次再試） |
+| 5、6 股價同大市 | `tools/update_prices.py` |
+| 7 共識數字 | `tools/stats.js`（直接用網頁自己嘅計法） |
+| 7 Grok 寫分析 | 未做（等 `XAI_API_KEY`） |
+| 8 共識歷史、分享圖、sitemap | `tools/publish_extras.py`、`tools/og.js`、`tools/og.html` |
+| 9 發佈前檢查 | `tools/check.js` |
+| 排程 | `.github/workflows/update-site.yml` |
+
+模型：預設自動揀帳戶可用嘅 Grok 文字模型（優先 Grok 4 fast）；要指定就喺 GitHub → Settings → Secrets and variables → Actions → Variables 加 `XAI_MODEL`。
+
 ## 4. 鎖匙同設定
 
 | 名 | 放喺邊 | 用途 |

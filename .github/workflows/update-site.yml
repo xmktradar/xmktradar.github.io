@@ -1,0 +1,66 @@
+name: Update site
+# Every 4 hours (HKT 00:05, 04:05, 08:05 ...): fetch new posts, analyse them with Grok,
+# refresh prices, consensus history and share image, check the page, then publish.
+# Steps are described in automation/README.md.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '5 */4 * * *'
+  push:
+    branches: [main]
+    paths: ['tools/**', '.github/workflows/update-site.yml']
+permissions:
+  contents: write
+concurrency:
+  group: site-update
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      WORK_DIR: ${{ runner.temp }}/work
+      XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+      XAI_MODEL: ${{ vars.XAI_MODEL }}
+      TZ: Asia/Hong_Kong
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install headless browser
+        run: |
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Fetch new posts
+        continue-on-error: true
+        run: python3 tools/fetch_posts.py
+      - name: Analyse posts with Grok
+        continue-on-error: true
+        run: python3 tools/analyse_posts.py
+      - name: Add posts to the site
+        run: python3 tools/merge_posts.py
+      - name: Update prices
+        continue-on-error: true
+        run: python3 tools/update_prices.py index.html
+      - name: Consensus and counts
+        run: |
+          echo '{"daily": null}' > "$WORK_DIR/windows.json"
+          node tools/stats.js index.html "$WORK_DIR/windows.json" "$WORK_DIR/stats.json"
+      - name: Consensus history, share text, sitemap
+        run: python3 tools/publish_extras.py
+      - name: Share image
+        run: |
+          if [ -f "$WORK_DIR/og.json" ]; then
+            day=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['date'])" "$WORK_DIR/og.json")
+            node tools/og.js "$WORK_DIR/og.json" "og/$day.png"
+            cp "og/$day.png" og/latest.png
+          fi
+      - name: Check the page
+        run: node tools/check.js index.html
+      - name: Publish
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add index.html data/ og/ sitemap.xml
+          git diff --cached --quiet && exit 0
+          git commit -m "定時重建 $(date '+%Y-%m-%d %H:%M') HKT"
+          git pull --rebase origin main
+          git push origin HEAD:main
