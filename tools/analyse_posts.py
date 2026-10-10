@@ -1,15 +1,18 @@
 """Step 3: apply summaries SuperGrok already wrote. Do not call the xAI API.
 
-SuperGrok (the subscription, not API credits) reads new posts, keeps the ones with a
-market idea, and writes Traditional Chinese plus Korean summaries into
-data/super-grok-analysis.json. This step only copies well-formed rows into
-work/analysed.json. Posts that are not in that file stay in data/pending-posts.json.
+SuperGrok (the subscription, not API credits) reads new posts and writes Traditional
+Chinese plus Korean summaries, one small file per batch, into data/grok-inbox/
+(the older single file data/super-grok-analysis.json is still read). This step only
+copies well-formed rows into work/analysed.json. Posts without a summary stay in
+data/pending-posts.json. write_status.py removes inbox files once the site has used them.
 """
+import glob
 import os
 
 from sitedata import notice, read_json, work, write_json
 
 INBOX = os.path.join(os.path.dirname(__file__), '..', 'data', 'super-grok-analysis.json')
+INBOX_DIR = os.path.join(os.path.dirname(__file__), '..', 'data', 'grok-inbox')
 VALID = {'睇好', '睇淡', '中性', '未表態'}
 
 
@@ -48,15 +51,31 @@ def clean(a):
     return o
 
 
+def inbox_posts(raw):
+    """A batch file is {"posts": {id: row}} or just {id: row}. Anything else counts as empty."""
+    if not isinstance(raw, dict):
+        return {}
+    posts = raw.get('posts', raw)
+    return posts if isinstance(posts, dict) else {}
+
+
+def inbox_files():
+    return sorted(glob.glob(os.path.join(INBOX_DIR, '*.json')))
+
+
+def load_inbox():
+    inbox = dict(inbox_posts(read_json(INBOX, {})))
+    for f in inbox_files():
+        inbox.update(inbox_posts(read_json(f, {})))
+    return inbox
+
+
 def main():
     posts = read_json(work('new_posts.json'), {'posts': []})['posts']
     done = read_json(work('analysed.json'), {})
     if not isinstance(done, dict):
         done = {}
-    raw = read_json(INBOX, {})
-    inbox = raw.get('posts') if isinstance(raw, dict) else None
-    if not isinstance(inbox, dict):
-        inbox = {}
+    inbox = load_inbox()
     applied = 0
     for p in posts:
         pid = str(p.get('id'))
