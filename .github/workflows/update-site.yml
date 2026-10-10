@@ -25,6 +25,8 @@ jobs:
       TZ: Asia/Hong_Kong
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main  # latest main, not the commit that triggered the run, so publishing never conflicts
       - name: Install headless browser
         run: |
           npm install --no-save --no-audit --no-fund playwright@1.56.1
@@ -43,18 +45,18 @@ jobs:
       - name: Consensus and counts
         run: |
           echo '{"daily": null}' > "$WORK_DIR/windows.json"
-          node tools/stats.js index.html "$WORK_DIR/windows.json" "$WORK_DIR/stats.json"
+          node tools/stats.js index.html "$WORK_DIR/windows.json" "$WORK_DIR/stats.json" || { echo "::error::共識計算失敗"; exit 1; }
       - name: Consensus history, share text, sitemap
         run: python3 tools/publish_extras.py
       - name: Share image
         run: |
           if [ -f "$WORK_DIR/og.json" ]; then
             day=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['date'])" "$WORK_DIR/og.json")
-            node tools/og.js "$WORK_DIR/og.json" "og/$day.png"
+            node tools/og.js "$WORK_DIR/og.json" "og/$day.png" || { echo "::error::分享圖畫唔到"; exit 1; }
             cp "og/$day.png" og/latest.png
           fi
       - name: Check the page
-        run: node tools/check.js index.html
+        run: node tools/check.js index.html || { echo "::error::網頁檢查唔合格"; exit 1; }
       - name: Publish
         run: |
           git config user.name "github-actions[bot]"
@@ -62,5 +64,5 @@ jobs:
           git add index.html data/ og/ sitemap.xml
           git diff --cached --quiet && exit 0
           git commit -m "定時重建 $(date '+%Y-%m-%d %H:%M') HKT"
-          git pull --rebase origin main
+          git pull --rebase origin main || { git rebase --abort; echo "::error::main 喺更新期間有新改動，今次唔發佈，下次再試"; exit 1; }
           git push origin HEAD:main

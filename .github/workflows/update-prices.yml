@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main  # latest main, not the commit that triggered the run, so publishing never conflicts
       - run: python3 tools/update_prices.py index.html
       - name: Publish
         run: |
@@ -23,5 +25,5 @@ jobs:
           git add index.html
           git diff --cached --quiet && exit 0
           git commit -m "更新股價 $(TZ=Asia/Hong_Kong date '+%Y-%m-%d %H:%M') HKT"
-          git pull --rebase origin main
+          git pull --rebase origin main || { git rebase --abort; echo "::error::main 喺更新期間有新改動，今次唔發佈，下次再試"; exit 1; }
           git push origin HEAD:main
