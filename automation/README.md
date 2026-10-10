@@ -70,7 +70,8 @@ GitHub Actions 用 UTC，所以 cron 寫 `5 */4 * * *`（UTC 00:05 即香港 08:
 | 7 共識數字 | `tools/stats.js`（直接用網頁自己嘅計法） |
 | 7 Grok 寫分析 | 未做（等 `XAI_API_KEY`） |
 | 8 共識歷史、分享圖、sitemap | `tools/publish_extras.py`、`tools/og.js`、`tools/og.html` |
-| 9 發佈前檢查 | `tools/check.js` |
+| 8a 三個語言版本 | `tools/build_langs.py`（由 `index.html` 生成 `/zh/`、`/en/`、`/ko/`；固定文字譯文放 `i18n/en.json`、`i18n/ko.json`；`--extract` 重新列出要譯嘅中文介面文字去 `i18n/zh.json`） |
+| 9 發佈前檢查 | `tools/check.js`（四個頁面都檢查） |
 | 排程 | `.github/workflows/update-site.yml` |
 
 模型：預設自動揀帳戶可用嘅 Grok 文字模型（優先 Grok 4 fast）；要指定就喺 GitHub → Settings → Secrets and variables → Actions → Variables 加 `XAI_MODEL`。
@@ -170,11 +171,13 @@ GitHub Actions 用 UTC，所以 cron 寫 `5 */4 * * *`（UTC 00:05 即香港 08:
 | L4 | 刪帖規則加入每次更新 | Claude 寫程式，之後自動 | L2 | 模擬 8 日、29 日前嘅帖會被刪，其他保留 |
 | L5 | 生成 `/zh/`、`/en/`、`/ko/` 三套頁面同語言切換掣 | Claude 寫程式，之後自動 | L1 | 三個網址都開到，切換後停留同一頁 |
 | L6 | 根網址自動辨語言，加 `hreflang` | Claude（一次性） | L5 | 用英文、韓文、中文瀏覽器開根網址會跳去啱嘅版本 |
-| L7 | 用 Grok 將 `i18n/zh.json` 譯成英文同韓文 | Grok（一次性） | L1、L5、`XAI_API_KEY` | 英文版、韓文版介面冇中文 |
+| L7 | 將 `i18n/zh.json` 譯成英文同韓文 | Claude（一次性，2026-10-10 Tim 決定改由 Claude 做，唔使等 key） | L1、L5 | 英文版、韓文版介面冇中文 |
 | L8 | 每次更新順手譯韓文摘要同英文／韓文分析 | Grok（自動） | L3、L5、`XAI_API_KEY` | 新一輪更新後，韓文版新帖有韓文摘要 |
 | L9 | 推廣草稿：Reddit（r/singaporefi、r/investing）、Naver／DCInside／Kakao | Claude 寫，Tim 自己貼 | L7 | Tim 收到草稿 |
 
-L1 至 L6 唔使 Grok key，可以即刻做；L7、L8 要等 `XAI_API_KEY`。
+L1 至 L7 唔使 Grok key；L8 要等 `XAI_API_KEY`。網頁改咗介面文字之後，行 `python3 tools/build_langs.py --extract`，將 `i18n/zh.json` 新增嘅句子譯好加入 `i18n/en.json`、`i18n/ko.json` 嘅 `ui`；未譯嘅句子會暫時顯示中文。
+
+舊帖原文：英文版要帖文原文（`text`）。2026-10-10 前嘅舊帖冇原文，`fetch_posts.py` 每次更新會順手補最多 800 則；未補到嘅暫時顯示中文摘要。
 
 ### 9.5 驗收清單
 

@@ -100,11 +100,24 @@ def add_chrome(s, cur):
     return s
 
 
+def overlay(zh, tr):
+    if isinstance(zh, dict) and isinstance(tr, dict):
+        if all(isinstance(v, list) for v in zh.values()):  # summaries: {daily: [...], weekly: [...]}
+            return {k: overlay(v, tr.get(k)) for k, v in zh.items()}
+        return {**zh, **tr}  # highlights by day
+    if isinstance(zh, list) and isinstance(tr, list):  # items matched by date (and window)
+        key = lambda x: (x.get('date'), json.dumps(x.get('win'), sort_keys=True)) if isinstance(x, dict) else None  # noqa: E731
+        by = {key(x): x for x in tr}
+        out = [by.get(key(x), x) for x in zh]
+        return out
+    return zh if tr is None else tr
+
+
 def swap_data(d, lang, fixed):
     d = copy.deepcopy(d)
-    for k in CONTENT:
+    for k in CONTENT:  # translated items replace the Chinese ones; items not yet translated stay in Chinese
         if d.get(f'{k}_{lang}'):
-            d[k] = d[f'{k}_{lang}']
+            d[k] = overlay(d.get(k), d[f'{k}_{lang}'])
     for p in d['posts']:
         alt = p.get('text') if lang == 'en' else p.get('ko_summary') if lang == 'ko' else None
         if alt:
