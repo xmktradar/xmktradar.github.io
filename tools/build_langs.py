@@ -26,7 +26,10 @@ MARK = '<!-- lang-head -->'
 SWITCH_CSS = ('.lang-sw{display:flex;gap:4px;margin:6px 0 2px}.lang-sw a{font:600 12.5px/1 var(--f-body);'
               'padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);'
               'text-decoration:none;background:var(--surface)}.lang-sw a[aria-current]{color:var(--accent);'
-              'border-color:var(--accent);background:var(--accent-soft)}')
+              'border-color:var(--accent);background:var(--accent-soft)}'
+              # English and Korean labels run longer than Chinese: let event tags wrap on phones
+              '#dive>.lang-sw{justify-content:flex-end;margin:10px 16px 0}'
+              '@media(max-width:600px){.flag{white-space:normal;max-width:100%;flex-wrap:wrap}.tk:has(.flag){white-space:normal!important;max-width:100%}}')
 
 
 CJ = '\u3000-\u303f\u3400-\u9fff\uff00-\uffef'
@@ -36,11 +39,8 @@ RUN = re.compile(r'[%s](?:[^<>`\'"\n{}$\\|]*[%s）」』])?' % (CJ, CJ))
 def fragments(code):
     """(start, end, text) for every run of Chinese UI text in the page code: HTML text, string pieces
     between ${...}, attribute values. Comments and regular expressions (code logic) are skipped."""
-    def blank(m):
-        return re.sub(r'[^\n]', ' ', m.group())
-    c = re.sub(r'<!--.*?-->', blank, code, flags=re.S)
-    c = re.sub(r'/\*.*?\*/', blank, c, flags=re.S)
-    c = re.sub(r'(?m)(^|[\s;{}),])//[^\n]*', lambda m: m.group(1) + ' ' * (len(m.group()) - len(m.group(1))), c)
+    c = blank_comments(code)
+    made = set(re.findall(r"(?:return\s*|[{,]\s*l:)'([^'\n]{1,40})'", c))  # labels the code itself returns and compares
     out = []
     for m in RUN.finditer(c):
         a, b = m.start(), m.end()
@@ -51,8 +51,29 @@ def fragments(code):
             continue
         if (a and c[a - 1] in '/|(') or c[b:b + 1] in ('|', ')', '/'):
             continue  # inside a regular expression
+        if (c[b:b + 2] == "':" and c[a - 2:a] in ("{'", ",'")) or (re.search(r"[!=]==\s*'$", c[max(0, a - 6):a]) and t not in made):
+            continue  # a lookup key or a value the code compares with data, not display text
         out.append((a, b, t))
     return out
+
+
+def code_values(code):
+    """Chinese strings the page code compares with data values ('睇好':..., x==='負面新聞'): keep them in the data."""
+    made = set(re.findall(r"(?:return\s*|[{,]\s*l:)'([^'\n]{1,40})'", code))
+    found = re.findall(r"[{,]'([^'\n]{1,40})':", code) + re.findall(r"[!=]==\s*'([^'\n]{1,40})'", code)
+    return {x for x in found if re.search('[\u4e00-\u9fff]', x) and x not in made}
+
+
+PUNCT = {'（': ' (', '）': ')', '：': ': ', '，': ', ', '；': '; ', '、': ', ', '。': '. ', '「': '“', '」': '”',
+         '・': ' · ', '＋': '+', '／': ' / ', '｜': ' | '}
+
+
+def blank_comments(code):
+    def blank(m):
+        return re.sub(r'[^\n]', ' ', m.group())
+    c = re.sub(r'<!--.*?-->', blank, code, flags=re.S)
+    c = re.sub(r'/\*.*?\*/', blank, c, flags=re.S)
+    return re.sub(r'(?m)(^|[\s;{}),])//[^\n]*', lambda m: m.group(1) + ' ' * (len(m.group()) - len(m.group(1))), c)
 
 
 def translate(code, ui):
@@ -63,6 +84,15 @@ def translate(code, ui):
         if t in ui:
             parts += [code[last:a], ui[t]]
             last = b
+    code = ''.join(parts) + code[last:]
+    # Chinese punctuation left between translated pieces (outside comments and regular expressions)
+    c, parts, last = blank_comments(code), [], 0
+    for m in re.finditer('[%s]' % ''.join(PUNCT), c):
+        a = m.start()
+        if c[a - 1:a] in '[|/(' or c[a + 1:a + 2] in ']|/':
+            continue
+        parts += [code[last:a], PUNCT[m.group()]]
+        last = a + 1
     return ''.join(parts) + code[last:]
 
 
@@ -73,7 +103,11 @@ def head_tags(cur):
     js = ('<script>(function(){var k="ct-lang";document.addEventListener("click",function(e){'
           'var a=e.target.closest&&e.target.closest(".lang-sw a");if(!a)return;'
           'try{localStorage.setItem(k,a.dataset.lang)}catch(_){}'
-          'e.preventDefault();location.href=a.getAttribute("href")+location.hash})')
+          'e.preventDefault();location.href=a.getAttribute("href")+location.hash});'
+          # the stock page is an overlay (#dive) that covers the header: give it its own copy of the switch
+          'new MutationObserver(function(){var d=document.getElementById("dive"),n=document.querySelector("header .lang-sw");'
+          'if(d&&n&&!d.querySelector(".lang-sw"))d.insertBefore(n.cloneNode(true),d.firstChild)})'
+          '.observe(document.documentElement,{childList:true,subtree:true})')
     if cur is None:  # root: pick a version from the saved choice or the browser language (live site only)
         js += (';if(!/github\\.io$/.test(location.hostname))return;var l;try{l=localStorage.getItem(k)}catch(_){}'
                'if(!l){var n=(navigator.languages||[navigator.language||""]).join(",").toLowerCase();'
@@ -120,6 +154,11 @@ def swap_data(d, lang, fixed):
             d[k] = overlay(d.get(k), d[f'{k}_{lang}'])
     for p in d['posts']:
         alt = p.get('text') if lang == 'en' else p.get('ko_summary') if lang == 'ko' else None
+        if lang != 'zh':
+            p.pop('ticker_notes', None)  # short Chinese reasons; the page falls back to the summary above
+            for k in ('basis', 'horizon', 'theme'):
+                if p.get(k) in fixed:
+                    p[k] = fixed[p[k]]
         if alt:
             p['zh_summary'] = alt
             if 'summary_zh' in p:
@@ -142,10 +181,13 @@ def swap_data(d, lang, fixed):
 
 
 def build(lang, master):
-    tr = read_json(f'i18n/{lang}.json', {}) or {}
+    tr = read_json(f'i18n/{lang}.json', {}) if lang != 'zh' else {}
+    tr = tr if isinstance(tr, dict) else {}
     m = BLOCK.search(master)
     d = json.loads(m.group(2).replace('<\\/', '</'))
-    blob = json.dumps(swap_data(d, lang, tr.get('data') or {}), ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+    keys = code_values(master[:m.start(2)] + master[m.end(2):])
+    fixed = {k: v for k, v in (tr.get('data') or {}).items() if k not in keys}
+    blob = json.dumps(swap_data(d, lang, fixed), ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
     code = master[:m.start(2)], master[m.end(2):]
     out = [translate(part, tr.get('ui') or {}) for part in code]
     s = out[0] + blob + out[1]
@@ -158,8 +200,11 @@ def build(lang, master):
     s = add_chrome(s, lang)
     os.makedirs(lang, exist_ok=True)
     open(f'{lang}/index.html', 'w', encoding='utf-8').write(s)
-    left = len(re.findall(r'[一-鿿]', out[0] + out[1])) if lang != 'zh' else 0
-    return left
+    if lang == 'zh':
+        return 0
+    m = BLOCK.search(s)
+    code = s[:m.start(2)] + s[m.end(2):]
+    return len({t for _, _, t in fragments(code)} - code_values(code))
 
 
 def sitemap(gen):
