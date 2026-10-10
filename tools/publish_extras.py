@@ -37,9 +37,9 @@ def main():
     nr = lambda g: g['nr']
     both = lambda g: g['nb'] + g['nr']
     picks = (lst(s['bull'], nb, 3) + ('等' if len(s['bull']) > 3 else '')) if s['bull'] else '暫時未有'
-    params = {'date': day, 'picks': picks, 'n': f"今日 {s['accounts']} 個帳戶有出帖",
-              'bear': '共同睇淡：' + (lst(s['bear'], nr, 2) or '冇'), 'split': '分歧：' + (lst(s['split'], both, 2) or '冇')}
-    alt = f"今日 X 大神共同睇好：{picks}｜{params['n']}｜{params['bear']}｜分歧：{lst(s['split'], both, 3) or '冇'}"
+    params = {'date': day, 'picks': picks, 'n': f"今日 {s['accounts']} 個帳號有發文",
+              'bear': '共同看淡：' + (lst(s['bear'], nr, 2) or '無'), 'split': '分歧：' + (lst(s['split'], both, 2) or '無')}
+    alt = f"今日 X 大神共同看好：{picks}｜{params['n']}｜{params['bear']}｜分歧：{lst(s['split'], both, 3) or '無'}"
 
     h = open(HTML, encoding='utf-8').read()
     cur = re.search(r'<meta property="og:image:alt" content="([^"]*)"', h)
@@ -56,7 +56,7 @@ def main():
     sm = open('sitemap.xml', encoding='utf-8').read()
     sm = re.sub(r'(<loc>https://xmktradar\.github\.io/</loc><lastmod>)[^<]+', rf"\g<1>{gen.replace(' ', 'T')}:00+08:00", sm)
     open('sitemap.xml', 'w', encoding='utf-8').write(sm)
-    notice(f"共識 {day}（{s['from']} 至 {s['to']}）：睇好 {'、'.join(bull) or '冇'}｜睇淡 {'、'.join(bear) or '冇'}｜分歧 {'、'.join(split) or '冇'}"
+    notice(f"共識 {day}（{s['from']} 至 {s['to']}）：看好 {'、'.join(bull) or '無'}｜看淡 {'、'.join(bear) or '無'}｜分歧 {'、'.join(split) or '無'}"
            + ('｜分享圖要重畫' if changed else ''))
 
 

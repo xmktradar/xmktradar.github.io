@@ -27,6 +27,9 @@ def clean(a):
     for t in tickers:
         sbt.setdefault(t, '未表態')
     o = {'zh_summary': a['zh_summary'].strip().replace('——', '，').replace('—', '，'), 'tickers': tickers}
+    if isinstance(a.get('ko_summary'), str) and a['ko_summary'].strip():
+        o['ko_summary'] = a['ko_summary'].strip().replace('——', ', ').replace('—', ', ')
+    o['macro'] = bool(a.get('macro'))
     st = a.get('stance') if a.get('stance') in ('睇好', '睇淡', '中性') else None
     if tickers:
         o['stance_by_ticker'] = sbt
