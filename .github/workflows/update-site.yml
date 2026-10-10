@@ -1,7 +1,7 @@
 name: Update site
 # Every 4 hours (HKT 00:05, 04:05, 08:05 ...): fetch new posts, apply SuperGrok summaries and write-ups,
 # refresh prices, consensus history and share image, check the page, then publish.
-# Steps are described in automation/README.md.
+# Steps: fetch posts, merge SuperGrok summaries and write-ups, prices, stats, publish.
 on:
   workflow_dispatch:
   schedule:

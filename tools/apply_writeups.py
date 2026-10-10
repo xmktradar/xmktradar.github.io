@@ -4,7 +4,6 @@ SuperGrok (the subscription) writes the daily, weekly and monthly analysis, high
 cards and briefing once a day, in Chinese, English and Korean. This step checks each
 part, removes anything unsafe from the HTML, and puts it into the page data. A part
 that fails a check is skipped and logged; the rest still goes in.
-Rules for SuperGrok: automation/super-grok.md.
 """
 import re
 from html import escape
