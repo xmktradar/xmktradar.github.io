@@ -6,10 +6,13 @@
 - data/site-status.json: when the site last updated, how many posts wait for a
   summary, warnings, and the newest write-up dates. The daily check reads this.
 
-It also removes summaries the site has already used from data/super-grok-analysis.json.
-The GitHub connector SuperGrok uses can't read or write large files, so these stay small.
+It also removes summaries the site has already used: data/grok-inbox/ batch files are
+deleted once used, and data/super-grok-analysis.json is reset if it holds used or broken
+content. The GitHub connector SuperGrok uses can't read or write large files.
 """
-from analyse_posts import INBOX, clean
+import os
+
+from analyse_posts import INBOX, clean, inbox_files, inbox_posts
 from sitedata import load, now_hk, read_json, work, write_json
 
 GROUP_CAP = {'bull': 12, 'bear': 8, 'split': 8}  # tickers kept per side, strongest first
@@ -35,15 +38,20 @@ def slim(period):
 
 def prune_inbox():
     """Keep only well-formed summaries for posts still waiting; the rest are on the site already."""
-    raw = read_json(INBOX, {})
-    inbox = raw.get('posts') if isinstance(raw, dict) else None
-    if not isinstance(inbox, dict):
-        return 0
     waiting = {str(p.get('id')) for p in read_json('data/pending-posts.json', {'posts': []})['posts']}
-    keep = {k: v for k, v in inbox.items() if k in waiting and clean(v)}
-    if len(keep) != len(inbox):
-        write_json(INBOX, {**raw, 'posts': keep}, indent=1)
-    return len(inbox) - len(keep)
+    raw = read_json(INBOX, None)
+    posts = inbox_posts(raw)
+    keep = {k: v for k, v in posts.items() if k in waiting and clean(v)}
+    if not isinstance(raw, dict) or not isinstance(raw.get('posts'), dict) or len(keep) != len(posts):
+        write_json(INBOX, {'updated_hkt': (raw or {}).get('updated_hkt') if isinstance(raw, dict) else None,
+                           'posts': keep}, indent=1)
+    for f in inbox_files():
+        posts = inbox_posts(read_json(f, None))
+        keep = {k: v for k, v in posts.items() if k in waiting and clean(v)}
+        if not keep:
+            os.remove(f)
+        elif len(keep) != len(posts):
+            write_json(f, {'posts': keep}, indent=1)
 
 
 def main():
