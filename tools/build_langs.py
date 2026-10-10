@@ -29,7 +29,7 @@ SWITCH_CSS = ('.lang-sw{display:flex;gap:4px;margin:6px 0 2px}.lang-sw a{font:60
               'border-color:var(--accent);background:var(--accent-soft)}'
               # English and Korean labels run longer than Chinese: let event tags wrap on phones
               '#dive>.lang-sw{justify-content:flex-end;margin:10px 16px 0}'
-              '@media(max-width:600px){.flag{white-space:normal;max-width:100%;flex-wrap:wrap}.tk:has(.flag){white-space:normal!important;max-width:100%}}')
+              '@media(max-width:600px){.flag{white-space:normal;max-width:100%;flex-wrap:wrap}.tk:has(.flag){white-space:normal!important;max-width:100%}html:not([lang^=zh]) td:not(:first-child) .note{white-space:normal}}')
 
 
 CJ = '\u3000-\u303f\u3400-\u9fff\uff00-\uffef'
