@@ -55,13 +55,18 @@ jobs:
             node tools/og.js "$WORK_DIR/og.json" "og/$day.png" || { echo "::error::分享圖畫唔到"; exit 1; }
             cp "og/$day.png" og/latest.png
           fi
-      - name: Check the page
-        run: node tools/check.js index.html || { echo "::error::網頁檢查唔合格"; exit 1; }
+      - name: Language versions
+        run: python3 tools/build_langs.py
+      - name: Check the pages
+        run: |
+          for f in index.html zh/index.html en/index.html ko/index.html; do
+            node tools/check.js "$f" || { echo "::error::網頁檢查唔合格：$f"; exit 1; }
+          done
       - name: Publish
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add index.html data/ og/ sitemap.xml
+          git add index.html zh/ en/ ko/ data/ og/ sitemap.xml
           git diff --cached --quiet && exit 0
           git commit -m "定時重建 $(date '+%Y-%m-%d %H:%M') HKT"
           git pull --rebase origin main || { git rebase --abort; echo "::error::main 喺更新期間有新改動，今次唔發佈，下次再試"; exit 1; }

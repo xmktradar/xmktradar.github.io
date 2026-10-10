@@ -101,9 +101,14 @@ def main():
         # Keep today's daily view current: stretch the latest write-up's window to the new cutoff.
         # Grok rewrites the text itself in write_analysis.py when it is available.
         last_day = latest[:10]
-        for x in d.get('summaries', {}).get('daily', []):
-            if x.get('date') == last_day and isinstance(x.get('win'), dict):
-                x['win']['to'] = latest[:16]
+        for key in ('summaries', 'summaries_en', 'summaries_ko'):
+            for x in d.get(key, {}).get('daily', []):
+                if x.get('date') == last_day and isinstance(x.get('win'), dict):
+                    x['win']['to'] = latest[:16]
+    texts = read_json(work('text_backfill.json'), {})
+    for p in d['posts']:
+        if 'text' not in p and p['url'].lower() in texts:
+            p['text'] = texts[p['url'].lower()]
     pruned = prune(d, now)
     save(d)
     write_json(work('merge.json'), {'added': len(added), 'pruned': pruned, 'pending': len(keep), 'old_cutoff': old_cutoff,
