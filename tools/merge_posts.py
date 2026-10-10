@@ -37,7 +37,29 @@ def site_post(x, a):
         if a.get(k):
             p[k] = a[k]
     p['zh_summary'] = a['zh_summary']
+    if a.get('ko_summary'):
+        p['ko_summary'] = a['ko_summary']
+    p['macro'] = bool(a.get('macro'))
+    if (x.get('text') or '').strip():
+        p['text'] = x['text'][:1500]  # original wording, shown on the English page
     return p
+
+
+def keep_days(p):
+    """Retention (automation/README.md 9.3): stock or macro posts 28 days, everything else 7 days."""
+    has_stock = bool(p.get('tickers') or p.get('stance_by_ticker'))
+    return 28 if has_stock or p.get('macro') else 7
+
+
+def prune(d, now):
+    keep = [p for p in d['posts'] if (now - parse_iso(p['time_utc'])).total_seconds() < keep_days(p) * 86400]
+    gone = len(d['posts']) - len(keep)
+    if gone > len(d['posts']) / 2:
+        raise SystemExit(f'刪帖規則要刪 {gone}／{len(d["posts"])} 則，超過一半，停止更新')
+    d['posts'] = keep
+    live = {p['day'] for p in keep}
+    d['days'] = [x for x in d.get('days', []) if x['day'] in live]
+    return gone
 
 
 def main():
@@ -82,11 +104,12 @@ def main():
         for x in d.get('summaries', {}).get('daily', []):
             if x.get('date') == last_day and isinstance(x.get('win'), dict):
                 x['win']['to'] = latest[:16]
+    pruned = prune(d, now)
     save(d)
-    write_json(work('merge.json'), {'added': len(added), 'pending': len(keep), 'old_cutoff': old_cutoff,
+    write_json(work('merge.json'), {'added': len(added), 'pruned': pruned, 'pending': len(keep), 'old_cutoff': old_cutoff,
                                      'cutoff': d['meta']['cutoff_hkt'], 'days': sorted({p['day'] for p in added}),
                                      'generated_hkt': gen, 'failed': new.get('failed') or []})
-    notice(f'加入網站：新帖 {len(added)} 則，等待分析 {len(keep)} 則，資料截止 {d["meta"]["cutoff_hkt"]}')
+    notice(f'加入網站：新帖 {len(added)} 則，等待分析 {len(keep)} 則，按保留規則刪除 {pruned} 則，資料截止 {d["meta"]["cutoff_hkt"]}')
 
 
 if __name__ == '__main__':
