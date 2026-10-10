@@ -46,9 +46,9 @@ def site_post(x, a):
 
 
 def keep_days(p):
-    """Retention (automation/README.md 9.3): stock or macro posts 28 days, everything else 7 days."""
+    """Retention: stock or macro posts 7 days, everything else 2 days (2026-10-10)."""
     has_stock = bool(p.get('tickers') or p.get('stance_by_ticker'))
-    return 28 if has_stock or p.get('macro') else 7
+    return 7 if has_stock or p.get('macro') else 2
 
 
 def prune(d, now):
@@ -75,7 +75,7 @@ def main():
     old_cutoff = d['meta']['cutoff_hkt']
     added = [site_post(x, done[x['id']]) for x in add]
     d['posts'] = sorted(d['posts'] + added, key=lambda p: p['time_utc'], reverse=True)
-    write_json(PENDING, {'note': '已抓取但未經 Grok 分析嘅帖，下次更新會再試。', 'posts': keep}, indent=1)
+    write_json(PENDING, {'note': '已抓取但未經 Grok 分析嘋帖，下次更新會再試。', 'posts': keep}, indent=1)
 
     now = now_hk()
     gen = now.strftime('%Y-%m-%d %H:%M')
