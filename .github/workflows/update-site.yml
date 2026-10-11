@@ -1,7 +1,7 @@
 name: Update site
 # Every 4 hours (HKT 03:05, 07:05, 11:05, 15:05, 19:05, 23:05), about 1.5 h before each SuperGrok summary task (:35),
 # so new posts are on the site before SuperGrok reads them: fetch new posts, apply SuperGrok summaries and write-ups,
-# refresh prices, consensus history and share image, check the page, then publish.
+# refresh prices, consensus history and share image, build the language versions and stock pages, check, then publish.
 # Steps: fetch posts, merge SuperGrok summaries and write-ups, prices, stats, publish.
 on:
   workflow_dispatch:
@@ -67,6 +67,8 @@ jobs:
           fi
       - name: Language versions
         run: python3 tools/build_langs.py
+      - name: Stock pages
+        run: node tools/stock_pages.js
       - name: Check the pages
         run: |
           for f in index.html zh/index.html en/index.html ko/index.html; do
@@ -76,7 +78,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add -A index.html zh/ en/ ko/ data/ og/ px/ sitemap.xml
+          git add -A index.html zh/ en/ ko/ data/ og/ px/ av/ sitemap.xml
           git diff --cached --quiet && exit 0
           git commit -m "定時重建 $(date '+%Y-%m-%d %H:%M') HKT"
           git pull --rebase origin main || { git rebase --abort; echo "::error::main 嘋更新期間有新改動，今次唔發佈，下次再試"; exit 1; }

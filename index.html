@@ -1258,7 +1258,9 @@ let current='daily';
 const MAC=D.macro||null;
 const FLAGS={};(MAC&&MAC.flags||[]).forEach(f=>{(FLAGS[f.t]=FLAGS[f.t]||[]).push(f)});
 const flagEst=f=>/估計|未正式|未確認|預計|estimate|expected|unconfirmed|예상|추정|미확정/i.test(f.note||'');
-const flagText=f=>`${esc(f.type||'')}${f.date?' '+f.date.slice(5,7)+'/'+f.date.slice(8,10):''}${flagEst(f)?'（估計）':''}`;
+// 事件標籤顯示名（資料入面保留中文類別，語言版本翻譯顯示名）
+const FLAGNAME={'負面新聞':'負面新聞'};
+const flagText=f=>`${esc(FLAGNAME[f.type]||f.type||'')}${f.date?' '+f.date.slice(5,7)+'/'+f.date.slice(8,10):''}${flagEst(f)?'（估計）':''}`;
 const flagCls=f=>'flag'+(flagEst(f)?' est':'')+(f.type==='負面新聞'?' neg':'');
 const flagSpan=f=>`<span class="${flagCls(f)}" title="${esc(f.note||'')}">${flagText(f)}</span>`;
 const flagLink=f=>f.url?`<a class="${flagCls(f)}" href="${esc(f.url)}" target="_blank" rel="noopener" title="${esc(f.note||'')}">${flagText(f)}</a>`:flagSpan(f);
