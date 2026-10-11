@@ -83,3 +83,8 @@ jobs:
           git commit -m "定時重建 $(date '+%Y-%m-%d %H:%M') HKT"
           git pull --rebase origin main || { git rebase --abort; echo "::error::main 嘋更新期間有新改動，今次唔發佈，下次再試"; exit 1; }
           git push origin HEAD:main
+          echo published > "$WORK_DIR/published"
+      - name: Tell search engines (IndexNow)
+        continue-on-error: true
+        run: |
+          if [ -f "$WORK_DIR/published" ] || [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then python3 tools/indexnow.py; fi
