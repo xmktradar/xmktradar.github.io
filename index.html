@@ -779,7 +779,7 @@ nav.tabs a.tab-robo:hover{filter:brightness(.9)}
       <div class="social"><span class="social-l">追蹤我們</span><div class="social-row"><a class="soc soc-instagram" href="https://www.instagram.com/thecrowdtape/" target="_blank" rel="noopener" aria-label="The Crowd Tape 的 Instagram" title="The Crowd Tape 的 Instagram" data-net="instagram"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.15" fill="currentColor"/></svg></a><a class="soc soc-threads" href="https://www.threads.com/@thecrowdtape" target="_blank" rel="noopener" aria-label="The Crowd Tape 的 Threads" title="The Crowd Tape 的 Threads" data-net="threads"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg></a><a class="soc soc-x" href="https://x.com/thecrowdtape" target="_blank" rel="noopener" aria-label="The Crowd Tape 的 X" title="The Crowd Tape 的 X" data-net="x"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg></a></div></div>
     </div>
   </div>
-  <div class="wrap">
+  <div class="wrap tabbar">
     <nav class="tabs" role="tablist" aria-label="檢視">
       <button role="tab" data-v="daily" id="tab-daily">每日</button>
       <button role="tab" data-v="weekly" id="tab-weekly">每週<small class="tab-rng">（7 天）</small></button>
@@ -787,6 +787,8 @@ nav.tabs a.tab-robo:hover{filter:brightness(.9)}
       <button role="tab" data-v="tracked" id="tab-tracked">追蹤名單</button>
       <a href="robot.html" class="tab-robo"><span class="rb-full">機械人選股交易（Grok）</span><span class="rb-short">機械人交易</span></a>
     </nav>
+    <button type="button" class="srch-btn" id="srch-btn" aria-label="搜尋股票" title="搜尋股票" aria-expanded="false" aria-controls="srch">🔍</button>
+    <div class="srch" id="srch" role="search" hidden><div class="srch-row"><input id="srch-q" type="search" placeholder="輸入代號或公司名稱，例如 NVDA" aria-label="搜尋股票" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go"><button type="button" class="srch-x" id="srch-x" aria-label="關閉搜尋">✕</button></div><ul id="srch-r" role="listbox" aria-label="搜尋結果"></ul></div>
   </div>
 </header>
 <main class="wrap" id="view"></main>
@@ -1392,4 +1394,50 @@ f();addEventListener('resize',f);if(window.ResizeObserver)new ResizeObserver(f).
 (function(){var fab=document.querySelector('.donate-fab'),top=document.querySelector('header .donate-jump'),box=document.getElementById('donate');if(!fab||!top||!window.IntersectionObserver)return;
 var a=true,b=false;function u(){fab.classList.toggle('on',!a&&!b)}
 new IntersectionObserver(function(e){a=e[0].isIntersecting;u()}).observe(top);if(box)new IntersectionObserver(function(e){b=e[0].isIntersecting;u()}).observe(box)})();</script>
+<style>/* 搜尋股票 (Tim, 2026-10-11): 🔍 at the right end of the tab row; it stays pinned on phones. */
+.top .wrap.tabbar{display:flex;flex-wrap:nowrap;align-items:center;gap:6px;position:relative}
+.tabbar nav.tabs{flex:1 1 auto;min-width:0;width:auto}
+.srch-btn{flex:0 0 auto;width:36px;height:36px;border:1px solid var(--line);border-radius:999px;background:var(--panel);font-size:15px;line-height:1;cursor:pointer;padding:0}
+.srch-btn[aria-expanded=true]{border-color:var(--accent)}
+.srch{position:absolute;right:16px;top:calc(100% + 4px);width:min(420px,calc(100vw - 32px));background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.14);padding:10px;z-index:60}
+.srch[hidden]{display:none}
+.srch-row{display:flex;gap:6px}
+#srch-q{flex:1;min-width:0;font:inherit;font-size:16px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+#srch-q::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
+.srch-x{border:0;background:none;font-size:16px;color:var(--muted);cursor:pointer;padding:0 8px}
+#srch-r{list-style:none;margin:6px 0 0;padding:0;max-height:min(60vh,420px);overflow-y:auto}
+#srch-r:empty{display:none}
+#srch-r li[data-t]{display:flex;align-items:baseline;gap:8px;padding:8px;border-radius:8px;cursor:pointer}
+#srch-r li[aria-selected=true]{background:var(--accent-soft)}
+#srch-r li[data-t]:hover{background:var(--accent-soft)}
+#srch-r b{font-family:var(--f-data);min-width:56px}
+#srch-r .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted);font-size:13px}
+#srch-r .n{font-size:12px;color:var(--muted);white-space:nowrap}
+#srch-r .none{padding:8px;color:var(--muted);font-size:13px}
+@media(max-width:700px){.srch{left:12px;right:12px;width:auto}}</style>
+<script>(function(){const btn=document.getElementById('srch-btn'),box=document.getElementById('srch'),q=document.getElementById('srch-q'),ul=document.getElementById('srch-r');if(!btn)return;
+ let L=null,res=[],sel=0;
+ // Every stock with a price on the site, with how many accounts mentioned it in the last 28 days.
+ function list(){if(L)return L;const since=hkDate(Date.parse(TODAY+'T12:00:00+08:00')-27*DAY),acc={};
+  POSTS.forEach(x=>{if(x.d>=since)(acc[x.t]=acc[x.t]||new Set).add(x.acc)});
+  L=Object.keys(D.prices).filter(t=>!UNC(t)).map(t=>{const nm=D.prices[t].name||(OV[t]&&OV[t].name)||'';return{t,nm,lc:nm.toLowerCase(),n:acc[t]?acc[t].size:0}});return L}
+ // Exact ticker first, then ticker prefix, then company name; more accounts first within each.
+ function find(s){s=s.trim().replace(/^\$+/,'');if(!s)return[];const u=s.toUpperCase(),l=s.toLowerCase();
+  return list().map(x=>[x.t===u?0:x.t.startsWith(u)?1:l.length>1&&x.lc.includes(l)?2:9,x]).filter(a=>a[0]<9)
+   .sort((a,b)=>a[0]-b[0]||b[1].n-a[1].n||a[1].t.localeCompare(b[1].t)).slice(0,8).map(a=>a[1])}
+ function draw(){res=find(q.value);sel=0;
+  ul.innerHTML=!q.value.trim()?'':res.length?res.map((x,i)=>`<li role="option" id="srch-o${i}" data-t="${esc(x.t)}" aria-selected="${i===sel}"><b>${esc(x.t)}</b><span class="nm">${esc(x.nm)}</span><span class="n">${x.n} 個帳號</span></li>`).join(''):`<li class="none">找不到。只能搜尋追蹤帳號提過的股票。</li>`;
+  q.setAttribute('aria-activedescendant',res.length?'srch-o0':'')}
+ function mark(){ul.querySelectorAll('li[data-t]').forEach((li,i)=>li.setAttribute('aria-selected',i===sel));const li=document.getElementById('srch-o'+sel);if(li){li.scrollIntoView({block:'nearest'});q.setAttribute('aria-activedescendant',li.id)}}
+ function open(){box.hidden=false;btn.setAttribute('aria-expanded','true');q.focus();q.select();draw()}
+ function close(){box.hidden=true;btn.setAttribute('aria-expanded','false')}
+ function go(t){close();q.value='';draw();location.hash='stock/'+t}
+ btn.addEventListener('click',()=>box.hidden?open():close());
+ document.getElementById('srch-x').addEventListener('click',close);
+ q.addEventListener('input',draw);
+ q.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();if(res.length){sel=(sel+(e.key==='ArrowDown'?1:res.length-1))%res.length;mark()}}
+  else if(e.key==='Enter'){e.preventDefault();if(res[sel])go(res[sel].t)}else if(e.key==='Escape'){e.stopPropagation();close();btn.focus()}});
+ ul.addEventListener('click',e=>{const li=e.target.closest('li[data-t]');if(li)go(li.dataset.t)});
+ document.addEventListener('click',e=>{if(!box.hidden&&!box.contains(e.target)&&!btn.contains(e.target))close()});
+})();</script>
 </body></html>
