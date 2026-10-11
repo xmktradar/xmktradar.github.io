@@ -1,1 +1,43 @@
-{"posts": {"2109361165398913339": {"en_summary": "Replying to @readswithravi. No new market view. No specific stock mentioned.", "zh_summary": "回覆 @readswithravi。沒有新的市場觀點。沒有提及個股。", "ko_summary": "@readswithravi에게 답글. 새로운 시장 견해 없음. 특정 주식 언급 없음.", "tickers": [], "stance": null, "stance_by_ticker": {}, "horizon": null, "basis": null, "specific": false, "macro": false, "ticker_notes": {}}}}
+{
+  "posts": {
+    "2109361165398913339": {
+      "en_summary": "Replying to @readswithravi. No new market view. No specific stock mentioned.",
+      "zh_summary": "回覆 @readswithravi。沒有新的市場觀點。沒有提及個股。",
+      "ko_summary": "@readswithravi에게 답글. 새로운 시장 견해 없음. 특정 주식 언급 없음.",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "ticker_notes": {}
+    },
+    "2109360149169397848": {
+      "en_summary": "@StockSavvyShay jokes that Zuck is eating watermelon like he’s already seen what $META’s next AI model is capable of. No specific stock mentioned.",
+      "zh_summary": "@StockSavvyShay 開玩笑說 Zuck 吃西瓜的樣子好像已經看過 $META 下一個 AI 模型的能力。沒有提及個股。",
+      "ko_summary": "@StockSavvyShay는 Zuck가 수박을 먹는 모습이 $META의 다음 AI 모델이 무엇을 할 수 있는지 이미 본 것 같다고 농담한다. 특정 주식 언급 없음.",
+      "tickers": ["META"],
+      "stance": "中性",
+      "stance_by_ticker": {"META": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "ticker_notes": {}
+    },
+    "2109359728945942768": {
+      "en_summary": "Replying to @biancoresearch: Concentration is only part of the story. Over the past year the rolling 6-month correlation has turned slightly negative, another sign the headline index conceals two different market experiences. No specific stock mentioned.",
+      "zh_summary": "回覆 @biancoresearch：集中度只是故事的一部分。過去一年滾動 6 個月相關性已轉為略為負值，這是指數掩蓋了兩種不同市場體驗的另一個跡象。沒有提及個股。",
+      "ko_summary": "@biancoresearch에 답글: 집중도는 이야기의 일부일 뿐이다. 지난 1년 동안 6개월 롤링 상관관계가 약간 음수로 전환된 것은 헤드라인 지수가 두 가지 다른 시장 경험을 숨기고 있다는 또 다른 신호다. 특정 주식 언급 없음.",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "ticker_notes": {}
+    }
+  }
+}
