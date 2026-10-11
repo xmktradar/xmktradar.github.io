@@ -3,8 +3,8 @@
 Reads work/stats.json, the data in index.html and data/consensus-history.json.
 Writes work/og.json for tools/og.js when a picture needs drawing, points the master page's
 og:image at today's picture, and once a day (first update after 07:00 HKT) writes
-data/social-posts.json and social/index.html: a caption in Chinese, English and Korean in the
-@thecrowdtape Instagram format, for the Grok bot to post with og/social-<lang>.png.
+data/social-posts.json and social/index.html: posts in Chinese, English and Korean for Instagram
+(the @thecrowdtape format), Threads, X and Reddit, for the Grok bot to post with og/social-<lang>.png.
 """
 import hashlib
 import html
@@ -186,35 +186,76 @@ def caption(lang, day, s, items, win, quote_):
                          '⚠️ 공개 SNS 게시물을 정리한 것으로 투자 조언이 아닙니다. 사이트의 봇 페이지는 모의 거래입니다. 투자에는 위험이 따르니 스스로 판단하세요.'])}[lang]
     join = lambda ts, cap=8: sep.join(T(t) for t in ts[:cap]) + (L['more'](len(ts) - cap) if len(ts) > cap else '')
     lead = ' ' if lang == 'zh' else ''
+    head, win_line = lines[0], lines[2]
+    main = []
     if bull:
-        lines.append(L['cb'])
+        main.append(L['cb'])
         by = {}
         for x in items:
             by.setdefault(x['n'], []).append(x['t'])
         for n in sorted(by, reverse=True):
             ts = by[n]
             if n >= 3 or len(ts) <= 4:
-                lines.append(f'・{acc(n)}：{lead}{join(ts)}' if lang == 'zh' else f'・{acc(n)}: {join(ts)}')
+                main.append(f'・{acc(n)}：{lead}{join(ts)}' if lang == 'zh' else f'・{acc(n)}: {join(ts)}')
             else:
-                lines.append(L['rest'](len(ts), n))
+                main.append(L['rest'](len(ts), n))
     else:
-        lines += [L['none'], L['talk']]
+        main += [L['none'], L['talk']]
         for x in items[:5]:
-            lines.append(f'・{T(x["t"])}：{L["tr"](x)}' if lang == 'zh' else f'・{T(x["t"])}: {L["tr"](x)}')
+            main.append(f'・{T(x["t"])}：{L["tr"](x)}' if lang == 'zh' else f'・{T(x["t"])}: {L["tr"](x)}')
     if s['bear']:
-        lines.append(L['bear'] + lead + sep.join(f'{T(g["t"])}' + (f'（{acc(g["nr"])}）' if lang == 'zh' else f' ({acc(g["nr"])})') for g in s['bear'][:5]))
+        main.append(L['bear'] + lead + sep.join(f'{T(g["t"])}' + (f'（{acc(g["nr"])}）' if lang == 'zh' else f' ({acc(g["nr"])})') for g in s['bear'][:5]))
+    extra = []  # optional blocks, most important first
     if s['split']:
-        lines += ['', L['split'] + lead + sep.join(T(g['t']) + L['sp'](g['nb'], g['nr']) for g in s['split'][:4])]
+        extra.append(L['split'] + lead + sep.join(T(g['t']) + L['sp'](g['nb'], g['nr']) for g in s['split'][:4]))
     if bull:
         st = sorted([x for x in items if x['streak'] >= 2], key=lambda x: -x['streak'])[:6]
         if st:
-            lines += ['', L['stk'] + lead + sep.join(T(x['t']) + L['sd'](x['streak']) for x in st)]
+            extra.append(L['stk'] + lead + sep.join(T(x['t']) + L['sd'](x['streak']) for x in st))
     else:
-        lines += ['', L['sum']]
-    if quote_ and quote_.get('text'):
-        lines += ['', L['q'](quote_)]
-    lines += ['', L['note'], '', *L['end'], '', tags(lang, [x['t'] for x in items])]
-    return '\n'.join(lines)
+        extra.append(L['sum'])
+    q = L['q'](quote_) if quote_ and quote_.get('text') else None
+    tg = tags(lang, [x['t'] for x in items])
+    url = f'{SITE}{lang}/'
+    short = SHORT[lang]
+
+    # Instagram: the full post in Tim's format ("link in bio", since IG captions have no links).
+    ig = [head, '', win_line, '', *main]
+    for b in extra + ([q] if q else []):
+        ig += ['', b]
+    ig += ['', L['note'], '', *L['end'], '', tg]
+
+    # Threads (500 characters) and X (280, CJK counted double): drop the least important parts until it fits.
+    def fit(blocks, limit, size):
+        blocks = [b for b in blocks if b]
+        while len(blocks) > 3 and size('\n\n'.join(blocks)) > limit:
+            blocks.pop(-3)  # keep the headline and the link + disclaimer at the end
+        return '\n\n'.join(blocks)
+    tail = f"{short['live']}{url}\n{short['disc']}"
+    threads = fit([head, win_line, '\n'.join(main[:6]), *extra, q, tail, tg.split(' ')[0]], 480, len)
+    xs = [head, '\n'.join([t for t in main if t != L['none']][:3]), tail]
+    x = fit(xs, 270, xlen)
+    while xlen(x) > 270 and len(xs[1].split('\n')) > 1:
+        xs[1] = '\n'.join(xs[1].split('\n')[:-1])
+        x = '\n\n'.join(xs)
+
+    # Reddit: a title plus a Markdown body; no hashtags.
+    md = lambda t: re.sub(r'^・', '- ', t)
+    body = [win_line, '\n'.join(md(t) for t in main)] + extra + ([f'> {q}'] if q else [])
+    body += [L['note'], f"{short['live']}[{url}]({url})", short['disc_long']]
+    return {'instagram': '\n'.join(ig), 'threads': threads, 'x': x,
+            'reddit': {'title': re.sub(r'\s*[📊💬]$', '', head), 'body': '\n\n'.join(body)}}
+
+
+def xlen(t):
+    """Length as X counts it: links count 23, Chinese, Japanese, Korean and emoji count 2."""
+    t = re.sub(r'https?://\S+', 'x' * 23, t)
+    return sum(2 if ord(c) >= 0x1100 else 1 for c in t)
+
+
+SHORT = {'zh': {'live': '最新數字 👉 ', 'disc': '⚠️ 唔構成投資建議', 'disc_long': '⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。投資有風險，請自行判斷。'},
+         'en': {'live': 'Live numbers 👉 ', 'disc': '⚠️ Not investment advice', 'disc_long': '⚠️ A summary of public social media posts, not investment advice. Investing involves risk; do your own research.'},
+         'ko': {'live': '최신 수치 👉 ', 'disc': '⚠️ 투자 조언 아님', 'disc_long': '⚠️ 공개 SNS 게시물을 정리한 것으로 투자 조언이 아닙니다. 투자에는 위험이 따르니 스스로 판단하세요.'}}
 
 
 def social_page(sp):
@@ -222,14 +263,17 @@ def social_page(sp):
     rows = []
     for lang, name in (('zh', '中文'), ('en', 'English'), ('ko', '한국어')):
         img = sp['images'][lang]
+        p = sp['posts'][lang]
+        box = lambda title, text, n: (f'<h3>{title}</h3><textarea readonly rows="{n}">{html.escape(text)}</textarea>'
+                                      '<button onclick="navigator.clipboard.writeText(this.previousElementSibling.value);this.textContent=\'已複製 ✓\'">複製</button>')
         rows.append(f'''<section><h2>{name}</h2><a href="{html.escape(img)}" download><img src="{html.escape(img)}" alt=""></a>
-<textarea readonly rows="18">{html.escape(sp['posts'][lang])}</textarea>
-<button onclick="navigator.clipboard.writeText(this.previousElementSibling.value);this.textContent='已複製 ✓'">複製文字</button></section>''')
+{box('Instagram', p['instagram'], 18)}{box('Threads', p['threads'], 10)}{box('X', p['x'], 6)}
+{box('Reddit 標題', p['reddit']['title'], 2)}{box('Reddit 內文', p['reddit']['body'], 14)}</section>''')
     return f'''<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex"><title>每日社交媒體貼文 {sp['date']}｜The Crowd Tape</title>
 <style>body{{font:16px/1.5 system-ui,sans-serif;margin:0 auto;max-width:760px;padding:16px;background:#f7f8fb;color:#151a2c}}
 section{{background:#fff;border-radius:14px;padding:16px;margin:16px 0;box-shadow:0 1px 4px rgba(0,0,0,.08)}}
-img{{width:100%;border-radius:10px}}textarea{{width:100%;box-sizing:border-box;font:inherit;margin-top:10px}}
+img{{width:100%;border-radius:10px}}textarea{{width:100%;box-sizing:border-box;font:inherit;margin-top:4px}}h3{{margin:18px 0 0;font-size:15px}}
 button{{margin-top:8px;padding:8px 16px;border-radius:999px;border:0;background:#151a2c;color:#fff;font:inherit}}</style>
 <h1>{sp['date']} 社交媒體貼文</h1><p>{html.escape(sp['window'])}｜製作時間 {sp['made_hkt']} HKT｜撳圖片可以下載。</p>
 {''.join(rows)}</html>
@@ -249,7 +293,8 @@ def main():
 
     sp = read_json('data/social-posts.json', {})
     now = now_hk()
-    social = bool(items) and (sp.get('date') != day and now.hour >= SOCIAL_HOUR or os.environ.get('SOCIAL_FORCE') == '1')
+    old = isinstance((sp.get('posts') or {}).get('zh'), str)  # written before the per-platform versions existed
+    social = bool(items) and (sp.get('date') != day and now.hour >= SOCIAL_HOUR or old or os.environ.get('SOCIAL_FORCE') == '1')
     if social:
         win = window(s)
         sp = {'date': day, 'made_hkt': now.strftime('%Y-%m-%d %H:%M'), 'window': win,
