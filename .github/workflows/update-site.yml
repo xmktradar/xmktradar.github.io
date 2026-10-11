@@ -58,12 +58,11 @@ jobs:
       - name: Files for SuperGrok (consensus numbers, site status)
         continue-on-error: true
         run: python3 tools/write_status.py
-      - name: Share image
+      - name: Share image and social posts
         run: |
+          python3 tools/share.py
           if [ -f "$WORK_DIR/og.json" ]; then
-            day=$(python3 -c "import json,sys;print(json.load(open(sys.argv[1]))['date'])" "$WORK_DIR/og.json")
-            node tools/og.js "$WORK_DIR/og.json" "og/$day.png" || { echo "::error::分享圖畫唔到"; exit 1; }
-            cp "og/$day.png" og/latest.png
+            node tools/og.js "$WORK_DIR/og.json" || { echo "::error::分享圖畫唔到"; exit 1; }
           fi
       - name: Language versions
         run: python3 tools/build_langs.py
@@ -78,7 +77,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add -A index.html zh/ en/ ko/ data/ og/ px/ av/ sitemap.xml
+          git add -A index.html zh/ en/ ko/ data/ og/ px/ av/ social/ sitemap.xml
           git diff --cached --quiet && exit 0
           git commit -m "定時重建 $(date '+%Y-%m-%d %H:%M') HKT"
           git pull --rebase origin main || { git rebase --abort; echo "::error::main 嘋更新期間有新改動，今次唔發佈，下次再試"; exit 1; }

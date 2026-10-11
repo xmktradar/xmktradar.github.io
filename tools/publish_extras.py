@@ -1,7 +1,6 @@
-"""Step 8: consensus history, share image text, meta tags and sitemap, from work/stats.json.
+"""Step 8: consensus history, share image alt text, meta tags and sitemap, from work/stats.json.
 
-Writes work/og.json (share image text) only when the day's consensus changed, so the
-image is re-rendered only then.
+The share pictures themselves are prepared by tools/share.py.
 """
 import json
 import re
@@ -29,7 +28,8 @@ def main():
     save(d, HTML)
 
     ch = read_json('data/consensus-history.json', {'days': {}})
-    ch['days'][day] = {'bull': bull, 'bear': bear, 'split': split, 'window': [s['from'], s['to']], 'src': 'live', 'updated_hkt': gen}
+    ch['days'][day] = {'bull': bull, 'bear': bear, 'split': split, 'window': [s['from'], s['to']],
+                     'top': [g['t'] for g in s['top'][:10]], 'src': 'live', 'updated_hkt': gen}
     ch['updated_hkt'] = gen
     write_json('data/consensus-history.json', ch, indent=1)
 
@@ -37,27 +37,19 @@ def main():
     nr = lambda g: g['nr']
     both = lambda g: g['nb'] + g['nr']
     picks = (lst(s['bull'], nb, 3) + ('等' if len(s['bull']) > 3 else '')) if s['bull'] else '暫時未有'
-    params = {'date': day, 'picks': picks, 'n': f"今日 {s['accounts']} 個帳號有發文",
-              'bear': '共同看淡：' + (lst(s['bear'], nr, 2) or '無'), 'split': '分歧：' + (lst(s['split'], both, 2) or '無')}
-    alt = f"今日 X 大神共同看好：{picks}｜{params['n']}｜{params['bear']}｜分歧：{lst(s['split'], both, 3) or '無'}"
+    n = f"今日 {s['accounts']} 個帳號有發文"
+    alt = f"今日 X 大神共同看好：{picks}｜{n}｜共同看淡：{lst(s['bear'], nr, 2) or '無'}｜分歧：{lst(s['split'], both, 3) or '無'}"
 
     h = open(HTML, encoding='utf-8').read()
-    cur = re.search(r'<meta property="og:image:alt" content="([^"]*)"', h)
-    cur_img = re.search(r'https://xmktradar\.github\.io/og/(\d{4}-\d{2}-\d{2})\.png\?v=([\w-]+)', h)
-    changed = not cur or cur.group(1) != alt or not cur_img or cur_img.group(1) != day
     bid = d['meta']['build_id'].replace('build-', '')
     h = re.sub(r'<meta name="generator" content="market-consensus build-[^"]+">', f'<meta name="generator" content="market-consensus build-{bid}">', h)
-    if changed:
-        h = re.sub(r'(https://xmktradar\.github\.io/og/)\d{4}-\d{2}-\d{2}\.png\?v=[\w-]+', rf'\g<1>{day}.png?v={bid}', h)
-        h = re.sub(r'(<meta (?:property="og:image:alt"|name="twitter:image:alt") content=")[^"]*(")', lambda m: m.group(1) + alt + m.group(2), h)
-        write_json(work('og.json'), params)
+    h = re.sub(r'(<meta (?:property="og:image:alt"|name="twitter:image:alt") content=")[^"]*(")', lambda m: m.group(1) + alt + m.group(2), h)
     open(HTML, 'w', encoding='utf-8').write(h)
 
     sm = open('sitemap.xml', encoding='utf-8').read()
     sm = re.sub(r'(<loc>https://xmktradar\.github\.io/</loc><lastmod>)[^<]+', rf"\g<1>{gen.replace(' ', 'T')}:00+08:00", sm)
     open('sitemap.xml', 'w', encoding='utf-8').write(sm)
-    notice(f"共識 {day}（{s['from']} 至 {s['to']}）：看好 {'、'.join(bull) or '無'}｜看淡 {'、'.join(bear) or '無'}｜分歧 {'、'.join(split) or '無'}"
-           + ('｜分享圖要重畫' if changed else ''))
+    notice(f"共識 {day}（{s['from']} 至 {s['to']}）：看好 {'、'.join(bull) or '無'}｜看淡 {'、'.join(bear) or '無'}｜分歧 {'、'.join(split) or '無'}")
 
 
 if __name__ == '__main__':
