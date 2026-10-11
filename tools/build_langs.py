@@ -267,6 +267,7 @@ def build(lang, master):
     s = out[0] + blob + out[1]
     s = re.sub(r'<html lang="[^"]*"', f'<html lang="{LANGS[lang][0]}"', s, count=1)
     s = re.sub(r'(<meta property="og:url" content=")[^"]*', rf'\g<1>{SITE}{lang}/', s, count=1)
+    s = s.replace('href="/zh/feed.xml"', f'href="/{lang}/feed.xml"', 1)
     alt = (tr.get('meta') or {}).get('image_alt')
     if alt:  # the Chinese alt text changes every day; other versions use a fixed description
         s = re.sub(r'(<meta (?:property="og|name="twitter):image:alt" content=")[^"]*', lambda m: m.group(1) + alt, s)
