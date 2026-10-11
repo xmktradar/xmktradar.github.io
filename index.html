@@ -823,8 +823,10 @@ const TODAY=hkDate(CUT);
 // ---------- 把貼文展開成「帖 × 股票」觀點（等同設計稿的 POSTS，一帖一股） ----------
 // 股票＝貼文標出的代號 ∪ 分析師逐股立場（stance_by_ticker）裡的代號
 // 一律中文：只用寫手 zh_summary／中文 summary_zh，永不顯示英文原文（讀者撳「原始貼文」睇原文）
-const HAS_ZH=s=>typeof s==='string'&&/[\u3400-\u9fff]/.test(s);
-const ALLP=D.posts.map(p=>({...p,text:undefined,summary_zh:HAS_ZH(p.zh_summary)?p.zh_summary:HAS_ZH(p.summary_zh)?p.summary_zh:'',truncated:HAS_ZH(p.zh_summary)?false:p.truncated,tickers:[...new Set([...(p.tickers||[]),...Object.keys(p.stance_by_ticker&&typeof p.stance_by_ticker==='object'?p.stance_by_ticker:{})].map(t=>String(t).replace(/^\$/,'').toUpperCase()))],ms:Date.parse(p.time_utc),acc:p.reposted_by||p.handle,date:p.time_hkt.slice(0,10)})).sort((a,b)=>a.ms-b.ms);
+// /en/ and /ko/ put the English original or the Korean summary in zh_summary: any text counts there
+const PAGE_LANG=document.documentElement.lang||'';
+const HAS_ZH=s=>typeof s==='string'&&(/^zh/.test(PAGE_LANG)?/[\u3400-\u9fff]/:/\S/).test(s);
+const ALLP=D.posts.map(p=>({...p,text:undefined,summary_zh:HAS_ZH(p.zh_summary)?p.zh_summary:HAS_ZH(p.summary_zh)?p.summary_zh:'',truncated:HAS_ZH(p.zh_summary)&&PAGE_LANG!=='en'?false:p.truncated,tickers:[...new Set([...(p.tickers||[]),...Object.keys(p.stance_by_ticker&&typeof p.stance_by_ticker==='object'?p.stance_by_ticker:{})].map(t=>String(t).replace(/^\$/,'').toUpperCase()))],ms:Date.parse(p.time_utc),acc:p.reposted_by||p.handle,date:p.time_hkt.slice(0,10)})).sort((a,b)=>a.ms-b.ms);
 const valid=p=>!p.folded_into&&p.theme!=='非市場';
 // 立場一律按個股讀 stance_by_ticker（唔用整篇帖立場）；冇標示＝未表態
 function stanceOf(p,t){const m=p.stance_by_ticker&&typeof p.stance_by_ticker==='object'?p.stance_by_ticker:null;if(!m)return p.stance&&S_OF[p.stance]?{s:S_OF[p.stance],star:true}:{s:'none',star:false};const k=Object.keys(m).find(x=>String(x).replace(/^\$/,'').toUpperCase()===t);return {s:k?(S_OF[m[k]]||'none'):'none',star:false}}
