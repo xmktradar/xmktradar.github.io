@@ -33,6 +33,12 @@ const path = require('path');
     if (job.social) fs.copyFileSync(out, `og/social-${lang}.png`);
     console.log('og', out);
   }
+  // Keep only today's and yesterday's dated pictures (Tim, 2026-10-11); latest*.png and social-*.png stay.
+  const keep = new Date(Date.parse(job.date + 'T00:00:00Z') - 864e5).toISOString().slice(0, 10);
+  for (const f of fs.readdirSync('og')) {
+    const m = f.match(/^(\d{4}-\d{2}-\d{2})(-[a-z]+)?\.png$/);
+    if (m && m[1] < keep) { fs.unlinkSync('og/' + f); console.log('og removed', f); }
+  }
   fs.writeFileSync('og/latest.json', JSON.stringify({ date: job.date, hash: job.hash }) + '\n');
   console.log('fonts', fonts.join(','));
   // A missing web font only makes the picture plainer; never block the update for it.
