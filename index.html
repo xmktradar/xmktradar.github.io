@@ -868,6 +868,15 @@ const DATES=[...new Set(ALLP.map(p=>p.date))].sort();
 // ---------- 股價 ----------
 function closes(t){if(UNC(t))return null;const p=D.prices[t];return p&&p.c&&p.c.length?p.c:null}
 function pchg(t,days){const c=closes(t);if(!c)return null;const last=c[c.length-1];if(days==null)return (last[1]/c[0][1]-1)*100;const lim=new Date(Date.parse(last[0])-days*DAY).toISOString().slice(0,10);let base=null;for(const r of c){if(r[0]<=lim)base=r;else break}return base?(last[1]/base[1]-1)*100:null}
+// 股價分檔：語言版本頁只帶最近 45 日收市價（prices[t].lite），撳入個股先載入 /px/<代號>.json 嘅完整股價同日內價
+const PXFAIL={},PXBUSY={};
+const pxWait=t=>!!(D.prices[t]&&D.prices[t].lite);
+function loadPx(t){if(PXFAIL[t]||PXBUSY[t])return;PXBUSY[t]=1;
+ fetch('/px/'+t.replace(/[^A-Za-z0-9.\-]/g,'_')+'.json?v='+encodeURIComponent((D.meta&&D.meta.build_id)||''))
+  .then(r=>{if(!r.ok)throw new Error(r.status);return r.json()})
+  .then(j=>{const p=D.prices[t];if(j.c&&j.c.length)p.c=j.c;delete p.lite;if(j.intra)INTRA[t]=j.intra})
+  .catch(()=>{PXFAIL[t]=1})
+  .finally(()=>{PXBUSY[t]=0;const m=decodeURIComponent(location.hash.slice(1)).match(/^stock[\/-](.+)$/);if(m&&m[1].toUpperCase()===t){const el=document.getElementById('dive'),y=el.scrollTop;openDive(t);el.scrollTop=y}})}
 function closeOn(t,d){const c=closes(t);if(!c)return null;let r=null;for(const x of c){if(x[0]<=d)r=x;else break}return r}
 const money=v=>v==null?'—':(v>=1000?v.toLocaleString('en-US',{maximumFractionDigits:2}):v.toFixed(2));
 // 非美元報價（例如澳交所）：清楚標示貨幣與交易日
@@ -1146,6 +1155,7 @@ function chartSeries(t,rg){const I=INTRA[t]||{};
 const rangesFor=t=>RANGES.filter(([k])=>k!=='1d'||chartSeries(t,'1d'));
 function drawChart(t){const el=document.getElementById('chart');if(!el)return;const note=document.getElementById('chnote');if(note)note.textContent='';
  if(UNC(t)){el.innerHTML=empty(`代號未確認：$${esc(t)} 可能有歧義${OV[t].note?'（'+esc(OV[t].note)+'）':''}，因此不顯示股價與走勢圖。`);return}
+ if(pxWait(t)){el.innerHTML=empty(PXFAIL[t]?'股價載入失敗，請重新整理頁面。':'股價載入中…');loadPx(t);return}
  const c=closes(t);if(!c){el.innerHTML=empty(`無股價資料（$${esc(t)} 的股價抓取失敗或尚未抓取）。`);return}
  if(chartRange==='1d'&&!chartSeries(t,'1d'))chartRange='1w';
  const S=chartSeries(t,chartRange);const data=S?S.pts:[];if(data.length<2){el.innerHTML=empty('此區間股價資料不足。');return}
