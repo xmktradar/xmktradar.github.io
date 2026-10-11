@@ -59,6 +59,9 @@ function shell(master, lang, t, list, body, meta) {
 ${ga}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="robots" content="index,follow">
 <title>${esc(meta.title)}</title>
 <meta name="description" content="${esc(meta.desc)}">
