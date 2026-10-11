@@ -37,8 +37,9 @@ def site_post(x, a):
         if a.get(k):
             p[k] = a[k]
     p['zh_summary'] = a['zh_summary']
-    if a.get('ko_summary'):
-        p['ko_summary'] = a['ko_summary']
+    for k in ('en_summary', 'ko_summary'):
+        if a.get(k):
+            p[k] = a[k]
     p['macro'] = bool(a.get('macro'))
     if (x.get('text') or '').strip():
         p['text'] = x['text'][:1500]  # original wording, shown on the English page
@@ -128,7 +129,8 @@ def main():
     save(d)
     write_json(work('merge.json'), {'added': len(added), 'pruned': pruned, 'pending': len(keep), 'old_cutoff': old_cutoff,
                                      'cutoff': d['meta']['cutoff_hkt'], 'days': sorted({p['day'] for p in added}),
-                                     'generated_hkt': gen, 'failed': new.get('failed') or []})
+                                     'generated_hkt': gen, 'failed': new.get('failed') or [],
+                                     'added_without_en': sum(1 for p in added if not p.get('en_summary'))})
     notice(f'加入網站：新帖 {len(added)} 則，等待分析 {len(keep)} 則，按保留規則刪除 {pruned} 則，資料截止 {d["meta"]["cutoff_hkt"]}')
 
 

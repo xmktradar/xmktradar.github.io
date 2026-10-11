@@ -4,7 +4,8 @@
   "meta": {"image_alt": "..."}}. i18n/zh.json lists the Chinese UI texts (python3 tools/build_langs.py --extract).
   "ui" replaces text in the page code (longest first); "data" replaces whole strings in the data block
   (category names, roles and the like). A missing file or entry leaves the Chinese text in place.
-- Changing content: English posts show the original X text; Korean posts show ko_summary.
+- Changing content: English posts show en_summary with the original X text behind "See original"
+  (posts without en_summary show the original text); Korean posts show ko_summary.
   summaries_<lang>, highlights_<lang>, briefings_<lang> replace the Chinese ones when present.
 - Every version gets <html lang>, canonical, hreflang, the language switch and absolute asset paths.
 - index.html itself gets the same switch and hreflang plus a script that sends visitors to the
@@ -153,12 +154,17 @@ def swap_data(d, lang, fixed):
         if d.get(f'{k}_{lang}'):
             d[k] = overlay(d.get(k), d[f'{k}_{lang}'])
     for p in d['posts']:
-        alt = p.get('text') if lang == 'en' else p.get('ko_summary') if lang == 'ko' else None
+        alt = (p.get('en_summary') or p.get('text')) if lang == 'en' else p.get('ko_summary') if lang == 'ko' else None
+        if lang == 'en' and p.get('en_summary') and p.get('text'):
+            p['orig'] = p['text']  # shown behind "See original"
+            p['truncated'] = False
         if lang != 'zh':
             p.pop('ticker_notes', None)  # short Chinese reasons; the page falls back to the summary above
             for k in ('basis', 'horizon', 'theme'):
                 if p.get(k) in fixed:
                     p[k] = fixed[p[k]]
+        if lang != 'en':
+            p.pop('en_summary', None)
         if alt:
             p['zh_summary'] = alt
             if 'summary_zh' in p:
