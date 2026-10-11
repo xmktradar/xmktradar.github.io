@@ -1375,8 +1375,16 @@ var seen=false;try{seen=sessionStorage.getItem('ct_viewed')==='1'}catch(e){}
 fetch(API+(seen?'get/':'hit/')+KEY).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||typeof j.value!=='number')return;el.textContent=(BASE+j.value).toLocaleString('en-US');try{sessionStorage.setItem('ct_viewed','1')}catch(e){}}).catch(function(){});})();
 </script>
 <style>@media(max-width:700px){header.top{top:calc(env(safe-area-inset-top,0px) + var(--hd-top,0px))}}</style>
+<button type="button" class="donate-fab" data-jump="donate">☕ <span>捐贈</span></button>
+<style>.donate-fab{display:none}
+@media(max-width:700px){.donate-fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:inline-flex;align-items:center;gap:4px;padding:9px 14px;border-radius:999px;border:1px dashed var(--line-strong);background:var(--panel);color:var(--tx-strong);font-weight:700;font-size:14px;box-shadow:0 3px 10px rgba(59,47,37,.15);opacity:0;pointer-events:none;transition:opacity .2s}
+ .donate-fab.on{opacity:1;pointer-events:auto}}</style>
 <script>/* Phones: only the tab row stays pinned while scrolling; the rest of the header scrolls away. */
 (function(){var h=document.querySelector('header.top'),t=h&&h.querySelector('nav.tabs');if(!t)return;
 function f(){var m=matchMedia('(max-width:700px)').matches;document.documentElement.style.setProperty('--hd-top',m?-(t.getBoundingClientRect().top-h.getBoundingClientRect().top)+'px':'0px')}
 f();addEventListener('resize',f);if(window.ResizeObserver)new ResizeObserver(f).observe(h)})();</script>
+<script>/* Phones: once the header's donate button has scrolled away, show a small one in the corner, hidden again near the donation area. */
+(function(){var fab=document.querySelector('.donate-fab'),top=document.querySelector('header .donate-jump'),box=document.getElementById('donate');if(!fab||!top||!window.IntersectionObserver)return;
+var a=true,b=false;function u(){fab.classList.toggle('on',!a&&!b)}
+new IntersectionObserver(function(e){a=e[0].isIntersecting;u()}).observe(top);if(box)new IntersectionObserver(function(e){b=e[0].isIntersecting;u()}).observe(box)})();</script>
 </body></html>
