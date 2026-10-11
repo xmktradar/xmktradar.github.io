@@ -1,39 +1,55 @@
 {
  "note": "Written by GitHub Actions on every update. SuperGrok daily check reads this.",
- "checked_hkt": "2026-10-11 09:09",
- "generated_hkt": "2026-10-11 09:03",
+ "checked_hkt": "2026-10-11 09:43",
+ "generated_hkt": "2026-10-11 09:39",
  "cutoff_hkt": "2026-10-11T04:37:17+08:00",
- "posts_on_site": 3186,
+ "posts_on_site": 1617,
  "added_this_run": 0,
- "waiting_for_summary": 116,
- "pruned_this_run": 1,
+ "waiting_for_summary": 107,
+ "pruned_this_run": 7,
  "fetch_failed": [],
  "warnings": [
-  "未分析：116 則新帖等待 Grok 分析"
+  "未分析：107 則新帖等待 Grok 分析"
  ],
- "writeups_applied": [],
+ "writeups_applied": [
+  "zh/daily 2026-10-11",
+  "zh/weekly 2026-10-11",
+  "zh/monthly 2026-10-11",
+  "zh/highlights 2026-10-11",
+  "zh/briefing 2026-10-11",
+  "en/daily 2026-10-11",
+  "en/weekly 2026-10-11",
+  "en/monthly 2026-10-11",
+  "en/highlights 2026-10-11",
+  "en/briefing 2026-10-11",
+  "ko/daily 2026-10-11",
+  "ko/weekly 2026-10-11",
+  "ko/monthly 2026-10-11",
+  "ko/highlights 2026-10-11",
+  "ko/briefing 2026-10-11"
+ ],
  "writeups_rejected": [],
  "latest_writeups": {
   "zh": {
-   "daily": "2026-10-09",
-   "weekly": null,
-   "monthly": null,
-   "highlights": "2026-10-09",
-   "briefing": "2026-10-09"
+   "daily": "2026-10-11",
+   "weekly": "2026-10-11",
+   "monthly": "2026-10-11",
+   "highlights": "2026-10-11",
+   "briefing": "2026-10-11"
   },
   "en": {
-   "daily": "2026-10-09",
-   "weekly": null,
-   "monthly": null,
-   "highlights": "2026-10-09",
-   "briefing": "2026-10-09"
+   "daily": "2026-10-11",
+   "weekly": "2026-10-11",
+   "monthly": "2026-10-11",
+   "highlights": "2026-10-11",
+   "briefing": "2026-10-11"
   },
   "ko": {
-   "daily": "2026-10-09",
-   "weekly": null,
-   "monthly": null,
-   "highlights": "2026-10-09",
-   "briefing": "2026-10-09"
+   "daily": "2026-10-11",
+   "weekly": "2026-10-11",
+   "monthly": "2026-10-11",
+   "highlights": "2026-10-11",
+   "briefing": "2026-10-11"
   }
  }
 }
