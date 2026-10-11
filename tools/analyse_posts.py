@@ -11,6 +11,16 @@ import os
 
 from sitedata import notice, read_json, work, write_json
 
+try:  # SuperGrok sometimes slips into Simplified Chinese when translating from English (2026-10-11)
+    import opencc
+    _S2T = opencc.OpenCC('s2t').convert
+except ImportError:
+    _S2T = None
+
+
+def traditional(s):
+    return _S2T(s) if _S2T else s
+
 INBOX = os.path.join(os.path.dirname(__file__), '..', 'data', 'super-grok-analysis.json')
 INBOX_DIR = os.path.join(os.path.dirname(__file__), '..', 'data', 'grok-inbox')
 VALID = {'睇好', '睇淡', '中性', '未表態'}
@@ -26,7 +36,7 @@ def clean(a):
     tickers = list(dict.fromkeys(tickers + [t for t in sbt if t not in tickers]))
     for t in tickers:
         sbt.setdefault(t, '未表態')
-    o = {'zh_summary': a['zh_summary'].strip().replace('——', '，').replace('—', '，'), 'tickers': tickers}
+    o = {'zh_summary': traditional(a['zh_summary'].strip()).replace('——', '，').replace('—', '，'), 'tickers': tickers}
     for k in ('en_summary', 'ko_summary'):
         if isinstance(a.get(k), str) and a[k].strip():
             o[k] = a[k].strip().replace('——', ', ').replace('—', ', ')
@@ -45,7 +55,7 @@ def clean(a):
     if tickers:
         o['specific'] = bool(a.get('specific'))
     notes = a.get('ticker_notes') if isinstance(a.get('ticker_notes'), dict) else {}
-    notes = {str(k).upper().lstrip('$'): str(v)[:40] for k, v in notes.items()}
+    notes = {str(k).upper().lstrip('$'): traditional(str(v))[:40] for k, v in notes.items()}
     notes = {k: v for k, v in notes.items() if sbt.get(k) in ('睇好', '睇淡')}
     if notes:
         o['ticker_notes'] = notes
@@ -77,6 +87,8 @@ def main():
     if not isinstance(done, dict):
         done = {}
     inbox = load_inbox()
+    if _S2T is None:
+        notice('未裝 opencc，中文摘要冇自動轉繁體', 'warning')
     applied = 0
     for p in posts:
         pid = str(p.get('id'))

@@ -32,6 +32,9 @@ jobs:
         run: |
           npm install --no-save --no-audit --no-fund playwright@1.56.1
           npx playwright install --with-deps chromium
+      - name: Install Chinese converter
+        continue-on-error: true
+        run: pip install opencc-python-reimplemented==0.1.7
       - name: Fetch new posts
         continue-on-error: true
         run: python3 tools/fetch_posts.py
