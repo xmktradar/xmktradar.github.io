@@ -1,7 +1,7 @@
 """Step 3: apply summaries SuperGrok already wrote. Do not call the xAI API.
 
-SuperGrok (the subscription, not API credits) reads new posts and writes Traditional
-Chinese plus Korean summaries, one small file per batch, into data/grok-inbox/
+SuperGrok (the subscription, not API credits) reads new posts and writes an English summary
+first, then Traditional Chinese and Korean translations of it (2026-10-11), one small file per batch, into data/grok-inbox/
 (the older single file data/super-grok-analysis.json is still read). This step only
 copies well-formed rows into work/analysed.json. Posts without a summary stay in
 data/pending-posts.json. write_status.py removes inbox files once the site has used them.
@@ -27,8 +27,9 @@ def clean(a):
     for t in tickers:
         sbt.setdefault(t, '未表態')
     o = {'zh_summary': a['zh_summary'].strip().replace('——', '，').replace('—', '，'), 'tickers': tickers}
-    if isinstance(a.get('ko_summary'), str) and a['ko_summary'].strip():
-        o['ko_summary'] = a['ko_summary'].strip().replace('——', ', ').replace('—', ', ')
+    for k in ('en_summary', 'ko_summary'):
+        if isinstance(a.get(k), str) and a[k].strip():
+            o[k] = a[k].strip().replace('——', ', ').replace('—', ', ')
     o['macro'] = bool(a.get('macro'))
     st = a.get('stance') if a.get('stance') in ('睇好', '睇淡', '中性') else None
     if tickers:
