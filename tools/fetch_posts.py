@@ -109,6 +109,9 @@ def main():
                         if not st or not st.get('id'):
                             continue
                         p = normalize(st, h)
+                        # A thread also holds other people's replies; keep only the account's own posts and reposts.
+                        if not p['reposted_by'] and p['handle'].lower() != h.lower():
+                            continue
                         if parse_iso(p['time_utc']) <= cutoff:
                             old = True
                             continue
