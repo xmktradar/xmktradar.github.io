@@ -281,6 +281,41 @@ button{{margin-top:8px;padding:8px 16px;border-radius:999px;border:0;background:
 '''
 
 
+FEED_KEEP = 30  # days kept in each RSS feed
+FEED_META = {'zh': ('The Crowd Tape｜X 大神每日共識', 'zh-Hant-HK', '每日整理 X 上美股大神的共同看好、看淡同分歧。唔構成投資建議。'),
+             'en': ('The Crowd Tape · Daily X consensus', 'en', 'What top X stock accounts agree and disagree on, once a day. Not investment advice.'),
+             'ko': ('The Crowd Tape · X 일일 컨센서스', 'ko', 'X 주식 인플루언서들의 공동 강세·약세·의견 엇갈림을 매일 정리합니다. 투자 조언 아님.')}
+
+
+def write_feeds(sp):
+    """/<lang>/feed.xml: one item per day (the day's snapshot), newest first, last FEED_KEEP days."""
+    when = datetime.strptime(sp['made_hkt'], '%Y-%m-%d %H:%M').replace(tzinfo=HK)
+    for lang in LANGS:
+        path = f'{lang}/feed.xml'
+        old = open(path, encoding='utf-8').read() if os.path.exists(path) else ''
+        items = [i for i in re.findall(r'<item>.*?</item>', old, re.S) if f'#{sp["date"]}<' not in i]
+        p = sp['posts'][lang]
+        paras = []
+        for block in p['reddit']['body'].split('\n\n'):
+            block = html.escape(block.lstrip('> '))
+            block = re.sub(r'\[(https?://[^\]]+)\]\((https?://[^)]+)\)', r'<a href="\2">\1</a>', block)
+            paras.append('<p>' + block.replace('\n', '<br>') + '</p>')
+        body = f'<p><img src="{html.escape(sp["images"][lang])}" alt=""></p>' + ''.join(paras)
+        item = (f'<item><title>{html.escape(p["reddit"]["title"])}</title><link>{SITE}{lang}/</link>'
+                f'<guid isPermaLink="false">{SITE}{lang}/#{sp["date"]}</guid>'
+                f'<pubDate>{when.strftime("%a, %d %b %Y %H:%M:%S %z")}</pubDate>'
+                f'<description><![CDATA[{body}]]></description></item>')
+        title, code, desc = FEED_META[lang]
+        xml = (f'<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>'
+               f'<title>{html.escape(title)}</title><link>{SITE}{lang}/</link><description>{html.escape(desc)}</description>'
+               f'<language>{code}</language><lastBuildDate>{when.strftime("%a, %d %b %Y %H:%M:%S %z")}</lastBuildDate>'
+               f'<atom:link href="{SITE}{lang}/feed.xml" rel="self" type="application/rss+xml"/>'
+               f'<image><url>{SITE}assets/icon-192.png</url><title>{html.escape(title)}</title><link>{SITE}{lang}/</link></image>\n'
+               + '\n'.join([item] + items[:FEED_KEEP - 1]) + '\n</channel></rss>\n')
+        os.makedirs(lang, exist_ok=True)
+        open(path, 'w', encoding='utf-8').write(xml)
+
+
 def main():
     st = read_json(work('stats.json'))
     d = load(HTML)
@@ -295,6 +330,7 @@ def main():
     sp = read_json('data/social-posts.json', {})
     now = now_hk()
     old = isinstance((sp.get('posts') or {}).get('zh'), str)  # written before the per-platform versions existed
+    old = old or not os.path.exists('zh/feed.xml')  # first run with RSS feeds
     social = bool(items) and (sp.get('date') != day and now.hour >= SOCIAL_HOUR or old or os.environ.get('SOCIAL_FORCE') == '1')
     if social:
         win = window(s)
@@ -304,6 +340,7 @@ def main():
         write_json('data/social-posts.json', sp, indent=1)
         os.makedirs('social', exist_ok=True)
         open('social/index.html', 'w', encoding='utf-8').write(social_page(sp))
+        write_feeds(sp)
         notice(f'今日社交媒體貼文已寫好：{SITE}social/')
     if draw or social:
         write_json(work('og.json'), {'date': day, 'hash': digest, 'social': social, 'langs': langs})
