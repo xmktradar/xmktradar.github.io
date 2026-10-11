@@ -1111,7 +1111,7 @@ function viewWeekly(){
   <div class="grid" style="gap:12px"><div class="c6"><div class="mod">高度一致</div><ul class="list" style="margin-top:8px">${aligned.map(r=>`<li>${tkBtn(r.t)}<span class="pill ${agreeLabel(r.c).k}">${agreeLabel(r.c).l}</span><span class="note">${r.c.accs} 帳號</span></li>`).join('')||'<li class="note">無</li>'}</ul></div>
   <div class="c6"><div class="mod">明顯分歧</div><ul class="list" style="margin-top:8px">${split.map(r=>`<li>${tkBtn(r.t)}<span class="pill bull">${r.c.bull} 多</span><span class="pill bear">${r.c.bear} 空</span></li>`).join('')||'<li class="note">無</li>'}</ul></div></div></section>
  <section class="c12 panel"><h2>獲得多個帳號關注的股票 <span class="sub">熱度為每日提及次數；淨看多變化為本週對比上週${multi.length?'':'・本週沒有股票獲 2 個以上帳號關注，以下列出全部被提及的股票'}</span></h2>
-  ${rows.length?`<div class="tablewrap"><table><thead><tr><th>股票</th><th class="n">關注帳號</th><th class="n">提及</th><th>立場分布</th><th>一致程度</th><th>7 天熱度</th><th class="n">淨看多變化</th></tr></thead>
+  ${rows.length?`<div class="tablewrap multi-scroll"><table><thead><tr><th>股票</th><th class="n">關注帳號</th><th class="n">提及</th><th>立場分布</th><th>一致程度</th><th>7 天熱度</th><th class="n">淨看多變化</th></tr></thead>
   <tbody>${rows.map(r=>{const a=agreeLabel(r.c);const nm=D.prices[r.t]&&!UNC(r.t)?D.prices[r.t].name:'';return `<tr><td>${tkBtn(r.t)} <span class="note">${esc(nm||'')}</span>${UNC(r.t)?' '+UNC_TXT:''}${OVN(r.t)?' '+OVN(r.t):''}${capTag(r.t)?' '+capTag(r.t):''}</td><td class="n">${r.ca.accs}</td><td class="n">${r.c.mentions}</td><td>${distBar(r.c)}</td><td><span class="pill ${a.k}">${a.l}</span></td><td>${spark(r.daily)}</td><td class="n">${hasPrev?signed(r.net-r.net0):'<span class="note">上週無資料</span>'}</td></tr>`}).join('')}</tbody></table></div>
   <div style="margin-top:10px">${legend}</div>`:empty('本週沒有股票被提及。')}</section>
  <section class="c12 panel"><h2>各帳號本週主要關注方向 <span class="sub">本週有發文的 ${cards.length} 個帳號${HANDLES.length>cards.length?`；其餘 ${HANDLES.length-cards.length} 個追蹤帳號本週沒有發文`:''}</span></h2>
@@ -1136,7 +1136,7 @@ function viewMonthly(){
   <div class="kpis k3" style="margin-top:12px"><div class="kpi"><div class="l">總提及</div><div class="v">${all.length}</div></div><div class="kpi"><div class="l">看多</div><div class="v up">${B}</div></div><div class="kpi"><div class="l">看空</div><div class="v dn">${X}</div></div></div>
   <p class="note" style="margin-bottom:0">另有中性 ${M} 則、未表態 ${U} 則。</p></section>
  <section class="c8 panel"><h2>帳號立場的一致性 <span class="sub">同一檔股票前後立場相同的比例；反轉指多空直接互換</span></h2>
-  ${cons.length?`<div class="tablewrap"><table><thead><tr><th>帳號</th><th class="n">觀點</th><th class="n">反轉次數</th><th class="n">一致性</th><th></th></tr></thead><tbody>${cons.map(c=>`<tr><td><b>${esc(nameOf(c.a))}</b> ${accLink(c.a)}${accIn(c.a)}</td><td class="n">${c.n}</td><td class="n">${c.rev}</td><td class="n">${c.score==null?'—':c.score.toFixed(0)+'%'}</td><td style="width:30%">${c.score==null?'<span class="note">每檔只有 1 則觀點，資料不足</span>':`<div class="bar"><span class="a" style="width:${c.score}%"></span></div>`}</td></tr>`).join('')}</tbody></table></div>`:empty('期內沒有帳號提及股票。')}</section>
+  ${cons.length?`<div class="tablewrap cons-scroll"><table><thead><tr><th>帳號</th><th class="n">觀點</th><th class="n">反轉次數</th><th class="n">一致性</th><th></th></tr></thead><tbody>${cons.map(c=>`<tr><td><b>${esc(nameOf(c.a))}</b> ${accLink(c.a)}${accIn(c.a)}</td><td class="n">${c.n}</td><td class="n">${c.rev}</td><td class="n">${c.score==null?'—':c.score.toFixed(0)+'%'}</td><td style="width:30%">${c.score==null?'<span class="note">每檔只有 1 則觀點，資料不足</span>':`<div class="bar"><span class="a" style="width:${c.score}%"></span></div>`}</td></tr>`).join('')}</tbody></table></div>`:empty('期內沒有帳號提及股票。')}</section>
  ${favHtml(from,to)}
  ${lbHtml(rows)}
  <section class="c12 panel"><h2>個股關注度與觀點隨時間的變化 <span class="sub">每格一天（HKT）；顏色為當天淨立場，深淺為提及次數</span></h2>
@@ -1374,6 +1374,11 @@ render();
 var seen=false;try{seen=sessionStorage.getItem('ct_viewed')==='1'}catch(e){}
 fetch(API+(seen?'get/':'hit/')+KEY).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||typeof j.value!=='number')return;el.textContent=(BASE+j.value).toLocaleString('en-US');try{sessionStorage.setItem('ct_viewed','1')}catch(e){}}).catch(function(){});})();
 </script>
+<style>/* Long lists scroll inside their own box so the page stays short (Tim, 2026-10-11).
+   !important beats the phone .stack rule, which turns overflow and max-height off. */
+.multi-scroll,.cons-scroll,.acc-grid,.acc-cards,.cc-grid,.fav-grid,.heatwrap,.trk-grid,.lb-wrap{max-height:min(600px,72vh)!important;overflow-y:auto!important}
+.multi-scroll thead th,.cons-scroll thead th{position:sticky;top:0;z-index:2;background:var(--panel)}
+.stack thead th{position:static}</style>
 <style>@media(max-width:700px){header.top{top:calc(env(safe-area-inset-top,0px) + var(--hd-top,0px))}}</style>
 <button type="button" class="donate-fab" data-jump="donate">☕ <span>捐贈</span></button>
 <style>.donate-fab{display:none}
