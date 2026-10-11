@@ -21,7 +21,7 @@ html[lang=ko] body{font-family:"Noto Sans KR","Noto Sans TC","Noto Color Emoji",
 .main{position:absolute;left:56px;right:56px;top:100px;bottom:84px;display:grid;grid-template-columns:520px 1fr;gap:30px}
 .row1{display:flex;gap:12px;align-items:center;flex-wrap:nowrap}
 .brand{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:999px;padding:7px 18px 7px 10px;font-weight:900;font-size:22px;box-shadow:0 4px 0 rgba(21,26,44,.14)}
-.brand .lg{width:30px;height:30px;border-radius:50%;background:#e6f3e8;border:2px solid #2f7d4a;display:grid;place-items:center;font-size:16px}
+.brand .lg{width:40px;height:40px;border-radius:10px;object-fit:cover;margin:-4px 0}
 .date{display:inline-block;background:#f8d34a;border:3px solid #151a2c;border-radius:12px;padding:5px 14px;font-weight:900;font-size:22px;transform:rotate(-2.5deg);box-shadow:3px 4px 0 #151a2c;white-space:nowrap}
 .win{margin-top:12px;display:inline-block;background:#fff;border:3px solid #151a2c;border-radius:12px;padding:4px 14px;font:700 19px "IBM Plex Mono",monospace}
 h1{margin:14px 0 0;font-weight:900;font-size:52px;line-height:1.12;letter-spacing:.5px}
@@ -73,7 +73,7 @@ html[lang=ko] h1,html[lang=ko] .q .tx{word-break:keep-all}
 <div class="tape" id="tape"></div>
 <div class="main">
  <div>
-  <div class="row1"><span class="brand"><span class="lg">📊</span>The Crowd Tape</span><span class="date" id="date"></span></div>
+  <div class="row1"><span class="brand"><img class="lg" src="logo.png" alt="">The Crowd Tape</span><span class="date" id="date"></span></div>
     <h1 id="h"></h1>
   <div class="q" id="q"></div>
   <div class="stats" id="stats"></div>
