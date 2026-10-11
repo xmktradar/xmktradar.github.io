@@ -62,14 +62,29 @@ def prune(d, now):
     return gone
 
 
+def known(d):
+    """Handles whose posts belong on the site: tracked accounts and accounts with a profile (avatar, name)."""
+    return {a['handle'].lower() for a in d['tracked']['accounts']} | {h.lower() for h in d.get('accounts', {})}
+
+
+def ours(p, hs):
+    """Posts by a tracked account or reposted by one. Strangers replying in a tracked account's thread are not."""
+    return bool(p.get('reposted_by')) or p['handle'].lower() in hs
+
+
 def main():
     d = load()
+    hs = known(d)
+    strangers = [p for p in d['posts'] if not ours(p, hs)]
+    if strangers:
+        d['posts'] = [p for p in d['posts'] if ours(p, hs)]
+        notice(f'刪除非追蹤帳號嘅帖 {len(strangers)} 則（其他人喺追蹤帳號串入面嘅回覆）')
     new = read_json(work('new_posts.json'), {'posts': [], 'failed': [], 'accounts': 0})
     done = read_json(work('analysed.json'), {})
     have = {p['url'].lower() for p in d['posts']}
     add, keep = [], []
     for x in new['posts']:
-        if x['url'].lower() in have:
+        if x['url'].lower() in have or not ours(x, hs):
             continue
         (add if x['id'] in done else keep).append(x)
     old_cutoff = d['meta']['cutoff_hkt']
