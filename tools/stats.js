@@ -22,12 +22,14 @@ const path = require('path');
       const raw = rawIn(from, to).filter(valid);
       const ps = postsIn(from, to);
       const cnt = {};
-      ps.forEach(x => { const c = cnt[x.t] = cnt[x.t] || { t: x.t, n: 0, accs: new Set(), bull: 0, bear: 0 }; c.n++; c.accs.add(x.acc); if (x.s === 'bull') c.bull++; if (x.s === 'bear') c.bear++; });
+      ps.forEach(x => { const c = cnt[x.t] = cnt[x.t] || { t: x.t, n: 0, accs: new Set(), bull: 0, bear: 0, ba: new Set(), ra: new Set(), urls: new Set() }; c.n++; c.accs.add(x.acc); c.urls.add(x.url);
+        if (x.s === 'bull') { c.bull++; c.ba.add(x.acc) } if (x.s === 'bear') { c.bear++; c.ra.add(x.acc) } });
       const top = Object.values(cnt).sort((a, b) => b.accs.size - a.accs.size || b.n - a.n || a.t.localeCompare(b.t)).slice(0, 25)
-        .map(c => ({ t: c.t, mentions: c.n, accounts: c.accs.size, bull: c.bull, bear: c.bear }));
+        .map(c => ({ t: c.t, mentions: c.n, accounts: c.accs.size, bull: c.bull, bear: c.bear, accs: [...c.accs],
+          bull_accounts: c.ba.size, bear_accounts: c.ra.size, urls: [...c.urls] }));
       const ms = raw.map(x => x.ms);
       return {
-        from, to, posts: raw.length, accounts: new Set(raw.map(x => x.acc)).size,
+        from, to, posts: raw.length, tickers: Object.keys(cnt).length, accounts: new Set(raw.map(x => x.acc)).size,
         originals: raw.filter(x => !x.reposted_by && !x.replying_to).length,
         reposts: raw.filter(x => x.reposted_by).length,
         bull_views: ps.filter(x => x.s === 'bull').length, bear_views: ps.filter(x => x.s === 'bear').length,

@@ -66,9 +66,9 @@ ${ga}
 <meta property="og:description" content="${esc(meta.desc)}">
 <meta property="og:url" content="${url}">
 <meta property="og:type" content="article">
-<meta property="og:image" content="${SITE}og/latest.png">
+<meta property="og:image" content="${SITE}og/latest${lang === 'zh' ? '' : '-' + lang}.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="${SITE}og/latest.png">
+<meta name="twitter:image" content="${SITE}og/latest${lang === 'zh' ? '' : '-' + lang}.png">
 <link rel="canonical" href="${url}">${alt}
 ${fonts}
 ${styles}

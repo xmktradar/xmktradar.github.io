@@ -270,6 +270,9 @@ def build(lang, master):
     alt = (tr.get('meta') or {}).get('image_alt')
     if alt:  # the Chinese alt text changes every day; other versions use a fixed description
         s = re.sub(r'(<meta (?:property="og|name="twitter):image:alt" content=")[^"]*', lambda m: m.group(1) + alt, s)
+    if lang != 'zh':  # each language has its own share picture (tools/og.js)
+        s = re.sub(r'(https://xmktradar\.github\.io/og/[\d-]+)(\.png)', lambda m: m.group(1) + f'-{lang}' + m.group(2)
+                   if os.path.exists(m.group(1).split('.io/')[1] + f'-{lang}.png') else m.group(0), s)
     s = re.sub(r'''(["'(])assets/''', r'\1/assets/', s)
     s = add_chrome(s, lang)
     os.makedirs(lang, exist_ok=True)
