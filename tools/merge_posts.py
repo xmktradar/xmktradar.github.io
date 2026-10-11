@@ -63,8 +63,8 @@ def prune(d, now):
 
 
 def known(d):
-    """Handles whose posts belong on the site: tracked accounts and accounts with a profile (avatar, name)."""
-    return {a['handle'].lower() for a in d['tracked']['accounts']} | {h.lower() for h in d.get('accounts', {})}
+    """Handles whose posts belong on the site: only Tim's tracked list (2026-10-11), not accounts from older lists."""
+    return {a['handle'].lower() for a in d['tracked']['accounts']}
 
 
 def ours(p, hs):
@@ -78,7 +78,7 @@ def main():
     strangers = [p for p in d['posts'] if not ours(p, hs)]
     if strangers:
         d['posts'] = [p for p in d['posts'] if ours(p, hs)]
-        notice(f'刪除非追蹤帳號嘅帖 {len(strangers)} 則（其他人喺追蹤帳號串入面嘅回覆）')
+        notice(f'刪除唔喺追蹤名單帳號嘅帖 {len(strangers)} 則')
     new = read_json(work('new_posts.json'), {'posts': [], 'failed': [], 'accounts': 0})
     done = read_json(work('analysed.json'), {})
     have = {p['url'].lower() for p in d['posts']}
