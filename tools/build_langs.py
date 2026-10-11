@@ -10,12 +10,18 @@
 - Every version gets <html lang>, canonical, hreflang, the language switch and absolute asset paths.
 - index.html itself gets the same switch and hreflang plus a script that sends visitors to the
   version matching their browser language.
+- Lighter pages: each version carries only the last LITE_DAYS of daily closes (plus the first one, for
+  the one-year change) and no intraday lines; the stock page loads px/<ticker>.json (full closes and
+  intraday) when opened. Account info and avatars nobody in the data refers to, and ko_summary (copied
+  into zh_summary on the Korean page), are left out. index.html keeps everything: the pipeline reads it.
 """
 import copy
+import glob
 import json
 import os
 import re
 import sys
+from datetime import date, timedelta
 
 from sitedata import BLOCK, notice, read_json
 
@@ -23,6 +29,8 @@ SITE = 'https://xmktradar.github.io/'
 LANGS = {'zh': ('zh-Hant', '中'), 'en': ('en', 'EN'), 'ko': ('ko', '한')}
 CONTENT = ('summaries', 'highlights', 'briefings')
 MARK = '<!-- lang-head -->'
+LITE_DAYS = 45  # covers the 28-day change, sparklines and the monthly view
+PX_DIR = 'px'
 
 SWITCH_CSS = ('.lang-sw{display:flex;gap:4px;margin:6px 0 2px}.lang-sw a{font:600 12.5px/1 var(--f-body);'
               'padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);'
@@ -148,6 +156,66 @@ def overlay(zh, tr):
     return zh if tr is None else tr
 
 
+def px_name(t):
+    return re.sub(r'[^A-Za-z0-9.\-]', '_', t)  # same as the page's loadPx()
+
+
+def write_px(d):
+    """px/<ticker>.json: full daily closes and intraday lines, loaded by the stock page."""
+    os.makedirs(PX_DIR, exist_ok=True)
+    keep = set()
+    for t, p in (d.get('prices') or {}).items():
+        intra = (d.get('intraday') or {}).get(t)
+        if not p.get('c') and not intra:
+            continue
+        f = os.path.join(PX_DIR, px_name(t) + '.json')
+        keep.add(f)
+        with open(f, 'w', encoding='utf-8') as fh:
+            json.dump({'c': p.get('c') or [], 'intra': intra}, fh, ensure_ascii=False, separators=(',', ':'))
+    for f in glob.glob(os.path.join(PX_DIR, '*.json')):
+        if f not in keep:
+            os.remove(f)
+    return len(keep)
+
+
+def handles_in(o, out):
+    if isinstance(o, dict):
+        for v in o.values():
+            handles_in(v, out)
+    elif isinstance(o, list):
+        for v in o:
+            handles_in(v, out)
+    elif isinstance(o, str):
+        if len(o) <= 40:
+            out.add(o.lstrip('@').lower())
+        out.update(h.lower() for h in re.findall(r'@(\w{1,30})', o))
+    return out
+
+
+def lighten(d):
+    """Leave out what a visitor doesn't need on first load (see the note at the top)."""
+    prices = {}
+    for t, p in (d.get('prices') or {}).items():
+        c = p.get('c') or []
+        p = dict(p)
+        if c:
+            lim = (date.fromisoformat(c[-1][0]) - timedelta(days=LITE_DAYS)).isoformat()
+            i = max([k for k, r in enumerate(c) if r[0] <= lim], default=0)  # from the last close at or before the limit
+            short = c[:1] + c[max(i, 1):]
+            if len(short) < len(c) or (d.get('intraday') or {}).get(t):
+                p['c'], p['lite'] = short, 1
+        prices[t] = p
+    d['prices'] = prices
+    d.pop('intraday', None)
+    for p in d.get('posts') or []:
+        p.pop('ko_summary', None)
+    used = handles_in({k: v for k, v in d.items() if k not in ('accounts', 'avmini')}, set())
+    for k in ('accounts', 'avmini'):
+        if isinstance(d.get(k), dict):
+            d[k] = {h: v for h, v in d[k].items() if h.lower() in used}
+    return d
+
+
 def swap_data(d, lang, fixed):
     d = copy.deepcopy(d)
     for k in CONTENT:  # translated items replace the Chinese ones; items not yet translated stay in Chinese
@@ -193,7 +261,7 @@ def build(lang, master):
     d = json.loads(m.group(2).replace('<\\/', '</'))
     keys = code_values(master[:m.start(2)] + master[m.end(2):])
     fixed = {k: v for k, v in (tr.get('data') or {}).items() if k not in keys}
-    blob = json.dumps(swap_data(d, lang, fixed), ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+    blob = json.dumps(lighten(swap_data(d, lang, fixed)), ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
     code = master[:m.start(2)], master[m.end(2):]
     out = [translate(part, tr.get('ui') or {}) for part in code]
     s = out[0] + blob + out[1]
@@ -245,10 +313,11 @@ def main():
     master = open('index.html', encoding='utf-8').read()
     master = add_chrome(master, None)
     open('index.html', 'w', encoding='utf-8').write(master)
+    n_px = write_px(json.loads(BLOCK.search(master).group(2).replace('<\\/', '</')))
     left = {k: build(k, master) for k in LANGS}
     gen = re.search(r'<loc>https://xmktradar\.github\.io/</loc><lastmod>([^<]+)', open('sitemap.xml', encoding='utf-8').read())
     sitemap(gen.group(1) if gen else '')
-    notice('語言版本：/zh/ /en/ /ko/ 已生成' + ''.join(f'；{k} 版介面仍有 {n} 段中文未翻譯' for k, n in left.items() if n))
+    notice(f'語言版本：/zh/ /en/ /ko/ 已生成，股價檔 {n_px} 個' + ''.join(f'；{k} 版介面仍有 {n} 段中文未翻譯' for k, n in left.items() if n))
 
 
 if __name__ == '__main__':
