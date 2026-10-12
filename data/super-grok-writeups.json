@@ -1,1 +1,189 @@
-$(cat /tmp/super-grok-writeups.json)
+{
+  "updated_hkt": "2026-10-12 09:10",
+  "zh": {
+    "daily": {
+      "date": "2026-10-12",
+      "win": {"from": "2026-10-12T00:00", "to": "2026-10-12T23:59"},
+      "brief": "<p>今日香港時間 10 月 12 日討論偏少，只有 33 則帖文、16 個帳號，沒有出現共同看好或共同看淡的標的，分歧也為零。4 個看好觀點分散在不同代號上，最多人提的都只是單一提及。</p>",
+      "full": "<h5>共識</h5><p>今日沒有形成共識。bull_total、bear_total 和 split_total 都是 0。雖然有 4 個看好觀點和 3 個明確帳號，但都是單點，沒有多個帳號同時指向同一方向。</p>\n<h5>共同看淡</h5><p>同樣沒有共同看淡。bear_views 是 0。</p>\n<h5>分歧</h5><p>今日無明顯分歧標的。</p>\n<h5>其他值得留意</h5><p><a href=\"#account/michaelsikand\">@michaelsikand</a> 在同一帖看好 <a href=\"#stock/AMZN\" class=\"tk\">$AMZN</a> 在 160 美元形成可防守底部，並強調 <a href=\"#stock/QCOM\" class=\"tk\">$QCOM</a> 有設備端 1000 億參數模型、穿戴、機器人和數據中心等催化，市場尚未充分定價（<a href=\"https://x.com/michaelsikand/status/2109418341496651822\">原帖</a>）。<a href=\"#account/TrendSpider\">@TrendSpider</a> 指 <a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a> 交易於 AI 熱潮以來最低市盈率附近，季度營收和每股收益同比增長超過 100%（<a href=\"https://x.com/TrendSpider/status/2109416251978330307\">原帖</a>）。<a href=\"#account/Jake__Wujastyk\">@Jake__Wujastyk</a> 對 <a href=\"#stock/GLD\" class=\"tk\">$GLD</a> 有看好觀點。數據範圍是當日 33 帖、16 帳號。</p>",
+      "html": "<h4>短摘要</h4><p>今日討論清淡，無共同看好或看淡。個別看好出現在 $AMZN、$QCOM、$NVDA、$GLD，都是單一帳號。</p>"
+    },
+    "weekly": {
+      "date": "2026-10-12",
+      "win": {"from": "2026-10-06T00:00", "to": "2026-10-12T23:59"},
+      "brief": "<p>過去 7 日（10 月 6 日至 12 日）共 1331 則帖文、83 個帳號，246 個看好觀點對 72 個看淡。共同看好最強集中在 <a href=\"#stock/AMD\" class=\"tk\">$AMD</a> 和 <a href=\"#stock/DELL\" class=\"tk\">$DELL</a>（各 5 個帳號），其次是 <a href=\"#stock/MU\" class=\"tk\">$MU</a> 與 <a href=\"#stock/LITE\" class=\"tk\">$LITE</a>（各 4 個）。共同看淡只有 <a href=\"#stock/PEP\" class=\"tk\">$PEP</a>（3 個）和 <a href=\"#stock/VZ\" class=\"tk\">$VZ</a>（2 個）。最大分歧在 <a href=\"#stock/SPCX\" class=\"tk\">$SPCX</a> 與 <a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a>（各 5 好 1 淡）。</p>",
+      "full": "<h5>共識</h5><p>光學與硬體供應鏈是這週最齊心的地方。<a href=\"#account/KawzInvests\">@KawzInvests</a> 稱客戶已在鎖定 2030 年供應，因此 <a href=\"#stock/LITE\" class=\"tk\">$LITE</a> 對定價有很大話語權，市場低估 2027 年利潤率擴張；執行長表示人工智能光學元件產能基本售罄至 2029 年初（<a href=\"https://x.com/KawzInvests/status/2108933141624758781\">原帖</a>）。<a href=\"#account/TrendSpider\">@TrendSpider</a> 建議把 <a href=\"#stock/LITE\" class=\"tk\">$LITE</a> 放進觀察名單，理由同樣是產能售罄至 2029 年，加上週一有 OCP 峰會（<a href=\"https://x.com/TrendSpider/status/2108657502678094203\">原帖</a>）。</p>\n<p><a href=\"#account/ripster47\">@ripster47</a> 說 <a href=\"#stock/MU\" class=\"tk\">$MU</a> 在 1000 美元回調時買，這個月像提款機，今早又加倉，希望很快再試 1100 美元（<a href=\"https://x.com/ripster47/status/2108613541343187039\">原帖</a>）。<a href=\"#account/GerberKawasaki\">@GerberKawasaki</a> 指 Micron 受 Chips Act 限制暫時無法回購，12 月會開始大量回購，大買家即將到來（<a href=\"https://x.com/GerberKawasaki/status/2108302898648265174\">原帖</a>）。<a href=\"#account/TrendSpider\">@TrendSpider</a> 也表示傳統硬體股優於 Magnificent 7，<a href=\"#stock/HPE\" class=\"tk\">$HPE</a> 和 <a href=\"#stock/DELL\" class=\"tk\">$DELL</a> 表現更好（<a href=\"https://x.com/TrendSpider/status/2109011087643341043\">原帖</a>）。</p>\n<h5>共同看淡</h5><p><a href=\"#account/leadlagreport\">@leadlagreport</a> 說 <a href=\"#stock/PEP\" class=\"tk\">$PEP</a> 本週財報靠華府補貼，核心經營利潤升 3% 其中 4 個百分點是關稅退款，撇除即倒退，退款是一次性（<a href=\"https://x.com/leadlagreport/status/2108263732669227364\">原帖</a>）。轉發觀點也指 Pepsi 北美銷量連跌 16 季，但價格每年調漲 7%。<a href=\"#account/KobeissiLetter\">@KobeissiLetter</a> 和 <a href=\"#account/Jason\">@Jason</a> 因 SpaceX 收購頻譜成為美國主要行動網路商，而看淡 <a href=\"#stock/VZ\" class=\"tk\">$VZ</a>，指其股價因此下跌（<a href=\"https://x.com/KobeissiLetter/status/2108336440069206234\">原帖</a>）。</p>\n<h5>分歧</h5><p><a href=\"#account/KobeissiLetter\">@KobeissiLetter</a> 覺得 <a href=\"#stock/SPCX\" class=\"tk\">$SPCX</a> 將顛覆電信與網路業，不進化就被淘汰，但有帳號對其手機計劃持不同看法。<a href=\"#account/TrendSpider\">@TrendSpider</a> 指 <a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a> 在 AI 熱潮以來最低市盈率附近且增長超過 100%，<a href=\"#account/firstadopter\">@firstadopter</a> 也按基本面看好 Nvidia 與 Dell 靠 NVL72 業績大勝，但 <a href=\"#stock/ORCL\" class=\"tk\">$ORCL</a> 則有 <a href=\"#account/Schuldensuehner\">@Schuldensuehner</a> 擔心人工智能熱潮變成債務熱潮，信用違約掉期接近紀錄高位，以及 <a href=\"#account/TrendSpider\">@TrendSpider</a> 直接說「完全災難」（<a href=\"https://x.com/Schuldensuehner/status/2108710790018568561\">原帖</a>、<a href=\"https://x.com/TrendSpider/status/2108286312360935674\">原帖</a>）。</p>\n<h5>其他值得留意</h5><p><a href=\"#account/ripster47\">@ripster47</a> 在 <a href=\"#stock/PENG\" class=\"tk\">$PENG</a> 財報後於 66 美元上方做多，目標 75 美元（<a href=\"https://x.com/ripster47/status/2107848742736912776\">原帖</a>）。<a href=\"#account/KawzInvests\">@KawzInvests</a> 和 <a href=\"#account/michaelsikand\">@michaelsikand</a> 提及 <a href=\"#stock/MRVL\" class=\"tk\">$MRVL</a> 管理層目標 FY2031 non-GAAP EPS 超過 30 美元，去年收入 82 億、FY2031 目標 700 至 900 億（<a href=\"https://x.com/KawzInvests/status/2107915991833563573\">原帖</a>）。數據範圍是 1331 帖、83 帳號。</p>",
+      "html": "<h4>短摘要</h4><p>這週光學與硬體共識最齊，$AMD、$DELL、$MU、$LITE 看好帳號最多。$PEP 與 $VZ 是主要共同看淡。$SPCX 與 $NVDA 有分歧，$ORCL 信用風險被提及。</p>"
+    },
+    "monthly": {
+      "date": "2026-10-12",
+      "win": {"from": "2026-09-15T00:00", "to": "2026-10-12T23:59"},
+      "brief": "<p>過去 28 日（9 月 15 日至 10 月 12 日）統計數字與近 7 日完全相同：1331 則帖文、83 個帳號。共同看好仍集中在 <a href=\"#stock/AMD\" class=\"tk\">$AMD</a> 與 <a href=\"#stock/DELL\" class=\"tk\">$DELL</a>（各 5 個），<a href=\"#stock/MU\" class=\"tk\">$MU</a> 與 <a href=\"#stock/LITE\" class=\"tk\">$LITE</a>（各 4 個）。共同看淡是 <a href=\"#stock/PEP\" class=\"tk\">$PEP</a>（3 個）和 <a href=\"#stock/VZ\" class=\"tk\">$VZ</a>（2 個）。分歧以 <a href=\"#stock/SPCX\" class=\"tk\">$SPCX</a> 與 <a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a> 為首。</p>",
+      "full": "<h5>共識</h5><p>28 日內光學與 AI 硬體供應鏈主題最齊心。<a href=\"#account/KawzInvests\">@KawzInvests</a> 指 <a href=\"#stock/LITE\" class=\"tk\">$LITE</a> 客戶鎖定 2030 年供應，產能售罄至 2029 年初，對定價有話語權（<a href=\"https://x.com/KawzInvests/status/2108933141624758781\">原帖</a>）。<a href=\"#account/ripster47\">@ripster47</a> 在 <a href=\"#stock/MU\" class=\"tk\">$MU</a> 1000 美元回調買入，希望再試 1100 美元（<a href=\"https://x.com/ripster47/status/2108613541343187039\">原帖</a>）。</p>\n<h5>共同看淡</h5><p><a href=\"#account/leadlagreport\">@leadlagreport</a> 指 <a href=\"#stock/PEP\" class=\"tk\">$PEP</a> 利潤受關稅退款拉高，撇除即倒退（<a href=\"https://x.com/leadlagreport/status/2108263732669227364\">原帖</a>）。SpaceX 頻譜消息讓 <a href=\"#account/KobeissiLetter\">@KobeissiLetter</a> 看淡 <a href=\"#stock/VZ\" class=\"tk\">$VZ</a>（<a href=\"https://x.com/KobeissiLetter/status/2108336440069206234\">原帖</a>）。</p>\n<h5>分歧</h5><p><a href=\"#account/TrendSpider\">@TrendSpider</a> 仍看好 <a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a> 估值與增長，但 <a href=\"#account/Schuldensuehner\">@Schuldensuehner</a> 擔心 <a href=\"#stock/ORCL\" class=\"tk\">$ORCL</a> 等 AI 相關債務風險上升（<a href=\"https://x.com/Schuldensuehner/status/2108710790018568561\">原帖</a>）。</p>\n<h5>其他值得留意</h5><p><a href=\"#account/ripster47\">@ripster47</a> 對 <a href=\"#stock/PENG\" class=\"tk\">$PENG</a> 在 66 美元上方做多、目標 75 美元（<a href=\"https://x.com/ripster47/status/2107848742736912776\">原帖</a>）。數據範圍與近週相同，1331 帖、83 帳號。</p>",
+      "html": "<h4>短摘要</h4><p>28 日數據與近週一致，光學硬體共識主導，$PEP/$VZ 看淡突出，$SPCX/$NVDA 仍有分歧。</p>"
+    },
+    "highlights": {
+      "date": "2026-10-12",
+      "range": "2026-10-06 至 2026-10-12",
+      "stats_note": "近 7 日 1331 帖、83 帳號；共同看好以 AMD/DELL（各 5）、MU/LITE（各 4）為首。",
+      "cards": [
+        {
+          "headline": "光學產能售罄至 2029",
+          "theme": "AI 光子與互連",
+          "tone": "看好",
+          "points": ["@KawzInvests：客戶已鎖定 2030 年供應，$LITE 對定價有話語權", "@TrendSpider：產能售罄至 2029 年，建議放進觀察名單"],
+          "tickers": ["LITE"],
+          "handles": ["KawzInvests", "TrendSpider"],
+          "source_note": "據 @KawzInvests、@TrendSpider 貼文",
+          "big": {"value": "4 個帳號", "label": "看好 $LITE"}
+        },
+        {
+          "headline": "記憶體回調加倉",
+          "theme": "AI 記憶體",
+          "tone": "看好",
+          "points": ["@ripster47：$MU 在 1000 美元回調買，希望再試 1100 美元", "@GerberKawasaki：12 月將開始大量回購"],
+          "tickers": ["MU"],
+          "handles": ["ripster47", "GerberKawasaki"],
+          "source_note": "據 @ripster47、@GerberKawasaki 貼文",
+          "big": {"value": "4 個帳號", "label": "看好 $MU"}
+        },
+        {
+          "headline": "電信顛覆與債務風險",
+          "theme": "SPCX 與 ORCL",
+          "tone": "分歧",
+          "points": ["@KobeissiLetter：$SPCX 將顛覆電信業，不進化就被淘汰", "@Schuldensuehner：AI 熱潮變成債務熱潮，$ORCL 信用違約掉期接近紀錄"],
+          "tickers": ["SPCX", "ORCL"],
+          "handles": ["KobeissiLetter", "Schuldensuehner"],
+          "source_note": "據 @KobeissiLetter、@Schuldensuehner 貼文",
+          "big": {"value": "5 好 1 淡", "label": "$SPCX 分歧"}
+        }
+      ]
+    },
+    "briefing": {
+      "date": "2026-10-12",
+      "html": "<h3>今日市場討論重點</h3>\n<p>今日（10 月 12 日）討論清淡，33 帖、16 帳號，無共同方向。過去一週光學與硬體最齊心，$AMD、$DELL、$MU、$LITE 看好帳號最多。$PEP 因關稅退款、$VZ 因 SpaceX 頻譜成為共同看淡焦點。</p>\n<p>@ripster47 在 $MU 1000 美元回調買入並希望再試 1100 美元，同時在 $PENG 66 美元上方做多、目標 75 美元。$ORCL 信用風險被提及為分歧點。</p>"
+    }
+  },
+  "en": {
+    "daily": {
+      "date": "2026-10-12",
+      "brief": "<p>On 12 October HKT discussion was light with only 33 posts from 16 accounts. No joint bullish or bearish tickers emerged and there were no splits. The 4 bullish views were scattered across single mentions.</p>",
+      "full": "<h5>Consensus</h5><p>No clear consensus today. bull_total, bear_total and split_total are all 0. There were 4 bullish views from 3 clear accounts but all were single-point opinions.</p>\n<h5>Joint bearish</h5><p>No joint bearish views either. bear_views is 0.</p>\n<h5>Split</h5><p>No clear split tickers today.</p>\n<h5>Other notes</h5><p><a href=\"#account/michaelsikand\">@michaelsikand</a> was bullish on <a href=\"#stock/AMZN\" class=\"tk\">$AMZN</a> forming a defensible bottom at $160 and highlighted catalysts for <a href=\"#stock/QCOM\" class=\"tk\">$QCOM</a> including on-device 100B parameter models, wearables, robotics and data centers that are not yet fully priced in (<a href=\"https://x.com/michaelsikand/status/2109418341496651822\">post</a>). <a href=\"#account/TrendSpider\">@TrendSpider</a> noted <a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a> is trading near its lowest PE since the AI boom began while quarterly revenue and EPS are up more than 100% year-over-year (<a href=\"https://x.com/TrendSpider/status/2109416251978330307\">post</a>). <a href=\"#account/Jake__Wujastyk\">@Jake__Wujastyk</a> had a bullish view on <a href=\"#stock/GLD\" class=\"tk\">$GLD</a>. Data covers 33 posts and 16 accounts on 12 October.</p>",
+      "html": "<h4>Short summary</h4><p>Light discussion today with no joint bullish or bearish views. Isolated bullish takes appeared on $AMZN, $QCOM, $NVDA and $GLD from single accounts.</p>"
+    },
+    "weekly": {
+      "date": "2026-10-12",
+      "brief": "<p>Over the past 7 days (6–12 October) there were 1331 posts from 83 accounts, with 246 bullish views versus 72 bearish. Strongest joint bullish views are on <a href=\"#stock/AMD\" class=\"tk\">$AMD</a> and <a href=\"#stock/DELL\" class=\"tk\">$DELL</a> (5 accounts each), followed by <a href=\"#stock/MU\" class=\"tk\">$MU</a> and <a href=\"#stock/LITE\" class=\"tk\">$LITE</a> (4 each). Joint bearish is limited to <a href=\"#stock/PEP\" class=\"tk\">$PEP</a> (3) and <a href=\"#stock/VZ\" class=\"tk\">$VZ</a> (2). Largest splits are on <a href=\"#stock/SPCX\" class=\"tk\">$SPCX</a> and <a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a> (5 bull, 1 bear each).</p>",
+      "full": "<h5>Consensus</h5><p>Optical and hardware supply chain is the most aligned theme this week. <a href=\"#account/KawzInvests\">@KawzInvests</a> said customers are already locking in 2030 supply so <a href=\"#stock/LITE\" class=\"tk\">$LITE</a> has significant pricing power and the market is underestimating 2027 margin expansion; the CEO said AI optical capacity is largely sold out into early 2029 (<a href=\"https://x.com/KawzInvests/status/2108933141624758781\">post</a>). <a href=\"#account/TrendSpider\">@TrendSpider</a> suggested adding <a href=\"#stock/LITE\" class=\"tk\">$LITE</a> to the watchlist for the same sold-out reason plus the OCP summit on Monday (<a href=\"https://x.com/TrendSpider/status/2108657502678094203\">post</a>).</p>\n<p><a href=\"#account/ripster47\">@ripster47</a> bought <a href=\"#stock/MU\" class=\"tk\">$MU</a> on the dip to $1000 and hopes to retest $1100 soon after adding again this morning (<a href=\"https://x.com/ripster47/status/2108613541343187039\">post</a>). <a href=\"#account/GerberKawasaki\">@GerberKawasaki</a> said Micron cannot buy back yet due to Chips Act limits but will start large buybacks in December (<a href=\"https://x.com/GerberKawasaki/status/2108302898648265174\">post</a>). <a href=\"#account/TrendSpider\">@TrendSpider</a> also noted traditional hardware names outperforming the Magnificent 7, with <a href=\"#stock/HPE\" class=\"tk\">$HPE</a> and <a href=\"#stock/DELL\" class=\"tk\">$DELL</a> doing better (<a href=\"https://x.com/TrendSpider/status/2109011087643341043\">post</a>).</p>\n<h5>Joint bearish</h5><p><a href=\"#account/leadlagreport\">@leadlagreport</a> said <a href=\"#stock/PEP\" class=\"tk\">$PEP</a> earnings were helped by government subsidies; core operating profit rose 3% but 4 percentage points came from tariff refunds which are one-time (<a href=\"https://x.com/leadlagreport/status/2108263732669227364\">post</a>). Other views noted Pepsi North America volumes have fallen for 16 straight quarters while prices rose 7% a year. <a href=\"#account/KobeissiLetter\">@KobeissiLetter</a> and <a href=\"#account/Jason\">@Jason</a> were bearish on <a href=\"#stock/VZ\" class=\"tk\">$VZ</a> after SpaceX acquired spectrum and became a major US mobile network provider (<a href=\"https://x.com/KobeissiLetter/status/2108336440069206234\">post</a>).</p>\n<h5>Split</h5><p><a href=\"#account/KobeissiLetter\">@KobeissiLetter</a> thinks <a href=\"#stock/SPCX\" class=\"tk\">$SPCX</a> will disrupt telecom and internet, with incumbents needing to evolve or be left behind. <a href=\"#account/TrendSpider\">@TrendSpider</a> pointed to <a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a> trading near its lowest PE since the AI boom with >100% growth, and <a href=\"#account/firstadopter\">@firstadopter</a> still likes the fundamentals of Nvidia and Dell on NVL72, but <a href=\"#account/Schuldensuehner\">@Schuldensuehner</a> worries the AI boom is turning into a debt boom with Oracle’s CDS near record highs, while <a href=\"#account/TrendSpider\">@TrendSpider</a> simply called <a href=\"#stock/ORCL\" class=\"tk\">$ORCL</a> a complete disaster (<a href=\"https://x.com/Schuldensuehner/status/2108710790018568561\">post</a>, <a href=\"https://x.com/TrendSpider/status/2108286312360935674\">post</a>).</p>\n<h5>Other notes</h5><p><a href=\"#account/ripster47\">@ripster47</a> went long <a href=\"#stock/PENG\" class=\"tk\">$PENG</a> above $66 after earnings with a $75 target (<a href=\"https://x.com/ripster47/status/2107848742736912776\">post</a>). <a href=\"#account/KawzInvests\">@KawzInvests</a> and <a href=\"#account/michaelsikand\">@michaelsikand</a> noted <a href=\"#stock/MRVL\" class=\"tk\">$MRVL</a> management targeting FY2031 non-GAAP EPS above $30, with last year’s revenue $8.2B and FY2031 goal $70–90B (<a href=\"https://x.com/KawzInvests/status/2107915991833563573\">post</a>). Data covers 1331 posts and 83 accounts.</p>",
+      "html": "<h4>Short summary</h4><p>This week optical and hardware consensus is strongest with most bullish accounts on $AMD, $DELL, $MU and $LITE. $PEP and $VZ are the main joint bearish names. Splits remain on $SPCX and $NVDA, with credit risk noted on $ORCL.</p>"
+    },
+    "monthly": {
+      "date": "2026-10-12",
+      "brief": "<p>Over the past 28 days (15 September to 12 October) the numbers match the recent 7 days exactly: 1331 posts from 83 accounts. Joint bullish remains concentrated on <a href=\"#stock/AMD\" class=\"tk\">$AMD</a> and <a href=\"#stock/DELL\" class=\"tk\">$DELL</a> (5 each), <a href=\"#stock/MU\" class=\"tk\">$MU</a> and <a href=\"#stock/LITE\" class=\"tk\">$LITE</a> (4 each). Joint bearish is <a href=\"#stock/PEP\" class=\"tk\">$PEP</a> (3) and <a href=\"#stock/VZ\" class=\"tk\">$VZ</a> (2). Splits are led by <a href=\"#stock/SPCX\" class=\"tk\">$SPCX</a> and <a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a>.</p>",
+      "full": "<h5>Consensus</h5><p>Optical and AI hardware supply chain is the most aligned theme over 28 days. <a href=\"#account/KawzInvests\">@KawzInvests</a> noted <a href=\"#stock/LITE\" class=\"tk\">$LITE</a> customers locking 2030 supply with capacity sold out into early 2029 and pricing power (<a href=\"https://x.com/KawzInvests/status/2108933141624758781\">post</a>). <a href=\"#account/ripster47\">@ripster47</a> bought <a href=\"#stock/MU\" class=\"tk\">$MU</a> on the dip to $1000 and hopes to retest $1100 (<a href=\"https://x.com/ripster47/status/2108613541343187039\">post</a>).</p>\n<h5>Joint bearish</h5><p><a href=\"#account/leadlagreport\">@leadlagreport</a> said <a href=\"#stock/PEP\" class=\"tk\">$PEP</a> profit was boosted by tariff refunds that reverse once removed (<a href=\"https://x.com/leadlagreport/status/2108263732669227364\">post</a>). SpaceX spectrum news led <a href=\"#account/KobeissiLetter\">@KobeissiLetter</a> to be bearish on <a href=\"#stock/VZ\" class=\"tk\">$VZ</a> (<a href=\"https://x.com/KobeissiLetter/status/2108336440069206234\">post</a>).</p>\n<h5>Split</h5><p><a href=\"#account/TrendSpider\">@TrendSpider</a> remains positive on <a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a> valuation and growth, but <a href=\"#account/Schuldensuehner\">@Schuldensuehner</a> worries about rising debt risk at <a href=\"#stock/ORCL\" class=\"tk\">$ORCL</a> and other AI names (<a href=\"https://x.com/Schuldensuehner/status/2108710790018568561\">post</a>).</p>\n<h5>Other notes</h5><p><a href=\"#account/ripster47\">@ripster47</a> went long <a href=\"#stock/PENG\" class=\"tk\">$PENG</a> above $66 with a $75 target (<a href=\"https://x.com/ripster47/status/2107848742736912776\">post</a>). Data range is identical to the recent week: 1331 posts and 83 accounts.</p>",
+      "html": "<h4>Short summary</h4><p>28-day data matches the recent week, with optical and hardware consensus dominant, $PEP/$VZ the clear bearish names, and splits still on $SPCX/$NVDA.</p>"
+    },
+    "highlights": {
+      "date": "2026-10-12",
+      "range": "2026-10-06 to 2026-10-12",
+      "stats_note": "Past 7 days: 1331 posts, 83 accounts; strongest joint bullish on AMD/DELL (5 each), MU/LITE (4 each).",
+      "cards": [
+        {
+          "headline": "Optical capacity sold out into 2029",
+          "theme": "AI photonics and interconnect",
+          "tone": "看好",
+          "points": ["@KawzInvests: customers already locking 2030 supply, $LITE has pricing power", "@TrendSpider: capacity sold out to 2029, add to watchlist"],
+          "tickers": ["LITE"],
+          "handles": ["KawzInvests", "TrendSpider"],
+          "source_note": "From @KawzInvests and @TrendSpider posts",
+          "big": {"value": "4 accounts", "label": "bullish on $LITE"}
+        },
+        {
+          "headline": "Memory dip buying",
+          "theme": "AI memory",
+          "tone": "看好",
+          "points": ["@ripster47: bought $MU on the $1000 dip, hopes to retest $1100", "@GerberKawasaki: large buybacks to start in December"],
+          "tickers": ["MU"],
+          "handles": ["ripster47", "GerberKawasaki"],
+          "source_note": "From @ripster47 and @GerberKawasaki posts",
+          "big": {"value": "4 accounts", "label": "bullish on $MU"}
+        },
+        {
+          "headline": "Telecom disruption and debt risk",
+          "theme": "SPCX and ORCL",
+          "tone": "分歧",
+          "points": ["@KobeissiLetter: $SPCX will disrupt telecom, evolve or be left behind", "@Schuldensuehner: AI boom turning into debt boom, $ORCL CDS near records"],
+          "tickers": ["SPCX", "ORCL"],
+          "handles": ["KobeissiLetter", "Schuldensuehner"],
+          "source_note": "From @KobeissiLetter and @Schuldensuehner posts",
+          "big": {"value": "5 bull 1 bear", "label": "$SPCX split"}
+        }
+      ]
+    },
+    "briefing": {
+      "date": "2026-10-12",
+      "html": "<h3>Today’s market discussion highlights</h3>\n<p>Today (12 October) discussion was light with 33 posts from 16 accounts and no shared direction. Over the past week optical and hardware were the most aligned, with the most bullish accounts on $AMD, $DELL, $MU and $LITE. $PEP (tariff refunds) and $VZ (SpaceX spectrum) were the main joint bearish names.</p>\n<p>@ripster47 bought $MU on the $1000 dip and hopes to retest $1100, and also went long $PENG above $66 targeting $75. Credit risk at $ORCL was noted as a point of disagreement.</p>"
+    }
+  },
+  "ko": {
+    "daily": {
+      "date": "2026-10-12",
+      "brief": "<p>홍콩 시간 10월 12일 논의는 적었고 게시물 33개, 계정 16개뿐이었다. 공동 강세나 약세 종목이 없었고 분열도 없었다. 4개의 강세 견해는 단일 언급으로 흩어져 있었다.</p>",
+      "full": "<h5>공감</h5><p>오늘은 명확한 공감이 없었다. bull_total, bear_total, split_total 모두 0이다. 4개의 강세 견해와 3개의 명확한 계정이 있었지만 모두 단일 의견이었다.</p>\n<h5>공동 약세</h5><p>공동 약세도 없었다. bear_views는 0이다.</p>\n<h5>분열</h5><p>오늘은 명확한 분열 종목이 없었다.</p>\n<h5>기타 주목할 점</h5><p><a href=\"#account/michaelsikand\">@michaelsikand</a>는 <a href=\"#stock/AMZN\" class=\"tk\">$AMZN</a>이 160달러에서 방어 가능한 바닥을 형성했다고 보며 <a href=\"#stock/QCOM\" class=\"tk\">$QCOM</a>의 온디바이스 1000억 파라미터 모델, 웨어러블, 로보틱스, 데이터센터 등 촉매제가 아직 충분히 반영되지 않았다고 강조했다(<a href=\"https://x.com/michaelsikand/status/2109418341496651822\">원문</a>). <a href=\"#account/TrendSpider\">@TrendSpider</a>는 <a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a>가 AI 붐 이후 최저 PER 근처에서 거래되며 분기 매출과 EPS가 전년 대비 100% 이상 증가했다고 지적했다(<a href=\"https://x.com/TrendSpider/status/2109416251978330307\">원문</a>). <a href=\"#account/Jake__Wujastyk\">@Jake__Wujastyk</a>는 <a href=\"#stock/GLD\" class=\"tk\">$GLD</a>에 강세 견해를 보였다. 데이터는 12일 당일 게시물 33개, 계정 16개이다.</p>",
+      "html": "<h4>짧은 요약</h4><p>오늘 논의는 한산했고 공동 강세나 약세가 없었다. $AMZN, $QCOM, $NVDA, $GLD에 단일 계정의 개별 강세가 나타났다.</p>"
+    },
+    "weekly": {
+      "date": "2026-10-12",
+      "brief": "<p>지난 7일(10월 6일~12일) 게시물 1331개, 계정 83개였으며 강세 견해 246개 대 약세 72개였다. 공동 강세가 가장 강한 곳은 <a href=\"#stock/AMD\" class=\"tk\">$AMD</a>와 <a href=\"#stock/DELL\" class=\"tk\">$DELL</a>(각 5개 계정), 다음으로 <a href=\"#stock/MU\" class=\"tk\">$MU</a>와 <a href=\"#stock/LITE\" class=\"tk\">$LITE</a>(각 4개)였다. 공동 약세는 <a href=\"#stock/PEP\" class=\"tk\">$PEP</a>(3개)와 <a href=\"#stock/VZ\" class=\"tk\">$VZ</a>(2개)에 한정됐다. 가장 큰 분열은 <a href=\"#stock/SPCX\" class=\"tk\">$SPCX</a>와 <a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a>(각 5강 1약)였다.</p>",
+      "full": "<h5>공감</h5><p>광학과 하드웨어 공급망이 이번 주 가장 일치한 주제였다. <a href=\"#account/KawzInvests\">@KawzInvests</a>는 고객들이 이미 2030년 공급을 확보하고 있어 <a href=\"#stock/LITE\" class=\"tk\">$LITE</a>가 가격 결정력이 크고 시장이 2027년 마진 확대를 과소평가하고 있다고 했으며, CEO는 AI 광학 부품 용량이 2029년 초까지 거의 매진됐다고 말했다(<a href=\"https://x.com/KawzInvests/status/2108933141624758781\">원문</a>). <a href=\"#account/TrendSpider\">@TrendSpider</a>도 같은 매진 이유로 <a href=\"#stock/LITE\" class=\"tk\">$LITE</a>를 관찰 목록에 넣자고 제안했다(<a href=\"https://x.com/TrendSpider/status/2108657502678094203\">원문</a>).</p>\n<p><a href=\"#account/ripster47\">@ripster47</a>는 <a href=\"#stock/MU\" class=\"tk\">$MU</a>를 1000달러 조정 때 매수했고 이달 중 다시 1100달러를 시험하길 바란다고 했다(<a href=\"https://x.com/ripster47/status/2108613541343187039\">원문</a>). <a href=\"#account/GerberKawasaki\">@GerberKawasaki</a>는 Micron이 Chips Act 제한으로 아직 자사주 매입을 못 하지만 12월부터 대량 매입을 시작할 것이라고 했다(<a href=\"https://x.com/GerberKawasaki/status/2108302898648265174\">원문</a>). <a href=\"#account/TrendSpider\">@TrendSpider</a>는 전통 하드웨어 주식이 Magnificent 7보다 낫다고 하며 <a href=\"#stock/HPE\" class=\"tk\">$HPE</a>와 <a href=\"#stock/DELL\" class=\"tk\">$DELL</a>이 더 좋다고 했다(<a href=\"https://x.com/TrendSpider/status/2109011087643341043\">원문</a>).</p>\n<h5>공동 약세</h5><p><a href=\"#account/leadlagreport\">@leadlagreport</a>는 <a href=\"#stock/PEP\" class=\"tk\">$PEP</a> 실적이 정부 보조금 덕이었고 핵심 영업이익 3% 상승 중 4%p가 관세 환급(일회성)이었다고 했다(<a href=\"https://x.com/leadlagreport/status/2108263732669227364\">원문</a>). <a href=\"#account/KobeissiLetter\">@KobeissiLetter</a>와 <a href=\"#account/Jason\">@Jason</a>은 SpaceX가 스펙트럼을 인수해 미국 주요 모바일 네트워크 사업자가 된 후 <a href=\"#stock/VZ\" class=\"tk\">$VZ</a>를 약세로 봤다(<a href=\"https://x.com/KobeissiLetter/status/2108336440069206234\">원문</a>).</p>\n<h5>분열</h5><p><a href=\"#account/KobeissiLetter\">@KobeissiLetter</a>는 <a href=\"#stock/SPCX\" class=\"tk\">$SPCX</a>가 통신과 인터넷을 뒤흔들 것이라고 본다. <a href=\"#account/TrendSpider\">@TrendSpider</a>는 <a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a>가 AI 붐 이후 최저 PER에 100% 이상 성장 중이라고 했고 <a href=\"#account/firstadopter\">@firstadopter</a>도 Nvidia와 Dell의 기본면을 긍정적으로 봤지만, <a href=\"#account/Schuldensuehner\">@Schuldensuehner</a>는 AI 붐이 부채 붐으로 바뀌고 있으며 <a href=\"#stock/ORCL\" class=\"tk\">$ORCL</a> CDS가 기록에 가깝다고 걱정했다(<a href=\"https://x.com/Schuldensuehner/status/2108710790018568561\">원문</a>, <a href=\"https://x.com/TrendSpider/status/2108286312360935674\">원문</a>).</p>\n<h5>기타 주목할 점</h5><p><a href=\"#account/ripster47\">@ripster47</a>는 <a href=\"#stock/PENG\" class=\"tk\">$PENG</a>를 실적 후 66달러 위에서 매수하고 목표 75달러로 잡았다(<a href=\"https://x.com/ripster47/status/2107848742736912776\">원문</a>). <a href=\"#account/KawzInvests\">@KawzInvests</a>와 <a href=\"#account/michaelsikand\">@michaelsikand</a>는 <a href=\"#stock/MRVL\" class=\"tk\">$MRVL</a> 경영진이 FY2031 non-GAAP EPS 30달러 초과를 목표로 한다고 언급했다(<a href=\"https://x.com/KawzInvests/status/2107915991833563573\">원문</a>). 데이터는 게시물 1331개, 계정 83개이다.</p>",
+      "html": "<h4>짧은 요약</h4><p>이번 주 광학과 하드웨어 공감이 가장 강했고 $AMD, $DELL, $MU, $LITE에 강세 계정이 가장 많았다. $PEP와 $VZ가 주요 공동 약세였다. $SPCX와 $NVDA에 분열이 남아 있고 $ORCL 신용 리스크가 언급됐다.</p>"
+    },
+    "monthly": {
+      "date": "2026-10-12",
+      "brief": "<p>지난 28일(9월 15일~10월 12일) 통계는 최근 7일과 완전히 같다: 게시물 1331개, 계정 83개. 공동 강세는 여전히 <a href=\"#stock/AMD\" class=\"tk\">$AMD</a>와 <a href=\"#stock/DELL\" class=\"tk\">$DELL</a>(각 5개), <a href=\"#stock/MU\" class=\"tk\">$MU</a>와 <a href=\"#stock/LITE\" class=\"tk\">$LITE</a>(각 4개)에 집중됐다. 공동 약세는 <a href=\"#stock/PEP\" class=\"tk\">$PEP</a>(3개)와 <a href=\"#stock/VZ\" class=\"tk\">$VZ</a>(2개)였다. 분열은 <a href=\"#stock/SPCX\" class=\"tk\">$SPCX</a>와 <a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a>가 주도했다.</p>",
+      "full": "<h5>공감</h5><p>28일 동안 광학과 AI 하드웨어 공급망이 가장 일치한 주제였다. <a href=\"#account/KawzInvests\">@KawzInvests</a>는 <a href=\"#stock/LITE\" class=\"tk\">$LITE</a> 고객이 2030년 공급을 확보하고 용량이 2029년 초까지 매진됐으며 가격 결정력이 있다고 했다(<a href=\"https://x.com/KawzInvests/status/2108933141624758781\">원문</a>). <a href=\"#account/ripster47\">@ripster47</a>는 <a href=\"#stock/MU\" class=\"tk\">$MU</a>를 1000달러 조정 때 매수하고 1100달러 재시험을 기대했다(<a href=\"https://x.com/ripster47/status/2108613541343187039\">원문</a>).</p>\n<h5>공동 약세</h5><p><a href=\"#account/leadlagreport\">@leadlagreport</a>는 <a href=\"#stock/PEP\" class=\"tk\">$PEP</a> 이익이 관세 환급으로 부풀려졌다고 했다(<a href=\"https://x.com/leadlagreport/status/2108263732669227364\">원문</a>). SpaceX 스펙트럼 소식으로 <a href=\"#account/KobeissiLetter\">@KobeissiLetter</a>는 <a href=\"#stock/VZ\" class=\"tk\">$VZ</a>를 약세로 봤다(<a href=\"https://x.com/KobeissiLetter/status/2108336440069206234\">원문</a>).</p>\n<h5>분열</h5><p><a href=\"#account/TrendSpider\">@TrendSpider</a>는 <a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a> 밸류에이션과 성장을 긍정적으로 봤지만 <a href=\"#account/Schuldensuehner\">@Schuldensuehner</a>는 <a href=\"#stock/ORCL\" class=\"tk\">$ORCL</a> 등 AI 관련 부채 리스크 상승을 걱정했다(<a href=\"https://x.com/Schuldensuehner/status/2108710790018568561\">원문</a>).</p>\n<h5>기타 주목할 점</h5><p><a href=\"#account/ripster47\">@ripster47</a>는 <a href=\"#stock/PENG\" class=\"tk\">$PENG</a>를 66달러 위에서 매수하고 목표 75달러로 잡았다(<a href=\"https://x.com/ripster47/status/2107848742736912776\">원문</a>). 데이터 범위는 최근 주와 동일하게 게시물 1331개, 계정 83개이다.</p>",
+      "html": "<h4>짧은 요약</h4><p>28일 데이터는 최근 주와 일치하며 광학·하드웨어 공감이 주도하고 $PEP/$VZ 약세가 뚜렷하며 $SPCX/$NVDA 분열이 남아 있다.</p>"
+    },
+    "highlights": {
+      "date": "2026-10-12",
+      "range": "2026-10-06 ~ 2026-10-12",
+      "stats_note": "최근 7일 게시물 1331개, 계정 83개; 공동 강세는 AMD/DELL(각 5), MU/LITE(각 4)가 가장 강함.",
+      "cards": [
+        {
+          "headline": "광학 용량 2029년까지 매진",
+          "theme": "AI 포토닉스와 인터커넥트",
+          "tone": "看好",
+          "points": ["@KawzInvests: 고객이 이미 2030년 공급을 확보, $LITE에 가격 결정력", "@TrendSpider: 용량이 2029년까지 매진, 관찰 목록에 추가 제안"],
+          "tickers": ["LITE"],
+          "handles": ["KawzInvests", "TrendSpider"],
+          "source_note": "@KawzInvests, @TrendSpider 게시물 기준",
+          "big": {"value": "4개 계정", "label": "$LITE 강세"}
+        },
+        {
+          "headline": "메모리 조정 매수",
+          "theme": "AI 메모리",
+          "tone": "看好",
+          "points": ["@ripster47: $MU를 1000달러 조정 때 매수, 1100달러 재시험 희망", "@GerberKawasaki: 12월부터 대량 자사주 매입 시작"],
+          "tickers": ["MU"],
+          "handles": ["ripster47", "GerberKawasaki"],
+          "source_note": "@ripster47, @GerberKawasaki 게시물 기준",
+          "big": {"value": "4개 계정", "label": "$MU 강세"}
+        },
+        {
+          "headline": "통신 파괴와 부채 리스크",
+          "theme": "SPCX와 ORCL",
+          "tone": "分歧",
+          "points": ["@KobeissiLetter: $SPCX가 통신업을 뒤흔들 것, 진화하지 않으면 도태", "@Schuldensuehner: AI 붐이 부채 붐으로, $ORCL CDS가 기록에 근접"],
+          "tickers": ["SPCX", "ORCL"],
+          "handles": ["KobeissiLetter", "Schuldensuehner"],
+          "source_note": "@KobeissiLetter, @Schuldensuehner 게시물 기준",
+          "big": {"value": "5강 1약", "label": "$SPCX 분열"}
+        }
+      ]
+    },
+    "briefing": {
+      "date": "2026-10-12",
+      "html": "<h3>오늘의 시장 논의 하이라이트</h3>\n<p>오늘(10월 12일) 논의는 한산했고 게시물 33개, 계정 16개로 공동 방향이 없었다. 지난 한 주 광학과 하드웨어가 가장 일치했고 $AMD, $DELL, $MU, $LITE에 강세 계정이 가장 많았다. $PEP(관세 환급)와 $VZ(SpaceX 스펙트럼)가 주요 공동 약세 종목이었다.</p>\n<p>@ripster47는 $MU를 1000달러 조정 때 매수하고 1100달러 재시험을 기대했으며 $PENG를 66달러 위에서 매수하고 목표 75달러로 잡았다. $ORCL 신용 리스크가 분열 지점으로 언급됐다.</p>"
+    }
+  }
+}
