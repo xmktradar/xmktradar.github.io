@@ -767,7 +767,27 @@ td:not(:first-child) .note{white-space:nowrap}
 nav.tabs a.tab-robo{display:block;padding:10px 14px;font-weight:500;text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;border-radius:10px 10px 0 0}
 nav.tabs a.tab-robo:hover{filter:brightness(.9)}
 @media(max-width:640px){nav.tabs{width:100%}nav.tabs button{padding-left:8px;padding-right:8px}nav.tabs a.tab-robo{padding-left:8px;padding-right:8px;font-size:14px;flex:0 0 auto}}
-@media(max-width:600px){.divehead .meta{flex:1 1 100%}}</style><!-- lang-head --><link rel="canonical" href="https://xmktradar.github.io/zh/"><link rel="alternate" hreflang="zh-Hant" href="https://xmktradar.github.io/zh/"><link rel="alternate" hreflang="en" href="https://xmktradar.github.io/en/"><link rel="alternate" hreflang="ko" href="https://xmktradar.github.io/ko/"><link rel="alternate" hreflang="x-default" href="https://xmktradar.github.io/"><style>.lang-sw{display:flex;gap:4px;margin:6px 0 2px}.lang-sw a{font:600 12.5px/1 var(--f-body);padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);text-decoration:none;background:var(--surface)}.lang-sw a[aria-current]{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}#dive>.lang-sw{justify-content:flex-end;margin:10px 16px 0}@media(max-width:600px){.flag{white-space:normal;max-width:100%;flex-wrap:wrap}.tk:has(.flag){white-space:normal!important;max-width:100%}html:not([lang^=zh]) td:not(:first-child) .note{white-space:normal}}</style><script>(function(){var k="ct-lang";document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".lang-sw a");if(!a)return;try{localStorage.setItem(k,a.dataset.lang)}catch(_){}e.preventDefault();location.href=a.getAttribute("href")+location.hash});new MutationObserver(function(){var d=document.getElementById("dive"),n=document.querySelector("header .lang-sw");if(d&&n&&!d.querySelector(".lang-sw"))d.insertBefore(n.cloneNode(true),d.firstChild)}).observe(document.documentElement,{childList:true,subtree:true});if(!/github\.io$/.test(location.hostname))return;var l;try{l=localStorage.getItem(k)}catch(_){}if(!l){var n=(navigator.languages||[navigator.language||""]).join(",").toLowerCase();l=/^ko|,ko/.test(n)?"ko":/^zh|,zh/.test(n)?"zh":/^en|,en/.test(n)?"en":"zh"}location.replace("/"+l+"/"+location.hash)})();</script><!-- lang-head --></head>
+@media(max-width:600px){.divehead .meta{flex:1 1 100%}}</style><!-- lang-head --><link rel="canonical" href="https://xmktradar.github.io/zh/"><link rel="alternate" hreflang="zh-Hant" href="https://xmktradar.github.io/zh/"><link rel="alternate" hreflang="en" href="https://xmktradar.github.io/en/"><link rel="alternate" hreflang="ko" href="https://xmktradar.github.io/ko/"><link rel="alternate" hreflang="x-default" href="https://xmktradar.github.io/"><style>.lang-sw{display:flex;gap:4px;margin:6px 0 2px}.lang-sw a{font:600 12.5px/1 var(--f-body);padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);text-decoration:none;background:var(--surface)}.lang-sw a[aria-current]{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}#dive>.lang-sw{justify-content:flex-end;margin:10px 16px 0}@media(max-width:600px){.flag{white-space:normal;max-width:100%;flex-wrap:wrap}.tk:has(.flag){white-space:normal!important;max-width:100%}html:not([lang^=zh]) td:not(:first-child) .note{white-space:normal}}</style><script>(function(){var k="ct-lang";document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".lang-sw a");if(!a)return;try{localStorage.setItem(k,a.dataset.lang)}catch(_){}e.preventDefault();location.href=a.getAttribute("href")+location.hash});new MutationObserver(function(){var d=document.getElementById("dive"),n=document.querySelector("header .lang-sw");if(d&&n&&!d.querySelector(".lang-sw"))d.insertBefore(n.cloneNode(true),d.firstChild)}).observe(document.documentElement,{childList:true,subtree:true});if(!/github\.io$/.test(location.hostname))return;var l;try{l=localStorage.getItem(k)}catch(_){}if(!l){var n=(navigator.languages||[navigator.language||""]).join(",").toLowerCase();l=/^ko|,ko/.test(n)?"ko":/^zh|,zh/.test(n)?"zh":/^en|,en/.test(n)?"en":"zh"}location.replace("/"+l+"/"+location.hash)})();</script><!-- lang-head --><style id="macro-tab-css">
+.m-grid{display:grid;gap:10px;margin-top:10px}
+.m-th{border:1px solid var(--line);border-radius:8px;background:var(--surface);min-width:0}
+.m-th>summary{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:10px 12px;cursor:pointer;list-style:none}
+.m-th>summary::-webkit-details-marker{display:none}
+.m-th>summary::after{content:'›';margin-left:auto;color:var(--muted);transition:transform .15s}
+.m-th[open]>summary::after{transform:rotate(90deg)}
+.m-th.m-none>summary{cursor:default}.m-th.m-none>summary::after{content:''}
+.m-nm{font-weight:700;font-size:15px}
+.m-cnt{display:inline-flex;flex-wrap:wrap;gap:6px;align-items:center}
+.m-arr{font-size:12.5px;font-weight:600;color:var(--muted)}.m-arr.up{color:var(--bull)}.m-arr.dn{color:var(--bear)}
+.m-th>.bar,.m-th>.note,.m-th>.m-list,.m-th>.m-more{margin:0 12px 10px}
+.m-more>summary{cursor:pointer;color:var(--accent);font-size:13px;padding:8px 0}.m-more>.m-list{margin-top:4px}
+.m-row{display:flex;gap:10px;align-items:flex-start;border-top:1px solid var(--line);padding-top:8px}
+.m-row .post-who{display:flex;gap:8px;align-items:center;flex:0 0 190px;min-width:0;text-decoration:none;color:inherit}
+.m-row .post-who span{display:flex;flex-direction:column;min-width:0}.m-row .post-who b,.m-row .post-who small{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.m-body{min-width:0;flex:1}.m-body .hd{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;font-size:12.5px;color:var(--muted)}
+.m-body .tx{margin:4px 0 0;overflow-wrap:anywhere}
+@media(max-width:600px){.m-row{flex-direction:column;gap:6px}.m-row .post-who{flex:none;max-width:100%}.m-th>summary{padding:10px}}
+</style>
+</head>
 <body>
 <header class="top">
   <div class="wrap">
@@ -784,6 +804,7 @@ nav.tabs a.tab-robo:hover{filter:brightness(.9)}
       <button role="tab" data-v="daily" id="tab-daily">每日</button>
       <button role="tab" data-v="weekly" id="tab-weekly">每週<small class="tab-rng">（7 天）</small></button>
       <button role="tab" data-v="monthly" id="tab-monthly">每月<small class="tab-rng">（28 天）</small></button>
+      <button role="tab" data-v="macro" id="tab-macro">宏觀</button>
       <button role="tab" data-v="tracked" id="tab-tracked">追蹤名單</button>
       <a href="robot.html" class="tab-robo"><span class="rb-full">機械人選股交易（Grok）</span><span class="rb-short">機械人交易</span></a>
     </nav>
@@ -1342,7 +1363,31 @@ function linkHandles(root){if(!root)return;const w=document.createTreeWalker(roo
   while((m=HANDLE_RE.exec(t))){const at=m.index+m[1].length;frag.append(t.slice(last,at));const a=document.createElement('a');a.className='handle';a.href=xUrl(m[2]);a.target='_blank';a.rel='noopener';a.textContent='@'+m[2];frag.append(a);last=at+1+m[2].length}
   frag.append(t.slice(last));n.replaceWith(frag)}
  addMiniAvatars(root)}
-const VIEWS={daily:viewDaily,weekly:viewWeekly,monthly:viewMonthly,tracked:viewTracked};
+// ---------- 宏觀（2026-10-13）：100 個帳號的宏觀貼文按 9 個固定主題分組；立場＝對美股的影響 ----------
+// 主題：SuperGrok 的 macro_theme；舊貼文用 GitHub 關鍵字分類（macro_kw，沒有立場，不計入人數）
+const MTH=[['rates','利率／聯儲局'],['inflation','通脹'],['jobs','就業'],['growth','經濟增長／衰退'],['yields','債息'],['fx','美元／匯率'],['energy','油價／能源'],['policy','關稅／政策／地緣政治'],['other','其他']];
+const MIMP={bullish:'bull',bearish:'bear',neutral:'neu'},MIMPW={bull:'利好',bear:'利淡',neu:'中性',none:'未表態'};
+const mThemeOf=p=>p.macro_theme!==undefined?p.macro_theme:(p.macro_kw||null);
+const mImpOf=p=>MIMP[p.macro_impact]||'none';
+function mStat(th,from,to){const ps=rawIn(from,to).filter(p=>valid(p)&&p.macro&&mThemeOf(p)===th);const last={},lastS={};
+ ps.forEach(p=>{if(!last[p.acc]||p.ms>=last[p.acc].ms)last[p.acc]=p;if(mImpOf(p)!=='none'&&(!lastS[p.acc]||p.ms>=lastS[p.acc].ms))lastS[p.acc]=p});
+ const c={bull:0,bear:0,neu:0};Object.values(lastS).forEach(p=>c[mImpOf(p)]++);
+ return {rows:Object.values(last).sort((a,b)=>(mImpOf(b)!=='none')-(mImpOf(a)!=='none')||b.ms-a.ms),c,n:c.bull+c.bear+c.neu,posts:ps.length}}
+function mArrow(c,c0){if(c.n<1||c0.n<2)return '';const sc=x=>(x.c.bull-x.c.bear)/x.n,dlt=sc(c)-sc(c0);
+ return dlt>0.15?'<span class="m-arr up" title="同之前 7 天比較">▲ 轉好</span>':dlt<-0.15?'<span class="m-arr dn" title="同之前 7 天比較">▼ 轉差</span>':'<span class="m-arr" title="同之前 7 天比較">＝ 持平</span>'}
+function viewMacro(){const to=TODAY,from=addDays(TODAY,-6),pt=addDays(from,-1),pf=addDays(from,-7);
+ const all=MTH.map(([k,l])=>({k,l,s:mStat(k,from,to),s0:mStat(k,pf,pt)}));
+ const row=p=>{const s=mImpOf(p);return `<li class="m-row"><a class="post-who" href="${xUrl(p.acc)}" target="_blank" rel="noopener">${avImg(p.acc,'post-av')}<span><b>${esc(nameOf(p.acc))}</b><small>@${esc(p.acc)}</small></span></a><div class="m-body"><div class="hd"><span class="pill ${s}">${MIMPW[s]}</span><span>${p.time_hkt.slice(5,10).replace('-','/')} ${p.time_hkt.slice(11,16)} HKT</span><a href="${esc(p.url)}" target="_blank" rel="noopener">原始貼文 ↗</a></div><p class="tx">${p.summary_zh?esc(p.summary_zh):'<span class="note">尚無中文摘要，請看原帖</span>'}</p></div></li>`};
+ const card=t=>{const s=t.s,c=s.c;const accs=s.rows.length;
+  const head=accs?`<span class="m-cnt"><span class="pill bull">利好 ${c.bull}</span><span class="pill bear">利淡 ${c.bear}</span><span class="pill neu">中性 ${c.neu}</span>${mArrow(s,t.s0)}</span>`:'<span class="note">最近 7 天沒有人討論</span>';
+  return `<details class="m-th${accs?'':' m-none'}"><summary><span class="m-nm">${esc(t.l)}</span>${accs?`<span class="note">${accs} 個帳號</span>`:''}${head}</summary>${accs?`${s.n?distBar({bull:c.bull,neu:c.neu,none:0,bear:c.bear}):''}${accs>s.n?`<p class="note">${accs-s.n} 個帳號的貼文未標示立場（上線前的舊貼文只按關鍵字分類），不計入人數。</p>`:''}<ul class="list m-list">${s.rows.slice(0,8).map(row).join('')}</ul>${accs>8?`<details class="m-more"><summary>顯示其餘 ${accs-8} 個帳號</summary><ul class="list m-list">${s.rows.slice(8).map(row).join('')}</ul></details>`:''}`:''}</details>`};
+ const nAcc=new Set(rawIn(from,to).filter(p=>valid(p)&&p.macro&&mThemeOf(p)).map(p=>p.acc)).size;
+ return `<div class="grid">${macroHtml()}
+ <section class="c12 panel m-sec"><div class="range">彙整 ${from} 至 ${to}（7 天）</div>
+  <h2>宏觀觀點 <span class="sub">${nAcc} 個帳號・立場代表對美股的影響・每個帳號只列最新一次講法</span></h2>
+  <p class="note">▲▼ 為同之前 7 天比較：利好減利淡的比例變化超過 15 個百分點才顯示；之前 7 天少於 2 個帳號表態就不比較。只講大市升跌、沒有講到宏觀題目的貼文不放在這裡。</p>
+  <div class="m-grid">${all.map(card).join('')}</div></section></div>`}
+const VIEWS={daily:viewDaily,weekly:viewWeekly,monthly:viewMonthly,macro:viewMacro,tracked:viewTracked};
 function render(){const h=decodeURIComponent((location.hash||'#daily').slice(1));
  const ms=h.match(/^stock[\/-](.+)$/),ma=h.match(/^account\/(.+)$/);
  if(ms||ma){if(!document.getElementById('view').innerHTML)drawView();try{ms?openDive(ms[1].toUpperCase()):openAccount(ma[1])}catch(e){console.error(e);document.getElementById('dive').innerHTML='<div class="wrap">'+empty('畫面顯示錯誤：'+esc(e.message))+'</div>';showDive(document.getElementById('dive'))}return}

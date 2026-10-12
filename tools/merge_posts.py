@@ -6,6 +6,7 @@ Writes work/merge.json with what changed, for the analysis step.
 import re
 from datetime import timezone
 
+from macro_themes import tag_posts
 from sitedata import ET, HK, load, notice, now_hk, parse_iso, read_json, save, work, write_json
 
 PENDING = 'data/pending-posts.json'
@@ -54,6 +55,10 @@ def site_post(x, a):
         if a.get(k):
             p[k] = a[k]
     p['macro'] = bool(a.get('macro'))
+    if 'macro_theme' in a:
+        p['macro_theme'] = a['macro_theme']
+        if a.get('macro_impact'):
+            p['macro_impact'] = a['macro_impact']
     if (x.get('text') or '').strip():
         p['text'] = x['text'][:1500]  # original wording, shown on the English page
     return p
@@ -146,6 +151,7 @@ def main():
     for p in d['posts']:
         if 'text' not in p and p['url'].lower() in texts:
             p['text'] = texts[p['url'].lower()]
+    tag_posts(d['posts'])
     pruned = prune(d, now)
     save(d)
     write_json(work('merge.json'), {'added': len(added), 'pruned': pruned, 'pending': len(keep),
