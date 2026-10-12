@@ -92,13 +92,21 @@ def main():
     now = datetime.now(HK)
     stamp = now.strftime('%Y-%m-%d %H:%M')
 
-    tickers = set()
+    tickers = set()  # every ticker in the kept posts (stock posts stay 28 days, merge_posts.py)
     for p in d['posts']:
         sbt = p.get('stance_by_ticker') if isinstance(p.get('stance_by_ticker'), dict) else {}
         for t in list(p.get('tickers') or []) + list(sbt):
             t = str(t).lstrip('$').upper().strip()
             if t and re.fullmatch(r'[A-Z0-9.\-=^]{1,12}', t):
                 tickers.add(t)
+    # Drop data for stocks no post mentions any more, so search and the disclaimer only list live stocks
+    # (px/<ticker>.json follows d['prices'] in build_langs.py). A stock mentioned again is re-fetched in full.
+    dropped = []
+    for key in ('prices', 'intraday', 'quotes', 'tv_symbols'):
+        for t in [t for t in d.get(key, {}) if t not in tickers]:
+            del d[key][t]
+            if key == 'prices':
+                dropped.append(t)
     tickers = sorted(t for t in tickers if t not in CRYPTO and not ov.get(t, {}).get('unconfirmed') and not ov.get(t, {}).get('drop'))
 
     missing, ok = [], 0
@@ -173,6 +181,7 @@ def main():
     open(HTML, 'w', encoding='utf-8').write(s)
     print(f'tickers {len(tickers)} ok {ok} missing {len(missing)} quotes {len(qs)} macro {len(rows)}')
     print('missing:', ','.join(missing))
+    print(f'dropped {len(dropped)} no longer mentioned:', ','.join(sorted(dropped)))
     if ok < len(tickers) * 0.5:
         sys.exit('too many price failures; not publishing')
 
