@@ -7,7 +7,7 @@ const path = require('path');
   const b = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
   const bad = [];
   for (const [w, h] of [[1280, 900], [390, 844]]) {
-    for (const v of ['daily', 'weekly', 'monthly', 'tracked', 'stock/NVDA']) {
+    for (const v of ['daily', 'weekly', 'monthly', 'macro', 'tracked', 'stock/NVDA']) {
       const p = await b.newPage({ viewport: { width: w, height: h } });
       const errs = [];
       p.on('pageerror', e => errs.push(e.message));

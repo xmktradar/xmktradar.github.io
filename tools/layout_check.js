@@ -48,6 +48,23 @@ const HAN = /[一-鿿]/;
         const hit = await p.$$eval('#srch-r li[data-t]', l => l.map(e => e.dataset.t));
         if (!hit.includes('NVDA')) warn.push(`${where}：搜尋 nvda 搵唔到 NVDA`);
       }
+      // 宏觀分頁（2026-10-13）
+      await p.goto(file + '#macro');
+      await p.waitForTimeout(800);
+      const m = await p.evaluate(({ lang, han }) => {
+        const HAN = new RegExp(han);
+        const sec = document.querySelector('.m-sec');
+        const text = sec ? sec.innerText : '';
+        const ui = lang === 'zh' || !sec ? [] : [...sec.querySelectorAll('h2,.m-nm,summary .note')]
+          .map(e => e.innerText.trim()).filter(t => t && HAN.test(t)).slice(0, 5);
+        return { themes: document.querySelectorAll('.m-th').length, ui,
+                 bad: [...new Set(text.match(/\b(undefined|NaN)\b/g) || [])],
+                 ovf: document.documentElement.scrollWidth > innerWidth + 1 };
+      }, { lang, han: HAN.source });
+      if (m.themes !== 9) warn.push(`${where}：宏觀分頁有 ${m.themes} 個主題（應該 9 個）`);
+      if (m.bad.length) warn.push(`${where}：宏觀分頁出現 ${m.bad.join('、')}`);
+      if (m.ui.length) warn.push(`${where}：宏觀分頁有未翻譯中文：${m.ui.join(' / ')}`);
+      if (m.ovf) warn.push(`${where}：宏觀分頁闊過畫面`);
       await p.close();
     }
   }

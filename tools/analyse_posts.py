@@ -24,6 +24,10 @@ def traditional(s):
 INBOX = os.path.join(os.path.dirname(__file__), '..', 'data', 'super-grok-analysis.json')
 INBOX_DIR = os.path.join(os.path.dirname(__file__), '..', 'data', 'grok-inbox')
 VALID = {'睇好', '睇淡', '中性', '未表態'}
+# Macro tab (Tim, 2026-10-13): fixed theme codes and the post's effect on US stocks
+MACRO_THEMES = ('rates', 'inflation', 'jobs', 'growth', 'yields', 'fx', 'energy', 'policy', 'other')
+MACRO_IMPACT = {'bullish': 'bullish', 'bearish': 'bearish', 'neutral': 'neutral',
+                '利好': 'bullish', '利淡': 'bearish', '中性': 'neutral'}
 
 
 def clean(a):
@@ -41,6 +45,10 @@ def clean(a):
         if isinstance(a.get(k), str) and a[k].strip():
             o[k] = a[k].strip().replace('——', ', ').replace('—', ', ')
     o['macro'] = bool(a.get('macro'))
+    if 'macro_theme' in a:  # present (even null) = SuperGrok judged it; null means plain index talk, not on the macro tab
+        th = a.get('macro_theme')
+        o['macro_theme'] = th if o['macro'] and th in MACRO_THEMES else None
+        o['macro_impact'] = MACRO_IMPACT.get(a.get('macro_impact')) if o['macro_theme'] else None
     st = a.get('stance') if a.get('stance') in ('睇好', '睇淡', '中性') else None
     if tickers:
         o['stance_by_ticker'] = sbt
