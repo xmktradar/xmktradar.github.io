@@ -4,7 +4,8 @@ Reads work/stats.json, the data in index.html and data/consensus-history.json.
 Writes work/og.json for tools/og.js when a picture needs drawing, points the master page's
 og:image at today's picture, and once a day (first update after 07:00 HKT) writes
 data/social-posts.json and social/index.html: posts in Chinese, English and Korean for Instagram
-(the @thecrowdtape format), Threads, X and Reddit, for the Grok bot to post with og/social-<lang>.png.
+(the @thecrowdtape format), Threads, X, Reddit and Facebook, for the Grok bot to post with og/social-<lang>.png,
+plus a 1080x1920 Instagram Story picture og/story-<lang>.png. Every version asks readers to support the site (PayPal).
 """
 import hashlib
 import html
@@ -166,7 +167,7 @@ def caption(lang, day, s, items, win, quote_):
                     talk='💬 最多人討論：', tr=lambda x: acc(x['n']) + mix(x, '（{}）', '{} 好 {} 淡', '{} 個睇好', '{} 個睇淡'),
                     sum=f'🗣️ 今日 {s["accounts"]} 個帳號發文，講咗 {s.get("tickers", 0)} 隻股票。', q=lambda q: f'💬 @{q["acc"]}：{q["text"]}',
                     note='(共同看多＝最少 2 個帳號最新立場睇好，唔計市場快訊帳號)',
-                    end=['網站約每 4 個鐘更新，最新數字 👉 link in bio (xmktradar.github.io)', 'Follow @thecrowdtape 每日睇街貨點諗。', '',
+                    end=['網站約每 4 個鐘更新，最新數字 👉 link in bio (xmktradar.github.io)', '☕ 鍾意就請我哋飲杯咖啡：link in bio，網站底部 PayPal 捐款 🙏', 'Follow @thecrowdtape 每日睇街貨點諗。', '',
                          '⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。網站嘅機械人頁只係紙上交易。投資有風險，請自行判斷。']),
          'en': dict(cb=f'🔵 Joint bullish: {len(s["bull"])} · Joint bearish: {len(s["bear"])}', rest=lambda k, n: f'・{k} more with {n} accounts each',
                     more=lambda k: f' +{k} more', bear='🔴 Joint bearish: ', split='⚖️ Split views: ', sp=lambda b, r: f' ({b} bull / {r} bear)',
@@ -174,7 +175,7 @@ def caption(lang, day, s, items, win, quote_):
                     talk='💬 Most discussed:', tr=lambda x: acc(x['n']) + mix(x, ' ({})', '{} bull / {} bear', '{} bullish', '{} bearish'),
                     sum=f'🗣️ {s["accounts"]} accounts posted today, covering {s.get("tickers", 0)} stocks.', q=lambda q: f'💬 @{q["acc"]}: "{q["text"]}"',
                     note='(Joint bullish = at least 2 accounts whose latest view is bullish; news-wire accounts not counted)',
-                    end=['Updated about every 4 hours. Latest numbers 👉 link in bio (xmktradar.github.io)', 'Follow @thecrowdtape for the daily read on what the crowd thinks.', '',
+                    end=['Updated about every 4 hours. Latest numbers 👉 link in bio (xmktradar.github.io)', '☕ Enjoy it? Buy us a coffee: link in bio, PayPal at the bottom of the site 🙏', 'Follow @thecrowdtape for the daily read on what the crowd thinks.', '',
                          '⚠️ A summary of public social media posts, not investment advice. The site\'s bot pages are paper trading only. Investing involves risk; do your own research.']),
          'ko': dict(cb=f'🔵 공동 강세: {len(s["bull"])}개・공동 약세: {len(s["bear"])}개', rest=lambda k, n: f'・나머지 {k}개 종목은 각 계정 {n}개',
                     more=lambda k: f' 외 {k}개', bear='🔴 공동 약세: ', split='⚖️ 의견 엇갈림: ', sp=lambda b, r: f' (강세 {b} / 약세 {r})',
@@ -182,7 +183,7 @@ def caption(lang, day, s, items, win, quote_):
                     talk='💬 가장 많이 언급된 종목:', tr=lambda x: acc(x['n']) + mix(x, ' ({})', '강세 {} / 약세 {}', '강세 {}', '약세 {}'),
                     sum=f'🗣️ 오늘 계정 {s["accounts"]}개가 글을 올렸고, 언급된 종목은 {s.get("tickers", 0)}개입니다.', q=lambda q: f'💬 @{q["acc"]}: "{q["text"]}"',
                     note='(공동 강세 = 최신 의견이 강세인 계정 2개 이상, 뉴스 속보 계정 제외)',
-                    end=['약 4시간마다 업데이트, 최신 수치 👉 프로필 링크 (xmktradar.github.io)', '@thecrowdtape 팔로우하고 매일 시장 분위기를 확인하세요.', '',
+                    end=['약 4시간마다 업데이트, 최신 수치 👉 프로필 링크 (xmktradar.github.io)', '☕ 도움이 되셨다면 커피 한 잔 후원해 주세요: 프로필 링크, 사이트 하단 PayPal 🙏', '@thecrowdtape 팔로우하고 매일 시장 분위기를 확인하세요.', '',
                          '⚠️ 공개 SNS 게시물을 정리한 것으로 투자 조언이 아닙니다. 사이트의 봇 페이지는 모의 거래입니다. 투자에는 위험이 따르니 스스로 판단하세요.'])}[lang]
     join = lambda ts, cap=8: sep.join(T(t) for t in ts[:cap]) + (L['more'](len(ts) - cap) if len(ts) > cap else '')
     lead = ' ' if lang == 'zh' else ''
@@ -231,20 +232,34 @@ def caption(lang, day, s, items, win, quote_):
         while len(blocks) > 3 and size('\n\n'.join(blocks)) > limit:
             blocks.pop(-3)  # keep the headline and the link + disclaimer at the end
         return '\n\n'.join(blocks)
+    give = f"{short['give']}{url}#donate"
     tail = f"{short['live']}{url}\n{short['disc']}"
-    threads = fit([head, win_line, '\n'.join(main[:6]), *extra, q, tail, tg.split(' ')[0]], 480, len)
+    threads = fit([head, win_line, '\n'.join(main[:6]), *extra, q, f"{short['live']}{url}\n{give}\n{short['disc']}", tg.split(' ')[0]], 480, len)
     xs = [head, '\n'.join([t for t in main if t != L['none']][:3]), tail]
     x = fit(xs, 270, xlen)
     while xlen(x) > 270 and len(xs[1].split('\n')) > 1:
         xs[1] = '\n'.join(xs[1].split('\n')[:-1])
         x = '\n\n'.join(xs)
+    # The donation line goes in when it still fits, dropping list lines for it but keeping at least one.
+    for k in range(len(xs[1].split('\n')), 0, -1):
+        xd = '\n\n'.join([head, '\n'.join(xs[1].split('\n')[:k]), f"{short['live']}{url}\n{give}\n{short['disc']}"])
+        if xlen(xd) <= 270:
+            x = xd
+            break
 
     # Reddit: a title plus a Markdown body; no hashtags.
     md = lambda t: re.sub(r'^・', '- ', t)
     body = [win_line, '\n'.join(md(t) for t in main)] + extra + ([f'> {q}'] if q else [])
-    body += [L['note'], f"{short['live']}[{url}]({url})", short['disc_long']]
+    body += [L['note'], f"{short['live']}[{url}]({url})", f"{short['give']}[{url}#donate]({url}#donate)", short['disc_long']]
+
+    # Facebook: the Instagram post with clickable links in place of "link in bio".
+    fb = [head, '', win_line, '', *main]
+    for b in extra + ([q] if q else []):
+        fb += ['', b]
+    fb += ['', L['note'], '', f"{short['live']}{url}", give, '', short['disc_long'], '', tg]
     return {'instagram': '\n'.join(ig), 'threads': threads, 'x': x,
-            'reddit': {'title': re.sub(r'\s*[📊💬]$', '', head), 'body': '\n\n'.join(body)}}
+            'reddit': {'title': re.sub(r'\s*[📊💬]$', '', head), 'body': '\n\n'.join(body)},
+            'facebook': '\n'.join(fb)}
 
 
 def xlen(t):
@@ -253,9 +268,9 @@ def xlen(t):
     return sum(2 if ord(c) >= 0x1100 else 1 for c in t)
 
 
-SHORT = {'zh': {'live': '最新數字 👉 ', 'disc': '⚠️ 唔構成投資建議', 'disc_long': '⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。投資有風險，請自行判斷。'},
-         'en': {'live': 'Live numbers 👉 ', 'disc': '⚠️ Not investment advice', 'disc_long': '⚠️ A summary of public social media posts, not investment advice. Investing involves risk; do your own research.'},
-         'ko': {'live': '최신 수치 👉 ', 'disc': '⚠️ 투자 조언 아님', 'disc_long': '⚠️ 공개 SNS 게시물을 정리한 것으로 투자 조언이 아닙니다. 투자에는 위험이 따르니 스스로 판단하세요.'}}
+SHORT = {'zh': {'live': '最新數字 👉 ', 'give': '☕ 鍾意就支持我哋 👉 ', 'disc': '⚠️ 唔構成投資建議', 'disc_long': '⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。投資有風險，請自行判斷。'},
+         'en': {'live': 'Live numbers 👉 ', 'give': '☕ Support the site 👉 ', 'disc': '⚠️ Not investment advice', 'disc_long': '⚠️ A summary of public social media posts, not investment advice. Investing involves risk; do your own research.'},
+         'ko': {'live': '최신 수치 👉 ', 'give': '☕ 후원하기 👉 ', 'disc': '⚠️ 투자 조언 아님', 'disc_long': '⚠️ 공개 SNS 게시물을 정리한 것으로 투자 조언이 아닙니다. 투자에는 위험이 따르니 스스로 판단하세요.'}}
 
 
 def social_page(sp):
@@ -263,18 +278,20 @@ def social_page(sp):
     rows = []
     for lang, name in (('zh', '中文'), ('en', 'English'), ('ko', '한국어')):
         img = sp['images'][lang]
+        story = sp['stories'][lang]
         p = sp['posts'][lang]
         box = lambda title, text, n: (f'<h3>{title}</h3><textarea readonly rows="{n}">{html.escape(text)}</textarea>'
                                       '<button onclick="navigator.clipboard.writeText(this.previousElementSibling.value);this.textContent=\'已複製 ✓\'">複製</button>')
         rows.append(f'''<section><h2>{name}</h2><a href="{html.escape(img)}" download><img src="{html.escape(img)}" alt=""></a>
 {box('Instagram', p['instagram'], 18)}{box('Threads', p['threads'], 10)}{box('X', p['x'], 6)}
-{box('Reddit 標題', p['reddit']['title'], 2)}{box('Reddit 內文', p['reddit']['body'], 14)}</section>''')
+{box('Reddit 標題', p['reddit']['title'], 2)}{box('Reddit 內文', p['reddit']['body'], 14)}{box('Facebook', p['facebook'], 18)}
+<h3>IG Story（1080×1920）</h3><a href="{html.escape(story)}" download><img class="story" src="{html.escape(story)}" alt=""></a></section>''')
     return f'''<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="robots" content="noindex"><title>每日社交媒體貼文 {sp['date']}｜The Crowd Tape</title>
 <style>body{{font:16px/1.5 system-ui,sans-serif;margin:0 auto;max-width:760px;padding:16px;background:#f7f8fb;color:#151a2c}}
 section{{background:#fff;border-radius:14px;padding:16px;margin:16px 0;box-shadow:0 1px 4px rgba(0,0,0,.08)}}
-img{{width:100%;border-radius:10px}}textarea{{width:100%;box-sizing:border-box;font:inherit;margin-top:4px}}h3{{margin:18px 0 0;font-size:15px}}
+img{{width:100%;border-radius:10px}}img.story{{width:min(100%,320px);display:block;margin-top:6px}}textarea{{width:100%;box-sizing:border-box;font:inherit;margin-top:4px}}h3{{margin:18px 0 0;font-size:15px}}
 button{{margin-top:8px;padding:8px 16px;border-radius:999px;border:0;background:#151a2c;color:#fff;font:inherit}}</style>
 <h1>{sp['date']} 社交媒體貼文</h1><p>{html.escape(sp['window'])}｜製作時間 {sp['made_hkt']} HKT｜撳圖片可以下載。</p>
 {''.join(rows)}</html>
@@ -331,11 +348,13 @@ def main():
     now = now_hk()
     old = isinstance((sp.get('posts') or {}).get('zh'), str)  # written before the per-platform versions existed
     old = old or not os.path.exists('zh/feed.xml')  # first run with RSS feeds
+    old = old or ('facebook' not in ((sp.get('posts') or {}).get('zh') or {'facebook': 1})) or 'stories' not in sp  # before Facebook and Story
     social = bool(items) and (sp.get('date') != day and now.hour >= SOCIAL_HOUR or old or os.environ.get('SOCIAL_FORCE') == '1')
     if social:
         win = window(s)
         sp = {'date': day, 'made_hkt': now.strftime('%Y-%m-%d %H:%M'), 'window': win,
               'images': {l: f'{SITE}og/social-{l}.png?v={day}' for l in LANGS},
+              'stories': {l: f'{SITE}og/story-{l}.png?v={day}' for l in LANGS},
               'posts': {l: caption(l, day, s, items, win, langs[l]['quote']) for l in LANGS}}
         write_json('data/social-posts.json', sp, indent=1)
         os.makedirs('social', exist_ok=True)

@@ -1,0 +1,57 @@
+<!doctype html><meta charset="utf-8">
+<!-- Instagram Story picture (1080x1920): the day's share picture on the same background, with room at the top and bottom
+     for Instagram's own bars and the link sticker. tools/og.js calls story(lang, data, pictureDataUrl). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=block">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0}
+body{width:1080px;height:1920px;position:relative;overflow:hidden;color:#151a2c;
+ font-family:"Noto Sans TC","Noto Sans KR","Noto Color Emoji",sans-serif}
+html[lang=ko] body{font-family:"Noto Sans KR","Noto Sans TC","Noto Color Emoji",sans-serif}
+html[lang=ko] h1,html[lang=ko] .give{word-break:keep-all}
+.bg{position:absolute;inset:0}
+.bull .bg{background:linear-gradient(160deg,#8fe3c3 0%,#c6ec9f 48%,#fde7a1 100%)}
+.talk .bg{background:linear-gradient(160deg,#9fc8fb 0%,#c3b9f6 55%,#f6c8df 100%)}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.55) 2px,transparent 2.1px);background-size:28px 28px;mask-image:linear-gradient(180deg,transparent 0,#000 70%)}
+/* Instagram covers about the top 250px and bottom 250px; everything sits between. */
+.main{position:absolute;left:60px;right:60px;top:270px;bottom:270px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.row1{display:flex;gap:16px;align-items:center}
+.brand{display:inline-flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:9px 24px 9px 12px;font-weight:900;font-size:32px;box-shadow:0 5px 0 rgba(21,26,44,.14)}
+.brand img{width:54px;height:54px;border-radius:12px;object-fit:cover;margin:-4px 0}
+.date{display:inline-block;background:#f8d34a;border:4px solid #151a2c;border-radius:14px;padding:6px 18px;font-weight:900;font-size:32px;transform:rotate(-2.5deg);box-shadow:4px 5px 0 #151a2c;white-space:nowrap}
+h1{margin:48px 0 0;font-weight:900;font-size:62px;line-height:1.18}
+h1 .hl{background:linear-gradient(transparent 55%,#fbe25b 55%);padding:0 8px;font-family:"IBM Plex Mono",monospace;font-size:1.45em}
+.pic{margin-top:44px;width:100%;border-radius:22px;border:5px solid #151a2c;box-shadow:0 10px 0 #151a2c;transform:rotate(-1deg);display:block}
+.give{margin-top:56px;background:#fff;border:4px solid #151a2c;border-radius:24px;padding:22px 30px;font-weight:900;font-size:40px;line-height:1.3;box-shadow:0 7px 0 #151a2c}
+.give small{display:block;font-weight:700;font-size:28px;color:#3c4466;margin-top:6px}
+.tap{margin-top:auto;font-weight:900;font-size:36px;background:#151a2c;color:#fff;border-radius:999px;padding:14px 34px}
+.fl{margin-top:18px;font-weight:700;font-size:24px;color:#3c4466}
+</style>
+<body>
+<div class="bg"></div><div class="dots"></div>
+<div class="main">
+ <div class="row1"><span class="brand"><img src="logo.png" alt="">The Crowd Tape</span><span class="date" id="date"></span></div>
+ <h1 id="h"></h1>
+ <img class="pic" id="pic" alt="">
+ <div class="give" id="give"></div>
+ <div class="tap" id="tap"></div>
+ <div class="fl" id="fl"></div>
+</div>
+<script>
+function story(lang,D,pic){
+const esc=v=>String(v==null?'':v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+document.documentElement.lang=lang;document.body.className=D.mode;
+const L={
+ zh:{hb:'今日最多人看好',ht:'今日最多人討論',acc:n=>`${n} 個帳號`,give:'☕ 鍾意就請我哋飲杯咖啡 🙏',gs:'網站底部 PayPal 捐款，支持網站繼續免費',tap:'👆 撳連結睇即時數字',fl:'⚠️ 不構成投資建議'},
+ en:{hb:'Most bullish today',ht:'Most discussed today',acc:n=>`${n} account${n===1?'':'s'}`,give:'☕ Enjoy it? Buy us a coffee 🙏',gs:'PayPal at the bottom of the site keeps it free',tap:'👆 Tap the link for live numbers',fl:'⚠️ Not investment advice'},
+ ko:{hb:'오늘 가장 많은 강세',ht:'오늘 가장 많이 언급',acc:n=>`계정 ${n}개`,give:'☕ 커피 한 잔 후원해 주세요 🙏',gs:'사이트 하단 PayPal 후원으로 무료 운영을 응원해 주세요',tap:'👆 링크를 눌러 실시간 수치 보기',fl:'⚠️ 투자 조언 아님'}}[lang];
+document.getElementById('date').textContent=`📅 ${D.date}`;
+const t=D.top[0];
+document.getElementById('h').innerHTML=t?`${D.mode==='bull'?L.hb:L.ht}<br><span class="hl">$${esc(t.t)}</span><br>${L.acc(t.n)} ${D.mode==='bull'?'🏆':'🔥'}`:'';
+document.getElementById('pic').src=pic;
+document.getElementById('give').innerHTML=`${L.give}<small>${L.gs}</small>`;
+document.getElementById('tap').textContent=L.tap;
+document.getElementById('fl').textContent=L.fl;
+}
+</script>
+</body>
