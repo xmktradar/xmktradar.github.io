@@ -82,6 +82,9 @@ jobs:
           for f in index.html zh/index.html en/index.html ko/index.html; do
             node tools/check.js "$f" || { echo "::error::網頁檢查唔合格：$f"; exit 1; }
           done
+      - name: Layout check (replaces the Grok bot daily layout check; writes layout_warnings)
+        continue-on-error: true
+        run: node tools/layout_check.js
       - name: Publish
         run: |
           git config user.name "github-actions[bot]"
