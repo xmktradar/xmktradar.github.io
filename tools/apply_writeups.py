@@ -130,6 +130,24 @@ def highlights_item(x):
     return x['date'], o
 
 
+RANGE_FMT = {'zh': '{a} – {b} HKT（共 {n} 則）', 'en': '{a} – {b} HKT ({n} posts in total)', 'ko': '{a} – {b} HKT(총 {n}건)'}
+
+
+def daily_range(day, lang):
+    """The highlight cards sit on the daily tab, so their time range is the daily window SuperGrok read
+    (data/writeup-input.json), cut at the time that file was made. SuperGrok's own range text is not
+    used: on 2026-10-12 it wrote a 7-day range there."""
+    w = read_json('data/writeup-input.json', {}) or {}
+    dl, gen = w.get('daily') or {}, str(w.get('generated_hkt') or '')
+    a, b = str(dl.get('from') or ''), str(dl.get('to') or '')
+    if w.get('today') != day or not STAMP.match(a[:16]) or not STAMP.match(b[:16]):
+        return None
+    if re.match(r'^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$', gen) and gen.replace(' ', 'T') < b[:16]:
+        b = gen.replace(' ', 'T')
+    md = lambda t: f'{int(t[5:7])}/{int(t[8:10])} {t[11:16]}'
+    return RANGE_FMT[lang].format(a=md(a), b=md(b) if b[:10] != a[:10] else b[11:16], n=dl.get('posts', 0))
+
+
 def upsert(lst, item):
     """Replace the entry for the same date, or add it; keep the list in date order."""
     lst[:] = [x for x in lst if not (isinstance(x, dict) and x.get('date') == item['date'])] + [item]
@@ -162,6 +180,9 @@ def main():
         if 'highlights' in part:
             day, hl = highlights_item(part['highlights'])
             if hl:
+                rg = daily_range(day, lang)
+                if rg:
+                    hl['range'] = rg
                 d.setdefault('highlights' + sfx, {})[day] = hl
                 done.append(f'{lang}/highlights {day}')
             else:

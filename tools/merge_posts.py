@@ -10,6 +10,11 @@ from sitedata import ET, HK, load, notice, now_hk, parse_iso, read_json, save, w
 
 PENDING = 'data/pending-posts.json'
 WAIT_HOURS = 24  # posts with no summary after this long stop waiting (Tim, 2026-10-12)
+# "Update site" runs at HKT 03:05, 07:05 ... 23:05 (.github/workflows/update-site.yml). GitHub starts it
+# 20-30 minutes late and it takes about 11 minutes, so posts are fetched around :30 and the new page is
+# usually up around :40. The header's 下次更新 shows the next of these.
+UPDATE_SLOTS = ['03:40', '07:40', '11:40', '15:40', '19:40', '23:40']
+SCRAPE_SLOTS = ['03:30', '07:30', '11:30', '15:30', '19:30', '23:30']
 
 
 def has_stock(x):
@@ -111,6 +116,8 @@ def main():
     gen = now.strftime('%Y-%m-%d %H:%M')
     d['meta']['generated_hkt'] = gen
     d['meta']['build_id'] = 'build-' + now.strftime('%Y%m%d-%H%M%S')
+    d['meta']['update_slots_hkt'] = UPDATE_SLOTS
+    d['meta']['scrape_slots_hkt'] = SCRAPE_SLOTS
     warn = [w for w in (d['meta'].get('warnings') or []) if not str(w).startswith(('攞帖失敗', '未分析'))]
     if new.get('failed'):
         warn.append('攞帖失敗：' + '、'.join(f.split('（')[0] for f in new['failed']))
