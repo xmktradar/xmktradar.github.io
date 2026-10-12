@@ -20,6 +20,15 @@ HTML = 'index.html'
 SITE = 'https://xmktradar.github.io/'
 LANGS = ('zh', 'en', 'ko')
 SOCIAL_HOUR = 7  # first update at or after this HKT hour writes the day's posts
+# Social posts only go out on US trading days, Monday to Friday (Tim, 2026-10-12). NYSE full-day closures:
+US_HOLIDAYS = {'2026-01-01', '2026-01-19', '2026-02-16', '2026-04-03', '2026-05-25', '2026-06-19', '2026-07-03',
+               '2026-09-07', '2026-11-26', '2026-12-25',
+               '2027-01-01', '2027-01-18', '2027-02-15', '2027-03-26', '2027-05-31', '2027-06-18', '2027-07-05',
+               '2027-09-06', '2027-11-25', '2027-12-24'}
+
+
+def trading_day(day):
+    return datetime.strptime(day, '%Y-%m-%d').weekday() < 5 and day not in US_HOLIDAYS
 
 
 def likes(p):
@@ -234,23 +243,32 @@ def caption(lang, day, s, items, win, quote_):
         return '\n\n'.join(blocks)
     give = f"{short['give']}{url}#donate"
     tail = f"{short['live']}{url}\n{short['disc']}"
+    # Threads shows one topic tag per post, so it gets the first hashtag only.
     threads = fit([head, win_line, '\n'.join(main[:6]), *extra, q, f"{short['live']}{url}\n{give}\n{short['disc']}", tg.split(' ')[0]], 480, len)
     xs = [head, '\n'.join([t for t in main if t != L['none']][:3]), tail]
     x = fit(xs, 270, xlen)
     while xlen(x) > 270 and len(xs[1].split('\n')) > 1:
         xs[1] = '\n'.join(xs[1].split('\n')[:-1])
         x = '\n\n'.join(xs)
-    # The donation line goes in when it still fits, dropping list lines for it but keeping at least one.
-    for k in range(len(xs[1].split('\n')), 0, -1):
-        xd = '\n\n'.join([head, '\n'.join(xs[1].split('\n')[:k]), f"{short['live']}{url}\n{give}\n{short['disc']}"])
-        if xlen(xd) <= 270:
-            x = xd
+    # Every post carries hashtags (Tim, 2026-10-12). X gets a short set; then the donation line when it still fits,
+    # dropping list lines for them but keeping at least one.
+    tks = [t for t in [x_['t'] for x_ in items] if re.fullmatch(r'[A-Z]{1,6}', t)]
+    xtags = ' '.join([tg.split(' ')[0]] + [f'#{t}' for t in tks[:2]])
+    lines_ = xs[1].split('\n')
+    done = False
+    for end in (f"{short['live']}{url}\n{give}\n{short['disc']}\n{xtags}", f"{tail}\n{xtags}", f"{tail}\n{tg.split(' ')[0]}"):
+        for k in range(len(lines_), 0, -1):
+            xd = '\n\n'.join([head, '\n'.join(lines_[:k]), end])
+            if xlen(xd) <= 270:
+                x, done = xd, True
+                break
+        if done:
             break
 
-    # Reddit: a title plus a Markdown body; no hashtags.
+    # Reddit: a title plus a Markdown body, hashtags on the last line.
     md = lambda t: re.sub(r'^・', '- ', t)
     body = [win_line, '\n'.join(md(t) for t in main)] + extra + ([f'> {q}'] if q else [])
-    body += [L['note'], f"{short['live']}[{url}]({url})", f"{short['give']}[{url}#donate]({url}#donate)", short['disc_long']]
+    body += [L['note'], f"{short['live']}[{url}]({url})", f"{short['give']}[{url}#donate]({url}#donate)", short['disc_long'], tg]
 
     # Facebook: the Instagram post with clickable links in place of "link in bio".
     fb = [head, '', win_line, '', *main]
@@ -259,7 +277,9 @@ def caption(lang, day, s, items, win, quote_):
     fb += ['', L['note'], '', f"{short['live']}{url}", give, '', short['disc_long'], '', tg]
     return {'instagram': '\n'.join(ig), 'threads': threads, 'x': x,
             'reddit': {'title': re.sub(r'\s*[📊💬]$', '', head), 'body': '\n\n'.join(body)},
-            'facebook': '\n'.join(fb)}
+            'facebook': '\n'.join(fb),
+            # Instagram Story: hashtags for a hashtag sticker or small text on the Story picture.
+            'story': ' '.join(tg.split(' ')[:3] + [f'#{t}' for t in tks[:2]])}
 
 
 def xlen(t):
@@ -285,7 +305,7 @@ def social_page(sp):
         rows.append(f'''<section><h2>{name}</h2><a href="{html.escape(img)}" download><img src="{html.escape(img)}" alt=""></a>
 {box('Instagram', p['instagram'], 18)}{box('Threads', p['threads'], 10)}{box('X', p['x'], 6)}
 {box('Reddit 標題', p['reddit']['title'], 2)}{box('Reddit 內文', p['reddit']['body'], 14)}{box('Facebook', p['facebook'], 18)}
-<h3>IG Story（1080×1920）</h3><a href="{html.escape(story)}" download><img class="story" src="{html.escape(story)}" alt=""></a></section>''')
+{box('IG Story hashtag', p['story'], 2)}<h3>IG Story（1080×1920）</h3><a href="{html.escape(story)}" download><img class="story" src="{html.escape(story)}" alt=""></a></section>''')
     return f'''<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="robots" content="noindex"><title>每日社交媒體貼文 {sp['date']}｜The Crowd Tape</title>
@@ -348,11 +368,12 @@ def main():
     now = now_hk()
     old = isinstance((sp.get('posts') or {}).get('zh'), str)  # written before the per-platform versions existed
     old = old or not os.path.exists('zh/feed.xml')  # first run with RSS feeds
-    old = old or ('facebook' not in ((sp.get('posts') or {}).get('zh') or {'facebook': 1})) or 'stories' not in sp  # before Facebook and Story
-    social = bool(items) and (sp.get('date') != day and now.hour >= SOCIAL_HOUR or old or os.environ.get('SOCIAL_FORCE') == '1')
+    old = old or ('story' not in ((sp.get('posts') or {}).get('zh') or {'story': 1})) or 'stories' not in sp  # before Facebook, Story and hashtags on every version
+    social = bool(items) and (sp.get('date') != day and now.hour >= SOCIAL_HOUR and trading_day(day) or old or os.environ.get('SOCIAL_FORCE') == '1')
     if social:
         win = window(s)
         sp = {'date': day, 'made_hkt': now.strftime('%Y-%m-%d %H:%M'), 'window': win,
+              'no_post_days': sorted(h for h in US_HOLIDAYS if h >= day),  # weekdays the Grok bot skips
               'images': {l: f'{SITE}og/social-{l}.png?v={day}' for l in LANGS},
               'stories': {l: f'{SITE}og/story-{l}.png?v={day}' for l in LANGS},
               'posts': {l: caption(l, day, s, items, win, langs[l]['quote']) for l in LANGS}}
