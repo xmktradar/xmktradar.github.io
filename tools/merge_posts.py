@@ -3,11 +3,19 @@
 Updates posts, days, meta.cutoff_hkt / generated_hkt / build_id and data/pending-posts.json.
 Writes work/merge.json with what changed, for the analysis step.
 """
+import re
 from datetime import timezone
 
 from sitedata import ET, HK, load, notice, now_hk, parse_iso, read_json, save, work, write_json
 
 PENDING = 'data/pending-posts.json'
+WAIT_HOURS = 24  # posts with no summary after this long stop waiting (Tim, 2026-10-12)
+
+
+def has_stock(x):
+    """A $cashtag in the post or the post it quotes: these go first in the queue for Grok."""
+    q = (x.get('quoted') or {}).get('text') or ''
+    return bool(x.get('cashtags')) or bool(re.search(r'\$[A-Za-z]{1,6}\b', q))
 
 
 def site_post(x, a):
@@ -88,12 +96,18 @@ def main():
         if x['url'].lower() in have or not ours(x, hs):
             continue
         (add if x['id'] in done else keep).append(x)
+    now = now_hk()
+    fresh = [x for x in keep if (now - parse_iso(x['time_utc'])).total_seconds() < WAIT_HOURS * 3600]
+    expired = len(keep) - len(fresh)
+    # Grok works from the top of the file: stock posts first, newest first within each group.
+    keep = sorted(fresh, key=lambda x: x['time_utc'], reverse=True)
+    keep.sort(key=lambda x: not has_stock(x))
     old_cutoff = d['meta']['cutoff_hkt']
     added = [site_post(x, done[x['id']]) for x in add]
     d['posts'] = sorted(d['posts'] + added, key=lambda p: p['time_utc'], reverse=True)
-    write_json(PENDING, {'note': '已抓取但未經 Grok 分析嘋帖，下次更新會再試。', 'posts': keep}, indent=1)
+    write_json(PENDING, {'note': f'已抓取但未經 Grok 分析嘅帖，有股票代號嘅排最前，等超過 {WAIT_HOURS} 個鐘就唔再等。',
+                         'posts': keep}, indent=1)
 
-    now = now_hk()
     gen = now.strftime('%Y-%m-%d %H:%M')
     d['meta']['generated_hkt'] = gen
     d['meta']['build_id'] = 'build-' + now.strftime('%Y%m%d-%H%M%S')
@@ -127,11 +141,12 @@ def main():
             p['text'] = texts[p['url'].lower()]
     pruned = prune(d, now)
     save(d)
-    write_json(work('merge.json'), {'added': len(added), 'pruned': pruned, 'pending': len(keep), 'old_cutoff': old_cutoff,
+    write_json(work('merge.json'), {'added': len(added), 'pruned': pruned, 'pending': len(keep),
+                                     'pending_stock': sum(1 for x in keep if has_stock(x)), 'expired': expired, 'old_cutoff': old_cutoff,
                                      'cutoff': d['meta']['cutoff_hkt'], 'days': sorted({p['day'] for p in added}),
                                      'generated_hkt': gen, 'failed': new.get('failed') or [],
                                      'added_without_en': sum(1 for p in added if not p.get('en_summary'))})
-    notice(f'加入網站：新帖 {len(added)} 則，等待分析 {len(keep)} 則，按保留規則刪除 {pruned} 則，資料截止 {d["meta"]["cutoff_hkt"]}')
+    notice(f'加入網站：新帖 {len(added)} 則，等待分析 {len(keep)} 則，等超過 {WAIT_HOURS} 個鐘唔再等 {expired} 則，按保留規則刪除 {pruned} 則，資料截止 {d["meta"]["cutoff_hkt"]}')
 
 
 if __name__ == '__main__':
