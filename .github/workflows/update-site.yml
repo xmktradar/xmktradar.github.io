@@ -68,6 +68,15 @@ jobs:
         run: python3 tools/build_langs.py
       - name: Stock pages
         run: node tools/stock_pages.js
+      - name: Weekend guide posts (Saturday and Sunday)
+        continue-on-error: true
+        run: |
+          python3 tools/tutorial.py
+          if [ -f "$WORK_DIR/tutorial.json" ]; then
+            node tools/tutorial.js "$WORK_DIR/tutorial.json" || {
+              for f in data/tutorial-posts.json social/tutorial.html; do git checkout -- "$f" 2>/dev/null || rm -f "$f"; done
+              echo "::error::週末教學圖畫唔到，下次更新再試"; exit 1; }
+          fi
       - name: Check the pages
         run: |
           for f in index.html zh/index.html en/index.html ko/index.html; do
