@@ -130,22 +130,28 @@ def highlights_item(x):
     return x['date'], o
 
 
-RANGE_FMT = {'zh': '{a} – {b} HKT（共 {n} 則）', 'en': '{a} – {b} HKT ({n} posts in total)', 'ko': '{a} – {b} HKT(총 {n}건)'}
+RANGE_FMT = '{a} – {b} HKT'
+WEEK_TAG = {'zh': '近 7 日：', 'en': 'Last 7 days: ', 'ko': '최근 7일: '}
 
 
-def daily_range(day, lang):
-    """The highlight cards sit on the daily tab, so their time range is the daily window SuperGrok read
-    (data/writeup-input.json), cut at the time that file was made. SuperGrok's own range text is not
-    used: on 2026-10-12 it wrote a 7-day range there."""
+def card_range(day, lang, grok_range, written):
+    """Time range shown on the 今日重點 cards (daily tab). SuperGrok's own text is not trusted: on
+    2026-10-12 it built the cards from the 7-day numbers and wrote a 7-day range. A range naming two
+    different dates is kept but marked as 7 days; otherwise the range is the daily window from
+    data/writeup-input.json, cut at the time SuperGrok wrote (this step runs again on every build)."""
+    dates = set(re.findall(r'\d{4}-\d{2}-\d{2}', grok_range or ''))
+    if len(dates) > 1:
+        return grok_range if grok_range.startswith(WEEK_TAG[lang]) else WEEK_TAG[lang] + grok_range
     w = read_json('data/writeup-input.json', {}) or {}
-    dl, gen = w.get('daily') or {}, str(w.get('generated_hkt') or '')
+    dl = w.get('daily') or {}
     a, b = str(dl.get('from') or ''), str(dl.get('to') or '')
     if w.get('today') != day or not STAMP.match(a[:16]) or not STAMP.match(b[:16]):
-        return None
-    if re.match(r'^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$', gen) and gen.replace(' ', 'T') < b[:16]:
-        b = gen.replace(' ', 'T')
+        return grok_range
+    cut = str(written or w.get('generated_hkt') or '').replace(' ', 'T')[:16]
+    if STAMP.match(cut) and a[:16] < cut < b[:16]:
+        b = cut
     md = lambda t: f'{int(t[5:7])}/{int(t[8:10])} {t[11:16]}'
-    return RANGE_FMT[lang].format(a=md(a), b=md(b) if b[:10] != a[:10] else b[11:16], n=dl.get('posts', 0))
+    return RANGE_FMT.format(a=md(a), b=md(b) if b[:10] != a[:10] else b[11:16])
 
 
 def upsert(lst, item):
@@ -180,7 +186,7 @@ def main():
         if 'highlights' in part:
             day, hl = highlights_item(part['highlights'])
             if hl:
-                rg = daily_range(day, lang)
+                rg = card_range(day, lang, hl.get('range'), raw.get('updated_hkt'))
                 if rg:
                     hl['range'] = rg
                 d.setdefault('highlights' + sfx, {})[day] = hl
