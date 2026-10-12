@@ -20,6 +20,15 @@ HTML = 'index.html'
 SITE = 'https://xmktradar.github.io/'
 LANGS = ('zh', 'en', 'ko')
 SOCIAL_HOUR = 7  # first update at or after this HKT hour writes the day's posts
+# Social posts only go out on US trading days, Monday to Friday (Tim, 2026-10-12). NYSE full-day closures:
+US_HOLIDAYS = {'2026-01-01', '2026-01-19', '2026-02-16', '2026-04-03', '2026-05-25', '2026-06-19', '2026-07-03',
+               '2026-09-07', '2026-11-26', '2026-12-25',
+               '2027-01-01', '2027-01-18', '2027-02-15', '2027-03-26', '2027-05-31', '2027-06-18', '2027-07-05',
+               '2027-09-06', '2027-11-25', '2027-12-24'}
+
+
+def trading_day(day):
+    return datetime.strptime(day, '%Y-%m-%d').weekday() < 5 and day not in US_HOLIDAYS
 
 
 def likes(p):
@@ -360,10 +369,11 @@ def main():
     old = isinstance((sp.get('posts') or {}).get('zh'), str)  # written before the per-platform versions existed
     old = old or not os.path.exists('zh/feed.xml')  # first run with RSS feeds
     old = old or ('story' not in ((sp.get('posts') or {}).get('zh') or {'story': 1})) or 'stories' not in sp  # before Facebook, Story and hashtags on every version
-    social = bool(items) and (sp.get('date') != day and now.hour >= SOCIAL_HOUR or old or os.environ.get('SOCIAL_FORCE') == '1')
+    social = bool(items) and (sp.get('date') != day and now.hour >= SOCIAL_HOUR and trading_day(day) or old or os.environ.get('SOCIAL_FORCE') == '1')
     if social:
         win = window(s)
         sp = {'date': day, 'made_hkt': now.strftime('%Y-%m-%d %H:%M'), 'window': win,
+              'no_post_days': sorted(h for h in US_HOLIDAYS if h >= day),  # weekdays the Grok bot skips
               'images': {l: f'{SITE}og/social-{l}.png?v={day}' for l in LANGS},
               'stories': {l: f'{SITE}og/story-{l}.png?v={day}' for l in LANGS},
               'posts': {l: caption(l, day, s, items, win, langs[l]['quote']) for l in LANGS}}
