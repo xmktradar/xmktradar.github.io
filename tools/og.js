@@ -1,6 +1,7 @@
 // Draw the 1200x630 share pictures from tools/og.html, one per language. Usage: node tools/og.js work/og.json
 // Writes og/<day>.png (Chinese), og/<day>-en.png, og/<day>-ko.png, og/latest*.png and og/latest.json;
-// when og.json says social, also og/social-<lang>.png for the day's social media posts.
+// when og.json says social, also og/social-<lang>.png for the day's social media posts and og/story-<lang>.png
+// (1080x1920 Instagram Story, from tools/story.html).
 const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
@@ -32,6 +33,25 @@ const path = require('path');
     fs.copyFileSync(out, `og/latest${sfx}.png`);
     if (job.social) fs.copyFileSync(out, `og/social-${lang}.png`);
     console.log('og', out);
+  }
+  // Instagram Story pictures (1080x1920), only with the day's social posts.
+  if (job.social) {
+    const sp = await b.newPage({ viewport: { width: 1080, height: 1920 } });
+    sp.on('pageerror', e => errs.push(e.message));
+    await sp.goto('file://' + path.resolve(__dirname, 'story.html'), { waitUntil: 'networkidle' });
+    for (const lang of ['zh', 'en', 'ko']) {
+      const pic = 'data:image/png;base64,' + fs.readFileSync(`og/social-${lang}.png`).toString('base64');
+      await sp.evaluate(([l, d, pc]) => story(l, d, pc), [lang, job.langs[lang], pic]);
+      await sp.evaluate(async () => {
+        const want = ['900 62px "Noto Sans TC"', '900 62px "Noto Sans KR"', '700 90px "IBM Plex Mono"'];
+        const t = new Promise(r => setTimeout(r, 20000));
+        await Promise.race([Promise.all(want.map(f => document.fonts.load(f, document.body.innerText))), t]);
+        await document.fonts.ready;
+        await Promise.all([...document.images].map(i => i.decode().catch(() => {})));
+      });
+      await sp.screenshot({ path: `og/story-${lang}.png` });
+      console.log('story', `og/story-${lang}.png`);
+    }
   }
   // Keep only today's and yesterday's dated pictures (Tim, 2026-10-11); latest*.png and social-*.png stay.
   const keep = new Date(Date.parse(job.date + 'T00:00:00Z') - 864e5).toISOString().slice(0, 10);

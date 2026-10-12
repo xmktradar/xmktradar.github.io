@@ -1346,7 +1346,8 @@ const VIEWS={daily:viewDaily,weekly:viewWeekly,monthly:viewMonthly,tracked:viewT
 function render(){const h=decodeURIComponent((location.hash||'#daily').slice(1));
  const ms=h.match(/^stock[\/-](.+)$/),ma=h.match(/^account\/(.+)$/);
  if(ms||ma){if(!document.getElementById('view').innerHTML)drawView();try{ms?openDive(ms[1].toUpperCase()):openAccount(ma[1])}catch(e){console.error(e);document.getElementById('dive').innerHTML='<div class="wrap">'+empty('畫面顯示錯誤：'+esc(e.message))+'</div>';showDive(document.getElementById('dive'))}return}
- closeDive();current=VIEWS[h]?h:'daily';drawView()}
+ closeDive();current=VIEWS[h]?h:'daily';drawView();
+ if(h==='donate')setTimeout(()=>{const f=document.querySelector('[data-jump="donate"]');if(f)f.click()},50)}
 function drawView(){document.querySelectorAll('nav.tabs button[data-v]').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===current));
  try{document.getElementById('view').innerHTML=VIEWS[current]();linkHandles(document.getElementById('view'));fitTables(document.getElementById('view'));try{mountTape(document.getElementById('view'))}catch(e){}}catch(e){console.error(e);document.getElementById('view').innerHTML=empty('畫面顯示錯誤：'+esc(e.message))}}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-tk]');if(b){e.preventDefault();location.hash='stock/'+b.dataset.tk;return}
