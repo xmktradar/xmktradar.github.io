@@ -5,10 +5,24 @@ The share pictures themselves are prepared by tools/share.py.
 import json
 import re
 import sys
+import urllib.request
 
 from sitedata import load, notice, read_json, save, work, write_json
 
 HTML = 'index.html'
+VIEWS_BASE = 397  # same base as the counter script in index.html
+VIEWS_API = 'https://abacus.jasoncameron.dev/get/xmktradar/views'
+
+
+def view_count():
+    """Current view count, so the page shows a recent number even when a phone blocks or delays the
+    counter request (it used to fall back to the bare base, 397). None when the counter can't be read."""
+    try:
+        with urllib.request.urlopen(VIEWS_API, timeout=10) as r:
+            v = json.load(r).get('value')
+        return VIEWS_BASE + v if isinstance(v, int) and v >= 0 else None
+    except Exception:
+        return None
 
 
 def lst(groups, key, n):
@@ -44,6 +58,9 @@ def main():
     bid = d['meta']['build_id'].replace('build-', '')
     h = re.sub(r'<meta name="generator" content="market-consensus build-[^"]+">', f'<meta name="generator" content="market-consensus build-{bid}">', h)
     h = re.sub(r'(<meta (?:property="og:image:alt"|name="twitter:image:alt") content=")[^"]*(")', lambda m: m.group(1) + alt + m.group(2), h)
+    views = view_count()
+    if views:
+        h = re.sub(r'(<b id="viewcount">)[^<]*(</b>)', lambda m: m.group(1) + f'{views:,}' + m.group(2), h, count=1)
     open(HTML, 'w', encoding='utf-8').write(h)
 
     sm = open('sitemap.xml', encoding='utf-8').read()

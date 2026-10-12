@@ -64,7 +64,9 @@ def main():
             'clear_accounts', 'bull', 'bear', 'split', 'top')
     write_json('data/writeup-input.json', {
         'note': 'Numbers computed by the page. SuperGrok write-ups must use these numbers. '
-                'bull/bear/split list the strongest tickers (count in *_total) with up to 3 reasons and post links each.',
+                'bull/bear/split list the strongest tickers (count in *_total) with up to 3 reasons and post links each. '
+                'The 3 highlight cards (今日重點) sit on the daily tab: build them from daily only, never weekly or '
+                'monthly. The page writes their time range itself.',
         'generated_hkt': gen, 'today': st.get('today'),
         **{p: slim({k: v for k, v in (st.get(p) or {}).items() if k in keep}) for p in ('daily', 'weekly', 'monthly')},
     })
