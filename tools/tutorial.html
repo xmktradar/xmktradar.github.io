@@ -1,0 +1,68 @@
+<!doctype html><meta charset="utf-8">
+<!-- Weekend guide pictures in the @thecrowdtape Instagram style: a 1080x1350 feed picture and a 1080x1920 Story,
+     each with a real phone screenshot of the feature. tools/tutorial.js calls render(lang, data, shotDataUrl, size). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=block">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0}
+body{width:1080px;height:1350px;position:relative;overflow:hidden;color:#151a2c;
+ font-family:"Noto Sans TC","Noto Sans KR","Noto Color Emoji",sans-serif}
+body.story{height:1920px}
+html[lang=ko] body{font-family:"Noto Sans KR","Noto Sans TC","Noto Color Emoji",sans-serif}
+html[lang=ko] h1,html[lang=ko] .how{word-break:keep-all}
+.bg{position:absolute;inset:0}
+.p0 .bg{background:linear-gradient(150deg,#9fc8fb 0%,#c3b9f6 55%,#f6c8df 100%)}
+.p1 .bg{background:linear-gradient(150deg,#8fe3c3 0%,#c6ec9f 48%,#fde7a1 100%)}
+.p2 .bg{background:linear-gradient(150deg,#ffd3a8 0%,#fbc0c8 50%,#d9c3f7 100%)}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.55) 2px,transparent 2.1px);background-size:26px 26px;mask-image:linear-gradient(180deg,transparent 0,#000 75%)}
+.main{position:absolute;left:64px;right:64px;top:56px;bottom:56px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.story .main{top:260px;bottom:260px}
+.row1{display:flex;gap:16px;align-items:center}
+.brand{display:inline-flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:8px 22px 8px 10px;font-weight:900;font-size:30px;box-shadow:0 5px 0 rgba(21,26,44,.14);white-space:nowrap}
+.brand img{width:50px;height:50px;border-radius:12px;object-fit:cover;margin:-4px 0}
+.ep{display:inline-block;background:#f8d34a;border:4px solid #151a2c;border-radius:14px;padding:5px 18px;font-weight:900;font-size:30px;transform:rotate(-2.5deg);box-shadow:4px 5px 0 #151a2c;white-space:nowrap}
+.ep b{font-family:"IBM Plex Mono",monospace}
+h1{margin:30px 0 0;font-weight:900;font-size:60px;line-height:1.18;max-width:950px}
+.story h1{margin-top:44px;font-size:64px}
+.stage{position:relative;flex:1;min-height:0;width:100%;margin-top:30px;display:flex;justify-content:center}
+.phone{height:100%;aspect-ratio:9/16;max-width:560px;background:#151a2c;border-radius:56px;padding:14px;box-shadow:0 14px 0 rgba(21,26,44,.22);transform:rotate(-1.5deg)}
+.phone .scr{width:100%;height:100%;border-radius:44px;overflow:hidden;background:#fdfaf3;position:relative}
+.phone .scr img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.phone .scr::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(transparent,rgba(253,250,243,.95))}
+.wide{align-self:center;width:100%;border-radius:22px;border:6px solid #151a2c;box-shadow:0 12px 0 #151a2c;transform:rotate(-1deg);display:block}
+.how{position:absolute;left:0;right:0;bottom:24px;margin:0 auto;width:max-content;max-width:900px;background:#fff;border:4px solid #151a2c;border-radius:22px;padding:14px 26px;font-weight:900;font-size:34px;line-height:1.3;box-shadow:0 7px 0 #151a2c;transform:rotate(1deg)}
+.foot{margin-top:28px;width:100%;height:58px;background:rgba(255,255,255,.9);border-radius:999px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;font-weight:700;font-size:25px;color:#3c4466;white-space:nowrap;gap:12px}
+.foot b{color:#151a2c}
+.foot .cta{background:#151a2c;color:#fff;border-radius:999px;padding:6px 18px;font-weight:900}
+.tap{display:none;margin-top:30px;font-weight:900;font-size:36px;background:#151a2c;color:#fff;border-radius:999px;padding:14px 34px}
+.story .tap{display:block}
+.story .foot{margin-top:24px}
+</style>
+<body>
+<div class="bg"></div><div class="dots"></div>
+<div class="main">
+ <div class="row1"><span class="brand"><img src="logo.png" alt="">The Crowd Tape</span><span class="ep" id="ep"></span></div>
+ <h1 id="h"></h1>
+ <div class="stage" id="stage"></div>
+ <div class="tap" id="tap"></div>
+ <div class="foot"><span><b>@thecrowdtape</b> · xmktradar.github.io</span><span class="cta" id="cta"></span></div>
+</div>
+<script>
+function render(lang,D,shot,size){
+const esc=v=>String(v==null?'':v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const L={zh:{ep:'📘 教學',cta:'免費・唔使登入',tap:'👆 撳連結親自試吓'},
+ en:{ep:'📘 Guide',cta:'Free · no login',tap:'👆 Tap the link to try it'},
+ ko:{ep:'📘 사용법',cta:'무료 · 로그인 없음',tap:'👆 링크를 눌러 직접 보기'}}[lang];
+document.documentElement.lang=lang;
+document.body.className=`p${D.episode%3} ${size}`;
+document.getElementById('ep').innerHTML=`${L.ep} <b>${D.episode}/${D.total}</b>`;
+const h=document.getElementById('h');h.textContent=D.title;
+document.getElementById('stage').innerHTML=D.wide?`<img class="wide" src="${shot}">`:`<div class="phone"><div class="scr"><img src="${shot}"></div></div>`;
+document.getElementById('stage').insertAdjacentHTML('beforeend',`<div class="how">👉 ${esc(D.how)}</div>`);
+document.getElementById('cta').textContent=L.cta;
+document.getElementById('tap').textContent=L.tap;
+// Keep the headline to two lines.
+let s=size==='story'?64:60;h.style.fontSize='';while(h.offsetHeight>s*1.18*2+4&&s>38){s-=2;h.style.fontSize=s+'px'}
+}
+</script>
+</body>
