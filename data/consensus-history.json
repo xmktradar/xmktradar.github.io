@@ -192,29 +192,35 @@
    "updated_hkt": "2026-10-12 03:14"
   },
   "2026-10-12": {
-   "bull": [],
+   "bull": [
+    "NVDA",
+    "AMZN",
+    "SHOP"
+   ],
    "bear": [],
-   "split": [],
+   "split": [
+    "IREN"
+   ],
    "window": [
     "2026-10-12T00:00",
     "2026-10-12T23:59"
    ],
    "top": [
-    "PLTR",
     "SPY",
-    "META",
-    "MU",
     "NVDA",
-    "QQQ",
+    "META",
+    "PLTR",
     "IREN",
     "AMZN",
+    "MU",
     "ASTS",
-    "CIFR"
+    "HOOD",
+    "IWM"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-12 14:09"
+   "updated_hkt": "2026-10-12 14:48"
   }
  },
- "updated_hkt": "2026-10-12 14:09",
+ "updated_hkt": "2026-10-12 14:48",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
