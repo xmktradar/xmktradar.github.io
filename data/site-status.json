@@ -1,40 +1,56 @@
 {
  "note": "Written by GitHub Actions on every update. SuperGrok daily check reads this.",
- "checked_hkt": "2026-10-12 09:17",
- "generated_hkt": "2026-10-12 09:13",
+ "checked_hkt": "2026-10-12 09:26",
+ "generated_hkt": "2026-10-12 09:21",
  "cutoff_hkt": "2026-10-12T07:13:53+08:00",
- "posts_on_site": 1320,
+ "posts_on_site": 1318,
  "added_this_run": 0,
  "added_without_en_summary": 0,
- "waiting_for_summary": 551,
- "pruned_this_run": 11,
+ "waiting_for_summary": 553,
+ "pruned_this_run": 2,
  "fetch_failed": [],
  "warnings": [
-  "未分析：551 則新帖等待 Grok 分析"
+  "未分析：553 則新帖等待 Grok 分析"
  ],
- "writeups_applied": [],
+ "writeups_applied": [
+  "zh/daily 2026-10-12",
+  "zh/weekly 2026-10-12",
+  "zh/monthly 2026-10-12",
+  "zh/highlights 2026-10-12",
+  "zh/briefing 2026-10-12",
+  "en/daily 2026-10-12",
+  "en/weekly 2026-10-12",
+  "en/monthly 2026-10-12",
+  "en/highlights 2026-10-12",
+  "en/briefing 2026-10-12",
+  "ko/daily 2026-10-12",
+  "ko/weekly 2026-10-12",
+  "ko/monthly 2026-10-12",
+  "ko/highlights 2026-10-12",
+  "ko/briefing 2026-10-12"
+ ],
  "writeups_rejected": [],
  "latest_writeups": {
   "zh": {
-   "daily": "2026-10-11",
-   "weekly": "2026-10-11",
-   "monthly": "2026-10-11",
-   "highlights": "2026-10-11",
-   "briefing": "2026-10-11"
+   "daily": "2026-10-12",
+   "weekly": "2026-10-12",
+   "monthly": "2026-10-12",
+   "highlights": "2026-10-12",
+   "briefing": "2026-10-12"
   },
   "en": {
-   "daily": "2026-10-11",
-   "weekly": "2026-10-11",
-   "monthly": "2026-10-11",
-   "highlights": "2026-10-11",
-   "briefing": "2026-10-11"
+   "daily": "2026-10-12",
+   "weekly": "2026-10-12",
+   "monthly": "2026-10-12",
+   "highlights": "2026-10-12",
+   "briefing": "2026-10-12"
   },
   "ko": {
-   "daily": "2026-10-11",
-   "weekly": "2026-10-11",
-   "monthly": "2026-10-11",
-   "highlights": "2026-10-11",
-   "briefing": "2026-10-11"
+   "daily": "2026-10-12",
+   "weekly": "2026-10-12",
+   "monthly": "2026-10-12",
+   "highlights": "2026-10-12",
+   "briefing": "2026-10-12"
   }
  }
 }
