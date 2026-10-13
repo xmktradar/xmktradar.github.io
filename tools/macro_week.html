@@ -53,9 +53,9 @@ h1{margin:26px 0 0;font-weight:900;font-size:58px;line-height:1.18;max-width:950
 <script>
 function render(lang,D,size){
 const esc=v=>String(v==null?'':v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const L={zh:{ep:'🌐 本週宏觀',h:'100 個 X 帳號點睇大環境',b:'利好',r:'利淡',m:'中性',none:'本週冇人表態',cta:'免費・唔使登入',tap:'👆 撳連結睇全部講法'},
- en:{ep:'🌐 Macro week',h:'How 100 X accounts see the big picture',b:'Bullish',r:'Bearish',m:'Neutral',none:'No stances this week',cta:'Free · no login',tap:'👆 Tap the link for every view'},
- ko:{ep:'🌐 이번 주 매크로',h:'X 계정 100개가 보는 큰 그림',b:'호재',r:'악재',m:'중립',none:'이번 주 의견 없음',cta:'무료 · 로그인 없음',tap:'👆 링크를 눌러 전체 의견 보기'}}[lang];
+const L={zh:{ep:'🌐 本週宏觀',h:D.accounts+' 個 X 帳號點睇大環境',b:'利好',r:'利淡',m:'中性',none:'本週冇人表態',cta:'免費・唔使登入',tap:'👆 撳連結睇全部講法'},
+ en:{ep:'🌐 Macro week',h:'How '+D.accounts+' X accounts see the big picture',b:'Bullish',r:'Bearish',m:'Neutral',none:'No stances this week',cta:'Free · no login',tap:'👆 Tap the link for every view'},
+ ko:{ep:'🌐 이번 주 매크로',h:'X 계정 '+D.accounts+'개가 보는 큰 그림',b:'호재',r:'악재',m:'중립',none:'이번 주 의견 없음',cta:'무료 · 로그인 없음',tap:'👆 링크를 눌러 전체 의견 보기'}}[lang];
 document.documentElement.lang=lang;document.body.className=size;
 document.getElementById('ep').innerHTML=`${L.ep} <b>${esc(D.range)}</b>`;
 document.getElementById('h').textContent=L.h;
