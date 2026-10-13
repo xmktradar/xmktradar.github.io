@@ -1,0 +1,21 @@
+name: Fetch new account profiles
+on:
+  push:
+    branches: [avatar-fetch-2]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/fetch_profiles.py
+        env:
+          ONLY: sundarpichai,mcuban,VitalikButerin,paulg,justinsuntron,naval,brian_armstrong,levie,TonyRobbins,garyvee,cz_binance,APompliano,balajis,AndrewYNg,patrickc,bchesky,ylecun,GrantCardone,kevinolearytv,SahilBloom,gdb,reidhoffman,ilyasut,BarbaraCorcoran,TheSharkDaymond,DrJimFan,theRealKiyosaki,ParikPatelCFA,PeterSchiff,RampCapitalLLC,SuzeOrmanShow,johnrampton,scottmelker,davidgokhshtein,TrungTPhan,morganhousel,Nouriel,BrianFeroldi,fundstrat,robin_j_brooks,CliffordAsness,BobEUnlimited,ramit,deepakshenoy,iancassel,10kdiver,howardlindzon,MohnishPabrai,davidein,hmarksofficial,jaltucher,dollarsanddata,cullenroche,Greenbackd,compound248,ByrneHobart,RagingVentures,chriswmayer,neelkashkari,andrewrsorkin,Mr_Derivatives,EricBalchunas,MrZackMorris,QCompounding,BeckyQuick,GRDecter,JavierBlas,jonnajarian,SaraEisen,davidfaber,EliteOptions2,tracyalloway,kylascan,MelissaLeeCNBC,WallStJesus,AlderLaneEggs,jessefelder,steveliesman,TheOneLanceB,MebFaber,Brian_Stoffel_,CarterBWorth,ThetaWarrior,timseymour,ChrisBloomstran,jsblokland,StockJabber,OptionsHawk,OptionsMike,Austan_Goolsbee,TheTranscript_,OddStats,John_Hempton,NateGeraci,MikeBellafiore,SqueezeMetrics,KellyCNBC,Seawolfcap
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git checkout -B profiles-download
+          git add profiles
+          git commit -m "Download new account profiles"
+          git push -f origin profiles-download
