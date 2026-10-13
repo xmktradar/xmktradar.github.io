@@ -35,6 +35,6 @@ for h in [x for x in os.environ["ONLY"].split(",") if x]:
             info[h]["recent_error"] = str(e)
     except Exception as e:
         info[h] = {"error": str(e)}
-    time.sleep(1.5)
+    time.sleep(6)
 (out / "info.json").write_text(json.dumps(info, ensure_ascii=False, indent=1), encoding="utf-8")
 print(sum("error" not in v for v in info.values()), "of", len(info), "ok")
