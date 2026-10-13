@@ -226,25 +226,25 @@
   "2026-10-13": {
    "bull": [
     "META",
-    "NVDA",
     "AVGO",
-    "SKHY",
+    "INTC",
     "V",
     "AEHR",
-    "INTC",
     "FORM",
     "VIAV"
    ],
    "bear": [],
    "split": [
+    "NVDA",
     "MU",
     "SPY",
     "QQQ",
+    "AAPL",
     "FMCC",
     "FNMA",
+    "SNDK",
     "AAOI",
-    "TSLA",
-    "AAPL"
+    "TSLA"
    ],
    "window": [
     "2026-10-13T00:00",
@@ -255,17 +255,17 @@
     "SPY",
     "NVDA",
     "MU",
-    "QQQ",
-    "AVGO",
     "JPM",
+    "QQQ",
+    "GS",
     "C",
-    "SKHY",
+    "GOOGL",
     "TSM"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-14 00:14"
+   "updated_hkt": "2026-10-14 00:33"
   }
  },
- "updated_hkt": "2026-10-14 00:14",
+ "updated_hkt": "2026-10-14 00:33",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
