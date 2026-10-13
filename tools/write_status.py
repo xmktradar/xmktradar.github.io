@@ -83,7 +83,7 @@ def main():
         'posts_on_site': len(d.get('posts', [])),
         'added_this_run': mg.get('added'), 'added_without_en_summary': mg.get('added_without_en'),
         'waiting_for_summary': mg.get('pending'), 'waiting_with_stock': mg.get('pending_stock'),
-        'expired_unsummarised_this_run': mg.get('expired'),
+        'expired_unsummarised_this_run': mg.get('expired'), 'chitchat_skipped_this_run': mg.get('chitchat'),
         'pruned_this_run': mg.get('pruned'), 'fetch_failed': mg.get('failed') or [],
         'warnings': d['meta'].get('warnings') or [],
         'writeups_applied': wr.get('applied') or [], 'writeups_rejected': wr.get('rejected') or [],
