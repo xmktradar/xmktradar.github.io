@@ -152,14 +152,16 @@ def main():
         print('tutorial: nothing to do', today, n)
         return
     e = eps[n - 1]
-    tk, acc = pick_examples(load('index.html'))
+    d = load('index.html')
+    tk, acc = pick_examples(d)
+    n_acc = str(len(d['tracked']['accounts']))  # captions say {N} accounts; the list grows in batches (2026-10-13)
     tp = {'date': today.isoformat(), 'made_hkt': now.strftime('%Y-%m-%d %H:%M'), 'episode': n, 'total': len(eps),
           'post_today': bool(episode_for(today, start, len(eps))), 'example': {'ticker': tk, 'account': acc},
           'images': {l: f'{SITE}og/tutorial-{l}.png?v={today}-{n}' for l in LANGS},
           'stories': {l: f'{SITE}og/tutorial-story-{l}.png?v={today}-{n}' for l in LANGS}, 'posts': {}}
     job = {'episode': n, 'total': len(eps), 'langs': {}}
     for lang in LANGS:
-        ex = {'TK': tk, 'TKL': tk.lower()[:3], 'ACC': acc, 'LANG': lang}
+        ex = {'TK': tk, 'TKL': tk.lower()[:3], 'ACC': acc, 'LANG': lang, 'N': n_acc}
         txt = {k: fill(v, ex) for k, v in e[lang].items()}
         shot = {k: fill(v, ex) if isinstance(v, str) else v for k, v in e['shot'].items()}
         go = shot.get('go', '')

@@ -34,27 +34,27 @@ NAMES = {
 }
 IMP = {'bullish': 'bull', 'bearish': 'bear', 'neutral': 'neu'}
 TXT = {
-    'zh': dict(head='🌐 本週宏觀｜100 個帳號點睇大環境', short='🌐 本週宏觀', bull='利好', bear='利淡', neu='中性',
+    'zh': dict(head='🌐 本週宏觀｜{N} 個帳號點睇大環境', short='🌐 本週宏觀', bull='利好', bear='利淡', neu='中性',
                up='比上週轉好 ▲', dn='比上週轉差 ▼', flat='同上週差唔多', none='上週未有數據',
-               intro='我哋追蹤嘅 100 個 X 帳號，呢個星期最多人講嘅宏觀題目：', quiet='本週宏觀觀點唔多，去網站睇各帳號最新講法。',
+               intro='我哋追蹤嘅 {N} 個 X 帳號，呢個星期最多人講嘅宏觀題目：', quiet='本週宏觀觀點唔多，去網站睇各帳號最新講法。',
                more='9 個主題全部喺呢度 👉 ', bio='網站免費，連結喺 bio 👉 xmktradar.github.io',
                give='☕ 鍾意就支持我哋：bio 連結，網站底部 PayPal 🙏', give_s='☕ 鍾意就支持我哋 👉 ',
                follow='Follow @thecrowdtape，逢星期六出一週宏觀總結。', disc='⚠️ 唔構成投資建議',
                disc_long='⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。投資有風險，請自行判斷。',
                tags='#美股 #宏觀經濟 #聯儲局 #港人投資 #美股投資 #USStocks #Macro #StockMarket #投資'),
-    'en': dict(head='🌐 This week in macro · how 100 accounts see the big picture', short='🌐 This week in macro',
+    'en': dict(head='🌐 This week in macro · how {N} accounts see the big picture', short='🌐 This week in macro',
                bull='bullish', bear='bearish', neu='neutral', up='better than last week ▲', dn='worse than last week ▼',
                flat='about the same as last week', none='no data for last week yet',
-               intro='The macro topics the 100 X accounts we track talked about most this week:',
+               intro='The macro topics the {N} X accounts we track talked about most this week:',
                quiet='Not many macro views this week. See each account\'s latest take on the site.',
                more='All 9 topics 👉 ', bio='The site is free. Link in bio 👉 xmktradar.github.io',
                give='☕ Enjoy it? Buy us a coffee: link in bio, PayPal at the bottom of the site 🙏', give_s='☕ Support the site 👉 ',
                follow='Follow @thecrowdtape for a macro roundup every Saturday.', disc='⚠️ Not investment advice',
                disc_long='⚠️ A summary of public social media posts, not investment advice. Investing involves risk; do your own research.',
                tags='#Macro #StockMarket #USStocks #Fed #Economy #Investing #FinTwit #WallStreet'),
-    'ko': dict(head='🌐 이번 주 매크로 · 100개 계정이 보는 큰 그림', short='🌐 이번 주 매크로', bull='호재', bear='악재', neu='중립',
+    'ko': dict(head='🌐 이번 주 매크로 · {N}개 계정이 보는 큰 그림', short='🌐 이번 주 매크로', bull='호재', bear='악재', neu='중립',
                up='지난주보다 개선 ▲', dn='지난주보다 악화 ▼', flat='지난주와 비슷', none='지난주 데이터 없음',
-               intro='저희가 추적하는 X 계정 100개가 이번 주 가장 많이 다룬 매크로 주제:',
+               intro='저희가 추적하는 X 계정 {N}개가 이번 주 가장 많이 다룬 매크로 주제:',
                quiet='이번 주는 매크로 의견이 많지 않았습니다. 사이트에서 계정별 최신 의견을 확인하세요.',
                more='9개 주제 전체 보기 👉 ', bio='사이트는 무료, 프로필 링크 👉 xmktradar.github.io',
                give='☕ 도움이 되셨다면 커피 한 잔 후원해 주세요: 프로필 링크, 사이트 하단 PayPal 🙏', give_s='☕ 후원하기 👉 ',
@@ -139,7 +139,7 @@ def xlen(t):
 
 
 def posts(lang, w, rng):
-    L, N = TXT[lang], NAMES[lang]
+    L, N = {k: v.replace('{N}', str(w['accounts'])) for k, v in TXT[lang].items()}, NAMES[lang]
     url = f'{SITE}{lang}/#macro'
     give = f"{L['give_s']}{SITE}{lang}/#donate"
     by = {r['theme']: r for r in w['themes']}
@@ -227,7 +227,9 @@ def main():
             print('macro week: preview already made today')
             return
     end = today if (freeze or force) else min(today, sat)
-    w = week(load('index.html'), end)
+    d = load('index.html')
+    w = week(d, end)
+    w['accounts'] = len(d['tracked']['accounts'])  # the tracked list grows in batches (2026-10-13), so never hard-code 100
     rng = f"{int(w['from'][5:7])}/{int(w['from'][8:])}–{int(w['to'][5:7])}/{int(w['to'][8:])}"
     v = f"{sat.isoformat()}-{now.strftime('%H%M')}"
     mw = {'date': sat.isoformat(), 'frozen': freeze, 'made_hkt': now.strftime('%Y-%m-%d %H:%M'), **w, 'range': rng,
@@ -237,7 +239,7 @@ def main():
     write_json('data/macro-week.json', mw, indent=1)
     os.makedirs('social', exist_ok=True)
     open('social/macro.html', 'w', encoding='utf-8').write(page(mw))
-    write_json(work('macro_week.json'), {'range': rng, 'themes': w['themes'], 'top': w['top'], 'names': NAMES})
+    write_json(work('macro_week.json'), {'range': rng, 'themes': w['themes'], 'top': w['top'], 'names': NAMES, 'accounts': w['accounts']})
     notice(f"星期六宏觀貼文{'（已定數）' if freeze else '（預覽）'}：{SITE}social/macro.html，頭 3 個主題 {', '.join(w['top']) or '無'}")
 
 
