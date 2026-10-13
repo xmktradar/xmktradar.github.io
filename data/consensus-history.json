@@ -266,7 +266,11 @@
    "updated_hkt": "2026-10-14 00:33"
   },
   "2026-10-14": {
-   "bull": [],
+   "bull": [
+    "NVDA",
+    "MU",
+    "NBIS"
+   ],
    "bear": [],
    "split": [],
    "window": [
@@ -275,20 +279,20 @@
    ],
    "top": [
     "NVDA",
-    "OUST",
     "AAPL",
     "AVGO",
-    "GOOG",
-    "GOOGL",
-    "INTC",
-    "MSFT",
     "MU",
-    "NBIS"
+    "NBIS",
+    "META",
+    "MSTR",
+    "OUST",
+    "AEHR",
+    "ARM"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-14 03:30"
+   "updated_hkt": "2026-10-14 04:55"
   }
  },
- "updated_hkt": "2026-10-14 03:30",
+ "updated_hkt": "2026-10-14 04:55",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
