@@ -1,0 +1,69 @@
+<!doctype html><meta charset="utf-8">
+<!-- Saturday macro roundup pictures in the @thecrowdtape Instagram style: 1080x1350 feed and 1080x1920 Story.
+     tools/macro_week.js calls render(lang, data, size); data comes from work/macro_week.json (tools/macro_week.py). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=block">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0}
+body{width:1080px;height:1350px;position:relative;overflow:hidden;color:#151a2c;
+ font-family:"Noto Sans TC","Noto Sans KR","Noto Color Emoji",sans-serif}
+body.story{height:1920px}
+html[lang=ko] body{font-family:"Noto Sans KR","Noto Sans TC","Noto Color Emoji",sans-serif}
+html[lang=ko] h1{word-break:keep-all}
+.bg{position:absolute;inset:0;background:linear-gradient(150deg,#9fd8f0 0%,#b9c6f6 50%,#f3c9e4 100%)}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.55) 2px,transparent 2.1px);background-size:26px 26px;mask-image:linear-gradient(180deg,transparent 0,#000 75%)}
+.main{position:absolute;left:64px;right:64px;top:56px;bottom:56px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.story .main{top:240px;bottom:240px}
+.row1{display:flex;gap:16px;align-items:center}
+.brand{display:inline-flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:8px 22px 8px 10px;font-weight:900;font-size:30px;box-shadow:0 5px 0 rgba(21,26,44,.14);white-space:nowrap}
+.brand img{width:50px;height:50px;border-radius:12px;object-fit:cover;margin:-4px 0}
+.ep{display:inline-block;background:#f8d34a;border:4px solid #151a2c;border-radius:14px;padding:5px 18px;font-weight:900;font-size:30px;transform:rotate(-2.5deg);box-shadow:4px 5px 0 #151a2c;white-space:nowrap}
+.ep b{font-family:"IBM Plex Mono",monospace}
+h1{margin:26px 0 0;font-weight:900;font-size:58px;line-height:1.18;max-width:950px}
+.card{margin-top:28px;width:100%;flex:1;min-height:0;background:#fff;border:4px solid #151a2c;border-radius:28px;box-shadow:0 10px 0 #151a2c;padding:18px 28px;display:flex;flex-direction:column;justify-content:space-between;text-align:left}
+.r{display:grid;grid-template-columns:330px 1fr 150px;align-items:center;gap:18px;padding:6px 0;border-top:2px solid #eceef4}
+.r:first-child{border-top:0}
+.r .nm{font-weight:900;font-size:29px;line-height:1.15}
+.r.top .nm::before{content:"🔥 "}
+.bar{height:34px;border-radius:999px;background:#eceef4;display:flex;overflow:hidden}
+.bar i{display:block;height:100%}.bar .b{background:#18a96b}.bar .r2{background:#e0485a}.bar .m{background:#aab0c2}
+.ct{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:25px;white-space:nowrap;text-align:right}
+.ct .b{color:#118a56}.ct .r2{color:#c7354a}.ct .m{color:#6b7288}
+.ar{font-size:22px;font-weight:900;margin-left:6px}.ar.up{color:#118a56}.ar.dn{color:#c7354a}
+.none{color:#8a90a4;font-size:23px;font-weight:500}
+.lg{display:flex;justify-content:center;gap:26px;margin-top:22px;font-weight:700;font-size:25px;color:#3c4466}
+.lg i{display:inline-block;width:22px;height:22px;border-radius:6px;vertical-align:-3px;margin-right:8px}
+.foot{margin-top:22px;width:100%;height:58px;background:rgba(255,255,255,.9);border-radius:999px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;font-weight:700;font-size:25px;color:#3c4466;white-space:nowrap;gap:12px}
+.foot b{color:#151a2c}
+.foot .cta{background:#151a2c;color:#fff;border-radius:999px;padding:6px 18px;font-weight:900}
+.story h1{font-size:64px}.story .r{padding:14px 0}.story .r .nm{font-size:31px}
+.tap{display:none;margin-top:26px;font-weight:900;font-size:36px;background:#151a2c;color:#fff;border-radius:999px;padding:14px 34px}
+.story .tap{display:block}
+</style>
+<body>
+<div class="bg"></div><div class="dots"></div>
+<div class="main">
+ <div class="row1"><span class="brand"><img src="logo.png" alt="">The Crowd Tape</span><span class="ep" id="ep"></span></div>
+ <h1 id="h"></h1>
+ <div class="card" id="card"></div>
+ <div class="lg" id="lg"></div>
+ <div class="tap" id="tap"></div>
+ <div class="foot"><span><b>@thecrowdtape</b> · xmktradar.github.io</span><span class="cta" id="cta"></span></div>
+</div>
+<script>
+function render(lang,D,size){
+const esc=v=>String(v==null?'':v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const L={zh:{ep:'🌐 本週宏觀',h:'100 個 X 帳號點睇大環境',b:'利好',r:'利淡',m:'中性',none:'本週冇人表態',cta:'免費・唔使登入',tap:'👆 撳連結睇全部講法'},
+ en:{ep:'🌐 Macro week',h:'How 100 X accounts see the big picture',b:'Bullish',r:'Bearish',m:'Neutral',none:'No stances this week',cta:'Free · no login',tap:'👆 Tap the link for every view'},
+ ko:{ep:'🌐 이번 주 매크로',h:'X 계정 100개가 보는 큰 그림',b:'호재',r:'악재',m:'중립',none:'이번 주 의견 없음',cta:'무료 · 로그인 없음',tap:'👆 링크를 눌러 전체 의견 보기'}}[lang];
+document.documentElement.lang=lang;document.body.className=size;
+document.getElementById('ep').innerHTML=`${L.ep} <b>${esc(D.range)}</b>`;
+document.getElementById('h').textContent=L.h;
+const N=D.names[lang],AR={up:'▲',dn:'▼',flat:'＝',none:''};
+document.getElementById('card').innerHTML=D.themes.map(t=>{const n=t.bull+t.bear+t.neu||1;
+ return `<div class="r${D.top.includes(t.theme)?' top':''}"><div class="nm">${esc(N[t.theme])}</div>${t.n?`<div class="bar"><i class="b" style="width:${t.bull/n*100}%"></i><i class="r2" style="width:${t.bear/n*100}%"></i><i class="m" style="width:${t.neu/n*100}%"></i></div><div class="ct"><span class="b">${t.bull}</span>/<span class="r2">${t.bear}</span>/<span class="m">${t.neu}</span>${AR[t.arrow]?`<span class="ar ${t.arrow}">${AR[t.arrow]}</span>`:''}</div>`:`<div class="none">${L.none}</div><div></div>`}</div>`}).join('');
+document.getElementById('lg').innerHTML=`<span><i style="background:#18a96b"></i>${L.b}</span><span><i style="background:#e0485a"></i>${L.r}</span><span><i style="background:#aab0c2"></i>${L.m}</span>`;
+document.getElementById('cta').textContent=L.cta;document.getElementById('tap').textContent=L.tap;
+}
+</script>
+</body>

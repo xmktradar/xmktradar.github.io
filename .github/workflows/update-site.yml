@@ -77,6 +77,15 @@ jobs:
               for f in data/tutorial-posts.json social/tutorial.html; do git checkout -- "$f" 2>/dev/null || rm -f "$f"; done
               echo "::error::週末教學圖畫唔到，下次更新再試"; exit 1; }
           fi
+      - name: Saturday macro post (frozen Saturday 15:00 HKT; preview on other days)
+        continue-on-error: true
+        run: |
+          python3 tools/macro_week.py
+          if [ -f "$WORK_DIR/macro_week.json" ]; then
+            node tools/macro_week.js "$WORK_DIR/macro_week.json" || {
+              for f in data/macro-week.json social/macro.html; do git checkout -- "$f" 2>/dev/null || rm -f "$f"; done
+              echo "::error::星期六宏觀貼文圖畫唔到，下次更新再試"; exit 1; }
+          fi
       - name: Check the pages
         run: |
           for f in index.html zh/index.html en/index.html ko/index.html; do
