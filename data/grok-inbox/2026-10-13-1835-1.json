@@ -14,6 +14,21 @@
       "macro_theme": null,
       "macro_impact": null,
       "ticker_notes": {}
+    },
+    "2109854343868678540": {
+      "en_summary": "The author says US stocks also need to maintain the index and just bought some $NVDA and $INTW, but is afraid to buy $SPCX and others due to fear of continued declines.",
+      "zh_summary": "作者表示美股也需要維持指數，剛買了一些 $NVDA 和 $INTW，但因擔心繼續下跌不敢買 $SPCX 和其他股票。",
+      "ko_summary": "저자는 미국 주식도 지수를 유지해야 한다며 $NVDA와 $INTW를 조금 샀지만, 추가 하락을 우려해 $SPCX 등은 사지 못하겠다고 말합니다.",
+      "tickers": ["NVDA", "INTW", "SPCX"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "睇好", "INTW": "睇好", "SPCX": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {"NVDA": "剛買入以支持指數", "INTW": "剛買入以支持指數", "SPCX": "怕繼續跌不敢買"}
     }
   }
 }
