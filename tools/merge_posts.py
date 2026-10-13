@@ -7,6 +7,7 @@ import re
 from datetime import timezone
 
 from macro_themes import tag_posts
+from relevance import build, relevant
 from sitedata import ET, HK, load, notice, now_hk, parse_iso, read_json, save, work, write_json
 
 PENDING = 'data/pending-posts.json'
@@ -109,13 +110,18 @@ def main():
     now = now_hk()
     fresh = [x for x in keep if (now - parse_iso(x['time_utc'])).total_seconds() < WAIT_HOURS * 3600]
     expired = len(keep) - len(fresh)
+    # Chit-chat never goes to Grok and never reaches the site: only stock or macro posts wait (Tim, 2026-10-13).
+    rx = build(d.get('prices') or {})
+    useful = [x for x in fresh if relevant(x, rx)]
+    chitchat = len(fresh) - len(useful)
+    fresh = useful
     # Grok works from the top of the file: stock posts first, newest first within each group.
     keep = sorted(fresh, key=lambda x: x['time_utc'], reverse=True)
     keep.sort(key=lambda x: not has_stock(x))
     old_cutoff = d['meta']['cutoff_hkt']
     added = [site_post(x, done[x['id']]) for x in add]
     d['posts'] = sorted(d['posts'] + added, key=lambda p: p['time_utc'], reverse=True)
-    write_json(PENDING, {'note': f'已抓取但未經 Grok 分析嘅帖，有股票代號嘅排最前，等超過 {WAIT_HOURS} 個鐘就唔再等。',
+    write_json(PENDING, {'note': f'已抓取但未經 Grok 分析嘅帖，只收股票同宏觀帖（閒聊帖唔寫），有股票代號嘅排最前，等超過 {WAIT_HOURS} 個鐘就唔再等。',
                          'posts': keep}, indent=1)
 
     gen = now.strftime('%Y-%m-%d %H:%M')
@@ -155,11 +161,11 @@ def main():
     pruned = prune(d, now)
     save(d)
     write_json(work('merge.json'), {'added': len(added), 'pruned': pruned, 'pending': len(keep),
-                                     'pending_stock': sum(1 for x in keep if has_stock(x)), 'expired': expired, 'old_cutoff': old_cutoff,
+                                     'pending_stock': sum(1 for x in keep if has_stock(x)), 'expired': expired, 'chitchat': chitchat, 'old_cutoff': old_cutoff,
                                      'cutoff': d['meta']['cutoff_hkt'], 'days': sorted({p['day'] for p in added}),
                                      'generated_hkt': gen, 'failed': new.get('failed') or [],
                                      'added_without_en': sum(1 for p in added if not p.get('en_summary'))})
-    notice(f'加入網站：新帖 {len(added)} 則，等待分析 {len(keep)} 則，等超過 {WAIT_HOURS} 個鐘唔再等 {expired} 則，按保留規則刪除 {pruned} 則，資料截止 {d["meta"]["cutoff_hkt"]}')
+    notice(f'加入網站：新帖 {len(added)} 則，等待分析 {len(keep)} 則，等超過 {WAIT_HOURS} 個鐘唔再等 {expired} 則，閒聊帖唔寫 {chitchat} 則，按保留規則刪除 {pruned} 則，資料截止 {d["meta"]["cutoff_hkt"]}')
 
 
 if __name__ == '__main__':
