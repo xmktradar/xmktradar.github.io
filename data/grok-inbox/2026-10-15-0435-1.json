@@ -1,0 +1,79 @@
+{
+  "posts": {
+    "2110450582150414752": {
+      "en_summary": "1994 is the closest rhyme to this bond market and it hurt without a recession. Then the 10-year rose 286bp, stocks went nowhere, expansion ran to 2001. Now +127bp since Feb, core CPI consensus 2.5%. Falsifier: $TLT rallies and 10-year under 5%.",
+      "zh_summary": "1994年是最接近當前債券市場的韻腳，且在沒有衰退的情況下造成傷害。當時10年期利率上升286個基點，股票停滯不前，擴張持續至2001年。現在自2月以來上升127個基點，核心CPI共識為2.5%。證偽條件：$TLT反彈且10年期利率低於5%。",
+      "ko_summary": "1994년이 현재 채권 시장에 가장 가까운 운율이며, 경기 침체 없이 피해를 입혔다. 당시 10년물 금리가 286bp 상승했고 주식은 제자리걸음, 확장은 2001년까지 지속됐다. 현재 2월 이후 +127bp, 핵심 CPI 컨센서스 2.5%. 반증: $TLT 반등하고 10년물 5% 이하.",
+      "tickers": ["TLT"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"TLT": "睇淡"},
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "yields",
+      "macro_impact": "利淡",
+      "ticker_notes": {"TLT": "Falsifier if rallies with 10-year under 5%"}
+    },
+    "2110450203962769802": {
+      "en_summary": "How often do you see a 2% spread between the $DIA and $QQQ? Not often right?",
+      "zh_summary": "你多久會看到$DIA和$QQQ之間出現2%的價差？不多見對吧？",
+      "ko_summary": "$DIA와 $QQQ 사이에 2% 스프레드가 얼마나 자주 보이나요? 자주 보지 않죠?",
+      "tickers": ["DIA", "QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"DIA": "未表態", "QQQ": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2110450064196034864": {
+      "en_summary": "(Reposted by @petenajarian) Small beat, big drop. State Street $STT slides about 8% as revenue of $4.0B misses by $40M and it lifts the top end of expense growth guidance. EPS of $3.69 barely edged estimates.",
+      "zh_summary": "（由@petenajarian轉推）小幅超預期，大幅下跌。道富銀行$STT下跌約8%，收入40億美元低於預期4000萬美元，並上調費用增長指引上限。每股收益3.69美元僅略超預期。",
+      "ko_summary": "(Reposted by @petenajarian) 소폭 실적 호조에도 큰 폭 하락. 스테이트 스트리트 $STT가 약 8% 하락. 매출 40억 달러가 4000만 달러 미달하고 비용 증가 가이던스 상단을 상향. EPS 3.69달러는 추정치를 간신히 웃돌았다.",
+      "tickers": ["STT"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"STT": "睇淡"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"STT": "Revenue miss of $40M on $4.0B and higher expense guidance led to ~8% drop"}
+    },
+    "2110449309158408269": {
+      "en_summary": "Sad, but expected outcome for the @fundrise $VCX fund. Quoted: locked up at what would have been semi-life changing money, now watching it bleed.",
+      "zh_summary": "對@fundrise $VCX基金而言是令人難過但預期中的結果。引用：被鎖在原本可能改變半生的金額中，現在只能看著它流血。",
+      "ko_summary": "@fundrise $VCX 펀드에 대해 슬프지만 예상된 결과. 인용: 반생을 바꿀 만한 금액에 갇혀 있다가 이제 피가 나는 걸 지켜만 본다.",
+      "tickers": ["VCX"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"VCX": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"VCX": "Expected poor outcome for the fund, watching it bleed"}
+    },
+    "2110447207325507783": {
+      "en_summary": "Woah $OPEN just broke below $2.",
+      "zh_summary": "哇，$OPEN剛剛跌破2美元。",
+      "ko_summary": "와 $OPEN이 방금 2달러 아래로 깨졌다.",
+      "tickers": ["OPEN"],
+      "stance": "中性",
+      "stance_by_ticker": {"OPEN": "未表態"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
