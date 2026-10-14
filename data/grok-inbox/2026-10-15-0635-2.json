@@ -1,1 +1,79 @@
-$(cat /tmp/grok-inbox/2026-10-15-0635-2.json)
+{
+  "posts": {
+    "2110467925807411358": {
+      "en_summary": "Korean traders watching $QQQ close -2% and $SOXX & $DRAM close -5%, waiting for the KOSPI to open.",
+      "zh_summary": "韓國交易者正觀看 $QQQ 收跌 2%，$SOXX 和 $DRAM 收跌 5%，等待 KOSPI 開盤。",
+      "ko_summary": "한국 트레이더들이 $QQQ가 2% 하락, $SOXX와 $DRAM이 5% 하락으로 마감한 것을 지켜보며 KOSPI 개장을 기다리고 있다.",
+      "tickers": ["QQQ", "SOXX", "DRAM"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性", "SOXX": "中性", "DRAM": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2110466571659587951": {
+      "en_summary": "Daily end-of-day video promo for X subscribers covering $SPY $QQQ $IWM $SMH $TLT Bitcoin $GLD $XLF $XLE.",
+      "zh_summary": "每日收市視頻宣傳，供 X 訂閱者觀看，涵蓋 $SPY $QQQ $IWM $SMH $TLT 比特幣 $GLD $XLF $XLE。",
+      "ko_summary": "X 구독자를 위한 매일 장 마감 비디오 프로모션으로 $SPY $QQQ $IWM $SMH $TLT 비트코인 $GLD $XLF $XLE를 다룬다.",
+      "tickers": ["SPY", "QQQ", "IWM", "SMH", "TLT", "GLD", "XLF", "XLE"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "QQQ": "中性", "IWM": "中性", "SMH": "中性", "TLT": "中性", "GLD": "中性", "XLF": "中性", "XLE": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2110466503456018769": {
+      "en_summary": "$SPY finally closed down 1.08%, ending a 53-day streak of not closing below -0.84%. $VIX remains on a 54-day streak of not closing above 17.84.",
+      "zh_summary": "$SPY 終於收跌 1.08%，結束了連續 53 天未收低於 -0.84% 的紀錄。$VIX 仍處於連續 54 天未收高於 17.84 的紀錄中。",
+      "ko_summary": "$SPY가 마침내 1.08% 하락 마감하며 연속 53일간 -0.84% 이하로 마감하지 않은 기록을 종료했다. $VIX는 여전히 연속 54일간 17.84 이상으로 마감하지 않은 기록 중이다.",
+      "tickers": ["SPY", "VIX"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "VIX": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2110465580457152926": {
+      "en_summary": "Free Markets ETF $FMKT closed at $21.31, down 2.44%, remaining the market's only ETF focused on capturing value from deregulatory environments.",
+      "zh_summary": "自由市場 ETF $FMKT 以 $21.31 收盤，下跌 2.44%，仍是市場上唯一專注於從監管放鬆環境中捕捉價值的 ETF。",
+      "ko_summary": "자유시장 ETF $FMKT가 $21.31에 마감하며 2.44% 하락했고, 규제 완화 환경에서 가치를 포착하는 데 집중하는 시장의 유일한 ETF로 남아 있다.",
+      "tickers": ["FMKT"],
+      "stance": "中性",
+      "stance_by_ticker": {"FMKT": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2110464070944235681": {
+      "en_summary": "Fun charting of $VIX noting similarities to 2018 with Q1 pop, vol suppression into midterms, and questioning a possible October pop.",
+      "zh_summary": "對 $VIX 的趣味圖表分析，指出與 2018 年的相似之處，包括第一季反彈、進入中期選舉的波動抑制，並質疑是否可能出現十月反彈。",
+      "ko_summary": "$VIX의 재미있는 차트 분석으로 2018년과 유사한 패턴을 지적하며, 1분기 급등, 중간선거까지 변동성 억제, 그리고 10월 급등 가능성을 질문한다.",
+      "tickers": ["VIX"],
+      "stance": "中性",
+      "stance_by_ticker": {"VIX": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    }
+  }
+}
