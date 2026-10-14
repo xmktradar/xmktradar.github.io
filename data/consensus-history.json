@@ -269,16 +269,20 @@
    "bull": [
     "NVDA",
     "MU",
-    "SKHY",
     "AMD",
+    "SKHY",
     "QQQ",
     "AEHR"
    ],
    "bear": [
-    "ARM",
-    "WFC"
+    "WFC",
+    "ARM"
    ],
-   "split": [],
+   "split": [
+    "CRWV",
+    "C",
+    "GS"
+   ],
    "window": [
     "2026-10-14T00:00",
     "2026-10-14T23:59"
@@ -287,18 +291,18 @@
     "NVDA",
     "SPY",
     "MU",
-    "SKHY",
     "AMD",
+    "SKHY",
     "AAPL",
     "CRDO",
-    "INTC",
-    "QQQ",
-    "NBIS"
+    "C",
+    "GS",
+    "INTC"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-14 12:17"
+   "updated_hkt": "2026-10-14 12:39"
   }
  },
- "updated_hkt": "2026-10-14 12:17",
+ "updated_hkt": "2026-10-14 12:39",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
