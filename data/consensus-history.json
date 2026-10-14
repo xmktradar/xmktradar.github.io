@@ -274,10 +274,10 @@
     "MSFT",
     "GOOGL",
     "TSLA",
-    "AEHR"
+    "AEHR",
+    "GME"
    ],
    "bear": [
-    "CRWV",
     "BAC",
     "ARM",
     "SOFI",
@@ -288,6 +288,7 @@
     "ASML",
     "WFC",
     "GS",
+    "CRWV",
     "SPCX",
     "JPM",
     "C",
@@ -309,12 +310,12 @@
     "META",
     "AAPL",
     "GOOGL",
-    "GS"
+    "BAC"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-15 00:40"
+   "updated_hkt": "2026-10-15 01:03"
   }
  },
- "updated_hkt": "2026-10-15 00:40",
+ "updated_hkt": "2026-10-15 01:03",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
