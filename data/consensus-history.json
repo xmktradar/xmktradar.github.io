@@ -270,14 +270,16 @@
     "NVDA",
     "MU",
     "AMD",
-    "GOOGL",
     "META",
-    "QQQ",
     "MSFT",
+    "GOOGL",
+    "QQQ",
     "TSLA",
     "AEHR"
    ],
    "bear": [
+    "BAC",
+    "JPM",
     "ARM",
     "TLT"
    ],
@@ -286,9 +288,10 @@
     "ASML",
     "WFC",
     "GS",
-    "CRWV",
+    "SPCX",
     "C",
-    "SPCX"
+    "CRWV",
+    "MS"
    ],
    "window": [
     "2026-10-14T00:00",
@@ -298,18 +301,18 @@
     "SPY",
     "NVDA",
     "MU",
-    "AMD",
-    "ASML",
-    "AAPL",
     "QQQ",
-    "SKHY",
+    "ASML",
+    "AMD",
+    "META",
+    "AAPL",
     "GOOGL",
-    "META"
+    "GS"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-14 21:09"
+   "updated_hkt": "2026-10-14 23:01"
   }
  },
- "updated_hkt": "2026-10-14 21:09",
+ "updated_hkt": "2026-10-14 23:01",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
