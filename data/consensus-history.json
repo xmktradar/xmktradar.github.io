@@ -280,7 +280,6 @@
    ],
    "bear": [
     "ARM",
-    "JNJ",
     "TLT"
    ],
    "split": [
@@ -288,8 +287,8 @@
     "GS",
     "WFC",
     "CRWV",
-    "SPCX",
-    "C"
+    "C",
+    "SPCX"
    ],
    "window": [
     "2026-10-14T00:00",
@@ -299,18 +298,18 @@
     "SPY",
     "NVDA",
     "MU",
-    "AMD",
     "AAPL",
-    "SKHY",
-    "GOOGL",
+    "AMD",
     "GS",
     "QQQ",
+    "SKHY",
+    "GOOGL",
     "META"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-14 12:57"
+   "updated_hkt": "2026-10-14 14:59"
   }
  },
- "updated_hkt": "2026-10-14 12:57",
+ "updated_hkt": "2026-10-14 14:59",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
