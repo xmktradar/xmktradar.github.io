@@ -13,10 +13,9 @@ ALIASES = ['Nvidia', 'Tesla', 'SpaceX', 'Google', 'Meta', 'Facebook', 'Microsoft
 MACRO = r'''fed|fomc|powell|rate cuts?|rate hikes?|interest rates?|inflation|cpi|ppi|pce|payrolls?|nfp|jobs report|
 unemployment|jobless|gdp|recession|treasury|treasuries|yields?|bonds?|10-year|2-year|dxy|dollar|yen|yuan|euro|
 oil|crude|opec|brent|wti|natural gas|tariffs?|stimulus|deficit|debt ceiling|liquidity|qe|qt|central bank|ecb|boj|
-pboc|s&p|s&p 500|nasdaq|dow|spx|ndx|russell|vix|stocks?|equities|earnings|ipo|etf|bull market|bear market|
-sell-?off|rally|valuation|economy|economic|housing|mortgage|gold|silver|copper|bitcoin|btc|crypto|markets?|
-breadth|semis|semiconductors?|chips?|miners|debt|capex|data cent(?:er|re)s?|hyperscalers?|openai|anthropic|
-short squeeze|options?|calls|puts|price target|upgrade|downgrade|guidance|revenue|margins?|buyback|dividend|energy|electricity|power prices|carry trade'''
+pboc|s&p|s&p 500|nasdaq|dow|spx|ndx|russell|vix|earnings|ipo|etf|bull market|bear market|
+sell-?off|bitcoin|btc|crypto|
+short squeeze|price target|upgrade|downgrade|guidance|buyback|dividend|power prices|carry trade'''
 
 SUFFIX = re.compile(r',?\s*\b(inc|corp|corporation|company|co|holdings?|ltd|limited|plc|n\.v|ag|s\.a|group|'
                     r'enterprises|the)\b\.?', re.I)
@@ -44,6 +43,4 @@ def relevant(x, rx):
     text = (x.get('text') or '') + '\n' + ((x.get('quoted') or {}).get('text') or '')
     if x.get('cashtags') or re.search(r'\$[A-Za-z]{1,6}\b', text):
         return True
-    if x.get('type') != 'reply' and (x.get('n_media') or x.get('media')):
-        return True  # an own post or repost with a picture is often a chart; let Grok look
     return bool(words.search(text) or (tick and tick.search(text)))
