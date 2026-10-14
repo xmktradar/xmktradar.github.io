@@ -272,7 +272,9 @@
     "SKHY",
     "AEHR"
    ],
-   "bear": [],
+   "bear": [
+    "WFC"
+   ],
    "split": [],
    "window": [
     "2026-10-14T00:00",
@@ -282,18 +284,18 @@
     "NVDA",
     "MU",
     "SPY",
-    "AAPL",
     "SKHY",
+    "AAPL",
+    "AMD",
+    "CRWV",
     "NBIS",
     "AEHR",
-    "AMD",
-    "AVGO",
-    "MSFT"
+    "AVGO"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-14 09:21"
+   "updated_hkt": "2026-10-14 10:53"
   }
  },
- "updated_hkt": "2026-10-14 09:21",
+ "updated_hkt": "2026-10-14 10:53",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
