@@ -1,0 +1,79 @@
+{
+  "posts": {
+    "2110342788369781212": {
+      "en_summary": "$FNMA $FMCC $RKT $Z: US Mortgage Rates Hit 7.5%, Extending Slump in Home Buying.",
+      "zh_summary": "$FNMA $FMCC $RKT $Z：美國抵押貸款利率達7.5%，延長購屋低迷。",
+      "ko_summary": "$FNMA $FMCC $RKT $Z: 미국 모기지 금리 7.5% 도달, 주택 구매 부진 연장.",
+      "tickers": ["FNMA", "FMCC", "RKT", "Z"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"FNMA": "睇淡", "FMCC": "睇淡", "RKT": "睇淡", "Z": "睇淡"},
+      "horizon": "短線",
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "rates",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2110342606957740417": {
+      "en_summary": "Visa $V, Procter $PG, and Microsoft $MSFT enter today as the 3 most \"overbought\" Dow stocks, while 8 of 30 are oversold. $CAT 10% move lower into oversold territory over the last week.",
+      "zh_summary": "Visa $V、Procter $PG和Microsoft $MSFT今日成為道指最「超買」的3隻股票，而30隻中有8隻超賣。$CAT過去一週下跌10%進入超賣區域。",
+      "ko_summary": "Visa $V, Procter $PG, Microsoft $MSFT가 오늘 다우 지수에서 가장 \"과매수\"된 3개 주식으로 진입, 30개 중 8개 과매도. $CAT는 지난 주 10% 하락으로 과매도 영역.",
+      "tickers": ["V", "PG", "MSFT", "CAT"],
+      "stance": "中性",
+      "stance_by_ticker": {"V": "中性", "PG": "中性", "MSFT": "中性", "CAT": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2110341289036419292": {
+      "en_summary": "Financials last 24 hrs off earnings: $GS red, $JPM red, $WFC red, $MS red, $BAC red, $C red. OUCH!!!!",
+      "zh_summary": "金融股過去24小時財報後：$GS紅，$JPM紅，$WFC紅，$MS紅，$BAC紅，$C紅。哎呀！！！！",
+      "ko_summary": "금융주 지난 24시간 실적 후: $GS 하락, $JPM 하락, $WFC 하락, $MS 하락, $BAC 하락, $C 하락. 아야!!!!",
+      "tickers": ["GS", "JPM", "WFC", "MS", "BAC", "C"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"GS": "睇淡", "JPM": "睇淡", "WFC": "睇淡", "MS": "睇淡", "BAC": "睇淡", "C": "睇淡"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2110340154510737723": {
+      "en_summary": "Through Tuesday, Strive acquired an additional 2,822 BTC for $235M, increasing holdings to ₿35,595. 13.7M of 15.3M remaining warrants exercised worth $369M. $ASST $SATA $SATS.",
+      "zh_summary": "截至週二，Strive額外收購2,822枚BTC，耗資2.35億美元，持倉增至35,595枚。剩餘認股權證中1370萬枚已行使，總價值3.69億美元。$ASST $SATA $SATS。",
+      "ko_summary": "화요일까지 Strive가 추가로 2,822 BTC를 2억 3,500만 달러에 인수하여 보유량을 ₿35,595로 증가. 남은 워런트 1,530만 개 중 1,370만 개 행사, 총 3억 6,900만 달러. $ASST $SATA $SATS.",
+      "tickers": ["ASST", "SATA", "SATS"],
+      "stance": "中性",
+      "stance_by_ticker": {"ASST": "中性", "SATA": "中性", "SATS": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2110336916683882508": {
+      "en_summary": "$ASML says that their supply will now NOT meet demand for 2027 or 2028.",
+      "zh_summary": "$ASML表示其供應現在將無法滿足2027或2028年的需求。",
+      "ko_summary": "$ASML은 공급이 이제 2027년 또는 2028년 수요를 충족하지 못할 것이라고 말한다.",
+      "tickers": ["ASML"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"ASML": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ASML": "供應無法滿足2027或2028年需求"}
+    }
+  }
+}
