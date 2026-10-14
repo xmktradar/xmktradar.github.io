@@ -1,0 +1,79 @@
+{
+  "posts": {
+    "2110365459283661031": {
+      "en_summary": "@StockSavvyShay: $CRWV is falling off a cliff today.",
+      "zh_summary": "@StockSavvyShay：$CRWV 今天股價急挫。",
+      "ko_summary": "@StockSavvyShay: $CRWV가 오늘 폭락하고 있습니다.",
+      "tickers": ["CRWV"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"CRWV": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2110365829917508039": {
+      "en_summary": "@Mr_Derivatives: The Dow is up 0.30% and the S&P 500 is barely red at -0.29%, but small caps $IWM are retesting their May lows, with rising rates hurting small caps.",
+      "zh_summary": "@Mr_Derivatives：道指上升 0.30%，標普 500 僅微跌 0.29%，但小型股 $IWM 正重新測試 5 月低位，利率上升正重創小型股。",
+      "ko_summary": "@Mr_Derivatives: 다우는 0.30% 상승하고 S&P 500은 0.29%로 소폭 하락했지만, 소형주 $IWM은 5월 저점을 다시 시험하고 있으며 금리 상승이 소형주를 짓누르고 있습니다.",
+      "tickers": ["IWM", "SPY"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"IWM": "睇淡", "SPY": "中性"},
+      "horizon": "短線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "rates",
+      "macro_impact": "利淡",
+      "ticker_notes": {"IWM": "利率上升打擊小型股，重新測試 5 月低位"}
+    },
+    "2110366410895774117": {
+      "en_summary": "@Mr_Derivatives: $SOFI hit fresh 17-month lows today.",
+      "zh_summary": "@Mr_Derivatives：$SOFI 今天創下 17 個月新低。",
+      "ko_summary": "@Mr_Derivatives: $SOFI가 오늘 17개월 만의 신저가를 기록했습니다.",
+      "tickers": ["SOFI"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SOFI": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2110367336889033156": {
+      "en_summary": "@StockSavvyShay: $BSP is up nearly 50% as Berkshire Hathaway doubles down on Bending Spoons with another $330M on top of its original $600M IPO investment.",
+      "zh_summary": "@StockSavvyShay：波克夏海瑟威在原本 6 億美元的 IPO 投資之外，再加碼 3.3 億美元投資 Bending Spoons，$BSP 股價大漲近 50%。",
+      "ko_summary": "@StockSavvyShay: 버크셔 해서웨이가 기존 6억 달러의 IPO 투자에 더해 Bending Spoons에 3억 3천만 달러를 추가 투자하면서 $BSP가 50% 가까이 급등했습니다.",
+      "tickers": ["BSP", "BRK.B"],
+      "stance": "睇好",
+      "stance_by_ticker": {"BSP": "睇好", "BRK.B": "未表態"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"BSP": "波克夏在 6 億美元 IPO 投資之外再加碼 3.3 億美元，股價升近 50%"}
+    },
+    "2110367801068101996": {
+      "en_summary": "@KobeissiLetter: Bank of America $BAC falls over 8% after the bank was fined $1.2 billion over money laundering violations, while US CPI inflation pushes rate hike expectations higher. The stock has erased $30 billion of market cap today.",
+      "zh_summary": "@KobeissiLetter：美國銀行 $BAC 因違反反洗錢規定被罰款 12 億美元，加上美國 CPI 通脹推高加息預期，股價下跌超過 8%，今天市值已蒸發 300 億美元。",
+      "ko_summary": "@KobeissiLetter: 뱅크오브아메리카 $BAC가 자금세탁 위반으로 12억 달러의 벌금을 부과받은 데다 미국 CPI 인플레이션이 금리 인상 기대를 높이면서 8% 넘게 하락했습니다. 이 주식은 오늘 시가총액 300억 달러가 증발했습니다.",
+      "tickers": ["BAC"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"BAC": "睇淡"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "rates",
+      "macro_impact": "利淡",
+      "ticker_notes": {"BAC": "因違反反洗錢規定被罰 12 億美元，加上加息預期升溫，股價跌逾 8%"}
+    }
+  }
+}
