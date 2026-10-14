@@ -1,81 +1,71 @@
 {
  "date": "2026-10-17",
  "frozen": false,
- "made_hkt": "2026-10-14 00:21",
- "from": "2026-10-08",
- "to": "2026-10-14",
+ "made_hkt": "2026-10-15 00:25",
+ "from": "2026-10-09",
+ "to": "2026-10-15",
  "themes": [
   {
    "theme": "rates",
    "accounts": 24,
-   "n": 0,
+   "n": 11,
    "bull": 0,
-   "bear": 0,
-   "neu": 0,
-   "arrow": "none",
-   "quotes": {}
-  },
-  {
-   "theme": "inflation",
-   "accounts": 15,
-   "n": 4,
-   "bull": 0,
-   "bear": 2,
-   "neu": 2,
+   "bear": 1,
+   "neu": 10,
    "arrow": "none",
    "quotes": {
     "zh": {
-     "acc": "RedDogT3",
-     "impact": "neu",
-     "text": "亞洲再度受挫、半導體持續疲弱，市場漲跌互見。@RedDogT3 認為 $SPX 短線支撐在 7779，但 7731 是更重要的關卡；上方 7820 是阻力，其次是 7844 的歷史高位樞紐。他表示明天的 CPI 和週四的 PPI 對利率和通膨走向至關重要。",
-     "url": "https://x.com/RedDogT3/status/2109971528825589780"
+     "acc": "carlquintanilla",
+     "impact": "bear",
+     "text": "$FNMA $FMCC $RKT $Z：美國抵押貸款利率達7.5%，延長購屋低迷。",
+     "url": "https://x.com/HammerstoneMar3/status/2110342788369781212"
     },
     "en": {
-     "acc": "RedDogT3",
-     "impact": "neu",
-     "text": "Markets are mixed as Asia gets hit again and semis stay weak. @RedDogT3 sees short-term $SPX support at 7779, with 7731 the more important level; 7820 is resistance, then 7844 as the all-time-high pivot. He says CPI tomorrow and PPI on Thursday will be key for rates and inflation.",
-     "url": "https://x.com/RedDogT3/status/2109971528825589780"
+     "acc": "carlquintanilla",
+     "impact": "bear",
+     "text": "$FNMA $FMCC $RKT $Z: US Mortgage Rates Hit 7.5%, Extending Slump in Home Buying.",
+     "url": "https://x.com/HammerstoneMar3/status/2110342788369781212"
     },
     "ko": {
-     "acc": "RedDogT3",
-     "impact": "neu",
-     "text": "아시아 증시가 또 타격을 받고 반도체가 약세를 이어가며 시장은 혼조세입니다. @RedDogT3는 $SPX의 단기 지지선을 7779로, 더 중요한 레벨을 7731로 봅니다. 위로는 7820이 저항선이고, 그다음은 사상 최고치 피벗인 7844입니다. 그는 내일 CPI와 목요일 PPI가 금리와 인플레이션에 핵심이 될 것이라고 말합니다.",
-     "url": "https://x.com/RedDogT3/status/2109971528825589780"
+     "acc": "carlquintanilla",
+     "impact": "bear",
+     "text": "$FNMA $FMCC $RKT $Z: 미국 모기지 금리 7.5% 도달, 주택 구매 부진 연장.",
+     "url": "https://x.com/HammerstoneMar3/status/2110342788369781212"
+    }
+   }
+  },
+  {
+   "theme": "inflation",
+   "accounts": 24,
+   "n": 16,
+   "bull": 1,
+   "bear": 9,
+   "neu": 6,
+   "arrow": "none",
+   "quotes": {
+    "zh": {
+     "acc": "Mr_Derivatives",
+     "impact": "bull",
+     "text": "Heisenberg表示他也炫耀虧損，並引用自己的猜測：明天$QQQ將因CPI正面反應而轉綠，由近期超賣的晶片/記憶體股帶動，僅限明天，之後反彈可能消退，可於週四/週五再檢視。",
+     "url": "https://x.com/Mr_Derivatives/status/2110356405865816446"
+    },
+    "en": {
+     "acc": "Mr_Derivatives",
+     "impact": "bull",
+     "text": "Heisenberg says he flaunts his losers too and quotes his guess that $QQQ goes green tomorrow off a positive reaction of CPI led by near-term oversold chip/memory stocks, just for tomorrow, with possible fade thereafter to revisit Thursday/Friday.",
+     "url": "https://x.com/Mr_Derivatives/status/2110356405865816446"
+    },
+    "ko": {
+     "acc": "Mr_Derivatives",
+     "impact": "bull",
+     "text": "Heisenberg는 손실도 자랑한다며 자신의 추측을 인용했다. $QQQ가 내일 CPI 긍정적 반응으로 상승하며 단기 과매도된 칩/메모리 주식이 이끌 것이라고, 내일만이며 이후 반등이 약화될 수 있어 목/금요일에 재검토할 수 있다고 했다.",
+     "url": "https://x.com/Mr_Derivatives/status/2110356405865816446"
     }
    }
   },
   {
    "theme": "jobs",
-   "accounts": 7,
-   "n": 1,
-   "bull": 0,
-   "bear": 0,
-   "neu": 1,
-   "arrow": "none",
-   "quotes": {
-    "zh": {
-     "acc": "LizAnnSonders",
-     "impact": "neu",
-     "text": "@LizAnnSonders 指出，招聘八週來首次略微放緩，根據 @adpresearch 的數據，截至 9 月 26 日的四週內，私人就業人數平均增加 24,750 個。",
-     "url": "https://x.com/LizAnnSonders/status/2109987351338664169"
-    },
-    "en": {
-     "acc": "LizAnnSonders",
-     "impact": "neu",
-     "text": "@LizAnnSonders notes hiring slowed marginally for the first time in eight weeks, with private payrolls adding an average of 24,750 jobs for the four weeks ending Sep. 26 per @adpresearch.",
-     "url": "https://x.com/LizAnnSonders/status/2109987351338664169"
-    },
-    "ko": {
-     "acc": "LizAnnSonders",
-     "impact": "neu",
-     "text": "@LizAnnSonders는 고용이 8주 만에 처음으로 소폭 둔화했다고 전하며, @adpresearch에 따르면 9월 26일로 끝나는 4주 동안 민간 급여가 평균 24,750개 증가했다고 합니다. 특정 종목 언급은 없습니다.",
-     "url": "https://x.com/LizAnnSonders/status/2109987351338664169"
-    }
-   }
-  },
-  {
-   "theme": "growth",
-   "accounts": 13,
+   "accounts": 5,
    "n": 2,
    "bull": 0,
    "bear": 0,
@@ -83,201 +73,249 @@
    "arrow": "none",
    "quotes": {
     "zh": {
-     "acc": "steve_hanke",
+     "acc": "Greenbackd",
      "impact": "neu",
-     "text": "@steve_hanke 表示，自 2007 年以來，委內瑞拉經濟崩潰，人均 GDP 指數從 100 暴跌至 37.22，原因是玻利瓦爾貨幣。他呼籲委內瑞拉封存玻利瓦爾並實行美元化。",
-     "url": "https://x.com/steve_hanke/status/2109991291207516448"
+     "text": "@Greenbackd：就業市場可迅速逆轉；典型衰退中失業率上升2至6個百分點，2020年兩個月內升逾11點。2026年8月失業率為4.1%，約700萬人失業。失業率見頂較遲，如2009年。",
+     "url": "https://x.com/Greenbackd/status/2110007650679230582"
     },
     "en": {
-     "acc": "steve_hanke",
+     "acc": "Greenbackd",
      "impact": "neu",
-     "text": "@steve_hanke says Venezuela’s economy has collapsed since 2007, with GDP per capita plunging from an index of 100 to 37.22, blaming the bolivar. He calls for Venezuela to mothball the bolívar and dollarize.",
-     "url": "https://x.com/steve_hanke/status/2109991291207516448"
+     "text": "@Greenbackd: the job market can turn fast; in typical recessions unemployment rose 2 to 6 points, in 2020 over 11 points in two months. In August 2026 it was 4.1% with about 7 million unemployed. Unemployment peaks late, as in 2009.",
+     "url": "https://x.com/Greenbackd/status/2110007650679230582"
     },
     "ko": {
-     "acc": "steve_hanke",
+     "acc": "Greenbackd",
      "impact": "neu",
-     "text": "@steve_hanke는 2007년 이후 베네수엘라 경제가 붕괴했고 1인당 GDP 지수가 100에서 37.22로 급락한 것은 볼리바르 통화 때문이라고 말합니다. 그는 베네수엘라가 볼리바르를 폐기하고 달러화를 해야 한다고 촉구합니다. 특정 종목 언급은 없습니다.",
-     "url": "https://x.com/steve_hanke/status/2109991291207516448"
+     "text": "@Greenbackd: 고용시장은 빠르게 반전될 수 있다. 일반적 침체에서 실업률은 2~6%p 올랐고 2020년엔 두 달 새 11%p 넘게 올랐다. 2026년 8월 실업률은 4.1%, 실업자 약 700만 명이다. 실업은 2009년처럼 늦게 정점을 찍는다.",
+     "url": "https://x.com/Greenbackd/status/2110007650679230582"
+    }
+   }
+  },
+  {
+   "theme": "growth",
+   "accounts": 17,
+   "n": 11,
+   "bull": 4,
+   "bear": 2,
+   "neu": 5,
+   "arrow": "none",
+   "quotes": {
+    "zh": {
+     "acc": "StockSavvyShay",
+     "impact": "bull",
+     "text": "BofA認為全球AI數據中心容量到2030年將增長約5倍至219 GW：$AMZN +42 GW，$GOOGL +27 GW，$MSFT +24 GW，$SPCX +24 GW，$META +18 GW，$ORCL +12 GW，$CRWV +7 GW，$NBIS +5 GW，$IREN +3 GW。新雲約佔2030年新增容量的40%。",
+     "url": "https://x.com/StockSavvyShay/status/2110345541322481973"
+    },
+    "en": {
+     "acc": "StockSavvyShay",
+     "impact": "bull",
+     "text": "BofA sees global AI data center capacity growing ~5x to 219 GW by 2030: $AMZN +42 GW, $GOOGL +27 GW, $MSFT +24 GW, $SPCX +24 GW, $META +18 GW, $ORCL +12 GW, $CRWV +7 GW, $NBIS +5 GW, $IREN +3 GW. Neoclouds ~40% of new capacity in 2030.",
+     "url": "https://x.com/StockSavvyShay/status/2110345541322481973"
+    },
+    "ko": {
+     "acc": "StockSavvyShay",
+     "impact": "bull",
+     "text": "BofA는 글로벌 AI 데이터 센터 용량이 2030년까지 약 5배 성장하여 219 GW에 이를 것으로 본다: $AMZN +42 GW, $GOOGL +27 GW, $MSFT +24 GW, $SPCX +24 GW, $META +18 GW, $ORCL +12 GW, $CRWV +7 GW, $NBIS +5 GW, $IREN +3 GW. 네오클라우드가 2030년 신규 용량의 ~40%.",
+     "url": "https://x.com/StockSavvyShay/status/2110345541322481973"
     }
    }
   },
   {
    "theme": "yields",
-   "accounts": 27,
-   "n": 3,
-   "bull": 0,
-   "bear": 1,
-   "neu": 2,
+   "accounts": 28,
+   "n": 11,
+   "bull": 2,
+   "bear": 4,
+   "neu": 5,
    "arrow": "none",
    "quotes": {
     "zh": {
-     "acc": "garyblack00",
+     "acc": "BobEUnlimited",
      "impact": "neu",
-     "text": "@garyblack00 表示，美股盤前漲跌互見（標普持平，納指 100 跌 0.4%），全球晶片股拋售波及三星和 SK 海力士，布蘭特原油跌 1.5% 至 105 美元，10 年期美債殖利率回落 5.0 個基點至 5.19%；9 月 CPI 明天公佈，聯準會主席 Kevin Warsh 週五發言。他指出標普 2026 年每股盈利預估 367 美元（年增 32%），對應 21.3 倍本益比和 4.7% 盈利收益率，仍低於美債殖利率，這種倒掛除了 1990 年代末網路泡沫外很少見，並預期伊朗衝突結束後殖利率將回落。他因估值過高、遠期盈利預估下修以及對手讓自動駕駛商品化，對 $TSLA 保持謹慎；$ASML 和 $TSM 本週稍後公佈業績。",
-     "url": "https://x.com/garyblack00/status/2109943576620573175"
+     "text": "@BobEUnlimited：儘管債市悲觀者高喊利率末日，殖利率上升相對基本數據及預期緊縮而言屬正常。",
+     "url": "https://x.com/BobEUnlimited/status/2110328513244840166"
     },
     "en": {
-     "acc": "garyblack00",
+     "acc": "BobEUnlimited",
      "impact": "neu",
-     "text": "@garyblack00 says U.S. stocks were mixed pre-market (SPX flat, NDX -0.4%) as the global chip selloff hit Samsung and SK Hynix, Brent fell 1.5% to $105 and the 10-year yield eased 5.0bp to 5.19%, with Sept CPI due tomorrow and Fed Chair Kevin Warsh speaking Friday. He notes S&P 2026 EPS estimates of $367 (+32% YoY) imply a 21.3x P/E and a 4.7% earnings yield still inverted versus Treasuries, a rare setup outside the late-1990s dot-com bubble, and expects yields to retreat as the Iran conflict ends. He stays cautious on $TSLA given its extended valuation, negative forward earnings revisions and competitors commoditizing autonomous driving, while $ASML and $TSM report later this week.",
-     "url": "https://x.com/garyblack00/status/2109943576620573175"
+     "text": "@BobEUnlimited: despite bond doomers' calls for rate armageddon, the yield rise looks normal relative to underlying data and expected tightening.",
+     "url": "https://x.com/BobEUnlimited/status/2110328513244840166"
     },
     "ko": {
-     "acc": "garyblack00",
+     "acc": "BobEUnlimited",
      "impact": "neu",
-     "text": "@garyblack00은 글로벌 반도체 매도세가 삼성과 SK하이닉스를 강타하면서 미국 증시가 프리마켓에서 혼조세(SPX 보합, NDX -0.4%)를 보였고, 브렌트유는 1.5% 내린 105달러, 10년물 국채금리는 5.0bp 내린 5.19%라고 전합니다. 9월 CPI는 내일 발표되고 Kevin Warsh 연준 의장은 금요일에 연설합니다. 그는 S&P 2026년 EPS 추정치 367달러(전년 대비 +32%)가 P/E 21.3배, 이익수익률 4.7%를 의미해 여전히 국채 대비 역전 상태이며, 이는 1990년대 후반 닷컴 버블 외에는 드문 구도라고 지적하고, 이란 분쟁이 끝나면 금리가 내려갈 것으로 봅니다. 높은 밸류에이션, 향후 이익 추정치 하향, 경쟁사들의 자율주행 범용화를 이유로 $TSLA에는 계속 신중하며, $ASML과 $TSM은 이번 주 후반 실적을 발표합니다.",
-     "url": "https://x.com/garyblack00/status/2109943576620573175"
+     "text": "@BobEUnlimited: 채권 비관론자들이 금리 대재앙을 외치지만 금리 상승은 기초 지표와 예상 긴축에 비해 정상적이다.",
+     "url": "https://x.com/BobEUnlimited/status/2110328513244840166"
     }
    }
   },
   {
    "theme": "fx",
-   "accounts": 17,
-   "n": 0,
+   "accounts": 16,
+   "n": 3,
    "bull": 0,
-   "bear": 0,
-   "neu": 0,
-   "arrow": "none",
-   "quotes": {}
-  },
-  {
-   "theme": "energy",
-   "accounts": 11,
-   "n": 1,
-   "bull": 0,
-   "bear": 0,
+   "bear": 2,
    "neu": 1,
    "arrow": "none",
    "quotes": {
     "zh": {
-     "acc": "carlquintanilla",
+     "acc": "PeterSchiff",
      "impact": "neu",
-     "text": "@GasBuddyGuy 表示，正式確認：2026 年全國汽油平均價格超過每加倫 4 美元的天數已與 2022 年並列歷史最多，達 157 天且仍在增加。再多一天就會創下新紀錄。",
-     "url": "https://x.com/GasBuddyGuy/status/2109987109754769498"
+     "text": "@Barchart：人民幣兌美元升至2022年6月以來最強水平。",
+     "url": "https://x.com/Barchart/status/2110138182029516867"
     },
     "en": {
-     "acc": "carlquintanilla",
+     "acc": "PeterSchiff",
      "impact": "neu",
-     "text": "@GasBuddyGuy says it is official: 2026 has now tied 2022 for the most days ever with the national average price of gasoline above $4/gal, at 157 days and counting. One more day would set a new record.",
-     "url": "https://x.com/GasBuddyGuy/status/2109987109754769498"
+     "text": "@Barchart: the Chinese yuan hit its strongest level against the US dollar since June 2022.",
+     "url": "https://x.com/Barchart/status/2110138182029516867"
     },
     "ko": {
-     "acc": "carlquintanilla",
+     "acc": "PeterSchiff",
      "impact": "neu",
-     "text": "@GasBuddyGuy는 2026년이 전국 평균 휘발유 가격이 갤런당 4달러를 넘은 날이 157일로 2022년과 역대 최다 기록을 타이했다고 공식 확인했습니다. 하루만 더 늘면 신기록이 됩니다. 특정 종목 언급은 없습니다.",
-     "url": "https://x.com/GasBuddyGuy/status/2109987109754769498"
+     "text": "@Barchart: 위안화가 달러 대비 2022년 6월 이후 최강 수준을 기록했다.",
+     "url": "https://x.com/Barchart/status/2110138182029516867"
+    }
+   }
+  },
+  {
+   "theme": "energy",
+   "accounts": 13,
+   "n": 7,
+   "bull": 0,
+   "bear": 3,
+   "neu": 4,
+   "arrow": "none",
+   "quotes": {
+    "zh": {
+     "acc": "steve_hanke",
+     "impact": "bear",
+     "text": "@steve_hanke：伊朗戰爭正擾亂石油航運；伊朗兩週內襲擊24艘船，過去7天經霍爾木茲海峽的運輸量較衝突前下降43%。",
+     "url": "https://x.com/steve_hanke/status/2110305863923843233"
+    },
+    "en": {
+     "acc": "steve_hanke",
+     "impact": "bear",
+     "text": "@steve_hanke: the Iran war is disrupting oil shipping; Iran attacked 24 ships in two weeks and Strait of Hormuz shipments in the last 7 days are down 43% from pre conflict levels.",
+     "url": "https://x.com/steve_hanke/status/2110305863923843233"
+    },
+    "ko": {
+     "acc": "steve_hanke",
+     "impact": "bear",
+     "text": "@steve_hanke: 이란 전쟁이 석유 해운을 교란하고 있다. 이란은 2주간 선박 24척을 공격했고 최근 7일 호르무즈 해협 운송량은 분쟁 전보다 43% 줄었다.",
+     "url": "https://x.com/steve_hanke/status/2110305863923843233"
     }
    }
   },
   {
    "theme": "policy",
-   "accounts": 11,
-   "n": 1,
-   "bull": 0,
-   "bear": 0,
-   "neu": 1,
+   "accounts": 15,
+   "n": 9,
+   "bull": 1,
+   "bear": 4,
+   "neu": 4,
    "arrow": "none",
    "quotes": {
     "zh": {
-     "acc": "bespokeinvest",
+     "acc": "NickTimiraos",
      "impact": "neu",
-     "text": "@bespokeinvest指出美聯儲理事Waller明天凌晨3:45 ET討論AI，Barkin於下午1點、Collins於下午4點發言。應用材料$AMAT與Workday $WDAY舉行投資者日。",
-     "url": "https://x.com/bespokeinvest/status/2109759891652940014"
+     "text": "@NickTimiraos整理Lisa Cook事件時間線：6月29日最高法院裁定Cook勝訴；7月2日川普誓言重啟罷免；8月5日白宮致函；9月16日FOMC一致投票升息；10月7日川普成立三人委員會並定於11月5日聽證；10月13日Cook律師回覆。",
+     "url": "https://x.com/NickTimiraos/status/2110177323899097580"
     },
     "en": {
-     "acc": "bespokeinvest",
+     "acc": "NickTimiraos",
      "impact": "neu",
-     "text": "@bespokeinvest notes Fed Governor Waller discusses AI tomorrow at 3:45 AM ET, with Barkin at 1:00 PM and Collins at 4:00 PM. Applied Materials $AMAT and Workday $WDAY hold investor days.",
-     "url": "https://x.com/bespokeinvest/status/2109759891652940014"
+     "text": "@NickTimiraos lays out the Lisa Cook chronology: Supreme Court ruled for Cook June 29; Trump vowed to restart removal July 2; WH letters Aug 5; FOMC voted unanimously to raise rates Sept 16; Oct 7 Trump created a three person committee and set a Nov 5 hearing; Cook's lawyer responded Oct 13.",
+     "url": "https://x.com/NickTimiraos/status/2110177323899097580"
     },
     "ko": {
-     "acc": "bespokeinvest",
+     "acc": "NickTimiraos",
      "impact": "neu",
-     "text": "@bespokeinvest는 연준 이사 Waller가 내일 오전 3:45 ET에 AI를 논의하고 Barkin은 오후 1시, Collins는 오후 4시에 발언한다고 언급. Applied Materials $AMAT와 Workday $WDAY가 투자자 데이 개최.",
-     "url": "https://x.com/bespokeinvest/status/2109759891652940014"
+     "text": "@NickTimiraos가 리사 쿡 사건 일지를 정리했다: 6월 29일 대법원 쿡 승소, 7월 2일 트럼프 해임 재추진 표명, 8월 5일 백악관 서한, 9월 16일 FOMC 만장일치 금리 인상, 10월 7일 3인 위원회 구성 및 11월 5일 청문회 지정, 10월 13일 쿡 변호인 답변.",
+     "url": "https://x.com/NickTimiraos/status/2110177323899097580"
     }
    }
   },
   {
    "theme": "other",
-   "accounts": 8,
-   "n": 3,
-   "bull": 0,
-   "bear": 1,
-   "neu": 2,
+   "accounts": 16,
+   "n": 13,
+   "bull": 1,
+   "bear": 5,
+   "neu": 7,
    "arrow": "none",
    "quotes": {
     "zh": {
-     "acc": "xiaomustock",
+     "acc": "jsblokland",
      "impact": "neu",
-     "text": "作者表示美股也需要維持指數，剛買了一些 $NVDA 和 $INTW，但因擔心繼續下跌不敢買 $SPCX 和其他股票。",
-     "url": "https://x.com/xiaomustock/status/2109854343868678540"
+     "text": "在充滿債務的世界中，投資稀缺性。作為@CryptocastNL嘉賓，討論新的Blokland Sound Money Fund以及為何在債務不斷增加的體系中稀缺資產不可或缺，投資黃金和比特幣的聰明方式，與之前基金的差異，最新宏觀發展，以及Box 3。",
+     "url": "https://x.com/jsblokland/status/2110263174339412005"
     },
     "en": {
-     "acc": "xiaomustock",
+     "acc": "jsblokland",
      "impact": "neu",
-     "text": "The author says US stocks also need to maintain the index and just bought some $NVDA and $INTW, but is afraid to buy $SPCX and others due to fear of continued declines.",
-     "url": "https://x.com/xiaomustock/status/2109854343868678540"
+     "text": "In a world full of debt, invest in scarcity. Guest on @CryptocastNL discussing new Blokland Sound Money Fund and why scarce assets are essential in a system driven by ever more debt, smart ways to invest in gold and bitcoin, difference from previous fund, latest macro developments, and Box 3.",
+     "url": "https://x.com/jsblokland/status/2110263174339412005"
     },
     "ko": {
-     "acc": "xiaomustock",
+     "acc": "jsblokland",
      "impact": "neu",
-     "text": "저자는 미국 주식도 지수를 유지해야 한다며 $NVDA와 $INTW를 조금 샀지만, 추가 하락을 우려해 $SPCX 등은 사지 못하겠다고 말합니다.",
-     "url": "https://x.com/xiaomustock/status/2109854343868678540"
+     "text": "빚으로 가득한 세상에서 희소성에 투자하라. @CryptocastNL에 출연해 새로운 Blokland Sound Money Fund와 점점 더 많은 부채로 돌아가는 시스템에서 희소한 자산이 왜 필수적인지, 금과 비트코인에 현명하게 투자하는 방법, 이전 펀드와의 차이, 최신 매크로 동향, 그리고 Box 3에 대해 논의했다.",
+     "url": "https://x.com/jsblokland/status/2110263174339412005"
     }
    }
   }
  ],
  "top": [
   "inflation",
-  "yields",
-  "other"
+  "other",
+  "yields"
  ],
  "accounts": 130,
- "range": "10/8–10/14",
+ "range": "10/9–10/15",
  "images": {
-  "zh": "https://xmktradar.github.io/og/macro-zh.png?v=2026-10-17-0021",
-  "en": "https://xmktradar.github.io/og/macro-en.png?v=2026-10-17-0021",
-  "ko": "https://xmktradar.github.io/og/macro-ko.png?v=2026-10-17-0021"
+  "zh": "https://xmktradar.github.io/og/macro-zh.png?v=2026-10-17-0025",
+  "en": "https://xmktradar.github.io/og/macro-en.png?v=2026-10-17-0025",
+  "ko": "https://xmktradar.github.io/og/macro-ko.png?v=2026-10-17-0025"
  },
  "stories": {
-  "zh": "https://xmktradar.github.io/og/macro-story-zh.png?v=2026-10-17-0021",
-  "en": "https://xmktradar.github.io/og/macro-story-en.png?v=2026-10-17-0021",
-  "ko": "https://xmktradar.github.io/og/macro-story-ko.png?v=2026-10-17-0021"
+  "zh": "https://xmktradar.github.io/og/macro-story-zh.png?v=2026-10-17-0025",
+  "en": "https://xmktradar.github.io/og/macro-story-en.png?v=2026-10-17-0025",
+  "ko": "https://xmktradar.github.io/og/macro-story-ko.png?v=2026-10-17-0025"
  },
  "posts": {
   "zh": {
-   "instagram": "🌐 本週宏觀｜130 個帳號點睇大環境（10/8–10/14）\n\n我哋追蹤嘅 130 個 X 帳號，呢個星期最多人講嘅宏觀題目：\n\n1️⃣ 通脹：利好 0・利淡 2・中性 2（上週未有數據）\n💬 @RedDogT3：「亞洲再度受挫、半導體持續疲弱，市場漲跌互見。@RedDogT3 認為 $SPX 短線支撐在 7779，但 7731 是更重要的關卡；上方 7820 是阻力，其次是 7844 的歷…」\n\n2️⃣ 債息：利好 0・利淡 1・中性 2（上週未有數據）\n💬 @garyblack00 表示，美股盤前漲跌互見（標普持平，納指 100 跌 0.4%），全球晶片股拋售波及三星和 SK 海力士，布蘭特原油跌 1.5% 至 105 美元，10…\n\n3️⃣ 其他：利好 0・利淡 1・中性 2（上週未有數據）\n💬 @xiaomustock：「作者表示美股也需要維持指數，剛買了一些 $NVDA 和 $INTW，但因擔心繼續下跌不敢買 $SPCX 和其他股票。」\n\n網站免費，連結喺 bio 👉 xmktradar.github.io\n\n☕ 鍾意就支持我哋：bio 連結，網站底部 PayPal 🙏\n\nFollow @thecrowdtape，逢星期六出一週宏觀總結。\n\n⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。投資有風險，請自行判斷。\n\n#美股 #宏觀經濟 #聯儲局 #港人投資 #美股投資 #USStocks #Macro #StockMarket #投資",
-   "threads": "🌐 本週宏觀｜130 個帳號點睇大環境（10/8–10/14）\n\n我哋追蹤嘅 130 個 X 帳號，呢個星期最多人講嘅宏觀題目：\n\n1️⃣ 通脹：利好 0・利淡 2・中性 2（上週未有數據）\n2️⃣ 債息：利好 0・利淡 1・中性 2（上週未有數據）\n3️⃣ 其他：利好 0・利淡 1・中性 2（上週未有數據）\n\n9 個主題全部喺呢度 👉 https://xmktradar.github.io/zh/#macro\n☕ 鍾意就支持我哋 👉 https://xmktradar.github.io/zh/#donate\n⚠️ 唔構成投資建議\n\n#美股",
-   "x": "🌐 本週宏觀\n\n1️⃣ 通脹：利好 0・利淡 2・中性 2（上週未有數據）\n2️⃣ 債息：利好 0・利淡 1・中性 2（上週未有數據）\n3️⃣ 其他：利好 0・利淡 1・中性 2（上週未有數據）\n\n9 個主題全部喺呢度 👉 https://xmktradar.github.io/zh/#macro\n⚠️ 唔構成投資建議\n\n#美股 #宏觀經濟 #聯儲局",
+   "instagram": "🌐 本週宏觀｜130 個帳號點睇大環境（10/9–10/15）\n\n我哋追蹤嘅 130 個 X 帳號，呢個星期最多人講嘅宏觀題目：\n\n1️⃣ 通脹：利好 1・利淡 9・中性 6（上週未有數據）\n💬 @Mr_Derivatives：「Heisenberg表示他也炫耀虧損，並引用自己的猜測：明天$QQQ將因CPI正面反應而轉綠，由近期超賣的晶片/記憶體股帶動，僅限明天，之後反彈可能消退，可於週四/週五再檢視。」\n\n2️⃣ 其他：利好 1・利淡 5・中性 7（上週未有數據）\n💬 @jsblokland：「在充滿債務的世界中，投資稀缺性。作為@CryptocastNL嘉賓，討論新的Blokland Sound Money Fund以及為何在債務不斷增加的體系中稀缺資產不可或缺，投資…」\n\n3️⃣ 債息：利好 2・利淡 4・中性 5（上週未有數據）\n💬 @BobEUnlimited：儘管債市悲觀者高喊利率末日，殖利率上升相對基本數據及預期緊縮而言屬正常。\n\n網站免費，連結喺 bio 👉 xmktradar.github.io\n\n☕ 鍾意就支持我哋：bio 連結，網站底部 PayPal 🙏\n\nFollow @thecrowdtape，逢星期六出一週宏觀總結。\n\n⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。投資有風險，請自行判斷。\n\n#美股 #宏觀經濟 #聯儲局 #港人投資 #美股投資 #USStocks #Macro #StockMarket #投資",
+   "threads": "🌐 本週宏觀｜130 個帳號點睇大環境（10/9–10/15）\n\n我哋追蹤嘅 130 個 X 帳號，呢個星期最多人講嘅宏觀題目：\n\n1️⃣ 通脹：利好 1・利淡 9・中性 6（上週未有數據）\n2️⃣ 其他：利好 1・利淡 5・中性 7（上週未有數據）\n3️⃣ 債息：利好 2・利淡 4・中性 5（上週未有數據）\n\n9 個主題全部喺呢度 👉 https://xmktradar.github.io/zh/#macro\n☕ 鍾意就支持我哋 👉 https://xmktradar.github.io/zh/#donate\n⚠️ 唔構成投資建議\n\n#美股",
+   "x": "🌐 本週宏觀\n\n1️⃣ 通脹：利好 1・利淡 9・中性 6（上週未有數據）\n2️⃣ 其他：利好 1・利淡 5・中性 7（上週未有數據）\n3️⃣ 債息：利好 2・利淡 4・中性 5（上週未有數據）\n\n9 個主題全部喺呢度 👉 https://xmktradar.github.io/zh/#macro\n⚠️ 唔構成投資建議\n\n#美股 #宏觀經濟 #聯儲局",
    "reddit": {
-    "title": "本週宏觀｜130 個帳號點睇大環境（10/8–10/14）",
-    "body": "我哋追蹤嘅 130 個 X 帳號，呢個星期最多人講嘅宏觀題目：\n\n1. 通脹：利好 0・利淡 2・中性 2（上週未有數據）\n💬 @RedDogT3：「亞洲再度受挫、半導體持續疲弱，市場漲跌互見。@RedDogT3 認為 $SPX 短線支撐在 7779，但 7731 是更重要的關卡；上方 7820 是阻力，其次是 7844 的歷…」\n\n2. 債息：利好 0・利淡 1・中性 2（上週未有數據）\n💬 @garyblack00 表示，美股盤前漲跌互見（標普持平，納指 100 跌 0.4%），全球晶片股拋售波及三星和 SK 海力士，布蘭特原油跌 1.5% 至 105 美元，10…\n\n3. 其他：利好 0・利淡 1・中性 2（上週未有數據）\n💬 @xiaomustock：「作者表示美股也需要維持指數，剛買了一些 $NVDA 和 $INTW，但因擔心繼續下跌不敢買 $SPCX 和其他股票。」\n\n9 個主題全部喺呢度 👉 [https://xmktradar.github.io/zh/#macro](https://xmktradar.github.io/zh/#macro)\n\n☕ 鍾意就支持我哋 👉 [https://xmktradar.github.io/zh/#donate](https://xmktradar.github.io/zh/#donate)\n\n⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。投資有風險，請自行判斷。\n\n#美股 #宏觀經濟 #聯儲局 #港人投資 #美股投資 #USStocks #Macro #StockMarket #投資"
+    "title": "本週宏觀｜130 個帳號點睇大環境（10/9–10/15）",
+    "body": "我哋追蹤嘅 130 個 X 帳號，呢個星期最多人講嘅宏觀題目：\n\n1. 通脹：利好 1・利淡 9・中性 6（上週未有數據）\n💬 @Mr_Derivatives：「Heisenberg表示他也炫耀虧損，並引用自己的猜測：明天$QQQ將因CPI正面反應而轉綠，由近期超賣的晶片/記憶體股帶動，僅限明天，之後反彈可能消退，可於週四/週五再檢視。」\n\n2. 其他：利好 1・利淡 5・中性 7（上週未有數據）\n💬 @jsblokland：「在充滿債務的世界中，投資稀缺性。作為@CryptocastNL嘉賓，討論新的Blokland Sound Money Fund以及為何在債務不斷增加的體系中稀缺資產不可或缺，投資…」\n\n3. 債息：利好 2・利淡 4・中性 5（上週未有數據）\n💬 @BobEUnlimited：儘管債市悲觀者高喊利率末日，殖利率上升相對基本數據及預期緊縮而言屬正常。\n\n9 個主題全部喺呢度 👉 [https://xmktradar.github.io/zh/#macro](https://xmktradar.github.io/zh/#macro)\n\n☕ 鍾意就支持我哋 👉 [https://xmktradar.github.io/zh/#donate](https://xmktradar.github.io/zh/#donate)\n\n⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。投資有風險，請自行判斷。\n\n#美股 #宏觀經濟 #聯儲局 #港人投資 #美股投資 #USStocks #Macro #StockMarket #投資"
    },
-   "facebook": "🌐 本週宏觀｜130 個帳號點睇大環境（10/8–10/14）\n\n我哋追蹤嘅 130 個 X 帳號，呢個星期最多人講嘅宏觀題目：\n\n1️⃣ 通脹：利好 0・利淡 2・中性 2（上週未有數據）\n💬 @RedDogT3：「亞洲再度受挫、半導體持續疲弱，市場漲跌互見。@RedDogT3 認為 $SPX 短線支撐在 7779，但 7731 是更重要的關卡；上方 7820 是阻力，其次是 7844 的歷…」\n\n2️⃣ 債息：利好 0・利淡 1・中性 2（上週未有數據）\n💬 @garyblack00 表示，美股盤前漲跌互見（標普持平，納指 100 跌 0.4%），全球晶片股拋售波及三星和 SK 海力士，布蘭特原油跌 1.5% 至 105 美元，10…\n\n3️⃣ 其他：利好 0・利淡 1・中性 2（上週未有數據）\n💬 @xiaomustock：「作者表示美股也需要維持指數，剛買了一些 $NVDA 和 $INTW，但因擔心繼續下跌不敢買 $SPCX 和其他股票。」\n\n9 個主題全部喺呢度 👉 https://xmktradar.github.io/zh/#macro\n\n☕ 鍾意就支持我哋 👉 https://xmktradar.github.io/zh/#donate\n\nFollow @thecrowdtape，逢星期六出一週宏觀總結。\n\n⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。投資有風險，請自行判斷。\n\n#美股 #宏觀經濟 #聯儲局 #港人投資 #美股投資 #USStocks #Macro #StockMarket #投資",
+   "facebook": "🌐 本週宏觀｜130 個帳號點睇大環境（10/9–10/15）\n\n我哋追蹤嘅 130 個 X 帳號，呢個星期最多人講嘅宏觀題目：\n\n1️⃣ 通脹：利好 1・利淡 9・中性 6（上週未有數據）\n💬 @Mr_Derivatives：「Heisenberg表示他也炫耀虧損，並引用自己的猜測：明天$QQQ將因CPI正面反應而轉綠，由近期超賣的晶片/記憶體股帶動，僅限明天，之後反彈可能消退，可於週四/週五再檢視。」\n\n2️⃣ 其他：利好 1・利淡 5・中性 7（上週未有數據）\n💬 @jsblokland：「在充滿債務的世界中，投資稀缺性。作為@CryptocastNL嘉賓，討論新的Blokland Sound Money Fund以及為何在債務不斷增加的體系中稀缺資產不可或缺，投資…」\n\n3️⃣ 債息：利好 2・利淡 4・中性 5（上週未有數據）\n💬 @BobEUnlimited：儘管債市悲觀者高喊利率末日，殖利率上升相對基本數據及預期緊縮而言屬正常。\n\n9 個主題全部喺呢度 👉 https://xmktradar.github.io/zh/#macro\n\n☕ 鍾意就支持我哋 👉 https://xmktradar.github.io/zh/#donate\n\nFollow @thecrowdtape，逢星期六出一週宏觀總結。\n\n⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。投資有風險，請自行判斷。\n\n#美股 #宏觀經濟 #聯儲局 #港人投資 #美股投資 #USStocks #Macro #StockMarket #投資",
    "story": "#美股 #宏觀經濟 #聯儲局 #港人投資 #美股投資"
   },
   "en": {
-   "instagram": "🌐 This week in macro · how 130 accounts see the big picture (10/8–10/14)\n\nThe macro topics the 130 X accounts we track talked about most this week:\n\n1️⃣ Inflation: bullish 0 · bearish 2 · neutral 2 (no data for last week yet)\n💬 @RedDogT3: “Markets are mixed as Asia gets hit again and semis stay weak. @RedDogT3 sees short-term $SPX support at 7779, with 7731 the more important level; 782…”\n\n2️⃣ Bond yields: bullish 0 · bearish 1 · neutral 2 (no data for last week yet)\n💬 @garyblack00 says U.S. stocks were mixed pre-market (SPX flat, NDX -0.4%) as the global chip selloff hit Samsung and SK Hynix, Brent fell 1.5% to $10…\n\n3️⃣ Other: bullish 0 · bearish 1 · neutral 2 (no data for last week yet)\n💬 @xiaomustock: “The author says US stocks also need to maintain the index and just bought some $NVDA and $INTW, but is afraid to buy $SPCX and others due to fear of…”\n\nThe site is free. Link in bio 👉 xmktradar.github.io\n\n☕ Enjoy it? Buy us a coffee: link in bio, PayPal at the bottom of the site 🙏\n\nFollow @thecrowdtape for a macro roundup every Saturday.\n\n⚠️ A summary of public social media posts, not investment advice. Investing involves risk; do your own research.\n\n#Macro #StockMarket #USStocks #Fed #Economy #Investing #FinTwit #WallStreet",
-   "threads": "🌐 This week in macro · how 130 accounts see the big picture (10/8–10/14)\n\n1️⃣ Inflation: bullish 0 · bearish 2 · neutral 2 (no data for last week yet)\n2️⃣ Bond yields: bullish 0 · bearish 1 · neutral 2 (no data for last week yet)\n3️⃣ Other: bullish 0 · bearish 1 · neutral 2 (no data for last week yet)\n\nAll 9 topics 👉 https://xmktradar.github.io/en/#macro\n☕ Support the site 👉 https://xmktradar.github.io/en/#donate\n⚠️ Not investment advice\n\n#Macro",
-   "x": "🌐 This week in macro\n\nInflation 0/2/2\nBond yields 0/1/2\nOther 0/1/2\n(bullish/bearish/neutral)\n\nAll 9 topics 👉 https://xmktradar.github.io/en/#macro\n⚠️ Not investment advice\n\n#Macro #StockMarket #USStocks",
+   "instagram": "🌐 This week in macro · how 130 accounts see the big picture (10/9–10/15)\n\nThe macro topics the 130 X accounts we track talked about most this week:\n\n1️⃣ Inflation: bullish 1 · bearish 9 · neutral 6 (no data for last week yet)\n💬 @Mr_Derivatives: “Heisenberg says he flaunts his losers too and quotes his guess that $QQQ goes green tomorrow off a positive reaction of CPI led by near-term oversold…”\n\n2️⃣ Other: bullish 1 · bearish 5 · neutral 7 (no data for last week yet)\n💬 @jsblokland: “In a world full of debt, invest in scarcity. Guest on @CryptocastNL discussing new Blokland Sound Money Fund and why scarce assets are essential in a…”\n\n3️⃣ Bond yields: bullish 2 · bearish 4 · neutral 5 (no data for last week yet)\n💬 @BobEUnlimited: despite bond doomers' calls for rate armageddon, the yield rise looks normal relative to underlying data and expected tightening.\n\nThe site is free. Link in bio 👉 xmktradar.github.io\n\n☕ Enjoy it? Buy us a coffee: link in bio, PayPal at the bottom of the site 🙏\n\nFollow @thecrowdtape for a macro roundup every Saturday.\n\n⚠️ A summary of public social media posts, not investment advice. Investing involves risk; do your own research.\n\n#Macro #StockMarket #USStocks #Fed #Economy #Investing #FinTwit #WallStreet",
+   "threads": "🌐 This week in macro · how 130 accounts see the big picture (10/9–10/15)\n\n1️⃣ Inflation: bullish 1 · bearish 9 · neutral 6 (no data for last week yet)\n2️⃣ Other: bullish 1 · bearish 5 · neutral 7 (no data for last week yet)\n3️⃣ Bond yields: bullish 2 · bearish 4 · neutral 5 (no data for last week yet)\n\nAll 9 topics 👉 https://xmktradar.github.io/en/#macro\n☕ Support the site 👉 https://xmktradar.github.io/en/#donate\n⚠️ Not investment advice\n\n#Macro",
+   "x": "🌐 This week in macro\n\nInflation 1/9/6\nOther 1/5/7\nBond yields 2/4/5\n(bullish/bearish/neutral)\n\nAll 9 topics 👉 https://xmktradar.github.io/en/#macro\n⚠️ Not investment advice\n\n#Macro #StockMarket #USStocks",
    "reddit": {
-    "title": "This week in macro · how 130 accounts see the big picture (10/8–10/14)",
-    "body": "The macro topics the 130 X accounts we track talked about most this week:\n\n1. Inflation: bullish 0 · bearish 2 · neutral 2 (no data for last week yet)\n💬 @RedDogT3: “Markets are mixed as Asia gets hit again and semis stay weak. @RedDogT3 sees short-term $SPX support at 7779, with 7731 the more important level; 782…”\n\n2. Bond yields: bullish 0 · bearish 1 · neutral 2 (no data for last week yet)\n💬 @garyblack00 says U.S. stocks were mixed pre-market (SPX flat, NDX -0.4%) as the global chip selloff hit Samsung and SK Hynix, Brent fell 1.5% to $10…\n\n3. Other: bullish 0 · bearish 1 · neutral 2 (no data for last week yet)\n💬 @xiaomustock: “The author says US stocks also need to maintain the index and just bought some $NVDA and $INTW, but is afraid to buy $SPCX and others due to fear of…”\n\nAll 9 topics 👉 [https://xmktradar.github.io/en/#macro](https://xmktradar.github.io/en/#macro)\n\n☕ Support the site 👉 [https://xmktradar.github.io/en/#donate](https://xmktradar.github.io/en/#donate)\n\n⚠️ A summary of public social media posts, not investment advice. Investing involves risk; do your own research.\n\n#Macro #StockMarket #USStocks #Fed #Economy #Investing #FinTwit #WallStreet"
+    "title": "This week in macro · how 130 accounts see the big picture (10/9–10/15)",
+    "body": "The macro topics the 130 X accounts we track talked about most this week:\n\n1. Inflation: bullish 1 · bearish 9 · neutral 6 (no data for last week yet)\n💬 @Mr_Derivatives: “Heisenberg says he flaunts his losers too and quotes his guess that $QQQ goes green tomorrow off a positive reaction of CPI led by near-term oversold…”\n\n2. Other: bullish 1 · bearish 5 · neutral 7 (no data for last week yet)\n💬 @jsblokland: “In a world full of debt, invest in scarcity. Guest on @CryptocastNL discussing new Blokland Sound Money Fund and why scarce assets are essential in a…”\n\n3. Bond yields: bullish 2 · bearish 4 · neutral 5 (no data for last week yet)\n💬 @BobEUnlimited: despite bond doomers' calls for rate armageddon, the yield rise looks normal relative to underlying data and expected tightening.\n\nAll 9 topics 👉 [https://xmktradar.github.io/en/#macro](https://xmktradar.github.io/en/#macro)\n\n☕ Support the site 👉 [https://xmktradar.github.io/en/#donate](https://xmktradar.github.io/en/#donate)\n\n⚠️ A summary of public social media posts, not investment advice. Investing involves risk; do your own research.\n\n#Macro #StockMarket #USStocks #Fed #Economy #Investing #FinTwit #WallStreet"
    },
-   "facebook": "🌐 This week in macro · how 130 accounts see the big picture (10/8–10/14)\n\nThe macro topics the 130 X accounts we track talked about most this week:\n\n1️⃣ Inflation: bullish 0 · bearish 2 · neutral 2 (no data for last week yet)\n💬 @RedDogT3: “Markets are mixed as Asia gets hit again and semis stay weak. @RedDogT3 sees short-term $SPX support at 7779, with 7731 the more important level; 782…”\n\n2️⃣ Bond yields: bullish 0 · bearish 1 · neutral 2 (no data for last week yet)\n💬 @garyblack00 says U.S. stocks were mixed pre-market (SPX flat, NDX -0.4%) as the global chip selloff hit Samsung and SK Hynix, Brent fell 1.5% to $10…\n\n3️⃣ Other: bullish 0 · bearish 1 · neutral 2 (no data for last week yet)\n💬 @xiaomustock: “The author says US stocks also need to maintain the index and just bought some $NVDA and $INTW, but is afraid to buy $SPCX and others due to fear of…”\n\nAll 9 topics 👉 https://xmktradar.github.io/en/#macro\n\n☕ Support the site 👉 https://xmktradar.github.io/en/#donate\n\nFollow @thecrowdtape for a macro roundup every Saturday.\n\n⚠️ A summary of public social media posts, not investment advice. Investing involves risk; do your own research.\n\n#Macro #StockMarket #USStocks #Fed #Economy #Investing #FinTwit #WallStreet",
+   "facebook": "🌐 This week in macro · how 130 accounts see the big picture (10/9–10/15)\n\nThe macro topics the 130 X accounts we track talked about most this week:\n\n1️⃣ Inflation: bullish 1 · bearish 9 · neutral 6 (no data for last week yet)\n💬 @Mr_Derivatives: “Heisenberg says he flaunts his losers too and quotes his guess that $QQQ goes green tomorrow off a positive reaction of CPI led by near-term oversold…”\n\n2️⃣ Other: bullish 1 · bearish 5 · neutral 7 (no data for last week yet)\n💬 @jsblokland: “In a world full of debt, invest in scarcity. Guest on @CryptocastNL discussing new Blokland Sound Money Fund and why scarce assets are essential in a…”\n\n3️⃣ Bond yields: bullish 2 · bearish 4 · neutral 5 (no data for last week yet)\n💬 @BobEUnlimited: despite bond doomers' calls for rate armageddon, the yield rise looks normal relative to underlying data and expected tightening.\n\nAll 9 topics 👉 https://xmktradar.github.io/en/#macro\n\n☕ Support the site 👉 https://xmktradar.github.io/en/#donate\n\nFollow @thecrowdtape for a macro roundup every Saturday.\n\n⚠️ A summary of public social media posts, not investment advice. Investing involves risk; do your own research.\n\n#Macro #StockMarket #USStocks #Fed #Economy #Investing #FinTwit #WallStreet",
    "story": "#Macro #StockMarket #USStocks #Fed #Economy"
   },
   "ko": {
-   "instagram": "🌐 이번 주 매크로 · 130개 계정이 보는 큰 그림 (10/8–10/14)\n\n저희가 추적하는 X 계정 130개가 이번 주 가장 많이 다룬 매크로 주제:\n\n1️⃣ 인플레이션: 호재 0 · 악재 2 · 중립 2 (지난주 데이터 없음)\n💬 @RedDogT3: “아시아 증시가 또 타격을 받고 반도체가 약세를 이어가며 시장은 혼조세입니다. @RedDogT3는 $SPX의 단기 지지선을 7779로, 더 중요한 레벨을 7731로 봅니다. 위로는 7820이 저항선…”\n\n2️⃣ 채권 금리: 호재 0 · 악재 1 · 중립 2 (지난주 데이터 없음)\n💬 @garyblack00은 글로벌 반도체 매도세가 삼성과 SK하이닉스를 강타하면서 미국 증시가 프리마켓에서 혼조세(SPX 보합, NDX -0.4%)를 보였고, 브렌트유는 1.5% 내린 105달러…\n\n3️⃣ 기타: 호재 0 · 악재 1 · 중립 2 (지난주 데이터 없음)\n💬 @xiaomustock: “저자는 미국 주식도 지수를 유지해야 한다며 $NVDA와 $INTW를 조금 샀지만, 추가 하락을 우려해 $SPCX 등은 사지 못하겠다고 말합니다.”\n\n사이트는 무료, 프로필 링크 👉 xmktradar.github.io\n\n☕ 도움이 되셨다면 커피 한 잔 후원해 주세요: 프로필 링크, 사이트 하단 PayPal 🙏\n\n@thecrowdtape 팔로우하고 매주 토요일 매크로 정리를 받아보세요.\n\n⚠️ 공개 SNS 게시물을 정리한 것으로 투자 조언이 아닙니다. 투자에는 위험이 따르니 스스로 판단하세요.\n\n#매크로 #미국주식 #미장 #연준 #경제 #투자 #USStocks #주식",
-   "threads": "🌐 이번 주 매크로 · 130개 계정이 보는 큰 그림 (10/8–10/14)\n\n저희가 추적하는 X 계정 130개가 이번 주 가장 많이 다룬 매크로 주제:\n\n1️⃣ 인플레이션: 호재 0 · 악재 2 · 중립 2 (지난주 데이터 없음)\n2️⃣ 채권 금리: 호재 0 · 악재 1 · 중립 2 (지난주 데이터 없음)\n3️⃣ 기타: 호재 0 · 악재 1 · 중립 2 (지난주 데이터 없음)\n\n9개 주제 전체 보기 👉 https://xmktradar.github.io/ko/#macro\n☕ 후원하기 👉 https://xmktradar.github.io/ko/#donate\n⚠️ 투자 조언 아님\n\n#매크로",
-   "x": "🌐 이번 주 매크로\n\n인플레이션 0/2/2\n채권 금리 0/1/2\n기타 0/1/2\n(호재/악재/중립)\n\n9개 주제 전체 보기 👉 https://xmktradar.github.io/ko/#macro\n⚠️ 투자 조언 아님\n\n#매크로 #미국주식 #미장",
+   "instagram": "🌐 이번 주 매크로 · 130개 계정이 보는 큰 그림 (10/9–10/15)\n\n저희가 추적하는 X 계정 130개가 이번 주 가장 많이 다룬 매크로 주제:\n\n1️⃣ 인플레이션: 호재 1 · 악재 9 · 중립 6 (지난주 데이터 없음)\n💬 @Mr_Derivatives: “Heisenberg는 손실도 자랑한다며 자신의 추측을 인용했다. $QQQ가 내일 CPI 긍정적 반응으로 상승하며 단기 과매도된 칩/메모리 주식이 이끌 것이라고, 내일만이며 이후 반등이 약화될 수…”\n\n2️⃣ 기타: 호재 1 · 악재 5 · 중립 7 (지난주 데이터 없음)\n💬 @jsblokland: “빚으로 가득한 세상에서 희소성에 투자하라. @CryptocastNL에 출연해 새로운 Blokland Sound Money Fund와 점점 더 많은 부채로 돌아가는 시스템에서 희소한 자산이 왜 필수…”\n\n3️⃣ 채권 금리: 호재 2 · 악재 4 · 중립 5 (지난주 데이터 없음)\n💬 @BobEUnlimited: 채권 비관론자들이 금리 대재앙을 외치지만 금리 상승은 기초 지표와 예상 긴축에 비해 정상적이다.\n\n사이트는 무료, 프로필 링크 👉 xmktradar.github.io\n\n☕ 도움이 되셨다면 커피 한 잔 후원해 주세요: 프로필 링크, 사이트 하단 PayPal 🙏\n\n@thecrowdtape 팔로우하고 매주 토요일 매크로 정리를 받아보세요.\n\n⚠️ 공개 SNS 게시물을 정리한 것으로 투자 조언이 아닙니다. 투자에는 위험이 따르니 스스로 판단하세요.\n\n#매크로 #미국주식 #미장 #연준 #경제 #투자 #USStocks #주식",
+   "threads": "🌐 이번 주 매크로 · 130개 계정이 보는 큰 그림 (10/9–10/15)\n\n저희가 추적하는 X 계정 130개가 이번 주 가장 많이 다룬 매크로 주제:\n\n1️⃣ 인플레이션: 호재 1 · 악재 9 · 중립 6 (지난주 데이터 없음)\n2️⃣ 기타: 호재 1 · 악재 5 · 중립 7 (지난주 데이터 없음)\n3️⃣ 채권 금리: 호재 2 · 악재 4 · 중립 5 (지난주 데이터 없음)\n\n9개 주제 전체 보기 👉 https://xmktradar.github.io/ko/#macro\n☕ 후원하기 👉 https://xmktradar.github.io/ko/#donate\n⚠️ 투자 조언 아님\n\n#매크로",
+   "x": "🌐 이번 주 매크로\n\n인플레이션 1/9/6\n기타 1/5/7\n채권 금리 2/4/5\n(호재/악재/중립)\n\n9개 주제 전체 보기 👉 https://xmktradar.github.io/ko/#macro\n⚠️ 투자 조언 아님\n\n#매크로 #미국주식 #미장",
    "reddit": {
-    "title": "이번 주 매크로 · 130개 계정이 보는 큰 그림 (10/8–10/14)",
-    "body": "저희가 추적하는 X 계정 130개가 이번 주 가장 많이 다룬 매크로 주제:\n\n1. 인플레이션: 호재 0 · 악재 2 · 중립 2 (지난주 데이터 없음)\n💬 @RedDogT3: “아시아 증시가 또 타격을 받고 반도체가 약세를 이어가며 시장은 혼조세입니다. @RedDogT3는 $SPX의 단기 지지선을 7779로, 더 중요한 레벨을 7731로 봅니다. 위로는 7820이 저항선…”\n\n2. 채권 금리: 호재 0 · 악재 1 · 중립 2 (지난주 데이터 없음)\n💬 @garyblack00은 글로벌 반도체 매도세가 삼성과 SK하이닉스를 강타하면서 미국 증시가 프리마켓에서 혼조세(SPX 보합, NDX -0.4%)를 보였고, 브렌트유는 1.5% 내린 105달러…\n\n3. 기타: 호재 0 · 악재 1 · 중립 2 (지난주 데이터 없음)\n💬 @xiaomustock: “저자는 미국 주식도 지수를 유지해야 한다며 $NVDA와 $INTW를 조금 샀지만, 추가 하락을 우려해 $SPCX 등은 사지 못하겠다고 말합니다.”\n\n9개 주제 전체 보기 👉 [https://xmktradar.github.io/ko/#macro](https://xmktradar.github.io/ko/#macro)\n\n☕ 후원하기 👉 [https://xmktradar.github.io/ko/#donate](https://xmktradar.github.io/ko/#donate)\n\n⚠️ 공개 SNS 게시물을 정리한 것으로 투자 조언이 아닙니다. 투자에는 위험이 따르니 스스로 판단하세요.\n\n#매크로 #미국주식 #미장 #연준 #경제 #투자 #USStocks #주식"
+    "title": "이번 주 매크로 · 130개 계정이 보는 큰 그림 (10/9–10/15)",
+    "body": "저희가 추적하는 X 계정 130개가 이번 주 가장 많이 다룬 매크로 주제:\n\n1. 인플레이션: 호재 1 · 악재 9 · 중립 6 (지난주 데이터 없음)\n💬 @Mr_Derivatives: “Heisenberg는 손실도 자랑한다며 자신의 추측을 인용했다. $QQQ가 내일 CPI 긍정적 반응으로 상승하며 단기 과매도된 칩/메모리 주식이 이끌 것이라고, 내일만이며 이후 반등이 약화될 수…”\n\n2. 기타: 호재 1 · 악재 5 · 중립 7 (지난주 데이터 없음)\n💬 @jsblokland: “빚으로 가득한 세상에서 희소성에 투자하라. @CryptocastNL에 출연해 새로운 Blokland Sound Money Fund와 점점 더 많은 부채로 돌아가는 시스템에서 희소한 자산이 왜 필수…”\n\n3. 채권 금리: 호재 2 · 악재 4 · 중립 5 (지난주 데이터 없음)\n💬 @BobEUnlimited: 채권 비관론자들이 금리 대재앙을 외치지만 금리 상승은 기초 지표와 예상 긴축에 비해 정상적이다.\n\n9개 주제 전체 보기 👉 [https://xmktradar.github.io/ko/#macro](https://xmktradar.github.io/ko/#macro)\n\n☕ 후원하기 👉 [https://xmktradar.github.io/ko/#donate](https://xmktradar.github.io/ko/#donate)\n\n⚠️ 공개 SNS 게시물을 정리한 것으로 투자 조언이 아닙니다. 투자에는 위험이 따르니 스스로 판단하세요.\n\n#매크로 #미국주식 #미장 #연준 #경제 #투자 #USStocks #주식"
    },
-   "facebook": "🌐 이번 주 매크로 · 130개 계정이 보는 큰 그림 (10/8–10/14)\n\n저희가 추적하는 X 계정 130개가 이번 주 가장 많이 다룬 매크로 주제:\n\n1️⃣ 인플레이션: 호재 0 · 악재 2 · 중립 2 (지난주 데이터 없음)\n💬 @RedDogT3: “아시아 증시가 또 타격을 받고 반도체가 약세를 이어가며 시장은 혼조세입니다. @RedDogT3는 $SPX의 단기 지지선을 7779로, 더 중요한 레벨을 7731로 봅니다. 위로는 7820이 저항선…”\n\n2️⃣ 채권 금리: 호재 0 · 악재 1 · 중립 2 (지난주 데이터 없음)\n💬 @garyblack00은 글로벌 반도체 매도세가 삼성과 SK하이닉스를 강타하면서 미국 증시가 프리마켓에서 혼조세(SPX 보합, NDX -0.4%)를 보였고, 브렌트유는 1.5% 내린 105달러…\n\n3️⃣ 기타: 호재 0 · 악재 1 · 중립 2 (지난주 데이터 없음)\n💬 @xiaomustock: “저자는 미국 주식도 지수를 유지해야 한다며 $NVDA와 $INTW를 조금 샀지만, 추가 하락을 우려해 $SPCX 등은 사지 못하겠다고 말합니다.”\n\n9개 주제 전체 보기 👉 https://xmktradar.github.io/ko/#macro\n\n☕ 후원하기 👉 https://xmktradar.github.io/ko/#donate\n\n@thecrowdtape 팔로우하고 매주 토요일 매크로 정리를 받아보세요.\n\n⚠️ 공개 SNS 게시물을 정리한 것으로 투자 조언이 아닙니다. 투자에는 위험이 따르니 스스로 판단하세요.\n\n#매크로 #미국주식 #미장 #연준 #경제 #투자 #USStocks #주식",
+   "facebook": "🌐 이번 주 매크로 · 130개 계정이 보는 큰 그림 (10/9–10/15)\n\n저희가 추적하는 X 계정 130개가 이번 주 가장 많이 다룬 매크로 주제:\n\n1️⃣ 인플레이션: 호재 1 · 악재 9 · 중립 6 (지난주 데이터 없음)\n💬 @Mr_Derivatives: “Heisenberg는 손실도 자랑한다며 자신의 추측을 인용했다. $QQQ가 내일 CPI 긍정적 반응으로 상승하며 단기 과매도된 칩/메모리 주식이 이끌 것이라고, 내일만이며 이후 반등이 약화될 수…”\n\n2️⃣ 기타: 호재 1 · 악재 5 · 중립 7 (지난주 데이터 없음)\n💬 @jsblokland: “빚으로 가득한 세상에서 희소성에 투자하라. @CryptocastNL에 출연해 새로운 Blokland Sound Money Fund와 점점 더 많은 부채로 돌아가는 시스템에서 희소한 자산이 왜 필수…”\n\n3️⃣ 채권 금리: 호재 2 · 악재 4 · 중립 5 (지난주 데이터 없음)\n💬 @BobEUnlimited: 채권 비관론자들이 금리 대재앙을 외치지만 금리 상승은 기초 지표와 예상 긴축에 비해 정상적이다.\n\n9개 주제 전체 보기 👉 https://xmktradar.github.io/ko/#macro\n\n☕ 후원하기 👉 https://xmktradar.github.io/ko/#donate\n\n@thecrowdtape 팔로우하고 매주 토요일 매크로 정리를 받아보세요.\n\n⚠️ 공개 SNS 게시물을 정리한 것으로 투자 조언이 아닙니다. 투자에는 위험이 따르니 스스로 판단하세요.\n\n#매크로 #미국주식 #미장 #연준 #경제 #투자 #USStocks #주식",
    "story": "#매크로 #미국주식 #미장 #연준 #경제"
   }
  }
