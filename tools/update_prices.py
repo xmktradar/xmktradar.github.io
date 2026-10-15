@@ -20,7 +20,7 @@ CRYPTO = {'BTC', 'ETH', 'SOL', 'XRP', 'DOGE', 'ADA', 'BNB'}
 EXCH_TV = {'NMS': 'NASDAQ', 'NGM': 'NASDAQ', 'NCM': 'NASDAQ', 'NAS': 'NASDAQ', 'NYQ': 'NYSE', 'NYS': 'NYSE',
            'ASE': 'AMEX', 'PCX': 'AMEX', 'BTS': 'AMEX', 'ASX': 'ASX', 'LSE': 'LSE', 'VAN': 'TSXV', 'TOR': 'TSX'}
 MACRO = [('ES=F', '標普500期貨', None), ('NQ=F', '納指100期貨', None), ('YM=F', '道指期貨', None),
-         ('^VIX', 'VIX', None), ('^TNX', '10 年期債息', 'Yahoo Finance（^TNX）'), ('CL=F', 'WTI', 'Yahoo Finance（CL=F）')]
+         ('^VIX', 'VIX', None), ('^TNX', 'US10Y', 'Yahoo Finance（^TNX）'), ('CL=F', 'WTI', 'Yahoo Finance（CL=F）')]
 
 jar = http.cookiejar.CookieJar()
 opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
@@ -152,12 +152,14 @@ def main():
 
     rows = []
     for sym, name, src in MACRO:
-        r = chart(sym, '5d', '5m')
+        # range 1d: chartPreviousClose is the previous session's close (with 5d it was the close
+        # before the 5-day window, so the strip showed a 5-day change as if it were today's)
+        r = chart(sym, '1d', '5m')
         time.sleep(0.3)
         if not r:
             continue
         meta = r[0]
-        price, prev = meta.get('regularMarketPrice'), meta.get('chartPreviousClose') or meta.get('previousClose')
+        price, prev = meta.get('regularMarketPrice'), meta.get('previousClose') or meta.get('chartPreviousClose')
         ts = meta.get('regularMarketTime')
         if price is None or ts is None:
             continue
@@ -173,6 +175,9 @@ def main():
         d['macro']['date'] = now.date().isoformat()
         d['macro']['as_of'] = stamp
     d['macro']['events'] = [e for e in d['macro'].get('events', []) if e.get('time', '') >= stamp]
+    # stock tags: news shows for 3 days, earnings until the day after (US results land on the HK morning after)
+    keep = lambda f: f.get('date', '') >= (now - timedelta(days=1 if f.get('type') == '業績' else 3)).date().isoformat()
+    d['macro']['flags'] = [f for f in d['macro'].get('flags', []) if keep(f)]
     d['meta']['price_missing'] = missing
 
     assert len(d['posts']) == n_posts
