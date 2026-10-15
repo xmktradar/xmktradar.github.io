@@ -1,1 +1,79 @@
-$(cat /tmp/batch4.json)
+{
+  "posts": {
+    "2110799283494740218": {
+      "en_summary": "Unconfirmed but another massive AI fund could've blown up today after these spew of negative AI PR hit all at once, the exact same mechanic that wiped Leopold. Last time that liquidation marked the bottom.",
+      "zh_summary": "未經證實，但另一個大型AI基金可能今日因負面AI公關同時爆發而爆倉，與之前清除Leopold的機制完全相同。上次清算標誌著底部。",
+      "ko_summary": "미확인이지만 또 다른 대규모 AI 펀드가 오늘 부정적인 AI PR이 동시에 터지며 터졌을 수 있으며, Leopold를 휙씀었던 정확히 같은 메커니즘. 지난번 청산이 바닥을 표시했다.",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2110796895148814722": {
+      "en_summary": "It still really doesn’t make sense that all of this was started because of $CRWV bonds or even Anthropic’s numbers not being as strong. Obviously the hot CPI and PPI didn’t help but for $SMH to take an 11% drawdown in a week pushing most high beta growth down 30-40% feels like there’s a deeper story. Maybe regular midterm volatility as well.",
+      "zh_summary": "這一切因 $CRWV 債券或 Anthropic 數據不夠強而開始仍然說不通。顯然熱的CPI和PPI沒有幫助，但 $SMH 一周內回撤11%，將大多數高貝塔成長股推低30-40%，感覺有更深層故事。也許是中期波動。",
+      "ko_summary": "이 모든 것이 $CRWV 채권이나 Anthropic 숫자가 강하지 않아서 시작됐다는 게 여전히 말이 안 된다. 핫 CPI와 PPI가 도움이 안 됐지만 $SMH가 일주일 만에 11% 드로우다운, 대부분의 하이 베타 성장주 30-40% 하락은 더 깊은 이야기가 있는 느낌. 중간 선거 변동성일 수도.",
+      "tickers": ["CRWV", "SMH"],
+      "stance": "中性",
+      "stance_by_ticker": {"CRWV": "中性", "SMH": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "inflation",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2110796415589032431": {
+      "en_summary": "$GOOGL says its Willow quantum chip can produce critical quantum resources called “magic states” at 99.99% fidelity while reducing their production cost by ~40x. Interesting seeing Google make quantum computing more reliable without simply adding more hardware, potentially bringing useful quantum computers closer.",
+      "zh_summary": "$GOOGL 表示其 Willow 量子芯片能以99.99%保真度產生稱為「魔幻態」的關鍵量子資源，同時將生產成本降低約40倍。有趣的是Google在不單純增加硬件的情況下使量子計算更可靠，可能使實用量子計算機更近。",
+      "ko_summary": "$GOOGL이 Willow 양자 칩이 99.99% 충실도로 ‘매직 스테이트’라는 핵심 양자 자원을 생산할 수 있으며 생산 비용을 ~40배 줄인다고 말했다. Google이 단순히 하드웨어를 추가하지 않고 양자 컴퓨팅을 더 신뢰할 수 있게 만드는 것이 흥미로우며 유용한 양자 컴퓨터를 더 가깝게 할 수 있다.",
+      "tickers": ["GOOGL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"GOOGL": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"GOOGL": "Willow quantum chip produces magic states at 99.99% fidelity, ~40x cost reduction"}
+    },
+    "2110794575904420044": {
+      "en_summary": "Sold another piece of $NKE as it runs into the declining 50sma. Will look to add back at some unknown point in the future. Said it was an investment and will hold final piece as such but is a trader.",
+      "zh_summary": "賣出另一部分 $NKE，因其觸及下降的50日均線。將在未來某個未知時點尋機加回。說這是投資並將持有最後一部分，但自己是交易者。",
+      "ko_summary": "하락하는 50sma에 닿자 $NKE의 또 다른 부분을 매도. 미래의 어떤 알려지지 않은 시점에 다시 추가할 예정. 투자라고 말했고 마지막 부분을 그렇게 보유하겠지만 트레이더다.",
+      "tickers": ["NKE"],
+      "stance": "中性",
+      "stance_by_ticker": {"NKE": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NKE": "Sold another piece into declining 50sma, holding final piece as investment"}
+    },
+    "2110794313575649404": {
+      "en_summary": "$SPRC right on time @IUTraders",
+      "zh_summary": "$SPRC 準時 @IUTraders",
+      "ko_summary": "$SPRC 제시간에 @IUTraders",
+      "tickers": ["SPRC"],
+      "stance": null,
+      "stance_by_ticker": {"SPRC": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
