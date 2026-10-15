@@ -1,0 +1,79 @@
+{
+  "posts": {
+    "2110514488935895380": {
+      "en_summary": "BREAKING: Trading volume in the S&P 500 ETF $SPY fell to just 22.6 million shares on Friday, the lowest for a full trading day since November 25th, 2005. Excluding holiday sessions, lowest since October 11th, 2004. Compared to below 20 million on Dec 24 2019 half-day.",
+      "zh_summary": "突發：標普 500 ETF $SPY 週五成交量僅 2260 萬股，為 2005 年 11 月 25 日以來全交易日最低。排除假期時段，為 2004 年 10 月 11 日以來最低。相比 2019 年 12 月 24 日半日交易低於 2000 萬股。",
+      "ko_summary": "속보: S&P 500 ETF $SPY의 금요일 거래량이 2260만 주에 불과했으며, 2005년 11월 25일 이후 전일 거래일 중 최저이다. 휴일 세션 제외 시 2004년 10월 11일 이후 최저. 2019년 12월 24일 반일 거래 시 2000만 주 미만과 비교.",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2110512983696932895": {
+      "en_summary": "@MapleStax $LULU and $BBW",
+      "zh_summary": "@MapleStax $LULU 和 $BBW",
+      "ko_summary": "@MapleStax $LULU와 $BBW",
+      "tickers": ["LULU", "BBW"],
+      "stance": "中性",
+      "stance_by_ticker": {"LULU": "中性", "BBW": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2110483435164750192": {
+      "en_summary": "$RKLB this wouldn't be ideal for longs. Hoping this does not happen how the textbook says it should.",
+      "zh_summary": "$RKLB 這對多頭並不理想。希望不會按照教科書所說的方式發生。",
+      "ko_summary": "$RKLB 이는 롱 포지션에 이상적이지 않다. 교과서대로 일어나지 않기를 바란다.",
+      "tickers": ["RKLB"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"RKLB": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"RKLB": "對多頭不利的技術形態"}
+    },
+    "2110483230453371286": {
+      "en_summary": "Despite a 2% drop today, the Nasdaq 100 $QQQ managed to just barely hang onto its 50-DMA.",
+      "zh_summary": "儘管今日下跌 2%，納斯達克 100 $QQQ 仍勉強守住 50 日移動平均線。",
+      "ko_summary": "오늘 2% 하락했음에도 나스닥 100 $QQQ는 간신히 50일 이동평균선을 유지했다.",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"QQQ": "勉強守住50日均線"}
+    },
+    "2110483121728578014": {
+      "en_summary": "$IREN starting to break down further.",
+      "zh_summary": "$IREN 開始進一步下跌。",
+      "ko_summary": "$IREN이 추가로 하락하기 시작했다.",
+      "tickers": ["IREN"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"IREN": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
