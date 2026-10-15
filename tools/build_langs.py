@@ -118,7 +118,7 @@ def head_tags(cur):
           'if(d&&n&&!d.querySelector(".lang-sw"))d.insertBefore(n.cloneNode(true),d.firstChild)})'
           '.observe(document.documentElement,{childList:true,subtree:true})')
     if cur is None:  # root: pick a version from the saved choice or the browser language (live site only)
-        js += (';if(!/github\\.io$/.test(location.hostname))return;var l;try{l=localStorage.getItem(k)}catch(_){}'
+        js += (';if(!/(github\\.io|thecrowdtape\\.com)$/.test(location.hostname))return;var l;try{l=localStorage.getItem(k)}catch(_){}'
                'if(!l){var n=(navigator.languages||[navigator.language||""]).join(",").toLowerCase();'
                'l=/^ko|,ko/.test(n)?"ko":/^zh|,zh/.test(n)?"zh":/^en|,en/.test(n)?"en":"zh"}'
                'location.replace("/"+l+"/"+location.hash)')
