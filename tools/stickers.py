@@ -6,7 +6,7 @@ import base64, io, json, os, sys, time, urllib.error, urllib.request
 from PIL import Image
 
 KEY = os.environ.get('GEMINI_API_KEY', '')
-MODELS = [m for m in (os.environ.get('GEMINI_IMAGE_MODEL') or 'gemini-2.5-flash-image,gemini-2.0-flash-preview-image-generation').split(',') if m]
+MODELS = [m for m in (os.environ.get('GEMINI_IMAGE_MODEL') or 'gemini-3.1-flash-lite-image,gemini-3.1-flash-image,gemini-2.5-flash-image,gemini-2.0-flash-preview-image-generation,gemini-2.0-flash-exp-image-generation').split(',') if m]
 PROMPT = ('Same character as the reference sheet, same face, hair colours, outfit and art style '
           '(clean anime illustration, soft shading). Bust-up portrait, facing the viewer, plain white background, '
           'no text, no logo. Expression and pose: {e}. Square 1:1 image.')
@@ -36,20 +36,27 @@ def main():
             if not os.path.exists(f"assets/characters/{c['id']}/{e['id']}.png")]
     print(len(todo), 'stickers missing')
     sheets = {c['id']: base64.b64encode(open(c['sheet'], 'rb').read()).decode() for c in d['characters']}
+    try:  # show which image models this key can see
+        req = urllib.request.Request('https://generativelanguage.googleapis.com/v1beta/models?pageSize=1000', headers={'x-goog-api-key': KEY})
+        names = [m['name'] for m in json.load(urllib.request.urlopen(req, timeout=60)).get('models', [])]
+        print('image models:', [n for n in names if 'image' in n])
+    except Exception as err:
+        print('could not list models', err)
     model, done = MODELS[0], 0
     for cid, e in todo[:LIMIT]:
         text = PROMPT.format(e=e['cast'][cid]['imagine_en'])
-        for attempt in range(4):
+        for attempt in range(4 + len(MODELS)):
             try:
                 img = call(model, sheets[cid], text)
                 break
             except urllib.error.HTTPError as err:
-                msg = err.read().decode()[:400]
-                print('HTTP', err.code, model, msg)
-                if err.code == 404 and len(MODELS) > 1 and model != MODELS[-1]:
+                msg = err.read().decode()[:2000]
+                print('HTTP', err.code, model, msg[:400])
+                no_free = err.code == 429 and 'limit: 0' in msg
+                if (err.code in (400, 404) or no_free) and model != MODELS[-1]:
                     model = MODELS[MODELS.index(model) + 1]
                     continue
-                if err.code == 429 and 'PerDay' not in msg and attempt < 3:
+                if err.code == 429 and 'PerDay' not in msg and attempt < 3 + len(MODELS):
                     time.sleep(60)
                     continue
                 print('stop:', done, 'drawn this run')
