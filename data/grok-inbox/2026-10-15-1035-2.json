@@ -1,0 +1,79 @@
+{
+  "posts": {
+    "2110521032671125642": {
+      "en_summary": "$AXON is back below the 200-week SMA for just the third time in its history.",
+      "zh_summary": "$AXON 重回 200 週均線下方，歷史上僅第三次。",
+      "ko_summary": "$AXON이 200주 이동평균선 아래로 다시 내려갔으며, 역사상 세 번째에 불과하다.",
+      "tickers": ["AXON"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"AXON": "睇淡"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AXON": "200週均線下方，歷史罕見"}
+    },
+    "2110520108720484470": {
+      "en_summary": "Oof. Quoted: Small Cap Stocks $IWM close below the 200-day moving average for the first time since March and are trading below the 200D MA by the largest margin in 16 months.",
+      "zh_summary": "喔。引用：小型股 $IWM 自 3 月以來首次收於 200 日移動平均線下方，且低於 200 日均線的幅度為 16 個月來最大。",
+      "ko_summary": "오. 인용: 소형주 $IWM이 3월 이후 처음으로 200일 이동평균선 아래로 마감했으며, 200일 이동평균선 대비 최대 폭으로 16개월 만에 가장 크게 하락 중이다.",
+      "tickers": ["IWM"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"IWM": "睇淡"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"IWM": "首次跌破200日均線，幅度最大"}
+    },
+    "2110518320370012620": {
+      "en_summary": "$BSP news catalyst.",
+      "zh_summary": "$BSP 有新聞催化劑。",
+      "ko_summary": "$BSP 뉴스 촉매.",
+      "tickers": ["BSP"],
+      "stance": "中性",
+      "stance_by_ticker": {"BSP": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2110515315427647949": {
+      "en_summary": "$RSP (equal weight SPX) only down 20 bps today vs -1.5 for $QQQ.",
+      "zh_summary": "$RSP（等權重 SPX）今日僅下跌 20 個基點，而 $QQQ 下跌 1.5%。",
+      "ko_summary": "$RSP(동일 가중 SPX)는 오늘 20bp만 하락한 반면 $QQQ는 1.5% 하락했다.",
+      "tickers": ["RSP", "QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"RSP": "中性", "QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2110515129951621401": {
+      "en_summary": "Two months ago the top 10 S&P500 performers were dominated by chips/memory sector; now led by $MRNA with $VLO rising, as quoted previous top was $SNDK.",
+      "zh_summary": "兩個月前標普 500 前 10 名表現由晶片／記憶體板塊主導，現今由 $MRNA 領跑，$VLO 也在上升，引用先前頂尖為 $SNDK。",
+      "ko_summary": "두 달 전 S&P500 상위 10개 종목은 칩/메모리 섹터가 지배했으나 지금은 $MRNA가 이끌고 $VLO가 상승 중이며, 인용된 이전 최고는 $SNDK였다.",
+      "tickers": ["MRNA", "VLO", "SNDK"],
+      "stance": "中性",
+      "stance_by_ticker": {"MRNA": "睇好", "VLO": "睇好", "SNDK": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    }
+  }
+}
