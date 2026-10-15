@@ -8,7 +8,7 @@ import json
 import os
 import re
 
-SITE = 'https://xmktradar.github.io/'
+SITE = 'https://thecrowdtape.com/'
 LANGS = {'zh': 'zh-Hant', 'en': 'en', 'ko': 'ko'}
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HAN = re.compile(r'[\u4e00-\u9fff]')

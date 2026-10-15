@@ -14,7 +14,7 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 
-const SITE = 'https://xmktradar.github.io/';
+const SITE = 'https://thecrowdtape.com/';
 const LANGS = { zh: 'zh-Hant', en: 'en', ko: 'ko' };
 const MIN_ACCOUNTS = 2;
 const AV_DIR = 'av';
@@ -177,7 +177,7 @@ function avatars(html, seen) {
 
   // sitemap: drop old stock rows, add the current ones
   let sm = fs.readFileSync('sitemap.xml', 'utf8').replace(/\s*<url><loc>[^<]*\/stock\/[^<]*<\/loc>[\s\S]*?<\/url>/g, '');
-  const gen = (sm.match(/<loc>https:\/\/xmktradar\.github\.io\/<\/loc><lastmod>([^<]+)/) || [])[1] || '';
+  const gen = (sm.match(/<loc>https:\/\/thecrowdtape\.com\/<\/loc><lastmod>([^<]+)/) || [])[1] || '';
   const rows = list.map(([t]) => {
     const alt = Object.entries(LANGS).map(([k, h]) => `<xhtml:link rel="alternate" hreflang="${h}" href="${SITE}${k}/stock/${slug(t)}/"/>`).join('');
     return Object.keys(LANGS).map(k => `  <url><loc>${SITE}${k}/stock/${slug(t)}/</loc><lastmod>${gen}</lastmod><changefreq>daily</changefreq>${alt}</url>`).join('\n');

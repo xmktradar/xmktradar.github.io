@@ -18,24 +18,24 @@ from datetime import date, timedelta
 
 from sitedata import load, notice, now_hk, read_json, work, write_json
 
-SITE = 'https://xmktradar.github.io/'
+SITE = 'https://thecrowdtape.com/'
 LANGS = ('zh', 'en', 'ko')
 SOCIAL_HOUR = 7
 NOT_STOCKS = {'SPY', 'QQQ', 'IWM', 'DIA', 'VOO', 'VTI', 'GLD', 'SLV', 'TLT', 'BTC', 'ETH', 'SOL', 'DXY', 'VIX', 'TQQQ', 'SQQQ'}
 
 TXT = {
-    'zh': dict(series='📘 The Crowd Tape 教學', how='👉 點用：', bio='網站免費，連結喺 bio 👉 xmktradar.github.io',
+    'zh': dict(series='📘 The Crowd Tape 教學', how='👉 點用：', bio='網站免費，連結喺 bio 👉 thecrowdtape.com',
                give='☕ 鍾意就支持我哋：bio 連結，網站底部 PayPal 🙏', follow='Follow @thecrowdtape，逢星期六日教你用一個功能。',
                live='試吓 👉 ', give_s='☕ 鍾意就支持我哋 👉 ', disc='⚠️ 唔構成投資建議',
                disc_long='⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。投資有風險，請自行判斷。',
                tags='#美股 #港人投資 #美股投資 #投資 #USStocks #StockMarket #香港投資 #投資教學 #美股新手'),
-    'en': dict(series='📘 The Crowd Tape guide', how='👉 How: ', bio='The site is free. Link in bio 👉 xmktradar.github.io',
+    'en': dict(series='📘 The Crowd Tape guide', how='👉 How: ', bio='The site is free. Link in bio 👉 thecrowdtape.com',
                give='☕ Enjoy it? Buy us a coffee: link in bio, PayPal at the bottom of the site 🙏',
                follow='Follow @thecrowdtape: one feature every Saturday and Sunday.',
                live='Try it 👉 ', give_s='☕ Support the site 👉 ', disc='⚠️ Not investment advice',
                disc_long='⚠️ A summary of public social media posts, not investment advice. Investing involves risk; do your own research.',
                tags='#StockMarket #USStocks #Stocks #Investing #FinTwit #WallStreet #InvestingTips #StocksForBeginners'),
-    'ko': dict(series='📘 The Crowd Tape 사용법', how='👉 사용법: ', bio='사이트는 무료, 프로필 링크 👉 xmktradar.github.io',
+    'ko': dict(series='📘 The Crowd Tape 사용법', how='👉 사용법: ', bio='사이트는 무료, 프로필 링크 👉 thecrowdtape.com',
                give='☕ 도움이 되셨다면 커피 한 잔 후원해 주세요: 프로필 링크, 사이트 하단 PayPal 🙏',
                follow='@thecrowdtape 팔로우하고 매주 토·일 기능 하나씩 알아보세요.',
                live='직접 보기 👉 ', give_s='☕ 후원하기 👉 ', disc='⚠️ 투자 조언 아님',

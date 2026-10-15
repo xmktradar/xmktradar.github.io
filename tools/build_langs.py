@@ -25,7 +25,7 @@ from datetime import date, timedelta
 
 from sitedata import BLOCK, notice, read_json
 
-SITE = 'https://xmktradar.github.io/'
+SITE = 'https://thecrowdtape.com/'
 LANGS = {'zh': ('zh-Hant', '中'), 'en': ('en', 'EN'), 'ko': ('ko', '한')}
 CONTENT = ('summaries', 'highlights', 'briefings')
 MARK = '<!-- lang-head -->'
@@ -118,7 +118,7 @@ def head_tags(cur):
           'if(d&&n&&!d.querySelector(".lang-sw"))d.insertBefore(n.cloneNode(true),d.firstChild)})'
           '.observe(document.documentElement,{childList:true,subtree:true})')
     if cur is None:  # root: pick a version from the saved choice or the browser language (live site only)
-        js += (';if(!/github\\.io$/.test(location.hostname))return;var l;try{l=localStorage.getItem(k)}catch(_){}'
+        js += (';if(!/(github\\.io|thecrowdtape\\.com)$/.test(location.hostname))return;var l;try{l=localStorage.getItem(k)}catch(_){}'
                'if(!l){var n=(navigator.languages||[navigator.language||""]).join(",").toLowerCase();'
                'l=/^ko|,ko/.test(n)?"ko":/^zh|,zh/.test(n)?"zh":/^en|,en/.test(n)?"en":"zh"}'
                'location.replace("/"+l+"/"+location.hash)')
@@ -272,7 +272,7 @@ def build(lang, master):
     if alt:  # the Chinese alt text changes every day; other versions use a fixed description
         s = re.sub(r'(<meta (?:property="og|name="twitter):image:alt" content=")[^"]*', lambda m: m.group(1) + alt, s)
     if lang != 'zh':  # each language has its own share picture (tools/og.js)
-        s = re.sub(r'(https://xmktradar\.github\.io/og/[\d-]+)(\.png)', lambda m: m.group(1) + f'-{lang}' + m.group(2)
+        s = re.sub(r'(https://thecrowdtape\.com/og/[\d-]+)(\.png)', lambda m: m.group(1) + f'-{lang}' + m.group(2)
                    if os.path.exists(m.group(1).split('.io/')[1] + f'-{lang}.png') else m.group(0), s)
     s = re.sub(r'''(["'(])assets/''', r'\1/assets/', s)
     s = add_chrome(s, lang)
@@ -287,7 +287,7 @@ def build(lang, master):
 
 def sitemap(gen):
     sm = open('sitemap.xml', encoding='utf-8').read()
-    sm = re.sub(r'\s*<url><loc>https://xmktradar\.github\.io/(zh|en|ko)/</loc>.*?</url>', '', sm, flags=re.S)
+    sm = re.sub(r'\s*<url><loc>https://thecrowdtape\.com/(zh|en|ko)/</loc>.*?</url>', '', sm, flags=re.S)
     if 'xmlns:xhtml' not in sm:
         sm = sm.replace('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
                         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">')
@@ -319,7 +319,7 @@ def main():
     open('index.html', 'w', encoding='utf-8').write(master)
     n_px = write_px(json.loads(BLOCK.search(master).group(2).replace('<\\/', '</')))
     left = {k: build(k, master) for k in LANGS}
-    gen = re.search(r'<loc>https://xmktradar\.github\.io/</loc><lastmod>([^<]+)', open('sitemap.xml', encoding='utf-8').read())
+    gen = re.search(r'<loc>https://thecrowdtape\.com/</loc><lastmod>([^<]+)', open('sitemap.xml', encoding='utf-8').read())
     sitemap(gen.group(1) if gen else '')
     notice(f'語言版本：/zh/ /en/ /ko/ 已生成，股價檔 {n_px} 個' + ''.join(f'；{k} 版介面仍有 {n} 段中文未翻譯' for k, n in left.items() if n))
 
