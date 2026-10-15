@@ -13,6 +13,7 @@ const { chromium } = require('playwright');
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
+const { start, pageUrl } = require('./local_server');
 
 const SITE = 'https://thecrowdtape.com/';
 const LANGS = { zh: 'zh-Hant', en: 'en', ko: 'ko' };
@@ -107,6 +108,8 @@ function avatars(html, seen) {
 }
 
 (async () => {
+  const root = path.resolve(__dirname, '..');
+  const srv = await start(root);
   const b = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
   fs.mkdirSync(AV_DIR, { recursive: true });
   const seen = new Set();
@@ -117,9 +120,18 @@ function avatars(html, seen) {
     const p = await b.newPage();
     const errs = [];
     p.on('pageerror', e => errs.push(e.message));
-    await p.route(/^https?:/, r => r.abort());
-    await p.goto('file://' + file + '#daily');
+    await p.route('**/*', route => {
+      const u = route.request().url();
+      if (u.startsWith(srv.origin) || u.startsWith('file:')) route.continue();
+      else route.abort();
+    });
+    await p.goto(pageUrl(srv.origin, root, file) + '#daily', { waitUntil: 'domcontentloaded' });
     await p.waitForFunction(() => typeof openDive === 'function' && typeof POSTS !== 'undefined');
+    await p.evaluate(async () => {
+      if (window.__loadCore) await window.__loadCore();
+      if (window.__loadAllPosts) await window.__loadAllPosts();
+      if (window.__postsFailed) throw new Error('older posts failed to load');
+    });
     if (!list) {
       list = await p.evaluate((min) => {
         const lim = addDays(TODAY, -27), m = {};
@@ -200,6 +212,7 @@ function avatars(html, seen) {
     }
   }
   await b.close();
+  srv.server.close();
   console.log(`股票網頁：${list.length} 隻 × ${Object.keys(LANGS).length} 個語言，頭像 ${seen.size} 個`);
   if (bad.length) { console.log('::error::股票網頁檢查唔合格：' + bad.join('、')); process.exit(1); }
 })();

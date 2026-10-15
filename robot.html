@@ -500,4 +500,8 @@ function mount(el){if(el.dataset.on)return;el.dataset.on='1';
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.unobserve(e.target);mount(e.target)}})},{rootMargin:'200px'});els.forEach(function(e){io.observe(e)})}
 else els.forEach(mount)})();
 </script>
+<script>
+document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com'))gtag('event','social_click',{platform:'x',link_url:u,transport_type:'beacon'});else if(h==='instagram.com'||h.endsWith('.instagram.com'))gtag('event','social_click',{platform:'instagram',link_url:u,transport_type:'beacon'});else if(h==='threads.net'||h.endsWith('.threads.net')||h==='threads.com'||h.endsWith('.threads.com'))gtag('event','social_click',{platform:'threads',link_url:u,transport_type:'beacon'});else if(h==='paypal.com'||h.endsWith('.paypal.com')||h==='paypal.me'||h.endsWith('.paypal.me'))gtag('event','donate_click',{link_url:u,transport_type:'beacon'})});
+if(typeof gtag==='function')gtag('event','robot_page_view',{transport_type:'beacon'});
+</script>
 </body></html>

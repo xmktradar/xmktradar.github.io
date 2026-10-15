@@ -28,6 +28,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main  # latest main, not the commit that triggered the run, so publishing never conflicts
+      - name: Restore full page data
+        run: python3 tools/slim_pages.py --restore
       - name: Install headless browser
         run: |
           npm install --no-save --no-audit --no-fund playwright@1.56.1
@@ -97,6 +99,8 @@ jobs:
               for f in data/macro-week.json social/macro.html; do git checkout -- "$f" 2>/dev/null || rm -f "$f"; done
               echo "::error::星期六宏觀貼文圖畫唔到，下次更新再試"; exit 1; }
           fi
+      - name: Slim homepages
+        run: python3 tools/slim_pages.py --slim
       - name: Check the pages
         run: |
           for f in index.html zh/index.html en/index.html ko/index.html; do
