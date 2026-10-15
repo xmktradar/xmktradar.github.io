@@ -403,6 +403,9 @@ END = {'zh': ['👉 左右滑睇晒 4 張圖', '網站約每 4 個鐘更新，�
        'ko': ['👉 옆으로 넘겨 4장 모두 보기', '약 4시간마다 업데이트, 최신 수치 👉 프로필 링크 (thecrowdtape.com)', '☕ 도움이 되셨다면 커피 한 잔 후원해 주세요: 프로필 링크, 사이트 하단 PayPal 🙏', '@thecrowdtape 팔로우하고 매일 시장 분위기를 확인하세요.']}
 
 
+FB_TAP = {'zh': '👉 撳圖睇晒 4 張', 'en': '👉 Tap a picture to see all 4', 'ko': '👉 사진을 눌러 4장 모두 보기'}  # Facebook has no swiping
+
+
 def versions(lang, head, body, tks):
     """Instagram, Facebook, Threads and X versions from a headline and body blocks (most important first)."""
     tg = tags(lang, tks)
@@ -410,7 +413,7 @@ def versions(lang, head, body, tks):
     short = SHORT[lang]
     give = f"{short['give']}{url}#donate"
     ig = '\n\n'.join([head, *body, '\n'.join(END[lang]), short['disc_long'], tg])
-    fb = '\n\n'.join([head, *body, f"{END[lang][0]}\n{short['live']}{url}\n{give}", short['disc_long'], tg])
+    fb = '\n\n'.join([head, *body, f"{FB_TAP[lang]}\n{short['live']}{url}\n{give}", short['disc_long'], tg])
 
     def fit(blocks, limit, size, tail):
         blocks = [b for b in blocks if b]
@@ -495,7 +498,10 @@ def slot_page(sp):
             p = sl['posts'][lang]
             imgs = ''.join(f'<a href="{html.escape(u)}" download><img src="{html.escape(u)}" alt="{n + 1}"></a>' for n, u in enumerate(sl['images'][lang]))
             langs.append(f'<details{" open" if lang == "zh" else ""}><summary>{names[lang]}・{times[i]} 發</summary><div class="grid">{imgs}</div>'
-                         f"{box('X', p['x'], 7)}{box('Threads', p['threads'], 10)}{box('Instagram', p['instagram'], 16)}{box('Facebook', p['facebook'], 16)}"
+                         f"{box('X', p['x'], 7)}{box('Threads', p['threads'], 10)}{box('Instagram', p['instagram'], 16)}"
+                         + (f'<h4>Facebook 用正方形圖</h4><div class="grid">' + ''.join(f'<a href="{html.escape(u)}" download><img src="{html.escape(u)}" alt="FB {n + 1}"></a>'
+                                                                              for n, u in enumerate(sl['images_fb'][lang])) + '</div>' if sl.get('images_fb') else '')
+                         + f"{box('Facebook', p['facebook'], 16)}"
                          + (box('IG Story hashtag', p.get('story', ''), 2) if sl.get('story') else '') + '</details>')
         out.append(f'<section class="slot"><h2>{times[0]} {TITLE[key]["zh"]}</h2><p>製作時間 {sl["made_hkt"]} HKT・'
                    f'{"有 IG Story（圖喺下面每個語言嘅舊格式部分）" if sl.get("story") else "冇 IG Story"}</p>{"".join(langs)}</section>')
@@ -551,8 +557,8 @@ def main():
                 slides = snap(site, s, lang, day, win)
                 posts = dict(sp['posts'][lang])
                 posts.pop('reddit', None)
-                for k in ('instagram', 'facebook'):  # same text as the single-picture post, plus "swipe" under the headline
-                    posts[k] = posts[k].replace('\n\n', f'\n\n{END[lang][0]}\n\n', 1)
+                for k, see in (('instagram', END[lang][0]), ('facebook', FB_TAP[lang])):  # single-picture text, plus "swipe"/"tap" under the headline
+                    posts[k] = posts[k].replace('\n\n', f'\n\n{see}\n\n', 1)
             elif key == '1630':
                 slides = duel(site, s, lang, day, win, pick)
                 posts = cap_duel(site, s, lang, day, pick)
@@ -566,8 +572,9 @@ def main():
                 slides = story(cast, slides, lang, eid)
                 posts = add_dialogue(dict(posts), dialogue(cast, lang, eid))
             files = [f'og/c/{day}-{key}-{lang}-{n + 1}.jpg' for n in range(4)]
-            jobs.append({'slot': key, 'theme': THEME[key], 'lang': lang, 'date': day, 'slides': slides, 'files': files})
-            made[lang] = {'images': [f'{SITE}{f}' for f in files], 'posts': posts}
+            fb = [f'og/c/{day}-{key}-{lang}-{n + 1}-fb.jpg' for n in range(4)]
+            jobs.append({'slot': key, 'theme': THEME[key], 'lang': lang, 'date': day, 'slides': slides, 'files': files, 'fb': fb})
+            made[lang] = {'images': [f'{SITE}{f}' for f in files], 'images_fb': [f'{SITE}{f}' for f in fb], 'posts': posts}
         if len(made) != len(LANGS):
             notice(f'{key} 時段冇足夠數據，今次唔寫', 'warning')
             continue
@@ -577,7 +584,7 @@ def main():
         slots[key] = {'day': day, 'theme': THEME[key], 'ticker': lead, 'title': TITLE[key], 'made_hkt': now.strftime('%Y-%m-%d %H:%M'),
                       'post_at': times, 'story': key == '1230',
                       'platforms': ['x', 'threads', 'instagram', 'instagram_story', 'facebook'] if key == '1230' else ['x', 'threads', 'instagram', 'facebook'],
-                      'images': {l: made[l]['images'] for l in LANGS}, 'posts': {l: made[l]['posts'] for l in LANGS}}
+                      'images': {l: made[l]['images'] for l in LANGS}, 'images_fb': {l: made[l]['images_fb'] for l in LANGS}, 'posts': {l: made[l]['posts'] for l in LANGS}}
         if key == '1230':
             slots[key]['stories'] = sp.get('stories', {})
     if not jobs:
