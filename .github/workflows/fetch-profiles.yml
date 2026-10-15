@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: python3 tools/fetch_profiles.py
         env:
-          ONLY: ReformedBroker,ritholtz,hmeisler,allstarcharts,NorthmanTrader,TaviCosta,RiskReversal,DougKass,WarrenPies,ukarlewitz,BrianSozzi,unusual_whales,GameofTrades_
+          ONLY: JC_ParetsX,hmeisler,SethCL,Ksidiii,BobPisani,TheMarketEar,LizYoungStrat,Callum_Thomas,ScottRedler,saxena_puru
       - run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
