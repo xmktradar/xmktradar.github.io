@@ -1,1 +1,19 @@
-$(cat /tmp/batch1.json)
+{
+  "posts": {
+    "2110647120403534177": {
+      "en_summary": "$TSM is exploring a Texas expansion and is in discussions with Elon Musk about Terafab as $SPCX and $TSLA scale their ambitions across AI, robotics and chipmaking. Musk could own the facility while TSMC operates the fab inside it, potentially lowering expansion costs while bringing advanced chip production closer to both companies.",
+      "zh_summary": "$TSM 正在探索德克薩斯州擴張，並與 Elon Musk 討論 Terafab 事宜，因 $SPCX 與 $TSLA 擴大其在人工智能、機器人和芯片製造方面的野心。Musk 可能擁有該設施，而台積電負責運營內部晶圓廠，這可能降低擴張成本，並將先進芯片生產拉近兩家公司。",
+      "ko_summary": "$TSM은 텍사스 확장 가능성을 검토 중이며, $SPCX와 $TSLA가 AI, 로봇, 칩 제조 야망을 확대함에 따라 Elon Musk와 Terafab에 대해 논의하고 있다. Musk가 시설을 소유하고 TSMC가 내부 팹을 운영하면 확장 비용을 낮추고 양사에 고급 칩 생산을 더 가깝게 가져올 수 있다.",
+      "tickers": ["TSM", "SPCX", "TSLA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TSM": "睇好", "SPCX": "睇好", "TSLA": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
