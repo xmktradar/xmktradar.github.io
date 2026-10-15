@@ -18,7 +18,7 @@ from datetime import date, timedelta
 
 from sitedata import load, notice, now_hk, read_json, work, write_json
 
-SITE = 'https://xmktradar.github.io/'
+SITE = 'https://thecrowdtape.com/'
 LANGS = ('zh', 'en', 'ko')
 FREEZE_HOUR = 15
 MIN_STANCED = 3  # a theme needs this many accounts with a stance to be one of the week's top 3
@@ -37,7 +37,7 @@ TXT = {
     'zh': dict(head='🌐 本週宏觀｜{N} 個帳號點睇大環境', short='🌐 本週宏觀', bull='利好', bear='利淡', neu='中性',
                up='比上週轉好 ▲', dn='比上週轉差 ▼', flat='同上週差唔多', none='上週未有數據',
                intro='我哋追蹤嘅 {N} 個 X 帳號，呢個星期最多人講嘅宏觀題目：', quiet='本週宏觀觀點唔多，去網站睇各帳號最新講法。',
-               more='9 個主題全部喺呢度 👉 ', bio='網站免費，連結喺 bio 👉 xmktradar.github.io',
+               more='9 個主題全部喺呢度 👉 ', bio='網站免費，連結喺 bio 👉 thecrowdtape.com',
                give='☕ 鍾意就支持我哋：bio 連結，網站底部 PayPal 🙏', give_s='☕ 鍾意就支持我哋 👉 ',
                follow='Follow @thecrowdtape，逢星期六出一週宏觀總結。', disc='⚠️ 唔構成投資建議',
                disc_long='⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。投資有風險，請自行判斷。',
@@ -47,7 +47,7 @@ TXT = {
                flat='about the same as last week', none='no data for last week yet',
                intro='The macro topics the {N} X accounts we track talked about most this week:',
                quiet='Not many macro views this week. See each account\'s latest take on the site.',
-               more='All 9 topics 👉 ', bio='The site is free. Link in bio 👉 xmktradar.github.io',
+               more='All 9 topics 👉 ', bio='The site is free. Link in bio 👉 thecrowdtape.com',
                give='☕ Enjoy it? Buy us a coffee: link in bio, PayPal at the bottom of the site 🙏', give_s='☕ Support the site 👉 ',
                follow='Follow @thecrowdtape for a macro roundup every Saturday.', disc='⚠️ Not investment advice',
                disc_long='⚠️ A summary of public social media posts, not investment advice. Investing involves risk; do your own research.',
@@ -56,7 +56,7 @@ TXT = {
                up='지난주보다 개선 ▲', dn='지난주보다 악화 ▼', flat='지난주와 비슷', none='지난주 데이터 없음',
                intro='저희가 추적하는 X 계정 {N}개가 이번 주 가장 많이 다룬 매크로 주제:',
                quiet='이번 주는 매크로 의견이 많지 않았습니다. 사이트에서 계정별 최신 의견을 확인하세요.',
-               more='9개 주제 전체 보기 👉 ', bio='사이트는 무료, 프로필 링크 👉 xmktradar.github.io',
+               more='9개 주제 전체 보기 👉 ', bio='사이트는 무료, 프로필 링크 👉 thecrowdtape.com',
                give='☕ 도움이 되셨다면 커피 한 잔 후원해 주세요: 프로필 링크, 사이트 하단 PayPal 🙏', give_s='☕ 후원하기 👉 ',
                follow='@thecrowdtape 팔로우하고 매주 토요일 매크로 정리를 받아보세요.', disc='⚠️ 투자 조언 아님',
                disc_long='⚠️ 공개 SNS 게시물을 정리한 것으로 투자 조언이 아닙니다. 투자에는 위험이 따르니 스스로 판단하세요.',

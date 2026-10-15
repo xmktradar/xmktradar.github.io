@@ -14,7 +14,7 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 
-const SITE = 'https://xmktradar.github.io/';
+const SITE = 'https://thecrowdtape.com/';
 const LANGS = { zh: 'zh-Hant', en: 'en', ko: 'ko' };
 const MIN_ACCOUNTS = 2;
 const AV_DIR = 'av';

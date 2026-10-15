@@ -15,7 +15,7 @@ from sitedata import load, notice, parse_iso, read_json, work, write_json
 API = 'https://api.fxtwitter.com/2/profile/{}/statuses'
 STATUS = 'https://api.fxtwitter.com/2/status/{}'
 BACKFILL = 800  # older site posts per run that get their original text (English page)
-UA = 'TheCrowdTape/1.0 (+https://xmktradar.github.io/)'
+UA = 'TheCrowdTape/1.0 (+https://thecrowdtape.com/)'
 PENDING = 'data/pending-posts.json'
 
 
