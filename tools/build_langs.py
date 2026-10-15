@@ -26,6 +26,8 @@ from datetime import date, timedelta
 from sitedata import BLOCK, notice, read_json
 
 SITE = 'https://thecrowdtape.com/'
+# og image links: current SITE, or the old GitHub Pages host on pages not yet rebuilt
+OG_HOST = '(?:' + re.escape(SITE) + '|https://xmktradar\\.github\\.io/)'
 LANGS = {'zh': ('zh-Hant', '中'), 'en': ('en', 'EN'), 'ko': ('ko', '한')}
 CONTENT = ('summaries', 'highlights', 'briefings')
 MARK = '<!-- lang-head -->'
@@ -272,8 +274,8 @@ def build(lang, master):
     if alt:  # the Chinese alt text changes every day; other versions use a fixed description
         s = re.sub(r'(<meta (?:property="og|name="twitter):image:alt" content=")[^"]*', lambda m: m.group(1) + alt, s)
     if lang != 'zh':  # each language has its own share picture (tools/og.js)
-        s = re.sub(r'(https://xmktradar\.github\.io/og/[\d-]+)(\.png)', lambda m: m.group(1) + f'-{lang}' + m.group(2)
-                   if os.path.exists(m.group(1).split('.io/')[1] + f'-{lang}.png') else m.group(0), s)
+        s = re.sub(OG_HOST + r'(og/[\d-]+)(\.png)', lambda m: SITE + m.group(1) + f'-{lang}' + m.group(2)
+                   if os.path.exists(m.group(1) + f'-{lang}.png') else SITE + m.group(1) + m.group(2), s)
     s = re.sub(r'''(["'(])assets/''', r'\1/assets/', s)
     s = add_chrome(s, lang)
     os.makedirs(lang, exist_ok=True)
