@@ -12,7 +12,7 @@ content. The GitHub connector SuperGrok uses can't read or write large files.
 """
 import os
 
-from analyse_posts import INBOX, clean, inbox_files, inbox_posts
+from analyse_posts import INBOX, clean, inbox_files, inbox_posts, read_inbox
 from sitedata import load, now_hk, read_json, work, write_json
 
 GROUP_CAP = {'bull': 12, 'bear': 8, 'split': 8}  # tickers kept per side, strongest first
@@ -46,7 +46,7 @@ def prune_inbox():
         write_json(INBOX, {'updated_hkt': (raw or {}).get('updated_hkt') if isinstance(raw, dict) else None,
                            'posts': keep}, indent=1)
     for f in inbox_files():
-        posts = inbox_posts(read_json(f, None))
+        posts = inbox_posts(read_inbox(f))
         keep = {k: v for k, v in posts.items() if k in waiting and clean(v)}
         if not keep:
             os.remove(f)

@@ -7,7 +7,9 @@ copies well-formed rows into work/analysed.json. Posts without a summary stay in
 data/pending-posts.json. write_status.py removes inbox files once the site has used them.
 """
 import glob
+import json
 import os
+import re
 
 from sitedata import notice, read_json, work, write_json
 
@@ -78,6 +80,29 @@ def inbox_posts(raw):
     return posts if isinstance(posts, dict) else {}
 
 
+POST_KEY = re.compile(r'"(\d{6,})"\s*:\s*\{')
+
+
+def read_inbox(path):
+    """Read a batch file; when Grok breaks the JSON (e.g. an extra closing brace), pull out each post row anyway."""
+    try:
+        return json.load(open(path, encoding='utf-8'))
+    except FileNotFoundError:
+        return None
+    except json.JSONDecodeError:
+        text = open(path, encoding='utf-8').read()
+    dec, posts = json.JSONDecoder(), {}
+    for m in POST_KEY.finditer(text):
+        try:
+            row, _ = dec.raw_decode(text, m.end() - 1)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(row, dict) and 'en_summary' in row:
+            posts[m.group(1)] = row
+    notice(f'{os.path.basename(path)} is not valid JSON; recovered {len(posts)} posts')
+    return {'posts': posts}
+
+
 def inbox_files():
     return sorted(glob.glob(os.path.join(INBOX_DIR, '*.json')))
 
@@ -85,7 +110,7 @@ def inbox_files():
 def load_inbox():
     inbox = dict(inbox_posts(read_json(INBOX, {})))
     for f in inbox_files():
-        inbox.update(inbox_posts(read_json(f, {})))
+        inbox.update(inbox_posts(read_inbox(f)))
     return inbox
 
 
