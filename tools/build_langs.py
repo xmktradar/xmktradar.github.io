@@ -285,16 +285,35 @@ def build(lang, master):
     return len({t for _, _, t in fragments(code)} - code_values(code))
 
 
+def dedupe_sitemap(sm):
+    """One <url> per <loc>; the last copy wins."""
+    found = []
+    for m in re.finditer(r'\s*<url>.*?</url>', sm, flags=re.S):
+        loc = re.search(r'<loc>([^<]*)</loc>', m.group())
+        found.append((m, loc.group(1) if loc else None))
+    last = {}
+    for i, (_, loc) in enumerate(found):
+        if loc is not None:
+            last[loc] = i
+    out, pos = [], 0
+    for i, (m, loc) in enumerate(found):
+        if loc is not None and last[loc] != i:
+            out.append(sm[pos:m.start()])
+            pos = m.end()
+    out.append(sm[pos:])
+    return ''.join(out)
+
+
 def sitemap(gen):
     sm = open('sitemap.xml', encoding='utf-8').read()
-    sm = re.sub(r'\s*<url><loc>https://xmktradar\.github\.io/(zh|en|ko)/</loc>.*?</url>', '', sm, flags=re.S)
+    sm = re.sub(r'\s*<url><loc>' + re.escape(SITE) + r'(zh|en|ko)/</loc>.*?</url>', '', sm, flags=re.S)
     if 'xmlns:xhtml' not in sm:
         sm = sm.replace('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
                         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">')
     alt = ''.join(f'<xhtml:link rel="alternate" hreflang="{LANGS[k][0]}" href="{SITE}{k}/"/>' for k in LANGS)
     rows = ''.join(f'\n  <url><loc>{SITE}{k}/</loc><lastmod>{gen}</lastmod><changefreq>hourly</changefreq>{alt}</url>' for k in LANGS)
     sm = sm.replace('</urlset>', rows[1:] + '\n</urlset>')
-    open('sitemap.xml', 'w', encoding='utf-8').write(sm)
+    open('sitemap.xml', 'w', encoding='utf-8').write(dedupe_sitemap(sm))
 
 
 def extract():
@@ -319,7 +338,7 @@ def main():
     open('index.html', 'w', encoding='utf-8').write(master)
     n_px = write_px(json.loads(BLOCK.search(master).group(2).replace('<\\/', '</')))
     left = {k: build(k, master) for k in LANGS}
-    gen = re.search(r'<loc>https://xmktradar\.github\.io/</loc><lastmod>([^<]+)', open('sitemap.xml', encoding='utf-8').read())
+    gen = re.search(r'<loc>' + re.escape(SITE) + r'</loc><lastmod>([^<]+)', open('sitemap.xml', encoding='utf-8').read())
     sitemap(gen.group(1) if gen else '')
     notice(f'語言版本：/zh/ /en/ /ko/ 已生成，股價檔 {n_px} 個' + ''.join(f'；{k} 版介面仍有 {n} 段中文未翻譯' for k, n in left.items() if n))
 
