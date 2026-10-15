@@ -876,7 +876,7 @@ const stanced=s=>s!=='none';
 
 // ---------- 計算（對應設計稿 postsIn / latest / prevStance / change / dist / agreeLabel / dailyWindow） ----------
 // 範圍可以係日期（YYYY-MM-DD）或時間點（YYYY-MM-DDTHH:MM，HKT，包頭包尾）
-const rk=(v,end)=>Date.parse(v+':00+08:00')+(end?59999:0);
+const RK=new Map();const rk=(v,end)=>{let t=RK.get(v);if(t===undefined){t=Date.parse(v+':00+08:00');RK.set(v,t)}return t+(end?59999:0)};// 快取：每個帖文都會比較時間窗，Date.parse 太慢
 const inR=(d,ms,from,to)=>from.length>10?(ms>=rk(from)&&ms<=rk(to,true)):(d>=from&&d<=to);
 const tsOf=ms=>hkDate(ms)+'T'+hm(ms);
 const fmtR=v=>v.length>10?`${fmt(v)} ${v.slice(11,16)}`:fmt(v);
