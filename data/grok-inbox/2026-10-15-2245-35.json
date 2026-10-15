@@ -1,0 +1,111 @@
+{
+ "posts": {
+  "2110470166639473116": {
+   "en_summary": "@Mr_Derivatives: AAPL, MSFT and META are near all time highs and NVDA, AMZN, GOOGL and TSLA are holding up, about 40% of the S&P 500 weight, so the other ~493 stocks matter less.",
+   "zh_summary": "@Mr_Derivatives：AAPL、MSFT及META接近歷史高位，NVDA、AMZN、GOOGL及TSLA亦企穩，約佔標普500權重40%，其餘約493檔股票影響較小。",
+   "ko_summary": "@Mr_Derivatives: AAPL, MSFT, META는 사상 최고 근처이고 NVDA, AMZN, GOOGL, TSLA도 버티고 있다. S&P 500 비중의 약 40%라 나머지 약 493개는 덜 중요하다.",
+   "tickers": [
+    "AAPL",
+    "MSFT",
+    "META",
+    "NVDA",
+    "AMZN",
+    "GOOGL",
+    "TSLA",
+    "SPY"
+   ],
+   "stance": "睇好",
+   "stance_by_ticker": {
+    "AAPL": "睇好",
+    "MSFT": "睇好",
+    "META": "睇好",
+    "NVDA": "中性",
+    "AMZN": "中性",
+    "GOOGL": "中性",
+    "TSLA": "中性",
+    "SPY": "睇好"
+   },
+   "horizon": "短線",
+   "basis": "技術面",
+   "specific": false,
+   "macro": true,
+   "macro_theme": null,
+   "macro_impact": null,
+   "ticker_notes": {}
+  },
+  "2110469312112906636": {
+   "en_summary": "@NickTimiraos quotes the Beige Book: firms in several districts cite uncertainty on energy and tariffs and expect prices to rise further as contracts expire and hedges are renegotiated.",
+   "zh_summary": "@NickTimiraos引述褐皮書：多個地區的企業指能源及關稅存在不確定性，預期隨着合約到期及對沖重新議定，價格將進一步上升。",
+   "ko_summary": "@NickTimiraos가 베이지북을 인용했다: 여러 지역 기업들이 에너지와 관세 불확실성을 들며 계약 만료와 헤지 재협상에 따라 가격이 더 오를 것으로 본다.",
+   "tickers": [],
+   "stance": null,
+   "stance_by_ticker": {},
+   "horizon": null,
+   "basis": null,
+   "specific": false,
+   "macro": true,
+   "macro_theme": "inflation",
+   "macro_impact": "利淡",
+   "ticker_notes": {}
+  },
+  "2110469238146433281": {
+   "en_summary": "@TrungTPhan: ASML EUV delivery is extreme: each machine weighs 180 tons, fills up to 40 containers, and shipping takes 20 trucks and 3 Boeing 747s, with ASML teams on site for maintenance.",
+   "zh_summary": "@TrungTPhan：ASML EUV交付過程極其複雜：每台重180噸，拆卸後需多達40個貨櫃，運送需20輛貨車及3架波音747，並由ASML團隊駐場維護。",
+   "ko_summary": "@TrungTPhan: ASML EUV 배송은 엄청나다. 대당 180톤, 분해 시 최대 40개 컨테이너, 운송엔 트럭 20대와 보잉 747 3대가 필요하고 ASML 팀이 현장에서 유지보수한다.",
+   "tickers": [
+    "ASML"
+   ],
+   "stance": "睇好",
+   "stance_by_ticker": {
+    "ASML": "睇好"
+   },
+   "horizon": "長線",
+   "basis": "基本面",
+   "specific": false,
+   "macro": false,
+   "macro_theme": null,
+   "macro_impact": null,
+   "ticker_notes": {}
+  },
+  "2110467969931215063": {
+   "en_summary": "@LukeGromen, replying to @leadlagreport: the surprise is that stocks back the bonds, so if stocks crash, bonds will too.",
+   "zh_summary": "@LukeGromen回覆@leadlagreport：出人意料的是股市在支撐債市，若股市崩盤，債市也會跟着崩。",
+   "ko_summary": "@LukeGromen은 @leadlagreport에게 아무도 모르는 사실은 주식이 채권을 떠받치고 있어 주식이 폭락하면 채권도 폭락한다는 것이라고 답했다.",
+   "tickers": [
+    "SPY",
+    "TLT"
+   ],
+   "stance": "睇淡",
+   "stance_by_ticker": {
+    "SPY": "睇淡",
+    "TLT": "睇淡"
+   },
+   "horizon": "中線",
+   "basis": "宏觀",
+   "specific": false,
+   "macro": true,
+   "macro_theme": "yields",
+   "macro_impact": "利淡",
+   "ticker_notes": {}
+  },
+  "2110464921825599721": {
+   "en_summary": "(Reposted by @LukeGromen) @LukeGromen: China's YTD gold imports balance its trade surplus at $22,000/oz, and he suspects US gold exports would balance the US deficit at the same price.",
+   "zh_summary": "(Reposted by @LukeGromen) @LukeGromen：中國年初至今黃金進口以每盎司22,000美元計可抵銷其貿易順差，他懷疑美國黃金出口以同價計亦可抵銷美國逆差。",
+   "ko_summary": "(Reposted by @LukeGromen) @LukeGromen: 중국의 연초 이후 금 수입은 온스당 22,000달러로 무역흑자와 맞먹으며, 미국의 금 수출도 같은 가격이면 무역적자와 균형이 맞을 것으로 본다.",
+   "tickers": [
+    "GLD"
+   ],
+   "stance": "睇好",
+   "stance_by_ticker": {
+    "GLD": "睇好"
+   },
+   "horizon": "長線",
+   "basis": "宏觀",
+   "specific": true,
+   "macro": true,
+   "macro_theme": "fx",
+   "macro_impact": "中性",
+   "ticker_notes": {}
+  }
+ }
+}
