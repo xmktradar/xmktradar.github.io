@@ -386,7 +386,7 @@ def main():
         write_json(work('og.json'), {'date': day, 'hash': digest, 'social': social, 'langs': langs})
 
     h = open(HTML, encoding='utf-8').read()
-    h = re.sub(r'(https://xmktradar\.github\.io/og/)[\w-]+\.png(\?v=[\w-]+)?', rf'\g<1>{day}.png?v={digest}', h)
+    h = re.sub(r'(?:' + re.escape(SITE) + r'|https://xmktradar\.github\.io/)og/[\w-]+\.png(\?v=[\w-]+)?', lambda m: f'{SITE}og/{day}.png?v={digest}', h)
     open(HTML, 'w', encoding='utf-8').write(h)
     print(f"share {day} mode {langs['zh']['mode']} hero {items[0]['t'] if items else '-'} draw {draw} social {social}")
 
