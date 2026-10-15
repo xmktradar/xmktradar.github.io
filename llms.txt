@@ -1,0 +1,25 @@
+# The Crowd Tape
+
+> The Crowd Tape tracks what top US-stock accounts on X say and turns it into a daily view of crowd sentiment. It currently tracks 200 accounts (199 on X and 1 on Truth Social). Available in Traditional Chinese, English and Korean.
+
+## What the site shows
+- Daily bull/bear consensus: which tickers the tracked accounts are bullish or bearish on
+- Daily snapshot of the most-discussed tickers
+- Pre-market focus
+- Robot stock picks with transparent paper trading
+- Per-ticker pages and a summary of each tracked post with a link to the original
+
+## Main pages
+- [Home](https://xmktradar.github.io/)
+- [中文 (Traditional Chinese)](https://xmktradar.github.io/zh/)
+- [English](https://xmktradar.github.io/en/)
+- [한국어 (Korean)](https://xmktradar.github.io/ko/)
+- [Robot picks and paper trading](https://xmktradar.github.io/robot.html)
+- [Support](https://xmktradar.github.io/en/support/)
+- [Sitemap](https://xmktradar.github.io/sitemap.xml)
+
+## Update frequency
+The site is rebuilt automatically by GitHub Actions every 4 hours (cron `5 3-23/4 * * *` UTC, i.e. 03:05, 07:05, 11:05, 15:05, 19:05 and 23:05 Hong Kong time).
+
+## Disclaimer
+Not investment advice. The content summarises public posts by third parties and is for information only.
