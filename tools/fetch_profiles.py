@@ -35,6 +35,13 @@ for h in [x for x in os.environ["ONLY"].split(",") if x]:
             info[h]["recent_error"] = str(e)
     except Exception as e:
         info[h] = {"error": str(e)}
+        try:  # fallback: picture only, from unavatar
+            img, ctype = get(f"https://unavatar.io/x/{h}?fallback=false")
+            if ctype.startswith("image/"):
+                (out / f"{h.lower()}.{ctype.split('/')[1].split(';')[0].replace('jpeg', 'jpg')}").write_bytes(img)
+                info[h]["unavatar"] = True
+        except Exception as e2:
+            info[h]["unavatar_error"] = str(e2)
     time.sleep(6)
 (out / "info.json").write_text(json.dumps(info, ensure_ascii=False, indent=1), encoding="utf-8")
 print(sum("error" not in v for v in info.values()), "of", len(info), "ok")
