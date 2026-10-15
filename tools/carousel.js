@@ -1,6 +1,7 @@
 // Draw the daily multi-picture posts (4 pictures, 1080x1350 JPEG) from tools/carousel.html.
 // Usage: node tools/carousel.js work/carousel.json (written by tools/carousel.py).
-// Writes og/c/<day>-<slot>-<lang>-<n>.jpg; keeps only today's and yesterday's.
+// Writes og/c/<day>-<slot>-<lang>-<n>.jpg, plus a square <n>-fb.jpg copy for Facebook (4 square photos show as a
+// 2x2 grid there; 4:5 photos get cropped into one big picture and a column); keeps only today's and yesterday's.
 const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
@@ -11,6 +12,7 @@ const path = require('path');
   const errs = [];
   p.on('pageerror', e => errs.push(e.message));
   await p.goto('file://' + path.resolve(__dirname, 'carousel.html'), { waitUntil: 'networkidle' });
+  const sq = await b.newPage({ viewport: { width: 1350, height: 1350 } });
   fs.mkdirSync('og/c', { recursive: true });
   for (const j of job.jobs) {
     for (let i = 0; i < 4; i++) {
@@ -30,6 +32,15 @@ const path = require('path');
       });
       await p.screenshot({ path: j.files[i], type: 'jpeg', quality: 88 });
       console.log('carousel', j.files[i]);
+      if (j.fb) {  // same picture centred on a blurred copy of itself
+        const src = 'data:image/jpeg;base64,' + fs.readFileSync(j.files[i]).toString('base64');
+        await sq.setContent(`<body style="margin:0;width:1350px;height:1350px;overflow:hidden;position:relative">
+          <img src="${src}" style="position:absolute;inset:-60px;width:1470px;height:1470px;object-fit:cover;filter:blur(40px) brightness(.9)">
+          <img src="${src}" style="position:absolute;left:135px;top:0;width:1080px;height:1350px"></body>`);
+        await sq.evaluate(async () => Promise.all([...document.images].map(i => i.decode().catch(() => {}))));
+        await sq.screenshot({ path: j.fb[i], type: 'jpeg', quality: 88 });
+        console.log('carousel', j.fb[i]);
+      }
     }
   }
   const keep = new Date(Date.parse(job.date + 'T00:00:00Z') - 864e5).toISOString().slice(0, 10);
