@@ -42,6 +42,6 @@ for h in [x for x in os.environ["ONLY"].split(",") if x]:
                 info[h]["unavatar"] = True
         except Exception as e2:
             info[h]["unavatar_error"] = str(e2)
-    time.sleep(6)
+    time.sleep(3)
 (out / "info.json").write_text(json.dumps(info, ensure_ascii=False, indent=1), encoding="utf-8")
 print(sum("error" not in v for v in info.values()), "of", len(info), "ok")
