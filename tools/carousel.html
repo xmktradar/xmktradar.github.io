@@ -1,0 +1,134 @@
+<!doctype html><meta charset="utf-8">
+<!-- One picture (1080x1350) of the daily multi-picture posts, in the @thecrowdtape Instagram style.
+     tools/carousel.js calls render(lang, theme, date, page, slide); tools/carousel.py writes the slides, text included. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=block">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0}
+body{width:1080px;height:1350px;position:relative;overflow:hidden;color:#151a2c;font-family:"Noto Sans TC","Noto Sans KR","Noto Color Emoji",sans-serif}
+html[lang=ko] body{font-family:"Noto Sans KR","Noto Sans TC","Noto Color Emoji",sans-serif}
+html[lang=ko] *{word-break:keep-all}
+.bg{position:absolute;inset:0}
+.snap .bg{background:linear-gradient(150deg,#9fc8fb 0%,#c3b9f6 55%,#f6c8df 100%)}
+.duel .bg{background:linear-gradient(150deg,#ffc9a8 0%,#f9a8c4 50%,#c8b6ff 100%)}
+.focus .bg{background:linear-gradient(150deg,#8fe3c3 0%,#c6ec9f 48%,#fde7a1 100%)}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.55) 2px,transparent 2.2px);background-size:26px 26px;mask-image:linear-gradient(180deg,#000 0,transparent 70%)}
+.top{position:absolute;left:56px;right:56px;top:52px;display:flex;align-items:center;gap:16px}
+.brand{white-space:nowrap;display:inline-flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:8px 22px 8px 10px;font-weight:900;font-size:28px;box-shadow:0 5px 0 rgba(21,26,44,.14)}
+.brand img{width:50px;height:50px;border-radius:12px;object-fit:cover;margin:-4px 0}
+.date{background:#f8d34a;border:4px solid #151a2c;border-radius:14px;padding:6px 16px;font-weight:900;font-size:28px;transform:rotate(-2.5deg);box-shadow:4px 5px 0 #151a2c;white-space:nowrap}
+.pg{margin-left:auto;font:700 26px "IBM Plex Mono",monospace;background:#151a2c;color:#fff;border-radius:999px;padding:6px 18px}
+.main{position:absolute;left:56px;right:56px;top:160px;bottom:120px}
+#in{display:flex;flex-direction:column;gap:22px;min-height:100%}
+.kick{align-self:flex-start;background:#151a2c;color:#fff;font-weight:900;font-size:34px;padding:8px 22px;border-radius:14px;transform:rotate(-1.5deg)}
+.win{align-self:flex-start;background:#fff;border:3px solid #151a2c;border-radius:12px;padding:4px 14px;font:700 22px "IBM Plex Mono",monospace}
+.lead{font-weight:900;font-size:46px;margin-top:6px}
+.big{font:700 170px/1 "IBM Plex Mono",monospace;letter-spacing:-4px}
+.big span{background:linear-gradient(transparent 58%,#fbe25b 58%);padding:0 10px}
+.sub{font-weight:900;font-size:44px}
+.pills{display:flex;gap:12px;flex-wrap:wrap}
+.pill{display:inline-block;font-weight:900;font-size:26px;padding:4px 16px;border-radius:999px;border:3px solid;white-space:nowrap}
+.pill.g{color:#1d6b3a;border-color:#2f8f52;background:#e3f7ea}
+.pill.r{color:#a52b3d;border-color:#c63b4e;background:#fde7eb}
+.pill.n{color:#3c4466;border-color:#8890b5;background:#eef0fb}
+.pill.o{color:#b13a12;border-color:#ff6b3d;background:#ffe3d6}
+.stats{display:flex;gap:18px}
+.stat{flex:1;border-radius:20px;padding:14px 22px;border:4px solid;font-weight:900;font-size:32px;box-shadow:0 6px 0 rgba(21,26,44,.16)}
+.stat.b{background:#dfe7ff;border-color:#3557c9;color:#2a43a0}
+.stat.p{background:#f3e3ff;border-color:#8a4fd6;color:#6b37b0}
+.box{background:#fff;border:4px solid #151a2c;border-radius:24px;box-shadow:0 7px 0 #151a2c;padding:22px 26px}
+.q{display:flex;gap:18px;align-items:flex-start}
+.q img{width:76px;height:76px;border-radius:50%;flex:none;box-shadow:0 0 0 3px #2f8f52;object-fit:cover}
+.who{font:700 24px "IBM Plex Mono",monospace;color:#3c4466}
+.tx{font-weight:700;font-size:32px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.swipe{align-self:flex-end;background:#ff6b3d;color:#fff;font-weight:900;font-size:32px;padding:10px 24px;border-radius:16px;border:3px solid #151a2c;box-shadow:4px 5px 0 #151a2c;transform:rotate(2deg)}
+.sec h2{margin:0 0 12px;font-size:38px;font-weight:900}
+.cards{display:flex;flex-direction:column;gap:14px}
+.card{background:#fff;border-radius:22px;border:4px solid #151a2c;box-shadow:0 6px 0 #151a2c;display:grid;grid-template-columns:52px 1fr 190px 150px;align-items:center;gap:16px;padding:12px 20px;min-height:116px}
+.rk{width:50px;height:50px;border-radius:50%;background:#151a2c;color:#fff;display:grid;place-items:center;font:700 26px "IBM Plex Mono",monospace}
+.card:first-child .rk{background:#f8d34a;color:#151a2c;border:3px solid #151a2c}
+.tk{font:700 48px/1 "IBM Plex Mono",monospace;white-space:nowrap;margin-bottom:8px}
+.card .pill{font-size:21px;padding:2px 12px;margin-right:6px}
+.avs{display:flex}
+.avs img,.avs b{width:58px;height:58px;border-radius:50%;border:4px solid #fff;margin-left:-16px;box-shadow:0 0 0 3px #151a2c;object-fit:cover;background:#eee}
+.avs img:first-child{margin-left:0}
+.avs b{display:grid;place-items:center;font-size:20px;background:#f8d34a}
+.mini svg{width:150px;height:60px}
+.empty{font-weight:700;font-size:32px;color:#3c4466;background:rgba(255,255,255,.7);border-radius:18px;padding:18px 24px}
+.cta{background:#151a2c;color:#fff;border-radius:24px;padding:24px 30px;font-weight:900;font-size:34px;line-height:1.6}
+.cta div:first-child{color:#f8d34a;font-size:40px}
+.acc{display:flex;gap:24px;align-items:center}
+.acc img{width:150px;height:150px;border-radius:50%;border:6px solid #fff;box-shadow:0 0 0 5px #151a2c;object-fit:cover;background:#eee}
+.acc .h{font:700 40px "IBM Plex Mono",monospace}
+.acc .n{font-weight:700;font-size:30px;color:#3c4466}
+.badge{align-self:flex-start;font-weight:900;font-size:52px;padding:10px 34px;border-radius:20px;border:5px solid #151a2c;box-shadow:5px 6px 0 #151a2c;transform:rotate(-2deg)}
+.badge.bull{background:#5ee08f}.badge.bear{background:#ff8a8a}.badge.neutral{background:#e3e6f5}
+.say{font-weight:700;font-size:38px;line-height:1.5}
+.when{font:700 24px "IBM Plex Mono",monospace;color:#3c4466;margin-top:14px}
+.bar{display:flex;height:64px;border-radius:999px;overflow:hidden;border:4px solid #151a2c;box-shadow:0 6px 0 #151a2c;font-weight:900;font-size:30px}
+.bar div{display:grid;place-items:center;color:#151a2c;min-width:90px}
+.bar .b{background:#5ee08f}.bar .r{background:#ff8a8a}
+.chart{display:flex;align-items:center;gap:20px}
+.chart svg{width:520px;height:150px;background:rgba(255,255,255,.75);border-radius:20px;border:3px solid #151a2c;padding:10px}
+.chg{font:700 44px "IBM Plex Mono",monospace}
+.chg small{display:block;font:700 22px "Noto Sans TC","Noto Sans KR",sans-serif;color:#3c4466}
+.u{color:#1f9d55}.d{color:#d23b4f}
+.note{font-weight:900;font-size:36px}
+.row{display:flex;gap:18px;align-items:center;background:#fff;border:4px solid #151a2c;border-radius:22px;box-shadow:0 6px 0 #151a2c;padding:16px 22px}
+.row img{width:72px;height:72px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 0 0 3px #151a2c}
+.row .pt{font:700 46px "IBM Plex Mono",monospace;white-space:nowrap}
+.row .pt span{color:#b13a12}
+.row .by{font:700 24px "IBM Plex Mono",monospace;color:#3c4466}
+.row .v{font-weight:700;font-size:28px;line-height:1.4}
+.row .pill{font-size:20px;padding:1px 10px;margin-right:8px}
+.foot{position:absolute;left:56px;right:56px;bottom:40px;height:60px;background:rgba(255,255,255,.9);border-radius:999px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;font-weight:700;font-size:24px;color:#3c4466;white-space:nowrap}
+.foot b{color:#151a2c}
+</style>
+<body>
+<div class="bg"></div><div class="dots"></div>
+<div class="top"><span class="brand"><img src="logo.png" alt="">The Crowd Tape</span><span class="date" id="date"></span><span class="pg" id="pg"></span></div>
+<div class="main" id="main"><div id="in"></div></div>
+<div class="foot"><span><b>@thecrowdtape</b> · xmktradar.github.io</span><span id="fl"></span></div>
+<script>
+const FL={zh:'⚠️ 唔構成投資建議',en:'⚠️ Not investment advice',ko:'⚠️ 투자 조언 아님'};
+const esc=v=>String(v==null?'':v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function spark(a,w,h){if(!a||a.length<2)return '';const mn=Math.min(...a),mx=Math.max(...a),sp=(mx-mn)||1;const pts=a.map((v,i)=>`${(i/(a.length-1)*(w-4)+2).toFixed(1)},${(h-4-(v-mn)/sp*(h-8)).toFixed(1)}`).join(' ');const up=a[a.length-1]>=a[0];return `<svg viewBox="0 0 ${w} ${h}"><polyline points="${pts}" fill="none" stroke="${up?'#1f9d55':'#d23b4f'}" stroke-width="${w>200?5:4}" stroke-linejoin="round" stroke-linecap="round"/></svg>`}
+const pct=v=>v==null?'':(v>=0?'▲':'▼')+Math.abs(v).toFixed(1)+'%';
+const pills=ps=>(ps||[]).map(p=>`<span class="pill ${p.c}">${esc(p.x)}</span>`).join('');
+const avs=(a,more)=>(a||[]).filter(Boolean).map(s=>`<img src="${s}">`).join('')+(more?`<b>+${more}</b>`:'');
+const cta=c=>c&&c.length?`<div class="cta">${c.map(x=>`<div>${esc(x)}</div>`).join('')}</div>`:'';
+const quote=q=>q&&q.text?`<div class="box q">${q.av?`<img src="${q.av}">`:''}<div><div class="who">💬 @${esc(q.acc)}</div><div class="tx">${esc(q.text)}</div></div></div>`:'';
+function render(lang,theme,date,page,S){
+ document.documentElement.lang=lang;document.body.className=theme;
+ document.getElementById('date').textContent='📅 '+date;
+ document.getElementById('pg').textContent=page+'/4';
+ document.getElementById('fl').textContent=FL[lang];
+ let h='';
+ if(S.kind==='cover'){
+  h=`<div class="kick">${esc(S.kicker)}</div>${S.win?`<div class="win">${esc(S.win)}</div>`:''}<div class="lead">${esc(S.lead)}</div>
+   <div class="big"><span>$${esc(S.big)}</span></div><div class="sub">${esc(S.sub)}</div>`;
+  if(S.bar){const[b,r]=S.bar,t=(b+r)||1;h+=`<div class="bar"><div class="b" style="flex:${Math.max(b,.0001)/t}">🟢 ${b}</div><div class="r" style="flex:${Math.max(r,.0001)/t}">🔴 ${r}</div></div>`}
+  if(S.pills&&S.pills.length)h+=`<div class="pills">${pills(S.pills)}</div>`;
+  if(S.spark&&S.spark.length>1){const m1=(S.spark[S.spark.length-1]/S.spark[0]-1)*100;h+=`<div class="chart">${spark(S.spark,500,130)}<div class="chg ${S.d1>=0?'u':'d'}">${pct(S.d1)}<small>${esc(S.d1l)}</small><span class="${m1>=0?'u':'d'}" style="font-size:30px">1M ${pct(m1)}</span></div></div>`}
+  if(S.stats)h+=`<div class="stats">${S.stats.map(x=>`<div class="stat ${x.c}">${esc(x.l)}</div>`).join('')}</div>`;
+  h+=quote(S.quote);
+  if(S.note)h+=`<div class="note">${esc(S.note)}</div>`;
+  if(S.swipe)h+=`<div class="swipe">${esc(S.swipe)}</div>`;
+ }else if(S.kind==='cards'){
+  h=(S.secs||[]).map(sec=>`<div class="sec"><h2>${esc(sec.h)}</h2>${sec.cards.length?`<div class="cards">${sec.cards.map(c=>`<div class="card"><span class="rk">${c.rk}</span><div><div class="tk">$${esc(c.t)}</div><div>${pills(c.pills)}</div></div><div class="avs">${avs(c.avs,c.more)}</div><div class="mini">${spark(c.spark,150,60)}</div></div>`).join('')}</div>`:`<div class="empty">${esc(sec.empty||'')}</div>`}</div>`).join('');
+  h+=cta(S.cta);
+ }else if(S.kind==='account'){
+  h=`<div class="kick">${esc(S.kicker)} · $${esc(S.t)}</div><div class="acc">${S.av?`<img src="${S.av}">`:''}<div><div class="h">@${esc(S.acc)}</div><div class="n">${esc(S.name)}</div></div></div>
+   <div class="badge ${S.side}">${S.side==='bull'?'🟢':S.side==='bear'?'🔴':'⚪'} ${esc(S.badge)}</div>
+   <div class="box"><div class="say">${esc(S.text)}</div><div class="when">${esc(S.when)}</div></div>`;
+ }else if(S.kind==='targets'){
+  h=`<div class="sec"><h2>${esc(S.h)}</h2></div>`+S.rows.map(r=>`<div class="row">${r.av?`<img src="${r.av}">`:''}<div><div class="pt">$${esc(r.t)} 🎯 <span>$${esc(r.pt)}</span></div><div class="by">@${esc(r.acc)} · ${esc(r.day)}</div></div></div>`).join('');
+ }else if(S.kind==='views'){
+  h=`<div class="sec"><h2>${esc(S.h)}</h2></div>`+S.rows.map(r=>`<div class="row">${r.av?`<img src="${r.av}">`:''}<div><div class="by"><span class="pill ${r.s==='bull'?'g':r.s==='bear'?'r':'n'}">${esc(r.badge)}</span>@${esc(r.acc)}</div><div class="v">${esc(r.text)}</div></div></div>`).join('');
+ }else if(S.kind==='quote'){
+  h=`<div class="sec"><h2>${esc(S.h)}</h2></div>${quote(S.quote)}<div style="flex:1"></div>${cta(S.cta)}`;
+ }
+ const box=document.getElementById('in');box.style.zoom='';box.innerHTML=h;
+}
+</script>
+</body>

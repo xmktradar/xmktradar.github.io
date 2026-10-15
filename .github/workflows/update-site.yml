@@ -64,6 +64,15 @@ jobs:
           if [ -f "$WORK_DIR/og.json" ]; then
             node tools/og.js "$WORK_DIR/og.json" || { echo "::error::分享圖畫唔到"; exit 1; }
           fi
+      - name: Daily multi-picture posts (12:30, 16:30, 20:30 HKT slots on trading days)
+        continue-on-error: true
+        run: |
+          python3 tools/carousel.py
+          if [ -f "$WORK_DIR/carousel.json" ]; then
+            node tools/carousel.js "$WORK_DIR/carousel.json" || { echo "::error::多圖帖畫唔到，下次更新再試"; exit 1; }
+            cp "$WORK_DIR/social-posts.json" data/social-posts.json
+            mkdir -p social && cp "$WORK_DIR/social.html" social/index.html
+          fi
       - name: Language versions
         run: python3 tools/build_langs.py
       - name: Stock pages
