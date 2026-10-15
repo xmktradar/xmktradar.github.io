@@ -17,12 +17,16 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: main  # latest main, not the commit that triggered the run, so publishing never conflicts
+      - name: Restore full page data
+        run: python3 tools/slim_pages.py --restore
       - run: python3 tools/update_prices.py index.html
+      - name: Slim homepages
+        run: python3 tools/slim_pages.py --slim
       - name: Publish
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add index.html
+          git add index.html data/dash
           git diff --cached --quiet && exit 0
           git commit -m "更新股價 $(TZ=Asia/Hong_Kong date '+%Y-%m-%d %H:%M') HKT"
           git pull --rebase origin main || { git rebase --abort; echo "::error::main 喺更新期間有新改動，今次唔發佈，下次再試"; exit 1; }

@@ -5,21 +5,45 @@
 const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
+const { start, pageUrl } = require('./local_server');
 
 const STATUS = 'data/site-status.json';
 const HAN = /[一-鿿]/;
 
+async function ready(p) {
+  try {
+    await p.evaluate(async () => {
+      if (window.__loadCore) await window.__loadCore();
+      if (window.__loadAllPosts) await window.__loadAllPosts();
+      if (typeof paintChrome === 'function') paintChrome();
+      if (typeof render === 'function') render();
+    });
+  } catch (e) {
+    return (e && e.message) || String(e);
+  }
+  if (await p.evaluate(() => !!window.__postsFailed)) return 'older posts failed to load';
+  return '';
+}
+
 (async () => {
+  const root = path.resolve(__dirname, '..');
+  const srv = await start(root);
   const b = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
   const warn = [];
+  try {
   for (const lang of ['zh', 'en', 'ko']) {
-    const file = 'file://' + path.resolve(lang, 'index.html');
+    const file = pageUrl(srv.origin, root, path.join(lang, 'index.html'));
     for (const [w, h] of [[1280, 900], [390, 844]]) {
       const where = `${lang} ${w}px`;
       const p = await b.newPage({ viewport: { width: w, height: h } });
-      await p.route(/^https?:/, r => r.abort());
-      await p.goto(file + '#daily');
-      await p.waitForTimeout(1500);
+      await p.route('**/*', route => {
+        if (route.request().url().startsWith(srv.origin)) route.continue();
+        else route.abort();
+      });
+      await p.goto(file + '#daily', { waitUntil: 'domcontentloaded' });
+      const loadErr = await ready(p);
+      if (loadErr) warn.push(`${where}：${loadErr}`);
+      await p.waitForTimeout(300);
       const r = await p.evaluate(({ lang, han }) => {
         const HAN = new RegExp(han);
         const vis = el => el.offsetParent !== null;
@@ -49,8 +73,10 @@ const HAN = /[一-鿿]/;
         if (!hit.includes('NVDA')) warn.push(`${where}：搜尋 nvda 搵唔到 NVDA`);
       }
       // 宏觀分頁（2026-10-13）
-      await p.goto(file + '#macro');
-      await p.waitForTimeout(800);
+      await p.goto(file + '#macro', { waitUntil: 'domcontentloaded' });
+      const macroErr = await ready(p);
+      if (macroErr) warn.push(`${where}：宏觀分頁 ${macroErr}`);
+      await p.waitForTimeout(300);
       const m = await p.evaluate(({ lang, han }) => {
         const HAN = new RegExp(han);
         const sec = document.querySelector('.m-sec');
@@ -68,7 +94,10 @@ const HAN = /[一-鿿]/;
       await p.close();
     }
   }
-  await b.close();
+  } finally {
+    await b.close();
+    srv.server.close();
+  }
   const st = JSON.parse(fs.readFileSync(STATUS, 'utf8'));
   st.layout_warnings = warn;
   st.layout_checked_hkt = new Date(Date.now() + 8 * 3600e3).toISOString().slice(0, 16).replace('T', ' ');
