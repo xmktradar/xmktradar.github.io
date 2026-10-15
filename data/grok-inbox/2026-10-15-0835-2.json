@@ -1,0 +1,79 @@
+{
+  "posts": {
+    "2110502120936136890": {
+      "en_summary": "Since 1880, the average secular bull market lasts 11.2 years, with an average gain of 675%. The current bull market is 17.4 years old and up 1,073% as of September 2026.",
+      "zh_summary": "自1880年以來，平均世俗牛市持續11.2年，平均漲幅為675%。目前的牛市已持續17.4年，截至2026年9月上漲1,073%。",
+      "ko_summary": "1880년 이후 평균 장기 강세장은 11.2년 동안 지속되며 평균 675%의 상승을 기록했습니다. 현재 강세장은 17.4년째이며 2026년 9월 기준 1,073% 상승했습니다.",
+      "tickers": ["SPY", "QQQ"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPY": "睇淡", "QQQ": "睇淡"},
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2110501645331177890": {
+      "en_summary": "Over the past three years, Micron $MU is outperforming Nvidia $NVDA, AMD $AMD and Broadcom $AVGO by ~3-4X, with a return of 1,230%.",
+      "zh_summary": "過去三年，美光$MU的表現優於英偉達$NVDA、AMD$AMD和博通$AVGO約3-4倍，回報率為1,230%。",
+      "ko_summary": "지난 3년 동안 마이크론 $MU는 엔비디아 $NVDA, AMD $AMD, 브로드컴 $AVGO보다 약 3-4배 우수한 성과를 보였으며 1,230%의 수익률을 기록했습니다.",
+      "tickers": ["MU", "NVDA", "AMD", "AVGO"],
+      "stance": "睇好",
+      "stance_by_ticker": {"MU": "睇好", "NVDA": "中性", "AMD": "中性", "AVGO": "中性"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2110500606410678565": {
+      "en_summary": "$CRWV not exactly the headline you want to see.",
+      "zh_summary": "$CRWV並不是你想看到的標題。",
+      "ko_summary": "$CRWV는 보고 싶지 않은 헤드라인입니다.",
+      "tickers": ["CRWV"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"CRWV": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2110497903726981354": {
+      "en_summary": "Anthropic reportedly grew Q3 revenue 46% to $16.8B while telling investors it was cash flow positive for the quarter. This gives Anthropic a stronger foundation to support its ~$518B in long term compute commitments while improving demand visibility for $AVGO, $GOOGL and $AMZN.",
+      "zh_summary": "Anthropic據報第三季收入增長45%至168億美元，並告知投資者該季度現金流為正。這為Anthropic提供了更強的基礎來支持其約5180億美元的長期計算承諾，同時改善了$AVGO、$GOOGL和$AMZN的需求可見性。",
+      "ko_summary": "Anthropic는 3분기 매출이 46% 증가하여 168억 달러가 되었으며 투자자들에게 해당 분기에 현금흐름이 양수였다고 알렸습니다. 이는 Anthropic가 약 5180억 달러의 장기 컴퓨팅 약속을 지원할 더 강한 기반을 제공하면서 $AVGO, $GOOGL, $AMZN의 수요 가시성을 개선합니다.",
+      "tickers": ["AVGO", "GOOGL", "AMZN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AVGO": "睇好", "GOOGL": "睇好", "AMZN": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2110495866733707412": {
+      "en_summary": "We have the first post-CPI $SPX $SPY $QQQ candle. Fresh game plan for names like $META $SPCX $SNDK.",
+      "zh_summary": "我們有了第一根CPI後的$SPX $SPY $QQQ蠟燭圖。為$META $SPCX $SNDK等名稱制定了新的遊戲計劃。",
+      "ko_summary": "CPI 이후 첫 $SPX $SPY $QQQ 캔들을 확인했습니다. $META $SPCX $SNDK와 같은 종목에 대한 새로운 게임 플랜이 있습니다.",
+      "tickers": ["SPY", "QQQ", "META", "SPCX", "SNDK"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "QQQ": "中性", "META": "未表態", "SPCX": "未表態", "SNDK": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "inflation",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    }
+  }
+}
