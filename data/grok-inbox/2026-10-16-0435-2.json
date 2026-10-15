@@ -1,1 +1,79 @@
-$(cat /tmp/batch2.json)
+{
+  "posts": {
+    "2110809898061910315": {
+      "en_summary": "$VIX Crush Thursdays? 18 at the peak almost back to a 15 handle.",
+      "zh_summary": "$VIX 星期四的打壓？峰值18幾乎回到15的水平。",
+      "ko_summary": "$VIX 크러시 목요일? 피크 18에서 거의 15 핸들로 돌아왔다.",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2110809736027222393": {
+      "en_summary": "$ESLA a \"US\" company they say 😂",
+      "zh_summary": "$ESLA 他們說是「美國」公司 😂",
+      "ko_summary": "$ESLA 그들이 말하는 \"미국\" 회사 😂",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2110809433076797795": {
+      "en_summary": "(Reposted by @petenajarian) DexCom $DXCM jumps 4% as its landmark CONNECT trial lands in The New England Journal of Medicine. It backs continuous glucose monitors for Type 2 diabetes patients not on insulin.",
+      "zh_summary": "（由 @petenajarian 轉發）DexCom $DXCM 因標誌性 CONNECT 試驗發表於《新英格蘭醫學雜誌》而上漲4%。該試驗支持非胰島素依賴的2型糖尿病患者使用連續血糖監測器。",
+      "ko_summary": "( @petenajarian 리포스트) DexCom $DXCM이 랜드마크 CONNECT 시험이 뉴잉글랜드 의학 저널에 게재되며 4% 상승. 인슐린을 사용하지 않는 2형 당뇨병 환자를 위한 연속 혈당 모니터를 지지.",
+      "tickers": ["DXCM"],
+      "stance": "睇好",
+      "stance_by_ticker": {"DXCM": "睇好"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"DXCM": "Jumps 4% on CONNECT trial in NEJM backing CGM for Type 2 non-insulin patients"}
+    },
+    "2110806003172163598": {
+      "en_summary": "(Reposted by @petenajarian) Time to buy $WYNN $SOFI $NCLH $KMB.",
+      "zh_summary": "（由 @petenajarian 轉發）是時候買入 $WYNN $SOFI $NCLH $KMB。",
+      "ko_summary": "( @petenajarian 리포스트) $WYNN $SOFI $NCLH $KMB 매수 타이밍.",
+      "tickers": ["WYNN", "SOFI", "NCLH", "KMB"],
+      "stance": "睇好",
+      "stance_by_ticker": {"WYNN": "睇好", "SOFI": "睇好", "NCLH": "睇好", "KMB": "睇好"},
+      "horizon": "短線",
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2110805152043303172": {
+      "en_summary": "Wall Street and CoreWeave aren't exactly seeing eye to eye 👀 $CRWV",
+      "zh_summary": "華爾街與 CoreWeave 並非完全一致 👀 $CRWV",
+      "ko_summary": "월스트리트와 CoreWeave가 완전히 의견이 일치하지 않는다 👀 $CRWV",
+      "tickers": ["CRWV"],
+      "stance": "中性",
+      "stance_by_ticker": {"CRWV": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
