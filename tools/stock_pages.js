@@ -95,6 +95,25 @@ function indexRow(lang, list) {
     + `<b>${esc(T[lang].index)}</b>：${links}</nav>`;
 }
 
+// One <url> per <loc>; the last copy wins.
+function dedupeSitemap(sm) {
+  const found = [];
+  for (const m of sm.matchAll(/\s*<url>[\s\S]*?<\/url>/g)) {
+    const loc = (m[0].match(/<loc>([^<]*)<\/loc>/) || [])[1];
+    found.push([m, loc]);
+  }
+  const last = new Map();
+  found.forEach(([, loc], i) => { if (loc !== undefined) last.set(loc, i); });
+  let out = '', pos = 0;
+  found.forEach(([m, loc], i) => {
+    if (loc !== undefined && last.get(loc) !== i) {
+      out += sm.slice(pos, m.index);
+      pos = m.index + m[0].length;
+    }
+  });
+  return out + sm.slice(pos);
+}
+
 function avatars(html, seen) {
   return html.replace(/src="(data:image\/(png|jpe?g|webp|gif);base64,([^"]+))"/g, (m, uri, ext, b64) => {
     const h = crypto.createHash('sha1').update(b64).digest('hex').slice(0, 12);
@@ -189,12 +208,13 @@ function avatars(html, seen) {
 
   // sitemap: drop old stock rows, add the current ones
   let sm = fs.readFileSync('sitemap.xml', 'utf8').replace(/\s*<url><loc>[^<]*\/stock\/[^<]*<\/loc>[\s\S]*?<\/url>/g, '');
-  const gen = (sm.match(/<loc>https:\/\/xmktradar\.github\.io\/<\/loc><lastmod>([^<]+)/) || [])[1] || '';
+  const siteEsc = SITE.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const gen = (sm.match(new RegExp('<loc>' + siteEsc + '</loc><lastmod>([^<]+)')) || [])[1] || '';
   const rows = list.map(([t]) => {
     const alt = Object.entries(LANGS).map(([k, h]) => `<xhtml:link rel="alternate" hreflang="${h}" href="${SITE}${k}/stock/${slug(t)}/"/>`).join('');
     return Object.keys(LANGS).map(k => `  <url><loc>${SITE}${k}/stock/${slug(t)}/</loc><lastmod>${gen}</lastmod><changefreq>daily</changefreq>${alt}</url>`).join('\n');
   }).join('\n');
-  sm = sm.replace('</urlset>', rows + '\n</urlset>');
+  sm = dedupeSitemap(sm.replace('</urlset>', rows + '\n</urlset>'));
   fs.writeFileSync('sitemap.xml', sm);
 
   // check a few pages at desktop and phone width

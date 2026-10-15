@@ -43,6 +43,25 @@ def write(path, html):
     print(path)
 
 
+def dedupe_sitemap(sm):
+    """One <url> per <loc>; the last copy wins."""
+    found = []
+    for m in re.finditer(r'\s*<url>.*?</url>', sm, flags=re.S):
+        loc = re.search(r'<loc>([^<]*)</loc>', m.group())
+        found.append((m, loc.group(1) if loc else None))
+    last = {}
+    for i, (_, loc) in enumerate(found):
+        if loc is not None:
+            last[loc] = i
+    out, pos = [], 0
+    for i, (m, loc) in enumerate(found):
+        if loc is not None and last[loc] != i:
+            out.append(sm[pos:m.start()])
+            pos = m.end()
+    out.append(sm[pos:])
+    return ''.join(out)
+
+
 def sitemap():
     path = os.path.join(ROOT, 'sitemap.xml')
     if not os.path.exists(path):
@@ -56,6 +75,7 @@ def sitemap():
         f'\n  <url><loc>{SITE}{k}/support/</loc><lastmod>{last}</lastmod><changefreq>monthly</changefreq>{alt}</url>'
         for k in LANGS)
     sm = sm.replace('</urlset>', rows + '\n</urlset>')
+    sm = dedupe_sitemap(sm)
     if not sm.endswith('\n'):
         sm += '\n'
     open(path, 'w', encoding='utf-8').write(sm)
