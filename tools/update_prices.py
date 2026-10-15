@@ -12,6 +12,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 
 HTML = sys.argv[1] if len(sys.argv) > 1 else 'index.html'
 HK = timezone(timedelta(hours=8))
@@ -21,6 +22,26 @@ EXCH_TV = {'NMS': 'NASDAQ', 'NGM': 'NASDAQ', 'NCM': 'NASDAQ', 'NAS': 'NASDAQ', '
            'ASE': 'AMEX', 'PCX': 'AMEX', 'BTS': 'AMEX', 'ASX': 'ASX', 'LSE': 'LSE', 'VAN': 'TSXV', 'TOR': 'TSX'}
 MACRO = [('ES=F', '標普500期貨', None), ('NQ=F', '納指100期貨', None), ('YM=F', '道指期貨', None),
          ('^VIX', 'VIX', None), ('^TNX', 'US10Y', 'Yahoo Finance（^TNX）'), ('CL=F', 'WTI', 'Yahoo Finance（CL=F）')]
+
+NY = ZoneInfo('America/New_York')
+EARNINGS_DAYS = 14  # tag a stock with its next results date when it falls within the next two weeks
+# US high-impact economic events for the strip under 大市背景 (public weekly feed, no key). Chinese names here;
+# i18n/en.json and ko.json map them back to the English names. Unlisted events keep the feed's English name.
+EVENTS_URL = 'https://nfs.faireconomy.media/ff_calendar_thisweek.json'
+EVENT_ZH = {
+    'CPI m/m': 'CPI 按月', 'CPI y/y': 'CPI 按年', 'Core CPI m/m': '核心 CPI 按月', 'Core CPI y/y': '核心 CPI 按年',
+    'PPI m/m': 'PPI 按月', 'Core PPI m/m': '核心 PPI 按月', 'Non-Farm Employment Change': '非農就業人數',
+    'Unemployment Rate': '失業率', 'Average Hourly Earnings m/m': '平均時薪按月', 'Federal Funds Rate': '聯儲局利率決議',
+    'FOMC Statement': '聯儲局議息聲明', 'FOMC Press Conference': '聯儲局記者會', 'FOMC Meeting Minutes': '聯儲局會議紀錄',
+    'FOMC Economic Projections': '聯儲局經濟預測', 'Fed Chair Powell Speaks': '聯儲局主席講話', 'Advance GDP q/q': 'GDP 初值按季',
+    'Prelim GDP q/q': 'GDP 修訂值按季', 'Final GDP q/q': 'GDP 終值按季', 'Core PCE Price Index m/m': '核心 PCE 物價按月',
+    'Retail Sales m/m': '零售銷售按月', 'Core Retail Sales m/m': '核心零售銷售按月', 'Unemployment Claims': '首次申領失業救濟金',
+    'ISM Manufacturing PMI': 'ISM 製造業 PMI', 'ISM Services PMI': 'ISM 服務業 PMI', 'JOLTS Job Openings': 'JOLTS 職位空缺',
+    'Prelim UoM Consumer Sentiment': '密歇根大學消費者信心初值', 'CB Consumer Confidence': '世企研究會消費者信心',
+    'ADP Non-Farm Employment Change': 'ADP 就業人數', 'Empire State Manufacturing Index': '紐約州製造業指數',
+    'Philly Fed Manufacturing Index': '費城聯儲製造業指數', 'Durable Goods Orders m/m': '耐用品訂單按月',
+    'Core Durable Goods Orders m/m': '核心耐用品訂單按月',
+}
 
 jar = http.cookiejar.CookieJar()
 opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
@@ -81,6 +102,50 @@ def quotes_for(symbols):
             pass
         time.sleep(0.5)
     return out
+
+
+def earnings_flags(d, tickers, sym_of, qs, now):
+    """Next results date from the v7 quote data (Yahoo); replaces older 業績 tags for the same stock."""
+    today = now.astimezone(NY).date()
+    flags = d['macro'].setdefault('flags', [])
+    for t in tickers:
+        q = qs.get(sym_of.get(t)) or {}
+        ts = q.get('earningsTimestampStart') or q.get('earningsTimestamp')
+        if q.get('quoteType') != 'EQUITY' or not ts:
+            continue
+        day = datetime.fromtimestamp(ts, NY).date()
+        if not today <= day <= today + timedelta(days=EARNINGS_DAYS):
+            continue
+        est = bool(q.get('isEarningsDateEstimate'))
+        note = f'{day.month}/{day.day}（美國時間）公布季度業績' + ('，預計日期未經公司確認' if est else '') + '（Yahoo Finance）'
+        flags[:] = [f for f in flags if not (f.get('t') == t and f.get('type') == '業績')]
+        flags.append({'t': t, 'type': '業績', 'date': day.isoformat(), 'note': note, 'auto': True,
+                      'url': f'https://finance.yahoo.com/quote/{urllib.parse.quote(sym_of[t])}/'})
+
+
+def econ_events(stamp):
+    """This week's remaining US high-impact events, times in HKT; None if the feed is unavailable."""
+    body = get(EVENTS_URL)
+    try:
+        rows = json.loads(body)
+    except (TypeError, ValueError):
+        return None
+    out = []
+    for r in rows if isinstance(rows, list) else []:
+        if r.get('country') != 'USD' or r.get('impact') != 'High':
+            continue
+        try:
+            t = datetime.fromisoformat(r['date'])
+        except (KeyError, ValueError):
+            continue
+        if t.astimezone(NY).strftime('%H:%M') == '00:00':
+            continue  # all-day or tentative, no real time
+        hk = t.astimezone(HK).strftime('%Y-%m-%d %H:%M')
+        if hk < stamp:
+            continue
+        title = r.get('title') or ''
+        out.append({'time': hk, 'title': EVENT_ZH.get(title, title), 'imp': '高', 'url': 'https://www.forexfactory.com/calendar', 'auto': True})
+    return sorted(out, key=lambda e: e['time'])
 
 
 def main():
@@ -175,6 +240,10 @@ def main():
         d['macro']['date'] = now.date().isoformat()
         d['macro']['as_of'] = stamp
     d['macro']['events'] = [e for e in d['macro'].get('events', []) if e.get('time', '') >= stamp]
+    ev = econ_events(stamp)
+    if ev is not None:
+        d['macro']['events'] = ev
+    earnings_flags(d, tickers, sym_of, qs, now)
     # stock tags: news shows for 3 days, earnings until the day after (US results land on the HK morning after)
     keep = lambda f: f.get('date', '') >= (now - timedelta(days=1 if f.get('type') == '業績' else 3)).date().isoformat()
     d['macro']['flags'] = [f for f in d['macro'].get('flags', []) if keep(f)]
