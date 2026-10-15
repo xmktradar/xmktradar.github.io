@@ -26,6 +26,7 @@ def traditional(s):
 INBOX = os.path.join(os.path.dirname(__file__), '..', 'data', 'super-grok-analysis.json')
 INBOX_DIR = os.path.join(os.path.dirname(__file__), '..', 'data', 'grok-inbox')
 VALID = {'睇好', '睇淡', '中性', '未表態'}
+NOT_TICKERS = {'SPCX', 'BULLSHIT'}  # not stock tickers (team, 2026-10-08): SPCX is a post hashtag/label, BULLSHIT is a swear word
 # Macro tab (Tim, 2026-10-13): fixed theme codes and the post's effect on US stocks
 MACRO_THEMES = ('rates', 'inflation', 'jobs', 'growth', 'yields', 'fx', 'energy', 'policy', 'other')
 MACRO_IMPACT = {'bullish': 'bullish', 'bearish': 'bearish', 'neutral': 'neutral',
@@ -37,8 +38,8 @@ def clean(a):
     if not isinstance(a, dict) or not isinstance(a.get('zh_summary'), str) or not a['zh_summary'].strip():
         return None
     sbt = a.get('stance_by_ticker') if isinstance(a.get('stance_by_ticker'), dict) else {}
-    sbt = {str(k).upper().lstrip('$'): v for k, v in sbt.items() if v in VALID and str(k).strip()}
-    tickers = [str(t).upper().lstrip('$') for t in (a.get('tickers') or []) if str(t).strip()]
+    sbt = {str(k).upper().lstrip('$'): v for k, v in sbt.items() if v in VALID and str(k).strip() and str(k).upper().lstrip("$") not in NOT_TICKERS}
+    tickers = [str(t).upper().lstrip('$') for t in (a.get('tickers') or []) if str(t).strip() and str(t).upper().lstrip("$") not in NOT_TICKERS]
     tickers = list(dict.fromkeys(tickers + [t for t in sbt if t not in tickers]))
     for t in tickers:
         sbt.setdefault(t, '未表態')
