@@ -319,6 +319,7 @@
    "bull": [],
    "bear": [
     "CIFR",
+    "QQQ",
     "IREN",
     "TLT",
     "BE"
@@ -329,7 +330,8 @@
     "RKLB",
     "NBIS",
     "SPY",
-    "IWM"
+    "IWM",
+    "ASML"
    ],
    "window": [
     "2026-10-15T00:00",
@@ -348,9 +350,9 @@
     "SMH"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-15 14:39"
+   "updated_hkt": "2026-10-15 14:59"
   }
  },
- "updated_hkt": "2026-10-15 14:39",
+ "updated_hkt": "2026-10-15 14:59",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
