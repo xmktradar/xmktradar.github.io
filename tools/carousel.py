@@ -10,6 +10,7 @@ from the summaries already on the site. Writes data/social-posts.json "slots" (n
 fields, which tools/share.py still writes) and social/index.html via work/ (copied in once the pictures are drawn),
 and work/carousel.json for tools/carousel.js, which draws og/c/<day>-<slot>-<lang>-<n>.jpg.
 """
+import base64
 import html
 import os
 import re
@@ -27,6 +28,9 @@ TITLE = {'1230': {'zh': '今日快照', 'en': "Today's snapshot", 'ko': '오늘�
          '1630': {'zh': '好淡對決', 'en': 'Bull vs bear', 'ko': '강세 vs 약세'},
          '2030': {'zh': '開市前焦點', 'en': 'Before the open', 'ko': '개장 전 포커스'}}
 TARGET_DAYS = 7  # price targets from the last week
+CAST_FILE = 'assets/characters/characters.json'  # Nova, Ember, Iris and their 15 reactions (Tim, 2026-10-15)
+STORY_CAST = ((0, 'nova'), (1, 'ember'), (3, 'iris'))  # picture 1 Nova sets it up, 2 Ember reacts, 3 the accounts, 4 Iris wraps up
+TALK = {'zh': '🗣️ 大神點講', 'en': '🗣️ What the accounts say', 'ko': '🗣️ 계정들의 의견'}
 
 ZH_PT = re.compile(r'目標價[^\d$。；，]{0,12}?(?:由\s*\$?[\d,.]+\s*(?:美元)?\s*(?:上調|下調|調)?(?:至|到)\s*)?\$?\s?(\d+(?:,\d{3})*(?:\.\d+)?)')
 EN_PT = re.compile(r'(?:price target|\bPT\b)[^\d$.;]{0,25}?(?:from \$?[\d,.]+ to )?\$\s?(\d+(?:,\d{3})*(?:\.\d+)?)'
@@ -247,7 +251,12 @@ def targets(site, now):
                 seen.add(key)
                 out.append({'t': tk, 'pt': v, 'acc': p['handle'], 'url': p['url'], 'ts': p['time_utc'], 'day': p.get('day', '')})
     out.sort(key=lambda x: x['ts'], reverse=True)
-    return out
+    one, seen_acc = [], set()  # one target per account, so a single analyst-notes post does not fill the list
+    for x in out:
+        if x['acc'] not in seen_acc:
+            seen_acc.add(x['acc'])
+            one.append(x)
+    return one
 
 
 def focus_pick(site, s, now, used=()):
@@ -303,6 +312,81 @@ def focus(site, s, lang, day, win, pick):
         third = {'kind': 'cards', 'secs': [], 'cta': cta(lang)}
     last = {'kind': 'quote', 'h': u['ask'] + (f" · ${h0['t']}" if h0 else ''), 'quote': q, 'cta': cta(lang)}
     return [cover, rise, third, last]
+
+
+# ---------- story mode: the three characters tell each post as a four-picture story ----------
+class Cast:
+    def __init__(self):
+        self.d = read_json(CAST_FILE)
+        self.pics = {}
+
+    def pic(self, cid, eid):
+        """The character's drawing for this reaction (assets/characters/<id>/<E..>.png), or her avatar until it is drawn."""
+        for f in (f'assets/characters/{cid}/{eid}.png', f'assets/characters/{cid}/avatar.png'):
+            if os.path.exists(f):
+                if f not in self.pics:
+                    self.pics[f] = 'data:image/png;base64,' + base64.b64encode(open(f, 'rb').read()).decode()
+                return self.pics[f]
+        return ''
+
+    def who(self, cid):
+        return next(c for c in self.d['characters'] if c['id'] == cid)
+
+    def line(self, eid, cid, lang):
+        e = next(x for x in self.d['expressions'] if x['id'] == eid)
+        return e['cast'][cid]['line_' + lang]
+
+
+def situation(site, s, key, pick):
+    """Which of the 15 reactions (E01-E15) fits this post, from the site's own numbers."""
+    if key == '1630':
+        return 'E08'  # bull vs bear
+    if key == '2030':
+        hot, pts, _ = pick
+        return 'E14' if pts else ('E13' if hot else 'E05')
+    hero = s['top'][0]['t'] if s['top'] else None
+    d1 = site.px(hero)[1] if hero else None
+    if d1 is not None and d1 >= 3:
+        return 'E01'
+    if d1 is not None and d1 <= -3:
+        return 'E03'
+    if s['bull']:
+        return 'E06'
+    if s['bear']:
+        return 'E07'
+    if d1 is None or abs(d1) < 0.5:
+        return 'E05'
+    return 'E02' if d1 > 0 else 'E04'
+
+
+def story(cast, slides, lang, eid):
+    for i, cid in STORY_CAST:
+        c = cast.who(cid)
+        slides[i]['char'] = {'img': cast.pic(cid, eid), 'name': c['name'][lang], 'line': cast.line(eid, cid, lang), 'color': c['colors'][0]}
+        if slides[i].get('kind') == 'cover':
+            slides[i]['quote'] = None  # the character's line takes its place
+    slides[2]['talk'] = TALK[lang]
+    return slides
+
+
+def dialogue(cast, lang, eid):
+    out = []
+    for _, cid in STORY_CAST:
+        n, ln = cast.who(cid)['name'][lang], cast.line(eid, cid, lang)
+        out.append(f'{n}：「{ln}」' if lang == 'zh' else f'{n}: "{ln}"')
+    return '\n'.join(out)
+
+
+def add_dialogue(posts, text):
+    """Put the characters' three lines under the headline (Instagram, Facebook, and Threads when it still fits)."""
+    for k in ('instagram', 'facebook', 'threads'):
+        v = posts.get(k)
+        if not v or '\n\n' not in v:
+            continue
+        nv = v.replace('\n\n', f'\n\n{text}\n\n', 1)
+        if k != 'threads' or len(nv) <= 500:
+            posts[k] = nv
+    return posts
 
 
 # ---------- captions ----------
@@ -447,6 +531,7 @@ def main():
     if not todo:
         return
     site = Site(load(HTML))
+    cast = Cast() if os.path.exists(CAST_FILE) else None
     from share import window
     win = window(s)
     jobs = []
@@ -476,6 +561,10 @@ def main():
                 posts = cap_focus(site, s, lang, day, pick)
             if not posts:
                 break
+            if cast:
+                eid = situation(site, s, key, pick)
+                slides = story(cast, slides, lang, eid)
+                posts = add_dialogue(dict(posts), dialogue(cast, lang, eid))
             files = [f'og/c/{day}-{key}-{lang}-{n + 1}.jpg' for n in range(4)]
             jobs.append({'slot': key, 'theme': THEME[key], 'lang': lang, 'date': day, 'slides': slides, 'files': files})
             made[lang] = {'images': [f'{SITE}{f}' for f in files], 'posts': posts}
