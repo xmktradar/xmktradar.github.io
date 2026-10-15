@@ -144,7 +144,7 @@ def econ_events(stamp):
         if hk < stamp:
             continue
         title = r.get('title') or ''
-        out.append({'time': hk, 'title': EVENT_ZH.get(title, title), 'imp': '高', 'url': 'https://www.forexfactory.com/calendar', 'auto': True})
+        out.append({'time': hk, 'title': EVENT_ZH.get(title) or ('聯儲局主席講話' if re.match(r'Fed Chair(man)? \w+ Speaks$', title) else title), 'imp': '高', 'url': 'https://www.forexfactory.com/calendar', 'auto': True})
     return sorted(out, key=lambda e: e['time'])
 
 
