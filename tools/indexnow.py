@@ -15,7 +15,7 @@ import urllib.request
 
 from sitedata import notice
 
-SITE = 'https://xmktradar.github.io/'
+SITE = 'https://thecrowdtape.com/'
 KEY = 'ccab4c5e388dc31f07a4976abba71466'
 PAGE = re.compile(r'^(?:(zh|en|ko)/(?:stock/([^/]+)/)?)?index\.html$')
 
@@ -40,7 +40,7 @@ def main():
     urls = sorted(set(everything() if full else changed()))
     if not urls:
         return notice('IndexNow：今次冇網頁改動')
-    body = json.dumps({'host': 'xmktradar.github.io', 'key': KEY, 'keyLocation': f'{SITE}{KEY}.txt',
+    body = json.dumps({'host': 'thecrowdtape.com', 'key': KEY, 'keyLocation': f'{SITE}{KEY}.txt',
                        'urlList': urls[:10000]}).encode()
     req = urllib.request.Request('https://api.indexnow.org/indexnow', data=body, method='POST',
                                  headers={'Content-Type': 'application/json; charset=utf-8'})

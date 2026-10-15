@@ -25,7 +25,7 @@ from datetime import date, timedelta
 
 from sitedata import BLOCK, notice, read_json
 
-SITE = 'https://xmktradar.github.io/'
+SITE = 'https://thecrowdtape.com/'
 LANGS = {'zh': ('zh-Hant', '中'), 'en': ('en', 'EN'), 'ko': ('ko', '한')}
 CONTENT = ('summaries', 'highlights', 'briefings')
 MARK = '<!-- lang-head -->'

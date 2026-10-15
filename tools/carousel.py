@@ -39,14 +39,14 @@ EN_PT = re.compile(r'(?:price target|\bPT\b)[^\d$.;]{0,25}?(?:from \$?[\d,.]+ to
 U = {
     'zh': dict(acc=lambda n: f'{n} 個帳號', bull='睇好', bear='睇淡', nb=lambda n: f'{n} 個睇好', nr=lambda n: f'{n} 個睇淡',
                swipe='👉 向左滑睇 4 張', foot='⚠️ 唔構成投資建議', follow='Follow @thecrowdtape',
-               site='最新數字：xmktradar.github.io', give='☕ 支持我哋：網站底部 PayPal', posted=lambda n: f'{n} 個帳號發文',
+               site='最新數字：thecrowdtape.com', give='☕ 支持我哋：網站底部 PayPal', posted=lambda n: f'{n} 個帳號發文',
                stocks=lambda n: f'{n} 隻股票', talk='🔥 最多人討論 Top 5', jb='🟢 共同看多', jr='🔴 共同看空', split='⚖️ 好淡分歧',
                none='今日暫時未有', vs=lambda b, r: f'{b} 好 vs {r} 淡', who='你企邊邊？留言話我知 👇', heat='📈 升溫榜（24 小時 vs 前 24 小時）',
                now=lambda a, b: f'{a} 個帳號（之前 {b}）', pt='🎯 帳號講過嘅目標價', views=lambda t: f'💬 帳號點睇 ${t}',
                hot=lambda a, b: f'24 小時內 {a} 個帳號講（之前 {b} 個）', ask='💬 一句觀點', d1='今日'),
     'en': dict(acc=lambda n: f'{n} account{"" if n == 1 else "s"}', bull='Bullish', bear='Bearish', nb=lambda n: f'{n} bullish',
                nr=lambda n: f'{n} bearish', swipe='👉 Swipe for all 4', foot='⚠️ Not investment advice', follow='Follow @thecrowdtape',
-               site='Live numbers: xmktradar.github.io', give='☕ Support us: PayPal at the bottom of the site',
+               site='Live numbers: thecrowdtape.com', give='☕ Support us: PayPal at the bottom of the site',
                posted=lambda n: f'{n} accounts posted', stocks=lambda n: f'{n} stocks', talk='🔥 Most discussed · Top 5',
                jb='🟢 Joint bullish', jr='🔴 Joint bearish', split='⚖️ Split views', none='None yet today',
                vs=lambda b, r: f'{b} bull vs {r} bear', who='Which side are you on? Tell us below 👇',
@@ -55,7 +55,7 @@ U = {
                ask='💬 One view', d1='Today'),
     'ko': dict(acc=lambda n: f'계정 {n}개', bull='강세', bear='약세', nb=lambda n: f'강세 {n}', nr=lambda n: f'약세 {n}',
                swipe='👉 옆으로 넘겨 4장 보기', foot='⚠️ 투자 조언 아님', follow='Follow @thecrowdtape',
-               site='최신 수치: xmktradar.github.io', give='☕ 후원: 사이트 하단 PayPal', posted=lambda n: f'계정 {n}개 게시',
+               site='최신 수치: thecrowdtape.com', give='☕ 후원: 사이트 하단 PayPal', posted=lambda n: f'계정 {n}개 게시',
                stocks=lambda n: f'종목 {n}개', talk='🔥 최다 언급 Top 5', jb='🟢 공동 강세', jr='🔴 공동 약세', split='⚖️ 의견 엇갈림',
                none='오늘은 아직 없음', vs=lambda b, r: f'강세 {b} vs 약세 {r}', who='여러분은 어느 쪽인가요? 댓글로 알려주세요 👇',
                heat='📈 관심 급상승 (24시간 vs 직전 24시간)', now=lambda a, b: f'계정 {a}개 (이전 {b}개)', pt='🎯 계정들이 언급한 목표가',
@@ -398,9 +398,9 @@ def head_line(slot, lang, day, lead):
     return f'{m}/{dd} {TITLE[slot][lang]}：{lead}' if lang == 'zh' else f'{m}/{dd} {TITLE[slot][lang]}: {lead}'
 
 
-END = {'zh': ['👉 左右滑睇晒 4 張圖', '網站約每 4 個鐘更新，最新數字 👉 link in bio (xmktradar.github.io)', '☕ 鍾意就請我哋飲杯咖啡：link in bio，網站底部 PayPal 捐款 🙏', 'Follow @thecrowdtape 每日睇街貨點諗。'],
-       'en': ['👉 Swipe through all 4 pictures', 'Updated about every 4 hours. Latest numbers 👉 link in bio (xmktradar.github.io)', '☕ Enjoy it? Buy us a coffee: link in bio, PayPal at the bottom of the site 🙏', 'Follow @thecrowdtape for the daily read on what the crowd thinks.'],
-       'ko': ['👉 옆으로 넘겨 4장 모두 보기', '약 4시간마다 업데이트, 최신 수치 👉 프로필 링크 (xmktradar.github.io)', '☕ 도움이 되셨다면 커피 한 잔 후원해 주세요: 프로필 링크, 사이트 하단 PayPal 🙏', '@thecrowdtape 팔로우하고 매일 시장 분위기를 확인하세요.']}
+END = {'zh': ['👉 左右滑睇晒 4 張圖', '網站約每 4 個鐘更新，最新數字 👉 link in bio (thecrowdtape.com)', '☕ 鍾意就請我哋飲杯咖啡：link in bio，網站底部 PayPal 捐款 🙏', 'Follow @thecrowdtape 每日睇街貨點諗。'],
+       'en': ['👉 Swipe through all 4 pictures', 'Updated about every 4 hours. Latest numbers 👉 link in bio (thecrowdtape.com)', '☕ Enjoy it? Buy us a coffee: link in bio, PayPal at the bottom of the site 🙏', 'Follow @thecrowdtape for the daily read on what the crowd thinks.'],
+       'ko': ['👉 옆으로 넘겨 4장 모두 보기', '약 4시간마다 업데이트, 최신 수치 👉 프로필 링크 (thecrowdtape.com)', '☕ 도움이 되셨다면 커피 한 잔 후원해 주세요: 프로필 링크, 사이트 하단 PayPal 🙏', '@thecrowdtape 팔로우하고 매일 시장 분위기를 확인하세요.']}
 
 
 def versions(lang, head, body, tks):
