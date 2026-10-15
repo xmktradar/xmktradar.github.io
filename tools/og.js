@@ -1,6 +1,7 @@
 // Draw the 1200x630 share pictures from tools/og.html, one per language. Usage: node tools/og.js work/og.json
-// Writes og/<day>.png (Chinese), og/<day>-en.png, og/<day>-ko.png, og/latest*.png and og/latest.json;
-// when og.json says social, also og/social-<lang>.png for the day's social media posts and og/story-<lang>.png
+// Writes og/<day>.png (Chinese), og/<day>-en.png, og/<day>-ko.png, og/latest*.png and og/latest.json,
+// plus a 1080x1350 IG/Threads portrait from tools/portrait.html: og/portrait-<lang>.png and og/latest-portrait*.png.
+// When og.json says social, also og/social-<lang>.png for the day's social media posts and og/story-<lang>.png
 // (1080x1920 Instagram Story, from tools/story.html).
 const { chromium } = require('playwright');
 const fs = require('fs');
@@ -33,6 +34,26 @@ const path = require('path');
     fs.copyFileSync(out, `og/latest${sfx}.png`);
     if (job.social) fs.copyFileSync(out, `og/social-${lang}.png`);
     console.log('og', out);
+  }
+  // IG/Threads portrait (1080x1350), every run: the landscape picture plus headline and brand.
+  const pp = await b.newPage({ viewport: { width: 1080, height: 1350 } });
+  pp.on('pageerror', e => errs.push(e.message));
+  await pp.goto('file://' + path.resolve(__dirname, 'portrait.html'), { waitUntil: 'networkidle' });
+  for (const lang of ['zh', 'en', 'ko']) {
+    const sfx = lang === 'zh' ? '' : '-' + lang;
+    const pic = 'data:image/png;base64,' + fs.readFileSync(`og/${job.date}${sfx}.png`).toString('base64');
+    await pp.evaluate(([l, d, pc]) => portrait(l, d, pc), [lang, job.langs[lang], pic]);
+    await pp.evaluate(async () => {
+      const want = ['900 62px "Noto Sans TC"', '900 62px "Noto Sans KR"', '700 48px "IBM Plex Mono"'];
+      const t = new Promise(r => setTimeout(r, 20000));
+      await Promise.race([Promise.all(want.map(f => document.fonts.load(f, document.body.innerText))), t]);
+      await document.fonts.ready;
+      await Promise.all([...document.images].map(i => i.decode().catch(() => {})));
+    });
+    const pout = `og/portrait-${lang}.png`;
+    await pp.screenshot({ path: pout });
+    fs.copyFileSync(pout, `og/latest-portrait${sfx}.png`);
+    console.log('portrait', pout);
   }
   // Instagram Story pictures (1080x1920), only with the day's social posts.
   if (job.social) {
