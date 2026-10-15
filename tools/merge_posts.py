@@ -6,6 +6,7 @@ Writes work/merge.json with what changed, for the analysis step.
 import re
 from datetime import timezone
 
+from analyse_posts import NOT_TICKERS
 from macro_themes import tag_posts
 from relevance import build, relevant
 from sitedata import ET, HK, load, notice, now_hk, parse_iso, read_json, save, work, write_json
@@ -99,6 +100,22 @@ def main():
     if strangers:
         d['posts'] = [p for p in d['posts'] if ours(p, hs)]
         notice(f'刪除唔喺追蹤名單帳號嘅帖 {len(strangers)} 則')
+    # SPCX / BULLSHIT are not tickers (team, 2026-10-08): clear them from posts already on the site
+    n = 0
+    for p in d['posts']:
+        changed = False
+        if 'tickers' in p:
+            tickers = [t for t in p['tickers'] if t not in NOT_TICKERS]
+            changed = tickers != p['tickers']
+            p['tickers'] = tickers
+        if isinstance(p.get('stance_by_ticker'), dict):
+            for k in [k for k in p['stance_by_ticker'] if k in NOT_TICKERS]:
+                del p['stance_by_ticker'][k]
+                changed = True
+        if changed:
+            n += 1
+    if n:
+        notice(f'剔走非股票代號（{"、".join(sorted(NOT_TICKERS))}）{n} 則')
     new = read_json(work('new_posts.json'), {'posts': [], 'failed': [], 'accounts': 0})
     done = read_json(work('analysed.json'), {})
     have = {p['url'].lower() for p in d['posts']}
