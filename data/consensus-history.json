@@ -319,13 +319,14 @@
    "bull": [],
    "bear": [
     "CRWV",
-    "SNDK",
-    "BE",
-    "CIFR"
+    "CIFR",
+    "BE"
    ],
    "split": [
     "NBIS",
     "SPY",
+    "RKLB",
+    "IWM",
     "MU"
    ],
    "window": [
@@ -333,21 +334,21 @@
     "2026-10-15T23:59"
    ],
    "top": [
-    "CRWV",
     "QQQ",
+    "CRWV",
     "SPY",
-    "NVDA",
     "IWM",
+    "NVDA",
     "SPCX",
     "SMH",
     "NBIS",
-    "OPEN",
-    "SNDK"
+    "SNDK",
+    "CIFR"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-15 10:39"
+   "updated_hkt": "2026-10-15 10:59"
   }
  },
- "updated_hkt": "2026-10-15 10:39",
+ "updated_hkt": "2026-10-15 10:59",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
