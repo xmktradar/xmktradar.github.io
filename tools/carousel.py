@@ -363,8 +363,6 @@ def story(cast, slides, lang, eid):
     for i, cid in STORY_CAST:
         c = cast.who(cid)
         slides[i]['char'] = {'img': cast.pic(cid, eid), 'name': c['name'][lang], 'line': cast.line(eid, cid, lang), 'color': c['colors'][0]}
-        if slides[i].get('kind') == 'cover':
-            slides[i]['quote'] = None  # the character's line takes its place
     slides[2]['talk'] = TALK[lang]
     return slides
 
