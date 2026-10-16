@@ -420,7 +420,6 @@
   },
   "2026-10-17": {
    "bull": [
-    "SPY",
     "META",
     "AAPL",
     "TSM",
@@ -429,6 +428,7 @@
     "CRDO",
     "NOW",
     "WMT",
+    "BAC",
     "XLF"
    ],
    "bear": [
@@ -436,18 +436,19 @@
    ],
    "split": [
     "TSLA",
+    "SPY",
     "CRWV",
+    "QQQ",
     "NVDA",
     "NBIS",
-    "QQQ",
     "SMH",
     "MU",
     "SNDK",
     "RKLB",
     "AMD",
     "AVGO",
-    "SKHY",
     "BE",
+    "SKHY",
     "PLTR"
    ],
    "window": [
@@ -457,19 +458,19 @@
    "top": [
     "TSLA",
     "SPY",
-    "QQQ",
     "CRWV",
+    "QQQ",
     "NVDA",
     "AAPL",
-    "META",
     "MU",
-    "SMH",
-    "NBIS"
+    "META",
+    "NBIS",
+    "SMH"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-17 00:41"
+   "updated_hkt": "2026-10-17 01:04"
   }
  },
- "updated_hkt": "2026-10-17 00:41",
+ "updated_hkt": "2026-10-17 01:04",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
