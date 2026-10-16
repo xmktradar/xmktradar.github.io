@@ -374,33 +374,33 @@
     "QQQ",
     "MU",
     "CRDO",
-    "NBIS"
+    "NBIS",
+    "TSM"
    ],
    "bear": [],
    "split": [
-    "CRWV",
-    "RKLB"
+    "CRWV"
    ],
    "window": [
     "2026-10-16",
     "2026-10-16"
    ],
    "top": [
-    "CRWV",
     "QQQ",
+    "CRWV",
     "NVDA",
     "SPY",
     "TSLA",
+    "AMD",
+    "GOOGL",
+    "META",
     "MU",
-    "RSP",
-    "SMH",
-    "RKLB",
-    "AMD"
+    "RSP"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-16 07:24"
+   "updated_hkt": "2026-10-16 09:01"
   }
  },
- "updated_hkt": "2026-10-16 07:24",
+ "updated_hkt": "2026-10-16 09:01",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
