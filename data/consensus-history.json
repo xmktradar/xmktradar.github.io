@@ -420,9 +420,13 @@
   },
   "2026-10-17": {
    "bull": [],
-   "bear": [],
+   "bear": [
+    "TSLA",
+    "SPY"
+   ],
    "split": [
-    "QQQ"
+    "QQQ",
+    "META"
    ],
    "window": [
     "2026-10-17",
@@ -430,20 +434,20 @@
    ],
    "top": [
     "QQQ",
-    "AAPL",
-    "DELL",
-    "MU",
-    "SKHY",
     "TSLA",
     "CRWV",
-    "GOOGL",
-    "GS",
-    "META"
+    "SPY",
+    "AAPL",
+    "DELL",
+    "META",
+    "MU",
+    "SKHY",
+    "VIX"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-17 03:29"
+   "updated_hkt": "2026-10-17 05:06"
   }
  },
- "updated_hkt": "2026-10-17 03:29",
+ "updated_hkt": "2026-10-17 05:06",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
