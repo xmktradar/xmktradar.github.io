@@ -1,115 +1,79 @@
 {
- "posts": {
-  "2111080187521556804": {
-   "en_summary": "@MrZackMorris OpEx Friday levels: $SPY premarket 773.92/771.79, prior 772.87/764.43, 200 SMA 724.63; $QQQ premarket 730.32/726.04, prior 729.43/715.44, 200 SMA 674.46. After 9:40, if a low of day retest holds, calls.",
-   "zh_summary": "@MrZackMorris期權到期週五關鍵位：$SPY盤前773.92/771.79，前日772.87/764.43，200日均線724.63；$QQQ盤前730.32/726.04，前日729.43/715.44，200日均線674.46。9:40後若回測日內低位守住，就買認購。",
-   "ko_summary": "@MrZackMorris 옵션만기 금요일 레벨: $SPY 프리마켓 773.92/771.79, 전일 772.87/764.43, 200일선 724.63. $QQQ 프리마켓 730.32/726.04, 전일 729.43/715.44, 200일선 674.46. 9:40 이후 당일 저점 재시험이 지켜지면 콜.",
-   "tickers": [
-    "SPY",
-    "QQQ"
-   ],
-   "stance": "睇好",
-   "stance_by_ticker": {
-    "SPY": "睇好",
-    "QQQ": "睇好"
-   },
-   "horizon": "短線",
-   "basis": "技術面",
-   "specific": true,
-   "macro": true,
-   "macro_theme": null,
-   "macro_impact": null,
-   "ticker_notes": {}
-  },
-  "2111079731630129482": {
-   "en_summary": "@EliteOptions2 trade plan: watching for a higher low on $SPX and $QQQ; $QQQ to 734 in play if tech rallies, AMD can move back to 580 next week, $MU must hold 900 at the open or risk 30 to 40 points lower, $META winding up for 800 in November with his 1000 target by Q1 2027, $TSLA through 383 can run to 400+.",
-   "zh_summary": "@EliteOptions2交易計劃：留意$SPX與$QQQ的更高低點；若科技股反彈，$QQQ可上試734，AMD下週可回到580，$MU開盤須守900否則或再跌30至40點，$META11月蓄勢上試800，他的目標價為2027年第一季1000，$TSLA突破383可升至400以上。",
-   "ko_summary": "@EliteOptions2 매매 계획: $SPX와 $QQQ의 더 높은 저점을 지켜본다. 기술주가 반등하면 $QQQ 734 가능, AMD는 다음 주 580 복귀 가능, $MU는 개장 시 900을 지켜야 하며 아니면 30~40포인트 더 하락 위험, $META는 11월 800을 향해 준비 중이고 그의 목표가는 2027년 1분기 1000, $TSLA는 383 돌파 시 400 이상 가능.",
-   "tickers": [
-    "SPY",
-    "QQQ",
-    "AMD",
-    "MU",
-    "META",
-    "TSLA"
-   ],
-   "stance": "睇好",
-   "stance_by_ticker": {
-    "SPY": "睇好",
-    "QQQ": "睇好",
-    "AMD": "睇好",
-    "MU": "中性",
-    "META": "睇好",
-    "TSLA": "睇好"
-   },
-   "horizon": "短線",
-   "basis": "技術面",
-   "specific": true,
-   "macro": true,
-   "macro_theme": null,
-   "macro_impact": null,
-   "ticker_notes": {
-    "META": "@EliteOptions2 target 1000 by Q1 2027",
-    "AMD": "can move back to 580",
-    "TSLA": "through 383 can run to 400+"
-   }
-  },
-  "2111078241465446908": {
-   "en_summary": "@GerberKawasaki on $NFLX layoffs: it has been making weak content and buying content at a premium, so a shake up is due and the whole entertainment industry needs a reset.",
-   "zh_summary": "@GerberKawasaki談$NFLX裁員：其近期內容質素差且溢價收購內容，是時候整頓，整個娛樂業都需要重置。",
-   "ko_summary": "@GerberKawasaki는 $NFLX 감원에 대해 최근 콘텐츠가 부실하고 비싸게 콘텐츠를 사왔기에 쇄신이 필요하며 엔터 산업 전체가 리셋돼야 한다고 했다.",
-   "tickers": [
-    "NFLX"
-   ],
-   "stance": "睇淡",
-   "stance_by_ticker": {
-    "NFLX": "睇淡"
-   },
-   "horizon": "中線",
-   "basis": "基本面",
-   "specific": false,
-   "macro": false,
-   "macro_theme": null,
-   "macro_impact": null,
-   "ticker_notes": {}
-  },
-  "2111077121993085229": {
-   "en_summary": "@StockSavvyShay to @VanquishTrader: the bigger question on $AAPL is how much of the opportunity is already priced in at 40x earnings.",
-   "zh_summary": "@StockSavvyShay回覆@VanquishTrader：$AAPL更大的問題是在40倍市盈率下，機會已反映了多少。",
-   "ko_summary": "@StockSavvyShay는 @VanquishTrader에게 $AAPL의 더 큰 질문은 이익 40배에서 기회가 이미 얼마나 반영됐느냐라고 했다.",
-   "tickers": [
-    "AAPL"
-   ],
-   "stance": "中性",
-   "stance_by_ticker": {
-    "AAPL": "中性"
-   },
-   "horizon": null,
-   "basis": "估值",
-   "specific": false,
-   "macro": false,
-   "macro_theme": null,
-   "macro_impact": null,
-   "ticker_notes": {}
-  },
-  "2111076571255898492": {
-   "en_summary": "@GerberKawasaki praises Apple for launching the iPhone Duo as a product people can buy within a reasonable time; pre-orders start today. $AAPL",
-   "zh_summary": "@GerberKawasaki讚揚蘋果推出可在合理時間內買到的iPhone Duo，今日開始預購。$AAPL",
-   "ko_summary": "@GerberKawasaki는 합리적인 기간 안에 살 수 있는 iPhone Duo를 출시한 애플을 칭찬했다. 오늘 사전주문 시작. $AAPL",
-   "tickers": [
-    "AAPL"
-   ],
-   "stance": "睇好",
-   "stance_by_ticker": {
-    "AAPL": "睇好"
-   },
-   "horizon": "短線",
-   "basis": "催化劑",
-   "specific": false,
-   "macro": false,
-   "macro_theme": null,
-   "macro_impact": null,
-   "ticker_notes": {}
+  "posts": {
+    "2111080187521556804": {
+      "en_summary": "OpEx Friday levels: $SPY PM 773.92/771.79 (prior 772.87/764.43, 200 SMA 724.63); $QQQ PM 730.32/726.04 (prior 729.43/715.44, 200 SMA 674.46). VWAP + 200 SMA expected to pull price back. If LOD retest holds after 9:40, bullish for calls.",
+      "zh_summary": "選擇權到期日週五水準：$SPY 盤前 773.92/771.79（前值 772.87/764.43，200日均線 724.63）；$QQQ 盤前 730.32/726.04（前值 729.43/715.44，200日均線 674.46）。VWAP 加 200日均線料將拉回價格。若 9:40 後最低點再測守住，則利好買權。",
+      "ko_summary": "$SPY 프리마켓 773.92/771.79 (이전 772.87/764.43, 200 SMA 724.63); $QQQ 프리마켓 730.32/726.04 (이전 729.43/715.44, 200 SMA 674.46). VWAP + 200 SMA가 가격을 끌어내릴 것으로 예상. 9:40 이후 LOD 재테스트가 지켜지면 콜 매수에 유리.",
+      "tickers": ["SPY", "QQQ"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPY": "睇好", "QQQ": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2111079731630129482": {
+      "en_summary": "Trade plan for lotto Friday: watching higher low on $SPX/$QQQ. SPX gap up, QQQ small gap down. If tech rallies and money rotates to chip/memory, $QQQ to 734 in play, AMD back to 580 next week. $MU needs hold 900 at open or risk another 30-40 down. $META winding up for 800 in November, target 1000 by Q1 2027. $TSLA up 13 after car presentation, through 383 can run to 400+.",
+      "zh_summary": "週五樂透交易計劃：關注 $SPX/$QQQ 更高低點。SPX 高開，QQQ 小幅低開。若科技股反彈且資金輪動至晶片/記憶體，$QQQ 上看 734，AMD 下週可回 580。$MU 開盤需守住 900，否則可能再跌 30-40 點。$META 醞釀 11 月上看 800，目標 2027 年第一季 1000。$TSLA 昨晚車展後升 13，突破 383 可奔 400 以上。",
+      "ko_summary": "로또 금요일 트레이드 플랜: $SPX/$QQQ 더 높은 저점 주시. SPX 갭업, QQQ 소폭 갭다운. 테크 반등하고 자금이 칩/메모리로 회전하면 $QQQ 734 가능, AMD 다음 주 580 복귀. $MU는 개장 시 900 방어 필요 아니면 추가 30-40 하락 위험. $META 11월 800 준비 중, 2027년 1분기 목표 1000. $TSLA 차 발표 후 13 상승, 383 돌파 시 400+ 가능.",
+      "tickers": ["QQQ", "AMD", "MU", "META", "TSLA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"QQQ": "睇好", "AMD": "睇好", "MU": "中性", "META": "睇好", "TSLA": "睇好"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"META": "target 800 Nov, 1000 by Q1 2027", "TSLA": "through 383 to 400+", "QQQ": "to 734", "AMD": "to 580 next week"}
+    },
+    "2111079719693172739": {
+      "en_summary": "Fear has entered the chat on $QQQ.",
+      "zh_summary": "$QQQ 出現恐懼情緒。",
+      "ko_summary": "$QQQ에 공포가 들어왔다.",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2111078241465446908": {
+      "en_summary": "Netflix has been making crappy content and buying other content at a premium. Time for a shake up; the whole entertainment industry needs a reset. $NFLX",
+      "zh_summary": "Netflix 近期內容品質低劣，並以溢價收購其他內容。是時候大整頓，整個娛樂產業需要重置。$NFLX",
+      "ko_summary": "넷플릭스가 최근 저질 콘텐츠를 만들고 다른 콘텐츠를 프리미엄에 사고 있다. 개편이 필요하고 전체 엔터테인먼트 산업이 리셋되어야 한다. $NFLX",
+      "tickers": ["NFLX"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NFLX": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2111077121993085229": {
+      "en_summary": "Great read on $AAPL but bigger question is how much of this opportunity is already priced in at 40x earnings.",
+      "zh_summary": "關於 $AAPL 的分析不錯，但更大問題是以 40 倍盈率計算，這機會有多少已被定價。",
+      "ko_summary": "$AAPL에 대한 좋은 분석이지만, 40배 수익 배수에서 이 기회가 이미 얼마나 가격에 반영되었는지가 더 큰 질문이다.",
+      "tickers": ["AAPL"],
+      "stance": "中性",
+      "stance_by_ticker": {"AAPL": "中性"},
+      "horizon": null,
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AAPL": "40x earnings already priced in question"}
+    }
   }
- }
 }
