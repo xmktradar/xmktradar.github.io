@@ -375,7 +375,11 @@
     "AAPL",
     "TSM",
     "TLT",
-    "CRDO"
+    "GOOGL",
+    "CRDO",
+    "NOW",
+    "WMT",
+    "XLF"
    ],
    "bear": [
     "SOXX"
@@ -384,10 +388,10 @@
     "TSLA",
     "CRWV",
     "NVDA",
-    "QQQ",
     "NBIS",
-    "MU",
+    "QQQ",
     "SMH",
+    "MU",
     "RKLB",
     "SNDK",
     "AMD",
@@ -406,15 +410,15 @@
     "QQQ",
     "NVDA",
     "AAPL",
-    "MU",
     "META",
+    "MU",
     "SMH",
-    "GOOGL"
+    "NBIS"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-16 23:28"
+   "updated_hkt": "2026-10-17 00:13"
   }
  },
- "updated_hkt": "2026-10-16 23:28",
+ "updated_hkt": "2026-10-17 00:13",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
