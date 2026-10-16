@@ -371,8 +371,9 @@
   "2026-10-16": {
    "bull": [
     "QQQ",
-    "NBIS",
     "SPY",
+    "NBIS",
+    "SMH",
     "CRDO",
     "SNDK",
     "TSM"
@@ -382,9 +383,9 @@
    ],
    "split": [
     "CRWV",
+    "TSLA",
     "NVDA",
     "MU",
-    "TSLA",
     "AMD"
    ],
    "window": [
@@ -392,21 +393,21 @@
     "2026-10-16"
    ],
    "top": [
+    "TSLA",
     "CRWV",
     "NVDA",
     "QQQ",
-    "TSLA",
     "SPY",
     "MU",
     "AMD",
+    "SMH",
     "RKLB",
-    "GOOGL",
-    "AVGO"
+    "GOOGL"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-16 12:41"
+   "updated_hkt": "2026-10-16 13:02"
   }
  },
- "updated_hkt": "2026-10-16 12:41",
+ "updated_hkt": "2026-10-16 13:02",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
