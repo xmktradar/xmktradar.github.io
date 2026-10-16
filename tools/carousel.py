@@ -93,6 +93,26 @@ def card(site, t, rk, pills, accs=(), note=''):
             'spark': spark, 'note': note, 'accs': list(accs)}
 
 
+def qtext(site, p, lang, n):
+    """A post's summary without the account's own @handle or name in front (it is already shown in bold)."""
+    text = site.text(p, lang, 400)
+    text = re.sub(r'^[(（](?:Reposted by|[^)）]*(?:轉發|转发|리포스트))[^)）]*[)）]\s*', '', text)  # "(Reposted by @x)" lead-in
+    text = re.sub(r'^(?:(?:@?' + re.escape(p['handle']) + r'|' + re.escape(site.name(p['handle'])) + r')\s*[:：]?\s*)+', '', text, flags=re.I)
+    return clean(text, n)
+
+
+def side_quotes(site, t, lang, skip=(), n=2):
+    """Up to n featured posts on stock t for a cover, from different accounts, most liked first, leaving out posts used elsewhere."""
+    ps = [p for p in site.d['posts'] if t in (p.get('tickers') or []) and p['url'] not in skip]
+    ps.sort(key=lambda p: (likes(p), p.get('time_utc', '')), reverse=True)
+    out = []
+    for p in ps:
+        text = qtext(site, p, lang, (100 if lang == 'en' else 56) * (8 if n == 1 else 5) // 5)  # a lone quote gets more room
+        if len(out) < n and len(text) >= 10 and p['handle'] not in [q['acc'] for q in out]:
+            out.append({'acc': p['handle'], 'av': site.av(p['handle']), 'text': text, 'url': p['url']})
+    return out
+
+
 def add_quotes(site, slides, lang):
     """One featured post under every stock card: an account named on the card first, most liked first, newest as tie-break;
     never the same post twice in one carousel."""
@@ -103,10 +123,7 @@ def add_quotes(site, slides, lang):
                 ps = [p for p in site.d['posts'] if c['t'] in (p.get('tickers') or [])]
                 ps.sort(key=lambda p: (p['handle'] in c.get('accs', ()), likes(p), p.get('time_utc', '')), reverse=True)
                 for p in ps:
-                    text = site.text(p, lang, 200)
-                    # summaries often open with the account's own @handle or name; it is already shown in bold
-                    text = re.sub(r'^(?:(?:@?' + re.escape(p['handle']) + r'|' + re.escape(site.name(p['handle'])) + r')\s*[:：]?\s*)+', '', text, flags=re.I)
-                    text = clean(text, 90 if lang == 'en' else 46)
+                    text = qtext(site, p, lang, 90 if lang == 'en' else 46)
                     if len(text) >= 10 and p['url'] not in used:
                         used.add(p['url'])
                         c['q'] = {'acc': p['handle'], 'av': site.av(p['handle']), 'text': text}
@@ -214,6 +231,7 @@ def duel(site, s, lang, day, win, pick):
                      {'zh': '今日最多人講', 'en': 'Most talked-about today', 'ko': '오늘 가장 많이 언급된 종목'}[lang],
              'big': t or '', 'sub': u['vs'](nb, nr), 'bar': [nb, nr], 'spark': spark, 'd1': d1, 'd1l': u['d1'],
              'quote': None, 'swipe': u['swipe'], 'note': u['who']}
+    cover['quotes'] = side_quotes(site, t, lang, skip={r['url'] for r in duel_three(rows)}, n=1) if t else []
     slides = [cover]
     for i, r in enumerate(duel_three(rows)):
         p = site.by_url.get(r['url'], {})
@@ -313,18 +331,20 @@ def focus(site, s, lang, day, win, pick):
     if h0:
         for p in sorted([p for p in site.d['posts'] if h0['t'] in (p.get('tickers') or [])], key=lambda p: p.get('time_utc', ''), reverse=True)[:8]:
             if site.text(p, lang, 10):
-                q = {'acc': p['handle'], 'av': site.av(p['handle']), 'text': site.text(p, lang, 200 if lang == 'en' else 110)}
+                q = {'acc': p['handle'], 'av': site.av(p['handle']), 'text': site.text(p, lang, 200 if lang == 'en' else 110), 'url': p['url']}
                 break
     cover = {'kind': 'cover', 'kicker': TITLE['2030'][lang], 'win': win,
              'lead': {'zh': '升溫最快', 'en': 'Heating up fastest', 'ko': '가장 빠르게 뜨는 종목'}[lang],
              'big': h0['t'] if h0 else '', 'sub': u['hot'](h0['now'], h0['was']) if h0 else '', 'spark': spark, 'd1': d1, 'd1l': u['d1'],
              'quote': None, 'swipe': u['swipe']}
+    cover['quotes'] = side_quotes(site, h0['t'], lang, skip={q['url']} if q else (), n=1) if h0 else []
     rise = {'kind': 'cards', 'secs': [{'h': u['heat'], 'cards': [
         card(site, x['t'], i + 1, [{'c': 'o', 'x': f"+{x['now'] - x['was']}" if x['now'] > x['was'] else '±0'}, {'c': 'n', 'x': u['now'](x['now'], x['was'])}], x['accs'])
         for i, x in enumerate(hot[:4])], 'empty': u['none']}]}
     if pts:
         third = {'kind': 'targets', 'h': u['pt'], 'rows': [
-            {'t': x['t'], 'pt': x['pt'], 'acc': x['acc'], 'av': site.av(x['acc']), 'day': x['day'][5:].replace('-', '/')} for x in pts]}
+            {'t': x['t'], 'pt': x['pt'], 'acc': x['acc'], 'av': site.av(x['acc']), 'day': x['day'][5:].replace('-', '/'),
+             'text': qtext(site, site.by_url[x['url']], lang, 90 if lang == 'en' else 46) if x['url'] in site.by_url else ''} for x in pts]}
     elif alt:
         third = {'kind': 'views', 'h': u['views'](alt['t']), 't': alt['t'], 'rows': [
             dict(r, av=site.av(r['acc']), badge=u['bull'] if r['s'] == 'bull' else (u['bear'] if r['s'] == 'bear' else {'zh': '中性', 'en': 'Neutral', 'ko': '중립'}[lang]))

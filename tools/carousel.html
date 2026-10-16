@@ -35,6 +35,7 @@ html[lang=ko] *{word-break:keep-all}
 .cvq img{width:52px;height:52px;border-radius:50%;flex:none;box-shadow:0 0 0 3px #2f8f52;object-fit:cover}
 .cvq .who{font-size:22px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .cvq .tx{font-size:26px;line-height:1.35;-webkit-line-clamp:4}
+.cvr .cvq:only-child .tx{font-size:28px;-webkit-line-clamp:7}
 .kick{align-self:flex-start;background:#151a2c;color:#fff;font-weight:900;font-size:34px;padding:8px 22px;border-radius:14px;transform:rotate(-1.5deg)}
 .win{align-self:flex-start;background:#fff;border:3px solid #151a2c;border-radius:12px;padding:4px 14px;font:700 22px "IBM Plex Mono",monospace}
 .lead{font-weight:900;font-size:46px;margin-top:6px}
@@ -99,6 +100,8 @@ html[lang=ko] *{word-break:keep-all}
 .row .pt{font:700 46px "IBM Plex Mono",monospace;white-space:nowrap}
 .row .pt span{color:#b13a12}
 .row .by{font:700 24px "IBM Plex Mono",monospace;color:#3c4466}
+.row>div{min-width:0}
+.row .rq{font-weight:700;font-size:25px;line-height:1.35;margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .row .v{font-weight:700;font-size:28px;line-height:1.4}
 .row .pill{font-size:20px;padding:1px 10px;margin-right:8px}
 .char{display:flex;gap:6px;align-items:center;margin:-10px 0 -10px -30px}
@@ -161,7 +164,7 @@ function render(lang,theme,date,page,S){
    <div class="badge ${S.side}">${S.side==='bull'?'🟢':S.side==='bear'?'🔴':'⚪'} ${esc(S.badge)}</div>
    <div class="box"><div class="say">${esc(S.text)}</div><div class="when">${esc(S.when)}</div></div>`;
  }else if(S.kind==='targets'){
-  h=`<div class="sec"><h2>${esc(S.h)}</h2></div>`+S.rows.map(r=>`<div class="row">${r.av?`<img src="${r.av}">`:''}<div><div class="pt">$${esc(r.t)} 🎯 <span>$${esc(r.pt)}</span></div><div class="by">@${esc(r.acc)} · ${esc(r.day)}</div></div></div>`).join('');
+  h=`<div class="sec"><h2>${esc(S.h)}</h2></div>`+S.rows.map(r=>`<div class="row">${r.av?`<img src="${r.av}">`:''}<div><div class="pt">$${esc(r.t)} 🎯 <span>$${esc(r.pt)}</span></div><div class="by">@${esc(r.acc)} · ${esc(r.day)}</div>${r.text?`<div class="rq">💬 ${esc(r.text)}</div>`:''}</div></div>`).join('');
  }else if(S.kind==='views'){
   h=`<div class="sec"><h2>${esc(S.h)}</h2></div>`+S.rows.map(r=>`<div class="row">${r.av?`<img src="${r.av}">`:''}<div><div class="by"><span class="pill ${r.s==='bull'?'g':r.s==='bear'?'r':'n'}">${esc(r.badge)}</span>@${esc(r.acc)}</div><div class="v">${esc(r.text)}</div></div></div>`).join('');
  }else if(S.kind==='quote'){
