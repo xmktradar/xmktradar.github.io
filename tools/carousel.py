@@ -11,6 +11,7 @@ fields, which tools/share.py still writes) and social/index.html via work/ (copi
 and work/carousel.json for tools/carousel.js, which draws og/c/<day>-<slot>-<lang>-<n>.jpg.
 """
 import base64
+import hashlib
 import html
 import os
 import re
@@ -400,10 +401,28 @@ def situation(site, s, key, pick):
     return 'E02' if d1 > 0 else 'E04'
 
 
-def story(cast, slides, lang, eid):
-    for i, cid in STORY_CAST:
+# Drawings that suit the same mood, so each character can strike a different pose while saying the line for this post.
+MOODS = (('E01', 'E02', 'E06', 'E09', 'E13', 'E14'), ('E03', 'E04', 'E07', 'E10'), ('E08', 'E11', 'E12', 'E15'), ('E05', 'E11', 'E12'))
+
+
+def poses(eid, day, key, taken):
+    """One drawing per character for this slot: from the post's mood, different for each character, and not one
+    already used in today's other slots when there is a choice. Same day and slot always give the same poses."""
+    pool = next((m for m in MOODS if eid in m), (eid,))
+    out = {}
+    for _, cid in STORY_CAST:
+        free = [e for e in pool if e not in out.values() and (cid, e) not in taken] or [e for e in pool if e not in out.values()] or [eid]
+        n = int(hashlib.md5(f'{day}{key}{cid}'.encode()).hexdigest(), 16)
+        out[cid] = free[n % len(free)]
+        taken.add((cid, out[cid]))
+    return out
+
+
+def story(cast, slides, lang, eid, pose=None, flip=0):
+    for n, (i, cid) in enumerate(STORY_CAST):
         c = cast.who(cid)
-        slides[i]['char'] = {'img': cast.pic(cid, eid), 'name': c['name'][lang], 'line': cast.line(eid, cid, lang), 'color': c['colors'][0]}
+        slides[i]['char'] = {'img': cast.pic(cid, (pose or {}).get(cid, eid)), 'name': c['name'][lang], 'line': cast.line(eid, cid, lang),
+                             'color': c['colors'][0], 'right': (n + flip) % 2 == 1}  # characters swap sides from picture to picture
     slides[2]['talk'] = TALK[lang]
     return slides
 
@@ -579,7 +598,8 @@ def main():
     cast = Cast() if os.path.exists(CAST_FILE) else None
     from share import window
     win = window(s)
-    jobs = []
+    jobs, posed = [], {}
+    taken = {(cid, v.get('poses', {}).get(cid)) for v in slots.values() for _, cid in STORY_CAST}  # poses earlier slots used today
     used = [s['top'][0]['t']] if s['top'] else []  # each slot leads with a different stock when it can
     used += [v['ticker'] for v in slots.values() if v.get('ticker')]
     for key in todo:
@@ -609,7 +629,9 @@ def main():
             slides = add_quotes(site, slides, lang)
             if cast:
                 eid = situation(site, s, key, pick)
-                slides = story(cast, slides, lang, eid)
+                if key not in posed:
+                    posed[key] = poses(eid, day, key, taken)
+                slides = story(cast, slides, lang, eid, posed[key], flip=[k for k, _, _ in SLOTS].index(key))
                 posts = add_dialogue(dict(posts), dialogue(cast, lang, eid))
             files = [f'og/c/{day}-{key}-{lang}-{n + 1}.jpg' for n in range(4)]
             fb = [f'og/c/{day}-{key}-{lang}-{n + 1}-fb.jpg' for n in range(4)]
@@ -622,7 +644,7 @@ def main():
         lead = {'1230': s['top'][0]['t'] if s['top'] else None, '1630': pick[0] if key == '1630' else None,
                 '2030': (pick[0][0]['t'] if pick[0] else (pick[2] or {}).get('t')) if key == '2030' else None}[key]
         slots[key] = {'day': day, 'theme': THEME[key], 'ticker': lead, 'title': TITLE[key], 'made_hkt': now.strftime('%Y-%m-%d %H:%M'),
-                      'post_at': times, 'story': key == '1230',
+                      'post_at': times, 'story': key == '1230', 'poses': posed.get(key, {}),
                       'platforms': ['x', 'threads', 'instagram', 'instagram_story', 'facebook'] if key == '1230' else ['x', 'threads', 'instagram', 'facebook'],
                       'images': {l: made[l]['images'] for l in LANGS}, 'images_fb': {l: made[l]['images_fb'] for l in LANGS}, 'posts': {l: made[l]['posts'] for l in LANGS}}
         if key == '1230':

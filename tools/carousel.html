@@ -110,6 +110,11 @@ html[lang=ko] *{word-break:keep-all}
 .bubble{position:relative;background:#fff;border:4px solid #151a2c;border-radius:26px;padding:16px 24px;font-weight:900;font-size:34px;line-height:1.4;box-shadow:0 6px 0 #151a2c}
 .bubble:before{content:"";position:absolute;left:-22px;top:calc(50% - 12px);border:12px solid transparent;border-right:20px solid #151a2c}
 .bubble:after{content:"";position:absolute;left:-13px;top:calc(50% - 9px);border:9px solid transparent;border-right:15px solid #fff}
+.char.r{flex-direction:row-reverse;margin:-10px -30px -10px 0;text-align:right}
+.char.r img{transform:scaleX(-1)}
+.char.r .bubble{text-align:left}
+.char.r .bubble:before{left:auto;right:-22px;border-right:12px solid transparent;border-left:20px solid #151a2c}
+.char.r .bubble:after{left:auto;right:-13px;border-right:9px solid transparent;border-left:15px solid #fff}
 .talk{align-self:flex-start;background:#f8d34a;border:4px solid #151a2c;border-radius:14px;padding:6px 20px;font-weight:900;font-size:34px;box-shadow:4px 5px 0 #151a2c}
 .foot{position:absolute;left:56px;right:56px;bottom:40px;height:60px;background:rgba(255,255,255,.9);border-radius:999px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;font-weight:700;font-size:24px;color:#3c4466;white-space:nowrap}
 .foot b{color:#151a2c}
@@ -171,7 +176,7 @@ function render(lang,theme,date,page,S){
   h=`<div class="sec"><h2>${esc(S.h)}</h2></div>${quote(S.quote)}<div style="flex:1"></div>${cta(S.cta)}`;
  }
  if(S.talk)h=`<div class="talk">${esc(S.talk)}</div>`+h;
- if(S.char){const c=S.char;const ch=`<div class="char">${c.img?`<img src="${c.img}">`:''}<div style="flex:1"><span class="nm" style="background:${c.color}">${esc(c.name)}</span><div class="bubble">${esc(c.line)}</div></div></div>`;h=S.kind==='quote'||S.kind==='account'?h+ch:ch+h}
+ if(S.char){const c=S.char;const ch=`<div class="char${c.right?' r':''}">${c.img?`<img src="${c.img}">`:''}<div style="flex:1"><span class="nm" style="background:${c.color}">${esc(c.name)}</span><div class="bubble">${esc(c.line)}</div></div></div>`;h=S.kind==='quote'||S.kind==='account'?h+ch:ch+h}
  const box=document.getElementById('in');box.style.zoom='';box.innerHTML=h;
 }
 </script>
