@@ -402,13 +402,14 @@ def situation(site, s, key, pick):
 
 
 # Drawings that suit the same mood, so each character can strike a different pose while saying the line for this post.
-MOODS = (('E01', 'E02', 'E06', 'E09', 'E13', 'E14'), ('E03', 'E04', 'E07', 'E10'), ('E08', 'E11', 'E12', 'E15'), ('E05', 'E11', 'E12'))
+UP, DOWN, CALM = ('E01', 'E02', 'E06', 'E09', 'E13', 'E14'), ('E03', 'E04', 'E07', 'E10'), ('E05', 'E08', 'E11', 'E12', 'E15')
+MOODS = {e: UP + CALM for e in UP} | {e: DOWN + CALM for e in DOWN} | {e: CALM + ('E02', 'E04', 'E13') for e in CALM}
 
 
 def poses(eid, day, key, taken):
     """One drawing per character for this slot: from the post's mood, different for each character, and not one
-    already used in today's other slots when there is a choice. Same day and slot always give the same poses."""
-    pool = next((m for m in MOODS if eid in m), (eid,))
+    already used today or in the last three days when there is a choice. Same day and slot always give the same poses."""
+    pool = MOODS.get(eid, (eid,))
     out = {}
     for _, cid in STORY_CAST:
         free = [e for e in pool if e not in out.values() and (cid, e) not in taken] or [e for e in pool if e not in out.values()] or [eid]
@@ -599,7 +600,10 @@ def main():
     from share import window
     win = window(s)
     jobs, posed = [], {}
+    log = {d: v for d, v in (sp.get('pose_log') or {}).items() if d < day}
+    log = dict(sorted(log.items())[-3:])  # the last three days' poses, so the same drawing does not come back day after day
     taken = {(cid, v.get('poses', {}).get(cid)) for v in slots.values() for _, cid in STORY_CAST}  # poses earlier slots used today
+    taken |= {tuple(x) for v in log.values() for x in v}
     used = [s['top'][0]['t']] if s['top'] else []  # each slot leads with a different stock when it can
     used += [v['ticker'] for v in slots.values() if v.get('ticker')]
     for key in todo:
@@ -652,6 +656,8 @@ def main():
     if not jobs:
         return
     sp['slots'] = {k: slots[k] for k, _, _ in SLOTS if k in slots}
+    log[day] = sorted({(cid, p) for v in sp['slots'].values() for cid, p in (v.get('poses') or {}).items()})
+    sp['pose_log'] = log
     # The new text goes into place only after tools/carousel.js has drawn the pictures (see update-site.yml).
     write_json(work('carousel.json'), {'date': day, 'jobs': jobs})
     write_json(work('social-posts.json'), sp, indent=1)
