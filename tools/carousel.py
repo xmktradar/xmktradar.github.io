@@ -113,19 +113,19 @@ def snap(site, s, lang, day, win):
     u = U[lang]
     top = s['top']
     hero = top[0] if top else None
-    q = None
+    qs = []  # up to 2 featured posts from different accounts, most liked first
     if hero:
         ps = sorted([site.by_url[x] for x in hero.get('urls', []) if x in site.by_url], key=lambda p: -likes(p))
         for p in ps:
-            if site.text(p, lang, 10):
-                q = {'acc': p['handle'], 'av': site.av(p['handle']), 'text': site.text(p, lang, 130 if lang == 'en' else 80)}
-                break
+            if len(qs) < 2 and p['handle'] not in [x['acc'] for x in qs] and site.text(p, lang, 10):
+                qs.append({'acc': p['handle'], 'av': site.av(p['handle']), 'text': site.text(p, lang, 100 if lang == 'en' else 56)})
+    q = qs[0] if qs else None
     cover = {'kind': 'cover', 'kicker': TITLE['1230'][lang], 'win': win,
              'lead': {'zh': '今日最多人講', 'en': 'Most talked-about today', 'ko': '오늘 가장 많이 언급된 종목'}[lang],
              'big': hero['t'] if hero else '', 'sub': u['acc'](hero['accounts']) if hero else '',
              'pills': stance_pills(lang, hero.get('bull_accounts', 0), hero.get('bear_accounts', 0), hero['accounts']) if hero else [],
              'stats': [{'c': 'b', 'l': u['posted'](s['accounts'])}, {'c': 'p', 'l': u['stocks'](s.get('tickers', 0))}],
-             'quote': q, 'swipe': u['swipe']}
+             'quote': q, 'quotes': qs, 'swipe': u['swipe']}
     talk = {'kind': 'cards', 'secs': [{'h': u['talk'], 'cards': [
         card(site, x['t'], i + 1, stance_pills(lang, x.get('bull_accounts', 0), x.get('bear_accounts', 0), x['accounts']), x['accs'])
         for i, x in enumerate(top[:5])]}]}
