@@ -1,19 +1,22 @@
 {
  "note": "Written by GitHub Actions on every update. SuperGrok daily check reads this.",
- "checked_hkt": "2026-10-16 09:33",
- "generated_hkt": "2026-10-16 09:23",
- "cutoff_hkt": "2026-10-16T07:00:51+08:00",
- "posts_on_site": 1997,
- "added_this_run": 0,
+ "checked_hkt": "2026-10-16 10:51",
+ "generated_hkt": "2026-10-16 10:41",
+ "cutoff_hkt": "2026-10-16T09:18:59+08:00",
+ "posts_on_site": 2001,
+ "added_this_run": 5,
  "added_without_en_summary": 0,
- "waiting_for_summary": 386,
- "waiting_with_stock": 108,
- "expired_unsummarised_this_run": 1,
- "chitchat_skipped_this_run": 84,
- "pruned_this_run": 0,
- "fetch_failed": [],
+ "waiting_for_summary": 403,
+ "waiting_with_stock": 117,
+ "expired_unsummarised_this_run": 4,
+ "chitchat_skipped_this_run": 117,
+ "pruned_this_run": 1,
+ "fetch_failed": [
+  "cullenroche（IncompleteRead(66981 bytes read, 49489 more expected)）"
+ ],
  "warnings": [
-  "未分析：386 則新帖等待 Grok 分析"
+  "攞帖失敗：cullenroche",
+  "未分析：403 則新帖等待 Grok 分析"
  ],
  "writeups_applied": [],
  "writeups_rejected": [],
@@ -48,5 +51,5 @@
   "ko 1280px：今日重點卡有 0 張（應該 3 張）",
   "ko 390px：今日重點卡有 0 張（應該 3 張）"
  ],
- "layout_checked_hkt": "2026-10-16 09:36"
+ "layout_checked_hkt": "2026-10-16 10:54"
 }
