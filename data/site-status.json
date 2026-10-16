@@ -1,52 +1,52 @@
 {
  "note": "Written by GitHub Actions on every update. SuperGrok daily check reads this.",
- "checked_hkt": "2026-10-16 17:11",
- "generated_hkt": "2026-10-16 17:02",
+ "checked_hkt": "2026-10-16 18:42",
+ "generated_hkt": "2026-10-16 18:32",
  "cutoff_hkt": "2026-10-16T16:00:00+08:00",
  "posts_on_site": 2140,
- "added_this_run": 20,
+ "added_this_run": 0,
  "added_without_en_summary": 0,
- "waiting_for_summary": 314,
- "waiting_with_stock": 1,
- "expired_unsummarised_this_run": 1,
- "chitchat_skipped_this_run": 15,
- "pruned_this_run": 1,
+ "waiting_for_summary": 324,
+ "waiting_with_stock": 9,
+ "expired_unsummarised_this_run": 5,
+ "chitchat_skipped_this_run": 43,
+ "pruned_this_run": 0,
  "fetch_failed": [],
  "warnings": [
-  "未分析：314 則新帖等待 Grok 分析"
+  "未分析：324 則新帖等待 Grok 分析"
  ],
- "writeups_applied": [],
+ "writeups_applied": [
+  "zh/daily 2026-10-16",
+  "zh/highlights 2026-10-16",
+  "en/daily 2026-10-16",
+  "en/highlights 2026-10-16",
+  "ko/daily 2026-10-16",
+  "ko/highlights 2026-10-16"
+ ],
  "writeups_rejected": [],
  "latest_writeups": {
   "zh": {
-   "daily": "2026-10-15",
+   "daily": "2026-10-16",
    "weekly": "2026-10-15",
    "monthly": "2026-10-15",
-   "highlights": "2026-10-15",
+   "highlights": "2026-10-16",
    "briefing": "2026-10-15"
   },
   "en": {
-   "daily": "2026-10-15",
+   "daily": "2026-10-16",
    "weekly": "2026-10-15",
    "monthly": "2026-10-15",
-   "highlights": "2026-10-15",
+   "highlights": "2026-10-16",
    "briefing": "2026-10-15"
   },
   "ko": {
-   "daily": "2026-10-15",
+   "daily": "2026-10-16",
    "weekly": "2026-10-15",
    "monthly": "2026-10-15",
-   "highlights": "2026-10-15",
+   "highlights": "2026-10-16",
    "briefing": "2026-10-15"
   }
  },
- "layout_warnings": [
-  "zh 1280px：今日重點卡有 0 張（應該 3 張）",
-  "zh 390px：今日重點卡有 0 張（應該 3 張）",
-  "en 1280px：今日重點卡有 0 張（應該 3 張）",
-  "en 390px：今日重點卡有 0 張（應該 3 張）",
-  "ko 1280px：今日重點卡有 0 張（應該 3 張）",
-  "ko 390px：今日重點卡有 0 張（應該 3 張）"
- ],
- "layout_checked_hkt": "2026-10-16 17:19"
+ "layout_warnings": [],
+ "layout_checked_hkt": "2026-10-16 18:49"
 }
