@@ -27,6 +27,14 @@ html[lang=ko] *{word-break:keep-all}
 .pg{margin-left:auto;font:700 26px "IBM Plex Mono",monospace;background:#151a2c;color:#fff;border-radius:999px;padding:6px 18px}
 .main{position:absolute;left:56px;right:56px;top:160px;bottom:120px}
 #in{display:flex;flex-direction:column;gap:22px;min-height:100%}
+.cv{display:flex;gap:24px;align-items:center}
+.cvl{flex:1;min-width:0;display:flex;flex-direction:column;gap:22px}
+.cvr{width:400px;flex:none;display:flex;flex-direction:column;gap:20px}
+.cvq{padding:16px 20px}
+.cvq .hd{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.cvq img{width:52px;height:52px;border-radius:50%;flex:none;box-shadow:0 0 0 3px #2f8f52;object-fit:cover}
+.cvq .who{font-size:22px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cvq .tx{font-size:26px;line-height:1.35;-webkit-line-clamp:4}
 .kick{align-self:flex-start;background:#151a2c;color:#fff;font-weight:900;font-size:34px;padding:8px 22px;border-radius:14px;transform:rotate(-1.5deg)}
 .win{align-self:flex-start;background:#fff;border:3px solid #151a2c;border-radius:12px;padding:4px 14px;font:700 22px "IBM Plex Mono",monospace}
 .lead{font-weight:900;font-size:46px;margin-top:6px}
@@ -130,12 +138,14 @@ function render(lang,theme,date,page,S){
  let h='';
  if(S.kind==='cover'){
   h=`<div class="kick">${esc(S.kicker)}</div>${S.win?`<div class="win">${esc(S.win)}</div>`:''}<div class="lead">${esc(S.lead)}</div>
-   <div class="big"><span>$${esc(S.big)}</span></div><div class="sub">${esc(S.sub)}</div>`;
+   <div class="big"${S.quotes&&S.quotes.length&&S.big.length>4?` style="font-size:${S.big.length>5?110:135}px"`:''}><span>$${esc(S.big)}</span></div><div class="sub">${esc(S.sub)}</div>`;
+  const side=S.quotes&&S.quotes.length;  // featured posts sit beside the headline (12:30 snapshot)
+  if(side){h+=S.pills&&S.pills.length?`<div class="pills">${pills(S.pills)}</div>`:'';h=`<div class="cv"><div class="cvl">${h}</div><div class="cvr">${S.quotes.map((q,i)=>`<div class="box cvq" style="transform:rotate(${i?-1.2:1.5}deg)"><div class="hd">${q.av?`<img src="${q.av}">`:''}<div class="who">💬 @${esc(q.acc)}</div></div><div class="tx">${esc(q.text)}</div></div>`).join('')}</div></div>`}
   if(S.bar){const[b,r]=S.bar,t=(b+r)||1;h+=`<div class="bar"><div class="b" style="flex:${Math.max(b,.0001)/t}">🟢 ${b}</div><div class="r" style="flex:${Math.max(r,.0001)/t}">🔴 ${r}</div></div>`}
-  if(S.pills&&S.pills.length)h+=`<div class="pills">${pills(S.pills)}</div>`;
+  if(!side&&S.pills&&S.pills.length)h+=`<div class="pills">${pills(S.pills)}</div>`;
   if(S.spark&&S.spark.length>1){const m1=(S.spark[S.spark.length-1]/S.spark[0]-1)*100;h+=`<div class="chart">${spark(S.spark,500,130)}<div class="chg ${S.d1>=0?'u':'d'}">${pct(S.d1)}<small>${esc(S.d1l)}</small><span class="${m1>=0?'u':'d'}" style="font-size:30px">1M ${pct(m1)}</span></div></div>`}
   if(S.stats)h+=`<div class="stats">${S.stats.map(x=>`<div class="stat ${x.c}">${esc(x.l)}</div>`).join('')}</div>`;
-  h+=quote(S.quote);
+  if(!side)h+=quote(S.quote);
   if(S.note)h+=`<div class="note">${esc(S.note)}</div>`;
   if(S.swipe)h+=`<div class="swipe">${esc(S.swipe)}</div>`;
  }else if(S.kind==='cards'){
