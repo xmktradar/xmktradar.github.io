@@ -1,1 +1,79 @@
-$(cat /tmp/batch1.json)
+{
+  "posts": {
+    "2111052739740660207": {
+      "en_summary": "Adding to $ASTS during drawdown as rising yields do not change how early we are in building a larger space economy with satellites as another layer of global telecom infrastructure. AST has carrier partnerships accessing ~3B potential subscribers who prefer an alternative to $SPCX Starlink for direct-to-phone. Challenge is scaling to ~45 satellites and converting to paying users, but ~70% drawdown already reflects production and launch risk in valuation.",
+      "zh_summary": "在回調期間加倉 $ASTS，因為利率上升不會改變我們正處於建立更大型太空經濟的早期階段，衛星將成為全球電信基礎設施的另一層。AST 已與運營商建立合作，可觸及約30億潛在用戶，運營商有理由支持 Starlink 的替代方案，而非完全依賴 $SPCX 提供直連手機連接。目前最大挑戰是擴展至約45顆衛星並將合作轉為付費用戶，但股價已回調約70%，生產及發射風險已反映在估值中。",
+      "ko_summary": "조정 기간에 $ASTS 포지션을 늘리고 있다. 금리 상승은 우리가 더 큰 우주 경제를 구축하는 초기 단계이며 위성이 글로벌 통신 인프라의 또 다른 층이 된다는 사실을 바꾸지 않기 때문이다. AST는 이미 운용사 파트너십으로 약 30억 잠재 가입자에게 접근할 수 있으며, 운용사들은 $SPCX Starlink에 완전히 의존하기보다 대안을 지원할 이유가 충분하다. 현재 최대 과제는 약 45개 위성으로 확장하고 파트너십을 유료 사용자로 전환하는 것이지만, 주가가 이미 약 70% 조정되어 생산 및 발사 리스크가 밸류에이션에 반영되었다고 본다.",
+      "tickers": ["ASTS", "SPCX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ASTS": "睇好", "SPCX": "中性"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "yields",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2111048996865405341": {
+      "en_summary": "BREAKING: Tesla stock $TSLA surges over +5% after Elon Musk unveils the flying Tesla Roadster. The stock has added +$75 billion in market cap today.",
+      "zh_summary": "突發：特斯拉股票 $TSLA 在 Elon Musk 發布飛行版特斯拉 Roadster 後急升超過 5%。今日市值增加 750 億美元。",
+      "ko_summary": "속보: 테슬라 주식 $TSLA 이 일론 머스크가 비행 테슬라 로드스터를 공개한 후 5% 이상 급등했다. 오늘 시가총액이 750억 달러 증가했다.",
+      "tickers": ["TSLA"],
+      "stance": null,
+      "stance_by_ticker": {"TSLA": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2111044696822698160": {
+      "en_summary": "@CassidyShun Wrong. We exited $TSLA in May 2025 at $358/share.",
+      "zh_summary": "@CassidyShun 錯了。我們在 2025 年 5 月以每股 358 美元退出 $TSLA。",
+      "ko_summary": "@CassidyShun 틀렸다. 우리는 2025년 5월에 주당 358달러에 $TSLA를 청산했다.",
+      "tickers": ["TSLA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"TSLA": "睇淡"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TSLA": "Exited at $358 in May 2025"}
+    },
+    "2111042431168979434": {
+      "en_summary": "Scott Redler’s #630club live premarket stock market update covering $NVDA $MU $SPCX $SNDK.",
+      "zh_summary": "Scott Redler 的 #630club 直播盤前股市更新，涵蓋 $NVDA $MU $SPCX $SNDK。",
+      "ko_summary": "Scott Redler의 #630club 실시간 장전 주식 시장 업데이트, $NVDA $MU $SPCX $SNDK 포함.",
+      "tickers": ["NVDA", "MU", "SPCX", "SNDK"],
+      "stance": null,
+      "stance_by_ticker": {"NVDA": "未表態", "MU": "未表態", "SPCX": "未表態", "SNDK": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2111039325379170342": {
+      "en_summary": "$TSLA up nearly 5% after officially unveiling its new flying Roadster.",
+      "zh_summary": "$TSLA 在正式發布新飛行 Roadster 後上升近 5%。",
+      "ko_summary": "$TSLA 가 새로운 비행 로드스터를 공식 공개한 후 거의 5% 상승했다.",
+      "tickers": ["TSLA"],
+      "stance": null,
+      "stance_by_ticker": {"TSLA": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
