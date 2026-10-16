@@ -40,14 +40,14 @@ U = {
     'zh': dict(acc=lambda n: f'{n} 個帳號', bull='睇好', bear='睇淡', nb=lambda n: f'{n} 個睇好', nr=lambda n: f'{n} 個睇淡',
                swipe='👉 向左滑睇 4 張', foot='⚠️ 唔構成投資建議', follow='Follow @thecrowdtape',
                site='最新數字：thecrowdtape.com', give='☕ 支持我哋：網站底部 PayPal', posted=lambda n: f'{n} 個帳號發文',
-               stocks=lambda n: f'{n} 隻股票', talk='🔥 最多人討論 Top 5', jb='🟢 共同看多', jr='🔴 共同看空', split='⚖️ 好淡分歧',
+               stocks=lambda n: f'{n} 隻股票', talk='🔥 最多人討論 Top 4', jb='🟢 共同看多', jr='🔴 共同看空', split='⚖️ 好淡分歧',
                none='今日暫時未有', vs=lambda b, r: f'{b} 好 vs {r} 淡', who='你企邊邊？留言話我知 👇', heat='📈 升溫榜（24 小時 vs 前 24 小時）',
                now=lambda a, b: f'{a} 個帳號（之前 {b}）', pt='🎯 帳號講過嘅目標價', views=lambda t: f'💬 帳號點睇 ${t}',
                hot=lambda a, b: f'24 小時內 {a} 個帳號講（之前 {b} 個）', ask='💬 一句觀點', d1='今日'),
     'en': dict(acc=lambda n: f'{n} account{"" if n == 1 else "s"}', bull='Bullish', bear='Bearish', nb=lambda n: f'{n} bullish',
                nr=lambda n: f'{n} bearish', swipe='👉 Swipe for all 4', foot='⚠️ Not investment advice', follow='Follow @thecrowdtape',
                site='Live numbers: thecrowdtape.com', give='☕ Support us: PayPal at the bottom of the site',
-               posted=lambda n: f'{n} accounts posted', stocks=lambda n: f'{n} stocks', talk='🔥 Most discussed · Top 5',
+               posted=lambda n: f'{n} accounts posted', stocks=lambda n: f'{n} stocks', talk='🔥 Most discussed · Top 4',
                jb='🟢 Joint bullish', jr='🔴 Joint bearish', split='⚖️ Split views', none='None yet today',
                vs=lambda b, r: f'{b} bull vs {r} bear', who='Which side are you on? Tell us below 👇',
                heat='📈 Heating up (24h vs the 24h before)', now=lambda a, b: f'{a} accounts (was {b})', pt='🎯 Price targets accounts shared',
@@ -56,7 +56,7 @@ U = {
     'ko': dict(acc=lambda n: f'계정 {n}개', bull='강세', bear='약세', nb=lambda n: f'강세 {n}', nr=lambda n: f'약세 {n}',
                swipe='👉 옆으로 넘겨 4장 보기', foot='⚠️ 투자 조언 아님', follow='Follow @thecrowdtape',
                site='최신 수치: thecrowdtape.com', give='☕ 후원: 사이트 하단 PayPal', posted=lambda n: f'계정 {n}개 게시',
-               stocks=lambda n: f'종목 {n}개', talk='🔥 최다 언급 Top 5', jb='🟢 공동 강세', jr='🔴 공동 약세', split='⚖️ 의견 엇갈림',
+               stocks=lambda n: f'종목 {n}개', talk='🔥 최다 언급 Top 4', jb='🟢 공동 강세', jr='🔴 공동 약세', split='⚖️ 의견 엇갈림',
                none='오늘은 아직 없음', vs=lambda b, r: f'강세 {b} vs 약세 {r}', who='여러분은 어느 쪽인가요? 댓글로 알려주세요 👇',
                heat='📈 관심 급상승 (24시간 vs 직전 24시간)', now=lambda a, b: f'계정 {a}개 (이전 {b}개)', pt='🎯 계정들이 언급한 목표가',
                views=lambda t: f'💬 ${t}에 대한 계정 의견', hot=lambda a, b: f'24시간 내 계정 {a}개 언급 (이전 {b}개)',
@@ -90,7 +90,28 @@ class Site:
 def card(site, t, rk, pills, accs=(), note=''):
     spark, d1 = site.px(t)
     return {'rk': rk, 't': t, 'pills': pills, 'avs': [site.av(h) for h in list(accs)[:4]], 'more': max(0, len(accs) - 4),
-            'spark': spark, 'note': note}
+            'spark': spark, 'note': note, 'accs': list(accs)}
+
+
+def add_quotes(site, slides, lang):
+    """One featured post under every stock card: an account named on the card first, most liked first, newest as tie-break;
+    never the same post twice in one carousel."""
+    used = {q.get('url') for sl in slides for q in sl.get('quotes') or []}
+    for sl in slides:
+        for sec in sl.get('secs') or []:
+            for c in sec['cards']:
+                ps = [p for p in site.d['posts'] if c['t'] in (p.get('tickers') or [])]
+                ps.sort(key=lambda p: (p['handle'] in c.get('accs', ()), likes(p), p.get('time_utc', '')), reverse=True)
+                for p in ps:
+                    text = site.text(p, lang, 200)
+                    # summaries often open with the account's own @handle or name; it is already shown in bold
+                    text = re.sub(r'^(?:(?:@?' + re.escape(p['handle']) + r'|' + re.escape(site.name(p['handle'])) + r')\s*[:：]?\s*)+', '', text, flags=re.I)
+                    text = clean(text, 90 if lang == 'en' else 46)
+                    if len(text) >= 10 and p['url'] not in used:
+                        used.add(p['url'])
+                        c['q'] = {'acc': p['handle'], 'av': site.av(p['handle']), 'text': text}
+                        break
+    return slides
 
 
 def stance_pills(lang, b, r, n):
@@ -118,7 +139,7 @@ def snap(site, s, lang, day, win):
         ps = sorted([site.by_url[x] for x in hero.get('urls', []) if x in site.by_url], key=lambda p: -likes(p))
         for p in ps:
             if len(qs) < 2 and p['handle'] not in [x['acc'] for x in qs] and site.text(p, lang, 10):
-                qs.append({'acc': p['handle'], 'av': site.av(p['handle']), 'text': site.text(p, lang, 100 if lang == 'en' else 56)})
+                qs.append({'acc': p['handle'], 'av': site.av(p['handle']), 'text': site.text(p, lang, 100 if lang == 'en' else 56), 'url': p['url']})
     q = qs[0] if qs else None
     cover = {'kind': 'cover', 'kicker': TITLE['1230'][lang], 'win': win,
              'lead': {'zh': '今日最多人講', 'en': 'Most talked-about today', 'ko': '오늘 가장 많이 언급된 종목'}[lang],
@@ -128,7 +149,7 @@ def snap(site, s, lang, day, win):
              'quote': q, 'quotes': qs, 'swipe': u['swipe']}
     talk = {'kind': 'cards', 'secs': [{'h': u['talk'], 'cards': [
         card(site, x['t'], i + 1, stance_pills(lang, x.get('bull_accounts', 0), x.get('bear_accounts', 0), x['accounts']), x['accs'])
-        for i, x in enumerate(top[:5])]}]}
+        for i, x in enumerate(top[:4])]}]}
 
     def grp(gs, side):
         return [card(site, g['t'], i + 1, stance_pills(lang, g['nb'], g['nr'], g['nb'] + g['nr']),
@@ -300,7 +321,7 @@ def focus(site, s, lang, day, win, pick):
              'quote': None, 'swipe': u['swipe']}
     rise = {'kind': 'cards', 'secs': [{'h': u['heat'], 'cards': [
         card(site, x['t'], i + 1, [{'c': 'o', 'x': f"+{x['now'] - x['was']}" if x['now'] > x['was'] else '±0'}, {'c': 'n', 'x': u['now'](x['now'], x['was'])}], x['accs'])
-        for i, x in enumerate(hot[:5])], 'empty': u['none']}]}
+        for i, x in enumerate(hot[:4])], 'empty': u['none']}]}
     if pts:
         third = {'kind': 'targets', 'h': u['pt'], 'rows': [
             {'t': x['t'], 'pt': x['pt'], 'acc': x['acc'], 'av': site.av(x['acc']), 'day': x['day'][5:].replace('-', '/')} for x in pts]}
@@ -565,6 +586,7 @@ def main():
                 posts = cap_focus(site, s, lang, day, pick)
             if not posts:
                 break
+            slides = add_quotes(site, slides, lang)
             if cast:
                 eid = situation(site, s, key, pick)
                 slides = story(cast, slides, lang, eid)
