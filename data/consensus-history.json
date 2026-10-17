@@ -423,12 +423,13 @@
     "XOM"
    ],
    "bear": [
-    "QQQ",
-    "SPY"
+    "QQQ"
    ],
    "split": [
     "TSLA",
+    "SPY",
     "META",
+    "HOOD",
     "SPX"
    ],
    "window": [
@@ -438,9 +439,9 @@
    "top": [
     "SPY",
     "QQQ",
+    "TSLA",
     "VIX",
     "CRWV",
-    "TSLA",
     "MU",
     "AAPL",
     "SNDK",
@@ -448,9 +449,9 @@
     "SOXX"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-17 12:42"
+   "updated_hkt": "2026-10-17 13:03"
   }
  },
- "updated_hkt": "2026-10-17 12:42",
+ "updated_hkt": "2026-10-17 13:03",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
