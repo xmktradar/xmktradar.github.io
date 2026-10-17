@@ -1,1 +1,225 @@
-$(cat /tmp/writeups/draft.json)
+{
+  "updated_hkt": "2026-10-17 09:10",
+  "zh": {
+    "daily": {
+      "date": "2026-10-17",
+      "win": {"from": "2026-10-17T00:00", "to": "2026-10-17T23:59"},
+      "brief": "<p>今日市場意見明顯分叉。85 則帖文來自 29 個帳號，看好觀點 24 個對看淡 22 個，幾乎對半。沒有共同看好或共同看淡的標的，全是分歧。最多人講的是 <a href=\"#stock/QQQ\" class=\"tk\">$QQQ</a>（16 次提及、9 個帳號），一邊講歷史連跌後會反彈，另一邊指趨勢線已破。</p>",
+      "full": "<h5>共識</h5><p>今日沒有共同看好或共同看淡的股票，所有有方向的討論都落在分歧名單上。</p><h5>共同看淡</h5><p>同樣沒有共同看淡標的。</p><h5>分歧</h5><p><a href=\"#stock/QQQ\" class=\"tk\">$QQQ</a> 是今日最熱，16 次提及、9 個帳號，1 好 3 淡。<a href=\"#account/carlquintanilla\">@carlquintanilla</a> 指出納斯達克100已連續9天收低或低於開盤，史上僅第10次，先前9次在5天後全部回升，8天內從高點跌6%，好壞日會聚集，勿落入空頭陷阱（<a href=\"https://x.com/Bluekurtic/status/2111134768301842458\">原帖</a>）。但 <a href=\"#account/TrendSpider\">@TrendSpider</a> 說最終 boss 趨勢線已經跌破（<a href=\"https://x.com/TrendSpider/status/2111231966842417211\">原帖</a>），<a href=\"#account/ripster47\">@ripster47</a> 指 Ripster Clouds 全日沒有買入理由，仍持空頭，$VIX 守住20並反彈，省下的錢就是賺到的錢（<a href=\"https://x.com/ripster47/status/2111160704749220218\">原帖</a>）。</p><p><a href=\"#stock/TSLA\" class=\"tk\">$TSLA</a> 2 好 2 淡，8 次提及。<a href=\"#account/garyblack00\">@garyblack00</a> 認為昨晚 Roadster 活動唯一目的是為 $SPCX 與 $TSLA 合併舖路，猜測未來數週將宣佈 $SPCX 以每股 420 美元股票收購 $TSLA（<a href=\"https://x.com/garyblack00/status/2111229232713998658\">原帖</a>）。<a href=\"#account/StockSavvyShay\">@StockSavvyShay</a> 引特朗普稱演示「非常令人印象深刻」，Roadster 用 $SPCX 推進器跳過車系（<a href=\"https://x.com/StockSavvyShay/status/2111143697891127640\">原帖</a>）。<a href=\"#account/TrendSpider\">@TrendSpider</a> 則冷冷說 Roadster 飛了，$TSLA 沒有（<a href=\"https://x.com/TrendSpider/status/2111162762193723804\">原帖</a>）。</p><p><a href=\"#stock/META\" class=\"tk\">$META</a> 1 好 1 淡。<a href=\"#account/StockSavvyShay\">@StockSavvyShay</a> 指廣告業務正趕上 $GOOGL 搜尋，季度收入僅落後約 40 億美元，AI 幫助多投放 14% 廣告並以高 12% 價格成交（<a href=\"https://x.com/StockSavvyShay/status/2111129418093797477\">原帖</a>）。<a href=\"#account/bespokeinvest\">@bespokeinvest</a> 則指出已從 9 月高點下跌 9.11%（<a href=\"https://x.com/bespokeinvest/status/2111168657556443312\">原帖</a>）。</p><p><a href=\"#stock/SPX\" class=\"tk\">$SPX</a> 同樣 1 好 1 淡。<a href=\"#account/Mr_Derivatives\">@Mr_Derivatives</a> 只給多頭看：過去 14 個 11 月有 13 個上漲，平均 +3.36%，熬過 10 月後 11 月歷史回報不錯（<a href=\"https://x.com/Mr_Derivatives/status/2111149259211067612\">原帖</a>）。<a href=\"#account/EliteOptions2\">@EliteOptions2</a> 則描述今日血洗，多頭最大痛苦，$SPX 從 7669 升至 7757 再跌至 7631，$QQQ 從 715 升至 730 再跌至 707，最小阻力路徑向下（<a href=\"https://x.com/EliteOptions2/status/2111185430280290660\">原帖</a>）。</p><h5>其他值得留意</h5><p>最多人講的還有 <a href=\"#stock/VIX\" class=\"tk\">$VIX</a>（12 次提及、7 個帳號，無明確多空）和 <a href=\"#stock/SPY\" class=\"tk\">$SPY</a>（9 次、8 個帳號，0 好 2 淡）。數據範圍是今日 85 則帖文（原創 75、轉發 10）、29 個帳號。以上只整理公開帖文觀點，非投資建議。</p>",
+      "html": "<h4>短摘要</h4><p>今日 85 帖、29 帳號，看好 24 對看淡 22，幾乎對半。無共同看好或看淡，全是分歧。$QQQ 最熱（16 次），歷史反彈對上趨勢線跌破；$TSLA 圍繞 Roadster 與 $SPCX 420 美元合併猜測。非投資建議。</p>"
+    },
+    "weekly": {
+      "date": "2026-10-17",
+      "win": {"from": "2026-10-11T00:00", "to": "2026-10-17T23:59"},
+      "brief": "<p>過去 7 日（10 月 11 日至 17 日）討論量大增，1581 則帖文來自 114 個帳號，看好觀點 667 個遠多於看淡 347 個。共同看好最齊心的是 <a href=\"#stock/AAPL\" class=\"tk\">$AAPL</a>（7 個帳號、52 次提及），焦點在 iPhone Duo 交貨期延至 2027。半導體廣度則明顯轉弱，$SOXX 連續下跌匹配近 20 年最長紀錄。</p>",
+      "full": "<h5>共識</h5><p>共同看好方面，<a href=\"#stock/AAPL\" class=\"tk\">$AAPL</a> 7 好 0 淡，52 次提及。<a href=\"#account/StockSavvyShay\">@StockSavvyShay</a> 指出 iPhone Duo 配送日期已延至 2027 年（<a href=\"https://x.com/StockSavvyShay/status/2111084140678496369\">原帖</a>）。<a href=\"#account/munster_gene\">@munster_gene</a> 說 Duo 已出現 7 週交貨期（12 月 8-15 日），長交貨期顯示開局迅速（<a href=\"https://x.com/munster_gene/status/2111069578340012076\">原帖</a>）。<a href=\"#account/GerberKawasaki\">@GerberKawasaki</a> 則說推出人們能以合理時間買到的產品感覺不錯（<a href=\"https://x.com/GerberKawasaki/status/2111076571255898492\">原帖</a>）。</p><p><a href=\"#stock/GOOGL\" class=\"tk\">$GOOGL</a> 4 好 0 淡，33 次提及，焦點在 Gemini 與 TPU 使用率。其他共同看好還有 <a href=\"#stock/MSFT\" class=\"tk\">$MSFT</a>、<a href=\"#stock/WMT\" class=\"tk\">$WMT</a> 等。</p><h5>共同看淡</h5><p><a href=\"#stock/SOXX\" class=\"tk\">$SOXX</a> 0 好 5 淡，25 次提及。<a href=\"#account/sentimentrader\">@sentimentrader</a> 指出半導體廣度在僅六個交易日內崩潰，10 月 15 日僅 3.3% 成分股高於 10 日均線，從 66.7% 下降（<a href=\"https://x.com/sentimentrader/status/2111153449031373009\">原帖</a>）。<a href=\"#account/StockSavvyShay\">@StockSavvyShay</a> 和 <a href=\"#account/Mr_Derivatives\">@Mr_Derivatives</a> 都提到 SOXX 連續下跌匹配自 2006 年以來最長每日連跌紀錄。</p><p>其他看淡還有 <a href=\"#stock/IREN\" class=\"tk\">$IREN</a>、<a href=\"#stock/CIFR\" class=\"tk\">$CIFR</a> 等加密相關。</p><h5>分歧</h5><p><a href=\"#stock/SPY\" class=\"tk\">$SPY</a> 9 好 9 淡，173 次提及，是分得最開的。 <a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a> 10 好 3 淡，99 次。<a href=\"#stock/TSLA\" class=\"tk\">$TSLA</a> 9 好 6 淡，114 次，延續 Roadster 與 $SPCX 420 美元猜測。<a href=\"#stock/CRWV\" class=\"tk\">$CRWV</a> 4 好 13 淡，89 次，看淡聲音明顯較多。<a href=\"#stock/QQQ\" class=\"tk\">$QQQ</a> 3 好 9 淡，117 次。</p><h5>其他值得留意</h5><p>數據範圍是 7 日 1581 則帖文（原創 1406、轉發 175）、114 個帳號，看好觀點 667 對看淡 347。以上只整理公開帖文觀點，非投資建議。</p>",
+      "html": "<h4>短摘要</h4><p>7 日 1581 帖、114 帳號，看好 667 對看淡 347。$AAPL 共同看好最齊心（7 帳號，Duo 交貨期至 2027），$SOXX 廣度崩潰匹配近 20 年最長連跌。$SPY 9 好 9 淡分歧最大。非投資建議。</p>"
+    },
+    "monthly": {
+      "date": "2026-10-17",
+      "win": {"from": "2026-09-20T00:00", "to": "2026-10-17T23:59"},
+      "brief": "<p>過去 28 日（9 月 20 日至 10 月 17 日）共 2349 則帖文來自 126 個帳號，看好觀點 879 個對看淡 417 個。共同看好仍以 <a href=\"#stock/AAPL\" class=\"tk\">$AAPL</a> 為首（8 個帳號、69 次提及），<a href=\"#stock/MSFT\" class=\"tk\">$MSFT</a> 與 <a href=\"#stock/GOOGL\" class=\"tk\">$GOOGL</a> 緊隨。看淡集中在半導體廣度與部分加密、消費股。</p>",
+      "full": "<h5>共識</h5><p><a href=\"#stock/AAPL\" class=\"tk\">$AAPL</a> 8 好 0 淡，69 次提及，延續 Duo 產品討論。<a href=\"#stock/MSFT\" class=\"tk\">$MSFT</a> 7 好 0 淡，42 次。<a href=\"#stock/GOOGL\" class=\"tk\">$GOOGL</a> 4 好 0 淡，50 次。<a href=\"#stock/AMZN\" class=\"tk\">$AMZN</a> 4 好 0 淡，46 次。其他還有 <a href=\"#stock/MRNA\" class=\"tk\">$MRNA</a>、<a href=\"#stock/WMT\" class=\"tk\">$WMT</a> 等。</p><h5>共同看淡</h5><p><a href=\"#stock/SOXX\" class=\"tk\">$SOXX</a> 0 好 5 淡，25 次，廣度崩潰敘事持續。<a href=\"#stock/IREN\" class=\"tk\">$IREN</a> 0 好 3 淡，28 次。其他看淡包括 <a href=\"#stock/PEP\" class=\"tk\">$PEP</a>、<a href=\"#stock/SBUX\" class=\"tk\">$SBUX</a> 等。</p><h5>分歧</h5><p><a href=\"#stock/SPY\" class=\"tk\">$SPY</a> 9 好 9 淡，215 次提及。<a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a> 12 好 4 淡，139 次。<a href=\"#stock/TSLA\" class=\"tk\">$TSLA</a> 9 好 6 淡，152 次。<a href=\"#stock/CRWV\" class=\"tk\">$CRWV</a> 4 好 13 淡，91 次，看淡明顯較多。<a href=\"#stock/QQQ\" class=\"tk\">$QQQ</a> 4 好 9 淡，141 次。<a href=\"#stock/MU\" class=\"tk\">$MU</a> 7 好 7 淡，93 次。</p><h5>其他值得留意</h5><p>數據範圍是 28 日 2349 則帖文（原創 2053、轉發 296）、126 個帳號，看好觀點 879 對看淡 417。以上只整理公開帖文觀點，非投資建議。</p>",
+      "html": "<h4>短摘要</h4><p>28 日 2349 帖、126 帳號，看好 879 對看淡 417。$AAPL 共同看好最齊心（8 帳號），$SOXX 持續看淡。$SPY 9 好 9 淡，$NVDA 12 好 4 淡。非投資建議。</p>"
+    },
+    "highlights": {
+      "date": "2026-10-17",
+      "range": "2026-10-17",
+      "stats_note": "今日 85 帖、29 帳號，看好 24 對看淡 22；無共同看好或看淡，全是分歧。最多人講 $QQQ（16 次、9 帳號）。",
+      "cards": [
+        {
+          "headline": "$QQQ 連跌歷史對上趨勢線跌破",
+          "theme": "歷史反彈 setup 與技術破位",
+          "tone": "分歧",
+          "points": [
+            "@carlquintanilla：納指100連續9天收低，史上僅第10次，先前9次5天後全部回升",
+            "@TrendSpider：最終 boss 趨勢線已經跌破",
+            "@ripster47：Clouds 全日無買入理由，仍持空頭，$VIX 守住20"
+          ],
+          "tickers": ["QQQ"],
+          "handles": ["carlquintanilla", "TrendSpider", "ripster47"],
+          "source_note": "據 @carlquintanilla、@TrendSpider、@ripster47 貼文",
+          "big": {"value": "1 好 3 淡", "label": "$QQQ 分歧"}
+        },
+        {
+          "headline": "$TSLA Roadster 與 $SPCX 420 美元合併猜測",
+          "theme": "新品演示帶動合併傳聞",
+          "tone": "分歧",
+          "points": [
+            "@garyblack00：Roadster 活動為 $SPCX 以每股 420 美元股票收購 $TSLA 舖路",
+            "@StockSavvyShay：特朗普稱演示非常令人印象深刻，Roadster 用 $SPCX 推進器",
+            "@TrendSpider：Roadster 飛了，$TSLA 沒有"
+          ],
+          "tickers": ["TSLA", "SPCX"],
+          "handles": ["garyblack00", "StockSavvyShay", "TrendSpider"],
+          "source_note": "據 @garyblack00、@StockSavvyShay、@TrendSpider 貼文",
+          "big": {"value": "2 好 2 淡", "label": "$TSLA 分歧"}
+        },
+        {
+          "headline": "$SPX 歷史 11 月強勢對上今日血洗",
+          "theme": "季節性 vs 當日波動",
+          "tone": "分歧",
+          "points": [
+            "@Mr_Derivatives：過去 14 個 11 月有 13 個上漲，平均 +3.36%",
+            "@EliteOptions2：今日血洗，$SPX 從 7669 升至 7757 再跌至 7631，路徑向下",
+            "@EliteOptions2：$QQQ 從 715 升至 730 再跌至 707"
+          ],
+          "tickers": ["SPX", "QQQ"],
+          "handles": ["Mr_Derivatives", "EliteOptions2"],
+          "source_note": "據 @Mr_Derivatives、@EliteOptions2 貼文",
+          "big": {"value": "1 好 1 淡", "label": "$SPX 分歧"}
+        }
+      ]
+    },
+    "briefing": {
+      "date": "2026-10-17",
+      "html": "<h3>今日市場速覽</h3><p>85 則帖文、29 個帳號，看好 24 對看淡 22，幾乎對半。沒有共同看好或看淡，全是分歧。$QQQ 最熱，歷史連跌後反彈 setup 對上趨勢線跌破；$TSLA 圍繞 Roadster 與 $SPCX 以 420 美元股票收購的猜測。$SPX 有人講 11 月歷史強勢，也有人指今日從 7757 跌回 7631 的血洗。非投資建議。</p>"
+    }
+  },
+  "en": {
+    "daily": {
+      "date": "2026-10-17",
+      "brief": "<p>Market views were clearly split today. 85 posts from 29 accounts, with 24 bullish views versus 22 bearish, almost even. No joint bullish or joint bearish names, only splits. Most discussed was <a href=\"#stock/QQQ\" class=\"tk\">$QQQ</a> (16 mentions, 9 accounts), with historical recovery arguments against a broken trendline.</p>",
+      "full": "<h5>Consensus</h5><p>No joint bullish or joint bearish names today; all directional discussion landed on the split list.</p><h5>Joint bearish</h5><p>Also no joint bearish names.</p><h5>Splits</h5><p><a href=\"#stock/QQQ\" class=\"tk\">$QQQ</a> was the hottest, 16 mentions from 9 accounts, 1 bull and 3 bears. <a href=\"#account/carlquintanilla\">@carlquintanilla</a> noted the Nasdaq 100 has closed lower or below the open for 9 straight days, only the 10th time in history; the prior 9 cases all recovered within 5 days, and it is down 6% from highs in 8 days, so good and bad days cluster and do not fall into the bear trap (<a href=\"https://x.com/Bluekurtic/status/2111134768301842458\">post</a>). But <a href=\"#account/TrendSpider\">@TrendSpider</a> said the final boss trendline has been broken (<a href=\"https://x.com/TrendSpider/status/2111231966842417211\">post</a>), and <a href=\"#account/ripster47\">@ripster47</a> said Ripster Clouds gave no buy reasons all day, still holding shorts, $VIX held 20 and bounced, money saved is money earned (<a href=\"https://x.com/ripster47/status/2111160704749220218\">post</a>).</p><p><a href=\"#stock/TSLA\" class=\"tk\">$TSLA</a> is 2 bulls and 2 bears, 8 mentions. <a href=\"#account/garyblack00\">@garyblack00</a> thinks the Roadster event's only purpose was to pave the way for an $SPCX-$TSLA merger, guessing in coming weeks $SPCX will announce acquiring $TSLA at $420 per $SPCX share (<a href=\"https://x.com/garyblack00/status/2111229232713998658\">post</a>). <a href=\"#account/StockSavvyShay\">@StockSavvyShay</a> cited Trump calling the demo \"very impressive\", with Roadster using $SPCX thrusters to skip the lineup (<a href=\"https://x.com/StockSavvyShay/status/2111143697891127640\">post</a>). <a href=\"#account/TrendSpider\">@TrendSpider</a> coolly said the Roadster flew, $TSLA did not (<a href=\"https://x.com/TrendSpider/status/2111162762193723804\">post</a>).</p><p><a href=\"#stock/META\" class=\"tk\">$META</a> is 1 bull and 1 bear. <a href=\"#account/StockSavvyShay\">@StockSavvyShay</a> said the ad business is catching $GOOGL search, quarterly revenue now only about $4B behind, with AI helping place 14% more ads at 12% higher prices (<a href=\"https://x.com/StockSavvyShay/status/2111129418093797477\">post</a>). <a href=\"#account/bespokeinvest\">@bespokeinvest</a> noted it is down 9.11% from the September high (<a href=\"https://x.com/bespokeinvest/status/2111168657556443312\">post</a>).</p><p><a href=\"#stock/SPX\" class=\"tk\">$SPX</a> is also 1 and 1. <a href=\"#account/Mr_Derivatives\">@Mr_Derivatives</a> for bulls only: in the past 14 Novembers, 13 were up, average +3.36%; survive October and November historically delivers (<a href=\"https://x.com/Mr_Derivatives/status/2111149259211067612\">post</a>). <a href=\"#account/EliteOptions2\">@EliteOptions2</a> described today's bloodbath, maximum pain for bulls, $SPX from 7669 up to 7757 then down to 7631, $QQQ from 715 to 730 then to 707, path of least resistance down (<a href=\"https://x.com/EliteOptions2/status/2111185430280290660\">post</a>).</p><h5>Other notes</h5><p>Also heavily discussed: <a href=\"#stock/VIX\" class=\"tk\">$VIX</a> (12 mentions, 7 accounts, no clear direction) and <a href=\"#stock/SPY\" class=\"tk\">$SPY</a> (9 mentions, 8 accounts, 0 bulls 2 bears). Data covers 85 posts today (75 originals, 10 reposts) from 29 accounts. This only summarizes public posts and is not investment advice.</p>",
+      "html": "<h4>Short summary</h4><p>Today 85 posts, 29 accounts, 24 bullish vs 22 bearish, nearly even. No joint bullish or bearish, only splits. $QQQ hottest (16 mentions), historical bounce setup vs broken trendline; $TSLA around Roadster and $SPCX $420 merger speculation. Not investment advice.</p>"
+    },
+    "weekly": {
+      "date": "2026-10-17",
+      "brief": "<p>Over the past 7 days (Oct 11-17), discussion volume jumped: 1,581 posts from 114 accounts, 667 bullish views far outweighing 347 bearish. Strongest joint bullish is <a href=\"#stock/AAPL\" class=\"tk\">$AAPL</a> (7 accounts, 52 mentions), focused on iPhone Duo delivery dates stretching to 2027. Semiconductor breadth clearly weakened, with $SOXX matching its longest daily losing streak in nearly 20 years.</p>",
+      "full": "<h5>Consensus</h5><p>On joint bullish, <a href=\"#stock/AAPL\" class=\"tk\">$AAPL</a> is 7 bulls 0 bears, 52 mentions. <a href=\"#account/StockSavvyShay\">@StockSavvyShay</a> noted iPhone Duo delivery dates have stretched to 2027 (<a href=\"https://x.com/StockSavvyShay/status/2111084140678496369\">post</a>). <a href=\"#account/munster_gene\">@munster_gene</a> said Duo already shows a 7-week lead time (Dec 8-15), long lead times signal a fast start (<a href=\"https://x.com/munster_gene/status/2111069578340012076\">post</a>). <a href=\"#account/GerberKawasaki\">@GerberKawasaki</a> said it feels good to launch products people can actually get in a reasonable time (<a href=\"https://x.com/GerberKawasaki/status/2111076571255898492\">post</a>).</p><p><a href=\"#stock/GOOGL\" class=\"tk\">$GOOGL</a> is 4 bulls 0 bears, 33 mentions, focused on Gemini and TPU utilization. Other joint bullish include <a href=\"#stock/MSFT\" class=\"tk\">$MSFT</a> and <a href=\"#stock/WMT\" class=\"tk\">$WMT</a>.</p><h5>Joint bearish</h5><p><a href=\"#stock/SOXX\" class=\"tk\">$SOXX</a> is 0 bulls 5 bears, 25 mentions. <a href=\"#account/sentimentrader\">@sentimentrader</a> noted semiconductor breadth collapsed in just six trading days; on Oct 15 only 3.3% of components were above their 10-day moving average, down from 66.7% (<a href=\"https://x.com/sentimentrader/status/2111153449031373009\">post</a>). <a href=\"#account/StockSavvyShay\">@StockSavvyShay</a> and <a href=\"#account/Mr_Derivatives\">@Mr_Derivatives</a> both noted SOXX's consecutive down days match the longest daily losing streak since 2006.</p><p>Other bears include <a href=\"#stock/IREN\" class=\"tk\">$IREN</a> and <a href=\"#stock/CIFR\" class=\"tk\">$CIFR</a>.</p><h5>Splits</h5><p><a href=\"#stock/SPY\" class=\"tk\">$SPY</a> is 9 bulls 9 bears, 173 mentions, the widest split. <a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a> is 10 bulls 3 bears, 99 mentions. <a href=\"#stock/TSLA\" class=\"tk\">$TSLA</a> is 9 bulls 6 bears, 114 mentions, continuing Roadster and $SPCX $420 speculation. <a href=\"#stock/CRWV\" class=\"tk\">$CRWV</a> is 4 bulls 13 bears, 89 mentions, bearish voices clearly louder. <a href=\"#stock/QQQ\" class=\"tk\">$QQQ</a> is 3 bulls 9 bears, 117 mentions.</p><h5>Other notes</h5><p>Data covers 7 days of 1,581 posts (1,406 originals, 175 reposts) from 114 accounts, 667 bullish vs 347 bearish views. This only summarizes public posts and is not investment advice.</p>",
+      "html": "<h4>Short summary</h4><p>7 days: 1,581 posts, 114 accounts, 667 bullish vs 347 bearish. $AAPL strongest joint bullish (7 accounts, Duo lead times to 2027), $SOXX breadth collapse matching longest streak in nearly 20 years. $SPY 9 vs 9 widest split. Not investment advice.</p>"
+    },
+    "monthly": {
+      "date": "2026-10-17",
+      "brief": "<p>Over the past 28 days (Sep 20 to Oct 17), 2,349 posts from 126 accounts, 879 bullish views versus 417 bearish. Joint bullish still led by <a href=\"#stock/AAPL\" class=\"tk\">$AAPL</a> (8 accounts, 69 mentions), followed by <a href=\"#stock/MSFT\" class=\"tk\">$MSFT</a> and <a href=\"#stock/GOOGL\" class=\"tk\">$GOOGL</a>. Bearish focused on semiconductor breadth and some crypto and consumer names.</p>",
+      "full": "<h5>Consensus</h5><p><a href=\"#stock/AAPL\" class=\"tk\">$AAPL</a> is 8 bulls 0 bears, 69 mentions, continuing Duo product discussion. <a href=\"#stock/MSFT\" class=\"tk\">$MSFT</a> is 7 bulls 0 bears, 42 mentions. <a href=\"#stock/GOOGL\" class=\"tk\">$GOOGL</a> is 4 bulls 0 bears, 50 mentions. <a href=\"#stock/AMZN\" class=\"tk\">$AMZN</a> is 4 bulls 0 bears, 46 mentions. Others include <a href=\"#stock/MRNA\" class=\"tk\">$MRNA</a> and <a href=\"#stock/WMT\" class=\"tk\">$WMT</a>.</p><h5>Joint bearish</h5><p><a href=\"#stock/SOXX\" class=\"tk\">$SOXX</a> is 0 bulls 5 bears, 25 mentions, breadth collapse narrative continues. <a href=\"#stock/IREN\" class=\"tk\">$IREN</a> is 0 bulls 3 bears, 28 mentions. Other bears include <a href=\"#stock/PEP\" class=\"tk\">$PEP</a> and <a href=\"#stock/SBUX\" class=\"tk\">$SBUX</a>.</p><h5>Splits</h5><p><a href=\"#stock/SPY\" class=\"tk\">$SPY</a> is 9 bulls 9 bears, 215 mentions. <a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a> is 12 bulls 4 bears, 139 mentions. <a href=\"#stock/TSLA\" class=\"tk\">$TSLA</a> is 9 bulls 6 bears, 152 mentions. <a href=\"#stock/CRWV\" class=\"tk\">$CRWV</a> is 4 bulls 13 bears, 91 mentions, bears clearly louder. <a href=\"#stock/QQQ\" class=\"tk\">$QQQ</a> is 4 bulls 9 bears, 141 mentions. <a href=\"#stock/MU\" class=\"tk\">$MU</a> is 7 bulls 7 bears, 93 mentions.</p><h5>Other notes</h5><p>Data covers 28 days of 2,349 posts (2,053 originals, 296 reposts) from 126 accounts, 879 bullish vs 417 bearish views. This only summarizes public posts and is not investment advice.</p>",
+      "html": "<h4>Short summary</h4><p>28 days: 2,349 posts, 126 accounts, 879 bullish vs 417 bearish. $AAPL strongest joint bullish (8 accounts), $SOXX remains bearish. $SPY 9 vs 9, $NVDA 12 vs 4. Not investment advice.</p>"
+    },
+    "highlights": {
+      "date": "2026-10-17",
+      "range": "2026-10-17",
+      "stats_note": "Today 85 posts, 29 accounts, 24 bullish vs 22 bearish; no joint bullish or bearish, only splits. Most discussed $QQQ (16 mentions, 9 accounts).",
+      "cards": [
+        {
+          "headline": "$QQQ historical losing streak vs broken trendline",
+          "theme": "Historical recovery setup against technical break",
+          "tone": "分歧",
+          "points": [
+            "@carlquintanilla: Nasdaq 100 closed lower 9 straight days, only 10th time in history, prior 9 all recovered within 5 days",
+            "@TrendSpider: final boss trendline has been broken",
+            "@ripster47: Clouds gave no buy reasons all day, still holding shorts, $VIX held 20"
+          ],
+          "tickers": ["QQQ"],
+          "handles": ["carlquintanilla", "TrendSpider", "ripster47"],
+          "source_note": "Based on posts by @carlquintanilla, @TrendSpider, @ripster47",
+          "big": {"value": "1 bull 3 bears", "label": "$QQQ split"}
+        },
+        {
+          "headline": "$TSLA Roadster and $SPCX $420 merger speculation",
+          "theme": "New demo drives merger rumors",
+          "tone": "分歧",
+          "points": [
+            "@garyblack00: Roadster event to pave way for $SPCX acquiring $TSLA at $420 per share",
+            "@StockSavvyShay: Trump called demo very impressive, Roadster uses $SPCX thrusters",
+            "@TrendSpider: Roadster flew, $TSLA did not"
+          ],
+          "tickers": ["TSLA", "SPCX"],
+          "handles": ["garyblack00", "StockSavvyShay", "TrendSpider"],
+          "source_note": "Based on posts by @garyblack00, @StockSavvyShay, @TrendSpider",
+          "big": {"value": "2 bulls 2 bears", "label": "$TSLA split"}
+        },
+        {
+          "headline": "$SPX historical November strength vs today's bloodbath",
+          "theme": "Seasonality versus intraday volatility",
+          "tone": "分歧",
+          "points": [
+            "@Mr_Derivatives: past 14 Novembers, 13 up, average +3.36%",
+            "@EliteOptions2: today's bloodbath, $SPX from 7669 to 7757 then to 7631, path down",
+            "@EliteOptions2: $QQQ from 715 to 730 then to 707"
+          ],
+          "tickers": ["SPX", "QQQ"],
+          "handles": ["Mr_Derivatives", "EliteOptions2"],
+          "source_note": "Based on posts by @Mr_Derivatives, @EliteOptions2",
+          "big": {"value": "1 bull 1 bear", "label": "$SPX split"}
+        }
+      ]
+    },
+    "briefing": {
+      "date": "2026-10-17",
+      "html": "<h3>Today's market snapshot</h3><p>85 posts, 29 accounts, 24 bullish vs 22 bearish, nearly even. No joint bullish or bearish, only splits. $QQQ hottest with historical recovery setup against broken trendline; $TSLA around Roadster and $SPCX acquiring at $420. $SPX has both historical November strength and today's drop from 7757 back to 7631. Not investment advice.</p>"
+    }
+  },
+  "ko": {
+    "daily": {
+      "date": "2026-10-17",
+      "brief": "<p>오늘 시장 의견이 명확히 갈렸습니다. 29개 계정에서 85개 게시물, 낙관적 견해 24개 대 비관적 22개로 거의 반반입니다. 공동 낙관이나 공동 비관 종목은 없고 모두 분열입니다. 가장 많이 언급된 것은 <a href=\"#stock/QQQ\" class=\"tk\">$QQQ</a>(16회 언급, 9개 계정)로, 역사적 반등 논거와 추세선 붕괴가 맞섰습니다.</p>",
+      "full": "<h5>합의</h5><p>오늘 공동 낙관이나 공동 비관 종목은 없었습니다. 모든 방향성 논의가 분열 목록에 있었습니다.</p><h5>공동 비관</h5><p>공동 비관 종목도 없습니다.</p><h5>분열</h5><p><a href=\"#stock/QQQ\" class=\"tk\">$QQQ</a>가 가장 뜨거웠습니다. 9개 계정에서 16회 언급, 1 낙관 3 비관. <a href=\"#account/carlquintanilla\">@carlquintanilla</a>는 나스닥100이 9일 연속 하락 또는 시가 이하 마감했으며 역사상 10번째라고 지적했습니다. 이전 9번은 5일 내 모두 회복했고 8일 만에 고점 대비 6% 하락했으므로 좋은 날과 나쁜 날이 군집하며 공매도 함정에 빠지지 말라고 했습니다(<a href=\"https://x.com/Bluekurtic/status/2111134768301842458\">원문</a>). 하지만 <a href=\"#account/TrendSpider\">@TrendSpider</a>는 최종 보스 추세선이 붕괴됐다고 했고(<a href=\"https://x.com/TrendSpider/status/2111231966842417211\">원문</a>), <a href=\"#account/ripster47\">@ripster47</a>는 Ripster Clouds가 하루 종일 매수 이유를 주지 않았고 여전히 공매도를 보유 중이며 $VIX가 20을 지키며 반등했다고 했습니다(<a href=\"https://x.com/ripster47/status/2111160704749220218\">원문</a>).</p><p><a href=\"#stock/TSLA\" class=\"tk\">$TSLA</a>는 2 낙관 2 비관, 8회 언급. <a href=\"#account/garyblack00\">@garyblack00</a>는 Roadster 이벤트의 유일한 목적이 $SPCX와 $TSLA 합병을 위한 것이라고 보며, 몇 주 내 $SPCX가 주당 420달러 주식으로 $TSLA를 인수한다고 발표할 것이라고 추측했습니다(<a href=\"https://x.com/garyblack00/status/2111229232713998658\">원문</a>). <a href=\"#account/StockSavvyShay\">@StockSavvyShay</a>는 트럼프가 데모를 \"매우 인상적\"이라고 했다고 인용하며 Roadster가 $SPCX 추진기를 사용한다고 했습니다(<a href=\"https://x.com/StockSavvyShay/status/2111143697891127640\">원문</a>). <a href=\"#account/TrendSpider\">@TrendSpider</a>는 Roadster는 날아갔지만 $TSLA는 그렇지 않았다고 했습니다(<a href=\"https://x.com/TrendSpider/status/2111162762193723804\">원문</a>).</p><p><a href=\"#stock/META\" class=\"tk\">$META</a>는 1 낙관 1 비관. <a href=\"#account/StockSavvyShay\">@StockSavvyShay</a>는 광고 사업이 $GOOGL 검색을 따라잡고 있으며 분기 매출이 약 40억 달러 차이이고 AI가 광고를 14% 더 많이 배치하고 12% 높은 가격에 체결되도록 돕는다고 했습니다(<a href=\"https://x.com/StockSavvyShay/status/2111129418093797477\">원문</a>). <a href=\"#account/bespokeinvest\">@bespokeinvest</a>는 9월 고점 대비 9.11% 하락했다고 지적했습니다(<a href=\"https://x.com/bespokeinvest/status/2111168657556443312\">원문</a>).</p><p><a href=\"#stock/SPX\" class=\"tk\">$SPX</a>도 1 대 1. <a href=\"#account/Mr_Derivatives\">@Mr_Derivatives</a>는 다수 전용: 과거 14개 11월 중 13개가 상승, 평균 +3.36%; 10월을 버티면 11월 역사적 수익률이 좋다고 했습니다(<a href=\"https://x.com/Mr_Derivatives/status/2111149259211067612\">원문</a>). <a href=\"#account/EliteOptions2\">@EliteOptions2</a>는 오늘의 혈투를 묘사하며 다수 최대 고통, $SPX가 7669에서 7757로 올랐다가 7631로 하락, $QQQ가 715에서 730으로 올랐다가 707로 하락, 최소 저항 경로가 아래라고 했습니다(<a href=\"https://x.com/EliteOptions2/status/2111185430280290660\">원문</a>).</p><h5>기타 주목할 점</h5><p>또한 많이 언급된 것은 <a href=\"#stock/VIX\" class=\"tk\">$VIX</a>(12회, 7개 계정, 명확한 방향 없음)와 <a href=\"#stock/SPY\" class=\"tk\">$SPY</a>(9회, 8개 계정, 0 낙관 2 비관)입니다. 데이터 범위는 오늘 85개 게시물(원본 75, 리포스트 10), 29개 계정입니다. 공개 게시물 관점을 정리한 것이며 투자 조언이 아닙니다.</p>",
+      "html": "<h4>짧은 요약</h4><p>오늘 85개 게시물, 29개 계정, 낙관 24 대 비관 22로 거의 반반. 공동 낙관이나 비관 없음, 모두 분열. $QQQ 가장 뜨거움(16회), 역사적 반등 셋업 대 추세선 붕괴; $TSLA는 Roadster와 $SPCX 420달러 합병 추측. 투자 조언 아님.</p>"
+    },
+    "weekly": {
+      "date": "2026-10-17",
+      "brief": "<p>지난 7일(10월 11-17일) 논의량이 크게 늘었습니다. 114개 계정에서 1,581개 게시물, 낙관적 견해 667개가 비관적 347개를 훨씬 웃돌았습니다. 가장 강한 공동 낙관은 <a href=\"#stock/AAPL\" class=\"tk\">$AAPL</a>(7개 계정, 52회 언급)로 iPhone Duo 배송일이 2027년까지 연장된 점에 초점이 맞춰졌습니다. 반도체  breadth는 명확히 약화됐고 $SOXX가 거의 20년 만의 최장 일일 연속 하락 기록을 맞췄습니다.</p>",
+      "full": "<h5>합의</h5><p>공동 낙관에서 <a href=\"#stock/AAPL\" class=\"tk\">$AAPL</a>는 7 낙관 0 비관, 52회 언급. <a href=\"#account/StockSavvyShay\">@StockSavvyShay</a>는 iPhone Duo 배송일이 2027년까지 연장됐다고 지적했습니다(<a href=\"https://x.com/StockSavvyShay/status/2111084140678496369\">원문</a>). <a href=\"#account/munster_gene\">@munster_gene</a>는 Duo가 이미 7주 리드타임(12월 8-15일)을 보이고 긴 리드타임이 빠른 시작을 신호한다고 했습니다(<a href=\"https://x.com/munster_gene/status/2111069578340012076\">원문</a>). <a href=\"#account/GerberKawasaki\">@GerberKawasaki</a>는 사람들이 합리적인 시간에 실제로 살 수 있는 제품을 출시한 것이 좋다고 했습니다(<a href=\"https://x.com/GerberKawasaki/status/2111076571255898492\">원문</a>).</p><p><a href=\"#stock/GOOGL\" class=\"tk\">$GOOGL</a>는 4 낙관 0 비관, 33회 언급, Gemini와 TPU 활용률에 초점. 다른 공동 낙관으로는 <a href=\"#stock/MSFT\" class=\"tk\">$MSFT</a>와 <a href=\"#stock/WMT\" class=\"tk\">$WMT</a>가 있습니다.</p><h5>공동 비관</h5><p><a href=\"#stock/SOXX\" class=\"tk\">$SOXX</a>는 0 낙관 5 비관, 25회 언급. <a href=\"#account/sentimentrader\">@sentimentrader</a>는 반도체 breadth가 단 6거래일 만에 붕괴됐다고 지적했습니다. 10월 15일 구성 요소의 3.3%만이 10일 이동평균 위에 있었고 66.7%에서 하락했습니다(<a href=\"https://x.com/sentimentrader/status/2111153449031373009\">원문</a>). <a href=\"#account/StockSavvyShay\">@StockSavvyShay</a>와 <a href=\"#account/Mr_Derivatives\">@Mr_Derivatives</a> 모두 SOXX의 연속 하락이 2006년 이후 최장 일일 연속 하락 기록과 일치한다고 했습니다.</p><p>다른 비관으로는 <a href=\"#stock/IREN\" class=\"tk\">$IREN</a>와 <a href=\"#stock/CIFR\" class=\"tk\">$CIFR</a>가 있습니다.</p><h5>분열</h5><p><a href=\"#stock/SPY\" class=\"tk\">$SPY</a>는 9 낙관 9 비관, 173회 언급으로 가장 넓은 분열. <a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a>는 10 낙관 3 비관, 99회. <a href=\"#stock/TSLA\" class=\"tk\">$TSLA</a>는 9 낙관 6 비관, 114회, Roadster와 $SPCX 420달러 추측 지속. <a href=\"#stock/CRWV\" class=\"tk\">$CRWV</a>는 4 낙관 13 비관, 89회, 비관 목소리가 명확히 더 큽니다. <a href=\"#stock/QQQ\" class=\"tk\">$QQQ</a>는 3 낙관 9 비관, 117회.</p><h5>기타 주목할 점</h5><p>데이터 범위는 7일 1,581개 게시물(원본 1,406, 리포스트 175), 114개 계정, 낙관 667 대 비관 347입니다. 공개 게시물 관점을 정리한 것이며 투자 조언이 아닙니다.</p>",
+      "html": "<h4>짧은 요약</h4><p>7일: 1,581개 게시물, 114개 계정, 낙관 667 대 비관 347. $AAPL 가장 강한 공동 낙관(7개 계정, Duo 리드타임 2027년), $SOXX breadth 붕괴 거의 20년 최장 기록. $SPY 9 대 9 가장 넓은 분열. 투자 조언 아님.</p>"
+    },
+    "monthly": {
+      "date": "2026-10-17",
+      "brief": "<p>지난 28일(9월 20일~10월 17일) 126개 계정에서 2,349개 게시물, 낙관적 견해 879개 대 비관적 417개. 공동 낙관은 여전히 <a href=\"#stock/AAPL\" class=\"tk\">$AAPL</a>(8개 계정, 69회 언급)가 주도하고 <a href=\"#stock/MSFT\" class=\"tk\">$MSFT</a>와 <a href=\"#stock/GOOGL\" class=\"tk\">$GOOGL</a>가 뒤를 이었습니다. 비관은 반도체 breadth와 일부 암호화폐, 소비재에 집중됐습니다.</p>",
+      "full": "<h5>합의</h5><p><a href=\"#stock/AAPL\" class=\"tk\">$AAPL</a>는 8 낙관 0 비관, 69회 언급, Duo 제품 논의 지속. <a href=\"#stock/MSFT\" class=\"tk\">$MSFT</a>는 7 낙관 0 비관, 42회. <a href=\"#stock/GOOGL\" class=\"tk\">$GOOGL</a>는 4 낙관 0 비관, 50회. <a href=\"#stock/AMZN\" class=\"tk\">$AMZN</a>는 4 낙관 0 비관, 46회. 기타로는 <a href=\"#stock/MRNA\" class=\"tk\">$MRNA</a>와 <a href=\"#stock/WMT\" class=\"tk\">$WMT</a>가 있습니다.</p><h5>공동 비관</h5><p><a href=\"#stock/SOXX\" class=\"tk\">$SOXX</a>는 0 낙관 5 비관, 25회, breadth 붕괴 서사 지속. <a href=\"#stock/IREN\" class=\"tk\">$IREN</a>는 0 낙관 3 비관, 28회. 기타 비관으로는 <a href=\"#stock/PEP\" class=\"tk\">$PEP</a>와 <a href=\"#stock/SBUX\" class=\"tk\">$SBUX</a>가 있습니다.</p><h5>분열</h5><p><a href=\"#stock/SPY\" class=\"tk\">$SPY</a>는 9 낙관 9 비관, 215회 언급. <a href=\"#stock/NVDA\" class=\"tk\">$NVDA</a>는 12 낙관 4 비관, 139회. <a href=\"#stock/TSLA\" class=\"tk\">$TSLA</a>는 9 낙관 6 비관, 152회. <a href=\"#stock/CRWV\" class=\"tk\">$CRWV</a>는 4 낙관 13 비관, 91회, 비관이 명확히 더 큼. <a href=\"#stock/QQQ\" class=\"tk\">$QQQ</a>는 4 낙관 9 비관, 141회. <a href=\"#stock/MU\" class=\"tk\">$MU</a>는 7 낙관 7 비관, 93회.</p><h5>기타 주목할 점</h5><p>데이터 범위는 28일 2,349개 게시물(원본 2,053, 리포스트 296), 126개 계정, 낙관 879 대 비관 417입니다. 공개 게시물 관점을 정리한 것이며 투자 조언이 아닙니다.</p>",
+      "html": "<h4>짧은 요약</h4><p>28일: 2,349개 게시물, 126개 계정, 낙관 879 대 비관 417. $AAPL 가장 강한 공동 낙관(8개 계정), $SOXX 지속 비관. $SPY 9 대 9, $NVDA 12 대 4. 투자 조언 아님.</p>"
+    },
+    "highlights": {
+      "date": "2026-10-17",
+      "range": "2026-10-17",
+      "stats_note": "오늘 85개 게시물, 29개 계정, 낙관 24 대 비관 22; 공동 낙관이나 비관 없음, 모두 분열. 가장 많이 언급된 $QQQ(16회, 9개 계정).",
+      "cards": [
+        {
+          "headline": "$QQQ 역사적 연속 하락 대 추세선 붕괴",
+          "theme": "역사적 회복 셋업 대 기술적 붕괴",
+          "tone": "分歧",
+          "points": [
+            "@carlquintanilla: 나스닥100 9일 연속 하락, 역사상 10번째, 이전 9번은 5일 내 모두 회복",
+            "@TrendSpider: 최종 보스 추세선 붕괴",
+            "@ripster47: Clouds가 하루 종일 매수 이유 없음, 여전히 공매도, $VIX 20 유지"
+          ],
+          "tickers": ["QQQ"],
+          "handles": ["carlquintanilla", "TrendSpider", "ripster47"],
+          "source_note": "@carlquintanilla, @TrendSpider, @ripster47 게시물 기반",
+          "big": {"value": "1 낙관 3 비관", "label": "$QQQ 분열"}
+        },
+        {
+          "headline": "$TSLA Roadster와 $SPCX 420달러 합병 추측",
+          "theme": "신제품 데모가 합병 소문 유발",
+          "tone": "分歧",
+          "points": [
+            "@garyblack00: Roadster 이벤트가 $SPCX가 주당 420달러로 $TSLA 인수하는 길 닦기",
+            "@StockSavvyShay: 트럼프가 데모 매우 인상적이라고, Roadster가 $SPCX 추진기 사용",
+            "@TrendSpider: Roadster는 날아갔지만 $TSLA는 아님"
+          ],
+          "tickers": ["TSLA", "SPCX"],
+          "handles": ["garyblack00", "StockSavvyShay", "TrendSpider"],
+          "source_note": "@garyblack00, @StockSavvyShay, @TrendSpider 게시물 기반",
+          "big": {"value": "2 낙관 2 비관", "label": "$TSLA 분열"}
+        },
+        {
+          "headline": "$SPX 역사적 11월 강세 대 오늘의 혈투",
+          "theme": "계절성 대 당일 변동성",
+          "tone": "分歧",
+          "points": [
+            "@Mr_Derivatives: 과거 14개 11월 중 13개 상승, 평균 +3.36%",
+            "@EliteOptions2: 오늘의 혈투, $SPX 7669→7757→7631, 경로 아래",
+            "@EliteOptions2: $QQQ 715→730→707"
+          ],
+          "tickers": ["SPX", "QQQ"],
+          "handles": ["Mr_Derivatives", "EliteOptions2"],
+          "source_note": "@Mr_Derivatives, @EliteOptions2 게시물 기반",
+          "big": {"value": "1 낙관 1 비관", "label": "$SPX 분열"}
+        }
+      ]
+    },
+    "briefing": {
+      "date": "2026-10-17",
+      "html": "<h3>오늘 시장 스냅샷</h3><p>85개 게시물, 29개 계정, 낙관 24 대 비관 22로 거의 반반. 공동 낙관이나 비관 없음, 모두 분열. $QQQ 가장 뜨거움, 역사적 회복 셋업 대 추세선 붕괴; $TSLA는 Roadster와 $SPCX 420달러 인수 추측. $SPX는 역사적 11월 강세와 7757에서 7631로 하락한 오늘의 혈투 모두 존재. 투자 조언 아님.</p>"
+    }
+  }
+}
