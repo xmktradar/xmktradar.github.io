@@ -421,12 +421,12 @@
   "2026-10-17": {
    "bull": [
     "AMD",
-    "SKHY",
     "AMZN",
     "XOM"
    ],
    "bear": [
     "QQQ",
+    "CRWV",
     "SMH"
    ],
    "split": [
@@ -436,7 +436,8 @@
     "META",
     "NBIS",
     "HOOD",
-    "SPX"
+    "SPX",
+    "XLF"
    ],
    "window": [
     "2026-10-17T00:00",
@@ -449,15 +450,15 @@
     "CRWV",
     "VIX",
     "NVDA",
+    "AMD",
     "AAPL",
     "MU",
-    "AMD",
     "META"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-17 23:34"
+   "updated_hkt": "2026-10-18 00:41"
   }
  },
- "updated_hkt": "2026-10-17 23:34",
+ "updated_hkt": "2026-10-18 00:41",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
