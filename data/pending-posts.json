@@ -2,64 +2,134 @@
  "note": "已抓取但未經 Grok 分析嘅帖，只收股票同宏觀帖（閒聊帖唔寫），有股票代號嘅排最前，等超過 24 個鐘就唔再等。",
  "posts": [
   {
-   "id": "2111498131976438010",
-   "handle": "Mr_Derivatives",
-   "name": "Heisenberg",
+   "id": "2111527318078587300",
+   "handle": "TheTranscript_",
+   "name": "The Transcript",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-17T16:42:39Z",
-   "url": "https://x.com/Mr_Derivatives/status/2111498131976438010",
-   "text": "$MSTR Will form its first Golden Cross since May 2nd 2023 this upcoming week. Also price sitting right on both the 200dma and 50dma currently.\n\nWatchlist to see if it tries to bounce off of it.",
-   "quoted": null,
-   "media": [],
-   "likes": 65,
-   "views": 10136,
-   "cashtags": [
-    "MSTR"
-   ],
-   "n_media": 0
-  },
-  {
-   "id": "2111492515807563790",
-   "handle": "Mr_Derivatives",
-   "name": "Heisenberg",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-17T16:20:20Z",
-   "url": "https://x.com/Mr_Derivatives/status/2111492515807563790",
-   "text": "$QQQ Implied move for Monday is +/- 12.5 points or +/- 1.78%.\n\n$SPY implied move for Monday is +/- 8.9 points or +/- 1.17%.\n\nGet ready for more 💥.",
-   "quoted": null,
-   "media": [],
-   "likes": 228,
-   "views": 19410,
-   "cashtags": [
-    "QQQ",
-    "SPY"
-   ],
-   "n_media": 0
-  },
-  {
-   "id": "2111490974774079979",
-   "handle": "Jake__Wujastyk",
-   "name": "Jake Wujastyk",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-17T16:14:12Z",
-   "url": "https://x.com/Jake__Wujastyk/status/2111490974774079979",
-   "text": "$AVAV #AVAV Down to the long-term trend zone.",
+   "time_utc": "2026-10-17T18:38:37Z",
+   "url": "https://x.com/TheTranscript_/status/2111527318078587300",
+   "text": "$MS Morgan Stanley CFO on how AI adoption is already reducing manual finance workloads:\n\n\"What we're seeing is remarkable. The reconciliation that you can see across different books, things that usually take so many manual human hours and can have -- obviously, there are controls in place, but the ability to see it with fewer errors and fewer mistakes and fewer checks is real\"",
    "quoted": null,
    "media": [
-    "https://pbs.twimg.com/media/HU2FxN3aYAEFJHb.jpg?name=orig"
+    "https://pbs.twimg.com/media/HU2m5_AbYAEGqIa.jpg?name=orig"
    ],
-   "likes": 16,
-   "views": 9491,
+   "likes": 2,
+   "views": 901,
    "cashtags": [
-    "AVAV"
+    "MS"
    ],
    "n_media": 1
+  },
+  {
+   "id": "2111525139078844842",
+   "handle": "carlquintanilla",
+   "name": "Carl Quintanilla",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-17T18:29:58Z",
+   "url": "https://x.com/carlquintanilla/status/2111525139078844842",
+   "text": "“.. CoreWeave’s business model defies easy description. Its financial arrangements have been compared by some investors and analysts to that of the troubled office-space provider WeWork.”\n\n@nytimes $CRWV\nhttps://www.nytimes.com/2026/10/17/business/ai-debt-coreweave-oracle-softbank.html?smid=nytcore-ios-share",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HU2k7FQWAAAqzGe.jpg?name=orig"
+   ],
+   "likes": 4,
+   "views": 1635,
+   "cashtags": [
+    "CRWV"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2111517637624975721",
+   "handle": "TheTranscript_",
+   "name": "The Transcript",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-17T18:00:09Z",
+   "url": "https://x.com/TheTranscript_/status/2111517637624975721",
+   "text": "The U.S. government will receive ~4% equity in GlobalFoundries, alongside a restructuring of previously awarded CHIPS funding.\n\n\"Separately, the U.S. Department of Commerce will receive an equity stake in GF of approximately 4%.\"\n\n$GFS",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HU2eGYmbIAAHqsi.jpg?name=orig"
+   ],
+   "likes": 8,
+   "views": 2478,
+   "cashtags": [
+    "GFS"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2111514773020172648",
+   "handle": "DavidSacks",
+   "name": "David Sacks",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "DavidSacks"
+   },
+   "time_utc": "2026-10-17T17:48:46Z",
+   "url": "https://x.com/DavidSacks/status/2111514773020172648",
+   "text": "👇",
+   "quoted": {
+    "handle": "KryptonCGO",
+    "text": "@DavidSacks $META's Llama 3.1 405B was pre-trained on 3.8×10^25 FLOPs and has been publicly downloadable since July 2024. A 10^25 cutoff classifies a two-year-old open-weight model as frontier."
+   },
+   "media": [],
+   "likes": 49,
+   "views": 11983,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2111503292668809360",
+   "handle": "RampCapitalLLC",
+   "name": "Ramp Capital",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-17T17:03:09Z",
+   "url": "https://x.com/RampCapitalLLC/status/2111503292668809360",
+   "text": "Since the 3/10/22 tweet:\n$AMC -98%\n$MAGS +199%\n$QQQ +120%\n\nAMC Apes are so delusional it’s both sad and hilarious. Can’t believe we’re still talking about these shitcos.",
+   "quoted": {
+    "handle": "trvsrdrgz2",
+    "text": "Beg some more🍿 $AMC $GME the Best investment \n\nAll your MAG 7 Stocks are down Baggie \n\nHow does it Feel?"
+   },
+   "media": [
+    "https://pbs.twimg.com/media/HU2RDhtWsAENaml.jpg?name=orig"
+   ],
+   "likes": 21,
+   "views": 7151,
+   "cashtags": [
+    "AMC",
+    "MAGS",
+    "QQQ"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2111502521722405083",
+   "handle": "TheTranscript_",
+   "name": "The Transcript",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-17T17:00:05Z",
+   "url": "https://x.com/TheTranscript_/status/2111502521722405083",
+   "text": "$LVMH CFO Cécile Cabanis rejects aggressive price cuts at Louis Vuitton\n\n\"We've been seeing and having debates on what could be some more drastic immediate moves like price cuts. We don't believe this is something that is advisable because whatever you do, you need to keep in mind the desirability of your brand and making sure that what you do can endure momentum for the next cycle to come.\"",
+   "quoted": null,
+   "media": [],
+   "likes": 16,
+   "views": 3432,
+   "cashtags": [
+    "LVMH"
+   ],
+   "n_media": 0
   },
   {
    "id": "2111490871619436823",
@@ -79,51 +149,9 @@
     "https://pbs.twimg.com/amplify_video_thumb/2111490262531035136/img/lA8F6z7u7oj63fud.jpg"
    ],
    "likes": 12,
-   "views": 11272,
+   "views": 13987,
    "cashtags": [
     "BTC'S"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2111490250216481146",
-   "handle": "Jake__Wujastyk",
-   "name": "Jake Wujastyk",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-17T16:11:19Z",
-   "url": "https://x.com/Jake__Wujastyk/status/2111490250216481146",
-   "text": "$CBRS No bottom in sight.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HU2FH6vbUAA7dwC.jpg?name=orig"
-   ],
-   "likes": 33,
-   "views": 10775,
-   "cashtags": [
-    "CBRS"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2111489274759799025",
-   "handle": "Jake__Wujastyk",
-   "name": "Jake Wujastyk",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-17T16:07:27Z",
-   "url": "https://x.com/Jake__Wujastyk/status/2111489274759799025",
-   "text": "$ASST #ASST Previous resistance flipping to potential support.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HU2ETP-bIAAOrIJ.jpg?name=orig"
-   ],
-   "likes": 28,
-   "views": 9660,
-   "cashtags": [
-    "ASST"
    ],
    "n_media": 1
   },
@@ -149,28 +177,6 @@
    "n_media": 1
   },
   {
-   "id": "2111486739760157003",
-   "handle": "StockSavvyShay",
-   "name": "Shay Boloor",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "VanquishTrader"
-   },
-   "time_utc": "2026-10-17T15:57:22Z",
-   "url": "https://x.com/StockSavvyShay/status/2111486739760157003",
-   "text": "@VanquishTrader This is a great read for space investors. I've been adding a ton of $RKLB and $ASTS the past couple weeks.",
-   "quoted": null,
-   "media": [],
-   "likes": 39,
-   "views": 1919,
-   "cashtags": [
-    "ASTS",
-    "RKLB"
-   ],
-   "n_media": 0
-  },
-  {
    "id": "2111486134383436229",
    "handle": "dgt10011",
    "name": "Jeff Park",
@@ -187,52 +193,9 @@
    "media": [
     "https://pbs.twimg.com/media/HU2BcvSWYAAbPj9.jpg?name=orig"
    ],
-   "likes": 156,
-   "views": 11968,
+   "likes": 345,
+   "views": 33624,
    "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2111485917634629940",
-   "handle": "GerberKawasaki",
-   "name": "Ross Gerber",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-17T15:54:06Z",
-   "url": "https://x.com/GerberKawasaki/status/2111485917634629940",
-   "text": "SpaceX has given the EU and others a huge incentive to create a competitor to starlink and spacex $SPCX",
-   "quoted": null,
-   "media": [],
-   "likes": 29,
-   "views": 3218,
-   "cashtags": [
-    "SPCX"
-   ],
-   "n_media": 0
-  },
-  {
-   "id": "2111485779906310182",
-   "handle": "StockSavvyShay",
-   "name": "Shay Boloor",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-17T15:53:34Z",
-   "url": "https://x.com/StockSavvyShay/status/2111485779906310182",
-   "text": "My Family Portfolio is down just ~12% from its highs which honestly feels like a major win considering how badly individual growth stocks have been hit.\n\nI've still been putting capital to work during this drawdown by adding to some of my highest conviction names this past week: \n\n• Doubled my $CBRS position\n• Increased my $VRT position by ~65%\n• Increased my $RKLB position by ~50%\n• Increased my $NBIS position by ~40%",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HU1_TJOaUAALvbD.png?name=orig"
-   ],
-   "likes": 223,
-   "views": 25804,
-   "cashtags": [
-    "CBRS",
-    "NBIS",
-    "RKLB",
-    "VRT"
-   ],
    "n_media": 1
   },
   {
@@ -250,8 +213,8 @@
     "text": "TRON 销毁力度拉满 ！本季度又烧掉约 4637 万美元 🔥\n\n距离 JST 首次销毁已近一年，这次季度销毁，JST、HTX 持续兑现，BTT 也首次加入业务收入回购销毁，三币合计销毁价值约 4637 万美元。\n\n01｜JST 累计销毁突破 19%\n\n本轮再次销毁约 1.71 亿枚 JST，价值约 2322 万美元。累计销毁已达 18.82 亿枚，占初始总供应量的 19.01% ，接近五分之一。\n\nJustLend DAO 将协议净收益用于季度回购销毁，借贷、质押、能量租赁等真实业务，为持续回购提供资金支持。\n\n从首次销毁至今，JST 涨幅已超 300%。JST 背后既有 JustLend 的业务支撑，也有持续执行的回购销毁，让协议经营成果与代币持有者的利益联系得更紧。\n\n02｜BTT 首轮业务收入回购销毁，约 21.62 万亿枚\n\nBTT 本轮销毁约 21.62 万亿枚，价值约 767 万美元。BitTorrent 全球客户端累计安装量已达 5.879 亿次。多年积累的分发网络与使用基础，如今进一步与代币回购机制结合。\n\n回购资金来自去中心化业务收入，业务覆盖存储、网络基础设施及 AI 算力等领域。业务增长有了回购销毁这条路径，也让基础设施的经营成果能够进一步回馈生态和持有者。\n\n03｜HTX 季度销毁，持续兑现承诺\n\nHTX DAO 第三季度销毁约 9.39 万亿枚 HTX，价值约 1548 万美元。截至目前，累计捐助与销毁已达 127.18 万亿枚 HTX。\n\n从 2024 年 Q3 开始，季度销毁持续执行，把业务收入用于减少代币供应。说过的话没有停在口头，而是一季一季落实，留下可核对的链上记录。\n\n04｜把业务增长的红利，返哺生态与持有者\n\n从 TRX 的日常销毁，到 JST、BTT、HTX 的季度回购销毁，波场生态的销毁机制正在覆盖更多业务。\n\nDeFi、基础设施和交易平台产生的收入，持续转化为回购资金，让生态发展与代币供应之间有了更直接的联系。\n\n把生态做大，也把业务增长的红利返哺给生态和持有者。业务持续做，代币持续烧。\n\n@justinsuntron @DeFi_JUST #TRONEcoStar"
    },
    "media": [],
-   "likes": 40,
-   "views": 25691,
+   "likes": 56,
+   "views": 31575,
    "cashtags": [
     "TRX",
     "WIN"
@@ -280,38 +243,199 @@
    "n_media": 1
   },
   {
-   "id": "2111502586503122981",
+   "id": "2111526996547379557",
+   "handle": "ylecun",
+   "name": "Yann LeCun",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "we4v3r"
+   },
+   "time_utc": "2026-10-17T18:37:20Z",
+   "url": "https://x.com/ylecun/status/2111526996547379557",
+   "text": "Many, many scientific and technological things fill me wonder and joy. \n\nSnake oil and pixie dust presented as major technological innovations activate my bullshit detector. \nAs a scientist, engineer, research leader, and tech investor, I have been fine-tuning my BS detector professionally for decades.\n\nI feel like I need to tell people, this is a cool demo and all, but it's not a harbinger of the elusive flying car.",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 121,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2111526057350480061",
+   "handle": "JC_ParetsX",
+   "name": "J.C. Parets",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-17T18:33:36Z",
+   "url": "https://x.com/JC_ParetsX/status/2111526057350480061",
+   "text": "What's so defensive about Berkshire Hathaway? Have you seen what's in it? https://trendlabs.com/berkshire-hathaway-is-back/",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HU2lt0OX0AA_hW0.png?name=orig"
+   ],
+   "likes": 8,
+   "views": 1764,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2111525485582946364",
+   "handle": "ylecun",
+   "name": "Yann LeCun",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "JamesMcPherson"
+   },
+   "time_utc": "2026-10-17T18:31:20Z",
+   "url": "https://x.com/ylecun/status/2111525485582946364",
+   "text": "@JamesMcPherson @elonmusk Builders should build. \nBut I also think people should be informed so as not to be deluded by pixie dust and snake oil.",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 144,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2111520245110428084",
+   "handle": "PalmerLuckey",
+   "name": "Palmer Luckey",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "rsms"
+   },
+   "time_utc": "2026-10-17T18:10:31Z",
+   "url": "https://x.com/PalmerLuckey/status/2111520245110428084",
+   "text": "@rsms @zeeg There are lots of big fat heavy cars that are fun to drive and race.  That is the heart of American muscle.\n\n\"Only ze light cars are fun\" is such a euro-coded delusion.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HU2geOAacAAQEms.jpg?name=orig"
+   ],
+   "likes": 19,
+   "views": 418,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2111514376784023690",
+   "handle": "JC_ParetsX",
+   "name": "J.C. Parets",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "alexfpl4"
+   },
+   "time_utc": "2026-10-17T17:47:12Z",
+   "url": "https://x.com/JC_ParetsX/status/2111514376784023690",
+   "text": "@alexfpl4 @RealSimpleAriel You must be new here. I'd actually prefer if the stock market crashed. It's just been a bull market. Try to keep up Alex.",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 82,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2111513378745409598",
    "handle": "charliebilello",
    "name": "Charlie Bilello",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-17T17:00:21Z",
-   "url": "https://x.com/charliebilello/status/2111502586503122981",
-   "text": "% Below All-Time High\nApple: 0%\nS&P 500: -2%\nMicrosoft: -4%\nMeta: -11%\nNvidia: -12%\nPalantir: -12%\nAmazon: -13%\nGoogle: -17%\nAMD: -20%\nGold: -26%\nTesla: -29%\nSpaceX: -36%\nBitcoin: -36%\nNetflix: -47%\nEthereum: -52%\nDogecoin: -90%\nFartcoin: -94%\nTrump Coin: -98%\nMelania Coin: -99%",
+   "time_utc": "2026-10-17T17:43:14Z",
+   "url": "https://x.com/charliebilello/status/2111513378745409598",
+   "text": "Bitcoin Returns...",
    "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HU2aMOlXgAAa1Wz.png?name=orig"
+   ],
+   "likes": 75,
+   "views": 14387,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2111513190915805377",
+   "handle": "scottmelker",
+   "name": "The Wolf Of All Streets",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-17T17:42:29Z",
+   "url": "https://x.com/scottmelker/status/2111513190915805377",
+   "text": "When you HODL Bitcoin",
+   "quoted": {
+    "handle": "crave_indie",
+    "text": "Baby goes viral for his extreme relaxation minutes after being born."
+   },
    "media": [],
-   "likes": 9,
-   "views": 4168,
+   "likes": 25,
+   "views": 9616,
    "cashtags": [],
    "n_media": 0
   },
   {
-   "id": "2111502507650277765",
-   "handle": "steve_hanke",
-   "name": "Steve Hanke",
+   "id": "2111508316622848147",
+   "handle": "ripster47",
+   "name": "Ripster",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-17T17:00:02Z",
-   "url": "https://x.com/steve_hanke/status/2111502507650277765",
-   "text": "Brent crude is at $110/bbl.\n\nBUT THAT'S THE PAPER PRICE.\n\nThe REAL PRICE for Brent delivered is running at around $140/bbl.\n\nTHAT'S BECAUSE OF TANKER SHORTAGES AND THE LOGISTICAL NIGHTMARE CREATED BY TRUMP'S WAR OF CHOICE ON IRAN.",
+   "time_utc": "2026-10-17T17:23:07Z",
+   "url": "https://x.com/ripster47/status/2111508316622848147",
+   "text": "💡Never Struggle on Bearish Market Days, this week we saw huge bearish trend days, be ready next time:\n\nPart 1\n-> How to Short Market Repeatable Strategy\n-> How to use Clouds to Short\n\nPart 2\n-> Be Safe from Dip Buying on bearish day\n-> Identify Bearish Sectors\n-> Manage Risk",
    "quoted": null,
    "media": [
-    "https://pbs.twimg.com/media/HU13tVYXwAESGA3.jpg?name=orig"
+    "https://pbs.twimg.com/amplify_video_thumb/2111507565813100544/img/5M-mhfbKxmxJk6Hv.jpg",
+    "https://pbs.twimg.com/amplify_video_thumb/2111507716275372032/img/i2we7eBSYORA6kfd.jpg"
    ],
-   "likes": 7,
-   "views": 3144,
+   "likes": 19,
+   "views": 12047,
+   "cashtags": [],
+   "n_media": 2
+  },
+  {
+   "id": "2111506798410899697",
+   "handle": "scottmelker",
+   "name": "The Wolf Of All Streets",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-17T17:17:05Z",
+   "url": "https://x.com/scottmelker/status/2111506798410899697",
+   "text": "Ledn co-founder Mauricio Di Bartolomeo on the S&P rating that shows Bitcoin is pristine collateral, with equal risk across 30 countries\n\n\"Earlier this year, we issued the first ever investment grade rated Bitcoin ABS. It was a bond that Ledn issued to securitise part of our book.\"\n\n\"It was the first time S&P Global has ever rated Bitcoin ABS, the first time to receive an investment-grade rating.\"\n\n\"Previously, when you were securitising American car debt, for instance, if you added borrowers to that pool that were from, say, Canada or Mexico, that ABS would immediately be deemed much higher risk.\"\n\n\"Loans from clients from over 30 countries are in the same bond. In the eyes of S&P and in the eyes of the note holder, the collateral is equal across the 30 countries.\"\n\n\"They're basically saying there's no difference in risk because the collateral is uniform.\"",
+   "quoted": {
+    "handle": "scottmelker",
+    "text": "Bitcoin's Bull Market Signal Is Hiding In Its Loan Book | @cryptonomista from @hodlwithLedn \n\n00:00 What Bitcoin Borrowers Are Doing During This Volatility\n03:18 How Borrowers Defended Loans Through the Selloff\n06:05 Record Margin Debt and the Cost of Leverage\n08:31 Bitcoin-Backed Loans vs. Stock Margin Loans\n12:00 Why Bitcoin Is Becoming Pristine Collateral\n13:47 Liquidation Thresholds \n16:58 Could Options Push Bitcoin Above $95K?\n20:20 Tokenized Gold and Borrowing Against Gold\n22:16 Why Gold’s Biggest Problem Is Geography\n25:42 From Analog Gold to Digital Gold"
+   },
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2111506645985665024/img/_-6nwQFWv3AW0kYh.jpg"
+   ],
+   "likes": 14,
+   "views": 12184,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2111504156045578315",
+   "handle": "carlquintanilla",
+   "name": "Carl Quintanilla",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-17T17:06:35Z",
+   "url": "https://x.com/carlquintanilla/status/2111504156045578315",
+   "text": "EVERCORE: \n\n“.. the OBBBA’s incremental stimulus was already realized in FY26” — and now implies “fiscal drag of roughly 0.6% of GDP in the FY27 baseline.” 😞",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HU2R1o2XgAAPwSQ.jpg?name=orig"
+   ],
+   "likes": 8,
+   "views": 4210,
    "cashtags": [],
    "n_media": 1
   },
@@ -329,8 +453,8 @@
    "text": "@LLMJunky @elonmusk Tesla S Plaid? \nI have one ☺️",
    "quoted": null,
    "media": [],
-   "likes": 6,
-   "views": 391,
+   "likes": 27,
+   "views": 3275,
    "cashtags": [],
    "n_media": 0
   },
@@ -352,6 +476,25 @@
    "views": 8385,
    "cashtags": [],
    "n_media": 1
+  },
+  {
+   "id": "2111499860188746177",
+   "handle": "jasonfurman",
+   "name": "Jason Furman",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "BurritoEveryDay"
+   },
+   "time_utc": "2026-10-17T16:49:31Z",
+   "url": "https://x.com/jasonfurman/status/2111499860188746177",
+   "text": "@BurritoEveryDay Pretty much, is a sub-point under interest rates.",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 170,
+   "cashtags": [],
+   "n_media": 0
   },
   {
    "id": "2111499690516816336",
@@ -389,29 +532,46 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2111498579990974465/img/5sw7nHKqoQxovs_Q.jpg"
    ],
-   "likes": 9,
-   "views": 8619,
+   "likes": 17,
+   "views": 12898,
    "cashtags": [],
    "n_media": 1
   },
   {
-   "id": "2111496919285723378",
-   "handle": "kevinolearytv",
-   "name": "Kevin O'Leary aka Mr. Wonderful",
+   "id": "2111498338193342671",
+   "handle": "RampCapitalLLC",
+   "name": "Ramp Capital",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "0xmoalo"
+   },
+   "time_utc": "2026-10-17T16:43:28Z",
+   "url": "https://x.com/RampCapitalLLC/status/2111498338193342671",
+   "text": "@0xmoalo Cool idea. This actually would want to make me go back to the Apple Watch",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 262,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2111497517858685190",
+   "handle": "jasonfurman",
+   "name": "Jason Furman",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-17T16:37:49Z",
-   "url": "https://x.com/kevinolearytv/status/2111496919285723378",
-   "text": "Trying out the new Meta glasses from Thailand. Today’s topic is the Tesla flying car. I look at it from multiple perspectives. From just permitting, there’s a lot of challenges. What’s so interesting about it, the technology itself is getting there and I think for metropolitan areas it’s gonna be very difficult. For long-haul traffic it could be very cool. Or in rural areas, even better, flying around in your car. I love the idea. \n\nFrom a perspective of investing, here’s what I think is going to happen. I think there’s no question that Tesla’s going to merge with SpaceX because that technology is coming together like this. So if you own Tesla stock, you’re going to own New Co. If you already own SpaceX, hang in. You’re going to own Tesla. It’s going to happen that way. #shotonmeta #metaglasses",
+   "time_utc": "2026-10-17T16:40:12Z",
+   "url": "https://x.com/jasonfurman/status/2111497517858685190",
+   "text": "Some impressions from the Bank-Fund meetings in Bangkok:\n\n1. The words are all negative but the numbers are all positive. Is all about unprecedented waves of shocks and risks while the IMF upgraded the forecast to something even stronger.\n\n2. No one cares about tariffs anymore, they expect them to continue forever and have adjusted and moved on.\n\n3. Everyone cares a lot about high interest rates. They expect them to continue forever but they haven't moved on.\n\n4. Oil prices fall somewhere between these two. Everyone cares some, aren't sure if they'll continue and have partially moved on.\n\n5. Everyone is having exactly the same conversations about AI as they are having here: will the demand boost continue, is it a bubble, will it kill jobs, when will it show up in productivity. I sensed much more optimism than pessimism and finance ministers and central bankers are not particuarly interested in p(doom).\n\n6. No one seemed to mind that Scott Bessent didn't bother to attend.",
    "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/amplify_video_thumb/2111489402954215424/img/hyf_aTf-nKQlTRaU.jpg"
-   ],
-   "likes": 35,
-   "views": 4916,
+   "media": [],
+   "likes": 82,
+   "views": 9995,
    "cashtags": [],
-   "n_media": 1
+   "n_media": 0
   },
   {
    "id": "2111496810716152150",
@@ -436,97 +596,6 @@
    "n_media": 1
   },
   {
-   "id": "2111496787739431089",
-   "handle": "carlquintanilla",
-   "name": "Carl Quintanilla",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-17T16:37:18Z",
-   "url": "https://x.com/carlquintanilla/status/2111496787739431089",
-   "text": "“.. The problem is not that credit profiles have changed in the last year, it’s that we’ve got another year and a half of supply coming,” said John Yovanovic, co-head of leveraged finance at MetLife \n\n@business \nhttps://www.bloomberg.com/news/articles/2026-10-17/coreweave-woes-risk-shutting-down-ai-junk-market-credit-weekly",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HU2LI4IXUAAHDfN.jpg?name=orig"
-   ],
-   "likes": 12,
-   "views": 3060,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2111495749200445720",
-   "handle": "charliebilello",
-   "name": "Charlie Bilello",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-17T16:33:10Z",
-   "url": "https://x.com/charliebilello/status/2111495749200445720",
-   "text": "Commodity prices over last year...\nHeating Oil: +127%\nBrent Crude +80%\nGasoline: +79%\nWTI Crude: +77%\nCopper: +32%\nSugar: +32%\nWheat: +31%\nCotton: +26%\nSoybeans: +25%\nCorn: +12%\nAluminum: +8%\nNatural Gas: +7%\nSilver: +5%\nGold: -4%\nLive Cattle: -8%\nLumber: -15%\nCoffee: -23%",
-   "quoted": null,
-   "media": [],
-   "likes": 41,
-   "views": 9930,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2111495677234807073",
-   "handle": "PeterSchiff",
-   "name": "Peter Schiff",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-17T16:32:53Z",
-   "url": "https://x.com/PeterSchiff/status/2111495677234807073",
-   "text": "The odds of Democrats winning the Senate are 65%. Since the inflation rate in 2027 will likely be higher than the highest year under Biden, the ability to blame a Democratic Congress for a surge that would have happened regardless of the outcome will be a gift to Republicans.",
-   "quoted": null,
-   "media": [],
-   "likes": 231,
-   "views": 16661,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2111493612219601258",
-   "handle": "PeterSchiff",
-   "name": "Peter Schiff",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "JohnnyXAngelo"
-   },
-   "time_utc": "2026-10-17T16:24:41Z",
-   "url": "https://x.com/PeterSchiff/status/2111493612219601258",
-   "text": "@JohnnyXAngelo Monetary policy is actually getting looser as inflation rises faster than interest rates.",
-   "quoted": null,
-   "media": [],
-   "likes": 4,
-   "views": 404,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2111492502016672133",
-   "handle": "charliebilello",
-   "name": "Charlie Bilello",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-17T16:20:16Z",
-   "url": "https://x.com/charliebilello/status/2111492502016672133",
-   "text": "Global Inflation Rates are on the RISE...\n\n...and the Fed, the ECB, the BOJ, the BOE, and many other central banks remain behind the curve.\n\nMore rate hikes are coming.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HU2GqdHWIAA7hP1.png?name=orig"
-   ],
-   "likes": 40,
-   "views": 10636,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
    "id": "2111490194767487306",
    "handle": "brian_armstrong",
    "name": "Brian Armstrong",
@@ -541,27 +610,8 @@
     "text": "great getting this group of coinbase acquired founders together. M&A has been critical for Coinbase:\n- Xapo helped seed the market leading Custody platform\n- Tagomi led to the Coinbase Prime\n- FairX and Deribit form the foundation of our global derivatives business\n- Echo led to our cap formation efforts and brought us the #1 customer support rep on X\n- Vector has built out DEX trading directly in Coinbase\n- Clearing Co helped build predictions into our fastest growing revenue stream ever\n\nand many more! joining @coinbase is only the beginning, and we’re always on the hunt for the best new founders/teams to join us."
    },
    "media": [],
-   "likes": 126,
-   "views": 18220,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2111490044133617976",
-   "handle": "PeterSchiff",
-   "name": "Peter Schiff",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "elerianm"
-   },
-   "time_utc": "2026-10-17T16:10:30Z",
-   "url": "https://x.com/PeterSchiff/status/2111490044133617976",
-   "text": "@elerianm The deficit is actually 8% when you count off-budget spending. The money to pay for that spending still has to be borrowed.",
-   "quoted": null,
-   "media": [],
-   "likes": 38,
-   "views": 2108,
+   "likes": 233,
+   "views": 31257,
    "cashtags": [],
    "n_media": 0
   },
@@ -585,47 +635,6 @@
    "n_media": 0
   },
   {
-   "id": "2111487563567370634",
-   "handle": "SawyerMerritt",
-   "name": "Sawyer Merritt",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-17T16:00:39Z",
-   "url": "https://x.com/SawyerMerritt/status/2111487563567370634",
-   "text": "Elon Musk in new upcoming interview says AI and robots will need to fix the deficit:\n\n\"There's no way we were gonna solve the deficit from within the government. The only way we're going to solve the national debt is with AI and robots. We're not gonna solve it by trying to save our way there. The appetite to cut spending is not there at the presidency, the House, the Senate or the judiciary. Basically, no one in authority in the government whatsoever — with maybe a few rare exceptions.\n\nMaybe if the president made that his primary goal, we could do that. If you try to solve the deficit and stop wasteful spending, you make a lot of enemies. President Trump likes to be liked. He doesn't like people calling him, being upset about ... some funding being stopped. \n\nI kinda got carried away, basically and was gone for too long from my companies. What I should have done was be more in the background ... and probably only had it last for a month or two. I should have gone back and focused on AI a little sooner than I did.\"\n\nThe full podcast interview with Walter Isaacson drops this Tuesday.",
-   "quoted": {
-    "handle": "SawyerMerritt",
-    "text": "Walter Isaacson will be releasing a new podcast interview with Elon Musk on Tuesday."
-   },
-   "media": [
-    "https://pbs.twimg.com/media/HU2CSMJXQAAsw47.jpg?name=orig"
-   ],
-   "likes": 842,
-   "views": 37543,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2111487409074450815",
-   "handle": "robin_j_brooks",
-   "name": "Robin Brooks",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-17T16:00:02Z",
-   "url": "https://x.com/robin_j_brooks/status/2111487409074450815",
-   "text": "The US has stepped back from taking out IRGC gunboats in the SoH. That's created a vacuum that the IRGC is only too happy to fill. The result is shipping costs for crude that are way above anything we saw in 2022. Time to shut down IRGC and its gunboats...\nhttps://robinjbrooks.substack.com/p/how-much-fear-is-priced-into-oil",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HU2B6wAXYAArjWV.png?name=orig"
-   ],
-   "likes": 29,
-   "views": 5127,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
    "id": "2111487356842741872",
    "handle": "TheSharkDaymond",
    "name": "Daymond John",
@@ -639,29 +648,10 @@
    "media": [
     "https://pbs.twimg.com/media/HU2Cj40W0AAgiTD.jpg?name=orig"
    ],
-   "likes": 11,
-   "views": 1445,
+   "likes": 19,
+   "views": 2283,
    "cashtags": [],
    "n_media": 1
-  },
-  {
-   "id": "2111486511182967262",
-   "handle": "robin_j_brooks",
-   "name": "Robin Brooks",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "TankerTrackers"
-   },
-   "time_utc": "2026-10-17T15:56:28Z",
-   "url": "https://x.com/robin_j_brooks/status/2111486511182967262",
-   "text": "@TankerTrackers The endless yammering about the gap in past exports (1.7138 billion barrels) is silly. This is precisely why Brent is almost 80% above the levels it was at in early 2026. In other words, this is priced in and old news. The oil bulls who harp on this don't understand markets...",
-   "quoted": null,
-   "media": [],
-   "likes": 5,
-   "views": 451,
-   "cashtags": [],
-   "n_media": 0
   },
   {
    "id": "2111484951312961948",
@@ -677,8 +667,8 @@
    "media": [
     "https://pbs.twimg.com/media/HU1_XkvW0AA9WuY.png?name=orig"
    ],
-   "likes": 24,
-   "views": 5726,
+   "likes": 30,
+   "views": 7408,
    "cashtags": [],
    "n_media": 1
   },
@@ -715,8 +705,8 @@
    "media": [
     "https://pbs.twimg.com/media/HU1-BS6WcAAV56g.jpg?name=orig"
    ],
-   "likes": 34,
-   "views": 5968,
+   "likes": 48,
+   "views": 8105,
    "cashtags": [],
    "n_media": 1
   },
@@ -735,7 +725,7 @@
    "quoted": null,
    "media": [],
    "likes": 0,
-   "views": 184,
+   "views": 263,
    "cashtags": [],
    "n_media": 0
   },
@@ -754,7 +744,7 @@
    "quoted": null,
    "media": [],
    "likes": 0,
-   "views": 183,
+   "views": 251,
    "cashtags": [],
    "n_media": 0
   },
@@ -770,8 +760,8 @@
    "text": "“The restaurant has also been impacted by ongoing crime. ‘Kirschner said that his staff has been overwhelmed with homeless individuals causing property damage and harassing customers. There have also been several cases of people defecating near the doorway or on the outdoor patio, necessitating power washing and city support.’ —- > The lawlessness in Santa Monica must be stopped and the City Council needs to be accountable.  We’ve all had enough! @SantaMonicaPD @santamonicacity \n https://apple.news/AGIOwhelMTFSGSZSWMmPvGg?highlight=The%20restaurant%20has%20also%20been%20impacted%20by%20ongoing%20crime.%20Kirschner%20said%20that%20his%20staff%20has%20been%20overwhelmed%20with%20homeless%20individuals%20causing%20property%20damage%20and%20harassing%20customers.%20There%20have%20also%20been%20several%20cases%20of%20people%20defecating%20near%20the%20doorway%20or%20on%20the%20outdoor%20patio,%20necessitating%20power%20washing%20and%20city%20support.%20Just%20two%20weeks%20ago,%20Tar%20%26%20Roses'%20windows%20were%20smashed.",
    "quoted": null,
    "media": [],
-   "likes": 7,
-   "views": 2761,
+   "likes": 19,
+   "views": 4129,
    "cashtags": [],
    "n_media": 0
   },
@@ -790,7 +780,7 @@
    "quoted": null,
    "media": [],
    "likes": 1,
-   "views": 221,
+   "views": 315,
    "cashtags": [],
    "n_media": 0
   },
@@ -1453,395 +1443,6 @@
    "media": [],
    "likes": 3,
    "views": 1654,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2111164702336405541",
-   "handle": "MarkYusko",
-   "name": "Mark W. Yusko - Two Point One Quadrillion",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-16T18:37:43Z",
-   "url": "https://x.com/MarkYusko/status/2111164702336405541",
-   "text": "Long Bitcoin, Short Banksters",
-   "quoted": {
-    "handle": "scottmelker",
-    "text": "\"Bitcoin is for criminals.\"\n\nThe actual criminals..."
-   },
-   "media": [],
-   "likes": 44,
-   "views": 3102,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2111162885371998550",
-   "handle": "kevinxu",
-   "name": "Kevin Xu",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-16T18:30:30Z",
-   "url": "https://x.com/kevinxu/status/2111162885371998550",
-   "text": "there are 3 groups of people using AI right now:\n\n1) uses chatgpt as a better google. est ~billions\n\n2) uses agents to code and be productive. est ~millions.\n\n3) uses frontier models and 1000s of agents to do math, science, and other insane things that were previously impossible.\n\nonly ~hundreds are in group 3 rn.\n\nremember this time last year, how barely anyone was using agents and now it's completely changed software.\n\nnow what happens when superintelligence is released and explodes too?\n\ni cant believe so few people understand.\n\ndemand for intelligence isn’t fixed. every breakthrough creates MORE demand.\n\nmore GPUs. more CPUs. more memory. more power. more data centers.\n\njevons paradox is insane.\n\ninsiders (execs, channel checks, etc) are forecasting demand INCREASING into 2030+.\n\nrn stocks are getting murdered over rates and financing concerns.\n\nshow me a single hyperscaler cutting capex. or GPU prices collapsing. or customers cancelling contracts.\n\nthen i’ll worry.\n\nuntil then, we’re confusing a temporary financing problem with a generational demand story.\n\nrates will stabilize. geopolitical tensions will pass.\n\nthe race to superintelligence isn’t stopping.\n\nbuy the fucking dip.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HUxXnVNbAAArkVQ.jpg?name=orig"
-   ],
-   "likes": 90,
-   "views": 19332,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2111162851058434140",
-   "handle": "alphatrends",
-   "name": "Brian Shannon, CMT ⚓️",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-16T18:30:21Z",
-   "url": "https://x.com/alphatrends/status/2111162851058434140",
-   "text": "I think the levee broke this week!",
-   "quoted": {
-    "handle": "alphatrends",
-    "text": "SPY and QQQ continue to hold up remarkably well (for now)\n\nhttps://www.youtube.com/watch?v=uwiTs60VoTM"
-   },
-   "media": [],
-   "likes": 58,
-   "views": 9529,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2111162675774345692",
-   "handle": "deepakshenoy",
-   "name": "Deepak Shenoy",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "MadhurKotharay"
-   },
-   "time_utc": "2026-10-16T18:29:40Z",
-   "url": "https://x.com/deepakshenoy/status/2111162675774345692",
-   "text": "@MadhurKotharay Rupee is backed by a combination of gold, inr bonds and usd/foreign currency bonds anyhow.. mix keeps changing.",
-   "quoted": null,
-   "media": [],
-   "likes": 1,
-   "views": 614,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2111161779657285919",
-   "handle": "elonmusk",
-   "name": "Elon Musk",
-   "type": "repost",
-   "reposted_by": "elonmusk",
-   "replying_to": null,
-   "time_utc": "2026-10-16T18:26:06Z",
-   "url": "https://x.com/elonmusk/status/2111161779657285919",
-   "text": "We are putting a lot of effort into a specialized Hagglebot for business use, as we think it could improve enterprise cost-efficiency by 5% or more. \n\nApplied to the global GDP, this could be up to $6 trillion/year in savings, delivering an immediate and measurable advantage to any company using Grok @Bot.",
-   "quoted": null,
-   "media": [],
-   "likes": 4566,
-   "views": 606996,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2111158219645321405",
-   "handle": "TrungTPhan",
-   "name": "Trung Phan",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-16T18:11:57Z",
-   "url": "https://x.com/TrungTPhan/status/2111158219645321405",
-   "text": "men only want one thing and it’s disgusting",
-   "quoted": {
-    "handle": "RT_Visual_on_X",
-    "text": "Chinese bride gifts her partner a flagship GPU at wedding — he breaks down in tears\n\nShe handed him an ASUS ROG Astral RTX 5090 that costs around $12,000"
-   },
-   "media": [
-    "https://pbs.twimg.com/amplify_video_thumb/2111158182831865856/img/Nz3Srr0fpjRvRSku.jpg"
-   ],
-   "likes": 367,
-   "views": 39203,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2111158161487036475",
-   "handle": "elonmusk",
-   "name": "Elon Musk",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "tcballard"
-   },
-   "time_utc": "2026-10-16T18:11:43Z",
-   "url": "https://x.com/elonmusk/status/2111158161487036475",
-   "text": "@tcballard @omarchy @SpaceX @Tesla @TeslaSI 🚀🚀",
-   "quoted": null,
-   "media": [],
-   "likes": 1432,
-   "views": 52543,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2111157487726453177",
-   "handle": "cz_binance",
-   "name": "CZ 🔶 BNB",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-16T18:09:03Z",
-   "url": "https://x.com/cz_binance/status/2111157487726453177",
-   "text": "Saw some comments about my post on this topic 👇 🤣 \n\n1. I am always supportive of any blockchain making any progress in any country. BTC, ETH, BNB, XRP, SOL, HYPE, ZEC, SIGN, all stablecoins, etc, you name it...\n\n2. I was happy that SOL can advertise and get an office in Shanghai. It would open the path for others to follow. It would also indicate that \"China unbanned crypto\", which would be positive news for all of us. But alas, that's not quite the case yet, it seems...\n\n3. My X post was not the trigger. It's now emerged that the Bund building ad was taken down within 10 minutes. (If you don't know, China monitors speech and media in real-time.) I only saw it on X 12-24 hours after the fact. \n\n4. Regardless of the outcome, it's good effort. Keep building and keep pushing adoption.",
-   "quoted": {
-    "handle": "StarPlatinum_",
-    "text": "Solana just had its event in China shut down.\n\nAnd the funniest part is that CZ basically warned about this one day earlier.\n\nFirst Solana Foundation announced that it has opened an office in Pudong, occupying one of the highest commercial office spaces\n\nAll of this in a country where crypto is heavily restricted.\n\nA day before CZ notices Solana’s expansion and publicly comments on how surprising it is.\n\nHe says it’s amazing that Solana can advertise and open an office in China.\n\n(Especially considering BNB Chain hasn’t been able to do the same)\n\nSounds pretty reasonable, right?\n\nWell, less than 24 hours later…\n\nThe first event was supposed to take place at the Shangri-La hotel in Shanghai.\n\nThe event was scheduled to begin at 10 AM.\n\nInstead, attendees arrived to find police officers at the venue.\n\nYou genuinely cannot make this stuff up.\n\nAround noon, organizers sent an apology email arguing “Venue logistics considerations.”\n\nCZ them posted:\n\n“Sad to see. Looks like they really didn’t know the local policies?”\n\nAnd reminded everyone that something similar had happened less than a year ago.\n\nI’ve seen people joking that he snitched on them.\n\nI actually respect Solana’s ambition to expand into one of the biggest markets\n\nBut I think there’s a difference between building blockchain infrastructure in China and publicly promoting a crypto ecosystem\n\nThis week Solana might have crossed that line and CZ is probably thinking he told them so."
-   },
-   "media": [],
-   "likes": 574,
-   "views": 172702,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2111156632394801567",
-   "handle": "ParikPatelCFA",
-   "name": "Dr. Parik Patel, BA, CFA, ACCA Esq.",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-16T18:05:39Z",
-   "url": "https://x.com/ParikPatelCFA/status/2111156632394801567",
-   "text": "Guy held up the GPU at his wedding like he was Mufasa presenting Simba in the lion king",
-   "quoted": {
-    "handle": "RT_Visual_on_X",
-    "text": "Chinese bride gifts her partner a flagship GPU at wedding — he breaks down in tears\n\nShe handed him an ASUS ROG Astral RTX 5090 that costs around $12,000"
-   },
-   "media": [],
-   "likes": 1181,
-   "views": 122794,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2111150362568864047",
-   "handle": "scottmelker",
-   "name": "The Wolf Of All Streets",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-16T17:40:44Z",
-   "url": "https://x.com/scottmelker/status/2111150362568864047",
-   "text": "How not to invest: being your own bank with a Ledger device right now\n\n\"Ledger says spy chip inside crypto Ledger devices, transmitted wallet keys over mobile network.\"\n\n\"I've been a huge advocate of self-custody. I still believe you should find a way to be your own bank, but you cannot do it with any of the commercially sold Bitcoin hardware wallet devices.\"\n\n\"Maybe in multi-sig where you have a number of them and a single set of keys from one of these devices is not controlling your entire net worth, but you cannot just buy a hardware device in crypto right now and take for granted that your assets are going to be safe.\"\n\n\"Cold wallet, hot mess. It's really, it's an existential crisis.\"\n\n\"The how not to invest is not to be your own bank with a Ledger device right now. I've had the Ledger guys on a lot. I'll have them on again, but man, they have things to answer for.\"",
-   "quoted": {
-    "handle": "scottmelker",
-    "text": "The Daily Wolf On Yahoo Finance https://x.com/i/broadcasts/1rxmqqDDylWxy"
-   },
-   "media": [
-    "https://pbs.twimg.com/amplify_video_thumb/2111150005541326848/img/R7guC3JaqMoYH01O.jpg"
-   ],
-   "likes": 26,
-   "views": 17003,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2111150276594078106",
-   "handle": "kevinxu",
-   "name": "Kevin Xu",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-16T17:40:23Z",
-   "url": "https://x.com/kevinxu/status/2111150276594078106",
-   "text": "calling it now: we get a trump tweet over the weekend that brings oil down and giga-bounce on monday",
-   "quoted": null,
-   "media": [],
-   "likes": 628,
-   "views": 39919,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2111149754776461341",
-   "handle": "ripster47",
-   "name": "Ripster",
-   "type": "repost",
-   "reposted_by": "ripster47",
-   "replying_to": null,
-   "time_utc": "2026-10-16T17:38:19Z",
-   "url": "https://x.com/ripster47/status/2111149754776461341",
-   "text": "Traders Trading VIX strategy for all Day Faders",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HUxPgiqW0AA9p1U.png?name=orig"
-   ],
-   "likes": 19,
-   "views": 19182,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2111149697872068636",
-   "handle": "ripster47",
-   "name": "Ripster",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "Retirement10049"
-   },
-   "time_utc": "2026-10-16T17:38:05Z",
-   "url": "https://x.com/ripster47/status/2111149697872068636",
-   "text": "@Retirement10049 How did fail You hold your short as VIX breaks 18 and holds clouds",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HUxPczpWAAAHo8I.png?name=orig"
-   ],
-   "likes": 1,
-   "views": 357,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2111149151626858576",
-   "handle": "APompliano",
-   "name": "Anthony Pompliano 🌪",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-16T17:35:55Z",
-   "url": "https://x.com/APompliano/status/2111149151626858576",
-   "text": "Eric Jackson (@ericjackson) is on a mission to find 100-bagger opportunities.\n\nWe sat down to discuss how he uses AI in his research, the importance of retail investors, when to sell, what he saw inside Hut 8's massive AI data center campus, his AI-powered bitcoin model, and how to use AI to beat prediction markets. \n\nYouTube: https://youtu.be/MbKlEvW9YAQ?si=zQvqO2kSFcp_sLYX\nSpotify: https://open.spotify.com/episode/2qH5pjYtwpRlpEN4sdSIrw?si=eQmzPH2aQYieE6g1SVqGiA\nApple: https://podcasts.apple.com/us/podcast/how-to-find-the-next-10x-stock-before-everyone-else/id1434060078?i=1000796548881\n\nTIMESTAMPS:\n0:00 - Intro\n0:25 - Why public companies now care about retail investors\n3:55 - How Eric uses AI for investment research\n6:21 - Inside Hut 8’s massive AI data center build\n15:57 - Building conviction on misunderstood stocks\n18:10 - Eric’s daily routine & the Drake videos\n21:48 - Portfolio construction, small caps & crypto\n24:18 - How to know when to sell\n25:35 - AI bitcoin model: bull, or bear market?\n28:31 - Beating prediction markets with AI",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/amplify_video_thumb/2111146407423795200/img/E-elTiR-L5drloQi.jpg"
-   ],
-   "likes": 52,
-   "views": 20643,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2111145499999011327",
-   "handle": "OddStats",
-   "name": "OddStats",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-16T17:21:25Z",
-   "url": "https://x.com/OddStats/status/2111145499999011327",
-   "text": "Listen, I don't know what's going on here, but I can tell you that I've gone to print this VIX-based stat six fucking times now and can't because VIX just keeps screaming and ruining everything I've spent the last minute working on.\n\nSo, unofficially...panic or something.",
-   "quoted": null,
-   "media": [],
-   "likes": 207,
-   "views": 17779,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2111144939111195069",
-   "handle": "Teslaconomics",
-   "name": "Teslaconomics",
-   "type": "repost",
-   "reposted_by": "elonmusk",
-   "replying_to": null,
-   "time_utc": "2026-10-16T17:19:11Z",
-   "url": "https://x.com/Teslaconomics/status/2111144939111195069",
-   "text": "I’ve never seen a product unveil come close to what Tesla pulled off with the new Roadster last night.\n\nElon was right. \n\nIt was the greatest product unveil we’ve ever witnessed.\n\nNine years of anticipation, and somehow Tesla delivered something even crazier than we imagined.\n\nI was there in person, and I still can’t believe what I saw. \n\nNothing comes close.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/amplify_video_thumb/2111144121502994433/img/viRh-VWtWdr6agni.jpg"
-   ],
-   "likes": 3416,
-   "views": 243940,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2111144892558934488",
-   "handle": "TrendSpider",
-   "name": "TrendSpider",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-16T17:19:00Z",
-   "url": "https://x.com/TrendSpider/status/2111144892558934488",
-   "text": "The money always flows somewhere. 🔄\n\nSince CPI:\nTech -5.7% \nHealth care +4.3%\nStaples +4.0%\n\nSidekick tracked it in one prompt.\nStart for $1, this weekend only👇\nhttps://trendspider.cc/try",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HUw-LKUWsAAT0Cu.jpg?name=orig",
-    "https://pbs.twimg.com/media/HUw-MIpXcAAEaMu.jpg?name=orig"
-   ],
-   "likes": 55,
-   "views": 27365,
-   "cashtags": [],
-   "n_media": 2
-  },
-  {
-   "id": "2111144351308861771",
-   "handle": "howardlindzon",
-   "name": "Howard Lindzon",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-16T17:16:51Z",
-   "url": "https://x.com/howardlindzon/status/2111144351308861771",
-   "text": "woops ..",
-   "quoted": {
-    "handle": "howardlindzon",
-    "text": "markets doing a fantastic job of NOT crashing\n\ndeglobalization, lunatic governments, rising rates, new warfare, inflation, record grift, negligence, government debt, horrific media, leverage addiction, everyone for himself mindset"
-   },
-   "media": [],
-   "likes": 12,
-   "views": 3112,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2111143831957651543",
-   "handle": "brian_armstrong",
-   "name": "Brian Armstrong",
-   "type": "repost",
-   "reposted_by": "paulg",
-   "replying_to": null,
-   "time_utc": "2026-10-16T17:14:47Z",
-   "url": "https://x.com/brian_armstrong/status/2111143831957651543",
-   "text": "Our new matching engine is crazy fast. 60x faster median order response, 480x faster tail latency.\n\nGive Coinbase Advanced a try! Trade crypto, stocks, commodities, FX, etc. Link below.",
-   "quoted": {
-    "handle": "coinbase",
-    "text": "Built for the moments when every millisecond matters.\n\nA faster engine for faster markets."
-   },
-   "media": [],
-   "likes": 200,
-   "views": 40447,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2111143834188960247",
-   "handle": "brian_armstrong",
-   "name": "Brian Armstrong",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "brian_armstrong"
-   },
-   "time_utc": "2026-10-16T17:14:47Z",
-   "url": "https://x.com/brian_armstrong/status/2111143834188960247",
-   "text": "https://www.coinbase.com/advanced",
-   "quoted": null,
-   "media": [],
-   "likes": 9,
-   "views": 6310,
    "cashtags": [],
    "n_media": 0
   }
