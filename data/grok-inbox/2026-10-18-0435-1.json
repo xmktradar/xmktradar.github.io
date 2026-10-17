@@ -1,0 +1,79 @@
+{
+  "posts": {
+    "2111532723538129166": {
+      "en_summary": "$JPM CEO Jamie Dimon says valuing a company is humbling: take an annual report, rip out the stock price pages, and estimate what it is worth. He notes people are often shocked by how wrong they are, as valuation is intellectually challenging.",
+      "zh_summary": "$JPM首席執行官Jamie Dimon表示，對公司進行估值是令人謙卑的：拿一份年報，撕掉顯示股價的頁面，然後估計它的價值。他指出人們往往會對自己的估算錯得離譜而感到震驚，因為估值是一項智力挑戰。",
+      "ko_summary": "$JPM CEO Jamie Dimon은 회사 평가가 겸손하게 만드는 일이라고 말한다. 연간 보고서를 가져와 주가 페이지를 찢어내고 가치가 얼마인지 추정해 보라. 그는 사람들이 종종 자신의 추정이 얼마나 잘못되었는지 놀라게 되며, 평가는 지적으로 도전적인 일이라고 지적한다.",
+      "tickers": ["JPM"],
+      "stance": "中性",
+      "stance_by_ticker": {"JPM": "中性"},
+      "horizon": null,
+      "basis": "估值",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2111531796349464716": {
+      "en_summary": "$NVDA CEO Jensen Huang says “all of this is going to pass” because AI is still at the beginning of transforming nearly every industry. The poster notes that higher rates are making AI infrastructure more expensive to finance without changing the actual demand for compute.",
+      "zh_summary": "$NVDA首席執行官Jensen Huang表示「所有這些都會過去」，因為人工智能仍處於轉型幾乎每個行業的初期階段。發帖人指出，更高的利率使人工智能基礎設施融資成本上升，但並未改變對計算能力的實際需求。",
+      "ko_summary": "$NVDA CEO Jensen Huang은 인공지능이 거의 모든 산업을 변혁하는 초기 단계에 있기 때문에 “이 모든 것이 지나갈 것”이라고 말한다. 게시자는 더 높은 금리가 인공지능 인프라 자금 조달 비용을 높이고 있지만 컴퓨팅에 대한 실제 수요는 변하지 않는다고 지적한다.",
+      "tickers": ["NVDA"],
+      "stance": "覗好",
+      "stance_by_ticker": {"NVDA": "覗好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "rates",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2111527318078587300": {
+      "en_summary": "$MS Morgan Stanley CFO says AI adoption is already reducing manual finance workloads. Reconciliation across different books that usually takes many manual human hours can now be done with fewer errors, mistakes, and checks.",
+      "zh_summary": "$MS摩根士丹利首席財務官表示，人工智能的採用已經在減少手動財務工作量。跨不同賬簿的對賬通常需要大量人工小時，現在可以用更少的錯誤、失誤和檢查來完成。",
+      "ko_summary": "$MS 모건스탠리 CFO는 인공지능 채택이 이미 수동 재무 업무량을 줄이고 있다고 말한다. 보통 많은 수동 인시가 걸리는 여러 장부 간 조정이 이제 더 적은 오류, 실수, 검사로 가능해졌다.",
+      "tickers": ["MS"],
+      "stance": "覗好",
+      "stance_by_ticker": {"MS": "覗好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2111525139078844842": {
+      "en_summary": "A New York Times report notes that CoreWeave’s business model defies easy description and its financial arrangements have been compared by some investors and analysts to that of the troubled office-space provider WeWork. Mentions $CRWV.",
+      "zh_summary": "《紐約時報》報導指出，CoreWeave的商業模式難以簡單描述，其財務安排被一些投資者和分析師與陷入困境的辦公空間提供商WeWork相比較。提及$CRWV。",
+      "ko_summary": "뉴욕타임스 보도에 따르면 CoreWeave의 비즈니스 모델은 쉽게 설명하기 어렵우며, 일부 투자자와 분석가들은 그 재무 구조를 문제의 오피스 공간 제공업체 WeWork에 비유하고 있다. $CRWV를 언급한다.",
+      "tickers": ["CRWV"],
+      "stance": "覗淡",
+      "stance_by_ticker": {"CRWV": "覗淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2111517637624975721": {
+      "en_summary": "The U.S. government will receive approximately 4% equity in GlobalFoundries, alongside a restructuring of previously awarded CHIPS funding. The U.S. Department of Commerce will receive an equity stake in GF of about 4%. $GFS.",
+      "zh_summary": "美國政府將獲得GlobalFoundries約4%的股權，同時重組先前授予的CHIPS資金。美國商務部將獲得GF約4%的股權。$GFS。",
+      "ko_summary": "미국 정부는 GlobalFoundries의 약 4% 지분을 받게 되며, 이전에 지급된 CHIPS 자금의 재구조화도 함께 진행된다. 미국 상무부가 GF의 약 4% 지분을 받게 된다. $GFS.",
+      "tickers": ["GFS"],
+      "stance": "中性",
+      "stance_by_ticker": {"GFS": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "利好",
+      "ticker_notes": {"GFS": "US government to receive ~4% equity stake alongside CHIPS funding restructuring"}
+    }
+  }
+}
