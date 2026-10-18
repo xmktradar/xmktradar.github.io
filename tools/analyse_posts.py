@@ -26,7 +26,7 @@ def traditional(s):
 INBOX = os.path.join(os.path.dirname(__file__), '..', 'data', 'super-grok-analysis.json')
 INBOX_DIR = os.path.join(os.path.dirname(__file__), '..', 'data', 'grok-inbox')
 VALID = {'睇好', '睇淡', '中性', '未表態'}
-NOT_TICKERS = {'SPCX', 'BULLSHIT'}  # not stock tickers (team, 2026-10-08): SPCX is a post hashtag/label, BULLSHIT is a swear word
+NOT_TICKERS = {'BULLSHIT'}  # not a stock ticker (team, 2026-10-08): a swear word. SPCX is SpaceX, Nasdaq-listed since 2026-06-12 (Tim, 2026-10-18)
 # Macro tab (Tim, 2026-10-13): fixed theme codes and the post's effect on US stocks
 MACRO_THEMES = ('rates', 'inflation', 'jobs', 'growth', 'yields', 'fx', 'energy', 'policy', 'other')
 MACRO_IMPACT = {'bullish': 'bullish', 'bearish': 'bearish', 'neutral': 'neutral',
