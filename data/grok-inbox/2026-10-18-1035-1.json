@@ -1,1 +1,79 @@
-$(cat /tmp/batches/batch1.json)
+{
+  "posts": {
+    "2111615859491754126": {
+      "en_summary": "(Quoted by @HormuzLetter) Trump administration proposes allowing Russia to sell large amounts of natural gas to Europe, offering Putin billions in revenue, with envoys arguing Ukraine should restart pipelines, per NYT. Weighing release of up to $100 billion in frozen Russian assets for limited ceasefire, rejected by Europe. @hkuppy prioritizes sorting $SBERBANK dividends first.",
+      "zh_summary": "（由@HormuzLetter轉述）特朗普政府提議允許俄羅斯向歐洲出售大量天然氣，為普京帶來數十億收入，特使主張烏克蘭重啟輸氣管道，據《紐約時報》。正考慮釋放最高1000億美元凍結俄羅斯主權資產作為有限停火前期激勵，遭歐洲官員拒絕。@hkuppy優先處理$SBERBANK股息事宜。",
+      "ko_summary": "(@HormuzLetter가 인용) 트럼프 행정부가 러시아가 유럽에 대량의 천연가스를 판매하도록 허용하는 제안을 하고 있으며, 이는 푸틴에게 수십억 수익을 제공할 것이고, 특사들은 우크라이나가 파이프라인을 재개해야 한다고 주장한다고 NYT가 보도했다. 제한적 휴전을 위한 최대 1000억 달러의 동결된 러시아 자산 해제를 검토 중이며, 유럽 관리들은 이를 거부했다. @hkuppy는 $SBERBANK 배당금 정리를 우선한다.",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2111607134265975174": {
+      "en_summary": "@kevinxu: Prepare yourself for Black Monday. Quoted @liquidtrading: Stocks getting hammered on Liquid this weekend, spreading to memory, storage and AI infrastructure. $WDC and $STX leading slide, $MU and $SNDK down more than 3% vs Friday close. Pressure on $BE, $AAOI, $LITE, $CRWV, $IREN. $NBIS into red, 85 of 96 tracked stocks/ETFs below Friday close.",
+      "zh_summary": "@kevinxu：為黑色星期一做好準備。引用@liquidtrading：本週末Liquid上股票遭拋售重創，蔓延至記憶體、儲存及AI基礎設施。$WDC和$STX領跌，$MU和$SNDK較週五收盤下跌超過3%。壓力延伸至$BE、$AAOI、$LITE、$CRWV、$IREN。$NBIS轉跌，追蹤的96隻股票/ETF中85隻低於週五收盤。",
+      "ko_summary": "@kevinxu: 블랙 먼데이에 대비하라. @liquidtrading 인용: 이번 주말 Liquid에서 주식이 큰 타격을 받고 있으며, 메모리, 스토리지 및 AI 인프라로 확산되고 있다. $WDC와 $STX가 하락을 주도하고, $MU와 $SNDK는 금요일 종가 대비 3% 이상 하락했다. $BE, $AAOI, $LITE, $CRWV, $IREN에 압력. $NBIS는 적자로 전환, 추적한 96개 주식/ETF 중 85개가 금요일 종가 아래.",
+      "tickers": ["WDC", "STX", "MU", "SNDK", "BE", "AAOI", "LITE", "CRWV", "IREN", "NBIS"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"WDC": "睇淡", "STX": "睇淡", "MU": "睇淡", "SNDK": "睇淡", "BE": "睇淡", "AAOI": "睇淡", "LITE": "睇淡", "CRWV": "睇淡", "IREN": "睇淡", "NBIS": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2111628554148655527": {
+      "en_summary": "@TrungTPhan: we come a long way. Quoted own post about dumb starbucks unleashing a creative monster.",
+      "zh_summary": "@TrungTPhan：我們走了很長的路。引用自己關於笨星巴克釋放創意怪物的帖子。",
+      "ko_summary": "@TrungTPhan: 우리는 먼 길을 왔다. 자신이 올린 바보 스타벅스가 창의적인 괴물을 풀어놓았다는 포스트를 인용.",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2111615996783923556": {
+      "en_summary": "@APompliano: Article about law enforcement and regulators taking down crypto scams highlights cat-and-mouse game. @pattersonscott & team explained behind the scenes. Bloomberg feature on Brooklyn crypto cop cracking global scam network.",
+      "zh_summary": "@APompliano：關於執法與監管機構打擊加密貨幣詐騙的文章，突顯多年貓鼠遊戲。@pattersonscott及團隊詳細解釋幕後情況。彭博報導布魯克林加密警察破解全球詐騙網絡。",
+      "ko_summary": "@APompliano: 법 집행 기관과 규제 당국이 암호화폐 사기를 단속하는 기사는 수년간의 고양이와 쥐 게임을 강조한다. @pattersonscott과 팀이 이면의 상황을 잘 설명했다. 브루클린 암호화폐 경찰이 글로벌 사기 네트워크를 해체한 블룸버그 특집.",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2111615474744070501": {
+      "en_summary": "@leadlagreport: Going to dress as the Yen for Halloween to scare everyone. Quoted: Absolute bloodbath, over ¥30 trillion wiped from Japanese stock market in 10 minutes. Bank of Japan urgently dumping all U.S. Treasuries to stop the crash.",
+      "zh_summary": "@leadlagreport：萬聖節要打扮成日圓來嚇死所有人。引用：絕對屠殺，10分鐘內日本股市蒸發超過30萬億日圓。日本央行緊急拋售所有美國國債以阻止崩盤。",
+      "ko_summary": "@leadlagreport: 할로윈에 엔화로 분장해 모두를 겁주게 할 것이다. 인용: 절대적 학살, 10분 만에 일본 주식 시장에서 30조 엔 이상이 증발. 일본은행이 붕괴를 막기 위해 모든 미국 국채를 긴급 매도 중.",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "fx",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    }
+  }
+}
