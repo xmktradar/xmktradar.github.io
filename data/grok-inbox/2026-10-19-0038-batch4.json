@@ -1,0 +1,79 @@
+{
+  "posts": {
+    "2111827137879748674": {
+      "en_summary": "@TrendSpider posts $BTC ☕️ Brewing.",
+      "zh_summary": "@TrendSpider發文$BTC ☕️ Brewing。",
+      "ko_summary": "@TrendSpider는 $BTC ☕️ Brewing를 게시했다.",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2111826858379735226": {
+      "en_summary": "@Mr_Derivatives notes FOMC is next week, October 27-28th. All prior 6 FOMC’s (day 2) this year, the $SPX was red. 6 for 6. But 4 of the last 4, the following day was uber green. Past performance not indicative of future results, but interesting data.",
+      "zh_summary": "@Mr_Derivatives指出FOMC在下週10月27-28日。今年先前6次FOMC（第二天）$SPX都是下跌。6次全中。但最近4次中的4次，第二天都是大幅上漲。過去表現不代表未來結果，但有趣數據。",
+      "ko_summary": "@Mr_Derivatives는 FOMC가 다음 주 10월 27-28일이라고 언급했다. 올해 이전 6번의 FOMC(2일차)에서 $SPX가 모두 하락했다. 6전 6패. 하지만 최근 4번 중 4번은 다음 날이 크게 상승했다. 과거 성과가 미래를 나타내지 않지만 흥미로운 데이터.",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2111826784035471705": {
+      "en_summary": "@OptionsMike comments on $INTC 200D calling? Trump may wish he had sold the US stake.",
+      "zh_summary": "@OptionsMike評論$INTC 200日均線在呼喚？特朗普可能希望已賣出美國持股。",
+      "ko_summary": "@OptionsMike는 $INTC 200일선이 부르고 있나? 트럼프가 미국 지분을 팔았으면 좋았을 거라고 말했다.",
+      "tickers": ["INTC"],
+      "stance": "中性",
+      "stance_by_ticker": {"INTC": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2111826598357844240": {
+      "en_summary": "@OptionsMike says $DELL is another name with a quick fall from grace. Nice gap if we reverse, but 420 looks likely. Chart with other supports outlined.",
+      "zh_summary": "@OptionsMike表示$DELL是另一個快速從榮耀跌落的名字。若反轉有不錯缺口，但420看起來可能。圖表標出其他支撐。",
+      "ko_summary": "@OptionsMike는 $DELL이 빠르게 영광을 잃은 또 다른 종목이라고 말했다. 반등 시 좋은 갭이 있지만 420이 가능성이 높다. 다른 지지가 표시된 차트.",
+      "tickers": ["DELL"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"DELL": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"DELL": "Quick fall from grace, 420 looks likely, nice gap if reverse"}
+    },
+    "2111826198275698950": {
+      "en_summary": "@OptionsMike never liked $CRWV, their business model only works in good times (like WeWork). Trying to hold a 52W low, not good that Jensen felt he needed to say we don't need to back stop them, means $NVDA is thinking about it. 55 if we don't hold here next support.",
+      "zh_summary": "@OptionsMike從不喜歡$CRWV，其商業模式只在好時候有效（如WeWork）。試圖守住52週低點，Jensen覺得需要說不必為他們兜底並不好，意味$NVDA在考慮此事。若不守住這裡，下一支撐55。",
+      "ko_summary": "@OptionsMike는 $CRWV를 좋아하지 않았으며 비즈니스 모델이 좋은 시기에만 작동한다고 말했다(WeWork처럼). 52주 저점을 지키려 노력 중이며 Jensen이 백스톱 불필요하다고 말할 필요가 있었다고 느끼는 것은 좋지 않다. $NVDA가 고려 중이라는 의미. 여기서 못 지키면 다음 지지 55.",
+      "tickers": ["CRWV", "NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"CRWV": "睇淡", "NVDA": "中性"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"CRWV": "Business model only works in good times like WeWork, holding 52W low, next support 55", "NVDA": "Jensen comment implies thinking about backstop for CRWV"}
+    }
+  }
+}
