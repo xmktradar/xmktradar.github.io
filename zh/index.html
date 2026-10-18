@@ -1468,7 +1468,9 @@ function paintChrome(){const m=D.meta;document.getElementById('cutoff').textCont
  document.getElementById('foot').innerHTML=`<p><b>免責聲明：</b>所有內容整理自被追蹤帳號的公開貼文，只反映帳號本身的說法；任何「資金流向」或「交易紀錄」均為「據貼文所述」，未經查證。本頁不構成投資建議。</p>
 <p>立場資料：${m.stance.files.length?`由分析師逐篇標示（已標示 ${m.stance.matched} 篇貼文）；沒有標示立場的一律列為「未表態」。`:'尚未有分析師立場資料，所有貼文暫列為「未表態」。'}</p>
 <p>股價：${Object.keys(srcs).length?Object.keys(srcs).map(esc).join('、')+` 日收市價，截至 ${esc(asof)}（美東交易日），抓取於 ${esc(fet)} HKT`:'沒有股價資料'}${(()=>{const pm=m.price_missing.filter(t=>!UNC(t));const wn=pm.filter(t=>OV[t]&&OV[t].price_note),wo=pm.filter(t=>!(OV[t]&&OV[t].price_note));return (wn.length?'；'+wn.map(t=>'$'+esc(t)+' 為'+esc(OV[t].price_note)).join('；'):'')+(wo.length?`；暫時未有股價資料：${wo.map(t=>'$'+esc(t)).join(' ')}`:'')})()}${nonUS.length?'；非美股以當地交易所及貨幣報價（個股頁已標示）':''}。</p>
-${MAC&&MAC.rows.length?`<p>大市數據：${[...new Set(MAC.rows.map(r=>(r.src||'').replace(/（.*?）|\(.*?\)/g,'').trim()).filter(Boolean))].map(esc).join('、')||'—'}${MAC.as_of?`，截至 ${esc(MAC.as_of)} HKT`:''}。</p>`:''}<p>時間均為香港時間（HKT, UTC+8）。帳號頭像與簡介來自各帳號的 X 個人頁。</p>`;linkHandles(document.getElementById('foot'))}
+${MAC&&MAC.rows.length?`<p>大市數據：${[...new Set(MAC.rows.map(r=>(r.src||'').replace(/（.*?）|\(.*?\)/g,'').trim()).filter(Boolean))].map(esc).join('、')||'—'}${MAC.as_of?`，截至 ${esc(MAC.as_of)} HKT`:''}。</p>`:''}<p>時間均為香港時間（HKT, UTC+8）。帳號頭像與簡介來自各帳號的 X 個人頁。</p>
+<p>本站部分連結屬聯盟推廣連結，你經由連結註冊或購買，我哋可能獲得佣金，你唔使付多一分錢。佣金唔會影響好淡統計同機械人選股。本站內容唔構成投資建議。</p>
+<p><a href="advertise/">廣告合作</a> · <a href="support/">支持本站</a></p>`;linkHandles(document.getElementById('foot'))}
 paintChrome();
 render();
 if(!coreDone){loadCore().then(function(){window.__dashReady=true;paintChrome();render()}).catch(function(e){console.error(e);coreDone=true;window.__dashReady=true;paintChrome();render()})}else window.__dashReady=true;
