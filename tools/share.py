@@ -15,6 +15,7 @@ import re
 from datetime import datetime
 
 from sitedata import HK, load, notice, now_hk, read_json, work, write_json
+from utm import tag_posts
 
 HTML = 'index.html'
 SITE = 'https://thecrowdtape.com/'
@@ -377,6 +378,7 @@ def main():
               'images': {l: f'{SITE}og/social-{l}.png?v={day}' for l in LANGS},
               'stories': {l: f'{SITE}og/story-{l}.png?v={day}' for l in LANGS},
               'posts': {l: caption(l, day, s, items, win, langs[l]['quote']) for l in LANGS}}
+        tag_posts(sp['posts'], 'daily')
         write_json('data/social-posts.json', sp, indent=1)
         os.makedirs('social', exist_ok=True)
         open('social/index.html', 'w', encoding='utf-8').write(social_page(sp))
