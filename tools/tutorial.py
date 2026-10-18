@@ -17,6 +17,7 @@ from collections import Counter
 from datetime import date, timedelta
 
 from sitedata import load, notice, now_hk, read_json, work, write_json
+from utm import tag_posts
 
 SITE = 'https://thecrowdtape.com/'
 LANGS = ('zh', 'en', 'ko')
@@ -168,6 +169,7 @@ def main():
         url = SITE + lang + '/' + (go if not go.startswith('#') else go)
         tp['posts'][lang] = posts(lang, n, len(eps), txt, url)
         job['langs'][lang] = {'title': txt['t'], 'how': txt['how'], 'shot': shot}
+    tag_posts(tp['posts'], 'tutorial')
     write_json('data/tutorial-posts.json', tp, indent=1)
     os.makedirs('social', exist_ok=True)
     open('social/tutorial.html', 'w', encoding='utf-8').write(page(tp))

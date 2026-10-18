@@ -19,6 +19,7 @@ from datetime import datetime, timedelta
 
 from share import SHORT, SITE, LANGS, clean, likes, social_page, tags, trading_day, xlen
 from sitedata import load, notice, now_hk, parse_iso, read_json, work, write_json
+from utm import tag_posts
 
 HTML = 'index.html'
 SLOTS = (('1230', 7, ('12:30', '13:00', '13:30')),
@@ -622,6 +623,9 @@ def main():
                 posts.pop('reddit', None)
                 for k, see in (('instagram', END[lang][0]), ('facebook', FB_TAP[lang])):  # single-picture text, plus "swipe"/"tap" under the headline
                     posts[k] = posts[k].replace('\n\n', f'\n\n{see}\n\n', 1)
+                for k, v in posts.items():
+                    if isinstance(v, str):
+                        posts[k] = v.replace('utm_campaign=daily', 'utm_campaign=carousel')
             elif key == '1630':
                 slides = duel(site, s, lang, day, win, pick)
                 posts = cap_duel(site, s, lang, day, pick)
@@ -658,6 +662,9 @@ def main():
     sp['slots'] = {k: slots[k] for k, _, _ in SLOTS if k in slots}
     log[day] = sorted({(cid, p) for v in sp['slots'].values() for cid, p in (v.get('poses') or {}).items()})
     sp['pose_log'] = log
+    for sl in (sp.get('slots') or {}).values():
+        if sl.get('posts'):
+            tag_posts(sl['posts'], 'carousel')
     # The new text goes into place only after tools/carousel.js has drawn the pictures (see update-site.yml).
     write_json(work('carousel.json'), {'date': day, 'jobs': jobs})
     write_json(work('social-posts.json'), sp, indent=1)
