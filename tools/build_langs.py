@@ -107,6 +107,16 @@ def translate(code, ui):
     return ''.join(parts) + code[last:]
 
 
+def localize_news(html, lang):
+    """Newsletter forms follow the page language (data-lang and the hidden lang field)."""
+    def one(form):
+        block = form.group(0)
+        block = re.sub(r'\bdata-lang="[^"]*"', f'data-lang="{lang}"', block, count=1)
+        block = re.sub(r'(name="lang"\s+value=")[^"]*"', rf'\g<1>{lang}"', block, count=1)
+        return block
+    return re.sub(r'<form\b[^>]*\bct-news\b[^>]*>.*?</form>', one, html, flags=re.S)
+
+
 def head_tags(cur):
     alt = ''.join(f'<link rel="alternate" hreflang="{LANGS[k][0]}" href="{SITE}{k}/">' for k in LANGS)
     alt += f'<link rel="alternate" hreflang="x-default" href="{SITE}">'
@@ -114,7 +124,7 @@ def head_tags(cur):
     js = ('<script>(function(){var k="ct-lang";document.addEventListener("click",function(e){'
           'var a=e.target.closest&&e.target.closest(".lang-sw a");if(!a)return;'
           'try{localStorage.setItem(k,a.dataset.lang)}catch(_){}'
-          'e.preventDefault();location.href=a.getAttribute("href")+location.hash});'
+          'e.preventDefault();location.href=a.getAttribute("href")+location.search+location.hash});'
           # the stock page is an overlay (#dive) that covers the header: give it its own copy of the switch
           'new MutationObserver(function(){var d=document.getElementById("dive"),n=document.querySelector("header .lang-sw");'
           'if(d&&n&&!d.querySelector(".lang-sw"))d.insertBefore(n.cloneNode(true),d.firstChild)})'
@@ -123,7 +133,7 @@ def head_tags(cur):
         js += (';if(!/(github\\.io|thecrowdtape\\.com)$/.test(location.hostname))return;var l;try{l=localStorage.getItem(k)}catch(_){}'
                'if(!l){var n=(navigator.languages||[navigator.language||""]).join(",").toLowerCase();'
                'l=/^ko|,ko/.test(n)?"ko":/^zh|,zh/.test(n)?"zh":/^en|,en/.test(n)?"en":"zh"}'
-               'location.replace("/"+l+"/"+location.hash)')
+               'location.replace("/"+l+"/"+location.search+location.hash)')
     js += '})();</script>'
     return f'{MARK}{canon}{alt}<style>{SWITCH_CSS}</style>{js}{MARK}'
 
@@ -278,6 +288,7 @@ def build(lang, master):
                    if os.path.exists(m.group(1) + f'-{lang}.png') else SITE + m.group(1) + m.group(2), s)
     s = re.sub(r'''(["'(])assets/''', r'\1/assets/', s)
     s = add_chrome(s, lang)
+    s = localize_news(s, lang)
     os.makedirs(lang, exist_ok=True)
     open(f'{lang}/index.html', 'w', encoding='utf-8').write(s)
     if lang == 'zh':

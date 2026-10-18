@@ -30,7 +30,8 @@ def apply(html, tr):
 
 def page(template, lang):
     cur = {k: (' aria-current="page"' if k == lang else '') for k in LANGS}
-    html = template.replace('{{lang}}', LANGS[lang]).replace('{{canon}}', f'{SITE}{lang}/support/')
+    html = template.replace('{{lang}}', LANGS[lang]).replace('{{lang_code}}', lang)
+    html = html.replace('{{canon}}', f'{SITE}{lang}/support/')
     html = html.replace('{{home}}', f'/{lang}/')
     for k, mark in cur.items():
         html = html.replace('{{cur_%s}}' % k, mark)
