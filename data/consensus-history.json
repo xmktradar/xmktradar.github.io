@@ -494,10 +494,11 @@
   },
   "2026-10-19": {
    "bull": [
-    "SPCX"
+    "TSM"
    ],
    "bear": [],
    "split": [
+    "SPCX",
     "TSLA"
    ],
    "window": [
@@ -505,21 +506,21 @@
     "2026-10-19"
    ],
    "top": [
-    "MU",
+    "SPCX",
     "TSLA",
+    "MU",
+    "TSM",
     "CRWV",
     "AAPL",
     "ASML",
     "ASTS",
     "IREN",
-    "NBIS",
-    "SPCX",
-    "TSM"
+    "META"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-19 06:40"
+   "updated_hkt": "2026-10-19 07:07"
   }
  },
- "updated_hkt": "2026-10-19 06:40",
+ "updated_hkt": "2026-10-19 07:07",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
