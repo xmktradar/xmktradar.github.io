@@ -83,6 +83,43 @@ def prune(d, now):
     return gone
 
 
+CRYPTO = {'BTC', 'ETH', 'SOL', 'XRP', 'DOGE', 'ADA', 'BNB'}  # same list as update_prices.py
+CASHTAG = re.compile(r'\$([A-Za-z]{1,6})\b')
+NAME_TICKERS = {'SPCX': re.compile(r'\bspace ?x\b', re.I)}  # posts often say SpaceX, not $SPCX (Tim, 2026-10-18)
+
+
+def backfill_tickers(d):
+    """Add stocks a summarised post plainly names ($cashtag, or SpaceX) but Grok left out (Tim, 2026-10-18).
+
+    Only tickers the site already knows (a price line or a confirmed override). The added ticker is 未表態,
+    unless the post had no ticker at all, has a 睇好/睇淡 stance and names just this one stock.
+    """
+    ov = d.get('overrides') or {}
+    ok = set(d.get('prices') or {}) | {t for t, v in ov.items() if v.get('confirmed')}
+    ok -= CRYPTO | NOT_TICKERS | {t for t, v in ov.items() if v.get('unconfirmed') or v.get('drop')}
+    n = 0
+    for p in d['posts']:
+        text = p.get('text') or ''
+        if not text or not p.get('zh_summary'):
+            continue
+        found = {t.upper() for t in CASHTAG.findall(text)} | {t for t, rx in NAME_TICKERS.items() if rx.search(text)}
+        have = list(p.get('tickers') or [])
+        add = sorted((found & ok) - set(have))
+        if not add:
+            continue
+        sbt = p.get('stance_by_ticker') if isinstance(p.get('stance_by_ticker'), dict) else {}
+        for t in add:
+            sbt[t] = p['stance'] if not have and len(add) == 1 and p.get('stance') in ('睇好', '睇淡') else '未表態'
+        p['tickers'] = have + add
+        p['stance_by_ticker'] = sbt
+        if 'specific' not in p:
+            p['specific'] = False
+        n += 1
+    if n:
+        notice(f'補回帖文提到但漏咗嘅股票代號 {n} 則')
+    return n
+
+
 def known(d):
     """Handles whose posts belong on the site: only Tim's tracked list (2026-10-11), not accounts from older lists."""
     return {a['handle'].lower() for a in d['tracked']['accounts']}
@@ -100,7 +137,7 @@ def main():
     if strangers:
         d['posts'] = [p for p in d['posts'] if ours(p, hs)]
         notice(f'刪除唔喺追蹤名單帳號嘅帖 {len(strangers)} 則')
-    # SPCX / BULLSHIT are not tickers (team, 2026-10-08): clear them from posts already on the site
+    # BULLSHIT is not a ticker (team, 2026-10-08): clear it from posts already on the site
     n = 0
     for p in d['posts']:
         changed = False
@@ -174,6 +211,7 @@ def main():
     for p in d['posts']:
         if 'text' not in p and p['url'].lower() in texts:
             p['text'] = texts[p['url'].lower()]
+    backfill_tickers(d)
     tag_posts(d['posts'])
     pruned = prune(d, now)
     save(d)
