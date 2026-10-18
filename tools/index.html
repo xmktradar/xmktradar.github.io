@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-42CSNJ8DF9"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-42CSNJ8DF9');</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="index,follow">
+<title>我哋用嚟核實「群眾」嘅工具</title>
+<meta name="description" content="The Crowd Tape 統計 X 上面大約 200 個美股帳號嘅好淡，但統計唔等於買賣訊號。想睇圖表、篩股或者查基本面嗰陣，我哋會用以下工具。">
+<link rel="canonical" href="https://thecrowdtape.com/zh/tools/">
+<link rel="alternate" hreflang="zh-Hant" href="https://thecrowdtape.com/zh/tools/">
+<link rel="alternate" hreflang="en" href="https://thecrowdtape.com/en/tools/">
+<link rel="alternate" hreflang="ko" href="https://thecrowdtape.com/ko/tools/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+<style>
+:root{
+  --bg:#fbf6ec; --surface:#fffaf2; --ink:#3b2f24; --muted:#87776a; --line:#ece1cc;
+  --accent:#a5672c; --accent-soft:#f8ecda;
+  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --f-display:"Noto Serif TC","Songti TC",serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html[lang=ko] body{font-family:"Noto Sans KR","Noto Sans TC",system-ui,sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;overflow-wrap:anywhere}
+img{max-width:100%;height:auto}
+a{color:var(--accent)}
+.wrap{max-width:760px;margin:0 auto;padding:20px 16px 48px}
+header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin-bottom:22px}
+.brand{font-family:var(--f-display);font-weight:700;font-size:20px;color:var(--ink);text-decoration:none}
+.lang{display:flex;flex-wrap:wrap;gap:4px}
+.lang a{font-size:13px;font-weight:600;padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);text-decoration:none;background:var(--surface)}
+.lang a[aria-current]{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+h1{font-family:var(--f-display);font-size:28px;line-height:1.3;margin:0 0 8px;overflow-wrap:anywhere}
+.lead{margin:0 0 20px}
+.stack{display:flex;flex-direction:column;gap:12px;margin:0;padding:0;list-style:none}
+.card{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px}
+.card h2{font-size:18px;line-height:1.35;margin:0 0 6px;overflow-wrap:anywhere}
+.card h2 a{font-weight:700;text-decoration:none}
+.card h2 a:hover{text-decoration:underline}
+.card p{margin:0}
+.card .region{margin-top:6px;color:var(--muted);font-size:14px;font-style:italic}
+.note{margin:0 0 16px;padding:14px 16px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;background:var(--accent-soft)}
+.note p{margin:0;font-size:14px}
+.cta{margin-top:22px}
+.cta h2{font-family:var(--f-display);font-size:22px;line-height:1.35;margin:0 0 4px;overflow-wrap:anywhere}
+.ct-news{position:relative;overflow-x:clip;box-sizing:border-box;width:100%;max-width:100%;margin:8px 0 0;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ct-news-t{flex:1 0 100%;margin:0;font-weight:700;font-size:15px;line-height:1.45;overflow-wrap:anywhere}
+.ct-news input[type=email]{flex:1 1 140px;min-width:0;max-width:100%;box-sizing:border-box;margin:0;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);font:inherit;font-size:16px}
+.ct-news button[type=submit]{flex:0 1 auto;max-width:100%;box-sizing:border-box;margin:0;padding:8px 16px;border:0;border-radius:999px;background:var(--accent);color:#fff;font:inherit;font-weight:700;font-size:14px;cursor:pointer}
+.ct-news small{flex:1 0 100%;margin:0;color:var(--muted);font-size:12.5px;line-height:1.4}
+.ct-news-msg{flex:1 0 100%;margin:0;font-size:14px;line-height:1.45;overflow-wrap:anywhere}
+.ct-news input[name=website]{position:absolute!important;left:0!important;top:0!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;border:0!important;white-space:nowrap}
+.back{display:inline-block;margin-top:18px;font-weight:700;text-decoration:none}
+@media(max-width:420px){h1{font-size:24px}.wrap{padding:16px 14px 40px}.cta h2{font-size:20px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="brand" href="/zh/">The Crowd Tape</a>
+  <nav class="lang" aria-label="語言">
+    <a href="/zh/tools/" hreflang="zh-Hant" aria-current="page">中</a>
+    <a href="/en/tools/" hreflang="en">EN</a>
+    <a href="/ko/tools/" hreflang="ko">한</a>
+  </nav>
+</header>
+<main>
+  <h1>我哋用嚟核實「群眾」嘅工具</h1>
+  <p class="lead">The Crowd Tape 統計 X 上面大約 200 個美股帳號嘅好淡，但統計唔等於買賣訊號。想睇圖表、篩股或者查基本面嗰陣，我哋會用以下工具。</p>
+  <aside class="note">
+    <p>披露：本站部分連結屬聯盟推廣連結，你經由連結註冊或購買，我哋可能獲得佣金，你唔使付多一分錢。佣金唔會影響好淡統計同機械人選股。本站內容唔構成投資建議。</p>
+  </aside>
+  <div class="stack">
+    <article class="card">
+      <h2><a href="https://www.tradingview.com/" rel="nofollow noopener" target="_blank" data-tool="TradingView">TradingView：圖表</a></h2>
+      <p>睇群眾熱烈討論嘅股票實際走勢。有免費版，支援中文介面。</p>
+    </article>
+    <article class="card">
+      <h2><a href="https://finviz.com/" rel="nofollow noopener" target="_blank" data-tool="Finviz">Finviz：選股器同熱力圖</a></h2>
+      <p>睇大市熱力圖，按板塊、流通量、業績日快速篩股。免費版已夠用，Elite 有即時數據。</p>
+    </article>
+    <article class="card">
+      <h2><a href="https://www.koyfin.com/" rel="nofollow noopener" target="_blank" data-tool="Koyfin">Koyfin：基本面同儀表板</a></h2>
+      <p>比較「共同看好／看淡」股票嘅估值同預測。</p>
+    </article>
+    <article class="card" data-region="ibkr">
+      <h2><a href="https://www.interactivebrokers.com/" rel="nofollow noopener" target="_blank" data-tool="IBKR">盈透證券 IBKR：券商</a></h2>
+      <p>喺美國以外低成本買賣美股。</p>
+      <p class="region">（中國內地、韓國、日本等地居民不適用）</p>
+    </article>
+  </div>
+  <section class="cta">
+    <h2>訂閱每週電子報</h2>
+    <form class="ct-news" id="ct-news-tools" data-lang="zh" action="https://crowdtape-newsletter.vercel.app/api/subscribe" method="POST">
+      <label for="ct-email-tools" class="ct-news-t">每週好淡統計，直送你嘅電郵</label>
+      <input id="ct-email-tools" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+      <input type="hidden" name="lang" value="zh">
+      <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+      <button type="submit">訂閱</button>
+      <small>免費・每週一封・隨時取消</small>
+      <p class="ct-news-msg" role="status" hidden></p>
+    </form>
+  </section>
+  <p><a class="back" href="/zh/">返回首頁</a></p>
+</main>
+</div>
+<script>
+document.querySelectorAll('a[data-tool]').forEach(function(a){
+  a.addEventListener('click',function(){
+    var name=a.getAttribute('data-tool');
+    if(window.gtag)gtag('event','affiliate_click',{tool:name,lang:'zh'});
+  });
+});
+</script>
+<script>
+(function(){
+  var M={en:["Thanks! You're subscribed.","Please check the email address and try again."],
+         zh:["多謝！你已成功訂閱。","電郵地址有誤，請再試。"],
+         ko:["감사합니다! 구독되었습니다.","이메일 주소를 확인 후 다시 시도해 주세요."]};
+  document.querySelectorAll('form.ct-news').forEach(function(f){
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var l=f.dataset.lang||'en',m=f.querySelector('.ct-news-msg'),d=Object.fromEntries(new FormData(f));
+      fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+        .then(function(r){return r.json()}).then(function(j){
+          m.hidden=false;m.textContent=M[l][j.ok?0:1];
+          if(j.ok){f.reset();if(window.gtag)gtag('event','newsletter_signup',{lang:l});}
+        }).catch(function(){m.hidden=false;m.textContent=M[l][1];});
+    });
+  });
+  var sub=new URLSearchParams(location.search).get('subscribed');
+  if(sub==='1'||sub==='0') document.querySelectorAll('form.ct-news').forEach(function(f){
+    var l=f.dataset.lang||'en',m=f.querySelector('.ct-news-msg');
+    m.hidden=false;m.textContent=M[l][sub==='1'?0:1];
+  });
+})();
+</script>
+</body>
+</html>
