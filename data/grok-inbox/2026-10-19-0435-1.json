@@ -1,1 +1,82 @@
-$(cat /tmp/batches/batch1.json)
+{
+  "posts": {
+    "2111902635410309559": {
+      "en_summary": "TrendSpider suggests a potential sharp drop for $SNDK $STX $WDC $MU with the parachute emoji.",
+      "zh_summary": "TrendSpider 以降落傘表情符號暗示 $SNDK $STX $WDC $MU 可能出現急跌。",
+      "ko_summary": "TrendSpider는 낙하산 이모지로 $SNDK $STX $WDC $MU의 급락 가능성을 시사했다.",
+      "tickers": ["SNDK", "STX", "WDC", "MU"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SNDK": "睇淡", "STX": "睇淡", "WDC": "睇淡", "MU": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2111902486542143800": {
+      "en_summary": "$CIFR broke below the VWAP zone, leading to a quick drop according to Jake__Wujastyk.",
+      "zh_summary": "Jake__Wujastyk 指出 $CIFR 跌破 VWAP 區域後迅速下跌。",
+      "ko_summary": "Jake__Wujastyk에 따르면 $CIFR이 VWAP 구간을 하향 이탈한 후 빠르게 하락했다.",
+      "tickers": ["CIFR"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"CIFR": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2111902130714108170": {
+      "en_summary": "Jake__Wujastyk questions if $IREN is returning to the trend zone amid very heavy selling over the last couple of weeks.",
+      "zh_summary": "Jake__Wujastyk 質疑 $IREN 是否正回到趨勢區域，過去兩週出現非常沉重的賣壓。",
+      "ko_summary": "Jake__Wujastyk는 지난 몇 주간 매우 무거운 매도세 속에서 $IREN이 추세 구간으로 되돌아가는지 질문했다.",
+      "tickers": ["IREN"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"IREN": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2111901282642678157": {
+      "en_summary": "Jake__Wujastyk notes $AVGO has a very important level to hold going into this week.",
+      "zh_summary": "Jake__Wujastyk 指出 $AVGO 本週有一個非常重要的支撐位需要守住。",
+      "ko_summary": "Jake__Wujastyk는 $AVGO가 이번 주 매우 중요한 지지 수준을 유지해야 한다고 언급했다.",
+      "tickers": ["AVGO"],
+      "stance": "中性",
+      "stance_by_ticker": {"AVGO": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2111894567549071705": {
+      "en_summary": "DanielTNiles notes last week $KBWB -1% despite low expectations while AI stocks fell including $ASML -8% and $TSM -9% on financing concerns with AirTrunk IPO delayed and $CRWV -25%, Anthropic growth slowing to ~45% with valuation ~$1.5T vs $2T. Mag7 down 3.2%, SOX -11.4%, S&P -1.9%. Yields fell 15-17bps despite hotter CPI/PPI. Concerns include AI equity and debt financing, neoclouds, and Chinese DRAM threat to $MU. Oil +10% and dollar down. Kospi rallied but SOX continued down. For $META expects beat and raise but high 2027 expense and capex guidance may pressure the stock. $TSLA Roadster videos impressive supporting $SPCX acquiring Tesla. Correction reconciled bond and equity discrepancies but still sees AI infrastructure growth and recommends investing excess cash. SOX down 8 days for 15.7% loss similar to 2008.",
+      "zh_summary": "DanielTNiles 指出上週 $KBWB 儘管預期低仍下跌 1%，AI 股因融資擔憂下跌，包括 $ASML -8%、$TSM -9%，AirTrunk IPO 延遲及 $CRWV -25%，Anthropic 增長放緩至約 45%，估值約 1.5 兆對 2 兆。Mag7 下跌 3.2%，SOX -11.4%，標普 -1.9%。儘管 CPI/PPI 較熱，殖利率仍下跌 15-17 個基點。擔憂包括 AI 股權與債務融資、neoclouds 及中國 DRAM 對 $MU 的威脅。油價 +10%、美元下跌。Kospi 反彈但 SOX 持續下跌。對 $META 預期超預期並上調但 2027 年高支出與資本支出指引可能壓股。$TSLA Roadster 影片令人印象深刻，支持 $SPCX 收購 Tesla。修正反映債券與股市差異，但仍看好 AI 基建增長並建議投資多餘現金。SOX 連跌 8 天累計 15.7%，類似 2008 年。",
+      "ko_summary": "DanielTNiles는 지난주 $KBWB가 낮은 기대에도 -1%를 기록했고 AI 주식은 금융 우려로 $ASML -8%, $TSM -9% 하락했으며 AirTrunk IPO 지연과 $CRWV -25%를 언급했다. Anthropic 성장이 ~45%로 둔화되고 밸류에이션이 ~1.5조 대 2조로 나타났다. Mag7 -3.2%, SOX -11.4%, S&P -1.9%. CPI/PPI가 hotter했음에도 수익률이 15-17bp 하락했다. AI 주식/채무 금융, neoclouds, 중국 DRAM의 $MU 위협 등 우려가 있다. 유가 +10%, 달러 하락. Kospi는 반등했으나 SOX는 계속 하락. $META는 실적 상회 및 가이던스 상향을 예상하나 2027년 높은 비용과 capex 가이던스가 주가를 압박할 수 있다. $TSLA Roadster 영상이 인상적이며 $SPCX의 Tesla 인수를 지지. 조정은 채권과 주식 시장 차이를 조정했으나 AI 인프라 성장이 여전히 있어 여유 현금 투자를 권한다. SOX는 8일 연속 15.7% 하락, 2008년과 유사.",
+      "tickers": ["KBWB", "ASML", "TSM", "CRWV", "MU", "META", "TSLA", "SPCX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"KBWB": "中性", "ASML": "中性", "TSM": "中性", "CRWV": "中性", "MU": "中性", "META": "中性", "TSLA": "睇好", "SPCX": "睇好"},
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "yields",
+      "macro_impact": "中性",
+      "ticker_notes": {
+        "META": "expects beat and raise but high 2027 expense and capex guidance may pressure",
+        "TSLA": "impressed by flying Roadster videos, supports SPCX acquiring Tesla"
+      }
+    }
+  }
+}
