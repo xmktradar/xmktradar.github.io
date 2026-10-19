@@ -17,7 +17,7 @@ import os
 import re
 from datetime import datetime, timedelta
 
-from share import SHORT, SITE, LANGS, clean, likes, social_page, tags, trading_day, xlen
+from share import SHORT, SITE, LANGS, attach_new_posts, clean, likes, social_page, tags, trading_day, xlen
 from sitedata import load, notice, now_hk, parse_iso, read_json, work, write_json
 from utm import tag_posts
 
@@ -562,12 +562,13 @@ def slot_page(sp):
                          + (f'<h4>Facebook 用正方形圖</h4><div class="grid">' + ''.join(f'<a href="{html.escape(u)}" download><img src="{html.escape(u)}" alt="FB {n + 1}"></a>'
                                                                               for n, u in enumerate(sl['images_fb'][lang])) + '</div>' if sl.get('images_fb') else '')
                          + f"{box('Facebook', p['facebook'], 16)}"
+                         + (box('Facebook 電子報', p['facebook_cta'], 18) if p.get('facebook_cta') else '')
                          + (box('IG Story hashtag', p.get('story', ''), 2) if sl.get('story') else '') + '</details>')
         out.append(f'<section class="slot"><h2>{times[0]} {TITLE[key]["zh"]}</h2><p>製作時間 {sl["made_hkt"]} HKT・'
                    f'{"有 IG Story（圖喺下面每個語言嘅舊格式部分）" if sl.get("story") else "冇 IG Story"}</p>{"".join(langs)}</section>')
     css = ('<style>.slot .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}.slot .grid img{border-radius:6px}'
            'details{margin-top:10px}summary{font-weight:700;cursor:pointer}h4{margin:12px 0 0;font-size:14px}</style>')
-    return css + '<h2 style="margin-top:24px">今日三個時段（多圖帖，Grok bot 用呢度）</h2>' + ''.join(out) + '<h2 style="margin-top:32px">舊格式（單圖，只作參考）</h2>'
+    return css + '<h2 style="margin-top:24px">今日三個時段（多圖帖，Grok bot 用呢度）</h2>' + ''.join(out)
 
 
 SLOT_HOUR = {k: h for k, h, _ in SLOTS}
@@ -575,8 +576,13 @@ SLOT_HOUR = {k: h for k, h, _ in SLOTS}
 
 def write_page(sp, path):
     page = social_page(sp)
-    i = page.index('<section>') if '<section>' in page else page.rindex('</html>')
-    open(path, 'w', encoding='utf-8').write(page[:i] + slot_page(sp) + page[i:])
+    block = slot_page(sp)
+    if '<!--slots-->' in page:
+        page = page.replace('<!--slots-->', block, 1)
+    else:
+        i = page.index('<section>') if '<section>' in page else page.rindex('</html>')
+        page = page[:i] + block + page[i:]
+    open(path, 'w', encoding='utf-8').write(page)
 
 
 def main():
@@ -600,7 +606,7 @@ def main():
     cast = Cast() if os.path.exists(CAST_FILE) else None
     from share import window
     win = window(s)
-    jobs, posed = [], {}
+    jobs, posed, written = [], {}, []
     log = {d: v for d, v in (sp.get('pose_log') or {}).items() if d < day}
     log = dict(sorted(log.items())[-3:])  # the last three days' poses, so the same drawing does not come back day after day
     taken = {(cid, v.get('poses', {}).get(cid)) for v in slots.values() for _, cid in STORY_CAST}  # poses earlier slots used today
@@ -657,6 +663,7 @@ def main():
                       'images': {l: made[l]['images'] for l in LANGS}, 'images_fb': {l: made[l]['images_fb'] for l in LANGS}, 'posts': {l: made[l]['posts'] for l in LANGS}}
         if key == '1230':
             slots[key]['stories'] = sp.get('stories', {})
+        written.append(key)
     if not jobs:
         return
     sp['slots'] = {k: slots[k] for k, _, _ in SLOTS if k in slots}
@@ -665,6 +672,8 @@ def main():
     for sl in (sp.get('slots') or {}).values():
         if sl.get('posts'):
             tag_posts(sl['posts'], 'carousel')
+    # 19:05 writes the 2030 slot before the 21:00 trilingual post, so premarket picks up that picture.
+    attach_new_posts(sp, rebuild_premarket='2030' in written)
     # The new text goes into place only after tools/carousel.js has drawn the pictures (see update-site.yml).
     write_json(work('carousel.json'), {'date': day, 'jobs': jobs})
     write_json(work('social-posts.json'), sp, indent=1)
