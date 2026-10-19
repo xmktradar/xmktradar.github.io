@@ -500,29 +500,30 @@
    "bear": [],
    "split": [
     "SPCX",
+    "IREN",
     "TSLA",
-    "IREN"
+    "CIFR"
    ],
    "window": [
     "2026-10-19T00:00",
     "2026-10-19T23:59"
    ],
    "top": [
-    "NVDA",
-    "MU",
+    "QQQ",
     "SPCX",
     "TSLA",
-    "QQQ",
     "IREN",
-    "TSM",
+    "NVDA",
+    "MU",
     "CRWV",
+    "SPY",
     "AAPL",
-    "AMD"
+    "META"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-19 09:34"
+   "updated_hkt": "2026-10-19 11:09"
   }
  },
- "updated_hkt": "2026-10-19 09:34",
+ "updated_hkt": "2026-10-19 11:09",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
