@@ -83,6 +83,8 @@ jobs:
         run: python3 tools/advertise.py
       - name: Tools page
         run: python3 tools/toolspage.py
+      - name: llms-full.txt
+        run: python3 tools/llms_full.py
       - name: Stock pages
         run: node tools/stock_pages.js
       - name: Weekend guide posts (Saturday and Sunday)
@@ -117,7 +119,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add -A index.html zh/ en/ ko/ support/ advertise/ tools/index.html data/ og/ px/ av/ social/ sitemap.xml
+          git add -A index.html zh/ en/ ko/ support/ advertise/ tools/index.html data/ og/ px/ av/ social/ sitemap.xml llms-full.txt
           git diff --cached --quiet && exit 0
           git commit -m "定時重建 $(date '+%Y-%m-%d %H:%M') HKT"
           git pull --rebase origin main || { git rebase --abort; echo "::error::main 嘋更新期間有新改動，今次唔發佈，下次再試"; exit 1; }

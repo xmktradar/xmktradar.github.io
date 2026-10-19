@@ -131,9 +131,12 @@ h1{font-family:var(--f-display);font-size:28px;line-height:1.3;margin:0 0 8px;ov
 </div>
 <script>
 document.addEventListener("click",function(e){
-  var a=e.target&&e.target.closest&&e.target.closest("a[data-method]");
+  var a=e.target&&e.target.closest&&e.target.closest("a[href]");
   if(!a||!window.gtag)return;
-  gtag("event","donate_click",{method:"paypal",lang:document.documentElement.lang});
+  if(a.hasAttribute("data-method"))gtag("event","donate_click",{method:"paypal",lang:document.documentElement.lang});
+  var u=a.href,h="";
+  try{h=new URL(u).hostname.toLowerCase()}catch(err){return}
+  if(h==="x.com"||h.endsWith(".x.com")||h==="twitter.com"||h.endsWith(".twitter.com"))gtag("event","x_outbound",{link_url:u,page:"support",lang:document.documentElement.lang||"",transport_type:"beacon"});
 });
 </script>
 </body>

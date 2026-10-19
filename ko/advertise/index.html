@@ -130,5 +130,14 @@ p,li,dd,dt{overflow-wrap:anywhere}
   <p><a class="back" href="/ko/">홈으로 돌아가기</a></p>
 </main>
 </div>
+<script>
+document.addEventListener("click",function(e){
+  var a=e.target&&e.target.closest&&e.target.closest("a[href]");
+  if(!a||!window.gtag)return;
+  var u=a.href,h="";
+  try{h=new URL(u).hostname.toLowerCase()}catch(err){return}
+  if(h==="x.com"||h.endsWith(".x.com")||h==="twitter.com"||h.endsWith(".twitter.com"))gtag("event","x_outbound",{link_url:u,page:"advertise",lang:document.documentElement.lang||"",transport_type:"beacon"});
+});
+</script>
 </body>
 </html>

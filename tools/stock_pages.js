@@ -24,18 +24,39 @@ const T = {
   zh: {
     index: '個股頁面',
     open: '打開互動版（含走勢圖）',
+    home: '首頁',
+    advice: '不構成投資建議。本頁只整理公開貼文，供參考。',
+    bullName: '看多帳號',
+    bearName: '看空帳號',
+    menName: '提及帳號',
+    dsName: t => `X 帳號對 $${t} 的看多／看空統計`,
+    dsDesc: (t, s) => `追蹤帳號對 $${t} 的最新立場，資料窗 ${s.from} 至 ${s.to}（香港時間）。看多帳號 ${s.bull}、看空帳號 ${s.bear}、提及帳號 ${s.mentions}。不構成投資建議。`,
     title: (t, nm, c) => `${t}${nm ? `（${nm}）` : ''} X 大神觀點：看多 ${c.bull}・看空 ${c.bear}・中性 ${c.neu}｜The Crowd Tape`,
     desc: (t, n, c) => `過去 28 天有 ${n} 個追蹤帳號提及 $${t}：看多 ${c.bull}、中性 ${c.neu}、看空 ${c.bear}、未表態 ${c.none}。查看每個帳號的最新觀點、理由與原帖，每 4 小時更新，不構成投資建議。`,
   },
   en: {
     index: 'Stock pages',
     open: 'Open the interactive page (with chart)',
+    home: 'Home',
+    advice: 'Not investment advice. This page only summarises public posts.',
+    bullName: 'Bullish accounts',
+    bearName: 'Bearish accounts',
+    menName: 'Mentioning accounts',
+    dsName: t => `X-account bull/bear stats for $${t}`,
+    dsDesc: (t, s) => `Latest stance of each tracked account that mentioned $${t}. Data window ${s.from} to ${s.to} (Hong Kong time). Bullish accounts: ${s.bull}. Bearish accounts: ${s.bear}. Mentioning accounts: ${s.mentions}. Not investment advice.`,
     title: (t, nm, c) => `${t}${nm ? ` (${nm})` : ''} on X: ${c.bull} bullish, ${c.bear} bearish, ${c.neu} neutral | The Crowd Tape`,
     desc: (t, n, c) => `${n} tracked X accounts mentioned $${t} in the last 28 days: ${c.bull} bullish, ${c.neu} neutral, ${c.bear} bearish, ${c.none} no stance. Each account's latest view, reasons and original post, updated every 4 hours. Not investment advice.`,
   },
   ko: {
     index: '종목 페이지',
     open: '인터랙티브 페이지 열기(차트 포함)',
+    home: '홈',
+    advice: '투자 조언이 아닙니다. 이 페이지는 공개 게시물을 정리한 자료입니다.',
+    bullName: '강세 계정',
+    bearName: '약세 계정',
+    menName: '언급 계정',
+    dsName: t => `$${t} X 계정 강세/약세 통계`,
+    dsDesc: (t, s) => `추적 계정이 $${t}에 대해 남긴 최신 입장. 자료 구간 ${s.from}–${s.to} (홍콩 시간). 강세 계정 ${s.bull}, 약세 계정 ${s.bear}, 언급 계정 ${s.mentions}. 투자 조언이 아닙니다.`,
     title: (t, nm, c) => `${t}${nm ? ` (${nm})` : ''} X 고수 관점: 강세 ${c.bull}・약세 ${c.bear}・중립 ${c.neu} | The Crowd Tape`,
     desc: (t, n, c) => `최근 28일 동안 추적 계정 ${n}개가 $${t}를 언급했다: 강세 ${c.bull}, 중립 ${c.neu}, 약세 ${c.bear}, 입장 없음 ${c.none}. 계정별 최신 관점, 근거와 원문을 4시간마다 업데이트한다. 투자 조언이 아닙니다.`,
   },
@@ -43,8 +64,55 @@ const T = {
 
 const slug = t => t.replace(/[^A-Za-z0-9.\-]/g, '_');  // same as px/ file names
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+// Keep "</" out of inline JSON so the closing script tag cannot be forged by a string.
+const jsonLd = obj => JSON.stringify(obj).replace(/<\//g, '<\\/');
+// generated_hkt is "YYYY-MM-DD HH:MM" in Hong Kong time. Other values are already ISO from the data.
+const asModified = s => /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/.test(s) ? s.replace(' ', 'T') + ':00+08:00' : s;
 
-function shell(master, lang, t, list, body, meta) {
+function graph(lang, t, url, meta, stats) {
+  const home = `${SITE}${lang}/`;
+  const L = T[lang];
+  const dataset = {
+    '@type': 'Dataset',
+    name: L.dsName(t),
+    description: L.dsDesc(t, stats),
+    url,
+    creator: { '@type': 'Organization', name: 'The Crowd Tape', url: SITE },
+    license: SITE,
+    isAccessibleForFree: true,
+    temporalCoverage: `${stats.from}/${stats.to}`,
+    variableMeasured: [
+      { '@type': 'PropertyValue', name: L.bullName, value: stats.bull },
+      { '@type': 'PropertyValue', name: L.bearName, value: stats.bear },
+      { '@type': 'PropertyValue', name: L.menName, value: stats.mentions },
+    ],
+  };
+  const modified = asModified(stats.modified || '');
+  if (modified) dataset.dateModified = modified;
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        url,
+        name: meta.title,
+        inLanguage: LANGS[lang],
+        isPartOf: { '@type': 'WebSite', name: 'The Crowd Tape', url: SITE },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: L.home, item: home },
+          { '@type': 'ListItem', position: 2, name: L.index, item: home + '#stock-index' },
+          { '@type': 'ListItem', position: 3, name: t, item: url },
+        ],
+      },
+      dataset,
+    ],
+  };
+}
+
+function shell(master, lang, t, list, body, meta, stats) {
   const head = master.slice(0, master.indexOf('</head>'));
   const styles = (head.match(/<style[^>]*>[\s\S]*?<\/style>/g) || []).join('\n');
   const ga = (head.match(/<script async src="https:\/\/www\.googletagmanager\.com[^>]*><\/script>\s*<script>window\.dataLayer[\s\S]*?<\/script>/) || [''])[0];
@@ -74,24 +142,27 @@ ${ga}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="${SITE}og/latest${lang === 'zh' ? '' : '-' + lang}.png">
 <link rel="canonical" href="${url}">${alt}
+<script type="application/ld+json">${jsonLd(graph(lang, t, url, meta, stats))}</script>
 ${fonts}
 ${styles}
 <style>.brand-home{color:inherit;text-decoration:none}.stock-static{padding-top:8px}.stock-static .back{text-decoration:none;display:inline-block}
+.advice{margin:8px 16px 0;padding:10px 12px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;background:var(--accent-soft);font-size:14px;line-height:1.45}
 .open-live{display:flex;justify-content:center;margin:8px 0 40px}.open-live a{font:600 15px/1 var(--f-body);padding:12px 20px;border-radius:999px;
 background:var(--accent);color:#fff;text-decoration:none}</style>
 </head>
 <body>
 <header class="top"><div class="wrap"><div class="brand-wrap">${brand}<nav class="lang-sw" aria-label="Language">${sw}</nav></div></div></header>
-<main class="stock-static">${body}
+<main class="stock-static"><p class="advice" role="note">${esc(T[lang].advice)}</p>${body}
 <div class="open-live"><a href="/${lang}/#stock/${encodeURIComponent(t)}">${esc(T[lang].open)}</a></div>
 ${indexRow(lang, list)}</main>
+<script>document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com'))gtag('event','x_outbound',{link_url:u,page:'stock',lang:document.documentElement.lang||'',transport_type:'beacon'})});</script>
 </body></html>
 `;
 }
 
 function indexRow(lang, list) {
   const links = list.map(t => `<a href="/${lang}/stock/${slug(t)}/">${esc(t)}</a>`).join(' ');
-  return `<nav class="wrap stock-index" aria-label="${esc(T[lang].index)}" style="font-size:12.5px;line-height:2;color:var(--muted);padding:12px 16px 28px">`
+  return `<nav id="stock-index" class="wrap stock-index" aria-label="${esc(T[lang].index)}" style="font-size:12.5px;line-height:2;color:var(--muted);padding:12px 16px 28px">`
     + `<b>${esc(T[lang].index)}</b>：${links}</nav>`;
 }
 
@@ -178,7 +249,14 @@ function avatars(html, seen) {
       const v = [...el.querySelectorAll('.kpis .kpi .v')].map(x => parseInt(x.textContent, 10) || 0);
       const pr = (D.prices || {})[t];
       const name = pr && pr.name ? pr.name : ((D.overrides || {})[t] || {}).name || '';
-      return { t, name, c: { bull: v[0] || 0, neu: v[1] || 0, none: v[2] || 0, bear: v[3] || 0 }, html: el.innerHTML };
+      const c = { bull: v[0] || 0, neu: v[1] || 0, none: v[2] || 0, bear: v[3] || 0 };
+      const rows = POSTS.filter(x => x.t === t).sort((a, b) => a.ms - b.ms);
+      const from = rows.length ? rows[0].d : TODAY;
+      const to = TODAY;
+      const last = rows.length ? rows[rows.length - 1] : null;
+      let modified = last && last.p && last.p.time_utc ? String(last.p.time_utc) : '';
+      if (!modified && D.meta) modified = D.meta.cutoff_hkt || D.meta.generated_hkt || '';
+      return { t, name, c, html: el.innerHTML, from, to, modified, mentions: c.bull + c.neu + c.none + c.bear };
     }), { names, lang });
     if (errs.length) { console.log('::error::股票網頁生成時有錯誤：' + errs.join('；')); process.exit(1); }
     const master = fs.readFileSync(file, 'utf8');
@@ -194,8 +272,9 @@ function avatars(html, seen) {
       }).replace(/href="#(account\/[^"]+)"/g, `href="/${lang}/#$1"`);
       body = avatars(body, seen);
       const meta = { title: T[lang].title(pg.t, pg.name, pg.c), desc: T[lang].desc(pg.t, n[pg.t], pg.c) };
+      const stats = { bull: pg.c.bull, bear: pg.c.bear, mentions: pg.mentions, from: pg.from, to: pg.to, modified: pg.modified };
       fs.mkdirSync(path.join(dir, slug(pg.t)), { recursive: true });
-      fs.writeFileSync(path.join(dir, slug(pg.t), 'index.html'), shell(master, lang, pg.t, names, body, meta));
+      fs.writeFileSync(path.join(dir, slug(pg.t), 'index.html'), shell(master, lang, pg.t, names, body, meta, stats));
       urls.push(`${lang}/stock/${slug(pg.t)}/`);
     }
     // link row above the footer of the language page
