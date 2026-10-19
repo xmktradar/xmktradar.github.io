@@ -266,6 +266,25 @@ def swap_data(d, lang, fixed):
     return d
 
 
+FAQ_LD = re.compile(r'(<script type="application/ld\+json" id="faq-ld">)(.*?)(</script>)', re.S)
+
+
+def faq_ld(master, s, lang, ui):
+    """The FAQ JSON-LD holds whole Chinese sentences: translate each question and answer as one string
+    (the fragment pass splits them at punctuation) and set inLanguage."""
+    m, o = FAQ_LD.search(master), FAQ_LD.search(s)
+    if not m or not o:
+        return s
+    d = json.loads(m.group(2))
+    d['inLanguage'] = LANGS[lang][0]
+    for q in d.get('mainEntity') or []:
+        q['name'] = ui.get(q['name'], q['name'])
+        a = q.get('acceptedAnswer') or {}
+        a['text'] = ui.get(a.get('text', ''), a.get('text', ''))
+    blob = json.dumps(d, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+    return s[:o.start(2)] + blob + s[o.end(2):]
+
+
 def build(lang, master):
     tr = read_json(f'i18n/{lang}.json', {}) if lang != 'zh' else {}
     tr = tr if isinstance(tr, dict) else {}
@@ -278,6 +297,7 @@ def build(lang, master):
     out = [translate(part, tr.get('ui') or {}) for part in code]
     s = out[0] + blob + out[1]
     s = re.sub(r'<html lang="[^"]*"', f'<html lang="{LANGS[lang][0]}"', s, count=1)
+    s = faq_ld(master, s, lang, {**(tr.get('data') or {}), **(tr.get('ui') or {})})
     s = re.sub(r'(<meta property="og:url" content=")[^"]*', rf'\g<1>{SITE}{lang}/', s, count=1)
     s = s.replace('href="/zh/feed.xml"', f'href="/{lang}/feed.xml"', 1)
     alt = (tr.get('meta') or {}).get('image_alt')

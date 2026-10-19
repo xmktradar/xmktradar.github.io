@@ -1,6 +1,6 @@
 # The Crowd Tape
 
-> The Crowd Tape tracks what top US-stock accounts on X say and turns it into a daily view of crowd sentiment. It currently tracks 200 accounts (199 on X and 1 on Truth Social). Available in Traditional Chinese, English and Korean.
+> The Crowd Tape tracks what top US-stock accounts on X say and turns it into a daily view of crowd sentiment. It currently tracks 201 accounts (200 on X and 1 on Truth Social). Available in Traditional Chinese, English and Korean.
 
 ## What the site shows
 - Daily bull/bear consensus: which tickers the tracked accounts are bullish or bearish on
@@ -17,6 +17,19 @@
 - [Robot picks and paper trading](https://thecrowdtape.com/robot.html)
 - [Support](https://thecrowdtape.com/en/support/)
 - [Sitemap](https://thecrowdtape.com/sitemap.xml)
+
+## Stock pages
+One page per ticker and language: https://thecrowdtape.com/<lang>/stock/<TICKER>/
+Example: https://thecrowdtape.com/en/stock/AAPL/
+
+## More pages
+- https://thecrowdtape.com/en/about/ (methodology)
+- https://thecrowdtape.com/en/newsletter/ (weekly digest archive)
+- https://thecrowdtape.com/en/advertise/
+- https://thecrowdtape.com/en/tools/
+
+## Full data snapshot
+- https://thecrowdtape.com/llms-full.txt
 
 ## Update frequency
 The site is rebuilt automatically by GitHub Actions every 4 hours (cron `5 3-23/4 * * *` UTC, i.e. 03:05, 07:05, 11:05, 15:05, 19:05 and 23:05 Hong Kong time).
