@@ -538,7 +538,10 @@
    "updated_hkt": "2026-10-20 01:09"
   },
   "2026-10-20": {
-   "bull": [],
+   "bull": [
+    "NVDA",
+    "BE"
+   ],
    "bear": [],
    "split": [],
    "window": [
@@ -547,20 +550,20 @@
    ],
    "top": [
     "NVDA",
+    "BE",
+    "META",
     "AMZN",
     "APLD",
-    "BE",
     "CRWV",
     "FAST",
+    "GOOGL",
     "IREN",
-    "IWM",
-    "LCID",
-    "META"
+    "IWM"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-20 03:36"
+   "updated_hkt": "2026-10-20 04:40"
   }
  },
- "updated_hkt": "2026-10-20 03:36",
+ "updated_hkt": "2026-10-20 04:40",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
