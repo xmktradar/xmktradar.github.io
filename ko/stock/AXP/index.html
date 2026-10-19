@@ -800,7 +800,33 @@ nav.tabs a.tab-robo:hover{filter:brightness(.9)}
 <style>.brand-home{color:inherit;text-decoration:none}.stock-static{padding-top:8px}.stock-static .back{text-decoration:none;display:inline-block}
 .advice{margin:8px 16px 0;padding:10px 12px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;background:var(--accent-soft);font-size:14px;line-height:1.45}
 .open-live{display:flex;justify-content:center;margin:8px 0 40px}.open-live a{font:600 15px/1 var(--f-body);padding:12px 20px;border-radius:999px;
-background:var(--accent);color:#fff;text-decoration:none}</style>
+background:var(--accent);color:#fff;text-decoration:none}
+/* The Crowd Tape — newsletter signup box (A/B). Scoped to .ct-nl. Uses site :root vars only; no bull/bear colours. */
+.ct-nl{margin-top:12px;display:flex;align-items:center;gap:6px 10px;flex-wrap:wrap;
+  padding:6px 10px;border:1px solid var(--line);border-radius:10px;background:var(--accent-soft);
+  font-family:var(--f-body);color:var(--ink);box-sizing:border-box}
+.ct-nl[hidden]{display:none}
+/* narrow column (desktop c4 panel ~280px): stack text over form */
+.ct-nl{container-type:inline-size}
+@container (max-width:420px){.ct-nl__txt,.ct-nl__f{flex-basis:100%}}
+.ct-nl__txt{flex:1 1 220px;min-width:0;line-height:1.3}
+.ct-nl__t{font-size:13px;line-height:16px;font-weight:600;margin:0}
+.ct-nl__n{font-size:10.5px;line-height:13px;color:var(--muted);margin:0}
+.ct-nl__f{display:flex;gap:6px;flex:0 1 330px;min-width:0;margin:0}
+.ct-nl__in{flex:1 1 auto;min-width:0;height:28px;padding:0 10px;font:inherit;font-size:13px;color:var(--ink);
+  background:var(--surface);border:1px solid var(--line);border-radius:8px;box-sizing:border-box}
+.ct-nl__in:focus{outline:2px solid var(--accent);outline-offset:0;border-color:var(--accent)}
+.ct-nl__btn{height:28px;padding:0 14px;font:inherit;font-size:13px;font-weight:600;white-space:nowrap;
+  color:#fff;background:var(--accent);border:0;border-radius:8px;cursor:pointer}
+.ct-nl__btn:hover{filter:brightness(1.08)}
+.ct-nl__ok{font-size:12.5px;color:var(--accent);margin:0}
+.ct-nl .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:600px){
+  .ct-nl{gap:6px;padding:6px 8px}
+  .ct-nl__txt{flex-basis:100%}
+  .ct-nl__f{flex:1 1 100%}
+}
+</style>
 </head>
 <body>
 <header class="top"><div class="wrap"><div class="brand-wrap"><a href="/ko/" class="brand-home"><p class="brand">The Crowd Tape</p></a><p class="brand-sub">What the street is doing, not what I think</p><p class="brand-sub-zh">내 생각이 아니라 X 고수들이 무엇을 하는지 본다</p><nav class="lang-sw" aria-label="Language"><a href="/zh/stock/AXP/">中</a><a href="/en/stock/AXP/">EN</a><a href="/ko/stock/AXP/" aria-current="page">한</a></nav></div></div></header>
@@ -811,6 +837,19 @@ background:var(--accent);color:#fff;text-decoration:none}</style>
  <div class="grid">
   <section class="c4 panel"><h2>추적 계정 관점 분포 <span class="sub">4 개 계정 언급 · 최신 게시물 기준</span></h2><div class="bar" title="강세 0 · 중립 1 · 입장 없음 3 · 약세 0"><span class="b" style="width:0%"></span><span class="m" style="width:25%"></span><span class="u" style="width:75%"></span><span class="r" style="width:0%"></span></div><div style="margin-top:10px"><div class="legend"><span><i class="sw b"></i>강세</span><span><i class="sw m"></i>중립</span><span><i class="sw u"></i>입장 없음</span><span><i class="sw r"></i>약세</span></div></div>
    <div class="kpis k4" style="margin-top:12px"><div class="kpi"><div class="l">강세</div><div class="v up">0</div></div><div class="kpi"><div class="l">중립</div><div class="v">1</div></div><div class="kpi"><div class="l">입장 없음</div><div class="v">3</div></div><div class="kpi"><div class="l">약세</div><div class="v dn">0</div></div></div>
+<aside class="ct-nl" data-ab="B" data-ab-test="nl-stock-2026-10" data-ticker="AXP" aria-label="일일 이메일 구독" hidden>
+  <div class="ct-nl__txt">
+    <p class="ct-nl__t">X 고수들의 관점 변화를 매일 받아보세요</p>
+    <p class="ct-nl__n">무료 · 언제든 구독 해지 · 투자 조언이 아닙니다</p>
+  </div>
+  <form class="ct-nl__f" action="https://crowdtape-newsletter.vercel.app/api/subscribe" method="post">
+    <label class="sr" for="ct-nl-email">이메일 주소</label>
+    <input class="ct-nl__in" id="ct-nl-email" type="email" name="email" required autocomplete="email" placeholder="이메일 주소">
+    <input type="hidden" name="lang" value="ko"><input type="hidden" name="src" value="stock-AXP">
+    <button class="ct-nl__btn" type="submit">구독</button>
+  </form>
+</aside>
+
    <div class="tablewrap" style="margin-top:12px"><table><thead><tr><th>계정 </th><th class="n">강</th><th class="n">중</th><th class="n">약</th><th class="n">없음</th></tr></thead><tbody><tr><td data-l="계정"><a class="handle xh" href="https://x.com/ripster47" target="_blank" rel="noopener"><img class="xh-av" src="/av/cbfa21bfd24f.jpg" loading="lazy" alt="">@ripster47</a><a class="accin" href="/ko/#account/ripster47" title="보기: @ripster47  (이 페이지 관점)" aria-label="보기: @ripster47  (이 페이지 관점)">관점 ›</a></td><td class="n up" data-l="강">0</td><td class="n" data-l="중">0</td><td class="n dn" data-l="약">0</td><td class="n" data-l="없음">1</td></tr><tr><td data-l="계정"><a class="handle xh" href="https://x.com/Mr_Derivatives" target="_blank" rel="noopener"><img class="xh-av" src="/av/82ec61a6bcf6.jpg" loading="lazy" alt="">@Mr_Derivatives</a><a class="accin" href="/ko/#account/Mr_Derivatives" title="보기: @Mr_Derivatives  (이 페이지 관점)" aria-label="보기: @Mr_Derivatives  (이 페이지 관점)">관점 ›</a></td><td class="n up" data-l="강">1</td><td class="n" data-l="중">1</td><td class="n dn" data-l="약">0</td><td class="n" data-l="없음">0</td></tr><tr><td data-l="계정"><a class="handle xh" href="https://x.com/OptionsMike" target="_blank" rel="noopener"><img class="xh-av" src="/av/a19c618c1c59.jpg" loading="lazy" alt="">@OptionsMike</a><a class="accin" href="/ko/#account/OptionsMike" title="보기: @OptionsMike  (이 페이지 관점)" aria-label="보기: @OptionsMike  (이 페이지 관점)">관점 ›</a></td><td class="n up" data-l="강">0</td><td class="n" data-l="중">0</td><td class="n dn" data-l="약">0</td><td class="n" data-l="없음">1</td></tr><tr><td data-l="계정"><a class="handle xh" href="https://x.com/SJosephBurns" target="_blank" rel="noopener"><img class="xh-av" src="/av/19dc0b11aa37.jpg" loading="lazy" alt="">@SJosephBurns</a><a class="accin" href="/ko/#account/SJosephBurns" title="보기: @SJosephBurns  (이 페이지 관점)" aria-label="보기: @SJosephBurns  (이 페이지 관점)">관점 ›</a></td><td class="n up" data-l="강">0</td><td class="n" data-l="중">0</td><td class="n dn" data-l="약">0</td><td class="n" data-l="없음">1</td></tr></tbody></table></div></section>
   <section class="c8 panel"><h2>컨센서스와 의견 엇갈림 <span class="sub">최근 14일 근거(분석가 표시)와 관점</span></h2><div class="grid" style="gap:12px">
    <div class="c6"><div class="mod">강세 근거</div><ul class="list" style="margin-top:8px"><li><span class="pill bull">1</span>밸류에이션</li><li class="note"><span><a class="handle xh" href="https://x.com/Mr_Derivatives" target="_blank" rel="noopener"><img class="xh-av" src="/av/82ec61a6bcf6.jpg" loading="lazy" alt="">@Mr_Derivatives</a>: $V 오늘 사상 최고 $MA 오늘 사상 최고 $AXP 오늘 약세장 밈으로 만들 수밖에… 인용 분석에 따르면 $AXP는 올해 15.6% 하락한 반면 $MA와 $V는 사상 최고, 16.7배 선행 이익에 거래되는 반면 동종업계는 26배 이상, 프리미엄 카드 비즈니스가 계속 성장하므로 매력적인 장기 기회라고 합니다.</span></li></ul></div>
@@ -833,4 +872,57 @@ background:var(--accent);color:#fff;text-decoration:none}</style>
 <div class="open-live"><a href="/ko/#stock/AXP">인터랙티브 페이지 열기(차트 포함)</a></div>
 <nav id="stock-index" class="wrap stock-index" aria-label="종목 페이지" style="font-size:12.5px;line-height:2;color:var(--muted);padding:12px 16px 28px"><b>종목 페이지</b>：<a href="/ko/stock/SPY/">SPY</a> <a href="/ko/stock/CRWV/">CRWV</a> <a href="/ko/stock/QQQ/">QQQ</a> <a href="/ko/stock/TSLA/">TSLA</a> <a href="/ko/stock/NVDA/">NVDA</a> <a href="/ko/stock/META/">META</a> <a href="/ko/stock/SPCX/">SPCX</a> <a href="/ko/stock/MU/">MU</a> <a href="/ko/stock/AAPL/">AAPL</a> <a href="/ko/stock/AMZN/">AMZN</a> <a href="/ko/stock/MSFT/">MSFT</a> <a href="/ko/stock/GOOGL/">GOOGL</a> <a href="/ko/stock/AMD/">AMD</a> <a href="/ko/stock/AVGO/">AVGO</a> <a href="/ko/stock/TSM/">TSM</a> <a href="/ko/stock/JPM/">JPM</a> <a href="/ko/stock/ASML/">ASML</a> <a href="/ko/stock/GS/">GS</a> <a href="/ko/stock/SPX/">SPX</a> <a href="/ko/stock/TLT/">TLT</a> <a href="/ko/stock/NBIS/">NBIS</a> <a href="/ko/stock/NFLX/">NFLX</a> <a href="/ko/stock/ORCL/">ORCL</a> <a href="/ko/stock/BAC/">BAC</a> <a href="/ko/stock/INTC/">INTC</a> <a href="/ko/stock/IWM/">IWM</a> <a href="/ko/stock/PLTR/">PLTR</a> <a href="/ko/stock/SMH/">SMH</a> <a href="/ko/stock/SNDK/">SNDK</a> <a href="/ko/stock/BE/">BE</a> <a href="/ko/stock/WFC/">WFC</a> <a href="/ko/stock/C/">C</a> <a href="/ko/stock/VZ/">VZ</a> <a href="/ko/stock/XLF/">XLF</a> <a href="/ko/stock/DELL/">DELL</a> <a href="/ko/stock/GLD/">GLD</a> <a href="/ko/stock/HOOD/">HOOD</a> <a href="/ko/stock/IREN/">IREN</a> <a href="/ko/stock/SKHY/">SKHY</a> <a href="/ko/stock/T/">T</a> <a href="/ko/stock/CMG/">CMG</a> <a href="/ko/stock/GOOG/">GOOG</a> <a href="/ko/stock/LITE/">LITE</a> <a href="/ko/stock/MRVL/">MRVL</a> <a href="/ko/stock/MS/">MS</a> <a href="/ko/stock/VIX/">VIX</a> <a href="/ko/stock/WDC/">WDC</a> <a href="/ko/stock/ASTS/">ASTS</a> <a href="/ko/stock/DRAM/">DRAM</a> <a href="/ko/stock/MRNA/">MRNA</a> <a href="/ko/stock/SBUX/">SBUX</a> <a href="/ko/stock/SOXX/">SOXX</a> <a href="/ko/stock/AAOI/">AAOI</a> <a href="/ko/stock/AEHR/">AEHR</a> <a href="/ko/stock/DAL/">DAL</a> <a href="/ko/stock/GME/">GME</a> <a href="/ko/stock/MA/">MA</a> <a href="/ko/stock/PEP/">PEP</a> <a href="/ko/stock/RKLB/">RKLB</a> <a href="/ko/stock/STX/">STX</a> <a href="/ko/stock/TMUS/">TMUS</a> <a href="/ko/stock/UNH/">UNH</a> <a href="/ko/stock/V/">V</a> <a href="/ko/stock/XLE/">XLE</a> <a href="/ko/stock/ARM/">ARM</a> <a href="/ko/stock/BLK/">BLK</a> <a href="/ko/stock/CBRS/">CBRS</a> <a href="/ko/stock/CRWD/">CRWD</a> <a href="/ko/stock/EWY/">EWY</a> <a href="/ko/stock/JNJ/">JNJ</a> <a href="/ko/stock/LLY/">LLY</a> <a href="/ko/stock/PENG/">PENG</a> <a href="/ko/stock/QCOM/">QCOM</a> <a href="/ko/stock/RDDT/">RDDT</a> <a href="/ko/stock/RSP/">RSP</a> <a href="/ko/stock/SOFI/">SOFI</a> <a href="/ko/stock/UBER/">UBER</a> <a href="/ko/stock/WMT/">WMT</a> <a href="/ko/stock/CCI/">CCI</a> <a href="/ko/stock/COHR/">COHR</a> <a href="/ko/stock/CRDO/">CRDO</a> <a href="/ko/stock/LRCX/">LRCX</a> <a href="/ko/stock/MSTR/">MSTR</a> <a href="/ko/stock/NOK/">NOK</a> <a href="/ko/stock/ONDS/">ONDS</a> <a href="/ko/stock/XOM/">XOM</a> <a href="/ko/stock/ALAB/">ALAB</a> <a href="/ko/stock/AMAT/">AMAT</a> <a href="/ko/stock/ARGX/">ARGX</a> <a href="/ko/stock/AXP/">AXP</a> <a href="/ko/stock/BRK.B/">BRK.B</a> <a href="/ko/stock/CIFR/">CIFR</a> <a href="/ko/stock/CSCO/">CSCO</a> <a href="/ko/stock/DIS/">DIS</a> <a href="/ko/stock/FMCC/">FMCC</a> <a href="/ko/stock/FNMA/">FNMA</a> <a href="/ko/stock/HPE/">HPE</a> <a href="/ko/stock/IONQ/">IONQ</a> <a href="/ko/stock/LMT/">LMT</a> <a href="/ko/stock/MAGS/">MAGS</a> <a href="/ko/stock/NDX/">NDX</a> <a href="/ko/stock/NKE/">NKE</a> <a href="/ko/stock/PNC/">PNC</a> <a href="/ko/stock/RTX/">RTX</a> <a href="/ko/stock/SHOP/">SHOP</a> <a href="/ko/stock/STT/">STT</a> <a href="/ko/stock/UAL/">UAL</a> <a href="/ko/stock/USO/">USO</a> <a href="/ko/stock/XBI/">XBI</a> <a href="/ko/stock/ZETA/">ZETA</a> <a href="/ko/stock/AA/">AA</a> <a href="/ko/stock/ACI/">ACI</a> <a href="/ko/stock/AMKR/">AMKR</a> <a href="/ko/stock/BNY/">BNY</a> <a href="/ko/stock/BX/">BX</a> <a href="/ko/stock/CAT/">CAT</a> <a href="/ko/stock/CEG/">CEG</a> <a href="/ko/stock/CLF/">CLF</a> <a href="/ko/stock/CMCSA/">CMCSA</a> <a href="/ko/stock/CME/">CME</a> <a href="/ko/stock/COIN/">COIN</a> <a href="/ko/stock/COST/">COST</a> <a href="/ko/stock/CVX/">CVX</a> <a href="/ko/stock/DIA/">DIA</a> <a href="/ko/stock/DPZ/">DPZ</a> <a href="/ko/stock/FAST/">FAST</a> <a href="/ko/stock/FHN/">FHN</a> <a href="/ko/stock/FITB/">FITB</a> <a href="/ko/stock/GEV/">GEV</a> <a href="/ko/stock/GM/">GM</a> <a href="/ko/stock/HIMS/">HIMS</a> <a href="/ko/stock/IBIT/">IBIT</a> <a href="/ko/stock/IBKR/">IBKR</a> <a href="/ko/stock/IBM/">IBM</a> <a href="/ko/stock/MCD/">MCD</a> <a href="/ko/stock/MELI/">MELI</a> <a href="/ko/stock/MXL/">MXL</a> <a href="/ko/stock/NOC/">NOC</a> <a href="/ko/stock/NOW/">NOW</a> <a href="/ko/stock/OPEN/">OPEN</a> <a href="/ko/stock/PFE/">PFE</a> <a href="/ko/stock/PGR/">PGR</a> <a href="/ko/stock/QNT/">QNT</a> <a href="/ko/stock/RIVN/">RIVN</a> <a href="/ko/stock/SCHW/">SCHW</a> <a href="/ko/stock/SE/">SE</a> <a href="/ko/stock/SLV/">SLV</a> <a href="/ko/stock/SMCI/">SMCI</a> <a href="/ko/stock/STLD/">STLD</a> <a href="/ko/stock/TE/">TE</a> <a href="/ko/stock/TFC/">TFC</a> <a href="/ko/stock/TNX/">TNX</a> <a href="/ko/stock/TRV/">TRV</a> <a href="/ko/stock/USB/">USB</a> <a href="/ko/stock/VLO/">VLO</a> <a href="/ko/stock/WOLF/">WOLF</a> <a href="/ko/stock/XLK/">XLK</a> <a href="/ko/stock/XLP/">XLP</a> <a href="/ko/stock/AAL/">AAL</a> <a href="/ko/stock/ABT/">ABT</a> <a href="/ko/stock/ADBE/">ADBE</a> <a href="/ko/stock/AGNC/">AGNC</a> <a href="/ko/stock/ALLY/">ALLY</a> <a href="/ko/stock/ALV/">ALV</a> <a href="/ko/stock/AMC/">AMC</a> <a href="/ko/stock/APLD/">APLD</a> <a href="/ko/stock/APO/">APO</a> <a href="/ko/stock/APP/">APP</a> <a href="/ko/stock/ASST/">ASST</a> <a href="/ko/stock/AVAV/">AVAV</a> <a href="/ko/stock/AXTI/">AXTI</a> <a href="/ko/stock/BSP/">BSP</a> <a href="/ko/stock/BULL/">BULL</a> <a href="/ko/stock/BWET/">BWET</a> <a href="/ko/stock/CACI/">CACI</a> <a href="/ko/stock/CCXI/">CCXI</a> <a href="/ko/stock/CFG/">CFG</a> <a href="/ko/stock/CIEN/">CIEN</a> <a href="/ko/stock/CLS/">CLS</a> <a href="/ko/stock/CMC/">CMC</a> <a href="/ko/stock/CRCL/">CRCL</a> <a href="/ko/stock/CRM/">CRM</a> <a href="/ko/stock/DDOG/">DDOG</a> <a href="/ko/stock/DKNG/">DKNG</a> <a href="/ko/stock/EOSE/">EOSE</a> <a href="/ko/stock/ERIC/">ERIC</a> <a href="/ko/stock/FMC/">FMC</a> <a href="/ko/stock/FORM/">FORM</a> <a href="/ko/stock/FUN/">FUN</a> <a href="/ko/stock/GE/">GE</a> <a href="/ko/stock/GFS/">GFS</a> <a href="/ko/stock/GLXY/">GLXY</a> <a href="/ko/stock/HAL/">HAL</a> <a href="/ko/stock/HAS/">HAS</a> <a href="/ko/stock/HBAN/">HBAN</a> <a href="/ko/stock/HUM/">HUM</a> <a href="/ko/stock/IGV/">IGV</a> <a href="/ko/stock/ISRG/">ISRG</a> <a href="/ko/stock/JBHT/">JBHT</a> <a href="/ko/stock/KARO/">KARO</a> <a href="/ko/stock/KEYS/">KEYS</a> <a href="/ko/stock/KLAC/">KLAC</a> <a href="/ko/stock/KMB/">KMB</a> <a href="/ko/stock/KO/">KO</a> <a href="/ko/stock/KTOS/">KTOS</a> <a href="/ko/stock/LEVI/">LEVI</a> <a href="/ko/stock/LUV/">LUV</a> <a href="/ko/stock/MAN/">MAN</a> <a href="/ko/stock/MDB/">MDB</a> <a href="/ko/stock/MEDP/">MEDP</a> <a href="/ko/stock/MMM/">MMM</a> <a href="/ko/stock/MN/">MN</a> <a href="/ko/stock/MPC/">MPC</a> <a href="/ko/stock/MSCI/">MSCI</a> <a href="/ko/stock/MTB/">MTB</a> <a href="/ko/stock/NEE/">NEE</a> <a href="/ko/stock/NLY/">NLY</a> <a href="/ko/stock/NU/">NU</a> <a href="/ko/stock/NVTS/">NVTS</a> <a href="/ko/stock/OKLO/">OKLO</a> <a href="/ko/stock/OSS/">OSS</a> <a href="/ko/stock/OXY/">OXY</a> <a href="/ko/stock/PEGA/">PEGA</a> <a href="/ko/stock/PG/">PG</a> <a href="/ko/stock/PL/">PL</a> <a href="/ko/stock/PSKY/">PSKY</a> <a href="/ko/stock/PYPL/">PYPL</a> <a href="/ko/stock/QBTS/">QBTS</a> <a href="/ko/stock/RDW/">RDW</a> <a href="/ko/stock/RF/">RF</a> <a href="/ko/stock/RGTI/">RGTI</a> <a href="/ko/stock/RKT/">RKT</a> <a href="/ko/stock/RNG/">RNG</a> <a href="/ko/stock/SKYD/">SKYD</a> <a href="/ko/stock/SLB/">SLB</a> <a href="/ko/stock/SMBK/">SMBK</a> <a href="/ko/stock/SMTC/">SMTC</a> <a href="/ko/stock/SNAP/">SNAP</a> <a href="/ko/stock/SNDX/">SNDX</a> <a href="/ko/stock/SNOW/">SNOW</a> <a href="/ko/stock/SPOT/">SPOT</a> <a href="/ko/stock/SRCE/">SRCE</a> <a href="/ko/stock/STZ/">STZ</a> <a href="/ko/stock/TCBI/">TCBI</a> <a href="/ko/stock/TJX/">TJX</a> <a href="/ko/stock/TSCO/">TSCO</a> <a href="/ko/stock/TSEM/">TSEM</a> <a href="/ko/stock/TTD/">TTD</a> <a href="/ko/stock/TXN/">TXN</a> <a href="/ko/stock/URBN/">URBN</a> <a href="/ko/stock/VIAV/">VIAV</a> <a href="/ko/stock/VICR/">VICR</a> <a href="/ko/stock/VOO/">VOO</a> <a href="/ko/stock/VRT/">VRT</a> <a href="/ko/stock/VST/">VST</a> <a href="/ko/stock/VXX/">VXX</a> <a href="/ko/stock/WDFC/">WDFC</a> <a href="/ko/stock/WFF/">WFF</a> <a href="/ko/stock/XLV/">XLV</a> <a href="/ko/stock/XLY/">XLY</a> <a href="/ko/stock/XRT/">XRT</a></nav></main>
 <script>document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com'))gtag('event','x_outbound',{link_url:u,page:'stock',lang:document.documentElement.lang||'',transport_type:'beacon'})});</script>
+<script>(function(){
+var aside=document.querySelector('aside.ct-nl');
+if(!aside)return;
+var T=aside.getAttribute('data-ticker')||'';
+var langIn=aside.querySelector('input[name="lang"]');
+var lang=langIn?langIn.value:'';
+var m=document.cookie.match(/(?:^|; )ct_ab_nl=([AB])(?:;|$)/);
+var cur=m?m[1]:'';
+var q='';
+try{q=new URLSearchParams(location.search).get('ab')||'';}catch(e){}
+var v,set=false;
+if(q==='A'||q==='B'){v=q;set=true;}
+else if(cur==='A'||cur==='B')v=cur;
+else{v=Math.random()<0.5?'A':'B';set=true;}
+if(set)document.cookie='ct_ab_nl='+v+'; Max-Age=2592000; path=/; SameSite=Lax';
+aside.dataset.ab=v;
+if(v==='B')aside.removeAttribute('hidden');
+if(window.gtag){
+  gtag('set','user_properties',{nl_ab:v});
+  gtag('event','ab_exposure',{experiment:'nl-stock-2026-10',variant:v,ticker:T});
+}
+if(v==='B'&&window.IntersectionObserver){
+  var seen=false;
+  var io=new IntersectionObserver(function(ents){
+    if(seen)return;
+    for(var i=0;i<ents.length;i++){
+      if(ents[i].isIntersecting&&ents[i].intersectionRatio>=0.5){
+        seen=true;io.disconnect();
+        if(window.gtag)gtag('event','newsletter_view',{variant:'B',ticker:T,lang:lang});
+        return;
+      }
+    }
+  },{threshold:0.5});
+  io.observe(aside);
+}
+var form=aside.querySelector('form.ct-nl__f');
+if(!form)return;
+var OK="감사합니다. 확인 메일을 확인해 주세요.";
+form.addEventListener('submit',function(e){
+  e.preventDefault();
+  if(form.getAttribute('data-sending'))return;
+  form.setAttribute('data-sending','1');
+  var d=new FormData(form);
+  fetch(form.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:d.get('email'),lang:d.get('lang'),src:d.get('src')})})
+    .then(function(r){return r.json();})
+    .then(function(j){
+      if(!j||!j.ok){form.removeAttribute('data-sending');return;}
+      form.outerHTML='<p class="ct-nl__ok">'+OK+'<\/p>';
+      if(window.gtag)gtag('event','newsletter_signup',{variant:'B',ticker:T,lang:d.get('lang'),src:'stock'});
+    })
+    .catch(function(){form.removeAttribute('data-sending');});
+});
+})();</script>
 </body></html>
