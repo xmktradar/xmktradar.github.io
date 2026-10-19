@@ -1,1 +1,79 @@
-$(cat /tmp/batch2.json)
+{
+  "posts": {
+    "2112134604954247168": {
+      "en_summary": "Elon Musk says he plans to give every child in America one $SPCX share next year. “This will be the first of many.”",
+      "zh_summary": "Elon Musk表示計劃明年向美國每名兒童贈送一股$SPCX。「這將是許多中的第一次。」",
+      "ko_summary": "Elon Musk는 내년에 미국 모든 어린이에게 $SPCX 주식 한 주를 줄 계획이라고 말했습니다. “이것은 많은 것들 중 첫 번째가 될 것입니다.”",
+      "tickers": ["SPCX"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPCX": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2112130322683072617": {
+      "en_summary": "Public interpretation of $MSFT backing out on NScale deal is wrong. It is bullish for Neoclouds like $NBIS or $IREN with energized capacity for Microsoft. Microsoft urgently needs supply; NScale delay due to UK grid constraints means they source elsewhere, making other suppliers more valuable. Cancellation warns of execution risk but benefits competitors.",
+      "zh_summary": "公眾對$MSFT退出NScale交易的解讀有誤。這對擁有已通電容量並與微軟合作的Neocloud如$NBIS或$IREN是利好。微軟急需供應；NScale因英國電網限制延遲，意味著他們會另尋來源，使其他供應商更有價值。取消交易警告執行風險，但有利競爭對手。",
+      "ko_summary": "$MSFT의 NScale 거래 철회에 대한 대중의 해석은 잘못되었습니다. 이는 Microsoft를 위한 활성화된 용량을 가진 Neocloud인 $NBIS 또는 $IREN에 강세입니다. Microsoft는 공급이 긴급히 필요하며 NScale의 영국 그리드 제약으로 인한 지연은 다른 곳에서 조달하게 되어 다른 공급업체를 더 가치 있게 만듭니다. 취소는 실행 위험을 경고하지만 경쟁사에 혜택을 줍니다.",
+      "tickers": ["MSFT", "NBIS", "IREN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"MSFT": "中性", "NBIS": "睇好", "IREN": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NBIS": "MSFT退出NScale後可能轉向其他Neocloud", "IREN": "同樣受益於MSFT需求轉移"}
+    },
+    "2112124980322320809": {
+      "en_summary": "(quoting @elonmusk) Next year, I will give one of my SpaceX shares to every kid in America. This will be the first of many. $SPCX $TSLA",
+      "zh_summary": "（引用@elonmusk）明年，我將向美國每名兒童贈送一股我的SpaceX股份。這將是許多中的第一次。$SPCX $TSLA",
+      "ko_summary": "(@elonmusk 인용) 내년에 나는 미국 모든 어린이에게 내 SpaceX 주식 한 주를 줄 것이다. 이것은 많은 것들 중 첫 번째가 될 것이다. $SPCX $TSLA",
+      "tickers": ["SPCX", "TSLA"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPCX": "中性", "TSLA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2112123303355658451": {
+      "en_summary": "U.S. stocks rebounded Monday (SPX +0.5%, NDX +1.1%) ahead of $META, $NFLX, and $TSLA earnings this week, lifting chip stocks after SOX’s -17% nine-session skid. Brent fell -2.4% to $107, 10-year rose to 5.08%. $TSLA +0.4%. 2026 S&P EPS of $367 (+32% YoY) implies 21.1x P/E = 4.7% earnings yield inverted vs 10-yr. Expects long rates to ease as Iran war ends. Cautious on $TSLA due to stretched valuation (230x 2026 P/E vs +45% LT growth) as autonomous tech commoditizes.",
+      "zh_summary": "美國股市週一反彈（SPX +0.5%，NDX +1.1%），本週$META、$NFLX及$TSLA財報前，晶片股在SOX連續九個交易日跌17%後回升。布倫特原油跌2.4%至$107，10年期國債收益率升至5.08%。$TSLA上漲0.4%。2026年標普EPS $367（年增32%）對應21.1倍市盈率即4.7%盈利收益率，相對10年期收益率仍倒掛。預期伊朗戰爭結束後長期利率回落。對$TSLA保持謹慎，因估值偏高（2026年230倍市盈率對比45%長期增長），自動駕駛技術持續商品化。",
+      "ko_summary": "미국 주식은 월요일 반등했습니다 (SPX +0.5%, NDX +1.1%). 이번 주 $META, $NFLX, $TSLA 실적 발표를 앞두고 SOX가 9세션 연속 17% 하락한 후 칩 주식이 상승했습니다. 브렌트유는 -2.4% 하락하여 $107, 10년물 수익률은 5.08%로 상승. $TSLA +0.4%. 2026년 S&P EPS $367 (+32% YoY)는 21.1배 P/E = 4.7% 수익 수익률로 10년물 대비 역전. 이란 전쟁 종료 시 장기 금리 완화 예상. $TSLA에 대해 높은 밸류에이션 (2026년 230배 P/E vs +45% 장기 성장)과 자율주행 기술 상품화로 신중.",
+      "tickers": ["SPY", "QQQ", "META", "NFLX", "TSLA"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "QQQ": "中性", "META": "中性", "NFLX": "中性", "TSLA": "睇淡"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "yields",
+      "macro_impact": "利好",
+      "ticker_notes": {"TSLA": "估值偏高230倍2026年市盈率對比45%長期增長，自動駕駛技術商品化"}
+    },
+    "2112116380795630050": {
+      "en_summary": "Futures up. $INTC upgraded to Neutral @ JPM with price target $85. $RSI initiated Equal Weight @ MS with price target $22. $DDOG upgraded to Outperform @ Bernstein with price target $350. $GLBE upgraded to Overweight @ MS with price target $50.",
+      "zh_summary": "期貨上漲。$INTC被JPM升級至中性，目標價$85。$RSI被MS首次覆蓋為等權，目標價$22。$DDOG被Bernstein升級至跑贏大市，目標價$350。$GLBE被MS升級至增持，目標價$50。",
+      "ko_summary": "선물이 상승했습니다. $INTC는 JPM에서 Neutral로 상향 조정, 목표주가 $85. $RSI는 MS에서 Equal Weight로 커버리지 개시, 목표주가 $22. $DDOG는 Bernstein에서 Outperform으로 상향, 목표주가 $350. $GLBE는 MS에서 Overweight로 상향, 목표주가 $50.",
+      "tickers": ["INTC", "RSI", "DDOG", "GLBE"],
+      "stance": "睇好",
+      "stance_by_ticker": {"INTC": "中性", "RSI": "中性", "DDOG": "睇好", "GLBE": "睇好"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"INTC": "JPM目標價$85中性", "RSI": "MS目標價$22等權", "DDOG": "Bernstein目標價$350跑贏大市", "GLBE": "MS目標價$50增持"}
+    }
+  }
+}
