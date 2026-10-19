@@ -1,0 +1,149 @@
+<!doctype html><meta charset="utf-8">
+<!-- Native Instagram text-post picture (1080x1350). Same job.langs[lang] data and i18n as tools/og.html.
+     tools/og.js (when job.social) and tools/ig_sample.js call ig(lang, data). -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=block">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;width:1080px;height:1350px}
+body{position:relative;overflow:hidden;color:#151a2c;
+ font-family:"Noto Sans TC","Noto Sans KR","Noto Color Emoji",sans-serif}
+html[lang=ko] body{font-family:"Noto Sans KR","Noto Sans TC","Noto Color Emoji",sans-serif}
+.bg{position:absolute;inset:0}
+.bull .bg{background:linear-gradient(160deg,#8fe3c3 0%,#c6ec9f 48%,#fde7a1 100%)}
+.talk .bg{background:linear-gradient(160deg,#9fc8fb 0%,#c3b9f6 55%,#f6c8df 100%)}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.55) 1.8px,transparent 1.9px);background-size:24px 24px;mask-image:linear-gradient(180deg,transparent 0,#000 55%)}
+.tape{position:absolute;left:-48px;right:-48px;top:28px;height:56px;background:#151a2c;transform:rotate(-2.2deg);
+ display:flex;align-items:center;gap:36px;padding-left:72px;white-space:nowrap;box-shadow:0 7px 0 rgba(21,26,44,.18)}
+.tape span{font:700 28px "IBM Plex Mono",monospace;color:#fff}
+.tape i{font-style:normal;margin-left:10px}
+.tape .u{color:#5ee08f}.tape .d{color:#ff7d7d}
+.tape .sep{color:#f8d34a}
+.main{position:absolute;left:48px;right:48px;top:104px;bottom:132px;display:flex;flex-direction:column;gap:12px;min-height:0}
+.row1{display:flex;gap:14px;align-items:center;flex-wrap:nowrap;flex:none}
+.brand{white-space:nowrap;display:inline-flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:8px 22px 8px 12px;font-weight:900;font-size:34px;box-shadow:0 5px 0 rgba(21,26,44,.14)}
+.brand .lg{width:52px;height:52px;border-radius:12px;object-fit:cover;margin:-4px 0}
+.date{display:inline-block;background:#f8d34a;border:4px solid #151a2c;border-radius:14px;padding:6px 16px;font-weight:900;font-size:32px;transform:rotate(-2.5deg);box-shadow:4px 5px 0 #151a2c;white-space:nowrap}
+h1{margin:0;font-weight:900;font-size:84px;line-height:1.12;letter-spacing:.4px;flex:none;min-width:0}
+h1 .hl{background:linear-gradient(transparent 52%,#fbe25b 52%);padding:0 8px;font-family:"IBM Plex Mono",monospace;font-size:1.35em}
+h1 .n{font-size:.85em}
+.streak{display:inline-block;vertical-align:middle;margin-left:12px;background:#ff6b3d;color:#fff;font-weight:900;font-size:32px;padding:6px 14px;border-radius:12px;transform:rotate(3deg);box-shadow:3px 4px 0 #151a2c;border:3px solid #151a2c;letter-spacing:0}
+.q{display:flex;gap:16px;align-items:flex-start;background:#fff;border:4px solid #151a2c;border-radius:22px;padding:12px 18px;box-shadow:0 6px 0 rgba(21,26,44,.16);flex:none;min-width:0}
+.q img{width:64px;height:64px;border-radius:50%;flex:none;box-shadow:0 0 0 3px #2f8f52;object-fit:cover}
+.q>div{min-width:0;flex:1}
+.q .who{font:700 28px "IBM Plex Mono",monospace;color:#3c4466}
+.q .tx{font-weight:700;font-size:32px;line-height:1.32;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.stats{display:flex;gap:18px;flex:none}
+.stat{flex:1;border-radius:22px;padding:10px 22px;border:4px solid;box-shadow:0 6px 0 rgba(21,26,44,.16);min-width:0}
+.stat .l{font-weight:900;font-size:30px}
+.stat .v{font-weight:900;font-size:56px;line-height:1.05}
+.stat .v small{font-size:36px;margin-left:8px}
+.stat.g{background:#c9f3d6;border-color:#2f8f52;color:#1d6b3a}
+.stat.r{background:#fbd3da;border-color:#c63b4e;color:#a52b3d}
+.stat.b{background:#dfe7ff;border-color:#3557c9;color:#2a43a0}
+.stat.p{background:#f3e3ff;border-color:#8a4fd6;color:#6b37b0}
+.rt{display:flex;flex-direction:column;gap:10px;flex:1;min-height:0}
+.rt .t{white-space:nowrap;font-weight:900;font-size:32px;display:flex;align-items:center;gap:10px;flex:none}
+.rt .t small{font:700 28px "IBM Plex Mono",monospace;color:#3c4466;margin-left:auto}
+.cards{display:flex;flex-direction:column;gap:10px;flex:1;min-height:0}
+.card{background:#fff;border-radius:22px;border:4px solid #151a2c;box-shadow:0 6px 0 #151a2c;display:grid;grid-template-columns:56px minmax(0,1fr) auto auto;align-items:center;gap:14px;padding:10px 16px;flex:1 0 auto;min-height:0;min-width:0}
+.rk{width:48px;height:48px;border-radius:50%;background:#151a2c;color:#fff;display:grid;place-items:center;font:700 26px "IBM Plex Mono",monospace}
+.card:first-child .rk{background:#f8d34a;color:#151a2c;border:3px solid #151a2c}
+.tkw{display:flex;align-items:center;flex-wrap:wrap;gap:6px 14px;min-width:0}
+.tk{font:700 52px "IBM Plex Mono",monospace;line-height:1;white-space:nowrap}
+.pill{display:inline-block;margin-top:0;font-weight:900;font-size:30px;padding:2px 12px;border-radius:999px;border:3px solid}
+.pill.g{color:#1d6b3a;border-color:#2f8f52;background:#e3f7ea}
+.pill.r{color:#a52b3d;border-color:#c63b4e;background:#fde7eb}
+.pill.n{color:#3c4466;border-color:#8890b5;background:#eef0fb}
+.fl{display:inline-block;margin-left:8px;font-weight:900;font-size:28px;color:#d2451e;background:#ffe3d6;border:3px solid #ff6b3d;border-radius:999px;padding:1px 10px;vertical-align:3px}
+.avs{display:flex}
+.avs img,.avs b{width:56px;height:56px;border-radius:50%;border:3px solid #fff;margin-left:-14px;box-shadow:0 0 0 2px #2f8f52;object-fit:cover;background:#eee}
+.avs img:first-child{margin-left:0}
+.avs b{display:grid;place-items:center;font-size:20px;color:#151a2c;background:#f8d34a;box-shadow:0 0 0 2px #151a2c}
+.mini{display:flex;flex-direction:row;align-items:center;gap:10px}
+.mini svg{width:120px;height:48px}
+.mini .c{font:700 30px "IBM Plex Mono",monospace}
+.u{color:#1f9d55}.d{color:#d23b4f}
+.foot{position:absolute;left:48px;right:48px;bottom:16px;background:rgba(255,255,255,.92);border-radius:28px;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:8px 22px;font-weight:700;font-size:30px;line-height:1.15;color:#3c4466}
+.foot .r1{display:flex;align-items:center;justify-content:space-between;gap:12px;white-space:nowrap;line-height:1.15}
+.foot .r2{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.15}
+.foot b{color:#151a2c}
+.foot .cta{background:#151a2c;color:#fff;border-radius:999px;padding:5px 16px;font-weight:900;flex:none;line-height:1.15}
+html[lang=ko] h1,html[lang=ko] .q .tx{word-break:keep-all}
+.n1 .card{min-height:160px}
+.n2 .card{min-height:130px}
+</style>
+<body>
+<div class="bg"></div><div class="dots"></div>
+<div class="tape" id="tape"></div>
+<div class="main">
+  <div class="row1"><span class="brand"><img class="lg" src="logo.png" alt="">The Crowd Tape</span><span class="date" id="date"></span></div>
+  <h1 id="h"></h1>
+  <div class="q" id="q"></div>
+  <div class="stats" id="stats"></div>
+  <div class="rt" id="rt"></div>
+</div>
+<div class="foot"><div class="r1"><span><b>@thecrowdtape</b> · thecrowdtape.com</span><span class="cta" id="cta"></span></div><div class="r2" id="fl"></div></div>
+<script>
+function ig(lang,D){
+const esc=v=>String(v==null?'':v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+document.documentElement.lang=lang;document.body.className=D.mode;
+const L={
+ zh:{snap:'快照',hb:'今日最多人看好：',ht:'今日最多人討論：',acc:n=>`${n} 個帳號`,sb:'🟢 共同看多',sr:'🔴 共同看淡',sa:'🗣️ 今日發文帳號',st:'💬 討論股票',u:'隻',ua:'個',
+   tb:'🏆 最多人看好 Top 4',tt:'🔥 最多人討論 Top 4',stk:n=>`🔥 連續 ${n} 日上榜`,fs:n=>`🔥${n}日`,pb:n=>`${n} 個看好`,pt:n=>`${n} 個帳號`,pr:n=>`${n} 個看淡`,fl:'不構成投資建議',m1:'走勢：1 個月',cta:'每 4 小時更新 👉'},
+ en:{snap:'',hb:'Most bullish today:',ht:'Most discussed today:',acc:n=>`${n} account${n===1?'':'s'}`,sb:'🟢 Joint bullish',sr:'🔴 Joint bearish',sa:'🗣️ Accounts posting',st:'💬 Stocks discussed',u:'',ua:'',
+   tb:'🏆 Most bullish · Top 4',tt:'🔥 Most discussed · Top 4',stk:n=>`🔥 ${n} days in a row`,fs:n=>`🔥${n}d`,pb:n=>`${n} bullish`,pt:n=>`${n} account${n===1?'':'s'}`,pr:n=>`${n} bearish`,fl:'Not investment advice',m1:'charts: 1 month',cta:'Updated every 4h 👉'},
+ ko:{snap:'스냅샷',hb:'오늘 가장 많은 강세:',ht:'오늘 가장 많이 언급:',acc:n=>`계정 ${n}개`,sb:'🟢 공동 강세',sr:'🔴 공동 약세',sa:'🗣️ 게시 계정',st:'💬 언급 종목',u:'개',ua:'개',
+   tb:'🏆 강세 Top 4',tt:'🔥 최다 언급 Top 4',stk:n=>`🔥 ${n}일 연속`,fs:n=>`🔥${n}일`,pb:n=>`강세 ${n}`,pt:n=>`계정 ${n}개`,pr:n=>`약세 ${n}`,fl:'투자 조언 아님',m1:'차트: 1개월',cta:'4시간마다 업데이트 👉'}}[lang];
+const m1=x=>x.spark&&x.spark.length>1?(x.spark[x.spark.length-1]/x.spark[0]-1)*100:null;
+const pct=v=>v==null?'':(v>=0?'▲':'▼')+Math.abs(v).toFixed(1)+'%';
+const tape=(D.tape||[]).map(x=>`<span>$${x.t}<i class="${x.d1>=0?'u':'d'}">${pct(x.d1)}</i></span><span class="sep">✦</span>`).join('');
+document.getElementById('tape').innerHTML=tape+tape;
+document.getElementById('date').textContent=`📅 ${D.date} ${L.snap}`.trim();
+const t0=(D.top&&D.top[0])||{t:'',n:0};
+document.getElementById('h').innerHTML=`${D.mode==='bull'?L.hb:L.ht}<br><span class="hl">$${esc(t0.t)}</span> <span class="n">${L.acc(t0.n)} ${D.mode==='bull'?'🏆':'🔥'}</span>${t0.streak>=2?`<span class="streak">${L.stk(t0.streak)}</span>`:''}`;
+const Q=D.quote,qe=document.getElementById('q');qe.style.display=Q&&Q.text?'':'none';if(Q&&Q.text){qe.innerHTML=`${Q.av?`<img src="${Q.av}">`:''}<div><div class="who">💬 @${esc(Q.acc)}</div><div class="tx">${esc(Q.text)}</div></div>`;qe.querySelector('.tx').style.webkitLineClamp=(D.top||[]).length>=4?'2':'3'}
+const stat=(c,l,v,u)=>`<div class="stat ${c}"><div class="l">${l}</div><div class="v">${v}<small>${u}</small></div></div>`;
+document.getElementById('stats').innerHTML=D.mode==='bull'?stat('g',L.sb,D.bull_n,L.u)+stat('r',L.sr,D.bear_n,L.u):stat('b',L.sa,D.acc,L.ua)+stat('p',L.st,D.n_tk,L.u);
+const spark=a=>{if(!a||a.length<2)return '';const mn=Math.min(...a),mx=Math.max(...a),sp=(mx-mn)||1;const pts=a.map((v,i)=>`${(i/(a.length-1)*136+2).toFixed(1)},${(48-(v-mn)/sp*44).toFixed(1)}`).join(' ');const up=a[a.length-1]>=a[0];return `<svg viewBox="0 0 140 52"><polyline points="${pts}" fill="none" stroke="${up?'#1f9d55':'#d23b4f'}" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/></svg>`};
+const top=D.top||[];
+document.getElementById('rt').className='rt n'+Math.min(top.length,4);
+document.getElementById('rt').innerHTML=`<div class="t">${D.mode==='bull'?L.tb:L.tt}<small>${L.m1}</small></div><div class="cards">`+top.map((x,i)=>{
+ const pills=D.mode==='bull'?`<span class="pill g">${L.pb(x.n)}</span>`:(x.bull||x.bear?`${x.bull?`<span class="pill g">${L.pb(x.bull)}</span> `:''}${x.bear?`<span class="pill r">${L.pr(x.bear)}</span>`:''}`:`<span class="pill n">${L.pt(x.n)}</span>`);
+ const av=(x.avs||[]).slice(0,x.n>4?3:4).map(a=>`<img src="${a}">`).join('')+(x.n>4?`<b>+${x.n-3}</b>`:'');
+ return `<div class="card"><span class="rk">${i+1}</span><div class="tkw"><div class="tk">$${esc(x.t)}</div><div style="white-space:nowrap">${pills}${x.streak>=2?`<span class="fl">${L.fs(x.streak)}</span>`:''}</div></div><div class="avs">${av}</div><div class="mini">${spark(x.spark)}<span class="c ${m1(x)>=0?'u':'d'}">${pct(m1(x))}</span></div></div>`}).join('')+'</div>';
+document.getElementById('fl').textContent=D.win+' · ⚠️ '+L.fl;
+document.getElementById('cta').textContent=L.cta;
+fit();
+}
+function overflowing(){
+ const main=document.querySelector('.main'),foot=document.querySelector('.foot');
+ const mb=main.getBoundingClientRect(),fb=foot.getBoundingClientRect();
+ if(mb.bottom+6>fb.top-4) return true;
+ for(const c of main.querySelectorAll('.card')){const cr=c.getBoundingClientRect();for(const k of c.querySelectorAll('.pill,.tk,.mini,.avs')){const r=k.getBoundingClientRect();if(r.bottom>cr.bottom-4||r.right>cr.right-4)return true;}}
+ for(const el of main.querySelectorAll('h1,.q,.stats,.card,.t,.row1')){
+  const r=el.getBoundingClientRect();
+  if(r.right>mb.right+2||r.bottom+6>fb.top-4) return true;
+ }
+ return false;
+}
+function fit(){
+ const h=document.getElementById('h'),qtx=document.querySelector('.q .tx'),cards=document.querySelector('.cards'),main=document.querySelector('.main');
+ const n=document.querySelectorAll('.card').length;
+ if(qtx){qtx.style.webkitLineClamp=n>=4?'2':'3'}
+ if(cards){
+  let g=parseInt(getComputedStyle(cards).gap,10)||10;
+  while(overflowing()&&g>4){g-=2;cards.style.gap=g+'px'}
+ }
+ if(main){
+  let g=parseInt(getComputedStyle(main).gap,10)||12;
+  while(overflowing()&&g>8){g-=1;main.style.gap=g+'px'}
+ }
+ if(qtx){
+  let qs=parseInt(getComputedStyle(qtx).fontSize,10)||32;
+  while(overflowing()&&qs>30){qs-=1;qtx.style.fontSize=qs+'px'}
+ }
+ let s=parseInt(getComputedStyle(h).fontSize,10)||84;
+ while(overflowing()&&s>80){s-=2;h.style.fontSize=s+'px'}
+}
+</script>
+</body>

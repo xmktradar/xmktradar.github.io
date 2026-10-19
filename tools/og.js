@@ -1,7 +1,8 @@
 // Draw the 1200x630 share pictures from tools/og.html, one per language. Usage: node tools/og.js work/og.json
 // Writes og/<day>.png (Chinese), og/<day>-en.png, og/<day>-ko.png, og/latest*.png and og/latest.json,
 // plus a 1080x1350 IG/Threads portrait from tools/portrait.html: og/portrait-<lang>.png and og/latest-portrait*.png.
-// When og.json says social, also og/social-<lang>.png for the day's social media posts and og/story-<lang>.png
+// When og.json says social, also og/social-<lang>.png for the day's social media posts, og/ig-<lang>.png
+// (native 1080x1350 Instagram text-post picture, from tools/ig.html), and og/story-<lang>.png
 // (1080x1920 Instagram Story, from tools/story.html).
 const { chromium } = require('playwright');
 const fs = require('fs');
@@ -34,6 +35,25 @@ const path = require('path');
     fs.copyFileSync(out, `og/latest${sfx}.png`);
     if (job.social) fs.copyFileSync(out, `og/social-${lang}.png`);
     console.log('og', out);
+  }
+  // Native 1080x1350 Instagram text-post pictures, only with the day's social posts.
+  if (job.social) {
+    const ip = await b.newPage({ viewport: { width: 1080, height: 1350 } });
+    ip.on('pageerror', e => errs.push(e.message));
+    await ip.goto('file://' + path.resolve(__dirname, 'ig.html'), { waitUntil: 'networkidle' });
+    for (const lang of ['zh', 'en', 'ko']) {
+      await ip.evaluate(([l, d]) => ig(l, d), [lang, job.langs[lang]]);
+      await ip.evaluate(async () => {
+        const want = ['900 84px "Noto Sans TC"', '700 32px "Noto Sans TC"', '900 84px "Noto Sans KR"', '700 52px "IBM Plex Mono"'];
+        const t = new Promise(r => setTimeout(r, 20000));
+        await Promise.race([Promise.all(want.map(f => document.fonts.load(f, document.body.innerText))), t]);
+        await document.fonts.ready;
+        await Promise.all([...document.images].map(i => i.decode().catch(() => {})));
+      });
+      await ip.evaluate(() => { if (typeof fit === 'function') fit(); });
+      await ip.screenshot({ path: `og/ig-${lang}.png` });
+      console.log('ig', `og/ig-${lang}.png`);
+    }
   }
   // IG/Threads portrait (1080x1350), every run: the landscape picture plus headline and brand.
   const pp = await b.newPage({ viewport: { width: 1080, height: 1350 } });
