@@ -448,6 +448,8 @@
   "多謝！你已成功訂閱。": "Thanks! You're subscribed.",
   "電郵地址有誤，請再試。": "Please check the email address and try again.",
   "我哋用緊嘅工具": "Tools we use",
+  "關於本站及方法": "About & methodology",
+  "電子報": "Newsletter",
   "聯盟推廣連結": "Affiliate link",
   "免費報價，資料來源 TradingView，聯盟推廣連結，不構成投資建議。": "Free quotes, data from TradingView. Affiliate link. Not investment advice."
  },
@@ -850,5 +852,44 @@
   "免費・每週一封・隨時取消": "Free · weekly · unsubscribe anytime.",
   "多謝！你已成功訂閱。": "Thanks! You're subscribed.",
   "電郵地址有誤，請再試。": "Please check the email address and try again."
+ },
+ "about": {
+  "關於本站及方法 — The Crowd Tape": "About & methodology — The Crowd Tape",
+  "關於本站及方法": "About & methodology",
+  "本頁說明追蹤哪些帳號、看好和看淡怎樣判斷、網站多久更新，以及免責聲明。": "Which accounts this site tracks, how bullish and bearish are decided, how often it updates, and the disclaimer.",
+  "追蹤帳號": "Tracked accounts",
+  "目前追蹤 <b>{n}</b> 個帳號，其中 {parts}，分成 <b>{nc}</b> 類。": "Currently tracking <b>{n}</b> accounts: {parts}, in <b>{nc}</b> categories.",
+  "由 GitHub Actions 每 4 小時自動重建一次。排程為 UTC {utc}，即香港時間 {hkt}。": "GitHub Actions rebuilds it automatically every 4 hours. The schedule is {utc} UTC, which is {hkt} Hong Kong time.",
+  "非投資建議": "Not investment advice",
+  "返回首頁": "Back to home",
+  "語言": "Language",
+  "每週好淡統計，直送你嘅電郵": "Get the weekly crowd tally by email",
+  "訂閱": "Subscribe",
+  "免費・每週一封・隨時取消": "Free · weekly · unsubscribe anytime.",
+  "多謝！你已成功訂閱。": "Thanks! You're subscribed.",
+  "電郵地址有誤，請再試。": "Please check the email address and try again."
+ },
+ "newsletter": {
+  "電子報 — The Crowd Tape": "Newsletter — The Crowd Tape",
+  "每週電子報的過往期數。": "Past issues of the weekly newsletter.",
+  "電子報": "Newsletter",
+  "過往期數": "Past issues",
+  "非投資建議": "Not investment advice",
+  "返回首頁": "Back to home",
+  "語言": "Language",
+  "每週好淡統計，直送你嘅電郵": "Get the weekly crowd tally by email",
+  "訂閱": "Subscribe",
+  "免費・每週一封・隨時取消": "Free · weekly · unsubscribe anytime.",
+  "多謝！你已成功訂閱。": "Thanks! You're subscribed.",
+  "電郵地址有誤，請再試。": "Please check the email address and try again."
+ },
+ "nl": {
+  "aria": "Subscribe to daily email",
+  "title": "Get daily shifts in what top X accounts say",
+  "note": "Free · Unsubscribe anytime · Not investment advice",
+  "label": "Email address",
+  "placeholder": "you@email.com",
+  "button": "Subscribe",
+  "ok": "Thanks — check your inbox to confirm."
  }
 }

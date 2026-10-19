@@ -5,7 +5,8 @@
 //   ticker confirmed. Pages of stocks that drop out are deleted and leave the sitemap.
 // - Content: the page's own stock view (openDive) rendered in each language, without the TradingView card and the
 //   price chart, so the text and numbers match the interactive page. A button at the bottom opens the interactive
-//   page (/<lang>/#stock/<TICKER>). No page script needed to read it.
+//   page (/<lang>/#stock/<TICKER>). Readable without JS. One inline script runs the newsletter A/B test;
+//   the box stays hidden for variant A and when JS is off.
 // - Avatars are written once to av/<hash>.<ext> and shared by every page.
 // - Each language page gets a "stock pages" link row just above the footer; sitemap.xml lists every stock page.
 // - Finally opens a few pages at desktop and phone width; fails on sideways overflow or missing text.
@@ -61,6 +62,167 @@ const T = {
     desc: (t, n, c) => `최근 28일 동안 추적 계정 ${n}개가 $${t}를 언급했다: 강세 ${c.bull}, 중립 ${c.neu}, 약세 ${c.bear}, 입장 없음 ${c.none}. 계정별 최신 관점, 근거와 원문을 4시간마다 업데이트한다. 투자 조언이 아닙니다.`,
   },
 };
+
+// Newsletter A/B box (nl-stock-2026-10). en/ko copy lives in i18n/<lang>.json under "nl".
+// i18n/zh.json is a list of UI strings, so the Chinese block stays here.
+const NL_ENDPOINT = 'https://crowdtape-newsletter.vercel.app/api/subscribe';
+const NL_ZH = {
+  aria: '訂閱每日電郵',
+  title: '每天收到這檔股票的大神觀點變化',
+  note: '免費・隨時退訂・不構成投資建議',
+  label: '電郵地址',
+  placeholder: '你的電郵',
+  button: '訂閱',
+  ok: '已收到，請查看確認信。',
+};
+const NL_CSS = `/* The Crowd Tape — newsletter signup box (A/B). Scoped to .ct-nl. Uses site :root vars only; no bull/bear colours. */
+.ct-nl{margin-top:12px;display:flex;align-items:center;gap:6px 10px;flex-wrap:wrap;
+  padding:6px 10px;border:1px solid var(--line);border-radius:10px;background:var(--accent-soft);
+  font-family:var(--f-body);color:var(--ink);box-sizing:border-box}
+.ct-nl[hidden]{display:none}
+/* narrow column (desktop c4 panel ~280px): stack text over form */
+.ct-nl{container-type:inline-size}
+@container (max-width:420px){.ct-nl__txt,.ct-nl__f{flex-basis:100%}}
+.ct-nl__txt{flex:1 1 220px;min-width:0;line-height:1.3}
+.ct-nl__t{font-size:13px;line-height:16px;font-weight:600;margin:0}
+.ct-nl__n{font-size:10.5px;line-height:13px;color:var(--muted);margin:0}
+.ct-nl__f{display:flex;gap:6px;flex:0 1 330px;min-width:0;margin:0}
+.ct-nl__in{flex:1 1 auto;min-width:0;height:28px;padding:0 10px;font:inherit;font-size:13px;color:var(--ink);
+  background:var(--surface);border:1px solid var(--line);border-radius:8px;box-sizing:border-box}
+.ct-nl__in:focus{outline:2px solid var(--accent);outline-offset:0;border-color:var(--accent)}
+.ct-nl__btn{height:28px;padding:0 14px;font:inherit;font-size:13px;font-weight:600;white-space:nowrap;
+  color:#fff;background:var(--accent);border:0;border-radius:8px;cursor:pointer}
+.ct-nl__btn:hover{filter:brightness(1.08)}
+.ct-nl__ok{font-size:12.5px;color:var(--accent);margin:0}
+.ct-nl .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:600px){
+  .ct-nl{gap:6px;padding:6px 8px}
+  .ct-nl__txt{flex-basis:100%}
+  .ct-nl__f{flex:1 1 100%}
+}
+`;
+const NL_SNIPPET = `<aside class="ct-nl" data-ab="B" data-ab-test="nl-stock-2026-10" data-ticker="{{TICKER}}" aria-label="{{nl.aria}}" hidden>
+  <div class="ct-nl__txt">
+    <p class="ct-nl__t">{{nl.title}}</p>
+    <p class="ct-nl__n">{{nl.note}}</p>
+  </div>
+  <form class="ct-nl__f" action="{{NEWSLETTER_ENDPOINT}}" method="post">
+    <label class="sr" for="ct-nl-email">{{nl.label}}</label>
+    <input class="ct-nl__in" id="ct-nl-email" type="email" name="email" required autocomplete="email" placeholder="{{nl.placeholder}}">
+    <input type="hidden" name="lang" value="{{LANG}}"><input type="hidden" name="src" value="stock-{{TICKER}}">
+    <button class="ct-nl__btn" type="submit">{{nl.button}}</button>
+  </form>
+</aside>`;
+const NL_CACHE = { zh: NL_ZH };
+function nlCopy(lang) {
+  if (!NL_CACHE[lang]) {
+    const data = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'i18n', lang + '.json'), 'utf8'));
+    if (!data.nl) throw new Error('i18n/' + lang + '.json has no nl block');
+    NL_CACHE[lang] = data.nl;
+  }
+  return NL_CACHE[lang];
+}
+function nlMarkup(lang, ticker) {
+  const nl = nlCopy(lang);
+  return NL_SNIPPET
+    .split('{{TICKER}}').join(esc(ticker))
+    .split('{{LANG}}').join(lang)
+    .split('{{NEWSLETTER_ENDPOINT}}').join(NL_ENDPOINT)
+    .split('{{nl.aria}}').join(esc(nl.aria))
+    .split('{{nl.title}}').join(esc(nl.title))
+    .split('{{nl.note}}').join(esc(nl.note))
+    .split('{{nl.label}}').join(esc(nl.label))
+    .split('{{nl.placeholder}}').join(esc(nl.placeholder))
+    .split('{{nl.button}}').join(esc(nl.button));
+}
+// Right after the balanced <div class="kpis k4"> inside section.c4.panel, before .tablewrap.
+function insertAfterKpis(html, box) {
+  const sec = html.indexOf('<section class="c4 panel">');
+  if (sec < 0) return html;
+  const start = html.indexOf('<div class="kpis k4"', sec);
+  if (start < 0) return html;
+  const secEnd = html.indexOf('</section>', start);
+  if (secEnd < 0) return html;
+  let depth = 0, i = start;
+  while (i < secEnd) {
+    const open = html.indexOf('<div', i);
+    const close = html.indexOf('</div>', i);
+    if (close < 0 || close >= secEnd) return html;
+    if (open !== -1 && open < close) {
+      depth++;
+      i = open + 4;
+    } else {
+      depth--;
+      i = close + 6;
+      if (depth === 0) {
+        const out = html.slice(0, i) + '\n' + box + '\n' + html.slice(i);
+        const boxAt = out.indexOf('data-ab-test="nl-stock-2026-10"', sec);
+        const sectionClose = out.indexOf('</section>', boxAt);
+        const table = out.indexOf('<div class="tablewrap"', boxAt);
+        if (boxAt < 0 || sectionClose < 0 || boxAt > sectionClose) return html;
+        if (table !== -1 && table < sectionClose && !(boxAt < table)) return html;
+        return out;
+      }
+    }
+  }
+  return html;
+}
+function nlScript(ok) {
+  const okLit = JSON.stringify(esc(ok)).replace(/</g, '\\u003c');
+  return `<script>(function(){
+var aside=document.querySelector('aside.ct-nl');
+if(!aside)return;
+var T=aside.getAttribute('data-ticker')||'';
+var langIn=aside.querySelector('input[name="lang"]');
+var lang=langIn?langIn.value:'';
+var m=document.cookie.match(/(?:^|; )ct_ab_nl=([AB])(?:;|$)/);
+var cur=m?m[1]:'';
+var q='';
+try{q=new URLSearchParams(location.search).get('ab')||'';}catch(e){}
+var v,set=false;
+if(q==='A'||q==='B'){v=q;set=true;}
+else if(cur==='A'||cur==='B')v=cur;
+else{v=Math.random()<0.5?'A':'B';set=true;}
+if(set)document.cookie='ct_ab_nl='+v+'; Max-Age=2592000; path=/; SameSite=Lax';
+aside.dataset.ab=v;
+if(v==='B')aside.removeAttribute('hidden');
+if(window.gtag){
+  gtag('set','user_properties',{nl_ab:v});
+  gtag('event','ab_exposure',{experiment:'nl-stock-2026-10',variant:v,ticker:T});
+}
+if(v==='B'&&window.IntersectionObserver){
+  var seen=false;
+  var io=new IntersectionObserver(function(ents){
+    if(seen)return;
+    for(var i=0;i<ents.length;i++){
+      if(ents[i].isIntersecting&&ents[i].intersectionRatio>=0.5){
+        seen=true;io.disconnect();
+        if(window.gtag)gtag('event','newsletter_view',{variant:'B',ticker:T,lang:lang});
+        return;
+      }
+    }
+  },{threshold:0.5});
+  io.observe(aside);
+}
+var form=aside.querySelector('form.ct-nl__f');
+if(!form)return;
+var OK=${okLit};
+form.addEventListener('submit',function(e){
+  e.preventDefault();
+  if(form.getAttribute('data-sending'))return;
+  form.setAttribute('data-sending','1');
+  var d=new FormData(form);
+  fetch(form.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:d.get('email'),lang:d.get('lang'),src:d.get('src')})})
+    .then(function(r){return r.json();})
+    .then(function(j){
+      if(!j||!j.ok){form.removeAttribute('data-sending');return;}
+      form.outerHTML='<p class="ct-nl__ok">'+OK+'<\\/p>';
+      if(window.gtag)gtag('event','newsletter_signup',{variant:'B',ticker:T,lang:d.get('lang'),src:'stock'});
+    })
+    .catch(function(){form.removeAttribute('data-sending');});
+});
+})();</script>`;
+}
 
 const slug = t => t.replace(/[^A-Za-z0-9.\-]/g, '_');  // same as px/ file names
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -148,7 +310,8 @@ ${styles}
 <style>.brand-home{color:inherit;text-decoration:none}.stock-static{padding-top:8px}.stock-static .back{text-decoration:none;display:inline-block}
 .advice{margin:8px 16px 0;padding:10px 12px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;background:var(--accent-soft);font-size:14px;line-height:1.45}
 .open-live{display:flex;justify-content:center;margin:8px 0 40px}.open-live a{font:600 15px/1 var(--f-body);padding:12px 20px;border-radius:999px;
-background:var(--accent);color:#fff;text-decoration:none}</style>
+background:var(--accent);color:#fff;text-decoration:none}
+${NL_CSS}</style>
 </head>
 <body>
 <header class="top"><div class="wrap"><div class="brand-wrap">${brand}<nav class="lang-sw" aria-label="Language">${sw}</nav></div></div></header>
@@ -156,6 +319,7 @@ background:var(--accent);color:#fff;text-decoration:none}</style>
 <div class="open-live"><a href="/${lang}/#stock/${encodeURIComponent(t)}">${esc(T[lang].open)}</a></div>
 ${indexRow(lang, list)}</main>
 <script>document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com'))gtag('event','x_outbound',{link_url:u,page:'stock',lang:document.documentElement.lang||'',transport_type:'beacon'})});</script>
+${nlScript(nlCopy(lang).ok)}
 </body></html>
 `;
 }
@@ -271,6 +435,12 @@ function avatars(html, seen) {
         return names.includes(tk) ? `href="/${lang}/stock/${slug(tk)}/"` : `href="/${lang}/#stock/${k}"`;
       }).replace(/href="#(account\/[^"]+)"/g, `href="/${lang}/#$1"`);
       body = avatars(body, seen);
+      const boxed = insertAfterKpis(body, nlMarkup(lang, pg.t));
+      if (boxed === body) {
+        console.log('::error::股票網頁沒有電子報位置：' + lang + '/' + pg.t);
+        process.exit(1);
+      }
+      body = boxed;
       const meta = { title: T[lang].title(pg.t, pg.name, pg.c), desc: T[lang].desc(pg.t, n[pg.t], pg.c) };
       const stats = { bull: pg.c.bull, bear: pg.c.bear, mentions: pg.mentions, from: pg.from, to: pg.to, modified: pg.modified };
       fs.mkdirSync(path.join(dir, slug(pg.t)), { recursive: true });
