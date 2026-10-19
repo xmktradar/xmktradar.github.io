@@ -6,6 +6,7 @@ og:image at today's picture, and once a day (first update after 07:00 HKT) write
 data/social-posts.json and social/index.html: posts in Chinese, English and Korean for Instagram
 (the @thecrowdtape format), Threads, X, Reddit and Facebook, for the Grok bot to post with og/social-<lang>.png,
 plus a 1080x1920 Instagram Story picture og/story-<lang>.png. Every version asks readers to support the site (PayPal).
+Also writes x_trilingual (one zh+en+ko X post at 21:00 and 08:00 HKT), facebook_cta and ig_threads_daily.
 """
 import hashlib
 import html
@@ -15,7 +16,7 @@ import re
 from datetime import datetime
 
 from sitedata import HK, load, notice, now_hk, read_json, work, write_json
-from utm import tag_posts
+from utm import tag_posts, tag_url
 
 HTML = 'index.html'
 SITE = 'https://thecrowdtape.com/'
@@ -293,6 +294,257 @@ SHORT = {'zh': {'live': '最新數字 👉 ', 'give': '☕ 鍾意就支持我哋
          'en': {'live': 'Live numbers 👉 ', 'give': '☕ Support the site 👉 ', 'disc': '⚠️ Not investment advice', 'disc_long': '⚠️ A summary of public social media posts, not investment advice. Investing involves risk; do your own research.'},
          'ko': {'live': '최신 수치 👉 ', 'give': '☕ 후원하기 👉 ', 'disc': '⚠️ 투자 조언 아님', 'disc_long': '⚠️ 공개 SNS 게시물을 정리한 것으로 투자 조언이 아닙니다. 투자에는 위험이 따르니 스스로 판단하세요.'}}
 
+# One extra line under the Facebook post. The link is the site root, campaign newsletter.
+FB_CTA = {'zh': '📬 訂閱免費電子報 👉 ', 'en': '📬 Get the free newsletter 👉 ', 'ko': '📬 무료 뉴스레터 구독 👉 '}
+X_WHEN = {'premarket': '21:00', 'afterclose': '08:00'}
+_XDATE = re.compile(r'^(\d{1,2}/\d{1,2}|[A-Z][a-z]{2}\s+\d{1,2})')
+_XTICK = re.compile(r'\$([A-Z]{1,6})\b')
+_XEMOJI = re.compile(r'\s*[📊💬🚀⚔️]+\s*$')
+
+
+def facebook_cta(text, lang):
+    """Facebook text plus the newsletter line. `text` is kept as it already is."""
+    line = FB_CTA[lang] + tag_url(SITE, 'fb', 'newsletter')
+    text = (text or '').rstrip()
+    return f'{text}\n\n{line}' if text else line
+
+
+def add_facebook_ctas(posts):
+    """Set posts[lang]['facebook_cta'] from the existing facebook text. Idempotent."""
+    if not isinstance(posts, dict):
+        return posts
+    for lang, p in posts.items():
+        if isinstance(p, dict) and isinstance(p.get('facebook'), str) and lang in FB_CTA:
+            p['facebook_cta'] = facebook_cta(p['facebook'], lang)
+    return posts
+
+
+def _x_head_body(text):
+    """Headline (first block of an X post) and the joint-bull lines under it, without the link tail."""
+    paras = (text or '').strip().split('\n\n')
+    head = paras[0].strip() if paras else ''
+    body = []
+    for p in paras[1:]:
+        s = p.strip()
+        if not s or re.search(r'https?://', s) or s.startswith('⚠') or s.startswith('#'):
+            continue
+        body.append(s)
+    return head, '\n'.join(body)
+
+
+def _short_headline(head):
+    """Date plus the ticker clause of the X headline. Same words, without the long label."""
+    bare = _XEMOJI.sub('', head).strip()
+    m = _XDATE.match(bare)
+    date = m.group(1) if m else ''
+    sm = re.search(r'\$[A-Z]{1,6}.*$', bare)
+    fact = sm.group(0).strip() if sm else bare
+    if date and fact and not fact.startswith(date):
+        return f'{date} {fact}'.strip()
+    return fact or bare
+
+
+def _ticker_block(posts):
+    """Verbatim joint-bull ticker lines from the X post that kept the most tickers."""
+    best, best_n = '', -1
+    for lang in LANGS:
+        p = posts.get(lang)
+        text = p.get('x') if isinstance(p, dict) else ''
+        _, body = _x_head_body(text or '')
+        lines = [ln for ln in body.split('\n') if _XTICK.search(ln)]
+        n = len(set(_XTICK.findall('\n'.join(lines))))
+        if n > best_n:
+            best, best_n = '\n'.join(lines), n
+    return best
+
+
+def _disc_line():
+    """One line, the short disclaimer in each language (SHORT['disc'], not the long one)."""
+    return ' · '.join(SHORT[lang]['disc'] for lang in LANGS)
+
+
+def trilingual_text(posts, campaign):
+    """One X post, zh then en then ko, from the headlines and joint-bull lines already in posts[lang]['x'].
+
+    Full form is headline per language, those ticker lines, one site link and the one-line disclaimer.
+    When that is over 280 (X count), the short form keeps a short headline per language, the link and
+    the disclaimer. Returns (text, form) or None when there is no headline.
+    """
+    heads, shorts = [], []
+    for lang in LANGS:
+        p = posts.get(lang) if isinstance(posts, dict) else None
+        head, _ = _x_head_body(p.get('x') if isinstance(p, dict) else '')
+        if not head:
+            continue
+        heads.append(head)
+        shorts.append(_short_headline(head))
+    if not heads:
+        return None
+    url = tag_url(SITE, 'x', campaign)
+    disc = _disc_line()
+    tick = _ticker_block(posts)
+    full = '\n'.join(heads + ([tick] if tick else []) + [url, disc])
+    if xlen(full) <= 280:
+        return full, 'full'
+    text = '\n'.join([s for s in shorts if s] + [url, disc])
+    if xlen(text) > 280:  # still over: one disclaimer, then the ticker clause only
+        text = '\n'.join([s for s in shorts if s] + [url, SHORT['en']['disc']])
+    if xlen(text) > 280:
+        facts = []
+        for s in shorts:
+            m = re.search(r'\$[A-Z]{1,6}.*$', s)
+            facts.append(m.group(0) if m else s)
+        text = '\n'.join([f for f in facts if f] + [url, SHORT['en']['disc']])
+    return text, 'short'
+
+
+def x_image(sp, kind):
+    """Premarket: 2030 slot's first English picture when that slot is today. After close: images['en']."""
+    images = sp.get('images') or {}
+    fallback = images.get('en') or ''
+    if kind != 'premarket':
+        return fallback
+    slot = (sp.get('slots') or {}).get('2030')
+    if not isinstance(slot, dict) or slot.get('day') != sp.get('date'):
+        return fallback
+    en = (slot.get('images') or {}).get('en') or []
+    return en[0] if isinstance(en, list) and en else fallback
+
+
+def x_entry(sp, kind):
+    """One x_trilingual entry, or None when the day's X posts have no headline."""
+    built = trilingual_text(sp.get('posts') or {}, kind)
+    if not built:
+        return None
+    text, form = built
+    return {'post_at_hkt': X_WHEN[kind], 'text': text, 'image': x_image(sp, kind), 'xlen': xlen(text), 'form': form}
+
+
+def build_x_trilingual(sp, rebuild_premarket=False):
+    """premarket and afterclose. Rebuilds premarket when asked (the 2030 slot just got its picture)."""
+    tri = sp.get('x_trilingual')
+    if not isinstance(tri, dict):
+        tri = {}
+    if rebuild_premarket or 'premarket' not in tri:
+        entry = x_entry(sp, 'premarket')
+        if entry:
+            tri['premarket'] = entry
+    if 'afterclose' not in tri:
+        entry = x_entry(sp, 'afterclose')
+        if entry:
+            tri['afterclose'] = entry
+    if not tri:
+        return None
+    return {k: tri[k] for k in ('premarket', 'afterclose') if k in tri}
+
+
+def build_ig_threads_daily(sp):
+    """Where the bot posts the 12:30 pictures and the 19:00 single-picture / text posts."""
+    posts = sp.get('posts') or {}
+    images = sp.get('images') or {}
+    slot = (sp.get('slots') or {}).get('1230') if isinstance(sp.get('slots'), dict) else None
+    if not isinstance(slot, dict) or (sp.get('date') and slot.get('day') and slot.get('day') != sp.get('date')):
+        slot = {}
+    out = {}
+    for lang in LANGS:
+        row = {}
+        sl_posts = (slot.get('posts') or {}).get(lang)
+        sl_imgs = (slot.get('images') or {}).get(lang)
+        if isinstance(sl_posts, dict) and sl_imgs:
+            row['image_post'] = {
+                'slot': '1230',
+                'field': f'slots.1230.posts.{lang}.instagram / .threads',
+                'post_at_hkt': (slot.get('post_at') or {}).get(lang) or '',
+                'images': list(sl_imgs)}
+        p = posts.get(lang)
+        if isinstance(p, dict) and (p.get('instagram') or p.get('threads')):
+            item = {'field': f'posts.{lang}.instagram / posts.{lang}.threads', 'post_at_hkt': '19:00'}
+            if images.get(lang):
+                item['image'] = images[lang]
+            row['text_post'] = item
+        if row:
+            out[lang] = row
+    return out or None
+
+
+def attach_new_posts(sp, rebuild_premarket=False):
+    """Add the new keys. Does not change facebook, x, or any other existing post text."""
+    if isinstance(sp.get('posts'), dict):
+        add_facebook_ctas(sp['posts'])
+    for sl in (sp.get('slots') or {}).values():
+        if isinstance(sl, dict):
+            add_facebook_ctas(sl.get('posts'))
+    tri = build_x_trilingual(sp, rebuild_premarket=rebuild_premarket)
+    if tri:
+        sp['x_trilingual'] = tri
+    daily = build_ig_threads_daily(sp)
+    if daily:
+        sp['ig_threads_daily'] = daily
+    return sp
+
+
+def _box(title, text, n, h='h3'):
+    return (f'<{h}>{title}</{h}><textarea readonly rows="{n}">{html.escape(text)}</textarea>'
+            '<button onclick="navigator.clipboard.writeText(this.previousElementSibling.value);this.textContent=\'已複製 ✓\'">複製</button>')
+
+
+def _xtri_html(sp):
+    tri = sp.get('x_trilingual') if isinstance(sp.get('x_trilingual'), dict) else None
+    if not tri:
+        return ''
+    names = {'premarket': '開市前', 'afterclose': '收市後'}
+    blocks = []
+    for key in ('premarket', 'afterclose'):
+        e = tri.get(key)
+        if not isinstance(e, dict) or not e.get('text'):
+            continue
+        img = e.get('image') or ''
+        pic = f'<a href="{html.escape(img)}" download><img src="{html.escape(img)}" alt=""></a>' if img else ''
+        when = html.escape(str(e.get('post_at_hkt') or ''))
+        form = html.escape(str(e.get('form') or ''))
+        n = e.get('xlen', '')
+        blocks.append(f'<h3>{names.get(key, key)} · {when} HKT · {n}/280 · {form}</h3>{pic}'
+                      f'<textarea readonly rows="8">{html.escape(e["text"])}</textarea>'
+                      '<button onclick="navigator.clipboard.writeText(this.previousElementSibling.value);this.textContent=\'已複製 ✓\'">複製</button>')
+    if not blocks:
+        return ''
+    return '<section class="xtri"><h2>X 三語帖</h2>' + ''.join(blocks) + '</section>'
+
+
+def _ig_daily_html(sp):
+    daily = sp.get('ig_threads_daily') if isinstance(sp.get('ig_threads_daily'), dict) else None
+    if not daily:
+        return ''
+    names = {'zh': '中文', 'en': 'English', 'ko': '한국어'}
+    rows = []
+    for lang in LANGS:
+        row = daily.get(lang)
+        if not isinstance(row, dict):
+            continue
+        img_p = row.get('image_post') if isinstance(row.get('image_post'), dict) else {}
+        txt_p = row.get('text_post') if isinstance(row.get('text_post'), dict) else {}
+        thumbs = ''.join(f'<a href="{html.escape(u)}" download><img src="{html.escape(u)}" alt=""></a>'
+                         for u in (img_p.get('images') or []))
+        one = txt_p.get('image') or ''
+        one_html = f'<a href="{html.escape(one)}" download><img src="{html.escape(one)}" alt=""></a>' if one else ''
+        cells = (('語言', names[lang]),
+                 ('圖帖', f'<code>{html.escape(img_p.get("field") or "—")}</code>'),
+                 ('圖帖時間', html.escape(str(img_p.get("post_at_hkt") or "—"))),
+                 ('圖片', thumbs or '—'),
+                 ('文字帖', f'<code>{html.escape(txt_p.get("field") or "—")}</code>'),
+                 ('文字時間', html.escape(str(txt_p.get("post_at_hkt") or "—"))),
+                 ('IG 圖', one_html or '—'))
+        rows.append('<tr>' + ''.join(
+            f'<td data-label="{html.escape(label)}"{" class=\"pics\"" if label in ("圖片", "IG 圖") else ""}>{val}</td>'
+            for label, val in cells) + '</tr>')
+    if not rows:
+        return ''
+    return ('<section class="daily"><h2>IG / Threads 每日</h2>'
+            '<p>12:30 圖帖用該時段多圖。19:00 文字帖：IG 配一張圖，Threads 只發文字。</p>'
+            '<table><tr><th>語言</th><th>圖帖</th><th>時間</th><th>圖片</th>'
+            '<th>文字帖</th><th>時間</th><th>IG 圖</th></tr>'
+            + ''.join(rows) + '</table></section>')
+
 
 def social_page(sp):
     """A plain page for Tim to read the day's posts and save the pictures (not for search engines)."""
@@ -301,20 +553,30 @@ def social_page(sp):
         img = sp['images'][lang]
         story = sp['stories'][lang]
         p = sp['posts'][lang]
-        box = lambda title, text, n: (f'<h3>{title}</h3><textarea readonly rows="{n}">{html.escape(text)}</textarea>'
-                                      '<button onclick="navigator.clipboard.writeText(this.previousElementSibling.value);this.textContent=\'已複製 ✓\'">複製</button>')
+        cta = p.get('facebook_cta') if isinstance(p, dict) else None
         rows.append(f'''<section><h2>{name}</h2><a href="{html.escape(img)}" download><img src="{html.escape(img)}" alt=""></a>
-{box('Instagram', p['instagram'], 18)}{box('Threads', p['threads'], 10)}{box('X', p['x'], 6)}
-{box('Reddit 標題', p['reddit']['title'], 2)}{box('Reddit 內文', p['reddit']['body'], 14)}{box('Facebook', p['facebook'], 18)}
-{box('IG Story hashtag', p['story'], 2)}<h3>IG Story（1080×1920）</h3><a href="{html.escape(story)}" download><img class="story" src="{html.escape(story)}" alt=""></a></section>''')
+{_box('Instagram', p['instagram'], 18)}{_box('Threads', p['threads'], 10)}{_box('X', p['x'], 6)}
+{_box('Reddit 標題', p['reddit']['title'], 2)}{_box('Reddit 內文', p['reddit']['body'], 14)}{_box('Facebook', p['facebook'], 18)}
+{( _box('Facebook 電子報', cta, 18) if cta else '' )}
+{_box('IG Story hashtag', p['story'], 2)}<h3>IG Story（1080×1920）</h3><a href="{html.escape(story)}" download><img class="story" src="{html.escape(story)}" alt=""></a></section>''')
+    extras = _xtri_html(sp) + _ig_daily_html(sp)
+    old = '<h2 style="margin-top:32px">舊格式（單圖，只作參考）</h2>' if sp.get('slots') else ''
     return f'''<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="robots" content="noindex"><title>每日社交媒體貼文 {sp['date']}｜The Crowd Tape</title>
 <style>body{{font:16px/1.5 system-ui,sans-serif;margin:0 auto;max-width:760px;padding:16px;background:#f7f8fb;color:#151a2c}}
 section{{background:#fff;border-radius:14px;padding:16px;margin:16px 0;box-shadow:0 1px 4px rgba(0,0,0,.08)}}
 img{{width:100%;border-radius:10px}}img.story{{width:min(100%,320px);display:block;margin-top:6px}}textarea{{width:100%;box-sizing:border-box;font:inherit;margin-top:4px}}h3{{margin:18px 0 0;font-size:15px}}
-button{{margin-top:8px;padding:8px 16px;border-radius:999px;border:0;background:#151a2c;color:#fff;font:inherit}}</style>
+button{{margin-top:8px;padding:8px 16px;border-radius:999px;border:0;background:#151a2c;color:#fff;font:inherit}}
+table{{width:100%;border-collapse:collapse;font-size:14px}}td,th{{border-bottom:1px solid #e4e7ef;padding:6px 4px;text-align:left;vertical-align:top}}
+code{{font-size:12px}}.daily{{overflow-x:auto}}td.pics a{{display:inline-block;width:48px;margin:0 4px 4px 0}}td.pics img{{width:48px;height:auto}}
+.xtri img{{width:min(100%,420px);display:block}}
+@media (max-width:700px){{.daily table,.daily tr,.daily td{{display:block;width:auto}}.daily tr:first-child{{display:none}}
+.daily td{{border:0;padding:2px 0}}.daily td::before{{content:attr(data-label);font-weight:700;display:block;font-size:12px;color:#5c6578}}
+.daily tr{{padding:10px 0;border-bottom:1px solid #e4e7ef}}}}</style>
 <h1>{sp['date']} 社交媒體貼文</h1><p>{html.escape(sp['window'])}｜製作時間 {sp['made_hkt']} HKT｜撳圖片可以下載｜<a href="/social/tutorial.html">週末教學貼文</a>｜<a href="/social/macro.html">星期六宏觀貼文</a></p>
+<!--slots-->
+{extras}{old}
 {''.join(rows)}</html>
 '''
 
@@ -379,6 +641,7 @@ def main():
               'stories': {l: f'{SITE}og/story-{l}.png?v={day}' for l in LANGS},
               'posts': {l: caption(l, day, s, items, win, langs[l]['quote']) for l in LANGS}}
         tag_posts(sp['posts'], 'daily')
+        attach_new_posts(sp, rebuild_premarket=True)  # both X posts; 2030's picture replaces premarket later
         write_json('data/social-posts.json', sp, indent=1)
         os.makedirs('social', exist_ok=True)
         open('social/index.html', 'w', encoding='utf-8').write(social_page(sp))
