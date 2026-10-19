@@ -1,0 +1,79 @@
+{
+  "posts": {
+    "2112032009413439704": {
+      "en_summary": "Precompiles and EVM are the wrong place for most cryptography support in Ethereum because they operate on data that must be included in the chain as calldata, with practical limits around 8 MB/s even with PeerDAS. Ethereum is a cryptographic world computer, so data/computation not needed in the main execution thread should not be placed there. Ideal route for broader cryptography support is through other mechanisms.",
+      "zh_summary": "\u9810\u7de8\u8b6f\u548c EVM \u90fd\u662f\u5c07\u5927\u591a\u6578\u5bc6\u78bc\u5b78\u652f\u63f4\u653e\u5165\u4ee5\u592a\u574a\u7684\u932f\u8aa4\u4f4d\u7f6e\uff0c\u56e0\u70ba\u5b83\u5011\u64cd\u4f5c\u7684\u6578\u64da\u5fc5\u9808\u4ee5 calldata \u5f62\u5f0f\u5305\u542b\u5728\u93c8\u4e2d\uff0c\u5373\u4f7f\u6709 PeerDAS \u4e5f\u6709\u7d04 8 MB/s \u7684\u5be6\u969b\u9650\u5236\u3002\u4ee5\u592a\u574a\u662f\u5bc6\u78bc\u5b78\u4e16\u754c\u8a08\u7b97\u6a5f\uff0c\u56e0\u6b64\u4e0d\u9700\u8981\u5728\u4e3b\u57f7\u884c\u7dda\u7a0b\u4e2d\u7684\u6578\u64da/\u8a08\u7b97\u4e0d\u61c9\u653e\u5728\u90a3\u88e1\u3002\u66f4\u5ee3\u6cdb\u5bc6\u78bc\u5b78\u652f\u63f4\u7684\u7406\u60f3\u9014\u5f91\u662f\u900f\u904e\u5176\u4ed6\u6a5f\u5236\u3002",
+      "ko_summary": "\ud504\ub9ac\ucef4\ud30c\uc77c\uacfc EVM\uc740 \uc774\ub354\ub9ac\uc6c0\uc5d0 \ub300\ubd80\ubd84\uc758 \uc554\ud638\ud654 \uc9c0\uc6d0\uc744 \ub123\ub294 \uc798\ubabb\ub41c \uc704\uce58\ub2e4. \uc65c\ub0d0\ud558\uba74 \uadf8\uac83\ub4e4\uc740 \uccb4\uc778\uc5d0 calldata\ub85c \ud3ec\ud568\ub418\uc5b4\uc57c \ud558\ub294 \ub370\uc774\ud130\uc5d0\uc11c \uc791\ub3d9\ud558\uba70, PeerDAS\uac00 \uc788\uc5b4\ub3c4 \uc57d 8 MB/s\uc758 \uc2e4\uc9c8\uc801 \ud55c\uacc4\uac00 \uc788\ub2e4. \uc774\ub354\ub9ac\uc6c0\uc740 \uc554\ud638\ud654 \uc138\uacc4 \ucef4\ud4e8\ud130\uc774\ubbc0\ub85c \uba54\uc778 \uc2e4\ud589 \uc2a4\ub808\ub4dc\uc5d0 \ud544\uc694\ud558\uc9c0 \uc54a\uc740 \ub370\uc774\ud130/\uacc4\uc0b0\uc740 \uadf8\uae30\uc5d0 \ub450\uc9c0 \uc54a\uc544\uc57c \ud55c\ub2e4. \ub354 \ub113\uc740 \uc554\ud638\ud654 \uc9c0\uc6d0\uc758 \uc774\uc0c1\uc801 \uacbd\ub85c\ub294 \ub2e4\ub978 \uba54\ucee4\ub2c8\uc998\uc744 \ud1b5\ud558\ub294 \uac83\uc774\ub2e4.",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2111985278412079115": {
+      "en_summary": "Mentions that Charles Schwab is there in response to others.",
+      "zh_summary": "\u56de\u61c9\u4ed6\u4eba\u6642\u63d0\u53ca Charles Schwab \u5728\u90a3\u88e1\u3002",
+      "ko_summary": "\ub2e4\ub978 \uc0ac\ub78c\ub4e4\uc5d0\uac8c \uc751\ub2f5\ud558\uba70 Charles Schwab\uc774 \uadf8\uacf3\uc5d0 \uc788\ub2e4\uace0 \uc5b8\uae09\ud55c\ub2e4.",
+      "tickers": ["SCHW"],
+      "stance": "\u4e2d\u6027",
+      "stance_by_ticker": {"SCHW": "\u672a\u8868\u614b"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2111981810641186872": {
+      "en_summary": "Agrees with points that all the edge is out in time, quoting a trader who compounded at 60% a year with Sortino over 2 explaining why he refuses to compete with pods on their timeframe.",
+      "zh_summary": "\u540c\u610f\u6240\u6709\u512a\u52e2\u90fd\u5728\u6642\u9593\u4e4b\u5916\u7684\u89c0\u9ede\uff0c\u5f15\u7528\u4e00\u4f4d\u5e74\u8907\u5408 60%\u3001Sortino \u8d85\u904e 2 \u7684\u4ea4\u6613\u8005\u89e3\u91cb\u70ba\u4f55\u62d2\u7d55\u5728 pods \u7684\u6642\u9593\u6846\u67b6\u4e0a\u7af6\u722d\u3002",
+      "ko_summary": "\ubaa8\ub4e0 \uc5e3\uc9c0\uac00 \uc2dc\uac04\uc5d0 \uc788\ub2e4\ub294 \uc810\uc5d0 \ub3d9\uc758\ud558\uba70, \uc5f0 60% \ubcf5\ub9ac\uc640 Sortino 2 \uc774\uc0c1\uc744 \ub2ec\uc131\ud55c \ud2b8\ub808\uc774\ub354\uac00 \uc65c \uadf8\ub4e4\uc758 \uc2dc\uac04 \ud504\ub808\uc784\uc5d0\uc11c \ud31f\uacfc \uacbd\uc7c1\ud558\uae30\ub97c \uac70\ubd80\ud558\ub294\uc9c0 \uc778\uc6a9\ud55c\ub2e4.",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2111977112668086332": {
+      "en_summary": "Comments that he will be right one day after he changes his mind, referring to Peter Schiff who has spent 13 years saying Bitcoin is going to zero.",
+      "zh_summary": "\u8a55\u8ad6\u4ed6\u6539\u8b8a\u4e3b\u610f\u5f8c\u6709\u4e00\u5929\u6703\u662f\u5c0d\u7684\uff0c\u6307 Peter Schiff \u82b1\u4e86 13 \u5e74\u8aaa\u6bd4\u7279\u5e63\u5c07\u6b78\u96f6\u3002",
+      "ko_summary": "\uadf8\uac00 \ub9c8\uc74c\uc744 \ubc14\uafbc \ud6c4 \uc5b8\uc81c\uac00 \ub9de\uc744 \uac83\uc774\ub77c\uba70, 13\ub144\uac04 \ube44\ud2b8\ucf54\uc778\uc774 \uc81c\ub85c\ub85c \uac04\ub2e4\uace0 \ub9d0\ud55c Peter Schiff\ub97c \uc5b8\uae09\ud55c\ub2e4.",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2111976901963296868": {
+      "en_summary": "Despite being strongly pro-Ukraine/anti-Russian, criticizes Europeans and American left for complaining about America buying $1B in diesel fuel from Russia as out of touch, noting the EU has spent over $200B on Russian fuel and is on track for hundreds of billions more, mostly by wealthy members who can afford alternatives. References past German policies on nuclear and Nord Stream.",
+      "zh_summary": "\u5118\u7ba1\u5f37\u70c8\u89aa\u70cf\u514b\u862d/\u53cd\u4fc4\u7f85\u65af\uff0c\u6279\u8a55\u6b50\u6d32\u4eba\u548c\u7f8e\u570b\u5de6\u6d3e\u62b1\u6028\u7f8e\u570b\u5f9e\u4fc4\u7f85\u65af\u8cfc\u8cb7 10 \u5104\u7f8e\u5143\u67f4\u6cb9\u71c3\u6599\u812b\u96e2\u73fe\u5be6\uff0c\u6307\u51fa\u6b50\u76df\u5df2\u5728\u4fc4\u7f85\u65af\u71c3\u6599\u4e0a\u82b1\u8cbb\u8d85\u904e 2000 \u5104\u7f8e\u5143\uff0c\u4e26\u6b63\u8d70\u5411\u518d\u82b1\u8cbb\u6578\u5343\u5104\uff0c\u5927\u90e8\u5206\u7531\u80fd\u8ca0\u64d4\u66ff\u4ee3\u54c1\u7684\u5bcc\u88d5\u6210\u54e1\u8cfc\u8cb7\u3002\u53c3\u8003\u5fb7\u570b\u904e\u53bb\u6838\u96fb\u548c\u5317\u6eaa\u653f\u7b56\u3002",
+      "ko_summary": "\uac15\ud558\uac8c \uce5c\uc6b0\ud06c\ub77c\uc774\ub098/\ubc18\ub7ec\uc2dc\uc544\uc784\uc5d0\ub3c4 \ubd88\uad6c\ud558\uace0, \ubbf8\uad6d\uc774 \ub7ec\uc2dc\uc544\uc5d0\uc11c 10\uc5b5 \ub2ec\ub7ec\uc758 \ub514\uc824 \uc5f0\ub8cc\ub97c \uad6c\ub9e4\ud558\ub294 \uac83\uc5d0 \ub300\ud55c \uc720\ub7fd\uc778\uacfc \ubbf8\uad6d \uc88c\ud30c\uc758 \ubd88\ud3c9\uc774 \ud604\uc2e4\uacfc \ub3d9\ub5a8\uc5b4\uc838 \uc788\ub2e4\uace0 \ube44\ud310\ud55c\ub2e4. EU\uac00 \ub7ec\uc2dc\uc544 \uc5f0\ub8cc\uc5d0 2000\uc5b5 \ub2ec\ub7ec \uc774\uc0c1 \uc9c0\ucd9c\ud588\uace0 \uc218\ucc9c\uc5b5 \ub354 \uc9c0\ucd9c\ud560 \uc608\uc815\uc774\uba70, \ub300\ubd80\ubd84 \ub300\uc548\uc744 \uac10\ub2f9\ud560 \uc218 \uc788\ub294 \ubd80\uc720\ud55c \ud68c\uc6d0\uad6d\uc774 \uad6c\ub9e4\ud588\ub2e4\uace0 \uc9c0\uc801\ud55c\ub2e4. \ub3c5\uc77c\uc758 \uacfc\uac70 \uc6d0\uc790\ub825 \ubc0f \ub178\ub974\ub4dc \uc2a4\ud2b8\ub9bc \uc815\ucc45\uc744 \ucc38\uc870\ud55c\ub2e4.",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": true,
+      "macro_theme": "energy",
+      "macro_impact": "\u4e2d\u6027",
+      "ticker_notes": {}
+    }
+  }
+}
