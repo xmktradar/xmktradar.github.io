@@ -5,14 +5,18 @@ Writes work/og.json for tools/og.js when a picture needs drawing, points the mas
 og:image at today's picture, and once a day (first update after 07:00 HKT) writes
 data/social-posts.json and social/index.html: posts in Chinese, English and Korean for Instagram
 (the @thecrowdtape format), Threads, X, Reddit and Facebook, for the Grok bot to post with og/social-<lang>.png,
-plus a 1080x1920 Instagram Story picture og/story-<lang>.png. Every version asks readers to support the site (PayPal).
+plus a 1080x1920 Instagram Story picture og/story-<lang>.png and a native 1080x1350
+Instagram text-post picture og/ig-<lang>.png. Every version asks readers to support the site (PayPal).
 Also writes x_trilingual (one zh+en+ko X post at 21:00 and 08:00 HKT), facebook_cta and ig_threads_daily.
+python3 tools/share.py --og-only writes work/og.json from dash-data + work/stats.json and stops
+(no social posts, no index.html rewrite); used by tools/ig_sample.js.
 """
 import hashlib
 import html
 import json
 import os
 import re
+import sys
 from datetime import datetime
 
 from sitedata import HK, load, notice, now_hk, read_json, work, write_json
@@ -442,6 +446,7 @@ def build_ig_threads_daily(sp):
     """Where the bot posts the 12:30 pictures and the 19:00 single-picture / text posts."""
     posts = sp.get('posts') or {}
     images = sp.get('images') or {}
+    day = sp['date']
     slot = (sp.get('slots') or {}).get('1230') if isinstance(sp.get('slots'), dict) else None
     if not isinstance(slot, dict) or (sp.get('date') and slot.get('day') and slot.get('day') != sp.get('date')):
         slot = {}
@@ -462,6 +467,7 @@ def build_ig_threads_daily(sp):
             if images.get(lang):
                 item['image'] = images[lang]
             row['text_post'] = item
+            row['ig_image'] = f'{SITE}og/ig-{lang}.png?v={day}'
         if row:
             out[lang] = row
     return out or None
@@ -656,5 +662,31 @@ def main():
     print(f"share {day} mode {langs['zh']['mode']} hero {items[0]['t'] if items else '-'} draw {draw} social {social}")
 
 
+def _dash_data():
+    """Full dash-data from index.html, including slim pages that split accounts/prices out."""
+    try:
+        from slim_pages import full_data
+        return full_data(open(HTML, encoding='utf-8').read())
+    except Exception:
+        return load(HTML)
+
+
+def og_only():
+    """Write work/og.json from current dash-data + work/stats.json. No social posts, no index.html rewrite."""
+    st = read_json(work('stats.json'))
+    if not st or 'today' not in st or 'daily' not in st:
+        raise SystemExit('share --og-only: work/stats.json missing (run tools/stats.js first)')
+    d = _dash_data()
+    ch = read_json('data/consensus-history.json', {'days': {}})
+    day, s = st['today'], st['daily']
+    langs, items = build(d, s, ch, day)
+    digest = hashlib.sha1(json.dumps(langs, sort_keys=True, ensure_ascii=False).encode() + open('tools/og.html', 'rb').read()).hexdigest()[:10]
+    write_json(work('og.json'), {'date': day, 'hash': digest, 'social': False, 'langs': langs})
+    print(f"og-only {day} mode {langs['zh']['mode']} hero {items[0]['t'] if items else '-'} langs {','.join(langs)}")
+
+
 if __name__ == '__main__':
-    main()
+    if '--og-only' in sys.argv:
+        og_only()
+    else:
+        main()
