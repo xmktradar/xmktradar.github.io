@@ -503,8 +503,8 @@
    "split": [
     "QQQ",
     "SPY",
-    "SPCX",
     "TSLA",
+    "SPCX",
     "IREN",
     "CIFR"
    ],
@@ -513,21 +513,21 @@
     "2026-10-19T23:59"
    ],
    "top": [
-    "SPY",
     "QQQ",
+    "SPY",
     "TSLA",
     "SPCX",
     "IREN",
+    "META",
     "MU",
     "NVDA",
     "AAPL",
-    "GOOGL",
-    "AAOI"
+    "GOOGL"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-19 19:43"
+   "updated_hkt": "2026-10-19 20:43"
   }
  },
- "updated_hkt": "2026-10-19 19:43",
+ "updated_hkt": "2026-10-19 20:43",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
