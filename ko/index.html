@@ -1513,7 +1513,7 @@ function paintChrome(){const m=D.meta;document.getElementById('cutoff').textCont
 <p>주가: ${Object.keys(srcs).length?Object.keys(srcs).map(esc).join(', ')+` 일간 종가, 기준일 ${esc(asof)}(미국 동부 거래일), 수집 시각 ${esc(fet)} HKT`:'주가 데이터 없음'}${(()=>{const pm=m.price_missing.filter(t=>!UNC(t));const wn=pm.filter(t=>OV[t]&&OV[t].price_note),wo=pm.filter(t=>!(OV[t]&&OV[t].price_note));return (wn.length?'; '+wn.map(t=>'$'+esc(t)+'  → '+esc(OV[t].price_note)).join('; '):'')+(wo.length?`; 아직 주가 데이터 없음: ${wo.map(t=>'$'+esc(t)).join(' ')}`:'')})()}${nonUS.length?'; 비미국 종목은 현지 거래소와 통화로 표시(종목 페이지에 표기)':''}. </p>
 ${MAC&&MAC.rows.length?`<p>시장 데이터: ${[...new Set(MAC.rows.map(r=>(r.src||'').replace(/（.*?）|\(.*?\)/g,'').trim()).filter(Boolean))].map(esc).join(', ')||'—'}${MAC.as_of?`, 기준일 ${esc(MAC.as_of)} HKT`:''}. </p>`:''}<p>모든 시간은 홍콩 시간(HKT, UTC+8)이다. 계정 아바타와 소개는 각 계정의 X 프로필에서 가져왔다.</p>
 <p>일부 링크는 제휴 링크이며, 이를 통해 가입·구매 시 추가 비용 없이 수수료를 받을 수 있습니다. 이는 집계 및 로봇 픽에 영향을 주지 않으며, 투자 조언이 아닙니다.</p>
-<p><a href="advertise/">광고 제휴</a> · <a href="support/">사이트 후원</a> · <a href="tools/">저희가 쓰는 도구</a></p>`;linkHandles(document.getElementById('foot'))}
+<p><a href="advertise/">광고 제휴</a> · <a href="support/">사이트 후원</a> · <a href="tools/">저희가 쓰는 도구</a> · <a href="about/">소개 및 방법론</a> · <a href="newsletter/">뉴스레터</a></p>`;linkHandles(document.getElementById('foot'))}
 paintChrome();
 render();
 if(!coreDone){loadCore().then(function(){window.__dashReady=true;paintChrome();render()}).catch(function(e){console.error(e);coreDone=true;window.__dashReady=true;paintChrome();render()})}else window.__dashReady=true;
