@@ -230,7 +230,7 @@ body.paper{background:var(--bg) radial-gradient(var(--bg-dot) 1px,transparent 1p
 .acc{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px 14px 40px;box-shadow:var(--shadow);display:flex;flex-direction:column;min-height:150px;cursor:pointer;transition:box-shadow .15s,transform .15s,border-color .15s}
 .acc:hover{border-color:var(--line-strong);box-shadow:var(--shadow-hover);transform:translateY(-2px)}
 .acc:focus-visible{outline:2px solid var(--bull-ink);outline-offset:2px}
-.acc-top{display:grid;grid-template-columns:40px 1fr auto;gap:10px;align-items:start}
+.acc-top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:start}
 .av{width:56px;height:56px;border-radius:50%;object-fit:cover;border:1px solid var(--line);background:var(--neu-bg);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;color:var(--mut)}
 .nmrow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-width:0}
 .acc .nm{font-family:var(--serif);font-weight:700;font-size:1.02rem;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
