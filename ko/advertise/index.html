@@ -41,7 +41,8 @@ header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-betw
 h1{font-family:var(--f-display);font-size:28px;line-height:1.3;margin:0 0 8px;overflow-wrap:anywhere}
 h2{font-family:var(--f-display);font-size:20px;line-height:1.35;margin:26px 0 8px;overflow-wrap:anywhere}
 h3{font-size:16px;line-height:1.35;margin:16px 0 8px;overflow-wrap:anywhere}
-.lead{margin:0 0 20px}
+.lead{margin:0 0 14px}
+.lead-cta{margin:0 0 8px}
 p,li,dd,dt{overflow-wrap:anywhere}
 .asof{margin:0 0 12px;color:var(--muted);font-size:14px}
 .stats{list-style:none;margin:0;padding:0;display:grid;gap:8px}
@@ -54,7 +55,9 @@ p,li,dd,dt{overflow-wrap:anywhere}
 .faq{margin:0}
 .faq dt{font-weight:700;margin-top:12px}
 .faq dd{margin:2px 0 0}
-.btn{display:inline-block;max-width:100%;margin-top:4px;padding:8px 16px;border-radius:999px;background:var(--accent);color:#fff;font-weight:700;font-size:14px;text-decoration:none;overflow-wrap:anywhere}
+a.btn{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;max-width:100%;margin-top:4px;padding:14px 28px;border-radius:999px;background:var(--accent);color:#fff;font-weight:700;font-size:18px;line-height:1.25;text-align:center;text-decoration:none;overflow-wrap:anywhere}
+.lead-cta a.btn{width:100%;margin-top:0;padding:16px 24px}
+a.btn:hover{filter:brightness(1.06);color:#fff}
 .note{margin-top:16px;padding:14px 16px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;background:var(--accent-soft)}
 .note b{display:block;margin-bottom:4px}
 .note p{margin:0;font-size:14px}
@@ -83,25 +86,25 @@ p,li,dd,dt{overflow-wrap:anywhere}
 <main>
   <h1>세 가지 언어로 활발한 미국 주식 거래자에게 도달하세요</h1>
   <p class="lead">X에서 주목받는 미국 주식 계정 약 200개를 추적하고, 매일 강세와 약세 의견을 집계합니다.</p>
+  <p class="lead-cta"><a class="btn contact-mail" href="mailto:grokbottimli@gmail.com?subject=The%20Crowd%20Tape%3A%20%EA%B4%91%EA%B3%A0%20%EC%A0%9C%ED%9C%B4%20%EB%AC%B8%EC%9D%98" data-u="grokbottimli" data-d="gmail.com" data-s="광고 제휴 문의">이메일 문의</a></p>
 
   <h2>독자</h2>
-  <p class="asof">업데이트 날짜: 추후 갱신</p>
+  <p>매일 중국어, 영어, 한국어로 X, Instagram, Threads, Facebook에 게시합니다 (언어별로 각각 번역).</p>
+  <p class="asof">업데이트 날짜: 2026-10-21</p>
   <ul class="stats">
-    <li><span>월간 방문자</span><b>수치 추후 갱신</b></li>
-    <li><span>뉴스레터 구독자</span><b>수치 추후 갱신</b></li>
-    <li><span>X 팔로워</span><b>수치 추후 갱신</b></li>
-    <li><span>Instagram 팔로워</span><b>수치 추후 갱신</b></li>
-    <li><span>Threads 팔로워</span><b>수치 추후 갱신</b></li>
-    <li><span>Facebook 팔로워</span><b>수치 추후 갱신</b></li>
+    <li><span>월간 방문자 (최근 30일)</span><b>사용자 761명, 조회 1349회</b></li>
+    <li><span>X 팔로워</span><b>50</b></li>
+    <li><span>X 최근 7일 노출수 (2026-10-20 기준)</span><b>~5.6K</b></li>
   </ul>
   <h3>언어 구성</h3>
+  <p class="asof">사이트 언어별 페이지 조회수.</p>
   <ul class="stats">
-    <li><span>중국어</span><b>수치 추후 갱신</b></li>
-    <li><span>영어</span><b>수치 추후 갱신</b></li>
-    <li><span>한국어</span><b>수치 추후 갱신</b></li>
+    <li><span>중국어</span><b>81%</b></li>
+    <li><span>영어</span><b>15%</b></li>
+    <li><span>한국어</span><b>3%</b></li>
   </ul>
   <h3>주요 국가와 지역</h3>
-  <p><b>수치 추후 갱신</b></p>
+  <p>중국, 미국, 대만, 홍콩</p>
 
   <h2>광고 위치</h2>
   <p>입문 가격은 주당 US$30–90입니다.</p>
@@ -123,15 +126,15 @@ p,li,dd,dt{overflow-wrap:anywhere}
 
   <h2 id="contact">문의</h2>
   <p>광고를 원하시면 이메일로 문의해 주세요.</p>
-  <p><a class="btn" id="contact-mail" href="#contact" data-u="grokbottimli" data-d="gmail.com" data-s="광고 제휴 문의">이메일 문의</a></p>
-  <script>(function(){var a=document.getElementById('contact-mail');if(!a)return;var m=a.getAttribute('data-u')+'@'+a.getAttribute('data-d');a.href='mailto:'+m+'?subject='+encodeURIComponent('The Crowd Tape: '+a.getAttribute('data-s'));a.textContent='✉️ '+m;a.addEventListener('click',function(){if(window.gtag)gtag('event','contact_click');});})();</script>
+  <p><a class="btn contact-mail" id="contact-mail" href="mailto:grokbottimli@gmail.com?subject=The%20Crowd%20Tape%3A%20%EA%B4%91%EA%B3%A0%20%EC%A0%9C%ED%9C%B4%20%EB%AC%B8%EC%9D%98" data-u="grokbottimli" data-d="gmail.com" data-s="광고 제휴 문의">이메일 문의</a></p>
+  <script>(function(){var nodes=document.querySelectorAll('a.contact-mail, a#contact-mail');for(var i=0;i<nodes.length;i++){(function(a){var m=a.getAttribute('data-u')+'@'+a.getAttribute('data-d');a.href='mailto:'+m+'?subject='+encodeURIComponent('The Crowd Tape: '+(a.getAttribute('data-s')||''));a.textContent='✉️ '+m;a.addEventListener('click',function(){if(window.gtag)gtag('event','contact_click');});})(nodes[i]);}})();</script>
 
   <h2>자주 묻는 질문</h2>
   <dl class="faq">
     <dt>성과는 어떻게 보고되나요?</dt>
     <dd>성과는 UTM과 GA4로 측정한 클릭으로 보고합니다.</dd>
     <dt>결제는 어떻게 하나요?</dt>
-    <dd>결제는 Stripe 또는 PayPal 인보이스로 합니다.</dd>
+    <dd>결제는 PayPal 인보이스로 합니다.</dd>
   </dl>
 
   <aside class="note">
