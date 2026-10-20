@@ -43,6 +43,13 @@ EVENT_ZH = {
     'Core Durable Goods Orders m/m': '核心耐用品訂單按月',
 }
 
+# Tickers Yahoo knows under another symbol: indices people write without the ^ (Tim, 2026-10-20)
+INDEX_SYMBOLS = {'VIX': '^VIX', 'RUT': '^RUT', 'RTY': '^RUT', 'SOX': '^SOX', 'NYSE': '^NYA', 'COMP': '^IXIC',
+                 'IXIC': '^IXIC', 'DJI': '^DJI', 'DXY': 'DX-Y.NYB', 'MOVE': '^MOVE', 'NYA': '^NYA'}
+US_EXCH = {'NMS', 'NGM', 'NCM', 'NAS', 'NYQ', 'NYS', 'ASE', 'PCX', 'BTS', 'PNK', 'OQB', 'OQX', 'OBB'}
+GIVE_UP_HOURS = 24  # a ticker Yahoo can't find for this long is marked 未確認 (no price, no footer warning)
+RECHECK_DAYS = 7  # ... and looked up again once a week, in case it lists later or Yahoo was wrong
+
 jar = http.cookiejar.CookieJar()
 opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
 
@@ -77,6 +84,73 @@ def chart(sym, rng, interval):
     ts = res.get('timestamp') or []
     closes = ((res.get('indicators') or {}).get('quote') or [{}])[0].get('close') or []
     return res['meta'], [(t, c) for t, c in zip(ts, closes) if c is not None]
+
+
+def search(t):
+    """Yahoo's symbol search. None if Yahoo didn't answer, so an outage never counts as 'not found'."""
+    body = get('https://query2.finance.yahoo.com/v1/finance/search?q=' + urllib.parse.quote(t) +
+               '&quotesCount=8&newsCount=0&listsCount=0&enableFuzzyQuery=false')
+    try:
+        return [q for q in json.loads(body).get('quotes') or [] if q.get('symbol')]
+    except (TypeError, ValueError, AttributeError):
+        return None
+
+
+def candidates(t, found):
+    """Symbols worth trying for ticker t, best first: a known index (VIX -> ^VIX), the symbol itself on a US
+    exchange, t as an index, else a listing whose company name has t as a word (LVMH -> MC.PA)."""
+    out = [INDEX_SYMBOLS[t]] if t in INDEX_SYMBOLS else []
+    word = re.compile(r'\b' + re.escape(t) + r'\b', re.I)
+    exact, named = [], []
+    for q in found:
+        sym = q['symbol']
+        base = re.split(r'[.\-=]', sym.lstrip('^'))[0].upper()
+        kind = q.get('quoteType')
+        if kind not in ('EQUITY', 'ETF', 'INDEX'):
+            continue
+        if base == t and (q.get('exchange') in US_EXCH or kind == 'INDEX'):
+            exact.append(sym)
+        elif len(t) >= 4 and kind == 'EQUITY' and word.search(' '.join(str(q.get(k) or '') for k in ('shortname', 'longname'))):
+            named.append(sym)
+    return list(dict.fromkeys(out + exact + ['^' + t] + named))
+
+
+def lookup(t):
+    """Find ticker t on Yahoo when its own symbol has no prices. Returns (symbol, chart), 'none' when Yahoo
+    answered but has nothing, or None when Yahoo didn't answer."""
+    found = search(t)
+    time.sleep(0.3)
+    if found is None:
+        return None
+    for sym in candidates(t, found):
+        r = chart(sym, '1y', '1d')
+        time.sleep(0.3)
+        if r and r[1]:
+            return sym, r
+    return 'none'
+
+
+def auto_override(ov, t, sym, meta, stamp):
+    """Remember how ticker t was matched, so later runs go straight to the right symbol."""
+    o = {'confirmed': True, 'auto': True, 'symbol': sym, 'name': meta.get('longName') or meta.get('shortName') or t,
+         'matched_hkt': stamp}
+    if meta.get('exchangeName') not in US_EXCH and meta.get('instrumentType') != 'INDEX':
+        o['exchange'] = EXCH_TV.get(meta.get('exchangeName')) or meta.get('fullExchangeName') or meta.get('exchangeName')
+        o['currency'] = meta.get('currency')
+    ov[t] = o
+
+
+def note_miss(ov, t, now, stamp):
+    """Yahoo has no such ticker: after GIVE_UP_HOURS mark it 未確認 (a word, a delisted or private name)."""
+    o = ov.setdefault(t, {'auto': True, 'first_miss_hkt': stamp})
+    o.setdefault('first_miss_hkt', stamp)
+    o.pop('confirmed', None)
+    first = datetime.strptime(o['first_miss_hkt'], '%Y-%m-%d %H:%M').replace(tzinfo=HK)
+    if now - first >= timedelta(hours=GIVE_UP_HOURS):
+        o.update(unconfirmed=True, checked=now.date().isoformat(),
+                 note='Yahoo Finance 搵唔到呢個代號（可能係普通字、已除牌或未上市），自動標為未確認，唔顯示股價')
+        return True
+    return False
 
 
 def local_date(ts, meta):
@@ -153,7 +227,7 @@ def main():
     m = re.search(r'(<script type="application/json" id="dash-data">)(.*?)(</script>)', s, re.S)
     d = json.loads(m.group(2))
     n_posts = len(d['posts'])
-    ov = d.get('overrides', {})
+    ov = d.setdefault('overrides', {})
     now = datetime.now(HK)
     stamp = now.strftime('%Y-%m-%d %H:%M')
 
@@ -172,15 +246,34 @@ def main():
             del d[key][t]
             if key == 'prices':
                 dropped.append(t)
-    tickers = sorted(t for t in tickers if t not in CRYPTO and not ov.get(t, {}).get('unconfirmed') and not ov.get(t, {}).get('drop'))
+    for t in [t for t, o in ov.items() if o.get('auto') and t not in tickers]:
+        del ov[t]  # automatic matches follow the posts, like prices do
+    recheck = (now - timedelta(days=RECHECK_DAYS)).date().isoformat()
+    due = lambda o: o.get('auto') and o.get('checked', '') <= recheck  # an automatic 未確認 is retried weekly
+    tickers = sorted(t for t in tickers if t not in CRYPTO and not ov.get(t, {}).get('drop') and
+                     (not ov.get(t, {}).get('unconfirmed') or due(ov[t])))
 
     missing, ok = [], 0
+    matched, gave_up = [], []
     sym_of = {}
     for t in tickers:
         sym = ov.get(t, {}).get('symbol') or d['prices'].get(t, {}).get('symbol') or t
         sym_of[t] = sym
         daily = chart(sym, '1y', '1d')
         time.sleep(0.3)
+        mine = t not in ov or ov[t].get('auto')  # never second-guess a hand-written override
+        if (not daily or not daily[1]) and mine:
+            r = lookup(t)
+            if isinstance(r, tuple):
+                sym, daily = r
+                sym_of[t] = sym
+                auto_override(ov, t, sym, daily[0], stamp)
+                matched.append(f'{t}->{sym}')
+            elif r == 'none' and note_miss(ov, t, now, stamp):
+                gave_up.append(t)
+                continue  # 未確認 now: no price, not listed as missing
+        elif daily and daily[1] and mine and t in ov and not ov[t].get('symbol'):
+            del ov[t]  # it was only waiting on a miss; its own symbol works again
         if not daily or not daily[1]:
             missing.append(t)
             continue
@@ -255,6 +348,7 @@ def main():
     open(HTML, 'w', encoding='utf-8').write(s)
     print(f'tickers {len(tickers)} ok {ok} missing {len(missing)} quotes {len(qs)} macro {len(rows)}')
     print('missing:', ','.join(missing))
+    print('auto-matched:', ','.join(matched) or '-', '| marked 未確認:', ','.join(gave_up) or '-')
     print(f'dropped {len(dropped)} no longer mentioned:', ','.join(sorted(dropped)))
     if ok < len(tickers) * 0.5:
         sys.exit('too many price failures; not publishing')
