@@ -1460,9 +1460,10 @@ function addMiniAvatars(root){if(!root)return;root.querySelectorAll('a[href^="ht
 // ---------- 所有 @handle 都連到 X 個人頁（掃描畫面上未連結的文字） ----------
 const HANDLE_RE=/(^|[^A-Za-z0-9_\/.@])@([A-Za-z0-9_]{1,15})(?![A-Za-z0-9_])/g;
 // 窄螢幕放唔落的表格（每週、每月等）改為逐行卡片：第一欄（股票）可換行，其餘欄位附欄名，
-// 確保「一年股價」「淨看多變化」等右邊欄位唔使橫向捲動都見到；矩陣表維持原樣
+// 確保「一年股價」「淨看多變化」等右邊欄位唔使橫向捲動都見到；矩陣表維持原樣；
+// 欄名用 textContent：innerText 喺未畫出嘅區（content-visibility）係空字串，手機卡片會冇欄名
 function fitTables(root){if(!root)return;root.querySelectorAll('.tablewrap,.lb-wrap').forEach(w=>{if(w.querySelector('table.matrix'))return;const t=w.querySelector('table');if(!t)return;
- const hs=[...t.querySelectorAll('thead th')].map(th=>th.innerText.replace(/[↓↑]/g,'').replace(/\s+/g,' ').trim());t.querySelectorAll('tbody tr').forEach(tr=>[...tr.children].forEach((td,i)=>{if(hs[i]&&!td.dataset.l)td.dataset.l=hs[i]}));
+ const hs=[...t.querySelectorAll('thead th')].map(th=>th.textContent.replace(/[↓↑]/g,'').replace(/\s+/g,' ').trim());t.querySelectorAll('tbody tr').forEach(tr=>[...tr.children].forEach((td,i)=>{if(hs[i]&&!td.dataset.l)td.dataset.l=hs[i]}));
  w.classList.remove('stack');if(w.scrollWidth>w.clientWidth+1)w.classList.add('stack')})}
 addEventListener('resize',()=>{fitTables(document.getElementById('view'));const d=document.getElementById('dive');if(d&&!d.hidden)fitTables(d)});
 function linkHandles(root){if(!root)return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const p=n.parentElement;if(!p||p.closest('a,button,script,style,textarea,title,option,svg'))return NodeFilter.FILTER_REJECT;return /@[A-Za-z0-9_]/.test(n.nodeValue)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT}});
