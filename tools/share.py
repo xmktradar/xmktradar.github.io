@@ -444,6 +444,24 @@ def _picture_bundle(day=None):
     return bundle
 
 
+def _x_facts(d, items, s=None):
+    """Per-ticker facts frozen with the captions, so later card rebuilds match the text."""
+    av = lambda h: d['accounts'].get(h, {}).get('avatar') or d.get('avmini', {}).get(h, '')
+    out = {}
+    for x in items:
+        facts = {k: x[k] for k in ('n', 'bull', 'bear', 'streak', 'spark', 'd1')}
+        row = next((r for r in ((s or {}).get('top') or []) if r.get('t') == x['t']), None)
+        if row and row.get('accounts') is not None:
+            facts['n'] = row['accounts']  # accounts mentioning, as on the card's label
+        accs = x.get('accs') or []
+        facts['avs'] = [av(h) for h in accs[:4]]
+        more = len(accs) - 4
+        if more > 0:
+            facts['more'] = more
+        out[x['t']] = facts
+    return out
+
+
 def xcard_data(sp, kind, ticker, text):
     """Per-ticker card payload from build() / stats / dash-data. Omit a field when it is missing."""
     data = {'ticker': ticker, 'date': sp.get('date') or '', 'kind': kind}
@@ -456,6 +474,23 @@ def xcard_data(sp, kind, ticker, text):
         data['mode'] = zh['mode']
     if zh.get('tape'):
         data['tape'] = zh['tape']
+    xf = sp.get('x_facts')
+    snap = xf.get(ticker) if isinstance(xf, dict) else None
+    if isinstance(snap, dict):
+        for k in ('n', 'bull', 'bear'):
+            if snap.get(k) is not None:
+                data[k] = snap[k]
+        if snap.get('streak') and snap['streak'] >= 2:
+            data['streak'] = snap['streak']
+        if snap.get('spark'):
+            data['spark'] = snap['spark']
+        if snap.get('d1') is not None:
+            data['d1'] = snap['d1']
+        if snap.get('avs'):
+            data['avs'] = snap['avs']
+        if snap.get('more'):
+            data['more'] = snap['more']
+        return data
     hit = next((x for x in (items or []) if x.get('t') == ticker), None)
     top_row = next((x for x in ((daily or {}).get('top') or []) if x.get('t') == ticker), None)
     av = None
@@ -541,10 +576,14 @@ def x_entry(sp, kind):
         return None
     text, form = built
     ticker = _text_ticker(text)
+    entry = {'post_at_hkt': X_WHEN[kind], 'text': text, 'image': x_image(sp, kind, ticker),
+             'image_ticker': ticker, 'xlen': xlen(text), 'form': form}
     if ticker:
-        _queue_xcard(xcard_job(sp, kind, ticker, text))
-    return {'post_at_hkt': X_WHEN[kind], 'text': text, 'image': x_image(sp, kind, ticker),
-            'image_ticker': ticker, 'xlen': xlen(text), 'form': form}
+        job = xcard_job(sp, kind, ticker, text)
+        _queue_xcard(job)
+        data = job['data']
+        entry['counts'] = {k: data[k] for k in ('bull', 'bear', 'n') if k in data}
+    return entry
 
 
 def build_x_trilingual(sp, rebuild_premarket=False):
@@ -769,6 +808,7 @@ def main():
               'images': {l: f'{SITE}og/social-{l}.png?v={day}' for l in LANGS},
               'stories': {l: f'{SITE}og/story-{l}.png?v={day}' for l in LANGS},
               'posts': {l: caption(l, day, s, items, win, langs[l]['quote']) for l in LANGS}}
+        sp['x_facts'] = _x_facts(d, items, s)
         tag_posts(sp['posts'], 'daily')
         attach_new_posts(sp, rebuild_premarket=True)  # both X posts; carousel rebuilds premarket after the 2030 slot
         write_json('data/social-posts.json', sp, indent=1)
