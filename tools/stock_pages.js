@@ -390,10 +390,12 @@ ${toTop(T[lang].top)}
 `;
 }
 
+// The long list of every stock page sits folded so phones don't scroll past hundreds of tickers (Tim, 2026-10-21);
+// the links stay in the HTML for search engines.
 function indexRow(lang, list) {
   const links = list.map(t => `<a href="/${lang}/stock/${slug(t)}/">${esc(t)}</a>`).join(' ');
   return `<nav id="stock-index" class="wrap stock-index" aria-label="${esc(T[lang].index)}" style="font-size:12.5px;line-height:2;color:var(--muted);padding:12px 16px 28px">`
-    + `<b>${esc(T[lang].index)}</b>：${links}</nav>`;
+    + `<details><summary><b>${esc(T[lang].index)}</b>${lang === 'zh' ? `（${list.length}）` : ` (${list.length})`}</summary>${links}</details></nav>`;
 }
 
 // One <url> per <loc>; the last copy wins.
