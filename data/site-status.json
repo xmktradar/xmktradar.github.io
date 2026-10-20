@@ -1,19 +1,22 @@
 {
  "note": "Written by GitHub Actions on every update. SuperGrok daily check reads this.",
- "checked_hkt": "2026-10-21 05:15",
- "generated_hkt": "2026-10-21 05:03",
+ "checked_hkt": "2026-10-21 06:29",
+ "generated_hkt": "2026-10-21 06:14",
  "cutoff_hkt": "2026-10-21T02:59:03+08:00",
- "posts_on_site": 3416,
- "added_this_run": 15,
+ "posts_on_site": 3412,
+ "added_this_run": 0,
  "added_without_en_summary": 0,
- "waiting_for_summary": 378,
- "waiting_with_stock": 117,
- "expired_unsummarised_this_run": 1,
- "chitchat_skipped_this_run": 114,
- "pruned_this_run": 1,
- "fetch_failed": [],
+ "waiting_for_summary": 413,
+ "waiting_with_stock": 148,
+ "expired_unsummarised_this_run": 18,
+ "chitchat_skipped_this_run": 194,
+ "pruned_this_run": 4,
+ "fetch_failed": [
+  "finkd（Remote end closed connection without response）"
+ ],
  "warnings": [
-  "未分析：378 則新帖等待 Grok 分析"
+  "攞帖失敗：finkd",
+  "未分析：413 則新帖等待 Grok 分析"
  ],
  "writeups_applied": [
   "zh/daily 2026-10-20",
@@ -64,5 +67,5 @@
   "ko 1280px：今日重點卡有 0 張（應該 3 張）",
   "ko 390px：今日重點卡有 0 張（應該 3 張）"
  ],
- "layout_checked_hkt": "2026-10-21 05:17"
+ "layout_checked_hkt": "2026-10-21 06:31"
 }
