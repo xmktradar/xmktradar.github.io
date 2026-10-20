@@ -7,7 +7,7 @@ data/social-posts.json and social/index.html: posts in Chinese, English and Kore
 (the @thecrowdtape format), Threads, X, Reddit and Facebook, for the Grok bot to post with og/social-<lang>.png,
 plus a 1080x1920 Instagram Story picture og/story-<lang>.png and a native 1080x1350
 Instagram text-post picture og/ig-<lang>.png. Every version asks readers to support the site (PayPal).
-Also writes x_trilingual (one zh+en+ko X post at 21:00 and 08:00 HKT), facebook_cta and ig_threads_daily.
+Also writes x_trilingual (one zh+en+ko X post at 21:00 and 08:00 HKT, picture og/x-<kind>.png for the $TICKER in the text), facebook_cta and ig_threads_daily.
 python3 tools/share.py --og-only writes work/og.json from dash-data + work/stats.json and stops
 (no social posts, no index.html rewrite); used by tools/ig_sample.js.
 """
@@ -402,17 +402,136 @@ def trilingual_text(posts, campaign):
     return text, 'short'
 
 
-def x_image(sp, kind):
-    """Premarket: 2030 slot's first English picture when that slot is today. After close: images['en']."""
-    images = sp.get('images') or {}
-    fallback = images.get('en') or ''
-    if kind != 'premarket':
-        return fallback
-    slot = (sp.get('slots') or {}).get('2030')
-    if not isinstance(slot, dict) or slot.get('day') != sp.get('date'):
-        return fallback
-    en = (slot.get('images') or {}).get('en') or []
-    return en[0] if isinstance(en, list) and en else fallback
+def _text_ticker(text):
+    """The first $TICKER the X text features, or None."""
+    m = _XTICK.search(text or '')
+    return m.group(1) if m else None
+
+
+def _x_headlines(text):
+    """zh/en/ko headline lines from a trilingual X post, verbatim."""
+    heads = []
+    for ln in (text or '').split('\n'):
+        s = ln.strip()
+        if not s:
+            continue
+        if re.search(r'https?://', s) or s.startswith('⚠') or s.startswith('#') or s.startswith('・'):
+            continue
+        heads.append(s)
+        if len(heads) == 3:
+            break
+    return {lang: heads[i] for i, lang in enumerate(LANGS) if i < len(heads)}
+
+
+_BUNDLE = None
+
+
+def _picture_bundle(day=None):
+    """langs, items, dash-data, daily stats — the same sources build() uses. Cached per process."""
+    global _BUNDLE
+    st = read_json(work('stats.json'))
+    if not st or 'daily' not in st:
+        return None, None, None, None
+    day = day or st.get('today')
+    key = (day, st.get('today'), st['daily'].get('from'), st['daily'].get('to'))
+    if _BUNDLE and _BUNDLE[0] == key:
+        return _BUNDLE[1]
+    d = _dash_data()
+    ch = read_json('data/consensus-history.json', {'days': {}})
+    langs, items = build(d, st['daily'], ch, day)
+    bundle = (langs, items, d, st['daily'])
+    _BUNDLE = (key, bundle)
+    return bundle
+
+
+def xcard_data(sp, kind, ticker, text):
+    """Per-ticker card payload from build() / stats / dash-data. Omit a field when it is missing."""
+    data = {'ticker': ticker, 'date': sp.get('date') or '', 'kind': kind}
+    heads = _x_headlines(text)
+    if heads:
+        data['heads'] = heads
+    langs, items, d, daily = _picture_bundle(sp.get('date'))
+    zh = (langs or {}).get('zh') or {}
+    if zh.get('mode'):
+        data['mode'] = zh['mode']
+    if zh.get('tape'):
+        data['tape'] = zh['tape']
+    hit = next((x for x in (items or []) if x.get('t') == ticker), None)
+    top_row = next((x for x in ((daily or {}).get('top') or []) if x.get('t') == ticker), None)
+    av = None
+    if d:
+        av = lambda h: d['accounts'].get(h, {}).get('avatar') or d.get('avmini', {}).get(h, '')
+    if top_row:
+        if top_row.get('accounts') is not None:
+            data['n'] = top_row['accounts']
+        if top_row.get('bull_accounts') is not None:
+            data['bull'] = top_row['bull_accounts']
+        if top_row.get('bear_accounts') is not None:
+            data['bear'] = top_row['bear_accounts']
+        accs = top_row.get('accs') or []
+        if av and accs and 'avs' not in data:
+            avs = [av(h) for h in accs[:4] if av(h)]
+            if avs:
+                data['avs'] = avs
+            extra = len(accs) - len(avs or [])
+            if extra > 0:
+                data['more'] = extra
+    if hit:
+        if 'bull' not in data and hit.get('bull') is not None:
+            data['bull'] = hit['bull']
+        if 'bear' not in data and hit.get('bear') is not None:
+            data['bear'] = hit['bear']
+        if 'n' not in data and hit.get('n') is not None:
+            data['n'] = hit['n']
+        if hit.get('streak') and hit['streak'] >= 2:
+            data['streak'] = hit['streak']
+        if hit.get('spark'):
+            data['spark'] = hit['spark']
+        if hit.get('d1') is not None:
+            data['d1'] = hit['d1']
+        accs = hit.get('accs') or []
+        if av and accs:
+            avs = [av(h) for h in accs[:4] if av(h)]
+            if avs:
+                data['avs'] = avs
+            extra = len(accs) - 4
+            if extra > 0:
+                data['more'] = extra
+            else:
+                data.pop('more', None)
+    if 'spark' not in data and d:
+        c = [r[1] for r in (d.get('prices', {}).get(ticker) or {}).get('c', []) if r[1] is not None]
+        spark = c[-22:]
+        if len(spark) > 1:
+            data['spark'] = spark
+        if len(c) > 1 and c[-2]:
+            data['d1'] = round((c[-1] / c[-2] - 1) * 100, 2)
+    return data
+
+
+def xcard_job(sp, kind, ticker, text, out=None):
+    return {'kind': kind, 'ticker': ticker, 'date': sp.get('date') or '',
+            'out': out or f'og/x-{kind}.png', 'data': xcard_data(sp, kind, ticker, text)}
+
+
+def _queue_xcard(job):
+    """Merge a per-ticker X card job into work/xcards.json, replacing the same kind."""
+    path = work('xcards.json')
+    raw = read_json(path, {'jobs': []})
+    jobs = raw.get('jobs') if isinstance(raw, dict) else raw
+    if not isinstance(jobs, list):
+        jobs = []
+    jobs = [j for j in jobs if j.get('kind') != job.get('kind')]
+    jobs.append(job)
+    write_json(path, {'jobs': jobs}, indent=1)
+
+
+def x_image(sp, kind, ticker=None):
+    """Per-ticker X card when the text features a $TICKER; otherwise the generic English picture."""
+    if ticker:
+        day = sp.get('date') or ''
+        return f'{SITE}og/x-{kind}.png?v={day}-{ticker}'
+    return (sp.get('images') or {}).get('en') or ''
 
 
 def x_entry(sp, kind):
@@ -421,7 +540,11 @@ def x_entry(sp, kind):
     if not built:
         return None
     text, form = built
-    return {'post_at_hkt': X_WHEN[kind], 'text': text, 'image': x_image(sp, kind), 'xlen': xlen(text), 'form': form}
+    ticker = _text_ticker(text)
+    if ticker:
+        _queue_xcard(xcard_job(sp, kind, ticker, text))
+    return {'post_at_hkt': X_WHEN[kind], 'text': text, 'image': x_image(sp, kind, ticker),
+            'image_ticker': ticker, 'xlen': xlen(text), 'form': form}
 
 
 def build_x_trilingual(sp, rebuild_premarket=False):
@@ -647,7 +770,7 @@ def main():
               'stories': {l: f'{SITE}og/story-{l}.png?v={day}' for l in LANGS},
               'posts': {l: caption(l, day, s, items, win, langs[l]['quote']) for l in LANGS}}
         tag_posts(sp['posts'], 'daily')
-        attach_new_posts(sp, rebuild_premarket=True)  # both X posts; 2030's picture replaces premarket later
+        attach_new_posts(sp, rebuild_premarket=True)  # both X posts; carousel rebuilds premarket after the 2030 slot
         write_json('data/social-posts.json', sp, indent=1)
         os.makedirs('social', exist_ok=True)
         open('social/index.html', 'w', encoding='utf-8').write(social_page(sp))

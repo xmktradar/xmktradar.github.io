@@ -672,7 +672,7 @@ def main():
     for sl in (sp.get('slots') or {}).values():
         if sl.get('posts'):
             tag_posts(sl['posts'], 'carousel')
-    # 19:05 writes the 2030 slot before the 21:00 trilingual post, so premarket picks up that picture.
+    # 19:05 writes the 2030 slot before the 21:00 trilingual post, so premarket is rebuilt with that day's card.
     attach_new_posts(sp, rebuild_premarket='2030' in written)
     # The new text goes into place only after tools/carousel.js has drawn the pictures (see update-site.yml).
     write_json(work('carousel.json'), {'date': day, 'jobs': jobs})
