@@ -1196,8 +1196,6 @@ code{{font-size:12px}}.daily{{overflow-x:auto}}td.pics a{{display:inline-block;w
 @media (max-width:700px){{.daily table,.daily tr,.daily td{{display:block;width:auto}}.daily tr:first-child{{display:none}}
 .daily td{{border:0;padding:2px 0}}.daily td::before{{content:attr(data-label);font-weight:700;display:block;font-size:12px;color:#5c6578}}
 .daily tr{{padding:10px 0;border-bottom:1px solid #e4e7ef}}}}</style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-42CSNJ8DF9"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-42CSNJ8DF9');</script>
 <nav class="site-nav" aria-label="網站"><a href="/zh/tools/">工具</a> · <a href="/zh/support/">支持我哋</a></nav>
 <nav class="money-bar" aria-label="推廣"><span class="tag">推廣</span><a href="/zh/tools/">工具</a><a href="/zh/support/">支持我哋</a></nav>
 <h1>{sp['date']} 社交媒體貼文</h1><p>{html.escape(sp['window'])}｜製作時間 {sp['made_hkt']} HKT｜撳圖片可以下載｜<a href="/social/tutorial.html">週末教學貼文</a>｜<a href="/social/macro.html">星期六宏觀貼文</a></p>
@@ -1205,7 +1203,6 @@ code{{font-size:12px}}.daily{{overflow-x:auto}}td.pics a{{display:inline-block;w
 {extras}{old}
 {''.join(rows)}
 <footer class="site-foot"><p><a href="/zh/tools/">工具</a> · <a href="/zh/support/">支持我哋</a> · <a href="/zh/newsletter/">電子報</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">TradingView <span class="tag">推廣</span></a></p></footer>
-<script>document.addEventListener('click',function(e){{var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||!window.gtag)return;var u=a.href,h='';try{{h=new URL(u).hostname.toLowerCase()}}catch(err){{return}}var tool=a.getAttribute('data-tool');if(tool||h==='tradingview.com'||h.endsWith('.tradingview.com'))gtag('event','affiliate_click',{{tool:(tool||'tradingview').toLowerCase(),lang:'zh'}});}});</script>
 </html>
 '''
 
