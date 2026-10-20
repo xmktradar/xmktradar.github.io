@@ -41,7 +41,8 @@ header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-betw
 h1{font-family:var(--f-display);font-size:28px;line-height:1.3;margin:0 0 8px;overflow-wrap:anywhere}
 h2{font-family:var(--f-display);font-size:20px;line-height:1.35;margin:26px 0 8px;overflow-wrap:anywhere}
 h3{font-size:16px;line-height:1.35;margin:16px 0 8px;overflow-wrap:anywhere}
-.lead{margin:0 0 20px}
+.lead{margin:0 0 14px}
+.lead-cta{margin:0 0 8px}
 p,li,dd,dt{overflow-wrap:anywhere}
 .asof{margin:0 0 12px;color:var(--muted);font-size:14px}
 .stats{list-style:none;margin:0;padding:0;display:grid;gap:8px}
@@ -54,7 +55,9 @@ p,li,dd,dt{overflow-wrap:anywhere}
 .faq{margin:0}
 .faq dt{font-weight:700;margin-top:12px}
 .faq dd{margin:2px 0 0}
-.btn{display:inline-block;max-width:100%;margin-top:4px;padding:8px 16px;border-radius:999px;background:var(--accent);color:#fff;font-weight:700;font-size:14px;text-decoration:none;overflow-wrap:anywhere}
+a.btn{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;max-width:100%;margin-top:4px;padding:14px 28px;border-radius:999px;background:var(--accent);color:#fff;font-weight:700;font-size:18px;line-height:1.25;text-align:center;text-decoration:none;overflow-wrap:anywhere}
+.lead-cta a.btn{width:100%;margin-top:0;padding:16px 24px}
+a.btn:hover{filter:brightness(1.06);color:#fff}
 .note{margin-top:16px;padding:14px 16px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;background:var(--accent-soft)}
 .note b{display:block;margin-bottom:4px}
 .note p{margin:0;font-size:14px}
@@ -83,25 +86,25 @@ p,li,dd,dt{overflow-wrap:anywhere}
 <main>
   <h1>用三種語言接觸活躍的美股交易者</h1>
   <p class="lead">我哋追蹤大約 200 個 X 上最受關注嘅美股帳號，每日統計看好同看淡。</p>
+  <p class="lead-cta"><a class="btn contact-mail" href="mailto:grokbottimli@gmail.com?subject=The%20Crowd%20Tape%3A%20%E5%BB%A3%E5%91%8A%E5%90%88%E4%BD%9C%E6%9F%A5%E8%A9%A2" data-u="grokbottimli" data-d="gmail.com" data-s="廣告合作查詢">電郵查詢</a></p>
 
   <h2>讀者</h2>
-  <p class="asof">更新日期：待更新</p>
+  <p>每日以中英韓三語喺 X、Instagram、Threads 同 Facebook 發佈（每種語言各自翻譯）。</p>
+  <p class="asof">更新日期：2026-10-21</p>
   <ul class="stats">
-    <li><span>每月訪客</span><b>數字待更新</b></li>
-    <li><span>電子報訂閱人數</span><b>數字待更新</b></li>
-    <li><span>X 追蹤人數</span><b>數字待更新</b></li>
-    <li><span>Instagram 追蹤人數</span><b>數字待更新</b></li>
-    <li><span>Threads 追蹤人數</span><b>數字待更新</b></li>
-    <li><span>Facebook 追蹤人數</span><b>數字待更新</b></li>
+    <li><span>每月訪客（近 30 日）</span><b>761 人，1349 次瀏覽</b></li>
+    <li><span>X 追蹤人數</span><b>50</b></li>
+    <li><span>X 近 7 日曝光（截至 2026-10-20）</span><b>~5.6K</b></li>
   </ul>
   <h3>語言分佈</h3>
+  <p class="asof">頁面瀏覽按網站語言。</p>
   <ul class="stats">
-    <li><span>中文</span><b>數字待更新</b></li>
-    <li><span>英文</span><b>數字待更新</b></li>
-    <li><span>韓文</span><b>數字待更新</b></li>
+    <li><span>中文</span><b>81%</b></li>
+    <li><span>英文</span><b>15%</b></li>
+    <li><span>韓文</span><b>3%</b></li>
   </ul>
   <h3>主要國家同地區</h3>
-  <p><b>數字待更新</b></p>
+  <p>中國、美國、台灣、香港</p>
 
   <h2>廣告位置</h2>
   <p>入門價每週 US$30–90。</p>
@@ -123,15 +126,15 @@ p,li,dd,dt{overflow-wrap:anywhere}
 
   <h2 id="contact">聯絡</h2>
   <p>想刊登廣告，請電郵查詢。</p>
-  <p><a class="btn" id="contact-mail" href="#contact" data-u="grokbottimli" data-d="gmail.com" data-s="廣告合作查詢">電郵查詢</a></p>
-  <script>(function(){var a=document.getElementById('contact-mail');if(!a)return;var m=a.getAttribute('data-u')+'@'+a.getAttribute('data-d');a.href='mailto:'+m+'?subject='+encodeURIComponent('The Crowd Tape: '+a.getAttribute('data-s'));a.textContent='✉️ '+m;a.addEventListener('click',function(){if(window.gtag)gtag('event','contact_click');});})();</script>
+  <p><a class="btn contact-mail" id="contact-mail" href="mailto:grokbottimli@gmail.com?subject=The%20Crowd%20Tape%3A%20%E5%BB%A3%E5%91%8A%E5%90%88%E4%BD%9C%E6%9F%A5%E8%A9%A2" data-u="grokbottimli" data-d="gmail.com" data-s="廣告合作查詢">電郵查詢</a></p>
+  <script>(function(){var nodes=document.querySelectorAll('a.contact-mail, a#contact-mail');for(var i=0;i<nodes.length;i++){(function(a){var m=a.getAttribute('data-u')+'@'+a.getAttribute('data-d');a.href='mailto:'+m+'?subject='+encodeURIComponent('The Crowd Tape: '+(a.getAttribute('data-s')||''));a.textContent='✉️ '+m;a.addEventListener('click',function(){if(window.gtag)gtag('event','contact_click');});})(nodes[i]);}})();</script>
 
   <h2>常見問題</h2>
   <dl class="faq">
     <dt>點樣報告成效？</dt>
     <dd>成效以點擊報告，用 UTM 同 GA4 統計。</dd>
     <dt>點樣付款？</dt>
-    <dd>付款用 Stripe 或 PayPal 發票。</dd>
+    <dd>付款用 PayPal 發票。</dd>
   </dl>
 
   <aside class="note">
