@@ -762,12 +762,23 @@ table.lb .na{color:var(--mut);font-weight:400}
 .chart{display:block;width:100%;height:auto;overflow:visible}
 .chart .g{stroke:var(--line)}.chart .ln{stroke:var(--chart-line);fill:none;stroke-width:2}.chart .ar{fill:var(--chart-line);opacity:.1}.chart .trk{fill:var(--accent);opacity:.05}
 .chart text.lab{fill:var(--ink)}.chart .bull{fill:var(--bull);stroke:var(--bull)}.chart .bear{fill:var(--bear);stroke:var(--bear)}.chart .neu{fill:var(--neu);stroke:var(--neu)}
-.chart line.vl{fill:none;stroke-dasharray:3 3;opacity:.7}.chart circle.mk{stroke:var(--surface);stroke-width:1.5}
 .rbtn{display:inline-flex;flex-wrap:wrap;justify-content:flex-end;gap:4px}
-.chwrap{position:relative}.ch-avs{position:absolute;display:flex;gap:2px;z-index:1}.ch-avs a{display:block;line-height:0}.ch-avs .post-av{width:22px;height:22px;font-size:10px;border-width:1.5px}
-.ch-tip[hidden]{display:none!important}.ch-tip{position:absolute;z-index:3;display:flex;gap:8px;align-items:center;max-width:260px;padding:6px 10px;background:var(--panel,#fff);border:1px solid var(--line);border-radius:10px;box-shadow:0 4px 14px rgba(0,0,0,.12);font-size:12px;line-height:1.4;pointer-events:auto}.ch-tip .post-av{width:30px;height:30px;flex:none}.ch-tip small{color:var(--mut)}
-.chart circle.mk{cursor:pointer}.rbtn button{font-size:12px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:1px 10px;cursor:pointer}
+.chwrap{position:relative}
+.rbtn button{font-size:12px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:1px 10px;cursor:pointer}
 .rbtn button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.chart g.dot{cursor:pointer;outline:none}.chart g.dot .hit{fill:transparent;stroke:none}.chart g.dot .mk{stroke:var(--surface);stroke-width:2}.chart g.dot.bull .mk{fill:var(--bull)}.chart g.dot.bear .mk{fill:var(--bear)}.chart g.dot.neu .mk{fill:var(--neu)}.chart g.dot.mix .mk{fill:var(--warn)}.chart g.dot.none .mk{fill:var(--surface);stroke:var(--neu);stroke-width:1.5}.chart g.dot.on .mk,.chart g.dot:focus-visible .mk{stroke:var(--ink);stroke-width:2.5}.chart text.num{fill:#fff;stroke:none;font-size:10px;font-weight:700;font-family:var(--f-data);pointer-events:none}
+.ch-sum{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin:2px 0 6px;font-size:13px;color:var(--muted)}.ch-pc{font-family:var(--f-data);font-weight:700;font-size:18px}.ch-pc.up,.ch-since.up{color:var(--bull)}.ch-pc.dn,.ch-since.dn{color:var(--bear)}
+.ch-dot{display:inline-block;width:10px;height:10px;border-radius:50%;flex:none;box-sizing:border-box}.ch-dot.bull{background:var(--bull)}.ch-dot.bear{background:var(--bear)}.ch-dot.neu{background:var(--neu)}.ch-dot.mix{background:var(--warn)}.ch-dot.none{border:1.5px solid var(--neu)}
+.ch-key{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12px;color:var(--muted);margin-top:4px}.ch-key span{display:inline-flex;align-items:center;gap:5px}.ch-key .ch-tap{flex-basis:100%}
+.ch-tlh{display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline;margin:16px 0 8px;padding-top:12px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}.ch-tlh>b{font-family:var(--f-display);font-size:15px;color:var(--ink)}.chg-t{color:var(--accent)}
+.ch-cols{display:grid;gap:8px;align-items:start}@media(min-width:760px){.ch-cols{grid-template-columns:1fr 1fr}}.ch-list details.more{margin-top:8px}.ch-list details.more>summary{margin-bottom:8px}
+.ch-day{border:1px solid var(--line);border-radius:12px;padding:8px 10px;background:var(--surface);scroll-margin:80px;min-width:0}.ch-day.on{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.ch-dh{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}.ch-dh b{color:var(--ink);font-family:var(--f-data)}.ch-since{margin-left:auto;font-family:var(--f-data);font-size:12px}
+.ch-day ul{list-style:none;margin:6px 0 0;padding:0}.ch-row{display:flex;align-items:center;gap:8px;padding:5px 0;text-decoration:none;color:inherit;border-top:1px dashed var(--line)}.ch-day li:first-child .ch-row{border-top:0}
+.ch-row .post-av{width:28px;height:28px;font-size:12px}.ch-who{display:flex;flex-direction:column;min-width:0;flex:1;line-height:1.25}.ch-who b{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ch-who small{font-size:11px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ch-st{display:flex;align-items:center;gap:4px;flex:none}.ch-from{font-size:11px;color:var(--muted);white-space:nowrap}
+.ch-same{display:flex;align-items:center;gap:8px;margin-top:6px}.ch-same .pill{flex:none;margin:0}.ch-avs{display:flex;flex-wrap:wrap;gap:2px}.ch-avs a{line-height:0}.ch-avs .post-av{width:22px;height:22px;font-size:10px;border-width:1.5px}
+@media(max-width:560px){.dim{flex-wrap:wrap;row-gap:2px}.dim small{flex-basis:100%}}
 .divehead .av{width:52px;height:52px;border-radius:50%;object-fit:cover;border:1px solid var(--line);background:var(--neu-soft);display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:700;color:var(--muted);font-size:20px}
 .divehead h1.acct{font-family:var(--f-display)}
 .divehead .nm{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:4px}
@@ -1245,15 +1256,15 @@ function viewMonthly(){
  </div>`}
 
 // ---------- 價格圖（內嵌 SVG） ----------
-let chartRange='3m';
-// 走勢圖區間（短到長）：1日／1星期用 Yahoo 日內價（建站時抓，每 4 小時），其餘用日收市價；冇日內價就唔顯示 1日 掣
-const RANGES=[['1d','1日'],['1w','1星期'],['1m','1個月'],['3m','90日'],['6m','半年'],['1y','1年']];
+let chartRange='28d';
+// 走勢圖區間：1日／1星期用 Yahoo 日內價（建站時抓，每 4 小時），28日用日收市價（帖文只保留 28 日，所以最長 28 日）；冇日內價就唔顯示 1日 掣
+const RANGES=[['1d','1日'],['1w','1星期'],['28d','28日']];
 let INTRA=D.intraday||{};
 const fmtHK=ms=>`${hkDate(ms).slice(5).replace('-','/')} ${hm(ms)}`;
 function chartSeries(t,rg){const I=INTRA[t]||{};
  if(rg==='1d')return I['1d']&&I['1d'].length>1?{pts:I['1d'],intra:true}:null;
  if(rg==='1w'&&I['5d']&&I['5d'].length>1)return {pts:I['5d'],intra:true};
- const c=closes(t);if(!c)return null;const last=Date.parse(c[c.length-1][0]);const span={'1w':7,'1m':31,'3m':90,'6m':183,'1y':400}[rg]||90;
+ const c=closes(t);if(!c)return null;const last=Date.parse(c[c.length-1][0]);const span={'1w':7,'28d':28}[rg]||28;
  return {pts:c.filter(r=>Date.parse(r[0])>=last-span*DAY).map(r=>[Date.parse(r[0]),r[1],r[0]]),intra:false}}
 const rangesFor=t=>RANGES.filter(([k])=>k!=='1d'||chartSeries(t,'1d'));
 function drawChart(t){const el=document.getElementById('chart');if(!el)return;const note=document.getElementById('chnote');if(note)note.textContent='';
@@ -1262,31 +1273,38 @@ function drawChart(t){const el=document.getElementById('chart');if(!el)return;co
  const c=closes(t);if(!c){el.innerHTML=empty(`無股價資料（$${esc(t)} 的股價抓取失敗或尚未抓取）。`);return}
  if(chartRange==='1d'&&!chartSeries(t,'1d'))chartRange='1w';
  const S=chartSeries(t,chartRange);const data=S?S.pts:[];if(data.length<2){el.innerHTML=empty('此區間股價資料不足。');return}
- if(note)note.textContent=S.intra?`日內價（Yahoo Finance，截至 ${fmtHK(data[data.length-1][0])} HKT，每 4 小時更新）・即時報價請看上方 TradingView 走勢圖`:`日收市價（${esc((D.prices[t]||{}).source||'Yahoo Finance')}，最後收市 ${data[data.length-1][2]}${(D.prices[t]||{}).fetched_hkt?`，資料截至 ${fmtHK(Date.parse(D.prices[t].fetched_hkt.replace(' ','T')+':00+08:00'))} HKT`:''}）`;
- const W=Math.max(300,el.clientWidth||760),H=W<500?236:270,L=W<500?44:52,R=10,T=58,B=22;const xs=data.map(r=>r[0]),ys=data.map(r=>r[1]);const x0=xs[0],x1=xs[xs.length-1];let y0=Math.min(...ys),y1=Math.max(...ys);
- const pap=x=>x.p.price_at_post&&x.p.price_at_post[t]!=null&&!(OV[t]&&OV[t].symbol&&OV[t].symbol!==t)?parseFloat(x.p.price_at_post[t]):NaN;// 覆寫報價代號時不用分析師記錄的價（可能是同名美股）
+ const pr=D.prices[t]||{};
+ if(note)note.textContent=S.intra?`日內價（Yahoo Finance，截至 ${fmtHK(data[data.length-1][0])} HKT，每 4 小時更新）・即時報價請看上方 TradingView 走勢圖`:`日收市價（${pr.source||'Yahoo Finance'}${pr.symbol&&pr.symbol!==t?'，'+pr.symbol:''}，${CURNAME[curOf(t)]?curOf(t)+' '+CURNAME[curOf(t)]:curOf(t)}），最後收市 ${data[data.length-1][2]}${pr.fetched_hkt?`，資料截至 ${fmtHK(Date.parse(pr.fetched_hkt.replace(' ','T')+':00+08:00'))} HKT`:''}。圓點位於發帖當日（美東）或之前最近一個交易日的收市價。`;
+ const W=Math.max(300,el.clientWidth||760),H=W<500?200:250,L=W<500?40:52,R=12,T=14,B=22;const xs=data.map(r=>r[0]),ys=data.map(r=>r[1]);const x0=xs[0],x1=xs[xs.length-1];let y0=Math.min(...ys),y1=Math.max(...ys);
+ // 每則提及落在發帖當日（美東）或之前最近一個交易日的收市價；日內則落在最近一個價位（休市時間發的帖貼到下一個開市價位）
  let marks;
- if(S.intra){// 日內：按發帖時間落喺最近一個價位（休市時間發嘅帖貼去下一個開市價位；範圍外唔標）
-  const fAt=INTRA[t]&&INTRA[t].fetched_hkt?Date.parse(INTRA[t].fetched_hkt.replace(' ','T')+':00+08:00'):x1;
-  marks=POSTS.filter(x=>x.t===t&&x.ms>=x0-30*60e3&&x.ms<=Math.max(x1,fAt)).map(x=>{let k=xs.findIndex(v=>v>=x.ms);const after=k<0;if(after)k=xs.length-1;const pv=pap(x);return {x,key:String(xs[k]),xv:xs[k],y:!isNaN(pv)?pv:ys[k],fromPost:!isNaN(pv),snap:after,lab:fmtHK(x.ms)+' HKT'}})}
- else marks=POSTS.filter(x=>x.t===t).map(x=>{const pv=pap(x);const r=closeOn(t,x.p.date_et);return {x,key:r?r[0]:null,xv:r?Date.parse(r[0]):null,y:!isNaN(pv)?pv:(r?r[1]:null),fromPost:!isNaN(pv),lab:r?r[0]:''}}).filter(m=>m.key&&m.xv>=x0&&m.y!=null);
- marks.forEach(m=>{y0=Math.min(y0,m.y);y1=Math.max(y1,m.y)});const pad=(y1-y0)*.06||1;y0-=pad;y1+=pad;
+ if(S.intra){const fAt=INTRA[t]&&INTRA[t].fetched_hkt?Date.parse(INTRA[t].fetched_hkt.replace(' ','T')+':00+08:00'):x1;
+  marks=POSTS.filter(x=>x.t===t&&x.ms>=x0-30*60e3&&x.ms<=Math.max(x1,fAt)).map(x=>{let k=xs.findIndex(v=>v>=x.ms);if(k<0)k=xs.length-1;const hr=chartRange==='1d';return {x,key:hr?String(Math.floor(xs[k]/36e5)):hkDate(xs[k]),xv:xs[k],y:ys[k],lab:hr?fmtHK(Math.floor(xs[k]/36e5)*36e5):fmt(hkDate(xs[k]))}})}
+ else marks=POSTS.filter(x=>x.t===t).map(x=>{const r=closeOn(t,x.p.date_et);return {x,key:r?r[0]:null,xv:r?Date.parse(r[0]):null,y:r?r[1]:null,lab:r?fmt(r[0]):''}}).filter(m=>m.key&&m.xv>=x0&&m.y!=null);
+ const pad=(y1-y0)*.08||1;y0-=pad;y1+=pad;
  const sx=v=>L+(v-x0)/(x1-x0||1)*(W-L-R),sy=v=>T+(1-(v-y0)/(y1-y0))*(H-T-B);const pts=data.map(r=>sx(r[0]).toFixed(1)+','+sy(r[1]).toFixed(1)).join(' ');
- let g='';for(let i=0;i<=3;i++){const v=y0+(y1-y0)*i/3,yy=sy(v);g+=`<line class="g" x1="${L}" x2="${W-R}" y1="${yy}" y2="${yy}"/><text x="${L-6}" y="${yy+3}" text-anchor="end">${v>=1000?Math.round(v).toLocaleString('en-US'):v.toFixed(v<10?2:1)}</text>`}
- const trackFrom=Math.max(x0,Date.parse(addDays(TODAY,-27)));const track=!S.intra&&trackFrom<x1?`<rect x="${sx(trackFrom)}" y="${T-6}" width="${W-R-sx(trackFrom)}" height="${H-T-B+6}" class="trk"/><text x="${sx(trackFrom)+4}" y="${T+6}">追蹤期 28 天</text>`:'';
- const cls=s=>s==='bull'?'bull':s==='bear'?'bear':'neu';const by={};marks.forEach(m=>(by[m.key]=by[m.key]||[]).push(m));let mk='',avs='',k=0;const TIPS=[];
- Object.keys(by).sort((a,b)=>by[a][0].xv-by[b][0].xv).forEach(d=>{const ms=by[d],xx=sx(ms[0].xv),s0=(ms.find(m=>stanced(m.x.s))||ms[0]).x.s,row=k++%2;
-  mk+=`<g><line class="vl ${cls(s0)}" x1="${xx}" x2="${xx}" y1="${row?28:4}" y2="${H-B}"/>${ms.map(m=>{TIPS.push(m);return `<circle class="mk ${cls(m.x.s)}" cx="${xx}" cy="${sy(m.y)}" r="6" data-tip="${TIPS.length-1}" tabindex="0" aria-label="${esc(m.lab)} @${esc(m.x.acc)}：${SLABEL[m.x.s]}"/>`}).join('')}</g>`;
-  const hs=[...new Set(ms.map(m=>m.x.acc))];const right=xx>W*.7;
-  avs+=`<span class="ch-avs${right?' r':''}" style="${right?`right:${Math.max(0,W-xx-11)}px`:`left:${Math.max(0,xx-11)}px`};top:${row?26:2}px">${hs.map(h=>`<a href="${xUrl(h)}" target="_blank" rel="noopener" title="@${esc(h)}" aria-label="@${esc(h)}">${avImg(h,'post-av')}</a>`).join('')}</span>`});
- const xl=v=>S.intra?fmtHK(v):hkDate(v);
- el.innerHTML=`<div class="chwrap"><svg class="chart" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="$${esc(t)} 股價與觀點">${g}${track}<polygon class="ar" points="${sx(x0)},${H-B} ${pts} ${sx(x1)},${H-B}"/><polyline class="ln" points="${pts}"/>${mk}<text x="${L}" y="${H-5}">${S.intra?fmtHK(x0):data[0][2]}</text><text x="${W-R}" y="${H-5}" text-anchor="end">${S.intra?fmtHK(x1)+' HKT':data[data.length-1][2]}</text></svg>${avs}<div class="ch-tip" hidden></div></div>${marks.length?'':'<p class="note">此區間內沒有可標示的觀點。</p>'}`;
- // 懸停／撳標記：顯示頭像＋帳號＋立場＋價位
- const tip=el.querySelector('.ch-tip'),wrap=el.querySelector('.chwrap');
- const show=c=>{const m=TIPS[+c.dataset.tip];if(!m)return;tip.innerHTML=`<a href="${xUrl(m.x.acc)}" target="_blank" rel="noopener">${avImg(m.x.acc,'post-av')}</a><span><b>@${esc(m.x.acc)}</b>・<span class="st ${STC[m.x.s]}">${SLABEL[m.x.s]}</span><br><small>${esc(m.lab)}｜${m.fromPost?'發帖時股價':S.intra?(m.snap?'發帖前最後價':'當時價'):'收市'} ${moneyT(t,m.y)}</small></span>`;tip.hidden=false;
-  const cx=+c.getAttribute('cx'),cy=+c.getAttribute('cy');const tw=tip.offsetWidth;tip.style.left=Math.min(Math.max(0,cx-tw/2),W-tw)+'px';tip.style.top=(cy>H/2?cy-tip.offsetHeight-10:cy+12)+'px'};
- wrap.querySelectorAll('circle.mk').forEach(c=>{c.addEventListener('mouseenter',()=>show(c));c.addEventListener('focus',()=>show(c));c.addEventListener('click',()=>show(c))});
- wrap.addEventListener('mouseleave',()=>{tip.hidden=true})}
+ let g='';for(let i=0;i<=2;i++){const v=y0+(y1-y0)*i/2,yy=sy(v);g+=`<line class="g" x1="${L}" x2="${W-R}" y1="${yy}" y2="${yy}"/><text x="${L-6}" y="${yy+3}" text-anchor="end">${v>=1000?Math.round(v).toLocaleString('en-US'):v.toFixed(v<10?2:v<100?1:0)}</text>`}
+ // 同一天（1日圖為同一小時）的提及合成一個圓點，放在最後一則的價位：每個帳號只計當天最後一則；顏色＝當天淨立場，數字＝帳號數
+ const by={};marks.forEach(m=>(by[m.key]=by[m.key]||[]).push(m));
+ const G=Object.keys(by).map(k=>{const ms0=by[k],a=ms0.reduce((p,m)=>m.xv>p.xv?m:p,ms0[0]);return [k,a]}).sort((p,q)=>p[1].xv-q[1].xv).map(([k,A])=>{const last={};by[k].forEach(m=>{if(!last[m.x.acc]||m.x.ms>last[m.x.acc].x.ms)last[m.x.acc]=m});const ms=Object.values(last).sort((a,b)=>b.x.ms-a.x.ms);
+  const n=s=>ms.filter(m=>m.x.s===s).length;const b=n('bull'),r=n('bear');return {xv:A.xv,y:A.y,lab:A.lab,ms,cl:b>r?'bull':r>b?'bear':b?'mix':ms.some(m=>m.x.s==='neu')?'neu':'none'}});
+ const first=data[0][1],lastP=data[data.length-1][1],pc=(lastP/first-1)*100;
+ const all=G.flatMap(d=>d.ms),cnt=s=>all.filter(m=>m.x.s===s).length,turns=all.filter(m=>change(prevStance(m.x.acc,t,m.x.ms),m.x)).length;
+ let mk='';G.forEach((d,i)=>{const xx=sx(d.xv),yy=sy(d.y),n=d.ms.length;
+  mk+=`<g class="dot ${d.cl}" data-g="${i}" tabindex="0" role="button" aria-label="${esc(d.lab)}：${n} 個帳號"><circle cx="${xx}" cy="${yy}" r="14" class="hit"/><circle cx="${xx}" cy="${yy}" r="${n>1?8.5:6}" class="mk"/>${n>1?`<text x="${xx}" y="${yy+3.5}" text-anchor="middle" class="num">${n}</text>`:''}</g>`});
+ const href=m=>esc(m.x.p.url||xUrl(m.x.acc));
+ const rowHtml=m=>{const p=prevStance(m.x.acc,t,m.x.ms);return `<li><a class="ch-row" href="${href(m)}" target="_blank" rel="noopener">${avImg(m.x.acc,'post-av')}<span class="ch-who"><b>${esc(nameOf(m.x.acc))}</b><small>@${esc(m.x.acc)}</small></span><span class="ch-st"><span class="ch-from">${p?SLABEL[p.s]:'首次表態'} →</span>${pill(m.x.s,m.x.star)}</span></a></li>`};
+ // 每日卡：轉向及首次表態逐行列出；立場不變及未表態只顯示頭像
+ const dayHtml=(d,i)=>{const since=(lastP/d.y-1)*100;const isNew=m=>{const p=prevStance(m.x.acc,t,m.x.ms);return stanced(m.x.s)&&(!p||p.s!==m.x.s)};const big=d.ms.filter(isNew),rest=d.ms.filter(m=>!isNew(m));
+  const same=[['bull','維持看多'],['neu','維持中性'],['bear','維持看空'],['none','未表態']].map(([s,l])=>{const xs=rest.filter(m=>m.x.s===s);return xs.length?`<div class="ch-same"><span class="pill ${s}">${l}</span><span class="ch-avs">${xs.map(m=>`<a href="${href(m)}" target="_blank" rel="noopener" title="@${esc(m.x.acc)}" aria-label="@${esc(m.x.acc)}">${avImg(m.x.acc,'post-av')}</a>`).join('')}</span></div>`:''}).join('');
+  return `<div class="ch-day" id="chd-${i}"><div class="ch-dh"><span class="ch-dot ${d.cl}"></span><b>${esc(d.lab)}</b><span>${S.intra?'當時價':'收市'} ${moneyT(t,d.y)}</span><span class="ch-since ${since>=0?'up':'dn'}">至今 ${since>=0?'+':''}${since.toFixed(1)}%</span></div>${big.length?`<ul>${big.map(rowHtml).join('')}</ul>`:''}${same}</div>`};
+ const rev=G.map((d,i)=>[d,i]).reverse(),SHOW=4;
+ el.innerHTML=`<div class="ch-sum"><span class="ch-pc ${pc>=0?'up':'dn'}">${pc>=0?'▲':'▼'} ${Math.abs(pc).toFixed(1)}%</span><span>${moneyT(t,first)} → ${moneyT(t,lastP)}</span></div>
+ <div class="chwrap"><svg class="chart" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="$${esc(t)} 股價與觀點">${g}<polygon class="ar" points="${sx(x0)},${H-B} ${pts} ${sx(x1)},${H-B}"/><polyline class="ln" points="${pts}"/>${mk}<text x="${L}" y="${H-5}">${S.intra?fmtHK(x0):data[0][2]}</text><text x="${W-R}" y="${H-5}" text-anchor="end">${S.intra?fmtHK(x1)+' HKT':data[data.length-1][2]}</text></svg></div>
+ <div class="ch-key"><span><i class="ch-dot bull"></i>看多為主</span><span><i class="ch-dot bear"></i>看空為主</span><span><i class="ch-dot mix"></i>多空各半</span><span><i class="ch-dot neu"></i>中性／未表態</span><span class="ch-tap">圓點數字＝帳號數，點一下可查看是哪些帳號</span></div>
+ ${G.length?`<div class="ch-tlh"><b>期內觀點</b><span>看多 ${cnt('bull')}・中性 ${cnt('neu')}・看空 ${cnt('bear')}・未表態 ${cnt('none')}${turns?`・<b class="chg-t">轉向 ${turns}</b>`:''}</span></div><div class="ch-list"><div class="ch-cols">${rev.slice(0,SHOW).map(([d,i])=>dayHtml(d,i)).join('')}</div>${rev.length>SHOW?`<details class="more"><summary>較早的 ${rev.length-SHOW} ${chartRange==='1d'?'個時段':'天'}</summary><div class="ch-cols">${rev.slice(SHOW).map(([d,i])=>dayHtml(d,i)).join('')}</div></details>`:''}</div>`:'<p class="note">此區間內沒有可標示的觀點。</p>'}`;
+ // 點圓點：跳到下方當天的卡並高亮（手機沒有滑鼠懸停）
+ el.querySelectorAll('g.dot').forEach(o=>{const go=()=>{const d=el.querySelector('#chd-'+o.dataset.g);if(!d)return;const dt=d.closest('details');if(dt)dt.open=true;el.querySelectorAll('.ch-day.on,g.dot.on').forEach(x=>x.classList.remove('on'));d.classList.add('on');o.classList.add('on');d.scrollIntoView({behavior:'smooth',block:'nearest'})};o.addEventListener('click',go);o.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}})})}
 
 // ---------- 個股深入分析 ----------
 // ---------- 個股頁 TradingView 免費走勢圖（設計稿 .tv-card）：只用寫手提供嘅代號對照，唔估 ----------
@@ -1331,9 +1349,8 @@ function openDive(t){
    ${stars?'<p class="ref">＊ 多股帖：分析師只標示整篇帖立場，此處套用到帖內每隻股票，請點原文核對。</p>':''}</section>
   <div class="c12 dim">當前觀點 <small>各帳號最新表態的立場與推論依據；變化為對比該帳號上一次表態</small></div>
   <section class="c12">${recent.length?`<div class="acc-cards">${recent.map(y=>`<div class="acc-card ${y.cur.s==='none'?'':y.cur.s}"><div><b>${esc(nameOf(y.a))}</b> ${accLink(y.a)}${accIn(y.a)}</div><div>${pill(y.cur.s,y.cur.star)} ${y.chAll?`<span class="pill chg">${y.chAll}（原${SLABEL[prevStance(y.a,t,y.cur.ms).s]}）</span>`:stanced(y.cur.s)?'<span class="note">首次表態</span>':''} ${y.ch?`<span class="pill info">近 7 天${y.ch}</span>`:''}</div><div class="note">${esc([y.cur.p.basis,y.cur.p.horizon].filter(Boolean).join('・')||'未標示依據')}・${esc(y.cur.why)}</div><div class="handle">${y.cur.p.time_hkt.slice(0,10)} ${y.cur.p.time_hkt.slice(11,16)} HKT <a href="${esc(y.cur.url)}" target="_blank" rel="noopener">原始貼文 ↗</a></div></div>`).join('')}</div>`:empty('沒有帳號提及此股票。')}</section>
-  <div class="c12 dim">近期變化 <small>股價走勢與關鍵觀點（圓點為提及此股票的貼文，滑過可看內容）</small></div>
-  <section class="c12 panel"><div style="display:flex;justify-content:flex-end;margin-bottom:6px"><span class="rbtn" id="rbtn">${rangesFor(t).map(([k2,l])=>`<button type="button" data-r="${k2}" aria-pressed="${chartRange===k2}">${l}</button>`).join('')}</span></div><div id="chart"></div><p class="note" id="chnote"></p>
-   <div style="margin-top:6px">${legend}</div><p class="note">${pr?`股價：${esc(pr.source)} 日收市價（${pr.symbol&&pr.symbol!==t?esc(pr.symbol)+'，':''}${esc(CURNAME[curOf(t)]?curOf(t)+' '+CURNAME[curOf(t)]:curOf(t))}），截至 ${esc(pr.as_of)}（${tradeDay(t)}），抓取於 ${esc(pr.fetched_hkt)} HKT。標記位於發帖當日（美東）或之前最近一個交易日的收市價。`:''}</p></section>
+  <div class="c12 dim">近期變化 <small>股價走勢，以及哪些帳號在哪一天表態或轉向</small></div>
+  <section class="c12 panel"><div style="display:flex;justify-content:flex-end;margin-bottom:6px"><span class="rbtn" id="rbtn">${rangesFor(t).map(([k2,l])=>`<button type="button" data-r="${k2}" aria-pressed="${chartRange===k2}">${l}</button>`).join('')}</span></div><div id="chart"></div><p class="note" id="chnote" style="margin-bottom:0"></p></section>
   <div class="c12 dim">歷史脈絡 <small>敘事如何隨時間演變，用來理解目前的看法</small></div>
   <section class="c6 panel"><h2>按週整理 <span class="sub">最近 4 週</span></h2><ul class="tl">${weeks.slice().reverse().map(wk=>`<li class="${wk.b>wk.r?'bull':wk.r>wk.b?'bear':wk.ps.length?'':'none'}"><div class="wk">${fmt(wk.f)}–${fmt(wk.e)}・${wk.ps.length} 則・多 ${wk.b} / 空 ${wk.r}</div>${wk.key?`<div>@${esc(wk.key.acc)}：${esc(wk.key.why)}（${SLABEL[wk.key.s]}）</div>`:'<div class="note">沒有討論</div>'}</li>`).join('')}</ul></section>
   <section class="c6 panel"><h2>重要觀點及其演變 <span class="sub">新到舊</span></h2>${evo.length?evo.map(x=>postHtml(x.p,t)).join(''):empty('沒有已標示立場的觀點。')}${all.filter(x=>!stanced(x.s)).length?`<details class="more"><summary>未表態的提及（${all.filter(x=>!stanced(x.s)).length}）</summary>${all.filter(x=>!stanced(x.s)).reverse().map(x=>postHtml(x.p,t)).join('')}</details>`:''}<p class="ref">帖中提及的「資金流向／交易紀錄」只反映帳號自己的說法，標示為「據貼文所述」，未經查證。</p></section>
@@ -1422,7 +1439,7 @@ let AVMINI=D.avmini||{};
 const miniAv=h=>{const i=infoOf(h);const src=(i.avatar&&/^data:image\//.test(i.avatar))?i.avatar:AVMINI[h.toLowerCase()];
  if(src){const im=document.createElement('img');im.className='xh-av';im.src=src;im.alt='';return im}
  const sp=document.createElement('span');sp.className='xh-av ini';sp.setAttribute('aria-hidden','true');sp.textContent=(h.replace(/^_+/,'')[0]||'@').toUpperCase();return sp};
-function addMiniAvatars(root){if(!root)return;root.querySelectorAll('a[href^="https://x.com/"],a[href^="https://truthsocial.com/@"]').forEach(a=>{if(a.closest('svg,.acc,.trk,.post-who,.ch-avs,.ch-tip'))return;const m=a.textContent.trim().match(/^@([A-Za-z0-9_]{1,15})$/);if(!m||a.querySelector('.xh-av'))return;a.classList.add('xh');a.prepend(miniAv(m[1]))})}
+function addMiniAvatars(root){if(!root)return;root.querySelectorAll('a[href^="https://x.com/"],a[href^="https://truthsocial.com/@"]').forEach(a=>{if(a.closest('svg,.acc,.trk,.post-who,.ch-avs,.ch-row'))return;const m=a.textContent.trim().match(/^@([A-Za-z0-9_]{1,15})$/);if(!m||a.querySelector('.xh-av'))return;a.classList.add('xh');a.prepend(miniAv(m[1]))})}
 
 // ---------- 所有 @handle 都連到 X 個人頁（掃描畫面上未連結的文字） ----------
 const HANDLE_RE=/(^|[^A-Za-z0-9_\/.@])@([A-Za-z0-9_]{1,15})(?![A-Za-z0-9_])/g;
