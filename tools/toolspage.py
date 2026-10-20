@@ -4,20 +4,46 @@ i18n/<lang>.json["toolspage"] maps each Chinese string to its translation.
 Writes tools/index.html (Chinese) and zh|en|ko/tools/index.html, and lists
 the three language URLs in sitemap.xml.
 The IBKR card (data-region="ibkr") is omitted on the Korean page.
-The Stock Rover card stays hidden until STOCKROVER_URL is a real URL.
+Cards follow data/money-links.json: a card shows only when enabled AND it
+earns (affiliate/referral). Stock Rover is shown only when tools.stockrover
+is true and stockrover_url is a real URL; otherwise the card is removed.
 """
 import html as html_lib
 import json
 import os
 import re
 
-# Leave empty until there is a real Stock Rover URL. No placeholder link.
-STOCKROVER_URL = ''
-
 SITE = 'https://thecrowdtape.com/'
 LANGS = {'zh': 'zh-Hant', 'en': 'en', 'ko': 'ko'}
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HAN = re.compile(r'[\u4e00-\u9fff]')
+DEFAULT_TOOLS = {
+    'tradingview': True,
+    'finviz': False,
+    'koyfin': False,
+    'ibkr': False,
+    'stockrover': False,
+}
+
+
+def money_links():
+    """Load data/money-links.json. Defaults: tradingview true, others false."""
+    tools = dict(DEFAULT_TOOLS)
+    url = ''
+    path = os.path.join(ROOT, 'data', 'money-links.json')
+    try:
+        data = json.load(open(path, encoding='utf-8'))
+    except (OSError, json.JSONDecodeError):
+        return tools, url
+    if not isinstance(data, dict):
+        return tools, url
+    got = data.get('tools') or {}
+    if isinstance(got, dict):
+        tools.update(got)
+    url = data.get('stockrover_url') or ''
+    if not isinstance(url, str):
+        url = ''
+    return tools, url
 
 
 def table(lang):
@@ -34,23 +60,38 @@ def apply(html, tr):
     return html
 
 
-def stockrover(html):
-    """Show the Stock Rover card only when STOCKROVER_URL is non-empty."""
-    url = (STOCKROVER_URL or '').strip()
+def stockrover(html, url):
+    """Fill Stock Rover placeholders; hide the card when the URL is empty."""
+    url = (url or '').strip()
     if url:
         return html.replace('{{sr_hidden}}', '').replace('{{sr_href}}', html_lib.escape(url, quote=True))
     return html.replace('{{sr_hidden}}', ' hidden').replace('{{sr_href}}', '')
 
 
-def page(template, lang):
+def drop_disabled(html, tools):
+    """Remove each <article> whose inner a.tool-btn has tools[data-tool] false."""
+    def keep(m):
+        art = m.group(0)
+        btn = re.search(r'<a class="tool-btn"[^>]*\bdata-tool="([^"]+)"', art)
+        if btn and tools.get(btn.group(1)) is False:
+            return ''
+        return art
+    return re.sub(r'\s*<article\b[^>]*>.*?</article>', keep, html, flags=re.S)
+
+
+def page(template, lang, tools, sr_url):
     cur = {k: (' aria-current="page"' if k == lang else '') for k in LANGS}
-    html = stockrover(template)
+    html = stockrover(template, sr_url)
     html = html.replace('{{lang}}', LANGS[lang]).replace('{{lang_code}}', lang)
     html = html.replace('{{canon}}', f'{SITE}{lang}/tools/')
     html = html.replace('{{home}}', f'/{lang}/')
     for k, mark in cur.items():
         html = html.replace('{{cur_%s}}' % k, mark)
     html = apply(html, table(lang))
+    enabled = dict(tools)
+    if not (sr_url or '').strip():
+        enabled['stockrover'] = False
+    html = drop_disabled(html, enabled)
     if lang == 'ko':
         html = re.sub(r'\s*<article\b[^>]*\bdata-region="ibkr"[^>]*>.*?</article>', '', html, flags=re.S)
     return html
@@ -103,12 +144,13 @@ def sitemap():
 
 def main():
     os.chdir(ROOT)
+    tools, sr_url = money_links()
     template = open(os.path.join(ROOT, 'tools', 'toolspage.html'), encoding='utf-8').read()
-    zh = page(template, 'zh')
+    zh = page(template, 'zh', tools, sr_url)
     write('tools/index.html', zh)
     write('zh/tools/index.html', zh)
     for lang in ('en', 'ko'):
-        html = page(template, lang)
+        html = page(template, lang, tools, sr_url)
         body = re.sub(r'<nav class="lang".*?</nav>', '', html, flags=re.S)
         left = HAN.findall(body)
         if left:
