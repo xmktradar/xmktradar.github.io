@@ -26,6 +26,36 @@ HTML = 'index.html'
 SITE = 'https://thecrowdtape.com/'
 LANGS = ('zh', 'en', 'ko')
 SOCIAL_HOUR = 7  # first update at or after this HKT hour writes the day's posts
+
+
+def page_url(lang, path=''):
+    """Absolute page URL under /{lang}/.
+
+    Stock pages are /{lang}/stock/<T>/ (root /stock/<T>/ is 404). A path that already
+    starts with zh/, en/, ko/, or a leading slash is rewritten under `lang`.
+    """
+    if lang not in LANGS:
+        lang = 'en'
+    path = (path or '').strip()
+    if path.startswith('http://') or path.startswith('https://'):
+        return path
+    if path.startswith('/'):
+        path = path[1:]
+    for pfx in ('zh/', 'en/', 'ko/'):
+        if path.startswith(pfx):
+            path = path[len(pfx):]
+            break
+    if path.startswith('#'):
+        return f'{SITE}{lang}/{path}'
+    if path and not path.endswith('/'):
+        path += '/'
+    return f'{SITE}{lang}/{path}'
+
+
+def stock_url(lang, ticker):
+    """/{lang}/stock/<TICKER>/ . Root /stock/<TICKER>/ is 404."""
+    ticker = re.sub(r'[^A-Z0-9.\-]', '', (ticker or '').strip().lstrip('$').upper())
+    return page_url(lang, f'stock/{ticker}/')
 # Social posts only go out on US trading days, Monday to Friday (Tim, 2026-10-12). NYSE full-day closures:
 US_HOLIDAYS = {'2026-01-01', '2026-01-19', '2026-02-16', '2026-04-03', '2026-05-25', '2026-06-19', '2026-07-03',
                '2026-09-07', '2026-11-26', '2026-12-25',
@@ -235,7 +265,7 @@ def caption(lang, day, s, items, win, quote_):
         extra.append(L['sum'])
     q = L['q'](quote_) if quote_ and quote_.get('text') else None
     tg = tags(lang, [x['t'] for x in items])
-    url = f'{SITE}{lang}/'
+    url = page_url(lang)
     short = SHORT[lang]
 
     # Instagram: the full post in Tim's format ("link in bio", since IG captions have no links).
@@ -291,17 +321,27 @@ def caption(lang, day, s, items, win, quote_):
             'story': ' '.join(tg.split(' ')[:3] + [f'#{t}' for t in tks[:2]])}
 
 
+# URL body is ASCII. CJK, Hangul and emoji after a link are weighted on their own, not swallowed into the 23.
+_XURL = re.compile(r'https?://[A-Za-z0-9\-._~:/?#\[\]@!$&\'()*+,;=%]+')
+
+
 def xlen(t):
-    """Length as X counts it: links count 23, Chinese, Japanese, Korean and emoji count 2."""
-    t = re.sub(r'https?://\S+', 'x' * 23, t)
-    return sum(2 if ord(c) >= 0x1100 else 1 for c in t)
+    """Length as X counts it: each URL counts 23, Chinese, Japanese, Korean and emoji count 2."""
+    def weight(s):
+        return sum(2 if ord(c) >= 0x1100 else 1 for c in s)
+
+    n, i = 0, 0
+    for m in _XURL.finditer(t or ''):
+        n += weight(t[i:m.start()]) + 23
+        i = m.end()
+    return n + weight((t or '')[i:])
 
 
 SHORT = {'zh': {'live': '最新數字 👉 ', 'give': '☕ 鍾意就支持我哋 👉 ', 'disc': '⚠️ 唔構成投資建議', 'disc_long': '⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。投資有風險，請自行判斷。'},
          'en': {'live': 'Live numbers 👉 ', 'give': '☕ Support the site 👉 ', 'disc': '⚠️ Not investment advice', 'disc_long': '⚠️ A summary of public social media posts, not investment advice. Investing involves risk; do your own research.'},
          'ko': {'live': '최신 수치 👉 ', 'give': '☕ 후원하기 👉 ', 'disc': '⚠️ 투자 조언 아님', 'disc_long': '⚠️ 공개 SNS 게시물을 정리한 것으로 투자 조언이 아닙니다. 투자에는 위험이 따르니 스스로 판단하세요.'}}
 
-# One extra line under the Facebook post. The link is the site root, campaign newsletter.
+# One extra line under the Facebook post. The link is that language's home, campaign newsletter.
 FB_CTA = {'zh': '📬 訂閱免費電子報 👉 ', 'en': '📬 Get the free newsletter 👉 ', 'ko': '📬 무료 뉴스레터 구독 👉 '}
 X_WHEN = {'premarket': '21:00', 'afterclose': '08:00'}
 _XDATE = re.compile(r'^(\d{1,2}/\d{1,2}|[A-Z][a-z]{2}\s+\d{1,2})')
@@ -311,7 +351,7 @@ _XEMOJI = re.compile(r'\s*[📊💬🚀⚔️]+\s*$')
 
 def facebook_cta(text, lang):
     """Facebook text plus the newsletter line. `text` is kept as it already is."""
-    line = FB_CTA[lang] + tag_url(SITE, 'fb', 'newsletter')
+    line = FB_CTA[lang] + tag_url(page_url(lang), 'fb', 'newsletter')
     text = (text or '').rstrip()
     return f'{text}\n\n{line}' if text else line
 
@@ -370,38 +410,175 @@ def _disc_line():
     return ' · '.join(SHORT[lang]['disc'] for lang in LANGS)
 
 
+def _x_link(lang, campaign):
+    """Language home for an X post, with the same utm on every language."""
+    return tag_url(page_url(lang), 'x', campaign)
+
+
+def _ticker_fact(line):
+    m = re.search(r'\$[A-Z]{1,6}.*$', line or '')
+    return m.group(0) if m else (line or '')
+
+
+def _keep_frame(line):
+    """Shorten a premarket line without dropping 開市前 / pre-market / 개장 전."""
+    for frame in ('開市前：', 'pre-market:', '개장 전:'):
+        i = (line or '').find(frame)
+        if i < 0:
+            continue
+        pre = line[:i + len(frame)]
+        fact = _ticker_fact(line[i + len(frame):].strip())
+        if not fact:
+            return pre
+        if pre.endswith('：'):
+            return f'{pre}{fact}'
+        return f'{pre} {fact}'
+    return _short_headline(line)
+
+
+def _shrink_headline(line):
+    if line and any(k in line for k in ('開市前', 'pre-market', '개장 전')):
+        return _keep_frame(line)
+    return _short_headline(line)
+
+
+def _assemble_lang_lines(pairs, disc, extra=''):
+    """Each headline followed by that language's URL, then the optional ticker block and disclaimer."""
+    out = []
+    for line, url in pairs:
+        if line:
+            out.append(line)
+        if url:
+            out.append(url)
+    if extra:
+        out.append(extra.strip('\n'))
+    if disc:
+        out.append(disc)
+    return '\n'.join(out)
+
+
+def _cap_pairs(pairs, disc):
+    """Shorten the longest headline until the post is within 280. Language URLs stay.
+
+    The cut is taken off the end, so a leading ticker and language marker stay.
+    """
+    ps = [(line, url) for line, url in pairs]
+    text = _assemble_lang_lines(ps, disc)
+    for _ in range(400):
+        if xlen(text) <= 280:
+            return text
+        i = max(range(len(ps)), key=lambda k: xlen(ps[k][0] or ''))
+        line, url = ps[i]
+        if not line or xlen(line) <= 12:
+            break
+        drop = 8 if len(line) > 24 else 2
+        cut = line[:-drop].rstrip()
+        if not cut or cut == line:
+            break
+        ps[i] = (cut + '…', url)
+        text = _assemble_lang_lines(ps, disc)
+    return text
+
+
+def _fit_lang_lines(pairs, disc, shorten=True):
+    """Fit headline/URL pairs into 280. Every language URL stays.
+
+    Full disclaimer first, then SHORT['en']['disc'], then a shorter headline, then the ticker clause.
+    """
+    en = SHORT['en']['disc']
+
+    def try_fit(ps, d):
+        text = _assemble_lang_lines(ps, d)
+        return text if xlen(text) <= 280 else None
+
+    hit = try_fit(pairs, disc)
+    if hit:
+        return hit
+    hit = try_fit(pairs, en)
+    if hit or not shorten:
+        return hit or _assemble_lang_lines(pairs, en)
+    shrunk = [(_shrink_headline(line), url) for line, url in pairs]
+    hit = try_fit(shrunk, disc) or try_fit(shrunk, en)
+    if hit:
+        return hit
+    facts = [(_ticker_fact(line) or line, url) for line, url in shrunk]
+    return try_fit(facts, en) or _cap_pairs(facts, en)
+
+
+def _split_lang_post(text):
+    """(headline, url) pairs and the disclaimer. Bullet lines are dropped. Missing URLs use premarket."""
+    pairs, disc, pending = [], None, None
+    for ln in (text or '').split('\n'):
+        s = ln.strip()
+        if not s or s.startswith('・'):
+            continue
+        if re.fullmatch(r'https?://\S+', s):
+            if pending is not None:
+                pairs.append((pending, s))
+                pending = None
+            elif pairs and pairs[-1][1] is None:
+                pairs[-1] = (pairs[-1][0], s)
+            else:
+                pairs.append(('', s))
+            continue
+        um = re.search(r'https?://\S+', s)
+        if um and um.start() > 0:
+            if pending is not None:
+                pairs.append((pending, None))
+                pending = None
+            pairs.append((s[:um.start()].strip(), um.group(0)))
+            continue
+        if s.startswith(('⚠', '#')):
+            disc = s
+            continue
+        if pending is not None:
+            pairs.append((pending, None))
+        pending = s
+    if pending is not None:
+        pairs.append((pending, None))
+    filled = []
+    for i, (head, url) in enumerate(pairs):
+        if not url and i < len(LANGS):
+            url = _x_link(LANGS[i], 'premarket')
+        filled.append((head, url))
+    return filled, disc or _disc_line()
+
+
 def trilingual_text(posts, campaign):
     """One X post, zh then en then ko, from the headlines and joint-bull lines already in posts[lang]['x'].
 
-    Full form is headline per language, those ticker lines, one site link and the one-line disclaimer.
-    When that is over 280 (X count), the short form keeps a short headline per language, the link and
-    the disclaimer. Returns (text, form) or None when there is no headline.
+    Each language headline is followed by that language's home URL (same utm: source x, this campaign).
+    Full form also keeps the joint-bull ticker lines and the one-line disclaimer. When that is over 280
+    (X count, each URL 23), the short form drops the ticker lines, then SHORT['en']['disc'], then the
+    ticker clause only. The three language links stay. Returns (text, form) or None when there is no headline.
     """
-    heads, shorts = [], []
+    rows = []
     for lang in LANGS:
         p = posts.get(lang) if isinstance(posts, dict) else None
         head, _ = _x_head_body(p.get('x') if isinstance(p, dict) else '')
         if not head:
             continue
-        heads.append(head)
-        shorts.append(_short_headline(head))
-    if not heads:
+        rows.append((lang, head, _short_headline(head)))
+    if not rows:
         return None
-    url = tag_url(SITE, 'x', campaign)
+    urls = [_x_link(lang, campaign) for lang, _, _ in rows]
     disc = _disc_line()
     tick = _ticker_block(posts)
-    full = '\n'.join(heads + ([tick] if tick else []) + [url, disc])
+    full_pairs = [(head, url) for (_, head, _), url in zip(rows, urls)]
+    full = _assemble_lang_lines(full_pairs, disc, tick)
     if xlen(full) <= 280:
         return full, 'full'
-    text = '\n'.join([s for s in shorts if s] + [url, disc])
-    if xlen(text) > 280:  # still over: one disclaimer, then the ticker clause only
-        text = '\n'.join([s for s in shorts if s] + [url, SHORT['en']['disc']])
+    short_pairs = [(short, url) for (_, _, short), url in zip(rows, urls)]
+    text = _assemble_lang_lines(short_pairs, disc)
+    if xlen(text) <= 280:
+        return text, 'short'
+    text = _assemble_lang_lines(short_pairs, SHORT['en']['disc'])
+    if xlen(text) <= 280:
+        return text, 'short'
+    facts = [(_ticker_fact(short) or short, url) for (_, _, short), url in zip(rows, urls)]
+    text = _assemble_lang_lines(facts, SHORT['en']['disc'])
     if xlen(text) > 280:
-        facts = []
-        for s in shorts:
-            m = re.search(r'\$[A-Z]{1,6}.*$', s)
-            facts.append(m.group(0) if m else s)
-        text = '\n'.join([f for f in facts if f] + [url, SHORT['en']['disc']])
+        text = _cap_pairs(facts, SHORT['en']['disc'])
     return text, 'short'
 
 
@@ -706,23 +883,15 @@ def _lead_lines(sp, rows):
 
 
 def _fit_premarket(text):
-    """Drop joint-bull bullets, then extra languages, until the post is within 280."""
+    """Drop joint-bull bullets, then the long disclaimer, until the post is within 280.
+
+    Each language line keeps its own URL. Headlines are shortened only after SHORT['en']['disc']
+    still does not fit.
+    """
     if xlen(text) <= 280:
         return text
-    url_m = re.search(r'https?://\S+', text or '')
-    url = url_m.group(0) if url_m else tag_url(SITE, 'x', 'premarket')
-    heads = []
-    for ln in (text or '').split('\n'):
-        s = ln.strip()
-        if not s or re.search(r'https?://', s) or s.startswith(('⚠', '#', '・')):
-            continue
-        heads.append(s)
-    for disc in (_disc_line(), SHORT['en']['disc']):
-        for n in range(len(heads), 0, -1):
-            cand = '\n'.join(heads[:n] + [url, disc])
-            if xlen(cand) <= 280:
-                return cand
-    return '\n'.join([url, SHORT['en']['disc']])
+    pairs, disc = _split_lang_post(text)
+    return _fit_lang_lines(pairs, disc, shorten=True)
 
 
 def _apply_frame(line, frame, token):
@@ -784,7 +953,8 @@ def premarket_text(sp, force_fallback=False):
     When the top two of that order tie on bull, both lead (`各 N` / `each` / `각각`).
     Otherwise the first ticker leads with its bull count and the next ticker is named with its count.
     Missing or empty x_facts uses trilingual headlines prefixed by the premarket framing.
-    Returns (text, form) or None. The URL campaign is premarket, then _disc_line(). xlen is at most 280.
+    Returns (text, form) or None. Each language line has its own URL (campaign premarket), then
+    _disc_line() or SHORT['en']['disc'] when that is what fits. xlen is at most 280.
     """
     if not isinstance(sp, dict):
         sp = {}
@@ -793,11 +963,14 @@ def premarket_text(sp, force_fallback=False):
     if not force_fallback:
         rows = _premarket_rows(sp)
         if rows:
+            urls = [_x_link(lang, 'premarket') for lang in LANGS]
             lines = list(_lead_lines(sp, rows))
-            text = _fit_premarket('\n'.join(lines + [tag_url(SITE, 'x', 'premarket'), _disc_line()]))
+            text = _fit_lang_lines(list(zip(lines, urls)), _disc_line(), shorten=False)
             if xlen(text) > 280 and len(rows) >= 2:
                 lines = list(_lead_lines(sp, rows[:1]))
-                text = _fit_premarket('\n'.join(lines + [tag_url(SITE, 'x', 'premarket'), _disc_line()]))
+                text = _fit_lang_lines(list(zip(lines, urls)), _disc_line(), shorten=False)
+            if xlen(text) > 280:
+                text = _fit_lang_lines(list(zip(lines, urls)), _disc_line(), shorten=True)
             if xlen(text) <= 280:
                 facts = (text, 'short')
                 if _minus_urls(text) != ac:

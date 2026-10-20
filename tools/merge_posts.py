@@ -68,7 +68,7 @@ def site_post(x, a):
 
 def keep_days(p):
     """Retention: stock or macro posts 28 days (so the monthly view sees 28 days), everything else 2 days (2026-10-10)."""
-    has_stock = bool(p.get('tickers') or p.get('stance_by_ticker'))
+    has_stock = bool(p.get('tickers') or p.get('stance_by_ticker') or p.get('hidden_tickers'))
     return 28 if has_stock or p.get('macro') else 2
 
 

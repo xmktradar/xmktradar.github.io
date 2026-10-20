@@ -48,9 +48,9 @@ EVENT_ZH = {
 INDEX_SYMBOLS = {'LVMH': 'MC.PA', 'VIX': '^VIX', 'RUT': '^RUT', 'RTY': '^RUT', 'SOX': '^SOX', 'NYSE': '^NYA', 'COMP': '^IXIC',
                  'IXIC': '^IXIC', 'DJI': '^DJI', 'DXY': 'DX-Y.NYB', 'MOVE': '^MOVE', 'NYA': '^NYA'}
 US_EXCH = {'NMS', 'NGM', 'NCM', 'NAS', 'NYQ', 'NYS', 'ASE', 'PCX', 'BTS', 'PNK', 'OQB', 'OQX', 'OBB'}
-GIVE_UP_HOURS = 24  # a ticker Yahoo can't find for this long is marked 未確認 (no price, no footer warning)
-RECHECK_DAYS = 1  # ... and looked up again daily, in case it lists later (a new IPO) or Yahoo was wrong
-AUTO_RULES = 2  # bump when the matching rules change: older automatic matches are redone
+# A ticker Yahoo can't find is marked 未確認 at once and kept off the site's stock lists (hide_unknown), but it is
+# looked up again every run, so a new listing or a Yahoo slip comes back by itself (Tim, 2026-10-20)
+AUTO_RULES = 3  # bump when the matching rules change: older automatic matches are redone
 
 jar = http.cookiejar.CookieJar()
 opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
@@ -103,6 +103,8 @@ def candidates(t, found):
     exchange, then t as an index. Company-name matches are not used: they picked the wrong stock
     (SATS -> SATS Ltd in Singapore when posts meant Strive's $SATS, 2026-10-20)."""
     out = [INDEX_SYMBOLS[t]] if t in INDEX_SYMBOLS else []
+    if re.fullmatch(r'[A-Z]{1,3}_F', t):
+        out.append(t[:-2] + '=F')  # futures written with _ for = (ES_F -> ES=F)
     exact = []
     for q in found:
         sym = q['symbol']
@@ -141,16 +143,44 @@ def auto_override(ov, t, sym, meta, stamp):
 
 
 def note_miss(ov, t, now, stamp):
-    """Yahoo has no such ticker: after GIVE_UP_HOURS mark it 未確認 (a word, a delisted or private name)."""
+    """Yahoo has no such ticker (a word, a delisted or unlisted name): mark it 未確認."""
     o = ov.setdefault(t, {'auto': AUTO_RULES, 'first_miss_hkt': stamp})
-    o.setdefault('first_miss_hkt', stamp)
     o.pop('confirmed', None)
-    first = datetime.strptime(o['first_miss_hkt'], '%Y-%m-%d %H:%M').replace(tzinfo=HK)
-    if now - first >= timedelta(hours=GIVE_UP_HOURS):
-        o.update(unconfirmed=True, checked=now.date().isoformat(),
-                 note='Yahoo Finance 搵唔到呢個代號（可能係普通字、已除牌或未上市），自動標為未確認，唔顯示股價')
-        return True
-    return False
+    o.update(unconfirmed=True, checked=now.date().isoformat(),
+             note='Yahoo Finance 搵唔到呢個代號（可能係普通字、已除牌或未上市），自動標為未確認，唔顯示')
+
+
+def hide_unknown(d, ov):
+    """Keep tickers with no price off the stock lists: crypto, 未確認 (automatic or hand-written) and anything
+    Yahoo has nothing for. They move to the post's hidden_tickers and come back once a price exists.
+    Hand-confirmed overrides (for example a small cap Yahoo lacks) stay as they are."""
+    known = set(d['prices'])
+    hide = lambda t: t not in known and (t in CRYPTO or ov.get(t, {}).get('unconfirmed') or not ov.get(t, {}).get('confirmed') or ov[t].get('auto'))
+    n = 0
+    for p in d['posts']:
+        sbt = p.get('stance_by_ticker') if isinstance(p.get('stance_by_ticker'), dict) else {}
+        hid = p.get('hidden_tickers') if isinstance(p.get('hidden_tickers'), dict) else {}
+        tks = list(p.get('tickers') or [])
+        back = [t for t in hid if not hide(t)]
+        out = [t for t in dict.fromkeys(tks + list(sbt)) if hide(t)]
+        if not back and not out:
+            continue
+        for t in back:
+            if t not in tks:
+                tks.append(t)
+            sbt[t] = hid.pop(t)
+        for t in out:
+            hid[t] = sbt.pop(t, '未表態')
+            tks = [x for x in tks if x != t]
+        p['tickers'] = tks
+        if sbt or 'stance_by_ticker' in p:
+            p['stance_by_ticker'] = sbt
+        if hid:
+            p['hidden_tickers'] = hid
+        else:
+            p.pop('hidden_tickers', None)
+        n += 1
+    return n
 
 
 def local_date(ts, meta):
@@ -234,9 +264,10 @@ def main():
     tickers = set()  # every ticker in the kept posts (stock posts stay 28 days, merge_posts.py)
     for p in d['posts']:
         sbt = p.get('stance_by_ticker') if isinstance(p.get('stance_by_ticker'), dict) else {}
-        for t in list(p.get('tickers') or []) + list(sbt):
+        hid = p.get('hidden_tickers') if isinstance(p.get('hidden_tickers'), dict) else {}
+        for t in list(p.get('tickers') or []) + list(sbt) + list(hid):
             t = str(t).lstrip('$').upper().strip()
-            if t and re.fullmatch(r'[A-Z0-9.\-=^]{1,12}', t):
+            if t and re.fullmatch(r'[A-Z0-9.\-=^_]{1,12}', t):
                 tickers.add(t)
     # Drop data for stocks no post mentions any more, so search and the disclaimer only list live stocks
     # (px/<ticker>.json follows d['prices'] in build_langs.py). A stock mentioned again is re-fetched in full.
@@ -250,10 +281,8 @@ def main():
         del ov[t]  # automatic matches follow the posts, like prices do, and are redone when the rules change
         for key in ('prices', 'intraday', 'quotes', 'tv_symbols'):
             d.get(key, {}).pop(t, None)  # its old symbol lives there too
-    recheck = (now - timedelta(days=RECHECK_DAYS)).date().isoformat()
-    due = lambda o: o.get('auto') and o.get('checked', '') <= recheck  # an automatic 未確認 is retried weekly
     tickers = sorted(t for t in tickers if t not in CRYPTO and not ov.get(t, {}).get('drop') and
-                     (not ov.get(t, {}).get('unconfirmed') or due(ov[t])))
+                     (not ov.get(t, {}).get('unconfirmed') or ov[t].get('auto')))  # automatic 未確認 retried every run
 
     missing, ok = [], 0
     matched, gave_up = [], []
@@ -271,9 +300,10 @@ def main():
                 sym_of[t] = sym
                 auto_override(ov, t, sym, daily[0], stamp)
                 matched.append(f'{t}->{sym}')
-            elif r == 'none' and note_miss(ov, t, now, stamp):
+            elif r == 'none':
+                note_miss(ov, t, now, stamp)
                 gave_up.append(t)
-                continue  # 未確認 now: no price, not listed as missing
+                continue  # 未確認: no price, hidden from the lists, not listed as missing
         elif daily and daily[1] and mine and t in ov and not ov[t].get('symbol'):
             del ov[t]  # it was only waiting on a miss; its own symbol works again
         if not daily or not daily[1]:
@@ -343,6 +373,7 @@ def main():
     keep = lambda f: f.get('date', '') >= (now - timedelta(days=1 if f.get('type') == '業績' else 3)).date().isoformat()
     d['macro']['flags'] = [f for f in d['macro'].get('flags', []) if keep(f)]
     d['meta']['price_missing'] = missing
+    hidden = hide_unknown(d, ov)
 
     assert len(d['posts']) == n_posts
     blob = json.dumps(d, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
@@ -350,7 +381,7 @@ def main():
     open(HTML, 'w', encoding='utf-8').write(s)
     print(f'tickers {len(tickers)} ok {ok} missing {len(missing)} quotes {len(qs)} macro {len(rows)}')
     print('missing:', ','.join(missing))
-    print('auto-matched:', ','.join(matched) or '-', '| marked 未確認:', ','.join(gave_up) or '-')
+    print('auto-matched:', ','.join(matched) or '-', '| 未確認:', ','.join(gave_up) or '-', f'| posts with hidden tickers changed {hidden}')
     print(f'dropped {len(dropped)} no longer mentioned:', ','.join(sorted(dropped)))
     if ok < len(tickers) * 0.5:
         sys.exit('too many price failures; not publishing')

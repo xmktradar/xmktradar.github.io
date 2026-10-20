@@ -7,6 +7,8 @@
 - Changing content: English posts show en_summary with the original X text behind "See original"
   (posts without en_summary show the original text); Korean posts show ko_summary.
   summaries_<lang>, highlights_<lang>, briefings_<lang> replace the Chinese ones when present.
+- Parts wrapped in <!-- zh-only --> ... <!-- /zh-only --> in index.html stay on /zh/ only and are
+  left out of /en/ and /ko/ (the Futu invite box: only Hong Kong residents can use it).
 - Every version gets <html lang>, canonical, hreflang, the language switch and absolute asset paths.
 - index.html itself gets the same switch and hreflang plus a script that sends visitors to the
   version matching their browser language.
@@ -31,6 +33,7 @@ OG_HOST = '(?:' + re.escape(SITE) + '|https://xmktradar\\.github\\.io/)'
 LANGS = {'zh': ('zh-Hant', '中'), 'en': ('en', 'EN'), 'ko': ('ko', '한')}
 CONTENT = ('summaries', 'highlights', 'briefings')
 MARK = '<!-- lang-head -->'
+ZH_ONLY = re.compile(r'<!-- zh-only -->.*?<!-- /zh-only -->', re.S)
 LITE_DAYS = 45  # covers the 28-day change, sparklines and the monthly view
 PX_DIR = 'px'
 
@@ -300,6 +303,8 @@ def twitter_text(s):
 
 
 def build(lang, master):
+    if lang != 'zh':
+        master = ZH_ONLY.sub('', master)
     tr = read_json(f'i18n/{lang}.json', {}) if lang != 'zh' else {}
     tr = tr if isinstance(tr, dict) else {}
     m = BLOCK.search(master)

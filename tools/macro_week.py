@@ -17,6 +17,7 @@ import re
 from datetime import date, timedelta
 
 from sitedata import load, notice, now_hk, read_json, work, write_json
+from share import page_url, xlen
 
 SITE = 'https://thecrowdtape.com/'
 LANGS = ('zh', 'en', 'ko')
@@ -133,15 +134,10 @@ def counts(lang, r):
         f"{L['bull']} {r['bull']} · {L['bear']} {r['bear']} · {L['neu']} {r['neu']}"
 
 
-def xlen(t):
-    t = re.sub(r'https?://\S+', 'x' * 23, t)
-    return sum(2 if ord(c) >= 0x1100 else 1 for c in t)
-
-
 def posts(lang, w, rng):
     L, N = {k: v.replace('{N}', str(w['accounts'])) for k, v in TXT[lang].items()}, NAMES[lang]
-    url = f'{SITE}{lang}/#macro'
-    give = f"{L['give_s']}{SITE}{lang}/#donate"
+    url = page_url(lang, '#macro')
+    give = f"{L['give_s']}{page_url(lang, '#donate')}"
     by = {r['theme']: r for r in w['themes']}
     head = f"{L['head']}（{rng}）" if lang == 'zh' else f"{L['head']} ({rng})"
     blocks = []
@@ -182,7 +178,7 @@ def posts(lang, w, rng):
             break
     reddit = {'title': re.sub(r'^🌐\s*', '', head),
               'body': '\n\n'.join([body.replace('1️⃣ ', '1. ').replace('2️⃣ ', '2. ').replace('3️⃣ ', '3. '),
-                                   f"{L['more']}[{url}]({url})", f"{L['give_s']}[{SITE}{lang}/#donate]({SITE}{lang}/#donate)",
+                                   f"{L['more']}[{url}]({url})", f"{L['give_s']}[{page_url(lang, '#donate')}]({page_url(lang, '#donate')})",
                                    L['disc_long'], tags])}
     return {'instagram': ig, 'threads': threads, 'x': x, 'reddit': reddit, 'facebook': fb, 'story': ' '.join(tags.split(' ')[:5])}
 
