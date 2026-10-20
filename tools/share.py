@@ -572,9 +572,266 @@ def x_image(sp, kind, ticker=None):
     return (sp.get('images') or {}).get('en') or ''
 
 
-def x_entry(sp, kind):
-    """One x_trilingual entry, or None when the day's X posts have no headline."""
-    built = trilingual_text(sp.get('posts') or {}, kind)
+_PM_MONTHS = ('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec')
+
+
+def _minus_urls(text):
+    """Post body with every URL removed, for comparing premarket with afterclose."""
+    return re.sub(r'https?://\S+', '', text or '').strip()
+
+
+def _count(rec, key):
+    """Integer count stored on an x_facts row, or None when that count is not a real number."""
+    if not isinstance(rec, dict) or rec.get(key) is None or isinstance(rec.get(key), bool):
+        return None
+    v = rec[key]
+    if isinstance(v, int) and v >= 0:
+        return v
+    if isinstance(v, float) and v >= 0 and v.is_integer():
+        return int(v)
+    if isinstance(v, str) and re.fullmatch(r'\d+', v.strip()):
+        return int(v.strip())
+    return None
+
+
+def _pm_md_mon(sp):
+    """(M/D, Mon D) for the premarket framing. `sp['date']` when it is a real day, else the afterclose date."""
+    day = sp.get('date') if isinstance(sp, dict) else None
+    if isinstance(day, str):
+        try:
+            dt = datetime.strptime(day, '%Y-%m-%d')
+            return f'{dt.month}/{dt.day}', f'{_PM_MONTHS[dt.month - 1]} {dt.day}'
+        except ValueError:
+            pass
+    text = _afterclose_text(sp) if isinstance(sp, dict) else ''
+    m = _XDATE.search(text or '')
+    if not m:
+        return '', ''
+    token = m.group(1)
+    if '/' in token:
+        mo, d = (int(p) for p in token.split('/'))
+        mon = f'{_PM_MONTHS[mo - 1]} {d}' if 1 <= mo <= 12 else ''
+        return f'{mo}/{d}', mon
+    parts = token.split()
+    if len(parts) == 2 and parts[0] in _PM_MONTHS and parts[1].isdigit():
+        return f'{_PM_MONTHS.index(parts[0]) + 1}/{int(parts[1])}', f'{parts[0]} {int(parts[1])}'
+    return '', ''
+
+
+def _pm_frames(sp):
+    """(zh, en, ko) framing lines. Chinese uses a fullwidth colon and no trailing space."""
+    md, mon = _pm_md_mon(sp)
+    zh = f'{md} 開市前：' if md else '開市前：'
+    en = f'{mon} pre-market:' if mon else 'pre-market:'
+    ko = f'{md} 개장 전:' if md else '개장 전:'
+    return zh, en, ko
+
+
+def _afterclose_text(sp):
+    """Stored afterclose post, or the text trilingual_text would write for it."""
+    tri = sp.get('x_trilingual') if isinstance(sp.get('x_trilingual'), dict) else None
+    ac = tri.get('afterclose') if isinstance(tri, dict) else None
+    if isinstance(ac, dict) and ac.get('text'):
+        return ac['text']
+    built = trilingual_text(sp.get('posts') or {}, 'afterclose')
+    return built[0] if built else ''
+
+
+def _remember_tickers(text, seen):
+    for t in _XTICK.findall(text or ''):
+        if t not in seen:
+            seen.append(t)
+
+
+def _afterclose_ticker_order(sp):
+    """Tickers in the order the afterclose post names them.
+
+    A shortened afterclose line often keeps only the headline ticker. The rest of the order is the
+    headline plus the joint-bull block trilingual_text is cut down from, then any other x_facts key.
+    """
+    seen = []
+    _remember_tickers(_afterclose_text(sp), seen)
+    posts = sp.get('posts') or {}
+    for lang in LANGS:
+        p = posts.get(lang) if isinstance(posts, dict) else None
+        head, _ = _x_head_body(p.get('x') if isinstance(p, dict) else '')
+        _remember_tickers(head, seen)
+    _remember_tickers(_ticker_block(posts), seen)
+    return seen
+
+
+def _premarket_rows(sp):
+    """(ticker, bull) in afterclose order, using only x_facts rows that have a real bull count."""
+    xf = sp.get('x_facts') if isinstance(sp.get('x_facts'), dict) else None
+    if not xf:
+        return []
+    rows, seen = [], set()
+
+    def take(t):
+        if not isinstance(t, str) or t in seen or t not in xf:
+            return
+        bull = _count(xf[t], 'bull')
+        if bull is None:
+            return
+        seen.add(t)
+        rows.append((t, bull))
+
+    for t in _afterclose_ticker_order(sp):
+        take(t)
+    for t in xf:
+        take(t)
+    return rows
+
+
+def _lead_lines(sp, rows):
+    """Three language lines. A bull tie leads with both tickers; otherwise the next ticker is a count only."""
+    zh_f, en_f, ko_f = _pm_frames(sp)
+    a, na = rows[0]
+    tie = len(rows) >= 2 and rows[1][1] == na
+    if tie:
+        b = rows[1][0]
+        zh = f'{zh_f}${a}、${b} 各 {na} 個帳號睇好'
+        en = f'{en_f} ${a}, ${b}, {na} accounts bullish each'
+        ko = f'{ko_f} ${a}·${b} 각각 계정 {na}개 강세'
+    elif len(rows) >= 2:
+        b, nb = rows[1]
+        zh = f'{zh_f}${a} {na} 個帳號睇好 · ${b} {nb} 個'
+        en = f'{en_f} ${a} {na} accounts bullish · ${b} {nb}'
+        ko = f'{ko_f} ${a} 계정 {na}개 강세 · ${b} {nb}개'
+    else:
+        zh = f'{zh_f}${a} {na} 個帳號睇好'
+        en = f'{en_f} ${a} {na} accounts bullish'
+        ko = f'{ko_f} ${a} 계정 {na}개 강세'
+    return zh, en, ko
+
+
+def _fit_premarket(text):
+    """Drop joint-bull bullets, then extra languages, until the post is within 280."""
+    if xlen(text) <= 280:
+        return text
+    url_m = re.search(r'https?://\S+', text or '')
+    url = url_m.group(0) if url_m else tag_url(SITE, 'x', 'premarket')
+    heads = []
+    for ln in (text or '').split('\n'):
+        s = ln.strip()
+        if not s or re.search(r'https?://', s) or s.startswith(('⚠', '#', '・')):
+            continue
+        heads.append(s)
+    for disc in (_disc_line(), SHORT['en']['disc']):
+        for n in range(len(heads), 0, -1):
+            cand = '\n'.join(heads[:n] + [url, disc])
+            if xlen(cand) <= 280:
+                return cand
+    return '\n'.join([url, SHORT['en']['disc']])
+
+
+def _apply_frame(line, frame, token):
+    s = line.strip()
+    if s.startswith(frame):
+        return s
+    rest = s
+    if token and s.startswith(token):
+        rest = s[len(token):].lstrip(' ·・')
+    if not rest:
+        return frame
+    if frame.endswith('：'):
+        return f'{frame}{rest}'
+    return f'{frame} {rest}'
+
+
+def _prefix_premarket_headlines(text, sp):
+    """Prefix each trilingual headline with the premarket framing. The framing already carries the date."""
+    md, mon = _pm_md_mon(sp)
+    posts = sp.get('posts') or {}
+    langs = []
+    for lang in LANGS:
+        p = posts.get(lang) if isinstance(posts, dict) else None
+        head, _ = _x_head_body(p.get('x') if isinstance(p, dict) else '')
+        if head:
+            langs.append(lang)
+    if not langs:
+        langs = list(LANGS)
+    frames = {'zh': f'{md} 開市前：' if md else '開市前：',
+              'en': f'{mon} pre-market:' if mon else 'pre-market:',
+              'ko': f'{md} 개장 전:' if md else '개장 전:'}
+    tokens = {'zh': md, 'en': mon, 'ko': md}
+    lines, hi = [], 0
+    for ln in (text or '').split('\n'):
+        s = ln.strip()
+        is_head = bool(s) and not re.search(r'https?://', s) and not s.startswith(('⚠', '#', '・'))
+        if is_head and hi < len(langs):
+            lang = langs[hi]
+            lines.append(_apply_frame(s, frames[lang], tokens[lang]))
+            hi += 1
+        else:
+            lines.append(ln)
+    return '\n'.join(lines)
+
+
+def _premarket_fallback(sp):
+    """trilingual_text (campaign premarket) with each headline prefixed by the framing."""
+    built = trilingual_text(sp.get('posts') or {}, 'premarket')
+    if not built:
+        return None
+    text, form = built
+    prefixed = _fit_premarket(_prefix_premarket_headlines(text, sp))
+    return prefixed, 'short' if prefixed != text else form
+
+
+def premarket_text(sp, force_fallback=False):
+    """zh/en/ko premarket post. Bull counts come from x_facts, in afterclose ticker order.
+
+    When the top two of that order tie on bull, both lead (`各 N` / `each` / `각각`).
+    Otherwise the first ticker leads with its bull count and the next ticker is named with its count.
+    Missing or empty x_facts uses trilingual headlines prefixed by the premarket framing.
+    Returns (text, form) or None. The URL campaign is premarket, then _disc_line(). xlen is at most 280.
+    """
+    if not isinstance(sp, dict):
+        sp = {}
+    ac = _minus_urls(_afterclose_text(sp))
+    facts = None
+    if not force_fallback:
+        rows = _premarket_rows(sp)
+        if rows:
+            lines = list(_lead_lines(sp, rows))
+            text = _fit_premarket('\n'.join(lines + [tag_url(SITE, 'x', 'premarket'), _disc_line()]))
+            if xlen(text) > 280 and len(rows) >= 2:
+                lines = list(_lead_lines(sp, rows[:1]))
+                text = _fit_premarket('\n'.join(lines + [tag_url(SITE, 'x', 'premarket'), _disc_line()]))
+            if xlen(text) <= 280:
+                facts = (text, 'short')
+                if _minus_urls(text) != ac:
+                    return facts
+    built = _premarket_fallback(sp)
+    if built:
+        text, form = built
+        if xlen(text) > 280:
+            text = _fit_premarket(text)
+        if facts is None or _minus_urls(text) != ac:
+            return text, form
+    return facts or built
+
+
+def _counts_from_facts(sp, ticker):
+    """bull/bear/n for the card, from x_facts only."""
+    xf = sp.get('x_facts') if isinstance(sp.get('x_facts'), dict) else None
+    snap = xf.get(ticker) if isinstance(xf, dict) else None
+    if not isinstance(snap, dict):
+        return None
+    counts = {k: snap[k] for k in ('bull', 'bear', 'n') if k in snap and snap[k] is not None}
+    return counts or None
+
+
+def x_entry(sp, kind, force_fallback=False):
+    """One x_trilingual entry, or None when there is no post to make.
+
+    Premarket uses premarket_text. image_ticker is the first $TICKER in that text.
+    Premarket card counts come from x_facts. Afterclose stays on trilingual_text.
+    """
+    if kind == 'premarket':
+        built = premarket_text(sp, force_fallback=force_fallback)
+    else:
+        built = trilingual_text(sp.get('posts') or {}, kind)
     if not built:
         return None
     text, form = built
@@ -584,13 +841,22 @@ def x_entry(sp, kind):
     if ticker:
         job = xcard_job(sp, kind, ticker, text)
         _queue_xcard(job)
-        data = job['data']
-        entry['counts'] = {k: data[k] for k in ('bull', 'bear', 'n') if k in data}
+        if kind == 'premarket':
+            counts = _counts_from_facts(sp, ticker)
+        else:
+            data = job['data']
+            counts = {k: data[k] for k in ('bull', 'bear', 'n') if k in data}
+        if counts:
+            entry['counts'] = counts
     return entry
 
 
 def build_x_trilingual(sp, rebuild_premarket=False):
-    """premarket and afterclose. Rebuilds premarket when asked (the 2030 slot just got its picture)."""
+    """premarket and afterclose. Rebuilds premarket when asked (the 2030 slot just got its picture).
+
+    If the premarket body with URLs removed still equals afterclose, premarket is rebuilt from the
+    framed-headline fallback so the two posts are not the same text.
+    """
     tri = sp.get('x_trilingual')
     if not isinstance(tri, dict):
         tri = {}
@@ -602,6 +868,12 @@ def build_x_trilingual(sp, rebuild_premarket=False):
         entry = x_entry(sp, 'afterclose')
         if entry:
             tri['afterclose'] = entry
+    pm = tri.get('premarket') if isinstance(tri.get('premarket'), dict) else None
+    ac = tri.get('afterclose') if isinstance(tri.get('afterclose'), dict) else None
+    if pm and ac and pm.get('text') and ac.get('text') and _minus_urls(pm['text']) == _minus_urls(ac['text']):
+        entry = x_entry(sp, 'premarket', force_fallback=True)
+        if entry:
+            tri['premarket'] = entry
     if not tri:
         return None
     return {k: tri[k] for k in ('premarket', 'afterclose') if k in tri}
