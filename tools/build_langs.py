@@ -285,6 +285,20 @@ def faq_ld(master, s, lang, ui):
     return s[:o.start(2)] + blob + s[o.end(2):]
 
 
+def twitter_text(s):
+    """One twitter:title and one twitter:description, copied from this page's og:title and
+    og:description, immediately after og:description and before twitter:card."""
+    if not (re.search(r'<meta property="og:title" content="([^"]*)"', s)
+            and re.search(r'<meta property="og:description" content="([^"]*)">', s)):
+        return s
+    s = re.sub(r'[ \t]*<meta name="twitter:(?:title|description)" content="[^"]*"\s*/?>\n?', '', s)
+    title = re.search(r'<meta property="og:title" content="([^"]*)"', s)
+    desc = re.search(r'<meta property="og:description" content="([^"]*)">', s)
+    block = ('\n<meta name="twitter:title" content="' + title.group(1) + '">'
+             '\n<meta name="twitter:description" content="' + desc.group(1) + '">')
+    return s[:desc.end()] + block + s[desc.end():]
+
+
 def build(lang, master):
     tr = read_json(f'i18n/{lang}.json', {}) if lang != 'zh' else {}
     tr = tr if isinstance(tr, dict) else {}
@@ -303,9 +317,16 @@ def build(lang, master):
     alt = (tr.get('meta') or {}).get('image_alt')
     if alt:  # the Chinese alt text changes every day; other versions use a fixed description
         s = re.sub(r'(<meta (?:property="og|name="twitter):image:alt" content=")[^"]*', lambda m: m.group(1) + alt, s)
-    if lang != 'zh':  # each language has its own share picture (tools/og.js)
-        s = re.sub(OG_HOST + r'(og/[\d-]+)(\.png)', lambda m: SITE + m.group(1) + f'-{lang}' + m.group(2)
-                   if os.path.exists(m.group(1) + f'-{lang}.png') else SITE + m.group(1) + m.group(2), s)
+    if lang != 'zh':  # own share picture (tools/og.js); else latest-<lang>; Chinese og/<day>.png only if neither exists
+        def og_for(m):
+            stem, ext = m.group(1), m.group(2)
+            dated = f'{stem}-{lang}{ext}'
+            if os.path.exists(dated):
+                return SITE + dated
+            latest = f'og/latest-{lang}{ext}'
+            return SITE + latest if os.path.exists(latest) else SITE + stem + ext
+        s = re.sub(OG_HOST + r'(og/[\d-]+)(\.png)', og_for, s)
+    s = twitter_text(s)
     s = re.sub(r'''(["'(])assets/''', r'\1/assets/', s)
     s = add_chrome(s, lang)
     s = localize_news(s, lang)
