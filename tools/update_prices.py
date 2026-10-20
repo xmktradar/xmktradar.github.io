@@ -43,12 +43,14 @@ EVENT_ZH = {
     'Core Durable Goods Orders m/m': '核心耐用品訂單按月',
 }
 
-# Tickers Yahoo knows under another symbol: indices people write without the ^ (Tim, 2026-10-20)
-INDEX_SYMBOLS = {'VIX': '^VIX', 'RUT': '^RUT', 'RTY': '^RUT', 'SOX': '^SOX', 'NYSE': '^NYA', 'COMP': '^IXIC',
+# Tickers Yahoo knows under another symbol: indices people write without the ^, and a few foreign
+# companies people call by name (Tim, 2026-10-20)
+INDEX_SYMBOLS = {'LVMH': 'MC.PA', 'VIX': '^VIX', 'RUT': '^RUT', 'RTY': '^RUT', 'SOX': '^SOX', 'NYSE': '^NYA', 'COMP': '^IXIC',
                  'IXIC': '^IXIC', 'DJI': '^DJI', 'DXY': 'DX-Y.NYB', 'MOVE': '^MOVE', 'NYA': '^NYA'}
 US_EXCH = {'NMS', 'NGM', 'NCM', 'NAS', 'NYQ', 'NYS', 'ASE', 'PCX', 'BTS', 'PNK', 'OQB', 'OQX', 'OBB'}
 GIVE_UP_HOURS = 24  # a ticker Yahoo can't find for this long is marked 未確認 (no price, no footer warning)
-RECHECK_DAYS = 7  # ... and looked up again once a week, in case it lists later or Yahoo was wrong
+RECHECK_DAYS = 1  # ... and looked up again daily, in case it lists later (a new IPO) or Yahoo was wrong
+AUTO_RULES = 2  # bump when the matching rules change: older automatic matches are redone
 
 jar = http.cookiejar.CookieJar()
 opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
@@ -97,11 +99,11 @@ def search(t):
 
 
 def candidates(t, found):
-    """Symbols worth trying for ticker t, best first: a known index (VIX -> ^VIX), the symbol itself on a US
-    exchange, t as an index, else a listing whose company name has t as a word (LVMH -> MC.PA)."""
+    """Symbols worth trying for ticker t, best first: a known symbol (VIX -> ^VIX), the symbol itself on a US
+    exchange, then t as an index. Company-name matches are not used: they picked the wrong stock
+    (SATS -> SATS Ltd in Singapore when posts meant Strive's $SATS, 2026-10-20)."""
     out = [INDEX_SYMBOLS[t]] if t in INDEX_SYMBOLS else []
-    word = re.compile(r'\b' + re.escape(t) + r'\b', re.I)
-    exact, named = [], []
+    exact = []
     for q in found:
         sym = q['symbol']
         base = re.split(r'[.\-=]', sym.lstrip('^'))[0].upper()
@@ -110,9 +112,7 @@ def candidates(t, found):
             continue
         if base == t and (q.get('exchange') in US_EXCH or kind == 'INDEX'):
             exact.append(sym)
-        elif len(t) >= 4 and kind == 'EQUITY' and word.search(' '.join(str(q.get(k) or '') for k in ('shortname', 'longname'))):
-            named.append(sym)
-    return list(dict.fromkeys(out + exact + ['^' + t] + named))
+    return list(dict.fromkeys(out + exact + ['^' + t]))
 
 
 def lookup(t):
@@ -132,7 +132,7 @@ def lookup(t):
 
 def auto_override(ov, t, sym, meta, stamp):
     """Remember how ticker t was matched, so later runs go straight to the right symbol."""
-    o = {'confirmed': True, 'auto': True, 'symbol': sym, 'name': meta.get('longName') or meta.get('shortName') or t,
+    o = {'confirmed': True, 'auto': AUTO_RULES, 'symbol': sym, 'name': meta.get('longName') or meta.get('shortName') or t,
          'matched_hkt': stamp}
     if meta.get('exchangeName') not in US_EXCH and meta.get('instrumentType') != 'INDEX':
         o['exchange'] = EXCH_TV.get(meta.get('exchangeName')) or meta.get('fullExchangeName') or meta.get('exchangeName')
@@ -142,7 +142,7 @@ def auto_override(ov, t, sym, meta, stamp):
 
 def note_miss(ov, t, now, stamp):
     """Yahoo has no such ticker: after GIVE_UP_HOURS mark it 未確認 (a word, a delisted or private name)."""
-    o = ov.setdefault(t, {'auto': True, 'first_miss_hkt': stamp})
+    o = ov.setdefault(t, {'auto': AUTO_RULES, 'first_miss_hkt': stamp})
     o.setdefault('first_miss_hkt', stamp)
     o.pop('confirmed', None)
     first = datetime.strptime(o['first_miss_hkt'], '%Y-%m-%d %H:%M').replace(tzinfo=HK)
@@ -246,8 +246,10 @@ def main():
             del d[key][t]
             if key == 'prices':
                 dropped.append(t)
-    for t in [t for t, o in ov.items() if o.get('auto') and t not in tickers]:
-        del ov[t]  # automatic matches follow the posts, like prices do
+    for t in [t for t, o in ov.items() if o.get('auto') and (t not in tickers or o['auto'] != AUTO_RULES)]:
+        del ov[t]  # automatic matches follow the posts, like prices do, and are redone when the rules change
+        for key in ('prices', 'intraday', 'quotes', 'tv_symbols'):
+            d.get(key, {}).pop(t, None)  # its old symbol lives there too
     recheck = (now - timedelta(days=RECHECK_DAYS)).date().isoformat()
     due = lambda o: o.get('auto') and o.get('checked', '') <= recheck  # an automatic 未確認 is retried weekly
     tickers = sorted(t for t in tickers if t not in CRYPTO and not ov.get(t, {}).get('drop') and
