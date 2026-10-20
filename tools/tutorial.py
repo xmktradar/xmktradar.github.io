@@ -124,13 +124,26 @@ def page(tp):
     return f'''<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="robots" content="noindex"><title>週末教學貼文 {tp['date']}｜The Crowd Tape</title>
-<style>body{{font:16px/1.5 system-ui,sans-serif;margin:0 auto;max-width:760px;padding:16px;background:#f7f8fb;color:#151a2c}}
+<style>body{{font:16px/1.5 system-ui,sans-serif;margin:0 auto;max-width:760px;padding:16px;background:#f7f8fb;color:#151a2c;overflow-wrap:anywhere}}
+html{{overflow-x:clip}}
 section{{background:#fff;border-radius:14px;padding:16px;margin:16px 0;box-shadow:0 1px 4px rgba(0,0,0,.08)}}
 img{{width:100%;border-radius:10px}}img.story{{width:min(100%,320px);display:block;margin-top:6px}}textarea{{width:100%;box-sizing:border-box;font:inherit;margin-top:4px}}h3{{margin:18px 0 0;font-size:15px}}
-button{{margin-top:8px;padding:8px 16px;border-radius:999px;border:0;background:#151a2c;color:#fff;font:inherit}}</style>
+button{{margin-top:8px;padding:8px 16px;border-radius:999px;border:0;background:#151a2c;color:#fff;font:inherit}}
+.money-bar,.site-nav{{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;max-width:100%;min-width:0}}
+.money-bar{{margin:0 0 12px;padding:8px 10px;border:1px dashed #c9c3b8;border-radius:12px;background:#fff;font-size:14px;font-weight:700}}
+.tag{{font-size:11px;font-weight:700;border:1px solid #ddd;border-radius:999px;padding:1px 8px;color:#666}}
+.site-foot{{margin-top:18px;padding-top:12px;border-top:1px solid #e4e7ef;font-size:13px;color:#5c6578}}
+a{{color:#8a5a22}}</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-42CSNJ8DF9"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-42CSNJ8DF9');</script>
+<nav class="site-nav" aria-label="網站"><a href="/zh/tools/">工具</a> · <a href="/zh/support/">支持我哋</a></nav>
+<nav class="money-bar" aria-label="推廣"><span class="tag">推廣</span><a href="/zh/tools/">工具</a><a href="/zh/support/">支持我哋</a></nav>
 <h1>{tp['date']} 週末教學貼文：第 {tp['episode']}/{tp['total']} 集</h1>
 <p>{'今日係星期六／日，要發呢集。' if tp['post_today'] else '今日唔係發佈日；下個星期六日先發新一集。'}製作時間 {tp['made_hkt']} HKT｜撳圖片可以下載｜<a href="/social/">平日快照貼文</a></p>
-{''.join(rows)}</html>
+{''.join(rows)}
+<footer class="site-foot"><p><a href="/zh/tools/">工具</a> · <a href="/zh/support/">支持我哋</a> · <a href="/zh/newsletter/">電子報</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">TradingView <span class="tag">推廣</span></a></p></footer>
+<script>document.addEventListener('click',function(e){{var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||!window.gtag)return;var u=a.href,h='';try{{h=new URL(u).hostname.toLowerCase()}}catch(err){{return}}var tool=a.getAttribute('data-tool');if(tool||h==='tradingview.com'||h.endsWith('.tradingview.com'))gtag('event','affiliate_click',{{tool:(tool||'tradingview').toLowerCase(),lang:'zh'}});}});</script>
+</html>
 '''
 
 

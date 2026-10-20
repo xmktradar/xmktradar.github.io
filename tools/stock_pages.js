@@ -27,6 +27,11 @@ const T = {
     open: '打開互動版（含走勢圖）',
     home: '首頁',
     advice: '不構成投資建議。本頁只整理公開貼文，供參考。',
+    tools: '工具',
+    support: '支持我哋',
+    news: '電子報',
+    promo: '推廣',
+    tv: '用 TradingView 睇圖表',
     bullName: '看多帳號',
     bearName: '看空帳號',
     menName: '提及帳號',
@@ -40,6 +45,11 @@ const T = {
     open: 'Open the interactive page (with chart)',
     home: 'Home',
     advice: 'Not investment advice. This page only summarises public posts.',
+    tools: 'Tools',
+    support: 'Support us',
+    news: 'Newsletter',
+    promo: 'Promotion',
+    tv: 'View charts on TradingView',
     bullName: 'Bullish accounts',
     bearName: 'Bearish accounts',
     menName: 'Mentioning accounts',
@@ -53,6 +63,11 @@ const T = {
     open: '인터랙티브 페이지 열기(차트 포함)',
     home: '홈',
     advice: '투자 조언이 아닙니다. 이 페이지는 공개 게시물을 정리한 자료입니다.',
+    tools: '도구',
+    support: '후원하기',
+    news: '뉴스레터',
+    promo: '홍보',
+    tv: 'TradingView에서 차트 보기',
     bullName: '강세 계정',
     bearName: '약세 계정',
     menName: '언급 계정',
@@ -311,14 +326,24 @@ ${styles}
 .advice{margin:8px 16px 0;padding:10px 12px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;background:var(--accent-soft);font-size:14px;line-height:1.45}
 .open-live{display:flex;justify-content:center;margin:8px 0 40px}.open-live a{font:600 15px/1 var(--f-body);padding:12px 20px;border-radius:999px;
 background:var(--accent);color:#fff;text-decoration:none}
+.site-nav{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;max-width:100%;min-width:0}
+.site-nav a{box-sizing:border-box;max-width:100%;font-size:12.5px;font-weight:700;padding:5px 10px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink);background:var(--panel);line-height:1.3}
+.site-nav a.nav-donate{background:var(--accent);color:#fff;border-color:var(--accent)}
+.money-bar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;box-sizing:border-box;max-width:100%;min-width:0;margin:8px 16px 0;padding:8px 10px;border:1px dashed var(--line-strong);border-radius:12px;background:var(--panel);font-size:13px;font-weight:700}
+.money-bar a,.tv-line a{color:var(--ink);text-decoration:none}
+.money-bar .pj-tag,.tv-line .pj-tag,.foot .pj-tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;color:var(--mut);border:1px solid var(--line-strong);border-radius:999px;padding:1px 8px;line-height:1.4}
+.tv-line{margin:12px 16px 8px;font-size:14px;line-height:1.45;overflow-wrap:anywhere;max-width:100%}
+.foot a{font-weight:700}
 ${NL_CSS}</style>
 </head>
 <body>
-<header class="top"><div class="wrap"><div class="brand-wrap">${brand}<nav class="lang-sw" aria-label="Language">${sw}</nav></div></div></header>
-<main class="stock-static"><p class="advice" role="note">${esc(T[lang].advice)}</p>${body}
+<header class="top"><div class="wrap"><div class="brand-wrap">${brand}<nav class="lang-sw" aria-label="Language">${sw}</nav><nav class="site-nav" aria-label="${esc(T[lang].promo)}"><a href="/${lang}/tools/">${esc(T[lang].tools)}</a><a class="nav-donate" href="/${lang}/support/">${esc(T[lang].support)}</a></nav></div></div></header>
+<main class="stock-static"><nav class="money-bar" aria-label="${esc(T[lang].promo)}"><span class="pj-tag">${esc(T[lang].promo)}</span><a href="/${lang}/tools/">${esc(T[lang].tools)}</a><a href="/${lang}/support/">${esc(T[lang].support)}</a></nav><p class="advice" role="note">${esc(T[lang].advice)}</p>${body}
+<p class="tv-line"><span class="pj-tag">${esc(T[lang].promo)}</span> <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">${esc(T[lang].tv)}</a></p>
 <div class="open-live"><a href="/${lang}/#stock/${encodeURIComponent(t)}">${esc(T[lang].open)}</a></div>
 ${indexRow(lang, list)}</main>
-<script>document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com'))gtag('event','x_outbound',{link_url:u,page:'stock',lang:document.documentElement.lang||'',transport_type:'beacon'})});</script>
+<footer class="wrap foot"><p><a href="/${lang}/tools/">${esc(T[lang].tools)}</a> · <a href="/${lang}/support/">${esc(T[lang].support)}</a> · <a href="/${lang}/newsletter/">${esc(T[lang].news)}</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">TradingView <span class="pj-tag">${esc(T[lang].promo)}</span></a></p></footer>
+<script>document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}var tool=a.getAttribute('data-tool');if(tool||h==='tradingview.com'||h.endsWith('.tradingview.com'))gtag('event','affiliate_click',{tool:(tool||'tradingview').toLowerCase(),lang:document.documentElement.lang||''});if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com'))gtag('event','x_outbound',{link_url:u,page:'stock',lang:document.documentElement.lang||'',transport_type:'beacon'})});</script>
 ${nlScript(nlCopy(lang).ok)}
 </body></html>
 `;
