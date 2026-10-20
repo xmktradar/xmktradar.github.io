@@ -356,7 +356,7 @@ body .divehead .av{width:72px;height:72px}
 
 
 .vs-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:12px 0;padding:12px 16px;border:1px solid var(--line);border-left:5px solid var(--bull);border-radius:12px;background:var(--panel)}
-.vs-bar .vs-l{font-size:12px;font-weight:700;color:var(--mut);letter-spacing:.03em}
+.vs-bar .vs-l{font-size:12px;font-weight:700;color:var(--mut);letter-spacing:.03em}.vs-bar .vs-hint{font-size:11.5px;color:var(--mut)}
 .vs-bar .vs-line{font-size:15px;font-weight:600;color:var(--tx-strong)}
 .vs-bar .vs-line .ar{color:var(--mut);margin:0 6px}
 .vs-tk{display:inline-block;font-family:var(--mono);font-size:12.5px;font-weight:700;border-radius:999px;padding:1px 9px;margin:0 2px;border:1px solid var(--line-strong);background:var(--bg);color:var(--tx)}
@@ -1107,11 +1107,13 @@ function lbHtml(rows){if(!rows.length)return '';
 document.addEventListener('click',e=>{const b=e.target.closest('[data-lbk]');if(!b)return;const k=b.dataset.lbk;LB_SORT=LB_SORT.k===k?{k,dir:-LB_SORT.dir}:{k,dir:k==='t'?1:-1};render()});
 
 // ---------- 頁頂「昨日重疊 vs 今日」（樣式 .vs-bar／.vs-tk；字稿由寫手提供；昨日同連續日數：共識歷史） ----------
-const VSC=D.vs_copy||null,CH=D.cons_hist||null;
+// 新人睇唔明「重疊」：標題同兩個分組用白話覆蓋寫手字稿（Tim，2026-10-21）
+const VS_FIX={label:'共同看多／看空：與昨日比較',dropped:'今日不再上榜：{removed}',stayed:'連續 {streak} 日上榜：{kept}'};
+const VSC=D.vs_copy?{...D.vs_copy,...VS_FIX}:null,CH=D.cons_hist||null;
 function vsHtml(w){if(!VSC||!CH)return '';
  const G=consGroups(w.from,w.to),T={bull:G.bull.map(g=>g.t),bear:G.bear.map(g=>g.t)};
  const yd=addDays(TODAY,-1),Y=CH[yd];
- const lab=`<span class="vs-l">${esc(VSC.label||'')}</span>`,cta=VSC.cta?`<span class="vs-cta">${esc(VSC.cta)}</span>`:'';
+ const lab=`<span class="vs-l">${esc(VSC.label||'')}</span><span class="vs-hint">名單：最少 2 個帳號看多（或看空），而且沒有帳號持相反立場的美股</span>`,cta=VSC.cta?`<span class="vs-cta">${esc(VSC.cta)}</span>`:'';
  if(!Y)return `<section class="c12 vs-bar first" aria-label="${esc(VSC.label||'')}">${lab}<span class="vs-line">${esc(VSC.empty_first_day||'')}</span>${cta}</section>`;
  const txt=s=>esc(s).replace(/\s*→\s*/g,'<span class="ar">→</span>');
  const fillT=(tpl,m)=>String(tpl||'').split(/(\{\w+\})/).map(x=>{const k=(x.match(/^\{(\w+)\}$/)||[])[1];return k&&k in m?m[k]:txt(x)}).join('');
@@ -1176,7 +1178,13 @@ function viewDaily(){
  const coList=(arr,k)=>arr.map(x=>`<li>${tkBtn(x.t)}<span class="pill ${k}">${x.c[k]} ${SLABEL[k]}</span>${x.c[k==='bull'?'bear':'bull']?`<span class="pill ${k==='bull'?'bear':'bull'}">${x.c[k==='bull'?'bear':'bull']} ${SLABEL[k==='bull'?'bear':'bull']}</span>`:''}<span class="handle">${accsOf(w.from,w.to).filter(a=>latest(a,x.t,w.from,w.to)?.s===k).map(a=>'@'+esc(a)).join(' ')}</span></li>`).join('')||`<li class="note">沒有符合條件的股票（需 2 個以上帳號在範圍內最新立場同為${SLABEL[k]}）</li>`;
  return `<div class="grid">
  ${moneyBar()}
- ${vsHtml(w)}
+ <section class="c12 analysis" aria-label="市場分析">
+  
+  <h2>今日市場分析 ${sm?(sm.stale?`<span class="sub">（最新一份分析，非 ${esc(w.day)} 當日）</span>`:''):'<span class="sub">今日分析尚未產生，以下由資料自動整理</span>'}</h2>
+  ${sm?'':sparse}
+  ${sm?sumBody(sm.s,true):auto}
+  ${br?`<details><summary>分析師簡報</summary>${br.html}</details>`:''}
+ </section>
  <div class="c12 dayrange">${`<div class="range ${w.merged?'merged':''}">${rangeTxt}${vposts.length&&!w.timed?`（${vposts[0].time_hkt.slice(5,16).replace('-','/').replace('T',' ')} – ${vposts[vposts.length-1].time_hkt.slice(5,16).replace('-','/').replace('T',' ')} HKT，有效貼文 ${vposts.length} 則）`:''}</div>`}</div>
  ${macroHtml()}
  <section class="c12 kpis k6" aria-label="今日概況">
@@ -1187,6 +1195,7 @@ function viewDaily(){
   <div class="kpi bear"><div class="l">看空</div><div class="v dn">${nR}</div><div class="d note" title="每篇貼文 × 每隻股票算一個觀點">觀點數</div></div>
   <div class="kpi"><div class="l">未表態</div><div class="v">${nU}</div><div class="d note">${nM?`另中性 ${nM}`:'觀點數'}</div></div>
  </section>
+ ${vsHtml(w)}
  ${highlightsHtml(w.day)}
  <section class="c12 panel"><h2>市場關注度變化 <span class="sub">只列仍有帳號關注的股票${attGone.length?`，已篩走 ${attGone.length} 隻已沒有人再關注的股票`:''}；括號為對比前期</span></h2>
   ${att.length?`<div class="scrollbox" style="display:grid;gap:8px;align-content:start">${att.map(x=>{const k={bull:0,neu:0,none:0,bear:0};cur.filter(y=>y.t===x.t).forEach(y=>k[y.s]=(k[y.s]||0)+1);const seg=(c,n,l)=>n?`<span class="${c}" style="width:${n/mx*100}%" title="${l} ${n}"></span>`:'';return `<div class="hbar">${tkBtn(x.t)}<div class="track stk">${seg('b',k.bull,'看多')}${seg('m',k.neu,'中性')}${seg('u',k.none,'未表態')}${seg('r',k.bear,'看空')}</div><span class="n">${x.n} ${hasPrev?`(${signed(x.d)})`:''}</span></div>`}).join('')}</div><div style="margin-top:10px">${legend}</div>${hasPrev?'':`<p class="note">前期（${w.timed?`${fmtR(pf)} – ${fmtR(pt)}`:`${fmt(pf)}${len>1?'–'+fmt(pt):''}`}）沒有資料，暫時無法比較。</p>`}`:empty('此範圍內沒有股票被提及。')}</section>
@@ -1197,13 +1206,6 @@ function viewDaily(){
 
  <section class="c12 panel"><h2>重要觀點 <span class="sub">優先列出立場變化與明確表態，附原始貼文</span></h2>${keyPosts.length?keyPosts.map(p=>postHtml(p)).join(''):empty('此範圍內沒有有效貼文。')}${rest.length?`<details class="more"><summary>其餘 ${rest.length} 篇</summary>${rest.map(p=>postHtml(p)).join('')}</details>`:''}</section>
  ${accCardsHtml(w,label)}
- <section class="c12 analysis" aria-label="市場分析">
-  
-  <h2>今日市場分析 ${sm?(sm.stale?`<span class="sub">（最新一份分析，非 ${esc(w.day)} 當日）</span>`:''):'<span class="sub">今日分析尚未產生，以下由資料自動整理</span>'}</h2>
-  ${sm?'':sparse}
-  ${sm?sumBody(sm.s,true):auto}
-  ${br?`<details><summary>分析師簡報</summary>${br.html}</details>`:''}
- </section>
  </div>`}
 
 // ---------- 每週 ----------
