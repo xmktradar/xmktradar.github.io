@@ -582,7 +582,9 @@
    "updated_hkt": "2026-10-21 01:33"
   },
   "2026-10-21": {
-   "bull": [],
+   "bull": [
+    "AMZN"
+   ],
    "bear": [
     "CRWV"
    ],
@@ -592,21 +594,21 @@
     "2026-10-21"
    ],
    "top": [
+    "AMZN",
     "CRWV",
+    "SMH",
+    "SPCX",
+    "XBI",
     "SE",
     "SPX",
     "SPY",
     "AMD",
-    "AXON",
-    "BE",
-    "CIFR",
-    "DB",
-    "DPZ"
+    "AXON"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-21 03:03"
+   "updated_hkt": "2026-10-21 04:40"
   }
  },
- "updated_hkt": "2026-10-21 03:03",
+ "updated_hkt": "2026-10-21 04:40",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
