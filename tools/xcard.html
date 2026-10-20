@@ -1,0 +1,137 @@
+<!doctype html><meta charset="utf-8">
+<!-- Per-ticker X card (1200x675). tools/xcard.js calls render(data). Same visual language as tools/og.html. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=block">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0}
+body{width:1200px;height:675px;position:relative;overflow:hidden;color:#151a2c;
+ font-family:"Noto Sans TC","Noto Sans KR","Noto Color Emoji",sans-serif}
+.bg{position:absolute;inset:0}
+.bull .bg{background:linear-gradient(135deg,#8fe3c3 0%,#c6ec9f 48%,#fde7a1 100%)}
+.talk .bg{background:linear-gradient(135deg,#9fc8fb 0%,#c3b9f6 55%,#f6c8df 100%)}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.55) 1.6px,transparent 1.7px);background-size:22px 22px;mask-image:linear-gradient(90deg,transparent 0,#000 60%)}
+.tape{position:absolute;left:-40px;right:-40px;top:22px;height:46px;background:#151a2c;transform:rotate(-2.2deg);
+ display:flex;align-items:center;gap:34px;padding-left:70px;white-space:nowrap;box-shadow:0 6px 0 rgba(21,26,44,.18)}
+.tape span{font:700 22px "IBM Plex Mono",monospace;color:#fff}
+.tape i{font-style:normal;margin-left:8px}
+.tape .u{color:#5ee08f}.tape .d{color:#ff7d7d}
+.tape .sep{color:#f8d34a}
+.main{position:absolute;left:52px;right:52px;top:92px;bottom:72px;display:flex;flex-direction:column;gap:12px;min-height:0}
+#in{display:flex;flex-direction:column;gap:12px;min-height:0;flex:1}
+.row1{display:flex;gap:12px;align-items:center;flex-wrap:nowrap;flex:none}
+.brand{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:999px;padding:7px 18px 7px 10px;font-weight:900;font-size:22px;box-shadow:0 4px 0 rgba(21,26,44,.14)}
+.brand .lg{width:40px;height:40px;border-radius:10px;object-fit:cover;margin:-4px 0}
+.date{display:inline-block;background:#f8d34a;border:3px solid #151a2c;border-radius:12px;padding:5px 14px;font-weight:900;font-size:22px;transform:rotate(-2.5deg);box-shadow:3px 4px 0 #151a2c;white-space:nowrap}
+.hero{display:flex;gap:22px;align-items:center;flex:none;min-width:0}
+.left{min-width:0;flex:1}
+.tk{font:700 92px/1 "IBM Plex Mono",monospace;letter-spacing:-2px;white-space:nowrap}
+.tk .mk{background:linear-gradient(transparent 58%,#fbe25b 58%);padding:0 8px}
+.meta{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:10px;min-width:0}
+.pill{display:inline-block;font-weight:900;font-size:18px;padding:3px 12px;border-radius:999px;border:2px solid;white-space:nowrap}
+.pill.g{color:#1d6b3a;border-color:#2f8f52;background:#e3f7ea}
+.pill.r{color:#a52b3d;border-color:#c63b4e;background:#fde7eb}
+.pill.n{color:#3c4466;border-color:#8890b5;background:#eef0fb}
+.streak{display:inline-block;background:#ff6b3d;color:#fff;font-weight:900;font-size:16px;padding:3px 10px;border-radius:10px;transform:rotate(3deg);box-shadow:2px 3px 0 #151a2c;border:2px solid #151a2c}
+.avs{display:flex;margin-left:4px}
+.avs img,.avs b{width:46px;height:46px;border-radius:50%;border:3px solid #fff;margin-left:-12px;box-shadow:0 0 0 2px #2f8f52;object-fit:cover;background:#eee}
+.avs img:first-child{margin-left:0}
+.avs b{display:grid;place-items:center;font-size:14px;color:#151a2c;background:#f8d34a;box-shadow:0 0 0 2px #151a2c}
+.side{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.side svg{width:260px;height:78px}
+.side .c{font:700 32px "IBM Plex Mono",monospace}
+.side .l{font:700 15px "IBM Plex Mono",monospace;color:#3c4466}
+.u{color:#1f9d55}.d{color:#d23b4f}
+.heads{flex:1;min-height:0;background:#fff;border:3px solid #151a2c;border-radius:18px;box-shadow:0 5px 0 #151a2c;
+ display:flex;flex-direction:column;justify-content:center;gap:8px;padding:14px 20px;overflow:hidden}
+.hl{display:flex;gap:12px;align-items:flex-start;min-width:0;font-weight:800;font-size:26px;line-height:1.28}
+.hl .lg{flex:none;width:42px;height:26px;border-radius:8px;background:#151a2c;color:#fff;display:grid;place-items:center;
+ font:700 12px "IBM Plex Mono",monospace;letter-spacing:.4px;margin-top:4px}
+.hl .tx{min-width:0;flex:1}
+.hl.ko .tx{word-break:keep-all}
+.stats{display:flex;gap:14px;flex:none}
+.stat{flex:1;border-radius:16px;padding:8px 16px;border:3px solid;box-shadow:0 5px 0 rgba(21,26,44,.16);min-width:0}
+.stat .l{font-weight:900;font-size:17px;white-space:nowrap}
+.stat .v{font-weight:900;font-size:34px;line-height:1.05}
+.stat.g{background:#c9f3d6;border-color:#2f8f52;color:#1d6b3a}
+.stat.r{background:#fbd3da;border-color:#c63b4e;color:#a52b3d}
+.stat.b{background:#dfe7ff;border-color:#3557c9;color:#2a43a0}
+.foot{position:absolute;left:52px;right:52px;bottom:18px;height:42px;background:rgba(255,255,255,.88);border-radius:999px;
+ display:flex;align-items:center;justify-content:center;padding:0 24px;font-weight:700;font-size:18px;color:#3c4466;white-space:nowrap}
+.foot b{color:#151a2c}
+</style>
+<body>
+<div class="bg"></div><div class="dots"></div>
+<div class="tape" id="tape"></div>
+<div class="main" id="main">
+ <div id="in">
+  <div class="row1"><span class="brand"><img class="lg" src="logo.png" alt="">The Crowd Tape</span><span class="date" id="date"></span></div>
+  <div class="hero">
+   <div class="left">
+    <div class="tk" id="tk"></div>
+    <div class="meta" id="meta"></div>
+   </div>
+   <div class="side" id="side"></div>
+  </div>
+  <div class="heads" id="heads"></div>
+  <div class="stats" id="stats"></div>
+ </div>
+</div>
+<div class="foot"><span><b>@thecrowdtape</b> · thecrowdtape.com · Not investment advice</span></div>
+<script>
+function render(D){
+const esc=v=>String(v==null?'':v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+document.body.className=D.mode==='talk'?'talk':'bull';
+const pct=v=>v==null?'':(v>=0?'▲':'▼')+Math.abs(v).toFixed(1)+'%';
+const m1=a=>a&&a.length>1?(a[a.length-1]/a[0]-1)*100:null;
+const tapeSrc=(D.tape&&D.tape.length)?D.tape:(D.d1!=null?[{t:D.ticker,d1:D.d1}]:[]);
+const tape=tapeSrc.map(x=>`<span>$${esc(x.t)}<i class="${x.d1>=0?'u':'d'}">${pct(x.d1)}</i></span><span class="sep">✦</span>`).join('');
+const te=document.getElementById('tape');
+if(tape){te.style.display='';te.innerHTML=tape+tape}else te.style.display='none';
+document.getElementById('date').textContent=D.date?`📅 ${D.date}`:'';
+document.getElementById('tk').innerHTML=`<span class="mk">$${esc(D.ticker)}</span>`;
+const pills=[];
+if(D.bull!=null)pills.push(`<span class="pill g">${D.bull} bullish</span>`);
+if(D.bear!=null)pills.push(`<span class="pill r">${D.bear} bearish</span>`);
+if(D.n!=null)pills.push(`<span class="pill n">${D.n} account${D.n===1?'':'s'}</span>`);
+if(D.streak>=2)pills.push(`<span class="streak">🔥 ${D.streak} days</span>`);
+const av=(D.avs||[]).filter(Boolean).map(a=>`<img src="${a}">`).join('')+(D.more?`<b>+${D.more}</b>`:'');
+document.getElementById('meta').innerHTML=pills.join('')+(av?`<div class="avs">${av}</div>`:'');
+const spark=a=>{if(!a||a.length<2)return '';const mn=Math.min(...a),mx=Math.max(...a),sp=(mx-mn)||1;
+ const pts=a.map((v,i)=>`${(i/(a.length-1)*256+2).toFixed(1)},${(74-(v-mn)/sp*68).toFixed(1)}`).join(' ');
+ const up=a[a.length-1]>=a[0];
+ return `<svg viewBox="0 0 260 78"><polyline points="${pts}" fill="none" stroke="${up?'#1f9d55':'#d23b4f'}" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/></svg>`};
+const ch=m1(D.spark), se=document.getElementById('side');
+if(D.spark&&D.spark.length>1){
+ se.style.display='';
+ se.innerHTML=`${spark(D.spark)}<span class="c ${ch>=0?'u':'d'}">${pct(ch)}</span><span class="l">1 month</span>`;
+}else se.style.display='none';
+const order=['zh','en','ko'], tag={zh:'ZH',en:'EN',ko:'KO'};
+const heads=D.heads||{};
+const rows=order.filter(l=>heads[l]).map(l=>`<div class="hl ${l}"><span class="lg">${tag[l]}</span><div class="tx">${esc(heads[l])}</div></div>`);
+const he=document.getElementById('heads');
+if(rows.length){he.style.display='';he.innerHTML=rows.join('')}else he.style.display='none';
+const stat=(c,l,v)=>`<div class="stat ${c}"><div class="l">${l}</div><div class="v">${v}</div></div>`;
+const bits=[];
+if(D.bull!=null)bits.push(stat('g','🟢 Bullish accounts',D.bull));
+if(D.bear!=null)bits.push(stat('r','🔴 Bearish accounts',D.bear));
+if(D.n!=null)bits.push(stat('b','🗣️ Accounts mentioning',D.n));
+const st=document.getElementById('stats');
+if(bits.length){st.style.display='';st.innerHTML=bits.join('')}else st.style.display='none';
+}
+function fit(){
+ const tk=document.getElementById('tk');
+ if(tk){let s=92; tk.style.fontSize=''; while(tk.scrollWidth>tk.parentElement.clientWidth && s>48){s-=4; tk.style.fontSize=s+'px'}}
+ const heads=document.getElementById('heads');
+ if(heads && heads.style.display!=='none'){
+  let s=26; heads.style.fontSize='';
+  const txs=[...heads.querySelectorAll('.tx')];
+  const tooWide=()=>txs.some(t=>t.scrollWidth>t.clientWidth+1);
+  const tooTall=()=>heads.scrollHeight>heads.clientHeight+2;
+  while((tooWide()||tooTall()) && s>15){s-=1; heads.style.fontSize=s+'px'; txs.forEach(t=>t.style.fontSize=s+'px')}
+ }
+ const main=document.getElementById('main'), inn=document.getElementById('in');
+ let k=1; inn.style.zoom='';
+ while(inn.getBoundingClientRect().height>main.clientHeight+2 && k>0.62){k-=0.04; inn.style.zoom=k}
+}
+</script>
+</body>

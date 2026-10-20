@@ -66,6 +66,7 @@ jobs:
           if [ -f "$WORK_DIR/og.json" ]; then
             node tools/og.js "$WORK_DIR/og.json" || { echo "::error::分享圖畫唔到"; exit 1; }
           fi
+          if [ -f "$WORK_DIR/xcards.json" ]; then node tools/xcard.js "$WORK_DIR/xcards.json" || echo "::warning::X card failed"; fi
       - name: Daily multi-picture posts (12:30, 16:30, 20:30 HKT slots on trading days)
         continue-on-error: true
         run: |
@@ -75,6 +76,7 @@ jobs:
             cp "$WORK_DIR/social-posts.json" data/social-posts.json
             mkdir -p social && cp "$WORK_DIR/social.html" social/index.html
           fi
+          if [ -f "$WORK_DIR/xcards.json" ]; then node tools/xcard.js "$WORK_DIR/xcards.json" || echo "::warning::X card failed"; fi
       - name: Language versions
         run: python3 tools/build_langs.py
       - name: Support page
