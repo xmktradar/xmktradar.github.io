@@ -543,8 +543,8 @@
     "TSLA",
     "NVDA",
     "SPCX",
-    "NBIS",
     "META",
+    "NBIS",
     "AAPL",
     "BE",
     "ASTS"
@@ -561,21 +561,21 @@
     "2026-10-20T23:59"
    ],
    "top": [
-    "SPCX",
-    "QQQ",
     "TSLA",
+    "QQQ",
     "NVDA",
+    "SPCX",
     "AMZN",
     "SPY",
-    "CRWV",
     "META",
-    "NBIS",
-    "MSFT"
+    "CRWV",
+    "AAPL",
+    "NBIS"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-20 16:21"
+   "updated_hkt": "2026-10-20 16:54"
   }
  },
- "updated_hkt": "2026-10-20 16:21",
+ "updated_hkt": "2026-10-20 16:54",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
