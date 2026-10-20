@@ -1,0 +1,88 @@
+{
+  "posts": {
+    "2112619622663164121": {
+      "en_summary": "$XBI biotech saw its strongest day in a while with a buyer of 1500 June $185 calls at 6.12 and 2750 March $148 short puts opened at 9.04.",
+      "zh_summary": "$XBI 生物科技出現一段時間以來最強的一天，買方以6.12購入1500張6月$185認購期權，並以9.04開倉2750張3月$148賣出認沽期權。",
+      "ko_summary": "$XBI 바이오테크가 한동안 가장 강한 하루를 기록했으며, 6월 $185 콜 1500계약을 6.12에 매수하고 3월 $148 풏 매도 2750계약이 9.04에 개시되었다.",
+      "tickers": ["XBI"],
+      "stance": "睇好",
+      "stance_by_ticker": {"XBI": "睇好"},
+      "horizon": "中線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"XBI": "強勁買方期權活動顯示看漲"}
+    },
+    "2112619571664544094": {
+      "en_summary": "Strange day with $IWM $DIA $XBI leading, $LLY at new ATH, $SMH held 540 but names bounced without power, $AMZN still looks good, $SPCX and $NFLX earnings on the close.",
+      "zh_summary": "奇怪的一天，$IWM $DIA $XBI 領漲，$LLY 創歷史新高，$SMH 守住540但個股反彈無力，$AMZN 仍然看起來不錯，$SPCX 和 $NFLX 收盤時有財報。",
+      "ko_summary": "이상한 하루로 $IWM $DIA $XBI가 선도하고 $LLY는 신고가를 기록했으며 $SMH는 540을 지켜다 종목들은 힘없이 반등했고 $AMZN은 여전히 좋아 보이며 $SPCX와 $NFLX는 마감 시 실적이 있다.",
+      "tickers": ["IWM", "DIA", "XBI", "LLY", "SMH", "AMZN", "SPCX", "NFLX"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "IWM": "中性",
+        "DIA": "中性",
+        "XBI": "中性",
+        "LLY": "睇好",
+        "SMH": "中性",
+        "AMZN": "睇好",
+        "SPCX": "中性",
+        "NFLX": "中性"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"LLY": "創歷史新高", "AMZN": "仍然看起來不錯"}
+    },
+    "2112618144250638372": {
+      "en_summary": "We remain short Industrials $XLI which are also probing new cycle lows.",
+      "zh_summary": "我們仍然做空工業股 $XLI，該股也正在探尋新的週期低點。",
+      "ko_summary": "우리는 여전히 산업주 $XLI를 싷하고 있으며 이 종목도 새로운 사이클 저점을 탐지하고 있다.",
+      "tickers": ["XLI"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"XLI": "睇淡"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"XLI": "正在探尋新的週期低點"}
+    },
+    "2112617940919132424": {
+      "en_summary": "$AMZN AWS is set to receive ~$5B in $NVDA GB300 racks with deliveries around $3B per month even before data centers have enough power, showing strong AI compute demand as Amazon secures GPUs ahead.",
+      "zh_summary": "$AMZN AWS 預計將接收約50億美元的 $NVDA GB300 機架，每月交付約30億美元，甚至在數據中心有足夠電力之前，顯示強大的AI計算需求，因為亞馬遜提前確保GPU。",
+      "ko_summary": "$AMZN AWS가 데이터 센터에 충분한 전력이 있기 전에도 월 약 30억 달러의 납품으로 ~50억 달러의 $NVDA GB300 랙을 받을 예정이며, 아마존이 GPU를 선확보하는 강력한 AI 컴퓨팅 수요를 보여준다.",
+      "tickers": ["AMZN", "NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AMZN": "睇好", "NVDA": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AMZN": "提前確保大量NVDA GPU顯示需求強勁", "NVDA": "大量GB300機架訂單"}
+    },
+    "2112617657979793440": {
+      "en_summary": "BREAKING: Hedgeye's Clean Energy short gets crushed to new cycle lows $PBD.",
+      "zh_summary": "突發：Hedgeye 的清潔能源空頭被壓至新的週期低點 $PBD。",
+      "ko_summary": "속보: Hedgeye의 청정 에너지 싷이 새로운 사이클 저점으로 짓눌렸다 $PBD.",
+      "tickers": ["PBD"],
+      "stance": "睇好",
+      "stance_by_ticker": {"PBD": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"PBD": "空頭被壓至新的週期低點，價格走強"}
+    }
+  }
+}
