@@ -196,11 +196,20 @@ ISSUE_SHELL = '''<!DOCTYPE html>
   color-scheme:light;
 }}
 *{{box-sizing:border-box}}
+html{{overflow-x:clip}}
 body{{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;overflow-wrap:anywhere}}
 a{{color:var(--accent)}}
 .wrap{{max-width:760px;margin:0 auto;padding:20px 16px 48px}}
-header{{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin-bottom:22px}}
+header{{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin-bottom:14px;min-width:0}}
 .brand{{font-family:var(--f-display);font-weight:700;font-size:20px;color:var(--ink);text-decoration:none}}
+.site-nav{{display:flex;flex-wrap:wrap;gap:6px;align-items:center;max-width:100%;min-width:0}}
+.site-nav a{{box-sizing:border-box;max-width:100%;font-size:13px;font-weight:700;padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:var(--ink);text-decoration:none;background:var(--surface);line-height:1.3}}
+.site-nav a.nav-donate{{background:var(--accent);color:#fff;border-color:var(--accent)}}
+.money-bar{{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;box-sizing:border-box;max-width:100%;min-width:0;margin:0 0 14px;padding:8px 10px;border:1px dashed var(--line);border-radius:12px;background:var(--surface);font-size:13.5px;font-weight:700}}
+.aff-tag{{display:inline-block;margin-left:4px;padding:1px 8px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--muted);font-size:11px;font-weight:700;vertical-align:middle}}
+.site-foot{{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;line-height:1.7}}
+.site-foot p{{margin:0}}
+.site-foot a{{font-weight:700}}
 h1{{font-family:var(--f-display);font-size:28px;line-height:1.3;margin:0 0 8px;overflow-wrap:anywhere}}
 .issue h2{{font-family:var(--f-display);font-size:22px;line-height:1.35;margin:22px 0 8px;overflow-wrap:anywhere}}
 .issue p{{margin:0 0 12px}}
@@ -223,8 +232,13 @@ h1{{font-family:var(--f-display);font-size:28px;line-height:1.3;margin:0 0 8px;o
 <div class="wrap">
 <header>
   <a class="brand" href="/en/">The Crowd Tape</a>
+  <nav class="site-nav" aria-label="Site">
+    <a href="/en/tools/">Tools</a>
+    <a class="nav-donate" href="/en/support/">Support us</a>
+  </nav>
 </header>
 <main class="issue">
+  <nav class="money-bar" aria-label="Promotion"><span class="aff-tag">Promotion</span><a href="/en/tools/">Tools</a><a href="/en/support/">Support us</a></nav>
   {body}
   <aside class="note">
     <b>Not investment advice</b>
@@ -264,6 +278,9 @@ h1{{font-family:var(--f-display);font-size:28px;line-height:1.3;margin:0 0 8px;o
   </script>
   <p><a class="back" href="/en/newsletter/">{back}</a></p>
 </main>
+<footer class="site-foot">
+  <p><a href="/en/tools/">Tools</a> · <a href="/en/support/">Support us</a> · <a href="/en/newsletter/">Newsletter</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">TradingView <span class="aff-tag">Promotion</span></a></p>
+</footer>
 </div>
 <script>
 document.addEventListener("click",function(e){{
@@ -271,6 +288,7 @@ document.addEventListener("click",function(e){{
   if(!a||!window.gtag)return;
   var u=a.href,h="";
   try{{h=new URL(u).hostname.toLowerCase()}}catch(err){{return}}
+  if(a.getAttribute("data-tool")||h==="tradingview.com"||h.endsWith(".tradingview.com"))gtag("event","affiliate_click",{{tool:(a.getAttribute("data-tool")||"tradingview").toLowerCase(),lang:document.documentElement.lang||""}});
   if(h==="x.com"||h.endsWith(".x.com")||h==="twitter.com"||h.endsWith(".twitter.com"))gtag("event","x_outbound",{{link_url:u,page:"newsletter-issue",lang:document.documentElement.lang||"",transport_type:"beacon"}});
 }});
 </script>

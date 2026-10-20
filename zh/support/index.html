@@ -24,13 +24,17 @@
   color-scheme:light;
 }
 *{box-sizing:border-box}
+html{overflow-x:clip}
 html[lang=ko] body{font-family:"Noto Sans KR","Noto Sans TC",system-ui,sans-serif}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;overflow-wrap:anywhere}
 img{max-width:100%;height:auto}
 a{color:var(--accent)}
 .wrap{max-width:760px;margin:0 auto;padding:20px 16px 48px}
-header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin-bottom:22px}
+header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin-bottom:22px;min-width:0}
 .brand{font-family:var(--f-display);font-weight:700;font-size:20px;color:var(--ink);text-decoration:none}
+.site-nav{display:flex;flex-wrap:wrap;gap:6px;align-items:center;max-width:100%;min-width:0}
+.site-nav a{box-sizing:border-box;max-width:100%;font-size:13px;font-weight:700;padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:var(--ink);text-decoration:none;background:var(--surface);line-height:1.3}
+.site-nav a.nav-donate{background:var(--accent);color:#fff;border-color:var(--accent)}
 .lang{display:flex;flex-wrap:wrap;gap:4px}
 .lang a{font-size:13px;font-weight:600;padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);text-decoration:none;background:var(--surface)}
 .lang a[aria-current]{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
@@ -47,6 +51,10 @@ h1{font-family:var(--f-display);font-size:28px;line-height:1.3;margin:0 0 8px;ov
 .note b{display:block;margin-bottom:4px}
 .note p{margin:0;font-size:14px}
 .back{display:inline-block;margin-top:18px;font-weight:700;text-decoration:none}
+.aff-tag{display:inline-block;margin-left:6px;padding:1px 8px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--muted);font-size:12px;font-weight:700;vertical-align:middle}
+.site-foot{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;line-height:1.7}
+.site-foot p{margin:0}
+.site-foot a{font-weight:700}
 @media(min-width:720px){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .ct-news{position:relative;overflow-x:clip;box-sizing:border-box;width:100%;max-width:100%;margin:18px 0 0;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .ct-news-t{flex:1 0 100%;margin:0;font-weight:700;font-size:15px;line-height:1.45;overflow-wrap:anywhere}
@@ -62,6 +70,10 @@ h1{font-family:var(--f-display);font-size:28px;line-height:1.3;margin:0 0 8px;ov
 <div class="wrap">
 <header>
   <a class="brand" href="/zh/">The Crowd Tape</a>
+  <nav class="site-nav" aria-label="網站">
+    <a href="/zh/tools/">工具</a>
+    <a class="nav-donate" href="/zh/support/">支持我哋</a>
+  </nav>
   <nav class="lang" aria-label="語言">
     <a href="/zh/support/" hreflang="zh-Hant" aria-current="page">中</a>
     <a href="/en/support/" hreflang="en">EN</a>
@@ -128,6 +140,9 @@ h1{font-family:var(--f-display);font-size:28px;line-height:1.3;margin:0 0 8px;ov
   </script>
   <p><a class="back" href="/zh/">返回首頁</a></p>
 </main>
+<footer class="site-foot">
+  <p><a href="/zh/tools/">工具</a> · <a href="/zh/support/">支持我哋</a> · <a href="/zh/newsletter/">電子報</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">TradingView <span class="aff-tag">推廣</span></a></p>
+</footer>
 </div>
 <script>
 document.addEventListener("click",function(e){
@@ -136,6 +151,7 @@ document.addEventListener("click",function(e){
   if(a.hasAttribute("data-method"))gtag("event","donate_click",{method:"paypal",lang:document.documentElement.lang});
   var u=a.href,h="";
   try{h=new URL(u).hostname.toLowerCase()}catch(err){return}
+  if(a.getAttribute("data-tool")||h==="tradingview.com"||h.endsWith(".tradingview.com"))gtag("event","affiliate_click",{tool:(a.getAttribute("data-tool")||"tradingview").toLowerCase(),lang:document.documentElement.lang||""});
   if(h==="x.com"||h.endsWith(".x.com")||h==="twitter.com"||h.endsWith(".twitter.com"))gtag("event","x_outbound",{link_url:u,page:"support",lang:document.documentElement.lang||"",transport_type:"beacon"});
 });
 </script>

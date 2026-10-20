@@ -4,10 +4,15 @@ i18n/<lang>.json["toolspage"] maps each Chinese string to its translation.
 Writes tools/index.html (Chinese) and zh|en|ko/tools/index.html, and lists
 the three language URLs in sitemap.xml.
 The IBKR card (data-region="ibkr") is omitted on the Korean page.
+The Stock Rover card stays hidden until STOCKROVER_URL is a real URL.
 """
+import html as html_lib
 import json
 import os
 import re
+
+# Leave empty until there is a real Stock Rover URL. No placeholder link.
+STOCKROVER_URL = ''
 
 SITE = 'https://thecrowdtape.com/'
 LANGS = {'zh': 'zh-Hant', 'en': 'en', 'ko': 'ko'}
@@ -29,9 +34,18 @@ def apply(html, tr):
     return html
 
 
+def stockrover(html):
+    """Show the Stock Rover card only when STOCKROVER_URL is non-empty."""
+    url = (STOCKROVER_URL or '').strip()
+    if url:
+        return html.replace('{{sr_hidden}}', '').replace('{{sr_href}}', html_lib.escape(url, quote=True))
+    return html.replace('{{sr_hidden}}', ' hidden').replace('{{sr_href}}', '')
+
+
 def page(template, lang):
     cur = {k: (' aria-current="page"' if k == lang else '') for k in LANGS}
-    html = template.replace('{{lang}}', LANGS[lang]).replace('{{lang_code}}', lang)
+    html = stockrover(template)
+    html = html.replace('{{lang}}', LANGS[lang]).replace('{{lang_code}}', lang)
     html = html.replace('{{canon}}', f'{SITE}{lang}/tools/')
     html = html.replace('{{home}}', f'/{lang}/')
     for k, mark in cur.items():
