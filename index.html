@@ -1215,13 +1215,16 @@ function viewWeekly(){
  </div>`}
 
 // ---------- 每月 ----------
+const HEAT_MIN={acc:3,days:3};
 function viewMonthly(){
  const to=TODAY,from=addDays(TODAY,-27),all=postsIn(from,to);const DAYS=[...Array(28)].map((_,i)=>addDays(from,i));
  const rows=TICKERS.map(t=>{const ps=all.filter(x=>x.t===t);return {t,n:ps.length,b:ps.filter(x=>x.s==='bull').length,r:ps.filter(x=>x.s==='bear').length,m:ps.filter(x=>x.s==='neu').length,u:ps.filter(x=>x.s==='none').length,c:dist(t,from,to)}}).filter(r=>r.n).sort((a,b)=>b.n-a.n||a.t.localeCompare(b.t));
  const B=all.filter(x=>x.s==='bull').length,X=all.filter(x=>x.s==='bear').length,M=all.filter(x=>x.s==='neu').length,U=all.length-B-X-M;
  const cons=accsOf(from,to).map(a=>{const ps=all.filter(x=>x.acc===a);let rev=0,flips=0,same=0;const byT={};ps.forEach(x=>(byT[x.t]=byT[x.t]||[]).push(x));Object.values(byT).forEach(list=>{list.sort((x,y)=>x.ms-y.ms);for(let i=1;i<list.length;i++){if(list[i].s===list[i-1].s)same++;else{flips++;if(explicit(list[i].s)&&explicit(list[i-1].s))rev++}}});const pairs=same+flips;return {a,n:ps.length,rev,score:pairs?same/pairs*100:null}}).sort((x,y)=>y.n-x.n||x.a.localeCompare(y.a));
- const maxHeat=Math.max(1,...rows.flatMap(r=>DAYS.map(d=>all.filter(x=>x.t===r.t&&x.d===d).length)));
- const heatRows=rows.map(r=>`<div style="display:contents"><span>${tkBtn(r.t)}</span>${DAYS.map(d=>{const ps=all.filter(x=>x.t===r.t&&x.d===d);const b=ps.filter(x=>x.s==='bull').length,s=ps.filter(x=>x.s==='bear').length,net=b-s;const cls=!ps.length?'e':net>0?'b':net<0?'r':(b&&s)?'x':'m';const op=ps.length?(.35+.65*ps.length/maxHeat).toFixed(2):1;return `<i class="hc ${cls}" style="opacity:${op}" title="$${esc(r.t)} ${fmt(d)}：${ps.length} 則，淨看多 ${net}"></i>`}).join('')}</div>`).join('');
+ // 熱圖只留熱度夠嘅股票：28 天內至少 HEAT_MIN.acc 個帳號、HEAT_MIN.days 天有提及（改數字要同時改下面標題同 i18n 文字）
+ const hot=rows.filter(r=>{const ps=all.filter(x=>x.t===r.t);return new Set(ps.map(x=>x.acc)).size>=HEAT_MIN.acc&&new Set(ps.map(x=>x.d)).size>=HEAT_MIN.days});
+ const maxHeat=Math.max(1,...hot.flatMap(r=>DAYS.map(d=>all.filter(x=>x.t===r.t&&x.d===d).length)));
+ const heatRows=hot.map(r=>`<div style="display:contents"><span>${tkBtn(r.t)}</span>${DAYS.map(d=>{const ps=all.filter(x=>x.t===r.t&&x.d===d);const b=ps.filter(x=>x.s==='bull').length,s=ps.filter(x=>x.s==='bear').length,net=b-s;const cls=!ps.length?'e':net>0?'b':net<0?'r':(b&&s)?'x':'m';const op=ps.length?(.35+.65*ps.length/maxHeat).toFixed(2):1;return `<i class="hc ${cls}" style="opacity:${op}" title="$${esc(r.t)} ${fmt(d)}：${ps.length} 則，淨看多 ${net}"></i>`}).join('')}</div>`).join('');
  const sm=summaryOf('monthly');const srcs=[...new Set(Object.entries(D.prices).filter(([t])=>!UNC(t)).map(([,p])=>p.source))];const asof=Object.entries(D.prices).filter(([t])=>isUS(t)).map(([,p])=>p.as_of).sort().pop();
  return `<div class="grid">
  <section class="c12 analysis"><div class="range">彙整 ${from} 至 ${to}（28 天）</div><h2>本月趨勢 ${sm?'':'<span class="sub">每月分析尚未產生，以下由資料自動整理</span>'}</h2>
@@ -1235,10 +1238,10 @@ function viewMonthly(){
   ${cons.length?`<div class="tablewrap cons-scroll"><table><thead><tr><th>帳號</th><th class="n">觀點</th><th class="n">反轉次數</th><th class="n">一致性</th><th></th></tr></thead><tbody>${cons.map(c=>`<tr><td><b>${esc(nameOf(c.a))}</b> ${accLink(c.a)}${accIn(c.a)}</td><td class="n">${c.n}</td><td class="n">${c.rev}</td><td class="n">${c.score==null?'—':c.score.toFixed(0)+'%'}</td><td style="width:30%">${c.score==null?'<span class="note">每檔只有 1 則觀點，資料不足</span>':`<div class="bar"><span class="a" style="width:${c.score}%"></span></div>`}</td></tr>`).join('')}</tbody></table></div>`:empty('期內沒有帳號提及股票。')}</section>
  ${favHtml(from,to)}
  ${lbHtml(rows)}
- <section class="c12 panel"><h2>個股關注度與觀點隨時間的變化 <span class="sub">每格一天（HKT）；顏色為當天淨立場，深淺為提及次數</span></h2>
-  ${rows.length?`<div class="heatwrap"><div class="heat">${heatRows}
+ <section class="c12 panel"><h2>個股關注度與觀點隨時間的變化 <span class="sub">每格一天（HKT）；顏色為當天淨立場，深淺為提及次數；只列出至少 3 個帳號、3 天有提及的股票</span></h2>
+  ${hot.length?`<div class="heatwrap"><div class="heat">${heatRows}
   <span></span>${DAYS.map((d,i)=>`<span style="text-align:center${i===27?';direction:rtl':''}" class="note">${i%7===0||i===27?fmt(d):''}</span>`).join('')}</div></div>
-  <div class="legend" style="margin-top:10px"><span><i class="sw b"></i>淨看多</span><span><i class="sw r"></i>淨看空</span><span><i class="sw x"></i>多空相抵</span><span><i class="sw m"></i>中性／未表態</span></div>`:empty('期內沒有股票被提及。')}</section>
+  <div class="legend" style="margin-top:10px"><span><i class="sw b"></i>淨看多</span><span><i class="sw r"></i>淨看空</span><span><i class="sw x"></i>多空相抵</span><span><i class="sw m"></i>中性／未表態</span></div>`:empty(rows.length?'期內沒有股票達到熱度門檻。':'期內沒有股票被提及。')}</section>
  </div>`}
 
 // ---------- 價格圖（內嵌 SVG） ----------
