@@ -543,37 +543,39 @@
     "TSLA",
     "NVDA",
     "SPCX",
-    "META",
     "NBIS",
+    "META",
     "AAPL",
-    "BE"
+    "BE",
+    "ASTS"
    ],
    "bear": [
     "QQQ"
    ],
    "split": [
-    "SPY"
+    "SPY",
+    "APLD"
    ],
    "window": [
     "2026-10-20T00:00",
     "2026-10-20T23:59"
    ],
    "top": [
+    "SPCX",
     "TSLA",
     "NVDA",
-    "SPCX",
     "AMZN",
     "QQQ",
+    "CRWV",
     "SPY",
     "META",
-    "CRWV",
-    "MSFT",
-    "AAPL"
+    "NBIS",
+    "MSFT"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-20 12:41"
+   "updated_hkt": "2026-10-20 13:14"
   }
  },
- "updated_hkt": "2026-10-20 12:41",
+ "updated_hkt": "2026-10-20 13:14",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
