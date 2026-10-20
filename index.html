@@ -1469,6 +1469,10 @@ const HANDLE_RE=/(^|[^A-Za-z0-9_\/.@])@([A-Za-z0-9_]{1,15})(?![A-Za-z0-9_])/g;
 function fitTables(root){if(!root)return;root.querySelectorAll('.tablewrap,.lb-wrap').forEach(w=>{if(w.querySelector('table.matrix'))return;const t=w.querySelector('table');if(!t)return;
  const hs=[...t.querySelectorAll('thead th')].map(th=>th.textContent.replace(/[↓↑]/g,'').replace(/\s+/g,' ').trim());t.querySelectorAll('tbody tr').forEach(tr=>[...tr.children].forEach((td,i)=>{if(hs[i]&&!td.dataset.l)td.dataset.l=hs[i]}));
  w.classList.remove('stack');if(w.scrollWidth>w.clientWidth+1)w.classList.add('stack')})}
+// 長列表唔再喺框入面捲（手機手指會卡住、框喺半行切斷）：先出頭幾項，其餘按「再顯示 N 項」先開（Tim，2026-10-21）
+const CLAMP=[['.cc-grid',4],['.fav-grid',6],['.acc-grid',6],['.acc-cards',6],['.trk-grid',8],['.multi-scroll tbody',10],['.cons-scroll tbody',10],['.lb-wrap tbody',10]];
+function clampLists(root){if(!root)return;CLAMP.forEach(([sel,n])=>root.querySelectorAll(sel).forEach(box=>{if(box.closest('.sd-cards')||box.dataset.cl)return;const items=[...box.children];if(items.length<=n+2)return;box.dataset.cl='1';items.slice(n).forEach(x=>x.classList.add('cl-h'));
+ const b=document.createElement('button');b.type='button';b.className='more-btn cl-more';b.textContent=`再顯示 ${items.length-n} 項`;b.onclick=()=>{items.forEach(x=>x.classList.remove('cl-h'));b.remove()};(box.tagName==='TBODY'?box.closest('.tablewrap,.lb-wrap'):box).after(b)}))}
 addEventListener('resize',()=>{fitTables(document.getElementById('view'));const d=document.getElementById('dive');if(d&&!d.hidden)fitTables(d)});
 function linkHandles(root){if(!root)return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const p=n.parentElement;if(!p||p.closest('a,button,script,style,textarea,title,option,svg'))return NodeFilter.FILTER_REJECT;return /@[A-Za-z0-9_]/.test(n.nodeValue)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT}});
  const nodes=[];while(w.nextNode())nodes.push(w.currentNode);
@@ -1555,7 +1559,7 @@ let lastViewKey=null,lastViewHtml=null;
 function drawView(){document.querySelectorAll('nav.tabs button[data-v]').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===current));
  try{const html=VIEWS[current]();const view=document.getElementById('view');
   if(view.querySelector('.mk-live[data-on]')&&lastViewKey===current&&lastViewHtml===html){if(coreDone){const ld=view.querySelector('#dash-load');if(ld)ld.remove()}mountStatus();mountMore()}
-  else{const oldTape=view.querySelector('.mk-live[data-on]');view.innerHTML=html;if(oldTape){const nw=view.querySelector('.mk-live');if(nw)nw.replaceWith(oldTape)}linkHandles(view);fitTables(view);try{mountTape(view)}catch(e){}mountStatus();mountMore();lastViewKey=current;lastViewHtml=html}}catch(e){console.error(e);document.getElementById('view').innerHTML=empty('畫面顯示錯誤：'+esc(e.message))}}
+  else{const oldTape=view.querySelector('.mk-live[data-on]');view.innerHTML=html;if(oldTape){const nw=view.querySelector('.mk-live');if(nw)nw.replaceWith(oldTape)}linkHandles(view);fitTables(view);clampLists(view);try{mountTape(view)}catch(e){}mountStatus();mountMore();lastViewKey=current;lastViewHtml=html}}catch(e){console.error(e);document.getElementById('view').innerHTML=empty('畫面顯示錯誤：'+esc(e.message))}}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-tk]');if(b){e.preventDefault();location.hash='stock/'+b.dataset.tk;return}
  const v=e.target.closest('nav.tabs button[data-v]');if(v){location.hash=v.dataset.v;return}
  const card=e.target.closest('.acc[data-href]');if(card&&!e.target.closest('a,button')){location.hash=card.dataset.href}});
@@ -1591,9 +1595,10 @@ try{show(num(localStorage.getItem('ct_views')))}catch(e){}
 var seen=false;try{seen=sessionStorage.getItem('ct_viewed')==='1'}catch(e){}
 fetch(API+(seen?'get/':'hit/')+KEY,{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||typeof j.value!=='number')return;show(BASE+j.value);try{sessionStorage.setItem('ct_viewed','1');localStorage.setItem('ct_views',String(num(el.textContent)))}catch(e){}}).catch(function(){});})();
 </script>
-<style>/* Long lists scroll inside their own box so the page stays short (Tim, 2026-10-11).
+<style>/* Long lists used to scroll inside their own box (Tim, 2026-10-11); on phones that trapped the finger,
+   so since 2026-10-21 they show the first items plus a 再顯示 N 項 button (clampLists). Only the heatmap still scrolls.
    !important beats the phone .stack rule, which turns overflow and max-height off. */
-.multi-scroll,.cons-scroll,.acc-grid,.acc-cards,.cc-grid,.fav-grid,.heatwrap,.trk-grid,.lb-wrap{max-height:min(600px,72vh)!important;overflow-y:auto!important}
+.heatwrap{max-height:min(600px,72vh)!important;overflow-y:auto!important}.cl-h{display:none!important}.cl-more{display:block;margin:10px auto 0}
 .multi-scroll thead th,.cons-scroll thead th{position:sticky;top:0;z-index:2;background:var(--panel)}
 .stack thead th{position:static}</style>
 <style>@media(max-width:700px){header.top{top:calc(env(safe-area-inset-top,0px) + var(--hd-top,0px))}}</style>
