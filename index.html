@@ -1552,6 +1552,15 @@ f();addEventListener('resize',f);if(window.ResizeObserver)new ResizeObserver(f).
 (function(){var fab=document.querySelector('.donate-fab'),top=document.querySelector('header .donate-jump'),box=document.getElementById('donate');if(!fab||!top||!window.IntersectionObserver)return;
 var a=true,b=false;function u(){fab.classList.toggle('on',!a&&!b)}
 new IntersectionObserver(function(e){a=e[0].isIntersecting;u()}).observe(top);if(box)new IntersectionObserver(function(e){b=e[0].isIntersecting;u()}).observe(box)})();</script>
+<button type="button" class="to-top" aria-label="回到頂部" title="回到頂部">↑</button>
+<style>/* 回到頂部 (Tim, 2026-10-21): bottom-right after one screen of scrolling; on phones it sits above the ☕ button. */
+.to-top{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:30;width:42px;height:42px;padding:0;border-radius:999px;border:1px solid var(--line-strong);background:var(--panel);color:var(--tx-strong);font:700 19px/1 var(--f-body);cursor:pointer;box-shadow:0 3px 10px rgba(59,47,37,.15);opacity:0;pointer-events:none;transition:opacity .2s}
+.to-top.on{opacity:1;pointer-events:auto}
+@media(max-width:700px){.to-top{right:16px;bottom:calc(70px + env(safe-area-inset-bottom,0px))}}</style>
+<script>(function(){var b=document.querySelector('.to-top');if(!b)return;var on=false,q=false;
+function u(){q=false;var s=scrollY>innerHeight;if(s!==on){on=s;b.classList.toggle('on',s)}}
+addEventListener('scroll',function(){if(!q){q=true;requestAnimationFrame(u)}},{passive:true});u();
+b.addEventListener('click',function(){scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})})})();</script>
 <style>/* 搜尋股票 (Tim, 2026-10-11): 🔍 at the right end of the tab row; it stays pinned on phones. */
 .top .wrap.tabbar{display:flex;flex-wrap:nowrap;align-items:center;gap:6px;position:relative}
 .tabbar nav.tabs{flex:1 1 auto;min-width:0;width:auto}
