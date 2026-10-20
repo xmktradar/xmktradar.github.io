@@ -337,7 +337,10 @@ ${ga}
 <script type="application/ld+json">${jsonLd(graph(lang, t, url, meta, stats))}</script>
 ${fonts}
 ${styles}
-<style>.brand-home{color:inherit;text-decoration:none}.stock-static{padding-top:8px}.stock-static .back{text-decoration:none;display:inline-block}
+<style>.brand-home{color:inherit;text-decoration:none}
+/* phones: the header scrolls away so the stock content gets the whole screen (Tim, 2026-10-21); ↑ button goes back up */
+@media(max-width:700px){header.top{position:static}}
+.stock-static{padding-top:8px}.stock-static .back{text-decoration:none;display:inline-block}
 .advice{margin:8px 16px 0;padding:10px 12px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;background:var(--accent-soft);font-size:14px;line-height:1.45}
 .open-live{display:flex;justify-content:center;margin:8px 0 40px}.open-live a{font:600 15px/1 var(--f-body);padding:12px 20px;border-radius:999px;
 background:var(--accent);color:#fff;text-decoration:none}
