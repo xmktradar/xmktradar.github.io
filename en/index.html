@@ -786,7 +786,9 @@ td:not(:first-child) .note{white-space:nowrap}
 nav.tabs a.tab-robo{display:block;padding:10px 14px;font-weight:500;text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;border-radius:10px 10px 0 0}
 nav.tabs a.tab-robo:hover{filter:brightness(.9)}
 @media(max-width:640px){nav.tabs{width:100%}nav.tabs button{padding-left:8px;padding-right:8px}nav.tabs a.tab-robo{padding-left:8px;padding-right:8px;font-size:14px;flex:0 0 auto}}
-@media(max-width:600px){.divehead .meta{flex:1 1 100%}}</style><style id="macro-tab-css">
+@media(max-width:600px){.divehead .meta{flex:1 1 100%}}
+/* 睇唔到嘅區塊延後排版（手機開頁快好多，外觀不變） */
+#view .grid>section{content-visibility:auto;contain-intrinsic-size:auto 900px}</style><style id="macro-tab-css">
 .m-grid{display:grid;gap:10px;margin-top:10px}
 .m-th{border:1px solid var(--line);border-radius:8px;background:var(--surface);min-width:0}
 .m-th>summary{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:10px 12px;cursor:pointer;list-style:none}
@@ -923,13 +925,15 @@ const RK=new Map();const rk=(v,end)=>{let t=RK.get(v);if(t===undefined){t=Date.p
 const inR=(d,ms,from,to)=>from.length>10?(ms>=rk(from)&&ms<=rk(to,true)):(d>=from&&d<=to);
 const tsOf=ms=>hkDate(ms)+'T'+hm(ms);
 const fmtR=v=>v.length>10?`${fmt(v)} ${v.slice(11,16)}`:fmt(v);
-const postsIn=(from,to)=>POSTS.filter(x=>inR(x.d,x.ms,from,to));
+// 快取：同一個時間窗會被問好多次（每個帳號 × 每隻股票），每次重新篩全部帖文令開頁好慢；POSTS 一變（rebuildDerived）就清空
+let WIN=new Map();const winOf=(from,to)=>{const k=from+'|'+to;let w=WIN.get(k);if(!w){w={xs:POSTS.filter(x=>inR(x.d,x.ms,from,to)),last:null,accs:null};WIN.set(k,w)}return w};
+const postsIn=(from,to)=>winOf(from,to).xs.slice();
 const rawIn=(from,to)=>ALLP.filter(p=>inR(p.date,p.ms,from,to));
-function latest(acc,t,from,to){let r=null;for(const x of postsIn(from,to))if(x.acc===acc&&x.t===t&&(!r||x.ms>=r.ms))r=x;return r}
+function latest(acc,t,from,to){const w=winOf(from,to);if(!w.last){w.last=new Map();for(const x of w.xs){const k=x.acc+'\n'+x.t,r=w.last.get(k);if(!r||x.ms>=r.ms)w.last.set(k,x)}}return w.last.get(acc+'\n'+t)||null}
 function prevStance(acc,t,beforeMs){let r=null;for(const x of POSTS)if(x.acc===acc&&x.t===t&&x.ms<beforeMs&&stanced(x.s)&&(!r||x.ms>r.ms))r=x;return r}
 function change(prev,cur){if(!prev||!cur||!stanced(cur.s)||prev.s===cur.s)return null;if(explicit(prev.s)&&explicit(cur.s))return 'reversed';const rank={bear:0,neu:1,bull:2};return rank[cur.s]>rank[prev.s]?'strengthened':'weakened'}
 const chgOf=x=>change(prevStance(x.acc,x.t,x.ms),x);
-function accsOf(from,to){return [...new Set(postsIn(from,to).map(x=>x.acc))]}
+function accsOf(from,to){const w=winOf(from,to);if(!w.accs)w.accs=[...new Set(w.xs.map(x=>x.acc))];return w.accs.slice()}
 // 共識計算（一致程度、共同看多／看空、好淡分歧）計所有追蹤帳號
 function dist(t,from,to,all){const c={bull:0,bear:0,neu:0,none:0,accs:0,mentions:0};accsOf(from,to).filter(a=>all||inCons(a)).forEach(a=>{const x=latest(a,t,from,to);if(x){c[x.s]++;c.accs++}});c.mentions=postsIn(from,to).filter(x=>x.t===t).length;return c}
 function agreeLabel(c){const tot=c.bull+c.bear+c.neu+c.none;if(tot<2)return {l:'Too few',k:'neu'};if(c.bull>=1&&c.bear>=1&&Math.min(c.bull,c.bear)/Math.max(c.bull,c.bear)>=.5)return {l:'Clear split',k:'chg'};const r=Math.abs(c.bull-c.bear)/tot;if(r>=.6)return {l:c.bull>c.bear?'Strongly aligned bullish':'Strongly aligned bearish',k:c.bull>c.bear?'bull':'bear'};return {l:'Partly aligned',k:'neu'}}
@@ -1450,6 +1454,7 @@ function rebuildDerived(){
  TODAY=hkDate(CUT);
  ALLP=D.posts.map(p=>({...p,text:undefined,summary_zh:HAS_ZH(p.zh_summary)?p.zh_summary:HAS_ZH(p.summary_zh)?p.summary_zh:'',truncated:HAS_ZH(p.zh_summary)&&PAGE_LANG!=='en'?false:p.truncated,tickers:[...new Set([...(p.tickers||[]),...Object.keys(p.stance_by_ticker&&typeof p.stance_by_ticker==='object'?p.stance_by_ticker:{})].map(t=>String(t).replace(/^\$/,'').toUpperCase()))],ms:Date.parse(p.time_utc),acc:p.reposted_by||p.handle,date:p.time_hkt.slice(0,10)})).sort((a,b)=>a.ms-b.ms);
  POSTS=[];ALLP.filter(valid).forEach(p=>p.tickers.forEach(t=>{const r=stanceOf(p,t);POSTS.push({p,t,acc:p.acc,s:r.s,star:r.star,ms:p.ms,d:p.date,kind:p.basis||null,why:p.summary_zh||'',url:p.url})}));
+ WIN=new Map();
  TICKERS=[...new Set(POSTS.map(x=>x.t))].sort();
  DATES=[...new Set(ALLP.map(p=>p.date))].sort();
  FOLD={};ALLP.forEach(p=>{if(p.folded_into)(FOLD[p.folded_into]=FOLD[p.folded_into]||[]).push(p)});
