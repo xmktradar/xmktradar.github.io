@@ -24,6 +24,7 @@ const MARK = '<!-- stock-index -->';
 const T = {
   zh: {
     index: '個股頁面',
+    top: '回到頂部',
     open: '打開互動版（含走勢圖）',
     home: '首頁',
     advice: '不構成投資建議。本頁只整理公開貼文，供參考。',
@@ -37,6 +38,7 @@ const T = {
   },
   en: {
     index: 'Stock pages',
+    top: 'Back to top',
     open: 'Open the interactive page (with chart)',
     home: 'Home',
     advice: 'Not investment advice. This page only summarises public posts.',
@@ -50,6 +52,7 @@ const T = {
   },
   ko: {
     index: '종목 페이지',
+    top: '맨 위로',
     open: '인터랙티브 페이지 열기(차트 포함)',
     home: '홈',
     advice: '투자 조언이 아닙니다. 이 페이지는 공개 게시물을 정리한 자료입니다.',
@@ -274,6 +277,18 @@ function graph(lang, t, url, meta, stats) {
   };
 }
 
+// 回到頂部 (Tim, 2026-10-21): same button and look as the live page; stock pages have no ☕ button, so it sits in the corner.
+function toTop(label) {
+  return `<button type="button" class="to-top" aria-label="${esc(label)}" title="${esc(label)}">↑</button>
+<style>.to-top{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:30;width:42px;height:42px;padding:0;border-radius:999px;border:1px solid var(--line-strong);background:var(--panel);color:var(--tx-strong);font:700 19px/1 var(--f-body);cursor:pointer;box-shadow:0 3px 10px rgba(59,47,37,.15);opacity:0;pointer-events:none;transition:opacity .2s}
+.to-top.on{opacity:1;pointer-events:auto}
+@media(max-width:700px){.to-top{right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px))}}</style>
+<script>(function(){var b=document.querySelector('.to-top');if(!b)return;var on=false,q=false;
+function u(){q=false;var s=scrollY>innerHeight;if(s!==on){on=s;b.classList.toggle('on',s)}}
+addEventListener('scroll',function(){if(!q){q=true;requestAnimationFrame(u)}},{passive:true});u();
+b.addEventListener('click',function(){scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})})})();</script>`;
+}
+
 function shell(master, lang, t, list, body, meta, stats) {
   const head = master.slice(0, master.indexOf('</head>'));
   const styles = (head.match(/<style[^>]*>[\s\S]*?<\/style>/g) || []).join('\n');
@@ -320,6 +335,7 @@ ${NL_CSS}</style>
 ${indexRow(lang, list)}</main>
 <script>document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com'))gtag('event','x_outbound',{link_url:u,page:'stock',lang:document.documentElement.lang||'',transport_type:'beacon'})});</script>
 ${nlScript(nlCopy(lang).ok)}
+${toTop(T[lang].top)}
 </body></html>
 `;
 }
