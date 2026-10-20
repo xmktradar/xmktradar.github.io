@@ -244,6 +244,28 @@ form.addEventListener('submit',function(e){
 
 const slug = t => t.replace(/[^A-Za-z0-9.\-]/g, '_');  // same as px/ file names
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+// tv_symbols values are "EXCHANGE:CODE" (same map as the homepage tvCard). Both parts must be a symbol token.
+const TV_PART = /^[A-Z0-9.!_-]+$/i;
+// Symbol pages that TradingView answers 404 for (checked 2026-10-21); these use the chart fallback.
+const TV_SYMBOL_404 = new Set(['PSKY']);
+function tvChartLink(ticker, symbols) {
+  const sym = !TV_SYMBOL_404.has(ticker) && symbols && symbols[ticker];
+  const parts = typeof sym === 'string' ? sym.split(':') : [];
+  // TradingView symbol pages write share classes with a dot: NYSE-BRK.B, not NYSE-BRK-B.
+  if (parts.length === 2) parts[1] = parts[1].replace(/-/g, '.');
+  if (parts.length === 2 && TV_PART.test(parts[0]) && TV_PART.test(parts[1])) {
+    return {
+      href: 'https://www.tradingview.com/symbols/'
+        + encodeURIComponent(parts[0]) + '-' + encodeURIComponent(parts[1])
+        + '/?aff_id=1172819',
+      fallback: false,
+    };
+  }
+  return {
+    href: 'https://www.tradingview.com/chart/?symbol=' + encodeURIComponent(ticker) + '&aff_id=1172819',
+    fallback: true,
+  };
+}
 // Keep "</" out of inline JSON so the closing script tag cannot be forged by a string.
 const jsonLd = obj => JSON.stringify(obj).replace(/<\//g, '<\\/');
 // generated_hkt is "YYYY-MM-DD HH:MM" in Hong Kong time. Other values are already ISO from the data.
@@ -304,7 +326,7 @@ addEventListener('scroll',function(){if(!q){q=true;requestAnimationFrame(u)}},{p
 b.addEventListener('click',function(){scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})})})();</script>`;
 }
 
-function shell(master, lang, t, list, body, meta, stats) {
+function shell(master, lang, t, list, body, meta, stats, tvHref) {
   const head = master.slice(0, master.indexOf('</head>'));
   const styles = (head.match(/<style[^>]*>[\s\S]*?<\/style>/g) || []).join('\n');
   const ga = (head.match(/<script async src="https:\/\/www\.googletagmanager\.com[^>]*><\/script>\s*<script>window\.dataLayer[\s\S]*?<\/script>/) || [''])[0];
@@ -354,11 +376,11 @@ ${NL_CSS}</style>
 <body>
 <header class="top"><div class="wrap"><div class="brand-wrap">${brand}<nav class="lang-sw" aria-label="Language">${sw}</nav><nav class="site-nav" aria-label="${esc(T[lang].promo)}"><a href="/${lang}/tools/">${esc(T[lang].tools)}</a><a class="nav-donate" href="/${lang}/support/">${esc(T[lang].support)}</a></nav></div></div></header>
 <main class="stock-static"><nav class="money-bar" aria-label="${esc(T[lang].promo)}"><span class="pj-tag">${esc(T[lang].promo)}</span><a href="/${lang}/tools/">${esc(T[lang].tools)}</a><a href="/${lang}/support/">${esc(T[lang].support)}</a></nav><p class="advice" role="note">${esc(T[lang].advice)}</p>${body}
-<p class="tv-line"><span class="pj-tag">${esc(T[lang].promo)}</span> <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">${esc(T[lang].tv)}</a></p>
+<p class="tv-line"><span class="pj-tag">${esc(T[lang].promo)}</span> <a href="${esc(tvHref)}" rel="sponsored noopener" target="_blank" data-tool="tradingview" data-ticker="${esc(t)}">${esc(T[lang].tv)}</a></p>
 <div class="open-live"><a href="/${lang}/#stock/${encodeURIComponent(t)}">${esc(T[lang].open)}</a></div>
 ${indexRow(lang, list)}</main>
 <footer class="wrap foot"><p><a href="/${lang}/tools/">${esc(T[lang].tools)}</a> · <a href="/${lang}/support/">${esc(T[lang].support)}</a> · <a href="/${lang}/newsletter/">${esc(T[lang].news)}</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">TradingView <span class="pj-tag">${esc(T[lang].promo)}</span></a></p></footer>
-<script>document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}var tool=a.getAttribute('data-tool');if(tool||h==='tradingview.com'||h.endsWith('.tradingview.com'))gtag('event','affiliate_click',{tool:(tool||'tradingview').toLowerCase(),lang:document.documentElement.lang||''});if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com'))gtag('event','x_outbound',{link_url:u,page:'stock',lang:document.documentElement.lang||'',transport_type:'beacon'})});</script>
+<script>document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}var tool=a.getAttribute('data-tool');if(tool||h==='tradingview.com'||h.endsWith('.tradingview.com')){var aff={tool:(tool||'tradingview').toLowerCase(),lang:document.documentElement.lang||''};var ticker=a.getAttribute('data-ticker');if(ticker)aff.ticker=ticker;gtag('event','affiliate_click',aff);}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com'))gtag('event','x_outbound',{link_url:u,page:'stock',lang:document.documentElement.lang||'',transport_type:'beacon'})});</script>
 ${nlScript(nlCopy(lang).ok)}
 ${toTop(T[lang].top)}
 </body></html>
@@ -409,6 +431,9 @@ function avatars(html, seen) {
   fs.mkdirSync(AV_DIR, { recursive: true });
   const seen = new Set();
   let list = null;
+  let tvSymbols = null;
+  const fallbackTickers = [];
+  let fallbackPages = 0;
   const urls = [];
   for (const lang of Object.keys(LANGS)) {
     const file = path.resolve(lang, 'index.html');
@@ -427,6 +452,7 @@ function avatars(html, seen) {
       if (window.__loadAllPosts) await window.__loadAllPosts();
       if (window.__postsFailed) throw new Error('older posts failed to load');
     });
+    if (!tvSymbols) tvSymbols = await p.evaluate(() => D.tv_symbols || {});
     if (!list) {
       list = await p.evaluate((min) => {
         const lim = addDays(TODAY, -27), m = {};
@@ -484,8 +510,13 @@ function avatars(html, seen) {
       body = boxed;
       const meta = { title: T[lang].title(pg.t, pg.name, pg.c), desc: T[lang].desc(pg.t, n[pg.t], pg.c) };
       const stats = { bull: pg.c.bull, bear: pg.c.bear, mentions: pg.mentions, from: pg.from, to: pg.to, modified: pg.modified };
+      const link = tvChartLink(pg.t, tvSymbols);
+      if (link.fallback) {
+        fallbackPages++;
+        if (!fallbackTickers.includes(pg.t)) fallbackTickers.push(pg.t);
+      }
       fs.mkdirSync(path.join(dir, slug(pg.t)), { recursive: true });
-      fs.writeFileSync(path.join(dir, slug(pg.t), 'index.html'), shell(master, lang, pg.t, names, body, meta, stats));
+      fs.writeFileSync(path.join(dir, slug(pg.t), 'index.html'), shell(master, lang, pg.t, names, body, meta, stats, link.href));
       urls.push(`${lang}/stock/${slug(pg.t)}/`);
     }
     // link row above the footer of the language page
@@ -523,6 +554,7 @@ function avatars(html, seen) {
   }
   await b.close();
   srv.server.close();
+  console.log('tv fallback pages ' + fallbackPages + ' tickers ' + fallbackTickers.join(','));
   console.log(`股票網頁：${list.length} 隻 × ${Object.keys(LANGS).length} 個語言，頭像 ${seen.size} 個`);
   if (bad.length) { console.log('::error::股票網頁檢查唔合格：' + bad.join('、')); process.exit(1); }
 })();
