@@ -79,6 +79,9 @@ def quote(d, urls, t, lang):
         txt = {'zh': p.get('zh_summary'), 'ko': p.get('ko_summary'),
                'en': p.get('en_summary') or p.get('text')}[lang]
         txt = re.sub(r'^\((?:Reposted|轉發|리포스트)\)\s*', '', txt or '')
+        # English card only: a quote with CJK or Hangul is skipped for the next post. Korean is left as-is.
+        if lang == 'en' and re.search('[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af\uf900-\ufaff]', txt):
+            continue
         if txt:
             h = p['handle']
             a = d['accounts'].get(h, {}).get('avatar') or d.get('avmini', {}).get(h, '')
