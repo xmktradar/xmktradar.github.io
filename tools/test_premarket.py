@@ -12,7 +12,11 @@ os.environ['WORK_DIR'] = tempfile.mkdtemp(prefix='premarket-test-')
 
 import share  # noqa: E402
 
-URL = 'https://thecrowdtape.com/?utm_source=x&utm_medium=post&utm_campaign=premarket'
+def _url(lang):
+    return f'https://thecrowdtape.com/{lang}/?utm_source=x&utm_medium=post&utm_campaign=premarket'
+
+
+URLS = [_url(lang) for lang in share.LANGS]
 DISC = share._disc_line()
 DAY = '2026-10-20'
 
@@ -38,8 +42,13 @@ POSTS = {
 }
 
 
-def _pack(lines):
-    return '\n'.join(list(lines) + [URL, DISC])
+def _pack(lines, disc=None):
+    out = []
+    for lang, line in zip(share.LANGS, lines):
+        out.append(line)
+        out.append(_url(lang))
+    out.append(disc if disc is not None else share.SHORT['en']['disc'])
+    return '\n'.join(out)
 
 
 def _check_post(text, label):
@@ -48,9 +57,11 @@ def _check_post(text, label):
     assert 'utm_campaign=premarket' in text, label
     assert 'utm_campaign=afterclose' not in text, label
     assert 'utm_campaign=daily' not in text, label
+    assert 'https://thecrowdtape.com/?' not in text, label
     lines = text.split('\n')
     assert lines[-1] == DISC or lines[-1] == share.SHORT['en']['disc'], (label, lines[-1])
-    assert lines[-2] == URL or lines[-2].startswith('https://thecrowdtape.com/'), (label, lines[-2])
+    urls = [ln for ln in lines if ln.startswith('https://')]
+    assert urls == URLS, (label, urls)
     assert share._minus_urls(text), label
 
 
@@ -138,7 +149,7 @@ def test_no_data():
         text, form = share.premarket_text(sp)
         _check_post(text, 'no-data')
         assert form in ('short', 'full')
-        lines = text.split('\n')
+        lines = [ln for ln in text.split('\n') if ln and not ln.startswith('https://') and not ln.startswith('⚠')]
         assert lines[0].startswith('10/20 開市前：'), lines[0]
         assert lines[1].startswith('Oct 20 pre-market:'), lines[1]
         assert lines[2].startswith('10/20 개장 전:'), lines[2]
