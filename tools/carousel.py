@@ -17,7 +17,7 @@ import os
 import re
 from datetime import datetime, timedelta
 
-from share import SHORT, SITE, LANGS, attach_new_posts, clean, likes, social_page, tags, trading_day, xlen
+from share import SHORT, SITE, LANGS, attach_new_posts, clean, likes, page_url, social_page, tags, trading_day, xlen
 from sitedata import load, notice, now_hk, parse_iso, read_json, work, write_json
 from utm import tag_posts
 
@@ -469,7 +469,7 @@ FB_TAP = {'zh': '👉 撳圖睇晒 4 張', 'en': '👉 Tap a picture to see all 
 def versions(lang, head, body, tks):
     """Instagram, Facebook, Threads and X versions from a headline and body blocks (most important first)."""
     tg = tags(lang, tks)
-    url = f'{SITE}{lang}/'
+    url = page_url(lang)
     short = SHORT[lang]
     give = f"{short['give']}{url}#donate"
     ig = '\n\n'.join([head, *body, '\n'.join(END[lang]), short['disc_long'], tg])

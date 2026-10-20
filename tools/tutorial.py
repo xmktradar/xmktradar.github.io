@@ -17,6 +17,7 @@ from collections import Counter
 from datetime import date, timedelta
 
 from sitedata import load, notice, now_hk, read_json, work, write_json
+from share import page_url, xlen
 from utm import tag_posts
 
 SITE = 'https://thecrowdtape.com/'
@@ -70,18 +71,13 @@ def fill(s, ex):
     return s
 
 
-def xlen(t):
-    """Length as X counts it: links count 23, Chinese, Japanese, Korean and emoji count 2."""
-    t = re.sub(r'https?://\S+', 'x' * 23, t)
-    return sum(2 if ord(c) >= 0x1100 else 1 for c in t)
-
-
 def posts(lang, n, total, e, url):
     L = TXT[lang]
     head = f"{L['series']} {n}/{total}｜{e['t']}" if lang == 'zh' else f"{L['series']} {n}/{total} · {e['t']}"
     how = L['how'] + e['how']
     tags = L['tags']
-    give = f"{L['give_s']}{SITE}{lang}/#donate"
+    give_url = page_url(lang, '#donate')
+    give = f"{L['give_s']}{give_url}"
     ig = '\n\n'.join([head, e['b'], how, L['bio'], L['give'], L['follow'], L['disc_long'], tags])
     fb = '\n\n'.join([head, e['b'], how, f"{L['live']}{url}", give, L['follow'], L['disc_long'], tags])
     # Threads: 500 characters, one topic tag. Drop the second paragraph of the body if it is too long.
@@ -105,7 +101,7 @@ def posts(lang, n, total, e, url):
         if xlen(x) <= 270:
             break
     reddit = {'title': re.sub(r'^📘\s*', '', head),
-              'body': '\n\n'.join([e['b'], how, f"{L['live']}[{url}]({url})", f"{L['give_s']}[{SITE}{lang}/#donate]({SITE}{lang}/#donate)",
+              'body': '\n\n'.join([e['b'], how, f"{L['live']}[{url}]({url})", f"{L['give_s']}[{give_url}]({give_url})",
                                    L['disc_long'], tags])}
     return {'instagram': ig, 'threads': threads, 'x': x, 'reddit': reddit, 'facebook': fb,
             'story': ' '.join(tags.split(' ')[:5])}
@@ -166,7 +162,7 @@ def main():
         txt = {k: fill(v, ex) for k, v in e[lang].items()}
         shot = {k: fill(v, ex) if isinstance(v, str) else v for k, v in e['shot'].items()}
         go = shot.get('go', '')
-        url = SITE + lang + '/' + (go if not go.startswith('#') else go)
+        url = page_url(lang, go)
         tp['posts'][lang] = posts(lang, n, len(eps), txt, url)
         job['langs'][lang] = {'title': txt['t'], 'how': txt['how'], 'shot': shot}
     tag_posts(tp['posts'], 'tutorial')
