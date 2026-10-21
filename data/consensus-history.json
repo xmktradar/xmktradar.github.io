@@ -590,10 +590,12 @@
     "AMZN",
     "MSFT",
     "GOOG",
+    "SPY",
     "DELL",
-    "GOOGL",
-    "AAOI",
+    "MU",
+    "AMD",
     "BE",
+    "AAOI",
     "ASML",
     "COF",
     "UNH"
@@ -604,7 +606,8 @@
     "CRWV",
     "QQQ",
     "NFLX",
-    "META"
+    "META",
+    "GOOGL"
    ],
    "window": [
     "2026-10-21T00:00",
@@ -616,16 +619,16 @@
     "NFLX",
     "NVDA",
     "CRWV",
-    "SMCI",
     "META",
+    "SMCI",
     "NBIS",
     "SPY",
     "AMZN"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-21 21:01"
+   "updated_hkt": "2026-10-21 22:40"
   }
  },
- "updated_hkt": "2026-10-21 21:01",
+ "updated_hkt": "2026-10-21 22:40",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
