@@ -654,7 +654,7 @@ header.top .meta .social .soc svg{display:block;width:18px;height:18px}
 .cc-row .av{width:32px;height:32px;border-radius:50%;object-fit:cover;border:1px solid var(--line);background:var(--neu-bg);display:grid;place-items:center;font-size:10px;font-weight:700;color:var(--neu-ink)}
 .cc-row .st{font-size:11px;font-weight:700;white-space:nowrap}
 .st.bull{color:var(--bull-ink)}.st.bear{color:var(--bear-ink)}.st.neu{color:var(--neu-ink)}.st.unk{color:var(--mut)}
-.cc-row .why{color:var(--tx);line-height:1.45;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.cc-row .why{color:var(--tx);line-height:1.45;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}.cc-row .why.open{-webkit-line-clamp:unset;display:block}
 .cc-row .src,table.lb .go{font-size:11px;white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--link);text-decoration:none;background:var(--bg)}
 .cc-row .src:hover{border-color:var(--link)}
 .cc-f{margin-top:auto;padding-top:9px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:11.5px;color:var(--mut)}
@@ -1065,7 +1065,8 @@ function sumBody(x,clamp){if(x.brief&&x.full)return `<div class="brief">${x.brie
 const STW={bull:'看多',bear:'看空',neu:'中性',none:'未表態'},STC={bull:'bull',bear:'bear',neu:'neu',none:'unk'};
 const cut=(t,n)=>{t=String(t||'').replace(/\s+/g,' ').trim();const a=Array.from(t);return a.length>n?a.slice(0,n).join('')+'…':t};
 // 一句理由：寫手的 ticker_notes → 中文摘要（約 25 字）→ 原本摘要
-function reasonOf(x){const n=x.p.ticker_notes&&x.p.ticker_notes[x.t];if(n)return {t:n,full:n};const z=x.p.zh_summary||x.p.summary_zh||'';return {t:cut(z,25),full:z}}
+// 冇逐股摘要就用成篇摘要（唔再切 25 字，否則只剩「@帳號 表示 $XX ...」）；開頭重複嘅「@帳號 表示／：」刪走，長度交俾 CSS 三行收起，撳一下展開
+function reasonOf(x){const n=x.p.ticker_notes&&x.p.ticker_notes[x.t];if(n)return {t:n,full:n};const z=x.p.zh_summary||x.p.summary_zh||'';const h=String(x.acc).replace(/[^A-Za-z0-9_]/g,'');const t=z.replace(new RegExp('^\\s*@?'+h+'\\s*(?:[:\\uFF1A]|表示|指出|認為|稱)\\s*','i'),'');return {t,full:z}}
 function avImg(h,cls){const i=accInfo(h);return i.avatar&&/^data:image\//.test(i.avatar)?`<img class="${cls}" src="${esc(i.avatar)}" alt="">`:(AVMINI[h]||AVMINI[String(h).toLowerCase()])?`<img class="${cls}" src="${esc(AVMINI[h]||AVMINI[String(h).toLowerCase()])}" alt="">`:`<span class="${cls}">${esc((Array.from(String(h)))[0].toUpperCase())}</span>`}
 function consGroups(from,to){const out={bull:[],bear:[],split:[]};
  TICKERS.forEach(t=>{if(UNC(t)||!isUS(t))return;const rows=accsOf(from,to).filter(inCons).map(a=>latest(a,t,from,to)).filter(Boolean);if(!rows.length)return;
@@ -1077,7 +1078,7 @@ function consCard(g,k,days,retLab){const pr=UNC(g.t)?null:D.prices[g.t];const nm
  const ret=UNC(g.t)?'<span class="na">代號未確認</span>':v==null?'<span class="na">無股價資料</span>':`<span class="${v>0?'up':v<0?'dn':''}">${v>0?'+':''}${v.toFixed(1)}%</span>`;
  const head=k==='bull'?`<span class="g">${g.nb} 個帳號看多</span>`:k==='bear'?`<span class="r">${g.nr} 個帳號看空</span>`:`<span class="g">${g.nb} 看多</span>・<span class="r">${g.nr} 看空</span>`;
  const badge={bull:'共同看多',bear:'共同看空',split:'好淡分歧'}[k];
- const li=g.rows.map(x=>{const r=reasonOf(x);return `<li class="cc-row"><a href="${xUrl(x.acc)}" target="_blank" rel="noopener" title="@${esc(x.acc)}" aria-label="@${esc(x.acc)}">${avImg(x.acc,'av')}</a><span class="st ${STC[x.s]}">${STW[x.s]}</span><span class="why" title="@${esc(x.acc)}：${esc(r.full)}">${esc(r.t)||'<span class="na">（沒有摘要）</span>'}</span><a class="src" href="${esc(x.url)}" target="_blank" rel="noopener">原帖 ↗</a></li>`}).join('');
+ const li=g.rows.map(x=>{const r=reasonOf(x);return `<li class="cc-row"><a href="${xUrl(x.acc)}" target="_blank" rel="noopener" title="@${esc(x.acc)}" aria-label="@${esc(x.acc)}">${avImg(x.acc,'av')}</a><span class="st ${STC[x.s]}">${STW[x.s]}</span><span class="why" title="@${esc(x.acc)}：${esc(r.full)}" onclick="this.classList.toggle('open')">${esc(r.t)||'<span class="na">（沒有摘要）</span>'}</span><a class="src" href="${esc(x.url)}" target="_blank" rel="noopener">原帖 ↗</a></li>`}).join('');
  return `<article class="cc ${k}"><div class="cc-l"><div class="cc-tk">${esc(g.t)}</div><div class="cc-nm">${esc(nm)}</div><div class="cc-ret">${ret}</div><div class="cc-ret-l">${retLab}</div></div><div class="cc-r"><div class="cc-h"><b>${head}</b><span class="cc-badge">${badge}</span></div><ul class="cc-rows">${li}</ul><div class="cc-f"><span>${g.nPosts} 篇原帖</span><a href="#stock/${encodeURIComponent(g.t)}">查看詳情 ↗</a></div></div></article>`}
 function consHtml(from,to,lab,days,retLab){const G=consGroups(from,to);
  const sec=(k,title,note)=>`<div class="cc-sec"><h2>${title}</h2><span class="note">${note}</span></div>${G[k].length?`<div class="cc-grid">${G[k].map(g=>consCard(g,k,days,retLab)).join('')}</div>`:`<div class="cc-empty">${lab}沒有明顯${title}</div>`}`;
