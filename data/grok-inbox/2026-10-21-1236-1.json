@@ -1,1 +1,79 @@
-$(cat /tmp/batch1.json)
+{
+  "posts": {
+    "2112752895464821173": {
+      "en_summary": "@StockSavvyShay notes $SPCX just keeps ripping and is now up more than 9%. He quotes his earlier post that Elon said on the $SPCX earnings call the company tried to rent outside AI compute to free up its own capacity for training but found no spare $NVDA GB300s, GB200s, older H100s, $GOOGL TPUs or $AMZN Trainium, arguing this makes it harder to claim a broad AI compute glut.",
+      "zh_summary": "@StockSavvyShay 指出 $SPCX 持續上漲，現已上漲超過 9%。他引用自己早前貼文，稱 Elon 在 $SPCX 業績電話會議上表示，公司試圖租用外部 AI 算力以釋放自身訓練容量，但找不到多餘的 $NVDA GB300、GB200、較舊的 H100、$GOOGL TPU 或 $AMZN Trainium，認為這使得聲稱存在廣泛 AI 算力過剩更加困難。",
+      "ko_summary": "@StockSavvyShay는 $SPCX가 계속 급등하며 이제 9% 이상 올랐다고 전했다. 그는 Elon이 $SPCX 실적 콜에서 자체 훈련 용량을 확보하려고 외부 AI 컴퓨트를 빌리려 했지만 $NVDA GB300, GB200, 구형 H100, $GOOGL TPU, $AMZN Trainium 여분이 없었다고 말한 이전 글을 인용하며, 이로 인해 광범위한 AI 컴퓨트 과잉 주장이 더 어려워졌다고 했다.",
+      "tickers": ["SPCX", "NVDA", "GOOGL", "AMZN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPCX": "睇好", "NVDA": "中性", "GOOGL": "中性", "AMZN": "中性"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2112747884894720183": {
+      "en_summary": "@Jake__Wujastyk highly recommends the Anchored VWAP book, saying @alphatrends taught him everything he knows about the technique. The quoted post by @alphatrends explains the Anchored VWAP handoff technique from his book and notes that $NFLX pulled right into the key level mentioned on TraderTV.",
+      "zh_summary": "@Jake__Wujastyk 強烈推薦 Anchored VWAP 一書，稱 @alphatrends 教會了他關於該技術的一切。引用的 @alphatrends 貼文解釋了書中的 Anchored VWAP 交接技術，並指出 $NFLX 在 TraderTV 上剛好回落到所提到的關鍵價位。",
+      "ko_summary": "@Jake__Wujastyk는 Anchored VWAP 책을 강력 추천하며 @alphatrends가 그 기법에 대해 아는 모든 것을 가르쳐 줬다고 했다. 인용된 @alphatrends 글은 책의 Anchored VWAP 핸드오프 기법을 설명하고 $NFLX가 TraderTV에서 언급한 핵심 레벨로 정확히 내려갔다고 전했다.",
+      "tickers": ["NFLX"],
+      "stance": null,
+      "stance_by_ticker": {"NFLX": "未表態"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2112747536503157053": {
+      "en_summary": "@michaelsikand says Elon Musk mogged $META on today's ER, noting Grokbot now has 800K paying weekly users with stickier and deeper engagement, while Morgan Stanley data shows Muse retention at just 23% after 14 days. He contrasts $META's approach with $SPCX targeting a tech-savvy X audience interested in paying for productivity and AI, quoting Musk on Grok Bot being the fastest growth product he has ever seen with usage per user growing over time, and cites Jevon's paradox.",
+      "zh_summary": "@michaelsikand 表示 Elon Musk 在今日業績報告上勝過 $META，指出 Grokbot 現有 80 萬付費週活躍用戶，參與度愈來愈黏且深入，而摩根士丹利數據顯示 Muse 在 14 天後留存率僅 23%。他對比 $META 的做法，指出 $SPCX 針對 X 上願意為生產力與 AI 優化付費的技術用戶，並引用 Musk 稱 Grok Bot 是他見過增長最快的產品，且每用戶使用量隨時間增加，並提到傑文斯悖論。",
+      "ko_summary": "@michaelsikand는 오늘 실적 발표에서 Elon Musk가 $META를 압도했다며 Grokbot이 현재 주간 유료 사용자 80만 명을 확보하고 참여도가 더 끈적하고 깊어지고 있다고 했다. 모건스탠리 데이터에 따르면 Muse 14일 후 리텐션은 23%에 불과하다. 그는 $META의 접근과 달리 $SPCX가 X에서 생산성과 AI 최적화에 돈을 내는 기술 친화 청중을 겨냥했다고 대비하며, Musk가 Grok Bot이 인생에서 본 가장 빠른 성장 제품이며 사용자당 사용량이 시간에 따라 증가한다고 말한 것을 인용하고 제번스 역설을 언급했다.",
+      "tickers": ["META", "SPCX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPCX": "睇好", "META": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2112743402098082273": {
+      "en_summary": "@Jake__Wujastyk says $205 makes technical sense for $NBIS.",
+      "zh_summary": "@Jake__Wujastyk 表示 $NBIS 的 205 美元從技術面來看合理。",
+      "ko_summary": "@Jake__Wujastyk는 $NBIS에 대해 205달러가 기술적 관점에서 타당하다고 했다.",
+      "tickers": ["NBIS"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NBIS": "睇好"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NBIS": "205美元從技術面合理"}
+    },
+    "2112740675859222870": {
+      "en_summary": "@TrendSpider promotes its platform for finding setups such as cup and handles without manual digging, offering up to 67% off during a Beat Black Friday Sale. The quoted post notes ServiceNow $NOW is knocking on the door.",
+      "zh_summary": "@TrendSpider 推廣其平台可無需手動挖掘即可找到杯柄形態等設置，並在 Beat Black Friday 促銷中提供最高 67% 折扣。引用的貼文指出 ServiceNow $NOW 正在敲門。",
+      "ko_summary": "@TrendSpider는 컵 앤 핸들 같은 셋업을 수동으로 찾지 않아도 되는 플랫폼을 홍보하며 Beat Black Friday 세일에서 최대 67% 할인을 제공한다고 했다. 인용된 글은 ServiceNow $NOW가 문을 두드리고 있다고 전했다.",
+      "tickers": ["NOW"],
+      "stance": null,
+      "stance_by_ticker": {"NOW": "未表態"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
