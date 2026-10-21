@@ -17,7 +17,8 @@ import os
 import re
 from datetime import datetime, timedelta
 
-from share import SHORT, SITE, LANGS, attach_new_posts, clean, likes, page_url, social_page, tags, trading_day, xlen
+from share import (SHORT, SITE, LANGS, attach_new_posts, clean, fit_threads, fit_threads_posts,
+                    likes, page_url, social_page, tags, trading_day, xlen)
 from sitedata import load, notice, now_hk, parse_iso, read_json, work, write_json
 from utm import tag_posts
 
@@ -446,6 +447,10 @@ def add_dialogue(posts, text):
         nv = v.replace('\n\n', f'\n\n{text}\n\n', 1)
         if k != 'threads' or len(nv) <= 500:
             posts[k] = nv
+    v = posts.get('threads')
+    if isinstance(v, str) and len(v) > 500:
+        lang = next((code for code in LANGS if f'/{code}/' in v), 'en')
+        posts['threads'] = fit_threads(v, lang)
     return posts
 
 
@@ -490,7 +495,8 @@ def versions(lang, head, body, tks):
             blocks[0] = blocks[0][:-12].rstrip() + '…'
             txt = '\n\n'.join(blocks + [tail])
         return txt
-    threads = fit([head, *body], 480, len, f"{short['live']}{url}\n{give}\n{short['disc']}\n{tg.split(' ')[0]}")
+    threads = fit_threads('\n\n'.join([b for b in [head, *body] if b] + [
+        f"{short['live']}{url}\n{give}\n{short['disc']}\n{tg.split(' ')[0]}"]), lang)
     xt = [x for x in tks if re.fullmatch(r'[A-Z]{1,6}', x)]
     xtags = ' '.join([tg.split(' ')[0]] + [f'#{t}' for t in xt[:2]])
     n = 90 if lang == 'en' else 45  # X has little room: shorten each line
@@ -672,6 +678,7 @@ def main():
     for sl in (sp.get('slots') or {}).values():
         if sl.get('posts'):
             tag_posts(sl['posts'], 'carousel')
+            fit_threads_posts(sl['posts'])
     # 19:05 writes the 2030 slot before the 21:00 trilingual post, so premarket is rebuilt with that day's card.
     attach_new_posts(sp, rebuild_premarket='2030' in written)
     # The new text goes into place only after tools/carousel.js has drawn the pictures (see update-site.yml).

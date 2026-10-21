@@ -17,7 +17,7 @@ import re
 from datetime import date, timedelta
 
 from sitedata import load, notice, now_hk, read_json, work, write_json
-from share import page_url, xlen
+from share import fit_threads, page_url, xlen
 
 SITE = 'https://thecrowdtape.com/'
 LANGS = ('zh', 'en', 'ko')
@@ -164,6 +164,7 @@ def posts(lang, w, rng):
         threads = '\n\n'.join([head, b, f"{L['more']}{url}\n{give}\n{L['disc']}", tags.split(' ')[0]])
         if len(threads) <= 480:
             break
+    threads = fit_threads(threads, lang)
     # X: 280 with CJK counted double.
     xtags = ' '.join(tags.split(' ')[:3])
     tiny = '\n'.join(f"{N[th]} {by[th]['bull']}/{by[th]['bear']}/{by[th]['neu']}" for th in w['top'])

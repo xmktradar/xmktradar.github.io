@@ -68,6 +68,11 @@ def tag_posts(posts, campaign):
 
             by[plat] = URL_RE.sub(repl, v)
             counts[plat] += n
+    # UTM makes every URL longer. Threads counts that full length and stops at 500.
+    from share import LANGS, fit_threads
+    for lang, by in posts.items():
+        if lang in LANGS and isinstance(by, dict) and isinstance(by.get('threads'), str):
+            by['threads'] = fit_threads(by['threads'], lang)
     return counts
 
 
