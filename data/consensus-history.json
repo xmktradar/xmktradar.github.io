@@ -632,7 +632,9 @@
   },
   "2026-10-22": {
    "bull": [
-    "SPCX"
+    "SPCX",
+    "CRCL",
+    "MSTR"
    ],
    "bear": [],
    "split": [],
@@ -641,21 +643,21 @@
     "2026-10-22"
    ],
    "top": [
-    "SPCX",
     "NVDA",
+    "SPCX",
+    "META",
+    "CRCL",
+    "MSTR",
+    "NBIS",
+    "CRWV",
+    "DELL",
     "MSFT",
-    "GOOG",
-    "ONDS",
-    "AAPL",
-    "AMD",
-    "AMZN",
-    "BUG",
-    "CBRS"
+    "MU"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-22 04:44"
+   "updated_hkt": "2026-10-22 05:04"
   }
  },
- "updated_hkt": "2026-10-22 04:44",
+ "updated_hkt": "2026-10-22 05:04",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
