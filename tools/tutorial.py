@@ -17,7 +17,7 @@ from collections import Counter
 from datetime import date, timedelta
 
 from sitedata import load, notice, now_hk, read_json, work, write_json
-from share import page_url, xlen
+from share import fit_threads, fit_threads_posts, page_url, xlen
 from utm import tag_posts
 
 SITE = 'https://thecrowdtape.com/'
@@ -87,6 +87,7 @@ def posts(lang, n, total, e, url):
         if len(threads) <= 480 or '\n' not in body:
             break
         body = body.rsplit('\n', 1)[0]
+    threads = fit_threads(threads, lang)
     # X: 280 with CJK counted double. Headline, link, hashtags; then the first body line, the how line and the
     # donation line while they still fit.
     xtags = ' '.join(tags.split(' ')[:3])
@@ -177,6 +178,7 @@ def main():
         tp['posts'][lang] = posts(lang, n, len(eps), txt, url)
         job['langs'][lang] = {'title': txt['t'], 'how': txt['how'], 'shot': shot}
     tag_posts(tp['posts'], 'tutorial')
+    fit_threads_posts(tp['posts'])
     write_json('data/tutorial-posts.json', tp, indent=1)
     os.makedirs('social', exist_ok=True)
     open('social/tutorial.html', 'w', encoding='utf-8').write(page(tp))

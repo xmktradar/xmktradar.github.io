@@ -274,7 +274,8 @@ def caption(lang, day, s, items, win, quote_):
         ig += ['', b]
     ig += ['', L['note'], '', *L['end'], '', tg]
 
-    # Threads (500 characters) and X (280, CJK counted double): drop the least important parts until it fits.
+    # X (280, CJK counted double): drop the least important blocks until it fits.
+    # Threads is fit afterwards by fit_threads (500 code points, URLs counted in full).
     def fit(blocks, limit, size):
         blocks = [b for b in blocks if b]
         while len(blocks) > 3 and size('\n\n'.join(blocks)) > limit:
@@ -283,7 +284,9 @@ def caption(lang, day, s, items, win, quote_):
     give = f"{short['give']}{url}#donate"
     tail = f"{short['live']}{url}\n{short['disc']}"
     # Threads shows one topic tag per post, so it gets the first hashtag only.
-    threads = fit([head, win_line, '\n'.join(main[:6]), *extra, q, f"{short['live']}{url}\n{give}\n{short['disc']}", tg.split(' ')[0]], 480, len)
+    threads = fit_threads('\n\n'.join(b for b in [
+        head, win_line, '\n'.join(main[:6]), *extra, q,
+        f"{short['live']}{url}\n{give}\n{short['disc']}", tg.split(' ')[0]] if b), lang)
     xs = [head, '\n'.join([t for t in main if t != L['none']][:3]), tail]
     x = fit(xs, 270, xlen)
     while xlen(x) > 270 and len(xs[1].split('\n')) > 1:
@@ -340,6 +343,273 @@ def xlen(t):
 SHORT = {'zh': {'live': '最新數字 👉 ', 'give': '☕ 鍾意就支持我哋 👉 ', 'disc': '⚠️ 唔構成投資建議', 'disc_long': '⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。投資有風險，請自行判斷。'},
          'en': {'live': 'Live numbers 👉 ', 'give': '☕ Support the site 👉 ', 'disc': '⚠️ Not investment advice', 'disc_long': '⚠️ A summary of public social media posts, not investment advice. Investing involves risk; do your own research.'},
          'ko': {'live': '최신 수치 👉 ', 'give': '☕ 후원하기 👉 ', 'disc': '⚠️ 투자 조언 아님', 'disc_long': '⚠️ 공개 SNS 게시물을 정리한 것으로 투자 조언이 아닙니다. 투자에는 위험이 따르니 스스로 판단하세요.'}}
+
+# Threads rejects a post past 500 Unicode code points. len() is that count; a URL counts in full.
+THREADS_MAX = 500
+_THREADS_URL = re.compile(r'https?://\S+')
+
+
+def _truncate_ending(line, target):
+    """Shorten `line` to at most `target` code points, ending with …. None if it would not get shorter."""
+    if target >= len(line):
+        return line
+    if target < 1:
+        return None
+    raw = line[:-1].rstrip() if line.endswith('…') else line
+    keep = target - 1
+    cut = raw[:keep].rstrip(' \t') if keep > 0 else ''
+    while cut and ord(cut[-1]) in (0xfe0f, 0x200d):
+        cut = cut[:-1].rstrip(' \t')
+    new = (cut + '…') if cut else '…'
+    if len(new) > target:
+        extra = len(new) - target
+        cut = cut[:-extra] if extra < len(cut) else ''
+        while cut and ord(cut[-1]) in (0xfe0f, 0x200d):
+            cut = cut[:-1]
+        new = (cut + '…') if cut else '…'
+        if len(new) > target:
+            new = new[:target]
+    if len(new) >= len(line):
+        return None
+    return new
+
+
+def _threads_join(parts):
+    blocks = []
+    for lines in parts:
+        if any(ln.strip() for ln in lines):
+            blocks.append('\n'.join(lines))
+    return '\n\n'.join(blocks)
+
+
+def _is_quote_line(line):
+    """A 💬 quote (💬 @name：…), not a section label and not a headline that merely ends with 💬."""
+    s = line.strip()
+    return s.startswith('💬') and '@' in s
+
+
+def _is_donate_line(line):
+    s = line.strip()
+    return s.startswith('☕') or '#donate' in s
+
+
+def _is_live_line(line, lang):
+    s = line.strip()
+    if not s or _is_donate_line(s) or s.startswith('⚠') or s.startswith('#'):
+        return False
+    live = SHORT.get(lang, SHORT['en'])['live'].strip()
+    return s.startswith(live)
+
+
+def _sole_link(parts):
+    """Index of the only non-donate URL line, if there is exactly one."""
+    spots = []
+    for i, lines in enumerate(parts):
+        for j, ln in enumerate(lines):
+            if _THREADS_URL.search(ln) and not _is_donate_line(ln):
+                spots.append((i, j))
+    return spots[0] if len(spots) == 1 else None
+
+
+def _threads_fixed(i, j, line):
+    """Headline, disclaimer and the hashtag line are never dropped."""
+    if i == 0 and j == 0:
+        return True
+    s = line.strip()
+    return s.startswith('#') or s.startswith('⚠')
+
+
+def fit_threads(text, lang):
+    """Fit a Threads caption into 500 code points.
+
+    When len(text) > 500, trim in order: shorten the 💬 quote (ellipsis), then drop it;
+    drop the ☕ donate line so at most one link remains (the language's 最新數字 / Live numbers /
+    최신 수치 link); drop the 🔥 streak paragraph, then the ⚖️ split paragraph, then ticker
+    lines (・) from the bottom. The headline, the disclaimer and the hashtag line stay.
+    """
+    if text is None:
+        return ''
+    if not isinstance(text, str):
+        text = str(text)
+    if lang not in LANGS:
+        lang = 'en'
+    if len(text) <= THREADS_MAX:
+        return text
+    parts = [p.split('\n') for p in text.split('\n\n')]
+
+    def total():
+        return len(_threads_join(parts))
+
+    def quote_spots():
+        found = []
+        for i, lines in enumerate(parts):
+            for j, ln in enumerate(lines):
+                if _is_quote_line(ln) and not _threads_fixed(i, j, ln):
+                    found.append((i, j))
+        return found
+
+    guard = 0
+    while total() > THREADS_MAX and guard < 10000:
+        guard += 1
+        spots = quote_spots()
+        if not spots:
+            break
+        i, j = spots[-1]
+        saved = parts[i][j]
+        parts[i].pop(j)
+        without = total()
+        parts[i].insert(j, saved)
+        if without > THREADS_MAX:
+            parts[i].pop(j)  # even an empty quote cannot get the post under the limit
+            continue
+        new = _truncate_ending(saved, len(saved) - (total() - THREADS_MAX))
+        if not new or len(new) >= len(saved):
+            parts[i].pop(j)
+            continue
+        parts[i][j] = new
+
+    def drop_where(pred):
+        for i, lines in enumerate(parts):
+            parts[i] = [ln for j, ln in enumerate(lines) if _threads_fixed(i, j, ln) or not pred(ln)]
+
+    if total() > THREADS_MAX:
+        drop_where(_is_donate_line)
+        # Any other extra link goes too, leaving the live-numbers link when it is there.
+        while total() > THREADS_MAX and len(_THREADS_URL.findall(_threads_join(parts))) > 1 and guard < 10000:
+            guard += 1
+            spot = None
+            for i, lines in enumerate(parts):
+                for j, ln in enumerate(lines):
+                    if _THREADS_URL.search(ln) and not _threads_fixed(i, j, ln) and not _is_live_line(ln, lang):
+                        spot = (i, j)
+            if not spot:
+                break
+            before = total()
+            parts[spot[0]].pop(spot[1])
+            if total() >= before:
+                break
+
+    if total() > THREADS_MAX:
+        drop_where(lambda ln: ln.strip().startswith('🔥'))
+    if total() > THREADS_MAX:
+        drop_where(lambda ln: ln.strip().startswith('⚖'))
+    while total() > THREADS_MAX and guard < 10000:
+        guard += 1
+        spot = None
+        for i, lines in enumerate(parts):
+            for j, ln in enumerate(lines):
+                if ln.strip().startswith('・') and not _threads_fixed(i, j, ln):
+                    spot = (i, j)
+        if not spot:
+            break
+        before = total()
+        parts[spot[0]].pop(spot[1])
+        if total() >= before:
+            break
+
+    # Body lines that are not the ticker list (carousel duel rows, window, dialogue) go next, from the bottom.
+    # The one remaining link stays, even when it is not the live-numbers line.
+    while total() > THREADS_MAX and guard < 10000:
+        guard += 1
+        sole = _sole_link(parts)
+        spot = None
+        for i, lines in enumerate(parts):
+            for j, ln in enumerate(lines):
+                if not ln.strip() or _threads_fixed(i, j, ln) or _is_live_line(ln, lang):
+                    continue
+                if sole == (i, j):
+                    continue
+                spot = (i, j)
+        if not spot:
+            break
+        before = total()
+        parts[spot[0]].pop(spot[1])
+        if total() >= before:
+            break
+
+    while total() > THREADS_MAX and parts and parts[0] and guard < 10000:
+        guard += 1
+        head = parts[0][0]
+        new = _truncate_ending(head, max(1, len(head) - (total() - THREADS_MAX)))
+        if not new or len(new) >= len(head):
+            break
+        parts[0][0] = new
+
+    out = _threads_join(parts)
+    if len(out) <= THREADS_MAX:
+        return out
+    return _threads_force(parts, lang)
+
+
+def _threads_force(parts, lang):
+    """Last resort: keep a headline prefix, the disclaimer and the hashtag, and stay within 500."""
+    head = parts[0][0] if parts and parts[0] else ''
+    disc, tag, live = '', '', ''
+    for i, lines in enumerate(parts):
+        for j, ln in enumerate(lines):
+            s = ln.strip()
+            if not s or (i == 0 and j == 0):
+                continue
+            if s.startswith('⚠') and not disc:
+                disc = s
+            elif s.startswith('#') and not tag:
+                tag = s
+            elif _is_live_line(s, lang) and not live:
+                live = s
+
+    def assemble(head_line, live_line):
+        chunks = []
+        if head_line:
+            chunks.append(head_line)
+        mid = [ln for ln in (live_line, disc) if ln]
+        if mid:
+            chunks.append('\n'.join(mid))
+        if tag and tag != head_line:
+            chunks.append(tag)
+        return '\n\n'.join(chunks)
+
+    out = assemble(head, live)
+    guard = 0
+    while len(out) > THREADS_MAX and len(head) > 1 and guard < 5000:
+        guard += 1
+        new = _truncate_ending(head, max(1, len(head) - (len(out) - THREADS_MAX)))
+        if not new or len(new) >= len(head):
+            head = head[:-1].rstrip()
+            if head and not head.endswith('…'):
+                head = head[:-1] + '…' if len(head) > 1 else '…'
+        else:
+            head = new
+        out = assemble(head, live)
+    if len(out) > THREADS_MAX:
+        out = assemble(head, '')
+    if len(out) > THREADS_MAX:
+        tail = '\n'.join(ln for ln in (disc, tag) if ln)
+        room = THREADS_MAX - (len(tail) + 2 if tail else 0)
+        if tail and room >= 1:
+            piece = _truncate_ending(head, room) or '…'
+            if len(piece) > room:
+                piece = piece[:room]
+            out = piece + '\n\n' + tail
+        elif tail and len(tail) <= THREADS_MAX:
+            # Headline gets one character so it is not dropped, tag and disc fill the rest.
+            room = THREADS_MAX - 1 - (2 if tail else 0)
+            keep = tail[-room:] if room > 0 else ''
+            out = ('…\n\n' + keep) if keep else '…'
+        else:
+            out = (out or '')[:THREADS_MAX]
+    if len(out) > THREADS_MAX:
+        out = out[:THREADS_MAX]
+    return out
+
+
+def fit_threads_posts(posts):
+    """Fit every language's threads string. Mutates `posts` ({lang: {threads: str}}) and returns it."""
+    if not isinstance(posts, dict):
+        return posts
+    for lang, p in posts.items():
+        if lang in LANGS and isinstance(p, dict) and isinstance(p.get('threads'), str):
+            p['threads'] = fit_threads(p['threads'], lang)
+    return posts
 
 # One extra line under the Facebook post. The link is that language's home, campaign newsletter.
 FB_CTA = {'zh': '📬 訂閱免費電子報 👉 ', 'en': '📬 Get the free newsletter 👉 ', 'ko': '📬 무료 뉴스레터 구독 👉 '}
@@ -1269,6 +1539,7 @@ def main():
               'posts': {l: caption(l, day, s, items, win, langs[l]['quote']) for l in LANGS}}
         sp['x_facts'] = _x_facts(d, items, s)
         tag_posts(sp['posts'], 'daily')
+        fit_threads_posts(sp['posts'])
         attach_new_posts(sp, rebuild_premarket=True)  # both X posts; carousel rebuilds premarket after the 2030 slot
         write_json('data/social-posts.json', sp, indent=1)
         os.makedirs('social', exist_ok=True)
