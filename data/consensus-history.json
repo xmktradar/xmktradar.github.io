@@ -637,27 +637,30 @@
     "MSTR"
    ],
    "bear": [],
-   "split": [],
+   "split": [
+    "META",
+    "TSLA"
+   ],
    "window": [
     "2026-10-22",
     "2026-10-22"
    ],
    "top": [
-    "NVDA",
     "SPCX",
     "META",
+    "NVDA",
+    "TSLA",
     "CRCL",
     "MSTR",
     "NBIS",
     "CRWV",
     "DELL",
-    "MSFT",
-    "MU"
+    "MSFT"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-22 06:17"
+   "updated_hkt": "2026-10-22 06:41"
   }
  },
- "updated_hkt": "2026-10-22 06:17",
+ "updated_hkt": "2026-10-22 06:41",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
