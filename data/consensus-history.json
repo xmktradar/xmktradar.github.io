@@ -636,13 +636,17 @@
     "PLTR",
     "CRCL",
     "GOOG",
+    "GOOGL",
     "MSTR"
    ],
-   "bear": [],
+   "bear": [
+    "NFLX",
+    "IWM"
+   ],
    "split": [
     "META",
-    "IBM",
     "TSLA",
+    "IBM",
     "SPCX",
     "LRCX"
    ],
@@ -658,14 +662,14 @@
     "NVDA",
     "NFLX",
     "MU",
+    "PLTR",
     "QQQ",
-    "LRCX",
-    "PLTR"
+    "LRCX"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-22 20:41"
+   "updated_hkt": "2026-10-22 21:02"
   }
  },
- "updated_hkt": "2026-10-22 20:41",
+ "updated_hkt": "2026-10-22 21:02",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
