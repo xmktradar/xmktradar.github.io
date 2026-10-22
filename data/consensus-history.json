@@ -681,27 +681,29 @@
     "MRNA",
     "QQQ"
    ],
-   "split": [],
+   "split": [
+    "SPCX"
+   ],
    "window": [
     "2026-10-23",
     "2026-10-23"
    ],
    "top": [
     "MRNA",
+    "SPCX",
     "QQQ",
+    "RSP",
+    "SPY",
+    "AAOI",
+    "AVGO",
     "BWET",
     "CBRS",
-    "DRAM",
-    "IGV",
-    "RKT",
-    "RSP",
-    "SLV",
-    "SOXX"
+    "DRAM"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-23 04:42"
+   "updated_hkt": "2026-10-23 05:04"
   }
  },
- "updated_hkt": "2026-10-23 04:42",
+ "updated_hkt": "2026-10-23 05:04",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
