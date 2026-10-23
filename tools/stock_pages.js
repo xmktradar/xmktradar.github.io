@@ -371,7 +371,7 @@ ${ga}
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#fbf6ec"><meta name="apple-mobile-web-app-title" content="Crowd Tape">
-<meta name="robots" content="index,follow">
+<meta name="robots" content="index,follow,max-image-preview:large">
 <title>${esc(meta.title)}</title>
 <meta name="description" content="${esc(meta.desc)}">
 <meta property="og:title" content="${esc(meta.title)}">
