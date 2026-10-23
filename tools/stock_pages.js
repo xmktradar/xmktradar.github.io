@@ -543,7 +543,9 @@ function avatars(html, seen) {
   // sitemap: drop old stock rows, add the current ones
   let sm = fs.readFileSync('sitemap.xml', 'utf8').replace(/\s*<url><loc>[^<]*\/stock\/[^<]*<\/loc>[\s\S]*?<\/url>/g, '');
   const siteEsc = SITE.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const gen = (sm.match(new RegExp('<loc>' + siteEsc + '</loc><lastmod>([^<]+)')) || [])[1] || '';
+  const gen = (sm.match(new RegExp('<loc>' + siteEsc + '</loc><lastmod>([^<]+)')) || [])[1]
+    || (sm.match(/<lastmod>([^<]+)<\/lastmod>/) || [])[1]
+    || new Date().toLocaleString('sv-SE', {timeZone: 'Asia/Hong_Kong'}).replace(' ', 'T') + '+08:00';
   const rows = list.map(([t]) => {
     const alt = Object.entries(LANGS).map(([k, h]) => `<xhtml:link rel="alternate" hreflang="${h}" href="${SITE}${k}/stock/${slug(t)}/"/>`).join('');
     return Object.keys(LANGS).map(k => `  <url><loc>${SITE}${k}/stock/${slug(t)}/</loc><lastmod>${gen}</lastmod><changefreq>daily</changefreq>${alt}</url>`).join('\n');
