@@ -6,7 +6,7 @@ Numbers are copied from the files below. A missing count is skipped. An empty li
 
 ## `top5`
 
-Today's five most bullish and five most bearish names, in the order `data/writeup-input.json` `daily.bull` / `daily.bear` already uses.
+Today's five most bullish and five most bearish names. `tools/ranking.py` `rank_rows` orders each side by that side's account count (`bull` uses `nb`, `bear` uses `nr`) descending, then `n_posts` descending, then ticker ascending. At most five names a side. The same order is used for the text, the card, and the mp4 job, and for the carousel's joint bull and bear cards.
 
 | Field | Source |
 | --- | --- |

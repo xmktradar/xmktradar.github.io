@@ -23,6 +23,7 @@ import re
 import sys
 from datetime import datetime
 
+from ranking import rank_rows
 from sitedata import HK, load, notice, now_hk, read_json, work, write_json
 from utm import PLATFORM, normalize_file, tag_posts, tag_url
 
@@ -2062,8 +2063,8 @@ def build_top5(daily, day, made_hkt, fallback_window=None):
       made_hkt: 'YYYY-MM-DD HH:MM',
       window: 'MM/DD HH:MM – HH:MM HKT' (real cutoff, never ISO T / fake 23:59),
       source: 'data/writeup-input.json daily',
-      bull: [{t, n}],   # up to 5, daily.bull order, n = nb (accounts bullish)
-      bear: [{t, n}],   # up to 5, daily.bear order, n = nr (accounts bearish)
+      bull: [{t, n}],   # up to 5, rank_rows bull: nb desc, n_posts desc, ticker asc
+      bear: [{t, n}],   # up to 5, rank_rows bear: nr desc, n_posts desc, ticker asc
       images: {zh|en|ko: {
         portrait: SITE+'og/top5-<lang>.png?v=<date>',       # 1080x1350, X / IG / Threads
         square:   SITE+'og/top5-<lang>-sq.png?v=<date>'}},  # 1080x1080, Facebook
@@ -2084,8 +2085,8 @@ def build_top5(daily, day, made_hkt, fallback_window=None):
     format is image_card. video.<lang> points at og/top5-<lang>.mp4.
     """
     daily = daily if isinstance(daily, dict) else {}
-    bulls = _side_rows(daily.get('bull'), 'nb', 5)
-    bears = _side_rows(daily.get('bear'), 'nr', 5)
+    bulls = _side_rows(rank_rows(daily.get('bull'), 'bull'), 'nb', 5)
+    bears = _side_rows(rank_rows(daily.get('bear'), 'bear'), 'nr', 5)
     window = top5_window(daily, fallback_window)
     day = _as_day(day) or str(day or '')
     posts = {}

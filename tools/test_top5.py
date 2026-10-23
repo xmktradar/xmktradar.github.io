@@ -152,7 +152,7 @@ def _assert_slot(slot, bulls, bears):
 
 
 def test_five_cap_and_order():
-    # Seven valid names plus a row with no count. Order is the input order, not by size.
+    # Seven valid names plus a row with no count. Ranked by account count, not input order.
     bull = [{'t': 'SKIP', 'nr': 5}]
     bull += [{'t': t, 'nb': n, 'nr': 99} for t, n in zip(
         ['AAA', 'BBB', 'CCC', 'DDD', 'EEE', 'FFF', 'GGG'], [2, 9, 4, 8, 3, 42, 43])]
@@ -160,22 +160,20 @@ def test_five_cap_and_order():
     bear += [{'t': t, 'nb': 77, 'nr': n} for t, n in zip(
         ['HHH', 'III', 'JJJ', 'KKK', 'LLL', 'MMM', 'NNN'], [4, 2, 6, 1, 3, 15, 16])]
     slot = share.build_top5(_daily(bull, bear), DAY, MADE)
-    want_b = [{'t': t, 'n': n} for t, n in zip(['AAA', 'BBB', 'CCC', 'DDD', 'EEE'], [2, 9, 4, 8, 3])]
-    want_r = [{'t': t, 'n': n} for t, n in zip(['HHH', 'III', 'JJJ', 'KKK', 'LLL'], [4, 2, 6, 1, 3])]
+    want_b = [{'t': t, 'n': n} for t, n in zip(['GGG', 'FFF', 'BBB', 'DDD', 'CCC'], [43, 42, 9, 8, 4])]
+    want_r = [{'t': t, 'n': n} for t, n in zip(['NNN', 'MMM', 'JJJ', 'HHH', 'LLL'], [16, 15, 6, 4, 3])]
     _assert_slot(slot, want_b, want_r)
     blob = json.dumps(slot['posts'], ensure_ascii=False)
-    for banned in ('SKIP', 'NOPE', 'FFF', 'GGG', 'MMM', 'NNN', '99', '77', '42', '43', '15', '16'):
+    for banned in ('SKIP', 'NOPE', 'AAA', 'EEE', 'III', 'KKK', '99', '77'):
         assert banned not in blob, banned
-    # Lead bull is AAA (n=2), not the larger BBB.
-    assert '/stock/AAA/' in slot['posts']['en']['x']
-    assert '/stock/BBB/' not in slot['posts']['en']['x']
-    assert '・$KKK 1 account' in slot['posts']['en']['facebook']
-    assert '・$KKK 1 accounts' not in slot['posts']['en']['facebook']
+    # Lead bull is GGG (43 accounts). The X link stays on that name.
+    assert '/stock/GGG/' in slot['posts']['en']['x']
+    assert '/stock/FFF/' not in slot['posts']['en']['x']
     # X keeps the lead and does not invent a sixth name. Listed counts match.
     xs = TICK_RE.findall(slot['posts']['zh']['x'])
-    assert xs[0] == 'AAA'
-    assert 'FFF' not in xs and 'GGG' not in xs
-    for t, n in zip(['AAA', 'BBB', 'CCC', 'DDD', 'EEE'], [2, 9, 4, 8, 3]):
+    assert xs[0] == 'GGG'
+    assert 'AAA' not in xs and 'EEE' not in xs
+    for t, n in zip(['GGG', 'FFF', 'BBB', 'DDD', 'CCC'], [43, 42, 9, 8, 4]):
         if t in xs:
             assert f'${t} {n}' in slot['posts']['zh']['x']
 
@@ -183,8 +181,10 @@ def test_five_cap_and_order():
 def test_fewer_and_empty():
     bull = [{'t': 'ZZZ', 'nb': 1, 'nr': 8}, {'t': 'AAA', 'nb': 9, 'nr': 0}]
     slot = share.build_top5(_daily(bull, []), DAY, MADE)
-    _assert_slot(slot, [{'t': 'ZZZ', 'n': 1}, {'t': 'AAA', 'n': 9}], [])
-    assert TICK_RE.findall(slot['posts']['en']['instagram']) == ['ZZZ', 'AAA']
+    _assert_slot(slot, [{'t': 'AAA', 'n': 9}, {'t': 'ZZZ', 'n': 1}], [])
+    assert TICK_RE.findall(slot['posts']['en']['instagram']) == ['AAA', 'ZZZ']
+    assert '・$ZZZ 1 account' in slot['posts']['en']['facebook']
+    assert '・$ZZZ 1 accounts' not in slot['posts']['en']['facebook']
     assert '8' not in slot['posts']['en']['x']
     for lang in share.LANGS:
         assert NONE[lang] in slot['posts'][lang]['x']
