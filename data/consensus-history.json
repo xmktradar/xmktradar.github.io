@@ -678,26 +678,22 @@
   "2026-10-23": {
    "bull": [
     "RSP",
-    "SMH",
     "WMT"
    ],
    "bear": [
     "QQQ",
     "META",
-    "CRWV",
-    "SNDK",
-    "SOXX",
     "MRNA",
-    "INTC",
+    "SOXX",
+    "SNDK",
     "DRAM"
    ],
    "split": [
     "SPCX",
-    "BE",
     "SPY",
-    "TSLA",
-    "SLV",
+    "BE",
     "WDC",
+    "SLV",
     "GLD",
     "GOOG"
    ],
@@ -706,21 +702,21 @@
     "2026-10-23T23:59"
    ],
    "top": [
+    "RSP",
     "SPCX",
     "QQQ",
     "SPY",
-    "RSP",
     "SMH",
-    "BE",
-    "META",
-    "NVDA",
     "SOXX",
-    "TSLA"
+    "WDC",
+    "META",
+    "MRNA",
+    "XLF"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-23 13:11"
+   "updated_hkt": "2026-10-23 15:32"
   }
  },
- "updated_hkt": "2026-10-23 13:11",
+ "updated_hkt": "2026-10-23 15:32",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
