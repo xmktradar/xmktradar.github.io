@@ -1209,7 +1209,7 @@ function viewDaily(){
   <h2>今日市場分析 ${sm?(sm.stale?`<span class="sub">（最新一份分析，非 ${esc(w.day)} 當日）</span>`:''):'<span class="sub">今日分析尚未產生，以下由資料自動整理</span>'}</h2>
   ${sm?'':sparse}
   ${sm?sumBody(sm.s,true):auto}
-  <p class="note" style="margin:8px 0 0">${fillT(PAGE_LANG==='en'?"Brief counts are from the writer; the stat cards below are live counts for the same window (posts so far: {n}, active accounts {a}).":PAGE_LANG==='ko'?"요약 숫자는 작성자 정리분; 아래 통계 카드는 같은 구간의 실시간 집계입니다 (유효 게시물 {n}, 활동 계정 {a}).":"摘要數字來自寫手整理；下方統計卡按同一分析範圍即時計算（目前有效貼文 {n}、有動態帳號 {a}）。",{n:vposts.length,a:accsNow})}</p>
+  <p class="note" style="margin:8px 0 0">${(PAGE_LANG==='en'?"Brief counts are from the writer; the stat cards below are live counts for the same window (posts so far: {n}, active accounts {a}).":PAGE_LANG==='ko'?"요약 숫자는 작성자 정리분; 아래 통계 카드는 같은 구간의 실시간 집계입니다 (유효 게시물 {n}, 활동 계정 {a}).":"摘要數字來自寫手整理；下方統計卡按同一分析範圍即時計算（目前有效貼文 {n}、有動態帳號 {a}）。").replace(/\{n\}/g,String(vposts.length)).replace(/\{a\}/g,String(accsNow))}</p>
   ${br?`<details><summary>分析師簡報</summary>${br.html}</details>`:''}
  </section>
  <div class="c12 dayrange">${`<div class="range ${w.merged?'merged':''}">${rangeTxt}${vposts.length&&!w.timed?`（${vposts[0].time_hkt.slice(5,16).replace('-','/').replace('T',' ')} – ${vposts[vposts.length-1].time_hkt.slice(5,16).replace('-','/').replace('T',' ')} HKT，有效貼文 ${vposts.length} 則）`:''}</div>`}</div>
