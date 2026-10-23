@@ -20,7 +20,7 @@ import share  # noqa: E402
 
 URL_RE = re.compile(r'https://thecrowdtape\.com[^\s)\]"\']*')
 TICK_RE = re.compile(r'\$([A-Z0-9.\-]+)')
-SRC = {'x': 'x', 'instagram': 'ig', 'threads': 'threads', 'facebook': 'fb'}
+SRC = {'x': 'x', 'instagram': 'instagram', 'threads': 'threads', 'facebook': 'facebook'}
 HEAD = {
     'zh': '今日 X 大神共識：最看好／最看淡 5 隻',
     'en': 'Top X accounts consensus today: 5 most bullish / bearish',
@@ -63,7 +63,7 @@ def _assert_post(text, lang, platform, bulls, bears):
     for u in urls:
         path = u.split('thecrowdtape.com', 1)[1]
         assert path.startswith(f'/{lang}/'), (lang, u)
-        assert f'utm_source={src}' in u and 'utm_medium=post' in u and 'utm_campaign=top5' in u, u
+        assert f'utm_source={src}' in u and 'utm_medium=social' in u and 'utm_campaign=top5' in u, u
         assert 'utm_campaign=daily' not in u
     if platform == 'x':
         assert share.xlen(text) <= 280, (lang, share.xlen(text), text)

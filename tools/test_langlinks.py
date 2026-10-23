@@ -30,19 +30,19 @@ POSTS = {
         '10/20 X 大神共識快照： $AMZN 4 個帳號一齊睇好 📊\n\n'
         '・4 個帳號： $AMZN\n'
         '・2 個帳號： $META、 $BE\n\n'
-        'https://thecrowdtape.com/zh/?utm_source=x&utm_medium=post&utm_campaign=daily\n'
+        'https://thecrowdtape.com/zh/?utm_source=x&utm_medium=social&utm_campaign=daily\n'
         '⚠️ 唔構成投資建議')},
     'en': {'x': (
         'Oct 20 · What top X accounts agree on: $AMZN, 4 accounts bullish 📊\n\n'
         '・4 accounts: $AMZN\n'
         '・2 accounts: $META, $BE\n\n'
-        'https://thecrowdtape.com/en/?utm_source=x&utm_medium=post&utm_campaign=daily\n'
+        'https://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=daily\n'
         '⚠️ Not investment advice')},
     'ko': {'x': (
         '10/20 X 인플루언서 컨센서스: $AMZN 계정 4개 동시 강세 📊\n\n'
         '・계정 4개: $AMZN\n'
         '・계정 2개: $META, $BE\n\n'
-        'https://thecrowdtape.com/ko/?utm_source=x&utm_medium=post&utm_campaign=daily\n'
+        'https://thecrowdtape.com/ko/?utm_source=x&utm_medium=social&utm_campaign=daily\n'
         '⚠️ 투자 조언 아님')},
 }
 
@@ -58,7 +58,7 @@ def assert_lang_urls(text, lang, campaign=None, source=None, required=True):
         assert 'thecrowdtape.com/?' not in u and not path.startswith('/?'), u
         if campaign:
             assert f'utm_campaign={campaign}' in u, u
-            assert 'utm_medium=post' in u, u
+            assert 'utm_medium=social' in u, u
         if source:
             assert f'utm_source={source}' in u, u
     return urls
@@ -93,7 +93,7 @@ def assert_tri(text, campaign):
         else:
             lang = 'en'
         assert f'https://thecrowdtape.com/{lang}/' in url, (lang, head, url)
-        assert 'utm_source=x' in url and 'utm_medium=post' in url, url
+        assert 'utm_source=x' in url and 'utm_medium=social' in url, url
         assert f'utm_campaign={campaign}' in url, url
         seen.append(lang)
     assert seen == ['zh', 'en', 'ko'], seen
@@ -112,7 +112,7 @@ def assert_tri(text, campaign):
 
 
 def test_xlen_url_is_23():
-    url = 'https://thecrowdtape.com/zh/?utm_source=x&utm_medium=post&utm_campaign=afterclose'
+    url = 'https://thecrowdtape.com/zh/?utm_source=x&utm_medium=social&utm_campaign=afterclose'
     assert len(url) > 23
     assert share.xlen(url) == 23
     assert share.xlen('開' + url + '好') == 27
@@ -132,7 +132,7 @@ def test_single_language():
         assert_lang_urls(cap['reddit']['body'], lang)
         assert_lang_urls(cap['instagram'], lang, required=False)
         cta = share.facebook_cta(cap['facebook'], lang)
-        needle = f'https://thecrowdtape.com/{lang}/?utm_source=fb&utm_medium=post&utm_campaign=newsletter'
+        needle = f'https://thecrowdtape.com/{lang}/?utm_source=facebook&utm_medium=social&utm_campaign=newsletter'
         assert needle in cta, cta[-180:]
         assert_lang_urls(cta, lang)
         bundle[lang] = {'x': cap['x'], 'threads': cap['threads'], 'facebook': cap['facebook'],
@@ -140,7 +140,7 @@ def test_single_language():
     tag_posts(bundle, 'daily')
     for lang, by in bundle.items():
         assert_lang_urls(by['x'], lang, campaign='daily', source='x')
-        assert_lang_urls(by['facebook'], lang, campaign='daily', source='fb')
+        assert_lang_urls(by['facebook'], lang, campaign='daily', source='facebook')
         assert_lang_urls(by['threads'], lang, campaign='daily', source='threads')
 
 
@@ -190,7 +190,7 @@ def test_stock_page_links():
         assert raw == f'https://thecrowdtape.com/{lang}/stock/{ticker}/', raw
         tagged = tag_url(raw, 'x', 'tutorial')
         assert tagged.startswith(f'https://thecrowdtape.com/{lang}/stock/{ticker}/?')
-        assert 'utm_source=x' in tagged and 'utm_medium=post' in tagged
+        assert 'utm_source=x' in tagged and 'utm_medium=social' in tagged
         assert 'utm_campaign=tutorial' in tagged
         assert 'thecrowdtape.com/stock/' not in tagged
     # A root or wrong-language stock path is rewritten under the post's language.

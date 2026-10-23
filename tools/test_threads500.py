@@ -24,9 +24,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 POSTS = os.path.join(ROOT, 'data', 'social-posts.json')
 
 LIVE = {
-    'zh': 'https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=post&utm_campaign=daily',
-    'en': 'https://thecrowdtape.com/en/?utm_source=threads&utm_medium=post&utm_campaign=daily',
-    'ko': 'https://thecrowdtape.com/ko/?utm_source=threads&utm_medium=post&utm_campaign=daily',
+    'zh': 'https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=daily',
+    'en': 'https://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=daily',
+    'ko': 'https://thecrowdtape.com/ko/?utm_source=threads&utm_medium=social&utm_campaign=daily',
 }
 TAG = {'zh': '#美股', 'en': '#StockMarket', 'ko': '#미국주식'}
 HEAD = {

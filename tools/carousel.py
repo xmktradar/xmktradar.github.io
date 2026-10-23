@@ -18,7 +18,7 @@ from datetime import datetime, timedelta
 from share import (SHORT, SITE, LANGS, attach_new_posts, clean, fit_threads, fit_threads_posts,
                     likes, page_url, social_page, tags, trading_day, xlen)
 from sitedata import load, notice, now_hk, parse_iso, read_json, work, write_json
-from utm import tag_posts
+from utm import normalize_file, tag_posts
 
 HTML = 'index.html'
 SLOTS = (('1230', 7, ('12:30', '13:00', '13:30')),
@@ -538,7 +538,7 @@ def main():
                     posts[k] = posts[k].replace('\n\n', f'\n\n{see}\n\n', 1)
                 for k, v in posts.items():
                     if isinstance(v, str):
-                        posts[k] = v.replace('utm_campaign=daily', 'utm_campaign=carousel')
+                        posts[k] = v.replace('utm_campaign=daily', f'utm_campaign=carousel-{key}')
             elif key == '1630':
                 slides = duel(site, s, lang, day, win, pick)
                 posts = cap_duel(site, s, lang, day, pick)
@@ -570,15 +570,17 @@ def main():
         return
     sp['slots'] = {k: slots[k] for k, _, _ in SLOTS if k in slots}
     sp.pop('pose_log', None)
-    for sl in (sp.get('slots') or {}).values():
+    for key, sl in (sp.get('slots') or {}).items():
         if sl.get('posts'):
-            tag_posts(sl['posts'], 'carousel')
+            tag_posts(sl['posts'], f'carousel-{key}')
             fit_threads_posts(sl['posts'])
     # 19:05 writes the 2030 slot before the 21:00 trilingual post, so premarket is rebuilt with that day's card.
     attach_new_posts(sp, rebuild_premarket='2030' in written)
     # The new text goes into place only after tools/carousel.js has drawn the pictures (see update-site.yml).
     write_json(work('carousel.json'), {'date': day, 'jobs': jobs})
     write_json(work('social-posts.json'), sp, indent=1)
+    normalize_file(work('social-posts.json'))
+    sp = read_json(work('social-posts.json'))
     write_page(sp, work('social.html'))
     notice(f"社交多圖帖已寫好：{', '.join(todo)}（{SITE}social/）")
 
