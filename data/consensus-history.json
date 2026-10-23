@@ -736,7 +736,9 @@
     "QQQ"
    ],
    "split": [
-    "TSLA"
+    "TSLA",
+    "GLD",
+    "SMH"
    ],
    "window": [
     "2026-10-24",
@@ -750,14 +752,14 @@
     "META",
     "MU",
     "SPX",
+    "AMZN",
     "BE",
-    "AAPL",
-    "CRDO"
+    "AAPL"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-24 06:41"
+   "updated_hkt": "2026-10-24 07:16"
   }
  },
- "updated_hkt": "2026-10-24 06:41",
+ "updated_hkt": "2026-10-24 07:16",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
