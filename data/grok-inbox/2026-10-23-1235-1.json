@@ -1,1 +1,79 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2113477945935446500": {
+      "en_summary": "@ripster47 shares a 7-minute trade recap on a hard day, covering VIX strategy, MTF clouds, shorting for profits, relative strength longs, and no dip buying in a bearish trend, mentioning $TSLA $META $MRNA $QQQ.",
+      "zh_summary": "@ripster47 分享一段7分鐘交易回顧，講解在艱難交易日可避免災難性虧損的概念，包括VIX策略、MTF雲帶、做空獲利、相對強度做多，以及在看跌趨勢中不抄底，提到 $TSLA $META $MRNA $QQQ。",
+      "ko_summary": "@ripster47가 힘든 날의 7분 거래 회고를 공유하며 VIX 전략, MTF 클라우드, 숏으로 수익, 상대 강도 롱, 약세 추세에서 저가 매수 금지 등을 다루고 $TSLA $META $MRNA $QQQ를 언급했다.",
+      "tickers": ["TSLA", "META", "MRNA", "QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"TSLA": "中性", "META": "中性", "MRNA": "中性", "QQQ": "中性"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2113471724826370080": {
+      "en_summary": "@Mr_Derivatives posts \"$SOXX Anxiety?\" quoting a prior post about $SOXX inside Michael Burry's mind.",
+      "zh_summary": "@Mr_Derivatives 發布「$SOXX Anxiety?」，引用先前關於 $SOXX 在Michael Burry心中的帖文。",
+      "ko_summary": "@Mr_Derivatives가 \"$SOXX Anxiety?\"를 올리며 $SOXX가 Michael Burry의 마음에 있다는 이전 게시물을 인용했다.",
+      "tickers": ["SOXX"],
+      "stance": "中性",
+      "stance_by_ticker": {"SOXX": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2113470660131348674": {
+      "en_summary": "@amitisinvesting replies that credit market concerns with $CRWV keep coming up and bonds need to start getting bought; high financing rates are not a good look for the company.",
+      "zh_summary": "@amitisinvesting 回覆稱 $CRWV 的信用市場擔憂持續出現，需要看到債券開始被買入；高融資利率對這家公司來說不是好現象。",
+      "ko_summary": "@amitisinvesting은 $CRWV에 대한 신용 시장 우려가 계속 제기되고 있으며 채권이 매수되기 시작해야 한다고 답변했고, 높은 조달 금리는 이 회사에 좋지 않다고 했다.",
+      "tickers": ["CRWV"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"CRWV": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2113469121824223388": {
+      "en_summary": "@APompliano says Dan Ives believes the $TSLA and $SPCX merger is a matter of when, not if, as Tesla data would turbocharge SpaceX ambitions and all AI tech under one hood; he thinks Tesla stock would have to be $500 to $550 per share in that deal.",
+      "zh_summary": "@APompliano 表示Dan Ives認為 $TSLA 與 $SPCX 合併是何時而非是否的問題，特斯拉的數據將加速SpaceX雄心，所有AI技術集於一處；他認為在該交易中特斯拉股價需達500至550美元。",
+      "ko_summary": "@APompliano는 Dan Ives가 $TSLA와 $SPCX 합병은 시기의 문제라고 믿으며, 테슬라 데이터가 SpaceX 야망을 가속하고 AI 기술을 한곳에 모을 것이라고 전했다. 그는 그 거래에서 테슬라 주가가 주당 500~550달러가 되어야 한다고 했다.",
+      "tickers": ["TSLA", "SPCX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TSLA": "睇好", "SPCX": "睇好"},
+      "horizon": "長線",
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TSLA": "Dan Ives 指合併交易中股價需達 500 至 550 美元"}
+    },
+    "2113468305969160270": {
+      "en_summary": "@amitisinvesting recaps the day: Nasdaq $QQQ down 2.60%, worst since June 5, erasing nearly $1.2T, fueled by AI spending concerns; $META down 7% despite beat, semis hard hit with $AMD -8%, $MU -6%, $NVDA -4%; broader Dow and Russell up, Brent crude +4% to $113; Nasdaq still up 11.9% YTD. Also notes Jensen Huang on neocloud demand, and other items including SK Hynix IPO scrap.",
+      "zh_summary": "@amitisinvesting 回顧當日：納斯達克 $QQQ 下跌2.60%，為6月5日以來最差，市值蒸發近1.2萬億美元，受AI支出擔憂推動；$META 下跌7%儘管超預期，半導體重挫，$AMD -8%、$MU -6%、$NVDA -4%；道指與羅素上漲，布倫特原油升4%至113美元；納指年內仍升11.9%。另提及黃仁勳談新雲需求，以及SK Hynix取消IPO等。",
+      "ko_summary": "@amitisinvesting이 하루를 요약: 나스닥 $QQQ 2.60% 하락, 6월 5일 이후 최악, 약 1.2조 달러 증발, AI 지출 우려가 원인; $META 7% 하락(실적 상회에도), 반도체 타격 $AMD -8%, $MU -6%, $NVDA -4%; 다우와 러셀은 상승, 브렌트 원유 4% 상승 113달러; 나스닥은 연초 대비 여전히 11.9% 상승. 젠슨 황의 네오클라우드 수요 발언과 SK하이닉스 IPO 취소 등도 언급.",
+      "tickers": ["QQQ", "META", "AMD", "MU", "NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "睇淡", "META": "睇淡", "AMD": "睇淡", "MU": "睇淡", "NVDA": "中性"},
+      "horizon": "短線",
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    }
+  }
+}
