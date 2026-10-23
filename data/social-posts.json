@@ -1150,10 +1150,168 @@
       "SNDK"
      ]
     }
+   },
+   "intraday_3": {
+    "post_et": "13:30",
+    "post_hkt": "01:30",
+    "generated_at": "2026-10-23T13:44:06-04:00",
+    "date": "2026-10-23",
+    "quotes": {
+     "SPY": {
+      "price": 760.245,
+      "prev_close": 763.96,
+      "chg_pct": -0.49,
+      "time": "2026-10-23T13:44:04-04:00"
+     },
+     "QQQ": {
+      "price": 705.13,
+      "prev_close": 704.47,
+      "chg_pct": 0.09,
+      "time": "2026-10-23T13:44:05-04:00"
+     },
+     "DIA": {
+      "price": 521.645,
+      "prev_close": 527.89,
+      "chg_pct": -1.18,
+      "time": "2026-10-23T13:43:49-04:00"
+     },
+     "META": {
+      "price": 644.475,
+      "prev_close": 648.85,
+      "chg_pct": -0.67,
+      "time": "2026-10-23T13:44:06-04:00"
+     },
+     "MRNA": {
+      "price": 203.8,
+      "prev_close": 202.63,
+      "chg_pct": 0.58,
+      "time": "2026-10-23T13:44:05-04:00"
+     },
+     "SOXX": {
+      "price": 479.225,
+      "prev_close": 475.69,
+      "chg_pct": 0.74,
+      "time": "2026-10-23T13:44:06-04:00"
+     },
+     "AAPL": {
+      "price": 346.04,
+      "prev_close": 348.22,
+      "chg_pct": -0.63,
+      "time": "2026-10-23T13:44:07-04:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-10-23T13:44:07-04:00",
+     "hkt": "2026-10-24 01:44"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "META",
+      "chg_pct": -0.67,
+      "bull": 3,
+      "bear": 3,
+      "accounts": [
+       "RagingVentures",
+       "spotgamma",
+       "OptionsMike",
+       "TheTranscript_",
+       "KeithMcCullough",
+       "RichardMoglen",
+       "compound248",
+       "KobeissiLetter"
+      ]
+     },
+     {
+      "ticker": "MRNA",
+      "chg_pct": 0.58,
+      "bull": 1,
+      "bear": 3,
+      "accounts": [
+       "Mr_Derivatives",
+       "RichardMoglen",
+       "APompliano",
+       "ripster47",
+       "kevinxu"
+      ]
+     },
+     {
+      "ticker": "SOXX",
+      "chg_pct": 0.74,
+      "bull": 1,
+      "bear": 3,
+      "accounts": [
+       "Mr_Derivatives",
+       "RedDogT3",
+       "RichardMoglen",
+       "JC_ParetsX",
+       "carlquintanilla",
+       "bespokeinvest"
+      ]
+     },
+     {
+      "ticker": "AAPL",
+      "chg_pct": -0.63,
+      "bull": 1,
+      "bear": 1,
+      "accounts": [
+       "munster_gene",
+       "RagingVentures",
+       "Jake__Wujastyk",
+       "StockSavvyShay",
+       "dampedspring"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Early afternoon · As of 13:44 ET (01:44 HKT)\n\n$SPY -0.5% · $QQQ +0.1% · $DIA -1.2%\n\n$META -0.7%, 3 accounts bullish on site\n$MRNA +0.6%, 3 accounts bearish on site\n\nhttps://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_3\n\n⚠️ Not investment advice\n#StockMarket #META #MRNA",
+      "url": "https://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_3"
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午后觀察 · 截至 13:44 ET（01:44 HKT）\n\n$SPY -0.5% · $QQQ +0.1% · $DIA -1.2%\n\n$META -0.7%，網站 3 個帳號看好\n$MRNA +0.6%，網站 3 個帳號看淡\n$SOXX +0.7%，網站 3 個帳號看淡\n$AAPL -0.6%，網站 1 個帳號看好\n\n網站新入看好：$TSLA, $CRDO, $NOW, $RBRK\n\n⚠️ 唔構成投資建議\n#美股 #META #MRNA",
+      "url": null
+     },
+     "en": {
+      "text": "Early afternoon · As of 13:44 ET (01:44 HKT)\n\n$SPY -0.5% · $QQQ +0.1% · $DIA -1.2%\n\n$META -0.7%, 3 accounts bullish on site\n$MRNA +0.6%, 3 accounts bearish on site\n$SOXX +0.7%, 3 accounts bearish on site\n$AAPL -0.6%, 1 account bullish on site\n\nNewly bullish on site: $TSLA, $CRDO, $NOW, $RBRK\n\n⚠️ Not investment advice\n#StockMarket #META #MRNA",
+      "url": null
+     },
+     "ko": {
+      "text": "오후 초반 · 13:44 ET (01:44 HKT) 기준\n\n$SPY -0.5% · $QQQ +0.1% · $DIA -1.2%\n\n$META -0.7%, 사이트 강세 계정 3개\n$MRNA +0.6%, 사이트 약세 계정 3개\n$SOXX +0.7%, 사이트 약세 계정 3개\n$AAPL -0.6%, 사이트 강세 계정 1개\n\n사이트 신규 강세: $TSLA, $CRDO, $NOW, $RBRK\n\n⚠️ 투자 조언 아님\n#미국주식 #META #MRNA",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": true,
+     "threads": {
+      "zh": false,
+      "en": false,
+      "ko": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "RSP",
+      "TSLA",
+      "CRDO",
+      "NOW",
+      "XLV",
+      "RBRK",
+      "WMT"
+     ],
+     "bear": [
+      "QQQ",
+      "SNDK"
+     ]
+    }
    }
   },
-  "generated_at": "2026-10-23T11:38:41-04:00",
-  "generated_hkt": "2026-10-23 23:38"
+  "generated_at": "2026-10-23T13:44:06-04:00",
+  "generated_hkt": "2026-10-24 01:44"
  },
  "three_lines": {
   "date": "2026-10-23",
@@ -1235,11 +1393,7 @@
     "en": true,
     "ko": true
    },
-   "instagram": {
-    "zh": false,
-    "en": false,
-    "ko": false
-   }
+   "instagram": false
   }
  },
  "why_posts": [
