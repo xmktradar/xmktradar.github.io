@@ -726,7 +726,9 @@
    "updated_hkt": "2026-10-24 00:37"
   },
   "2026-10-24": {
-   "bull": [],
+   "bull": [
+    "AAPL"
+   ],
    "bear": [
     "SPY"
    ],
@@ -737,20 +739,20 @@
    ],
    "top": [
     "MU",
-    "SPY",
-    "NVDA",
-    "AMT",
     "BE",
+    "SPY",
+    "NET",
+    "NVDA",
+    "AAPL",
+    "AMT",
     "CCI",
-    "SPCX",
-    "SPX",
-    "CRWD",
-    "CLF"
+    "CRDO",
+    "SPCX"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-24 03:02"
+   "updated_hkt": "2026-10-24 04:43"
   }
  },
- "updated_hkt": "2026-10-24 03:02",
+ "updated_hkt": "2026-10-24 04:43",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
