@@ -1200,7 +1200,7 @@ const RUX=(function(){
  const LBL={earn:'실적',val:'밸류에이션',cat:'뉴스·촉매',tech:'기술적 흐름',macro:'거시 요인'};
  // 只用提到該股票的句子；整段講幾隻股票又冇一句提到佢，就唔用（免得張冠李戴）
  function clauseFor(text,t){text=String(text||'').trim();if(!text)return '';
-  const parts=text.split(/(?<=[。; ！？!?;])\s*|(?<=\.)\s+/).filter(Boolean);
+  const parts=text.split(/(?<=[\u3002\uFF1B\uFF01\uFF1F!?;])\s*|(?<=\.)\s+/).filter(Boolean);
   const sym=String(t).toUpperCase().replace(/[^A-Z0-9.]/g,'');const re=new RegExp('(^|[^A-Z0-9])\\$?'+sym.replace('.','\\.')+'(?![A-Z0-9])','i');
   const hits=parts.filter(p=>re.test(p));const tks=new Set((text.match(/\$[A-Za-z][A-Za-z0-9.]{0,6}/g)||[]).map(x=>x.toUpperCase()));
   return hits.length?hits.join(' '):(tks.size>1?'':text)}
