@@ -46,7 +46,7 @@ def _posts(out, lang):
 
 def _last(out, lang):
     last = _posts(out, lang)[-1]
-    url = f'https://thecrowdtape.com/{lang}/?utm_source=x&utm_medium=post&utm_campaign=weekly_thread'
+    url = f'https://thecrowdtape.com/{lang}/?utm_source=x&utm_medium=social&utm_campaign=weekly_thread'
     assert url in last, (lang, last)
     assert f'/{lang}/stock/' not in last
     assert share.SHORT[lang]['disc'] in last
