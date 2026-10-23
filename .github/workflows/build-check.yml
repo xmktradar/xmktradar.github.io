@@ -24,6 +24,8 @@ jobs:
       TZ: Asia/Hong_Kong
     steps:
       - uses: actions/checkout@v4
+      - name: Retail UX helper tests
+        run: node --test tools/retail_ux.test.js
       - name: Page structure the build needs
         run: python3 tools/check_contract.py
       - name: Restore full page data
