@@ -317,7 +317,7 @@ async function viewDaily(){
  const priorOpen=current==='weekly'?'이전 7일(':current==='monthly'?'이전 28일(':'어제(';
  const priorLoading=!hasPrev&&!postsReady();
  await y();
- if(priorLoading&&!allP)loadAllPosts().then(function(){render()});
+ if(priorLoading&&!allP)setTimeout(function(){var run=function(){loadAllPosts().then(function(){render()})};if('requestIdleCallback'in window)requestIdleCallback(run,{timeout:4000});else run()},4000);
  await y();
  let _html=`<div class="grid">
  ${moneyBar()}

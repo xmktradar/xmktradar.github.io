@@ -317,7 +317,7 @@ async function viewDaily(){
  const priorOpen=current==='weekly'?'The prior 7 days (':current==='monthly'?'The prior 28 days (':'Yesterday (';
  const priorLoading=!hasPrev&&!postsReady();
  await y();
- if(priorLoading&&!allP)loadAllPosts().then(function(){render()});
+ if(priorLoading&&!allP)setTimeout(function(){var run=function(){loadAllPosts().then(function(){render()})};if('requestIdleCallback'in window)requestIdleCallback(run,{timeout:4000});else run()},4000);
  await y();
  let _html=`<div class="grid">
  ${moneyBar()}
