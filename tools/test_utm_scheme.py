@@ -3,7 +3,7 @@
 utm_source is x, threads, instagram or facebook (not ig or fb). utm_medium is social.
 utm_campaign is the slot: daily, carousel-<key>, premarket, afterclose, newsletter
 (on the facebook_cta signup line only), tutorial, top5, weekly_thread, hot_stock,
-discussion, weekend, or atomic. weekly_thread langs.<lang> lists are X posts.
+discussion, weekend, atomic, three_lines, or why. weekly_thread langs.<lang> lists are X posts.
 first_comment is tagged with the platform of that field (threads or facebook).
 atomic text and first_comment use source threads and campaign atomic.
 Asset URLs (/og/, /assets/, images) are left alone. Threads stays within 500
@@ -164,6 +164,25 @@ def iter_atomic(items, where='atomic_posts'):
                         yield value[plat], plat, source, 'atomic', lang, f'{where}[{i}].first_comment.{plat}'
 
 
+def iter_text_platforms(node, campaign, where, platforms):
+    """{platform: {lang: {text, url}}} used by three_lines and why_posts."""
+    if not isinstance(node, dict):
+        return
+    for plat in platforms:
+        block = node.get(plat)
+        if not isinstance(block, dict):
+            continue
+        source = SOURCES.get(plat, plat)
+        for lang, entry in block.items():
+            if isinstance(entry, dict):
+                if isinstance(entry.get('text'), str):
+                    yield entry['text'], plat, source, campaign, lang, f'{where}.{plat}.{lang}.text'
+                if isinstance(entry.get('url'), str):
+                    yield entry['url'], plat, source, campaign, lang, f'{where}.{plat}.{lang}.url'
+            elif isinstance(entry, str):
+                yield entry, plat, source, campaign, lang, f'{where}.{plat}.{lang}'
+
+
 def iter_social(data):
     yield from iter_platform_posts(data.get('posts'), 'daily', 'posts')
     slots = data.get('slots')
@@ -195,6 +214,13 @@ def iter_social(data):
                 yield from iter_platform_posts(item.get('langs'), 'weekend', f'weekend.posts[{i}].langs')
     if isinstance(data.get('atomic_posts'), list):
         yield from iter_atomic(data['atomic_posts'])
+    if isinstance(data.get('three_lines'), dict):
+        yield from iter_text_platforms(
+            data['three_lines'], 'three_lines', 'three_lines', ('x', 'threads', 'facebook', 'instagram'))
+    if isinstance(data.get('why_posts'), list):
+        for i, item in enumerate(data['why_posts']):
+            if isinstance(item, dict):
+                yield from iter_text_platforms(item, 'why', f'why_posts[{i}]', ('threads', 'x'))
     intra = data.get('intraday')
     if isinstance(intra, dict):
         for key, slot in (intra.get('slots') or {}).items():
@@ -293,6 +319,10 @@ def test_real_files():
         assert 'weekend' in seen, seen
     if social.get('atomic_posts'):
         assert 'atomic' in seen, seen
+    if social.get('three_lines'):
+        assert 'three_lines' in seen, seen
+    if social.get('why_posts'):
+        assert 'why' in seen, seen
 
 
 def test_real_files_idempotent():

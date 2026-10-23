@@ -14,6 +14,10 @@ utm_medium is always social. utm_campaign is the slot (intraday uses the slot na
   hot_stock / discussion           that slot. threads and facebook, including first_comment.
   weekend                          weekend. posts[].langs.<lang>.{threads,facebook,first_comment}
   atomic_posts                     atomic. text and first_comment use source threads.
+  three_lines.{x,threads,facebook} three_lines. Each language is {text, url}.
+                                   Instagram has no URL.
+  why_posts[]                      why. threads.{zh,en,ko} and optional x.en.
+                                   No Instagram.
   intraday.slots.<key>             that slot (intraday_open, …). x.en is source x;
                                    threads.<lang> is source threads. No Facebook.
 
@@ -358,6 +362,43 @@ def _walk_weekend(node, counts):
         _walk_lang_map(item.get('langs'), 'weekend', counts)
 
 
+def _walk_text_platforms(node, campaign, counts, platforms):
+    """Tag {platform: {lang: {text, url}}} . Threads captions are refit to 500."""
+    if not isinstance(node, dict):
+        return
+    from share import LANGS, fit_threads
+    for plat in platforms:
+        block = node.get(plat)
+        if not isinstance(block, dict):
+            continue
+        source = PLATFORM.get(plat, plat)
+        for lang, entry in list(block.items()):
+            if isinstance(entry, dict):
+                _apply_field(entry, 'text', source, campaign, plat, counts)
+                if isinstance(entry.get('url'), str):
+                    entry['url'] = tag_url(entry['url'], source, campaign)
+                if plat == 'threads' and lang in LANGS and isinstance(entry.get('text'), str):
+                    entry['text'] = fit_threads(entry['text'], lang)
+            elif isinstance(entry, str):
+                _apply_field(block, lang, source, campaign, plat, counts)
+                if plat == 'threads' and lang in LANGS:
+                    block[lang] = fit_threads(block[lang], lang)
+
+
+def _walk_three_lines(node, counts):
+    """three_lines x/threads/facebook. Instagram is sanitized elsewhere and has no URL."""
+    _walk_text_platforms(node, 'three_lines', counts, ('x', 'threads', 'facebook'))
+
+
+def _walk_why(items, counts):
+    """why_posts: Threads-first, optional English X. Campaign is why."""
+    if not isinstance(items, list):
+        return
+    for item in items:
+        if isinstance(item, dict):
+            _walk_text_platforms(item, 'why', counts, ('threads', 'x'))
+
+
 def _walk_atomic(items, counts):
     """atomic_posts text and first_comment. One body, so the source is threads."""
     if not isinstance(items, list):
@@ -416,6 +457,10 @@ def normalize_obj(data, tutorial=False):
             _walk_weekend(data['weekend'], counts)
         if isinstance(data.get('atomic_posts'), list):
             _walk_atomic(data['atomic_posts'], counts)
+        if isinstance(data.get('three_lines'), dict):
+            _walk_three_lines(data['three_lines'], counts)
+        if isinstance(data.get('why_posts'), list):
+            _walk_why(data['why_posts'], counts)
         if isinstance(data.get('intraday'), dict):
             _walk_intraday(data['intraday'], counts)
     _fit_threads_tree(data)

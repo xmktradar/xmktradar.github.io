@@ -9,9 +9,9 @@ plus a 1080x1920 Instagram Story picture og/story-<lang>.png and a native 1080x1
 Instagram text-post picture og/ig-<lang>.png. Every version asks readers to support the site (PayPal).
 Also writes x_trilingual (one zh+en+ko X post at 21:00 and 08:00 HKT, picture og/x-<kind>.png for the $TICKER in the text), facebook_cta and ig_threads_daily.
 The same daily social run writes top5, and on Friday (HKT) weekly_thread. It also writes
-hot_stock, discussion and atomic_posts. On Saturday and Sunday (HKT) it writes weekend and
-atomic_posts without rebuilding the weekday posts. Schemas are on the build_* functions
-and in tools/SOCIAL.md.
+hot_stock, discussion, three_lines, why_posts and atomic_posts. On Saturday and Sunday
+(HKT) it writes weekend and atomic_posts without rebuilding the weekday posts, and it does
+not write three_lines or why_posts. Schemas are on the build_* functions and in tools/SOCIAL.md.
 python3 tools/share.py --og-only writes work/og.json from dash-data + work/stats.json and stops
 (no social posts, no index.html rewrite); used by tools/ig_sample.js.
 """
@@ -26,6 +26,12 @@ from datetime import datetime
 from ranking import rank_rows
 from sitedata import HK, load, notice, now_hk, read_json, work, write_json
 from utm import PLATFORM, normalize_file, tag_posts, tag_url
+import three_why
+
+build_three_lines = three_why.build_three_lines
+build_why_posts = three_why.build_why_posts
+three_lines_calc = three_why.three_lines_calc
+schedule_why_atomic = three_why.schedule_why_atomic
 
 HTML = 'index.html'
 SITE = 'https://thecrowdtape.com/'
@@ -3099,8 +3105,20 @@ def _try_point(pt, used_n, used_t, used_text, retried=False):
     return rendered
 
 
-def build_atomic_posts(writeup, used_n, used_t, used_text):
-    """4–5 posts per language. One fact each. Chinese posts come first."""
+def build_atomic_posts(writeup, used_n, used_t, used_text, target=None, minimum=None):
+    """One fact per post. Defaults are 4–5 posts per language. Chinese posts come first.
+
+    `target` and `minimum` let the weekday run leave room for why_posts (together 4–6).
+    The weekend run and a direct call keep the 4–5 default.
+    """
+    if target is None:
+        target = ATOMIC_TARGET
+    if minimum is None:
+        minimum = ATOMIC_MIN
+    target = max(0, min(int(target), len(ATOMIC_TIMES)))
+    minimum = max(0, min(int(minimum), target))
+    if target <= 0:
+        return []
     used_n, used_t, used_text = set(used_n or ()), set(used_t or ()), set(used_text or ())
     experts, stocks, numbers = _atomic_candidates(writeup, used_n, used_t)
     chosen = []
@@ -3135,19 +3153,19 @@ def build_atomic_posts(writeup, used_n, used_t, used_text):
         if take(pt):
             break
     for pt in numbers:
-        if len(chosen) >= ATOMIC_TARGET:
+        if len(chosen) >= target:
             break
         take(pt)
     for pool in (stocks, experts, numbers):
-        if len(chosen) >= ATOMIC_MIN:
+        if len(chosen) >= minimum:
             break
         for pt in pool:
-            if len(chosen) >= ATOMIC_TARGET:
+            if len(chosen) >= target:
                 break
             take(pt)
-    if len(chosen) < ATOMIC_MIN:
+    if len(chosen) < minimum:
         return []
-    chosen = chosen[:ATOMIC_TARGET]
+    chosen = chosen[:target]
     seq = []
     for lang in LANGS:
         for i, (pt, rendered) in enumerate(chosen):
@@ -3263,6 +3281,10 @@ def _body_groups(sp):
                     blobs.append(node)
             if blobs:
                 groups[f'intraday.{key}'] = blobs
+    for name in ('three_lines', 'why_posts'):
+        blobs = [t for t in three_why.collect_texts(sp.get(name)) if isinstance(t, str)]
+        if blobs:
+            groups[name] = blobs
     return groups
 
 
@@ -3372,16 +3394,50 @@ def refresh_top5(sp, daily, day, made_hkt):
     return sp
 
 
-def attach_market_slots(sp, day, writeup, history=None, save=False):
-    """Weekday hot_stock, discussion and atomic_posts. Omits a slot when no name is eligible."""
+def _keep_why_posts(sp, posts):
+    """Drop a why post whose body copies another slot or an earlier why post."""
+    kept = []
+    for post in posts or []:
+        if not isinstance(post, dict):
+            continue
+        sp['why_posts'] = kept + [post]
+        groups = _body_groups(sp)
+        others = {}
+        for name, blobs in groups.items():
+            if name == 'why_posts':
+                continue
+            for raw in blobs:
+                others[_norm_text(raw)] = name
+        texts = [_norm_text(t) for t in three_why.collect_texts(post)]
+        prev = {_norm_text(t) for older in kept for t in three_why.collect_texts(older)}
+        if any(t and (t in others or t in prev) for t in texts):
+            continue
+        kept.append(post)
+    if kept:
+        sp['why_posts'] = kept
+    else:
+        sp.pop('why_posts', None)
+    return kept
+
+
+def attach_market_slots(sp, day, writeup, history=None, save=False, dash=None):
+    """Weekday hot_stock, discussion, three_lines, why_posts and atomic_posts.
+
+    Omits a slot when nothing real is eligible. Weekends use attach_weekend_slots
+    and do not build three_lines or why_posts. `dash` is the homepage post corpus;
+    tests leave it empty and the three lines fall back to the writeup rows.
+    """
     if history is None:
         history = load_social_history()
         save = True
     writeup = writeup if isinstance(writeup, dict) else {}
     day = _as_day(day) or str(day or '')
     sp.pop('atomic_posts', None)
+    sp.pop('three_lines', None)
+    sp.pop('why_posts', None)
     blocked = blocked_tickers_for_slots(sp, history, day)
-    hot_row, talk_row = select_slot_rows(writeup.get('daily') or {}, blocked)
+    daily = writeup.get('daily') or {}
+    hot_row, talk_row = select_slot_rows(daily, blocked)
     sp.pop('hot_stock', None)
     sp.pop('discussion', None)
     if hot_row:
@@ -3400,16 +3456,62 @@ def attach_market_slots(sp, day, writeup, history=None, save=False):
             if _text_clashes(_body_groups(sp), 'discussion'):
                 sp.pop('discussion', None)
                 talk_row = None
+    window_fb = sp.get('window') if isinstance(sp, dict) else None
+    three = three_why.build_three_lines(daily, day, dash=dash, window_fallback=window_fb)
+    banned = three_why.prior_texts(history, day)
+    if three:
+        sp['three_lines'] = three
+        repeated = any(
+            _norm_text(t) in banned
+            for t in three_why.collect_texts(three.get('threads'))
+        )
+        if repeated or _text_clashes(_body_groups(sp), 'three_lines'):
+            sp.pop('three_lines', None)
+            three = None
+    why_window = three.get('window') if three else None
+    why_sample = three.get('sample') if three else None
+    why = three_why.build_why_posts(
+        daily, day, window=why_window, sample=why_sample, window_fallback=window_fb)
+    why = three_why.drop_repeated(why, banned)
+    why = _keep_why_posts(sp, why)
+    n_why = len(why)
+    # why posts take early KST slots. Atomic fills what is left, same ticker dropped.
+    # Together that is 4–6 posts per language when the writeup has the facts.
     nums, ticks, texts = _union_facts(_body_groups(sp))
-    atomic = build_atomic_posts(writeup, nums, ticks, texts)
+    ticks = set(ticks) | {p.get('ticker') for p in why if p.get('ticker')}
+    target = min(ATOMIC_TARGET, max(0, 6 - n_why))
+    minimum = 0 if n_why >= 4 else max(0, 4 - n_why)
+    if target < minimum:
+        target = minimum
+    atomic = build_atomic_posts(writeup, nums, ticks, texts, target=target, minimum=minimum)
+    if not atomic and minimum > 0:
+        atomic = build_atomic_posts(writeup, nums, ticks, texts, target=target, minimum=0)
+    why, atomic = three_why.schedule_why_atomic(why, atomic)
+    if why:
+        sp['why_posts'] = why
+    else:
+        sp.pop('why_posts', None)
     if atomic and not _atomic_would_clash(atomic, texts):
         sp['atomic_posts'] = atomic
+    else:
+        sp.pop('atomic_posts', None)
     remember_slots(history, day, {
         'hot_stock': [hot_row['t']] if hot_row and sp.get('hot_stock') else [],
         'discussion': [talk_row['t']] if talk_row and sp.get('discussion') else [],
         'top5': top5_lead_tickers(sp.get('top5')),
         'atomic': _tickers_of_atomic(sp.get('atomic_posts')),
+        'why': [p.get('ticker') for p in sp.get('why_posts') or []],
     })
+    rec = history.get(day) if isinstance(history.get(day), dict) else None
+    if rec is not None:
+        rec['why_text'] = [
+            _norm_text(t)
+            for p in sp.get('why_posts') or []
+            for t in three_why.collect_texts(p.get('threads'))
+        ]
+        rec['three_lines_text'] = [
+            _norm_text(t) for t in three_why.collect_texts((sp.get('three_lines') or {}).get('threads'))
+        ]
     if save:
         save_social_history(history)
     return sp
@@ -3495,7 +3597,7 @@ def social_actions(day, sp, hour, has_items, legacy, force=False):
 
 def main():
     st = read_json(work('stats.json'))
-    d = load(HTML)
+    d = _dash_data()
     ch = read_json('data/consensus-history.json', {'days': {}})
     day, s = st['today'], st['daily']
     langs, items = build(d, s, ch, day)
@@ -3524,7 +3626,9 @@ def main():
         attach_new_posts(sp, rebuild_premarket=True)  # both X posts; carousel rebuilds premarket after the 2030 slot
         attach_top5_and_weekly(sp, day, sp['made_hkt'], ch)
         writeup = read_json('data/writeup-input.json', {}) or {}
-        attach_market_slots(sp, day, writeup if isinstance(writeup, dict) else {}, load_social_history(), save=True)
+        attach_market_slots(
+            sp, day, writeup if isinstance(writeup, dict) else {}, load_social_history(),
+            save=True, dash=d)
         write_json('data/social-posts.json', sp, indent=1)
         normalize_file('data/social-posts.json')
         sp = read_json('data/social-posts.json')
