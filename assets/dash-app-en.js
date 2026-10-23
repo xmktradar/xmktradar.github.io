@@ -1,7 +1,7 @@
 'use strict';
 (async function(){
 const parseJSON=function(raw){return new Promise(function(resolve){try{if(typeof Worker==='undefined'){resolve(JSON.parse(raw));return}var u=URL.createObjectURL(new Blob(['onmessage=function(e){try{postMessage({ok:1,d:JSON.parse(e.data)})}catch(err){postMessage({ok:0})}}'],{type:'text/javascript'}));var w=new Worker(u);var done=false;var fin=function(d){if(done)return;done=true;try{w.terminate()}catch(e){}try{URL.revokeObjectURL(u)}catch(e){}resolve(d)};w.onmessage=function(e){fin(e.data&&e.data.ok?e.data.d:JSON.parse(raw))};w.onerror=function(){fin(JSON.parse(raw))};w.postMessage(raw);setTimeout(function(){fin(JSON.parse(raw))},2500)}catch(e){resolve(JSON.parse(raw))}})};
-const y=function(){return new Promise(function(r){if(typeof MessageChannel==='function'){var c=new MessageChannel();c.port1.onmessage=function(){r()};c.port2.postMessage(0)}else setTimeout(r,0)})};
+const y=function(){return new Promise(function(r){if(typeof scheduler!=='undefined'&&typeof scheduler.yield==='function'){scheduler.yield().then(r,r);return}if(typeof MessageChannel==='function'){var c=new MessageChannel();c.port1.onmessage=function(){r()};c.port2.postMessage(0)}else setTimeout(r,0)})};
 await y();
 
 // 儀表板｜結構與計算依照設計稿（奶油風格）；資料全部來自內嵌資料
@@ -42,7 +42,7 @@ const _ps=D.posts;
 for(let _i=0;_i<_ps.length;_i++){
 const p=_ps[_i];
 ALLP.push({...p,text:undefined,summary_zh:HAS_ZH(p.zh_summary)?p.zh_summary:HAS_ZH(p.summary_zh)?p.summary_zh:'',tokenize:HAS_ZH(p.zh_summary)&&PAGE_LANG!=='en'?false:p.tokenize,tickers:[...new Set([...(p.tickers||[]),...Object.keys(p.stance_by_ticker&&typeof p.stance_by_ticker==='object'?p.stance_by_ticker:{})].map(t=>String(t).replace(/^\$/,'').toUpperCase()))],ms:Date.parse(p.time_utc),acc:p.reposted_by||p.handle,date:p.time_hkt.slice(0,10)});
-if((_i&15)===15)await y();
+if((_i&7)===7)await y();
 }
 ALLP.sort((a,b)=>a.ms-b.ms);
 }
@@ -59,7 +59,7 @@ for(let _j=0;_j<p.tickers.length;_j++){
 const t=p.tickers[_j];const r=stanceOf(p,t);
 POSTS.push({p,t,acc:p.acc,s:r.s,star:r.star,ms:p.ms,d:p.date,kind:p.basis||null,why:p.summary_zh||'',url:p.url})
 }
-if((_i&15)===15)await y();
+if((_i&7)===7)await y();
 }
 }
 await y();
@@ -264,7 +264,7 @@ function vsHtml(w){if(!VSC||!CH)return '';
 function moneyBar(){return `<nav class="money-bar" aria-label="Promotion"><span class="pj-tag">Promotion</span><a href="tools/">Tools</a><a href="support/">Support us</a><a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview" data-placement="money-bar">TradingView</a><a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover" data-placement="money-bar">Stock Rover</a></nav>`}
 // 各帳號立場：每隻股票一行（按討論帳號數排列），頭像按立場分組，點開見每個帳號的最新理由；頭 10 隻以外收起
 let _sxExpand=null,_restExpand=null,_sxBodies=null;
-function stanceList(w,tks,accs){const SHOW=10,K=['bull','bear','neu','none'];_sxBodies=new Map();
+async function stanceList(w,tks,accs){const SHOW=6,K=['bull','bear','neu','none'];_sxBodies=new Map();
  const rows=tks.map(t=>{const g={bull:[],bear:[],neu:[],none:[]};accs.forEach(a=>{const x=latest(a,t,w.from,w.to);if(x)g[x.s].push({a,x})});return {t,g,n:K.reduce((s,k)=>s+g[k].length,0)}}).filter(r=>r.n).sort((x,y)=>y.n-x.n||(y.g.bull.length+y.g.bear.length)-(x.g.bull.length+x.g.bear.length)||x.t.localeCompare(y.t));
  const av=h=>avImg(h,'sx-av').replace('<img ',`<img loading="lazy" title="@${esc(h)}" `);
  const why=(a,x)=>esc(x.why.replace(new RegExp('^\\s*@?'+a.replace(/[^A-Za-z0-9_]/g,'')+'\\s*[:\\uFF1A]\\s*','i'),''));
@@ -277,8 +277,10 @@ function stanceList(w,tks,accs){const SHOW=10,K=['bull','bear','neu','none'];_sx
  const tab=(f,l,n,tip)=>`<button type="button" data-f="${f}" aria-pressed="${f==='all'}"${tip?` title="${tip}"`:''}>${l} ${n}</button>`;
  const pick="const b=event.target.closest('button');if(!b)return;this.parentNode.dataset.f=b.dataset.f;this.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)))";
  _sxExpand=rows.length>SHOW?function(){return rows.slice(SHOW).map(function(r,i){return row(r,i+SHOW)}).join('')}:null;
+ let _sxHead='';
+ for(let _si=0;_si<Math.min(SHOW,rows.length);_si++){_sxHead+=row(rows[_si],_si);if((_si&1)===1)await y()}
  return `<div class="sx-list" data-f="all"><div class="sx-tabs" onclick="${pick}">${tab('all','All',rows.length)}${tab('split','Split',cnt('split'),'Some accounts bullish and some bearish')}${tab('mbull','Bullish (2+)',cnt('mbull'),'At least 2 accounts’ latest stance is bullish')}${tab('mbear','Bearish (2+)',cnt('mbear'),'At least 2 accounts’ latest stance is bearish')}</div>
- ${rows.slice(0,SHOW).map(row).join('')}<p class="note sx-none">No stocks match this filter</p>${rows.length>SHOW?`<button type="button" class="sx-more" data-sx-exp="1">Show the other ${rows.length-SHOW} stocks ▾</button>`:''}</div>`}
+ ${_sxHead}<p class="note sx-none">No stocks match this filter</p>${rows.length>SHOW?`<button type="button" class="sx-more" data-sx-exp="1">Show the other ${rows.length-SHOW} stocks ▾</button>`:''}</div>`}
 
 // ---------- 每日 ----------
 async function viewDaily(){
@@ -314,6 +316,7 @@ async function viewDaily(){
  const cmpLab=current==='weekly'?'change vs the prior 7 days':current==='monthly'?'change vs the prior 28 days':'vs yesterday (today so far)';
  const priorOpen=current==='weekly'?'The prior 7 days (':current==='monthly'?'The prior 28 days (':'Yesterday (';
  const priorLoading=!hasPrev&&!postsReady();
+ await y();
  if(priorLoading&&!allP)loadAllPosts().then(function(){render()});
  await y();
  let _html=`<div class="grid">
@@ -340,11 +343,12 @@ async function viewDaily(){
  ${highlightsHtml(w.day)}
 `;
  await y();
+ const _sxHtml=tkNow.length?await stanceList(w,tkNow,shownAccs):empty('No posts mentioned a ticker in this range.');
  _html+=`<!--DY-->
  <section class="c12 panel"><h2>Attention shifts <span class="sub">Only stocks accounts still follow${attGone.length?`, filtered out ${attGone.length} stocks no one follows anymore`:''}; brackets show ${cmpLab}</span></h2>
-  ${att.length?`<div class="scrollbox" style="display:grid;gap:8px;align-content:start">${att.map(x=>{const k={bull:0,neu:0,none:0,bear:0};cur.filter(y=>y.t===x.t).forEach(y=>k[y.s]=(k[y.s]||0)+1);const seg=(c,n,l)=>n?`<span class="${c}" style="width:${n/mx*100}%" title="${l} ${n}"></span>`:'';return `<div class="hbar">${tkBtn(x.t)}<div class="track stk">${seg('b',k.bull,'Bullish')}${seg('m',k.neu,'Neutral')}${seg('u',k.none,'No stance')}${seg('r',k.bear,'Bearish')}</div><span class="n">${x.n} ${hasPrev?`(${signed(x.d)})`:''}</span></div>`}).join('')}</div><div style="margin-top:10px">${legend}</div>${hasPrev?'':priorLoading?'<p class="note">Loading comparison…</p>':`<p class="note">${priorOpen}${w.timed?`${fmtR(pf)} – ${fmtR(pt)}`:`${fmt(pf)}${len>1?'–'+fmt(pt):''}`}) has no data, so no comparison yet.</p>`}`:empty('No stocks mentioned in this range.')}</section>
+  ${att.length?`<div class="scrollbox" style="display:grid;gap:8px;align-content:start">${att.slice(0,20).map(x=>{const k={bull:0,neu:0,none:0,bear:0};cur.filter(y=>y.t===x.t).forEach(y=>k[y.s]=(k[y.s]||0)+1);const seg=(c,n,l)=>n?`<span class="${c}" style="width:${n/mx*100}%" title="${l} ${n}"></span>`:'';return `<div class="hbar">${tkBtn(x.t)}<div class="track stk">${seg('b',k.bull,'Bullish')}${seg('m',k.neu,'Neutral')}${seg('u',k.none,'No stance')}${seg('r',k.bear,'Bearish')}</div><span class="n">${x.n} ${hasPrev?`(${signed(x.d)})`:''}</span></div>`}).join('')}</div>${att.length>20?`<p class="note">`+uiText('另有 '+(att.length-20)+' 隻','+'+(att.length-20)+' more','+'+(att.length-20)+'개 더')+`</p>`:''}<div style="margin-top:10px">${legend}</div>${hasPrev?'':priorLoading?'<p class="note">Loading comparison…</p>':`<p class="note">${priorOpen}${w.timed?`${fmtR(pf)} – ${fmtR(pt)}`:`${fmt(pf)}${len>1?'–'+fmt(pt):''}`}) has no data, so no comparison yet.</p>`}`:empty('No stocks mentioned in this range.')}</section>
  <section class="c12 panel"><h2>Stance by account <span class="sub">${label} ${tkNow.length} stocks · ${shownAccs.length} accounts · sorted by how many accounts discuss each stock; tap a row to see each account’s reason</span></h2>
-  ${tkNow.length?stanceList(w,tkNow,shownAccs):empty('No posts mentioned a ticker in this range.')}
+  ${_sxHtml}
   <div style="margin-top:10px">${legend}</div>${noTk.length?`<p class="note">Posted but mentioned no ticker: ${noTk.map(accLink).join(' ')}</p>`:''}</section>
 `;
  await y();
@@ -670,10 +674,10 @@ async function rebuildDerived(){
  TODAY=hkDate(CUT);
  await y();
  ALLP=[];
- {const _ps=D.posts;for(let _i=0;_i<_ps.length;_i++){const p=_ps[_i];ALLP.push({...p,text:undefined,summary_zh:HAS_ZH(p.zh_summary)?p.zh_summary:HAS_ZH(p.summary_zh)?p.summary_zh:'',tokenize:HAS_ZH(p.zh_summary)&&PAGE_LANG!=='en'?false:p.tokenize,tickers:[...new Set([...(p.tickers||[]),...Object.keys(p.stance_by_ticker&&typeof p.stance_by_ticker==='object'?p.stance_by_ticker:{})].map(t=>String(t).replace(/^\$/,'').toUpperCase()))],ms:Date.parse(p.time_utc),acc:p.reposted_by||p.handle,date:p.time_hkt.slice(0,10)});if((_i&31)===31)await y()}ALLP.sort((a,b)=>a.ms-b.ms)}
+ {const _ps=D.posts;for(let _i=0;_i<_ps.length;_i++){const p=_ps[_i];ALLP.push({...p,text:undefined,summary_zh:HAS_ZH(p.zh_summary)?p.zh_summary:HAS_ZH(p.summary_zh)?p.summary_zh:'',tokenize:HAS_ZH(p.zh_summary)&&PAGE_LANG!=='en'?false:p.tokenize,tickers:[...new Set([...(p.tickers||[]),...Object.keys(p.stance_by_ticker&&typeof p.stance_by_ticker==='object'?p.stance_by_ticker:{})].map(t=>String(t).replace(/^\$/,'').toUpperCase()))],ms:Date.parse(p.time_utc),acc:p.reposted_by||p.handle,date:p.time_hkt.slice(0,10)});if((_i&7)===7)await y()}ALLP.sort((a,b)=>a.ms-b.ms)}
  await y();
  POSTS=[];
- {const _vp=ALLP.filter(valid);for(let _i=0;_i<_vp.length;_i++){const p=_vp[_i];for(let _j=0;_j<p.tickers.length;_j++){const t=p.tickers[_j];const r=stanceOf(p,t);POSTS.push({p,t,acc:p.acc,s:r.s,star:r.star,ms:p.ms,d:p.date,kind:p.basis||null,why:p.summary_zh||'',url:p.url})}if((_i&31)===31)await y()}}
+ {const _vp=ALLP.filter(valid);for(let _i=0;_i<_vp.length;_i++){const p=_vp[_i];for(let _j=0;_j<p.tickers.length;_j++){const t=p.tickers[_j];const r=stanceOf(p,t);POSTS.push({p,t,acc:p.acc,s:r.s,star:r.star,ms:p.ms,d:p.date,kind:p.basis||null,why:p.summary_zh||'',url:p.url})}if((_i&7)===7)await y()}}
  WIN=new Map();
  TICKERS=[...new Set(POSTS.map(x=>x.t))].sort();
  DATES=[...new Set(ALLP.map(p=>p.date))].sort();
@@ -752,7 +756,7 @@ try{paintChrome();await render()}catch(e){console.error(e)}
 if(!coreDone){
   var _bootCore=function(){loadCore().then(function(){window.__dashReady=true;paintChrome();var v=document.getElementById('view');if(v&&v.querySelector('.grid')&&(lastViewKey===current||lastViewKey==='daily')){if(typeof refreshPriceChips==='function')refreshPriceChips();mountStatus();mountMore();return}return render()}).catch(function(e){console.error(e);coreDone=true;window.__dashReady=true;paintChrome();return render()})};
   await y();
-  _bootCore();
+  if('requestIdleCallback'in window)requestIdleCallback(_bootCore,{timeout:3500});else setTimeout(_bootCore,1200);
 }else window.__dashReady=true;
 })();
 document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com')){gtag('event','social_click',{platform:'x',link_url:u,transport_type:'beacon'});gtag('event','x_outbound',{link_url:u,page:'home',lang:document.documentElement.lang||'',transport_type:'beacon'});}else if(h==='instagram.com'||h.endsWith('.instagram.com'))gtag('event','social_click',{platform:'instagram',link_url:u,transport_type:'beacon'});else if(h==='threads.net'||h.endsWith('.threads.net')||h==='threads.com'||h.endsWith('.threads.com'))gtag('event','social_click',{platform:'threads',link_url:u,transport_type:'beacon'});else if(h==='paypal.com'||h.endsWith('.paypal.com')||h==='paypal.me'||h.endsWith('.paypal.me'))gtag('event','donate_click',{method:'paypal',page:'home',lang:document.documentElement.lang})});
