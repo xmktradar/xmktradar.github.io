@@ -415,8 +415,10 @@ def test_normalize_obj_scheme():
     assert data['x_trilingual']['premarket']['image'].endswith('x-premarket.png?v=1')
     after = data['x_trilingual']['afterclose']['text']
     assert after == 'https://thecrowdtape.com/ko/?a=1&utm_source=x&utm_medium=social&utm_campaign=afterclose#z', after
-    assert data['top5']['posts']['en']['instagram'].endswith(
-        '/en/stock/NVDA/?utm_source=instagram&utm_medium=social&utm_campaign=top5')
+    ig = data['top5']['posts']['en']['instagram']
+    assert 'https://' not in ig and 'thecrowdtape.com' not in ig.lower()
+    assert share.IG_BIO['en'] in ig
+    assert share.IG_BIO['en'] in data['posts']['en']['instagram']
     weekly = data['weekly_thread']['posts']['en']['x']
     assert 'utm_source=x&utm_medium=social&utm_campaign=weekly_thread' in weekly, weekly
     assert 'utm_source=ig' not in weekly

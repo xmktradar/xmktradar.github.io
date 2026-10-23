@@ -15,8 +15,9 @@ import os
 import re
 from datetime import datetime, timedelta
 
-from share import (SHORT, SITE, LANGS, attach_new_posts, clean, fit_threads, fit_threads_posts,
-                    likes, page_url, social_page, tags, trading_day, xlen)
+from share import (SHORT, SITE, LANGS, IG_BIO, IG_FOLLOW, attach_new_posts, clean, dedupe_handle,
+                    fit_threads, fit_threads_posts, ig_tags, likes, page_url, sanitize_instagram,
+                    social_page, tags, trading_day, xlen)
 from sitedata import load, notice, now_hk, parse_iso, read_json, work, write_json
 from utm import normalize_file, tag_posts
 
@@ -97,7 +98,7 @@ def qtext(site, p, lang, n):
     text = site.text(p, lang, 400)
     text = re.sub(r'^[(（](?:Reposted by|[^)）]*(?:轉發|转发|리포스트))[^)）]*[)）]\s*', '', text)  # "(Reposted by @x)" lead-in
     text = re.sub(r'^(?:(?:@?' + re.escape(p['handle']) + r'|' + re.escape(site.name(p['handle'])) + r')\s*[:：]?\s*)+', '', text, flags=re.I)
-    return clean(text, n)
+    return clean(dedupe_handle(p.get('handle'), text), n)
 
 
 def side_quotes(site, t, lang, skip=(), n=2):
@@ -154,11 +155,11 @@ def snap(site, s, lang, day, win):
     if hero:
         ps = sorted([site.by_url[x] for x in hero.get('urls', []) if x in site.by_url], key=lambda p: -likes(p))
         for p in ps:
-            if len(qs) < 2 and p['handle'] not in [x['acc'] for x in qs] and site.text(p, lang, 10):
-                qs.append({'acc': p['handle'], 'av': site.av(p['handle']), 'text': site.text(p, lang, 100 if lang == 'en' else 56), 'url': p['url']})
+            if len(qs) < 2 and p['handle'] not in [x['acc'] for x in qs] and qtext(site, p, lang, 10):
+                qs.append({'acc': p['handle'], 'av': site.av(p['handle']), 'text': qtext(site, p, lang, 100 if lang == 'en' else 56), 'url': p['url']})
     q = qs[0] if qs else None
     cover = {'kind': 'cover', 'kicker': TITLE['1230'][lang], 'win': win,
-             'lead': {'zh': '今日最多人講', 'en': 'Most talked-about today', 'ko': '오늘 가장 많이 언급된 종목'}[lang],
+             'lead': {'zh': '最多人討論', 'en': 'Most mentioned', 'ko': '가장 많이 언급'}[lang],
              'big': hero['t'] if hero else '', 'sub': u['acc'](hero['accounts']) if hero else '',
              'pills': stance_pills(lang, hero.get('bull_accounts', 0), hero.get('bear_accounts', 0), hero['accounts']) if hero else [],
              'stats': [{'c': 'b', 'l': u['posted'](s['accounts'])}, {'c': 'p', 'l': u['stocks'](s.get('tickers', 0))}],
@@ -237,7 +238,7 @@ def duel(site, s, lang, day, win, pick):
         slides.append({'kind': 'account', 'kicker': TITLE['1630'][lang], 't': t, 'acc': r['acc'], 'name': site.name(r['acc']),
                        'av': site.av(r['acc']), 'side': r['s'],
                        'badge': u['bull'] if r['s'] == 'bull' else (u['bear'] if r['s'] == 'bear' else {'zh': '中性', 'en': 'Neutral', 'ko': '중립'}[lang]),
-                       'text': site.text(p, lang, 330 if lang == 'en' else 170) or clean(r.get('why', ''), 170),
+                       'text': dedupe_handle(r['acc'], site.text(p, lang, 330 if lang == 'en' else 170) or clean(r.get('why', ''), 170)),
                        'when': (p.get('time_hkt') or '')[5:16].replace('T', ' ').replace('-', '/') + ' HKT' if p else ''})
     while len(slides) < 4:  # fewer than three accounts: close with the call to action
         slides.append({'kind': 'cards', 'secs': [], 'cta': cta(lang)})
@@ -315,7 +316,7 @@ def views_of(site, x, lang):
             continue
         seen.add(p['handle'])
         st = STANCE.get((p.get('stance_by_ticker') or {}).get(x['t']) or p.get('stance'), 'neutral')
-        rows.append({'acc': p['handle'], 's': st, 'text': site.text(p, lang, 110 if lang == 'en' else 60), 'url': p['url']})
+        rows.append({'acc': p['handle'], 's': st, 'text': qtext(site, p, lang, 110 if lang == 'en' else 60), 'url': p['url']})
         if len(rows) == 3:
             break
     return rows
@@ -329,8 +330,8 @@ def focus(site, s, lang, day, win, pick):
     q = None
     if h0:
         for p in sorted([p for p in site.d['posts'] if h0['t'] in (p.get('tickers') or [])], key=lambda p: p.get('time_utc', ''), reverse=True)[:8]:
-            if site.text(p, lang, 10):
-                q = {'acc': p['handle'], 'av': site.av(p['handle']), 'text': site.text(p, lang, 200 if lang == 'en' else 110), 'url': p['url']}
+            if qtext(site, p, lang, 10):
+                q = {'acc': p['handle'], 'av': site.av(p['handle']), 'text': qtext(site, p, lang, 200 if lang == 'en' else 110), 'url': p['url']}
                 break
     cover = {'kind': 'cover', 'kicker': TITLE['2030'][lang], 'win': win,
              'lead': {'zh': '升溫最快', 'en': 'Heating up fastest', 'ko': '가장 빠르게 뜨는 종목'}[lang],
@@ -369,9 +370,9 @@ def head_line(slot, lang, day, lead):
     return f'{m}/{dd} {TITLE[slot][lang]}：{lead}' if lang == 'zh' else f'{m}/{dd} {TITLE[slot][lang]}: {lead}'
 
 
-END = {'zh': ['👉 左右滑睇晒 4 張圖', '網站約每 4 個鐘更新，最新數字 👉 link in bio (thecrowdtape.com)', '☕ 鍾意就請我哋飲杯咖啡：link in bio，網站底部 PayPal 捐款 🙏', 'Follow @thecrowdtape 每日睇街貨點諗。'],
-       'en': ['👉 Swipe through all 4 pictures', 'Updated about every 4 hours. Latest numbers 👉 link in bio (thecrowdtape.com)', '☕ Enjoy it? Buy us a coffee: link in bio, PayPal at the bottom of the site 🙏', 'Follow @thecrowdtape for the daily read on what the crowd thinks.'],
-       'ko': ['👉 옆으로 넘겨 4장 모두 보기', '약 4시간마다 업데이트, 최신 수치 👉 프로필 링크 (thecrowdtape.com)', '☕ 도움이 되셨다면 커피 한 잔 후원해 주세요: 프로필 링크, 사이트 하단 PayPal 🙏', '@thecrowdtape 팔로우하고 매일 시장 분위기를 확인하세요.']}
+END = {'zh': ['👉 左右滑睇晒 4 張圖', IG_BIO['zh'], IG_FOLLOW['zh']],
+       'en': ['👉 Swipe through all 4 pictures', IG_BIO['en'], IG_FOLLOW['en']],
+       'ko': ['👉 옆으로 넘겨 4장 모두 보기', IG_BIO['ko'], IG_FOLLOW['ko']]}
 
 
 FB_TAP = {'zh': '👉 撳圖睇晒 4 張', 'en': '👉 Tap a picture to see all 4', 'ko': '👉 사진을 눌러 4장 모두 보기'}  # Facebook has no swiping
@@ -380,10 +381,11 @@ FB_TAP = {'zh': '👉 撳圖睇晒 4 張', 'en': '👉 Tap a picture to see all 
 def versions(lang, head, body, tks):
     """Instagram, Facebook, Threads and X versions from a headline and body blocks (most important first)."""
     tg = tags(lang, tks)
+    ig_tg = ig_tags(lang, tks)
     url = page_url(lang)
     short = SHORT[lang]
     give = f"{short['give']}{url}#donate"
-    ig = '\n\n'.join([head, *body, '\n'.join(END[lang]), short['disc_long'], tg])
+    ig = sanitize_instagram('\n\n'.join([head, *body, '\n'.join(END[lang]), short['disc_long'], ig_tg]), lang)
     fb = '\n\n'.join([head, *body, f"{FB_TAP[lang]}\n{short['live']}{url}\n{give}", short['disc_long'], tg])
 
     def fit(blocks, limit, size, tail):
@@ -426,8 +428,9 @@ def cap_duel(site, s, lang, day, pick):
     for r in duel_three(rows):
         p = site.by_url.get(r['url'], {})
         icon = '🟢' if r['s'] == 'bull' else ('🔴' if r['s'] == 'bear' else '⚪')
-        lines.append(f"{icon} @{r['acc']}：{site.text(p, lang, 150 if lang == 'en' else 80)}" if lang == 'zh' else
-                     f"{icon} @{r['acc']}: {site.text(p, lang, 150 if lang == 'en' else 80)}")
+        txt = dedupe_handle(r['acc'], site.text(p, lang, 150 if lang == 'en' else 80))
+        lines.append(f"{icon} @{r['acc']}：{txt}" if lang == 'zh' else
+                     f"{icon} @{r['acc']}: {txt}")
     return versions(lang, head, ['\n'.join(lines), u['who']], [t])
 
 
@@ -449,7 +452,7 @@ def cap_focus(site, s, lang, day, pick):
         vs = views_of(site, alt, lang)
         if vs:
             body.append('\n'.join([u['views'](alt['t'])] + [
-                f"{'🟢' if r['s'] == 'bull' else ('🔴' if r['s'] == 'bear' else '⚪')} @{r['acc']}{sep}{r['text']}" for r in vs]))
+                f"{'🟢' if r['s'] == 'bull' else ('🔴' if r['s'] == 'bear' else '⚪')} @{r['acc']}{sep}{dedupe_handle(r['acc'], r['text'])}" for r in vs]))
     tks = [x['t'] for x in hot[:3]] + [x['t'] for x in pts[:2]] + ([alt['t']] if alt else [])
     return versions(lang, head, body, list(dict.fromkeys(tks)))
 
@@ -536,6 +539,8 @@ def main():
                 posts.pop('reddit', None)
                 for k, see in (('instagram', END[lang][0]), ('facebook', FB_TAP[lang])):  # single-picture text, plus "swipe"/"tap" under the headline
                     posts[k] = posts[k].replace('\n\n', f'\n\n{see}\n\n', 1)
+                if isinstance(posts.get('instagram'), str):
+                    posts['instagram'] = sanitize_instagram(posts['instagram'], lang)
                 for k, v in posts.items():
                     if isinstance(v, str):
                         posts[k] = v.replace('utm_campaign=daily', f'utm_campaign=carousel-{key}')

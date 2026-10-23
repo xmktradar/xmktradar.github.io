@@ -372,6 +372,9 @@ def normalize_obj(data, tutorial=False):
         if isinstance(data.get('atomic_posts'), list):
             _walk_atomic(data['atomic_posts'], counts)
     _fit_threads_tree(data)
+    from share import sanitize_instagram_tree, strip_dup_handles_tree
+    strip_dup_handles_tree(data)
+    sanitize_instagram_tree(data)
     return counts
 
 

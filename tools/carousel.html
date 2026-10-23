@@ -19,13 +19,13 @@ html[lang=ko] *{word-break:keep-all}
 .dots{position:absolute;inset:0;background-image:radial-gradient(rgba(21,26,44,.16) 3.2px,transparent 3.6px);background-size:22px 22px;-webkit-mask-image:radial-gradient(circle at var(--dx,85%) var(--dy,85%),#000 0,transparent 55%);mask-image:radial-gradient(circle at var(--dx,85%) var(--dy,85%),#000 0,transparent 55%)}
 .deco{position:absolute;inset:0;pointer-events:none}
 .deco svg{position:absolute}
-.glow{position:absolute;left:30px;right:30px;top:138px;bottom:114px;background:rgba(255,255,255,.28);border:4px solid #151a2c;border-radius:34px;box-shadow:8px 10px 0 rgba(21,26,44,.85)}
-.top{position:absolute;left:56px;right:56px;top:52px;display:flex;align-items:center;gap:16px}
+.glow{position:absolute;left:48px;right:48px;top:158px;bottom:150px;background:rgba(255,255,255,.28);border:4px solid #151a2c;border-radius:34px;box-shadow:8px 10px 0 rgba(21,26,44,.85)}
+.top{position:absolute;left:64px;right:64px;top:76px;display:flex;align-items:center;gap:16px}
 .brand{white-space:nowrap;display:inline-flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:8px 22px 8px 10px;font-weight:900;font-size:28px;box-shadow:0 5px 0 rgba(21,26,44,.14)}
 .brand img{width:50px;height:50px;border-radius:12px;object-fit:cover;margin:-4px 0}
 .date{background:#f8d34a;border:4px solid #151a2c;border-radius:14px;padding:6px 16px;font-weight:900;font-size:28px;transform:rotate(-2.5deg);box-shadow:4px 5px 0 #151a2c;white-space:nowrap}
 .pg{margin-left:auto;font:700 26px "IBM Plex Mono",monospace;background:#151a2c;color:#fff;border-radius:999px;padding:6px 18px}
-.main{position:absolute;left:56px;right:56px;top:160px;bottom:120px}
+.main{position:absolute;left:64px;right:64px;top:180px;bottom:150px}
 #in{display:flex;flex-direction:column;gap:22px;min-height:100%}
 .cv{display:flex;gap:24px;align-items:center}
 .cvl{flex:1;min-width:0;display:flex;flex-direction:column;gap:22px}
@@ -112,7 +112,7 @@ html[lang=ko] *{word-break:keep-all}
 #in.quote .q .who{font-size:30px}
 #in.quote .q .tx{font-size:46px;line-height:1.5;-webkit-line-clamp:10}
 .talk{align-self:flex-start;background:#f8d34a;border:4px solid #151a2c;border-radius:14px;padding:6px 20px;font-weight:900;font-size:34px;box-shadow:4px 5px 0 #151a2c}
-.foot{position:absolute;left:56px;right:56px;bottom:40px;height:60px;background:rgba(255,255,255,.9);border-radius:999px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;font-weight:700;font-size:24px;color:#3c4466;white-space:nowrap}
+.foot{position:absolute;left:64px;right:64px;bottom:76px;height:60px;background:rgba(255,255,255,.9);border-radius:999px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;font-weight:700;font-size:24px;color:#3c4466;white-space:nowrap}
 .foot b{color:#151a2c}
 </style>
 <body>
@@ -128,7 +128,13 @@ const pct=v=>v==null?'':(v>=0?'▲':'▼')+Math.abs(v).toFixed(1)+'%';
 const pills=ps=>(ps||[]).map(p=>`<span class="pill ${p.c}">${esc(p.x)}</span>`).join('');
 const avs=(a,more)=>(a||[]).filter(Boolean).map(s=>`<img src="${s}">`).join('')+(more?`<b>+${more}</b>`:'');
 const cta=c=>c&&c.length?`<div class="cta">${c.map(x=>`<div>${esc(x)}</div>`).join('')}</div>`:'';
-const quote=q=>q&&q.text?`<div class="box q">${q.av?`<img src="${q.av}">`:''}<div><div class="who">💬 @${esc(q.acc)}</div><div class="tx">${esc(q.text)}</div></div></div>`:'';
+function dedupeHandle(acc,text){
+ const a=String(acc||'').replace(/^@/,''), t=String(text==null?'':text).trim();
+ const m=t.match(/^@([A-Za-z0-9_]+)[：:]\s*/);
+ if(m && m[1].toLowerCase()===a.toLowerCase()) return t.slice(m[0].length);
+ return t;
+}
+const quote=q=>q&&q.text?`<div class="box q">${q.av?`<img src="${q.av}">`:''}<div><div class="who">💬 @${esc(q.acc)}</div><div class="tx">${esc(dedupeHandle(q.acc,q.text))}</div></div></div>`:'';
 function render(lang,theme,date,page,S){
  document.documentElement.lang=lang;document.body.className=theme;
  const C=[['18%','20%','88%','88%'],['82%','18%','12%','86%'],['15%','80%','86%','14%'],['85%','82%','14%','16%']][(page-1)%4],st=document.body.style;
@@ -149,7 +155,7 @@ function render(lang,theme,date,page,S){
   h=`<div class="kick">${esc(S.kicker)}</div>${S.win?`<div class="win">${esc(S.win)}</div>`:''}<div class="lead">${esc(S.lead)}</div>
    <div class="big"${S.quotes&&S.quotes.length&&S.big.length>4?` style="font-size:${S.big.length>5?110:135}px"`:''}><span>$${esc(S.big)}</span></div><div class="sub">${esc(S.sub)}</div>`;
   const side=S.quotes&&S.quotes.length;  // featured posts sit beside the headline (12:30 snapshot)
-  if(side){h+=S.pills&&S.pills.length?`<div class="pills">${pills(S.pills)}</div>`:'';h=`<div class="cv"><div class="cvl">${h}</div><div class="cvr">${S.quotes.map((q,i)=>`<div class="box cvq" style="transform:rotate(${i?-1.2:1.5}deg)"><div class="hd">${q.av?`<img src="${q.av}">`:''}<div class="who">💬 @${esc(q.acc)}</div></div><div class="tx">${esc(q.text)}</div></div>`).join('')}</div></div>`}
+  if(side){h+=S.pills&&S.pills.length?`<div class="pills">${pills(S.pills)}</div>`:'';h=`<div class="cv"><div class="cvl">${h}</div><div class="cvr">${S.quotes.map((q,i)=>`<div class="box cvq" style="transform:rotate(${i?-1.2:1.5}deg)"><div class="hd">${q.av?`<img src="${q.av}">`:''}<div class="who">💬 @${esc(q.acc)}</div></div><div class="tx">${esc(dedupeHandle(q.acc,q.text))}</div></div>`).join('')}</div></div>`}
   if(S.bar){const[b,r]=S.bar,t=(b+r)||1;h+=`<div class="bar"><div class="b" style="flex:${Math.max(b,.0001)/t}">🟢 ${b}</div><div class="r" style="flex:${Math.max(r,.0001)/t}">🔴 ${r}</div></div>`}
   if(!side&&S.pills&&S.pills.length)h+=`<div class="pills">${pills(S.pills)}</div>`;
   if(S.spark&&S.spark.length>1){const m1=(S.spark[S.spark.length-1]/S.spark[0]-1)*100;h+=`<div class="chart">${spark(S.spark,500,130)}<div class="chg ${S.d1>=0?'u':'d'}">${pct(S.d1)}<small>${esc(S.d1l)}</small><span class="${m1>=0?'u':'d'}" style="font-size:30px">1M ${pct(m1)}</span></div></div>`}
@@ -158,16 +164,16 @@ function render(lang,theme,date,page,S){
   if(S.note)h+=`<div class="note">${esc(S.note)}</div>`;
   if(S.swipe)h+=`<div class="swipe">${esc(S.swipe)}</div>`;
  }else if(S.kind==='cards'){
-  h=(S.secs||[]).map(sec=>`<div class="sec"><h2>${esc(sec.h)}</h2>${sec.cards.length?`<div class="cards">${sec.cards.map(c=>`<div class="card"><span class="rk">${c.rk}</span><div><div class="tk">$${esc(c.t)}</div><div>${pills(c.pills)}</div></div><div class="avs">${avs(c.avs,c.more)}</div><div class="mini">${spark(c.spark,150,60)}</div>${c.q?`<div class="cq">${c.q.av?`<img src="${c.q.av}">`:''}<span><b>@${esc(c.q.acc)}</b> ${esc(c.q.text)}</span></div>`:''}</div>`).join('')}</div>`:`<div class="empty">${esc(sec.empty||'')}</div>`}</div>`).join('');
+  h=(S.secs||[]).map(sec=>`<div class="sec"><h2>${esc(sec.h)}</h2>${sec.cards.length?`<div class="cards">${sec.cards.map(c=>`<div class="card"><span class="rk">${c.rk}</span><div><div class="tk">$${esc(c.t)}</div><div>${pills(c.pills)}</div></div><div class="avs">${avs(c.avs,c.more)}</div><div class="mini">${spark(c.spark,150,60)}</div>${c.q?`<div class="cq">${c.q.av?`<img src="${c.q.av}">`:''}<span><b>@${esc(c.q.acc)}</b> ${esc(dedupeHandle(c.q.acc,c.q.text))}</span></div>`:''}</div>`).join('')}</div>`:`<div class="empty">${esc(sec.empty||'')}</div>`}</div>`).join('');
   h+=cta(S.cta);
  }else if(S.kind==='account'){
   h=`<div class="kick">${esc(S.kicker)} · $${esc(S.t)}</div><div class="acc">${S.av?`<img src="${S.av}">`:''}<div><div class="h">@${esc(S.acc)}</div><div class="n">${esc(S.name)}</div></div></div>
    <div class="badge ${S.side}">${S.side==='bull'?'🟢':S.side==='bear'?'🔴':'⚪'} ${esc(S.badge)}</div>
-   <div class="box"><div class="say">${esc(S.text)}</div><div class="when">${esc(S.when)}</div></div>`;
+   <div class="box"><div class="say">${esc(dedupeHandle(S.acc,S.text))}</div><div class="when">${esc(S.when)}</div></div>`;
  }else if(S.kind==='targets'){
-  h=`<div class="sec"><h2>${esc(S.h)}</h2></div>`+S.rows.map(r=>`<div class="row">${r.av?`<img src="${r.av}">`:''}<div><div class="pt">$${esc(r.t)} 🎯 <span>$${esc(r.pt)}</span></div><div class="by">@${esc(r.acc)} · ${esc(r.day)}</div>${r.text?`<div class="rq">💬 ${esc(r.text)}</div>`:''}</div></div>`).join('');
+  h=`<div class="sec"><h2>${esc(S.h)}</h2></div>`+S.rows.map(r=>`<div class="row">${r.av?`<img src="${r.av}">`:''}<div><div class="pt">$${esc(r.t)} 🎯 <span>$${esc(r.pt)}</span></div><div class="by">@${esc(r.acc)} · ${esc(r.day)}</div>${r.text?`<div class="rq">💬 ${esc(dedupeHandle(r.acc,r.text))}</div>`:''}</div></div>`).join('');
  }else if(S.kind==='views'){
-  h=`<div class="sec"><h2>${esc(S.h)}</h2></div>`+S.rows.map(r=>`<div class="row">${r.av?`<img src="${r.av}">`:''}<div><div class="by"><span class="pill ${r.s==='bull'?'g':r.s==='bear'?'r':'n'}">${esc(r.badge)}</span>@${esc(r.acc)}</div><div class="v">${esc(r.text)}</div></div></div>`).join('');
+  h=`<div class="sec"><h2>${esc(S.h)}</h2></div>`+S.rows.map(r=>`<div class="row">${r.av?`<img src="${r.av}">`:''}<div><div class="by"><span class="pill ${r.s==='bull'?'g':r.s==='bear'?'r':'n'}">${esc(r.badge)}</span>@${esc(r.acc)}</div><div class="v">${esc(dedupeHandle(r.acc,r.text))}</div></div></div>`).join('');
  }else if(S.kind==='quote'){
   h=`<div class="sec"><h2>${esc(S.h)}</h2></div><div style="flex:1"></div>${quote(S.quote)}<div style="flex:1"></div>${cta(S.cta)}`;
  }
