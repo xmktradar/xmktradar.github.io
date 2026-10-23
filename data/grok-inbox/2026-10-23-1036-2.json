@@ -1,0 +1,118 @@
+{
+ "posts": {
+  "2113425418414145876": {
+   "en_summary": "@SJosephBurns: a very mixed market as $DIA, $IWM, $XLF, $XLP, $XLV and $XLU rallied while tech plunged, with capital flowing from tech into defensives this week.",
+   "zh_summary": "@SJosephBurns：市場極為分化，$DIA、$IWM、$XLF、$XLP、$XLV及$XLU上升而科技股重挫，本週資金由科技流向防守板塊。",
+   "ko_summary": "@SJosephBurns: $DIA, $IWM, $XLF, $XLP, $XLV, $XLU가 오르고 기술주는 급락한 매우 엇갈린 시장. 이번 주 자금이 기술주에서 방어 섹터로 이동.",
+   "tickers": [
+    "DIA",
+    "IWM",
+    "XLF",
+    "XLP",
+    "XLV",
+    "XLU"
+   ],
+   "stance": "中性",
+   "stance_by_ticker": {
+    "DIA": "未表態",
+    "IWM": "未表態",
+    "XLF": "未表態",
+    "XLP": "未表態",
+    "XLV": "未表態",
+    "XLU": "未表態"
+   },
+   "horizon": null,
+   "basis": "情緒",
+   "specific": false,
+   "macro": false,
+   "macro_theme": null,
+   "macro_impact": null,
+   "ticker_notes": {}
+  },
+  "2113420252079935645": {
+   "en_summary": "@MarkNewtonCMT: beneath the AI selloff, breadth is improving: equal weight S&P is up over 4% in 30 days, the share of Russell 3000 stocks above their 20 day has nearly tripled in three weeks, and $SPX, DJIA, $RSP and transports show positive divergence.",
+   "zh_summary": "@MarkNewtonCMT：AI拋售之下市場寬度正在改善：等權重標普30天升逾4%，羅素3000高於20日線的比例三週內近乎三倍，$SPX、道指、$RSP及運輸股出現正面背離。",
+   "ko_summary": "@MarkNewtonCMT: AI 매도세 아래 시장폭은 개선 중: 동일가중 S&P는 30일간 4% 넘게 상승, 20일선 위 러셀3000 비율은 3주 만에 거의 3배, $SPX, 다우, $RSP, 운송주는 긍정적 다이버전스.",
+   "tickers": [
+    "SPY",
+    "RSP"
+   ],
+   "stance": "睇好",
+   "stance_by_ticker": {
+    "SPY": "睇好",
+    "RSP": "睇好"
+   },
+   "horizon": "中線",
+   "basis": "技術面",
+   "specific": true,
+   "macro": false,
+   "macro_theme": null,
+   "macro_impact": null,
+   "ticker_notes": {}
+  },
+  "2113420191296086366": {
+   "en_summary": "@EliteOptions2: extreme fear but no panic yet; he expects one more flush before FOMC next Wednesday; $QQQ under 700 opens 693 and 685, and $SPX to 7500 is in play if it breaks 7620.",
+   "zh_summary": "@EliteOptions2：市場極度恐慌但未見真正恐慌拋售；他預期下週三FOMC前再有一輪急跌；$QQQ跌破700可見693及685，$SPX若跌破7620可能下試7500。",
+   "ko_summary": "@EliteOptions2: 극단적 공포지만 아직 패닉은 아니다. 다음 주 수요일 FOMC 전 한 번 더 투매를 예상. $QQQ 700 아래면 693, 685, $SPX는 7620 이탈 시 7500 가능.",
+   "tickers": [
+    "QQQ",
+    "SPY"
+   ],
+   "stance": "睇淡",
+   "stance_by_ticker": {
+    "QQQ": "睇淡",
+    "SPY": "睇淡"
+   },
+   "horizon": "短線",
+   "basis": "技術面",
+   "specific": true,
+   "macro": true,
+   "macro_theme": "rates",
+   "macro_impact": "中性",
+   "ticker_notes": {
+    "QQQ": "@EliteOptions2: 跌破700下望693、685",
+    "SPY": "@EliteOptions2: SPX跌破7620下望7500"
+   }
+  },
+  "2113418465491234826": {
+   "en_summary": "@Mr_Derivatives: $GLD closed at a new 14 month low relative to $SPY, trending down since a parabolic ATH in January.",
+   "zh_summary": "@Mr_Derivatives：$GLD相對$SPY收於14個月新低，自1月拋物線式歷史高位後持續下跌。",
+   "ko_summary": "@Mr_Derivatives: $GLD가 $SPY 대비 14개월 신저가로 마감, 1월 포물선 사상 최고치 이후 하락 추세.",
+   "tickers": [
+    "GLD",
+    "SPY"
+   ],
+   "stance": "睇淡",
+   "stance_by_ticker": {
+    "GLD": "睇淡",
+    "SPY": "未表態"
+   },
+   "horizon": "中線",
+   "basis": "技術面",
+   "specific": true,
+   "macro": false,
+   "macro_theme": null,
+   "macro_impact": null,
+   "ticker_notes": {}
+  },
+  "2113417854598926726": {
+   "en_summary": "@Barchart: SpaceX $SPCX plunged more than 9%, its 3rd worst day in history.",
+   "zh_summary": "@Barchart：SpaceX $SPCX暴跌逾9%，為史上第三差交易日。",
+   "ko_summary": "@Barchart: SpaceX $SPCX가 9% 넘게 급락, 역대 세 번째로 나쁜 날.",
+   "tickers": [
+    "SPCX"
+   ],
+   "stance": "睇淡",
+   "stance_by_ticker": {
+    "SPCX": "睇淡"
+   },
+   "horizon": "短線",
+   "basis": "技術面",
+   "specific": true,
+   "macro": false,
+   "macro_theme": null,
+   "macro_impact": null,
+   "ticker_notes": {}
+  }
+ }
+}
