@@ -10,8 +10,6 @@ from the summaries already on the site. Writes data/social-posts.json "slots" (n
 fields, which tools/share.py still writes) and social/index.html via work/ (copied in once the pictures are drawn),
 and work/carousel.json for tools/carousel.js, which draws og/c/<day>-<slot>-<lang>-<n>.jpg.
 """
-import base64
-import hashlib
 import html
 import os
 import re
@@ -20,7 +18,7 @@ from datetime import datetime, timedelta
 from share import (SHORT, SITE, LANGS, attach_new_posts, clean, fit_threads, fit_threads_posts,
                     likes, page_url, social_page, tags, trading_day, xlen)
 from sitedata import load, notice, now_hk, parse_iso, read_json, work, write_json
-from utm import tag_posts
+from utm import normalize_file, tag_posts
 
 HTML = 'index.html'
 SLOTS = (('1230', 7, ('12:30', '13:00', '13:30')),
@@ -31,8 +29,6 @@ TITLE = {'1230': {'zh': '今日快照', 'en': "Today's snapshot", 'ko': '오늘�
          '1630': {'zh': '好淡對決', 'en': 'Bull vs bear', 'ko': '강세 vs 약세'},
          '2030': {'zh': '開市前焦點', 'en': 'Before the open', 'ko': '개장 전 포커스'}}
 TARGET_DAYS = 7  # price targets from the last week
-CAST_FILE = 'assets/characters/characters.json'  # Nova, Ember, Iris and their 15 reactions (Tim, 2026-10-15)
-STORY_CAST = ((0, 'nova'), (1, 'ember'), (3, 'iris'))  # picture 1 Nova sets it up, 2 Ember reacts, 3 the accounts, 4 Iris wraps up
 TALK = {'zh': '🗣️ 大神點講', 'en': '🗣️ What the accounts say', 'ko': '🗣️ 계정들의 의견'}
 
 ZH_PT = re.compile(r'目標價[^\d$。；，]{0,12}?(?:由\s*\$?[\d,.]+\s*(?:美元)?\s*(?:上調|下調|調)?(?:至|到)\s*)?\$?\s?(\d+(?:,\d{3})*(?:\.\d+)?)')
@@ -358,100 +354,10 @@ def focus(site, s, lang, day, win, pick):
     return [cover, rise, third, last]
 
 
-# ---------- story mode: the three characters tell each post as a four-picture story ----------
-class Cast:
-    def __init__(self):
-        self.d = read_json(CAST_FILE)
-        self.pics = {}
-
-    def pic(self, cid, eid):
-        """The character's drawing for this reaction (assets/characters/<id>/<E..>.png), or her avatar until it is drawn."""
-        for f in (f'assets/characters/{cid}/{eid}.png', f'assets/characters/{cid}/avatar.png'):
-            if os.path.exists(f):
-                if f not in self.pics:
-                    self.pics[f] = 'data:image/png;base64,' + base64.b64encode(open(f, 'rb').read()).decode()
-                return self.pics[f]
-        return ''
-
-    def who(self, cid):
-        return next(c for c in self.d['characters'] if c['id'] == cid)
-
-    def line(self, eid, cid, lang):
-        e = next(x for x in self.d['expressions'] if x['id'] == eid)
-        return e['cast'][cid]['line_' + lang]
-
-
-def situation(site, s, key, pick):
-    """Which of the 15 reactions (E01-E15) fits this post, from the site's own numbers."""
-    if key == '1630':
-        return 'E08'  # bull vs bear
-    if key == '2030':
-        hot, pts, _ = pick
-        return 'E14' if pts else ('E13' if hot else 'E05')
-    hero = s['top'][0]['t'] if s['top'] else None
-    d1 = site.px(hero)[1] if hero else None
-    if d1 is not None and d1 >= 3:
-        return 'E01'
-    if d1 is not None and d1 <= -3:
-        return 'E03'
-    if s['bull']:
-        return 'E06'
-    if s['bear']:
-        return 'E07'
-    if d1 is None or abs(d1) < 0.5:
-        return 'E05'
-    return 'E02' if d1 > 0 else 'E04'
-
-
-# Drawings that suit the same mood, so each character can strike a different pose while saying the line for this post.
-UP, DOWN, CALM = ('E01', 'E02', 'E06', 'E09', 'E13', 'E14'), ('E03', 'E04', 'E07', 'E10'), ('E05', 'E08', 'E11', 'E12', 'E15')
-MOODS = {e: UP + CALM for e in UP} | {e: DOWN + CALM for e in DOWN} | {e: CALM + ('E02', 'E04', 'E13') for e in CALM}
-
-
-def poses(eid, day, key, taken):
-    """One drawing per character for this slot: from the post's mood, different for each character, and not one
-    already used today or in the last three days when there is a choice. Same day and slot always give the same poses."""
-    pool = MOODS.get(eid, (eid,))
-    out = {}
-    for _, cid in STORY_CAST:
-        free = [e for e in pool if e not in out.values() and (cid, e) not in taken] or [e for e in pool if e not in out.values()] or [eid]
-        n = int(hashlib.md5(f'{day}{key}{cid}'.encode()).hexdigest(), 16)
-        out[cid] = free[n % len(free)]
-        taken.add((cid, out[cid]))
-    return out
-
-
-def story(cast, slides, lang, eid, pose=None, flip=0):
-    for n, (i, cid) in enumerate(STORY_CAST):
-        c = cast.who(cid)
-        slides[i]['char'] = {'img': cast.pic(cid, (pose or {}).get(cid, eid)), 'name': c['name'][lang], 'line': cast.line(eid, cid, lang),
-                             'color': c['colors'][0], 'right': (n + flip) % 2 == 1}  # characters swap sides from picture to picture
+# Picture 3 carries a "what the accounts say" label. The characters were dropped on 2026-10-23 (Tim: looked unprofessional).
+def label_talk(slides, lang):
     slides[2]['talk'] = TALK[lang]
     return slides
-
-
-def dialogue(cast, lang, eid):
-    out = []
-    for _, cid in STORY_CAST:
-        n, ln = cast.who(cid)['name'][lang], cast.line(eid, cid, lang)
-        out.append(f'{n}：「{ln}」' if lang == 'zh' else f'{n}: "{ln}"')
-    return '\n'.join(out)
-
-
-def add_dialogue(posts, text):
-    """Put the characters' three lines under the headline (Instagram, Facebook, and Threads when it still fits)."""
-    for k in ('instagram', 'facebook', 'threads'):
-        v = posts.get(k)
-        if not v or '\n\n' not in v:
-            continue
-        nv = v.replace('\n\n', f'\n\n{text}\n\n', 1)
-        if k != 'threads' or len(nv) <= 500:
-            posts[k] = nv
-    v = posts.get('threads')
-    if isinstance(v, str) and len(v) > 500:
-        lang = next((code for code in LANGS if f'/{code}/' in v), 'en')
-        posts['threads'] = fit_threads(v, lang)
-    return posts
 
 
 # ---------- captions ----------
@@ -609,14 +515,9 @@ def main():
     if not todo:
         return
     site = Site(load(HTML))
-    cast = Cast() if os.path.exists(CAST_FILE) else None
     from share import window
     win = window(s)
-    jobs, posed, written = [], {}, []
-    log = {d: v for d, v in (sp.get('pose_log') or {}).items() if d < day}
-    log = dict(sorted(log.items())[-3:])  # the last three days' poses, so the same drawing does not come back day after day
-    taken = {(cid, v.get('poses', {}).get(cid)) for v in slots.values() for _, cid in STORY_CAST}  # poses earlier slots used today
-    taken |= {tuple(x) for v in log.values() for x in v}
+    jobs, written = [], []
     used = [s['top'][0]['t']] if s['top'] else []  # each slot leads with a different stock when it can
     used += [v['ticker'] for v in slots.values() if v.get('ticker')]
     for key in todo:
@@ -637,7 +538,7 @@ def main():
                     posts[k] = posts[k].replace('\n\n', f'\n\n{see}\n\n', 1)
                 for k, v in posts.items():
                     if isinstance(v, str):
-                        posts[k] = v.replace('utm_campaign=daily', 'utm_campaign=carousel')
+                        posts[k] = v.replace('utm_campaign=daily', f'utm_campaign=carousel-{key}')
             elif key == '1630':
                 slides = duel(site, s, lang, day, win, pick)
                 posts = cap_duel(site, s, lang, day, pick)
@@ -647,12 +548,7 @@ def main():
             if not posts:
                 break
             slides = add_quotes(site, slides, lang)
-            if cast:
-                eid = situation(site, s, key, pick)
-                if key not in posed:
-                    posed[key] = poses(eid, day, key, taken)
-                slides = story(cast, slides, lang, eid, posed[key], flip=[k for k, _, _ in SLOTS].index(key))
-                posts = add_dialogue(dict(posts), dialogue(cast, lang, eid))
+            slides = label_talk(slides, lang)
             files = [f'og/c/{day}-{key}-{lang}-{n + 1}.jpg' for n in range(4)]
             fb = [f'og/c/{day}-{key}-{lang}-{n + 1}-fb.jpg' for n in range(4)]
             jobs.append({'slot': key, 'theme': THEME[key], 'lang': lang, 'date': day, 'slides': slides, 'files': files, 'fb': fb})
@@ -664,7 +560,7 @@ def main():
         lead = {'1230': s['top'][0]['t'] if s['top'] else None, '1630': pick[0] if key == '1630' else None,
                 '2030': (pick[0][0]['t'] if pick[0] else (pick[2] or {}).get('t')) if key == '2030' else None}[key]
         slots[key] = {'day': day, 'theme': THEME[key], 'ticker': lead, 'title': TITLE[key], 'made_hkt': now.strftime('%Y-%m-%d %H:%M'),
-                      'post_at': times, 'story': key == '1230', 'poses': posed.get(key, {}),
+                      'post_at': times, 'story': key == '1230',
                       'platforms': ['x', 'threads', 'instagram', 'instagram_story', 'facebook'] if key == '1230' else ['x', 'threads', 'instagram', 'facebook'],
                       'images': {l: made[l]['images'] for l in LANGS}, 'images_fb': {l: made[l]['images_fb'] for l in LANGS}, 'posts': {l: made[l]['posts'] for l in LANGS}}
         if key == '1230':
@@ -673,17 +569,18 @@ def main():
     if not jobs:
         return
     sp['slots'] = {k: slots[k] for k, _, _ in SLOTS if k in slots}
-    log[day] = sorted({(cid, p) for v in sp['slots'].values() for cid, p in (v.get('poses') or {}).items()})
-    sp['pose_log'] = log
-    for sl in (sp.get('slots') or {}).values():
+    sp.pop('pose_log', None)
+    for key, sl in (sp.get('slots') or {}).items():
         if sl.get('posts'):
-            tag_posts(sl['posts'], 'carousel')
+            tag_posts(sl['posts'], f'carousel-{key}')
             fit_threads_posts(sl['posts'])
     # 19:05 writes the 2030 slot before the 21:00 trilingual post, so premarket is rebuilt with that day's card.
     attach_new_posts(sp, rebuild_premarket='2030' in written)
     # The new text goes into place only after tools/carousel.js has drawn the pictures (see update-site.yml).
     write_json(work('carousel.json'), {'date': day, 'jobs': jobs})
     write_json(work('social-posts.json'), sp, indent=1)
+    normalize_file(work('social-posts.json'))
+    sp = read_json(work('social-posts.json'))
     write_page(sp, work('social.html'))
     notice(f"社交多圖帖已寫好：{', '.join(todo)}（{SITE}social/）")
 

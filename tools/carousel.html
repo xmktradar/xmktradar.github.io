@@ -104,17 +104,13 @@ html[lang=ko] *{word-break:keep-all}
 .row .rq{font-weight:700;font-size:25px;line-height:1.35;margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .row .v{font-weight:700;font-size:28px;line-height:1.4}
 .row .pill{font-size:20px;padding:1px 10px;margin-right:8px}
-.char{display:flex;gap:6px;align-items:center;margin:-10px 0 -10px -30px}
-.char img{width:400px;height:400px;object-fit:contain;object-position:bottom;flex:none;filter:drop-shadow(0 8px 10px rgba(21,26,44,.25))}
-.char .nm{display:inline-block;font-weight:900;font-size:26px;color:#151a2c;padding:3px 16px;border-radius:999px;border:3px solid #151a2c;margin-bottom:8px}
-.bubble{position:relative;background:#fff;border:4px solid #151a2c;border-radius:26px;padding:16px 24px;font-weight:900;font-size:34px;line-height:1.4;box-shadow:0 6px 0 #151a2c}
-.bubble:before{content:"";position:absolute;left:-22px;top:calc(50% - 12px);border:12px solid transparent;border-right:20px solid #151a2c}
-.bubble:after{content:"";position:absolute;left:-13px;top:calc(50% - 9px);border:9px solid transparent;border-right:15px solid #fff}
-.char.r{flex-direction:row-reverse;margin:-10px -30px -10px 0;text-align:right}
-.char.r img{transform:scaleX(-1)}
-.char.r .bubble{text-align:left}
-.char.r .bubble:before{left:auto;right:-22px;border-right:12px solid transparent;border-left:20px solid #151a2c}
-.char.r .bubble:after{left:auto;right:-13px;border-right:9px solid transparent;border-left:15px solid #fff}
+/* without the characters (2026-10-23) the one-account and one-quote pictures fill the space with bigger text */
+#in.account{justify-content:center}
+#in.account .say{font-size:46px}
+#in.account .acc img{width:190px;height:190px}
+#in.quote .q img{width:110px;height:110px}
+#in.quote .q .who{font-size:30px}
+#in.quote .q .tx{font-size:46px;line-height:1.5;-webkit-line-clamp:10}
 .talk{align-self:flex-start;background:#f8d34a;border:4px solid #151a2c;border-radius:14px;padding:6px 20px;font-weight:900;font-size:34px;box-shadow:4px 5px 0 #151a2c}
 .foot{position:absolute;left:56px;right:56px;bottom:40px;height:60px;background:rgba(255,255,255,.9);border-radius:999px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;font-weight:700;font-size:24px;color:#3c4466;white-space:nowrap}
 .foot b{color:#151a2c}
@@ -173,11 +169,10 @@ function render(lang,theme,date,page,S){
  }else if(S.kind==='views'){
   h=`<div class="sec"><h2>${esc(S.h)}</h2></div>`+S.rows.map(r=>`<div class="row">${r.av?`<img src="${r.av}">`:''}<div><div class="by"><span class="pill ${r.s==='bull'?'g':r.s==='bear'?'r':'n'}">${esc(r.badge)}</span>@${esc(r.acc)}</div><div class="v">${esc(r.text)}</div></div></div>`).join('');
  }else if(S.kind==='quote'){
-  h=`<div class="sec"><h2>${esc(S.h)}</h2></div>${quote(S.quote)}<div style="flex:1"></div>${cta(S.cta)}`;
+  h=`<div class="sec"><h2>${esc(S.h)}</h2></div><div style="flex:1"></div>${quote(S.quote)}<div style="flex:1"></div>${cta(S.cta)}`;
  }
  if(S.talk)h=`<div class="talk">${esc(S.talk)}</div>`+h;
- if(S.char){const c=S.char;const ch=`<div class="char${c.right?' r':''}">${c.img?`<img src="${c.img}">`:''}<div style="flex:1"><span class="nm" style="background:${c.color}">${esc(c.name)}</span><div class="bubble">${esc(c.line)}</div></div></div>`;h=S.kind==='quote'||S.kind==='account'?h+ch:ch+h}
- const box=document.getElementById('in');box.style.zoom='';box.innerHTML=h;
+ const box=document.getElementById('in');box.style.zoom='';box.className=S.kind||'';box.innerHTML=h;
 }
 </script>
 </body>

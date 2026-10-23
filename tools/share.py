@@ -8,6 +8,8 @@ data/social-posts.json and social/index.html: posts in Chinese, English and Kore
 plus a 1080x1920 Instagram Story picture og/story-<lang>.png and a native 1080x1350
 Instagram text-post picture og/ig-<lang>.png. Every version asks readers to support the site (PayPal).
 Also writes x_trilingual (one zh+en+ko X post at 21:00 and 08:00 HKT, picture og/x-<kind>.png for the $TICKER in the text), facebook_cta and ig_threads_daily.
+The same daily social run writes top5, and on Friday (HKT) weekly_thread. Schemas are on
+build_top5 and build_weekly_thread, and in tools/SOCIAL.md.
 python3 tools/share.py --og-only writes work/og.json from dash-data + work/stats.json and stops
 (no social posts, no index.html rewrite); used by tools/ig_sample.js.
 """
@@ -20,7 +22,7 @@ import sys
 from datetime import datetime
 
 from sitedata import HK, load, notice, now_hk, read_json, work, write_json
-from utm import tag_posts, tag_url
+from utm import PLATFORM, normalize_file, tag_posts, tag_url
 
 HTML = 'index.html'
 SITE = 'https://thecrowdtape.com/'
@@ -621,7 +623,7 @@ _XEMOJI = re.compile(r'\s*[📊💬🚀⚔️]+\s*$')
 
 def facebook_cta(text, lang):
     """Facebook text plus the newsletter line. `text` is kept as it already is."""
-    line = FB_CTA[lang] + tag_url(page_url(lang), 'fb', 'newsletter')
+    line = FB_CTA[lang] + tag_url(page_url(lang), 'facebook', 'newsletter')
     text = (text or '').rstrip()
     return f'{text}\n\n{line}' if text else line
 
@@ -681,7 +683,7 @@ def _disc_line():
 
 
 def _x_link(lang, campaign):
-    """Language home for an X post, with the same utm on every language."""
+    """Language home for an X post: utm_source=x, utm_medium=social, this campaign."""
     return tag_url(page_url(lang), 'x', campaign)
 
 
@@ -1513,6 +1515,476 @@ def write_feeds(sp):
         open(path, 'w', encoding='utf-8').write(xml)
 
 
+# Headings are fixed copy. Counts under them come only from writeup-input rows.
+TOP5_COPY = {
+    'zh': {'heading': '今日 X 大神共識：最看好／最看淡 5 隻', 'bull': '最看好', 'bear': '最看淡',
+           'bull_x': '看好帳號', 'bear_x': '看淡帳號', 'none': '今日暫無', 'win': '數據範圍'},
+    'en': {'heading': 'Top X accounts consensus today: 5 most bullish / bearish', 'bull': 'Most bullish', 'bear': 'Most bearish',
+           'bull_x': 'Bullish accounts', 'bear_x': 'Bearish accounts', 'none': 'None today', 'win': 'Data window'},
+    'ko': {'heading': '오늘 X 인플루언서 컨센서스: 가장 강세 / 약세 5종목', 'bull': '가장 강세', 'bear': '가장 약세',
+           'bull_x': '강세 계정', 'bear_x': '약세 계정', 'none': '오늘 없음', 'win': '데이터 범위'},
+}
+WEEK_COPY = {
+    'zh': {'head': '本週共識變化', 'bulls': '本週最看好', 'bears': '本週最看淡',
+           'joined_bull': '新入看好', 'dropped_bull': '退出看好', 'joined_bear': '新入看淡', 'dropped_bear': '退出看淡',
+           'no_change': '本週暫無新增或退出', 'bull_total': '看好', 'bear_total': '看淡'},
+    'en': {'head': "This week's consensus changes", 'bulls': 'Most bullish this week', 'bears': 'Most bearish this week',
+           'joined_bull': 'Joined bullish', 'dropped_bull': 'Left bullish', 'joined_bear': 'Joined bearish', 'dropped_bear': 'Left bearish',
+           'no_change': 'No joins or drops this week', 'bull_total': 'Bullish', 'bear_total': 'Bearish'},
+    'ko': {'head': '이번 주 컨센서스 변화', 'bulls': '이번 주 가장 강세', 'bears': '이번 주 가장 약세',
+           'joined_bull': '새로 강세', 'dropped_bull': '강세에서 제외', 'joined_bear': '새로 약세', 'dropped_bear': '약세에서 제외',
+           'no_change': '이번 주 신규·이탈 없음', 'bull_total': '강세', 'bear_total': '약세'},
+}
+WEEK_NOTE = (
+    '本週共識變化. Counts come only from data/writeup-input.json weekly: '
+    'bull[].nb (accounts bullish), bear[].nr (accounts bearish), bull_total, bear_total. '
+    'Joins and drops compare bull and bear ticker lists in data/consensus-history.json '
+    'on the first day versus the last day inside weekly.from–weekly.to. '
+    'Not investment advice.'
+)
+
+
+def _is_num(n):
+    return isinstance(n, (int, float)) and not isinstance(n, bool)
+
+
+def _as_int(n):
+    """Whole floats become ints so a count of 2.0 is stored as 2."""
+    if isinstance(n, float) and n == int(n):
+        return int(n)
+    return n
+
+
+def _as_day(s):
+    m = re.match(r'(\d{4}-\d{2}-\d{2})', str(s or '').strip())
+    return m.group(1) if m else ''
+
+
+def _is_friday(day):
+    day = _as_day(day)
+    return bool(day) and datetime.strptime(day, '%Y-%m-%d').weekday() == 4
+
+
+def _ticker_sym(t):
+    return re.sub(r'[^A-Z0-9.\-]', '', str(t or '').strip().lstrip('$').upper())
+
+
+def _side_rows(rows, key, limit=5):
+    """{t, n} in the given order. n is that side's count only. Missing counts are skipped."""
+    out = []
+    for r in rows or []:
+        if limit is not None and len(out) >= limit:
+            break
+        if not isinstance(r, dict):
+            continue
+        t = _ticker_sym(r.get('t'))
+        n = r.get(key)
+        if not t or not _is_num(n):
+            continue
+        out.append({'t': t, 'n': _as_int(n)})
+    return out
+
+
+def _acc(lang, n):
+    if lang == 'zh':
+        return f'{n} 個帳號'
+    if lang == 'ko':
+        return f'계정 {n}개'
+    return f'{n} account' if n == 1 else f'{n} accounts'
+
+
+def _camp_url(lang, platform, campaign, ticker=None):
+    src = PLATFORM[platform]
+    url = stock_url(lang, ticker) if ticker else page_url(lang)
+    return tag_url(url, src, campaign)
+
+
+def _primary_tag(lang):
+    return tags(lang, []).split()[0]
+
+
+def _hash_tags(tickers):
+    out = []
+    for t in tickers:
+        if re.fullmatch(r'[A-Z]{1,6}', t) and f'#{t}' not in out:
+            out.append(f'#{t}')
+    return out
+
+
+def _trim_x(text, limit=280):
+    lines = (text or '').split('\n')
+    while lines and xlen('\n'.join(lines)) > limit:
+        lines.pop()
+    return '\n'.join(lines).strip()
+
+
+def _xside(label, rows, none):
+    if not rows:
+        return f'{label}: {none}'
+    return label + ': ' + ' · '.join(f'${r["t"]} {r["n"]}' for r in rows)
+
+
+def _x_top5_text(lang, day, window, bulls, bears):
+    """One X post: heading, date, window, both lists, one link, disclaimer, hashtags. xlen <= 280."""
+    L = TOP5_COPY[lang]
+    link = _camp_url(lang, 'x', 'top5', bulls[0]['t'] if bulls else None)
+    bs, rs = list(bulls), list(bears)
+    extra = _hash_tags([r['t'] for r in bs + rs])
+
+    def render(bs, rs, extra):
+        lines = [L['heading']]
+        if day:
+            lines.append(day)
+        if window:
+            lines.append(f"{L['win']}: {window}")
+        lines.append(_xside(L['bull_x'], bs, L['none']))
+        lines.append(_xside(L['bear_x'], rs, L['none']))
+        lines.append(link)
+        lines.append(SHORT[lang]['disc'])
+        lines.append(' '.join([_primary_tag(lang), *extra]))
+        return '\n'.join(lines)
+
+    guard = 0
+    while guard < 200:
+        guard += 1
+        text = render(bs, rs, extra)
+        if xlen(text) <= 280:
+            return text
+        if extra:
+            extra = extra[:-1]
+            continue
+        if len(rs) > 1 and len(rs) >= len(bs):
+            rs = rs[:-1]
+            extra = _hash_tags([r['t'] for r in bs + rs])
+            continue
+        if len(bs) > 1:
+            bs = bs[:-1]
+            extra = _hash_tags([r['t'] for r in bs + rs])
+            continue
+        if len(rs) > 1:
+            rs = rs[:-1]
+            extra = _hash_tags([r['t'] for r in bs + rs])
+            continue
+        break
+    text = render(bs, rs, [])
+    return text if xlen(text) <= 280 else _trim_x(text)
+
+
+def _list_lines(lang, label, rows, platform=None):
+    lines = [label]
+    if not rows:
+        lines.append(TOP5_COPY[lang]['none'])
+        return lines
+    for r in rows:
+        lines.append(f'・${r["t"]} {_acc(lang, r["n"])}')
+        if platform:
+            lines.append(_camp_url(lang, platform, 'top5', r['t']))
+    return lines
+
+
+def _long_top5_text(lang, day, window, bulls, bears, platform):
+    """Instagram or Facebook: every listed ticker links to that language's stock page."""
+    L = TOP5_COPY[lang]
+    parts = [L['heading']]
+    meta = [ln for ln in (day, f"{L['win']}: {window}" if window else '') if ln]
+    if meta:
+        parts.append('\n'.join(meta))
+    parts.append('\n'.join(_list_lines(lang, L['bull'], bulls, platform)))
+    parts.append('\n'.join(_list_lines(lang, L['bear'], bears, platform)))
+    parts.append(SHORT[lang]['disc'])
+    parts.append(tags(lang, [r['t'] for r in bulls + bears]))
+    return '\n\n'.join(parts)
+
+
+def _threads_top5_text(lang, day, window, bulls, bears):
+    """Threads caption passed through fit_threads: at most one link, at most 500 code points."""
+    L = TOP5_COPY[lang]
+    link = _camp_url(lang, 'threads', 'top5', bulls[0]['t'] if bulls else None)
+    parts = [L['heading']]
+    meta = [ln for ln in (day, f"{L['win']}: {window}" if window else '') if ln]
+    if meta:
+        parts.append('\n'.join(meta))
+    parts.append('\n'.join(_list_lines(lang, L['bull'], bulls)))
+    parts.append('\n'.join(_list_lines(lang, L['bear'], bears)))
+    parts.append('\n'.join([link, SHORT[lang]['disc']]))
+    parts.append(tags(lang, [r['t'] for r in bulls + bears]))
+    return fit_threads('\n\n'.join(parts), lang)
+
+
+def _top5_card_data(slot, lang):
+    L = TOP5_COPY[lang]
+    return {'lang': lang, 'date': slot.get('date') or '', 'window': slot.get('window') or '',
+            'win_label': L['win'], 'heading': L['heading'], 'bull_label': L['bull'], 'bear_label': L['bear'],
+            'none': L['none'], 'bull': slot.get('bull') or [], 'bear': slot.get('bear') or [],
+            'foot': SHORT[lang]['disc']}
+
+
+def build_top5(daily, day, made_hkt):
+    """Daily top-5 card slot. Counts are copied, never invented.
+
+    top5 = {
+      date: 'YYYY-MM-DD',
+      made_hkt: 'YYYY-MM-DD HH:MM',
+      window: '<daily.from> – <daily.to>' or '',
+      source: 'data/writeup-input.json daily',
+      bull: [{t, n}],   # up to 5, daily.bull order, n = nb (accounts bullish)
+      bear: [{t, n}],   # up to 5, daily.bear order, n = nr (accounts bearish)
+      images: {zh|en|ko: {
+        portrait: SITE+'og/top5-<lang>.png?v=<date>',       # 1080x1350, X / IG / Threads
+        square:   SITE+'og/top5-<lang>-sq.png?v=<date>'}},  # 1080x1080, Facebook
+      posts: {zh|en|ko: {x, instagram, threads, facebook}},
+    }
+
+    Fewer than five names on a side: those names only. An empty side is the translated
+    'none today' line (今日暫無 / None today / 오늘 없음), never a made-up row.
+    X carries one link: the lead bull's /<lang>/stock/<T>/, or /<lang>/ when there is no bull.
+    Threads is fit_threads (500 code points, one link). Every thecrowdtape.com link is
+    tag_url(..., platform, 'top5'). Each post ends with SHORT[lang]['disc'] and the usual hashtags.
+    """
+    daily = daily if isinstance(daily, dict) else {}
+    bulls = _side_rows(daily.get('bull'), 'nb', 5)
+    bears = _side_rows(daily.get('bear'), 'nr', 5)
+    frm, to = daily.get('from'), daily.get('to')
+    window = f'{frm} – {to}' if frm and to else ''
+    day = _as_day(day) or str(day or '')
+    posts = {}
+    for lang in LANGS:
+        posts[lang] = {
+            'x': _x_top5_text(lang, day, window, bulls, bears),
+            'instagram': _long_top5_text(lang, day, window, bulls, bears, 'instagram'),
+            'threads': _threads_top5_text(lang, day, window, bulls, bears),
+            'facebook': _long_top5_text(lang, day, window, bulls, bears, 'facebook'),
+        }
+    return {
+        'date': day,
+        'made_hkt': made_hkt,
+        'window': window,
+        'source': 'data/writeup-input.json daily',
+        'bull': bulls,
+        'bear': bears,
+        'images': {lang: {'portrait': f'{SITE}og/top5-{lang}.png?v={day}',
+                          'square': f'{SITE}og/top5-{lang}-sq.png?v={day}'} for lang in LANGS},
+        'posts': posts,
+    }
+
+
+def write_top5_jobs(slot):
+    """work/top5cards.json for tools/top5card.js. One portrait and one square job per language."""
+    jobs = []
+    for lang in LANGS:
+        data = _top5_card_data(slot, lang)
+        jobs.append({'lang': lang, 'size': 'portrait', 'out': f'og/top5-{lang}.png', 'data': data})
+        jobs.append({'lang': lang, 'size': 'square', 'out': f'og/top5-{lang}-sq.png', 'data': data})
+    write_json(work('top5cards.json'), {'jobs': jobs}, indent=1)
+    return jobs
+
+
+def _hist_days(history):
+    if not isinstance(history, dict):
+        return {}
+    days = history.get('days') if isinstance(history.get('days'), dict) else history
+    return days if isinstance(days, dict) else {}
+
+
+def _hist_list(rec, key):
+    """Ticker list, or None when this record does not store that side as a list."""
+    if not isinstance(rec, dict) or key not in rec or not isinstance(rec.get(key), list):
+        return None
+    out = []
+    for x in rec[key]:
+        if isinstance(x, str):
+            t = _ticker_sym(x)
+            if t:
+                out.append(t)
+    return out
+
+
+def consensus_week_changes(history, start, end):
+    """Tickers that joined or left joint bull/bear between the first and last day in [start, end].
+
+    consensus-history days store bull and bear as ticker lists (joint names, no counts).
+    A side is unsupported when either endpoint is missing that list. Days outside the range,
+    and days between the endpoints, are not a join or a drop.
+    """
+    start, end = _as_day(start), _as_day(end)
+    empty = {'supported': False, 'first': None, 'last': None,
+             'joined_bull': [], 'dropped_bull': [], 'joined_bear': [], 'dropped_bear': []}
+    if not start or not end:
+        return empty
+    keys = []
+    for k, rec in _hist_days(history).items():
+        day = _as_day(k)
+        if day and start <= day <= end and isinstance(rec, dict):
+            keys.append((day, rec))
+    keys.sort(key=lambda x: x[0])
+    if len(keys) < 2:
+        if keys:
+            empty['first'] = empty['last'] = keys[0][0]
+        return empty
+    first_day, first = keys[0]
+    last_day, last = keys[-1]
+    fb, lb = _hist_list(first, 'bull'), _hist_list(last, 'bull')
+    fr, lr = _hist_list(first, 'bear'), _hist_list(last, 'bear')
+    if fb is None or lb is None or fr is None or lr is None:
+        return {**empty, 'first': first_day, 'last': last_day}
+    return {
+        'supported': True,
+        'first': first_day,
+        'last': last_day,
+        'joined_bull': [t for t in lb if t not in set(fb)],
+        'dropped_bull': [t for t in fb if t not in set(lb)],
+        'joined_bear': [t for t in lr if t not in set(fr)],
+        'dropped_bear': [t for t in fr if t not in set(lr)],
+    }
+
+
+def _week_close(lang):
+    url = tag_url(page_url(lang), 'x', 'weekly_thread')
+    text = f"{WEEK_COPY[lang]['head']}\n{SHORT[lang]['disc']}\n{url}"
+    if xlen(text) <= 280:
+        return text
+    text = f"{SHORT[lang]['disc']}\n{url}"
+    return text if xlen(text) <= 280 else _trim_x(text)
+
+
+def _week_head(lang, weekly):
+    L = WEEK_COPY[lang]
+    lines = [L['head']]
+    frm, to = weekly.get('from'), weekly.get('to')
+    if frm and to:
+        lines.append(f'{frm} – {to}')
+    bits = []
+    if _is_num(weekly.get('bull_total')):
+        bits.append(f"{L['bull_total']} {_as_int(weekly['bull_total'])}")
+    if _is_num(weekly.get('bear_total')):
+        bits.append(f"{L['bear_total']} {_as_int(weekly['bear_total'])}")
+    if bits:
+        lines.append(' · '.join(bits))
+    text = '\n'.join(lines)
+    if xlen(text) <= 280:
+        return text
+    text = '\n'.join(lines[:2])
+    return text if xlen(text) <= 280 else L['head']
+
+
+def _week_list(lang, title, rows):
+    """As many names as fit, in order. +N is how many of these rows were left off."""
+    kept = []
+    for r in rows:
+        line = f'${r["t"]} {_acc(lang, r["n"])}'
+        if xlen('\n'.join([title, *kept, line])) <= 280:
+            kept.append(line)
+        else:
+            break
+    omitted = len(rows) - len(kept)
+    if not omitted:
+        return '\n'.join([title, *kept])
+    while True:
+        extra = f'+{omitted}'
+        trial = '\n'.join([title, *kept, extra])
+        if xlen(trial) <= 280:
+            return trial
+        if not kept:
+            return title if xlen(title) <= 280 else _trim_x(title)
+        kept.pop()
+        omitted = len(rows) - len(kept)
+
+
+def _week_changes_post(lang, changes):
+    L = WEEK_COPY[lang]
+    span = f"{changes['first']} → {changes['last']}"
+    groups = []
+    for key in ('joined_bull', 'dropped_bull', 'joined_bear', 'dropped_bear'):
+        ticks = list(changes.get(key) or [])
+        if ticks:
+            groups.append([L[key], ticks, len(ticks)])
+    if not groups:
+        text = f"{span}\n{L['no_change']}"
+        return text if xlen(text) <= 280 else _trim_x(text)
+
+    def render():
+        lines = [span]
+        for label, ticks, shown in groups:
+            if shown <= 0:
+                lines.append(f'{label} +{len(ticks)}')
+                continue
+            part = ticks[:shown]
+            omitted = len(ticks) - shown
+            line = label + ''.join(f' ${t}' for t in part)
+            if omitted:
+                line += f' +{omitted}'
+            lines.append(line)
+        return '\n'.join(lines)
+
+    guard = 0
+    while xlen(render()) > 280 and guard < 400:
+        guard += 1
+        idx = next((i for i in range(len(groups) - 1, -1, -1) if groups[i][2] > 0), None)
+        if idx is None:
+            break
+        groups[idx][2] -= 1
+    text = render()
+    return text if xlen(text) <= 280 else _trim_x(text)
+
+
+def build_weekly_thread(weekly, history, day):
+    """Friday X thread for 本週共識變化, or None on any other day.
+
+    weekly_thread = {
+      date: 'YYYY-MM-DD',                 # the Friday
+      range: {from, to},                   # weekly.from / weekly.to, unchanged
+      langs: {en: [post, ...], zh: [...], ko: [...]},
+      note: str,
+    }
+
+    Each language has at most 5 posts and each post has xlen <= 280.
+    Post 1 is the heading plus the weekly range (and bull_total / bear_total when those
+    fields are numbers). Then the bullish names (weekly.bull order, count = nb), the bearish
+    names (weekly.bear order, count = nr), then joins and drops when history supports them.
+    The last post includes SHORT[lang]['disc'] and SITE+'<lang>/' from tag_url(..., 'x', 'weekly_thread').
+    An empty side is omitted. No join/drop post is written when the history shape cannot support it.
+    """
+    if not _is_friday(day):
+        return None
+    weekly = weekly if isinstance(weekly, dict) else {}
+    changes = consensus_week_changes(history, weekly.get('from'), weekly.get('to'))
+    note = WEEK_NOTE
+    if not changes['supported']:
+        note += ' Consensus history did not have comparable bull/bear lists for that range, so no join/drop tickers are listed.'
+    bulls = _side_rows(weekly.get('bull'), 'nb', None)
+    bears = _side_rows(weekly.get('bear'), 'nr', None)
+    langs = {}
+    for lang in ('en', 'zh', 'ko'):
+        posts = [_week_head(lang, weekly)]
+        if bulls:
+            posts.append(_week_list(lang, WEEK_COPY[lang]['bulls'], bulls))
+        if bears:
+            posts.append(_week_list(lang, WEEK_COPY[lang]['bears'], bears))
+        if changes['supported']:
+            posts.append(_week_changes_post(lang, changes))
+        posts.append(_week_close(lang))
+        if len(posts) > 5:
+            posts = posts[:4] + [_week_close(lang)]
+        langs[lang] = posts
+    return {'date': _as_day(day) or str(day or ''),
+            'range': {'from': weekly.get('from'), 'to': weekly.get('to')},
+            'langs': langs, 'note': note}
+
+
+def attach_top5_and_weekly(sp, day, made_hkt, history, writeup=None):
+    """Set sp['top5'] and, on Friday, sp['weekly_thread']. Write work/top5cards.json."""
+    if writeup is None:
+        writeup = read_json('data/writeup-input.json', {}) or {}
+    if not isinstance(writeup, dict):
+        writeup = {}
+    sp['top5'] = build_top5(writeup.get('daily') or {}, day, made_hkt)
+    write_top5_jobs(sp['top5'])
+    thread = build_weekly_thread(writeup.get('weekly') or {}, history, day)
+    if thread:
+        sp['weekly_thread'] = thread
+    return sp
+
+
 def main():
     st = read_json(work('stats.json'))
     d = load(HTML)
@@ -1541,7 +2013,10 @@ def main():
         tag_posts(sp['posts'], 'daily')
         fit_threads_posts(sp['posts'])
         attach_new_posts(sp, rebuild_premarket=True)  # both X posts; carousel rebuilds premarket after the 2030 slot
+        attach_top5_and_weekly(sp, day, sp['made_hkt'], ch)
         write_json('data/social-posts.json', sp, indent=1)
+        normalize_file('data/social-posts.json')
+        sp = read_json('data/social-posts.json')
         os.makedirs('social', exist_ok=True)
         open('social/index.html', 'w', encoding='utf-8').write(social_page(sp))
         write_feeds(sp)
