@@ -38,8 +38,12 @@ const T = {
     menName: '提及帳號',
     dsName: t => `X 帳號對 $${t} 的看多／看空統計`,
     dsDesc: (t, s) => `追蹤帳號對 $${t} 的最新立場，資料窗 ${s.from} 至 ${s.to}（香港時間）。看多帳號 ${s.bull}、看空帳號 ${s.bear}、提及帳號 ${s.mentions}。不構成投資建議。`,
-    title: (t, nm, c) => `${t}${nm ? `（${nm}）` : ''} X 大神觀點：看多 ${c.bull}・看空 ${c.bear}・中性 ${c.neu}｜The Crowd Tape`,
+    title: (t, nm, c) => `${t}${nm ? `（${nm}）` : ''} 股價／討論：看多 ${c.bull}・看空 ${c.bear}・中性 ${c.neu}｜The Crowd Tape`,
     desc: (t, n, c) => `過去 28 天有 ${n} 個追蹤帳號提及 $${t}：看多 ${c.bull}、中性 ${c.neu}、看空 ${c.bear}、未表態 ${c.none}。查看每個帳號的最新觀點、理由與原帖，每 4 小時更新，不構成投資建議。`,
+    related: '同業相關股票',
+    popular: '熱門股票',
+    faqHow: (t, s) => ({ q: `目前有多少個追蹤帳號對 $${t} 看多或看空？`, a: `在 ${s.from} 至 ${s.to}（香港時間）的資料窗內，看多 ${s.bull} 個帳號、看空 ${s.bear} 個帳號；共有 ${s.mentions} 個帳號提及。數字來自公開貼文整理，不構成投資建議。` }),
+    faqWhat: (t, s) => ({ q: `$${t} 個股頁的資料從哪裡來？`, a: `本頁彙整追蹤帳號在 X（及個別 Truth Social）上提及 $${t} 的公開貼文立場，約每 4 小時更新。只反映已收錄帳號的公開言論。` }),
   },
   en: {
     index: 'Stock pages',
@@ -57,8 +61,12 @@ const T = {
     menName: 'Mentioning accounts',
     dsName: t => `X-account bull/bear stats for $${t}`,
     dsDesc: (t, s) => `Latest stance of each tracked account that mentioned $${t}. Data window ${s.from} to ${s.to} (Hong Kong time). Bullish accounts: ${s.bull}. Bearish accounts: ${s.bear}. Mentioning accounts: ${s.mentions}. Not investment advice.`,
-    title: (t, nm, c) => `${t}${nm ? ` (${nm})` : ''} on X: ${c.bull} bullish, ${c.bear} bearish, ${c.neu} neutral | The Crowd Tape`,
+    title: (t, nm, c) => `${t}${nm ? ` (${nm})` : ''} stock sentiment: ${c.bull} bullish, ${c.bear} bearish, ${c.neu} neutral | The Crowd Tape`,
     desc: (t, n, c) => `${n} tracked X accounts mentioned $${t} in the last 28 days: ${c.bull} bullish, ${c.neu} neutral, ${c.bear} bearish, ${c.none} no stance. Each account's latest view, reasons and original post, updated every 4 hours. Not investment advice.`,
+    related: 'Related stocks',
+    popular: 'Popular stocks',
+    faqHow: (t, s) => ({ q: `How many tracked accounts are bullish or bearish on $${t}?`, a: `In the ${s.from} to ${s.to} (HKT) window: ${s.bull} bullish and ${s.bear} bearish; ${s.mentions} accounts mentioned it. Figures summarise public posts only — not investment advice.` }),
+    faqWhat: (t, s) => ({ q: `Where does the $${t} page data come from?`, a: `This page aggregates public posts about $${t} from tracked accounts on X (and a few on Truth Social), refreshed about every 4 hours. It only reflects those accounts' public views.` }),
   },
   ko: {
     index: '종목 페이지',
@@ -76,8 +84,12 @@ const T = {
     menName: '언급 계정',
     dsName: t => `$${t} X 계정 강세/약세 통계`,
     dsDesc: (t, s) => `추적 계정이 $${t}에 대해 남긴 최신 입장. 자료 구간 ${s.from}–${s.to} (홍콩 시간). 강세 계정 ${s.bull}, 약세 계정 ${s.bear}, 언급 계정 ${s.mentions}. 투자 조언이 아닙니다.`,
-    title: (t, nm, c) => `${t}${nm ? ` (${nm})` : ''} X 고수 관점: 강세 ${c.bull}・약세 ${c.bear}・중립 ${c.neu} | The Crowd Tape`,
+    title: (t, nm, c) => `${t}${nm ? ` (${nm})` : ''} 주가 전망: 강세 ${c.bull}・약세 ${c.bear}・중립 ${c.neu} | The Crowd Tape`,
     desc: (t, n, c) => `최근 28일 동안 추적 계정 ${n}개가 $${t}를 언급했다: 강세 ${c.bull}, 중립 ${c.neu}, 약세 ${c.bear}, 입장 없음 ${c.none}. 계정별 최신 관점, 근거와 원문을 4시간마다 업데이트한다. 투자 조언이 아닙니다.`,
+    related: '관련 종목',
+    popular: '인기 종목',
+    faqHow: (t, s) => ({ q: `$${t}에 강세/약세인 추적 계정은 몇 개인가요?`, a: `${s.from}–${s.to}(홍콩 시간) 구간에서 강세 ${s.bull}개, 약세 ${s.bear}개이며, 총 ${s.mentions}개 계정이 언급했습니다. 공개 게시물 정리이며 투자 조언이 아닙니다.` }),
+    faqWhat: (t, s) => ({ q: `$${t} 페이지 데이터는 어디서 오나요?`, a: `추적 계정이 X(일부 Truth Social)에서 $${t}를 언급한 공개 게시물 입장을 모아 약 4시간마다 갱신합니다. 수록된 계정의 공개 의견만 반영합니다.` }),
   },
 };
 
@@ -291,6 +303,15 @@ function graph(lang, t, url, meta, stats) {
   };
   const modified = asModified(stats.modified || '');
   if (modified) dataset.dateModified = modified;
+  const faqs = [L.faqHow(t, stats), L.faqWhat(t, stats)].filter(x => x && x.q && x.a);
+  const faqPage = faqs.length ? {
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(f => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  } : null;
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -310,6 +331,7 @@ function graph(lang, t, url, meta, stats) {
         ],
       },
       dataset,
+      ...(faqPage ? [faqPage] : []),
     ],
   };
 }
@@ -400,10 +422,39 @@ ${toTop(T[lang].top)}
 
 // The long list of every stock page sits folded so phones don't scroll past hundreds of tickers (Tim, 2026-10-21);
 // the links stay in the HTML for search engines.
+function loadSectors() {
+  try { return JSON.parse(fs.readFileSync('data/sectors.json', 'utf8')); } catch (_) { return {}; }
+}
+
+/** Same-sector peers from the current stock list, 6–10 tickers, ordered by mention count. */
+function relatedTickers(t, list, sectors) {
+  const sec = (sectors[t] || {}).sector;
+  if (!sec) return [];
+  const peers = list.filter(([x]) => x !== t && (sectors[x] || {}).sector === sec).map(([x]) => x);
+  if (peers.length < 6) return peers;
+  return peers.slice(0, Math.min(10, peers.length));
+}
+
+function relatedBlock(lang, t, list, sectors) {
+  const peers = relatedTickers(t, list, sectors);
+  if (!peers.length) return '';
+  const links = peers.map(x => `<a href="/${lang}/stock/${slug(x)}/">${esc(x)}</a>`).join(' ');
+  return `<nav class="related-stocks wrap" aria-label="${esc(T[lang].related)}" style="font-size:13px;line-height:1.7;padding:8px 16px 16px"><b>${esc(T[lang].related)}</b> · ${links}</nav>`;
+}
+
+function popularBlock(lang, list) {
+  const top = list.slice(0, 12).map(([t]) => t);
+  if (!top.length) return '';
+  const links = top.map(t => `<a href="/${lang}/stock/${slug(t)}/">${esc(t)}</a>`).join(' ');
+  return `<nav id="popular-stocks" class="wrap popular-stocks" aria-label="${esc(T[lang].popular)}" style="font-size:13px;line-height:1.8;padding:10px 16px 4px"><b>${esc(T[lang].popular)}</b> · ${links}</nav>`;
+}
+
 function indexRow(lang, list) {
-  const links = list.map(t => `<a href="/${lang}/stock/${slug(t)}/">${esc(t)}</a>`).join(' ');
-  return `<nav id="stock-index" class="wrap stock-index" aria-label="${esc(T[lang].index)}" style="font-size:12.5px;line-height:2;color:var(--muted);padding:12px 16px 28px">`
-    + `<details><summary><b>${esc(T[lang].index)}</b>${lang === 'zh' ? `（${list.length}）` : ` (${list.length})`}</summary>${links}</details></nav>`;
+  const tickers = list.map(x => Array.isArray(x) ? x[0] : x);
+  const links = tickers.map(t => `<a href="/${lang}/stock/${slug(t)}/">${esc(t)}</a>`).join(' ');
+  return popularBlock(lang, list.map(x => Array.isArray(x) ? x : [x, 0]))
+    + `<nav id="stock-index" class="wrap stock-index" aria-label="${esc(T[lang].index)}" style="font-size:12.5px;line-height:2;color:var(--muted);padding:12px 16px 28px">`
+    + `<details><summary><b>${esc(T[lang].index)}</b>${lang === 'zh' ? `（${tickers.length}）` : ` (${tickers.length})`}</summary>${links}</details></nav>`;
 }
 
 // One <url> per <loc>; the last copy wins.
@@ -448,6 +499,7 @@ function avatars(html, seen) {
   const fallbackTickers = [];
   let fallbackPages = 0;
   const urls = [];
+  const sectors = loadSectors();
   for (const lang of Object.keys(LANGS)) {
     const file = path.resolve(lang, 'index.html');
     const p = await b.newPage();
@@ -520,7 +572,7 @@ function avatars(html, seen) {
         console.log('::error::股票網頁沒有電子報位置：' + lang + '/' + pg.t);
         process.exit(1);
       }
-      body = boxed;
+      body = boxed + relatedBlock(lang, pg.t, list, sectors);
       const meta = { title: T[lang].title(pg.t, pg.name, pg.c), desc: T[lang].desc(pg.t, n[pg.t], pg.c) };
       const stats = { bull: pg.c.bull, bear: pg.c.bear, mentions: pg.mentions, from: pg.from, to: pg.to, modified: pg.modified };
       const link = tvChartLink(pg.t, tvSymbols);
@@ -534,7 +586,7 @@ function avatars(html, seen) {
     }
     // link row above the footer of the language page
     let s = master.replace(new RegExp(MARK + '[\\s\\S]*?' + MARK), '');
-    s = s.replace('<footer class="wrap foot" id="foot">', MARK + indexRow(lang, names) + MARK + '<footer class="wrap foot" id="foot">');
+    s = s.replace('<footer class="wrap foot" id="foot">', MARK + indexRow(lang, list) + MARK + '<footer class="wrap foot" id="foot">');
     fs.writeFileSync(file, s);
     await p.close();
   }
