@@ -40,3 +40,12 @@ test('lines omitted when no data',()=>{
  assert.equal(T.shift,null);assert.equal(T.split,null);assert.equal(T.most.t,'A');
  const E=RUX.threeLines([],false);assert.deepEqual(E,{shift:null,most:null,split:null});
 });
+test('english multi-sentence summary keeps full clause',()=>{
+ const r=RUX.reasonOf([{s:'bull',why:'@x says $VIX is going higher with more panic coming. No buying dips under his guidance.'}],'VIX');
+ assert.equal(r.bull,null);
+ const r2=RUX.reasonOf([{s:'bull',why:'@x says $NVDA earnings will crush estimates, adding more.'}],'NVDA');
+ assert.equal(r2.bull.k,'earn');assert.ok(r2.bull.ex.includes('earnings'));
+});
+test('build-safe: no full-width punctuation inside RUX regexes',()=>{
+ assert.ok(!/[。；！？]/.test(m[1].match(/split\(([^)]*)\)/)[1]));
+});
