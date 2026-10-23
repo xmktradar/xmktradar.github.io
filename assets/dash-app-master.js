@@ -1,10 +1,11 @@
 'use strict';
 (async function(){
-const y=function(){return new Promise(function(r){setTimeout(r,0)})};
+const parseJSON=function(raw){return new Promise(function(resolve){try{if(typeof Worker==='undefined'){resolve(JSON.parse(raw));return}var u=URL.createObjectURL(new Blob(['onmessage=function(e){try{postMessage({ok:1,d:JSON.parse(e.data)})}catch(err){postMessage({ok:0})}}'],{type:'text/javascript'}));var w=new Worker(u);var done=false;var fin=function(d){if(done)return;done=true;try{w.terminate()}catch(e){}try{URL.revokeObjectURL(u)}catch(e){}resolve(d)};w.onmessage=function(e){fin(e.data&&e.data.ok?e.data.d:JSON.parse(raw))};w.onerror=function(){fin(JSON.parse(raw))};w.postMessage(raw);setTimeout(function(){fin(JSON.parse(raw))},2500)}catch(e){resolve(JSON.parse(raw))}})};
+const y=function(){return new Promise(function(r){if(typeof MessageChannel==='function'){var c=new MessageChannel();c.port1.onmessage=function(){r()};c.port2.postMessage(0)}else setTimeout(r,0)})};
 await y();
 
 // 儀表板｜結構與計算依照設計稿（奶油風格）；資料全部來自內嵌資料
-const D=JSON.parse(document.getElementById('dash-data').textContent);
+const D=await parseJSON((document.getElementById('dash-data')||{textContent:'{}'}).textContent);
 await y();
 if(!D.prices)D.prices={};if(!D.accounts)D.accounts={};if(!D.posts)D.posts=[];if(!D.intraday)D.intraday={};if(!D.avmini)D.avmini={};if(!D.quotes)D.quotes={};
 const DAY=864e5, MIN_POSTS=D.meta.min_daily_posts||8, HANDLES=D.meta.handles||[];
@@ -35,12 +36,32 @@ let TODAY=hkDate(CUT);
 // /en/ and /ko/ put the English original or the Korean summary in zh_summary: any text counts there
 const PAGE_LANG=document.documentElement.lang||'';
 const HAS_ZH=s=>typeof s==='string'&&(/^zh/.test(PAGE_LANG)?/[\u3400-\u9fff]/:/\S/).test(s);
-let ALLP=D.posts.map(p=>({...p,text:undefined,summary_zh:HAS_ZH(p.zh_summary)?p.zh_summary:HAS_ZH(p.summary_zh)?p.summary_zh:'',truncated:HAS_ZH(p.zh_summary)&&PAGE_LANG!=='en'?false:p.truncated,tickers:[...new Set([...(p.tickers||[]),...Object.keys(p.stance_by_ticker&&typeof p.stance_by_ticker==='object'?p.stance_by_ticker:{})].map(t=>String(t).replace(/^\$/,'').toUpperCase()))],ms:Date.parse(p.time_utc),acc:p.reposted_by||p.handle,date:p.time_hkt.slice(0,10)})).sort((a,b)=>a.ms-b.ms);
+let ALLP=[];
+{
+const _ps=D.posts;
+for(let _i=0;_i<_ps.length;_i++){
+const p=_ps[_i];
+ALLP.push({...p,text:undefined,summary_zh:HAS_ZH(p.zh_summary)?p.zh_summary:HAS_ZH(p.summary_zh)?p.summary_zh:'',tokenize:HAS_ZH(p.zh_summary)&&PAGE_LANG!=='en'?false:p.tokenize,tickers:[...new Set([...(p.tickers||[]),...Object.keys(p.stance_by_ticker&&typeof p.stance_by_ticker==='object'?p.stance_by_ticker:{})].map(t=>String(t).replace(/^\$/,'').toUpperCase()))],ms:Date.parse(p.time_utc),acc:p.reposted_by||p.handle,date:p.time_hkt.slice(0,10)});
+if((_i&15)===15)await y();
+}
+ALLP.sort((a,b)=>a.ms-b.ms);
+}
 await y();
 const valid=p=>!p.folded_into&&p.theme!=='非市場';
 // 立場一律按個股讀 stance_by_ticker（唔用整篇帖立場）；冇標示＝未表態
 function stanceOf(p,t){const m=p.stance_by_ticker&&typeof p.stance_by_ticker==='object'?p.stance_by_ticker:null;if(!m)return p.stance&&S_OF[p.stance]?{s:S_OF[p.stance],star:true}:{s:'none',star:false};const k=Object.keys(m).find(x=>String(x).replace(/^\$/,'').toUpperCase()===t);return {s:k?(S_OF[m[k]]||'none'):'none',star:false}}
-let POSTS=[];ALLP.filter(valid).forEach(p=>p.tickers.forEach(t=>{const r=stanceOf(p,t);POSTS.push({p,t,acc:p.acc,s:r.s,star:r.star,ms:p.ms,d:p.date,kind:p.basis||null,why:p.summary_zh||'',url:p.url})}));
+let POSTS=[];
+{
+const _vp=ALLP.filter(valid);
+for(let _i=0;_i<_vp.length;_i++){
+const p=_vp[_i];
+for(let _j=0;_j<p.tickers.length;_j++){
+const t=p.tickers[_j];const r=stanceOf(p,t);
+POSTS.push({p,t,acc:p.acc,s:r.s,star:r.star,ms:p.ms,d:p.date,kind:p.basis||null,why:p.summary_zh||'',url:p.url})
+}
+if((_i&15)===15)await y();
+}
+}
 await y();
 let TICKERS=[...new Set(POSTS.map(x=>x.t))].sort();
 await y();
@@ -242,23 +263,25 @@ function vsHtml(w){if(!VSC||!CH)return '';
 
 function moneyBar(){return `<nav class="money-bar" aria-label="推廣"><span class="pj-tag">推廣</span><a href="tools/">工具</a><a href="support/">支持我們</a><a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview" data-placement="money-bar">TradingView</a><a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover" data-placement="money-bar">Stock Rover</a></nav>`}
 // 各帳號立場：每隻股票一行（按討論帳號數排列），頭像按立場分組，點開見每個帳號的最新理由；頭 10 隻以外收起
-function stanceList(w,tks,accs){const SHOW=10,K=['bull','bear','neu','none'];
+let _sxExpand=null,_restExpand=null,_sxBodies=null;
+function stanceList(w,tks,accs){const SHOW=10,K=['bull','bear','neu','none'];_sxBodies=new Map();
  const rows=tks.map(t=>{const g={bull:[],bear:[],neu:[],none:[]};accs.forEach(a=>{const x=latest(a,t,w.from,w.to);if(x)g[x.s].push({a,x})});return {t,g,n:K.reduce((s,k)=>s+g[k].length,0)}}).filter(r=>r.n).sort((x,y)=>y.n-x.n||(y.g.bull.length+y.g.bear.length)-(x.g.bull.length+x.g.bear.length)||x.t.localeCompare(y.t));
  const av=h=>avImg(h,'sx-av').replace('<img ',`<img loading="lazy" title="@${esc(h)}" `);
  const why=(a,x)=>esc(x.why.replace(new RegExp('^\\s*@?'+a.replace(/[^A-Za-z0-9_]/g,'')+'\\s*[:\\uFF1A]\\s*','i'),''));
  const row=(r,i)=>{const {g,n}=r,b=g.bull.length,e=g.bear.length;const cls=[i>=SHOW?'x':'',b&&e?'split':'',b>=2?'mbull':'',e>=2?'mbear':''].filter(Boolean).join(' ');
   const seg=(c,k)=>g[k].length?`<span class="${c}" style="width:${g[k].length/n*100}%"></span>`:'';
   const grp=(k,c)=>g[k].length?`<span class="g"><span class="lb ${c}">${SLABEL[k]}</span>${g[k].slice(0,8).map(y=>av(y.a)).join('')}${g[k].length>8?`<span>+${g[k].length-8}</span>`:''}</span>`:'';
-  return `<details class="sx-row ${cls}"><summary><div class="sx-head">${tkBtn(r.t)}<div class="track stk">${seg('b','bull')}${seg('m','neu')}${seg('u','none')}${seg('r','bear')}</div><span class="sx-cnt">${n} 個帳號・<b class="up">看多 ${b}</b> <b class="dn">看空 ${e}</b></span></div><div class="sx-avs">${grp('bull','b')}${grp('bear','r')}${grp('neu','')}${grp('none','')}</div></summary>
-  <div class="sx-why">${K.flatMap(k=>g[k]).map(({a,x})=>{const orig=x.p&&x.p.handle,st=esc(x.url);const via=orig&&orig!==a?` <a href="${st}" target="_blank" rel="noopener">（${'轉發'} @${esc(orig)}）</a>`:` <a href="${st}" target="_blank" rel="noopener">原帖</a>`;return `<p><span class="pill ${x.s==='none'?'neu':x.s}">${SLABEL[x.s]}${x.star?'＊':''}</span><a href="${xUrl(a)}" target="_blank" rel="noopener">@${esc(a)}</a>${via}：${why(a,x)||'—'}</p>`}).join('')}</div></details>`};
+  const _bk=r.t+'#'+i;_sxBodies.set(_bk,function(){return `<div class="sx-why">${K.flatMap(k=>g[k]).map(({a,x})=>{const orig=x.p&&x.p.handle,st=esc(x.url);const via=orig&&orig!==a?` <a href="${st}" target="_blank" rel="noopener">（${'轉發'} @${esc(orig)}）</a>`:` <a href="${st}" target="_blank" rel="noopener">原帖</a>`;return `<p><span class="pill ${x.s==='none'?'neu':x.s}">${SLABEL[x.s]}${x.star?'＊':''}</span><a href="${xUrl(a)}" target="_blank" rel="noopener">@${esc(a)}</a>${via}：${why(a,x)||'—'}</p>`}).join('')}</div>`});
+  return `<details class="sx-row ${cls}" data-sx-body="${esc(_bk)}"><summary><div class="sx-head">${tkBtn(r.t)}<div class="track stk">${seg('b','bull')}${seg('m','neu')}${seg('u','none')}${seg('r','bear')}</div><span class="sx-cnt">${n} 個帳號・<b class="up">看多 ${b}</b> <b class="dn">看空 ${e}</b></span></div><div class="sx-avs">${grp('bull','b')}${grp('bear','r')}${grp('neu','')}${grp('none','')}</div></summary></details>`};
  const cnt=c=>rows.filter(r=>{const b=r.g.bull.length,e=r.g.bear.length;return c==='split'?b&&e:c==='mbull'?b>=2:e>=2}).length;
  const tab=(f,l,n,tip)=>`<button type="button" data-f="${f}" aria-pressed="${f==='all'}"${tip?` title="${tip}"`:''}>${l} ${n}</button>`;
  const pick="const b=event.target.closest('button');if(!b)return;this.parentNode.dataset.f=b.dataset.f;this.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)))";
+ _sxExpand=rows.length>SHOW?function(){return rows.slice(SHOW).map(function(r,i){return row(r,i+SHOW)}).join('')}:null;
  return `<div class="sx-list" data-f="all"><div class="sx-tabs" onclick="${pick}">${tab('all','全部',rows.length)}${tab('split','有分歧',cnt('split'),'有帳號看多、也有帳號看空')}${tab('mbull','多人看多',cnt('mbull'),'最少 2 個帳號最新立場看多')}${tab('mbear','多人看空',cnt('mbear'),'最少 2 個帳號最新立場看空')}</div>
- ${rows.map(row).join('')}<p class="note sx-none">沒有符合條件的股票</p>${rows.length>SHOW?`<button type="button" class="sx-more" onclick="this.closest('.sx-list').classList.add('all')">顯示其餘 ${rows.length-SHOW} 隻股票 ▾</button>`:''}</div>`}
+ ${rows.slice(0,SHOW).map(row).join('')}<p class="note sx-none">沒有符合條件的股票</p>${rows.length>SHOW?`<button type="button" class="sx-more" data-sx-exp="1">顯示其餘 ${rows.length-SHOW} 隻股票 ▾</button>`:''}</div>`}
 
 // ---------- 每日 ----------
-function viewDaily(){
+async function viewDaily(){
  if(!ALLP.length)return `<div class="grid">${moneyBar()}<section class="c12 analysis"><h2>今日市場分析</h2>${empty('目前沒有任何貼文資料。')}</section></div>`;
  const w=dailyWindow(),len=w.merged?2:1;let pf,pt;
  if(w.timed){const a=rk(w.from),z=rk(w.to,true);pt=tsOf(a-60000);pf=tsOf(a-(z-a))}else{pf=addDays(w.from,-len);pt=addDays(w.from,-1)}
@@ -292,7 +315,8 @@ function viewDaily(){
  const priorOpen=current==='weekly'?'前 7 天（':current==='monthly'?'前 28 天（':'昨日（';
  const priorLoading=!hasPrev&&!postsReady();
  if(priorLoading&&!allP)loadAllPosts().then(function(){render()});
- return `<div class="grid">
+ await y();
+ let _html=`<div class="grid">
  ${moneyBar()}
  <section class="c12 analysis" aria-label="市場分析">
   
@@ -314,19 +338,31 @@ function viewDaily(){
  </section>
  ${vsHtml(w)}
  ${highlightsHtml(w.day)}
+`;
+ await y();
+ _html+=`<!--DY-->
  <section class="c12 panel"><h2>市場關注度變化 <span class="sub">只列仍有帳號關注的股票${attGone.length?`，已篩走 ${attGone.length} 隻已沒有人再關注的股票`:''}；括號為${cmpLab}</span></h2>
   ${att.length?`<div class="scrollbox" style="display:grid;gap:8px;align-content:start">${att.map(x=>{const k={bull:0,neu:0,none:0,bear:0};cur.filter(y=>y.t===x.t).forEach(y=>k[y.s]=(k[y.s]||0)+1);const seg=(c,n,l)=>n?`<span class="${c}" style="width:${n/mx*100}%" title="${l} ${n}"></span>`:'';return `<div class="hbar">${tkBtn(x.t)}<div class="track stk">${seg('b',k.bull,'看多')}${seg('m',k.neu,'中性')}${seg('u',k.none,'未表態')}${seg('r',k.bear,'看空')}</div><span class="n">${x.n} ${hasPrev?`(${signed(x.d)})`:''}</span></div>`}).join('')}</div><div style="margin-top:10px">${legend}</div>${hasPrev?'':priorLoading?'<p class="note">對比資料載入中…</p>':`<p class="note">${priorOpen}${w.timed?`${fmtR(pf)} – ${fmtR(pt)}`:`${fmt(pf)}${len>1?'–'+fmt(pt):''}`}）沒有資料，暫時無法比較。</p>`}`:empty('此範圍內沒有股票被提及。')}</section>
  <section class="c12 panel"><h2>各帳號立場 <span class="sub">${label} ${tkNow.length} 隻股票・${shownAccs.length} 個帳號・按討論帳號數排列，點選一行查看每個帳號的理由</span></h2>
   ${tkNow.length?stanceList(w,tkNow,shownAccs):empty('此範圍內沒有貼文提及股票代號。')}
   <div style="margin-top:10px">${legend}</div>${noTk.length?`<p class="note">有發文但沒有提及股票代號：${noTk.map(accLink).join(' ')}</p>`:''}</section>
- ${consHtml(w.from,w.to,label,len,'1 日回報')}
-
- <section class="c12 panel"><h2>重要觀點 <span class="sub">優先列出立場變化與明確表態，附原始貼文</span></h2>${keyPosts.length?keyPosts.map(p=>postHtml(p)).join(''):empty('此範圍內沒有有效貼文。')}${rest.length?`<details class="more"><summary>其餘 ${rest.length} 篇</summary>${rest.map(p=>postHtml(p)).join('')}</details>`:''}</section>
- ${accCardsHtml(w,label)}
- </div>`}
+`;
+ await y();
+ window.__dashLate=async function(g){
+  if(!g)return;
+  await y();
+  try{g.insertAdjacentHTML('beforeend',consHtml(w.from,w.to,label,len,'1 日回報'))}catch(e){console.error(e)}
+  await y();
+  try{g.insertAdjacentHTML('beforeend',`<section class="c12 panel"><h2>重要觀點 <span class="sub">優先列出立場變化與明確表態，附原始貼文</span></h2>${keyPosts.length?keyPosts.map(p=>postHtml(p)).join(''):empty('此範圍內沒有有效貼文。')}${(function(){if(!rest.length)return '';_restExpand=function(){return rest.map(function(p){return postHtml(p)}).join('')};return `<details class="more" data-rest-exp="1"><summary>其餘 ${rest.length} 篇</summary></details>`})()}</section>
+ ${accCardsHtml(w,label)}`)}catch(e){console.error(e)}
+  await y();
+  try{linkHandles(g);fitTables(g);clampLists(g)}catch(e){}
+ };
+ _html+=`</div>`;
+ return _html}
 
 // ---------- 每週 ----------
-function viewWeekly(){
+async function viewWeekly(){
  const to=TODAY,from=addDays(TODAY,-6),pf=addDays(from,-7),pt=addDays(from,-1);const hasPrev=POSTS.some(x=>x.d>=pf&&x.d<=pt);
  const days=[...Array(7)].map((_,i)=>addDays(from,i));
  const rows=TICKERS.map(t=>{const c=dist(t,from,to),c0=dist(t,pf,pt),ca=dist(t,from,to,true);const daily=days.map(d=>postsIn(d,d).filter(x=>x.t===t).length);return {t,c,c0,ca,daily,net:c.bull-c.bear,net0:c0.bull-c0.bear}}).filter(r=>r.ca.accs>=1).sort((a,b)=>b.ca.accs-a.ca.accs||b.c.mentions-a.c.mentions||a.t.localeCompare(b.t));
@@ -361,7 +397,7 @@ function viewWeekly(){
 
 // ---------- 每月 ----------
 const HEAT_MIN={acc:3,days:3};
-function viewMonthly(){
+async function viewMonthly(){
  const to=TODAY,from=addDays(TODAY,-27),all=postsIn(from,to);const DAYS=[...Array(28)].map((_,i)=>addDays(from,i));
  const rows=TICKERS.map(t=>{const ps=all.filter(x=>x.t===t);return {t,n:ps.length,b:ps.filter(x=>x.s==='bull').length,r:ps.filter(x=>x.s==='bear').length,m:ps.filter(x=>x.s==='neu').length,u:ps.filter(x=>x.s==='none').length,c:dist(t,from,to)}}).filter(r=>r.n).sort((a,b)=>b.n-a.n||a.t.localeCompare(b.t));
  const B=all.filter(x=>x.s==='bull').length,X=all.filter(x=>x.s==='bear').length,M=all.filter(x=>x.s==='neu').length,U=all.length-B-X-M;
@@ -626,14 +662,18 @@ function viewMacro(){const to=TODAY,from=addDays(TODAY,-6),pt=addDays(from,-1),p
   <p class="note">▲▼ 為同之前 7 天比較：利好減利淡的比例變化超過 15 個百分點才顯示；之前 7 天少於 2 個帳號表態就不比較。只講大市升跌、沒有講到宏觀題目的貼文不放在這裡。</p>
   <div class="m-grid">${all.map(card).join('')}</div></section></div>`}
 const VIEWS={daily:viewDaily,weekly:viewWeekly,monthly:viewMonthly,macro:viewMacro,tracked:viewTracked};
-function rebuildDerived(){
+async function rebuildDerived(){
  D.prices=D.prices||{};D.accounts=D.accounts||{};D.posts=D.posts||[];D.intraday=D.intraday||{};D.avmini=D.avmini||{};D.quotes=D.quotes||{};
  ACCINFO=D.accounts||{};
  NAMES={};D.posts.forEach(p=>{if(p.name&&!p.reposted_by)NAMES[p.handle]=p.name});
  CUT=D.meta.cutoff_hkt?Date.parse(D.meta.cutoff_hkt):Math.max(0,...D.posts.map(p=>Date.parse(p.time_utc)));
  TODAY=hkDate(CUT);
- ALLP=D.posts.map(p=>({...p,text:undefined,summary_zh:HAS_ZH(p.zh_summary)?p.zh_summary:HAS_ZH(p.summary_zh)?p.summary_zh:'',truncated:HAS_ZH(p.zh_summary)&&PAGE_LANG!=='en'?false:p.truncated,tickers:[...new Set([...(p.tickers||[]),...Object.keys(p.stance_by_ticker&&typeof p.stance_by_ticker==='object'?p.stance_by_ticker:{})].map(t=>String(t).replace(/^\$/,'').toUpperCase()))],ms:Date.parse(p.time_utc),acc:p.reposted_by||p.handle,date:p.time_hkt.slice(0,10)})).sort((a,b)=>a.ms-b.ms);
- POSTS=[];ALLP.filter(valid).forEach(p=>p.tickers.forEach(t=>{const r=stanceOf(p,t);POSTS.push({p,t,acc:p.acc,s:r.s,star:r.star,ms:p.ms,d:p.date,kind:p.basis||null,why:p.summary_zh||'',url:p.url})}));
+ await y();
+ ALLP=[];
+ {const _ps=D.posts;for(let _i=0;_i<_ps.length;_i++){const p=_ps[_i];ALLP.push({...p,text:undefined,summary_zh:HAS_ZH(p.zh_summary)?p.zh_summary:HAS_ZH(p.summary_zh)?p.summary_zh:'',tokenize:HAS_ZH(p.zh_summary)&&PAGE_LANG!=='en'?false:p.tokenize,tickers:[...new Set([...(p.tickers||[]),...Object.keys(p.stance_by_ticker&&typeof p.stance_by_ticker==='object'?p.stance_by_ticker:{})].map(t=>String(t).replace(/^\$/,'').toUpperCase()))],ms:Date.parse(p.time_utc),acc:p.reposted_by||p.handle,date:p.time_hkt.slice(0,10)});if((_i&31)===31)await y()}ALLP.sort((a,b)=>a.ms-b.ms)}
+ await y();
+ POSTS=[];
+ {const _vp=ALLP.filter(valid);for(let _i=0;_i<_vp.length;_i++){const p=_vp[_i];for(let _j=0;_j<p.tickers.length;_j++){const t=p.tickers[_j];const r=stanceOf(p,t);POSTS.push({p,t,acc:p.acc,s:r.s,star:r.star,ms:p.ms,d:p.date,kind:p.basis||null,why:p.summary_zh||'',url:p.url})}if((_i&31)===31)await y()}}
  WIN=new Map();
  TICKERS=[...new Set(POSTS.map(x=>x.t))].sort();
  DATES=[...new Set(ALLP.map(p=>p.date))].sort();
@@ -643,17 +683,19 @@ function rebuildDerived(){
 }
 let coreDone=!(D._ext&&D._ext.core),coreP=null,postCursor=0,pageP=null,postsFailed=false,allP=null;
 let histDone=!(D._ext&&D._ext.hist),histP=null;
-function loadHist(){if(histDone)return Promise.resolve();if(histP)return histP;histP=fetch(extUrl(D._ext.hist)).then(function(r){if(!r.ok)throw new Error('hist '+r.status);return r.json()}).then(function(j){var s=j.summaries||{};D.summaries=D.summaries||{};Object.keys(s).forEach(function(k){D.summaries[k]=(s[k]||[]).concat(D.summaries[k]||[])});if(j.briefings)D.briefings=j.briefings.concat(D.briefings||[]);histDone=true;rebuildDerived();document.dispatchEvent(new Event('dash-data'));render()}).catch(function(e){histDone=true;console.error(e)});return histP}
+function loadHist(){if(histDone)return Promise.resolve();if(histP)return histP;histP=fetch(extUrl(D._ext.hist)).then(function(r){if(!r.ok)throw new Error('hist '+r.status);return r.json()}).then(function(j){var s=j.summaries||{};D.summaries=D.summaries||{};Object.keys(s).forEach(function(k){D.summaries[k]=(s[k]||[]).concat(D.summaries[k]||[])});if(j.briefings)D.briefings=j.briefings.concat(D.briefings||[]);histDone=true;return rebuildDerived().then(function(){document.dispatchEvent(new Event('dash-data'));return render()})}).catch(function(e){histDone=true;console.error(e)});return histP}
 function extUrl(p){var v=(D.meta&&D.meta.build_id)||'';return p+(p.indexOf('?')<0?'?v=':'&v=')+encodeURIComponent(v)}
 function uiText(zh,en,ko){var l=document.documentElement.lang||'';return /^ko/i.test(l)?ko:/^en/i.test(l)?en:zh}
 function postsReady(){if(postsFailed)return true;var pages=D._ext&&D._ext.posts;return !pages||postCursor>=pages.length}
 function loadCore(){if(coreDone)return Promise.resolve();if(coreP)return coreP;
- coreP=fetch(extUrl(D._ext.core)).then(function(r){if(!r.ok)throw new Error('core '+r.status);return r.json()}).then(function(j){
+ coreP=fetch(extUrl(D._ext.core)).then(function(r){if(!r.ok)throw new Error('core '+r.status);return r.text()}).then(function(raw){return parseJSON(raw)}).then(function(j){
   Object.keys(j).forEach(function(k){if(k!=='posts'&&k!=='_ext')D[k]=j[k]});
-  coreDone=true;rebuildDerived();document.dispatchEvent(new Event('dash-data'));});return coreP}
+  coreDone=true;ACCINFO=D.accounts||{};INTRA=D.intraday||{};AVMINI=D.avmini||{};
+  NAMES={};D.posts.forEach(function(p){if(p.name&&!p.reposted_by)NAMES[p.handle]=p.name});
+  document.dispatchEvent(new Event('dash-data'))});return coreP}
 function loadNextPosts(){if(postsReady())return Promise.resolve();if(pageP)return pageP;var url=D._ext.posts[postCursor];
- pageP=fetch(extUrl(url)).then(function(r){if(!r.ok)throw new Error('posts '+r.status);return r.json()}).then(function(arr){
-  postCursor++;D.posts=D.posts.concat(arr);rebuildDerived();document.dispatchEvent(new Event('dash-data'));
+ pageP=fetch(extUrl(url)).then(function(r){if(!r.ok)throw new Error('posts '+r.status);return r.text()}).then(function(raw){return parseJSON(raw)}).then(function(arr){
+  postCursor++;D.posts=D.posts.concat(arr);return rebuildDerived().then(function(){document.dispatchEvent(new Event('dash-data'))});
  }).catch(function(e){postsFailed=true;window.__postsFailed=true;console.error(e)}).finally(function(){pageP=null});return pageP}
 function loadAllPosts(){if(postsReady()){window.__postsReady=true;return Promise.resolve()}if(allP)return allP;
  function step(){if(postsReady()){window.__postsReady=true;allP=null;return Promise.resolve()}return loadNextPosts().then(step)}
@@ -669,8 +711,7 @@ function mountMore(){if(postsReady())return;var h=decodeURIComponent((location.h
  var b=document.createElement('button');b.type='button';b.className='more-btn';b.id='load-more';
  b.textContent=uiText('載入更多','Load more','더 보기');
  b.addEventListener('click',function(){b.disabled=true;loadNextPosts().then(function(){render()})});
- p.appendChild(b);v.appendChild(p);
- if(window.IntersectionObserver){var io=new IntersectionObserver(function(es){if(es.some(function(e){return e.isIntersecting})){io.disconnect();loadNextPosts().then(function(){render()})}},{rootMargin:'280px'});io.observe(b)}}
+ p.appendChild(b);v.appendChild(p)}
 window.__loadCore=loadCore;window.__loadAllPosts=loadAllPosts;window.__postsReady=postsReady();window.__dashReady=coreDone;
 async function render(){const h=decodeURIComponent((location.hash||'#daily').slice(1));
  const ms=h.match(/^stock[\/-](.+)$/),ma=h.match(/^account\/(.+)$/);
@@ -680,15 +721,16 @@ async function render(){const h=decodeURIComponent((location.hash||'#daily').sli
  if(h==='donate')setTimeout(()=>{const f=document.querySelector('[data-jump="donate"]');if(f)f.click()},50)}
 let lastViewKey=null,lastViewHtml=null;
 async function drawView(){document.querySelectorAll('nav.tabs button[data-v]').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===current));
- try{const html=VIEWS[current]();const view=document.getElementById('view');
+ try{const html=await Promise.resolve(VIEWS[current]());const view=document.getElementById('view');
   await y();
   if(view.querySelector('.mk-live[data-on]')&&lastViewKey===current&&lastViewHtml===html){if(coreDone){const ld=view.querySelector('#dash-load');if(ld)ld.remove()}mountStatus();mountMore()}
-  else{const oldTape=view.querySelector('.mk-live[data-on]');view.innerHTML=html;await y();if(oldTape){const nw=view.querySelector('.mk-live');if(nw)nw.replaceWith(oldTape)}mountStatus();mountMore();lastViewKey=current;lastViewHtml=html;var _v=view;var _fin=function(){try{linkHandles(_v);fitTables(_v);clampLists(_v);scheduleTape(_v)}catch(e){}};if('requestIdleCallback' in window)requestIdleCallback(_fin,{timeout:1500});else setTimeout(_fin,1)}}catch(e){console.error(e);document.getElementById('view').innerHTML=empty('畫面顯示錯誤：'+esc(e.message))}}
-document.addEventListener('click',e=>{const b=e.target.closest('[data-tk]');if(b){e.preventDefault();location.hash='stock/'+b.dataset.tk;return}
+  else{const oldTape=view.querySelector('.mk-live[data-on]');var parts=html.split('<!--DY-->');if(parts.length<2||html.length<100000){view.innerHTML=html;await y()}else{view.innerHTML=parts[0];await y();var g=view.querySelector('.grid')||view;for(var _i=1;_i<parts.length;_i++){var chunk=parts[_i];if(_i===parts.length-1)chunk=chunk.replace(/\s*<\/div>\s*$/,'');g.insertAdjacentHTML('beforeend',chunk);await y()}}if(oldTape){const nw=view.querySelector('.mk-live');if(nw)nw.replaceWith(oldTape)}mountStatus();mountMore();lastViewKey=current;lastViewHtml=html;if(typeof window.__dashLate==='function'){var _late=window.__dashLate,_g=view.querySelector('.grid');window.__dashLate=null;var _run=function(){Promise.resolve(_late(_g)).catch(function(e){console.error(e)})};if('requestIdleCallback'in window)requestIdleCallback(_run,{timeout:1500});else setTimeout(_run,0);}var _v=view;var _fin=function(){try{linkHandles(_v);fitTables(_v);clampLists(_v);scheduleTape(_v)}catch(e){}};if('requestIdleCallback' in window)requestIdleCallback(_fin,{timeout:1500});else setTimeout(_fin,1)}}catch(e){console.error(e);document.getElementById('view').innerHTML=empty('畫面顯示錯誤：'+esc(e.message))}}
+document.addEventListener('click',e=>{const sx=e.target.closest('[data-sx-exp]');if(sx&&_sxExpand){e.preventDefault();var html=_sxExpand();_sxExpand=null;if(html)sx.insertAdjacentHTML('beforebegin',html);var list=sx.closest('.sx-list');if(list)list.classList.add('all');sx.remove();return}const rd=e.target.closest('details[data-rest-exp]');if(rd&&_restExpand&&!rd.dataset.restDone){/* filled on toggle */} const b=e.target.closest('[data-tk]');if(b){e.preventDefault();location.hash='stock/'+b.dataset.tk;return}
  const v=e.target.closest('nav.tabs button[data-v]');if(v){location.hash=v.dataset.v;return}
  const card=e.target.closest('.acc[data-href]');if(card&&!e.target.closest('a,button')){location.hash=card.dataset.href}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!document.getElementById('dive').hidden){location.hash=current;return}const card=e.target.closest&&e.target.closest('.acc[data-href]');if(card&&e.key==='Enter'&&e.target===card)location.hash=card.dataset.href});
 window.addEventListener('hashchange',render);
+document.addEventListener('toggle',function(e){var d=e.target;if(!d||!d.matches)return;if(d.matches('details[data-sx-body]')&&d.open&&_sxBodies&&_sxBodies.has(d.dataset.sxBody)){var bh=_sxBodies.get(d.dataset.sxBody);_sxBodies.delete(d.dataset.sxBody);try{var h=bh();if(h)d.insertAdjacentHTML('beforeend',h)}catch(err){console.error(err)}return}if(d.matches('details[data-rest-exp]')&&!d.dataset.restDone&&_restExpand){d.dataset.restDone='1';var html=_restExpand();_restExpand=null;if(html)d.insertAdjacentHTML('beforeend',html)}},true);
 let rT=null;window.addEventListener('resize',()=>{clearTimeout(rT);rT=setTimeout(()=>{const m=decodeURIComponent(location.hash.slice(1)).match(/^stock[\/-](.+)$/);if(m)drawChart(m[1].toUpperCase())},150)});
 // 頁首
 function paintChrome(){const m=D.meta;const cut=document.getElementById('cutoff');cut.textContent=m.cutoff_hkt?m.cutoff_hkt.slice(0,10)+' '+m.cutoff_hkt.slice(11,16)+'（HKT）':'資料不足';if(m.generated_hkt)cut.title='本頁重建於 '+m.generated_hkt+' HKT';
@@ -708,7 +750,7 @@ ${MAC&&MAC.rows.length?`<p>大市數據：${[...new Set(MAC.rows.map(r=>(r.src||
 await y();
 try{paintChrome();await render()}catch(e){console.error(e)}
 if(!coreDone){
-  var _bootCore=function(){loadCore().then(function(){window.__dashReady=true;paintChrome();if(typeof refreshPriceChips==='function'&&document.getElementById('view')&&document.getElementById('view').querySelector('.hl-tk')){refreshPriceChips();mountStatus();mountMore()}else return render()}).catch(function(e){console.error(e);coreDone=true;window.__dashReady=true;paintChrome();return render()})};
+  var _bootCore=function(){loadCore().then(function(){window.__dashReady=true;paintChrome();var v=document.getElementById('view');if(v&&v.querySelector('.grid')&&(lastViewKey===current||lastViewKey==='daily')){if(typeof refreshPriceChips==='function')refreshPriceChips();mountStatus();mountMore();return}return render()}).catch(function(e){console.error(e);coreDone=true;window.__dashReady=true;paintChrome();return render()})};
   await y();
   _bootCore();
 }else window.__dashReady=true;
