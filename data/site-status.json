@@ -1,19 +1,19 @@
 {
  "note": "Written by GitHub Actions on every update. SuperGrok daily check reads this.",
- "checked_hkt": "2026-10-24 00:51",
- "generated_hkt": "2026-10-24 00:37",
- "cutoff_hkt": "2026-10-23T22:33:42+08:00",
- "posts_on_site": 4213,
- "added_this_run": 0,
+ "checked_hkt": "2026-10-24 01:12",
+ "generated_hkt": "2026-10-24 00:59",
+ "cutoff_hkt": "2026-10-24T00:05:12+08:00",
+ "posts_on_site": 4233,
+ "added_this_run": 20,
  "added_without_en_summary": 0,
- "waiting_for_summary": 368,
- "waiting_with_stock": 40,
- "expired_unsummarised_this_run": 15,
- "chitchat_skipped_this_run": 112,
+ "waiting_for_summary": 349,
+ "waiting_with_stock": 34,
+ "expired_unsummarised_this_run": 7,
+ "chitchat_skipped_this_run": 68,
  "pruned_this_run": 0,
  "fetch_failed": [],
  "warnings": [
-  "未分析：368 則新帖等待 Grok 分析"
+  "未分析：349 則新帖等待 Grok 分析"
  ],
  "writeups_applied": [
   "zh/daily 2026-10-23",
@@ -56,6 +56,13 @@
    "briefing": "2026-10-23"
   }
  },
- "layout_warnings": [],
- "layout_checked_hkt": "2026-10-24 00:54"
+ "layout_warnings": [
+  "zh 1280px：今日重點卡有 0 張（應該 3 張）",
+  "zh 390px：今日重點卡有 0 張（應該 3 張）",
+  "en 1280px：今日重點卡有 0 張（應該 3 張）",
+  "en 390px：今日重點卡有 0 張（應該 3 張）",
+  "ko 1280px：今日重點卡有 0 張（應該 3 張）",
+  "ko 390px：今日重點卡有 0 張（應該 3 張）"
+ ],
+ "layout_checked_hkt": "2026-10-24 01:15"
 }
