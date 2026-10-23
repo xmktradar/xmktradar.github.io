@@ -1,1 +1,97 @@
-$(cat /tmp/batch1.json)
+{
+  "posts": {
+    "2113691406271205481": {
+      "en_summary": "Jon Najarian notes that their report \"Can You Hear Me Now\" about @elonmusk and $SPCX getting into competition with legacy cell carriers $T $VZ $TMUS and the tower companies $AMT $CCI $SBAC was published in their Rebel Investors Club special report in July.",
+      "zh_summary": "喬恩·納賈里安指出，他們關於 @elonmusk 及 $SPCX 進入與傳統電信運營商 $T $VZ $TMUS 以及鐵塔公司 $AMT $CCI $SBAC 競爭的報告《Can You Hear Me Now》，已於七月份在其 Rebel Investors Club 特別報告中發布。",
+      "ko_summary": "Jon Najarian은 @elonmusk과 $SPCX가 기존 통신 사업자 $T $VZ $TMUS 및 타워 회사 $AMT $CCI $SBAC와 경쟁에 진입하는 내용의 보고서 \"Can You Hear Me Now\"가 7월 그들의 Rebel Investors Club 특별 보고서에 실렸다고 언급했다.",
+      "tickers": ["SPCX", "T", "VZ", "TMUS", "AMT", "CCI", "SBAC"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "SPCX": "未表態",
+        "T": "未表態",
+        "VZ": "未表態",
+        "TMUS": "未表態",
+        "AMT": "未表態",
+        "CCI": "未表態",
+        "SBAC": "未表態"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2113690656417988701": {
+      "en_summary": "Michael Sikand added $BE at $190/share as a 16% position in his Asymmetric Bets portfolio. He previously bought at $90 in December and sold at $274 for a 186% gain in June. Customer deposits surged to roughly $750 million from about $145 million at the start of the year, signaling strong demand for Bloom’s capacity. He swapped out $SNDK, viewing energy as a more structural long-term trade than memory, and increased allocations to $INTC, $NBIS, $CRDO, and $LITE which are down significantly. The portfolio is up over 50% all-time despite a 20% drawdown in the past month.",
+      "zh_summary": "邁克爾·西坎德在其不對稱押注組合中以每股190美元加倉 $BE，佔16%倉位。他此前於12月以90美元買入並於6月以274美元賣出，獲利186%。客戶預付款從年初約1.45億美元激增至約7.5億美元，顯示對Bloom產能的強勁需求。他認為能源是比記憶體更具結構性的長期交易，因此換出 $SNDK，並增加對近期大幅下跌的 $INTC、$NBIS、$CRDO 及 $LITE 的配置。該組合儘管過去一個月回撤20%，但全期仍上漲超過50%。",
+      "ko_summary": "Michael Sikand는 비대칭 베팅 포트폴리오에 $BE를 주당 190달러에 16% 포지션으로 추가했다. 그는 이전에 12월 90달러에 매수하고 6월 274달러에 매도해 186% 수익을 냈다. 고객 예치금이 연초 약 1억 4500만 달러에서 약 7억 5000만 달러로 급증한 점을 Bloom 용량에 대한 강한 수요의 신호로 강조했다. 에너지를 메모리보다 더 구조적인 장기 거래로 보고 $SNDK를 매도했으며, 최근 크게 하락한 $INTC, $NBIS, $CRDO, $LITE 비중을 늘렸다. 포트폴리오는 지난 한 달 20% 하락에도 불구하고 전체 기간 50% 이상 상승했다.",
+      "tickers": ["BE", "SNDK", "INTC", "NBIS", "CRDO", "LITE"],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "BE": "睇好",
+        "SNDK": "睇淡",
+        "INTC": "睇好",
+        "NBIS": "睇好",
+        "CRDO": "睇好",
+        "LITE": "睇好"
+      },
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {
+        "BE": "以190美元加至16%倉位，客戶預付款激增至約7.5億美元顯示需求強勁，可持有10年",
+        "SNDK": "換出因能源較記憶體更具結構性長線價值"
+      }
+    },
+    "2113688666736628002": {
+      "en_summary": "US spot Bitcoin $BTC ETFs saw $635.6M in net outflows on Oct. 22, the largest daily outflow since June.",
+      "zh_summary": "美國現貨比特幣 $BTC ETF於10月22日淨流出6.356億美元，為6月以來最大單日流出。",
+      "ko_summary": "미국 현물 비트코인 $BTC ETF가 10월 22일 6억 3560만 달러의 순유출을 기록했으며, 이는 6월 이후 최대 일일 유출이다.",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2113684618562191866": {
+      "en_summary": "Shay Boloor notes that $BE is now down 35% in just one month. The quoted earnings show Q3 revenue of $1.24B up 138% YoY versus $1.07B expected, non-GAAP EPS of $0.94 versus $0.67, raised 2026 revenue guide to $4.4B-$4.6B and EPS to $3.10-$3.40, and addition to the S&P 500, yet the stock was down around 6.3% at the open.",
+      "zh_summary": "謝伊·博洛爾指出 $BE 在短短一個月內下跌了35%。引用的財報顯示，Q3營收12.4億美元，同比增長138%，高於預期的10.7億美元，非GAAP EPS為0.94美元對預期0.67美元，並將2026年營收指引上調至44億至46億美元，EPS上調至3.10至3.40美元，且被納入標普500，但開盤仍下跌約6.3%。",
+      "ko_summary": "Shay Boloor는 $BE가 한 달 만에 35% 하락했다고 지적했다. 인용된 실적에 따르면 Q3 매출은 12.4억 달러로 전년 대비 138% 증가해 예상 10.7억 달러를 상회했고, non-GAAP EPS는 0.94달러로 예상 0.67달러를 넘었으며, 2026년 매출 가이던스를 44억-46억 달러로, EPS를 3.10-3.40달러로 상향 조정하고 S&P 500에 편입됐음에도 개장 시 약 6.3% 하락했다.",
+      "tickers": ["BE"],
+      "stance": "中性",
+      "stance_by_ticker": {"BE": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2113684378144690649": {
+      "en_summary": "TrendSpider warns \"Look out below\" for $SPY, indicating a potential downside move.",
+      "zh_summary": "TrendSpider 警告 $SPY「小心下方」，暗示可能出現下跌。",
+      "ko_summary": "TrendSpider는 $SPY에 대해 \"아래를 조심하라\"고 경고하며 하락 가능성을 시사했다.",
+      "tickers": ["SPY"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPY": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
