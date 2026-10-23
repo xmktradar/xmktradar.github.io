@@ -518,7 +518,13 @@ def main():
     todo = [k for k, h, _ in SLOTS if (now.hour >= h or force) and (k not in slots or force)]
     if not todo:
         return
-    site = Site(load(HTML))
+    # Slim homepages keep accounts and older posts in external files. full_data
+    # puts them back so quotes and avatars match the daily tab.
+    try:
+        from slim_pages import full_data
+        site = Site(full_data(open(HTML, encoding='utf-8').read()))
+    except Exception:
+        site = Site(load(HTML))
     from share import window
     win = window(s)
     jobs, written = [], []

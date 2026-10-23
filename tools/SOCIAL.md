@@ -1,6 +1,6 @@
 # Social post slots
 
-`tools/share.py` writes `data/social-posts.json` on the daily social run. `social_actions` decides the branch. `tools/intraday.py` adds the `intraday` key during US market hours (spec `kr` is stored as `ko`). On a trading day, at or after `SOCIAL_HOUR` 07:00 HKT (or `SOCIAL_FORCE=1`, or a legacy file), `main()` rebuilds the weekday posts and then adds `top5`, Friday `weekly_thread`, `hot_stock`, `discussion` and `atomic_posts`. That rebuild keeps an existing `intraday` object when its `date` is the same day. Saturday and Sunday, at or after the same hour, write `weekend` and `atomic_posts` only. They do not rebuild weekday posts, `top5`, the Friday thread, `social/index.html` or the feeds. 07:00 HKT is 08:00 KST, before the first atomic slot at 09:00 KST. A US-holiday weekday is not a weekend and does not run the weekday branch unless forced.
+`tools/share.py` writes `data/social-posts.json` on the daily social run. `social_actions` decides the branch. `tools/intraday.py` adds the `intraday` key during US market hours (spec `kr` is stored as `ko`). On a trading day, at or after `SOCIAL_HOUR` 07:00 HKT (or `SOCIAL_FORCE=1`, or a legacy file), `main()` rebuilds the weekday posts and then adds `top5`, Friday `weekly_thread`, `hot_stock`, `discussion`, `three_lines`, `why_posts` and `atomic_posts`. Saturday and Sunday, at or after the same hour, write `weekend` and `atomic_posts` only. They do not rebuild weekday posts, `top5`, the Friday thread, `three_lines`, `why_posts`, `social/index.html` or the feeds. 07:00 HKT is 08:00 KST. `three_lines` is suggested at 08:30 KST, before the first shared slot at 09:00 KST. That rebuild keeps an existing `intraday` object when its `date` is the same day. A US-holiday weekday is not a weekend and does not run the weekday branch unless forced.
 
 Numbers are copied from the files below. A missing count is skipped. An empty list is a translated "none today" line, not a filled-in row.
 
@@ -93,13 +93,13 @@ A list that does not fit in 280 keeps a prefix of the real names. `+N` is how ma
 
 ## Shared fields
 
-Every slot carries `format`: `image_card`, `carousel`, `text_question` or `poll`. A poll also has `poll.<lang> = {question, options}` with 2–4 options. `top5` is `image_card`. `hot_stock` is `carousel`. `discussion` is `poll`. Weekend angles use the formats in the table below. An atomic `number` is `text_question`, `stock` is `image_card`, `expert_view` is `carousel`.
+Every slot carries `format`: `image_card`, `carousel`, `text_question` or `poll`. A poll also has `poll.<lang> = {question, options}` with 2–4 options. `top5` is `image_card`. `hot_stock` and `why_posts` are `carousel`. `discussion` is `poll`. `three_lines` is `text_question`. Weekend angles use the formats in the table below. An atomic `number` is `text_question`, `stock` is `image_card`, `expert_view` is `carousel`.
 
 Every body ends with `SHORT[lang]['disc']` (`⚠️ 唔構成投資建議` / `⚠️ Not investment advice` / `⚠️ 투자 조언 아님`) and a hashtag line: `#美股` / `#StockMarket` / `#미국주식`, plus `#TICKER` when the post names one ticker. Threads bodies are ≤ 500 code points (`fit_threads`). X bodies are ≤ 280 (`xlen`).
 
 About half of Threads and Facebook copies have no link in the body. The index walks `zh`, `en`, `ko` and, within each language, `threads` then `facebook`. Even indexes get a link. The URL is not left in the body. It is stored on `first_comment`, with `SHORT[lang]['live']` (`最新數字 👉 ` / `Live numbers 👉 ` / `최신 수치 👉 `) in front, and `has_link` is true for that platform. Odd indexes set `has_link` false and omit that platform's comment. On `top5`, X keeps the link in the body; Instagram has no URL (`has_link.instagram` false, one link-in-bio line). Threads and Facebook still get `first_comment`. Atomic posts use one string, so `has_link` is a boolean on the flat zh-then-en-then-ko list (even indexes) and `first_comment` is a string tagged `utm_source=threads`. Every `.instagram` field is passed through `sanitize_instagram` (also from `utm.normalize_all`) so captions stay URL-free.
 
-`utm_campaign` is the slot name: `hot_stock`, `discussion`, `weekend`. Atomic posts use `atomic`. The platform is the field name (`threads` or `facebook`). A `first_comment` object is tagged per key. A `first_comment` string uses `threads`.
+`utm_campaign` is the slot name: `hot_stock`, `discussion`, `weekend`, `three_lines`, `why`. Atomic posts use `atomic`. The platform is the field name (`x`, `threads`, `facebook` or `instagram`). A `first_comment` object is tagged per key. A `first_comment` string uses `threads`. `three_lines` and `why_posts` store the link on `{text, url}` (`url` is null when that copy has no link). Instagram never has a `url`.
 
 Numbers in the no-repeat guard are the integers left after stripping URLs, ISO dates, `M/D`, `Month D`, `HH:MM` and years `19xx`/`20xx`. A ticker is a `$SYMBOL` that contains a letter. A full-body match (whitespace collapsed) across two different slots is a duplicate. Threads and Facebook of the same slot may share a body. `guard_slots` reports those problems. The builders drop a clashing `hot_stock` or `discussion`, drop a weekend item that clashes, and omit `weekend` if that leaves fewer than two posts. They omit `atomic_posts` when a body would copy another slot or when fewer than four points fit.
 
@@ -184,6 +184,58 @@ Saturday and Sunday (HKT date). `build_weekend` returns at least two posts or th
 
 Each item has `langs.zh`, `langs.en` and `langs.ko`. A poll item also has `poll` and `langs.<lang>.poll`. Campaign is `weekend`. The home URL is used when the item has no ticker.
 
+## `three_lines`
+
+Weekday only, in the same 07:00 HKT social run. Not written on Saturday or Sunday. One post: the homepage "today in 3 lines" block, in zh, en and ko (spec `kr` is `ko`).
+
+The lines are the page's `RUX.threeLines` on the daily-tab rows. When `main()` can read the homepage dash (`tools/slim_pages.full_data`), the rows, the previous window and the sample are the same ones the daily tab uses (`dist`, `dailyWindow`, stance changes). Without that corpus, the fallback is `data/writeup-input.json` `daily.bull` / `bear` / `split` (`nb`, `nr`, `n_posts`). That fallback has no previous window, so it does not invent a consensus shift.
+
+| Field | Meaning |
+| --- | --- |
+| `date` | The social run's HKT day |
+| `generated_at` | ISO time in `+08:00` |
+| `window` | `MM/DD HH:MM – HH:MM HKT`. Dash: 00:00 of the window's start day (or the timed start) through the latest valid post. Writeup fallback: the same cutoff rule as `top5` |
+| `sample` | `{posts, accounts}`. Dash: valid posts in the window, and accounts with a non-folded post in the window. Writeup fallback: `daily.posts` and `daily.accounts` |
+| `suggested_kst` | `08:30` |
+| `format` | `text_question` |
+| `source` | Which corpus the lines came from |
+| `x` / `threads` / `facebook` | `{zh, en, ko: {text, url}}`. `url` is null when that copy has no link |
+| `instagram` | `{zh, en, ko: {text}}`. No `url` |
+| `has_link` | Per platform, per language |
+
+Wording matches the daily tab (single spaces). zh `今日三句重點` / `共識變化最大` / `最多人討論` / `分歧最大`. en `Today in 3 lines` / `Biggest consensus shift` / `Most mentioned` / `Biggest disagreement`. ko `오늘의 3줄 요약` / `합의 변화 최대` / `최다 언급` / `의견 차이 최대`. A missing line is left out. If all three are missing and the sample or window is real, the body is the page's empty sentence for that language.
+
+The consensus-shift line uses the i18n phrase for `對比昨日（今日至今）` once, with no outer parentheses around it: zh `淨看多比例 -100% → +75% 對比昨日（今日至今）`, en `net bullish -100% → +75% vs yesterday (today so far)`, ko `순강세 비율 -100% → +75% 어제 대비 (오늘 현재까지)`.
+
+Every body includes the window and the sample, for example `10/23 00:00 – 09:55 HKT · 120 posts / 45 accounts` (zh `則貼文` / `個帳號`, ko `게시물` / `계정`). Counts are copied. A missing count is left out.
+
+X is ≤ 280 by `xlen`. Threads is ≤ 500 by `fit_threads`. About half of the six X and Threads copies carry a link: zh and ko on X, en on Threads. Facebook always has the language home URL in the body and in `url`. Instagram has no URL, one link-in-bio line, and at most 5 hashtags. Links are `tag_url(url, platform, 'three_lines')` on `/<lang>/`.
+
+## `why_posts`
+
+Weekday only, same run. Not written on Saturday or Sunday. One object per hot name, at most 5. Hot names are `ranking.rank_rows` across `daily.bull` (`nb`), `daily.bear` (`nr`) and `daily.split` (the stronger of `nb` and `nr`), then `n_posts`, then ticker. A ticker is kept once. `side` is `split` when both counts are greater than 0, otherwise `bull` when `nb` ≥ `nr`, otherwise `bear`.
+
+| Field | Meaning |
+| --- | --- |
+| `ticker`, `side` | The name and the side above |
+| `bull`, `bear` | `nb` and `nr` when that number is on the row, including 0. Omitted when the row has no such number |
+| `accounts` | `nb + nr` when at least one of them is a number. Not the length of the quote list |
+| `window`, `sample` | The same window and sample as `three_lines` when that slot was built, otherwise the top5 window and `daily.posts` / `daily.accounts` |
+| `bull_reasons`, `bear_reasons` | `[{acc, text}]`. Omitted when that side has none |
+| `threads` | `{zh, en, ko: {text, url}}` |
+| `x` | `{en: {text, url}}` only when the English body fits in 280 (`xlen`) |
+| `suggested_kst` | One of `09:00`, `11:30`, `14:00`, `17:00`, `20:00`, `22:30`, earliest free slots |
+| `format` | `carousel` |
+| `has_link` | `{threads: {zh, en, ko}, x?: {en}}` |
+
+Each language quotes that language's real summary, the same source as the homepage why-line. Chinese is `rows[].why` (the page's `zh_summary`). English is the row's `why_en` / `en_summary`, or the dash post with the same url: `en_summary`, then the original `text` when that summary is missing or still contains CJK Han. Korean is the row's `why_ko` / `ko_summary`, or the post's `ko_summary` (no English fallback). `/en/` and `/ko/` copy those fields into `zh_summary` before rendering the why-line (`build_langs.swap_data`). The quote is the sentence that names the ticker (`RUX.clauseFor`), with the leading `@handle` stripped once (`dedupe_handle`) and URLs removed. It is not translated and not invented. English and Korean text that still contains CJK Han outside a `$TICKER` or `#TICKER` is omitted. `rows[].s` picks the side. A bull-list or bear-list row with no `s` uses that list's side. A split row with no `s` is skipped. A side with no real summary in that language is omitted from that language; the counts line stays. A name with no reason in any language is omitted. `bull_reasons` and `bear_reasons` store the Chinese quotes. The post attributes the line to `@handle`.
+
+`python3 tools/three_why.py --merge-into data/social-posts.json` recomputes `three_lines`, `why_posts` and the adjusted `atomic_posts`, and writes only those keys.
+
+Each language states the account count (`accounts`, and `nb` / `nr` when present) and the window plus sample. Threads ≤ 500. About half of the Threads copies have a language stock link (`utm_campaign=why`, `/<lang>/stock/<T>/`); the link is on `url`, not in the body. English X is included only when it fits, and its link follows the same half rule. No Instagram.
+
+`why_posts` replace atomic slots. Atomic posts for the same ticker are dropped. The two lists share the six KST times, why posts first, and the total per language stays in 4–6 when the writeup has enough unused facts. Nothing is invented to fill a gap. A why body that copies another slot, or a body already stored on an earlier day in `social-history.json` (`why_text`), is dropped.
+
 ## `atomic_posts`
 
 4 or 5 posts per language, including Saturdays and Sundays (15 items when five points fit, 12 when only four do). The array is all Chinese posts, then English, then Korean. Each item is one point. The same point shares `slot_kst` across languages.
@@ -192,7 +244,7 @@ Each item has `langs.zh`, `langs.en` and `langs.ko`. A poll item also has `poll`
 | --- | --- |
 | `id` | `<lang>-number-<daily\|weekly>-<key>`, `<lang>-stock-<T>` or `<lang>-expert-<T>` |
 | `lang` | `zh`, `en` or `ko` |
-| `slot_kst` | `09:00`, `11:30`, `14:00`, `17:00`, `20:00`, `22:30` (KST, one hour ahead of HKT), first N for N points |
+| `slot_kst` | `09:00`, `11:30`, `14:00`, `17:00`, `20:00`, `22:30` (KST, one hour ahead of HKT). On a weekday, `why_posts` take the earliest of these and atomic posts take the times that remain. On a weekend, the first N times, one per point |
 | `format` | `text_question` (number), `image_card` (stock), `carousel` (expert view) |
 | `point_type` | `number`, `stock` or `expert_view` |
 | `ticker` | present for stock and expert view |
@@ -210,7 +262,7 @@ Points are chosen from `daily` then `weekly`: aggregate counts (`posts`, `accoun
 {"2026-10-23": {"hot_stock": ["SPCX"], "discussion": ["SPY"], "top5": ["RSP", "QQQ"], "atomic": ["TSLA", "GOOG"]}}
 ```
 
-`{date: {slot: [tickers]}}`. The weekday run records `hot_stock`, `discussion`, `top5` (the two leads) and `atomic`. The weekend run records `weekend` and `atomic`. The intraday run records `intraday`, the slot name, and `intraday_x` (normalized English X bodies, so a later slot does not repeat one). `--merge-from` appends that X text the same way. Dates are trimmed to the newest 14. The 7-day block on `hot_stock` / `discussion` looks at earlier dates only, so rewriting today does not ban today's ticker. `SOCIAL_HISTORY` overrides the path. Tests pass `save=False` so they do not write the repo file.
+`{date: {slot: [tickers]}}`. The weekday run records `hot_stock`, `discussion`, `top5` (the two leads), `atomic` and `why`. It also stores `why_text` and `three_lines_text` (normalized bodies from earlier days, so a later day can drop a repeated post). The weekend run records `weekend` and `atomic` and does not write `three_lines` or `why_posts`. The intraday run records `intraday`, the slot name, and `intraday_x` (normalized English X bodies, so a later slot does not repeat one). `--merge-from` appends that X text the same way. Dates are trimmed to the newest 14. The 7-day block on `hot_stock` / `discussion`, and the text block on `why` / `three_lines`, look at earlier dates only, so rewriting today does not ban today's ticker or today's text. `SOCIAL_HISTORY` overrides the path. Tests pass `save=False` so they do not write the repo file.
 
 ## `intraday`
 
