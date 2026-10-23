@@ -144,7 +144,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add -A index.html zh/ en/ ko/ support/ advertise/ about/ newsletter/ tools/index.html data/ og/ px/ av/ social/ sitemap.xml llms-full.txt 404.html
+          git add -A index.html zh/ en/ ko/ support/ advertise/ about/ newsletter/ tools/index.html data/ og/ px/ av/ social/ sitemap.xml llms-full.txt 404.html ccab4c5e388dc31f07a4976abba71466.txt
           git diff --cached --quiet && exit 0
           git commit -m "定時重建 $(date '+%Y-%m-%d %H:%M') HKT"
           git pull --rebase origin main || { git rebase --abort; echo "::error::main 嘋更新期間有新改動，今次唔發佈，下次再試"; exit 1; }
@@ -153,4 +153,5 @@ jobs:
       - name: Tell search engines (IndexNow)
         continue-on-error: true
         run: |
+          # key https://thecrowdtape.com/ccab4c5e388dc31f07a4976abba71466.txt; only URLs in data/indexnow-changed.json (or --all on workflow_dispatch)
           if [ -f "$WORK_DIR/published" ] || [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then python3 tools/indexnow.py; fi
