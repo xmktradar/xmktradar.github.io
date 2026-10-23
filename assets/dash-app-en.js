@@ -5,7 +5,7 @@ const y=function(){return new Promise(function(r){if(typeof scheduler!=='undefin
 await y();
 
 // 儀表板｜結構與計算依照設計稿（奶油風格）；資料全部來自內嵌資料
-const D=await parseJSON((document.getElementById('dash-data')||{textContent:'{}'}).textContent);
+const _de=document.getElementById('dash-data')||{textContent:'{}'};const D=await parseJSON(_de.getAttribute&&_de.getAttribute('data-src')?await fetch(_de.getAttribute('data-src')).then(function(r){if(!r.ok)throw new Error('shell '+r.status);return r.text()}):(_de.textContent||'{}'));
 await y();
 if(!D.prices)D.prices={};if(!D.accounts)D.accounts={};if(!D.posts)D.posts=[];if(!D.intraday)D.intraday={};if(!D.avmini)D.avmini={};if(!D.quotes)D.quotes={};
 const DAY=864e5, MIN_POSTS=D.meta.min_daily_posts||8, HANDLES=D.meta.handles||[];
@@ -339,14 +339,19 @@ async function viewDaily(){
   <div class="kpi bear"><div class="l">Bearish</div><div class="v dn">${nR}</div><div class="d note" title="Each post × each stock counts as one view">Views</div></div>
   <div class="kpi"><div class="l">No stance</div><div class="v">${nU}</div><div class="d note">${nM?`Plus neutral ${nM}`:'Views'}</div></div>
  </section>
+ `;
+ await y();
+ _html+=`<!--DY-->
  ${vsHtml(w)}
  ${highlightsHtml(w.day)}
 `;
  await y();
+ let _attRows='';
+ if(att.length){const _as=att.slice(0,20);for(let _ai=0;_ai<_as.length;_ai++){const x=_as[_ai];const k={bull:0,neu:0,none:0,bear:0};cur.filter(y=>y.t===x.t).forEach(y=>k[y.s]=(k[y.s]||0)+1);const seg=(c,n,l)=>n?`<span class="${c}" style="width:${n/mx*100}%" title="${l} ${n}"></span>`:'';_attRows+=`<div class="hbar">${tkBtn(x.t)}<div class="track stk">${seg('b',k.bull,SLABEL.bull)}${seg('m',k.neu,SLABEL.neu)}${seg('u',k.none,SLABEL.none)}${seg('r',k.bear,SLABEL.bear)}</div><span class="n">${x.n} ${hasPrev?`(${signed(x.d)})`:''}</span></div>`;if((_ai&3)===3)await y()}}
  const _sxHtml=tkNow.length?await stanceList(w,tkNow,shownAccs):empty('No posts mentioned a ticker in this range.');
  _html+=`<!--DY-->
  <section class="c12 panel"><h2>Attention shifts <span class="sub">Only stocks accounts still follow${attGone.length?`, filtered out ${attGone.length} stocks no one follows anymore`:''}; brackets show ${cmpLab}</span></h2>
-  ${att.length?`<div class="scrollbox" style="display:grid;gap:8px;align-content:start">${att.slice(0,20).map(x=>{const k={bull:0,neu:0,none:0,bear:0};cur.filter(y=>y.t===x.t).forEach(y=>k[y.s]=(k[y.s]||0)+1);const seg=(c,n,l)=>n?`<span class="${c}" style="width:${n/mx*100}%" title="${l} ${n}"></span>`:'';return `<div class="hbar">${tkBtn(x.t)}<div class="track stk">${seg('b',k.bull,'Bullish')}${seg('m',k.neu,'Neutral')}${seg('u',k.none,'No stance')}${seg('r',k.bear,'Bearish')}</div><span class="n">${x.n} ${hasPrev?`(${signed(x.d)})`:''}</span></div>`}).join('')}</div>${att.length>20?`<p class="note">`+uiText('另有 '+(att.length-20)+' 隻','+'+(att.length-20)+' more','+'+(att.length-20)+'개 더')+`</p>`:''}<div style="margin-top:10px">${legend}</div>${hasPrev?'':priorLoading?'<p class="note">Loading comparison…</p>':`<p class="note">${priorOpen}${w.timed?`${fmtR(pf)} – ${fmtR(pt)}`:`${fmt(pf)}${len>1?'–'+fmt(pt):''}`}) has no data, so no comparison yet.</p>`}`:empty('No stocks mentioned in this range.')}</section>
+  ${att.length?`<div class="scrollbox" style="display:grid;gap:8px;align-content:start">${_attRows}</div>${att.length>20?`<p class="note">`+uiText('另有 '+(att.length-20)+' 隻','+'+(att.length-20)+' more','+'+(att.length-20)+'개 더')+`</p>`:''}<div style="margin-top:10px">${legend}</div>${hasPrev?'':priorLoading?'<p class="note">Loading comparison…</p>':`<p class="note">${priorOpen}${w.timed?`${fmtR(pf)} – ${fmtR(pt)}`:`${fmt(pf)}${len>1?'–'+fmt(pt):''}`}) has no data, so no comparison yet.</p>`}`:empty('No stocks mentioned in this range.')}</section>
  <section class="c12 panel"><h2>Stance by account <span class="sub">${label} ${tkNow.length} stocks · ${shownAccs.length} accounts · sorted by how many accounts discuss each stock; tap a row to see each account’s reason</span></h2>
   ${_sxHtml}
   <div style="margin-top:10px">${legend}</div>${noTk.length?`<p class="note">Posted but mentioned no ticker: ${noTk.map(accLink).join(' ')}</p>`:''}</section>
@@ -756,7 +761,7 @@ try{paintChrome();await render()}catch(e){console.error(e)}
 if(!coreDone){
   var _bootCore=function(){loadCore().then(function(){window.__dashReady=true;paintChrome();var v=document.getElementById('view');if(v&&v.querySelector('.grid')&&(lastViewKey===current||lastViewKey==='daily')){if(typeof refreshPriceChips==='function')refreshPriceChips();mountStatus();mountMore();return}return render()}).catch(function(e){console.error(e);coreDone=true;window.__dashReady=true;paintChrome();return render()})};
   await y();
-  if('requestIdleCallback'in window)requestIdleCallback(_bootCore,{timeout:3500});else setTimeout(_bootCore,1200);
+  setTimeout(function(){if('requestIdleCallback'in window)requestIdleCallback(_bootCore,{timeout:2000});else _bootCore()},2000);
 }else window.__dashReady=true;
 })();
 document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com')){gtag('event','social_click',{platform:'x',link_url:u,transport_type:'beacon'});gtag('event','x_outbound',{link_url:u,page:'home',lang:document.documentElement.lang||'',transport_type:'beacon'});}else if(h==='instagram.com'||h.endsWith('.instagram.com'))gtag('event','social_click',{platform:'instagram',link_url:u,transport_type:'beacon'});else if(h==='threads.net'||h.endsWith('.threads.net')||h==='threads.com'||h.endsWith('.threads.com'))gtag('event','social_click',{platform:'threads',link_url:u,transport_type:'beacon'});else if(h==='paypal.com'||h.endsWith('.paypal.com')||h==='paypal.me'||h.endsWith('.paypal.me'))gtag('event','donate_click',{method:'paypal',page:'home',lang:document.documentElement.lang})});
