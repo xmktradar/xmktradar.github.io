@@ -903,7 +903,7 @@ nav.tabs a.tab-robo:hover{filter:brightness(.9)}
       fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
         .then(function(r){return r.json()}).then(function(j){
           m.hidden=false;m.textContent=M[l][j.ok?0:1];
-          if(j.ok){f.reset();if(window.gtag)gtag('event','newsletter_signup',{lang:l});}
+          if(j.ok){f.reset();if(window.gtag)gtag('event','newsletter_signup',{lang:l,src:'home'});}
         }).catch(function(){m.hidden=false;m.textContent=M[l][1];});
     });
   });

@@ -940,7 +940,7 @@ else if(cur==='A'||cur==='B')v=cur;
 else{v=Math.random()<0.5?'A':'B';set=true;}
 if(set)document.cookie='ct_ab_nl='+v+'; Max-Age=2592000; path=/; SameSite=Lax';
 aside.dataset.ab=v;
-if(v==='B')aside.removeAttribute('hidden');
+aside.removeAttribute('hidden'); // always show signup; A/B kept for analytics only
 if(window.gtag){
   gtag('set','user_properties',{nl_ab:v});
   gtag('event','ab_exposure',{experiment:'nl-stock-2026-10',variant:v,ticker:T});
