@@ -25,6 +25,9 @@ INLINE = {
     'meta', 'overrides', 'tracked', 'highlights', 'macro', 'days', 'quotes',
     'summaries', 'briefings', 'cons_hist', 'vs_copy', 'tv_symbols',
 }
+# Newest N stay inline (lists are oldest-first); the rest go to lang-hist.json.
+HIST_KEEP = {'daily': 3, 'weekly': 2, 'monthly': 2}
+BRIEF_KEEP = 3
 PAGES = [
     ('index.html', 'master'),
     ('zh/index.html', 'zh'),
@@ -32,6 +35,7 @@ PAGES = [
     ('ko/index.html', 'ko'),
 ]
 MAX_HTML = 990_000  # served homepage must be < 1MB
+INLINE_TARGET = 600_000  # soft budget for the served homepage; inline posts are trimmed to stay under it, MAX_HTML stays the hard limit
 POST_CHUNK = 400_000
 
 
@@ -93,13 +97,41 @@ def is_slim(data):
     return isinstance(data, dict) and isinstance(data.get('_ext'), dict)
 
 
+def merge_hist(obj, hist):
+    """Copy of obj with older summaries/briefings from hist prepended. Key order of obj is kept."""
+    out = dict(obj)
+    hist = hist or {}
+    hist_summ = hist.get('summaries') or {}
+    if hist_summ:
+        src = out['summaries'] if isinstance(out.get('summaries'), dict) else {}
+        summaries = {}
+        for kind, val in src.items():
+            if kind in hist_summ:
+                summaries[kind] = list(hist_summ[kind] or []) + list(val or [])
+            else:
+                summaries[kind] = val
+        for kind, val in hist_summ.items():
+            if kind not in summaries:
+                summaries[kind] = list(val or []) + list(src.get(kind) or [])
+        out['summaries'] = summaries
+    if 'briefings' in hist:
+        out['briefings'] = list(hist['briefings'] or []) + list(out.get('briefings') or [])
+    return out
+
+
 def combine(slim):
     """Rebuild the full dash object from a slim blob plus the files it points at."""
     ext = slim['_ext']
     core = load_json(url_to_path(ext['core'])) if ext.get('core') else {}
     if not isinstance(core, dict):
         raise SystemExit('core file is not an object: ' + str(ext.get('core')))
-    posts = list(slim.get('posts') or [])
+    values = slim
+    if ext.get('hist'):
+        hist = load_json(url_to_path(ext['hist']))
+        if not isinstance(hist, dict):
+            raise SystemExit('hist file is not an object: ' + str(ext.get('hist')))
+        values = merge_hist(slim, hist)
+    posts = list(values.get('posts') or [])
     for url in ext.get('posts') or []:
         page = load_json(url_to_path(url))
         if not isinstance(page, list):
@@ -111,17 +143,17 @@ def combine(slim):
         for key in order:
             if key == 'posts':
                 out['posts'] = posts
-            elif key in slim and key not in ('_ext', 'posts'):
-                out[key] = slim[key]
+            elif key in values and key not in ('_ext', 'posts'):
+                out[key] = values[key]
             elif key in core:
                 out[key] = core[key]
     for key, val in core.items():
         if key not in out and key != 'posts':
             out[key] = val
-    for key, val in slim.items():
+    for key, val in values.items():
         if key not in out and key not in ('_ext', 'posts'):
             out[key] = val
-    if 'posts' not in out and ('posts' in slim or ext.get('posts')):
+    if 'posts' not in out and ('posts' in values or ext.get('posts')):
         out['posts'] = posts
     return out
 
@@ -168,7 +200,7 @@ def choose_inline_count(posts, base, order, lang, shell_len):
         obj = dict(base)
         obj['posts'] = posts[:n]
         obj['_ext'] = ext_for(n_pages)
-        return shell_len + escaped_size(obj) <= MAX_HTML
+        return shell_len + escaped_size(obj) <= INLINE_TARGET
 
     # Page count barely changes the blob; reserve a few slots, then recheck.
     guess_pages = max(1, (len(posts) // 200) + 1)
@@ -214,11 +246,30 @@ def split_data(data, lang, shell_len):
     order = list(data.keys())
     base = {k: data[k] for k in order if k in INLINE}
     core = {k: data[k] for k in order if k not in INLINE and k != 'posts'}
+    hist = {}
+    if isinstance(base.get('summaries'), dict):
+        summaries = {}
+        hist_summ = {}
+        for kind, val in base['summaries'].items():
+            keep = HIST_KEEP.get(kind)
+            if keep is not None and isinstance(val, list) and len(val) > keep:
+                hist_summ[kind] = val[:-keep]
+                summaries[kind] = val[-keep:]
+            else:
+                summaries[kind] = val
+        base['summaries'] = summaries
+        if hist_summ:
+            hist['summaries'] = hist_summ
+    if isinstance(base.get('briefings'), list) and len(base['briefings']) > BRIEF_KEEP:
+        hist['briefings'] = base['briefings'][:-BRIEF_KEEP]
+        base['briefings'] = base['briefings'][-BRIEF_KEEP:]
     n = choose_inline_count(posts, base, order, lang, shell_len) if posts else 0
     older = chunk_posts(posts[n:])
     ext = {'order': order, 'posts': ['/data/dash/%s-posts-%d.json' % (lang, i) for i in range(len(older))]}
     if core:
         ext['core'] = '/data/dash/%s-core.json' % lang
+    if hist:
+        ext['hist'] = '/data/dash/%s-hist.json' % lang
     slim = dict(base)
     if 'posts' in data:
         # Keep posts in its original position when it was an inline-eligible neighbour.
@@ -236,7 +287,7 @@ def split_data(data, lang, shell_len):
     elif 'posts' in data:
         slim['posts'] = posts[:n]
     slim['_ext'] = ext
-    return slim, core, older
+    return slim, core, older, hist
 
 
 def shell_len(html, match):
@@ -271,7 +322,7 @@ def slim_file(rel, lang):
     original = combine(raw) if is_slim(raw) else raw
     # Re-parse the original through dumps/loads so the compare matches what we write.
     original = json.loads(dumps(original))
-    slim, core, pages = split_data(original, lang, shell_len(html, match))
+    slim, core, pages, hist = split_data(original, lang, shell_len(html, match))
     # Round-trip in memory before touching disk: rebuild from the same pieces.
     trial = dict(slim)
     # combine() reads files; check the pieces directly here.
@@ -279,18 +330,19 @@ def slim_file(rel, lang):
     for page in pages:
         posts.extend(page)
     ext = slim['_ext']
+    values = merge_hist(slim, hist)
     rebuilt = {}
     for key in ext['order']:
         if key == 'posts':
             rebuilt['posts'] = posts
-        elif key in slim and key not in ('_ext', 'posts'):
-            rebuilt[key] = slim[key]
+        elif key in values and key not in ('_ext', 'posts'):
+            rebuilt[key] = values[key]
         elif key in core:
             rebuilt[key] = core[key]
     for key, val in core.items():
         if key not in rebuilt:
             rebuilt[key] = val
-    for key, val in slim.items():
+    for key, val in values.items():
         if key not in rebuilt and key not in ('_ext', 'posts'):
             rebuilt[key] = val
     if rebuilt != original:
@@ -307,6 +359,12 @@ def slim_file(rel, lang):
         page_path = os.path.join(folder, '%s-posts-%d.json' % (lang, i))
         write_json(page_path, page)
         keep.add(os.path.abspath(page_path))
+    hist_bytes = 0
+    if hist:
+        hist_path = os.path.join(folder, lang + '-hist.json')
+        write_json(hist_path, hist)
+        keep.add(os.path.abspath(hist_path))
+        hist_bytes = os.path.getsize(hist_path)
     clean_stale(lang, keep)
 
     # The on-disk blob must match `slim` after a read, including key order.
@@ -322,9 +380,10 @@ def slim_file(rel, lang):
         raise SystemExit('%s is still %d bytes (limit 1MB)' % (rel, nbytes))
     n_posts = len(original.get('posts') or [])
     n_inline = len(slim.get('posts') or [])
-    print('%s: %d bytes (blob %d), posts inline %d/%d, core %s, post pages %d' % (
+    print('%s: %d bytes (blob %d), posts inline %d/%d, core %s, post pages %d, hist %s' % (
         rel, nbytes, blob_bytes, n_inline, n_posts,
-        'yes' if core else 'no', len(pages)))
+        'yes' if core else 'no', len(pages),
+        str(hist_bytes) if hist else 'no'))
     return nbytes
 
 
