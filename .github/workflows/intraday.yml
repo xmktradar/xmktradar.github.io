@@ -26,8 +26,10 @@ on:
     - cron: '30 20 * * 1-5'
 permissions:
   contents: write
+# Not site-update: update-site holds that group for 60-90 min, and GitHub keeps
+# only one pending run per group, so a queued intraday run misses its slot.
 concurrency:
-  group: site-update
+  group: intraday
   cancel-in-progress: false
 jobs:
   intraday:
@@ -91,14 +93,22 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add data/
-          git diff --cached --quiet && exit 0
-          git commit -m "盤中社交槽 $(TZ=America/New_York date '+%Y-%m-%d %H:%M') ET"
-          git stash push --include-untracked -q || true
+          # update-site may push a rewritten social-posts.json while this job runs.
+          # Drop local data edits, rebuild one slot commit on latest main, and retry the push.
           ok=0
           for i in 1 2 3 4 5 6; do
-            git pull --rebase origin main && git push origin HEAD:main && { ok=1; break; }
-            git rebase --abort 2>/dev/null || true
+            git stash -u -q || true
+            git fetch origin main
+            git reset --hard origin/main
+            python3 tools/intraday.py --merge-from "$WORK_DIR/intraday-slot.json"
+            git add data/social-posts.json data/social-history.json
+            if git diff --cached --quiet; then
+              ok=1
+              break
+            fi
+            git commit -m "盤中社交槽 $(TZ=America/New_York date '+%Y-%m-%d %H:%M') ET"
+            git push origin HEAD:main && { ok=1; break; }
+            echo "::warning::push failed (try $i), retrying"
             sleep $((i * 8))
           done
-          [ "$ok" = 1 ] || { echo "::error::push failed after rebase retries"; exit 1; }
+          [ "$ok" = 1 ] || { echo "::error::push failed after retries"; exit 1; }

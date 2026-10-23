@@ -3,6 +3,7 @@
 Offline fixtures. Quote fetches are mocked. Run from the repo root:
   python3 tools/test_intraday.py
 """
+import json
 import os
 import re
 import sys
@@ -358,6 +359,97 @@ def test_text_time_equals_quote_time():
         assert ' ET' not in blob
 
 
+def test_merge_from_keeps_same_day_and_appends_history():
+    """--merge-from applies one slot onto the latest file and does not fetch quotes."""
+    open_sl = _slot('intraday_open')
+    slot = _slot('intraday_1')
+    later = _slot('intraday_open', WINTER)
+    path = intra.write_slot_file('intraday_1', SUMMER, slot, slot['generated_at'], '2026-10-23 22:50')
+    assert os.path.basename(path) == 'intraday-slot.json'
+    base = {
+        'date': SUMMER,
+        'posts': {'en': {'x': 'keep me'}},
+        'intraday': {
+            'date': SUMMER,
+            'generated_at': open_sl['generated_at'],
+            'generated_hkt': '2026-10-23 21:35',
+            'slots': {'intraday_open': open_sl},
+        },
+    }
+    with open(intra.posts_path(), 'w', encoding='utf-8') as f:
+        json.dump(base, f)
+    share.save_social_history({
+        SUMMER: {'hot_stock': ['SPCX'], 'intraday_x': ['already there']},
+    })
+    calls = []
+    orig = intra.fetch_live_quotes
+
+    def boom(*_a, **_k):
+        calls.append(1)
+        raise AssertionError('merge-from must not fetch quotes')
+
+    intra.fetch_live_quotes = boom
+    try:
+        assert intra.main(['--merge-from', path, '--slot', 'force']) == 0
+        assert calls == []
+        saved = json.load(open(intra.posts_path(), encoding='utf-8'))
+        assert set(saved['intraday']['slots']) == {'intraday_open', 'intraday_1'}
+        assert saved['intraday']['date'] == SUMMER
+        assert saved['posts']['en']['x'] == 'keep me'
+        hist = share.load_social_history()
+        norm = share._norm_text(slot['x']['en']['text'])
+        assert hist[SUMMER]['hot_stock'] == ['SPCX']
+        assert 'already there' in hist[SUMMER]['intraday_x']
+        assert norm in hist[SUMMER]['intraday_x']
+        assert hist[SUMMER]['intraday_1']
+        # A second merge appends nothing when that X body is already stored.
+        assert intra.main(['--merge-from', path]) == 0
+        hist = share.load_social_history()
+        assert hist[SUMMER]['intraday_x'].count(norm) == 1
+        # A new ET date resets slots and leaves the rest of the file.
+        later_path = os.path.join(os.environ['WORK_DIR'], 'winter-slot.json')
+        intra.write_slot_file(
+            'intraday_open', WINTER, later, later['generated_at'], '2026-11-03 22:35', path=later_path)
+        assert intra.main(['--merge-from', later_path]) == 0
+        saved = json.load(open(intra.posts_path(), encoding='utf-8'))
+        assert saved['intraday']['date'] == WINTER
+        assert list(saved['intraday']['slots']) == ['intraday_open']
+        assert saved['posts']['en']['x'] == 'keep me'
+        hist = share.load_social_history()
+        assert share._norm_text(later['x']['en']['text']) in hist[WINTER]['intraday_x']
+        missing = os.path.join(os.environ['WORK_DIR'], 'missing-slot.json')
+        try:
+            intra.merge_from_file(missing)
+            raise AssertionError('missing slot file should fail')
+        except SystemExit:
+            pass
+        bad = os.path.join(os.environ['WORK_DIR'], 'bad-slot.json')
+        with open(bad, 'w', encoding='utf-8') as f:
+            json.dump({'slot': 'nope', 'date': SUMMER, 'entry': {}}, f)
+        try:
+            intra.main(['--merge-from', bad])
+            raise AssertionError('unknown slot should fail')
+        except SystemExit:
+            pass
+        assert calls == []
+    finally:
+        intra.fetch_live_quotes = orig
+
+
+def test_generate_writes_slot_file():
+    now = datetime(2026, 10, 23, 10, 50, tzinfo=NY)
+    saved = intra.generate('auto', now=now, chart_fn=_chart, sleep=0, save=True)
+    assert saved and saved['post_et'] == '11:00'
+    payload = json.load(open(intra.slot_file_path(), encoding='utf-8'))
+    assert payload['slot'] == 'intraday_1'
+    assert payload['date'] == SUMMER
+    assert payload['generated_at'] == saved['generated_at']
+    assert payload['entry']['post_et'] == '11:00'
+    assert payload['entry']['x']['en']['text']
+    on_disk = json.load(open(intra.posts_path(), encoding='utf-8'))
+    assert 'intraday_1' in on_disk['intraday']['slots']
+
+
 def test_auto_pick():
     holidays = intra.load_holidays()
     now = datetime(2026, 10, 23, 9, 35, tzinfo=NY)
@@ -377,8 +469,10 @@ def main():
     test_text_time_equals_quote_time()
     test_no_repeated_x_and_merge()
     test_utm_normalize_intraday()
+    test_merge_from_keeps_same_day_and_appends_history()
+    test_generate_writes_slot_file()
     test_auto_pick()
-    print('test_intraday: schedule, guard, X/Threads, quotes, fallback, history ok')
+    print('test_intraday: schedule, guard, X/Threads, quotes, fallback, history, merge-from ok')
 
 
 if __name__ == '__main__':
