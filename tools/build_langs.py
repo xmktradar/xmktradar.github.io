@@ -120,6 +120,32 @@ def localize_news(html, lang):
     return re.sub(r'<form\b[^>]*\bct-news\b[^>]*>.*?</form>', one, html, flags=re.S)
 
 
+def lang_pick_js(storage_expr):
+    """JS that sets `l` from localStorage, else the browser language. Unknown languages fall back to English."""
+    return (f'var l;try{{l={storage_expr}}}catch(_){{}}'
+            'if(!l){var n=(navigator.languages||[navigator.language||""]).join(",").toLowerCase();'
+            'l=/^ko|,ko/.test(n)?"ko":/^zh|,zh/.test(n)?"zh":/^en|,en/.test(n)?"en":"en"}')
+
+
+def root_redirect_script(segment):
+    """Script for a repo-root Chinese subpage. On the live hosts, go to /<lang>/<segment>/."""
+    seg = segment.strip('/')
+    if not re.fullmatch(r'[a-z]+', seg):
+        raise ValueError(segment)
+    return ('<script>(function(){if(!/(github\\.io|thecrowdtape\\.com)$/.test(location.hostname))return;'
+            + lang_pick_js('localStorage.getItem("ct-lang")')
+            + f'location.replace("/"+l+"/{seg}/"+location.search+location.hash)'
+            + '})();</script>')
+
+
+def with_root_redirect(html, segment):
+    """Insert the root redirect before </head>. Language copies are left alone."""
+    script = root_redirect_script(segment)
+    if '</head>' not in html:
+        raise ValueError('no </head> in ' + segment)
+    return html.replace('</head>', script + '</head>', 1)
+
+
 def head_tags(cur):
     alt = ''.join(f'<link rel="alternate" hreflang="{LANGS[k][0]}" href="{SITE}{k}/">' for k in LANGS)
     alt += f'<link rel="alternate" hreflang="x-default" href="{SITE}">'
@@ -132,10 +158,14 @@ def head_tags(cur):
           'new MutationObserver(function(){var d=document.getElementById("dive"),n=document.querySelector("header .lang-sw");'
           'if(d&&n&&!d.querySelector(".lang-sw"))d.insertBefore(n.cloneNode(true),d.firstChild)})'
           '.observe(document.documentElement,{childList:true,subtree:true})')
-    if cur is None:  # root: pick a version from the saved choice or the browser language (live site only)
-        js += (';if(!/(github\\.io|thecrowdtape\\.com)$/.test(location.hostname))return;var l;try{l=localStorage.getItem(k)}catch(_){}'
-               'if(!l){var n=(navigator.languages||[navigator.language||""]).join(",").toLowerCase();'
-               'l=/^ko|,ko/.test(n)?"ko":/^zh|,zh/.test(n)?"zh":/^en|,en/.test(n)?"en":"zh"}'
+    if cur is None:  # root master: detect a language, rewrite relative subpage links, then redirect on the live hosts
+        js += (';' + lang_pick_js('localStorage.getItem(k)')
+               + ';function ctFixRoot(root){(root||document).querySelectorAll("a[href]").forEach(function(a){'
+               'var h=a.getAttribute("href")||"";'
+               'if(/^(tools|support|about|advertise|newsletter)\\//.test(h))a.setAttribute("href","/"+l+"/"+h)})}'
+               'document.addEventListener("DOMContentLoaded",function(){ctFixRoot(document)});'
+               'new MutationObserver(function(){ctFixRoot(document)}).observe(document.documentElement,{childList:true,subtree:true});'
+               'if(!/(github\\.io|thecrowdtape\\.com)$/.test(location.hostname))return;'
                'location.replace("/"+l+"/"+location.search+location.hash)')
     js += '})();</script>'
     return f'{MARK}{canon}{alt}<style>{SWITCH_CSS}</style>{js}{MARK}'

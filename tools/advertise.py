@@ -26,6 +26,8 @@ import os
 import re
 from urllib.parse import quote
 
+from build_langs import with_root_redirect
+
 SITE = 'https://thecrowdtape.com/'
 LANGS = {'zh': 'zh-Hant', 'en': 'en', 'ko': 'ko'}
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -324,7 +326,7 @@ def main():
         missed = re.findall(r'\{\{[a-z0-9_]+\}\}', html)
         if missed:
             warn(f'{lang} advertise page has unfilled placeholders: {missed}')
-    write('advertise/index.html', pages['zh'])
+    write('advertise/index.html', with_root_redirect(pages['zh'], 'advertise'))
     write('zh/advertise/index.html', pages['zh'])
     write('en/advertise/index.html', pages['en'])
     write('ko/advertise/index.html', pages['ko'])

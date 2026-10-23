@@ -590,12 +590,12 @@ header.top .meta .hdr-duo{flex-basis:100%;width:100%;display:flex;flex-wrap:wrap
 .flag.small-cap{color:var(--neu-ink);background:var(--neu-bg);border-color:var(--neu-line);font-weight:500}
 
 
-.mk-live{display:flex;align-items:center;gap:10px;margin-top:10px;padding:4px 4px 4px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);min-height:46px}
+.mk-live{display:flex;flex-direction:column;align-items:stretch;gap:6px;margin-top:10px;padding:8px 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);min-height:46px}
 .mk-live-l{flex:none;display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:var(--mut);white-space:nowrap}
 .mk-live-l i{width:7px;height:7px;border-radius:50%;background:var(--warn,#d99a2b);animation:mkpulse 1.6s ease-in-out infinite}
 @keyframes mkpulse{50%{opacity:.35}}
-.mk-live-w{flex:1;min-width:0;overflow:hidden}
-@media(max-width:640px){.mk-live{flex-direction:column;align-items:stretch;padding:8px}.mk-live-l{justify-content:flex-start}}
+.mk-live-w{width:100%;min-width:0;height:46px;overflow:hidden;position:relative}
+.mk-live-w iframe{width:100%!important}
 @media(prefers-reduced-motion:reduce){.mk-live-l i{animation:none}}
 
 
@@ -880,7 +880,7 @@ background:var(--accent);color:#fff;text-decoration:none}
 <header class="top"><div class="wrap"><div class="brand-wrap"><a href="/ko/" class="brand-home"><p class="brand">The Crowd Tape</p></a><p class="brand-sub">What the street is doing, not what I think</p><p class="brand-sub-zh">내 생각이 아니라 X 고수들이 무엇을 하는지 본다</p><nav class="lang-sw" aria-label="Language"><a href="/zh/stock/MMM/">中</a><a href="/en/stock/MMM/">EN</a><a href="/ko/stock/MMM/" aria-current="page">한</a></nav><nav class="site-nav" aria-label="홍보"><a href="/ko/tools/">도구</a><a class="nav-donate" href="/ko/support/">후원하기</a></nav></div></div></header>
 <main class="stock-static"><nav class="money-bar" aria-label="홍보"><span class="pj-tag">홍보</span><a href="/ko/tools/">도구</a><a href="/ko/support/">후원하기</a><a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview" data-placement="money-bar">TradingView</a><a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover" data-placement="money-bar">Stock Rover</a></nav><p class="advice" role="note">투자 조언이 아닙니다. 이 페이지는 공개 게시물을 정리한 자료입니다.</p><div class="wrap" style="padding-block:0 60px">
  <div class="divehead"><a class="back" href="/ko/">← 대시보드로 돌아가기</a><div><h1>MMM</h1><div class="nm">3M Company<span class="pill neu">부분 일치</span></div></div>
-  <div class="meta"><span>종가 <b>175.56</b> (2026-10-22)</span><span>28 일 <b><span class="up">+4.8</span>%</b></span><span>1년 <b><span class="up">+2.3</span>%</b></span><span>28 일 언급 <b>8</b></span></div></div>
+  <div class="meta"><span>종가 <b>175.56</b> (2026-10-22)</span><span>28일 변동 <b><span class="up">+4.8</span>%</b></span><span>1년 <b><span class="up">+2.3</span>%</b></span><span>28 일 언급 <b>8</b></span></div></div>
  
  <div class="grid">
   <section class="c4 panel"><h2>추적 계정 관점 분포 <span class="sub">6 개 계정 언급 · 최신 게시물 기준</span></h2><div class="bar" title="강세 1 · 중립 0 · 입장 없음 5 · 약세 0"><span class="b" style="width:16.666666666666664%"></span><span class="m" style="width:0%"></span><span class="u" style="width:83.33333333333334%"></span><span class="r" style="width:0%"></span></div><div style="margin-top:10px"><div class="legend"><span><i class="sw b"></i>강세</span><span><i class="sw m"></i>중립</span><span><i class="sw u"></i>입장 없음</span><span><i class="sw r"></i>약세</span></div></div>
