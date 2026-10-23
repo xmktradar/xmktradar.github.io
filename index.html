@@ -1128,7 +1128,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-lbk]');if(
 
 // ---------- 頁頂「昨日重疊 vs 今日」（樣式 .vs-bar／.vs-tk；字稿由寫手提供；昨日同連續日數：共識歷史） ----------
 // 新人睇唔明「重疊」：標題同兩個分組用白話覆蓋寫手字稿（Tim，2026-10-21）
-const VS_FIX={label:'共同看多／看空：今日至今 vs 昨日全日',dropped:'今日至今未再上榜：{removed}',stayed:'連續 {streak} 日上榜：{kept}'};
+const VS_FIX=(()=>{const L=PAGE_LANG;if(L==='en')return{label:'Consensus bullish / bearish: today so far vs all of yesterday',dropped:'Not on the list so far today: {removed}',stayed:'On the list {streak} days in a row: {kept}'};if(L==='ko')return{label:'공동 강세/약세: 오늘 현재까지 vs 어제 종일',dropped:'오늘 현재까지 목록에서 제외: {removed}',stayed:'{streak}일 연속 목록: {kept}'};return{label:'共同看多／看空：今日至今 vs 昨日全日',dropped:'今日至今未再上榜：{removed}',stayed:'連續 {streak} 日上榜：{kept}'};})();
 const VSC=D.vs_copy?{...D.vs_copy,...VS_FIX}:null,CH=D.cons_hist||null;
 function vsHtml(w){if(!VSC||!CH)return '';
  const G=consGroups(w.from,w.to),T={bull:G.bull.map(g=>g.t),bear:G.bear.map(g=>g.t)};
@@ -1207,7 +1207,7 @@ function viewDaily(){
   <h2>今日市場分析 ${sm?(sm.stale?`<span class="sub">（最新一份分析，非 ${esc(w.day)} 當日）</span>`:''):'<span class="sub">今日分析尚未產生，以下由資料自動整理</span>'}</h2>
   ${sm?'':sparse}
   ${sm?sumBody(sm.s,true):auto}
-  <p class="note" style="margin:8px 0 0">${fillT("摘要數字來自寫手整理；下方統計卡按同一分析範圍即時計算（目前有效貼文 {n}、有動態帳號 {a}）。",{n:vposts.length,a:accsNow})}</p>
+  <p class="note" style="margin:8px 0 0">${fillT(PAGE_LANG==='en'?"Brief counts are from the writer; the stat cards below are live counts for the same window (posts so far: {n}, active accounts {a}).":PAGE_LANG==='ko'?"요약 숫자는 작성자 정리분; 아래 통계 카드는 같은 구간의 실시간 집계입니다 (유효 게시물 {n}, 활동 계정 {a}).":"摘要數字來自寫手整理；下方統計卡按同一分析範圍即時計算（目前有效貼文 {n}、有動態帳號 {a}）。",{n:vposts.length,a:accsNow})}</p>
   ${br?`<details><summary>分析師簡報</summary>${br.html}</details>`:''}
  </section>
  <div class="c12 dayrange">${`<div class="range ${w.merged?'merged':''}">${rangeTxt}${vposts.length&&!w.timed?`（${vposts[0].time_hkt.slice(5,16).replace('-','/').replace('T',' ')} – ${vposts[vposts.length-1].time_hkt.slice(5,16).replace('-','/').replace('T',' ')} HKT，有效貼文 ${vposts.length} 則）`:''}</div>`}</div>
