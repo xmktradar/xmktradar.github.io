@@ -1,8 +1,11 @@
 'use strict';
-setTimeout(function(){
+(async function(){
+const y=function(){return new Promise(function(r){setTimeout(r,0)})};
+await y();
 
 // 儀表板｜結構與計算依照設計稿（奶油風格）；資料全部來自內嵌資料
 const D=JSON.parse(document.getElementById('dash-data').textContent);
+await y();
 if(!D.prices)D.prices={};if(!D.accounts)D.accounts={};if(!D.posts)D.posts=[];if(!D.intraday)D.intraday={};if(!D.avmini)D.avmini={};if(!D.quotes)D.quotes={};
 const DAY=864e5, MIN_POSTS=D.meta.min_daily_posts||8, HANDLES=D.meta.handles||[];
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -33,11 +36,14 @@ let TODAY=hkDate(CUT);
 const PAGE_LANG=document.documentElement.lang||'';
 const HAS_ZH=s=>typeof s==='string'&&(/^zh/.test(PAGE_LANG)?/[\u3400-\u9fff]/:/\S/).test(s);
 let ALLP=D.posts.map(p=>({...p,text:undefined,summary_zh:HAS_ZH(p.zh_summary)?p.zh_summary:HAS_ZH(p.summary_zh)?p.summary_zh:'',truncated:HAS_ZH(p.zh_summary)&&PAGE_LANG!=='en'?false:p.truncated,tickers:[...new Set([...(p.tickers||[]),...Object.keys(p.stance_by_ticker&&typeof p.stance_by_ticker==='object'?p.stance_by_ticker:{})].map(t=>String(t).replace(/^\$/,'').toUpperCase()))],ms:Date.parse(p.time_utc),acc:p.reposted_by||p.handle,date:p.time_hkt.slice(0,10)})).sort((a,b)=>a.ms-b.ms);
+await y();
 const valid=p=>!p.folded_into&&p.theme!=='非市場';
 // 立場一律按個股讀 stance_by_ticker（唔用整篇帖立場）；冇標示＝未表態
 function stanceOf(p,t){const m=p.stance_by_ticker&&typeof p.stance_by_ticker==='object'?p.stance_by_ticker:null;if(!m)return p.stance&&S_OF[p.stance]?{s:S_OF[p.stance],star:true}:{s:'none',star:false};const k=Object.keys(m).find(x=>String(x).replace(/^\$/,'').toUpperCase()===t);return {s:k?(S_OF[m[k]]||'none'):'none',star:false}}
 let POSTS=[];ALLP.filter(valid).forEach(p=>p.tickers.forEach(t=>{const r=stanceOf(p,t);POSTS.push({p,t,acc:p.acc,s:r.s,star:r.star,ms:p.ms,d:p.date,kind:p.basis||null,why:p.summary_zh||'',url:p.url})}));
+await y();
 let TICKERS=[...new Set(POSTS.map(x=>x.t))].sort();
+await y();
 const explicit=s=>s==='bull'||s==='bear';
 const stanced=s=>s!=='none';
 
@@ -71,6 +77,7 @@ function dailyWindow(){const sm=summaryOf('daily',TODAY);const win=sm&&!sm.stale
  return dailyWindowByDay()}
 function dailyWindowByDay(){const n=rawIn(TODAY,TODAY).filter(valid).length;const y=addDays(TODAY,-1);const hasPrev=ALLP.some(p=>p.date<TODAY);return n<MIN_POSTS&&hasPrev?{from:y,to:TODAY,day:TODAY,merged:true,n}:{from:TODAY,to:TODAY,day:TODAY,merged:false,n}}
 let DATES=[...new Set(ALLP.map(p=>p.date))].sort();
+await y();
 
 // ---------- 股價 ----------
 function closes(t){if(UNC(t))return null;const p=D.prices[t];return p&&p.c&&p.c.length?p.c:null}
@@ -665,17 +672,18 @@ function mountMore(){if(postsReady())return;var h=decodeURIComponent((location.h
  p.appendChild(b);v.appendChild(p);
  if(window.IntersectionObserver){var io=new IntersectionObserver(function(es){if(es.some(function(e){return e.isIntersecting})){io.disconnect();loadNextPosts().then(function(){render()})}},{rootMargin:'280px'});io.observe(b)}}
 window.__loadCore=loadCore;window.__loadAllPosts=loadAllPosts;window.__postsReady=postsReady();window.__dashReady=coreDone;
-function render(){const h=decodeURIComponent((location.hash||'#daily').slice(1));
+async function render(){const h=decodeURIComponent((location.hash||'#daily').slice(1));
  const ms=h.match(/^stock[\/-](.+)$/),ma=h.match(/^account\/(.+)$/);
  if((ms||ma||h==='weekly'||h==='monthly'||h==='macro')&&(!postsReady()||!coreDone)){var v=document.getElementById('view');if(v&&!v.querySelector('#dash-wait'))v.insertAdjacentHTML('afterbegin','<p id="dash-wait" class="note">'+esc(uiText('正在載入其餘資料','Loading the rest','나머지 자료를 불러오는 중'))+'</p>');Promise.all([loadAllPosts(),loadCore()]).then(function(){render()}).catch(function(e){console.error(e);coreDone=true;postsFailed=true;render()});return}
- if(ms||ma){if(!document.getElementById('view').innerHTML)drawView();try{ms?openDive(ms[1].toUpperCase()):openAccount(ma[1])}catch(e){console.error(e);document.getElementById('dive').innerHTML='<div class="wrap">'+empty('畫面顯示錯誤：'+esc(e.message))+'</div>';showDive(document.getElementById('dive'))}return}
- closeDive();current=VIEWS[h]?h:'daily';drawView();
+ if(ms||ma){if(!document.getElementById('view').innerHTML)await drawView();try{ms?openDive(ms[1].toUpperCase()):openAccount(ma[1])}catch(e){console.error(e);document.getElementById('dive').innerHTML='<div class="wrap">'+empty('畫面顯示錯誤：'+esc(e.message))+'</div>';showDive(document.getElementById('dive'))}return}
+ closeDive();current=VIEWS[h]?h:'daily';await drawView();
  if(h==='donate')setTimeout(()=>{const f=document.querySelector('[data-jump="donate"]');if(f)f.click()},50)}
 let lastViewKey=null,lastViewHtml=null;
-function drawView(){document.querySelectorAll('nav.tabs button[data-v]').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===current));
+async function drawView(){document.querySelectorAll('nav.tabs button[data-v]').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===current));
  try{const html=VIEWS[current]();const view=document.getElementById('view');
+  await y();
   if(view.querySelector('.mk-live[data-on]')&&lastViewKey===current&&lastViewHtml===html){if(coreDone){const ld=view.querySelector('#dash-load');if(ld)ld.remove()}mountStatus();mountMore()}
-  else{const oldTape=view.querySelector('.mk-live[data-on]');view.innerHTML=html;if(oldTape){const nw=view.querySelector('.mk-live');if(nw)nw.replaceWith(oldTape)}mountStatus();mountMore();lastViewKey=current;lastViewHtml=html;var _v=view;var _fin=function(){try{linkHandles(_v);fitTables(_v);clampLists(_v);scheduleTape(_v)}catch(e){}};if('requestIdleCallback' in window)requestIdleCallback(_fin,{timeout:1500});else setTimeout(_fin,1)}}catch(e){console.error(e);document.getElementById('view').innerHTML=empty('畫面顯示錯誤：'+esc(e.message))}}
+  else{const oldTape=view.querySelector('.mk-live[data-on]');view.innerHTML=html;await y();if(oldTape){const nw=view.querySelector('.mk-live');if(nw)nw.replaceWith(oldTape)}mountStatus();mountMore();lastViewKey=current;lastViewHtml=html;var _v=view;var _fin=function(){try{linkHandles(_v);fitTables(_v);clampLists(_v);scheduleTape(_v)}catch(e){}};if('requestIdleCallback' in window)requestIdleCallback(_fin,{timeout:1500});else setTimeout(_fin,1)}}catch(e){console.error(e);document.getElementById('view').innerHTML=empty('畫面顯示錯誤：'+esc(e.message))}}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-tk]');if(b){e.preventDefault();location.hash='stock/'+b.dataset.tk;return}
  const v=e.target.closest('nav.tabs button[data-v]');if(v){location.hash=v.dataset.v;return}
  const card=e.target.closest('.acc[data-href]');if(card&&!e.target.closest('a,button')){location.hash=card.dataset.href}});
@@ -696,8 +704,16 @@ function paintChrome(){const m=D.meta;const cut=document.getElementById('cutoff'
 ${MAC&&MAC.rows.length?`<p>大市數據：${[...new Set(MAC.rows.map(r=>(r.src||'').replace(/（.*?）|\(.*?\)/g,'').trim()).filter(Boolean))].map(esc).join('、')||'—'}${MAC.as_of?`，截至 ${esc(MAC.as_of)} HKT`:''}。</p>`:''}<p>時間均為香港時間（HKT, UTC+8）。帳號頭像與簡介來自各帳號的 X 個人頁。</p>
 <p>本站部分連結屬聯盟推廣連結，你經由連結註冊或購買，我們可能獲得佣金，你無需多付。佣金不會影響好淡統計與<a href="/robot.html">機械人選股</a>。本站內容不構成投資建議。</p>
 <p><a href="tools/">工具</a> · <a href="support/">支持我們</a> · <a href="newsletter/">電子報</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank">TradingView <span class="pj-tag">推廣</span></a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="pj-tag">推廣</span></a> · <a href="advertise/">廣告合作</a> · <a href="about/">關於本站及方法</a></p>`;linkHandles(document.getElementById('foot'))}
-requestAnimationFrame(function(){requestAnimationFrame(function(){setTimeout(function(){try{paintChrome();render()}catch(e){console.error(e)}if(!coreDone){var _bootCore=function(){loadCore().then(function(){window.__dashReady=true;paintChrome();if(typeof refreshPriceChips==='function'&&document.getElementById('view')&&document.getElementById('view').querySelector('.hl-tk')){refreshPriceChips();mountStatus();mountMore()}else render()}).catch(function(e){console.error(e);coreDone=true;window.__dashReady=true;paintChrome();render()})};requestAnimationFrame(function(){requestAnimationFrame(function(){setTimeout(_bootCore,0)})})}else window.__dashReady=true;},0)})});
+(async function bootPaint(){
+await y();
+try{paintChrome();await render()}catch(e){console.error(e)}
+if(!coreDone){
+  var _bootCore=function(){loadCore().then(function(){window.__dashReady=true;paintChrome();if(typeof refreshPriceChips==='function'&&document.getElementById('view')&&document.getElementById('view').querySelector('.hl-tk')){refreshPriceChips();mountStatus();mountMore()}else return render()}).catch(function(e){console.error(e);coreDone=true;window.__dashReady=true;paintChrome();return render()})};
+  await y();
+  _bootCore();
+}else window.__dashReady=true;
+})();
 document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com')){gtag('event','social_click',{platform:'x',link_url:u,transport_type:'beacon'});gtag('event','x_outbound',{link_url:u,page:'home',lang:document.documentElement.lang||'',transport_type:'beacon'});}else if(h==='instagram.com'||h.endsWith('.instagram.com'))gtag('event','social_click',{platform:'instagram',link_url:u,transport_type:'beacon'});else if(h==='threads.net'||h.endsWith('.threads.net')||h==='threads.com'||h.endsWith('.threads.com'))gtag('event','social_click',{platform:'threads',link_url:u,transport_type:'beacon'});else if(h==='paypal.com'||h.endsWith('.paypal.com')||h==='paypal.me'||h.endsWith('.paypal.me'))gtag('event','donate_click',{method:'paypal',page:'home',lang:document.documentElement.lang})});
 
 
-},0);
+})().catch(function(e){console.error(e)});
