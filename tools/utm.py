@@ -1,7 +1,7 @@
 """UTM tags on thecrowdtape.com page URLs inside social-post text.
 
 utm_source is the platform's full name (x, threads, instagram, facebook — not ig or fb).
-utm_medium is always social. utm_campaign is the slot:
+utm_medium is always social. utm_campaign is the slot (intraday uses the slot name, e.g. intraday_open):
 
   posts.*                          daily
   slots.<key>.posts.*              carousel-<key>   (carousel-1230)
@@ -14,6 +14,8 @@ utm_medium is always social. utm_campaign is the slot:
   hot_stock / discussion           that slot. threads and facebook, including first_comment.
   weekend                          weekend. posts[].langs.<lang>.{threads,facebook,first_comment}
   atomic_posts                     atomic. text and first_comment use source threads.
+  intraday.slots.<key>             that slot (intraday_open, …). x.en is source x;
+                                   threads.<lang> is source threads. No Facebook.
 
 tag_url replaces any existing utm_source, utm_medium and utm_campaign, keeps every other
 query parameter and the #fragment, and leaves asset URLs (/og/, /assets/, images) alone.
@@ -150,6 +152,15 @@ def _fit_threads_tree(obj):
 
     def walk(node):
         if isinstance(node, dict):
+            th = node.get('threads')
+            if isinstance(th, dict):
+                for lang, entry in th.items():
+                    if lang not in LANGS:
+                        continue
+                    if isinstance(entry, dict) and isinstance(entry.get('text'), str):
+                        entry['text'] = fit_threads(entry['text'], lang)
+                    elif isinstance(entry, str):
+                        th[lang] = fit_threads(entry, lang)
             for key, value in node.items():
                 if key in LANGS and isinstance(value, dict) and isinstance(value.get('threads'), str):
                     value['threads'] = fit_threads(value['threads'], key)
@@ -161,6 +172,40 @@ def _fit_threads_tree(obj):
                     walk(value)
 
     walk(obj)
+
+
+def _walk_intraday(node, counts):
+    """intraday.slots.<key>: x.en is X (campaign = slot name); threads.<lang> is Threads."""
+    slots = node.get('slots') if isinstance(node, dict) else None
+    if not isinstance(slots, dict):
+        return
+    from share import LANGS, fit_threads
+    for key, slot in slots.items():
+        if not isinstance(slot, dict):
+            continue
+        campaign = str(key)
+        x = slot.get('x')
+        if isinstance(x, dict):
+            for lang, entry in x.items():
+                if isinstance(entry, dict):
+                    _apply_field(entry, 'text', 'x', campaign, 'x', counts)
+                    if isinstance(entry.get('url'), str):
+                        entry['url'] = tag_url(entry['url'], 'x', campaign)
+                elif isinstance(entry, str):
+                    _apply_field(x, lang, 'x', campaign, 'x', counts)
+        th = slot.get('threads')
+        if isinstance(th, dict):
+            for lang, entry in th.items():
+                if isinstance(entry, dict):
+                    _apply_field(entry, 'text', 'threads', campaign, 'threads', counts)
+                    if isinstance(entry.get('url'), str):
+                        entry['url'] = tag_url(entry['url'], 'threads', campaign)
+                    if lang in LANGS and isinstance(entry.get('text'), str):
+                        entry['text'] = fit_threads(entry['text'], lang)
+                elif isinstance(entry, str):
+                    _apply_field(th, lang, 'threads', campaign, 'threads', counts)
+                    if lang in LANGS:
+                        th[lang] = fit_threads(th[lang], lang)
 
 
 def tag_posts(posts, campaign):
@@ -371,6 +416,8 @@ def normalize_obj(data, tutorial=False):
             _walk_weekend(data['weekend'], counts)
         if isinstance(data.get('atomic_posts'), list):
             _walk_atomic(data['atomic_posts'], counts)
+        if isinstance(data.get('intraday'), dict):
+            _walk_intraday(data['intraday'], counts)
     _fit_threads_tree(data)
     from share import sanitize_instagram_tree, strip_dup_handles_tree
     strip_dup_handles_tree(data)

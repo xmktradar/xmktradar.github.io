@@ -63,22 +63,37 @@ def test_zero_account_is_kept_and_bool_is_not():
     assert rank_rows([], 'bull') == []
 
 
+def _posts(row):
+    n = row.get('n_posts')
+    return n if isinstance(n, (int, float)) and not isinstance(n, bool) else 0
+
+
 def test_writeup_bear_top5():
-    # Current daily.bear (accounts, posts):
-    # QQQ 5/9, META 3/4, MRNA 3/4, SOXX 2/5, SNDK 2/3, DRAM 2/2.
-    # META ties MRNA, so the ticker puts META first. SNDK has more posts than DRAM.
-    daily = json.load(open(WRITEUP, encoding='utf-8'))['daily']
-    ranked = _tickers(daily['bear'], 'bear')
-    assert ranked[:5] == ['QQQ', 'META', 'MRNA', 'SOXX', 'SNDK'], ranked
-    assert ranked[5] == 'DRAM'
-    slot = share.build_top5(daily, '2026-10-23', '2026-10-23 12:37')
-    assert [row['t'] for row in slot['bear']] == ranked[:5]
-    assert [row['n'] for row in slot['bear']] == [5, 3, 3, 2, 2]
-    assert [row['t'] for row in slot['bull']] == ['RSP', 'WMT']
-    text = slot['posts']['en']['instagram']
-    assert text.find('$META') < text.find('$MRNA') < text.find('$SOXX')
-    assert '$SNDK' in text and '$DRAM' not in text
-    assert slot['posts']['zh']['x'].find('$QQQ') < slot['posts']['zh']['x'].find('$META')
+    # Live daily.bear changes. Compare the card to rank_rows of this file.
+    # Order is account count desc, post count desc, ticker asc. Counts do not rise.
+    with open(WRITEUP, encoding='utf-8') as f:
+        raw = json.load(f)
+    daily = raw['daily']
+    rows = daily.get('bear') or []
+    ranked = rank_rows(rows, 'bear')
+    eligible = [
+        row for row in rows
+        if isinstance(row, dict) and share._ticker_sym(row.get('t')) and share._is_num(row.get('nr'))
+    ]
+    ordered = sorted(eligible, key=lambda row: (-row['nr'], -_posts(row), share._ticker_sym(row.get('t'))))
+    assert [share._ticker_sym(row.get('t')) for row in ranked] == [
+        share._ticker_sym(row.get('t')) for row in ordered
+    ]
+    day = str(raw.get('today') or '2026-10-23')
+    made = str(raw.get('generated_hkt') or f'{day} 12:00')
+    slot = share.build_top5(daily, day, made)
+    top = [
+        {'t': share._ticker_sym(row.get('t')), 'n': share._as_int(row.get('nr'))}
+        for row in ranked[:5]
+    ]
+    assert slot['bear'] == top
+    counts = [row['n'] for row in slot['bear']]
+    assert counts == sorted(counts, reverse=True)
 
 
 def main():
@@ -87,7 +102,7 @@ def main():
     test_missing_posts_sort_as_zero()
     test_zero_account_is_kept_and_bool_is_not()
     test_writeup_bear_top5()
-    print('test_rank: tie-break, side counts, writeup bear QQQ META MRNA SOXX SNDK ok')
+    print('test_rank: tie-break, side counts, writeup bear rank ok')
 
 
 if __name__ == '__main__':

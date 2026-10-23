@@ -3243,6 +3243,26 @@ def _body_groups(sp):
     atomic = [p.get('text') for p in sp.get('atomic_posts') or [] if isinstance(p, dict) and isinstance(p.get('text'), str)]
     if atomic:
         groups['atomic_posts'] = atomic
+    intra = sp.get('intraday')
+    if isinstance(intra, dict):
+        for key, sl in (intra.get('slots') or {}).items():
+            if not isinstance(sl, dict):
+                continue
+            blobs = []
+            xen = (sl.get('x') or {}).get('en') if isinstance(sl.get('x'), dict) else None
+            if isinstance(xen, dict) and isinstance(xen.get('text'), str):
+                blobs.append(xen['text'])
+            elif isinstance(xen, str):
+                blobs.append(xen)
+            th = sl.get('threads') if isinstance(sl.get('threads'), dict) else {}
+            for lang in LANGS:
+                node = th.get(lang)
+                if isinstance(node, dict) and isinstance(node.get('text'), str):
+                    blobs.append(node['text'])
+                elif isinstance(node, str):
+                    blobs.append(node)
+            if blobs:
+                groups[f'intraday.{key}'] = blobs
     return groups
 
 
