@@ -18,7 +18,7 @@ from datetime import date, timedelta
 
 from sitedata import load, notice, now_hk, read_json, work, write_json
 from share import fit_threads, fit_threads_posts, page_url, xlen
-from utm import tag_posts
+from utm import normalize_file, tag_posts
 
 SITE = 'https://thecrowdtape.com/'
 LANGS = ('zh', 'en', 'ko')
@@ -180,6 +180,8 @@ def main():
     tag_posts(tp['posts'], 'tutorial')
     fit_threads_posts(tp['posts'])
     write_json('data/tutorial-posts.json', tp, indent=1)
+    normalize_file('data/tutorial-posts.json')
+    tp = read_json('data/tutorial-posts.json')
     os.makedirs('social', exist_ok=True)
     open('social/tutorial.html', 'w', encoding='utf-8').write(page(tp))
     write_json(work('tutorial.json'), job)

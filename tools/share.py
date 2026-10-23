@@ -20,7 +20,7 @@ import sys
 from datetime import datetime
 
 from sitedata import HK, load, notice, now_hk, read_json, work, write_json
-from utm import tag_posts, tag_url
+from utm import normalize_file, tag_posts, tag_url
 
 HTML = 'index.html'
 SITE = 'https://thecrowdtape.com/'
@@ -621,7 +621,7 @@ _XEMOJI = re.compile(r'\s*[📊💬🚀⚔️]+\s*$')
 
 def facebook_cta(text, lang):
     """Facebook text plus the newsletter line. `text` is kept as it already is."""
-    line = FB_CTA[lang] + tag_url(page_url(lang), 'fb', 'newsletter')
+    line = FB_CTA[lang] + tag_url(page_url(lang), 'facebook', 'newsletter')
     text = (text or '').rstrip()
     return f'{text}\n\n{line}' if text else line
 
@@ -681,7 +681,7 @@ def _disc_line():
 
 
 def _x_link(lang, campaign):
-    """Language home for an X post, with the same utm on every language."""
+    """Language home for an X post: utm_source=x, utm_medium=social, this campaign."""
     return tag_url(page_url(lang), 'x', campaign)
 
 
@@ -1542,6 +1542,8 @@ def main():
         fit_threads_posts(sp['posts'])
         attach_new_posts(sp, rebuild_premarket=True)  # both X posts; carousel rebuilds premarket after the 2030 slot
         write_json('data/social-posts.json', sp, indent=1)
+        normalize_file('data/social-posts.json')
+        sp = read_json('data/social-posts.json')
         os.makedirs('social', exist_ok=True)
         open('social/index.html', 'w', encoding='utf-8').write(social_page(sp))
         write_feeds(sp)

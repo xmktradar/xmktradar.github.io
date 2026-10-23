@@ -13,7 +13,7 @@ os.environ['WORK_DIR'] = tempfile.mkdtemp(prefix='premarket-test-')
 import share  # noqa: E402
 
 def _url(lang):
-    return f'https://thecrowdtape.com/{lang}/?utm_source=x&utm_medium=post&utm_campaign=premarket'
+    return f'https://thecrowdtape.com/{lang}/?utm_source=x&utm_medium=social&utm_campaign=premarket'
 
 
 URLS = [_url(lang) for lang in share.LANGS]
@@ -25,19 +25,19 @@ POSTS = {
         '10/20 X 大神共識快照： $AMZN 4 個帳號一齊睇好 📊\n\n'
         '・4 個帳號： $AMZN\n'
         '・2 個帳號： $META、 $BE\n\n'
-        'https://thecrowdtape.com/zh/?utm_source=x&utm_medium=post&utm_campaign=daily\n'
+        'https://thecrowdtape.com/zh/?utm_source=x&utm_medium=social&utm_campaign=daily\n'
         '⚠️ 唔構成投資建議')},
     'en': {'x': (
         'Oct 20 · What top X accounts agree on: $AMZN, 4 accounts bullish 📊\n\n'
         '・4 accounts: $AMZN\n'
         '・2 accounts: $META, $BE\n\n'
-        'https://thecrowdtape.com/en/?utm_source=x&utm_medium=post&utm_campaign=daily\n'
+        'https://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=daily\n'
         '⚠️ Not investment advice')},
     'ko': {'x': (
         '10/20 X 인플루언서 컨센서스: $AMZN 계정 4개 동시 강세 📊\n\n'
         '・계정 4개: $AMZN\n'
         '・계정 2개: $META, $BE\n\n'
-        'https://thecrowdtape.com/ko/?utm_source=x&utm_medium=post&utm_campaign=daily\n'
+        'https://thecrowdtape.com/ko/?utm_source=x&utm_medium=social&utm_campaign=daily\n'
         '⚠️ 투자 조언 아님')},
 }
 
@@ -79,7 +79,7 @@ def test_tie():
             '10/20 $NVDA 3 個帳號一齊睇好\n'
             'Oct 20 $NVDA, 3 accounts bullish\n'
             '10/20 $NVDA 계정 3개 동시 강세\n'
-            'https://thecrowdtape.com/?utm_source=x&utm_medium=post&utm_campaign=afterclose\n'
+            'https://thecrowdtape.com/?utm_source=x&utm_medium=social&utm_campaign=afterclose\n'
             + DISC)}},
     }
     # Afterclose text only names NVDA. Joint-bull lines in posts name AMZN, META, BE.
