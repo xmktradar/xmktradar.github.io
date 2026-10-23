@@ -1,0 +1,101 @@
+<!doctype html><meta charset="utf-8">
+<!-- Top-5 consensus card. tools/top5card.js calls render(data) and fit().
+     Portrait 1080x1350 (X / Instagram / Threads) and square 1080x1080 (Facebook).
+     Same type and colours as tools/xcard.html. Rows come only from the job. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=block">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0}
+body{width:1080px;height:1350px;position:relative;overflow:hidden;color:#151a2c;
+ font-family:"Noto Sans TC","Noto Sans KR","Noto Color Emoji",sans-serif}
+body.sq{height:1080px}
+html[lang=ko] body{font-family:"Noto Sans KR","Noto Sans TC","Noto Color Emoji",sans-serif}
+html[lang=ko] h1{word-break:keep-all}
+.bg{position:absolute;inset:0;background:linear-gradient(160deg,#8fe3c3 0%,#fde7a1 48%,#f7c1cc 100%)}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.55) 1.6px,transparent 1.7px);background-size:22px 22px;mask-image:linear-gradient(180deg,transparent,#000 28%)}
+.tape{position:absolute;left:-40px;right:-40px;top:18px;height:46px;background:#151a2c;transform:rotate(-2.2deg);
+ display:flex;align-items:center;gap:28px;padding-left:70px;white-space:nowrap;box-shadow:0 6px 0 rgba(21,26,44,.18)}
+.tape span{font:700 22px "IBM Plex Mono","Noto Sans TC","Noto Sans KR",monospace;color:#fff}
+.tape .u{color:#5ee08f}.tape .d{color:#ff7d7d}.tape .sep{color:#f8d34a}
+.main{position:absolute;left:48px;right:48px;top:96px;bottom:78px;display:flex;flex-direction:column;min-height:0}
+#in{display:flex;flex-direction:column;min-height:0;flex:1;gap:14px}
+.row1{display:flex;gap:14px;align-items:center;justify-content:space-between;flex:none}
+.brand{white-space:nowrap;display:inline-flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:8px 20px 8px 10px;font-weight:900;font-size:26px;box-shadow:0 4px 0 rgba(21,26,44,.14)}
+.brand .lg{width:44px;height:44px;border-radius:12px;object-fit:cover;margin:-4px 0}
+.date{display:inline-block;background:#f8d34a;border:3px solid #151a2c;border-radius:12px;padding:6px 14px;font-weight:900;font-size:24px;transform:rotate(-2deg);box-shadow:3px 4px 0 #151a2c;white-space:nowrap}
+h1{margin:0;font-weight:900;font-size:40px;line-height:1.18;text-align:center}
+body.sq h1{font-size:34px}
+.win{text-align:center;font-weight:700;font-size:22px;color:#3c4466;line-height:1.35}
+.win b{font-family:"IBM Plex Mono",monospace;font-weight:700;color:#151a2c}
+.cols{display:flex;gap:18px;flex:1;min-height:0}
+.col{flex:1;min-width:0;background:#fff;border:4px solid #151a2c;border-radius:22px;box-shadow:0 8px 0 #151a2c;padding:16px 18px 12px;display:flex;flex-direction:column;min-height:0}
+.col h2{margin:0 0 8px;font-size:30px;text-align:center;font-weight:900}
+.col.bull h2{color:#1d6b3a}
+.col.bear h2{color:#a52b3d}
+.rows{display:flex;flex-direction:column;justify-content:flex-start;gap:4px;flex:1;min-height:0}
+.row{display:flex;align-items:baseline;justify-content:space-between;gap:10px;border-top:2px solid #eceef4;padding:12px 0}
+.row:first-child{border-top:0}
+.tk{font:700 36px/1 "IBM Plex Mono",monospace;letter-spacing:-.5px}
+body.sq .row{padding:8px 0}
+body.sq .tk{font-size:30px}
+.n{font-weight:900;font-size:22px;text-align:right;white-space:nowrap}
+.n b{font:700 34px/1 "IBM Plex Mono",monospace}
+body.sq .n b{font-size:28px}
+.col.bull .n b{color:#1f9d55}
+.col.bear .n b{color:#d23b4f}
+.none{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:900;font-size:32px;color:#5c6578;padding:12px}
+.foot{position:absolute;left:48px;right:48px;bottom:18px;height:48px;background:rgba(255,255,255,.9);border-radius:999px;
+ display:flex;align-items:center;justify-content:center;padding:0 22px;font-weight:700;font-size:20px;color:#3c4466;white-space:nowrap;gap:8px}
+.foot b{color:#151a2c}
+</style>
+<body class="pt">
+<div class="bg"></div><div class="dots"></div>
+<div class="tape" id="tape"></div>
+<div class="main" id="main"><div id="in">
+ <div class="row1"><span class="brand"><img class="lg" src="logo.png" alt="">The Crowd Tape</span><span class="date" id="date"></span></div>
+ <h1 id="h"></h1>
+ <div class="win" id="win"></div>
+ <div class="cols">
+  <section class="col bull"><h2 id="bh"></h2><div class="rows" id="bull"></div></section>
+  <section class="col bear"><h2 id="rh"></h2><div class="rows" id="bear"></div></section>
+ </div>
+</div></div>
+<div class="foot"><span><b>@thecrowdtape</b> · thecrowdtape.com · <span id="foot"></span></span></div>
+<script>
+function render(D){
+const esc=v=>String(v==null?'':v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lang=D.lang==='zh'||D.lang==='ko'?D.lang:'en';
+document.documentElement.lang=lang;
+document.body.className=D.size==='square'?'sq':'pt';
+const tape=`<span class="u">${esc(D.bull_label||'')}</span><span class="sep">✦</span><span class="d">${esc(D.bear_label||'')}</span><span class="sep">✦</span>`;
+document.getElementById('tape').innerHTML=tape+tape+tape+tape;
+document.getElementById('date').textContent=D.date||'';
+document.getElementById('h').textContent=D.heading||'';
+const win=D.window?`<span>${esc(D.win_label||'')}</span> <b>${esc(D.window)}</b>`:'';
+document.getElementById('win').innerHTML=win;
+document.getElementById('bh').textContent=D.bull_label||'';
+document.getElementById('rh').textContent=D.bear_label||'';
+document.getElementById('foot').textContent=D.foot||'';
+const count=(n)=>{
+ if(lang==='zh') return `<b>${esc(n)}</b> 個帳號`;
+ if(lang==='ko') return `계정 <b>${esc(n)}</b>개`;
+ return `<b>${esc(n)}</b> ${n===1?'account':'accounts'}`;
+};
+const fill=(id, rows)=>{
+ const list=(rows||[]).filter(r=>r&&r.t!=null&&r.n!=null).slice(0,5);
+ const el=document.getElementById(id);
+ el.innerHTML=list.length?list.map(r=>`<div class="row"><span class="tk">$${esc(r.t)}</span><span class="n">${count(r.n)}</span></div>`).join(''):`<div class="none">${esc(D.none||'')}</div>`;
+};
+fill('bull', D.bull);
+fill('bear', D.bear);
+}
+function fit(){
+ const h=document.getElementById('h');
+ if(h){let s=document.body.classList.contains('sq')?34:40; h.style.fontSize=s+'px';
+  while(h.scrollHeight>h.clientHeight+2 && h.clientHeight>0 && s>24){s-=1; h.style.fontSize=s+'px'}}
+ const main=document.getElementById('main'), inn=document.getElementById('in');
+ let k=1; inn.style.zoom='';
+ while(inn.getBoundingClientRect().height>main.clientHeight+2 && k>0.62){k-=0.02; inn.style.zoom=k}
+}
+</script>
+</body>
