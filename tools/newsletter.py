@@ -13,6 +13,7 @@ newsletter/<slug>/index.html. Sitemap: three language archive URLs plus each iss
 import html
 import os
 import re
+import json
 from urllib.parse import urlparse
 
 from build_langs import with_root_redirect
@@ -182,10 +183,22 @@ ISSUE_SHELL = '''<!DOCTYPE html>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-42CSNJ8DF9');</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="robots" content="index,follow">
+<meta name="robots" content="index,follow,max-image-preview:large">
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{canon}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc}">
+<meta property="og:url" content="{canon}">
+<meta property="og:image" content="{og_image}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{title}">
+<meta name="twitter:description" content="{desc}">
+<meta name="twitter:image" content="{og_image}">
+<script type="application/ld+json">{json_ld}</script>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
 <style>
@@ -234,6 +247,7 @@ h1{{font-family:var(--f-display);font-size:28px;line-height:1.3;margin:0 0 8px;o
 <header>
   <a class="brand" href="/en/">The Crowd Tape</a>
   <nav class="site-nav" aria-label="Site">
+    <a href="/en/about/">About</a>
     <a href="/en/tools/">Tools</a>
     <a class="nav-donate" href="/en/support/">Support us</a>
   </nav>
@@ -280,7 +294,7 @@ h1{{font-family:var(--f-display);font-size:28px;line-height:1.3;margin:0 0 8px;o
   <p><a class="back" href="/en/newsletter/">{back}</a></p>
 </main>
 <footer class="site-foot">
-  <p><a href="/en/tools/">Tools</a> · <a href="/en/support/">Support us</a> · <a href="/en/newsletter/">Newsletter</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">TradingView <span class="aff-tag">Promotion</span></a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="aff-tag">Promotion</span></a></p>
+  <p><a href="/en/about/">About</a> · <a href="/en/tools/">Tools</a> · <a href="/en/support/">Support us</a> · <a href="/en/newsletter/">Newsletter</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">TradingView <span class="aff-tag">Promotion</span></a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="aff-tag">Promotion</span></a></p>
 </footer>
 </div>
 <script>
@@ -304,10 +318,36 @@ def issue_page(issue, text, stocks, disclaimer, ui):
     desc = lines[1] if len(lines) > 1 else issue.get('title') or ''
     canon = f'{SITE}newsletter/{issue["slug"]}/'
     body = body_html(text, stocks)
+    og_image = f'{SITE}og/latest-en.png'
+    about_url = f'{SITE}en/about/'
+    date_pub = str(issue.get('from') or issue.get('to') or '')
+    date_mod = str(issue.get('to') or issue.get('from') or '')
+    ld = {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        'headline': title,
+        'description': desc,
+        'image': [og_image],
+        'mainEntityOfPage': {'@type': 'WebPage', '@id': canon},
+        'author': {'@type': 'Organization', 'name': 'The Crowd Tape', 'url': SITE},
+        'publisher': {
+            '@type': 'Organization',
+            'name': 'The Crowd Tape',
+            'url': SITE,
+            'logo': {'@type': 'ImageObject', 'url': f'{SITE}assets/icon-192.png'},
+        },
+        'about': {'@type': 'WebPage', 'name': 'About The Crowd Tape', 'url': about_url},
+    }
+    if date_pub:
+        ld['datePublished'] = date_pub
+    if date_mod:
+        ld['dateModified'] = date_mod
     return ISSUE_SHELL.format(
         title=esc(title),
         desc=esc(desc),
         canon=esc(canon),
+        og_image=esc(og_image),
+        json_ld=json.dumps(ld, ensure_ascii=False),
         body=body,
         disclaimer=esc(disclaimer),
         form_label=esc(ui.get('每週好淡統計，直送你嘅電郵', 'Get the weekly crowd tally by email')),
