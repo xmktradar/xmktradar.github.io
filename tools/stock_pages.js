@@ -364,6 +364,8 @@ ${ga}
 ${fonts}
 ${styles}
 <style>.brand-home{color:inherit;text-decoration:none}
+.lang-sw{position:static!important;float:none!important;inset:auto!important;margin:6px 0 2px!important;justify-content:flex-start}
+.brand-wrap .lang-sw{display:flex;flex-wrap:wrap}
 /* phones: the header scrolls away so the stock content gets the whole screen (Tim, 2026-10-21); ↑ button goes back up */
 @media(max-width:700px){header.top{position:static}}
 .stock-static{padding-top:8px}.stock-static .back{text-decoration:none;display:inline-block}
