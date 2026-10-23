@@ -53,8 +53,9 @@ jobs:
       - name: Install headless browser
         if: steps.guard.outputs.run == 'true'
         run: |
+          # Light run: use the runner's preinstalled Google Chrome instead of downloading Chromium + deps (~13 min).
           npm install --no-save --no-audit --no-fund playwright@1.56.1
-          npx playwright install --with-deps chromium
+          if [ -x /usr/bin/google-chrome ]; then echo "CHROME_PATH=/usr/bin/google-chrome" >> "$GITHUB_ENV"; else npx playwright install --with-deps chromium; fi
       - name: Fetch new posts
         if: steps.guard.outputs.run == 'true'
         continue-on-error: true
