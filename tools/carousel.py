@@ -15,6 +15,7 @@ import os
 import re
 from datetime import datetime, timedelta
 
+from ranking import rank_rows
 from share import (SHORT, SITE, LANGS, IG_BIO, IG_FOLLOW, attach_new_posts, clean, dedupe_handle,
                     fit_threads, fit_threads_posts, ig_tags, likes, page_url, sanitize_instagram,
                     social_page, tags, trading_day, xlen)
@@ -171,8 +172,8 @@ def snap(site, s, lang, day, win):
     def grp(gs, side):
         return [card(site, g['t'], i + 1, stance_pills(lang, g['nb'], g['nr'], g['nb'] + g['nr']),
                      list(dict.fromkeys(r['acc'] for r in g['rows'] if r['s'] == side))) for i, g in enumerate(gs[:3])]
-    joint = {'kind': 'cards', 'secs': [{'h': u['jb'], 'cards': grp(sorted(s['bull'], key=lambda g: -g['nb']), 'bull'), 'empty': u['none']},
-                                       {'h': u['jr'], 'cards': grp(sorted(s['bear'], key=lambda g: -g['nr']), 'bear'), 'empty': u['none']}]}
+    joint = {'kind': 'cards', 'secs': [{'h': u['jb'], 'cards': grp(rank_rows(s['bull'], 'bull'), 'bull'), 'empty': u['none']},
+                                       {'h': u['jr'], 'cards': grp(rank_rows(s['bear'], 'bear'), 'bear'), 'empty': u['none']}]}
     sp = sorted(s['split'], key=lambda g: -(g['nb'] + g['nr']))[:3]
     split = {'kind': 'cards', 'secs': [{'h': u['split'], 'cards': [
         card(site, g['t'], i + 1, [{'c': 'g', 'x': u['nb'](g['nb'])}, {'c': 'r', 'x': u['nr'](g['nr'])}],
