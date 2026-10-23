@@ -5,6 +5,7 @@ HKT is ET+12 in summer (EDT) and ET+13 in winter (EST, from the first Sunday in 
 One English X post per slot; Threads in zh/en/ko. No Facebook. Spec language 'kr' is stored as 'ko'.
 
 python3 tools/intraday.py --slot <name|auto|force>
+python3 tools/intraday.py --merge-from <file>
 """
 import argparse
 import os
@@ -882,6 +883,49 @@ def merge_intraday(data, date, slot_name, slot_obj, generated_at, generated_hkt)
     return data
 
 
+def slot_file_path():
+    """Generated slot, outside the checkout, so publish can reapply it after a hard reset."""
+    return work('intraday-slot.json')
+
+
+def write_slot_file(slot_name, date, slot_obj, generated_at, generated_hkt, path=None):
+    path = path or slot_file_path()
+    write_json(path, {
+        'slot': slot_name,
+        'date': as_day(date),
+        'generated_at': generated_at,
+        'generated_hkt': generated_hkt,
+        'entry': slot_obj,
+    }, indent=1)
+    return path
+
+
+def merge_from_file(path, save=True):
+    """Merge one already-built slot into social posts and history. Does not fetch quotes."""
+    payload = read_json(path, None)
+    if not isinstance(payload, dict):
+        raise SystemExit(f'merge-from: {path} is missing or not a slot file')
+    slot_name = str(payload.get('slot') or '').strip()
+    entry = payload.get('entry')
+    date = as_day(payload.get('date') or (entry.get('date') if isinstance(entry, dict) else ''))
+    if slot_name not in SLOT_NAMES or not isinstance(entry, dict) or not date:
+        raise SystemExit(f'merge-from: {path} must contain slot, date, and entry')
+    generated_at = payload.get('generated_at') or entry.get('generated_at')
+    generated_hkt = payload.get('generated_hkt') or ''
+    sp = read_json(posts_path(), {}) or {}
+    if not isinstance(sp, dict):
+        sp = {}
+    merge_intraday(sp, date, slot_name, entry, generated_at, generated_hkt)
+    history = share.load_social_history()
+    remember_intraday(history, date, slot_name, entry)
+    if save:
+        write_json(posts_path(), sp, indent=1)
+        normalize_file(posts_path())
+        share.save_social_history(history)
+    print(f'merge-from {slot_name} {date}')
+    return sp.get('intraday', {}).get('slots', {}).get(slot_name)
+
+
 def remember_intraday(history, date, slot_name, slot_obj):
     tickers = []
     for item in slot_obj.get('hot') or []:
@@ -947,6 +991,7 @@ def generate(slot, now=None, force=False, chart_fn=None, sleep=0.3, save=True):
     merge_intraday(sp, date, resolved, slot_obj, generated_at, generated_hkt)
     remember_intraday(history, date, resolved, slot_obj)
     if save:
+        write_slot_file(resolved, date, slot_obj, generated_at, generated_hkt)
         write_json(posts_path(), sp, indent=1)
         normalize_file(posts_path())
         sp = read_json(posts_path(), sp)
@@ -969,9 +1014,14 @@ def main(argv=None):
     p.add_argument('--slot', default='auto', help='slot name, auto, or force')
     p.add_argument('--force', action='store_true', help='bypass time and trading-day guard')
     p.add_argument('--guard', action='store_true', help='only evaluate the time/trading-day guard')
+    p.add_argument('--merge-from', default=None, metavar='FILE',
+                   help='merge this slot file into social posts and history; do not fetch')
     p.add_argument('--now', default=None, help='ISO timestamp in America/New_York (tests)')
     p.add_argument('--no-sleep', action='store_true')
     args = p.parse_args(argv)
+    if args.merge_from:
+        merge_from_file(args.merge_from)
+        return 0
     now = parse_now(args.now)
     force = bool(args.force or (args.slot or '').strip().lower() == 'force')
     if args.guard:

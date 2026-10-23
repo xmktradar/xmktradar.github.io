@@ -3473,6 +3473,20 @@ def attach_weekend_slots(sp, day, writeup, history=None, save=False):
     return sp
 
 
+def carry_intraday(sp, prev, day):
+    """Keep a same-date intraday block when weekday posts are rebuilt from scratch.
+
+    `prev` is the social-posts object read before the rebuild. A different date
+    stays off the new file; that day's slots are written by the intraday job.
+    """
+    if not isinstance(sp, dict):
+        return sp
+    intra = prev.get('intraday') if isinstance(prev, dict) else None
+    if isinstance(intra, dict) and _as_day(intra.get('date')) and _as_day(intra.get('date')) == _as_day(day):
+        sp['intraday'] = intra
+    return sp
+
+
 def social_actions(day, sp, hour, has_items, legacy, force=False):
     """Which branch main() runs.
 
@@ -3505,6 +3519,7 @@ def main():
     draw = last.get('hash') != digest or last.get('date') != day or not os.path.exists(f'og/{day}.png')
 
     sp = read_json('data/social-posts.json', {})
+    prev_sp = sp if isinstance(sp, dict) else {}
     now = now_hk()
     old = isinstance((sp.get('posts') or {}).get('zh'), str)  # written before the per-platform versions existed
     old = old or not os.path.exists('zh/feed.xml')  # first run with RSS feeds
@@ -3525,6 +3540,7 @@ def main():
         attach_top5_and_weekly(sp, day, sp['made_hkt'], ch)
         writeup = read_json('data/writeup-input.json', {}) or {}
         attach_market_slots(sp, day, writeup if isinstance(writeup, dict) else {}, load_social_history(), save=True)
+        carry_intraday(sp, prev_sp, day)
         write_json('data/social-posts.json', sp, indent=1)
         normalize_file('data/social-posts.json')
         sp = read_json('data/social-posts.json')
