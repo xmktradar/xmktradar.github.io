@@ -42,7 +42,7 @@ SWITCH_CSS = ('.lang-sw{display:flex;gap:4px;margin:6px 0 2px}.lang-sw a{font:60
               'text-decoration:none;background:var(--surface)}.lang-sw a[aria-current]{color:var(--accent);'
               'border-color:var(--accent);background:var(--accent-soft)}'
               # English and Korean labels run longer than Chinese: let event tags wrap on phones
-              '#dive>.lang-sw{justify-content:flex-end;margin:10px 16px 0}'
+              '#dive>.lang-sw{position:static;justify-content:flex-start;margin:8px 16px 4px;clear:both}'
               '@media(max-width:600px){.flag{white-space:normal;max-width:100%;flex-wrap:wrap}.tk:has(.flag){white-space:normal!important;max-width:100%}html:not([lang^=zh]) td:not(:first-child) .note{white-space:normal}}')
 
 
@@ -147,6 +147,10 @@ def with_root_redirect(html, segment):
 
 
 def head_tags(cur):
+    # Root (/) keeps zh-Hant-HK content for no-JS crawlers; canonical points at /zh/.
+    # Live browsers on thecrowdtape.com/github.io are redirected by language (default en).
+    # Sitemap omits the bare root (see tools/sitemap_lastmod.py). x-default hreflang stays /.
+
     alt = ''.join(f'<link rel="alternate" hreflang="{LANGS[k][0]}" href="{SITE}{k}/">' for k in LANGS)
     alt += f'<link rel="alternate" hreflang="x-default" href="{SITE}">'
     canon = f'<link rel="canonical" href="{SITE}{cur or "zh"}/">'
@@ -335,6 +339,8 @@ def twitter_text(s):
 def build(lang, master):
     if lang != 'zh':
         master = ZH_ONLY.sub('', master)
+    # one tagline per language (avoid near-duplicates)
+    master = re.sub(r'<p class="brand-sub-zh">.*?</p>', '', master, count=1)
     tr = read_json(f'i18n/{lang}.json', {}) if lang != 'zh' else {}
     tr = tr if isinstance(tr, dict) else {}
     m = BLOCK.search(master)

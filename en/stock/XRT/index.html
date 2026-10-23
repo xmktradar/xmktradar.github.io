@@ -594,7 +594,7 @@ header.top .meta .hdr-duo{flex-basis:100%;width:100%;display:flex;flex-wrap:wrap
 .mk-live-l{flex:none;display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:var(--mut);white-space:nowrap}
 .mk-live-l i{width:7px;height:7px;border-radius:50%;background:var(--warn,#d99a2b);animation:mkpulse 1.6s ease-in-out infinite}
 @keyframes mkpulse{50%{opacity:.35}}
-.mk-live-w{width:100%;min-width:0;height:46px;overflow:hidden;position:relative}
+.mk-live-w{width:100%;min-width:0;height:46px;overflow:hidden;position:relative;padding-right:36px;box-sizing:border-box}
 .mk-live-w iframe{width:100%!important}
 @media(prefers-reduced-motion:reduce){.mk-live-l i{animation:none}}
 
@@ -611,11 +611,11 @@ header.top .meta .hdr-duo{flex-basis:100%;width:100%;display:flex;flex-wrap:wrap
 .tv-delay.unk{border-style:dashed}
 .tv-go{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--link);text-decoration:none;white-space:nowrap}
 .tv-go:hover{text-decoration:underline}
-.tv-box{height:420px;background:var(--bg)}
+.tv-box{height:420px;min-height:420px;background:var(--bg)}
 .tv-box>div,.tv-box iframe{width:100%!important;height:100%!important}
 .tv-full{display:inline-flex;align-items:center;gap:6px;margin:8px 14px;padding:6px 12px;border:1px dashed var(--line-strong);border-radius:999px;font-weight:700;font-size:14px;color:var(--ink);text-decoration:none;max-width:calc(100% - 28px);flex-wrap:wrap}
 .tv-f{padding:8px 14px;font-size:11.5px;line-height:1.5;color:var(--mut);border-top:1px solid var(--line-soft)}
-@media(max-width:640px){.tv-box{height:320px}.tv-go{margin-left:0}}
+@media(max-width:640px){.tv-box{height:320px;min-height:320px}.tv-go{margin-left:0}}
 
 
 
@@ -833,8 +833,10 @@ nav.tabs a.tab-robo:hover{filter:brightness(.9)}
 .m-body .tx{margin:4px 0 0;overflow-wrap:anywhere}
 @media(max-width:600px){.m-row{flex-direction:column;gap:6px}.m-row .post-who{flex:none;max-width:100%}.m-th>summary{padding:10px}}
 </style>
-<style>.lang-sw{display:flex;gap:4px;margin:6px 0 2px}.lang-sw a{font:600 12.5px/1 var(--f-body);padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);text-decoration:none;background:var(--surface)}.lang-sw a[aria-current]{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}#dive>.lang-sw{justify-content:flex-end;margin:10px 16px 0}@media(max-width:600px){.flag{white-space:normal;max-width:100%;flex-wrap:wrap}.tk:has(.flag){white-space:normal!important;max-width:100%}html:not([lang^=zh]) td:not(:first-child) .note{white-space:normal}}</style>
+<style>.lang-sw{display:flex;gap:4px;margin:6px 0 2px}.lang-sw a{font:600 12.5px/1 var(--f-body);padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);text-decoration:none;background:var(--surface)}.lang-sw a[aria-current]{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}#dive>.lang-sw{position:static;justify-content:flex-start;margin:8px 16px 4px;clear:both}@media(max-width:600px){.flag{white-space:normal;max-width:100%;flex-wrap:wrap}.tk:has(.flag){white-space:normal!important;max-width:100%}html:not([lang^=zh]) td:not(:first-child) .note{white-space:normal}}</style>
 <style>.brand-home{color:inherit;text-decoration:none}
+.lang-sw{position:static!important;float:none!important;inset:auto!important;margin:6px 0 2px!important;justify-content:flex-start}
+.brand-wrap .lang-sw{display:flex;flex-wrap:wrap}
 /* phones: the header scrolls away so the stock content gets the whole screen (Tim, 2026-10-21); ↑ button goes back up */
 @media(max-width:700px){header.top{position:static}}
 .stock-static{padding-top:8px}.stock-static .back{text-decoration:none;display:inline-block}
@@ -877,7 +879,7 @@ background:var(--accent);color:#fff;text-decoration:none}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap"><div class="brand-wrap"><a href="/en/" class="brand-home"><p class="brand">The Crowd Tape</p></a><p class="brand-sub">What the street is doing, not what I think</p><p class="brand-sub-zh">What top X accounts are doing, not what I think</p><nav class="lang-sw" aria-label="Language"><a href="/zh/stock/XRT/">中</a><a href="/en/stock/XRT/" aria-current="page">EN</a><a href="/ko/stock/XRT/">한</a></nav><nav class="site-nav" aria-label="Promotion"><a href="/en/tools/">Tools</a><a class="nav-donate" href="/en/support/">Support us</a></nav></div></div></header>
+<header class="top"><div class="wrap"><div class="brand-wrap"><a href="/en/" class="brand-home"><p class="brand">The Crowd Tape</p></a><p class="brand-sub">What the street is doing, not what I think</p><nav class="lang-sw" aria-label="Language"><a href="/zh/stock/XRT/">中</a><a href="/en/stock/XRT/" aria-current="page">EN</a><a href="/ko/stock/XRT/">한</a></nav><nav class="site-nav" aria-label="Promotion"><a href="/en/tools/">Tools</a><a class="nav-donate" href="/en/support/">Support us</a></nav></div></div></header>
 <main class="stock-static"><nav class="money-bar" aria-label="Promotion"><span class="pj-tag">Promotion</span><a href="/en/tools/">Tools</a><a href="/en/support/">Support us</a><a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview" data-placement="money-bar">TradingView</a><a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover" data-placement="money-bar">Stock Rover</a></nav><p class="advice" role="note">Not investment advice. This page only summarises public posts.</p><div class="wrap" style="padding-block:0 60px">
  <div class="divehead"><a class="back" href="/en/">← Back to dashboard</a><div><h1>XRT</h1><div class="nm">State Street SPDR S&amp;P Retail ETF<span class="pill neu">Partly aligned</span></div></div>
   <div class="meta"><span>Close <b>89.12</b> (2026-10-22)</span><span>28-day change <b><span class="up">+8.6</span>%</b></span><span>1Y <b><span class="up">+4.7</span>%</b></span><span>28 d mentions <b>2</b></span></div></div>
@@ -905,7 +907,7 @@ background:var(--accent);color:#fff;text-decoration:none}
    <p class="note" style="margin-bottom:0">Partly aligned. No clearly opposing views so far.</p>
    </section>
   <div class="c12 dim">Current views <small>Each account’s latest stance and reasoning; change is vs that account’s previous call</small></div>
-  <section class="c12"><div class="acc-cards sd-cards"><div class="acc-card neu"><div><b>Howard Lindzon</b> <a class="handle xh" href="https://x.com/howardlindzon" target="_blank" rel="noopener"><img class="xh-av" src="/av/01015a89a5b9.jpg" loading="lazy" alt="">@howardlindzon</a><a class="accin" href="/en/#account/howardlindzon" title="Views by @howardlindzon  on this page" aria-label="Views by @howardlindzon  on this page">Views ›</a></div><div><span class="pill neu">Neutral</span> <span class="note">First call</span> </div><div class="note">Technicals · Ivan Hoff: Momentum Monday - Correction in AI Stocks. Mentions <a class="handle xh" href="https://x.com/MarketSurge" target="_blank" rel="noopener"><span class="xh-av ini" aria-hidden="true">M</span>@MarketSurge</a> <a class="handle xh" href="https://x.com/howardlindzon" target="_blank" rel="noopener"><img class="xh-av" src="/av/01015a89a5b9.jpg" loading="lazy" alt="">@howardlindzon</a> $SMH $QQQ $XBI $XLE $XRT</div><div class="handle">2026-10-19 04:18 HKT <a href="https://x.com/ivanhoff/status/2111914742969446871" target="_blank" rel="noopener">Original post ↗</a></div></div><div class="acc-card neu"><div><b>Michael A. Gayed, CFA</b> <a class="handle xh" href="https://x.com/leadlagreport" target="_blank" rel="noopener"><img class="xh-av" src="/av/9f42d94504a4.jpg" loading="lazy" alt="">@leadlagreport</a><a class="accin" href="/en/#account/leadlagreport" title="Views by @leadlagreport  on this page" aria-label="Views by @leadlagreport  on this page">Views ›</a></div><div><span class="pill neu">Neutral</span> <span class="note">First call</span> </div><div class="note">Basis not tagged · Michigan's current-conditions gauge just hit 44.7, the lowest on record. The S&amp;P closed Friday just under its all-time high.
+  <section class="c12"><div class="acc-cards sd-cards"><div class="acc-card neu"><div><b>Howard Lindzon</b> <a class="handle xh" href="https://x.com/howardlindzon" target="_blank" rel="noopener"><img class="xh-av" src="/av/01015a89a5b9.jpg" loading="lazy" alt="">@howardlindzon</a><a class="accin" href="/en/#account/howardlindzon" title="Views by @howardlindzon  on this page" aria-label="Views by @howardlindzon  on this page">Views ›</a></div><div><span class="pill neu">Neutral</span> <span class="note">First call</span> </div><div class="note">Technicals · Ivan Hoff: Momentum Monday - Correction in AI Stocks. Mentions <a class="handle xh" href="https://x.com/MarketSurge" target="_blank" rel="noopener"><span class="xh-av ini" aria-hidden="true">M</span>@MarketSurge</a> <a class="handle xh" href="https://x.com/howardlindzon" target="_blank" rel="noopener"><img class="xh-av" src="/av/01015a89a5b9.jpg" loading="lazy" alt="">@howardlindzon</a> $SMH $QQQ $XBI $XLE $XRT</div><div class="handle">2026-10-19 04:18 HKT <a href="https://x.com/ivanhoff/status/2111914742969446871" target="_blank" rel="noopener">Original post ↗</a></div></div><div class="acc-card neu"><div><b>Michael A. Gayed, CFA</b> <a class="handle xh" href="https://x.com/leadlagreport" target="_blank" rel="noopener"><img class="xh-av" src="/av/9f42d94504a4.jpg" loading="lazy" alt="">@leadlagreport</a><a class="accin" href="/en/#account/leadlagreport" title="Views by @leadlagreport  on this page" aria-label="Views by @leadlagreport  on this page">Views ›</a></div><div><span class="pill neu">Neutral</span> <span class="note">First call</span> </div><div class="note">未標示依據 · Michigan's current-conditions gauge just hit 44.7, the lowest on record. The S&amp;P closed Friday just under its all-time high.
 
 That is not a disconnect. Gas and borrowing costs tax the bottom; asset prices pay the top.
 
