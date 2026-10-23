@@ -17,6 +17,7 @@ import os
 import re
 from collections import Counter
 
+from build_langs import with_root_redirect
 from sitedata import BLOCK, read_json
 
 SITE = 'https://thecrowdtape.com/'
@@ -356,7 +357,7 @@ def main():
         }
     template = open(os.path.join(ROOT, 'tools', 'about.html'), encoding='utf-8').read()
     zh = page(template, 'zh', blocks)
-    write('about/index.html', zh)
+    write('about/index.html', with_root_redirect(zh, 'about'))
     write('zh/about/index.html', zh)
     for lang in ('en', 'ko'):
         html_s = page(template, lang, blocks)

@@ -15,6 +15,7 @@ import os
 import re
 from urllib.parse import urlparse
 
+from build_langs import with_root_redirect
 from sitedata import BLOCK, read_json
 
 SITE = 'https://thecrowdtape.com/'
@@ -423,7 +424,7 @@ def main():
     template = open(os.path.join(ROOT, 'tools', 'newsletter.html'), encoding='utf-8').read()
     listing = issues_html(rows)
     zh = page(template, 'zh', listing, zh_disc)
-    write('newsletter/index.html', zh)
+    write('newsletter/index.html', with_root_redirect(zh, 'newsletter'))
     write('zh/newsletter/index.html', zh)
     for lang in ('en', 'ko'):
         html_s = page(template, lang, listing, disclaimer_for(lang, zh_disc))

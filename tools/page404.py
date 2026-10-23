@@ -1,0 +1,85 @@
+"""Write the GitHub Pages custom 404 at the repo root.
+
+Standalone page: same type and color feel as the homepage, the GA tag, and
+noindex. A bare /stock/<ticker> URL is sent to /<lang>/stock/<TICKER>/.
+"""
+import os
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+HTML = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-42CSNJ8DF9"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-42CSNJ8DF9');</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Page not found | The Crowd Tape</title>
+<script>
+(function(){
+  var m=location.pathname.match(/^\\/stock\\/([A-Za-z0-9.\\-]+)\\/?$/);
+  if(!m)return;
+  var l;try{l=localStorage.getItem("ct-lang")}catch(e){}
+  if(!l){var n=(navigator.languages||[navigator.language||""]).join(",").toLowerCase();
+    l=/^ko|,ko/.test(n)?"ko":/^zh|,zh/.test(n)?"zh":/^en|,en/.test(n)?"en":"en"}
+  location.replace("/"+l+"/stock/"+m[1].toUpperCase()+"/"+location.search+location.hash);
+})();
+</script>
+<style>
+:root{
+  --bg:#f3f4f7; --surface:#ffffff; --ink:#161a21; --muted:#5b6372; --line:#dde1e8;
+  --accent:#2d48c9; --accent-soft:#e6eafb;
+  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --f-display:"Noto Serif TC","Songti TC",serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+.wrap{max-width:640px;margin:0 auto;padding:48px 20px 64px}
+.brand{font-family:var(--f-display);font-weight:700;font-size:20px;color:var(--ink);text-decoration:none}
+h1{font-family:var(--f-display);font-size:32px;line-height:1.3;margin:28px 0 8px}
+.alts{margin:0 0 28px;color:var(--muted)}
+.alts p{margin:0}
+.ko{font-family:"Noto Sans KR","Noto Sans TC",system-ui,sans-serif}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:0 0 12px}
+.card h2{font-size:15px;margin:0 0 8px;color:var(--muted);font-weight:700}
+.card a{display:inline-block;margin:0 10px 6px 0;color:var(--accent);font-weight:700;text-decoration:none}
+.card a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="brand" href="/en/">The Crowd Tape</a>
+  <h1 lang="zh-Hant">找不到這個頁面</h1>
+  <div class="alts">
+    <p lang="en">Page not found</p>
+    <p class="ko" lang="ko">페이지를 찾을 수 없습니다</p>
+  </div>
+  <section class="card">
+    <h2 lang="zh-Hant">首頁 · <span lang="en">Home</span> · <span class="ko" lang="ko">홈</span></h2>
+    <a href="/zh/" hreflang="zh-Hant">繁體中文</a>
+    <a href="/en/" hreflang="en">English</a>
+    <a href="/ko/" hreflang="ko">한국어</a>
+  </section>
+  <section class="card">
+    <h2 lang="zh-Hant">個股頁面 · <span lang="en">Stock pages</span> · <span class="ko" lang="ko">종목 페이지</span></h2>
+    <a href="/zh/#stock-index" hreflang="zh-Hant">繁體中文</a>
+    <a href="/en/#stock-index" hreflang="en">English</a>
+    <a href="/ko/#stock-index" hreflang="ko">한국어</a>
+  </section>
+</div>
+</body>
+</html>
+"""
+
+
+def main():
+    path = os.path.join(ROOT, '404.html')
+    with open(path, 'w', encoding='utf-8') as fh:
+        fh.write(HTML)
+    print(path)
+
+
+if __name__ == '__main__':
+    main()
