@@ -744,180 +744,105 @@
  },
  "atomic_posts": [
   {
-   "id": "zh-number-daily-posts",
+   "id": "zh-number-daily-originals",
    "lang": "zh",
-   "slot_kst": "09:00",
+   "slot_kst": "17:00",
    "format": "text_question",
    "point_type": "number",
-   "hook": "今日帖文數 88",
-   "text": "今日帖文數 88\n\n你點睇呢個數？\n\n⚠️ 唔構成投資建議\n#美股",
+   "hook": "今日原創帖 152",
+   "text": "今日原創帖 152\n\n你點睇呢個數？\n\n⚠️ 唔構成投資建議\n#美股",
    "hashtags": "#美股",
    "has_link": true,
    "first_comment": "最新數字 👉 https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
   },
   {
-   "id": "zh-stock-TSLA",
-   "lang": "zh",
-   "slot_kst": "11:30",
-   "format": "image_card",
-   "point_type": "stock",
-   "hook": "$TSLA 9 個帳號看淡",
-   "text": "$TSLA 9 個帳號看淡\n\n⚠️ 唔構成投資建議\n#美股 #TSLA",
-   "hashtags": "#美股 #TSLA",
-   "has_link": false,
-   "ticker": "TSLA"
-  },
-  {
-   "id": "zh-expert-GOOG",
-   "lang": "zh",
-   "slot_kst": "14:00",
-   "format": "carousel",
-   "point_type": "expert_view",
-   "hook": "@michaelsikand 提到 $GOOG",
-   "text": "@michaelsikand 提到 $GOOG\n\n8 個帳號看好\n\n@michaelsikand：假設 $GOOG 從 OpenAI、Claude、Muse 等撤銷 Gmail 和 Calendar 的 API 存取權限，可能一舉佔領整個代理式 AI 市場。\n\n⚠️ 唔構成投資建議\n#美股 #GOOG",
-   "hashtags": "#美股 #GOOG",
-   "has_link": true,
-   "ticker": "GOOG",
-   "first_comment": "最新數字 👉 https://thecrowdtape.com/zh/stock/GOOG/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
-  },
-  {
-   "id": "zh-number-daily-accounts",
-   "lang": "zh",
-   "slot_kst": "17:00",
-   "format": "text_question",
-   "point_type": "number",
-   "hook": "今日帳號數 34",
-   "text": "今日帳號數 34\n\n你點睇呢個數？\n\n⚠️ 唔構成投資建議\n#美股",
-   "hashtags": "#美股",
-   "has_link": false
-  },
-  {
-   "id": "zh-number-daily-originals",
+   "id": "zh-number-daily-reposts",
    "lang": "zh",
    "slot_kst": "20:00",
    "format": "text_question",
    "point_type": "number",
-   "hook": "今日原創帖 77",
-   "text": "今日原創帖 77\n\n你點睇呢個數？\n\n⚠️ 唔構成投資建議\n#美股",
+   "hook": "今日轉帖 17",
+   "text": "今日轉帖 17\n\n你點睇呢個數？\n\n⚠️ 唔構成投資建議\n#美股",
+   "hashtags": "#美股",
+   "has_link": false
+  },
+  {
+   "id": "zh-number-daily-bull_views",
+   "lang": "zh",
+   "slot_kst": "22:30",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "今日看好觀點 91",
+   "text": "今日看好觀點 91\n\n你點睇呢個數？\n\n⚠️ 唔構成投資建議\n#美股",
    "hashtags": "#美股",
    "has_link": true,
    "first_comment": "最新數字 👉 https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
   },
   {
-   "id": "en-number-daily-posts",
-   "lang": "en",
-   "slot_kst": "09:00",
-   "format": "text_question",
-   "point_type": "number",
-   "hook": "Posts today 88",
-   "text": "Posts today 88\n\nWhat do you make of this number?\n\n⚠️ Not investment advice\n#StockMarket",
-   "hashtags": "#StockMarket",
-   "has_link": false
-  },
-  {
-   "id": "en-stock-TSLA",
-   "lang": "en",
-   "slot_kst": "11:30",
-   "format": "image_card",
-   "point_type": "stock",
-   "hook": "$TSLA 9 bearish accounts",
-   "text": "$TSLA 9 bearish accounts\n\n⚠️ Not investment advice\n#StockMarket #TSLA",
-   "hashtags": "#StockMarket #TSLA",
-   "has_link": true,
-   "ticker": "TSLA",
-   "first_comment": "Live numbers 👉 https://thecrowdtape.com/en/stock/TSLA/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
-  },
-  {
-   "id": "en-expert-GOOG",
-   "lang": "en",
-   "slot_kst": "14:00",
-   "format": "carousel",
-   "point_type": "expert_view",
-   "hook": "@michaelsikand on $GOOG",
-   "text": "@michaelsikand on $GOOG\n\n8 bullish accounts\n\n⚠️ Not investment advice\n#StockMarket #GOOG",
-   "hashtags": "#StockMarket #GOOG",
-   "has_link": false,
-   "ticker": "GOOG"
-  },
-  {
-   "id": "en-number-daily-accounts",
+   "id": "en-number-daily-originals",
    "lang": "en",
    "slot_kst": "17:00",
    "format": "text_question",
    "point_type": "number",
-   "hook": "Accounts today 34",
-   "text": "Accounts today 34\n\nWhat do you make of this number?\n\n⚠️ Not investment advice\n#StockMarket",
+   "hook": "Original posts today 152",
+   "text": "Original posts today 152\n\nWhat do you make of this number?\n\n⚠️ Not investment advice\n#StockMarket",
+   "hashtags": "#StockMarket",
+   "has_link": false
+  },
+  {
+   "id": "en-number-daily-reposts",
+   "lang": "en",
+   "slot_kst": "20:00",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "Reposts today 17",
+   "text": "Reposts today 17\n\nWhat do you make of this number?\n\n⚠️ Not investment advice\n#StockMarket",
    "hashtags": "#StockMarket",
    "has_link": true,
    "first_comment": "Live numbers 👉 https://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
   },
   {
-   "id": "en-number-daily-originals",
+   "id": "en-number-daily-bull_views",
    "lang": "en",
-   "slot_kst": "20:00",
+   "slot_kst": "22:30",
    "format": "text_question",
    "point_type": "number",
-   "hook": "Original posts today 77",
-   "text": "Original posts today 77\n\nWhat do you make of this number?\n\n⚠️ Not investment advice\n#StockMarket",
+   "hook": "Bullish views today 91",
+   "text": "Bullish views today 91\n\nWhat do you make of this number?\n\n⚠️ Not investment advice\n#StockMarket",
    "hashtags": "#StockMarket",
-   "has_link": false
-  },
-  {
-   "id": "ko-number-daily-posts",
-   "lang": "ko",
-   "slot_kst": "09:00",
-   "format": "text_question",
-   "point_type": "number",
-   "hook": "오늘 게시물 88",
-   "text": "오늘 게시물 88\n\n이 숫자 어떻게 보세요?\n\n⚠️ 투자 조언 아님\n#미국주식",
-   "hashtags": "#미국주식",
-   "has_link": true,
-   "first_comment": "최신 수치 👉 https://thecrowdtape.com/ko/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
-  },
-  {
-   "id": "ko-stock-TSLA",
-   "lang": "ko",
-   "slot_kst": "11:30",
-   "format": "image_card",
-   "point_type": "stock",
-   "hook": "$TSLA 약세 계정 9개",
-   "text": "$TSLA 약세 계정 9개\n\n⚠️ 투자 조언 아님\n#미국주식 #TSLA",
-   "hashtags": "#미국주식 #TSLA",
-   "has_link": false,
-   "ticker": "TSLA"
-  },
-  {
-   "id": "ko-expert-GOOG",
-   "lang": "ko",
-   "slot_kst": "14:00",
-   "format": "carousel",
-   "point_type": "expert_view",
-   "hook": "@michaelsikand 가 본 $GOOG",
-   "text": "@michaelsikand 가 본 $GOOG\n\n강세 계정 8개\n\n⚠️ 투자 조언 아님\n#미국주식 #GOOG",
-   "hashtags": "#미국주식 #GOOG",
-   "has_link": true,
-   "ticker": "GOOG",
-   "first_comment": "최신 수치 👉 https://thecrowdtape.com/ko/stock/GOOG/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
-  },
-  {
-   "id": "ko-number-daily-accounts",
-   "lang": "ko",
-   "slot_kst": "17:00",
-   "format": "text_question",
-   "point_type": "number",
-   "hook": "오늘 계정 34",
-   "text": "오늘 계정 34\n\n이 숫자 어떻게 보세요?\n\n⚠️ 투자 조언 아님\n#미국주식",
-   "hashtags": "#미국주식",
    "has_link": false
   },
   {
    "id": "ko-number-daily-originals",
    "lang": "ko",
+   "slot_kst": "17:00",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "오늘 원글 152",
+   "text": "오늘 원글 152\n\n이 숫자 어떻게 보세요?\n\n⚠️ 투자 조언 아님\n#미국주식",
+   "hashtags": "#미국주식",
+   "has_link": true,
+   "first_comment": "최신 수치 👉 https://thecrowdtape.com/ko/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
+  },
+  {
+   "id": "ko-number-daily-reposts",
+   "lang": "ko",
    "slot_kst": "20:00",
    "format": "text_question",
    "point_type": "number",
-   "hook": "오늘 원글 77",
-   "text": "오늘 원글 77\n\n이 숫자 어떻게 보세요?\n\n⚠️ 투자 조언 아님\n#미국주식",
+   "hook": "오늘 리포스트 17",
+   "text": "오늘 리포스트 17\n\n이 숫자 어떻게 보세요?\n\n⚠️ 투자 조언 아님\n#미국주식",
+   "hashtags": "#미국주식",
+   "has_link": false
+  },
+  {
+   "id": "ko-number-daily-bull_views",
+   "lang": "ko",
+   "slot_kst": "22:30",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "오늘 강세 의견 91",
+   "text": "오늘 강세 의견 91\n\n이 숫자 어떻게 보세요?\n\n⚠️ 투자 조언 아님\n#미국주식",
    "hashtags": "#미국주식",
    "has_link": true,
    "first_comment": "최신 수치 👉 https://thecrowdtape.com/ko/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
@@ -1229,5 +1154,244 @@
   },
   "generated_at": "2026-10-23T11:38:41-04:00",
   "generated_hkt": "2026-10-23 23:38"
- }
+ },
+ "three_lines": {
+  "date": "2026-10-23",
+  "generated_at": "2026-10-24T00:22+08:00",
+  "window": "10/23 00:00 – 21:16 HKT",
+  "sample": {
+   "posts": 169,
+   "accounts": 45
+  },
+  "suggested_kst": "08:30",
+  "format": "text_question",
+  "source": "homepage dash-data (same window and threeLines as the daily tab)",
+  "x": {
+   "zh": {
+    "text": "今日三句重點\n\n10/23 00:00 – 21:16 HKT · 169 則貼文 / 45 個帳號\n\n共識變化最大：$RSP 淨看多比例 -100% → +75% 對比昨日（今日至今）\n\n最多人討論：$SPCX 15 個觀點、11 個帳號\n\n分歧最大：$SPCX 看多 4、看空 3\n\n⚠️ 唔構成投資建議\n\n#美股 #RSP #SPCX\nhttps://thecrowdtape.com/zh/?utm_source=x&utm_medium=social&utm_campaign=three_lines",
+    "url": "https://thecrowdtape.com/zh/?utm_source=x&utm_medium=social&utm_campaign=three_lines"
+   },
+   "en": {
+    "text": "10/23 00:00 – 21:16 HKT · 169 posts / 45 accounts\n\nBiggest consensus shift: $RSP net bullish -100% → +75% vs yesterday (today so far)\n\nMost mentioned: $SPCX 15 views, 11 accounts\n\nBiggest disagreement: $SPCX Bullish 4, bearish 3\n\n⚠️ Not investment advice\n\n#StockMarket",
+    "url": null
+   },
+   "ko": {
+    "text": "오늘의 3줄 요약\n\n10/23 00:00 – 21:16 HKT · 게시물 169 / 계정 45\n\n합의 변화 최대: $RSP 순강세 비율 -100% → +75% 어제 대비 (오늘 현재까지)\n\n최다 언급: $SPCX 15 개 의견, 11 개 계정\n\n의견 차이 최대: $SPCX 강세 4, 약세 3\n\n⚠️ 투자 조언 아님\n\n#미국주식 #RSP #SPCX",
+    "url": "https://thecrowdtape.com/ko/?utm_source=x&utm_medium=social&utm_campaign=three_lines"
+   }
+  },
+  "threads": {
+   "zh": {
+    "text": "今日三句重點\n\n10/23 00:00 – 21:16 HKT · 169 則貼文 / 45 個帳號\n\n共識變化最大：$RSP 淨看多比例 -100% → +75% 對比昨日（今日至今）\n\n最多人討論：$SPCX 15 個觀點、11 個帳號\n\n分歧最大：$SPCX 看多 4、看空 3\n\n⚠️ 唔構成投資建議\n\n#美股 #RSP #SPCX",
+    "url": null
+   },
+   "en": {
+    "text": "Today in 3 lines\n\n10/23 00:00 – 21:16 HKT · 169 posts / 45 accounts\n\nBiggest consensus shift: $RSP net bullish -100% → +75% vs yesterday (today so far)\n\nMost mentioned: $SPCX 15 views, 11 accounts\n\nBiggest disagreement: $SPCX Bullish 4, bearish 3\n\n⚠️ Not investment advice\n\n#StockMarket #RSP #SPCX",
+    "url": "https://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=three_lines"
+   },
+   "ko": {
+    "text": "오늘의 3줄 요약\n\n10/23 00:00 – 21:16 HKT · 게시물 169 / 계정 45\n\n합의 변화 최대: $RSP 순강세 비율 -100% → +75% 어제 대비 (오늘 현재까지)\n\n최다 언급: $SPCX 15 개 의견, 11 개 계정\n\n의견 차이 최대: $SPCX 강세 4, 약세 3\n\n⚠️ 투자 조언 아님\n\n#미국주식 #RSP #SPCX",
+    "url": null
+   }
+  },
+  "facebook": {
+   "zh": {
+    "text": "今日三句重點\n\n10/23 00:00 – 21:16 HKT · 169 則貼文 / 45 個帳號\n\n共識變化最大：$RSP 淨看多比例 -100% → +75% 對比昨日（今日至今）\n\n最多人討論：$SPCX 15 個觀點、11 個帳號\n\n分歧最大：$SPCX 看多 4、看空 3\n\n⚠️ 唔構成投資建議\n\n#美股 #RSP #SPCX\n\nhttps://thecrowdtape.com/zh/?utm_source=facebook&utm_medium=social&utm_campaign=three_lines",
+    "url": "https://thecrowdtape.com/zh/?utm_source=facebook&utm_medium=social&utm_campaign=three_lines"
+   },
+   "en": {
+    "text": "Today in 3 lines\n\n10/23 00:00 – 21:16 HKT · 169 posts / 45 accounts\n\nBiggest consensus shift: $RSP net bullish -100% → +75% vs yesterday (today so far)\n\nMost mentioned: $SPCX 15 views, 11 accounts\n\nBiggest disagreement: $SPCX Bullish 4, bearish 3\n\n⚠️ Not investment advice\n\n#StockMarket #RSP #SPCX\n\nhttps://thecrowdtape.com/en/?utm_source=facebook&utm_medium=social&utm_campaign=three_lines",
+    "url": "https://thecrowdtape.com/en/?utm_source=facebook&utm_medium=social&utm_campaign=three_lines"
+   },
+   "ko": {
+    "text": "오늘의 3줄 요약\n\n10/23 00:00 – 21:16 HKT · 게시물 169 / 계정 45\n\n합의 변화 최대: $RSP 순강세 비율 -100% → +75% 어제 대비 (오늘 현재까지)\n\n최다 언급: $SPCX 15 개 의견, 11 개 계정\n\n의견 차이 최대: $SPCX 강세 4, 약세 3\n\n⚠️ 투자 조언 아님\n\n#미국주식 #RSP #SPCX\n\nhttps://thecrowdtape.com/ko/?utm_source=facebook&utm_medium=social&utm_campaign=three_lines",
+    "url": "https://thecrowdtape.com/ko/?utm_source=facebook&utm_medium=social&utm_campaign=three_lines"
+   }
+  },
+  "instagram": {
+   "zh": {
+    "text": "今日三句重點\n\n10/23 00:00 – 21:16 HKT · 169 則貼文 / 45 個帳號\n\n共識變化最大：$RSP 淨看多比例 -100% → +75% 對比昨日（今日至今）\n\n最多人討論：$SPCX 15 個觀點、11 個帳號\n\n分歧最大：$SPCX 看多 4、看空 3\n\n連結在個人簡介\n⚠️ 唔構成投資建議\n\n#美股 #美股投資 #港人投資 #RSP #SPCX"
+   },
+   "en": {
+    "text": "Today in 3 lines\n\n10/23 00:00 – 21:16 HKT · 169 posts / 45 accounts\n\nBiggest consensus shift: $RSP net bullish -100% → +75% vs yesterday (today so far)\n\nMost mentioned: $SPCX 15 views, 11 accounts\n\nBiggest disagreement: $SPCX Bullish 4, bearish 3\n\nlink in bio\n⚠️ Not investment advice\n\n#StockMarket #USStocks #RSP #SPCX"
+   },
+   "ko": {
+    "text": "오늘의 3줄 요약\n\n10/23 00:00 – 21:16 HKT · 게시물 169 / 계정 45\n\n합의 변화 최대: $RSP 순강세 비율 -100% → +75% 어제 대비 (오늘 현재까지)\n\n최다 언급: $SPCX 15 개 의견, 11 개 계정\n\n의견 차이 최대: $SPCX 강세 4, 약세 3\n\n프로필 링크\n⚠️ 투자 조언 아님\n\n#미국주식 #미장 #해외주식 #RSP #SPCX"
+   }
+  },
+  "has_link": {
+   "x": {
+    "zh": true,
+    "en": false,
+    "ko": true
+   },
+   "threads": {
+    "zh": false,
+    "en": true,
+    "ko": false
+   },
+   "facebook": {
+    "zh": true,
+    "en": true,
+    "ko": true
+   },
+   "instagram": {
+    "zh": false,
+    "en": false,
+    "ko": false
+   }
+  }
+ },
+ "why_posts": [
+  {
+   "ticker": "QQQ",
+   "side": "bear",
+   "accounts": 6,
+   "window": "10/23 00:00 – 21:16 HKT",
+   "sample": {
+    "posts": 169,
+    "accounts": 45
+   },
+   "format": "carousel",
+   "date": "2026-10-23",
+   "bull": 0,
+   "bear": 6,
+   "bear_reasons": [
+    {
+     "acc": "RedDogT3",
+     "text": "大盤與市場整體出現令人不安的脫節：$SPY僅距高位約2%，半導體$SMH及$SOXX已跌約35%，$QQQ創週線及月線新低，大量個股接近52週低位。"
+    },
+    {
+     "acc": "EliteOptions2",
+     "text": "$QQQ跌破700可見693及685，$SPX若跌破7620可能下試7500。"
+    },
+    {
+     "acc": "carlquintanilla",
+     "text": "@Barchart：納指100 $QQQ錄得自6月以來最差單日表現。"
+    }
+   ],
+   "threads": {
+    "zh": {
+     "text": "今日 $QQQ：點解\n\n10/23 00:00 – 21:16 HKT · 169 則貼文 / 45 個帳號\n\n6 個帳號 · 0 個帳號看好 · 6 個帳號看淡\n\n看淡理由\n@RedDogT3：大盤與市場整體出現令人不安的脫節：$SPY僅距高位約2%，半導體$SMH及$SOXX已跌約35%，$QQQ創週線及月線新低，大量個股接近52週低位。\n@EliteOptions2：$QQQ跌破700可見693及685，$SPX若跌破7620可能下試7500。\n@carlquintanilla：@Barchart：納指100 $QQQ錄得自6月以來最差單日表現。\n\n⚠️ 唔構成投資建議\n\n#美股 #QQQ",
+     "url": "https://thecrowdtape.com/zh/stock/QQQ/?utm_source=threads&utm_medium=social&utm_campaign=why"
+    },
+    "en": {
+     "text": "Why $QQQ today\n\n10/23 00:00 – 21:16 HKT · 169 posts / 45 accounts\n\n6 accounts · 0 bullish accounts · 6 bearish accounts\n\nBearish reasons\n@RedDogT3: a troubling disconnect: $SPY is only about 2% below highs while semis $SMH and $SOXX are down roughly 35%, $QQQ is making new weekly and monthly lows, and many\n@EliteOptions2: $QQQ under 700 opens 693 and 685, and $SPX to 7500 is in play if it breaks 7620.\n\n⚠️ Not investment advice\n\n#StockMarket #QQQ",
+     "url": null
+    },
+    "ko": {
+     "text": "오늘 $QQQ, 왜\n\n10/23 00:00 – 21:16 HKT · 게시물 169 / 계정 45\n\n계정 6개 · 강세 계정 0개 · 약세 계정 6개\n\n약세 이유\n@RedDogT3: 우려스러운 괴리: $SPY는 고점 대비 약 2% 아래지만 반도체 $SMH, $SOXX는 약 35% 하락, $QQQ는 주간·월간 신저가, 많은 종목이 52주 저점 근처.\n@EliteOptions2: $QQQ 700 아래면 693, 685, $SPX는 7620 이탈 시 7500 가능.\n@carlquintanilla: @Barchart: 나스닥100 $QQQ 6월 이후 최악의 하루.\n\n⚠️ 투자 조언 아님\n\n#미국주식 #QQQ",
+     "url": "https://thecrowdtape.com/ko/stock/QQQ/?utm_source=threads&utm_medium=social&utm_campaign=why"
+    }
+   },
+   "has_link": {
+    "threads": {
+     "zh": true,
+     "en": false,
+     "ko": true
+    }
+   },
+   "suggested_kst": "09:00"
+  },
+  {
+   "ticker": "SPCX",
+   "side": "split",
+   "accounts": 7,
+   "window": "10/23 00:00 – 21:16 HKT",
+   "sample": {
+    "posts": 169,
+    "accounts": 45
+   },
+   "format": "carousel",
+   "date": "2026-10-23",
+   "bull": 4,
+   "bear": 3,
+   "bull_reasons": [
+    {
+     "acc": "spotgamma",
+     "text": "SGOI主要持倉變化顯示做多科技與能源的槓鈴配置：$META 1月認購價差增400萬美元，$XLE 2027年6月認購價差增700萬美元，$SPCX沽出12月認沽期權1000萬美"
+    },
+    {
+     "acc": "chamath",
+     "text": "（引用：SpaceX $SPCX 正敲定 400 億美"
+    },
+    {
+     "acc": "munster_gene",
+     "text": "在 $SPCX 業績電話會議上 Elon 表示鑄造是真正瓶頸，SpaceX"
+    }
+   ],
+   "threads": {
+    "zh": {
+     "text": "今日 $SPCX：點解\n\n10/23 00:00 – 21:16 HKT · 169 則貼文 / 45 個帳號\n\n7 個帳號 · 4 個帳號看好 · 3 個帳號看淡\n\n看好理由\n@spotgamma：SGOI主要持倉變化顯示做多科技與能源的槓鈴配置：$META 1月認購價差增400萬美元，$XLE 2027年6月認購價差增700萬美元，$SPCX沽出12月認沽期權1000萬美\n@chamath：（引用：SpaceX $SPCX 正敲定 400 億美\n@munster_gene：在 $SPCX 業績電話會議上 Elon 表示鑄造是真正瓶頸，SpaceX\n\n⚠️ 唔構成投資建議\n\n#美股 #SPCX",
+     "url": null
+    },
+    "en": {
+     "text": "Why $SPCX today\n\n10/23 00:00 – 21:16 HKT · 169 posts / 45 accounts\n\n7 accounts · 4 bullish accounts · 3 bearish accounts\n\nBullish reasons\n@spotgamma: top SGOI position changes show a barbell of long tech and long energy: $META Jan call spread +$4M, $XLE June 2027 call spread +$7M, $SPCX short Dec puts $10M, $\n@chamath: (Quoted: SpaceX $SPCX finalizing $40B debt raise at higher costs, lowest-rated portion around 8.3%, safer AI-chip backed near 7.75%.)\n\n⚠️ Not investment advice\n\n#StockMarket #SPCX",
+     "url": "https://thecrowdtape.com/en/stock/SPCX/?utm_source=threads&utm_medium=social&utm_campaign=why"
+    },
+    "ko": {
+     "text": "오늘 $SPCX, 왜\n\n10/23 00:00 – 21:16 HKT · 게시물 169 / 계정 45\n\n계정 7개 · 강세 계정 4개 · 약세 계정 3개\n\n강세 이유\n@spotgamma: SGOI 주요 포지션 변화는 기술과 에너지 롱의 바벨: $META 1월 콜스프레드 +400만 달러, $XLE 2027년 6월 콜스프레드 +700만 달러, $SPCX 12월 풋 매도 1,000만 달러, $NBIS 3월 콜 +900만 달러.\n@chamath: (인용: SpaceX $SPCX가 400억 달러 부채 조달을 마무리 중이며 비용이 높아짐, 최저 등급 부분 약 8.3%, AI 칩 담보 안전 부분 약 7.75%)\n@munster_gene: $SPCX 실적 콜에서 Elon은 캐스팅이 진정한 병목이며 SpaceX가 전력을 12-18개월 더 빨리 공급할 수 있다고 했고, Boom은 단결정 터빈 블레이드용 세계 최초 올디지털 파운드리를 발표했습니다.\n\n⚠️ 투자 조언 아님\n\n#미국주식 #SPCX",
+     "url": null
+    }
+   },
+   "has_link": {
+    "threads": {
+     "zh": false,
+     "en": true,
+     "ko": false
+    }
+   },
+   "suggested_kst": "11:30"
+  },
+  {
+   "ticker": "RSP",
+   "side": "bull",
+   "accounts": 3,
+   "window": "10/23 00:00 – 21:16 HKT",
+   "sample": {
+    "posts": 169,
+    "accounts": 45
+   },
+   "format": "carousel",
+   "date": "2026-10-23",
+   "bull": 3,
+   "bear": 0,
+   "bull_reasons": [
+    {
+     "acc": "MarkNewtonCMT",
+     "text": "AI拋售之下市場寬度正在改善：等權重標普30天升逾4%，羅素3000高於20日線的比例三週內近乎三倍，$SPX、道指、$RSP及運輸股出現正面背離。"
+    },
+    {
+     "acc": "OptionsHawk",
+     "text": "OptionsHawk 指出 $RSP，標普等權重，今日上漲 0.4% 並創多週新高，因為弱勢非常有限。"
+    },
+    {
+     "acc": "spotgamma",
+     "text": "輪動交易持續，醫療、住宅建築、零售及金融股上漲，$QQQ跌2%或以上，$RSP持平或上升。"
+    }
+   ],
+   "threads": {
+    "zh": {
+     "text": "今日 $RSP：點解\n\n10/23 00:00 – 21:16 HKT · 169 則貼文 / 45 個帳號\n\n3 個帳號 · 3 個帳號看好 · 0 個帳號看淡\n\n看好理由\n@MarkNewtonCMT：AI拋售之下市場寬度正在改善：等權重標普30天升逾4%，羅素3000高於20日線的比例三週內近乎三倍，$SPX、道指、$RSP及運輸股出現正面背離。\n@OptionsHawk：OptionsHawk 指出 $RSP，標普等權重，今日上漲 0.4% 並創多週新高，因為弱勢非常有限。\n@spotgamma：輪動交易持續，醫療、住宅建築、零售及金融股上漲，$QQQ跌2%或以上，$RSP持平或上升。\n\n⚠️ 唔構成投資建議\n\n#美股 #RSP",
+     "url": null
+    },
+    "en": {
+     "text": "Why $RSP today\n\n10/23 00:00 – 21:16 HKT · 169 posts / 45 accounts\n\n3 accounts · 3 bullish accounts · 0 bearish accounts\n\nBullish reasons\n@MarkNewtonCMT: beneath the AI selloff, breadth is improving: equal weight S&P is up over 4% in 30 days, the share of Russell 3000 stocks above their 20 day has nearly tripled\n@OptionsHawk: OptionsHawk notes $RSP, S&P Equal Weight, is up 0.4% today and multi-week new high as the weakness is very contained.\n\n⚠️ Not investment advice\n\n#StockMarket #RSP",
+     "url": "https://thecrowdtape.com/en/stock/RSP/?utm_source=threads&utm_medium=social&utm_campaign=why"
+    },
+    "ko": {
+     "text": "오늘 $RSP, 왜\n\n10/23 00:00 – 21:16 HKT · 게시물 169 / 계정 45\n\n계정 3개 · 강세 계정 3개 · 약세 계정 0개\n\n강세 이유\n@MarkNewtonCMT: AI 매도세 아래 시장폭은 개선 중: 동일가중 S&P는 30일간 4% 넘게 상승, 20일선 위 러셀3000 비율은 3주 만에 거의 3배, $SPX, 다우, $RSP, 운송주는 긍정적 다이버전스.\n@OptionsHawk: OptionsHawk는 $RSP, S&P 동일가중이 오늘 0.4% 상승하며 다주 신고가를 기록했다고 지적합니다.\n@spotgamma: 로테이션 트레이드 지속: 헬스케어, 주택, 소매, 금융이 오르고 $QQQ는 2% 이상 하락, $RSP는 보합 이상.\n\n⚠️ 투자 조언 아님\n\n#미국주식 #RSP",
+     "url": null
+    }
+   },
+   "has_link": {
+    "threads": {
+     "zh": false,
+     "en": true,
+     "ko": false
+    }
+   },
+   "suggested_kst": "14:00"
+  }
+ ]
 }
