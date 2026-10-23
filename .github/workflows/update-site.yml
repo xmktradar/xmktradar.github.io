@@ -68,6 +68,20 @@ jobs:
           fi
           if [ -f "$WORK_DIR/xcards.json" ]; then node tools/xcard.js "$WORK_DIR/xcards.json" || echo "::warning::X card failed"; fi
           if [ -f "$WORK_DIR/top5cards.json" ]; then node tools/top5card.js "$WORK_DIR/top5cards.json" || echo "::warning::top5 card failed"; fi
+      - name: Top5 vertical video
+        run: |
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            echo "::warning::ffmpeg not installed; skip top5 video"
+            exit 0
+          fi
+          for lang in zh en ko; do
+            png="og/top5-${lang}.png"
+            if [ ! -f "$png" ]; then
+              echo "::warning::${png} missing; skip"
+              continue
+            fi
+            sh tools/top5video.sh "$lang"
+          done
       - name: Daily multi-picture posts (12:30, 16:30, 20:30 HKT slots on trading days)
         continue-on-error: true
         run: |
