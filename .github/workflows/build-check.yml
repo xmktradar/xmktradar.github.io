@@ -1,0 +1,51 @@
+name: Build check
+# Fast dry run of the Update site build on every PR (and every push to main) that touches the homepage,
+# its code or the build tools, so a change that would break the 4-hourly rebuild goes red before it lands.
+# Same steps as Update site minus fetching, prices and publishing; nothing is committed.
+# Contract the build relies on (see tools/check_contract.py): index.html is the master page with the
+# full app inline as top-level code and one <script type="application/json" id="dash-data"> block;
+# zh/ en/ ko/ index.html are build outputs of tools/build_langs.py, never edited by hand.
+on:
+  workflow_dispatch:
+  pull_request:
+    paths: ['index.html', 'zh/index.html', 'en/index.html', 'ko/index.html', 'assets/**', 'tools/**', 'i18n/**', 'data/dash/**', '.github/workflows/update-site.yml', '.github/workflows/build-check.yml']
+  push:
+    branches: [main]
+    paths: ['index.html', 'zh/index.html', 'en/index.html', 'ko/index.html', 'assets/**', 'i18n/**', 'data/dash/**', '.github/workflows/build-check.yml']
+concurrency:
+  group: build-check-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      WORK_DIR: /tmp/site-work
+      TZ: Asia/Hong_Kong
+    steps:
+      - uses: actions/checkout@v4
+      - name: Page structure the build needs
+        run: python3 tools/check_contract.py
+      - name: Restore full page data
+        run: python3 tools/slim_pages.py --restore
+      - name: Install headless browser
+        run: |
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Install Chinese converter
+        continue-on-error: true
+        run: pip install opencc-python-reimplemented==0.1.7
+      - name: Consensus and counts (same as Update site)
+        run: |
+          mkdir -p "$WORK_DIR"
+          echo '{"daily": null}' > "$WORK_DIR/windows.json"
+          node tools/stats.js index.html "$WORK_DIR/windows.json" "$WORK_DIR/stats.json" || { echo "::error::共識計算失敗：Update site 會喺呢步停"; exit 1; }
+      - name: Language versions
+        run: python3 tools/build_langs.py
+      - name: Slim homepages
+        run: python3 tools/slim_pages.py --slim
+      - name: Check the pages
+        run: |
+          for f in index.html zh/index.html en/index.html ko/index.html; do
+            node tools/check.js "$f" || { echo "::error::網頁檢查唔合格：$f"; exit 1; }
+          done

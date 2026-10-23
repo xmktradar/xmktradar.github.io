@@ -52,10 +52,11 @@ def read_html(path):
         return f.read()
 
 
-def parse_blob(html):
+def parse_blob(html, rel='page'):
     m = BLOCK.search(html)
     if not m:
-        raise SystemExit('no dash-data block in ' + html)
+        raise SystemExit(rel + ': no inline <script type="application/json" id="dash-data"> block; '
+                         'the build needs the data inline (see tools/check_contract.py)')
     data = json.loads(m.group(2).replace('<\\/', '</'))
     return m, data
 
@@ -306,7 +307,7 @@ def clean_stale(lang, keep):
 def restore_file(rel):
     path = os.path.join(ROOT, rel)
     html = read_html(path)
-    match, data = parse_blob(html)
+    match, data = parse_blob(html, rel)
     if not is_slim(data):
         print(rel + ': already full')
         return
@@ -318,7 +319,7 @@ def restore_file(rel):
 def slim_file(rel, lang):
     path = os.path.join(ROOT, rel)
     html = read_html(path)
-    match, raw = parse_blob(html)
+    match, raw = parse_blob(html, rel)
     original = combine(raw) if is_slim(raw) else raw
     # Re-parse the original through dumps/loads so the compare matches what we write.
     original = json.loads(dumps(original))
