@@ -1077,9 +1077,157 @@
       "SNDK"
      ]
     }
+   },
+   "intraday_2": {
+    "post_et": "12:15",
+    "post_hkt": "00:15",
+    "generated_at": "2026-10-23T11:38:41-04:00",
+    "date": "2026-10-23",
+    "quotes": {
+     "SPY": {
+      "price": 762.63,
+      "prev_close": 763.96,
+      "chg_pct": -0.17,
+      "time": "2026-10-23T11:38:39-04:00"
+     },
+     "QQQ": {
+      "price": 707.55,
+      "prev_close": 704.47,
+      "chg_pct": 0.44,
+      "time": "2026-10-23T11:38:40-04:00"
+     },
+     "DIA": {
+      "price": 522.7,
+      "prev_close": 527.89,
+      "chg_pct": -0.98,
+      "time": "2026-10-23T11:38:36-04:00"
+     },
+     "SMH": {
+      "price": 529.58,
+      "prev_close": 523.35,
+      "chg_pct": 1.19,
+      "time": "2026-10-23T11:38:41-04:00"
+     },
+     "WDC": {
+      "price": 354.34,
+      "prev_close": 354.19,
+      "chg_pct": 0.04,
+      "time": "2026-10-23T11:38:41-04:00"
+     },
+     "NBIS": {
+      "price": 160.295,
+      "prev_close": 159.17,
+      "chg_pct": 0.71,
+      "time": "2026-10-23T11:38:41-04:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-10-23T11:38:41-04:00",
+     "hkt": "2026-10-23 23:38"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "SPY",
+      "chg_pct": -0.17,
+      "bull": 2,
+      "bear": 2,
+      "accounts": [
+       "Mr_Derivatives",
+       "MarkNewtonCMT",
+       "RedDogT3",
+       "EliteOptions2",
+       "alphatrends",
+       "carlquintanilla",
+       "bespokeinvest"
+      ]
+     },
+     {
+      "ticker": "SMH",
+      "chg_pct": 1.19,
+      "bull": 2,
+      "bear": 1,
+      "accounts": [
+       "Mr_Derivatives",
+       "MarkNewtonCMT",
+       "RedDogT3",
+       "bespokeinvest",
+       "alphatrends",
+       "EliteOptions2"
+      ]
+     },
+     {
+      "ticker": "WDC",
+      "chg_pct": 0.04,
+      "bull": 2,
+      "bear": 1,
+      "accounts": [
+       "TrendSpider",
+       "OptionsMike",
+       "carlquintanilla",
+       "WallStJesus",
+       "RedDogT3"
+      ]
+     },
+     {
+      "ticker": "NBIS",
+      "chg_pct": 0.71,
+      "bull": 2,
+      "bear": 1,
+      "accounts": [
+       "spotgamma",
+       "StockSavvyShay",
+       "TrendSpider",
+       "EliteOptions2"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Midday · As of 11:38 ET (23:38 HKT)\n\n$SPY -0.2% · $QQQ +0.4% · $DIA -1.0%\n\n$SPY -0.2%, 2 accounts bullish on site\n$SMH +1.2%, 2 accounts bullish on site\n\nhttps://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_2\n\n⚠️ Not investment advice\n#StockMarket #SPY #SMH",
+      "url": "https://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_2"
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午市觀察 · 截至 11:38 ET（23:38 HKT）\n\n$SPY -0.2% · $QQQ +0.4% · $DIA -1.0%\n\n$SPY -0.2%，網站 2 個帳號看好\n$SMH +1.2%，網站 2 個帳號看好\n$WDC +0.0%，網站 2 個帳號看好\n$NBIS +0.7%，網站 2 個帳號看好\n\nhttps://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=intraday_2\n\n⚠️ 唔構成投資建議\n#美股 #SPY #SMH",
+      "url": "https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=intraday_2"
+     },
+     "en": {
+      "text": "Midday · As of 11:38 ET (23:38 HKT)\n\n$SPY -0.2% · $QQQ +0.4% · $DIA -1.0%\n\n$SPY -0.2%, 2 accounts bullish on site\n$SMH +1.2%, 2 accounts bullish on site\n$WDC +0.0%, 2 accounts bullish on site\n$NBIS +0.7%, 2 accounts bullish on site\n\nhttps://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=intraday_2\n\n⚠️ Not investment advice\n#StockMarket #SPY #SMH",
+      "url": "https://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=intraday_2"
+     },
+     "ko": {
+      "text": "한낮 · 11:38 ET (23:38 HKT) 기준\n\n$SPY -0.2% · $QQQ +0.4% · $DIA -1.0%\n\n$SPY -0.2%, 사이트 강세 계정 2개\n$SMH +1.2%, 사이트 강세 계정 2개\n$WDC +0.0%, 사이트 강세 계정 2개\n$NBIS +0.7%, 사이트 강세 계정 2개\n\nhttps://thecrowdtape.com/ko/?utm_source=threads&utm_medium=social&utm_campaign=intraday_2\n\n⚠️ 투자 조언 아님\n#미국주식 #SPY #SMH",
+      "url": "https://thecrowdtape.com/ko/?utm_source=threads&utm_medium=social&utm_campaign=intraday_2"
+     }
+    },
+    "has_link": {
+     "x": true,
+     "threads": {
+      "zh": true,
+      "en": true,
+      "ko": true
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "RSP",
+      "XLV",
+      "WMT"
+     ],
+     "bear": [
+      "QQQ",
+      "MRNA",
+      "CRWV",
+      "SNDK"
+     ]
+    }
    }
   },
-  "generated_at": "2026-10-23T11:07:11-04:00",
-  "generated_hkt": "2026-10-23 23:07"
+  "generated_at": "2026-10-23T11:38:41-04:00",
+  "generated_hkt": "2026-10-23 23:38"
  }
 }

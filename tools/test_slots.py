@@ -260,6 +260,42 @@ def test_social_actions_and_main_gate():
     assert 'attach_weekend_slots(' in src
 
 
+def test_carry_intraday_same_date():
+    """A weekday rebuild keeps today's intraday block and drops a different date."""
+    prev = {
+        'date': '2026-10-22',
+        'posts': {'en': {'x': 'old'}},
+        'intraday': {
+            'date': DAY,
+            'generated_at': '2026-10-23T09:35:00-04:00',
+            'slots': {'intraday_open': {'post_et': '09:45', 'x': {'en': {'text': 'Open tape'}}}},
+        },
+    }
+    rebuilt = {'date': DAY, 'posts': {'en': {'x': 'rebuilt'}}, 'top5': {'bull': [{'t': 'RSP'}]}}
+    share.carry_intraday(rebuilt, prev, DAY)
+    assert rebuilt['posts']['en']['x'] == 'rebuilt'
+    assert rebuilt['top5']['bull'][0]['t'] == 'RSP'
+    assert rebuilt['intraday']['slots']['intraday_open']['x']['en']['text'] == 'Open tape'
+    # A timestamp date still counts as that day.
+    prev['intraday']['date'] = '2026-10-23T09:35:00-04:00'
+    again = {'date': DAY}
+    share.carry_intraday(again, prev, DAY)
+    assert again['intraday']['slots']['intraday_open']['post_et'] == '09:45'
+    stale = {'date': '2026-10-22', 'intraday': {'date': '2026-10-22', 'slots': {'intraday_close': {'post_et': '15:40'}}}}
+    fresh = {'date': DAY, 'posts': {'en': {'x': 'rebuilt'}}}
+    share.carry_intraday(fresh, stale, DAY)
+    assert 'intraday' not in fresh
+    share.carry_intraday(fresh, {'date': DAY}, DAY)
+    assert 'intraday' not in fresh
+    share.carry_intraday(fresh, {'intraday': {'slots': {}}}, DAY)
+    assert 'intraday' not in fresh
+    src = inspect.getsource(share.main)
+    rebuild_at = src.find("sp = {'date': day")
+    carry_at = src.find('carry_intraday(')
+    write_at = src.find("write_json('data/social-posts.json'", rebuild_at)
+    assert 0 <= rebuild_at < carry_at < write_at
+
+
 def main():
     test_content_tokens()
     test_no_repeat_including_history()
@@ -267,7 +303,8 @@ def main():
     test_attach_omits_and_guards()
     test_history_keeps_14()
     test_social_actions_and_main_gate()
-    print('test_slots: hot_stock, discussion, history, poll, links ok')
+    test_carry_intraday_same_date()
+    print('test_slots: hot_stock, discussion, history, poll, links, intraday carry ok')
 
 
 if __name__ == '__main__':
