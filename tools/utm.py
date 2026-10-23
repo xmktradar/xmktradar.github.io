@@ -9,7 +9,11 @@ utm_medium is always social. utm_campaign is the slot:
   facebook_cta newsletter line     newsletter (kept; other links in the field use the slot)
   tutorial-posts.json              tutorial
   top5.posts.<lang>.<platform>     top5
-  weekly_thread                    weekly_thread, and those posts are X (source x)
+  weekly_thread                    weekly_thread, and those posts are X (source x).
+                                   langs.<lang> is a list of X posts, same campaign.
+  hot_stock / discussion           that slot. threads and facebook, including first_comment.
+  weekend                          weekend. posts[].langs.<lang>.{threads,facebook,first_comment}
+  atomic_posts                     atomic. text and first_comment use source threads.
 
 tag_url replaces any existing utm_source, utm_medium and utm_campaign, keeps every other
 query parameter and the #fragment, and leaves asset URLs (/og/, /assets/, images) alone.
@@ -209,34 +213,121 @@ def _walk_posts(posts, campaign, counts, force_source=None):
             _apply_field(by, field, source, campaign, field, counts)
 
 
-def _walk_weekly(node, counts):
-    """weekly_thread posts are X: source x, campaign weekly_thread."""
-    if isinstance(node, list):
-        for item in node:
+def _tag_platform_block(by, campaign, counts):
+    """Tag threads/facebook/x/instagram and first_comment on one language object.
+
+    first_comment may be a string (source threads) or {threads, facebook, ...}.
+    A per-platform first_comment uses that platform as utm_source.
+    """
+    if not isinstance(by, dict):
+        return
+    for field, source in PLATFORM.items():
+        if isinstance(by.get(field), str):
+            _apply_field(by, field, source, campaign, field, counts)
+    fc = by.get('first_comment')
+    if isinstance(fc, dict):
+        for field, source in PLATFORM.items():
+            if isinstance(fc.get(field), str):
+                _apply_field(fc, field, source, campaign, field, counts)
+    elif isinstance(fc, str):
+        _apply_field(by, 'first_comment', 'threads', campaign, 'threads', counts)
+
+
+def _walk_lang_map(posts, campaign, counts):
+    """Tag {lang: {threads, facebook, first_comment, ...}}."""
+    if not isinstance(posts, dict):
+        return
+    for by in posts.values():
+        if isinstance(by, dict):
+            _tag_platform_block(by, campaign, counts)
+
+
+def _tag_string_list(items, counts, campaign='weekly_thread', source='x'):
+    if not isinstance(items, list):
+        return
+    for i, item in enumerate(items):
+        if isinstance(item, str):
+            new, n = retag_text(item, source, campaign, field=source)
+            items[i] = new
+            counts[canon_source(source)] = counts.get(canon_source(source), 0) + n
+        elif isinstance(item, (dict, list)):
             _walk_weekly(item, counts)
+
+
+def _walk_weekly(node, counts):
+    """weekly_thread posts are X: source x, campaign weekly_thread.
+
+    The Friday thread is langs.<lang>: [str, ...]. Older files used posts.<lang>.
+    Both shapes are tagged. A list of post strings is tagged in place.
+    """
+    if isinstance(node, list):
+        _tag_string_list(node, counts)
         return
     if not isinstance(node, dict):
         return
+    langs = node.get('langs')
+    if isinstance(langs, dict):
+        for lang, posts in langs.items():
+            if isinstance(posts, str):
+                _apply_field(langs, lang, 'x', 'weekly_thread', 'x', counts)
+            elif isinstance(posts, list):
+                _tag_string_list(posts, counts)
     posts = node.get('posts')
     if isinstance(posts, dict):
         for lang, by in posts.items():
             if isinstance(by, str):
                 _apply_field(posts, lang, 'x', 'weekly_thread', 'x', counts)
+            elif isinstance(by, list):
+                _tag_string_list(by, counts)
             elif isinstance(by, dict):
                 for field, value in by.items():
                     if isinstance(value, str) and (field in POST_FIELDS or field == 'text'):
                         used = field if field in POST_FIELDS else 'x'
                         _apply_field(by, field, 'x', 'weekly_thread', used, counts)
         return
+    if isinstance(langs, dict):
+        return
     if isinstance(node.get('text'), str):
         _apply_field(node, 'text', 'x', 'weekly_thread', 'x', counts)
     for key, value in node.items():
-        if key == 'text':
+        if key in ('text', 'langs', 'posts'):
             continue
         if isinstance(value, str) and 'https://thecrowdtape.com' in value:
             _apply_field(node, key, 'x', 'weekly_thread', 'x', counts)
         elif isinstance(value, (dict, list)):
             _walk_weekly(value, counts)
+
+
+def _walk_named_slot(node, campaign, counts):
+    if isinstance(node, dict):
+        _walk_lang_map(node.get('posts'), campaign, counts)
+
+
+def _walk_weekend(node, counts):
+    posts = node.get('posts') if isinstance(node, dict) else None
+    if not isinstance(posts, list):
+        return
+    for item in posts:
+        if not isinstance(item, dict):
+            continue
+        _walk_lang_map(item.get('langs'), 'weekend', counts)
+
+
+def _walk_atomic(items, counts):
+    """atomic_posts text and first_comment. One body, so the source is threads."""
+    if not isinstance(items, list):
+        return
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        for field in ('text', 'hook', 'first_comment', 'hashtags'):
+            value = item.get(field)
+            if isinstance(value, str) and 'https://thecrowdtape.com' in value:
+                _apply_field(item, field, 'threads', 'atomic', 'threads', counts)
+            elif field == 'first_comment' and isinstance(value, dict):
+                for plat, source in PLATFORM.items():
+                    if isinstance(value.get(plat), str):
+                        _apply_field(value, plat, source, 'atomic', plat, counts)
 
 
 def normalize_obj(data, tutorial=False):
@@ -266,13 +357,20 @@ def normalize_obj(data, tutorial=False):
         top = data.get('top5')
         if isinstance(top, dict):
             posts = top.get('posts') if isinstance(top.get('posts'), dict) else top
-            _walk_posts(posts, 'top5', counts)
+            _walk_lang_map(posts, 'top5', counts)
         if 'weekly_thread' in data:
             node = data['weekly_thread']
             if isinstance(node, str):
                 _apply_field(data, 'weekly_thread', 'x', 'weekly_thread', 'x', counts)
             else:
                 _walk_weekly(node, counts)
+        for slot, campaign in (('hot_stock', 'hot_stock'), ('discussion', 'discussion')):
+            if slot in data:
+                _walk_named_slot(data.get(slot), campaign, counts)
+        if isinstance(data.get('weekend'), dict):
+            _walk_weekend(data['weekend'], counts)
+        if isinstance(data.get('atomic_posts'), list):
+            _walk_atomic(data['atomic_posts'], counts)
     _fit_threads_tree(data)
     return counts
 

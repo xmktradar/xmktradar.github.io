@@ -69,15 +69,23 @@ def _assert_post(text, lang, platform, bulls, bears):
         assert share.xlen(text) <= 280, (lang, share.xlen(text), text)
         assert len(urls) == 1, (lang, urls)
     if platform == 'threads':
-        assert len(urls) == 1, (lang, urls, text)
+        assert urls == [], (lang, urls)
+    if platform == 'facebook':
+        assert urls == [], (lang, urls)
+        for row in bulls + bears:
+            assert f'${row["t"]} {_acc(lang, row["n"])}' in text
+        if not bulls:
+            assert NONE[lang] in text
+        if not bears:
+            assert NONE[lang] in text
     lead = bulls[0]['t'] if bulls else None
-    if platform in ('x', 'threads'):
+    if platform == 'x':
         if lead:
             assert f'/{lang}/stock/{lead}/' in urls[0], (platform, urls[0])
         else:
             assert '/stock/' not in urls[0], urls[0]
             assert urls[0].startswith(f'https://thecrowdtape.com/{lang}/?'), urls[0]
-    if platform in ('instagram', 'facebook'):
+    if platform == 'instagram':
         for row in bulls + bears:
             assert any(f'/{lang}/stock/{row["t"]}/' in u for u in urls), (lang, platform, row['t'], urls)
             assert f'${row["t"]} {_acc(lang, row["n"])}' in text
@@ -98,7 +106,28 @@ def _assert_slot(slot, bulls, bears):
     assert slot['bull'] == [{'t': r['t'], 'n': r['n']} for r in bulls]
     assert slot['bear'] == [{'t': r['t'], 'n': r['n']} for r in bears]
     assert len(slot['bull']) <= 5 and len(slot['bear']) <= 5
+    assert slot['format'] == 'image_card'
     for lang in share.LANGS:
+        assert slot['video'][lang] == f'https://thecrowdtape.com/og/top5-{lang}.mp4?v={DAY}'
+        fc = slot['posts'][lang]['first_comment']
+        th = fc['threads']
+        assert f'utm_source=threads' in th and 'utm_medium=social' in th and 'utm_campaign=top5' in th
+        assert f'/{lang}/' in th
+        lead = bulls[0]['t'] if bulls else None
+        if lead:
+            assert f'/{lang}/stock/{lead}/' in th
+        else:
+            assert '/stock/' not in th
+        if bulls or bears:
+            fb = fc['facebook']
+            assert 'utm_source=facebook' in fb and 'utm_campaign=top5' in fb
+            for row in bulls + bears:
+                assert f'/{lang}/stock/{row["t"]}/' in fb
+        else:
+            assert 'facebook' not in fc
+            assert slot['posts'][lang]['has_link']['facebook'] is False
+        assert slot['posts'][lang]['has_link']['threads'] is True
+        assert slot['posts'][lang]['has_link']['x'] is True
         assert slot['images'][lang]['portrait'] == f'https://thecrowdtape.com/og/top5-{lang}.png?v={DAY}'
         assert slot['images'][lang]['square'] == f'https://thecrowdtape.com/og/top5-{lang}-sq.png?v={DAY}'
         for platform in ('x', 'instagram', 'threads', 'facebook'):

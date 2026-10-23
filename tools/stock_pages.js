@@ -333,6 +333,9 @@ function shell(master, lang, t, list, body, meta, stats, tvHref) {
   const fonts = (head.match(/<link rel="(?:preconnect|stylesheet)"[^>]*>/g) || []).join('');
   const brand = (master.match(/<div class="brand-wrap">([\s\S]*?)<nav class="lang-sw"/) || ['', ''])[1]
     .replace(/<h1 class="brand">([\s\S]*?)<\/h1>/, `<a href="/${lang}/" class="brand-home"><p class="brand">$1</p></a>`);
+  // 儲存網站 (Tim, 2026-10-23): the same button, tip and script as the built page, already in this language
+  const save = (master.match(/<!-- save-site -->[\s\S]*?<!-- \/save-site -->/) || [''])[0];
+  const saveBtn = save ? (master.match(/<button type="button" class="save-site"[\s\S]*?<\/button>/) || [''])[0] : '';
   const url = `${SITE}${lang}/stock/${slug(t)}/`;
   const alt = Object.entries(LANGS).map(([k, h]) => `<link rel="alternate" hreflang="${h}" href="${SITE}${k}/stock/${slug(t)}/">`).join('')
     + `<link rel="alternate" hreflang="x-default" href="${SITE}zh/stock/${slug(t)}/">`;
@@ -345,6 +348,7 @@ ${ga}
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest"><meta name="theme-color" content="#fbf6ec"><meta name="apple-mobile-web-app-title" content="Crowd Tape">
 <meta name="robots" content="index,follow">
 <title>${esc(meta.title)}</title>
 <meta name="description" content="${esc(meta.desc)}">
@@ -371,6 +375,7 @@ background:var(--accent);color:#fff;text-decoration:none}
 .site-nav{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;max-width:100%;min-width:0}
 .site-nav a{box-sizing:border-box;max-width:100%;font-size:12.5px;font-weight:700;padding:5px 10px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink);background:var(--panel);line-height:1.3}
 .site-nav a.nav-donate{background:var(--accent);color:#fff;border-color:var(--accent)}
+.site-nav .save-site{height:auto;padding:5px 10px;font-size:12.5px;line-height:1.3;border-color:var(--line)}
 .money-bar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;box-sizing:border-box;max-width:100%;min-width:0;margin:8px 16px 0;padding:8px 10px;border:1px dashed var(--line-strong);border-radius:12px;background:var(--panel);font-size:13px;font-weight:700}
 .money-bar a,.tv-line a{color:var(--ink);text-decoration:none}
 .money-bar .pj-tag,.tv-line .pj-tag,.foot .pj-tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;color:var(--mut);border:1px solid var(--line-strong);border-radius:999px;padding:1px 8px;line-height:1.4}
@@ -379,7 +384,7 @@ background:var(--accent);color:#fff;text-decoration:none}
 ${NL_CSS}</style>
 </head>
 <body>
-<header class="top"><div class="wrap"><div class="brand-wrap">${brand}<nav class="lang-sw" aria-label="Language">${sw}</nav><nav class="site-nav" aria-label="${esc(T[lang].promo)}"><a href="/${lang}/tools/">${esc(T[lang].tools)}</a><a class="nav-donate" href="/${lang}/support/">${esc(T[lang].support)}</a></nav></div></div></header>
+<header class="top"><div class="wrap"><div class="brand-wrap">${brand}<nav class="lang-sw" aria-label="Language">${sw}</nav><nav class="site-nav" aria-label="${esc(T[lang].promo)}"><a href="/${lang}/tools/">${esc(T[lang].tools)}</a><a class="nav-donate" href="/${lang}/support/">${esc(T[lang].support)}</a>${saveBtn}</nav></div></div></header>
 <main class="stock-static"><nav class="money-bar" aria-label="${esc(T[lang].promo)}"><span class="pj-tag">${esc(T[lang].promo)}</span><a href="/${lang}/tools/">${esc(T[lang].tools)}</a><a href="/${lang}/support/">${esc(T[lang].support)}</a><a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview" data-placement="money-bar">TradingView</a><a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover" data-placement="money-bar">Stock Rover</a></nav><p class="advice" role="note">${esc(T[lang].advice)}</p>${body}
 <p class="tv-line"><span class="pj-tag">${esc(T[lang].promo)}</span> <a href="${esc(tvHref)}" rel="sponsored noopener" target="_blank" data-tool="tradingview" data-ticker="${esc(t)}">${esc(T[lang].tv)}</a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover" data-ticker="${esc(t)}">Stock Rover</a></p>
 <div class="open-live"><a href="/${lang}/#stock/${encodeURIComponent(t)}">${esc(T[lang].open)}</a></div>
@@ -387,6 +392,7 @@ ${indexRow(lang, list)}</main>
 <footer class="wrap foot"><p><a href="/${lang}/tools/">${esc(T[lang].tools)}</a> · <a href="/${lang}/support/">${esc(T[lang].support)}</a> · <a href="/${lang}/newsletter/">${esc(T[lang].news)}</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">TradingView <span class="pj-tag">${esc(T[lang].promo)}</span></a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="pj-tag">${esc(T[lang].promo)}</span></a></p></footer>
 <script>document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}var tool=a.getAttribute('data-tool');if(tool||h==='tradingview.com'||h.endsWith('.tradingview.com')){var aff={tool:(tool||'tradingview').toLowerCase(),lang:document.documentElement.lang||''};var ticker=a.getAttribute('data-ticker');if(ticker)aff.ticker=ticker;gtag('event','affiliate_click',aff);}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com'))gtag('event','x_outbound',{link_url:u,page:'stock',lang:document.documentElement.lang||'',transport_type:'beacon'})});</script>
 ${nlScript(nlCopy(lang).ok)}
+${save}
 ${toTop(T[lang].top)}
 </body></html>
 `;

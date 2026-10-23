@@ -8,8 +8,10 @@ data/social-posts.json and social/index.html: posts in Chinese, English and Kore
 plus a 1080x1920 Instagram Story picture og/story-<lang>.png and a native 1080x1350
 Instagram text-post picture og/ig-<lang>.png. Every version asks readers to support the site (PayPal).
 Also writes x_trilingual (one zh+en+ko X post at 21:00 and 08:00 HKT, picture og/x-<kind>.png for the $TICKER in the text), facebook_cta and ig_threads_daily.
-The same daily social run writes top5, and on Friday (HKT) weekly_thread. Schemas are on
-build_top5 and build_weekly_thread, and in tools/SOCIAL.md.
+The same daily social run writes top5, and on Friday (HKT) weekly_thread. It also writes
+hot_stock, discussion and atomic_posts. On Saturday and Sunday (HKT) it writes weekend and
+atomic_posts without rebuilding the weekday posts. Schemas are on the build_* functions
+and in tools/SOCIAL.md.
 python3 tools/share.py --og-only writes work/og.json from dash-data + work/stats.json and stops
 (no social posts, no index.html rewrite); used by tools/ig_sample.js.
 """
@@ -1565,6 +1567,12 @@ def _is_friday(day):
     return bool(day) and datetime.strptime(day, '%Y-%m-%d').weekday() == 4
 
 
+def _is_weekend(day):
+    """Saturday or Sunday on the calendar date (the social run uses HKT dates)."""
+    day = _as_day(day)
+    return bool(day) and datetime.strptime(day, '%Y-%m-%d').weekday() >= 5
+
+
 def _ticker_sym(t):
     return re.sub(r'[^A-Z0-9.\-]', '', str(t or '').strip().lstrip('$').upper())
 
@@ -1697,18 +1705,37 @@ def _long_top5_text(lang, day, window, bulls, bears, platform):
 
 
 def _threads_top5_text(lang, day, window, bulls, bears):
-    """Threads caption passed through fit_threads: at most one link, at most 500 code points."""
+    """Threads caption passed through fit_threads. The stock link lives in first_comment, not here."""
     L = TOP5_COPY[lang]
-    link = _camp_url(lang, 'threads', 'top5', bulls[0]['t'] if bulls else None)
     parts = [L['heading']]
     meta = [ln for ln in (day, f"{L['win']}: {window}" if window else '') if ln]
     if meta:
         parts.append('\n'.join(meta))
     parts.append('\n'.join(_list_lines(lang, L['bull'], bulls)))
     parts.append('\n'.join(_list_lines(lang, L['bear'], bears)))
-    parts.append('\n'.join([link, SHORT[lang]['disc']]))
+    parts.append(SHORT[lang]['disc'])
     parts.append(tags(lang, [r['t'] for r in bulls + bears]))
     return fit_threads('\n\n'.join(parts), lang)
+
+
+def _decorate_top5_posts(posts, bulls, bears):
+    """X keeps its in-body link. Threads and Facebook move theirs into first_comment."""
+    for lang in LANGS:
+        p = posts[lang]
+        fc = {'threads': SHORT[lang]['live'] + _camp_url(lang, 'threads', 'top5', bulls[0]['t'] if bulls else None)}
+        hl = {
+            'x': 'https://thecrowdtape.com' in (p.get('x') or ''),
+            'instagram': 'https://thecrowdtape.com' in (p.get('instagram') or ''),
+            'threads': True,
+            'facebook': bool(bulls or bears),
+        }
+        if bulls or bears:
+            fc['facebook'] = '\n'.join(
+                SHORT[lang]['live'] + _camp_url(lang, 'facebook', 'top5', r['t'])
+                for r in list(bulls) + list(bears))
+        p['first_comment'] = fc
+        p['has_link'] = hl
+    return posts
 
 
 def _top5_card_data(slot, lang):
@@ -1732,14 +1759,20 @@ def build_top5(daily, day, made_hkt):
       images: {zh|en|ko: {
         portrait: SITE+'og/top5-<lang>.png?v=<date>',       # 1080x1350, X / IG / Threads
         square:   SITE+'og/top5-<lang>-sq.png?v=<date>'}},  # 1080x1080, Facebook
-      posts: {zh|en|ko: {x, instagram, threads, facebook}},
+      format: image_card,
+      video: {zh|en|ko: SITE+'og/top5-<lang>.mp4?v=<date>'},
+      posts: {zh|en|ko: {x, instagram, threads, facebook, has_link, first_comment}},
     }
 
     Fewer than five names on a side: those names only. An empty side is the translated
     'none today' line (今日暫無 / None today / 오늘 없음), never a made-up row.
-    X carries one link: the lead bull's /<lang>/stock/<T>/, or /<lang>/ when there is no bull.
-    Threads is fit_threads (500 code points, one link). Every thecrowdtape.com link is
-    tag_url(..., platform, 'top5'). Each post ends with SHORT[lang]['disc'] and the usual hashtags.
+    X carries one link in the body: the lead bull's /<lang>/stock/<T>/, or /<lang>/ when there is no bull.
+    Threads and Facebook keep that link in first_comment (threads: the lead bull, or the language
+    home when there is no bull; facebook: one stock link per listed name). Instagram still lists
+    one stock link per ticker in the body. Threads is fit_threads (500 code points).
+    Every thecrowdtape.com link is tag_url(..., platform, 'top5').
+    Each post ends with SHORT[lang]['disc'] and the usual hashtags.
+    format is image_card. video.<lang> points at og/top5-<lang>.mp4.
     """
     daily = daily if isinstance(daily, dict) else {}
     bulls = _side_rows(daily.get('bull'), 'nb', 5)
@@ -1753,17 +1786,20 @@ def build_top5(daily, day, made_hkt):
             'x': _x_top5_text(lang, day, window, bulls, bears),
             'instagram': _long_top5_text(lang, day, window, bulls, bears, 'instagram'),
             'threads': _threads_top5_text(lang, day, window, bulls, bears),
-            'facebook': _long_top5_text(lang, day, window, bulls, bears, 'facebook'),
+            'facebook': _long_top5_text(lang, day, window, bulls, bears, None),
         }
+    _decorate_top5_posts(posts, bulls, bears)
     return {
         'date': day,
         'made_hkt': made_hkt,
         'window': window,
         'source': 'data/writeup-input.json daily',
+        'format': 'image_card',
         'bull': bulls,
         'bear': bears,
         'images': {lang: {'portrait': f'{SITE}og/top5-{lang}.png?v={day}',
                           'square': f'{SITE}og/top5-{lang}-sq.png?v={day}'} for lang in LANGS},
+        'video': {lang: f'{SITE}og/top5-{lang}.mp4?v={day}' for lang in LANGS},
         'posts': posts,
     }
 
@@ -1985,6 +2021,1148 @@ def attach_top5_and_weekly(sp, day, made_hkt, history, writeup=None):
     return sp
 
 
+# --- hot_stock, discussion, weekend, atomic_posts ---------------------------------
+# Counts and quotes come only from writeup-input rows (nb/nr, rows[].acc/why) and the
+# aggregate fields on daily/weekly. A missing count is left out. Nothing here is filled in.
+
+HISTORY_KEEP = 14
+HISTORY_LOOKBACK = 7
+ATOMIC_TIMES = ('09:00', '11:30', '14:00', '17:00', '20:00', '22:30')
+ATOMIC_MIN = 4
+ATOMIC_TARGET = 5
+AGG_KEYS = ('posts', 'accounts', 'originals', 'reposts', 'bull_views', 'bear_views',
+            'clear_accounts', 'bull_total', 'bear_total', 'split_total')
+_DATE_TOKEN = re.compile(
+    r'\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}(?::\d{2})?)?'
+    r'|\b\d{1,2}/\d{1,2}\b'
+    r'|\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.?\s+\d{1,2}\b'
+    r'|\b\d{1,2}:\d{2}\b',
+    re.I)
+_YEAR_TOKEN = re.compile(r'\b(?:19|20)\d{2}\b')
+
+HOT_COPY = {
+    'zh': {'title': '今日熱門 {t}：專家觀點', 'who': '帳號'},
+    'en': {'title': 'Popular stock today: expert views on {t}', 'who': 'Accounts'},
+    'ko': {'title': '오늘 인기 종목: {t} 전문가 시각', 'who': '계정'},
+}
+ASK_COPY = {
+    'zh': {'q': '你點睇 {t}？', 'opts': ('看好', '看淡', '中性')},
+    'en': {'q': 'What do you think of {t}?', 'opts': ('Bullish', 'Bearish', 'Neutral')},
+    'ko': {'q': '{t} 어떻게 보세요?', 'opts': ('강세', '약세', '중립')},
+}
+AGG_LABEL = {
+    'zh': {
+        'posts': ('今日帖文數', '本週帖文數'),
+        'accounts': ('今日帳號數', '本週帳號數'),
+        'originals': ('今日原創帖', '本週原創帖'),
+        'reposts': ('今日轉帖', '本週轉帖'),
+        'bull_views': ('今日看好觀點', '本週看好觀點'),
+        'bear_views': ('今日看淡觀點', '本週看淡觀點'),
+        'clear_accounts': ('今日清晰立場帳號', '本週清晰立場帳號'),
+        'bull_total': ('今日看好標的數', '本週看好標的數'),
+        'bear_total': ('今日看淡標的數', '本週看淡標的數'),
+        'split_total': ('今日分歧標的數', '本週分歧標的數'),
+    },
+    'en': {
+        'posts': ('Posts today', 'Posts this week'),
+        'accounts': ('Accounts today', 'Accounts this week'),
+        'originals': ('Original posts today', 'Original posts this week'),
+        'reposts': ('Reposts today', 'Reposts this week'),
+        'bull_views': ('Bullish views today', 'Bullish views this week'),
+        'bear_views': ('Bearish views today', 'Bearish views this week'),
+        'clear_accounts': ('Clear-stance accounts today', 'Clear-stance accounts this week'),
+        'bull_total': ('Bullish names today', 'Bullish names this week'),
+        'bear_total': ('Bearish names today', 'Bearish names this week'),
+        'split_total': ('Split names today', 'Split names this week'),
+    },
+    'ko': {
+        'posts': ('오늘 게시물', '이번 주 게시물'),
+        'accounts': ('오늘 계정', '이번 주 계정'),
+        'originals': ('오늘 원글', '이번 주 원글'),
+        'reposts': ('오늘 리포스트', '이번 주 리포스트'),
+        'bull_views': ('오늘 강세 의견', '이번 주 강세 의견'),
+        'bear_views': ('오늘 약세 의견', '이번 주 약세 의견'),
+        'clear_accounts': ('오늘 입장 분명한 계정', '이번 주 입장 분명한 계정'),
+        'bull_total': ('오늘 강세 종목 수', '이번 주 강세 종목 수'),
+        'bear_total': ('오늘 약세 종목 수', '이번 주 약세 종목 수'),
+        'split_total': ('오늘 의견 갈린 종목 수', '이번 주 의견 갈린 종목 수'),
+    },
+}
+NUM_Q = {
+    'zh': '你點睇呢個數？',
+    'en': 'What do you make of this number?',
+    'ko': '이 숫자 어떻게 보세요?',
+}
+WEEKEND_COPY = {
+    'zh': {
+        'bulls': '本週最看好', 'bears': '本週最看淡', 'totals': '本週共識數字',
+        'splits': '本週分歧', 'split_q': '你點睇本週分歧 {t}？',
+        'bull_total': '看好標的', 'bear_total': '看淡標的', 'ask': '你點睇呢組數字？',
+    },
+    'en': {
+        'bulls': 'Most bullish this week', 'bears': 'Most bearish this week',
+        'totals': "This week's consensus counts", 'splits': "This week's splits",
+        'split_q': "What do you think of this week's split, {t}?",
+        'bull_total': 'Bullish names', 'bear_total': 'Bearish names',
+        'ask': 'What do you make of these counts?',
+    },
+    'ko': {
+        'bulls': '이번 주 가장 강세', 'bears': '이번 주 가장 약세', 'totals': '이번 주 컨센서스 숫자',
+        'splits': '이번 주 의견 분열', 'split_q': '이번 주 의견이 갈린 {t}, 어떻게 보세요?',
+        'bull_total': '강세 종목', 'bear_total': '약세 종목', 'ask': '이 숫자 어떻게 보세요?',
+    },
+}
+WEEKEND_FMT = {
+    'bulls': 'image_card', 'bears': 'carousel', 'totals': 'text_question',
+    'splits': 'carousel', 'split_poll': 'poll',
+}
+
+
+def history_path():
+    return os.environ.get('SOCIAL_HISTORY') or 'data/social-history.json'
+
+
+def _norm_text(s):
+    return re.sub(r'\s+', ' ', (s or '')).strip()
+
+
+def content_numbers(text):
+    """Integers in a caption that are not part of a date, a clock time, a year or a URL."""
+    t = re.sub(r'https?://\S+', ' ', text or '')
+    t = _DATE_TOKEN.sub(' ', t)
+    t = _YEAR_TOKEN.sub(' ', t)
+    return {int(x) for x in re.findall(r'\d+', t)}
+
+
+def content_tickers(text):
+    out = set()
+    for raw in re.findall(r'\$([A-Za-z0-9.\-]+)', text or ''):
+        t = _ticker_sym(raw)
+        if t and re.search(r'[A-Z]', t):
+            out.add(t)
+    return out
+
+
+def _trim_verbatim(text, limit):
+    """Collapse whitespace and cut a long quote from the end. The start stays as written."""
+    text = re.sub(r'https?://\S+', '', text or '')
+    text = re.sub(r'\s+', ' ', text).strip()
+    if limit and len(text) > limit:
+        text = text[:max(1, limit - 1)].rstrip() + '…'
+    return text
+
+
+def _assemble(parts):
+    return '\n\n'.join(p.strip('\n') for p in parts if p and str(p).strip())
+
+
+def _close(lang, tickers):
+    tag = ' '.join([_primary_tag(lang), *_hash_tags([t for t in tickers if t])])
+    return SHORT[lang]['disc'] + '\n' + tag
+
+
+def _tag_line(lang, tickers):
+    return _close(lang, tickers).split('\n', 1)[1]
+
+
+def _count_phrase(lang, side, n):
+    n = _as_int(n)
+    if lang == 'en':
+        word = 'account' if n == 1 else 'accounts'
+        adj = 'bullish' if side == 'bull' else 'bearish'
+        return f'{n} {adj} {word}'
+    if lang == 'ko':
+        adj = '강세' if side == 'bull' else '약세'
+        return f'{adj} 계정 {n}개'
+    adj = '看好' if side == 'bull' else '看淡'
+    return f'{n} 個帳號{adj}'
+
+
+def _as_threads(text, lang):
+    out = fit_threads(text, lang)
+    disc = SHORT[lang]['disc']
+    if disc not in out:
+        out = fit_threads(f'{out}\n\n{disc}', lang)
+    return out
+
+
+def _count_bits(lang, nb, nr):
+    bits = []
+    if _is_num(nb):
+        bits.append(_count_phrase(lang, 'bull', nb))
+    if _is_num(nr):
+        bits.append(_count_phrase(lang, 'bear', nr))
+    return ' · '.join(bits)
+
+
+def _quote_rows(row, limit=3):
+    out = []
+    for item in (row or {}).get('rows') or []:
+        if not isinstance(item, dict):
+            continue
+        acc = str(item.get('acc') or '').strip().lstrip('@')
+        why = _trim_verbatim(item.get('why') or '', 220)
+        if not acc or not why:
+            continue
+        out.append({'acc': acc, 'why': why})
+        if len(out) >= limit:
+            break
+    return out
+
+
+def _attr_line(acc, why):
+    handle = '@' + str(acc).lstrip('@')
+    why = (why or '').strip()
+    low = why.lower()
+    if low.startswith(handle.lower()) or handle.lower() in low:
+        return why
+    return f'{handle}：{why}'
+
+
+def _copy_row(row):
+    if not isinstance(row, dict):
+        return None
+    t = _ticker_sym(row.get('t'))
+    if not t:
+        return None
+    item = {'t': t, 'rows': row.get('rows') or []}
+    for key in ('nb', 'nr', 'n_posts'):
+        if key in row:
+            item[key] = row.get(key)
+    return item
+
+
+def _named_rows(block):
+    out, seen = [], set()
+    for side in ('bull', 'bear', 'split'):
+        for row in (block or {}).get(side) or []:
+            item = _copy_row(row)
+            if not item or item['t'] in seen:
+                continue
+            seen.add(item['t'])
+            out.append(item)
+    return out
+
+
+def _row_score(row):
+    nb = row.get('nb') if _is_num(row.get('nb')) else 0
+    nr = row.get('nr') if _is_num(row.get('nr')) else 0
+    nps = row.get('n_posts') if _is_num(row.get('n_posts')) else 0
+    return (nb + nr, nps)
+
+
+def _rank_rows(rows):
+    return [row for _, row in sorted(enumerate(rows), key=lambda iv: (-_row_score(iv[1])[0], -_row_score(iv[1])[1], iv[0]))]
+
+
+def select_slot_rows(daily, blocked):
+    """Hottest quoted name for hot_stock, next counted name for discussion. Either may be None."""
+    blocked = {_ticker_sym(t) for t in (blocked or []) if _ticker_sym(t)}
+    ranked = _rank_rows(_named_rows(daily))
+    hot = next((r for r in ranked if r['t'] not in blocked and _quote_rows(r)), None)
+    talk = next((r for r in ranked
+                 if r['t'] not in blocked and (hot is None or r['t'] != hot['t'])
+                 and (_is_num(r.get('nb')) or _is_num(r.get('nr')))), None)
+    return hot, talk
+
+
+def top5_lead_tickers(top5):
+    """First bull and first bear on the top5 card. Those are the lead names."""
+    out = []
+    if not isinstance(top5, dict):
+        return out
+    for side in ('bull', 'bear'):
+        rows = top5.get(side) or []
+        if rows and isinstance(rows[0], dict):
+            t = _ticker_sym(rows[0].get('t'))
+            if t:
+                out.append(t)
+    return out
+
+
+def headline_ticker(sp):
+    """First $TICKER on the main post's opening line."""
+    posts = (sp or {}).get('posts') or {}
+    for lang in LANGS:
+        by = posts.get(lang)
+        text = by.get('x') or by.get('threads') or '' if isinstance(by, dict) else (by or '')
+        for line in str(text).splitlines():
+            line = line.strip()
+            if not line or line.startswith('⚠') or line.startswith('#'):
+                continue
+            m = re.search(r'\$([A-Za-z0-9.\-]+)', line)
+            if not m:
+                continue
+            t = _ticker_sym(m.group(1))
+            if t and re.search(r'[A-Z]', t):
+                return t
+    return None
+
+
+def xtri_tickers(sp):
+    out = []
+    tri = (sp or {}).get('x_trilingual') or {}
+    if not isinstance(tri, dict):
+        return out
+    for entry in tri.values():
+        text = ''
+        if isinstance(entry, dict):
+            t = _ticker_sym(entry.get('image_ticker'))
+            if t and re.search(r'[A-Z]', t) and t not in out:
+                out.append(t)
+            text = entry.get('text') or ''
+        elif isinstance(entry, str):
+            text = entry
+        for t in content_tickers(text):
+            if t not in out:
+                out.append(t)
+    return out
+
+
+def recent_slot_tickers(history, day, slots=('hot_stock', 'discussion'), within=HISTORY_LOOKBACK):
+    """Tickers used by hot_stock or discussion on the previous `within` days, not today."""
+    day = _as_day(day)
+    if not day or not isinstance(history, dict):
+        return set()
+    today = datetime.strptime(day, '%Y-%m-%d')
+    out = set()
+    for key, rec in history.items():
+        d = _as_day(key)
+        if not d or not isinstance(rec, dict):
+            continue
+        delta = (today - datetime.strptime(d, '%Y-%m-%d')).days
+        if delta <= 0 or delta > within:
+            continue
+        for slot in slots:
+            for t in rec.get(slot) or []:
+                sym = _ticker_sym(t)
+                if sym:
+                    out.add(sym)
+    return out
+
+
+def blocked_tickers_for_slots(sp, history, day):
+    out = set(top5_lead_tickers((sp or {}).get('top5')))
+    head = headline_ticker(sp)
+    if head:
+        out.add(head)
+    out.update(xtri_tickers(sp))
+    out.update(recent_slot_tickers(history or {}, day))
+    return out
+
+
+def load_social_history(path=None):
+    data = read_json(path or history_path(), {}) or {}
+    return data if isinstance(data, dict) else {}
+
+
+def save_social_history(history, path=None):
+    """Keep the newest HISTORY_KEEP dates. Shape is {date: {slot: [tickers]}}."""
+    history = history if isinstance(history, dict) else {}
+    days = sorted({_as_day(k) for k in history if _as_day(k)})
+    keep = set(days[-HISTORY_KEEP:])
+    for key in list(history):
+        if _as_day(key) not in keep:
+            history.pop(key, None)
+    write_json(path or history_path(), history, indent=1)
+    return history
+
+
+def remember_slots(history, day, slot_map):
+    day = _as_day(day)
+    if not day:
+        return history
+    rec = history.get(day) if isinstance(history.get(day), dict) else {}
+    for slot, ticks in (slot_map or {}).items():
+        clean = []
+        for t in ticks or []:
+            sym = _ticker_sym(t)
+            if sym and sym not in clean:
+                clean.append(sym)
+        rec[slot] = clean
+    history[day] = rec
+    return history
+
+
+def _link_entries(bodies_by_lang, campaign, ticker=None):
+    """About half the threads/facebook bodies get a first_comment link. Bodies stay link-free."""
+    out = {}
+    i = 0
+    for lang in LANGS:
+        entry = {'threads': bodies_by_lang[lang], 'facebook': bodies_by_lang[lang]}
+        hl, fc = {}, {}
+        for plat in ('threads', 'facebook'):
+            take = (i % 2 == 0)
+            i += 1
+            hl[plat] = take
+            if take:
+                fc[plat] = SHORT[lang]['live'] + _camp_url(lang, plat, campaign, ticker)
+        entry['has_link'] = hl
+        if fc:
+            entry['first_comment'] = fc
+        out[lang] = entry
+    return out
+
+
+def _hot_body(lang, ticker, nb, nr, quotes):
+    title = HOT_COPY[lang]['title'].format(t=f'${ticker}')
+    counts = _count_bits(lang, nb, nr)
+    end = _close(lang, [ticker])
+    if lang != 'zh':
+        who = ''
+        if quotes:
+            who = HOT_COPY[lang]['who'] + ': ' + ' '.join(f'@{q["acc"]}' for q in quotes)
+        return _as_threads(_assemble([title, counts, who, end]), lang)
+    lines = [_attr_line(q['acc'], q['why']) for q in quotes]
+    use = list(lines)
+    while True:
+        block = '\n'.join(use) if use else ''
+        body = _assemble([title, counts, block, end])
+        if len(body) <= THREADS_MAX or not use:
+            return _as_threads(body, lang)
+        if len(use) > 1:
+            use.pop()
+            continue
+        room = THREADS_MAX - len(_assemble([title, counts, end])) - 2
+        if room < 24:
+            use = []
+            continue
+        use = [_trim_verbatim(use[0], room)]
+        body = _assemble([title, counts, use[0], end])
+        return _as_threads(body, lang)
+
+
+def build_hot_stock(row, day):
+    """Expert views on one name. zh quotes why verbatim. en/ko keep handles, ticker and counts."""
+    if not row:
+        return None
+    quotes = _quote_rows(row, 3)
+    if not quotes:
+        return None
+    ticker = row['t']
+    nb = row.get('nb') if _is_num(row.get('nb')) else None
+    nr = row.get('nr') if _is_num(row.get('nr')) else None
+    bodies = {lang: _hot_body(lang, ticker, nb, nr, quotes) for lang in LANGS}
+    posts = _link_entries(bodies, 'hot_stock', ticker)
+    slot = {
+        'date': _as_day(day) or str(day or ''),
+        'format': 'carousel',
+        'ticker': ticker,
+        'source': 'data/writeup-input.json daily',
+        'accounts': [q['acc'] for q in quotes],
+        'posts': posts,
+    }
+    if nb is not None:
+        slot['nb'] = _as_int(nb)
+    if nr is not None:
+        slot['nr'] = _as_int(nr)
+    return slot
+
+
+def build_discussion(row, day):
+    """Poll: what do you think of $T, with the row's real bull and bear account counts."""
+    if not row:
+        return None
+    if not (_is_num(row.get('nb')) or _is_num(row.get('nr'))):
+        return None
+    ticker = row['t']
+    nb = row.get('nb') if _is_num(row.get('nb')) else None
+    nr = row.get('nr') if _is_num(row.get('nr')) else None
+    bodies = {}
+    polls = {}
+    for lang in LANGS:
+        q = ASK_COPY[lang]['q'].format(t=f'${ticker}')
+        counts = _count_bits(lang, nb, nr)
+        bodies[lang] = _as_threads(_assemble([q, counts, _close(lang, [ticker])]), lang)
+        polls[lang] = {'question': q, 'options': list(ASK_COPY[lang]['opts'])}
+    posts = _link_entries(bodies, 'discussion', ticker)
+    for lang in LANGS:
+        posts[lang]['poll'] = polls[lang]
+    slot = {
+        'date': _as_day(day) or str(day or ''),
+        'format': 'poll',
+        'ticker': ticker,
+        'source': 'data/writeup-input.json daily',
+        'poll': polls,
+        'posts': posts,
+    }
+    if nb is not None:
+        slot['nb'] = _as_int(nb)
+    if nr is not None:
+        slot['nr'] = _as_int(nr)
+    return slot
+
+
+def _side_lines(lang, title, rows, field, side, limit=5):
+    lines = []
+    tickers = []
+    for row in rows or []:
+        if len(lines) >= limit:
+            break
+        item = _copy_row(row)
+        if not item or not _is_num(item.get(field)):
+            continue
+        lines.append(f'${item["t"]} {_count_phrase(lang, side, item[field])}')
+        tickers.append(item['t'])
+    if not lines:
+        return None, []
+    body = _as_threads(_assemble([title, '\n'.join(lines), _close(lang, tickers)]), lang)
+    return body, tickers
+
+
+def _totals_body(lang, weekly):
+    bits = []
+    if _is_num((weekly or {}).get('bull_total')):
+        bits.append(f"{WEEKEND_COPY[lang]['bull_total']} {_as_int(weekly['bull_total'])}")
+    if _is_num((weekly or {}).get('bear_total')):
+        bits.append(f"{WEEKEND_COPY[lang]['bear_total']} {_as_int(weekly['bear_total'])}")
+    if not bits:
+        return None
+    return _as_threads(_assemble([
+        WEEKEND_COPY[lang]['totals'], ' · '.join(bits), WEEKEND_COPY[lang]['ask'], _close(lang, []),
+    ]), lang)
+
+
+def _best_split(weekly, avoid):
+    best, best_key = None, None
+    for i, row in enumerate((weekly or {}).get('split') or []):
+        item = _copy_row(row)
+        if not item or item['t'] in avoid:
+            continue
+        if not (_is_num(item.get('nb')) or _is_num(item.get('nr'))):
+            continue
+        score = _row_score(item)
+        key = (-score[0], -score[1], i)
+        if best_key is None or key < best_key:
+            best, best_key = item, key
+    return best
+
+
+def _weekend_pieces(weekly, day):
+    """Two different angles. Saturday leads with bulls, Sunday with bears."""
+    weekly = weekly if isinstance(weekly, dict) else {}
+    wd = datetime.strptime(_as_day(day), '%Y-%m-%d').weekday()
+    plan = ['bulls', 'totals', 'splits', 'bears'] if wd == 5 else ['bears', 'split_poll', 'bulls', 'totals']
+    prefix = 'weekend-sat' if wd == 5 else 'weekend-sun'
+    made = []
+    used_tickers = set()
+    for angle in plan:
+        if len(made) >= 2:
+            break
+        bodies, ticker, poll = {}, None, None
+        if angle == 'bulls':
+            tickers = []
+            for lang in LANGS:
+                body, tickers = _side_lines(lang, WEEKEND_COPY[lang]['bulls'], weekly.get('bull'), 'nb', 'bull')
+                if not body:
+                    bodies = {}
+                    break
+                bodies[lang] = body
+            ticker = tickers[0] if tickers else None
+        elif angle == 'bears':
+            tickers = []
+            for lang in LANGS:
+                body, tickers = _side_lines(lang, WEEKEND_COPY[lang]['bears'], weekly.get('bear'), 'nr', 'bear')
+                if not body:
+                    bodies = {}
+                    break
+                bodies[lang] = body
+            ticker = tickers[0] if tickers else None
+        elif angle == 'totals':
+            for lang in LANGS:
+                body = _totals_body(lang, weekly)
+                if not body:
+                    bodies = {}
+                    break
+                bodies[lang] = body
+        elif angle == 'splits':
+            tickers = []
+            for lang in LANGS:
+                lines, ts = [], []
+                for row in _rank_rows(_named_rows({'split': weekly.get('split')}))[:3]:
+                    if not (_is_num(row.get('nb')) or _is_num(row.get('nr'))):
+                        continue
+                    bits = _count_bits(lang, row.get('nb') if _is_num(row.get('nb')) else None,
+                                       row.get('nr') if _is_num(row.get('nr')) else None)
+                    if not bits:
+                        continue
+                    lines.append(f'${row["t"]} {bits}')
+                    ts.append(row['t'])
+                if not lines:
+                    bodies = {}
+                    break
+                bodies[lang] = _as_threads(_assemble([
+                    WEEKEND_COPY[lang]['splits'], '\n'.join(lines), _close(lang, ts)]), lang)
+                tickers = ts
+            ticker = tickers[0] if tickers else None
+        elif angle == 'split_poll':
+            row = _best_split(weekly, used_tickers)
+            if not row:
+                continue
+            ticker = row['t']
+            poll = {}
+            for lang in LANGS:
+                q = WEEKEND_COPY[lang]['split_q'].format(t=f'${ticker}')
+                counts = _count_bits(lang, row.get('nb') if _is_num(row.get('nb')) else None,
+                                     row.get('nr') if _is_num(row.get('nr')) else None)
+                bodies[lang] = _as_threads(_assemble([q, counts, _close(lang, [ticker])]), lang)
+                poll[lang] = {'question': q, 'options': list(ASK_COPY[lang]['opts'])}
+        if len(bodies) != len(LANGS):
+            continue
+        made.append({'angle': angle, 'id': f'{prefix}-{angle}', 'ticker': ticker, 'bodies': bodies, 'poll': poll})
+        if ticker:
+            used_tickers.add(ticker)
+    return made
+
+
+def build_weekend(weekly, day):
+    """Saturday/Sunday posts from weekly writeup data. None on other days or when fewer than 2 fit."""
+    if not _is_weekend(day):
+        return None
+    made = _weekend_pieces(weekly, day)
+    if len(made) < 2:
+        return None
+    posts = []
+    i = 0
+    for piece in made:
+        langs = {}
+        for lang in LANGS:
+            entry = {'threads': piece['bodies'][lang], 'facebook': piece['bodies'][lang]}
+            hl, fc = {}, {}
+            for plat in ('threads', 'facebook'):
+                take = (i % 2 == 0)
+                i += 1
+                hl[plat] = take
+                if take:
+                    fc[plat] = SHORT[lang]['live'] + _camp_url(lang, plat, 'weekend', piece.get('ticker'))
+            entry['has_link'] = hl
+            if fc:
+                entry['first_comment'] = fc
+            if piece.get('poll'):
+                entry['poll'] = piece['poll'][lang]
+            langs[lang] = entry
+        item = {'id': piece['id'], 'format': WEEKEND_FMT[piece['angle']], 'langs': langs}
+        if piece.get('poll'):
+            item['poll'] = piece['poll']
+        if piece.get('ticker'):
+            item['ticker'] = piece['ticker']
+        posts.append(item)
+    return {
+        'date': _as_day(day),
+        'source': 'data/writeup-input.json weekly',
+        'posts': posts,
+    }
+
+
+def _free_side(row, used_n):
+    for side, field in (('bull', 'nb'), ('bear', 'nr')):
+        if _is_num(row.get(field)):
+            n = _as_int(row[field])
+            if n not in used_n:
+                return side, n
+    return None, None
+
+
+def _first_acc(row):
+    for item in row.get('rows') or []:
+        if isinstance(item, dict):
+            acc = str(item.get('acc') or '').strip().lstrip('@')
+            if acc:
+                return acc
+    return None
+
+
+def _clean_why(why, ticker, n):
+    """A quote atomic posts may show: no extra ticker and no extra number."""
+    why = _trim_verbatim(why, 180)
+    if not why:
+        return None
+    allowed = set() if n is None else {n}
+    if not content_numbers(why) <= allowed:
+        return None
+    if not content_tickers(why) <= {ticker}:
+        return None
+    return why
+
+
+def _expert_quote(row, ticker, n):
+    for item in row.get('rows') or []:
+        if not isinstance(item, dict):
+            continue
+        acc = str(item.get('acc') or '').strip().lstrip('@')
+        why = _clean_why(item.get('why') or '', ticker, n)
+        if acc and why:
+            return acc, why
+    return None, None
+
+
+def _atomic_candidates(writeup, used_n, used_t):
+    experts, stocks, numbers = [], [], []
+    seen_e, seen_s = set(), set()
+    for scope in ('daily', 'weekly'):
+        block = (writeup or {}).get(scope) or {}
+        labels = AGG_LABEL['en']
+        for key in AGG_KEYS:
+            if key not in labels or not _is_num(block.get(key)):
+                continue
+            n = _as_int(block[key])
+            if n in used_n:
+                continue
+            numbers.append({'point_type': 'number', 'scope': scope, 'key': key, 'n': n,
+                            'id': f'number-{scope}-{key}'})
+        for row in _named_rows(block):
+            if row['t'] in used_t:
+                continue
+            side, n = _free_side(row, used_n)
+            if n is None:
+                continue
+            acc = _first_acc(row)
+            if acc and row['t'] not in seen_e:
+                qacc, why = _expert_quote(row, row['t'], n)
+                experts.append({
+                    'point_type': 'expert_view', 'ticker': row['t'], 'side': side, 'n': n,
+                    'acc': qacc or acc, 'why': why, 'id': f'expert-{row["t"]}',
+                })
+                seen_e.add(row['t'])
+            if row['t'] not in seen_s:
+                stocks.append({
+                    'point_type': 'stock', 'ticker': row['t'], 'side': side, 'n': n,
+                    'id': f'stock-{row["t"]}',
+                })
+                seen_s.add(row['t'])
+    return experts, stocks, numbers
+
+
+def _render_atomic(pt, lang):
+    ticker = pt.get('ticker')
+    n = pt.get('n')
+    if pt['point_type'] == 'number':
+        label = AGG_LABEL[lang][pt['key']][0 if pt['scope'] == 'daily' else 1]
+        fact = f'{label} {n}'
+        body = _assemble([fact, NUM_Q[lang], _close(lang, [])])
+        return _as_threads(body, lang), fact, _tag_line(lang, [])
+    if pt['point_type'] == 'stock':
+        fact = f'${ticker} {_count_phrase(lang, pt["side"], n)}'
+        body = _assemble([fact, _close(lang, [ticker])])
+        return _as_threads(body, lang), fact, _tag_line(lang, [ticker])
+    handle = '@' + str(pt.get('acc') or '').lstrip('@')
+    if lang == 'zh':
+        fact = f'{handle} 提到 ${ticker}'
+    elif lang == 'ko':
+        fact = f'{handle} 가 본 ${ticker}'
+    else:
+        fact = f'{handle} on ${ticker}'
+    parts = [fact]
+    if n is not None:
+        parts.append(_count_phrase(lang, pt['side'], n))
+    if lang == 'zh' and pt.get('why'):
+        parts.append(_attr_line(pt['acc'], pt['why']))
+    body = _assemble(parts + [_close(lang, [ticker])])
+    return _as_threads(body, lang), fact, _tag_line(lang, [ticker])
+
+
+def _atomic_format(point_type):
+    if point_type == 'expert_view':
+        return 'carousel'
+    if point_type == 'number':
+        return 'text_question'
+    return 'image_card'
+
+
+def _try_point(pt, used_n, used_t, used_text, retried=False):
+    rendered = {}
+    expect_n = set() if pt.get('n') is None else {pt['n']}
+    expect_t = set() if not pt.get('ticker') else {pt['ticker']}
+    for lang in LANGS:
+        text, hook, tags = _render_atomic(pt, lang)
+        nums, ticks = content_numbers(text), content_tickers(text)
+        if nums != expect_n or ticks != expect_t:
+            if pt.get('why') and not retried:
+                alt = dict(pt)
+                alt['why'] = None
+                return _try_point(alt, used_n, used_t, used_text, True)
+            return None
+        if nums & used_n or ticks & used_t or _norm_text(text) in used_text:
+            return None
+        if len(text) > THREADS_MAX or SHORT[lang]['disc'] not in text:
+            return None
+        rendered[lang] = (text, hook, tags, pt)
+    return rendered
+
+
+def build_atomic_posts(writeup, used_n, used_t, used_text):
+    """4–5 posts per language. One fact each. Chinese posts come first."""
+    used_n, used_t, used_text = set(used_n or ()), set(used_t or ()), set(used_text or ())
+    experts, stocks, numbers = _atomic_candidates(writeup, used_n, used_t)
+    chosen = []
+
+    def take(pt):
+        if pt.get('n') in used_n:
+            return False
+        if pt.get('ticker') and pt['ticker'] in used_t:
+            return False
+        rendered = _try_point(pt, used_n, used_t, used_text)
+        if not rendered:
+            return False
+        # _try_point may have cleared why; keep the point it actually rendered.
+        kept = rendered[LANGS[0]][3]
+        chosen.append((kept, rendered))
+        if kept.get('n') is not None:
+            used_n.add(kept['n'])
+        if kept.get('ticker'):
+            used_t.add(kept['ticker'])
+        for text, _hook, _tags, _pt in rendered.values():
+            used_text.add(_norm_text(text))
+        return True
+
+    if numbers:
+        take(numbers.pop(0))
+    for pt in stocks:
+        if take(pt):
+            break
+    for pt in experts:
+        if pt.get('ticker') in used_t:
+            continue
+        if take(pt):
+            break
+    for pt in numbers:
+        if len(chosen) >= ATOMIC_TARGET:
+            break
+        take(pt)
+    for pool in (stocks, experts, numbers):
+        if len(chosen) >= ATOMIC_MIN:
+            break
+        for pt in pool:
+            if len(chosen) >= ATOMIC_TARGET:
+                break
+            take(pt)
+    if len(chosen) < ATOMIC_MIN:
+        return []
+    chosen = chosen[:ATOMIC_TARGET]
+    seq = []
+    for lang in LANGS:
+        for i, (pt, rendered) in enumerate(chosen):
+            text, hook, tags, _pt = rendered[lang]
+            seq.append((i, lang, pt, text, hook, tags))
+    items = []
+    for n, (i, lang, pt, text, hook, tags) in enumerate(seq):
+        item = {
+            'id': f'{lang}-{pt["id"]}',
+            'lang': lang,
+            'slot_kst': ATOMIC_TIMES[i],
+            'format': _atomic_format(pt['point_type']),
+            'point_type': pt['point_type'],
+            'hook': hook,
+            'text': text,
+            'hashtags': tags,
+            'has_link': (n % 2 == 0),
+        }
+        if pt.get('ticker'):
+            item['ticker'] = pt['ticker']
+        if item['has_link']:
+            item['first_comment'] = SHORT[lang]['live'] + _camp_url(lang, 'threads', 'atomic', pt.get('ticker'))
+        items.append(item)
+    return items
+
+
+_BODY_FIELDS = ('x', 'threads', 'instagram', 'facebook', 'text')
+
+
+def _platform_bodies(posts):
+    out = []
+    if not isinstance(posts, dict):
+        return out
+    for by in posts.values():
+        if not isinstance(by, dict):
+            continue
+        for field in _BODY_FIELDS:
+            if isinstance(by.get(field), str):
+                out.append(by[field])
+    return out
+
+
+def _body_groups(sp):
+    """Platform bodies by slot. Hashtag stickers and image URLs are not bodies."""
+    sp = sp or {}
+    groups = {}
+    bodies = _platform_bodies(sp.get('posts'))
+    if bodies:
+        groups['posts'] = bodies
+    top = _platform_bodies((sp.get('top5') or {}).get('posts'))
+    if top:
+        groups['top5'] = top
+    weekly = []
+    langs = (sp.get('weekly_thread') or {}).get('langs') if isinstance(sp.get('weekly_thread'), dict) else None
+    if isinstance(langs, dict):
+        for posts in langs.values():
+            if isinstance(posts, list):
+                weekly.extend(p for p in posts if isinstance(p, str))
+            elif isinstance(posts, str):
+                weekly.append(posts)
+    if weekly:
+        groups['weekly_thread'] = weekly
+    tri = []
+    xtri = sp.get('x_trilingual')
+    if isinstance(xtri, dict):
+        for entry in xtri.values():
+            if isinstance(entry, dict) and isinstance(entry.get('text'), str):
+                tri.append(entry['text'])
+            elif isinstance(entry, str):
+                tri.append(entry)
+    if tri:
+        groups['x_trilingual'] = tri
+    slots = sp.get('slots')
+    if isinstance(slots, dict):
+        for key, sl in slots.items():
+            bodies = _platform_bodies((sl or {}).get('posts') if isinstance(sl, dict) else None)
+            if bodies:
+                groups[f'slots.{key}'] = bodies
+    for name in ('hot_stock', 'discussion'):
+        node = sp.get(name)
+        if isinstance(node, dict):
+            bodies = _platform_bodies(node.get('posts'))
+            if bodies:
+                groups[name] = bodies
+    weekend_bodies = []
+    weekend = sp.get('weekend')
+    if isinstance(weekend, dict):
+        for item in weekend.get('posts') or []:
+            if isinstance(item, dict):
+                weekend_bodies.extend(_platform_bodies(item.get('langs')))
+    if weekend_bodies:
+        groups['weekend'] = weekend_bodies
+    atomic = [p.get('text') for p in sp.get('atomic_posts') or [] if isinstance(p, dict) and isinstance(p.get('text'), str)]
+    if atomic:
+        groups['atomic_posts'] = atomic
+    return groups
+
+
+def _union_facts(groups, skip=()):
+    nums, ticks, texts = set(), set(), set()
+    for name, blobs in groups.items():
+        if name in skip:
+            continue
+        for raw in blobs:
+            nums |= content_numbers(raw)
+            ticks |= content_tickers(raw)
+            key = _norm_text(raw)
+            if key:
+                texts.add(key)
+    return nums, ticks, texts
+
+
+def _text_clashes(groups, slot):
+    others = {}
+    for name, blobs in groups.items():
+        if name == slot:
+            continue
+        for raw in blobs:
+            others.setdefault(_norm_text(raw), name)
+    hits = []
+    for raw in groups.get(slot) or []:
+        key = _norm_text(raw)
+        if key and key in others:
+            hits.append(others[key])
+    return hits
+
+
+def _atomic_group(item):
+    i = item.get('id') or ''
+    lang = item.get('lang') or ''
+    prefix = f'{lang}-'
+    return i[len(prefix):] if lang and i.startswith(prefix) else i
+
+
+def guard_slots(sp):
+    """Problems when two slots share a full body, or atomic facts repeat. Empty means clean."""
+    problems = []
+    groups = _body_groups(sp)
+    seen = {}
+    for slot, blobs in groups.items():
+        local = set()
+        for raw in blobs:
+            key = _norm_text(raw)
+            if not key:
+                continue
+            if slot == 'atomic_posts':
+                if key in local:
+                    problems.append(f'duplicate atomic text: {key[:60]}')
+                local.add(key)
+            prev = seen.get(key)
+            if prev and prev != slot:
+                problems.append(f'duplicate text in {prev} and {slot}')
+            else:
+                seen.setdefault(key, slot)
+    atomic = [p for p in (sp.get('atomic_posts') or []) if isinstance(p, dict)]
+    other_n, other_t, _other_text = _union_facts(groups, skip=('atomic_posts',))
+    by_point = {}
+    for item in atomic:
+        by_point.setdefault(_atomic_group(item), []).append(item)
+    used_n, used_t = set(), set()
+    for gid, items in by_point.items():
+        sets_n = [content_numbers(i.get('text') or '') for i in items]
+        sets_t = [content_tickers(i.get('text') or '') for i in items]
+        if any(s != sets_n[0] for s in sets_n):
+            problems.append(f'atomic point {gid} numbers differ by language')
+        if any(s != sets_t[0] for s in sets_t):
+            problems.append(f'atomic point {gid} tickers differ by language')
+        if sets_n[0] & other_n:
+            problems.append(f'atomic point {gid} reuses numbers {sorted(sets_n[0] & other_n)}')
+        if sets_t[0] & other_t:
+            problems.append(f'atomic point {gid} reuses tickers {sorted(sets_t[0] & other_t)}')
+        if sets_n[0] & used_n:
+            problems.append(f'atomic number overlap on {gid}')
+        if sets_t[0] & used_t:
+            problems.append(f'atomic ticker overlap on {gid}')
+        used_n |= sets_n[0]
+        used_t |= sets_t[0]
+    return problems
+
+
+def _tickers_of_atomic(posts):
+    out = []
+    for item in posts or []:
+        t = _ticker_sym((item or {}).get('ticker'))
+        if t and t not in out:
+            out.append(t)
+    return out
+
+
+def _tickers_in_texts(blobs):
+    out = []
+    for raw in blobs or []:
+        for t in content_tickers(raw):
+            if t not in out:
+                out.append(t)
+    return out
+
+
+def refresh_top5(sp, daily, day, made_hkt):
+    sp['top5'] = build_top5(daily or {}, day, made_hkt)
+    return sp
+
+
+def attach_market_slots(sp, day, writeup, history=None, save=False):
+    """Weekday hot_stock, discussion and atomic_posts. Omits a slot when no name is eligible."""
+    if history is None:
+        history = load_social_history()
+        save = True
+    writeup = writeup if isinstance(writeup, dict) else {}
+    day = _as_day(day) or str(day or '')
+    sp.pop('atomic_posts', None)
+    blocked = blocked_tickers_for_slots(sp, history, day)
+    hot_row, talk_row = select_slot_rows(writeup.get('daily') or {}, blocked)
+    sp.pop('hot_stock', None)
+    sp.pop('discussion', None)
+    if hot_row:
+        built = build_hot_stock(hot_row, day)
+        if built:
+            sp['hot_stock'] = built
+            if _text_clashes(_body_groups(sp), 'hot_stock'):
+                sp.pop('hot_stock', None)
+                hot_row = None
+    if talk_row and hot_row and talk_row['t'] == hot_row['t']:
+        talk_row = None
+    if talk_row:
+        built = build_discussion(talk_row, day)
+        if built:
+            sp['discussion'] = built
+            if _text_clashes(_body_groups(sp), 'discussion'):
+                sp.pop('discussion', None)
+                talk_row = None
+    nums, ticks, texts = _union_facts(_body_groups(sp))
+    atomic = build_atomic_posts(writeup, nums, ticks, texts)
+    if atomic and not _atomic_would_clash(atomic, texts):
+        sp['atomic_posts'] = atomic
+    remember_slots(history, day, {
+        'hot_stock': [hot_row['t']] if hot_row and sp.get('hot_stock') else [],
+        'discussion': [talk_row['t']] if talk_row and sp.get('discussion') else [],
+        'top5': top5_lead_tickers(sp.get('top5')),
+        'atomic': _tickers_of_atomic(sp.get('atomic_posts')),
+    })
+    if save:
+        save_social_history(history)
+    return sp
+
+
+def _atomic_would_clash(atomic, texts):
+    seen = set(texts)
+    for item in atomic:
+        key = _norm_text(item.get('text') or '')
+        if key in seen:
+            return True
+        seen.add(key)
+    return False
+
+
+def attach_weekend_slots(sp, day, writeup, history=None, save=False):
+    """Saturday/Sunday: write weekend and atomic_posts. Leave weekday keys in place."""
+    if history is None:
+        history = load_social_history()
+        save = True
+    writeup = writeup if isinstance(writeup, dict) else {}
+    day = _as_day(day) or str(day or '')
+    sp.pop('atomic_posts', None)
+    weekend = build_weekend(writeup.get('weekly') or {}, day)
+    if weekend:
+        sp['weekend'] = weekend
+        if _text_clashes(_body_groups(sp), 'weekend'):
+            # Keep the posts that do not copy another slot. Drop the whole slot if that leaves < 2.
+            kept = []
+            others = {}
+            groups = _body_groups(sp)
+            for name, blobs in groups.items():
+                if name == 'weekend':
+                    continue
+                for raw in blobs:
+                    others[_norm_text(raw)] = name
+            for item in weekend['posts']:
+                blobs = _platform_bodies(item.get('langs'))
+                if any(_norm_text(b) in others for b in blobs):
+                    continue
+                kept.append(item)
+            if len(kept) >= 2:
+                weekend['posts'] = kept
+                sp['weekend'] = weekend
+            else:
+                sp.pop('weekend', None)
+                weekend = None
+    else:
+        sp.pop('weekend', None)
+    nums, ticks, texts = _union_facts(_body_groups(sp))
+    atomic = build_atomic_posts(writeup, nums, ticks, texts)
+    if atomic and not _atomic_would_clash(atomic, texts):
+        sp['atomic_posts'] = atomic
+    weekend_ticks = _tickers_in_texts(_body_groups(sp).get('weekend'))
+    remember_slots(history, day, {
+        'weekend': weekend_ticks,
+        'atomic': _tickers_of_atomic(sp.get('atomic_posts')),
+    })
+    if save:
+        save_social_history(history)
+    return sp
+
+
+def social_actions(day, sp, hour, has_items, legacy, force=False):
+    """Which branch main() runs.
+
+    Trading days at or after SOCIAL_HOUR write the weekday posts (unless today's file
+    is already there). Saturday and Sunday write weekend and atomic_posts only, also
+    from SOCIAL_HOUR, and do not rebuild the weekday posts. `force` reruns that day's
+    branch. `legacy` still rebuilds a weekday file.
+    """
+    day = _as_day(day) or day
+    sp = sp or {}
+    due = bool(force) or (isinstance(hour, int) and hour >= SOCIAL_HOUR)
+    if _is_weekend(day):
+        done = isinstance(sp.get('weekend'), dict) and sp['weekend'].get('date') == day
+        return {'weekday': False, 'weekend': bool(due and (force or not done))}
+    if not has_items:
+        return {'weekday': False, 'weekend': False}
+    already = sp.get('date') == day
+    run = bool(force or legacy or (due and not already and trading_day(day)))
+    return {'weekday': run, 'weekend': False}
+
 def main():
     st = read_json(work('stats.json'))
     d = load(HTML)
@@ -2001,7 +3179,8 @@ def main():
     old = isinstance((sp.get('posts') or {}).get('zh'), str)  # written before the per-platform versions existed
     old = old or not os.path.exists('zh/feed.xml')  # first run with RSS feeds
     old = old or ('story' not in ((sp.get('posts') or {}).get('zh') or {'story': 1})) or 'stories' not in sp  # before Facebook, Story and hashtags on every version
-    social = bool(items) and (sp.get('date') != day and now.hour >= SOCIAL_HOUR and trading_day(day) or old or os.environ.get('SOCIAL_FORCE') == '1')
+    actions = social_actions(day, sp, now.hour, bool(items), old, force=os.environ.get('SOCIAL_FORCE') == '1')
+    social = actions['weekday']
     if social:
         win = window(s)
         sp = {'date': day, 'made_hkt': now.strftime('%Y-%m-%d %H:%M'), 'window': win,
@@ -2014,6 +3193,8 @@ def main():
         fit_threads_posts(sp['posts'])
         attach_new_posts(sp, rebuild_premarket=True)  # both X posts; carousel rebuilds premarket after the 2030 slot
         attach_top5_and_weekly(sp, day, sp['made_hkt'], ch)
+        writeup = read_json('data/writeup-input.json', {}) or {}
+        attach_market_slots(sp, day, writeup if isinstance(writeup, dict) else {}, load_social_history(), save=True)
         write_json('data/social-posts.json', sp, indent=1)
         normalize_file('data/social-posts.json')
         sp = read_json('data/social-posts.json')
@@ -2021,6 +3202,13 @@ def main():
         open('social/index.html', 'w', encoding='utf-8').write(social_page(sp))
         write_feeds(sp)
         notice(f'今日社交媒體貼文已寫好：{SITE}social/')
+    elif actions['weekend']:
+        # Weekend slots only. Weekday posts, top5 and the Friday thread stay as they are.
+        writeup = read_json('data/writeup-input.json', {}) or {}
+        attach_weekend_slots(sp, day, writeup if isinstance(writeup, dict) else {}, load_social_history(), save=True)
+        write_json('data/social-posts.json', sp, indent=1)
+        normalize_file('data/social-posts.json')
+        notice(f'週末社交槽已寫好：{day}')
     if draw or social:
         write_json(work('og.json'), {'date': day, 'hash': digest, 'social': social, 'langs': langs})
 
