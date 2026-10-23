@@ -1,8 +1,15 @@
 """Today-in-3-lines and per-stock why posts for the weekday social run.
 
 three_lines copies the homepage block (index.html RUX.threeLines + the zh/en/ko
-lines). why_posts quotes real writeup rows[].why for the hottest names from
-ranking.rank_rows. Weekends do not build either slot.
+lines). why_posts quotes the hottest names from ranking.rank_rows. Each language
+uses that language's real summary: rows[].why (zh_summary) for Chinese, and the
+same post's en_summary (or original text) / ko_summary for English and Korean,
+which is what /en/ and /ko/ put in zh_summary before the why-line. A reason with
+no real summary in a language is left out of that language. Weekends do not
+build either slot.
+
+python3 tools/three_why.py --merge-into data/social-posts.json rewrites only
+three_lines, why_posts and atomic_posts in an existing file.
 """
 import re
 from datetime import datetime, timedelta
@@ -13,13 +20,32 @@ from sitedata import HK
 S_OF = {'睇好': 'bull', '睇淡': 'bear', '中性': 'neu'}
 _CLAUSE_SPLIT = re.compile(r'(?<=[\u3002\uff1b\uff01\uff1f!?;])\s*|(?<=\.)\s+')
 _TK_RE = re.compile(r'\$[A-Za-z][A-Za-z0-9.]{0,6}')
+_HASH_TK_RE = re.compile(r'#[A-Za-z][A-Za-z0-9.]{0,9}')
+_HAN_RE = re.compile(r'[\u3400-\u9fff\uf900-\ufaff]')
 _URL_RE = re.compile(r'https?://\S+', re.I)
+# Per-row fields, then the post fields the homepage why-line actually shows.
+# zh: rows[].why is the page's zh_summary (stats.js slices it to 160).
+# en: build_langs copies en_summary or the original text into zh_summary.
+# ko: build_langs copies ko_summary into zh_summary. No English fallback.
+_ROW_FIELDS = {
+    'zh': ('why', 'why_zh', 'zh_summary', 'summary_zh'),
+    'en': ('why_en', 'en_summary', 'summary_en', 'en'),
+    'ko': ('why_ko', 'ko_summary', 'summary_ko', 'ko'),
+}
+_POST_FIELDS = {
+    'zh': ('zh_summary', 'summary_zh'),
+    'en': ('en_summary', 'summary_en', 'text'),
+    'ko': ('ko_summary', 'summary_ko'),
+}
+# Same cap as tools/stats.js `(x.why || '').slice(0, 160)` so a long English
+# or Korean summary does not crowd out the counts line.
+_WHY_CAP = 160
 
 T3_COPY = {
     'zh': {
         'title': '今日三句重點',
         'shift': '共識變化最大',
-        'delta': '淨看多比例 {frm} → {to}（對比昨日（今日至今））',
+        'delta': '淨看多比例 {frm} → {to} 對比昨日（今日至今）',
         'chg': '{n} 次立場轉變',
         'most': '最多人討論',
         'most_rest': '{n} 個觀點、{a} 個帳號',
@@ -34,7 +60,7 @@ T3_COPY = {
     'en': {
         'title': 'Today in 3 lines',
         'shift': 'Biggest consensus shift',
-        'delta': 'net bullish {frm} → {to} (vs yesterday (today so far))',
+        'delta': 'net bullish {frm} → {to} vs yesterday (today so far)',
         'chg': '{n} stance changes',
         'most': 'Most mentioned',
         'most_rest': '{n} views, {a} accounts',
@@ -49,7 +75,7 @@ T3_COPY = {
     'ko': {
         'title': '오늘의 3줄 요약',
         'shift': '합의 변화 최대',
-        'delta': '순강세 비율 {frm} → {to} (어제 대비 (오늘 현재까지))',
+        'delta': '순강세 비율 {frm} → {to} 어제 대비 (오늘 현재까지)',
         'chg': '{n} 회 입장 변경',
         'most': '최다 언급',
         'most_rest': '{n} 개 의견, {a} 개 계정',
@@ -137,6 +163,35 @@ def clause_for(text, ticker):
     if len(tks) > 1:
         return ''
     return text
+
+
+def quoted_clause(text, ticker):
+    """clause_for, but only when the quote is still inside the source text.
+
+    A join of non-adjacent sentences is not a substring. The first sentence that
+    names the ticker is used instead, so a reason never adds words.
+    """
+    text = re.sub(r'\s+', ' ', str(text or '')).strip()
+    if not text:
+        return ''
+    hit = clause_for(text, ticker)
+    if hit and hit in text:
+        return hit
+    parts = [p.strip() for p in _CLAUSE_SPLIT.split(text) if p and p.strip()]
+    sym = re.sub(r'[^A-Z0-9.]', '', str(ticker or '').upper())
+    if not sym:
+        return ''
+    pat = re.compile(r'(^|[^A-Z0-9])\$?' + sym.replace('.', r'\.') + r'(?![A-Z0-9])', re.I)
+    for part in parts:
+        if pat.search(part) and part in text:
+            return part
+    return ''
+
+
+def han_outside_tickers(text):
+    """True when CJK Han remains after $TICKER and #TICKER tokens are removed."""
+    stripped = _HASH_TK_RE.sub('', _TK_RE.sub('', str(text or '')))
+    return bool(_HAN_RE.search(stripped))
 
 
 def _num(n):
@@ -691,18 +746,72 @@ def build_three_lines(daily, day, generated_at=None, dash=None, window_fallback=
     }
 
 
-def _clean_reason(acc, why, ticker):
+def _clean_reason(acc, why, ticker, lang='zh'):
     S = _s()
-    text = _URL_RE.sub('', why or '')
-    text = S.dedupe_handle(acc, text)
-    text = clause_for(text, ticker)
+    text = _URL_RE.sub(' ', why or '')
     text = re.sub(r'\s+', ' ', text).strip()
+    text = S.dedupe_handle(acc, text)
+    text = quoted_clause(text, ticker)
+    text = re.sub(r'\s+', ' ', text).strip()
+    text = S.strip_dup_handles(text)
+    if not text:
+        return ''
+    if lang != 'zh' and han_outside_tickers(text):
+        return ''
+    if lang != 'zh' and len(text) > _WHY_CAP:
+        text = text[:_WHY_CAP].rstrip()
     return text
 
 
-def _reasons(row, ticker, default_side=None):
+def _index_posts(dash):
+    by_url, by_id = {}, {}
+    posts = dash.get('posts') if isinstance(dash, dict) else None
+    for post in posts or []:
+        if not isinstance(post, dict):
+            continue
+        url = str(post.get('url') or '').strip()
+        if not url:
+            continue
+        by_url[url] = post
+        if '/status/' in url:
+            sid = url.split('/status/')[-1].split('?')[0]
+            if sid:
+                by_id.setdefault(sid, post)
+    return by_url, by_id
+
+
+def _post_for(item, by_url, by_id):
+    url = str((item or {}).get('url') or '').strip()
+    if url and url in by_url:
+        return by_url[url]
+    if '/status/' in url:
+        sid = url.split('/status/')[-1].split('?')[0]
+        return by_id.get(sid)
+    return None
+
+
+def _raw_summary(item, lang, post):
+    """Language-matched summary. Never substitutes another language's text."""
+    for key in _ROW_FIELDS[lang]:
+        val = (item or {}).get(key)
+        if isinstance(val, str) and val.strip():
+            if lang == 'zh' or not han_outside_tickers(val):
+                return val
+    for key in _POST_FIELDS[lang]:
+        val = (post or {}).get(key) if isinstance(post, dict) else None
+        if isinstance(val, str) and val.strip():
+            if lang == 'zh' or not han_outside_tickers(val):
+                return val
+            # A Chinese en_summary is not English. Try the original text next.
+            continue
+    return ''
+
+
+def _reasons(row, ticker, default_side=None, lang='zh', by_url=None, by_id=None):
     bull, bear = [], []
     seen = set()
+    by_url = by_url or {}
+    by_id = by_id or {}
     for item in (row or {}).get('rows') or []:
         if not isinstance(item, dict):
             continue
@@ -710,8 +819,8 @@ def _reasons(row, ticker, default_side=None):
         side = item.get('s') or default_side
         if side not in ('bull', 'bear') or not acc:
             continue
-        text = _clean_reason(acc, item.get('why') or '', ticker)
-        text = _s().strip_dup_handles(text)
+        raw = _raw_summary(item, lang, _post_for(item, by_url, by_id))
+        text = _clean_reason(acc, raw, ticker, lang)
         if not text:
             continue
         key = (side, acc.lower(), text)
@@ -813,8 +922,14 @@ def _account_total(nb, nr):
     return _as_int((nb or 0) + (nr or 0))
 
 
-def build_why_posts(daily, day, window=None, sample=None, generated_at=None, window_fallback=None):
-    """One Threads-first post per hot name, at most 5. Reasons are real whys only."""
+def build_why_posts(daily, day, window=None, sample=None, generated_at=None, window_fallback=None, dash=None):
+    """One Threads-first post per hot name, at most 5. Reasons are real whys only.
+
+    Chinese quotes `rows[].why`. English and Korean quote that row's own
+    translated fields, or the dash post with the same url (en_summary or text,
+    ko_summary). A missing translation is omitted. Counts stay either way.
+    `bull_reasons` / `bear_reasons` stay the Chinese quotes.
+    """
     S = _s()
     day = S._as_day(day) or str(day or '')
     daily = daily if isinstance(daily, dict) else {}
@@ -828,6 +943,7 @@ def build_why_posts(daily, day, window=None, sample=None, generated_at=None, win
             sample['accounts'] = _as_int(daily['accounts'])
     posts = []
     link_i = 0
+    by_url, by_id = _index_posts(dash)
     for _score, _nps, ticker, row, source_side, nb, nr in hot_names(daily, 5):
         if (nb or 0) > 0 and (nr or 0) > 0:
             side = 'split'
@@ -837,9 +953,12 @@ def build_why_posts(daily, day, window=None, sample=None, generated_at=None, win
             side = 'bear'
         # A split row with no per-account side is not guessed. Bull/bear lists default to that side.
         default = None if source_side == 'split' else source_side
-        bull_r, bear_r = _reasons(row, ticker, default)
-        if not bull_r and not bear_r:
+        per_lang = {
+            lang: _reasons(row, ticker, default, lang, by_url, by_id) for lang in S.LANGS
+        }
+        if not any(b or e for b, e in per_lang.values()):
             continue
+        bull_r, bear_r = per_lang['zh']
         accounts = _account_total(nb, nr)
         item = {
             'ticker': ticker,
@@ -862,7 +981,8 @@ def build_why_posts(daily, day, window=None, sample=None, generated_at=None, win
         has_threads = {}
         for lang in S.LANGS:
             label = _sample_label(lang, window, sample)
-            text, _disc = _why_body(lang, ticker, nb, nr, accounts, label, bull_r, bear_r)
+            lang_bull, lang_bear = per_lang[lang]
+            text, _disc = _why_body(lang, ticker, nb, nr, accounts, label, lang_bull, lang_bear)
             take = (link_i % 2 == 0)
             link_i += 1
             url = S._camp_url(lang, 'threads', 'why', ticker) if take else None
@@ -873,7 +993,8 @@ def build_why_posts(daily, day, window=None, sample=None, generated_at=None, win
         # English X only when the whole post fits in 280. Its link alternates by name
         # and does not shift the Threads half (Threads already walks zh, en, ko).
         en_label = _sample_label('en', window, sample)
-        en_text, _disc = _why_body('en', ticker, nb, nr, accounts, en_label, bull_r, bear_r)
+        en_bull, en_bear = per_lang['en']
+        en_text, _disc = _why_body('en', ticker, nb, nr, accounts, en_label, en_bull, en_bear)
         if S.xlen(en_text) <= 280 and S.SHORT['en']['disc'] in en_text:
             x_take = (len(posts) % 2 == 0)
             x_url = S._camp_url('en', 'x', 'why', ticker) if x_take else None
@@ -959,3 +1080,113 @@ def drop_repeated(posts, banned):
             continue
         kept.append(post)
     return kept
+
+
+MERGE_KEYS = ('three_lines', 'why_posts', 'atomic_posts')
+
+
+def fill_three_why(sp, day, writeup, history=None, dash=None, window_fallback=None):
+    """Replace three_lines, why_posts and atomic_posts on `sp`. Other keys stay.
+
+    Atomic posts are rebuilt for the slots why posts do not take, and a why
+    ticker is not given an atomic slot. This is the weekday adjustment.
+    """
+    S = _s()
+    if not isinstance(sp, dict):
+        return sp
+    if history is None:
+        history = {}
+    writeup = writeup if isinstance(writeup, dict) else {}
+    day = S._as_day(day) or str(day or '')
+    daily = writeup.get('daily') if isinstance(writeup.get('daily'), dict) else {}
+    if window_fallback is None:
+        window_fallback = sp.get('window')
+    sp.pop('three_lines', None)
+    sp.pop('why_posts', None)
+    sp.pop('atomic_posts', None)
+    three = build_three_lines(daily, day, dash=dash, window_fallback=window_fallback)
+    banned = prior_texts(history, day)
+    if three:
+        sp['three_lines'] = three
+        repeated = any(
+            S._norm_text(t) in banned
+            for t in collect_texts(three.get('threads'))
+        )
+        if repeated or S._text_clashes(S._body_groups(sp), 'three_lines'):
+            sp.pop('three_lines', None)
+            three = None
+    why_window = three.get('window') if three else None
+    why_sample = three.get('sample') if three else None
+    why = build_why_posts(
+        daily, day, window=why_window, sample=why_sample,
+        window_fallback=window_fallback, dash=dash)
+    why = drop_repeated(why, banned)
+    why = S._keep_why_posts(sp, why)
+    n_why = len(why)
+    nums, ticks, texts = S._union_facts(S._body_groups(sp))
+    ticks = set(ticks) | {p.get('ticker') for p in why if p.get('ticker')}
+    target = min(S.ATOMIC_TARGET, max(0, 6 - n_why))
+    minimum = 0 if n_why >= 4 else max(0, 4 - n_why)
+    if target < minimum:
+        target = minimum
+    atomic = S.build_atomic_posts(writeup, nums, ticks, texts, target=target, minimum=minimum)
+    if not atomic and minimum > 0:
+        atomic = S.build_atomic_posts(writeup, nums, ticks, texts, target=target, minimum=0)
+    why, atomic = schedule_why_atomic(why, atomic)
+    if why:
+        sp['why_posts'] = why
+    else:
+        sp.pop('why_posts', None)
+    if atomic and not S._atomic_would_clash(atomic, texts):
+        sp['atomic_posts'] = atomic
+    else:
+        sp.pop('atomic_posts', None)
+    return sp
+
+
+def merge_into(path, writeup=None, dash=None, history=None):
+    """Recompute three_lines, why_posts and atomic_posts inside an existing file.
+
+    Every other key is left as it was, including key order. Missing results are
+    removed. History is read when not passed, and is not written.
+    """
+    from sitedata import read_json, write_json
+    S = _s()
+    sp = read_json(path)
+    if not isinstance(sp, dict):
+        raise SystemExit('merge-into: social posts file is not an object')
+    untouched = {k: v for k, v in sp.items() if k not in MERGE_KEYS}
+    if writeup is None:
+        writeup = read_json('data/writeup-input.json', {}) or {}
+    if dash is None:
+        dash = S._dash_data()
+    if history is None:
+        history = S.load_social_history()
+    work = dict(sp)
+    fill_three_why(work, sp.get('date'), writeup, history or {}, dash=dash, window_fallback=sp.get('window'))
+    ordered = {}
+    for key, value in sp.items():
+        if key in MERGE_KEYS:
+            if work.get(key):
+                ordered[key] = work[key]
+        else:
+            ordered[key] = untouched[key]
+    for key in MERGE_KEYS:
+        if key not in sp and work.get(key):
+            ordered[key] = work[key]
+    write_json(path, ordered, indent=1)
+    return ordered
+
+
+def main(argv=None):
+    import argparse
+    parser = argparse.ArgumentParser(description='Recompute three_lines, why_posts and atomic_posts')
+    parser.add_argument('--merge-into', dest='path', help='social-posts.json to update in place')
+    args = parser.parse_args(argv)
+    if not args.path:
+        parser.error('pass --merge-into PATH')
+    merge_into(args.path)
+
+
+if __name__ == '__main__':
+    main()

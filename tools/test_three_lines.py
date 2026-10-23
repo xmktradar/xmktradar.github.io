@@ -203,16 +203,19 @@ def test_post_shape_limits_and_utm():
     assert '今日三句重點' in zh and '最多人討論' in zh and '分歧最大' in zh
     ko = slot['threads']['ko']['text']
     assert '오늘의 3줄 요약' in ko and '최다 언급' in ko and '의견 차이 최대' in ko
-    # The page's delta wording, from the same calculator, not from the writeup fallback.
+    # i18n phrase once. The page wraps cmpLab in another pair of parentheses; the post does not.
     calc = share.three_lines_calc([
         {'t': 'AAA', 'c': _c(2, 0, 0, 2, 2), 'c0': _c(0, 2, 0, 2, 2), 'chg': 0},
     ], True)
     lines, _ticks = three_why._fact_lines('en', calc)
-    assert lines[0] == 'Biggest consensus shift: $AAA net bullish -100% → +100% (vs yesterday (today so far))'
+    assert lines[0] == 'Biggest consensus shift: $AAA net bullish -100% → +100% vs yesterday (today so far)'
+    assert '(vs yesterday' not in lines[0]
     zlines, _ = three_why._fact_lines('zh', calc)
-    assert zlines[0].startswith('共識變化最大：$AAA 淨看多比例 -100% → +100%')
+    assert zlines[0] == '共識變化最大：$AAA 淨看多比例 -100% → +100% 對比昨日（今日至今）'
+    assert '（對比昨日（今日至今））' not in zlines[0]
     klines, _ = three_why._fact_lines('ko', calc)
-    assert '합의 변화 최대: $AAA 순강세 비율 -100% → +100%' in klines[0]
+    assert klines[0] == '합의 변화 최대: $AAA 순강세 비율 -100% → +100% 어제 대비 (오늘 현재까지)'
+    assert '(어제 대비' not in klines[0]
 
 
 def test_weekend_does_not_write_three_lines():

@@ -205,6 +205,8 @@ The lines are the page's `RUX.threeLines` on the daily-tab rows. When `main()` c
 
 Wording matches the daily tab (single spaces). zh `今日三句重點` / `共識變化最大` / `最多人討論` / `分歧最大`. en `Today in 3 lines` / `Biggest consensus shift` / `Most mentioned` / `Biggest disagreement`. ko `오늘의 3줄 요약` / `합의 변화 최대` / `최다 언급` / `의견 차이 최대`. A missing line is left out. If all three are missing and the sample or window is real, the body is the page's empty sentence for that language.
 
+The consensus-shift line uses the i18n phrase for `對比昨日（今日至今）` once, with no outer parentheses around it: zh `淨看多比例 -100% → +75% 對比昨日（今日至今）`, en `net bullish -100% → +75% vs yesterday (today so far)`, ko `순강세 비율 -100% → +75% 어제 대비 (오늘 현재까지)`.
+
 Every body includes the window and the sample, for example `10/23 00:00 – 09:55 HKT · 120 posts / 45 accounts` (zh `則貼文` / `個帳號`, ko `게시물` / `계정`). Counts are copied. A missing count is left out.
 
 X is ≤ 280 by `xlen`. Threads is ≤ 500 by `fit_threads`. About half of the six X and Threads copies carry a link: zh and ko on X, en on Threads. Facebook always has the language home URL in the body and in `url`. Instagram has no URL, one link-in-bio line, and at most 5 hashtags. Links are `tag_url(url, platform, 'three_lines')` on `/<lang>/`.
@@ -226,7 +228,9 @@ Weekday only, same run. Not written on Saturday or Sunday. One object per hot na
 | `format` | `carousel` |
 | `has_link` | `{threads: {zh, en, ko}, x?: {en}}` |
 
-Reasons come only from `rows[].why` on that writeup row. The text is the sentence that names the ticker (`RUX.clauseFor`), with the leading `@handle` stripped once (`dedupe_handle`) and URLs removed. It is not translated and not invented. `rows[].s` picks the side. A bull-list or bear-list row with no `s` uses that list's side. A split row with no `s` is skipped. A side with no real summary is omitted. A name with no reason on either side is omitted. The post attributes the line to `@handle`.
+Each language quotes that language's real summary, the same source as the homepage why-line. Chinese is `rows[].why` (the page's `zh_summary`). English is the row's `why_en` / `en_summary`, or the dash post with the same url: `en_summary`, then the original `text` when that summary is missing or still contains CJK Han. Korean is the row's `why_ko` / `ko_summary`, or the post's `ko_summary` (no English fallback). `/en/` and `/ko/` copy those fields into `zh_summary` before rendering the why-line (`build_langs.swap_data`). The quote is the sentence that names the ticker (`RUX.clauseFor`), with the leading `@handle` stripped once (`dedupe_handle`) and URLs removed. It is not translated and not invented. English and Korean text that still contains CJK Han outside a `$TICKER` or `#TICKER` is omitted. `rows[].s` picks the side. A bull-list or bear-list row with no `s` uses that list's side. A split row with no `s` is skipped. A side with no real summary in that language is omitted from that language; the counts line stays. A name with no reason in any language is omitted. `bull_reasons` and `bear_reasons` store the Chinese quotes. The post attributes the line to `@handle`.
+
+`python3 tools/three_why.py --merge-into data/social-posts.json` recomputes `three_lines`, `why_posts` and the adjusted `atomic_posts`, and writes only those keys.
 
 Each language states the account count (`accounts`, and `nb` / `nr` when present) and the window plus sample. Threads ≤ 500. About half of the Threads copies have a language stock link (`utm_campaign=why`, `/<lang>/stock/<T>/`); the link is on `url`, not in the body. English X is included only when it fits, and its link follows the same half rule. No Instagram.
 

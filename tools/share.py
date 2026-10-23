@@ -3457,44 +3457,10 @@ def attach_market_slots(sp, day, writeup, history=None, save=False, dash=None):
                 sp.pop('discussion', None)
                 talk_row = None
     window_fb = sp.get('window') if isinstance(sp, dict) else None
-    three = three_why.build_three_lines(daily, day, dash=dash, window_fallback=window_fb)
-    banned = three_why.prior_texts(history, day)
-    if three:
-        sp['three_lines'] = three
-        repeated = any(
-            _norm_text(t) in banned
-            for t in three_why.collect_texts(three.get('threads'))
-        )
-        if repeated or _text_clashes(_body_groups(sp), 'three_lines'):
-            sp.pop('three_lines', None)
-            three = None
-    why_window = three.get('window') if three else None
-    why_sample = three.get('sample') if three else None
-    why = three_why.build_why_posts(
-        daily, day, window=why_window, sample=why_sample, window_fallback=window_fb)
-    why = three_why.drop_repeated(why, banned)
-    why = _keep_why_posts(sp, why)
-    n_why = len(why)
     # why posts take early KST slots. Atomic fills what is left, same ticker dropped.
     # Together that is 4–6 posts per language when the writeup has the facts.
-    nums, ticks, texts = _union_facts(_body_groups(sp))
-    ticks = set(ticks) | {p.get('ticker') for p in why if p.get('ticker')}
-    target = min(ATOMIC_TARGET, max(0, 6 - n_why))
-    minimum = 0 if n_why >= 4 else max(0, 4 - n_why)
-    if target < minimum:
-        target = minimum
-    atomic = build_atomic_posts(writeup, nums, ticks, texts, target=target, minimum=minimum)
-    if not atomic and minimum > 0:
-        atomic = build_atomic_posts(writeup, nums, ticks, texts, target=target, minimum=0)
-    why, atomic = three_why.schedule_why_atomic(why, atomic)
-    if why:
-        sp['why_posts'] = why
-    else:
-        sp.pop('why_posts', None)
-    if atomic and not _atomic_would_clash(atomic, texts):
-        sp['atomic_posts'] = atomic
-    else:
-        sp.pop('atomic_posts', None)
+    three_why.fill_three_why(
+        sp, day, writeup, history, dash=dash, window_fallback=window_fb)
     remember_slots(history, day, {
         'hot_stock': [hot_row['t']] if hot_row and sp.get('hot_stock') else [],
         'discussion': [talk_row['t']] if talk_row and sp.get('discussion') else [],
