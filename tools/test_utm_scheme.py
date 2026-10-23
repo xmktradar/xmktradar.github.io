@@ -2,7 +2,10 @@
 
 utm_source is x, threads, instagram or facebook (not ig or fb). utm_medium is social.
 utm_campaign is the slot: daily, carousel-<key>, premarket, afterclose, newsletter
-(on the facebook_cta signup line only), tutorial, top5, or weekly_thread.
+(on the facebook_cta signup line only), tutorial, top5, weekly_thread, hot_stock,
+discussion, weekend, or atomic. weekly_thread langs.<lang> lists are X posts.
+first_comment is tagged with the platform of that field (threads or facebook).
+atomic text and first_comment use source threads and campaign atomic.
 Asset URLs (/og/, /assets/, images) are left alone. Threads stays within 500
 code points. X stays within 280 by xlen (each URL counts 23).
 
@@ -85,38 +88,80 @@ def iter_platform_posts(posts, campaign, where):
         for field, source in SOURCES.items():
             if isinstance(by.get(field), str):
                 yield by[field], field, source, campaign, lang, f'{where}.{lang}.{field}'
+        fc = by.get('first_comment')
+        if isinstance(fc, dict):
+            for field, source in SOURCES.items():
+                if isinstance(fc.get(field), str):
+                    yield fc[field], field, source, campaign, lang, f'{where}.{lang}.first_comment.{field}'
+        elif isinstance(fc, str):
+            yield fc, 'threads', 'threads', campaign, lang, f'{where}.{lang}.first_comment'
 
 
 def iter_weekly(node, where):
-    """weekly_thread posts are X, campaign weekly_thread."""
+    """weekly_thread posts are X, campaign weekly_thread. langs.<lang> is a list of posts."""
     if isinstance(node, str):
         yield node, 'x', 'x', 'weekly_thread', None, where
         return
     if isinstance(node, list):
         for i, item in enumerate(node):
-            yield from iter_weekly(item, f'{where}[{i}]')
+            if isinstance(item, str):
+                yield item, 'x', 'x', 'weekly_thread', None, f'{where}[{i}]'
+            else:
+                yield from iter_weekly(item, f'{where}[{i}]')
         return
     if not isinstance(node, dict):
         return
+    langs = node.get('langs')
+    if isinstance(langs, dict):
+        for lang, posts in langs.items():
+            if isinstance(posts, str):
+                yield posts, 'x', 'x', 'weekly_thread', lang, f'{where}.langs.{lang}'
+            elif isinstance(posts, list):
+                for i, item in enumerate(posts):
+                    if isinstance(item, str):
+                        yield item, 'x', 'x', 'weekly_thread', lang, f'{where}.langs.{lang}[{i}]'
     posts = node.get('posts')
     if isinstance(posts, dict):
         for lang, by in posts.items():
             if isinstance(by, str):
                 yield by, 'x', 'x', 'weekly_thread', lang, f'{where}.posts.{lang}'
+            elif isinstance(by, list):
+                for i, item in enumerate(by):
+                    if isinstance(item, str):
+                        yield item, 'x', 'x', 'weekly_thread', lang, f'{where}.posts.{lang}[{i}]'
             elif isinstance(by, dict):
                 for field, value in by.items():
                     if isinstance(value, str) and (field in SOURCES or field == 'text'):
                         yield value, field if field in SOURCES else 'x', 'x', 'weekly_thread', lang, f'{where}.posts.{lang}.{field}'
         return
+    if isinstance(langs, dict):
+        return
     if isinstance(node.get('text'), str):
         yield node['text'], 'x', 'x', 'weekly_thread', None, f'{where}.text'
     for key, value in node.items():
-        if key == 'text':
+        if key in ('text', 'langs', 'posts'):
             continue
         if isinstance(value, str) and 'https://thecrowdtape.com' in value:
             yield value, 'x', 'x', 'weekly_thread', None, f'{where}.{key}'
         elif isinstance(value, (dict, list)):
             yield from iter_weekly(value, f'{where}.{key}')
+
+
+def iter_atomic(items, where='atomic_posts'):
+    if not isinstance(items, list):
+        return
+    for i, item in enumerate(items):
+        if not isinstance(item, dict):
+            continue
+        lang = item.get('lang')
+        for field in ('text', 'hook', 'first_comment', 'hashtags'):
+            value = item.get(field)
+            if isinstance(value, str) and ('https://thecrowdtape.com' in value or field == 'text'):
+                yield value, 'threads', 'threads', 'atomic', lang, f'{where}[{i}].{field}'
+            elif field == 'first_comment' and isinstance(value, dict):
+                for plat, source in SOURCES.items():
+                    if isinstance(value.get(plat), str):
+                        yield value[plat], plat, source, 'atomic', lang, f'{where}[{i}].first_comment.{plat}'
 
 
 def iter_social(data):
@@ -139,6 +184,17 @@ def iter_social(data):
         yield from iter_platform_posts(posts, 'top5', 'top5.posts')
     if 'weekly_thread' in data:
         yield from iter_weekly(data['weekly_thread'], 'weekly_thread')
+    for slot, campaign in (('hot_stock', 'hot_stock'), ('discussion', 'discussion')):
+        node = data.get(slot)
+        if isinstance(node, dict):
+            yield from iter_platform_posts(node.get('posts'), campaign, f'{slot}.posts')
+    weekend = data.get('weekend')
+    if isinstance(weekend, dict):
+        for i, item in enumerate(weekend.get('posts') or []):
+            if isinstance(item, dict):
+                yield from iter_platform_posts(item.get('langs'), 'weekend', f'weekend.posts[{i}].langs')
+    if isinstance(data.get('atomic_posts'), list):
+        yield from iter_atomic(data['atomic_posts'])
 
 
 def iter_tutorial(data):
@@ -214,6 +270,15 @@ def test_real_files():
     for kind in ('premarket', 'afterclose'):
         text = social['x_trilingual'][kind]['text']
         assert share.xlen(text) <= 280, (kind, share.xlen(text))
+    # New slots are optional on a given day. When present, their page URLs use the slot campaign.
+    if social.get('hot_stock'):
+        assert 'hot_stock' in seen, seen
+    if social.get('discussion'):
+        assert 'discussion' in seen, seen
+    if isinstance(social.get('weekend'), dict) and social['weekend'].get('posts'):
+        assert 'weekend' in seen, seen
+    if social.get('atomic_posts'):
+        assert 'atomic' in seen, seen
 
 
 def test_real_files_idempotent():
@@ -387,10 +452,102 @@ def test_normalize_file_tutorial_campaign():
     assert share.xlen(got['posts']['zh']['x']) <= 280
 
 
+def test_new_slot_shapes():
+    """weekly langs lists, hot_stock, discussion, weekend and atomic_posts all get tagged.
+
+    langs.<lang> is a list of X posts (campaign weekly_thread). first_comment uses the
+    parent platform. atomic text/first_comment use source threads and campaign atomic.
+    /og/*.mp4 stays untagged.
+    """
+    data = {
+        'weekly_thread': {
+            'date': '2026-10-23',
+            'langs': {
+                'zh': ['本週 https://thecrowdtape.com/zh/?utm_source=ig&utm_medium=post&utm_campaign=nope'],
+                'en': ['Week https://thecrowdtape.com/en/'],
+                'ko': ['주간 https://thecrowdtape.com/ko/'],
+            },
+        },
+        'hot_stock': {
+            'posts': {
+                'zh': {
+                    'threads': '專家觀點 冇連結',
+                    'facebook': '專家觀點 冇連結',
+                    'first_comment': {
+                        'threads': '最新數字 👉 https://thecrowdtape.com/zh/stock/AAA/',
+                        'facebook': '最新數字 👉 https://thecrowdtape.com/zh/stock/AAA/',
+                    },
+                }
+            }
+        },
+        'discussion': {
+            'posts': {
+                'en': {
+                    'threads': 'What do you think of $AAA?',
+                    'facebook': 'What do you think of $AAA?',
+                    'first_comment': {
+                        'threads': 'Live numbers 👉 https://thecrowdtape.com/en/stock/AAA/',
+                    },
+                }
+            }
+        },
+        'weekend': {
+            'posts': [
+                {
+                    'langs': {
+                        'ko': {
+                            'threads': '이번 주',
+                            'facebook': '이번 주',
+                            'first_comment': {
+                                'facebook': '최신 수치 👉 https://thecrowdtape.com/ko/',
+                            },
+                        }
+                    }
+                }
+            ]
+        },
+        'atomic_posts': [
+            {
+                'lang': 'zh',
+                'text': '今日帖文數 88',
+                'hook': '88',
+                'hashtags': '#美股',
+                'first_comment': '最新數字 👉 https://thecrowdtape.com/zh/',
+            }
+        ],
+        'top5': {
+            'video': {'zh': 'https://thecrowdtape.com/og/top5-zh.mp4?v=2026-10-23'},
+        },
+    }
+    normalize_obj(data)
+    seen = check_posts(data, iter_social, 'new-shapes')
+    assert {'weekly_thread', 'hot_stock', 'discussion', 'weekend', 'atomic'} <= seen, seen
+    zh = data['weekly_thread']['langs']['zh'][0]
+    assert 'utm_source=x&utm_medium=social&utm_campaign=weekly_thread' in zh, zh
+    assert 'utm_source=ig' not in zh
+    en = data['weekly_thread']['langs']['en'][0]
+    assert en.endswith('/en/?utm_source=x&utm_medium=social&utm_campaign=weekly_thread'), en
+    hot_fc = data['hot_stock']['posts']['zh']['first_comment']
+    assert 'utm_source=threads&utm_medium=social&utm_campaign=hot_stock' in hot_fc['threads'], hot_fc
+    assert 'utm_source=facebook&utm_medium=social&utm_campaign=hot_stock' in hot_fc['facebook'], hot_fc
+    talk = data['discussion']['posts']['en']['first_comment']['threads']
+    assert 'utm_source=threads&utm_medium=social&utm_campaign=discussion' in talk, talk
+    week_fc = data['weekend']['posts'][0]['langs']['ko']['first_comment']['facebook']
+    assert 'utm_source=facebook&utm_medium=social&utm_campaign=weekend' in week_fc, week_fc
+    atom = data['atomic_posts'][0]['first_comment']
+    assert 'utm_source=threads&utm_medium=social&utm_campaign=atomic' in atom, atom
+    assert 'utm_' not in data['top5']['video']['zh']
+    check_assets_untagged(data, 'new-shapes')
+    again = json.loads(json.dumps(data))
+    normalize_obj(again)
+    assert again == data
+
+
 def main():
     test_tag_url_normalises()
     test_normalize_obj_scheme()
     test_normalize_file_tutorial_campaign()
+    test_new_slot_shapes()
     test_real_files()
     test_real_files_idempotent()
     print('test_utm_scheme: tag_url, normalize, social-posts.json, tutorial-posts.json ok')
