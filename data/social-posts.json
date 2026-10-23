@@ -1077,9 +1077,156 @@
       "SNDK"
      ]
     }
+   },
+   "intraday_2": {
+    "post_et": "12:15",
+    "post_hkt": "00:15",
+    "generated_at": "2026-10-23T11:34:11-04:00",
+    "date": "2026-10-23",
+    "quotes": {
+     "SPY": {
+      "price": 763.248,
+      "prev_close": 763.96,
+      "chg_pct": -0.09,
+      "time": "2026-10-23T11:34:10-04:00"
+     },
+     "QQQ": {
+      "price": 708.25,
+      "prev_close": 704.47,
+      "chg_pct": 0.54,
+      "time": "2026-10-23T11:34:10-04:00"
+     },
+     "DIA": {
+      "price": 523.27,
+      "prev_close": 527.89,
+      "chg_pct": -0.88,
+      "time": "2026-10-23T11:34:11-04:00"
+     },
+     "MRNA": {
+      "price": 201.615,
+      "prev_close": 202.63,
+      "chg_pct": -0.5,
+      "time": "2026-10-23T11:34:11-04:00"
+     },
+     "CRWV": {
+      "price": 54.565,
+      "prev_close": 55.6,
+      "chg_pct": -1.86,
+      "time": "2026-10-23T11:34:10-04:00"
+     },
+     "SNDK": {
+      "price": 1282.315,
+      "prev_close": 1260.93,
+      "chg_pct": 1.7,
+      "time": "2026-10-23T11:34:12-04:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-10-23T11:34:12-04:00",
+     "hkt": "2026-10-23 23:34"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "QQQ",
+      "chg_pct": 0.54,
+      "bull": 0,
+      "bear": 6,
+      "accounts": [
+       "RedDogT3",
+       "EliteOptions2",
+       "carlquintanilla",
+       "KeithMcCullough",
+       "bespokeinvest",
+       "spotgamma",
+       "amitisinvesting",
+       "Mr_Derivatives"
+      ]
+     },
+     {
+      "ticker": "MRNA",
+      "chg_pct": -0.5,
+      "bull": 0,
+      "bear": 3,
+      "accounts": [
+       "RichardMoglen",
+       "APompliano",
+       "ripster47",
+       "Mr_Derivatives",
+       "kevinxu"
+      ]
+     },
+     {
+      "ticker": "CRWV",
+      "chg_pct": -1.86,
+      "bull": 0,
+      "bear": 2,
+      "accounts": [
+       "amitisinvesting",
+       "TrendSpider",
+       "APompliano",
+       "StockSavvyShay"
+      ]
+     },
+     {
+      "ticker": "SNDK",
+      "chg_pct": 1.7,
+      "bull": 0,
+      "bear": 2,
+      "accounts": [
+       "TrendSpider",
+       "KeithMcCullough",
+       "RedDogT3",
+       "EliteOptions2"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Midday · As of 11:34 ET (23:34 HKT)\n\n$SPY -0.1% · $QQQ +0.5% · $DIA -0.9%\n\n$QQQ +0.5%, 6 accounts bearish on site\n$MRNA -0.5%, 3 accounts bearish on site\n\nNewly bearish on site: $QQQ\n\nhttps://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_2\n\n⚠️ Not investment advice\n#StockMarket #QQQ #MRNA",
+      "url": "https://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_2"
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午市觀察 · 截至 11:34 ET（23:34 HKT）\n\n$SPY -0.1% · $QQQ +0.5% · $DIA -0.9%\n\n$QQQ +0.5%，網站 6 個帳號看淡\n$MRNA -0.5%，網站 3 個帳號看淡\n$CRWV -1.9%，網站 2 個帳號看淡\n$SNDK +1.7%，網站 2 個帳號看淡\n\n網站新入看淡：$QQQ\n\nhttps://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=intraday_2\n\n⚠️ 唔構成投資建議\n#美股 #QQQ #MRNA",
+      "url": "https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=intraday_2"
+     },
+     "en": {
+      "text": "Midday · As of 11:34 ET (23:34 HKT)\n\n$SPY -0.1% · $QQQ +0.5% · $DIA -0.9%\n\n$QQQ +0.5%, 6 accounts bearish on site\n$MRNA -0.5%, 3 accounts bearish on site\n$CRWV -1.9%, 2 accounts bearish on site\n$SNDK +1.7%, 2 accounts bearish on site\n\nNewly bearish on site: $QQQ\n\nhttps://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=intraday_2\n\n⚠️ Not investment advice\n#StockMarket #QQQ #MRNA",
+      "url": "https://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=intraday_2"
+     },
+     "ko": {
+      "text": "한낮 · 11:34 ET (23:34 HKT) 기준\n\n$SPY -0.1% · $QQQ +0.5% · $DIA -0.9%\n\n$QQQ +0.5%, 사이트 약세 계정 6개\n$MRNA -0.5%, 사이트 약세 계정 3개\n$CRWV -1.9%, 사이트 약세 계정 2개\n$SNDK +1.7%, 사이트 약세 계정 2개\n\n사이트 신규 약세: $QQQ\n\nhttps://thecrowdtape.com/ko/?utm_source=threads&utm_medium=social&utm_campaign=intraday_2\n\n⚠️ 투자 조언 아님\n#미국주식 #QQQ #MRNA",
+      "url": "https://thecrowdtape.com/ko/?utm_source=threads&utm_medium=social&utm_campaign=intraday_2"
+     }
+    },
+    "has_link": {
+     "x": true,
+     "threads": {
+      "zh": true,
+      "en": true,
+      "ko": true
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "RSP",
+      "XLV",
+      "WMT"
+     ],
+     "bear": [
+      "QQQ",
+      "MRNA",
+      "CRWV",
+      "SNDK"
+     ]
+    }
    }
   },
-  "generated_at": "2026-10-23T11:07:11-04:00",
-  "generated_hkt": "2026-10-23 23:07"
+  "generated_at": "2026-10-23T11:34:11-04:00",
+  "generated_hkt": "2026-10-23 23:34"
  }
 }
