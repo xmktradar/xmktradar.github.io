@@ -58,9 +58,14 @@ def file_of(url):
     return (p + 'index.html') if p.endswith('/') or p == '' else p
 
 
+def now_hkt():
+    from datetime import datetime, timedelta, timezone
+    return datetime.now(timezone(timedelta(hours=8))).strftime('%Y-%m-%dT%H:%M:%S+08:00')
+
+
 def build_time(sm):
     m = re.search(r'<loc>' + re.escape(SITE) + r'</loc><lastmod>([^<]+)', sm) or re.search(r'<lastmod>([^<]+)', sm)
-    return m.group(1) if m else None
+    return m.group(1) if m else now_hkt()
 
 
 def seed(urls):
@@ -95,7 +100,9 @@ def main():
     # drop the bare root row and blank lines
     sm = re.sub(r'\n\s*<url><loc>' + re.escape(SITE) + r'</loc>.*?</url>', '', sm)
     sm = re.sub(r'\n\s*\n', '\n', sm)
-    urls = re.findall(r'<loc>([^<]+)</loc>', sm)
+    # drop malformed locs (e.g. "https:" without //) so they never ship
+    sm = re.sub(r'\n\s*<url><loc>(?!https://)[^<]*</loc>.*?</url>', '', sm)
+    urls = [u for u in re.findall(r'<loc>([^<]+)</loc>', sm) if u.startswith('https://')]
     state = json.load(open(STATE)) if os.path.exists(STATE) else {}
     if '--seed' in sys.argv:
         state = seed(urls)
@@ -108,7 +115,10 @@ def main():
         if old and old[0] == h and old[1]:
             lm = old[1]
         else:
-            lm = now
+            lm = now or now_hkt()
+            changed.append(u)
+        if not lm:
+            lm = now_hkt()
             changed.append(u)
         if lm and 'T' in lm and not lm.endswith('+08:00'):
             lm = iso_hkt(lm)
