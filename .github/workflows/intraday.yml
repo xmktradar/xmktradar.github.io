@@ -1,7 +1,8 @@
 name: Intraday social
 # Generation is 10 minutes before each US/Eastern slot (09:45, 11:00, 12:15, 13:30, 14:45, 15:40).
-# Both EDT (UTC−4) and EST (UTC−5) crons are listed; the guard keeps only the matching offset
-# on a NYSE trading day, within ±20 minutes of a generation time.
+# Cron polls every 15 minutes Mon–Fri UTC. The Guard step selects the matching ET
+# generation window (±20 min) on a NYSE trading day and skips everything else.
+# workflow_dispatch: slot=auto|force|<name> (force bypasses the time guard).
 on:
   workflow_dispatch:
     inputs:
@@ -9,21 +10,12 @@ on:
         description: 'Slot name, auto, or force (bypass time guard; still writes)'
         required: false
         default: auto
+  # GitHub often skips or delays sparse schedules on a newly added workflow (the
+  # 12 EDT/EST crons never fired on 2026-10-23). Poll every 15 minutes Mon–Fri UTC;
+  # the Guard step keeps only America/New_York times within ±20 min of a generation
+  # window on a NYSE trading day, so off-window runs exit in seconds.
   schedule:
-    # EDT generation: 09:35, 10:50, 12:05, 13:20, 14:35, 15:30 ET
-    - cron: '35 13 * * 1-5'
-    - cron: '50 14 * * 1-5'
-    - cron: '5 16 * * 1-5'
-    - cron: '20 17 * * 1-5'
-    - cron: '35 18 * * 1-5'
-    - cron: '30 19 * * 1-5'
-    # EST generation: 09:35, 10:50, 12:05, 13:20, 14:35, 15:30 ET
-    - cron: '35 14 * * 1-5'
-    - cron: '50 15 * * 1-5'
-    - cron: '5 17 * * 1-5'
-    - cron: '20 18 * * 1-5'
-    - cron: '35 19 * * 1-5'
-    - cron: '30 20 * * 1-5'
+    - cron: '*/15 * * * 1-5'
 permissions:
   contents: write
 # Not site-update: update-site holds that group for 60-90 min, and GitHub keeps
