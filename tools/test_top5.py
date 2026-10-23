@@ -12,6 +12,7 @@ import re
 import shutil
 import sys
 import tempfile
+from datetime import datetime, timedelta, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 os.environ['WORK_DIR'] = tempfile.mkdtemp(prefix='top5-test-')
@@ -21,20 +22,26 @@ import share  # noqa: E402
 URL_RE = re.compile(r'https://thecrowdtape\.com[^\s)\]"\']*')
 TICK_RE = re.compile(r'\$([A-Z0-9.\-]+)')
 SRC = {'x': 'x', 'instagram': 'instagram', 'threads': 'threads', 'facebook': 'facebook'}
-HEAD = {
-    'zh': '今日 X 大神共識：最看好／最看淡 5 隻',
-    'en': 'Top X accounts consensus today: 5 most bullish / bearish',
-    'ko': '오늘 X 인플루언서 컨센서스: 가장 강세 / 약세 5종목',
-}
 NONE = {'zh': '今日暫無', 'en': 'None today', 'ko': '오늘 없음'}
 TAG = {'zh': '#美股', 'en': '#StockMarket', 'ko': '#미국주식'}
 DAY = '2026-10-21'
 MADE = '2026-10-21 07:05'
 FRM, TO = '2026-10-21T00:00', '2026-10-21T23:59'
+HK = timezone(timedelta(hours=8))
+MS = int(datetime(2026, 10, 21, 6, 10, tzinfo=HK).timestamp() * 1000)
+WINDOW = '10/21 00:00 – 06:10 HKT'
+WIN_RE = re.compile(r'^\d\d/\d\d \d\d:\d\d – \d\d:\d\d HKT$')
+
+
+def _head(lang, n_bull, n_bear):
+    return share.top5_labels(lang, n_bull, n_bear)['heading']
 
 
 def _daily(bull, bear):
-    return {'from': FRM, 'to': TO, 'bull': bull, 'bear': bear}
+    return {
+        'from': FRM, 'to': TO, 'bull': bull, 'bear': bear,
+        'split': [{'t': 'CUT', 'nb': 1, 'nr': 1, 'rows': [{'acc': 'clock', 'ms': MS}]}],
+    }
 
 
 def _acc(lang, n):
@@ -50,9 +57,9 @@ def _urls(text):
 
 
 def _assert_post(text, lang, platform, bulls, bears):
-    assert HEAD[lang] in text, (lang, platform)
+    assert _head(lang, len(bulls), len(bears)) in text, (lang, platform, text[:180])
     assert DAY in text
-    assert FRM in text and TO in text
+    assert WINDOW in text
     assert share.SHORT[lang]['disc'] in text
     assert TAG[lang] in text
     assert share.xlen(text) <= 280 or platform != 'x'
@@ -86,8 +93,14 @@ def _assert_post(text, lang, platform, bulls, bears):
             assert '/stock/' not in urls[0], urls[0]
             assert urls[0].startswith(f'https://thecrowdtape.com/{lang}/?'), urls[0]
     if platform == 'instagram':
+        assert urls == [], (lang, urls)
+        assert 'thecrowdtape.com' not in text.lower()
+        assert share.IG_BIO[lang] in text
+        assert text.count(share.IG_BIO[lang]) == 1
+        tags = re.findall(r'#[^\s#]+', text)
+        assert len(tags) <= 5, (lang, tags)
+        assert len(re.findall(r'#([A-Z]{1,6})\b', text)) <= 2
         for row in bulls + bears:
-            assert any(f'/{lang}/stock/{row["t"]}/' in u for u in urls), (lang, platform, row['t'], urls)
             assert f'${row["t"]} {_acc(lang, row["n"])}' in text
         if not bulls:
             assert NONE[lang] in text
@@ -102,7 +115,10 @@ def _assert_slot(slot, bulls, bears):
     assert slot['date'] == DAY
     assert slot['made_hkt'] == MADE
     assert slot['source'] == 'data/writeup-input.json daily'
-    assert FRM in slot['window'] and TO in slot['window']
+    assert WIN_RE.match(slot['window']), slot['window']
+    assert slot['window'] == WINDOW
+    assert re.search(r'\d{4}-\d{2}-\d{2}T', slot['window']) is None
+    assert '23:59' not in slot['window']
     assert slot['bull'] == [{'t': r['t'], 'n': r['n']} for r in bulls]
     assert slot['bear'] == [{'t': r['t'], 'n': r['n']} for r in bears]
     assert len(slot['bull']) <= 5 and len(slot['bear']) <= 5
@@ -128,6 +144,7 @@ def _assert_slot(slot, bulls, bears):
             assert slot['posts'][lang]['has_link']['facebook'] is False
         assert slot['posts'][lang]['has_link']['threads'] is True
         assert slot['posts'][lang]['has_link']['x'] is True
+        assert slot['posts'][lang]['has_link']['instagram'] is False
         assert slot['images'][lang]['portrait'] == f'https://thecrowdtape.com/og/top5-{lang}.png?v={DAY}'
         assert slot['images'][lang]['square'] == f'https://thecrowdtape.com/og/top5-{lang}-sq.png?v={DAY}'
         for platform in ('x', 'instagram', 'threads', 'facebook'):
@@ -201,7 +218,9 @@ def test_job_file():
     ]
     assert raw['jobs'][0]['data']['bull'] == [{'t': 'AAA', 'n': 2}]
     assert raw['jobs'][0]['data']['bear'] == [{'t': 'QQQ', 'n': 4}]
-    assert raw['jobs'][0]['data']['heading'] == HEAD['zh']
+    assert raw['jobs'][0]['data']['heading'] == _head('zh', 1, 1)
+    assert raw['jobs'][0]['data']['window'] == WINDOW
+    assert raw['jobs'][0]['data']['bull_label'] == share.top5_labels('zh', 1, 1)['bull']
     sp = {'kept': {'zh': 'stay'}}
     share.attach_top5_and_weekly(sp, DAY, MADE, {'days': {}}, {'daily': _daily([{'t': 'AAA', 'nb': 2}], []), 'weekly': {}})
     assert sp['kept']['zh'] == 'stay'

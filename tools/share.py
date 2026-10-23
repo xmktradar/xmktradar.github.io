@@ -119,7 +119,7 @@ def quote(d, urls, t, lang):
         if txt:
             h = p['handle']
             a = d['accounts'].get(h, {}).get('avatar') or d.get('avmini', {}).get(h, '')
-            return {'acc': h, 'text': clean(txt, 150 if lang == 'en' else 90), 'av': a, 'url': p['url']}
+            return {'acc': h, 'text': clean(dedupe_handle(h, txt), 150 if lang == 'en' else 90), 'av': a, 'url': p['url']}
     return None
 
 
@@ -170,6 +170,220 @@ def tags(lang, tks):
     return base + ''.join(f' #{t}' for t in tks[:5] if re.fullmatch(r'[A-Z]{1,6}', t))
 
 
+# Instagram captions: no URLs, no domain, one link-in-bio line, at most 5 hashtags (≤2 tickers).
+IG_BIO = {'zh': '連結在個人簡介', 'en': 'link in bio', 'ko': '프로필 링크'}
+IG_BASE_TAGS = {
+    'zh': ('#美股', '#美股投資', '#港人投資'),
+    'en': ('#StockMarket', '#USStocks'),
+    'ko': ('#미국주식', '#미장', '#해외주식'),
+}
+IG_FOLLOW = {
+    'zh': 'Follow @thecrowdtape 每日睇街貨點諗。',
+    'en': 'Follow @thecrowdtape for the daily read on what the crowd thinks.',
+    'ko': '@thecrowdtape 팔로우하고 매일 시장 분위기를 확인하세요.',
+}
+_HANDLE_LEAD = re.compile(r'^@([A-Za-z0-9_]+)[：:]\s*')
+_DUP_HANDLE_RE = re.compile(r'(@(\w+))([：:])\s*("?)@\2[：:]\s*', re.I)
+_HASHTAG_TOKEN = re.compile(r'#[^\s#]+')
+_IG_URL_RE = re.compile(r'https?://\S+', re.I)
+_IG_DOMAIN_RE = re.compile(r'\(?thecrowdtape\.com\)?', re.I)
+
+
+def ig_tags(lang, tks):
+    """Language base tags first, then at most 2 ticker tags, at most 5 hashtags total."""
+    lang = lang if lang in LANGS else 'en'
+    base = list(IG_BASE_TAGS[lang])
+    extra = []
+    for t in tks or []:
+        if re.fullmatch(r'[A-Z]{1,6}', t) and f'#{t}' not in extra and f'#{t}' not in base:
+            extra.append(f'#{t}')
+        if len(extra) >= 2:
+            break
+    room = max(0, 5 - len(extra))
+    return ' '.join(base[:room] + extra)
+
+
+def dedupe_handle(acc, why):
+    """Strip a leading @handle： / @handle: when it matches acc. Keep a different handle (repost)."""
+    acc = str(acc or '').strip().lstrip('@')
+    why = (why or '').strip()
+    if len(why) >= 2 and why[0] == '"' and why[-1] == '"':
+        why = why[1:-1].strip()
+    if not acc or not why:
+        return why
+    m = _HANDLE_LEAD.match(why)
+    if m and m.group(1).lower() == acc.lower():
+        return why[m.end():].lstrip()
+    return why
+
+
+def quote_line(acc, why, lang='zh'):
+    """One 💬 @handle：text line. why is passed through dedupe_handle."""
+    why = dedupe_handle(acc, why)
+    handle = '@' + str(acc or '').lstrip('@')
+    if lang == 'zh':
+        return f'💬 {handle}：{why}'
+    return f'💬 {handle}: "{why}"'
+
+
+def strip_dup_handles(text):
+    """Collapse '@h：@h：' / '@h: \"@h: ' so a quoted why is prefixed once."""
+    if not isinstance(text, str) or '@' not in text:
+        return text
+    prev = None
+    out = text
+    while out != prev:
+        prev = out
+
+        def repl(m):
+            quote = m.group(4) or ''
+            if quote:
+                return f'{m.group(1)}{m.group(3)} {quote}'
+            return f'{m.group(1)}{m.group(3)}'
+
+        out = _DUP_HANDLE_RE.sub(repl, out)
+    return out
+
+
+def strip_dup_handles_tree(obj):
+    """Walk a JSON tree and strip duplicate @handle prefixes in every string."""
+    if isinstance(obj, dict):
+        for key, value in obj.items():
+            if isinstance(value, str):
+                obj[key] = strip_dup_handles(value)
+            elif isinstance(value, (dict, list)):
+                strip_dup_handles_tree(value)
+    elif isinstance(obj, list):
+        for i, value in enumerate(obj):
+            if isinstance(value, str):
+                obj[i] = strip_dup_handles(value)
+            elif isinstance(value, (dict, list)):
+                strip_dup_handles_tree(value)
+    return obj
+
+
+def _guess_ig_lang(text):
+    t = text or ''
+    if '連結在個人簡介' in t or '唔構成' in t or '#美股' in t or '大神' in t:
+        return 'zh'
+    if '프로필 링크' in t or '투자 조언' in t or '#미국주식' in t:
+        return 'ko'
+    return 'en'
+
+
+def _ig_drop_line(s, lang, bio):
+    """True for live-link, donate-link, domain, and old link-in-bio lines."""
+    if not s:
+        return False
+    low = s.lower()
+    if s == bio or s in IG_BIO.values():
+        return True
+    if 'link in bio' in low or '連結在個人簡介' in s or '프로필 링크' in s:
+        return True
+    if 'thecrowdtape.com' in low:
+        return True
+    live = SHORT.get(lang, SHORT['en'])['live'].strip()
+    if live and s.startswith(live):
+        return True
+    if s.startswith('☕') and any(m in s for m in ('link in bio', '個人簡介', '프로필', 'PayPal', 'paypal')):
+        return True
+    if s in ('👉', '最新數字 👉', 'Live numbers 👉', '최신 수치 👉'):
+        return True
+    return False
+
+
+def _ig_tag_line(lang, found):
+    tickers = []
+    for tok in found or []:
+        body = tok[1:] if tok.startswith('#') else tok
+        tag = f'#{body}'
+        if re.fullmatch(r'[A-Z]{1,6}', body) and tag not in tickers:
+            tickers.append(tag)
+        if len(tickers) >= 2:
+            break
+    return ig_tags(lang, [t[1:] for t in tickers])
+
+
+def sanitize_instagram(text, lang=None):
+    """One Instagram caption: no URLs/domain, one bio line, ≤5 hashtags (≤2 tickers)."""
+    if not isinstance(text, str):
+        return text
+    lang = lang if lang in LANGS else _guess_ig_lang(text)
+    bio = IG_BIO[lang]
+    text = strip_dup_handles(text)
+    text = _IG_URL_RE.sub('', text)
+    text = _IG_DOMAIN_RE.sub('', text)
+    found_tags = []
+    kept = []
+    for ln in text.split('\n'):
+        cleaned = re.sub(r'[ \t]{2,}', ' ', ln).rstrip()
+        s = cleaned.strip()
+        if s and re.fullmatch(r'(?:#[^\s#]+\s*)+', s):
+            found_tags.extend(_HASHTAG_TOKEN.findall(s))
+            continue
+        if _ig_drop_line(s, lang, bio):
+            continue
+        kept.append(cleaned)
+    while kept and not kept[0].strip():
+        kept.pop(0)
+    while kept and not kept[-1].strip():
+        kept.pop()
+    compact = []
+    for ln in kept:
+        if not ln.strip() and compact and not compact[-1].strip():
+            continue
+        compact.append(ln)
+    insert_at = None
+    for i, ln in enumerate(compact):
+        s = ln.strip()
+        if s.startswith('Follow @') or s.startswith('@thecrowdtape') or s.startswith('⚠'):
+            insert_at = i
+            break
+    if insert_at is None:
+        compact.append(bio)
+    else:
+        compact.insert(insert_at, bio)
+        if insert_at > 0 and compact[insert_at - 1].strip():
+            compact.insert(insert_at, '')
+    # Exactly one bio line.
+    seen = False
+    unique = []
+    for ln in compact:
+        if ln.strip() == bio:
+            if seen:
+                continue
+            seen = True
+        unique.append(ln)
+    if found_tags:
+        while unique and not unique[-1].strip():
+            unique.pop()
+        unique.append('')
+        unique.append(_ig_tag_line(lang, found_tags))
+    return '\n'.join(unique).strip('\n')
+
+
+def sanitize_instagram_tree(obj, lang=None):
+    """Sanitize every .instagram string and set has_link.instagram false where tracked."""
+    if isinstance(obj, dict):
+        this_lang = obj.get('lang') if obj.get('lang') in LANGS else lang
+        if isinstance(obj.get('instagram'), str):
+            obj['instagram'] = sanitize_instagram(obj['instagram'], this_lang or lang or 'en')
+        hl = obj.get('has_link')
+        if isinstance(hl, dict) and 'instagram' in hl:
+            hl['instagram'] = False
+        for key, value in obj.items():
+            if key == 'instagram':
+                continue
+            next_lang = key if key in LANGS else this_lang
+            if isinstance(value, (dict, list)):
+                sanitize_instagram_tree(value, next_lang)
+    elif isinstance(obj, list):
+        for value in obj:
+            if isinstance(value, (dict, list)):
+                sanitize_instagram_tree(value, lang)
+    return obj
+
+
 def mix(x, wrap, both, bull, bear):
     """How many of the accounts were bullish or bearish, leaving out a side with none."""
     b, r = x['bull'], x['bear']
@@ -188,7 +402,7 @@ def caption(lang, day, s, items, win, quote_):
         acc = lambda n: f'{n} 個帳號'
         if bull:
             h = items[0]
-            lines.append(f'{m}/{dd} X 大神共識快照： {T(h["t"])} {acc(h["n"])}一齊睇好 📊')
+            lines.append(f'{m}/{dd} X 大神共識快照：最多人睇好 {T(h["t"])}（{acc(h["n"])}）📊')
         else:
             h = items[0] if items else None
             lines.append(f'{m}/{dd} X 大神快照：今日最多人講 {T(h["t"])}（{acc(h["n"])}）💬' if h else f'{m}/{dd} X 大神快照 💬')
@@ -198,7 +412,7 @@ def caption(lang, day, s, items, win, quote_):
         mon = datetime.strptime(day, '%Y-%m-%d').strftime('%b %-d')
         if bull:
             h = items[0]
-            lines.append(f'{mon} · What top X accounts agree on: {T(h["t"])}, {acc(h["n"])} bullish 📊')
+            lines.append(f'{mon} · Most bullish: {T(h["t"])}, {acc(h["n"])} 📊')
         else:
             h = items[0] if items else None
             lines.append(f'{mon} · Most talked-about stock on X today: {T(h["t"])} ({acc(h["n"])}) 💬' if h else f'{mon} · X snapshot 💬')
@@ -207,7 +421,7 @@ def caption(lang, day, s, items, win, quote_):
         acc = lambda n: f'계정 {n}개'
         if bull:
             h = items[0]
-            lines.append(f'{m}/{dd} X 인플루언서 컨센서스: {T(h["t"])} {acc(h["n"])} 동시 강세 📊')
+            lines.append(f'{m}/{dd} X 인플루언서 컨센서스: 가장 강세 {T(h["t"])} ({acc(h["n"])}) 📊')
         else:
             h = items[0] if items else None
             lines.append(f'{m}/{dd} X 스냅샷: 오늘 가장 많이 언급된 종목 {T(h["t"])} ({acc(h["n"])}) 💬' if h else f'{m}/{dd} X 스냅샷 💬')
@@ -217,25 +431,28 @@ def caption(lang, day, s, items, win, quote_):
                     more=lambda k: f' 等 {k} 隻', bear='🔴 共同看空：', split='⚖️ 好淡分歧：', sp=lambda b, r: f'（{b} 好 {r} 淡）',
                     stk='🔥 連續 2 日或以上都喺共同看多：', sd=lambda n: f'（{n} 日）', none='今日暫時未有共同看多（要最少 2 個帳號最新立場都睇好）。',
                     talk='💬 最多人討論：', tr=lambda x: acc(x['n']) + mix(x, '（{}）', '{} 好 {} 淡', '{} 個睇好', '{} 個睇淡'),
-                    sum=f'🗣️ 今日 {s["accounts"]} 個帳號發文，講咗 {s.get("tickers", 0)} 隻股票。', q=lambda q: f'💬 @{q["acc"]}：{q["text"]}',
+                    sum=f'🗣️ 今日 {s["accounts"]} 個帳號發文，講咗 {s.get("tickers", 0)} 隻股票。',
+                    q=lambda q: quote_line(q['acc'], q['text'], 'zh'),
                     note='(共同看多＝最少 2 個帳號最新立場睇好，唔計市場快訊帳號)',
-                    end=['網站約每 4 個鐘更新，最新數字 👉 link in bio (thecrowdtape.com)', '☕ 鍾意就請我哋飲杯咖啡：link in bio，網站底部 PayPal 捐款 🙏', 'Follow @thecrowdtape 每日睇街貨點諗。', '',
+                    end=[IG_BIO['zh'], IG_FOLLOW['zh'], '',
                          '⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。網站嘅機械人頁只係紙上交易。投資有風險，請自行判斷。']),
          'en': dict(cb=f'🔵 Joint bullish: {len(s["bull"])} · Joint bearish: {len(s["bear"])}', rest=lambda k, n: f'・{k} more with {n} accounts each',
                     more=lambda k: f' +{k} more', bear='🔴 Joint bearish: ', split='⚖️ Split views: ', sp=lambda b, r: f' ({b} bull / {r} bear)',
                     stk='🔥 Joint bullish 2+ days in a row: ', sd=lambda n: f' ({n}d)', none='No joint bullish stock yet today (needs 2+ accounts whose latest view is bullish).',
                     talk='💬 Most discussed:', tr=lambda x: acc(x['n']) + mix(x, ' ({})', '{} bull / {} bear', '{} bullish', '{} bearish'),
-                    sum=f'🗣️ {s["accounts"]} accounts posted today, covering {s.get("tickers", 0)} stocks.', q=lambda q: f'💬 @{q["acc"]}: "{q["text"]}"',
+                    sum=f'🗣️ {s["accounts"]} accounts posted today, covering {s.get("tickers", 0)} stocks.',
+                    q=lambda q: quote_line(q['acc'], q['text'], 'en'),
                     note='(Joint bullish = at least 2 accounts whose latest view is bullish; news-wire accounts not counted)',
-                    end=['Updated about every 4 hours. Latest numbers 👉 link in bio (thecrowdtape.com)', '☕ Enjoy it? Buy us a coffee: link in bio, PayPal at the bottom of the site 🙏', 'Follow @thecrowdtape for the daily read on what the crowd thinks.', '',
+                    end=[IG_BIO['en'], IG_FOLLOW['en'], '',
                          '⚠️ A summary of public social media posts, not investment advice. The site\'s bot pages are paper trading only. Investing involves risk; do your own research.']),
          'ko': dict(cb=f'🔵 공동 강세: {len(s["bull"])}개・공동 약세: {len(s["bear"])}개', rest=lambda k, n: f'・나머지 {k}개 종목은 각 계정 {n}개',
                     more=lambda k: f' 외 {k}개', bear='🔴 공동 약세: ', split='⚖️ 의견 엇갈림: ', sp=lambda b, r: f' (강세 {b} / 약세 {r})',
                     stk='🔥 2일 이상 연속 공동 강세: ', sd=lambda n: f' ({n}일)', none='오늘은 아직 공동 강세 종목이 없습니다 (최신 의견이 강세인 계정이 2개 이상 필요).',
                     talk='💬 가장 많이 언급된 종목:', tr=lambda x: acc(x['n']) + mix(x, ' ({})', '강세 {} / 약세 {}', '강세 {}', '약세 {}'),
-                    sum=f'🗣️ 오늘 계정 {s["accounts"]}개가 글을 올렸고, 언급된 종목은 {s.get("tickers", 0)}개입니다.', q=lambda q: f'💬 @{q["acc"]}: "{q["text"]}"',
+                    sum=f'🗣️ 오늘 계정 {s["accounts"]}개가 글을 올렸고, 언급된 종목은 {s.get("tickers", 0)}개입니다.',
+                    q=lambda q: quote_line(q['acc'], q['text'], 'ko'),
                     note='(공동 강세 = 최신 의견이 강세인 계정 2개 이상, 뉴스 속보 계정 제외)',
-                    end=['약 4시간마다 업데이트, 최신 수치 👉 프로필 링크 (thecrowdtape.com)', '☕ 도움이 되셨다면 커피 한 잔 후원해 주세요: 프로필 링크, 사이트 하단 PayPal 🙏', '@thecrowdtape 팔로우하고 매일 시장 분위기를 확인하세요.', '',
+                    end=[IG_BIO['ko'], IG_FOLLOW['ko'], '',
                          '⚠️ 공개 SNS 게시물을 정리한 것으로 투자 조언이 아닙니다. 사이트의 봇 페이지는 모의 거래입니다. 투자에는 위험이 따르니 스스로 판단하세요.'])}[lang]
     join = lambda ts, cap=8: sep.join(T(t) for t in ts[:cap]) + (L['more'](len(ts) - cap) if len(ts) > cap else '')
     lead = ' ' if lang == 'zh' else ''
@@ -269,14 +486,15 @@ def caption(lang, day, s, items, win, quote_):
         extra.append(L['sum'])
     q = L['q'](quote_) if quote_ and quote_.get('text') else None
     tg = tags(lang, [x['t'] for x in items])
+    ig_tg = ig_tags(lang, [x['t'] for x in items])
     url = page_url(lang)
     short = SHORT[lang]
 
-    # Instagram: the full post in Tim's format ("link in bio", since IG captions have no links).
+    # Instagram: no URLs. One link-in-bio line, ≤5 hashtags.
     ig = [head, '', win_line, '', *main]
     for b in extra + ([q] if q else []):
         ig += ['', b]
-    ig += ['', L['note'], '', *L['end'], '', tg]
+    ig += ['', L['note'], '', *L['end'], '', ig_tg]
 
     # X (280, CJK counted double): drop the least important blocks until it fits.
     # Threads is fit afterwards by fit_threads (500 code points, URLs counted in full).
@@ -321,7 +539,7 @@ def caption(lang, day, s, items, win, quote_):
     for b in extra + ([q] if q else []):
         fb += ['', b]
     fb += ['', L['note'], '', f"{short['live']}{url}", give, '', short['disc_long'], '', tg]
-    return {'instagram': '\n'.join(ig), 'threads': threads, 'x': x,
+    return {'instagram': sanitize_instagram('\n'.join(ig), lang), 'threads': threads, 'x': x,
             'reddit': {'title': re.sub(r'\s*[📊💬]$', '', head), 'body': '\n\n'.join(body)},
             'facebook': '\n'.join(fb),
             # Instagram Story: hashtags for a hashtag sticker or small text on the Story picture.
@@ -1517,15 +1735,38 @@ def write_feeds(sp):
         open(path, 'w', encoding='utf-8').write(xml)
 
 
-# Headings are fixed copy. Counts under them come only from writeup-input rows.
-TOP5_COPY = {
-    'zh': {'heading': '今日 X 大神共識：最看好／最看淡 5 隻', 'bull': '最看好', 'bear': '最看淡',
-           'bull_x': '看好帳號', 'bear_x': '看淡帳號', 'none': '今日暫無', 'win': '數據範圍'},
-    'en': {'heading': 'Top X accounts consensus today: 5 most bullish / bearish', 'bull': 'Most bullish', 'bear': 'Most bearish',
-           'bull_x': 'Bullish accounts', 'bear_x': 'Bearish accounts', 'none': 'None today', 'win': 'Data window'},
-    'ko': {'heading': '오늘 X 인플루언서 컨센서스: 가장 강세 / 약세 5종목', 'bull': '가장 강세', 'bear': '가장 약세',
-           'bull_x': '강세 계정', 'bear_x': '약세 계정', 'none': '오늘 없음', 'win': '데이터 범위'},
+# Side labels and the main title use the real list length (5 kept when 5).
+TOP5_META = {
+    'zh': {'bull_x': '看好帳號', 'bear_x': '看淡帳號', 'none': '今日暫無', 'win': '數據範圍'},
+    'en': {'bull_x': 'Bullish accounts', 'bear_x': 'Bearish accounts', 'none': 'None today', 'win': 'Data window'},
+    'ko': {'bull_x': '강세 계정', 'bear_x': '약세 계정', 'none': '오늘 없음', 'win': '데이터 범위'},
 }
+
+
+def top5_labels(lang, n_bull, n_bear):
+    """Heading and column labels for the real counts on each side."""
+    n_bull = int(n_bull or 0)
+    n_bear = int(n_bear or 0)
+    if lang == 'zh':
+        bull, bear = f'最看好 {n_bull} 隻', f'最看淡 {n_bear} 隻'
+        heading = f'今日 X 大神共識：{bull}／{bear}'
+    elif lang == 'ko':
+        bull, bear = f'강세 상위 {n_bull}종목', f'약세 상위 {n_bear}종목'
+        heading = f'오늘 X 인플루언서 컨센서스: {bull} / {bear}'
+    else:
+        bull, bear = f'Top {n_bull} bullish', f'Top {n_bear} bearish'
+        heading = f'Top X accounts consensus today: {bull} / {bear}'
+    return {'heading': heading, 'bull': bull, 'bear': bear}
+
+
+def top5_copy(lang, n_bull=5, n_bear=5):
+    lang = lang if lang in LANGS else 'en'
+    out = dict(TOP5_META[lang])
+    out.update(top5_labels(lang, n_bull, n_bear))
+    return out
+
+
+TOP5_COPY = {lang: top5_copy(lang, 5, 5) for lang in LANGS}
 WEEK_COPY = {
     'zh': {'head': '本週共識變化', 'bulls': '本週最看好', 'bears': '本週最看淡',
            'joined_bull': '新入看好', 'dropped_bull': '退出看好', 'joined_bear': '新入看淡', 'dropped_bear': '退出看淡',
@@ -1634,7 +1875,7 @@ def _xside(label, rows, none):
 
 def _x_top5_text(lang, day, window, bulls, bears):
     """One X post: heading, date, window, both lists, one link, disclaimer, hashtags. xlen <= 280."""
-    L = TOP5_COPY[lang]
+    L = top5_copy(lang, len(bulls), len(bears))
     link = _camp_url(lang, 'x', 'top5', bulls[0]['t'] if bulls else None)
     bs, rs = list(bulls), list(bears)
     extra = _hash_tags([r['t'] for r in bs + rs])
@@ -1681,7 +1922,7 @@ def _x_top5_text(lang, day, window, bulls, bears):
 def _list_lines(lang, label, rows, platform=None):
     lines = [label]
     if not rows:
-        lines.append(TOP5_COPY[lang]['none'])
+        lines.append(top5_copy(lang).get('none') or TOP5_META[lang]['none'])
         return lines
     for r in rows:
         lines.append(f'・${r["t"]} {_acc(lang, r["n"])}')
@@ -1691,14 +1932,20 @@ def _list_lines(lang, label, rows, platform=None):
 
 
 def _long_top5_text(lang, day, window, bulls, bears, platform):
-    """Instagram or Facebook: every listed ticker links to that language's stock page."""
-    L = TOP5_COPY[lang]
+    """Facebook lists every name. Instagram has no URLs: one bio line and ≤5 hashtags."""
+    L = top5_copy(lang, len(bulls), len(bears))
+    ig = platform == 'instagram'
     parts = [L['heading']]
     meta = [ln for ln in (day, f"{L['win']}: {window}" if window else '') if ln]
     if meta:
         parts.append('\n'.join(meta))
-    parts.append('\n'.join(_list_lines(lang, L['bull'], bulls, platform)))
-    parts.append('\n'.join(_list_lines(lang, L['bear'], bears, platform)))
+    parts.append('\n'.join(_list_lines(lang, L['bull'], bulls, None if ig else platform)))
+    parts.append('\n'.join(_list_lines(lang, L['bear'], bears, None if ig else platform)))
+    if ig:
+        parts.append(IG_BIO[lang])
+        parts.append(SHORT[lang]['disc'])
+        parts.append(ig_tags(lang, [r['t'] for r in bulls + bears]))
+        return sanitize_instagram('\n\n'.join(parts), lang)
     parts.append(SHORT[lang]['disc'])
     parts.append(tags(lang, [r['t'] for r in bulls + bears]))
     return '\n\n'.join(parts)
@@ -1706,7 +1953,7 @@ def _long_top5_text(lang, day, window, bulls, bears, platform):
 
 def _threads_top5_text(lang, day, window, bulls, bears):
     """Threads caption passed through fit_threads. The stock link lives in first_comment, not here."""
-    L = TOP5_COPY[lang]
+    L = top5_copy(lang, len(bulls), len(bears))
     parts = [L['heading']]
     meta = [ln for ln in (day, f"{L['win']}: {window}" if window else '') if ln]
     if meta:
@@ -1725,7 +1972,7 @@ def _decorate_top5_posts(posts, bulls, bears):
         fc = {'threads': SHORT[lang]['live'] + _camp_url(lang, 'threads', 'top5', bulls[0]['t'] if bulls else None)}
         hl = {
             'x': 'https://thecrowdtape.com' in (p.get('x') or ''),
-            'instagram': 'https://thecrowdtape.com' in (p.get('instagram') or ''),
+            'instagram': False,
             'threads': True,
             'facebook': bool(bulls or bears),
         }
@@ -1739,20 +1986,81 @@ def _decorate_top5_posts(posts, bulls, bears):
 
 
 def _top5_card_data(slot, lang):
-    L = TOP5_COPY[lang]
+    bulls, bears = slot.get('bull') or [], slot.get('bear') or []
+    L = top5_copy(lang, len(bulls), len(bears))
     return {'lang': lang, 'date': slot.get('date') or '', 'window': slot.get('window') or '',
             'win_label': L['win'], 'heading': L['heading'], 'bull_label': L['bull'], 'bear_label': L['bear'],
-            'none': L['none'], 'bull': slot.get('bull') or [], 'bear': slot.get('bear') or [],
+            'none': L['none'], 'bull': bulls, 'bear': bears,
             'foot': SHORT[lang]['disc']}
 
 
-def build_top5(daily, day, made_hkt):
+def _parse_daily_clock(s):
+    """Parse daily.from / daily.to / a window fragment into an HKT datetime."""
+    s = str(s or '').strip()
+    m = re.search(r'(\d{4})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})', s)
+    if m:
+        y, mo, d, h, mi = map(int, m.groups())
+        return datetime(y, mo, d, h, mi, tzinfo=HK)
+    m = re.search(r'(\d{1,2})/(\d{1,2})\s+(\d{2}):(\d{2})', s)
+    if m:
+        mo, d, h, mi = map(int, m.groups())
+        year = now_hk().year
+        return datetime(year, mo, d, h, mi, tzinfo=HK)
+    return None
+
+
+def _latest_row_ms(daily):
+    latest = None
+    for side in ('bull', 'bear', 'split'):
+        for row in (daily or {}).get(side) or []:
+            if not isinstance(row, dict):
+                continue
+            for item in row.get('rows') or []:
+                if not isinstance(item, dict):
+                    continue
+                ms = item.get('ms')
+                if isinstance(ms, (int, float)) and not isinstance(ms, bool):
+                    latest = ms if latest is None else max(latest, ms)
+    return latest
+
+
+def _fallback_end_hhmm(window):
+    m = re.search(r'–\s*(?:\d{1,2}/\d{1,2}\s+)?(\d{2}:\d{2})', window or '')
+    return m.group(1) if m else None
+
+
+def top5_window(daily, fallback=None):
+    """Human window 'MM/DD HH:MM – HH:MM HKT'. Cutoff is the latest rows[].ms in HKT.
+
+    Start is daily.from. End is the latest writeup row timestamp, then the
+    social-posts.json window end, then daily.to when that time is not 23:59.
+    Never stores an ISO 'T' and never a fake 23:59.
+    """
+    daily = daily if isinstance(daily, dict) else {}
+    start_dt = _parse_daily_clock(daily.get('from'))
+    start = f'{start_dt.month:02d}/{start_dt.day:02d} {start_dt:%H:%M}' if start_dt else ''
+    end = None
+    ms = _latest_row_ms(daily)
+    if ms is not None:
+        end = hk(ms).strftime('%H:%M')
+    if not end:
+        end = _fallback_end_hhmm(fallback or '')
+    if not end:
+        to_dt = _parse_daily_clock(daily.get('to'))
+        if to_dt and (to_dt.hour, to_dt.minute) != (23, 59):
+            end = to_dt.strftime('%H:%M')
+    if start and end:
+        return f'{start} – {end} HKT'
+    return ''
+
+
+def build_top5(daily, day, made_hkt, fallback_window=None):
     """Daily top-5 card slot. Counts are copied, never invented.
 
     top5 = {
       date: 'YYYY-MM-DD',
       made_hkt: 'YYYY-MM-DD HH:MM',
-      window: '<daily.from> – <daily.to>' or '',
+      window: 'MM/DD HH:MM – HH:MM HKT' (real cutoff, never ISO T / fake 23:59),
       source: 'data/writeup-input.json daily',
       bull: [{t, n}],   # up to 5, daily.bull order, n = nb (accounts bullish)
       bear: [{t, n}],   # up to 5, daily.bear order, n = nr (accounts bearish)
@@ -1764,12 +2072,13 @@ def build_top5(daily, day, made_hkt):
       posts: {zh|en|ko: {x, instagram, threads, facebook, has_link, first_comment}},
     }
 
-    Fewer than five names on a side: those names only. An empty side is the translated
+    Fewer than five names on a side: those names only, and the heading uses that count
+    (最看好 N 隻 / Top N bullish / 강세 상위 N종목). An empty side is the translated
     'none today' line (今日暫無 / None today / 오늘 없음), never a made-up row.
     X carries one link in the body: the lead bull's /<lang>/stock/<T>/, or /<lang>/ when there is no bull.
     Threads and Facebook keep that link in first_comment (threads: the lead bull, or the language
-    home when there is no bull; facebook: one stock link per listed name). Instagram still lists
-    one stock link per ticker in the body. Threads is fit_threads (500 code points).
+    home when there is no bull; facebook: one stock link per listed name). Instagram has no URL:
+    one link-in-bio line and has_link.instagram false. Threads is fit_threads (500 code points).
     Every thecrowdtape.com link is tag_url(..., platform, 'top5').
     Each post ends with SHORT[lang]['disc'] and the usual hashtags.
     format is image_card. video.<lang> points at og/top5-<lang>.mp4.
@@ -1777,8 +2086,7 @@ def build_top5(daily, day, made_hkt):
     daily = daily if isinstance(daily, dict) else {}
     bulls = _side_rows(daily.get('bull'), 'nb', 5)
     bears = _side_rows(daily.get('bear'), 'nr', 5)
-    frm, to = daily.get('from'), daily.get('to')
-    window = f'{frm} – {to}' if frm and to else ''
+    window = top5_window(daily, fallback_window)
     day = _as_day(day) or str(day or '')
     posts = {}
     for lang in LANGS:
@@ -2013,7 +2321,8 @@ def attach_top5_and_weekly(sp, day, made_hkt, history, writeup=None):
         writeup = read_json('data/writeup-input.json', {}) or {}
     if not isinstance(writeup, dict):
         writeup = {}
-    sp['top5'] = build_top5(writeup.get('daily') or {}, day, made_hkt)
+    sp['top5'] = build_top5(writeup.get('daily') or {}, day, made_hkt,
+                           fallback_window=sp.get('window') if isinstance(sp, dict) else None)
     write_top5_jobs(sp['top5'])
     thread = build_weekly_thread(writeup.get('weekly') or {}, history, day)
     if thread:
@@ -2212,10 +2521,9 @@ def _quote_rows(row, limit=3):
 
 def _attr_line(acc, why):
     handle = '@' + str(acc).lstrip('@')
-    why = (why or '').strip()
-    low = why.lower()
-    if low.startswith(handle.lower()) or handle.lower() in low:
-        return why
+    why = dedupe_handle(acc, why)
+    if not why:
+        return handle
     return f'{handle}：{why}'
 
 
@@ -3038,7 +3346,8 @@ def _tickers_in_texts(blobs):
 
 
 def refresh_top5(sp, daily, day, made_hkt):
-    sp['top5'] = build_top5(daily or {}, day, made_hkt)
+    sp['top5'] = build_top5(daily or {}, day, made_hkt,
+                           fallback_window=sp.get('window') if isinstance(sp, dict) else None)
     return sp
 
 

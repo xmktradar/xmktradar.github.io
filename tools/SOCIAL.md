@@ -12,14 +12,14 @@ Today's five most bullish and five most bearish names, in the order `data/writeu
 | --- | --- |
 | `bull[].n` | `daily.bull[].nb` (accounts bullish) |
 | `bear[].n` | `daily.bear[].nr` (accounts bearish) |
-| `window` | `daily.from` and `daily.to`, joined with ` – ` |
+| `window` | `MM/DD HH:MM – HH:MM HKT`: start is `daily.from`, cutoff is the latest `rows[].ms` in daily bull/bear/split converted to HKT (never ISO `T`, never a fake 23:59). Falls back to the social-posts.json `window` end time. |
 | `date` | The social run's HKT day |
 
 ```json
 {
   "date": "2026-10-23",
   "made_hkt": "2026-10-23 07:18",
-  "window": "2026-10-23T00:00 – 2026-10-23T23:59",
+  "window": "10/23 00:00 – 09:55 HKT",
   "source": "data/writeup-input.json daily",
   "bull": [{"t": "RSP", "n": 2}],
   "bear": [{"t": "QQQ", "n": 4}],
@@ -41,16 +41,16 @@ Today's five most bullish and five most bearish names, in the order `data/writeu
 
 `images`, `video` and `posts` have `zh`, `en`, and `ko`. Portrait is 1080×1350 (`og/top5-<lang>.png`, for X, Instagram, and Threads). Square is 1080×1080 (`og/top5-<lang>-sq.png`, for Facebook). `video.<lang>` points at `og/top5-<lang>.mp4` (1080×1920, about 12 seconds, silent), made by `tools/top5video.sh` from the portrait PNG. The update workflow runs that script after `top5card.js` when `ffmpeg` is on `PATH` and the PNG exists.
 
-Headings, copied exactly:
+Headings use the real list length on each side (5 kept when 5):
 
-- zh: `今日 X 大神共識：最看好／最看淡 5 隻`
-- en: `Top X accounts consensus today: 5 most bullish / bearish`
-- ko: `오늘 X 인플루언서 컨센서스: 가장 강세 / 약세 5종목`
+- zh: `今日 X 大神共識：最看好 N 隻／最看淡 N 隻` (column `最看好 N 隻` / `最看淡 N 隻`)
+- en: `Top X accounts consensus today: Top N bullish / Top N bearish`
+- ko: `오늘 X 인플루언서 컨센서스: 강세 상위 N종목 / 약세 상위 N종목`
 
-Each post also has the date, the data window, both lists with account counts, `SHORT[lang]['disc']`, and the usual hashtags (`#美股` / `#StockMarket` / `#미국주식`, plus tickers). Links use `tools/utm.py` `tag_url(url, platform, 'top5')` (`utm_source` is `x`, `threads`, `instagram` or `facebook`, `utm_medium=social`, `utm_campaign=top5`) and that post's language (`/<lang>/stock/<T>/`).
+Each post also has the date, the data window (`10/23 00:00 – HH:MM HKT`), both lists with account counts, `SHORT[lang]['disc']`, and hashtags. Instagram is capped at 5 hashtags (language base tags first, at most 2 ticker tags). Links use `tools/utm.py` `tag_url(url, platform, 'top5')` (`utm_source` is `x`, `threads`, `instagram` or `facebook`, `utm_medium=social`, `utm_campaign=top5`) and that post's language (`/<lang>/stock/<T>/`).
 
 - X: one link in the body, the first bull's stock page, or `/<lang>/` when there is no bull. `xlen` ≤ 280. Names that do not fit are dropped from the end of the longer list. The link stays on the lead bull. `has_link.x` is true when that URL is present.
-- Instagram: one stock link per listed ticker, still in the body.
+- Instagram: no URLs and no `thecrowdtape.com`. Exactly one link-in-bio line (`連結在個人簡介` / `link in bio` / `프로필 링크`). `has_link.instagram` is false. Stock links stay on Facebook / Threads `first_comment`.
 - Threads and Facebook: the body has no URL. The link moves to `first_comment.threads` (the lead bull, or `/<lang>/` when there is no bull) and `first_comment.facebook` (one line per listed ticker). `has_link.threads` is true. `has_link.facebook` is true when either side has a name. Threads is passed through `fit_threads` (≤ 500 Unicode code points).
 
 Empty side copy: zh `今日暫無`, en `None today`, ko `오늘 없음`.
@@ -97,7 +97,7 @@ Every slot carries `format`: `image_card`, `carousel`, `text_question` or `poll`
 
 Every body ends with `SHORT[lang]['disc']` (`⚠️ 唔構成投資建議` / `⚠️ Not investment advice` / `⚠️ 투자 조언 아님`) and a hashtag line: `#美股` / `#StockMarket` / `#미국주식`, plus `#TICKER` when the post names one ticker. Threads bodies are ≤ 500 code points (`fit_threads`). X bodies are ≤ 280 (`xlen`).
 
-About half of Threads and Facebook copies have no link in the body. The index walks `zh`, `en`, `ko` and, within each language, `threads` then `facebook`. Even indexes get a link. The URL is not left in the body. It is stored on `first_comment`, with `SHORT[lang]['live']` (`最新數字 👉 ` / `Live numbers 👉 ` / `최신 수치 👉 `) in front, and `has_link` is true for that platform. Odd indexes set `has_link` false and omit that platform's comment. On `top5`, X and Instagram keep the link in the body; Threads and Facebook still get `first_comment`. Atomic posts use one string, so `has_link` is a boolean on the flat zh-then-en-then-ko list (even indexes) and `first_comment` is a string tagged `utm_source=threads`.
+About half of Threads and Facebook copies have no link in the body. The index walks `zh`, `en`, `ko` and, within each language, `threads` then `facebook`. Even indexes get a link. The URL is not left in the body. It is stored on `first_comment`, with `SHORT[lang]['live']` (`最新數字 👉 ` / `Live numbers 👉 ` / `최신 수치 👉 `) in front, and `has_link` is true for that platform. Odd indexes set `has_link` false and omit that platform's comment. On `top5`, X keeps the link in the body; Instagram has no URL (`has_link.instagram` false, one link-in-bio line). Threads and Facebook still get `first_comment`. Atomic posts use one string, so `has_link` is a boolean on the flat zh-then-en-then-ko list (even indexes) and `first_comment` is a string tagged `utm_source=threads`. Every `.instagram` field is passed through `sanitize_instagram` (also from `utm.normalize_all`) so captions stay URL-free.
 
 `utm_campaign` is the slot name: `hot_stock`, `discussion`, `weekend`. Atomic posts use `atomic`. The platform is the field name (`threads` or `facebook`). A `first_comment` object is tagged per key. A `first_comment` string uses `threads`.
 
