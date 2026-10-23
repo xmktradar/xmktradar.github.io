@@ -1,19 +1,22 @@
 {
  "note": "Written by GitHub Actions on every update. SuperGrok daily check reads this.",
- "checked_hkt": "2026-10-23 21:37",
- "generated_hkt": "2026-10-23 21:23",
+ "checked_hkt": "2026-10-23 22:47",
+ "generated_hkt": "2026-10-23 22:30",
  "cutoff_hkt": "2026-10-23T18:31:33+08:00",
- "posts_on_site": 4174,
- "added_this_run": 15,
+ "posts_on_site": 4168,
+ "added_this_run": 0,
  "added_without_en_summary": 0,
- "waiting_for_summary": 367,
- "waiting_with_stock": 55,
- "expired_unsummarised_this_run": 14,
- "chitchat_skipped_this_run": 102,
+ "waiting_for_summary": 357,
+ "waiting_with_stock": 47,
+ "expired_unsummarised_this_run": 32,
+ "chitchat_skipped_this_run": 108,
  "pruned_this_run": 0,
- "fetch_failed": [],
+ "fetch_failed": [
+  "scottmelker（IncompleteRead(58923 bytes read, 12798 more expected)）"
+ ],
  "warnings": [
-  "未分析：367 則新帖等待 Grok 分析"
+  "攞帖失敗：scottmelker",
+  "未分析：357 則新帖等待 Grok 分析"
  ],
  "writeups_applied": [
   "zh/daily 2026-10-23",
@@ -57,5 +60,5 @@
   }
  },
  "layout_warnings": [],
- "layout_checked_hkt": "2026-10-23 21:39"
+ "layout_checked_hkt": "2026-10-23 22:49"
 }
