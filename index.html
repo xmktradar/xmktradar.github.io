@@ -774,8 +774,8 @@ table.lb .na{color:var(--mut);font-weight:400}
 .bar .m{background:var(--neu)}.bar .u{background:var(--neu-soft)}.bar .a{background:var(--accent)}
 .sw.b{background:var(--bull)}.sw.m{background:var(--neu)}.sw.u{background:var(--neu-soft);border:1px solid var(--neu-line)}.sw.r{background:var(--bear)}.sw.x{background:var(--div-line)}
 .sx-tabs{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}.sx-tabs button{font:inherit;font-size:13px;padding:5px 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);cursor:pointer}.sx-tabs button[aria-pressed=true]{background:var(--ink);color:var(--surface);border-color:var(--ink)}.sx-row{border-top:1px solid var(--line)}.sx-row>summary{list-style:none;cursor:pointer;padding:10px 2px}.sx-row>summary::-webkit-details-marker{display:none}.sx-head{display:grid;grid-template-columns:84px minmax(0,1fr) auto;align-items:center;gap:10px}.sx-head .tk{justify-self:start}.sx-head .track{height:10px;display:flex;overflow:hidden;background:var(--sunk);border-radius:999px}.sx-head .track span{display:block;height:100%}.sx-head .track .b{background:var(--bull)}.sx-head .track .m{background:var(--neu)}.sx-head .track .u{background:var(--neu-soft);box-shadow:inset 0 0 0 1px var(--neu-line)}
-/* 未表態用斜紋，同中性（實色）同底色分得開（Tim，2026-10-21） */
-.bar .u,.track .u,.sw.u{background:repeating-linear-gradient(135deg,var(--neu-soft) 0 3px,var(--neu-line) 3px 5px)!important}.sx-head .track .r{background:var(--bear)}.sx-cnt{font-size:12.5px;color:var(--muted);white-space:nowrap}.sx-cnt b{font-weight:700}.sx-cnt .up{color:var(--bull)}.sx-cnt .dn{color:var(--bear)}.sx-cnt::after{content:"▾";margin-left:5px;display:inline-block;transition:transform .15s}.sx-row[open] .sx-cnt::after{transform:rotate(180deg)}.sx-avs{display:flex;flex-wrap:wrap;gap:5px 14px;margin:7px 0 0 94px;font-size:12px;color:var(--muted)}.sx-r1{margin:5px 0 0 94px;font-size:12.5px;line-height:1.45;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sx-r1 i{font-style:normal;margin:0 6px;opacity:.5}.t3-l{margin:6px 0 4px;padding-left:1.3em;display:grid;gap:6px}.t3-l li{line-height:1.5}.ctx{margin:6px 0 0}@media(max-width:480px){header.top .meta .hdr-duo{min-width:0;max-width:100%}header.top .meta .hdr-promo{white-space:normal;flex-wrap:wrap}}@media(max-width:700px){.sx-r1{margin-left:0;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}}.sx-avs .g{display:inline-flex;align-items:center;flex-wrap:wrap;gap:3px}.sx-avs .lb{font-weight:700;margin-right:3px}.sx-avs .lb.b{color:var(--bull)}.sx-avs .lb.r{color:var(--bear)}.sd-avs{margin:12px 0 6px}.sd-avs .sx-av{width:26px;height:26px}.sd-cards{max-height:none!important;overflow:visible!important}.sd-more{margin-top:10px}.acc-card:target{outline:2px solid var(--accent);outline-offset:2px}.sx-av{width:22px;height:22px;border-radius:50%;object-fit:cover;border:1px solid var(--line);background:var(--neu-bg);display:inline-grid;place-items:center;font-size:10px;font-weight:700;color:var(--neu-ink)}.sx-why{margin:0 0 12px 94px;display:grid;gap:8px}.sx-why p{margin:0;font-size:13.5px;line-height:1.5}.sx-why .pill{margin-right:6px}.sx-list:not(.all)[data-f=all] .sx-row.x{display:none}.sx-list[data-f=split] .sx-row:not(.split),.sx-list[data-f=mbull] .sx-row:not(.mbull),.sx-list[data-f=mbear] .sx-row:not(.mbear){display:none}.sx-list.all .sx-more,.sx-list:not([data-f=all]) .sx-more{display:none}.sx-more{display:block;width:100%;margin-top:10px;padding:9px;border:1px dashed var(--line-strong);border-radius:8px;background:none;color:var(--ink);font:inherit;font-size:13.5px;cursor:pointer}.sx-none{display:none;padding:12px 2px}.sx-list[data-f=split]:not(:has(.sx-row.split)) .sx-none,.sx-list[data-f=mbull]:not(:has(.sx-row.mbull)) .sx-none,.sx-list[data-f=mbear]:not(:has(.sx-row.mbear)) .sx-none{display:block}@media(max-width:640px){.sx-head{grid-template-columns:70px minmax(0,1fr) auto;gap:8px}.sx-avs,.sx-why{margin-left:0}}
+/* 未表態用斜紋，同中性（實色）同底色分得開（2026-10-21） */
+.bar .u,.track .u,.sw.u{background:repeating-linear-gradient(135deg,var(--neu-soft) 0 3px,var(--neu-line) 3px 5px)!important}.sx-head .track .r{background:var(--bear)}.sx-cnt{font-size:12.5px;color:var(--muted);white-space:nowrap}.sx-cnt b{font-weight:700}.sx-cnt .up{color:var(--bull)}.sx-cnt .dn{color:var(--bear)}.sx-cnt::after{content:"▾";margin-left:5px;display:inline-block;transition:transform .15s}.sx-row[open] .sx-cnt::after{transform:rotate(180deg)}.sx-avs{display:flex;flex-wrap:wrap;gap:5px 14px;margin:7px 0 0 94px;font-size:12px;color:var(--muted)}main#view{min-height:100vh}.sx-r1{margin:5px 0 0 94px;font-size:12.5px;line-height:1.45;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.sx-r1 i{font-style:normal;margin:0 6px;opacity:.5}.t3-l{margin:6px 0 4px;padding-left:1.3em;display:grid;gap:6px}.t3-l li{line-height:1.5}.ctx{margin:6px 0 0}@media(max-width:480px){header.top .meta .hdr-duo{min-width:0;max-width:100%}header.top .meta .hdr-promo{white-space:normal;flex-wrap:wrap}}@media(max-width:700px){.sx-r1{margin-left:0;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}}.sx-avs .g{display:inline-flex;align-items:center;flex-wrap:wrap;gap:3px}.sx-avs .lb{font-weight:700;margin-right:3px}.sx-avs .lb.b{color:var(--bull)}.sx-avs .lb.r{color:var(--bear)}.sd-avs{margin:12px 0 6px}.sd-avs .sx-av{width:26px;height:26px}.sd-cards{max-height:none!important;overflow:visible!important}.sd-more{margin-top:10px}.acc-card:target{outline:2px solid var(--accent);outline-offset:2px}.sx-av{width:22px;height:22px;border-radius:50%;object-fit:cover;border:1px solid var(--line);background:var(--neu-bg);display:inline-grid;place-items:center;font-size:10px;font-weight:700;color:var(--neu-ink)}.sx-why{margin:0 0 12px 94px;display:grid;gap:8px}.sx-why p{margin:0;font-size:13.5px;line-height:1.5}.sx-why .pill{margin-right:6px}.sx-list:not(.all)[data-f=all] .sx-row.x{display:none}.sx-list[data-f=split] .sx-row:not(.split),.sx-list[data-f=mbull] .sx-row:not(.mbull),.sx-list[data-f=mbear] .sx-row:not(.mbear){display:none}.sx-list.all .sx-more,.sx-list:not([data-f=all]) .sx-more{display:none}.sx-more{display:block;width:100%;margin-top:10px;padding:9px;border:1px dashed var(--line-strong);border-radius:8px;background:none;color:var(--ink);font:inherit;font-size:13.5px;cursor:pointer}.sx-none{display:none;padding:12px 2px}.sx-list[data-f=split]:not(:has(.sx-row.split)) .sx-none,.sx-list[data-f=mbull]:not(:has(.sx-row.mbull)) .sx-none,.sx-list[data-f=mbear]:not(:has(.sx-row.mbear)) .sx-none{display:block}@media(max-width:640px){.sx-head{grid-template-columns:70px minmax(0,1fr) auto;gap:8px}.sx-avs,.sx-why{margin-left:0}}
 .heat .hc.b{background:var(--bull)}.heat .hc.r{background:var(--bear)}.heat .hc.m{background:var(--neu)}.heat .hc.x{background:var(--div-line)}.heat .hc.e{background:var(--sunk)}
 .chip{font-size:11px;color:var(--ink);background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:0 6px;white-space:nowrap}
 .chip.spec{color:var(--accent);background:var(--accent-soft);border-color:var(--link-line)}
@@ -842,6 +842,44 @@ nav.tabs a.tab-robo:hover{filter:brightness(.9)}
 .m-body .tx{margin:4px 0 0;overflow-wrap:anywhere}
 @media(max-width:600px){.m-row{flex-direction:column;gap:6px}.m-row .post-who{flex:none;max-width:100%}.m-th>summary{padding:10px}}
 </style>
+<style>@media(max-width:700px){header.top{top:calc(env(safe-area-inset-top,0px) + var(--hd-top,0px))}}</style>
+<style>/* 儲存網站 (2026-10-23): pill beside the social icons; Chrome/Edge/Android get the install prompt, iPhone gets two steps, other browsers the bookmark keys. Hidden when opened from the home screen. */
+.save-site{box-sizing:border-box;display:inline-flex;align-items:center;gap:4px;flex:0 0 auto;height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--panel);color:var(--tx-strong);font:700 12.5px/1 var(--f-body);white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.save-site:hover,.save-site:active{background:var(--bg-dot)}
+.save-site:focus-visible{outline:2px solid var(--ink,#3b2f25);outline-offset:2px}
+.save-site[hidden]{display:none}
+header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones: the pill drops to its own line instead of pushing the page sideways */
+.save-tip{position:fixed;inset:0;z-index:80;display:flex;align-items:flex-end;justify-content:center;padding:16px;background:rgba(42,33,25,.35)}
+.save-tip[hidden]{display:none}
+.save-card{position:relative;box-sizing:border-box;width:min(380px,100%);margin-bottom:env(safe-area-inset-bottom,0px);padding:18px 18px 14px;border:1px solid var(--line-strong);border-radius:16px;background:var(--panel);color:var(--tx-strong);font-size:15px;line-height:1.5;box-shadow:0 10px 30px rgba(59,47,37,.25)}
+.save-card b{display:block;margin:0 28px 8px 0;font-size:16px}
+.save-card ol{margin:0 0 8px;padding-left:22px}.save-card li{margin:4px 0}
+.save-card p{margin:0 0 8px}.save-card .save-ft{margin:0;font-size:13px;color:var(--mut)}
+.save-ic{display:inline-block;padding:0 6px;border:1px solid var(--line-strong);border-radius:6px;font-size:13px}
+.save-x{position:absolute;top:8px;right:8px;width:32px;height:32px;padding:0;border:0;border-radius:999px;background:none;color:var(--mut);font-size:16px;cursor:pointer}
+.save-tip:not(.ios) .save-ios,.save-tip.ios .save-pc{display:none}
+@media(min-width:701px){.save-tip{align-items:center}}</style>
+<style>/* 搜尋股票 (2026-10-11): 🔍 at the right end of the tab row; it stays pinned on phones. */
+.top .wrap.tabbar{display:flex;flex-wrap:nowrap;align-items:center;gap:6px;position:relative}
+.tabbar nav.tabs{flex:1 1 auto;min-width:0;width:auto}
+.srch-btn{flex:0 0 auto;width:36px;height:36px;border:1px solid var(--line);border-radius:999px;background:var(--panel);font-size:15px;line-height:1;cursor:pointer;padding:0}
+.srch-btn[aria-expanded=true]{border-color:var(--accent)}
+.srch{position:absolute;right:16px;top:calc(100% + 4px);width:min(420px,calc(100vw - 32px));background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.14);padding:10px;z-index:60}
+.srch[hidden]{display:none}
+.srch-row{display:flex;gap:6px}
+#srch-q{flex:1;min-width:0;font:inherit;font-size:16px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+#srch-q::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
+.srch-x{border:0;background:none;font-size:16px;color:var(--muted);cursor:pointer;padding:0 8px}
+#srch-r{list-style:none;margin:6px 0 0;padding:0;max-height:min(60vh,420px);overflow-y:auto}
+#srch-r:empty{display:none}
+#srch-r li[data-t]{display:flex;align-items:baseline;gap:8px;padding:8px;border-radius:8px;cursor:pointer}
+#srch-r li[aria-selected=true]{background:var(--accent-soft)}
+#srch-r li[data-t]:hover{background:var(--accent-soft)}
+#srch-r b{font-family:var(--f-data);min-width:56px}
+#srch-r .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted);font-size:13px}
+#srch-r .n{font-size:12px;color:var(--muted);white-space:nowrap}
+#srch-r .none{padding:8px;color:var(--muted);font-size:13px}
+@media(max-width:700px){.srch{left:12px;right:12px;width:auto}}</style>
 <!-- lang-head --><link rel="canonical" href="https://thecrowdtape.com/zh/"><link rel="alternate" hreflang="zh-Hant" href="https://thecrowdtape.com/zh/"><link rel="alternate" hreflang="en" href="https://thecrowdtape.com/en/"><link rel="alternate" hreflang="ko" href="https://thecrowdtape.com/ko/"><link rel="alternate" hreflang="x-default" href="https://thecrowdtape.com/"><style>.lang-sw{display:flex;gap:4px;margin:6px 0 2px}.lang-sw a{font:600 12.5px/1 var(--f-body);padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);text-decoration:none;background:var(--surface)}.lang-sw a[aria-current]{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}#dive>.lang-sw{position:static;justify-content:flex-start;margin:8px 16px 4px;clear:both}@media(max-width:600px){.flag{white-space:normal;max-width:100%;flex-wrap:wrap}.tk:has(.flag){white-space:normal!important;max-width:100%}html:not([lang^=zh]) td:not(:first-child) .note{white-space:normal}}</style><script>(function(){var k="ct-lang";document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".lang-sw a");if(!a)return;try{localStorage.setItem(k,a.dataset.lang)}catch(_){}e.preventDefault();location.href=a.getAttribute("href")+location.search+location.hash});new MutationObserver(function(){var d=document.getElementById("dive"),n=document.querySelector("header .lang-sw");if(d&&n&&!d.querySelector(".lang-sw"))d.insertBefore(n.cloneNode(true),d.firstChild)}).observe(document.documentElement,{childList:true,subtree:true});var l;try{l=localStorage.getItem(k)}catch(_){}if(!l){var n=(navigator.languages||[navigator.language||""]).join(",").toLowerCase();l=/^ko|,ko/.test(n)?"ko":/^zh|,zh/.test(n)?"zh":/^en|,en/.test(n)?"en":"en"};function ctFixRoot(root){(root||document).querySelectorAll("a[href]").forEach(function(a){var h=a.getAttribute("href")||"";if(/^(tools|support|about|advertise|newsletter)\//.test(h))a.setAttribute("href","/"+l+"/"+h)})}document.addEventListener("DOMContentLoaded",function(){ctFixRoot(document)});new MutationObserver(function(){ctFixRoot(document)}).observe(document.documentElement,{childList:true,subtree:true});if(!/(github\.io|thecrowdtape\.com)$/.test(location.hostname))return;location.replace("/"+l+"/"+location.search+location.hash)})();</script><!-- lang-head --></head>
 <body>
 <header class="top">
@@ -862,7 +900,7 @@ nav.tabs a.tab-robo:hover{filter:brightness(.9)}
       <button role="tab" data-v="monthly" id="tab-monthly">每月<small class="tab-rng">（28 天）</small></button>
       <button role="tab" data-v="macro" id="tab-macro">宏觀</button>
       <button role="tab" data-v="tracked" id="tab-tracked">追蹤名單</button>
-      <!-- 機械人選股分頁暫時收起（2026-10-15 Tim）：數據停咗喺 10/8，有來源再開返
+      <!-- 機械人選股分頁暫時收起（2026-10-15）：數據停咗喺 10/8，有來源再開返
       <a href="/robot.html" class="tab-robo"><span class="rb-full">機械人選股交易（Grok）</span><span class="rb-short">機械人交易</span></a>
       -->
     </nav>
@@ -1128,7 +1166,7 @@ function lbHtml(rows){if(!rows.length)return '';
 document.addEventListener('click',e=>{const b=e.target.closest('[data-lbk]');if(!b)return;const k=b.dataset.lbk;LB_SORT=LB_SORT.k===k?{k,dir:-LB_SORT.dir}:{k,dir:k==='t'?1:-1};render()});
 
 // ---------- 頁頂「昨日重疊 vs 今日」（樣式 .vs-bar／.vs-tk；字稿由寫手提供；昨日同連續日數：共識歷史） ----------
-// 新人睇唔明「重疊」：標題同兩個分組用白話覆蓋寫手字稿（Tim，2026-10-21）
+// 新人睇唔明「重疊」：標題同兩個分組用白話覆蓋寫手字稿（2026-10-21）
 const VS_FIX=(()=>{const L=PAGE_LANG;if(L==='en')return{label:'Consensus bullish / bearish: today so far vs all of yesterday',dropped:'Not on the list so far today: {removed}',stayed:'On the list {streak} days in a row: {kept}'};if(L==='ko')return{label:'공동 강세/약세: 오늘 현재까지 vs 어제 종일',dropped:'오늘 현재까지 목록에서 제외: {removed}',stayed:'{streak}일 연속 목록: {kept}'};return{label:'共同看多／看空：今日至今 vs 昨日全日',dropped:'今日至今未再上榜：{removed}',stayed:'連續 {streak} 日上榜：{kept}'};})();
 const VSC=D.vs_copy?{...D.vs_copy,...VS_FIX}:null,CH=D.cons_hist||null;
 function vsHtml(w){if(!VSC||!CH)return '';
@@ -1544,7 +1582,7 @@ const HANDLE_RE=/(^|[^A-Za-z0-9_\/.@])@([A-Za-z0-9_]{1,15})(?![A-Za-z0-9_])/g;
 function fitTables(root){if(!root)return;root.querySelectorAll('.tablewrap,.lb-wrap').forEach(w=>{if(w.querySelector('table.matrix'))return;const t=w.querySelector('table');if(!t)return;
  const hs=[...t.querySelectorAll('thead th')].map(th=>th.textContent.replace(/[↓↑]/g,'').replace(/\s+/g,' ').trim());t.querySelectorAll('tbody tr').forEach(tr=>[...tr.children].forEach((td,i)=>{if(hs[i]&&!td.dataset.l)td.dataset.l=hs[i]}));
  w.classList.remove('stack');if(w.scrollWidth>w.clientWidth+1)w.classList.add('stack')})}
-// 長列表唔再喺框入面捲（手機手指會卡住、框喺半行切斷）：先出頭幾項，其餘按「再顯示 N 項」先開（Tim，2026-10-21）
+// 長列表唔再喺框入面捲（手機手指會卡住、框喺半行切斷）：先出頭幾項，其餘按「再顯示 N 項」先開（2026-10-21）
 const CLAMP=[['.cc-grid',4],['.fav-grid',6],['.acc-grid',6],['.acc-cards',6],['.trk-grid',8],['.multi-scroll tbody',10],['.cons-scroll tbody',10],['.lb-wrap tbody',10]];
 function clampLists(root){if(!root)return;CLAMP.forEach(([sel,n])=>root.querySelectorAll(sel).forEach(box=>{if(box.closest('.sd-cards')||box.dataset.cl)return;const items=[...box.children];if(items.length<=n+2)return;box.dataset.cl='1';items.slice(n).forEach(x=>x.classList.add('cl-h'));
  const b=document.createElement('button');b.type='button';b.className='more-btn cl-more';b.textContent=`再顯示 ${items.length-n} 項`;b.onclick=()=>{items.forEach(x=>x.classList.remove('cl-h'));b.remove()};(box.tagName==='TBODY'?box.closest('.tablewrap,.lb-wrap'):box).after(b)}))}
@@ -1672,13 +1710,13 @@ try{show(num(localStorage.getItem('ct_views')))}catch(e){}
 var seen=false;try{seen=sessionStorage.getItem('ct_viewed')==='1'}catch(e){}
 fetch(API+(seen?'get/':'hit/')+KEY,{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){if(!j||typeof j.value!=='number')return;show(BASE+j.value);try{sessionStorage.setItem('ct_viewed','1');localStorage.setItem('ct_views',String(num(el.textContent)))}catch(e){}}).catch(function(){});})();
 </script>
-<style>/* Long lists used to scroll inside their own box (Tim, 2026-10-11); on phones that trapped the finger,
+<style>/* Long lists used to scroll inside their own box (2026-10-11); on phones that trapped the finger,
    so since 2026-10-21 they show the first items plus a 再顯示 N 項 button (clampLists). Only the heatmap still scrolls.
    !important beats the phone .stack rule, which turns overflow and max-height off. */
 .heatwrap{max-height:min(600px,72vh)!important;overflow-y:auto!important}.cl-h{display:none!important}.cl-more{display:block;margin:10px auto 0}
 .multi-scroll thead th,.cons-scroll thead th{position:sticky;top:0;z-index:2;background:var(--panel)}
 .stack thead th{position:static}</style>
-<style>@media(max-width:700px){header.top{top:calc(env(safe-area-inset-top,0px) + var(--hd-top,0px))}}</style>
+
 <button type="button" class="donate-fab" data-jump="donate">☕ <span>捐贈</span></button>
 <style>.donate-fab{display:none}
 @media(max-width:700px){.donate-fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:inline-flex;align-items:center;gap:4px;padding:9px 14px;border-radius:999px;border:1px dashed var(--line-strong);background:var(--panel);color:var(--tx-strong);font-weight:700;font-size:14px;box-shadow:0 3px 10px rgba(59,47,37,.15);opacity:0;pointer-events:none;transition:opacity .2s}
@@ -1692,7 +1730,7 @@ f();addEventListener('resize',f);if(window.ResizeObserver)new ResizeObserver(f).
 var a=true,b=false;function u(){fab.classList.toggle('on',!a&&!b)}
 new IntersectionObserver(function(e){a=e[0].isIntersecting;u()}).observe(top);if(box)new IntersectionObserver(function(e){b=e[0].isIntersecting;u()}).observe(box)})();</script>
 <button type="button" class="to-top" aria-label="回到頂部" title="回到頂部">↑</button>
-<style>/* 回到頂部 (Tim, 2026-10-21): bottom-right after one screen of scrolling; on phones it sits above the ☕ button. */
+<style>/* 回到頂部 (2026-10-21): bottom-right after one screen of scrolling; on phones it sits above the ☕ button. */
 .to-top{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:30;width:42px;height:42px;padding:0;border-radius:999px;border:1px solid var(--line-strong);background:var(--panel);color:var(--tx-strong);font:700 19px/1 var(--f-body);cursor:pointer;box-shadow:0 3px 10px rgba(59,47,37,.15);opacity:0;pointer-events:none;transition:opacity .2s}
 .to-top.on{opacity:1;pointer-events:auto}
 @media(max-width:700px){.to-top{right:16px;bottom:calc(70px + env(safe-area-inset-bottom,0px))}}</style>
@@ -1701,22 +1739,7 @@ function u(){q=false;var s=scrollY>innerHeight;if(s!==on){on=s;b.classList.toggl
 addEventListener('scroll',function(){if(!q){q=true;requestAnimationFrame(u)}},{passive:true});u();
 b.addEventListener('click',function(){scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})})})();</script>
 <!-- save-site --><div class="save-tip" id="save-tip" role="dialog" aria-modal="true" aria-labelledby="save-tip-h" hidden><div class="save-card"><button type="button" class="save-x" aria-label="關閉">✕</button><b id="save-tip-h">把本站存起來</b><ol class="save-ios"><li>按瀏覽器的「分享」按鈕 <span class="save-ic" aria-hidden="true">⬆︎</span></li><li>選「加入主畫面」，再按「新增」</li></ol><p class="save-pc">按 Ctrl+D（Mac 按 ⌘+D）把本站加入書籤。</p><p class="save-ft">之後從主畫面或書籤打開，就會看到最新內容。</p></div></div>
-<style>/* 儲存網站 (Tim, 2026-10-23): pill beside the social icons; Chrome/Edge/Android get the install prompt, iPhone gets two steps, other browsers the bookmark keys. Hidden when opened from the home screen. */
-.save-site{box-sizing:border-box;display:inline-flex;align-items:center;gap:4px;flex:0 0 auto;height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--panel);color:var(--tx-strong);font:700 12.5px/1 var(--f-body);white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.save-site:hover,.save-site:active{background:var(--bg-dot)}
-.save-site:focus-visible{outline:2px solid var(--ink,#3b2f25);outline-offset:2px}
-.save-site[hidden]{display:none}
-header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones: the pill drops to its own line instead of pushing the page sideways */
-.save-tip{position:fixed;inset:0;z-index:80;display:flex;align-items:flex-end;justify-content:center;padding:16px;background:rgba(42,33,25,.35)}
-.save-tip[hidden]{display:none}
-.save-card{position:relative;box-sizing:border-box;width:min(380px,100%);margin-bottom:env(safe-area-inset-bottom,0px);padding:18px 18px 14px;border:1px solid var(--line-strong);border-radius:16px;background:var(--panel);color:var(--tx-strong);font-size:15px;line-height:1.5;box-shadow:0 10px 30px rgba(59,47,37,.25)}
-.save-card b{display:block;margin:0 28px 8px 0;font-size:16px}
-.save-card ol{margin:0 0 8px;padding-left:22px}.save-card li{margin:4px 0}
-.save-card p{margin:0 0 8px}.save-card .save-ft{margin:0;font-size:13px;color:var(--mut)}
-.save-ic{display:inline-block;padding:0 6px;border:1px solid var(--line-strong);border-radius:6px;font-size:13px}
-.save-x{position:absolute;top:8px;right:8px;width:32px;height:32px;padding:0;border:0;border-radius:999px;background:none;color:var(--mut);font-size:16px;cursor:pointer}
-.save-tip:not(.ios) .save-ios,.save-tip.ios .save-pc{display:none}
-@media(min-width:701px){.save-tip{align-items:center}}</style>
+
 <script>(function(){var bs=document.querySelectorAll('.save-site'),tip=document.getElementById('save-tip');if(!bs.length||!tip)return;
 var ev=null,ua=navigator.userAgent,ios=/iPad|iPhone|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 function hide(){bs.forEach(function(b){b.hidden=true})}
@@ -1729,27 +1752,7 @@ bs.forEach(function(b){b.addEventListener('click',function(){var how=ev?'install
 if(window.gtag)gtag('event','save_site',{method:how,lang:document.documentElement.lang});
 if(ev){ev.prompt();ev.userChoice.then(function(r){if(r&&r.outcome==='accepted')hide()});ev=null;return}
 tip.classList.toggle('ios',ios);tip.hidden=false;tip.querySelector('.save-x').focus()})})})();</script><!-- /save-site -->
-<style>/* 搜尋股票 (Tim, 2026-10-11): 🔍 at the right end of the tab row; it stays pinned on phones. */
-.top .wrap.tabbar{display:flex;flex-wrap:nowrap;align-items:center;gap:6px;position:relative}
-.tabbar nav.tabs{flex:1 1 auto;min-width:0;width:auto}
-.srch-btn{flex:0 0 auto;width:36px;height:36px;border:1px solid var(--line);border-radius:999px;background:var(--panel);font-size:15px;line-height:1;cursor:pointer;padding:0}
-.srch-btn[aria-expanded=true]{border-color:var(--accent)}
-.srch{position:absolute;right:16px;top:calc(100% + 4px);width:min(420px,calc(100vw - 32px));background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.14);padding:10px;z-index:60}
-.srch[hidden]{display:none}
-.srch-row{display:flex;gap:6px}
-#srch-q{flex:1;min-width:0;font:inherit;font-size:16px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
-#srch-q::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
-.srch-x{border:0;background:none;font-size:16px;color:var(--muted);cursor:pointer;padding:0 8px}
-#srch-r{list-style:none;margin:6px 0 0;padding:0;max-height:min(60vh,420px);overflow-y:auto}
-#srch-r:empty{display:none}
-#srch-r li[data-t]{display:flex;align-items:baseline;gap:8px;padding:8px;border-radius:8px;cursor:pointer}
-#srch-r li[aria-selected=true]{background:var(--accent-soft)}
-#srch-r li[data-t]:hover{background:var(--accent-soft)}
-#srch-r b{font-family:var(--f-data);min-width:56px}
-#srch-r .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted);font-size:13px}
-#srch-r .n{font-size:12px;color:var(--muted);white-space:nowrap}
-#srch-r .none{padding:8px;color:var(--muted);font-size:13px}
-@media(max-width:700px){.srch{left:12px;right:12px;width:auto}}</style>
+
 <script>(function(){const btn=document.getElementById('srch-btn'),box=document.getElementById('srch'),q=document.getElementById('srch-q'),ul=document.getElementById('srch-r');if(!btn)return;
  let L=null,res=[],sel=0;
  // Every stock with a price on the site, with how many accounts mentioned it in the last 28 days.
