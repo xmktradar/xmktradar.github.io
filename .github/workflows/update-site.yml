@@ -104,10 +104,14 @@ jobs:
         run: python3 tools/about.py
       - name: Newsletter pages
         run: python3 tools/newsletter.py
+      - name: 404 page
+        run: python3 tools/page404.py
       - name: llms-full.txt
         run: python3 tools/llms_full.py
       - name: Stock pages
         run: node tools/stock_pages.js
+      - name: Sitemap lastmod (real content-change time per page)
+        run: python3 tools/sitemap_lastmod.py
       - name: Weekend guide posts (Saturday and Sunday)
         continue-on-error: true
         run: |
@@ -140,7 +144,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add -A index.html zh/ en/ ko/ support/ advertise/ about/ newsletter/ tools/index.html data/ og/ px/ av/ social/ sitemap.xml llms-full.txt
+          git add -A index.html zh/ en/ ko/ support/ advertise/ about/ newsletter/ tools/index.html data/ og/ px/ av/ social/ sitemap.xml llms-full.txt 404.html
           git diff --cached --quiet && exit 0
           git commit -m "定時重建 $(date '+%Y-%m-%d %H:%M') HKT"
           git pull --rebase origin main || { git rebase --abort; echo "::error::main 嘋更新期間有新改動，今次唔發佈，下次再試"; exit 1; }

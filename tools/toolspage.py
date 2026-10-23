@@ -13,6 +13,8 @@ import json
 import os
 import re
 
+from build_langs import with_root_redirect
+
 SITE = 'https://thecrowdtape.com/'
 LANGS = {'zh': 'zh-Hant', 'en': 'en', 'ko': 'ko'}
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -147,7 +149,7 @@ def main():
     tools, sr_url = money_links()
     template = open(os.path.join(ROOT, 'tools', 'toolspage.html'), encoding='utf-8').read()
     zh = page(template, 'zh', tools, sr_url)
-    write('tools/index.html', zh)
+    write('tools/index.html', with_root_redirect(zh, 'tools'))
     write('zh/tools/index.html', zh)
     for lang in ('en', 'ko'):
         html = page(template, lang, tools, sr_url)

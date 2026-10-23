@@ -64,7 +64,10 @@ def main():
     open(HTML, 'w', encoding='utf-8').write(h)
 
     sm = open('sitemap.xml', encoding='utf-8').read()
-    sm = re.sub(r'(<loc>' + re.escape('https://thecrowdtape.com/') + r'</loc><lastmod>)[^<]+', rf"\g<1>{gen.replace(' ', 'T')}:00+08:00", sm)
+    stamp = f"{gen.replace(' ', 'T')}:00+08:00"
+    if '<loc>https://thecrowdtape.com/</loc>' not in sm:  # sitemap_lastmod.py drops this row at the end of each build
+        sm = re.sub(r'(<urlset[^>]*>)', rf'\1\n  <url><loc>https://thecrowdtape.com/</loc><lastmod>{stamp}</lastmod><changefreq>hourly</changefreq></url>', sm, count=1)
+    sm = re.sub(r'(<loc>' + re.escape('https://thecrowdtape.com/') + r'</loc><lastmod>)[^<]+', rf"\g<1>{stamp}", sm)
     open('sitemap.xml', 'w', encoding='utf-8').write(sm)
     notice(f"共識 {day}（{s['from']} 至 {s['to']}）：看好 {'、'.join(bull) or '無'}｜看淡 {'、'.join(bear) or '無'}｜分歧 {'、'.join(split) or '無'}")
 
