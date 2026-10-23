@@ -823,7 +823,20 @@ nav.tabs a.tab-robo:hover{filter:brightness(.9)}
 @media(max-width:640px){nav.tabs{width:100%}nav.tabs button{padding-left:8px;padding-right:8px}nav.tabs a.tab-robo{padding-left:8px;padding-right:8px;font-size:14px;flex:0 0 auto}}
 @media(max-width:600px){.divehead .meta{flex:1 1 100%}}
 /* 睇唔到嘅區塊延後排版（手機開頁快好多，外觀不變） */
-#view .grid>section{content-visibility:auto;contain-intrinsic-size:auto 900px}/* CLS reserves (home) */#view{min-height:70vh}.dayrange{min-height:40px}.hl-tk svg,.hl-tk svg.empty{width:64px;height:28px;display:block}.hl-tk .chg,.hl-tk .nopx{min-height:2.6em;display:flex;flex-direction:column;justify-content:center;align-items:flex-end}.meta{min-height:4.5em}.mk-live{min-height:56px}.mk-live-w{min-height:46px}.mk-live.is-pending .mk-live-w{opacity:.35}.mk-live.is-ready .mk-live-w{opacity:1;transition:opacity .2s}</style><style id="macro-tab-css">
+#view .grid>section{content-visibility:auto;contain-intrinsic-size:auto 900px}/* CLS reserves (home) *//* CLS reserves v2 */
+@media(max-width:700px){
+  header.top{min-height:360px}
+  header.top .wrap.tabbar,header.top .tabbar{min-height:69px}
+  nav.tabs{flex-wrap:nowrap!important;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  nav.tabs button,nav.tabs a.tab-robo{flex:0 0 auto}
+  #donate{min-height:470px}
+  #promo{min-height:170px}
+  #promo-tools{min-height:238px}
+  #contact{min-height:120px}
+  .meta{min-height:200px}
+  :root{--hd-top:-289px}
+}
+/* CLS reserves (home) continued */#view{min-height:70vh}.dayrange{min-height:40px}.hl-tk svg,.hl-tk svg.empty{width:64px;height:28px;display:block}.hl-tk .chg,.hl-tk .nopx{min-height:2.6em;display:flex;flex-direction:column;justify-content:center;align-items:flex-end}.meta{min-height:4.5em}.mk-live{min-height:56px}.mk-live-w{min-height:46px}.mk-live.is-pending .mk-live-w{opacity:.35}.mk-live.is-ready .mk-live-w{opacity:1;transition:opacity .2s}</style><style id="macro-tab-css">
 .m-grid{display:grid;gap:10px;margin-top:10px}
 .m-th{border:1px solid var(--line);border-radius:8px;background:var(--surface);min-width:0}
 .m-th>summary{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;padding:10px 12px;cursor:pointer;list-style:none}
@@ -1614,9 +1627,7 @@ function paintChrome(){const m=D.meta;const cut=document.getElementById('cutoff'
 ${MAC&&MAC.rows.length?`<p>大市數據：${[...new Set(MAC.rows.map(r=>(r.src||'').replace(/（.*?）|\(.*?\)/g,'').trim()).filter(Boolean))].map(esc).join('、')||'—'}${MAC.as_of?`，截至 ${esc(MAC.as_of)} HKT`:''}。</p>`:''}<p>時間均為香港時間（HKT, UTC+8）。帳號頭像與簡介來自各帳號的 X 個人頁。</p>
 <p>本站部分連結屬聯盟推廣連結，你經由連結註冊或購買，我們可能獲得佣金，你無需多付。佣金不會影響好淡統計與<a href="/robot.html">機械人選股</a>。本站內容不構成投資建議。</p>
 <p><a href="tools/">工具</a> · <a href="support/">支持我們</a> · <a href="newsletter/">電子報</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank">TradingView <span class="pj-tag">推廣</span></a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="pj-tag">推廣</span></a> · <a href="advertise/">廣告合作</a> · <a href="about/">關於本站及方法</a></p>`;linkHandles(document.getElementById('foot'))}
-paintChrome();
-render();
-if(!coreDone){var _bootCore=function(){loadCore().then(function(){window.__dashReady=true;paintChrome();if(typeof refreshPriceChips==='function'&&document.getElementById('view')&&document.getElementById('view').querySelector('.hl-tk')){refreshPriceChips();mountStatus();mountMore()}else render()}).catch(function(e){console.error(e);coreDone=true;window.__dashReady=true;paintChrome();render()})};requestAnimationFrame(function(){requestAnimationFrame(function(){setTimeout(_bootCore,0)})})}else window.__dashReady=true;
+requestAnimationFrame(function(){requestAnimationFrame(function(){setTimeout(function(){try{paintChrome();render()}catch(e){console.error(e)}if(!coreDone){var _bootCore=function(){loadCore().then(function(){window.__dashReady=true;paintChrome();if(typeof refreshPriceChips==='function'&&document.getElementById('view')&&document.getElementById('view').querySelector('.hl-tk')){refreshPriceChips();mountStatus();mountMore()}else render()}).catch(function(e){console.error(e);coreDone=true;window.__dashReady=true;paintChrome();render()})};requestAnimationFrame(function(){requestAnimationFrame(function(){setTimeout(_bootCore,0)})})}else window.__dashReady=true;},0)})});
 document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com')){gtag('event','social_click',{platform:'x',link_url:u,transport_type:'beacon'});gtag('event','x_outbound',{link_url:u,page:'home',lang:document.documentElement.lang||'',transport_type:'beacon'});}else if(h==='instagram.com'||h.endsWith('.instagram.com'))gtag('event','social_click',{platform:'instagram',link_url:u,transport_type:'beacon'});else if(h==='threads.net'||h.endsWith('.threads.net')||h==='threads.com'||h.endsWith('.threads.com'))gtag('event','social_click',{platform:'threads',link_url:u,transport_type:'beacon'});else if(h==='paypal.com'||h.endsWith('.paypal.com')||h==='paypal.me'||h.endsWith('.paypal.me'))gtag('event','donate_click',{method:'paypal',page:'home',lang:document.documentElement.lang})});
 
 </script>
@@ -1641,9 +1652,7 @@ fetch(API+(seen?'get/':'hit/')+KEY,{cache:'no-store'}).then(function(r){return r
 @media(max-width:700px){.donate-fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:inline-flex;align-items:center;gap:4px;padding:9px 14px;border-radius:999px;border:1px dashed var(--line-strong);background:var(--panel);color:var(--tx-strong);font-weight:700;font-size:14px;box-shadow:0 3px 10px rgba(59,47,37,.15);opacity:0;pointer-events:none;transition:opacity .2s}
  .donate-fab.on{opacity:1;pointer-events:auto}}</style>
 <script>/* Phones: only the tab row stays pinned while scrolling; the rest of the header scrolls away. */
-(function(){var h=document.querySelector('header.top'),t=h&&h.querySelector('nav.tabs');if(!t)return;
-function f(){var m=matchMedia('(max-width:700px)').matches;document.documentElement.style.setProperty('--hd-top',m?-(t.getBoundingClientRect().top-h.getBoundingClientRect().top)+'px':'0px')}
-f();addEventListener('resize',f);if(window.ResizeObserver)new ResizeObserver(f).observe(h)})();</script>
+(function(){var h=document.querySelector('header.top'),t=h&&h.querySelector('nav.tabs');if(!t)return;function f(){var m=matchMedia('(max-width:700px)').matches;if(!m){document.documentElement.style.setProperty('--hd-top','0px');return}var y=-(t.getBoundingClientRect().top-h.getBoundingClientRect().top);if(y<-40)document.documentElement.style.setProperty('--hd-top',y+'px')}var run=function(){f();addEventListener('resize',f);if(window.ResizeObserver)new ResizeObserver(f).observe(h)};if('requestIdleCallback' in window)requestIdleCallback(run,{timeout:3000});else setTimeout(run,500)})();</script>
 <script>/* Phones: once the header's donate button has scrolled away, show a small one in the corner, hidden again near the donation area. */
 (function(){var fab=document.querySelector('.donate-fab'),top=document.querySelector('header .donate-jump'),box=document.getElementById('donate');if(!fab||!top||!window.IntersectionObserver)return;
 var a=true,b=false;function u(){fab.classList.toggle('on',!a&&!b)}
