@@ -195,6 +195,20 @@ def iter_social(data):
                 yield from iter_platform_posts(item.get('langs'), 'weekend', f'weekend.posts[{i}].langs')
     if isinstance(data.get('atomic_posts'), list):
         yield from iter_atomic(data['atomic_posts'])
+    intra = data.get('intraday')
+    if isinstance(intra, dict):
+        for key, slot in (intra.get('slots') or {}).items():
+            if not isinstance(slot, dict):
+                continue
+            xen = (slot.get('x') or {}).get('en') if isinstance(slot.get('x'), dict) else None
+            if isinstance(xen, dict) and isinstance(xen.get('text'), str):
+                yield xen['text'], 'x', 'x', str(key), 'en', f'intraday.slots.{key}.x.en.text'
+            th = slot.get('threads') if isinstance(slot.get('threads'), dict) else {}
+            for lang, entry in th.items():
+                if isinstance(entry, dict) and isinstance(entry.get('text'), str):
+                    yield entry['text'], 'threads', 'threads', str(key), lang, f'intraday.slots.{key}.threads.{lang}.text'
+                elif isinstance(entry, str):
+                    yield entry, 'threads', 'threads', str(key), lang, f'intraday.slots.{key}.threads.{lang}'
 
 
 def iter_tutorial(data):
@@ -394,6 +408,30 @@ def _fixture():
             }
         },
         'images': {'en': 'https://thecrowdtape.com/og/social-en.png?v=1'},
+        'intraday': {
+            'date': '2026-10-23',
+            'slots': {
+                'intraday_open': {
+                    'x': {
+                        'en': {
+                            'text': 'See https://thecrowdtape.com/en/?utm_source=x&utm_medium=post&utm_campaign=old',
+                            'url': 'https://thecrowdtape.com/en/',
+                        }
+                    },
+                    'threads': {
+                        'zh': {
+                            'text': '見 https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=post&utm_campaign=old',
+                            'url': 'https://thecrowdtape.com/zh/',
+                        },
+                        'en': {'text': 'No link here', 'url': None},
+                        'ko': {
+                            'text': '보기 https://thecrowdtape.com/ko/?utm_source=threads&utm_medium=post&utm_campaign=old',
+                            'url': 'https://thecrowdtape.com/ko/',
+                        },
+                    },
+                }
+            },
+        },
     }
 
 
@@ -404,6 +442,7 @@ def test_normalize_obj_scheme():
     assert 'daily' in seen and 'carousel-1230' in seen, seen
     assert 'premarket' in seen and 'afterclose' in seen, seen
     assert 'newsletter' in seen and 'top5' in seen and 'weekly_thread' in seen, seen
+    assert 'intraday_open' in seen, seen
     check_assets_untagged(data, 'fixture')
     fb = data['posts']['en']['facebook']
     assert 'ref=1&utm_source=facebook&utm_medium=social&utm_campaign=daily' in fb, fb
@@ -421,6 +460,11 @@ def test_normalize_obj_scheme():
     assert share.IG_BIO['en'] in data['posts']['en']['instagram']
     weekly = data['weekly_thread']['posts']['en']['x']
     assert 'utm_source=x&utm_medium=social&utm_campaign=weekly_thread' in weekly, weekly
+    intra_x = data['intraday']['slots']['intraday_open']['x']['en']
+    assert 'utm_source=x&utm_medium=social&utm_campaign=intraday_open' in intra_x['text']
+    assert intra_x['url'] == 'https://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_open'
+    intra_zh = data['intraday']['slots']['intraday_open']['threads']['zh']
+    assert 'utm_source=threads&utm_medium=social&utm_campaign=intraday_open' in intra_zh['text']
     assert 'utm_source=ig' not in weekly
     assert len(data['posts']['en']['threads']) <= 500
     assert 'utm_source=threads&utm_medium=social&utm_campaign=daily' in data['posts']['en']['threads']

@@ -1,6 +1,6 @@
 # Social post slots
 
-`tools/share.py` writes `data/social-posts.json` on the daily social run. `social_actions` decides the branch. On a trading day, at or after `SOCIAL_HOUR` 07:00 HKT (or `SOCIAL_FORCE=1`, or a legacy file), `main()` rebuilds the weekday posts and then adds `top5`, Friday `weekly_thread`, `hot_stock`, `discussion` and `atomic_posts`. Saturday and Sunday, at or after the same hour, write `weekend` and `atomic_posts` only. They do not rebuild weekday posts, `top5`, the Friday thread, `social/index.html` or the feeds. 07:00 HKT is 08:00 KST, before the first atomic slot at 09:00 KST. A US-holiday weekday is not a weekend and does not run the weekday branch unless forced.
+`tools/share.py` writes `data/social-posts.json` on the daily social run. `social_actions` decides the branch. `tools/intraday.py` adds the `intraday` key during US market hours (spec `kr` is stored as `ko`). On a trading day, at or after `SOCIAL_HOUR` 07:00 HKT (or `SOCIAL_FORCE=1`, or a legacy file), `main()` rebuilds the weekday posts and then adds `top5`, Friday `weekly_thread`, `hot_stock`, `discussion` and `atomic_posts`. Saturday and Sunday, at or after the same hour, write `weekend` and `atomic_posts` only. They do not rebuild weekday posts, `top5`, the Friday thread, `social/index.html` or the feeds. 07:00 HKT is 08:00 KST, before the first atomic slot at 09:00 KST. A US-holiday weekday is not a weekend and does not run the weekday branch unless forced.
 
 Numbers are copied from the files below. A missing count is skipped. An empty list is a translated "none today" line, not a filled-in row.
 
@@ -210,5 +210,72 @@ Points are chosen from `daily` then `weekly`: aggregate counts (`posts`, `accoun
 {"2026-10-23": {"hot_stock": ["SPCX"], "discussion": ["SPY"], "top5": ["RSP", "QQQ"], "atomic": ["TSLA", "GOOG"]}}
 ```
 
-`{date: {slot: [tickers]}}`. The weekday run records `hot_stock`, `discussion`, `top5` (the two leads) and `atomic`. The weekend run records `weekend` and `atomic`. Dates are trimmed to the newest 14. The 7-day block on `hot_stock` / `discussion` looks at earlier dates only, so rewriting today does not ban today's ticker. `SOCIAL_HISTORY` overrides the path. Tests pass `save=False` so they do not write the repo file.
+`{date: {slot: [tickers]}}`. The weekday run records `hot_stock`, `discussion`, `top5` (the two leads) and `atomic`. The weekend run records `weekend` and `atomic`. The intraday run records `intraday`, the slot name, and `intraday_x` (normalized English X bodies, so a later slot does not repeat one). Dates are trimmed to the newest 14. The 7-day block on `hot_stock` / `discussion` looks at earlier dates only, so rewriting today does not ban today's ticker. `SOCIAL_HISTORY` overrides the path. Tests pass `save=False` so they do not write the repo file.
+
+## `intraday`
+
+Written by `python3 tools/intraday.py --slot <name|auto>` (workflow `.github/workflows/intraday.yml`). One slot per run. Merged under the top-level `intraday` key; other top-level keys stay as they are. Slots of the same ET trade date are kept; a new date resets `slots`. No Facebook. Spec `kr` = `ko`.
+
+Post times are US/Eastern. HKT is ET+12 while EDT is in force, ET+13 after the first Sunday in November (from 2026-11-02). Generation is 10 minutes before each post. Early-close days (2026-11-27, 2026-12-24) skip slots after 13:00 ET. NYSE full closures are `tools/market_holidays.json`.
+
+| Slot | ET | HKT summer (EDT, until 11/1) | HKT winter (EST, from 11/2) | Generate ET |
+| --- | --- | --- | --- | --- |
+| `intraday_open` | 09:45 | 21:45 | 22:45 | 09:35 |
+| `intraday_1` | 11:00 | 23:00 | 00:00 next day | 10:50 |
+| `intraday_2` | 12:15 | 00:15 next day | 01:15 next day | 12:05 |
+| `intraday_3` | 13:30 | 01:30 next day | 02:30 next day | 13:20 |
+| `intraday_4` | 14:45 | 02:45 next day | 03:45 next day | 14:35 |
+| `intraday_close` | 15:40 | 03:40 next day | 04:40 next day | 15:30 |
+
+`auto` picks the slot whose post time is the next one within 30 minutes of now in `America/New_York`. The workflow also requires a NYSE trading day and ±20 minutes of a generation time. `force` (workflow_dispatch slot value, or `--force`) bypasses the time guard and still writes.
+
+Open is the market-open snapshot plus top consensus. Slots 1–4 are hot names plus bullish/bearish list changes since the previous snapshot (earlier slot that day, else `data/consensus-history.json` / yesterday). Close is a recap before the bell. Counts come from `data/writeup-input.json` daily bull/bear/split (`rank_rows`) or `work/stats.json` when the light scrape just ran. Tickers and counts are never invented.
+
+Live quotes: Yahoo chart API (same `update_prices.chart` session) for SPY, QQQ, DIA and the hot tickers. If any index is missing, `quotes_ok` is false, `fallback` is true, and texts use site numbers only (no `%`). A ticker that failed to fetch is omitted from `%` lines. The as-of line uses the latest fetched `regularMarketTime` (`As of HH:MM ET (HH:MM HKT)`), not the slot post time. In that fallback the line is site data as of `data/writeup-input.json` `generated_hkt`.
+
+```json
+{
+  "date": "2026-10-23",
+  "generated_at": "2026-10-23T10:50:00-04:00",
+  "generated_hkt": "2026-10-23 22:50",
+  "slots": {
+    "intraday_1": {
+      "post_et": "11:00",
+      "post_hkt": "23:00",
+      "generated_at": "2026-10-23T10:50:00-04:00",
+      "date": "2026-10-23",
+      "quotes": {
+        "SPY": {"price": 670.12, "prev_close": 668.0, "chg_pct": 0.32, "time": "2026-10-23T11:00:00-04:00"}
+      },
+      "quote_time": {"et": "2026-10-23T11:00:00-04:00", "hkt": "2026-10-23 23:00"},
+      "quote_source": "Yahoo Finance",
+      "quotes_ok": true,
+      "fallback": false,
+      "hot": [{"ticker": "NVDA", "chg_pct": 2.1, "bull": 8, "bear": 1, "accounts": ["leadbull"]}],
+      "x": {"en": {"text": "Late morning · As of 11:00 ET (23:00 HKT)\n\n…", "url": "https://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_1"}},
+      "threads": {
+        "zh": {"text": "…", "url": "https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=intraday_1"},
+        "en": {"text": "…", "url": null},
+        "ko": {"text": "…", "url": "https://thecrowdtape.com/ko/?utm_source=threads&utm_medium=social&utm_campaign=intraday_1"}
+      },
+      "has_link": {"x": true, "threads": {"zh": true, "en": false, "ko": true}}
+    }
+  }
+}
+```
+
+| Field | Meaning |
+| --- | --- |
+| `date` | ET trade date |
+| `generated_at` | ISO-8601 with offset |
+| `generated_hkt` | `YYYY-MM-DD HH:MM` |
+| `quotes` | `{TICKER: {price, prev_close, chg_pct, time}}` from Yahoo; omitted when that ticker failed |
+| `quote_time` | latest `regularMarketTime`, ISO ET plus HKT string |
+| `quotes_ok` / `fallback` | false / true when any of SPY, QQQ, DIA is missing |
+| `hot` | site rows only: `ticker`, `chg_pct` (null if no quote), `bull`, `bear`, `accounts` |
+| `x` | English only, `xlen` ≤ 280. Link `https://thecrowdtape.com/en/` with `utm_source=x&utm_medium=social&utm_campaign=<slot>` when the post includes a link. No zh/ko X. |
+| `threads` | zh/en/ko, ≤ 500 code points (`fit_threads`). Language-matched `/zh/`, `/en/`, `/ko/` (spec `/` for Chinese is the `/zh/` helper). About half of slots include a link, alternating by slot index and flipping on date parity. |
+| `has_link` | `x` boolean and `threads.{zh,en,ko}` booleans |
+
+Texts state the quote time (`As of HH:MM ET (HH:MM HKT)` from the latest `regularMarketTime`), not the slot post time. With no quotes, texts say site data as of the writeup `generated_hkt`. Index `%` and hot `%` sit next to the site account counts (`NVDA +2.1%, 8 accounts bullish on site`). `utm.normalize_file` runs after each write.
 

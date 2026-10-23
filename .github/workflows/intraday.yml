@@ -1,0 +1,103 @@
+name: Intraday social
+# Generation is 10 minutes before each US/Eastern slot (09:45, 11:00, 12:15, 13:30, 14:45, 15:40).
+# Both EDT (UTC−4) and EST (UTC−5) crons are listed; the guard keeps only the matching offset
+# on a NYSE trading day, within ±20 minutes of a generation time.
+on:
+  workflow_dispatch:
+    inputs:
+      slot:
+        description: 'Slot name, auto, or force (bypass time guard; still writes)'
+        required: false
+        default: auto
+  schedule:
+    # EDT generation: 09:35, 10:50, 12:05, 13:20, 14:35, 15:30 ET
+    - cron: '35 13 * * 1-5'
+    - cron: '50 14 * * 1-5'
+    - cron: '5 16 * * 1-5'
+    - cron: '20 17 * * 1-5'
+    - cron: '35 18 * * 1-5'
+    - cron: '30 19 * * 1-5'
+    # EST generation: 09:35, 10:50, 12:05, 13:20, 14:35, 15:30 ET
+    - cron: '35 14 * * 1-5'
+    - cron: '50 15 * * 1-5'
+    - cron: '5 17 * * 1-5'
+    - cron: '20 18 * * 1-5'
+    - cron: '35 19 * * 1-5'
+    - cron: '30 20 * * 1-5'
+permissions:
+  contents: write
+concurrency:
+  group: site-update
+  cancel-in-progress: false
+jobs:
+  intraday:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      WORK_DIR: /tmp/site-work
+      XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+      XAI_MODEL: ${{ vars.XAI_MODEL }}
+      TZ: America/New_York
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Guard
+        id: guard
+        env:
+          SLOT_INPUT: ${{ github.event.inputs.slot }}
+        run: python3 tools/intraday.py --guard --slot "${SLOT_INPUT:-auto}"
+      - name: Restore full page data
+        if: steps.guard.outputs.run == 'true'
+        run: python3 tools/slim_pages.py --restore
+      - name: Install headless browser
+        if: steps.guard.outputs.run == 'true'
+        run: |
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Fetch new posts
+        if: steps.guard.outputs.run == 'true'
+        continue-on-error: true
+        run: python3 tools/fetch_posts.py
+      - name: Analyse posts with Grok
+        if: steps.guard.outputs.run == 'true'
+        continue-on-error: true
+        run: python3 tools/analyse_posts.py
+      - name: Add posts to the site
+        if: steps.guard.outputs.run == 'true'
+        run: python3 tools/merge_posts.py
+      - name: Apply SuperGrok write-ups
+        if: steps.guard.outputs.run == 'true'
+        continue-on-error: true
+        run: python3 tools/apply_writeups.py
+      - name: Consensus and counts
+        if: steps.guard.outputs.run == 'true'
+        run: |
+          mkdir -p "$WORK_DIR"
+          echo '{"daily": null}' > "$WORK_DIR/windows.json"
+          node tools/stats.js index.html "$WORK_DIR/windows.json" "$WORK_DIR/stats.json" || { echo "::error::共識計算失敗"; exit 1; }
+      - name: Write intraday slot
+        if: steps.guard.outputs.run == 'true'
+        env:
+          SLOT: ${{ steps.guard.outputs.slot }}
+          FORCE: ${{ steps.guard.outputs.force }}
+        run: |
+          extra=""
+          if [ "$FORCE" = "true" ]; then extra=--force; fi
+          python3 tools/intraday.py --slot "$SLOT" $extra
+      - name: Publish data
+        if: steps.guard.outputs.run == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --cached --quiet && exit 0
+          git commit -m "盤中社交槽 $(TZ=America/New_York date '+%Y-%m-%d %H:%M') ET"
+          git stash push --include-untracked -q || true
+          ok=0
+          for i in 1 2 3 4 5 6; do
+            git pull --rebase origin main && git push origin HEAD:main && { ok=1; break; }
+            git rebase --abort 2>/dev/null || true
+            sleep $((i * 8))
+          done
+          [ "$ok" = 1 ] || { echo "::error::push failed after rebase retries"; exit 1; }
