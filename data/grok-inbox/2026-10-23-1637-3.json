@@ -1,0 +1,79 @@
+{
+  "posts": {
+    "2113345047878074610": {
+      "en_summary": "Shorted some of the \"defensives\" which seem a bit overdone here: e.g. $MO, $DEO, and $BRKB. Any other names of this ilk that look interesting?",
+      "zh_summary": "做空了一些似乎有點過度的「防禦股」：例如 $MO、$DEO 和 $BRKB。還有其他類似看起來有趣的名稱嗎？",
+      "ko_summary": "여기서 다소 과도해 보이는 \"방어주\" 일부를 숏: 예: $MO, $DEO, $BRKB. 이와 유사한 다른 흥미로운 이름은?",
+      "tickers": ["MO", "DEO", "BRKB"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"MO": "睇淡", "DEO": "睇淡", "BRKB": "睇淡"},
+      "horizon": "短線",
+      "basis": "估值",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MO": "防禦股似乎過度", "DEO": "防禦股似乎過度", "BRKB": "防禦股似乎過度"}
+    },
+    "2113344640627699773": {
+      "en_summary": "$SPOT gearing up for a change of tune 🎶",
+      "zh_summary": "$SPOT 正準備改變調子 🎶",
+      "ko_summary": "$SPOT이 톤 변화를 준비하고 있음 🎶",
+      "tickers": ["SPOT"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPOT": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2113341351823843549": {
+      "en_summary": "$PEP starting to turn things around recently. Also last week an insider bought $23.6M worth of shares! (Quoting: $PEP is trading at 23 yr lows relative to $KO. Damn.. Time for some rubber band snappin’?! Even if just a little bit?)",
+      "zh_summary": "$PEP 最近開始扭轉局面。上週還有內部人士購買了價值 2360 萬美元的股份！（引用：$PEP 相對於 $KO 交易於 23 年低點。該死.. 是時候橡皮筋反彈了嗎？！即使只是一點點？）",
+      "ko_summary": "$PEP가 최근에 상황을 전환하기 시작. 지난주 내부자가 2360만 달러 상당의 주식을 매수! (인용: $PEP가 $KO 대비 23년 저점에서 거래 중. 젠장.. 고무줄 반등 시간?! 조금만이라도?)",
+      "tickers": ["PEP", "KO"],
+      "stance": "睇好",
+      "stance_by_ticker": {"PEP": "睇好", "KO": "未表態"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"PEP": "開始扭轉，內部人士買入2360萬，相對$KO 23年低點"}
+    },
+    "2113329662587981839": {
+      "en_summary": "$CRWV now in a 70% drawdown 😳",
+      "zh_summary": "$CRWV 現在處於 70% 的回撤 😳",
+      "ko_summary": "$CRWV가 이제 70% 드로다운 중 😳",
+      "tickers": ["CRWV"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"CRWV": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"CRWV": "70% 回撤"}
+    },
+    "2113329609660158270": {
+      "en_summary": "$META CFO: \"We ended Q3 with over 66,000 employees, down 12% from Q2 following the May 2026 head count reduction.\"",
+      "zh_summary": "$META CFO：「我們第三季結束時有超過 66,000 名員工，較第二季下降 12%，這是在 2026 年 5 月裁員之後。」",
+      "ko_summary": "$META CFO: \"우리는 Q3를 66,000명 이상의 직원으로 마쳤으며, 2026년 5월 인원 감축 후 Q2 대비 12% 감소.\"",
+      "tickers": ["META"],
+      "stance": "中性",
+      "stance_by_ticker": {"META": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"META": "Q3 員工超過66,000，較Q2下降12%"}
+    }
+  }
+}
