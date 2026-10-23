@@ -922,5 +922,164 @@
    "has_link": true,
    "first_comment": "최신 수치 👉 https://thecrowdtape.com/ko/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
   }
- ]
+ ],
+ "intraday": {
+  "date": "2026-10-23",
+  "slots": {
+   "intraday_1": {
+    "post_et": "11:00",
+    "post_hkt": "23:00",
+    "generated_at": "2026-10-23T11:07:11-04:00",
+    "date": "2026-10-23",
+    "quotes": {
+     "SPY": {
+      "price": 762.365,
+      "prev_close": 763.96,
+      "chg_pct": -0.21,
+      "time": "2026-10-23T11:07:11-04:00"
+     },
+     "QQQ": {
+      "price": 707.47,
+      "prev_close": 704.47,
+      "chg_pct": 0.43,
+      "time": "2026-10-23T11:07:11-04:00"
+     },
+     "DIA": {
+      "price": 522.48,
+      "prev_close": 527.89,
+      "chg_pct": -1.02,
+      "time": "2026-10-23T11:07:04-04:00"
+     },
+     "RSP": {
+      "price": 216.89,
+      "prev_close": 218.22,
+      "chg_pct": -0.61,
+      "time": "2026-10-23T11:07:12-04:00"
+     },
+     "XLV": {
+      "price": 179.4,
+      "prev_close": 181.3,
+      "chg_pct": -1.05,
+      "time": "2026-10-23T11:07:01-04:00"
+     },
+     "WMT": {
+      "price": 119.975,
+      "prev_close": 121.12,
+      "chg_pct": -0.95,
+      "time": "2026-10-23T11:07:11-04:00"
+     },
+     "SPCX": {
+      "price": 147.862,
+      "prev_close": 144.75,
+      "chg_pct": 2.15,
+      "time": "2026-10-23T11:07:12-04:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-10-23T11:07:12-04:00",
+     "hkt": "2026-10-23 23:07"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "RSP",
+      "chg_pct": -0.61,
+      "bull": 3,
+      "bear": 0,
+      "accounts": [
+       "MarkNewtonCMT",
+       "OptionsHawk",
+       "spotgamma",
+       "alphatrends",
+       "RichardMoglen",
+       "Mr_Derivatives",
+       "carlquintanilla",
+       "bespokeinvest"
+      ]
+     },
+     {
+      "ticker": "XLV",
+      "chg_pct": -1.05,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "Mr_Derivatives",
+       "KeithMcCullough",
+       "SJosephBurns"
+      ]
+     },
+     {
+      "ticker": "WMT",
+      "chg_pct": -0.95,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "Mr_Derivatives",
+       "OptionsMike"
+      ]
+     },
+     {
+      "ticker": "SPCX",
+      "chg_pct": 2.15,
+      "bull": 4,
+      "bear": 3,
+      "accounts": [
+       "spotgamma",
+       "chamath",
+       "munster_gene",
+       "SawyerMerritt",
+       "carlquintanilla",
+       "ripster47",
+       "RichardMoglen",
+       "howardlindzon"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Late morning · As of 11:07 ET (23:07 HKT)\n\n$SPY -0.2% · $QQQ +0.4% · $DIA -1.0%\n\n$RSP -0.6%, 3 accounts bullish on site\n$XLV -1.1%, 2 accounts bullish on site\n\nhttps://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_1\n\n⚠️ Not investment advice\n#StockMarket #RSP #XLV",
+      "url": "https://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_1"
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "早盤觀察 · 截至 11:07 ET（23:07 HKT）\n\n$SPY -0.2% · $QQQ +0.4% · $DIA -1.0%\n\n$RSP -0.6%，網站 3 個帳號看好\n$XLV -1.1%，網站 2 個帳號看好\n$WMT -0.9%，網站 2 個帳號看好\n$SPCX +2.1%，網站 4 個帳號看好\n\n⚠️ 唔構成投資建議\n#美股 #RSP #XLV",
+      "url": null
+     },
+     "en": {
+      "text": "Late morning · As of 11:07 ET (23:07 HKT)\n\n$SPY -0.2% · $QQQ +0.4% · $DIA -1.0%\n\n$RSP -0.6%, 3 accounts bullish on site\n$XLV -1.1%, 2 accounts bullish on site\n$WMT -0.9%, 2 accounts bullish on site\n$SPCX +2.1%, 4 accounts bullish on site\n\n⚠️ Not investment advice\n#StockMarket #RSP #XLV",
+      "url": null
+     },
+     "ko": {
+      "text": "오전장 · 11:07 ET (23:07 HKT) 기준\n\n$SPY -0.2% · $QQQ +0.4% · $DIA -1.0%\n\n$RSP -0.6%, 사이트 강세 계정 3개\n$XLV -1.1%, 사이트 강세 계정 2개\n$WMT -0.9%, 사이트 강세 계정 2개\n$SPCX +2.1%, 사이트 강세 계정 4개\n\n⚠️ 투자 조언 아님\n#미국주식 #RSP #XLV",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": true,
+     "threads": {
+      "zh": false,
+      "en": false,
+      "ko": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "RSP",
+      "XLV",
+      "WMT"
+     ],
+     "bear": [
+      "MRNA",
+      "CRWV",
+      "SNDK"
+     ]
+    }
+   }
+  },
+  "generated_at": "2026-10-23T11:07:11-04:00",
+  "generated_hkt": "2026-10-23 23:07"
+ }
 }
