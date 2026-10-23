@@ -742,112 +742,6 @@
   "nb": 2,
   "nr": 1
  },
- "atomic_posts": [
-  {
-   "id": "zh-number-daily-originals",
-   "lang": "zh",
-   "slot_kst": "17:00",
-   "format": "text_question",
-   "point_type": "number",
-   "hook": "今日原創帖 152",
-   "text": "今日原創帖 152\n\n你點睇呢個數？\n\n⚠️ 唔構成投資建議\n#美股",
-   "hashtags": "#美股",
-   "has_link": true,
-   "first_comment": "最新數字 👉 https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
-  },
-  {
-   "id": "zh-number-daily-reposts",
-   "lang": "zh",
-   "slot_kst": "20:00",
-   "format": "text_question",
-   "point_type": "number",
-   "hook": "今日轉帖 17",
-   "text": "今日轉帖 17\n\n你點睇呢個數？\n\n⚠️ 唔構成投資建議\n#美股",
-   "hashtags": "#美股",
-   "has_link": false
-  },
-  {
-   "id": "zh-number-daily-bull_views",
-   "lang": "zh",
-   "slot_kst": "22:30",
-   "format": "text_question",
-   "point_type": "number",
-   "hook": "今日看好觀點 91",
-   "text": "今日看好觀點 91\n\n你點睇呢個數？\n\n⚠️ 唔構成投資建議\n#美股",
-   "hashtags": "#美股",
-   "has_link": true,
-   "first_comment": "最新數字 👉 https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
-  },
-  {
-   "id": "en-number-daily-originals",
-   "lang": "en",
-   "slot_kst": "17:00",
-   "format": "text_question",
-   "point_type": "number",
-   "hook": "Original posts today 152",
-   "text": "Original posts today 152\n\nWhat do you make of this number?\n\n⚠️ Not investment advice\n#StockMarket",
-   "hashtags": "#StockMarket",
-   "has_link": false
-  },
-  {
-   "id": "en-number-daily-reposts",
-   "lang": "en",
-   "slot_kst": "20:00",
-   "format": "text_question",
-   "point_type": "number",
-   "hook": "Reposts today 17",
-   "text": "Reposts today 17\n\nWhat do you make of this number?\n\n⚠️ Not investment advice\n#StockMarket",
-   "hashtags": "#StockMarket",
-   "has_link": true,
-   "first_comment": "Live numbers 👉 https://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
-  },
-  {
-   "id": "en-number-daily-bull_views",
-   "lang": "en",
-   "slot_kst": "22:30",
-   "format": "text_question",
-   "point_type": "number",
-   "hook": "Bullish views today 91",
-   "text": "Bullish views today 91\n\nWhat do you make of this number?\n\n⚠️ Not investment advice\n#StockMarket",
-   "hashtags": "#StockMarket",
-   "has_link": false
-  },
-  {
-   "id": "ko-number-daily-originals",
-   "lang": "ko",
-   "slot_kst": "17:00",
-   "format": "text_question",
-   "point_type": "number",
-   "hook": "오늘 원글 152",
-   "text": "오늘 원글 152\n\n이 숫자 어떻게 보세요?\n\n⚠️ 투자 조언 아님\n#미국주식",
-   "hashtags": "#미국주식",
-   "has_link": true,
-   "first_comment": "최신 수치 👉 https://thecrowdtape.com/ko/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
-  },
-  {
-   "id": "ko-number-daily-reposts",
-   "lang": "ko",
-   "slot_kst": "20:00",
-   "format": "text_question",
-   "point_type": "number",
-   "hook": "오늘 리포스트 17",
-   "text": "오늘 리포스트 17\n\n이 숫자 어떻게 보세요?\n\n⚠️ 투자 조언 아님\n#미국주식",
-   "hashtags": "#미국주식",
-   "has_link": false
-  },
-  {
-   "id": "ko-number-daily-bull_views",
-   "lang": "ko",
-   "slot_kst": "22:30",
-   "format": "text_question",
-   "point_type": "number",
-   "hook": "오늘 강세 의견 91",
-   "text": "오늘 강세 의견 91\n\n이 숫자 어떻게 보세요?\n\n⚠️ 투자 조언 아님\n#미국주식",
-   "hashtags": "#미국주식",
-   "has_link": true,
-   "first_comment": "최신 수치 👉 https://thecrowdtape.com/ko/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
-  }
- ],
  "intraday": {
   "date": "2026-10-23",
   "slots": {
@@ -1773,6 +1667,266 @@
     }
    },
    "suggested_kst": "14:00"
+  }
+ ],
+ "weekend": {
+  "date": "2026-10-24",
+  "source": "data/writeup-input.json weekly",
+  "posts": [
+   {
+    "id": "weekend-sat-bulls",
+    "format": "image_card",
+    "langs": {
+     "zh": {
+      "threads": "本週最看好\n\n$AMZN 14 個帳號看好\n$PLTR 6 個帳號看好\n$MSFT 4 個帳號看好\n$RSP 4 個帳號看好\n$ASTS 4 個帳號看好\n\n⚠️ 唔構成投資建議\n#美股 #AMZN #PLTR #MSFT #RSP #ASTS",
+      "facebook": "本週最看好\n\n$AMZN 14 個帳號看好\n$PLTR 6 個帳號看好\n$MSFT 4 個帳號看好\n$RSP 4 個帳號看好\n$ASTS 4 個帳號看好\n\n⚠️ 唔構成投資建議\n#美股 #AMZN #PLTR #MSFT #RSP #ASTS",
+      "has_link": {
+       "threads": true,
+       "facebook": false
+      },
+      "first_comment": {
+       "threads": "最新數字 👉 https://thecrowdtape.com/zh/stock/AMZN/?utm_source=threads&utm_medium=social&utm_campaign=weekend"
+      }
+     },
+     "en": {
+      "threads": "Most bullish this week\n\n$AMZN 14 bullish accounts\n$PLTR 6 bullish accounts\n$MSFT 4 bullish accounts\n$RSP 4 bullish accounts\n$ASTS 4 bullish accounts\n\n⚠️ Not investment advice\n#StockMarket #AMZN #PLTR #MSFT #RSP #ASTS",
+      "facebook": "Most bullish this week\n\n$AMZN 14 bullish accounts\n$PLTR 6 bullish accounts\n$MSFT 4 bullish accounts\n$RSP 4 bullish accounts\n$ASTS 4 bullish accounts\n\n⚠️ Not investment advice\n#StockMarket #AMZN #PLTR #MSFT #RSP #ASTS",
+      "has_link": {
+       "threads": true,
+       "facebook": false
+      },
+      "first_comment": {
+       "threads": "Live numbers 👉 https://thecrowdtape.com/en/stock/AMZN/?utm_source=threads&utm_medium=social&utm_campaign=weekend"
+      }
+     },
+     "ko": {
+      "threads": "이번 주 가장 강세\n\n$AMZN 강세 계정 14개\n$PLTR 강세 계정 6개\n$MSFT 강세 계정 4개\n$RSP 강세 계정 4개\n$ASTS 강세 계정 4개\n\n⚠️ 투자 조언 아님\n#미국주식 #AMZN #PLTR #MSFT #RSP #ASTS",
+      "facebook": "이번 주 가장 강세\n\n$AMZN 강세 계정 14개\n$PLTR 강세 계정 6개\n$MSFT 강세 계정 4개\n$RSP 강세 계정 4개\n$ASTS 강세 계정 4개\n\n⚠️ 투자 조언 아님\n#미국주식 #AMZN #PLTR #MSFT #RSP #ASTS",
+      "has_link": {
+       "threads": true,
+       "facebook": false
+      },
+      "first_comment": {
+       "threads": "최신 수치 👉 https://thecrowdtape.com/ko/stock/AMZN/?utm_source=threads&utm_medium=social&utm_campaign=weekend"
+      }
+     }
+    },
+    "ticker": "AMZN"
+   },
+   {
+    "id": "weekend-sat-totals",
+    "format": "text_question",
+    "langs": {
+     "zh": {
+      "threads": "本週共識數字\n\n看好標的 43 · 看淡標的 2\n\n你點睇呢組數字？\n\n⚠️ 唔構成投資建議\n#美股",
+      "facebook": "本週共識數字\n\n看好標的 43 · 看淡標的 2\n\n你點睇呢組數字？\n\n⚠️ 唔構成投資建議\n#美股",
+      "has_link": {
+       "threads": true,
+       "facebook": false
+      },
+      "first_comment": {
+       "threads": "最新數字 👉 https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=weekend"
+      }
+     },
+     "en": {
+      "threads": "This week's consensus counts\n\nBullish names 43 · Bearish names 2\n\nWhat do you make of these counts?\n\n⚠️ Not investment advice\n#StockMarket",
+      "facebook": "This week's consensus counts\n\nBullish names 43 · Bearish names 2\n\nWhat do you make of these counts?\n\n⚠️ Not investment advice\n#StockMarket",
+      "has_link": {
+       "threads": true,
+       "facebook": false
+      },
+      "first_comment": {
+       "threads": "Live numbers 👉 https://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=weekend"
+      }
+     },
+     "ko": {
+      "threads": "이번 주 컨센서스 숫자\n\n강세 종목 43 · 약세 종목 2\n\n이 숫자 어떻게 보세요?\n\n⚠️ 투자 조언 아님\n#미국주식",
+      "facebook": "이번 주 컨센서스 숫자\n\n강세 종목 43 · 약세 종목 2\n\n이 숫자 어떻게 보세요?\n\n⚠️ 투자 조언 아님\n#미국주식",
+      "has_link": {
+       "threads": true,
+       "facebook": false
+      },
+      "first_comment": {
+       "threads": "최신 수치 👉 https://thecrowdtape.com/ko/?utm_source=threads&utm_medium=social&utm_campaign=weekend"
+      }
+     }
+    }
+   }
+  ]
+ },
+ "atomic_posts": [
+  {
+   "id": "zh-number-daily-posts",
+   "lang": "zh",
+   "slot_kst": "09:00",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "今日帖文數 51",
+   "text": "今日帖文數 51\n\n你點睇呢個數？\n\n⚠️ 唔構成投資建議\n#美股",
+   "hashtags": "#美股",
+   "has_link": true,
+   "first_comment": "最新數字 👉 https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
+  },
+  {
+   "id": "zh-number-daily-accounts",
+   "lang": "zh",
+   "slot_kst": "11:30",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "今日帳號數 25",
+   "text": "今日帳號數 25\n\n你點睇呢個數？\n\n⚠️ 唔構成投資建議\n#美股",
+   "hashtags": "#美股",
+   "has_link": false
+  },
+  {
+   "id": "zh-number-daily-originals",
+   "lang": "zh",
+   "slot_kst": "14:00",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "今日原創帖 47",
+   "text": "今日原創帖 47\n\n你點睇呢個數？\n\n⚠️ 唔構成投資建議\n#美股",
+   "hashtags": "#美股",
+   "has_link": true,
+   "first_comment": "最新數字 👉 https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
+  },
+  {
+   "id": "zh-number-daily-clear_accounts",
+   "lang": "zh",
+   "slot_kst": "17:00",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "今日清晰立場帳號 16",
+   "text": "今日清晰立場帳號 16\n\n你點睇呢個數？\n\n⚠️ 唔構成投資建議\n#美股",
+   "hashtags": "#美股",
+   "has_link": false
+  },
+  {
+   "id": "zh-number-weekly-posts",
+   "lang": "zh",
+   "slot_kst": "20:00",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "本週帖文數 1722",
+   "text": "本週帖文數 1722\n\n你點睇呢個數？\n\n⚠️ 唔構成投資建議\n#美股",
+   "hashtags": "#美股",
+   "has_link": true,
+   "first_comment": "最新數字 👉 https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
+  },
+  {
+   "id": "en-number-daily-posts",
+   "lang": "en",
+   "slot_kst": "09:00",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "Posts today 51",
+   "text": "Posts today 51\n\nWhat do you make of this number?\n\n⚠️ Not investment advice\n#StockMarket",
+   "hashtags": "#StockMarket",
+   "has_link": false
+  },
+  {
+   "id": "en-number-daily-accounts",
+   "lang": "en",
+   "slot_kst": "11:30",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "Accounts today 25",
+   "text": "Accounts today 25\n\nWhat do you make of this number?\n\n⚠️ Not investment advice\n#StockMarket",
+   "hashtags": "#StockMarket",
+   "has_link": true,
+   "first_comment": "Live numbers 👉 https://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
+  },
+  {
+   "id": "en-number-daily-originals",
+   "lang": "en",
+   "slot_kst": "14:00",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "Original posts today 47",
+   "text": "Original posts today 47\n\nWhat do you make of this number?\n\n⚠️ Not investment advice\n#StockMarket",
+   "hashtags": "#StockMarket",
+   "has_link": false
+  },
+  {
+   "id": "en-number-daily-clear_accounts",
+   "lang": "en",
+   "slot_kst": "17:00",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "Clear-stance accounts today 16",
+   "text": "Clear-stance accounts today 16\n\nWhat do you make of this number?\n\n⚠️ Not investment advice\n#StockMarket",
+   "hashtags": "#StockMarket",
+   "has_link": true,
+   "first_comment": "Live numbers 👉 https://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
+  },
+  {
+   "id": "en-number-weekly-posts",
+   "lang": "en",
+   "slot_kst": "20:00",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "Posts this week 1722",
+   "text": "Posts this week 1722\n\nWhat do you make of this number?\n\n⚠️ Not investment advice\n#StockMarket",
+   "hashtags": "#StockMarket",
+   "has_link": false
+  },
+  {
+   "id": "ko-number-daily-posts",
+   "lang": "ko",
+   "slot_kst": "09:00",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "오늘 게시물 51",
+   "text": "오늘 게시물 51\n\n이 숫자 어떻게 보세요?\n\n⚠️ 투자 조언 아님\n#미국주식",
+   "hashtags": "#미국주식",
+   "has_link": true,
+   "first_comment": "최신 수치 👉 https://thecrowdtape.com/ko/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
+  },
+  {
+   "id": "ko-number-daily-accounts",
+   "lang": "ko",
+   "slot_kst": "11:30",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "오늘 계정 25",
+   "text": "오늘 계정 25\n\n이 숫자 어떻게 보세요?\n\n⚠️ 투자 조언 아님\n#미국주식",
+   "hashtags": "#미국주식",
+   "has_link": false
+  },
+  {
+   "id": "ko-number-daily-originals",
+   "lang": "ko",
+   "slot_kst": "14:00",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "오늘 원글 47",
+   "text": "오늘 원글 47\n\n이 숫자 어떻게 보세요?\n\n⚠️ 투자 조언 아님\n#미국주식",
+   "hashtags": "#미국주식",
+   "has_link": true,
+   "first_comment": "최신 수치 👉 https://thecrowdtape.com/ko/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
+  },
+  {
+   "id": "ko-number-daily-clear_accounts",
+   "lang": "ko",
+   "slot_kst": "17:00",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "오늘 입장 분명한 계정 16",
+   "text": "오늘 입장 분명한 계정 16\n\n이 숫자 어떻게 보세요?\n\n⚠️ 투자 조언 아님\n#미국주식",
+   "hashtags": "#미국주식",
+   "has_link": false
+  },
+  {
+   "id": "ko-number-weekly-posts",
+   "lang": "ko",
+   "slot_kst": "20:00",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "이번 주 게시물 1722",
+   "text": "이번 주 게시물 1722\n\n이 숫자 어떻게 보세요?\n\n⚠️ 투자 조언 아님\n#미국주식",
+   "hashtags": "#미국주식",
+   "has_link": true,
+   "first_comment": "최신 수치 👉 https://thecrowdtape.com/ko/?utm_source=threads&utm_medium=social&utm_campaign=atomic"
   }
  ]
 }
