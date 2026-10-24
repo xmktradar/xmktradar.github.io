@@ -730,23 +730,23 @@
     "META",
     "SPCX",
     "CART",
-    "AMZN",
     "AAPL",
-    "MU",
     "RSP",
+    "BUG",
+    "HACK",
     "RKLB"
    ],
-   "bear": [
-    "QQQ"
-   ],
+   "bear": [],
    "split": [
     "SPY",
     "GLD",
     "NVDA",
-    "TSLA",
     "NBIS",
+    "TSLA",
+    "QQQ",
     "SMH",
-    "CRWV"
+    "CRWV",
+    "GS"
    ],
    "window": [
     "2026-10-24T00:00",
@@ -759,15 +759,15 @@
     "AMZN",
     "META",
     "TSLA",
-    "AAPL",
     "QQQ",
-    "GOOGL",
-    "MU"
+    "AAPL",
+    "NBIS",
+    "GOOGL"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-25 00:16"
+   "updated_hkt": "2026-10-25 01:02"
   }
  },
- "updated_hkt": "2026-10-25 00:16",
+ "updated_hkt": "2026-10-25 01:02",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
