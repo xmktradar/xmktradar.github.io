@@ -14,6 +14,7 @@ three_lines, why_posts and atomic_posts in an existing file.
 import re
 from datetime import datetime, timedelta
 
+import date_kst
 from ranking import rank_rows
 from sitedata import HK
 
@@ -732,6 +733,7 @@ def build_three_lines(daily, day, generated_at=None, dash=None, window_fallback=
         out_p['instagram'][lang] = {'text': texts[lang]['instagram']}
     return {
         'date': day,
+        'date_kst': date_kst.kst_date(day, THREE_LINES_KST),
         'generated_at': generated_at,
         'window': window,
         'sample': sample,
@@ -1148,7 +1150,8 @@ def merge_into(path, writeup=None, dash=None, history=None):
     """Recompute three_lines, why_posts and atomic_posts inside an existing file.
 
     Every other key is left as it was, including key order. Missing results are
-    removed. History is read when not passed, and is not written.
+    removed. History is read when not passed, and is not written. date_kst is
+    set on three_lines, each why post, atomic posts, and the file posting day.
     """
     from sitedata import read_json, write_json
     S = _s()
@@ -1174,6 +1177,7 @@ def merge_into(path, writeup=None, dash=None, history=None):
     for key in MERGE_KEYS:
         if key not in sp and work.get(key):
             ordered[key] = work[key]
+    date_kst.apply_date_kst(ordered, atomic_day=S._as_day(ordered.get('date') or sp.get('date')))
     write_json(path, ordered, indent=1)
     return ordered
 

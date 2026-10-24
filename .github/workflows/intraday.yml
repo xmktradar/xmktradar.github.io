@@ -1,7 +1,9 @@
 name: Intraday social
-# Generation is 10 minutes before each US/Eastern slot (09:45, 11:00, 12:15, 13:30, 14:45, 15:40).
-# Cron polls every 15 minutes Mon–Fri UTC. The Guard step selects the matching ET
-# generation window (±20 min) on a NYSE trading day and skips everything else.
+# Generation is 5 minutes before each US/Eastern slot (09:45, 11:00, 12:15, 13:30, 14:45, 15:40).
+# Clocks: 09:40, 10:55, 12:10, 13:25, 14:40, 15:35 ET.
+# Cron polls every 15 minutes Mon–Fri UTC. The Guard step selects the nearest ET
+# generation time within ±20 min (a dispatch up to 10 min early or late still hits)
+# on a NYSE trading day and skips weekends, holidays, and early-close slots after 13:00 ET.
 # workflow_dispatch: slot=auto|force|<name> (force bypasses the time guard).
 on:
   workflow_dispatch:
@@ -13,7 +15,8 @@ on:
   # GitHub often skips or delays sparse schedules on a newly added workflow (the
   # 12 EDT/EST crons never fired on 2026-10-23). Poll every 15 minutes Mon–Fri UTC;
   # the Guard step keeps only America/New_York times within ±20 min of a generation
-  # window on a NYSE trading day, so off-window runs exit in seconds.
+  # time (09:40, 10:55, 12:10, 13:25, 14:40, 15:35 ET) on a NYSE trading day, so
+  # off-window runs exit in seconds.
   schedule:
     - cron: '*/15 * * * 1-5'
 permissions:

@@ -1,6 +1,7 @@
 """Intraday social slots for data/social-posts.json.
 
 US/Eastern post times: open 09:45, 1 11:00, 2 12:15, 3 13:30, 4 14:45, close 15:40.
+Generation is 5 minutes before each post: 09:40, 10:55, 12:10, 13:25, 14:40, 15:35 ET.
 HKT is ET+12 in summer (EDT) and ET+13 in winter (EST, from the first Sunday in November).
 One English X post per slot; Threads in zh/en/ko. No Facebook. Spec language 'kr' is stored as 'ko'.
 
@@ -17,6 +18,7 @@ from zoneinfo import ZoneInfo
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+import date_kst
 from ranking import rank_rows
 from sitedata import read_json, work, write_json
 from utm import normalize_file, tag_url
@@ -35,7 +37,8 @@ SLOT_DEFS = (
 )
 SLOT_NAMES = tuple(name for name, _h, _m in SLOT_DEFS)
 SLOT_HM = {name: (h, m) for name, h, m in SLOT_DEFS}
-GEN_LEAD_MIN = 10
+# 09:40, 10:55, 12:10, 13:25, 14:40, 15:35 ET. auto matches the nearest of these.
+GEN_LEAD_MIN = 5
 GUARD_WINDOW_MIN = 20
 AUTO_AHEAD_MIN = 30
 AUTO_BEHIND_MIN = 20
@@ -198,10 +201,12 @@ def within_minutes(delta_min, window):
 
 
 def pick_auto_slot(now, holidays=None, force=False):
-    """Slot whose post time is the next one within 30 min of now (ET).
+    """Next post within 30 min, or the previous one within 20. Used by `force`.
 
-    A post a few minutes in the past still matches so a delayed cron can write.
-    `force` picks the next remaining slot today, or the last permitted one.
+    `--slot auto` does not use this. It uses near_generation so a dispatch a few
+    minutes early or late still lands on the slot being generated.
+    `force` ignores the trading-day filter and, if nothing is close, returns the
+    next remaining slot today, or the last one.
     """
     now = now_et(now)
     date = now.date().isoformat()
@@ -233,6 +238,11 @@ def pick_auto_slot(now, holidays=None, force=False):
 
 
 def near_generation(now, holidays=None):
+    """Slot whose generation time is nearest, when that distance is within ±20 min.
+
+    Generation times are 55–75 minutes apart, so the ±20 windows do not overlap.
+    A dispatch 10 minutes early or late still resolves to that one slot.
+    """
     now = now_et(now)
     date = now.date().isoformat()
     best = None
@@ -245,7 +255,15 @@ def near_generation(now, holidays=None):
 
 
 def evaluate_guard(now, slot='auto', force=False, holidays=None):
-    """Return (ok, resolved_slot, reason)."""
+    """Return (ok, resolved_slot, reason).
+
+    `auto` is the permitted slot whose ET generation time is nearest within
+    ±GUARD_WINDOW_MIN. Weekends, NYSE holidays, and early-close slots after
+    13:00 ET are not generation times, so they do not match. A named slot skips
+    the clock (the workflow resolves auto in Guard, then writes that name after
+    the fetch) and still rejects a closed or early-close day. `force` bypasses
+    both checks.
+    """
     now = now_et(now)
     date = now.date().isoformat()
     holidays = holidays if holidays is not None else load_holidays()
@@ -258,14 +276,14 @@ def evaluate_guard(now, slot='auto', force=False, holidays=None):
     if not force and not is_trading_day(date, holidays):
         return False, None, f'{date} is not a NYSE trading day'
     if raw == 'auto':
-        picked = pick_auto_slot(now, holidays, force=force)
+        if force:
+            picked = pick_auto_slot(now, holidays, force=True)
+            if not picked:
+                return False, None, f'no slot within {AUTO_AHEAD_MIN} min of {now.strftime("%H:%M")} ET'
+            return True, picked, f'ok {picked}'
+        picked = near_generation(now, holidays)
         if not picked:
-            return False, None, f'no slot within {AUTO_AHEAD_MIN} min of {now.strftime("%H:%M")} ET'
-        if not force:
-            gen = near_generation(now, holidays)
-            if gen is None:
-                return False, None, f'{now.strftime("%H:%M")} ET is not within {GUARD_WINDOW_MIN} min of a generation time'
-            picked = gen
+            return False, None, f'{now.strftime("%H:%M")} ET is not within {GUARD_WINDOW_MIN} min of a generation time'
         return True, picked, f'ok {picked}'
     if not force and not slot_permitted(date, raw, holidays):
         if is_early_close(date, holidays) and slot_after_early_close(raw):
@@ -848,11 +866,13 @@ def build_slot(slot, date, now, daily, quotes, quote_time, quotes_ok, history_da
     }
     generated = now_et(now)
     quote_source = 'Yahoo Finance'
+    trade_day = as_day(date)
     return {
         'post_et': post_et,
         'post_hkt': post_hkt,
         'generated_at': iso_offset(generated),
-        'date': as_day(date),
+        'date': trade_day,
+        'date_kst': date_kst.et_post_date_kst(trade_day, post_et),
         'quotes': quotes or {},
         'quote_time': quote_time,
         'quote_source': quote_source,
@@ -880,6 +900,7 @@ def merge_intraday(data, date, slot_name, slot_obj, generated_at, generated_hkt)
     intra['generated_hkt'] = generated_hkt
     intra['slots'] = slots
     data['intraday'] = intra
+    date_kst.stamp_intraday(intra)
     return data
 
 

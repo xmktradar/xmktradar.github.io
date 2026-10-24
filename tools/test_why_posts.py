@@ -196,6 +196,13 @@ def test_atomic_slots_do_not_share_ticker_or_time():
     n_atom = len([p for p in atomic if p['lang'] == 'zh'])
     assert 4 <= len(why) + n_atom <= 6
     assert share.guard_slots(sp) == []
+    assert sp['date'] == DAY
+    assert sp['date_kst'] == DAY
+    assert sp.get('why_posts_date_kst') == DAY
+    three = sp.get('three_lines') or {}
+    assert three.get('date') == DAY and three.get('date_kst') == DAY
+    assert all(p.get('date') == DAY and p.get('date_kst') == DAY for p in why)
+    assert all(a.get('date_kst') == DAY for a in atomic)
     assert hist[DAY]['why'] == [p['ticker'] for p in why]
     assert hist[DAY]['why_text']
     assert os.path.exists(os.environ['SOCIAL_HISTORY']) is False
@@ -394,13 +401,18 @@ def test_merge_into_touches_only_three_keys():
     loaded = json.load(open(path, encoding='utf-8'))
     assert loaded == ordered
     assert list(loaded) == [
-        'date', 'why_posts', 'note', 'three_lines', 'posts', 'window', 'atomic_posts', 'extra',
+        'date', 'date_kst', 'why_posts_date_kst', 'why_posts', 'note',
+        'three_lines', 'posts', 'window', 'atomic_posts', 'extra',
     ]
     for key in ('date', 'note', 'posts', 'window', 'extra'):
         assert loaded[key] == original[key]
+    assert loaded['date_kst'] == DAY
+    assert loaded['why_posts_date_kst'] == DAY
     assert hist == {}
     assert os.path.exists(os.environ['SOCIAL_HISTORY']) is False
     assert loaded['three_lines'].get('stale') is not True
+    assert loaded['three_lines']['date'] == DAY
+    assert loaded['three_lines']['date_kst'] == DAY
     assert loaded['three_lines']['threads']['en']['text']
     assert '(vs yesterday (today so far))' not in json.dumps(loaded['three_lines'], ensure_ascii=False)
     why = loaded['why_posts']
@@ -424,6 +436,9 @@ def test_merge_into_touches_only_three_keys():
     atom_t = {a.get('ticker') for a in atomic if a.get('ticker')}
     assert why_t.isdisjoint(atom_t)
     assert {p['suggested_kst'] for p in why}.isdisjoint({a['slot_kst'] for a in atomic})
+    assert all(p.get('date') == DAY and p.get('date_kst') == DAY for p in why)
+    assert all(a.get('date_kst') == DAY for a in atomic)
+    assert isinstance(loaded['why_posts'], list) and isinstance(loaded['atomic_posts'], list)
     # A file whose recompute has no why/three/atomic loses those keys and keeps the rest.
     empty_path = os.path.join(os.environ['WORK_DIR'], 'social-empty.json')
     stale = {
@@ -444,6 +459,7 @@ def test_merge_into_touches_only_three_keys():
     assert emptied['note'] == 'still-here'
     assert emptied['posts']['zh']['x'] == 'unchanged'
     assert 'why_posts' not in emptied and 'three_lines' not in emptied and 'atomic_posts' not in emptied
+    assert 'date_kst' not in emptied and 'why_posts_date_kst' not in emptied
 
 
 def test_schedule_drops_same_ticker():

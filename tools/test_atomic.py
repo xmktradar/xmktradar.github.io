@@ -138,6 +138,8 @@ def _assert_atomic(items):
 
 def _assert_weekend(weekend, day, id_prefix):
     assert weekend['date'] == day
+    # 08:00 KST is the Saturday/Sunday social hour, so date_kst is that same day.
+    assert weekend['date_kst'] == day
     posts = weekend['posts']
     assert len(posts) >= 2
     assert all(p['id'].startswith(id_prefix) for p in posts)
@@ -216,9 +218,15 @@ def test_weekend_two_angles():
         'top5': {'bull': [{'t': 'RSP', 'n': 2}], 'bear': [{'t': 'QQQ', 'n': 4}]},
     }
     share.attach_weekend_slots(sp, '2026-10-24', _writeup(), {}, save=False)
+    assert sp['date'] == '2026-10-23'
+    # No weekday clocks on this file, so the top-level stamp stays Friday 08:30 KST.
+    assert sp['date_kst'] == '2026-10-23'
     assert sp['posts']['zh']['x'] == 'keep-weekday-post'
     assert sp['top5']['bull'][0]['t'] == 'RSP'
+    assert sp['weekend']['date'] == '2026-10-24'
+    assert sp['weekend']['date_kst'] == '2026-10-24'
     assert len(sp['weekend']['posts']) >= 2
+    assert sp['atomic_posts'] and all(a.get('date_kst') == '2026-10-24' for a in sp['atomic_posts'])
     by = _by_lang(sp['atomic_posts'])
     assert all(4 <= len(rows) <= 6 for rows in by.values())
     assert share.guard_slots(sp) == []
