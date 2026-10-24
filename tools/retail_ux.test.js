@@ -4,7 +4,7 @@ const fs=require('fs'),path=require('path');
 const src=fs.readFileSync(path.join(__dirname,'..','index.html'),'utf8');
 const m=src.match(/\/\*RUX\*\/([\s\S]*?)\/\*RUX-END\*\//);
 assert.ok(m,'RUX block missing from index.html');
-const RUX=new Function(m[1]+';return RUX;')();
+const RUX=new Function(m[1]+';return {reasonOf:ruxReasonOf,threeLines:ruxThreeLines,clauseFor:ruxClause};')();
 test('reason extracted only from real summary text',()=>{
  const r=RUX.reasonOf([{s:'bull',why:'NVDA 財報勝預期，數據中心營收大增。'},{s:'bull',why:'$NVDA 指引強勁'},{s:'bear',why:'覺得 NVDA 走勢弱'}],'NVDA');
  assert.equal(r.bull.k,'earn');assert.equal(r.bull.n,2);
@@ -48,4 +48,7 @@ test('english multi-sentence summary keeps full clause',()=>{
 });
 test('build-safe: no full-width punctuation inside RUX regexes',()=>{
  assert.ok(!/[。；！？]/.test(m[1].match(/split\(([^)]*)\)/)[1]));
+});
+test('RUX helpers are top-level functions, no IIFE',()=>{
+ assert.ok(!/\(function\s*\(/.test(m[1]));assert.ok(/^function ruxReasonOf\(/m.test(m[1]));assert.ok(/^function ruxThreeLines\(/m.test(m[1]));
 });

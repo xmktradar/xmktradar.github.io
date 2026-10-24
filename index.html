@@ -1190,44 +1190,42 @@ function vsHtml(w){if(!VSC||!CH)return '';
 function moneyBar(){return `<nav class="money-bar" aria-label="推廣"><span class="pj-tag">推廣</span><a href="tools/">工具</a><a href="support/">支持我們</a><a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview" data-placement="money-bar">TradingView</a><a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover" data-placement="money-bar">Stock Rover</a></nav>`}
 // 各帳號立場：每隻股票一行（按討論帳號數排列），頭像按立場分組，點開見每個帳號的最新理由；頭 10 隻以外收起
 /*RUX*/
-const RUX=(function(){
- const CATS=[['earn',/財報|業績|盈利|營收|收入|毛利|指引|财报|业绩|营收|EPS|earnings|revenue|guidance|profit|margin|실적|매출|이익|가이던스/i],
+// 純函數：散戶版「理由一行」同「今日三句」（頂層函數，唔包 IIFE）
+const RUX_CATS=[['earn',/財報|業績|盈利|營收|收入|毛利|指引|财报|业绩|营收|EPS|earnings|revenue|guidance|profit|margin|실적|매출|이익|가이던스/i],
   ['val',/估值|市盈|本益比|P\/E|valuation|overvalued|undervalued|太貴|便宜|밸류|고평가|저평가/i],
   ['cat',/催化|訂單|订单|合約|合作|發布|發佈|推出|批准|併購|收購|回購|增發|評級|目標價|catalyst|contract|partnership|launch|approval|acquisition|buyback|upgrade|downgrade|price target|계약|출시|승인|인수|목표가/i],
   ['tech',/突破|支撐|阻力|技術面|均線|breakout|resistance|technical|돌파|지지선|저항/i],
   ['macro',/利率|聯儲|減息|加息|通脹|關稅|Fed|rate cut|inflation|tariff|금리|관세|인플레/i]];
- const LBL={earn:'財報／業績',val:'估值',cat:'消息催化',tech:'技術走勢',macro:'宏觀因素'};
- // 只用提到該股票的句子；整段講幾隻股票又冇一句提到佢，就唔用（免得張冠李戴）
- function clauseFor(text,t){text=String(text||'').trim();if(!text)return '';
+const RUX_LBL={earn:'財報／業績',val:'估值',cat:'消息催化',tech:'技術走勢',macro:'宏觀因素'};
+// 只用提到該股票的句子；整段講幾隻股票又冇一句提到佢，就唔用（免得張冠李戴）
+function ruxClause(text,t){text=String(text||'').trim();if(!text)return '';
   const parts=text.split(/(?<=[\u3002\uFF1B\uFF01\uFF1F!?;])\s*|(?<=\.)\s+/).filter(Boolean);
   const sym=String(t).toUpperCase().replace(/[^A-Z0-9.]/g,'');const re=new RegExp('(^|[^A-Z0-9])\\$?'+sym.replace('.','\\.')+'(?![A-Z0-9])','i');
   const hits=parts.filter(p=>re.test(p));const tks=new Set((text.match(/\$[A-Za-z][A-Za-z0-9.]{0,6}/g)||[]).map(x=>x.toUpperCase()));
   return hits.length?hits.join(' '):(tks.size>1?'':text)}
- function excerpt(s,m){const i=Math.max(0,m.index-14),out=s.slice(i,i+46).trim();return (i>0?'…':'')+out+(i+46<s.length?'…':'')}
- // items: [{s:'bull'|'bear'|..., why:'摘要原文'}]；回傳每邊最多人提到的理由類別，冇就 null
- function reasonOf(items,t){const res={bull:null,bear:null};
+function ruxExcerpt(s,m){const i=Math.max(0,m.index-14),out=s.slice(i,i+46).trim();return (i>0?'…':'')+out+(i+46<s.length?'…':'')}
+// items: [{s:'bull'|'bear'|..., why:'摘要原文'}]；回傳每邊最多人提到的理由類別，冇就 null
+function ruxReasonOf(items,t){const res={bull:null,bear:null};
   ['bull','bear'].forEach(side=>{const cnt={},ex={};
-   items.filter(x=>x&&x.s===side).forEach(x=>{const c=clauseFor(x.why,t);if(!c)return;CATS.forEach(([k,re])=>{const m=c.match(re);if(m){cnt[k]=(cnt[k]||0)+1;if(!ex[k])ex[k]=excerpt(c,m)}})});
-   let best=null;CATS.forEach(([k])=>{if(cnt[k]&&(!best||cnt[k]>cnt[best]))best=k});
-   if(best)res[side]={k:best,label:LBL[best],n:cnt[best],ex:ex[best]}});
+   items.filter(x=>x&&x.s===side).forEach(x=>{const c=ruxClause(x.why,t);if(!c)return;RUX_CATS.forEach(([k,re])=>{const m=c.match(re);if(m){cnt[k]=(cnt[k]||0)+1;if(!ex[k])ex[k]=ruxExcerpt(c,m)}})});
+   let best=null;RUX_CATS.forEach(([k])=>{if(cnt[k]&&(!best||cnt[k]>cnt[best]))best=k});
+   if(best)res[side]={k:best,label:RUX_LBL[best],n:cnt[best],ex:ex[best]}});
   return res}
- const net=c=>{const n=c.bull+c.bear+c.neu;return n?(c.bull-c.bear)/n:0};
- // rows: [{t,c:{bull,bear,neu,none,accs,mentions},c0:同格式或 null,chg:立場變化次數}]
- function threeLines(rows,hasPrev){let shift=null,most=null,split=null;
+const ruxNet=c=>{const n=c.bull+c.bear+c.neu;return n?(c.bull-c.bear)/n:0};
+// rows: [{t,c:{bull,bear,neu,none,accs,mentions},c0:同格式或 null,chg:立場變化次數}]
+function ruxThreeLines(rows,hasPrev){let shift=null,most=null,split=null;
   rows.forEach(r=>{const c=r.c;
-   if(hasPrev&&r.c0&&c.bull+c.bear>=2&&r.c0.bull+r.c0.bear>=1){const d=net(c)-net(r.c0);if(Math.abs(d)>=0.2&&(!shift||shift.kind!=='delta'||Math.abs(d)>Math.abs(shift.d)))shift={kind:'delta',t:r.t,d,from:net(r.c0),to:net(c)}}
+   if(hasPrev&&r.c0&&c.bull+c.bear>=2&&r.c0.bull+r.c0.bear>=1){const d=ruxNet(c)-ruxNet(r.c0);if(Math.abs(d)>=0.2&&(!shift||shift.kind!=='delta'||Math.abs(d)>Math.abs(shift.d)))shift={kind:'delta',t:r.t,d,from:ruxNet(r.c0),to:ruxNet(c)}}
    if(c.mentions>0&&(!most||c.mentions>most.n||(c.mentions===most.n&&c.accs>most.accs)))most={t:r.t,n:c.mentions,accs:c.accs};
    if(c.bull>=1&&c.bear>=1){const m=Math.min(c.bull,c.bear),s=c.bull+c.bear;if(!split||m>split.m||(m===split.m&&s>split.b+split.e))split={t:r.t,b:c.bull,e:c.bear,m}}});
   if(!shift)rows.forEach(r=>{if(r.chg>0&&(!shift||r.chg>shift.n))shift={kind:'chg',t:r.t,n:r.chg}});
   return {shift,most,split}}
- return {reasonOf,threeLines,clauseFor};
-})();
 /*RUX-END*/
 function stanceList(w,tks,accs){const SHOW=10,K=['bull','bear','neu','none'];
  const rows=tks.map(t=>{const g={bull:[],bear:[],neu:[],none:[]};accs.forEach(a=>{const x=latest(a,t,w.from,w.to);if(x)g[x.s].push({a,x})});return {t,g,n:K.reduce((s,k)=>s+g[k].length,0)}}).filter(r=>r.n).sort((x,y)=>y.n-x.n||(y.g.bull.length+y.g.bear.length)-(x.g.bull.length+x.g.bear.length)||x.t.localeCompare(y.t));
  const av=h=>avImg(h,'sx-av').replace('<img ',`<img loading="lazy" title="@${esc(h)}" `);
  const why=(a,x)=>esc(x.why.replace(new RegExp('^\\s*@?'+a.replace(/[^A-Za-z0-9_]/g,'')+'\\s*[:\\uFF1A]\\s*','i'),''));
- const whyLine=r=>{const rs=RUX.reasonOf(K.flatMap(k=>r.g[k]).map(({x})=>({s:x.s,why:x.why})),r.t);const one=(side,c)=>rs[side]?`<span><b class="${c}">${SLABEL[side]}理由</b>：${rs[side].label}（${rs[side].n} 則）「${esc(rs[side].ex)}」</span>`:'';const h=[one('bull','up'),one('bear','dn')].filter(Boolean);return h.length?`<div class="sx-r1">${h.join('<i>｜</i>')}</div>`:''};
+ const whyLine=r=>{const rs=ruxReasonOf(K.flatMap(k=>r.g[k]).map(({x})=>({s:x.s,why:x.why})),r.t);const one=(side,c)=>rs[side]?`<span><b class="${c}">${SLABEL[side]}理由</b>：${rs[side].label}（${rs[side].n} 則）「${esc(rs[side].ex)}」</span>`:'';const h=[one('bull','up'),one('bear','dn')].filter(Boolean);return h.length?`<div class="sx-r1">${h.join('<i>｜</i>')}</div>`:''};
  const row=(r,i)=>{const {g,n}=r,b=g.bull.length,e=g.bear.length;const cls=[i>=SHOW?'x':'',b&&e?'split':'',b>=2?'mbull':'',e>=2?'mbear':''].filter(Boolean).join(' ');
   const seg=(c,k)=>g[k].length?`<span class="${c}" style="width:${g[k].length/n*100}%"></span>`:'';
   const grp=(k,c)=>g[k].length?`<span class="g"><span class="lb ${c}">${SLABEL[k]}</span>${g[k].slice(0,8).map(y=>av(y.a)).join('')}${g[k].length>8?`<span>+${g[k].length-8}</span>`:''}</span>`:'';
@@ -1273,7 +1271,7 @@ function viewDaily(){
  const cmpLab=current==='weekly'?'對比前 7 天':current==='monthly'?'對比前 28 天':'對比昨日（今日至今）';
  const priorOpen=current==='weekly'?'前 7 天（':current==='monthly'?'前 28 天（':'昨日（';
  const priorLoading=!hasPrev&&!postsReady();
- const T3=RUX.threeLines(tkNow.map(t=>({t,c:dist(t,w.from,w.to),c0:hasPrev?dist(t,pf,pt):null,chg:chg.filter(y=>y.x.t===t).length})),hasPrev);
+ const T3=ruxThreeLines(tkNow.map(t=>({t,c:dist(t,w.from,w.to),c0:hasPrev?dist(t,pf,pt):null,chg:chg.filter(y=>y.x.t===t).length})),hasPrev);
  const upd=String(D.meta.cutoff_hkt||'').slice(5,16).replace('-','/').replace('T',' ');
  const ctx=`${w.timed?`${fmtR(w.from)} – ${fmtR(w.to)}`:`${fmt(w.from)}${w.from!==w.to?'–'+fmt(w.to):''}`} HKT・更新於 ${upd} HKT・${accsNow} 個帳號、${vposts.length} 則有效貼文`;
  const pct=x=>(x>0?'+':'')+Math.round(x*100)+'%';
