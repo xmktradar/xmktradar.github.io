@@ -890,7 +890,6 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
       <span>下次更新 <b id="nextup"></b></span>
       <span>追蹤帳號 <a href="#tracked" class="acclink"><b id="acccount"></b></a></span>
       <div class="social"><span class="social-l">追蹤我們</span><div class="social-row"><a class="soc soc-instagram" href="https://www.instagram.com/thecrowdtape/" target="_blank" rel="noopener" aria-label="The Crowd Tape 的 Instagram" title="The Crowd Tape 的 Instagram" data-net="instagram"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.15" fill="currentColor"/></svg></a><a class="soc soc-threads" href="https://www.threads.com/@thecrowdtape" target="_blank" rel="noopener" aria-label="The Crowd Tape 的 Threads" title="The Crowd Tape 的 Threads" data-net="threads"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg></a><a class="soc soc-x" href="https://x.com/thecrowdtape" target="_blank" rel="noopener" aria-label="The Crowd Tape 的 X" title="The Crowd Tape 的 X" data-net="x"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg></a><button type="button" class="save-site" aria-haspopup="dialog">📲 <span>儲存網站</span></button></div></div>
-      <div class="hdr-duo" aria-label="推廣"><a class="hdr-promo" href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover" data-placement="header-2"><span class="pj-tag">推廣</span><span>Stock Rover</span></a></div>
     </div>
   </div>
   <div class="wrap tabbar">
@@ -1070,8 +1069,8 @@ const empty=t=>`<div class="empty">${t}</div>`;
 const vsPrev=(a,b,has,lab)=>{if(!has)return '';const d=a-b,n=Math.abs(d),base=lab||'對比前期';
  const L=PAGE_LANG;
  if(d===0)return L==='en'?`unchanged (${base})`:L==='ko'?`변동 없음 (${base})`:`與${base}相同`;
- if(L==='en')return d>0?`${n} more (${base})`:`${n} fewer (${base})`;
- if(L==='ko')return d>0?`${n} 증가 (${base})`:`${n} 감소 (${base})`;
+ if(L==='en')return d>0?`${n} more, ${base}`:`${n} fewer, ${base}`;
+ if(L==='ko')return d>0?`${n} 증가 · ${base}`:`${n} 감소 · ${base}`;
  return d>0?`${base}：多 ${n}`:`${base}：少 ${n}`;};// 冇前期資料就留空：頁頂「昨日重疊 vs 今日」負責比較
 function whyLine(p){const k=[p.basis,p.horizon].filter(Boolean).map(esc);const extra=[];if(p.specific===true)extra.push('<span class="chip spec">具體</span>');if(TRADE_RE.test(p.summary_zh||''))extra.push('<span class="chip claim" title="帖中提及的交易／資金紀錄未經查證">據貼文所述</span>');
  return `<p class="why">推論依據：${k.length?`<b>${k[0]}</b>${k.slice(1).map(x=>'・'+x).join('')}`:'<span class="note">分析師未標示</span>'} ${extra.join(' ')}</p>`}
@@ -1244,7 +1243,7 @@ function stanceList(w,tks,accs){const SHOW=10,K=['bull','bear','neu','none'];
 function viewDaily(){
  if(!ALLP.length)return `<div class="grid">${moneyBar()}<section class="c12 analysis"><h2>今日市場分析</h2>${empty('目前沒有任何貼文資料。')}</section></div>`;
  const w=dailyWindow(),len=w.merged?2:1;let pf,pt;
- if(w.timed){const a=rk(w.from),z=rk(w.to,true);pt=tsOf(a-60000);pf=tsOf(a-(z-a))}else{pf=addDays(w.from,-len);pt=addDays(w.from,-1)}
+ if(w.timed){const a=rk(w.from),z=rk(w.to,true),cm=Date.parse(String(D.meta.cutoff_hkt||''))||z,L=Math.max(DAY,Math.round((z-a)/DAY)*DAY);pf=tsOf(a-L);pt=tsOf(Math.min(z,Math.max(a,cm))-L)}else{pf=addDays(w.from,-len);pt=addDays(w.from,-1)}
  const cur=postsIn(w.from,w.to),prev=postsIn(pf,pt),curRaw=rawIn(w.from,w.to).filter(p=>!p.folded_into),prevRaw=rawIn(pf,pt).filter(p=>!p.folded_into),xFirst=Math.min(...ALLP.filter(p=>p.platform!=='truthsocial').map(p=>p.ms)),hasPrev=prevRaw.length>0&&(!w.timed||xFirst<=rk(pf));// 時間窗：前期要完整有 X 抓帖先比較（Truth Social 存檔可以早過首次抓帖）
  const accsNow=new Set(curRaw.map(p=>p.acc)).size,accsPrev=new Set(prevRaw.map(p=>p.acc)).size;
  const tkNow=[...new Set(cur.map(x=>x.t))].sort(),tkPrev=new Set(prev.map(x=>x.t));
@@ -1271,7 +1270,7 @@ function viewDaily(){
  const BYP=new Map();POSTS.forEach(x=>{let a=BYP.get(x.p);if(!a)BYP.set(x.p,a=[]);a.push(x)});const score=p=>{const xs=BYP.get(p)||[];if(!xs.length)return -1;return Math.max(...xs.map(x=>{const ch=chgOf(x);return !explicit(x.s)?(ch?1:(stanced(x.s)?0.5:0)):(ch?3:2)}))};
  const SC=new Map(vposts.map(p=>[p,score(p)]));const keyAll=vposts.slice().sort((a,b)=>SC.get(b)-SC.get(a)||b.ms-a.ms);const keyPosts=keyAll.slice(0,6),rest=keyAll.slice(6);
  const coList=(arr,k)=>arr.map(x=>`<li>${tkBtn(x.t)}<span class="pill ${k}">${x.c[k]} ${SLABEL[k]}</span>${x.c[k==='bull'?'bear':'bull']?`<span class="pill ${k==='bull'?'bear':'bull'}">${x.c[k==='bull'?'bear':'bull']} ${SLABEL[k==='bull'?'bear':'bull']}</span>`:''}<span class="handle">${accsOf(w.from,w.to).filter(a=>latest(a,x.t,w.from,w.to)?.s===k).map(a=>'@'+esc(a)).join(' ')}</span></li>`).join('')||`<li class="note">沒有符合條件的股票（需 2 個以上帳號在範圍內最新立場同為${SLABEL[k]}）</li>`;
- const cmpLab=current==='weekly'?'對比前 7 天':current==='monthly'?'對比前 28 天':'對比昨日（今日至今）';
+ const cmpLab=current==='weekly'?'對比前 7 天':current==='monthly'?'對比前 28 天':'對比昨日同時段';
  const priorOpen=current==='weekly'?'前 7 天（':current==='monthly'?'前 28 天（':'昨日（';
  const priorLoading=!hasPrev&&!postsReady();
  const T3=ruxThreeLines(tkNow.map(t=>({t,c:dist(t,w.from,w.to),c0:hasPrev?dist(t,pf,pt):null,chg:chg.filter(y=>y.x.t===t).length})),hasPrev);
@@ -1291,7 +1290,7 @@ function viewDaily(){
   <h2>今日市場分析 ${sm?(sm.stale?`<span class="sub">（最新一份分析，非 ${esc(w.day)} 當日）</span>`:''):'<span class="sub">今日分析尚未產生，以下由資料自動整理</span>'}</h2>
   ${sm?'':sparse}
   ${sm?sumBody(sm.s,true):auto}
-  <p class="note" style="margin:8px 0 0">${(PAGE_LANG==='en'?"Brief counts are from the writer; the stat cards below are live counts for the same window (posts so far: {n}, active accounts {a}).":PAGE_LANG==='ko'?"요약 숫자는 작성자 정리분; 아래 통계 카드는 같은 구간의 실시간 집계입니다 (유효 게시물 {n}, 활동 계정 {a}).":"摘要數字來自寫手整理；下方統計卡按同一分析範圍即時計算（目前有效貼文 {n}、有動態帳號 {a}）。").replace(/\{n\}/g,String(vposts.length)).replace(/\{a\}/g,String(accsNow))}</p>
+  <p class="note" style="margin:8px 0 0">${(()=>{const r=String(((D.highlights||{})[w.day]||{}).range||'');const e=r.split('–').pop().trim();return e&&r.includes('–')?(PAGE_LANG==='en'?`Brief written as of ${e}. `:PAGE_LANG==='ko'?`요약 작성 기준 ${e}. `:`摘要截至 ${e}。`):''})()}${(PAGE_LANG==='en'?"Brief counts are from the writer; the stat cards below are live counts for the same window (posts so far: {n}, active accounts {a}).":PAGE_LANG==='ko'?"요약 숫자는 작성자 정리분; 아래 통계 카드는 같은 구간의 실시간 집계입니다 (유효 게시물 {n}, 활동 계정 {a}).":"摘要數字來自寫手整理；下方統計卡按同一分析範圍即時計算（目前有效貼文 {n}、有動態帳號 {a}）。").replace(/\{n\}/g,String(vposts.length)).replace(/\{a\}/g,String(accsNow))}</p>
   ${br?`<details><summary>分析師簡報</summary>${br.html}</details>`:''}
  </section>
  <div class="c12 dayrange">${`<div class="range ${w.merged?'merged':''}">${rangeTxt}${vposts.length&&!w.timed?`（${vposts[0].time_hkt.slice(5,16).replace('-','/').replace('T',' ')} – ${vposts[vposts.length-1].time_hkt.slice(5,16).replace('-','/').replace('T',' ')} HKT，有效貼文 ${vposts.length} 則）`:''}</div>`}</div>
@@ -1467,7 +1466,7 @@ function openDive(t){
  const stars=all.some(x=>x.star);
  el.innerHTML=`<div class="wrap" style="padding-block:0 60px">
  <div class="divehead"><button class="back" id="back">← 回到儀表板</button><div><h1>${esc(t)}</h1><div class="nm">${pr&&pr.name?esc(pr.name):(OV[t]&&OV[t].name&&!UNC(t)?esc(OV[t].name):'')}${UNC(t)?UNC_TXT:''}${OVN(t)}${capTag(t)}${(FLAGS[t]||[]).map(flagLink).join('')}<span class="pill ${ag.k}">${ag.l}</span></div></div>
-  <div class="meta">${UNC(t)?'<span>股價 <b>不顯示（代號未確認）</b></span>':c?`<span>收盤 <b>${moneyT(t,c[c.length-1][1])}</b>（${esc(c[c.length-1][0])}${pr&&pr.symbol&&pr.symbol!==t?'，'+esc(pr.symbol):''}）</span><span>28日變動 <b>${pctCell(t,28)}</b></span><span>一年 <b>${pctCell(t,null)}</b></span>`:'<span>股價 <b>無股價資料</b></span>'}<span>28 天提及 <b>${m28}</b></span></div></div>
+  <div class="meta">${UNC(t)?'<span>股價 <b>不顯示（代號未確認）</b></span>':c?`<span>上次收盤 <b>${moneyT(t,c[c.length-1][1])}</b>（美東 ${esc(c[c.length-1][0])}${pr&&pr.symbol&&pr.symbol!==t?'，'+esc(pr.symbol):''}）</span><span>28日變動 <b>${pctCell(t,28)}</b></span><span>一年 <b>${pctCell(t,null)}</b></span>`:'<span>股價 <b>無股價資料</b></span>'}<span>提及次數（28 天） <b>${m28}</b></span></div></div>
  ${tvCard(t)}
  <div class="grid">
   <section class="c4 panel"><h2>追蹤帳號的觀點分布 <span class="sub">${cards.length} 個帳號提及過・以最新一則計</span></h2>${distBar(cnt)}<div style="margin-top:10px">${legend}</div>
@@ -1587,7 +1586,7 @@ function fitTables(root){if(!root)return;root.querySelectorAll('.tablewrap,.lb-w
  w.classList.remove('stack');if(w.scrollWidth>w.clientWidth+1)w.classList.add('stack')})}
 // 長列表唔再喺框入面捲（手機手指會卡住、框喺半行切斷）：先出頭幾項，其餘按「再顯示 N 項」先開（2026-10-21）
 const CLAMP=[['.cc-grid',4],['.fav-grid',6],['.acc-grid',6],['.acc-cards',6],['.trk-grid',8],['.multi-scroll tbody',10],['.cons-scroll tbody',10],['.lb-wrap tbody',10]];
-function clampLists(root){if(!root)return;CLAMP.forEach(([sel,n])=>root.querySelectorAll(sel).forEach(box=>{if(box.closest('.sd-cards')||box.dataset.cl)return;const items=[...box.children];if(items.length<=n+2)return;box.dataset.cl='1';items.slice(n).forEach(x=>x.classList.add('cl-h'));
+function clampLists(root){if(!root)return;CLAMP.forEach(([sel,n])=>root.querySelectorAll(sel).forEach(box=>{if(box.closest('.sd-cards')||box.dataset.cl)return;const wm=/^(weekly|monthly)$/.test(typeof current==='string'?current:'');if(wm&&sel==='.cc-grid')n=2;const items=[...box.children];if(items.length<=n+(wm?0:2))return;box.dataset.cl='1';items.slice(n).forEach(x=>x.classList.add('cl-h'));
  const b=document.createElement('button');b.type='button';b.className='more-btn cl-more';b.textContent=`再顯示 ${items.length-n} 項`;b.onclick=()=>{items.forEach(x=>x.classList.remove('cl-h'));b.remove()};(box.tagName==='TBODY'?box.closest('.tablewrap,.lb-wrap'):box).after(b)}))}
 addEventListener('resize',()=>{fitTables(document.getElementById('view'));const d=document.getElementById('dive');if(d&&!d.hidden)fitTables(d)});
 function linkHandles(root){if(!root)return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const p=n.parentElement;if(!p||p.closest('a,button,script,style,textarea,title,option,svg'))return NodeFilter.FILTER_REJECT;return /@[A-Za-z0-9_]/.test(n.nodeValue)?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT}});
@@ -1711,7 +1710,7 @@ let rT=null;window.addEventListener('resize',()=>{clearTimeout(rT);rT=setTimeout
 function paintChrome(){const m=D.meta;const cut=document.getElementById('cutoff');cut.textContent=m.cutoff_hkt?m.cutoff_hkt.slice(0,10)+' '+m.cutoff_hkt.slice(11,16)+'（HKT）':'資料不足';if(m.generated_hkt)cut.title='本頁重建於 '+m.generated_hkt+' HKT';
  const slots=m.update_slots_hkt||[];const now=Date.now(),base=Math.max(now,Date.parse((m.generated_hkt||'').replace(' ','T')+':00+08:00')||0);let next=null;
  for(let k=0;k<3&&!next;k++){const d=hkDate(base+k*DAY);for(const s of slots){const t=Date.parse(`${d}T${s}:00+08:00`);if(t>base){next=t;break}}}
- document.getElementById('nextup').textContent=next?`${hkDate(next)} ${hm(next)}（預定）`:'—';
+ document.getElementById('nextup').textContent=next?(PAGE_LANG==='en'?`${hkDate(next)} ${hm(next-35*60000)} run, new page ~${hm(next)} HKT`:PAGE_LANG==='ko'?`${hkDate(next)} ${hm(next-35*60000)} 실행, 새 페이지 약 ${hm(next)} HKT`:`${hkDate(next)} ${hm(next-35*60000)} 開始更新，約 ${hm(next)} 上線（HKT）`):'—';
  document.getElementById('acccount').textContent=(D.tracked&&D.tracked.accounts&&D.tracked.accounts.length)||HANDLES.length;
  const srcs={};Object.entries(D.prices).filter(([t])=>!UNC(t)&&isUS(t)).forEach(([t,p])=>(srcs[p.source]=srcs[p.source]||[]).push('$'+t));const asof=Object.entries(D.prices).filter(([t])=>isUS(t)).map(([,p])=>p.as_of).sort().pop();
  const nonUS=Object.entries(D.prices).filter(([t])=>!UNC(t)&&!isUS(t)).map(([t,p])=>`$${esc(t)} 以 ${esc(p.symbol||t)}（${esc((OV[t]&&OV[t].exchange)||p.exchange||'')}，${CURNAME[curOf(t)]||curOf(t)}，${esc(p.source)}，截至 ${esc(p.as_of)} ${tradeDay(t)}）報價，非美股`);const fet=Object.values(D.prices).map(p=>p.fetched_hkt).sort().pop();const unc=Object.keys(OV).filter(UNC);

@@ -286,6 +286,11 @@ def swap_data(d, lang, fixed):
             p['zh_summary'] = alt
             if 'summary_zh' in p:
                 p['summary_zh'] = alt
+        elif lang != 'zh':
+            # no translation and no original text yet: show nothing rather than Chinese on en/ko
+            p['zh_summary'] = ''
+            if 'summary_zh' in p:
+                p['summary_zh'] = ''
 
     def walk(o):
         if isinstance(o, dict):
