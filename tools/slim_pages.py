@@ -26,7 +26,7 @@ INLINE = {
     'summaries', 'briefings', 'cons_hist', 'vs_copy', 'tv_symbols',
 }
 # Newest N stay inline (lists are oldest-first); the rest go to lang-hist.json.
-HIST_KEEP = {'daily': 3, 'weekly': 2, 'monthly': 2}
+HIST_KEEP = {'daily': 2, 'weekly': 2, 'monthly': 2}
 BRIEF_KEEP = 3
 PAGES = [
     ('index.html', 'master'),
