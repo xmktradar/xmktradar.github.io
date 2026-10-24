@@ -728,10 +728,10 @@
   "2026-10-24": {
    "bull": [
     "SPCX",
-    "META",
+    "CART",
     "AMZN",
     "AAPL",
-    "CART"
+    "META"
    ],
    "bear": [
     "QQQ"
@@ -739,8 +739,10 @@
    "split": [
     "SPY",
     "TSLA",
-    "GLD",
-    "SMH"
+    "NVDA",
+    "NBIS",
+    "SMH",
+    "GLD"
    ],
    "window": [
     "2026-10-24T00:00",
@@ -748,20 +750,20 @@
    ],
    "top": [
     "SPY",
-    "SPCX",
+    "NVDA",
     "QQQ",
-    "CRWD",
-    "META",
-    "TSLA",
     "AMZN",
+    "TSLA",
+    "SPCX",
+    "AAPL",
     "MU",
-    "SPX",
-    "BE"
+    "NBIS",
+    "CRWD"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-24 09:29"
+   "updated_hkt": "2026-10-24 11:05"
   }
  },
- "updated_hkt": "2026-10-24 09:29",
+ "updated_hkt": "2026-10-24 11:05",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
