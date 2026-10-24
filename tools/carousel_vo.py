@@ -57,7 +57,7 @@ def lines(job):
     up, down = first_cards(s[2], '🟢')[:1], first_cards(s[2], '🔴')[:1]
     split = first_cards(s[3])[:1]
     # short lines so the zh video fits ~29 s at RATE +10% (2026-10-25: the longer script needed +40%)
-    vs = f'{bull} 個看好，{bear} 個看空！'  # who leads is on screen
+    vs = f'{bull} 看好，{bear} 看空，' + ('多方領先！' if bull > bear else '空方領先！' if bear > bull else '打平！')
     joint = '，'.join(([f'看好 {spell(up[0])}'] if up else []) + ([f'看空 {spell(down[0])}'] if down else []))
     return [
         '今天最熱門的美股是？',
@@ -66,7 +66,7 @@ def lines(job):
         '大神怎麼說？',
         '熱度前四，一張圖看完' if top4 else '今天的熱度排行',  # the 4 tickers are on the picture
         joint if joint else '大神們的共識',
-        f'{spell(split[0])} 分歧最大，你呢？' if split else '你站哪邊？',
+        f'{spell(split[0])} 分歧最大！' if split else '你站哪邊？',
         '詳情看 thecrowdtape.com',
     ]
 

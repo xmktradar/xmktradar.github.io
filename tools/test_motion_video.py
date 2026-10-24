@@ -37,7 +37,7 @@ def test_vo_lines():
     text = ''.join(ls)
     assert 'S P Y' in ls[1] and '15' in ls[1], ls[1]
     assert '空方' in ls[2], ls[2]
-    assert ls[4].count('、') == 3 and 'Q Q Q' not in ls[4], ls[4]  # top 4 only
+    assert '前四' in ls[4] and 'Q Q Q' not in ls[4], ls[4]  # 2026-10-25: tickers are on the picture; not spelled out (keeps ~27 s at +10%)
     assert 'M E T A' in ls[5] and 'Q Q Q' in ls[5], ls[5]
     assert 'G L D' in ls[6], ls[6]
     for bad in ('買', '賣', '目標價', '會升', '會跌', '必升'):

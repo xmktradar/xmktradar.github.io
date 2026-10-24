@@ -118,4 +118,4 @@
 
 **本機跑法**：`python3 tools/slim_pages.py --restore`；`node tools/stats.js index.html work/windows.json work/stats.json`；`CAROUSEL_FORCE=1 python3 tools/carousel.py`；`node tools/carousel.js work/carousel.json`；`VO_FAKE=1 node tools/carousel_video.js work/carousel.json`。試完 `git checkout` 還原建置檔，唔好 commit。
 
-**2026-10-25**：普通話旁白縮短（edge-tts +10%）：一般約 27 秒、長代號最差約 28.5 秒，唔使再加速到 +40%。VS 段好淡數改用每個帳號範圍內最新一則（同網站 consGroups 一樣），`tools/test_vs_counts.py` 喺 Build check 對數。
+**2026-10-25**：普通話旁白縮短（edge-tts +10%）：一般約 27 秒、長代號最差約 28.5 秒；熱度前四唔再逐個代號讀（圖上有），唔使再加速到 +40%。VS 段好淡數改用每個帳號範圍內最新一則（同網站 consGroups 一樣），`tools/test_vs_counts.py` 喺 Build check 對數。
