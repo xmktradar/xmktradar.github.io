@@ -583,6 +583,8 @@ def main():
     sp['slots'] = {k: slots[k] for k, _, _ in SLOTS if k in slots}
     sp.pop('pose_log', None)
     for key, sl in (sp.get('slots') or {}).items():
+        if isinstance(sl, dict):
+            sl.pop('poses', None)
         if sl.get('posts'):
             tag_posts(sl['posts'], f'carousel-{key}')
             fit_threads_posts(sl['posts'])
