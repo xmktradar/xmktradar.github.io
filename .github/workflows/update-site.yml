@@ -92,6 +92,17 @@ jobs:
             mkdir -p social && cp "$WORK_DIR/social.html" social/index.html
           fi
           if [ -f "$WORK_DIR/xcards.json" ]; then node tools/xcard.js "$WORK_DIR/xcards.json" || echo "::warning::X card failed"; fi
+      - name: Motion videos from the multi-picture posts (12:30 slot; zh voiceover; tools/MOTION_VIDEO.md)
+        continue-on-error: true
+        timeout-minutes: 12
+        run: |
+          if [ -f "$WORK_DIR/carousel.json" ] && command -v ffmpeg >/dev/null 2>&1; then
+            pip install numpy edge-tts==7.3.1 || echo "::warning::numpy/edge-tts 裝唔到"
+            node tools/carousel_video.js "$WORK_DIR/carousel.json" || echo "::warning::動態片整唔到，下次更新再試"
+          fi
+      - name: Keep only motion videos that exist (runs even if the step above timed out)
+        continue-on-error: true
+        run: python3 tools/carousel_video_post.py
       - name: Language versions
         run: python3 tools/build_langs.py
       - name: Support page

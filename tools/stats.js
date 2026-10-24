@@ -26,7 +26,11 @@ const path = require('path');
         if (x.s === 'bull') { c.bull++; c.ba.add(x.acc) } if (x.s === 'bear') { c.bear++; c.ra.add(x.acc) } });
       const top = Object.values(cnt).sort((a, b) => b.accs.size - a.accs.size || b.n - a.n || a.t.localeCompare(b.t)).slice(0, 25)
         .map(c => ({ t: c.t, mentions: c.n, accounts: c.accs.size, bull: c.bull, bear: c.bear, accs: [...c.accs],
-          bull_accounts: c.ba.size, bear_accounts: c.ra.size, urls: [...c.urls] }));
+          // one count per account, its latest view in the window: the same rule as the site's consGroups (2026-10-25)
+          ...(() => { const L = [...c.accs].filter(inCons).map(a => latest(a, c.t, from, to)).filter(Boolean);
+            return { bull_accounts: L.filter(x => x.s === 'bull').length, bear_accounts: L.filter(x => x.s === 'bear').length,
+              any_bull_accounts: c.ba.size, any_bear_accounts: c.ra.size }; })(),
+          urls: [...c.urls] }));
       const ms = raw.map(x => x.ms);
       return {
         from, to, posts: raw.length, tickers: Object.keys(cnt).length, accounts: new Set(raw.map(x => x.acc)).size,

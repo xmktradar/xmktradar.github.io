@@ -1,9 +1,14 @@
-# Synth beat + sound effects (all generated, no samples, no copyright).
+"""Sound for the carousel motion videos: a generated beat plus sound effects timed to the animation
+(no music files, so no copyright), and the voiceover lines mixed on top with the beat ducked under them.
+Usage: python3 tools/carousel_audio.py <events.json> <out.wav>
+events.json: {"total": s, "bpm": 124, "drop": s, "events": [{"at": s, "type": "pop"}...],
+              "vo": [{"file": "x.mp3", "at": s}...]}  (vo optional)
+Written by tools/carousel_video.js."""
 import json, sys, wave
+import subprocess
 import numpy as np
 SR = 44100
-ev = json.load(open(sys.argv[1]))
-seg = [0, 1.7, 5.4, 9.1, 12.8, 16.5]; TOTAL = 19.0
+J = json.load(open(sys.argv[1])); ev = J['events']; TOTAL = J['total']; DROP = J['drop']
 n = int(SR * TOTAL); mus = np.zeros(n); fx = np.zeros(n)
 rng = np.random.default_rng(7)
 def t_(d): return np.arange(int(SR * d)) / SR
@@ -21,10 +26,17 @@ def saw(f, d):
     t = t_(d); return 2 * ((t * f) % 1) - 1
 def pluck(fs, d, g=.18):
     t = t_(d); x = sum(np.tanh(2 * np.sin(2 * np.pi * f * t)) for f in fs) / len(fs); return x * np.exp(-t * 6) * g
-BPM = 124; beat = 60 / BPM
+BPM = J['bpm']; beat = 60 / BPM
 prog = [[220, 261.6, 329.6], [174.6, 220, 261.6], [261.6, 329.6, 392], [196, 246.9, 293.7]]  # Am F C G
 bass = [55, 43.65, 65.4, 49]
 b = 0; t = 0.0
+while t < DROP - 1e-6:
+    put(mus, t, hat(), 1); put(mus, t + beat / 2, hat(), .8)
+    t += beat
+k = 0; rt = beat * 3
+while rt < DROP:
+    step = beat / (2 if rt < DROP - beat else 4); put(mus, rt, clap(), .25 + .5 * (rt / DROP)); rt += step
+t = DROP; b = 0
 while t < TOTAL:
     bar, pos = divmod(b, 4); ch = prog[bar % 4]
     if pos in (0, 2) or (pos == 3 and bar % 2): put(mus, t, kick(), .9)
@@ -52,24 +64,40 @@ def ding():
     t = t_(1.2); return sum(np.sin(2 * np.pi * f * t) * np.exp(-t * 3.5) for f in (1318.5, 1975.5, 2637)) * .25
 def rise(d=.6):
     t = t_(d); return np.sin(2 * np.pi * np.cumsum(500 + 1500 * t / d) / SR) * (t / d) * np.exp(-((t - d) ** 2) * 20) * .12
-for s in seg[1:]: put(fx, s - .2, whoosh(), .9)
-for at in (0, .15, .55, 1.05): put(fx, at, pop(700 + at * 400))
+def hit():
+    x = boom() * .7; c = clap(); x[:len(c)] += c * .6; return x
 for e in ev:
-    at = seg[e['slide'] + 1] + e['start'] / 1000
-    ty = e['type']
-    if ty == 'slam': put(fx, at + .25, boom())
-    elif ty in ('pop', 'wob', 'bounce'): put(fx, at, pop(800 + 200 * (hash(at) % 4)), .7)
+    at, ty = e['at'], e['type']
+    if ty == 'slam' or ty == 'boom': put(fx, at + (.25 if ty == 'slam' else 0), boom())
+    elif ty == 'bigdrop': put(fx, at, boom(), 1.2); put(fx, at, ding(), .5)
     elif ty == 'drop': put(fx, at + .1, pop(600), .6)
-    elif ty == 'right': put(fx, at, whoosh(.25), .45)
-    elif ty == 'stamp': put(fx, at + .1, clap(), 1.2)
-    elif ty == 'draw': put(fx, at, rise(), 1)
+    elif ty == 'hit': put(fx, at, hit())
+    elif ty == 'roll':
+        for k in range(10): put(fx, at + k * .045, tick(), 1.4)
+    elif ty in ('pop', 'wob', 'bounce'): put(fx, at, pop(800 + 150 * (int(at * 10) % 4)), .7)
+    elif ty == 'whoosh': put(fx, at - .15, whoosh(), .9)
+    elif ty == 'right': put(fx, at, whoosh(.25), .4)
+    elif ty == 'stamp': put(fx, at, clap(), 1.3); put(fx, at, boom(), .4)
+    elif ty == 'draw' or ty == 'rise': put(fx, at, rise(), 1.2)
     elif ty == 'count':
         for k in range(8): put(fx, at + k * .07, tick())
-o = seg[5]
-for at in (0, .3, .65, .85, 1.15, 1.4): put(fx, o + at, pop(900), .6)
-put(fx, o + .3, ding())
+    elif ty == 'ding': put(fx, at, ding())
 # duck music under the boom, fade out
-mus *= .55; mix = mus + fx
+mus *= .55
+vo = np.zeros(n); duck = np.ones(n)
+for v in J.get('vo') or []:
+    raw = subprocess.run(['ffmpeg', '-v', 'error', '-i', v['file'], '-f', 'f32le', '-ac', '1', '-ar', str(SR), '-'],
+                         capture_output=True, check=True).stdout
+    x = np.frombuffer(raw, dtype=np.float32).astype(np.float64)
+    pk = np.max(np.abs(x)) or 1
+    put(vo, v["at"], x / pk * .8)
+    i0, i1 = int(v['at'] * SR), min(n, int((v['at'] + len(x) / SR) * SR))
+    duck[max(0, i0):i1] = np.minimum(duck[max(0, i0):i1], .35)
+if J.get('vo'):  # smooth the ducking edges (0.15 s)
+    k = int(SR * .15); ker = np.ones(k) / k
+    duck = np.convolve(duck, ker, mode='same')
+    fx *= .8
+mix = mus * duck + fx + vo
 fade = np.ones(n); k = int(SR * 1.2); fade[-k:] = np.linspace(1, 0, k); mix *= fade
 mix = np.tanh(mix * 1.1) * .85
 pcm = (np.clip(mix, -1, 1) * 32767).astype(np.int16)

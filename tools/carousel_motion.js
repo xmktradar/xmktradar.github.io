@@ -1,3 +1,7 @@
+// Animation for tools/carousel.html, injected by tools/carousel_video.js only (the still pictures never load it).
+// setupSlide(caption, index) builds the 1080x1920 frame around one carousel picture and returns its timeline;
+// drawSlide(t, globalT, duration) draws one frame. The picture is always shown whole: no zoom, so nothing is cut;
+// the part being talked about gets a yellow glow and the rest dims a little (Tim, 2026-10-24).
 function prep(){
  const tl=[],q=(s)=>[...document.querySelectorAll(s)];
  window.__slam=null;

@@ -26,6 +26,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Retail UX helper tests
         run: node --test tools/retail_ux.test.js
+      - name: Motion video tests
+        run: python3 tools/test_motion_video.py
       - name: Page structure the build needs
         run: python3 tools/check_contract.py
       - name: Restore full page data
@@ -42,6 +44,8 @@ jobs:
           mkdir -p "$WORK_DIR"
           echo '{"daily": null}' > "$WORK_DIR/windows.json"
           node tools/stats.js index.html "$WORK_DIR/windows.json" "$WORK_DIR/stats.json" || { echo "::error::共識計算失敗：Update site 會喺呢步停"; exit 1; }
+      - name: VS counts match the site (one per account, latest view)
+        run: python3 tools/test_vs_counts.py "$WORK_DIR/stats.json"
       - name: Language versions
         run: python3 tools/build_langs.py
       - name: No Chinese in en/ko UI text
