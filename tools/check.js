@@ -21,6 +21,12 @@ const { start, pageUrl } = require('./local_server');
           else route.abort();
         });
         await p.goto(url + '#' + v, { waitUntil: 'domcontentloaded' });
+        if (process.env.CI) { const st=[]; try { st.push('t0 '+await p.evaluate(()=>performance.timeOrigin+' '+document.readyState+' '+(window.__dashReady)+' '+typeof window.__loadCore));
+          st.push('core '+await p.evaluate(async()=>{await window.__loadCore();return performance.timeOrigin}));
+          st.push('posts '+await p.evaluate(async()=>{const t=Date.now();await window.__loadAllPosts();return performance.timeOrigin+' '+(Date.now()-t)}));
+          st.push('chrome '+await p.evaluate(()=>{paintChrome();return 1}));
+          st.push('render '+await p.evaluate(()=>{render();return performance.timeOrigin}));
+          } catch(e){ st.push('ERR '+e.message.slice(0,120)) } console.log('STEP', v, JSON.stringify(st), JSON.stringify(DIAG)); }
         let evalErr = '';
         try {
           await p.evaluate(async () => {
