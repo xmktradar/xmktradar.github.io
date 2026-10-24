@@ -732,6 +732,7 @@
     "CART",
     "AMZN",
     "AAPL",
+    "RKLB",
     "RSP"
    ],
    "bear": [
@@ -740,8 +741,8 @@
    "split": [
     "SPY",
     "GLD",
-    "TSLA",
     "NVDA",
+    "TSLA",
     "NBIS",
     "SMH",
     "CRWV"
@@ -753,19 +754,19 @@
    "top": [
     "SPY",
     "SPCX",
-    "AMZN",
-    "META",
     "NVDA",
+    "META",
+    "AMZN",
     "TSLA",
     "QQQ",
-    "GOOGL",
     "AAPL",
+    "GOOGL",
     "GLD"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-24 19:03"
+   "updated_hkt": "2026-10-24 21:01"
   }
  },
- "updated_hkt": "2026-10-24 19:03",
+ "updated_hkt": "2026-10-24 21:01",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
