@@ -32,15 +32,25 @@ def build(prices):
         if len(n) >= 4:
             names.add(n)
     tickers = {t for t in prices if len(t) >= 3 and t.isalpha() and t.upper() not in STOP}
-    words = sorted(names, key=len, reverse=True)
-    rx = r'\b(' + '|'.join(re.escape(w) for w in words) + r'|' + MACRO.replace('\n', '') + r')\b'
-    return re.compile(rx, re.I), re.compile(r'\b(' + '|'.join(sorted(tickers)) + r')\b') if tickers else None
+    words = '|'.join(re.escape(w) for w in sorted(names, key=len, reverse=True))
+    rx = r'\b(' + words + r'|' + MACRO.replace('\n', '') + r')\b'
+    return (re.compile(rx, re.I), re.compile(r'\b(' + '|'.join(sorted(tickers)) + r')\b') if tickers else None,
+            re.compile(r'\b(' + words + r')\b', re.I))
 
 
 def relevant(x, rx):
     """True when the post (or the post it quotes) has a $ticker, a known company or ticker, or macro words."""
-    words, tick = rx
+    words, tick, _ = rx
     text = (x.get('text') or '') + '\n' + ((x.get('quoted') or {}).get('text') or '')
     if x.get('cashtags') or re.search(r'\$[A-Za-z]{1,6}\b', text):
         return True
     return bool(words.search(text) or (tick and tick.search(text)))
+
+
+def tier(x, rx):
+    """Queue order for Grok (Tim, 2026-10-24): 0 = $ticker, 1 = names a company or bare ticker, 2 = macro words only."""
+    _, tick, company = rx
+    text = (x.get('text') or '') + '\n' + ((x.get('quoted') or {}).get('text') or '')
+    if x.get('cashtags') or re.search(r'\$[A-Za-z]{1,6}\b', text):
+        return 0
+    return 1 if company.search(text) or (tick and tick.search(text)) else 2
