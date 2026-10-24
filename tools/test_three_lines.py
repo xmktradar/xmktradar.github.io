@@ -152,6 +152,7 @@ def _texts(slot):
 def test_post_shape_limits_and_utm():
     slot = share.build_three_lines(_daily(), DAY)
     assert slot['date'] == DAY
+    assert slot['date_kst'] == DAY
     assert slot['suggested_kst'] == '08:30'
     assert slot['format'] == 'text_question'
     assert slot['generated_at'].endswith('+08:00')

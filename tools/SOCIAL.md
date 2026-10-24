@@ -182,7 +182,7 @@ Saturday and Sunday (HKT date). `build_weekend` returns at least two posts or th
 }
 ```
 
-Each item has `langs.zh`, `langs.en` and `langs.ko`. A poll item also has `poll` and `langs.<lang>.poll`. Campaign is `weekend`. The home URL is used when the item has no ticker.
+Each item has `langs.zh`, `langs.en` and `langs.ko`. A poll item also has `poll` and `langs.<lang>.poll`. Campaign is `weekend`. The home URL is used when the item has no ticker. `date_kst` on the weekend object is the Asia/Seoul date of that Saturday or Sunday (the run is 07:00 HKT, 08:00 KST). A Saturday morning run is that Saturday.
 
 ## `three_lines`
 
@@ -193,6 +193,7 @@ The lines are the page's `RUX.threeLines` on the daily-tab rows. When `main()` c
 | Field | Meaning |
 | --- | --- |
 | `date` | The social run's HKT day |
+| `date_kst` | Asia/Seoul date of `suggested_kst` (08:30) on that posting day |
 | `generated_at` | ISO time in `+08:00` |
 | `window` | `MM/DD HH:MM – HH:MM HKT`. Dash: 00:00 of the window's start day (or the timed start) through the latest valid post. Writeup fallback: the same cutoff rule as `top5` |
 | `sample` | `{posts, accounts}`. Dash: valid posts in the window, and accounts with a non-folded post in the window. Writeup fallback: `daily.posts` and `daily.accounts` |
@@ -225,6 +226,7 @@ Weekday only, same run. Not written on Saturday or Sunday. One object per hot na
 | `threads` | `{zh, en, ko: {text, url}}` |
 | `x` | `{en: {text, url}}` only when the English body fits in 280 (`xlen`) |
 | `suggested_kst` | One of `09:00`, `11:30`, `14:00`, `17:00`, `20:00`, `22:30`, earliest free slots |
+| `date_kst` | On each list item: Asia/Seoul date of `suggested_kst` on that item's posting day. The list shape stays. Top-level `why_posts_date_kst` is the earliest of those |
 | `format` | `carousel` |
 | `has_link` | `{threads: {zh, en, ko}, x?: {en}}` |
 
@@ -245,6 +247,7 @@ Each language states the account count (`accounts`, and `nb` / `nr` when present
 | `id` | `<lang>-number-<daily\|weekly>-<key>`, `<lang>-stock-<T>` or `<lang>-expert-<T>` |
 | `lang` | `zh`, `en` or `ko` |
 | `slot_kst` | `09:00`, `11:30`, `14:00`, `17:00`, `20:00`, `22:30` (KST, one hour ahead of HKT). On a weekday, `why_posts` take the earliest of these and atomic posts take the times that remain. On a weekend, the first N times, one per point |
+| `date_kst` | Asia/Seoul date of `slot_kst` on the posting day. A Saturday HKT morning run uses that Saturday, not the weekday `date` |
 | `format` | `text_question` (number), `image_card` (stock), `carousel` (expert view) |
 | `point_type` | `number`, `stock` or `expert_view` |
 | `ticker` | present for stock and expert view |
@@ -255,6 +258,12 @@ Each language states the account count (`accounts`, and `nb` / `nr` when present
 | `first_comment` | present when `has_link` is true |
 
 Points are chosen from `daily` then `weekly`: aggregate counts (`posts`, `accounts`, `originals`, `reposts`, `bull_views`, `bear_views`, `clear_accounts`, `bull_total`, `bear_total`, `split_total`), then a stock row, then an expert row. A number or ticker already used that day, including inside `hot_stock` quotes, is skipped. An expert `why` is shown only in Chinese, and only when it adds no extra number and no extra ticker. Otherwise the line is omitted. A number post links to `/<lang>/`. A stock or expert post links to `/<lang>/stock/<T>/`. Campaign is `atomic`.
+
+## `date_kst`
+
+`YYYY-MM-DD` in Asia/Seoul for the intended posting time. Existing `date` fields stay the HKT social day or the ET trade date. The value is computed from the suggested KST clock, or from the ET post time, plus that section's posting day.
+
+The top-level key is the Seoul date of the earliest suggested post on the file's posting day (`date`). A weekday run at 07:05 HKT posts 08:30–22:30 KST that same calendar day. `why_posts` stays a list: each item gets `date_kst`, and top-level `why_posts_date_kst` is the earliest. Atomic posts are a list too, so each item carries `date_kst` (the weekend date when the weekend run wrote them). `python3 tools/share.py --backfill-date-kst` adds only these keys on an existing file. `three_why.py --merge-into` and `intraday.py --merge-from` set them on the keys they write.
 
 ## `data/social-history.json`
 
@@ -268,7 +277,7 @@ Points are chosen from `daily` then `weekly`: aggregate counts (`posts`, `accoun
 
 Written by `python3 tools/intraday.py --slot <name|auto>` (workflow `.github/workflows/intraday.yml`). One slot per run. Merged under the top-level `intraday` key; other top-level keys stay as they are. Slots of the same ET trade date are kept; a new date resets `slots`. No Facebook. Spec `kr` = `ko`.
 
-Schedule: `*/15 * * * 1-5` (every 15 minutes Mon–Fri UTC). The Guard step resolves America/New_York time and only continues within ±20 minutes of a generation time (10 min before each post: 09:35, 10:50, 12:05, 13:20, 14:35, 15:30 ET) on a NYSE trading day. Off-window and weekend/holiday runs exit immediately. This replaced twelve sparse EDT/EST crons that never fired after the workflow was added (GitHub often skips new sparse schedules). Manual runs: `gh workflow run intraday.yml -f slot=intraday_3` or `slot=force`.
+Schedule: `*/15 * * * 1-5` (every 15 minutes Mon–Fri UTC). The Guard step resolves America/New_York time and only continues within ±20 minutes of a generation time (5 min before each post: 09:40, 10:55, 12:10, 13:25, 14:40, 15:35 ET) on a NYSE trading day. A dispatch up to 10 minutes early or late still selects that slot. Off-window, weekend, and holiday runs exit immediately. Early-close days reject slots after 13:00 ET. This replaced twelve sparse EDT/EST crons that never fired after the workflow was added (GitHub often skips new sparse schedules). Manual runs: `gh workflow run intraday.yml -f slot=intraday_3` or `slot=force`.
 
 The workflow concurrency group is `intraday` with `cancel-in-progress: false`. It is separate from `update-site.yml`'s `site-update` group. That job can run 60–90 minutes, and GitHub keeps only one pending run in a group, so sharing the group queues a slot past its window or cancels the older pending run.
 
@@ -276,18 +285,18 @@ Generation also writes `$WORK_DIR/intraday-slot.json` (`slot`, `date`, `generate
 
 When `share.py` `main()` rebuilds weekday posts from scratch, it copies `intraday` from the file it read when `intraday.date` equals that social day. A different date is left off the new file. The weekend branch edits the existing object, so an `intraday` key already in it stays.
 
-Post times are US/Eastern. HKT is ET+12 while EDT is in force, ET+13 after the first Sunday in November (from 2026-11-02). Generation is 10 minutes before each post. Early-close days (2026-11-27, 2026-12-24) skip slots after 13:00 ET. NYSE full closures are `tools/market_holidays.json`.
+Post times are US/Eastern. HKT is ET+12 while EDT is in force, ET+13 after the first Sunday in November (from 2026-11-02). KST is one hour ahead of HKT, so an afternoon ET slot is the next Seoul calendar day. Generation is 5 minutes before each post. Early-close days (2026-11-27, 2026-12-24) skip slots after 13:00 ET. NYSE full closures are `tools/market_holidays.json`.
 
 | Slot | ET | HKT summer (EDT, until 11/1) | HKT winter (EST, from 11/2) | Generate ET |
 | --- | --- | --- | --- | --- |
-| `intraday_open` | 09:45 | 21:45 | 22:45 | 09:35 |
-| `intraday_1` | 11:00 | 23:00 | 00:00 next day | 10:50 |
-| `intraday_2` | 12:15 | 00:15 next day | 01:15 next day | 12:05 |
-| `intraday_3` | 13:30 | 01:30 next day | 02:30 next day | 13:20 |
-| `intraday_4` | 14:45 | 02:45 next day | 03:45 next day | 14:35 |
-| `intraday_close` | 15:40 | 03:40 next day | 04:40 next day | 15:30 |
+| `intraday_open` | 09:45 | 21:45 | 22:45 | 09:40 |
+| `intraday_1` | 11:00 | 23:00 | 00:00 next day | 10:55 |
+| `intraday_2` | 12:15 | 00:15 next day | 01:15 next day | 12:10 |
+| `intraday_3` | 13:30 | 01:30 next day | 02:30 next day | 13:25 |
+| `intraday_4` | 14:45 | 02:45 next day | 03:45 next day | 14:40 |
+| `intraday_close` | 15:40 | 03:40 next day | 04:40 next day | 15:35 |
 
-`auto` picks the slot whose post time is the next one within 30 minutes of now in `America/New_York`. The workflow also requires a NYSE trading day and ±20 minutes of a generation time. `force` (workflow_dispatch slot value, or `--force`) bypasses the time guard and still writes.
+`auto` picks the slot whose generation time is the nearest one within ±20 minutes of now in `America/New_York`, and only on a NYSE trading day. Generation windows do not overlap, so a dispatch from 10 minutes early to 10 minutes late still selects that slot. Weekends, full closures, and early-close slots after 13:00 ET do not match. `force` (workflow_dispatch slot value, or `--force`) bypasses the time guard and still writes. A named slot does not re-check the clock: Guard resolves `auto`, then the write step uses that name after the fetch.
 
 Open is the market-open snapshot plus top consensus. Slots 1–4 are hot names plus bullish/bearish list changes since the previous snapshot (earlier slot that day, else `data/consensus-history.json` / yesterday). Close is a recap before the bell. Counts come from `data/writeup-input.json` daily bull/bear/split (`rank_rows`) or `work/stats.json` when the light scrape just ran. Tickers and counts are never invented.
 
@@ -296,14 +305,16 @@ Live quotes: Yahoo chart API (same `update_prices.chart` session) for SPY, QQQ, 
 ```json
 {
   "date": "2026-10-23",
-  "generated_at": "2026-10-23T10:50:00-04:00",
-  "generated_hkt": "2026-10-23 22:50",
+  "date_kst": "2026-10-24",
+  "generated_at": "2026-10-23T10:55:00-04:00",
+  "generated_hkt": "2026-10-23 22:55",
   "slots": {
     "intraday_1": {
       "post_et": "11:00",
       "post_hkt": "23:00",
-      "generated_at": "2026-10-23T10:50:00-04:00",
+      "generated_at": "2026-10-23T10:55:00-04:00",
       "date": "2026-10-23",
+      "date_kst": "2026-10-24",
       "quotes": {
         "SPY": {"price": 670.12, "prev_close": 668.0, "chg_pct": 0.32, "time": "2026-10-23T11:00:00-04:00"}
       },
@@ -327,6 +338,7 @@ Live quotes: Yahoo chart API (same `update_prices.chart` session) for SPY, QQQ, 
 | Field | Meaning |
 | --- | --- |
 | `date` | ET trade date |
+| `date_kst` | Asia/Seoul date of that slot's ET post time. The intraday object uses the earliest slot present. `intraday_3` at 2026-10-23 13:30 ET is 2026-10-24. `intraday_1` in the example above is the only slot, so the object is 2026-10-24 as well |
 | `generated_at` | ISO-8601 with offset |
 | `generated_hkt` | `YYYY-MM-DD HH:MM` |
 | `quotes` | `{TICKER: {price, prev_close, chg_pct, time}}` from Yahoo; omitted when that ticker failed |

@@ -14,6 +14,7 @@ hot_stock, discussion, three_lines, why_posts and atomic_posts. On Saturday and 
 not write three_lines or why_posts. Schemas are on the build_* functions and in tools/SOCIAL.md.
 python3 tools/share.py --og-only writes work/og.json from dash-data + work/stats.json and stops
 (no social posts, no index.html rewrite); used by tools/ig_sample.js.
+python3 tools/share.py --backfill-date-kst adds date_kst on data/social-posts.json and does not rewrite post text.
 """
 import hashlib
 import html
@@ -26,6 +27,7 @@ from datetime import datetime
 from ranking import rank_rows
 from sitedata import HK, load, notice, now_hk, read_json, work, write_json
 from utm import PLATFORM, normalize_file, tag_posts, tag_url
+import date_kst
 import three_why
 
 build_three_lines = three_why.build_three_lines
@@ -2962,8 +2964,10 @@ def build_weekend(weekly, day):
         if piece.get('ticker'):
             item['ticker'] = piece['ticker']
         posts.append(item)
+    day_s = _as_day(day)
     return {
-        'date': _as_day(day),
+        'date': day_s,
+        'date_kst': date_kst.kst_date(day_s, date_kst.WEEKEND_KST),
         'source': 'data/writeup-input.json weekly',
         'posts': posts,
     }
@@ -3480,6 +3484,7 @@ def attach_market_slots(sp, day, writeup, history=None, save=False, dash=None):
         ]
     if save:
         save_social_history(history)
+    date_kst.apply_date_kst(sp, atomic_day=day)
     return sp
 
 
@@ -3538,6 +3543,7 @@ def attach_weekend_slots(sp, day, writeup, history=None, save=False):
     })
     if save:
         save_social_history(history)
+    date_kst.apply_date_kst(sp, atomic_day=day)
     return sp
 
 
@@ -3611,6 +3617,7 @@ def main():
             sp, day, writeup if isinstance(writeup, dict) else {}, load_social_history(),
             save=True, dash=d)
         carry_intraday(sp, prev_sp, day)
+        date_kst.apply_date_kst(sp, atomic_day=day)
         write_json('data/social-posts.json', sp, indent=1)
         normalize_file('data/social-posts.json')
         sp = read_json('data/social-posts.json')
@@ -3622,6 +3629,7 @@ def main():
         # Weekend slots only. Weekday posts, top5 and the Friday thread stay as they are.
         writeup = read_json('data/writeup-input.json', {}) or {}
         attach_weekend_slots(sp, day, writeup if isinstance(writeup, dict) else {}, load_social_history(), save=True)
+        date_kst.apply_date_kst(sp, atomic_day=day)
         write_json('data/social-posts.json', sp, indent=1)
         normalize_file('data/social-posts.json')
         notice(f'週末社交槽已寫好：{day}')
@@ -3660,5 +3668,11 @@ def og_only():
 if __name__ == '__main__':
     if '--og-only' in sys.argv:
         og_only()
+    elif '--backfill-date-kst' in sys.argv:
+        path = 'data/social-posts.json'
+        args = [a for a in sys.argv[1:] if a != '--backfill-date-kst' and not a.startswith('-')]
+        if args:
+            path = args[0]
+        date_kst.backfill_file(path)
     else:
         main()
