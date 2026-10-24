@@ -17,6 +17,7 @@ const path = require('path');
 const { start, pageUrl } = require('./local_server');
 
 const SITE = 'https://thecrowdtape.com/';
+const EMBED = require('./embed.js');
 const LANGS = { zh: 'zh-Hant', en: 'en', ko: 'ko' };
 const MIN_ACCOUNTS = 2;
 const AV_DIR = 'av';
@@ -27,6 +28,7 @@ const T = {
     top: '回到頂部',
     open: '打開互動版（含走勢圖）',
     home: '首頁',
+    embed: '嵌入此卡片',
     advice: '不構成投資建議。本頁只整理公開貼文，供參考。',
     tools: '工具',
     support: '支持我哋',
@@ -50,6 +52,7 @@ const T = {
     top: 'Back to top',
     open: 'Open the interactive page (with chart)',
     home: 'Home',
+    embed: 'Embed this',
     advice: 'Not investment advice. This page only summarises public posts.',
     tools: 'Tools',
     support: 'Support us',
@@ -73,6 +76,7 @@ const T = {
     top: '맨 위로',
     open: '인터랙티브 페이지 열기(차트 포함)',
     home: '홈',
+    embed: '이 카드 퍼가기',
     advice: '투자 조언이 아닙니다. 이 페이지는 공개 게시물을 정리한 자료입니다.',
     tools: '도구',
     support: '후원하기',
@@ -321,6 +325,7 @@ function graph(lang, t, url, meta, stats) {
         name: meta.title,
         inLanguage: LANGS[lang],
         isPartOf: { '@type': 'WebSite', name: 'The Crowd Tape', url: SITE },
+        ...(modified ? { dateModified: modified } : {}),
       },
       {
         '@type': 'BreadcrumbList',
@@ -411,7 +416,7 @@ ${NL_CSS}</style>
 <p class="tv-line"><span class="pj-tag">${esc(T[lang].promo)}</span> <a href="${esc(tvHref)}" rel="sponsored noopener" target="_blank" data-tool="tradingview" data-ticker="${esc(t)}">${esc(T[lang].tv)}</a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover" data-ticker="${esc(t)}">Stock Rover</a></p>
 <div class="open-live"><a href="/${lang}/#stock/${encodeURIComponent(t)}">${esc(T[lang].open)}</a></div>
 ${indexRow(lang, list)}</main>
-<footer class="wrap foot"><p><a href="/${lang}/tools/">${esc(T[lang].tools)}</a> · <a href="/${lang}/support/">${esc(T[lang].support)}</a> · <a href="/${lang}/newsletter/">${esc(T[lang].news)}</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">TradingView <span class="pj-tag">${esc(T[lang].promo)}</span></a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="pj-tag">${esc(T[lang].promo)}</span></a></p></footer>
+<footer class="wrap foot"><p><a href="/${lang}/tools/">${esc(T[lang].tools)}</a> · <a href="/${lang}/support/">${esc(T[lang].support)}</a> · <a href="/${lang}/newsletter/">${esc(T[lang].news)}</a> · <a href="/${lang}/embed/?t=${encodeURIComponent(t)}&amp;utm_source=stock&amp;utm_medium=footer&amp;utm_campaign=embed" class="embed-link">${esc(T[lang].embed)}</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">TradingView <span class="pj-tag">${esc(T[lang].promo)}</span></a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="pj-tag">${esc(T[lang].promo)}</span></a></p></footer>
 <script>document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}var tool=a.getAttribute('data-tool');if(tool||h==='tradingview.com'||h.endsWith('.tradingview.com')){var aff={tool:(tool||'tradingview').toLowerCase(),lang:document.documentElement.lang||''};var ticker=a.getAttribute('data-ticker');if(ticker)aff.ticker=ticker;gtag('event','affiliate_click',aff);}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com'))gtag('event','x_outbound',{link_url:u,page:'stock',lang:document.documentElement.lang||'',transport_type:'beacon'})});</script>
 ${nlScript(nlCopy(lang).ok)}
 ${save}
@@ -583,7 +588,13 @@ function avatars(html, seen) {
       fs.mkdirSync(path.join(dir, slug(pg.t)), { recursive: true });
       fs.writeFileSync(path.join(dir, slug(pg.t), 'index.html'), shell(master, lang, pg.t, names, body, meta, stats, link.href));
       urls.push(`${lang}/stock/${slug(pg.t)}/`);
+      if (lang === 'en') { fs.mkdirSync('embed', { recursive: true }); fs.writeFileSync(path.join('embed', slug(pg.t) + '.html'), EMBED.card(pg.t, slug(pg.t), pg.name, pg.c, pg.to)); }
     }
+    { const hd = master.slice(0, master.indexOf('</head>'));
+      const ga = (hd.match(/<script async src="https:\/\/www\.googletagmanager\.com[^>]*><\/script>\s*<script>window\.dataLayer[\s\S]*?<\/script>/) || [''])[0];
+      fs.mkdirSync(path.join(lang, 'embed'), { recursive: true });
+      fs.writeFileSync(path.join(lang, 'embed', 'index.html'), EMBED.howto(lang, ga, names.includes('NVDA') ? 'NVDA' : slug(names[0]))); }
+    if (lang === 'en') for (const f of fs.readdirSync('embed')) if (f.endsWith('.html') && !have.has(f.slice(0, -5))) fs.rmSync(path.join('embed', f));
     // link row above the footer of the language page
     let s = master.replace(new RegExp(MARK + '[\\s\\S]*?' + MARK), '');
     s = s.replace('<footer class="wrap foot" id="foot">', MARK + indexRow(lang, list) + MARK + '<footer class="wrap foot" id="foot">');
@@ -602,7 +613,10 @@ function avatars(html, seen) {
     const alt = Object.entries(LANGS).map(([k, h]) => `<xhtml:link rel="alternate" hreflang="${h}" href="${SITE}${k}/stock/${slug(t)}/"/>`).join('');
     return Object.keys(LANGS).map(k => `  <url><loc>${SITE}${k}/stock/${slug(t)}/</loc><lastmod>${gen}</lastmod><changefreq>daily</changefreq>${alt}</url>`).join('\n');
   }).join('\n');
-  sm = dedupeSitemap(sm.replace('</urlset>', rows + '\n</urlset>'));
+  sm = sm.replace(/\s*<url><loc>[^<]*\/embed\/<\/loc>[\s\S]*?<\/url>/g, '');
+  const ealt = Object.entries(LANGS).map(([k, h]) => `<xhtml:link rel="alternate" hreflang="${h}" href="${SITE}${k}/embed/"/>`).join('');
+  const erows = Object.keys(LANGS).map(k => `  <url><loc>${SITE}${k}/embed/</loc><lastmod>${gen}</lastmod><changefreq>daily</changefreq>${ealt}</url>`).join('\n');
+  sm = dedupeSitemap(sm.replace('</urlset>', rows + '\n' + erows + '\n</urlset>'));
   fs.writeFileSync('sitemap.xml', sm);
 
   // check a few pages at desktop and phone width
