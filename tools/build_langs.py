@@ -292,6 +292,15 @@ def swap_data(d, lang, fixed):
             if 'summary_zh' in p:
                 p['summary_zh'] = ''
 
+    if lang != 'zh':  # auto earnings tags from tools/update_prices.py carry a Chinese note
+        for f in ((d.get('macro') or {}).get('flags') or []):
+            m = re.match(r'(\d+)/(\d+)（美國時間）公布季度業績(，預計日期未經公司確認)?（Yahoo Finance）$', f.get('note') or '')
+            if m:
+                est = bool(m.group(3))
+                f['note'] = (f'Quarterly results {m.group(1)}/{m.group(2)} (US time){", date estimated, not confirmed by the company" if est else ""} (Yahoo Finance)'
+                             if lang == 'en' else
+                             f'{m.group(1)}/{m.group(2)} (미국 시간) 분기 실적 발표{", 회사 미확정 예상일" if est else ""} (Yahoo Finance)')
+
     def walk(o):
         if isinstance(o, dict):
             return {k: walk(v) for k, v in o.items()}
