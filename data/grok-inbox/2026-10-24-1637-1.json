@@ -1,0 +1,91 @@
+{
+ "posts": {
+  "2113868086407500211": {
+   "en_summary": "@sentimentrader: on Oct 22 stocks sold off, bonds rallied and gold fell; $BND sentiment jumped to 95.54 while $GLD sentiment plunged to 6.53, an 89 point gap wider than 99.98% of readings since 2008.",
+   "zh_summary": "@sentimentrader：10月22日股市下跌、債券上升、黃金下跌；$BND情緒指數升至95.54，$GLD則跌至6.53，89點差距大於2008年以來99.98%的讀數。",
+   "ko_summary": "@sentimentrader: 10월 22일 주식은 하락, 채권은 상승, 금은 하락. $BND 심리는 95.54로 급등, $GLD는 6.53으로 급락. 89포인트 격차는 2008년 이후 99.98%의 수치보다 크다.",
+   "tickers": [
+    "BND",
+    "GLD"
+   ],
+   "stance": "中性",
+   "stance_by_ticker": {
+    "BND": "未表態",
+    "GLD": "未表態"
+   },
+   "horizon": null,
+   "basis": "情緒",
+   "specific": true,
+   "macro": false,
+   "macro_theme": null,
+   "macro_impact": null,
+   "ticker_notes": {}
+  },
+  "2113890814984134898": {
+   "en_summary": "@Schuldensuehner: German landlord Heimstaden calls Germany uninvestable and is withholding fresh capital over Berlin's expropriation plans; it owns 20,000 Berlin apartments worth about €5bn, sees a potential €1bn loss, and its hybrid bond fell from about 98 cents in August to 82.5.",
+   "zh_summary": "@Schuldensuehner：德國大型房東Heimstaden稱德國不宜投資，因柏林徵收計劃暫停注資；其在柏林擁有2萬套公寓，價值約50億歐元，估計潛在損失10億歐元，其混合債券由8月約98仙跌至82.5。",
+   "ko_summary": "@Schuldensuehner: 독일 대형 임대업체 하임스타덴은 베를린 수용 계획 때문에 독일을 투자 불가로 보고 신규 자본 투입을 보류. 베를린 아파트 2만 채(약 50억 유로)를 보유, 잠재 손실 10억 유로 추정, 하이브리드 채권은 8월 약 98센트에서 82.5로 하락.",
+   "tickers": [],
+   "stance": "睇淡",
+   "stance_by_ticker": {},
+   "horizon": "中線",
+   "basis": "宏觀",
+   "specific": true,
+   "macro": true,
+   "macro_theme": "policy",
+   "macro_impact": "利淡",
+   "ticker_notes": {}
+  },
+  "2113797280834650185": {
+   "en_summary": "(Reposted by @Jason) @theallinpod: Palo Alto Networks CEO Nikesh Arora says the cyber panic is just starting, with attacks coming faster than every 10 days; firms must pay down technology debt, and perimeter products like Palo Alto's or Cloudflare's can apply virtual patches, with customer calls rising daily. $PANW $NET",
+   "zh_summary": "(Reposted by @Jason) @theallinpod：Palo Alto Networks執行長Nikesh Arora表示網絡恐慌才剛開始，攻擊頻率將快於每10天一次；企業必須償還技術債，Palo Alto或Cloudflare等邊界防護產品可提供虛擬修補，客戶來電每日增加。$PANW $NET",
+   "ko_summary": "(Reposted by @Jason) @theallinpod: 팔로알토 네트웍스 CEO 니케시 아로라는 사이버 공포가 이제 시작이며 공격이 10일보다 더 자주 올 것이라고 말했다. 기업은 기술 부채를 갚아야 하고 팔로알토나 클라우드플레어 같은 경계 방어 제품이 가상 패치를 적용할 수 있으며 고객 문의가 매일 늘고 있다. $PANW $NET",
+   "tickers": [
+    "PANW",
+    "NET"
+   ],
+   "stance": "睇好",
+   "stance_by_ticker": {
+    "PANW": "睇好",
+    "NET": "睇好"
+   },
+   "horizon": "中線",
+   "basis": "催化劑",
+   "specific": false,
+   "macro": false,
+   "macro_theme": null,
+   "macro_impact": null,
+   "ticker_notes": {}
+  },
+  "2113796552883900468": {
+   "en_summary": "@leadlagreport: says oil is about to be deflationary.",
+   "zh_summary": "@leadlagreport：他表示油價即將帶來通縮效應。",
+   "ko_summary": "@leadlagreport: 유가가 곧 디플레이션 요인이 될 것이라고 말했다.",
+   "tickers": [],
+   "stance": "睇淡",
+   "stance_by_ticker": {},
+   "horizon": "短線",
+   "basis": "宏觀",
+   "specific": false,
+   "macro": true,
+   "macro_theme": "energy",
+   "macro_impact": "利好",
+   "ticker_notes": {}
+  },
+  "2113786297370525838": {
+   "en_summary": "@steve_hanke: WSJ reports Trump is expected to scrap some tariffs on Canadian farm and forestry goods to help Susan Collins in Maine; he says tariffs are taxes on American consumers.",
+   "zh_summary": "@steve_hanke：據《華爾街日報》報導，特朗普預計取消部分加拿大農林產品關稅以助Susan Collins在緬因州勝選；他認為關稅是向美國消費者徵稅。",
+   "ko_summary": "@steve_hanke: WSJ에 따르면 트럼프가 메인주 수전 콜린스를 돕기 위해 캐나다 농림산품 일부 관세를 폐지할 예정. 그는 관세는 미국 소비자에 대한 세금이라고 말한다.",
+   "tickers": [],
+   "stance": "中性",
+   "stance_by_ticker": {},
+   "horizon": null,
+   "basis": "宏觀",
+   "specific": false,
+   "macro": true,
+   "macro_theme": "policy",
+   "macro_impact": "利好",
+   "ticker_notes": {}
+  }
+ }
+}
