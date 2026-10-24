@@ -15,18 +15,14 @@ const { start, pageUrl } = require('./local_server');
       for (const v of ['daily', 'weekly', 'monthly', 'macro', 'tracked', 'stock/NVDA']) {
         const p = await b.newPage({ viewport: { width: w, height: h } });
         const errs = [];
-        p.on('pageerror', e => errs.push(e.message));const DIAG=[];p.on('framenavigated',f=>DIAG.push('nav '+(f===p.mainFrame())+' '+f.url()));p.on('console',m=>DIAG.push('con '+m.text().slice(0,200)));p.on('crash',()=>DIAG.push('crash'));p.on('close',()=>DIAG.push('close'));
+        p.on('pageerror', e => errs.push(e.message));
         await p.route('**/*', route => {
           if (route.request().url().startsWith(srv.origin)) route.continue();
           else route.abort();
         });
         await p.goto(url + '#' + v, { waitUntil: 'domcontentloaded' });
-        if (process.env.CI) { const st=[]; try { st.push('t0 '+await p.evaluate(()=>performance.timeOrigin+' '+document.readyState+' '+(window.__dashReady)+' '+typeof window.__loadCore));
-          st.push('core '+await p.evaluate(async()=>{await window.__loadCore();return performance.timeOrigin}));
-          st.push('posts '+await p.evaluate(async()=>{const t=Date.now();await window.__loadAllPosts();return performance.timeOrigin+' '+(Date.now()-t)}));
-          st.push('chrome '+await p.evaluate(()=>{paintChrome();return 1}));
-          st.push('render '+await p.evaluate(()=>{render();return performance.timeOrigin}));
-          } catch(e){ st.push('ERR '+e.message.slice(0,120)) } console.log('STEP', v, JSON.stringify(st), JSON.stringify(DIAG)); }
+        // 等開頁流程（完整資料＋分批畫面）完成先檢查；用輪詢，唔 await 頁面入面嘅 promise
+        await p.waitForFunction(() => window.__dashReady === true && window.__viewDone !== false, null, { timeout: 60000 }).catch(() => {});
         let evalErr = '';
         try {
           await p.evaluate(async () => {
@@ -38,7 +34,7 @@ const { start, pageUrl } = require('./local_server');
             if (typeof D !== 'undefined' && D._ext && D._ext.core && Object.keys(D.prices || {}).length === 0)
               throw new Error('prices did not load');
           });
-        } catch (e) { evalErr = e.message || String(e); console.log('DIAG', JSON.stringify(DIAG), (e.stack||'').slice(0,600)); }
+        } catch (e) { evalErr = e.message || String(e); }
         await p.waitForTimeout(300);
         const info = await p.evaluate(() => ({ ovf: document.documentElement.scrollWidth > innerWidth + 1, len: document.body.innerText.length }));
         const ok = !errs.length && !evalErr && !info.ovf && info.len > 500;

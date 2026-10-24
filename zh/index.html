@@ -1522,7 +1522,10 @@ const MK_NAME={'VIX':'VIX 恐慌指數','US10Y':'美債 10 年息','10 年期債
 // TradingView 免費 Ticker Tape（實時，可能延遲）：載入成功先顯示，失敗就收起，唔留空位
 const TAPE_SYMS=[{proName:'FOREXCOM:SPXUSD',title:'標普500'},{proName:'FOREXCOM:NSXUSD',title:'納指100'},{proName:'FOREXCOM:DJI',title:'道指'},{proName:'PEPPERSTONE:VIX',title:'VIX 恐慌指數（差價合約）'},{proName:'TVC:USOIL',title:'WTI 油價'}];
 const tapeHtml=()=>`<div class="mk-live" style="display:none"><span class="mk-live-l"><i></i>TradingView 即時報價（可能延遲）</span><div class="mk-live-w"></div></div>`;
-function mountTape(root){const box=root&&root.querySelector('.mk-live');if(!box||box.dataset.on)return;box.dataset.on='1';const w=box.querySelector('.mk-live-w');
+// 速度：TradingView 跑馬燈等捲到附近先載入（冇 IntersectionObserver 就即刻載）
+function mountTape(root){const box=root&&root.querySelector('.mk-live');if(!box||box.dataset.on)return;box.dataset.on='1';
+ if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();tapeNow(box)}},{rootMargin:'300px 0px'});io.observe(box.closest('section')||box.parentElement||box)}else tapeNow(box)}
+function tapeNow(box){const w=box.querySelector('.mk-live-w');if(!w||!box.isConnected)return;
  const c=document.createElement('div');c.className='tradingview-widget-container';c.innerHTML='<div class="tradingview-widget-container__widget"></div>';
  const sc=document.createElement('script');sc.type='text/javascript';sc.async=true;sc.src='https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
  sc.textContent=JSON.stringify({symbols:TAPE_SYMS,showSymbolLogo:false,isTransparent:true,displayMode:'compact',colorTheme:'light',locale:(PAGE_LANG==='en'?'en':PAGE_LANG==='ko'?'kr':'zh_TW')});
@@ -1688,7 +1691,7 @@ function putView(view,html){const tok=++PV_TOK;window.__viewDone=false;
   if(rest.length)setTimeout(step,0);else{window.__viewDone=true;document.dispatchEvent(new Event('view-done'))}};setTimeout(step,0)}
 function drawView(){document.querySelectorAll('nav.tabs button[data-v]').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===current));
  try{const html=VIEWS[current]();const view=document.getElementById('view');
-  if(view.querySelector('.mk-live[data-on]')&&lastViewKey===current&&lastViewHtml===html){if(coreDone){const ld=view.querySelector('#dash-load');if(ld)ld.remove()}mountStatus();mountMore()}
+  if(lastViewKey===current&&lastViewHtml===html&&view.firstChild){if(coreDone){const ld=view.querySelector('#dash-load');if(ld)ld.remove()}mountStatus();mountMore()}
   else{const oldTape=view.querySelector('.mk-live[data-on]');putView(view,html);if(oldTape){const nw=view.querySelector('.mk-live');if(nw)nw.replaceWith(oldTape)}linkHandles(view);fitTables(view);clampLists(view);try{mountTape(view)}catch(e){}mountStatus();mountMore();lastViewKey=current;lastViewHtml=html}}catch(e){console.error(e);document.getElementById('view').innerHTML=empty('畫面顯示錯誤：'+esc(e.message))}}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-tk]');if(b){e.preventDefault();location.hash='stock/'+b.dataset.tk;return}
  const v=e.target.closest('nav.tabs button[data-v]');if(v){location.hash=v.dataset.v;return}
@@ -1713,7 +1716,7 @@ ${MAC&&MAC.rows.length?`<p>大市數據：${[...new Set(MAC.rows.map(r=>(r.src||
 paintChrome();
 render();
 PV_BOOT=false;
-if(!coreDone){loadCore().then(function(){window.__dashReady=true;setTimeout(function(){paintChrome();renderChunked()},0)}).catch(function(e){console.error(e);coreDone=true;window.__dashReady=true;paintChrome();render()})}else window.__dashReady=true;
+if(!coreDone){loadCore().then(function(){setTimeout(function(){paintChrome();renderChunked();window.__dashReady=true},0)}).catch(function(e){console.error(e);coreDone=true;window.__dashReady=true;paintChrome();render()})}else window.__dashReady=true;
 document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com')){gtag('event','social_click',{platform:'x',link_url:u,transport_type:'beacon'});gtag('event','x_outbound',{link_url:u,page:'home',lang:document.documentElement.lang||'',transport_type:'beacon'});}else if(h==='instagram.com'||h.endsWith('.instagram.com'))gtag('event','social_click',{platform:'instagram',link_url:u,transport_type:'beacon'});else if(h==='threads.net'||h.endsWith('.threads.net')||h==='threads.com'||h.endsWith('.threads.com'))gtag('event','social_click',{platform:'threads',link_url:u,transport_type:'beacon'});else if(h==='paypal.com'||h.endsWith('.paypal.com')||h==='paypal.me'||h.endsWith('.paypal.me'))gtag('event','donate_click',{method:'paypal',page:'home',lang:document.documentElement.lang})});
 
 </script>
