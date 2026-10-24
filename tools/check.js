@@ -21,6 +21,8 @@ const { start, pageUrl } = require('./local_server');
           else route.abort();
         });
         await p.goto(url + '#' + v, { waitUntil: 'domcontentloaded' });
+        // 等開頁流程（完整資料＋分批畫面）完成先檢查；用輪詢，唔 await 頁面入面嘅 promise
+        await p.waitForFunction(() => window.__dashReady === true && window.__viewDone !== false, null, { timeout: 60000 }).catch(() => {});
         let evalErr = '';
         try {
           await p.evaluate(async () => {
