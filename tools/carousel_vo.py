@@ -56,17 +56,18 @@ def lines(job):
     top4 = first_cards(s[1])[:4]
     up, down = first_cards(s[2], '🟢')[:1], first_cards(s[2], '🔴')[:1]
     split = first_cards(s[3])[:1]
-    vs = f'{bull} 個看好，{bear} 個看空，' + ('多方佔上風！' if bull > bear else '空方佔上風！' if bear > bull else '打成平手！')
-    joint = '，'.join(([f'一起看好 {spell(up[0])}'] if up else []) + ([f'一起看空 {spell(down[0])}'] if down else []))
+    # short lines so the zh video fits ~29 s at RATE +10% (2026-10-25: the longer script needed +40%)
+    vs = f'{bull} 看好，{bear} 看空，' + ('多方領先！' if bull > bear else '空方領先！' if bear > bull else '打平！')
+    joint = '，'.join(([f'看好 {spell(up[0])}'] if up else []) + ([f'看空 {spell(down[0])}'] if down else []))
     return [
-        '美股大神們今天最熱門的是哪一檔？',
-        f'答案是 {spell(big)}，{n} 個帳號在討論！',
+        '今天最熱門的美股是？',
+        f'{spell(big)}，{n} 個帳號在聊',
         vs,
-        '看看大神怎麼說。',
-        ('熱度前四：' + '、'.join(spell(t) for t in top4) + '。') if top4 else '今天的熱度排行。',
-        (joint + '。') if joint else '大神們一起看好和看空的股票。',
-        f'分歧最大：{spell(split[0])}，你站哪邊？' if split else '你站哪邊？',
-        '完整內容上 thecrowdtape.com！',
+        '大神怎麼說？',
+        '熱度前四，一張圖看完' if top4 else '今天的熱度排行',  # the 4 tickers are on the picture
+        joint if joint else '大神們的共識',
+        f'{spell(split[0])} 分歧最大！' if split else '你站哪邊？',
+        '詳情看 thecrowdtape.com',
     ]
 
 
