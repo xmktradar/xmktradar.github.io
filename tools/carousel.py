@@ -30,6 +30,9 @@ THEME = {'1230': 'snap', '1630': 'duel', '2030': 'focus'}
 TITLE = {'1230': {'zh': '今日快照', 'en': "Today's snapshot", 'ko': '오늘의 스냅샷'},
          '1630': {'zh': '好淡對決', 'en': 'Bull vs bear', 'ko': '강세 vs 약세'},
          '2030': {'zh': '開市前焦點', 'en': 'Before the open', 'ko': '개장 전 포커스'}}
+# Slots and languages that also get a motion video og/c/<day>-<slot>-<lang>.mp4 (tools/carousel_video.js, Tim 2026-10-24: 12:30 only).
+VIDEO_SLOTS = tuple(x for x in os.environ.get('VIDEO_SLOTS', '1230').split(',') if x)
+VIDEO_LANGS = tuple(x for x in os.environ.get('VIDEO_LANGS', 'zh,en').split(',') if x)  # Tim 2026-10-25: no Korean video
 TARGET_DAYS = 7  # price targets from the last week
 TALK = {'zh': '🗣️ 大神點講', 'en': '🗣️ What the accounts say', 'ko': '🗣️ 계정들의 의견'}
 
@@ -478,11 +481,13 @@ def slot_page(sp):
                          + (f'<h4>Facebook 用正方形圖</h4><div class="grid">' + ''.join(f'<a href="{html.escape(u)}" download><img src="{html.escape(u)}" alt="FB {n + 1}"></a>'
                                                                               for n, u in enumerate(sl['images_fb'][lang])) + '</div>' if sl.get('images_fb') else '')
                          + f"{box('Facebook', p['facebook'], 16)}"
+                         + (f'<h4>Reels 短片（IG Reels、FB Reels 用，已經有聲）</h4><video controls playsinline preload="none" src="{html.escape(sl["video"][lang])}"></video>'
+                            f'<p><a href="{html.escape(sl["video"][lang])}" download>下載短片</a></p>' if (sl.get('video') or {}).get(lang) else '')
                          + (box('Facebook 電子報', p['facebook_cta'], 18) if p.get('facebook_cta') else '')
                          + (box('IG Story hashtag', p.get('story', ''), 2) if sl.get('story') else '') + '</details>')
         out.append(f'<section class="slot"><h2>{times[0]} {TITLE[key]["zh"]}</h2><p>製作時間 {sl["made_hkt"]} HKT・'
                    f'{"有 IG Story（圖喺下面每個語言嘅舊格式部分）" if sl.get("story") else "冇 IG Story"}</p>{"".join(langs)}</section>')
-    css = ('<style>.slot .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}.slot .grid img{border-radius:6px}'
+    css = ('<style>.slot .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}.slot .grid img{border-radius:6px}.slot video{width:240px;max-width:100%;border-radius:8px;margin-top:6px}'
            'details{margin-top:10px}summary{font-weight:700;cursor:pointer}h4{margin:12px 0 0;font-size:14px}</style>')
     return css + '<h2 style="margin-top:24px">今日三個時段（多圖帖，Grok bot 用呢度）</h2>' + ''.join(out)
 
@@ -577,6 +582,8 @@ def main():
                       'images': {l: made[l]['images'] for l in LANGS}, 'images_fb': {l: made[l]['images_fb'] for l in LANGS}, 'posts': {l: made[l]['posts'] for l in LANGS}}
         if key == '1230':
             slots[key]['stories'] = sp.get('stories', {})
+        if key in VIDEO_SLOTS:  # tools/carousel_video_post.py drops a language whose video was not made
+            slots[key]['video'] = {l: f'{SITE}og/c/{day}-{key}-{l}.mp4' for l in LANGS if l in VIDEO_LANGS}
         written.append(key)
     if not jobs:
         return
