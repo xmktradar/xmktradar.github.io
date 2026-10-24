@@ -1006,9 +1006,12 @@ let WIN=new Map();const winOf=(from,to)=>{const k=from+'|'+to;let w=WIN.get(k);i
 const postsIn=(from,to)=>winOf(from,to).xs.slice();
 const rawIn=(from,to)=>ALLP.filter(p=>inR(p.date,p.ms,from,to));
 function latest(acc,t,from,to){const w=winOf(from,to);if(!w.last){w.last=new Map();for(const x of w.xs){const k=x.acc+'\n'+x.t,r=w.last.get(k);if(!r||x.ms>=r.ms)w.last.set(k,x)}}return w.last.get(acc+'\n'+t)||null}
-function prevStance(acc,t,beforeMs){let r=null;for(const x of POSTS)if(x.acc===acc&&x.t===t&&x.ms<beforeMs&&stanced(x.s)&&(!r||x.ms>r.ms))r=x;return r}
+// 速度：每個帳號＋股票嘅已表態貼文按時間排好做索引（POSTS 變咗就重建），唔使每次掃晒全部貼文
+let PSI=null,PSI_SRC=null,PSI_N=-1,CHG_MEMO=new Map();
+function psIndex(){if(PSI&&PSI_SRC===POSTS&&PSI_N===POSTS.length)return PSI;PSI=new Map();PSI_SRC=POSTS;PSI_N=POSTS.length;CHG_MEMO=new Map();for(const x of POSTS){if(!stanced(x.s))continue;const k=x.acc+'\u0001'+x.t;let a=PSI.get(k);if(!a)PSI.set(k,a=[]);a.push(x)}PSI.forEach(a=>a.sort((p,q)=>p.ms-q.ms));return PSI}
+function prevStance(acc,t,beforeMs){const a=psIndex().get(acc+'\u0001'+t);if(!a)return null;let lo=0,hi=a.length;while(lo<hi){const m=(lo+hi)>>1;if(a[m].ms<beforeMs)lo=m+1;else hi=m}let i=lo-1;if(i<0)return null;while(i>0&&a[i-1].ms===a[i].ms)i--;return a[i]}
 function change(prev,cur){if(!prev||!cur||!stanced(cur.s)||prev.s===cur.s)return null;if(explicit(prev.s)&&explicit(cur.s))return '反轉';const rank={bear:0,neu:1,bull:2};return rank[cur.s]>rank[prev.s]?'轉強':'轉弱'}
-const chgOf=x=>change(prevStance(x.acc,x.t,x.ms),x);
+const chgOf=x=>{psIndex();if(CHG_MEMO.has(x))return CHG_MEMO.get(x);const r=change(prevStance(x.acc,x.t,x.ms),x);CHG_MEMO.set(x,r);return r};
 function accsOf(from,to){const w=winOf(from,to);if(!w.accs)w.accs=[...new Set(w.xs.map(x=>x.acc))];return w.accs.slice()}
 // 共識計算（一致程度、共同看多／看空、好淡分歧）計所有追蹤帳號
 function dist(t,from,to,all){const c={bull:0,bear:0,neu:0,none:0,accs:0,mentions:0};accsOf(from,to).filter(a=>all||inCons(a)).forEach(a=>{const x=latest(a,t,from,to);if(x){c[x.s]++;c.accs++}});c.mentions=postsIn(from,to).filter(x=>x.t===t).length;return c}
@@ -1265,8 +1268,8 @@ function viewDaily(){
  const label=w.merged?'本期':'今日';
  const shownAccs=[...new Set(cur.map(x=>x.acc))].sort((a,b)=>a.localeCompare(b));
  const noTk=[...new Set(curRaw.map(p=>p.acc))].filter(a=>!shownAccs.includes(a)).sort();
- const score=p=>{const xs=POSTS.filter(x=>x.p===p);if(!xs.length)return -1;return Math.max(...xs.map(x=>{const ch=chgOf(x);return !explicit(x.s)?(ch?1:(stanced(x.s)?0.5:0)):(ch?3:2)}))};
- const keyAll=vposts.slice().sort((a,b)=>score(b)-score(a)||b.ms-a.ms);const keyPosts=keyAll.slice(0,6),rest=keyAll.slice(6);
+ const BYP=new Map();POSTS.forEach(x=>{let a=BYP.get(x.p);if(!a)BYP.set(x.p,a=[]);a.push(x)});const score=p=>{const xs=BYP.get(p)||[];if(!xs.length)return -1;return Math.max(...xs.map(x=>{const ch=chgOf(x);return !explicit(x.s)?(ch?1:(stanced(x.s)?0.5:0)):(ch?3:2)}))};
+ const SC=new Map(vposts.map(p=>[p,score(p)]));const keyAll=vposts.slice().sort((a,b)=>SC.get(b)-SC.get(a)||b.ms-a.ms);const keyPosts=keyAll.slice(0,6),rest=keyAll.slice(6);
  const coList=(arr,k)=>arr.map(x=>`<li>${tkBtn(x.t)}<span class="pill ${k}">${x.c[k]} ${SLABEL[k]}</span>${x.c[k==='bull'?'bear':'bull']?`<span class="pill ${k==='bull'?'bear':'bull'}">${x.c[k==='bull'?'bear':'bull']} ${SLABEL[k==='bull'?'bear':'bull']}</span>`:''}<span class="handle">${accsOf(w.from,w.to).filter(a=>latest(a,x.t,w.from,w.to)?.s===k).map(a=>'@'+esc(a)).join(' ')}</span></li>`).join('')||`<li class="note">沒有符合條件的股票（需 2 個以上帳號在範圍內最新立場同為${SLABEL[k]}）</li>`;
  const cmpLab=current==='weekly'?'對比前 7 天':current==='monthly'?'對比前 28 天':'對比昨日（今日至今）';
  const priorOpen=current==='weekly'?'前 7 天（':current==='monthly'?'前 28 天（':'昨日（';
@@ -1642,12 +1645,12 @@ function loadCore(){if(coreDone)return Promise.resolve();if(coreP)return coreP;
  coreP=fetch(extUrl(D._ext.core)).then(function(r){if(!r.ok)throw new Error('core '+r.status);return r.json()}).then(function(j){
   Object.keys(j).forEach(function(k){if(k!=='posts'&&k!=='_ext')D[k]=j[k]});
   coreDone=true;rebuildDerived();document.dispatchEvent(new Event('dash-data'));});return coreP}
-function loadNextPosts(){if(postsReady())return Promise.resolve();if(pageP)return pageP;var url=D._ext.posts[postCursor];
+function loadNextPosts(quiet){if(postsReady())return Promise.resolve();if(pageP)return pageP;var url=D._ext.posts[postCursor];
  pageP=fetch(extUrl(url)).then(function(r){if(!r.ok)throw new Error('posts '+r.status);return r.json()}).then(function(arr){
-  postCursor++;D.posts=D.posts.concat(arr);rebuildDerived();document.dispatchEvent(new Event('dash-data'));
+  postCursor++;D.posts=D.posts.concat(arr);if(!quiet){rebuildDerived();document.dispatchEvent(new Event('dash-data'))}
  }).catch(function(e){postsFailed=true;window.__postsFailed=true;console.error(e)}).finally(function(){pageP=null});return pageP}
 function loadAllPosts(){if(postsReady()){window.__postsReady=true;return Promise.resolve()}if(allP)return allP;
- function step(){if(postsReady()){window.__postsReady=true;allP=null;return Promise.resolve()}return loadNextPosts().then(step)}
+ function step(){if(postsReady()){window.__postsReady=true;allP=null;rebuildDerived();document.dispatchEvent(new Event('dash-data'));return Promise.resolve()}return loadNextPosts(true).then(step)}
  allP=step();return allP}
 function mountStatus(){if(coreDone)return;var v=document.getElementById('view');if(!v||document.getElementById('dash-load'))return;
  var p=document.createElement('p');p.id='dash-load';p.className='note';p.style.margin='0 0 8px';
