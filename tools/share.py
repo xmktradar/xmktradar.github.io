@@ -736,7 +736,7 @@ def fit_threads(text, lang):
         if total() >= before:
             break
 
-    # Body lines that are not the ticker list (carousel duel rows, window, dialogue) go next, from the bottom.
+    # Body lines that are not the ticker list (carousel duel rows, window, quotes) go next, from the bottom.
     # The one remaining link stays, even when it is not the live-numbers line.
     while total() > THREADS_MAX and guard < 10000:
         guard += 1
