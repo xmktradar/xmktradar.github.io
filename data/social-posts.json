@@ -1,5 +1,6 @@
 {
  "date": "2026-10-23",
+ "date_kst": "2026-10-23",
  "made_hkt": "2026-10-23 07:18",
  "window": "10/23 00:00 – 10/23 04:58 HKT",
  "no_post_days": [
@@ -739,12 +740,14 @@
  },
  "intraday": {
   "date": "2026-10-23",
+  "date_kst": "2026-10-24",
   "slots": {
    "intraday_1": {
     "post_et": "11:00",
     "post_hkt": "23:00",
     "generated_at": "2026-10-23T11:07:11-04:00",
     "date": "2026-10-23",
+    "date_kst": "2026-10-24",
     "quotes": {
      "SPY": {
       "price": 762.365,
@@ -897,6 +900,7 @@
     "post_hkt": "00:15",
     "generated_at": "2026-10-23T11:38:41-04:00",
     "date": "2026-10-23",
+    "date_kst": "2026-10-24",
     "quotes": {
      "SPY": {
       "price": 762.63,
@@ -1045,6 +1049,7 @@
     "post_hkt": "01:30",
     "generated_at": "2026-10-23T13:44:06-04:00",
     "date": "2026-10-23",
+    "date_kst": "2026-10-24",
     "quotes": {
      "SPY": {
       "price": 760.245,
@@ -1203,6 +1208,7 @@
     "post_hkt": "02:45",
     "generated_at": "2026-10-23T14:41:39-04:00",
     "date": "2026-10-23",
+    "date_kst": "2026-10-24",
     "quotes": {
      "SPY": {
       "price": 760.265,
@@ -1350,6 +1356,7 @@
     "post_hkt": "03:40",
     "generated_at": "2026-10-23T15:55:53-04:00",
     "date": "2026-10-23",
+    "date_kst": "2026-10-24",
     "quotes": {
      "SPY": {
       "price": 759.81,
@@ -1431,6 +1438,7 @@
  },
  "three_lines": {
   "date": "2026-10-23",
+  "date_kst": "2026-10-23",
   "generated_at": "2026-10-24T00:22+08:00",
   "window": "10/23 00:00 – 21:16 HKT",
   "sample": {
@@ -1512,6 +1520,7 @@
    "instagram": false
   }
  },
+ "why_posts_date_kst": "2026-10-23",
  "why_posts": [
   {
    "ticker": "QQQ",
@@ -1524,6 +1533,7 @@
    },
    "format": "carousel",
    "date": "2026-10-23",
+   "date_kst": "2026-10-23",
    "bull": 0,
    "bear": 6,
    "bear_reasons": [
@@ -1574,6 +1584,7 @@
    },
    "format": "carousel",
    "date": "2026-10-23",
+   "date_kst": "2026-10-23",
    "bull": 4,
    "bear": 3,
    "bull_reasons": [
@@ -1624,6 +1635,7 @@
    },
    "format": "carousel",
    "date": "2026-10-23",
+   "date_kst": "2026-10-23",
    "bull": 3,
    "bear": 0,
    "bull_reasons": [
@@ -1666,6 +1678,7 @@
  ],
  "weekend": {
   "date": "2026-10-24",
+  "date_kst": "2026-10-24",
   "source": "data/writeup-input.json weekly",
   "posts": [
    {
@@ -1754,6 +1767,7 @@
    "id": "zh-number-daily-posts",
    "lang": "zh",
    "slot_kst": "09:00",
+   "date_kst": "2026-10-24",
    "format": "text_question",
    "point_type": "number",
    "hook": "今日帖文數 51",
@@ -1766,6 +1780,7 @@
    "id": "zh-number-daily-accounts",
    "lang": "zh",
    "slot_kst": "11:30",
+   "date_kst": "2026-10-24",
    "format": "text_question",
    "point_type": "number",
    "hook": "今日帳號數 25",
@@ -1777,6 +1792,7 @@
    "id": "zh-number-daily-originals",
    "lang": "zh",
    "slot_kst": "14:00",
+   "date_kst": "2026-10-24",
    "format": "text_question",
    "point_type": "number",
    "hook": "今日原創帖 47",
@@ -1789,6 +1805,7 @@
    "id": "zh-number-daily-clear_accounts",
    "lang": "zh",
    "slot_kst": "17:00",
+   "date_kst": "2026-10-24",
    "format": "text_question",
    "point_type": "number",
    "hook": "今日清晰立場帳號 16",
@@ -1800,6 +1817,7 @@
    "id": "zh-number-weekly-posts",
    "lang": "zh",
    "slot_kst": "20:00",
+   "date_kst": "2026-10-24",
    "format": "text_question",
    "point_type": "number",
    "hook": "本週帖文數 1722",
@@ -1812,6 +1830,7 @@
    "id": "en-number-daily-posts",
    "lang": "en",
    "slot_kst": "09:00",
+   "date_kst": "2026-10-24",
    "format": "text_question",
    "point_type": "number",
    "hook": "Posts today 51",
@@ -1823,6 +1842,7 @@
    "id": "en-number-daily-accounts",
    "lang": "en",
    "slot_kst": "11:30",
+   "date_kst": "2026-10-24",
    "format": "text_question",
    "point_type": "number",
    "hook": "Accounts today 25",
@@ -1835,6 +1855,7 @@
    "id": "en-number-daily-originals",
    "lang": "en",
    "slot_kst": "14:00",
+   "date_kst": "2026-10-24",
    "format": "text_question",
    "point_type": "number",
    "hook": "Original posts today 47",
@@ -1846,6 +1867,7 @@
    "id": "en-number-daily-clear_accounts",
    "lang": "en",
    "slot_kst": "17:00",
+   "date_kst": "2026-10-24",
    "format": "text_question",
    "point_type": "number",
    "hook": "Clear-stance accounts today 16",
@@ -1858,6 +1880,7 @@
    "id": "en-number-weekly-posts",
    "lang": "en",
    "slot_kst": "20:00",
+   "date_kst": "2026-10-24",
    "format": "text_question",
    "point_type": "number",
    "hook": "Posts this week 1722",
@@ -1869,6 +1892,7 @@
    "id": "ko-number-daily-posts",
    "lang": "ko",
    "slot_kst": "09:00",
+   "date_kst": "2026-10-24",
    "format": "text_question",
    "point_type": "number",
    "hook": "오늘 게시물 51",
@@ -1881,6 +1905,7 @@
    "id": "ko-number-daily-accounts",
    "lang": "ko",
    "slot_kst": "11:30",
+   "date_kst": "2026-10-24",
    "format": "text_question",
    "point_type": "number",
    "hook": "오늘 계정 25",
@@ -1892,6 +1917,7 @@
    "id": "ko-number-daily-originals",
    "lang": "ko",
    "slot_kst": "14:00",
+   "date_kst": "2026-10-24",
    "format": "text_question",
    "point_type": "number",
    "hook": "오늘 원글 47",
@@ -1904,6 +1930,7 @@
    "id": "ko-number-daily-clear_accounts",
    "lang": "ko",
    "slot_kst": "17:00",
+   "date_kst": "2026-10-24",
    "format": "text_question",
    "point_type": "number",
    "hook": "오늘 입장 분명한 계정 16",
@@ -1915,6 +1942,7 @@
    "id": "ko-number-weekly-posts",
    "lang": "ko",
    "slot_kst": "20:00",
+   "date_kst": "2026-10-24",
    "format": "text_question",
    "point_type": "number",
    "hook": "이번 주 게시물 1722",
