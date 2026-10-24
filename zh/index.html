@@ -1284,7 +1284,7 @@ function viewDaily(){
  const t3=[T3.shift?`<li><b>共識變化最大</b>：${tkBtn(T3.shift.t)} ${T3.shift.kind==='delta'?`淨看多比例 ${pct(T3.shift.from)} → ${pct(T3.shift.to)}（${cmpLab}）`:`${T3.shift.n} 次立場轉變`}</li>`:'',
   T3.most?`<li><b>最多人討論</b>：${tkBtn(T3.most.t)} ${T3.most.n} 個觀點、${T3.most.accs} 個帳號</li>`:'',
   T3.split?`<li><b>分歧最大</b>：${tkBtn(T3.split.t)} 看多 ${T3.split.b}、看空 ${T3.split.e}</li>`:''].filter(Boolean);
- if(priorLoading&&!allP)loadAllPosts().then(function(){render()});
+ if(priorLoading&&!allP)loadAllPosts().then(function(){setTimeout(renderChunked,0)});
  return `<div class="grid">
  ${moneyBar()}
  <section class="c12 panel t3" aria-label="今日三句重點"><h2>今日三句重點 <span class="sub">${ctx}</span></h2>${t3.length?`<ol class="t3-l">${t3.join('')}</ol>`:empty('範圍內資料不足，暫時未能整理。')}<p class="note ctx">${METHOD}</p></section>
@@ -1674,10 +1674,22 @@ function render(){const h=decodeURIComponent((location.hash||'#daily').slice(1))
  closeDive();current=VIEWS[h]?h:'daily';drawView();
  if(h==='donate')setTimeout(()=>{const f=document.querySelector('[data-jump="donate"]');if(f)f.click()},50)}
 let lastViewKey=null,lastViewHtml=null;
+// 速度：開頁頭兩次畫面（內嵌資料、完整資料）先放頭幾格，其餘分批喺之後嘅 task 補上，避免一次過排版幾千個元素卡住手機；
+// 之後任何 render()（包括 check.js／layout_check.js 直接呼叫）都係一次過同步畫完，並取消未補完嘅批次。
+let PV_BOOT=true,PV_TOK=0;
+function renderChunked(){const o=PV_BOOT;PV_BOOT=true;try{render()}finally{PV_BOOT=o}}
+const PV_FIRST=5,PV_STEP=3;
+function putView(view,html){const tok=++PV_TOK;window.__viewDone=false;
+ if(!PV_BOOT||current!=='daily'){view.innerHTML=html;window.__viewDone=true;return}
+ const tpl=document.createElement('template');tpl.innerHTML=html;const grid=tpl.content.querySelector('.grid');
+ const rest=grid?[...grid.children].slice(PV_FIRST):[];rest.forEach(n=>n.remove());view.replaceChildren(tpl.content);
+ if(!rest.length){window.__viewDone=true;return}const g=view.querySelector('.grid');
+ const step=()=>{if(tok!==PV_TOK)return;const part=rest.splice(0,PV_STEP);part.forEach(n=>{g.appendChild(n);linkHandles(n);fitTables(n);clampLists(n)});try{mountTape(view)}catch(e){}
+  if(rest.length)setTimeout(step,0);else{window.__viewDone=true;document.dispatchEvent(new Event('view-done'))}};setTimeout(step,0)}
 function drawView(){document.querySelectorAll('nav.tabs button[data-v]').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===current));
  try{const html=VIEWS[current]();const view=document.getElementById('view');
   if(view.querySelector('.mk-live[data-on]')&&lastViewKey===current&&lastViewHtml===html){if(coreDone){const ld=view.querySelector('#dash-load');if(ld)ld.remove()}mountStatus();mountMore()}
-  else{const oldTape=view.querySelector('.mk-live[data-on]');view.innerHTML=html;if(oldTape){const nw=view.querySelector('.mk-live');if(nw)nw.replaceWith(oldTape)}linkHandles(view);fitTables(view);clampLists(view);try{mountTape(view)}catch(e){}mountStatus();mountMore();lastViewKey=current;lastViewHtml=html}}catch(e){console.error(e);document.getElementById('view').innerHTML=empty('畫面顯示錯誤：'+esc(e.message))}}
+  else{const oldTape=view.querySelector('.mk-live[data-on]');putView(view,html);if(oldTape){const nw=view.querySelector('.mk-live');if(nw)nw.replaceWith(oldTape)}linkHandles(view);fitTables(view);clampLists(view);try{mountTape(view)}catch(e){}mountStatus();mountMore();lastViewKey=current;lastViewHtml=html}}catch(e){console.error(e);document.getElementById('view').innerHTML=empty('畫面顯示錯誤：'+esc(e.message))}}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-tk]');if(b){e.preventDefault();location.hash='stock/'+b.dataset.tk;return}
  const v=e.target.closest('nav.tabs button[data-v]');if(v){location.hash=v.dataset.v;return}
  const card=e.target.closest('.acc[data-href]');if(card&&!e.target.closest('a,button')){location.hash=card.dataset.href}});
@@ -1700,7 +1712,8 @@ ${MAC&&MAC.rows.length?`<p>大市數據：${[...new Set(MAC.rows.map(r=>(r.src||
 <p><a href="tools/">工具</a> · <a href="support/">支持我們</a> · <a href="newsletter/">電子報</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank">TradingView <span class="pj-tag">推廣</span></a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="pj-tag">推廣</span></a> · <a href="advertise/">廣告合作</a> · <a href="about/">關於本站及方法</a></p>`;linkHandles(document.getElementById('foot'))}
 paintChrome();
 render();
-if(!coreDone){loadCore().then(function(){window.__dashReady=true;paintChrome();render()}).catch(function(e){console.error(e);coreDone=true;window.__dashReady=true;paintChrome();render()})}else window.__dashReady=true;
+PV_BOOT=false;
+if(!coreDone){loadCore().then(function(){window.__dashReady=true;setTimeout(function(){paintChrome();renderChunked()},0)}).catch(function(e){console.error(e);coreDone=true;window.__dashReady=true;paintChrome();render()})}else window.__dashReady=true;
 document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com')){gtag('event','social_click',{platform:'x',link_url:u,transport_type:'beacon'});gtag('event','x_outbound',{link_url:u,page:'home',lang:document.documentElement.lang||'',transport_type:'beacon'});}else if(h==='instagram.com'||h.endsWith('.instagram.com'))gtag('event','social_click',{platform:'instagram',link_url:u,transport_type:'beacon'});else if(h==='threads.net'||h.endsWith('.threads.net')||h==='threads.com'||h.endsWith('.threads.com'))gtag('event','social_click',{platform:'threads',link_url:u,transport_type:'beacon'});else if(h==='paypal.com'||h.endsWith('.paypal.com')||h==='paypal.me'||h.endsWith('.paypal.me'))gtag('event','donate_click',{method:'paypal',page:'home',lang:document.documentElement.lang})});
 
 </script>

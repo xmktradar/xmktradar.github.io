@@ -15,7 +15,7 @@ const { start, pageUrl } = require('./local_server');
       for (const v of ['daily', 'weekly', 'monthly', 'macro', 'tracked', 'stock/NVDA']) {
         const p = await b.newPage({ viewport: { width: w, height: h } });
         const errs = [];
-        p.on('pageerror', e => errs.push(e.message));
+        p.on('pageerror', e => errs.push(e.message));const DIAG=[];p.on('framenavigated',f=>DIAG.push('nav '+(f===p.mainFrame())+' '+f.url()));p.on('console',m=>DIAG.push('con '+m.text().slice(0,200)));p.on('crash',()=>DIAG.push('crash'));p.on('close',()=>DIAG.push('close'));
         await p.route('**/*', route => {
           if (route.request().url().startsWith(srv.origin)) route.continue();
           else route.abort();
@@ -32,7 +32,7 @@ const { start, pageUrl } = require('./local_server');
             if (typeof D !== 'undefined' && D._ext && D._ext.core && Object.keys(D.prices || {}).length === 0)
               throw new Error('prices did not load');
           });
-        } catch (e) { evalErr = e.message || String(e); }
+        } catch (e) { evalErr = e.message || String(e); console.log('DIAG', JSON.stringify(DIAG), (e.stack||'').slice(0,600)); }
         await p.waitForTimeout(300);
         const info = await p.evaluate(() => ({ ovf: document.documentElement.scrollWidth > innerWidth + 1, len: document.body.innerText.length }));
         const ok = !errs.length && !evalErr && !info.ovf && info.len > 500;
