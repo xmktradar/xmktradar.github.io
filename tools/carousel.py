@@ -1,6 +1,6 @@
 """Step 8c: the three daily multi-picture posts on US trading days (Tim, 2026-10-15).
 
-Each language posts three times a day, one theme per time slot, each post a set of 4 pictures (1080x1350) that
+Each language posts three times a day, one theme per time slot, each post a set of 4 pictures (1080x1350) plus a static IG follow/save CTA (og/cta/ig-cta-<lang>.jpg) that
 the Grok bot puts on X, Threads, an Instagram post and Facebook:
   1230  today's snapshot   written by the first update after 07:00 HKT (posted 12:30 zh, 13:00 en, 13:30 ko)
   1630  bull vs bear       written by the first update after 15:00 HKT (posted 16:30 zh, 17:00 en, 17:30 ko)
@@ -17,7 +17,7 @@ from datetime import datetime, timedelta
 
 from ranking import rank_rows
 from share import (SHORT, SITE, LANGS, IG_BIO, IG_FOLLOW, attach_new_posts, clean, dedupe_handle,
-                    fit_threads, fit_threads_posts, ig_tags, likes, page_url, sanitize_instagram,
+                    fit_threads, fit_threads_posts, ig_cta_url, ig_tags, likes, page_url, sanitize_instagram,
                     social_page, tags, trading_day, xlen)
 from sitedata import load, notice, now_hk, parse_iso, read_json, work, write_json
 from utm import normalize_file, tag_posts
@@ -39,14 +39,14 @@ EN_PT = re.compile(r'(?:price target|\bPT\b)[^\d$.;]{0,25}?(?:from \$?[\d,.]+ to
 
 U = {
     'zh': dict(acc=lambda n: f'{n} 個帳號', bull='睇好', bear='睇淡', nb=lambda n: f'{n} 個睇好', nr=lambda n: f'{n} 個睇淡',
-               swipe='👉 向左滑睇 4 張', foot='⚠️ 唔構成投資建議', follow='Follow @thecrowdtape',
+               swipe='👉 向左滑睇 5 張', foot='⚠️ 唔構成投資建議', follow='Follow @thecrowdtape',
                site='最新數字：thecrowdtape.com', give='☕ 支持我哋：網站底部 PayPal', posted=lambda n: f'{n} 個帳號發文',
                stocks=lambda n: f'{n} 隻股票', talk='🔥 最多人討論 Top 4', jb='🟢 共同看多', jr='🔴 共同看空', split='⚖️ 好淡分歧',
                none='今日暫時未有', vs=lambda b, r: f'{b} 好 vs {r} 淡', who='你企邊邊？留言話我知 👇', heat='📈 升溫榜（24 小時 vs 前 24 小時）',
                now=lambda a, b: f'{a} 個帳號（之前 {b}）', pt='🎯 帳號講過嘅目標價', views=lambda t: f'💬 帳號點睇 ${t}',
                hot=lambda a, b: f'24 小時內 {a} 個帳號講（之前 {b} 個）', ask='💬 一句觀點', d1='今日'),
     'en': dict(acc=lambda n: f'{n} account{"" if n == 1 else "s"}', bull='Bullish', bear='Bearish', nb=lambda n: f'{n} bullish',
-               nr=lambda n: f'{n} bearish', swipe='👉 Swipe for all 4', foot='⚠️ Not investment advice', follow='Follow @thecrowdtape',
+               nr=lambda n: f'{n} bearish', swipe='👉 Swipe for all 5', foot='⚠️ Not investment advice', follow='Follow @thecrowdtape',
                site='Live numbers: thecrowdtape.com', give='☕ Support us: PayPal at the bottom of the site',
                posted=lambda n: f'{n} accounts posted', stocks=lambda n: f'{n} stocks', talk='🔥 Most discussed · Top 4',
                jb='🟢 Joint bullish', jr='🔴 Joint bearish', split='⚖️ Split views', none='None yet today',
@@ -55,7 +55,7 @@ U = {
                views=lambda t: f'💬 What accounts say about ${t}', hot=lambda a, b: f'{a} accounts in 24h (was {b})',
                ask='💬 One view', d1='Today'),
     'ko': dict(acc=lambda n: f'계정 {n}개', bull='강세', bear='약세', nb=lambda n: f'강세 {n}', nr=lambda n: f'약세 {n}',
-               swipe='👉 옆으로 넘겨 4장 보기', foot='⚠️ 투자 조언 아님', follow='Follow @thecrowdtape',
+               swipe='👉 옆으로 넘겨 5장 보기', foot='⚠️ 투자 조언 아님', follow='Follow @thecrowdtape',
                site='최신 수치: thecrowdtape.com', give='☕ 후원: 사이트 하단 PayPal', posted=lambda n: f'계정 {n}개 게시',
                stocks=lambda n: f'종목 {n}개', talk='🔥 최다 언급 Top 4', jb='🟢 공동 강세', jr='🔴 공동 약세', split='⚖️ 의견 엇갈림',
                none='오늘은 아직 없음', vs=lambda b, r: f'강세 {b} vs 약세 {r}', who='여러분은 어느 쪽인가요? 댓글로 알려주세요 👇',
@@ -371,9 +371,9 @@ def head_line(slot, lang, day, lead):
     return f'{m}/{dd} {TITLE[slot][lang]}：{lead}' if lang == 'zh' else f'{m}/{dd} {TITLE[slot][lang]}: {lead}'
 
 
-END = {'zh': ['👉 左右滑睇晒 4 張圖', IG_BIO['zh'], IG_FOLLOW['zh']],
-       'en': ['👉 Swipe through all 4 pictures', IG_BIO['en'], IG_FOLLOW['en']],
-       'ko': ['👉 옆으로 넘겨 4장 모두 보기', IG_BIO['ko'], IG_FOLLOW['ko']]}
+END = {'zh': ['👉 左右滑睇晒 5 張圖', IG_BIO['zh'], IG_FOLLOW['zh']],
+       'en': ['👉 Swipe through all 5 pictures', IG_BIO['en'], IG_FOLLOW['en']],
+       'ko': ['👉 옆으로 넘겨 5장 모두 보기', IG_BIO['ko'], IG_FOLLOW['ko']]}
 
 
 FB_TAP = {'zh': '👉 撳圖睇晒 4 張', 'en': '👉 Tap a picture to see all 4', 'ko': '👉 사진을 눌러 4장 모두 보기'}  # Facebook has no swiping
@@ -482,7 +482,7 @@ def slot_page(sp):
                          + (box('IG Story hashtag', p.get('story', ''), 2) if sl.get('story') else '') + '</details>')
         out.append(f'<section class="slot"><h2>{times[0]} {TITLE[key]["zh"]}</h2><p>製作時間 {sl["made_hkt"]} HKT・'
                    f'{"有 IG Story（圖喺下面每個語言嘅舊格式部分）" if sl.get("story") else "冇 IG Story"}</p>{"".join(langs)}</section>')
-    css = ('<style>.slot .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}.slot .grid img{border-radius:6px}'
+    css = ('<style>.slot .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}.slot .grid img{border-radius:6px}'
            'details{margin-top:10px}summary{font-weight:700;cursor:pointer}h4{margin:12px 0 0;font-size:14px}</style>')
     return css + '<h2 style="margin-top:24px">今日三個時段（多圖帖，Grok bot 用呢度）</h2>' + ''.join(out)
 
@@ -564,7 +564,11 @@ def main():
             files = [f'og/c/{day}-{key}-{lang}-{n + 1}.jpg' for n in range(4)]
             fb = [f'og/c/{day}-{key}-{lang}-{n + 1}-fb.jpg' for n in range(4)]
             jobs.append({'slot': key, 'theme': THEME[key], 'lang': lang, 'date': day, 'slides': slides, 'files': files, 'fb': fb})
-            made[lang] = {'images': [f'{SITE}{f}' for f in files], 'images_fb': [f'{SITE}{f}' for f in fb], 'posts': posts}
+            made[lang] = {
+                'images': [f'{SITE}{f}' for f in files] + [ig_cta_url(lang)],
+                'images_fb': [f'{SITE}{f}' for f in fb],
+                'posts': posts,
+            }
         if len(made) != len(LANGS):
             notice(f'{key} 時段冇足夠數據，今次唔寫', 'warning')
             continue
@@ -594,6 +598,8 @@ def main():
     write_json(work('carousel.json'), {'date': day, 'jobs': jobs})
     write_json(work('social-posts.json'), sp, indent=1)
     normalize_file(work('social-posts.json'))
+    from ig_boost import apply_social_file
+    apply_social_file(work('social-posts.json'))
     sp = read_json(work('social-posts.json'))
     write_page(sp, work('social.html'))
     notice(f"社交多圖帖已寫好：{', '.join(todo)}（{SITE}social/）")

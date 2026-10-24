@@ -49,7 +49,7 @@ def _assert_ig_text(text, lang, where):
     assert len(bios) == 1, (where, bios, text[-250:])
     assert bios[0] == BIO[lang or share._guess_ig_lang(text)]
     tags = HASH.findall(text)
-    assert len(tags) <= 5, (where, tags)
+    assert share.IG_MIN_TAGS <= len(tags) <= share.IG_MAX_TAGS, (where, tags)
     tickers = TICK_TAG.findall(text)
     assert len(tickers) <= 2, (where, tickers)
 
@@ -69,9 +69,80 @@ def test_dedupe_handle():
     assert DUP_RE.search(en) is None
 
 
+def _non_hash(text):
+    return share.ig_non_hashtag_lines(text)
+
+
+def _preserved_in_order(orig, out):
+    """Every original non-hashtag line is still present, in the same order."""
+    i = 0
+    for line in out:
+        if i < len(orig) and line == orig[i]:
+            i += 1
+    return i == len(orig)
+
+
+def test_sanitizer_does_not_move_body_lines():
+    """A list row such as ・$RSP is not hoisted, and is not deleted."""
+    raw = '\n'.join([
+        '今日 X 大神共識：最看好 2 隻／最看淡 5 隻',
+        '',
+        '2026-10-23',
+        '數據範圍: 10/23 00:00 – 09:55 HKT',
+        '',
+        '最看好 2 隻',
+        '・$RSP 3 個帳號',
+        '・$WMT 2 個帳號',
+        '',
+        '最看淡 5 隻',
+        '・$QQQ 5 個帳號',
+        '',
+        '連結在個人簡介',
+        '⚠️ 唔構成投資建議',
+    ])
+    key = '最看好 $RSP（3 個帳號）・最看淡 $QQQ（5 個帳號）'
+    # Line 1 already has a digit, so a supplied key line is not prepended.
+    out = share.sanitize_instagram(raw, 'zh', key_line=key)
+    assert out.split('\n', 1)[0] == '今日 X 大神共識：最看好 2 隻／最看淡 5 隻'
+    assert _preserved_in_order(_non_hash(raw), _non_hash(out))
+    assert out.count('・$RSP 3 個帳號') == 1
+    assert out.count('・$WMT 2 個帳號') == 1
+    assert out.index('最看好 2 隻') < out.index('・$RSP 3 個帳號') < out.index('・$WMT 2 個帳號')
+    again = share.sanitize_instagram(out, 'zh', key_line=key)
+    assert again == out
+
+    # No structured key line: a title with no ticker and no digit stays, and the list stays.
+    weak = '本週最看好\n\n$AMZN 14 個帳號看好\n$RSP 4 個帳號看好\n\n⚠️ 唔構成投資建議\n#美股 #AMZN #RSP'
+    kept = share.sanitize_instagram(weak, 'zh')
+    assert kept.split('\n', 1)[0] == '本週最看好'
+    assert _preserved_in_order(_non_hash(weak), _non_hash(kept))
+    assert kept.index('$AMZN 14 個帳號看好') < kept.index('$RSP 4 個帳號看好')
+
+    # A key line is prepended only when line 1 lacks both a $TICKER and a digit.
+    bare = '今日共識\n\n最看好 2 隻\n・$RSP 3 個帳號\n・$WMT 2 個帳號\n\n⚠️ 唔構成投資建議\n#美股'
+    added = share.sanitize_instagram(bare, 'zh', key_line=key)
+    assert added.split('\n', 1)[0] == key
+    assert _preserved_in_order(_non_hash(bare), _non_hash(added))
+    assert added.index('今日共識') < added.index('・$RSP 3 個帳號') < added.index('・$WMT 2 個帳號')
+    unchanged = share.sanitize_instagram(bare, 'zh')
+    assert unchanged.split('\n', 1)[0] == '今日共識'
+    assert _preserved_in_order(_non_hash(bare), _non_hash(unchanged))
+
+
+def test_top5_ig_key_line_wording():
+    bulls = [{'t': 'RSP', 'n': 3}, {'t': 'WMT', 'n': 2}]
+    bears = [{'t': 'QQQ', 'n': 5}]
+    assert share.top5_ig_key_line('zh', bulls, bears) == '最看好 $RSP（3 個帳號）・最看淡 $QQQ（5 個帳號）'
+    assert share.top5_ig_key_line('en', bulls, bears) == 'Most bullish $RSP (3 accounts) · most bearish $QQQ (5 accounts)'
+    assert share.top5_ig_key_line('ko', bulls, bears) == '가장 강세 $RSP (계정 3개) · 가장 약세 $QQQ (계정 5개)'
+    assert share.top5_ig_key_line('en', bulls, []) == 'Most bullish $RSP (3 accounts)'
+    assert share.top5_ig_key_line('en', [{'t': 'RSP', 'n': 1}], []) == 'Most bullish $RSP (1 account)'
+    assert share.top5_ig_key_line('en', [], []) == ''
+
+
 def test_sanitize_instagram():
     raw = (
-        'Head\n\n'
+        '最多人睇好 $WMT（2 個帳號）\n\n'
         '💬 @Acc：@Acc：why\n\n'
         '最新數字 👉 https://thecrowdtape.com/zh/\n'
         '☕ 鍾意就請我哋飲杯咖啡：link in bio，網站底部 PayPal 捐款 🙏\n'
@@ -130,6 +201,9 @@ def test_top5_window_and_headings():
         labels = share.top5_labels(lang, 1, 1)
         ig = slot['posts'][lang]['instagram']
         _assert_ig_text(ig, lang, f'top5.{lang}')
+        assert ig.split('\n', 1)[0] == share.top5_ig_key_line(lang, slot['bull'], slot['bear'])
+        assert '・$ZZZ' in ig and '・$AAA' in ig
+        assert ig.index('・$ZZZ') < ig.index('・$AAA')
         assert labels['heading'] in ig
         assert labels['bull'] in ig and labels['bear'] in ig
         assert slot['posts'][lang]['has_link']['instagram'] is False
@@ -145,7 +219,7 @@ def test_top5_window_and_headings():
 def test_normalize_strips_ig_urls():
     data = {
         'posts': {
-            'en': {'instagram': 'See https://thecrowdtape.com/en/stock/NVDA/\n#StockMarket #USStocks #A #B #C #D'}
+            'en': {'instagram': 'Most bullish: $NVDA, 8 accounts\nSee https://thecrowdtape.com/en/stock/NVDA/\n#StockMarket #USStocks #A #B #C #D'}
         },
         'top5': {
             'posts': {
@@ -184,14 +258,21 @@ def test_real_social_posts():
                 assert posts['has_link']['instagram'] is False
             labels = share.top5_labels(lang, len(top.get('bull') or []), len(top.get('bear') or []))
             if posts.get('instagram'):
-                assert labels['heading'] in posts['instagram']
-                assert labels['bull'] in posts['instagram']
-                assert labels['bear'] in posts['instagram']
+                ig = posts['instagram']
+                assert labels['heading'] in ig
+                assert labels['bull'] in ig
+                assert labels['bear'] in ig
+                # A moved list bullet must not become line 1, and every row stays a bullet.
+                assert not ig.split('\n', 1)[0].startswith('・')
+                for row in (top.get('bull') or []) + (top.get('bear') or []):
+                    assert f'・${row["t"]} ' in ig
 
 
 def main():
     try:
         test_dedupe_handle()
+        test_sanitizer_does_not_move_body_lines()
+        test_top5_ig_key_line_wording()
         test_sanitize_instagram()
         test_caption_ig()
         test_top5_window_and_headings()

@@ -24,6 +24,8 @@ utm_medium is always social. utm_campaign is the slot (intraday uses the slot na
 tag_url replaces any existing utm_source, utm_medium and utm_campaign, keeps every other
 query parameter and the #fragment, and leaves asset URLs (/og/, /assets/, images) alone.
 python3 tools/utm.py --apply rewrites both JSON files and refits Threads to 500 code points.
+Instagram captions are passed through share.sanitize_instagram (no URLs, one bio line, 3–5 hashtags).
+python3 tools/ig_boost.py --apply also sanitizes data/macro-week.json Instagram captions.
 """
 import os
 import re
