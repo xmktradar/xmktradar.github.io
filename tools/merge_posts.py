@@ -8,7 +8,7 @@ from datetime import timezone
 
 from analyse_posts import NOT_TICKERS
 from macro_themes import tag_posts
-from relevance import build, relevant
+from relevance import build, relevant, tier
 from sitedata import ET, HK, load, notice, now_hk, parse_iso, read_json, save, work, write_json
 
 PENDING = 'data/pending-posts.json'
@@ -169,9 +169,9 @@ def main():
     useful = [x for x in fresh if relevant(x, rx)]
     chitchat = len(fresh) - len(useful)
     fresh = useful
-    # Grok works from the top of the file: stock posts first, newest first within each group.
+    # Grok works from the top of the file: $ticker posts, then company posts, then macro-only; newest first in each.
     keep = sorted(fresh, key=lambda x: x['time_utc'], reverse=True)
-    keep.sort(key=lambda x: not has_stock(x))
+    keep.sort(key=lambda x: 0 if has_stock(x) else tier(x, rx))
     old_cutoff = d['meta']['cutoff_hkt']
     added = [site_post(x, done[x['id']]) for x in add]
     d['posts'] = sorted(d['posts'] + added, key=lambda p: p['time_utc'], reverse=True)
