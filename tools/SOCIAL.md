@@ -50,7 +50,7 @@ Headings use the real list length on each side (5 kept when 5):
 Each post also has the date, the data window (`10/23 00:00 – HH:MM HKT`), both lists with account counts, `SHORT[lang]['disc']`, and hashtags. Instagram is capped at 5 hashtags (language base tags first, at most 2 ticker tags). Links use `tools/utm.py` `tag_url(url, platform, 'top5')` (`utm_source` is `x`, `threads`, `instagram` or `facebook`, `utm_medium=social`, `utm_campaign=top5`) and that post's language (`/<lang>/stock/<T>/`).
 
 - X: one link in the body, the first bull's stock page, or `/<lang>/` when there is no bull. `xlen` ≤ 280. Names that do not fit are dropped from the end of the longer list. The link stays on the lead bull. `has_link.x` is true when that URL is present.
-- Instagram: no URLs and no `thecrowdtape.com`. Exactly one link-in-bio line (`連結在個人簡介` / `link in bio` / `프로필 링크`). `has_link.instagram` is false. Stock links stay on Facebook / Threads `first_comment`.
+- Instagram: no URLs and no `thecrowdtape.com`. Exactly one link-in-bio line (`連結在個人簡介` / `link in bio` / `프로필 링크`). `has_link.instagram` is false. Stock links stay on Facebook / Threads `first_comment`. Hashtags 3–5 (language base tags first, at most 2 ticker tags). First line is the heading, which already names the counts.
 - Threads and Facebook: the body has no URL. The link moves to `first_comment.threads` (the lead bull, or `/<lang>/` when there is no bull) and `first_comment.facebook` (one line per listed ticker). `has_link.threads` is true. `has_link.facebook` is true when either side has a name. Threads is passed through `fit_threads` (≤ 500 Unicode code points).
 
 Empty side copy: zh `今日暫無`, en `None today`, ko `오늘 없음`.
@@ -97,7 +97,42 @@ Every slot carries `format`: `image_card`, `carousel`, `text_question` or `poll`
 
 Every body ends with `SHORT[lang]['disc']` (`⚠️ 唔構成投資建議` / `⚠️ Not investment advice` / `⚠️ 투자 조언 아님`) and a hashtag line: `#美股` / `#StockMarket` / `#미국주식`, plus `#TICKER` when the post names one ticker. Threads bodies are ≤ 500 code points (`fit_threads`). X bodies are ≤ 280 (`xlen`).
 
-About half of Threads and Facebook copies have no link in the body. The index walks `zh`, `en`, `ko` and, within each language, `threads` then `facebook`. Even indexes get a link. The URL is not left in the body. It is stored on `first_comment`, with `SHORT[lang]['live']` (`最新數字 👉 ` / `Live numbers 👉 ` / `최신 수치 👉 `) in front, and `has_link` is true for that platform. Odd indexes set `has_link` false and omit that platform's comment. On `top5`, X keeps the link in the body; Instagram has no URL (`has_link.instagram` false, one link-in-bio line). Threads and Facebook still get `first_comment`. Atomic posts use one string, so `has_link` is a boolean on the flat zh-then-en-then-ko list (even indexes) and `first_comment` is a string tagged `utm_source=threads`. Every `.instagram` field is passed through `sanitize_instagram` (also from `utm.normalize_all`) so captions stay URL-free.
+About half of Threads and Facebook copies have no link in the body. The index walks `zh`, `en`, `ko` and, within each language, `threads` then `facebook`. Even indexes get a link. The URL is not left in the body. It is stored on `first_comment`, with `SHORT[lang]['live']` (`最新數字 👉 ` / `Live numbers 👉 ` / `최신 수치 👉 `) in front, and `has_link` is true for that platform. Odd indexes set `has_link` false and omit that platform's comment. On `top5`, X keeps the link in the body; Instagram has no URL (`has_link.instagram` false, one link-in-bio line). Threads and Facebook still get `first_comment`. Atomic posts use one string, so `has_link` is a boolean on the flat zh-then-en-then-ko list (even indexes) and `first_comment` is a string tagged `utm_source=threads`. Every `.instagram` field is passed through `sanitize_instagram` (also from `utm.normalize_all`, and `python3 tools/ig_boost.py --apply` on both `data/social-posts.json` and `data/macro-week.json`) so captions stay URL-free.
+
+Instagram caption rules, enforced by `sanitize_instagram` / `ig_tags`:
+
+- First line is a key point when the generator has one. Top-5 Instagram starts with the lead bull and lead bear: zh `最看好 $RSP（3 個帳號）・最看淡 $QQQ（5 個帳號）`, en `Most bullish $RSP (3 accounts) · most bearish $QQQ (5 accounts)`, ko `가장 강세 $RSP (계정 3개) · 가장 약세 $QQQ (계정 5개)`. Macro-week Instagram starts with the top theme and its counts, zh `本週宏觀：最多人講「其他」（利好 10・利淡 11）` (the theme name and the bull/bear counts are the real row). Daily, carousel, discussion, three_lines and weekend keep the headline those generators already write. `sanitize_instagram` never moves or deletes a body line. It may prepend a key-point line built from structured data only when line 1 has neither a `$TICKER` nor a digit. If it cannot build one, the caption is left as it is. Every original non-hashtag line stays, in order. `python3 tools/ig_boost.py --apply` prepends the top5 and macro headlines onto captions that do not already start with them, then sanitizes.
+- Hashtags are 3–5 (language base tags first, at most 2 ticker tags). Fewer than 3: fill from `IG_BASE_TAGS`. More than 5: drop from the end.
+- No URLs and no `thecrowdtape.com`. Exactly one link-in-bio line.
+- Weekend `langs.<lang>.instagram` is the Threads body run through the same sanitizer (`has_link.instagram` false).
+
+## Instagram carousel CTA and Reels
+
+IG multi-image sets (carousel `slots.*.images`, `ig_threads_daily.*.image_post.images`, and macro-week `ig_images`) end with a static follow/save card, one JPEG per language, 1080×1350:
+
+- `og/cta/ig-cta-zh.jpg` / `og/cta/ig-cta-en.jpg` / `og/cta/ig-cta-ko.jpg`
+- Copy: zh `覺得有用？收藏＋追蹤 @thecrowdtape，每日睇大神共識`; en `Found this useful? Save + follow @thecrowdtape for daily consensus`; ko `유용했다면 저장 + 팔로우 @thecrowdtape`
+- Same brand style as the other carousel slides (IBM Plex Mono, Noto Sans TC/KR, comic frame). No characters, no personal names, no URLs on the image. `@thecrowdtape` is OK.
+- Rendered once by `NODE_PATH=/tmp/pw/node_modules CHROME_PATH=/usr/bin/google-chrome node tools/ig_cta.js` (reuses `tools/carousel.html` `kind: 'igcta'`). `python3 tools/ig_boost.py --apply` renders then writes the JSON.
+- Facebook `images_fb` and single-image share fields (`images` as a string, top5 `{portrait, square}`) stay unchanged. Macro-week keeps `images.<lang>` as the original PNG URL for Facebook; `ig_images.<lang>` is `[macro PNG, CTA JPEG]`.
+
+Top-level `ig_reel` on `data/social-posts.json` (slot `daily`) and `data/macro-week.json` (slot `macro-week`):
+
+```json
+{
+  "date_kst": "2026-10-23",
+  "slot": "daily",
+  "video_path": null,
+  "video_expected_path": "assets/reels/2026-10-23-daily.mp4",
+  "caption": {"zh": "", "en": "", "ko": ""}
+}
+```
+
+Captions follow the Instagram rules above (no URLs, one bio line, 3–5 hashtags, key-point first line). Path convention is `assets/reels/<date_kst>-<slot>.mp4` (macro: `assets/reels/<date_kst>-macro-week.mp4`). `video_path` is that relative path only when the file exists in the repo at generation time; otherwise `null`. Never invented. `video_expected_path` is always the convention string. See `assets/reels/README.md` (1080×1920 mp4, H.264, ≤90s, no personal names).
+
+Macro-week `ig_reel.date_kst` is the Asia/Seoul date of the post, not the data window. `date` on `data/macro-week.json` is the Saturday the three languages go out (zh 20:00, en 20:30, ko 21:00 HKT). On any other day the file is a preview and `date` is still that coming Saturday: that future day is the posting day. 20:00 HKT is 21:00 KST, so the Seoul calendar date is the same Saturday. `from` and `to` are the seven-day window. On a preview, `to` can be today while `date` is next Saturday. The reel uses `date` at 20:00 HKT. It does not copy `to`.
+
+`python3 tools/ig_boost.py --apply` upgrades today's JSON in place: sanitize IG captions, append the CTA to IG image lists, add `ig_reel`. It does not rebuild other content.
 
 `utm_campaign` is the slot name: `hot_stock`, `discussion`, `weekend`, `three_lines`, `why`. Atomic posts use `atomic`. The platform is the field name (`x`, `threads`, `facebook` or `instagram`). A `first_comment` object is tagged per key. A `first_comment` string uses `threads`. `three_lines` and `why_posts` store the link on `{text, url}` (`url` is null when that copy has no link). Instagram never has a `url`.
 
@@ -210,7 +245,7 @@ The consensus-shift line uses the i18n phrase for `對比昨日（今日至今�
 
 Every body includes the window and the sample, for example `10/23 00:00 – 09:55 HKT · 120 posts / 45 accounts` (zh `則貼文` / `個帳號`, ko `게시물` / `계정`). Counts are copied. A missing count is left out.
 
-X is ≤ 280 by `xlen`. Threads is ≤ 500 by `fit_threads`. About half of the six X and Threads copies carry a link: zh and ko on X, en on Threads. Facebook always has the language home URL in the body and in `url`. Instagram has no URL, one link-in-bio line, and at most 5 hashtags. Links are `tag_url(url, platform, 'three_lines')` on `/<lang>/`.
+X is ≤ 280 by `xlen`. Threads is ≤ 500 by `fit_threads`. About half of the six X and Threads copies carry a link: zh and ko on X, en on Threads. Facebook always has the language home URL in the body and in `url`. Instagram has no URL, one link-in-bio line, and 3–5 hashtags. The generator's lines stay in order: the title, then the three facts. The sanitizer does not pull a fact line up to replace the title. Links are `tag_url(url, platform, 'three_lines')` on `/<lang>/`.
 
 ## `why_posts`
 

@@ -100,8 +100,15 @@ def _assert_post(text, lang, platform, bulls, bears):
         tags = re.findall(r'#[^\s#]+', text)
         assert len(tags) <= 5, (lang, tags)
         assert len(re.findall(r'#([A-Z]{1,6})\b', text)) <= 2
+        key = share.top5_ig_key_line(lang, bulls, bears)
+        if key:
+            assert text.split('\n', 1)[0] == key
         for row in bulls + bears:
-            assert f'${row["t"]} {_acc(lang, row["n"])}' in text
+            bullet = f'・${row["t"]} {_acc(lang, row["n"])}'
+            assert bullet in text
+            assert text.index(bullet) > 0
+    if platform in ('x', 'threads', 'facebook'):
+        assert text.startswith(_head(lang, len(bulls), len(bears)))
         if not bulls:
             assert NONE[lang] in text
         if not bears:
@@ -182,7 +189,10 @@ def test_fewer_and_empty():
     bull = [{'t': 'ZZZ', 'nb': 1, 'nr': 8}, {'t': 'AAA', 'nb': 9, 'nr': 0}]
     slot = share.build_top5(_daily(bull, []), DAY, MADE)
     _assert_slot(slot, [{'t': 'AAA', 'n': 9}, {'t': 'ZZZ', 'n': 1}], [])
-    assert TICK_RE.findall(slot['posts']['en']['instagram']) == ['AAA', 'ZZZ']
+    assert TICK_RE.findall(slot['posts']['en']['instagram']) == ['AAA', 'AAA', 'ZZZ']
+    assert slot['posts']['en']['instagram'].split('\n', 1)[0] == 'Most bullish $AAA (9 accounts)'
+    assert '・$AAA 9 accounts' in slot['posts']['en']['instagram']
+    assert '・$ZZZ 1 account' in slot['posts']['en']['instagram']
     assert '・$ZZZ 1 account' in slot['posts']['en']['facebook']
     assert '・$ZZZ 1 accounts' not in slot['posts']['en']['facebook']
     assert '8' not in slot['posts']['en']['x']

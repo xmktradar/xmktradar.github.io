@@ -112,6 +112,13 @@ html[lang=ko] *{word-break:keep-all}
 #in.quote .q .who{font-size:30px}
 #in.quote .q .tx{font-size:46px;line-height:1.5;-webkit-line-clamp:10}
 .talk{align-self:flex-start;background:#f8d34a;border:4px solid #151a2c;border-radius:14px;padding:6px 20px;font-weight:900;font-size:34px;box-shadow:4px 5px 0 #151a2c}
+#in.igcta{justify-content:center;align-items:center;text-align:center;gap:28px}
+#in.igcta .kick{align-self:center}
+#in.igcta .lead{font-size:56px;line-height:1.2}
+#in.igcta .handle{font:700 92px/1 "IBM Plex Mono",monospace;letter-spacing:-3px}
+#in.igcta .handle span{background:linear-gradient(transparent 58%,#fbe25b 58%);padding:0 12px}
+#in.igcta .sub{font-size:42px;line-height:1.35;max-width:920px}
+#in.igcta .swipe{align-self:center;margin-top:8px}
 .foot{position:absolute;left:64px;right:64px;bottom:76px;height:60px;background:rgba(255,255,255,.9);border-radius:999px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;font-weight:700;font-size:24px;color:#3c4466;white-space:nowrap}
 .foot b{color:#151a2c}
 </style>
@@ -136,8 +143,12 @@ function dedupeHandle(acc,text){
 }
 const quote=q=>q&&q.text?`<div class="box q">${q.av?`<img src="${q.av}">`:''}<div><div class="who">💬 @${esc(q.acc)}</div><div class="tx">${esc(dedupeHandle(q.acc,q.text))}</div></div></div>`:'';
 function render(lang,theme,date,page,S){
- document.documentElement.lang=lang;document.body.className=theme;
- const C=[['18%','20%','88%','88%'],['82%','18%','12%','86%'],['15%','80%','86%','14%'],['85%','82%','14%','16%']][(page-1)%4],st=document.body.style;
+ document.documentElement.lang=lang;document.body.className=theme||'snap';
+ document.getElementById('pg').style.display='';
+ document.getElementById('date').style.display='';
+ document.querySelector('.foot span').innerHTML='<b>@thecrowdtape</b> · thecrowdtape.com';
+ const pi=Math.max(0,(page-1)%4);
+ const C=[['18%','20%','88%','88%'],['82%','18%','12%','86%'],['15%','80%','86%','14%'],['85%','82%','14%','16%']][pi],st=document.body.style;
  st.setProperty('--cx',C[0]);st.setProperty('--cy',C[1]);st.setProperty('--dx',C[2]);st.setProperty('--dy',C[3]);
  const star=(x,y,r,f,rot)=>`<svg style="left:${x}px;top:${y}px;transform:rotate(${rot}deg)" width="${r*2}" height="${r*2}" viewBox="-10 -10 20 20"><path d="M0-10 2.6-3.6 9.5-3.1 4.2 1.4 5.9 8.1 0 4.5-5.9 8.1-4.2 1.4-9.5-3.1-2.6-3.6Z" fill="${f}" stroke="#151a2c" stroke-width="1.2" stroke-linejoin="round"/></svg>`;
  const spark4=(x,y,r,f)=>`<svg style="left:${x}px;top:${y}px" width="${r*2}" height="${r*2}" viewBox="-10 -10 20 20"><path d="M0-10C1 -2 2-1 10 0 2 1 1 2 0 10-1 2-2 1-10 0-2-1-1-2 0-10Z" fill="${f}" stroke="#151a2c" stroke-width="1"/></svg>`;
@@ -145,11 +156,16 @@ function render(lang,theme,date,page,S){
  const D=[[star(950,118,30,'var(--c)',12),spark4(22,1210,22,'#fff'),zig(890,1240,'#151a2c',-8)],
           [star(14,120,26,'var(--c)',-10),spark4(1010,1200,24,'#fff'),zig(20,1250,'#fff',6)],
           [star(985,1185,32,'var(--c)',20),spark4(16,128,20,'#fff'),zig(860,104,'#151a2c',4)],
-          [star(16,1196,28,'var(--c)',-18),spark4(1006,120,22,'#fff'),zig(880,1252,'#fff',-4)]][(page-1)%4];
+          [star(16,1196,28,'var(--c)',-18),spark4(1006,120,22,'#fff'),zig(880,1252,'#fff',-4)]][pi];
  document.getElementById('deco').innerHTML=D.join('');
- document.getElementById('date').textContent='📅 '+date;
- document.getElementById('pg').textContent=page+'/4';
+ document.getElementById('date').textContent=date?'📅 '+date:'';
+ document.getElementById('pg').textContent=page?page+'/4':'';
  document.getElementById('fl').textContent=FL[lang];
+ if(S.kind==='igcta'){
+  document.getElementById('pg').style.display='none';
+  document.getElementById('date').style.display='none';
+  document.querySelector('.foot span').innerHTML='<b>@thecrowdtape</b>';
+ }
  let h='';
  if(S.kind==='cover'){
   h=`<div class="kick">${esc(S.kicker)}</div>${S.win?`<div class="win">${esc(S.win)}</div>`:''}<div class="lead">${esc(S.lead)}</div>
@@ -176,6 +192,12 @@ function render(lang,theme,date,page,S){
   h=`<div class="sec"><h2>${esc(S.h)}</h2></div>`+S.rows.map(r=>`<div class="row">${r.av?`<img src="${r.av}">`:''}<div><div class="by"><span class="pill ${r.s==='bull'?'g':r.s==='bear'?'r':'n'}">${esc(r.badge)}</span>@${esc(r.acc)}</div><div class="v">${esc(dedupeHandle(r.acc,r.text))}</div></div></div>`).join('');
  }else if(S.kind==='quote'){
   h=`<div class="sec"><h2>${esc(S.h)}</h2></div><div style="flex:1"></div>${quote(S.quote)}<div style="flex:1"></div>${cta(S.cta)}`;
+ }else if(S.kind==='igcta'){
+  h=`<div class="kick">${esc(S.kicker)}</div>
+   <div class="lead">${esc(S.lead)}</div>
+   <div class="handle"><span>@thecrowdtape</span></div>
+   <div class="sub">${esc(S.sub)}</div>
+   ${S.save?`<div class="swipe">${esc(S.save)}</div>`:''}`;
  }
  if(S.talk)h=`<div class="talk">${esc(S.talk)}</div>`+h;
  const box=document.getElementById('in');box.style.zoom='';box.className=S.kind||'';box.innerHTML=h;

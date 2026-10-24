@@ -7,7 +7,10 @@ and one SuperGrok summary per theme.
 
 On Saturday the first update from 15:00 HKT freezes the week's numbers (data/macro-week.json, frozen: true) so all
 three languages, posted 20:00 / 20:30 / 21:00 HKT, tell the same story. On other days it builds a preview for the
-next Saturday once a day. Writes data/macro-week.json, social/macro.html and work/macro_week.json for
+next Saturday once a day. `date` is that Saturday (today when it is Saturday, otherwise the coming Saturday).
+It is the posting day, including when the file is a preview and `date` is still in the future. `from`/`to` are
+the 7-day data window and are not the posting day. ig_reel.date_kst is the Asia/Seoul date of 20:00 HKT on
+`date` (21:00 KST, same calendar day). Writes data/macro-week.json, social/macro.html and work/macro_week.json for
 tools/macro_week.js, which draws og/macro-<lang>.png and og/macro-story-<lang>.png.
 MACRO_WEEK_FORCE=1 rebuilds now on any day (for checking).
 """
@@ -17,7 +20,7 @@ import re
 from datetime import date, timedelta
 
 from sitedata import load, notice, now_hk, read_json, work, write_json
-from share import fit_threads, page_url, xlen
+from share import fit_threads, page_url, sanitize_instagram, xlen
 
 SITE = 'https://thecrowdtape.com/'
 LANGS = ('zh', 'en', 'ko')
@@ -128,6 +131,40 @@ def week(d, end):
     return {'from': d0, 'to': d1, 'themes': rows, 'top': [r['theme'] for r in top]}
 
 
+def _whole(n):
+    if isinstance(n, bool) or not isinstance(n, (int, float)):
+        return None
+    return int(n) if float(n) == int(n) else n
+
+
+def macro_ig_key_line(lang, w):
+    """Instagram line 1: the most-discussed theme with its bull and bear counts.
+
+    zh '本週宏觀：最多人講「其他」（利好 10・利淡 11）'. The theme is w['top'][0]
+    and the counts are that theme's bull/bear. Empty when the row is missing.
+    """
+    if lang not in LANGS:
+        lang = 'en'
+    if not isinstance(w, dict):
+        return ''
+    top = w.get('top') or []
+    theme = top[0] if top else ''
+    if not theme:
+        return ''
+    row = next((r for r in (w.get('themes') or []) if isinstance(r, dict) and r.get('theme') == theme), None)
+    if not row:
+        return ''
+    bull, bear = _whole(row.get('bull')), _whole(row.get('bear'))
+    if bull is None or bear is None:
+        return ''
+    name = NAMES.get(lang, NAMES['en']).get(theme) or str(theme)
+    if lang == 'zh':
+        return f'本週宏觀：最多人講「{name}」（利好 {bull}・利淡 {bear}）'
+    if lang == 'ko':
+        return f'이번 주 매크로: 가장 많이 다룬 「{name}」 (호재 {bull} · 악재 {bear})'
+    return f'This week in macro: most discussed "{name}" (bullish {bull} · bearish {bear})'
+
+
 def counts(lang, r):
     L = TXT[lang]
     return f"{L['bull']} {r['bull']}・{L['bear']} {r['bear']}・{L['neu']} {r['neu']}" if lang == 'zh' else \
@@ -155,7 +192,9 @@ def posts(lang, w, rng):
         blocks.append((line, say))
     body = '\n\n'.join([L['intro']] + ['\n'.join(x for x in b if x) for b in blocks]) if blocks else L['quiet']
     tags = L['tags']
-    ig = '\n\n'.join([head, body, L['bio'], L['give'], L['follow'], L['disc_long'], tags])
+    # Line 1 is the top theme and its counts. The old heading and every theme block stay under it.
+    key = macro_ig_key_line(lang, w)
+    ig = sanitize_instagram('\n\n'.join(p for p in (key, head, body, L['bio'], L['give'], L['follow'], L['disc_long'], tags) if p), lang)
     fb = '\n\n'.join([head, body, L['more'] + url, give, L['follow'], L['disc_long'], tags])
     # Threads: 500 characters; drop the quotes, then the intro, if too long.
     short_body = '\n'.join(b[0] for b in blocks) if blocks else L['quiet']
@@ -245,6 +284,9 @@ def main():
           'stories': {l: f'{SITE}og/macro-story-{l}.png?v={v}' for l in LANGS},
           'posts': {l: posts(l, w, rng) for l in LANGS}}
     write_json('data/macro-week.json', mw, indent=1)
+    from ig_boost import apply_macro_file
+    apply_macro_file('data/macro-week.json')
+    mw = read_json('data/macro-week.json')
     os.makedirs('social', exist_ok=True)
     open('social/macro.html', 'w', encoding='utf-8').write(page(mw))
     write_json(work('macro_week.json'), {'range': rng, 'themes': w['themes'], 'top': w['top'], 'names': NAMES, 'accounts': w['accounts']})

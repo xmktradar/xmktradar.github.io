@@ -179,13 +179,33 @@ def tags(lang, tks):
     return base + ''.join(f' #{t}' for t in tks[:5] if re.fullmatch(r'[A-Z]{1,6}', t))
 
 
-# Instagram captions: no URLs, no domain, one link-in-bio line, at most 5 hashtags (≤2 tickers).
+# Instagram captions: no URLs, no domain, one link-in-bio line, 3–5 hashtags (≤2 tickers).
+# Min 3 by filling language base tags; max 5.
+# A key-point first line comes from the generator (top5 lead bull/bear, macro top theme).
+# sanitize_instagram never moves or deletes a body line to invent one. It may prepend
+# a key line built from structured data only when line 1 has neither a $TICKER nor a digit.
 IG_BIO = {'zh': '連結在個人簡介', 'en': 'link in bio', 'ko': '프로필 링크'}
 IG_BASE_TAGS = {
     'zh': ('#美股', '#美股投資', '#港人投資'),
-    'en': ('#StockMarket', '#USStocks'),
+    'en': ('#StockMarket', '#USStocks', '#Stocks'),
     'ko': ('#미국주식', '#미장', '#해외주식'),
 }
+IG_MIN_TAGS = 3
+IG_MAX_TAGS = 5
+IG_CTA_COPY = {
+    'zh': '覺得有用？收藏＋追蹤 @thecrowdtape，每日睇大神共識',
+    'en': 'Found this useful? Save + follow @thecrowdtape for daily consensus',
+    'ko': '유용했다면 저장 + 팔로우 @thecrowdtape',
+}
+IG_CTA_REL = 'og/cta/ig-cta-{lang}.jpg'
+
+
+def ig_cta_url(lang):
+    """Absolute URL of the static follow/save CTA JPEG for one language."""
+    lang = lang if lang in LANGS else 'en'
+    return f'{SITE}{IG_CTA_REL.format(lang=lang)}'
+
+
 IG_FOLLOW = {
     'zh': 'Follow @thecrowdtape 每日睇街貨點諗。',
     'en': 'Follow @thecrowdtape for the daily read on what the crowd thinks.',
@@ -199,7 +219,10 @@ _IG_DOMAIN_RE = re.compile(r'\(?thecrowdtape\.com\)?', re.I)
 
 
 def ig_tags(lang, tks):
-    """Language base tags first, then at most 2 ticker tags, at most 5 hashtags total."""
+    """Language base tags first, then at most 2 ticker tags, 3–5 hashtags total.
+
+    Fewer than 3: fill from the language base. More than 5: drop from the end.
+    """
     lang = lang if lang in LANGS else 'en'
     base = list(IG_BASE_TAGS[lang])
     extra = []
@@ -208,8 +231,15 @@ def ig_tags(lang, tks):
             extra.append(f'#{t}')
         if len(extra) >= 2:
             break
-    room = max(0, 5 - len(extra))
-    return ' '.join(base[:room] + extra)
+    room = max(0, IG_MAX_TAGS - len(extra))
+    tags = base[:room] + extra
+    if len(tags) < IG_MIN_TAGS:
+        for tok in base:
+            if tok not in tags:
+                tags.append(tok)
+            if len(tags) >= IG_MIN_TAGS:
+                break
+    return ' '.join(tags[:IG_MAX_TAGS])
 
 
 def dedupe_handle(acc, why):
@@ -301,20 +331,93 @@ def _ig_drop_line(s, lang, bio):
     return False
 
 
-def _ig_tag_line(lang, found):
+def _ig_tag_line(lang, found, body=''):
     tickers = []
     for tok in found or []:
-        body = tok[1:] if tok.startswith('#') else tok
-        tag = f'#{body}'
-        if re.fullmatch(r'[A-Z]{1,6}', body) and tag not in tickers:
+        body_tok = tok[1:] if tok.startswith('#') else tok
+        tag = f'#{body_tok}'
+        if re.fullmatch(r'[A-Z]{1,6}', body_tok) and tag not in tickers:
             tickers.append(tag)
         if len(tickers) >= 2:
             break
+    if len(tickers) < 2:
+        for m in re.finditer(r'\$([A-Z]{1,6})\b', body or ''):
+            tag = f'#{m.group(1)}'
+            if tag not in tickers and tag not in IG_BASE_TAGS.get(lang, ()):
+                tickers.append(tag)
+            if len(tickers) >= 2:
+                break
     return ig_tags(lang, [t[1:] for t in tickers])
 
 
-def sanitize_instagram(text, lang=None):
-    """One Instagram caption: no URLs/domain, one bio line, ≤5 hashtags (≤2 tickers)."""
+_IG_TICKER_RE = re.compile(r'\$[A-Z]{1,6}\b')
+
+
+def _ig_has_key_marker(line):
+    """True when the line already names a $TICKER or contains a digit."""
+    s = line or ''
+    return bool(_IG_TICKER_RE.search(s) or re.search(r'\d', s))
+
+
+def ig_non_hashtag_lines(text):
+    """Non-empty lines that are not a hashtag-only line, in order."""
+    out = []
+    for ln in (text or '').split('\n'):
+        s = ln.strip()
+        if s and not re.fullmatch(r'(?:#[^\s#]+\s*)+', s):
+            out.append(s)
+    return out
+
+
+def install_ig_headline(text, key_line):
+    """Prepend a generator key-point line. Existing lines stay, in order.
+
+    No-op when key_line is blank or already the first non-empty line.
+    Does not delete or reorder body lines. Callers that already put the
+    headline in the caption (the generators) hit the no-op.
+    """
+    if not isinstance(text, str):
+        return text
+    key_line = (key_line or '').strip()
+    if not key_line:
+        return text
+    lines = text.split('\n')
+    first_i = next((i for i, ln in enumerate(lines) if ln.strip()), None)
+    if first_i is None:
+        return key_line
+    if lines[first_i].strip() == key_line:
+        return text
+    head = lines[:first_i] + [key_line]
+    if lines[first_i].strip():
+        head.append('')
+    return '\n'.join(head + lines[first_i:])
+
+
+def _ig_prepend_key_line(lines, key_line):
+    """Prepend key_line only when line 1 has neither a $TICKER nor a digit.
+
+    Never pops, moves, or deletes a line. No key_line: leave the lines as they are.
+    """
+    key_line = (key_line or '').strip()
+    first_i = next((i for i, ln in enumerate(lines) if ln.strip()), None)
+    if first_i is None:
+        return [key_line] if key_line else lines
+    if _ig_has_key_marker(lines[first_i]) or not key_line:
+        return lines
+    if lines[first_i].strip() == key_line:
+        return lines
+    lines.insert(first_i, key_line)
+    if lines[first_i + 1].strip():
+        lines.insert(first_i + 1, '')
+    return lines
+
+
+def sanitize_instagram(text, lang=None, key_line=None):
+    """One Instagram caption: no URLs/domain, one bio line, 3–5 hashtags.
+
+    key_line, when passed, is prepended only if line 1 has neither a $TICKER nor a
+    digit. Body lines are never moved or deleted to manufacture a key point.
+    """
     if not isinstance(text, str):
         return text
     lang = lang if lang in LANGS else _guess_ig_lang(text)
@@ -342,6 +445,7 @@ def sanitize_instagram(text, lang=None):
         if not ln.strip() and compact and not compact[-1].strip():
             continue
         compact.append(ln)
+    compact = _ig_prepend_key_line(compact, key_line)
     insert_at = None
     for i, ln in enumerate(compact):
         s = ln.strip()
@@ -363,25 +467,49 @@ def sanitize_instagram(text, lang=None):
                 continue
             seen = True
         unique.append(ln)
-    if found_tags:
-        while unique and not unique[-1].strip():
-            unique.pop()
-        unique.append('')
-        unique.append(_ig_tag_line(lang, found_tags))
+    while unique and not unique[-1].strip():
+        unique.pop()
+    unique.append('')
+    unique.append(_ig_tag_line(lang, found_tags, '\n'.join(unique)))
     return '\n'.join(unique).strip('\n')
 
 
+def _sanitize_ig_value(value, lang):
+    lang = lang if lang in LANGS else (lang or 'en')
+    if isinstance(value, str):
+        return sanitize_instagram(value, lang)
+    if isinstance(value, dict) and isinstance(value.get('text'), str):
+        value['text'] = sanitize_instagram(value['text'], lang)
+    return value
+
+
 def sanitize_instagram_tree(obj, lang=None):
-    """Sanitize every .instagram string and set has_link.instagram false where tracked."""
+    """Sanitize every Instagram caption (string, {text}, or ig_reel.caption) and clear has_link.instagram."""
     if isinstance(obj, dict):
         this_lang = obj.get('lang') if obj.get('lang') in LANGS else lang
-        if isinstance(obj.get('instagram'), str):
-            obj['instagram'] = sanitize_instagram(obj['instagram'], this_lang or lang or 'en')
+        ig = obj.get('instagram')
+        if isinstance(ig, str):
+            obj['instagram'] = sanitize_instagram(ig, this_lang or lang or 'en')
+        elif isinstance(ig, dict):
+            for key, value in ig.items():
+                lg = key if key in LANGS else this_lang
+                ig[key] = _sanitize_ig_value(value, lg or 'en')
+        cap = obj.get('caption')
+        if isinstance(cap, dict) and ('video_path' in obj or 'video_expected_path' in obj):
+            for key, value in cap.items():
+                if key in LANGS and isinstance(value, str):
+                    cap[key] = sanitize_instagram(value, key)
         hl = obj.get('has_link')
         if isinstance(hl, dict) and 'instagram' in hl:
-            hl['instagram'] = False
+            if isinstance(hl['instagram'], dict):
+                for key in list(hl['instagram']):
+                    hl['instagram'][key] = False
+            else:
+                hl['instagram'] = False
         for key, value in obj.items():
             if key == 'instagram':
+                continue
+            if key == 'caption' and ('video_path' in obj or 'video_expected_path' in obj):
                 continue
             next_lang = key if key in LANGS else this_lang
             if isinstance(value, (dict, list)):
@@ -499,7 +627,7 @@ def caption(lang, day, s, items, win, quote_):
     url = page_url(lang)
     short = SHORT[lang]
 
-    # Instagram: no URLs. One link-in-bio line, ≤5 hashtags.
+    # Instagram: no URLs. One link-in-bio line, 3–5 hashtags.
     ig = [head, '', win_line, '', *main]
     for b in extra + ([q] if q else []):
         ig += ['', b]
@@ -1928,6 +2056,50 @@ def _x_top5_text(lang, day, window, bulls, bears):
     return text if xlen(text) <= 280 else _trim_x(text)
 
 
+def top5_ig_key_line(lang, bulls, bears):
+    """Instagram line 1: lead bull and lead bear with their real counts.
+
+    zh '最看好 $RSP（3 個帳號）・最看淡 $QQQ（5 個帳號）'
+    en 'Most bullish $RSP (3 accounts) · most bearish $QQQ (5 accounts)'
+    ko '가장 강세 $RSP (계정 3개) · 가장 약세 $QQQ (계정 5개)'
+    Empty when neither side has a counted row. One side alone is that clause only.
+    """
+    lang = lang if lang in LANGS else 'en'
+
+    def lead(rows):
+        for row in rows or []:
+            if not isinstance(row, dict):
+                continue
+            t = _ticker_sym(row.get('t'))
+            n = row.get('n')
+            if t and _is_num(n):
+                return t, _as_int(n)
+        return None
+
+    b, r = lead(bulls), lead(bears)
+    if lang == 'zh':
+        bits = []
+        if b:
+            bits.append(f'最看好 ${b[0]}（{_acc("zh", b[1])}）')
+        if r:
+            bits.append(f'最看淡 ${r[0]}（{_acc("zh", r[1])}）')
+        return '・'.join(bits)
+    if lang == 'ko':
+        bits = []
+        if b:
+            bits.append(f'가장 강세 ${b[0]} ({_acc("ko", b[1])})')
+        if r:
+            bits.append(f'가장 약세 ${r[0]} ({_acc("ko", r[1])})')
+        return ' · '.join(bits)
+    if b and r:
+        return f'Most bullish ${b[0]} ({_acc("en", b[1])}) · most bearish ${r[0]} ({_acc("en", r[1])})'
+    if b:
+        return f'Most bullish ${b[0]} ({_acc("en", b[1])})'
+    if r:
+        return f'Most bearish ${r[0]} ({_acc("en", r[1])})'
+    return ''
+
+
 def _list_lines(lang, label, rows, platform=None):
     lines = [label]
     if not rows:
@@ -1941,10 +2113,19 @@ def _list_lines(lang, label, rows, platform=None):
 
 
 def _long_top5_text(lang, day, window, bulls, bears, platform):
-    """Facebook lists every name. Instagram has no URLs: one bio line and ≤5 hashtags."""
+    """Facebook lists every name. Instagram has no URLs: one bio line and 3–5 hashtags.
+
+    Instagram line 1 is the lead-bull / lead-bear key point. The old heading and
+    every list row stay under it.
+    """
     L = top5_copy(lang, len(bulls), len(bears))
     ig = platform == 'instagram'
-    parts = [L['heading']]
+    parts = []
+    if ig:
+        key = top5_ig_key_line(lang, bulls, bears)
+        if key:
+            parts.append(key)
+    parts.append(L['heading'])
     meta = [ln for ln in (day, f"{L['win']}: {window}" if window else '') if ln]
     if meta:
         parts.append('\n'.join(meta))
@@ -2087,7 +2268,9 @@ def build_top5(daily, day, made_hkt, fallback_window=None):
     X carries one link in the body: the lead bull's /<lang>/stock/<T>/, or /<lang>/ when there is no bull.
     Threads and Facebook keep that link in first_comment (threads: the lead bull, or the language
     home when there is no bull; facebook: one stock link per listed name). Instagram has no URL:
-    one link-in-bio line and has_link.instagram false. Threads is fit_threads (500 code points).
+    one link-in-bio line and has_link.instagram false. Its first line is top5_ig_key_line
+    (lead bull and lead bear); the heading and every ・ list row stay under that line.
+    Threads is fit_threads (500 code points).
     Every thecrowdtape.com link is tag_url(..., platform, 'top5').
     Each post ends with SHORT[lang]['disc'] and the usual hashtags.
     format is image_card. video.<lang> points at og/top5-<lang>.mp4.
@@ -2944,7 +3127,12 @@ def build_weekend(weekly, day):
     for piece in made:
         langs = {}
         for lang in LANGS:
-            entry = {'threads': piece['bodies'][lang], 'facebook': piece['bodies'][lang]}
+            body = piece['bodies'][lang]
+            entry = {
+                'threads': body,
+                'facebook': body,
+                'instagram': sanitize_instagram(body, lang),
+            }
             hl, fc = {}, {}
             for plat in ('threads', 'facebook'):
                 take = (i % 2 == 0)
@@ -2952,6 +3140,7 @@ def build_weekend(weekly, day):
                 hl[plat] = take
                 if take:
                     fc[plat] = SHORT[lang]['live'] + _camp_url(lang, plat, 'weekend', piece.get('ticker'))
+            hl['instagram'] = False
             entry['has_link'] = hl
             if fc:
                 entry['first_comment'] = fc
@@ -3620,6 +3809,8 @@ def main():
         date_kst.apply_date_kst(sp, atomic_day=day)
         write_json('data/social-posts.json', sp, indent=1)
         normalize_file('data/social-posts.json')
+        from ig_boost import apply_social_file
+        apply_social_file('data/social-posts.json')
         sp = read_json('data/social-posts.json')
         os.makedirs('social', exist_ok=True)
         open('social/index.html', 'w', encoding='utf-8').write(social_page(sp))
@@ -3632,6 +3823,8 @@ def main():
         date_kst.apply_date_kst(sp, atomic_day=day)
         write_json('data/social-posts.json', sp, indent=1)
         normalize_file('data/social-posts.json')
+        from ig_boost import apply_social_file
+        apply_social_file('data/social-posts.json')
         notice(f'週末社交槽已寫好：{day}')
     if draw or social:
         write_json(work('og.json'), {'date': day, 'hash': digest, 'social': social, 'langs': langs})

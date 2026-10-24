@@ -15,7 +15,12 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 KST = ZoneInfo('Asia/Seoul')
+HKT = ZoneInfo('Asia/Hong_Kong')
 NY = ZoneInfo('America/New_York')
+# Saturday macro posts: zh 20:00 HKT, en 20:30, ko 21:00. The earliest is 20:00 HKT,
+# which is 21:00 KST, so the Seoul calendar date is that same Saturday.
+# A later clock (23:30 HKT) would land on the next Seoul date. Do not use one.
+MACRO_POST_HKT = '20:00'
 # 07:00 HKT, when the weekend social run starts, is 08:00 KST.
 WEEKEND_KST = '08:00'
 # three_lines is the earliest weekday slot.
@@ -58,6 +63,23 @@ def et_post_dt(day, hhmm):
         return None
     y, mo, d = (int(p) for p in day.split('-'))
     return datetime(y, mo, d, hm[0], hm[1], tzinfo=NY)
+
+
+def macro_post_date_kst(day):
+    """Seoul date of the Saturday macro post at 20:00 HKT.
+
+    `day` is macro-week.json `date`: the Saturday the three posts are intended
+    to go out. A preview built before that Saturday still stores that future
+    Saturday, and that Saturday is the posting day. 20:00 HKT is 21:00 KST, so
+    the date does not roll forward. The data window `to` is not this day.
+    """
+    day = as_day(day)
+    hm = parse_hhmm(MACRO_POST_HKT)
+    if not day or not hm:
+        return ''
+    y, mo, d = (int(p) for p in day.split('-'))
+    dt = datetime(y, mo, d, hm[0], hm[1], tzinfo=HKT)
+    return dt.astimezone(KST).date().isoformat()
 
 
 def et_post_date_kst(day, hhmm):

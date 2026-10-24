@@ -181,7 +181,7 @@ def test_post_shape_limits_and_utm():
             bios = [ln.strip() for ln in text.splitlines() if ln.strip() in share.IG_BIO.values()]
             assert bios == [share.IG_BIO[lang]], (lang, bios)
             tags = HASH.findall(text)
-            assert len(tags) <= 5, tags
+            assert share.IG_MIN_TAGS <= len(tags) <= share.IG_MAX_TAGS, tags
             assert len(TICK_TAG.findall(text)) <= 2
             assert slot['has_link']['instagram'][lang] is False
         else:
