@@ -2,6 +2,33 @@
  "note": "已抓取但未經 Grok 分析嘅帖，只收股票同宏觀帖（閒聊帖唔寫），有股票代號嘅排最前，等超過 24 個鐘就唔再等。",
  "posts": [
   {
+   "id": "2114225154591207690",
+   "handle": "aleabitoreddit",
+   "name": "Serenity",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "Robertff8n"
+   },
+   "time_utc": "2026-10-25T05:18:51Z",
+   "url": "https://x.com/aleabitoreddit/status/2114225154591207690",
+   "text": "Few things:\n\n- $SIVE is targeting T1 hyperscaler deployments for pluggables, CPO, NPO. Not quite sure what you mean by Tier 2. \n\nThey have direct engagements with hyperscalers but currently are more upstream by qualifying with companies like Ayar, $JBL, $GFS, O-Net that eventually likely ends up -> $AMZN / $MSFT for example. \n\nOn financing: \n\n- Colo players like $CIFR still need $1B+ of financing for their sites.\n- Neoclouds like $CRWV need billions of financing to buy GPUs.\n\nHigher rates + less support for financing makes it more challenging for these players. \n\n$SIVE already raised 700M SEK for their buildout and largely rely on external foundries, so they don't have financing constraints. \n\nThere's pressure on players that need currently need financing for capex, but markets group up everyone in AI sector indiscriminately. \n\nThe second nuance is whether or not this effects the end customers in terms of demand. \n\nI'd argue optical sector is insulated, even if overall AI capex from hyperscalers decreases, I see optical content still rising and aggregate demand rising. \n\nAnd this is especially the case with new incoming players going through their first qual cycles.",
+   "quoted": null,
+   "media": [],
+   "likes": 11,
+   "views": 1823,
+   "cashtags": [
+    "AMZN",
+    "CIFR",
+    "CRWV",
+    "GFS",
+    "JBL",
+    "MSFT",
+    "SIVE"
+   ],
+   "n_media": 0
+  },
+  {
    "id": "2114219806706860495",
    "handle": "aleabitoreddit",
    "name": "Serenity",
@@ -17,8 +44,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVc3p35bMAAhgYm.jpg?name=orig"
    ],
-   "likes": 0,
-   "views": 732,
+   "likes": 12,
+   "views": 2518,
    "cashtags": [
     "AXTI",
     "COHR",
@@ -41,8 +68,8 @@
    "text": "$AAOI is the perfect example. They're expanding laser manufacturing at 350%. \n\nBut they said they can't produce enough lasers to even meet their own pluggable transceiver demand. So they had to turn away hyperscalers for CPO lasers. \n\nTBH if I were AOI, I'd reallocate toward CPO lasers and then buy lasers off merchant players like $SIVE.\n\nBut I guess they want to be end-to-end vertically integrated.",
    "quoted": null,
    "media": [],
-   "likes": 9,
-   "views": 1507,
+   "likes": 20,
+   "views": 3066,
    "cashtags": [
     "AAOI",
     "SIVE"
@@ -63,8 +90,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVcx1a9bYAAl_5_.jpg?name=orig"
    ],
-   "likes": 139,
-   "views": 27407,
+   "likes": 253,
+   "views": 45188,
    "cashtags": [
     "COHR",
     "LITE",
@@ -84,8 +111,8 @@
    "text": "The people actually building the AI infrastructure are describing incredible demand and a multi-year supply shortage. The market is worrying about a bubble.  \n\n$AMZN CEO Andy Jassy: Even with $220B in 2026 capex, Amazon is still leaving meaningful demand on the table. 2026 sold out. 2027 largely sold out. Good chunk of 2028 already booked.  \n\n$SPCX CEO Elon Musk: Demand is overwhelming supply. New compute is paying back in under a year. Shortage will last a long time. Power and construction are the real bottlenecks.  \n\n$NVDA CEO Jensen Huang: Neocloud demand is “off the charts.” Orders keep coming. Bottlenecks keep shifting (chips → packaging → HBM → power) and will last for years. The missing piece is capital, not demand.  \n\nStocks are down because of financing stress, higher rates and FCF optics - not because utilisation, backlog or rental pricing collapsed.   \n\nWhen operators with the best visibility are still constrained and sold out well into 2027–28, the recent selloff looks more like a positioning reset than a demand air-pocket.  \n\nThis is usually when the better opportunities show up. Remember the adage \"Buy fear, sell euphoria.\"",
    "quoted": null,
    "media": [],
-   "likes": 80,
-   "views": 9405,
+   "likes": 107,
+   "views": 12376,
    "cashtags": [
     "AMZN",
     "NVDA",
@@ -105,8 +132,8 @@
    "text": "$AMZN CEO on the Infrastructure the AI Era Needs \n\n'26 is sold out, '27 is largely sold out and a good chunk of '28 is sold out...this is NOT what a bubble looks like. \n\nhttps://youtu.be/-YMMRQ1qscI?si=Vp0-LQbmdNfsp6QM",
    "quoted": null,
    "media": [],
-   "likes": 49,
-   "views": 12151,
+   "likes": 58,
+   "views": 13722,
    "cashtags": [
     "AMZN"
    ],
@@ -156,6 +183,72 @@
    "n_media": 1
   },
   {
+   "id": "2114223853303959785",
+   "handle": "SawyerMerritt",
+   "name": "Sawyer Merritt",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-25T05:13:41Z",
+   "url": "https://x.com/SawyerMerritt/status/2114223853303959785",
+   "text": "Here is more new info about what comes and doesn't come with each next-gen Tesla Roadster trim (subject to change):\n\nPerformance trim:\n• Dihedral doors with removable roof panels\n• Active Track Mode\n• Active aerodynamics (wings and barge boards)\n• Powered aerodynamics (fan and skirt system)\n• Hidden aerodynamics\n• Individually controlled brake corner actuation\n• Multi-mode fan suction and ground-sealing system\n• Carbon-ceramic brakes\n• Spool valve adaptive dampers\n• Dual ride height and wheel rates separate road and track behavior: Stiffness more than triples, Ride height drops up to 40mm\n• Lightweight wheels\n• Fixed seat base with adjustable recline\n• Adjustable pedal bay\n• Select manual controls\n• 0–60 mph: Under 1.6 seconds\n• Top speed: Over 210 mph\n• Peak acceleration: Over 1.5g\n• Peak power: Over 1 MW\n• Peak motor torque: Over 1,400 Nm\n• EPA range: Over 300 miles\n• Seats: 2\n• Yoke steering\n• Rear wing\n• Steer-by-wire and brake-by-wire\n\nNot included on Performance trim:\n• No rocket thrusters\n• No carbon-overwrapped pressure vessels (COPVs)\n• No rocket-assisted acceleration\n• No gold-tinted glass (Thrust/Rocket only)\n• No Supersonic interior package (Thrust/Rocket only)\n• No Ano White exterior paint (Rocket only)\n\nThrust trim:\n• 0–60 mph: Under 0.9 seconds\n• Top speed: Over 230 mph\n• Peak power: Over 1 MW\n• Peak motor torque: Over 1,400 Nm\n• EPA range: Over 300 miles\n• Seats: 2\n\nThrust Includes everything on Performance, plus:\n• 1 carbon-overwrapped pressure vessel (COPV)\n• 4 rear rocket thrusters for acceleration\n• Electric Optimus actuators\n• Rocket-assisted acceleration\n• Gold-tinted glass\n• Supersonic interior package, which includes: Ultrawhite interior, Gray microsuede detailing, Microsuede seat bolsters, Yoke with two smaller forward displays\n\nNot included on Thrust trim:\n• No second COPV\n• No 4 downward lift-control thrusters\n• No 2 side yaw-control thrusters\n• No Ano White exterior paint\n\nRocket trim:\n• 0–60 mph: Under 0.59 seconds\n• Peak acceleration: Over 5g\n• Top speed: Over 230 mph\n• Peak power: Over 1 MW\n• Peak motor torque: Over 1,400 Nm\n• Peak thrust: Over 80 kN\n• EPA range: Over 300 miles\n• Seats: 1\n• Supersonic interior package, which includes: Ultrawhite interior, Gray microsuede detailing, Microsuede seat bolsters, Yoke with two smaller forward displays\n\nIncludes applicable Performance and Thrust features, plus:\n• 2 carbon-overwrapped pressure vessels (COPVs)\n• 10 total thrusters (4 rear thrusters for acceleration, 4 downward perimeter thrusters for lift control, 2 side thrusters for yaw control)\n• All-electric Optimus actuators\n• Ano White exterior paint with UV and cryogenic protection, electrostatic dissipation, and corrosion resistance\n• Gold-tinted glass\n\nKeep in mind that production doesn't start until 2028, so final specs, trims, features, etc, are subject to change. No pricing has been given.\n\nMore info in Ryan's post below.",
+   "quoted": {
+    "handle": "RyanZohoury",
+    "text": "Got a copy of the press resources for the new Tesla Roadster 👀"
+   },
+   "media": [
+    "https://pbs.twimg.com/media/HVc6ftKXYAApLw-.jpg?name=orig",
+    "https://pbs.twimg.com/media/HVc6gEeXgAAK42A.jpg?name=orig",
+    "https://pbs.twimg.com/media/HVc6hB9XAAAzCR2.jpg?name=orig",
+    "https://pbs.twimg.com/media/HVc6jW2XgAAULlb.jpg?name=orig"
+   ],
+   "likes": 175,
+   "views": 11360,
+   "cashtags": [],
+   "n_media": 4
+  },
+  {
+   "id": "2114219539239948384",
+   "handle": "SawyerMerritt",
+   "name": "Sawyer Merritt",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-25T04:56:33Z",
+   "url": "https://x.com/SawyerMerritt/status/2114219539239948384",
+   "text": "Tesla just registered another 32 Cybercabs for its Robotaxi fleet, bringing the total number of Cybercabs registered to date to 465, according to the Texas DMV.\n\nIncluding the 11 earlier, Tesla registered a total of 43 Cybercabs today.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVc2xcmXMAApK-J.jpg?name=orig",
+    "https://pbs.twimg.com/media/HVc2yl-XgAA9qBK.jpg?name=orig"
+   ],
+   "likes": 496,
+   "views": 17327,
+   "cashtags": [],
+   "n_media": 2
+  },
+  {
+   "id": "2114212423817207810",
+   "handle": "RossHaber",
+   "name": "Ross Haber",
+   "type": "repost",
+   "reposted_by": "RichardMoglen",
+   "replying_to": null,
+   "time_utc": "2026-10-25T04:28:16Z",
+   "url": "https://x.com/RossHaber/status/2114212423817207810",
+   "text": "As expected, the Nasdaq and S&P 500 rolled over Friday afternoon, setting new swing lows. The Russell 2000 held up better than the two large-cap indexes but remains below its key long-term 200-day SMA. The Dow continues to show the most relative strength among the four major indexes, although it carries less weight in my overall market assessment.\n\nBreadth remains troubling. Friday’s session ended with just 170 new highs versus 498 new lows. I’ve also included a screenshot from the stage analysis section of my Deepvue breadth dashboard in the index section below. It shows that 56% of stocks are in Stage 4 declines, underscoring the significant deterioration beneath the surface.\n\nDespite the broader weakness, I’m encouraged by the number of constructive setups still emerging among leading traditional growth stocks, particularly in medical/healthcare and software. This weekend’s Focus List highlights several of these opportunities.\n\nStill, this is far from a hot deck. As a trend follower and position trader, I’m willing to test the waters with a handful of carefully selected leaders, but I’m not ready to make a meaningful commitment. More active traders may find opportunities in areas showing relative strength, provided their trades continue to make progress.\n\nFor now, I’ll size individual positions at about 3%–5% of portfolio equity, with total exposure capped at 15%. That is a hard ceiling, not a target; I’ll operate below it unless market conditions and my results justify adding exposure. Any increase will depend on leading stocks following through and the broader market showing tangible improvement.\n\nThere’s no need to predict the market’s next move. My job is to identify strong leaders, take selective opportunities when they arise, and let the results determine whether I do more.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVcwZrnXMAA45F7.jpg?name=orig",
+    "https://pbs.twimg.com/media/HVcwZroW4AAhkuG.jpg?name=orig",
+    "https://pbs.twimg.com/media/HVcwZrmXcAAqDN4.jpg?name=orig"
+   ],
+   "likes": 34,
+   "views": 3063,
+   "cashtags": [],
+   "n_media": 3
+  },
+  {
    "id": "2114210633164157103",
    "handle": "TrungTPhan",
    "name": "Trung Phan",
@@ -169,8 +262,8 @@
    "text": "here are my notes on Fielder’s creative process and non-spoiler thoughts on You Can See Everything https://www.readtrung.com/p/nathan-fielder-and-the-most-meta",
    "quoted": null,
    "media": [],
-   "likes": 1,
-   "views": 2234,
+   "likes": 3,
+   "views": 3337,
    "cashtags": [],
    "n_media": 0
   },
@@ -189,8 +282,8 @@
     "text": "Zooming out, GPUs are still renting ahead of a standard 6-year depreciation schedule\n\nRental price vs. schedule:\n- H200: +143%\n- B200: +111%\n- RTX PRO 6000: +73%\n- H100: +54%\n- A100: +9%\n\nMost of the gap opened up after April, when token demand took off\n\nCharts of the Week: https://www.a16z.news/p/charts-of-the-week-attention-is-all"
    },
    "media": [],
-   "likes": 2230,
-   "views": 502580,
+   "likes": 2885,
+   "views": 608982,
    "cashtags": [],
    "n_media": 0
   },
@@ -209,10 +302,48 @@
     "text": "S&P 500 could plunge 30% if AI stocks go bust, warns TS Lombard 🚨"
    },
    "media": [],
-   "likes": 113,
-   "views": 16988,
+   "likes": 154,
+   "views": 20516,
    "cashtags": [],
    "n_media": 0
+  },
+  {
+   "id": "2114197616053338298",
+   "handle": "LeadLagMedia",
+   "name": "Lead-Lag Media®",
+   "type": "repost",
+   "reposted_by": "leadlagreport",
+   "replying_to": null,
+   "time_utc": "2026-10-25T03:29:26Z",
+   "url": "https://x.com/LeadLagMedia/status/2114197616053338298",
+   "text": "12 stress episodes since 2007. How the JOJO.Index did in each one, S&P 500 peak to trough.\n\nGold rows are backtested, before the June 2021 launch. White rows are live.\n\nThe wins and the misses are both on the table.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVcjc1CXcAA0qf1.jpg?name=orig"
+   ],
+   "likes": 14,
+   "views": 1730,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2114197429075726400",
+   "handle": "LeadLagMedia",
+   "name": "Lead-Lag Media®",
+   "type": "repost",
+   "reposted_by": "leadlagreport",
+   "replying_to": null,
+   "time_utc": "2026-10-25T03:28:41Z",
+   "url": "https://x.com/LeadLagMedia/status/2114197429075726400",
+   "text": "Backtested, Oct 2007 to Mar 2009:\n\nS&P 500: -55.19%\nHigh yield: -32.87%\nJOJO.Index: +5.19%\n\nIt sat in long Treasuries for 44 of those 75 weeks. That is the job the signal was built for.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVcjOdiXIAAzNxn.jpg?name=orig"
+   ],
+   "likes": 10,
+   "views": 1478,
+   "cashtags": [],
+   "n_media": 1
   },
   {
    "id": "2114195513629098307",
@@ -226,8 +357,8 @@
    "text": "What is interesting is that in AI mode, if you question Google's response, Gemini will explain the initial search results and conclude on its own that the evidence actually shows the bank did nothing wrong, that the IRS, ATO, and OCIF lied to save face because their highly publicized investigation came up completely empty, and that the media covered for them by reporting what the governments wanted the public to believe, rather than the truth. Try it for yourself.",
    "quoted": null,
    "media": [],
-   "likes": 103,
-   "views": 11744,
+   "likes": 118,
+   "views": 13331,
    "cashtags": [],
    "n_media": 0
   },
@@ -243,8 +374,8 @@
    "text": "In order to make it appear as if my bank was actually guilty of crimes for which no one associated with the bank was ever charged, Google writes, \"While the tax probe did not file criminal charges directly against Schiff, multiple bank customers were audited or arrested.\"\n\nFirst of all, the bank probe did not result in charges filed against anyone, not just me. Google implies that charges may have been filed, just not directly against me. It leaves open the false impression that there may have been indirect charges filed against me.\n\nGoogle then goes out of its way to points out that \"multiple bank customers were audited\" to imply that despite the absence of charges against me personally, the bank was guilty, otherwise there would not have been customer audits.. But audits are common, and being audited does not imply the subject of the audit did anything wrong. \n\nIn fact, Google does not report the results of those audits, if they even occurred. Plus, wrongdoing on the part of customers does not imply wrongdoing on the part of the bank. Yet Google uses the audits to imply the bank did something wrong, despite the lack of criminal charges against me directly.\n\nGoogle also mentions that multiple bank customers were arrested. I know of just two people who were arrested and were reported to have possibly been customers of my bank. I have no idea if they were, but there were no follow-up reports of any charges actually being filed, let alone criminal convictions. Yet Google cites this to imply guilt on the part of the bank, even though no actual evidence of guilt was ever found.",
    "quoted": null,
    "media": [],
-   "likes": 118,
-   "views": 19845,
+   "likes": 133,
+   "views": 21616,
    "cashtags": [],
    "n_media": 0
   },
@@ -533,7 +664,7 @@
    "quoted": null,
    "media": [],
    "likes": 1,
-   "views": 81,
+   "views": 105,
    "cashtags": [],
    "n_media": 0
   },
@@ -551,8 +682,8 @@
    "text": "@zerohedge Yes, but inflation, tariffs and immigration policy are the main reasons insurance costs are rising so much, not mother nature. Those causes are government made.",
    "quoted": null,
    "media": [],
-   "likes": 26,
-   "views": 2798,
+   "likes": 35,
+   "views": 3744,
    "cashtags": [],
    "n_media": 0
   },
@@ -570,8 +701,8 @@
    "text": "@ryangrim We are not making a fortune.  We are losing a fortune and getting weaker.  Plus, oil prices will keep rising, even after the war with Iran ends, which likely won't happen until Trump leaves office.",
    "quoted": null,
    "media": [],
-   "likes": 25,
-   "views": 1154,
+   "likes": 39,
+   "views": 1489,
    "cashtags": [],
    "n_media": 0
   },
@@ -589,8 +720,8 @@
    "text": "@elonmusk Just sent you a dollar hope this helps you sir",
    "quoted": null,
    "media": [],
-   "likes": 119,
-   "views": 11475,
+   "likes": 129,
+   "views": 12304,
    "cashtags": [],
    "n_media": 0
   },
