@@ -757,7 +757,7 @@ table.lb .na{color:var(--mut);font-weight:400}
 .hbar .track.stk .b{background:var(--bull)}.hbar .track.stk .m{background:var(--neu)}.hbar .track.stk .u{background:var(--neu-soft);box-shadow:inset 0 0 0 1px var(--neu-line)}.hbar .track.stk .r{background:var(--bear)}
 .hl-head{flex-wrap:wrap}.hl-head h2{white-space:nowrap}
 .mk-top b{white-space:nowrap;flex:none}
-.brand-wrap{min-width:0;max-width:100%}.brand-wrap .brand{margin:0}.brand-sub{margin:2px 0 0;font-size:12.5px;line-height:1.4;color:var(--mut);font-style:italic}.brand-sub-zh{margin:1px 0 0;font-size:11.5px;line-height:1.4;color:var(--mut)}
+.brand-wrap{min-width:0;max-width:100%}.brand-wrap .brand{margin:0}.brand-sub{margin:2px 0 0;font-size:12.5px;line-height:1.4;color:var(--mut);font-style:italic}
 .hl-tk .nopx{font-size:11px;color:var(--mut);text-align:right}.hl-tk svg.empty{height:28px}
 
 .tk .flag{margin-left:4px}.divehead .nm .flag{font-size:11.5px;padding:1px 8px}
@@ -1033,6 +1033,8 @@ function clipDailyRange(from,to,cutMs){const a=_parseHkt(from,false),z=_parseHkt
  if(typeof cutMs==='number'&&cutMs>0&&cutMs<z)end=Math.max(a,cutMs);
  return {from:String(from).length>10?from:from+'T00:00',to:_tsOf(end)}}
 function priorDailyRange(from,to){const DAY=864e5;return {pf:_tsOf(_parseHkt(from,false)-DAY),pt:_tsOf(_parseHkt(to,true)-DAY)}}
+// 摘要截止（briefAsOf）同本頁統計窗唔同時，先分開講兩個時間；冇獨立截止就仍然係同一範圍
+function rangeSrcNote(src,bx,cx){if(src!=='writer')return '이번 수집 주기';if(bx&&cx&&bx===cx)return '오늘의 시장 분석과 동일';if(bx&&cx)return '오늘 시장 분석은 '+bx+' HKT, 이 페이지 집계는 '+cx+' HKT';return '오늘의 시장 분석과 동일'}
 /*DAILY-WIN-END*/
 function briefAsOf(w,sm){const r=String(((D.highlights||{})[w&&w.day]||{}).range||'');
  if(r.includes('–')){const e=r.split('–').pop().trim();const m=e.match(/(\d{1,2}):(\d{2})/);if(m)return m[1].padStart(2,'0')+':'+m[2]}
@@ -1278,9 +1280,11 @@ function viewDaily(){
  const vposts=rawIn(w.from,w.to).filter(valid),prevV=rawIn(pf,pt).filter(valid).length;
  const nB=cur.filter(x=>x.s==='bull').length,nR=cur.filter(x=>x.s==='bear').length,nU=cur.filter(x=>x.s==='none').length,nM=cur.filter(x=>x.s==='neu').length;
  const rawAll=rawIn(w.from,w.to),nTS=rawAll.filter(p=>p.platform==='truthsocial').length,nFold=rawAll.filter(p=>p.folded_into).length,nOff=rawAll.filter(p=>!p.folded_into&&p.theme==='非市場').length;
- const rangeTxt=w.timed?`분석 범위: ${fmtR(w.from)} – ${fmtR(w.to)} HKT (${w.src==='writer'?'오늘의 시장 분석과 동일':'이번 수집 주기'}), 총 ${rawAll.length} 건(X ${rawAll.length-nTS} 건${nTS?`, Truth Social ${nTS} 건`:''})${nFold||nOff?`; 유효 게시물 ${vposts.length} 건(${[nFold?`${nFold} 건 스레드 후속 게시물은 이전 게시물에 병합`:'',nOff?`${nOff} 건 비시장 내용`:''].filter(Boolean).join(', ')} 제외)`:''}`
+ const sm=summaryOf('daily',w.day);
+ const rangeNote=rangeSrcNote(w.src,briefAsOf(w,sm),w.to&&w.to.length>10?w.to.slice(11,16):'');
+ const rangeTxt=w.timed?`분석 범위: ${fmtR(w.from)} – ${fmtR(w.to)} HKT (${rangeNote}), 총 ${rawAll.length} 건(X ${rawAll.length-nTS} 건${nTS?`, Truth Social ${nTS} 건`:''})${nFold||nOff?`; 유효 게시물 ${vposts.length} 건(${[nFold?`${nFold} 건 스레드 후속 게시물은 이전 게시물에 병합`:'',nOff?`${nOff} 건 비시장 내용`:''].filter(Boolean).join(', ')} 제외)`:''}`
   :w.merged?`유효 데이터 부족(당일 ${w.n} 건뿐), 분석은 ${fmt(w.from)}–${fmt(w.to)} 이틀을 합산`:`분석 범위: ${w.to} 단일 일자`;
- const sm=summaryOf('daily',w.day);const br=(D.briefings||[]).filter(b=>b.date===w.day).slice(-1)[0];if(!histDone&&w.day){const _d=(D.summaries&&D.summaries.daily)||[],_b=D.briefings||[];if((_d.length&&w.day<_d[0].date)||(_b.length&&w.day<_b[0].date))loadHist()}
+ const br=(D.briefings||[]).filter(b=>b.date===w.day).slice(-1)[0];if(!histDone&&w.day){const _d=(D.summaries&&D.summaries.daily)||[],_b=D.briefings||[];if((_d.length&&w.day<_d[0].date)||(_b.length&&w.day<_b[0].date))loadHist()}
  const top=coBull[0],topB=coBear[0],sp=split[0],rev=chg.find(y=>y.ch==='반전')||chg[0];
  const auto=`<p>${top?`컨센서스가 가장 강한 종목은 ${tkBtn(top.t)}, ${top.c.bull} 개 계정 명확한 강세${top.c.bear?`, ${top.c.bear} 개 약세`:', 약세 계정 없음'}. `:'오늘 여러 계정이 공동 강세인 종목은 없었다.'} ${topB?`${tkBtn(topB.t)} 는 ${topB.c.bear} 개 계정이 공동 약세였다.`:''}</p><p>${sp?`의견이 가장 엇갈린 종목은 ${tkBtn(sp.t)}: 강세 ${sp.c.bull}, 약세 ${sp.c.bear}(심층 분석 참조).`:'오늘 뚜렷하게 의견이 엇갈린 종목은 없다.'} ${rev?`주목할 변화: @${esc(rev.x.acc)} 의 ${tkBtn(rev.x.t)}  입장 ${rev.ch} → ${SLABEL[rev.x.s]}. `:''}</p>`;
  const sparse=w.merged?`<div id="sparse" role="note">이 페이지 계산 범위: ${vposts.length?`${vposts[0].time_hkt.slice(5,10).replace('-','/')} ${vposts[0].time_hkt.slice(11,16)} – ${vposts[vposts.length-1].time_hkt.slice(5,10).replace('-','/')} ${vposts[vposts.length-1].time_hkt.slice(11,16)} HKT`:''}; ${fmt(TODAY)} 당일 유효 게시물은 ${w.n} 건뿐(기준 ${MIN_POSTS} 건 미만), 전날과 합산했다</div>`:'';

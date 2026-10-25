@@ -9,7 +9,9 @@
 //   Readable without JS. One inline script runs the newsletter A/B test; the box stays hidden for variant A
 //   and when JS is off.
 // - Avatars are written once to av/<hash>.<ext> and shared by every page.
-// - Each language page gets a "stock pages" link row just above the footer; sitemap.xml lists every stock page.
+// - Each language page gets a "stock pages" link row just above the footer. The root Chinese master
+//   (served at / before the language redirect) gets the same zh row, with links to /zh/stock/...
+//   sitemap.xml lists every stock page.
 // - Finally opens a few pages at desktop and phone width; fails on sideways overflow or missing text.
 const { chromium } = require('playwright');
 const crypto = require('crypto');
@@ -466,6 +468,17 @@ function popularBlock(lang, list) {
   return `<nav id="popular-stocks" class="wrap popular-stocks" aria-label="${esc(T[lang].popular)}" style="font-size:13px;line-height:1.8;padding:10px 16px 4px"><b>${esc(T[lang].popular)}</b> · ${links}</nav>`;
 }
 
+const FOOT = '<footer class="wrap foot" id="foot">';
+
+function withStockIndex(html, lang, list) {
+  let s = html.replace(new RegExp(MARK + '[\\s\\S]*?' + MARK), '');
+  if (!s.includes(FOOT)) {
+    console.log('::error::no footer for stock index');
+    process.exit(1);
+  }
+  return s.replace(FOOT, MARK + indexRow(lang, list) + MARK + FOOT);
+}
+
 function indexRow(lang, list) {
   const tickers = list.map(x => Array.isArray(x) ? x[0] : x);
   const links = tickers.map(t => `<a href="/${lang}/stock/${slug(t)}/">${esc(t)}</a>`).join(' ');
@@ -610,11 +623,14 @@ function avatars(html, seen) {
       fs.mkdirSync(path.join(lang, 'embed'), { recursive: true });
       fs.writeFileSync(path.join(lang, 'embed', 'index.html'), EMBED.howto(lang, ga, names.includes('NVDA') ? 'NVDA' : slug(names[0]))); }
     if (lang === 'en') for (const f of fs.readdirSync('embed')) if (f.endsWith('.html') && !have.has(f.slice(0, -5))) fs.rmSync(path.join('embed', f));
-    // link row above the footer of the language page
-    let s = master.replace(new RegExp(MARK + '[\\s\\S]*?' + MARK), '');
-    s = s.replace('<footer class="wrap foot" id="foot">', MARK + indexRow(lang, list) + MARK + '<footer class="wrap foot" id="foot">');
-    fs.writeFileSync(file, s);
+    // link row above the footer of the language page (idempotent: drop any previous marked row first)
+    fs.writeFileSync(file, withStockIndex(master, lang, list));
     await p.close();
+  }
+  // Root / is the Chinese master. Same zh row as /zh/, links stay /zh/stock/...
+  if (list) {
+    const rootFile = path.join(root, 'index.html');
+    fs.writeFileSync(rootFile, withStockIndex(fs.readFileSync(rootFile, 'utf8'), 'zh', list));
   }
   for (const f of fs.readdirSync(AV_DIR)) if (!seen.has(f)) fs.rmSync(path.join(AV_DIR, f));
 
