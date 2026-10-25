@@ -771,7 +771,8 @@
    "bull": [
     "MU",
     "SPCX",
-    "GOOG"
+    "GOOG",
+    "NBIS"
    ],
    "bear": [],
    "split": [
@@ -790,15 +791,15 @@
     "QQQ",
     "AAOI",
     "MU",
+    "SPX",
     "AMZN",
     "META",
-    "TSLA",
-    "GOOG"
+    "TSLA"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-25 09:28"
+   "updated_hkt": "2026-10-25 10:42"
   }
  },
- "updated_hkt": "2026-10-25 09:28",
+ "updated_hkt": "2026-10-25 10:42",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
