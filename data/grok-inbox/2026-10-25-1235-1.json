@@ -1,1 +1,79 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2114177285871816934": {
+      "en_summary": "Gold $GLD rallied more than 30% in a three-month window from November to January. It has round-tripped that move and is now down year-over-year.",
+      "zh_summary": "黃金 $GLD 在11月至1月的三個月窗口內上漲超過30%。該漲幅已完全回吐，目前較去年同期下跌。",
+      "ko_summary": "금 $GLD는 11월부터 1월까지 3개월 동안 30% 이상 상승했다. 그 상승분은 모두 반납했으며 현재 전년 대비 하락 중이다.",
+      "tickers": ["GLD"],
+      "stance": "中性",
+      "stance_by_ticker": {"GLD": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2114176858703147033": {
+      "en_summary": "Last six months: Bitcoin +5%, Gold $GLD -15%.",
+      "zh_summary": "過去六個月：比特幣上漲5%，黃金 $GLD 下跌15%。",
+      "ko_summary": "지난 6개월: 비트코인 +5%, 금 $GLD -15%.",
+      "tickers": ["GLD"],
+      "stance": "中性",
+      "stance_by_ticker": {"GLD": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2114176605484417237": {
+      "en_summary": "Learn more about the ATAC Credit Rotation ETF $JOJO at https://atacfunds.com/jojo/. 30-day SEC yield 5.76% as of 9/30/26. Disclaimer that Lead-Lag Publishing is not an affiliate.",
+      "zh_summary": "了解ATAC信用輪動ETF $JOJO 詳情請至 https://atacfunds.com/jojo/。截至9/30/26，30日SEC收益率為5.76%。聲明Lead-Lag Publishing並非附屬機構。",
+      "ko_summary": "ATAC 신용 회전 ETF $JOJO에 대한 자세한 정보는 https://atacfunds.com/jojo/에서 확인하세요. 9/30/26 기준 30일 SEC 수익률 5.76%. Lead-Lag Publishing은 계열사가 아님을 명시.",
+      "tickers": ["JOJO"],
+      "stance": "中性",
+      "stance_by_ticker": {"JOJO": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2114176588426211375": {
+      "en_summary": "@leadlagreport explains in 11 posts why the reverse carry trade is back and why he launched the $JOJO fund for this regime. $JOJO is a bond fund and credit rotation ETF built to benefit from risk-off and credit spread widening that is long overdue.",
+      "zh_summary": "@leadlagreport 以11則貼文解釋為何反向套利交易回歸，以及為何為此環境推出 $JOJO 基金。$JOJO 是債券基金及信用輪動ETF，旨在受益於早已該出現的風險厭惡及信用利差擴大。",
+      "ko_summary": "@leadlagreport는 11개 게시물에서 역캐리 트레이드가 돌아온 이유와 이 국면을 위해 $JOJO 펀드를 출시한 이유를 설명했다. $JOJO는 위험 회피와 신용 스프레드 확대(이미 오래전부터 예상된)로부터 이익을 얻도록 설계된 채권 펀드이자 신용 회전 ETF다.",
+      "tickers": ["JOJO"],
+      "stance": "睇好",
+      "stance_by_ticker": {"JOJO": "睇好"},
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利好",
+      "ticker_notes": {"JOJO": "為風險厭惡及信用利差擴大環境設計"}
+    },
+    "2114171334582505594": {
+      "en_summary": "$DUOL is getting priced like AI already won.",
+      "zh_summary": "$DUOL 的定價表現得好像AI已經獲勝。",
+      "ko_summary": "$DUOL은 AI가 이미 승리한 것처럼 가격이 매겨지고 있다.",
+      "tickers": ["DUOL"],
+      "stance": "中性",
+      "stance_by_ticker": {"DUOL": "中性"},
+      "horizon": null,
+      "basis": "估值",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
