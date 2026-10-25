@@ -1,1 +1,100 @@
-$(cat /tmp/batch1.json)
+{
+  "posts": {
+    "2114469978078654508": {
+      "en_summary": "@VanquishTrader Great write-up and if the Elon comments causes some $NBIS FUD I plan on adding more.",
+      "zh_summary": "@VanquishTrader 寫得很好，如果Elon的評論引起一些$NBIS恐慌，我計劃再加倉。",
+      "ko_summary": "@VanquishTrader 훌륭한 글입니다. 일론의 발언으로 $NBIS에 일부 FUD가 생기면 더 매수할 계획입니다.",
+      "tickers": ["NBIS"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NBIS": "睇好"},
+      "horizon": "中線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NBIS": "計劃在FUD時加倉"}
+    },
+    "2114466870208393457": {
+      "en_summary": "Notes for the end of week video. Notice where #Bitcoin came down to and (so far) bounced, my bid of 79,420 got filled Saturday morning. Stock Market, Bitcoin & Gold Analysis 10/23/26 listing $SPY $QQQ $SMH $IWM $XBI $XLF $INTC $MU $TXN $TSLA $AMZN $AAPL $NVDA $TLT.",
+      "zh_summary": "週末影片筆記。注意#Bitcoin下跌並（目前）反彈的位置，我79,420的買單在週六早上成交。股市、比特幣與黃金分析10/23/26，列出$SPY $QQQ $SMH $IWM $XBI $XLF $INTC $MU $TXN $TSLA $AMZN $AAPL $NVDA $TLT。",
+      "ko_summary": "주말 영상 노트. #Bitcoin이 하락했다가 (현재까지) 반등한 지점에 주목하세요. 제 79,420 매수 주문이 토요일 아침에 체결되었습니다. 주식 시장, 비트코인 및 금 분석 10/23/26, $SPY $QQQ $SMH $IWM $XBI $XLF $INTC $MU $TXN $TSLA $AMZN $AAPL $NVDA $TLT 목록.",
+      "tickers": ["SPY", "QQQ", "SMH", "IWM", "XBI", "XLF", "INTC", "MU", "TXN", "TSLA", "AMZN", "AAPL", "NVDA", "TLT"],
+      "stance": null,
+      "stance_by_ticker": {
+        "SPY": "未表態",
+        "QQQ": "未表態",
+        "SMH": "未表態",
+        "IWM": "未表態",
+        "XBI": "未表態",
+        "XLF": "未表態",
+        "INTC": "未表態",
+        "MU": "未表態",
+        "TXN": "未表態",
+        "TSLA": "未表態",
+        "AMZN": "未表態",
+        "AAPL": "未表態",
+        "NVDA": "未表態",
+        "TLT": "未表態"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2114462023732064573": {
+      "en_summary": "$SPCX CEO: AI compute payback could shorten to six months in 2027, supported by tightening supply and higher rental pricing. Quote: no demand issue expected, possible six-month payback for compute next year.",
+      "zh_summary": "$SPCX執行長：AI運算回本期可能在2027年縮短至六個月，受供應收緊和租金價格上漲支持。引述：不認為會有需求問題，明年運算回本期可能達六個月。",
+      "ko_summary": "$SPCX CEO: AI 컴퓨팅 투자 회수 기간이 2027년에 6개월로 단축될 수 있으며, 공급 부족과 임대 가격 상승이 이를 뒷받침합니다. 인용: 수요 문제는 없을 것으로 예상하며, 내년 컴퓨팅 회수 기간이 6개월이 될 수도 있습니다.",
+      "tickers": ["SPCX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPCX": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPCX": "CEO稱AI運算回本可能縮短至6個月"}
+    },
+    "2114460029361467751": {
+      "en_summary": "My survey reveals $NBIS is retail's highest conviction stock pick. Interesting passion as neoclouds are the most debated AI sector due to massive capital needs. Quoted poll options include $LITE $NBIS $MU $BE $INTC.",
+      "zh_summary": "我的調查顯示$NBIS是散戶最高信念的股票選擇。有趣的是熱情高漲，因為新雲是目前AI中最具爭議的板塊，因資本需求龐大。引用的投票選項包括$LITE $NBIS $MU $BE $INTC。",
+      "ko_summary": "내 설문 조사에 따르면 $NBIS가 개인 투자자들의 가장 높은 확신 종목입니다. 네오클라우드가 막대한 자본 필요로 인해 AI에서 가장 논쟁적인 부문이라는 점에서 열정이 흥미롭습니다. 인용된 투표 옵션에는 $LITE $NBIS $MU $BE $INTC가 포함됩니다.",
+      "tickers": ["NBIS", "LITE", "MU", "BE", "INTC"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "NBIS": "中性",
+        "LITE": "未表態",
+        "MU": "未表態",
+        "BE": "未表態",
+        "INTC": "未表態"
+      },
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2114458224858657038": {
+      "en_summary": "Motorola $MSI itching for another breakout.",
+      "zh_summary": "摩托羅拉$MSI即將再次突破。",
+      "ko_summary": "모토로라 $MSI가 또 다른 돌파를 앞두고 있습니다.",
+      "tickers": ["MSI"],
+      "stance": "睇好",
+      "stance_by_ticker": {"MSI": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
