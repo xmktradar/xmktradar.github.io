@@ -770,6 +770,7 @@
   "2026-10-25": {
    "bull": [
     "SPCX",
+    "AMZN",
     "MU",
     "GOOG",
     "NBIS"
@@ -782,7 +783,7 @@
    ],
    "window": [
     "2026-10-25T00:00",
-    "2026-10-25T11:00"
+    "2026-10-25T13:48"
    ],
    "top": [
     "SPY",
@@ -790,16 +791,16 @@
     "NVDA",
     "QQQ",
     "MU",
+    "AAOI",
+    "AMZN",
     "GOOG",
     "SPX",
-    "AAOI",
-    "NBIS",
-    "AMZN"
+    "NBIS"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-25 14:09"
+   "updated_hkt": "2026-10-25 14:42"
   }
  },
- "updated_hkt": "2026-10-25 14:09",
+ "updated_hkt": "2026-10-25 14:42",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
