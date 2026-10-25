@@ -786,6 +786,10 @@ table.lb .na{color:var(--mut);font-weight:400}
 .post .hd a.handle{text-decoration:none}a.handle:hover{color:var(--accent)}
 .spark .sl{fill:none;stroke:var(--accent);stroke-width:1.5}.spark .sa{fill:var(--accent);opacity:.12}.spark .sd{fill:var(--accent)}
 .chart{display:block;width:100%;height:auto;overflow:visible}
+.px-chart{display:block;width:100%;max-width:100%;height:auto;overflow:hidden;box-sizing:border-box}
+.px-sec{box-sizing:border-box;max-width:100%;overflow:hidden}
+.px-chart text{fill:var(--ink);font-size:11px;font-family:var(--f-data,system-ui,sans-serif)}
+.px-cap{margin:6px 0 0;max-width:100%;overflow-wrap:anywhere}
 .chart .g{stroke:var(--line)}.chart .ln{stroke:var(--chart-line);fill:none;stroke-width:2}.chart .ar{fill:var(--chart-line);opacity:.1}.chart .trk{fill:var(--accent);opacity:.05}
 .chart text.lab{fill:var(--ink)}.chart .bull{fill:var(--bull);stroke:var(--bull)}.chart .bear{fill:var(--bear);stroke:var(--bear)}.chart .neu{fill:var(--neu);stroke:var(--neu)}
 .rbtn{display:inline-flex;flex-wrap:wrap;justify-content:flex-end;gap:4px}
@@ -1019,13 +1023,28 @@ function agreeLabel(c){const tot=c.bull+c.bear+c.neu+c.none;if(tot<2)return {l:'
 // 每日窗：優先用寫手分析第一行嘅時間範圍（同今日市場分析一致，包括 Truth Social）；
 // 冇得讀就用同一個抓帖周期：最近一次抓帖時段之前 24 小時至資料截止
 const SCRAPE_SLOTS=D.meta.scrape_slots_hkt||[];
-function dailyWindow(){const sm=summaryOf('daily',TODAY);const win=sm&&!sm.stale&&sm.s.win;
- if(win&&win.from&&win.to){const n=rawIn(win.from,win.to).filter(valid).length;return {from:win.from,to:win.to,day:TODAY,timed:true,src:'writer',merged:false,n}}
- if(SCRAPE_SLOTS.length&&D.meta.cutoff_hkt){const cut=Date.parse(D.meta.cutoff_hkt.replace(' ','T')+':00+08:00');if(cut){
+function dataCutoffMs(){let t=0;const c=D.meta&&D.meta.cutoff_hkt;if(c){const x=Date.parse(c);if(x)t=x}
+ const ps=D.posts||[];for(let i=0;i<ps.length;i++){const x=Date.parse(ps[i].time_hkt||ps[i].time_utc||'');if(x>t)t=x}
+ return t||CUT||0}
+/*DAILY-WIN*/
+const _tsOf=ms=>{const d=new Date(ms+8*36e5).toISOString();return d.slice(0,10)+'T'+d.slice(11,16)};
+const _parseHkt=(v,end)=>{v=String(v||'');return v.length>10?Date.parse(v+':00+08:00')+(end?59999:0):Date.parse(v+(end?'T23:59:59+08:00':'T00:00:00+08:00'))};
+function clipDailyRange(from,to,cutMs){const a=_parseHkt(from,false),z=_parseHkt(to,true);let end=z;
+ if(typeof cutMs==='number'&&cutMs>0&&cutMs<z)end=Math.max(a,cutMs);
+ return {from:String(from).length>10?from:from+'T00:00',to:_tsOf(end)}}
+function priorDailyRange(from,to){const DAY=864e5;return {pf:_tsOf(_parseHkt(from,false)-DAY),pt:_tsOf(_parseHkt(to,true)-DAY)}}
+/*DAILY-WIN-END*/
+function briefAsOf(w,sm){const r=String(((D.highlights||{})[w&&w.day]||{}).range||'');
+ if(r.includes('–')){const e=r.split('–').pop().trim();const m=e.match(/(\d{1,2}):(\d{2})/);if(m)return m[1].padStart(2,'0')+':'+m[2]}
+ const to=sm&&sm.s&&sm.s.win&&sm.s.win.to;if(to&&to.length>=16&&to.slice(11,16)!=='23:59')return to.slice(11,16);
+ return ''}
+function dailyWindow(){const cut=dataCutoffMs();const sm=summaryOf('daily',TODAY);const win=sm&&!sm.stale&&sm.s.win;
+ if(win&&win.from&&win.to){const c=clipDailyRange(win.from,win.to,cut);const n=rawIn(c.from,c.to).filter(valid).length;return {from:c.from,to:c.to,day:TODAY,timed:true,src:'writer',merged:false,n}}
+ if(SCRAPE_SLOTS.length&&cut){
   const cands=[];[0,1].forEach(k=>SCRAPE_SLOTS.forEach(sl=>{const t=Date.parse(addDays(hkDate(cut),-k)+'T'+sl+':00+08:00');if(t<=cut)cands.push(t)}));
   const last=cands.length?Math.max(...cands):cut;const from=tsOf(last-DAY),to=tsOf(cut);const n=rawIn(from,to).filter(valid).length;
-  if(n)return {from,to,day:TODAY,timed:true,src:'cycle',merged:false,n}}}
- return dailyWindowByDay()}
+  if(n)return {from,to,day:TODAY,timed:true,src:'cycle',merged:false,n}}
+ const d=dailyWindowByDay();const c=clipDailyRange(d.from,d.to,cut);return {...d,from:c.from,to:c.to,timed:true}}
 function dailyWindowByDay(){const n=rawIn(TODAY,TODAY).filter(valid).length;const y=addDays(TODAY,-1);const hasPrev=ALLP.some(p=>p.date<TODAY);return n<MIN_POSTS&&hasPrev?{from:y,to:TODAY,day:TODAY,merged:true,n}:{from:TODAY,to:TODAY,day:TODAY,merged:false,n}}
 let DATES=[...new Set(ALLP.map(p=>p.date))].sort();
 
@@ -1170,13 +1189,14 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-lbk]');if(
 
 // ---------- 頁頂「昨日重疊 vs 今日」（樣式 .vs-bar／.vs-tk；字稿由寫手提供；昨日同連續日數：共識歷史） ----------
 // 新人睇唔明「重疊」：標題同兩個分組用白話覆蓋寫手字稿（2026-10-21）
-const VS_FIX=(()=>{const L=PAGE_LANG;if(L==='en')return{label:'Consensus bullish / bearish: today so far vs all of yesterday',dropped:'Not on the list so far today: {removed}',stayed:'On the list {streak} days in a row: {kept}'};if(L==='ko')return{label:'공동 강세/약세: 오늘 현재까지 vs 어제 종일',dropped:'오늘 현재까지 목록에서 제외: {removed}',stayed:'{streak}일 연속 목록: {kept}'};return{label:'공동 강세/약세: 오늘 현재까지 vs 어제 종일',dropped:'오늘 현재까지 다시 오르지 않음: {removed}',stayed:'연속 {streak} 일 목록 유지: {kept}'};})();
+const VS_FIX=(()=>{const L=PAGE_LANG;if(L==='en')return{label:'Consensus bullish / bearish: today so far vs the same hours yesterday',dropped:'Not on the list so far today: {removed}',stayed:'On the list {streak} days in a row: {kept}'};if(L==='ko')return{label:'공동 강세/약세: 오늘 현재까지 vs 어제 같은 시간대',dropped:'오늘 현재까지 목록에서 제외: {removed}',stayed:'{streak}일 연속 목록: {kept}'};return{label:'공동 강세/약세: 오늘 현재까지 vs 어제 같은 시간대',dropped:'오늘 현재까지 다시 오르지 않음: {removed}',stayed:'연속 {streak} 일 목록 유지: {kept}'};})();
 const VSC=D.vs_copy?{...D.vs_copy,...VS_FIX}:null,CH=D.cons_hist||null;
 function vsHtml(w){if(!VSC||!CH)return '';
  const G=consGroups(w.from,w.to),T={bull:G.bull.map(g=>g.t),bear:G.bear.map(g=>g.t)};
- const yd=addDays(TODAY,-1),Y=CH[yd];
+ const pr=priorDailyRange(w.from,w.to),G0=consGroups(pr.pf,pr.pt),Y={bull:G0.bull.map(g=>g.t),bear:G0.bear.map(g=>g.t)};
+ const yd=addDays(TODAY,-1);
  const lab=`<span class="vs-l">${esc(VSC.label||'')}</span><span class="vs-hint">목록: 최소 2개 계정이 강세(또는 약세)이고 반대 입장의 계정이 없는 미국 주식</span>`,cta=VSC.cta?`<span class="vs-cta">${esc(VSC.cta)}</span>`:'';
- if(!Y)return `<section class="c12 vs-bar first" aria-label="${esc(VSC.label||'')}">${lab}<span class="vs-line">${esc(VSC.empty_first_day||'')}</span>${cta}</section>`;
+ if(!CH[yd]&&!Y.bull.length&&!Y.bear.length)return `<section class="c12 vs-bar first" aria-label="${esc(VSC.label||'')}">${lab}<span class="vs-line">${esc(VSC.empty_first_day||'')}</span>${cta}</section>`;
  const txt=s=>esc(s).replace(/\s*→\s*/g,'<span class="ar">→</span>');
  const fillT=(tpl,m)=>String(tpl||'').split(/(\{\w+\})/).map(x=>{const k=(x.match(/^\{(\w+)\}$/)||[])[1];return k&&k in m?m[k]:txt(x)}).join('');
  const chip=(t,c,n)=>`<span class="vs-tk${c?' '+c:''}" data-tk="${esc(t)}">${esc(t)}${n?`<b>${n}</b>`:''}</span>`;
@@ -1243,8 +1263,7 @@ function stanceList(w,tks,accs){const SHOW=10,K=['bull','bear','neu','none'];
 // ---------- 每日 ----------
 function viewDaily(){
  if(!ALLP.length)return `<div class="grid">${moneyBar()}<section class="c12 analysis"><h2>오늘의 시장 분석</h2>${empty('아직 게시물 데이터가 없다.')}</section></div>`;
- const w=dailyWindow(),len=w.merged?2:1;let pf,pt;
- if(w.timed){const a=rk(w.from),z=rk(w.to,true),cm=Date.parse(String(D.meta.cutoff_hkt||''))||z,L=Math.max(DAY,Math.round((z-a)/DAY)*DAY);pf=tsOf(a-L);pt=tsOf(Math.min(z,Math.max(a,cm))-L)}else{pf=addDays(w.from,-len);pt=addDays(w.from,-1)}
+ const w=dailyWindow(),len=w.merged?2:1;const _pr=priorDailyRange(w.from,w.to),pf=_pr.pf,pt=_pr.pt;
  const cur=postsIn(w.from,w.to),prev=postsIn(pf,pt),curRaw=rawIn(w.from,w.to).filter(p=>!p.folded_into),prevRaw=rawIn(pf,pt).filter(p=>!p.folded_into),xFirst=Math.min(...ALLP.filter(p=>p.platform!=='truthsocial').map(p=>p.ms)),hasPrev=prevRaw.length>0&&(!w.timed||xFirst<=rk(pf));// 時間窗：前期要完整有 X 抓帖先比較（Truth Social 存檔可以早過首次抓帖）
  const accsNow=new Set(curRaw.map(p=>p.acc)).size,accsPrev=new Set(prevRaw.map(p=>p.acc)).size;
  const tkNow=[...new Set(cur.map(x=>x.t))].sort(),tkPrev=new Set(prev.map(x=>x.t));
@@ -1275,8 +1294,8 @@ function viewDaily(){
  const priorOpen=current==='weekly'?'이전 7일(':current==='monthly'?'이전 28일(':'어제(';
  const priorLoading=!hasPrev&&!postsReady();
  const T3=ruxThreeLines(tkNow.map(t=>({t,c:dist(t,w.from,w.to),c0:hasPrev?dist(t,pf,pt):null,chg:chg.filter(y=>y.x.t===t).length})),hasPrev);
- const upd=String(D.meta.cutoff_hkt||'').slice(5,16).replace('-','/').replace('T',' ');
- const ctx=`${w.timed?`${fmtR(w.from)} – ${fmtR(w.to)}`:`${fmt(w.from)}${w.from!==w.to?'–'+fmt(w.to):''}`} HKT · 업데이트 ${upd} HKT · ${accsNow} 개 계정, ${vposts.length} 개 유효 게시물`;
+ const _cut=dataCutoffMs();const upd=_cut?`${hkDate(_cut).slice(5).replace('-','/')} ${hm(_cut)}`:'';
+ const ctx=`${fmtR(w.from)} – ${fmtR(w.to)} HKT · 업데이트 ${upd} HKT · ${accsNow} 개 계정, ${vposts.length} 개 유효 게시물`;
  const pct=x=>(x>0?'+':'')+Math.round(x*100)+'%';
  const METHOD='강세/약세 판단 방법: AI가 원문 게시물을 하나씩 읽고 종목별 작성자의 방향을 강세·약세·중립으로 표시합니다. 계정마다 종목당 기간 내 최신 게시물 1건만 집계하며, 방향이 분명하지 않으면 ‘의견 없음’으로 봅니다.';
  const t3=[T3.shift?`<li><b>합의 변화 최대</b>: ${tkBtn(T3.shift.t)} ${T3.shift.kind==='delta'?`순강세 비율 ${pct(T3.shift.from)} → ${pct(T3.shift.to)} (${cmpLab})`:`${T3.shift.n} 회 입장 변경`}</li>`:'',
@@ -1288,10 +1307,13 @@ function viewDaily(){
  <section class="c12 panel t3" aria-label="오늘의 3줄 요약"><h2>오늘의 3줄 요약 <span class="sub">${ctx}</span></h2>${t3.length?`<ol class="t3-l">${t3.join('')}</ol>`:empty('이 기간의 데이터가 아직 부족합니다.')}<p class="note ctx">${METHOD}</p></section>
  <section class="c12 analysis" aria-label="시장 분석">
   
-  <h2>오늘의 시장 분석 ${sm?(sm.stale?`<span class="sub">(최신 분석, ${esc(w.day)}  당일 분석 아님)</span>`:''):'<span class="sub">오늘 분석이 아직 없어 아래는 데이터로 자동 정리했다</span>'}</h2>
+  <h2>오늘의 시장 분석 ${(()=>{const bx=briefAsOf(w,sm);const asof=bx?(PAGE_LANG==='en'?`<span class="sub">(as of ${esc(bx)} HKT)</span>`:PAGE_LANG==='ko'?`<span class="sub">(기준 ${esc(bx)} HKT)</span>`:`<span class="sub"> (기준 ${esc(bx)} HKT)</span>`):'';const stale=sm&&sm.stale?`<span class="sub">(최신 분석, ${esc(w.day)}  당일 분석 아님)</span>`:(!sm&&!bx?'<span class="sub">오늘 분석이 아직 없어 아래는 데이터로 자동 정리했다</span>':'');return [asof,stale].filter(Boolean).join(' ')})()}</h2>
   ${sm?'':sparse}
   ${sm?sumBody(sm.s,true):auto}
-  <p class="note" style="margin:8px 0 0">${(()=>{const r=String(((D.highlights||{})[w.day]||{}).range||'');const e=r.split('–').pop().trim();return e&&r.includes('–')?(PAGE_LANG==='en'?`Brief written as of ${e}. `:PAGE_LANG==='ko'?`요약 작성 기준 ${e}. `:`요약 기준 ${e}. `):''})()}${(PAGE_LANG==='en'?"Brief counts are from the writer; the stat cards below are live counts for the same window (posts so far: {n}, active accounts {a}).":PAGE_LANG==='ko'?"요약 숫자는 작성자 정리분; 아래 통계 카드는 같은 구간의 실시간 집계입니다 (유효 게시물 {n}, 활동 계정 {a}).":"요약 숫자는 작성자 정리분; 아래 통계 카드는 같은 구간의 실시간 집계입니다 (유효 게시물  {n}, 활동 계정  {a}). ").replace(/\{n\}/g,String(vposts.length)).replace(/\{a\}/g,String(accsNow))}</p>
+  <p class="note" style="margin:8px 0 0">${(()=>{const n=String(vposts.length),a=String(accsNow);const bx=briefAsOf(w,sm);const cx=(w.to&&w.to.length>10?w.to.slice(11,16):hm(_cut||0));const same=bx&&cx&&bx===cx;const L=PAGE_LANG;
+   if(same)return (L==='en'?"Brief counts are from the writer; the stat cards below are live counts for the same window (posts so far: {n}, active accounts {a}).":L==='ko'?"요약 숫자는 작성자 정리분; 아래 통계 카드는 같은 구간의 실시간 집계입니다 (유효 게시물 {n}, 활동 계정 {a}).":"요약 숫자는 작성자 정리분; 아래 통계 카드는 같은 구간의 실시간 집계입니다 (유효 게시물  {n}, 활동 계정  {a}). ").replace(/\{n\}/g,n).replace(/\{a\}/g,a);
+   if(bx&&cx)return (L==='en'?`Brief written as of ${bx} HKT; the cards below are live counts to ${cx} HKT (posts so far: {n}, active accounts {a}).`:L==='ko'?`요약은 ${bx} HKT 기준으로 작성됨. 아래 통계 카드는 ${cx} HKT까지의 실시간 집계입니다 (유효 게시물 {n}, 활동 계정 {a}).`:`요약은 ${bx} HKT  기준으로 작성됨. 아래 통계 카드는 ${cx} HKT 까지의 실시간 집계입니다 (유효 게시물  {n}, 활동 계정  {a}). `).replace(/\{n\}/g,n).replace(/\{a\}/g,a);
+   return (L==='en'?`The cards below are live counts to ${cx} HKT (posts so far: {n}, active accounts {a}).`:L==='ko'?`아래 통계 카드는 ${cx} HKT까지의 실시간 집계입니다 (유효 게시물 {n}, 활동 계정 {a}).`:`아래 통계 카드는 ${cx} HKT 까지의 실시간 집계입니다 (유효 게시물  {n}, 활동 계정  {a}). `).replace(/\{n\}/g,n).replace(/\{a\}/g,a)})()}</p>
   ${br?`<details><summary>분석가 브리핑</summary>${br.html}</details>`:''}
  </section>
  <div class="c12 dayrange">${`<div class="range ${w.merged?'merged':''}">${rangeTxt}${vposts.length&&!w.timed?` (${vposts[0].time_hkt.slice(5,16).replace('-','/').replace('T',' ')} – ${vposts[vposts.length-1].time_hkt.slice(5,16).replace('-','/').replace('T',' ')} HKT, 유효 게시물 ${vposts.length} 건)`:''}</div>`}</div>
@@ -1307,7 +1329,7 @@ function viewDaily(){
  <p class="c12 note ctx">위 수치: ${ctx}</p>`;
  return pvJoin(head,[
  ()=>vsHtml(w),
- ()=>highlightsHtml(w.day),
+ ()=>highlightsHtml(w.day,w),
  ()=>`<section class="c12 panel"><h2>시장 관심도 변화 <span class="sub">여전히 관심받는 종목만 표시${attGone.length?`, 관심이 끊긴 종목 ${attGone.length} 개 제외`:''}; 괄호는 ${cmpLab}</span></h2><p class="note ctx">${ctx}</p>
   ${att.length?`<div class="scrollbox" style="display:grid;gap:8px;align-content:start">${att.map(x=>{const k={bull:0,neu:0,none:0,bear:0};cur.filter(y=>y.t===x.t).forEach(y=>k[y.s]=(k[y.s]||0)+1);const seg=(c,n,l)=>n?`<span class="${c}" style="width:${n/mx*100}%" title="${l} ${n}"></span>`:'';return `<div class="hbar">${tkBtn(x.t)}<div class="track stk">${seg('b',k.bull,'강세')}${seg('m',k.neu,'중립')}${seg('u',k.none,'입장 없음')}${seg('r',k.bear,'약세')}</div><span class="n">${x.n} ${hasPrev?`(${signed(x.d)})`:''}</span></div>`}).join('')}</div><div style="margin-top:10px">${legend}</div>${hasPrev?'':priorLoading?'<p class="note">비교 자료를 불러오는 중…</p>':`<p class="note">${priorOpen}${w.timed?`${fmtR(pf)} – ${fmtR(pt)}`:`${fmt(pf)}${len>1?'–'+fmt(pt):''}`})에 데이터가 없어 아직 비교할 수 없다.</p>`}`:empty('이 범위에서 언급된 종목이 없다.')}</section>`,
  ()=>`<section class="c12 panel"><h2>계정별 입장 <span class="sub">${label} ${tkNow.length} 개 종목 · ${shownAccs.length} 개 계정 · 언급한 계정 수 순, 행을 누르면 계정별 이유를 볼 수 있습니다</span></h2><p class="note ctx">${ctx}. ${METHOD}</p>
@@ -1554,9 +1576,10 @@ function hlTicker(t){const c=UNC(t)?null:closes(t);const loading=!coreDone&&!(D.
 function hlAvatar(h){const i=infoOf(h);const name=i.name||h;return `<a href="${xUrl(h)}" target="_blank" rel="noopener" title="@${esc(h)}" aria-label="@${esc(h)} X 프로필">${i.avatar?`<img src="${esc(i.avatar)}" alt="">`:esc((Array.from(name.replace(/^[^\p{L}\p{N}]+/u,''))[0]||'@').toUpperCase())}</a>`}
 // 寫手嘅 tone（看好／看淡／分歧／中性）用返全站同一套字眼顯示，en／ko 亦會翻譯（原本直接顯示資料入面嘅中文）
 const TONE_TXT={'看好':'강세','看淡':'약세','分歧':'의견 엇갈림','中性':'중립'};
-function highlightsHtml(date){const H=D.highlights&&D.highlights[date];if(!H||!H.cards||!H.cards.length)return '';
+function highlightsHtml(date,w){const H=D.highlights&&D.highlights[date];if(!H||!H.cards||!H.cards.length)return '';
  const card=c=>`<article class="hl ${toneCls(c.tone)}"><div class="hl-body"><div class="hl-tags">${c.theme?`<span class="hl-theme">${esc(c.theme)}</span>`:''}${c.tone?`<span class="hl-tone">${esc(TONE_TXT[c.tone]||c.tone)}</span>`:''}</div><h3>${esc(c.headline)}</h3>${c.big?`<div class="hl-big${c.tickers.length?' inline':''}"><div class="v">${esc(c.big.value)}</div>${c.big.label?`<div class="l">${esc(c.big.label)}</div>`:''}</div>`:''}${c.tickers.length?`<div class="hl-tks">${c.tickers.map(hlTicker).join('')}</div>`:''}${c.points.length?`<ol>${c.points.slice(0,3).map(x=>`<li><span>${numHi(x)}</span></li>`).join('')}</ol>`:''}</div>${c.handles.length||c.source_note?`<div class="hl-foot">${c.handles.length?`<div class="hl-avs">${c.handles.map(hlAvatar).join('')}</div>`:''}<div class="hl-who">${c.handles.map(h=>`<a href="${xUrl(h)}" target="_blank" rel="noopener">@${esc(h)}</a>`).join(', ')}${c.handles.length&&c.source_note?'<br>':''}${c.source_note?esc(c.source_note):''}</div></div>`:''}</article>`;
- return `<section class="c12 hl-sec" aria-label="오늘의 핵심"><div class="hl-head"><h2>오늘의 핵심</h2>${H.range?`<span class="rg">${esc(H.range)}</span>`:''}</div><div class="hl-grid">${H.cards.slice(0,3).map(card).join('')}</div>${H.stats_note?`<p class="note" style="margin:10px 0 0">${esc(H.stats_note)}</p>`:''}</section>`}
+ const rg=w&&w.from&&w.to?`${fmtR(w.from)} – ${fmtR(w.to)} HKT`:(H.range||'');
+ return `<section class="c12 hl-sec" aria-label="오늘의 핵심"><div class="hl-head"><h2>오늘의 핵심</h2>${rg?`<span class="rg">${esc(rg)}</span>`:''}</div><div class="hl-grid">${H.cards.slice(0,3).map(card).join('')}</div>${H.stats_note?`<p class="note" style="margin:10px 0 0">${esc(H.stats_note)}</p>`:''}</section>`}
 
 // ---------- 追蹤名單（設計稿 viewTracked；資料來自追蹤名單＋帳號資料） ----------
 const xUrl=h=>{const m=PLAT[String(h).toLowerCase()];return m&&m.p==='truthsocial'?(m.url||'https://truthsocial.com/@'+encodeURIComponent(h)):'https://x.com/'+encodeURIComponent(h)};
@@ -1654,9 +1677,12 @@ function loadNextPosts(quiet){if(postsReady())return Promise.resolve();if(pageP)
 function loadAllPosts(){if(postsReady()){window.__postsReady=true;return Promise.resolve()}if(allP)return allP;
  function step(){if(postsReady()){window.__postsReady=true;allP=null;rebuildDerived();document.dispatchEvent(new Event('dash-data'));return Promise.resolve()}return loadNextPosts(true).then(step)}
  allP=step();return allP}
-function mountStatus(){if(coreDone)return;var v=document.getElementById('view');if(!v||document.getElementById('dash-load'))return;
- var p=document.createElement('p');p.id='dash-load';p.className='note';p.style.margin='0 0 8px';
- p.textContent=uiText('나머지 자료를 불러오는 중','Loading the rest','나머지 자료를 불러오는 중');v.insertBefore(p,v.firstChild)}
+let statusT=0,waitT=0;
+function mountStatus(){if(coreDone){if(statusT){clearTimeout(statusT);statusT=0}var el=document.getElementById('dash-load');if(el)el.remove();return}
+ if(document.getElementById('dash-load')||statusT)return;
+ statusT=setTimeout(function(){statusT=0;if(coreDone)return;var v=document.getElementById('view');if(!v||document.getElementById('dash-load'))return;
+  var p=document.createElement('p');p.id='dash-load';p.className='note';p.style.margin='0 0 8px';
+  p.textContent=uiText('나머지 자료를 불러오는 중','Loading the rest','나머지 자료를 불러오는 중');v.insertBefore(p,v.firstChild)},400)}
 function mountMore(){if(postsReady())return;var h=decodeURIComponent((location.hash||'#daily').slice(1));
  if(h==='weekly'||h==='monthly'||h==='macro'||/^stock/.test(h)||/^account/.test(h))return;
  var v=document.getElementById('view');if(!v||document.getElementById('load-more'))return;
@@ -1669,7 +1695,7 @@ function mountMore(){if(postsReady())return;var h=decodeURIComponent((location.h
 window.__loadCore=loadCore;window.__loadAllPosts=loadAllPosts;window.__postsReady=postsReady();window.__dashReady=coreDone;
 function render(){const h=decodeURIComponent((location.hash||'#daily').slice(1));
  const ms=h.match(/^stock[\/-](.+)$/),ma=h.match(/^account\/(.+)$/);
- if((ms||ma||h==='weekly'||h==='monthly'||h==='macro')&&(!postsReady()||!coreDone)){var v=document.getElementById('view');if(v&&!v.querySelector('#dash-wait'))v.insertAdjacentHTML('afterbegin','<p id="dash-wait" class="note">'+esc(uiText('나머지 자료를 불러오는 중','Loading the rest','나머지 자료를 불러오는 중'))+'</p>');Promise.all([loadAllPosts(),loadCore()]).then(function(){render()}).catch(function(e){console.error(e);coreDone=true;postsFailed=true;render()});return}
+ if((ms||ma||h==='weekly'||h==='monthly'||h==='macro')&&(!postsReady()||!coreDone)){if(!waitT&&!document.getElementById('dash-wait'))waitT=setTimeout(function(){waitT=0;if(postsReady()&&coreDone)return;var v=document.getElementById('view');if(v&&!v.querySelector('#dash-wait'))v.insertAdjacentHTML('afterbegin','<p id="dash-wait" class="note">'+esc(uiText('나머지 자료를 불러오는 중','Loading the rest','나머지 자료를 불러오는 중'))+'</p>')},400);Promise.all([loadAllPosts(),loadCore()]).then(function(){if(waitT){clearTimeout(waitT);waitT=0}var w=document.getElementById('dash-wait');if(w)w.remove();render()}).catch(function(e){console.error(e);coreDone=true;postsFailed=true;if(waitT){clearTimeout(waitT);waitT=0}render()});return}
  if(ms||ma){if(!document.getElementById('view').innerHTML)drawView();try{ms?openDive(ms[1].toUpperCase()):openAccount(ma[1])}catch(e){console.error(e);document.getElementById('dive').innerHTML='<div class="wrap">'+empty('화면 표시 오류: '+esc(e.message))+'</div>';showDive(document.getElementById('dive'))}return}
  closeDive();current=VIEWS[h]?h:'daily';drawView();
  if(h==='donate')setTimeout(()=>{const f=document.querySelector('[data-jump="donate"]');if(f)f.click()},50)}
@@ -1708,10 +1734,13 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!document.getElemen
 window.addEventListener('hashchange',render);
 let rT=null;window.addEventListener('resize',()=>{clearTimeout(rT);rT=setTimeout(()=>{const m=decodeURIComponent(location.hash.slice(1)).match(/^stock[\/-](.+)$/);if(m)drawChart(m[1].toUpperCase())},150)});
 // 頁首
-function paintChrome(){const m=D.meta;const cut=document.getElementById('cutoff');cut.textContent=m.cutoff_hkt?m.cutoff_hkt.slice(0,10)+' '+m.cutoff_hkt.slice(11,16)+' (HKT)':'데이터 부족';if(m.generated_hkt)cut.title='페이지 재생성 시각 '+m.generated_hkt+' HKT';
- const slots=m.update_slots_hkt||[];const now=Date.now(),base=Math.max(now,Date.parse((m.generated_hkt||'').replace(' ','T')+':00+08:00')||0);let next=null;
- for(let k=0;k<3&&!next;k++){const d=hkDate(base+k*DAY);for(const s of slots){const t=Date.parse(`${d}T${s}:00+08:00`);if(t>base){next=t;break}}}
- document.getElementById('nextup').textContent=next?(PAGE_LANG==='en'?`${hkDate(next)} ${hm(next-35*60000)} run, new page ~${hm(next)} HKT`:PAGE_LANG==='ko'?`${hkDate(next)} ${hm(next-35*60000)} 실행, 새 페이지 약 ${hm(next)} HKT`:`${hkDate(next)} ${hm(next-35*60000)} 실행, 새 페이지 약 ${hm(next)} HKT`):'—';
+function paintChrome(){const m=D.meta;const cut=document.getElementById('cutoff');const tCut=dataCutoffMs();cut.textContent=tCut?hkDate(tCut)+' '+hm(tCut)+' (HKT)':'데이터 부족';if(m.generated_hkt)cut.title='페이지 재생성 시각 '+m.generated_hkt+' HKT';
+ const rawSlots=(m.update_slots_hkt&&m.update_slots_hkt.length)?m.update_slots_hkt:['03:05','07:05','11:05','15:05','19:05','23:05'];
+ const cronOf=s=>{const p=String(s).split(':'),hh=+p[0]||0,mm=+p[1]||0;if(mm>=35){const t=((hh*60+mm-35)%1440+1440)%1440;return String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0')}return (String(hh).padStart(2,'0')+':'+String(mm).padStart(2,'0'))};
+ const crons=rawSlots.map(cronOf);const hourList=crons.map(s=>s.slice(0,2)).join('/');
+ const now=Date.now(),base=Math.max(now,Date.parse((m.generated_hkt||'').replace(' ','T')+':00+08:00')||0);let next=null;
+ for(let k=0;k<3&&!next;k++){const d=hkDate(base+k*DAY);for(const s of crons){const t=Date.parse(`${d}T${s}:00+08:00`);if(t>base){next=t;break}}}
+ document.getElementById('nextup').textContent=next?(PAGE_LANG==='en'?`${hm(next)} HKT (every 4 hours: ${hourList})`:PAGE_LANG==='ko'?`${hm(next)} HKT (4시간마다: ${hourList}시)`:`${hm(next)} HKT (每 4 小時: ${hourList} 時)`):'—';
  document.getElementById('acccount').textContent=(D.tracked&&D.tracked.accounts&&D.tracked.accounts.length)||HANDLES.length;
  const srcs={};Object.entries(D.prices).filter(([t])=>!UNC(t)&&isUS(t)).forEach(([t,p])=>(srcs[p.source]=srcs[p.source]||[]).push('$'+t));const asof=Object.entries(D.prices).filter(([t])=>isUS(t)).map(([,p])=>p.as_of).sort().pop();
  const nonUS=Object.entries(D.prices).filter(([t])=>!UNC(t)&&!isUS(t)).map(([t,p])=>`$${esc(t)} 는 ${esc(p.symbol||t)} (${esc((OV[t]&&OV[t].exchange)||p.exchange||'')}, ${CURNAME[curOf(t)]||curOf(t)}, ${esc(p.source)}, 기준일 ${esc(p.as_of)} ${tradeDay(t)}) 시세 사용, 비미국 종목`);const fet=Object.values(D.prices).map(p=>p.fetched_hkt).sort().pop();const unc=Object.keys(OV).filter(UNC);
@@ -1721,6 +1750,7 @@ function paintChrome(){const m=D.meta;const cut=document.getElementById('cutoff'
 ${MAC&&MAC.rows.length?`<p>시장 데이터: ${[...new Set(MAC.rows.map(r=>(r.src||'').replace(/（.*?）|\(.*?\)/g,'').trim()).filter(Boolean))].map(esc).join(', ')||'—'}${MAC.as_of?`, 기준일 ${esc(MAC.as_of)} HKT`:''}. </p>`:''}<p>모든 시간은 홍콩 시간(HKT, UTC+8)이다. 계정 아바타와 소개는 각 계정의 X 프로필에서 가져왔다.</p>
 <p>일부 링크는 제휴 링크이며, 이를 통해 가입·구매 시 추가 비용 없이 수수료를 받을 수 있습니다. 이는 집계 및 <a href="/robot.html">로봇 픽</a>. 이 사이트의 내용은 투자 조언이 아닙니다.</p>
 <p><a href="tools/">도구</a> · <a href="support/">후원하기</a> · <a href="newsletter/">뉴스레터</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank">TradingView <span class="pj-tag">홍보</span></a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="pj-tag">홍보</span></a> · <a href="advertise/">광고 제휴</a> · <a href="about/">소개 및 방법론</a></p>`;linkHandles(document.getElementById('foot'))}
+document.addEventListener('dash-data',function(){try{paintChrome()}catch(e){}});
 paintChrome();
 render();
 PV_BOOT=false;

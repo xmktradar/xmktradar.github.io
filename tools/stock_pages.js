@@ -3,10 +3,11 @@
 //
 // - Which stocks: mentioned by MIN_ACCOUNTS or more tracked accounts in the last 28 days (the page's own POSTS),
 //   ticker confirmed. Pages of stocks that drop out are deleted and leave the sitemap.
-// - Content: the page's own stock view (openDive) rendered in each language, without the TradingView card and the
-//   price chart, so the text and numbers match the interactive page. A button at the bottom opens the interactive
-//   page (/<lang>/#stock/<TICKER>). Readable without JS. One inline script runs the newsletter A/B test;
-//   the box stays hidden for variant A and when JS is off.
+// - Content: the page's own stock view (openDive) rendered in each language, without the TradingView card.
+//   A build-time inline SVG from px/<slug>.json (last ~6 months) sits where the live chart was; omitted if
+//   the px file is missing. A button at the bottom opens the interactive page (/<lang>/#stock/<TICKER>).
+//   Readable without JS. One inline script runs the newsletter A/B test; the box stays hidden for variant A
+//   and when JS is off.
 // - Avatars are written once to av/<hash>.<ext> and shared by every page.
 // - Each language page gets a "stock pages" link row just above the footer; sitemap.xml lists every stock page.
 // - Finally opens a few pages at desktop and phone width; fails on sideways overflow or missing text.
@@ -15,6 +16,7 @@ const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 const { start, pageUrl } = require('./local_server');
+const { buildPxChartFromFile } = require('./px_chart.js');
 
 const SITE = 'https://thecrowdtape.com/';
 const EMBED = require('./embed.js');
@@ -46,6 +48,8 @@ const T = {
     popular: '熱門股票',
     faqHow: (t, s) => ({ q: `目前有多少個追蹤帳號對 $${t} 看多或看空？`, a: `在 ${s.from} 至 ${s.to}（香港時間）的資料窗內，看多 ${s.bull} 個帳號、看空 ${s.bear} 個帳號；共有 ${s.mentions} 個帳號提及。數字來自公開貼文整理，不構成投資建議。` }),
     faqWhat: (t, s) => ({ q: `$${t} 個股頁的資料從哪裡來？`, a: `本頁彙整追蹤帳號在 X（及個別 Truth Social）上提及 $${t} 的公開貼文立場，約每 4 小時更新。只反映已收錄帳號的公開言論。` }),
+    pxCap: '近 6 個月日收市價（Yahoo Finance）。非即時報價。',
+    pxAria: t => `$${t} 近 6 個月收市價`,
   },
   en: {
     index: 'Stock pages',
@@ -70,6 +74,8 @@ const T = {
     popular: 'Popular stocks',
     faqHow: (t, s) => ({ q: `How many tracked accounts are bullish or bearish on $${t}?`, a: `In the ${s.from} to ${s.to} (HKT) window: ${s.bull} bullish and ${s.bear} bearish; ${s.mentions} accounts mentioned it. Figures summarise public posts only — not investment advice.` }),
     faqWhat: (t, s) => ({ q: `Where does the $${t} page data come from?`, a: `This page aggregates public posts about $${t} from tracked accounts on X (and a few on Truth Social), refreshed about every 4 hours. It only reflects those accounts' public views.` }),
+    pxCap: 'Daily close, last ~6 months (Yahoo Finance). Not a live quote.',
+    pxAria: t => `$${t} closing price, last 6 months`,
   },
   ko: {
     index: '종목 페이지',
@@ -94,6 +100,8 @@ const T = {
     popular: '인기 종목',
     faqHow: (t, s) => ({ q: `$${t}에 강세/약세인 추적 계정은 몇 개인가요?`, a: `${s.from}–${s.to}(홍콩 시간) 구간에서 강세 ${s.bull}개, 약세 ${s.bear}개이며, 총 ${s.mentions}개 계정이 언급했습니다. 공개 게시물 정리이며 투자 조언이 아닙니다.` }),
     faqWhat: (t, s) => ({ q: `$${t} 페이지 데이터는 어디서 오나요?`, a: `추적 계정이 X(일부 Truth Social)에서 $${t}를 언급한 공개 게시물 입장을 모아 약 4시간마다 갱신합니다. 수록된 계정의 공개 의견만 반영합니다.` }),
+    pxCap: '최근 약 6개월 일간 종가(Yahoo Finance). 실시간 시세 아님.',
+    pxAria: t => `$${t} 최근 6개월 종가`,
   },
 };
 
@@ -408,6 +416,10 @@ background:var(--accent);color:#fff;text-decoration:none}
 .money-bar .pj-tag,.tv-line .pj-tag,.foot .pj-tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;color:var(--mut);border:1px solid var(--line-strong);border-radius:999px;padding:1px 8px;line-height:1.4}
 .tv-line{margin:12px 16px 8px;font-size:14px;line-height:1.45;overflow-wrap:anywhere;max-width:100%}
 .foot a{font-weight:700}
+.px-chart{display:block;width:100%;max-width:100%;height:auto;overflow:hidden;box-sizing:border-box}
+.px-sec{box-sizing:border-box;max-width:100%;overflow:hidden}
+.px-chart text{fill:var(--ink);font-size:11px;font-family:var(--f-data,system-ui,sans-serif)}
+.px-cap{margin:6px 0 0;max-width:100%;overflow-wrap:anywhere}
 ${NL_CSS}</style>
 </head>
 <body>
@@ -540,8 +552,8 @@ function avatars(html, seen) {
       if (ch) {
         const sec = ch.closest('section');
         const dim = sec.previousElementSibling;
-        if (dim && dim.classList.contains('dim')) dim.remove();
-        sec.remove();
+        if (dim && dim.classList.contains('dim')) dim.setAttribute('data-px-dim', t);
+        sec.outerHTML = '<!--px-chart:' + t + '-->';
       }
       const back = el.querySelector('button.back');
       if (back) back.outerHTML = `<a class="back" href="/${lang}/">${back.innerHTML}</a>`;
@@ -572,6 +584,9 @@ function avatars(html, seen) {
         return names.includes(tk) ? `href="/${lang}/stock/${slug(tk)}/"` : `href="/${lang}/#stock/${k}"`;
       }).replace(/href="#(account\/[^"]+)"/g, `href="/${lang}/#$1"`);
       body = avatars(body, seen);
+      const svg = buildPxChartFromFile(root, pg.t, T[lang].pxCap, T[lang].pxAria(pg.t));
+      body = body.replace('<!--px-chart:' + pg.t + '-->', svg || '');
+      if (!svg) body = body.replace(new RegExp('<div class="c12 dim"[^>]*data-px-dim="' + pg.t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '"[^>]*>[\\s\\S]*?<\\/div>'), '');
       const boxed = insertAfterKpis(body, nlMarkup(lang, pg.t));
       if (boxed === body) {
         console.log('::error::股票網頁沒有電子報位置：' + lang + '/' + pg.t);
@@ -618,6 +633,13 @@ function avatars(html, seen) {
   const erows = Object.keys(LANGS).map(k => `  <url><loc>${SITE}${k}/embed/</loc><lastmod>${gen}</lastmod><changefreq>daily</changefreq>${ealt}</url>`).join('\n');
   sm = dedupeSitemap(sm.replace('</urlset>', rows + '\n' + erows + '\n</urlset>'));
   fs.writeFileSync('sitemap.xml', sm);
+
+  const nvdaPx = path.join(root, 'px', 'NVDA.json');
+  const nvdaPage = path.join(root, 'en', 'stock', 'NVDA', 'index.html');
+  if (fs.existsSync(nvdaPx) && fs.existsSync(nvdaPage) && !fs.readFileSync(nvdaPage, 'utf8').includes('class="px-chart"')) {
+    console.log('::error::en/stock/NVDA/ missing <svg class="px-chart">');
+    process.exit(1);
+  }
 
   // check a few pages at desktop and phone width
   const bad = [];
