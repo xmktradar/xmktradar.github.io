@@ -26,6 +26,12 @@ jobs:
       - uses: actions/checkout@v4
       - name: Retail UX helper tests
         run: node --test tools/retail_ux.test.js
+      - name: Daily window helper tests
+        run: node --test tools/daily_window.test.js
+      - name: Stock price chart helper tests
+        run: node --test tools/px_chart.test.js
+      - name: IG caption rules
+        run: python3 tools/test_ig_boost.py
       - name: Motion video tests
         run: python3 tools/test_motion_video.py
       - name: Page structure the build needs

@@ -350,6 +350,27 @@ def test_key_line_preserves_body_and_macro_date():
     assert '1️⃣ Other: bullish 10 · bearish 11' in macro['posts']['en']['instagram']
 
 
+def test_macro_ig_bio_once_per_lang():
+    """Macro IG captions keep the bio phrase exactly once per language and have no URLs."""
+    week = {
+        'accounts': 10,
+        'top': ['rates'],
+        'themes': [{'theme': 'rates', 'bull': 5, 'bear': 1, 'neu': 2, 'arrow': 'up', 'quotes': {}}],
+    }
+    for lang in share.LANGS:
+        cap = macro_week.posts(lang, week, '10/19–10/25')['instagram']
+        bio = share.IG_BIO[lang]
+        lines = [ln.strip() for ln in cap.splitlines() if ln.strip() == bio or ln.strip() in share.IG_BIO.values()]
+        assert lines == [bio], (lang, lines, cap)
+        assert URL_RE.search(cap) is None, (lang, cap[-200:])
+        assert 'thecrowdtape.com' not in cap.lower(), (lang, cap[-200:])
+    data = json.load(open(MACRO, encoding='utf-8'))
+    for loc, text, lang in _walk_ig_captions(data):
+        bio = share.IG_BIO[lang or share._guess_ig_lang(text)]
+        n = sum(1 for ln in text.splitlines() if ln.strip() == bio)
+        assert n == 1, (loc, n, bio)
+
+
 def test_sanitize_min_three_tags():
     out = share.sanitize_instagram('Most bullish: $WMT, 2 accounts\n#StockMarket', 'en')
     tags = HASH.findall(out)
@@ -367,6 +388,7 @@ def main():
         test_ig_captions_rules()
         test_ig_reel_structure()
         test_macro_week_hashtags_max_5()
+        test_macro_ig_bio_once_per_lang()
         print('test_ig_boost: CTA last slide, captions 3-5, ig_reel, video_path ok')
     finally:
         shutil.rmtree(os.environ['WORK_DIR'], ignore_errors=True)
