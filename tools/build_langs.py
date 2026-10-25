@@ -34,6 +34,8 @@ LANGS = {'zh': ('zh-Hant', '中'), 'en': ('en', 'EN'), 'ko': ('ko', '한')}
 CONTENT = ('summaries', 'highlights', 'briefings')
 MARK = '<!-- lang-head -->'
 ZH_ONLY = re.compile(r'<!-- zh-only -->.*?<!-- /zh-only -->', re.S)
+# stock_pages.js injects a Chinese row here; drop it so each language page is clean until that step re-injects.
+STOCK_INDEX = re.compile(r'<!-- stock-index -->.*?<!-- stock-index -->', re.S)
 LITE_DAYS = 45  # covers the 28-day change, sparklines and the monthly view
 PX_DIR = 'px'
 
@@ -351,6 +353,7 @@ def twitter_text(s):
 
 
 def build(lang, master):
+    master = STOCK_INDEX.sub('', master)
     if lang != 'zh':
         master = ZH_ONLY.sub('', master)
     # one tagline per language (avoid near-duplicates)
