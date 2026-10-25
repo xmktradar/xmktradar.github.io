@@ -755,7 +755,7 @@ table.lb .na{color:var(--mut);font-weight:400}
 .hbar .track.stk .b{background:var(--bull)}.hbar .track.stk .m{background:var(--neu)}.hbar .track.stk .u{background:var(--neu-soft);box-shadow:inset 0 0 0 1px var(--neu-line)}.hbar .track.stk .r{background:var(--bear)}
 .hl-head{flex-wrap:wrap}.hl-head h2{white-space:nowrap}
 .mk-top b{white-space:nowrap;flex:none}
-.brand-wrap{min-width:0;max-width:100%}.brand-wrap .brand{margin:0}.brand-sub{margin:2px 0 0;font-size:12.5px;line-height:1.4;color:var(--mut);font-style:italic}.brand-sub-zh{margin:1px 0 0;font-size:11.5px;line-height:1.4;color:var(--mut)}
+.brand-wrap{min-width:0;max-width:100%}.brand-wrap .brand{margin:0}.brand-sub{margin:2px 0 0;font-size:12.5px;line-height:1.4;color:var(--mut);font-style:italic}
 .hl-tk .nopx{font-size:11px;color:var(--mut);text-align:right}.hl-tk svg.empty{height:28px}
 
 .tk .flag{margin-left:4px}.divehead .nm .flag{font-size:11.5px;padding:1px 8px}
@@ -888,7 +888,7 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
 <body>
 <header class="top">
   <div class="wrap">
-    <div class="brand-wrap"><h1 class="brand">The Crowd Tape</h1><p class="brand-sub">看市場在做什麼，不是看我怎麼想</p><p class="brand-sub-zh">看X大神在做什麼，不是看我怎麼想</p><nav class="lang-sw" aria-label="Language"><a href="/zh/" data-lang="zh" aria-current="page">中</a><a href="/en/" data-lang="en">EN</a><a href="/ko/" data-lang="ko">한</a></nav><div class="views">已瀏覽次數：<b id="viewcount">1,683</b></div><nav class="site-nav" aria-label="網站"><a href="tools/">工具</a><a class="nav-donate donate-jump" href="support/">支持我們</a></nav><a class="tv-home" href="tools/"><span class="pj-tag">推廣</span><span>TradingView</span></a><a class="tv-home sr-home" href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover" data-placement="home-chip"><span class="pj-tag">推廣</span><span>Stock Rover</span></a><a class="home-donate" href="https://www.paypal.com/qrcodes/p2pqrc/3KT8QNVNRWJMA" target="_blank" rel="noopener">☕ 捐款支持</a><!-- zh-only --><div class="jump-row"><button type="button" class="promo-jump" data-jump="promo">🎁 富途開戶禮遇 <span class="pj-tag">推廣 ↓</span></button></div><!-- /zh-only --></div>
+    <div class="brand-wrap"><h1 class="brand">The Crowd Tape</h1><p class="brand-sub">看市場在做什麼，不是看我怎麼想</p><nav class="lang-sw" aria-label="Language"><a href="/zh/" data-lang="zh" aria-current="page">中</a><a href="/en/" data-lang="en">EN</a><a href="/ko/" data-lang="ko">한</a></nav><div class="views">已瀏覽次數：<b id="viewcount">1,683</b></div><nav class="site-nav" aria-label="網站"><a href="tools/">工具</a><a class="nav-donate donate-jump" href="support/">支持我們</a></nav><a class="tv-home" href="tools/"><span class="pj-tag">推廣</span><span>TradingView</span></a><a class="tv-home sr-home" href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover" data-placement="home-chip"><span class="pj-tag">推廣</span><span>Stock Rover</span></a><a class="home-donate" href="https://www.paypal.com/qrcodes/p2pqrc/3KT8QNVNRWJMA" target="_blank" rel="noopener">☕ 捐款支持</a><!-- zh-only --><div class="jump-row"><button type="button" class="promo-jump" data-jump="promo">🎁 富途開戶禮遇 <span class="pj-tag">推廣 ↓</span></button></div><!-- /zh-only --></div>
     <div class="meta">
       <span>帖文資料截至 <b id="cutoff"></b></span>
       <span>下次更新 <b id="nextup"></b></span>
@@ -1032,6 +1032,8 @@ function clipDailyRange(from,to,cutMs){const a=_parseHkt(from,false),z=_parseHkt
  if(typeof cutMs==='number'&&cutMs>0&&cutMs<z)end=Math.max(a,cutMs);
  return {from:String(from).length>10?from:from+'T00:00',to:_tsOf(end)}}
 function priorDailyRange(from,to){const DAY=864e5;return {pf:_tsOf(_parseHkt(from,false)-DAY),pt:_tsOf(_parseHkt(to,true)-DAY)}}
+// 摘要截止（briefAsOf）同本頁統計窗唔同時，先分開講兩個時間；冇獨立截止就仍然係同一範圍
+function rangeSrcNote(src,bx,cx){if(src!=='writer')return '今個抓帖周期';if(bx&&cx&&bx===cx)return '與今日市場分析相同';if(bx&&cx)return '今日市場分析截至 '+bx+' HKT，本頁統計至 '+cx+' HKT';return '與今日市場分析相同'}
 /*DAILY-WIN-END*/
 function briefAsOf(w,sm){const r=String(((D.highlights||{})[w&&w.day]||{}).range||'');
  if(r.includes('–')){const e=r.split('–').pop().trim();const m=e.match(/(\d{1,2}):(\d{2})/);if(m)return m[1].padStart(2,'0')+':'+m[2]}
@@ -1277,9 +1279,11 @@ function viewDaily(){
  const vposts=rawIn(w.from,w.to).filter(valid),prevV=rawIn(pf,pt).filter(valid).length;
  const nB=cur.filter(x=>x.s==='bull').length,nR=cur.filter(x=>x.s==='bear').length,nU=cur.filter(x=>x.s==='none').length,nM=cur.filter(x=>x.s==='neu').length;
  const rawAll=rawIn(w.from,w.to),nTS=rawAll.filter(p=>p.platform==='truthsocial').length,nFold=rawAll.filter(p=>p.folded_into).length,nOff=rawAll.filter(p=>!p.folded_into&&p.theme==='非市場').length;
- const rangeTxt=w.timed?`分析範圍：${fmtR(w.from)} – ${fmtR(w.to)} HKT（${w.src==='writer'?'與今日市場分析相同':'今個抓帖周期'}），共 ${rawAll.length} 則貼文（X ${rawAll.length-nTS} 則${nTS?`、Truth Social ${nTS} 則`:''}）${nFold||nOff?`；有效貼文 ${vposts.length} 則（${[nFold?`${nFold} 則串文續篇已併入上一則`:'',nOff?`${nOff} 則非市場內容`:''].filter(Boolean).join('、')}不計）`:''}`
+ const sm=summaryOf('daily',w.day);
+ const rangeNote=rangeSrcNote(w.src,briefAsOf(w,sm),w.to&&w.to.length>10?w.to.slice(11,16):'');
+ const rangeTxt=w.timed?`分析範圍：${fmtR(w.from)} – ${fmtR(w.to)} HKT（${rangeNote}），共 ${rawAll.length} 則貼文（X ${rawAll.length-nTS} 則${nTS?`、Truth Social ${nTS} 則`:''}）${nFold||nOff?`；有效貼文 ${vposts.length} 則（${[nFold?`${nFold} 則串文續篇已併入上一則`:'',nOff?`${nOff} 則非市場內容`:''].filter(Boolean).join('、')}不計）`:''}`
   :w.merged?`有效資料不足（當天僅 ${w.n} 則），分析合併 ${fmt(w.from)}–${fmt(w.to)} 兩天`:`分析範圍：${w.to} 單日`;
- const sm=summaryOf('daily',w.day);const br=(D.briefings||[]).filter(b=>b.date===w.day).slice(-1)[0];if(!histDone&&w.day){const _d=(D.summaries&&D.summaries.daily)||[],_b=D.briefings||[];if((_d.length&&w.day<_d[0].date)||(_b.length&&w.day<_b[0].date))loadHist()}
+ const br=(D.briefings||[]).filter(b=>b.date===w.day).slice(-1)[0];if(!histDone&&w.day){const _d=(D.summaries&&D.summaries.daily)||[],_b=D.briefings||[];if((_d.length&&w.day<_d[0].date)||(_b.length&&w.day<_b[0].date))loadHist()}
  const top=coBull[0],topB=coBear[0],sp=split[0],rev=chg.find(y=>y.ch==='反轉')||chg[0];
  const auto=`<p>${top?`共識最強的是 ${tkBtn(top.t)}，${top.c.bull} 個帳號明確看多${top.c.bear?`，${top.c.bear} 個看空`:'，沒有帳號看空'}。`:'今天沒有出現多個帳號共同看多的股票。'} ${topB?`${tkBtn(topB.t)} 則有 ${topB.c.bear} 個帳號共同看空。`:''}</p><p>${sp?`分歧最大的是 ${tkBtn(sp.t)}：看多 ${sp.c.bull}、看空 ${sp.c.bear}（見深入分析）。`:'今天沒有明顯分歧的股票。'} ${rev?`值得留意的變化：@${esc(rev.x.acc)} 對 ${tkBtn(rev.x.t)} 的立場${rev.ch}為${SLABEL[rev.x.s]}。`:''}</p>`;
  const sparse=w.merged?`<div id="sparse" role="note">本頁計算範圍：${vposts.length?`${vposts[0].time_hkt.slice(5,10).replace('-','/')} ${vposts[0].time_hkt.slice(11,16)} – ${vposts[vposts.length-1].time_hkt.slice(5,10).replace('-','/')} ${vposts[vposts.length-1].time_hkt.slice(11,16)} HKT`:''}；${fmt(TODAY)} 當天有效貼文僅 ${w.n} 則（少於 ${MIN_POSTS}），已合併前一天</div>`:'';

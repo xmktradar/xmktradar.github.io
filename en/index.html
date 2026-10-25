@@ -757,7 +757,7 @@ table.lb .na{color:var(--mut);font-weight:400}
 .hbar .track.stk .b{background:var(--bull)}.hbar .track.stk .m{background:var(--neu)}.hbar .track.stk .u{background:var(--neu-soft);box-shadow:inset 0 0 0 1px var(--neu-line)}.hbar .track.stk .r{background:var(--bear)}
 .hl-head{flex-wrap:wrap}.hl-head h2{white-space:nowrap}
 .mk-top b{white-space:nowrap;flex:none}
-.brand-wrap{min-width:0;max-width:100%}.brand-wrap .brand{margin:0}.brand-sub{margin:2px 0 0;font-size:12.5px;line-height:1.4;color:var(--mut);font-style:italic}.brand-sub-zh{margin:1px 0 0;font-size:11.5px;line-height:1.4;color:var(--mut)}
+.brand-wrap{min-width:0;max-width:100%}.brand-wrap .brand{margin:0}.brand-sub{margin:2px 0 0;font-size:12.5px;line-height:1.4;color:var(--mut);font-style:italic}
 .hl-tk .nopx{font-size:11px;color:var(--mut);text-align:right}.hl-tk svg.empty{height:28px}
 
 .tk .flag{margin-left:4px}.divehead .nm .flag{font-size:11.5px;padding:1px 8px}
@@ -1033,6 +1033,8 @@ function clipDailyRange(from,to,cutMs){const a=_parseHkt(from,false),z=_parseHkt
  if(typeof cutMs==='number'&&cutMs>0&&cutMs<z)end=Math.max(a,cutMs);
  return {from:String(from).length>10?from:from+'T00:00',to:_tsOf(end)}}
 function priorDailyRange(from,to){const DAY=864e5;return {pf:_tsOf(_parseHkt(from,false)-DAY),pt:_tsOf(_parseHkt(to,true)-DAY)}}
+// 摘要截止（briefAsOf）同本頁統計窗唔同時，先分開講兩個時間；冇獨立截止就仍然係同一範圍
+function rangeSrcNote(src,bx,cx){if(src!=='writer')return 'this fetch cycle';if(bx&&cx&&bx===cx)return 'same as today’s market analysis';if(bx&&cx)return 'today’s market analysis as of '+bx+' HKT, this page counts to '+cx+' HKT';return 'same as today’s market analysis'}
 /*DAILY-WIN-END*/
 function briefAsOf(w,sm){const r=String(((D.highlights||{})[w&&w.day]||{}).range||'');
  if(r.includes('–')){const e=r.split('–').pop().trim();const m=e.match(/(\d{1,2}):(\d{2})/);if(m)return m[1].padStart(2,'0')+':'+m[2]}
@@ -1278,9 +1280,11 @@ function viewDaily(){
  const vposts=rawIn(w.from,w.to).filter(valid),prevV=rawIn(pf,pt).filter(valid).length;
  const nB=cur.filter(x=>x.s==='bull').length,nR=cur.filter(x=>x.s==='bear').length,nU=cur.filter(x=>x.s==='none').length,nM=cur.filter(x=>x.s==='neu').length;
  const rawAll=rawIn(w.from,w.to),nTS=rawAll.filter(p=>p.platform==='truthsocial').length,nFold=rawAll.filter(p=>p.folded_into).length,nOff=rawAll.filter(p=>!p.folded_into&&p.theme==='非市場').length;
- const rangeTxt=w.timed?`Analysis window: ${fmtR(w.from)} – ${fmtR(w.to)} HKT (${w.src==='writer'?'same as today’s market analysis':'this fetch cycle'}), total ${rawAll.length} posts (X ${rawAll.length-nTS} posts${nTS?`, Truth Social ${nTS} posts`:''})${nFold||nOff?`; valid posts ${vposts.length} posts (${[nFold?`${nFold} thread continuations merged into the previous post`:'',nOff?`${nOff} non-market posts`:''].filter(Boolean).join(', ')} excluded)`:''}`
+ const sm=summaryOf('daily',w.day);
+ const rangeNote=rangeSrcNote(w.src,briefAsOf(w,sm),w.to&&w.to.length>10?w.to.slice(11,16):'');
+ const rangeTxt=w.timed?`Analysis window: ${fmtR(w.from)} – ${fmtR(w.to)} HKT (${rangeNote}), total ${rawAll.length} posts (X ${rawAll.length-nTS} posts${nTS?`, Truth Social ${nTS} posts`:''})${nFold||nOff?`; valid posts ${vposts.length} posts (${[nFold?`${nFold} thread continuations merged into the previous post`:'',nOff?`${nOff} non-market posts`:''].filter(Boolean).join(', ')} excluded)`:''}`
   :w.merged?`Not enough valid data (only ${w.n} posts that day), analysis combines ${fmt(w.from)}–${fmt(w.to)} (two days)`:`Analysis window: ${w.to} (single day)`;
- const sm=summaryOf('daily',w.day);const br=(D.briefings||[]).filter(b=>b.date===w.day).slice(-1)[0];if(!histDone&&w.day){const _d=(D.summaries&&D.summaries.daily)||[],_b=D.briefings||[];if((_d.length&&w.day<_d[0].date)||(_b.length&&w.day<_b[0].date))loadHist()}
+ const br=(D.briefings||[]).filter(b=>b.date===w.day).slice(-1)[0];if(!histDone&&w.day){const _d=(D.summaries&&D.summaries.daily)||[],_b=D.briefings||[];if((_d.length&&w.day<_d[0].date)||(_b.length&&w.day<_b[0].date))loadHist()}
  const top=coBull[0],topB=coBear[0],sp=split[0],rev=chg.find(y=>y.ch==='reversed')||chg[0];
  const auto=`<p>${top?`Strongest consensus is ${tkBtn(top.t)}, ${top.c.bull} accounts clearly bullish${top.c.bear?`, ${top.c.bear} bearish`:', no account bearish'}. `:'No stock drew consensus bullish views from several accounts today.'} ${topB?`${tkBtn(topB.t)} has ${topB.c.bear} accounts jointly bearish.`:''}</p><p>${sp?`Biggest split is ${tkBtn(sp.t)}: bullish ${sp.c.bull}, bearish ${sp.c.bear} (see deep dive).`:'No clearly split stock today.'} ${rev?`Notable change: @${esc(rev.x.acc)} on ${tkBtn(rev.x.t)} , stance ${rev.ch} to ${SLABEL[rev.x.s]}. `:''}</p>`;
  const sparse=w.merged?`<div id="sparse" role="note">Page window: ${vposts.length?`${vposts[0].time_hkt.slice(5,10).replace('-','/')} ${vposts[0].time_hkt.slice(11,16)} – ${vposts[vposts.length-1].time_hkt.slice(5,10).replace('-','/')} ${vposts[vposts.length-1].time_hkt.slice(11,16)} HKT`:''}; ${fmt(TODAY)} had only ${w.n} valid posts (fewer than ${MIN_POSTS}), so the previous day is merged in</div>`:'';
