@@ -813,16 +813,18 @@
     "INTC",
     "LITE",
     "NBIS",
-    "GOOG"
+    "MSTR"
    ],
    "bear": [],
    "split": [
     "SPY",
     "NVDA",
     "BE",
-    "AAOI",
     "TSLA",
-    "GEV"
+    "AAOI",
+    "GEV",
+    "VRT",
+    "LRCX"
    ],
    "window": [
     "2026-10-24T23:30",
@@ -833,17 +835,17 @@
     "NVDA",
     "SPCX",
     "AMZN",
+    "MSFT",
     "MU",
     "SNDK",
-    "MSFT",
     "TSLA",
-    "QQQ",
-    "INTC"
+    "BE",
+    "GOOGL"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-26 04:41"
+   "updated_hkt": "2026-10-26 05:02"
   }
  },
- "updated_hkt": "2026-10-26 04:41",
+ "updated_hkt": "2026-10-26 05:02",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
