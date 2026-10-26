@@ -1686,9 +1686,169 @@
      ],
      "bear": []
     }
+   },
+   "intraday_2": {
+    "post_et": "12:15",
+    "post_hkt": "00:15",
+    "generated_at": "2026-10-26T12:21:17-04:00",
+    "date": "2026-10-26",
+    "date_kst": "2026-10-27",
+    "quotes": {
+     "SPY": {
+      "price": 765.395,
+      "prev_close": 759.97,
+      "chg_pct": 0.71,
+      "time": "2026-10-26T12:21:17-04:00"
+     },
+     "QQQ": {
+      "price": 712.765,
+      "prev_close": 704.4,
+      "chg_pct": 1.19,
+      "time": "2026-10-26T12:21:17-04:00"
+     },
+     "DIA": {
+      "price": 522.875,
+      "prev_close": 521.37,
+      "chg_pct": 0.29,
+      "time": "2026-10-26T12:20:51-04:00"
+     },
+     "NVDA": {
+      "price": 215.618,
+      "prev_close": 210.96,
+      "chg_pct": 2.21,
+      "time": "2026-10-26T12:21:19-04:00"
+     },
+     "SPCX": {
+      "price": 148.59,
+      "prev_close": 147.49,
+      "chg_pct": 0.75,
+      "time": "2026-10-26T12:21:19-04:00"
+     },
+     "TSLA": {
+      "price": 394.34,
+      "prev_close": 372.22,
+      "chg_pct": 5.94,
+      "time": "2026-10-26T12:21:20-04:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-10-26T12:21:20-04:00",
+     "hkt": "2026-10-27 00:21"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "NVDA",
+      "chg_pct": 2.21,
+      "bull": 5,
+      "bear": 1,
+      "accounts": [
+       "firstadopter",
+       "StockSavvyShay",
+       "Mr_Derivatives",
+       "GavinSBaker",
+       "saxena_puru",
+       "APompliano",
+       "Beth_Kindig",
+       "aleabitoreddit"
+      ]
+     },
+     {
+      "ticker": "SPCX",
+      "chg_pct": 0.75,
+      "bull": 4,
+      "bear": 1,
+      "accounts": [
+       "TheTranscript_",
+       "scottmelker",
+       "saxena_puru",
+       "GerberKawasaki",
+       "amitisinvesting",
+       "aleabitoreddit",
+       "michaelsikand",
+       "leadlagreport"
+      ]
+     },
+     {
+      "ticker": "SPY",
+      "chg_pct": 0.71,
+      "bull": 4,
+      "bear": 3,
+      "accounts": [
+       "KobeissiLetter",
+       "RyanDetrick",
+       "fundstrat",
+       "Mr_Derivatives",
+       "carlquintanilla",
+       "RichardMoglen",
+       "michaeljburry",
+       "Greenbackd"
+      ]
+     },
+     {
+      "ticker": "TSLA",
+      "chg_pct": 5.94,
+      "bull": 2,
+      "bear": 1,
+      "accounts": [
+       "SawyerMerritt",
+       "elonmusk",
+       "GerberKawasaki",
+       "aleabitoreddit",
+       "alphatrends",
+       "RichardMoglen",
+       "charliebilello",
+       "APompliano"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Midday · As of 12:21 ET (00:21 HKT)\n\n$SPY +0.7% · $QQQ +1.2% · $DIA +0.3%\n\n$NVDA +2.2%, 5 accounts bullish on site\n$SPCX +0.8%, 4 accounts bullish on site\n\nhttps://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_2\n\n⚠️ Not investment advice\n#StockMarket #NVDA #SPCX",
+      "url": "https://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_2"
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午市觀察 · 截至 12:21 ET（00:21 HKT）\n\n$SPY +0.7% · $QQQ +1.2% · $DIA +0.3%\n\n$NVDA +2.2%，網站 5 個帳號看好\n$SPCX +0.8%，網站 4 個帳號看好\n$SPY +0.7%，網站 4 個帳號看好\n$TSLA +5.9%，網站 2 個帳號看好\n\n⚠️ 唔構成投資建議\n#美股 #NVDA #SPCX",
+      "url": null
+     },
+     "en": {
+      "text": "Midday · As of 12:21 ET (00:21 HKT)\n\n$SPY +0.7% · $QQQ +1.2% · $DIA +0.3%\n\n$NVDA +2.2%, 5 accounts bullish on site\n$SPCX +0.8%, 4 accounts bullish on site\n$SPY +0.7%, 4 accounts bullish on site\n$TSLA +5.9%, 2 accounts bullish on site\n\n⚠️ Not investment advice\n#StockMarket #NVDA #SPCX",
+      "url": null
+     },
+     "ko": {
+      "text": "한낮 · 12:21 ET (00:21 HKT) 기준\n\n$SPY +0.7% · $QQQ +1.2% · $DIA +0.3%\n\n$NVDA +2.2%, 사이트 강세 계정 5개\n$SPCX +0.8%, 사이트 강세 계정 4개\n$SPY +0.7%, 사이트 강세 계정 4개\n$TSLA +5.9%, 사이트 강세 계정 2개\n\n⚠️ 투자 조언 아님\n#미국주식 #NVDA #SPCX",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": true,
+     "threads": {
+      "zh": false,
+      "en": false,
+      "ko": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "INTC",
+      "AMZN",
+      "NBIS",
+      "MU",
+      "LITE",
+      "MSTR",
+      "SKHY",
+      "AAOI",
+      "ARM"
+     ],
+     "bear": []
+    }
    }
   },
-  "generated_at": "2026-10-26T11:03:51-04:00",
-  "generated_hkt": "2026-10-26 23:03"
+  "generated_at": "2026-10-26T12:21:17-04:00",
+  "generated_hkt": "2026-10-27 00:21"
  }
 }
