@@ -91,6 +91,14 @@ A list that does not fit in 280 keeps a prefix of the real names. `+N` is how ma
 
 `langs.<lang>` is a list of strings. `tools/utm.py` tags each of those strings as X posts (`utm_source=x`, `utm_campaign=weekly_thread`). An older `posts.<lang>.{x|text}` shape is still tagged the same way.
 
+## Daily caption
+
+`caption()` in `tools/share.py` writes the daily `posts` text. When `daily.bull` is non-empty, the first line names two rankings. Most-discussed is `daily.top[0]` (`t`, `accounts`, `bull_accounts`, `bear_accounts`), the same row as the 12:30 carousel cover. Most-bullish is the lead bull. A stance side with 0 is left out. When both are 0, the stance is left out. When the two tickers are the same, the line is one combined headline. When `top` is empty, the line stays the previous most-bullish headline. With no common-bullish leader, the first line stays the most-talked-about ticker only.
+
+- zh: `10/26 X 大神共識快照：最多人討論 $SPY（15 個帳號，3 好 3 淡）・最多人睇好 $INTC（3 個帳號）📊`
+- en: `Oct 26 · Most discussed: $SPY (15 accounts, 3 bull / 3 bear) · Most bullish: $INTC (3 accounts) 📊`
+- ko: `10/26 X 인플루언서 컨센서스: 가장 많이 언급: $SPY (계정 15개, 강세 3 / 약세 3) · 가장 많이 강세: $INTC (계정 3개) 📊`
+
 ## Shared fields
 
 Every slot carries `format`: `image_card`, `carousel`, `text_question` or `poll`. A poll also has `poll.<lang> = {question, options}` with 2–4 options. `top5` is `image_card`. `hot_stock` and `why_posts` are `carousel`. `discussion` is `poll`. `three_lines` is `text_question`. Weekend angles use the formats in the table below. An atomic `number` is `text_question`, `stock` is `image_card`, `expert_view` is `carousel`.

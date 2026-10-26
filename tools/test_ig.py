@@ -162,6 +162,112 @@ def test_sanitize_instagram():
     assert again == out
 
 
+def test_caption_bull_headline():
+    """Bullish first line: most discussed (carousel cover) and most bullish."""
+    day = '2026-10-26'
+    win = '10/26 00:00 – 10/26 04:58 HKT'
+    han = re.compile(r'[\u3400-\u9fff\uf900-\ufaff]')
+    window = {
+        'zh': f'數據範圍：{win}',
+        'en': f'Data window: {win}',
+        'ko': f'데이터 범위: {win}',
+    }
+    joint = {
+        'zh': '🔵 共同看多：1 隻・共同看空：0 隻',
+        'en': '🔵 Joint bullish: 1 · Joint bearish: 0',
+        'ko': '🔵 공동 강세: 1개・공동 약세: 0개',
+    }
+
+    def pack(top, ticker, n, bull=True):
+        s = {'bull': [{'t': ticker}] if bull else [], 'bear': [], 'split': [],
+             'accounts': 20, 'tickers': 2}
+        if top is not None:
+            s['top'] = top
+        items = [{'t': ticker, 'n': n, 'bull': n, 'bear': 0, 'streak': 1}]
+        return s, items
+
+    def head_of(lang, s, items):
+        cap = share.caption(lang, day, s, items, win, None)
+        head = cap['instagram'].split('\n', 1)[0]
+        assert cap['x'].split('\n', 1)[0] == head
+        assert cap['threads'].split('\n', 1)[0] == head
+        assert cap['facebook'].split('\n', 1)[0] == head
+        assert cap['reddit']['title'] == re.sub(r'\s*[📊💬]$', '', head)
+        assert cap['instagram'].split('\n')[2] == window[lang]
+        assert share.xlen(cap['x']) <= 280
+        assert len(cap['threads']) <= 500
+        if lang != 'zh':
+            assert han.search(head) is None, head
+            assert han.search(cap['instagram']) is None
+            assert han.search(cap['x']) is None
+        if s['bull']:
+            assert cap['instagram'].split('\n')[4] == joint[lang]
+        return head
+
+    spy = {'t': 'SPY', 'accounts': 15, 'bull_accounts': 3, 'bear_accounts': 3}
+    dual = {
+        'zh': '10/26 X 大神共識快照：最多人討論 $SPY（15 個帳號，3 好 3 淡）・最多人睇好 $INTC（3 個帳號）📊',
+        'en': 'Oct 26 · Most discussed: $SPY (15 accounts, 3 bull / 3 bear) · Most bullish: $INTC (3 accounts) 📊',
+        'ko': '10/26 X 인플루언서 컨센서스: 가장 많이 언급: $SPY (계정 15개, 강세 3 / 약세 3) · 가장 많이 강세: $INTC (계정 3개) 📊',
+    }
+    bull_only = {
+        'zh': '10/26 X 大神共識快照：最多人討論 $SPY（9 個帳號，4 個睇好）・最多人睇好 $INTC（2 個帳號）📊',
+        'en': 'Oct 26 · Most discussed: $SPY (9 accounts, 4 bullish) · Most bullish: $INTC (2 accounts) 📊',
+        'ko': '10/26 X 인플루언서 컨센서스: 가장 많이 언급: $SPY (계정 9개, 강세 4) · 가장 많이 강세: $INTC (계정 2개) 📊',
+    }
+    bear_only = {
+        'zh': '10/26 X 大神共識快照：最多人討論 $SPY（1 個帳號，1 個睇淡）・最多人睇好 $INTC（1 個帳號）📊',
+        'en': 'Oct 26 · Most discussed: $SPY (1 account, 1 bearish) · Most bullish: $INTC (1 account) 📊',
+        'ko': '10/26 X 인플루언서 컨센서스: 가장 많이 언급: $SPY (계정 1개, 약세 1) · 가장 많이 강세: $INTC (계정 1개) 📊',
+    }
+    zero = {
+        'zh': '10/26 X 大神共識快照：最多人討論 $SPY（15 個帳號）・最多人睇好 $INTC（3 個帳號）📊',
+        'en': 'Oct 26 · Most discussed: $SPY (15 accounts) · Most bullish: $INTC (3 accounts) 📊',
+        'ko': '10/26 X 인플루언서 컨센서스: 가장 많이 언급: $SPY (계정 15개) · 가장 많이 강세: $INTC (계정 3개) 📊',
+    }
+    same = {
+        'zh': '10/26 X 大神共識快照：最多人討論兼最多人睇好 $INTC（15 個帳號，3 好 3 淡）📊',
+        'en': 'Oct 26 · Most discussed and most bullish: $INTC (15 accounts, 3 bull / 3 bear) 📊',
+        'ko': '10/26 X 인플루언서 컨센서스: 가장 많이 언급·가장 많이 강세: $INTC (계정 15개, 강세 3 / 약세 3) 📊',
+    }
+    old = {
+        'zh': '10/26 X 大神共識快照：最多人睇好 $INTC（3 個帳號）📊',
+        'en': 'Oct 26 · Most bullish: $INTC, 3 accounts 📊',
+        'ko': '10/26 X 인플루언서 컨센서스: 가장 강세 $INTC (계정 3개) 📊',
+    }
+    talked = {
+        'zh': '10/26 X 大神快照：今日最多人講 $INTC（3 個帳號）💬',
+        'en': 'Oct 26 · Most talked-about stock on X today: $INTC (3 accounts) 💬',
+        'ko': '10/26 X 스냅샷: 오늘 가장 많이 언급된 종목 $INTC (계정 3개) 💬',
+    }
+    body = {'zh': '・3 個帳號： $INTC', 'en': '・3 accounts: $INTC', 'ko': '・계정 3개: $INTC'}
+
+    for lang in share.LANGS:
+        s, items = pack([spy], 'INTC', 3)
+        cap = share.caption(lang, day, s, items, win, None)
+        assert head_of(lang, s, items) == dual[lang]
+        assert body[lang] in cap['instagram']
+        assert '15' not in cap['instagram'].split('\n', 1)[1]
+
+        s, items = pack([{'t': 'SPY', 'accounts': 9, 'bull_accounts': 4, 'bear_accounts': 0}], 'INTC', 2)
+        assert head_of(lang, s, items) == bull_only[lang]
+
+        s, items = pack([{'t': 'SPY', 'accounts': 1, 'bull_accounts': 0, 'bear_accounts': 1}], 'INTC', 1)
+        assert head_of(lang, s, items) == bear_only[lang]
+
+        s, items = pack([{'t': 'SPY', 'accounts': 15, 'bull_accounts': 0, 'bear_accounts': 0}], 'INTC', 3)
+        assert head_of(lang, s, items) == zero[lang]
+
+        s, items = pack([{'t': 'INTC', 'accounts': 15, 'bull_accounts': 3, 'bear_accounts': 3}], 'INTC', 3)
+        assert head_of(lang, s, items) == same[lang]
+
+        for top in ([], None):
+            s, items = pack(top, 'INTC', 3)
+            assert head_of(lang, s, items) == old[lang]
+        s, items = pack([spy], 'INTC', 3, bull=False)
+        assert head_of(lang, s, items) == talked[lang]
+
+
 def test_caption_ig():
     s = {'bull': [{'t': 'WMT'}], 'bear': [], 'split': [], 'accounts': 4, 'tickers': 1}
     items = [{'t': 'WMT', 'n': 2, 'bull': 2, 'bear': 0, 'streak': 1}]
@@ -274,6 +380,7 @@ def main():
         test_sanitizer_does_not_move_body_lines()
         test_top5_ig_key_line_wording()
         test_sanitize_instagram()
+        test_caption_bull_headline()
         test_caption_ig()
         test_top5_window_and_headings()
         test_normalize_strips_ig_urls()
