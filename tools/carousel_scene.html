@@ -6,5 +6,22 @@
 #c{position:absolute;inset:0}.t{position:absolute;left:0;right:0;text-align:center;font-weight:900;opacity:0}
 .s{display:inline-block;border:8px solid #151a2c;border-radius:34px;box-shadow:12px 14px 0 #151a2c;padding:18px 44px;background:#fff;color:#151a2c}
 .mono{font-family:'IBM Plex Mono',monospace}#flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:40}
+/* Opening cover (frame 0). Fully painted at t=0: same comic frame as the stills, not the empty ray field. */
+#cover{position:absolute;inset:0;display:flex;flex-direction:column;padding:72px 56px 48px;gap:22px;z-index:2;color:#151a2c}
+#cover .cv-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(21,26,44,.16) 3.2px,transparent 3.6px);background-size:22px 22px;pointer-events:none;z-index:0}
+#cover .cv-top{position:relative;z-index:1;display:flex;align-items:center;gap:16px}
+#cover .cv-brand{display:inline-flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:8px 22px 8px 10px;font-weight:900;font-size:32px;box-shadow:0 5px 0 rgba(21,26,44,.14);white-space:nowrap}
+#cover .cv-brand img{width:56px;height:56px;border-radius:12px;object-fit:cover}
+#cover .cv-date{background:#f8d34a;border:4px solid #151a2c;border-radius:14px;padding:8px 16px;font:700 30px "IBM Plex Mono",monospace;transform:rotate(-2.5deg);box-shadow:4px 5px 0 #151a2c;white-space:nowrap}
+#cover .cv-panel{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center;gap:26px;background:#fff;border:4px solid #151a2c;border-radius:36px;box-shadow:8px 10px 0 #151a2c;padding:48px 44px}
+#cover .cv-title{font-weight:900;line-height:1.05;letter-spacing:-1px}
+#cover .cv-title span{background:linear-gradient(transparent 62%,#fbe25b 62%);padding:0 8px}
+#cover .cv-l{font-weight:900;font-size:40px}
+#cover .cv-tk{font:700 168px/1 "IBM Plex Mono",monospace;letter-spacing:-4px}
+#cover .cv-tk span{background:linear-gradient(transparent 58%,#fbe25b 58%);padding:0 10px}
+#cover .cv-n{font-weight:900;font-size:44px;margin-top:6px}
+#cover .cv-stat{align-self:flex-start;background:#dfe7ff;border:4px solid #3557c9;color:#2a43a0;border-radius:20px;padding:14px 26px;font-weight:900;font-size:36px;box-shadow:0 6px 0 rgba(21,26,44,.16)}
+#cover .cv-foot{position:relative;z-index:1;background:rgba(255,255,255,.92);border-radius:999px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 28px;font-weight:700;font-size:26px;color:#3c4466;white-space:nowrap}
+#cover .cv-foot b{color:#151a2c}
 .emo{position:absolute;font-size:150px;opacity:0;z-index:30}.cf{position:absolute;width:22px;height:34px}</style>
 <body><div id="bg"></div><div id="rays"></div><div id="c"></div><div id="flash"></div></body>

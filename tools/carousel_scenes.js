@@ -2,11 +2,27 @@
 // tools/carousel_video.js into a blank 1080x1920 page together with tools/carousel_scene.html.
 // setup(name, data) builds a scene, draw(t, globalT) draws one frame. Needs cl/out/back/BEAT/chrome
 // from the shared header that carousel_video.js injects first.
+const esc=v=>String(v==null?'':v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function coverHTML(D){
+ const block=(label,ticker,extra)=>{
+  if(!ticker)return '';
+  const sz=String(ticker).length>5?128:168;
+  return `<div class="cv-block"><div class="cv-l">${esc(label)}</div><div class="cv-tk" style="font-size:${sz}px">$<span>${esc(ticker)}</span></div>${extra?`<div class="cv-n">${esc(extra)}</div>`:''}</div>`;
+ };
+ const px=[...String(D.title||'')].length<=4?128:104;
+ return `<div id="cover"><div class="cv-dots"></div>
+  <div class="cv-top"><span class="cv-brand"><img src="logo.png" alt="">The Crowd Tape</span>${D.date?`<span class="cv-date">📅 ${esc(D.date)}</span>`:''}</div>
+  <div class="cv-panel"><div class="cv-title" style="font-size:${px}px"><span>${esc(D.title)}</span></div>
+   ${block(D.discussedL,D.discussed,D.discussedN)}${block(D.bullL,D.bull,D.bullN)}
+   ${D.posted?`<div class="cv-stat">${esc(D.posted)}</div>`:''}</div>
+  <div class="cv-foot"><span><b>@thecrowdtape</b> · thecrowdtape.com</span><span>${esc(D.foot||'')}</span></div></div>`;
+}
 function setup(name,D){
  window.D_=D;
  const c=document.getElementById('c'); c.innerHTML=''; c.style.transform='';
  const add=(h,y,size,cls,rot)=>{const d=document.createElement('div');d.className='t';d.style.top=y+'px';d.style.fontSize=size+'px';d.innerHTML='<span class="'+(cls||'')+'" style="display:inline-block;transform:rotate('+(rot||0)+'deg)">'+h+'</span>';c.appendChild(d);return d};
  window.S={name,D,els:[]};
+ if(name==='cover'){document.getElementById('bg').style.background='linear-gradient(160deg,#5ab8ff 0%,#8f7bff 100%)';c.innerHTML=coverHTML(D);return;}
  if(name==='hook'){S.els=[add(D.t[0],520,260,'',-3),add(D.t[1],880,76,'s',2),add(D.t[2],1080,96,'s',-2),add(D.t[3],1340,200,'',0)];}
  if(name==='reveal'){S.els=[add('$'+D.big,640,D.big.length>4?230:300,'mono s',-2),add(D.reveal,1130,84,'s',2)];
    ['🔥','🚀','👀','💥','📈','🤯'].forEach((e,i)=>{const d=document.createElement('div');d.className='emo';d.textContent=e;c.appendChild(d);S.els.push(d)});}
@@ -23,6 +39,7 @@ const HOOKBG=['#151a2c','#8f7bff','#ff4f6d','#ffd84d','#5ab8ff'];
 function draw(t,gt){
  const pulse=chrome(gt), beat=Math.floor(t/BEAT), bt=(t%BEAT)/BEAT, E=S.els, bg=document.getElementById('bg'), fl=document.getElementById('flash'), c=document.getElementById('c');
  document.body.style.setProperty('--rot',(gt*40)+'deg'); fl.style.opacity=0; let shake=0;
+ if(S.name==='cover'){bg.style.background='linear-gradient(160deg,#5ab8ff 0%,#8f7bff 100%)';c.style.transform='none';return;}
  const pop=(e,start,dur,mode)=>{const p=cl((t-start)/(dur||.25));e.style.opacity=p>0?1:0;const sc=mode==='slam'?2.8-1.8*out(p):0.2+0.8*back(p);e.style.transform='scale('+sc+')';return p};
  if(S.name==='hook'){bg.style.background=HOOKBG[Math.min(beat,4)];
    E[0].style.color=beat%2?'#151a2c':'#f8d34a';
