@@ -1,10 +1,13 @@
 // Embeddable sentiment badge (growth plan 2026-10-25 A). Written by tools/stock_pages.js:
-//  - /embed/<TICKER>.html: 320x120 card, inline CSS only, no JavaScript at all, noindex; English (one file per stock).
+//  - /embed/<TICKER>.html: 320x120 card, no JavaScript, noindex; English (one file per stock).
+//    Type comes from the Google Fonts stylesheet (the same families as the site).
 //    Counts = the stock page's stance mix (each account's latest view in the 28-day window, same rule as the site).
 //  - /<lang>/embed/: how-to page with the copy-paste <iframe> code, fully in that language.
 // Every link out of the badge carries utm_source=embed&utm_medium=widget&utm_campaign=badge.
 const SITE = 'https://thecrowdtape.com/';
 const UTM = 'utm_source=embed&utm_medium=widget&utm_campaign=badge';
+const FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">';
+const FONT_VARS = ':root{--f-display:"Noto Serif TC","Source Han Serif TC","Songti TC","PMingLiU",serif;--f-body:"Noto Sans TC","PingFang TC","Noto Sans CJK TC","Microsoft JhengHei",system-ui,sans-serif;--f-data:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}html[lang=ko]{--f-body:"Noto Sans KR","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;--f-display:"Noto Sans KR","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}';
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
 function card(t, slug, name, c, day) {
@@ -16,12 +19,14 @@ function card(t, slug, name, c, day) {
 <meta name="viewport" content="width=320">
 <title>$${esc(t)} crowd sentiment · The Crowd Tape</title>
 <link rel="canonical" href="${SITE}en/stock/${esc(slug)}/">
+${FONTS}
 <style>
+${FONT_VARS}
 html,body{margin:0;padding:0;background:transparent}
-a.c{box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;width:320px;height:120px;padding:10px 14px;border:1px solid #d9cfc2;border-radius:12px;background:#fffaf2;color:#3b2f25;text-decoration:none;font:14px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;overflow:hidden}
+a.c{box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;width:320px;height:120px;padding:10px 14px;border:1px solid #d9cfc2;border-radius:12px;background:#fffaf2;color:#3b2f25;text-decoration:none;font:14px/1.3 var(--f-body);overflow:hidden}
 .r1{display:flex;align-items:baseline;gap:8px;white-space:nowrap;overflow:hidden}
-.tk{font-weight:800;font-size:20px}.nm{color:#7a6a5a;font-size:12px;overflow:hidden;text-overflow:ellipsis}
-.n{display:flex;justify-content:space-between;font-weight:700}.g{color:#1f7a4a}.b{color:#b23a2e}
+.tk{font-family:var(--f-data);font-weight:800;font-size:20px}.nm{color:#7a6a5a;font-size:12px;overflow:hidden;text-overflow:ellipsis}
+.n{display:flex;justify-content:space-between;font-family:var(--f-data);font-weight:700;font-variant-numeric:tabular-nums}.g{color:#1f7a4a}.b{color:#b23a2e}
 .bar{height:8px;border-radius:4px;background:#e7b2ac;overflow:hidden}.bar i{display:block;height:100%;background:#7cc49b}
 .f{display:flex;justify-content:space-between;color:#7a6a5a;font-size:11px}.f b{color:#3b2f25}
 </style></head>
@@ -59,10 +64,12 @@ ${ga}
 <title>${esc(L.title)} · The Crowd Tape</title>
 <meta name="description" content="${esc(L.desc)}">
 <link rel="canonical" href="${SITE}${lang}/embed/">${alt}<link rel="alternate" hreflang="x-default" href="${SITE}en/embed/">
-<style>body{margin:0;background:#f6efe4;color:#3b2f25;font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC","Noto Sans KR",sans-serif}
+${FONTS}
+<style>${FONT_VARS}
+body{margin:0;background:#f6efe4;color:#3b2f25;font:16px/1.6 var(--f-body)}
 .wrap{max-width:720px;margin:0 auto;padding:24px 16px 48px}header{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.brand{font-weight:800;color:#3b2f25;text-decoration:none}nav a{margin-left:6px;color:#3b2f25}
-pre{white-space:pre-wrap;word-break:break-all;background:#fffaf2;border:1px solid #d9cfc2;border-radius:10px;padding:12px;font-size:13px}
+.brand{font-family:var(--f-display);font-weight:800;color:#3b2f25;text-decoration:none}h1{font-family:var(--f-display)}nav a{margin-left:6px;color:#3b2f25}
+pre{white-space:pre-wrap;word-break:break-all;background:#fffaf2;border:1px solid #d9cfc2;border-radius:10px;padding:12px;font-family:var(--f-data);font-size:13px}
 .note{color:#7a6a5a;font-size:13px}</style>
 </head><body><div class="wrap">
 <header><a class="brand" href="/${lang}/">The Crowd Tape</a><nav class="lang-sw" aria-label="Language">${sw}</nav></header>
