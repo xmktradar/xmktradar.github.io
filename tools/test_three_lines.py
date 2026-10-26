@@ -193,8 +193,9 @@ def test_post_shape_limits_and_utm():
             if plat == 'facebook':
                 assert url and url in text
                 assert slot['has_link']['facebook'][lang] is True
-    # zh+ko on X, en on Threads: 3 of the 6 X/Threads copies.
-    assert linked == 3, linked
+    # X links every language. Threads still alternates: en only. 4 of the 6 copies.
+    assert linked == 4, linked
+    _assert_x_and_threads(slot, shift=False)
     en = slot['threads']['en']['text']
     assert 'Today in 3 lines' in en
     assert 'Most mentioned' in en and '$SPCX' in en
@@ -209,14 +210,188 @@ def test_post_shape_limits_and_utm():
         {'t': 'AAA', 'c': _c(2, 0, 0, 2, 2), 'c0': _c(0, 2, 0, 2, 2), 'chg': 0},
     ], True)
     lines, _ticks = three_why._fact_lines('en', calc)
-    assert lines[0] == 'Biggest consensus shift: $AAA net bullish -100% → +100% vs yesterday (today so far)'
-    assert '(vs yesterday' not in lines[0]
+    assert lines[0] == 'Biggest consensus shift: $AAA net bullish -100% → +100% vs the same hours yesterday'
+    assert '(vs the same hours yesterday)' not in lines[0]
+    assert 'vs yesterday (today so far)' not in lines[0]
     zlines, _ = three_why._fact_lines('zh', calc)
-    assert zlines[0] == '共識變化最大：$AAA 淨看多比例 -100% → +100% 對比昨日（今日至今）'
-    assert '（對比昨日（今日至今））' not in zlines[0]
+    assert zlines[0] == '共識變化最大：$AAA 淨看多比例 -100% → +100% 對比昨日同時段'
+    assert '（對比昨日同時段）' not in zlines[0]
+    assert '對比昨日（今日至今）' not in zlines[0]
     klines, _ = three_why._fact_lines('ko', calc)
-    assert klines[0] == '합의 변화 최대: $AAA 순강세 비율 -100% → +100% 어제 대비 (오늘 현재까지)'
-    assert '(어제 대비' not in klines[0]
+    assert klines[0] == '합의 변화 최대: $AAA 순강세 비율 -100% → +100% 어제 같은 시간대 대비'
+    assert '(어제 같은 시간대 대비)' not in klines[0]
+    assert '어제 대비 (오늘 현재까지)' not in klines[0]
+
+
+NEW_DELTA = {
+    'zh': '對比昨日同時段',
+    'en': 'vs the same hours yesterday',
+    'ko': '어제 같은 시간대 대비',
+}
+OLD_DELTA = {
+    'zh': '對比昨日（今日至今）',
+    'en': 'vs yesterday (today so far)',
+    'ko': '어제 대비 (오늘 현재까지)',
+}
+
+
+def _assert_x_and_threads(slot, shift):
+    """Per language: X title, link, length, url invariant; Threads topic and wording."""
+    for lang in share.LANGS:
+        title = three_why.T3_COPY[lang]['title']
+        topic = three_why.T3_TOPIC[lang]
+        x = slot['x'][lang]
+        text, url = x['text'], x['url']
+        lines = text.splitlines()
+        assert lines[0] == title, (lang, lines[0])
+        assert title in text
+        assert share.SHORT[lang]['disc'] in text
+        assert share.xlen(text) <= 280, (lang, share.xlen(text), text)
+        assert url, (lang, url)
+        assert lines[-1] == url, (lang, lines[-1], url)
+        assert (url is not None) == (url in text)
+        assert text.count(url) == 1
+        assert slot['has_link']['x'][lang] is True
+        assert share._primary_tag(lang) == '#' + topic
+        assert share._primary_tag(lang) in text
+
+        th = slot['threads'][lang]
+        body = th['text']
+        assert th['topic'] == topic
+        assert '#' not in th['topic']
+        assert HASH.findall(body) == ['#' + topic], (lang, HASH.findall(body), body)
+        assert body.splitlines()[-1] == '#' + topic
+        assert URL_RE.search(body) is None
+        assert 'thecrowdtape.com' not in body.lower()
+        th_url = th.get('url')
+        assert slot['has_link']['threads'][lang] is bool(th_url)
+        if th_url:
+            assert th_url not in body
+        assert TICK_TAG.findall(body) == []
+        # Cashtags stay. Ticker hashtags do not.
+        if shift:
+            assert body.count(NEW_DELTA[lang]) == 1
+            assert text.count(NEW_DELTA[lang]) == 1
+            assert slot['facebook'][lang]['text'].count(NEW_DELTA[lang]) == 1
+            wrapped = f'（{NEW_DELTA[lang]}）' if lang == 'zh' else f'({NEW_DELTA[lang]})'
+            assert wrapped not in body and wrapped not in text
+            assert wrapped not in slot['facebook'][lang]['text']
+        else:
+            assert NEW_DELTA[lang] not in body and NEW_DELTA[lang] not in text
+        assert OLD_DELTA[lang] not in body and OLD_DELTA[lang] not in text
+        assert OLD_DELTA[lang] not in slot['facebook'][lang]['text']
+    assert slot['threads']['zh']['url'] is None
+    assert slot['threads']['ko']['url'] is None
+    assert slot['threads']['en']['url']
+    assert slot['has_link']['threads'] == {'zh': False, 'en': True, 'ko': False}
+
+
+def _assert_x_drop_order(slot, calc):
+    """Ticker tags go before the label, and the label goes before a trailing fact."""
+    for lang in share.LANGS:
+        text = slot['x'][lang]['text']
+        facts, ticks = three_why._fact_lines(lang, calc)
+        present = [f for f in facts if f in text]
+        assert present == facts[:len(present)] and present, (lang, present, facts)
+        ticker_tags = share._hash_tags(ticks)
+        label_in = bool(slot['window'] and slot['window'] in text)
+        if len(present) < len(facts):
+            assert not label_in, lang
+            assert not any(tag in text for tag in ticker_tags), lang
+        if slot['window'] and not label_in:
+            assert not any(tag in text for tag in ticker_tags), lang
+        if any(tag in text for tag in ticker_tags):
+            assert all(tag in text for tag in ticker_tags), lang
+            assert label_in, lang
+
+
+def _long_dash():
+    """A morning with a shift, a most-mentioned name and a split. English X does not fit whole."""
+    posts = [
+        _post('2026-10-22', '10:00', 'ann', ['NVDA'], '睇淡'),
+        _post('2026-10-22', '11:00', 'bob', ['NVDA'], '睇淡'),
+        _post(DAY, '09:00', 'ann', ['NVDA'], '睇好'),
+        _post(DAY, '09:05', 'bob', ['NVDA'], '睇好'),
+    ]
+    handles = ['cyd', 'dee', 'eli', 'fay', 'gus', 'hua']
+    for i, handle in enumerate(handles):
+        stance = '睇好' if i % 2 == 0 else '睇淡'
+        posts.append(_post(DAY, f'09:{10 + i:02d}', handle, ['SPCX'], stance))
+    return {
+        'meta': {'min_daily_posts': 1, 'cutoff_hkt': '2026-10-23T18:31:33+08:00'},
+        'summaries': {'daily': [{'date': DAY, 'win': None}]},
+        'tracked': {'categories': [], 'accounts': []},
+        'posts': posts,
+    }
+
+
+def _short_daily():
+    """One name, one fact, no previous window."""
+    return {
+        'from': '2026-10-23T00:00',
+        'to': '2026-10-23T09:00',
+        'posts': 2,
+        'accounts': 1,
+        'bull': [{
+            't': 'AAPL', 'nb': 1, 'nr': 0, 'n_posts': 2,
+            'rows': [{'acc': 'alpha', 's': 'bull', 'why': 'AAPL 穩。', 'ms': _ms('09:00')}],
+        }],
+        'bear': [],
+        'split': [],
+    }
+
+
+def test_long_and_short_x_threads():
+    long_slot = share.build_three_lines({}, DAY, dash=_long_dash())
+    assert 'homepage' in long_slot['source']
+    calc = share.three_lines_calc(*three_why.site_rows(_long_dash(), DAY)[:2])
+    assert calc['shift'] and calc['most'] and calc['split']
+    _assert_x_and_threads(long_slot, shift=True)
+    _assert_x_drop_order(long_slot, calc)
+    # English does not fit with the label and ticker tags. Those go; the three facts stay.
+    en = long_slot['x']['en']['text']
+    en_facts, _en_ticks = three_why._fact_lines('en', calc)
+    assert long_slot['window'] not in en
+    assert '#NVDA' not in en and '#SPCX' not in en
+    assert all(fact in en for fact in en_facts)
+
+    short_slot = share.build_three_lines(_short_daily(), DAY)
+    assert '共識變化最大' not in short_slot['threads']['zh']['text']
+    _assert_x_and_threads(short_slot, shift=False)
+    facts, _ticks = three_why._fact_lines('en', share.three_lines_calc(*three_why.rows_from_writeup(_short_daily())))
+    assert len(facts) == 1
+    for lang in share.LANGS:
+        text = short_slot['x'][lang]['text']
+        lang_facts, lang_ticks = three_why._fact_lines(lang, share.three_lines_calc(*three_why.rows_from_writeup(_short_daily())))
+        assert short_slot['window'] in text
+        for fact in lang_facts:
+            assert fact in text
+        for tag in share._hash_tags(lang_ticks):
+            assert tag in text, (lang, tag, text)
+        assert short_slot['window'] in short_slot['threads'][lang]['text']
+
+
+def test_fit_x_drops_trailing_facts_last():
+    """Past the label, only trailing facts go. Title, disclaimer, primary tag and link stay."""
+    title = 'Today in 3 lines'
+    label = '10/23 00:00 – 09:55 HKT · 120 posts / 45 accounts'
+    facts = [
+        'Biggest consensus shift: $AAAAAA net bullish -100% → +100% vs the same hours yesterday',
+        'Most mentioned: $BBBBBB 999 views, 999 accounts',
+        'Biggest disagreement: $CCCCCC Bullish 99, bearish 99 ' + ('word ' * 30),
+    ]
+    disc = share.SHORT['en']['disc']
+    tag = '#StockMarket #AAAAAA #BBBBBB'
+    url = share._camp_url('en', 'x', 'three_lines')
+    text = three_why._fit_x(title, label, facts, disc, tag, url)
+    assert text.splitlines()[0] == title
+    assert text.splitlines()[-1] == url
+    assert url in text and text.count(url) == 1
+    assert share.xlen(text) <= 280
+    assert disc in text and '#StockMarket' in text
+    assert '#AAAAAA' not in text and '#BBBBBB' not in text
+    assert label not in text
+    assert facts[0] in text and facts[-1] not in text
 
 
 def test_weekend_does_not_write_three_lines():
@@ -231,8 +406,10 @@ def main():
     test_clause_for()
     test_site_rows_follow_the_daily_tab()
     test_post_shape_limits_and_utm()
+    test_long_and_short_x_threads()
+    test_fit_x_drops_trailing_facts_last()
     test_weekend_does_not_write_three_lines()
-    print('test_three_lines: platforms, limits, UTM, window and sample ok')
+    print('test_three_lines: platforms, limits, UTM, window, X link and Threads topic ok')
 
 
 if __name__ == '__main__':
