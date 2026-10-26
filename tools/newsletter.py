@@ -201,16 +201,21 @@ ISSUE_SHELL = '''<!DOCTYPE html>
 <script type="application/ld+json">{json_ld}</script>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
 :root{{
   --bg:#fbf6ec; --surface:#fffaf2; --ink:#3b2f24; --muted:#87776a; --line:#ece1cc;
   --accent:#a5672c; --accent-soft:#f8ecda;
-  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
-  --f-display:"Noto Serif TC","Songti TC",serif;
+  --f-display:"Noto Serif TC","Source Han Serif TC","Songti TC","PMingLiU",serif;
+  --f-body:"Noto Sans TC","PingFang TC","Noto Sans CJK TC","Microsoft JhengHei",system-ui,sans-serif;
+  --f-data:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   color-scheme:light;
 }}
 *{{box-sizing:border-box}}
 html{{overflow-x:clip}}
+html[lang=ko]{{--f-body:"Noto Sans KR","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;--f-display:"Noto Sans KR","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}}
 body{{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;overflow-wrap:anywhere}}
 a{{color:var(--accent)}}
 .wrap{{max-width:760px;margin:0 auto;padding:20px 16px 48px}}

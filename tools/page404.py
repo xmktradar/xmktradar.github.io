@@ -16,6 +16,9 @@ HTML = """<!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <title>Page not found | The Crowd Tape</title>
 <script>
 (function(){
@@ -31,9 +34,11 @@ HTML = """<!DOCTYPE html>
 :root{
   --bg:#f3f4f7; --surface:#ffffff; --ink:#161a21; --muted:#5b6372; --line:#dde1e8;
   --accent:#2d48c9; --accent-soft:#e6eafb;
-  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
-  --f-display:"Noto Serif TC","Songti TC",serif;
+  --f-display:"Noto Serif TC","Source Han Serif TC","Songti TC","PMingLiU",serif;
+  --f-body:"Noto Sans TC","PingFang TC","Noto Sans CJK TC","Microsoft JhengHei",system-ui,sans-serif;
+  --f-data:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
+html[lang=ko],[lang=ko]{--f-body:"Noto Sans KR","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;--f-display:"Noto Sans KR","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
 .wrap{max-width:640px;margin:0 auto;padding:48px 20px 64px}
@@ -41,7 +46,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);fo
 h1{font-family:var(--f-display);font-size:32px;line-height:1.3;margin:28px 0 8px}
 .alts{margin:0 0 28px;color:var(--muted)}
 .alts p{margin:0}
-.ko{font-family:"Noto Sans KR","Noto Sans TC",system-ui,sans-serif}
+.ko{font-family:var(--f-display)}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:0 0 12px}
 .card h2{font-size:15px;margin:0 0 8px;color:var(--muted);font-weight:700}
 .card a{display:inline-block;margin:0 10px 6px 0;color:var(--accent);font-weight:700;text-decoration:none}
