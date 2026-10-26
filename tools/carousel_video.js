@@ -1,9 +1,11 @@
 // Motion videos from the daily multi-picture posts (Tim, 2026-10-24; spec tools/MOTION_VIDEO.md).
 // Usage: node tools/carousel_video.js work/carousel.json   (after tools/carousel.js, from the repo root)
 // For each job whose slot is in VIDEO_SLOTS (default 1230) and language in VIDEO_LANGS (default zh,en) it writes og/c/<day>-<slot>-<lang>.mp4:
-// 1080x1920, beat-synced hard cuts over 8 scenes (hook, reveal, bull vs bear, the 4 pictures, outro),
+// 1080x1920, a finished cover (~0.7s, also saved as og/c/<day>-<slot>-<lang>-cover.jpg) then beat-synced hard cuts
+// over 8 scenes (hook, reveal, bull vs bear, the 4 pictures, outro),
 // a generated beat and sound effects (tools/carousel_audio.py), and a voiceover where
 // tools/carousel_vo.py could read one (VO_LANGS, default zh,en; Korean stays without one).
+// The voice starts after the cover (same +0.15s lead-in inside each scene). English stays <= 29s; the guard includes the cover.
 // The 4 pictures are drawn by the same tools/carousel.html as the stills and are always shown whole.
 // The three languages render at once.
 // Old videos go with the pictures (tools/carousel.js keeps only today's and yesterday's og/c files).
@@ -15,6 +17,14 @@ const { execFileSync } = require('child_process');
 
 const FPS = 24, BPM = 124, BEAT = 60 / BPM;
 const BASE = [['hook', 5], ['reveal', 4], ['vs', 6], ['s1', 7], ['s2', 7], ['s3', 6], ['s4', 6], ['outro', 7]];
+const COVER_FRAMES = 17; // ~0.7s. Keep in sync with COVER_FRAMES in tools/carousel_vo.py.
+const COVER = COVER_FRAMES / FPS;
+// Cover copy. Numbers and tickers come from the job slides, not from here. en has no Chinese.
+const COVER_TEXT = {
+  zh: { title: '每日精選', discussed: '最多人討論', bull: '最多人睇好', foot: '⚠️ 唔構成投資建議' },
+  en: { title: 'Daily Picks', discussed: 'Most discussed', bull: 'Most bullish', foot: '⚠️ Not investment advice' },
+  ko: { title: '오늘의 픽', discussed: '최다 언급', bull: '최다 강세', foot: '⚠️ 투자 조언 아님' },
+};
 const SLOTS = (process.env.VIDEO_SLOTS || '1230').split(',').filter(Boolean);
 const LANGS = (process.env.VIDEO_LANGS || 'zh,en').split(',').filter(Boolean);  // Tim 2026-10-25: Chinese and English only
 const TOOLS = __dirname;
@@ -40,6 +50,22 @@ function words(lang, S0) {
   return { ...T, n, bull, bear, big };
 }
 
+function coverPack(job) {
+  const S0 = job.slides[0] || {};
+  const secs = (job.slides[2] && job.slides[2].secs) || [];
+  const bullSec = secs.find(s => String(s.h || '').startsWith('🟢'));
+  const card = bullSec && bullSec.cards && bullSec.cards[0];
+  const posted = (S0.stats || []).find(x => x && x.c === 'b');
+  const pill = card && (card.pills || []).find(p => p && p.c === 'g');
+  const copy = COVER_TEXT[job.lang] || COVER_TEXT.en;
+  return {
+    title: copy.title, date: job.date || '',
+    discussedL: copy.discussed, discussed: S0.big || '', discussedN: S0.sub || '',
+    bullL: copy.bull, bull: (card && card.t) || '', bullN: (pill && pill.x) || '',
+    posted: (posted && posted.l) || '', foot: copy.foot,
+  };
+}
+
 const header = total => `
 const cl=v=>Math.max(0,Math.min(1,v)), out=p=>1-Math.pow(1-p,3), back=p=>{const c=1.9;return 1+(c+1)*Math.pow(p-1,3)+c*Math.pow(p-1,2)};
 const BEAT=${BEAT}, TOTAL=${total};
@@ -52,19 +78,20 @@ function chrome(gt){
 
 async function one(browser, job, vo, outFile) {
   const W = words(job.lang, job.slides[0]);
+  const C = coverPack(job);
   // scene lengths in beats; a voiced scene grows to fit its line (+0.4 s), in whole beats.
-  // Same sum as carousel_vo.video_total. English must stay <= 29.0s: carousel_vo.py fit_en already
-  // retries +20%, +30%, then a shorter script. If this total is still over, drop the voice.
+  // Same sum as carousel_vo.video_total, including the opening cover. English must stay <= 29.0s:
+  // carousel_vo.py fit_en already retries +20%, +30%, then a shorter script. If this total is still over, drop the voice.
   // zh does not enter the branch, so a zh video that is already <= 29s is unchanged.
   let SC = BASE.map(([name, b], i) => [name, vo ? Math.max(b, Math.ceil((vo[i].dur + 0.4) / BEAT)) : b]);
   let starts = []; let acc = 0; for (const [, b] of SC) { starts.push(acc); acc += b * BEAT; }
-  let total = acc;
+  let total = acc + COVER;
   if (vo && job.lang === 'en' && total > 29) {
     console.log(`carousel video: en voiceover ${total.toFixed(2)}s > 29, dropping voice`);
     vo = null;
     SC = BASE.map(([name, b]) => [name, b]);
     starts = []; acc = 0; for (const [, b] of SC) { starts.push(acc); acc += b * BEAT; }
-    total = acc;
+    total = acc + COVER;
   }
   const events = [];
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), `cv-${job.lang}-`));
@@ -78,11 +105,16 @@ async function one(browser, job, vo, outFile) {
   await sp.evaluate(async txt => {
     await Promise.race([Promise.all(['900 80px "Noto Sans TC"', '900 80px "Noto Sans KR"', '700 80px "IBM Plex Mono"'].map(f => document.fonts.load(f, txt))), new Promise(r => setTimeout(r, 20000))]);
     await document.fonts.ready;
-  }, JSON.stringify(W));
+  }, JSON.stringify(W) + JSON.stringify(C));
+  const coverJpg = `og/c/${job.date}-${job.slot}-${job.lang}-cover.jpg`;
+  await sp.evaluate(([nm, dd]) => setup(nm, dd), ['cover', C]);
+  await sp.evaluate(async () => { await Promise.all([...document.images].map(im => im.decode().catch(() => {}))); });
+  for (let i = 0; i < COVER_FRAMES; i++) { const t = i / FPS; await sp.evaluate(([t, gt]) => draw(t, gt), [t, t]); await shot(sp); }
+  fs.copyFileSync(path.join(dir, '0000.jpg'), coverJpg);
   const scene = async (k, data) => {
     const n = Math.round(SC[k][1] * BEAT * FPS);
     await sp.evaluate(([nm, dd]) => setup(nm, dd), [SC[k][0], data]);
-    for (let i = 0; i < n; i++) { const t = i / FPS; await sp.evaluate(([t, gt]) => draw(t, gt), [t, starts[k] + t]); await shot(sp); }
+    for (let i = 0; i < n; i++) { const t = i / FPS; await sp.evaluate(([t, gt]) => draw(t, gt), [t, COVER + starts[k] + t]); await shot(sp); }
   };
   await scene(0, { t: W.hook });
   for (let i = 0; i < 5; i++) events.push({ at: i * BEAT, type: i < 3 ? 'hit' : 'roll' });
@@ -110,7 +142,7 @@ async function one(browser, job, vo, outFile) {
     const ev = await p.evaluate(([cap, idx]) => setupSlide(cap, idx), [W.caps[i], i]);
     ev.forEach(e => events.push({ at: starts[k] + e.start / 1000 / 1.35, type: e.type }));
     events.push({ at: starts[k], type: 'whoosh' });
-    for (let f = 0; f < n; f++) { const t = f / FPS; await p.evaluate(([t, gt, dur]) => drawSlide(t, gt, dur), [t, starts[k] + t, SC[k][1] * BEAT]); await shot(p); }
+    for (let f = 0; f < n; f++) { const t = f / FPS; await p.evaluate(([t, gt, dur]) => drawSlide(t, gt, dur), [t, COVER + starts[k] + t, SC[k][1] * BEAT]); await shot(p); }
   }
   await scene(7, { t: W.outro });
   events.push({ at: starts[7], type: 'whoosh' }, { at: starts[7] + .35, type: 'ding' });
@@ -119,15 +151,21 @@ async function one(browser, job, vo, outFile) {
   if (errs.length) throw new Error(errs.join('; '));
 
   const ev = path.join(dir, 'events.json'), wav = path.join(dir, 'audio.wav');
-  fs.writeFileSync(ev, JSON.stringify({ total, bpm: BPM, drop: starts[1], events,
-    vo: vo ? vo.map((v, i) => ({ file: v.file, at: starts[i] + 0.15 })) : [] }));
+  events.forEach(e => { e.at += COVER; });
+  fs.writeFileSync(ev, JSON.stringify({ total, bpm: BPM, drop: COVER + starts[1], events,
+    vo: vo ? vo.map((v, i) => ({ file: v.file, at: COVER + starts[i] + 0.15 })) : [] }));
   execFileSync('python3', [path.join(TOOLS, 'carousel_audio.py'), ev, wav], { stdio: 'inherit' });
   const tmpOut = outFile + '.part.mp4';
+  // JPEG frames are full-range. scale out_range=tv writes limited-range yuv420p (not yuvj420p) for Instagram.
   execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(FPS), '-i', path.join(dir, '%04d.jpg'), '-i', wav,
-    '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '26', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-shortest',
+    '-vf', 'scale=1080:1920:in_range=pc:out_range=tv,format=yuv420p',
+    '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '26', '-profile:v', 'high', '-level:v', '4.0',
+    '-pix_fmt', 'yuv420p', '-color_range', 'tv', '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709',
+    '-c:a', 'aac', '-b:a', '128k', '-ar', '44100', '-shortest',
     '-movflags', '+faststart', tmpOut], { stdio: 'inherit' });
   fs.renameSync(tmpOut, outFile);
   fs.rmSync(dir, { recursive: true, force: true });
+  console.log(`carousel cover ${coverJpg}`);
   console.log(`carousel video ${outFile} ${total.toFixed(1)}s${vo ? ' (voiceover)' : ''}`);
 }
 

@@ -586,8 +586,10 @@ def main():
                       'images': {l: made[l]['images'] for l in LANGS}, 'images_fb': {l: made[l]['images_fb'] for l in LANGS}, 'posts': {l: made[l]['posts'] for l in LANGS}}
         if key == '1230':
             slots[key]['stories'] = sp.get('stories', {})
-        if key in VIDEO_SLOTS:  # tools/carousel_video_post.py drops a language whose video was not made
-            slots[key]['video'] = {l: f'{SITE}og/c/{day}-{key}-{l}.mp4' for l in LANGS if l in VIDEO_LANGS}
+        if key in VIDEO_SLOTS:  # tools/carousel_video_post.py drops a language whose file was not made
+            vlangs = [l for l in LANGS if l in VIDEO_LANGS]
+            slots[key]['video'] = {l: f'{SITE}og/c/{day}-{key}-{l}.mp4' for l in vlangs}
+            slots[key]['video_cover'] = {l: f'{SITE}og/c/{day}-{key}-{l}-cover.jpg' for l in vlangs}
         written.append(key)
     if not jobs:
         return

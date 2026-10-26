@@ -14,7 +14,8 @@ out of vo.json, so tools/carousel_video.js makes it without a voice. Lines never
 a price target or a prediction.
 Usage: python3 tools/carousel_vo.py work/carousel.json <out dir>   (VO_LANGS=zh,en  VO_VOICE_zh=... VO_VOICE_en=...)
        VO_FAKE=1 makes silent stand-in files of a plausible length (local tests, no network).
-Video length uses the same beat sum as tools/carousel_video.js (scene grows to fit the line +0.4s).
+Video length uses the same beat sum as tools/carousel_video.js (scene grows to fit the line +0.4s),
+plus the opening cover (~0.7s). The cover is not spoken; the 8 lines start after it.
 """
 import asyncio
 import json
@@ -27,9 +28,11 @@ import sys
 VOICES = {'zh': 'zh-CN-XiaoxiaoNeural', 'en': 'en-US-AndrewNeural', 'ko': 'ko-KR-SunHiNeural'}
 RATE = '+10%'
 TIMEOUT = 30
-# Keep in sync with BASE / BEAT in tools/carousel_video.js.
+# Keep in sync with BASE / BEAT / COVER_FRAMES in tools/carousel_video.js.
 BEAT = 60 / 124
 BASE_BEATS = (5, 4, 6, 7, 7, 6, 6, 7)  # hook, reveal, vs, 4 pictures, outro
+COVER_FRAMES = 17  # ~0.7s opening cover at 24 fps. The 29s guard includes it.
+COVER_S = COVER_FRAMES / 24
 MAX_VIDEO_S = 29.0
 # English only. Normal script first; faster rates before the shorter script.
 EN_TRIES = (
@@ -72,16 +75,17 @@ def first_cards(slide, mark=None):
 
 
 def video_total(durs):
-    """Seconds, matching carousel_video.js. No durs: the 48-beat silent cut (~23.2s).
+    """Seconds, matching carousel_video.js, including the opening cover.
 
-    A voiced scene is max(base beats, ceil((line + 0.4s) / beat)) beats.
+    No durs: the 48-beat silent cut plus the cover. A voiced scene is
+    max(base beats, ceil((line + 0.4s) / beat)) beats. The cover is not a line.
     """
     if not durs:
-        return sum(BASE_BEATS) * BEAT
+        return sum(BASE_BEATS) * BEAT + COVER_S
     total = 0.0
     for base, dur in zip(BASE_BEATS, durs):
         total += max(base, math.ceil((float(dur) + 0.4) / BEAT)) * BEAT
-    return total
+    return total + COVER_S
 
 
 def fits(total):

@@ -178,7 +178,8 @@ def test_duration_guard():
     """English over 29s retries faster rates, then shorter lines, then drops the voice. zh does not."""
     assert carousel_vo.fits(29.0) and not carousel_vo.fits(29.03)
     assert carousel_vo.fits(carousel_vo.video_total(None))
-    assert abs(carousel_vo.video_total(None) - 48 * 60 / 124) < 1e-9
+    assert carousel_vo.COVER_FRAMES == 17 and carousel_vo.COVER_S == 17 / 24
+    assert abs(carousel_vo.video_total(None) - (48 * 60 / 124 + carousel_vo.COVER_S)) < 1e-9
     long = [5.5] * 8
     assert carousel_vo.video_total(long) > 29.0
     assert carousel_vo.video_total([1.2] * 8) <= 29.0
@@ -221,16 +222,17 @@ def test_video_total_matches_js():
     rng = random.Random(1230)
     cases = [[round(rng.uniform(0.8, 6.5), 3) for _ in range(8)] for _ in range(80)]
     cases.append([round(7 * 60 / 124 - 0.4, 3)] * 8)  # ceil boundary
-    script = r'''
+    script = '''
 const fs = require('fs');
 const BEAT = 60 / 124, BASE = [5, 4, 6, 7, 7, 6, 6, 7];
+const COVER = %d / 24;
 const cases = JSON.parse(fs.readFileSync(0, 'utf8'));
 for (const vo of cases) {
   let acc = 0;
   for (let i = 0; i < 8; i++) acc += Math.max(BASE[i], Math.ceil((vo[i] + 0.4) / BEAT)) * BEAT;
-  console.log(acc);
+  console.log(acc + COVER);
 }
-'''
+''' % carousel_vo.COVER_FRAMES
     env = os.environ.copy()
     env.pop('FORCE_COLOR', None)
     env['NO_COLOR'] = '1'
@@ -259,6 +261,46 @@ def test_prune():
     assert not prune(sp, exists=lambda p: p in have)  # nothing more to drop
     assert prune(sp, exists=lambda p: False)
     assert 'video' not in sp['slots']['1230']
+
+
+COVER_URL = 'https://thecrowdtape.com/og/c/2026-10-23-1230-{}-cover.jpg'
+HAN = re.compile(r'[\u3400-\u9fff]')
+
+
+def test_prune_cover():
+    """video_cover drops a language whose poster is missing, and the key when none is left. video stays."""
+    sp = {'slots': {'1230': {
+        'video': {'zh': URL.format('zh'), 'en': URL.format('en')},
+        'video_cover': {'zh': COVER_URL.format('zh'), 'en': COVER_URL.format('en')}}}}
+    have = {'og/c/2026-10-23-1230-zh.mp4', 'og/c/2026-10-23-1230-en.mp4', 'og/c/2026-10-23-1230-zh-cover.jpg'}
+    assert prune(sp, exists=lambda p: p in have)
+    assert sp['slots']['1230']['video'] == {'zh': URL.format('zh'), 'en': URL.format('en')}
+    assert sp['slots']['1230']['video_cover'] == {'zh': COVER_URL.format('zh')}
+    assert not prune(sp, exists=lambda p: p in have)
+    assert prune(sp, exists=lambda p: p.endswith('.mp4'))
+    assert 'video_cover' not in sp['slots']['1230']
+    assert set(sp['slots']['1230']['video']) == {'zh', 'en'}
+
+
+def test_cover_text_and_encode():
+    """IG encode flags, and the cover title in each language (en has no Chinese)."""
+    src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'carousel_video.js'), encoding='utf-8').read()
+    assert 'format=yuv420p' in src and 'yuv420p' in src
+    assert 'out_range=tv' in src and "'-color_range', 'tv'" in src
+    assert '+faststart' in src
+    assert "'-profile:v', 'high'" in src and 'libx264' in src
+    block = re.search(r'const COVER_TEXT = \{.*?\n\};', src, re.S)
+    assert block, 'COVER_TEXT'
+    body = block.group(0)
+    assert '每日精選' in body and 'Daily Picks' in body
+    en = re.search(r'en:\s*\{[^}]*\}', body).group(0)
+    zh = re.search(r'zh:\s*\{[^}]*\}', body).group(0)
+    assert 'Daily Picks' in en and 'Most discussed' in en and 'Most bullish' in en
+    assert HAN.search(en) is None, en
+    assert '每日精選' in zh and '最多人討論' in zh and '最多人睇好' in zh
+    assert re.search(r'const COVER_FRAMES = 17', src)
+    py = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'carousel.py'), encoding='utf-8').read()
+    assert "['video_cover']" in py and '-cover.jpg' in py
 
 
 def test_social_page():

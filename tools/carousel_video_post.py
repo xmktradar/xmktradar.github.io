@@ -1,8 +1,9 @@
-"""After tools/carousel_video.js: keep only the motion videos that really exist.
+"""After tools/carousel_video.js: keep only the motion videos and cover posters that really exist.
 
-tools/carousel.py writes slots.<slot>.video = {lang: url} up front; a video that failed or has
-been cleaned away (og/c keeps today and yesterday) is removed here, so Grok bot never gets a
-dead link and simply skips Reels. Rewrites social/index.html when something changed.
+tools/carousel.py writes slots.<slot>.video = {lang: url} and slots.<slot>.video_cover = {lang: url}
+up front. A file that failed or has been cleaned away (og/c keeps today and yesterday) is removed
+here, so Grok bot never gets a dead link and simply skips Reels. Rewrites social/index.html when
+something changed.
 Usage: python3 tools/carousel_video_post.py   (from the repo root)
 """
 import os
@@ -20,22 +21,32 @@ def local_path(url):
     return url[i:].split('?')[0] if i >= 0 else None
 
 
+# field, warning when a language's file is missing. Drop the whole key when none is left.
+MEDIA = (
+    ('video', '{} 時段冇動態片：{}'),
+    ('video_cover', '{} 時段冇封面：{}'),
+)
+
+
 def prune(sp, exists=os.path.isfile):
-    """Drop video languages whose file is missing; drop the whole key when none is left. Returns True if changed."""
+    """Drop video and video_cover languages whose file is missing. Returns True if changed."""
     changed = False
     for key, sl in (sp.get('slots') or {}).items():
-        vid = sl.get('video') if isinstance(sl, dict) else None
-        if vid is None:
+        if not isinstance(sl, dict):
             continue
-        keep = {l: u for l, u in vid.items() if isinstance(u, str) and local_path(u) and exists(local_path(u))}
-        if keep != vid:
-            changed = True
-            gone = sorted(set(vid) - set(keep))
-            notice(f'{key} 時段冇動態片：{", ".join(gone)}', 'warning')
-            if keep:
-                sl['video'] = keep
-            else:
-                sl.pop('video')
+        for field, msg in MEDIA:
+            vid = sl.get(field)
+            if not isinstance(vid, dict):
+                continue
+            keep = {l: u for l, u in vid.items() if isinstance(u, str) and local_path(u) and exists(local_path(u))}
+            if keep != vid:
+                changed = True
+                gone = sorted(set(vid) - set(keep))
+                notice(msg.format(key, ', '.join(gone)), 'warning')
+                if keep:
+                    sl[field] = keep
+                else:
+                    sl.pop(field)
     return changed
 
 
