@@ -529,6 +529,58 @@ def mix(x, wrap, both, bull, bear):
     return wrap.format(both.format(b, r) if b and r else (bull.format(b) if b else bear.format(r)))
 
 
+def _discussed_paren(lang, n, bull_n, bear_n, acc):
+    """Account count for the cover ticker, plus stance. A 0 side is left out; both 0 drops the stance."""
+    row = {'bull': bull_n or 0, 'bear': bear_n or 0}
+    if lang == 'zh':
+        return '（' + acc(n) + mix(row, '，{}', '{} 好 {} 淡', '{} 個睇好', '{} 個睇淡') + '）'
+    both, one_b, one_r = (('{} bull / {} bear', '{} bullish', '{} bearish') if lang == 'en'
+                          else ('강세 {} / 약세 {}', '강세 {}', '약세 {}'))
+    return '(' + acc(n) + mix(row, ', {}', both, one_b, one_r) + ')'
+
+
+def _bull_headline(lang, prefix, h, top, acc):
+    """First line when a common-bullish leader exists.
+
+    Most-discussed is top[0], the same row as the carousel cover (t, accounts,
+    bull_accounts, bear_accounts). Most-bullish is h (items[0]). One line when
+    those tickers match, or when top is empty.
+    """
+    T = lambda t: f'${t}'
+    mark = '📊' if lang == 'zh' else ' 📊'
+    hero = top[0] if isinstance(top, list) and top else None
+    if not isinstance(hero, dict) or not hero.get('t'):
+        old = {
+            'zh': f'最多人睇好 {T(h["t"])}（{acc(h["n"])}）',
+            'en': f'Most bullish: {T(h["t"])}, {acc(h["n"])}',
+            'ko': f'가장 강세 {T(h["t"])} ({acc(h["n"])})',
+        }[lang]
+        return f'{prefix}{old}{mark}'
+    paren = _discussed_paren(lang, hero.get('accounts') or 0, hero.get('bull_accounts') or 0,
+                             hero.get('bear_accounts') or 0, acc)
+    bull_n = f'（{acc(h["n"])}）' if lang == 'zh' else f'({acc(h["n"])})'
+    if hero.get('t') == h['t']:
+        body = {
+            'zh': f'最多人討論兼最多人睇好 {T(h["t"])}{paren}',
+            'en': f'Most discussed and most bullish: {T(h["t"])} {paren}',
+            'ko': f'가장 많이 언급·가장 많이 강세: {T(h["t"])} {paren}',
+        }[lang]
+    else:
+        sep = '・' if lang == 'zh' else ' · '
+        left = {
+            'zh': f'最多人討論 {T(hero["t"])}{paren}',
+            'en': f'Most discussed: {T(hero["t"])} {paren}',
+            'ko': f'가장 많이 언급: {T(hero["t"])} {paren}',
+        }[lang]
+        right = {
+            'zh': f'最多人睇好 {T(h["t"])}{bull_n}',
+            'en': f'Most bullish: {T(h["t"])} {bull_n}',
+            'ko': f'가장 많이 강세: {T(h["t"])} {bull_n}',
+        }[lang]
+        body = left + sep + right
+    return f'{prefix}{body}{mark}'
+
+
 def caption(lang, day, s, items, win, quote_):
     m, dd = int(day[5:7]), int(day[8:10])
     bull = bool(s['bull'])
@@ -538,8 +590,7 @@ def caption(lang, day, s, items, win, quote_):
     if lang == 'zh':
         acc = lambda n: f'{n} 個帳號'
         if bull:
-            h = items[0]
-            lines.append(f'{m}/{dd} X 大神共識快照：最多人睇好 {T(h["t"])}（{acc(h["n"])}）📊')
+            lines.append(_bull_headline('zh', f'{m}/{dd} X 大神共識快照：', items[0], s.get('top'), acc))
         else:
             h = items[0] if items else None
             lines.append(f'{m}/{dd} X 大神快照：今日最多人講 {T(h["t"])}（{acc(h["n"])}）💬' if h else f'{m}/{dd} X 大神快照 💬')
@@ -548,8 +599,7 @@ def caption(lang, day, s, items, win, quote_):
         acc = lambda n: f'{n} account{"" if n == 1 else "s"}'
         mon = datetime.strptime(day, '%Y-%m-%d').strftime('%b %-d')
         if bull:
-            h = items[0]
-            lines.append(f'{mon} · Most bullish: {T(h["t"])}, {acc(h["n"])} 📊')
+            lines.append(_bull_headline('en', f'{mon} · ', items[0], s.get('top'), acc))
         else:
             h = items[0] if items else None
             lines.append(f'{mon} · Most talked-about stock on X today: {T(h["t"])} ({acc(h["n"])}) 💬' if h else f'{mon} · X snapshot 💬')
@@ -557,8 +607,7 @@ def caption(lang, day, s, items, win, quote_):
     else:
         acc = lambda n: f'계정 {n}개'
         if bull:
-            h = items[0]
-            lines.append(f'{m}/{dd} X 인플루언서 컨센서스: 가장 강세 {T(h["t"])} ({acc(h["n"])}) 📊')
+            lines.append(_bull_headline('ko', f'{m}/{dd} X 인플루언서 컨센서스: ', items[0], s.get('top'), acc))
         else:
             h = items[0] if items else None
             lines.append(f'{m}/{dd} X 스냅샷: 오늘 가장 많이 언급된 종목 {T(h["t"])} ({acc(h["n"])}) 💬' if h else f'{m}/{dd} X 스냅샷 💬')
