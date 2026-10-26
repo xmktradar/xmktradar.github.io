@@ -30,6 +30,8 @@ jobs:
         run: node --test tools/daily_window.test.js
       - name: Stock price chart helper tests
         run: node --test tools/px_chart.test.js
+      - name: Hot stocks ranking tests
+        run: node --test tools/hot_stocks.test.js
       - name: IG caption rules
         run: python3 tools/test_ig_boost.py
       - name: Motion video tests

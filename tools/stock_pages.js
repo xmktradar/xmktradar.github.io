@@ -9,9 +9,11 @@
 //   Readable without JS. One inline script runs the newsletter A/B test; the box stays hidden for variant A
 //   and when JS is off.
 // - Avatars are written once to av/<hash>.<ext> and shared by every page.
-// - Each language page gets a "stock pages" link row just above the footer. The root Chinese master
-//   (served at / before the language redirect) gets the same zh row, with links to /zh/stock/...
-//   sitemap.xml lists every stock page.
+// - Each language page gets one hot-stocks row (top 30 by distinct valid posts in the 7*24h
+//   before the data cutoff) and a "stock pages" link row just above the footer. The root Chinese
+//   master (served at / before the language redirect) gets the same zh row, links to /zh/stock/...
+//   sitemap.xml lists a stock page only when that ticker has at least 2 mentions in the 30*24h
+//   before the cutoff. Quieter pages stay on the site; they are only left out of the sitemap.
 // - Finally opens a few pages at desktop and phone width; fails on sideways overflow or missing text.
 const { chromium } = require('playwright');
 const crypto = require('crypto');
@@ -19,6 +21,7 @@ const fs = require('fs');
 const path = require('path');
 const { start, pageUrl } = require('./local_server');
 const { buildPxChartFromFile } = require('./px_chart.js');
+const { rankHot, sitemapTickers } = require('./hot_stocks.js');
 
 const SITE = 'https://thecrowdtape.com/';
 const EMBED = require('./embed.js');
@@ -47,7 +50,8 @@ const T = {
     title: (t, nm, c) => `${t}${nm ? `（${nm}）` : ''} 股價／討論：看多 ${c.bull}・看空 ${c.bear}・中性 ${c.neu}｜The Crowd Tape`,
     desc: (t, n, c) => `過去 28 天有 ${n} 個追蹤帳號提及 $${t}：看多 ${c.bull}、中性 ${c.neu}、看空 ${c.bear}、未表態 ${c.none}。查看每個帳號的最新觀點、理由與原帖，每 4 小時更新，不構成投資建議。`,
     related: '同業相關股票',
-    popular: '熱門股票',
+    hot: '熱門個股',
+    hotNote: '近 7 日提及次數',
     faqHow: (t, s) => ({ q: `目前有多少個追蹤帳號對 $${t} 看多或看空？`, a: `在 ${s.from} 至 ${s.to}（香港時間）的資料窗內，看多 ${s.bull} 個帳號、看空 ${s.bear} 個帳號；共有 ${s.mentions} 個帳號提及。數字來自公開貼文整理，不構成投資建議。` }),
     faqWhat: (t, s) => ({ q: `$${t} 個股頁的資料從哪裡來？`, a: `本頁彙整追蹤帳號在 X（及個別 Truth Social）上提及 $${t} 的公開貼文立場，約每 4 小時更新。只反映已收錄帳號的公開言論。` }),
     pxCap: '近 6 個月日收市價（Yahoo Finance）。非即時報價。',
@@ -73,7 +77,8 @@ const T = {
     title: (t, nm, c) => `${t}${nm ? ` (${nm})` : ''} stock sentiment: ${c.bull} bullish, ${c.bear} bearish, ${c.neu} neutral | The Crowd Tape`,
     desc: (t, n, c) => `${n} tracked X accounts mentioned $${t} in the last 28 days: ${c.bull} bullish, ${c.neu} neutral, ${c.bear} bearish, ${c.none} no stance. Each account's latest view, reasons and original post, updated every 4 hours. Not investment advice.`,
     related: 'Related stocks',
-    popular: 'Popular stocks',
+    hot: 'Hot stocks',
+    hotNote: 'mentions, last 7 days',
     faqHow: (t, s) => ({ q: `How many tracked accounts are bullish or bearish on $${t}?`, a: `In the ${s.from} to ${s.to} (HKT) window: ${s.bull} bullish and ${s.bear} bearish; ${s.mentions} accounts mentioned it. Figures summarise public posts only — not investment advice.` }),
     faqWhat: (t, s) => ({ q: `Where does the $${t} page data come from?`, a: `This page aggregates public posts about $${t} from tracked accounts on X (and a few on Truth Social), refreshed about every 4 hours. It only reflects those accounts' public views.` }),
     pxCap: 'Daily close, last ~6 months (Yahoo Finance). Not a live quote.',
@@ -99,7 +104,8 @@ const T = {
     title: (t, nm, c) => `${t}${nm ? ` (${nm})` : ''} 주가 전망: 강세 ${c.bull}・약세 ${c.bear}・중립 ${c.neu} | The Crowd Tape`,
     desc: (t, n, c) => `최근 28일 동안 추적 계정 ${n}개가 $${t}를 언급했다: 강세 ${c.bull}, 중립 ${c.neu}, 약세 ${c.bear}, 입장 없음 ${c.none}. 계정별 최신 관점, 근거와 원문을 4시간마다 업데이트한다. 투자 조언이 아닙니다.`,
     related: '관련 종목',
-    popular: '인기 종목',
+    hot: '인기 종목',
+    hotNote: '최근 7일 언급 수',
     faqHow: (t, s) => ({ q: `$${t}에 강세/약세인 추적 계정은 몇 개인가요?`, a: `${s.from}–${s.to}(홍콩 시간) 구간에서 강세 ${s.bull}개, 약세 ${s.bear}개이며, 총 ${s.mentions}개 계정이 언급했습니다. 공개 게시물 정리이며 투자 조언이 아닙니다.` }),
     faqWhat: (t, s) => ({ q: `$${t} 페이지 데이터는 어디서 오나요?`, a: `추적 계정이 X(일부 Truth Social)에서 $${t}를 언급한 공개 게시물 입장을 모아 약 4시간마다 갱신합니다. 수록된 계정의 공개 의견만 반영합니다.` }),
     pxCap: '최근 약 6개월 일간 종가(Yahoo Finance). 실시간 시세 아님.',
@@ -461,11 +467,13 @@ function relatedBlock(lang, t, list, sectors) {
   return `<nav class="related-stocks wrap" aria-label="${esc(T[lang].related)}" style="font-size:13px;line-height:1.7;padding:8px 16px 16px"><b>${esc(T[lang].related)}</b> · ${links}</nav>`;
 }
 
-function popularBlock(lang, list) {
-  const top = list.slice(0, 12).map(([t]) => t);
-  if (!top.length) return '';
-  const links = top.map(t => `<a href="/${lang}/stock/${slug(t)}/">${esc(t)}</a>`).join(' ');
-  return `<nav id="popular-stocks" class="wrap popular-stocks" aria-label="${esc(T[lang].popular)}" style="font-size:13px;line-height:1.8;padding:10px 16px 4px"><b>${esc(T[lang].popular)}</b> · ${links}</nav>`;
+// Filled once from the page's POSTS (rankHot) before any index row is written.
+let HOT = [];
+
+function hotBlock(lang) {
+  if (!HOT.length) return '';
+  const links = HOT.map(x => `<a href="/${lang}/stock/${slug(x.t)}/">${esc(x.t)} ${x.n}</a>`).join(' ');
+  return `<nav id="hot-stocks" class="wrap hot-stocks" aria-label="${esc(T[lang].hot)}" style="font-size:13px;line-height:1.8;padding:10px 16px 4px"><b>${esc(T[lang].hot)}</b> <small style="font-size:11px;font-weight:400;color:var(--muted)">${esc(T[lang].hotNote)}</small> · ${links}</nav>`;
 }
 
 const FOOT = '<footer class="wrap foot" id="foot">';
@@ -482,7 +490,7 @@ function withStockIndex(html, lang, list) {
 function indexRow(lang, list) {
   const tickers = list.map(x => Array.isArray(x) ? x[0] : x);
   const links = tickers.map(t => `<a href="/${lang}/stock/${slug(t)}/">${esc(t)}</a>`).join(' ');
-  return popularBlock(lang, list.map(x => Array.isArray(x) ? x : [x, 0]))
+  return hotBlock(lang)
     + `<nav id="stock-index" class="wrap stock-index" aria-label="${esc(T[lang].index)}" style="font-size:12.5px;line-height:2;color:var(--muted);padding:12px 16px 28px">`
     + `<details><summary><b>${esc(T[lang].index)}</b>${lang === 'zh' ? `（${tickers.length}）` : ` (${tickers.length})`}</summary>${links}</details></nav>`;
 }
@@ -525,6 +533,7 @@ function avatars(html, seen) {
   fs.mkdirSync(AV_DIR, { recursive: true });
   const seen = new Set();
   let list = null;
+  let sitemapCounts = null;
   let tvSymbols = null;
   const fallbackTickers = [];
   let fallbackPages = 0;
@@ -549,12 +558,34 @@ function avatars(html, seen) {
     });
     if (!tvSymbols) tvSymbols = await p.evaluate(() => D.tv_symbols || {});
     if (!list) {
-      list = await p.evaluate((min) => {
+      // Facts only: distinct valid POSTS rows for tickers that have a page. rankHot applies the window.
+      const packed = await p.evaluate((min) => {
         const lim = addDays(TODAY, -27), m = {};
         POSTS.forEach(x => { if (x.d >= lim) (m[x.t] = m[x.t] || new Set()).add(x.acc) });
-        return Object.entries(m).filter(([t, s]) => s.size >= min && !UNC(t)).map(([t, s]) => [t, s.size])
+        const list = Object.entries(m).filter(([t, s]) => s.size >= min && !UNC(t)).map(([t, s]) => [t, s.size])
           .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+        const pages = new Set(list.map(x => x[0]));
+        const cut = (typeof CUT === 'number' && isFinite(CUT)) ? CUT : (Date.parse((D.meta && D.meta.cutoff_hkt) || '') || 0);
+        const idOf = new Map();
+        let seq = 0;
+        const rows = [];
+        for (const x of POSTS) {
+          if (!pages.has(x.t) || typeof x.ms !== 'number' || !isFinite(x.ms)) continue;
+          const post = x.p;
+          let id = post ? idOf.get(post) : undefined;
+          if (id == null) {
+            id = (post && post.url) || x.url || ('#' + seq++);
+            if (post) idOf.set(post, id);
+          }
+          rows.push({ t: x.t, ms: x.ms, id, page: true });
+        }
+        return { list, cutoffMs: cut, rows };
       }, MIN_ACCOUNTS);
+      list = packed.list;
+      HOT = rankHot(packed.rows, packed.cutoffMs, 7, 30);
+      sitemapCounts = {};
+      for (const [t] of list) sitemapCounts[t] = 0;
+      for (const x of rankHot(packed.rows, packed.cutoffMs, 30, packed.rows.length + 1)) sitemapCounts[x.t] = x.n;
     }
     const names = list.map(x => x[0]);
     const pages = await p.evaluate(({ names, lang }) => names.map(t => {
@@ -640,7 +671,10 @@ function avatars(html, seen) {
   const gen = (sm.match(new RegExp('<loc>' + siteEsc + '</loc><lastmod>([^<]+)')) || [])[1]
     || (sm.match(/<lastmod>([^<]+)<\/lastmod>/) || [])[1]
     || new Date().toLocaleString('sv-SE', {timeZone: 'Asia/Hong_Kong'}).replace(' ', 'T') + '+08:00';
-  const rows = list.map(([t]) => {
+  const keep = new Set(sitemapTickers(sitemapCounts, 2));
+  const smList = list.filter(([t]) => keep.has(t));
+  console.log(`sitemap: ${smList.length} stock tickers kept, ${list.length - smList.length} left out (<2 mentions / 30d)`);
+  const rows = smList.map(([t]) => {
     const alt = Object.entries(LANGS).map(([k, h]) => `<xhtml:link rel="alternate" hreflang="${h}" href="${SITE}${k}/stock/${slug(t)}/"/>`).join('');
     return Object.keys(LANGS).map(k => `  <url><loc>${SITE}${k}/stock/${slug(t)}/</loc><lastmod>${gen}</lastmod><changefreq>daily</changefreq>${alt}</url>`).join('\n');
   }).join('\n');
