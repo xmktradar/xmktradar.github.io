@@ -1,0 +1,79 @@
+{
+  "posts": {
+    "2114799164026745143": {
+      "en_summary": "@ripster47 notes this week will be volatile and sees a 5% giveback on protective puts as acceptable especially for high beta names like $CRDO $NBIS $BE. On $BE he rolled 197 weekly puts to 207.5 and 225 Nov calls to 235 with the stock at 209; overall position is up but the puts will lose money while risk is managed. He also rolled positions on $NBIS.",
+      "zh_summary": "@ripster47 指出本週將波動，認為對高貝塔名稱如 $CRDO $NBIS $BE 的保護性看跌期權給予 5% 回撤可以接受。他將 $BE 的 197 週看跌期權滾動至 207.5，225 11 月看漲期權滾動至 235，股價現為 209；整體部位上漲但看跌期權將虧損，風險已管理。他也對 $NBIS 進行了滾動。",
+      "ko_summary": "@ripster47는 이번 주가 변동성이 클 것이며 특히 $CRDO $NBIS $BE와 같은 고베타 종목에 대한 보호성 풋옵션의 5% 하락을 괜찮다고 본다. $BE에서 197 주간 풋을 207.5로, 225 11월 콜을 235로 롤오버했으며 주가는 209이다. 전체 포지션은 상승했지만 풋은 손실을 볼 것이며 리스크는 관리했다. $NBIS도 롤오버했다.",
+      "tickers": ["BE", "CRDO", "NBIS"],
+      "stance": "中性",
+      "stance_by_ticker": {"BE": "中性", "CRDO": "中性", "NBIS": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"BE": "Rolled weekly puts from 197 to 207.5 and Nov calls from 225 to 235, stock at 209, overall position up but puts are a drag"}
+    },
+    "2114799070455660950": {
+      "en_summary": "@bespokeinvest states that $OKTA is one of the most \"bullish\" charts in their new Bullish or Bearish? tool that Bespoke members participate in, and asks how users would rate it.",
+      "zh_summary": "@bespokeinvest 表示 $OKTA 是他們新推出的「看漲還是看跌？」工具中最「看漲」的圖表之一，該工具由 Bespoke 會員參與，並詢問用戶如何評分。",
+      "ko_summary": "@bespokeinvest는 $OKTA가 Bespoke 회원들이 참여하는 새로운 Bullish or Bearish? 도구에서 가장 \"강세\"인 차트 중 하나라고 말하며 사용자들의 평가를 묻는다.",
+      "tickers": ["OKTA"],
+      "stance": "中性",
+      "stance_by_ticker": {"OKTA": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2114798297533878615": {
+      "en_summary": "@Jake__Wujastyk notes that $IREN is flagging.",
+      "zh_summary": "@Jake__Wujastyk 指出 $IREN 正在形成旗形。",
+      "ko_summary": "@Jake__Wujastyk는 $IREN이 플래깅 중이라고 언급한다.",
+      "tickers": ["IREN"],
+      "stance": "中性",
+      "stance_by_ticker": {"IREN": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2114797441572839591": {
+      "en_summary": "@StockSavvyShay notes that $ANT's IPO lockup unlocks only about 30% of insider shares after 180 days versus the usual 100%. This avoids the usual one-day flood of shares hitting the market but could create steady selling pressure throughout its first year of trading.",
+      "zh_summary": "@StockSavvyShay 指出 $ANT 的 IPO 鎖定期在 180 天後僅解鎖約 30% 的內部人股份，而通常為 100%。這避免了股份一日內大量涌入市場，但可能在其交易首年造成持續的賣壓。",
+      "ko_summary": "@StockSavvyShay는 $ANT의 IPO 락업이 180일 후 내부자 지분의 약 30%만 해제되며 통상 100%와 다르다고 지적한다. 이는 주식이 하루에 대량으로 시장에 쏟아지는 것을 피하지만 거래 첫해에 지속적인 매도 압력을 만들 수 있다.",
+      "tickers": ["ANT"],
+      "stance": "中性",
+      "stance_by_ticker": {"ANT": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2114796449653309635": {
+      "en_summary": "@Brian_Stoffel_ asks how serious Brazil's election is to $MELI and says he will break down how Mercadocredito is affected.",
+      "zh_summary": "@Brian_Stoffel_ 詢問巴西選舉對 $MELI 有多嚴重，並表示將分解 MercadoCredito 如何受到影響。",
+      "ko_summary": "@Brian_Stoffel_는 브라질 선거가 $MELI에 얼마나 심각한지 묻고 MercadoCredito가 어떻게 영향을 받는지 분석하겠다고 한다.",
+      "tickers": ["MELI"],
+      "stance": "中性",
+      "stance_by_ticker": {"MELI": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    }
+  }
+}
