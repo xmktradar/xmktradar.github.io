@@ -1846,9 +1846,169 @@
      ],
      "bear": []
     }
+   },
+   "intraday_3": {
+    "post_et": "13:30",
+    "post_hkt": "01:30",
+    "generated_at": "2026-10-26T13:33:53-04:00",
+    "date": "2026-10-26",
+    "date_kst": "2026-10-27",
+    "quotes": {
+     "SPY": {
+      "price": 765.76,
+      "prev_close": 759.97,
+      "chg_pct": 0.76,
+      "time": "2026-10-26T13:33:50-04:00"
+     },
+     "QQQ": {
+      "price": 713.58,
+      "prev_close": 704.4,
+      "chg_pct": 1.3,
+      "time": "2026-10-26T13:33:51-04:00"
+     },
+     "DIA": {
+      "price": 522.91,
+      "prev_close": 521.37,
+      "chg_pct": 0.3,
+      "time": "2026-10-26T13:33:28-04:00"
+     },
+     "BE": {
+      "price": 208.134,
+      "prev_close": 193.3,
+      "chg_pct": 7.67,
+      "time": "2026-10-26T13:33:46-04:00"
+     },
+     "EWZ": {
+      "price": 33.765,
+      "prev_close": 42.59,
+      "chg_pct": -20.72,
+      "time": "2026-10-26T13:33:54-04:00"
+     },
+     "GOOGL": {
+      "price": 318.62,
+      "prev_close": 320.21,
+      "chg_pct": -0.5,
+      "time": "2026-10-26T13:33:54-04:00"
+     },
+     "IREN": {
+      "price": 26.32,
+      "prev_close": 24.905,
+      "chg_pct": 5.68,
+      "time": "2026-10-26T13:33:54-04:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-10-26T13:33:54-04:00",
+     "hkt": "2026-10-27 01:33"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "BE",
+      "chg_pct": 7.67,
+      "bull": 3,
+      "bear": 1,
+      "accounts": [
+       "ChrisCamillo",
+       "michaelsikand",
+       "ripster47",
+       "carlquintanilla",
+       "InvestorsLive"
+      ]
+     },
+     {
+      "ticker": "EWZ",
+      "chg_pct": -20.72,
+      "bull": 1,
+      "bear": 5,
+      "accounts": [
+       "LynAldenContact",
+       "SJosephBurns",
+       "EricBalchunas",
+       "KawzInvests",
+       "compound248",
+       "StockSavvyShay",
+       "TheStalwart",
+       "Mr_Derivatives"
+      ]
+     },
+     {
+      "ticker": "GOOGL",
+      "chg_pct": -0.5,
+      "bull": 1,
+      "bear": 1,
+      "accounts": [
+       "DanielTNiles",
+       "dampedspring",
+       "RedDogT3",
+       "StockSavvyShay",
+       "WallStJesus",
+       "TheTranscript_",
+       "bespokeinvest",
+       "EliteOptions2"
+      ]
+     },
+     {
+      "ticker": "IREN",
+      "chg_pct": 5.68,
+      "bull": 1,
+      "bear": 1,
+      "accounts": [
+       "Mr_Derivatives",
+       "WallStJesus",
+       "RedDogT3",
+       "StockSavvyShay",
+       "michaelsikand"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Early afternoon · As of 13:33 ET (01:33 HKT)\n\n$SPY +0.8% · $QQQ +1.3% · $DIA +0.3%\n\n$BE +7.7%, 3 accounts bullish on site\n$EWZ -20.7%, 5 accounts bearish on site\n\nNewly bullish on site: $SPY, $LMT\n\nhttps://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_3\n\n⚠️ Not investment advice\n#StockMarket #BE #EWZ",
+      "url": "https://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_3"
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午后觀察 · 截至 13:33 ET（01:33 HKT）\n\n$SPY +0.8% · $QQQ +1.3% · $DIA +0.3%\n\n$BE +7.7%，網站 3 個帳號看好\n$EWZ -20.7%，網站 5 個帳號看淡\n$GOOGL -0.5%，網站 1 個帳號看好\n$IREN +5.7%，網站 1 個帳號看好\n\n網站新入看好：$SPY, $LMT\n網站新入看淡：$CRWV, $NU, $HYG, $XYZ\n\nhttps://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=intraday_3\n\n⚠️ 唔構成投資建議\n#美股 #BE #EWZ",
+      "url": "https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=intraday_3"
+     },
+     "en": {
+      "text": "Early afternoon · As of 13:33 ET (01:33 HKT)\n\n$SPY +0.8% · $QQQ +1.3% · $DIA +0.3%\n\n$BE +7.7%, 3 accounts bullish on site\n$EWZ -20.7%, 5 accounts bearish on site\n$GOOGL -0.5%, 1 account bullish on site\n$IREN +5.7%, 1 account bullish on site\n\nNewly bullish on site: $SPY, $LMT\nNewly bearish on site: $CRWV, $NU, $HYG, $XYZ\n\nhttps://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=intraday_3\n\n⚠️ Not investment advice\n#StockMarket #BE #EWZ",
+      "url": "https://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=intraday_3"
+     },
+     "ko": {
+      "text": "오후 초반 · 13:33 ET (01:33 HKT) 기준\n\n$SPY +0.8% · $QQQ +1.3% · $DIA +0.3%\n\n$BE +7.7%, 사이트 강세 계정 3개\n$EWZ -20.7%, 사이트 약세 계정 5개\n$GOOGL -0.5%, 사이트 강세 계정 1개\n$IREN +5.7%, 사이트 강세 계정 1개\n\n사이트 신규 강세: $SPY, $LMT\n사이트 신규 약세: $CRWV, $NU, $HYG, $XYZ\n\nhttps://thecrowdtape.com/ko/?utm_source=threads&utm_medium=social&utm_campaign=intraday_3\n\n⚠️ 투자 조언 아님\n#미국주식 #BE #EWZ",
+      "url": "https://thecrowdtape.com/ko/?utm_source=threads&utm_medium=social&utm_campaign=intraday_3"
+     }
+    },
+    "has_link": {
+     "x": true,
+     "threads": {
+      "zh": true,
+      "en": true,
+      "ko": true
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "SPY",
+      "AMZN",
+      "INTC",
+      "LMT"
+     ],
+     "bear": [
+      "CRWV",
+      "NU",
+      "HYG",
+      "XYZ"
+     ]
+    }
    }
   },
-  "generated_at": "2026-10-26T12:21:17-04:00",
-  "generated_hkt": "2026-10-27 00:21"
+  "generated_at": "2026-10-26T13:33:53-04:00",
+  "generated_hkt": "2026-10-27 01:33"
  }
 }
