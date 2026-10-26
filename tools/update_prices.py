@@ -26,7 +26,7 @@ MACRO = [('ES=F', '標普500期貨', None), ('NQ=F', '納指100期貨', None), (
 NY = ZoneInfo('America/New_York')
 EARNINGS_DAYS = 14  # tag a stock with its next results date when it falls within the next two weeks
 # US high-impact economic events for the strip under 大市背景 (public weekly feed, no key). Chinese names here;
-# i18n/en.json and ko.json map them back to the English names. Unlisted events keep the feed's English name.
+# i18n/en.json maps them back to English and i18n/ko.json maps them to Korean. Unlisted events keep the feed's English name.
 EVENTS_URL = 'https://nfs.faireconomy.media/ff_calendar_thisweek.json'
 EVENT_ZH = {
     'CPI m/m': 'CPI 按月', 'CPI y/y': 'CPI 按年', 'Core CPI m/m': '核心 CPI 按月', 'Core CPI y/y': '核心 CPI 按年',

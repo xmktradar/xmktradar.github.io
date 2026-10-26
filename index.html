@@ -1039,6 +1039,82 @@ function briefAsOf(w,sm){const r=String(((D.highlights||{})[w&&w.day]||{}).range
  if(r.includes('–')){const e=r.split('–').pop().trim();const m=e.match(/(\d{1,2}):(\d{2})/);if(m)return m[1].padStart(2,'0')+':'+m[2]}
  const to=sm&&sm.s&&sm.s.win&&sm.s.win.to;if(to&&to.length>=16&&to.slice(11,16)!=='23:59')return to.slice(11,16);
  return ''}
+/*ANALYSIS-LABEL*/
+// Post count stored with the writeup (stats_note, else the brief). Not the live card total.
+function storedPostCount(note, brief){
+ const bits=[note, String(brief||'').replace(/<[^>]*>/g,'')];
+ for(let i=0;i<bits.length;i++){
+  const s=String(bits[i]||'');
+  if(!s) continue;
+  const m=s.match(/(\d+)\s*posts\b/i)||s.match(/(\d+)\s*則帖文/)||s.match(/(\d+)\s*帖/)||s.match(/(\d+)\s*개\s*게시물/)||s.match(/(\d+)\s*게시물/);
+  if(m) return +m[1];
+ }
+ return null;
+}
+function unanalyzedCount(warnings){
+ const ws=warnings||[];
+ for(let i=0;i<ws.length;i++){
+  // No fullwidth colon here: build_langs rewrites that punctuation inside the regex on en/ko.
+  const m=String(ws[i]).match(/未分析[^\d]{0,6}(\d+)/);
+  if(m) return +m[1];
+ }
+ return 0;
+}
+function analysisClock(date, sm){
+ sm=sm||summaryOf('daily', date);
+ const to=sm&&sm.s&&sm.s.win&&sm.s.win.to;
+ if(to&&String(to).length>=16&&String(to).slice(11,16)!=='23:59') return fmt(String(to).slice(0,10))+' '+String(to).slice(11,16);
+ const bx=briefAsOf({day:date}, sm);
+ return bx&&date?fmt(date)+' '+bx:'';
+}
+function analysisTag(when, n, gap){
+ const L=PAGE_LANG;
+ if(!when) return '';
+ if(L==='en'){
+  const p=['Analysis as of '+when+' HKT'];
+  if(n!=null) p.push('covers '+n+' posts');
+  if(gap) p.push(gap+' not yet analyzed');
+  return p.join(' · ');
+ }
+ if(L==='ko'){
+  const p=['분석 기준 '+when+' HKT'];
+  if(n!=null) p.push(n+'개 게시물 기준');
+  if(gap) p.push('미분석 '+gap+'건');
+  return p.join(' · ');
+ }
+ const p=['分析截至 '+when+' HKT'];
+ if(n!=null) p.push('涵蓋 '+n+' 則');
+ if(gap) p.push('未分析 '+gap+' 則');
+ return p.join(' · ');
+}
+function analysisLead(date, sm){
+ const when=analysisClock(date, sm);
+ if(!when) return '';
+ const H=(D.highlights||{})[date]||{};
+ sm=sm||summaryOf('daily', date);
+ const n=storedPostCount(H.stats_note, sm&&sm.s&&sm.s.brief);
+ const gap=date===TODAY?unanalyzedCount(D.meta&&D.meta.warnings):0;
+ return analysisTag(when, n, gap);
+}
+function streakMark(n){
+ n=+n||0;
+ const L=PAGE_LANG;
+ if(L==='en') return '('+n+' '+(n===1?'day':'days')+')';
+ if(L==='ko') return '('+n+'일)';
+ return '（'+n+' 日）';
+}
+// Highlight numbers on the raw string, then escape each piece once. Escaping first wraps the 39 inside &#39;.
+function numHi(s){
+ const t=String(s==null?'':s).replace(/&amp;/g,'&').replace(/&#39;|&#x27;|&apos;/gi,"'").replace(/&quot;/g,'"').replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+ const re=/([$＄]?\d[\d,]*(?:\.\d+)?(?:\s?(?:%|倍|億美元|億|萬|美元))?)/g;
+ let out='', i=0, m;
+ while((m=re.exec(t))){
+  out+=esc(t.slice(i,m.index))+'<em>'+esc(m[1])+'</em>';
+  i=m.index+m[1].length;
+ }
+ return out+esc(t.slice(i));
+}
+/*ANALYSIS-LABEL-END*/
 function dailyWindow(){const cut=dataCutoffMs();const sm=summaryOf('daily',TODAY);const win=sm&&!sm.stale&&sm.s.win;
  if(win&&win.from&&win.to){const c=clipDailyRange(win.from,win.to,cut);const n=rawIn(c.from,c.to).filter(valid).length;return {from:c.from,to:c.to,day:TODAY,timed:true,src:'writer',merged:false,n}}
  if(SCRAPE_SLOTS.length&&cut){
@@ -1200,7 +1276,7 @@ function vsHtml(w){if(!VSC||!CH)return '';
  if(!CH[yd]&&!Y.bull.length&&!Y.bear.length)return `<section class="c12 vs-bar first" aria-label="${esc(VSC.label||'')}">${lab}<span class="vs-line">${esc(VSC.empty_first_day||'')}</span>${cta}</section>`;
  const txt=s=>esc(s).replace(/\s*→\s*/g,'<span class="ar">→</span>');
  const fillT=(tpl,m)=>String(tpl||'').split(/(\{\w+\})/).map(x=>{const k=(x.match(/^\{(\w+)\}$/)||[])[1];return k&&k in m?m[k]:txt(x)}).join('');
- const chip=(t,c,n)=>`<span class="vs-tk${c?' '+c:''}" data-tk="${esc(t)}">${esc(t)}${n?`<b>${n}</b>`:''}</span>`;
+ const chip=(t,c,n)=>`<span class="vs-tk${c?' '+c:''}" data-tk="${esc(t)}">${esc(t)}${n?`<b>${streakMark(n)}</b>`:''}</span>`;
  const list=(a,c)=>a.length?a.map(t=>chip(t,c)).join('、'):'—';
  const streak=(t,k)=>{let n=1,d=yd;while(CH[d]&&(CH[d][k]||[]).includes(t)){n++;d=addDays(d,-1)}return n};
  const sides=['bull','bear'].filter(k=>k==='bull'||(Y[k]||[]).length||T[k].length);
@@ -1310,8 +1386,9 @@ function viewDaily(){
  <section class="c12 panel t3" aria-label="今日三句重點"><h2>今日三句重點 <span class="sub">${ctx}</span></h2>${t3.length?`<ol class="t3-l">${t3.join('')}</ol>`:empty('範圍內資料不足，暫時未能整理。')}<p class="note ctx">${METHOD}</p></section>
  <section class="c12 analysis" aria-label="市場分析">
   
-  <h2>今日市場分析 ${(()=>{const bx=briefAsOf(w,sm);const asof=bx?(PAGE_LANG==='en'?`<span class="sub">(as of ${esc(bx)} HKT)</span>`:PAGE_LANG==='ko'?`<span class="sub">(기준 ${esc(bx)} HKT)</span>`:`<span class="sub">（截至 ${esc(bx)} HKT）</span>`):'';const stale=sm&&sm.stale?`<span class="sub">（最新一份分析，非 ${esc(w.day)} 當日）</span>`:(!sm&&!bx?'<span class="sub">今日分析尚未產生，以下由資料自動整理</span>':'');return [asof,stale].filter(Boolean).join(' ')})()}</h2>
+  <h2>今日市場分析 ${(()=>{const lead=analysisLead(w.day,sm);const asof=lead?`<span class="sub">${esc(lead)}</span>`:'';const stale=sm&&sm.stale?`<span class="sub">（最新一份分析，非 ${esc(w.day)} 當日）</span>`:(!sm&&!lead?'<span class="sub">今日分析尚未產生，以下由資料自動整理</span>':'');return [asof,stale].filter(Boolean).join(' ')})()}</h2>
   ${sm?'':sparse}
+  ${(()=>{const lead=analysisLead(w.day,sm);return lead?`<p class="note">${esc(lead)}</p>`:''})()}
   ${sm?sumBody(sm.s,true):auto}
   <p class="note" style="margin:8px 0 0">${(()=>{const n=String(vposts.length),a=String(accsNow);const bx=briefAsOf(w,sm);const cx=(w.to&&w.to.length>10?w.to.slice(11,16):hm(_cut||0));const same=bx&&cx&&bx===cx;const L=PAGE_LANG;
    if(same)return (L==='en'?"Brief counts are from the writer; the stat cards below are live counts for the same window (posts so far: {n}, active accounts {a}).":L==='ko'?"요약 숫자는 작성자 정리분; 아래 통계 카드는 같은 구간의 실시간 집계입니다 (유효 게시물 {n}, 활동 계정 {a}).":"摘要數字來自寫手整理；下方統計卡按同一分析範圍即時計算（目前有效貼文 {n}、有動態帳號 {a}）。").replace(/\{n\}/g,n).replace(/\{a\}/g,a);
@@ -1568,7 +1645,7 @@ function macroHtml(){if(!MAC)return `<section class="c12 mk live-only" aria-labe
 
 // ---------- 今日重點卡（design/highlights-cards 結構）：文字逐字照錄，數字自動加粗 ----------
 const toneCls=t=>{t=t||'';const k=/^(看好|睇好|看多|偏多|Bullish|강세)/i.test(t)?'bull':/^(看淡|睇淡|看空|偏空|Bearish|약세)/i.test(t)?'bear':'neu';return k+(k!=='neu'&&/條件|conditional|조건/i.test(t)?' cond':'')};
-const numHi=s=>esc(s).replace(/([$＄]?\d[\d,]*(?:\.\d+)?(?:\s?(?:%|倍|億美元|億|萬|美元))?)/g,'<em>$1</em>');
+
 function hlTicker(t){const c=UNC(t)?null:closes(t);const loading=!coreDone&&!(D.prices&&D.prices[t]);let svg='<svg class="empty" viewBox="0 0 120 28" aria-hidden="true"></svg>',chg=`<span class="nopx">${UNC(t)?'代號未確認':loading?'載入中…':'無股價資料'}</span>`;
  if(c){const lim=new Date(Date.parse(c[c.length-1][0])-28*DAY).toISOString().slice(0,10);const r=c.filter(x=>x[0]>=lim);const v=r.map(x=>x[1]);
   if(v.length>=2){const mn=Math.min(...v),mx=Math.max(...v),sp=(mx-mn)||1;const up=v[v.length-1]>=v[0];
@@ -1581,7 +1658,7 @@ function hlAvatar(h){const i=infoOf(h);const name=i.name||h;return `<a href="${x
 const TONE_TXT={'看好':'看多','看淡':'看空','分歧':'好淡分歧','中性':'中性'};
 function highlightsHtml(date,w){const H=D.highlights&&D.highlights[date];if(!H||!H.cards||!H.cards.length)return '';
  const card=c=>`<article class="hl ${toneCls(c.tone)}"><div class="hl-body"><div class="hl-tags">${c.theme?`<span class="hl-theme">${esc(c.theme)}</span>`:''}${c.tone?`<span class="hl-tone">${esc(TONE_TXT[c.tone]||c.tone)}</span>`:''}</div><h3>${esc(c.headline)}</h3>${c.big?`<div class="hl-big${c.tickers.length?' inline':''}"><div class="v">${esc(c.big.value)}</div>${c.big.label?`<div class="l">${esc(c.big.label)}</div>`:''}</div>`:''}${c.tickers.length?`<div class="hl-tks">${c.tickers.map(hlTicker).join('')}</div>`:''}${c.points.length?`<ol>${c.points.slice(0,3).map(x=>`<li><span>${numHi(x)}</span></li>`).join('')}</ol>`:''}</div>${c.handles.length||c.source_note?`<div class="hl-foot">${c.handles.length?`<div class="hl-avs">${c.handles.map(hlAvatar).join('')}</div>`:''}<div class="hl-who">${c.handles.map(h=>`<a href="${xUrl(h)}" target="_blank" rel="noopener">@${esc(h)}</a>`).join('、')}${c.handles.length&&c.source_note?'<br>':''}${c.source_note?esc(c.source_note):''}</div></div>`:''}</article>`;
- const rg=w&&w.from&&w.to?`${fmtR(w.from)} – ${fmtR(w.to)} HKT`:(H.range||'');
+ const lead=analysisLead(date);const rg=lead||(w&&w.from&&w.to?`${fmtR(w.from)} – ${fmtR(w.to)} HKT`:(H.range||''));
  return `<section class="c12 hl-sec" aria-label="今日重點"><div class="hl-head"><h2>今日重點</h2>${rg?`<span class="rg">${esc(rg)}</span>`:''}</div><div class="hl-grid">${H.cards.slice(0,3).map(card).join('')}</div>${H.stats_note?`<p class="note" style="margin:10px 0 0">${esc(H.stats_note)}</p>`:''}</section>`}
 
 // ---------- 追蹤名單（設計稿 viewTracked；資料來自追蹤名單＋帳號資料） ----------
