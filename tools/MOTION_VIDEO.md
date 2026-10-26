@@ -3,6 +3,7 @@
 > 2026-10-24，Tim 喺「寫 30 秒宣傳片腳本」thread 揀好：
 > ① GitHub 每日自動整（唔用 Grok 寫或者畫）；② 字同卡片都會郁（B）；③ 只係 12:30 今日快照出片；④（12:59 改）片入面**自帶程式生成嘅節拍同音效**，唔再靠 app 加音樂；⑤ 跟第 2 版樣板做：開場鈎、大標題、震動、結尾 CTA；⑥（13:16 加）中文版加**普通話配音**，用 edge-tts 免費語音，第一條真片當樣板。
 > ⑧（2026-10-25 00:03 Tim）只出中文同英文片。
+> ⑨（2026-10-26）英文 12:30 片加英文配音（`en-US-AndrewNeural`）。中文旁白、聲線、語速唔改。英文片總長硬上限 29.0 秒。
 > ⑦（15:41 Tim OK）跟**第 4 版樣板**做：跟拍剪接、全畫面快閃大字、VS 對決、輪播圖完整顯示（唔放大）加黃色發光框。
 > 樣板：Claude 項目檔 `motion-sample/sample-1230-zh-v4.mp4`。**2026-10-25 Claude 已經寫好正式程式（見第四節）**，Grok Bot 唔使再寫，只需要做 V5（發 Reels）。
 > 畫面設計原稿：Claude 項目檔 `carousel-motion-video-script.md`（本檔第一節已經包括最新設計）。
@@ -16,7 +17,7 @@
 
 ### 成功係咩樣
 1. 美股交易日，12:30「今日快照」輪播圖畫好之後，同一次網站更新順手出 **2 條動態片**（中文、英文各一條；Tim 2026-10-25：韓文唔出）。
-2. 每條片：**1080×1920 直片、mp4（H.264 + AAC 聲）**，IG／FB Reels 直接用得。冇配音約 23 秒；有配音每段按旁白長度加長（以拍為單位），約 26 至 32 秒。
+2. 每條片：**1080×1920 直片、mp4（H.264 + AAC 聲）**，IG／FB Reels 直接用得。冇配音約 23 秒；有配音每段按旁白長度加長（以拍為單位）。英文有配音時總長唔超過 29.0 秒。
 3. 節拍 124 BPM（一拍約 0.48 秒），所有剪接對準拍子，冇轉場效果（硬剪 + 一下白閃）。全片頂部有黃色**進度條**由左行到右。片分 8 段（括號係拍數）：
    - **① 快閃開場（5 拍）**：全畫面大字逐拍出：「今日」→「X 上 200 個美股大神」→「最多人講嘅係…」→「？？？」（搖晃），背景顏色每拍轉（深藍、紫、紅、黃、藍），配鼓聲越打越急，未有完整節拍。
    - **② 揭曉（4 拍）**：音樂完整爆出（drop），全畫面「$代號」白底大字砸落，畫面震、閃白光，🔥🚀👀💥📈🤯 向四邊飛；第 3 拍出「{N} 個帳號講緊！」。黃粉漸變背景＋轉動放射線。
@@ -39,7 +40,7 @@
      - 代號逐個字母讀（例如 S、P、Y）；數字同輪播圖一樣；旁白永遠唔講買、賣、目標價或者預測。
      - 講嘢期間節拍自動收細到約 35%，講完回復；音效照出。
    - 配音失敗（edge-tts 連唔到、出錯）：自動出冇配音版（約 23 秒），唔會令出片或者網站更新失敗，喺 Actions 出警告。
-   - 英文版暫時冇配音；以後要加，只係改設定 `VO_LANGS` 同寫英文旁白。
+   - **2026-10-26**：英文版有配音（`en-US-AndrewNeural`，`VO_LANGS` 預設 `zh,en`）。總長硬上限 29.0 秒；超咗先加快語速同換短稿，再唔得就出冇配音版。中文稿、聲線、+10% 唔改。聲線、語速、混音、29 秒規則同英文短稿見第四節。韓文仍然冇配音。
 4. `data/social-posts.json` 嘅 `slots.1230` 多一格 `video`（每個語言一條片網址），`/social/` 頁 12:30 嗰格可以直接睇同下載條片。
 5. Grok bot 角色 ① 喺原本 12:30／13:00／13:30 例行程序，發完 Facebook 多圖帖之後，**再發 IG Reels 同 FB Reels**：用 `slots.1230.video.<語言>`，文字用同一時段嘅 IG／Facebook 文字。**唔使加音樂**（片已經有聲）。唔開新例行程序。
 6. 片同輪播圖一樣**保留 2 日**，之後自動刪。
@@ -47,7 +48,7 @@
 8. 以後想擴大到 16:30／20:30，只係改一個設定（出片時段清單），唔使改程式。
 
 ### 明確唔做
-- 唔用外來音樂檔；唔用付費配音服務；英文版暫時唔配音；唔出韓文片。
+- 唔用外來音樂檔；唔用付費配音服務；唔出韓文片（韓文冇配音）。
 - 唔改輪播圖本身嘅設計、字或者數字；唔用 Grok Imagine 重畫。
 - 唔做 16:30、20:30、週末教學、星期六宏觀帖嘅片。
 - X、Threads 唔發片（照舊發 4 張圖）。
@@ -104,18 +105,25 @@
 ## 四、實作（已完成）
 
 **檔案**
-- `tools/carousel_video.js`：主程式。讀 `work/carousel.json`，只做 `VIDEO_SLOTS`（預設 `1230`）同 `VIDEO_LANGS`（預設 `zh,en`）嘅 job，兩個語言同時做。8 段時間以拍計（`BASE`），有配音嗰段會加長（旁白 + 0.4 秒，向上捨入到拍）。輸出 `og/c/<day>-<slot>-<lang>.mp4`（先寫 `.part.mp4` 再改名）。
+- `tools/carousel_video.js`：主程式。讀 `work/carousel.json`，只做 `VIDEO_SLOTS`（預設 `1230`）同 `VIDEO_LANGS`（預設 `zh,en`）嘅 job，兩個語言同時做。8 段時間以拍計（`BASE`：5、4、6、7、7、6、6、7），一拍 = 60/124 秒。有配音嗰段會加長到 `max(基本拍, ceil((句長 + 0.4 秒) / 一拍))` 拍。英文如果加完仍然超過 29.0 秒，就丢掉配音，用基本拍數出片（中文唔入呢個分支）。輸出 `og/c/<day>-<slot>-<lang>.mp4`（先寫 `.part.mp4` 再改名）。最後時長寫喺 log：`carousel video … Ns`。
 - `tools/carousel_scene.html` + `tools/carousel_scenes.js`：全畫面場景（快閃開場、揭曉、VS、結尾）。
 - `tools/carousel_motion.js`：注入 `tools/carousel.html` 嘅動畫（元素出場、外框、大標題、黃色發光框）。靜態圖唔會載入佢，所以 4 張 jpg 同以前一樣。
-- `tools/carousel_vo.py`：寫 8 句普通話旁白，用 edge-tts（`VO_VOICE_zh`，預設 `zh-CN-XiaoxiaoNeural`，+10%）讀出，寫 `vo.json`。任何一句失敗，嗰條片就冇配音。`VO_FAKE=1` 用假聲做本機測試。
-- `tools/carousel_audio.py`：生成節拍同音效，加旁白，講嘢時節拍收細到 35%。
+- `tools/carousel_vo.py`：寫 8 句旁白，用 edge-tts 讀出，寫 `vo.json`。任何一句失敗，嗰條片就冇配音。`VO_FAKE=1` 用假聲做本機測試。`VO_LANGS` 預設 `zh,en`（workflow 嗰步亦設 `VO_LANGS=zh,en`；`ko` 的 `lines()` 回傳 `None`，所以韓文冇配音）。
+  - **聲線**：中文 `zh-CN-XiaoxiaoNeural`（`VO_VOICE_zh`），英文 `en-US-AndrewNeural`（`VO_VOICE_en`）。韓文聲線 `ko-KR-SunHiNeural` 只係留喺表，冇稿就唔會讀。
+  - **語速**：中文固定 `+10%`（`RATE`），唔會因為長度再試第二遍。英文先 `+10%`，片長（同一個拍數式）超過 29.0 秒就再試普通稿 `+20%`、`+30%`，然後短稿 `+10%`、`+20%`、`+30%`。
+  - **29 秒**：英文最終片長必須 `<= 29.0`。再試完仍然超過就唔寫入 `vo.json`，片用冇配音版（約 23.2 秒）。log 寫 `voiceover: <slot>-en final <秒>s`；丢掉嗰陣寫會超幾多秒，同埋冇配音嘅最終長度。中文已經 `<= 29` 秒嘅輸出唔經呢個再試。
+  - **英文短稿**：同一 8 段、更少字。代號一樣 `spell()` 逐個字母。唔講 buy、sell、target、prediction。
+  - **英文普通稿**（對應畫面）：① Today's hottest stock? ② `{代號}, {N} accounts` ③ `{好} bulls, {淡} bears` 加 Bulls ahead / Bears ahead / It's a tie ④ What are they saying? ⑤ Top 4, on screen（代號喺圖上，唔讀）⑥ bullish `{共同看好}`, bearish `{共同看空}` ⑦ `{分歧代號}, biggest split` ⑧ Details at thecrowdtape dot com。
+- `tools/carousel_audio.py`：生成節拍同音效，再混入旁白。節拍軌先乘 0.55。每句旁白由 ffmpeg 解成 44100 單聲道，按峰值歸一後乘 0.8，放喺該段開始之後 0.15 秒（`carousel_video.js` 寫嘅 `at`）。講緊嘢嗰段，音樂包絡收到 0.35，兩邊用 0.15 秒滑動平均抹平。有任何旁白時音效再乘 0.8。混音 = 音樂 × 閃避 + 音效 + 旁白。最後 1.2 秒淡出，再 `tanh(混音 × 1.1) × 0.85`，寫成 16-bit 立體聲。
 - `tools/carousel.py`：`VIDEO_SLOTS`、`VIDEO_LANGS`；寫 `slots.<slot>.video = {zh, en}`；`/social/` 頁顯示片同下載連結。
 - `tools/carousel_video_post.py`：刪走冇真檔嘅語言（全部冇就刪成格 `video`），刪 `.part.mp4`，有改就重寫 `social/index.html`。
 - `tools/test_motion_video.py`：測試（Build check 有跑）。
-- `.github/workflows/update-site.yml`：多圖帖之後兩步：「Motion videos…」（`continue-on-error`、12 分鐘上限，`pip install numpy edge-tts==7.3.1`）同「Keep only motion videos that exist」。
+- `.github/workflows/update-site.yml`：多圖帖之後兩步：「Motion videos…（zh+en voiceover）」（`continue-on-error`、12 分鐘上限，`pip install numpy edge-tts==7.3.1`，`VO_LANGS=zh,en`）同「Keep only motion videos that exist」。
 
 **本機試（2026-10-25）**：用真數據出到中、英片；中文用假聲測試配音流程（長度約 40 秒，真聲預計約 30 秒）。Claude 雲端環境連唔到 edge-tts，所以真配音要等 GitHub 第一次跑先聽到。本機 3 條片同時做要約 4 分鐘（2 核心），GitHub runner 預計 2 至 3 分鐘，只影響 12:30 嗰次更新。
 
 **本機跑法**：`python3 tools/slim_pages.py --restore`；`node tools/stats.js index.html work/windows.json work/stats.json`；`CAROUSEL_FORCE=1 python3 tools/carousel.py`；`node tools/carousel.js work/carousel.json`；`VO_FAKE=1 node tools/carousel_video.js work/carousel.json`。試完 `git checkout` 還原建置檔，唔好 commit。
 
 **2026-10-25**：普通話旁白縮短（edge-tts +10%）：一般約 27 秒、長代號最差約 28.5 秒；熱度前四唔再逐個代號讀（圖上有），唔使再加速到 +40%。VS 段好淡數改用每個帳號範圍內最新一則（同網站 consGroups 一樣），`tools/test_vs_counts.py` 喺 Build check 對數。
+
+**2026-10-26**：英文 12:30 片加配音。聲線 `en-US-AndrewNeural`，起步語速同中文一樣 `+10%`。片長式同 `carousel_video.js`：每段 `max(基本拍, ceil((句長+0.4)/拍))`。英文總長超過 29.0 秒就換 `+20%`、`+30%` 或者更短嘅 8 句；仍然超過就出冇配音版，唔出長過 29 秒嘅英文片。中文稿、聲線、`+10%`、失敗就整條冇配音，全部同之前一樣。韓文繼續冇片、冇配音。
