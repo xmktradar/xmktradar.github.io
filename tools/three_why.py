@@ -46,7 +46,7 @@ T3_COPY = {
     'zh': {
         'title': '今日三句重點',
         'shift': '共識變化最大',
-        'delta': '淨看多比例 {frm} → {to} 對比昨日（今日至今）',
+        'delta': '淨看多比例 {frm} → {to} 對比昨日同時段',
         'chg': '{n} 次立場轉變',
         'most': '最多人討論',
         'most_rest': '{n} 個觀點、{a} 個帳號',
@@ -61,7 +61,7 @@ T3_COPY = {
     'en': {
         'title': 'Today in 3 lines',
         'shift': 'Biggest consensus shift',
-        'delta': 'net bullish {frm} → {to} vs yesterday (today so far)',
+        'delta': 'net bullish {frm} → {to} vs the same hours yesterday',
         'chg': '{n} stance changes',
         'most': 'Most mentioned',
         'most_rest': '{n} views, {a} accounts',
@@ -76,7 +76,7 @@ T3_COPY = {
     'ko': {
         'title': '오늘의 3줄 요약',
         'shift': '합의 변화 최대',
-        'delta': '순강세 비율 {frm} → {to} 어제 대비 (오늘 현재까지)',
+        'delta': '순강세 비율 {frm} → {to} 어제 같은 시간대 대비',
         'chg': '{n} 회 입장 변경',
         'most': '최다 언급',
         'most_rest': '{n} 개 의견, {a} 개 계정',
@@ -89,6 +89,8 @@ T3_COPY = {
         'acc': '계정 {n}개',
     },
 }
+# Threads attaches one topic. The body ends with '#' + this, and the field has no '#'.
+T3_TOPIC = {'zh': '美股', 'en': 'StockMarket', 'ko': '미국주식'}
 WHY_TITLE = {
     'zh': '今日 {t}：點解',
     'en': 'Why {t} today',
@@ -622,42 +624,54 @@ def _close_bits(lang, tickers):
     return disc, tag
 
 
-def _fit_x(title, label, facts, disc, tag):
-    """X body ≤ 280. The window/sample label and the disclaimer stay when they fit."""
+def _fit_x(title, label, facts, disc, tag, url):
+    """X body ≤ 280 by xlen. URLs count 23.
+
+    The title, the disclaimer and the link stay. The link is the last line.
+    Drop, in order, until it fits: ticker hashtags (keep the primary tag),
+    then the window/sample label, then trailing fact lines (keep at least one).
+    """
     S = _s()
+    facts = [f for f in (facts or []) if f]
+    parts = (tag or '').split()
+    primary = parts[0] if parts else ''
 
-    def pack(use_title, use_facts, use_tag):
-        bits = [use_title, label, *use_facts, disc, use_tag]
-        return '\n\n'.join(b for b in bits if b)
+    def pack(use_label, use_facts, use_tag):
+        bits = [title, use_label, *use_facts, disc, use_tag]
+        body = '\n\n'.join(b for b in bits if b)
+        if not url:
+            return body
+        return f'{body}\n{url}' if body else url
 
-    short_tag = tag.split()[0] if tag else ''
-    text = pack(title, facts, tag)
-    if S.xlen(text) <= 280:
-        return text
-    text = pack('', facts, short_tag)
-    if S.xlen(text) <= 280:
-        return text
-    use = list(facts)
-    while use and S.xlen(pack('', use, short_tag)) > 280:
-        use.pop()
-    text = pack('', use, short_tag)
-    if S.xlen(text) <= 280:
-        return text
-    core = pack('', [], '')
-    if S.xlen(core) <= 280:
-        return core
-    return S._trim_x(core)
+    candidates = [(label, facts, tag or primary)]
+    if (tag or primary) != primary:
+        candidates.append((label, facts, primary))
+    candidates.append(('', facts, primary))
+    for n in range(len(facts) - 1, 0, -1):
+        candidates.append(('', facts[:n], primary))
+
+    last = ''
+    for use_label, use_facts, use_tag in candidates:
+        text = pack(use_label, use_facts, use_tag)
+        last = text
+        if S.xlen(text) <= 280:
+            return text
+    return last
 
 
 def _maybe_x_link(text, url, take):
-    """Put the link in the X body only when it still fits in 280."""
+    """Append the X link only when `take` and the post still fits in 280.
+
+    The returned url is set only when that exact url is in the text. Callers
+    that always want the link (three_lines) reserve room in `_fit_x` instead.
+    """
     S = _s()
     if not take or not url:
         return text, None
     trial = text + '\n' + url
-    if S.xlen(trial) <= 280:
+    if S.xlen(trial) <= 280 and url in trial:
         return trial, url
-    return text, url
+    return text, None
 
 
 def _platform_entry(text, url):
@@ -669,6 +683,9 @@ def build_three_lines(daily, day, generated_at=None, dash=None, window_fallback=
 
     Dash posts use the page's window, dist and threeLines. Without posts, the
     bull/bear/split rows in writeup daily are the inputs (no invented shift).
+    Every X language keeps the title and ends with its UTM url. Threads stores
+    `topic` with no '#' and ends with that one hashtag. Threads still puts the
+    link on `url` only, and only on the alternating language.
     """
     S = _s()
     day = S._as_day(day) or str(day or '')
@@ -701,30 +718,37 @@ def build_three_lines(daily, day, generated_at=None, dash=None, window_fallback=
         if not facts:
             facts = [T3_COPY[lang]['empty']]
         disc, tag = _close_bits(lang, ticks)
-        body = '\n\n'.join(b for b in [title, label, *facts, disc, tag] if b)
-        threads = S.fit_threads(body, lang)
-        x = _fit_x(title, label, facts, disc, tag)
+        topic_tag = '#' + T3_TOPIC[lang]
+        # Threads gets one topic hashtag. Ticker hashtags stay on X, Facebook and Instagram.
+        fb_body = '\n\n'.join(b for b in [title, label, *facts, disc, tag] if b)
+        threads = S.fit_threads(
+            '\n\n'.join(b for b in [title, label, *facts, disc, topic_tag] if b), lang)
         ig = S.sanitize_instagram('\n\n'.join(b for b in [
             title, label, *facts, disc, '', S.ig_tags(lang, ticks),
         ] if b is not None), lang)
-        texts[lang] = {'threads': threads, 'x': x, 'facebook': body, 'instagram': ig, 'ticks': ticks}
-    # Half of x and threads, alternating by language so each platform gets some.
-    # Facebook carries a link. Instagram never does.
+        texts[lang] = {
+            'threads': threads, 'facebook': fb_body, 'instagram': ig,
+            'title': title, 'label': label, 'facts': facts, 'disc': disc, 'tag': tag,
+        }
+    # X carries the link in every language. Threads still alternates (en on).
+    # Facebook carries a link in the body. Instagram never does.
     has_link = {p: {} for p in ('x', 'threads', 'facebook', 'instagram')}
     out_p = {p: {} for p in ('x', 'threads', 'facebook', 'instagram')}
     for i, lang in enumerate(S.LANGS):
         urls = {plat: S._camp_url(lang, plat, 'three_lines') for plat in ('x', 'threads', 'facebook')}
-        x_take = (i % 2 == 0)
-        th_take = (i % 2 == 1)
-        x_text, x_url = _maybe_x_link(texts[lang]['x'], urls['x'] if x_take else None, x_take)
-        if S.xlen(x_text) > 280:
-            x_text = texts[lang]['x']
-            x_url = urls['x'] if x_take else None
+        spec = texts[lang]
+        x_text = _fit_x(spec['title'], spec['label'], spec['facts'], spec['disc'], spec['tag'], urls['x'])
+        x_text = S.strip_dup_handles(x_text)
+        x_url = urls['x'] if urls['x'] and urls['x'] in x_text else None
         has_link['x'][lang] = bool(x_url)
-        out_p['x'][lang] = _platform_entry(S.strip_dup_handles(x_text), x_url)
-        has_link['threads'][lang] = th_take
-        out_p['threads'][lang] = _platform_entry(
-            S.strip_dup_handles(texts[lang]['threads']), urls['threads'] if th_take else None)
+        out_p['x'][lang] = _platform_entry(x_text, x_url)
+        th_take = (i % 2 == 1)
+        th_text = S.strip_dup_handles(spec['threads'])
+        th_url = urls['threads'] if th_take else None
+        has_link['threads'][lang] = bool(th_url)
+        th_entry = _platform_entry(th_text, th_url)
+        th_entry['topic'] = T3_TOPIC[lang]
+        out_p['threads'][lang] = th_entry
         # Facebook may carry the link in the body. Threads stays URL-free; the link is `url`.
         fb = S.strip_dup_handles(texts[lang]['facebook'] + '\n\n' + urls['facebook'])
         has_link['facebook'][lang] = True
@@ -1001,8 +1025,8 @@ def build_why_posts(daily, day, window=None, sample=None, generated_at=None, win
             x_take = (len(posts) % 2 == 0)
             x_url = S._camp_url('en', 'x', 'why', ticker) if x_take else None
             x_text, x_url = _maybe_x_link(en_text, x_url, x_take)
-            if S.xlen(x_text) > 280:
-                x_text, x_url = en_text, x_url
+            if S.xlen(x_text) > 280 or (x_url and x_url not in x_text):
+                x_text, x_url = en_text, None
             item['x'] = {'en': _platform_entry(S.strip_dup_handles(x_text), x_url)}
             item['has_link']['x'] = {'en': bool(x_url)}
         posts.append(item)

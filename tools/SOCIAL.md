@@ -134,7 +134,7 @@ Macro-week `ig_reel.date_kst` is the Asia/Seoul date of the post, not the data w
 
 `python3 tools/ig_boost.py --apply` upgrades today's JSON in place: sanitize IG captions, append the CTA to IG image lists, add `ig_reel`. It does not rebuild other content.
 
-`utm_campaign` is the slot name: `hot_stock`, `discussion`, `weekend`, `three_lines`, `why`. Atomic posts use `atomic`. The platform is the field name (`x`, `threads`, `facebook` or `instagram`). A `first_comment` object is tagged per key. A `first_comment` string uses `threads`. `three_lines` and `why_posts` store the link on `{text, url}` (`url` is null when that copy has no link). Instagram never has a `url`.
+`utm_campaign` is the slot name: `hot_stock`, `discussion`, `weekend`, `three_lines`, `why`. Atomic posts use `atomic`. The platform is the field name (`x`, `threads`, `facebook` or `instagram`). A `first_comment` object is tagged per key. A `first_comment` string uses `threads`. `three_lines` and `why_posts` store the link on `{text, url}` (`url` is null when that copy has no link). A `three_lines` Threads copy also has `topic` (`美股`, `StockMarket`, `미국주식`, no `#`). Instagram never has a `url`.
 
 Numbers in the no-repeat guard are the integers left after stripping URLs, ISO dates, `M/D`, `Month D`, `HH:MM` and years `19xx`/`20xx`. A ticker is a `$SYMBOL` that contains a letter. A full-body match (whitespace collapsed) across two different slots is a duplicate. Threads and Facebook of the same slot may share a body. `guard_slots` reports those problems. The builders drop a clashing `hot_stock` or `discussion`, drop a weekend item that clashes, and omit `weekend` if that leaves fewer than two posts. They omit `atomic_posts` when a body would copy another slot or when fewer than four points fit.
 
@@ -235,17 +235,22 @@ The lines are the page's `RUX.threeLines` on the daily-tab rows. When `main()` c
 | `suggested_kst` | `08:30` |
 | `format` | `text_question` |
 | `source` | Which corpus the lines came from |
-| `x` / `threads` / `facebook` | `{zh, en, ko: {text, url}}`. `url` is null when that copy has no link |
+| `x` / `facebook` | `{zh, en, ko: {text, url}}`. `url` is null when that copy has no link |
+| `threads` | `{zh, en, ko: {text, url, topic}}`. `topic` is `美股` / `StockMarket` / `미국주식` with no `#`. `url` is null when that copy has no link |
 | `instagram` | `{zh, en, ko: {text}}`. No `url` |
-| `has_link` | Per platform, per language |
+| `has_link` | Per platform, per language. `has_link.x.<lang>` is true exactly when `x.<lang>.url` is set. `has_link.threads.<lang>` is true exactly when `threads.<lang>.url` is set |
 
 Wording matches the daily tab (single spaces). zh `今日三句重點` / `共識變化最大` / `最多人討論` / `分歧最大`. en `Today in 3 lines` / `Biggest consensus shift` / `Most mentioned` / `Biggest disagreement`. ko `오늘의 3줄 요약` / `합의 변화 최대` / `최다 언급` / `의견 차이 최대`. A missing line is left out. If all three are missing and the sample or window is real, the body is the page's empty sentence for that language.
 
-The consensus-shift line uses the i18n phrase for `對比昨日（今日至今）` once, with no outer parentheses around it: zh `淨看多比例 -100% → +75% 對比昨日（今日至今）`, en `net bullish -100% → +75% vs yesterday (today so far)`, ko `순강세 비율 -100% → +75% 어제 대비 (오늘 현재까지)`.
+The consensus-shift line uses the daily-tab phrase for the same hours yesterday once, with no outer parentheses around it: zh `淨看多比例 -100% → +75% 對比昨日同時段`, en `net bullish -100% → +75% vs the same hours yesterday`, ko `순강세 비율 -100% → +75% 어제 같은 시간대 대비`. The page wraps that phrase in another pair of parentheses; the post does not.
 
-Every body includes the window and the sample, for example `10/23 00:00 – 09:55 HKT · 120 posts / 45 accounts` (zh `則貼文` / `個帳號`, ko `게시물` / `계정`). Counts are copied. A missing count is left out.
+The window and the sample are one line, for example `10/23 00:00 – 09:55 HKT · 120 posts / 45 accounts` (zh `則貼文` / `個帳號`, ko `게시물` / `계정`). Counts are copied. A missing count is left out. Threads, Facebook and Instagram keep that line. X drops it only after ticker hashtags, when the post would pass 280.
 
-X is ≤ 280 by `xlen`. Threads is ≤ 500 by `fit_threads`. About half of the six X and Threads copies carry a link: zh and ko on X, en on Threads. Facebook always has the language home URL in the body and in `url`. Instagram has no URL, one link-in-bio line, and 3–5 hashtags. The generator's lines stay in order: the title, then the three facts. The sanitizer does not pull a fact line up to replace the title. Links are `tag_url(url, platform, 'three_lines')` on `/<lang>/`.
+X is ≤ 280 by `xlen` (each URL counts as 23). Every language keeps the title line (`今日三句重點` / `Today in 3 lines` / `오늘의 3줄 요약`) and puts that language's home URL on the last line of the body. `x.<lang>.url` is that same URL. It is non-null exactly when the URL appears in `x.<lang>.text`, and `has_link.x` mirrors it. To fit, drop in order: ticker hashtags (keep the primary tag `#美股` / `#StockMarket` / `#미국주식`), then the window/sample label, then trailing fact lines (keep at least one fact). Never drop the title, the disclaimer or the link.
+
+Threads is ≤ 500 by `fit_threads`. Threads attaches one topic per post, so ticker hashtags are left off (those tickers are already `$TICKER` cashtags in the text). `threads.<lang>.topic` is `美股` / `StockMarket` / `미국주식` with no `#`, and the body ends with exactly one hashtag, `#` plus that topic. The link rule is unchanged: the URL is on `url` only, never in the text. zh and ko have `url` null; en has the Threads UTM url. `has_link.threads` is true exactly when `url` is set.
+
+Facebook always has the language home URL in the body and in `url`. Instagram has no URL, one link-in-bio line, and 3–5 hashtags. The generator's lines stay in order: the title, then the facts. The sanitizer does not pull a fact line up to replace the title. Links are `tag_url(url, platform, 'three_lines')` on `/<lang>/`.
 
 ## `why_posts`
 
