@@ -820,12 +820,13 @@
    "bear": [],
    "split": [
     "SPY",
-    "SPCX",
     "NVDA",
+    "SPCX",
     "BE",
     "TSLA",
     "CRWV",
     "GEV",
+    "AAPL",
     "VRT",
     "DRAM",
     "LRCX"
@@ -835,9 +836,9 @@
     "2026-10-26T06:54"
    ],
    "top": [
+    "NVDA",
     "SPY",
     "SPCX",
-    "NVDA",
     "AMZN",
     "MSFT",
     "SNDK",
@@ -847,9 +848,9 @@
     "BE"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-26 15:53"
+   "updated_hkt": "2026-10-26 16:41"
   }
  },
- "updated_hkt": "2026-10-26 15:53",
+ "updated_hkt": "2026-10-26 16:41",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
