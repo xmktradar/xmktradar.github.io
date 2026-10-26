@@ -3,14 +3,15 @@
 zh: Mandarin, zh-CN-XiaoxiaoNeural, rate +10%. Lines, voice, rate and the zh pass are unchanged.
 en: English, en-US-AndrewNeural (override with VO_VOICE_en). Starts at +10%. If the video would
     run past 29.0s, retries +20% then +30%, then the same rates on a shorter script. Still too
-    long: that video is left out of vo.json (no voice), never shipped over 29.0s.
+    long: that video is left out of vo.json, so tools/carousel_video.js skips the language
+    (no silent / music-only mp4). Never shipped over 29.0s.
 ko: no script, so no voiceover.
 
 Reads work/carousel.json (the same slides the pictures use), writes one line per video scene
 (8 scenes: hook, reveal, vs, 4 pictures, outro), reads each line with edge-tts (free, no key)
 and writes <out>/vo.json: {"<slot>-<lang>": [{"file": ".../vo-0.mp3", "dur": 2.31}, ...]}.
 A video gets a voice only when every line of it was read; anything failing leaves that video
-out of vo.json, so tools/carousel_video.js makes it without a voice. Lines never say buy, sell,
+out of vo.json, so tools/carousel_video.js skips that language. Lines never say buy, sell,
 a price target or a prediction.
 Usage: python3 tools/carousel_vo.py work/carousel.json <out dir>   (VO_LANGS=zh,en  VO_VOICE_zh=... VO_VOICE_en=...)
        VO_FAKE=1 makes silent stand-in files of a plausible length (local tests, no network).
@@ -218,12 +219,12 @@ def render_lines(texts, voice, out_dir, key, rate):
 
 
 def fit_en(job, voice, out_dir, key):
-    """Speak English, speeding up or shortening until the video would be <= 29.0s. None drops the voice."""
+    """Speak English, speeding up or shortening until the video would be <= 29.0s. None skips the language."""
     last = None
     for short, rate in EN_TRIES:
         got = render_lines(en_lines(job, short=short), voice, out_dir, key, rate)
         if not got:
-            print(f'::warning::{key} 配音失敗，今次出冇配音版')
+            print(f'::warning::{key} 配音失敗，今次唔出呢條片')
             return None
         total = video_total([g['dur'] for g in got])
         last = total
@@ -232,7 +233,7 @@ def fit_en(job, voice, out_dir, key):
             print(f'voiceover: {key} final {total:.2f}s')
             return got
     bare = video_total(None)
-    print(f'::warning::{key} 英文旁白 {last:.2f}s 超過 {MAX_VIDEO_S:.1f} 秒，今次出冇配音版（final {bare:.2f}s）')
+    print(f'::warning::{key} 英文旁白 {last:.2f}s 超過 {MAX_VIDEO_S:.1f} 秒，今次唔出呢條片（bare {bare:.2f}s）')
     return None
 
 
@@ -260,7 +261,7 @@ def main(job_file, out_dir):
             result[key] = got
             print(f'voiceover: {key} {sum(g["dur"] for g in got):.1f}s')
         else:
-            print(f'::warning::{key} 配音失敗，今次出冇配音版')
+            print(f'::warning::{key} 配音失敗，今次唔出呢條片')
     json.dump(result, open(os.path.join(out_dir, 'vo.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
 

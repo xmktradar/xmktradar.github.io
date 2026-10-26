@@ -1,7 +1,8 @@
 // Draw the daily multi-picture posts (4 pictures, 1080x1350 JPEG) from tools/carousel.html.
 // Usage: node tools/carousel.js work/carousel.json (written by tools/carousel.py).
 // Writes og/c/<day>-<slot>-<lang>-<n>.jpg, plus a square <n>-fb.jpg copy for Facebook (4 square photos show as a
-// 2x2 grid there; 4:5 photos get cropped into one big picture and a column); keeps only today's and yesterday's.
+// 2x2 grid there; 4:5 photos get cropped into one big picture and a column); keeps only today's and yesterday's
+// (jpg, mp4, cover, and .vo.json voiceover markers).
 const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');

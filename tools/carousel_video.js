@@ -3,13 +3,15 @@
 // For each job whose slot is in VIDEO_SLOTS (default 1230) and language in VIDEO_LANGS (default zh,en) it writes og/c/<day>-<slot>-<lang>.mp4:
 // 1080x1920, a finished cover (~0.7s, also saved as og/c/<day>-<slot>-<lang>-cover.jpg) then beat-synced hard cuts
 // over 8 scenes (hook, reveal, bull vs bear, the 4 pictures, outro),
-// a generated beat and sound effects (tools/carousel_audio.py), and a voiceover where
-// tools/carousel_vo.py could read one (VO_LANGS, default zh,en; Korean stays without one).
-// The voice starts after the cover (same +0.15s lead-in inside each scene). English stays <= 29s; the guard includes the cover.
+// a generated beat and sound effects (tools/carousel_audio.py), and a voiceover from tools/carousel_vo.py
+// (VO_LANGS, default zh,en). Tim 2026-10-26: every published daily short must have a voiceover. If a
+// language has no VO entry, the VO files are missing/failed, or the voiced cut would exceed 29s
+// (cover included), that language is skipped — no silent or music-only mp4. After the mixed mp4 is
+// confirmed, a sidecar og/c/<day>-<slot>-<lang>.vo.json is written {voice, duration, vo:true}.
+// The voice starts after the cover (same +0.15s lead-in inside each scene).
 // The 4 pictures are drawn by the same tools/carousel.html as the stills and are always shown whole.
-// The three languages render at once.
-// Old videos go with the pictures (tools/carousel.js keeps only today's and yesterday's og/c files).
-const { chromium } = require('playwright');
+// The languages render at once.
+// Old videos go with the pictures (tools/carousel.js keeps only today's and yesterday's og/c files, including markers).
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
@@ -19,6 +21,8 @@ const FPS = 24, BPM = 124, BEAT = 60 / BPM;
 const BASE = [['hook', 5], ['reveal', 4], ['vs', 6], ['s1', 7], ['s2', 7], ['s3', 6], ['s4', 6], ['outro', 7]];
 const COVER_FRAMES = 17; // ~0.7s. Keep in sync with COVER_FRAMES in tools/carousel_vo.py.
 const COVER = COVER_FRAMES / FPS;
+const MAX_VIDEO_S = 29;
+const VOICES = { zh: 'zh-CN-XiaoxiaoNeural', en: 'en-US-AndrewNeural', ko: 'ko-KR-SunHiNeural' };
 // Cover copy. Numbers and tickers come from the job slides, not from here. en has no Chinese.
 const COVER_TEXT = {
   zh: { title: '每日精選', discussed: '最多人討論', bull: '最多人睇好', foot: '⚠️ 唔構成投資建議' },
@@ -28,6 +32,50 @@ const COVER_TEXT = {
 const SLOTS = (process.env.VIDEO_SLOTS || '1230').split(',').filter(Boolean);
 const LANGS = (process.env.VIDEO_LANGS || 'zh,en').split(',').filter(Boolean);  // Tim 2026-10-25: Chinese and English only
 const TOOLS = __dirname;
+
+function voiceName(lang) {
+  return process.env['VO_VOICE_' + lang] || VOICES[lang] || lang;
+}
+
+function voMarkerPath(outFile) {
+  return outFile.replace(/\.mp4$/i, '.vo.json');
+}
+
+function voicedTotal(vo) {
+  let acc = 0;
+  for (let i = 0; i < BASE.length; i++) acc += Math.max(BASE[i][1], Math.ceil((vo[i].dur + 0.4) / BEAT)) * BEAT;
+  return acc + COVER;
+}
+
+function voiceoverSkip(vo, exists = p => fs.existsSync(p)) {
+  if (!Array.isArray(vo) || vo.length < BASE.length) return 'no voiceover';
+  for (let i = 0; i < BASE.length; i++) {
+    const v = vo[i];
+    if (!v || typeof v.dur !== 'number' || !v.file || !exists(v.file)) return 'voiceover audio missing';
+  }
+  const total = voicedTotal(vo);
+  if (total > MAX_VIDEO_S) return `voiced ${total.toFixed(2)}s > ${MAX_VIDEO_S}`;
+  return null;
+}
+
+function removePartial(outFile) {
+  for (const p of [outFile + '.part.mp4']) {
+    try { fs.unlinkSync(p); } catch (_) {}
+  }
+}
+
+function refuseVideo(job, outFile, why) {
+  removePartial(outFile);
+  const who = job && job.slot ? `${job.slot} ${job.lang}` : outFile;
+  console.log(`::warning::${who} 動態片唔出：${why}`);
+  return why;
+}
+
+function writeVoMarker(outFile, job, total) {
+  fs.writeFileSync(voMarkerPath(outFile), JSON.stringify({
+    voice: voiceName(job.lang), duration: Math.round(total * 1000) / 1000, vo: true,
+  }));
+}
 
 const num = (s, d = 0) => { const m = String(s || '').match(/\d+/); return m ? +m[0] : d; };
 function words(lang, S0) {
@@ -77,24 +125,20 @@ function chrome(gt){
 }`;
 
 async function one(browser, job, vo, outFile) {
+  const why = voiceoverSkip(vo);
+  if (why) { refuseVideo(job, outFile, why); return; }
   const W = words(job.lang, job.slides[0]);
   const C = coverPack(job);
   // scene lengths in beats; a voiced scene grows to fit its line (+0.4 s), in whole beats.
-  // Same sum as carousel_vo.video_total, including the opening cover. English must stay <= 29.0s:
-  // carousel_vo.py fit_en already retries +20%, +30%, then a shorter script. If this total is still over, drop the voice.
-  // zh does not enter the branch, so a zh video that is already <= 29s is unchanged.
-  let SC = BASE.map(([name, b], i) => [name, vo ? Math.max(b, Math.ceil((vo[i].dur + 0.4) / BEAT)) : b]);
-  let starts = []; let acc = 0; for (const [, b] of SC) { starts.push(acc); acc += b * BEAT; }
-  let total = acc + COVER;
-  if (vo && job.lang === 'en' && total > 29) {
-    console.log(`carousel video: en voiceover ${total.toFixed(2)}s > 29, dropping voice`);
-    vo = null;
-    SC = BASE.map(([name, b]) => [name, b]);
-    starts = []; acc = 0; for (const [, b] of SC) { starts.push(acc); acc += b * BEAT; }
-    total = acc + COVER;
-  }
+  // Same sum as carousel_vo.video_total, including the opening cover. zh and en both must stay
+  // <= 29.0s; carousel_vo.py fit_en already retries +20%, +30%, then a shorter script. If this
+  // total is still over, skip the language (never drop the voice and ship a silent cut).
+  const SC = BASE.map(([name, b], i) => [name, Math.max(b, Math.ceil((vo[i].dur + 0.4) / BEAT))]);
+  const starts = []; let acc = 0; for (const [, b] of SC) { starts.push(acc); acc += b * BEAT; }
+  const total = acc + COVER;
   const events = [];
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), `cv-${job.lang}-`));
+  try {
   let frame = 0;
   const shot = pg => pg.screenshot({ path: path.join(dir, String(frame++).padStart(4, '0') + '.jpg'), type: 'jpeg', quality: 88 });
 
@@ -153,23 +197,38 @@ async function one(browser, job, vo, outFile) {
   const ev = path.join(dir, 'events.json'), wav = path.join(dir, 'audio.wav');
   events.forEach(e => { e.at += COVER; });
   fs.writeFileSync(ev, JSON.stringify({ total, bpm: BPM, drop: COVER + starts[1], events,
-    vo: vo ? vo.map((v, i) => ({ file: v.file, at: COVER + starts[i] + 0.15 })) : [] }));
-  execFileSync('python3', [path.join(TOOLS, 'carousel_audio.py'), ev, wav], { stdio: 'inherit' });
+    vo: vo.map((v, i) => ({ file: v.file, at: COVER + starts[i] + 0.15 })) }));
   const tmpOut = outFile + '.part.mp4';
-  // JPEG frames are full-range. scale out_range=tv writes limited-range yuv420p (not yuvj420p) for Instagram.
-  execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(FPS), '-i', path.join(dir, '%04d.jpg'), '-i', wav,
-    '-vf', 'scale=1080:1920:in_range=pc:out_range=tv,format=yuv420p',
-    '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '26', '-profile:v', 'high', '-level:v', '4.0',
-    '-pix_fmt', 'yuv420p', '-color_range', 'tv', '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709',
-    '-c:a', 'aac', '-b:a', '128k', '-ar', '44100', '-shortest',
-    '-movflags', '+faststart', tmpOut], { stdio: 'inherit' });
-  fs.renameSync(tmpOut, outFile);
-  fs.rmSync(dir, { recursive: true, force: true });
+  try {
+    execFileSync('python3', [path.join(TOOLS, 'carousel_audio.py'), ev, wav], { stdio: 'inherit' });
+    // JPEG frames are full-range. scale out_range=tv writes limited-range yuv420p (not yuvj420p) for Instagram.
+    execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(FPS), '-i', path.join(dir, '%04d.jpg'), '-i', wav,
+      '-vf', 'scale=1080:1920:in_range=pc:out_range=tv,format=yuv420p',
+      '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '26', '-profile:v', 'high', '-level:v', '4.0',
+      '-pix_fmt', 'yuv420p', '-color_range', 'tv', '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709',
+      '-c:a', 'aac', '-b:a', '128k', '-ar', '44100', '-shortest',
+      '-movflags', '+faststart', tmpOut], { stdio: 'inherit' });
+    fs.renameSync(tmpOut, outFile);
+  } catch (e) {
+    removePartial(outFile);
+    try { fs.unlinkSync(outFile); } catch (_) {}
+    throw e;
+  }
+  try {
+    writeVoMarker(outFile, job, total);
+  } catch (e) {
+    try { fs.unlinkSync(outFile); } catch (_) {}
+    try { fs.unlinkSync(voMarkerPath(outFile)); } catch (_) {}
+    throw e;
+  }
   console.log(`carousel cover ${coverJpg}`);
-  console.log(`carousel video ${outFile} ${total.toFixed(1)}s${vo ? ' (voiceover)' : ''}`);
+  console.log(`carousel video ${outFile} ${total.toFixed(1)}s (voiceover)`);
+  } finally {
+    fs.rmSync(dir, { recursive: true, force: true });
+  }
 }
 
-(async () => {
+async function main() {
   const file = process.argv[2];
   const all = JSON.parse(fs.readFileSync(file, 'utf8'));
   const jobs = all.jobs.filter(j => SLOTS.includes(j.slot) && LANGS.includes(j.lang));
@@ -179,11 +238,35 @@ async function one(browser, job, vo, outFile) {
     const voDir = path.join(path.dirname(path.resolve(file)), 'vo');
     execFileSync('python3', [path.join(TOOLS, 'carousel_vo.py'), file, voDir], { stdio: 'inherit', timeout: 240000 });
     vo = JSON.parse(fs.readFileSync(path.join(voDir, 'vo.json'), 'utf8'));
-  } catch (e) { console.log('::warning::配音整唔到，今次出冇配音版：' + e.message); }
-  const browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
+  } catch (e) { console.log('::warning::配音整唔到，今次唔出片：' + e.message); }
   fs.mkdirSync('og/c', { recursive: true });
-  const res = await Promise.allSettled(jobs.map(j =>
-    one(browser, j, vo[`${j.slot}-${j.lang}`], `og/c/${j.date}-${j.slot}-${j.lang}.mp4`)));
+  const ready = [];
+  for (const j of jobs) {
+    const clips = vo[`${j.slot}-${j.lang}`];
+    const out = `og/c/${j.date}-${j.slot}-${j.lang}.mp4`;
+    const why = voiceoverSkip(clips);
+    if (why) { refuseVideo(j, out, why); continue; }
+    ready.push([j, clips, out]);
+  }
+  if (!ready.length) { console.log('carousel video: no voiced slot to film'); return; }
+  const { chromium } = require('playwright');
+  const browser = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
+  const res = await Promise.allSettled(ready.map(([j, clips, out]) => one(browser, j, clips, out)));
   await browser.close();
-  res.forEach((r, i) => { if (r.status === 'rejected') console.log(`::warning::${jobs[i].slot} ${jobs[i].lang} 動態片整唔到：${r.reason && r.reason.message}`); });
-})();
+  res.forEach((r, i) => {
+    if (r.status === 'rejected') {
+      const [j, , out] = ready[i];
+      removePartial(out);
+      try { fs.unlinkSync(out); } catch (_) {}
+      try { fs.unlinkSync(voMarkerPath(out)); } catch (_) {}
+      console.log(`::warning::${j.slot} ${j.lang} 動態片整唔到：${r.reason && r.reason.message}`);
+    }
+  });
+}
+
+if (require.main === module) main();
+
+module.exports = {
+  voicedTotal, voiceoverSkip, refuseVideo, removePartial, writeVoMarker, voMarkerPath,
+  voiceName, MAX_VIDEO_S, COVER, BEAT, BASE, VOICES,
+};

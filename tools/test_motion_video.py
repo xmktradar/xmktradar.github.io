@@ -1,6 +1,7 @@
 """Motion videos (tools/MOTION_VIDEO.md): which slots and languages get one, the voiceover lines,
 dropping videos that were not made, and the /social/ page. Offline, no browser, no network.
 The 29s guard is exercised on the VO_FAKE=1 path (durations are supplied; no edge-tts).
+Tim 2026-10-26: no silent/music-only mp4; a language without VO is skipped.
 Run from the repo root: python3 tools/test_motion_video.py
 """
 import json
@@ -9,6 +10,7 @@ import re
 import subprocess
 import sys
 import tempfile
+from contextlib import contextmanager
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 os.environ['WORK_DIR'] = tempfile.mkdtemp(prefix='motion-test-')
@@ -22,6 +24,9 @@ os.environ.pop('VO_VOICE_zh', None)
 import carousel  # noqa: E402
 import carousel_vo  # noqa: E402
 from carousel_video_post import prune  # noqa: E402
+
+TOOLS = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(TOOLS)
 
 URL = 'https://thecrowdtape.com/og/c/2026-10-23-1230-{}.mp4'
 # Snapshot of lines(job('zh')) before the English voiceover change. Do not edit to match a new zh script.
@@ -253,33 +258,258 @@ def test_vo_missing_sections():
     assert ls[6] == '你站哪邊？', ls[6]
 
 
-def test_prune():
-    sp = {'slots': {'1230': {'video': {'zh': URL.format('zh'), 'en': URL.format('en')}}, '1630': {'images': {}}}}
-    have = {'og/c/2026-10-23-1230-zh.mp4'}
-    assert prune(sp, exists=lambda p: p in have)
-    assert sp['slots']['1230']['video'] == {'zh': URL.format('zh')}
-    assert not prune(sp, exists=lambda p: p in have)  # nothing more to drop
-    assert prune(sp, exists=lambda p: False)
-    assert 'video' not in sp['slots']['1230']
-
-
 COVER_URL = 'https://thecrowdtape.com/og/c/2026-10-23-1230-{}-cover.jpg'
 HAN = re.compile(r'[\u3400-\u9fff]')
+MARK_ZH = {'voice': 'zh-CN-XiaoxiaoNeural', 'duration': 27.0, 'vo': True}
+MARK_EN = {'voice': 'en-US-AndrewNeural', 'duration': 26.5, 'vo': True}
+
+
+@contextmanager
+def _ogc(files):
+    """Write og/c files in a temp dir and chdir there so prune sees relative paths."""
+    d = tempfile.mkdtemp(prefix='ogc-')
+    cwd = os.getcwd()
+    try:
+        os.chdir(d)
+        os.makedirs('og/c', exist_ok=True)
+        for name, body in files.items():
+            path = os.path.join('og/c', name)
+            if isinstance(body, dict):
+                json.dump(body, open(path, 'w', encoding='utf-8'))
+            else:
+                open(path, 'wb').write(b'x' if body is True else body)
+        yield d
+    finally:
+        os.chdir(cwd)
+
+
+def _slot(langs=('zh', 'en'), cover=False):
+    sl = {'video': {l: URL.format(l) for l in langs}}
+    if cover:
+        sl['video_cover'] = {l: COVER_URL.format(l) for l in langs}
+    return {'slots': {'1230': sl, '1630': {'images': {}}}}
+
+
+def _node(script, args=None):
+    env = os.environ.copy()
+    env.pop('FORCE_COLOR', None)
+    env['NO_COLOR'] = '1'
+    proc = subprocess.run(['node', '-e', script, '--', *(args or [])], text=True, capture_output=True, cwd=ROOT, env=env)
+    assert proc.returncode == 0, proc.stderr + proc.stdout
+    return proc.stdout
+
+
+def test_no_vo_no_mp4():
+    """No VO entry (zh or en): skip the language, delete .part.mp4, write neither mp4 nor marker."""
+    d = tempfile.mkdtemp()
+    out = os.path.join(d, '2026-10-23-1230-zh.mp4')
+    open(out + '.part.mp4', 'w').write('part')
+    script = r'''
+const { voiceoverSkip, refuseVideo } = require('./tools/carousel_video.js');
+const fs = require('fs');
+const out = process.argv[1];
+const why = voiceoverSkip(null);
+if (!why) process.exit(2);
+refuseVideo({slot:'1230', lang:'zh'}, out, why);
+if (fs.existsSync(out + '.part.mp4')) process.exit(3);
+if (fs.existsSync(out)) process.exit(4);
+if (fs.existsSync(out.replace(/\.mp4$/, '.vo.json'))) process.exit(5);
+const en = voiceoverSkip(undefined);
+if (!en) process.exit(6);
+const empty = voiceoverSkip([]);
+if (!empty) process.exit(7);
+console.log(why);
+'''
+    text = _node(script, [out])
+    assert 'no voiceover' in text
+    assert not os.path.exists(out)
+    assert not os.path.exists(out + '.part.mp4')
+    src = open(os.path.join(TOOLS, 'carousel_video.js'), encoding='utf-8').read()
+    assert 'dropping voice' not in src
+    assert '出冇配音版' not in src
+
+
+def test_over_29_no_mp4():
+    """Voiced cut > 29s (zh and en): skip, no mp4. Same rule for both languages."""
+    d = tempfile.mkdtemp()
+    clips = []
+    for i in range(8):
+        p = os.path.join(d, f'vo-{i}.mp3')
+        open(p, 'wb').write(b'x')
+        clips.append({'file': p, 'dur': 5.5})
+    out = os.path.join(d, '2026-10-23-1230-en.mp4')
+    open(out + '.part.mp4', 'w').write('part')
+    script = r'''
+const { voiceoverSkip, refuseVideo, voicedTotal, MAX_VIDEO_S } = require('./tools/carousel_video.js');
+const fs = require('fs');
+const clips = JSON.parse(process.argv[1]);
+const out = process.argv[2];
+if (!(voicedTotal(clips) > MAX_VIDEO_S)) process.exit(2);
+for (const lang of ['en', 'zh']) {
+  const why = voiceoverSkip(clips);
+  if (!why || !why.includes('> 29')) process.exit(3);
+  refuseVideo({slot:'1230', lang}, out, why);
+}
+if (fs.existsSync(out + '.part.mp4')) process.exit(4);
+if (fs.existsSync(out)) process.exit(5);
+if (fs.existsSync(out.replace(/\.mp4$/, '.vo.json'))) process.exit(6);
+const short = clips.map(c => Object.assign({}, c, {dur: 1.2}));
+if (voiceoverSkip(short)) process.exit(7);
+console.log('ok');
+'''
+    _node(script, [json.dumps(clips), out])
+    assert not os.path.exists(out)
+    src = open(os.path.join(TOOLS, 'carousel_video.js'), encoding='utf-8').read()
+    assert "job.lang === 'en' && total > 29" not in src
+
+
+def test_missing_vo_audio_no_mp4():
+    d = tempfile.mkdtemp()
+    clips = [{'file': os.path.join(d, 'missing.mp3'), 'dur': 1.2} for _ in range(8)]
+    script = r'''
+const { voiceoverSkip } = require('./tools/carousel_video.js');
+const why = voiceoverSkip(JSON.parse(process.argv[1]));
+if (why !== 'voiceover audio missing') process.exit(2);
+console.log(why);
+'''
+    assert 'voiceover audio missing' in _node(script, [json.dumps(clips)])
+
+
+def test_vo_marker_after_mp4():
+    """Sidecar is written only as {voice, duration, vo:true}, and in source after renameSync."""
+    d = tempfile.mkdtemp()
+    out = os.path.join(d, '2026-10-23-1230-zh.mp4')
+    open(out, 'wb').write(b'x')
+    script = r'''
+const { writeVoMarker, voMarkerPath } = require('./tools/carousel_video.js');
+const fs = require('fs');
+const out = process.argv[1];
+writeVoMarker(out, {lang: 'zh'}, 27.125);
+const mark = JSON.parse(fs.readFileSync(voMarkerPath(out), 'utf8'));
+if (mark.vo !== true) process.exit(2);
+if (mark.voice !== 'zh-CN-XiaoxiaoNeural') process.exit(3);
+if (mark.duration !== 27.125) process.exit(4);
+console.log(JSON.stringify(mark));
+'''
+    mark = json.loads(_node(script, [out]).strip())
+    assert mark == {'voice': 'zh-CN-XiaoxiaoNeural', 'duration': 27.125, 'vo': True}
+    src = open(os.path.join(TOOLS, 'carousel_video.js'), encoding='utf-8').read()
+    assert src.index('fs.renameSync(tmpOut, outFile)') < src.index('writeVoMarker(outFile, job, total);')
+
+
+def test_prune():
+    """Missing en file (and its marker) drops en; missing everything drops the key."""
+    with _ogc({
+        '2026-10-23-1230-zh.mp4': True,
+        '2026-10-23-1230-zh.vo.json': MARK_ZH,
+    }):
+        sp = _slot()
+        assert prune(sp, probe=lambda p: None)
+        assert sp['slots']['1230']['video'] == {'zh': URL.format('zh')}
+        assert not prune(sp, probe=lambda p: None)
+    with _ogc({}):
+        sp = _slot()
+        assert prune(sp, probe=lambda p: None)
+        assert 'video' not in sp['slots']['1230']
 
 
 def test_prune_cover():
     """video_cover drops a language whose poster is missing, and the key when none is left. video stays."""
-    sp = {'slots': {'1230': {
-        'video': {'zh': URL.format('zh'), 'en': URL.format('en')},
-        'video_cover': {'zh': COVER_URL.format('zh'), 'en': COVER_URL.format('en')}}}}
-    have = {'og/c/2026-10-23-1230-zh.mp4', 'og/c/2026-10-23-1230-en.mp4', 'og/c/2026-10-23-1230-zh-cover.jpg'}
-    assert prune(sp, exists=lambda p: p in have)
-    assert sp['slots']['1230']['video'] == {'zh': URL.format('zh'), 'en': URL.format('en')}
-    assert sp['slots']['1230']['video_cover'] == {'zh': COVER_URL.format('zh')}
-    assert not prune(sp, exists=lambda p: p in have)
-    assert prune(sp, exists=lambda p: p.endswith('.mp4'))
-    assert 'video_cover' not in sp['slots']['1230']
-    assert set(sp['slots']['1230']['video']) == {'zh', 'en'}
+    with _ogc({
+        '2026-10-23-1230-zh.mp4': True,
+        '2026-10-23-1230-en.mp4': True,
+        '2026-10-23-1230-zh.vo.json': MARK_ZH,
+        '2026-10-23-1230-en.vo.json': MARK_EN,
+        '2026-10-23-1230-zh-cover.jpg': True,
+    }):
+        sp = _slot(cover=True)
+        assert prune(sp, probe=lambda p: None)
+        assert sp['slots']['1230']['video'] == {'zh': URL.format('zh'), 'en': URL.format('en')}
+        assert sp['slots']['1230']['video_cover'] == {'zh': COVER_URL.format('zh')}
+        assert not prune(sp, probe=lambda p: None)
+    with _ogc({
+        '2026-10-23-1230-zh.mp4': True,
+        '2026-10-23-1230-en.mp4': True,
+        '2026-10-23-1230-zh.vo.json': MARK_ZH,
+        '2026-10-23-1230-en.vo.json': MARK_EN,
+    }):
+        sp = _slot(cover=True)
+        assert prune(sp, probe=lambda p: None)
+        assert 'video_cover' not in sp['slots']['1230']
+        assert set(sp['slots']['1230']['video']) == {'zh', 'en'}
+
+
+def test_prune_without_marker():
+    with _ogc({'2026-10-23-1230-zh.mp4': True}):
+        sp = _slot(langs=('zh',), cover=True)
+        assert prune(sp, probe=lambda p: {'audio': True, 'duration': 20})
+        assert 'video' not in sp['slots']['1230']
+        assert 'video_cover' not in sp['slots']['1230']
+
+
+def test_prune_without_audio():
+    with _ogc({
+        '2026-10-23-1230-zh.mp4': True,
+        '2026-10-23-1230-zh.vo.json': MARK_ZH,
+        '2026-10-23-1230-zh-cover.jpg': True,
+    }):
+        sp = _slot(langs=('zh',), cover=True)
+        assert prune(sp, probe=lambda p: {'audio': False, 'duration': 20})
+        assert 'video' not in sp['slots']['1230']
+        assert 'video_cover' not in sp['slots']['1230']
+
+
+def test_prune_too_long():
+    with _ogc({
+        '2026-10-23-1230-zh.mp4': True,
+        '2026-10-23-1230-zh.vo.json': MARK_ZH,
+    }):
+        sp = _slot(langs=('zh',))
+        assert prune(sp, probe=lambda p: {'audio': True, 'duration': 29.01})
+        assert 'video' not in sp['slots']['1230']
+
+
+def test_prune_happy_path():
+    with _ogc({
+        '2026-10-23-1230-zh.mp4': True,
+        '2026-10-23-1230-en.mp4': True,
+        '2026-10-23-1230-zh.vo.json': MARK_ZH,
+        '2026-10-23-1230-en.vo.json': MARK_EN,
+        '2026-10-23-1230-zh-cover.jpg': True,
+        '2026-10-23-1230-en-cover.jpg': True,
+    }):
+        sp = _slot(cover=True)
+        assert not prune(sp, probe=lambda p: {'audio': True, 'duration': 29.0})
+        assert set(sp['slots']['1230']['video']) == {'zh', 'en'}
+        assert set(sp['slots']['1230']['video_cover']) == {'zh', 'en'}
+        # no ffprobe: marker is enough
+        assert not prune(sp, probe=lambda p: None)
+
+
+def test_prune_vo_false_and_cover_follows_video():
+    with _ogc({
+        '2026-10-23-1230-zh.mp4': True,
+        '2026-10-23-1230-zh.vo.json': {'voice': 'x', 'duration': 20, 'vo': False},
+        '2026-10-23-1230-en.mp4': True,
+        '2026-10-23-1230-en.vo.json': MARK_EN,
+        '2026-10-23-1230-zh-cover.jpg': True,
+        '2026-10-23-1230-en-cover.jpg': True,
+    }):
+        sp = _slot(cover=True)
+        assert prune(sp, probe=lambda p: None)
+        assert sp['slots']['1230']['video'] == {'en': URL.format('en')}
+        assert sp['slots']['1230']['video_cover'] == {'en': COVER_URL.format('en')}
+
+
+def test_og_c_cleanup_includes_markers():
+    src = open(os.path.join(TOOLS, 'carousel.js'), encoding='utf-8').read()
+    assert "fs.readdirSync('og/c')" in src
+    assert 'm[1] < keep' in src
+    pat = re.compile(r'^(\d{4}-\d{2}-\d{2})-')
+    assert pat.match('2026-10-23-1230-zh.vo.json').group(1) == '2026-10-23'
+    yml = open(os.path.join(ROOT, '.github/workflows/update-site.yml'), encoding='utf-8').read()
+    assert 'git add -A' in yml and ' og/' in yml
+    assert '.vo.json' in yml or 'voiceover markers' in yml
 
 
 def test_cover_text_and_encode():
