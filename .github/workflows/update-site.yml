@@ -155,6 +155,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          # og/ includes og/c motion mp4s, cover jpgs, and *.vo.json voiceover markers
           git add -A index.html zh/ en/ ko/ support/ advertise/ about/ newsletter/ tools/index.html data/ og/ px/ av/ embed/ social/ sitemap.xml llms-full.txt 404.html ccab4c5e388dc31f07a4976abba71466.txt
           git diff --cached --quiet && exit 0
           git commit -m "定時重建 $(date '+%Y-%m-%d %H:%M') HKT"
