@@ -25,6 +25,8 @@ STRIP = [
     re.compile(r'<style\b.*?</style>', re.S),
     re.compile(r'<script\b(?![^>]*ld\+json).*?</script>', re.S),
     re.compile(r'<nav class="lang-sw".*?</nav>', re.S),
+    re.compile(r'<nav id="hot-stocks".*?</nav>', re.S),  # shared 7-day rank, same on every stock page
+    re.compile(r'<nav id="popular-stocks".*?</nav>', re.S),  # previous shared row
     re.compile(r'<nav id="stock-index".*?</nav>', re.S),  # site-wide list of every stock page, reordered each build
     re.compile(r'<[^>]+>'),
     re.compile(r'\s+'),
