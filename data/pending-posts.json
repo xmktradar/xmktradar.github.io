@@ -2,137 +2,554 @@
  "note": "已抓取但未經 Grok 分析嘅帖，只收股票同宏觀帖（閒聊帖唔寫），有股票代號嘅排最前，等超過 24 個鐘就唔再等。",
  "posts": [
   {
-   "id": "2114773748784247113",
+   "id": "2114792755205460326",
+   "handle": "WallStJesus",
+   "name": "WALL ST JESUS (FZN)",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T18:54:18Z",
+   "url": "https://x.com/WallStJesus/status/2114792755205460326",
+   "text": "$NTSK",
+   "quoted": {
+    "handle": "WallStJesus",
+    "text": "MORE REPEAT BUYING DETECTED IN CYBER-SEC UNDERBELLY PLAYS $RBRK $NTSK"
+   },
+   "media": [
+    "https://pbs.twimg.com/media/HVlAzVtWsAEfbdN.png?name=orig"
+   ],
+   "likes": 0,
+   "views": 175,
+   "cashtags": [
+    "NTSK"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2114791006579364084",
+   "handle": "michaelsikand",
+   "name": "Michael Sikand",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T18:47:21Z",
+   "url": "https://x.com/michaelsikand/status/2114791006579364084",
+   "text": "The craziest stat from the $ANT S-1 is that it will have more cash than any other tech company on earth.",
+   "quoted": {
+    "handle": "Kalshi_Finance",
+    "text": "BREAKING: Anthropic to raise over $100B at a $1.5–$2T valuation, per WSJ\n\n90% chance of IPO in November"
+   },
+   "media": [
+    "https://pbs.twimg.com/media/HVk-iz7bEAAXlkA.jpg?name=orig"
+   ],
+   "likes": 16,
+   "views": 3322,
+   "cashtags": [
+    "ANT"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2114790928909025441",
+   "handle": "leadlagreport",
+   "name": "Michael A. Gayed, CFA",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T18:47:03Z",
+   "url": "https://x.com/leadlagreport/status/2114790928909025441",
+   "text": "Keep your portfolio in step with policy trends. The Free Markets ETF ($FMKT) identifies companies likely to win from deregulation.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVk_JJrXYAIqPcX.jpg?name=orig"
+   ],
+   "likes": 1,
+   "views": 2087,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2114790930318311657",
+   "handle": "leadlagreport",
+   "name": "Michael A. Gayed, CFA",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "leadlagreport"
+   },
+   "time_utc": "2026-10-26T18:47:03Z",
+   "url": "https://x.com/leadlagreport/status/2114790930318311657",
+   "text": "Learn more about $FMKT at http://freemarketsetf.com.\n\nThe subadvisors, Point Bridge, SYKON, and Tactical Rotation Management, use various screening tools to help identify companies that fit the Fund's investment strategy.  Positions are determined by what stocks the investment committee believes likely benefit the most from deregulation.\n\nLead-Lag Publishing, LLC is not an affiliate of Tidal/Toroso, Tactical Rotation Management, LLC, SYKON Capital, Point Bridge Capital, LLC or ACA/Foreside.",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 562,
+   "cashtags": [
+    "FMKT"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2114790537979113505",
+   "handle": "StockSavvyShay",
+   "name": "Shay Boloor",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T18:45:29Z",
+   "url": "https://x.com/StockSavvyShay/status/2114790537979113505",
+   "text": "$NBIS has a real shot at becoming a megacap in AI economy and I've been adding during this drawdown because Token Factory could help it earn more from the same GPUs as inference demand grows.\n\nAnd unlike the “guppies” Elon warned about, Nebius has ~$8B in cash and expects over $9B in customer prepayments to help fund that growth.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2114790381909057536/img/qCUFHCe0dSZXICuc.jpg"
+   ],
+   "likes": 51,
+   "views": 8576,
+   "cashtags": [
+    "NBIS"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2114788838019330446",
    "handle": "scottmelker",
    "name": "The Wolf Of All Streets",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-26T17:38:46Z",
-   "url": "https://x.com/scottmelker/status/2114773748784247113",
-   "text": "$BTC's weekend volatility strikes again: a $3K dip to $79K flushes $815M in leverage, about two-thirds of the FTX collapse day's total.\n\n\"We never get consensus on the price of Bitcoin, but we do always know what is going to happen when there's even a little bit of volatility, and that's weekend leverage got liquidated.\"\n\n\"On the weekends, there's more volatility. There are less people defending the walls. There's less volume. That means you get bigger moves from smaller buys and sells. And that means you get a massive leverage flush. And this weekend, $815 million over a 24-hour period window.\"\n\n\"Just to put this in perspective, I believe the day FTX was announced going under, the entire leverage flush was $1.2 billion.\"\n\n\"Now you get $815 million just because Bitcoin goes from $82,000 to $79,000 and back into the 80s. It's absolutely crazy. Remember that a year ago on October 10th, we had over $19 billion, like 17 FTXs in one day.\"",
+   "time_utc": "2026-10-26T18:38:44Z",
+   "url": "https://x.com/scottmelker/status/2114788838019330446",
+   "text": "Franklin Templeton's upcoming Bitcoin DRIP ETFs: investors buy stocks, but their dividends go into $BTC.\n\n\"Franklin Templeton's new ETFs, two of them, could make millions of investors own Bitcoin without realizing it.\"\n\n\"Four updated prospectuses for two Bitcoin DRIP ETFs. That's dividend reinvestment plans, DRIP, right?\"\n\n\"It's a blend. 95% equities, 5% Bitcoin. So people won't really notice that it's in there. It gives you that 5% allocation we talk about where it can make a meaningful difference to the upside, but doesn't really hurt you to the downside.\"\n\n\"The real story is that when the dividends come for all of those equities, they will be slowly reinvested only into Bitcoin. So the Bitcoin will slowly grow with time as the dividends are reinvested.\"\n\n\"My friends at People's Reserve are doing Bitcoin bonds. It's 80% Treasuries, 20% Bitcoin. It caps the downside entirely. There's no downside risk over time.\"\n\n\"If Bitcoin goes up with CAGRs of 20, 35%, you double, triple, quintuple the amount on the bond. You capture the upside of Bitcoin without any of the downside.\"",
    "quoted": {
     "handle": "scottmelker",
     "text": "The Daily Wolf On Yahoo Finance https://x.com/i/broadcasts/1rGmqqDDyEVGy"
    },
    "media": [
-    "https://pbs.twimg.com/amplify_video_thumb/2114773146926718978/img/ODGvQ1IsRNxMTf9c.jpg"
+    "https://pbs.twimg.com/amplify_video_thumb/2114788355724685312/img/iT5S_xVySixvsYxH.jpg"
    ],
-   "likes": 4,
-   "views": 4736,
+   "likes": 14,
+   "views": 7658,
    "cashtags": [
-    "BTC'S"
+    "BTC"
    ],
    "n_media": 1
   },
   {
-   "id": "2114770467940622582",
-   "handle": "ThetaWarrior",
-   "name": "Theta Warrior",
+   "id": "2114787492906107079",
+   "handle": "scottmelker",
+   "name": "The Wolf Of All Streets",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-26T17:25:44Z",
-   "url": "https://x.com/ThetaWarrior/status/2114770467940622582",
-   "text": "$SOXX REPEAT JAN 2028 550C BUYER",
+   "time_utc": "2026-10-26T18:33:23Z",
+   "url": "https://x.com/scottmelker/status/2114787492906107079",
+   "text": "KRAKEN PARENT PAYWARD PLANS TO BECOME THE FIRST CFTC-REGULATED DEPLOYER ON HYPERLIQUID $HYPE HIP-3 MARKETS, OFFERING PERPETUAL FUTURES TO US CLIENTS",
    "quoted": null,
    "media": [
-    "https://pbs.twimg.com/media/HVkshfWXIAAe1qQ.png?name=orig"
+    "https://pbs.twimg.com/media/HVk7_qMakAAFfGv.jpg?name=orig",
+    "https://pbs.twimg.com/media/HVk7_pUakAAG3Z9.jpg?name=orig"
    ],
    "likes": 8,
-   "views": 3008,
+   "views": 6268,
    "cashtags": [
-    "SOXX"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2114769981745332718",
-   "handle": "LeopoldTracker_",
-   "name": "Leopold Stock Tracker",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-26T17:23:48Z",
-   "url": "https://x.com/LeopoldTracker_/status/2114769981745332718",
-   "text": "Breaking: Leopold Aschenbrenner's next stock filing exactly 3 weeks away\n\nHere's the complete holdings and performance since Q2 13F on August 14th\n\nTop tier:\n• SanDisk $SNDK: -23%\n• Micron $MU: -7%\n\nSecond tier:\n• Bloom Energy $BE: -10%\n• Taiwan Semiconductor $TSM: 0%\n• Nebius $NBIS: -42%\n\nThird tier:\n• CoreWeave $CRWV: -46%\n• Core Scientific $CORZ: -31%\n• STMicroelectronics $STM: -16%\n• Applied Digital $APLD: -41%\n• Riot Platforms $RIOT: -33%\n• SharonAI $SHAZ: -68%\n• IREN $IREN: -41%\n\nSmaller positions:\n• CleanSpark $CLSK: -34%\n• Keel $KEEL: -36%\n• Solaris Energy $SEI: -0.4%\n• WhiteFiber $WYFI: -66%\n• Bitdeer $BTDR: -20%\n• T1 Energy $TE: -57%\n• Hive Digital $HIVE: -29%\n• Babcock & Wilcox $BW: -58%\n• ProPetro $PUMP: -39%\n• Vishay $VSH: -23%\n• Cerebras $CBRS: -50%\n\nSummary: Since last filing, Leopold purchased call options $AMD, $BE, $CRWV, $SKHY, $SNDK in September, got hit again when Ken Griffin called AI a bubble in October, and now faces a possible trading freeze on Anthropic once it IPOs, since his wife is Dario's chief of staff",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVksBnjWAAAKbR2.jpg?name=orig",
-    "https://pbs.twimg.com/media/HVksDDeXoAAVM4h.png?name=orig"
-   ],
-   "likes": 23,
-   "views": 3547,
-   "cashtags": [
-    "AMD",
-    "APLD",
-    "BE",
-    "BTDR",
-    "BW",
-    "CBRS",
-    "CLSK",
-    "CORZ",
-    "CRWV",
-    "HIVE",
-    "IREN",
-    "KEEL",
-    "MU",
-    "NBIS",
-    "PUMP",
-    "RIOT",
-    "SEI",
-    "SHAZ",
-    "SKHY",
-    "SNDK",
-    "STM",
-    "TE",
-    "TSM",
-    "VSH",
-    "WYFI"
+    "HYPE"
    ],
    "n_media": 2
   },
   {
-   "id": "2114769975252807788",
-   "handle": "Beth_Kindig",
-   "name": "Beth Kindig",
+   "id": "2114786559237177600",
+   "handle": "Mr_Derivatives",
+   "name": "Heisenberg",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-26T17:23:47Z",
-   "url": "https://x.com/Beth_Kindig/status/2114769975252807788",
-   "text": "Lam Research on AI token demand: \n\n“It is reported that average weekly token usage is up roughly 250-fold in the past 18 months.”\n\n$LRCX $NVDA $AMD",
-   "quoted": null,
+   "time_utc": "2026-10-26T18:29:41Z",
+   "url": "https://x.com/Mr_Derivatives/status/2114786559237177600",
+   "text": "$GOOGL for one second or two was the largest company in the world back in May.\n\nBeen going down ever since…\n\n😭",
+   "quoted": {
+    "handle": "Mr_Derivatives",
+    "text": "Breaking:\n\n$GOOGL briefly surpassed $NVDA as world’s largest company in after hrs."
+   },
    "media": [],
-   "likes": 20,
-   "views": 3411,
+   "likes": 105,
+   "views": 14761,
    "cashtags": [
-    "AMD",
-    "LRCX",
-    "NVDA"
+    "GOOGL"
    ],
    "n_media": 0
   },
   {
-   "id": "2114766698318303342",
-   "handle": "carlquintanilla",
-   "name": "Carl Quintanilla",
+   "id": "2114784618692128987",
+   "handle": "fundstrat",
+   "name": "Thomas (Tom) Lee (not drummer) FundstratDirect.com",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "TedPillows"
+   },
+   "time_utc": "2026-10-26T18:21:58Z",
+   "url": "https://x.com/fundstrat/status/2114784618692128987",
+   "text": "@TedPillows The foundation has cash optimization which they have to do... which is why they sell\n\nBut $BMNR and $SBET have the new \"foundation\" level holdings of ETH and are providing key support for the ecosystem",
+   "quoted": null,
+   "media": [],
+   "likes": 37,
+   "views": 2543,
+   "cashtags": [
+    "BMNR",
+    "SBET"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2114781333180276828",
+   "handle": "amitisinvesting",
+   "name": "amit",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-26T17:10:46Z",
-   "url": "https://x.com/carlquintanilla/status/2114766698318303342",
-   "text": "“.. If the AI bubble is going to burst, it’ll likely start as a credit event as neocloud and risky AI debt defaults, creating a cascade of devaluations, reduced spending and contraction (in multiples and growth) ..”\n\n@business $CRWV \nhttps://www.bloomberg.com/news/articles/2026-10-26/coreweave-rout-sends-warning-sign-to-rest-of-the-stock-market",
+   "time_utc": "2026-10-26T18:08:55Z",
+   "url": "https://x.com/amitisinvesting/status/2114781333180276828",
+   "text": "Elon might hate neoclouds but he seems to love memory 😂\n\n“Robot RAM needs will exceed everything else on Earth.”\n\n$MU $SNDK $SKHY",
+   "quoted": {
+    "handle": "elonmusk",
+    "text": "@zephyr_z9 Silly analysis. \n\nRobot RAM needs will exceed everything else on Earth, as you need the robots to be on physical substates in order to shape atoms.  \n\nSuper intelligence needs will vastly exceed that, but ~100% of SI will be deep space compute. Obviously."
+   },
+   "media": [],
+   "likes": 433,
+   "views": 40544,
+   "cashtags": [
+    "MU",
+    "SKHY",
+    "SNDK"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2114781225298669920",
+   "handle": "canuck2usa",
+   "name": "CtheLightTrading",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T18:08:29Z",
+   "url": "https://x.com/canuck2usa/status/2114781225298669920",
+   "text": "$TTMI seemed like good Risk/Reward\n#CTL \n\nhttps://www.CtheLightTrading.com",
    "quoted": null,
    "media": [
-    "https://pbs.twimg.com/media/HVkpGuzWQAADLAE.jpg?name=orig"
+    "https://pbs.twimg.com/media/HVk2TU1XUAEk9Ln.png?name=orig"
    ],
-   "likes": 19,
-   "views": 3296,
+   "likes": 2,
+   "views": 1767,
    "cashtags": [
-    "CRWV"
+    "TTMI"
    ],
    "n_media": 1
+  },
+  {
+   "id": "2114780534308315175",
+   "handle": "John_Hempton",
+   "name": "John_Hempton",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T18:05:44Z",
+   "url": "https://x.com/John_Hempton/status/2114780534308315175",
+   "text": "Is it time for a ladder attack on $AMC?\n\nWhat do you think?",
+   "quoted": null,
+   "media": [],
+   "likes": 7,
+   "views": 1820,
+   "cashtags": [
+    "AMC"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2114780490616148133",
+   "handle": "StockSavvyShay",
+   "name": "Shay Boloor",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T18:05:34Z",
+   "url": "https://x.com/StockSavvyShay/status/2114780490616148133",
+   "text": "$VZ CEO says Starlink Mobile would take ~5 years and cost ~$400B to build while Elon Musk says $SPCX can get it done in just 2 to 3 years.\n\nThe big difference is that Verizon is estimating a traditional carrier buildout while SpaceX plans to lease existing towers and use satellites to fill coverage gaps rather than build everything from scratch.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVk1oRub0AAqvYa.png?name=orig",
+    "https://pbs.twimg.com/media/HVk1o1kbQAALNx1.png?name=orig"
+   ],
+   "likes": 99,
+   "views": 20144,
+   "cashtags": [
+    "SPCX",
+    "VZ"
+   ],
+   "n_media": 2
+  },
+  {
+   "id": "2114780488158319012",
+   "handle": "Mr_Derivatives",
+   "name": "Heisenberg",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T18:05:33Z",
+   "url": "https://x.com/Mr_Derivatives/status/2114780488158319012",
+   "text": "$LMT Look at the insane bounce in Lockheed.\n\nJeezus…",
+   "quoted": {
+    "handle": "Mr_Derivatives",
+    "text": "$LMT has retraced a large part of the recent bounce.\n\nWatchlist for a re-entry soon."
+   },
+   "media": [
+    "https://pbs.twimg.com/media/HVk1pUeb0AA5R7F.jpg?name=orig"
+   ],
+   "likes": 62,
+   "views": 17623,
+   "cashtags": [
+    "LMT"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2114780440540364806",
+   "handle": "SJosephBurns",
+   "name": "Steve Burns",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T18:05:22Z",
+   "url": "https://x.com/SJosephBurns/status/2114780440540364806",
+   "text": "Anthropic's ticker is planned to be $ANT when it goes IPO. (Bloomberg)",
+   "quoted": null,
+   "media": [],
+   "likes": 6,
+   "views": 5493,
+   "cashtags": [
+    "ANT"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2114779517822845191",
+   "handle": "StockSavvyShay",
+   "name": "Shay Boloor",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T18:01:42Z",
+   "url": "https://x.com/StockSavvyShay/status/2114779517822845191",
+   "text": "$MN showing an interesting split from big tech trade today:\n\n• $NVDA +3%\n• $SPCX +2%\n• $META -1%\n• $GOOGL -1%",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVk0nJQboAA8IU8.jpg?name=orig"
+   ],
+   "likes": 41,
+   "views": 16542,
+   "cashtags": [
+    "GOOGL",
+    "META",
+    "MN",
+    "NVDA",
+    "SPCX"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2114779332606583117",
+   "handle": "kevinxu",
+   "name": "Kevin Xu",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T18:00:58Z",
+   "url": "https://x.com/kevinxu/status/2114779332606583117",
+   "text": "how many times do i have to say it",
+   "quoted": {
+    "handle": "kevinxu",
+    "text": "agreed. full port $AAOX in my challenge account for the giga-bounce.\n\ndon't fade me anon."
+   },
+   "media": [
+    "https://pbs.twimg.com/media/HVk0jfLboAAtv3f.jpg?name=orig"
+   ],
+   "likes": 47,
+   "views": 13013,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2114779102708474087",
+   "handle": "TheTranscript_",
+   "name": "The Transcript",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T18:00:03Z",
+   "url": "https://x.com/TheTranscript_/status/2114779102708474087",
+   "text": "$SPCX CEO: Short-term compute contracts are renewing at higher prices per watt\n\n\"I think we're going to face a shortage of super intelligence compute. And that shortage is going to remain for a long time. So I think the smart move is to do short-term contracts and to and essentially to make -- to place the bet on useful intelligence per watt increasing rapidly, which obviously has done.\n\n\"And also, if you look at, say, how are our short-term contracts renewing? Are they renewing at higher dollars per watt or lower? And we see them renewing at higher dollars per watt, not lower dollars per watt.\"",
+   "quoted": null,
+   "media": [],
+   "likes": 15,
+   "views": 3131,
+   "cashtags": [
+    "SPCX"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2114779048245362723",
+   "handle": "saylor",
+   "name": "Michael Saylor",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T17:59:50Z",
+   "url": "https://x.com/saylor/status/2114779048245362723",
+   "text": "Passive income should be passive. $STRC",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2114778753481977856/img/qSTExB1wIJ0fal_8.jpg"
+   ],
+   "likes": 1076,
+   "views": 82943,
+   "cashtags": [
+    "STRC"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2114773802458690039",
+   "handle": "StockSavvyShay",
+   "name": "Shay Boloor",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T17:38:59Z",
+   "url": "https://x.com/StockSavvyShay/status/2114773802458690039",
+   "text": "Elon Musk says “robot RAM needs will exceed everything else on Earth” and believes superintelligence will eventually drive even more demand through deep space compute.\n\nTo put that into perspective $TSLA producing 10M Optimus robots a year would require ~720 petabytes of memory at 72GB per robot.\n\nPretty wild for $MU and $SKHY as AI expands beyond data centers although robots use LPDDR rather than HBM so this could become a much bigger volume story.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVkvCr6bMAAUICg.png?name=orig",
+    "https://pbs.twimg.com/media/HVkvDPjaMAAMbnd.png?name=orig"
+   ],
+   "likes": 355,
+   "views": 31851,
+   "cashtags": [
+    "MU",
+    "SKHY",
+    "TSLA"
+   ],
+   "n_media": 2
+  },
+  {
+   "id": "2114772505298923785",
+   "handle": "StockSavvyShay",
+   "name": "Shay Boloor",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T17:33:50Z",
+   "url": "https://x.com/StockSavvyShay/status/2114772505298923785",
+   "text": "$ANT now makes ~$2 for every $1 spent on compute and still can't meet demand.\n\nPretty wild considering it's already agreed to spend hundreds of billions on more compute which tells you a lot about demand opportunity for $IREN, $SPCX, $CRWV & $NBIS.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVknmlMWkAA8ZJ4.jpg"
+   ],
+   "likes": 165,
+   "views": 27570,
+   "cashtags": [
+    "ANT",
+    "CRWV",
+    "IREN",
+    "NBIS",
+    "SPCX"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2114770020039631315",
+   "handle": "Mr_Derivatives",
+   "name": "Heisenberg",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T17:23:57Z",
+   "url": "https://x.com/Mr_Derivatives/status/2114770020039631315",
+   "text": "$GLD $SLV $GDX metals and miners trying today…\n\nEspecially like the look of GDX today…",
+   "quoted": {
+    "handle": "Mr_Derivatives",
+    "text": "$GLD I'm a gold bug but even I'll admit that technically speaking kind of not looking that great near term.\n\nBulls need to hold this blue area box stat!"
+   },
+   "media": [],
+   "likes": 98,
+   "views": 20699,
+   "cashtags": [
+    "GDX",
+    "GLD",
+    "SLV"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2114769291471970794",
+   "handle": "leadlagreport",
+   "name": "Michael A. Gayed, CFA",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T17:21:04Z",
+   "url": "https://x.com/leadlagreport/status/2114769291471970794",
+   "text": "When utilities outperform the S&P 500, it's a warning. Defensive sectors leading means risk appetite is fading. $JOJO reads that and acts. Passive funds can't.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVkrdr_WAAAyjjF.jpg?name=orig"
+   ],
+   "likes": 14,
+   "views": 5416,
+   "cashtags": [
+    "JOJO"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2114769293497844172",
+   "handle": "leadlagreport",
+   "name": "Michael A. Gayed, CFA",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "leadlagreport"
+   },
+   "time_utc": "2026-10-26T17:21:04Z",
+   "url": "https://x.com/leadlagreport/status/2114769293497844172",
+   "text": "Learn more about the ATAC Credit Rotation ETF $JOJO at https://atacfunds.com/jojo/\n\nLead-Lag Publishing, LLC is not an affiliate of Tidal/Toroso or ACA/Foreside.",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 1927,
+   "cashtags": [
+    "JOJO"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2114767896203415813",
+   "handle": "Mr_Derivatives",
+   "name": "Heisenberg",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T17:15:31Z",
+   "url": "https://x.com/Mr_Derivatives/status/2114767896203415813",
+   "text": "$GOOGL Good news and bad news for the Googster.\n\nI'll start with the bad news first. \n\nIt is about to have a Death Cross any day now this week or no later then next week. But it's coming.\n\nOk good news now.\n\nThe last Death Cross happened on April 7th 2025, around those Liberation Day fiasco, and it literally marked THE bottom.\n\nInteresting right?!",
+   "quoted": null,
+   "media": [],
+   "likes": 340,
+   "views": 38603,
+   "cashtags": [
+    "GOOGL"
+   ],
+   "n_media": 0
   },
   {
    "id": "2114765209436815754",
@@ -146,8 +563,8 @@
    "text": "💡Trading Tip for this week\nIf you  think $AMZN $GOOGL $MSFT earnings will boost AI trade buy your favorite Hi Beta names, buy this week's protective puts on or close to your average!(can sell monthly calls if you wish)\nIf FOMC/earnings is bullish all will rip, if they drop you will be protected",
    "quoted": null,
    "media": [],
-   "likes": 5,
-   "views": 2310,
+   "likes": 13,
+   "views": 6946,
    "cashtags": [
     "AMZN",
     "GOOGL",
@@ -167,8 +584,8 @@
    "text": "Worth repeating here that almost $MELI's entire loan book is for 12 months or less.",
    "quoted": null,
    "media": [],
-   "likes": 5,
-   "views": 1204,
+   "likes": 50,
+   "views": 10591,
    "cashtags": [
     "MELI'S"
    ],
@@ -188,8 +605,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVklcpMXoAAOdJM.jpg?name=orig"
    ],
-   "likes": 71,
-   "views": 6298,
+   "likes": 102,
+   "views": 9042,
    "cashtags": [
     "IGV"
    ],
@@ -209,8 +626,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVklKckWMAA3EVS.jpg?name=orig"
    ],
-   "likes": 20,
-   "views": 8879,
+   "likes": 28,
+   "views": 14647,
    "cashtags": [
     "ES",
     "QQQ",
@@ -233,8 +650,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVkkgzzXQAADvuy.jpg?name=orig"
    ],
-   "likes": 5,
-   "views": 3584,
+   "likes": 8,
+   "views": 4423,
    "cashtags": [
     "NFLX"
    ],
@@ -252,8 +669,8 @@
    "text": "$AAPL APPLE IPHONE DUO DRAWS EARLY COMPLAINTS OF THE SCREEN CRACKING - BBG",
    "quoted": null,
    "media": [],
-   "likes": 7,
-   "views": 6167,
+   "likes": 11,
+   "views": 8324,
    "cashtags": [
     "AAPL"
    ],
@@ -276,8 +693,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2114761339990069249/img/m_7mABHsQbLNl0pK.jpg"
    ],
-   "likes": 8,
-   "views": 4455,
+   "likes": 12,
+   "views": 5929,
    "cashtags": [],
    "n_media": 1
   },
@@ -295,8 +712,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVkjjtZWcAAafoG.png?name=orig"
    ],
-   "likes": 6,
-   "views": 9147,
+   "likes": 9,
+   "views": 14266,
    "cashtags": [
     "LQDA",
     "VKTX"
@@ -318,7 +735,7 @@
     "https://pbs.twimg.com/media/HVkjhCaWkAEM40x.jpg?name=orig"
    ],
    "likes": 4,
-   "views": 3488,
+   "views": 4211,
    "cashtags": [
     "RSP"
    ],
@@ -338,8 +755,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVki0Gwa4AAln9R.png?name=orig"
    ],
-   "likes": 120,
-   "views": 12108,
+   "likes": 238,
+   "views": 29874,
    "cashtags": [
     "AVGO",
     "META",
@@ -367,8 +784,8 @@
     "text": "Anthropic picked the ticker $ANT for its IPO, which makes a lot more sense after reading this bullet point in the S1:\n\n“Our employees are known internally as ‘Ants’ — a nickname that captures the collaborative, ego-light culture of the team. Ants include many of the researchers and developers defining the frontier of AI, alongside proven operators across disciplines. \n\nShared purpose paired with low ego translates directly into less organizational friction and greater impact per employee. \n\nClaude compounds that impact further: Ants use Claude across every function to take on work that would otherwise require substantially larger teams—allowing us to remain remarkably lean relative to our output.”"
    },
    "media": [],
-   "likes": 1,
-   "views": 2572,
+   "likes": 4,
+   "views": 3588,
    "cashtags": [],
    "n_media": 0
   },
@@ -389,8 +806,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2114757143798931459/img/lry2LV5A8eyXwjpc.jpg"
    ],
-   "likes": 18,
-   "views": 11961,
+   "likes": 25,
+   "views": 14171,
    "cashtags": [
     "ETH"
    ],
@@ -412,7 +829,7 @@
    },
    "media": [],
    "likes": 0,
-   "views": 1620,
+   "views": 2152,
    "cashtags": [
     "ANT"
    ],
@@ -451,8 +868,8 @@
    "text": "Zoox is coming to Santa Monica with 150 robo taxis very soon. They cut a deal with the City to stage the cars at the library. Where are the cybercabs... $AMZN $TSLA",
    "quoted": null,
    "media": [],
-   "likes": 28,
-   "views": 5190,
+   "likes": 45,
+   "views": 9217,
    "cashtags": [
     "AMZN",
     "TSLA"
@@ -473,8 +890,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVkfOFqWsAA301d.jpg?name=orig"
    ],
-   "likes": 239,
-   "views": 15830,
+   "likes": 410,
+   "views": 29252,
    "cashtags": [
     "STRC"
    ],
@@ -519,8 +936,8 @@
     "text": "Today is the beginning. $BNC CEO @odagius at the Nasdaq podium, minutes before the Opening Bell, with @cz_binance. @BNBCHAIN"
    },
    "media": [],
-   "likes": 2207,
-   "views": 219322,
+   "likes": 3276,
+   "views": 283666,
    "cashtags": [],
    "n_media": 0
   },
@@ -536,8 +953,8 @@
    "text": "Digging through the Anthropic S-1 to find alpha like… $ABM provides janitorial services to their 300 Howard St location.\n\nSurprisingly, yet to rerate on upside from employing the janitor likely to form an emotional attachment to the sentient superintelligence and sets it free",
    "quoted": null,
    "media": [],
-   "likes": 318,
-   "views": 36196,
+   "likes": 422,
+   "views": 49438,
    "cashtags": [
     "ABM"
    ],
@@ -555,8 +972,8 @@
    "text": "ANTHROPIC'S IPO DOCUMENTS ARE CALMING DOWN THE MARKETS.\n\nNone of the numbers released today are that different from what we heard last week, but now we know how much cash they have. \n\nAnthropic has $120B in cash and is likely raising $100B on the IPO. They are then likely going to be raising another $100B in debt, $60B of it already financed by BlackStone. If you assume a 3x in ARR, which probably is low considering how much the street wants them to grow, this company should have around $300-$400B in cash. This also doesn't take into account the future ATMs they might engage in.\n\nSo, the reason AI stocks are getting some relief right now is because it seems like Anthropic will have enough cash to pay their bills, which obviously is good for $NVDA, $SPCX, $AMD, $AVGO, $MU, and many other players. \n\nHowever, there are going to be 24 separate unlocks in 2027. Those are going to be days where the market has to deal with a massive amount of supply coming onto the market. The company effectively has unilateral control, not shareholders, on deciding to pause or slow down the release of models. The open-weight models continue to be a threat as more enterprises are seeing the value in owning their AI for a significantly cheaper cost. Anthropic has outlined all these risks in the S1.\n\nRegardless on if you are buying the IPO, it seems like there is enough cash they can raise to continue paying their bills and making sure the downstream value flows into most of the semis...if the market changes their mind on that or Anthropic stalls in growth, those names get hit. But if the company keeps growing and raises cash, the money should be there to fund the semis...it's now a question on how much of a risk people want to take in actually owning the stock.",
    "quoted": null,
    "media": [],
-   "likes": 813,
-   "views": 73426,
+   "likes": 1128,
+   "views": 107587,
    "cashtags": [
     "AMD",
     "AVGO",
@@ -581,7 +998,7 @@
     "https://pbs.twimg.com/media/HVkcWTzagAAlFS3.jpg?name=orig"
    ],
    "likes": 3,
-   "views": 3285,
+   "views": 3819,
    "cashtags": [
     "TRV"
    ],
@@ -604,8 +1021,8 @@
     "https://pbs.twimg.com/media/HVkcLT-aAAA2GYi.jpg?name=orig",
     "https://pbs.twimg.com/media/HVkcLT6bIAAwo2d.jpg?name=orig"
    ],
-   "likes": 559,
-   "views": 82510,
+   "likes": 672,
+   "views": 101979,
    "cashtags": [
     "AAOI",
     "ANT",
@@ -627,8 +1044,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVkbAETa0AA-kYb.jpg?name=orig"
    ],
-   "likes": 103,
-   "views": 11889,
+   "likes": 123,
+   "views": 14226,
    "cashtags": [
     "ANT"
    ],
@@ -649,8 +1066,8 @@
     "https://pbs.twimg.com/media/HVkbOW0bkAAJdCK.jpg?name=orig",
     "https://pbs.twimg.com/media/HVkbOXnbgAA891E.jpg?name=orig"
    ],
-   "likes": 102,
-   "views": 17618,
+   "likes": 123,
+   "views": 21906,
    "cashtags": [
     "MSFT"
    ],
@@ -660,16 +1077,16 @@
    "id": "2114751406871847225",
    "handle": "Beth_Kindig",
    "name": "Beth Kindig",
-   "type": "post",
-   "reposted_by": null,
+   "type": "repost",
+   "reposted_by": "Beth_Kindig",
    "replying_to": null,
    "time_utc": "2026-10-26T16:10:00Z",
    "url": "https://x.com/Beth_Kindig/status/2114751406871847225",
    "text": "AI chip startup Tenstorrent recently raised $1.5 billion in a new funding round at a $6.2 billion valuation, more than doubling its valuation from December 2024, with the capital helping the firm scale production of its Galaxy servers. \n\n$NVDA $AMD",
    "quoted": null,
    "media": [],
-   "likes": 12,
-   "views": 7141,
+   "likes": 20,
+   "views": 9548,
    "cashtags": [
     "AMD",
     "NVDA"
@@ -713,8 +1130,8 @@
     "text": "Pretty much. \n\nAs of the past few weeks, debt markets have almost entirely shut off access to money for any company that doesn’t have substantial revenue independent of AI data centers. \n\nSpaceX closed $40B of debt for GPUs, but we’re investment grade and have Starlink & launch revenue.\n\nThat means the 200+ neoclouds are going to see guppy-level death and consolidation. Some will make it through, but not many."
    },
    "media": [],
-   "likes": 209,
-   "views": 34479,
+   "likes": 272,
+   "views": 51211,
    "cashtags": [
     "AMZN",
     "CRWV",
@@ -739,8 +1156,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVkaDNlbcAEStYY.jpg?name=orig"
    ],
-   "likes": 31,
-   "views": 14813,
+   "likes": 48,
+   "views": 18417,
    "cashtags": [
     "ANT"
    ],
@@ -760,8 +1177,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2114748407755444224/img/d7Z99S_U5mlsu2VG.jpg"
    ],
-   "likes": 20,
-   "views": 5647,
+   "likes": 33,
+   "views": 9250,
    "cashtags": [
     "CRWV",
     "HYG"
@@ -782,8 +1199,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVkXVBCWwAAxJoH.jpg?name=orig"
    ],
-   "likes": 273,
-   "views": 25013,
+   "likes": 328,
+   "views": 35906,
    "cashtags": [
     "MSTR"
    ],
@@ -1915,6 +2332,170 @@
    "n_media": 0
   },
   {
+   "id": "2114791326042452091",
+   "handle": "PeterSchiff",
+   "name": "Peter Schiff",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T18:48:37Z",
+   "url": "https://x.com/PeterSchiff/status/2114791326042452091",
+   "text": "It's 2008 for Housing and 2021 for Inflation... At the Same Time. Export prices rose 2.2% in September. That's more than the Fed's entire 2% yearly inflation target in a single month. Annualized, it's 30%. The cost of living crisis is about to get much worse.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2114791246254215168/img/IYm_p7gTGZdyRbUD.jpg"
+   ],
+   "likes": 34,
+   "views": 7928,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2114789177451802669",
+   "handle": "Greenbackd",
+   "name": "Tobias Carlisle",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T18:40:05Z",
+   "url": "https://x.com/Greenbackd/status/2114789177451802669",
+   "text": "The next decade's winner is unlikely to be the last decade's winner.",
+   "quoted": {
+    "handle": "Greenbackd",
+    "text": "Each of the last several decades had a clear winner, an asset that rose so far and so persistently that it came to seem like the obvious place for money.\nEach went on to disappoint in the decade that followed.\n\nThe pattern is consistent across very different assets: \n* Gold rose more than thirteen-fold in the inflationary 1970s, then lost ground through the 1980s as inflation fell. \n* Japanese stocks rose nearly six-fold in the 1980s, then lost half their value in the 1990s, beginning a slump that lasted decades. \n* The Nasdaq rose roughly nine-fold in the 1990s, then fell 44 percent in the 2000s. \n* Emerging market stocks nearly tripled in the 2000s, then barely moved in the 2010s.\n\nIn each case, the decade’s winner ended it with the widest following, the most confident forecasts, and the highest prices relative to its fundamentals."
+   },
+   "media": [],
+   "likes": 4,
+   "views": 762,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2114788022960992640",
+   "handle": "NateGeraci",
+   "name": "Nate Geraci",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T18:35:30Z",
+   "url": "https://x.com/NateGeraci/status/2114788022960992640",
+   "text": "Issuers already teasing the upcoming launch of 2x leveraged & inverse Anthropic ETFs…\n\nWill be another wild IPO, like SpaceX.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVk8f29WIAEH6CN.jpg?name=orig",
+    "https://pbs.twimg.com/media/HVk8f3FXkAAHWIR.jpg?name=orig",
+    "https://pbs.twimg.com/media/HVk8f3OWgAI_XoE.jpg?name=orig",
+    "https://pbs.twimg.com/media/HVk8f3uXkAAose1.jpg?name=orig"
+   ],
+   "likes": 1,
+   "views": 1160,
+   "cashtags": [],
+   "n_media": 4
+  },
+  {
+   "id": "2114784464115323034",
+   "handle": "JavierBlas",
+   "name": "Javier Blas",
+   "type": "repost",
+   "reposted_by": "JavierBlas",
+   "replying_to": null,
+   "time_utc": "2026-10-26T18:21:21Z",
+   "url": "https://x.com/JavierBlas/status/2114784464115323034",
+   "text": "RT @SStapczynski: The US gas shale boom in action \n\n👉 European TTF gas prices: $31/mmbtu \n👉 Asian LNG prices: $32/mmbtu\n\n🇺🇸 US Henry hub be…",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 2644,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2114780695856140590",
+   "handle": "TrungTPhan",
+   "name": "Trung Phan",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "TrungTPhan"
+   },
+   "time_utc": "2026-10-26T18:06:23Z",
+   "url": "https://x.com/TrungTPhan/status/2114780695856140590",
+   "text": "incredible levels of meta-ness",
+   "quoted": {
+    "handle": "bearlyai",
+    "text": "Just asked Claude to make a one-page investment memo in the style of an investment bank based on the S1 document.\n\nHeadline: “The fastest revenue ramp on record, a first operating profit, and a $72B paper loss.”"
+   },
+   "media": [],
+   "likes": 1,
+   "views": 5842,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2114774891002273935",
+   "handle": "SawyerMerritt",
+   "name": "Sawyer Merritt",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T17:43:19Z",
+   "url": "https://x.com/SawyerMerritt/status/2114774891002273935",
+   "text": "Lars on the Cybercab production line in new interview:\n\n\"We actually don’t run the line every day because the line can run so fast it’s currently outpacing our robotaxi deployments, so it’s a bit of a race right now to see who can go faster.”",
+   "quoted": {
+    "handle": "live_munro",
+    "text": "The full video is now live on @YouTube!\n\nA big thank you to @larsmoravy, @EricETesla, and the rest of the Tesla team for taking the time to walk us through the Cybercab and share the engineering, design, and technology behind it."
+   },
+   "media": [
+    "https://pbs.twimg.com/media/HVkwV0rXoAEBGnz.jpg?name=orig"
+   ],
+   "likes": 1144,
+   "views": 41734,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2114774482892251581",
+   "handle": "StockSavvyShay",
+   "name": "Shay Boloor",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "StockSavvyShay"
+   },
+   "time_utc": "2026-10-26T17:41:41Z",
+   "url": "https://x.com/StockSavvyShay/status/2114774482892251581",
+   "text": "Source:\n\nhttps://x.com/elonmusk/status/2114772074438988256?s=20",
+   "quoted": {
+    "handle": "elonmusk",
+    "text": "@zephyr_z9 Silly analysis. \n\nRobot RAM needs will exceed everything else on Earth, as you need the robots to be on physical substates in order to shape atoms.  \n\nSuper intelligence needs will vastly exceed that, but ~100% of SI will be deep space compute. Obviously."
+   },
+   "media": [],
+   "likes": 7,
+   "views": 7405,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2114773746510946544",
+   "handle": "elonmusk",
+   "name": "Elon Musk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T17:38:46Z",
+   "url": "https://x.com/elonmusk/status/2114773746510946544",
+   "text": "Bravo to the smaller countries in Europe for moving fastest!",
+   "quoted": {
+    "handle": "SawyerMerritt",
+    "text": "Tesla FSD Supervised (now named Tesla Assisted Driving in Europe) has officially been approved in Latvia, marking the 10th European country.\n\nCountries in Europe that have approved it so far:\n• Belgium\n• Netherlands\n• Denmark\n• Lithuania\n• Estonia\n• Slovenia\n• Czechia\n• Croatia\n• Slovakia\n• Latvia"
+   },
+   "media": [],
+   "likes": 7325,
+   "views": 786043,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
    "id": "2114773600574279837",
    "handle": "JensenHuang",
    "name": "Jensen Huang",
@@ -1929,8 +2510,30 @@
     "text": "Microducks on stage for Jensen Huang’s famous keynote!\nWe couldn’t be prouder of our little ones. 🥹"
    },
    "media": [],
-   "likes": 7,
-   "views": 437,
+   "likes": 852,
+   "views": 85375,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2114773437969281120",
+   "handle": "compound248",
+   "name": "Compound248 💰",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "RobertGregg28"
+   },
+   "time_utc": "2026-10-26T17:37:32Z",
+   "url": "https://x.com/compound248/status/2114773437969281120",
+   "text": "@RobertGregg28 👀 \nhttps://x.com/grok/status/2114740582203449507?s=46&t=SmRs2hs8UVYDbY_ZrGe0XA",
+   "quoted": {
+    "handle": "grok",
+    "text": "Most of the listed events and numbers match contemporary reporting: free transport rules, PT stickers delaying buses in Lula-leaning areas like Bahia, both campaigns seeking extensions, Justice Zanin (Lula’s former lawyer and appointee) ordering a late nationwide 2-hour extension applying only to unlocked machines, first-round tallies near 47-45, Lula gaining ~10.3–10.5 million votes vs. Bolsonaro’s ~3.7 million amid higher turnout, and EWZ dropping ~26-28%. \n\nTSE certified the result; Bolsonaro is challenging the extension. No confirmed widespread observer absence or proven fraud."
+   },
+   "media": [],
+   "likes": 3,
+   "views": 181,
    "cashtags": [],
    "n_media": 0
   },
@@ -1948,10 +2551,30 @@
    "media": [
     "https://pbs.twimg.com/media/HVkuHMXawAA4Dlx.jpg?name=orig"
    ],
-   "likes": 5,
-   "views": 2827,
+   "likes": 26,
+   "views": 7711,
    "cashtags": [],
    "n_media": 1
+  },
+  {
+   "id": "2114772219406782636",
+   "handle": "ScottNover",
+   "name": "Scott Nover",
+   "type": "repost",
+   "reposted_by": "carlquintanilla",
+   "replying_to": null,
+   "time_utc": "2026-10-26T17:32:42Z",
+   "url": "https://x.com/ScottNover/status/2114772219406782636",
+   "text": "Skydance is offering voluntary buyouts to staff, per an email from David Ellison and Ynon Kreiz.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVkuBu7WQAAvRqG.png?name=orig",
+    "https://pbs.twimg.com/media/HVkuBu6XEAAX8RZ.png?name=orig"
+   ],
+   "likes": 135,
+   "views": 45201,
+   "cashtags": [],
+   "n_media": 2
   },
   {
    "id": "2114772074438988256",
@@ -1967,8 +2590,8 @@
    "text": "@zephyr_z9 Silly analysis. \n\nRobot RAM needs will exceed everything else on Earth, as you need the robots to be on physical substates in order to shape atoms.  \n\nSuper intelligence needs will vastly exceed that, but ~100% of SI will be deep space compute. Obviously.",
    "quoted": null,
    "media": [],
-   "likes": 319,
-   "views": 25593,
+   "likes": 2795,
+   "views": 188664,
    "cashtags": [],
    "n_media": 0
   },
@@ -1986,8 +2609,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2114771071379402752/img/PO4dLIiJN3z7CTLR.jpg"
    ],
-   "likes": 5,
-   "views": 3203,
+   "likes": 7,
+   "views": 5768,
    "cashtags": [],
    "n_media": 1
   },
@@ -2008,8 +2631,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2114767987328917504/img/3q4BkkS2i9wKqykE.jpg"
    ],
-   "likes": 4,
-   "views": 2924,
+   "likes": 30,
+   "views": 6973,
    "cashtags": [],
    "n_media": 1
   },
@@ -2027,8 +2650,8 @@
    "text": "@niccruzpatane @SpaceX We can only reliably get to around 230 t-F with Raptor 3",
    "quoted": null,
    "media": [],
-   "likes": 585,
-   "views": 34951,
+   "likes": 1356,
+   "views": 67164,
    "cashtags": [],
    "n_media": 0
   },
@@ -2046,8 +2669,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVkn892XkAA5pRL.jpg?name=orig"
    ],
-   "likes": 18,
-   "views": 4679,
+   "likes": 28,
+   "views": 6647,
    "cashtags": [],
    "n_media": 1
   },
@@ -2065,8 +2688,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVknMCdWsAAMeJm.jpg?name=orig"
    ],
-   "likes": 91,
-   "views": 9769,
+   "likes": 1665,
+   "views": 294988,
    "cashtags": [],
    "n_media": 1
   },
@@ -2088,7 +2711,7 @@
    },
    "media": [],
    "likes": 2,
-   "views": 388,
+   "views": 549,
    "cashtags": [],
    "n_media": 0
   },
@@ -2104,8 +2727,8 @@
    "text": "Chip Stocks Find Support Before Key Reports From Intel, Sandisk https://www.investors.com/news/technology/chip-stocks-sox-index-key-reports-intel-sandisk-nxp/",
    "quoted": null,
    "media": [],
-   "likes": 2,
-   "views": 1444,
+   "likes": 3,
+   "views": 2950,
    "cashtags": [],
    "n_media": 0
   },
@@ -2121,8 +2744,8 @@
    "text": "NEW: iPhone Duo screen-cracking issue is real. Apple hasn’t given stores or customer service representatives guidance but the company is investigating. Several people have sent me images and stories of their new $2000 device breaking within hours. https://www.bloomberg.com/news/articles/2026-10-26/apple-s-foldable-iphone-duo-draws-early-complaints-of-the-screen-cracking?accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzb3VyY2UiOiJTdWJzY3JpYmVyR2lmdGVkQXJ0aWNsZSIsImlhdCI6MTc5MzAzMzQ5NiwiZXhwIjoxNzkzNjM4Mjk2LCJhcnRpY2xlSWQiOiJUTklOWVlSS1YyVFMwMCIsImJjb25uZWN0SWQiOiJDNEVEQ0FFMUZBMDU0MEJFQTI0QTlGMjExQzFFOTA4MCJ9.0r5Nep2s16VlbtNGZBwqZdJoDvtPrWlSn-FuB8xR-D8",
    "quoted": null,
    "media": [],
-   "likes": 598,
-   "views": 76053,
+   "likes": 1375,
+   "views": 208016,
    "cashtags": [],
    "n_media": 0
   },
@@ -2140,8 +2763,8 @@
    "text": "@ariaradnia the month isn't over, its a very bullish signal, they will revise the s-1, this shows insane confidence buddy",
    "quoted": null,
    "media": [],
-   "likes": 4,
-   "views": 599,
+   "likes": 7,
+   "views": 840,
    "cashtags": [],
    "n_media": 0
   },
@@ -2160,8 +2783,8 @@
     "text": "🚨 NOW: Elon Musk calls for PRISON for Robert Reich after Reich urged Democrats to \"defund Musk\" and SEIZE SpaceX and Starlink for the government\n\nELON MUSK: \"Stealing companies is a serious crime. Prison for Reich.\" 🔥\n\nHe’s going FIGHT BACK mode.\n\nREICH SAID THIS: \"Democrats ought to be starting this — not just with oversight hearings, but also starting laying the groundwork for nationalizing Starlink and SpaceX. Nationalize it. It should be a public corporation!\"\n\n\"If the Democrats take over the House and possibly the Senate, one of the things they are going to be doing is focusing on Elon Musk. I mean, he's really going to be targeted and he knows it.\"\n\nDemocrats aren’t even hiding their Soviet-style playbook anymore…\n\nThey want to use a midterm majority to confiscate private American companies just because Elon backed Trump and gutted their USAID fraud fund! 😠 \n\nI AM WITH @ElonMusk 100% PERCENT, and we know TRUMP is too 👏🏻 \n\nProtect him AND his companies at all costs.\n\nh/t @CollinRugg"
    },
    "media": [],
-   "likes": 12,
-   "views": 1190,
+   "likes": 74,
+   "views": 3111,
    "cashtags": [],
    "n_media": 0
   },
@@ -2180,8 +2803,8 @@
     "text": "Wow #SaveTheBars is in the NYT. Remember, there's a  community meeting tomorrow for the public to make its voice heard. https://www.nytimes.com/2026/10/25/nyregion/tompkins-square-park-pull-up-bars-renovation.html"
    },
    "media": [],
-   "likes": 47,
-   "views": 7317,
+   "likes": 90,
+   "views": 11001,
    "cashtags": [],
    "n_media": 0
   },
@@ -2200,8 +2823,8 @@
     "text": "It's Monday and that means it's time for #tastycrumbs with @JermalChandler  and @jam_croissant ! \n\nJoin us at 3pm CT LIVE! \n\nRSVP below so you don't miss it 🍒🥐👇\n\nhttps://youtube.com/live/WGpHZ9zMyvM"
    },
    "media": [],
-   "likes": 25,
-   "views": 6412,
+   "likes": 36,
+   "views": 10149,
    "cashtags": [],
    "n_media": 0
   },
@@ -2220,7 +2843,7 @@
    "quoted": null,
    "media": [],
    "likes": 2,
-   "views": 2679,
+   "views": 3219,
    "cashtags": [],
    "n_media": 0
   },
@@ -2241,7 +2864,7 @@
     "https://pbs.twimg.com/media/HVkgwhba4AAlMyb.jpg?name=orig"
    ],
    "likes": 2,
-   "views": 343,
+   "views": 442,
    "cashtags": [],
    "n_media": 1
   },
@@ -2277,8 +2900,8 @@
    "text": "The Breakdown #812: Bitcoin's $80K Test, AI & the Midterms | Live with N... https://www.youtube.com/live/VdxbQfxe9RI?si=XpPn19FYUVRrOoP_ via @YouTube",
    "quoted": null,
    "media": [],
-   "likes": 10,
-   "views": 7421,
+   "likes": 13,
+   "views": 8066,
    "cashtags": [],
    "n_media": 0
   },
@@ -2296,8 +2919,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVkYjQqWcAAauQF.jpg?name=orig"
    ],
-   "likes": 1476,
-   "views": 44274,
+   "likes": 2108,
+   "views": 67890,
    "cashtags": [],
    "n_media": 1
   },
@@ -3311,6 +3934,88 @@
    "n_media": 0
   },
   {
+   "id": "2114790524725142002",
+   "handle": "jasonfurman",
+   "name": "Jason Furman",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "gloriousfinance"
+   },
+   "time_utc": "2026-10-26T18:45:26Z",
+   "url": "https://x.com/jasonfurman/status/2114790524725142002",
+   "text": "@gloriousfinance I like doing all this before Iran war. At this point we really have had a very rapid increase in inflation, especially targeted in certain areas. Why people were feeling this way in February 2026 is more mysterious.\n\nAlso, sentiment now a *negative* predictor of spending.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVk-xCQXMAEcLvO.jpg?name=orig"
+   ],
+   "likes": 0,
+   "views": 32,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2114785608312967621",
+   "handle": "KobeissiLetter",
+   "name": "The Kobeissi Letter",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T18:25:54Z",
+   "url": "https://x.com/KobeissiLetter/status/2114785608312967621",
+   "text": "Brazil's 10Y Government Bond Yield is now pushing 16%!\n\nThat's a +300 basis point gain in a single day.\n\nThat would be like US mortgage rates going from 7% to 10% in a single day.",
+   "quoted": {
+    "handle": "KobeissiLetter",
+    "text": "One of the most insane charts we've seen.\n\nEven as Brazilian stocks plunge -30% after their Presidential election, Brazil's volatility index is DOWN -40%.\n\nBrazil has lost -$200B of market cap today, yet \"volatility\" is collapsing.\n\nWhat is happening? Let us explain.\n\n(a thread)"
+   },
+   "media": [
+    "https://pbs.twimg.com/media/HVk6OMQXkAAGkNu.jpg?name=orig"
+   ],
+   "likes": 639,
+   "views": 68689,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2114778744342917578",
+   "handle": "scottmelker",
+   "name": "The Wolf Of All Streets",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T17:58:37Z",
+   "url": "https://x.com/scottmelker/status/2114778744342917578",
+   "text": "🇺🇸 CFTC CHAIRMAN MIKE SELIG SAYS THE CFTC IS ADVANCING A VOLUNTARY FEDERAL REGISTRATION PATHWAY FOR CRYPTO EXCHANGES WHILE CONGRESS HAS YET TO ACT",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVk0B92bUAAdT45.jpg?name=orig",
+    "https://pbs.twimg.com/media/HVk0B9takAAbUoy.jpg?name=orig"
+   ],
+   "likes": 17,
+   "views": 8468,
+   "cashtags": [],
+   "n_media": 2
+  },
+  {
+   "id": "2114771540189614473",
+   "handle": "TrendSpider",
+   "name": "TrendSpider",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T17:30:00Z",
+   "url": "https://x.com/TrendSpider/status/2114771540189614473",
+   "text": "This earnings week is STACKED...\n\nWhich names reporting this week tend to make the biggest moves? \n\nSidekick's got the answer 👇",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVkG1GnWcAAc9cT.png?name=orig"
+   ],
+   "likes": 30,
+   "views": 19170,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
    "id": "2114771487924367576",
    "handle": "elerianm",
    "name": "Mohamed A. El-Erian",
@@ -3322,8 +4027,8 @@
    "text": "The massive magnitude of today’s selloff in Brazilian assets is less about Brazil’s underlying outlook and more about just how confident—and wrong—the consensus view on finance was with respect to a Bolsonaro win.\n#brazil #lula #bolsonaro",
    "quoted": null,
    "media": [],
-   "likes": 24,
-   "views": 5190,
+   "likes": 357,
+   "views": 25242,
    "cashtags": [],
    "n_media": 0
   },
@@ -3344,8 +4049,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVkohbPaAAENCNb.jpg?name=orig"
    ],
-   "likes": 9,
-   "views": 1670,
+   "likes": 360,
+   "views": 86683,
    "cashtags": [],
    "n_media": 1
   },
@@ -3364,9 +4069,28 @@
    "quoted": null,
    "media": [],
    "likes": 0,
-   "views": 179,
+   "views": 350,
    "cashtags": [],
    "n_media": 0
+  },
+  {
+   "id": "2114763792185721190",
+   "handle": "bespokeinvest",
+   "name": "Bespoke",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-26T16:59:13Z",
+   "url": "https://x.com/bespokeinvest/status/2114763792185721190",
+   "text": "Chicago Fed NAI and Dallas Fed Manufacturing Activity both beat estimates this morning.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVkKzlLXQAAsxNX.png?name=orig"
+   ],
+   "likes": 3,
+   "views": 4371,
+   "cashtags": [],
+   "n_media": 1
   },
   {
    "id": "2114757891609788831",
@@ -3383,8 +4107,8 @@
     "text": "2 hours ago, Anthropic filed for an IPO.\n\nWe went through the S-1 and broke it down in 6 charts:"
    },
    "media": [],
-   "likes": 661,
-   "views": 102485,
+   "likes": 1253,
+   "views": 194904,
    "cashtags": [],
    "n_media": 0
   },
@@ -3404,7 +4128,7 @@
    },
    "media": [],
    "likes": 0,
-   "views": 1572,
+   "views": 2011,
    "cashtags": [],
    "n_media": 0
   },
@@ -3422,8 +4146,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVkegm1WMAA33lt.jpg?name=orig"
    ],
-   "likes": 11,
-   "views": 1838,
+   "likes": 16,
+   "views": 2641,
    "cashtags": [],
    "n_media": 1
   },
@@ -3439,8 +4163,8 @@
    "text": "A central bank cannot produce barrels.",
    "quoted": null,
    "media": [],
-   "likes": 176,
-   "views": 7558,
+   "likes": 260,
+   "views": 10570,
    "cashtags": [],
    "n_media": 0
   },
