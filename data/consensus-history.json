@@ -857,9 +857,8 @@
     "SPY",
     "META",
     "QQQ",
-    "AMZN",
     "MU",
-    "INTC",
+    "BE",
     "ORCL",
     "AXP",
     "LMT"
@@ -873,37 +872,35 @@
    "split": [
     "SPCX",
     "TSLA",
+    "NBIS",
     "EWZ",
     "NVDA",
-    "NBIS",
-    "BE",
     "GOOGL",
     "AVGO",
     "IREN",
     "AAPL",
-    "AXON",
-    "LRCX"
+    "AXON"
    ],
    "window": [
-    "2026-10-25T23:30",
-    "2026-10-27T03:19"
+    "2026-10-26T03:30",
+    "2026-10-27T05:14"
    ],
    "top": [
     "SPCX",
     "SPY",
-    "NVDA",
-    "AMZN",
     "TSLA",
+    "NVDA",
     "META",
-    "GOOGL",
     "QQQ",
     "NBIS",
-    "EWZ"
+    "EWZ",
+    "CRWV",
+    "AMZN"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-27 05:15"
+   "updated_hkt": "2026-10-27 06:42"
   }
  },
- "updated_hkt": "2026-10-27 05:15",
+ "updated_hkt": "2026-10-27 06:42",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
