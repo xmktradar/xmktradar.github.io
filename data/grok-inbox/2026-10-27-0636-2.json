@@ -1,0 +1,79 @@
+{
+  "posts": {
+    "2114821541854859512": {
+      "en_summary": "Percentage off ATH's: $INTC -36.5%, $SPCX -34.9%, $AVGO -33.5%, $SKHY -28.7%, $MU -28.2%, $GOOGL -22.5%, $TSLA -21.5%, $META -20.8%, $AMD -19.3%, $AMZN -13.4%, $NVDA -11.3%, $MSFT -4.1%, $AAPL -2.2%.",
+      "zh_summary": "距離歷史高位的百分比：$INTC -36.5%，$SPCX -34.9%，$AVGO -33.5%，$SKHY -28.7%，$MU -28.2%，$GOOGL -22.5%，$TSLA -21.5%，$META -20.8%，$AMD -19.3%，$AMZN -13.4%，$NVDA -11.3%，$MSFT -4.1%，$AAPL -2.2%。",
+      "ko_summary": "역사적 고점 대비 하락률: $INTC -36.5%, $SPCX -34.9%, $AVGO -33.5%, $SKHY -28.7%, $MU -28.2%, $GOOGL -22.5%, $TSLA -21.5%, $META -20.8%, $AMD -19.3%, $AMZN -13.4%, $NVDA -11.3%, $MSFT -4.1%, $AAPL -2.2%.",
+      "tickers": ["INTC", "SPCX", "AVGO", "SKHY", "MU", "GOOGL", "TSLA", "META", "AMD", "AMZN", "NVDA", "MSFT", "AAPL"],
+      "stance": "中性",
+      "stance_by_ticker": {"INTC": "中性", "SPCX": "中性", "AVGO": "中性", "SKHY": "中性", "MU": "中性", "GOOGL": "中性", "TSLA": "中性", "META": "中性", "AMD": "中性", "AMZN": "中性", "NVDA": "中性", "MSFT": "中性", "AAPL": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2114819583144088017": {
+      "en_summary": "Amkor $AMKR double miss and lowers guidance and up 5% in after-hours.",
+      "zh_summary": "Amkor $AMKR雙重未達預期並下調指引，但盤後上漲5%。",
+      "ko_summary": "Amkor $AMKR가 실적과 가이던스를 모두 하회했음에도 시간외 거래에서 5% 상승했다.",
+      "tickers": ["AMKR"],
+      "stance": "中性",
+      "stance_by_ticker": {"AMKR": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2114819154104750197": {
+      "en_summary": "$PLTR Symmetrical triangle on the daily candle chart.",
+      "zh_summary": "$PLTR在日線圖上形成對稱三角形。",
+      "ko_summary": "$PLTR 일봉 차트에서 대칭 삼각형 패턴이 나타났다.",
+      "tickers": ["PLTR"],
+      "stance": "中性",
+      "stance_by_ticker": {"PLTR": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2114819075058880983": {
+      "en_summary": "$NUE Q3 EARNINGS EPS: $5.80 vs $5.42 est, Sales: $11.249B vs $10.834B est. Both beats.",
+      "zh_summary": "$NUE第三季業績：EPS $5.80對比預期$5.42，銷售額$11.249B對比預期$10.834B。雙雙超預期。",
+      "ko_summary": "$NUE 3분기 실적: EPS $5.80(예상 $5.42), 매출 $11.249B(예상 $10.834B). 모두 예상치 상회.",
+      "tickers": ["NUE"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NUE": "睇好"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NUE": "Q3 EPS and sales both beat estimates"}
+    },
+    "2114816930179895577": {
+      "en_summary": "$CRDO ripping after hours at 159s. Did you buy the dip? We did @tenet_research.",
+      "zh_summary": "$CRDO盤後急升至159。你有沒有買低？我們在@tenet_research買了。",
+      "ko_summary": "$CRDO가 시간외에서 159로 급등 중. 저점에서 샀나요? 우리는 @tenet_research에서 샀다.",
+      "tickers": ["CRDO"],
+      "stance": "睇好",
+      "stance_by_ticker": {"CRDO": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"CRDO": "Ripping after hours to 159, bought the dip"}
+    }
+  }
+}
