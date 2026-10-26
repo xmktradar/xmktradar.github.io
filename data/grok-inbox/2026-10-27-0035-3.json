@@ -1,0 +1,101 @@
+{
+  "posts": {
+    "2114739057490374719": {
+      "en_summary": "The Brazil ETF EWZ gapped down 30% at the open as investors did not like the election results. It is still down 21% here.",
+      "zh_summary": "巴西 ETF EWZ 開盤跳空下跌 30%，因投資者不喜歡選舉結果。目前仍下跌 21%。",
+      "ko_summary": "브라질 ETF EWZ는 투자자들이 선거 결과를 좋아하지 않아 개장 시 30% 갭 하락했다. 현재도 21% 하락 중이다.",
+      "tickers": [
+        "EWZ"
+      ],
+      "stance": "睇淡",
+      "stance_by_ticker": {
+        "EWZ": "睇淡"
+      },
+      "horizon": "短線",
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "利淡",
+      "ticker_notes": {
+        "EWZ": "開盤因選舉結果跳空跌30%，現仍跌21%"
+      }
+    },
+    "2114738572896961002": {
+      "en_summary": "Energy stocks are joining oil in extreme optimism. XLE sentiment jumped from 53.43 to 85.46 on Oct. 23, while USO sentiment reached 93.11, up from 67.57 on Oct. 21. Both are now above 80 as oil prices continue to climb.",
+      "zh_summary": "能源股正在加入石油的極端樂觀情緒。XLE 情緒從 53.43 跳升至 10 月 23 日的 85.46，而 USO 情緒達到 93.11，較 10 月 21 日的 67.57 上升。兩者現均高於 80，因油價持續攀升。",
+      "ko_summary": "에너지 주식이 석유의 극단적 낙관론에 합류하고 있다. XLE 센티먼트는 10월 23일 53.43에서 85.46으로 급등했고, USO 센티먼트는 10월 21일 67.57에서 93.11에 도달했다. 둘 다 현재 80을 넘으며 유가가 계속 상승하고 있다.",
+      "tickers": [
+        "XLE",
+        "USO"
+      ],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "XLE": "睇好",
+        "USO": "睇好"
+      },
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "energy",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    },
+    "2114738465703186453": {
+      "en_summary": "NFLX heaviness.",
+      "zh_summary": "NFLX 沈重。",
+      "ko_summary": "NFLX 무거움.",
+      "tickers": [
+        "NFLX"
+      ],
+      "stance": "睇淡",
+      "stance_by_ticker": {
+        "NFLX": "睇淡"
+      },
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2114737817456902193": {
+      "en_summary": "Shanghai rallied off its lows on Oct. 23, but the breadth picture was mixed. SHCOMP gained 0.9%, and its advance/decline reading swung from negative 1,788 to positive 1,348. Yet the SHCOMP 4 Week Low percent reading jumped from 37.7% to 73.5%, pointing to persistent weakness beneath the surface.",
+      "zh_summary": "上海於 10 月 23 日從低點反彈，但廣度情況混雜。SHCOMP 上漲 0.9%，其漲跌比從負 1,788 轉為正 1,348。然而 SHCOMP 4 週低點百分比從 37.7% 跳升至 73.5%，指向表面下持續疲弱。",
+      "ko_summary": "상하이는 10월 23일 저점에서 반등했지만 폭 그림은 혼조였다. SHCOMP는 0.9% 상승했고 상승/하락 수치는 마이너스 1,788에서 플러스 1,348로 전환됐다. 그러나 SHCOMP 4주 저점 비율은 37.7%에서 73.5%로 급등해 표면 아래 지속적인 약세를 가리킨다.",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2114736372527288639": {
+      "en_summary": "AMD kissing a small gap here at 529.98.",
+      "zh_summary": "AMD 在此親吻小缺口於 529.98。",
+      "ko_summary": "AMD가 여기서 529.98의 작은 갭을 키스하고 있다.",
+      "tickers": [
+        "AMD"
+      ],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "AMD": "中性"
+      },
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {
+        "AMD": "在529.98親吻小缺口"
+      }
+    }
+  }
+}
