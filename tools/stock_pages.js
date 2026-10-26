@@ -3,9 +3,11 @@
 //
 // - Which stocks: mentioned by MIN_ACCOUNTS or more tracked accounts in the last 28 days (the page's own POSTS),
 //   ticker confirmed. Pages of stocks that drop out are deleted and leave the sitemap.
-// - Content: the page's own stock view (openDive) rendered in each language, without the TradingView card.
-//   A build-time inline SVG from px/<slug>.json (last ~6 months) sits where the live chart was; omitted if
-//   the px file is missing. A button at the bottom opens the interactive page (/<lang>/#stock/<TICKER>).
+// - Content: the page's own stock view (openDive) rendered in each language. The live TradingView card
+//   (external script) is not copied. A plain iframe (no script) loads the chart from
+//   s.tradingview.com/widgetembed — visible with no click. The build-time SVG from px/<slug>.json
+//   stays visible under that iframe (smaller); omitted if the px file is missing.
+//   A button at the bottom opens the interactive page (/<lang>/#stock/<TICKER>).
 //   Readable without JS. One inline script runs the newsletter A/B test; the box stays hidden for variant A
 //   and when JS is off.
 // - Avatars are written once to av/<hash>.<ext> and shared by every page.
@@ -15,7 +17,6 @@
 //   sitemap.xml lists a stock page only when that ticker has at least 2 mentions in the 30*24h
 //   before the cutoff. Quieter pages stay on the site; they are only left out of the sitemap.
 // - Finally opens a few pages at desktop and phone width; fails on sideways overflow or missing text.
-const { chromium } = require('playwright');
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
@@ -56,6 +57,7 @@ const T = {
     faqWhat: (t, s) => ({ q: `$${t} 個股頁的資料從哪裡來？`, a: `本頁彙整追蹤帳號在 X（及個別 Truth Social）上提及 $${t} 的公開貼文立場，約每 4 小時更新。只反映已收錄帳號的公開言論。` }),
     pxCap: '近 6 個月日收市價（Yahoo Finance）。非即時報價。',
     pxAria: t => `$${t} 近 6 個月收市價`,
+    chartTitle: t => `$${t} TradingView 走勢圖`,
   },
   en: {
     index: 'Stock pages',
@@ -83,6 +85,7 @@ const T = {
     faqWhat: (t, s) => ({ q: `Where does the $${t} page data come from?`, a: `This page aggregates public posts about $${t} from tracked accounts on X (and a few on Truth Social), refreshed about every 4 hours. It only reflects those accounts' public views.` }),
     pxCap: 'Daily close, last ~6 months (Yahoo Finance). Not a live quote.',
     pxAria: t => `$${t} closing price, last 6 months`,
+    chartTitle: t => `$${t} TradingView chart`,
   },
   ko: {
     index: '종목 페이지',
@@ -110,6 +113,7 @@ const T = {
     faqWhat: (t, s) => ({ q: `$${t} 페이지 데이터는 어디서 오나요?`, a: `추적 계정이 X(일부 Truth Social)에서 $${t}를 언급한 공개 게시물 입장을 모아 약 4시간마다 갱신합니다. 수록된 계정의 공개 의견만 반영합니다.` }),
     pxCap: '최근 약 6개월 일간 종가(Yahoo Finance). 실시간 시세 아님.',
     pxAria: t => `$${t} 최근 6개월 종가`,
+    chartTitle: t => `$${t} TradingView 차트`,
   },
 };
 
@@ -278,14 +282,32 @@ const slug = t => t.replace(/[^A-Za-z0-9.\-]/g, '_');  // same as px/ file names
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 // tv_symbols values are "EXCHANGE:CODE" (same map as the homepage tvCard). Both parts must be a symbol token.
 const TV_PART = /^[A-Z0-9.!_-]+$/i;
-// Symbol pages that TradingView answers 404 for (checked 2026-10-21); these use the chart fallback.
+// Symbol pages that TradingView answers 404 for (checked 2026-10-21). PSKY is in tv_symbols as
+// NASDAQ:PSKY, but that symbol page 404s, so the link and the widget both skip the exchange prefix
+// and use the plain ticker (chart/?symbol=PSKY, widget symbol=PSKY).
+// The same plain ticker is used when tv_symbols has no entry (SPX, VIX, NDX, RUT, TNX, FMCC, FNMA,
+// ES_F, TCBI) or the code is not a symbol token. NYSE is stored as NYSE:^NYA; "^" is not a token,
+// so the widget symbol is NYSE, matching the chart-link fallback.
 const TV_SYMBOL_404 = new Set(['PSKY']);
-function tvChartLink(ticker, symbols) {
+// Widget page language. Checked 2026-10-26 against s.tradingview.com/widgetembed: zh_TW → zh-Hant,
+// en → en, kr → ko. locale=ko is ignored and the widget falls back to English.
+const TV_LOCALE = { zh: 'zh_TW', en: 'en', ko: 'kr' };
+const TV_FRAME_HOSTS = ['https://s.tradingview.com', 'https://www.tradingview.com'];
+
+function tvMappedSymbol(ticker, symbols) {
   const sym = !TV_SYMBOL_404.has(ticker) && symbols && symbols[ticker];
   const parts = typeof sym === 'string' ? sym.split(':') : [];
-  // TradingView symbol pages write share classes with a dot: NYSE-BRK.B, not NYSE-BRK-B.
+  // TradingView writes share classes with a dot: NYSE:BRK.B, not the NYSE:BRK-B stored in tv_symbols.
   if (parts.length === 2) parts[1] = parts[1].replace(/-/g, '.');
   if (parts.length === 2 && TV_PART.test(parts[0]) && TV_PART.test(parts[1])) {
+    return { symbol: parts[0] + ':' + parts[1], fallback: false };
+  }
+  return { symbol: ticker, fallback: true };
+}
+function tvChartLink(ticker, symbols) {
+  const mapped = tvMappedSymbol(ticker, symbols);
+  if (!mapped.fallback) {
+    const parts = mapped.symbol.split(':');
     return {
       href: 'https://www.tradingview.com/symbols/'
         + encodeURIComponent(parts[0]) + '-' + encodeURIComponent(parts[1])
@@ -297,6 +319,48 @@ function tvChartLink(ticker, symbols) {
     href: 'https://www.tradingview.com/chart/?symbol=' + encodeURIComponent(ticker) + '&aff_id=1172819',
     fallback: true,
   };
+}
+// Plain iframe URL. No external script, and no aff_id (that stays on the symbol/chart links).
+// Param names match tv.js generateUrl / widgetembed extractWidgetSettings (2026-10-26): the widget
+// reads the query string (it overrides the hash). hide_side_toolbar=1 hides the drawing bar;
+// allow_symbol_change=0 locks the symbol.
+function tvWidgetSrc(ticker, symbols, lang) {
+  const q = new URLSearchParams({
+    symbol: tvMappedSymbol(ticker, symbols).symbol,
+    interval: 'D',
+    theme: 'light',
+    style: '1',
+    timezone: 'Asia/Hong_Kong',
+    hide_side_toolbar: '1',
+    allow_symbol_change: '0',
+    locale: TV_LOCALE[lang] || 'en',
+  });
+  return 'https://s.tradingview.com/widgetembed/?' + q.toString();
+}
+function tvChartBlock(lang, ticker, symbols, svg) {
+  const src = tvWidgetSrc(ticker, symbols, lang);
+  const title = T[lang].chartTitle(ticker);
+  const frame = `<div class="tv-embed"><iframe class="tv-frame" title="${esc(title)}" src="${esc(src)}" loading="lazy" width="100%" height="420" frameborder="0"></iframe></div>`;
+  const fallback = svg ? `<div class="px-fallback">${svg}</div>` : '';
+  return `<section class="c12 panel tv-chart">${frame}${fallback}</section>`;
+}
+// Stock pages have no CSP meta today. If one is present, the widget iframe needs these hosts.
+function ensureTvFrameSrc(html) {
+  return html.replace(/<meta\b[^>]*http-equiv=(["'])Content-Security-Policy\1[^>]*>/gi, tag => {
+    const m = tag.match(/\bcontent=(["'])([\s\S]*?)\1/i);
+    if (!m) return tag;
+    let csp = m[2];
+    if (/frame-src\s/i.test(csp)) {
+      csp = csp.replace(/frame-src([^;]*)/i, (all, rest) => {
+        let hosts = rest;
+        for (const h of TV_FRAME_HOSTS) if (!hosts.includes(h)) hosts += ' ' + h;
+        return 'frame-src' + hosts;
+      });
+    } else {
+      csp = csp.replace(/\s*;?\s*$/, '') + '; frame-src ' + TV_FRAME_HOSTS.join(' ');
+    }
+    return tag.replace(m[2], csp);
+  });
 }
 // Keep "</" out of inline JSON so the closing script tag cannot be forged by a string.
 const jsonLd = obj => JSON.stringify(obj).replace(/<\//g, '<\\/');
@@ -383,7 +447,7 @@ function shell(master, lang, t, list, body, meta, stats, tvHref) {
   const alt = Object.entries(LANGS).map(([k, h]) => `<link rel="alternate" hreflang="${h}" href="${SITE}${k}/stock/${slug(t)}/">`).join('')
     + `<link rel="alternate" hreflang="x-default" href="${SITE}zh/stock/${slug(t)}/">`;
   const sw = Object.keys(LANGS).map(k => `<a href="/${k}/stock/${slug(t)}/"${k === lang ? ' aria-current="page"' : ''}>${{ zh: '中', en: 'EN', ko: '한' }[k]}</a>`).join('');
-  return `<!DOCTYPE html>
+  return ensureTvFrameSrc(`<!DOCTYPE html>
 <html lang="${LANGS[lang]}" data-theme="light"><head>
 ${ga}
 <meta charset="utf-8">
@@ -428,6 +492,13 @@ background:var(--accent);color:#fff;text-decoration:none}
 .px-sec{box-sizing:border-box;max-width:100%;overflow:hidden}
 .px-chart text{fill:var(--ink);font-size:11px;font-family:var(--f-data,system-ui,sans-serif)}
 .px-cap{margin:6px 0 0;max-width:100%;overflow-wrap:anywhere}
+.tv-chart{box-sizing:border-box;max-width:100%;min-width:0;overflow:hidden}
+.tv-embed{display:block;width:100%;max-width:100%;min-width:0;overflow:hidden}
+.tv-frame{display:block;width:100%;max-width:100%;height:420px;border:0;box-sizing:border-box}
+@media(max-width:480px){.tv-frame{height:320px}}
+.tv-chart .px-fallback{margin-top:10px;max-width:100%;min-width:0;overflow:hidden}
+.tv-chart .px-sec{border:0;padding:0;background:transparent;box-shadow:none}
+.tv-chart .px-chart{max-height:140px}
 ${NL_CSS}</style>
 </head>
 <body>
@@ -442,7 +513,7 @@ ${nlScript(nlCopy(lang).ok)}
 ${save}
 ${toTop(T[lang].top)}
 </body></html>
-`;
+`);
 }
 
 // The long list of every stock page sits folded so phones don't scroll past hundreds of tickers (Tim, 2026-10-21);
@@ -526,7 +597,9 @@ function avatars(html, seen) {
   });
 }
 
+if (require.main === module) {
 (async () => {
+  const { chromium } = require('playwright');
   const root = path.resolve(__dirname, '..');
   const srv = await start(root);
   const b = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
@@ -629,8 +702,9 @@ function avatars(html, seen) {
       }).replace(/href="#(account\/[^"]+)"/g, `href="/${lang}/#$1"`);
       body = avatars(body, seen);
       const svg = buildPxChartFromFile(root, pg.t, T[lang].pxCap, T[lang].pxAria(pg.t));
-      body = body.replace('<!--px-chart:' + pg.t + '-->', svg || '');
-      if (!svg) body = body.replace(new RegExp('<div class="c12 dim"[^>]*data-px-dim="' + pg.t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '"[^>]*>[\\s\\S]*?<\\/div>'), '');
+      // Iframe fills the old chart slot. The SVG stays under it when the px file exists.
+      // The "recent changes" heading stays too: the iframe is there even with no SVG.
+      body = body.replace('<!--px-chart:' + pg.t + '-->', tvChartBlock(lang, pg.t, tvSymbols, svg));
       const boxed = insertAfterKpis(body, nlMarkup(lang, pg.t));
       if (boxed === body) {
         console.log('::error::股票網頁沒有電子報位置：' + lang + '/' + pg.t);
@@ -686,9 +760,17 @@ function avatars(html, seen) {
 
   const nvdaPx = path.join(root, 'px', 'NVDA.json');
   const nvdaPage = path.join(root, 'en', 'stock', 'NVDA', 'index.html');
-  if (fs.existsSync(nvdaPx) && fs.existsSync(nvdaPage) && !fs.readFileSync(nvdaPage, 'utf8').includes('class="px-chart"')) {
-    console.log('::error::en/stock/NVDA/ missing <svg class="px-chart">');
-    process.exit(1);
+  if (fs.existsSync(nvdaPx) && fs.existsSync(nvdaPage)) {
+    const nvdaHtml = fs.readFileSync(nvdaPage, 'utf8');
+    if (!nvdaHtml.includes('class="px-chart"')) {
+      console.log('::error::en/stock/NVDA/ missing <svg class="px-chart">');
+      process.exit(1);
+    }
+    const frame = (nvdaHtml.match(/<iframe\b[^>]*class="tv-frame"[^>]*>/) || [''])[0];
+    if (!frame.includes('s.tradingview.com/widgetembed/') || frame.includes('aff_id')) {
+      console.log('::error::en/stock/NVDA/ missing TradingView iframe (or iframe has aff_id)');
+      process.exit(1);
+    }
   }
 
   // check a few pages at desktop and phone width
@@ -698,9 +780,20 @@ function avatars(html, seen) {
       const p = await b.newPage({ viewport: { width: w, height: 844 }, javaScriptEnabled: false });
       await p.route(/^https?:/, r => r.abort());
       await p.goto('file://' + path.resolve(u, 'index.html'));
-      const info = await p.evaluate(() => ({ ovf: document.documentElement.scrollWidth > innerWidth + 1, len: document.body.innerText.length }));
-      const ok = !info.ovf && info.len > 500;
-      console.log(`${ok ? 'ok ' : 'BAD'} ${w}px ${u}`, info.ovf ? 'overflow' : '', info.len);
+      const info = await p.evaluate(() => {
+        const frame = document.querySelector('iframe.tv-frame');
+        const r = frame ? frame.getBoundingClientRect() : null;
+        return {
+          ovf: document.documentElement.scrollWidth > innerWidth + 1,
+          len: document.body.innerText.length,
+          frameH: r ? Math.round(r.height) : 0,
+          frameW: r ? Math.round(r.width) : 0,
+          vw: innerWidth,
+        };
+      });
+      const expectH = w <= 480 ? 320 : 420;
+      const ok = !info.ovf && info.len > 500 && Math.abs(info.frameH - expectH) <= 2 && info.frameW > 100 && info.frameW <= info.vw + 1;
+      console.log(`${ok ? 'ok ' : 'BAD'} ${w}px ${u}`, info.ovf ? 'overflow' : '', info.len, 'frame', info.frameW + 'x' + info.frameH);
       if (!ok) bad.push(`${w}px ${u}`);
       await p.close();
     }
@@ -711,3 +804,6 @@ function avatars(html, seen) {
   console.log(`股票網頁：${list.length} 隻 × ${Object.keys(LANGS).length} 個語言，頭像 ${seen.size} 個`);
   if (bad.length) { console.log('::error::股票網頁檢查唔合格：' + bad.join('、')); process.exit(1); }
 })();
+}
+
+module.exports = { tvWidgetSrc, tvMappedSymbol, tvChartLink, tvChartBlock, ensureTvFrameSrc, TV_LOCALE, TV_SYMBOL_404 };
