@@ -3,8 +3,9 @@
 // For each job whose slot is in VIDEO_SLOTS (default 1230) and language in VIDEO_LANGS (default zh,en) it writes og/c/<day>-<slot>-<lang>.mp4:
 // 1080x1920, beat-synced hard cuts over 8 scenes (hook, reveal, bull vs bear, the 4 pictures, outro),
 // a generated beat and sound effects (tools/carousel_audio.py), and a voiceover where
-// tools/carousel_vo.py could read one (VO_LANGS, default zh). The 4 pictures are drawn by the same
-// tools/carousel.html as the stills and are always shown whole. The three languages render at once.
+// tools/carousel_vo.py could read one (VO_LANGS, default zh,en; Korean stays without one).
+// The 4 pictures are drawn by the same tools/carousel.html as the stills and are always shown whole.
+// The three languages render at once.
 // Old videos go with the pictures (tools/carousel.js keeps only today's and yesterday's og/c files).
 const { chromium } = require('playwright');
 const fs = require('fs');
@@ -51,10 +52,21 @@ function chrome(gt){
 
 async function one(browser, job, vo, outFile) {
   const W = words(job.lang, job.slides[0]);
-  // scene lengths in beats; a voiced scene grows to fit its line (+0.4 s), in whole beats
-  const SC = BASE.map(([name, b], i) => [name, vo ? Math.max(b, Math.ceil((vo[i].dur + 0.4) / BEAT)) : b]);
-  const starts = []; let acc = 0; for (const [, b] of SC) { starts.push(acc); acc += b * BEAT; }
-  const total = acc, events = [];
+  // scene lengths in beats; a voiced scene grows to fit its line (+0.4 s), in whole beats.
+  // Same sum as carousel_vo.video_total. English must stay <= 29.0s: carousel_vo.py fit_en already
+  // retries +20%, +30%, then a shorter script. If this total is still over, drop the voice.
+  // zh does not enter the branch, so a zh video that is already <= 29s is unchanged.
+  let SC = BASE.map(([name, b], i) => [name, vo ? Math.max(b, Math.ceil((vo[i].dur + 0.4) / BEAT)) : b]);
+  let starts = []; let acc = 0; for (const [, b] of SC) { starts.push(acc); acc += b * BEAT; }
+  let total = acc;
+  if (vo && job.lang === 'en' && total > 29) {
+    console.log(`carousel video: en voiceover ${total.toFixed(2)}s > 29, dropping voice`);
+    vo = null;
+    SC = BASE.map(([name, b]) => [name, b]);
+    starts = []; acc = 0; for (const [, b] of SC) { starts.push(acc); acc += b * BEAT; }
+    total = acc;
+  }
+  const events = [];
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), `cv-${job.lang}-`));
   let frame = 0;
   const shot = pg => pg.screenshot({ path: path.join(dir, String(frame++).padStart(4, '0') + '.jpg'), type: 'jpeg', quality: 88 });

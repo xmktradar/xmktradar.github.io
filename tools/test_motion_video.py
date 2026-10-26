@@ -1,8 +1,12 @@
 """Motion videos (tools/MOTION_VIDEO.md): which slots and languages get one, the voiceover lines,
 dropping videos that were not made, and the /social/ page. Offline, no browser, no network.
+The 29s guard is exercised on the VO_FAKE=1 path (durations are supplied; no edge-tts).
 Run from the repo root: python3 tools/test_motion_video.py
 """
+import json
 import os
+import re
+import subprocess
 import sys
 import tempfile
 
@@ -10,12 +14,38 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 os.environ['WORK_DIR'] = tempfile.mkdtemp(prefix='motion-test-')
 os.environ.pop('VIDEO_SLOTS', None)
 os.environ.pop('VIDEO_LANGS', None)
+os.environ.pop('VO_LANGS', None)
+os.environ.pop('VO_FAKE', None)
+os.environ.pop('VO_VOICE_en', None)
+os.environ.pop('VO_VOICE_zh', None)
 
 import carousel  # noqa: E402
 import carousel_vo  # noqa: E402
 from carousel_video_post import prune  # noqa: E402
 
 URL = 'https://thecrowdtape.com/og/c/2026-10-23-1230-{}.mp4'
+# Snapshot of lines(job('zh')) before the English voiceover change. Do not edit to match a new zh script.
+ZH_LINES = [
+    '今天最熱門的美股是？',
+    'S P Y，15 個帳號在聊',
+    '3 看好，6 看空，空方領先！',
+    '大神怎麼說？',
+    '熱度前四，一張圖看完',
+    '看好 M E T A，看空 Q Q Q',
+    'G L D 分歧最大！',
+    '詳情看 thecrowdtape.com',
+]
+EN_LINES = [
+    "Today's hottest stock?",
+    'S P Y, 15 accounts.',
+    '3 bulls, 6 bears. Bears ahead!',
+    'What are they saying?',
+    'Top 4, on screen.',
+    'bullish M E T A, bearish Q Q Q',
+    'G L D, biggest split.',
+    'Details at thecrowdtape dot com',
+]
+BAD_EN = re.compile(r'\b(buy|sell|buys|sells|buying|selling|target|targets|prediction|predictions|forecast|forecasts)\b', re.I)
 
 
 def job(lang='zh'):
@@ -31,8 +61,16 @@ def test_defaults():
     assert carousel.VIDEO_LANGS == ('zh', 'en'), carousel.VIDEO_LANGS  # Tim: no Korean video
 
 
+def _assert_no_advice(lines):
+    text = '\n'.join(lines)
+    assert BAD_EN.search(text) is None, text
+    for bad in ('買', '賣', '目標價', '會升', '會跌', '必升', 'buy', 'sell', 'target', 'prediction'):
+        assert bad not in text.lower(), bad
+
+
 def test_vo_lines():
     ls = carousel_vo.lines(job())
+    assert ls == ZH_LINES, ls
     assert len(ls) == 8, ls
     text = ''.join(ls)
     assert 'S P Y' in ls[1] and '15' in ls[1], ls[1]
@@ -42,7 +80,166 @@ def test_vo_lines():
     assert 'G L D' in ls[6], ls[6]
     for bad in ('買', '賣', '目標價', '會升', '會跌', '必升'):
         assert bad not in text, bad
-    assert carousel_vo.lines(job('en')) is None  # only Mandarin for now
+    assert carousel_vo.VOICES['zh'] == 'zh-CN-XiaoxiaoNeural'
+    assert carousel_vo.RATE == '+10%'
+    assert carousel_vo.fake_seconds(ls[0]) == max(1.0, len(ls[0]) / 6.5)  # zh fake length is unchanged at +10%
+
+
+def test_en_lines():
+    assert carousel_vo.VOICES['en'] == 'en-US-AndrewNeural'
+    assert os.environ.get('VO_VOICE_en', carousel_vo.VOICES['en']) == 'en-US-AndrewNeural'
+    ls = carousel_vo.lines(job('en'))
+    assert ls == EN_LINES, ls
+    assert len(ls) == 8, ls
+    _assert_no_advice(ls)
+    assert 'S P Y' in ls[1] and '15' in ls[1], ls[1]
+    assert 'bulls' in ls[2] and 'bears' in ls[2] and 'Bears ahead' in ls[2], ls[2]
+    assert 'What are they saying?' == ls[3]
+    assert 'Top 4' in ls[4] and 'S P C X' not in ls[4] and 'A M Z N' not in ls[4], ls[4]
+    assert 'M E T A' in ls[5] and 'Q Q Q' in ls[5], ls[5]
+    assert ls[6] == 'G L D, biggest split.', ls[6]
+    assert ls[7] == 'Details at thecrowdtape dot com'
+    assert carousel_vo.lines(job('ko')) is None  # Korean video is not voiced
+    assert carousel_vo.vo_langs() == ['zh', 'en']
+    short = carousel_vo.en_lines(job('en'), short=True)
+    assert len(short) == 8, short
+    _assert_no_advice(short)
+    assert 'S P Y' in short[1] and 'M E T A' in short[5] and 'Q Q Q' in short[5] and 'G L D' in short[6], short
+    assert short[7] == 'thecrowdtape dot com'
+    assert short != ls
+    one = job('en')
+    one['slides'][0]['sub'] = '1 account'
+    one['slides'][0]['pills'] = [{'c': 'g', 'x': '1 bullish'}]
+    assert carousel_vo.lines(one)[1] == 'S P Y, 1 account.'
+    assert carousel_vo.lines(one)[2] == '1 bull, 0 bears. Bulls ahead!'
+    tie = job('en')
+    tie['slides'][0]['pills'] = [{'c': 'g', 'x': '4 bullish'}, {'c': 'r', 'x': '4 bearish'}]
+    assert "It's a tie!" in carousel_vo.lines(tie)[2]
+    bulls = job('en')
+    bulls['slides'][0]['pills'] = [{'c': 'g', 'x': '8 bullish'}, {'c': 'r', 'x': '2 bearish'}]
+    assert carousel_vo.lines(bulls)[2] == '8 bulls, 2 bears. Bulls ahead!'
+
+
+def test_en_missing_sections():
+    j = job('en')
+    j['slides'][1]['secs'] = [{'h': '🔥 Most discussed · Top 4', 'cards': []}]
+    j['slides'][2]['secs'] = [{'h': '🟢 Joint bullish', 'cards': [{'t': 'META'}]}]
+    j['slides'][3]['secs'] = []
+    ls = carousel_vo.lines(j)
+    assert ls[4] == "Today's ranking.", ls[4]
+    assert ls[5] == 'bullish M E T A' and 'bear' not in ls[5], ls[5]
+    assert ls[6] == 'Which side are you on?', ls[6]
+    _assert_no_advice(ls)
+    short = carousel_vo.en_lines(j, short=True)
+    assert 'M E T A' in short[5] and 'Q Q Q' not in short[5], short[5]
+    assert short[6] == 'Which side?', short[6]
+
+
+def _run_vo(jobs, dur, langs):
+    """Run carousel_vo.main on the VO_FAKE=1 path. dur(rate, text) supplies each clip length."""
+    calls = []
+    old_fake, old_duration = carousel_vo.fake, carousel_vo.duration
+    old_fake_env, old_langs = os.environ.get('VO_FAKE'), os.environ.get('VO_LANGS')
+    os.environ['VO_FAKE'] = '1'
+    os.environ['VO_LANGS'] = langs
+
+    def fake(text, path, rate=carousel_vo.RATE):
+        assert os.environ.get('VO_FAKE') == '1'
+        calls.append((rate, text))
+        return True
+
+    def duration(path):
+        rate, text = calls[-1]
+        return dur(rate, text)
+
+    carousel_vo.fake = fake
+    carousel_vo.duration = duration
+    try:
+        d = tempfile.mkdtemp()
+        path = os.path.join(d, 'carousel.json')
+        json.dump({'jobs': jobs}, open(path, 'w', encoding='utf-8'))
+        out = os.path.join(d, 'vo')
+        carousel_vo.main(path, out)
+        vo = json.load(open(os.path.join(out, 'vo.json'), encoding='utf-8'))
+        return vo, calls
+    finally:
+        carousel_vo.fake, carousel_vo.duration = old_fake, old_duration
+        if old_fake_env is None:
+            os.environ.pop('VO_FAKE', None)
+        else:
+            os.environ['VO_FAKE'] = old_fake_env
+        if old_langs is None:
+            os.environ.pop('VO_LANGS', None)
+        else:
+            os.environ['VO_LANGS'] = old_langs
+
+
+def test_duration_guard():
+    """English over 29s retries faster rates, then shorter lines, then drops the voice. zh does not."""
+    assert carousel_vo.fits(29.0) and not carousel_vo.fits(29.03)
+    assert carousel_vo.fits(carousel_vo.video_total(None))
+    assert abs(carousel_vo.video_total(None) - 48 * 60 / 124) < 1e-9
+    long = [5.5] * 8
+    assert carousel_vo.video_total(long) > 29.0
+    assert carousel_vo.video_total([1.2] * 8) <= 29.0
+    assert [r for _, r in carousel_vo.EN_TRIES] == ['+10%', '+20%', '+30%', '+10%', '+20%', '+30%']
+
+    vo, calls = _run_vo([job('en')], lambda rate, text: 1.2, langs='en')
+    assert len(calls) == 8 and {r for r, _ in calls} == {'+10%'}
+    assert [x['text'] for x in vo['1230-en']] == EN_LINES
+    assert carousel_vo.video_total([x['dur'] for x in vo['1230-en']]) <= 29.0
+
+    vo, calls = _run_vo([job('en')], lambda rate, text: 1.2 if rate == '+30%' else 5.0, langs='en')
+    assert [x['text'] for x in vo['1230-en']] == EN_LINES  # fitted on the normal script, not the short one
+    assert calls[0][0] == '+10%' and calls[-1][0] == '+30%'
+    assert all(t != 'Hottest stock?' for _, t in calls)
+    assert carousel_vo.video_total([x['dur'] for x in vo['1230-en']]) <= 29.0
+
+    vo, calls = _run_vo([job('en')], lambda rate, text: 5.0, langs='en')
+    assert '1230-en' not in vo  # still over 29s after every try: no voice, rather than a long video
+    assert any(t == 'Hottest stock?' for _, t in calls)
+    assert calls[-1] == ('+30%', 'thecrowdtape dot com')
+
+    # A zh read that would be over 29s is still emitted once, at +10%, with the snapshot lines.
+    vo, calls = _run_vo([job('zh')], lambda rate, text: 5.0, langs='zh')
+    assert [x['text'] for x in vo['1230-zh']] == ZH_LINES
+    assert len(calls) == 8 and {r for r, _ in calls} == {'+10%'}
+    assert carousel_vo.video_total([x['dur'] for x in vo['1230-zh']]) > 29.0
+
+    j = job('en')
+    j['slides'][0]['big'] = 'GOOGL'
+    vo, calls = _run_vo([j], lambda rate, text: carousel_vo.fake_seconds(text, rate), langs='en')
+    if '1230-en' in vo:
+        assert carousel_vo.video_total([x['dur'] for x in vo['1230-en']]) <= 29.0
+        assert any('G O O G L' in x['text'] for x in vo['1230-en'])
+    else:
+        assert calls and calls[-1][0] == '+30%'
+
+
+def test_video_total_matches_js():
+    import random
+    rng = random.Random(1230)
+    cases = [[round(rng.uniform(0.8, 6.5), 3) for _ in range(8)] for _ in range(80)]
+    cases.append([round(7 * 60 / 124 - 0.4, 3)] * 8)  # ceil boundary
+    script = r'''
+const fs = require('fs');
+const BEAT = 60 / 124, BASE = [5, 4, 6, 7, 7, 6, 6, 7];
+const cases = JSON.parse(fs.readFileSync(0, 'utf8'));
+for (const vo of cases) {
+  let acc = 0;
+  for (let i = 0; i < 8; i++) acc += Math.max(BASE[i], Math.ceil((vo[i] + 0.4) / BEAT)) * BEAT;
+  console.log(acc);
+}
+'''
+    env = os.environ.copy()
+    env.pop('FORCE_COLOR', None)
+    env['NO_COLOR'] = '1'
+    proc = subprocess.run(['node', '-e', script], input=json.dumps(cases), text=True, capture_output=True, check=True, env=env)
+    nums = re.findall(r'[-+]?\d+(?:\.\d+)?(?:[eE][-+]?\d+)?', proc.stdout)
+    got = [float(x) for x in nums]
+    assert len(got) == len(cases)
+    for durs, js in zip(cases, got):
+        assert abs(carousel_vo.video_total(durs) - js) < 1e-6, (durs, carousel_vo.video_total(durs), js)
 
 
 def test_vo_missing_sections():
