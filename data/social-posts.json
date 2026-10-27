@@ -1506,9 +1506,158 @@
       "XYZ"
      ]
     }
+   },
+   "intraday_2": {
+    "post_et": "12:15",
+    "post_hkt": "00:15",
+    "generated_at": "2026-10-27T12:26:13-04:00",
+    "date": "2026-10-27",
+    "date_kst": "2026-10-28",
+    "quotes": {
+     "SPY": {
+      "price": 770.3,
+      "prev_close": 765.37,
+      "chg_pct": 0.64,
+      "time": "2026-10-27T12:26:09-04:00"
+     },
+     "QQQ": {
+      "price": 722.14,
+      "prev_close": 712.2,
+      "chg_pct": 1.4,
+      "time": "2026-10-27T12:26:14-04:00"
+     },
+     "DIA": {
+      "price": 523.305,
+      "prev_close": 522.97,
+      "chg_pct": 0.06,
+      "time": "2026-10-27T12:26:10-04:00"
+     },
+     "NU": {
+      "price": 12.535,
+      "prev_close": 12.59,
+      "chg_pct": -0.44,
+      "time": "2026-10-27T12:26:11-04:00"
+     },
+     "FICO": {
+      "price": 699.59,
+      "prev_close": 708.07,
+      "chg_pct": -1.2,
+      "time": "2026-10-27T12:26:14-04:00"
+     },
+     "HYG": {
+      "price": 77.472,
+      "prev_close": 77.2,
+      "chg_pct": 0.35,
+      "time": "2026-10-27T12:26:15-04:00"
+     },
+     "XYZ": {
+      "price": 75.09,
+      "prev_close": 74.55,
+      "chg_pct": 0.72,
+      "time": "2026-10-27T12:26:15-04:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-10-27T12:26:15-04:00",
+     "hkt": "2026-10-28 00:26"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "NU",
+      "chg_pct": -0.44,
+      "bull": 0,
+      "bear": 2,
+      "accounts": [
+       "StockSavvyShay",
+       "WallStJesus"
+      ]
+     },
+     {
+      "ticker": "FICO",
+      "chg_pct": -1.2,
+      "bull": 0,
+      "bear": 2,
+      "accounts": [
+       "petenajarian",
+       "OptionsMike",
+       "jonnajarian"
+      ]
+     },
+     {
+      "ticker": "HYG",
+      "chg_pct": 0.35,
+      "bull": 0,
+      "bear": 2,
+      "accounts": [
+       "KeithMcCullough",
+       "KobeissiLetter",
+       "spotgamma"
+      ]
+     },
+     {
+      "ticker": "XYZ",
+      "chg_pct": 0.72,
+      "bull": 0,
+      "bear": 2,
+      "accounts": [
+       "WallStJesus",
+       "OptionsMike"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Midday · As of 12:26 ET (00:26 HKT)\n\n$SPY +0.6% · $QQQ +1.4% · $DIA +0.1%\n\n$NU -0.4%, 2 accounts bearish on site\n$FICO -1.2%, 2 accounts bearish on site\n\nhttps://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_2\n\n⚠️ Not investment advice\n#StockMarket #NU #FICO",
+      "url": "https://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_2"
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午市觀察 · 截至 12:26 ET（00:26 HKT）\n\n$SPY +0.6% · $QQQ +1.4% · $DIA +0.1%\n\n$NU -0.4%，網站 2 個帳號看淡\n$FICO -1.2%，網站 2 個帳號看淡\n$HYG +0.3%，網站 2 個帳號看淡\n$XYZ +0.7%，網站 2 個帳號看淡\n\nhttps://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=intraday_2\n\n⚠️ 唔構成投資建議\n#美股 #NU #FICO",
+      "url": "https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=intraday_2"
+     },
+     "en": {
+      "text": "Midday · As of 12:26 ET (00:26 HKT)\n\n$SPY +0.6% · $QQQ +1.4% · $DIA +0.1%\n\n$NU -0.4%, 2 accounts bearish on site\n$FICO -1.2%, 2 accounts bearish on site\n$HYG +0.3%, 2 accounts bearish on site\n$XYZ +0.7%, 2 accounts bearish on site\n\nhttps://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=intraday_2\n\n⚠️ Not investment advice\n#StockMarket #NU #FICO",
+      "url": "https://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=intraday_2"
+     }
+    },
+    "has_link": {
+     "x": true,
+     "threads": {
+      "zh": true,
+      "en": true
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "MU",
+      "BE",
+      "AMD",
+      "SMH",
+      "SKHY",
+      "INTC",
+      "CRWD",
+      "LMT",
+      "AMZN",
+      "CART",
+      "CLS",
+      "ORCL",
+      "CRDO",
+      "AXP"
+     ],
+     "bear": [
+      "NU",
+      "FICO",
+      "HYG",
+      "XYZ"
+     ]
+    }
    }
   },
-  "generated_at": "2026-10-27T11:13:12-04:00",
-  "generated_hkt": "2026-10-27 23:13"
+  "generated_at": "2026-10-27T12:26:13-04:00",
+  "generated_hkt": "2026-10-28 00:26"
  }
 }
