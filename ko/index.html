@@ -906,7 +906,7 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
       <button role="tab" data-v="macro" id="tab-macro">매크로</button>
       <button role="tab" data-v="tracked" id="tab-tracked">추적 명단</button>
       <!-- 機械人選股分頁暫時收起（2026-10-15）：數據停咗喺 10/8，有來源再開返
-      <a href="/robot.html" class="tab-robo"><span class="rb-full">機械人選股交易（Grok）</span><span class="rb-short">機械人交易</span></a>
+      <a href="/ko/robot.html" class="tab-robo"><span class="rb-full">機械人選股交易（Grok）</span><span class="rb-short">機械人交易</span></a>
       -->
     </nav>
     <button type="button" class="srch-btn" id="srch-btn" aria-label="종목 검색" title="종목 검색" aria-expanded="false" aria-controls="srch">🔍</button>
@@ -1373,7 +1373,9 @@ function viewDaily(){
  const cmpLab=current==='weekly'?'이전 7일 대비':current==='monthly'?'이전 28일 대비':'어제 같은 시간대 대비';
  const priorOpen=current==='weekly'?'이전 7일(':current==='monthly'?'이전 28일(':'어제(';
  const priorLoading=!hasPrev&&!postsReady();
- const T3=ruxThreeLines(tkNow.map(t=>({t,c:dist(t,w.from,w.to),c0:hasPrev?dist(t,pf,pt):null,chg:chg.filter(y=>y.x.t===t).length})),hasPrev);
+ // 立場轉變後備要等前期窗覆蓋或帖文載完先計。各語言 inline 長度唔同，中途用 chg 會揀到唔同股票。
+ const shiftReady=hasPrev||postsReady();
+ const T3=ruxThreeLines(tkNow.map(t=>({t,c:dist(t,w.from,w.to),c0:hasPrev?dist(t,pf,pt):null,chg:shiftReady?chg.filter(y=>y.x.t===t).length:0})),hasPrev);
  const _cut=dataCutoffMs();const upd=_cut?`${hkDate(_cut).slice(5).replace('-','/')} ${hm(_cut)}`:'';
  const ctx=`${fmtR(w.from)} – ${fmtR(w.to)} HKT · 업데이트 ${upd} HKT · ${accsNow} 개 계정, ${vposts.length} 개 유효 게시물`;
  const pct=x=>(x>0?'+':'')+Math.round(x*100)+'%';
@@ -1829,7 +1831,7 @@ function paintChrome(){const m=D.meta;const cut=document.getElementById('cutoff'
 <p>입장 데이터: ${m.stance.files.length?`분석가가 게시물별로 표시( ${m.stance.matched} 건 표시). 입장이 표시되지 않은 게시물은 모두 “입장 없음”으로 분류한다.`:'아직 분석가 입장 데이터가 없어 모든 게시물을 임시로 “입장 없음”으로 분류한다.'}</p>
 <p>${Object.keys(srcs).length?`가격 기준 ${esc(asof)} (미국 동부 거래일): ${Object.keys(srcs).map(esc).join(', ')} 일간 종가, 수집 시각 ${esc(fet)} HKT`:'주가 데이터 없음'}${(()=>{const pm=m.price_missing.filter(t=>!UNC(t));const wn=pm.filter(t=>OV[t]&&OV[t].price_note),wo=pm.filter(t=>!(OV[t]&&OV[t].price_note));return (wn.length?'; '+wn.map(t=>'$'+esc(t)+'  → '+esc(OV[t].price_note)).join('; '):'')+(wo.length?`; 아직 주가 데이터 없음: ${wo.map(t=>'$'+esc(t)).join(' ')}`:'')})()}${nonUS.length?'; 비미국 종목은 현지 거래소와 통화로 표시(종목 페이지에 표기)':''}. </p>
 ${MAC&&MAC.rows.length?`<p>시장 데이터: ${[...new Set(MAC.rows.map(r=>(r.src||'').replace(/（.*?）|\(.*?\)/g,'').trim()).filter(Boolean))].map(esc).join(', ')||'—'}${MAC.as_of?`, 기준일 ${esc(MAC.as_of)} HKT`:''}. </p>`:''}<p>모든 시간은 홍콩 시간(HKT, UTC+8)이다. 계정 아바타와 소개는 각 계정의 X 프로필에서 가져왔다.</p>
-<p>일부 링크는 제휴 링크이며, 이를 통해 가입·구매 시 추가 비용 없이 수수료를 받을 수 있습니다. 이는 집계 및 <a href="/robot.html">로봇 픽</a>. 이 사이트의 내용은 투자 조언이 아닙니다.</p>
+<p>일부 링크는 제휴 링크이며, 이를 통해 가입·구매 시 추가 비용 없이 수수료를 받을 수 있습니다. 이는 집계 및 <a href="/ko/robot.html">로봇 픽</a>. 이 사이트의 내용은 투자 조언이 아닙니다.</p>
 <p><a href="tools/">도구</a> · <a href="support/">후원하기</a> · <a href="newsletter/">뉴스레터</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank">TradingView <span class="pj-tag">홍보</span></a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="pj-tag">홍보</span></a> · <a href="advertise/">광고 제휴</a> · <a href="about/">소개 및 방법론</a></p>`;linkHandles(document.getElementById('foot'))}
 document.addEventListener('dash-data',function(){try{paintChrome()}catch(e){}});
 paintChrome();

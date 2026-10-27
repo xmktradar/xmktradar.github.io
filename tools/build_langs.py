@@ -12,10 +12,17 @@
 - Every version gets <html lang>, canonical, hreflang, the language switch and absolute asset paths.
 - index.html itself gets the same switch and hreflang plus a script that sends visitors to the
   version matching their browser language.
+- robot.html (Chinese) is stamped with hreflang. en/robot.html and ko/robot.html are translated
+  from it with i18n/<lang>.json "robot" (plus shared "ui" strings). Canonical stays /robot.html
+  for Chinese and /en/robot.html, /ko/robot.html for the other two. The paper-trading pause is copy
+  only: this step does not start or resume any job.
 - Lighter pages: each version carries only the last LITE_DAYS of daily closes (plus the first one, for
   the one-year change) and no intraday lines; the stock page loads px/<ticker>.json (full closes and
   intraday) when opened. Account info and avatars nobody in the data refers to, and ko_summary (copied
   into zh_summary on the Korean page), are left out. index.html keeps everything: the pipeline reads it.
+  The served master is often already slim (prices live in px/, older posts in data/dash/). Rebuilding
+  from that master keeps each language page's existing slim blob and its stock-index block, and an
+  empty price map does not delete px/.
 """
 import copy
 import glob
@@ -223,6 +230,9 @@ def write_px(d):
         keep.add(f)
         with open(f, 'w', encoding='utf-8') as fh:
             json.dump({'c': p.get('c') or [], 'intra': intra}, fh, ensure_ascii=False, separators=(',', ':'))
+    if not keep:
+        # The served master is slim (no full closes). An empty keep must not wipe px/.
+        return 0
     for f in glob.glob(os.path.join(PX_DIR, '*.json')):
         if f not in keep:
             os.remove(f)
@@ -352,7 +362,29 @@ def twitter_text(s):
     return s[:desc.end()] + block + s[desc.end():]
 
 
+def kept_slim(prev, master_data):
+    """Slim language pages were cut by slim_pages after translation, so each language keeps a
+    different inline prefix. Re-lightening the already-slim master would copy one prefix onto all
+    three and rewrite _ext. Keep the page's blob until a full (non-slim) master is built."""
+    if not (isinstance(master_data, dict) and isinstance(master_data.get('_ext'), dict)):
+        return None
+    m = BLOCK.search(prev or '')
+    if not m:
+        return None
+    try:
+        prev_d = json.loads(m.group(2).replace('<\\/', '</'))
+    except json.JSONDecodeError:
+        return None
+    if not (isinstance(prev_d, dict) and isinstance(prev_d.get('_ext'), dict)):
+        return None
+    return m.group(2)
+
+
 def build(lang, master):
+    dest = f'{lang}/index.html'
+    prev = open(dest, encoding='utf-8').read() if os.path.exists(dest) else ''
+    stock = STOCK_INDEX.search(prev)
+    stock = stock.group(0) if stock else ''
     master = STOCK_INDEX.sub('', master)
     if lang != 'zh':
         master = ZH_ONLY.sub('', master)
@@ -364,7 +396,9 @@ def build(lang, master):
     d = json.loads(m.group(2).replace('<\\/', '</'))
     keys = code_values(master[:m.start(2)] + master[m.end(2):])
     fixed = {k: v for k, v in (tr.get('data') or {}).items() if k not in keys}
-    blob = json.dumps(lighten(swap_data(d, lang, fixed)), ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+    blob = kept_slim(prev, d)
+    if blob is None:
+        blob = json.dumps(lighten(swap_data(d, lang, fixed)), ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
     code = master[:m.start(2)], master[m.end(2):]
     out = [translate(part, tr.get('ui') or {}) for part in code]
     s = out[0] + blob + out[1]
@@ -388,6 +422,12 @@ def build(lang, master):
     s = re.sub(r'''(["'(])assets/''', r'\1/assets/', s)
     s = add_chrome(s, lang)
     s = localize_news(s, lang)
+    if lang != 'zh':  # Chinese stays on /robot.html; en/ko nav and footer go to the translated page
+        s = s.replace('href="/robot.html"', f'href="/{lang}/robot.html"')
+    if stock and '<!-- stock-index -->' not in s:
+        # stock_pages.js injects this per language. A rebuild must not drop it.
+        needle = '<footer class="wrap foot"'
+        s = s.replace(needle, stock + needle, 1) if needle in s else s.replace('</body>', stock + '</body>', 1)
     os.makedirs(lang, exist_ok=True)
     open(f'{lang}/index.html', 'w', encoding='utf-8').write(s)
     if lang == 'zh':
@@ -416,14 +456,104 @@ def dedupe_sitemap(sm):
     return ''.join(out)
 
 
+def robot_ui(lang):
+    """Homepage ui strings plus robot-only copy. Robot entries win, so a short homepage gloss cannot override a robot sentence."""
+    tr = read_json(f'i18n/{lang}.json', {}) if lang != 'zh' else {}
+    tr = tr if isinstance(tr, dict) else {}
+    ui = dict(tr.get('ui') or {})
+    ui.update(tr.get('robot') or {})
+    return ui
+
+
+def robot_canon(lang):
+    return SITE + ('robot.html' if lang == 'zh' else f'{lang}/robot.html')
+
+
+def robot_switch(lang):
+    items = (('zh', '/robot.html', '中'), ('en', '/en/robot.html', 'EN'), ('ko', '/ko/robot.html', '한'))
+    on = ' aria-current="page"'
+    links = ''.join(f'<a href="{href}" data-lang="{k}"{on if k == lang else ""}>{lab}</a>' for k, href, lab in items)
+    return f'<nav class="lang-sw" aria-label="Language">{links}</nav>'
+
+
+def stamp_robot(html, lang):
+    """Canonical, hreflang and the language switch for robot.html. Chinese stays at /robot.html."""
+    html = re.sub(re.escape(MARK) + '.*?' + re.escape(MARK), '', html, flags=re.S)
+    html = re.sub(r'<link rel="canonical"[^>]*>\s*', '', html)
+    html = re.sub(r'<link rel="alternate" hreflang="[^"]*"[^>]*>\s*', '', html)
+    html = re.sub(r'<nav class="lang-sw".*?</nav>\s*', '', html, flags=re.S)
+    lang_attr = 'zh-Hant-HK' if lang == 'zh' else LANGS[lang][0]
+    html = re.sub(r'<html lang="[^"]*"', f'<html lang="{lang_attr}"', html, count=1)
+    alt = (
+        f'<link rel="alternate" hreflang="zh-Hant" href="{SITE}robot.html">'
+        f'<link rel="alternate" hreflang="en" href="{SITE}en/robot.html">'
+        f'<link rel="alternate" hreflang="ko" href="{SITE}ko/robot.html">'
+        f'<link rel="alternate" hreflang="x-default" href="{SITE}robot.html">'
+    )
+    block = f'{MARK}<link rel="canonical" href="{robot_canon(lang)}">{alt}<style>{SWITCH_CSS}</style>{MARK}'
+    html = html.replace('</head>', block + '</head>', 1)
+    html = html.replace('<div class="brand-wrap">', robot_switch(lang) + '<div class="brand-wrap">', 1)
+    html = re.sub(r'(<meta property="og:url" content=")[^"]*"', rf'\1{robot_canon(lang)}"', html, count=1)
+    loc = {'zh': 'zh_TW', 'en': 'en', 'ko': 'ko'}[lang]
+    html = re.sub(r"locale:'(?:zh_TW|en|ko)'", f"locale:'{loc}'", html)
+    return html
+
+
+def point_robot_links():
+    """Pages this step does not rebuild (support, tools, advertise) still embed href=\"/robot.html\".
+    robot.html itself is skipped: its language switch must keep 中 on /robot.html."""
+    n = 0
+    for lang in ('en', 'ko'):
+        for f in glob.glob(f'{lang}/**/*.html', recursive=True) + glob.glob(f'{lang}/*.html'):
+            if os.path.basename(f) == 'robot.html':
+                continue
+            s = open(f, encoding='utf-8').read()
+            t = s.replace('href="/robot.html"', f'href="/{lang}/robot.html"')
+            if t != s:
+                open(f, 'w', encoding='utf-8').write(t)
+                n += 1
+    return n
+
+
+def build_robot():
+    """Write en/robot.html and ko/robot.html from robot.html, and stamp hreflang on the Chinese page."""
+    src = open('robot.html', encoding='utf-8').read()
+    zh = stamp_robot(src, 'zh')
+    open('robot.html', 'w', encoding='utf-8').write(zh)
+    left = {}
+    han = re.compile(r'[\u4e00-\u9fff]')
+    for lang in ('en', 'ko'):
+        base = re.sub(r'<nav class="lang-sw".*?</nav>', '', zh, count=1, flags=re.S)
+        page = translate(base, robot_ui(lang))
+        page = stamp_robot(page, lang)
+        os.makedirs(lang, exist_ok=True)
+        open(f'{lang}/robot.html', 'w', encoding='utf-8').write(page)
+        vis = re.sub(r'<script\b[^>]*>.*?</script>|<style\b[^>]*>.*?</style>|<!--.*?-->', ' ', page, flags=re.S)
+        vis = re.sub(r'<nav class="lang-sw".*?</nav>', ' ', vis, flags=re.S)
+        left[lang] = len(han.findall(vis))
+    return left
+
+
 def sitemap(gen):
     sm = open('sitemap.xml', encoding='utf-8').read()
+    if not gen:
+        prev = re.search(r'<loc>' + re.escape(SITE) + r'zh/</loc><lastmod>([^<]+)', sm)
+        gen = prev.group(1) if prev else ''
     sm = re.sub(r'\s*<url><loc>' + re.escape(SITE) + r'(zh|en|ko)/</loc>.*?</url>', '', sm, flags=re.S)
+    sm = re.sub(r'\s*<url><loc>' + re.escape(SITE) + r'(?:(?:en|ko)/)?robot\.html</loc>.*?</url>', '', sm, flags=re.S)
     if 'xmlns:xhtml' not in sm:
         sm = sm.replace('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
                         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">')
     alt = ''.join(f'<xhtml:link rel="alternate" hreflang="{LANGS[k][0]}" href="{SITE}{k}/"/>' for k in LANGS)
     rows = ''.join(f'\n  <url><loc>{SITE}{k}/</loc><lastmod>{gen}</lastmod><changefreq>hourly</changefreq>{alt}</url>' for k in LANGS)
+    ralt = (
+        f'<xhtml:link rel="alternate" hreflang="zh-Hant" href="{SITE}robot.html"/>'
+        f'<xhtml:link rel="alternate" hreflang="en" href="{SITE}en/robot.html"/>'
+        f'<xhtml:link rel="alternate" hreflang="ko" href="{SITE}ko/robot.html"/>'
+    )
+    rows += ''.join(
+        f'\n  <url><loc>{url}</loc><lastmod>{gen}</lastmod><changefreq>weekly</changefreq>{ralt}</url>'
+        for url in (f'{SITE}robot.html', f'{SITE}en/robot.html', f'{SITE}ko/robot.html'))
     sm = sm.replace('</urlset>', rows[1:] + '\n</urlset>')
     open('sitemap.xml', 'w', encoding='utf-8').write(dedupe_sitemap(sm))
 
@@ -450,9 +580,13 @@ def main():
     open('index.html', 'w', encoding='utf-8').write(master)
     n_px = write_px(json.loads(BLOCK.search(master).group(2).replace('<\\/', '</')))
     left = {k: build(k, master) for k in LANGS}
+    robot_left = build_robot()
+    n_links = point_robot_links()
     gen = re.search(r'<loc>' + re.escape(SITE) + r'</loc><lastmod>([^<]+)', open('sitemap.xml', encoding='utf-8').read())
     sitemap(gen.group(1) if gen else '')
-    notice(f'語言版本：/zh/ /en/ /ko/ 已生成，股價檔 {n_px} 個' + ''.join(f'；{k} 版介面仍有 {n} 段中文未翻譯' for k, n in left.items() if n))
+    notice(f'語言版本：/zh/ /en/ /ko/ 已生成，股價檔 {n_px} 個，robot 連結改寫 {n_links} 頁'
+           + ''.join(f'；{k} 版介面仍有 {n} 段中文未翻譯' for k, n in left.items() if n)
+           + ''.join(f'；{k} robot 仍有 {n} 個漢字' for k, n in robot_left.items() if n))
 
 
 if __name__ == '__main__':

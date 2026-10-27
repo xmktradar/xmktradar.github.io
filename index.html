@@ -1372,7 +1372,9 @@ function viewDaily(){
  const cmpLab=current==='weekly'?'對比前 7 天':current==='monthly'?'對比前 28 天':'對比昨日同時段';
  const priorOpen=current==='weekly'?'前 7 天（':current==='monthly'?'前 28 天（':'昨日（';
  const priorLoading=!hasPrev&&!postsReady();
- const T3=ruxThreeLines(tkNow.map(t=>({t,c:dist(t,w.from,w.to),c0:hasPrev?dist(t,pf,pt):null,chg:chg.filter(y=>y.x.t===t).length})),hasPrev);
+ // 立場轉變後備要等前期窗覆蓋或帖文載完先計。各語言 inline 長度唔同，中途用 chg 會揀到唔同股票。
+ const shiftReady=hasPrev||postsReady();
+ const T3=ruxThreeLines(tkNow.map(t=>({t,c:dist(t,w.from,w.to),c0:hasPrev?dist(t,pf,pt):null,chg:shiftReady?chg.filter(y=>y.x.t===t).length:0})),hasPrev);
  const _cut=dataCutoffMs();const upd=_cut?`${hkDate(_cut).slice(5).replace('-','/')} ${hm(_cut)}`:'';
  const ctx=`${fmtR(w.from)} – ${fmtR(w.to)} HKT・更新於 ${upd} HKT・${accsNow} 個帳號、${vposts.length} 則有效貼文`;
  const pct=x=>(x>0?'+':'')+Math.round(x*100)+'%';

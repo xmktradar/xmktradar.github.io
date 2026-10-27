@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light"><head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-42CSNJ8DF9"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-42CSNJ8DF9');</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="format-detection" content="telephone=no">
+<title>로봇 종목 매매 (Grok) | The Crowd Tape</title>
+<meta name="description" content="로봇은 주로 모멘텀 스윙을 한다. 움직임이 가장 강한 대형 미국 주식만 고르고, 돌파한 뒤에 사며, 며칠에서 몇 주 보유한다.">
+<meta property="og:title" content="로봇 종목 매매 (Grok) | The Crowd Tape">
+<meta property="og:description" content="로봇은 주로 모멘텀 스윙을 한다. 움직임이 가장 강한 대형 미국 주식만 고르고, 돌파한 뒤에 사며, 며칠에서 몇 주 보유한다.">
+<meta property="og:url" content="https://thecrowdtape.com/ko/robot.html">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="로봇 종목 매매 (Grok) | The Crowd Tape">
+<meta name="twitter:description" content="로봇은 주로 모멘텀 스윙을 한다. 움직임이 가장 강한 대형 미국 주식만 고르고, 돌파한 뒤에 사며, 며칠에서 몇 주 보유한다.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>:root{
+  
+  --bg:#fbf6ec;            
+  --bg-dot:#f1e7d3;        
+  --panel:#fffaf2;         
+  --panel2:#f6eedf;        
+  --hover:#f9f1e3;         
+  --line:#ece1cc;          
+  --line-soft:#f2e9d8;     
+  --line-strong:#dccbab;   
+  
+  --tx:#3b2f24;            
+  --tx-strong:#2a2119;     
+  --mut:#87776a;           
+  --faint:#c2b49c;         
+  
+  --link:#a5672c;          
+  --link-bg:#f8ecda; --link-line:#ecd4b0;
+  
+  --bull:#3a9a52; --bull-ink:#25803c; --bull-bg:#e5f4e7; --bull-line:#bfe2c6;
+  
+  --bear:#d9443d; --bear-ink:#c22f2a; --bear-bg:#fde6e4; --bear-line:#f6c3be;
+  
+  --neu:#dccfb8; --neu-ink:#87776a; --neu-bg:#f4ede0; --neu-line:#e7dcc8;
+  
+  --div-ink:#9a6b12; --div-bg:#fdf1d2; --div-line:#f0dba0;
+  --warn:#9a6b12; --warn-bg:#fdf4d9; --warn-line:#f0dca6;
+  
+  --brief-bg:#fdf3df; --brief-line:#f0e0bb;
+  
+  --t-opinion-ink:#a5672c; --t-opinion-bg:#f8ecda; --t-opinion-line:#ecd4b0;
+  --t-news-ink:#8f6a00;    --t-news-bg:#fdf1c8;    --t-news-line:#efd98f;
+  --t-disc-ink:#6e6256;    --t-disc-bg:#efe9df;    --t-disc-line:#e0d7c9;
+  
+  --chart-line:#a5672c;
+  
+  --radius:16px; --radius-sm:8px;
+  --shadow:0 1px 3px rgba(120,90,50,.06);
+  --shadow-hover:0 10px 24px rgba(120,90,50,.12);
+}
+:root,:root[data-theme="light"]{
+  --bg:#fbf6ec; --surface:#fffaf2; --sunk:#f4ede0; --ink:#3b2f24; --muted:#87776a; --line:#ece1cc;
+  --accent:#a5672c; --accent-soft:#f8ecda;
+  --bull:#25803c; --bull-soft:#e5f4e7; --bear:#c22f2a; --bear-soft:#fde6e4; --neu:#9a8b78; --neu-soft:#f1e9db;
+  --warn:#9a6b12; --warn-soft:#fdf4d9;
+  color-scheme:light;
+}
+body{background:var(--bg) radial-gradient(var(--bg-dot) 1px,transparent 1px) 0 0/14px 14px}
+header.top{background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px)}
+.brand{color:var(--tx-strong)}
+nav.tabs button{border-radius:10px 10px 0 0}
+nav.tabs button[aria-selected="true"]{border-bottom-width:3px}
+.panel,.acc-card{border-radius:var(--radius);box-shadow:var(--shadow)}
+.panel h2{font-family:var(--f-display);font-size:15px}
+.kpis{border-radius:var(--radius);box-shadow:var(--shadow)}
+.analysis{background:var(--brief-bg);border-color:var(--brief-line);border-left-color:var(--accent);border-radius:0 var(--radius) var(--radius) 0}
+.pill{border:1px solid transparent}
+.pill.bull{border-color:var(--bull-line)}.pill.bear{border-color:var(--bear-line)}.pill.neu{border-color:var(--neu-line)}.pill.chg{border-color:var(--link-line)}
+.dot{border-radius:6px}
+.bar,.hbar .track{border-radius:999px}
+.back{border-radius:999px}
+.mermaid{border-radius:var(--radius)}
+.acc .tk{text-decoration:none;cursor:pointer}
+.acc .tk:hover{filter:brightness(.96)}
+
+
+td:first-child{white-space:normal}
+td:first-child .pill.unc{font-size:10.5px;padding:0 6px;margin-top:2px}
+
+.kpis.k3{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+
+a.xh{display:inline-flex;align-items:center;gap:4px;vertical-align:baseline;white-space:nowrap}
+.xh-av{width:1.7em;height:1.7em;border-radius:50%;object-fit:cover;flex:none;border:1px solid var(--line);background:var(--neu-bg);position:relative;top:.42em;margin-top:-.4em}
+.xh-av.ini{display:inline-grid;place-items:center;font-size:.7em;font-weight:700;color:var(--neu-ink);line-height:1}
+table .xh-av,.matrix .xh-av{width:26px;height:26px;top:0;margin-top:0}
+.analysis .xh-av,.brief .xh-av{width:1.8em;height:1.8em}
+
+
+.brief{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;line-height:1.75;font-size:15px}
+details.more{margin-top:10px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel)}
+details.more>summary{cursor:pointer;list-style:none;padding:10px 16px;font-weight:600;color:var(--link);display:flex;align-items:center;gap:6px}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::before{content:"▸";transition:transform .15s}
+details.more[open]>summary::before{transform:rotate(90deg)}
+details.more[open]>summary{border-bottom:1px solid var(--line)}
+details.more>.analysis{padding:12px 16px}
+
+.kpis.k4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.kpis.k5{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media(max-width:720px){.kpis.k4,.kpis.k5{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+body .divehead .av{width:72px;height:72px}
+
+
+.post-av{width:44px;height:44px;border-radius:50%;object-fit:cover;flex:none;border:1px solid var(--line);background:var(--neu-bg);display:inline-grid;place-items:center;font-family:var(--f-display);font-weight:700;font-size:18px;color:var(--neu-ink)}
+.post-who{display:inline-flex;align-items:center;gap:10px;text-decoration:none;min-width:0}
+.post-who b{display:block;font-size:14px;color:var(--tx-strong);line-height:1.25}
+.post-who small{display:block;font-size:12px;color:var(--mut)}
+.post-who:hover b{color:var(--link)}
+@media(max-width:640px){.post-av{width:38px;height:38px;font-size:16px}}
+
+
+.tabs .tab-rng{font-size:inherit;font-weight:inherit}
+.tabs .tab-robo{color:#2e7449}
+.tabs .tab-robo[aria-selected="true"]{border-bottom-color:#6fbf8a}
+@media(max-width:640px){
+  .tabs{gap:0;justify-content:space-between}
+  .tabs button{padding-left:8px;padding-right:8px;font-size:14px;white-space:nowrap}
+  .tabs .tab-rng{display:none}
+}
+
+
+.vs-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;margin:12px 0;padding:12px 16px;border:1px solid var(--line);border-left:5px solid var(--bull);border-radius:12px;background:var(--panel)}
+.vs-bar .vs-l{font-size:12px;font-weight:700;color:var(--mut);letter-spacing:.03em}
+.vs-bar .vs-line{font-size:15px;font-weight:600;color:var(--tx-strong)}
+.vs-bar .vs-line .ar{color:var(--mut);margin:0 6px}
+.vs-tk{display:inline-block;font-family:var(--f-data);font-size:12.5px;font-weight:700;border-radius:999px;padding:1px 9px;margin:0 2px;border:1px solid var(--line-strong);background:var(--bg);color:var(--tx)}
+.vs-tk.new{color:var(--bull-ink);background:var(--bull-bg);border-color:var(--bull-line)}
+.vs-tk.gone{color:var(--mut);text-decoration:line-through;border-style:dashed}
+.vs-tk.keep b{margin-left:4px;font-size:11px;color:var(--mut)}
+.vs-bar .vs-grp{font-size:12.5px;color:var(--mut)}
+.vs-bar .vs-cta{margin-left:auto;font-size:12.5px;color:var(--mut);font-style:italic}
+.vs-bar.first{border-left-color:var(--line-strong)}
+@media(max-width:640px){.vs-bar .vs-cta{margin-left:0;width:100%}}
+
+
+.tabs .tab-robo .rb-full{display:inline}.tabs .tab-robo .rb-short{display:none}
+@media(max-width:640px){
+.tabs{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button,.tabs a{flex:0 0 auto;white-space:nowrap}
+.tabs .tab-robo .rb-full{display:none}.tabs .tab-robo .rb-short{display:inline}
+}
+
+
+.matrix .dot.none{color:var(--line-strong)}
+@media(max-width:640px){
+ .panel:has(table.matrix)>h2::after{content:"👉 오른쪽으로 밀면 모든 종목이 보인다";display:block;width:fit-content;margin-top:8px;padding:3px 11px;font-size:12.5px;font-weight:600;color:var(--ink,#3b2f25);background:var(--bg-dot);border:1px dashed var(--line-strong);border-radius:999px;animation:mxNudge 1.6s ease-in-out 3}
+ @keyframes mxNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+ .tablewrap:has(table.matrix){
+  background:
+   linear-gradient(to left,var(--panel) 35%,rgba(255,250,242,0)) right center/44px 100% no-repeat local,
+   radial-gradient(farthest-side at 100% 50%,rgba(70,45,15,.22),rgba(70,45,15,0)) right center/18px 100% no-repeat scroll;
+  -webkit-overflow-scrolling:touch}
+ .matrix th:first-child,.matrix td:first-child{position:sticky;left:0;z-index:2;background:var(--panel);min-width:112px;max-width:112px;padding-left:4px;padding-right:6px;box-shadow:7px 0 7px -7px rgba(70,45,15,.35)}
+ .matrix td:first-child .handle{display:inline-block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:middle;font-size:12px}
+ .matrix td:first-child .accin{font-size:11px;padding:1px 7px}
+ .matrix td.cell{padding:4px 3px}
+ .matrix thead .tk{display:inline-flex;flex-direction:column;align-items:center;gap:2px}
+ .matrix thead .tk .flag,.matrix thead .tk small{white-space:normal;word-break:keep-all;max-width:66px;font-size:10px;line-height:1.2;margin:0;text-align:center}
+}
+
+
+.views{margin-top:8px;font-size:13px;color:var(--mut);letter-spacing:.02em}
+.views b{font-family:var(--f-data);font-weight:700;color:var(--ink,#3b2f25);font-variant-numeric:tabular-nums;margin-left:2px}
+@media(max-width:640px){.views{font-size:12.5px;margin-top:6px}}
+
+body .hbar{grid-template-columns:118px minmax(0,1fr) 70px}
+body .hbar .tk{min-width:0;max-width:100%;display:flex;flex-wrap:wrap;align-items:center;gap:3px}
+body .hbar .tk .flag{margin-left:0;max-width:100%;white-space:normal;line-height:1.25;text-align:left}
+@media(max-width:600px){
+  body .hbar{grid-template-columns:84px minmax(0,1fr) 56px;gap:8px}
+  body .hbar .tk .flag{font-size:10.5px;padding:1px 6px}
+}
+
+
+.promo{display:flex;align-items:center;gap:14px 18px;flex-wrap:wrap;max-width:760px;margin:24px auto 12px;padding:14px 18px;background:var(--panel);border:1px dashed var(--line-strong);border-radius:14px;position:relative}
+.promo-tag{position:absolute;top:-10px;left:16px;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--mut);background:var(--bg);border:1px solid var(--line-strong);border-radius:999px;padding:1px 9px}
+.promo-body{flex:1 1 300px;min-width:0}
+.promo-h{font-size:15px;color:var(--ink,#3b2f25)}
+.promo-t{margin:3px 0 0;font-size:13.5px;color:var(--ink,#3b2f25)}
+.promo-note{margin:6px 0 0;font-size:11.5px;line-height:1.5;color:var(--mut)}
+.promo-btn{flex:0 0 auto;box-sizing:border-box;display:inline-block;padding:8px 16px;border-radius:999px;background:var(--ink,#3b2f25);color:var(--panel);font-size:13.5px;font-weight:700;text-decoration:none;white-space:nowrap}
+.promo-btn:hover{opacity:.88}
+@media(max-width:640px){.promo{margin:20px 12px 10px;padding:16px 14px 14px}.promo-btn{width:100%;text-align:center}}
+
+
+.promo-jump{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:4px 12px;border-radius:999px;border:1px dashed var(--line-strong);background:var(--panel);color:var(--ink,#3b2f25);font:inherit;font-size:12.5px;font-weight:600;line-height:1.5;text-decoration:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.promo-jump .pj-tag{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--mut);border-left:1px solid var(--line-strong);padding-left:6px}
+.promo-jump:hover{background:var(--bg-dot)}
+.promo-jump:focus-visible{outline:2px solid var(--ink,#3b2f25);outline-offset:2px}
+@media(max-width:640px){.promo-jump{font-size:12px;padding:5px 12px;margin-top:6px}}
+@keyframes promoFlash{0%,100%{box-shadow:0 0 0 0 transparent}40%{box-shadow:0 0 0 4px var(--line-strong)}}
+.promo.flash{animation:promoFlash 1.2s ease-out 2}
+
+
+.jump-row{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;margin-top:8px;max-width:100%;min-width:0}
+.jump-row .promo-jump{margin-top:0;max-width:100%;min-width:0;box-sizing:border-box;flex-wrap:wrap}
+.donate{box-sizing:border-box;max-width:760px;margin:12px auto 12px;padding:14px 18px;background:var(--panel);border:1px dashed var(--line-strong);border-radius:14px;position:relative;min-width:0}
+.donate-h{font-size:15px;color:var(--ink,#3b2f25)}
+.donate-t{margin:3px 0 0;font-size:13.5px;color:var(--ink,#3b2f25)}
+.donate-hint{margin:4px 0 0;font-size:12px;color:var(--mut)}
+.donate-note{margin:10px 0 0;font-size:11.5px;line-height:1.5;color:var(--mut)}
+.donate-qrs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:12px;max-width:440px}
+.donate-qr{margin:0;display:flex;flex-direction:column;align-items:center;gap:6px;padding:10px;background:#fff;border:1px solid var(--line-strong);border-radius:12px;min-width:0}
+.donate-qr img{display:block;width:100%;max-width:180px;height:auto;aspect-ratio:1/1;border-radius:6px}
+.donate-qr figcaption{font-size:13px;font-weight:700;color:var(--ink,#3b2f25)}
+.donate-btn{display:none}
+.donate-btn:hover{background:var(--bg-dot)}
+.donate-btn:focus-visible{outline:2px solid var(--ink,#3b2f25);outline-offset:2px}
+.donate.flash{animation:promoFlash 1.2s ease-out 2}
+@media(max-width:640px){
+ .jump-row{margin-top:6px;gap:6px;width:0;min-width:100%}
+ .jump-row .promo-jump{margin-top:0;max-width:100%}
+ .donate{margin:12px 12px 10px;padding:16px 14px 14px}
+ .donate-qrs{max-width:none;gap:10px;margin-left:auto;margin-right:auto}
+ .donate-qr{padding:8px}
+ .donate-qr img{max-width:100%}
+ .donate-btn{display:inline-block;box-sizing:border-box;padding:5px 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--bg);color:var(--ink,#3b2f25);font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap;max-width:100%;min-width:0;overflow:hidden;text-overflow:ellipsis}
+}
+
+
+header.top .meta{flex-wrap:wrap}
+header.top .meta .social{flex-basis:100%;width:100%;min-width:112px;box-sizing:border-box;margin-top:10px}
+header.top .meta .social .social-l{display:block;margin-bottom:4px;font-size:11.5px;line-height:1.3;color:var(--mut)}
+header.top .meta .social .social-row{display:flex;gap:8px;flex-wrap:nowrap;justify-content:flex-start;align-items:center}
+header.top .meta .social .soc{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:32px;height:32px;border-radius:50%;border:1px solid var(--line-strong);background:var(--panel);color:var(--ink,#3b2f25);text-decoration:none;-webkit-tap-highlight-color:transparent}
+header.top .meta .social .soc:hover,header.top .meta .social .soc:active{background:var(--bg-dot)}
+header.top .meta .social .soc:focus-visible{outline:2px solid var(--ink,#3b2f25);outline-offset:2px}
+header.top .meta .social .soc svg{display:block;width:18px;height:18px}
+@media(min-width:960px){
+ header.top .meta{display:grid;grid-template-columns:max-content max-content max-content;column-gap:14px;row-gap:0;justify-content:start;align-items:start}
+ header.top .meta .social{grid-column:3;grid-row:2;width:max-content;justify-self:start;align-self:start}
+}
+@media(max-width:640px){
+ header.top .meta{min-width:112px}
+ header.top .meta .social{margin-top:4px}
+}
+:root{--robo:#6fbf8a;--robo-ink:#2e7449;--robo-bg:#e3f3e8;--robo-line:#bfe2cb;--robo-soft:#f1f9f3}
+.rb-band{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;background:var(--robo-bg);color:var(--robo-ink);border:1px solid var(--robo-line);padding:10px 18px;border-radius:12px;font-size:13.5px;font-weight:600;letter-spacing:.02em}
+.rb-band .ic{width:22px;height:22px;border-radius:6px;background:var(--robo);color:#fff;display:inline-grid;place-items:center;font-size:13px}
+.rb-band .sep{opacity:.45}
+.rb-band .na{margin-left:auto;font-weight:500;opacity:.85;font-size:12.5px}
+.rb-hero{margin:18px 0;padding:22px 24px;border:1px solid var(--robo-line);border-left:6px solid var(--robo);border-radius:14px;background:var(--robo-soft)}
+.rb-hero h2{margin:0 0 6px;font-family:var(--f-display);font-size:26px;color:var(--robo-ink)}
+.rb-hero h2 small{font-family:inherit;font-size:15px;font-weight:500;color:var(--mut);margin-left:6px}
+.rb-hero p{margin:0 0 14px;color:var(--tx);font-size:14.5px;line-height:1.6}
+.rb-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.rb-three div{background:var(--panel);border:1px solid var(--robo-line);border-radius:12px;padding:12px 14px}
+.rb-three b{display:block;font-family:var(--f-display);font-size:17px;color:var(--robo-ink);margin-bottom:4px}
+.rb-three span{font-size:13px;line-height:1.55;color:var(--tx)}
+.rb-ai{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--robo-ink);background:var(--robo-bg);border:1px solid var(--robo-line);border-radius:999px;padding:2px 10px;margin-top:12px}
+.rb-who{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+.rb-who>div{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:12px 16px}
+.rb-who h3{margin:0 0 6px;font-size:14px}.rb-who .bot h3{color:var(--robo-ink)}.rb-who .hum h3{color:var(--mut)}
+.rb-who ul{margin:0;padding-left:18px;font-size:13px;line-height:1.7}
+
+.rb-kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:18px 0}
+.rb-kpi{border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:12px 14px}
+.rb-kpi .l{font-size:12px;color:var(--mut)}
+.rb-kpi .v{font-family:var(--f-display);font-size:26px;font-weight:700;color:var(--robo-ink);margin-top:2px}
+.rb-kpi .d{font-size:11.5px;color:var(--mut)}
+.rb-ver{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}
+.rb-ver button{font:inherit;font-size:12.5px;padding:3px 12px;border-radius:999px;border:1px solid var(--line-strong);background:var(--panel);color:var(--tx);cursor:pointer}
+.rb-ver button.on{background:var(--robo-bg);border-color:var(--robo);color:var(--robo-ink)}
+
+.rb-curve{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:14px 16px;margin:18px 0}
+.rb-curve svg{width:100%;height:220px;display:block}
+.rb-curve .ln{fill:none;stroke:var(--robo);stroke-width:2.2}
+.rb-curve .ar{fill:var(--robo-bg)}
+.rb-curve .zero{stroke:var(--line-strong);stroke-dasharray:4 4}
+.rb-curve .chg{stroke:var(--mut);stroke-dasharray:2 3}
+.rb-curve text{font-size:11px;fill:var(--mut);font-family:var(--f-data)}
+
+.rb-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+table.rb{width:100%;min-width:860px;border-collapse:collapse;font-size:13px}
+table.rb th{position:sticky;top:0;background:var(--bg);text-align:left;font-size:12px;font-weight:600;color:var(--mut);padding:9px 12px;border-bottom:1px solid var(--line)}
+table.rb td{padding:9px 12px;border-bottom:1px solid var(--line-soft);vertical-align:middle}
+table.rb td.num{font-family:var(--f-data);text-align:right;white-space:nowrap}
+table.rb .tk{font-family:var(--f-display);font-weight:700;font-size:15px;color:var(--tx-strong)}
+.rb-r{font-family:var(--f-data);font-weight:700}
+.rb-r.win{color:var(--robo-ink);background:var(--robo-bg);border-radius:6px;padding:1px 6px}
+.rb-r.loss{color:var(--mut)}
+.rb-r.flat{color:var(--tx)}
+.rb-exit{font-size:11.5px;border-radius:999px;padding:1px 8px;border:1px solid var(--line-strong);color:var(--tx);white-space:nowrap}
+.rb-exit.tg{background:var(--robo-bg);border-color:var(--robo-line);color:var(--robo-ink)}
+.rb-exit.op{border-style:dashed;color:var(--mut)}
+.rb-vtag{font-family:var(--f-data);font-size:11px;color:var(--mut);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:0 6px}
+.rb-hash{font-family:var(--f-data);font-size:11px;color:var(--mut)}
+
+.rb-rules{border:1px solid var(--line);border-radius:14px;background:var(--panel);margin:18px 0}
+.rb-rules>details{border-top:1px solid var(--line-soft)}.rb-rules>details:first-of-type{border-top:0}
+.rb-rules summary{cursor:pointer;padding:12px 16px;font-weight:600;font-size:14.5px;color:var(--tx-strong);list-style:none}
+.rb-rules summary::before{content:'▸';display:inline-block;margin-right:8px;color:var(--robo);transition:transform .15s}
+.rb-rules details[open] summary::before{transform:rotate(90deg)}
+.rb-rules .bd{padding:0 18px 14px 34px;font-size:13.5px;line-height:1.7}
+.rb-log li{margin-bottom:4px}.rb-log b{font-family:var(--f-data);color:var(--robo-ink);margin-right:6px}
+.rb-disc{font-size:12px;line-height:1.6;color:var(--mut);border-top:1px dashed var(--line-strong);padding-top:12px;margin-top:22px}
+@media(max-width:900px){.rb-kpis{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:640px){.rb-three,.rb-who{grid-template-columns:1fr}.rb-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.rb-band .na{margin-left:0}.rb-hero{padding:16px}}
+
+.rb-empty{border:1px dashed var(--robo-line);border-radius:14px;background:var(--robo-soft);padding:22px;text-align:center;color:var(--tx);font-size:14px;line-height:1.7}
+.rb-empty b{display:block;font-family:var(--f-display);font-size:18px;color:var(--robo-ink);margin-bottom:4px}
+.rb-open{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--robo-ink);background:var(--robo-bg);border:1px solid var(--robo-line);border-radius:999px;padding:2px 12px}
+.rb-open i{width:7px;height:7px;border-radius:50%;background:var(--robo);display:inline-block}
+
+
+.rb-kpis.k6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.rb-px{font-family:var(--f-data);white-space:nowrap}
+.rb-px.stop{color:var(--mut)}
+.rb-px.be{color:var(--tx)}
+.rb-px.tgt{color:var(--robo-ink);font-weight:700}
+.rb-px small{display:block;font-size:10.5px;color:var(--mut);font-weight:400}
+table.rb tr.skip td{color:var(--mut)}
+table.rb tr.skip .tk::after{content:'현금 부족으로 건너뜀';margin-left:6px;font-family:inherit;font-size:11px;font-weight:600;border:1px dashed var(--line-strong);border-radius:999px;padding:0 7px;color:var(--mut)}
+.rb-money.win{color:var(--robo-ink)}.rb-money.loss{color:var(--mut)}
+@media(max-width:900px){.rb-kpis.k6{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+@media(max-width:640px){
+  .rb-kpis.k6{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rb-wrap{overflow:visible;border:0;background:none}
+  table.rb{min-width:0}
+  table.rb thead{display:none}
+  table.rb,table.rb tbody,table.rb tr,table.rb td{display:block;width:100%}
+  table.rb tr{border:1px solid var(--line);border-radius:12px;background:var(--panel);margin-bottom:10px;padding:8px 12px}
+  table.rb td{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px solid var(--line-soft);text-align:right}
+  table.rb td:last-child{border-bottom:0}
+  table.rb td::before{content:attr(data-l);color:var(--mut);font-size:12px;text-align:left;flex:none}
+  table.rb td.num{text-align:right}
+  table.rb td:first-child{border-bottom:1px solid var(--line)}
+  table.rb td:first-child::before{content:none}
+}
+
+table.rb{min-width:1040px}
+.rb-px.lock{color:var(--robo-ink)}
+
+.rb-pnl{font-family:var(--f-data);font-weight:700;white-space:nowrap;border-radius:6px;padding:1px 6px}
+.rb-pnl.win{color:var(--robo-ink);background:var(--robo-bg)}
+.rb-pnl.loss{color:var(--mut);background:var(--bg)}
+.rb-pnl small{display:block;font-size:10.5px;font-weight:400}
+.rb-pause{margin:0 0 14px;padding:10px 14px;border:1px solid var(--warn-line);background:var(--warn-bg);color:var(--warn);border-radius:12px;font-weight:700}
+.rb-statshead .rb-pause{margin:0;padding:3px 10px;font-size:12.5px;font-weight:700}
+.rb-asof{font-size:11px;color:var(--mut)}
+.rb-tv{width:180px;height:62px;overflow:hidden}
+@media(max-width:640px){.rb-tv{width:100%;height:70px}}
+.flag{display:inline-flex;align-items:center;gap:3px;font-size:10.5px;font-weight:600;color:var(--div-ink);background:var(--div-bg);border:1px solid var(--div-line);border-radius:999px;padding:0 7px;white-space:nowrap;text-decoration:none;vertical-align:middle}
+.flag.est{border-style:dashed;background:transparent}
+.flag.neg{color:var(--bear-ink);background:var(--bear-bg);border-color:var(--bear-line)}
+.flag.small-cap{color:var(--neu-ink);background:var(--neu-bg);border-color:var(--neu-line);font-weight:500}
+:root{--f-display:"Noto Serif TC","Source Han Serif TC","Songti TC","PMingLiU",serif;--f-body:"Noto Sans TC","PingFang TC","Noto Sans CJK TC","Microsoft JhengHei",system-ui,sans-serif;--f-data:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+html[lang=ko]{--f-body:"Noto Sans KR","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;--f-display:"Noto Sans KR","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--tx);font-family:var(--f-body);font-size:14px;line-height:1.55}
+a{color:var(--link)}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;padding-block:12px}
+.top .wrap.navrow{padding-block:0}
+.brand{font-family:var(--f-display);font-size:20px;font-weight:700;letter-spacing:.02em;margin:0}
+.brand a{color:inherit;text-decoration:none}
+.brand-wrap{min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:11.5px;color:var(--mut);flex:1;min-width:0}
+.meta b{font-family:var(--f-data);font-weight:500;color:var(--tx)}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav.tabs a{display:block;padding:10px 14px;font-weight:500;color:var(--mut);border-bottom:2px solid transparent;white-space:nowrap;text-decoration:none;border-radius:10px 10px 0 0}
+nav.tabs a[aria-selected="true"]{color:var(--tx-strong);border-bottom:3px solid var(--robo)}
+main.wrap{padding-block:16px 8px}
+.rb-sec{margin:22px 0}
+.rb-sec>h2,.rb-rules-h{font-family:var(--f-display);font-size:18px;color:var(--tx-strong);margin:0 0 10px}
+.rb-intro{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 18px;font-size:14.5px;line-height:1.75}
+.rb-intro p{margin:.2em 0}
+.rb-who ul{margin:0}
+.rb-statshead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:4px}
+.rb-statshead h2{margin:0}
+.rb-kpis{margin:12px 0}
+.rb-curve h3{margin:0 0 8px;font-size:14px;color:var(--tx-strong)}
+.rb-curve .rb-empty{padding:28px 16px}
+table.rb tr.emptyrow td{text-align:center;color:var(--mut);padding:22px 12px}
+table.rb th{white-space:normal;vertical-align:bottom}
+@media(max-width:640px){table.rb{min-width:0}}
+.rb-kpis.k8{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:640px){.rb-kpis.k8{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rb-sec .rb-asof{margin:6px 2px 0}
+.rb-band h1.rb-h1{font:inherit;margin:0;color:inherit;letter-spacing:inherit}
+@media(max-width:640px){nav.tabs a{flex:0 0 auto}}
+.rb-pxw{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+td .rb-pnl{display:inline-block;text-align:right}
+@media(min-width:641px){td .rb-tv{width:240px}}
+@media(max-width:640px){table.rb td .rb-pxw{flex:1;min-width:0}table.rb td .rb-pxw .rb-tv{align-self:stretch}}
+@media(min-width:641px){#open table.rb{min-width:1620px}#open table.rb th{white-space:nowrap}#open table.rb td{white-space:nowrap}}  /* 設計 v11 加咗全域 table.rb{min-width:1040px}；手機卡片版要還原，桌面照設計 1040 */
+@media(max-width:640px){table.rb tr.emptyrow td{justify-content:center}table.rb tr.emptyrow td::before{content:none}}
+.rb-wrap{-webkit-overflow-scrolling:touch}
+.rb-rules .bd ul,.rb-rules .bd ol{padding-left:20px;margin:.3em 0}
+.rb-rules .bd p{margin:.3em 0}
+.rb-disc .lead{font-weight:700;color:var(--tx)}
+.rb-disc p{margin:.3em 0}
+.foot{color:var(--mut);font-size:12px;border-top:1px solid var(--line);padding-block:12px 40px;margin-top:24px}
+.foot p{margin:.35em 0}
+.rb-hero ul{margin:0;padding:0;list-style:none}
+@media(max-width:640px){
+ .brand{font-size:18px}
+ .rb-hero h2{font-size:22px}
+ .rb-hero h2 small{display:block;margin:2px 0 0}
+ .rb-rules .bd{padding:0 14px 12px 22px}
+ .rb-kpis .rb-kpi:last-child:nth-child(odd){grid-column:1/-1}
+ nav.tabs{width:100%}
+ nav.tabs a{padding-left:8px;padding-right:8px;font-size:14px;white-space:nowrap}
+ .meta{font-size:11px}
+}
+.meta span{white-space:nowrap}</style><!-- lang-head --><link rel="canonical" href="https://thecrowdtape.com/ko/robot.html"><link rel="alternate" hreflang="zh-Hant" href="https://thecrowdtape.com/robot.html"><link rel="alternate" hreflang="en" href="https://thecrowdtape.com/en/robot.html"><link rel="alternate" hreflang="ko" href="https://thecrowdtape.com/ko/robot.html"><link rel="alternate" hreflang="x-default" href="https://thecrowdtape.com/robot.html"><style>.lang-sw{display:flex;gap:4px;margin:6px 0 2px}.lang-sw a{font:600 12.5px/1 var(--f-body);padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);text-decoration:none;background:var(--surface)}.lang-sw a[aria-current]{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}#dive>.lang-sw{position:static;justify-content:flex-start;margin:8px 16px 4px;clear:both}@media(max-width:600px){.flag{white-space:normal;max-width:100%;flex-wrap:wrap}.tk:has(.flag){white-space:normal!important;max-width:100%}html:not([lang^=zh]) td:not(:first-child) .note{white-space:normal}}</style><!-- lang-head --></head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <nav class="lang-sw" aria-label="Language"><a href="/robot.html" data-lang="zh">中</a><a href="/en/robot.html" data-lang="en">EN</a><a href="/ko/robot.html" data-lang="ko" aria-current="page">한</a></nav><div class="brand-wrap"><p class="brand"><a href="./">The Crowd Tape</a></p></div>
+    <div class="meta"><span>장부 갱신 <b>2026-10-08 08:41 HKT</b></span><span>보유 <b>5</b> 건</span></div>
+  </div>
+  <div class="wrap navrow">
+    <nav class="tabs" role="tablist" aria-label="보기">
+      <a role="tab" aria-selected="false" href="./#daily">일간</a>
+      <a role="tab" aria-selected="false" href="./#weekly">주간<small class="tab-rng"> (7일)</small></a>
+      <a role="tab" aria-selected="false" href="./#monthly">월간<small class="tab-rng"> (28일)</small></a>
+      <a role="tab" aria-selected="false" href="./#tracked">추적 명단</a>
+      <a role="tab" aria-selected="true" aria-current="page" class="tab-robo" href="robot.html"><span class="rb-full">로봇 종목 매매(Grok)</span><span class="rb-short">로봇 매매</span></a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+<p class="rb-pause" role="status">모의 검증 일시 중지 (2026-10-13부터 업데이트 중지)</p>
+<div class="rb-band"><h1 class="rb-h1">로봇 종목 매매(Grok)</h1><span class="sep"> | </span><span>모의 매매 · 모멘텀 스윙</span><span class="sep"> | </span><span>투자 조언이 아닙니다</span></div>
+<section class="rb-hero" aria-label="모멘텀 스윙 매매"><h2>모멘텀 스윙 매매<small> (Momentum Swing Trading)</small></h2><p>로봇은 주로 모멘텀 스윙을 한다. 움직임이 가장 강한 대형 미국 주식만 고르고, 돌파한 뒤에 사며, 며칠에서 몇 주 보유한다.</p><div class="rb-three"><div><b>강한 종목만</b><span>매월 최근 12개월 수익률(최근 1개월 제외)로 순위를 매겨 상위 10종목을 고르고, 주가가 200일 이동평균보다 높아야 한다</span></div><div><b>돌파 후 진입</b><span>종가가 이전 20일 고가보다 높고 거래량이 20일 평균보다 높으면 다음 거래일 시가에 산다</span></div><div><b>스윙 청산</b><span>+2R 목표나 손절에 닿거나, 20거래일이 지나도 목표·손절이 없으면 판다</span></div></div><p style="margin:14px 0 0">모든 거래는 같은 모멘텀 규칙(mom-swing-v1)을 쓴다. 자세한 내용은 아래와 같다.</p></section>
+<section class="rb-intro"><p>이 페이지는 위의 X 계정 의견과 완전히 별개다.</p>
+<p>여기의 모든 거래는 로봇이 고정 규칙으로 고른 뒤 모의로 사고판 것이다. 사람이 종목을 고르지 않으며 실제 돈도 쓰지 않는다.</p>
+<p>종목 선정, 계산, 장부를 맡은 로봇은 SpaceX 산하 xAI의 AI 모델 Grok을 쓴다.</p>
+<p>모든 거래를 공개한다. 이익과 손실을 모두 올려, 규칙만 따르는 로봇의 종목 선정이 통하는지 볼 수 있게 한다.</p></section>
+<section class="rb-sec"><h2>로봇이 하는 일과 사람이 하는 일</h2><div class="rb-who"><div class="bot"><h3>로봇</h3><ul><li>매월 모멘텀 후보를 정렬하고, 매일 진입 신호가 있는지 살펴본다</li><li>손절과 목표를 계산하고, 모의로 진입·청산하며, 장부를 기록하고 위험을 계산한다</li><li>각 거래에 기술적·펀더멘털 의견 태그를 단다 (태그일 뿐이며 진입을 막지 않는다)</li></ul></div><div class="hum"><h3>사람</h3><ul><li>규칙을 정하고 고친다</li><li>실제 돈을 언제 쓸지 정한다 (지금은 쓰지 않음)</li><li>나중에 실제 돈을 쓰면 주문은 사람이 직접 낸다</li></ul></div></div></section>
+<section class="rb-sec" id="stats"><div class="rb-statshead"><h2>성적</h2><span class="rb-open"><i></i>보유 5건</span><span class="rb-pause">모의 검증 일시 중지 (2026-10-13부터 업데이트 중지)</span></div><div class="rb-kpis k8"><div class="rb-kpi"><div class="l">원금</div><div class="v">10,000.00</div><div class=d>미국 달러</div></div><div class="rb-kpi"><div class="l">사용한 비용</div><div class="v">9,954.89</div><div class=d>미국 달러</div></div><div class="rb-kpi"><div class="l">남은 현금</div><div class="v">45.11</div><div class=d>미국 달러</div></div><div class="rb-kpi"><div class="l">청산 건수</div><div class="v">0</div><div class=d>건</div></div><div class="rb-kpi"><div class="l">승률</div><div class="v">—</div></div><div class="rb-kpi"><div class="l">평균 R</div><div class="v">—</div></div><div class="rb-kpi"><div class="l">실현 손익</div><div class="v">0.00</div><div class=d>미국 달러</div></div><div class="rb-kpi"><div class="l">미실현 손익 (보유 합계)</div><div class="v"><span class="rb-pnl loss">−17.65</span></div><div class=d>미국 달러</div><div class=rb-asof>현재가, 보유 일수, 손절은 마지막 데이터에 고정 · 현재가 기준 10/8 04:00 HKT</div></div></div></section>
+<section class="rb-curve"><h3>누적 R</h3><div class="rb-empty"><b>아직 청산된 거래가 없다</b></div></section>
+<section class="rb-sec" id="open"><div class="rb-statshead"><h2>보유</h2><span class="rb-open"><i></i>보유 5건</span></div><div class="rb-wrap"><table class="rb"><thead><tr><th>종목</th><th>신호일</th><th>매수일</th><th>매수가</th><th>주식 수</th><th>비용 (달러)</th><th>현재가</th><th>미실현 손익</th><th>최초 손절</th><th>현재 손절</th><th>본전 트리거 (+1R)</th><th>이익 잠금 트리거 (+1.5R)</th><th>잠긴 손절 (+0.5R)</th><th>목표 (+2R)</th><th>시간 손절일</th><th>보유 거래일</th></tr></thead><tbody><tr><td data-l="종목" class="tk">INTC <span class="flag est" title="10/22 미국 장 마감 후 Q3 실적 발표 추정 (회사 미확인). 홍콩 시간 10/23 새벽">실적 10/22 (추정)</span></td><td data-l="신호일">2026-09-24</td><td data-l="매수일">2026-09-25 시가</td><td data-l="매수가" class="num">126.83</td><td data-l="주식 수" class="num">16</td><td data-l="비용 (달러)" class="num">2,029.28</td><td data-l="현재가" class="num"><div class="rb-pxw"><span class="rb-px">113.12</span><div class="rb-tv" data-tv="NASDAQ:INTC"></div></div></td><td data-l="미실현 손익" class="num"><span class="rb-pnl loss">−219.36<small>−10.81% · −0.57R</small></span></td><td data-l="최초 손절" class="num"><span class="rb-px stop">102.97</span></td><td data-l="현재 손절" class="num"><span class="rb-px stop">102.97</span></td><td data-l="본전 트리거 (+1R)" class="num"><span class="rb-px be">150.69</span></td><td data-l="이익 잠금 트리거 (+1.5R)" class="num"><span class="rb-px lock">162.62</span></td><td data-l="잠긴 손절 (+0.5R)" class="num"><span class="rb-px lock">138.76</span></td><td data-l="목표 (+2R)" class="num"><span class="rb-px tgt">174.55<small>기존 3R: 198.41</small></span></td><td data-l="시간 손절일">2026-10-22</td><td data-l="보유 거래일" class="num">9</td></tr><tr><td data-l="종목" class="tk">BE <span class="flag est" title="10/27 미국 장 마감 후 Q3 실적 발표 추정 (회사 미확인). 홍콩 시간 10/28 새벽">실적 10/27 (추정)</span></td><td data-l="신호일">2026-09-25</td><td data-l="매수일">2026-09-28 시가</td><td data-l="매수가" class="num">282.51</td><td data-l="주식 수" class="num">11</td><td data-l="비용 (달러)" class="num">3,107.61</td><td data-l="현재가" class="num"><div class="rb-pxw"><span class="rb-px">291.29</span><div class="rb-tv" data-tv="NYSE:BE"></div></div></td><td data-l="미실현 손익" class="num"><span class="rb-pnl win">+96.58<small>+3.11% · +0.24R</small></span></td><td data-l="최초 손절" class="num"><span class="rb-px stop">246.50</span></td><td data-l="현재 손절" class="num"><span class="rb-px stop">246.50</span></td><td data-l="본전 트리거 (+1R)" class="num"><span class="rb-px be">318.52</span></td><td data-l="이익 잠금 트리거 (+1.5R)" class="num"><span class="rb-px lock">336.52</span></td><td data-l="잠긴 손절 (+0.5R)" class="num"><span class="rb-px lock">300.52</span></td><td data-l="목표 (+2R)" class="num"><span class="rb-px tgt">354.53<small>기존 3R: 390.54</small></span></td><td data-l="시간 손절일">2026-10-23</td><td data-l="보유 거래일" class="num">8</td></tr><tr><td data-l="종목" class="tk">AMAT</td><td data-l="신호일">2026-09-29</td><td data-l="매수일">2026-09-30 시가</td><td data-l="매수가" class="num">513.82</td><td data-l="주식 수" class="num">1</td><td data-l="비용 (달러)" class="num">513.82</td><td data-l="현재가" class="num"><div class="rb-pxw"><span class="rb-px">520.65</span><div class="rb-tv" data-tv="NASDAQ:AMAT"></div></div></td><td data-l="미실현 손익" class="num"><span class="rb-pnl win">+6.83<small>+1.33% · +0.10R</small></span></td><td data-l="최초 손절" class="num"><span class="rb-px stop">448.27</span></td><td data-l="현재 손절" class="num"><span class="rb-px stop">448.27</span></td><td data-l="본전 트리거 (+1R)" class="num"><span class="rb-px be">579.37</span></td><td data-l="이익 잠금 트리거 (+1.5R)" class="num"><span class="rb-px lock">612.15</span></td><td data-l="잠긴 손절 (+0.5R)" class="num"><span class="rb-px lock">546.60</span></td><td data-l="목표 (+2R)" class="num"><span class="rb-px tgt">644.92<small>기존 3R: 710.47</small></span></td><td data-l="시간 손절일">2026-10-27</td><td data-l="보유 거래일" class="num">6</td></tr><tr><td data-l="종목" class="tk">TER <span class="flag est" title="10/27 미국 장 마감 후 Q3 실적, 10/28 아침 컨퍼런스콜 추정 (회사 미확인)">실적 10/27 (추정)</span></td><td data-l="신호일">2026-09-29</td><td data-l="매수일">2026-09-30 시가</td><td data-l="매수가" class="num">402.60</td><td data-l="주식 수" class="num">10</td><td data-l="비용 (달러)" class="num">4,026.00</td><td data-l="현재가" class="num"><div class="rb-pxw"><span class="rb-px">411.78</span><div class="rb-tv" data-tv="NASDAQ:TER"></div></div></td><td data-l="미실현 손익" class="num"><span class="rb-pnl win">+91.80<small>+2.28% · +0.25R</small></span></td><td data-l="최초 손절" class="num"><span class="rb-px stop">365.46</span></td><td data-l="현재 손절" class="num"><span class="rb-px stop">402.60<small>본전으로 이동</small></span></td><td data-l="본전 트리거 (+1R)" class="num"><span class="rb-px be">439.74</span></td><td data-l="이익 잠금 트리거 (+1.5R)" class="num"><span class="rb-px lock">458.31</span></td><td data-l="잠긴 손절 (+0.5R)" class="num"><span class="rb-px lock">421.17</span></td><td data-l="목표 (+2R)" class="num"><span class="rb-px tgt">476.88<small>기존 3R: 514.02</small></span></td><td data-l="시간 손절일">2026-10-27</td><td data-l="보유 거래일" class="num">6</td></tr><tr><td data-l="종목" class="tk">MRVL <span class="flag" title="10/6 애널리스트 데이에서 2028 회계연도 매출 전망을 약 180억 달러에서 약 200억 달러로 올리고, 2031 회계연도 700–900억 달러 목표를 제시했다. 당일 약 6% 상승. 10/7 TD Cowen이 매수로 올렸고 Jefferies 등도 목표가를 상향했다">기타 10/07</span></td><td data-l="신호일">2026-10-01</td><td data-l="매수일">2026-10-02 시가</td><td data-l="매수가" class="num">278.18</td><td data-l="주식 수" class="num">1</td><td data-l="비용 (달러)" class="num">278.18</td><td data-l="현재가" class="num"><div class="rb-pxw"><span class="rb-px">284.68</span><div class="rb-tv" data-tv="NASDAQ:MRVL"></div></div></td><td data-l="미실현 손익" class="num"><span class="rb-pnl win">+6.50<small>+2.34% · +0.20R</small></span></td><td data-l="최초 손절" class="num"><span class="rb-px stop">244.87</span></td><td data-l="현재 손절" class="num"><span class="rb-px stop">244.87</span></td><td data-l="본전 트리거 (+1R)" class="num"><span class="rb-px be">311.49</span></td><td data-l="이익 잠금 트리거 (+1.5R)" class="num"><span class="rb-px lock">328.15</span></td><td data-l="잠긴 손절 (+0.5R)" class="num"><span class="rb-px lock">294.84</span></td><td data-l="목표 (+2R)" class="num"><span class="rb-px tgt">344.80<small>기존 3R: 378.11</small></span></td><td data-l="시간 손절일">2026-10-29</td><td data-l="보유 거래일" class="num">4</td></tr></tbody></table></div><p class="rb-asof">현재가 기준 10/8 04:00 HKT (Yahoo Finance)</p><p class="rb-asof">각 거래 옆의 TradingView 시세는 미국 주식이 약 15분 지연되며 비교용이다. 장부의 현재가, 보유 일수, 손절은 마지막 데이터에 고정되어 있다 (현재가 기준 10/8 04:00 HKT). Yahoo Finance로 정기 갱신하지 않는다. 미실현 손익은 고정 현재가로 계산한다. (고정 현재가 − 매수가) × 주식 수. 참고용이며, 공식 성적은 중지 전에 확인한 장부 수치다.</p></section>
+<section class="rb-sec" id="skipped"><div class="rb-statshead"><h2>현금 부족으로 건너뜀</h2><span class="rb-open"><i></i>3 개 신호</span></div><div class="rb-wrap"><table class="rb"><thead><tr><th>종목</th><th>신호일</th><th>예정 매수일</th><th>참고 진입가</th><th>참고 주식 수</th><th>손절</th><th>이익 잠금 트리거 (+1.5R)</th><th>잠긴 손절 (+0.5R)</th><th>목표</th><th>현재가</th></tr></thead><tbody><tr class="skip"><td data-l="종목" class="tk">LITE <span class="flag" title="11/5 미국 장 마감 후 실적 발표 (회사 확인)">실적 11/05</span></td><td data-l="신호일">2026-10-01</td><td data-l="예정 매수일">2026-10-02 시가</td><td data-l="참고 진입가" class="num">1051.19</td><td data-l="참고 주식 수" class="num">2</td><td data-l="손절" class="num"><span class="rb-px stop">864.44</span></td><td data-l="이익 잠금 트리거 (+1.5R)" class="num"><span class="rb-px lock">1331.32</span></td><td data-l="잠긴 손절 (+0.5R)" class="num"><span class="rb-px lock">1144.57</span></td><td data-l="목표" class="num"><span class="rb-px tgt">1424.69<small>기존 3R: 1611.44</small></span></td><td data-l="현재가" class="num"><div class="rb-pxw"><span class="rb-px">1,111.07</span></div></td></tr><tr class="skip"><td data-l="종목" class="tk">COHR <span class="flag est" title="11/4 미국 장 마감 후 실적 발표 추정 (회사 미확인. 한 사이트는 11/11로 보아 날짜가 정해지지 않음)">실적 11/04 (추정)</span> <span class="flag" title="10/7 장 초반 약 5.4% 하락해 약 320달러. 10/1 급등 이후 차익 실현, 풋 옵션 거래 증가, CTO와 이사의 앞서 있던 매도가 주된 이유였다. 보도는 새로운 펀더멘털 악재는 아니라고 했다">기타 10/07</span></td><td data-l="신호일">2026-10-02</td><td data-l="예정 매수일">2026-10-05 시가</td><td data-l="참고 진입가" class="num">340.92</td><td data-l="참고 주식 수" class="num">5</td><td data-l="손절" class="num"><span class="rb-px stop">270.42</span></td><td data-l="이익 잠금 트리거 (+1.5R)" class="num"><span class="rb-px lock">446.67</span></td><td data-l="잠긴 손절 (+0.5R)" class="num"><span class="rb-px lock">376.17</span></td><td data-l="목표" class="num"><span class="rb-px tgt">481.92</span></td><td data-l="현재가" class="num"><div class="rb-pxw"><span class="rb-px">334.56</span></div></td></tr><tr class="skip"><td data-l="종목" class="tk">AMD <span class="flag est" title="11/3 미국 장 마감 후 Q3 실적 발표 추정 (회사 미확인)">실적 11/03 (추정)</span> <span class="flag" title="Citi 목표가를 575달러에서 800달러로 올리고 매수를 유지했다. Meta Muse 같은 AI agent가 CPU 수요를 끌어올린다고 했다. 10/7 종가는 약 2.8%">기타 10/07</span></td><td data-l="신호일">2026-10-06</td><td data-l="예정 매수일">2026-10-07 시가</td><td data-l="참고 진입가" class="num">634.39</td><td data-l="참고 주식 수" class="num">9</td><td data-l="손절" class="num"><span class="rb-px stop">594.11</span></td><td data-l="이익 잠금 트리거 (+1.5R)" class="num"><span class="rb-px lock">694.82</span></td><td data-l="잠긴 손절 (+0.5R)" class="num"><span class="rb-px lock">654.53</span></td><td data-l="목표" class="num"><span class="rb-px tgt">714.96</span></td><td data-l="현재가" class="num"><div class="rb-pxw"><span class="rb-px">645.86</span></div></td></tr></tbody></table></div></section>
+<section class="rb-sec" id="trades"><h2>청산된 거래</h2><div class="rb-wrap"><table class="rb is-empty"><thead><tr><th>종목</th><th>신호일</th><th>매수일</th><th>매수가</th><th>주식 수</th><th>비용 (달러)</th><th>매도일</th><th>매도가</th><th>매도 이유</th><th>R</th><th>퍼센트</th><th>손익 (달러)</th></tr></thead><tbody><tr class="emptyrow"><td data-l="" colspan="12">아직 청산된 거래가 없다</td></tr></tbody></table></div></section>
+<section class="rb-sec" id="rules"><h2 class="rb-rules-h">매매 규칙: 모멘텀 스윙 mom-swing-v1 (10/6 기준)</h2><div class="rb-rules"><details open><summary>1. 1. 매매 범위</summary><div class="bd"><ul>
+<li>미국 보통주만. 시가총액 최소 500억 달러</li>
+<li>현금 매수만. 며칠에서 몇 주 보유</li>
+<li>ETF(QQQ, SPY 등) 안 함, 공매도 안 함, 증거금 안 씀</li>
+<li>거래당 계획 위험은 계좌의 약 4% (이것이 1R)이며 정수 주식만 산다. 시가 갭이 나면 실제 손실이 커질 수 있으며, 그 기준은 1R</li>
+<li>한 종목은 계좌의 최대 절반</li>
+<li>자금 한도는 고정이다. 이미 실현한 이익만 사용 가능 자금에 다시 넣는다</li>
+<li>나중에 실제 돈을 쓰면 동시에 1~3종목만 보유한다. 지금 모의 시험 기간에는 현금이 있는 한 모든 신호에 들어간다. 현금이 부족하면 "현금 부족으로 건너뜀"으로 적고 결과는 계속 추적한다 (지금 모의로 5종목 보유)</li>
+</ul></div></details><details open><summary>2. 2. 언제 사나</summary><div class="bd"><ul>
+<li>후보: 매월 최근 12개월(최근 1개월 제외) 상승이 가장 강한 10종목, 그리고 주가가 200일 이동평균보다 높아야 한다</li>
+<li>같은 날 종가에 세 조건이 모두 맞아야 한다:<ol><li>종가가 이전 20일 고가보다 높음 (돌파)</li><li>거래량이 20일 평균보다 높음</li><li>종가가 200일 이동평균보다 높음</li></ol></li>
+<li>맞으면 다음 거래일 시가에 산다</li>
+<li>이미 보유한 종목에 신호가 다시 나와도 추가 매수하지 않는다</li>
+<li>같은 날 여러 종목에 신호가 나면 점수 순으로 처리한다</li>
+</ul></div></details><details open><summary>3. 손절</summary><div class="bd"><ul>
+<li>손절 = 신호 전 5일 최저가에서 14일 ATR(최근 14일 평균 일일 변동)의 0.25배를 뺀 값</li>
+<li>1R = 매수가에서 손절가를 뺀 값</li>
+<li>손절은 위로만 옮기고 아래로 내리지 않는다. 시가가 손절 아래로 갭이 나면 시가에 판다</li>
+</ul></div></details><details open><summary>4. 4. 언제 파나</summary><div class="bd"><ul>
+<li>목표: +2R에 판다</li>
+<li>당일 고가가 +1R에 닿으면 손절을 매수가로 옮긴다 (본전)</li>
+<li>당일 고가가 +1.5R에 닿으면 손절 잠금 위치는 +0.5R</li>
+<li>두 단계 모두 장 마감 후 확인하고 다음 거래일에 적용한다</li>
+<li>20거래일이 지나도 목표나 손절에 닿지 않으면 판다</li>
+<li>10위 밖으로 밀려나도 바로 팔지 않는다. 청산 규칙까지 보유한다</li>
+<li>추적 익절(가격을 따라 올라가는 익절)은 아직 쓰지 않는다. 10/22 검토 때 논의할 예정이었다</li>
+</ul></div></details><details open><summary>5. 5. 실제 돈을 쓰나</summary><div class="bd"><p>지금은 전부 모의 매매이며 실제 돈은 쓰지 않는다. 시험 결과가 나오고 검토한 뒤 사람이 확인해야 시작한다. 로봇이 스스로 실제 돈을 쓰기로 할 수 없다.</p></div></details><details open><summary>6. 6. 규칙 변경 기록</summary><div class="bd"><p>규칙 변경은 날짜와 적용 범위를 적는다.</p><ul class="rb-log"><li><b>9/24</b>mom-swing-v1을 정함 (목표 3R, 최대 20거래일 보유). 진입 전에 기술, 펀더멘털, 위험 관리 세 관문을 통과해야 했다</li><li><b>9/30</b>펀더멘털 검토를 완화해 분명한 문제만 거절한다. "관망"으로 표시된 종목은 위험의 절반으로 진입한다. 섀도 장부에 모든 기계적 신호를 기록한다</li><li><b>10/1</b>섀도 장부를 유일한 공식 모의 계좌에 합쳤다. 모든 기계적 신호는 자동 진입하고, 세 관문 의견은 태그일 뿐이다. 검증 기간을 9/24부터 20거래일(10/21 종가까지)로 늘렸다</li><li><b>10/3</b>목표를 3R에서 2R로 바꿨다 (백테스트에서 약 6%만 3R에 도달). 손절은 두 단계로 바꿨다. +1R에서 본전, +1.5R에서 +0.5R 잠금. 모든 보유에 즉시 적용</li><li><b>10/22(예정)</b>20일 시험 결과를 검토한 뒤 규칙을 바꿀지 정한다</li></ul></div></details><details open><summary>성적을 세는 방법</summary><div class="bd"><ul>
+<li>모의 계좌 원금 10,000달러. 검증은 2026-09-24부터 20거래일, 10/21 종가까지</li>
+<li>이미 실현한 이익만 원금에 더한다 (현재 실현 이익: 0.00달러)</li>
+<li>거래당 계획 위험은 원금의 약 4%, 즉 400달러 (이것이 1R)</li>
+<li>보유 중인 각 거래: 종목, 신호일, 매수일, 매수가, 주식 수, 비용(매수가 × 주식 수), 최초 손절, 현재 손절, 본전 트리거(+1R), 이익 잠금 트리거(+1.5R)와 잠긴 손절(+0.5R), 목표가(+2R), 시간 손절일, 보유 거래일, 현재가, 미실현 손익(달러, 퍼센트, R)</li>
+<li>각 거래 옆의 TradingView 시세는 미국 주식이 약 15분 지연되며 비교용이다. 장부의 현재가, 보유 일수, 손절은 마지막 데이터에 고정되어 있다 (현재가 기준 10/8 04:00 HKT). Yahoo Finance로 정기 갱신하지 않는다. 미실현 손익은 고정 현재가로 계산한다. (고정 현재가 − 매수가) × 주식 수. 참고용이며, 공식 성적은 중지 전에 확인한 장부 수치다.</li>
+<li>청산된 거래는 여기에 더한다: 매도일, 매도가, 매도 이유(목표 / 손절 / 시간), 결과(R, 퍼센트, 달러)</li>
+<li>"현금 부족으로 건너뜀" 신호도 적는다. 신호일, 참고 진입가, 손절, 목표를 적는다. 실제로 들어가지 않았으므로 비용과 손익은 계산하지 않는다</li>
+<li>페이지 위 요약: 원금, 사용 중인 비용, 남은 현금, 청산 건수, 승률, 평균 R, 실현 손익, 미실현 손익(보유 합계)</li>
+<li>손절과 목표가는 규칙이 바뀌면 갱신하고, 바뀐 것은 적는다. 예를 들어 10/3에 목표를 3R에서 2R로 바꾸면서 보유 5건과 현금 부족으로 건너뛴 LITE를 함께 바꿨다. 목표가 아래에 작은 글씨로 기존 3R 가격을 적는다</li>
+</ul></div></details></div><div class="rb-disc"><p class="lead">모의 매매, 로봇 종목 선정, 투자 조언이 아닙니다</p><p>이 페이지의 모든 거래는 모의 매매다. 로봇이 고정 규칙으로 종목을 고르고 매매를 시뮬레이션한다. 실제 돈은 쓰지 않으며 누구의 실제 보유를 나타내지 않는다. 참고와 연구용이며 투자 조언이 아니고, 어떤 주식을 사거나 팔라는 권유도 아니다. 과거 기록이 미래 성과를 보장하지 않는다. 투자에는 위험이 있다. 스스로 판단하라.</p></div></section>
+</main>
+<footer class="wrap foot"><p><a href="./">The Crowd Tape</a></p></footer>
+<script>
+(function(){var els=[].slice.call(document.querySelectorAll('.rb-tv[data-tv]'));if(!els.length)return;
+function mount(el){if(el.dataset.on)return;el.dataset.on='1';
+ var c=document.createElement('div');c.className='tradingview-widget-container';c.innerHTML='<div class="tradingview-widget-container__widget"></div>';
+ var sc=document.createElement('script');sc.type='text/javascript';sc.async=true;sc.src='https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js';
+ sc.textContent=JSON.stringify({symbol:el.getAttribute('data-tv'),width:'100%',isTransparent:true,colorTheme:'light',locale:'ko'});
+ var gone=function(){if(el.parentNode)el.parentNode.removeChild(el)};sc.onerror=gone;c.appendChild(sc);el.appendChild(c);
+ var n=0,iv=setInterval(function(){if(!el.isConnected){clearInterval(iv);return}if(c.querySelector('iframe')){clearInterval(iv)}else if(++n>40){clearInterval(iv);gone()}},250)}
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.unobserve(e.target);mount(e.target)}})},{rootMargin:'200px'});els.forEach(function(e){io.observe(e)})}
+else els.forEach(mount)})();
+</script>
+<script>
+document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com')){gtag('event','social_click',{platform:'x',link_url:u,transport_type:'beacon'});gtag('event','x_outbound',{link_url:u,page:'robot',lang:document.documentElement.lang||'',transport_type:'beacon'});}else if(h==='instagram.com'||h.endsWith('.instagram.com'))gtag('event','social_click',{platform:'instagram',link_url:u,transport_type:'beacon'});else if(h==='threads.net'||h.endsWith('.threads.net')||h==='threads.com'||h.endsWith('.threads.com'))gtag('event','social_click',{platform:'threads',link_url:u,transport_type:'beacon'});else if(h==='paypal.com'||h.endsWith('.paypal.com')||h==='paypal.me'||h.endsWith('.paypal.me'))gtag('event','donate_click',{link_url:u,transport_type:'beacon'})});
+if(typeof gtag==='function')gtag('event','robot_page_view',{transport_type:'beacon'});
+</script>
+</body></html>
