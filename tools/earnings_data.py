@@ -348,7 +348,7 @@ def instance_facts(xml_bytes):
     return out, fy, fp
 
 
-def supplement(facts, cik, after):
+def supplement(facts, cik, after, log=None):
     """companyfacts can lag a company's filings by months (KO, V, C ... in 2026-10). Read the 10-Q / 10-K filings that
     report a period after `after` straight from their XBRL instance and add their facts in the companyfacts shape."""
     sub = sec_json(f'https://data.sec.gov/submissions/CIK{int(cik):010d}.json')
@@ -357,8 +357,12 @@ def supplement(facts, cik, after):
     todo = sorted((rep, accn, filed, form) for form, accn, filed, rep in rows
                   if form in ('10-Q', '10-K') and rep and rep > after)[:4]
     added = 0
+    log = log if log is not None else []
+    if not todo:
+        log.append(f'no 10-Q/10-K after {after} in the filing list')
     for rep, accn, filed, form in todo:
         if left() < 60:
+            log.append(f'{form} {rep}: out of time, next run')
             break
         folder = f'https://www.sec.gov/Archives/edgar/data/{int(cik)}/{accn.replace("-", "")}'
         items = ((sec_json(folder + '/index.json') or {}).get('directory') or {}).get('item') or []
@@ -366,11 +370,14 @@ def supplement(facts, cik, after):
         inst = next((n for n in names if n.endswith('_htm.xml')), None)
         body = sec(f'{folder}/{inst}') if inst else None
         if not body:
+            log.append(f'{form} {rep} {accn}: no XBRL instance ({len(names)} files)')
             continue
         try:
             got, fy, fp = instance_facts(body)
         except ET.ParseError:
+            log.append(f'{form} {rep} {accn}: instance does not parse')
             continue
+        log.append(f'{form} {rep} {accn}: {len(got)} facts, {sorted({g[0] for g in got if g[0] in REV})}')
         fy = fy or rep[:4]
         fp = fp or ('FY' if form == '10-K' else None)
         gaap = facts.setdefault('facts', {}).setdefault('us-gaap', {})
@@ -417,7 +424,17 @@ def build_quarters(facts):
             ltd = (g('ltd_nc') or 0) + (g('ltd_c') or 0)
         debt = None if ltd is None and g('std') is None else (ltd or 0) + (g('std') or 0)
         bal = {'end': bal_end, 'cash': g('cash'), 'sti': g('sti'), 'debt': debt}
-    return {'q': qs, 'latest': dict(per[last], end=last), 'bal': bal, 'bank': bank, 'diag': diagnose(facts, last)}
+    diag = diagnose(facts, last)
+    if len(qs) < 6:  # XOM in 2026-10: only 2 quarters; record what each revenue concept covers
+        cover = {}
+        for n in REV:
+            es = entries(facts, n)
+            if es:
+                q3 = sorted({e['end'] for e in es if e.get('start') and QMIN <= days(e['start'], e['end']) <= QMAX})
+                cover[n] = {'facts': len(es), 'q': len(q3), 'first': q3[0] if q3 else None, 'last': q3[-1] if q3 else None,
+                            'labelled': sum(1 for e in q3 if e in per)}
+        diag = dict(diag or {}, few=cover)
+    return {'q': qs, 'latest': dict(per[last], end=last), 'bal': bal, 'bank': bank, 'diag': diag}
 
 
 def newest_period(facts):
@@ -778,7 +795,8 @@ def main():
         if co is None and st.get('no_10q') and checked and (now - datetime.fromisoformat(checked).replace(tzinfo=HK)) < timedelta(days=7):
             done += 1
             continue  # foreign filer (20-F / 6-K): checked again weekly
-        old = latest_end and days(latest_end, tny) > STALE_DAYS and (
+        thin = co is not None and len(co.get('q') or []) < 6  # too few quarters (XOM): read again daily too
+        old = latest_end and (days(latest_end, tny) > STALE_DAYS or thin) and (
             not checked or (now - datetime.fromisoformat(checked).replace(tzinfo=HK)) >= timedelta(hours=24))
         if co is None or (waiting and stale) or old or co.get('rules') != RULES:
             facts = sec_json(f'https://data.sec.gov/api/xbrl/companyfacts/CIK{int(info["cik"]):010d}.json')
@@ -787,11 +805,13 @@ def main():
             if facts:
                 b = build_quarters(facts)
                 if b and (days(b['latest']['end'], tny) > FILED_GAP or (lr and lr > b['latest']['end'])):
+                    log = []
                     try:
-                        if supplement(facts, info['cik'], b['latest']['end']):
+                        if supplement(facts, info['cik'], b['latest']['end'], log):
                             b = build_quarters(facts)
                     except Exception as e:  # a strange filing must not stop the others
-                        print(f'supplement {t}: {e}', file=sys.stderr)
+                        log.append(f'error: {e}')
+                    st['supp'] = {'hkt': stamp, 'log': log[:6]}  # why a brief still shows an old quarter
                 if not b:
                     st['no_10q'] = True
                     done += 1
