@@ -57,6 +57,8 @@ INST = {
     'std': ('ShortTermBorrowings', 'CommercialPaper'),
 }
 SEG_AXES = ('srt:ProductOrServiceAxis', 'us-gaap:StatementBusinessSegmentsAxis')
+RULES = 2  # bump when the extraction rules change: every company is read again from SEC
+STALE_DAYS = 125  # a latest quarter older than this is checked against SEC again once a day
 
 
 def left():
@@ -301,7 +303,47 @@ def build_quarters(facts):
             ltd = (g('ltd_nc') or 0) + (g('ltd_c') or 0)
         debt = None if ltd is None and g('std') is None else (ltd or 0) + (g('std') or 0)
         bal = {'end': bal_end, 'cash': g('cash'), 'sti': g('sti'), 'debt': debt}
-    return {'q': qs, 'latest': dict(per[last], end=last), 'bal': bal, 'bank': bank}
+    return {'q': qs, 'latest': dict(per[last], end=last), 'bal': bal, 'bank': bank, 'diag': diagnose(facts, last)}
+
+
+def newest_period(facts):
+    """End of the newest period any 10-Q / 10-K reported (a duration fact that ended on or before its filing)."""
+    best_ = None
+    for tax, cs in (facts.get('facts') or {}).items():
+        if tax == 'dei':
+            continue
+        for c in cs.values():
+            for es in (c.get('units') or {}).values():
+                for e in es:
+                    if e.get('start') and str(e.get('form', '')).startswith(('10-Q', '10-K')) and e['end'] <= e.get('filed', ''):
+                        if best_ is None or e['end'] > best_:
+                            best_ = e['end']
+    return best_
+
+
+def diagnose(facts, rev_last):
+    """When revenue stops before the newest filed period, list the revenue-like concepts that do have that period,
+    so the next fix can be made from the data (written to the company file as "diag")."""
+    newest = newest_period(facts)
+    if not newest or not rev_last or days(rev_last, newest) < 30:
+        return None
+    found = []
+    for tax, cs in (facts.get('facts') or {}).items():
+        for name, c in cs.items():
+            if not re.search(r'revenue|sales', name, re.I):
+                continue
+            for unit, es in (c.get('units') or {}).items():
+                for e in es:
+                    if e['end'] == newest and e.get('start') and str(e.get('form', '')).startswith(('10-Q', '10-K')):
+                        found.append({'c': f'{tax}:{name}', 'start': e['start'], 'end': e['end'], 'val': e['val'], 'form': e.get('form'),
+                                      'fp': e.get('fp'), 'filed': e.get('filed')})
+    last = {}
+    for n in REV:
+        es = entries(facts, n)
+        if es:
+            x = max(es, key=lambda e: (e['end'], e.get('filed', '')))
+            last[n] = {k: x.get(k) for k in ('start', 'end', 'form', 'fp', 'filed')}
+    return {'newest': newest, 'rev_last': rev_last, 'have': found[:20], 'rev_concepts_last': last}
 
 
 # ---------- revenue lines from the filing's own XBRL instance ----------
@@ -622,7 +664,9 @@ def main():
         if co is None and st.get('no_10q') and checked and (now - datetime.fromisoformat(checked).replace(tzinfo=HK)) < timedelta(days=7):
             done += 1
             continue  # foreign filer (20-F / 6-K): checked again weekly
-        if co is None or (waiting and stale):
+        old = latest_end and days(latest_end, tny) > STALE_DAYS and (
+            not checked or (now - datetime.fromisoformat(checked).replace(tzinfo=HK)) >= timedelta(hours=24))
+        if co is None or (waiting and stale) or old or co.get('rules') != RULES:
             facts = sec_json(f'https://data.sec.gov/api/xbrl/companyfacts/CIK{int(info["cik"]):010d}.json')
             st['facts_hkt'] = stamp
             fetched += 1
@@ -634,7 +678,8 @@ def main():
                     continue
                 st.pop('no_10q', None)
                 new_end = b['latest']['end']
-                if co and latest_end and new_end > latest_end:
+                fresh = b['latest'].get('filed') and days(b['latest']['filed'], tny) <= 5  # never post an old quarter found late
+                if co and latest_end and new_end > latest_end and fresh:
                     events.append({'t': t, 'end': new_end, 'label': b['latest']['label'], 'filed': b['latest']['filed'],
                                    'report': lr if lr and lr >= new_end else b['latest']['filed'], 'found_hkt': stamp,
                                    'first_run': first_run})
@@ -650,7 +695,9 @@ def main():
                     elif seg and seg.get('accn') != b['latest']['accn']:
                         seg = None
                 co = {'t': t, 'name': info['name'], 'cik': info['cik'], 'q': b['q'], 'latest': b['latest'], 'bal': b['bal'],
-                      'bank': b['bank'], 'seg': seg}
+                      'bank': b['bank'], 'seg': seg, 'rules': RULES}
+                if b['diag']:
+                    co['diag'] = b['diag']
                 latest_end = new_end
         if co is None:
             done += 1
