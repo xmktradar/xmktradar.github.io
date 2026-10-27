@@ -56,6 +56,10 @@ jobs:
       - name: Update prices
         continue-on-error: true
         run: python3 tools/update_prices.py index.html
+      - name: Earnings brief numbers (US stocks >= $50B; SEC + Yahoo, no AI; tools/earnings_data.py)
+        continue-on-error: true
+        timeout-minutes: 12
+        run: python3 tools/earnings_data.py
       - name: Consensus and counts
         run: |
           echo '{"daily": null}' > "$WORK_DIR/windows.json"
@@ -111,6 +115,25 @@ jobs:
       - name: Keep only motion videos that exist (runs even if the step above timed out)
         continue-on-error: true
         run: python3 tools/carousel_video_post.py
+      - name: Earnings posts (10:00 / 22:00 HKT slots) and the day's earnings short (11:00 HKT)
+        continue-on-error: true
+        timeout-minutes: 15
+        run: |
+          python3 tools/earnings_posts.py
+          if [ -f "$WORK_DIR/earnings_cards.json" ]; then
+            node tools/earnings_cards.js "$WORK_DIR/earnings_cards.json" || { echo "::error::財報貼文圖畫唔到，下次更新再試"; exit 1; }
+            if [ -f "$WORK_DIR/earnings_video.json" ]; then
+              if command -v ffmpeg >/dev/null 2>&1; then
+                pip install numpy edge-tts==7.3.1 || echo "::warning::numpy/edge-tts 裝唔到"
+                python3 tools/earnings_video.py "$WORK_DIR/earnings_video.json" "$WORK_DIR/earnings-posts.json" || echo "::warning::財報短片整唔到"
+              else
+                echo "::warning::冇 ffmpeg，今日冇財報短片"
+                python3 -c "import json,sys;p=sys.argv[1];d=json.load(open(p));d.pop('video',None);json.dump(d,open(p,'w'),ensure_ascii=False,indent=1)" "$WORK_DIR/earnings-posts.json"
+              fi
+            fi
+            cp "$WORK_DIR/earnings-posts.json" data/earnings-posts.json
+            mkdir -p social && cp "$WORK_DIR/earnings.html" social/earnings.html
+          fi
       - name: Language versions
         run: python3 tools/build_langs.py
       - name: Support page
@@ -129,6 +152,9 @@ jobs:
         run: python3 tools/llms_full.py
       - name: Stock pages
         run: node tools/stock_pages.js
+      - name: Earnings brief pages (/zh|en/earnings/; links on stock pages and homepages; sitemap)
+        continue-on-error: true
+        run: python3 tools/earnings_pages.py
       - name: Old Korean links go to the English page (Korean removed 2026-10-27)
         run: python3 tools/ko_redirect.py
       - name: Sitemap lastmod (real content-change time per page)
