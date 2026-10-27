@@ -30,19 +30,39 @@ jobs:
           ref: main  # latest main, not the commit that triggered the run, so publishing never conflicts
       - name: Restore full page data
         run: python3 tools/slim_pages.py --restore
+      # Installs come from caches: on 2026-10-27 the apt mirror and browser downloads took ~50 min and runs hit the
+      # 60-min limit before publishing. A cache miss downloads once (time-limited) and saves for the next runs.
+      - name: Cache headless browser
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: pw-chromium-1.56.1-${{ runner.os }}
+      - name: Cache apt packages (ffmpeg, fonts)
+        uses: actions/cache@v4
+        with:
+          path: ~/apt-debs
+          key: apt-debs-v1-${{ runner.os }}-ffmpeg-fonts-noto-cjk-fonts-inter
       - name: Install headless browser
+        timeout-minutes: 15
         run: |
           npm install --no-save --no-audit --no-fund playwright@1.56.1
-          npx playwright install --with-deps chromium
-      - name: Install ffmpeg (motion videos and the Top5 clip; not on the runner image)
+          npx playwright install chromium
+          # the runner image normally has the system libraries; only fetch them when the browser cannot start
+          node -e "require('playwright').chromium.launch().then(b=>b.close())" 2>/dev/null || npx playwright install-deps chromium
+      - name: Install ffmpeg and fonts (motion videos, Top5 clip, social pictures; not on the runner image)
         continue-on-error: true
+        timeout-minutes: 15
         run: |
-          command -v ffmpeg >/dev/null 2>&1 || { sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg; }
+          PKGS="ffmpeg fonts-noto-cjk fonts-inter"
+          if ls ~/apt-debs/*.deb >/dev/null 2>&1; then
+            sudo dpkg -i ~/apt-debs/*.deb >/dev/null 2>&1 || sudo apt-get install -y -qq -f --no-install-recommends
+          fi
+          if ! command -v ffmpeg >/dev/null 2>&1 || ! fc-list | grep -qi "Noto Sans CJK TC"; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq --no-install-recommends $PKGS
+            mkdir -p ~/apt-debs && cp /var/cache/apt/archives/*.deb ~/apt-debs/ 2>/dev/null || true
+          fi
           ffmpeg -version | head -1
-      - name: Install fonts for the social pictures (same look even when Google Fonts is slow)
-        continue-on-error: true
-        run: |
-          sudo apt-get install -y -qq --no-install-recommends fonts-noto-cjk fonts-inter || { sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends fonts-noto-cjk fonts-inter; }
           fc-list | grep -qi "Noto Sans CJK TC" || echo "::warning::Noto Sans CJK 裝唔到，社交圖有機會用後備字型"
       - name: Install Chinese converter
         continue-on-error: true
@@ -111,7 +131,7 @@ jobs:
         timeout-minutes: 12
         run: |
           if [ -f "$WORK_DIR/carousel.json" ] && ! command -v ffmpeg >/dev/null 2>&1; then
-            echo "::error::冇 ffmpeg，今次出唔到動態片（Install ffmpeg 嗰步失敗）"
+            echo "::error::冇 ffmpeg，今次出唔到動態片（Install ffmpeg and fonts 嗰步失敗）"
           fi
           if [ -f "$WORK_DIR/carousel.json" ] && command -v ffmpeg >/dev/null 2>&1; then
             pip install numpy edge-tts==7.3.1 || echo "::warning::numpy/edge-tts 裝唔到"
