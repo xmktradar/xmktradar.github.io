@@ -8,7 +8,7 @@ comes from the cron in .github/workflows/update-site.yml (GitHub cron is UTC;
 Hong Kong is UTC+8). When that clock matches the FAQ answer, the FAQ wording
 is used as-is.
 
-Writes about/index.html (Chinese) and zh|en|ko/about/index.html, and lists
+Writes about/index.html (Chinese) and zh|en/about/index.html, and lists
 the three language URLs in sitemap.xml.
 """
 import html
@@ -21,7 +21,7 @@ from build_langs import with_root_redirect
 from sitedata import BLOCK, read_json
 
 SITE = 'https://thecrowdtape.com/'
-LANGS = {'zh': 'zh-Hant', 'en': 'en', 'ko': 'ko'}
+LANGS = {'zh': 'zh-Hant', 'en': 'en'}
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HAN = re.compile(r'[\u4e00-\u9fff]')
 FAQ_LD = re.compile(r'(<script type="application/ld\+json" id="faq-ld">)(.*?)(</script>)', re.S)
@@ -359,7 +359,7 @@ def main():
     zh = page(template, 'zh', blocks)
     write('about/index.html', with_root_redirect(zh, 'about'))
     write('zh/about/index.html', zh)
-    for lang in ('en', 'ko'):
+    for lang in ('en',):
         html_s = page(template, lang, blocks)
         body = re.sub(r'<nav class="lang".*?</nav>', '', html_s, flags=re.S)
         left = HAN.findall(body)

@@ -17,11 +17,6 @@
     "t": "{N} top X stock accounts, on one page",
     "b": "We track {N} top US-stock, macro and market-news accounts on X, and turn their bullish, bearish and neutral views on each stock into one page.\nNo opinions of our own: just what the crowd is doing.",
     "how": "Open the site; the first page is today's consensus."
-   },
-   "ko": {
-    "t": "X 미국주식 인플루언서 {N}명을 한 페이지에",
-    "b": "X의 미국주식·매크로·시장 속보 계정 {N}개를 추적해, 종목별 강세·약세·중립 의견을 한 페이지로 정리합니다.\n저희 의견은 넣지 않고, 그들이 무엇을 하고 있는지만 보여드립니다.",
-    "how": "사이트를 열면 첫 화면이 바로 오늘의 컨센서스입니다."
    }
   },
   {
@@ -39,11 +34,6 @@
     "t": "Free. No login. No app.",
     "b": "The Crowd Tape is completely free. No account and no login: just open it in your phone's browser.\nNo paywall and no members-only area; everyone sees the same data.",
     "how": "Open it in Safari or Chrome and tap \"Add to Home Screen\" to use it like an app."
-   },
-   "ko": {
-    "t": "무료, 로그인 없음, 앱 설치 없음",
-    "b": "The Crowd Tape는 완전 무료입니다. 회원가입도 로그인도 필요 없이 휴대폰 브라우저로 열기만 하면 됩니다.\n유료 벽도 회원 전용 공간도 없이, 모두가 같은 데이터를 봅니다.",
-    "how": "Safari나 Chrome에서 열고 \"홈 화면에 추가\"를 누르면 앱처럼 쓸 수 있습니다."
    }
   },
   {
@@ -61,11 +51,6 @@
     "t": "Updated automatically every 4 hours",
     "b": "Every 4 hours the site pulls in new posts and refreshes prices and consensus, day and night.\nThe top of the page shows \"Data as of\" and \"Next update\", so you always know how fresh the numbers are.",
     "how": "Look for \"Data as of\" at the top of the page."
-   },
-   "ko": {
-    "t": "4시간마다 자동 업데이트",
-    "b": "4시간마다 새 게시물을 가져오고 주가와 컨센서스를 갱신합니다. 밤낮없이요.\n페이지 상단의 \"데이터 기준\"과 \"다음 업데이트\" 시간으로 데이터가 얼마나 최신인지 바로 알 수 있습니다.",
-    "how": "페이지 상단의 \"데이터 기준\"을 확인하세요."
    }
   },
   {
@@ -83,11 +68,6 @@
     "t": "The tracked list: who are the {N} accounts?",
     "b": "The \"Tracked list\" tab shows all {N} accounts, grouped into business leaders, stock analysts, macro, market news and more, each with an avatar and a short bio.\nOnly these {N} accounts ever appear on the site.",
     "how": "Tap the \"Tracked list\" tab at the top."
-   },
-   "ko": {
-    "t": "추적 명단: {N}개 계정은 누구?",
-    "b": "\"추적 명단\" 탭에서 {N}개 계정 전체를 볼 수 있습니다. 기업가, 주식 분석, 매크로, 시장 속보 등으로 나뉘고 프로필 사진과 소개가 있습니다.\n사이트에는 이 {N}개 계정의 의견만 나옵니다.",
-    "how": "상단의 \"추적 명단\" 탭을 누르세요."
    }
   },
   {
@@ -97,19 +77,14 @@
     "sel": "header.top"
    },
    "zh": {
-    "t": "中文、English、한국어 一撳切換",
-    "b": "網站有中文、英文同韓文三個版本，內容一樣，連大神貼文摘要都有翻譯。\n頁頂撳「中 / EN / 한」就轉，分享俾外國朋友都得。",
-    "how": "撳頁頂「中 EN 한」。"
+    "t": "中文、English 一撳切換",
+    "b": "網站有中文同英文兩個版本，內容一樣，連大神貼文摘要都有翻譯。\n頁頂撳「中 / EN」就轉，分享俾外國朋友都得。",
+    "how": "撳頁頂「中 EN」。"
    },
    "en": {
-    "t": "Chinese, English, Korean: one tap to switch",
-    "b": "The site comes in Chinese, English and Korean, with the same data in each, including summaries of the accounts' posts.\nTap \"中 / EN / 한\" at the top to switch, and share it with friends in any language.",
-    "how": "Tap \"中 EN 한\" at the top."
-   },
-   "ko": {
-    "t": "중국어·영어·한국어, 한 번에 전환",
-    "b": "사이트는 중국어, 영어, 한국어 세 가지 버전이 있고 게시물 요약까지 모두 번역됩니다.\n상단의 \"中 / EN / 한\"을 누르면 바로 바뀝니다.",
-    "how": "상단의 \"中 EN 한\"을 누르세요."
+    "t": "Chinese or English: one tap to switch",
+    "b": "The site comes in Chinese and English, with the same data in both, including summaries of the accounts' posts.\nTap \"中 / EN\" at the top to switch, and share it with friends in either language.",
+    "how": "Tap \"中 EN\" at the top."
    }
   },
   {
@@ -127,11 +102,6 @@
     "t": "Built for your phone",
     "b": "The site is designed for phones: card layout, readable text, long tables you can swipe sideways while the account column stays put.\nCheck what the crowd is saying on the bus or in a queue.",
     "how": "Open it on your phone and tap any account card."
-   },
-   "ko": {
-    "t": "휴대폰에 맞춘 디자인",
-    "b": "카드형 레이아웃, 읽기 쉬운 글자, 좌우로 넘기는 긴 표(계정 열은 고정)까지 휴대폰에 맞게 설계했습니다.\n이동 중에도 오늘의 분위기를 빠르게 확인하세요.",
-    "how": "휴대폰으로 열고 아무 계정 카드나 눌러 보세요."
    }
   },
   {
@@ -153,11 +123,6 @@
     "t": "\"Consensus bullish\": stocks several accounts like",
     "b": "\"Consensus bullish\" lists stocks where at least 2 accounts' latest view is bullish, and shows which accounts they are.\nOne loud voice is not enough; it takes several pointing the same way.",
     "how": "Tap the \"Weekly\" tab; the first box is Consensus bullish."
-   },
-   "ko": {
-    "t": "\"공동 강세\": 여러 계정이 함께 강세",
-    "b": "\"공동 강세\"는 최소 2개 계정의 최신 의견이 강세인 종목이며, 어떤 계정인지도 함께 보여줍니다.\n한 명의 목소리가 아니라 여러 명이 같은 방향일 때만 올라갑니다.",
-    "how": "\"주간\" 탭을 누르면 첫 칸이 공동 강세입니다."
    }
   },
   {
@@ -179,11 +144,6 @@
     "t": "\"Consensus bearish\": what is the crowd selling?",
     "b": "Like Consensus bullish, \"Consensus bearish\" lists stocks where at least 2 accounts' latest view is bearish.\nBefore you buy, it is worth checking whether several people are warning against it.",
     "how": "Daily, Weekly and Monthly all show Consensus bearish."
-   },
-   "ko": {
-    "t": "\"공동 약세\": 함께 약세로 보는 종목",
-    "b": "공동 강세처럼, \"공동 약세\"는 최소 2개 계정의 최신 의견이 약세인 종목을 보여줍니다.\n매수 전에 여러 명이 경고하고 있는지 확인해 보세요.",
-    "how": "일간·주간·월간 탭 모두에 공동 약세가 있습니다."
    }
   },
   {
@@ -205,11 +165,6 @@
     "t": "\"Split\": which stocks divide the crowd?",
     "b": "When some accounts are bullish and others bearish on the same stock, it shows up under \"Split\", with the count on each side.\nSplit stocks are often volatile, so read both sides before you act.",
     "how": "Tap any stock to see what each side says."
-   },
-   "ko": {
-    "t": "\"의견 엇갈림\": 가장 논쟁적인 종목",
-    "b": "같은 종목에 강세와 약세가 함께 있으면 \"의견 엇갈림\"에 표시되고, 양쪽 계정 수도 보여줍니다.\n논쟁이 큰 종목은 변동성도 큰 경우가 많으니 양쪽 근거를 먼저 읽어 보세요.",
-    "how": "종목을 누르면 양쪽 의견을 볼 수 있습니다."
    }
   },
   {
@@ -227,11 +182,6 @@
     "t": "\"Attention shifts\": what is heating up?",
     "b": "See at a glance which stocks are being talked about more or less than last period, with earnings dates marked.\nA stock that suddenly gets attention is often the market's next focus.",
     "how": "Find \"Attention shifts\" in the Daily tab; swipe sideways for more."
-   },
-   "ko": {
-    "t": "\"시장 관심도 변화\": 지금 뜨는 종목",
-    "b": "지난 기간보다 언급이 늘었는지 줄었는지 종목별로 한눈에 보이며, 실적 발표일도 표시됩니다.\n갑자기 언급이 늘어난 종목이 다음 시장의 초점인 경우가 많습니다.",
-    "how": "\"일간\" 탭의 \"시장 관심도 변화\"에서 좌우로 넘겨 보세요."
    }
   },
   {
@@ -249,11 +199,6 @@
     "t": "\"Stance by account\": who likes what, in one grid",
     "b": "One table lays out every account's stance on every stock: green bullish, red bearish, blank means not mentioned.\nWant to know what one account thinks of one stock? Find its row.",
     "how": "\"Stance by account\" in the Daily tab; the account column stays fixed as you swipe."
-   },
-   "ko": {
-    "t": "\"계정별 입장\": 누가 무엇을 좋아하는지 한 표로",
-    "b": "계정별·종목별 입장을 한 표에 정리합니다. 초록은 강세, 빨강은 약세, 빈칸은 언급 없음입니다.\n특정 계정의 특정 종목 의견이 궁금하면 그 행을 보면 됩니다.",
-    "how": "\"일간\" 탭의 \"계정별 입장\". 계정 열은 고정되고 종목은 좌우로 넘깁니다."
    }
   },
   {
@@ -271,11 +216,6 @@
     "t": "\"Key views\": catch every change of mind",
     "b": "\"Key views\" puts stance changes first, like an account flipping from bullish to bearish, followed by the clearest calls.\nEach comes with a summary and the original post, so you don't have to scroll through every account.",
     "how": "Scroll down the Daily tab to \"Key views\"."
-   },
-   "ko": {
-    "t": "\"주요 관점\": 입장 변화를 바로 확인",
-    "b": "\"주요 관점\"은 강세에서 약세로 바뀌는 등 입장이 바뀐 게시물과 가장 분명한 의견을 먼저 보여줍니다.\n요약과 원문 링크가 함께 있어 계정을 하나하나 볼 필요가 없습니다.",
-    "how": "\"일간\" 탭을 내려 \"주요 관점\"을 보세요."
    }
   },
   {
@@ -293,11 +233,6 @@
     "t": "\"Today's market analysis\": the day in a few paragraphs",
     "b": "No time to read every post? \"Today's market analysis\" sums up the stocks, macro news and disagreements the accounts cared about most.\nRead it in a few minutes on your commute.",
     "how": "\"Today's market analysis\" at the bottom of the Daily tab."
-   },
-   "ko": {
-    "t": "\"오늘의 시장 분석\": 오늘을 몇 문단으로",
-    "b": "게시물을 다 읽을 시간이 없다면, \"오늘의 시장 분석\"이 오늘 가장 주목받은 종목, 매크로 소식, 의견 차이를 몇 문단으로 정리해 드립니다.\n출퇴근길 몇 분이면 충분합니다.",
-    "how": "\"일간\" 탭 맨 아래 \"오늘의 시장 분석\"."
    }
   },
   {
@@ -315,11 +250,6 @@
     "t": "\"This week's highlights\": 7 days in one view",
     "b": "The Weekly tab rolls up the last 7 days: highlights, consensus bullish and bearish, strong agreement and clear splits.\nFive minutes on the weekend and you're caught up on the whole week.",
     "how": "Tap the \"Weekly\" tab at the top."
-   },
-   "ko": {
-    "t": "\"이번 주 핵심\": 7일을 한 화면에",
-    "b": "\"주간\" 탭은 지난 7일을 정리합니다: 이번 주 핵심, 공동 강세·약세, 강한 일치와 뚜렷한 엇갈림.\n주말 5분이면 한 주를 따라잡을 수 있습니다.",
-    "how": "상단의 \"주간\" 탭을 누르세요."
    }
   },
   {
@@ -337,11 +267,6 @@
     "t": "\"Monthly\": the 28-day bull vs bear ratio",
     "b": "The Monthly tab counts 28 days of posts to show whether the crowd leans optimistic or pessimistic, plus a monthly trends summary.\nShort-term noise filtered out, the big picture gets clearer.",
     "how": "Tap \"Monthly\" and look at \"Bullish vs bearish\"."
-   },
-   "ko": {
-    "t": "\"월간\": 28일 강세 대 약세 비율",
-    "b": "\"월간\" 탭은 28일간의 게시물을 모아 전체 분위기가 낙관인지 비관인지, 이번 달 추세와 함께 보여줍니다.\n단기 소음을 걸러내면 큰 흐름이 보입니다.",
-    "how": "\"월간\" 탭의 \"강세 대 약세 비율\"을 보세요."
    }
   },
   {
@@ -359,11 +284,6 @@
     "t": "\"Stance consistency\": who flip-flops?",
     "b": "For each account, the site measures how consistent its stance on the same stock has been, and counts outright reversals (bullish straight to bearish or back).\nSee at a glance who sticks to their calls.",
     "how": "\"Stance consistency by account\" in the Monthly tab."
-   },
-   "ko": {
-    "t": "\"입장 일관성\": 누가 자주 바꾸나?",
-    "b": "계정마다 같은 종목에 대한 입장이 얼마나 일관됐는지, 강세↔약세 \"반전\"이 몇 번인지 계산합니다.\n누가 자기 의견을 지키는지 한눈에 보입니다.",
-    "how": "\"월간\" 탭의 \"계정별 입장 일관성\"."
    }
   },
   {
@@ -381,11 +301,6 @@
     "t": "Heat map: buzz and stance, day by day",
     "b": "Each square is one day: the colour shows whether the accounts were net bullish or bearish, and the shade shows how many talked about it.\nSee when a stock heated up and when views turned, a whole month in one picture.",
     "how": "\"Stock attention and views over time\" at the bottom of the Monthly tab."
-   },
-   "ko": {
-    "t": "히트맵: 종목별 하루하루의 관심과 입장",
-    "b": "한 칸이 하루입니다. 색은 그날의 순 강세·약세, 진하기는 언급 수를 뜻합니다.\n언제 관심이 커지고 언제 입장이 바뀌었는지 한 달을 한 장에 봅니다.",
-    "how": "\"월간\" 탭 맨 아래 \"종목별 관심도와 관점의 시간별 변화\"."
    }
   },
   {
@@ -403,11 +318,6 @@
     "t": "Each account's top pick this month",
     "b": "For every account, the site finds the stock it called bullish most often this month, with its 1-year return.\nSee which stock your favourite analyst backs most.",
     "how": "\"Each account's top stock this month\" in the Monthly tab."
-   },
-   "ko": {
-    "t": "계정별 이번 달 최선호 종목",
-    "b": "계정마다 이번 달 가장 많이 강세로 언급한 종목을 찾아 1년 수익률과 함께 보여줍니다.\n좋아하는 분석가가 가장 밀어주는 종목을 바로 확인하세요.",
-    "how": "\"월간\" 탭의 \"계정별 이번 달 최선호 종목\"."
    }
   },
   {
@@ -425,11 +335,6 @@
     "t": "\"Stock leaderboard\": the 28-day ranking",
     "b": "The leaderboard lists every stock mentioned in 28 days, with mentions, bull/bear mix and 1-year return.\nTap a column header to re-sort by what you care about.",
     "how": "\"Stock leaderboard\" in the Monthly tab; tap a header to sort."
-   },
-   "ko": {
-    "t": "\"종목 순위\": 28일 순위표",
-    "b": "28일간 언급된 모든 종목을 언급 수, 강세·약세 비율, 1년 수익률과 함께 보여줍니다.\n표 머리글을 누르면 원하는 기준으로 정렬됩니다.",
-    "how": "\"월간\" 탭의 \"종목 순위\"에서 머리글을 눌러 정렬하세요."
    }
   },
   {
@@ -448,11 +353,6 @@
     "t": "Account pages: everything one account said",
     "b": "Tap any account to see all its posts (newest first), the stocks it mentioned and how its stance on each changed.\nBefore you follow someone, check their track record.",
     "how": "Tap any account card or name."
-   },
-   "ko": {
-    "t": "계정 페이지: 한 계정의 모든 발언",
-    "b": "계정을 누르면 모든 게시물(최신순), 언급한 종목, 종목별 입장 변화를 볼 수 있습니다.\n누군가를 따르기 전에 과거 발언부터 확인하세요.",
-    "how": "계정 카드나 이름을 누르세요."
    }
   },
   {
@@ -470,11 +370,6 @@
     "t": "Stock pages: every stock gets its own page",
     "b": "Any stock mentioned by 2 or more accounts gets its own page: close, 28-day change, bull and bear counts, and each account's latest view and reasoning.\nFind it on Google or send the link to a friend.",
     "how": "The address is thecrowdtape.com/en/stock/TICKER/, e.g. /en/stock/{TK}/."
-   },
-   "ko": {
-    "t": "종목 페이지: 종목마다 전용 페이지",
-    "b": "2개 이상 계정이 언급한 종목은 전용 페이지가 있습니다: 종가, 28일 등락, 강세·약세 수, 계정별 최신 의견과 근거.\n구글에서 찾을 수도 있고 링크를 친구에게 보낼 수도 있습니다.",
-    "how": "주소는 thecrowdtape.com/ko/stock/티커/ 입니다. 예: /ko/stock/{TK}/"
    }
   },
   {
@@ -493,11 +388,6 @@
     "t": "🔍 Search: type a ticker or company name",
     "b": "Looking for a stock? Tap 🔍 at the right of the tab bar and type a ticker (like {TK}) or a company name; it pops up right away with how many accounts mentioned it.\nOn iPhone the 🔍 sticks to the top, so it's always within reach.",
     "how": "Tap 🔍 at the right of the tab bar."
-   },
-   "ko": {
-    "t": "🔍 검색: 티커나 회사명 입력",
-    "b": "궁금한 종목이 있나요? 탭 바 오른쪽 🔍를 누르고 티커(예: {TK})나 회사명을 입력하면 바로 나오고, 언급한 계정 수도 보입니다.\niPhone에서는 🔍가 상단에 고정되어 언제든 누를 수 있습니다.",
-    "how": "탭 바 오른쪽의 🔍를 누르세요."
    }
   },
   {
@@ -515,11 +405,6 @@
     "t": "Reasoning and time frame: why do they think so?",
     "b": "Each view is tagged with its reasoning (technicals, fundamentals, macro or a catalyst) and its horizon (short, medium or long term).\nTwo bulls can have very different reasons; pick the ones that match your style.",
     "how": "Tap a stock and look at \"Consensus and splits\"."
-   },
-   "ko": {
-    "t": "근거와 기간: 왜 그렇게 볼까?",
-    "b": "모든 의견에는 근거(기술적·펀더멘털·매크로·촉매)와 기간(단기·중기·장기)이 표시됩니다.\n같은 강세라도 이유는 다를 수 있으니, 내 스타일에 맞는 의견을 고르세요.",
-    "how": "종목을 누르고 \"컨센서스와 의견 엇갈림\"을 보세요."
    }
   },
   {
@@ -537,11 +422,6 @@
     "t": "Price at post: did it go up after the call?",
     "b": "Every dot on a stock's chart is one account's view. Tap it to see the price when they posted and whether they were bullish or bearish.\nCompare with what happened next to see who called it right.",
     "how": "Tap a stock, then tap a dot on its chart."
-   },
-   "ko": {
-    "t": "게시 시 주가: 발언 후 올랐을까?",
-    "b": "종목 차트의 점 하나하나가 계정의 의견입니다. 누르면 게시 당시 주가와 강세·약세 여부가 나옵니다.\n이후 흐름과 비교하면 누가 맞혔는지 알 수 있습니다.",
-    "how": "종목을 누른 뒤 차트의 점을 누르세요."
    }
   },
   {
@@ -560,11 +440,6 @@
     "t": "Every view links to the original post",
     "b": "Summaries and stances on the site are produced by AI, so every one links to the \"Original post\" on X, one tap away.\nDon't take our word for it; check it yourself.",
     "how": "Tap \"Original post ↗\" on any view."
-   },
-   "ko": {
-    "t": "모든 의견에 원문 링크",
-    "b": "사이트의 요약과 입장은 AI가 정리하므로, 모든 항목에 X \"원문 게시물\" 링크가 있습니다.\n저희 말만 믿지 말고 직접 확인하세요.",
-    "how": "각 의견의 \"원문 게시물 ↗\"을 누르세요."
    }
   },
   {
@@ -581,11 +456,6 @@
     "t": "Daily snapshot: follow @thecrowdtape",
     "b": "Every weekday we post an \"X crowd snapshot\": today's most-liked and most-discussed stocks, plus consensus bullish and bearish.\nFollow @thecrowdtape and get the crowd's read in one picture each morning.",
     "how": "Follow @thecrowdtape, or subscribe to the site's RSS feed."
-   },
-   "ko": {
-    "t": "데일리 스냅샷: @thecrowdtape 팔로우",
-    "b": "평일마다 \"X 인플루언서 스냅샷\"을 올립니다: 오늘 가장 강세·가장 많이 언급된 종목, 공동 강세·약세.\n@thecrowdtape를 팔로우하고 매일 아침 한 장으로 분위기를 확인하세요.",
-    "how": "@thecrowdtape를 팔로우하거나 사이트 RSS를 구독하세요."
    }
   },
   {
@@ -603,11 +473,6 @@
     "t": "Macro tab: how {N} accounts see the big picture",
     "b": "The Fed, inflation, bond yields, oil, tariffs: when the {N} accounts talk macro, we sort it into 9 topics.\nFor each topic you see how many think it is bullish, bearish or neutral for US stocks, whether that is better or worse than last week, and tap to read everyone's latest take.",
     "how": "Tap \"Macro\" in the tab bar."
-   },
-   "ko": {
-    "t": "매크로 탭: {N}개 계정이 보는 큰 그림",
-    "b": "연준, 인플레이션, 채권 금리, 유가, 관세… {N}개 계정의 매크로 이야기를 9개 주제로 나눠 정리했습니다.\n주제마다 미국 주식에 호재·악재·중립으로 보는 계정 수와 지난주 대비 개선·악화를 보여 주고, 누르면 계정별 최신 의견을 볼 수 있습니다.",
-    "how": "탭 메뉴에서 \"매크로\"를 누르세요."
    }
   }
  ]

@@ -1,25 +1,26 @@
-"""Step 10: build the language versions /zh/, /en/ and /ko/ from index.html (the Chinese master).
+"""Step 10: build the language versions /zh/ and /en/ from index.html (the Chinese master).
+Korean (/ko/) was removed 2026-10-27; tools/ko_redirect.py sends old /ko/ links to /en/.
 
 - Fixed text: i18n/<lang>.json, {"ui": {"中文片段": "translation"}, "data": {"中文": "translation"},
   "meta": {"image_alt": "..."}}. i18n/zh.json lists the Chinese UI texts (python3 tools/build_langs.py --extract).
   "ui" replaces text in the page code (longest first); "data" replaces whole strings in the data block
   (category names, roles and the like). A missing file or entry leaves the Chinese text in place.
 - Changing content: English posts show en_summary with the original X text behind "See original"
-  (posts without en_summary show the original text); Korean posts show ko_summary.
+  (posts without en_summary show the original text).
   summaries_<lang>, highlights_<lang>, briefings_<lang> replace the Chinese ones when present.
 - Parts wrapped in <!-- zh-only --> ... <!-- /zh-only --> in index.html stay on /zh/ only and are
-  left out of /en/ and /ko/ (the Futu invite box: only Hong Kong residents can use it).
+  left out of /en/ (the Futu invite box: only Hong Kong residents can use it).
 - Every version gets <html lang>, canonical, hreflang, the language switch and absolute asset paths.
 - index.html itself gets the same switch and hreflang plus a script that sends visitors to the
   version matching their browser language.
-- robot.html (Chinese) is stamped with hreflang. en/robot.html and ko/robot.html are translated
-  from it with i18n/<lang>.json "robot" (plus shared "ui" strings). Canonical stays /robot.html
-  for Chinese and /en/robot.html, /ko/robot.html for the other two. The paper-trading pause is copy
+- robot.html (Chinese) is stamped with hreflang. en/robot.html is translated
+  from it with i18n/en.json "robot" (plus shared "ui" strings). Canonical stays /robot.html
+  for Chinese and /en/robot.html for English. The paper-trading pause is copy
   only: this step does not start or resume any job.
 - Lighter pages: each version carries only the last LITE_DAYS of daily closes (plus the first one, for
   the one-year change) and no intraday lines; the stock page loads px/<ticker>.json (full closes and
-  intraday) when opened. Account info and avatars nobody in the data refers to, and ko_summary (copied
-  into zh_summary on the Korean page), are left out. index.html keeps everything: the pipeline reads it.
+  intraday) when opened. Account info and avatars nobody in the data refers to, and any leftover
+  ko_summary, are left out. index.html keeps everything: the pipeline reads it.
   The served master is often already slim (prices live in px/, older posts in data/dash/). Rebuilding
   from that master keeps each language page's existing slim blob and its stock-index block, and an
   empty price map does not delete px/.
@@ -37,7 +38,7 @@ from sitedata import BLOCK, notice, read_json
 SITE = 'https://thecrowdtape.com/'
 # og image links: current SITE, or the old GitHub Pages host on pages not yet rebuilt
 OG_HOST = '(?:' + re.escape(SITE) + '|https://xmktradar\\.github\\.io/)'
-LANGS = {'zh': ('zh-Hant', '中'), 'en': ('en', 'EN'), 'ko': ('ko', '한')}
+LANGS = {'zh': ('zh-Hant', '中'), 'en': ('en', 'EN')}
 CONTENT = ('summaries', 'highlights', 'briefings')
 MARK = '<!-- lang-head -->'
 ZH_ONLY = re.compile(r'<!-- zh-only -->.*?<!-- /zh-only -->', re.S)
@@ -50,7 +51,7 @@ SWITCH_CSS = ('.lang-sw{display:flex;gap:4px;margin:6px 0 2px}.lang-sw a{font:60
               'padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);'
               'text-decoration:none;background:var(--surface)}.lang-sw a[aria-current]{color:var(--accent);'
               'border-color:var(--accent);background:var(--accent-soft)}'
-              # English and Korean labels run longer than Chinese: let event tags wrap on phones
+              # English labels run longer than Chinese: let event tags wrap on phones
               '#dive>.lang-sw{position:static;justify-content:flex-start;margin:8px 16px 4px;clear:both}'
               '@media(max-width:600px){.flag{white-space:normal;max-width:100%;flex-wrap:wrap}.tk:has(.flag){white-space:normal!important;max-width:100%}html:not([lang^=zh]) td:not(:first-child) .note{white-space:normal}}')
 
@@ -130,10 +131,11 @@ def localize_news(html, lang):
 
 
 def lang_pick_js(storage_expr):
-    """JS that sets `l` from localStorage, else the browser language. Unknown languages fall back to English."""
-    return (f'var l;try{{l={storage_expr}}}catch(_){{}}'
+    """JS that sets `l` from localStorage, else the browser language. Unknown languages fall back to English.
+    A stored "ko" (Korean was removed 2026-10-27) counts as nothing stored."""
+    return (f'var l;try{{l={storage_expr}}}catch(_){{}}if(l!=="zh"&&l!=="en")l=0;'
             'if(!l){var n=(navigator.languages||[navigator.language||""]).join(",").toLowerCase();'
-            'l=/^ko|,ko/.test(n)?"ko":/^zh|,zh/.test(n)?"zh":/^en|,en/.test(n)?"en":"en"}')
+            'l=/^zh|,zh/.test(n)?"zh":"en"}')
 
 
 def root_redirect_script(segment):
@@ -283,7 +285,7 @@ def swap_data(d, lang, fixed):
         if d.get(f'{k}_{lang}'):
             d[k] = overlay(d.get(k), d[f'{k}_{lang}'])
     for p in d['posts']:
-        alt = (p.get('en_summary') or p.get('text')) if lang == 'en' else p.get('ko_summary') if lang == 'ko' else None
+        alt = (p.get('en_summary') or p.get('text')) if lang == 'en' else None
         if lang == 'en' and p.get('en_summary') and p.get('text'):
             p['orig'] = p['text']  # shown behind "See original"
             p['truncated'] = False
@@ -299,7 +301,7 @@ def swap_data(d, lang, fixed):
             if 'summary_zh' in p:
                 p['summary_zh'] = alt
         elif lang != 'zh':
-            # no translation and no original text yet: show nothing rather than Chinese on en/ko
+            # no translation and no original text yet: show nothing rather than Chinese on en
             p['zh_summary'] = ''
             if 'summary_zh' in p:
                 p['summary_zh'] = ''
@@ -309,9 +311,7 @@ def swap_data(d, lang, fixed):
             m = re.match(r'(\d+)/(\d+)（美國時間）公布季度業績(，預計日期未經公司確認)?（Yahoo Finance）$', f.get('note') or '')
             if m:
                 est = bool(m.group(3))
-                f['note'] = (f'Quarterly results {m.group(1)}/{m.group(2)} (US time){", date estimated, not confirmed by the company" if est else ""} (Yahoo Finance)'
-                             if lang == 'en' else
-                             f'{m.group(1)}/{m.group(2)} (미국 시간) 분기 실적 발표{", 회사 미확정 예상일" if est else ""} (Yahoo Finance)')
+                f['note'] = f'Quarterly results {m.group(1)}/{m.group(2)} (US time){", date estimated, not confirmed by the company" if est else ""} (Yahoo Finance)'
 
     def walk(o):
         if isinstance(o, dict):
@@ -422,7 +422,7 @@ def build(lang, master):
     s = re.sub(r'''(["'(])assets/''', r'\1/assets/', s)
     s = add_chrome(s, lang)
     s = localize_news(s, lang)
-    if lang != 'zh':  # Chinese stays on /robot.html; en/ko nav and footer go to the translated page
+    if lang != 'zh':  # Chinese stays on /robot.html; en nav and footer go to the translated page
         s = s.replace('href="/robot.html"', f'href="/{lang}/robot.html"')
     if stock and '<!-- stock-index -->' not in s:
         # stock_pages.js injects this per language. A rebuild must not drop it.
@@ -470,7 +470,7 @@ def robot_canon(lang):
 
 
 def robot_switch(lang):
-    items = (('zh', '/robot.html', '中'), ('en', '/en/robot.html', 'EN'), ('ko', '/ko/robot.html', '한'))
+    items = (('zh', '/robot.html', '中'), ('en', '/en/robot.html', 'EN'))
     on = ' aria-current="page"'
     links = ''.join(f'<a href="{href}" data-lang="{k}"{on if k == lang else ""}>{lab}</a>' for k, href, lab in items)
     return f'<nav class="lang-sw" aria-label="Language">{links}</nav>'
@@ -487,14 +487,13 @@ def stamp_robot(html, lang):
     alt = (
         f'<link rel="alternate" hreflang="zh-Hant" href="{SITE}robot.html">'
         f'<link rel="alternate" hreflang="en" href="{SITE}en/robot.html">'
-        f'<link rel="alternate" hreflang="ko" href="{SITE}ko/robot.html">'
         f'<link rel="alternate" hreflang="x-default" href="{SITE}robot.html">'
     )
     block = f'{MARK}<link rel="canonical" href="{robot_canon(lang)}">{alt}<style>{SWITCH_CSS}</style>{MARK}'
     html = html.replace('</head>', block + '</head>', 1)
     html = html.replace('<div class="brand-wrap">', robot_switch(lang) + '<div class="brand-wrap">', 1)
     html = re.sub(r'(<meta property="og:url" content=")[^"]*"', rf'\1{robot_canon(lang)}"', html, count=1)
-    loc = {'zh': 'zh_TW', 'en': 'en', 'ko': 'ko'}[lang]
+    loc = {'zh': 'zh_TW', 'en': 'en'}[lang]
     html = re.sub(r"locale:'(?:zh_TW|en|ko)'", f"locale:'{loc}'", html)
     return html
 
@@ -503,7 +502,7 @@ def point_robot_links():
     """Pages this step does not rebuild (support, tools, advertise) still embed href=\"/robot.html\".
     robot.html itself is skipped: its language switch must keep 中 on /robot.html."""
     n = 0
-    for lang in ('en', 'ko'):
+    for lang in ('en',):
         for f in glob.glob(f'{lang}/**/*.html', recursive=True) + glob.glob(f'{lang}/*.html'):
             if os.path.basename(f) == 'robot.html':
                 continue
@@ -516,13 +515,13 @@ def point_robot_links():
 
 
 def build_robot():
-    """Write en/robot.html and ko/robot.html from robot.html, and stamp hreflang on the Chinese page."""
+    """Write en/robot.html from robot.html, and stamp hreflang on the Chinese page."""
     src = open('robot.html', encoding='utf-8').read()
     zh = stamp_robot(src, 'zh')
     open('robot.html', 'w', encoding='utf-8').write(zh)
     left = {}
     han = re.compile(r'[\u4e00-\u9fff]')
-    for lang in ('en', 'ko'):
+    for lang in ('en',):
         base = re.sub(r'<nav class="lang-sw".*?</nav>', '', zh, count=1, flags=re.S)
         page = translate(base, robot_ui(lang))
         page = stamp_robot(page, lang)
@@ -549,11 +548,10 @@ def sitemap(gen):
     ralt = (
         f'<xhtml:link rel="alternate" hreflang="zh-Hant" href="{SITE}robot.html"/>'
         f'<xhtml:link rel="alternate" hreflang="en" href="{SITE}en/robot.html"/>'
-        f'<xhtml:link rel="alternate" hreflang="ko" href="{SITE}ko/robot.html"/>'
     )
     rows += ''.join(
         f'\n  <url><loc>{url}</loc><lastmod>{gen}</lastmod><changefreq>weekly</changefreq>{ralt}</url>'
-        for url in (f'{SITE}robot.html', f'{SITE}en/robot.html', f'{SITE}ko/robot.html'))
+        for url in (f'{SITE}robot.html', f'{SITE}en/robot.html'))
     sm = sm.replace('</urlset>', rows[1:] + '\n</urlset>')
     open('sitemap.xml', 'w', encoding='utf-8').write(dedupe_sitemap(sm))
 
@@ -584,7 +582,7 @@ def main():
     n_links = point_robot_links()
     gen = re.search(r'<loc>' + re.escape(SITE) + r'</loc><lastmod>([^<]+)', open('sitemap.xml', encoding='utf-8').read())
     sitemap(gen.group(1) if gen else '')
-    notice(f'語言版本：/zh/ /en/ /ko/ 已生成，股價檔 {n_px} 個，robot 連結改寫 {n_links} 頁'
+    notice(f'語言版本：/zh/ /en/ 已生成，股價檔 {n_px} 個，robot 連結改寫 {n_links} 頁'
            + ''.join(f'；{k} 版介面仍有 {n} 段中文未翻譯' for k, n in left.items() if n)
            + ''.join(f'；{k} robot 仍有 {n} 個漢字' for k, n in robot_left.items() if n))
 

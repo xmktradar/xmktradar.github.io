@@ -213,7 +213,7 @@ def test_threads_caps_lang_links_utm_and_half():
     for date in (SUMMER, WINTER):
         for name in intra.SLOT_NAMES:
             sl = _slot(name, date)
-            assert set(sl['threads']) == {'zh', 'en', 'ko'}
+            assert set(sl['threads']) == {'zh', 'en'}
             assert 'kr' not in sl['threads']
             take = intra.threads_take_link(date, name)
             for lang in share.LANGS:
@@ -238,8 +238,8 @@ def test_threads_caps_lang_links_utm_and_half():
                 else:
                     assert not node['url']
                     assert not urls, (name, lang, text)
-    assert total == 36
-    assert linked == total // 2 == 18, (linked, total)
+    assert total == 24
+    assert linked == total // 2 == 12, (linked, total)
 
 
 def test_fallback_no_pct_and_quotes_shape():
@@ -280,7 +280,6 @@ def test_fallback_no_pct_and_quotes_shape():
     assert stamp
     assert f'Site data as of {stamp}' in sl['x']['en']['text']
     assert f'網站數據截至 {stamp}' in sl['threads']['zh']['text']
-    assert f'사이트 데이터 {stamp} 기준' in sl['threads']['ko']['text']
     q_et, q_hkt = _quote_clocks(sl['quote_time'])
     for blob in (sl['x']['en']['text'], *(sl['threads'][lang]['text'] for lang in share.LANGS)):
         assert f'As of {q_et}' not in blob
@@ -370,11 +369,9 @@ def test_text_time_equals_quote_time():
     phrases = {
         'en': f'As of {et} ET ({hkt} HKT)',
         'zh': f'截至 {et} ET（{hkt} HKT）',
-        'ko': f'{et} ET ({hkt} HKT) 기준',
     }
     blobs = {'en': [sl['x']['en']['text'], sl['threads']['en']['text']]}
     blobs['zh'] = [sl['threads']['zh']['text']]
-    blobs['ko'] = [sl['threads']['ko']['text']]
     for lang, texts in blobs.items():
         for text in texts:
             assert phrases[lang] in text
@@ -391,7 +388,6 @@ def test_text_time_equals_quote_time():
     assert f'Site data as of {stamp}' in bare['x']['en']['text']
     assert f'Site data as of {stamp}' in bare['threads']['en']['text']
     assert f'網站數據截至 {stamp}' in bare['threads']['zh']['text']
-    assert f'사이트 데이터 {stamp} 기준' in bare['threads']['ko']['text']
     for blob in (bare['x']['en']['text'], *(bare['threads'][lang]['text'] for lang in share.LANGS)):
         assert bare['post_et'] not in blob
         assert bare['post_hkt'] not in blob

@@ -3,7 +3,7 @@
 Reads work/stats.json, the data in index.html and data/consensus-history.json.
 Writes work/og.json for tools/og.js when a picture needs drawing, points the master page's
 og:image at today's picture, and once a day (first update after 07:00 HKT) writes
-data/social-posts.json and social/index.html: posts in Chinese, English and Korean for Instagram
+data/social-posts.json and social/index.html: posts in Chinese and English for Instagram
 (the @thecrowdtape format), Threads, X, Reddit and Facebook, for the Grok bot to post with og/social-<lang>.png,
 plus a 1080x1920 Instagram Story picture og/story-<lang>.png and a native 1080x1350
 Instagram text-post picture og/ig-<lang>.png. Every version asks readers to support the site (PayPal).
@@ -37,7 +37,7 @@ schedule_why_atomic = three_why.schedule_why_atomic
 
 HTML = 'index.html'
 SITE = 'https://thecrowdtape.com/'
-LANGS = ('zh', 'en', 'ko')
+LANGS = ('zh', 'en')
 SOCIAL_HOUR = 7  # first update at or after this HKT hour writes the day's posts
 
 
@@ -1802,7 +1802,7 @@ def _xtri_html(sp):
                       '<button onclick="navigator.clipboard.writeText(this.previousElementSibling.value);this.textContent=\'已複製 ✓\'">複製</button>')
     if not blocks:
         return ''
-    return '<section class="xtri"><h2>X 三語帖</h2>' + ''.join(blocks) + '</section>'
+    return '<section class="xtri"><h2>X 雙語帖</h2>' + ''.join(blocks) + '</section>'
 
 
 def _ig_daily_html(sp):
@@ -1843,7 +1843,7 @@ def _ig_daily_html(sp):
 def social_page(sp):
     """A plain page for Tim to read the day's posts and save the pictures (not for search engines)."""
     rows = []
-    for lang, name in (('zh', '中文'), ('en', 'English'), ('ko', '한국어')):
+    for lang, name in (('zh', '中文'), ('en', 'English')):
         img = sp['images'][lang]
         story = sp['stories'][lang]
         p = sp['posts'][lang]
@@ -2539,7 +2539,7 @@ def build_weekly_thread(weekly, history, day):
     bulls = _side_rows(weekly.get('bull'), 'nb', None)
     bears = _side_rows(weekly.get('bear'), 'nr', None)
     langs = {}
-    for lang in ('en', 'zh', 'ko'):
+    for lang in ('en', 'zh'):
         posts = [_week_head(lang, weekly)]
         if bulls:
             posts.append(_week_list(lang, WEEK_COPY[lang]['bulls'], bulls))

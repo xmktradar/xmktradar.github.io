@@ -12,7 +12,7 @@ from html.parser import HTMLParser
 from sitedata import load, notice, read_json, save, work, write_json
 
 INBOX = 'data/super-grok-writeups.json'
-LANGS = {'zh': '', 'en': '_en', 'ko': '_ko'}
+LANGS = {'zh': '', 'en': '_en'}
 PERIODS = ('daily', 'weekly', 'monthly')
 DATE = re.compile(r'^\d{4}-\d{2}-\d{2}$')
 STAMP = re.compile(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$')

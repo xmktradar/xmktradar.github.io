@@ -1,7 +1,7 @@
 """Write the donation pages from tools/support.html (Chinese master).
 
 i18n/<lang>.json["support"] maps each Chinese string to its translation.
-Writes support/index.html (Chinese) and zh|en|ko/support/index.html, and lists
+Writes support/index.html (Chinese) and zh|en/support/index.html, and lists
 the three language URLs in sitemap.xml.
 """
 import json
@@ -11,7 +11,7 @@ import re
 from build_langs import with_root_redirect
 
 SITE = 'https://thecrowdtape.com/'
-LANGS = {'zh': 'zh-Hant', 'en': 'en', 'ko': 'ko'}
+LANGS = {'zh': 'zh-Hant', 'en': 'en'}
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HAN = re.compile(r'[\u4e00-\u9fff]')
 
@@ -91,7 +91,7 @@ def main():
     zh = page(template, 'zh')
     write('support/index.html', with_root_redirect(zh, 'support'))
     write('zh/support/index.html', zh)
-    for lang in ('en', 'ko'):
+    for lang in ('en',):
         html = page(template, lang)
         body = re.sub(r'<nav class="lang".*?</nav>', '', html, flags=re.S)
         left = HAN.findall(body)

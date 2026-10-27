@@ -12,12 +12,12 @@ const path = require('path');
   art.on('pageerror', e => errs.push(e.message));
   await art.goto('file://' + path.resolve(__dirname, 'macro_week.html'), { waitUntil: 'networkidle' });
   fs.mkdirSync('og', { recursive: true });
-  for (const lang of ['zh', 'en', 'ko']) {
+  for (const lang of ['zh', 'en']) {
     for (const [size, h, out] of [['feed', 1350, `og/macro-${lang}.png`], ['story', 1920, `og/macro-story-${lang}.png`]]) {
       await art.setViewportSize({ width: 1080, height: h });
       await art.evaluate(([l, d, s]) => render(l, d, s), [lang, job, size]);
       await art.evaluate(async () => {
-        const want = ['900 60px "Noto Sans TC"', '900 60px "Noto Sans KR"', '700 30px "IBM Plex Mono"'];
+        const want = ['900 60px "Noto Sans TC"', '700 30px "IBM Plex Mono"'];
         const t = new Promise(r => setTimeout(r, 20000));
         await Promise.race([Promise.all(want.map(f => document.fonts.load(f, document.body.innerText))), t]);
         await document.fonts.ready;

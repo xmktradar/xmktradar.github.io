@@ -231,12 +231,10 @@ def test_apply_idempotent_and_fills_tags():
     macro = {
         'date': '2026-10-31',
         'images': {'zh': 'https://thecrowdtape.com/og/macro-zh.png',
-                   'en': 'https://thecrowdtape.com/og/macro-en.png',
-                   'ko': 'https://thecrowdtape.com/og/macro-ko.png'},
+                   'en': 'https://thecrowdtape.com/og/macro-en.png'},
         'posts': {
             'zh': {'instagram': '🌐 本週宏觀｜201 個帳號\n#美股 #宏觀經濟 #聯儲局 #港人投資 #美股投資 #USStocks #Macro #StockMarket #投資'},
             'en': {'instagram': 'This week in macro · 201 accounts\n#Macro #StockMarket #USStocks #Fed #Economy #Investing #FinTwit #WallStreet'},
-            'ko': {'instagram': '이번 주 매크로 · 201개 계정\n#매크로 #미국주식 #미장 #연준 #경제 #투자 #USStocks #주식'},
         },
     }
     ig_boost.apply_macro_obj(macro, root=ROOT)
@@ -288,7 +286,6 @@ def test_key_line_preserves_body_and_macro_date():
             'posts': {
                 'zh': {'instagram': raw},
                 'en': {'instagram': 'Top 2 bullish\n\n・$RSP 3 accounts\n・$WMT 2 accounts\n\n・$QQQ 5 accounts\n#StockMarket'},
-                'ko': {'instagram': '강세 상위 2종목\n\n・$RSP 계정 3개\n・$WMT 계정 2개\n\n・$QQQ 계정 5개\n#미국주식'},
             },
         },
         'images': {'zh': 'https://thecrowdtape.com/og/social-zh.png?v=1'},
@@ -303,9 +300,6 @@ def test_key_line_preserves_body_and_macro_date():
     en = data['top5']['posts']['en']['instagram']
     assert en.split('\n', 1)[0] == 'Most bullish $RSP (3 accounts) · most bearish $QQQ (5 accounts)'
     assert '・$RSP 3 accounts' in en and '・$WMT 2 accounts' in en
-    ko = data['top5']['posts']['ko']['instagram']
-    assert ko.split('\n', 1)[0] == '가장 강세 $RSP (계정 3개) · 가장 약세 $QQQ (계정 5개)'
-    assert '・$RSP 계정 3개' in ko and '・$WMT 계정 2개' in ko
 
     week = {
         'top': ['other'],
@@ -313,7 +307,6 @@ def test_key_line_preserves_body_and_macro_date():
     }
     assert macro_week.macro_ig_key_line('zh', week) == '本週宏觀：最多人講「其他」（利好 10・利淡 11）'
     assert macro_week.macro_ig_key_line('en', week) == 'This week in macro: most discussed "Other" (bullish 10 · bearish 11)'
-    assert macro_week.macro_ig_key_line('ko', week) == '이번 주 매크로: 가장 많이 다룬 「기타」 (호재 10 · 악재 11)'
     # 20:00 HKT Saturday stays that Saturday in KST. A 23:30 HKT clock would be the next day.
     assert date_kst.macro_post_date_kst('2026-10-31') == '2026-10-31'
     assert date_kst.macro_post_date_kst('2026-10-31') != '2026-10-25'
@@ -327,12 +320,10 @@ def test_key_line_preserves_body_and_macro_date():
         'top': ['other'],
         'themes': [{'theme': 'other', 'bull': 10, 'bear': 11, 'neu': 19, 'n': 40}],
         'images': {'zh': 'https://thecrowdtape.com/og/macro-zh.png',
-                   'en': 'https://thecrowdtape.com/og/macro-en.png',
-                   'ko': 'https://thecrowdtape.com/og/macro-ko.png'},
+                   'en': 'https://thecrowdtape.com/og/macro-en.png'},
         'posts': {
             'zh': {'instagram': old_zh},
             'en': {'instagram': 'This week in macro · 201 accounts\n\n1️⃣ Other: bullish 10 · bearish 11\n#Macro #StockMarket #USStocks #Fed #Economy'},
-            'ko': {'instagram': '이번 주 매크로 · 201개 계정\n\n1️⃣ 기타: 호재 10 · 악재 11\n#매크로 #미국주식 #미장'},
         },
     }
     ig_boost.apply_macro_obj(macro, root=ROOT)

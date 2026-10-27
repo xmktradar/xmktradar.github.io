@@ -1,7 +1,7 @@
 """Language-matched links in auto social posts.
 
 Every thecrowdtape.com link in a post uses that post's language
-(/zh/, /en/, /ko/, including /<lang>/stock/<T>/). UTM tags stay.
+(/zh/, /en/, including /<lang>/stock/<T>/). UTM tags stay.
 Trilingual X posts put one link on each language line and stay within
 280 (X counts each URL as 23).
 
@@ -38,12 +38,6 @@ POSTS = {
         '・2 accounts: $META, $BE\n\n'
         'https://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=daily\n'
         '⚠️ Not investment advice')},
-    'ko': {'x': (
-        '10/20 X 인플루언서 컨센서스: $AMZN 계정 4개 동시 강세 📊\n\n'
-        '・계정 4개: $AMZN\n'
-        '・계정 2개: $META, $BE\n\n'
-        'https://thecrowdtape.com/ko/?utm_source=x&utm_medium=social&utm_campaign=daily\n'
-        '⚠️ 투자 조언 아님')},
 }
 
 
@@ -86,9 +80,7 @@ def assert_tri(text, campaign):
             assert i + 1 < len(lines), text
             head, url, i = s, lines[i + 1].strip(), i + 2
         assert url.startswith('https://'), (head, url)
-        if re.search(r'[\uac00-\ud7af]', head):
-            lang = 'ko'
-        elif re.search(r'[\u4e00-\u9fff]', head):
+        if re.search(r'[\u4e00-\u9fff]', head):
             lang = 'zh'
         else:
             lang = 'en'
@@ -96,7 +88,7 @@ def assert_tri(text, campaign):
         assert 'utm_source=x' in url and 'utm_medium=social' in url, url
         assert f'utm_campaign={campaign}' in url, url
         seen.append(lang)
-    assert seen == ['zh', 'en', 'ko'], seen
+    assert seen == ['zh', 'en'], seen
     found = []
     for u in URL_RE.findall(text):
         for lang in share.LANGS:
@@ -105,7 +97,7 @@ def assert_tri(text, campaign):
                 break
         else:
             raise AssertionError(u)
-    assert found == ['zh', 'en', 'ko'], found
+    assert found == ['zh', 'en'], found
     # Each URL counts 23, not its real length.
     bare = URL_RE.sub('', text)
     assert share.xlen(text) == share.xlen(bare) + 23 * len(found), (share.xlen(text), share.xlen(bare), found)
@@ -146,11 +138,11 @@ def test_single_language():
 
 def test_trilingual_afterclose_and_premarket():
     text, form = share.trilingual_text(POSTS, 'afterclose')
-    assert form == 'short', form
+    assert form in ('full', 'short'), form
     assert_tri(text, 'afterclose')
     heads = share._x_headlines(text)
-    assert set(heads) == {'zh', 'en', 'ko'}
-    assert '$AMZN' in heads['zh'] and '$AMZN' in heads['en'] and '$AMZN' in heads['ko']
+    assert set(heads) == {'zh', 'en'}
+    assert '$AMZN' in heads['zh'] and '$AMZN' in heads['en']
 
     sp = {
         'date': DAY,
@@ -163,8 +155,8 @@ def test_trilingual_afterclose_and_premarket():
     pm, pm_form = share.premarket_text(sp)
     assert pm_form == 'short'
     assert_tri(pm, 'premarket')
-    assert '開市前' in pm and 'pre-market' in pm and '개장 전' in pm
-    assert '各 3' in pm and 'each' in pm and '각각' in pm
+    assert '開市前' in pm and 'pre-market' in pm
+    assert '各 3' in pm and 'each' in pm
     assert share._minus_urls(pm) != share._minus_urls(text)
 
     # No x_facts: framed headlines, still one link per language.
@@ -173,19 +165,18 @@ def test_trilingual_afterclose_and_premarket():
     assert bare.split('\n')[0].startswith('10/20 開市前：')
 
 
-def test_long_headlines_keep_three_links():
+def test_long_headlines_keep_both_links():
     # Script sits next to the ticker so shortening the tail still leaves a language marker.
     fat = {
         'zh': {'x': '10/20 $NVDA 看好' + '甲' * 200},
         'en': {'x': 'Oct 20 $NVDA bullish ' + 'word ' * 80},
-        'ko': {'x': '10/20 $NVDA 강세' + '가' * 200},
     }
     text, _ = share.trilingual_text(fat, 'afterclose')
     assert_tri(text, 'afterclose')
 
 
 def test_stock_page_links():
-    for lang, ticker in (('zh', 'NVDA'), ('en', 'AAPL'), ('ko', 'TSLA')):
+    for lang, ticker in (('zh', 'NVDA'), ('en', 'AAPL')):
         raw = share.stock_url(lang, '$' + ticker.lower())
         assert raw == f'https://thecrowdtape.com/{lang}/stock/{ticker}/', raw
         tagged = tag_url(raw, 'x', 'tutorial')
@@ -196,7 +187,6 @@ def test_stock_page_links():
     # A root or wrong-language stock path is rewritten under the post's language.
     assert share.page_url('zh', '/stock/AMD/') == 'https://thecrowdtape.com/zh/stock/AMD/'
     assert share.page_url('en', 'ko/stock/AMD/') == 'https://thecrowdtape.com/en/stock/AMD/'
-    assert share.page_url('ko', 'stock/QQQ') == 'https://thecrowdtape.com/ko/stock/QQQ/'
     assert 'thecrowdtape.com/stock/' not in share.page_url('zh', 'stock/NVDA/')
 
     for lang in share.LANGS:
@@ -230,7 +220,7 @@ def main():
         test_xlen_url_is_23()
         test_single_language()
         test_trilingual_afterclose_and_premarket()
-        test_long_headlines_keep_three_links()
+        test_long_headlines_keep_both_links()
         test_stock_page_links()
         test_other_generators()
         print('test_langlinks: single-language, trilingual, stock, carousel, macro, tutorial ok')

@@ -14,7 +14,7 @@ os.environ['SOCIAL_HISTORY'] = os.path.join(os.environ['WORK_DIR'], 'social-hist
 import share  # noqa: E402
 
 URL = 'https://thecrowdtape.com'
-TAG = {'zh': '#美股', 'en': '#StockMarket', 'ko': '#미국주식'}
+TAG = {'zh': '#美股', 'en': '#StockMarket'}
 
 
 def _writeup():
@@ -65,10 +65,10 @@ def _assert_atomic(items):
     assert items, 'atomic posts missing'
     by = _by_lang(items)
     assert [p['lang'] for p in items] == (
-        ['zh'] * len(by['zh']) + ['en'] * len(by['en']) + ['ko'] * len(by['ko']))
+        ['zh'] * len(by['zh']) + ['en'] * len(by['en']))
     n = len(by['zh'])
     assert all(4 <= len(rows) <= 6 for rows in by.values())
-    assert len(by['en']) == n and len(by['ko']) == n
+    assert len(by['en']) == n
     assert [p['slot_kst'] for p in by['zh']] == list(share.ATOMIC_TIMES[:n])
     assert len(set(share.ATOMIC_TIMES[:n])) == n
     texts = []

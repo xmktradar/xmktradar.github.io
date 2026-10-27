@@ -23,7 +23,7 @@ from sitedata import load, notice, now_hk, read_json, work, write_json
 from share import fit_threads, page_url, sanitize_instagram, xlen
 
 SITE = 'https://thecrowdtape.com/'
-LANGS = ('zh', 'en', 'ko')
+LANGS = ('zh', 'en')
 FREEZE_HOUR = 15
 MIN_STANCED = 3  # a theme needs this many accounts with a stance to be one of the week's top 3
 THEMES = ('rates', 'inflation', 'jobs', 'growth', 'yields', 'fx', 'energy', 'policy', 'other')
@@ -225,7 +225,7 @@ def posts(lang, w, rng):
 
 def page(mw):
     rows = []
-    for lang, name in (('zh', '中文'), ('en', 'English'), ('ko', '한국어')):
+    for lang, name in (('zh', '中文'), ('en', 'English')):
         img, story, p = mw['images'][lang], mw['stories'][lang], mw['posts'][lang]
         box = lambda title, text, n: (f'<h3>{title}</h3><textarea readonly rows="{n}">{html.escape(text)}</textarea>'
                                       '<button onclick="navigator.clipboard.writeText(this.previousElementSibling.value);this.textContent=\'已複製 ✓\'">複製</button>')
@@ -233,7 +233,7 @@ def page(mw):
 {box('Instagram', p['instagram'], 18)}{box('Threads', p['threads'], 10)}{box('X', p['x'], 7)}
 {box('Reddit 標題', p['reddit']['title'], 2)}{box('Reddit 內文', p['reddit']['body'], 14)}{box('Facebook', p['facebook'], 18)}
 {box('IG Story hashtag', p['story'], 2)}<h3>IG Story（1080×1920）</h3><a href="{html.escape(story)}" download><img class="story" src="{html.escape(story)}" alt=""></a></section>''')
-    state = ('今日係星期六，數字已經定咗，20:00 中文、20:30 英文、21:00 韓文照貼。' if mw['frozen'] else
+    state = ('今日係星期六，數字已經定咗，20:00 中文、20:30 英文照貼。' if mw['frozen'] else
              f"預覽：{mw['date']}（星期六）15:00 後第一次更新先會定數字，之前每日更新一次。")
     return f'''<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" href="/favicon.ico" sizes="any"><link rel="apple-touch-icon" href="/apple-touch-icon.png">

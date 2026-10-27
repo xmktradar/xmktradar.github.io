@@ -8,7 +8,7 @@ Served pages stay under 1MB: the first screen is inline, everything else is in d
 
 --slim on an already slim page restores first, so it is safe to run twice.
 restore(slim(x)) equals x as parsed JSON (key order included).
-Default files: index.html, zh/index.html, en/index.html, ko/index.html.
+Default files: index.html, zh/index.html, en/index.html.
 """
 import glob
 import json
@@ -32,7 +32,6 @@ PAGES = [
     ('index.html', 'master'),
     ('zh/index.html', 'zh'),
     ('en/index.html', 'en'),
-    ('ko/index.html', 'ko'),
 ]
 MAX_HTML = 990_000  # served homepage must be < 1MB
 INLINE_TARGET = 600_000  # soft budget for the served homepage; inline posts are trimmed to stay under it, MAX_HTML stays the hard limit

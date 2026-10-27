@@ -34,10 +34,10 @@ def U(path):
 SITEMAP = [
     U('zh/advertise/'),
     U('en/advertise/'),
-    U('ko/advertise/'),
+    U('zh/tools/'),
     U('zh/'),
     U('en/'),
-    U('ko/'),
+    U('en/tools/'),
     U('zh/support/'),
     U('en/about/'),
     U('newsletter/issue-1/'),
@@ -48,8 +48,8 @@ SITEMAP = [
 
 # Priority order, independent of where the day's window starts.
 ORDERED = [
-    U('zh/'), U('en/'), U('ko/'),
-    U('zh/advertise/'), U('en/advertise/'), U('ko/advertise/'),
+    U('zh/'), U('en/'),
+    U('zh/advertise/'), U('en/advertise/'), U('zh/tools/'), U('en/tools/'),
     U('zh/support/'), U('en/about/'), U('newsletter/issue-1/'),
     U('zh/stock/SPY/'), U('en/stock/SPY/'), U('zh/stock/QQQ/'),
 ]
@@ -74,10 +74,10 @@ class FakeResp:
 
 def test_priority_order():
     assert I.order_urls(SITEMAP) == ORDERED
-    # Homes stay zh, en, ko even when the sitemap lists them the other way. Duplicates drop.
-    mixed = [U('ko/'), U('en/'), U('zh/'), U('en/'), U('tools/'), U('zh/stock/AAA/'), U('en/stock/AAA/')]
+    # Homes stay zh, en even when the sitemap lists them the other way. Duplicates drop.
+    mixed = [U('en/'), U('zh/'), U('en/'), U('tools/'), U('zh/stock/AAA/'), U('en/stock/AAA/')]
     assert I.order_urls(mixed) == [
-        U('zh/'), U('en/'), U('ko/'), U('tools/'), U('zh/stock/AAA/'), U('en/stock/AAA/'),
+        U('zh/'), U('en/'), U('tools/'), U('zh/stock/AAA/'), U('en/stock/AAA/'),
     ]
 
 
@@ -110,12 +110,12 @@ def test_window_is_150_and_wraps():
 
 
 def test_cycle_covers_every_url_about_once():
-    # 3 homes + 19 other + 1125 stock = 1147. ceil(1147/150) = 8, same as the live sitemap.
-    urls = [U('ko/'), U('en/'), U('zh/')]
+    # 2 homes + 20 other + 1125 stock = 1147. ceil(1147/150) = 8, same as the live sitemap.
+    urls = [U('page/19/'), U('en/'), U('zh/')]
     urls += [U(f'page/{i}/') for i in range(19)]
     urls += [U(f'zh/stock/T{i:04d}/') for i in range(1125)]
     ordered = I.order_urls(urls)
-    assert ordered[:4] == [U('zh/'), U('en/'), U('ko/'), U('page/0/')]
+    assert ordered[:4] == [U('zh/'), U('en/'), U('page/19/'), U('page/0/')]
     assert ordered[22] == U('zh/stock/T0000/')
     days = math.ceil(len(ordered) / I.BACKFILL)
     assert days == 8

@@ -6,8 +6,8 @@
 // Every link out of the badge carries utm_source=embed&utm_medium=widget&utm_campaign=badge.
 const SITE = 'https://thecrowdtape.com/';
 const UTM = 'utm_source=embed&utm_medium=widget&utm_campaign=badge';
-const FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">';
-const FONT_VARS = ':root{--f-display:"Noto Serif TC","Source Han Serif TC","Songti TC","PMingLiU",serif;--f-body:"Noto Sans TC","PingFang TC","Noto Sans CJK TC","Microsoft JhengHei",system-ui,sans-serif;--f-data:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}html[lang=ko]{--f-body:"Noto Sans KR","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;--f-display:"Noto Sans KR","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}';
+const FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">';
+const FONT_VARS = ':root{--f-display:"Noto Serif TC","Source Han Serif TC","Songti TC","PMingLiU",serif;--f-body:"Noto Sans TC","PingFang TC","Noto Sans CJK TC","Microsoft JhengHei",system-ui,sans-serif;--f-data:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}';
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
 function card(t, slug, name, c, day) {
@@ -46,16 +46,13 @@ const COPY = {
   en: { lang: 'en', title: 'Embed a crowd sentiment card on your site', desc: 'Free embeddable card showing how tracked X accounts lean on any US stock. Copy one line of iframe code; it updates every 4 hours.',
     h: 'Embed a sentiment card', p1: 'Paste this one line into your site, blog or forum post to show the latest count of bullish and bearish accounts on a stock (each account counted once, by its latest view; updated every 4 hours).',
     p2: 'Replace NVDA in the URL with any ticker (upper case), e.g. TSLA or AAPL. The card is 320×120 and contains no JavaScript.', ex: 'Preview', back: 'Back to the dashboard', note: 'The card summarises public posts only. Not investment advice.' },
-  ko: { lang: 'ko', title: '내 사이트에 강세/약세 카드 넣기', desc: 'X 추적 계정들의 미국 주식 강세/약세 집계 카드를 무료로 내 사이트에 넣으세요. iframe 코드 한 줄이면 되고 4시간마다 업데이트됩니다.',
-    h: '강세/약세 카드 퍼가기', p1: '아래 코드 한 줄을 사이트, 블로그, 커뮤니티 글에 붙여 넣으면 해당 종목의 최신 강세·약세 계정 수가 표시됩니다 (계정마다 최신 의견 하나만 집계, 4시간마다 업데이트).',
-    p2: 'URL의 NVDA를 원하는 티커(대문자)로 바꾸세요. 예: TSLA, AAPL. 카드 크기는 320×120이며 JavaScript가 없습니다.', ex: '미리보기', back: '대시보드로 돌아가기', note: '카드는 공개 게시물만 정리하며 투자 조언이 아닙니다.' },
 };
 
 function howto(lang, ga, sample) {
   const L = COPY[lang];
   const code = `<iframe src="${SITE}embed/${sample}.html" width="320" height="120" loading="lazy"></iframe>`;
   const alt = Object.entries(COPY).map(([k, v]) => `<link rel="alternate" hreflang="${v.lang}" href="${SITE}${k}/embed/">`).join('');
-  const sw = Object.entries({ zh: '中', en: 'EN', ko: '한' }).map(([k, n]) => `<a href="/${k}/embed/" hreflang="${COPY[k].lang}"${k === lang ? ' aria-current="page"' : ''}>${n}</a>`).join(' ');
+  const sw = Object.entries({ zh: '中', en: 'EN' }).map(([k, n]) => `<a href="/${k}/embed/" hreflang="${COPY[k].lang}"${k === lang ? ' aria-current="page"' : ''}>${n}</a>`).join(' ');
   return `<!doctype html>
 <html lang="${L.lang}"><head>
 ${ga}

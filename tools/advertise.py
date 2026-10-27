@@ -17,7 +17,7 @@ JSON keys that become a row or block when present:
   top_countries                  country line, names translated per language
   updated                        更新日期：{updated}
 
-Writes advertise/index.html (Chinese) and zh|en|ko/advertise/index.html, and
+Writes advertise/index.html (Chinese) and zh|en/advertise/index.html, and
 lists the three language URLs in sitemap.xml.
 """
 import html as html_mod
@@ -29,7 +29,7 @@ from urllib.parse import quote
 from build_langs import with_root_redirect
 
 SITE = 'https://thecrowdtape.com/'
-LANGS = {'zh': 'zh-Hant', 'en': 'en', 'ko': 'ko'}
+LANGS = {'zh': 'zh-Hant', 'en': 'en'}
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HAN = re.compile(r'[\u4e00-\u9fff]')
 MAIL = 'grokbottimli@gmail.com'
@@ -41,7 +41,7 @@ COUNTRY_ZH = {
     'Taiwan': '台灣',
     'Hong Kong': '香港',
 }
-LANG_LABEL = {'zh': '中文', 'en': '英文', 'ko': '韓文'}
+LANG_LABEL = {'zh': '中文', 'en': '英文'}
 
 
 def warn(msg):
@@ -177,7 +177,7 @@ def lang_block(stats):
     if not isinstance(pct, dict) or not pct:
         return ''
     rows = []
-    for code in ('zh', 'en', 'ko'):
+    for code in ('zh', 'en'):
         if code in pct and pct[code] is not None:
             rows.append(li(LANG_LABEL[code], html_mod.escape(pct_text(pct[code]))))
     for code, val in pct.items():
@@ -329,7 +329,6 @@ def main():
     write('advertise/index.html', with_root_redirect(pages['zh'], 'advertise'))
     write('zh/advertise/index.html', pages['zh'])
     write('en/advertise/index.html', pages['en'])
-    write('ko/advertise/index.html', pages['ko'])
     sitemap()
 
 

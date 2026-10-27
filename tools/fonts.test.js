@@ -7,8 +7,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const SKIP = new Set(['node_modules', '__pycache__', '.git', 'data', 'px', 'av', 'og', 'docs']);
 const OLD = /var\(\s*--(?:serif|mono|sans)\s*\)|(?:^|[^\w-])--(?:serif|mono|sans)\s*:/;
-const SHEET = 'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap';
-const KO = /html\[lang=ko\][^{]*\{[^}]*--f-body:"Noto Sans KR"[^}]*--f-display:"Noto Sans KR"/;
+const SHEET = 'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&family=IBM+Plex+Mono:wght@400;500;600&display=swap';
 
 function walk(dir, out) {
   for (const name of fs.readdirSync(dir)) {
@@ -43,8 +42,7 @@ function assertFonts(file) {
   assert.ok(s.includes(SHEET), file + ' missing font stylesheet');
   assert.ok(s.includes('--f-data:'), file + ' missing --f-data');
   assert.ok(s.includes('"IBM Plex Mono"'), file + ' data stack does not name IBM Plex Mono');
-  assert.ok(KO.test(s), file + ' missing html[lang=ko] Noto Sans KR for body and display');
-  assert.ok(!/Noto Serif KR/.test(s), file + ' names Noto Serif KR');
+  assert.ok(!/Noto S(?:ans|erif) KR|lang=ko/.test(s), file + ' still loads or styles Korean (removed 2026-10-27)');
   const csp = s.match(/Content-Security-Policy[^>]*>/i);
   if (csp) {
     assert.ok(/fonts\.googleapis\.com/.test(csp[0]) && /fonts\.gstatic\.com/.test(csp[0]), file + ' CSP would block Google Fonts');
@@ -56,18 +54,18 @@ function assertFonts(file) {
 test('homepage, about, support, tools, stock and embed pages load the fonts', () => {
   const pages = [
     'index.html', 'robot.html', '404.html',
-    'zh/index.html', 'en/index.html', 'ko/index.html',
-    'about/index.html', 'zh/about/index.html', 'en/about/index.html', 'ko/about/index.html',
-    'support/index.html', 'zh/support/index.html', 'en/support/index.html', 'ko/support/index.html',
-    'tools/index.html', 'zh/tools/index.html', 'en/tools/index.html', 'ko/tools/index.html',
-    'newsletter/index.html', 'zh/newsletter/index.html', 'en/newsletter/index.html', 'ko/newsletter/index.html',
+    'zh/index.html', 'en/index.html',
+    'about/index.html', 'zh/about/index.html', 'en/about/index.html',
+    'support/index.html', 'zh/support/index.html', 'en/support/index.html',
+    'tools/index.html', 'zh/tools/index.html', 'en/tools/index.html',
+    'newsletter/index.html', 'zh/newsletter/index.html', 'en/newsletter/index.html',
     'newsletter/issue-1/index.html',
-    'advertise/index.html', 'zh/advertise/index.html', 'en/advertise/index.html', 'ko/advertise/index.html',
-    'zh/embed/index.html', 'en/embed/index.html', 'ko/embed/index.html',
+    'advertise/index.html', 'zh/advertise/index.html', 'en/advertise/index.html',
+    'zh/embed/index.html', 'en/embed/index.html',
     'tools/about.html', 'tools/support.html', 'tools/toolspage.html', 'tools/newsletter.html', 'tools/advertise.html',
     'tools/embed.js', 'tools/newsletter.py', 'tools/page404.py',
   ];
-  for (const lang of ['zh', 'en', 'ko']) {
+  for (const lang of ['zh', 'en']) {
     const dir = path.join(ROOT, lang, 'stock');
     const name = fs.existsSync(path.join(dir, 'NVDA', 'index.html'))
       ? 'NVDA'

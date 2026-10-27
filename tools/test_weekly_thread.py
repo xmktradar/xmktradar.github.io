@@ -61,14 +61,13 @@ def test_friday_only():
     out = share.build_weekly_thread(WEEKLY, HISTORY, FRIDAY)
     assert out['date'] == FRIDAY
     assert out['range'] == {'from': '2026-10-17', 'to': '2026-10-23'}
-    assert set(out['langs']) == {'en', 'zh', 'ko'}
+    assert set(out['langs']) == {'en', 'zh'}
     assert 'writeup-input.json' in out['note'] and 'consensus-history.json' in out['note']
     heads = {
         'zh': '本週共識變化',
         'en': "This week's consensus changes",
-        'ko': '이번 주 컨센서스 변화',
     }
-    for lang in ('en', 'zh', 'ko'):
+    for lang in ('en', 'zh'):
         posts = _posts(out, lang)
         _last(out, lang)
         assert posts[0].startswith(heads[lang])

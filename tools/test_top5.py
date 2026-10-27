@@ -22,8 +22,8 @@ import share  # noqa: E402
 URL_RE = re.compile(r'https://thecrowdtape\.com[^\s)\]"\']*')
 TICK_RE = re.compile(r'\$([A-Z0-9.\-]+)')
 SRC = {'x': 'x', 'instagram': 'instagram', 'threads': 'threads', 'facebook': 'facebook'}
-NONE = {'zh': '今日暫無', 'en': 'None today', 'ko': '오늘 없음'}
-TAG = {'zh': '#美股', 'en': '#StockMarket', 'ko': '#미국주식'}
+NONE = {'zh': '今日暫無', 'en': 'None today'}
+TAG = {'zh': '#美股', 'en': '#StockMarket'}
 DAY = '2026-10-21'
 MADE = '2026-10-21 07:05'
 FRM, TO = '2026-10-21T00:00', '2026-10-21T23:59'
@@ -47,8 +47,6 @@ def _daily(bull, bear):
 def _acc(lang, n):
     if lang == 'zh':
         return f'{n} 個帳號'
-    if lang == 'ko':
-        return f'계정 {n}개'
     return f'{n} account' if n == 1 else f'{n} accounts'
 
 
@@ -224,7 +222,6 @@ def test_job_file():
     assert outs == [
         ('zh', 'portrait', 'og/top5-zh.png'), ('zh', 'square', 'og/top5-zh-sq.png'),
         ('en', 'portrait', 'og/top5-en.png'), ('en', 'square', 'og/top5-en-sq.png'),
-        ('ko', 'portrait', 'og/top5-ko.png'), ('ko', 'square', 'og/top5-ko-sq.png'),
     ]
     assert raw['jobs'][0]['data']['bull'] == [{'t': 'AAA', 'n': 2}]
     assert raw['jobs'][0]['data']['bear'] == [{'t': 'QQQ', 'n': 4}]

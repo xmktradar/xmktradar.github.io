@@ -134,7 +134,6 @@ def test_top5_ig_key_line_wording():
     bears = [{'t': 'QQQ', 'n': 5}]
     assert share.top5_ig_key_line('zh', bulls, bears) == '最看好 $RSP（3 個帳號）・最看淡 $QQQ（5 個帳號）'
     assert share.top5_ig_key_line('en', bulls, bears) == 'Most bullish $RSP (3 accounts) · most bearish $QQQ (5 accounts)'
-    assert share.top5_ig_key_line('ko', bulls, bears) == '가장 강세 $RSP (계정 3개) · 가장 약세 $QQQ (계정 5개)'
     assert share.top5_ig_key_line('en', bulls, []) == 'Most bullish $RSP (3 accounts)'
     assert share.top5_ig_key_line('en', [{'t': 'RSP', 'n': 1}], []) == 'Most bullish $RSP (1 account)'
     assert share.top5_ig_key_line('en', [], []) == ''

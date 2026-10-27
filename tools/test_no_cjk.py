@@ -1,13 +1,13 @@
-"""en/ and ko/ pages must not show Chinese (Han) characters in UI text.
+"""en/ pages must not show Chinese (Han) characters in UI text.
 
 Run after tools/build_langs.py (the Build check and Update site do).  Checks:
-  1. every en/ko HTML page (home, tools, about, advertise, newsletter, support, 404, stock pages, ...):
+  1. every en HTML page (home, tools, about, advertise, newsletter, support, 404, stock pages, ...):
      visible text and title/alt/aria-label/placeholder/content attributes, with <script>/<style>/comments removed;
-  2. the en/ko homepage app code: no untranslated Chinese UI fragment (build_langs.fragments minus code values).
+  2. the en homepage app code: no untranslated Chinese UI fragment (build_langs.fragments minus code values).
 Exempt (listed with --list):
   - the language switch (<nav class="lang-sw"> or a link with hreflang="zh-Hant": "中" names the Chinese version);
   - third-party content: a post's own original text and account display names, i.e. any text that appears
-    in the page data fields posts[].text / orig / name / zh_summary (en/ko: untranslated original) or accounts[].name.
+    in the page data fields posts[].text / orig / name / zh_summary (en: untranslated original) or accounts[].name.
 """
 import glob, html, json, os, re, sys
 sys.path.insert(0, os.path.dirname(__file__))
@@ -54,7 +54,7 @@ def segments(page):
 
 def run(show=False):
     bad, ex = [], []
-    for lang in ('en', 'ko'):
+    for lang in ('en',):
         blob = exempt_blob(lang)
         for f in sorted(glob.glob(f'{lang}/**/*.html', recursive=True)):
             for seg in segments(open(f, encoding='utf-8').read()):

@@ -18,7 +18,7 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PAGES = ['index.html', 'zh/index.html', 'en/index.html', 'ko/index.html']
+PAGES = ['index.html', 'zh/index.html', 'en/index.html']
 EXACT = '<script type="application/json" id="dash-data">'
 ANY_TAG = re.compile(r'<script\b[^>]*\bid="dash-data"[^>]*>')
 GLOBALS = ['consGroups', 'rawIn', 'postsIn', 'dailyWindow', 'render', 'paintChrome']

@@ -21,9 +21,8 @@ test('multi-ticker summary not attributed to unmentioned ticker',()=>{
  const r2=RUX.reasonOf([{s:'bull',why:'$AAPL 財報強。$MSFT 估值合理。'}],'MSFT');
  assert.equal(r2.bull.k,'val');
 });
-test('english and korean keywords',()=>{
+test('english keywords',()=>{
  assert.equal(RUX.reasonOf([{s:'bear',why:'AMD looks overvalued here.'}],'AMD').bear.k,'val');
- assert.equal(RUX.reasonOf([{s:'bull',why:'삼성 실적 개선 기대'}],'005930').bull.k,'earn');
 });
 const C=(bull,bear,neu,accs,mentions)=>({bull,bear,neu,none:0,accs,mentions});
 test('three lines computed from data',()=>{

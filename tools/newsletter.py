@@ -7,7 +7,7 @@ The unsubscribe line and any {{...}} placeholders are dropped. The rest of the
 issue text is kept verbatim. $TICKER links to /en/stock/<T>/ only when that
 page exists. @handle links to https://x.com/<handle>.
 
-Writes newsletter/index.html (Chinese), zh|en|ko/newsletter/index.html, and
+Writes newsletter/index.html (Chinese), zh|en/newsletter/index.html, and
 newsletter/<slug>/index.html. Sitemap: three language archive URLs plus each issue.
 """
 import html
@@ -20,7 +20,7 @@ from build_langs import with_root_redirect
 from sitedata import BLOCK, read_json
 
 SITE = 'https://thecrowdtape.com/'
-LANGS = {'zh': 'zh-Hant', 'en': 'en', 'ko': 'ko'}
+LANGS = {'zh': 'zh-Hant', 'en': 'en'}
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HAN = re.compile(r'[\u4e00-\u9fff]')
 FAQ_LD = re.compile(r'(<script type="application/ld\+json" id="faq-ld">)(.*?)(</script>)', re.S)
@@ -203,7 +203,7 @@ ISSUE_SHELL = '''<!DOCTYPE html>
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
 :root{{
   --bg:#fbf6ec; --surface:#fffaf2; --ink:#3b2f24; --muted:#87776a; --line:#ece1cc;
@@ -215,7 +215,6 @@ ISSUE_SHELL = '''<!DOCTYPE html>
 }}
 *{{box-sizing:border-box}}
 html{{overflow-x:clip}}
-html[lang=ko]{{--f-body:"Noto Sans KR","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;--f-display:"Noto Sans KR","Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}}
 body{{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;overflow-wrap:anywhere}}
 a{{color:var(--accent)}}
 .wrap{{max-width:760px;margin:0 auto;padding:20px 16px 48px}}
@@ -276,8 +275,7 @@ h1{{font-family:var(--f-display);font-size:28px;line-height:1.3;margin:0 0 8px;o
   <script>
   (function(){{
     var M={{en:["Thanks! You're subscribed.","Please check the email address and try again."],
-           zh:["Thanks! You're subscribed.","Please check the email address and try again."],
-           ko:["감사합니다! 구독되었습니다.","이메일 주소를 확인 후 다시 시도해 주세요."]}};
+           zh:["Thanks! You're subscribed.","Please check the email address and try again."]}};
     document.querySelectorAll('form.ct-news').forEach(function(f){{
       f.addEventListener('submit',function(e){{
         e.preventDefault();
@@ -471,7 +469,7 @@ def main():
     zh = page(template, 'zh', listing, zh_disc)
     write('newsletter/index.html', with_root_redirect(zh, 'newsletter'))
     write('zh/newsletter/index.html', zh)
-    for lang in ('en', 'ko'):
+    for lang in ('en',):
         html_s = page(template, lang, listing, disclaimer_for(lang, zh_disc))
         body = re.sub(r'<nav class="lang".*?</nav>', '', html_s, flags=re.S)
         left = HAN.findall(body)

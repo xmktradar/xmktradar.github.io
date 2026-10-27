@@ -53,19 +53,16 @@ def _daily():
                     'acc': 'alpha', 's': 'bull', 'ms': _ms('09:00'),
                     'why': '@alpha：NVDA 財報勝預期，數據中心營收大增。',
                     'why_en': '@alpha: NVDA earnings beat estimates and data-center revenue jumped.',
-                    'why_ko': '@alpha: NVDA 실적이 예상을 웃돌고 데이터센터 매출이 늘었다.',
                 },
                 {'acc': 'beta', 's': 'bull', 'why': '$AAPL 財報強。$MSFT 估值合理。', 'ms': _ms('09:10')},
                 {
                     'acc': 'lone', 'ms': _ms('09:12'),
                     'why': 'https://news.example/a NVDA 指引強勁',
                     'why_en': 'NVDA guidance is strong.',
-                    'why_ko': 'NVDA 가이던스가 강하다.',
                 },
                 {
                     'acc': 'gap', 's': 'bull', 'ms': _ms('09:13'),
                     'why': 'NVDA 缺英文就要三語一起掉。',
-                    'why_ko': 'NVDA 영어가 없으면 전부 빠진다.',
                 },
             ],
         }],
@@ -76,7 +73,6 @@ def _daily():
                     'acc': 'bear1', 's': 'bear', 'ms': _ms('09:20'),
                     'why': '覺得 QQQ 走勢弱',
                     'why_en': 'QQQ looks weak.',
-                    'why_ko': 'QQQ 흐름이 약하다.',
                 },
             ],
         }],
@@ -87,13 +83,11 @@ def _daily():
                     'acc': 'sam', 's': 'bull', 'ms': _ms('09:30'),
                     'why': 'SPCX 訂單落地。',
                     'why_en': 'SPCX orders landed.',
-                    'why_ko': 'SPCX 주문이 확정됐다.',
                 },
                 {
                     'acc': 'sue', 's': 'bear', 'ms': _ms('09:55'),
                     'why': 'SPCX 估值太貴。',
                     'why_en': 'SPCX is too expensive.',
-                    'why_ko': 'SPCX 밸류에이션이 너무 비싸다.',
                 },
                 {'acc': 'skip', 'why': '沒有方向', 'ms': _ms('09:40')},
             ],
@@ -264,7 +258,6 @@ def test_language_matched_summaries():
                     'acc': 'alpha', 's': 'bull', 'url': url_alpha,
                     'why': '@alpha：NVDA 財報勝預期。',
                     'why_en': '@alpha: NVDA earnings beat estimates.',
-                    'why_ko': '@alpha: NVDA 실적이 예상을 웃돌았다.',
                     'ms': _ms('09:00'),
                 },
                 {
@@ -285,7 +278,6 @@ def test_language_matched_summaries():
                 'acc': 'long', 's': 'bull',
                 'why': 'LONG 長文只留中文。',
                 'why_en': long_en,
-                'why_ko': 'LONG 수요가 견조하다.',
                 'ms': _ms('09:12'),
             }],
         }],
@@ -305,13 +297,11 @@ def test_language_matched_summaries():
         {
             'url': url_alpha,
             'en_summary': 'NVDA dash should lose because the row field wins.',
-            'ko_summary': 'NVDA 대시 문장은 행 필드에 진다.',
             'text': 'NVDA original text is not used when why_en exists.',
         },
         {
             'url': url_beta,
             'en_summary': '@beta: NVDA demand is still strong.',
-            'ko_summary': '@beta: NVDA 수요는 여전히 강하다.',
             'zh_summary': '@beta：NVDA 需求仍然強。',
             'text': 'NVDA this original text is not the English summary.',
         },
@@ -319,7 +309,6 @@ def test_language_matched_summaries():
             'url': url_bear,
             'en_summary': '覺得 QQQ 走勢弱',
             'text': 'QQQ looks weak into the close.',
-            'ko_summary': 'QQQ 마감까지 약세다.',
             'zh_summary': '覺得 QQQ 走勢弱',
         },
     ]}
@@ -334,10 +323,6 @@ def test_language_matched_summaries():
         ('en', 'beta'): '@beta: NVDA demand is still strong.',
         ('en', 'long'): long_en,
         ('en', 'bear1'): 'QQQ looks weak into the close.',
-        ('ko', 'alpha'): '@alpha: NVDA 실적이 예상을 웃돌았다.',
-        ('ko', 'beta'): '@beta: NVDA 수요는 여전히 강하다.',
-        ('ko', 'long'): 'LONG 수요가 견조하다.',
-        ('ko', 'bear1'): 'QQQ 마감까지 약세다.',
     }
     posts = three_why.build_why_posts(daily, DAY, dash=dash)
     by = {p['ticker']: p for p in posts}
@@ -353,7 +338,7 @@ def test_language_matched_summaries():
     assert three_why.han_outside_tickers('看好 $NVDA')
     assert not three_why.han_outside_tickers('NVDA 실적이 예상을 웃돌았다')
     for ticker, post in by.items():
-        for lang in ('en', 'ko'):
+        for lang in ('en',):
             text = post['threads'][lang]['text']
             assert not three_why.han_outside_tickers(text), (ticker, lang, text)
             assert '財報' not in text and '走勢' not in text and '只得中文' not in text
@@ -367,32 +352,21 @@ def test_language_matched_summaries():
         if 'x' in post:
             assert not three_why.han_outside_tickers(post['x']['en']['text'])
     en_nv = dict(_quotes(nv['threads']['en']['text']))
-    ko_nv = dict(_quotes(nv['threads']['ko']['text']))
     assert set(en_nv) == {'alpha', 'beta'}
-    assert set(ko_nv) == {'alpha', 'beta'}
     assert 'NVDA earnings beat estimates.' == en_nv['alpha']
     assert 'dash should lose' not in nv['threads']['en']['text']
-    assert '대시' not in nv['threads']['ko']['text']
     assert 'Bullish reasons' in nv['threads']['en']['text']
-    assert '강세 이유' in nv['threads']['ko']['text']
     en_long = dict(_quotes(lng['threads']['en']['text']))
-    ko_long = dict(_quotes(lng['threads']['ko']['text']))
     assert set(en_long) == {'long'}
     assert en_long['long'] == long_en[:160].rstrip()
     assert en_long['long'] in long_en
-    assert ko_long['long'] == 'LONG 수요가 견조하다.'
-    assert '강세 이유' in lng['threads']['ko']['text']
     assert [r['acc'] for r in lng['bull_reasons']] == ['long']
     en_qq = qqq['threads']['en']['text']
-    ko_qq = qqq['threads']['ko']['text']
     zh_qq = qqq['threads']['zh']['text']
     assert 'QQQ looks weak into the close.' in en_qq
     assert 'Bearish reasons' in en_qq
-    assert '약세 이유' in ko_qq
-    assert '약세 계정 5개' in ko_qq
     assert [a for a, _q in _quotes(zh_qq)] == ['bear1']
     assert [a for a, _q in _quotes(en_qq)] == ['bear1']
-    assert [a for a, _q in _quotes(ko_qq)] == ['bear1']
     assert [r['acc'] for r in qqq['bear_reasons']] == ['bear1']
 
 
@@ -418,7 +392,6 @@ def _writeup_for_slots(daily):
 def test_merge_into_touches_only_three_keys():
     daily = _daily()
     daily['bull'][0]['rows'][0]['why_en'] = '@alpha: NVDA earnings beat estimates.'
-    daily['bull'][0]['rows'][0]['why_ko'] = '@alpha: NVDA 실적이 예상을 웃돌았다.'
     path = os.path.join(os.environ['WORK_DIR'], 'social-posts.json')
     original = {
         'date': DAY,
@@ -461,13 +434,10 @@ def test_merge_into_touches_only_three_keys():
     assert '跌破' not in blob
     nv = next(p for p in why if p['ticker'] == 'NVDA')
     en = nv['threads']['en']['text']
-    ko = nv['threads']['ko']['text']
     assert 'NVDA earnings beat estimates.' in en
-    assert 'NVDA 실적이 예상을 웃돌았다.' in ko
     assert not three_why.han_outside_tickers(en)
-    assert not three_why.han_outside_tickers(ko)
     for post in why:
-        for lang in ('en', 'ko'):
+        for lang in ('en',):
             assert not three_why.han_outside_tickers(post['threads'][lang]['text'])
     why_t = {p['ticker'] for p in why}
     atom_t = {a.get('ticker') for a in atomic if a.get('ticker')}
@@ -506,11 +476,11 @@ def _reason_accs(post):
 
 
 def test_shared_reason_list_drops_untranslated():
-    """zh, en and ko quote the same accounts in the same order.
+    """zh and en quote the same accounts in the same order.
 
     The list is chosen once. A row missing any language is dropped from the
     stored reasons and from every language body. $EWZ on 2026-10-27 kept
-    @KawzInvests in zh and ko and left it out of English.
+    @KawzInvests in zh and left it out of English.
     """
     daily = {
         'from': '2026-10-23T00:00',
@@ -524,42 +494,35 @@ def test_shared_reason_list_drops_untranslated():
                     'acc': 'LynAldenContact', 's': 'bull',
                     'why': '價值投資者正關注今晚巴西選舉引發的拋售。',
                     'why_en': 'Value investors are watching the EWZ election selloff.',
-                    'why_ko': '가치 투자자들이 EWZ 선거 매도세를 지켜보고 있다.',
                 },
                 {
                     'acc': 'SJosephBurns', 's': 'bear',
                     'why': '巴西 ETF EWZ 開盤跳空下跌 30%。',
                     'why_en': 'EWZ gapped down 30% at the open.',
-                    'why_ko': 'EWZ가 개장 시 30% 갭 하락했다.',
                 },
                 {
                     'acc': 'KawzInvests', 's': 'bear',
                     'why': '巴西ETF $EWZ在隔夜交易中暴跌近20%。',
-                    'why_ko': '브라질 ETF $EWZ가 야간 거래에서 거의 20% 급락.',
                 },
                 {
                     'acc': 'hanmix', 's': 'bear',
                     'why': 'EWZ 中英混就不留。',
                     'why_en': 'EWZ mixed line 但有中文',
-                    'why_ko': 'EWZ 영어에 한자가 있으면 빠진다.',
                 },
                 {
                     'acc': 'nozh', 's': 'bear',
                     'why_en': 'EWZ English without a Chinese summary.',
-                    'why_ko': 'EWZ 중국어 요약이 없다.',
                 },
                 {
                     'acc': 'later', 's': 'bear',
                     'why': 'EWZ 選後賣壓持續。',
                     'why_en': 'EWZ selling continued after the election.',
-                    'why_ko': 'EWZ 선거 이후 매도가 이어졌다.',
                     'url': 'https://x.com/later/status/1',
                 },
                 {
                     'acc': 'later', 's': 'bear',
                     'why': 'EWZ 同一則再出現一次就丟掉。',
                     'why_en': 'EWZ duplicate of the same post is one reason.',
-                    'why_ko': 'EWZ 같은 글은 이유 하나다.',
                     'url': 'https://x.com/later/status/1',
                 },
             ],
@@ -580,7 +543,7 @@ def test_shared_reason_list_drops_untranslated():
         assert '暴跌近20%' not in text and '但有中文' not in text
     if 'x' in post:
         assert [a for a, _q in _quotes(post['x']['en']['text'])] == stored
-    # Same account, different post, all three languages: both stay, same order.
+    # Same account, different post, both languages: both stay, same order.
     twice = {
         'bear': [{
             't': 'QQQ', 'nr': 2, 'n_posts': 2,
@@ -589,14 +552,12 @@ def test_shared_reason_list_drops_untranslated():
                     'acc': 'sue', 's': 'bear',
                     'why': 'QQQ 第一則。',
                     'why_en': 'QQQ first note.',
-                    'why_ko': 'QQQ 첫 메모.',
                     'url': 'https://x.com/sue/status/1',
                 },
                 {
                     'acc': 'sue', 's': 'bear',
                     'why': 'QQQ 第二則。',
                     'why_en': 'QQQ second note.',
-                    'why_ko': 'QQQ 둘째 메모.',
                     'url': 'https://x.com/sue/status/2',
                 },
             ],
@@ -622,16 +583,14 @@ def test_schedule_drops_same_ticker():
     atomic = [
         {'lang': 'zh', 'ticker': 'AAA', 'slot_kst': '09:00', 'text': 'za'},
         {'lang': 'en', 'ticker': 'AAA', 'slot_kst': '09:00', 'text': 'ea'},
-        {'lang': 'ko', 'ticker': 'AAA', 'slot_kst': '09:00', 'text': 'ka'},
         {'lang': 'zh', 'slot_kst': '11:30', 'text': 'zn'},
         {'lang': 'en', 'slot_kst': '11:30', 'text': 'en'},
-        {'lang': 'ko', 'slot_kst': '11:30', 'text': 'kn'},
     ]
     why, atomic = share.schedule_why_atomic(why, atomic)
     assert [p['suggested_kst'] for p in why] == ['09:00', '11:30']
     assert all(a.get('ticker') != 'AAA' for a in atomic)
     assert {a['slot_kst'] for a in atomic} == {'14:00'}
-    assert len(atomic) == 3
+    assert len(atomic) == 2
 
 
 def main():

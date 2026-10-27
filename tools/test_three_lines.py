@@ -193,8 +193,8 @@ def test_post_shape_limits_and_utm():
             if plat == 'facebook':
                 assert url and url in text
                 assert slot['has_link']['facebook'][lang] is True
-    # X links every language. Threads still alternates: en only. 4 of the 6 copies.
-    assert linked == 4, linked
+    # X links every language. Threads still alternates: en only. 3 of the 4 copies.
+    assert linked == 3, linked
     _assert_x_and_threads(slot, shift=False)
     en = slot['threads']['en']['text']
     assert 'Today in 3 lines' in en
@@ -203,8 +203,6 @@ def test_post_shape_limits_and_utm():
     assert 'Not enough data' not in en
     zh = slot['threads']['zh']['text']
     assert '今日三句重點' in zh and '最多人討論' in zh and '分歧最大' in zh
-    ko = slot['threads']['ko']['text']
-    assert '오늘의 3줄 요약' in ko and '최다 언급' in ko and '의견 차이 최대' in ko
     # i18n phrase once. The page wraps cmpLab in another pair of parentheses; the post does not.
     calc = share.three_lines_calc([
         {'t': 'AAA', 'c': _c(2, 0, 0, 2, 2), 'c0': _c(0, 2, 0, 2, 2), 'chg': 0},
@@ -217,21 +215,15 @@ def test_post_shape_limits_and_utm():
     assert zlines[0] == '共識變化最大：$AAA 淨看多比例 -100% → +100% 對比昨日同時段'
     assert '（對比昨日同時段）' not in zlines[0]
     assert '對比昨日（今日至今）' not in zlines[0]
-    klines, _ = three_why._fact_lines('ko', calc)
-    assert klines[0] == '합의 변화 최대: $AAA 순강세 비율 -100% → +100% 어제 같은 시간대 대비'
-    assert '(어제 같은 시간대 대비)' not in klines[0]
-    assert '어제 대비 (오늘 현재까지)' not in klines[0]
 
 
 NEW_DELTA = {
     'zh': '對比昨日同時段',
     'en': 'vs the same hours yesterday',
-    'ko': '어제 같은 시간대 대비',
 }
 OLD_DELTA = {
     'zh': '對比昨日（今日至今）',
     'en': 'vs yesterday (today so far)',
-    'ko': '어제 대비 (오늘 현재까지)',
 }
 
 
@@ -281,9 +273,8 @@ def _assert_x_and_threads(slot, shift):
         assert OLD_DELTA[lang] not in body and OLD_DELTA[lang] not in text
         assert OLD_DELTA[lang] not in slot['facebook'][lang]['text']
     assert slot['threads']['zh']['url'] is None
-    assert slot['threads']['ko']['url'] is None
     assert slot['threads']['en']['url']
-    assert slot['has_link']['threads'] == {'zh': False, 'en': True, 'ko': False}
+    assert slot['has_link']['threads'] == {'zh': False, 'en': True}
 
 
 def _assert_x_drop_order(slot, calc):
