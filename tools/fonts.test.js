@@ -53,7 +53,7 @@ function assertFonts(file) {
 
 test('homepage, about, support, tools, stock and embed pages load the fonts', () => {
   const pages = [
-    'index.html', 'robot.html', '404.html',
+    'index.html', '404.html',
     'zh/index.html', 'en/index.html',
     'about/index.html', 'zh/about/index.html', 'en/about/index.html',
     'support/index.html', 'zh/support/index.html', 'en/support/index.html',

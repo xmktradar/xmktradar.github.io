@@ -13,10 +13,8 @@ Korean (/ko/) was removed 2026-10-27; tools/ko_redirect.py sends old /ko/ links 
 - Every version gets <html lang>, canonical, hreflang, the language switch and absolute asset paths.
 - index.html itself gets the same switch and hreflang plus a script that sends visitors to the
   version matching their browser language.
-- robot.html (Chinese) is stamped with hreflang. en/robot.html is translated
-  from it with i18n/en.json "robot" (plus shared "ui" strings). Canonical stays /robot.html
-  for Chinese and /en/robot.html for English. The paper-trading pause is copy
-  only: this step does not start or resume any job.
+- The robot stock-picking page was deleted on 2026-10-27 (Tim). /robot.html and /en/robot.html are
+  kept as tiny noindex pages that send old links to /zh/ and /en/, and leave the sitemap.
 - Lighter pages: each version carries only the last LITE_DAYS of daily closes (plus the first one, for
   the one-year change) and no intraday lines; the stock page loads px/<ticker>.json (full closes and
   intraday) when opened. Account info and avatars nobody in the data refers to, and any leftover
@@ -428,8 +426,6 @@ def build(lang, master):
     s = re.sub(r'''(["'(])assets/''', r'\1/assets/', s)
     s = add_chrome(s, lang)
     s = localize_news(s, lang)
-    if lang != 'zh':  # Chinese stays on /robot.html; en nav and footer go to the translated page
-        s = s.replace('href="/robot.html"', f'href="/{lang}/robot.html"')
     if stock and '<!-- stock-index -->' not in s:
         # stock_pages.js injects this per language. A rebuild must not drop it.
         needle = '<footer class="wrap foot"'
@@ -464,81 +460,24 @@ def dedupe_sitemap(sm):
     return ''.join(out)
 
 
-def robot_ui(lang):
-    """Homepage ui strings plus robot-only copy. Robot entries win, so a short homepage gloss cannot override a robot sentence."""
-    tr = read_json(f'i18n/{lang}.json', {}) if lang != 'zh' else {}
-    tr = tr if isinstance(tr, dict) else {}
-    ui = dict(tr.get('ui') or {})
-    ui.update(tr.get('robot') or {})
-    return ui
+ROBOT_REDIRECTS = {'robot.html': 'zh/', 'en/robot.html': 'en/'}
 
 
-def robot_canon(lang):
-    return SITE + ('robot.html' if lang == 'zh' else f'{lang}/robot.html')
+def robot_redirect(target):
+    url = SITE + target
+    return ('<!doctype html><html lang="en"><head><meta charset="utf-8">'
+            '<meta name="viewport" content="width=device-width,initial-scale=1">'
+            f'<meta name="robots" content="noindex"><link rel="canonical" href="{url}">'
+            f'<meta http-equiv="refresh" content="0;url={url}"><title>The Crowd Tape</title>'
+            f'<script>location.replace("{url}"+location.search+location.hash)</script></head>'
+            f'<body><p><a href="{url}">The Crowd Tape</a></p></body></html>\n')
 
 
-def robot_switch(lang):
-    items = (('zh', '/robot.html', '中'), ('en', '/en/robot.html', 'EN'))
-    on = ' aria-current="page"'
-    links = ''.join(f'<a href="{href}" data-lang="{k}"{on if k == lang else ""}>{lab}</a>' for k, href, lab in items)
-    return f'<nav class="lang-sw" aria-label="Language">{links}</nav>'
-
-
-def stamp_robot(html, lang):
-    """Canonical, hreflang and the language switch for robot.html. Chinese stays at /robot.html."""
-    html = re.sub(re.escape(MARK) + '.*?' + re.escape(MARK), '', html, flags=re.S)
-    html = re.sub(r'<link rel="canonical"[^>]*>\s*', '', html)
-    html = re.sub(r'<link rel="alternate" hreflang="[^"]*"[^>]*>\s*', '', html)
-    html = re.sub(r'<nav class="lang-sw".*?</nav>\s*', '', html, flags=re.S)
-    lang_attr = 'zh-Hant-HK' if lang == 'zh' else LANGS[lang][0]
-    html = re.sub(r'<html lang="[^"]*"', f'<html lang="{lang_attr}"', html, count=1)
-    alt = (
-        f'<link rel="alternate" hreflang="zh-Hant" href="{SITE}robot.html">'
-        f'<link rel="alternate" hreflang="en" href="{SITE}en/robot.html">'
-        f'<link rel="alternate" hreflang="x-default" href="{SITE}robot.html">'
-    )
-    block = f'{MARK}<link rel="canonical" href="{robot_canon(lang)}">{alt}<style>{SWITCH_CSS}</style>{MARK}'
-    html = html.replace('</head>', block + '</head>', 1)
-    html = html.replace('<div class="brand-wrap">', robot_switch(lang) + '<div class="brand-wrap">', 1)
-    html = re.sub(r'(<meta property="og:url" content=")[^"]*"', rf'\1{robot_canon(lang)}"', html, count=1)
-    loc = {'zh': 'zh_TW', 'en': 'en'}[lang]
-    html = re.sub(r"locale:'(?:zh_TW|en|ko)'", f"locale:'{loc}'", html)
-    return html
-
-
-def point_robot_links():
-    """Pages this step does not rebuild (support, tools, advertise) still embed href=\"/robot.html\".
-    robot.html itself is skipped: its language switch must keep 中 on /robot.html."""
-    n = 0
-    for lang in ('en',):
-        for f in glob.glob(f'{lang}/**/*.html', recursive=True) + glob.glob(f'{lang}/*.html'):
-            if os.path.basename(f) == 'robot.html':
-                continue
-            s = open(f, encoding='utf-8').read()
-            t = s.replace('href="/robot.html"', f'href="/{lang}/robot.html"')
-            if t != s:
-                open(f, 'w', encoding='utf-8').write(t)
-                n += 1
-    return n
-
-
-def build_robot():
-    """Write en/robot.html from robot.html, and stamp hreflang on the Chinese page."""
-    src = open('robot.html', encoding='utf-8').read()
-    zh = stamp_robot(src, 'zh')
-    open('robot.html', 'w', encoding='utf-8').write(zh)
-    left = {}
-    han = re.compile(r'[\u4e00-\u9fff]')
-    for lang in ('en',):
-        base = re.sub(r'<nav class="lang-sw".*?</nav>', '', zh, count=1, flags=re.S)
-        page = translate(base, robot_ui(lang))
-        page = stamp_robot(page, lang)
-        os.makedirs(lang, exist_ok=True)
-        open(f'{lang}/robot.html', 'w', encoding='utf-8').write(page)
-        vis = re.sub(r'<script\b[^>]*>.*?</script>|<style\b[^>]*>.*?</style>|<!--.*?-->', ' ', page, flags=re.S)
-        vis = re.sub(r'<nav class="lang-sw".*?</nav>', ' ', vis, flags=re.S)
-        left[lang] = len(han.findall(vis))
-    return left
+def write_robot_redirects():
+    """The robot page is gone. Old links land on the language homepage."""
+    for path, target in ROBOT_REDIRECTS.items():
+        os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
+        open(path, 'w', encoding='utf-8').write(robot_redirect(target))
 
 
 def sitemap(gen):
@@ -553,13 +492,6 @@ def sitemap(gen):
                         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">')
     alt = ''.join(f'<xhtml:link rel="alternate" hreflang="{LANGS[k][0]}" href="{SITE}{k}/"/>' for k in LANGS)
     rows = ''.join(f'\n  <url><loc>{SITE}{k}/</loc><lastmod>{gen}</lastmod><changefreq>hourly</changefreq>{alt}</url>' for k in LANGS)
-    ralt = (
-        f'<xhtml:link rel="alternate" hreflang="zh-Hant" href="{SITE}robot.html"/>'
-        f'<xhtml:link rel="alternate" hreflang="en" href="{SITE}en/robot.html"/>'
-    )
-    rows += ''.join(
-        f'\n  <url><loc>{url}</loc><lastmod>{gen}</lastmod><changefreq>weekly</changefreq>{ralt}</url>'
-        for url in (f'{SITE}robot.html', f'{SITE}en/robot.html'))
     sm = sm.replace('</urlset>', rows[1:] + '\n</urlset>')
     open('sitemap.xml', 'w', encoding='utf-8').write(dedupe_sitemap(sm))
 
@@ -586,13 +518,11 @@ def main():
     open('index.html', 'w', encoding='utf-8').write(master)
     n_px = write_px(json.loads(BLOCK.search(master).group(2).replace('<\\/', '</')))
     left = {k: build(k, master) for k in LANGS}
-    robot_left = build_robot()
-    n_links = point_robot_links()
+    write_robot_redirects()
     gen = re.search(r'<loc>' + re.escape(SITE) + r'</loc><lastmod>([^<]+)', open('sitemap.xml', encoding='utf-8').read())
     sitemap(gen.group(1) if gen else '')
-    notice(f'語言版本：/zh/ /en/ 已生成，股價檔 {n_px} 個，robot 連結改寫 {n_links} 頁'
-           + ''.join(f'；{k} 版介面仍有 {n} 段中文未翻譯' for k, n in left.items() if n)
-           + ''.join(f'；{k} robot 仍有 {n} 個漢字' for k, n in robot_left.items() if n))
+    notice(f'語言版本：/zh/ /en/ 已生成，股價檔 {n_px} 個'
+           + ''.join(f'；{k} 版介面仍有 {n} 段中文未翻譯' for k, n in left.items() if n))
 
 
 if __name__ == '__main__':

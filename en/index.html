@@ -348,8 +348,6 @@ body .divehead .av{width:72px;height:72px}
 
 
 .tabs .tab-rng{font-size:inherit;font-weight:inherit}
-.tabs .tab-robo{color:#2e7449}
-.tabs .tab-robo[aria-selected="true"]{border-bottom-color:#6fbf8a}
 @media(max-width:640px){
   .tabs{gap:0;justify-content:space-between}
   .tabs button{padding-left:8px;padding-right:8px;font-size:14px;white-space:nowrap}
@@ -371,12 +369,10 @@ body .divehead .av{width:72px;height:72px}
 @media(max-width:640px){.vs-bar .vs-cta{margin-left:0;width:100%}}
 
 
-.tabs .tab-robo .rb-full{display:inline}.tabs .tab-robo .rb-short{display:none}
 @media(max-width:640px){
 .tabs{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .tabs::-webkit-scrollbar{display:none}
 .tabs button,.tabs a{flex:0 0 auto;white-space:nowrap}
-.tabs .tab-robo .rb-full{display:none}.tabs .tab-robo .rb-short{display:inline}
 }
 
 
@@ -822,9 +818,7 @@ td:not(:first-child) .note{white-space:nowrap}
 @media(max-width:600px){.acc-grid{grid-template-columns:minmax(0,1fr)}.hbar{grid-template-columns:60px minmax(0,1fr) 64px}.divehead h1{font-size:26px}.meta{font-size:11.5px}}
 
 .grid>.vs-bar{margin:0}.vs-bar .vs-br{flex-basis:100%;height:0}
-nav.tabs a.tab-robo{display:block;padding:10px 14px;font-weight:500;text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;border-radius:10px 10px 0 0}
-nav.tabs a.tab-robo:hover{filter:brightness(.9)}
-@media(max-width:640px){nav.tabs{width:100%}nav.tabs button{padding-left:8px;padding-right:8px}nav.tabs a.tab-robo{padding-left:8px;padding-right:8px;font-size:14px;flex:0 0 auto}}
+@media(max-width:640px){nav.tabs{width:100%}nav.tabs button{padding-left:8px;padding-right:8px}}
 @media(max-width:600px){.divehead .meta{flex:1 1 100%}}
 /* 睇唔到嘅區塊延後排版（手機開頁快好多，外觀不變） */
 #view .grid>section{content-visibility:auto;contain-intrinsic-size:auto 900px}</style><style id="macro-tab-css">
@@ -904,9 +898,6 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
       <button role="tab" data-v="monthly" id="tab-monthly">Monthly<small class="tab-rng"> (28 days)</small></button>
       <button role="tab" data-v="macro" id="tab-macro">Macro</button>
       <button role="tab" data-v="tracked" id="tab-tracked">Tracked list</button>
-      <!-- 機械人選股分頁暫時收起（2026-10-15）：數據停咗喺 10/8，有來源再開返
-      <a href="/en/robot.html" class="tab-robo"><span class="rb-full">機械人選股交易（Grok）</span><span class="rb-short">機械人交易</span></a>
-      -->
     </nav>
     <button type="button" class="srch-btn" id="srch-btn" aria-label="Search stocks" title="Search stocks" aria-expanded="false" aria-controls="srch">🔍</button>
     <div class="srch" id="srch" role="search" hidden><div class="srch-row"><input id="srch-q" type="search" placeholder="Ticker or company name, e.g. NVDA" aria-label="Search stocks" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go"><button type="button" class="srch-x" id="srch-x" aria-label="Close search">✕</button></div><ul id="srch-r" role="listbox" aria-label="Search results"></ul></div>
@@ -1821,7 +1812,7 @@ function paintChrome(){const m=D.meta;const cut=document.getElementById('cutoff'
 <p>Stance data: ${m.stance.files.length?`Tagged post by post by an analyst ( ${m.stance.matched} posts tagged); untagged posts are all listed as “No stance”.`:'No analyst stance data yet; all posts are listed as “No stance” for now.'}</p>
 <p>${Object.keys(srcs).length?`Prices as of ${esc(asof)} (US Eastern trading day): ${Object.keys(srcs).map(esc).join(', ')} daily close, fetched ${esc(fet)} HKT`:'No price data'}${(()=>{const pm=m.price_missing.filter(t=>!UNC(t));const wn=pm.filter(t=>OV[t]&&OV[t].price_note),wo=pm.filter(t=>!(OV[t]&&OV[t].price_note));return (wn.length?'; '+wn.map(t=>'$'+esc(t)+'  to '+esc(OV[t].price_note)).join('; '):'')+(wo.length?`; no price data yet: ${wo.map(t=>'$'+esc(t)).join(' ')}`:'')})()}${nonUS.length?'; non-US stocks are quoted in local exchange and currency (marked on stock pages)':''}. </p>
 ${MAC&&MAC.rows.length?`<p>Market data: ${[...new Set(MAC.rows.map(r=>(r.src||'').replace(/（.*?）|\(.*?\)/g,'').trim()).filter(Boolean))].map(esc).join(', ')||'—'}${MAC.as_of?`, as of ${esc(MAC.as_of)} HKT`:''}. </p>`:''}<p>All times are Hong Kong time (HKT, UTC+8). Account avatars and bios come from each account’s X profile.</p>
-<p>Some links are affiliate links. If you sign up or buy through them we may earn a commission at no extra cost to you. This never affects our bull/bear tallies or <a href="/en/robot.html">robot picks</a>. Nothing on this site is investment advice.</p>
+<p>Some links are affiliate links. If you sign up or buy through them we may earn a commission at no extra cost to you. This never affects our bull/bear tallies. Nothing on this site is investment advice.</p>
 <p><a href="tools/">Tools</a> · <a href="support/">Support us</a> · <a href="newsletter/">Newsletter</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank">TradingView <span class="pj-tag">Promotion</span></a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="pj-tag">Promotion</span></a> · <a href="advertise/">Advertising</a> · <a href="about/">About & methodology</a></p>`;linkHandles(document.getElementById('foot'))}
 document.addEventListener('dash-data',function(){try{paintChrome()}catch(e){}});
 paintChrome();
