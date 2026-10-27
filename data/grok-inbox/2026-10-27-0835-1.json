@@ -1,1 +1,79 @@
-$(cat /tmp/batch1.json)
+{
+  "posts": {
+    "2114856595004035241": {
+      "en_summary": "Shay Boloor has been adding aggressively to $RKLB over the past couple weeks despite disappointment that the Neutron launch slipped into 2027, which was supposed to be one of the biggest catalysts this year. He notes that Falcon 9 was ~3 years late and Falcon Heavy ~5 years late, so selling $SPCX shares over those delays would have missed massive subsequent returns. He views Rocket Lab positively because it already builds satellites and its planned Iridium acquisition could add ~2.7M subscribers, enabling it to build, launch, and collect recurring revenue from its own network.",
+      "zh_summary": "Shay Boloor在過去幾週積極加倉$RKLB，儘管對中子號發射延至2027年感到失望，這本應是今年最大催化劑之一。他指出獵鷹9號延遲約3年、獵鷹重型延遲約5年，若因延遲賣出$SPCX股份將錯過其後巨大回報。他看好Rocket Lab，因其已建造衛星，計劃中的Iridium收購可增加約270萬訂戶，使其最終能建造、發射並從自身網絡收取經常性收入。",
+      "ko_summary": "Shay Boloor는 중성자 발사가 2027년으로 미뤄져 올해 가장 큰 촉매제 중 하나가 될 예정이었음에도 불구하고 지난 몇 주 동안 $RKLB를 공격적으로 추가 매수하고 있다. 그는 팔콘 9가 약 3년, 팔콘 헤비가 약 5년 지연되었다고 언급하며, 이러한 지연으로 $SPCX 주식을 매도했다면 이후 막대한 수익을 놓쳤을 것이라고 지적한다. 그는 로켓 랩이 이미 위성을 제작하고 있으며 계획된 이리듐 인수가 약 270만 명의 구독자를 추가할 수 있어 자체 네트워크에서 위성을 제작·발사하고 반복 수익을 창출할 수 있다고 긍정적으로 보고 있다.",
+      "tickers": ["RKLB", "SPCX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"RKLB": "睇好", "SPCX": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2114856441622548492": {
+      "en_summary": "Mr_Derivatives replied to @WOLF_Financial simply with $NVDA.",
+      "zh_summary": "Mr_Derivatives回覆@WOLF_Financial，僅提及$NVDA。",
+      "ko_summary": "Mr_Derivatives가 @WOLF_Financial에게 단순히 $NVDA라고 답변했다.",
+      "tickers": ["NVDA"],
+      "stance": null,
+      "stance_by_ticker": {"NVDA": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2114850255393165767": {
+      "en_summary": "Shay Boloor notes that Anthropic $ANT went from 12% to 85% gross margins in one year on ~$16B in revenue during the first half of 2026. It spent only $2.4B serving customers compared to $9.7B on R&D, suggesting running existing AI models is becoming far more profitable than expected. Quoted post from KraneShares details improving revenue per compute dollar spent, rising from $0.40 in Q1 2025 to $2.08 in Q2 2026.",
+      "zh_summary": "Shay Boloor指出Anthropic $ANT在一年內毛利率從12%升至85%，2026年上半年營收約160億美元。其服務客戶僅花費24億美元，而研發支出97億美元，顯示運行現有AI模型的盈利能力遠超預期。引用KraneShares帖文詳述每美元算力支出產生的營收從2025年第一季0.40美元升至2026年第二季2.08美元。",
+      "ko_summary": "Shay Boloor는 Anthropic $ANT의 총 마진이 1년 만에 12%에서 85%로 상승했으며 2026년 상반기 매출이 약 160억 달러라고 지적했다. 고객 서비스에 24억 달러만 지출한 반면 R&D에는 97억 달러를 썼으며, 이는 기존 AI 모델 운영이 예상보다 훨씬 수익성이 높아지고 있음을 시사한다. KraneShares의 인용 게시물은 컴퓨팅 지출 1달러당 매출이 2025년 1분기 0.40달러에서 2026년 2분기 2.08달러로 증가한 것을 자세히 설명한다.",
+      "tickers": ["ANT"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ANT": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2114846247907733967": {
+      "en_summary": "Bespoke asks whether $AMD looks bullish or bearish and invites viewers to decide via their interactive tool.",
+      "zh_summary": "Bespoke詢問$AMD看起來是看漲還是看跌，並邀請觀眾透過其互動工具自行判斷。",
+      "ko_summary": "Bespoke는 $AMD가 상승세인지 하락세인지 묻고 시청자가 인터랙티브 도구를 통해 판단하도록 초대한다.",
+      "tickers": ["AMD"],
+      "stance": "中性",
+      "stance_by_ticker": {"AMD": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2114845589993308603": {
+      "en_summary": "Michael Sikand finds it strange that $NBIS is down today despite a wave of AI enthusiasm around the $ANT IPO. He believes if any neocloud can continue to attract cheap capital amid high rates and AI anxieties, it is this world-class team.",
+      "zh_summary": "Michael Sikand認為在圍繞$ANT IPO的AI熱潮中，$NBIS今日下跌很奇怪。他相信若有任何新雲端公司能在高利率和AI焦慮中持續吸引廉價資本，就是這支世界級團隊。",
+      "ko_summary": "Michael Sikand는 $ANT IPO를 둘러싼 AI 열기에도 불구하고 $NBIS가 오늘 하락한 것이 이상하다고 말한다. 그는 높은 금리와 AI 불안 속에서 저렴한 자본을 계속 유치할 수 있는 네오클라우드가 있다면 이 세계적 수준의 팀이라고 믿는다.",
+      "tickers": ["NBIS", "ANT"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NBIS": "睇好", "ANT": "中性"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "rates",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    }
+  }
+}
