@@ -473,7 +473,12 @@ def link_row(lang):
 
 def add_home_links():
     foot = '<!-- stock-index -->'
-    for path, lang in (('index.html', 'zh'), ('zh/index.html', 'zh'), ('en/index.html', 'en')):
+    # master index.html is the source of /en/ too (tools/build_langs.py), so it never gets a link, only loses old ones
+    s = open('index.html', encoding='utf-8').read()
+    clean = re.sub(re.escape(MARK) + r'.*?' + re.escape(MARK), '', s, flags=re.S)
+    if clean != s:
+        open('index.html', 'w', encoding='utf-8').write(clean)
+    for path, lang in (('zh/index.html', 'zh'), ('en/index.html', 'en')):
         if not os.path.exists(path):
             continue
         s = open(path, encoding='utf-8').read()
