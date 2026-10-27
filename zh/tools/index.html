@@ -71,6 +71,23 @@ a.tool-btn{color:#fff}
 .ct-news input[name=website]{position:absolute!important;left:0!important;top:0!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;border:0!important;white-space:nowrap}
 .back{display:inline-block;margin-top:18px;font-weight:700;text-decoration:none}
 @media(max-width:420px){h1{font-size:24px}.wrap{padding:16px 14px 40px}.cta h2{font-size:20px}}
+.why-h{margin:12px 0 4px!important}.why-l{margin:0;padding-left:20px;font-size:15px;line-height:1.65}.aff-note{margin-top:8px!important;color:var(--muted);font-size:12.5px}
+/* Apple-style look (2026-10-27): same colours, font and cards as the homepage; dark mode follows the device */
+:root{--bg:#f5f5f7;--surface:#fff;--ink:#1d1d1f;--muted:#6e6e73;--line:#e3e3e8;--accent:#0071e3;--accent-soft:#e8f1fb;--link:#0066cc;--hero:#fff;--grad:linear-gradient(90deg,#0071e3,#9f5afd 52%,#e3366e);color-scheme:light dark}
+@media (prefers-color-scheme: dark){:root{--bg:#000;--surface:#1c1c1e;--ink:#f5f5f7;--muted:#a1a1a6;--line:#38383a;--accent:#0a84ff;--accent-soft:#0a2540;--link:#2997ff;--hero:#000}}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",var(--f-body);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:var(--link)}
+h1,h2,h3,.brand{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",var(--f-body)!important;letter-spacing:-.02em}
+h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!important}
+.brand{font-weight:600!important;font-size:19px!important}
+.card,.ct-news,.panel{background:var(--surface)!important;border:0!important;border-radius:20px!important}
+.note{border:0!important;border-radius:16px!important;background:var(--accent-soft)!important}
+.site-nav a,.lang a{border:0!important;background:var(--surface)!important;font-weight:600!important}
+.site-nav a.nav-donate,.tool-btn,.ct-news button[type=submit],.btn{background:var(--accent)!important;color:#fff!important;border:0!important}
+.lang a[aria-current]{color:var(--ink)!important;background:var(--accent-soft)!important}
+.aff-tag{background:transparent!important}
+.ct-news input[type=email]{background:var(--bg)!important;color:var(--ink)!important;border-color:var(--line)!important}
+.site-foot{border-top-color:var(--line)!important}
 </style>
 </head>
 <body>
@@ -96,11 +113,25 @@ a.tool-btn{color:#fff}
     <article class="card">
       <h2>TradingView：圖表 <span class="aff-tag">聯盟推廣</span></h2>
       <p>看群眾熱烈討論的股票實際走勢。有免費版，支援中文介面。</p>
+      <p class="why-h"><b>看完好淡，打開圖表驗證</b></p>
+      <ul class="why-l">
+        <li>群眾熱烈討論的股票，一打開就看到實際走勢與成交量，判斷是真有動靜還是只是噪音</li>
+        <li>免費版已夠日常使用，支援中文介面，電腦與手機同步</li>
+        <li>可設定價位提醒，不用整天盯盤</li>
+      </ul>
+      <p class="aff-note">聯盟推廣連結，你無需多付；佣金不影響好淡統計。</p>
       <a class="tool-btn" href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">打開 TradingView</a>
     </article>
     <article class="card" data-tool="stockrover">
       <h2>Stock Rover：深度基本面研究與投資組合追蹤 <span class="aff-tag">聯盟推廣</span></h2>
       <p>比較估值、評分與基本面，追蹤你的投資組合。</p>
+      <p class="why-h"><b>人人看好？先看估值與基本面</b></p>
+      <ul class="why-l">
+        <li>比較估值、盈利增長與財務數據，看看最多人看好的股票是否已經太貴</li>
+        <li>用自己的條件篩選股票，找出群眾未留意的公司</li>
+        <li>連結投資組合，持股表現與基本面一頁看清</li>
+      </ul>
+      <p class="aff-note">聯盟推廣連結，你無需多付；佣金不影響好淡統計。</p>
       <a class="tool-btn" href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">開啟</a>
     </article>
   </div>

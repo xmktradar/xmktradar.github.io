@@ -9,11 +9,14 @@
 <link rel="canonical" href="https://thecrowdtape.com/zh/embed/"><link rel="alternate" hreflang="zh-Hant" href="https://thecrowdtape.com/zh/embed/"><link rel="alternate" hreflang="en" href="https://thecrowdtape.com/en/embed/"><link rel="alternate" hreflang="x-default" href="https://thecrowdtape.com/en/embed/">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>:root{--f-display:"Noto Serif TC","Source Han Serif TC","Songti TC","PMingLiU",serif;--f-body:"Noto Sans TC","PingFang TC","Noto Sans CJK TC","Microsoft JhengHei",system-ui,sans-serif;--f-data:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-body{margin:0;background:#f6efe4;color:#3b2f25;font:16px/1.6 var(--f-body)}
+:root{--bg:#f5f5f7;--surface:#fff;--ink:#1d1d1f;--muted:#6e6e73;--line:#e3e3e8;--link:#0066cc;color-scheme:light dark}
+@media (prefers-color-scheme: dark){:root{--bg:#000;--surface:#1c1c1e;--ink:#f5f5f7;--muted:#a1a1a6;--line:#38383a;--link:#2997ff}}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text",var(--f-body);-webkit-font-smoothing:antialiased}a{color:var(--link)}
 .wrap{max-width:720px;margin:0 auto;padding:24px 16px 48px}header{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.brand{font-family:var(--f-display);font-weight:800;color:#3b2f25;text-decoration:none}h1{font-family:var(--f-display)}nav a{margin-left:6px;color:#3b2f25}
-pre{white-space:pre-wrap;word-break:break-all;background:#fffaf2;border:1px solid #d9cfc2;border-radius:10px;padding:12px;font-family:var(--f-data);font-size:13px}
-.note{color:#7a6a5a;font-size:13px}</style>
+.brand{font-weight:600;font-size:19px;color:var(--ink);text-decoration:none;letter-spacing:-.02em}h1{font-size:clamp(30px,5vw,44px);line-height:1.12;letter-spacing:-.02em}
+nav a{margin-left:6px;padding:4px 12px;border-radius:980px;background:var(--surface);color:var(--ink);text-decoration:none;font-size:13px;font-weight:600}nav a[aria-current]{background:#0071e3;color:#fff}
+pre{white-space:pre-wrap;word-break:break-all;background:var(--surface);border:0;border-radius:18px;padding:12px;font-family:var(--f-data);font-size:13px}
+.note{color:var(--muted);font-size:13px}</style>
 </head><body><div class="wrap">
 <header><a class="brand" href="/zh/">The Crowd Tape</a><nav class="lang-sw" aria-label="Language"><a href="/zh/embed/" hreflang="zh-Hant" aria-current="page">中</a> <a href="/en/embed/" hreflang="en">EN</a></nav></header>
 <h1>嵌入好淡卡片</h1>
