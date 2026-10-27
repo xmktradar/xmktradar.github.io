@@ -33,6 +33,7 @@ L = {
         list_desc='市值 500 億美元以上美股最新季度財報：收入、EPS 對比市場預期、按年增長、業務線拆解、利潤率同現金流，每 4 小時自動更新。',
         recent='過去 30 日公布', upcoming='未來 14 日將公布', all='全部公司', none='暫時冇。',
         th_date='日期', th_co='公司', th_q='財季', th_rev='收入按年', th_eps='EPS vs 預期',
+        reported='公布', find='搵公司（代號或名稱）', no_match='搵唔到。', open_brief='睇完整簡報',
         title=lambda t, n, q: f'{t} 財報簡報 {q}：收入、EPS、利潤率同現金流｜{n}｜The Crowd Tape',
         desc=lambda t, n, q, r, y: f'{n}（{t}）{q} 財報：收入 {r}，按年 {y}。對比市場預期、業務線拆解、利潤率同自由現金流，數字來自 SEC 文件。',
         h1=lambda t, q: f'{t} 財報簡報：{q}',
@@ -66,6 +67,7 @@ L = {
         list_desc='Latest quarterly results of US stocks worth $50B+: revenue and EPS vs estimates, growth, revenue lines, margins and cash flow, updated every 4 hours.',
         recent='Reported in the last 30 days', upcoming='Reporting in the next 14 days', all='All companies', none='None right now.',
         th_date='Date', th_co='Company', th_q='Quarter', th_rev='Revenue YoY', th_eps='EPS vs est.',
+        reported='Reported', find='Find a company (ticker or name)', no_match='No match.', open_brief='Full brief',
         title=lambda t, n, q: f'{t} earnings brief {q}: revenue, EPS, margins and cash flow | {n} | The Crowd Tape',
         desc=lambda t, n, q, r, y: f'{n} ({t}) {q} results: revenue {r}, {y} year on year. Estimates, revenue lines, margins and free cash flow from SEC filings.',
         h1=lambda t, q: f'{t} earnings brief: {q}',
@@ -95,22 +97,26 @@ L = {
     ),
 }
 
-CSS = """:root{--bg:#fbf6ec;--surface:#fffaf2;--ink:#3b2f24;--muted:#87776a;--line:#ece1cc;--accent:#a5672c;--accent-soft:#f8ecda;
---up:#1d7a45;--down:#b23a48;--f-display:"Noto Serif TC","Songti TC",serif;
---f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;--f-data:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;color-scheme:light}
+CSS = """:root{--bg:#f5f5f7;--surface:#fff;--ink:#1d1d1f;--muted:#6e6e73;--line:#e3e3e8;--accent:#0071e3;--accent-soft:#e8f1fb;--link:#0066cc;
+--up:#248a3d;--down:#d70015;--up-soft:#e3f4e8;--down-soft:#fde7ea;
+--f-body:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
+--f-display:-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
+--f-data:-apple-system,BlinkMacSystemFont,"SF Pro Text",ui-monospace,Menlo,Consolas,monospace;color-scheme:light dark}
+@media (prefers-color-scheme: dark){:root{--bg:#000;--surface:#1c1c1e;--ink:#f5f5f7;--muted:#a1a1a6;--line:#38383a;--accent:#0a84ff;--accent-soft:#0a2540;--link:#2997ff;
+--up:#30d158;--down:#ff453a;--up-soft:#0f2e19;--down-soft:#3a1214}}
 *{box-sizing:border-box}html{overflow-x:clip}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;overflow-wrap:anywhere}
-a{color:var(--accent)}.wrap{max-width:820px;margin:0 auto;padding:20px 16px 48px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;overflow-wrap:anywhere;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:var(--link)}.wrap{max-width:820px;margin:0 auto;padding:20px 16px 48px}
 header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin-bottom:18px}
-.brand{font-family:var(--f-display);font-weight:700;font-size:20px;color:var(--ink);text-decoration:none}
+.brand{font-family:var(--f-display);font-weight:600;font-size:19px;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
 .site-nav,.lang{display:flex;flex-wrap:wrap;gap:6px}
-.site-nav a,.lang a{font-size:13px;font-weight:700;padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:var(--ink);text-decoration:none;background:var(--surface)}
-.lang a[aria-current]{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
-h1{font-family:var(--f-display);font-size:28px;line-height:1.3;margin:0 0 6px}
+.site-nav a,.lang a{font-size:13px;font-weight:600;padding:5px 11px;border:0;border-radius:999px;color:var(--ink);text-decoration:none;background:var(--surface)}
+.lang a[aria-current]{color:var(--ink);background:var(--accent-soft)}
+h1{font-family:var(--f-display);font-weight:700;font-size:clamp(28px,5vw,40px);line-height:1.12;letter-spacing:-.02em;margin:0 0 8px}
 .meta{color:var(--muted);font-size:14px;margin:0 0 4px}.lead{margin:0 0 16px}
-.note{margin:12px 0;padding:12px 14px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;background:var(--accent-soft);font-size:14px}
-.ch{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;margin:14px 0}
-.ch h2{font-size:19px;margin:0 0 10px;display:flex;gap:10px;align-items:baseline}
+.note{margin:12px 0;padding:12px 14px;border:0;border-radius:16px;background:var(--accent-soft);font-size:14px}
+.ch{background:var(--surface);border:0;border-radius:20px;padding:18px;margin:14px 0}
+.ch h2{font-family:var(--f-display);font-size:20px;letter-spacing:-.01em;margin:0 0 10px;display:flex;gap:10px;align-items:baseline}
 .ch h2 .no{font-family:var(--f-data);color:var(--accent);font-size:15px}
 .tw{overflow-x:auto;-webkit-overflow-scrolling:touch}
 table{border-collapse:collapse;width:100%;font-size:14.5px}
@@ -120,7 +126,7 @@ th{font-size:12.5px;color:var(--muted);font-weight:700}
 .n{font-family:var(--f-data);font-variant-numeric:tabular-nums}
 .up{color:var(--up);font-weight:700}.down{color:var(--down);font-weight:700}
 .tag{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12px;font-weight:700;border:1px solid}
-.tag.up{background:#e3f4ea;border-color:#9fd3b2}.tag.down{background:#fbe6e9;border-color:#e4a9b1}.tag.flat{color:var(--muted);border-color:var(--line)}
+.tag.up{background:var(--up-soft);border-color:transparent}.tag.down{background:var(--down-soft);border-color:transparent}.tag.flat{color:var(--muted);border-color:var(--line)}
 .small{font-size:12.5px;color:var(--muted);margin:8px 0 0}
 .bars{display:flex;align-items:flex-end;gap:6px;height:150px;margin:6px 0 2px}
 .bar{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%}
@@ -131,8 +137,17 @@ th{font-size:12.5px;color:var(--muted);font-weight:700}
 .seg{height:10px;border-radius:5px;background:var(--accent);display:block;min-width:2px}
 .pill-row{display:flex;flex-wrap:wrap;gap:6px 10px;margin:6px 0}
 .alpha a{display:inline-block;margin:0 8px 4px 0;font-family:var(--f-data);font-size:13.5px}
+.pv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin:4px 0 0}
+.pv{display:block;background:var(--bg);border-radius:16px;padding:11px 14px;color:var(--ink);text-decoration:none;min-width:0}
+.pv:hover{outline:2px solid var(--accent)}
+.pv-top{display:flex;align-items:baseline;gap:8px;min-width:0}.pv-top b{font-size:17px;letter-spacing:-.01em;white-space:nowrap;overflow-wrap:normal;flex:none}
+.pv-top span{color:var(--muted);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.pv-meta{color:var(--muted);font-size:12px;margin:1px 0 8px}
+.pv dl{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin:0;font-size:13.5px}.pv dt{color:var(--muted)}.pv dd{margin:0;text-align:right;white-space:nowrap}
+.pv-more{display:block;margin-top:6px;font-size:12.5px;color:var(--link);font-weight:600}
+.pv-find{width:100%;font:inherit;font-size:15px;padding:9px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);margin:0 0 10px}
 .site-foot{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
-@media(max-width:480px){h1{font-size:23px}.wrap{padding:16px 14px 40px}th,td{padding:6px 5px;font-size:13.5px}.bar b{font-size:9px}.bar small{font-size:8.5px}}
+@media(max-width:480px){h1{font-size:26px}.wrap{padding:16px 14px 40px}th,td{padding:6px 5px;font-size:13.5px}.bar b{font-size:9px}.bar small{font-size:8.5px}}
 """
 
 
@@ -233,8 +248,6 @@ def shell(lang, title, desc, canon_path, body, alt_paths=None, ld=None):
 <meta property="og:url" content="{SITE}{lang}/{canon_path}"><meta property="og:image" content="{SITE}og/ig-{lang}.png">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>{CSS}</style>
 {ldj}
 </head>
@@ -432,6 +445,33 @@ def report_day(co):
     return co['latest'].get('filed') or end
 
 
+def preview(co, lang):
+    """Small card for the list page: quarter, revenue with YoY, net margin, EPS vs estimate."""
+    t, q = L[lang], co['q'][-1]
+    ya = year_ago(co, q['end'])
+    est = co.get('est') or {}
+    g = pct(q['rev'], (ya or {}).get('rev'))
+    v, _ = verdict(est.get('eps_act'), est.get('eps_est'), lang)
+    nm = None if co.get('bank') else margin(q.get('ni'), q['rev'])
+    eps = est.get('eps_act') if est.get('eps_act') is not None else q.get('eps')
+    rows = [(t['rev'], f'<span class="n">{money(q["rev"], lang)}</span> {span_pct(g) if g is not None else ""}')]
+    if nm is not None:
+        rows.append((t['nm'], f'<span class="n {cls(nm)}">{nm:.1f}%</span>'))
+    rows.append(('EPS', f'<span class="n">{eps_s(eps)}</span> {v}'))
+    sep = '・' if lang == 'zh' else ' · '
+    return (f'<a class="pv" href="/{lang}/earnings/{co["t"]}/" data-k="{E((co["t"] + " " + co["name"]).lower())}">'
+            f'<div class="pv-top"><b>{co["t"]}</b><span>{E(co["name"])}</span></div>'
+            f'<div class="pv-meta">{E(q["label"])}{sep}{t["reported"]} {report_day(co)}{"　⏳" if co.get("pending") else ""}</div>'
+            f'<dl>{"".join(f"<dt>{E(a)}</dt><dd>{b}</dd>" for a, b in rows)}</dl>'
+            f'<span class="pv-more">{E(t["open_brief"])} ›</span></a>')
+
+
+FIND_JS = ("<script>(function(){var i=document.getElementById('pv-find'),n=document.getElementById('pv-none');if(!i)return;"
+           "i.addEventListener('input',function(){var v=i.value.trim().toLowerCase(),c=0;"
+           "document.querySelectorAll('#pv-all .pv').forEach(function(a){var s=!v||a.dataset.k.indexOf(v)>-1;a.hidden=!s;if(s)c++});"
+           "n.hidden=c>0})})()</script>")
+
+
 def list_page(cos, lang, stamp):
     t = L[lang]
     today = datetime.now(HK).date()
@@ -441,24 +481,18 @@ def list_page(cos, lang, stamp):
         if (today - date.fromisoformat(rd)).days <= 30:
             recent.append((rd, co))
     recent.sort(key=lambda x: (x[0], x[1].get('mcap') or 0), reverse=True)
-    rows = []
-    for rd, co in recent:
-        q = co['q'][-1]
-        ya = year_ago(co, q['end'])
-        est = co.get('est') or {}
-        v, d = verdict(est.get('eps_act'), est.get('eps_est'), lang)
-        rows.append([f'<a href="/{lang}/earnings/{co["t"]}/"><b>{co["t"]}</b></a> <small>{E(co["name"])}</small>',
-                     f'<span class="n">{rd[5:]}</span>', E(q['label']), span_pct(pct(q['rev'], (ya or {}).get('rev'))), v or '—'])
+    rows = ''.join(preview(co, lang) for _, co in recent)
     up = sorted(((co['next'], co) for co in cos if co.get('next') and 0 <= (date.fromisoformat(co['next']) - today).days <= 14),
                 key=lambda x: (x[0], -(x[1].get('mcap') or 0)))
     up_rows = [[f'<a href="/{lang}/earnings/{co["t"]}/"><b>{co["t"]}</b></a> <small>{E(co["name"])}</small>',
                 f'<span class="n">{nd[5:]}</span>', f'<span class="n">{money(co.get("mcap"), lang)}</span>'] for nd, co in up]
-    alpha = ' '.join(f'<a href="/{lang}/earnings/{co["t"]}/">{co["t"]}</a>' for co in sorted(cos, key=lambda c: c['t']))
+    alpha = ''.join(preview(co, lang) for co in sorted(cos, key=lambda c: c['t']))
     body = [f'<h1>{E(t["list_h1"])}</h1>', f'<p class="lead">{E(t["list_lead"])}</p>',
-            ch(1, t['recent'], table([t['th_co'], t['th_date'], t['th_q'], t['th_rev'], t['th_eps']], rows) if rows else f'<p class="small">{t["none"]}</p>'),
+            ch(1, t['recent'], f'<div class="pv-grid">{rows}</div>' if rows else f'<p class="small">{t["none"]}</p>'),
             ch(2, t['upcoming'], table([t['th_co'], t['th_date'], t['mcap']], up_rows) + f'<p class="small">{E(t["us_time"].strip(" （）()"))}</p>'
                if up_rows else f'<p class="small">{t["none"]}</p>'),
-            ch(3, f'{t["all"]}（{len(cos)}）' if lang == 'zh' else f'{t["all"]} ({len(cos)})', f'<p class="alpha">{alpha}</p>'),
+            ch(3, f'{t["all"]}（{len(cos)}）' if lang == 'zh' else f'{t["all"]} ({len(cos)})', f'<input id="pv-find" class="pv-find" type="search" placeholder="{E(t["find"])}" aria-label="{E(t["find"])}">'
+               f'<div class="pv-grid" id="pv-all">{alpha}</div><p class="small" id="pv-none" hidden>{E(t["no_match"])}</p>' + FIND_JS),
             f'<p class="small">{E(t["source"]("10-Q / 10-K"))} {t["updated"]} {stamp} HKT</p>']
     return shell(lang, t['list_title'], t['list_desc'], 'earnings/', '\n'.join(body))
 
