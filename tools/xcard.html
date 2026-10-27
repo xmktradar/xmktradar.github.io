@@ -1,18 +1,18 @@
 <!doctype html><meta charset="utf-8">
 <!-- Per-ticker X card (1200x675). tools/xcard.js calls render(data). Same visual language as tools/og.html. -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Noto+Sans+TC:wght@400;500;700;900;900&display=block">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=block">
 <style>
 *{box-sizing:border-box}
 html,body{margin:0}
 body{width:1200px;height:675px;position:relative;overflow:hidden;color:#151a2c;
- font-family:"Noto Sans TC","Noto Color Emoji",sans-serif}
+ font-family:"Noto Sans TC","Noto Sans CJK TC","Noto Color Emoji",sans-serif}
 .bg{position:absolute;inset:0}
 .bull .bg{background:linear-gradient(135deg,#8fe3c3 0%,#c6ec9f 48%,#fde7a1 100%)}
 .talk .bg{background:linear-gradient(135deg,#9fc8fb 0%,#c3b9f6 55%,#f6c8df 100%)}
 .dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.55) 1.6px,transparent 1.7px);background-size:22px 22px;mask-image:linear-gradient(90deg,transparent 0,#000 60%)}
 .tape{position:absolute;left:-40px;right:-40px;top:22px;height:46px;background:#151a2c;transform:rotate(-2.2deg);
  display:flex;align-items:center;gap:34px;padding-left:70px;white-space:nowrap;box-shadow:0 6px 0 rgba(21,26,44,.18)}
-.tape span{font:700 22px "IBM Plex Mono",monospace;color:#fff}
+.tape span{font:700 22px "Inter","Noto Sans TC","Noto Sans CJK TC",sans-serif;color:#fff}
 .tape i{font-style:normal;margin-left:8px}
 .tape .u{color:#5ee08f}.tape .d{color:#ff7d7d}
 .tape .sep{color:#f8d34a}
@@ -24,7 +24,7 @@ body{width:1200px;height:675px;position:relative;overflow:hidden;color:#151a2c;
 .date{display:inline-block;background:#f8d34a;border:3px solid #151a2c;border-radius:12px;padding:5px 14px;font-weight:900;font-size:22px;transform:rotate(-2.5deg);box-shadow:3px 4px 0 #151a2c;white-space:nowrap}
 .hero{display:flex;gap:22px;align-items:center;flex:none;min-width:0}
 .left{min-width:0;flex:1}
-.tk{font:700 92px/1 "IBM Plex Mono",monospace;letter-spacing:-2px;white-space:nowrap}
+.tk{font:700 92px/1 "Inter","Noto Sans TC","Noto Sans CJK TC",sans-serif;letter-spacing:-2px;white-space:nowrap}
 .tk .mk{background:linear-gradient(transparent 58%,#fbe25b 58%);padding:0 8px}
 .meta{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:10px;min-width:0}
 .pill{display:inline-block;font-weight:900;font-size:18px;padding:3px 12px;border-radius:999px;border:2px solid;white-space:nowrap}
@@ -38,14 +38,14 @@ body{width:1200px;height:675px;position:relative;overflow:hidden;color:#151a2c;
 .avs b{display:grid;place-items:center;font-size:14px;color:#151a2c;background:#f8d34a;box-shadow:0 0 0 2px #151a2c}
 .side{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:4px}
 .side svg{width:260px;height:78px}
-.side .c{font:700 32px "IBM Plex Mono",monospace}
-.side .l{font:700 15px "IBM Plex Mono",monospace;color:#3c4466}
+.side .c{font:700 32px "Inter","Noto Sans TC","Noto Sans CJK TC",sans-serif}
+.side .l{font:700 15px "Inter","Noto Sans TC","Noto Sans CJK TC",sans-serif;color:#3c4466}
 .u{color:#1f9d55}.d{color:#d23b4f}
 .heads{flex:1;min-height:0;background:#fff;border:3px solid #151a2c;border-radius:18px;box-shadow:0 5px 0 #151a2c;
  display:flex;flex-direction:column;justify-content:center;gap:8px;padding:14px 20px;overflow:hidden}
 .hl{display:flex;gap:12px;align-items:flex-start;min-width:0;font-weight:800;font-size:26px;line-height:1.28}
 .hl .lg{flex:none;width:42px;height:26px;border-radius:8px;background:#151a2c;color:#fff;display:grid;place-items:center;
- font:700 12px "IBM Plex Mono",monospace;letter-spacing:.4px;margin-top:4px}
+ font:700 12px "Inter","Noto Sans TC","Noto Sans CJK TC",sans-serif;letter-spacing:.4px;margin-top:4px}
 .hl .tx{min-width:0;flex:1}
 .hl.ko .tx{word-break:keep-all}
 .stats{display:flex;gap:14px;flex:none}
@@ -59,6 +59,7 @@ body{width:1200px;height:675px;position:relative;overflow:hidden;color:#151a2c;
  display:flex;align-items:center;justify-content:center;padding:0 24px;font-weight:700;font-size:18px;color:#3c4466;white-space:nowrap}
 .foot b{color:#151a2c}
 </style>
+<link rel="stylesheet" href="social_apple.css">
 <body>
 <div class="bg"></div><div class="dots"></div>
 <div class="tape" id="tape"></div>

@@ -3,7 +3,9 @@
 // episode is about, then draws og/tutorial-<lang>.png (1080x1350) and og/tutorial-story-<lang>.png (1080x1920)
 // from tools/tutorial.html. Shot fields (data/tutorial-episodes.json): go = page and hash, sel = CSS selector or
 // @top for the first screen, part = [first, last] child elements to frame, search = text to type in the 🔍 box,
-// image = an existing picture to show instead of a screenshot.
+// image = an existing picture to show instead of a screenshot, dark = shoot with the phone in dark mode.
+// node tools/tutorial.js --check: shoot every episode in both languages and fail if any feature can't be found
+// (Build check runs it, so a site change that moves a feature turns the check red instead of posting a wrong picture).
 const { chromium } = require('playwright');
 const fs = require('fs');
 const http = require('http');
@@ -33,6 +35,7 @@ async function shoot(page, base, lang, shot, warn) {
     warn(`教學圖：搵唔到 ${f}，改用網站首頁截圖`);
     shot = { go: '', sel: '@top' };
   }
+  await page.emulateMedia({ colorScheme: shot.dark ? 'dark' : 'light' });
   await page.goto(`${base}/${lang}/${shot.go || ''}`, { waitUntil: 'networkidle' });
   await page.addStyleTag({ content: '.donate-fab{display:none!important}' });
   await page.waitForTimeout(1200);
@@ -48,6 +51,7 @@ async function shoot(page, base, lang, shot, warn) {
       if (!el || !el.getBoundingClientRect().height) return null;
       const first = part ? el.children[part[0]] || el : el;
       first.scrollIntoView({ block: 'start' });
+      window.scrollTo(0, window.scrollY);  // a wide strip (熱門個股) must not scroll the page sideways
       // Leave room for the sticky tab bar.
       const sc = first.closest('#dive') || window;
       sc.scrollBy(0, -64);
@@ -60,11 +64,38 @@ async function shoot(page, base, lang, shot, warn) {
     }
     await page.waitForTimeout(400);
   }
+  // Near the end of the page it can't scroll further: start higher so the shot keeps its full phone-screen size
+  // (a shorter shot gets cropped at the sides by the phone frame).
+  top = Math.min(top, 1400 - SHOT_H);
   const png = await page.screenshot({ clip: { x: 0, y: top, width: W, height: SHOT_H } });
   return { wide: false, png };
 }
 
+async function checkAll() {
+  const cfg = JSON.parse(fs.readFileSync('data/tutorial-episodes.json', 'utf8'));
+  const ex = { TK: process.env.TK || 'NVDA', TKL: (process.env.TK || 'NVDA').toLowerCase().slice(0, 3), ACC: process.env.ACC || 'elonmusk' };
+  const srv = await serve();
+  const base = `http://127.0.0.1:${srv.address().port}`;
+  const b = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
+  const page = await b.newPage({ viewport: { width: W, height: 1400 }, isMobile: true, hasTouch: true });
+  const bad = [];
+  for (const e of cfg.episodes) {
+    const shot = JSON.parse(JSON.stringify(e.shot).replace(/\{(TK|TKL|ACC)\}/g, (_, k) => ex[k]));
+    if (shot.image) continue;  // drawn by another step of the same build
+    for (const lang of ['zh', 'en']) {
+      const fail = m => { bad.push(`第 ${e.n} 集：${m}`); console.log('::error::' + m); };
+      if (shot.go && !shot.go.startsWith('#') && !fs.existsSync(path.join(ROOT, lang, shot.go.split('#')[0], 'index.html'))) { fail(`${lang}/${shot.go} 唔存在`); continue; }
+      await shoot(page, base, lang, shot, fail);
+    }
+    console.log(`tutorial check ${e.n} ok`);
+  }
+  await b.close();
+  srv.close();
+  if (bad.length) { console.log(`::error::教學截圖有 ${bad.length} 個位搵唔到，改 data/tutorial-episodes.json 嘅 shot`); process.exit(1); }
+}
+
 (async () => {
+  if (process.argv[2] === '--check') return checkAll();
   const job = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
   const srv = await serve();
   const base = `http://127.0.0.1:${srv.address().port}`;
@@ -85,7 +116,7 @@ async function shoot(page, base, lang, shot, warn) {
       await art.setViewportSize({ width: 1080, height: h });
       await art.evaluate(([l, d, p, s]) => render(l, d, p, s), [lang, { episode: job.episode, total: job.total, title: L.title, how: L.how, wide }, pic, size]);
       await art.evaluate(async () => {
-        const want = ['900 60px "Noto Sans TC"', '700 30px "IBM Plex Mono"'];
+        const want = ['900 60px "Noto Sans TC"', '700 30px "Inter"'];
         const t = new Promise(r => setTimeout(r, 20000));
         await Promise.race([Promise.all(want.map(f => document.fonts.load(f, document.body.innerText))), t]);
         await document.fonts.ready;

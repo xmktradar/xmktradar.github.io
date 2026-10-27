@@ -28,7 +28,7 @@ const SIZE = { portrait: [1080, 1350], square: [1080, 1080] };
         await p.setViewportSize({ width: w, height: h });
         await p.evaluate(d => render(d), Object.assign({}, j.data, { lang: j.lang, size: j.size }));
         await p.evaluate(async () => {
-          const want = ['900 40px "Noto Sans TC"', '700 36px "IBM Plex Mono"'];
+          const want = ['900 40px "Noto Sans TC"', '700 36px "Inter"'];
           const t = new Promise(r => setTimeout(r, 20000));
           await Promise.race([Promise.all(want.map(f => document.fonts.load(f, document.body.innerText))), t]);
           await document.fonts.ready;

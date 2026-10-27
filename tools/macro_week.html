@@ -1,12 +1,12 @@
 <!doctype html><meta charset="utf-8">
 <!-- Saturday macro roundup pictures in the @thecrowdtape Instagram style: 1080x1350 feed and 1080x1920 Story.
      tools/macro_week.js calls render(lang, data, size); data comes from work/macro_week.json (tools/macro_week.py). -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Noto+Sans+TC:wght@400;500;700;900;900&display=block">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=block">
 <style>
 *{box-sizing:border-box}
 html,body{margin:0}
 body{width:1080px;height:1350px;position:relative;overflow:hidden;color:#151a2c;
- font-family:"Noto Sans TC","Noto Color Emoji",sans-serif}
+ font-family:"Noto Sans TC","Noto Sans CJK TC","Noto Color Emoji",sans-serif}
 body.story{height:1920px}
 .bg{position:absolute;inset:0;background:linear-gradient(150deg,#9fd8f0 0%,#b9c6f6 50%,#f3c9e4 100%)}
 .dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.55) 2px,transparent 2.1px);background-size:26px 26px;mask-image:linear-gradient(180deg,transparent 0,#000 75%)}
@@ -16,7 +16,7 @@ body.story{height:1920px}
 .brand{display:inline-flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:8px 22px 8px 10px;font-weight:900;font-size:30px;box-shadow:0 5px 0 rgba(21,26,44,.14);white-space:nowrap}
 .brand img{width:50px;height:50px;border-radius:12px;object-fit:cover;margin:-4px 0}
 .ep{display:inline-block;background:#f8d34a;border:4px solid #151a2c;border-radius:14px;padding:5px 18px;font-weight:900;font-size:30px;transform:rotate(-2.5deg);box-shadow:4px 5px 0 #151a2c;white-space:nowrap}
-.ep b{font-family:"IBM Plex Mono",monospace}
+.ep b{font-family:"Inter","Noto Sans TC","Noto Sans CJK TC",sans-serif}
 h1{margin:26px 0 0;font-weight:900;font-size:58px;line-height:1.18;max-width:950px}
 .card{margin-top:28px;width:100%;flex:1;min-height:0;background:#fff;border:4px solid #151a2c;border-radius:28px;box-shadow:0 10px 0 #151a2c;padding:18px 28px;display:flex;flex-direction:column;justify-content:space-between;text-align:left}
 .r{display:grid;grid-template-columns:330px 1fr 150px;align-items:center;gap:18px;padding:6px 0;border-top:2px solid #eceef4}
@@ -25,7 +25,7 @@ h1{margin:26px 0 0;font-weight:900;font-size:58px;line-height:1.18;max-width:950
 .r.top .nm::before{content:"🔥 "}
 .bar{height:34px;border-radius:999px;background:#eceef4;display:flex;overflow:hidden}
 .bar i{display:block;height:100%}.bar .b{background:#18a96b}.bar .r2{background:#e0485a}.bar .m{background:#aab0c2}
-.ct{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:25px;white-space:nowrap;text-align:right}
+.ct{font-family:"Inter","Noto Sans TC","Noto Sans CJK TC",sans-serif;font-weight:700;font-size:25px;white-space:nowrap;text-align:right}
 .ct .b{color:#118a56}.ct .r2{color:#c7354a}.ct .m{color:#6b7288}
 .ar{font-size:22px;font-weight:900;margin-left:6px}.ar.up{color:#118a56}.ar.dn{color:#c7354a}
 .none{color:#8a90a4;font-size:23px;font-weight:500}
@@ -38,6 +38,7 @@ h1{margin:26px 0 0;font-weight:900;font-size:58px;line-height:1.18;max-width:950
 .tap{display:none;margin-top:26px;font-weight:900;font-size:36px;background:#151a2c;color:#fff;border-radius:999px;padding:14px 34px}
 .story .tap{display:block}
 </style>
+<link rel="stylesheet" href="social_apple.css">
 <body>
 <div class="bg"></div><div class="dots"></div>
 <div class="main">

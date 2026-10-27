@@ -22,7 +22,7 @@ const path = require('path');
       try {
         await p.evaluate(d => render(d), j.data);
         await p.evaluate(async () => {
-          const want = ['900 52px "Noto Sans TC"', '700 92px "IBM Plex Mono"'];
+          const want = ['900 52px "Noto Sans TC"', '700 92px "Inter"'];
           const t = new Promise(r => setTimeout(r, 20000));
           await Promise.race([Promise.all(want.map(f => document.fonts.load(f, document.body.innerText))), t]);
           await document.fonts.ready;

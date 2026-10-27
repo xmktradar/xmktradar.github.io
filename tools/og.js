@@ -20,7 +20,7 @@ const path = require('path');
     await p.evaluate(([l, d]) => render(l, d), [lang, job.langs[lang]]);
     // Ask for each font explicitly; Google Fonts only downloads a face once text needs it.
     fonts = await p.evaluate(async () => {
-      const want = ['900 52px "Noto Sans TC"', '700 21px "Noto Sans TC"', '700 34px "IBM Plex Mono"'];
+      const want = ['900 52px "Noto Sans TC"', '700 21px "Noto Sans TC"', '700 34px "Inter"'];
       const t = new Promise(r => setTimeout(r, 20000));
       await Promise.race([Promise.all(want.map(f => document.fonts.load(f, document.body.innerText))), t]);
       await document.fonts.ready;
@@ -44,7 +44,7 @@ const path = require('path');
     for (const lang of ['zh', 'en']) {
       await ip.evaluate(([l, d]) => ig(l, d), [lang, job.langs[lang]]);
       await ip.evaluate(async () => {
-        const want = ['900 84px "Noto Sans TC"', '700 32px "Noto Sans TC"', '700 52px "IBM Plex Mono"'];
+        const want = ['900 84px "Noto Sans TC"', '700 32px "Noto Sans TC"', '700 52px "Inter"'];
         const t = new Promise(r => setTimeout(r, 20000));
         await Promise.race([Promise.all(want.map(f => document.fonts.load(f, document.body.innerText))), t]);
         await document.fonts.ready;
@@ -64,7 +64,7 @@ const path = require('path');
     const pic = 'data:image/png;base64,' + fs.readFileSync(`og/${job.date}${sfx}.png`).toString('base64');
     await pp.evaluate(([l, d, pc]) => portrait(l, d, pc), [lang, job.langs[lang], pic]);
     await pp.evaluate(async () => {
-      const want = ['900 62px "Noto Sans TC"', '700 48px "IBM Plex Mono"'];
+      const want = ['900 62px "Noto Sans TC"', '700 48px "Inter"'];
       const t = new Promise(r => setTimeout(r, 20000));
       await Promise.race([Promise.all(want.map(f => document.fonts.load(f, document.body.innerText))), t]);
       await document.fonts.ready;
@@ -84,7 +84,7 @@ const path = require('path');
       const pic = 'data:image/png;base64,' + fs.readFileSync(`og/social-${lang}.png`).toString('base64');
       await sp.evaluate(([l, d, pc]) => story(l, d, pc), [lang, job.langs[lang], pic]);
       await sp.evaluate(async () => {
-        const want = ['900 62px "Noto Sans TC"', '700 90px "IBM Plex Mono"'];
+        const want = ['900 62px "Noto Sans TC"', '700 90px "Inter"'];
         const t = new Promise(r => setTimeout(r, 20000));
         await Promise.race([Promise.all(want.map(f => document.fonts.load(f, document.body.innerText))), t]);
         await document.fonts.ready;

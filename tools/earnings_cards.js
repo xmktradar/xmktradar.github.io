@@ -18,7 +18,7 @@ const path = require('path');
     for (let i = 0; i < 4; i++) {
       await p.evaluate(([l, d, n, s]) => render(l, d, n, s), [j.lang, j.date, i + 1, j.slides[i]]);
       await p.evaluate(async () => {
-        const want = ['900 40px "Noto Sans TC"', '700 32px "Noto Sans TC"', '700 48px "IBM Plex Mono"'];
+        const want = ['900 40px "Noto Sans TC"', '700 32px "Noto Sans TC"', '700 48px "Inter"'];
         const t = new Promise(r => setTimeout(r, 20000));
         await Promise.race([Promise.all(want.map(f => document.fonts.load(f, document.body.innerText))), t]);
         await document.fonts.ready;

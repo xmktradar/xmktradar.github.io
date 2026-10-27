@@ -1,6 +1,6 @@
 {
  "start": "2026-10-17",
- "note": "週末教學 post（Tim 2026-10-12）：星期六日各一集，由 start 起計第 1 集，27 集後返第 1 集（第 27 集宏觀分頁 2026-10-13 加）。文案由 Claude 寫好，Grok bot 照貼。{TK}/{TKL}/{ACC}/{LANG} 由 tools/tutorial.py 每次換做當時最多人講嘅股票同帳號。",
+ "note": "週末教學 post（Tim 2026-10-12）：星期六日各一集，由 start 起計第 1 集，最後一集後返第 1 集（第 27 集宏觀分頁 2026-10-13 加）。文案由 Claude 寫好，Grok bot 照貼。{TK}/{TKL}/{ACC}/{LANG} 由 tools/tutorial.py 每次換做當時最多人講嘅股票同帳號。 2026-10-27 Tim：加第 28–34 集（10/12 之後嘅新功能），new_first 由 from 嗰個星期六起先播一輪，播完先返原本輪次。",
  "episodes": [
   {
    "n": 1,
@@ -28,12 +28,12 @@
    "zh": {
     "t": "免費、唔使登入、唔使裝 app",
     "b": "The Crowd Tape 完全免費，唔使開戶口、唔使登入，用手機瀏覽器打開就得。\n冇付費牆，冇會員專區，人人睇到嘅數據都一樣。",
-    "how": "用 Safari 或者 Chrome 打開，撳「加到主畫面」就可以當 app 咁用。"
+    "how": "撳頁頂「儲存網站」：Chrome 同 Android 一撳就裝；iPhone 跟住兩步「加到主畫面」，之後當 app 咁開。"
    },
    "en": {
     "t": "Free. No login. No app.",
     "b": "The Crowd Tape is completely free. No account and no login: just open it in your phone's browser.\nNo paywall and no members-only area; everyone sees the same data.",
-    "how": "Open it in Safari or Chrome and tap \"Add to Home Screen\" to use it like an app."
+    "how": "Tap \"Save site\" at the top: one tap on Chrome and Android; on iPhone follow the two steps to Add to Home Screen, then open it like an app."
    }
   },
   {
@@ -95,12 +95,12 @@
    },
    "zh": {
     "t": "專為 iPhone 而設，一隻手都用到",
-    "b": "網站係為手機設計：卡片式排版、字夠大、長表格可以左右碌，帳號名嗰欄仲會固定唔走。\n搭車、排隊都可以快快睇吓今日大神講咩。",
+    "b": "網站係為手機設計：卡片式排版、字夠大，長清單先顯示頭幾項，撳「再顯示」先睇晒。\n右下角有「↑」一撳返頁頂，搭車、排隊都可以快快睇吓今日大神講咩。",
     "how": "用手機打開，撳任何一張帳號卡片試吓。"
    },
    "en": {
     "t": "Built for your phone",
-    "b": "The site is designed for phones: card layout, readable text, long tables you can swipe sideways while the account column stays put.\nCheck what the crowd is saying on the bus or in a queue.",
+    "b": "The site is designed for phones: card layout, readable text, and long lists that show the first items with a \"show more\" button.\nThe ↑ button in the corner takes you back to the top. Check what the crowd is saying on the bus or in a queue.",
     "how": "Open it on your phone and tap any account card."
    }
   },
@@ -171,34 +171,34 @@
    "n": 10,
    "shot": {
     "go": "",
-    "sel": "section.c5.panel"
+    "sel": "section.c12.panel:has(.hbar .track.stk)"
    },
    "zh": {
     "t": "「市場關注度變化」：邊隻股熱緊？",
-    "b": "每隻股票對比上一期多咗定少咗人講，一眼睇晒；仲會標埋業績日。\n突然多人講嘅股票，通常就係市場下一個焦點。",
-    "how": "「每日」tab 入面嘅「市場關注度變化」，可以左右碌。"
+    "b": "每隻股票一條棒：顏色分看多、中性、未表態同看空，括號係對比上一期多咗定少咗人講。\n已經冇人再講嘅股票會自動篩走；突然多人講嘅，通常就係市場下一個焦點。",
+    "how": "「每日」tab 入面嘅「市場關注度變化」。"
    },
    "en": {
     "t": "\"Attention shifts\": what is heating up?",
-    "b": "See at a glance which stocks are being talked about more or less than last period, with earnings dates marked.\nA stock that suddenly gets attention is often the market's next focus.",
-    "how": "Find \"Attention shifts\" in the Daily tab; swipe sideways for more."
+    "b": "One bar per stock, split into bullish, neutral, no view and bearish, with the change versus last period in brackets.\nStocks nobody talks about any more drop off; a stock that suddenly gets attention is often the market's next focus.",
+    "how": "\"Attention shifts\" in the Daily tab."
    }
   },
   {
    "n": 11,
    "shot": {
     "go": "",
-    "sel": "section.c7.panel"
+    "sel": "section.c12.panel:has(.sx-head)"
    },
    "zh": {
-    "t": "「各帳號立場」：一格睇晒邊個睇好邊個睇淡",
-    "b": "一個表將每個帳號對每隻股票嘅立場排出嚟：綠色睇好、紅色睇淡，空白即係冇提過。\n想知某個大神點睇某隻股，搵佢嗰行就得。",
-    "how": "「每日」tab 入面嘅「各帳號立場」，帳號欄固定，股票可以左右碌。"
+    "t": "「各帳號立場」：每隻股邊個睇好、邊個睇淡",
+    "b": "每隻股票一行，按幾多個帳號講過排先後；大神頭像分成看多、看空、中性同未表態幾組，仲有一句看多同看空理由。\n上面可以揀「有分歧」「多人看多」「多人看空」，撳一行就見到每個帳號嘅最新講法。",
+    "how": "「每日」tab 入面嘅「各帳號立場」，撳任何一行。"
    },
    "en": {
-    "t": "\"Stance by account\": who likes what, in one grid",
-    "b": "One table lays out every account's stance on every stock: green bullish, red bearish, blank means not mentioned.\nWant to know what one account thinks of one stock? Find its row.",
-    "how": "\"Stance by account\" in the Daily tab; the account column stays fixed as you swipe."
+    "t": "\"Stance by account\": who is bullish or bearish on each stock",
+    "b": "One row per stock, ranked by how many accounts discussed it, with avatars grouped into bullish, bearish, neutral and no view, plus a one-line reason for each side.\nFilter by \"split\", \"many bullish\" or \"many bearish\", and tap a row to see each account's latest take.",
+    "how": "\"Stance by account\" in the Daily tab; tap any row."
    }
   },
   {
@@ -294,12 +294,12 @@
    },
    "zh": {
     "t": "熱力圖：每隻股每日嘅熱度同立場",
-    "b": "每格係一日：顏色代表當日大神淨係睇好定睇淡，深淺代表有幾多人講。\n一隻股幾時開始熱、立場幾時轉，成個月一張圖睇晒。",
+    "b": "每格係一日：顏色代表當日大神淨係睇好定睇淡，深淺代表有幾多人講；只列最少 3 個帳號講過、熱咗最少 3 日嘅股票。\n一隻股幾時開始熱、立場幾時轉，成個月一張圖睇晒。",
     "how": "「每月」tab 最底嘅「個股關注度與觀點隨時間的變化」。"
    },
    "en": {
     "t": "Heat map: buzz and stance, day by day",
-    "b": "Each square is one day: the colour shows whether the accounts were net bullish or bearish, and the shade shows how many talked about it.\nSee when a stock heated up and when views turned, a whole month in one picture.",
+    "b": "Each square is one day: the colour shows whether the accounts were net bullish or bearish, and the shade shows how many talked about it. Only stocks with 3+ accounts on 3+ days are listed.\nSee when a stock heated up and when views turned, a whole month in one picture.",
     "how": "\"Stock attention and views over time\" at the bottom of the Monthly tab."
    }
   },
@@ -474,6 +474,138 @@
     "b": "The Fed, inflation, bond yields, oil, tariffs: when the {N} accounts talk macro, we sort it into 9 topics.\nFor each topic you see how many think it is bullish, bearish or neutral for US stocks, whether that is better or worse than last week, and tap to read everyone's latest take.",
     "how": "Tap \"Macro\" in the tab bar."
    }
+  },
+  {
+   "n": 28,
+   "shot": {
+    "go": "earnings/",
+    "sel": "@top"
+   },
+   "zh": {
+    "t": "📊 財報簡報：大型股業績一頁睇晒",
+    "b": "市值 500 億美元以上嘅美股，每間最新一季財報整理成 5 章：結果 vs 預期、成長率、收入線、利潤率同現金流。\n數字來自 SEC 文件同 Yahoo Finance，每 4 個鐘自動更新，列表仲有搜尋同每間公司嘅預覽卡。",
+    "how": "撳分頁列「📊 最新財報簡報」，或者打開 thecrowdtape.com/zh/earnings/。"
+   },
+   "en": {
+    "t": "📊 Earnings briefs: big-cap results on one page",
+    "b": "Every US stock worth $50B+ gets its latest quarter in 5 chapters: results vs estimates, growth, revenue lines, margins and cash flow.\nNumbers come from SEC filings and Yahoo Finance and refresh every 4 hours; the list has search and a preview card for each company.",
+    "how": "Tap \"📊 Latest earnings briefs\" in the tab row, or open thecrowdtape.com/en/earnings/."
+   }
+  },
+  {
+   "n": 29,
+   "shot": {
+    "go": "",
+    "sel": "#hot-stocks"
+   },
+   "zh": {
+    "t": "熱門個股：7 日最多人講邊幾隻",
+    "b": "「熱門個股」列出過去 7 日大神提得最多嘅股票同提及次數，例如 {TK}。\n撳代號就直接去嗰隻股嘅個股頁，睇每個帳號點講。",
+    "how": "首頁「熱門個股」，撳任何一個代號。"
+   },
+   "en": {
+    "t": "Hot stocks: most talked about in 7 days",
+    "b": "\"Hot stocks\" lists the stocks the accounts mentioned most over the past 7 days, with the count, such as {TK}.\nTap a ticker to go straight to its stock page and see what each account says.",
+    "how": "\"Hot stocks\" on the homepage; tap any ticker."
+   }
+  },
+  {
+   "n": 30,
+   "shot": {
+    "go": "",
+    "sel": "section.t3"
+   },
+   "zh": {
+    "t": "「今日三句重點」：10 秒知今日發生咩",
+    "b": "打開網站第一格就係「今日三句重點」：共識變化最大、最多人講同最大分歧，三句講晒。\n每句都附股票代號，撳落去就見詳細。",
+    "how": "打開網站，「每日」tab 第一格。"
+   },
+   "en": {
+    "t": "\"Today in 3 lines\": the day in 10 seconds",
+    "b": "The first box on the site is \"Today in 3 lines\": the biggest consensus shift, the most discussed stock and the biggest split, in three sentences.\nEach line has a ticker you can tap for the details.",
+    "how": "Open the site; it is the first box in the Daily tab."
+   }
+  },
+  {
+   "n": 31,
+   "shot": {
+    "go": "stock/{TK}/",
+    "sel": "section.tv-chart"
+   },
+   "zh": {
+    "t": "個股頁 TradingView 圖表：睇完好淡即刻驗證",
+    "b": "每個個股頁都嵌入咗 TradingView 走勢圖，可以放大縮細、轉時間範圍。\n大神睇好定睇淡之後，自己對住圖表核實吓走勢。",
+    "how": "打開任何個股頁，例如 /zh/stock/{TK}/，碌到「走勢圖」。"
+   },
+   "en": {
+    "t": "TradingView chart on every stock page",
+    "b": "Every stock page has a TradingView chart built in: zoom, pan and change the time range.\nAfter reading the bulls and bears, check the price action yourself.",
+    "how": "Open any stock page, such as /en/stock/{TK}/, and scroll to the chart."
+   }
+  },
+  {
+   "n": 32,
+   "shot": {
+    "go": "",
+    "sel": "@top",
+    "dark": true
+   },
+   "zh": {
+    "t": "深色模式：跟你部手機自動轉",
+    "b": "網站會跟你手機或者電腦嘅設定：白天白底，開咗深色模式就自動變黑底。\n夜晚喺床上睇都唔刺眼。",
+    "how": "喺 iPhone「設定 > 螢幕顯示與亮度」揀「深色」，再打開網站。"
+   },
+   "en": {
+    "t": "Dark mode that follows your phone",
+    "b": "The site follows your phone or computer setting: light by day, and black automatically when dark mode is on.\nEasy on the eyes at night.",
+    "how": "Turn on Dark in iPhone Settings > Display & Brightness, then open the site."
+   }
+  },
+  {
+   "n": 33,
+   "shot": {
+    "go": "tools/",
+    "sel": "@top"
+   },
+   "zh": {
+    "t": "工具頁：我哋用嚟核實「群眾」嘅工具",
+    "b": "統計好淡唔等於買賣訊號。「工具」頁介紹我哋自己用嘅 TradingView（睇圖）同 Stock Rover（估值同基本面），每個都寫明好處。\n部分係聯盟推廣連結，唔影響好淡統計。",
+    "how": "撳頁頂「工具」。"
+   },
+   "en": {
+    "t": "Tools page: what we use to check the crowd",
+    "b": "Bull and bear counts are not trade signals. The Tools page shows what we use ourselves: TradingView for charts and Stock Rover for valuation and fundamentals, with the benefits of each.\nSome are affiliate links; they never affect the counts.",
+    "how": "Tap \"Tools\" at the top."
+   }
+  },
+  {
+   "n": 34,
+   "shot": {
+    "go": "newsletter/",
+    "sel": "@top"
+   },
+   "zh": {
+    "t": "每週電子報：好淡統計直送你個電郵",
+    "b": "唔想日日開網站？訂閱每週電子報，每星期一封，總結一星期大神嘅好淡統計。\n免費、隨時取消，過往期數都喺網站睇到。",
+    "how": "撳頁底「電子報」，打你個電郵撳「訂閱」。"
+   },
+   "en": {
+    "t": "Weekly newsletter: the crowd in your inbox",
+    "b": "Not opening the site every day? Get the weekly newsletter: one email a week with the bull and bear counts.\nFree, cancel any time, and past issues are on the site.",
+    "how": "Tap \"Newsletter\" at the bottom of the page, enter your email and tap Subscribe."
+   }
   }
- ]
+ ],
+ "new_first": {
+  "from": "2026-10-31",
+  "episodes": [
+   28,
+   29,
+   30,
+   31,
+   32,
+   33,
+   34
+  ]
+ }
 }

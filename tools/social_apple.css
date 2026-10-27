@@ -1,0 +1,78 @@
+/* Apple-style cards on the social pictures (Tim, 2026-10-27): the comic backgrounds stay (.bg .rays .dots .deco),
+   everything drawn on top switches to the site's new look: white rounded cards with soft shadows instead of thick
+   black outlines and hard drop shadows, nothing tilted, Apple blue accent, Apple's green/red/grey for bull/bear/neutral,
+   Inter for numbers and tickers. Linked last by every picture template in tools/ so it wins over the template's own
+   <style>. Class names are shared across templates; a rule for a class a template does not use does nothing. */
+:root{--ink:#1d1d1f;--mut:#6e6e73;--blue:#0071e3;--bull:#248a3d;--bull-bg:#e9f8ee;--bear:#d70015;--bear-bg:#ffebea;
+  --neu:#6e6e73;--neu-bg:#f2f2f7;--warn:#b25000;--warn-bg:#fff4e5;--card:0 18px 40px rgba(0,0,0,.14),0 2px 6px rgba(0,0,0,.06)}
+body{color:var(--ink);font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+
+/* nothing tilted, no black outlines, no hard offset shadows */
+.date,.ep,.kick,.badge,.swipe,.streak,.talk,.ttl,.more,.tape,.phone,.wide,.pic,.s,#cover .cv-date{transform:none!important}
+
+/* the big panel behind the content: frosted glass */
+.glow{background:rgba(255,255,255,.55);border:0;border-radius:44px;box-shadow:0 24px 60px rgba(0,0,0,.16);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%)}
+
+/* cards */
+.box,.card,.row,.col,.heads,.q,.give,.verdict,.how,.mg>div,#cover .cv-panel,.s{background:#fff;border:0!important;border-radius:28px;box-shadow:var(--card)}
+.cq{border-top:1px solid #e5e5ea}
+.cq img,.row img,.q img,.cvq img{box-shadow:none}
+.empty{background:rgba(255,255,255,.88);border-radius:24px;color:var(--mut)}
+
+/* top bar: brand, date, page number */
+.brand,#cover .cv-brand{box-shadow:0 6px 18px rgba(0,0,0,.10)}
+.date,.ep,#cover .cv-date{background:rgba(255,255,255,.92);border:0;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.10);color:var(--ink)}
+.pg{background:var(--blue);color:#fff}
+.win,.label{background:rgba(255,255,255,.92);border:0;border-radius:999px;color:var(--mut)}
+
+/* labels and buttons */
+.kick{background:var(--ink);color:#fff;border-radius:999px}
+.ttl,.talk{background:#fff;border:0;border-radius:999px;box-shadow:var(--card);color:var(--ink)}
+.swipe,.more,.foot .cta,.tap{background:var(--blue);color:#fff;border:0;border-radius:999px;box-shadow:0 10px 24px rgba(0,113,227,.35)}
+.streak{background:#ff9500;border:0;border-radius:999px;box-shadow:none}
+.cta{background:var(--ink);border-radius:28px}
+.cta div:first-child{color:#2997ff}
+
+/* bull / bear / neutral */
+.pill{border:0!important}
+.pill.g{color:var(--bull);background:var(--bull-bg)}
+.pill.r{color:var(--bear);background:var(--bear-bg)}
+.pill.n{color:var(--neu);background:var(--neu-bg)}
+.pill.o,.fl{color:var(--warn);background:var(--warn-bg);border:0!important}
+.stat{border:0!important;box-shadow:var(--card);border-radius:24px}
+.stat.g{background:var(--bull-bg);color:var(--bull)}
+.stat.r{background:var(--bear-bg);color:var(--bear)}
+.stat.b{background:#e8f1fb;color:#0066cc}
+.stat.p{background:#f4ecfd;color:#8944ab}
+#cover .cv-stat{background:#e8f1fb;border:0;color:#0066cc;box-shadow:none;border-radius:24px}
+.badge{border:0;border-radius:999px;box-shadow:var(--card);color:#fff}
+.badge.bull{background:#34c759}.badge.bear{background:#ff3b30}.badge.neutral{background:#8e8e93}
+.tag{border:0!important}
+.tag.up{background:var(--bull-bg);color:var(--bull)}
+.tag.dn{background:var(--bear-bg);color:var(--bear)}
+.u,.up{color:#248a3d}.d,.dn{color:#d70015}
+
+/* rank circles, avatars, bars, charts */
+.rk{background:var(--ink);color:#fff;border:0!important}
+.card:first-child .rk,.card:first-of-type .rk{background:var(--blue);color:#fff}
+.avs img,.avs b{border-color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.avs b{background:#f2f2f7;color:var(--ink)}
+.bar:has(> .b),.bar:has(> .r){border:0;box-shadow:var(--card)}
+.bar .b{background:#34c759;color:#fff}.bar .r{background:#ff3b30;color:#fff}
+.chart svg{background:#fff;border:0;border-radius:24px;box-shadow:var(--card)}
+.seg .meter{border:0;background:#f2f2f7}
+.bar i{background:var(--blue);opacity:1}
+.hl .lg{background:var(--ink)}
+
+/* headline numbers: Apple's blue-to-pink gradient instead of the yellow marker */
+.big span,.handle span,h1 .hl{background:linear-gradient(90deg,#0071e3,#8944ab 55%,#e3007f);-webkit-background-clip:text;background-clip:text;
+  color:transparent;padding:0 4px}
+
+/* phone frame and screenshots in the guide and story pictures */
+.phone{background:#1d1d1f;box-shadow:0 30px 60px rgba(0,0,0,.28)}
+.wide,.pic{border:0;border-radius:28px;box-shadow:0 24px 50px rgba(0,0,0,.22)}
+
+/* footer pill */
+.foot{background:rgba(255,255,255,.92);color:var(--mut)}
+.foot b{color:var(--ink)}

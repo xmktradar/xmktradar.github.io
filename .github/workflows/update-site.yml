@@ -39,6 +39,11 @@ jobs:
         run: |
           command -v ffmpeg >/dev/null 2>&1 || { sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg; }
           ffmpeg -version | head -1
+      - name: Install fonts for the social pictures (same look even when Google Fonts is slow)
+        continue-on-error: true
+        run: |
+          sudo apt-get install -y -qq --no-install-recommends fonts-noto-cjk fonts-inter || { sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends fonts-noto-cjk fonts-inter; }
+          fc-list | grep -qi "Noto Sans CJK TC" || echo "::warning::Noto Sans CJK 裝唔到，社交圖有機會用後備字型"
       - name: Install Chinese converter
         continue-on-error: true
         run: pip install opencc-python-reimplemented==0.1.7
