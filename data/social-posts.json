@@ -1984,9 +1984,175 @@
       "EWZ"
      ]
     }
+   },
+   "intraday_close": {
+    "post_et": "15:40",
+    "post_hkt": "03:40",
+    "generated_at": "2026-10-27T15:42:51-04:00",
+    "date": "2026-10-27",
+    "date_kst": "2026-10-28",
+    "quotes": {
+     "SPY": {
+      "price": 770.74,
+      "prev_close": 765.37,
+      "chg_pct": 0.7,
+      "time": "2026-10-27T15:42:50-04:00"
+     },
+     "QQQ": {
+      "price": 722.42,
+      "prev_close": 712.2,
+      "chg_pct": 1.43,
+      "time": "2026-10-27T15:42:50-04:00"
+     },
+     "DIA": {
+      "price": 523.66,
+      "prev_close": 522.97,
+      "chg_pct": 0.13,
+      "time": "2026-10-27T15:42:50-04:00"
+     },
+     "BA": {
+      "price": 167.62,
+      "prev_close": 188.31,
+      "chg_pct": -10.99,
+      "time": "2026-10-27T15:42:51-04:00"
+     },
+     "AAPL": {
+      "price": 346.93,
+      "prev_close": 343.91,
+      "chg_pct": 0.88,
+      "time": "2026-10-27T15:42:47-04:00"
+     },
+     "EWZ": {
+      "price": 34.455,
+      "prev_close": 34.15,
+      "chg_pct": 0.89,
+      "time": "2026-10-27T15:42:50-04:00"
+     },
+     "NBIS": {
+      "price": 171.28,
+      "prev_close": 153.27,
+      "chg_pct": 11.75,
+      "time": "2026-10-27T15:42:52-04:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-10-27T15:42:52-04:00",
+     "hkt": "2026-10-28 03:42"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "BA",
+      "chg_pct": -10.99,
+      "bull": 0,
+      "bear": 3,
+      "accounts": [
+       "KobeissiLetter",
+       "StockSavvyShay",
+       "TrendSpider",
+       "WallStJesus",
+       "TheTranscript_",
+       "bespokeinvest"
+      ]
+     },
+     {
+      "ticker": "AAPL",
+      "chg_pct": 0.88,
+      "bull": 0,
+      "bear": 2,
+      "accounts": [
+       "firstadopter",
+       "carlquintanilla",
+       "RedDogT3",
+       "Jason",
+       "TrungTPhan",
+       "Mr_Derivatives"
+      ]
+     },
+     {
+      "ticker": "EWZ",
+      "chg_pct": 0.89,
+      "bull": 0,
+      "bear": 2,
+      "accounts": [
+       "KobeissiLetter",
+       "jsblokland",
+       "KeithMcCullough",
+       "carlquintanilla",
+       "EricBalchunas",
+       "elerianm",
+       "bespokeinvest"
+      ]
+     },
+     {
+      "ticker": "NBIS",
+      "chg_pct": 11.75,
+      "bull": 2,
+      "bear": 1,
+      "accounts": [
+       "michaelsikand",
+       "StockSavvyShay",
+       "DanielTNiles",
+       "ripster47",
+       "LeopoldTracker_"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Into the close · As of 15:42 ET (03:42 HKT)\n\n$SPY +0.7% · $QQQ +1.4% · $DIA +0.1%\n\n$BA -11.0%, 3 accounts bearish on site\n$AAPL +0.9%, 2 accounts bearish on site\n\nhttps://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_close\n\n⚠️ Not investment advice\n#StockMarket #BA #AAPL",
+      "url": "https://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_close"
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "收市前回顧 · 截至 15:42 ET（03:42 HKT）\n\n$SPY +0.7% · $QQQ +1.4% · $DIA +0.1%\n\n$BA -11.0%，網站 3 個帳號看淡\n$AAPL +0.9%，網站 2 個帳號看淡\n$EWZ +0.9%，網站 2 個帳號看淡\n$NBIS +11.8%，網站 2 個帳號看好\n\n⚠️ 唔構成投資建議\n#美股 #BA #AAPL",
+      "url": null
+     },
+     "en": {
+      "text": "Into the close · As of 15:42 ET (03:42 HKT)\n\n$SPY +0.7% · $QQQ +1.4% · $DIA +0.1%\n\n$BA -11.0%, 3 accounts bearish on site\n$AAPL +0.9%, 2 accounts bearish on site\n$EWZ +0.9%, 2 accounts bearish on site\n$NBIS +11.8%, 2 accounts bullish on site\n\n⚠️ Not investment advice\n#StockMarket #BA #AAPL",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": true,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "TSLA",
+      "MU",
+      "BE",
+      "AMZN",
+      "SOFI",
+      "SKHY",
+      "INTC",
+      "SMH",
+      "CRWD",
+      "MSFT",
+      "CLS",
+      "SNDK",
+      "KO",
+      "CDNS",
+      "CRDO",
+      "GLW",
+      "IWM",
+      "LMT"
+     ],
+     "bear": [
+      "BA",
+      "AAPL",
+      "EWZ"
+     ]
+    }
    }
   },
-  "generated_at": "2026-10-27T14:52:35-04:00",
-  "generated_hkt": "2026-10-28 02:52"
+  "generated_at": "2026-10-27T15:42:51-04:00",
+  "generated_hkt": "2026-10-28 03:42"
  }
 }
