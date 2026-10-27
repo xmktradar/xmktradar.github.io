@@ -194,7 +194,46 @@
   ],
   "accn": "0000909832-26-000051"
  },
- "mcap": 443705393152,
+ "rules": 2,
+ "diag": {
+  "newest": "2026-08-30",
+  "rev_last": "2026-05-10",
+  "have": [
+   {
+    "c": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+    "start": "2025-09-01",
+    "end": "2026-08-30",
+    "val": 303154000000,
+    "form": "10-K",
+    "fp": "FY",
+    "filed": "2026-10-07"
+   }
+  ],
+  "rev_concepts_last": {
+   "Revenues": {
+    "start": "2025-09-01",
+    "end": "2026-02-15",
+    "form": "10-Q",
+    "fp": "Q2",
+    "filed": "2026-03-11"
+   },
+   "RevenueFromContractWithCustomerExcludingAssessedTax": {
+    "start": "2025-09-01",
+    "end": "2026-08-30",
+    "form": "10-K",
+    "fp": "FY",
+    "filed": "2026-10-07"
+   },
+   "SalesRevenueNet": {
+    "start": "2017-09-04",
+    "end": "2018-05-13",
+    "form": "10-Q",
+    "fp": "Q3",
+    "filed": "2018-06-07"
+   }
+  }
+ },
+ "mcap": 439371628544,
  "next": "2026-12-10",
  "last_report": null,
  "est": {

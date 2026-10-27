@@ -184,7 +184,84 @@
   ],
   "accn": "0001390777-18-000113"
  },
- "mcap": 99928719360,
+ "rules": 2,
+ "diag": {
+  "newest": "2026-06-30",
+  "rev_last": "2018-06-30",
+  "have": [
+   {
+    "c": "us-gaap:ContractWithCustomerLiabilityRevenueRecognized",
+    "start": "2026-01-01",
+    "end": "2026-06-30",
+    "val": 78000000,
+    "form": "10-Q",
+    "fp": "Q2",
+    "filed": "2026-07-31"
+   },
+   {
+    "c": "us-gaap:ContractWithCustomerLiabilityRevenueRecognized",
+    "start": "2026-04-01",
+    "end": "2026-06-30",
+    "val": 68000000,
+    "form": "10-Q",
+    "fp": "Q2",
+    "filed": "2026-07-31"
+   },
+   {
+    "c": "us-gaap:OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentNetOfTax",
+    "start": "2026-01-01",
+    "end": "2026-06-30",
+    "val": -304000000,
+    "form": "10-Q",
+    "fp": "Q2",
+    "filed": "2026-07-31"
+   },
+   {
+    "c": "us-gaap:OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentNetOfTax",
+    "start": "2026-04-01",
+    "end": "2026-06-30",
+    "val": 65000000,
+    "form": "10-Q",
+    "fp": "Q2",
+    "filed": "2026-07-31"
+   },
+   {
+    "c": "us-gaap:PaymentsToAcquireAvailableForSaleSecuritiesDebt",
+    "start": "2026-01-01",
+    "end": "2026-06-30",
+    "val": 19421000000,
+    "form": "10-Q",
+    "fp": "Q2",
+    "filed": "2026-07-31"
+   },
+   {
+    "c": "us-gaap:ProceedsFromSaleOfAvailableForSaleSecuritiesDebt",
+    "start": "2026-01-01",
+    "end": "2026-06-30",
+    "val": 5939000000,
+    "form": "10-Q",
+    "fp": "Q2",
+    "filed": "2026-07-31"
+   }
+  ],
+  "rev_concepts_last": {
+   "Revenues": {
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "form": "10-K",
+    "fp": "FY",
+    "filed": "2026-02-25"
+   },
+   "RevenueFromContractWithCustomerExcludingAssessedTax": {
+    "start": "2018-01-01",
+    "end": "2018-06-30",
+    "form": "10-Q",
+    "fp": "Q2",
+    "filed": "2018-08-03"
+   }
+  }
+ },
+ "mcap": 99461046272,
  "next": "2027-01-15",
  "last_report": null,
  "est": {

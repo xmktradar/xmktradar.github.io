@@ -166,7 +166,48 @@
   "none": true,
   "accn": "0001104659-26-073525"
  },
- "mcap": 51442917376,
+ "rules": 2,
+ "diag": {
+  "newest": "2026-08-29",
+  "rev_last": "2026-05-09",
+  "have": [
+   {
+    "c": "us-gaap:OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentNetOfTax",
+    "start": "2025-08-31",
+    "end": "2026-08-29",
+    "val": -2295000,
+    "form": "10-K",
+    "fp": "FY",
+    "filed": "2026-10-26"
+   },
+   {
+    "c": "us-gaap:Revenues",
+    "start": "2025-08-31",
+    "end": "2026-08-29",
+    "val": 20338555000,
+    "form": "10-K",
+    "fp": "FY",
+    "filed": "2026-10-26"
+   }
+  ],
+  "rev_concepts_last": {
+   "Revenues": {
+    "start": "2025-08-31",
+    "end": "2026-08-29",
+    "form": "10-K",
+    "fp": "FY",
+    "filed": "2026-10-26"
+   },
+   "SalesRevenueNet": {
+    "start": "2017-08-27",
+    "end": "2018-02-10",
+    "form": "10-Q",
+    "fp": "Q2",
+    "filed": "2018-03-16"
+   }
+  }
+ },
+ "mcap": 50874355712,
  "next": "2026-12-08",
  "last_report": null,
  "est": {
