@@ -22,12 +22,11 @@ const BASE = [['hook', 5], ['reveal', 4], ['vs', 6], ['s1', 7], ['s2', 7], ['s3'
 const COVER_FRAMES = 17; // ~0.7s. Keep in sync with COVER_FRAMES in tools/carousel_vo.py.
 const COVER = COVER_FRAMES / FPS;
 const MAX_VIDEO_S = 29;
-const VOICES = { zh: 'zh-CN-XiaoxiaoNeural', en: 'en-US-AndrewNeural', ko: 'ko-KR-SunHiNeural' };
+const VOICES = { zh: 'zh-CN-XiaoxiaoNeural', en: 'en-US-AndrewNeural' };
 // Cover copy. Numbers and tickers come from the job slides, not from here. en has no Chinese.
 const COVER_TEXT = {
   zh: { title: '每日精選', discussed: '最多人討論', bull: '最多人睇好', foot: '⚠️ 唔構成投資建議' },
   en: { title: 'Daily Picks', discussed: 'Most discussed', bull: 'Most bullish', foot: '⚠️ Not investment advice' },
-  ko: { title: '오늘의 픽', discussed: '최다 언급', bull: '최다 강세', foot: '⚠️ 투자 조언 아님' },
 };
 const SLOTS = (process.env.VIDEO_SLOTS || '1230').split(',').filter(Boolean);
 const LANGS = (process.env.VIDEO_LANGS || 'zh,en').split(',').filter(Boolean);  // Tim 2026-10-25: Chinese and English only
@@ -90,10 +89,6 @@ function words(lang, S0) {
       vs: ['🟢 Bulls', '🔴 Bears', ['Bears winning? 😱', 'Bulls winning? 🚀', 'Dead even! 🤝'][w]],
       caps: [`What's said on $${big} 💬`, '🔥 Top 4 most talked', 'Bulls 🟢 or bears 🔴?', '⚔️ Pick a side!'],
       outro: ['See it all 👇', 'thecrowdtape.com', 'Free · No login · Every 4h', 'Follow @thecrowdtape 🔔', '⚠️ Not investment advice'] },
-    ko: { hook: ['오늘', 'X 미국주식 고수 200명', '가장 많이 얘기한 종목은…', '???'], reveal: `${n}개 계정이 언급!`,
-      vs: ['🟢 강세', '🔴 약세', ['약세 우세? 😱', '강세 우세? 🚀', '무승부! 🤝'][w]],
-      caps: [`$${big}, 고수들 의견은? 💬`, '🔥 화제 Top 4', '같이 강세 🟢 vs 약세 🔴', '⚔️ 의견 최대 분열! 당신은?'],
-      outro: ['전체가 궁금하다면 👇', 'thecrowdtape.com', '무료 · 로그인 없음 · 4시간마다 업데이트', 'Follow @thecrowdtape 🔔', '⚠️ 투자 조언 아님'] },
   }[lang];
   return { ...T, n, bull, bear, big };
 }

@@ -26,31 +26,25 @@ POSTS = os.path.join(ROOT, 'data', 'social-posts.json')
 LIVE = {
     'zh': 'https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=daily',
     'en': 'https://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=daily',
-    'ko': 'https://thecrowdtape.com/ko/?utm_source=threads&utm_medium=social&utm_campaign=daily',
 }
-TAG = {'zh': '#美股', 'en': '#StockMarket', 'ko': '#미국주식'}
+TAG = {'zh': '#美股', 'en': '#StockMarket'}
 HEAD = {
     'zh': '10/21 X 大神共識快照： $SPCX 8 個帳號一齊睇好 📊',
     'en': 'Oct 21 · What top X accounts agree on: $SPCX, 8 accounts bullish 📊',
-    'ko': '10/21 X 인플루언서 컨센서스: $SPCX 계정 8개 동시 강세 📊',
 }
 WIN = {
     'zh': '數據範圍：10/21 00:21 – 10/21 06:10 HKT',
     'en': 'Data window: 10/21 00:21 – 10/21 06:10 HKT',
-    'ko': '데이터 범위: 10/21 00:21 – 10/21 06:10 HKT',
 }
 BLUE = {
     'zh': '🔵 共同看多：4 隻・共同看空：0 隻',
     'en': '🔵 Joint bullish: 4 · Joint bearish: 0',
-    'ko': '🔵 공동 강세: 4개・공동 약세: 0개',
 }
 
 
 def _ticker(lang, n, names):
     if lang == 'zh':
         return f'・{n} 個帳號： ' + '、 '.join(f'${t}' for t in names)
-    if lang == 'ko':
-        return f'・계정 {n}개: ' + ', '.join(f'${t}' for t in names)
     return f'・{n} accounts: ' + ', '.join(f'${t}' for t in names)
 
 
@@ -63,16 +57,12 @@ def _quote(lang, text):
 def _split(lang):
     if lang == 'zh':
         return '⚖️ 好淡分歧： $CRWV（2 好 2 淡）、 $COIN（3 好 3 淡）、 $MARA（2 好 2 淡）'
-    if lang == 'ko':
-        return '⚖️ 의견 엇갈림: $CRWV (강세 2 / 약세 2), $COIN (강세 3 / 약세 3), $MARA (강세 2 / 약세 2)'
     return '⚖️ Split views: $CRWV (2 bull / 2 bear), $COIN (3 bull / 3 bear), $MARA (2 bull / 2 bear)'
 
 
 def _streak(lang):
     if lang == 'zh':
         return '🔥 連續 2 日或以上都喺共同看多： $AMZN（6 日）、 $TSLA（5 日）、 $NVDA（4 日）、 $META（3 日）、 $AAPL（2 日）'
-    if lang == 'ko':
-        return '🔥 2일 이상 연속 공동 강세: $AMZN (6일), $TSLA (5일), $NVDA (4일), $META (3일), $AAPL (2일)'
     return '🔥 Joint bullish 2+ days in a row: $AMZN (6d), $TSLA (5d), $NVDA (4d), $META (3d), $AAPL (2d)'
 
 
@@ -144,8 +134,8 @@ def _with_quote(lang, base, body):
 
 def test_quote_shortened_before_other_cuts():
     """A little over the limit: shorten the quote, keep donate, streak, split and every ticker line."""
-    split = {'zh': '⚖️ 好淡分歧： $CRWV（2 好 2 淡）', 'en': '⚖️ Split: $CRWV', 'ko': '⚖️ 의견 엇갈림: $CRWV'}
-    streak = {'zh': '🔥 連續 2 日或以上都喺共同看多： $AMZN（3 日）', 'en': '🔥 Streak: $AMZN', 'ko': '🔥 연속 강세: $AMZN'}
+    split = {'zh': '⚖️ 好淡分歧： $CRWV（2 好 2 淡）', 'en': '⚖️ Split: $CRWV'}
+    streak = {'zh': '🔥 連續 2 日或以上都喺共同看多： $AMZN（3 日）', 'en': '🔥 Streak: $AMZN'}
     for lang in share.LANGS:
         base = build(lang, 1, None, donate=True, streak=False, split=False, n_names=1)
         parts = base.split('\n\n')
@@ -153,7 +143,7 @@ def test_quote_shortened_before_other_cuts():
         parts.insert(-2, streak[lang])
         base = '\n\n'.join(parts)
         assert len(base) < 500, (lang, len(base))
-        filler = '甲' if lang == 'zh' else ('가' if lang == 'ko' else 'market ')
+        filler = '甲' if lang == 'zh' else 'market '
         # Long enough to cross 500, short enough that a truncated quote still fits.
         body = filler * (560 - len(base))
         text = _with_quote(lang, base, body)
@@ -175,8 +165,8 @@ def test_quote_shortened_before_other_cuts():
 
 def test_long_drops_quote_then_donate_keeps_rest():
     """Quote cannot close the gap: drop it, then the donate line. Streak and split stay."""
-    split = {'zh': '⚖️ 好淡分歧： $CRWV（2 好 2 淡）', 'en': '⚖️ Split: $CRWV', 'ko': '⚖️ 의견 엇갈림: $CRWV'}
-    streak = {'zh': '🔥 連續 2 日或以上都喺共同看多： $AMZN（3 日）', 'en': '🔥 Streak: $AMZN', 'ko': '🔥 연속 강세: $AMZN'}
+    split = {'zh': '⚖️ 好淡分歧： $CRWV（2 好 2 淡）', 'en': '⚖️ Split: $CRWV'}
+    streak = {'zh': '🔥 連續 2 日或以上都喺共同看多： $AMZN（3 日）', 'en': '🔥 Streak: $AMZN'}
     for lang in share.LANGS:
         base = build(lang, 1, None, donate=True, streak=False, split=False, n_names=1)
         parts = base.split('\n\n')
@@ -190,7 +180,7 @@ def test_long_drops_quote_then_donate_keeps_rest():
                 break
             if len(donate_off) > 500:
                 raise AssertionError((lang, len(trial), len(donate_off)))
-            parts[parts.index(streak[lang])] = streak[lang] = streak[lang] + ('。' if lang == 'zh' else '가' if lang == 'ko' else ' x')
+            parts[parts.index(streak[lang])] = streak[lang] = streak[lang] + ('。' if lang == 'zh' else ' x')
         text = _with_quote(lang, '\n\n'.join(parts), '短' if lang == 'zh' else 'x')
         no_quote = '\n\n'.join(parts)
         assert len(text) > 500 and len(no_quote) > 500, (lang, len(text), len(no_quote))
@@ -240,7 +230,6 @@ def test_json_style_samples():
         extra = '\n'.join(_ticker(lang, n, ['SPCX', 'TSLA', 'AMZN', 'NVDA', 'META', 'AAPL']) for n in range(12, 2, -1))
         parts[2] = bullets + '\n' + extra
         quote = _quote(lang, ('這段引述很長，講合併同超智能。' if lang == 'zh' else
-                              '속보 인용문이 아주 깁니다. ' if lang == 'ko' else
                               'A very long quote about the merger and the accounts. ') * 8)
         url = URL_RE.search(parts[live_at]).group(0)
         disc = share.SHORT[lang]['disc']
@@ -309,7 +298,7 @@ def test_always_under_cap():
     assert '#StockMarket' in out.split('\n')
     assert len(share.fit_threads('x' * 800, 'zh')) <= 500
     assert share.fit_threads('', 'en') == ''
-    assert share.fit_threads(None, 'ko') == ''
+    assert share.fit_threads(None, 'zh') == ''
 
 
 def main():

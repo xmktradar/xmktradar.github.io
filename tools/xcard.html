@@ -105,7 +105,7 @@ if(D.spark&&D.spark.length>1){
  se.style.display='';
  se.innerHTML=`${spark(D.spark)}<span class="c ${ch>=0?'u':'d'}">${pct(ch)}</span><span class="l">1 month</span>`;
 }else se.style.display='none';
-const order=['zh','en','ko'], tag={zh:'ZH',en:'EN',ko:'KO'};
+const order=['zh','en'], tag={zh:'ZH',en:'EN'};
 const heads=D.heads||{};
 const rows=order.filter(l=>heads[l]).map(l=>`<div class="hl ${l}"><span class="lg">${tag[l]}</span><div class="tx">${esc(heads[l])}</div></div>`);
 const he=document.getElementById('heads');

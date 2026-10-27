@@ -27,9 +27,9 @@ SLOTS = (('1230', 7, ('12:30', '13:00', '13:30')),
          ('1630', 15, ('16:30', '17:00', '17:30')),
          ('2030', 19, ('20:30', '21:00', '21:30')))
 THEME = {'1230': 'snap', '1630': 'duel', '2030': 'focus'}
-TITLE = {'1230': {'zh': '今日快照', 'en': "Today's snapshot", 'ko': '오늘의 스냅샷'},
-         '1630': {'zh': '好淡對決', 'en': 'Bull vs bear', 'ko': '강세 vs 약세'},
-         '2030': {'zh': '開市前焦點', 'en': 'Before the open', 'ko': '개장 전 포커스'}}
+TITLE = {'1230': {'zh': '今日快照', 'en': "Today's snapshot"},
+         '1630': {'zh': '好淡對決', 'en': 'Bull vs bear'},
+         '2030': {'zh': '開市前焦點', 'en': 'Before the open'}}
 # Slots and languages that also get a motion video og/c/<day>-<slot>-<lang>.mp4 (tools/carousel_video.js, Tim 2026-10-24: 12:30 only).
 VIDEO_SLOTS = tuple(x for x in os.environ.get('VIDEO_SLOTS', '1230').split(',') if x)
 VIDEO_LANGS = tuple(x for x in os.environ.get('VIDEO_LANGS', 'zh,en').split(',') if x)  # Tim 2026-10-25: no Korean video
@@ -47,7 +47,7 @@ def video_missing(sl, key, now):
     return any(l not in have for l in VIDEO_LANGS)
 
 
-TALK = {'zh': '🗣️ 大神點講', 'en': '🗣️ What the accounts say', 'ko': '🗣️ 계정들의 의견'}
+TALK = {'zh': '🗣️ 大神點講', 'en': '🗣️ What the accounts say'}
 
 ZH_PT = re.compile(r'目標價[^\d$。；，]{0,12}?(?:由\s*\$?[\d,.]+\s*(?:美元)?\s*(?:上調|下調|調)?(?:至|到)\s*)?\$?\s?(\d+(?:,\d{3})*(?:\.\d+)?)')
 EN_PT = re.compile(r'(?:price target|\bPT\b)[^\d$.;]{0,25}?(?:from \$?[\d,.]+ to )?\$\s?(\d+(?:,\d{3})*(?:\.\d+)?)'
@@ -70,14 +70,6 @@ U = {
                heat='📈 Heating up (24h vs the 24h before)', now=lambda a, b: f'{a} accounts (was {b})', pt='🎯 Price targets accounts shared',
                views=lambda t: f'💬 What accounts say about ${t}', hot=lambda a, b: f'{a} accounts in 24h (was {b})',
                ask='💬 One view', d1='Today'),
-    'ko': dict(acc=lambda n: f'계정 {n}개', bull='강세', bear='약세', nb=lambda n: f'강세 {n}', nr=lambda n: f'약세 {n}',
-               swipe='👉 옆으로 넘겨 5장 보기', foot='⚠️ 투자 조언 아님', follow='Follow @thecrowdtape',
-               site='최신 수치: thecrowdtape.com', give='☕ 후원: 사이트 하단 PayPal', posted=lambda n: f'계정 {n}개 게시',
-               stocks=lambda n: f'종목 {n}개', talk='🔥 최다 언급 Top 4', jb='🟢 공동 강세', jr='🔴 공동 약세', split='⚖️ 의견 엇갈림',
-               none='오늘은 아직 없음', vs=lambda b, r: f'강세 {b} vs 약세 {r}', who='여러분은 어느 쪽인가요? 댓글로 알려주세요 👇',
-               heat='📈 관심 급상승 (24시간 vs 직전 24시간)', now=lambda a, b: f'계정 {a}개 (이전 {b}개)', pt='🎯 계정들이 언급한 목표가',
-               views=lambda t: f'💬 ${t}에 대한 계정 의견', hot=lambda a, b: f'24시간 내 계정 {a}개 언급 (이전 {b}개)',
-               ask='💬 한 줄 의견', d1='오늘'),
 }
 STANCE = {'睇好': 'bull', '睇淡': 'bear'}
 
@@ -94,9 +86,9 @@ class Site:
         return self.d['accounts'].get(h, {}).get('name') or h
 
     def text(self, p, lang, n):
-        t = {'zh': p.get('zh_summary') or p.get('summary_zh'), 'ko': p.get('ko_summary'),
+        t = {'zh': p.get('zh_summary') or p.get('summary_zh'),
              'en': p.get('en_summary') or p.get('text')}[lang]
-        t = re.sub(r'^\((?:Reposted|轉發|리포스트)\)\s*', '', t or '')
+        t = re.sub(r'^\((?:Reposted|轉發)\)\s*', '', t or '')
         return clean(t, n)
 
     def px(self, t):
@@ -113,7 +105,7 @@ def card(site, t, rk, pills, accs=(), note=''):
 def qtext(site, p, lang, n):
     """A post's summary without the account's own @handle or name in front (it is already shown in bold)."""
     text = site.text(p, lang, 400)
-    text = re.sub(r'^[(（](?:Reposted by|[^)）]*(?:轉發|转发|리포스트))[^)）]*[)）]\s*', '', text)  # "(Reposted by @x)" lead-in
+    text = re.sub(r'^[(（](?:Reposted by|[^)）]*(?:轉發|转发))[^)）]*[)）]\s*', '', text)  # "(Reposted by @x)" lead-in
     text = re.sub(r'^(?:(?:@?' + re.escape(p['handle']) + r'|' + re.escape(site.name(p['handle'])) + r')\s*[:：]?\s*)+', '', text, flags=re.I)
     return clean(dedupe_handle(p.get('handle'), text), n)
 
@@ -176,7 +168,7 @@ def snap(site, s, lang, day, win):
                 qs.append({'acc': p['handle'], 'av': site.av(p['handle']), 'text': qtext(site, p, lang, 100 if lang == 'en' else 56), 'url': p['url']})
     q = qs[0] if qs else None
     cover = {'kind': 'cover', 'kicker': TITLE['1230'][lang], 'win': win,
-             'lead': {'zh': '最多人討論', 'en': 'Most mentioned', 'ko': '가장 많이 언급'}[lang],
+             'lead': {'zh': '最多人討論', 'en': 'Most mentioned'}[lang],
              'big': hero['t'] if hero else '', 'sub': u['acc'](hero['accounts']) if hero else '',
              'pills': stance_pills(lang, hero.get('bull_accounts', 0), hero.get('bear_accounts', 0), hero['accounts']) if hero else [],
              'stats': [{'c': 'b', 'l': u['posted'](s['accounts'])}, {'c': 'p', 'l': u['stocks'](s.get('tickers', 0))}],
@@ -244,8 +236,8 @@ def duel(site, s, lang, day, win, pick):
     t, nb, nr, rows = pick
     spark, d1 = site.px(t) if t else ([], None)
     cover = {'kind': 'cover', 'kicker': TITLE['1630'][lang], 'win': win,
-             'lead': {'zh': '今日分歧最大', 'en': 'Most divided today', 'ko': '오늘 가장 엇갈린 종목'}[lang] if s['split'] else
-                     {'zh': '今日最多人講', 'en': 'Most talked-about today', 'ko': '오늘 가장 많이 언급된 종목'}[lang],
+             'lead': {'zh': '今日分歧最大', 'en': 'Most divided today'}[lang] if s['split'] else
+                     {'zh': '今日最多人講', 'en': 'Most talked-about today'}[lang],
              'big': t or '', 'sub': u['vs'](nb, nr), 'bar': [nb, nr], 'spark': spark, 'd1': d1, 'd1l': u['d1'],
              'quote': None, 'swipe': u['swipe'], 'note': u['who']}
     cover['quotes'] = side_quotes(site, t, lang, skip={r['url'] for r in duel_three(rows)}, n=1) if t else []
@@ -254,7 +246,7 @@ def duel(site, s, lang, day, win, pick):
         p = site.by_url.get(r['url'], {})
         slides.append({'kind': 'account', 'kicker': TITLE['1630'][lang], 't': t, 'acc': r['acc'], 'name': site.name(r['acc']),
                        'av': site.av(r['acc']), 'side': r['s'],
-                       'badge': u['bull'] if r['s'] == 'bull' else (u['bear'] if r['s'] == 'bear' else {'zh': '中性', 'en': 'Neutral', 'ko': '중립'}[lang]),
+                       'badge': u['bull'] if r['s'] == 'bull' else (u['bear'] if r['s'] == 'bear' else {'zh': '中性', 'en': 'Neutral'}[lang]),
                        'text': dedupe_handle(r['acc'], site.text(p, lang, 330 if lang == 'en' else 170) or clean(r.get('why', ''), 170)),
                        'when': (p.get('time_hkt') or '')[5:16].replace('T', ' ').replace('-', '/') + ' HKT' if p else ''})
     while len(slides) < 4:  # fewer than three accounts: close with the call to action
@@ -351,7 +343,7 @@ def focus(site, s, lang, day, win, pick):
                 q = {'acc': p['handle'], 'av': site.av(p['handle']), 'text': qtext(site, p, lang, 200 if lang == 'en' else 110), 'url': p['url']}
                 break
     cover = {'kind': 'cover', 'kicker': TITLE['2030'][lang], 'win': win,
-             'lead': {'zh': '升溫最快', 'en': 'Heating up fastest', 'ko': '가장 빠르게 뜨는 종목'}[lang],
+             'lead': {'zh': '升溫最快', 'en': 'Heating up fastest'}[lang],
              'big': h0['t'] if h0 else '', 'sub': u['hot'](h0['now'], h0['was']) if h0 else '', 'spark': spark, 'd1': d1, 'd1l': u['d1'],
              'quote': None, 'swipe': u['swipe']}
     cover['quotes'] = side_quotes(site, h0['t'], lang, skip={q['url']} if q else (), n=1) if h0 else []
@@ -364,7 +356,7 @@ def focus(site, s, lang, day, win, pick):
              'text': qtext(site, site.by_url[x['url']], lang, 90 if lang == 'en' else 46) if x['url'] in site.by_url else ''} for x in pts]}
     elif alt:
         third = {'kind': 'views', 'h': u['views'](alt['t']), 't': alt['t'], 'rows': [
-            dict(r, av=site.av(r['acc']), badge=u['bull'] if r['s'] == 'bull' else (u['bear'] if r['s'] == 'bear' else {'zh': '中性', 'en': 'Neutral', 'ko': '중립'}[lang]))
+            dict(r, av=site.av(r['acc']), badge=u['bull'] if r['s'] == 'bull' else (u['bear'] if r['s'] == 'bear' else {'zh': '中性', 'en': 'Neutral'}[lang]))
             for r in views_of(site, alt, lang)]}
     else:
         third = {'kind': 'cards', 'secs': [], 'cta': cta(lang)}
@@ -388,11 +380,10 @@ def head_line(slot, lang, day, lead):
 
 
 END = {'zh': ['👉 左右滑睇晒 5 張圖', IG_BIO['zh'], IG_FOLLOW['zh']],
-       'en': ['👉 Swipe through all 5 pictures', IG_BIO['en'], IG_FOLLOW['en']],
-       'ko': ['👉 옆으로 넘겨 5장 모두 보기', IG_BIO['ko'], IG_FOLLOW['ko']]}
+       'en': ['👉 Swipe through all 5 pictures', IG_BIO['en'], IG_FOLLOW['en']]}
 
 
-FB_TAP = {'zh': '👉 撳圖睇晒 4 張', 'en': '👉 Tap a picture to see all 4', 'ko': '👉 사진을 눌러 4장 모두 보기'}  # Facebook has no swiping
+FB_TAP = {'zh': '👉 撳圖睇晒 4 張', 'en': '👉 Tap a picture to see all 4'}  # Facebook has no swiping
 
 
 def versions(lang, head, body, tks):
@@ -477,7 +468,7 @@ def cap_focus(site, s, lang, day, pick):
 def slot_page(sp):
     """The three time slots at the top of /social/: 4 pictures and each platform's text."""
     out = []
-    names = {'zh': '中文', 'en': 'English', 'ko': '한국어'}
+    names = {'zh': '中文', 'en': 'English'}
     box = lambda title, text, n: (f'<h4>{title}</h4><textarea readonly rows="{n}">{html.escape(text)}</textarea>'
                                   '<button onclick="navigator.clipboard.writeText(this.previousElementSibling.value);this.textContent=\'已複製 ✓\'">複製</button>')
     for key, _, times in SLOTS:

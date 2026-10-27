@@ -1,6 +1,6 @@
 # Social post slots
 
-`tools/share.py` writes `data/social-posts.json` on the daily social run. `social_actions` decides the branch. `tools/intraday.py` adds the `intraday` key during US market hours (spec `kr` is stored as `ko`). On a trading day, at or after `SOCIAL_HOUR` 07:00 HKT (or `SOCIAL_FORCE=1`, or a legacy file), `main()` rebuilds the weekday posts and then adds `top5`, Friday `weekly_thread`, `hot_stock`, `discussion`, `three_lines`, `why_posts` and `atomic_posts`. Saturday and Sunday, at or after the same hour, write `weekend` and `atomic_posts` only. They do not rebuild weekday posts, `top5`, the Friday thread, `three_lines`, `why_posts`, `social/index.html` or the feeds. 07:00 HKT is 08:00 KST. `three_lines` is suggested at 08:30 KST, before the first shared slot at 09:00 KST. That rebuild keeps an existing `intraday` object when its `date` is the same day. A US-holiday weekday is not a weekend and does not run the weekday branch unless forced.
+`tools/share.py` writes `data/social-posts.json` on the daily social run. `social_actions` decides the branch. `tools/intraday.py` adds the `intraday` key during US market hours. On a trading day, at or after `SOCIAL_HOUR` 07:00 HKT (or `SOCIAL_FORCE=1`, or a legacy file), `main()` rebuilds the weekday posts and then adds `top5`, Friday `weekly_thread`, `hot_stock`, `discussion`, `three_lines`, `why_posts` and `atomic_posts`. Saturday and Sunday, at or after the same hour, write `weekend` and `atomic_posts` only. They do not rebuild weekday posts, `top5`, the Friday thread, `three_lines`, `why_posts`, `social/index.html` or the feeds. 07:00 HKT is 08:00 KST. `three_lines` is suggested at 08:30 KST, before the first shared slot at 09:00 KST. That rebuild keeps an existing `intraday` object when its `date` is the same day. A US-holiday weekday is not a weekend and does not run the weekday branch unless forced.
 
 Numbers are copied from the files below. A missing count is skipped. An empty list is a translated "none today" line, not a filled-in row.
 
@@ -39,21 +39,20 @@ Today's five most bullish and five most bearish names. `tools/ranking.py` `rank_
 }
 ```
 
-`images`, `video` and `posts` have `zh`, `en`, and `ko`. Portrait is 1080×1350 (`og/top5-<lang>.png`, for X, Instagram, and Threads). Square is 1080×1080 (`og/top5-<lang>-sq.png`, for Facebook). `video.<lang>` points at `og/top5-<lang>.mp4` (1080×1920, about 12 seconds, silent), made by `tools/top5video.sh` from the portrait PNG. The update workflow runs that script after `top5card.js` when `ffmpeg` is on `PATH` and the PNG exists.
+`images`, `video` and `posts` have `zh` and `en`. Portrait is 1080×1350 (`og/top5-<lang>.png`, for X, Instagram, and Threads). Square is 1080×1080 (`og/top5-<lang>-sq.png`, for Facebook). `video.<lang>` points at `og/top5-<lang>.mp4` (1080×1920, about 12 seconds, silent), made by `tools/top5video.sh` from the portrait PNG. The update workflow runs that script after `top5card.js` when `ffmpeg` is on `PATH` and the PNG exists.
 
 Headings use the real list length on each side (5 kept when 5):
 
 - zh: `今日 X 大神共識：最看好 N 隻／最看淡 N 隻` (column `最看好 N 隻` / `最看淡 N 隻`)
 - en: `Top X accounts consensus today: Top N bullish / Top N bearish`
-- ko: `오늘 X 인플루언서 컨센서스: 강세 상위 N종목 / 약세 상위 N종목`
 
 Each post also has the date, the data window (`10/23 00:00 – HH:MM HKT`), both lists with account counts, `SHORT[lang]['disc']`, and hashtags. Instagram is capped at 5 hashtags (language base tags first, at most 2 ticker tags). Links use `tools/utm.py` `tag_url(url, platform, 'top5')` (`utm_source` is `x`, `threads`, `instagram` or `facebook`, `utm_medium=social`, `utm_campaign=top5`) and that post's language (`/<lang>/stock/<T>/`).
 
 - X: one link in the body, the first bull's stock page, or `/<lang>/` when there is no bull. `xlen` ≤ 280. Names that do not fit are dropped from the end of the longer list. The link stays on the lead bull. `has_link.x` is true when that URL is present.
-- Instagram: no URLs and no `thecrowdtape.com`. Exactly one link-in-bio line (`連結在個人簡介` / `link in bio` / `프로필 링크`). `has_link.instagram` is false. Stock links stay on Facebook / Threads `first_comment`. Hashtags 3–5 (language base tags first, at most 2 ticker tags). First line is the heading, which already names the counts.
+- Instagram: no URLs and no `thecrowdtape.com`. Exactly one link-in-bio line (`連結在個人簡介` / `link in bio`). `has_link.instagram` is false. Stock links stay on Facebook / Threads `first_comment`. Hashtags 3–5 (language base tags first, at most 2 ticker tags). First line is the heading, which already names the counts.
 - Threads and Facebook: the body has no URL. The link moves to `first_comment.threads` (the lead bull, or `/<lang>/` when there is no bull) and `first_comment.facebook` (one line per listed ticker). `has_link.threads` is true. `has_link.facebook` is true when either side has a name. Threads is passed through `fit_threads` (≤ 500 Unicode code points).
 
-Empty side copy: zh `今日暫無`, en `None today`, ko `오늘 없음`.
+Empty side copy: zh `今日暫無`, en `None today`.
 
 `share.py` writes `work/top5cards.json` (`sitedata.work()`). The update workflow, in **Share image and social posts**, runs `node tools/top5card.js` right after `tools/xcard.js`. The renderer is `tools/top5card.html` + `tools/top5card.js` (Playwright, `CHROME_PATH` the same way as `tools/xcard.js`, IBM Plex Mono and Noto Sans TC / KR). Published pictures are under `og/`, which the publish step already `git add`s.
 
@@ -65,7 +64,7 @@ Written in that same social run only when the HKT day is a Friday. Content is �
 {
   "date": "2026-10-23",
   "range": {"from": "2026-10-17", "to": "2026-10-23"},
-  "langs": {"en": ["post 1", "post 2"], "zh": [], "ko": []},
+  "langs": {"en": ["post 1", "post 2"], "zh": []},
   "note": "where the counts and the joins come from"
 }
 ```
@@ -81,11 +80,11 @@ History days inside `weekly.from`–`weekly.to` are sorted. The first day and th
 
 Posts, at most five, each `xlen` ≤ 280:
 
-1. Heading (`本週共識變化` / `This week's consensus changes` / `이번 주 컨센서스 변화`) and the range.
+1. Heading (`本週共識變化` / `This week's consensus changes`) and the range.
 2. Top bulls, when the list is not empty.
 3. Top bears, when the list is not empty.
 4. Changes, when history supports the comparison. No movement is the translated "no joins or drops" line.
-5. Last post: that language's short disclaimer and `https://thecrowdtape.com/<lang>/` from `tag_url(..., 'x', 'weekly_thread')`. English is `/en/`, Chinese `/zh/`, Korean `/ko/`.
+5. Last post: that language's short disclaimer and `https://thecrowdtape.com/<lang>/` from `tag_url(..., 'x', 'weekly_thread')`. English is `/en/`, Chinese `/zh/`.
 
 A list that does not fit in 280 keeps a prefix of the real names. `+N` is how many of those names were left off.
 
@@ -97,19 +96,18 @@ A list that does not fit in 280 keeps a prefix of the real names. `+N` is how ma
 
 - zh: `10/26 X 大神共識快照：最多人討論 $SPY（15 個帳號，3 好 3 淡）・最多人睇好 $INTC（3 個帳號）📊`
 - en: `Oct 26 · Most discussed: $SPY (15 accounts, 3 bull / 3 bear) · Most bullish: $INTC (3 accounts) 📊`
-- ko: `10/26 X 인플루언서 컨센서스: 가장 많이 언급: $SPY (계정 15개, 강세 3 / 약세 3) · 가장 많이 강세: $INTC (계정 3개) 📊`
 
 ## Shared fields
 
 Every slot carries `format`: `image_card`, `carousel`, `text_question` or `poll`. A poll also has `poll.<lang> = {question, options}` with 2–4 options. `top5` is `image_card`. `hot_stock` and `why_posts` are `carousel`. `discussion` is `poll`. `three_lines` is `text_question`. Weekend angles use the formats in the table below. An atomic `number` is `text_question`, `stock` is `image_card`, `expert_view` is `carousel`.
 
-Every body ends with `SHORT[lang]['disc']` (`⚠️ 唔構成投資建議` / `⚠️ Not investment advice` / `⚠️ 투자 조언 아님`) and a hashtag line: `#美股` / `#StockMarket` / `#미국주식`, plus `#TICKER` when the post names one ticker. Threads bodies are ≤ 500 code points (`fit_threads`). X bodies are ≤ 280 (`xlen`).
+Every body ends with `SHORT[lang]['disc']` (`⚠️ 唔構成投資建議` / `⚠️ Not investment advice`) and a hashtag line: `#美股` / `#StockMarket`, plus `#TICKER` when the post names one ticker. Threads bodies are ≤ 500 code points (`fit_threads`). X bodies are ≤ 280 (`xlen`).
 
-About half of Threads and Facebook copies have no link in the body. The index walks `zh`, `en`, `ko` and, within each language, `threads` then `facebook`. Even indexes get a link. The URL is not left in the body. It is stored on `first_comment`, with `SHORT[lang]['live']` (`最新數字 👉 ` / `Live numbers 👉 ` / `최신 수치 👉 `) in front, and `has_link` is true for that platform. Odd indexes set `has_link` false and omit that platform's comment. On `top5`, X keeps the link in the body; Instagram has no URL (`has_link.instagram` false, one link-in-bio line). Threads and Facebook still get `first_comment`. Atomic posts use one string, so `has_link` is a boolean on the flat zh-then-en-then-ko list (even indexes) and `first_comment` is a string tagged `utm_source=threads`. Every `.instagram` field is passed through `sanitize_instagram` (also from `utm.normalize_all`, and `python3 tools/ig_boost.py --apply` on both `data/social-posts.json` and `data/macro-week.json`) so captions stay URL-free.
+About half of Threads and Facebook copies have no link in the body. The index walks `zh`, `en` and, within each language, `threads` then `facebook`. Even indexes get a link. The URL is not left in the body. It is stored on `first_comment`, with `SHORT[lang]['live']` (`最新數字 👉 ` / `Live numbers 👉 `) in front, and `has_link` is true for that platform. Odd indexes set `has_link` false and omit that platform's comment. On `top5`, X keeps the link in the body; Instagram has no URL (`has_link.instagram` false, one link-in-bio line). Threads and Facebook still get `first_comment`. Atomic posts use one string, so `has_link` is a boolean on the flat zh-then-en list (even indexes) and `first_comment` is a string tagged `utm_source=threads`. Every `.instagram` field is passed through `sanitize_instagram` (also from `utm.normalize_all`, and `python3 tools/ig_boost.py --apply` on both `data/social-posts.json` and `data/macro-week.json`) so captions stay URL-free.
 
 Instagram caption rules, enforced by `sanitize_instagram` / `ig_tags`:
 
-- First line is a key point when the generator has one. Top-5 Instagram starts with the lead bull and lead bear: zh `最看好 $RSP（3 個帳號）・最看淡 $QQQ（5 個帳號）`, en `Most bullish $RSP (3 accounts) · most bearish $QQQ (5 accounts)`, ko `가장 강세 $RSP (계정 3개) · 가장 약세 $QQQ (계정 5개)`. Macro-week Instagram starts with the top theme and its counts, zh `本週宏觀：最多人講「其他」（利好 10・利淡 11）` (the theme name and the bull/bear counts are the real row). Daily, carousel, discussion, three_lines and weekend keep the headline those generators already write. `sanitize_instagram` never moves or deletes a body line. It may prepend a key-point line built from structured data only when line 1 has neither a `$TICKER` nor a digit. If it cannot build one, the caption is left as it is. Every original non-hashtag line stays, in order. `python3 tools/ig_boost.py --apply` prepends the top5 and macro headlines onto captions that do not already start with them, then sanitizes.
+- First line is a key point when the generator has one. Top-5 Instagram starts with the lead bull and lead bear: zh `最看好 $RSP（3 個帳號）・最看淡 $QQQ（5 個帳號）`, en `Most bullish $RSP (3 accounts) · most bearish $QQQ (5 accounts)`. Macro-week Instagram starts with the top theme and its counts, zh `本週宏觀：最多人講「其他」（利好 10・利淡 11）` (the theme name and the bull/bear counts are the real row). Daily, carousel, discussion, three_lines and weekend keep the headline those generators already write. `sanitize_instagram` never moves or deletes a body line. It may prepend a key-point line built from structured data only when line 1 has neither a `$TICKER` nor a digit. If it cannot build one, the caption is left as it is. Every original non-hashtag line stays, in order. `python3 tools/ig_boost.py --apply` prepends the top5 and macro headlines onto captions that do not already start with them, then sanitizes.
 - Hashtags are 3–5 (language base tags first, at most 2 ticker tags). Fewer than 3: fill from `IG_BASE_TAGS`. More than 5: drop from the end.
 - No URLs and no `thecrowdtape.com`. Exactly one link-in-bio line.
 - Weekend `langs.<lang>.instagram` is the Threads body run through the same sanitizer (`has_link.instagram` false).
@@ -118,8 +116,8 @@ Instagram caption rules, enforced by `sanitize_instagram` / `ig_tags`:
 
 IG multi-image sets (carousel `slots.*.images`, `ig_threads_daily.*.image_post.images`, and macro-week `ig_images`) end with a static follow/save card, one JPEG per language, 1080×1350:
 
-- `og/cta/ig-cta-zh.jpg` / `og/cta/ig-cta-en.jpg` / `og/cta/ig-cta-ko.jpg`
-- Copy: zh `覺得有用？收藏＋追蹤 @thecrowdtape，每日睇大神共識`; en `Found this useful? Save + follow @thecrowdtape for daily consensus`; ko `유용했다면 저장 + 팔로우 @thecrowdtape`
+- `og/cta/ig-cta-zh.jpg` / `og/cta/ig-cta-en.jpg`
+- Copy: zh `覺得有用？收藏＋追蹤 @thecrowdtape，每日睇大神共識`; en `Found this useful? Save + follow @thecrowdtape for daily consensus`
 - Same brand style as the other carousel slides (IBM Plex Mono, Noto Sans TC/KR, comic frame). No characters, no personal names, no URLs on the image. `@thecrowdtape` is OK.
 - Rendered once by `NODE_PATH=/tmp/pw/node_modules CHROME_PATH=/usr/bin/google-chrome node tools/ig_cta.js` (reuses `tools/carousel.html` `kind: 'igcta'`). `python3 tools/ig_boost.py --apply` renders then writes the JSON.
 - Facebook `images_fb` and single-image share fields (`images` as a string, top5 `{portrait, square}`) stay unchanged. Macro-week keeps `images.<lang>` as the original PNG URL for Facebook; `ig_images.<lang>` is `[macro PNG, CTA JPEG]`.
@@ -132,17 +130,17 @@ Top-level `ig_reel` on `data/social-posts.json` (slot `daily`) and `data/macro-w
   "slot": "daily",
   "video_path": null,
   "video_expected_path": "assets/reels/2026-10-23-daily.mp4",
-  "caption": {"zh": "", "en": "", "ko": ""}
+  "caption": {"zh": "", "en": ""}
 }
 ```
 
 Captions follow the Instagram rules above (no URLs, one bio line, 3–5 hashtags, key-point first line). Path convention is `assets/reels/<date_kst>-<slot>.mp4` (macro: `assets/reels/<date_kst>-macro-week.mp4`). `video_path` is that relative path only when the file exists in the repo at generation time; otherwise `null`. Never invented. `video_expected_path` is always the convention string. See `assets/reels/README.md` (1080×1920 mp4, H.264, ≤90s, no personal names).
 
-Macro-week `ig_reel.date_kst` is the Asia/Seoul date of the post, not the data window. `date` on `data/macro-week.json` is the Saturday the three languages go out (zh 20:00, en 20:30, ko 21:00 HKT). On any other day the file is a preview and `date` is still that coming Saturday: that future day is the posting day. 20:00 HKT is 21:00 KST, so the Seoul calendar date is the same Saturday. `from` and `to` are the seven-day window. On a preview, `to` can be today while `date` is next Saturday. The reel uses `date` at 20:00 HKT. It does not copy `to`.
+Macro-week `ig_reel.date_kst` is the Asia/Seoul date of the post, not the data window. `date` on `data/macro-week.json` is the Saturday the two languages go out (zh 20:00, en 20:30 HKT). On any other day the file is a preview and `date` is still that coming Saturday: that future day is the posting day. 20:00 HKT is 21:00 KST, so the Seoul calendar date is the same Saturday. `from` and `to` are the seven-day window. On a preview, `to` can be today while `date` is next Saturday. The reel uses `date` at 20:00 HKT. It does not copy `to`.
 
 `python3 tools/ig_boost.py --apply` upgrades today's JSON in place: sanitize IG captions, append the CTA to IG image lists, add `ig_reel`. It does not rebuild other content.
 
-`utm_campaign` is the slot name: `hot_stock`, `discussion`, `weekend`, `three_lines`, `why`. Atomic posts use `atomic`. The platform is the field name (`x`, `threads`, `facebook` or `instagram`). A `first_comment` object is tagged per key. A `first_comment` string uses `threads`. `three_lines` and `why_posts` store the link on `{text, url}` (`url` is null when that copy has no link). A `three_lines` Threads copy also has `topic` (`美股`, `StockMarket`, `미국주식`, no `#`). Instagram never has a `url`.
+`utm_campaign` is the slot name: `hot_stock`, `discussion`, `weekend`, `three_lines`, `why`. Atomic posts use `atomic`. The platform is the field name (`x`, `threads`, `facebook` or `instagram`). A `first_comment` object is tagged per key. A `first_comment` string uses `threads`. `three_lines` and `why_posts` store the link on `{text, url}` (`url` is null when that copy has no link). A `three_lines` Threads copy also has `topic` (`美股`, `StockMarket`, no `#`). Instagram never has a `url`.
 
 Numbers in the no-repeat guard are the integers left after stripping URLs, ISO dates, `M/D`, `Month D`, `HH:MM` and years `19xx`/`20xx`. A ticker is a `$SYMBOL` that contains a letter. A full-body match (whitespace collapsed) across two different slots is a duplicate. Threads and Facebook of the same slot may share a body. `guard_slots` reports those problems. The builders drop a clashing `hot_stock` or `discussion`, drop a weekend item that clashes, and omit `weekend` if that leaves fewer than two posts. They omit `atomic_posts` when a body would copy another slot or when fewer than four points fit.
 
@@ -170,7 +168,7 @@ Weekday only. One popular name from `daily.bull` / `daily.bear` / `daily.split`,
 }
 ```
 
-`posts` has `zh`, `en` and `ko`. `nb` / `nr` are copied when they are numbers. Up to three `why` lines are quoted, trimmed from the end only so the Threads body stays within 500, and attributed `@acc：` unless the handle is already in the line. Chinese keeps those lines verbatim. English and Korean use the fixed title, the real counts and the `@handles`. They do not translate `why`. The link is `https://thecrowdtape.com/<lang>/stock/<T>/` with campaign `hot_stock`.
+`posts` has `zh` and `en`. `nb` / `nr` are copied when they are numbers. Up to three `why` lines are quoted, trimmed from the end only so the Threads body stays within 500, and attributed `@acc：` unless the handle is already in the line. Chinese keeps those lines verbatim. English uses the fixed title, the real counts and the `@handles`. They do not translate `why`. The link is `https://thecrowdtape.com/<lang>/stock/<T>/` with campaign `hot_stock`.
 
 ## `discussion`
 
@@ -187,7 +185,6 @@ Weekday only. The next counted name (`nb` or `nr` is a number) that is not the h
   "poll": {
     "zh": {"question": "你點睇 $SPY？", "options": ["看好", "看淡", "中性"]},
     "en": {"question": "What do you think of $SPY?", "options": ["Bullish", "Bearish", "Neutral"]},
-    "ko": {"question": "$SPY 어떻게 보세요?", "options": ["강세", "약세", "중립"]}
   },
   "posts": {
     "en": {"threads": "", "facebook": "", "poll": {"question": "", "options": []}, "has_link": {}, "first_comment": {}}
@@ -225,11 +222,11 @@ Saturday and Sunday (HKT date). `build_weekend` returns at least two posts or th
 }
 ```
 
-Each item has `langs.zh`, `langs.en` and `langs.ko`. A poll item also has `poll` and `langs.<lang>.poll`. Campaign is `weekend`. The home URL is used when the item has no ticker. `date_kst` on the weekend object is the Asia/Seoul date of that Saturday or Sunday (the run is 07:00 HKT, 08:00 KST). A Saturday morning run is that Saturday.
+Each item has `langs.zh` and `langs.en`. A poll item also has `poll` and `langs.<lang>.poll`. Campaign is `weekend`. The home URL is used when the item has no ticker. `date_kst` on the weekend object is the Asia/Seoul date of that Saturday or Sunday (the run is 07:00 HKT, 08:00 KST). A Saturday morning run is that Saturday.
 
 ## `three_lines`
 
-Weekday only, in the same 07:00 HKT social run. Not written on Saturday or Sunday. One post: the homepage "today in 3 lines" block, in zh, en and ko (spec `kr` is `ko`).
+Weekday only, in the same 07:00 HKT social run. Not written on Saturday or Sunday. One post: the homepage "today in 3 lines" block, in zh and en.
 
 The lines are the page's `RUX.threeLines` on the daily-tab rows. When `main()` can read the homepage dash (`tools/slim_pages.full_data`), the rows, the previous window and the sample are the same ones the daily tab uses (`dist`, `dailyWindow`, stance changes). Without that corpus, the fallback is `data/writeup-input.json` `daily.bull` / `bear` / `split` (`nb`, `nr`, `n_posts`). That fallback has no previous window, so it does not invent a consensus shift.
 
@@ -243,20 +240,20 @@ The lines are the page's `RUX.threeLines` on the daily-tab rows. When `main()` c
 | `suggested_kst` | `08:30` |
 | `format` | `text_question` |
 | `source` | Which corpus the lines came from |
-| `x` / `facebook` | `{zh, en, ko: {text, url}}`. `url` is null when that copy has no link |
-| `threads` | `{zh, en, ko: {text, url, topic}}`. `topic` is `美股` / `StockMarket` / `미국주식` with no `#`. `url` is null when that copy has no link |
-| `instagram` | `{zh, en, ko: {text}}`. No `url` |
+| `x` / `facebook` | `{zh, en: {text, url}}`. `url` is null when that copy has no link |
+| `threads` | `{zh, en: {text, url, topic}}`. `topic` is `美股` / `StockMarket` with no `#`. `url` is null when that copy has no link |
+| `instagram` | `{zh, en: {text}}`. No `url` |
 | `has_link` | Per platform, per language. `has_link.x.<lang>` is true exactly when `x.<lang>.url` is set. `has_link.threads.<lang>` is true exactly when `threads.<lang>.url` is set |
 
-Wording matches the daily tab (single spaces). zh `今日三句重點` / `共識變化最大` / `最多人討論` / `分歧最大`. en `Today in 3 lines` / `Biggest consensus shift` / `Most mentioned` / `Biggest disagreement`. ko `오늘의 3줄 요약` / `합의 변화 최대` / `최다 언급` / `의견 차이 최대`. A missing line is left out. If all three are missing and the sample or window is real, the body is the page's empty sentence for that language.
+Wording matches the daily tab (single spaces). zh `今日三句重點` / `共識變化最大` / `最多人討論` / `分歧最大`. en `Today in 3 lines` / `Biggest consensus shift` / `Most mentioned` / `Biggest disagreement`.. A missing line is left out. If all three are missing and the sample or window is real, the body is the page's empty sentence for that language.
 
-The consensus-shift line uses the daily-tab phrase for the same hours yesterday once, with no outer parentheses around it: zh `淨看多比例 -100% → +75% 對比昨日同時段`, en `net bullish -100% → +75% vs the same hours yesterday`, ko `순강세 비율 -100% → +75% 어제 같은 시간대 대비`. The page wraps that phrase in another pair of parentheses; the post does not.
+The consensus-shift line uses the daily-tab phrase for the same hours yesterday once, with no outer parentheses around it: zh `淨看多比例 -100% → +75% 對比昨日同時段`, en `net bullish -100% → +75% vs the same hours yesterday`. The page wraps that phrase in another pair of parentheses; the post does not.
 
-The window and the sample are one line, for example `10/23 00:00 – 09:55 HKT · 120 posts / 45 accounts` (zh `則貼文` / `個帳號`, ko `게시물` / `계정`). Counts are copied. A missing count is left out. Threads, Facebook and Instagram keep that line. X drops it only after ticker hashtags, when the post would pass 280.
+The window and the sample are one line, for example `10/23 00:00 – 09:55 HKT · 120 posts / 45 accounts` (zh `則貼文` / `個帳號`). Counts are copied. A missing count is left out. Threads, Facebook and Instagram keep that line. X drops it only after ticker hashtags, when the post would pass 280.
 
-X is ≤ 280 by `xlen` (each URL counts as 23). Every language keeps the title line (`今日三句重點` / `Today in 3 lines` / `오늘의 3줄 요약`) and puts that language's home URL on the last line of the body. `x.<lang>.url` is that same URL. It is non-null exactly when the URL appears in `x.<lang>.text`, and `has_link.x` mirrors it. To fit, drop in order: ticker hashtags (keep the primary tag `#美股` / `#StockMarket` / `#미국주식`), then the window/sample label, then trailing fact lines (keep at least one fact). Never drop the title, the disclaimer or the link.
+X is ≤ 280 by `xlen` (each URL counts as 23). Every language keeps the title line (`今日三句重點` / `Today in 3 lines`) and puts that language's home URL on the last line of the body. `x.<lang>.url` is that same URL. It is non-null exactly when the URL appears in `x.<lang>.text`, and `has_link.x` mirrors it. To fit, drop in order: ticker hashtags (keep the primary tag `#美股` / `#StockMarket`), then the window/sample label, then trailing fact lines (keep at least one fact). Never drop the title, the disclaimer or the link.
 
-Threads is ≤ 500 by `fit_threads`. Threads attaches one topic per post, so ticker hashtags are left off (those tickers are already `$TICKER` cashtags in the text). `threads.<lang>.topic` is `美股` / `StockMarket` / `미국주식` with no `#`, and the body ends with exactly one hashtag, `#` plus that topic. The link rule is unchanged: the URL is on `url` only, never in the text. zh and ko have `url` null; en has the Threads UTM url. `has_link.threads` is true exactly when `url` is set.
+Threads is ≤ 500 by `fit_threads`. Threads attaches one topic per post, so ticker hashtags are left off (those tickers are already `$TICKER` cashtags in the text). `threads.<lang>.topic` is `美股` / `StockMarket` with no `#`, and the body ends with exactly one hashtag, `#` plus that topic. The link rule is unchanged: the URL is on `url` only, never in the text. zh has `url` null; en has the Threads UTM url. `has_link.threads` is true exactly when `url` is set.
 
 Facebook always has the language home URL in the body and in `url`. Instagram has no URL, one link-in-bio line, and 3–5 hashtags. The generator's lines stay in order: the title, then the facts. The sanitizer does not pull a fact line up to replace the title. Links are `tag_url(url, platform, 'three_lines')` on `/<lang>/`.
 
@@ -271,14 +268,14 @@ Weekday only, same run. Not written on Saturday or Sunday. One object per hot na
 | `accounts` | `nb + nr` when at least one of them is a number. Not the length of the quote list |
 | `window`, `sample` | The same window and sample as `three_lines` when that slot was built, otherwise the top5 window and `daily.posts` / `daily.accounts` |
 | `bull_reasons`, `bear_reasons` | `[{acc, text}]`. Omitted when that side has none |
-| `threads` | `{zh, en, ko: {text, url}}` |
+| `threads` | `{zh, en: {text, url}}` |
 | `x` | `{en: {text, url}}` only when the English body fits in 280 (`xlen`) |
 | `suggested_kst` | One of `09:00`, `11:30`, `14:00`, `17:00`, `20:00`, `22:30`, earliest free slots |
 | `date_kst` | On each list item: Asia/Seoul date of `suggested_kst` on that item's posting day. The list shape stays. Top-level `why_posts_date_kst` is the earliest of those |
 | `format` | `carousel` |
-| `has_link` | `{threads: {zh, en, ko}, x?: {en}}` |
+| `has_link` | `{threads: {zh, en}, x?: {en}}` |
 
-Each language quotes that language's real summary, the same source as the homepage why-line. Chinese is `rows[].why` (the page's `zh_summary`). English is the row's `why_en` / `en_summary`, or the dash post with the same url: `en_summary`, then the original `text` when that summary is missing or still contains CJK Han. Korean is the row's `why_ko` / `ko_summary`, or the post's `ko_summary` (no English fallback). `/en/` and `/ko/` copy those fields into `zh_summary` before rendering the why-line (`build_langs.swap_data`). The quote is the sentence that names the ticker (`RUX.clauseFor`), with the leading `@handle` stripped once (`dedupe_handle`) and URLs removed. It is not translated and not invented. English or Korean text that still contains CJK Han outside a `$TICKER` or `#TICKER` counts as a missing translation. `rows[].s` picks the side. A bull-list or bear-list row with no `s` uses that list's side. A split row with no `s` is skipped. The reason list is chosen once, in row order, and zh, en and ko share it (same count, accounts and order). A row is kept only when every language has a real summary. If one language lacks a translation, that reason is dropped in all three. The counts line stays. A name with no shared reason is omitted. `bull_reasons` and `bear_reasons` store the Chinese quotes for that shared list. The post attributes the line to `@handle`.
+Each language quotes that language's real summary, the same source as the homepage why-line. Chinese is `rows[].why` (the page's `zh_summary`). English is the row's `why_en` / `en_summary`, or the dash post with the same url: `en_summary`, then the original `text` when that summary is missing or still contains CJK Han. `/en/` copies those fields into `zh_summary` before rendering the why-line (`build_langs.swap_data`). The quote is the sentence that names the ticker (`RUX.clauseFor`), with the leading `@handle` stripped once (`dedupe_handle`) and URLs removed. It is not translated and not invented. English text that still contains CJK Han outside a `$TICKER` or `#TICKER` counts as a missing translation. `rows[].s` picks the side. A bull-list or bear-list row with no `s` uses that list's side. A split row with no `s` is skipped. The reason list is chosen once, in row order, and zh and en share it (same count, accounts and order). A row is kept only when every language has a real summary. If one language lacks a translation, that reason is dropped in all three. The counts line stays. A name with no shared reason is omitted. `bull_reasons` and `bear_reasons` store the Chinese quotes for that shared list. The post attributes the line to `@handle`.
 
 `python3 tools/three_why.py --merge-into data/social-posts.json` recomputes `three_lines`, `why_posts` and the adjusted `atomic_posts`, and writes only those keys.
 
@@ -288,12 +285,12 @@ Each language states the account count (`accounts`, and `nb` / `nr` when present
 
 ## `atomic_posts`
 
-4 or 5 posts per language, including Saturdays and Sundays (15 items when five points fit, 12 when only four do). The array is all Chinese posts, then English, then Korean. Each item is one point. The same point shares `slot_kst` across languages.
+4 or 5 posts per language, including Saturdays and Sundays (15 items when five points fit, 12 when only four do). The array is all Chinese posts, then English. Each item is one point. The same point shares `slot_kst` across languages.
 
 | Field | Meaning |
 | --- | --- |
 | `id` | `<lang>-number-<daily\|weekly>-<key>`, `<lang>-stock-<T>` or `<lang>-expert-<T>` |
-| `lang` | `zh`, `en` or `ko` |
+| `lang` | `zh` or `en` |
 | `slot_kst` | `09:00`, `11:30`, `14:00`, `17:00`, `20:00`, `22:30` (KST, one hour ahead of HKT). On a weekday, `why_posts` take the earliest of these and atomic posts take the times that remain. On a weekend, the first N times, one per point |
 | `date_kst` | Asia/Seoul date of `slot_kst` on the posting day. A Saturday HKT morning run uses that Saturday, not the weekday `date` |
 | `format` | `text_question` (number), `image_card` (stock), `carousel` (expert view) |
@@ -375,9 +372,8 @@ Live quotes: Yahoo chart API (same `update_prices.chart` session) for SPY, QQQ, 
       "threads": {
         "zh": {"text": "…", "url": "https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=intraday_1"},
         "en": {"text": "…", "url": null},
-        "ko": {"text": "…", "url": "https://thecrowdtape.com/ko/?utm_source=threads&utm_medium=social&utm_campaign=intraday_1"}
       },
-      "has_link": {"x": true, "threads": {"zh": true, "en": false, "ko": true}}
+      "has_link": {"x": true, "threads": {"zh": true, "en": false}}
     }
   }
 }
@@ -393,9 +389,9 @@ Live quotes: Yahoo chart API (same `update_prices.chart` session) for SPY, QQQ, 
 | `quote_time` | latest `regularMarketTime`, ISO ET plus HKT string |
 | `quotes_ok` / `fallback` | false / true when any of SPY, QQQ, DIA is missing |
 | `hot` | site rows only: `ticker`, `chg_pct` (null if no quote), `bull`, `bear`, `accounts` |
-| `x` | English only, `xlen` ≤ 280. Link `https://thecrowdtape.com/en/` with `utm_source=x&utm_medium=social&utm_campaign=<slot>` when the post includes a link. No zh/ko X. |
-| `threads` | zh/en/ko, ≤ 500 code points (`fit_threads`). Language-matched `/zh/`, `/en/`, `/ko/` (spec `/` for Chinese is the `/zh/` helper). About half of slots include a link, alternating by slot index and flipping on date parity. |
-| `has_link` | `x` boolean and `threads.{zh,en,ko}` booleans |
+| `x` | English only, `xlen` ≤ 280. Link `https://thecrowdtape.com/en/` with `utm_source=x&utm_medium=social&utm_campaign=<slot>` when the post includes a link. No zh X. |
+| `threads` | zh/en, ≤ 500 code points (`fit_threads`). Language-matched `/zh/`, `/en/` (spec `/` for Chinese is the `/zh/` helper). About half of slots include a link, alternating by slot index and flipping on date parity. |
+| `has_link` | `x` boolean and `threads.{zh,en}` booleans |
 
 Texts state the quote time (`As of HH:MM ET (HH:MM HKT)` from the latest `regularMarketTime`), not the slot post time. With no quotes, texts say site data as of the writeup `generated_hkt`. Index `%` and hot `%` sit next to the site account counts (`NVDA +2.1%, 8 accounts bullish on site`). `utm.normalize_file` runs after each write.
 

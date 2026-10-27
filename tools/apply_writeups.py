@@ -131,7 +131,7 @@ def highlights_item(x):
 
 
 RANGE_FMT = '{a} – {b} HKT'
-WEEK_TAG = {'zh': '近 7 日：', 'en': 'Last 7 days: ', 'ko': '최근 7일: '}
+WEEK_TAG = {'zh': '近 7 日：', 'en': 'Last 7 days: '}
 
 
 def card_range(day, lang, grok_range, written):

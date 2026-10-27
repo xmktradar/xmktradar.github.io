@@ -336,7 +336,6 @@ def test_language_matched_summaries():
     assert any('走勢弱' in r['text'] for r in qqq['bear_reasons'])
     assert not three_why.han_outside_tickers('Watch $NVDA and #QQQ')
     assert three_why.han_outside_tickers('看好 $NVDA')
-    assert not three_why.han_outside_tickers('NVDA 실적이 예상을 웃돌았다')
     for ticker, post in by.items():
         for lang in ('en',):
             text = post['threads'][lang]['text']

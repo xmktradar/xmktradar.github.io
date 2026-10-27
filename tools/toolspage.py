@@ -94,8 +94,6 @@ def page(template, lang, tools, sr_url):
     if not (sr_url or '').strip():
         enabled['stockrover'] = False
     html = drop_disabled(html, enabled)
-    if lang == 'ko':
-        html = re.sub(r'\s*<article\b[^>]*\bdata-region="ibkr"[^>]*>.*?</article>', '', html, flags=re.S)
     return html
 
 

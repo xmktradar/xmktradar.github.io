@@ -169,12 +169,10 @@ def test_caption_bull_headline():
     window = {
         'zh': f'數據範圍：{win}',
         'en': f'Data window: {win}',
-        'ko': f'데이터 범위: {win}',
     }
     joint = {
         'zh': '🔵 共同看多：1 隻・共同看空：0 隻',
         'en': '🔵 Joint bullish: 1 · Joint bearish: 0',
-        'ko': '🔵 공동 강세: 1개・공동 약세: 0개',
     }
 
     def pack(top, ticker, n, bull=True):
@@ -207,39 +205,32 @@ def test_caption_bull_headline():
     dual = {
         'zh': '10/26 X 大神共識快照：最多人討論 $SPY（15 個帳號，3 好 3 淡）・最多人睇好 $INTC（3 個帳號）📊',
         'en': 'Oct 26 · Most discussed: $SPY (15 accounts, 3 bull / 3 bear) · Most bullish: $INTC (3 accounts) 📊',
-        'ko': '10/26 X 인플루언서 컨센서스: 가장 많이 언급: $SPY (계정 15개, 강세 3 / 약세 3) · 가장 많이 강세: $INTC (계정 3개) 📊',
     }
     bull_only = {
         'zh': '10/26 X 大神共識快照：最多人討論 $SPY（9 個帳號，4 個睇好）・最多人睇好 $INTC（2 個帳號）📊',
         'en': 'Oct 26 · Most discussed: $SPY (9 accounts, 4 bullish) · Most bullish: $INTC (2 accounts) 📊',
-        'ko': '10/26 X 인플루언서 컨센서스: 가장 많이 언급: $SPY (계정 9개, 강세 4) · 가장 많이 강세: $INTC (계정 2개) 📊',
     }
     bear_only = {
         'zh': '10/26 X 大神共識快照：最多人討論 $SPY（1 個帳號，1 個睇淡）・最多人睇好 $INTC（1 個帳號）📊',
         'en': 'Oct 26 · Most discussed: $SPY (1 account, 1 bearish) · Most bullish: $INTC (1 account) 📊',
-        'ko': '10/26 X 인플루언서 컨센서스: 가장 많이 언급: $SPY (계정 1개, 약세 1) · 가장 많이 강세: $INTC (계정 1개) 📊',
     }
     zero = {
         'zh': '10/26 X 大神共識快照：最多人討論 $SPY（15 個帳號）・最多人睇好 $INTC（3 個帳號）📊',
         'en': 'Oct 26 · Most discussed: $SPY (15 accounts) · Most bullish: $INTC (3 accounts) 📊',
-        'ko': '10/26 X 인플루언서 컨센서스: 가장 많이 언급: $SPY (계정 15개) · 가장 많이 강세: $INTC (계정 3개) 📊',
     }
     same = {
         'zh': '10/26 X 大神共識快照：最多人討論兼最多人睇好 $INTC（15 個帳號，3 好 3 淡）📊',
         'en': 'Oct 26 · Most discussed and most bullish: $INTC (15 accounts, 3 bull / 3 bear) 📊',
-        'ko': '10/26 X 인플루언서 컨센서스: 가장 많이 언급·가장 많이 강세: $INTC (계정 15개, 강세 3 / 약세 3) 📊',
     }
     old = {
         'zh': '10/26 X 大神共識快照：最多人睇好 $INTC（3 個帳號）📊',
         'en': 'Oct 26 · Most bullish: $INTC, 3 accounts 📊',
-        'ko': '10/26 X 인플루언서 컨센서스: 가장 강세 $INTC (계정 3개) 📊',
     }
     talked = {
         'zh': '10/26 X 大神快照：今日最多人講 $INTC（3 個帳號）💬',
         'en': 'Oct 26 · Most talked-about stock on X today: $INTC (3 accounts) 💬',
-        'ko': '10/26 X 스냅샷: 오늘 가장 많이 언급된 종목 $INTC (계정 3개) 💬',
     }
-    body = {'zh': '・3 個帳號： $INTC', 'en': '・3 accounts: $INTC', 'ko': '・계정 3개: $INTC'}
+    body = {'zh': '・3 個帳號： $INTC', 'en': '・3 accounts: $INTC'}
 
     for lang in share.LANGS:
         s, items = pack([spy], 'INTC', 3)
@@ -277,10 +268,8 @@ def test_caption_ig():
         head = cap['instagram'].split('\n', 1)[0]
         if lang == 'zh':
             assert '最多人睇好' in head and '$WMT' in head
-        elif lang == 'en':
-            assert 'Most bullish' in head and '$WMT' in head
         else:
-            assert '가장 강세' in head and '$WMT' in head
+            assert 'Most bullish' in head and '$WMT' in head
         assert DUP_RE.search(cap['instagram']) is None
         assert 'https://thecrowdtape.com' in cap['facebook']
         assert 'https://thecrowdtape.com' in cap['x']

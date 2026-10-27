@@ -183,17 +183,12 @@ def count_sentence(lang, n, pairs, nc, about_tr):
     if lang == 'zh':
         parts = '、'.join(f'<b>{c}</b> 個在 {esc(name)}' for name, c in pairs)
         tmpl = COUNT_TMPL
-    elif lang == 'en':
+    else:
         bits = [f'<b>{c}</b> on {esc(name)}' for name, c in pairs]
         parts = en_join(bits)
         tmpl = about_tr.get(COUNT_TMPL) or COUNT_TMPL
         if COUNT_TMPL not in about_tr:
             warn('en about dict is missing the account-count template')
-    else:
-        parts = ', '.join(f'{esc(name)} <b>{c}</b>개' for name, c in pairs)
-        tmpl = about_tr.get(COUNT_TMPL) or COUNT_TMPL
-        if COUNT_TMPL not in about_tr:
-            warn('ko about dict is missing the account-count template')
     return '<p class="count">' + fill(tmpl, n=n, parts=parts, nc=nc) + '</p>'
 
 

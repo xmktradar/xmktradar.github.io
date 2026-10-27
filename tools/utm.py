@@ -40,7 +40,7 @@ POST_FIELDS = ('x', 'instagram', 'threads', 'facebook', 'facebook_cta')
 UTM_KEYS = ('utm_source', 'utm_medium', 'utm_campaign')
 URL_RE = re.compile(r'https://thecrowdtape\.com[^\s)\]"]*')
 ASSET_EXT = ('.png', '.jpg', '.jpeg', '.webp', '.gif', '.xml')
-_NEWS_MARKERS = ('newsletter', '電子報', '뉴스레터')
+_NEWS_MARKERS = ('newsletter', '電子報')
 DATA_FILES = ('data/social-posts.json', 'data/tutorial-posts.json')
 
 

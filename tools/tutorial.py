@@ -37,12 +37,6 @@ TXT = {
                live='Try it 👉 ', give_s='☕ Support the site 👉 ', disc='⚠️ Not investment advice',
                disc_long='⚠️ A summary of public social media posts, not investment advice. Investing involves risk; do your own research.',
                tags='#StockMarket #USStocks #Stocks #Investing #FinTwit #WallStreet #InvestingTips #StocksForBeginners'),
-    'ko': dict(series='📘 The Crowd Tape 사용법', how='👉 사용법: ', bio='사이트는 무료, 프로필 링크 👉 thecrowdtape.com',
-               give='☕ 도움이 되셨다면 커피 한 잔 후원해 주세요: 프로필 링크, 사이트 하단 PayPal 🙏',
-               follow='@thecrowdtape 팔로우하고 매주 토·일 기능 하나씩 알아보세요.',
-               live='직접 보기 👉 ', give_s='☕ 후원하기 👉 ', disc='⚠️ 투자 조언 아님',
-               disc_long='⚠️ 공개 SNS 게시물을 정리한 것으로 투자 조언이 아닙니다. 투자에는 위험이 따르니 스스로 판단하세요.',
-               tags='#미국주식 #미장 #해외주식 #주식 #투자 #USStocks #주식공부 #주식초보'),
 }
 
 

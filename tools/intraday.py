@@ -3,7 +3,7 @@
 US/Eastern post times: open 09:45, 1 11:00, 2 12:15, 3 13:30, 4 14:45, close 15:40.
 Generation is 5 minutes before each post: 09:40, 10:55, 12:10, 13:25, 14:40, 15:35 ET.
 HKT is ET+12 in summer (EDT) and ET+13 in winter (EST, from the first Sunday in November).
-One English X post per slot; Threads in zh/en/ko. No Facebook. Spec language 'kr' is stored as 'ko'.
+One English X post per slot; Threads in zh/en. No Facebook.
 
 python3 tools/intraday.py --slot <name|auto|force>
 python3 tools/intraday.py --merge-from <file>
@@ -51,32 +51,26 @@ HEAD = {
     'intraday_open': {
         'en': ('US open', 'Open tape', 'At the open'),
         'zh': ('美股開市', '開市快報', '開市時點'),
-        'ko': ('미국 증시 개장', '개장 속보', '개장 시점'),
     },
     'intraday_1': {
         'en': ('Late morning', 'Morning tape', 'Late-morning check'),
         'zh': ('早盤觀察', '早盤快報', '午前觀察'),
-        'ko': ('오전장', '오전 속보', '오전 체크'),
     },
     'intraday_2': {
         'en': ('Midday', 'Lunch-hour tape', 'Midday check'),
         'zh': ('午市觀察', '午市快報', '午間觀察'),
-        'ko': ('한낮', '점심 전후', '한낮 체크'),
     },
     'intraday_3': {
         'en': ('Early afternoon', 'Afternoon check', 'Post-lunch tape'),
         'zh': ('午后觀察', '午后快報', '午後時點'),
-        'ko': ('오후 초반', '오후 속보', '오후 초반 체크'),
     },
     'intraday_4': {
         'en': ('Afternoon tape', 'Late-day check', 'Toward the close'),
         'zh': ('尾盤前', '尾盤觀察', '收市前快報'),
-        'ko': ('오후장', '오후 후반', '마감 쪽으로'),
     },
     'intraday_close': {
         'en': ('Into the close', 'Before the bell', 'Close recap'),
         'zh': ('收市前回顧', '收市前快報', '尾盤回顧'),
-        'ko': ('마감 전', '마감 속보', '마감 전 정리'),
     },
 }
 
@@ -519,8 +513,6 @@ def writeup_generated_hkt():
 def asof_line(lang, et_hhmm, hkt_hhmm):
     if lang == 'zh':
         return f'截至 {et_hhmm} ET（{hkt_hhmm} HKT）'
-    if lang == 'ko':
-        return f'{et_hhmm} ET ({hkt_hhmm} HKT) 기준'
     return f'As of {et_hhmm} ET ({hkt_hhmm} HKT)'
 
 
@@ -529,8 +521,6 @@ def site_asof_line(lang, generated_hkt):
     stamp = str(generated_hkt or '').strip()
     if lang == 'zh':
         return f'網站數據截至 {stamp}' if stamp else '網站數據'
-    if lang == 'ko':
-        return f'사이트 데이터 {stamp} 기준' if stamp else '사이트 데이터'
     return f'Site data as of {stamp}' if stamp else 'Site data'
 
 
@@ -570,9 +560,6 @@ def site_phrase(lang, item):
         word = 'account' if n == 1 else 'accounts'
         adj = 'bullish' if side == 'bull' else 'bearish'
         return f'{n} {word} {adj} on site'
-    if lang == 'ko':
-        adj = '강세' if side == 'bull' else '약세'
-        return f'사이트 {adj} 계정 {n}개'
     adj = '看好' if side == 'bull' else '看淡'
     return f'網站 {n} 個帳號{adj}'
 
@@ -597,22 +584,18 @@ def change_line(lang, kind, tickers):
         'joined_bull': {
             'en': f'Newly bullish on site: {names}',
             'zh': f'網站新入看好：{names}',
-            'ko': f'사이트 신규 강세: {names}',
         },
         'joined_bear': {
             'en': f'Newly bearish on site: {names}',
             'zh': f'網站新入看淡：{names}',
-            'ko': f'사이트 신규 약세: {names}',
         },
         'left_bull': {
             'en': f'Left the bullish list: {names}',
             'zh': f'退出看好：{names}',
-            'ko': f'강세에서 제외: {names}',
         },
         'left_bear': {
             'en': f'Left the bearish list: {names}',
             'zh': f'退出看淡：{names}',
-            'ko': f'약세에서 제외: {names}',
         },
     }
     return labels[kind][lang]

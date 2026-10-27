@@ -104,7 +104,6 @@ def test_en_lines():
     assert 'M E T A' in ls[5] and 'Q Q Q' in ls[5], ls[5]
     assert ls[6] == 'G L D, biggest split.', ls[6]
     assert ls[7] == 'Details at thecrowdtape dot com'
-    assert carousel_vo.lines(job('ko')) is None  # Korean video is not voiced
     assert carousel_vo.vo_langs() == ['zh', 'en']
     short = carousel_vo.en_lines(job('en'), short=True)
     assert len(short) == 8, short
@@ -535,8 +534,8 @@ def test_cover_text_and_encode():
 
 def test_social_page():
     posts = {k: 'text' for k in ('x', 'threads', 'instagram', 'facebook')}
-    sl = {'day': '2026-10-23', 'made_hkt': '2026-10-23 07:20', 'images': {l: [] for l in ('zh', 'en', 'ko')},
-          'posts': {l: dict(posts) for l in ('zh', 'en', 'ko')}, 'video': {'zh': URL.format('zh')}}
+    sl = {'day': '2026-10-23', 'made_hkt': '2026-10-23 07:20', 'images': {l: [] for l in ('zh', 'en')},
+          'posts': {l: dict(posts) for l in ('zh', 'en')}, 'video': {'zh': URL.format('zh')}}
     page = carousel.slot_page({'slots': {'1230': sl}})
     assert page.count('<video') == 1 and URL.format('zh') in page
     sl.pop('video')
