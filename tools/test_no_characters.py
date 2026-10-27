@@ -27,7 +27,7 @@ CHAR_DIR = os.path.join(ROOT, 'assets', 'characters')
 STICKERS_PY = os.path.join(TOOLS, 'stickers.py')
 THIS = os.path.basename(__file__)
 
-ZH_KO_NAMES = ('諾娃', '安柏', '艾莉絲', '노바', '엠버', '아이리스')
+ZH_NAMES = ('諾娃', '安柏', '艾莉絲')
 EN_RE = re.compile(r'\b(?:Nova|Ember|Iris)\b')
 BANNED_PATHS = ('assets/characters', 'tools/stickers.py')
 GONE_FUNCS = ('Cast', 'CAST_FILE', 'STORY_CAST', 'dialogue', 'add_dialogue',
@@ -51,7 +51,7 @@ def _walk_strings(obj):
 
 def _assert_clean(text, where):
     assert isinstance(text, str), where
-    for name in ZH_KO_NAMES:
+    for name in ZH_NAMES:
         assert name not in text, (where, name, text[:240])
     found = EN_RE.search(text)
     assert found is None, (where, found.group(0), text[:240])
@@ -76,10 +76,10 @@ class _Site:
         self.d = {'posts': [], 'accounts': {}, 'prices': {}, 'avmini': {}}
         self.by_url = {
             'u-bull': {'handle': 'leadbull', 'zh_summary': '睇好這隻',
-                       'en_summary': 'bullish on this name', 'ko_summary': '이 종목 강세',
+                       'en_summary': 'bullish on this name',
                        'text': 'bullish on this name'},
             'u-bear': {'handle': 'leadbear', 'zh_summary': '睇淡這隻',
-                       'en_summary': 'bearish on this name', 'ko_summary': '이 종목 약세',
+                       'en_summary': 'bearish on this name',
                        'text': 'bearish on this name'},
         }
 
@@ -90,7 +90,7 @@ class _Site:
         return h
 
     def text(self, p, lang, n):
-        t = {'zh': p.get('zh_summary'), 'ko': p.get('ko_summary'),
+        t = {'zh': p.get('zh_summary'),
              'en': p.get('en_summary') or p.get('text')}[lang]
         return (t or '')[:n]
 

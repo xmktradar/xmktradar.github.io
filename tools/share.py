@@ -7,7 +7,7 @@ data/social-posts.json and social/index.html: posts in Chinese and English for I
 (the @thecrowdtape format), Threads, X, Reddit and Facebook, for the Grok bot to post with og/social-<lang>.png,
 plus a 1080x1920 Instagram Story picture og/story-<lang>.png and a native 1080x1350
 Instagram text-post picture og/ig-<lang>.png. Every version asks readers to support the site (PayPal).
-Also writes x_trilingual (one zh+en+ko X post at 21:00 and 08:00 HKT, picture og/x-<kind>.png for the $TICKER in the text), facebook_cta and ig_threads_daily.
+Also writes x_trilingual (one zh+en X post at 21:00 and 08:00 HKT, picture og/x-<kind>.png for the $TICKER in the text), facebook_cta and ig_threads_daily.
 The same daily social run writes top5, and on Friday (HKT) weekly_thread. It also writes
 hot_stock, discussion, three_lines, why_posts and atomic_posts. On Saturday and Sunday
 (HKT) it writes weekend and atomic_posts without rebuilding the weekday posts, and it does
@@ -45,7 +45,7 @@ def page_url(lang, path=''):
     """Absolute page URL under /{lang}/.
 
     Stock pages are /{lang}/stock/<T>/ (root /stock/<T>/ is 404). A path that already
-    starts with zh/, en/, ko/, or a leading slash is rewritten under `lang`.
+    starts with zh/, en/, or a leading slash is rewritten under `lang`.
     """
     if lang not in LANGS:
         lang = 'en'
@@ -119,9 +119,9 @@ def quote(d, urls, t, lang):
     ps = [by[u] for u in urls if u in by]
     ps.sort(key=lambda p: (bool(p.get('reposted_by')), -likes(p)))
     for p in ps:
-        txt = {'zh': p.get('zh_summary'), 'ko': p.get('ko_summary'),
+        txt = {'zh': p.get('zh_summary'),
                'en': p.get('en_summary') or p.get('text')}[lang]
-        txt = re.sub(r'^\((?:Reposted|轉發|리포스트)\)\s*', '', txt or '')
+        txt = re.sub(r'^\((?:Reposted|轉發)\)\s*', '', txt or '')
         # English card only: a quote with CJK or Hangul is skipped for the next post. Korean is left as-is.
         if lang == 'en' and re.search('[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af\uf900-\ufaff]', txt):
             continue
@@ -174,8 +174,7 @@ def build(d, s, ch, day):
 
 def tags(lang, tks):
     base = {'zh': '#美股 #港人投資 #美股投資 #投資 #USStocks #StockMarket #香港投資',
-            'en': '#StockMarket #USStocks #Stocks #Investing #FinTwit #WallStreet',
-            'ko': '#미국주식 #미장 #해외주식 #주식 #투자 #USStocks'}[lang]
+            'en': '#StockMarket #USStocks #Stocks #Investing #FinTwit #WallStreet'}[lang]
     return base + ''.join(f' #{t}' for t in tks[:5] if re.fullmatch(r'[A-Z]{1,6}', t))
 
 
@@ -184,18 +183,16 @@ def tags(lang, tks):
 # A key-point first line comes from the generator (top5 lead bull/bear, macro top theme).
 # sanitize_instagram never moves or deletes a body line to invent one. It may prepend
 # a key line built from structured data only when line 1 has neither a $TICKER nor a digit.
-IG_BIO = {'zh': '連結在個人簡介', 'en': 'link in bio', 'ko': '프로필 링크'}
+IG_BIO = {'zh': '連結在個人簡介', 'en': 'link in bio'}
 IG_BASE_TAGS = {
     'zh': ('#美股', '#美股投資', '#港人投資'),
     'en': ('#StockMarket', '#USStocks', '#Stocks'),
-    'ko': ('#미국주식', '#미장', '#해외주식'),
 }
 IG_MIN_TAGS = 3
 IG_MAX_TAGS = 5
 IG_CTA_COPY = {
     'zh': '覺得有用？收藏＋追蹤 @thecrowdtape，每日睇大神共識',
     'en': 'Found this useful? Save + follow @thecrowdtape for daily consensus',
-    'ko': '유용했다면 저장 + 팔로우 @thecrowdtape',
 }
 IG_CTA_REL = 'og/cta/ig-cta-{lang}.jpg'
 
@@ -209,7 +206,6 @@ def ig_cta_url(lang):
 IG_FOLLOW = {
     'zh': 'Follow @thecrowdtape 每日睇街貨點諗。',
     'en': 'Follow @thecrowdtape for the daily read on what the crowd thinks.',
-    'ko': '@thecrowdtape 팔로우하고 매일 시장 분위기를 확인하세요.',
 }
 _HANDLE_LEAD = re.compile(r'^@([A-Za-z0-9_]+)[：:]\s*')
 _DUP_HANDLE_RE = re.compile(r'(@(\w+))([：:])\s*("?)@\2[：:]\s*', re.I)
@@ -305,8 +301,6 @@ def _guess_ig_lang(text):
     t = text or ''
     if '連結在個人簡介' in t or '唔構成' in t or '#美股' in t or '大神' in t:
         return 'zh'
-    if '프로필 링크' in t or '투자 조언' in t or '#미국주식' in t:
-        return 'ko'
     return 'en'
 
 
@@ -317,16 +311,16 @@ def _ig_drop_line(s, lang, bio):
     low = s.lower()
     if s == bio or s in IG_BIO.values():
         return True
-    if 'link in bio' in low or '連結在個人簡介' in s or '프로필 링크' in s:
+    if 'link in bio' in low or '連結在個人簡介' in s:
         return True
     if 'thecrowdtape.com' in low:
         return True
     live = SHORT.get(lang, SHORT['en'])['live'].strip()
     if live and s.startswith(live):
         return True
-    if s.startswith('☕') and any(m in s for m in ('link in bio', '個人簡介', '프로필', 'PayPal', 'paypal')):
+    if s.startswith('☕') and any(m in s for m in ('link in bio', '個人簡介', 'PayPal', 'paypal')):
         return True
-    if s in ('👉', '最新數字 👉', 'Live numbers 👉', '최신 수치 👉'):
+    if s in ('👉', '最新數字 👉', 'Live numbers 👉'):
         return True
     return False
 
@@ -534,8 +528,7 @@ def _discussed_paren(lang, n, bull_n, bear_n, acc):
     row = {'bull': bull_n or 0, 'bear': bear_n or 0}
     if lang == 'zh':
         return '（' + acc(n) + mix(row, '，{}', '{} 好 {} 淡', '{} 個睇好', '{} 個睇淡') + '）'
-    both, one_b, one_r = (('{} bull / {} bear', '{} bullish', '{} bearish') if lang == 'en'
-                          else ('강세 {} / 약세 {}', '강세 {}', '약세 {}'))
+    both, one_b, one_r = ('{} bull / {} bear', '{} bullish', '{} bearish')
     return '(' + acc(n) + mix(row, ', {}', both, one_b, one_r) + ')'
 
 
@@ -553,7 +546,6 @@ def _bull_headline(lang, prefix, h, top, acc):
         old = {
             'zh': f'最多人睇好 {T(h["t"])}（{acc(h["n"])}）',
             'en': f'Most bullish: {T(h["t"])}, {acc(h["n"])}',
-            'ko': f'가장 강세 {T(h["t"])} ({acc(h["n"])})',
         }[lang]
         return f'{prefix}{old}{mark}'
     paren = _discussed_paren(lang, hero.get('accounts') or 0, hero.get('bull_accounts') or 0,
@@ -563,19 +555,16 @@ def _bull_headline(lang, prefix, h, top, acc):
         body = {
             'zh': f'最多人討論兼最多人睇好 {T(h["t"])}{paren}',
             'en': f'Most discussed and most bullish: {T(h["t"])} {paren}',
-            'ko': f'가장 많이 언급·가장 많이 강세: {T(h["t"])} {paren}',
         }[lang]
     else:
         sep = '・' if lang == 'zh' else ' · '
         left = {
             'zh': f'最多人討論 {T(hero["t"])}{paren}',
             'en': f'Most discussed: {T(hero["t"])} {paren}',
-            'ko': f'가장 많이 언급: {T(hero["t"])} {paren}',
         }[lang]
         right = {
             'zh': f'最多人睇好 {T(h["t"])}{bull_n}',
             'en': f'Most bullish: {T(h["t"])} {bull_n}',
-            'ko': f'가장 많이 강세: {T(h["t"])} {bull_n}',
         }[lang]
         body = left + sep + right
     return f'{prefix}{body}{mark}'
@@ -585,7 +574,7 @@ def caption(lang, day, s, items, win, quote_):
     m, dd = int(day[5:7]), int(day[8:10])
     bull = bool(s['bull'])
     T = lambda t: f'${t}'
-    sep = '、 ' if lang == 'zh' else (', ' if lang == 'en' else ', ')
+    sep = '、 ' if lang == 'zh' else ', '
     lines = []
     if lang == 'zh':
         acc = lambda n: f'{n} 個帳號'
@@ -595,7 +584,7 @@ def caption(lang, day, s, items, win, quote_):
             h = items[0] if items else None
             lines.append(f'{m}/{dd} X 大神快照：今日最多人講 {T(h["t"])}（{acc(h["n"])}）💬' if h else f'{m}/{dd} X 大神快照 💬')
         lines += ['', f'數據範圍：{win}', '']
-    elif lang == 'en':
+    else:
         acc = lambda n: f'{n} account{"" if n == 1 else "s"}'
         mon = datetime.strptime(day, '%Y-%m-%d').strftime('%b %-d')
         if bull:
@@ -604,14 +593,6 @@ def caption(lang, day, s, items, win, quote_):
             h = items[0] if items else None
             lines.append(f'{mon} · Most talked-about stock on X today: {T(h["t"])} ({acc(h["n"])}) 💬' if h else f'{mon} · X snapshot 💬')
         lines += ['', f'Data window: {win}', '']
-    else:
-        acc = lambda n: f'계정 {n}개'
-        if bull:
-            lines.append(_bull_headline('ko', f'{m}/{dd} X 인플루언서 컨센서스: ', items[0], s.get('top'), acc))
-        else:
-            h = items[0] if items else None
-            lines.append(f'{m}/{dd} X 스냅샷: 오늘 가장 많이 언급된 종목 {T(h["t"])} ({acc(h["n"])}) 💬' if h else f'{m}/{dd} X 스냅샷 💬')
-        lines += ['', f'데이터 범위: {win}', '']
 
     L = {'zh': dict(cb=f'🔵 共同看多：{len(s["bull"])} 隻・共同看空：{len(s["bear"])} 隻', rest=lambda k, n: f'・其餘 {k} 隻各 {n} 個帳號',
                     more=lambda k: f' 等 {k} 隻', bear='🔴 共同看空：', split='⚖️ 好淡分歧：', sp=lambda b, r: f'（{b} 好 {r} 淡）',
@@ -630,16 +611,7 @@ def caption(lang, day, s, items, win, quote_):
                     q=lambda q: quote_line(q['acc'], q['text'], 'en'),
                     note='(Joint bullish = at least 2 accounts whose latest view is bullish; news-wire accounts not counted)',
                     end=[IG_BIO['en'], IG_FOLLOW['en'], '',
-                         '⚠️ A summary of public social media posts, not investment advice. The site\'s bot pages are paper trading only. Investing involves risk; do your own research.']),
-         'ko': dict(cb=f'🔵 공동 강세: {len(s["bull"])}개・공동 약세: {len(s["bear"])}개', rest=lambda k, n: f'・나머지 {k}개 종목은 각 계정 {n}개',
-                    more=lambda k: f' 외 {k}개', bear='🔴 공동 약세: ', split='⚖️ 의견 엇갈림: ', sp=lambda b, r: f' (강세 {b} / 약세 {r})',
-                    stk='🔥 2일 이상 연속 공동 강세: ', sd=lambda n: f' ({n}일)', none='오늘은 아직 공동 강세 종목이 없습니다 (최신 의견이 강세인 계정이 2개 이상 필요).',
-                    talk='💬 가장 많이 언급된 종목:', tr=lambda x: acc(x['n']) + mix(x, ' ({})', '강세 {} / 약세 {}', '강세 {}', '약세 {}'),
-                    sum=f'🗣️ 오늘 계정 {s["accounts"]}개가 글을 올렸고, 언급된 종목은 {s.get("tickers", 0)}개입니다.',
-                    q=lambda q: quote_line(q['acc'], q['text'], 'ko'),
-                    note='(공동 강세 = 최신 의견이 강세인 계정 2개 이상, 뉴스 속보 계정 제외)',
-                    end=[IG_BIO['ko'], IG_FOLLOW['ko'], '',
-                         '⚠️ 공개 SNS 게시물을 정리한 것으로 투자 조언이 아닙니다. 사이트의 봇 페이지는 모의 거래입니다. 투자에는 위험이 따르니 스스로 판단하세요.'])}[lang]
+                         '⚠️ A summary of public social media posts, not investment advice. The site\'s bot pages are paper trading only. Investing involves risk; do your own research.'])}[lang]
     join = lambda ts, cap=8: sep.join(T(t) for t in ts[:cap]) + (L['more'](len(ts) - cap) if len(ts) > cap else '')
     lead = ' ' if lang == 'zh' else ''
     head, win_line = lines[0], lines[2]
@@ -749,8 +721,7 @@ def xlen(t):
 
 
 SHORT = {'zh': {'live': '最新數字 👉 ', 'give': '☕ 鍾意就支持我哋 👉 ', 'disc': '⚠️ 唔構成投資建議', 'disc_long': '⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。投資有風險，請自行判斷。'},
-         'en': {'live': 'Live numbers 👉 ', 'give': '☕ Support the site 👉 ', 'disc': '⚠️ Not investment advice', 'disc_long': '⚠️ A summary of public social media posts, not investment advice. Investing involves risk; do your own research.'},
-         'ko': {'live': '최신 수치 👉 ', 'give': '☕ 후원하기 👉 ', 'disc': '⚠️ 투자 조언 아님', 'disc_long': '⚠️ 공개 SNS 게시물을 정리한 것으로 투자 조언이 아닙니다. 투자에는 위험이 따르니 스스로 판단하세요.'}}
+         'en': {'live': 'Live numbers 👉 ', 'give': '☕ Support the site 👉 ', 'disc': '⚠️ Not investment advice', 'disc_long': '⚠️ A summary of public social media posts, not investment advice. Investing involves risk; do your own research.'}}
 
 # Threads rejects a post past 500 Unicode code points. len() is that count; a URL counts in full.
 THREADS_MAX = 500
@@ -831,8 +802,8 @@ def fit_threads(text, lang):
     """Fit a Threads caption into 500 code points.
 
     When len(text) > 500, trim in order: shorten the 💬 quote (ellipsis), then drop it;
-    drop the ☕ donate line so at most one link remains (the language's 最新數字 / Live numbers /
-    최신 수치 link); drop the 🔥 streak paragraph, then the ⚖️ split paragraph, then ticker
+    drop the ☕ donate line so at most one link remains (the language's 最新數字 / Live numbers
+    link); drop the 🔥 streak paragraph, then the ⚖️ split paragraph, then ticker
     lines (・) from the bottom. The headline, the disclaimer and the hashtag line stay.
     """
     if text is None:
@@ -1020,7 +991,7 @@ def fit_threads_posts(posts):
     return posts
 
 # One extra line under the Facebook post. The link is that language's home, campaign newsletter.
-FB_CTA = {'zh': '📬 訂閱免費電子報 👉 ', 'en': '📬 Get the free newsletter 👉 ', 'ko': '📬 무료 뉴스레터 구독 👉 '}
+FB_CTA = {'zh': '📬 訂閱免費電子報 👉 ', 'en': '📬 Get the free newsletter 👉 '}
 X_WHEN = {'premarket': '21:00', 'afterclose': '08:00'}
 _XDATE = re.compile(r'^(\d{1,2}/\d{1,2}|[A-Z][a-z]{2}\s+\d{1,2})')
 _XTICK = re.compile(r'\$([A-Z]{1,6})\b')
@@ -1099,8 +1070,8 @@ def _ticker_fact(line):
 
 
 def _keep_frame(line):
-    """Shorten a premarket line without dropping 開市前 / pre-market / 개장 전."""
-    for frame in ('開市前：', 'pre-market:', '개장 전:'):
+    """Shorten a premarket line without dropping 開市前 / pre-market."""
+    for frame in ('開市前：', 'pre-market:'):
         i = (line or '').find(frame)
         if i < 0:
             continue
@@ -1115,7 +1086,7 @@ def _keep_frame(line):
 
 
 def _shrink_headline(line):
-    if line and any(k in line for k in ('開市前', 'pre-market', '개장 전')):
+    if line and any(k in line for k in ('開市前', 'pre-market')):
         return _keep_frame(line)
     return _short_headline(line)
 
@@ -1223,7 +1194,7 @@ def _split_lang_post(text):
 
 
 def trilingual_text(posts, campaign):
-    """One X post, zh then en then ko, from the headlines and joint-bull lines already in posts[lang]['x'].
+    """One X post, zh then en, from the headlines and joint-bull lines already in posts[lang]['x'].
 
     Each language headline is followed by that language's home URL (same utm: source x, this campaign).
     Full form also keeps the joint-bull ticker lines and the one-line disclaimer. When that is over 280
@@ -1267,7 +1238,7 @@ def _text_ticker(text):
 
 
 def _x_headlines(text):
-    """zh/en/ko headline lines from a trilingual X post, verbatim."""
+    """zh/en headline lines from a trilingual X post, verbatim."""
     heads = []
     for ln in (text or '').split('\n'):
         s = ln.strip()
@@ -1474,12 +1445,11 @@ def _pm_md_mon(sp):
 
 
 def _pm_frames(sp):
-    """(zh, en, ko) framing lines. Chinese uses a fullwidth colon and no trailing space."""
+    """(zh, en) framing lines. Chinese uses a fullwidth colon and no trailing space."""
     md, mon = _pm_md_mon(sp)
     zh = f'{md} 開市前：' if md else '開市前：'
     en = f'{mon} pre-market:' if mon else 'pre-market:'
-    ko = f'{md} 개장 전:' if md else '개장 전:'
-    return zh, en, ko
+    return zh, en
 
 
 def _afterclose_text(sp):
@@ -1539,25 +1509,22 @@ def _premarket_rows(sp):
 
 
 def _lead_lines(sp, rows):
-    """Three language lines. A bull tie leads with both tickers; otherwise the next ticker is a count only."""
-    zh_f, en_f, ko_f = _pm_frames(sp)
+    """Two language lines. A bull tie leads with both tickers; otherwise the next ticker is a count only."""
+    zh_f, en_f = _pm_frames(sp)
     a, na = rows[0]
     tie = len(rows) >= 2 and rows[1][1] == na
     if tie:
         b = rows[1][0]
         zh = f'{zh_f}${a}、${b} 各 {na} 個帳號睇好'
         en = f'{en_f} ${a}, ${b}, {na} accounts bullish each'
-        ko = f'{ko_f} ${a}·${b} 각각 계정 {na}개 강세'
     elif len(rows) >= 2:
         b, nb = rows[1]
         zh = f'{zh_f}${a} {na} 個帳號睇好 · ${b} {nb} 個'
         en = f'{en_f} ${a} {na} accounts bullish · ${b} {nb}'
-        ko = f'{ko_f} ${a} 계정 {na}개 강세 · ${b} {nb}개'
     else:
         zh = f'{zh_f}${a} {na} 個帳號睇好'
         en = f'{en_f} ${a} {na} accounts bullish'
-        ko = f'{ko_f} ${a} 계정 {na}개 강세'
-    return zh, en, ko
+    return zh, en
 
 
 def _fit_premarket(text):
@@ -1599,9 +1566,8 @@ def _prefix_premarket_headlines(text, sp):
     if not langs:
         langs = list(LANGS)
     frames = {'zh': f'{md} 開市前：' if md else '開市前：',
-              'en': f'{mon} pre-market:' if mon else 'pre-market:',
-              'ko': f'{md} 개장 전:' if md else '개장 전:'}
-    tokens = {'zh': md, 'en': mon, 'ko': md}
+              'en': f'{mon} pre-market:' if mon else 'pre-market:'}
+    tokens = {'zh': md, 'en': mon}
     lines, hi = [], 0
     for ln in (text or '').split('\n'):
         s = ln.strip()
@@ -1626,9 +1592,9 @@ def _premarket_fallback(sp):
 
 
 def premarket_text(sp, force_fallback=False):
-    """zh/en/ko premarket post. Bull counts come from x_facts, in afterclose ticker order.
+    """zh/en premarket post. Bull counts come from x_facts, in afterclose ticker order.
 
-    When the top two of that order tie on bull, both lead (`各 N` / `each` / `각각`).
+    When the top two of that order tie on bull, both lead (`各 N` / `each`).
     Otherwise the first ticker leads with its bull count and the next ticker is named with its count.
     Missing or empty x_facts uses trilingual headlines prefixed by the premarket framing.
     Returns (text, form) or None. Each language line has its own URL (campaign premarket), then
@@ -1809,7 +1775,7 @@ def _ig_daily_html(sp):
     daily = sp.get('ig_threads_daily') if isinstance(sp.get('ig_threads_daily'), dict) else None
     if not daily:
         return ''
-    names = {'zh': '中文', 'en': 'English', 'ko': '한국어'}
+    names = {'zh': '中文', 'en': 'English'}
     rows = []
     for lang in LANGS:
         row = daily.get(lang)
@@ -1888,8 +1854,7 @@ code{{font-size:12px}}.daily{{overflow-x:auto}}td.pics a{{display:inline-block;w
 
 FEED_KEEP = 30  # days kept in each RSS feed
 FEED_META = {'zh': ('The Crowd Tape｜X 大神每日共識', 'zh-Hant-HK', '每日整理 X 上美股大神的共同看好、看淡同分歧。唔構成投資建議。'),
-             'en': ('The Crowd Tape · Daily X consensus', 'en', 'What top X stock accounts agree and disagree on, once a day. Not investment advice.'),
-             'ko': ('The Crowd Tape · X 일일 컨센서스', 'ko', 'X 주식 인플루언서들의 공동 강세·약세·의견 엇갈림을 매일 정리합니다. 투자 조언 아님.')}
+             'en': ('The Crowd Tape · Daily X consensus', 'en', 'What top X stock accounts agree and disagree on, once a day. Not investment advice.')}
 
 
 def write_feeds(sp):
@@ -1925,7 +1890,6 @@ def write_feeds(sp):
 TOP5_META = {
     'zh': {'bull_x': '看好帳號', 'bear_x': '看淡帳號', 'none': '今日暫無', 'win': '數據範圍'},
     'en': {'bull_x': 'Bullish accounts', 'bear_x': 'Bearish accounts', 'none': 'None today', 'win': 'Data window'},
-    'ko': {'bull_x': '강세 계정', 'bear_x': '약세 계정', 'none': '오늘 없음', 'win': '데이터 범위'},
 }
 
 
@@ -1936,9 +1900,6 @@ def top5_labels(lang, n_bull, n_bear):
     if lang == 'zh':
         bull, bear = f'最看好 {n_bull} 隻', f'最看淡 {n_bear} 隻'
         heading = f'今日 X 大神共識：{bull}／{bear}'
-    elif lang == 'ko':
-        bull, bear = f'강세 상위 {n_bull}종목', f'약세 상위 {n_bear}종목'
-        heading = f'오늘 X 인플루언서 컨센서스: {bull} / {bear}'
     else:
         bull, bear = f'Top {n_bull} bullish', f'Top {n_bear} bearish'
         heading = f'Top X accounts consensus today: {bull} / {bear}'
@@ -1960,9 +1921,6 @@ WEEK_COPY = {
     'en': {'head': "This week's consensus changes", 'bulls': 'Most bullish this week', 'bears': 'Most bearish this week',
            'joined_bull': 'Joined bullish', 'dropped_bull': 'Left bullish', 'joined_bear': 'Joined bearish', 'dropped_bear': 'Left bearish',
            'no_change': 'No joins or drops this week', 'bull_total': 'Bullish', 'bear_total': 'Bearish'},
-    'ko': {'head': '이번 주 컨센서스 변화', 'bulls': '이번 주 가장 강세', 'bears': '이번 주 가장 약세',
-           'joined_bull': '새로 강세', 'dropped_bull': '강세에서 제외', 'joined_bear': '새로 약세', 'dropped_bear': '약세에서 제외',
-           'no_change': '이번 주 신규·이탈 없음', 'bull_total': '강세', 'bear_total': '약세'},
 }
 WEEK_NOTE = (
     '本週共識變化. Counts come only from data/writeup-input.json weekly: '
@@ -2023,8 +1981,6 @@ def _side_rows(rows, key, limit=5):
 def _acc(lang, n):
     if lang == 'zh':
         return f'{n} 個帳號'
-    if lang == 'ko':
-        return f'계정 {n}개'
     return f'{n} account' if n == 1 else f'{n} accounts'
 
 
@@ -2110,7 +2066,6 @@ def top5_ig_key_line(lang, bulls, bears):
 
     zh '最看好 $RSP（3 個帳號）・最看淡 $QQQ（5 個帳號）'
     en 'Most bullish $RSP (3 accounts) · most bearish $QQQ (5 accounts)'
-    ko '가장 강세 $RSP (계정 3개) · 가장 약세 $QQQ (계정 5개)'
     Empty when neither side has a counted row. One side alone is that clause only.
     """
     lang = lang if lang in LANGS else 'en'
@@ -2133,13 +2088,6 @@ def top5_ig_key_line(lang, bulls, bears):
         if r:
             bits.append(f'最看淡 ${r[0]}（{_acc("zh", r[1])}）')
         return '・'.join(bits)
-    if lang == 'ko':
-        bits = []
-        if b:
-            bits.append(f'가장 강세 ${b[0]} ({_acc("ko", b[1])})')
-        if r:
-            bits.append(f'가장 약세 ${r[0]} ({_acc("ko", r[1])})')
-        return ' · '.join(bits)
     if b and r:
         return f'Most bullish ${b[0]} ({_acc("en", b[1])}) · most bearish ${r[0]} ({_acc("en", r[1])})'
     if b:
@@ -2303,17 +2251,17 @@ def build_top5(daily, day, made_hkt, fallback_window=None):
       source: 'data/writeup-input.json daily',
       bull: [{t, n}],   # up to 5, rank_rows bull: nb desc, n_posts desc, ticker asc
       bear: [{t, n}],   # up to 5, rank_rows bear: nr desc, n_posts desc, ticker asc
-      images: {zh|en|ko: {
+      images: {zh|en: {
         portrait: SITE+'og/top5-<lang>.png?v=<date>',       # 1080x1350, X / IG / Threads
         square:   SITE+'og/top5-<lang>-sq.png?v=<date>'}},  # 1080x1080, Facebook
       format: image_card,
-      video: {zh|en|ko: SITE+'og/top5-<lang>.mp4?v=<date>'},
-      posts: {zh|en|ko: {x, instagram, threads, facebook, has_link, first_comment}},
+      video: {zh|en: SITE+'og/top5-<lang>.mp4?v=<date>'},
+      posts: {zh|en: {x, instagram, threads, facebook, has_link, first_comment}},
     }
 
     Fewer than five names on a side: those names only, and the heading uses that count
-    (最看好 N 隻 / Top N bullish / 강세 상위 N종목). An empty side is the translated
-    'none today' line (今日暫無 / None today / 오늘 없음), never a made-up row.
+    (最看好 N 隻 / Top N bullish). An empty side is the translated
+    'none today' line (今日暫無 / None today), never a made-up row.
     X carries one link in the body: the lead bull's /<lang>/stock/<T>/, or /<lang>/ when there is no bull.
     Threads and Facebook keep that link in first_comment (threads: the lead bull, or the language
     home when there is no bull; facebook: one stock link per listed name). Instagram has no URL:
@@ -2518,7 +2466,7 @@ def build_weekly_thread(weekly, history, day):
     weekly_thread = {
       date: 'YYYY-MM-DD',                 # the Friday
       range: {from, to},                   # weekly.from / weekly.to, unchanged
-      langs: {en: [post, ...], zh: [...], ko: [...]},
+      langs: {en: [post, ...], zh: [...]},
       note: str,
     }
 
@@ -2593,12 +2541,10 @@ _YEAR_TOKEN = re.compile(r'\b(?:19|20)\d{2}\b')
 HOT_COPY = {
     'zh': {'title': '今日熱門 {t}：專家觀點', 'who': '帳號'},
     'en': {'title': 'Popular stock today: expert views on {t}', 'who': 'Accounts'},
-    'ko': {'title': '오늘 인기 종목: {t} 전문가 시각', 'who': '계정'},
 }
 ASK_COPY = {
     'zh': {'q': '你點睇 {t}？', 'opts': ('看好', '看淡', '中性')},
     'en': {'q': 'What do you think of {t}?', 'opts': ('Bullish', 'Bearish', 'Neutral')},
-    'ko': {'q': '{t} 어떻게 보세요?', 'opts': ('강세', '약세', '중립')},
 }
 AGG_LABEL = {
     'zh': {
@@ -2625,23 +2571,10 @@ AGG_LABEL = {
         'bear_total': ('Bearish names today', 'Bearish names this week'),
         'split_total': ('Split names today', 'Split names this week'),
     },
-    'ko': {
-        'posts': ('오늘 게시물', '이번 주 게시물'),
-        'accounts': ('오늘 계정', '이번 주 계정'),
-        'originals': ('오늘 원글', '이번 주 원글'),
-        'reposts': ('오늘 리포스트', '이번 주 리포스트'),
-        'bull_views': ('오늘 강세 의견', '이번 주 강세 의견'),
-        'bear_views': ('오늘 약세 의견', '이번 주 약세 의견'),
-        'clear_accounts': ('오늘 입장 분명한 계정', '이번 주 입장 분명한 계정'),
-        'bull_total': ('오늘 강세 종목 수', '이번 주 강세 종목 수'),
-        'bear_total': ('오늘 약세 종목 수', '이번 주 약세 종목 수'),
-        'split_total': ('오늘 의견 갈린 종목 수', '이번 주 의견 갈린 종목 수'),
-    },
 }
 NUM_Q = {
     'zh': '你點睇呢個數？',
     'en': 'What do you make of this number?',
-    'ko': '이 숫자 어떻게 보세요?',
 }
 WEEKEND_COPY = {
     'zh': {
@@ -2655,11 +2588,6 @@ WEEKEND_COPY = {
         'split_q': "What do you think of this week's split, {t}?",
         'bull_total': 'Bullish names', 'bear_total': 'Bearish names',
         'ask': 'What do you make of these counts?',
-    },
-    'ko': {
-        'bulls': '이번 주 가장 강세', 'bears': '이번 주 가장 약세', 'totals': '이번 주 컨센서스 숫자',
-        'splits': '이번 주 의견 분열', 'split_q': '이번 주 의견이 갈린 {t}, 어떻게 보세요?',
-        'bull_total': '강세 종목', 'bear_total': '약세 종목', 'ask': '이 숫자 어떻게 보세요?',
     },
 }
 WEEKEND_FMT = {
@@ -2721,9 +2649,6 @@ def _count_phrase(lang, side, n):
         word = 'account' if n == 1 else 'accounts'
         adj = 'bullish' if side == 'bull' else 'bearish'
         return f'{n} {adj} {word}'
-    if lang == 'ko':
-        adj = '강세' if side == 'bull' else '약세'
-        return f'{adj} 계정 {n}개'
     adj = '看好' if side == 'bull' else '看淡'
     return f'{n} 個帳號{adj}'
 
@@ -2982,7 +2907,7 @@ def _hot_body(lang, ticker, nb, nr, quotes):
 
 
 def build_hot_stock(row, day):
-    """Expert views on one name. zh quotes why verbatim. en/ko keep handles, ticker and counts."""
+    """Expert views on one name. zh quotes why verbatim. en keeps handles, ticker and counts."""
     if not row:
         return None
     quotes = _quote_rows(row, 3)
@@ -3305,8 +3230,6 @@ def _render_atomic(pt, lang):
     handle = '@' + str(pt.get('acc') or '').lstrip('@')
     if lang == 'zh':
         fact = f'{handle} 提到 ${ticker}'
-    elif lang == 'ko':
-        fact = f'{handle} 가 본 ${ticker}'
     else:
         fact = f'{handle} on ${ticker}'
     parts = [fact]

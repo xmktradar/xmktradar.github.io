@@ -49,8 +49,7 @@ h1{margin:30px 0 0;font-weight:900;font-size:60px;line-height:1.18;max-width:950
 function render(lang,D,shot,size){
 const esc=v=>String(v==null?'':v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const L={zh:{ep:'📘 教學',cta:'免費・唔使登入',tap:'👆 撳連結親自試吓'},
- en:{ep:'📘 Guide',cta:'Free · no login',tap:'👆 Tap the link to try it'},
- ko:{ep:'📘 사용법',cta:'무료 · 로그인 없음',tap:'👆 링크를 눌러 직접 보기'}}[lang];
+ en:{ep:'📘 Guide',cta:'Free · no login',tap:'👆 Tap the link to try it'}}[lang];
 document.documentElement.lang=lang;
 document.body.className=`p${D.episode%3} ${size}`;
 document.getElementById('ep').innerHTML=`${L.ep} <b>${D.episode}/${D.total}</b>`;

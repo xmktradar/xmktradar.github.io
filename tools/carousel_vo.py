@@ -5,7 +5,6 @@ en: English, en-US-AndrewNeural (override with VO_VOICE_en). Starts at +10%. If 
     run past 29.0s, retries +20% then +30%, then the same rates on a shorter script. Still too
     long: that video is left out of vo.json, so tools/carousel_video.js skips the language
     (no silent / music-only mp4). Never shipped over 29.0s.
-ko: no script, so no voiceover.
 
 Reads work/carousel.json (the same slides the pictures use), writes one line per video scene
 (8 scenes: hook, reveal, vs, 4 pictures, outro), reads each line with edge-tts (free, no key)
@@ -26,7 +25,7 @@ import re
 import subprocess
 import sys
 
-VOICES = {'zh': 'zh-CN-XiaoxiaoNeural', 'en': 'en-US-AndrewNeural', 'ko': 'ko-KR-SunHiNeural'}
+VOICES = {'zh': 'zh-CN-XiaoxiaoNeural', 'en': 'en-US-AndrewNeural'}
 RATE = '+10%'
 TIMEOUT = 30
 # Keep in sync with BASE / BEAT / COVER_FRAMES in tools/carousel_video.js.

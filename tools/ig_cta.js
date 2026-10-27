@@ -22,12 +22,6 @@ const CTA = {
     sub: 'Save + follow @thecrowdtape for daily consensus',
     save: 'Save + follow',
   },
-  ko: {
-    kicker: '저장 + 팔로우',
-    lead: '유용했다면',
-    sub: '저장 + 팔로우 @thecrowdtape',
-    save: '저장 + 팔로우',
-  },
 };
 
 (async () => {

@@ -27,19 +27,16 @@ _URL_RE = re.compile(r'https?://\S+', re.I)
 # Per-row fields, then the post fields the homepage why-line actually shows.
 # zh: rows[].why is the page's zh_summary (stats.js slices it to 160).
 # en: build_langs copies en_summary or the original text into zh_summary.
-# ko: build_langs copies ko_summary into zh_summary. No English fallback.
 _ROW_FIELDS = {
     'zh': ('why', 'why_zh', 'zh_summary', 'summary_zh'),
     'en': ('why_en', 'en_summary', 'summary_en', 'en'),
-    'ko': ('why_ko', 'ko_summary', 'summary_ko', 'ko'),
 }
 _POST_FIELDS = {
     'zh': ('zh_summary', 'summary_zh'),
     'en': ('en_summary', 'summary_en', 'text'),
-    'ko': ('ko_summary', 'summary_ko'),
 }
 # Same cap as tools/stats.js `(x.why || '').slice(0, 160)` so a long English
-# or Korean summary does not crowd out the counts line.
+# summary does not crowd out the counts line.
 _WHY_CAP = 160
 
 T3_COPY = {
@@ -73,28 +70,12 @@ T3_COPY = {
         'bear_h': 'Bearish reasons',
         'acc': '{n} accounts',
     },
-    'ko': {
-        'title': '오늘의 3줄 요약',
-        'shift': '합의 변화 최대',
-        'delta': '순강세 비율 {frm} → {to} 어제 같은 시간대 대비',
-        'chg': '{n} 회 입장 변경',
-        'most': '최다 언급',
-        'most_rest': '{n} 개 의견, {a} 개 계정',
-        'split': '의견 차이 최대',
-        'split_rest': '강세 {b}, 약세 {e}',
-        'sample': '{w} · 게시물 {posts} / 계정 {accounts}',
-        'empty': '이 기간의 데이터가 아직 부족합니다.',
-        'bull_h': '강세 이유',
-        'bear_h': '약세 이유',
-        'acc': '계정 {n}개',
-    },
 }
 # Threads attaches one topic. The body ends with '#' + this, and the field has no '#'.
-T3_TOPIC = {'zh': '美股', 'en': 'StockMarket', 'ko': '미국주식'}
+T3_TOPIC = {'zh': '美股', 'en': 'StockMarket'}
 WHY_TITLE = {
     'zh': '今日 {t}：點解',
     'en': 'Why {t} today',
-    'ko': '오늘 {t}, 왜',
 }
 # 07:00 HKT is 08:00 KST. The brief goes out at 08:30 KST, before the 09:00 slot.
 THREE_LINES_KST = '08:30'

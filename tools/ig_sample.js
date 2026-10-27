@@ -4,7 +4,7 @@
 // Usage:
 //   node tools/ig_sample.js [outdir]
 //
-// Builds work/og.json the same way the pipeline does, then screenshots zh/en/ko:
+// Builds work/og.json the same way the pipeline does, then screenshots zh/en:
 //   1. Write work/index-full.html with the full dash-data blob (slim pages split it out)
 //   2. node tools/stats.js work/index-full.html work/windows.json work/stats.json
 //   3. python3 tools/share.py --og-only     (writes work/og.json; no social posts, no index.html rewrite)

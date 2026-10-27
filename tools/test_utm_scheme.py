@@ -27,7 +27,7 @@ SOCIAL = os.path.join(ROOT, 'data', 'social-posts.json')
 TUTORIAL = os.path.join(ROOT, 'data', 'tutorial-posts.json')
 UTM_NAMES = ('utm_source', 'utm_medium', 'utm_campaign')
 SOURCES = {'x': 'x', 'instagram': 'instagram', 'threads': 'threads', 'facebook': 'facebook', 'facebook_cta': 'facebook'}
-NEWS_MARKERS = ('newsletter', '電子報', '뉴스레터')
+NEWS_MARKERS = ('newsletter', '電子報')
 ASSET_EXT = ('.png', '.jpg', '.jpeg', '.webp', '.gif', '.xml')
 
 
@@ -340,10 +340,10 @@ def test_tag_url_normalises():
     assert fresh == 'https://thecrowdtape.com/zh/?utm_source=x&utm_medium=social&utm_campaign=daily#donate', fresh
 
     replaced = tag_url(
-        'https://thecrowdtape.com/ko/?utm_campaign=newsletter&foo=1&utm_source=fb&utm_medium=post#top',
+        'https://thecrowdtape.com/en/?utm_campaign=newsletter&foo=1&utm_source=fb&utm_medium=post#top',
         'fb', 'newsletter')
     assert replaced == (
-        'https://thecrowdtape.com/ko/?foo=1&utm_source=facebook&utm_medium=social&utm_campaign=newsletter#top'
+        'https://thecrowdtape.com/en/?foo=1&utm_source=facebook&utm_medium=social&utm_campaign=newsletter#top'
     ), replaced
 
     middle = tag_url(
@@ -421,7 +421,7 @@ def _fixture():
                 'image': 'https://thecrowdtape.com/og/x-premarket.png?v=1',
             },
             'afterclose': {
-                'text': 'https://thecrowdtape.com/ko/?a=1&utm_campaign=afterclose&utm_source=x&utm_medium=post#z',
+                'text': 'https://thecrowdtape.com/en/?a=1&utm_campaign=afterclose&utm_source=x&utm_medium=post#z',
             },
         },
         'top5': {
@@ -454,10 +454,6 @@ def _fixture():
                             'url': 'https://thecrowdtape.com/zh/',
                         },
                         'en': {'text': 'No link here', 'url': None},
-                        'ko': {
-                            'text': '보기 https://thecrowdtape.com/ko/?utm_source=threads&utm_medium=post&utm_campaign=old',
-                            'url': 'https://thecrowdtape.com/ko/',
-                        },
                     },
                 }
             },
@@ -483,7 +479,7 @@ def test_normalize_obj_scheme():
     assert data['slots']['1230']['images']['zh'] == ['https://thecrowdtape.com/og/c/x.jpg']
     assert data['x_trilingual']['premarket']['image'].endswith('x-premarket.png?v=1')
     after = data['x_trilingual']['afterclose']['text']
-    assert after == 'https://thecrowdtape.com/ko/?a=1&utm_source=x&utm_medium=social&utm_campaign=afterclose#z', after
+    assert after == 'https://thecrowdtape.com/en/?a=1&utm_source=x&utm_medium=social&utm_campaign=afterclose#z', after
     ig = data['top5']['posts']['en']['instagram']
     assert 'https://' not in ig and 'thecrowdtape.com' not in ig.lower()
     assert share.IG_BIO['en'] in ig
@@ -512,7 +508,6 @@ def test_normalize_file_tutorial_campaign():
                 'threads': 'Try https://thecrowdtape.com/en/?utm_source=threads&utm_medium=post&utm_campaign=tutorial',
             },
             'zh': {'x': '試 https://thecrowdtape.com/zh/'},
-            'ko': {'x': '보기 https://thecrowdtape.com/ko/'},
         },
         'images': {'en': 'https://thecrowdtape.com/og/tutorial-en.png?v=1'},
     }
@@ -541,7 +536,6 @@ def test_new_slot_shapes():
             'langs': {
                 'zh': ['本週 https://thecrowdtape.com/zh/?utm_source=ig&utm_medium=post&utm_campaign=nope'],
                 'en': ['Week https://thecrowdtape.com/en/'],
-                'ko': ['주간 https://thecrowdtape.com/ko/'],
             },
         },
         'hot_stock': {
@@ -571,11 +565,11 @@ def test_new_slot_shapes():
             'posts': [
                 {
                     'langs': {
-                        'ko': {
-                            'threads': '이번 주',
-                            'facebook': '이번 주',
+                        'en': {
+                            'threads': 'This week',
+                            'facebook': 'This week',
                             'first_comment': {
-                                'facebook': '최신 수치 👉 https://thecrowdtape.com/ko/',
+                                'facebook': 'Live numbers 👉 https://thecrowdtape.com/en/',
                             },
                         }
                     }
@@ -608,7 +602,7 @@ def test_new_slot_shapes():
     assert 'utm_source=facebook&utm_medium=social&utm_campaign=hot_stock' in hot_fc['facebook'], hot_fc
     talk = data['discussion']['posts']['en']['first_comment']['threads']
     assert 'utm_source=threads&utm_medium=social&utm_campaign=discussion' in talk, talk
-    week_fc = data['weekend']['posts'][0]['langs']['ko']['first_comment']['facebook']
+    week_fc = data['weekend']['posts'][0]['langs']['en']['first_comment']['facebook']
     assert 'utm_source=facebook&utm_medium=social&utm_campaign=weekend' in week_fc, week_fc
     atom = data['atomic_posts'][0]['first_comment']
     assert 'utm_source=threads&utm_medium=social&utm_campaign=atomic' in atom, atom

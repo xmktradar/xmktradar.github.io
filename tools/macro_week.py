@@ -33,8 +33,6 @@ NAMES = {
     'en': {'rates': 'Rates / Fed', 'inflation': 'Inflation', 'jobs': 'Jobs', 'growth': 'Growth / recession',
            'yields': 'Bond yields', 'fx': 'Dollar / FX', 'energy': 'Oil / energy', 'policy': 'Tariffs / policy / geopolitics',
            'other': 'Other'},
-    'ko': {'rates': '금리 / 연준', 'inflation': '인플레이션', 'jobs': '고용', 'growth': '경제성장 / 경기침체', 'yields': '채권 금리',
-           'fx': '달러 / 환율', 'energy': '유가 / 에너지', 'policy': '관세 / 정책 / 지정학', 'other': '기타'},
 }
 IMP = {'bullish': 'bull', 'bearish': 'bear', 'neutral': 'neu'}
 TXT = {
@@ -56,17 +54,8 @@ TXT = {
                follow='Follow @thecrowdtape for a macro roundup every Saturday.', disc='⚠️ Not investment advice',
                disc_long='⚠️ A summary of public social media posts, not investment advice. Investing involves risk; do your own research.',
                tags='#Macro #StockMarket #USStocks #Fed #Economy #Investing #FinTwit #WallStreet'),
-    'ko': dict(head='🌐 이번 주 매크로 · {N}개 계정이 보는 큰 그림', short='🌐 이번 주 매크로', bull='호재', bear='악재', neu='중립',
-               up='지난주보다 개선 ▲', dn='지난주보다 악화 ▼', flat='지난주와 비슷', none='지난주 데이터 없음',
-               intro='저희가 추적하는 X 계정 {N}개가 이번 주 가장 많이 다룬 매크로 주제:',
-               quiet='이번 주는 매크로 의견이 많지 않았습니다. 사이트에서 계정별 최신 의견을 확인하세요.',
-               more='9개 주제 전체 보기 👉 ',
-               give='☕ 도움이 되셨다면 커피 한 잔 후원해 주세요: 프로필 링크, 사이트 하단 PayPal 🙏', give_s='☕ 후원하기 👉 ',
-               follow='@thecrowdtape 팔로우하고 매주 토요일 매크로 정리를 받아보세요.', disc='⚠️ 투자 조언 아님',
-               disc_long='⚠️ 공개 SNS 게시물을 정리한 것으로 투자 조언이 아닙니다. 투자에는 위험이 따르니 스스로 판단하세요.',
-               tags='#매크로 #미국주식 #미장 #연준 #경제 #투자 #USStocks #주식'),
 }
-SUMKEY = {'zh': 'zh_summary', 'en': 'en_summary', 'ko': 'ko_summary'}
+SUMKEY = {'zh': 'zh_summary', 'en': 'en_summary'}
 NUM = ['1️⃣', '2️⃣', '3️⃣']
 
 
@@ -102,7 +91,7 @@ def cut(t, n):
     return t if len(t) <= n else t[:n - 1].rstrip(' ，,。.') + '…'
 
 
-TAIL = re.compile(r'\s*(沒有提及個股。|No specific stock mentioned\.|No new market view\.|개별 종목 언급 없음\.?|특정 종목 언급 없음\.?)\s*$')
+TAIL = re.compile(r'\s*(沒有提及個股。|No specific stock mentioned\.|No new market view\.)\s*$')
 
 
 def quote_text(t, acc):
@@ -160,8 +149,6 @@ def macro_ig_key_line(lang, w):
     name = NAMES.get(lang, NAMES['en']).get(theme) or str(theme)
     if lang == 'zh':
         return f'本週宏觀：最多人講「{name}」（利好 {bull}・利淡 {bear}）'
-    if lang == 'ko':
-        return f'이번 주 매크로: 가장 많이 다룬 「{name}」 (호재 {bull} · 악재 {bear})'
     return f'This week in macro: most discussed "{name}" (bullish {bull} · bearish {bear})'
 
 
@@ -185,7 +172,7 @@ def posts(lang, w, rng):
         q = r['quotes'].get(lang)
         say = ''
         if q:
-            t = cut(q['text'], {'zh': 90, 'en': 150, 'ko': 110}[lang])
+            t = cut(q['text'], {'zh': 90, 'en': 150}[lang])
             # Summaries often open with the account's own @handle: then show them as they are.
             say = f"💬 {t}" if t.lower().startswith('@' + q['acc'].lower()) else \
                 f"💬 @{q['acc']}：「{t}」" if lang == 'zh' else f"💬 @{q['acc']}: “{t}”"
@@ -207,7 +194,7 @@ def posts(lang, w, rng):
     # X: 280 with CJK counted double.
     xtags = ' '.join(tags.split(' ')[:3])
     tiny = '\n'.join(f"{N[th]} {by[th]['bull']}/{by[th]['bear']}/{by[th]['neu']}" for th in w['top'])
-    legend = {'zh': '（利好／利淡／中性）', 'en': '(bullish/bearish/neutral)', 'ko': '(호재/악재/중립)'}[lang]
+    legend = {'zh': '（利好／利淡／中性）', 'en': '(bullish/bearish/neutral)'}[lang]
     x = None
     for parts in ([L['short'], short_body, f"{L['more']}{url}\n{L['disc']}", xtags],
                   [L['short'], (tiny + '\n' + legend) if blocks else L['quiet'], f"{L['more']}{url}\n{L['disc']}", xtags],

@@ -34,8 +34,7 @@ const esc=v=>String(v==null?'':v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;',
 document.documentElement.lang=lang;
 const L={
  zh:{hb:'今日最多人看好',ht:'今日最多人討論',acc:n=>`${n} 個帳號`,fl:'不構成投資建議'},
- en:{hb:'Most bullish today',ht:'Most discussed today',acc:n=>`${n} account${n===1?'':'s'}`,fl:'Not investment advice'},
- ko:{hb:'오늘 가장 많은 강세',ht:'오늘 가장 많이 언급',acc:n=>`계정 ${n}개`,fl:'투자 조언 아님'}}[lang];
+ en:{hb:'Most bullish today',ht:'Most discussed today',acc:n=>`${n} account${n===1?'':'s'}`,fl:'Not investment advice'}}[lang];
 document.getElementById('date').textContent=D&&D.date?D.date:'';
 const t=D&&D.top&&D.top[0];
 document.getElementById('h').innerHTML=t?`${D.mode==='bull'?L.hb:L.ht}<br><span class="hl">$${esc(t.t)}</span><br>${L.acc(t.n)}`:'';

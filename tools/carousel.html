@@ -126,7 +126,7 @@ body{width:1080px;height:1350px;position:relative;overflow:hidden;color:#151a2c;
 <div class="main" id="main"><div id="in"></div></div>
 <div class="foot"><span><b>@thecrowdtape</b> · thecrowdtape.com</span><span id="fl"></span></div>
 <script>
-const FL={zh:'⚠️ 唔構成投資建議',en:'⚠️ Not investment advice',ko:'⚠️ 투자 조언 아님'};
+const FL={zh:'⚠️ 唔構成投資建議',en:'⚠️ Not investment advice'};
 const esc=v=>String(v==null?'':v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function spark(a,w,h){if(!a||a.length<2)return '';const mn=Math.min(...a),mx=Math.max(...a),sp=(mx-mn)||1;const pts=a.map((v,i)=>`${(i/(a.length-1)*(w-4)+2).toFixed(1)},${(h-4-(v-mn)/sp*(h-8)).toFixed(1)}`).join(' ');const up=a[a.length-1]>=a[0];return `<svg viewBox="0 0 ${w} ${h}"><polyline points="${pts}" fill="none" stroke="${up?'#1f9d55':'#d23b4f'}" stroke-width="${w>200?5:4}" stroke-linejoin="round" stroke-linecap="round"/></svg>`}
 const pct=v=>v==null?'':(v>=0?'▲':'▼')+Math.abs(v).toFixed(1)+'%';

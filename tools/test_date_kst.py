@@ -241,7 +241,6 @@ def test_merge_from_sets_date_kst_without_touching_other_keys():
         'threads': {
             'zh': {'text': '午后', 'url': None},
             'en': {'text': 'afternoon', 'url': None},
-            'ko': {'text': '오후', 'url': None},
         },
         'hot': [],
     }

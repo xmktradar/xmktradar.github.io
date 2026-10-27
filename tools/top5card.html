@@ -64,7 +64,7 @@ body.sq .n b{font-size:28px}
 <script>
 function render(D){
 const esc=v=>String(v==null?'':v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const lang=D.lang==='zh'||D.lang==='ko'?D.lang:'en';
+const lang=D.lang==='zh'?'zh':'en';
 document.documentElement.lang=lang;
 document.body.className=D.size==='square'?'sq':'pt';
 const tape=`<span class="u">${esc(D.bull_label||'')}</span><span class="sep">✦</span><span class="d">${esc(D.bear_label||'')}</span><span class="sep">✦</span>`;
@@ -78,7 +78,6 @@ document.getElementById('rh').textContent=D.bear_label||'';
 document.getElementById('foot').textContent=D.foot||'';
 const count=(n)=>{
  if(lang==='zh') return `<b>${esc(n)}</b> 個帳號`;
- if(lang==='ko') return `계정 <b>${esc(n)}</b>개`;
  return `<b>${esc(n)}</b> ${n===1?'account':'accounts'}`;
 };
 const fill=(id, rows)=>{
