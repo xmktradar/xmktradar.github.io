@@ -23,12 +23,12 @@ ${FONTS}
 <style>
 ${FONT_VARS}
 html,body{margin:0;padding:0;background:transparent}
-a.c{box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;width:320px;height:120px;padding:10px 14px;border:1px solid #d9cfc2;border-radius:12px;background:#fffaf2;color:#3b2f25;text-decoration:none;font:14px/1.3 var(--f-body);overflow:hidden}
+a.c{box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;width:320px;height:120px;padding:10px 14px;border:1px solid #d2d2d7;border-radius:18px;background:#fff;color:#1d1d1f;text-decoration:none;font:14px/1.3 -apple-system,BlinkMacSystemFont,"SF Pro Text",var(--f-body);-webkit-font-smoothing:antialiased;overflow:hidden}
 .r1{display:flex;align-items:baseline;gap:8px;white-space:nowrap;overflow:hidden}
-.tk{font-family:var(--f-data);font-weight:800;font-size:20px}.nm{color:#7a6a5a;font-size:12px;overflow:hidden;text-overflow:ellipsis}
-.n{display:flex;justify-content:space-between;font-family:var(--f-data);font-weight:700;font-variant-numeric:tabular-nums}.g{color:#1f7a4a}.b{color:#b23a2e}
-.bar{height:8px;border-radius:4px;background:#e7b2ac;overflow:hidden}.bar i{display:block;height:100%;background:#7cc49b}
-.f{display:flex;justify-content:space-between;color:#7a6a5a;font-size:11px}.f b{color:#3b2f25}
+.tk{font-weight:700;font-size:20px;letter-spacing:-.02em}.nm{color:#6e6e73;font-size:12px;overflow:hidden;text-overflow:ellipsis}
+.n{display:flex;justify-content:space-between;font-weight:600;font-variant-numeric:tabular-nums}.g{color:#248a3d}.b{color:#d70015}
+.bar{height:8px;border-radius:8px;background:#ff3b30;overflow:hidden}.bar i{display:block;height:100%;background:#34c759}
+.f{display:flex;justify-content:space-between;color:#6e6e73;font-size:11px}.f b{color:#1d1d1f}
 </style></head>
 <body><a class="c" href="${esc(href)}" target="_blank" rel="noopener">
 <div class="r1"><span class="tk">$${esc(t)}</span><span class="nm">${esc(name)}</span></div>
@@ -63,11 +63,14 @@ ${ga}
 <link rel="canonical" href="${SITE}${lang}/embed/">${alt}<link rel="alternate" hreflang="x-default" href="${SITE}en/embed/">
 ${FONTS}
 <style>${FONT_VARS}
-body{margin:0;background:#f6efe4;color:#3b2f25;font:16px/1.6 var(--f-body)}
+:root{--bg:#f5f5f7;--surface:#fff;--ink:#1d1d1f;--muted:#6e6e73;--line:#e3e3e8;--link:#0066cc;color-scheme:light dark}
+@media (prefers-color-scheme: dark){:root{--bg:#000;--surface:#1c1c1e;--ink:#f5f5f7;--muted:#a1a1a6;--line:#38383a;--link:#2997ff}}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text",var(--f-body);-webkit-font-smoothing:antialiased}a{color:var(--link)}
 .wrap{max-width:720px;margin:0 auto;padding:24px 16px 48px}header{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.brand{font-family:var(--f-display);font-weight:800;color:#3b2f25;text-decoration:none}h1{font-family:var(--f-display)}nav a{margin-left:6px;color:#3b2f25}
-pre{white-space:pre-wrap;word-break:break-all;background:#fffaf2;border:1px solid #d9cfc2;border-radius:10px;padding:12px;font-family:var(--f-data);font-size:13px}
-.note{color:#7a6a5a;font-size:13px}</style>
+.brand{font-weight:600;font-size:19px;color:var(--ink);text-decoration:none;letter-spacing:-.02em}h1{font-size:clamp(30px,5vw,44px);line-height:1.12;letter-spacing:-.02em}
+nav a{margin-left:6px;padding:4px 12px;border-radius:980px;background:var(--surface);color:var(--ink);text-decoration:none;font-size:13px;font-weight:600}nav a[aria-current]{background:#0071e3;color:#fff}
+pre{white-space:pre-wrap;word-break:break-all;background:var(--surface);border:0;border-radius:18px;padding:12px;font-family:var(--f-data);font-size:13px}
+.note{color:var(--muted);font-size:13px}</style>
 </head><body><div class="wrap">
 <header><a class="brand" href="/${lang}/">The Crowd Tape</a><nav class="lang-sw" aria-label="Language">${sw}</nav></header>
 <h1>${esc(L.h)}</h1>
