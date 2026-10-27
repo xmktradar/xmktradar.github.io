@@ -57,8 +57,10 @@ INST = {
     'std': ('ShortTermBorrowings', 'CommercialPaper'),
 }
 SEG_AXES = ('srt:ProductOrServiceAxis', 'us-gaap:StatementBusinessSegmentsAxis')
-RULES = 2  # bump when the extraction rules change: every company is read again from SEC
+RULES = 3  # bump when the extraction rules change: every company is read again from SEC
 STALE_DAYS = 125  # a latest quarter older than this is checked against SEC again once a day
+QMIN, QMAX = 75, 120  # days in a quarter: 13 weeks, or 16 weeks for retailers such as AZO and COST
+FILED_GAP = 100  # latest quarter older than this: look for newer 10-Q / 10-K filings companyfacts does not carry yet
 
 
 def left():
@@ -204,7 +206,7 @@ def quarterly(es):
     b = best(es)
     q = {}
     for (s, e), x in b.items():
-        if s and 75 <= days(s, e) <= 105:
+        if s and QMIN <= days(s, e) <= QMAX:
             q[e] = x['val']
     by_start = {}
     for (s, e), x in b.items():
@@ -215,7 +217,7 @@ def quarterly(es):
             if e in q or days(s, e) < 150:
                 continue
             for e2, v2 in ends.items():
-                if 75 <= days(e2, e) <= 105:
+                if QMIN <= days(e2, e) <= QMAX:
                     q[e] = v - v2
                     break
     return q
@@ -246,20 +248,37 @@ def revenue(facts):
             if e not in out or v > out[e]:
                 out[e] = v
     out.update(bank)
+    # banks that tag no total revenue in their 10-Q (BNY): fee and other income + net interest income
+    fees = quarterly(entries(facts, 'NoninterestIncome'))
+    nii = quarterly(entries(facts, 'InterestIncomeExpenseNet'))
+    derived = {e: fees[e] + nii[e] for e in fees if e in nii and e not in out}
+    if derived and max(derived) > max(out, default=''):
+        out.update(derived)
+        return out, True
     return out, bool(bank)
 
 
 def periods(facts):
-    """{period end: (label, filed, accn, form)} from the filing that first reported that end as its own period."""
-    first = {}
+    """{period end: (label, filed, accn, form)} from the filing that first reported that end as its own period.
+    A comparative figure (filed a year or more after its end) takes the fiscal year it belongs to, and an end that no
+    labelled fact covers gets its label from the fiscal year-end month (XOM in 2026-10)."""
+    first, any_ = {}, {}
+    fye = None
     for tax in ('us-gaap', 'dei'):
         for c in ((facts.get('facts') or {}).get(tax) or {}).values():
             for es in (c.get('units') or {}).values():
                 for e in es:
                     form = str(e.get('form', ''))
-                    if not form.startswith(('10-Q', '10-K')) or not e.get('fy') or not e.get('fp'):
+                    if not form.startswith(('10-Q', '10-K')):
                         continue
                     k = e['end']
+                    if k not in any_ or e.get('filed', '') < any_[k].get('filed', ''):
+                        any_[k] = e
+                    if not e.get('fy') or not e.get('fp'):
+                        continue
+                    if e['fp'] == 'FY' and e.get('start') and days(e['start'], k) > 340 and days(k, e.get('filed', k)) < 200 \
+                            and (fye is None or k > fye[0]) and str(e['fy']).isdigit():
+                        fye = (k, int(e['fy']))
                     if k not in first or e.get('filed', '') < first[k].get('filed', ''):
                         first[k] = e
     out = {}
@@ -267,8 +286,103 @@ def periods(facts):
         fp = e['fp'] if e['fp'] != 'FY' else 'Q4'
         if fp not in ('Q1', 'Q2', 'Q3', 'Q4'):
             continue
-        out[k] = {'label': f"FY{e['fy']} {fp}", 'filed': e.get('filed'), 'accn': e.get('accn'), 'form': e.get('form')}
+        fy = e['fy']
+        lag = days(k, e['filed']) if e.get('filed') else 0
+        if lag > 200 and str(fy).isdigit():
+            fy = int(fy) - round((lag - 60) / 365)
+        out[k] = {'label': f"FY{fy} {fp}", 'filed': e.get('filed'), 'accn': e.get('accn'), 'form': e.get('form')}
+    if fye:
+        def month(d):  # 52/53-week periods ending in the first days of a month belong to the month before
+            y, m = int(d[:4]), int(d[5:7]) - (1 if int(d[8:10]) <= 7 else 0)
+            return (y - 1, 12) if m == 0 else (y, m)
+        fy_end, fm = month(fye[0])
+        shift = fye[1] - fy_end  # the company's own fiscal-year numbering
+        for k, e in any_.items():
+            if k in out:
+                continue
+            y, m = month(k)
+            q = ((m - fm - 1) % 12) // 3 + 1
+            out[k] = {'label': f"FY{(y if m <= fm else y + 1) + shift} Q{q}", 'filed': e.get('filed'), 'accn': e.get('accn'), 'form': e.get('form')}
     return out
+
+
+WANT = set(REV) | set(COST) | set(EPS) | {'NoninterestIncome', 'InterestIncomeExpenseNet'} | \
+    {n for v in DUR.values() for n in v} | {n for v in INST.values() for n in v}
+
+
+def instance_facts(xml_bytes):
+    """Facts without dimensions from a filing's XBRL instance: [(concept, start, end, value, unit)], fiscal year, period."""
+    root = ET.fromstring(xml_bytes)
+    ctx, units, out, fy, fp = {}, {}, [], None, None
+    for c in root.iter():
+        n = local(c.tag)
+        if n == 'context':
+            s = e = None
+            dims = False
+            for x in c.iter():
+                m = local(x.tag)
+                if m == 'startDate':
+                    s = (x.text or '').strip()
+                elif m in ('endDate', 'instant'):
+                    e = (x.text or '').strip()
+                elif m in ('explicitMember', 'typedMember'):
+                    dims = True
+            if not dims:
+                ctx[c.get('id')] = (s, e)
+        elif n == 'unit':
+            units[c.get('id')] = ''.join((x.text or '').strip().lower() for x in c.iter() if local(x.tag) == 'measure')
+    for x in root:
+        n = local(x.tag)
+        if n == 'DocumentFiscalYearFocus':
+            fy = (x.text or '').strip()
+        elif n == 'DocumentFiscalPeriodFocus':
+            fp = (x.text or '').strip()
+        elif n in WANT and x.get('contextRef') in ctx and x.text and x.get('{http://www.w3.org/2001/XMLSchema-instance}nil') != 'true':
+            try:
+                v = float(x.text.strip())
+            except ValueError:
+                continue
+            s, e = ctx[x.get('contextRef')]
+            u = units.get(x.get('unitRef'), '')
+            out.append((n, s, e, int(v) if v.is_integer() else v, 'USD/shares' if 'shares' in u else 'USD' if 'usd' in u else None))
+    return out, fy, fp
+
+
+def supplement(facts, cik, after):
+    """companyfacts can lag a company's filings by months (KO, V, C ... in 2026-10). Read the 10-Q / 10-K filings that
+    report a period after `after` straight from their XBRL instance and add their facts in the companyfacts shape."""
+    sub = sec_json(f'https://data.sec.gov/submissions/CIK{int(cik):010d}.json')
+    r = ((sub or {}).get('filings') or {}).get('recent') or {}
+    rows = zip(r.get('form') or [], r.get('accessionNumber') or [], r.get('filingDate') or [], r.get('reportDate') or [])
+    todo = sorted((rep, accn, filed, form) for form, accn, filed, rep in rows
+                  if form in ('10-Q', '10-K') and rep and rep > after)[:4]
+    added = 0
+    for rep, accn, filed, form in todo:
+        if left() < 60:
+            break
+        folder = f'https://www.sec.gov/Archives/edgar/data/{int(cik)}/{accn.replace("-", "")}'
+        items = ((sec_json(folder + '/index.json') or {}).get('directory') or {}).get('item') or []
+        names = [i.get('name', '') for i in items]
+        inst = next((n for n in names if n.endswith('_htm.xml')), None)
+        body = sec(f'{folder}/{inst}') if inst else None
+        if not body:
+            continue
+        try:
+            got, fy, fp = instance_facts(body)
+        except ET.ParseError:
+            continue
+        fy = fy or rep[:4]
+        fp = fp or ('FY' if form == '10-K' else None)
+        gaap = facts.setdefault('facts', {}).setdefault('us-gaap', {})
+        for n, st, en, v, unit in got:
+            if not unit or not en:
+                continue
+            e = {'end': en, 'val': v, 'accn': accn, 'fy': int(fy) if str(fy).isdigit() else fy, 'fp': fp, 'form': form, 'filed': filed}
+            if st:
+                e['start'] = st
+            gaap.setdefault(n, {}).setdefault('units', {}).setdefault(unit, []).append(e)
+        added += 1
+    return added
 
 
 def build_quarters(facts):
@@ -466,7 +580,7 @@ def segments(ctx, facts, end, total, total_year):
             if best_ is None or score > best_[0]:
                 best_ = (score, concept, axis, r)
         return best_
-    got = pick(75, 105, total)
+    got = pick(QMIN, QMAX, total)
     basis = 'quarter'
     if not got and total_year:
         got, basis = pick(340, 380, total_year), 'year'
@@ -672,6 +786,12 @@ def main():
             fetched += 1
             if facts:
                 b = build_quarters(facts)
+                if b and (days(b['latest']['end'], tny) > FILED_GAP or (lr and lr > b['latest']['end'])):
+                    try:
+                        if supplement(facts, info['cik'], b['latest']['end']):
+                            b = build_quarters(facts)
+                    except Exception as e:  # a strange filing must not stop the others
+                        print(f'supplement {t}: {e}', file=sys.stderr)
                 if not b:
                     st['no_10q'] = True
                     done += 1

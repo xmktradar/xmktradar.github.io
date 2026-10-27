@@ -158,6 +158,86 @@ def test_pages_and_posts():
     assert ep.fmt_zh(81.2e9) == 'US$812 億' and ep.fmt_en(81.2e9) == '$81.20B' and ep.fmt_en(-2e9) == '-$2.00B'
 
 
+INSTANCE_Q = b"""<?xml version="1.0"?>
+<xbrli:xbrl xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:us-gaap="http://fasb.org/us-gaap/2025" xmlns:dei="http://xbrl.sec.gov/dei/2025"
+ xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:iso4217="http://www.xbrl.org/2003/iso4217">
+<xbrli:context id="q"><xbrli:entity><xbrli:identifier scheme="x">1</xbrli:identifier></xbrli:entity><xbrli:period><xbrli:startDate>2026-01-01</xbrli:startDate><xbrli:endDate>2026-03-31</xbrli:endDate></xbrli:period></xbrli:context>
+<xbrli:context id="seg"><xbrli:entity><xbrli:identifier scheme="x">1</xbrli:identifier><xbrli:segment><xbrldi:explicitMember dimension="srt:ProductOrServiceAxis">x:A</xbrldi:explicitMember></xbrli:segment></xbrli:entity><xbrli:period><xbrli:startDate>2026-01-01</xbrli:startDate><xbrli:endDate>2026-03-31</xbrli:endDate></xbrli:period></xbrli:context>
+<xbrli:context id="i"><xbrli:entity><xbrli:identifier scheme="x">1</xbrli:identifier></xbrli:entity><xbrli:period><xbrli:instant>2026-03-31</xbrli:instant></xbrli:period></xbrli:context>
+<xbrli:unit id="usd"><xbrli:measure>iso4217:USD</xbrli:measure></xbrli:unit>
+<xbrli:unit id="ps"><xbrli:divide><xbrli:unitNumerator><xbrli:measure>iso4217:USD</xbrli:measure></xbrli:unitNumerator><xbrli:unitDenominator><xbrli:measure>xbrli:shares</xbrli:measure></xbrli:unitDenominator></xbrli:divide></xbrli:unit>
+<dei:DocumentFiscalYearFocus contextRef="q">2026</dei:DocumentFiscalYearFocus><dei:DocumentFiscalPeriodFocus contextRef="q">Q1</dei:DocumentFiscalPeriodFocus>
+<us-gaap:Revenues contextRef="q" unitRef="usd" decimals="-6">150000000</us-gaap:Revenues>
+<us-gaap:Revenues contextRef="seg" unitRef="usd" decimals="-6">90000000</us-gaap:Revenues>
+<us-gaap:EarningsPerShareDiluted contextRef="q" unitRef="ps" decimals="2">1.35</us-gaap:EarningsPerShareDiluted>
+<us-gaap:CashAndCashEquivalentsAtCarryingValue contextRef="i" unitRef="usd" decimals="-6">700000000</us-gaap:CashAndCashEquivalentsAtCarryingValue>
+</xbrli:xbrl>"""
+
+
+def test_supplement():
+    """companyfacts stops at FY2025; the newer 10-Q is read from its own XBRL instance."""
+    calls = []
+
+    def fake_json(url):
+        calls.append(url)
+        if 'submissions' in url:
+            return {'filings': {'recent': {'form': ['10-Q', '8-K', '10-Q'], 'accessionNumber': ['0000-26-1', '0000-26-2', '0000-25-9'],
+                                           'filingDate': ['2026-04-30', '2026-04-29', '2025-10-30'],
+                                           'reportDate': ['2026-03-31', '2026-04-29', '2025-09-30']}}}
+        return {'directory': {'item': [{'name': 'x-20260331_htm.xml'}, {'name': 'x-20260331_lab.xml'}]}}
+
+    old = ed.sec_json, ed.sec
+    ed.sec_json, ed.sec = fake_json, lambda url: INSTANCE_Q
+    try:
+        f = facts_fixture()
+        assert ed.supplement(f, 1, '2025-12-31') == 1
+    finally:
+        ed.sec_json, ed.sec = old
+    assert [c for c in calls if 'index.json' in c] == ['https://www.sec.gov/Archives/edgar/data/1/0000261/index.json'], calls  # only the 10-Q after 2025-12-31
+    b = ed.build_quarters(f)
+    last = b['q'][-1]
+    assert last['end'] == '2026-03-31' and last['rev'] == 150000000 and last['eps'] == 1.35, last  # the segment fact is ignored
+    assert b['latest']['label'] == 'FY2026 Q1' and b['latest']['accn'] == '0000-26-1' and b['latest']['filed'] == '2026-04-30'
+    assert b['bal']['cash'] == 700000000
+
+
+def test_16_week_quarters():
+    """AZO / COST: a 16-week quarter (112 days) is still a quarter, and Q4 = year - 36 weeks."""
+    rev = [fact('2025-08-31', '2025-11-22', 100, 2026, 'Q1', filed='2025-12-10'),
+           fact('2025-08-31', '2026-05-09', 400, 2026, 'Q3', filed='2026-05-30'),
+           fact('2026-02-15', '2026-05-09', 110, 2026, 'Q3', filed='2026-05-30'),
+           fact('2025-08-31', '2026-08-29', 560, 2026, 'FY', form='10-K', filed='2026-10-26')]
+    b = ed.build_quarters({'facts': {'us-gaap': {'Revenues': {'units': {'USD': rev}}}}})
+    q = {x['end']: x['rev'] for x in b['q']}
+    assert q.get('2026-08-29') == 160 and b['latest']['label'] == 'FY2026 Q4', q
+
+
+def test_bank_net_revenue_from_parts():
+    """BNY: no total revenue tag in the 10-Q, so fee income + net interest income."""
+    u = lambda es: {'units': {'USD': es}}  # noqa: E731
+    f = {'facts': {'us-gaap': {
+        'Revenues': u([fact('2025-01-01', '2025-12-31', 1000, 2025, 'FY', form='10-K', filed='2026-02-25')]),
+        'NoninterestIncome': u([fact('2026-04-01', '2026-06-30', 3800, 2026, 'Q2', filed='2026-07-31')]),
+        'InterestIncomeExpenseNet': u([fact('2026-04-01', '2026-06-30', 1200, 2026, 'Q2', filed='2026-07-31')]),
+    }}}
+    rev, bank = ed.revenue(f)
+    assert rev['2026-06-30'] == 5000 and bank
+
+
+def test_labels_without_fiscal_period():
+    """XOM: quarters companyfacts gives without fy/fp get their label from the fiscal year end; a comparative figure
+    filed a year later keeps its own year."""
+    def lab(es):
+        return {k: v['label'] for k, v in ed.periods({'facts': {'us-gaap': {'Revenues': {'units': {'USD': es}}}}}).items()}
+    got = lab([fact('2025-01-01', '2025-12-31', 1, 2025, 'FY', form='10-K', filed='2026-02-20'),
+               fact('2026-01-01', '2026-04-03', 1, None, None), fact('2025-07-01', '2025-10-03', 1, None, None),
+               fact('2025-04-01', '2025-06-30', 1, 2026, 'Q2', filed='2026-08-03')])
+    assert got == {'2025-12-31': 'FY2025 Q4', '2026-04-03': 'FY2026 Q1', '2025-10-03': 'FY2025 Q3', '2025-06-30': 'FY2025 Q2'}, got
+    got = lab([fact('2025-02-02', '2026-01-31', 1, 2026, 'FY', form='10-K', filed='2026-03-20'),
+               fact('2026-02-01', '2026-05-02', 1, None, None)])  # NVDA-style year ending in January
+    assert got['2026-05-02'] == 'FY2027 Q1', got
+
+
 if __name__ == '__main__':
     for name, fn in list(globals().items()):
         if name.startswith('test_') and callable(fn):
