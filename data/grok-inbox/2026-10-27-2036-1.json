@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2115028085703954495": {
+      "en_summary": "Scott Redler's #630club live premarket stock market update covering $NVDA, $MU, $SPCX and $SNDK.",
+      "zh_summary": "Scott Redler 的 #630club 實時盤前股市更新，涵蓋 $NVDA、$MU、$SPCX 和 $SNDK。",
+      "tickers": ["NVDA", "MU", "SPCX", "SNDK"],
+      "stance": null,
+      "stance_by_ticker": {"NVDA": "未表態", "MU": "未表態", "SPCX": "未表態", "SNDK": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115024599486497259": {
+      "en_summary": "$NVDA is expanding its $META partnership beyond GPUs into standalone Vera CPUs and security software for AI agents. As AI shifts toward agents, Nvidia targets CPU spending traditionally held by $INTC and $AMD, adding another software lock-in layer beyond CUDA.",
+      "zh_summary": "$NVDA 正在將其與 $META 的合作從 GPU 擴展至獨立的 Vera CPU 和 AI 代理安全軟體。隨著 AI 轉向代理，Nvidia 正搶佔傳統上由 $INTC 和 $AMD 持有的 CPU 支出，並在 CUDA 之外建立另一層軟體鎖定。",
+      "tickers": ["NVDA", "META", "INTC", "AMD"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好", "META": "中性", "INTC": "中性", "AMD": "中性"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "擴展至 CPU 和安全軟體，搶佔 CPU 市場並加強軟體鎖定"}
+    },
+    "2115021665813827638": {
+      "en_summary": "$UPS Q3 earnings beat with Adj EPS $1.69 vs $1.63 est and sales $22.9B vs $22.3B est. Raised FY2026 Adj EPS and sales guidance.",
+      "zh_summary": "$UPS 第三季業績優於預期，調整後 EPS 為 1.69 美元對比預估 1.63 美元，銷售額 229 億美元對比預估 223 億美元。上調 2026 財年調整後 EPS 和銷售額指引。",
+      "tickers": ["UPS"],
+      "stance": "睇好",
+      "stance_by_ticker": {"UPS": "睇好"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"UPS": "Q3 業績超預期並上調 FY2026 指引"}
+    },
+    "2115016452516270335": {
+      "en_summary": "U.S. stocks edged higher pre-market shrugging off massive AI equity issuances including Anthropic’s likely $100B IPO, OpenAI’s expected offering and META’s $100B secondary. Markets await Fed’s likely hawkish hold tomorrow and earnings from $GOOG, $MSFT and $AMZN. Brent rose to $117, 10-year yield eased to 4.98%, BTC held at $79.7K. Tech higher and $TSLA rose amid $SPCX merger speculation. S&P 2026 EPS estimates of $369 (+33% YoY) imply 4.8% earnings yield inverted versus Treasuries. Cautious on $TSLA given extreme valuation (2026 P/E of 220x vs +45% long-term earnings growth), negative forward earnings revisions and commoditization of autonomous driving technology.",
+      "zh_summary": "美股盤前小幅上漲，投資者忽略大規模 AI 股權發行，包括 Anthropic 可能的 1000 億美元 IPO、OpenAI 預期發行以及 META 的 1000 億美元二次發行。市場等待明日聯儲局可能的鷹派維持利率決定以及本週 $GOOG、$MSFT 和 $AMZN 的業績。布倫特油價升至 117 美元，10 年期國債收益率回落至 4.98%，BTC 維持在 7.97 萬美元。科技股普遍上漲，$TSLA 因 $SPCX 合併傳聞上漲。標普 2026 年 EPS 估計為 369 美元（同比 +33%）意味著 4.8% 盈利收益率，相對國債倒掛如 1990 年代末。對 $TSLA 保持謹慎，因其極端估值（2026 年市盈率 220 倍對比長期盈利增長 +45%）、前瞻盈利下修以及自動駕駛技術商品化。",
+      "tickers": ["GOOG", "MSFT", "AMZN", "TSLA", "SPCX", "META"],
+      "stance": "中性",
+      "stance_by_ticker": {"GOOG": "未表態", "MSFT": "未表態", "AMZN": "未表態", "TSLA": "睇淡", "SPCX": "中性", "META": "中性"},
+      "horizon": null,
+      "basis": "估值",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "yields",
+      "macro_impact": "中性",
+      "ticker_notes": {"TSLA": "極端估值 2026 P/E 220x 對比長期增長 +45%，前瞻盈利下修及自動駕駛商品化"}
+    },
+    "2115013155353223376": {
+      "en_summary": "$ACI Albertsons Companies CEO stated the economy is tough for many customers with elevated fuel prices and stubbornly high inflation in P&L. Traffic and units below needed levels, overall performance does not reflect asset quality or team capabilities, not satisfied with results and current trajectory.",
+      "zh_summary": "$ACI Albertsons Companies 行政總裁表示，經濟對許多客戶來說很艱難，燃油價格高企且通脹在損益中頑固偏高。客流量和銷量低於所需水平，整體表現未能反映資產質素或團隊能力，對結果和當前軌跡不滿意。",
+      "tickers": ["ACI"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"ACI": "睇淡"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "inflation",
+      "macro_impact": "利淡",
+      "ticker_notes": {"ACI": "CEO 稱經濟艱難、通脹高企，客流和銷量不足，對業務軌跡不滿意"}
+    }
+  }
+}
