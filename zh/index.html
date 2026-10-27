@@ -348,8 +348,6 @@ body .divehead .av{width:72px;height:72px}
 
 
 .tabs .tab-rng{font-size:inherit;font-weight:inherit}
-.tabs .tab-robo{color:#2e7449}
-.tabs .tab-robo[aria-selected="true"]{border-bottom-color:#6fbf8a}
 @media(max-width:640px){
   .tabs{gap:0;justify-content:space-between}
   .tabs button{padding-left:8px;padding-right:8px;font-size:14px;white-space:nowrap}
@@ -371,12 +369,10 @@ body .divehead .av{width:72px;height:72px}
 @media(max-width:640px){.vs-bar .vs-cta{margin-left:0;width:100%}}
 
 
-.tabs .tab-robo .rb-full{display:inline}.tabs .tab-robo .rb-short{display:none}
 @media(max-width:640px){
 .tabs{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .tabs::-webkit-scrollbar{display:none}
 .tabs button,.tabs a{flex:0 0 auto;white-space:nowrap}
-.tabs .tab-robo .rb-full{display:none}.tabs .tab-robo .rb-short{display:inline}
 }
 
 
@@ -822,9 +818,7 @@ td:not(:first-child) .note{white-space:nowrap}
 @media(max-width:600px){.acc-grid{grid-template-columns:minmax(0,1fr)}.hbar{grid-template-columns:60px minmax(0,1fr) 64px}.divehead h1{font-size:26px}.meta{font-size:11.5px}}
 
 .grid>.vs-bar{margin:0}.vs-bar .vs-br{flex-basis:100%;height:0}
-nav.tabs a.tab-robo{display:block;padding:10px 14px;font-weight:500;text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;border-radius:10px 10px 0 0}
-nav.tabs a.tab-robo:hover{filter:brightness(.9)}
-@media(max-width:640px){nav.tabs{width:100%}nav.tabs button{padding-left:8px;padding-right:8px}nav.tabs a.tab-robo{padding-left:8px;padding-right:8px;font-size:14px;flex:0 0 auto}}
+@media(max-width:640px){nav.tabs{width:100%}nav.tabs button{padding-left:8px;padding-right:8px}}
 @media(max-width:600px){.divehead .meta{flex:1 1 100%}}
 /* 睇唔到嘅區塊延後排版（手機開頁快好多，外觀不變） */
 #view .grid>section{content-visibility:auto;contain-intrinsic-size:auto 900px}</style><style id="macro-tab-css">
@@ -904,9 +898,6 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
       <button role="tab" data-v="monthly" id="tab-monthly">每月<small class="tab-rng">（28 天）</small></button>
       <button role="tab" data-v="macro" id="tab-macro">宏觀</button>
       <button role="tab" data-v="tracked" id="tab-tracked">追蹤名單</button>
-      <!-- 機械人選股分頁暫時收起（2026-10-15）：數據停咗喺 10/8，有來源再開返
-      <a href="/robot.html" class="tab-robo"><span class="rb-full">機械人選股交易（Grok）</span><span class="rb-short">機械人交易</span></a>
-      -->
     </nav>
     <button type="button" class="srch-btn" id="srch-btn" aria-label="搜尋股票" title="搜尋股票" aria-expanded="false" aria-controls="srch">🔍</button>
     <div class="srch" id="srch" role="search" hidden><div class="srch-row"><input id="srch-q" type="search" placeholder="輸入代號或公司名稱，例如 NVDA" aria-label="搜尋股票" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go"><button type="button" class="srch-x" id="srch-x" aria-label="關閉搜尋">✕</button></div><ul id="srch-r" role="listbox" aria-label="搜尋結果"></ul></div>
@@ -1822,7 +1813,7 @@ function paintChrome(){const m=D.meta;const cut=document.getElementById('cutoff'
 <p>立場資料：${m.stance.files.length?`由分析師逐篇標示（已標示 ${m.stance.matched} 篇貼文）；沒有標示立場的一律列為「未表態」。`:'尚未有分析師立場資料，所有貼文暫列為「未表態」。'}</p>
 <p>${Object.keys(srcs).length?`股價資料截至 ${esc(asof)}（美東交易日）：${Object.keys(srcs).map(esc).join('、')} 日收市價，抓取於 ${esc(fet)} HKT`:'沒有股價資料'}${(()=>{const pm=m.price_missing.filter(t=>!UNC(t));const wn=pm.filter(t=>OV[t]&&OV[t].price_note),wo=pm.filter(t=>!(OV[t]&&OV[t].price_note));return (wn.length?'；'+wn.map(t=>'$'+esc(t)+' 為'+esc(OV[t].price_note)).join('；'):'')+(wo.length?`；暫時未有股價資料：${wo.map(t=>'$'+esc(t)).join(' ')}`:'')})()}${nonUS.length?'；非美股以當地交易所及貨幣報價（個股頁已標示）':''}。</p>
 ${MAC&&MAC.rows.length?`<p>大市數據：${[...new Set(MAC.rows.map(r=>(r.src||'').replace(/（.*?）|\(.*?\)/g,'').trim()).filter(Boolean))].map(esc).join('、')||'—'}${MAC.as_of?`，截至 ${esc(MAC.as_of)} HKT`:''}。</p>`:''}<p>時間均為香港時間（HKT, UTC+8）。帳號頭像與簡介來自各帳號的 X 個人頁。</p>
-<p>本站部分連結屬聯盟推廣連結，你經由連結註冊或購買，我們可能獲得佣金，你無需多付。佣金不會影響好淡統計與<a href="/robot.html">機械人選股</a>。本站內容不構成投資建議。</p>
+<p>本站部分連結屬聯盟推廣連結，你經由連結註冊或購買，我們可能獲得佣金，你無需多付。佣金不會影響好淡統計。本站內容不構成投資建議。</p>
 <p><a href="tools/">工具</a> · <a href="support/">支持我們</a> · <a href="newsletter/">電子報</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank">TradingView <span class="pj-tag">推廣</span></a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="pj-tag">推廣</span></a> · <a href="advertise/">廣告合作</a> · <a href="about/">關於本站及方法</a></p>`;linkHandles(document.getElementById('foot'))}
 document.addEventListener('dash-data',function(){try{paintChrome()}catch(e){}});
 paintChrome();
