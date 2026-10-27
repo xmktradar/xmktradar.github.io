@@ -499,32 +499,15 @@ def list_page(cos, lang, stamp):
 
 # ---------- links, sitemap ----------
 
-def link_row(lang):
-    t = L[lang]
-    return (f'{MARK}<nav id="earnings-link" class="wrap" aria-label="{E(t["all_briefs"])}" style="font-size:13.5px;line-height:1.8;padding:10px 16px 0">'
-            f'<a href="/{lang}/earnings/"><b>{E(t["link_row"])}</b></a> <small style="color:var(--muted)">{E(t["link_note"])}</small></nav>{MARK}')
-
-
 def add_home_links():
-    foot = '<!-- stock-index -->'
-    # master index.html is the source of /en/ too (tools/build_langs.py), so it never gets a link, only loses old ones
-    s = open('index.html', encoding='utf-8').read()
-    clean = re.sub(re.escape(MARK) + r'.*?' + re.escape(MARK), '', s, flags=re.S)
-    if clean != s:
-        open('index.html', 'w', encoding='utf-8').write(clean)
-    for path, lang in (('zh/index.html', 'zh'), ('en/index.html', 'en')):
+    """The homepage link lives in the tab row of master index.html (Tim, 2026-10-27); only remove the old row near the page foot."""
+    for path in ('index.html', 'zh/index.html', 'en/index.html'):
         if not os.path.exists(path):
             continue
         s = open(path, encoding='utf-8').read()
-        s = re.sub(re.escape(MARK) + r'.*?' + re.escape(MARK), '', s, flags=re.S)
-        if foot in s:
-            s = s.replace(foot, link_row(lang) + foot, 1)
-        elif '<footer class="wrap foot" id="foot">' in s:
-            s = s.replace('<footer class="wrap foot" id="foot">', link_row(lang) + '<footer class="wrap foot" id="foot">', 1)
-        else:
-            notice(f'財報：{path} 搵唔到放連結嘅位', 'warning')
-            continue
-        open(path, 'w', encoding='utf-8').write(s)
+        clean = re.sub(re.escape(MARK) + r'.*?' + re.escape(MARK), '', s, flags=re.S)
+        if clean != s:
+            open(path, 'w', encoding='utf-8').write(clean)
 
 
 def add_stock_links(tickers):
