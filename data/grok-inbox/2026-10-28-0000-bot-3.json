@@ -1,0 +1,96 @@
+{
+  "posts": {
+    "2115047365073834112": {
+      "en_summary": "Mixed global markets after things stabilized yesterday. $SPX futures +20 with Iran headlines helping oil come in; 7612 remains the key pivot support for the week. Big earnings ahead and the two-day FOMC meeting starts today.",
+      "zh_summary": "全球市場漲跌互見，昨日市況略為穩定。$SPX期貨上漲20點，伊朗消息帶動油價回落；7612點仍是本週關鍵支撐。重要財報將陸續公布，為期兩日的FOMC會議今日展開。",
+      "tickers": [
+        "SPX"
+      ],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "SPX": "中性"
+      },
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {
+        "SPX": "@RedDogT3指7612點為本週關鍵支撐"
+      }
+    },
+    "2115047404953338114": {
+      "en_summary": "$GLW Q3: adj. EPS $0.91 vs $0.88 est, sales $5.08B vs $5.03B est.",
+      "zh_summary": "$GLW第三季：經調整每股盈利0.91美元（預期0.88美元），營收50.8億美元（預期50.3億美元）。",
+      "tickers": [
+        "GLW"
+      ],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "GLW": "睇好"
+      },
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115047640786161688": {
+      "en_summary": "$SPGI Q3: adj. EPS $4.58 vs $4.43 est, sales $3.68B vs $3.64B est; raised FY2026 adj. EPS and sales guidance.",
+      "zh_summary": "$SPGI第三季：經調整每股盈利4.58美元（預期4.43美元），營收36.8億美元（預期36.4億美元）；上調2026財年經調整每股盈利及營收指引。",
+      "tickers": [
+        "SPGI"
+      ],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "SPGI": "睇好"
+      },
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115047860831969300": {
+      "en_summary": "$BA Q3: adj. EPS -$0.34 vs -$0.21 est (miss), sales $24.19B vs $23.84B est (beat).",
+      "zh_summary": "$BA第三季：經調整每股虧損0.34美元（預期虧損0.21美元，遜於預期），營收241.9億美元（預期238.4億美元，超預期）。",
+      "tickers": [
+        "BA"
+      ],
+      "stance": "睇淡",
+      "stance_by_ticker": {
+        "BA": "睇淡"
+      },
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115048026892808432": {
+      "en_summary": "$PYPL Q3: adj. EPS $1.45 vs $1.31 est (beat), sales $8.58B vs $8.71B est (miss).",
+      "zh_summary": "$PYPL第三季：經調整每股盈利1.45美元（預期1.31美元，超預期），營收85.8億美元（預期87.1億美元，遜於預期）。",
+      "tickers": [
+        "PYPL"
+      ],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "PYPL": "中性"
+      },
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
