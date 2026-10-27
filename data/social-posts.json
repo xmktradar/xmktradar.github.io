@@ -1347,9 +1347,171 @@
       "XYZ"
      ]
     }
+   },
+   "intraday_1": {
+    "post_et": "11:00",
+    "post_hkt": "23:00",
+    "generated_at": "2026-10-27T10:47:55-04:00",
+    "date": "2026-10-27",
+    "date_kst": "2026-10-28",
+    "quotes": {
+     "SPY": {
+      "price": 767.88,
+      "prev_close": 765.37,
+      "chg_pct": 0.33,
+      "time": "2026-10-27T10:47:54-04:00"
+     },
+     "QQQ": {
+      "price": 717.575,
+      "prev_close": 712.2,
+      "chg_pct": 0.75,
+      "time": "2026-10-27T10:47:55-04:00"
+     },
+     "DIA": {
+      "price": 522.455,
+      "prev_close": 522.97,
+      "chg_pct": -0.1,
+      "time": "2026-10-27T10:47:55-04:00"
+     },
+     "SKHY": {
+      "price": 144.89,
+      "prev_close": 142.62,
+      "chg_pct": 1.59,
+      "time": "2026-10-27T10:47:55-04:00"
+     },
+     "INTC": {
+      "price": 92.74,
+      "prev_close": 90.47,
+      "chg_pct": 2.51,
+      "time": "2026-10-27T10:47:57-04:00"
+     },
+     "CRWD": {
+      "price": 265.185,
+      "prev_close": 261.83,
+      "chg_pct": 1.28,
+      "time": "2026-10-27T10:47:53-04:00"
+     },
+     "LMT": {
+      "price": 624.63,
+      "prev_close": 635.2,
+      "chg_pct": -1.66,
+      "time": "2026-10-27T10:47:46-04:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-10-27T10:47:57-04:00",
+     "hkt": "2026-10-27 22:47"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "SKHY",
+      "chg_pct": 1.59,
+      "bull": 3,
+      "bear": 0,
+      "accounts": [
+       "amitisinvesting",
+       "StockSavvyShay",
+       "michaelsikand",
+       "Mr_Derivatives",
+       "LeopoldTracker_",
+       "EliteOptions2",
+       "ThetaWarrior",
+       "SJosephBurns"
+      ]
+     },
+     {
+      "ticker": "INTC",
+      "chg_pct": 2.51,
+      "bull": 3,
+      "bear": 0,
+      "accounts": [
+       "StockSavvyShay",
+       "OptionsMike",
+       "michaelsikand",
+       "Mr_Derivatives",
+       "IBDinvestors",
+       "SJosephBurns",
+       "RedDogT3",
+       "TheTranscript_"
+      ]
+     },
+     {
+      "ticker": "CRWD",
+      "chg_pct": 1.28,
+      "bull": 3,
+      "bear": 0,
+      "accounts": [
+       "jimcramer",
+       "ripster47",
+       "OptionsMike",
+       "InvestorsLive"
+      ]
+     },
+     {
+      "ticker": "LMT",
+      "chg_pct": -1.66,
+      "bull": 3,
+      "bear": 0,
+      "accounts": [
+       "Mr_Derivatives",
+       "OptionsMike",
+       "ThetaWarrior"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Late morning · As of 10:47 ET (22:47 HKT)\n\n$SPY +0.3% · $QQQ +0.8% · $DIA -0.1%\n\n$SKHY +1.6%, 3 accounts bullish on site\n$INTC +2.5%, 3 accounts bullish on site\n\nhttps://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_1\n\n⚠️ Not investment advice\n#StockMarket #SKHY #INTC",
+      "url": "https://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_1"
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "早盤觀察 · 截至 10:47 ET（22:47 HKT）\n\n$SPY +0.3% · $QQQ +0.8% · $DIA -0.1%\n\n$SKHY +1.6%，網站 3 個帳號看好\n$INTC +2.5%，網站 3 個帳號看好\n$CRWD +1.3%，網站 3 個帳號看好\n$LMT -1.7%，網站 3 個帳號看好\n\n⚠️ 唔構成投資建議\n#美股 #SKHY #INTC",
+      "url": null
+     },
+     "en": {
+      "text": "Late morning · As of 10:47 ET (22:47 HKT)\n\n$SPY +0.3% · $QQQ +0.8% · $DIA -0.1%\n\n$SKHY +1.6%, 3 accounts bullish on site\n$INTC +2.5%, 3 accounts bullish on site\n$CRWD +1.3%, 3 accounts bullish on site\n$LMT -1.7%, 3 accounts bullish on site\n\n⚠️ Not investment advice\n#StockMarket #SKHY #INTC",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": true,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "MU",
+      "BE",
+      "AMD",
+      "SMH",
+      "SKHY",
+      "INTC",
+      "CRWD",
+      "LMT",
+      "AMZN",
+      "CART",
+      "CLS",
+      "ORCL",
+      "CRDO",
+      "AXP"
+     ],
+     "bear": [
+      "NU",
+      "FICO",
+      "HYG",
+      "XYZ"
+     ]
+    }
    }
   },
-  "generated_at": "2026-10-27T09:54:50-04:00",
-  "generated_hkt": "2026-10-27 21:54"
+  "generated_at": "2026-10-27T10:47:55-04:00",
+  "generated_hkt": "2026-10-27 22:47"
  }
 }
