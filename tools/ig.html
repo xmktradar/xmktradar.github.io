@@ -1,19 +1,19 @@
 <!doctype html><meta charset="utf-8">
 <!-- Native Instagram text-post picture (1080x1350). Same job.langs[lang] data and i18n as tools/og.html.
      tools/og.js (when job.social) and tools/ig_sample.js call ig(lang, data). -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Noto+Sans+TC:wght@400;500;700;900;900&display=block">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=block">
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;width:1080px;height:1350px}
 body{position:relative;overflow:hidden;color:#151a2c;
- font-family:"Noto Sans TC","Noto Color Emoji",sans-serif}
+ font-family:"Noto Sans TC","Noto Sans CJK TC","Noto Color Emoji",sans-serif}
 .bg{position:absolute;inset:0}
 .bull .bg{background:linear-gradient(160deg,#8fe3c3 0%,#c6ec9f 48%,#fde7a1 100%)}
 .talk .bg{background:linear-gradient(160deg,#9fc8fb 0%,#c3b9f6 55%,#f6c8df 100%)}
 .dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.55) 1.8px,transparent 1.9px);background-size:24px 24px;mask-image:linear-gradient(180deg,transparent 0,#000 55%)}
 .tape{position:absolute;left:-48px;right:-48px;top:28px;height:56px;background:#151a2c;transform:rotate(-2.2deg);
  display:flex;align-items:center;gap:36px;padding-left:72px;white-space:nowrap;box-shadow:0 7px 0 rgba(21,26,44,.18)}
-.tape span{font:700 28px "IBM Plex Mono",monospace;color:#fff}
+.tape span{font:700 28px "Inter","Noto Sans TC","Noto Sans CJK TC",sans-serif;color:#fff}
 .tape i{font-style:normal;margin-left:10px}
 .tape .u{color:#5ee08f}.tape .d{color:#ff7d7d}
 .tape .sep{color:#f8d34a}
@@ -23,13 +23,13 @@ body{position:relative;overflow:hidden;color:#151a2c;
 .brand .lg{width:52px;height:52px;border-radius:12px;object-fit:cover;margin:-4px 0}
 .date{display:inline-block;background:#f8d34a;border:4px solid #151a2c;border-radius:14px;padding:6px 16px;font-weight:900;font-size:32px;transform:rotate(-2.5deg);box-shadow:4px 5px 0 #151a2c;white-space:nowrap}
 h1{margin:0;font-weight:900;font-size:84px;line-height:1.12;letter-spacing:.4px;flex:none;min-width:0}
-h1 .hl{background:linear-gradient(transparent 52%,#fbe25b 52%);padding:0 8px;font-family:"IBM Plex Mono",monospace;font-size:1.35em}
+h1 .hl{background:linear-gradient(transparent 52%,#fbe25b 52%);padding:0 8px;font-family:"Inter","Noto Sans TC","Noto Sans CJK TC",sans-serif;font-size:1.35em}
 h1 .n{font-size:.85em}
 .streak{display:inline-block;vertical-align:middle;margin-left:12px;background:#ff6b3d;color:#fff;font-weight:900;font-size:32px;padding:6px 14px;border-radius:12px;transform:rotate(3deg);box-shadow:3px 4px 0 #151a2c;border:3px solid #151a2c;letter-spacing:0}
 .q{display:flex;gap:16px;align-items:flex-start;background:#fff;border:4px solid #151a2c;border-radius:22px;padding:12px 18px;box-shadow:0 6px 0 rgba(21,26,44,.16);flex:none;min-width:0}
 .q img{width:64px;height:64px;border-radius:50%;flex:none;box-shadow:0 0 0 3px #2f8f52;object-fit:cover}
 .q>div{min-width:0;flex:1}
-.q .who{font:700 28px "IBM Plex Mono",monospace;color:#3c4466}
+.q .who{font:700 28px "Inter","Noto Sans TC","Noto Sans CJK TC",sans-serif;color:#3c4466}
 .q .tx{font-weight:700;font-size:32px;line-height:1.32;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .stats{display:flex;gap:18px;flex:none}
 .stat{flex:1;border-radius:22px;padding:10px 22px;border:4px solid;box-shadow:0 6px 0 rgba(21,26,44,.16);min-width:0}
@@ -42,13 +42,13 @@ h1 .n{font-size:.85em}
 .stat.p{background:#f3e3ff;border-color:#8a4fd6;color:#6b37b0}
 .rt{display:flex;flex-direction:column;gap:10px;flex:1;min-height:0}
 .rt .t{white-space:nowrap;font-weight:900;font-size:32px;display:flex;align-items:center;gap:10px;flex:none}
-.rt .t small{font:700 28px "IBM Plex Mono",monospace;color:#3c4466;margin-left:auto}
+.rt .t small{font:700 28px "Inter","Noto Sans TC","Noto Sans CJK TC",sans-serif;color:#3c4466;margin-left:auto}
 .cards{display:flex;flex-direction:column;gap:10px;flex:1;min-height:0}
 .card{background:#fff;border-radius:22px;border:4px solid #151a2c;box-shadow:0 6px 0 #151a2c;display:grid;grid-template-columns:56px minmax(0,1fr) auto auto;align-items:center;gap:14px;padding:10px 16px;flex:1 0 auto;min-height:0;min-width:0}
-.rk{width:48px;height:48px;border-radius:50%;background:#151a2c;color:#fff;display:grid;place-items:center;font:700 26px "IBM Plex Mono",monospace}
+.rk{width:48px;height:48px;border-radius:50%;background:#151a2c;color:#fff;display:grid;place-items:center;font:700 26px "Inter","Noto Sans TC","Noto Sans CJK TC",sans-serif}
 .card:first-child .rk{background:#f8d34a;color:#151a2c;border:3px solid #151a2c}
 .tkw{display:flex;align-items:center;flex-wrap:wrap;gap:6px 14px;min-width:0}
-.tk{font:700 52px "IBM Plex Mono",monospace;line-height:1;white-space:nowrap}
+.tk{font:700 52px "Inter","Noto Sans TC","Noto Sans CJK TC",sans-serif;line-height:1;white-space:nowrap}
 .pill{display:inline-block;margin-top:0;font-weight:900;font-size:30px;padding:2px 12px;border-radius:999px;border:3px solid}
 .pill.g{color:#1d6b3a;border-color:#2f8f52;background:#e3f7ea}
 .pill.r{color:#a52b3d;border-color:#c63b4e;background:#fde7eb}
@@ -60,7 +60,7 @@ h1 .n{font-size:.85em}
 .avs b{display:grid;place-items:center;font-size:20px;color:#151a2c;background:#f8d34a;box-shadow:0 0 0 2px #151a2c}
 .mini{display:flex;flex-direction:row;align-items:center;gap:10px}
 .mini svg{width:120px;height:48px}
-.mini .c{font:700 30px "IBM Plex Mono",monospace}
+.mini .c{font:700 30px "Inter","Noto Sans TC","Noto Sans CJK TC",sans-serif}
 .u{color:#1f9d55}.d{color:#d23b4f}
 .foot{position:absolute;left:48px;right:48px;bottom:16px;background:rgba(255,255,255,.92);border-radius:28px;display:flex;flex-direction:column;justify-content:center;gap:2px;padding:8px 22px;font-weight:700;font-size:30px;line-height:1.15;color:#3c4466}
 .foot .r1{display:flex;align-items:center;justify-content:space-between;gap:12px;white-space:nowrap;line-height:1.15}
@@ -70,6 +70,7 @@ h1 .n{font-size:.85em}
 .n1 .card{min-height:160px}
 .n2 .card{min-height:130px}
 </style>
+<link rel="stylesheet" href="social_apple.css">
 <body>
 <div class="bg"></div><div class="dots"></div>
 <div class="tape" id="tape"></div>

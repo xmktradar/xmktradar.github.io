@@ -1,12 +1,12 @@
 <!doctype html><meta charset="utf-8">
 <!-- Weekend guide pictures in the @thecrowdtape Instagram style: a 1080x1350 feed picture and a 1080x1920 Story,
      each with a real phone screenshot of the feature. tools/tutorial.js calls render(lang, data, shotDataUrl, size). -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Noto+Sans+TC:wght@400;500;700;900;900&display=block">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=block">
 <style>
 *{box-sizing:border-box}
 html,body{margin:0}
 body{width:1080px;height:1350px;position:relative;overflow:hidden;color:#151a2c;
- font-family:"Noto Sans TC","Noto Color Emoji",sans-serif}
+ font-family:"Noto Sans TC","Noto Sans CJK TC","Noto Color Emoji",sans-serif}
 body.story{height:1920px}
 .bg{position:absolute;inset:0}
 .p0 .bg{background:linear-gradient(150deg,#9fc8fb 0%,#c3b9f6 55%,#f6c8df 100%)}
@@ -19,7 +19,7 @@ body.story{height:1920px}
 .brand{display:inline-flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:8px 22px 8px 10px;font-weight:900;font-size:30px;box-shadow:0 5px 0 rgba(21,26,44,.14);white-space:nowrap}
 .brand img{width:50px;height:50px;border-radius:12px;object-fit:cover;margin:-4px 0}
 .ep{display:inline-block;background:#f8d34a;border:4px solid #151a2c;border-radius:14px;padding:5px 18px;font-weight:900;font-size:30px;transform:rotate(-2.5deg);box-shadow:4px 5px 0 #151a2c;white-space:nowrap}
-.ep b{font-family:"IBM Plex Mono",monospace}
+.ep b{font-family:"Inter","Noto Sans TC","Noto Sans CJK TC",sans-serif}
 h1{margin:30px 0 0;font-weight:900;font-size:60px;line-height:1.18;max-width:950px}
 .story h1{margin-top:44px;font-size:64px}
 .stage{position:relative;flex:1;min-height:0;width:100%;margin-top:30px;display:flex;justify-content:center}
@@ -36,6 +36,7 @@ h1{margin:30px 0 0;font-weight:900;font-size:60px;line-height:1.18;max-width:950
 .story .tap{display:block}
 .story .foot{margin-top:24px}
 </style>
+<link rel="stylesheet" href="social_apple.css">
 <body>
 <div class="bg"></div><div class="dots"></div>
 <div class="main">

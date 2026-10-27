@@ -2,9 +2,9 @@
 
 Each language posts three times a day, one theme per time slot, each post a set of 4 pictures (1080x1350) plus a static IG follow/save CTA (og/cta/ig-cta-<lang>.jpg) that
 the Grok bot puts on X, Threads, an Instagram post and Facebook:
-  1230  today's snapshot   written by the first update after 07:00 HKT (posted 12:30 zh, 13:00 en, 13:30 ko)
-  1630  bull vs bear       written by the first update after 15:00 HKT (posted 16:30 zh, 17:00 en, 17:30 ko)
-  2030  before the open    written by the first update after 19:00 HKT (posted 20:30 zh, 21:00 en, 21:30 ko)
+  1230  today's snapshot   written by the first update after 07:00 HKT (posted 12:30 zh, 13:00 en)
+  1630  bull vs bear       written by the first update after 15:00 HKT (posted 16:30 zh, 17:00 en)
+  2030  before the open    written by the first update after 19:00 HKT (posted 20:30 zh, 21:00 en)
 Each slot is written once per day and kept; a later slot never rewrites an earlier one. No Grok: the text comes
 from the summaries already on the site. Writes data/social-posts.json "slots" (next to the older single-picture
 fields, which tools/share.py still writes) and social/index.html via work/ (copied in once the pictures are drawn),
