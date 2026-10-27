@@ -1,0 +1,101 @@
+{
+ "posts": {
+  "2114679663586947476": {
+   "en_summary": "@LizAnnSonders says profitable Russell 2000 stocks continue to beat non profitable ones YTD, the reverse of last year.",
+   "zh_summary": "@LizAnnSonders 表示羅素2000中有盈利的公司年初至今持續跑贏虧損公司，與去年相反。",
+   "ko_summary": "@LizAnnSonders는 러셀 2000 내 흑자 기업이 연초 이후 적자 기업을 계속 크게 앞서고 있으며 작년과는 반대라고 말합니다.",
+   "tickers": [
+    "IWM"
+   ],
+   "stance": "中性",
+   "stance_by_ticker": {
+    "IWM": "中性"
+   },
+   "horizon": null,
+   "basis": "基本面",
+   "specific": false,
+   "macro": true,
+   "macro_theme": null,
+   "macro_impact": null,
+   "ticker_notes": {}
+  },
+  "2114685984994459791": {
+   "en_summary": "@leadlagreport says the Fed fights the gas pump, not inflation.",
+   "zh_summary": "@leadlagreport 表示聯儲局對抗的是油價，而非通脹。",
+   "ko_summary": "@leadlagreport는 연준이 인플레이션이 아니라 주유소 가격과 싸운다고 말합니다.",
+   "tickers": [],
+   "stance": "中性",
+   "stance_by_ticker": {},
+   "horizon": null,
+   "basis": "宏觀",
+   "specific": false,
+   "macro": true,
+   "macro_theme": "rates",
+   "macro_impact": "利淡",
+   "ticker_notes": {}
+  },
+  "2114687507292148196": {
+   "en_summary": "@PeterSchiff tells @saylor that a Strategy ad deceptively implies STRC and its 12% \"yield\" are safe, violating SEC policy, and the small print does not fix that.",
+   "zh_summary": "@PeterSchiff 對 @saylor 表示 Strategy 的廣告誤導投資者以為 STRC 及其12%「收益率」是安全的，違反 SEC 政策，結尾的小字無法消除這種印象。",
+   "ko_summary": "@PeterSchiff는 @saylor에게 Strategy 광고가 STRC와 12% \"수익률\"이 안전하다고 오인하게 해 SEC 정책을 위반하며, 끝의 작은 글씨로는 그 인상이 해소되지 않는다고 말합니다.",
+   "tickers": [
+    "STRC",
+    "MSTR"
+   ],
+   "stance": "睇淡",
+   "stance_by_ticker": {
+    "STRC": "睇淡",
+    "MSTR": "未表態"
+   },
+   "horizon": "中線",
+   "basis": "基本面",
+   "specific": false,
+   "macro": false,
+   "macro_theme": null,
+   "macro_impact": null,
+   "ticker_notes": {
+    "STRC": "12% yield marketed as safe"
+   }
+  },
+  "2114690644136669272": {
+   "en_summary": "@alphatrends shares the earnings, economic data and one IPO of interest for the week of 10/26/26, urging investors to know their holdings' report dates; image details unclear.",
+   "zh_summary": "@alphatrends 分享2026年10月26日當週的財報、經濟數據及一宗值得關注的 IPO，提醒投資者留意持股的業績公布日期；圖片細節不清楚。",
+   "ko_summary": "@alphatrends는 2026년 10월 26일 주간 실적, 경제 지표, 주목할 IPO 1건을 공유하며 보유 종목의 실적 발표일을 확인하라고 말합니다. 이미지 세부 내용은 불분명합니다.",
+   "tickers": [],
+   "stance": null,
+   "stance_by_ticker": {},
+   "horizon": null,
+   "basis": "催化劑",
+   "specific": false,
+   "macro": false,
+   "macro_theme": null,
+   "macro_impact": null,
+   "ticker_notes": {}
+  },
+  "2114691969230282851": {
+   "en_summary": "@firstadopter says SpaceX completed a ~$40B master finance lease for GPUs with an Apollo managed entity, delivering next generation NVIDIA Vera Rubin chips for its terrestrial compute buildout, the largest committed GPU financing.",
+   "zh_summary": "@firstadopter 表示 SpaceX 與 Apollo 管理的實體完成約400億美元 GPU 總融資租賃，將為其地面算力建設提供下一代 NVIDIA Vera Rubin 晶片，是規模最大的承諾 GPU 融資。",
+   "ko_summary": "@firstadopter는 SpaceX가 Apollo가 운용하는 법인과 약 400억 달러 GPU 마스터 금융 리스를 체결해 지상 컴퓨팅 구축용 차세대 NVIDIA Vera Rubin 칩을 공급받으며, 이는 최대 규모의 확정 GPU 금융이라고 말합니다.",
+   "tickers": [
+    "SPCX",
+    "APO",
+    "NVDA"
+   ],
+   "stance": "睇好",
+   "stance_by_ticker": {
+    "SPCX": "睇好",
+    "APO": "未表態",
+    "NVDA": "睇好"
+   },
+   "horizon": "中線",
+   "basis": "基本面",
+   "specific": false,
+   "macro": false,
+   "macro_theme": null,
+   "macro_impact": null,
+   "ticker_notes": {
+    "SPCX": "$40B GPU lease secured"
+   }
+  }
+ }
+}
