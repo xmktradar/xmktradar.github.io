@@ -1,52 +1,61 @@
 {
  "note": "Written by GitHub Actions on every update. SuperGrok daily check reads this.",
- "checked_hkt": "2026-10-27 09:38",
- "generated_hkt": "2026-10-27 09:18",
+ "checked_hkt": "2026-10-27 10:02",
+ "generated_hkt": "2026-10-27 09:45",
  "cutoff_hkt": "2026-10-27T07:07:59+08:00",
  "posts_on_site": 5046,
  "added_this_run": 0,
  "added_without_en_summary": 0,
- "waiting_for_summary": 359,
+ "waiting_for_summary": 360,
  "waiting_with_stock": 138,
  "expired_unsummarised_this_run": 0,
- "chitchat_skipped_this_run": 63,
- "pruned_this_run": 2,
+ "chitchat_skipped_this_run": 64,
+ "pruned_this_run": 0,
  "fetch_failed": [],
  "warnings": [
-  "未分析：359 則新帖等待 Grok 分析"
+  "未分析：360 則新帖等待 Grok 分析"
  ],
- "writeups_applied": [],
+ "writeups_applied": [
+  "zh/daily 2026-10-27",
+  "zh/weekly 2026-10-27",
+  "zh/monthly 2026-10-27",
+  "zh/highlights 2026-10-27",
+  "zh/briefing 2026-10-27",
+  "en/daily 2026-10-27",
+  "en/weekly 2026-10-27",
+  "en/monthly 2026-10-27",
+  "en/highlights 2026-10-27",
+  "en/briefing 2026-10-27",
+  "ko/daily 2026-10-27",
+  "ko/weekly 2026-10-27",
+  "ko/monthly 2026-10-27",
+  "ko/highlights 2026-10-27",
+  "ko/briefing 2026-10-27"
+ ],
  "writeups_rejected": [],
  "latest_writeups": {
   "zh": {
-   "daily": "2026-10-26",
-   "weekly": "2026-10-26",
-   "monthly": "2026-10-26",
-   "highlights": "2026-10-26",
-   "briefing": "2026-10-26"
+   "daily": "2026-10-27",
+   "weekly": "2026-10-27",
+   "monthly": "2026-10-27",
+   "highlights": "2026-10-27",
+   "briefing": "2026-10-27"
   },
   "en": {
-   "daily": "2026-10-26",
-   "weekly": "2026-10-26",
-   "monthly": "2026-10-26",
-   "highlights": "2026-10-26",
-   "briefing": "2026-10-26"
+   "daily": "2026-10-27",
+   "weekly": "2026-10-27",
+   "monthly": "2026-10-27",
+   "highlights": "2026-10-27",
+   "briefing": "2026-10-27"
   },
   "ko": {
-   "daily": "2026-10-26",
-   "weekly": "2026-10-26",
-   "monthly": "2026-10-26",
-   "highlights": "2026-10-26",
-   "briefing": "2026-10-26"
+   "daily": "2026-10-27",
+   "weekly": "2026-10-27",
+   "monthly": "2026-10-27",
+   "highlights": "2026-10-27",
+   "briefing": "2026-10-27"
   }
  },
- "layout_warnings": [
-  "zh 1280px：今日重點卡有 0 張（應該 3 張）",
-  "zh 390px：今日重點卡有 0 張（應該 3 張）",
-  "en 1280px：今日重點卡有 0 張（應該 3 張）",
-  "en 390px：今日重點卡有 0 張（應該 3 張）",
-  "ko 1280px：今日重點卡有 0 張（應該 3 張）",
-  "ko 390px：今日重點卡有 0 張（應該 3 張）"
- ],
- "layout_checked_hkt": "2026-10-27 09:40"
+ "layout_warnings": [],
+ "layout_checked_hkt": "2026-10-27 10:05"
 }
