@@ -55,12 +55,21 @@ async function shoot(page, base, lang, shot, warn) {
       // Leave room for the sticky tab bar.
       const sc = first.closest('#dive') || window;
       sc.scrollBy(0, -64);
-      return Math.max(0, first.getBoundingClientRect().top - 12);
+      const r = first.getBoundingClientRect();
+      return { top: Math.max(0, r.top - 12), elTop: r.top, h: r.height, part: !!part };
     }, [shot.sel, shot.part || null]);
     if (top === null) {
       warn(`教學圖：${lang} 頁面搵唔到 ${shot.sel}，改用第一個畫面`);
       await page.evaluate(() => window.scrollTo(0, 0));
       top = 0;
+    } else if (!top.part && top.h < SHOT_H * 0.55) {
+      // A short feature (熱門個股, a one-line strip) would be a small band on a mostly unrelated phone screen:
+      // frame just the feature and show it large instead (Tim 2026-10-28).
+      await page.waitForTimeout(400);
+      const y = Math.max(0, top.elTop - 10);
+      return { wide: true, png: await page.screenshot({ clip: { x: 0, y, width: W, height: Math.ceil(top.h) + 20 } }) };
+    } else {
+      top = top.top;
     }
     await page.waitForTimeout(400);
   }

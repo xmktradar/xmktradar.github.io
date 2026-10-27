@@ -23,7 +23,7 @@
    "n": 2,
    "shot": {
     "go": "",
-    "sel": "#donate"
+    "sel": ".ap-social"
    },
    "zh": {
     "t": "免費、唔使登入、唔使裝 app",
@@ -40,17 +40,17 @@
    "n": 3,
    "shot": {
     "go": "",
-    "sel": "header.top"
+    "sel": "section.ap-hero"
    },
    "zh": {
     "t": "每 4 個鐘自動更新一次",
-    "b": "網站每 4 個鐘自動抓新貼文、更新股價同共識，日夜都唔停。\n頁頂寫明「資料截止」同「下次更新」時間，一眼就知啲數有幾新。",
-    "how": "睇頁頂「資料截止」嗰行。"
+    "b": "網站每 4 個鐘自動抓新貼文、更新股價同共識，日夜都唔停。\n頁頂寫明「帖文資料截至」同「下次更新」時間，一眼就知啲數有幾新。",
+    "how": "睇頁頂「帖文資料截至」嗰行。"
    },
    "en": {
     "t": "Updated automatically every 4 hours",
-    "b": "Every 4 hours the site pulls in new posts and refreshes prices and consensus, day and night.\nThe top of the page shows \"Data as of\" and \"Next update\", so you always know how fresh the numbers are.",
-    "how": "Look for \"Data as of\" at the top of the page."
+    "b": "Every 4 hours the site pulls in new posts and refreshes prices and consensus, day and night.\nThe top of the page shows \"Posts as of\" and \"Next update\", so you always know how fresh the numbers are.",
+    "how": "Look for \"Posts as of\" at the top of the page."
    }
   },
   {
