@@ -31,7 +31,7 @@ async function ready(p) {
   const b = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
   const warn = [];
   try {
-  for (const lang of ['zh', 'en', 'ko']) {
+  for (const lang of ['zh', 'en']) {
     const file = pageUrl(srv.origin, root, path.join(lang, 'index.html'));
     for (const [w, h] of [[1280, 900], [390, 844]]) {
       const where = `${lang} ${w}px`;

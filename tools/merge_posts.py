@@ -53,7 +53,7 @@ def site_post(x, a):
         if a.get(k):
             p[k] = a[k]
     p['zh_summary'] = a['zh_summary']
-    for k in ('en_summary', 'ko_summary'):
+    for k in ('en_summary',):
         if a.get(k):
             p[k] = a[k]
     p['macro'] = bool(a.get('macro'))
@@ -153,6 +153,12 @@ def main():
             n += 1
     if n:
         notice(f'剔走非股票代號（{"、".join(sorted(NOT_TICKERS))}）{n} 則')
+    # Korean was removed from the site (Tim, 2026-10-27): drop Korean text kept in the data.
+    for p in d['posts']:
+        p.pop('ko_summary', None)
+        p.pop('summary_ko', None)
+    for k in [k for k in d if k.endswith('_ko')]:
+        del d[k]
     new = read_json(work('new_posts.json'), {'posts': [], 'failed': [], 'accounts': 0})
     done = read_json(work('analysed.json'), {})
     have = {p['url'].lower() for p in d['posts']}
@@ -203,7 +209,7 @@ def main():
         # Keep today's daily view current: stretch the latest write-up's window to the new cutoff.
         # Grok rewrites the text itself in write_analysis.py when it is available.
         last_day = latest[:10]
-        for key in ('summaries', 'summaries_en', 'summaries_ko'):
+        for key in ('summaries', 'summaries_en'):
             for x in d.get(key, {}).get('daily', []):
                 if x.get('date') == last_day and isinstance(x.get('win'), dict):
                     x['win']['to'] = latest[:16]

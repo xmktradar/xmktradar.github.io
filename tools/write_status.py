@@ -71,7 +71,7 @@ def main():
         **{p: slim({k: v for k, v in (st.get(p) or {}).items() if k in keep}) for p in ('daily', 'weekly', 'monthly')},
     })
     dates = {}
-    for sfx, lang in (('', 'zh'), ('_en', 'en'), ('_ko', 'ko')):
+    for sfx, lang in (('', 'zh'), ('_en', 'en')):
         s = d.get('summaries' + sfx, {})
         dates[lang] = {p: latest(s.get(p, [])) for p in ('daily', 'weekly', 'monthly')}
         dates[lang]['highlights'] = max(d.get('highlights' + sfx, {}) or [''], default='') or None

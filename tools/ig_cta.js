@@ -37,11 +37,11 @@ const CTA = {
   p.on('pageerror', e => errs.push(e.message));
   await p.goto('file://' + path.resolve(__dirname, 'carousel.html'), { waitUntil: 'networkidle' });
   fs.mkdirSync('og/cta', { recursive: true });
-  for (const lang of ['zh', 'en', 'ko']) {
+  for (const lang of ['zh', 'en']) {
     const slide = { kind: 'igcta', ...CTA[lang] };
     await p.evaluate(([l, t, d, n, s]) => render(l, t, d, n, s), [lang, 'snap', '', 0, slide]);
     await p.evaluate(async () => {
-      const want = ['900 46px "Noto Sans TC"', '700 32px "Noto Sans TC"', '900 46px "Noto Sans KR"', '700 48px "IBM Plex Mono"'];
+      const want = ['900 46px "Noto Sans TC"', '700 32px "Noto Sans TC"', '700 48px "IBM Plex Mono"'];
       const t = new Promise(r => setTimeout(r, 20000));
       await Promise.race([Promise.all(want.map(f => document.fonts.load(f, document.body.innerText))), t]);
       await document.fonts.ready;

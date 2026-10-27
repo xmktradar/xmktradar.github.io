@@ -1,4 +1,4 @@
-// Step 11: static stock pages /<lang>/stock/<TICKER>/ for search engines, from the built /zh/ /en/ /ko/ pages.
+// Step 11: static stock pages /<lang>/stock/<TICKER>/ for search engines, from the built /zh/ /en/ pages.
 // Usage: node tools/stock_pages.js
 //
 // - Which stocks: mentioned by MIN_ACCOUNTS or more tracked accounts in the last 28 days (the page's own POSTS),
@@ -26,7 +26,7 @@ const { rankHot, sitemapTickers } = require('./hot_stocks.js');
 
 const SITE = 'https://thecrowdtape.com/';
 const EMBED = require('./embed.js');
-const LANGS = { zh: 'zh-Hant', en: 'en', ko: 'ko' };
+const LANGS = { zh: 'zh-Hant', en: 'en' };
 const MIN_ACCOUNTS = 2;
 const AV_DIR = 'av';
 const MARK = '<!-- stock-index -->';
@@ -87,37 +87,9 @@ const T = {
     pxAria: t => `$${t} closing price, last 6 months`,
     chartTitle: t => `$${t} TradingView chart`,
   },
-  ko: {
-    index: '종목 페이지',
-    top: '맨 위로',
-    open: '인터랙티브 페이지 열기(차트 포함)',
-    home: '홈',
-    embed: '이 카드 퍼가기',
-    advice: '투자 조언이 아닙니다. 이 페이지는 공개 게시물을 정리한 자료입니다.',
-    tools: '도구',
-    support: '후원하기',
-    news: '뉴스레터',
-    promo: '홍보',
-    tv: 'TradingView에서 차트 보기',
-    bullName: '강세 계정',
-    bearName: '약세 계정',
-    menName: '언급 계정',
-    dsName: t => `$${t} X 계정 강세/약세 통계`,
-    dsDesc: (t, s) => `추적 계정이 $${t}에 대해 남긴 최신 입장. 자료 구간 ${s.from}–${s.to} (홍콩 시간). 강세 계정 ${s.bull}, 약세 계정 ${s.bear}, 언급 계정 ${s.mentions}. 투자 조언이 아닙니다.`,
-    title: (t, nm, c) => `${t}${nm ? ` (${nm})` : ''} 주가 전망: 강세 ${c.bull}・약세 ${c.bear}・중립 ${c.neu} | The Crowd Tape`,
-    desc: (t, n, c) => `최근 28일 동안 추적 계정 ${n}개가 $${t}를 언급했다: 강세 ${c.bull}, 중립 ${c.neu}, 약세 ${c.bear}, 입장 없음 ${c.none}. 계정별 최신 관점, 근거와 원문을 4시간마다 업데이트한다. 투자 조언이 아닙니다.`,
-    related: '관련 종목',
-    hot: '인기 종목',
-    hotNote: '최근 7일 언급 수',
-    faqHow: (t, s) => ({ q: `$${t}에 강세/약세인 추적 계정은 몇 개인가요?`, a: `${s.from}–${s.to}(홍콩 시간) 구간에서 강세 ${s.bull}개, 약세 ${s.bear}개이며, 총 ${s.mentions}개 계정이 언급했습니다. 공개 게시물 정리이며 투자 조언이 아닙니다.` }),
-    faqWhat: (t, s) => ({ q: `$${t} 페이지 데이터는 어디서 오나요?`, a: `추적 계정이 X(일부 Truth Social)에서 $${t}를 언급한 공개 게시물 입장을 모아 약 4시간마다 갱신합니다. 수록된 계정의 공개 의견만 반영합니다.` }),
-    pxCap: '최근 약 6개월 일간 종가(Yahoo Finance). 실시간 시세 아님.',
-    pxAria: t => `$${t} 최근 6개월 종가`,
-    chartTitle: t => `$${t} TradingView 차트`,
-  },
 };
 
-// Newsletter A/B box (nl-stock-2026-10). en/ko copy lives in i18n/<lang>.json under "nl".
+// Newsletter A/B box (nl-stock-2026-10). en copy lives in i18n/en.json under "nl".
 // i18n/zh.json is a list of UI strings, so the Chinese block stays here.
 const NL_ENDPOINT = 'https://crowdtape-newsletter.vercel.app/api/subscribe';
 const NL_ZH = {
@@ -290,8 +262,8 @@ const TV_PART = /^[A-Z0-9.!_-]+$/i;
 // so the widget symbol is NYSE, matching the chart-link fallback.
 const TV_SYMBOL_404 = new Set(['PSKY']);
 // Widget page language. Checked 2026-10-26 against s.tradingview.com/widgetembed: zh_TW → zh-Hant,
-// en → en, kr → ko. locale=ko is ignored and the widget falls back to English.
-const TV_LOCALE = { zh: 'zh_TW', en: 'en', ko: 'kr' };
+// en → en.
+const TV_LOCALE = { zh: 'zh_TW', en: 'en' };
 const TV_FRAME_HOSTS = ['https://s.tradingview.com', 'https://www.tradingview.com'];
 
 function tvMappedSymbol(ticker, symbols) {
@@ -446,7 +418,7 @@ function shell(master, lang, t, list, body, meta, stats, tvHref) {
   const url = `${SITE}${lang}/stock/${slug(t)}/`;
   const alt = Object.entries(LANGS).map(([k, h]) => `<link rel="alternate" hreflang="${h}" href="${SITE}${k}/stock/${slug(t)}/">`).join('')
     + `<link rel="alternate" hreflang="x-default" href="${SITE}zh/stock/${slug(t)}/">`;
-  const sw = Object.keys(LANGS).map(k => `<a href="/${k}/stock/${slug(t)}/"${k === lang ? ' aria-current="page"' : ''}>${{ zh: '中', en: 'EN', ko: '한' }[k]}</a>`).join('');
+  const sw = Object.keys(LANGS).map(k => `<a href="/${k}/stock/${slug(t)}/"${k === lang ? ' aria-current="page"' : ''}>${{ zh: '中', en: 'EN' }[k]}</a>`).join('');
   return ensureTvFrameSrc(`<!DOCTYPE html>
 <html lang="${LANGS[lang]}" data-theme="light"><head>
 ${ga}

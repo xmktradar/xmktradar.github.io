@@ -77,7 +77,7 @@ async function shoot(page, base, lang, shot, warn) {
   art.on('pageerror', e => errs.push(e.message));
   await art.goto('file://' + path.resolve(__dirname, 'tutorial.html'), { waitUntil: 'networkidle' });
   fs.mkdirSync('og', { recursive: true });
-  for (const lang of ['zh', 'en', 'ko']) {
+  for (const lang of ['zh', 'en']) {
     const L = job.langs[lang];
     const { wide, png } = await shoot(site, base, lang, L.shot, warn);
     const pic = 'data:image/png;base64,' + png.toString('base64');
@@ -85,7 +85,7 @@ async function shoot(page, base, lang, shot, warn) {
       await art.setViewportSize({ width: 1080, height: h });
       await art.evaluate(([l, d, p, s]) => render(l, d, p, s), [lang, { episode: job.episode, total: job.total, title: L.title, how: L.how, wide }, pic, size]);
       await art.evaluate(async () => {
-        const want = ['900 60px "Noto Sans TC"', '900 60px "Noto Sans KR"', '700 30px "IBM Plex Mono"'];
+        const want = ['900 60px "Noto Sans TC"', '700 30px "IBM Plex Mono"'];
         const t = new Promise(r => setTimeout(r, 20000));
         await Promise.race([Promise.all(want.map(f => document.fonts.load(f, document.body.innerText))), t]);
         await document.fonts.ready;

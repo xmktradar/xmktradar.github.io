@@ -60,7 +60,7 @@ function setupSlide(cap,idx){
   html::before{content:'';position:absolute;inset:-400px;background:repeating-conic-gradient(from var(--rot,0deg) at 50% 50%,rgba(255,255,255,.12) 0 6deg,transparent 6deg 14deg)}
   body{position:absolute!important;top:285px;left:0;transform-origin:0 0}
   #band{position:absolute;left:0;right:0;top:70px;display:flex;justify-content:center;z-index:20}
-  #cap{background:#f8d34a;border:8px solid #151a2c;border-radius:30px;box-shadow:10px 12px 0 #151a2c;padding:16px 36px;font:900 72px/1.15 "Noto Sans TC","Noto Sans KR",sans-serif;color:#151a2c;max-width:1000px;text-align:center}
+  #cap{background:#f8d34a;border:8px solid #151a2c;border-radius:30px;box-shadow:10px 12px 0 #151a2c;padding:16px 36px;font:900 72px/1.15 "Noto Sans TC",sans-serif;color:#151a2c;max-width:1000px;text-align:center}
   #low{position:absolute;left:0;right:0;bottom:60px;text-align:center;z-index:20}
   #low span{display:inline-block;background:#151a2c;color:#f8d34a;font:700 54px "IBM Plex Mono",monospace;padding:10px 30px;border-radius:18px;border:5px solid #f8d34a}
   #flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:40;pointer-events:none}

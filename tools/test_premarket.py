@@ -33,12 +33,6 @@ POSTS = {
         '・2 accounts: $META, $BE\n\n'
         'https://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=daily\n'
         '⚠️ Not investment advice')},
-    'ko': {'x': (
-        '10/20 X 인플루언서 컨센서스: $AMZN 계정 4개 동시 강세 📊\n\n'
-        '・계정 4개: $AMZN\n'
-        '・계정 2개: $META, $BE\n\n'
-        'https://thecrowdtape.com/ko/?utm_source=x&utm_medium=social&utm_campaign=daily\n'
-        '⚠️ 투자 조언 아님')},
 }
 
 
@@ -47,7 +41,7 @@ def _pack(lines, disc=None):
     for lang, line in zip(share.LANGS, lines):
         out.append(line)
         out.append(_url(lang))
-    out.append(disc if disc is not None else share.SHORT['en']['disc'])
+    out.append(disc if disc is not None else DISC)  # two languages leave room for both disclaimers
     return '\n'.join(out)
 
 
@@ -78,7 +72,6 @@ def test_tie():
         'x_trilingual': {'afterclose': {'text': (
             '10/20 $NVDA 3 個帳號一齊睇好\n'
             'Oct 20 $NVDA, 3 accounts bullish\n'
-            '10/20 $NVDA 계정 3개 동시 강세\n'
             'https://thecrowdtape.com/?utm_source=x&utm_medium=social&utm_campaign=afterclose\n'
             + DISC)}},
     }
@@ -91,7 +84,6 @@ def test_tie():
     assert text == _pack([
         '10/20 開市前：$NVDA、$AMZN 各 3 個帳號睇好',
         'Oct 20 pre-market: $NVDA, $AMZN, 3 accounts bullish each',
-        '10/20 개장 전: $NVDA·$AMZN 각각 계정 3개 강세',
     ]), text
     assert '$META' not in text and '$BE' not in text
     assert '其次' not in text
@@ -124,7 +116,6 @@ def test_no_tie():
     assert text == _pack([
         '10/20 開市前：$AMZN 4 個帳號睇好 · $META 2 個',
         'Oct 20 pre-market: $AMZN 4 accounts bullish · $META 2',
-        '10/20 개장 전: $AMZN 계정 4개 강세 · $META 2개',
     ]), text
     assert '其次' not in text
     assert '各' not in text.split('\n')[0]
@@ -152,8 +143,7 @@ def test_no_data():
         lines = [ln for ln in text.split('\n') if ln and not ln.startswith('https://') and not ln.startswith('⚠')]
         assert lines[0].startswith('10/20 開市前：'), lines[0]
         assert lines[1].startswith('Oct 20 pre-market:'), lines[1]
-        assert lines[2].startswith('10/20 개장 전:'), lines[2]
-        assert '$AMZN' in lines[0] and '$AMZN' in lines[1] and '$AMZN' in lines[2]
+        assert '$AMZN' in lines[0] and '$AMZN' in lines[1]
         ac = share.trilingual_text(POSTS, 'afterclose')[0]
         assert share._minus_urls(text) != share._minus_urls(ac)
         # Framing is on the headline, not a second copy of the date.

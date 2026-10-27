@@ -2,7 +2,7 @@
 
 Offline fixtures. Tickers come from daily bull/bear/split rows and must differ from the
 top5 leads, the main headline, x_trilingual, each other, and hot_stock/discussion names
-from the previous 7 days. Quotes stay verbatim on zh. en/ko keep handles, tickers and
+from the previous 7 days. Quotes stay verbatim on zh. en keeps handles, tickers and
 counts. Run from the repo root: python3 tools/test_slots.py
 """
 import inspect
@@ -84,7 +84,7 @@ def _assert_common(slot, campaign, ticker):
             assert URL not in text, (lang, plat)
             assert share.SHORT[lang]['disc'] in text
             assert len(text) <= 500, (lang, plat, len(text))
-            tag = {'zh': '#美股', 'en': '#StockMarket', 'ko': '#미국주식'}[lang]
+            tag = {'zh': '#美股', 'en': '#StockMarket'}[lang]
             assert tag in text
             assert f'#{ticker}' in text
             assert text.strip().split('\n')[-1].startswith('#')
@@ -96,7 +96,7 @@ def _assert_common(slot, campaign, ticker):
                 assert f'utm_source={plat}&utm_medium=social&utm_campaign={campaign}' in fc
             else:
                 assert plat not in (posts.get('first_comment') or {})
-    assert linked == total // 2 == 3, (linked, total)
+    assert linked == total // 2 == 2, (linked, total)
 
 
 def test_content_tokens():
@@ -145,11 +145,11 @@ def test_hot_and_discussion_shape():
     assert talk['format'] == 'poll'
     _assert_common(hot, 'hot_stock', 'SPCX')
     _assert_common(talk, 'discussion', 'SPY')
-    # zh keeps the verbatim start of why. en/ko do not translate it.
+    # zh keeps the verbatim start of why. en does not translate it.
     zh = hot['posts']['zh']['threads']
     assert 'ZQXQZX 原文開始' in zh
     assert '@chamath' in zh
-    for lang in ('en', 'ko'):
+    for lang in ('en',):
         body = hot['posts'][lang]['threads']
         assert 'ZQXQZX' not in body and '原文開始' not in body
         assert '@chamath' in body
@@ -162,7 +162,6 @@ def test_hot_and_discussion_shape():
         'question': 'What do you think of $SPY?',
         'options': ['Bullish', 'Bearish', 'Neutral'],
     }
-    assert talk['poll']['ko']['options'] == ['강세', '약세', '중립']
     for lang in share.LANGS:
         poll = talk['posts'][lang]['poll']
         assert poll == talk['poll'][lang]

@@ -79,7 +79,7 @@ jobs:
             echo "::warning::ffmpeg not installed; skip top5 video"
             exit 0
           fi
-          for lang in zh en ko; do
+          for lang in zh en; do
             png="og/top5-${lang}.png"
             if [ ! -f "$png" ]; then
               echo "::warning::${png} missing; skip"
@@ -129,6 +129,8 @@ jobs:
         run: python3 tools/llms_full.py
       - name: Stock pages
         run: node tools/stock_pages.js
+      - name: Old Korean links go to the English page (Korean removed 2026-10-27)
+        run: python3 tools/ko_redirect.py
       - name: Sitemap lastmod (real content-change time per page)
         run: python3 tools/sitemap_lastmod.py
       - name: Weekend guide posts (Saturday and Sunday)
@@ -153,7 +155,7 @@ jobs:
         run: python3 tools/slim_pages.py --slim
       - name: Check the pages
         run: |
-          for f in index.html zh/index.html en/index.html ko/index.html; do
+          for f in index.html zh/index.html en/index.html; do
             node tools/check.js "$f" || { echo "::error::網頁檢查唔合格：$f"; exit 1; }
           done
       - name: Layout check (replaces the Grok bot daily layout check; writes layout_warnings)

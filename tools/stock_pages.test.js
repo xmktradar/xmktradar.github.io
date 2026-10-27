@@ -25,7 +25,7 @@ test('symbol mapping: exchange prefix, dot share class, 404 list and unknown tic
 });
 
 test('iframe src: locales, widget params, no aff_id', () => {
-  const locales = { zh: 'zh_TW', en: 'en', ko: 'kr' };
+  const locales = { zh: 'zh_TW', en: 'en' };
   for (const [lang, locale] of Object.entries(locales)) {
     const src = tvWidgetSrc('NVDA', SYMBOLS, lang);
     const u = new URL(src);
@@ -45,8 +45,7 @@ test('iframe src: locales, widget params, no aff_id', () => {
   const psky = new URL(tvWidgetSrc('PSKY', SYMBOLS, 'zh'));
   assert.equal(psky.searchParams.get('symbol'), 'PSKY');
   assert.equal(psky.searchParams.get('locale'), 'zh_TW');
-  assert.equal(new URL(tvWidgetSrc('SPX', SYMBOLS, 'ko')).searchParams.get('symbol'), 'SPX');
-  assert.equal(new URL(tvWidgetSrc('SPX', SYMBOLS, 'ko')).searchParams.get('locale'), 'kr');
+  assert.equal(new URL(tvWidgetSrc('SPX', SYMBOLS, 'en')).searchParams.get('symbol'), 'SPX');
 });
 
 test('other TradingView links keep aff_id=1172819', () => {
@@ -71,9 +70,9 @@ test('chart block is a plain iframe above the svg', () => {
   assert.equal(html.includes('aff_id'), false);
   const src = html.match(/src="([^"]+)"/)[1].replace(/&amp;/g, '&');
   assert.equal(new URL(src).searchParams.get('symbol'), 'NASDAQ:NVDA');
-  const bare = tvChartBlock('ko', 'PSKY', SYMBOLS, '');
-  assert.match(bare, /title="\$PSKY TradingView 차트"/);
-  assert.match(bare, /locale=kr/);
+  const bare = tvChartBlock('en', 'PSKY', SYMBOLS, '');
+  assert.match(bare, /title="\$PSKY TradingView chart"/);
+  assert.match(bare, /locale=en/);
   assert.equal(bare.includes('px-chart'), false);
   assert.match(tvChartBlock('zh', 'NVDA', SYMBOLS, ''), /title="\$NVDA TradingView 走勢圖"/);
 });
@@ -104,10 +103,9 @@ test('generated stock pages embed the iframe and keep the svg', () => {
   const titles = {
     zh: 'title="$NVDA TradingView 走勢圖"',
     en: 'title="$NVDA TradingView chart"',
-    ko: 'title="$NVDA TradingView 차트"',
   };
-  const locales = { zh: 'zh_TW', en: 'en', ko: 'kr' };
-  for (const lang of ['zh', 'en', 'ko']) {
+  const locales = { zh: 'zh_TW', en: 'en' };
+  for (const lang of ['zh', 'en']) {
     const page = path.join(root, lang, 'stock', 'NVDA', 'index.html');
     assert.ok(fs.existsSync(page), 'missing ' + page);
     const html = fs.readFileSync(page, 'utf8');

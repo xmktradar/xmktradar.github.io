@@ -1,6 +1,6 @@
 """Advertise pages use data/advertise-stats.json and hide missing metrics.
 
-Offline: no network. Renders zh/en/ko from the Chinese master and checks the
+Offline: no network. Renders zh/en from the Chinese master and checks the
 pages written by tools/advertise.py.
 
 Run from pages/: python3 tools/test_advertise.py
@@ -21,21 +21,16 @@ HIDDEN = (
     '數字待更新',
     'to be updated',
     'Figures to be updated',
-    '추후 갱신',
     'Stripe',
     'stripe',
     '電子報訂閱人數',
     'Newsletter subscribers',
-    '뉴스레터 구독자',
     'Instagram 追蹤人數',
     'Instagram followers',
-    'Instagram 팔로워',
     'Threads 追蹤人數',
     'Threads followers',
-    'Threads 팔로워',
     'Facebook 追蹤人數',
     'Facebook followers',
-    'Facebook 팔로워',
 )
 ROW = {
     'zh': {
@@ -44,12 +39,11 @@ ROW = {
         'followers': '<span>X 追蹤人數</span><b>50</b>',
         'impress': '<span>X 近 7 日曝光（截至 2026-10-20）</span><b>~5.6K</b>',
         'countries': '中國、美國、台灣、香港',
-        'daily': '每日以中英韓三語喺 X、Instagram、Threads 同 Facebook 發佈（每種語言各自翻譯）',
+        'daily': '每日以中英雙語喺 X、Instagram、Threads 同 Facebook 發佈（每種語言各自翻譯）',
         'pay': '付款用 PayPal 發票。',
         'note': '頁面瀏覽按網站語言。',
         'zh': '<span>中文</span><b>81%</b>',
         'en': '<span>英文</span><b>15%</b>',
-        'ko': '<span>韓文</span><b>3%</b>',
         'subject': '廣告合作查詢',
     },
     'en': {
@@ -58,27 +52,12 @@ ROW = {
         'followers': '<span>X followers</span><b>50</b>',
         'impress': '<span>X impressions, past 7 days (as of 2026-10-20)</span><b>~5.6K</b>',
         'countries': 'China, United States, Taiwan, Hong Kong',
-        'daily': 'Published daily in Chinese, English and Korean on X, Instagram, Threads and Facebook (each language translated separately).',
+        'daily': 'Published daily in Chinese and English on X, Instagram, Threads and Facebook (each language translated separately).',
         'pay': 'Payment is by PayPal invoice.',
         'note': 'Page views by site language.',
         'zh': '<span>Chinese</span><b>81%</b>',
         'en': '<span>English</span><b>15%</b>',
-        'ko': '<span>Korean</span><b>3%</b>',
         'subject': 'Advertising enquiry',
-    },
-    'ko': {
-        'updated': '업데이트 날짜: 2026-10-21',
-        'monthly': '<span>월간 방문자 (최근 30일)</span><b>사용자 761명, 조회 1349회</b>',
-        'followers': '<span>X 팔로워</span><b>50</b>',
-        'impress': '<span>X 최근 7일 노출수 (2026-10-20 기준)</span><b>~5.6K</b>',
-        'countries': '중국, 미국, 대만, 홍콩',
-        'daily': '매일 중국어, 영어, 한국어로 X, Instagram, Threads, Facebook에 게시합니다 (언어별로 각각 번역).',
-        'pay': '결제는 PayPal 인보이스로 합니다.',
-        'note': '사이트 언어별 페이지 조회수.',
-        'zh': '<span>중국어</span><b>81%</b>',
-        'en': '<span>영어</span><b>15%</b>',
-        'ko': '<span>한국어</span><b>3%</b>',
-        'subject': '광고 제휴 문의',
     },
 }
 
@@ -99,14 +78,14 @@ def assert_page(lang, html):
     assert want['daily'] in html
     assert want['pay'] in html
     assert want['note'] in html
-    assert want['zh'] in html and want['en'] in html and want['ko'] in html
+    assert want['zh'] in html and want['en'] in html
     assert '761' in html and '1349' in html and '~5.6K' in html
     assert '2026-10-21' in html and '2026-10-20' in html
-    assert '81%' in html and '15%' in html and '3%' in html
+    assert '81%' in html and '15%' in html
     blocks = re.findall(r'<ul class="stats">(.*?)</ul>', html, flags=re.S)
     assert len(blocks) == 2, (lang, len(blocks))
     assert blocks[0].count('<li>') == 3, (lang, blocks[0])
-    assert blocks[1].count('<li>') == 3, (lang, blocks[1])
+    assert blocks[1].count('<li>') == 2, (lang, blocks[1])
     assert 'href="#contact"' not in html
     hrefs = re.findall(r'href="(mailto:[^"]+)"', html)
     assert len(hrefs) >= 2, (lang, hrefs)
@@ -137,13 +116,13 @@ def test_real_pages():
     assert stats['monthly_views'] == 1349
     assert stats['x_followers'] == 50
     assert stats['x_impressions_7d'] == {'value': '~5.6K', 'as_of': '2026-10-20'}
-    assert stats['lang_views_pct'] == {'zh': 81, 'en': 15, 'ko': 3}
+    assert stats['lang_views_pct'] == {'zh': 81, 'en': 15}
     assert stats['top_countries'] == ['China', 'United States', 'Taiwan', 'Hong Kong']
     for key in ('newsletter_subscribers', 'instagram_followers', 'threads_followers', 'facebook_followers'):
         assert key not in stats
     template = advertise.load_template()
     rendered = {}
-    for lang in ('zh', 'en', 'ko'):
+    for lang in ('zh', 'en'):
         rendered[lang] = advertise.page(template, lang, stats)
         assert_page(lang, rendered[lang])
         disk = open(os.path.join(ROOT, lang, 'advertise', 'index.html'), encoding='utf-8').read()
@@ -194,7 +173,7 @@ def test_present_keys_render_rows():
         'instagram_followers': 3,
         'threads_followers': 4,
         'facebook_followers': 5,
-        'lang_views_pct': {'zh': 81, 'en': 15, 'ko': 3},
+        'lang_views_pct': {'zh': 81, 'en': 15},
         'top_countries': ['China', 'United States', 'Taiwan', 'Hong Kong'],
     }
     rows = advertise.stat_items(stats)
@@ -204,7 +183,7 @@ def test_present_keys_render_rows():
     assert 'Threads 追蹤人數' in labels
     assert 'Facebook 追蹤人數' in labels
     assert labels.count('<li>') == 7
-    for lang, marker in (('en', 'Newsletter subscribers'), ('ko', '뉴스레터 구독자')):
+    for lang, marker in (('en', 'Newsletter subscribers'),):
         html = advertise.page(template, lang, stats)
         assert marker in html
         assert '<b>12</b>' in html and '<b>3</b>' in html and '<b>4</b>' in html and '<b>5</b>' in html
@@ -218,7 +197,7 @@ def main():
     test_real_pages()
     test_missing_keys_render_nothing()
     test_present_keys_render_rows()
-    print('test_advertise: zh/en/ko numbers, hidden rows, mailto ok')
+    print('test_advertise: zh/en numbers, hidden rows, mailto ok')
 
 
 if __name__ == '__main__':

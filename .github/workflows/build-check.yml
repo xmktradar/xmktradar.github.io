@@ -4,14 +4,14 @@ name: Build check
 # Same steps as Update site minus fetching, prices and publishing; nothing is committed.
 # Contract the build relies on (see tools/check_contract.py): index.html is the master page with the
 # full app inline as top-level code and one <script type="application/json" id="dash-data"> block;
-# zh/ en/ ko/ index.html are build outputs of tools/build_langs.py, never edited by hand.
+# zh/ en/ index.html are build outputs of tools/build_langs.py, never edited by hand.
 on:
   workflow_dispatch:
   pull_request:
-    paths: ['index.html', 'zh/index.html', 'en/index.html', 'ko/index.html', 'assets/**', 'tools/**', 'i18n/**', 'data/dash/**', '.github/workflows/update-site.yml', '.github/workflows/build-check.yml']
+    paths: ['index.html', 'zh/index.html', 'en/index.html', 'assets/**', 'tools/**', 'i18n/**', 'data/dash/**', '.github/workflows/update-site.yml', '.github/workflows/build-check.yml']
   push:
     branches: [main]
-    paths: ['index.html', 'zh/index.html', 'en/index.html', 'ko/index.html', 'assets/**', 'i18n/**', 'data/dash/**', '.github/workflows/build-check.yml']
+    paths: ['index.html', 'zh/index.html', 'en/index.html', 'assets/**', 'i18n/**', 'data/dash/**', '.github/workflows/build-check.yml']
 concurrency:
   group: build-check-${{ github.ref }}
   cancel-in-progress: true
@@ -58,12 +58,12 @@ jobs:
         run: python3 tools/test_vs_counts.py "$WORK_DIR/stats.json"
       - name: Language versions
         run: python3 tools/build_langs.py
-      - name: No Chinese in en/ko UI text
-        run: python3 tools/test_no_cjk.py || { echo "::error::en/ko 頁面有中文介面文字（見上面 CHINESE 行）"; exit 1; }
+      - name: No Chinese in en UI text
+        run: python3 tools/test_no_cjk.py || { echo "::error::en 頁面有中文介面文字（見上面 CHINESE 行）"; exit 1; }
       - name: Slim homepages
         run: python3 tools/slim_pages.py --slim
       - name: Check the pages
         run: |
-          for f in index.html zh/index.html en/index.html ko/index.html; do
+          for f in index.html zh/index.html en/index.html; do
             node tools/check.js "$f" || { echo "::error::網頁檢查唔合格：$f"; exit 1; }
           done

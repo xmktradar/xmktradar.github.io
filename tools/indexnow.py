@@ -21,8 +21,8 @@ KEY = 'ccab4c5e388dc31f07a4976abba71466'
 CHANGED = 'data/indexnow-changed.json'
 BACKFILL = 150
 MAX = 10000
-HOMES = (SITE + 'zh/', SITE + 'en/', SITE + 'ko/')
-PAGE = re.compile(r'^(?:(zh|en|ko)/(?:stock/([^/]+)/)?)?index\.html$')
+HOMES = (SITE + 'zh/', SITE + 'en/')
+PAGE = re.compile(r'^(?:(zh|en)/(?:stock/([^/]+)/)?)?index\.html$')
 
 
 def changed():
@@ -74,7 +74,7 @@ def want_backfill(now=None):
 
 
 def order_urls(sitemap):
-    """/zh/ /en/ /ko/, then other non-stock pages, then stock pages. Sitemap order within each group."""
+    """/zh/ /en/, then other non-stock pages, then stock pages. Sitemap order within each group."""
     seen = set()
     other, stock = [], []
     for url in sitemap:

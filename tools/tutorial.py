@@ -21,7 +21,7 @@ from share import fit_threads, fit_threads_posts, page_url, xlen
 from utm import normalize_file, tag_posts
 
 SITE = 'https://thecrowdtape.com/'
-LANGS = ('zh', 'en', 'ko')
+LANGS = ('zh', 'en')
 SOCIAL_HOUR = 7
 NOT_STOCKS = {'SPY', 'QQQ', 'IWM', 'DIA', 'VOO', 'VTI', 'GLD', 'SLV', 'TLT', 'BTC', 'ETH', 'SOL', 'DXY', 'VIX', 'TQQQ', 'SQQQ'}
 
@@ -110,7 +110,7 @@ def posts(lang, n, total, e, url):
 
 def page(tp):
     rows = []
-    for lang, name in (('zh', '中文'), ('en', 'English'), ('ko', '한국어')):
+    for lang, name in (('zh', '中文'), ('en', 'English')):
         img, story, p = tp['images'][lang], tp['stories'][lang], tp['posts'][lang]
         box = lambda title, text, n: (f'<h3>{title}</h3><textarea readonly rows="{n}">{html.escape(text)}</textarea>'
                                       '<button onclick="navigator.clipboard.writeText(this.previousElementSibling.value);this.textContent=\'已複製 ✓\'">複製</button>')

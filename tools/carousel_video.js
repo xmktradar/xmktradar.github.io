@@ -147,7 +147,7 @@ async function one(browser, job, vo, outFile) {
   await sp.evaluate(l => { document.documentElement.lang = l; }, job.lang);
   await sp.addScriptTag({ content: header(total) + fs.readFileSync(path.join(TOOLS, 'carousel_scenes.js'), 'utf8') });
   await sp.evaluate(async txt => {
-    await Promise.race([Promise.all(['900 80px "Noto Sans TC"', '900 80px "Noto Sans KR"', '700 80px "IBM Plex Mono"'].map(f => document.fonts.load(f, txt))), new Promise(r => setTimeout(r, 20000))]);
+    await Promise.race([Promise.all(['900 80px "Noto Sans TC"', '700 80px "IBM Plex Mono"'].map(f => document.fonts.load(f, txt))), new Promise(r => setTimeout(r, 20000))]);
     await document.fonts.ready;
   }, JSON.stringify(W) + JSON.stringify(C));
   const coverJpg = `og/c/${job.date}-${job.slot}-${job.lang}-cover.jpg`;
@@ -177,7 +177,7 @@ async function one(browser, job, vo, outFile) {
     const k = 3 + i, n = Math.round(SC[k][1] * BEAT * FPS);
     await p.evaluate(([l, t, d, nn, s]) => render(l, t, d, nn, s), [job.lang, job.theme, job.date, i + 1, job.slides[i]]);
     await p.evaluate(async () => {
-      const want = ['900 46px "Noto Sans TC"', '700 32px "Noto Sans TC"', '900 46px "Noto Sans KR"', '700 48px "IBM Plex Mono"'];
+      const want = ['900 46px "Noto Sans TC"', '700 32px "Noto Sans TC"', '700 48px "IBM Plex Mono"'];
       await Promise.race([Promise.all(want.map(f => document.fonts.load(f, document.body.innerText))), new Promise(r => setTimeout(r, 20000))]);
       await document.fonts.ready; await Promise.all([...document.images].map(im => im.decode().catch(() => {})));
     });
