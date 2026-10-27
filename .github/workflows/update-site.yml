@@ -169,7 +169,8 @@ jobs:
           git add -A index.html zh/ en/ ko/ support/ advertise/ about/ newsletter/ tools/index.html data/ og/ px/ av/ embed/ social/ sitemap.xml llms-full.txt 404.html ccab4c5e388dc31f07a4976abba71466.txt
           git diff --cached --quiet && exit 0
           git commit -m "定時重建 $(date '+%Y-%m-%d %H:%M') HKT"
-          git pull --rebase origin main || { git rebase --abort; echo "::error::main 嘋更新期間有新改動，今次唔發佈，下次再試"; exit 1; }
+          # --autostash: build steps can leave tracked files changed that are not published (they used to stop the pull).
+          git pull --rebase --autostash origin main || { git rebase --abort; echo "::error::main 嘋更新期間有新改動，今次唔發佈，下次再試"; exit 1; }
           git push origin HEAD:main
           echo published > "$WORK_DIR/published"
       - name: Tell search engines (IndexNow)
