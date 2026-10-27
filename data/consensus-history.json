@@ -913,12 +913,13 @@
     "TSLA",
     "SOFI",
     "BE",
+    "AMZN",
     "CLS",
+    "HOOD",
     "CRDO",
     "INTC",
     "KO",
     "CDNS",
-    "HOOD",
     "SMH",
     "GLW",
     "IWM"
@@ -927,22 +928,22 @@
     "BA"
    ],
    "split": [
-    "SPCX",
     "SPY",
-    "MU",
-    "GOOGL",
-    "QQQ",
+    "SPCX",
     "NVDA",
+    "QQQ",
+    "GOOGL",
+    "MU",
     "AMD",
+    "GOOG",
     "META",
     "NFLX",
     "CART",
+    "SNDK",
     "SOXL",
     "DASH",
-    "SNDK",
     "COIN",
-    "CRWV",
-    "GOOG"
+    "CRWV"
    ],
    "window": [
     "2026-10-27T03:30",
@@ -954,16 +955,16 @@
     "NVDA",
     "SPY",
     "AMZN",
-    "GOOGL",
     "QQQ",
+    "GOOGL",
     "AMD",
     "MSFT",
     "MU"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-28 06:41"
+   "updated_hkt": "2026-10-28 07:15"
   }
  },
- "updated_hkt": "2026-10-28 06:41",
+ "updated_hkt": "2026-10-28 07:15",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
