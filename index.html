@@ -2015,6 +2015,13 @@ header.ap-top{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hd-t
 .ap-social .soc svg{width:17px;height:17px}
 .ap-social .save-site{border:0;background:var(--panel2);color:var(--tx);border-radius:999px;padding:8px 14px;font:500 13px/1 var(--f-body);cursor:pointer}
 /* promo tiles */
+/* 熱門個股 row under the hero (Tim, 2026-10-27): the most-discussed stocks at a glance */
+.hot-top{padding-top:22px!important;padding-bottom:0!important}
+.ht-h{margin:0 0 10px;font-size:17px;color:var(--tx-strong);letter-spacing:-.01em}.ht-h b{font-weight:600}.ht-h small{margin-left:6px;font-size:13px;color:var(--muted)}
+.ht-row{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;-webkit-mask-image:linear-gradient(90deg,#000 94%,transparent);mask-image:linear-gradient(90deg,#000 94%,transparent)}
+.ht-row::-webkit-scrollbar{display:none}
+.ht-row a{flex:none;padding:8px 15px;border-radius:980px;background:var(--panel);color:var(--tx-strong);text-decoration:none;font-size:14px;font-weight:600;line-height:1.2}
+.ht-row a:hover{background:var(--hover)}.ht-row a span{margin-left:3px;color:var(--muted);font-weight:500;font-variant-numeric:tabular-nums}
 .ap-promo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;padding-top:20px!important;padding-bottom:0!important}
 .ap-pt{display:flex;align-items:center;gap:12px;background:var(--panel);border:0;border-radius:18px;padding:14px 18px;color:var(--tx)!important;text-decoration:none;text-align:left;font:inherit;cursor:pointer;min-width:0;transition:box-shadow .2s,transform .2s}
 .ap-pt:hover{box-shadow:var(--shadow-hover);transform:translateY(-1px)}
@@ -2061,6 +2068,7 @@ header.ap-top{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hd-t
  .ap-social{margin-top:8px}
  .ap-meta>span:nth-child(2){display:none}
  .ap-social .soc{width:30px;height:30px}.ap-social .save-site{padding:7px 12px}
+ .hot-top{padding-top:12px!important}.ht-h{font-size:15px;margin-bottom:8px}.ht-row a{padding:7px 13px;font-size:13.5px}
  .ap-promo{display:flex;overflow-x:auto;gap:10px;scrollbar-width:none;padding-top:12px!important;scroll-snap-type:x mandatory}
  .ap-promo::-webkit-scrollbar{display:none}
  .ap-pt{flex:0 0 78%;padding:12px 14px;scroll-snap-align:start}

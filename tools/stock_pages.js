@@ -533,19 +533,31 @@ function hotBlock(lang) {
 
 const FOOT = '<footer class="wrap foot" id="foot">';
 
+// 熱門個股 at the top of the homepage (Tim, 2026-10-27): one scrolling row of pills under the hero
+const HOT_MARK = '<!-- hot-top -->';
+const PROMO = '<nav class="wrap ap-promo"';
+
+function hotTop(lang) {
+  if (!HOT.length) return '';
+  const links = HOT.map(x => `<a href="/${lang}/stock/${slug(x.t)}/">${esc(x.t)} <span>${x.n}</span></a>`).join('');
+  return `<nav id="hot-stocks" class="wrap hot-top" aria-label="${esc(T[lang].hot)}"><p class="ht-h"><b>${esc(T[lang].hot)}</b> <small>${esc(T[lang].hotNote)}</small></p><div class="ht-row">${links}</div></nav>`;
+}
+
 function withStockIndex(html, lang, list) {
-  let s = html.replace(new RegExp(MARK + '[\\s\\S]*?' + MARK), '');
+  let s = html.replace(new RegExp(MARK + '[\\s\\S]*?' + MARK), '').replace(new RegExp(HOT_MARK + '[\\s\\S]*?' + HOT_MARK), '');
   if (!s.includes(FOOT)) {
     console.log('::error::no footer for stock index');
     process.exit(1);
   }
-  return s.replace(FOOT, MARK + indexRow(lang, list) + MARK + FOOT);
+  const top = s.includes(PROMO);
+  if (top) s = s.replace(PROMO, HOT_MARK + hotTop(lang) + HOT_MARK + PROMO);
+  return s.replace(FOOT, MARK + indexRow(lang, list, top) + MARK + FOOT);
 }
 
-function indexRow(lang, list) {
+function indexRow(lang, list, noHot) {
   const tickers = list.map(x => Array.isArray(x) ? x[0] : x);
   const links = tickers.map(t => `<a href="/${lang}/stock/${slug(t)}/">${esc(t)}</a>`).join(' ');
-  return hotBlock(lang)
+  return (noHot ? '' : hotBlock(lang))
     + `<nav id="stock-index" class="wrap stock-index" aria-label="${esc(T[lang].index)}" style="font-size:12.5px;line-height:2;color:var(--muted);padding:12px 16px 28px">`
     + `<details><summary><b>${esc(T[lang].index)}</b>${lang === 'zh' ? `（${tickers.length}）` : ` (${tickers.length})`}</summary>${links}</details></nav>`;
 }

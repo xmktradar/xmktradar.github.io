@@ -44,6 +44,7 @@ MARK = '<!-- lang-head -->'
 ZH_ONLY = re.compile(r'<!-- zh-only -->.*?<!-- /zh-only -->', re.S)
 # stock_pages.js injects a Chinese row here; drop it so each language page is clean until that step re-injects.
 STOCK_INDEX = re.compile(r'<!-- stock-index -->.*?<!-- stock-index -->', re.S)
+HOT_TOP = re.compile(r'<!-- hot-top -->.*?<!-- hot-top -->', re.S)  # 熱門個股 row under the hero, also from stock_pages.js
 LITE_DAYS = 45  # covers the 28-day change, sparklines and the monthly view
 PX_DIR = 'px'
 
@@ -388,6 +389,9 @@ def build(lang, master):
     stock = STOCK_INDEX.search(prev)
     stock = stock.group(0) if stock else ''
     master = STOCK_INDEX.sub('', master)
+    hot = HOT_TOP.search(prev)
+    hot = hot.group(0) if hot else ''
+    master = HOT_TOP.sub('', master)
     if lang != 'zh':
         master = ZH_ONLY.sub('', master)
     # one tagline per language (avoid near-duplicates)
@@ -430,6 +434,8 @@ def build(lang, master):
         # stock_pages.js injects this per language. A rebuild must not drop it.
         needle = '<footer class="wrap foot"'
         s = s.replace(needle, stock + needle, 1) if needle in s else s.replace('</body>', stock + '</body>', 1)
+    if hot and '<!-- hot-top -->' not in s:
+        s = s.replace('<nav class="wrap ap-promo"', hot + '<nav class="wrap ap-promo"', 1)
     os.makedirs(lang, exist_ok=True)
     open(f'{lang}/index.html', 'w', encoding='utf-8').write(s)
     if lang == 'zh':
