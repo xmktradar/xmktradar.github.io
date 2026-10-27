@@ -1,12 +1,12 @@
 """Today-in-3-lines and per-stock why posts for the weekday social run.
 
 three_lines copies the homepage block (index.html RUX.threeLines + the zh/en/ko
-lines). why_posts quotes the hottest names from ranking.rank_rows. Each language
-uses that language's real summary: rows[].why (zh_summary) for Chinese, and the
-same post's en_summary (or original text) / ko_summary for English and Korean,
-which is what /en/ and /ko/ put in zh_summary before the why-line. A reason with
-no real summary in a language is left out of that language. Weekends do not
-build either slot.
+lines). why_posts quotes the hottest names from ranking.rank_rows. The reason
+list is chosen once, in row order, and shared by zh, en and ko (same count,
+accounts and order). Chinese uses rows[].why. English and Korean use that row's
+en_summary (or original text) and ko_summary, which is what /en/ and /ko/ put
+in zh_summary before the why-line. A row that lacks a real summary in any one
+language is dropped from every language. Weekends do not build either slot.
 
 python3 tools/three_why.py --merge-into data/social-posts.json rewrites only
 three_lines, why_posts and atomic_posts in an existing file.
@@ -817,7 +817,10 @@ def _post_for(item, by_url, by_id):
 
 
 def _raw_summary(item, lang, post):
-    """Language-matched summary. Never substitutes another language's text."""
+    """Language-matched summary. Does not substitute another language.
+
+    Fallback across languages happens later, after the shared reason list exists.
+    """
     for key in _ROW_FIELDS[lang]:
         val = (item or {}).get(key)
         if isinstance(val, str) and val.strip():
@@ -833,8 +836,17 @@ def _raw_summary(item, lang, post):
     return ''
 
 
-def _reasons(row, ticker, default_side=None, lang='zh', by_url=None, by_id=None):
-    bull, bear = [], []
+def _aligned_reasons(row, ticker, default_side=None, by_url=None, by_id=None):
+    """One shared reason list for zh, en and ko.
+
+    Rows are walked once, so the choice does not depend on language. A row is
+    kept only when every language has a real summary. A missing translation
+    drops that row from every language. Order is the row order: the same
+    accounts, in the same order, on every language. `bull_reasons` and
+    `bear_reasons` are the Chinese side of this list.
+    """
+    S = _s()
+    chosen = []
     seen = set()
     by_url = by_url or {}
     by_id = by_id or {}
@@ -845,16 +857,27 @@ def _reasons(row, ticker, default_side=None, lang='zh', by_url=None, by_id=None)
         side = item.get('s') or default_side
         if side not in ('bull', 'bear') or not acc:
             continue
-        raw = _raw_summary(item, lang, _post_for(item, by_url, by_id))
-        text = _clean_reason(acc, raw, ticker, lang)
-        if not text:
+        post = _post_for(item, by_url, by_id)
+        texts = {}
+        for lang in S.LANGS:
+            raw = _raw_summary(item, lang, post)
+            texts[lang] = _clean_reason(acc, raw, ticker, lang)
+        if any(not texts[lang] for lang in S.LANGS):
             continue
-        key = (side, acc.lower(), text)
+        # Same post twice (url, or the Chinese quote when there is no url) is one reason.
+        ident = str(item.get('url') or '').strip() or texts['zh']
+        key = (side, acc.lower(), ident)
         if key in seen:
             continue
         seen.add(key)
-        (bull if side == 'bull' else bear).append({'acc': acc, 'text': text})
-    return bull, bear
+        chosen.append((side, acc, texts))
+    bull = {lang: [] for lang in S.LANGS}
+    bear = {lang: [] for lang in S.LANGS}
+    for side, acc, texts in chosen:
+        bucket = bull if side == 'bull' else bear
+        for lang in S.LANGS:
+            bucket[lang].append({'acc': acc, 'text': texts[lang]})
+    return {lang: (bull[lang], bear[lang]) for lang in S.LANGS}
 
 
 def hot_names(daily, limit=5):
@@ -951,10 +974,12 @@ def _account_total(nb, nr):
 def build_why_posts(daily, day, window=None, sample=None, generated_at=None, window_fallback=None, dash=None):
     """One Threads-first post per hot name, at most 5. Reasons are real whys only.
 
+    The reason list is chosen once, in row order, and shared by zh, en and ko.
     Chinese quotes `rows[].why`. English and Korean quote that row's own
     translated fields, or the dash post with the same url (en_summary or text,
-    ko_summary). A missing translation is omitted. Counts stay either way.
-    `bull_reasons` / `bear_reasons` stay the Chinese quotes.
+    ko_summary). A row missing any language is dropped from every language.
+    Counts stay either way. `bull_reasons` / `bear_reasons` are the Chinese
+    quotes for that shared list. A name with no shared reason is omitted.
     """
     S = _s()
     day = S._as_day(day) or str(day or '')
@@ -979,9 +1004,7 @@ def build_why_posts(daily, day, window=None, sample=None, generated_at=None, win
             side = 'bear'
         # A split row with no per-account side is not guessed. Bull/bear lists default to that side.
         default = None if source_side == 'split' else source_side
-        per_lang = {
-            lang: _reasons(row, ticker, default, lang, by_url, by_id) for lang in S.LANGS
-        }
+        per_lang = _aligned_reasons(row, ticker, default, by_url, by_id)
         if not any(b or e for b, e in per_lang.values()):
             continue
         bull_r, bear_r = per_lang['zh']
