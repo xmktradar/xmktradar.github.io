@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2115099588218814674": {
+      "en_summary": "Pretty sure there’s a lot going on with $CBRS from IPO lockups. But the chart looks like this so it passes.",
+      "zh_summary": "相當確定$CBRS因IPO鎖定有很多事情發生。但圖表看起來如此，所以通過。",
+      "tickers": ["CBRS"],
+      "stance": "中性",
+      "stance_by_ticker": {"CBRS": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115099384144924765": {
+      "en_summary": "$BA 3.8X option volume on 52W lows. Some new put activity but mostly call selling.",
+      "zh_summary": "$BA在52週低點期權成交量達3.8倍。有一些新的看跌期權活動，但主要是看漲期權賣出。",
+      "tickers": ["BA"],
+      "stance": "中性",
+      "stance_by_ticker": {"BA": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115099114627064235": {
+      "en_summary": "Server Rack Segment is not running because $CLS which builds the server switches storage and full racks for hyperscalers has nothing to do with it.",
+      "zh_summary": "伺服器機架部門並非因$CLS（為超大規模企業建造伺服器交換器、儲存及完整機架）而運行，後者與此無關。",
+      "tickers": ["CLS"],
+      "stance": "中性",
+      "stance_by_ticker": {"CLS": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115097816779673903": {
+      "en_summary": "I quite like $CIFR at $8 since their primary counterparties are $AMZN, $GOOGL and an AI Lab. They need financing and some projects ran slightly overbudget, but quite different from others who need to buy GPUs like Neoclouds.",
+      "zh_summary": "我相當喜歡$CIFR在8美元，因為其主要對手方是$AMZN、$GOOGL及一家AI實驗室。他們需要融資，一些項目略超預算，但與需要購買GPU的Neoclouds等其他公司相當不同。",
+      "tickers": ["CIFR", "AMZN", "GOOGL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"CIFR": "睇好", "AMZN": "中性", "GOOGL": "中性"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"CIFR": "主要對手方為AMZN、GOOGL及AI實驗室，價格8美元"}
+    },
+    "2115097787788652999": {
+      "en_summary": "$SOFI CEO Anthony Noto says “we think we can achieve about 100M products by 2030… That’s a 4x increase.” He also sees room for multiple expansion as almost half of every new revenue dollar flowed into EBITDA in Q3. SoFi on track for its best day in at least a year.",
+      "zh_summary": "$SOFI執行長Anthony Noto表示「我們認為到2030年可以實現約1億產品……這是4倍增長。」他亦看到倍數擴張空間，因為第三季幾乎一半新營收美元流入EBITDA。SoFi有望迎來至少一年來最佳單日表現。",
+      "tickers": ["SOFI"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SOFI": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SOFI": "2030年產品目標1億，為4倍增長；Q3近半新營收流入EBITDA"}
+    }
+  }
+}
