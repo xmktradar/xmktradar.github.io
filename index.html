@@ -893,7 +893,7 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
       <button role="tab" data-v="monthly" id="tab-monthly">每月<small class="tab-rng">（28 天）</small></button>
       <button role="tab" data-v="macro" id="tab-macro">宏觀</button>
       <button role="tab" data-v="tracked" id="tab-tracked">追蹤名單</button>
-      <a class="tab-earn" href="earnings/" title="市值 500 億美元以上美股"><span aria-hidden="true">📊</span> 最新財報簡報</a>
+      <a class="tab-earn" href="earnings/" title="市值 500 億美元以上美股"><span aria-hidden="true">📊</span> 最新財報簡報<small class="tab-cap">（市值 50B 以上）</small></a>
       <!-- 機械人選股分頁暫時收起（2026-10-15）：數據停咗喺 10/8，有來源再開返
       <a href="/robot.html" class="tab-robo"><span class="rb-full">機械人選股交易（Grok）</span><span class="rb-short">機械人交易</span></a>
       -->
@@ -1984,6 +1984,7 @@ header.ap-top{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hd-t
 .ap-top nav.tabs button[aria-selected="true"]{opacity:1;font-weight:600;background:var(--panel2);color:var(--tx-strong)}
 .ap-top nav.tabs a.tab-earn{flex:0 0 auto;color:var(--tx);opacity:.78;font:400 14px/1 var(--f-body);padding:9px 12px;border-radius:999px;white-space:nowrap;text-decoration:none}
 .ap-top nav.tabs a.tab-earn:hover{opacity:1}
+.ap-top nav.tabs a.tab-earn .tab-cap{color:var(--mut);font-size:11.5px;font-weight:400}
 .ap-top nav.tabs .tab-rng{color:var(--mut);font-size:11.5px;font-weight:400}
 .ap-r{display:flex;align-items:center;gap:14px;margin-left:auto;flex:none}
 .ap-tools{color:var(--tx);opacity:.78;font-size:14px;text-decoration:none}
