@@ -602,7 +602,7 @@ def caption(lang, day, s, items, win, quote_):
                     q=lambda q: quote_line(q['acc'], q['text'], 'zh'),
                     note='(共同看多＝最少 2 個帳號最新立場睇好，唔計市場快訊帳號)',
                     end=[IG_BIO['zh'], IG_FOLLOW['zh'], '',
-                         '⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。網站嘅機械人頁只係紙上交易。投資有風險，請自行判斷。']),
+                         '⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。投資有風險，請自行判斷。']),
          'en': dict(cb=f'🔵 Joint bullish: {len(s["bull"])} · Joint bearish: {len(s["bear"])}', rest=lambda k, n: f'・{k} more with {n} accounts each',
                     more=lambda k: f' +{k} more', bear='🔴 Joint bearish: ', split='⚖️ Split views: ', sp=lambda b, r: f' ({b} bull / {r} bear)',
                     stk='🔥 Joint bullish 2+ days in a row: ', sd=lambda n: f' ({n}d)', none='No joint bullish stock yet today (needs 2+ accounts whose latest view is bullish).',

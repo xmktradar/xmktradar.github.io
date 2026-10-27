@@ -29,7 +29,7 @@ def stub(target):
 
 def target_for(rel):
     """en-relative page path -> URL path on the site (index.html maps to its folder)."""
-    if rel == 'index.html':
+    if rel in ('index.html', 'robot.html'):  # robot.html: deleted page, already a redirect to /en/
         return 'en/'
     if rel.endswith('/index.html'):
         return 'en/' + rel[:-len('index.html')]
