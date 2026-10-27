@@ -417,6 +417,8 @@ function shell(master, lang, t, list, body, meta, stats, tvHref) {
   const brand = brandSrc
     .replace(/<h1 class="brand">([\s\S]*?)<\/h1>/, `<a href="/${lang}/" class="brand-home"><p class="brand">$1</p></a>`);
   // 儲存網站 (Tim, 2026-10-23): the same button, tip and script as the built page, already in this language
+  // Apple-style look (2026-10-27): the homepage's theme block, so stock pages share its colours, font and dark mode
+  const apple = (master.match(/<style id="apple-home">[\s\S]*?<\/style>/) || [''])[0];
   const save = (master.match(/<!-- save-site -->[\s\S]*?<!-- \/save-site -->/) || [''])[0];
   const saveBtn = save ? (master.match(/<button type="button" class="save-site"[\s\S]*?<\/button>/) || [''])[0] : '';
   const url = `${SITE}${lang}/stock/${slug(t)}/`;
@@ -424,7 +426,7 @@ function shell(master, lang, t, list, body, meta, stats, tvHref) {
     + `<link rel="alternate" hreflang="x-default" href="${SITE}zh/stock/${slug(t)}/">`;
   const sw = Object.keys(LANGS).map(k => `<a href="/${k}/stock/${slug(t)}/"${k === lang ? ' aria-current="page"' : ''}>${{ zh: '中', en: 'EN' }[k]}</a>`).join('');
   return ensureTvFrameSrc(`<!DOCTYPE html>
-<html lang="${LANGS[lang]}" data-theme="light"><head>
+<html lang="${LANGS[lang]}"${apple ? '' : ' data-theme="light"'}><head>
 ${ga}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -476,6 +478,12 @@ background:var(--accent);color:#fff;text-decoration:none}
 .tv-chart .px-sec{border:0;padding:0;background:transparent;box-shadow:none}
 .tv-chart .px-chart{max-height:140px}
 ${NL_CSS}</style>
+${apple}${apple ? `<style>header.top{background:var(--navbg)!important;-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px)}
+.brand-home .brand{font:600 19px/1.2 var(--f-display);color:var(--tx-strong);margin:0}.brand-sub{font-style:normal}
+.lang-sw a{border:0!important;background:var(--panel2)!important}.lang-sw a[aria-current]{background:var(--link-bg)!important;color:var(--tx-strong)!important}
+.site-nav a{border:0!important;background:var(--panel2)!important}.site-nav a.nav-donate{background:var(--accent)!important;color:#fff!important}
+.stock-static .money-bar{display:flex!important;border:0;background:var(--panel);border-radius:16px}
+.advice{border:0;border-radius:16px}.open-live a{font-weight:500}</style>` : ''}
 </head>
 <body>
 <header class="top"><div class="wrap"><div class="brand-wrap">${brand}<nav class="lang-sw" aria-label="Language">${sw}</nav><nav class="site-nav" aria-label="${esc(T[lang].promo)}"><a href="/${lang}/tools/">${esc(T[lang].tools)}</a><a class="nav-donate" href="/${lang}/support/">${esc(T[lang].support)}</a>${saveBtn}</nav></div></div></header>
