@@ -36,6 +36,8 @@ jobs:
         run: python3 tools/test_ig_boost.py
       - name: Motion video tests
         run: python3 tools/test_motion_video.py
+      - name: Earnings brief tests
+        run: python3 tools/test_earnings.py
       - name: IndexNow backfill tests
         run: python3 tools/test_indexnow.py
       - name: Page structure the build needs

@@ -1,0 +1,101 @@
+<!doctype html><meta charset="utf-8">
+<!-- One picture (1080x1350) of an earnings post, in the @thecrowdtape Instagram style (same frame as tools/carousel.html).
+     tools/earnings_cards.js calls render(lang, date, page, slide); tools/earnings_posts.py writes the slides, text included. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Noto+Sans+TC:wght@400;500;700;900&display=block">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0}
+body{width:1080px;height:1350px;position:relative;overflow:hidden;color:#151a2c;font-family:"Noto Sans TC","Noto Color Emoji",sans-serif;--a:#3f7bff;--b:#20c2a0;--c:#ffd84d}
+.bg{position:absolute;inset:0;background:linear-gradient(160deg,var(--a) 0%,var(--b) 100%)}
+.rays{position:absolute;inset:-200px;background:repeating-conic-gradient(from 0deg at var(--cx,20%) var(--cy,22%),rgba(255,255,255,.2) 0 5deg,transparent 5deg 12deg)}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(21,26,44,.14) 3.2px,transparent 3.6px);background-size:22px 22px;-webkit-mask-image:radial-gradient(circle at 85% 85%,#000 0,transparent 55%)}
+.glow{position:absolute;left:48px;right:48px;top:158px;bottom:150px;background:rgba(255,255,255,.3);border:4px solid #151a2c;border-radius:34px;box-shadow:8px 10px 0 rgba(21,26,44,.85)}
+.top{position:absolute;left:64px;right:64px;top:76px;display:flex;align-items:center;gap:16px}
+.brand{white-space:nowrap;display:inline-flex;align-items:center;gap:10px;background:#fff;border-radius:999px;padding:8px 22px 8px 10px;font-weight:900;font-size:28px;box-shadow:0 5px 0 rgba(21,26,44,.14)}
+.brand img{width:50px;height:50px;border-radius:12px;object-fit:cover;margin:-4px 0}
+.date{background:#f8d34a;border:4px solid #151a2c;border-radius:14px;padding:6px 16px;font-weight:900;font-size:28px;transform:rotate(-2.5deg);box-shadow:4px 5px 0 #151a2c;white-space:nowrap}
+.pg{margin-left:auto;font:700 26px "IBM Plex Mono",monospace;background:#151a2c;color:#fff;border-radius:999px;padding:6px 18px}
+.main{position:absolute;left:84px;right:84px;top:196px;bottom:176px}
+#in{display:flex;flex-direction:column;gap:24px;min-height:100%;justify-content:center}
+.kick{align-self:flex-start;background:#151a2c;color:#fff;font-weight:900;font-size:34px;padding:8px 22px;border-radius:14px;transform:rotate(-1.5deg)}
+.big{font:700 190px/1 "IBM Plex Mono",monospace;letter-spacing:-6px}
+.big span{background:linear-gradient(transparent 58%,#fbe25b 58%);padding:0 10px}
+.name{font-weight:900;font-size:40px;line-height:1.25}
+.label{align-self:flex-start;background:#fff;border:3px solid #151a2c;border-radius:12px;padding:4px 16px;font:700 30px "IBM Plex Mono",monospace}
+.box{background:#fff;border:4px solid #151a2c;border-radius:24px;box-shadow:0 7px 0 #151a2c;padding:22px 28px}
+.res{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.res .k{font-weight:900;font-size:32px;flex:1 1 100%}
+.res .v{font:700 64px/1.05 "IBM Plex Mono",monospace;letter-spacing:-2px}
+.res .e{font:500 28px "IBM Plex Mono",monospace;color:#5a6280}
+.tag{margin-left:auto;font-weight:900;font-size:30px;padding:6px 18px;border-radius:999px;border:3px solid #151a2c;white-space:nowrap}
+.tag.up{background:#c9f2d7;color:#14602f}.tag.down{background:#ffd3da;color:#9a1f33}.tag.flat{background:#eef0fb;color:#3c4466}
+.ttl{align-self:flex-start;background:#f8d34a;border:4px solid #151a2c;border-radius:14px;padding:6px 20px;font-weight:900;font-size:40px;box-shadow:4px 5px 0 #151a2c}
+.stats{display:flex;gap:18px}
+.stat{flex:1;background:#fff;border:4px solid #151a2c;border-radius:20px;padding:14px 22px;box-shadow:0 6px 0 #151a2c}
+.stat .k{font-weight:700;font-size:26px;color:#3c4466}.stat .v{font:700 56px/1.1 "IBM Plex Mono",monospace}
+.u{color:#14803f}.d{color:#c0273e}
+.mg{display:flex;gap:14px}
+.mg>div{flex:1;background:#fff;border:3px solid #151a2c;border-radius:16px;padding:10px 16px}
+.mg .k{font-weight:700;font-size:24px;color:#3c4466}.mg .v{font:700 40px "IBM Plex Mono",monospace}.mg .y{font:600 22px "IBM Plex Mono",monospace}
+.bars{display:flex;align-items:flex-end;gap:12px;height:290px;padding:10px 6px 0}
+.bar{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
+.bar i{display:block;width:100%;background:#151a2c;border-radius:10px 10px 0 0;opacity:.8}.bar.last i{background:#ff6b3d;opacity:1}
+.bar b{font:700 22px "IBM Plex Mono",monospace;margin-bottom:4px;white-space:nowrap}
+.bar small{font:600 20px "IBM Plex Mono",monospace;color:#3c4466;margin-top:6px;white-space:nowrap}
+.bt{font-weight:900;font-size:28px}
+.rows{display:flex;flex-direction:column;gap:18px}
+.seg .top2{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.seg .k{font-weight:900;font-size:34px;line-height:1.2;min-width:0}
+.seg .v{font:700 36px "IBM Plex Mono",monospace;white-space:nowrap}
+.seg .meter{height:22px;border-radius:11px;background:#eef0fb;margin-top:8px;overflow:hidden;border:2px solid #151a2c}
+.seg .meter i{display:block;height:100%;background:linear-gradient(90deg,var(--a),var(--b))}
+.seg .s{font:600 24px "IBM Plex Mono",monospace;color:#3c4466;margin-top:4px}
+.empty{font-weight:900;font-size:40px;text-align:center;margin:auto}
+.cr{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:12px 0;border-bottom:3px dashed #d7dbea}
+.cr:last-child{border-bottom:0}
+.cr .k{font-weight:700;font-size:32px}.cr .v{font:700 44px "IBM Plex Mono",monospace;white-space:nowrap}
+.verdict{font-weight:900;font-size:38px;text-align:center;background:#fff;border:4px solid #151a2c;border-radius:20px;padding:14px;box-shadow:0 6px 0 #151a2c}
+.more{align-self:center;background:#ff6b3d;color:#fff;font-weight:900;font-size:30px;padding:12px 24px;border-radius:16px;border:3px solid #151a2c;box-shadow:4px 5px 0 #151a2c;text-align:center}
+.foot{position:absolute;left:64px;right:64px;bottom:76px;height:60px;background:rgba(255,255,255,.9);border-radius:999px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;font-weight:700;font-size:24px;color:#3c4466;white-space:nowrap}
+.foot b{color:#151a2c}
+</style>
+<body>
+<div class="bg"></div><div class="rays"></div><div class="dots"></div><div class="glow"></div>
+<div class="top"><span class="brand"><img src="logo.png" alt="">The Crowd Tape</span><span class="date" id="date"></span><span class="pg" id="pg"></span></div>
+<div class="main" id="main"><div id="in"></div></div>
+<div class="foot"><span><b>@thecrowdtape</b> · thecrowdtape.com</span><span id="fl"></span></div>
+<script>
+const FL={zh:'⚠️ 唔構成投資建議',en:'⚠️ Not investment advice'};
+const esc=v=>String(v==null?'':v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ud=s=>String(s||'').startsWith('-')?'d':'u';
+function render(lang,date,page,S){
+ document.documentElement.lang=lang;
+ const C=[['18%','20%'],['82%','18%'],['15%','80%'],['85%','82%']][(page-1)%4];
+ document.body.style.setProperty('--cx',C[0]);document.body.style.setProperty('--cy',C[1]);
+ document.getElementById('date').textContent=date?'📅 '+date:'';
+ document.getElementById('pg').textContent=page+'/4';
+ document.getElementById('fl').textContent=FL[lang];
+ let h='';
+ if(S.kind==='cover'){
+  const fs=S.ticker.length>4?150:190;
+  h=`<div class="kick">📊 ${esc(S.kick)}</div><div class="big" style="font-size:${fs}px"><span>$${esc(S.ticker)}</span></div>
+   <div class="name">${esc(S.name)}</div><div class="label">${esc(S.label)}</div>`;
+  for(const r of S.rows){
+   h+=`<div class="box res"><div class="k">${esc(r.k)}</div><div class="v">${esc(r.v)}</div>${r.e?`<div class="e">${esc(r.e)}${r.d?` · <span class="${ud(r.d)}">${esc(r.d)}</span>`:''}</div>`:''}${r.tag?`<span class="tag ${r.tag}">${esc(S.tags[r.tag])}</span>`:''}</div>`;
+  }
+ } else if(S.kind==='growth'){
+  h=`<div class="ttl">📈 ${esc(S.title)}</div><div class="stats">${S.stats.map(s=>`<div class="stat"><div class="k">${esc(s.k)}</div><div class="v ${s.up?'u':'d'}">${esc(s.v)}</div></div>`).join('')}</div>`;
+  if(S.margins.length)h+=`<div class="mg">${S.margins.map(m=>`<div><div class="k">${esc(m.k)}</div><div class="v">${esc(m.v)}</div>${m.y?`<div class="y ${ud(m.y)}">${esc(m.y)}</div>`:''}</div>`).join('')}</div>`;
+  h+=`<div class="box"><div class="bt">${esc(S.bars_title)}</div><div class="bars">${S.bars.map((b,i)=>`<div class="bar${i===S.bars.length-1?' last':''}"><b class="${b.up?'u':'d'}">${esc(b.g)}</b><i style="height:${b.h}%"></i><small>${esc(b.l)}</small></div>`).join('')}</div></div>`;
+ } else if(S.kind==='segs'){
+  h=`<div class="ttl">🧩 ${esc(S.title)}</div>`;
+  if(!S.rows.length)h+=`<div class="box empty">${esc(S.empty)}</div>`;
+  else h+=`<div class="box rows">${S.rows.map(r=>`<div class="seg"><div class="top2"><div class="k">${esc(r.k)}</div><div class="v">${esc(r.v)}</div></div><div class="meter"><i style="width:${Math.max(1,Math.min(100,r.s||0))}%"></i></div><div class="s">${r.s!=null?Math.round(r.s)+'%':''}${r.y?` · <span class="${r.up?'u':'d'}">${esc(r.y)}</span>`:''}</div></div>`).join('')}</div>`;
+ } else if(S.kind==='cash'){
+  h=`<div class="ttl">💵 ${esc(S.title)}</div><div class="box">${S.rows.map(r=>`<div class="cr"><div class="k">${esc(r.k)}</div><div class="v${r.up===undefined?'':(r.up?' u':' d')}">${esc(r.v)}</div></div>`).join('')}</div>`;
+  if(S.verdict)h+=`<div class="verdict">${esc(S.verdict)}</div>`;
+  h+=`<div class="more">${esc(S.more)}</div>`;
+ }
+ document.getElementById('in').innerHTML=h;
+}
+</script>
