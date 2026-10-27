@@ -410,7 +410,11 @@ function shell(master, lang, t, list, body, meta, stats, tvHref) {
   const styles = (head.match(/<style[^>]*>[\s\S]*?<\/style>/g) || []).join('\n');
   const ga = (head.match(/<script async src="https:\/\/www\.googletagmanager\.com[^>]*><\/script>\s*<script>window\.dataLayer[\s\S]*?<\/script>/) || [''])[0];
   const fonts = (head.match(/<link rel="(?:preconnect|stylesheet)"[^>]*>/g) || []).join('');
-  const brand = (master.match(/<div class="brand-wrap">([\s\S]*?)<nav class="lang-sw"/) || ['', ''])[1]
+  // Apple-style homepage (2026-10-27) has no brand-wrap: rebuild the old brand + tagline from its top bar and hero
+  const brandSrc = (master.match(/<div class="brand-wrap">([\s\S]*?)<nav class="lang-sw"/) || [])[1]
+    || ((master.match(/<h1 class="brand">[\s\S]*?<\/h1>/) || [''])[0]
+      + `<p class="brand-sub">${(master.match(/<p class="ap-h">([\s\S]*?)<\/p>/) || ['', ''])[1].replace(/<[^>]+>/g, '').replace(/[。.]$/, '')}</p>`);
+  const brand = brandSrc
     .replace(/<h1 class="brand">([\s\S]*?)<\/h1>/, `<a href="/${lang}/" class="brand-home"><p class="brand">$1</p></a>`);
   // 儲存網站 (Tim, 2026-10-23): the same button, tip and script as the built page, already in this language
   const save = (master.match(/<!-- save-site -->[\s\S]*?<!-- \/save-site -->/) || [''])[0];

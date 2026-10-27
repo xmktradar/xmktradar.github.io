@@ -199,6 +199,8 @@ def add_chrome(s, cur):
     s = re.sub(r'<link rel="canonical"[^>]*>', '', s)
     s = s.replace('</head>', head_tags(cur) + '</head>', 1)
     s = re.sub(r'<nav class="lang-sw".*?</nav>', '', s, flags=re.S)
+    if '<span class="ap-lang">' in s:  # Apple-style top bar (2026-10-27): the switch sits in the bar
+        return s.replace('<span class="ap-lang">', '<span class="ap-lang">' + switch(cur), 1)
     s = s.replace('<div class="views">', switch(cur) + '<div class="views">', 1)
     return s
 
