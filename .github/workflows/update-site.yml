@@ -34,6 +34,11 @@ jobs:
         run: |
           npm install --no-save --no-audit --no-fund playwright@1.56.1
           npx playwright install --with-deps chromium
+      - name: Install ffmpeg (motion videos and the Top5 clip; not on the runner image)
+        continue-on-error: true
+        run: |
+          command -v ffmpeg >/dev/null 2>&1 || { sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends ffmpeg; }
+          ffmpeg -version | head -1
       - name: Install Chinese converter
         continue-on-error: true
         run: pip install opencc-python-reimplemented==0.1.7
@@ -96,6 +101,9 @@ jobs:
         continue-on-error: true
         timeout-minutes: 12
         run: |
+          if [ -f "$WORK_DIR/carousel.json" ] && ! command -v ffmpeg >/dev/null 2>&1; then
+            echo "::error::冇 ffmpeg，今次出唔到動態片（Install ffmpeg 嗰步失敗）"
+          fi
           if [ -f "$WORK_DIR/carousel.json" ] && command -v ffmpeg >/dev/null 2>&1; then
             pip install numpy edge-tts==7.3.1 || echo "::warning::numpy/edge-tts 裝唔到"
             VO_LANGS=zh,en node tools/carousel_video.js "$WORK_DIR/carousel.json" || echo "::warning::動態片整唔到，下次更新再試"
