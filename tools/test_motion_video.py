@@ -543,6 +543,17 @@ def test_social_page():
     assert '<video' not in carousel.slot_page({'slots': {'1230': sl}})
 
 
+
+def test_video_missing_redo():
+    from datetime import datetime
+    at = lambda h, m: datetime(2026, 10, 27, h, m)
+    full = {'video': {'zh': URL.format('zh'), 'en': URL.format('en')}}
+    assert not carousel.video_missing(full, '1230', at(11, 30))
+    assert carousel.video_missing({'video': {'zh': URL.format('zh')}}, '1230', at(11, 30))
+    assert carousel.video_missing({}, '1230', at(7, 40))
+    assert not carousel.video_missing({}, '1230', at(12, 10))  # too close to the 12:30 post
+    assert not carousel.video_missing({}, '1630', at(11, 0))  # no video for that slot
+
 if __name__ == '__main__':
     for name, fn in list(globals().items()):
         if name.startswith('test_') and callable(fn):

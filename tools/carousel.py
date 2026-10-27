@@ -34,6 +34,19 @@ TITLE = {'1230': {'zh': '今日快照', 'en': "Today's snapshot", 'ko': '오늘�
 VIDEO_SLOTS = tuple(x for x in os.environ.get('VIDEO_SLOTS', '1230').split(',') if x)
 VIDEO_LANGS = tuple(x for x in os.environ.get('VIDEO_LANGS', 'zh,en').split(',') if x)  # Tim 2026-10-25: no Korean video
 TARGET_DAYS = 7  # price targets from the last week
+
+def video_missing(sl, key, now):
+    """A video slot with a language's video missing is made again on later runs, until 20 minutes
+    before its first post (2026-10-27: the runner had no ffmpeg at 07:05, so no video all day)."""
+    if key not in VIDEO_SLOTS or not isinstance(sl, dict):
+        return False
+    h, m = map(int, next(t for k, _, t in SLOTS if k == key)[0].split(':'))
+    if now.hour * 60 + now.minute >= h * 60 + m - 20:
+        return False
+    have = sl.get('video') or {}
+    return any(l not in have for l in VIDEO_LANGS)
+
+
 TALK = {'zh': '🗣️ 大神點講', 'en': '🗣️ What the accounts say', 'ko': '🗣️ 계정들의 의견'}
 
 ZH_PT = re.compile(r'目標價[^\d$。；，]{0,12}?(?:由\s*\$?[\d,.]+\s*(?:美元)?\s*(?:上調|下調|調)?(?:至|到)\s*)?\$?\s?(\d+(?:,\d{3})*(?:\.\d+)?)')
@@ -520,7 +533,7 @@ def main():
     slots = sp.get('slots') or {}
     if force or any(v.get('day') != day for v in slots.values()):
         slots = {}
-    todo = [k for k, h, _ in SLOTS if (now.hour >= h or force) and (k not in slots or force)]
+    todo = [k for k, h, _ in SLOTS if (now.hour >= h or force) and (k not in slots or force or video_missing(slots[k], k, now))]
     if not todo:
         return
     # Slim homepages keep accounts and older posts in external files. full_data
