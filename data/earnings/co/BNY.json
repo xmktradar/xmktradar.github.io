@@ -1,0 +1,201 @@
+{
+ "t": "BNY",
+ "name": "The Bank of New York Mellon Corporation",
+ "cik": 1390777,
+ "q": [
+  {
+   "end": "2014-03-31",
+   "label": "FY2014 Q1",
+   "rev": 3627000000,
+   "gp": null,
+   "op": null,
+   "ni": 674000000,
+   "eps": 0.57,
+   "ocf": -1055000000,
+   "capex": 201000000,
+   "fcf": -1256000000
+  },
+  {
+   "end": "2014-06-30",
+   "label": "FY2014 Q2",
+   "rev": 3728000000,
+   "gp": null,
+   "op": null,
+   "ni": 577000000,
+   "eps": 0.48,
+   "ocf": 3440000000,
+   "capex": 179000000,
+   "fcf": 3261000000
+  },
+  {
+   "end": "2014-09-30",
+   "label": "FY2014 Q3",
+   "rev": 4588000000,
+   "gp": null,
+   "op": null,
+   "ni": 1083000000,
+   "eps": 0.93,
+   "ocf": 913000000,
+   "capex": 215000000,
+   "fcf": 698000000
+  },
+  {
+   "end": "2014-12-31",
+   "label": "FY2014 Q4",
+   "rev": 3665000000,
+   "gp": null,
+   "op": null,
+   "ni": 233000000,
+   "eps": 0.18,
+   "ocf": 1186000000,
+   "capex": 196000000,
+   "fcf": 990000000
+  },
+  {
+   "end": "2015-03-31",
+   "label": "FY2015 Q1",
+   "rev": 3761000000,
+   "gp": null,
+   "op": null,
+   "ni": 779000000,
+   "eps": 0.67,
+   "ocf": -71000000,
+   "capex": 162000000,
+   "fcf": -233000000
+  },
+  {
+   "end": "2015-06-30",
+   "label": "FY2015 Q2",
+   "rev": 3849000000,
+   "gp": null,
+   "op": null,
+   "ni": 853000000,
+   "eps": 0.73,
+   "ocf": 2705000000,
+   "capex": 150000000,
+   "fcf": 2555000000
+  },
+  {
+   "end": "2015-09-30",
+   "label": "FY2015 Q3",
+   "rev": 3795000000,
+   "gp": null,
+   "op": null,
+   "ni": 833000000,
+   "eps": 0.74,
+   "ocf": 1351000000,
+   "capex": 115000000,
+   "fcf": 1236000000
+  },
+  {
+   "end": "2015-12-31",
+   "label": "FY2015 Q4",
+   "rev": 3721000000,
+   "gp": null,
+   "op": null,
+   "ni": 693000000,
+   "eps": 0.57,
+   "ocf": 142000000,
+   "capex": 174000000,
+   "fcf": -32000000
+  },
+  {
+   "end": "2016-03-31",
+   "label": "FY2016 Q1",
+   "rev": 3737000000,
+   "gp": null,
+   "op": null,
+   "ni": 817000000,
+   "eps": 0.73,
+   "ocf": 1794000000,
+   "capex": 148000000,
+   "fcf": 1646000000
+  },
+  {
+   "end": "2016-06-30",
+   "label": "FY2016 Q2",
+   "rev": 3772000000,
+   "gp": null,
+   "op": null,
+   "ni": 873000000,
+   "eps": 0.75,
+   "ocf": -332000000,
+   "capex": 201000000,
+   "fcf": -533000000
+  },
+  {
+   "end": "2018-03-31",
+   "label": "FY2018 Q1",
+   "rev": 2981000000,
+   "gp": null,
+   "op": null,
+   "ni": 1171000000,
+   "eps": 1.1,
+   "ocf": -852000000,
+   "capex": 173000000,
+   "fcf": -1025000000
+  },
+  {
+   "end": "2018-06-30",
+   "label": "FY2018 Q2",
+   "rev": 2894000000,
+   "gp": null,
+   "op": null,
+   "ni": 1103000000,
+   "eps": 1.03,
+   "ocf": 2420000000,
+   "capex": 332000000,
+   "fcf": 2088000000
+  }
+ ],
+ "latest": {
+  "label": "FY2018 Q2",
+  "filed": "2018-08-03",
+  "accn": "0001390777-18-000113",
+  "form": "10-Q",
+  "end": "2018-06-30"
+ },
+ "bal": {
+  "end": "2018-06-30",
+  "cash": 5361000000,
+  "sti": null,
+  "debt": null
+ },
+ "bank": false,
+ "seg": {
+  "axis": "us-gaap:StatementBusinessSegmentsAxis",
+  "basis": "quarter",
+  "rows": [
+   {
+    "name": "Investment Services",
+    "val": 1979000000.0,
+    "prev": null
+   },
+   {
+    "name": "Investment Management",
+    "val": 913000000.0,
+    "prev": null
+   },
+   {
+    "name": "Other",
+    "val": 2000000.0,
+    "prev": null
+   }
+  ],
+  "accn": "0001390777-18-000113"
+ },
+ "mcap": 99037118464,
+ "next": "2027-01-15",
+ "last_report": null,
+ "est": {
+  "eps_act": null,
+  "eps_est": null,
+  "rev_est": null,
+  "rev_est_seen": null
+ },
+ "pending": {
+  "q": "2026-09-30",
+  "eps_act": 2.37,
+  "eps_est": 2.26062
+ }
+}

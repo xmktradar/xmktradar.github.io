@@ -1,0 +1,192 @@
+{
+ "t": "PSA",
+ "name": "Public Storage",
+ "cik": 1393311,
+ "q": [
+  {
+   "end": "2023-12-31",
+   "label": "FY2023 Q4",
+   "rev": 1159868000,
+   "gp": null,
+   "op": null,
+   "ni": 439292000,
+   "eps": 2.210000000000001,
+   "ocf": 791684000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2024-03-31",
+   "label": "FY2024 Q1",
+   "rev": 1157220000,
+   "gp": null,
+   "op": null,
+   "ni": 508948000,
+   "eps": 2.6,
+   "ocf": 665586000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2024-06-30",
+   "label": "FY2024 Q2",
+   "rev": 1173211000,
+   "gp": null,
+   "op": null,
+   "ni": 518127000,
+   "eps": 2.66,
+   "ocf": 895279000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2024-09-30",
+   "label": "FY2024 Q3",
+   "rev": 1187758000,
+   "gp": null,
+   "op": null,
+   "ni": 430329000,
+   "eps": 2.16,
+   "ocf": 798770000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2024-12-31",
+   "label": "FY2024 Q4",
+   "rev": 1177427000,
+   "gp": null,
+   "op": null,
+   "ni": 614607000,
+   "eps": 3.210000000000001,
+   "ocf": 768620000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2025-03-31",
+   "label": "FY2025 Q1",
+   "rev": 1183184000,
+   "gp": null,
+   "op": 464006000,
+   "ni": 407791000,
+   "eps": 2.04,
+   "ocf": 705063000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2025-06-30",
+   "label": "FY2025 Q2",
+   "rev": 1201094000,
+   "gp": null,
+   "op": 499999000,
+   "ni": 358419000,
+   "eps": 1.76,
+   "ocf": 872708000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2025-09-30",
+   "label": "FY2025 Q3",
+   "rev": 1224043000,
+   "gp": null,
+   "op": 491517000,
+   "ni": 511063000,
+   "eps": 2.62,
+   "ocf": 875091000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2025-12-31",
+   "label": "FY2025 Q4",
+   "rev": 1215792000,
+   "gp": null,
+   "op": null,
+   "ni": 507075000,
+   "eps": 2.59,
+   "ocf": 733587000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2026-03-31",
+   "label": "FY2026 Q1",
+   "rev": 1217741000,
+   "gp": null,
+   "op": 474278000,
+   "ni": 526273000,
+   "eps": 2.71,
+   "ocf": 694801000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2026-06-30",
+   "label": "FY2026 Q2",
+   "rev": 1232881000,
+   "gp": null,
+   "op": 466681000,
+   "ni": 499960000,
+   "eps": 2.55,
+   "ocf": 868437000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "rev": 1366190000,
+   "gp": null,
+   "op": 316960000,
+   "ni": 366926000,
+   "eps": 1.69,
+   "ocf": 708853000,
+   "capex": null,
+   "fcf": null
+  }
+ ],
+ "latest": {
+  "label": "FY2026 Q3",
+  "filed": "2026-10-26",
+  "accn": "0001628280-26-067286",
+  "form": "10-Q",
+  "end": "2026-09-30"
+ },
+ "bal": {
+  "end": "2026-09-30",
+  "cash": 560379000,
+  "sti": null,
+  "debt": 12192033000
+ },
+ "bank": false,
+ "seg": {
+  "axis": "srt:ProductOrServiceAxis",
+  "basis": "quarter",
+  "rows": [
+   {
+    "name": "Self-storage facilities",
+    "val": 1254111000.0,
+    "prev": 1138837000.0
+   },
+   {
+    "name": "Ancillary operations",
+    "val": 112079000.0,
+    "prev": 85206000.0
+   }
+  ],
+  "accn": "0001628280-26-067286"
+ },
+ "mcap": 57358045184,
+ "next": "2026-10-26",
+ "last_report": "2026-10-26",
+ "est": {
+  "eps_act": null,
+  "eps_est": null,
+  "rev_est": null,
+  "rev_est_seen": null
+ },
+ "pending": null
+}

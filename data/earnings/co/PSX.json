@@ -1,0 +1,207 @@
+{
+ "t": "PSX",
+ "name": "Phillips 66",
+ "cik": 1534701,
+ "q": [
+  {
+   "end": "2023-09-30",
+   "label": "FY2023 Q3",
+   "rev": 39643000000,
+   "gp": 5313000000,
+   "op": null,
+   "ni": 2097000000,
+   "eps": 4.69,
+   "ocf": 2685000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2023-12-31",
+   "label": "FY2023 Q4",
+   "rev": 38270000000,
+   "gp": 4426000000,
+   "op": null,
+   "ni": 1260000000,
+   "eps": 2.8900000000000006,
+   "ocf": 2190000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2024-03-31",
+   "label": "FY2024 Q1",
+   "rev": 35811000000,
+   "gp": 3425000000,
+   "op": null,
+   "ni": 748000000,
+   "eps": 1.73,
+   "ocf": -236000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2024-06-30",
+   "label": "FY2024 Q2",
+   "rev": 38129000000,
+   "gp": 3501000000,
+   "op": null,
+   "ni": 1015000000,
+   "eps": 2.38,
+   "ocf": 2097000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2024-09-30",
+   "label": "FY2024 Q3",
+   "rev": 35528000000,
+   "gp": 3334000000,
+   "op": null,
+   "ni": 346000000,
+   "eps": 0.82,
+   "ocf": 1132000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2024-12-31",
+   "label": "FY2024 Q4",
+   "rev": 33685000000,
+   "gp": 2931000000,
+   "op": null,
+   "ni": 8000000,
+   "eps": 0.04999999999999982,
+   "ocf": 1198000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2025-03-31",
+   "label": "FY2025 Q1",
+   "rev": 30430000000,
+   "gp": 2770000000,
+   "op": null,
+   "ni": 487000000,
+   "eps": 1.18,
+   "ocf": 187000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2025-06-30",
+   "label": "FY2025 Q2",
+   "rev": 33323000000,
+   "gp": 4246000000,
+   "op": null,
+   "ni": 877000000,
+   "eps": 2.15,
+   "ocf": 845000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2025-09-30",
+   "label": "FY2025 Q3",
+   "rev": 34515000000,
+   "gp": 4296000000,
+   "op": null,
+   "ni": 133000000,
+   "eps": 0.32,
+   "ocf": 1178000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2025-12-31",
+   "label": "FY2025 Q4",
+   "rev": 34108000000,
+   "gp": 4971000000,
+   "op": null,
+   "ni": 2906000000,
+   "eps": 7.129999999999999,
+   "ocf": 2752000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2026-03-31",
+   "label": "FY2026 Q1",
+   "rev": 32540000000,
+   "gp": 3324000000,
+   "op": null,
+   "ni": 207000000,
+   "eps": 0.51,
+   "ocf": -2264000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2026-06-30",
+   "label": "FY2026 Q2",
+   "rev": 51004000000,
+   "gp": 7340000000,
+   "op": null,
+   "ni": 3847000000,
+   "eps": 9.55,
+   "ocf": 7259000000,
+   "capex": null,
+   "fcf": null
+  }
+ ],
+ "latest": {
+  "label": "FY2026 Q2",
+  "filed": "2026-08-05",
+  "accn": "0001534701-26-000032",
+  "form": "10-Q",
+  "end": "2026-06-30"
+ },
+ "bal": {
+  "end": "2026-06-30",
+  "cash": 4099000000,
+  "sti": null,
+  "debt": 18768000000
+ },
+ "bank": false,
+ "seg": {
+  "axis": "us-gaap:StatementBusinessSegmentsAxis",
+  "basis": "quarter",
+  "rows": [
+   {
+    "name": "M&S",
+    "val": 31297000000.0,
+    "prev": 20899000000.0
+   },
+   {
+    "name": "Refining",
+    "val": 13618000000.0,
+    "prev": 7105000000.0
+   },
+   {
+    "name": "Midstream",
+    "val": 5231000000.0,
+    "prev": 4528000000.0
+   },
+   {
+    "name": "Renewable Fuels",
+    "val": 849000000.0,
+    "prev": 781000000.0
+   },
+   {
+    "name": "Chemicals",
+    "val": 0.0,
+    "prev": 0.0
+   }
+  ],
+  "accn": "0001534701-26-000032"
+ },
+ "mcap": 115810082816,
+ "next": "2026-10-28",
+ "last_report": null,
+ "est": {
+  "eps_act": 9.41,
+  "eps_est": 7.50073,
+  "rev_est": null,
+  "rev_est_seen": null
+ },
+ "pending": null
+}

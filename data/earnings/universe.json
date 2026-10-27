@@ -1,0 +1,1585 @@
+{
+ "day": "2026-10-27",
+ "companies": {
+  "NVDA": {
+   "cik": 1045810,
+   "name": "NVIDIA Corporation",
+   "mcap": 5215751766016
+  },
+  "AAPL": {
+   "cik": 320193,
+   "name": "Apple Inc.",
+   "mcap": 5019084521472
+  },
+  "MSFT": {
+   "cik": 789019,
+   "name": "Microsoft Corporation",
+   "mcap": 3954845417472
+  },
+  "GOOGL": {
+   "cik": 1652044,
+   "name": "Alphabet Inc.",
+   "mcap": 3874443231232
+  },
+  "AMZN": {
+   "cik": 1018724,
+   "name": "Amazon.com, Inc.",
+   "mcap": 2686762614784
+  },
+  "TSM": {
+   "cik": 1046179,
+   "name": "Taiwan Semiconductor Manufacturing Company Limited",
+   "mcap": 2200983830528
+  },
+  "SPCX": {
+   "cik": 1181412,
+   "name": "Space Exploration Technologies Corp.",
+   "mcap": 1995058184192
+  },
+  "META": {
+   "cik": 1326801,
+   "name": "Meta Platforms, Inc.",
+   "mcap": 1612236587008
+  },
+  "AVGO": {
+   "cik": 1730168,
+   "name": "Broadcom Inc.",
+   "mcap": 1571335831552
+  },
+  "TSLA": {
+   "cik": 1318605,
+   "name": "Tesla, Inc.",
+   "mcap": 1547968184320
+  },
+  "BRK-B": {
+   "cik": 1067983,
+   "name": "Berkshire Hathaway Inc.",
+   "mcap": 1174307733504
+  },
+  "LLY": {
+   "cik": 59478,
+   "name": "Eli Lilly and Company",
+   "mcap": 1140662075392
+  },
+  "MU": {
+   "cik": 723125,
+   "name": "Micron Technology, Inc.",
+   "mcap": 1022467178496
+  },
+  "SKHY": {
+   "cik": 2120882,
+   "name": "SK hynix Inc.",
+   "mcap": 1005718142976
+  },
+  "WMT": {
+   "cik": 104169,
+   "name": "Walmart Inc.",
+   "mcap": 957277339648
+  },
+  "JPM": {
+   "cik": 19617,
+   "name": "JPMorgan Chase & Co.",
+   "mcap": 887076683776
+  },
+  "AMD": {
+   "cik": 2488,
+   "name": "Advanced Micro Devices, Inc.",
+   "mcap": 867301392384
+  },
+  "XOM": {
+   "cik": 2115436,
+   "name": "ExxonMobil Holdings Corporation",
+   "mcap": 758812180480
+  },
+  "V": {
+   "cik": 1403161,
+   "name": "Visa Inc.",
+   "mcap": 758751887360
+  },
+  "JNJ": {
+   "cik": 200406,
+   "name": "Johnson & Johnson",
+   "mcap": 641066729472
+  },
+  "ASML": {
+   "cik": 937966,
+   "name": "ASML Holding N.V.",
+   "mcap": 613161041920
+  },
+  "MA": {
+   "cik": 1141391,
+   "name": "Mastercard Incorporated",
+   "mcap": 537432096768
+  },
+  "ABBV": {
+   "cik": 1551152,
+   "name": "AbbVie Inc.",
+   "mcap": 506703216640
+  },
+  "INTC": {
+   "cik": 50863,
+   "name": "Intel Corporation",
+   "mcap": 478233919488
+  },
+  "PLTR": {
+   "cik": 1321655,
+   "name": "Palantir Technologies Inc.",
+   "mcap": 477824122880
+  },
+  "CVX": {
+   "cik": 93410,
+   "name": "Chevron Corporation",
+   "mcap": 455111573504
+  },
+  "COST": {
+   "cik": 909832,
+   "name": "Costco Wholesale Corporation",
+   "mcap": 445415882752
+  },
+  "CSCO": {
+   "cik": 858877,
+   "name": "Cisco Systems, Inc.",
+   "mcap": 434630754304
+  },
+  "KO": {
+   "cik": 21344,
+   "name": "The Coca-Cola Company",
+   "mcap": 398846263296
+  },
+  "ORCL": {
+   "cik": 1341439,
+   "name": "Oracle Corporation",
+   "mcap": 382151000064
+  },
+  "PG": {
+   "cik": 80424,
+   "name": "The Procter & Gamble Company",
+   "mcap": 370659852288
+  },
+  "UNH": {
+   "cik": 731766,
+   "name": "UnitedHealth Group Incorporated",
+   "mcap": 368642195456
+  },
+  "BAC": {
+   "cik": 70858,
+   "name": "Bank of America Corporation",
+   "mcap": 349734567936
+  },
+  "MRK": {
+   "cik": 310158,
+   "name": "Merck & Co., Inc.",
+   "mcap": 346908983296
+  },
+  "PANW": {
+   "cik": 1327567,
+   "name": "Palo Alto Networks, Inc.",
+   "mcap": 319396282368
+  },
+  "HD": {
+   "cik": 354950,
+   "name": "The Home Depot, Inc.",
+   "mcap": 318642094080
+  },
+  "CAT": {
+   "cik": 18230,
+   "name": "Caterpillar Inc.",
+   "mcap": 318154768384
+  },
+  "PM": {
+   "cik": 1413329,
+   "name": "Philip Morris International Inc.",
+   "mcap": 314637287424
+  },
+  "HSBC": {
+   "cik": 1089113,
+   "name": "HSBC Holdings plc",
+   "mcap": 311937171456
+  },
+  "AMAT": {
+   "cik": 6951,
+   "name": "Applied Materials, Inc.",
+   "mcap": 307590430720
+  },
+  "SHEL": {
+   "cik": 1306965,
+   "name": "Shell plc",
+   "mcap": 303608692736
+  },
+  "GE": {
+   "cik": 40545,
+   "name": "GE Aerospace",
+   "mcap": 299264147456
+  },
+  "LRCX": {
+   "cik": 707549,
+   "name": "Lam Research Corporation",
+   "mcap": 297213296640
+  },
+  "DELL": {
+   "cik": 1571996,
+   "name": "Dell Technologies Inc.",
+   "mcap": 296981757952
+  },
+  "NVS": {
+   "cik": 1114448,
+   "name": "Novartis AG",
+   "mcap": 292348952576
+  },
+  "MS": {
+   "cik": 895421,
+   "name": "Morgan Stanley",
+   "mcap": 287161843712
+  },
+  "RY": {
+   "cik": 1000275,
+   "name": "Royal Bank of Canada",
+   "mcap": 280305500160
+  },
+  "SAP": {
+   "cik": 1000184,
+   "name": "SAP SE",
+   "mcap": 275335446528
+  },
+  "TXN": {
+   "cik": 97476,
+   "name": "Texas Instruments Incorporated",
+   "mcap": 272555507712
+  },
+  "CRWD": {
+   "cik": 1535527,
+   "name": "CrowdStrike Holdings, Inc.",
+   "mcap": 268096847872
+  },
+  "AZN": {
+   "cik": 901832,
+   "name": "AstraZeneca PLC",
+   "mcap": 266848829440
+  },
+  "RTX": {
+   "cik": 101829,
+   "name": "RTX Corporation",
+   "mcap": 266487513088
+  },
+  "NFLX": {
+   "cik": 1065280,
+   "name": "Netflix, Inc.",
+   "mcap": 266075750400
+  },
+  "GS": {
+   "cik": 886982,
+   "name": "The Goldman Sachs Group, Inc.",
+   "mcap": 260097589248
+  },
+  "TMO": {
+   "cik": 97745,
+   "name": "Thermo Fisher Scientific Inc.",
+   "mcap": 253236232192
+  },
+  "BABA": {
+   "cik": 1577552,
+   "name": "Alibaba Group Holding Limited",
+   "mcap": 249396445184
+  },
+  "WFC": {
+   "cik": 72971,
+   "name": "Wells Fargo & Company",
+   "mcap": 248085463040
+  },
+  "AMGN": {
+   "cik": 318154,
+   "name": "Amgen Inc.",
+   "mcap": 240381214720
+  },
+  "IBM": {
+   "cik": 51143,
+   "name": "International Business Machines Corporation",
+   "mcap": 239531425792
+  },
+  "ARM": {
+   "cik": 1973239,
+   "name": "Arm Holdings plc",
+   "mcap": 238537490432
+  },
+  "MUFG": {
+   "cik": 67088,
+   "name": "Mitsubishi UFJ Financial Group, Inc.",
+   "mcap": 237384089600
+  },
+  "LIN": {
+   "cik": 1707925,
+   "name": "Linde plc",
+   "mcap": 233975087104
+  },
+  "TM": {
+   "cik": 1094517,
+   "name": "Toyota Motor Corporation",
+   "mcap": 232781692928
+  },
+  "GEV": {
+   "cik": 1996810,
+   "name": "GE Vernova Inc.",
+   "mcap": 227747168256
+  },
+  "ANET": {
+   "cik": 1596532,
+   "name": "Arista Networks, Inc.",
+   "mcap": 223539478528
+  },
+  "SHOP": {
+   "cik": 1594805,
+   "name": "Shopify Inc.",
+   "mcap": 218239549440
+  },
+  "AXP": {
+   "cik": 4962,
+   "name": "American Express Company",
+   "mcap": 211257393152
+  },
+  "MRVL": {
+   "cik": 1835632,
+   "name": "Marvell Technology, Inc.",
+   "mcap": 210099175424
+  },
+  "TTE": {
+   "cik": 879764,
+   "name": "TotalEnergies SE",
+   "mcap": 206724759552
+  },
+  "TD": {
+   "cik": 947263,
+   "name": "The Toronto-Dominion Bank",
+   "mcap": 204649660416
+  },
+  "CRM": {
+   "cik": 1108524,
+   "name": "Salesforce, Inc.",
+   "mcap": 203783028736
+  },
+  "BHP": {
+   "cik": 811809,
+   "name": "BHP Group Limited",
+   "mcap": 201107062784
+  },
+  "C": {
+   "cik": 831001,
+   "name": "Citigroup Inc.",
+   "mcap": 200345403392
+  },
+  "ADI": {
+   "cik": 6281,
+   "name": "Analog Devices, Inc.",
+   "mcap": 197668782080
+  },
+  "GILD": {
+   "cik": 882095,
+   "name": "Gilead Sciences, Inc.",
+   "mcap": 196768497664
+  },
+  "KLAC": {
+   "cik": 319201,
+   "name": "KLA Corporation",
+   "mcap": 194720022528
+  },
+  "QCOM": {
+   "cik": 804328,
+   "name": "QUALCOMM Incorporated",
+   "mcap": 191783976960
+  },
+  "DIS": {
+   "cik": 1744489,
+   "name": "The Walt Disney Company",
+   "mcap": 190626234368
+  },
+  "APH": {
+   "cik": 820313,
+   "name": "Amphenol Corporation",
+   "mcap": 185613320192
+  },
+  "PEP": {
+   "cik": 77476,
+   "name": "PepsiCo, Inc.",
+   "mcap": 184596922368
+  },
+  "BLK": {
+   "cik": 2012383,
+   "name": "BlackRock, Inc.",
+   "mcap": 183217913856
+  },
+  "COP": {
+   "cik": 1163165,
+   "name": "ConocoPhillips",
+   "mcap": 181846441984
+  },
+  "ABT": {
+   "cik": 1800,
+   "name": "Abbott Laboratories",
+   "mcap": 181482602496
+  },
+  "SNDK": {
+   "cik": 2023554,
+   "name": "Sandisk Corporation",
+   "mcap": 181465923584
+  },
+  "SAN": {
+   "cik": 891478,
+   "name": "Banco Santander, S.A.",
+   "mcap": 178741624832
+  },
+  "VZ": {
+   "cik": 732712,
+   "name": "Verizon Communications Inc.",
+   "mcap": 178649497600
+  },
+  "MCD": {
+   "cik": 63908,
+   "name": "McDonald's Corporation",
+   "mcap": 177497735168
+  },
+  "UNP": {
+   "cik": 100885,
+   "name": "Union Pacific Corporation",
+   "mcap": 176422600704
+  },
+  "WELL": {
+   "cik": 766704,
+   "name": "Welltower Inc.",
+   "mcap": 173376831488
+  },
+  "DE": {
+   "cik": 315189,
+   "name": "Deere & Company",
+   "mcap": 172897288192
+  },
+  "NVO": {
+   "cik": 353278,
+   "name": "Novo Nordisk A/S",
+   "mcap": 172637061120
+  },
+  "NEE": {
+   "cik": 753308,
+   "name": "NextEra Energy, Inc.",
+   "mcap": 172062998528
+  },
+  "PFE": {
+   "cik": 78003,
+   "name": "Pfizer Inc.",
+   "mcap": 169793273856
+  },
+  "DHR": {
+   "cik": 313616,
+   "name": "Danaher Corporation",
+   "mcap": 163774660608
+  },
+  "NOW": {
+   "cik": 1373715,
+   "name": "ServiceNow, Inc.",
+   "mcap": 163536289792
+  },
+  "BUD": {
+   "cik": 1668717,
+   "name": "Anheuser-Busch InBev SA/NV",
+   "mcap": 161429192704
+  },
+  "ISRG": {
+   "cik": 1035267,
+   "name": "Intuitive Surgical, Inc.",
+   "mcap": 159550963712
+  },
+  "TJX": {
+   "cik": 109198,
+   "name": "The TJX Companies, Inc.",
+   "mcap": 158066262016
+  },
+  "TMUS": {
+   "cik": 1283699,
+   "name": "T-Mobile US, Inc.",
+   "mcap": 157607624704
+  },
+  "SCCO": {
+   "cik": 1001838,
+   "name": "Southern Copper Corporation",
+   "mcap": 157056368640
+  },
+  "SCHW": {
+   "cik": 316709,
+   "name": "The Charles Schwab Corporation",
+   "mcap": 155173289984
+  },
+  "SONY": {
+   "cik": 313838,
+   "name": "Sony Group Corporation",
+   "mcap": 152011194368
+  },
+  "ACN": {
+   "cik": 1467373,
+   "name": "Accenture plc",
+   "mcap": 151290445824
+  },
+  "SMFG": {
+   "cik": 1022837,
+   "name": "Sumitomo Mitsui Financial Group, Inc.",
+   "mcap": 149341798400
+  },
+  "BA": {
+   "cik": 12927,
+   "name": "The Boeing Company",
+   "mcap": 148834582528
+  },
+  "LMT": {
+   "cik": 936468,
+   "name": "Lockheed Martin Corporation",
+   "mcap": 146734153728
+  },
+  "STX": {
+   "cik": 1137789,
+   "name": "Seagate Technology Holdings plc",
+   "mcap": 146488852480
+  },
+  "PBR": {
+   "cik": 1119639,
+   "name": "Petróleo Brasileiro S.A. - Petrobras",
+   "mcap": 144998236160
+  },
+  "ETN": {
+   "cik": 1551182,
+   "name": "Eaton Corporation plc",
+   "mcap": 144453730304
+  },
+  "BX": {
+   "cik": 1393818,
+   "name": "Blackstone Inc.",
+   "mcap": 142312144896
+  },
+  "UBS": {
+   "cik": 1610520,
+   "name": "UBS Group AG",
+   "mcap": 142248542208
+  },
+  "UL": {
+   "cik": 217410,
+   "name": "Unilever PLC",
+   "mcap": 141293699072
+  },
+  "T": {
+   "cik": 732717,
+   "name": "AT&T Inc.",
+   "mcap": 140455477248
+  },
+  "BBVA": {
+   "cik": 842180,
+   "name": "Banco Bilbao Vizcaya Argentaria, S.A.",
+   "mcap": 139369562112
+  },
+  "CB": {
+   "cik": 896159,
+   "name": "Chubb Limited",
+   "mcap": 137630236672
+  },
+  "IBKR": {
+   "cik": 1381197,
+   "name": "Interactive Brokers Group, Inc.",
+   "mcap": 137310486528
+  },
+  "RIO": {
+   "cik": 863064,
+   "name": "Rio Tinto Group",
+   "mcap": 136161345536
+  },
+  "UBER": {
+   "cik": 1543151,
+   "name": "Uber Technologies, Inc.",
+   "mcap": 135074496512
+  },
+  "FTNT": {
+   "cik": 1262039,
+   "name": "Fortinet, Inc.",
+   "mcap": 134511730688
+  },
+  "WDC": {
+   "cik": 106040,
+   "name": "Western Digital Corporation",
+   "mcap": 133307744256
+  },
+  "SPGI": {
+   "cik": 64040,
+   "name": "S&P Global Inc.",
+   "mcap": 132851621888
+  },
+  "PGR": {
+   "cik": 80661,
+   "name": "The Progressive Corporation",
+   "mcap": 132850384896
+  },
+  "MPC": {
+   "cik": 1510295,
+   "name": "Marathon Petroleum Corporation",
+   "mcap": 132167376896
+  },
+  "VRTX": {
+   "cik": 875320,
+   "name": "Vertex Pharmaceuticals Incorporated",
+   "mcap": 131163496448
+  },
+  "BP": {
+   "cik": 313807,
+   "name": "BP p.l.c.",
+   "mcap": 130144632832
+  },
+  "BTI": {
+   "cik": 1303523,
+   "name": "British American Tobacco p.l.c.",
+   "mcap": 129164312576
+  },
+  "BMY": {
+   "cik": 14272,
+   "name": "Bristol-Myers Squibb Company",
+   "mcap": 125851648000
+  },
+  "COF": {
+   "cik": 927628,
+   "name": "Capital One Financial Corporation",
+   "mcap": 124138668032
+  },
+  "MO": {
+   "cik": 764180,
+   "name": "Altria Group, Inc.",
+   "mcap": 122926546944
+  },
+  "VLO": {
+   "cik": 1035002,
+   "name": "Valero Energy Corporation",
+   "mcap": 122875920384
+  },
+  "PLD": {
+   "cik": 1045609,
+   "name": "Prologis, Inc.",
+   "mcap": 122784858112
+  },
+  "MDT": {
+   "cik": 1613103,
+   "name": "Medtronic plc",
+   "mcap": 121249480704
+  },
+  "ADP": {
+   "cik": 8670,
+   "name": "Automatic Data Processing, Inc.",
+   "mcap": 119319265280
+  },
+  "BMO": {
+   "cik": 927971,
+   "name": "Bank of Montreal",
+   "mcap": 118499319808
+  },
+  "CVS": {
+   "cik": 64803,
+   "name": "CVS Health Corporation",
+   "mcap": 118343122944
+  },
+  "SNOW": {
+   "cik": 1640147,
+   "name": "Snowflake Inc.",
+   "mcap": 118170361856
+  },
+  "NET": {
+   "cik": 1477333,
+   "name": "Cloudflare, Inc.",
+   "mcap": 118168608768
+  },
+  "SPOT": {
+   "cik": 1639920,
+   "name": "Spotify Technology S.A.",
+   "mcap": 117668175872
+  },
+  "SYK": {
+   "cik": 310764,
+   "name": "Stryker Corporation",
+   "mcap": 117423218688
+  },
+  "SBUX": {
+   "cik": 829224,
+   "name": "Starbucks Corporation",
+   "mcap": 117066604544
+  },
+  "PSX": {
+   "cik": 1534701,
+   "name": "Phillips 66",
+   "mcap": 115810082816
+  },
+  "MCK": {
+   "cik": 927653,
+   "name": "McKesson Corporation",
+   "mcap": 115759071232
+  },
+  "BKNG": {
+   "cik": 1075531,
+   "name": "Booking Holdings Inc.",
+   "mcap": 115066404864
+  },
+  "MFG": {
+   "cik": 1335730,
+   "name": "Mizuho Financial Group, Inc.",
+   "mcap": 114808512512
+  },
+  "NEM": {
+   "cik": 1164727,
+   "name": "Newmont Corporation",
+   "mcap": 114716540928
+  },
+  "PH": {
+   "cik": 76334,
+   "name": "Parker-Hannifin Corporation",
+   "mcap": 114059853824
+  },
+  "EQNR": {
+   "cik": 1140625,
+   "name": "Equinor ASA",
+   "mcap": 113920827392
+  },
+  "BNS": {
+   "cik": 9631,
+   "name": "The Bank of Nova Scotia",
+   "mcap": 113704648704
+  },
+  "CNQ": {
+   "cik": 1017413,
+   "name": "Canadian Natural Resources Limited",
+   "mcap": 113609269248
+  },
+  "HDB": {
+   "cik": 1144967,
+   "name": "HDFC Bank Limited",
+   "mcap": 111644524544
+  },
+  "LOW": {
+   "cik": 60667,
+   "name": "Lowe's Companies, Inc.",
+   "mcap": 111212126208
+  },
+  "PDD": {
+   "cik": 1737806,
+   "name": "PDD Holdings Inc.",
+   "mcap": 111209963520
+  },
+  "CME": {
+   "cik": 1156375,
+   "name": "CME Group Inc.",
+   "mcap": 110265114624
+  },
+  "GLW": {
+   "cik": 24741,
+   "name": "Corning Incorporated",
+   "mcap": 110033747968
+  },
+  "ENB": {
+   "cik": 895728,
+   "name": "Enbridge Inc.",
+   "mcap": 107563982848
+  },
+  "SO": {
+   "cik": 92122,
+   "name": "The Southern Company",
+   "mcap": 106489102336
+  },
+  "IBN": {
+   "cik": 1103838,
+   "name": "ICICI Bank Limited",
+   "mcap": 105109053440
+  },
+  "CM": {
+   "cik": 1045520,
+   "name": "Canadian Imperial Bank of Commerce",
+   "mcap": 104911937536
+  },
+  "MAR": {
+   "cik": 1048286,
+   "name": "Marriott International, Inc.",
+   "mcap": 102937493504
+  },
+  "ABNB": {
+   "cik": 1559720,
+   "name": "Airbnb, Inc.",
+   "mcap": 102422290432
+  },
+  "GSK": {
+   "cik": 1131399,
+   "name": "GSK plc",
+   "mcap": 102379626496
+  },
+  "HCA": {
+   "cik": 860730,
+   "name": "HCA Healthcare, Inc.",
+   "mcap": 100729495552
+  },
+  "ADBE": {
+   "cik": 796343,
+   "name": "Adobe Inc.",
+   "mcap": 100654899200
+  },
+  "DDOG": {
+   "cik": 1561550,
+   "name": "Datadog, Inc.",
+   "mcap": 100627177472
+  },
+  "SNY": {
+   "cik": 1121404,
+   "name": "Sanofi",
+   "mcap": 100134584320
+  },
+  "TT": {
+   "cik": 1466258,
+   "name": "Trane Technologies plc",
+   "mcap": 100117151744
+  },
+  "BNY": {
+   "cik": 1390777,
+   "name": "The Bank of New York Mellon Corporation",
+   "mcap": 99037118464
+  },
+  "DUK": {
+   "cik": 1326160,
+   "name": "Duke Energy Corporation",
+   "mcap": 97026146304
+  },
+  "GD": {
+   "cik": 40533,
+   "name": "General Dynamics Corporation",
+   "mcap": 96599736320
+  },
+  "WM": {
+   "cik": 823768,
+   "name": "Waste Management, Inc.",
+   "mcap": 96339361792
+  },
+  "EQIX": {
+   "cik": 1101239,
+   "name": "Equinix, Inc.",
+   "mcap": 95479660544
+  },
+  "CSX": {
+   "cik": 277948,
+   "name": "CSX Corporation",
+   "mcap": 95050489856
+  },
+  "SU": {
+   "cik": 311337,
+   "name": "Suncor Energy Inc.",
+   "mcap": 93845635072
+  },
+  "FCX": {
+   "cik": 831259,
+   "name": "Freeport-McMoRan Inc.",
+   "mcap": 93570908160
+  },
+  "ELV": {
+   "cik": 1156039,
+   "name": "Elevance Health, Inc.",
+   "mcap": 93540065280
+  },
+  "USB": {
+   "cik": 36104,
+   "name": "U.S. Bancorp",
+   "mcap": 93015670784
+  },
+  "MRSH": {
+   "cik": 62709,
+   "name": "Marsh & McLennan Companies, Inc.",
+   "mcap": 92592152576
+  },
+  "ING": {
+   "cik": 1039765,
+   "name": "ING Groep N.V.",
+   "mcap": 91849998336
+  },
+  "MNST": {
+   "cik": 865752,
+   "name": "Monster Beverage Corporation",
+   "mcap": 90978361344
+  },
+  "INTU": {
+   "cik": 896878,
+   "name": "Intuit Inc.",
+   "mcap": 90830848000
+  },
+  "EMR": {
+   "cik": 32604,
+   "name": "Emerson Electric Co.",
+   "mcap": 90196254720
+  },
+  "ICE": {
+   "cik": 1571949,
+   "name": "Intercontinental Exchange, Inc.",
+   "mcap": 89851191296
+  },
+  "PNC": {
+   "cik": 713676,
+   "name": "The PNC Financial Services Group, Inc.",
+   "mcap": 89713254400
+  },
+  "CTAS": {
+   "cik": 723254,
+   "name": "Cintas Corporation",
+   "mcap": 89711173632
+  },
+  "CEG": {
+   "cik": 1868275,
+   "name": "Constellation Energy Corporation",
+   "mcap": 89455525888
+  },
+  "JCI": {
+   "cik": 833444,
+   "name": "Johnson Controls International plc",
+   "mcap": 89346859008
+  },
+  "MMM": {
+   "cik": 66740,
+   "name": "3M Company",
+   "mcap": 89111674880
+  },
+  "AEM": {
+   "cik": 2809,
+   "name": "Agnico Eagle Mines Limited",
+   "mcap": 88963244032
+  },
+  "CDNS": {
+   "cik": 813672,
+   "name": "Cadence Design Systems, Inc.",
+   "mcap": 88723365888
+  },
+  "WMB": {
+   "cik": 107263,
+   "name": "The Williams Companies, Inc.",
+   "mcap": 87762264064
+  },
+  "ASX": {
+   "cik": 1122411,
+   "name": "ASE Technology Holding Co., Ltd.",
+   "mcap": 87754735616
+  },
+  "AMT": {
+   "cik": 1053507,
+   "name": "American Tower Corporation",
+   "mcap": 87730962432
+  },
+  "APP": {
+   "cik": 1751008,
+   "name": "AppLovin Corporation",
+   "mcap": 87592869888
+  },
+  "SNPS": {
+   "cik": 883241,
+   "name": "Synopsys, Inc.",
+   "mcap": 87066271744
+  },
+  "E": {
+   "cik": 1002242,
+   "name": "Eni S.p.A.",
+   "mcap": 86580371456
+  },
+  "EOG": {
+   "cik": 821189,
+   "name": "EOG Resources, Inc.",
+   "mcap": 85854937088
+  },
+  "UPS": {
+   "cik": 1090727,
+   "name": "United Parcel Service, Inc.",
+   "mcap": 85350408192
+  },
+  "ITUB": {
+   "cik": 1132597,
+   "name": "Itaú Unibanco Holding S.A.",
+   "mcap": 84869595136
+  },
+  "PWR": {
+   "cik": 1050915,
+   "name": "Quanta Services, Inc.",
+   "mcap": 84783144960
+  },
+  "BN": {
+   "cik": 1001085,
+   "name": "Brookfield Corporation",
+   "mcap": 84717740032
+  },
+  "KKR": {
+   "cik": 1404912,
+   "name": "KKR & Co. Inc.",
+   "mcap": 84619370496
+  },
+  "MELI": {
+   "cik": 1099590,
+   "name": "MercadoLibre, Inc.",
+   "mcap": 84598759424
+  },
+  "MCO": {
+   "cik": 1059556,
+   "name": "Moody's Corporation",
+   "mcap": 83530850304
+  },
+  "HOOD": {
+   "cik": 1783879,
+   "name": "Robinhood Markets, Inc.",
+   "mcap": 83470794752
+  },
+  "REGN": {
+   "cik": 872589,
+   "name": "Regeneron Pharmaceuticals, Inc.",
+   "mcap": 83153657856
+  },
+  "NGG": {
+   "cik": 1004315,
+   "name": "National Grid plc",
+   "mcap": 82210070528
+  },
+  "TRV": {
+   "cik": 86312,
+   "name": "The Travelers Companies, Inc.",
+   "mcap": 81994833920
+  },
+  "SHW": {
+   "cik": 89800,
+   "name": "The Sherwin-Williams Company",
+   "mcap": 81362821120
+  },
+  "ECL": {
+   "cik": 31462,
+   "name": "Ecolab Inc.",
+   "mcap": 80984137728
+  },
+  "CI": {
+   "cik": 1739940,
+   "name": "The Cigna Group",
+   "mcap": 80799457280
+  },
+  "SPG": {
+   "cik": 1063761,
+   "name": "Simon Property Group, Inc.",
+   "mcap": 80742121472
+  },
+  "MDLZ": {
+   "cik": 1103982,
+   "name": "Mondelez International, Inc.",
+   "mcap": 80369123328
+  },
+  "MSI": {
+   "cik": 68505,
+   "name": "Motorola Solutions, Inc.",
+   "mcap": 80367091712
+  },
+  "NOC": {
+   "cik": 1133421,
+   "name": "Northrop Grumman Corporation",
+   "mcap": 80324681728
+  },
+  "EPD": {
+   "cik": 1061219,
+   "name": "Enterprise Products Partners L.P.",
+   "mcap": 79900655616
+  },
+  "MRNA": {
+   "cik": 1682852,
+   "name": "Moderna, Inc.",
+   "mcap": 79388065792
+  },
+  "HLT": {
+   "cik": 1585689,
+   "name": "Hilton Worldwide Holdings Inc.",
+   "mcap": 79198093312
+  },
+  "CP": {
+   "cik": 16875,
+   "name": "Canadian Pacific Kansas City Limited",
+   "mcap": 78958895104
+  },
+  "ITW": {
+   "cik": 49826,
+   "name": "Illinois Tool Works Inc.",
+   "mcap": 78667456512
+  },
+  "SLB": {
+   "cik": 87347,
+   "name": "SLB N.V.",
+   "mcap": 78346084352
+  },
+  "CMCSA": {
+   "cik": 1166691,
+   "name": "Comcast Corporation",
+   "mcap": 78299684864
+  },
+  "HPE": {
+   "cik": 1645590,
+   "name": "Hewlett Packard Enterprise Company",
+   "mcap": 77948739584
+  },
+  "LYG": {
+   "cik": 1160106,
+   "name": "Lloyds Banking Group plc",
+   "mcap": 77689430016
+  },
+  "HWM": {
+   "cik": 4281,
+   "name": "Howmet Aerospace Inc.",
+   "mcap": 77511041024
+  },
+  "VRT": {
+   "cik": 1674101,
+   "name": "Vertiv Holdings Co",
+   "mcap": 76912934912
+  },
+  "NTES": {
+   "cik": 1110646,
+   "name": "NetEase, Inc.",
+   "mcap": 75763900416
+  },
+  "KMI": {
+   "cik": 1506307,
+   "name": "Kinder Morgan, Inc.",
+   "mcap": 75608653824
+  },
+  "BAM": {
+   "cik": 1937926,
+   "name": "Brookfield Asset Management Ltd.",
+   "mcap": 75134713856
+  },
+  "ROST": {
+   "cik": 745732,
+   "name": "Ross Stores, Inc.",
+   "mcap": 75098062848
+  },
+  "RCL": {
+   "cik": 884887,
+   "name": "Royal Caribbean Cruises Ltd.",
+   "mcap": 75047051264
+  },
+  "NSC": {
+   "cik": 702165,
+   "name": "Norfolk Southern Corporation",
+   "mcap": 75019722752
+  },
+  "CNI": {
+   "cik": 16868,
+   "name": "Canadian National Railway Company",
+   "mcap": 74473439232
+  },
+  "CL": {
+   "cik": 21665,
+   "name": "Colgate-Palmolive Company",
+   "mcap": 74216783872
+  },
+  "LITE": {
+   "cik": 1633978,
+   "name": "Lumentum Holdings Inc.",
+   "mcap": 74105831424
+  },
+  "BCS": {
+   "cik": 312069,
+   "name": "Barclays PLC",
+   "mcap": 74042966016
+  },
+  "RSG": {
+   "cik": 1060391,
+   "name": "Republic Services, Inc.",
+   "mcap": 73892257792
+  },
+  "MFC": {
+   "cik": 1086888,
+   "name": "Manulife Financial Corporation",
+   "mcap": 73864339456
+  },
+  "ORLY": {
+   "cik": 898173,
+   "name": "O'Reilly Automotive, Inc.",
+   "mcap": 73655877632
+  },
+  "DASH": {
+   "cik": 1792789,
+   "name": "DoorDash, Inc.",
+   "mcap": 72984707072
+  },
+  "AMX": {
+   "cik": 1129137,
+   "name": "América Móvil, S.A.B. de C.V.",
+   "mcap": 72198873088
+  },
+  "CMI": {
+   "cik": 26172,
+   "name": "Cummins Inc.",
+   "mcap": 71878754304
+  },
+  "FDX": {
+   "cik": 1048911,
+   "name": "FedEx Corporation",
+   "mcap": 71138394112
+  },
+  "AEP": {
+   "cik": 4904,
+   "name": "American Electric Power Company, Inc.",
+   "mcap": 70347030528
+  },
+  "URI": {
+   "cik": 1067701,
+   "name": "United Rentals, Inc.",
+   "mcap": 69829844992
+  },
+  "RELX": {
+   "cik": 929869,
+   "name": "RELX PLC",
+   "mcap": 69737766912
+  },
+  "HON": {
+   "cik": 773840,
+   "name": "Honeywell International Inc.",
+   "mcap": 69498601472
+  },
+  "RACE": {
+   "cik": 1648416,
+   "name": "Ferrari N.V.",
+   "mcap": 68870201344
+  },
+  "AJG": {
+   "cik": 354190,
+   "name": "Arthur J. Gallagher & Co.",
+   "mcap": 68389216256
+  },
+  "APD": {
+   "cik": 2969,
+   "name": "Air Products and Chemicals, Inc.",
+   "mcap": 68079423488
+  },
+  "NWG": {
+   "cik": 844150,
+   "name": "NatWest Group plc",
+   "mcap": 67575148544
+  },
+  "APO": {
+   "cik": 1858681,
+   "name": "Apollo Global Management, Inc.",
+   "mcap": 67540422656
+  },
+  "TGT": {
+   "cik": 27419,
+   "name": "Target Corporation",
+   "mcap": 67476692992
+  },
+  "BSX": {
+   "cik": 885725,
+   "name": "Boston Scientific Corporation",
+   "mcap": 66055884800
+  },
+  "DLR": {
+   "cik": 1297996,
+   "name": "Digital Realty Trust, Inc.",
+   "mcap": 65913647104
+  },
+  "TRGP": {
+   "cik": 1389170,
+   "name": "Targa Resources Corp.",
+   "mcap": 65332842496
+  },
+  "TAK": {
+   "cik": 1395064,
+   "name": "Takeda Pharmaceutical Company Limited",
+   "mcap": 65265111040
+  },
+  "TRP": {
+   "cik": 1232384,
+   "name": "TC Energy Corporation",
+   "mcap": 65068761088
+  },
+  "GM": {
+   "cik": 1467858,
+   "name": "General Motors Company",
+   "mcap": 64787189760
+  },
+  "ALL": {
+   "cik": 899051,
+   "name": "The Allstate Corporation",
+   "mcap": 64718991360
+  },
+  "AON": {
+   "cik": 315293,
+   "name": "Aon plc",
+   "mcap": 64074608640
+  },
+  "OXY": {
+   "cik": 797468,
+   "name": "Occidental Petroleum Corporation",
+   "mcap": 64046768128
+  },
+  "GWW": {
+   "cik": 277135,
+   "name": "W.W. Grainger, Inc.",
+   "mcap": 63944241152
+  },
+  "MET": {
+   "cik": 1099219,
+   "name": "MetLife, Inc.",
+   "mcap": 63573110784
+  },
+  "COR": {
+   "cik": 1140859,
+   "name": "Cencora, Inc.",
+   "mcap": 62972964864
+  },
+  "B": {
+   "cik": 756894,
+   "name": "Barrick Mining Corporation",
+   "mcap": 62938624000
+  },
+  "CVNA": {
+   "cik": 1690820,
+   "name": "Carvana Co.",
+   "mcap": 62750134272
+  },
+  "TDG": {
+   "cik": 1260221,
+   "name": "TransDigm Group Incorporated",
+   "mcap": 62445887488
+  },
+  "LNG": {
+   "cik": 3570,
+   "name": "Cheniere Energy, Inc.",
+   "mcap": 62082101248
+  },
+  "NXPI": {
+   "cik": 1413447,
+   "name": "NXP Semiconductors N.V.",
+   "mcap": 61989519360
+  },
+  "TEL": {
+   "cik": 1385157,
+   "name": "TE Connectivity plc",
+   "mcap": 61915295744
+  },
+  "CVE": {
+   "cik": 1475260,
+   "name": "Cenovus Energy Inc.",
+   "mcap": 61192048640
+  },
+  "NU": {
+   "cik": 1691493,
+   "name": "Nu Holdings Ltd.",
+   "mcap": 60818370560
+  },
+  "OKE": {
+   "cik": 1039684,
+   "name": "ONEOK, Inc.",
+   "mcap": 60746231808
+  },
+  "AFL": {
+   "cik": 4977,
+   "name": "Aflac Incorporated",
+   "mcap": 60627443712
+  },
+  "BE": {
+   "cik": 1664703,
+   "name": "Bloom Energy Corporation",
+   "mcap": 60265947136
+  },
+  "FAST": {
+   "cik": 815556,
+   "name": "Fastenal Company",
+   "mcap": 60198912000
+  },
+  "DB": {
+   "cik": 1159508,
+   "name": "Deutsche Bank Aktiengesellschaft",
+   "mcap": 59996471296
+  },
+  "TFC": {
+   "cik": 92230,
+   "name": "Truist Financial Corporation",
+   "mcap": 59749740544
+  },
+  "MPLX": {
+   "cik": 1552000,
+   "name": "MPLX LP",
+   "mcap": 59462787072
+  },
+  "MSTR": {
+   "cik": 1050446,
+   "name": "Strategy Inc",
+   "mcap": 59223875584
+  },
+  "NDAQ": {
+   "cik": 1120193,
+   "name": "Nasdaq, Inc.",
+   "mcap": 58536108032
+  },
+  "NUE": {
+   "cik": 73309,
+   "name": "Nucor Corporation",
+   "mcap": 58386456576
+  },
+  "NTRA": {
+   "cik": 1604821,
+   "name": "Natera, Inc.",
+   "mcap": 58363977728
+  },
+  "CAH": {
+   "cik": 721371,
+   "name": "Cardinal Health, Inc.",
+   "mcap": 58246434816
+  },
+  "FANG": {
+   "cik": 1539838,
+   "name": "Diamondback Energy, Inc.",
+   "mcap": 58000498688
+  },
+  "MPWR": {
+   "cik": 1280452,
+   "name": "Monolithic Power Systems, Inc.",
+   "mcap": 57363148800
+  },
+  "PSA": {
+   "cik": 1393311,
+   "name": "Public Storage",
+   "mcap": 57358045184
+  },
+  "D": {
+   "cik": 715957,
+   "name": "Dominion Energy, Inc.",
+   "mcap": 57257136128
+  },
+  "CRH": {
+   "cik": 849395,
+   "name": "CRH plc",
+   "mcap": 56835252224
+  },
+  "DVN": {
+   "cik": 1090012,
+   "name": "Devon Energy Corporation",
+   "mcap": 56803999744
+  },
+  "TEAM": {
+   "cik": 1650372,
+   "name": "Atlassian Corporation",
+   "mcap": 56555008000
+  },
+  "GRMN": {
+   "cik": 1121788,
+   "name": "Garmin Ltd.",
+   "mcap": 56490369024
+  },
+  "NKE": {
+   "cik": 320187,
+   "name": "NIKE, Inc.",
+   "mcap": 56308056064
+  },
+  "AME": {
+   "cik": 1037868,
+   "name": "AMETEK, Inc.",
+   "mcap": 55666921472
+  },
+  "BKR": {
+   "cik": 1701605,
+   "name": "Baker Hughes Company",
+   "mcap": 55599673344
+  },
+  "WPM": {
+   "cik": 1323404,
+   "name": "Wheaton Precious Metals Corp.",
+   "mcap": 55575556096
+  },
+  "KEYS": {
+   "cik": 1601046,
+   "name": "Keysight Technologies, Inc.",
+   "mcap": 55506599936
+  },
+  "SRE": {
+   "cik": 1032208,
+   "name": "Sempra",
+   "mcap": 55084564480
+  },
+  "PCAR": {
+   "cik": 75362,
+   "name": "PACCAR Inc",
+   "mcap": 54936711168
+  },
+  "ARGX": {
+   "cik": 1697862,
+   "name": "argenx SE",
+   "mcap": 54668750848
+  },
+  "O": {
+   "cik": 726728,
+   "name": "Realty Income Corporation",
+   "mcap": 54085824512
+  },
+  "BDX": {
+   "cik": 10795,
+   "name": "Becton, Dickinson and Company",
+   "mcap": 53494046720
+  },
+  "HONA": {
+   "cik": 2089271,
+   "name": "Honeywell Aerospace Inc.",
+   "mcap": 53450907648
+  },
+  "TRI": {
+   "cik": 1075124,
+   "name": "Thomson Reuters Corporation",
+   "mcap": 52891332608
+  },
+  "EBAY": {
+   "cik": 1065088,
+   "name": "eBay Inc.",
+   "mcap": 52785901568
+  },
+  "DEO": {
+   "cik": 835403,
+   "name": "Diageo plc",
+   "mcap": 52505661440
+  },
+  "EW": {
+   "cik": 1099800,
+   "name": "Edwards Lifesciences Corporation",
+   "mcap": 52198780928
+  },
+  "ADSK": {
+   "cik": 769397,
+   "name": "Autodesk, Inc.",
+   "mcap": 52135051264
+  },
+  "DAL": {
+   "cik": 27904,
+   "name": "Delta Air Lines, Inc.",
+   "mcap": 52080345088
+  },
+  "AZO": {
+   "cik": 866787,
+   "name": "AutoZone, Inc.",
+   "mcap": 51593003008
+  },
+  "VEEV": {
+   "cik": 1393052,
+   "name": "Veeva Systems Inc.",
+   "mcap": 51516157952
+  },
+  "ETR": {
+   "cik": 65984,
+   "name": "Entergy Corporation",
+   "mcap": 51361079296
+  },
+  "VALE": {
+   "cik": 917851,
+   "name": "Vale S.A.",
+   "mcap": 51069153280
+  },
+  "INFY": {
+   "cik": 1067491,
+   "name": "Infosys Limited",
+   "mcap": 50346180608
+  },
+  "WDAY": {
+   "cik": 1327811,
+   "name": "Workday, Inc.",
+   "mcap": 50248499200
+  },
+  "HUM": {
+   "cik": 49071,
+   "name": "Humana Inc.",
+   "mcap": 50099904512
+  }
+ }
+}
