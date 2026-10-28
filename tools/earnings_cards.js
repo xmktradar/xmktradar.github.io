@@ -15,7 +15,7 @@ const path = require('path');
   const sq = await b.newPage({ viewport: { width: 1350, height: 1350 } });
   fs.mkdirSync('og/e', { recursive: true });
   for (const j of job.jobs) {
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < j.slides.length; i++) {
       await p.evaluate(([l, d, n, s]) => render(l, d, n, s), [j.lang, j.date, i + 1, j.slides[i]]);
       await p.evaluate(async () => {
         const want = ['900 40px "Noto Sans TC"', '700 32px "Noto Sans TC"', '700 48px "Inter"'];

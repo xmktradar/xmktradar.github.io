@@ -155,6 +155,31 @@ def test_pages_and_posts():
             lines = eo.video_lines(co, lang)
             assert len(lines) == 5 and all(lines)
         assert ep.list_page([co], 'en', 'x')
+    # X-account views: a 5th picture and a caption line linking the stock page (2026-10-28)
+    post = lambda h, s, at: {'handle': h, 'time_utc': at, 'stance_by_ticker': {'ABCD': s}, 'ticker_notes': {'ABCD': f'{h} 理由'}, 'tickers': ['ABCD'],
+                             'zh_summary': f'@{h}：摘要', 'en_summary': f'@{h}: reason {h}'}
+    eo._VIEWS['by'] = {'ABCD': [{'acc': h, 's': eo.STANCE[s], 'p': post(h, s, at), 'at': at} for h, s, at in (
+        ('a1', '睇好', '3'), ('a2', '睇淡', '2'), ('a3', '睇好', '1'), ('a4', '睇好', '4'), ('a5', '中性', '5'))]}
+    real = eo.stock_url
+    eo.stock_url = lambda lang, t: f'{eo.SITE}{lang}/stock/{t}/'
+    try:
+        co = fixture_co(False, True)
+        for lang in ('zh', 'en'):
+            ss = eo.slides(co, lang)
+            assert len(ss) == 5 and ss[4]['kind'] == 'views' and ss[4]['nb'] == 3 and ss[4]['neu'] == 1 and all(x['of'] == 5 for x in ss)
+            assert [a['acc'] for a in ss[4]['accs']] == ['a4', 'a2', 'a1', 'a3']
+            assert ss[4]['accs'][0]['why'] == ('a4 理由' if lang == 'zh' else 'Reason a4')
+            caps = eo.captions(co, lang)
+            assert '@a4' in caps['facebook'] and '@a2' in caps['facebook'] and '@a2' in caps['instagram']
+            for k in ('x', 'threads', 'facebook'):
+                assert f'{lang}/stock/ABCD/' in caps[k], (k, caps[k])
+            assert xlen(caps['x']) <= 270 and len(caps['threads']) <= 500
+            assert ('5 張' if lang == 'zh' else 'all 5') in caps['facebook']
+        eo._VIEWS['by'] = {}
+        assert len(eo.slides(co, 'zh')) == 4 and '/zh/stock/ABCD/' in eo.captions(co, 'zh')['facebook']
+    finally:
+        eo.stock_url = real
+        eo._VIEWS.clear()
     assert ep.fmt_zh(81.2e9) == 'US$812 億' and ep.fmt_en(81.2e9) == '$81.20B' and ep.fmt_en(-2e9) == '-$2.00B'
 
 
