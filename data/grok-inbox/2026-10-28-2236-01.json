@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2115428619845550162": {
+      "en_summary": "SpotGamma compares $GOOGL and $MSFT as two hyperscalers with very different setups, highlighting what implied volatility, dealer gamma, and options positioning tell us ahead of Wednesday's earnings.",
+      "zh_summary": "SpotGamma 比較 $GOOGL 與 $MSFT 兩大超大規模雲端業者的不同格局，指出在週三財報前隱含波動率、做市商 gamma 與期權持倉所反映的情況。",
+      "tickers": ["GOOGL", "MSFT"],
+      "stance": "中性",
+      "stance_by_ticker": {"GOOGL": "中性", "MSFT": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115426383510003857": {
+      "en_summary": "John Hempton replies to @Stansberry and @nickchodge about $UUUU, saying \"oh it is you...\"",
+      "zh_summary": "John Hempton 回覆 @Stansberry 與 @nickchodge 關於 $UUUU，說「原來是你」。",
+      "tickers": ["UUUU"],
+      "stance": "中性",
+      "stance_by_ticker": {"UUUU": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115423422742478914": {
+      "en_summary": "Mr. Derivatives notes Happy FOMC, $GOOGL, $MSFT day for those who celebrate, saying it's gonna be fun.",
+      "zh_summary": "Mr. Derivatives 表示這是值得慶祝的 FOMC、$GOOGL、$MSFT 日，預計會很有趣。",
+      "tickers": ["GOOGL", "MSFT"],
+      "stance": "中性",
+      "stance_by_ticker": {"GOOGL": "中性", "MSFT": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2115423217972339178": {
+      "en_summary": "(Reposted by @InvestorsLive) Morning Broadcast for Watchlist Prep covering $SPY $BTC $QQQ.",
+      "zh_summary": "（由 @InvestorsLive 轉推）早間廣播，準備觀察名單，涵蓋 $SPY、$BTC、$QQQ。",
+      "tickers": ["SPY", "QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "QQQ": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115420362858979752": {
+      "en_summary": "CEO of $GS says there is an enormous amount of capital formations necessary to build the infrastructure to drive this technology (AI), more demand for compute right now, whether $5T or $10T or more on the buildout, nobody really knows.",
+      "zh_summary": "$GS 執行長表示，推動這項技術（AI）所需的基礎設施建設需要龐大資本形成，目前對算力的需求更多，至於建置支出是 5 兆還是 10 兆美元或更多，沒有人真正知道。",
+      "tickers": ["GS"],
+      "stance": "中性",
+      "stance_by_ticker": {"GS": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    }
+  }
+}
