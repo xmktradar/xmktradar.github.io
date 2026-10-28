@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2115116796592492591": {
+      "en_summary": "Addresses $SOFI dilution over 50% in past 5 years but notes membership grew nearly 6x and gross profit almost 5x. Gross profit per share roughly tripled after dilution while stock price essentially unchanged, highlighting the disconnect.",
+      "zh_summary": "回應$SOFI過去5年稀釋超過50%的說法，但指出會員數增長近6倍、毛利幾乎5倍。計入稀釋後每股毛利大致增加三倍，而股價基本不變，凸顯其中落差。",
+      "tickers": ["SOFI"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SOFI": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SOFI": "稀釋後每股毛利增加三倍，股價未反映"}
+    },
+    "2115116207624131061": {
+      "en_summary": "$MU 28Oct $950c closed at $5.50, up 19%.",
+      "zh_summary": "$MU 10月28日950美元看漲期權收於5.50美元，上漲19%。",
+      "tickers": ["MU"],
+      "stance": "睇好",
+      "stance_by_ticker": {"MU": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MU": "期權收盤上漲19%至5.50美元"}
+    },
+    "2115111323621081404": {
+      "en_summary": "$SOFI action definitely encouraging today. Noto had a great interview.",
+      "zh_summary": "今日$SOFI走勢確實鼓舞人心。Noto接受了很棒的採訪。",
+      "tickers": ["SOFI"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SOFI": "睇好"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115110130777784325": {
+      "en_summary": "Nice Day #2 move for $TSLA. Trimmed some. Macro pattern triggered with some follow through today.",
+      "zh_summary": "$TSLA第二天走勢不錯。已減持部分倉位。宏觀形態觸發，今日有一些跟進。",
+      "tickers": ["TSLA"],
+      "stance": "中性",
+      "stance_by_ticker": {"TSLA": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2115109226473209911": {
+      "en_summary": "Argues Bitcoin network effects are dead and fewer people use it as a worse product compared to $SOL and $ETH. May be dominant by price but lacks usage.",
+      "zh_summary": "認為比特幣網絡效應已死，使用者減少因其產品較差，相較於$SOL與$ETH。價格上可能仍主導但缺乏實際使用。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
