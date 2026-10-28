@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2115481117986115849": {
+      "en_summary": "Does FOMC start a leg down in the market or new all time highs? $SPY $QQQ",
+      "zh_summary": "FOMC 會引發市場下跌還是創下新高？$SPY $QQQ",
+      "tickers": ["SPY", "QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "QQQ": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2115480829065384380": {
+      "en_summary": "$CBRS Culper Research says they are short. Wafers break down after just about 2 years in use, a lifespan that undermines the entire business. Short Cerebras Systems $CBRS. Cerebras claims to have solved wafer scale chips. We believe otherwise.",
+      "zh_summary": "$CBRS Culper Research 表示做空。晶圓在使用約 2 年後即失效，壽命問題動搖整個業務。做空 Cerebras Systems $CBRS。Cerebras 聲稱已解決晶圓級晶片問題，我們認為並非如此。",
+      "tickers": ["CBRS"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"CBRS": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"CBRS": "Culper Research 做空，因晶圓壽命僅約 2 年"}
+    },
+    "2115477614211244304": {
+      "en_summary": "$CBRS decent whack of @CulperResearch",
+      "zh_summary": "$CBRS 受到 @CulperResearch 的一定打擊。",
+      "tickers": ["CBRS"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"CBRS": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115477443230544353": {
+      "en_summary": "$NDAQ CEO: Nasdaq captured eight of the ten largest quarterly IPOs, achieving a 79% win rate and $32B in proceeds. Welcomed 15 new operating companies raising $32 billion, including 8 of the top 10 largest IPOs. YTD 74% win rate, 56 new listings raising $144 billion.",
+      "zh_summary": "$NDAQ 行政總裁：納斯達克捕獲本季十個最大 IPO 中的八個，勝率 79%，籌資 320 億美元。迎來 15 家新營運公司，籌資 320 億美元，包括前十最大 IPO 中的 8 個。年至今勝率 74%，56 家新上市，總籌資 1440 億美元。",
+      "tickers": ["NDAQ"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NDAQ": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115460244398895206": {
+      "en_summary": "$STX now green on the day and +10% off the earnings drop from yesterday. Previously noted reports after hours with implied move +/-8.3%, positive reaction to 6 of last 7 earnings, worth a shot on neutral to long side.",
+      "zh_summary": "$STX 今日轉綠，較昨日財報下跌反彈 10%。先前指出盤後報告，隱含波動 ±8.3%，過去 7 次財報中 6 次正面反應，中性至做多值得一試。",
+      "tickers": ["STX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"STX": "睇好"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
