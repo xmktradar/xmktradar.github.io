@@ -36,7 +36,10 @@ async function shoot(page, base, lang, shot, warn) {
     shot = { go: '', sel: '@top' };
   }
   await page.emulateMedia({ colorScheme: shot.dark ? 'dark' : 'light' });
-  await page.goto(`${base}/${lang}/${shot.go || ''}`, { waitUntil: 'networkidle' });
+  // Outside sites (TradingView, Google Fonts, avatars) can keep the network busy on the GitHub runner, so 'networkidle'
+  // alone may never come: wait for the page itself, then give the network up to 15 s to settle.
+  await page.goto(`${base}/${lang}/${shot.go || ''}`, { waitUntil: 'load', timeout: 60000 });
+  await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
   await page.addStyleTag({ content: '.donate-fab{display:none!important}' });
   await page.waitForTimeout(1200);
   if (shot.search) {
@@ -92,9 +95,10 @@ async function checkAll() {
     const shot = JSON.parse(JSON.stringify(e.shot).replace(/\{(TK|TKL|ACC)\}/g, (_, k) => ex[k]));
     if (shot.image) continue;  // drawn by another step of the same build
     for (const lang of ['zh', 'en']) {
-      const fail = m => { bad.push(`第 ${e.n} 集：${m}`); console.log('::error::' + m); };
+      const fail = m => { bad.push(`第 ${e.n} 集：${m}`); console.log(`::error::第 ${e.n} 集：${m}`); };
       if (shot.go && !shot.go.startsWith('#') && !fs.existsSync(path.join(ROOT, lang, shot.go.split('#')[0], 'index.html'))) { fail(`${lang}/${shot.go} 唔存在`); continue; }
-      await shoot(page, base, lang, shot, fail);
+      try { await shoot(page, base, lang, shot, fail); }
+      catch (err) { fail(`${lang}/${shot.go || ''} 截圖出錯：${String(err.message || err).split('\n')[0]}`); }
     }
     console.log(`tutorial check ${e.n} ok`);
   }
@@ -104,7 +108,10 @@ async function checkAll() {
 }
 
 (async () => {
-  if (process.argv[2] === '--check') return checkAll();
+  if (process.argv[2] === '--check') return checkAll().catch(err => {
+    console.log('::error::教學截圖檢查開唔到：' + String(err.message || err).split('\n')[0]);
+    process.exit(1);
+  });
   const job = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
   const srv = await serve();
   const base = `http://127.0.0.1:${srv.address().port}`;
