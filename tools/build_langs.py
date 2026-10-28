@@ -41,7 +41,7 @@ CONTENT = ('summaries', 'highlights', 'briefings')
 MARK = '<!-- lang-head -->'
 ZH_ONLY = re.compile(r'<!-- zh-only -->.*?<!-- /zh-only -->', re.S)
 # stock_pages.js injects a Chinese row here; drop it so each language page is clean until that step re-injects.
-STOCK_INDEX = re.compile(r'<!-- stock-index -->.*?<!-- stock-index -->', re.S)
+STOCK_INDEX = re.compile(r'<!-- (stock|account)-index -->.*?<!-- \1-index -->', re.S)  # stock_pages.js / account_pages.js rows
 HOT_TOP = re.compile(r'<!-- hot-top -->.*?<!-- hot-top -->', re.S)  # 熱門個股 row under the hero, also from stock_pages.js
 LITE_DAYS = 45  # covers the 28-day change, sparklines and the monthly view
 PX_DIR = 'px'
@@ -384,8 +384,7 @@ def kept_slim(prev, master_data):
 def build(lang, master):
     dest = f'{lang}/index.html'
     prev = open(dest, encoding='utf-8').read() if os.path.exists(dest) else ''
-    stock = STOCK_INDEX.search(prev)
-    stock = stock.group(0) if stock else ''
+    stock = ''.join(m.group(0) for m in STOCK_INDEX.finditer(prev))
     master = STOCK_INDEX.sub('', master)
     hot = HOT_TOP.search(prev)
     hot = hot.group(0) if hot else ''
@@ -426,8 +425,8 @@ def build(lang, master):
     s = re.sub(r'''(["'(])assets/''', r'\1/assets/', s)
     s = add_chrome(s, lang)
     s = localize_news(s, lang)
-    if stock and '<!-- stock-index -->' not in s:
-        # stock_pages.js injects this per language. A rebuild must not drop it.
+    if stock and '<!-- stock-index -->' not in s and '<!-- account-index -->' not in s:
+        # stock_pages.js / account_pages.js inject these per language. A rebuild must not drop them.
         needle = '<footer class="wrap foot"'
         s = s.replace(needle, stock + needle, 1) if needle in s else s.replace('</body>', stock + '</body>', 1)
     if hot and '<!-- hot-top -->' not in s:
