@@ -1387,8 +1387,8 @@ function viewDaily(){
  const head=`<div class="grid">
  ${moneyBar()}
  ${apStats(vposts.length,accsNow,curRaw.map(p=>p.acc),nB,nR,w.merged)}
- <section class="c12 panel t3" aria-label="今日三句重點"><h2>今日三句重點 <span class="sub">${ctx}</span></h2>${t3.length?`<ol class="t3-l">${t3.join('')}</ol>`:empty('範圍內資料不足，暫時未能整理。')}<p class="note ctx">${METHOD}</p></section>
- <section class="c12 analysis" aria-label="市場分析">
+ <section class="c12 panel t3" data-bp="1" aria-label="今日三句重點"><h2>今日三句重點 <span class="sub">${ctx}</span></h2>${t3.length?`<ol class="t3-l">${t3.join('')}</ol>`:empty('範圍內資料不足，暫時未能整理。')}<p class="note ctx">${METHOD}</p></section>
+ <section class="c12 analysis" data-bp="2" aria-label="市場分析">
   
   <h2>今日市場分析 ${(()=>{const lead=analysisLead(w.day,sm);const asof=lead?`<span class="sub">${esc(lead)}</span>`:'';const stale=sm&&sm.stale?`<span class="sub">（最新一份分析，非 ${esc(w.day)} 當日）</span>`:(!sm&&!lead?'<span class="sub">今日分析尚未產生，以下由資料自動整理</span>':'');return [asof,stale].filter(Boolean).join(' ')})()}</h2>
   ${sm?'':sparse}
@@ -1400,7 +1400,7 @@ function viewDaily(){
    return (L==='en'?`The cards below are live counts to ${cx} HKT (posts so far: {n}, active accounts {a}).`:`下方統計卡為截至 ${cx} HKT 的即時數字（目前有效貼文 {n}、有動態帳號 {a}）。`).replace(/\{n\}/g,n).replace(/\{a\}/g,a)})()}</p>
   ${br?`<details><summary>分析師簡報</summary>${br.html}</details>`:''}
  </section>
- <div class="c12 dayrange">${`<div class="range ${w.merged?'merged':''}">${rangeTxt}${vposts.length&&!w.timed?`（${vposts[0].time_hkt.slice(5,16).replace('-','/').replace('T',' ')} – ${vposts[vposts.length-1].time_hkt.slice(5,16).replace('-','/').replace('T',' ')} HKT，有效貼文 ${vposts.length} 則）`:''}</div>`}</div>
+ <div class="c12 dayrange" data-bp="3">${`<div class="range ${w.merged?'merged':''}">${rangeTxt}${vposts.length&&!w.timed?`（${vposts[0].time_hkt.slice(5,16).replace('-','/').replace('T',' ')} – ${vposts[vposts.length-1].time_hkt.slice(5,16).replace('-','/').replace('T',' ')} HKT，有效貼文 ${vposts.length} 則）`:''}</div>`}</div>
  ${macroHtml()}
  <section class="c12 kpis k6" aria-label="今日概況">
   <div class="kpi"><div class="l">有效貼文</div><div class="v">${vposts.length}</div><div class="d">${vsPrev(vposts.length,prevV,hasPrev,cmpLab)}</div></div>
@@ -1413,14 +1413,14 @@ function viewDaily(){
  <p class="c12 note ctx">以上數字：${ctx}</p>`;
  return pvJoin(head,[
  ()=>vsHtml(w),
- ()=>highlightsHtml(w.day,w),
- ()=>`<section class="c12 panel"><h2>市場關注度變化 <span class="sub">只列仍有帳號關注的股票${attGone.length?`，已篩走 ${attGone.length} 隻已沒有人再關注的股票`:''}；括號為${cmpLab}</span></h2><p class="note ctx">${ctx}</p>
+ ()=>bpTag(4,highlightsHtml(w.day,w)),
+ ()=>`<section class="c12 panel" data-bp="4"><h2>市場關注度變化 <span class="sub">只列仍有帳號關注的股票${attGone.length?`，已篩走 ${attGone.length} 隻已沒有人再關注的股票`:''}；括號為${cmpLab}</span></h2><p class="note ctx">${ctx}</p>
   ${att.length?`<div class="scrollbox" style="display:grid;gap:8px;align-content:start">${att.map(x=>{const k={bull:0,neu:0,none:0,bear:0};cur.filter(y=>y.t===x.t).forEach(y=>k[y.s]=(k[y.s]||0)+1);const seg=(c,n,l)=>n?`<span class="${c}" style="width:${n/mx*100}%" title="${l} ${n}"></span>`:'';return `<div class="hbar">${tkBtn(x.t)}<div class="track stk">${seg('b',k.bull,'看多')}${seg('m',k.neu,'中性')}${seg('u',k.none,'未表態')}${seg('r',k.bear,'看空')}</div><span class="n">${x.n} ${hasPrev?`(${signed(x.d)})`:''}</span></div>`}).join('')}</div><div style="margin-top:10px">${legend}</div>${hasPrev?'':priorLoading?'<p class="note">對比資料載入中…</p>':`<p class="note">${priorOpen}${w.timed?`${fmtR(pf)} – ${fmtR(pt)}`:`${fmt(pf)}${len>1?'–'+fmt(pt):''}`}）沒有資料，暫時無法比較。</p>`}`:empty('此範圍內沒有股票被提及。')}</section>`,
- ()=>`<section class="c12 panel"><h2>各帳號立場 <span class="sub">${label} ${tkNow.length} 隻股票・${shownAccs.length} 個帳號・按討論帳號數排列，點選一行查看每個帳號的理由</span></h2><p class="note ctx">${ctx}。${METHOD}</p>
+ ()=>`<section class="c12 panel" data-bp="5"><h2>各帳號立場 <span class="sub">${label} ${tkNow.length} 隻股票・${shownAccs.length} 個帳號・按討論帳號數排列，點選一行查看每個帳號的理由</span></h2><p class="note ctx">${ctx}。${METHOD}</p>
   ${tkNow.length?stanceList(w,tkNow,shownAccs):empty('此範圍內沒有貼文提及股票代號。')}
   <div style="margin-top:10px">${legend}</div>${noTk.length?`<p class="note">有發文但沒有提及股票代號：${noTk.map(accLink).join(' ')}</p>`:''}</section>`,
  ()=>consHtml(w.from,w.to,label,len,'1 日回報'),
- ()=>`<section class="c12 panel"><h2>重要觀點 <span class="sub">優先列出立場變化與明確表態，附原始貼文</span></h2>${keyPosts.length?keyPosts.map(p=>postHtml(p)).join(''):empty('此範圍內沒有有效貼文。')}${rest.length?`<details class="more"><summary>其餘 ${rest.length} 篇</summary>${rest.map(p=>postHtml(p)).join('')}</details>`:''}</section>`,
+ ()=>`<section class="c12 panel" data-bp="6"><h2>重要觀點 <span class="sub">優先列出立場變化與明確表態，附原始貼文</span></h2>${keyPosts.length?keyPosts.map(p=>postHtml(p)).join(''):empty('此範圍內沒有有效貼文。')}${rest.length?`<details class="more"><summary>其餘 ${rest.length} 篇</summary>${rest.map(p=>postHtml(p)).join('')}</details>`:''}</section>`,
  ()=>accCardsHtml(w,label)])}
 
 // ---------- 每週 ----------
@@ -1810,6 +1810,8 @@ let lastViewKey=null,lastViewHtml=null;
 let PV_BOOT=true,PV_TOK=0,PV_TAIL=null,PV_PARTS=null,PV_NODES=null,PV_HEAD=null,PV_KEY=null;
 function whenIdle(f){if(window.requestIdleCallback)requestIdleCallback(f,{timeout:2500});else setTimeout(f,200)}
 function renderChunked(){const o=PV_BOOT;PV_BOOT=true;try{render()}finally{PV_BOOT=o}}
+// 書本式閱讀：data-bp＝「今日」第幾頁（之後冇標嘅格跟上一格）
+function bpTag(n,h){return h?h.replace(/^(\s*<[a-z]+)/i,'$1 data-bp="'+n+'"'):h}
 function pvJoin(head,tail){if(PV_BOOT&&current==='daily'){PV_TAIL=tail;return head+'</div>'}PV_TAIL=null;return head+'\n'+tail.map(f=>f()).join('\n')+'\n</div>'}
 function pvAnchor(i){for(let k=i;k<PV_NODES.length;k++){const n=(PV_NODES[k]||[]).find(x=>x.isConnected);if(n)return n}return null}
 function pvFrag(h){const t=document.createElement('template');t.innerHTML=h;return [...t.content.childNodes]}
@@ -2111,4 +2113,87 @@ header.ap-top{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hd-t
  .t3 h2,.analysis>h2{font-size:19px}
 }
 </style>
+<style id="book-mode">/* 書本式閱讀（Tim 2026-10-28）：「今日」分成 7 頁，一次只顯示一頁 */
+#view.bk .grid>.bk-off{display:none!important}
+.bk-top{display:flex;align-items:center;justify-content:space-between;gap:8px 12px;flex-wrap:wrap;margin:4px 0 14px}
+.bk-dots{display:flex;gap:6px;flex-wrap:wrap}
+.bk-dots button{min-width:32px;height:32px;padding:0 6px;border-radius:999px;border:1px solid var(--line);background:var(--surface,transparent);color:var(--muted);font:600 13px/1 inherit;cursor:pointer}
+.bk-dots button[aria-current="page"]{background:#0071e3;border-color:#0071e3;color:#fff}
+.bk-t{font-size:14px;color:var(--muted);flex:1 1 auto;min-width:0}
+.bk-t b{color:var(--tx-strong,inherit)}
+.bk-mode{border:0;background:none;color:#0066cc;font:600 14px/1.2 inherit;cursor:pointer;padding:6px 0}
+.bk-bot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:18px 0 8px}
+.bk-bot button{min-height:44px;padding:0 20px;border-radius:999px;border:0;background:#0071e3;color:#fff;font:600 15px/1 inherit;cursor:pointer}
+.bk-bot button.bk-prev{background:var(--panel2,#e8e8ed);color:var(--tx-strong,#1d1d1f)}
+.bk-bot span{font-size:14px;color:var(--muted)}
+.bk-bot .bk-gap{min-width:1px}
+.bk-end p{line-height:1.7}
+.bk-acts,.bk-more{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.bk-acts a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#0071e3;color:#fff;font-weight:600;text-decoration:none}
+.bk-acts a.bk-nl{background:var(--panel2,#e8e8ed);color:var(--tx-strong,#1d1d1f)}
+.bk-more a,.bk-more button{display:inline-flex;align-items:center;min-height:38px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:none;color:#0066cc;font:600 14px/1 inherit;text-decoration:none;cursor:pointer}
+@media (prefers-color-scheme:dark){.bk-mode,.bk-more a,.bk-more button{color:#2997ff}}
+</style>
+<script>/* 書本式閱讀（Tim 2026-10-28，見 dashboard/book-mode-spec.md）：
+   「今日」按 viewDaily 的 data-bp 分成 7 頁（第 7 頁「讀完」由這裡加上），連結 #daily/N；「全部展開」記在 localStorage。
+   自動化工具（navigator.webdriver：check.js、截圖、教學）照舊看到整頁；加 ?book=1 可以測試書本式。 */
+(function(){
+var view=document.getElementById('view');if(!view)return;
+var TITLES=['三句重點','市場分析','今日概況','關注度變化','各帳號立場','重要觀點','讀完'];
+var KEY='ct_book',LAST=7,lastPage=1,wantScroll=false,busy=false;
+var tool=!!navigator.webdriver&&!/[?&]book=1/.test(location.search);
+function isFull(){try{return localStorage.getItem(KEY)==='off'}catch(e){return false}}
+function setFull(v){try{v?localStorage.setItem(KEY,'off'):localStorage.removeItem(KEY)}catch(e){}}
+function hashPage(){var h=decodeURIComponent((location.hash||'').slice(1)),m=h.match(/^daily\/(\d+)$/);return m?+m[1]:1}
+function isDaily(){var h=decodeURIComponent((location.hash||'').slice(1));return typeof current!=='undefined'&&current==='daily'&&!/^(stock|account)[\/-]/.test(h)}
+function kill(sel){var n=view.querySelector(sel);if(n)n.remove()}
+function put(cls,html,before){var n=view.querySelector(':scope>.'+cls);if(!n){n=document.createElement('div');n.className=cls}
+ if(n.getAttribute('data-h')!==html){n.innerHTML=html;n.setAttribute('data-h',html)}
+ var g=view.querySelector(':scope>.grid');if(before){if(n.nextSibling!==g)view.insertBefore(n,g)}else if(g.nextSibling!==n)view.insertBefore(n,g.nextSibling)}
+function endCard(){var s=document.createElement('section');s.className='c12 panel bk-end';s.setAttribute('data-bp','7');
+ s.innerHTML='<h2>今日讀完 🎉</h2><p>感謝你看完今日的內容。網站免費、無需登入，每 4 小時更新；如果覺得有用，歡迎請我們喝杯咖啡，你的支持將用於維持網站運作。</p>'+
+ '<div class="bk-acts"><a href="https://www.paypal.com/qrcodes/p2pqrc/3KT8QNVNRWJMA" target="_blank" rel="noopener">☕ 捐款支持</a><a class="bk-nl" href="newsletter/">✉️ 訂閱每週電子報</a></div>'+
+ '<p class="note">想看更多：</p><div class="bk-more"><a href="#weekly">本週</a><a href="#monthly">本月</a><button type="button" data-jump="stock-index" class="bk-si">個股頁面</button><button type="button" data-bk="1">從頭再看</button></div>';return s}
+function run(){
+ var g=view.querySelector(':scope>.grid');
+ if(tool||!g||!isDaily()||!g.querySelector('[data-bp]')){view.classList.remove('bk');kill(':scope>.bk-top');kill(':scope>.bk-bot');if(g)kill('.bk-end');return}
+ if(isFull()){view.classList.remove('bk');kill('.bk-end');kill(':scope>.bk-bot');put('bk-top','<span class="bk-t"></span><button type="button" class="bk-mode" data-bk-mode="book">📖 書本模式</button>',true);return}
+ var end=g.querySelector(':scope>.bk-end');if(!end)end=endCard();if(g.lastElementChild!==end)g.appendChild(end);
+ var cur=1,have={};
+ [].forEach.call(g.children,function(n){var b=+n.getAttribute('data-bp');if(b)cur=b;n.setAttribute('data-bpg',cur);if(n===end||(n.textContent||'').trim())have[cur]=1});
+ var pages=Object.keys(have).map(Number).sort(function(a,b){return a-b});
+ var want=hashPage(),p=pages.filter(function(x){return x>=want})[0]||pages[pages.length-1],i=pages.indexOf(p);
+ lastPage=p;view.classList.add('bk');
+ [].forEach.call(g.children,function(n){n.classList.toggle('bk-off',+n.getAttribute('data-bpg')!==p)});
+ var pos=(i+1)+' / '+pages.length;
+ put('bk-top','<div class="bk-dots">'+pages.map(function(x,k){return '<button type="button" data-bk="'+x+'" aria-label="'+TITLES[x-1]+'"'+(x===p?' aria-current="page"':'')+'>'+(k+1)+'</button>'}).join('')+'</div>'+
+  '<span class="bk-t"><b>'+TITLES[p-1]+'</b> · '+pos+'</span><button type="button" class="bk-mode" data-bk-mode="full">全部展開</button>',true);
+ var prev=pages[i-1],next=pages[i+1];
+ put('bk-bot',(prev?'<button type="button" class="bk-prev" data-bk="'+prev+'">‹ 上一頁</button>':'<span class="bk-gap"></span>')+'<span>'+pos+'</span>'+
+  (next?'<button type="button" class="bk-next" data-bk="'+next+'">下一頁 ›</button>':'<span class="bk-gap"></span>'),false)}
+function apply(){if(busy)return;busy=true;try{run()}catch(e){console.error(e)}finally{obs.takeRecords();busy=false}}
+var obs=new MutationObserver(apply);obs.observe(view,{childList:true,subtree:true});
+function go(n){if(n===hashPage()&&/^#daily/.test(location.hash||'#daily'))return;wantScroll=true;
+ if(window.gtag){gtag('event','book_page',{page:n,lang:document.documentElement.lang});if(n===LAST)gtag('event','book_finish',{lang:document.documentElement.lang})}
+ location.hash=n===1?'daily':'daily/'+n}
+window.addEventListener('hashchange',function(e){
+ var was=String(e.oldURL||'').split('#')[1]||'';
+ if(/^(stock|account)/.test(decodeURIComponent(was))&&location.hash==='#daily'&&lastPage>1)history.replaceState(null,'','#daily/'+lastPage);
+ apply();if(wantScroll){wantScroll=false;toTop()}});
+function toTop(){var hd=document.querySelector('header.ap-top');view.style.scrollMarginTop=((hd?hd.getBoundingClientRect().height:0)+8)+'px';view.scrollIntoView({behavior:'auto',block:'start'})}
+document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('[data-bk],[data-bk-mode],.bk-si');if(!t)return;
+ if(t.classList.contains('bk-si')){var d=document.querySelector('#stock-index details');if(d)d.open=true;return}
+ if(t.hasAttribute('data-bk-mode')){var f=t.getAttribute('data-bk-mode')==='full';setFull(f);if(window.gtag)gtag('event','book_mode',{mode:f?'full':'book'});apply();return}
+ e.preventDefault();go(+t.getAttribute('data-bk'))});
+function nav(d){var b=view.querySelector(':scope>.bk-bot .bk-'+(d>0?'next':'prev'));if(b)b.click()}
+document.addEventListener('keydown',function(e){if(e.altKey||e.ctrlKey||e.metaKey||e.shiftKey||!view.classList.contains('bk'))return;
+ if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;var a=document.activeElement;if(a&&(/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)||a.isContentEditable))return;
+ var dv=document.getElementById('dive');if(dv&&!dv.hidden)return;nav(e.key==='ArrowRight'?1:-1)});
+function sideScroll(el){for(;el&&el!==view;el=el.parentElement){if(el.scrollWidth>el.clientWidth+2){var o=getComputedStyle(el).overflowX;if(o==='auto'||o==='scroll')return true}}return false}
+var sx=0,sy=0,sk=true;
+view.addEventListener('touchstart',function(e){var t=e.touches[0];sx=t.clientX;sy=t.clientY;sk=e.touches.length>1||sideScroll(e.target)},{passive:true});
+view.addEventListener('touchend',function(e){if(sk||!view.classList.contains('bk'))return;var t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;
+ if(Math.abs(dx)>70&&Math.abs(dx)>2*Math.abs(dy))nav(dx<0?1:-1)},{passive:true});
+apply();
+})();</script>
 </body></html>
