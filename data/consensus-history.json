@@ -973,12 +973,12 @@
     "SKHY",
     "ORCL",
     "SPY",
-    "QQQ",
     "STX",
     "NBIS",
     "VRT",
     "BE",
     "GEV",
+    "MSFT",
     "SNDK",
     "SOXL",
     "AAPL",
@@ -998,9 +998,11 @@
     "TSLA",
     "HOOD",
     "GOOG",
+    "QQQ",
     "AMZN",
     "NFLX",
     "V",
+    "NOW",
     "FFIV"
    ],
    "window": [
@@ -1011,18 +1013,18 @@
     "GOOGL",
     "SKHY",
     "SPY",
-    "HOOD",
     "QQQ",
+    "MSFT",
+    "HOOD",
     "TSLA",
     "MU",
-    "MSFT",
-    "NVDA",
-    "ORCL"
+    "GOOG",
+    "NVDA"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-29 06:43"
+   "updated_hkt": "2026-10-29 07:18"
   }
  },
- "updated_hkt": "2026-10-29 06:43",
+ "updated_hkt": "2026-10-29 07:18",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
