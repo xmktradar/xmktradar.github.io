@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2115520963378917876": {
+      "en_summary": "Nice rally in $ORCL 10-year bonds, with a strong move today.",
+      "zh_summary": "$ORCL 10年期債券出現不錯的反彈，今天走勢強勁。",
+      "tickers": ["ORCL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ORCL": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115519725874941964": {
+      "en_summary": "Oracle reaffirms a 35% compound annual growth rate between fiscal 2026 and fiscal 2030, with revenue hitting $225B or more by fiscal 2030. Oracle expects peak capital spending to be between fiscal 2027 and fiscal 2028, with $30B in free cash flow in fiscal 2029. $ORCL",
+      "zh_summary": "甲骨文重申從財政年度2026年到財政年度2030年之間的複合年增長率為35%，收入到財政年度2030年將達到2250億美元或以上。甲骨文預計資本支出高峰將在財政年度2027年到財政年度2028年之間，並在財政年度2029年實現300億美元自由現金流。$ORCL",
+      "tickers": ["ORCL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ORCL": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ORCL": "重申35% CAGR至2030年，收入目標2250億美元，2029年自由現金流300億美元"}
+    },
+    "2115519004337152418": {
+      "en_summary": "$BX Blackstone CEO Steve Schwarzman: Over the past two years, while shares are down meaningfully, earnings have grown nearly 50% with commensurate growth in dividend. The S&P 500 index rose slightly in the third quarter, with gains concentrated in the largest tech companies and the energy sector. Although most individual stocks declined, and the median stock is now 15% below its recent high.",
+      "zh_summary": "$BX 黑石首席執行官史蒂夫·施瓦茨曼：過去兩年，儘管股價大幅下跌，盈利增長了近50%，股息也相應增長。標普500指數在第三季度略有上升，漲幅集中在最大的科技公司和能源板塊。儘管大多數個股下跌，中位數股票現在比近期高點低15%。",
+      "tickers": ["BX", "SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"BX": "睇好", "SPY": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "中性",
+      "ticker_notes": {"BX": "過去兩年盈利增長近50%，股息相應增長，儘管股價下跌"}
+    },
+    "2115518777710559451": {
+      "en_summary": "ORACLE $ORCL EXTENDS GAIN TO +14%. (Quoted: ORACLE $ORCL JUMPS +5% AFTER STATING THEY WILL LIMIT CAPITAL RAISES TO $20B THROUGH FY2030)",
+      "zh_summary": "甲骨文 $ORCL 漲幅擴大至+14%。（引用：甲骨文 $ORCL 在表示將限制到財政年度2030年的資本募集至200億美元後跳升+5%）",
+      "tickers": ["ORCL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ORCL": "睇好"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ORCL": "漲幅擴大至14%，因限制至FY2030資本募集至200億美元"}
+    },
+    "2115518364173168767": {
+      "en_summary": "$NBIS is back above $180 after $ORCL projected 34% operating margins and a 28% ROI over five years on AI compute. Great news considering Nebius is already reporting ~50% AI cloud EBITDA margins and GPU paybacks under two years with even more capacity coming online.",
+      "zh_summary": "$NBIS 在 $ORCL 預測人工智能計算的34%營運利潤率和五年內28%投資回報率後重新站上180美元。這是好消息，考慮到Nebius已經報告約50%的人工智能雲EBITDA利潤率和不到兩年的GPU回本期，並且有更多產能即將上線。",
+      "tickers": ["NBIS", "ORCL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NBIS": "睇好", "ORCL": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NBIS": "站上180美元，ORCL預測AI計算利潤率利好，Nebius本身EBITDA利潤率高、GPU回本快"}
+    }
+  }
+}
