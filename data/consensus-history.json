@@ -920,8 +920,8 @@
     "INTC",
     "KO",
     "CDNS",
-    "GLW",
     "IWM",
+    "GLW",
     "LITE"
    ],
    "bear": [
@@ -930,22 +930,23 @@
    "split": [
     "TSLA",
     "SPY",
+    "GOOGL",
     "QQQ",
     "SPCX",
-    "GOOGL",
     "MU",
     "NVDA",
     "AMD",
-    "HOOD",
     "GOOG",
+    "HOOD",
     "META",
+    "AAPL",
     "NFLX",
-    "SNDK",
     "SOXL",
+    "SNDK",
     "CART",
+    "CRWV",
     "DASH",
-    "COIN",
-    "CRWV"
+    "COIN"
    ],
    "window": [
     "2026-10-27T03:30",
@@ -953,20 +954,20 @@
    ],
    "top": [
     "TSLA",
-    "SPCX",
     "NVDA",
+    "SPCX",
     "SPY",
     "QQQ",
-    "AMZN",
     "GOOGL",
+    "AMZN",
     "AMD",
     "MSFT",
     "MU"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-28 14:36"
+   "updated_hkt": "2026-10-28 15:00"
   }
  },
- "updated_hkt": "2026-10-28 14:36",
+ "updated_hkt": "2026-10-28 15:00",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
