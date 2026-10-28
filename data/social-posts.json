@@ -1461,126 +1461,117 @@
    "intraday_1": {
     "post_et": "11:00",
     "post_hkt": "23:00",
-    "generated_at": "2026-10-28T11:01:09-04:00",
+    "generated_at": "2026-10-28T11:26:55-04:00",
     "date": "2026-10-28",
     "date_kst": "2026-10-29",
     "quotes": {
      "SPY": {
-      "price": 770.34,
+      "price": 771.18,
       "prev_close": 769.66,
-      "chg_pct": 0.09,
-      "time": "2026-10-28T11:01:08-04:00"
+      "chg_pct": 0.2,
+      "time": "2026-10-28T11:26:55-04:00"
      },
      "QQQ": {
-      "price": 721.44,
+      "price": 722.034,
       "prev_close": 721.25,
-      "chg_pct": 0.03,
-      "time": "2026-10-28T11:01:08-04:00"
+      "chg_pct": 0.11,
+      "time": "2026-10-28T11:26:54-04:00"
      },
      "DIA": {
-      "price": 523.84,
+      "price": 524.61,
       "prev_close": 523.28,
-      "chg_pct": 0.11,
-      "time": "2026-10-28T11:01:07-04:00"
+      "chg_pct": 0.25,
+      "time": "2026-10-28T11:26:55-04:00"
      },
-     "AMZN": {
-      "price": 252.235,
-      "prev_close": 253.1,
-      "chg_pct": -0.34,
-      "time": "2026-10-28T11:01:10-04:00"
+     "KO": {
+      "price": 92.255,
+      "prev_close": 91.18,
+      "chg_pct": 1.18,
+      "time": "2026-10-28T11:26:54-04:00"
      },
-     "CLS": {
-      "price": 288.573,
-      "prev_close": 276.54,
-      "chg_pct": 4.35,
-      "time": "2026-10-28T11:01:04-04:00"
+     "CDNS": {
+      "price": 342.99,
+      "prev_close": 343.08,
+      "chg_pct": -0.03,
+      "time": "2026-10-28T11:26:53-04:00"
      },
-     "CRDO": {
-      "price": 168.14,
-      "prev_close": 167.43,
-      "chg_pct": 0.42,
-      "time": "2026-10-28T11:01:09-04:00"
+     "IWM": {
+      "price": 279.97,
+      "prev_close": 280.18,
+      "chg_pct": -0.07,
+      "time": "2026-10-28T11:26:55-04:00"
      },
-     "INTC": {
-      "price": 93.595,
-      "prev_close": 93.74,
-      "chg_pct": -0.15,
-      "time": "2026-10-28T11:01:09-04:00"
+     "GLW": {
+      "price": 130.955,
+      "prev_close": 126.3,
+      "chg_pct": 3.69,
+      "time": "2026-10-28T11:26:54-04:00"
      }
     },
     "quote_time": {
-     "et": "2026-10-28T11:01:10-04:00",
-     "hkt": "2026-10-28 23:01"
+     "et": "2026-10-28T11:26:55-04:00",
+     "hkt": "2026-10-28 23:26"
     },
     "quote_source": "Yahoo Finance",
     "quotes_ok": true,
     "fallback": false,
     "hot": [
      {
-      "ticker": "AMZN",
-      "chg_pct": -0.34,
+      "ticker": "KO",
+      "chg_pct": 1.18,
       "bull": 2,
       "bear": 0,
       "accounts": [
-       "Beth_Kindig",
-       "OptionsHawk",
-       "StockSavvyShay",
-       "amitisinvesting",
-       "aleabitoreddit",
-       "EliteOptions2",
-       "RedDogT3",
-       "jimcramer"
-      ]
-     },
-     {
-      "ticker": "CLS",
-      "chg_pct": 4.35,
-      "bull": 2,
-      "bear": 0,
-      "accounts": [
-       "StockSavvyShay",
        "TrendSpider",
-       "ripster47"
+       "bespokeinvest",
+       "TheTranscript_"
       ]
      },
      {
-      "ticker": "CRDO",
-      "chg_pct": 0.42,
+      "ticker": "CDNS",
+      "chg_pct": -0.03,
       "bull": 2,
       "bear": 0,
       "accounts": [
-       "michaelsikand",
-       "ripster47",
-       "petenajarian"
-      ]
-     },
-     {
-      "ticker": "INTC",
-      "chg_pct": -0.15,
-      "bull": 2,
-      "bear": 0,
-      "accounts": [
-       "StockSavvyShay",
        "OptionsMike",
+       "TrendSpider"
+      ]
+     },
+     {
+      "ticker": "IWM",
+      "chg_pct": -0.07,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "Mr_Derivatives",
+       "OptionsHawk",
+       "WallStJesus"
+      ]
+     },
+     {
+      "ticker": "GLW",
+      "chg_pct": 3.69,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
        "TrendSpider",
-       "RedDogT3",
-       "Mr_Derivatives"
+       "bespokeinvest"
       ]
      }
     ],
     "x": {
      "en": {
-      "text": "Late morning · As of 11:01 ET (23:01 HKT)\n\n$SPY +0.1% · $QQQ +0.0% · $DIA +0.1%\n\n$AMZN -0.3%, 2 accounts bullish on site\n$CLS +4.3%, 2 accounts bullish on site\n\nhttps://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_1\n\n⚠️ Not investment advice\n#StockMarket #AMZN #CLS",
+      "text": "Late morning · As of 11:26 ET (23:26 HKT)\n\n$SPY +0.2% · $QQQ +0.1% · $DIA +0.2%\n\n$KO +1.2%, 2 accounts bullish on site\n$CDNS -0.0%, 2 accounts bullish on site\n\nhttps://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_1\n\n⚠️ Not investment advice\n#StockMarket #KO #CDNS",
       "url": "https://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_1"
      }
     },
     "threads": {
      "zh": {
-      "text": "早盤觀察 · 截至 11:01 ET（23:01 HKT）\n\n$SPY +0.1% · $QQQ +0.0% · $DIA +0.1%\n\n$AMZN -0.3%，網站 2 個帳號看好\n$CLS +4.3%，網站 2 個帳號看好\n$CRDO +0.4%，網站 2 個帳號看好\n$INTC -0.1%，網站 2 個帳號看好\n\nhttps://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=intraday_1\n\n⚠️ 唔構成投資建議\n#美股 #AMZN #CLS",
+      "text": "早盤觀察 · 截至 11:26 ET（23:26 HKT）\n\n$SPY +0.2% · $QQQ +0.1% · $DIA +0.2%\n\n$KO +1.2%，網站 2 個帳號看好\n$CDNS -0.0%，網站 2 個帳號看好\n$IWM -0.1%，網站 2 個帳號看好\n$GLW +3.7%，網站 2 個帳號看好\n\nhttps://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=intraday_1\n\n⚠️ 唔構成投資建議\n#美股 #KO #CDNS",
       "url": "https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=intraday_1"
      },
      "en": {
-      "text": "Late morning · As of 11:01 ET (23:01 HKT)\n\n$SPY +0.1% · $QQQ +0.0% · $DIA +0.1%\n\n$AMZN -0.3%, 2 accounts bullish on site\n$CLS +4.3%, 2 accounts bullish on site\n$CRDO +0.4%, 2 accounts bullish on site\n$INTC -0.1%, 2 accounts bullish on site\n\nhttps://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=intraday_1\n\n⚠️ Not investment advice\n#StockMarket #AMZN #CLS",
+      "text": "Late morning · As of 11:26 ET (23:26 HKT)\n\n$SPY +0.2% · $QQQ +0.1% · $DIA +0.2%\n\n$KO +1.2%, 2 accounts bullish on site\n$CDNS -0.0%, 2 accounts bullish on site\n$IWM -0.1%, 2 accounts bullish on site\n$GLW +3.7%, 2 accounts bullish on site\n\nhttps://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=intraday_1\n\n⚠️ Not investment advice\n#StockMarket #KO #CDNS",
       "url": "https://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=intraday_1"
      }
     },
@@ -1614,7 +1605,7 @@
     }
    }
   },
-  "generated_at": "2026-10-28T11:01:09-04:00",
-  "generated_hkt": "2026-10-28 23:01"
+  "generated_at": "2026-10-28T11:26:55-04:00",
+  "generated_hkt": "2026-10-28 23:26"
  }
 }
