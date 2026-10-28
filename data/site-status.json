@@ -1,23 +1,19 @@
 {
  "note": "Written by GitHub Actions on every update. SuperGrok daily check reads this.",
- "checked_hkt": "2026-10-29 00:31",
- "generated_hkt": "2026-10-29 00:11",
- "cutoff_hkt": "2026-10-28T21:44:41+08:00",
- "posts_on_site": 5691,
- "added_this_run": 30,
+ "checked_hkt": "2026-10-29 01:32",
+ "generated_hkt": "2026-10-29 01:11",
+ "cutoff_hkt": "2026-10-29T00:05:20+08:00",
+ "posts_on_site": 5708,
+ "added_this_run": 20,
  "added_without_en_summary": 0,
- "waiting_for_summary": 356,
- "waiting_with_stock": 54,
- "expired_unsummarised_this_run": 21,
- "chitchat_skipped_this_run": 152,
- "pruned_this_run": 0,
- "fetch_failed": [
-  "Austan_Goolsbee（Remote end closed connection without response）",
-  "VitalikButerin（Remote end closed connection without response）"
- ],
+ "waiting_for_summary": 355,
+ "waiting_with_stock": 50,
+ "expired_unsummarised_this_run": 14,
+ "chitchat_skipped_this_run": 135,
+ "pruned_this_run": 3,
+ "fetch_failed": [],
  "warnings": [
-  "攞帖失敗：Austan_Goolsbee、VitalikButerin",
-  "未分析：356 則新帖等待 Grok 分析"
+  "未分析：355 則新帖等待 Grok 分析"
  ],
  "writeups_applied": [
   "zh/daily 2026-10-28",
@@ -48,6 +44,11 @@
    "briefing": "2026-10-28"
   }
  },
- "layout_warnings": [],
- "layout_checked_hkt": "2026-10-29 00:34"
+ "layout_warnings": [
+  "zh 1280px：今日重點卡有 0 張（應該 3 張）",
+  "zh 390px：今日重點卡有 0 張（應該 3 張）",
+  "en 1280px：今日重點卡有 0 張（應該 3 張）",
+  "en 390px：今日重點卡有 0 張（應該 3 張）"
+ ],
+ "layout_checked_hkt": "2026-10-29 01:35"
 }
