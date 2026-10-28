@@ -802,4 +802,4 @@ if (require.main === module) {
 })();
 }
 
-module.exports = { tvWidgetSrc, tvMappedSymbol, tvChartLink, tvChartBlock, ensureTvFrameSrc, TV_LOCALE, TV_SYMBOL_404 };
+module.exports = { avatars, dedupeSitemap, esc, slug, toTop, tvWidgetSrc, tvMappedSymbol, tvChartLink, tvChartBlock, ensureTvFrameSrc, TV_LOCALE, TV_SYMBOL_404 };

@@ -180,6 +180,10 @@ jobs:
       - name: Earnings brief pages (/zh|en/earnings/; links on stock pages and homepages; sitemap)
         continue-on-error: true
         run: python3 tools/earnings_pages.py
+      - name: Account pages (/zh|en/account/; links from stock pages and homepages; sitemap)
+        run: node tools/account_pages.js
+      - name: Donate box on stock, earnings and account pages
+        run: python3 tools/donate_box.py
       - name: Old Korean links go to the English page (Korean removed 2026-10-27)
         run: python3 tools/ko_redirect.py
       - name: Sitemap lastmod (real content-change time per page)
