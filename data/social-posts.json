@@ -2083,9 +2083,172 @@
       "BA"
      ]
     }
+   },
+   "intraday_close": {
+    "post_et": "15:40",
+    "post_hkt": "03:40",
+    "generated_at": "2026-10-28T15:41:40-04:00",
+    "date": "2026-10-28",
+    "date_kst": "2026-10-29",
+    "quotes": {
+     "SPY": {
+      "price": 770.87,
+      "prev_close": 769.66,
+      "chg_pct": 0.16,
+      "time": "2026-10-28T15:41:39-04:00"
+     },
+     "QQQ": {
+      "price": 723.44,
+      "prev_close": 721.25,
+      "chg_pct": 0.3,
+      "time": "2026-10-28T15:41:40-04:00"
+     },
+     "DIA": {
+      "price": 523.94,
+      "prev_close": 523.28,
+      "chg_pct": 0.13,
+      "time": "2026-10-28T15:41:40-04:00"
+     },
+     "SKHY": {
+      "price": 164.02,
+      "prev_close": 145.36,
+      "chg_pct": 12.84,
+      "time": "2026-10-28T15:41:41-04:00"
+     },
+     "SNDK": {
+      "price": 1396.248,
+      "prev_close": 1304.84,
+      "chg_pct": 7.01,
+      "time": "2026-10-28T15:41:40-04:00"
+     },
+     "NFLX": {
+      "price": 61.76,
+      "prev_close": 62.52,
+      "chg_pct": -1.22,
+      "time": "2026-10-28T15:41:41-04:00"
+     },
+     "V": {
+      "price": 402.56,
+      "prev_close": 401.86,
+      "chg_pct": 0.17,
+      "time": "2026-10-28T15:41:39-04:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-10-28T15:41:41-04:00",
+     "hkt": "2026-10-29 03:41"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "SKHY",
+      "chg_pct": 12.84,
+      "bull": 5,
+      "bear": 0,
+      "accounts": [
+       "ripster47",
+       "ThetaWarrior",
+       "OptionsHawk",
+       "StockSavvyShay",
+       "aleabitoreddit",
+       "Mr_Derivatives",
+       "saxena_puru",
+       "Beth_Kindig"
+      ]
+     },
+     {
+      "ticker": "SNDK",
+      "chg_pct": 7.01,
+      "bull": 2,
+      "bear": 1,
+      "accounts": [
+       "TrendSpider",
+       "KawzInvests",
+       "michaelsikand",
+       "RedDogT3",
+       "WallStJesus",
+       "Beth_Kindig"
+      ]
+     },
+     {
+      "ticker": "NFLX",
+      "chg_pct": -1.22,
+      "bull": 2,
+      "bear": 1,
+      "accounts": [
+       "GerberKawasaki",
+       "Jason",
+       "Mr_Derivatives",
+       "StockSavvyShay",
+       "BrianFeroldi"
+      ]
+     },
+     {
+      "ticker": "V",
+      "chg_pct": 0.17,
+      "bull": 1,
+      "bear": 1,
+      "accounts": [
+       "TheTranscript_",
+       "Mr_Derivatives",
+       "TrendSpider",
+       "OptionsMike"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Into the close · As of 15:41 ET (03:41 HKT)\n\n$SPY +0.2% · $QQQ +0.3% · $DIA +0.1%\n\n$SKHY +12.8%, 5 accounts bullish on site\n$SNDK +7.0%, 2 accounts bullish on site\n\nhttps://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_close\n\n⚠️ Not investment advice\n#StockMarket #SKHY #SNDK",
+      "url": "https://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_close"
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "收市前回顧 · 截至 15:41 ET（03:41 HKT）\n\n$SPY +0.2% · $QQQ +0.3% · $DIA +0.1%\n\n$SKHY +12.8%，網站 5 個帳號看好\n$SNDK +7.0%，網站 2 個帳號看好\n$NFLX -1.2%，網站 2 個帳號看好\n$V +0.2%，網站 1 個帳號看好\n\nhttps://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=intraday_close\n\n⚠️ 唔構成投資建議\n#美股 #SKHY #SNDK",
+      "url": "https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=intraday_close"
+     },
+     "en": {
+      "text": "Into the close · As of 15:41 ET (03:41 HKT)\n\n$SPY +0.2% · $QQQ +0.3% · $DIA +0.1%\n\n$SKHY +12.8%, 5 accounts bullish on site\n$SNDK +7.0%, 2 accounts bullish on site\n$NFLX -1.2%, 2 accounts bullish on site\n$V +0.2%, 1 account bullish on site\n\nhttps://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=intraday_close\n\n⚠️ Not investment advice\n#StockMarket #SKHY #SNDK",
+      "url": "https://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=intraday_close"
+     }
+    },
+    "has_link": {
+     "x": true,
+     "threads": {
+      "zh": true,
+      "en": true
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "SKHY",
+      "SPY",
+      "SOFI",
+      "NBIS",
+      "BE",
+      "STX",
+      "SOXL",
+      "VRT",
+      "SMH",
+      "GEV",
+      "QQQ",
+      "AAPL",
+      "CRDO",
+      "MSTR",
+      "STRC",
+      "STRD",
+      "STRF",
+      "STRK"
+     ],
+     "bear": [
+      "BA"
+     ]
+    }
    }
   },
-  "generated_at": "2026-10-28T14:53:38-04:00",
-  "generated_hkt": "2026-10-29 02:53"
+  "generated_at": "2026-10-28T15:41:40-04:00",
+  "generated_hkt": "2026-10-29 03:41"
  }
 }
