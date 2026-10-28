@@ -47,9 +47,20 @@
   "accn": "0002089271-26-000021"
  },
  "rules": 3,
+ "diag": {
+  "few": {
+   "RevenueFromContractWithCustomerExcludingAssessedTax": {
+    "facts": 4,
+    "q": 2,
+    "first": "2025-06-28",
+    "last": "2026-06-27",
+    "labelled": 2
+   }
+  }
+ },
  "mcap": 53216362496,
  "next": "2026-10-28",
- "last_report": null,
+ "last_report": "2026-10-28",
  "est": {
   "eps_act": 1.87,
   "eps_est": 2.11904,
