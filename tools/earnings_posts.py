@@ -340,8 +340,10 @@ def social_html(ep):
                 imgs = ''.join(f'<a href="{html.escape(u)}" download><img src="{html.escape(u)}" alt="{n + 1}"></a>' for n, u in enumerate(it['images'][lang]))
                 fbs = ''.join(f'<a href="{html.escape(u)}" download><img src="{html.escape(u)}" alt="FB {n + 1}"></a>' for n, u in enumerate(it['images_fb'][lang]))
                 p = it['posts'][lang]
+                xs = it.get('images_x', {}).get(lang) or it['images'][lang][:4]
+                xn = f'<h4>X 只可以 4 張：用第 {"、".join(str(it["images"][lang].index(u) + 1) for u in xs)} 張</h4>' if len(it['images'][lang]) > 4 else ''
                 langs.append(f'<details{" open" if lang == "zh" else ""}><summary>{names[lang]}</summary><div class="grid">{imgs}</div>'
-                             f"{box('X', p['x'], 7)}{box('Threads', p['threads'], 10)}{box('Instagram', p['instagram'], 14)}"
+                             f"{xn}{box('X', p['x'], 7)}{box('Threads', p['threads'], 10)}{box('Instagram', p['instagram'], 14)}"
                              f'<h4>Facebook 用正方形圖</h4><div class="grid">{fbs}</div>{box("Facebook", p["facebook"], 14)}</details>')
             items.append(f'<article><h3>${it["t"]} {html.escape(it["name"])}・{it["label"]}</h3>{"".join(langs)}</article>')
         out.append(f'<section><h2>{at} 財報貼文（{sl["day"]}，{len(sl["items"])} 間）</h2><p>製作時間 {sl["made_hkt"]} HKT</p>{"".join(items)}</section>')
@@ -350,7 +352,7 @@ def social_html(ep):
         vids = ''.join(f'<h4>{names[l]}</h4><video controls playsinline preload="none" src="{html.escape(u)}"></video><p><a href="{html.escape(u)}" download>下載短片</a></p>'
                        for l, u in v['video'].items())
         out.append(f'<section><h2>{VIDEO_AT} 財報短片（{v["day"]}，${v["t"]}）</h2>{vids}</section>')
-    css = ('<style>body{font-family:system-ui,sans-serif;max-width:900px;margin:0 auto;padding:16px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}'
+    css = ('<style>body{font-family:system-ui,sans-serif;max-width:900px;margin:0 auto;padding:16px}.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}'
            '.grid img{width:100%;border-radius:6px}textarea{width:100%;font:13px/1.4 monospace}video{width:240px;max-width:100%}details{margin-top:10px}'
            'summary{font-weight:700;cursor:pointer}h4{margin:12px 0 4px;font-size:14px}article{border-top:1px solid #ddd;margin-top:14px;padding-top:6px}</style>')
     return (f'<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
@@ -395,13 +397,15 @@ def main():
         items = []
         for _, x, co in cands[:room]:
             it = {'t': co['t'], 'name': co['name'], 'label': x['label'], 'end': x['end'], 'mcap': co.get('mcap'),
-                  'images': {}, 'images_fb': {}, 'posts': {}, 'url': {l: brief_url(l, co['t']) for l in LANGS}}
+                  'images': {}, 'images_x': {}, 'images_fb': {}, 'posts': {}, 'url': {l: brief_url(l, co['t']) for l in LANGS}}
             for lang in LANGS:
                 ss = slides(co, lang)
                 files = [f'og/e/{today}-{key}-{co["t"]}-{lang}-{n + 1}.jpg' for n in range(len(ss))]
                 fb = [f'og/e/{today}-{key}-{co["t"]}-{lang}-{n + 1}-fb.jpg' for n in range(len(ss))]
                 jobs.append({'lang': lang, 'date': today, 'ticker': co['t'], 'slides': ss, 'files': files, 'fb': fb})
                 it['images'][lang] = [SITE + f for f in files]
+                # X takes at most 4 pictures: with a views picture, leave out the revenue-lines one
+                it['images_x'][lang] = [SITE + f for n, f in enumerate(files) if not (len(files) > 4 and n == 2)]
                 it['images_fb'][lang] = [SITE + f for f in fb]
                 it['posts'][lang] = captions(co, lang)
             items.append(it)
