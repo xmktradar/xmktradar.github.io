@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2115370881052524616": {
+      "en_summary": "$SPX futures +7 after two tradable sessions. $SPY cleared Friday's high on Monday and Monday's high on Tuesday. Today is Fed day to take some care. $767 is some support and $774 is some resistance.",
+      "zh_summary": "標普500期貨在兩個可交易日後上漲7點。SPY在週一突破週五高點，週二突破週一高點。今天是聯儲局會議日，需謹慎。767為支撐，774為阻力。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {"SPY": "支撐767阻力774，聯儲日謹慎"}
+    },
+    "2115368686131540363": {
+      "en_summary": "BREADTH: 6 of 11 Sectors were down on the $SPY up day.",
+      "zh_summary": "廣度：在SPY上漲日，11個板塊中有6個下跌。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115153559146631467": {
+      "en_summary": "Short Side: Indonesia $IDX.",
+      "zh_summary": "空頭方向：印尼IDX。",
+      "tickers": [],
+      "stance": "睇淡",
+      "stance_by_ticker": {},
+      "horizon": "中線",
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115153430649991288": {
+      "en_summary": "Long Healthcare Tech $HTEC with us yet? You don't have to bag-hold the \"tech\" everyone else has - there's a better way.",
+      "zh_summary": "做多醫療科技HTEC了嗎？不必死守其他人持有的「科技」，有更好的方式。",
+      "tickers": ["HTEC"],
+      "stance": "睇好",
+      "stance_by_ticker": {"HTEC": "睇好"},
+      "horizon": "中線",
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"HTEC": "做多醫療科技作為更好的科技投資選擇"}
+    },
+    "2115153300681281917": {
+      "en_summary": "$OPEN down 15 of the last 17 weeks. Daily RSI at the lowest in its history. Name is now -83% from that $10.80 peak from last September. Oof. With that said, just give me one cheapy pop to reset things a bit.",
+      "zh_summary": "OPEN在過去17週中有15週下跌。日線RSI處於歷史最低。股價從去年九月10.80美元高點已下跌83%。希望有一次便宜反彈來稍微重置。",
+      "tickers": ["OPEN"],
+      "stance": "中性",
+      "stance_by_ticker": {"OPEN": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"OPEN": "從10.80高點跌83%，RSI歷史低，期望反彈"}
+    }
+  }
+}
