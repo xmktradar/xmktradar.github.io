@@ -260,12 +260,41 @@ def send(n, subject, text, html_body):
         return None
 
 
+def check():
+    """Setup check, sends nothing: the key works, the subscriber list is found, the From domain is verified."""
+    if not os.environ.get('RESEND_API_KEY'):
+        print('::error::GitHub 冇 RESEND_API_KEY')
+        return 1
+    ok = True
+    try:
+        aud = os.environ.get('RESEND_AUDIENCE_ID') or find_audience()
+        print(f'訂戶名單：{aud or "搵唔到"}')
+        ok = ok and bool(aud)
+        dom = FROM.rsplit('@', 1)[-1].rstrip('>')
+        rows = resend('GET', '/domains').get('data') or []
+        st = next((r.get('status') for r in rows if r.get('name') == dom), None)
+        print(f'寄件網域 {dom}：{st or "Resend 冇呢個網域"}')
+        ok = ok and st == 'verified'
+        got = resend('GET', '/broadcasts').get('data') or []
+        print(f'Resend 已有 {len(got)} 封 broadcast')
+    except Exception as e:
+        detail = e.read().decode()[:300] if isinstance(e, urllib.error.HTTPError) else str(e)
+        print(f'::error::Resend 回覆錯誤：{detail}')
+        return 1
+    if not ok:
+        print('::error::電子報設定未齊（見上面）')
+    return 0 if ok else 1
+
+
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument('--check', action='store_true', help='check the Resend setup, send nothing')
     ap.add_argument('--week', help='Monday of the week to write (testing)')
     ap.add_argument('--no-send', action='store_true')
     ap.add_argument('--out', help='write the text here instead of the archive (sample)')
     a = ap.parse_args()
+    if a.check:
+        sys.exit(check())
     now = datetime.now(HK)
     if a.week:
         d0 = date.fromisoformat(a.week)
