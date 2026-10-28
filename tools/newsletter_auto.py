@@ -6,7 +6,7 @@ week's issue (Monday to Sunday, HKT days) in the issue-1 format: English text pl
 - Numbers come from tools/stats.js run on index.html with the week as its window (the site's own consensus code).
 - Macro rows come from macro_week.week() (same counts as the Saturday macro post).
 - data/newsletter/issue-<n>.txt + a row in data/newsletter-issues.json; tools/newsletter.py builds the archive page.
-- Sending: Resend broadcast to the subscriber audience (secrets RESEND_API_KEY, RESEND_AUDIENCE_ID). A broadcast
+- Sending: Resend broadcast to the subscriber audience (secret RESEND_API_KEY; RESEND_AUDIENCE_ID optional, found from the account when unset). A broadcast
   named "The Crowd Tape weekly #<n>" that Resend already has is never sent again, so reruns cannot double-send.
   No key or a failed send: warning only; the archive still ships and later Monday runs try again.
 Usage: python3 tools/newsletter_auto.py [--week YYYY-MM-DD (the Monday)] [--no-send] [--out file]
@@ -206,18 +206,42 @@ def resend(method, path, body=None):
         return json.loads(r.read().decode() or '{}')
 
 
+def find_audience():
+    """The subscriber list, when the RESEND_AUDIENCE_ID secret is not set: the only audience (or segment) in
+    the Resend account, or the one whose name says newsletter / subscribers. None when that is not clear."""
+    for path in ('/audiences', '/segments'):
+        try:
+            rows = resend('GET', path).get('data') or []
+        except urllib.error.HTTPError:
+            continue
+        if len(rows) == 1:
+            return rows[0].get('id')
+        named = [r for r in rows if re.search(r'newsletter|subscri|crowd', r.get('name') or '', re.I)]
+        if len(named) == 1:
+            return named[0].get('id')
+        if rows:
+            notice('Resend 有幾個訂戶名單：' + '、'.join(r.get('name') or '?' for r in rows)
+                   + '。請喺 GitHub 加 RESEND_AUDIENCE_ID 揀邊個')
+            return None
+    return None
+
+
 def send(n, subject, text, html_body):
-    if not os.environ.get('RESEND_API_KEY') or not os.environ.get('RESEND_AUDIENCE_ID'):
-        notice(f'電子報 #{n} 已寫好，但 GitHub 未有 RESEND_API_KEY／RESEND_AUDIENCE_ID，今次冇寄出')
+    if not os.environ.get('RESEND_API_KEY'):
+        notice(f'電子報 #{n} 已寫好，但 GitHub 未有 RESEND_API_KEY，今次冇寄出')
         return None
     name = f'The Crowd Tape weekly #{n}'
     try:
+        audience = os.environ.get('RESEND_AUDIENCE_ID') or find_audience()
+        if not audience:
+            notice(f'電子報 #{n} 已寫好，但搵唔到 Resend 訂戶名單，今次冇寄出')
+            return None
         got = resend('GET', '/broadcasts')
         for b in got.get('data') or []:
             if b.get('name') == name and b.get('status') in ('sent', 'queued', 'scheduled', 'sending'):
                 print(f'newsletter #{n}: Resend already has it ({b.get("status")}), not sending again')
                 return b.get('id')
-        body = {'audience_id': os.environ['RESEND_AUDIENCE_ID'], 'from': FROM, 'subject': subject,
+        body = {'audience_id': audience, 'from': FROM, 'subject': subject,
                 'html': html_body, 'text': text, 'name': name}
         try:
             made = resend('POST', '/broadcasts', body)
