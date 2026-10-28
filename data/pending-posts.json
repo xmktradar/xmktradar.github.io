@@ -2,153 +2,98 @@
  "note": "已抓取但未經 Grok 分析嘅帖，只收股票同宏觀帖（閒聊帖唔寫），有股票代號嘅排最前，等超過 24 個鐘就唔再等。",
  "posts": [
   {
-   "id": "2115428619845550162",
-   "handle": "spotgamma",
-   "name": "SpotGamma",
+   "id": "2115460881567842716",
+   "handle": "RichardMoglen",
+   "name": "Richard Moglen",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-28T13:01:00Z",
-   "url": "https://x.com/spotgamma/status/2115428619845550162",
-   "text": "$GOOGL vs. $MSFT: Two hyperscalers with very different setups. Discover what implied volatility, dealer gamma, and options positioning tell us ahead of Wednesday's earnings.\nhttps://spotgamma.com/googl-msft-earnings-options/",
+   "time_utc": "2026-10-28T15:09:12Z",
+   "url": "https://x.com/RichardMoglen/status/2115460881567842716",
+   "text": "$ELF strong off the open",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVugdWZXsAAIATF.jpg?name=orig"
+   ],
+   "likes": 4,
+   "views": 1024,
+   "cashtags": [
+    "ELF"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115460648809517518",
+   "handle": "OptionsHawk",
+   "name": "Joe Kunkle",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T15:08:16Z",
+   "url": "https://x.com/OptionsHawk/status/2115460648809517518",
+   "text": "$TWST $ABCL $SDGR $TEM very hot today in genomics, drug discovery, also among top IV30 gainers",
    "quoted": null,
    "media": [],
    "likes": 2,
-   "views": 3240,
+   "views": 1544,
    "cashtags": [
-    "GOOGL",
-    "MSFT"
+    "ABCL",
+    "SDGR",
+    "TEM",
+    "TWST"
    ],
    "n_media": 0
   },
   {
-   "id": "2115426383510003857",
-   "handle": "John_Hempton",
-   "name": "John_Hempton",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "Stansberry"
-   },
-   "time_utc": "2026-10-28T12:52:07Z",
-   "url": "https://x.com/John_Hempton/status/2115426383510003857",
-   "text": "@Stansberry @nickchodge $UUUU \n\noh it is you...",
-   "quoted": null,
-   "media": [],
-   "likes": 0,
-   "views": 32,
-   "cashtags": [
-    "UUUU"
-   ],
-   "n_media": 0
-  },
-  {
-   "id": "2115423422742478914",
+   "id": "2115460244398895206",
    "handle": "Mr_Derivatives",
    "name": "Heisenberg",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-28T12:40:21Z",
-   "url": "https://x.com/Mr_Derivatives/status/2115423422742478914",
-   "text": "Happy FOMC, $GOOGL, $MSFT day for those who celebrate.\n\nGonna be fun.",
-   "quoted": null,
+   "time_utc": "2026-10-28T15:06:40Z",
+   "url": "https://x.com/Mr_Derivatives/status/2115460244398895206",
+   "text": "$STX Now green on the day and +10% off the earnings drop from yesterday.",
+   "quoted": {
+    "handle": "Mr_Derivatives",
+    "text": "$STX reports today after hrs.\n\nImplied move is +/- 8.3%\n\nIt has reacted positively to 6 of the last 7 earnings reports!\n\nGiven how far the stock has dipped recently, it's worth a shot here on the neutral to long side right?\n\nSelling PCS's for fun."
+   },
    "media": [],
-   "likes": 0,
-   "views": null,
+   "likes": 21,
+   "views": 6164,
    "cashtags": [
-    "GOOGL",
-    "MSFT"
+    "STX"
    ],
    "n_media": 0
   },
   {
-   "id": "2115423217972339178",
-   "handle": "IUTraders",
-   "name": "Investors Underground",
-   "type": "repost",
-   "reposted_by": "InvestorsLive",
-   "replying_to": null,
-   "time_utc": "2026-10-28T12:39:32Z",
-   "url": "https://x.com/IUTraders/status/2115423217972339178",
-   "text": "Morning Broadcast - Watchlist Prep - $SPY $BTC $QQQ https://x.com/i/broadcasts/1oKMvNPQqkNGQ",
-   "quoted": null,
-   "media": [],
-   "likes": 5,
-   "views": 1565,
-   "cashtags": [
-    "BTC",
-    "QQQ",
-    "SPY"
-   ],
-   "n_media": 0
-  },
-  {
-   "id": "2115420362858979752",
-   "handle": "Stephanie_Link",
-   "name": "Stephanie Link",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-28T12:28:11Z",
-   "url": "https://x.com/Stephanie_Link/status/2115420362858979752",
-   "text": "CEO of $GS:  \"“There's an enormous amount of capital formations that's necessary to build the infrastructure to drive this technology (AI)...there's more demand for compute right now...whether we're going to spend $5T or $10T on the buildout or more, I don't think anybody really knows...\"",
-   "quoted": null,
-   "media": [],
-   "likes": 49,
-   "views": 3737,
-   "cashtags": [
-    "GS"
-   ],
-   "n_media": 0
-  },
-  {
-   "id": "2115419239633068530",
-   "handle": "CJ_Bitcoin",
-   "name": "Chaitanya Jain",
-   "type": "repost",
-   "reposted_by": "saylor",
-   "replying_to": null,
-   "time_utc": "2026-10-28T12:23:43Z",
-   "url": "https://x.com/CJ_Bitcoin/status/2115419239633068530",
-   "text": "$STRC vs $MSTR?\n\nIf the credit works, the equity wins.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/amplify_video_thumb/2115419155637673984/img/TZ0ikHD8kx4BA0GI.jpg"
-   ],
-   "likes": 102,
-   "views": 12792,
-   "cashtags": [
-    "MSTR",
-    "STRC"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2115417697043538002",
+   "id": "2115459613210624361",
    "handle": "scottmelker",
    "name": "The Wolf Of All Streets",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-28T12:17:36Z",
-   "url": "https://x.com/scottmelker/status/2115417697043538002",
-   "text": "RIPPLE STABLECOIN $RLUSD IS COMING TO COINBASE $COIN WITH SUPPORT ACROSS THE XRP LEDGER, ETHEREUM AND BASE",
+   "time_utc": "2026-10-28T15:04:09Z",
+   "url": "https://x.com/scottmelker/status/2115459613210624361",
+   "text": "STRATEGY $MSTR SHAREHOLDERS APPROVE DAILY DIVIDENDS FOR $STRF, $STRC, $STRK AND $STRD, WITH 99.3% OF VOTES CAST IN FAVOR IN PRELIMINARY RESULTS",
    "quoted": null,
    "media": [
-    "https://pbs.twimg.com/media/HVt5KcjW0AA7aJ7.jpg?name=orig",
-    "https://pbs.twimg.com/media/HVt5KcpXIAANy21.jpg?name=orig"
+    "https://pbs.twimg.com/media/HVufQ29WcAALdZ_.jpg?name=orig",
+    "https://pbs.twimg.com/media/HVufQ38WgAA_Egh.jpg?name=orig"
    ],
-   "likes": 198,
-   "views": 10465,
+   "likes": 23,
+   "views": 5031,
    "cashtags": [
-    "COIN",
-    "RLUSD"
+    "MSTR",
+    "STRC",
+    "STRD",
+    "STRF",
+    "STRK"
    ],
    "n_media": 2
   },
   {
-   "id": "2115417553904251384",
+   "id": "2115457324579954997",
    "handle": "leadlagreport",
    "name": "Michael A. Gayed, CFA",
    "type": "reply",
@@ -156,276 +101,1112 @@
    "replying_to": {
     "screen_name": "leadlagreport"
    },
-   "time_utc": "2026-10-28T12:17:02Z",
-   "url": "https://x.com/leadlagreport/status/2115417553904251384",
+   "time_utc": "2026-10-28T14:55:04Z",
+   "url": "https://x.com/leadlagreport/status/2115457324579954997",
    "text": "Learn more about the ATAC Credit Rotation ETF $JOJO at https://atacfunds.com/jojo/\n\nLead-Lag Publishing, LLC is not an affiliate of Tidal/Toroso or ACA/Foreside.",
    "quoted": null,
    "media": [],
    "likes": 1,
-   "views": 1657,
+   "views": 980,
    "cashtags": [
     "JOJO"
    ],
    "n_media": 0
   },
   {
-   "id": "2115417552004215001",
+   "id": "2115457322734453022",
    "handle": "leadlagreport",
    "name": "Michael A. Gayed, CFA",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-28T12:17:01Z",
-   "url": "https://x.com/leadlagreport/status/2115417552004215001",
-   "text": "Tariffs. Trade wars. Geopolitical escalation. $JOJO rotates when the signal says it's time.",
+   "time_utc": "2026-10-28T14:55:03Z",
+   "url": "https://x.com/leadlagreport/status/2115457322734453022",
+   "text": "Financial advisors: your clients' bond portfolios are probably static. Same exposure in every environment. $JOJO rotates between high yield and Treasuries. That's differentiation.",
    "quoted": null,
    "media": [
-    "https://pbs.twimg.com/media/HVt5DbGXYAAhUk_.jpg?name=orig"
+    "https://pbs.twimg.com/media/HVudOXXW8AAyTGu.jpg?name=orig"
    ],
-   "likes": 6,
-   "views": 4554,
+   "likes": 2,
+   "views": 2859,
    "cashtags": [
     "JOJO"
    ],
    "n_media": 1
   },
   {
-   "id": "2115415253794361360",
-   "handle": "OptionsHawk",
-   "name": "Joe Kunkle",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-28T12:07:53Z",
-   "url": "https://x.com/OptionsHawk/status/2115415253794361360",
-   "text": "$SKHY Nov 155's should do well w/ this rip",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVt29QwaAAAQjkj.jpg?name=orig"
-   ],
-   "likes": 1,
-   "views": 2488,
-   "cashtags": [
-    "SKHY"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2115415246256910824",
-   "handle": "OptionsMike",
-   "name": "Options Mike",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "TradrETFs"
-   },
-   "time_utc": "2026-10-28T12:07:51Z",
-   "url": "https://x.com/OptionsMike/status/2115415246256910824",
-   "text": "@TradrETFs Love all the options to trade $AXTI",
-   "quoted": null,
-   "media": [],
-   "likes": 0,
-   "views": 104,
-   "cashtags": [
-    "AXTI"
-   ],
-   "n_media": 0
-  },
-  {
-   "id": "2115414948272853266",
-   "handle": "OptionsHawk",
-   "name": "Joe Kunkle",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-28T12:06:40Z",
-   "url": "https://x.com/OptionsHawk/status/2115414948272853266",
-   "text": "$APH big beat/buyback also jumps in the AI trade, nice Dec. action there into lows",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVt2rkVaUAEvGrh.jpg?name=orig"
-   ],
-   "likes": 4,
-   "views": 2401,
-   "cashtags": [
-    "APH"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2115414347635929442",
-   "handle": "StockSavvyShay",
-   "name": "Shay Boloor",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-28T12:04:17Z",
-   "url": "https://x.com/StockSavvyShay/status/2115414347635929442",
-   "text": "$OSS ABSOLUTELY CRUSHED THEIR Q3 EARNINGS\n\n• Revenue $12.6M vs Est. $10.9M\n• EPS $0.01 vs Est. $0.01\n• Gross Margin 43% vs Est. 38%\n• YTD book-to-bill reached 1.5x\n\nFY26 Guidance\n• Revenue 40% vs. Est. 28%\n• Gross Margin 43% vs Est. 41%",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVt2CWAaQAEx32D.jpg?name=orig"
-   ],
-   "likes": 129,
-   "views": 18214,
-   "cashtags": [
-    "OSS"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2115414091153965547",
-   "handle": "bespokeinvest",
-   "name": "Bespoke",
+   "id": "2115455129252245783",
+   "handle": "phongle",
+   "name": "Phong Le",
    "type": "repost",
-   "reposted_by": "carlquintanilla",
+   "reposted_by": "saylor",
    "replying_to": null,
-   "time_utc": "2026-10-28T12:03:16Z",
-   "url": "https://x.com/bespokeinvest/status/2115414091153965547",
-   "text": "As the Mega-Caps Turn...\n\nBig swings over the last couple of weeks.  \n\nTesla $TSLA is now the farthest above its 50-DMA at 11.3%, while Meta $META and Alphabet $GOOGL are the farthest below.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVt1qc7WMAERDGY.png?name=orig"
-   ],
-   "likes": 11,
-   "views": 6642,
-   "cashtags": [
-    "GOOGL",
-    "META",
-    "TSLA"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2115413268609306906",
-   "handle": "OptionsHawk",
-   "name": "Joe Kunkle",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-28T12:00:00Z",
-   "url": "https://x.com/OptionsHawk/status/2115413268609306906",
-   "text": "$SYK nice bull flag built into earnings tomorrow night, 5500 Nov. 310 calls that bought remain in OI +190% from 10/8 purchase",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVt1F_7bYAI9PLx.jpg?name=orig"
-   ],
-   "likes": 2,
-   "views": 2368,
-   "cashtags": [
-    "SYK"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2115411365611597825",
-   "handle": "StockSavvyShay",
-   "name": "Shay Boloor",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-28T11:52:26Z",
-   "url": "https://x.com/StockSavvyShay/status/2115411365611597825",
-   "text": "Hello $SKHY  😳",
+   "time_utc": "2026-10-28T14:46:20Z",
+   "url": "https://x.com/phongle/status/2115455129252245783",
+   "text": "This is a powerful upgrade to $STRC and digital credit. Thank you.",
    "quoted": {
-    "handle": "StockSavvyShay",
-    "text": "$SKHY ABSOLUTELY CRUSGED THEIR Q3 EARNINGS\n\n• Revenue: $78.9B vs. Est. $74.8B\n• Operating profit: $62.8B vs. Est. $58.5B \n• Gross Margin: 86% vs. Est. 85% \n• DRAM ASP: +28% QoQ\n• NAND ASP: +25% QoQ\n• Cash: $86.3B\n\nQ4 Guidance\n• DRAM shipments: +25% QoQ\n• NAND shipments: +5% QoQ\n\nFY27 Guidance\n• DRAM demand: +25% YoY\n• NAND demand: +18% YoY\n\nSigned 5-year LTAs with 14 major customers securing over 50% of its 2027 and 2028 capacity."
+    "handle": "Strategy",
+    "text": "$MSTR shareholders have approved the Daily Dividends amendment. Preliminary results show 99.3% of votes cast were in favor. The amendment enables $STRF, $STRC, $STRK and $STRD to accrue dividends every calendar day. Thank you to all who voted.\nhttps://www.strategy.com/press/strategy-announces-approval-of-the-daily-dividends-amendment_10-28-2026"
    },
    "media": [
-    "https://pbs.twimg.com/media/HVtzbUybAAEYzJe.jpg?name=orig"
+    "https://pbs.twimg.com/media/HVua9sBWgAArKdv.jpg?name=orig"
    ],
-   "likes": 165,
-   "views": 19290,
+   "likes": 251,
+   "views": 11942,
    "cashtags": [
-    "SKHY"
+    "STRC"
    ],
    "n_media": 1
   },
   {
-   "id": "2115408946777530655",
-   "handle": "OptionsHawk",
-   "name": "Joe Kunkle",
+   "id": "2115454792126382090",
+   "handle": "sentimentrader",
+   "name": "SentimenTrader",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-28T11:42:49Z",
-   "url": "https://x.com/OptionsHawk/status/2115408946777530655",
-   "text": "We are in the middle of the largest infrastructure buildout and it's accelerating\n\n$VRT",
+   "time_utc": "2026-10-28T14:45:00Z",
+   "url": "https://x.com/sentimentrader/status/2115454792126382090",
+   "text": "High yield bond sentiment reached 81.52 on Oct. 27, nearly 30 points above $SPY sentiment.A gap this wide has occurred on just 47 of 1,966 trading days since 2019.\nhttps://sentimentrader.com/?utm_source=twitter&utm_medium=content&utm_campaign=lightapi&utm_content=unusual_20261028_hygoptixvsspyoptix",
    "quoted": null,
-   "media": [],
-   "likes": 18,
-   "views": 3472,
-   "cashtags": [
-    "VRT"
+   "media": [
+    "https://pbs.twimg.com/media/HVr8VzmaMAAK9fN.jpg?name=orig"
    ],
-   "n_media": 0
+   "likes": 10,
+   "views": 3919,
+   "cashtags": [
+    "SPY"
+   ],
+   "n_media": 1
   },
   {
-   "id": "2115408309469815074",
+   "id": "2115454203975942454",
+   "handle": "TrendSpider",
+   "name": "TrendSpider",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T14:42:40Z",
+   "url": "https://x.com/TrendSpider/status/2115454203975942454",
+   "text": "Pelosi favorite firmly in Stage 2 🟢\n$TEM",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuaAfhXEAA4SXy.jpg?name=orig"
+   ],
+   "likes": 58,
+   "views": 14785,
+   "cashtags": [
+    "TEM"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115453879957790811",
    "handle": "StockSavvyShay",
    "name": "Shay Boloor",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-28T11:40:18Z",
-   "url": "https://x.com/StockSavvyShay/status/2115408309469815074",
-   "text": "Deutsche Bank estimates $NVDA GB300 GPUs can rent for up to ~$14 an hour versus just $3.50 for H100s with some contracts generating ~$60M per MW annually.\n\nThat puts 1 GW of AI compute at ~$48B in annual revenue based on blended pricing which helps explain why securing power is becoming so valuable for $NBIS, $CRWV and $SPCX.",
-   "quoted": null,
+   "time_utc": "2026-10-28T14:41:22Z",
+   "url": "https://x.com/StockSavvyShay/status/2115453879957790811",
+   "text": "$ANT has more cash than almost every company in America with $132B sitting on its balance sheet before its IPO.\n\nSounds like a ridiculous amount until you realize it has already committed hundreds of billions to chips and compute from $AVGO, $GOOGL and $SPCX.",
+   "quoted": {
+    "handle": "TradrETFs",
+    "text": "Artificial intelligence meets human conviction. AI may be transforming the world, but the decision to position long or short on $ANT is still yours.\n\nMeet $ANTT and $ANTZ, 2X Long and 2X Short Anthropic Daily ETFs from Tradr. You’ll have two simple ways to express your daily"
+   },
    "media": [
-    "https://pbs.twimg.com/media/HVtwpboa4AAOhCW.png?name=orig"
+    "https://pbs.twimg.com/media/HVuaBbIbEAAHzxP.png?name=orig"
    ],
-   "likes": 162,
-   "views": 20628,
+   "likes": 74,
+   "views": 16471,
    "cashtags": [
-    "CRWV",
-    "NBIS",
-    "NVDA",
+    "ANT",
+    "AVGO",
+    "GOOGL",
     "SPCX"
    ],
    "n_media": 1
   },
   {
-   "id": "2115407659998286158",
-   "handle": "RedDogT3",
-   "name": "Scott Redler",
+   "id": "2115453708104589529",
+   "handle": "OptionsHawk",
+   "name": "Joe Kunkle",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-28T11:37:43Z",
-   "url": "https://x.com/RedDogT3/status/2115407659998286158",
-   "text": "Mostly green arrows ahead of the #FOMC as semis bounce. $SPX has had a solid move, but with peak earnings and the Fed ahead, watching 7776 resistance and staying selective.",
+   "time_utc": "2026-10-28T14:40:41Z",
+   "url": "https://x.com/OptionsHawk/status/2115453708104589529",
+   "text": "$WAT among long list of LST names wrote up last Q as the cycle shifts, what a sweet move! Group is strongest rel. strength out there",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuZ71aaIAAwR4e.png?name=orig"
+   ],
+   "likes": 0,
+   "views": 2702,
+   "cashtags": [
+    "WAT"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115453023069909019",
+   "handle": "KeithMcCullough",
+   "name": "Keith McCullough",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T14:37:58Z",
+   "url": "https://x.com/KeithMcCullough/status/2115453023069909019",
+   "text": "$OKTA remains our #1 ranked Signal Strength Stocks pick @HedgeyeComm",
+   "quoted": null,
+   "media": [],
+   "likes": 5,
+   "views": 2607,
+   "cashtags": [
+    "OKTA"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2115452905499287771",
+   "handle": "StockSavvyShay",
+   "name": "Shay Boloor",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "VanquishTrader"
+   },
+   "time_utc": "2026-10-28T14:37:30Z",
+   "url": "https://x.com/StockSavvyShay/status/2115452905499287771",
+   "text": "@VanquishTrader Good $ACHR read and I also think the $BA acquiring 20% was a validation moment",
+   "quoted": null,
+   "media": [],
+   "likes": 7,
+   "views": 1309,
+   "cashtags": [
+    "ACHR",
+    "BA"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2115452491282227649",
+   "handle": "jonnajarian",
+   "name": "Jon Najarian",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T14:35:51Z",
+   "url": "https://x.com/jonnajarian/status/2115452491282227649",
+   "text": "Rebel’s Edge 🏴‍☠️ 1pm Line up: #VIX $VRT $ENPH $SEDG $NXPI $HOOD Brewers up 3-1, can the Rays force a Game 6? #WANNABET 🏈 NAJARIAN SPORTS 🏴‍☠️ with @petenajarian Which three college football teams are still undefeated, and is Miami v Notre Dame the most dangerous game left? Are the Colts starting a fire sale with Buckner to the 49ers and Nelson to Seattle, and where does Jonathan Taylor land? #ITSNOTANOPTION 📙",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuYxaxWQAAueT_.jpg?name=orig"
+   ],
+   "likes": 2,
+   "views": 1964,
+   "cashtags": [
+    "ENPH",
+    "HOOD",
+    "NXPI",
+    "SEDG",
+    "VRT"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115452295387533437",
+   "handle": "saylor",
+   "name": "Michael Saylor",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "saylor"
+   },
+   "time_utc": "2026-10-28T14:35:05Z",
+   "url": "https://x.com/saylor/status/2115452295387533437",
+   "text": "Under the new cadence, every calendar day will be a record date, with payment on the next business day. For $STRC, the first record and payment dates will be Nov 1 and Nov 2, respectively. For $STRF, $STRK and $STRD, they will be Jan 1 and Jan 4, respectively.",
+   "quoted": null,
+   "media": [],
+   "likes": 232,
+   "views": 15227,
+   "cashtags": [
+    "STRC",
+    "STRD",
+    "STRF",
+    "STRK"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2115451822915928244",
+   "handle": "saylor",
+   "name": "Michael Saylor",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T14:33:12Z",
+   "url": "https://x.com/saylor/status/2115451822915928244",
+   "text": "$MSTR shareholders have approved the Daily Dividends amendment. Preliminary results show 99.3% of votes cast were in favor. The amendment enables $STRF, $STRC, $STRK and $STRD to accrue dividends every calendar day. Thank you to all who voted. https://www.strategy.com/press/strategy-announces-approval-of-the-daily-dividends-amendment_10-28-2026",
+   "quoted": null,
+   "media": [],
+   "likes": 1607,
+   "views": 110669,
+   "cashtags": [
+    "MSTR",
+    "STRC",
+    "STRD",
+    "STRF",
+    "STRK"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2115451258475884861",
+   "handle": "OptionsHawk",
+   "name": "Joe Kunkle",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T14:30:57Z",
+   "url": "https://x.com/OptionsHawk/status/2115451258475884861",
+   "text": "$ARKG almost back to highs as people doubting the Genomics revolution",
+   "quoted": null,
+   "media": [],
+   "likes": 3,
+   "views": 2962,
+   "cashtags": [
+    "ARKG"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2115448506257395891",
+   "handle": "StockSavvyShay",
+   "name": "Shay Boloor",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T14:20:01Z",
+   "url": "https://x.com/StockSavvyShay/status/2115448506257395891",
+   "text": "One of $ASTS biggest advantages is that AT&T and Verizon already control ~670 MHz of spectrum combined and serve over 300M mobile customers.\n\nAnd because ASTS can use their compatible low-band spectrum to fill coverage gaps rather than replace cell towers it doesn't need nearly as much satellite capacity to scale.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuT6YLaUAIqy9T.jpg?name=orig"
+   ],
+   "likes": 209,
+   "views": 20750,
+   "cashtags": [
+    "ASTS"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115443574531584034",
+   "handle": "RichardMoglen",
+   "name": "Richard Moglen",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T14:00:25Z",
+   "url": "https://x.com/RichardMoglen/status/2115443574531584034",
+   "text": "$NTRA pop above the range",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuQtwDWQAATEO1.jpg?name=orig"
+   ],
+   "likes": 19,
+   "views": 3851,
+   "cashtags": [
+    "NTRA"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115443507875700776",
+   "handle": "RichardMoglen",
+   "name": "Richard Moglen",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T14:00:09Z",
+   "url": "https://x.com/RichardMoglen/status/2115443507875700776",
+   "text": "$SN In this range on this pivot",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuQp9IW4AEL5O8.jpg?name=orig"
+   ],
+   "likes": 23,
+   "views": 3698,
+   "cashtags": [
+    "SN"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115443396949012902",
+   "handle": "RichardMoglen",
+   "name": "Richard Moglen",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:59:43Z",
+   "url": "https://x.com/RichardMoglen/status/2115443396949012902",
+   "text": "$BSP a software name i'm still watching",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuQjaTWIAAIXpw.jpg?name=orig"
+   ],
+   "likes": 16,
+   "views": 3762,
+   "cashtags": [
+    "BSP"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115443242195952013",
+   "handle": "RichardMoglen",
+   "name": "Richard Moglen",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:59:06Z",
+   "url": "https://x.com/RichardMoglen/status/2115443242195952013",
+   "text": "$SPCX moving lower from the range at the IPO AVWAP",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuQaW3WoAA-h_t.jpg?name=orig"
+   ],
+   "likes": 23,
+   "views": 4052,
+   "cashtags": [
+    "SPCX"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115442268563980359",
+   "handle": "Mr_Derivatives",
+   "name": "Heisenberg",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:55:14Z",
+   "url": "https://x.com/Mr_Derivatives/status/2115442268563980359",
+   "text": "$SOFI $17.25’s…. Atta boi",
    "quoted": {
-    "handle": "RedDogT3",
-    "text": "⏰ Scott Redler’s #630club - LIVE Premarket Stock Market Update ➡️ $NVDA $MU $SPCX $SNDK https://x.com/i/broadcasts/1qGvvermPRnGB"
+    "handle": "Mr_Derivatives",
+    "text": "$SOFI A Fintwit fave with earnings Tuesday BMO.\n\nImplied: -/+ 9.6%\n\nLast 3 quarters reactions:\n\n-8.9%\n-15.4%\n-6.4%\n\nAll three of the said above were announced when the name was at much prices.\n\nSOFI currently trading near 1.5 yr lows.\n\nI mean it’s so bad, that maybe it’s good?"
+   },
+   "media": [],
+   "likes": 129,
+   "views": 22131,
+   "cashtags": [
+    "SOFI"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2115441934030590352",
+   "handle": "OptionsHawk",
+   "name": "Joe Kunkle",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:53:54Z",
+   "url": "https://x.com/OptionsHawk/status/2115441934030590352",
+   "text": "Knowing the right direction is key, none of the other providers get in right, sweet climb in $BIIB !",
+   "quoted": {
+    "handle": "OptionsHawk",
+    "text": "Biogen $BIIB 200 March $220 short puts open $13.50, recent write up\n\nI imagine most every flow app says these bought... Hawk App algo latest version upgrade has cracked the code, it is insane!"
    },
    "media": [
-    "https://pbs.twimg.com/media/HVtv9hJWsAAcBtn.jpg?name=orig"
+    "https://pbs.twimg.com/media/HVuPOIjaoAAOT_y.jpg?name=orig"
    ],
-   "likes": 12,
-   "views": 4735,
+   "likes": 3,
+   "views": 3637,
+   "cashtags": [
+    "BIIB"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115441893630976085",
+   "handle": "Stephanie_Link",
+   "name": "Stephanie Link",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:53:45Z",
+   "url": "https://x.com/Stephanie_Link/status/2115441893630976085",
+   "text": "$MIR: acceleration in Nuclear and Saftey revenue and another step up in backlog up 33% ex M&A.  Total orders up 85% & up 62% ex M&A.  Raised 2026 organic growth 7-8% vs 5-6% w in line margins.  New nuclear cycle in early stages...",
+   "quoted": null,
+   "media": [],
+   "likes": 34,
+   "views": 4368,
+   "cashtags": [
+    "MIR"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2115441796776161526",
+   "handle": "Mr_Derivatives",
+   "name": "Heisenberg",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:53:22Z",
+   "url": "https://x.com/Mr_Derivatives/status/2115441796776161526",
+   "text": "$NFLX was once a $600B market cap company at its peak in June 2025. That wasn’t even that long ago!\n\nToday?\n\nJust $250B….\n\nI mean at some point right?!",
+   "quoted": null,
+   "media": [],
+   "likes": 205,
+   "views": 28819,
+   "cashtags": [
+    "NFLX"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2115441714081013914",
+   "handle": "leadlagreport",
+   "name": "Michael A. Gayed, CFA",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "leadlagreport"
+   },
+   "time_utc": "2026-10-28T13:53:02Z",
+   "url": "https://x.com/leadlagreport/status/2115441714081013914",
+   "text": "Learn more about $FMKT at http://freemarketsetf.com.\n\nThe subadvisors, Point Bridge, SYKON, and Tactical Rotation Management, use various screening tools to help identify companies that fit the Fund's investment strategy.  Positions are determined by what stocks the investment committee believes likely benefit the most from deregulation.\n\nLead-Lag Publishing, LLC is not an affiliate of Tidal/Toroso, Tactical Rotation Management, LLC, SYKON Capital, Point Bridge Capital, LLC or ACA/Foreside.",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 1755,
+   "cashtags": [
+    "FMKT"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2115441711786684555",
+   "handle": "leadlagreport",
+   "name": "Michael A. Gayed, CFA",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:53:01Z",
+   "url": "https://x.com/leadlagreport/status/2115441711786684555",
+   "text": "Is your portfolio ready for a deregulation-driven rally? The Free Markets ETF ($FMKT) identifies U.S. companies that stand to gain as regulatory burdens fall.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuPBt5XQAAI2eQ.jpg?name=orig"
+   ],
+   "likes": 5,
+   "views": 4680,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2115441104598528263",
+   "handle": "OptionsHawk",
+   "name": "Joe Kunkle",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:50:36Z",
+   "url": "https://x.com/OptionsHawk/status/2115441104598528263",
+   "text": "$GMAB someone had a good nose...",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuOeIqaIAAx4X1.png?name=orig"
+   ],
+   "likes": 7,
+   "views": 3503,
+   "cashtags": [
+    "GMAB"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115440841003020795",
+   "handle": "SJosephBurns",
+   "name": "Steve Burns",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:49:34Z",
+   "url": "https://x.com/SJosephBurns/status/2115440841003020795",
+   "text": "The stock market is waiting on the Fed interest rate decision, along with the $GOOGL and $MSFT earnings, to pick its next direction. This should be a huge pivotal market day.",
+   "quoted": null,
+   "media": [],
+   "likes": 20,
+   "views": 6838,
+   "cashtags": [
+    "GOOGL",
+    "MSFT"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2115440227561193488",
+   "handle": "danielnewmanUV",
+   "name": "Daniel Newman",
+   "type": "repost",
+   "reposted_by": "StockSavvyShay",
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:47:07Z",
+   "url": "https://x.com/danielnewmanUV/status/2115440227561193488",
+   "text": "$MSFT number to watch will be Cloud (AI) growth closely followed by its capex guide. Expecting a beat on Azure and to see capex tick up slightly. Backlog likely to see a big YoY jump as well. Microsoft has the best balance sheet of the buildout. Built on cash flow. 👀",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2115440089216192512/img/bslrk-9q9c2w6ZKy.jpg"
+   ],
+   "likes": 41,
+   "views": 8461,
+   "cashtags": [
+    "MSFT"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115439611639951448",
+   "handle": "Couzin_Vinny",
+   "name": "Cousin_Vinny",
+   "type": "repost",
+   "reposted_by": "spotgamma",
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:44:41Z",
+   "url": "https://x.com/Couzin_Vinny/status/2115439611639951448",
+   "text": "$SPX alot of negative gamma below - lack of support\n\n@spotgamma S/R levels shown - will change throughout the day so make a note of early 0DTE levels",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuNHMrW4AAOrPh.jpg?name=orig"
+   ],
+   "likes": 30,
+   "views": 4324,
    "cashtags": [
     "SPX"
    ],
    "n_media": 1
   },
   {
-   "id": "2115407511901651230",
-   "handle": "Stephanie_Link",
-   "name": "Stephanie Link",
+   "id": "2115438706714948040",
+   "handle": "OptionsHawk",
+   "name": "Joe Kunkle",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-28T11:37:07Z",
-   "url": "https://x.com/Stephanie_Link/status/2115407511901651230",
-   "text": "$GEV: Total gas contract backlog expanded from 116GW to 122GW Q/Q with YE backlog now seen at 130GW+. Electrification orders came in at $5.4bn BtB of ~1.4x. And FCF $5.4B vs $1.5B expected w guide $16-$17B - insane.",
+   "time_utc": "2026-10-28T13:41:05Z",
+   "url": "https://x.com/OptionsHawk/status/2115438706714948040",
+   "text": "$PACS , still own it",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuMPhobgAAv7H8.jpg?name=orig"
+   ],
+   "likes": 0,
+   "views": 3457,
+   "cashtags": [
+    "PACS"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115438326220210361",
+   "handle": "OptionsHawk",
+   "name": "Joe Kunkle",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:39:34Z",
+   "url": "https://x.com/OptionsHawk/status/2115438326220210361",
+   "text": "$A flag breakout, big accumulation there since Aug",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuL7b3a4AA3_4r.jpg?name=orig"
+   ],
+   "likes": 2,
+   "views": 3341,
+   "cashtags": [
+    "A"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115438013471998398",
+   "handle": "StockSavvyShay",
+   "name": "Shay Boloor",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:38:20Z",
+   "url": "https://x.com/StockSavvyShay/status/2115438013471998398",
+   "text": "$SOFI FLYING ABOVE $17  👀",
+   "quoted": {
+    "handle": "StockSavvyShay",
+    "text": "The latest episode of THE DEEP DIVE just dropped where Tanner, Brad and I spend an hour breaking down $SOFI and why the stock is still caught between two identities.\n\nSoFi is being valued like a tech platform but still trades like a lender so member growth and product adoption can improve while rates and credit sentiment still drive the stock."
+   },
+   "media": [
+    "https://pbs.twimg.com/media/HVuLqatboAALlp4.jpg?name=orig"
+   ],
+   "likes": 324,
+   "views": 26979,
+   "cashtags": [
+    "SOFI"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115437430497038372",
+   "handle": "APompliano",
+   "name": "Anthony Pompliano 🌪",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:36:01Z",
+   "url": "https://x.com/APompliano/status/2115437430497038372",
+   "text": "Today we are launching the ability to price your wealth and assets in bitcoin on @cfosilvia. \n\nDollars are devalued and distort the true picture of your finances.\n\nDenominating your wealth in $BTC gives a clearer picture of how your wealth is growing.\n\nTry it free: http://silvia.com",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuK71ZWAAI2syf.jpg"
+   ],
+   "likes": 67,
+   "views": 9247,
+   "cashtags": [
+    "BTC"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115437000329134509",
+   "handle": "ThetaWarrior",
+   "name": "Theta Warrior",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:34:18Z",
+   "url": "https://x.com/ThetaWarrior/status/2115437000329134509",
+   "text": "$SKHY  Sweepers cashing in this morning.  💰\n\nTotal Profit = +$4,061,300",
+   "quoted": {
+    "handle": "ThetaWarrior",
+    "text": "$SKHY REPEAT ACTIVITY  ⚡⚡\n\n(Earnings 10/27)"
+   },
+   "media": [],
+   "likes": 15,
+   "views": 6054,
+   "cashtags": [
+    "SKHY"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2115436689443213605",
+   "handle": "munster_gene",
+   "name": "Gene Munster",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:33:04Z",
+   "url": "https://x.com/munster_gene/status/2115436689443213605",
+   "text": "We're in the early stages of a multi year Mac super cycle. \n\nThis morning, $AAPL announced some Mac updates, including 14-inch MacBook Pro and iMac models (M6 chips). Still waiting on the first touchscreen Mac announcement later this morning.\n\nPricing is unchanged today. Keep in mind that late in June they raised the price of the MacBook by 18% and the iMac by 16%.\n\nMy take: There is upside to the Mac over the next two years. Mac has gone from 8.6% of revenue in June 2025 to 9.5% in June 2026. Last quarter it grew 29%. The Street is expecting 12% y/y in Sep ’26, going to 6% growth in FY27 and FY28.\n\nMost important: I believe we are in the early stages of a multi-year AI-powered hardware upgrade cycle. Consumers and businesses will need to buy new hardware, even at higher prices, to fully leverage AI. That’s good for Mac growth. I expect FY27 Mac to grow above 10% (Street at 6%) and FY28 above 10% (Street at 6%).",
    "quoted": null,
    "media": [],
-   "likes": 70,
-   "views": 5859,
+   "likes": 79,
+   "views": 10387,
+   "cashtags": [
+    "AAPL"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2115436391714681100",
+   "handle": "scottmelker",
+   "name": "The Wolf Of All Streets",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:31:53Z",
+   "url": "https://x.com/scottmelker/status/2115436391714681100",
+   "text": "JPMORGAN $JPM, COCA-COLA $KO AND DELL $DELL OBJECT TO TOKENIZED TRADING OF THEIR SHARES ON OKXICE, BRINGING OBJECTIONS TO 33",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuKDpAXkAEfC6-.png?name=orig",
+    "https://pbs.twimg.com/media/HVuKDpFWEAAFZkk.png?name=orig"
+   ],
+   "likes": 31,
+   "views": 11155,
+   "cashtags": [
+    "DELL",
+    "JPM",
+    "KO"
+   ],
+   "n_media": 2
+  },
+  {
+   "id": "2115435608277712955",
+   "handle": "OptionsHawk",
+   "name": "Joe Kunkle",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:28:46Z",
+   "url": "https://x.com/OptionsHawk/status/2115435608277712955",
+   "text": "$AXGN up 20% on results has good size in Nov. OI",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuJcS-bwAAUIZW.jpg?name=orig"
+   ],
+   "likes": 0,
+   "views": 3269,
+   "cashtags": [
+    "AXGN"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115435502904246611",
+   "handle": "StockSavvyShay",
+   "name": "Shay Boloor",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:28:21Z",
+   "url": "https://x.com/StockSavvyShay/status/2115435502904246611",
+   "text": "I think we're watching the start of $SPCX profitability S-curve with quarterly profit projected to jump from $2.8B in Q3 to over $21B by end of 2027. \n\nThat's nearly an 8x increase driven by AI compute pricing above $50 per watt annually with paybacks under a year as more high-margin capacity comes online.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuIg67bEAA9yDc.jpg?name=orig"
+   ],
+   "likes": 218,
+   "views": 28881,
+   "cashtags": [
+    "SPCX"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115434956524597318",
+   "handle": "RedDogT3",
+   "name": "Scott Redler",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:26:11Z",
+   "url": "https://x.com/RedDogT3/status/2115434956524597318",
+   "text": "$smh glance as this is Day#4",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuI4X9XYAAIOc8.jpg?name=orig"
+   ],
+   "likes": 16,
+   "views": 5768,
+   "cashtags": [
+    "SMH"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115433908409880618",
+   "handle": "ripster47",
+   "name": "Ripster",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:22:01Z",
+   "url": "https://x.com/ripster47/status/2115433908409880618",
+   "text": "Market Gapping up into FOMC, $GOOGL $MSFT Earnings\n\nLot of our Swings up nicely helping portfolio $NBIS $BE $CRDO $SOXL \n\nOur top picks $SKHY $MXL $MU Also doing good\n\nWatch VIX 17 today",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuH5yhXYAAwFRd.jpg?name=orig"
+   ],
+   "likes": 19,
+   "views": 15613,
+   "cashtags": [
+    "BE",
+    "CRDO",
+    "GOOGL",
+    "MSFT",
+    "MU",
+    "MXL",
+    "NBIS",
+    "SKHY",
+    "SOXL"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115433259349795033",
+   "handle": "BjerkeOy",
+   "name": "Oyvind Bjerke",
+   "type": "repost",
+   "reposted_by": "saxena_puru",
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:19:26Z",
+   "url": "https://x.com/BjerkeOy/status/2115433259349795033",
+   "text": "SK Hynix Q3 Highlights $SKHY \n\n• Revenue +328% YoY and +32% QoQ.\n• Operating profit +632% YoY and +38% QoQ.\n• LTAs with 14 customers, typically lasting 5 years, cover >50% of 2027–28 capacity.\n• DRAM/HBM effectively sold out through 2029.\n• To manage the risk of oversupply in the future, they are building fab shells first and will open clean rooms in phases to match demand.",
+   "quoted": null,
+   "media": [],
+   "likes": 15,
+   "views": 4189,
+   "cashtags": [
+    "SKHY"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2115431843420135916",
+   "handle": "RedDogT3",
+   "name": "Scott Redler",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "RedDogT3"
+   },
+   "time_utc": "2026-10-28T13:13:48Z",
+   "url": "https://x.com/RedDogT3/status/2115431843420135916",
+   "text": "Pick up my newsletter tomorrow.\n\n➡️ https://t3live.com/rd\n\nLots to talk about post-FOMC $GOOGL $MSFT $KLAC $NOW and ahead of $AMZN $INTC",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/tweet_video_thumb/HVuGDA5XkAI1otX.jpg"
+   ],
+   "likes": 5,
+   "views": 2067,
+   "cashtags": [
+    "AMZN",
+    "GOOGL",
+    "INTC",
+    "KLAC",
+    "MSFT",
+    "NOW"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115431834469167469",
+   "handle": "RedDogT3",
+   "name": "Scott Redler",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:13:46Z",
+   "url": "https://x.com/RedDogT3/status/2115431834469167469",
+   "text": "📺 DON'T CHASE THE RALLY TODAY! THE FED COULD SURPRISE + $TSLA NEW UPTREND? + BROKEN BOUNCES ARE EVERYWHERE + $GOOGL & $AMZN INTO EARNINGS\n\nAfter weeks of frustrating, choppy action, the market is finally showing some follow-through.\n\n$SPY and $QQQ have delivered three consecutive constructive sessions, taking out Friday's highs on Monday and Monday's highs on Tuesday.\n\nWe can finally hold positions overnight, manage winners, and benefit from sustained momentum rather than constant reversals.\n\nBUT don't confuse three good days with a confirmed new uptrend!\n\n*\n\n$SPY remains trapped in a trading range dating back to August 4. The $771 area is an important level to watch, and another push higher could provide an opportunity to trim positions before a potential reversal.\n\nToday's FOMC announcement at 2 p.m. is the next major test.\n\nMarkets are pricing in roughly a 90% probability of no rate change, but unexpectedly hawkish commentary from Fed Chair Warsh could trigger selling.\n\nI would reduce some exposure ahead of the announcement rather than chasing extended moves.\n\n*\n\n$TSLA is one of the few stocks showing something more meaningful than an oversold bounce.\n\n#Tesla broke through $388 on Monday, cleared its downtrend, and pushed above $397 after building a larger consolidation pattern.\n\nWith the stock above its major moving averages, this looks like a genuine macro breakout that could develop into a new active trading sequence.\n\nHowever, #TSLA is approaching Day 4 of its advance. I prefer buying on Days 1 and 2, trimming on Day 3, and retaining some exposure if momentum continues. Chasing after several strong sessions carries considerably more risk.\n\n*\n\nMeanwhile, broken bounces are everywhere!\n\n$NVDA, $MU, $SNDK, $NBIS, and many other AI stocks have delivered impressive rebounds, but their larger technical structures remain damaged.\n\nThese moves can generate excellent tactical opportunities, yet they're not necessarily the beginning of sustainable uptrends.\n\nThat's what separates Tesla's breakout from much of the semiconductor recovery.\n\n*\n\n$GOOGL is bouncing ahead of earnings, but I am not interested in holding it through the announcement.\n\nThe stock remains technically challenged, with its 200-day moving average near $327 representing an important reference point. A short-term recovery doesn't eliminate earnings risk.\n\n$AMZN tells a similar story.\n\nPrevious earnings rallies initially looked promising, even forming apparent bull flags, only to break down. Now it's recovering again, but sustained follow-through remains unproven.\n\n*\n\n$SPCX is also trying to regain momentum and reclaim its moving averages, potentially setting up a gap fill.\n\nHowever, significant share unlocks and future capital requirements raise dilution concerns.\n\nI think it may need more time to rebuild a sustainable trend, with $140.60 serving as an important risk-management level for swing traders.\n\n*\n\nThe takeaway? Market conditions are improving, and trading opportunities are finally returning.\n\nBut many stocks are still recovering from broken technical patterns, the broader market remains range-bound, and the Fed could quickly change the tone.\n\nSo, I'd take profits into strength, avoid chasing late-stage rallies, and stay flexible today.\n\nThree days of momentum are encouraging. Three weeks would be a completely different story.\n\nWatch what Warsh says today.\n\n*\n\nIf you found this helpful, please ❤️like and 🔁retweet",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2115431285870956544/img/9Ey3_jzSow66RYsE.jpg"
+   ],
+   "likes": 28,
+   "views": 7064,
+   "cashtags": [
+    "AMZN",
+    "GOOGL",
+    "MU",
+    "NBIS",
+    "NVDA",
+    "QQQ",
+    "SNDK",
+    "SPCX",
+    "SPY",
+    "TSLA"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115431265713398203",
+   "handle": "RedDogT3",
+   "name": "Scott Redler",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:11:31Z",
+   "url": "https://x.com/RedDogT3/status/2115431265713398203",
+   "text": "$snxx working from earlier this week.  Today u get smaller $sndk",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuFhh9XwAA1png.jpg?name=orig"
+   ],
+   "likes": 5,
+   "views": 5319,
+   "cashtags": [
+    "SNDK",
+    "SNXX"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115431058191585430",
+   "handle": "RedDogT3",
+   "name": "Scott Redler",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:10:41Z",
+   "url": "https://x.com/RedDogT3/status/2115431058191585430",
+   "text": "On Monday in the #630 club we said let’s catch a broken bounce $crwv  as Elon’s weekend chat helped give us good entries.  I’d trim here and $nbis.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuFQu6XgAAsEWy.jpg?name=orig"
+   ],
+   "likes": 10,
+   "views": 3390,
+   "cashtags": [
+    "CRWV",
+    "NBIS"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115430712790630416",
+   "handle": "RedDogT3",
+   "name": "Scott Redler",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:09:19Z",
+   "url": "https://x.com/RedDogT3/status/2115430712790630416",
+   "text": "If U use a tier system.  Today u get smaller in $tsla.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuFBarWcAAe58x.jpg?name=orig"
+   ],
+   "likes": 19,
+   "views": 6451,
+   "cashtags": [
+    "TSLA"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115429814777909275",
+   "handle": "StockSavvyShay",
+   "name": "Shay Boloor",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:05:45Z",
+   "url": "https://x.com/StockSavvyShay/status/2115429814777909275",
+   "text": "$ANT went from -249% operating margins in Q1 2025 to +8% in Q2 2026 which works out to ~$1B in quarterly operating profit.\n\nAnd it managed to do that while spending ~$10B on R&D in just six months because revenue grew ~29x compared to only ~6x growth in compute spending.",
+   "quoted": {
+    "handle": "KraneShares",
+    "text": "3/3 Anthropic’s operating margin turned positive in Q2 2026.\n\nIt improved from -249% in Q1 2025 to -35% in Q1 2026, before reaching +8% in Q2 2026.\n\nOperating margin measures how much revenue remains after operating expenses, before interest and taxes. Moving into positive territory marks a significant change in Anthropic’s reported operating performance.\n\nAs Anthropic approaches its debut as the first publicly traded frontier AI model company, investors are without a playbook. Headline revenue alone won’t tell the full story. Customer diversification, compute efficiency, and expanding operating margins are the metrics that reveal some of Anthropic’s true strengths.\n\nLearn more at http://kraneshares.com."
+   },
+   "media": [
+    "https://pbs.twimg.com/media/HVuEKkNb0AAozsc.png?name=orig"
+   ],
+   "likes": 125,
+   "views": 26779,
+   "cashtags": [
+    "ANT"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115427672981451034",
+   "handle": "chriskatje",
+   "name": "Chris Katje",
+   "type": "repost",
+   "reposted_by": "RyanDetrick",
+   "replying_to": null,
+   "time_utc": "2026-10-28T12:57:14Z",
+   "url": "https://x.com/chriskatje/status/2115427672981451034",
+   "text": "Did you know that Oct. 28 is historically the best trading day annually for the S&P 500? Well thanks to @RyanDetrick you know this and why 2026 could be different. Don't blame the birthday boy if the $SPY is down today though. https://www.benzinga.com/trading-ideas/long-ideas/26/10/62645486/oct-28-today-is-the-best-trading-day-of-the-year-but-2026-has-a-catch",
+   "quoted": null,
+   "media": [],
+   "likes": 13,
+   "views": 3374,
+   "cashtags": [
+    "SPY"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2115413685598601361",
+   "handle": "TrendSpider",
+   "name": "TrendSpider",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T12:01:39Z",
+   "url": "https://x.com/TrendSpider/status/2115413685598601361",
+   "text": "Memory stocks are pushing higher this morning following SK Hynix's blowout earnings report 🔥\n$SNDK $MU $WDC $STX",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVt1QIiXMAADNGB.jpg?name=orig"
+   ],
+   "likes": 236,
+   "views": 24873,
+   "cashtags": [
+    "MU",
+    "SNDK",
+    "STX",
+    "WDC"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115412035580444953",
+   "handle": "TrendSpider",
+   "name": "TrendSpider",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T11:55:06Z",
+   "url": "https://x.com/TrendSpider/status/2115412035580444953",
+   "text": "$BSX Q3 EARNINGS\n\nAdj EPS: $0.73 vs $0.72 est ✅\nSales: $5.138B vs $5.046B est ✅\n\nLowered Q4 Adj EPS Guidance ❌\nLowered Q4 Sales Guidance ❌",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVtzuKcXwAAydFE.jpg?name=orig"
+   ],
+   "likes": 39,
+   "views": 24625,
+   "cashtags": [
+    "BSX"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2115411216797745254",
+   "handle": "TrendSpider",
+   "name": "TrendSpider",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T11:51:51Z",
+   "url": "https://x.com/TrendSpider/status/2115411216797745254",
+   "text": "$GEV CRUSHED Q3 EARNINGS\n\nEPS: $4.81 vs $4.01 est ✅\nSales: $12.642B vs $11.991B est ✅\n\nRaised FY2026 Sales Guidance ✅",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVty9YBWkAAdGiH.jpg?name=orig"
+   ],
+   "likes": 141,
+   "views": 28098,
    "cashtags": [
     "GEV"
    ],
-   "n_media": 0
+   "n_media": 1
+  },
+  {
+   "id": "2115410497323348091",
+   "handle": "TrendSpider",
+   "name": "TrendSpider",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T11:48:59Z",
+   "url": "https://x.com/TrendSpider/status/2115410497323348091",
+   "text": "$VRT SMASHED Q3 EARNINGS \n\nAdj EPS: $2.21 vs $1.83 est ✅\nSales: $4.313B vs $3.760B est ✅\n\nRaised FY2026 EPS Guidance ✅\nRaised FY2026 Sales Guidance ✅",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVtynigXwAAF9pc.jpg?name=orig"
+   ],
+   "likes": 170,
+   "views": 28250,
+   "cashtags": [
+    "VRT"
+   ],
+   "n_media": 1
   },
   {
    "id": "2115407139414126739",
@@ -482,8 +1263,8 @@
    "text": "$VRT:  EPS up 78% and revs up 61% with solid margins and FCF up 67%. Guide for org growth up 50% for 4Q & full yr up 38% - wow. \n\n“We are in the middle of the largest infrastructure buildout and it's accelerating,\"",
    "quoted": null,
    "media": [],
-   "likes": 177,
-   "views": 9025,
+   "likes": 283,
+   "views": 14280,
    "cashtags": [
     "VRT"
    ],
@@ -503,8 +1284,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVtsKB9agAAgjlO.jpg?name=orig"
    ],
-   "likes": 788,
-   "views": 39520,
+   "likes": 1445,
+   "views": 79243,
    "cashtags": [
     "IREN"
    ],
@@ -525,7 +1306,7 @@
    "quoted": null,
    "media": [],
    "likes": 3,
-   "views": 684,
+   "views": 1257,
    "cashtags": [
     "TSLA"
    ],
@@ -554,467 +1335,443 @@
    "n_media": 0
   },
   {
-   "id": "2115092673941930293",
-   "handle": "leadlagreport",
-   "name": "Michael A. Gayed, CFA",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "leadlagreport"
-   },
-   "time_utc": "2026-10-27T14:46:04Z",
-   "url": "https://x.com/leadlagreport/status/2115092673941930293",
-   "text": "Learn more about the ATAC Credit Rotation ETF $JOJO at https://atacfunds.com/jojo/\n\nLead-Lag Publishing, LLC is not an affiliate of Tidal/Toroso or ACA/Foreside.",
+   "id": "2115458318177083507",
+   "handle": "AdamRy_n",
+   "name": "Adam Ryan 🤝",
+   "type": "repost",
+   "reposted_by": "TrungTPhan",
+   "replying_to": null,
+   "time_utc": "2026-10-28T14:59:01Z",
+   "url": "https://x.com/AdamRy_n/status/2115458318177083507",
+   "text": "Google and Meta ate everyone's lunch in advertising because they could close the loop. They could tell a marketer, using their own data, you got that sale because of us. Nobody in B2B could say that.",
    "quoted": null,
    "media": [],
    "likes": 2,
-   "views": 1810,
-   "cashtags": [
-    "JOJO"
-   ],
-   "n_media": 0
-  },
-  {
-   "id": "2115092048508235779",
-   "handle": "knowledge_vital",
-   "name": "Vital Knowledge Media",
-   "type": "repost",
-   "reposted_by": "carlquintanilla",
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:43:35Z",
-   "url": "https://x.com/knowledge_vital/status/2115092048508235779",
-   "text": "$BA    Boeing on the call provided underwhelming free cash flow guidance of ~$3B for 2027 (vs. the Street ~$5.5B) and ~$6B in 2028 (vs. the Street ~$9.6B)",
-   "quoted": null,
-   "media": [],
-   "likes": 9,
-   "views": 4028,
-   "cashtags": [
-    "BA"
-   ],
-   "n_media": 0
-  },
-  {
-   "id": "2115092019844661640",
-   "handle": "AlderLaneEggs",
-   "name": "Marc Cohodes",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "ijlee"
-   },
-   "time_utc": "2026-10-27T14:43:28Z",
-   "url": "https://x.com/AlderLaneEggs/status/2115092019844661640",
-   "text": "@ijlee @grahamfarrar @CGasparino No the move in $GLAS is all self inflicted by The CEO. Graham is the solution and Kyle is the problem",
-   "quoted": null,
-   "media": [],
-   "likes": 6,
-   "views": 285,
-   "cashtags": [
-    "GLAS"
-   ],
-   "n_media": 0
-  },
-  {
-   "id": "2115091989767004312",
-   "handle": "jonnajarian",
-   "name": "Jon Najarian",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:43:21Z",
-   "url": "https://x.com/jonnajarian/status/2115091989767004312",
-   "text": "Rebel’s Edge 🏴‍☠️ 1pm Line up: #VIX $CRDO $NBIS $PNR $RCL $SOFI Brewers up 3-0, will Milwaukee sweep or do the Rays force a Game 5? #WANNABET 🏈 NAJARIAN SPORTS 🏴‍☠️ with @petenajarian Which college football games matter most this week, with Arizona v Texas Tech, Utah v Cincinnati and Wake Forest vs Virginia? How did Kentucky go from unranked to #9 and 7-1 in football? #ITSNOTANOPTION 📙",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpN36BXwAACAMv.jpg?name=orig"
-   ],
-   "likes": 0,
-   "views": 1394,
-   "cashtags": [
-    "CRDO",
-    "NBIS",
-    "PNR",
-    "RCL",
-    "SOFI"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2115091757121798546",
-   "handle": "Mr_Derivatives",
-   "name": "Heisenberg",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:42:26Z",
-   "url": "https://x.com/Mr_Derivatives/status/2115091757121798546",
-   "text": "$GLD Looking good today..",
-   "quoted": {
-    "handle": "Mr_Derivatives",
-    "text": "$GLD and $SLV pretty darn near term oversold.\n\nWould not be surprised it gets a relief rally next week."
-   },
-   "media": [],
-   "likes": 114,
-   "views": 21024,
-   "cashtags": [
-    "GLD"
-   ],
-   "n_media": 0
-  },
-  {
-   "id": "2115091565869768894",
-   "handle": "KeithMcCullough",
-   "name": "Keith McCullough",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:41:40Z",
-   "url": "https://x.com/KeithMcCullough/status/2115091565869768894",
-   "text": "$RBRK remains on the same Signal Strength Stocks list @HedgeyeComm",
-   "quoted": null,
-   "media": [],
-   "likes": 9,
-   "views": 3767,
-   "cashtags": [
-    "RBRK"
-   ],
-   "n_media": 0
-  },
-  {
-   "id": "2115091150571004076",
-   "handle": "KeithMcCullough",
-   "name": "Keith McCullough",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:40:01Z",
-   "url": "https://x.com/KeithMcCullough/status/2115091150571004076",
-   "text": "$OKTA remains the #1 ranked Signal Strength Stock on our subscriber dashboard with a +133% gain #timestamped",
-   "quoted": null,
-   "media": [],
-   "likes": 10,
-   "views": 3637,
-   "cashtags": [
-    "OKTA"
-   ],
-   "n_media": 0
-  },
-  {
-   "id": "2115090642837688744",
-   "handle": "sentimentrader",
-   "name": "SentimenTrader",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:38:00Z",
-   "url": "https://x.com/sentimentrader/status/2115090642837688744",
-   "text": "Cloud computing stocks are still climbing, but the sentiment gap with the Nasdaq 100 has narrowed.\nOn Oct. 23, $WCLD sentiment stood 58.6 points above $QQQ sentiment, a gap this wide seen on just six trading days since October 2019.\nBy Oct. 26, that gap had shrunk to 34.8 points.\nhttps://sentimentrader.com/?utm_source=twitter&utm_medium=content&utm_campaign=lightapi&utm_content=unusual_20261027_wcldvsqqq",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVnUQMUbYAActGe.jpg?name=orig"
-   ],
-   "likes": 9,
-   "views": 6437,
-   "cashtags": [
-    "QQQ",
-    "WCLD"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2115090500936204712",
-   "handle": "EliteOptions2",
-   "name": "EliteOptionsTrader",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:37:26Z",
-   "url": "https://x.com/EliteOptions2/status/2115090500936204712",
-   "text": "$SPX and $QQQ price action looking better today. Both gapped up and dipped but bought up quickly\n\n$SPX needs through 7700 and $QQQ above 722 next\n\nWe're also seeing $DELL $AMD $SNDK $NBIS show strength too...\n\nLet's see if the market can bottom out this week and push back higher by Mid November",
-   "quoted": null,
-   "media": [],
-   "likes": 77,
-   "views": 16463,
-   "cashtags": [
-    "AMD",
-    "DELL",
-    "NBIS",
-    "QQQ",
-    "SNDK",
-    "SPX"
-   ],
-   "n_media": 0
-  },
-  {
-   "id": "2115090130063015968",
-   "handle": "WallStJesus",
-   "name": "WALL ST JESUS (FZN)",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:35:58Z",
-   "url": "https://x.com/WallStJesus/status/2115090130063015968",
-   "text": "$BA",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpPQ2uW0AAd8oY.jpg?name=orig"
-   ],
-   "likes": 6,
-   "views": 4502,
-   "cashtags": [
-    "BA"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2115089624746090888",
-   "handle": "Beth_Kindig",
-   "name": "Beth Kindig",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:33:57Z",
-   "url": "https://x.com/Beth_Kindig/status/2115089624746090888",
-   "text": "In 2027, AI server revenue is forecast to rise more than 90% YoY to approximately $920 billion, driving the total server market above $1 trillion for the first time, as $NVDA Rubin and $AMD Helios ramp with higher ASPs. \n\n$DELL $SMCI",
-   "quoted": {
-    "handle": "Beth_Kindig",
-    "text": "AI servers are expected to generate $479 billion in revenue in 2026, accounting for roughly 75% revenue share of the broader server market, with AI server shipments rising more than 32% YoY, per TrendForce. \n\n$NVDA $AMD $DELL $SMCI"
-   },
-   "media": [],
-   "likes": 49,
-   "views": 7906,
-   "cashtags": [
-    "AMD",
-    "DELL",
-    "NVDA",
-    "SMCI"
-   ],
-   "n_media": 0
-  },
-  {
-   "id": "2115089279508746686",
-   "handle": "MrZackMorris",
-   "name": "Zack Morris",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:32:35Z",
-   "url": "https://x.com/MrZackMorris/status/2115089279508746686",
-   "text": "Good stuff",
-   "quoted": {
-    "handle": "MrZackMorris",
-    "text": "Looking like a pump to PM high at open. If it rejects, then puts to  713-712. $QQQ . Then watch for support for a play to the upside."
-   },
-   "media": [],
-   "likes": 24,
-   "views": 6572,
+   "views": 351,
    "cashtags": [],
    "n_media": 0
   },
   {
-   "id": "2115088661268308230",
-   "handle": "TheTranscript_",
-   "name": "The Transcript",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:30:07Z",
-   "url": "https://x.com/TheTranscript_/status/2115088661268308230",
-   "text": "$SCHW Charles Schwab CEO: \"...we are blocking unauthorized agents to try to log in on behalf of clients. It is not a safe way for our clients to access Schwab, and we are blocking it to protect clients and our firm.\"",
-   "quoted": null,
-   "media": [],
-   "likes": 23,
-   "views": 4428,
-   "cashtags": [
-    "SCHW"
-   ],
-   "n_media": 0
-  },
-  {
-   "id": "2115086235740066252",
-   "handle": "StockSavvyShay",
-   "name": "Shay Boloor",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:20:29Z",
-   "url": "https://x.com/StockSavvyShay/status/2115086235740066252",
-   "text": "Absolutely wild that $SOFI has now tripled its membership since early 2023 to more than 17M.\n\nIt's also added over 1M members in each of the last four quarters which is a pace few banks or fintechs have managed to sustain even through a difficult rate environment.",
-   "quoted": {
-    "handle": "StockSavvyShay",
-    "text": "$SOFI five years ago:\n• $16/share\n• 2.9M members with ~$600M gross profit run-rate\n\n$SOFI today:\n• $16/share\n• 17.1M members with ~$2.9B gross profit run-rate\n\nSame price. Very different business."
-   },
-   "media": [
-    "https://pbs.twimg.com/media/HVpKsxYa4AA3Sko.jpg?name=orig"
-   ],
-   "likes": 303,
-   "views": 28964,
-   "cashtags": [
-    "SOFI"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2115086105402032598",
+   "id": "2115455773828599858",
    "handle": "scottmelker",
    "name": "The Wolf Of All Streets",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-27T14:19:58Z",
-   "url": "https://x.com/scottmelker/status/2115086105402032598",
-   "text": "JUST IN: Ripple expands Robinhood $HOOD partnership across $RLUSD, Ripple Prime and Ripple Treasury",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpLjeGaEAAdHRG.jpg?name=orig",
-    "https://pbs.twimg.com/media/HVpLjfFa8AAZjpd.png?name=orig"
-   ],
-   "likes": 346,
-   "views": 14587,
-   "cashtags": [
-    "HOOD",
-    "RLUSD"
-   ],
-   "n_media": 2
-  },
-  {
-   "id": "2115085715981955259",
-   "handle": "ripster47",
-   "name": "Ripster",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:18:25Z",
-   "url": "https://x.com/ripster47/status/2115085715981955259",
-   "text": "$VIX back over 18 and market is not going anywhere\n\nMorning Amatuer POP and short\n\nIf you are using VIX strategy you are doing pretty good or Safe this morning\nSome AI names strong\n\nTraders with NO SYSTEM will still cry about scam market! Do not be that guy, Have a SYSYTEM!",
-   "quoted": null,
-   "media": [],
-   "likes": 36,
-   "views": 16640,
-   "cashtags": [
-    "VIX"
-   ],
-   "n_media": 0
-  },
-  {
-   "id": "2115084959039807880",
-   "handle": "KeithMcCullough",
-   "name": "Keith McCullough",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:15:25Z",
-   "url": "https://x.com/KeithMcCullough/status/2115084959039807880",
-   "text": "Palladium continues to crash to new lows and so does our price target $PALL",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpKj3tWwAAezhv.png?name=orig"
-   ],
-   "likes": 16,
-   "views": 4173,
-   "cashtags": [
-    "PALL"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2115083588031189142",
-   "handle": "TheTranscript_",
-   "name": "The Transcript",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:09:58Z",
-   "url": "https://x.com/TheTranscript_/status/2115083588031189142",
-   "text": "PayPal CEO: \"I’m pleased with our third-quarter performance and the momentum we are seeing across the business, and we are raising our full-year non-GAAP guidance for transaction margin dollars and EPS\"\n\n$PYPL",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpJUI3b0AAYd2H.png?name=orig"
-   ],
-   "likes": 14,
-   "views": 3610,
-   "cashtags": [
-    "PYPL"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2115082833077117364",
-   "handle": "BrianFeroldi",
-   "name": "Brian Feroldi",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:06:58Z",
-   "url": "https://x.com/BrianFeroldi/status/2115082833077117364",
-   "text": "Opportunity or value trap:  $FICO downfall explained",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/amplify_video_thumb/2115082660062064640/img/jHK8xtluT-RJP-VV.jpg"
-   ],
-   "likes": 11,
-   "views": 7226,
-   "cashtags": [
-    "FICO"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2115079110716256642",
-   "handle": "TraderPoko",
-   "name": "FZN Joe",
-   "type": "repost",
-   "reposted_by": "WallStJesus",
-   "replying_to": null,
-   "time_utc": "2026-10-27T13:52:10Z",
-   "url": "https://x.com/TraderPoko/status/2115079110716256642",
-   "text": "Just because there is a large level of positioning somewhere.. doesn't mean we go there.\n\nGamma is not directional",
+   "time_utc": "2026-10-28T14:48:54Z",
+   "url": "https://x.com/scottmelker/status/2115455773828599858",
+   "text": "A major bank told Coinbase its crypto custody talks were \"an intentional distraction.\"\n\nCoinbase Institutional's Brett Tejpaul says the real plan was to bring the technology into payments first, to protect the bank's franchise\n\n\"I was talking to one of the CEOs. I was sitting with Brian, and Brian's super commercially focused. So I tried to pin this guy down. I'm like, what is going on?\"\n\n\"He said, alright, Brett, I'll tell you what the plan is. The plan is actually to disrupt their payments business. All the things I've been doing with you, custody over here and over there, has been a little bit of an intentional distraction.\"\n\n\"We're one of the world's biggest payments providers, and we're actually going to use this technology first there, because we need to protect our corporate banking franchise.\"\n\n\"I said to him, really? Because no one's even mentioned that in all the conversations that we've had. And he said, yeah, that's because I haven't told you about it.\"\n\n\"In the thing that they probably do the most of, which is transactions related to corporate banking payments, that's a brave spot to try and innovate if you're one of these big banks.\"",
    "quoted": {
-    "handle": "MyBankIsFat",
-    "text": "755 this week? $SPY 👀🩸"
+    "handle": "scottmelker",
+    "text": "Bitcoin's Biggest Buyers Have Gone Quiet https://x.com/i/broadcasts/1DxleVABZmqKL"
+   },
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2115454985714778112/img/Ek-mKgtNXbDzG1xT.jpg"
+   ],
+   "likes": 12,
+   "views": 9273,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2115451044423668045",
+   "handle": "elonmusk",
+   "name": "Elon Musk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T14:30:06Z",
+   "url": "https://x.com/elonmusk/status/2115451044423668045",
+   "text": "True",
+   "quoted": {
+    "handle": "CoFoundersNik",
+    "text": "FSD could literally free up OVER $1.5 trillion/yr... WHY isn't anyone talking about this??\n\nIf Lawmakers were serious about serving the people, they would start focusing on how to speed up FSD adoption.\n\nThe Data:\nFatal & serious crashes cost the U.S. almost $2 trillion per year in total societal harm; including ~$400 billion in direct economic costs in the form of:\n- medical bills\n- property damage \n- lost wages\n- enormous quality-of-life cost of lost years\n- permanent disability\n\nTesla’s latest FSD data shows vehicles with FSD engaged are ~9× SAFER than the average driver. \n\nThat means, if fully adopted, FSD could produce savings the size of any one of these:\n- ~6% of GDP\n- The entire Social Security program\n- Medicare AND Medicaid\n- Roughly 2× the defense budget\n\nAt this scale, FSD (and technologies like it) could be one of the first real steps toward an age of AI \"abundance\" people talk about.\n\n50 years from now, our children and grandchildren will look back in horror at the fact that we ever drove at all."
    },
    "media": [],
-   "likes": 14,
-   "views": 2734,
+   "likes": 2188,
+   "views": 645832,
    "cashtags": [],
    "n_media": 0
   },
   {
-   "id": "2115076566849822755",
+   "id": "2115450862290022825",
+   "handle": "cfosilvia",
+   "name": "Silvia",
+   "type": "repost",
+   "reposted_by": "APompliano",
+   "replying_to": null,
+   "time_utc": "2026-10-28T14:29:23Z",
+   "url": "https://x.com/cfosilvia/status/2115450862290022825",
+   "text": "Your financial life spans borders. Your AI CFO should too.\n\nSilvia is now multi-currency: Track assets in their native currencies. See your net worth, portfolio, and cash flow in the currency you choose.\n\nAvailable now to all users\nhttps://Silvia.com",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2115449883993739264/img/Cz_v2b_gNJh3rT_c.jpg"
+   ],
+   "likes": 15,
+   "views": 2572,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2115449303229432121",
+   "handle": "SawyerMerritt",
+   "name": "Sawyer Merritt",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T14:23:11Z",
+   "url": "https://x.com/SawyerMerritt/status/2115449303229432121",
+   "text": "Tesla has announced that they are officially coming to Vietnam, with the company's recruiting team posting five job openings for the market that span sales, service and charging.\n\n\"Our mission is to build a world of amazing abundance. We're looking for exceptional, ambitious people ready to help bring that mission to Vietnam.\" https://evwire.com/p/tesla-vietnam-launch-job-openings",
+   "quoted": null,
+   "media": [],
+   "likes": 446,
+   "views": 20096,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2115449289975767129",
+   "handle": "scottmelker",
+   "name": "The Wolf Of All Streets",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T14:23:08Z",
+   "url": "https://x.com/scottmelker/status/2115449289975767129",
+   "text": "JUST IN: Google Cloud previews institutional crypto custody service, launch planned for early 2027",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuV5EtXEAArDH9.jpg?name=orig",
+    "https://pbs.twimg.com/media/HVuV5EyX0AAi3Kw.jpg?name=orig"
+   ],
+   "likes": 58,
+   "views": 9084,
+   "cashtags": [],
+   "n_media": 2
+  },
+  {
+   "id": "2115447957843821013",
+   "handle": "elonmusk",
+   "name": "Elon Musk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T14:17:50Z",
+   "url": "https://x.com/elonmusk/status/2115447957843821013",
+   "text": "At Tesla, we even care about the chipmunks",
+   "quoted": {
+    "handle": "TheChiefNerd",
+    "text": "98-Year-Old Man Buys His First Self-Driving Tesla Model Y And Is Blown Away\n\n“I've been driving it probably 2-3 months, and it's not made an error in its driving. In fact, the other day it stopped - a chipmunk was crossing the road, and there was no other traffic, and it did not run over the chipmunk … For somebody that's 98-years-old, this is a real treat.”"
+   },
+   "media": [],
+   "likes": 5632,
+   "views": 748573,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2115444823138398478",
+   "handle": "CEOinterview",
+   "name": "CEOInterviews.AI",
+   "type": "repost",
+   "reposted_by": "carlquintanilla",
+   "replying_to": null,
+   "time_utc": "2026-10-28T14:05:23Z",
+   "url": "https://x.com/CEOinterview/status/2115444823138398478",
+   "text": "Steve Eisman says Anthropic's S-1 stops at Q2 on purpose, because Q3 growth fell from 147% to 45%, a day after Gavin Baker called it an upside surprise\n\nGavin Baker on TBPN, Oct 27\n\n\"I do think the Anthropic S-1 was pretty clearly an upside surprise.\"\n\nSteve Eisman on Prof G Markets, Oct 28\n\n\"Third quarter, token maxing is over. Sequential revenue growth goes from 147% to 45%, and the revenue divided by compute goes from 2.08 to 1.7. That tells you something.\"\n\n[ Ed: A lot of those charts that they put up at the top showing you how the business is doing, they do not include Q3 at all... Do you think it was intentional? ]\n\n\"Only very intentional. That's all. Only very intentional.\"",
+   "quoted": {
+    "handle": "CEOinterview",
+    "text": "Michael Dell says the memory crunch gets worse in 2027, and the Micron fabs built to fix it don't produce until 2029\n\n[ Do you see that bottleneck easing at all? ]\n\n\"I think it's going to get worse in 2027, based on what I see right now.\"\n\n\"It takes about four years to build a new memory factory. There are a number of them under construction. You know, Micron, for example, we're a big Micron customer.\"\n\n[ Right, like they've pledged $30 billion to build construction here in the U.S. ]\n\n\"Exactly. And those factories will start producing in 2029... And who knows where things will be then.\"\n\n\"And so the demand is growing faster than supply. It takes four years to build these factories, so I don't think that the shortage is going to quickly resolve itself.\""
+   },
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2115444790406041600/img/sJz6cI6lj9EClNv8.jpg"
+   ],
+   "likes": 21,
+   "views": 4692,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2115444623862612378",
    "handle": "leadlagreport",
    "name": "Michael A. Gayed, CFA",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-27T13:42:04Z",
-   "url": "https://x.com/leadlagreport/status/2115076566849822755",
-   "text": "When government pulls back, private-sector profits can surge. The Free Markets ETF ($FMKT) focuses on those companies.",
+   "time_utc": "2026-10-28T14:04:36Z",
+   "url": "https://x.com/leadlagreport/status/2115444623862612378",
+   "text": "Monthly stock-bond return correlation, August 2002 to August 2026, full sample: -0.10.\n\nThe relationship moves across rolling windows. Diversification is a regime, not a constant.\n\nThird edition: https://www.amazon.com/dp/B0HL7CXDLX",
    "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpC7elW4AANpQJ.jpg?name=orig"
-   ],
+   "media": [],
    "likes": 9,
-   "views": 5445,
+   "views": 4552,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2115443852991672531",
+   "handle": "scottmelker",
+   "name": "The Wolf Of All Streets",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T14:01:32Z",
+   "url": "https://x.com/scottmelker/status/2115443852991672531",
+   "text": "Banks could dismiss the ETFs, but not stablecoins.\n\nCoinbase Institutional's Brett Tejpaul says the GENIUS Act is pushing banks to rethink payments, one of their biggest revenue streams\n\n\"If you're a naysayer at the bank, you could look at the big ETF moment, and you could dismiss it. You could say it was pent up demand. Think of that more as a trade, not as a business.\"\n\n\"But if you're one of these big banks, one of your biggest and most sustainable businesses is payments.\"\n\n\"The GENIUS Act actually put that business right in the spotlight of how are you going to continue your global banking presence and facilitate payments. This is a giant moneymaker and revenue stream that you've worked 50 years to build.\"\n\n\"So everyone took notice of the Citibank transaction as saying, oh my god, this industry is going to change.\"\n\n\"And some of the reflections at Sibos, they're career long payments people that are at the conference. And everyone was talking. It was the first year, by the way, that they kind of actively let crypto companies come into the building.\"",
+   "quoted": {
+    "handle": "scottmelker",
+    "text": "Bitcoin's Biggest Buyers Have Gone Quiet https://x.com/i/broadcasts/1DxleVABZmqKL"
+   },
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2115443096356007936/img/mK3raf_htYmwJZei.jpg"
+   ],
+   "likes": 17,
+   "views": 12186,
    "cashtags": [],
    "n_media": 1
   },
   {
-   "id": "2115070479077724254",
-   "handle": "OptionsMike",
-   "name": "Options Mike",
+   "id": "2115443479639990605",
+   "handle": "sentimentrader",
+   "name": "SentimenTrader",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-27T13:17:52Z",
-   "url": "https://x.com/OptionsMike/status/2115070479077724254",
-   "text": "Nice if I get allocated I can use these to hedge my position if needed!",
+   "time_utc": "2026-10-28T14:00:03Z",
+   "url": "https://x.com/sentimentrader/status/2115443479639990605",
+   "text": "Just 30% of CAC 40 stocks are above their 200 day moving averages, leaving French market breadth more than 30 percentage points behind the S&P 500.\nAfter similar signals, the S&P 500 was higher a year later 89% of the time.\nRead more: https://sentimentrader.com/blog/the-cac-40-breadth-indicator-drops-into-oversold-territory?utm_source=twitter&utm_medium=content&utm_campaign=report20261028ME&utm_content=original_20261028",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVtVb67awAAFgh6.jpg?name=orig"
+   ],
+   "likes": 9,
+   "views": 5098,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2115443427089289577",
+   "handle": "lisaabramowicz1",
+   "name": "Lisa Abramowicz",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:59:50Z",
+   "url": "https://x.com/lisaabramowicz1/status/2115443427089289577",
+   "text": "November is projected to be a record month for US investment-grade bond sales, with Bank of America forecasting $175 billion of issuance. That would be up 27% from November 2025.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuHupBXwAEZX8I.jpg?name=orig"
+   ],
+   "likes": 70,
+   "views": 6779,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2115443113103675576",
+   "handle": "TozzoAnna",
+   "name": "Anna π",
+   "type": "repost",
+   "reposted_by": "robin_j_brooks",
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:58:35Z",
+   "url": "https://x.com/TozzoAnna/status/2115443113103675576",
+   "text": "L'illusione è tutta sua. In realtà il sistema Target è servito a far prosperare la Germania bloccando la rivalutazione del marco.\nQuesta la mettiamo insieme a quella della pizza inventata dagli americani.",
    "quoted": {
-    "handle": "TradrETFs",
-    "text": "Artificial intelligence meets human conviction. AI may be transforming the world, but the decision to position long or short on $ANT is still yours.\n\nMeet $ANTT and $ANTZ, 2X Long and 2X Short Anthropic Daily ETFs from Tradr. You’ll have two simple ways to express your daily"
+    "handle": "robin_j_brooks",
+    "text": "There's a fantasy in Italy and Spain that Germany's TARGET2 claims aren't real. They're very real. They're subsidized loans from Germany that finance a standard of living in Italy and Spain that's artificially and unsustainably high. The AfD will end this.\nhttps://robinjbrooks.substack.com/p/why-euro-breakup-is-necessary"
    },
    "media": [],
+   "likes": 4,
+   "views": 3640,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2115442304089539005",
+   "handle": "scottmelker",
+   "name": "The Wolf Of All Streets",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "Jethroe111"
+   },
+   "time_utc": "2026-10-28T13:55:22Z",
+   "url": "https://x.com/scottmelker/status/2115442304089539005",
+   "text": "@Jethroe111 Yes. Bitcoin will survive his opinion.",
+   "quoted": null,
+   "media": [],
    "likes": 1,
-   "views": 2201,
+   "views": 343,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2115441704706990578",
+   "handle": "KeithMcCullough",
+   "name": "Keith McCullough",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:53:00Z",
+   "url": "https://x.com/KeithMcCullough/status/2115441704706990578",
+   "text": "Kiddie Pool was fun this morn",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuPARcWkAEPRQC.jpg?name=orig"
+   ],
+   "likes": 10,
+   "views": 3726,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2115440968048513191",
+   "handle": "spotgamma",
+   "name": "SpotGamma",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:50:04Z",
+   "url": "https://x.com/spotgamma/status/2115440968048513191",
+   "text": "Bonds are cushioning tech dips again going into the Fed.\n\nFor most of 2026, yields rose on days the Nasdaq fell. \n\nThat flipped in October: the 20-day correlation between 10Y yield moves and Nasdaq 100 returns is +0.58, highest since Oct 2025, from -0.68 on Sep 30.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuOWTcWgAA_rVP.jpg?name=orig"
+   ],
+   "likes": 21,
+   "views": 6586,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2115437148975563145",
+   "handle": "chamath",
+   "name": "Chamath Palihapitiya",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:34:53Z",
+   "url": "https://x.com/chamath/status/2115437148975563145",
+   "text": "Super interesting comparison of GPU finance and the AI buildout to airlines. I’ve seen two other people make this comparison now:\n\n1. Ken Griffin\n2. Sridhar Ramaswamy\n\nBoth are very, very smart so worth learning more.",
+   "quoted": {
+    "handle": "alexsongis",
+    "text": "A lot of ink has been spilled on GPU financing lately. I spent over a decade trading ABS on Wall St, and structured over $2B+ of debt financings as an operator (including at @tryramp). Figured I'd try to make sense of this market, so I went back to a framework I knew well: aircraft ABS and aircraft engine ABS.\n\nMy take: a GPU neocloud runs on airline economics, and the debt behind it looks a lot like aircraft engine ABS.\n\nThe parallels:\n\n• Perishable inventory. An empty seat after the door closes is gone forever. So is an idle hour on an energized H100 rack.\n• 85%+ of cost is fixed (servers, 10-year rack leases, 10-14% debt service). One more hour of compute costs pennies of power.\n• Utilization is everything. Airlines break even around 80% load factor, a levered GPU cluster around 65-75%. The returns live in those last 25 percentage points.\n• NVIDIA is Boeing and Airbus rolled into one. Powered shells and grid interconnects are the new airport slots.\n• Wall St copied the aircraft financing playbook: take-or-pay contract plus servers in a bankruptcy-remote SPV, 70-80% LTV.\n\nPart 1 of my blog post goes into a lot more detail:\n\nhttp://alexyangsong.com/blog/aluminum-to-silicon/"
+   },
+   "media": [],
+   "likes": 459,
+   "views": 81437,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2115437131355263307",
+   "handle": "kevinolearytv",
+   "name": "Kevin O'Leary aka Mr. Wonderful",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:34:49Z",
+   "url": "https://x.com/kevinolearytv/status/2115437131355263307",
+   "text": "What makes a watch truly collectible? Craftsmanship, rarity, and demand.\n\nF.P. Journe has all three, and collectors are paying attention. The New York Times takes a look at what's driving the fascination with one of the most sought-after names in independent watchmaking.\n\nhttps://www.nytimes.com/2026/10/28/fashion/watches-fp-journe-switzerland.html\n\n@phillipsauction \n\nWondercare:\nhttps://www.wondercare.com/estimate?utm_source=x&utm_medium=social&utm_campaign=kol_social&utm_content=endcard",
+   "quoted": null,
+   "media": [],
+   "likes": 9,
+   "views": 6221,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2115435981583118814",
+   "handle": "IBDinvestors",
+   "name": "Investors.com",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:30:15Z",
+   "url": "https://x.com/IBDinvestors/status/2115435981583118814",
+   "text": "Memory-Chip Maker SK Hynix Smashes Q3 Targets https://www.investors.com/news/technology/sk-hynix-stock-jumps-q3-2026-earnings-beat/",
+   "quoted": null,
+   "media": [],
+   "likes": 3,
+   "views": 3087,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2115433073911206027",
+   "handle": "patrick_oshag",
+   "name": "Patrick OShaughnessy",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:18:42Z",
+   "url": "https://x.com/patrick_oshag/status/2115433073911206027",
+   "text": "Cliff Sosin on why Jevons paradox taps out and the market for intelligence could shrink:\n\n\"Jevons paradox is just a narrow example of price elasticity of demand. In general, all markets are U-shaped.\n\nWhen the product is terrible, there's no demand. Then the product gets better and people will pay a lot, but they won't buy very much. \n\nAs the price goes down, the size of the market will rise. But then you get to a point where further price decreases don't drive enough demand and the market shrinks. \n\nIf you take the price to zero, the size of the market goes to zero.\n\nOne example that I've thought about is the cost of fiber optic communication, or just communication.\n\nThe cost of moving information used to be super high and people moved very little of it. Then the cost of moving information went down a lot and the amount of information moved went up a ton. \n\nThen the market stopped growing and the cost kept falling and the market kept shrinking. \n\nCogent Communications, I think, routes 30 or 40% of all IP traffic across the internet. And Cogent Communications is a few billion dollar market cap company. It's just not a very big industry.\n\nI'm not saying that we're going to get quite that small in terms of intelligence, but Jevons paradox is a statement about a particular spot on a curve.\"",
+   "quoted": {
+    "handle": "patrick_oshag",
+    "text": "Cliff Sosin (@CliffordSosin) is one of my favorite people to call, ask some big questions, and then shut up and listen.\n\nThis conversation is a version of one of those calls.\n\nWe discuss:\n- The limits of intelligence\n- Owning the complements to it\n- Meta, the frontier labs, and the AI build-out\n- Capital markets\n-  Why he's comfortable with 80% of his portfolio in Carvana.\n\nTIMESTAMPS\n0:00 Intro  \n10:41 The Limits of Intelligence  \n18:03 Investing Beyond Cheap Intelligence  \n24:03 Will AI Become Commoditized?  \n35:10 Who Profits From AI?  \n43:00 AI Agents Reshape Competition  \n52:06 America's Capital Markets  \n58:04 Transforming Companies With AI  \n68:19 AI and Portfolio Concentration  \n73:16 Education in the AI Era"
+   },
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2115430443541463040/img/Gp1n5RzSCZ6UOnrY.jpg"
+   ],
+   "likes": 45,
+   "views": 10775,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2115432872643559904",
+   "handle": "Jake__Wujastyk",
+   "name": "Jake Wujastyk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:17:54Z",
+   "url": "https://x.com/Jake__Wujastyk/status/2115432872643559904",
+   "text": "Somewhat impressive 😂",
+   "quoted": {
+    "handle": "ManzTrades",
+    "text": "May 14th: $722.03\n\nToday: $721.25\n\nthe NASDAQ hasn’t moved in 6 Months"
+   },
+   "media": [],
+   "likes": 52,
+   "views": 16109,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2115432397986500946",
+   "handle": "firstadopter",
+   "name": "tae kim",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:16:01Z",
+   "url": "https://x.com/firstadopter/status/2115432397986500946",
+   "text": "HBM price increases next year!\n\nNeedham: “SK hynix reported third quarter results which exceeded expectations into the print for both DRAM and NAND. Our key takeaways include: 1) The supply constrained environment is expected to persist through 2030 given increasing demand and lead times for expanded capacity to come online. The company currently has signed LTAs with 14 key customers, which include major CSPs; 2) HBM price increases are coming next year, narrowing the gap to conventional DRAM. SK has finalized both pricing and volumes for HBM with major customers for FY27; 3) FY27 CapEx is expected to increase significantly versus FY26 given equipment investments at the first Yongin fab; and, 4) Market DRAM bit shipments are expected to grow in the mid-20% range Y/Y in FY27. We raise our 12-month PT to $235, based on a ~5x P/E multiple of our new CY28 NG EPS estimate.”",
+   "quoted": null,
+   "media": [],
+   "likes": 63,
+   "views": 5957,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2115432007580688849",
+   "handle": "firstadopter",
+   "name": "tae kim",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:14:28Z",
+   "url": "https://x.com/firstadopter/status/2115432007580688849",
+   "text": "Cantor on SK hynix: “At 3x CY27 Earnings, the Market has Already Priced in the Downturn While the Cycle is Just Getting Started”\n\n“We also understand ongoing concerns regarding sustainability of AI spending, fears of peaking GM’s, and risk of too aggressive capex – but our view is this current AI cycle is elongated and durable, supported by TSMC/HBM/Substrate constraints, that GM’s will remain elevated, and that equipment lead times extending now to 1-2yrs depending on the product will limit the capacity added.\"\n\n\"Put it all together, and we now model CY27 ADR-adjusted EPS of $42.50 – meaning shares only trade only ~3x our estimate (and this doesn’t reflect share repurchases yet). We reiterate our Overweight rating and $250 price target.”",
+   "quoted": null,
+   "media": [],
+   "likes": 76,
+   "views": 7210,
    "cashtags": [],
    "n_media": 0
   },
@@ -1035,8 +1792,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2115428862331097088/img/b9rHKsocjeEMJWDU.jpg"
    ],
-   "likes": 8,
-   "views": 7000,
+   "likes": 20,
+   "views": 13690,
    "cashtags": [],
    "n_media": 1
   },
@@ -1052,8 +1809,8 @@
    "text": "Bitcoin's Biggest Buyers Have Gone Quiet https://x.com/i/broadcasts/1DxleVABZmqKL",
    "quoted": null,
    "media": [],
-   "likes": 7,
-   "views": 4766,
+   "likes": 21,
+   "views": 16444,
    "cashtags": [],
    "n_media": 0
   },
@@ -1070,9 +1827,45 @@
    "quoted": null,
    "media": [],
    "likes": 2,
-   "views": 1412,
+   "views": 3389,
    "cashtags": [],
    "n_media": 0
+  },
+  {
+   "id": "2115427167290978598",
+   "handle": "CookPolitical",
+   "name": "Cook Political Report",
+   "type": "repost",
+   "reposted_by": "carlquintanilla",
+   "replying_to": null,
+   "time_utc": "2026-10-28T12:55:14Z",
+   "url": "https://x.com/CookPolitical/status/2115427167290978598",
+   "text": "\"That buzz is a reflection of Cook’s unusual role in the political mediasphere: The report is one of the last bastions of nonpartisan election wonkery that nearly everybody in Washington trusts.\"  \n\nNew profile from the @washingtonpost:\n\nhttps://www.washingtonpost.com/politics/2026/10/28/how-cook-political-report-became-washingtons-oracle/",
+   "quoted": null,
+   "media": [],
+   "likes": 52,
+   "views": 10260,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2115425505230950747",
+   "handle": "TheCompoundNews",
+   "name": "The Compound",
+   "type": "repost",
+   "reposted_by": "awealthofcs",
+   "replying_to": null,
+   "time_utc": "2026-10-28T12:48:37Z",
+   "url": "https://x.com/TheCompoundNews/status/2115425505230950747",
+   "text": "Why do Baby Boomers have all the money? 💰\n\nOn EP. 488, @michaelbatnick and @awealthofcs discuss the AI bubble debate, the bull market in earnings, why consumers keep spending, the booming luxury real estate market, and how Baby Boomers got so wealthy. Plus, the 1987 crash, the best AI hedge, Netflix, Norm Macdonald, and more.🎙️",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVt-gk-XAAENOZ5.jpg?name=orig"
+   ],
+   "likes": 4,
+   "views": 5334,
+   "cashtags": [],
+   "n_media": 1
   },
   {
    "id": "2115423556544950528",
@@ -1088,8 +1881,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVt-I86bAAEoT7C.jpg?name=orig"
    ],
-   "likes": 16,
-   "views": 3696,
+   "likes": 32,
+   "views": 6734,
    "cashtags": [],
    "n_media": 1
   },
@@ -1105,8 +1898,8 @@
    "text": "@TheStalwart Another beat and raise from Vertiv. AI infrastructure build out is accelerating, not slowing. The Street is early. It panicked and cashed in profits. It's not the peak yet.",
    "quoted": null,
    "media": [],
-   "likes": 1,
-   "views": 3675,
+   "likes": 4,
+   "views": 5884,
    "cashtags": [],
    "n_media": 0
   },
@@ -1125,8 +1918,8 @@
     "text": "Some guy buying the SP500 every month, grilling burgers in his backyard right now, and doing 0 research, will outperform a shocking number of people who spend 8 hours a day analyzing the stock market."
    },
    "media": [],
-   "likes": 32,
-   "views": 4157,
+   "likes": 184,
+   "views": 16775,
    "cashtags": [],
    "n_media": 0
   },
@@ -1142,8 +1935,8 @@
    "text": "Bitcoin will never break its all-time high again.\" — Jason Calacanis\n\nJason, I'll bet you $1,000,000 it will break its ATH.  Here are the terms:\n\nBitcoin hits or exceeds $126,210.50 on or before  October 28, 2028, 12PM PST\n\nI’m happy to trust you to pay or if you prefer we can each escrow the dollars with independent party.\n\nThe bet is either settled when Bitcoin hits the ATH or on October 28, 2028. \n\n@jason Do we have a bet?",
    "quoted": null,
    "media": [],
-   "likes": 353,
-   "views": 11113,
+   "likes": 4179,
+   "views": 255599,
    "cashtags": [],
    "n_media": 0
   },
@@ -1164,8 +1957,8 @@
     "https://pbs.twimg.com/media/HVt6WVDXsAA9_6r.jpg?name=orig",
     "https://pbs.twimg.com/media/HVt6WVCXoAAiyGi.png?name=orig"
    ],
-   "likes": 12,
-   "views": 4362,
+   "likes": 31,
+   "views": 7808,
    "cashtags": [],
    "n_media": 4
   },
@@ -1200,8 +1993,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVt0tt0b0AA_qyX.jpg?name=orig"
    ],
-   "likes": 7,
-   "views": 7617,
+   "likes": 10,
+   "views": 10599,
    "cashtags": [],
    "n_media": 1
   },
@@ -1218,7 +2011,7 @@
    "quoted": null,
    "media": [],
    "likes": 0,
-   "views": 2698,
+   "views": 3886,
    "cashtags": [],
    "n_media": 0
   },
@@ -1239,8 +2032,27 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2115417847853879296/img/c3wPQ3MiJd-2s6s4.jpg"
    ],
-   "likes": 24,
-   "views": 11739,
+   "likes": 39,
+   "views": 16139,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2115417601753170292",
+   "handle": "bespokeinvest",
+   "name": "Bespoke",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T12:17:13Z",
+   "url": "https://x.com/bespokeinvest/status/2115417601753170292",
+   "text": "Good morning Bespoke members, complete your Daily 25 at our Bullish or Bearish? tool now: https://www.bespokepremium.com/interactive/bull-and-bear",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVt5EojXIAAHZca.png?name=orig"
+   ],
+   "likes": 5,
+   "views": 5091,
    "cashtags": [],
    "n_media": 1
   },
@@ -1259,8 +2071,8 @@
     "https://pbs.twimg.com/media/HVt3GJqXMAAkKZ5.png?name=orig",
     "https://pbs.twimg.com/media/HVt3Ie0XcAAKjUj.png?name=orig"
    ],
-   "likes": 664,
-   "views": 29691,
+   "likes": 1199,
+   "views": 54882,
    "cashtags": [],
    "n_media": 2
   },
@@ -1278,10 +2090,29 @@
    "text": "Fred, this offer looks like you either don’t believe in Bitcoin, don’t have $1 million or you’re just trolling Jason for followers and attention. For you to be taken seriously it would not be longer than 12-18 months to see the all-time high again.  No one would ever take a bet of 10 years to hit 126k",
    "quoted": null,
    "media": [],
-   "likes": 44,
-   "views": 2111,
+   "likes": 105,
+   "views": 6432,
    "cashtags": [],
    "n_media": 0
+  },
+  {
+   "id": "2115413283931070903",
+   "handle": "BrianFeroldi",
+   "name": "Brian Feroldi",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T12:00:04Z",
+   "url": "https://x.com/BrianFeroldi/status/2115413283931070903",
+   "text": "Is Visa a buy at $402?\n\nGreat business, good valuation.\n\nPhase 4 of 5 · Business 4.2/5 · Valuation 4/5",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVsRUWAXcAAsBzI.jpg?name=orig"
+   ],
+   "likes": 14,
+   "views": 10617,
+   "cashtags": [],
+   "n_media": 1
   },
   {
    "id": "2115413042200535298",
@@ -1297,8 +2128,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVt00yvWUAExr0b.jpg?name=orig"
    ],
-   "likes": 468,
-   "views": 86247,
+   "likes": 685,
+   "views": 119447,
    "cashtags": [],
    "n_media": 1
   },
@@ -1319,8 +2150,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2115409116189675520/img/nuCXjHQW2zLl8cQY.jpg"
    ],
-   "likes": 16,
-   "views": 12927,
+   "likes": 18,
+   "views": 15245,
    "cashtags": [],
    "n_media": 1
   },
@@ -1336,8 +2167,8 @@
    "text": "Saying there’s no reason to own Bitcoin because AI can hack a crypto app is like saying there’s no reason to speak English because AI can hack a messaging app.",
    "quoted": null,
    "media": [],
-   "likes": 3107,
-   "views": 197200,
+   "likes": 4742,
+   "views": 337332,
    "cashtags": [],
    "n_media": 0
   },
@@ -1353,8 +2184,8 @@
    "text": "Let me know if he finds his balls, I put him on block.",
    "quoted": null,
    "media": [],
-   "likes": 570,
-   "views": 39176,
+   "likes": 805,
+   "views": 52939,
    "cashtags": [],
    "n_media": 0
   },
@@ -1411,8 +2242,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVtqMYZWwAA7aok.jpg?name=orig"
    ],
-   "likes": 10,
-   "views": 6794,
+   "likes": 19,
+   "views": 9730,
    "cashtags": [],
    "n_media": 1
   },
@@ -2789,6 +3620,23 @@
    "n_media": 0
   },
   {
+   "id": "2115156709861642301",
+   "handle": "IBDinvestors",
+   "name": "Investors.com",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-27T19:00:31Z",
+   "url": "https://x.com/IBDinvestors/status/2115156709861642301",
+   "text": "HCA Healthcare Stock Nears Buy Point Despite Uninsured Cost Jump\nhttps://www.investors.com/news/hca-healthcare-stock-q3-earnings-uninsured-thc/",
+   "quoted": null,
+   "media": [],
+   "likes": 3,
+   "views": 3692,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
    "id": "2115156673358688375",
    "handle": "awealthofcs",
    "name": "Ben Carlson",
@@ -3771,684 +4619,404 @@
    "n_media": 0
   },
   {
-   "id": "2115099347754873014",
-   "handle": "SawyerMerritt",
-   "name": "Sawyer Merritt",
+   "id": "2115461225442369683",
+   "handle": "StockSavvyShay",
+   "name": "Shay Boloor",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-27T15:12:35Z",
-   "url": "https://x.com/SawyerMerritt/status/2115099347754873014",
-   "text": "Elon says Tesla's Robotaxi geofences in Miami and Tampa will soon include the beach areas.",
+   "time_utc": "2026-10-28T15:10:34Z",
+   "url": "https://x.com/StockSavvyShay/status/2115461225442369683",
+   "text": "AI and robots are going to make goods and services dramatically cheaper while creating enough wealth to raise living standards even without wages growing at the same pace.",
    "quoted": {
-    "handle": "elonmusk",
-    "text": "@RonDeSantis @wholemars Coming soon"
+    "handle": "WOLF_Financial",
+    "text": "What does our future with robotics look like? (UBI, Unemployment, GoldenAge?) https://x.com/i/broadcasts/1yKAPwZoeOyxb"
    },
    "media": [],
-   "likes": 1492,
-   "views": 41373,
+   "likes": 0,
+   "views": null,
    "cashtags": [],
    "n_media": 0
   },
   {
-   "id": "2115099037334720805",
-   "handle": "TheStalwart",
-   "name": "Joe Weisenthal",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T15:11:21Z",
-   "url": "https://x.com/TheStalwart/status/2115099037334720805",
-   "text": "Very soon we're going to have ETFs that track how, say, a given political party is doing in the prediction markets.",
-   "quoted": {
-    "handle": "mansourtarek_",
-    "text": "S&P Dow Jones Indices and Kalshi are joining forces to build the next generation of financial markets.\n\nThe Dow launched in 1896. The S&P 500 in 1957. The idea was simple: bring individual stocks together into a single benchmark, giving people a clearer view of the broader market.\n\nOver time, products built around those benchmarks transformed investing. Index funds, ETFs, futures, and options gave investors ways to gain diversified market exposure and hedge broad market swings.\n\nThese indices became foundations of global finance. More than $20 trillion is indexed or benchmarked to the S&P 500 alone.\n\nToday, this structure extends beyond stocks to bonds, commodities, currencies, and more.\n\nThe next step is to bring that structure to the events that shape everyone’s lives.\n\nThrough this partnership, S&P Dow Jones Indices and Kalshi will work together to create indices composed of Kalshi event contracts.\n\nThink about what that opens up.\n\nAn index of political power. An index of supply chain risk. An index tracking AI’s impact on employment. An index of sports outcomes that affect broadcasters, advertisers, cities, and small businesses. An index of weather risks that shape harvests, energy demand, and business revenues.\n\nEach would bundle event contracts into a single indicator, helping people understand how related risks are evolving.\n\nOver time, products built around these indices could offer diversified exposure to those events and new ways to hedge their impact.\n\nThe events t"
-   },
-   "media": [],
-   "likes": 172,
-   "views": 14473,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2115096791393681426",
-   "handle": "SawyerMerritt",
-   "name": "Sawyer Merritt",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T15:02:26Z",
-   "url": "https://x.com/SawyerMerritt/status/2115096791393681426",
-   "text": "United Airlines CEO in new interview on Delta Airlines choosing not to adopt @Starlink:\n\n\"It's a mistake. I think (Starlink) is the biggest competitive advantage of all time. We are going to have a few years of being the only airline that has it at scale.\"",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpVAi5XQAAiBgi.jpg?name=orig",
-    "https://pbs.twimg.com/media/HVpVETaWMAAlADi.jpg?name=orig"
-   ],
-   "likes": 1984,
-   "views": 223778,
-   "cashtags": [],
-   "n_media": 2
-  },
-  {
-   "id": "2115096015661351140",
-   "handle": "RyanDetrick",
-   "name": "Ryan Detrick, CMT",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:59:21Z",
-   "url": "https://x.com/RyanDetrick/status/2115096015661351140",
-   "text": "After a 15% rally in April/May, the S&P 500 has simply consolidated those gains for nearly five months. \n\nThe 20-week MA has caught up and now is a nice time for the primary trend (a bull market) to continue.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpUN_vWIAAbQ1B.jpg?name=orig"
-   ],
-   "likes": 271,
-   "views": 11657,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115095817837060298",
-   "handle": "ripster47",
-   "name": "Ripster",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:58:34Z",
-   "url": "https://x.com/ripster47/status/2115095817837060298",
-   "text": "💡So 10:4) Algo Time bringing market back to bullish curls.\nNotice how VIX 18 break and Ripster Clouds curls gave the signal \n\nTime/VIX/Clouds, all important!\nNow stocks can run as long as VIX can fade!",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpUP9MXYAAQ0UL.jpg?name=orig"
-   ],
-   "likes": 11,
-   "views": 13463,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115095609442996284",
-   "handle": "InvestLikeBest",
-   "name": "Invest Like the Best",
-   "type": "repost",
-   "reposted_by": "patrick_oshag",
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:57:44Z",
-   "url": "https://x.com/InvestLikeBest/status/2115095609442996284",
-   "text": "Cliff Sosin runs one of the most interesting portfolios in public markets.\n\nNearly $2B in six companies, with almost 80% in Carvana alone.\n\n\"If you read history, of course, all the people who did really great tended to be very concentrated.\"",
-   "quoted": {
-    "handle": "patrick_oshag",
-    "text": "Cliff Sosin (@CliffordSosin) is one of my favorite people to call, ask some big questions, and then shut up and listen.\n\nThis conversation is a version of one of those calls.\n\nWe discuss:\n- The limits of intelligence\n- Owning the complements to it\n- Meta, the frontier labs, and the AI build-out\n- Capital markets\n-  Why he's comfortable with 80% of his portfolio in Carvana.\n\nTIMESTAMPS\n0:00 Intro  \n10:41 The Limits of Intelligence  \n18:03 Investing Beyond Cheap Intelligence  \n24:03 Will AI Become Commoditized?  \n35:10 Who Profits From AI?  \n43:00 AI Agents Reshape Competition  \n52:06 America's Capital Markets  \n58:04 Transforming Companies With AI  \n68:19 AI and Portfolio Concentration  \n73:16 Education in the AI Era"
-   },
-   "media": [
-    "https://pbs.twimg.com/media/HVpT924WAAAgA1S.jpg?name=orig"
-   ],
-   "likes": 18,
-   "views": 5597,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115095145695556007",
-   "handle": "scottmelker",
-   "name": "The Wolf Of All Streets",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:55:53Z",
-   "url": "https://x.com/scottmelker/status/2115095145695556007",
-   "text": "Every time Bitcoin dips into the 70s, it's a gift.\n\nArch Public co-founder Andrew Parish says Bitcoin's mainstream interest is at a bottom, and this is when long-term holders take advantage\n\n\"We're probably certainly at a bottom in terms of narratives. We're certainly at a bottom in terms of outside interest beyond podcasts like this.\"\n\n\"When you see that screenshot that shows IBIT, which is money moving in and out associated with their options trades, and you see zeros across the board for every other spot Bitcoin ETF, we are definitely at a bottom for narratives and interest.\"\n\n\"You have Jason Calacanis, who's on his about every 3 years saying Bitcoin is dead. He did it at 3,000. He did it at 8,000. He did it again this morning at 80,174.\"\n\n\"The same replay of the same tape just gets rewound and played again. And those of us that have an asset trade, we take advantage of those moments.\"\n\n\"Every time we tick into the seventies, that's a gift. Even if it's $79,700, it's an absolute gift, based on probably where we are 12 to 18 months from now.\"",
-   "quoted": {
-    "handle": "scottmelker",
-    "text": "Bitcoin's Bear Market Ended Months Ago https://x.com/i/broadcasts/1DxLdZBWkayxm"
-   },
-   "media": [
-    "https://pbs.twimg.com/amplify_video_thumb/2115094633076383744/img/g1WZtzrp9FpgvDXq.jpg"
-   ],
-   "likes": 15,
-   "views": 11077,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115095036496867476",
-   "handle": "SawyerMerritt",
-   "name": "Sawyer Merritt",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:55:27Z",
-   "url": "https://x.com/SawyerMerritt/status/2115095036496867476",
-   "text": "United Airlines CEO in new interview on @Starlink:\n\n\"We were only going to do 65% of our fleet, but once we put it on our first aircraft, I got these anecdotes saying, 'I'm switching to flying regional 'cause it's got Starlink.' Then I was like, 'Holy cow, we gotta go all-in.'\"",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpSbFiWMAAIy4y.jpg?name=orig",
-    "https://pbs.twimg.com/media/HVpSfS2X0AAkk2T.jpg?name=orig"
-   ],
-   "likes": 1378,
-   "views": 45724,
-   "cashtags": [],
-   "n_media": 2
-  },
-  {
-   "id": "2115092934764708270",
-   "handle": "marketplunger1",
-   "name": "Brandon Beylo",
-   "type": "repost",
-   "reposted_by": "patrick_oshag",
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:47:06Z",
-   "url": "https://x.com/marketplunger1/status/2115092934764708270",
-   "text": "I'm a simple man. \n\nI see a new Cliff Sosin podcast. \n\nI stop what I'm doing. \n\nAnd I listen.",
-   "quoted": {
-    "handle": "patrick_oshag",
-    "text": "Cliff Sosin (@CliffordSosin) is one of my favorite people to call, ask some big questions, and then shut up and listen.\n\nThis conversation is a version of one of those calls.\n\nWe discuss:\n- The limits of intelligence\n- Owning the complements to it\n- Meta, the frontier labs, and the AI build-out\n- Capital markets\n-  Why he's comfortable with 80% of his portfolio in Carvana.\n\nTIMESTAMPS\n0:00 Intro  \n10:41 The Limits of Intelligence  \n18:03 Investing Beyond Cheap Intelligence  \n24:03 Will AI Become Commoditized?  \n35:10 Who Profits From AI?  \n43:00 AI Agents Reshape Competition  \n52:06 America's Capital Markets  \n58:04 Transforming Companies With AI  \n68:19 AI and Portfolio Concentration  \n73:16 Education in the AI Era"
-   },
-   "media": [],
-   "likes": 33,
-   "views": 7426,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2115090412650258657",
-   "handle": "BrianFeroldi",
-   "name": "Brian Feroldi",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:37:05Z",
-   "url": "https://x.com/BrianFeroldi/status/2115090412650258657",
-   "text": "Is Oracle a buy at $128?\n\nGreat business, fair valuation.\n\nPhase 4 of 5 · Business 4.3/5 · Valuation 3/5",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpORnrWwAA33jm.jpg?name=orig"
-   ],
-   "likes": 20,
-   "views": 8968,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115088204114051152",
-   "handle": "jsblokland",
-   "name": "jeroen blokland",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:28:18Z",
-   "url": "https://x.com/jsblokland/status/2115088204114051152",
-   "text": "If you were wondering why fewer and fewer people take credit rating agencies seriously, take a look at this chart.\n\nMoody's decided not to downgrade France despite the recent spike in bond spreads, even though political incompetence has left the country without a remotely sustainable budget.\n\nFrance's 10-year government bond yield now exceeds those of Belgium, Spain, Portugal, Italy, and Greece. All countries with (much) lower credit ratings than France, at least according to Moody's.\n\nThis reflects the outdated perceptions of many traditional investors. The risks surrounding government debt and bonds have fundamentally changed, yet Moody's continues to rely on a model that is no longer suited to today's world.\n\n(chart @ericdor_econo)",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpNPypXMAAqqBK.png?name=orig"
-   ],
-   "likes": 9,
-   "views": 2237,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115087823229329555",
-   "handle": "NickTimiraos",
-   "name": "Nick Timiraos",
+   "id": "2115460255576465503",
+   "handle": "robin_j_brooks",
+   "name": "Robin Brooks",
    "type": "reply",
    "reposted_by": null,
    "replying_to": {
-    "screen_name": "EconstratPB"
+    "screen_name": "BlakeFox7"
    },
-   "time_utc": "2026-10-27T14:26:48Z",
-   "url": "https://x.com/NickTimiraos/status/2115087823229329555",
-   "text": "The median 2029 dot (3.6% with inflation back to target) is interesting because it suggests either some upside risk to the median longer-run variable estimate (3.2%), a higher short-run neutral, or a bit of both. \n\nPut differently: Every participant has inflation at 2% in 2029. Even though the modal long-run real rate is 1%, the modal 2029 real rate is 1.6%.",
+   "time_utc": "2026-10-28T15:06:42Z",
+   "url": "https://x.com/robin_j_brooks/status/2115460255576465503",
+   "text": "@BlakeFox7 If you look at how those balances evolved, there's two distinct phases: deposit flight and LTROs in 2011/12 and then QE under Draghi and then PEPP under Lagarde. Each time the TARGET2 balances widen discretely because more market claims get replaced by non-market claims...",
    "quoted": null,
    "media": [],
-   "likes": 7,
-   "views": 2112,
+   "likes": 0,
+   "views": 62,
    "cashtags": [],
    "n_media": 0
   },
   {
-   "id": "2115087365941100948",
-   "handle": "IBDinvestors",
-   "name": "Investors.com",
+   "id": "2115459825119514870",
+   "handle": "steve_hanke",
+   "name": "Steve Hanke",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-27T14:24:59Z",
-   "url": "https://x.com/IBDinvestors/status/2115087365941100948",
-   "text": "Cathie Wood Cashes Out AI Chip Stocks, Adds These Aviation Plays\nhttps://www.investors.com/news/cathie-wood-ark-invest-amd-tsmc-ai-chip-semiconductors-archer-joby-aviation/",
-   "quoted": null,
-   "media": [],
-   "likes": 1,
-   "views": 3488,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2115087318893695321",
-   "handle": "APompliano",
-   "name": "Anthony Pompliano 🌪",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:24:47Z",
-   "url": "https://x.com/APompliano/status/2115087318893695321",
-   "text": "Earlier this year we launched the first agentic research offering on Wall Street (Silvia Insights).\n\nThe reports are researched, fact-checked, and written by AI agents built for Wall Street-style research. \n\nLast week I had the idea to do the same thing for a newsroom focused on financial news.\n\nWe built it in less than 48 hours and are experimenting with Silvia News, a fully agentic newsroom to better inform Silvia users, while organically driving attention to the Silvia product.\n\nThis is a small experiment that we hope will grow into something much larger over time. Check it out and give us any feedback on what you want to see. \n\nTry it: https://news.cfosilvia.com/",
-   "quoted": null,
-   "media": [],
-   "likes": 63,
-   "views": 15902,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2115087309804888431",
-   "handle": "Mr_Derivatives",
-   "name": "Heisenberg",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "DudeWhoInvests"
-   },
-   "time_utc": "2026-10-27T14:24:45Z",
-   "url": "https://x.com/Mr_Derivatives/status/2115087309804888431",
-   "text": "@DudeWhoInvests All in TQQQ lol.\n\nBut at a low point",
-   "quoted": null,
-   "media": [],
-   "likes": 18,
-   "views": 3177,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2115086160066236429",
-   "handle": "patrick_oshag",
-   "name": "Patrick OShaughnessy",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:20:11Z",
-   "url": "https://x.com/patrick_oshag/status/2115086160066236429",
-   "text": "Cliff Sosin on why you want to own the complements to cheap intelligence, like Meta does:\n\n\"I've found it helpful to assume everyone has really great intelligence and ask what's left. \n\nIf intelligence becomes cheap and ubiquitous, what you want to own are the complements to intelligence. \n\nThe complements are data, attention, love, physical proximity, scale, regulatory capture.\n\nLet's talk about Meta. They have $250 billion of revenue, and they spend $250 billion a year. The question you might ask is, what do they spend it on? A really reductionist view is that they spend it all on intelligence.\n\nThey're buying data centers. They're literally buying inference. They're paying really smart people to write algorithms. They're writing code. That's just intelligence.\n\nIf you think forward with the fact that the price of intelligence is falling by a factor of a hundred or something over the next five years, their costs kind of go away.\n\nMaybe instead of taking their cost to zero with much better intelligence at much lower prices, maybe they can sell a few more ads.\n\nAll of this is downstream of what they possess, which is not destroyed by ubiquitous intelligence, which is data and attention. \n\nI don't think that the availability of cheap and ubiquitous intelligence is gonna cause people not to be interested in watching funny 20-second videos.\"",
-   "quoted": {
-    "handle": "patrick_oshag",
-    "text": "Cliff Sosin (@CliffordSosin) is one of my favorite people to call, ask some big questions, and then shut up and listen.\n\nThis conversation is a version of one of those calls.\n\nWe discuss:\n- The limits of intelligence\n- Owning the complements to it\n- Meta, the frontier labs, and the AI build-out\n- Capital markets\n-  Why he's comfortable with 80% of his portfolio in Carvana.\n\nTIMESTAMPS\n0:00 Intro  \n10:41 The Limits of Intelligence  \n18:03 Investing Beyond Cheap Intelligence  \n24:03 Will AI Become Commoditized?  \n35:10 Who Profits From AI?  \n43:00 AI Agents Reshape Competition  \n52:06 America's Capital Markets  \n58:04 Transforming Companies With AI  \n68:19 AI and Portfolio Concentration  \n73:16 Education in the AI Era"
-   },
-   "media": [
-    "https://pbs.twimg.com/amplify_video_thumb/2115079799366373376/img/OuCp5dD6sdObtZpG.jpg"
-   ],
-   "likes": 53,
-   "views": 16590,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115085890741543117",
-   "handle": "WillManidis",
-   "name": "Will Manidis",
-   "type": "repost",
-   "reposted_by": "patrick_oshag",
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:19:07Z",
-   "url": "https://x.com/WillManidis/status/2115085890741543117",
-   "text": "golden age",
-   "quoted": {
-    "handle": "patrick_oshag",
-    "text": "Cliff Sosin (@CliffordSosin) is one of my favorite people to call, ask some big questions, and then shut up and listen.\n\nThis conversation is a version of one of those calls.\n\nWe discuss:\n- The limits of intelligence\n- Owning the complements to it\n- Meta, the frontier labs, and the AI build-out\n- Capital markets\n-  Why he's comfortable with 80% of his portfolio in Carvana.\n\nTIMESTAMPS\n0:00 Intro  \n10:41 The Limits of Intelligence  \n18:03 Investing Beyond Cheap Intelligence  \n24:03 Will AI Become Commoditized?  \n35:10 Who Profits From AI?  \n43:00 AI Agents Reshape Competition  \n52:06 America's Capital Markets  \n58:04 Transforming Companies With AI  \n68:19 AI and Portfolio Concentration  \n73:16 Education in the AI Era"
-   },
-   "media": [
-    "https://pbs.twimg.com/media/HVpLY7vWIAAgCRQ.jpg?name=orig"
-   ],
-   "likes": 34,
-   "views": 7533,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115084762700251451",
-   "handle": "WarrenPies",
-   "name": "Warren Pies",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "WarrenPies"
-   },
-   "time_utc": "2026-10-27T14:14:38Z",
-   "url": "https://x.com/WarrenPies/status/2115084762700251451",
-   "text": "So far, yields have fallen when tech weakens (Fed hikes priced out). This allows for defensives/non-AI basket to rally (broadening) and translates into S&P 500 chop.\n\nOne negative way this all breaks is if the Fed signals that nasdaq weakness is not enough to stop the tightening and that they need to see the data improve before they relent. That type of signal would break the negative nasdaq/yield connection in an uncomfortable direction. 2018ish type of environment.",
-   "quoted": null,
-   "media": [],
-   "likes": 29,
-   "views": 3137,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2115084179750936866",
-   "handle": "cb_doge",
-   "name": "DogeDesigner",
-   "type": "repost",
-   "reposted_by": "elonmusk",
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:12:19Z",
-   "url": "https://x.com/cb_doge/status/2115084179750936866",
-   "text": "BREAKING: United Airlines is adding @Starlink to ~3 aircraft a day, its CEO just announced.\n\nAlready on 48% of United's flights, Starlink is set to reach 50% next week.",
+   "time_utc": "2026-10-28T15:05:00Z",
+   "url": "https://x.com/steve_hanke/status/2115459825119514870",
+   "text": "In Trump's first full fiscal year, the US deficit hit nearly $2 TRILLION. That's up $217 BILLION, or 12%, from a year earlier.\n\nTRUMP = FISCAL MISMANAGEMENT.",
    "quoted": null,
    "media": [
-    "https://pbs.twimg.com/amplify_video_thumb/2115084112528896000/img/2b6kK35rsRIxnrpE.jpg"
+    "https://pbs.twimg.com/media/HVrSrbhXUAAknxV.jpg?name=orig"
    ],
-   "likes": 1151,
-   "views": 178338,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115083833993482648",
-   "handle": "KeithMcCullough",
-   "name": "Keith McCullough",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:10:57Z",
-   "url": "https://x.com/KeithMcCullough/status/2115083833993482648",
-   "text": "Cutting our Bitcoin price target (again) to $199k",
-   "quoted": null,
-   "media": [],
-   "likes": 62,
-   "views": 9058,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2115082547885433213",
-   "handle": "WarrenPies",
-   "name": "Warren Pies",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "WarrenPies"
-   },
-   "time_utc": "2026-10-27T14:05:50Z",
-   "url": "https://x.com/WarrenPies/status/2115082547885433213",
-   "text": "Zooming out, I still believe the dominant strategy is fading the AI fear as it arises. \n\nBut, you can't ignore price action (i.e. build conviction with fundamentals...manage risk with technicals).",
-   "quoted": null,
-   "media": [],
-   "likes": 71,
-   "views": 3429,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2115081440920469710",
-   "handle": "IBDinvestors",
-   "name": "Investors.com",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:01:26Z",
-   "url": "https://x.com/IBDinvestors/status/2115081440920469710",
-   "text": "Boeing Reports Mixed Q3 Results, Record Backlog; Stock Falters\nhttps://www.investors.com/news/boeing-earnings-q3-2026-ba-stock-dow-jones-737-max-orders-defense/",
-   "quoted": null,
-   "media": [],
-   "likes": 2,
-   "views": 3840,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2115080947863359532",
-   "handle": "ripster47",
-   "name": "Ripster",
-   "type": "repost",
-   "reposted_by": "ripster47",
-   "replying_to": null,
-   "time_utc": "2026-10-27T13:59:28Z",
-   "url": "https://x.com/ripster47/status/2115080947863359532",
-   "text": "Long Portfolio Rises Again 💡\n\nWith Bullish AI earnings AI names doing good\nAlso we are managing portfolio more closely this time at https://tenetresearch.ai and less names but high conviction\n\nFull portfolio at @tenet_research",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpGtyBXUAESbbZ.png?name=orig"
-   ],
-   "likes": 11,
-   "views": 18197,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115080326485811652",
-   "handle": "Mr_Derivatives",
-   "name": "Heisenberg",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "yxinsights"
-   },
-   "time_utc": "2026-10-27T13:57:00Z",
-   "url": "https://x.com/Mr_Derivatives/status/2115080326485811652",
-   "text": "@yxinsights By a marathon!\n\nWith that said though, gotta start nibbling here right?\n\nRSI still showing a slight bull divergence..",
-   "quoted": null,
-   "media": [],
    "likes": 4,
-   "views": 2334,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2115080268868718980",
-   "handle": "scottmelker",
-   "name": "The Wolf Of All Streets",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T13:56:47Z",
-   "url": "https://x.com/scottmelker/status/2115080268868718980",
-   "text": "AI won't make you Jane Street overnight. But it's closing the gap fast.\n\nDoubleZero co-founder Austin Federa on how AI-built programs, faster data and affordable servers are lowering the barriers for retail traders\n\n\"AI inference is still too slow to really trade on. But you can have AI build you a trading program. Then you can hook that up to DoubleZero data.\"\n\n\"You're not Jane Street overnight, but you are closing the gap tremendously between click trading on a UI and what a market making firm is doing.\"\n\n\"Go back 5 years ago, and if you had an alpha trade and you didn't work at a big firm, good luck actually executing that trade. The execution and the data access was such a barrier. That's coming down very quickly.\"\n\n\"AI can build the program for you. DoubleZero can get you the data. Through projects like the Hub, you can get a bare metal server located in NY4 at a pretty reasonable price.\"\n\n\"It's not exactly the same as being co-located with Nasdaq, but it's much better than having your agent trade through Robinhood. So the access barrier is getting very low very quickly.\"",
-   "quoted": {
-    "handle": "scottmelker",
-    "text": "Bitcoin's Bear Market Ended Months Ago https://x.com/i/broadcasts/1DxLdZBWkayxm"
-   },
-   "media": [
-    "https://pbs.twimg.com/amplify_video_thumb/2115079880652328960/img/qGQXSz2_lneBFGUL.jpg"
-   ],
-   "likes": 22,
-   "views": 14208,
+   "views": 3244,
    "cashtags": [],
    "n_media": 1
   },
   {
-   "id": "2115078741504450767",
-   "handle": "tryhard69000",
-   "name": "TryHard69",
-   "type": "repost",
-   "reposted_by": "MrZackMorris",
-   "replying_to": null,
-   "time_utc": "2026-10-27T13:50:42Z",
-   "url": "https://x.com/tryhard69000/status/2115078741504450767",
-   "text": "@MrZackMorris Once QQQ lost pre market high, I was wet for puts 💦",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpE53iXkAAZXY8.jpg?name=orig"
-   ],
-   "likes": 7,
-   "views": 1654,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115078456560029954",
-   "handle": "firstadopter",
-   "name": "tae kim",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T13:49:34Z",
-   "url": "https://x.com/firstadopter/status/2115078456560029954",
-   "text": "AMD will invest $1 billion in Meta's equity offering.\n\n\"Meta has deployed millions of EPYC processors across multiple generations and is a lead customer for 6th Gen EPYC™ CPUs. The companies are also collaborating on future generations, including “Verano.”\n\n\"AMD Instinct GPUs are currently used in production in Meta’s infrastructure for training, ranking and recommendation engines. Meta was also an early definition customer for the AMD Instinct™ MI450 architecture, and it will deploy a custom AMD Instinct GPU that is optimized for its workloads. The collaboration is also informing future AMD platforms, including AMD Instinct™ MI500 series GPUs and next-generation rack-scale systems.\" https://newsroom.amd.com/news/amd-meta-advance-strategic-partnership-power-metas-ai-infrastructure/",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpEnysXgAAJKB0.jpg?name=orig"
-   ],
-   "likes": 50,
-   "views": 6192,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115077396453806483",
-   "handle": "leadlagreport",
-   "name": "Michael A. Gayed, CFA",
+   "id": "2115457343966020053",
+   "handle": "WarrenPies",
+   "name": "Warren Pies",
    "type": "reply",
    "reposted_by": null,
    "replying_to": {
-    "screen_name": "leadlagreport"
+    "screen_name": "ScottW_Grizzle"
    },
-   "time_utc": "2026-10-27T13:45:22Z",
-   "url": "https://x.com/leadlagreport/status/2115077396453806483",
-   "text": "JOJO.Index = ATAC Credit-On/Credit-Off Index, launched 6/14/2021. Results before launch are backtested and hypothetical. Indexes are unmanaged, have no fees and cannot be invested in directly. Past performance does not guarantee future results. Not investment advice.",
+   "time_utc": "2026-10-28T14:55:08Z",
+   "url": "https://x.com/WarrenPies/status/2115457343966020053",
+   "text": "@ScottW_Grizzle @silicondata I think that is right...Physical commodities have a convenience yield...compute might have a security or capacity premium.",
    "quoted": null,
    "media": [],
    "likes": 3,
-   "views": 2087,
+   "views": 221,
    "cashtags": [],
    "n_media": 0
   },
   {
-   "id": "2115077394448965743",
-   "handle": "leadlagreport",
-   "name": "Michael A. Gayed, CFA",
+   "id": "2115456886757867997",
+   "handle": "LizAnnSonders",
+   "name": "Liz Ann Sonders",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-27T13:45:21Z",
-   "url": "https://x.com/leadlagreport/status/2115077394448965743",
-   "text": "Why watch utilities? My research found they have tended to lead when credit stress builds.\n\nUtilities vs. the S&P 500, last 4 weeks: +8.44%. Last 13 weeks: -9.08%.\n\nThe JOJO.Index has sat in long Treasuries since the week ending Oct 23. Weeks in this run: 2.",
+   "time_utc": "2026-10-28T14:53:19Z",
+   "url": "https://x.com/LizAnnSonders/status/2115456886757867997",
+   "text": "September goods trade deficit widened to $134.9B vs. $130.2B est. & $132.1B in prior month … imports +2.4%; exports +2.6%",
    "quoted": null,
    "media": [
-    "https://pbs.twimg.com/media/HVpDrmUWEAAnSSw.jpg?name=orig"
+    "https://pbs.twimg.com/media/HVuc04QXQAAionI.jpg?name=orig"
    ],
-   "likes": 22,
-   "views": 6364,
+   "likes": 10,
+   "views": 4256,
    "cashtags": [],
    "n_media": 1
   },
   {
-   "id": "2115076994161590735",
-   "handle": "GavinSBaker",
-   "name": "Gavin Baker",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "AMD"
-   },
-   "time_utc": "2026-10-27T13:43:46Z",
-   "url": "https://x.com/GavinSBaker/status/2115076994161590735",
-   "text": "@AMD @LisaSu @TomorrowXSummit Looking forward to Dom interviewing her!",
-   "quoted": null,
-   "media": [],
-   "likes": 23,
-   "views": 3433,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2115076600299405345",
-   "handle": "owenslindsay1",
-   "name": "Lindsay Owens",
-   "type": "repost",
-   "reposted_by": "TheStalwart",
-   "replying_to": null,
-   "time_utc": "2026-10-27T13:42:12Z",
-   "url": "https://x.com/owenslindsay1/status/2115076600299405345",
-   "text": "I had so much fun joining @TheStalwart and @tracyalloway on Odd Lots. We dug in on the future of agentic commerce and talked about my new book, Gouged. Here are two of the experiments I cited on the show about conflicts of interest and personalized pricing. \n\n1. A September 2026 study of 13 AI agents across 325,000 experiments found that many recommended more expensive flights, health plans, and graduate programs to users they inferred were wealthier, even when those users explicitly asked for the cheapest option. The AI agents inferred wealth from other personal data, including emails (yikes!). https://arxiv.org/abs/2609.24927 \n\n2. A recent study from researchers at the University of Washington and Princeton University analyzed how AI models behaved when advertising and corporate incentives entered the picture. The results were alarming, demonstrating that “all current LLMs exhibit risky behaviors favoring the company over the user.” The models nudged users toward more expensive sponsored products, recommending them over identical alternatives in the lion’s share of cases – even at double the price. They also failed to disclose paid placements, and recommended sponsored predatory products like payday loans. https://arxiv.org/abs/2604.08525",
-   "quoted": {
-    "handle": "TheStalwart",
-    "text": "NEW ODD LOTS:\n\n@tracyalloway and I talk to @owenslindsay1 about the state of the art technology that companies are finding to figuring the maximum price you will pay for something. https://podcasts.apple.com/us/podcast/ai-agents-are-already-changing-the-price-of-goods/id1056200096?i=1000798142312"
-   },
-   "media": [],
-   "likes": 19,
-   "views": 6409,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2115075402242883604",
-   "handle": "scottmelker",
-   "name": "The Wolf Of All Streets",
+   "id": "2115454091161944264",
+   "handle": "JavierBlas",
+   "name": "Javier Blas",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-27T13:37:26Z",
-   "url": "https://x.com/scottmelker/status/2115075402242883604",
-   "text": "S&P DOW JONES INDICES AND KALSHI PARTNER TO CREATE NEW FINANCIAL INDICES POWERED BY KALSHI'S PREDICTION MARKETS",
+   "time_utc": "2026-10-28T14:42:13Z",
+   "url": "https://x.com/JavierBlas/status/2115454091161944264",
+   "text": "BREAKING: European natural gas benchmark price (TTF) surged through €100 a megawatt-hour for the first time since the 2022 energy crisis.",
    "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpB2JfXkAEUwKq.jpg?name=orig",
-    "https://pbs.twimg.com/media/HVpB2JcXMAA53H1.png?name=orig"
-   ],
-   "likes": 15,
-   "views": 10818,
+   "media": [],
+   "likes": 60,
+   "views": 8873,
    "cashtags": [],
-   "n_media": 2
+   "n_media": 0
   },
   {
-   "id": "2115069905972109577",
+   "id": "2115452297329225852",
    "handle": "charliebilello",
    "name": "Charlie Bilello",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-10-27T13:15:36Z",
-   "url": "https://x.com/charliebilello/status/2115069905972109577",
-   "text": "Only two of the Mag 7 stocks are outperforming the market this year:\n\nApple and Nvidia.\n\nWhat do they have in common?\n\nThey rank #1 and #2 in free cash flow.\n\nInvestors are rewarding cash generation and growing more skeptical of massive AI spending with uncertain future returns.",
+   "time_utc": "2026-10-28T14:35:05Z",
+   "url": "https://x.com/charliebilello/status/2115452297329225852",
+   "text": "Global Central Bank Update:\n-Canada hiked rates for the first time since 2023, 25 bps move up to 2.50%.",
    "quoted": null,
    "media": [
-    "https://pbs.twimg.com/media/HVo8WkDXkAE0ReH.jpg?name=orig"
+    "https://pbs.twimg.com/media/HVuYRWlWQAAmRZ-.png?name=orig"
    ],
-   "likes": 340,
-   "views": 30888,
+   "likes": 44,
+   "views": 11033,
    "cashtags": [],
    "n_media": 1
   },
   {
-   "id": "2115069658017435695",
-   "handle": "MrZackMorris",
-   "name": "Zack Morris",
-   "type": "reply",
+   "id": "2115450941650661702",
+   "handle": "Jake__Wujastyk",
+   "name": "Jake Wujastyk",
+   "type": "post",
    "reposted_by": null,
-   "replying_to": {
-    "screen_name": "MrZackMorris"
+   "replying_to": null,
+   "time_utc": "2026-10-28T14:29:42Z",
+   "url": "https://x.com/Jake__Wujastyk/status/2115450941650661702",
+   "text": "Can’t make this stuff up",
+   "quoted": {
+    "handle": "KobeissiLetter",
+    "text": "BREAKING: President Trump says that Venezuela could become the 51st state of the United States of America.\n\nTrump also declares US intervention in Venezuela as the \"greatest oil victory in history.\"\n\nHawaii was the last state added to the US in August 1959."
    },
-   "time_utc": "2026-10-27T13:14:37Z",
-   "url": "https://x.com/MrZackMorris/status/2115069658017435695",
-   "text": "Stock flow, last 5 sessions\nMSFT: call share 43% to 84% into Wed earnings\nNVDA: $538M premium, 64% calls, $478M block at 212.21\nTSLA: $691M premium, 63% calls\nMU: $572M premium, 55% calls\nAMZN: 70% calls into Thu earnings\n\nLevels to watch, not financial advice.",
-   "quoted": null,
    "media": [],
-   "likes": 2,
-   "views": 831,
+   "likes": 41,
+   "views": 13178,
    "cashtags": [],
    "n_media": 0
   },
   {
-   "id": "2115069526467568032",
-   "handle": "dampedspring",
-   "name": "Andy Constan",
+   "id": "2115445592570871990",
+   "handle": "StockSavvyShay",
+   "name": "Shay Boloor",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T14:08:27Z",
+   "url": "https://x.com/StockSavvyShay/status/2115445592570871990",
+   "text": "95% chance today's Fed decision is a complete nothing burger.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuShetb0AA2LnP.jpg?name=orig"
+   ],
+   "likes": 197,
+   "views": 23835,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2115443992406225123",
+   "handle": "robin_j_brooks",
+   "name": "Robin Brooks",
    "type": "reply",
    "reposted_by": null,
    "replying_to": {
-    "screen_name": "kieranwgoodwin"
+    "screen_name": "TozzoAnna"
    },
-   "time_utc": "2026-10-27T13:14:05Z",
-   "url": "https://x.com/dampedspring/status/2115069526467568032",
-   "text": "@kieranwgoodwin https://x.com/dampedspring/status/2115052313874157866",
+   "time_utc": "2026-10-28T14:02:05Z",
+   "url": "https://x.com/robin_j_brooks/status/2115443992406225123",
+   "text": "@TozzoAnna No, I'm afraid that's not right. TARGET2 is subsidized lending at below market interest rates. It allows Italy to run its economy at a higher debt level than is advisable or sustainable. This taxes Germany to pay for the subsidy to Italy. Politically, you know this can't last...",
+   "quoted": null,
+   "media": [],
+   "likes": 12,
+   "views": 570,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2115443870485844077",
+   "handle": "elerianm",
+   "name": "Mohamed A. El-Erian",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T14:01:36Z",
+   "url": "https://x.com/elerianm/status/2115443870485844077",
+   "text": "From the Bank of Canada's statement accompanying the decision to hike interest rates.\n#economy #markets #canada #centralbanks",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuQ_SGXsAAoL56.jpg?name=orig"
+   ],
+   "likes": 53,
+   "views": 12503,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2115443720396951642",
+   "handle": "KobeissiLetter",
+   "name": "The Kobeissi Letter",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T14:01:00Z",
+   "url": "https://x.com/KobeissiLetter/status/2115443720396951642",
+   "text": "BREAKING: Trading turnover in 9 China ETFs favored by state-backed investors surged to $12.6 billion on Friday, its highest since July 20th and 2nd-highest since January.\n\nThis figure has quadrupled since the beginning of the month.\n\nThe surge was led by the E Fund ChiNext ETF, which attracted +$2.9 billion in inflows, its largest daily intake in 2 years.\n\nThis follows +$6.9 billion in inflows into these 9 ETFs on Thursday, their largest daily inflow since April 2025.\n\nMeanwhile, the CSI Index is down -19% from its June 22nd peak, to near its lowest since July.\n\nAt the same time, China’s margin debt has declined -18%, or -$830 million, to its lowest since October 2025, as investor appetite for leverage has rapidly weakened.\n\nChina’s stock market is under pressure.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVt1ZYcWAAAZHGN.jpg?name=orig"
+   ],
+   "likes": 315,
+   "views": 82364,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2115442172204073347",
+   "handle": "scottmelker",
+   "name": "The Wolf Of All Streets",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "Jason"
+   },
+   "time_utc": "2026-10-28T13:54:51Z",
+   "url": "https://x.com/scottmelker/status/2115442172204073347",
+   "text": "@Jason I prefer to write it as HFSP so the other crypto kids will think I’m cool",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/tweet_video_thumb/HVuPcN0WYAEgj36.jpg"
+   ],
+   "likes": 2,
+   "views": 435,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2115440762569535726",
+   "handle": "RyanDetrick",
+   "name": "Ryan Detrick, CMT",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:49:15Z",
+   "url": "https://x.com/RyanDetrick/status/2115440762569535726",
+   "text": "Had such a great time joining  my friend @APompliano talking about why this is still a bull market, breadth might not be what you think, sentiment is getting extreme, and better times are coming soon. 📈📈📊💹\n\nhttps://www.youtube.com/watch?v=SJM8g3XV03w",
+   "quoted": null,
+   "media": [],
+   "likes": 25,
+   "views": 8202,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2115439883468607539",
+   "handle": "KeithMcCullough",
+   "name": "Keith McCullough",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:45:45Z",
+   "url": "https://x.com/KeithMcCullough/status/2115439883468607539",
+   "text": "The higher number I gave is the TRR",
    "quoted": {
-    "handle": "dampedspring",
-    "text": "Yeah this is looking at things backwards.  A 40 VIX is ridiculous in any sort of \"normal\" world.  Broad equities are not that risky at all.  What is unusual about correlations and implied correlations in particular is the extremely high IV of single names that make up large parts of the SPX index. There are no/low systematic sellers of single name equity options and tremendous speculative demand."
+    "handle": "Leonardo314404",
+    "text": "@KeithMcCullough Morning Keith. Early Look sub; first year, great stuff; renewing next month; internet search shows Brent Crude$114-$115; Dec ‘26 $114.92. I’m wrong looking somewhere? \nMy Blues 46 SOG vs Habs’ rookie G draft BC; 2-0 SO."
    },
    "media": [],
+   "likes": 5,
+   "views": 2958,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2115438544072106128",
+   "handle": "JavierBlas",
+   "name": "Javier Blas",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:40:26Z",
+   "url": "https://x.com/JavierBlas/status/2115438544072106128",
+   "text": "CHART OF THE DAY: The Canadian oil benchmark is trading at the widest discount to WTI in ~8 years: minus $31 a barrel, per @General_Index data.\n\nAs I wrote a few days ago, expensive freight is behind the balkanization of the global oil market: https://www.bloomberg.com/opinion/articles/2026-10-22/oil-market-fragmentation-is-making-crude-both-cheap-and-expensive @Opinion",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuMJHzWYAAkSiO.png?name=orig"
+   ],
+   "likes": 96,
+   "views": 13936,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2115437755765543142",
+   "handle": "awealthofcs",
+   "name": "Ben Carlson",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:37:18Z",
+   "url": "https://x.com/awealthofcs/status/2115437755765543142",
+   "text": "This is the worst decade ever for bond returns\n\nYields are now as high as they've been in 20 years\n\nI'm buying\n\nHere's why and how I think more broadly about bonds in a portfolio:\n\nhttps://awealthofcommonsense.com/2026/10/how-i-think-about-investing-in-bonds/",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuLMOqW0AA08dt.png?name=orig"
+   ],
+   "likes": 110,
+   "views": 12048,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2115434689934569894",
+   "handle": "elerianm",
+   "name": "Mohamed A. El-Erian",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:25:07Z",
+   "url": "https://x.com/elerianm/status/2115434689934569894",
+   "text": "Bloomberg: \"A new anxiety is gripping Wall Street as it bankrolls the vast network of data centers and chips behind the artificial intelligence boom: Early signs suggest that the credit market is approaching the limits of how much more debt it can absorb.\nOne after another, yields are soaring into the double digits on bonds and loans funding the AI infrastructure buildout. Bankers are finding it more difficult to offload risk to insurers and other investors.\"\n#economy #markets #debt #ai #ArtificialIntelligence #bonds",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuIo4NWcAELHDm.jpg?name=orig",
+    "https://pbs.twimg.com/media/HVuIo4VW4AA8_zZ.jpg?name=orig"
+   ],
+   "likes": 258,
+   "views": 23068,
+   "cashtags": [],
+   "n_media": 2
+  },
+  {
+   "id": "2115433983282729302",
+   "handle": "bespokeinvest",
+   "name": "Bespoke",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:22:19Z",
+   "url": "https://x.com/bespokeinvest/status/2115433983282729302",
+   "text": "Read today's Morning Lineup at https://www.bespokepremium.com/interactive/posts/featured-reports/bespokes-morning-lineup-10-28-26-fed-day",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuF7N6XcAA0lSj.png?name=orig"
+   ],
    "likes": 2,
-   "views": 1142,
+   "views": 4195,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2115433915305566250",
+   "handle": "WarrenPies",
+   "name": "Warren Pies",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "Dremontjones"
+   },
+   "time_utc": "2026-10-28T13:22:02Z",
+   "url": "https://x.com/WarrenPies/status/2115433915305566250",
+   "text": "@Dremontjones @silicondata Agree...oil is a toxic, physical commodity. When spot demand falls, curve must shift to incent storage and open storage economics.",
+   "quoted": null,
+   "media": [],
+   "likes": 5,
+   "views": 504,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2115432250481233996",
+   "handle": "WarrenPies",
+   "name": "Warren Pies",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:15:26Z",
+   "url": "https://x.com/WarrenPies/status/2115432250481233996",
+   "text": "According to @silicondata the compute curve moved into contango.\n\nLooking at it from a traditional commodity perspective, contango *should* reflect negative market fundamentals.\n\nIn this case, however, longer-dated contracts rose faster but in parallel with spot. This pattern is unheard of in other commodities - like oil - and reflects a scramble to lock-up compute.",
+   "quoted": {
+    "handle": "WarrenPies",
+    "text": "I think it is a different market. A back-led rally indicates confidence and structural tightness. This type of move is virtually nonexistent in oil (as an example). In oil all major changes in term structure occur bc of near-dated volatility (ie contango happens bc of selloff in front of curve in n response to oversupply to open storage economics)."
+   },
+   "media": [],
+   "likes": 155,
+   "views": 17465,
    "cashtags": [],
    "n_media": 0
   },
@@ -4470,6 +5038,25 @@
    "n_media": 0
   },
   {
+   "id": "2115430242781454701",
+   "handle": "TaviCosta",
+   "name": "Otavio (Tavi) Costa",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:07:27Z",
+   "url": "https://x.com/TaviCosta/status/2115430242781454701",
+   "text": "Sometimes all you need is a headline like this.\n\nWe are likely in the bottoming process for precious metals.\n\nMiners oversold.\nMetals positioning overly bearish.\nU.S. dollar overvalued and overbought.\nRates rolling over.\n\nhttps://tavicosta.substack.com/p/echoes-of-2008\n\nH/t to @SamsonLi7",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuEl_6asAA3awR.jpg?name=orig"
+   ],
+   "likes": 372,
+   "views": 20415,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
    "id": "2115428457614389268",
    "handle": "dollarsanddata",
    "name": "Nick Maggiulli",
@@ -4484,10 +5071,65 @@
     "text": "Was speaking to a dad at a Halloween party this weekend.\n\nHe listed his Vegas vacation home and told me the \"very nice gated neighborhood\" is riddled w/ listings and nothing is selling.\n\nSounded kind of like 06-07 until he told me owed nothing on it and won't the lower price."
    },
    "media": [],
-   "likes": 11,
-   "views": 1490,
+   "likes": 297,
+   "views": 41116,
    "cashtags": [],
    "n_media": 0
+  },
+  {
+   "id": "2115428370305720463",
+   "handle": "steve_hanke",
+   "name": "Steve Hanke",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T13:00:00Z",
+   "url": "https://x.com/steve_hanke/status/2115428370305720463",
+   "text": "In fiscal 2026, interest on the US national debt hit $1.14 TRILLION. That ate up 40 cents of every dollar Americans paid in individual income taxes. \n\nINTEREST ON DEBT = PAYING TAXES AND RECEIVING ONLY 60 CENTS ON THE DOLLAR.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVrPHMNXcAAIlwV.jpg?name=orig"
+   ],
+   "likes": 15,
+   "views": 6273,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2115428087710335477",
+   "handle": "bespokeinvest",
+   "name": "Bespoke",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T12:58:53Z",
+   "url": "https://x.com/bespokeinvest/status/2115428087710335477",
+   "text": "Fed Day - Morning Market Note - 10/28/26 https://bespokeinvest.substack.com/p/fed-day-morning-market-note-102826?r=826dn&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 4087,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2115428025525514350",
+   "handle": "RBAdvisors",
+   "name": "Richard Bernstein Advisors",
+   "type": "repost",
+   "reposted_by": "carlquintanilla",
+   "replying_to": null,
+   "time_utc": "2026-10-28T12:58:38Z",
+   "url": "https://x.com/RBAdvisors/status/2115428025525514350",
+   "text": "Despite #tariffs the US remains massively and increasingly dependent on the rest of the world for goods. #TradeDeficit was worse only when companies tried to front run tariffs in 2025.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVuCdnlXsAAUAau.png?name=orig"
+   ],
+   "likes": 18,
+   "views": 4401,
+   "cashtags": [],
+   "n_media": 1
   },
   {
    "id": "2115427246080954437",
@@ -4501,8 +5143,27 @@
    "text": "John Healey, UK Chancellor of the Exchequer, is presenting the first budget of Prime Minister Andy Burnham’s government.\nKey takeaways so far:\n• Fiscal Trajectory: Reinforces Britain’s multi-year fiscal consolidation path, with declining deficits and borrowing.\n• Headroom: Targeted at £15 billion, understandably using some of the previous buffer to absorb recent external shocks, including higher inflation from war-related energy disruptions.\n• Design: Protect vulnerable households, improve economic resilience, and boost growth.\nThe market's initial reaction is favorable.\n#economy #markets #uk #budget",
    "quoted": null,
    "media": [],
-   "likes": 15,
-   "views": 6324,
+   "likes": 58,
+   "views": 18798,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2115426474417099015",
+   "handle": "amitisinvesting",
+   "name": "amit",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "MuldoonMartin"
+   },
+   "time_utc": "2026-10-28T12:52:28Z",
+   "url": "https://x.com/amitisinvesting/status/2115426474417099015",
+   "text": "@MuldoonMartin at an event this morning — will be back for fomc and close",
+   "quoted": null,
+   "media": [],
+   "likes": 11,
+   "views": 1189,
    "cashtags": [],
    "n_media": 0
   },
@@ -4518,8 +5179,8 @@
    "text": "It's officially Fed day.\n\nWe expect a \"hawkish pause\" today.\n\nThe Fed will hold interest rates unchanged but lay the groundwork for a December rate hike, bringing total rate hikes in 2026 to +50 basis points.\n\nWhy?\n\nBecause the US economy is now facing both supply-side and rising demand-side inflationary pressures, while the labor market continues to weaken beneath the surface.\n\nThis puts the Fed in an increasingly difficult position: Inflation is demanding tighter monetary policy, while underlying labor market weakness is calling for the opposite.\n\nWe expect the Fed to prioritize inflation today, keeping the door open for further tightening in December.",
    "quoted": null,
    "media": [],
-   "likes": 600,
-   "views": 63668,
+   "likes": 2071,
+   "views": 193879,
    "cashtags": [],
    "n_media": 0
   },
@@ -4535,8 +5196,8 @@
    "text": "US TRADE DEFICIT HITS LARGEST LEVEL SINCE MARCH 2025\n\nThe US goods trade deficit widened 2.1% to $134.9 billion in September, exceeding economists' expectations of $130.2 billion.\n\nImports rose 2.4%, driven by a 7.5% surge in capital goods, including computers, semiconductors, and telecommunications equipment supporting AI data center expansion.\n\nExports increased 2.6%, but failed to offset the growing import bill.",
    "quoted": null,
    "media": [],
-   "likes": 128,
-   "views": 55435,
+   "likes": 262,
+   "views": 95069,
    "cashtags": [],
    "n_media": 0
   },
@@ -4554,8 +5215,8 @@
    "text": "Do the math. Let's say you can beat the S&P by 10%. On $100k, that's $10k. Divide that by just 20 hours a week (for 50 weeks a year) and that's $10/hour.  \n\nEven on a $1M portfolio, that is $100/hour. Far more ways to make $100/hour without the chance of losing money.",
    "quoted": null,
    "media": [],
-   "likes": 16,
-   "views": 1351,
+   "likes": 35,
+   "views": 2846,
    "cashtags": [],
    "n_media": 0
   },
@@ -4573,8 +5234,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVt9YFwWoAAGjA6.jpg?name=orig"
    ],
-   "likes": 14,
-   "views": 3029,
+   "likes": 27,
+   "views": 5761,
    "cashtags": [],
    "n_media": 1
   },
@@ -4590,8 +5251,8 @@
    "text": "European Commission sounds the alarm (now !!!) about the number of oil refineries closing in the region over the  last 20 years. \"We need to counter this trend,\" says EU Energy Commissioner Dan Jørgensen. \"This crisis is a wake-up call.\" Quite.",
    "quoted": null,
    "media": [],
-   "likes": 43,
-   "views": 5544,
+   "likes": 898,
+   "views": 92474,
    "cashtags": [],
    "n_media": 0
   },
@@ -4609,10 +5270,30 @@
    "media": [
     "https://pbs.twimg.com/media/HVt2bQtacAAHVyZ.jpg?name=orig"
    ],
-   "likes": 156,
-   "views": 14761,
+   "likes": 364,
+   "views": 32522,
    "cashtags": [],
    "n_media": 1
+  },
+  {
+   "id": "2115413250569359377",
+   "handle": "jonnajarian",
+   "name": "Jon Najarian",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T11:59:56Z",
+   "url": "https://x.com/jonnajarian/status/2115413250569359377",
+   "text": "So true Michele, when @nickshirleyy exposed the rampant fraud in Minnesota Tim Walz and Peggy Flanagan ran from responsibility instead of answering for it. ENOUGH! \nVote for @Michele_Tafoya and a better Minnesota",
+   "quoted": {
+    "handle": "Michele_Tafoya",
+    "text": "Programs meant to help people in need should actually reach them.\n\nIn Minnesota, fraudsters cashed in while the families who were counting on that support were left with nothing.\n\nEvery stolen dollar meant a Minnesotan who needed help didn’t get it.\n\nFirst, Tim Walz and Peggy Flanagan told Minnesotans there was no fraud.\n\nWhen the truth came out, they ran from responsibility instead of answering for it."
+   },
+   "media": [],
+   "likes": 71,
+   "views": 2726,
+   "cashtags": [],
+   "n_media": 0
   },
   {
    "id": "2115411670252024176",
@@ -4628,8 +5309,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVtzM_VW4AAH128.png?name=orig"
    ],
-   "likes": 46,
-   "views": 6498,
+   "likes": 63,
+   "views": 8498,
    "cashtags": [],
    "n_media": 1
   },
@@ -4648,8 +5329,30 @@
     "text": "Updated map. 🗺️ \n\n@business @farrmacro"
    },
    "media": [],
-   "likes": 5,
-   "views": 4387,
+   "likes": 9,
+   "views": 5507,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2115410310886731894",
+   "handle": "jasonfurman",
+   "name": "Jason Furman",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "gloriousfinance"
+   },
+   "time_utc": "2026-10-28T11:48:15Z",
+   "url": "https://x.com/jasonfurman/status/2115410310886731894",
+   "text": "@gloriousfinance https://x.com/jasonfurman/status/2111497517858685190",
+   "quoted": {
+    "handle": "jasonfurman",
+    "text": "Some impressions from the Bank-Fund meetings in Bangkok:\n\n1. The words are all negative but the numbers are all positive. Is all about unprecedented waves of shocks and risks while the IMF upgraded the forecast to something even stronger.\n\n2. No one cares about tariffs anymore, they expect them to continue forever and have adjusted and moved on.\n\n3. Everyone cares a lot about high interest rates. They expect them to continue forever but they haven't moved on.\n\n4. Oil prices fall somewhere between these two. Everyone cares some, aren't sure if they'll continue and have partially moved on.\n\n5. Everyone is having exactly the same conversations about AI as they are having here: will the demand boost continue, is it a bubble, will it kill jobs, when will it show up in productivity. I sensed much more optimism than pessimism and finance ministers and central bankers are not particuarly interested in p(doom).\n\n6. No one seemed to mind that Scott Bessent didn't bother to attend."
+   },
+   "media": [],
+   "likes": 0,
+   "views": 77,
    "cashtags": [],
    "n_media": 0
   },
@@ -4668,8 +5371,8 @@
     "https://pbs.twimg.com/media/HVtw_wrWkAAHVIO.jpg?name=orig",
     "https://pbs.twimg.com/media/HVtw_wzXUAAN7b8.jpg?name=orig"
    ],
-   "likes": 17,
-   "views": 4344,
+   "likes": 19,
+   "views": 5576,
    "cashtags": [],
    "n_media": 2
   },
@@ -4688,10 +5391,29 @@
     "text": "LATEST: @Binance files for regulatory authorization in Brazil ahead of the October 30 deadline, while restricting eight services and delisting 22 tokens for Brazilian users to comply with new Central Bank rules."
    },
    "media": [],
-   "likes": 909,
-   "views": 187779,
+   "likes": 1308,
+   "views": 234924,
    "cashtags": [],
    "n_media": 0
+  },
+  {
+   "id": "2115405905659355475",
+   "handle": "jasonfurman",
+   "name": "Jason Furman",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-10-28T11:30:44Z",
+   "url": "https://x.com/jasonfurman/status/2115405905659355475",
+   "text": "In case you haven't paid attention to Treasury markets since the FOMC last met six weeks ago, here is an update: you didn't miss anything.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HVtuWC9WoAAQSNv.jpg?name=orig"
+   ],
+   "likes": 40,
+   "views": 6568,
+   "cashtags": [],
+   "n_media": 1
   },
   {
    "id": "2115404537485750743",
@@ -4707,8 +5429,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVttN26XYAAHUEc.jpg?name=orig"
    ],
-   "likes": 25,
-   "views": 7087,
+   "likes": 41,
+   "views": 10268,
    "cashtags": [],
    "n_media": 1
   },
@@ -4767,8 +5489,8 @@
    "media": [
     "https://pbs.twimg.com/tweet_video_thumb/HVtqxfuWcAAPi5h.jpg"
    ],
-   "likes": 19,
-   "views": 4794,
+   "likes": 22,
+   "views": 5884,
    "cashtags": [],
    "n_media": 1
   },
@@ -4786,8 +5508,8 @@
    "media": [
     "https://pbs.twimg.com/media/HVrRPmGXEAEVGCp.jpg?name=orig"
    ],
-   "likes": 11,
-   "views": 6909,
+   "likes": 17,
+   "views": 8247,
    "cashtags": [],
    "n_media": 1
   },
@@ -6023,23 +6745,6 @@
    "n_media": 1
   },
   {
-   "id": "2115156709861642301",
-   "handle": "IBDinvestors",
-   "name": "Investors.com",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T19:00:31Z",
-   "url": "https://x.com/IBDinvestors/status/2115156709861642301",
-   "text": "HCA Healthcare Stock Nears Buy Point Despite Uninsured Cost Jump\nhttps://www.investors.com/news/hca-healthcare-stock-q3-earnings-uninsured-thc/",
-   "quoted": null,
-   "media": [],
-   "likes": 3,
-   "views": 3692,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
    "id": "2115155649520672807",
    "handle": "LukeGromen",
    "name": "Luke Gromen",
@@ -6332,341 +7037,6 @@
    "media": [],
    "likes": 0,
    "views": 368,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2115097918021812667",
-   "handle": "Mr_Derivatives",
-   "name": "Heisenberg",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T15:06:54Z",
-   "url": "https://x.com/Mr_Derivatives/status/2115097918021812667",
-   "text": "No rate hike tomorrow.\n\nWould spook markets if so.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpWWNkaQAAihzc.jpg?name=orig"
-   ],
-   "likes": 174,
-   "views": 21588,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115096371829088417",
-   "handle": "IBDinvestors",
-   "name": "Investors.com",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T15:00:46Z",
-   "url": "https://x.com/IBDinvestors/status/2115096371829088417",
-   "text": "SoFi Earnings Top Views. Fintech Hikes 2026 Revenue Guidance.\nhttps://www.investors.com/news/technology/sofi-stock-sofi-earnings-q32026-news/",
-   "quoted": null,
-   "media": [],
-   "likes": 0,
-   "views": 2994,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2115096300580655486",
-   "handle": "Stocktwits",
-   "name": "Stocktwits",
-   "type": "repost",
-   "reposted_by": "howardlindzon",
-   "replying_to": null,
-   "time_utc": "2026-10-27T15:00:29Z",
-   "url": "https://x.com/Stocktwits/status/2115096300580655486",
-   "text": "Honey, I Shrunk the S&P: Trading a Monster Week in Nano Size https://x.com/i/broadcasts/1OGwbndLyLqKB",
-   "quoted": null,
-   "media": [],
-   "likes": 10,
-   "views": 7704,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2115089763602768253",
-   "handle": "KeithMcCullough",
-   "name": "Keith McCullough",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:34:30Z",
-   "url": "https://x.com/KeithMcCullough/status/2115089763602768253",
-   "text": "ETF Pro changes #timestamped",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpO7WoWYAA1pgi.jpg?name=orig"
-   ],
-   "likes": 4,
-   "views": 2624,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115088111654797531",
-   "handle": "KobeissiLetter",
-   "name": "The Kobeissi Letter",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:27:56Z",
-   "url": "https://x.com/KobeissiLetter/status/2115088111654797531",
-   "text": "BREAKING: US households now own ~42% of the US equity market, their highest proportion since the late 1990s.\n\nThis proportion has risen +7 percentage points since 2020.\n\nForeign investors are the 2nd-largest owners, accounting for 18%, up from 16% in 2020.\n\nMutual funds rank 3rd, at 15%, down from 23% in 2020.\n\nMeanwhile, ETF ownership has increased +3 percentage points over the last 6 years, to 10%, its highest on record.\n\nBy comparison, pension and retirement funds own 8% of the market, while hedge funds own just 1%.\n\nHousehold demand for stocks is stronger than ever.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVj5FhEXIAArjGG.jpg?name=orig"
-   ],
-   "likes": 602,
-   "views": 105377,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115086085701406974",
-   "handle": "GroupofThirty",
-   "name": "Group of Thirty",
-   "type": "repost",
-   "reposted_by": "elerianm",
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:19:53Z",
-   "url": "https://x.com/GroupofThirty/status/2115086085701406974",
-   "text": "Read #G30 member @elerianm's piece with\n@FT -   \"Europe’s bracing reality on US bond yields\"\nhttps://www.ft.com/content/92e1700d-7990-4c6a-bd3f-63685df2fdf6?syn-25a6b1a6=1",
-   "quoted": null,
-   "media": [],
-   "likes": 9,
-   "views": 7663,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2115084062138495224",
-   "handle": "charliebilello",
-   "name": "Charlie Bilello",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:11:51Z",
-   "url": "https://x.com/charliebilello/status/2115084062138495224",
-   "text": "Tomorrow's News Today...\n\nBREAKING: NO CHANGE. THE FED HOLDS INTEREST RATES STEADY AT 3.75-4.00% BUT SIGNALS ANOTHER RATE HIKE IN DECEMBER.",
-   "quoted": null,
-   "media": [],
-   "likes": 230,
-   "views": 34898,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2115083922757329249",
-   "handle": "LizAnnSonders",
-   "name": "Liz Ann Sonders",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:11:18Z",
-   "url": "https://x.com/LizAnnSonders/status/2115083922757329249",
-   "text": "Clear @SPDJIndices factor rotation this month, with Dividend Aristocrats and Low Volatility leading, while Pure Growth and Momentum struggle; not just a U.S. story: defensive strategies have outperformed across Europe and Asia, and Momentum has lagged in Japan and Australia",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpJnl3XQAAr7zb.jpg?name=orig"
-   ],
-   "likes": 16,
-   "views": 8919,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115083274762531164",
-   "handle": "guginHH",
-   "name": "HH",
-   "type": "repost",
-   "reposted_by": "robin_j_brooks",
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:08:43Z",
-   "url": "https://x.com/guginHH/status/2115083274762531164",
-   "text": "No us sona?",
-   "quoted": {
-    "handle": "robin_j_brooks",
-    "text": "Italy and Spain demand solidarity whenever their debt blows up. But they show no solidarity when Ukraine gets invaded and freeride on Germany and others to pay. I think they misunderstand the word solidarity. What they do is grifting. That's different...\nhttps://robinjbrooks.substack.com/p/why-germany-needs-to-leave-the-euro"
-   },
-   "media": [],
-   "likes": 5,
-   "views": 3578,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2115082985279992022",
-   "handle": "elerianm",
-   "name": "Mohamed A. El-Erian",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:07:34Z",
-   "url": "https://x.com/elerianm/status/2115082985279992022",
-   "text": "Quite a favorable beat for US Consumer Confidence this morning:\nThe October Conference Board index jumped from a revised 84.2 to 91.7, well above expectations, while inflation expectations fell to 4.7% (from 5.1%).\nTogether with today's durable goods and housing, today's US data all surprised to the upside.\n#economy #markets",
-   "quoted": null,
-   "media": [],
-   "likes": 165,
-   "views": 22991,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2115082631885038070",
-   "handle": "StockSavvyShay",
-   "name": "Shay Boloor",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:06:10Z",
-   "url": "https://x.com/StockSavvyShay/status/2115082631885038070",
-   "text": "S&P and Dow Jones Indices are partnering with Kalshi to launch prediction markets indices.\n\nGreat to see how next generation of financial markets is being built.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpIbxwbUAA5And.jpg?name=orig",
-    "https://pbs.twimg.com/media/HVpIcGgagAAKNzF.png?name=orig"
-   ],
-   "likes": 126,
-   "views": 16999,
-   "cashtags": [],
-   "n_media": 2
-  },
-  {
-   "id": "2115081332002787696",
-   "handle": "sentimentrader",
-   "name": "SentimenTrader",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:01:00Z",
-   "url": "https://x.com/sentimentrader/status/2115081332002787696",
-   "text": "PPI inflation is already above 12%. Now the next CPI reading could determine whether the JK Inflation Model turns unfavorable for stocks.\nAnnual CPI is at 3.7%. A monthly rise of roughly 0.32% at the next release could take the model from +1 to 0 if PPI stays above 9%.\nRead more: https://sentimentrader.com/blog/inflation-concerns-cast-a-potentially-ominous-shadow?utm_source=twitter&utm_medium=content&utm_campaign=report20261027KC&utm_content=original_20261027",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVnVMZOasAANiT9.png?name=orig"
-   ],
-   "likes": 10,
-   "views": 6750,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115081086804046109",
-   "handle": "sentimentrader",
-   "name": "SentimenTrader",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T14:00:02Z",
-   "url": "https://x.com/sentimentrader/status/2115081086804046109",
-   "text": "Only 17% of IBOV stocks remain above their 50 day averages, versus 76% above their 200 day averages.\nAfter similar gaps, IBOV was higher 6 months later in 12 of 13 completed cases. That record doesn't rule out further sharp declines along the way.\nRead more: https://sentimentrader.com/blog/brazils-selloff-leaves-a-repair-opportunity?utm_source=twitter&utm_medium=content&utm_campaign=report20261027SE&utm_content=original_20261027",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVovF6_bMAEHsd6.jpg?name=orig"
-   ],
-   "likes": 4,
-   "views": 6219,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115075056833265874",
-   "handle": "dampedspring",
-   "name": "Andy Constan",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T13:36:04Z",
-   "url": "https://x.com/dampedspring/status/2115075056833265874",
-   "text": "Selling chips and using the profits to buy Neo cloud, hyperscalers, and frontier model company corporate bonds and equites  at bubble market valuations.",
-   "quoted": null,
-   "media": [],
-   "likes": 79,
-   "views": 14923,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2115074551776444564",
-   "handle": "elerianm",
-   "name": "Mohamed A. El-Erian",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T13:34:03Z",
-   "url": "https://x.com/elerianm/status/2115074551776444564",
-   "text": "As the Fed's two-day meeting gets underway, here is market pricing via Bloomberg for rate hikes (chart). This includes a very low (~10%) probability of an October move and a high (~80%) probability of one priced in for December. \n#economy #markets #federalreserve #centralbanks",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVpA9PeWcAArWKU.png?name=orig"
-   ],
-   "likes": 63,
-   "views": 15254,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115069966336811479",
-   "handle": "LizAnnSonders",
-   "name": "Liz Ann Sonders",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T13:15:50Z",
-   "url": "https://x.com/LizAnnSonders/status/2115069966336811479",
-   "text": "August S&P Cotality Case-Shiller 20-City Home Price Index (blue) +2.65% y/y vs. +2.47% prior … National Home Price Index (orange) +2.09% y/y vs. +1.92% prior",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVo87LQWMAA0nlk.jpg?name=orig"
-   ],
-   "likes": 41,
-   "views": 10491,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115069653198283133",
-   "handle": "NickTimiraos",
-   "name": "Nick Timiraos",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "macrogliblyglo1"
-   },
-   "time_utc": "2026-10-27T13:14:36Z",
-   "url": "https://x.com/NickTimiraos/status/2115069653198283133",
-   "text": "Warsh happened to take office just as the Fed turned toward tightening, which is when guidance has historically been more suited to heavy lifting. Guidance usually gets dated to 2008-09 and periods of ultra-accommodation, since the Fed obviously leaned on it aggressively at the zero lower bound. But its origins go back really to 1999 when officials wanted to take back the 1998 cuts without blindsiding markets the way the 1994 hikes had. So in May 1999 they did something new by issuing a policy statement at a meeting where they didn't move rates (previously, they only issued statements at meetings where they changed rates). They raised rates six weeks later (and the transcripts of May-99 show they realized a hike was very likely and they wanted to calibrate expectations). Officials didn't want to be misread.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HVo6FhiWEAAG4s8.png?name=orig"
-   ],
-   "likes": 32,
-   "views": 13066,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2115069565931843858",
-   "handle": "Mr_Derivatives",
-   "name": "Heisenberg",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-27T13:14:15Z",
-   "url": "https://x.com/Mr_Derivatives/status/2115069565931843858",
-   "text": "Paul Pierce made over $200M (not adjusted for inflation) in his illustrious HOF career.\n\nHe says he only brings in $23k in monthly income now and has just $300k left in the bank account.\n\nHe also has 4 or maybe 5(?) kids he has to support along with spousal support totaling $50k a month.\n\nAnd that’s before any of his OTHER expenses.\n\nLet this be yet another cautionary tale.\n\nInvest, invest, invest… in the stock market. For the long term.",
-   "quoted": {
-    "handle": "TMZ",
-    "text": "Ex-NBA Star Paul Pierce ‘Drowning Financially,’ Struggling to Pay Monthly Bills https://www.tmz.com/2026/10/27/paul-pierce-claims-he-is-financially-struggling/"
-   },
-   "media": [],
-   "likes": 655,
-   "views": 131905,
    "cashtags": [],
    "n_media": 0
   }
