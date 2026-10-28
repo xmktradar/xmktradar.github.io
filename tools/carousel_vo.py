@@ -26,6 +26,7 @@ import subprocess
 import sys
 
 VOICES = {'zh': 'zh-CN-XiaoxiaoNeural', 'en': 'en-US-AndrewNeural'}
+BACKUP_VOICES = {'zh': ['zh-CN-XiaoyiNeural'], 'en': ['en-US-BrianNeural', 'en-US-ChristopherNeural']}
 RATE = '+10%'
 TIMEOUT = 30
 # Keep in sync with BASE / BEAT / COVER_FRAMES in tools/carousel_video.js.
@@ -189,7 +190,9 @@ def fake_seconds(text, rate=RATE):
 
 async def speak(text, voice, path, rate=RATE):
     import edge_tts
-    for attempt in range(2):
+    for attempt in range(4):
+        if attempt:
+            await asyncio.sleep(2 ** attempt)  # "No audio was received" often clears after a short wait
         try:
             await asyncio.wait_for(edge_tts.Communicate(text, voice, rate=rate).save(path), TIMEOUT)
             if os.path.getsize(path) > 1000:

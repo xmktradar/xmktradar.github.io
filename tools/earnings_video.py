@@ -34,10 +34,17 @@ def plan(durs):
 
 
 def voice(lines, lang, tmp):
+    voices = [os.environ.get('VO_VOICE_' + lang) or vo.VOICES[lang]] + vo.BACKUP_VOICES.get(lang, [])
     for rate in RATES:
-        got = vo.render_lines(lines, os.environ.get('VO_VOICE_' + lang) or vo.VOICES[lang], tmp, f'earn-{lang}', rate)
+        got = None
+        for v in voices:  # the service sometimes sends no audio for one voice (2026-10-28): the whole video then uses the next
+            got = vo.render_lines(lines, v, tmp, f'earn-{lang}', rate)
+            if got:
+                voices = [v]
+                break
+            print(f'::warning::財報短片 {lang} 配音 {v} 失敗，試下一把聲')
         if not got:
-            print(f'::warning::財報短片 {lang} 配音失敗，今次唔出')
+            print(f'::warning::財報短片 {lang} 配音失敗，今次唔出，下次更新再試')
             return None, None
         scenes = plan([g['dur'] for g in got])
         if sum(scenes) <= MAX_S:
@@ -111,9 +118,9 @@ def main(job_file, posts_file):
     ep = json.load(open(posts_file, encoding='utf-8'))
     v = ep.get('video')
     if v and v.get('day') == job['date']:
-        for k in ('video', 'video_cover'):
-            v[k] = {l: u for l, u in (v.get(k) or {}).items() if l in ok}
-        if not ok:
+        for k in ('video', 'video_cover'):  # drop only the languages this job tried and failed
+            v[k] = {l: u for l, u in (v.get(k) or {}).items() if l in ok or l not in job['out']}
+        if not v.get('video'):
             ep.pop('video', None)
         json.dump(ep, open(posts_file, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     print(f'earnings video: made {ok or "none"}')
