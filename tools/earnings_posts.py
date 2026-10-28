@@ -38,7 +38,8 @@ T = {
                seg=lambda n, s, y: f'最大收入線：{n} 佔 {s}' + (f'（按年 {y}）' if y else ''),
                fcf=lambda v: f'自由現金流（過去 4 季）{v}', link='完整 5 章簡報 👉 ', bio='完整 5 章簡報：連結在個人簡介',
                give='☕ 鍾意就支持我哋 👉 ', disc='⚠️ 只係整理公開財報數字，唔構成投資建議。',
-               tags='#美股 #財報 #美股投資 #港人投資', swipe='👉 向左滑睇 4 張'),
+               tags='#美股 #財報 #美股投資 #港人投資', swipe=lambda n: f'👉 向左滑睇 {n} 張',
+               views=lambda b, r: f'🗣 X 大神點睇（近 28 日）：{b} 個看多、{r} 個看空 👉 ', views_none='🗣 X 大神點睇 👉 '),
     'en': dict(head=lambda t, q: f'📊 ${t} earnings ({q})', rev=lambda r, y: f'Revenue {r}, {y} YoY',
                vs_rev=lambda d, w: f', {w} estimates by {abs(d):.1f}%', better='beat', worse='missed', inline=', in line with estimates',
                eps=lambda a, e, ok: f'Adjusted EPS {a}' + (f' vs {e} expected {ok}' if e else ''),
@@ -46,7 +47,8 @@ T = {
                seg=lambda n, s, y: f'Biggest line: {n}, {s} of revenue' + (f' ({y} YoY)' if y else ''),
                fcf=lambda v: f'Free cash flow (last 4 quarters) {v}', link='Full 5-chapter brief 👉 ', bio='Full 5-chapter brief: link in bio',
                give='☕ Support the site 👉 ', disc='⚠️ A summary of public results, not investment advice.',
-               tags='#StockMarket #Earnings #USStocks #Investing', swipe='👉 Swipe for all 4'),
+               tags='#StockMarket #Earnings #USStocks #Investing', swipe=lambda n: f'👉 Swipe for all {n}',
+               views=lambda b, r: f'🗣 What X accounts say (28 days): {b} bullish, {r} bearish 👉 ', views_none='🗣 What X accounts say 👉 '),
 }
 CARD = {
     'zh': dict(kick='財報速覽', rev='收入', eps='經調整 EPS', est='預期', beat='好過預期', miss='差過預期', inline='符合預期',
@@ -54,18 +56,44 @@ CARD = {
                lines='收入線拆解', share='佔比', noseg='公司冇按業務線拆解收入', cash='現金流', liquid='現金 + 短期投資', debt='債務',
                fcf_q='自由現金流（今季）', fcf_4='自由現金流（4 季）', net_cash='淨現金', net_debt='淨負債',
                ok='✅ 自由現金流為正', bad=lambda m: f'⚠️ 現金大約撐 {m} 個月', bank='銀行唔計撐得幾耐',
-               more='完整 5 章 👉 thecrowdtape.com', foot='⚠️ 唔構成投資建議', nodata='—', year='全年數字'),
+               more='完整 5 章 👉 thecrowdtape.com', foot='⚠️ 唔構成投資建議', nodata='—', year='全年數字',
+               views='X 大神點睇', views_sub='近 28 日，每個帳號最新立場', bull='看多', bear='看空', neu='中性', views_more='全部大神點睇 👉 '),
     'en': dict(kick='Earnings at a glance', rev='Revenue', eps='Adjusted EPS', est='est.', beat='Beat', miss='Miss', inline='In line',
                growth='Growth and margins', yoy='YoY', qoq='QoQ', gm='Gross margin', om='Operating margin', nm='Net margin', rev8='Revenue, last 8 quarters',
                lines='Revenue lines', share='share', noseg='No revenue breakdown in the filing', cash='Cash flow', liquid='Cash + short-term inv.', debt='Debt',
                fcf_q='Free cash flow (qtr)', fcf_4='Free cash flow (4 qtrs)', net_cash='Net cash', net_debt='Net debt',
                ok='✅ Free cash flow is positive', bad=lambda m: f'⚠️ Cash lasts about {m} months', bank='Banks: runway does not apply',
-               more='Full brief 👉 thecrowdtape.com', foot='⚠️ Not investment advice', nodata='—', year='full-year figures'),
+               more='Full brief 👉 thecrowdtape.com', foot='⚠️ Not investment advice', nodata='—', year='full-year figures',
+               views='What X accounts say', views_sub="Each account's latest stance, last 28 days", bull='Bullish', bear='Bearish', neu='Neutral', views_more='All views 👉 '),
 }
 
 
 def brief_url(lang, t):
     return f'{SITE}{lang}/earnings/{t}/'
+
+
+def stock_url(lang, t):
+    """The stock's account-views page (tools/stock_pages.js), or None when the site has no page for it."""
+    slug = re.sub(r'[^A-Za-z0-9.\-]', '_', t)
+    return f'{SITE}{lang}/stock/{slug}/' if os.path.isdir(f'{lang}/stock/{slug}') else None
+
+
+_VIEWS = {}
+
+
+def views(t):
+    """28-day account stances for a ticker from this run's stats.json (stats.js: groups with >= 2 clear views), or None."""
+    if 'm' not in _VIEWS:
+        _VIEWS['m'] = ((read_json(work('stats.json'), {}) or {}).get('monthly') or {})
+    m = _VIEWS['m']
+    for k in ('split', 'bull', 'bear'):
+        for g in m.get(k) or []:
+            if g.get('t') == t:
+                rows = g.get('rows') or []
+                clear = sorted((r for r in rows if r.get('s') in ('bull', 'bear')), key=lambda r: -(r.get('ms') or 0))
+                return {'nb': g.get('nb') or 0, 'nr': g.get('nr') or 0, 'neu': sum(1 for r in rows if r.get('s') == 'neu'),
+                        'accs': [{'acc': r['acc'], 's': r['s']} for r in clear[:8]]}
+    return None
 
 
 def facts(co):
@@ -145,7 +173,15 @@ def slides(co, lang):
     else:
         verdict = c['bad'](max(0, round(f['liquid'] / (-f['fcf_4'] / 12))))
     s4 = {'kind': 'cash', 'title': c['cash'], 'rows': rows, 'verdict': verdict, 'more': c['more'].replace('thecrowdtape.com', f'thecrowdtape.com/{lang}/earnings/{t}/')}
-    return [s1, s2, s3, s4]
+    out = [s1, s2, s3, s4]
+    v, su = views(t), stock_url(lang, t)
+    if v and su:
+        out.append({'kind': 'views', 'title': c['views'], 'sub': c['views_sub'], 'ticker': t, 'nb': v['nb'], 'nr': v['nr'], 'neu': v['neu'],
+                    'labels': {'bull': c['bull'], 'bear': c['bear'], 'neu': c['neu']}, 'accs': v['accs'],
+                    'more': c['views_more'] + su.replace('https://', '')})
+    for x in out:
+        x['of'] = len(out)
+    return out
 
 
 def caption_lines(co, lang):
@@ -176,17 +212,20 @@ def captions(co, lang):
     give = f"{w['give']}{SITE}{lang}/#donate"
     tg = f"{w['tags']} #{t}" if re.fullmatch(r'[A-Z]{1,6}', t) else w['tags']
     body = '\n'.join(f'・{x}' for x in lines)
-    fb = '\n\n'.join([head, w['swipe'], body, f"{w['link']}{url}\n{give}", w['disc'], tg])
-    ig = sanitize_instagram('\n\n'.join([f'{head}｜{lines[0]}' if lang == 'zh' else f'{head}: {lines[0]}', w['swipe'], body, w['bio'], w['disc'],
+    v, su = views(t), stock_url(lang, t)
+    n = 5 if v and su else 4
+    say = (w['views'](v['nb'], v['nr']) if v else w['views_none']) + su if su else None
+    fb = '\n\n'.join([head, w['swipe'](n), body] + ([say] if say else []) + [f"{w['link']}{url}\n{give}", w['disc'], tg])
+    ig = sanitize_instagram('\n\n'.join([f'{head}｜{lines[0]}' if lang == 'zh' else f'{head}: {lines[0]}', w['swipe'](n), body] + ([say] if say else []) + [w['bio'], w['disc'],
                                          ig_tags(lang, [t])]), lang)
-    threads = '\n\n'.join([head, body, f"{w['link']}{url}\n{give}", w['disc'], f"{w['tags'].split(' ')[0]} #{t}"])
+    threads = '\n\n'.join([head, body] + ([say] if say else []) + [f"{w['link']}{url}\n{give}", w['disc'], f"{w['tags'].split(' ')[0]} #{t}"])
     keep = list(lines)
     while len(threads) > 490 and len(keep) > 1:
         keep.pop()
-        threads = '\n\n'.join([head, '\n'.join(f'・{x}' for x in keep), f"{w['link']}{url}", w['disc'], f"{w['tags'].split(' ')[0]} #{t}"])
+        threads = '\n\n'.join([head, '\n'.join(f'・{x}' for x in keep)] + ([say] if say else []) + [f"{w['link']}{url}", w['disc'], f"{w['tags'].split(' ')[0]} #{t}"])
     keep = list(lines)
     while True:
-        x = '\n\n'.join([head, '\n'.join(f'・{y}' for y in keep), f"{w['link']}{url}", w['disc'].split('，')[0].split(',')[0] if lang == 'zh' else '⚠️ Not investment advice',
+        x = '\n\n'.join([head, '\n'.join(f'・{y}' for y in keep)] + ([say] if say else []) + [f"{w['link']}{url}", w['disc'].split('，')[0].split(',')[0] if lang == 'zh' else '⚠️ Not investment advice',
                          f"#{'財報' if lang == 'zh' else 'Earnings'} #{t}"])
         if xlen(x) <= 270 or len(keep) <= 1:
             break
@@ -280,9 +319,10 @@ def main():
             it = {'t': co['t'], 'name': co['name'], 'label': x['label'], 'end': x['end'], 'mcap': co.get('mcap'),
                   'images': {}, 'images_fb': {}, 'posts': {}, 'url': {l: brief_url(l, co['t']) for l in LANGS}}
             for lang in LANGS:
-                files = [f'og/e/{today}-{key}-{co["t"]}-{lang}-{n + 1}.jpg' for n in range(4)]
-                fb = [f'og/e/{today}-{key}-{co["t"]}-{lang}-{n + 1}-fb.jpg' for n in range(4)]
-                jobs.append({'lang': lang, 'date': today, 'ticker': co['t'], 'slides': slides(co, lang), 'files': files, 'fb': fb})
+                ss = slides(co, lang)
+                files = [f'og/e/{today}-{key}-{co["t"]}-{lang}-{n + 1}.jpg' for n in range(len(ss))]
+                fb = [f'og/e/{today}-{key}-{co["t"]}-{lang}-{n + 1}-fb.jpg' for n in range(len(ss))]
+                jobs.append({'lang': lang, 'date': today, 'ticker': co['t'], 'slides': ss, 'files': files, 'fb': fb})
                 it['images'][lang] = [SITE + f for f in files]
                 it['images_fb'][lang] = [SITE + f for f in fb]
                 it['posts'][lang] = captions(co, lang)
@@ -311,7 +351,7 @@ def main():
             if co:
                 vid = {'date': today, 'ticker': co['t'], 'lines': {l: video_lines(co, l) for l in LANGS},
                        'images': {l: [f'og/e/{today}-video-{co["t"]}-{l}-{n + 1}.jpg' for n in range(4)] for l in LANGS},
-                       'slides': {l: slides(co, l) for l in LANGS}, 'out': {l: f'og/e/{today}-video-{l}.mp4' for l in LANGS},
+                       'slides': {l: [dict(x, of=4) for x in slides(co, l)[:4]] for l in LANGS}, 'out': {l: f'og/e/{today}-video-{l}.mp4' for l in LANGS},
                        'cover': {l: f'og/e/{today}-video-{l}-cover.jpg' for l in LANGS}}
                 for l in LANGS:
                     jobs.append({'lang': l, 'date': today, 'ticker': co['t'], 'slides': vid['slides'][l], 'files': vid['images'][l], 'fb': None})

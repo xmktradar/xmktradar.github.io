@@ -56,6 +56,15 @@ body{width:1080px;height:1350px;position:relative;overflow:hidden;color:#151a2c;
 .cr .k{font-weight:700;font-size:32px}.cr .v{font:700 44px "Inter","Noto Sans TC","Noto Sans CJK TC",sans-serif;white-space:nowrap}
 .verdict{font-weight:900;font-size:38px;text-align:center;background:#fff;border:4px solid #151a2c;border-radius:20px;padding:14px;box-shadow:0 6px 0 #151a2c}
 .more{align-self:center;background:#ff6b3d;color:#fff;font-weight:900;font-size:30px;padding:12px 24px;border-radius:16px;border:3px solid #151a2c;box-shadow:4px 5px 0 #151a2c;text-align:center}
+.vc{display:flex;gap:18px}
+.vc>div{flex:1;background:#fff;border:4px solid #151a2c;border-radius:20px;padding:14px 22px;box-shadow:0 6px 0 #151a2c;text-align:center}
+.vc .k{font-weight:900;font-size:30px}.vc .v{font:700 96px/1.05 "Inter","Noto Sans TC","Noto Sans CJK TC",sans-serif}
+.vbar{display:flex;height:40px;border:4px solid #151a2c;border-radius:20px;overflow:hidden;background:#eef0fb}
+.vbar i{display:block;height:100%}.vbar .b{background:#2fbf6a}.vbar .r{background:#e5485f}
+.vsub{font-weight:700;font-size:28px;color:#3c4466}
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.chip{font:700 28px "Inter","Noto Sans TC","Noto Sans CJK TC",sans-serif;padding:6px 16px;border-radius:999px;border:3px solid #151a2c;white-space:nowrap}
+.chip.bull{background:#c9f2d7;color:#14602f}.chip.bear{background:#ffd3da;color:#9a1f33}
 .foot{position:absolute;left:64px;right:64px;bottom:76px;height:60px;background:rgba(255,255,255,.9);border-radius:999px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;font-weight:700;font-size:24px;color:#3c4466;white-space:nowrap}
 .foot b{color:#151a2c}
 </style>
@@ -74,7 +83,7 @@ function render(lang,date,page,S){
  const C=[['18%','20%'],['82%','18%'],['15%','80%'],['85%','82%']][(page-1)%4];
  document.body.style.setProperty('--cx',C[0]);document.body.style.setProperty('--cy',C[1]);
  document.getElementById('date').textContent=date?'📅 '+date:'';
- document.getElementById('pg').textContent=page+'/4';
+ document.getElementById('pg').textContent=page+'/'+(S.of||4);
  document.getElementById('fl').textContent=FL[lang];
  let h='';
  if(S.kind==='cover'){
@@ -95,6 +104,13 @@ function render(lang,date,page,S){
  } else if(S.kind==='cash'){
   h=`<div class="ttl">💵 ${esc(S.title)}</div><div class="box">${S.rows.map(r=>`<div class="cr"><div class="k">${esc(r.k)}</div><div class="v${r.up===undefined?'':(r.up?' u':' d')}">${esc(r.v)}</div></div>`).join('')}</div>`;
   if(S.verdict)h+=`<div class="verdict">${esc(S.verdict)}</div>`;
+  h+=`<div class="more">${esc(S.more)}</div>`;
+ } else if(S.kind==='views'){
+  const tot=Math.max(1,S.nb+S.nr);
+  h=`<div class="ttl">🗣 ${esc(S.title)} · $${esc(S.ticker)}</div><div class="vsub">${esc(S.sub)}</div>
+   <div class="vc"><div><div class="k u">${esc(S.labels.bull)}</div><div class="v u">${S.nb}</div></div><div><div class="k d">${esc(S.labels.bear)}</div><div class="v d">${S.nr}</div></div></div>
+   <div class="vbar"><i class="b" style="width:${S.nb/tot*100}%"></i><i class="r" style="width:${S.nr/tot*100}%"></i></div>`;
+  if(S.accs.length)h+=`<div class="box chips">${S.accs.map(a=>`<span class="chip ${a.s}">@${esc(a.acc)}</span>`).join('')}</div>`;
   h+=`<div class="more">${esc(S.more)}</div>`;
  }
  document.getElementById('in').innerHTML=h;

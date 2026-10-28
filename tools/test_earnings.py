@@ -155,6 +155,28 @@ def test_pages_and_posts():
             lines = eo.video_lines(co, lang)
             assert len(lines) == 5 and all(lines)
         assert ep.list_page([co], 'en', 'x')
+    # X-account views: a 5th picture and a caption line linking the stock page (2026-10-28)
+    eo._VIEWS['m'] = {'split': [{'t': 'ABCD', 'nb': 3, 'nr': 1, 'rows': [
+        {'acc': 'a1', 's': 'bull', 'ms': 3}, {'acc': 'a2', 's': 'bear', 'ms': 2}, {'acc': 'a3', 's': 'bull', 'ms': 1},
+        {'acc': 'a4', 's': 'bull', 'ms': 4}, {'acc': 'a5', 's': 'neu', 'ms': 5}]}]}
+    real = eo.stock_url
+    eo.stock_url = lambda lang, t: f'{eo.SITE}{lang}/stock/{t}/'
+    try:
+        co = fixture_co(False, True)
+        for lang in ('zh', 'en'):
+            ss = eo.slides(co, lang)
+            assert len(ss) == 5 and ss[4]['kind'] == 'views' and ss[4]['nb'] == 3 and ss[4]['neu'] == 1 and all(x['of'] == 5 for x in ss)
+            assert [a['acc'] for a in ss[4]['accs']] == ['a4', 'a1', 'a2', 'a3']
+            caps = eo.captions(co, lang)
+            for k in ('x', 'threads', 'facebook'):
+                assert f'{lang}/stock/ABCD/' in caps[k], (k, caps[k])
+            assert xlen(caps['x']) <= 270 and len(caps['threads']) <= 500
+            assert ('5 張' if lang == 'zh' else 'all 5') in caps['facebook']
+        eo._VIEWS['m'] = {}
+        assert len(eo.slides(co, 'zh')) == 4 and '/zh/stock/ABCD/' in eo.captions(co, 'zh')['facebook']
+    finally:
+        eo.stock_url = real
+        eo._VIEWS.clear()
     assert ep.fmt_zh(81.2e9) == 'US$812 億' and ep.fmt_en(81.2e9) == '$81.20B' and ep.fmt_en(-2e9) == '-$2.00B'
 
 
