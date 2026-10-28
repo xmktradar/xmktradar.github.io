@@ -39,7 +39,8 @@ T = {
                fcf=lambda v: f'自由現金流（過去 4 季）{v}', link='完整 5 章簡報 👉 ', bio='完整 5 章簡報：連結在個人簡介',
                give='☕ 鍾意就支持我哋 👉 ', disc='⚠️ 只係整理公開財報數字，唔構成投資建議。',
                tags='#美股 #財報 #美股投資 #港人投資', swipe=lambda n: f'👉 向左滑睇 {n} 張',
-               views=lambda b, r: f'🗣 X 大神點睇（近 28 日）：{b} 個看多、{r} 個看空 👉 ', views_none='🗣 X 大神點睇 👉 '),
+               views=lambda b, r: f'🗣 X 大神點睇（近 28 日）：{b} 個看多、{r} 個看空 👉 ', views_none='🗣 X 大神點睇 👉 ',
+               why=lambda s, a, r: f"{'🟢 看多' if s == 'bull' else '🔴 看空'} @{a}：{r}"),
     'en': dict(head=lambda t, q: f'📊 ${t} earnings ({q})', rev=lambda r, y: f'Revenue {r}, {y} YoY',
                vs_rev=lambda d, w: f', {w} estimates by {abs(d):.1f}%', better='beat', worse='missed', inline=', in line with estimates',
                eps=lambda a, e, ok: f'Adjusted EPS {a}' + (f' vs {e} expected {ok}' if e else ''),
@@ -48,7 +49,8 @@ T = {
                fcf=lambda v: f'Free cash flow (last 4 quarters) {v}', link='Full 5-chapter brief 👉 ', bio='Full 5-chapter brief: link in bio',
                give='☕ Support the site 👉 ', disc='⚠️ A summary of public results, not investment advice.',
                tags='#StockMarket #Earnings #USStocks #Investing', swipe=lambda n: f'👉 Swipe for all {n}',
-               views=lambda b, r: f'🗣 What X accounts say (28 days): {b} bullish, {r} bearish 👉 ', views_none='🗣 What X accounts say 👉 '),
+               views=lambda b, r: f'🗣 What X accounts say (28 days): {b} bullish, {r} bearish 👉 ', views_none='🗣 What X accounts say 👉 ',
+               why=lambda s, a, r: f"{'🟢 Bull' if s == 'bull' else '🔴 Bear'} @{a}: {r}"),
 }
 CARD = {
     'zh': dict(kick='財報速覽', rev='收入', eps='經調整 EPS', est='預期', beat='好過預期', miss='差過預期', inline='符合預期',
@@ -57,14 +59,16 @@ CARD = {
                fcf_q='自由現金流（今季）', fcf_4='自由現金流（4 季）', net_cash='淨現金', net_debt='淨負債',
                ok='✅ 自由現金流為正', bad=lambda m: f'⚠️ 現金大約撐 {m} 個月', bank='銀行唔計撐得幾耐',
                more='完整 5 章 👉 thecrowdtape.com', foot='⚠️ 唔構成投資建議', nodata='—', year='全年數字',
-               views='X 大神點睇', views_sub='近 28 日，每個帳號最新立場', bull='看多', bear='看空', neu='中性', views_more='全部大神點睇 👉 '),
+               views='X 大神點睇', views_sub='近 28 日，每個帳號最新立場', bull='看多', bear='看空', neu='中性', views_more='全部大神點睇 👉 ',
+               others=lambda n: f'仲有 {n} 個大神，睇網站'),
     'en': dict(kick='Earnings at a glance', rev='Revenue', eps='Adjusted EPS', est='est.', beat='Beat', miss='Miss', inline='In line',
                growth='Growth and margins', yoy='YoY', qoq='QoQ', gm='Gross margin', om='Operating margin', nm='Net margin', rev8='Revenue, last 8 quarters',
                lines='Revenue lines', share='share', noseg='No revenue breakdown in the filing', cash='Cash flow', liquid='Cash + short-term inv.', debt='Debt',
                fcf_q='Free cash flow (qtr)', fcf_4='Free cash flow (4 qtrs)', net_cash='Net cash', net_debt='Net debt',
                ok='✅ Free cash flow is positive', bad=lambda m: f'⚠️ Cash lasts about {m} months', bank='Banks: runway does not apply',
                more='Full brief 👉 thecrowdtape.com', foot='⚠️ Not investment advice', nodata='—', year='full-year figures',
-               views='What X accounts say', views_sub="Each account's latest stance, last 28 days", bull='Bullish', bear='Bearish', neu='Neutral', views_more='All views 👉 '),
+               views='What X accounts say', views_sub="Each account's latest stance, last 28 days", bull='Bullish', bear='Bearish', neu='Neutral', views_more='All views 👉 ',
+               others=lambda n: f'+{n} more accounts on the site'),
 }
 
 
@@ -81,19 +85,87 @@ def stock_url(lang, t):
 _VIEWS = {}
 
 
+POSTS_GLOB = 'data/dash/master-posts-*.json'
+STANCE = {'睇好': 'bull', '睇淡': 'bear', '中性': 'neu'}
+
+
 def views(t):
-    """28-day account stances for a ticker from this run's stats.json (stats.js: groups with >= 2 clear views), or None."""
-    if 'm' not in _VIEWS:
-        _VIEWS['m'] = ((read_json(work('stats.json'), {}) or {}).get('monthly') or {})
-    m = _VIEWS['m']
-    for k in ('split', 'bull', 'bear'):
-        for g in m.get(k) or []:
-            if g.get('t') == t:
-                rows = g.get('rows') or []
-                clear = sorted((r for r in rows if r.get('s') in ('bull', 'bear')), key=lambda r: -(r.get('ms') or 0))
-                return {'nb': g.get('nb') or 0, 'nr': g.get('nr') or 0, 'neu': sum(1 for r in rows if r.get('s') == 'neu'),
-                        'accs': [{'acc': r['acc'], 's': r['s']} for r in clear[:8]]}
-    return None
+    """Each tracked account's latest stance on t in the last 28 days, from the site's own post data (the
+    same posts the stock page lists), or None when no account was clearly bullish or bearish."""
+    if 'by' not in _VIEWS:
+        import glob
+        cut = (datetime.utcnow() - timedelta(days=28)).strftime('%Y-%m-%dT%H:%M:%SZ')
+        last = {}
+        for f in sorted(glob.glob(POSTS_GLOB)):
+            for p in read_json(f, []) or []:
+                if p.get('reposted_by') or p.get('folded_into') or (p.get('time_utc') or '') < cut:
+                    continue
+                for tk, s in (p.get('stance_by_ticker') or {}).items():
+                    k = (tk, p.get('handle'))
+                    if s in STANCE and (k not in last or p['time_utc'] > last[k]['time_utc']):
+                        last[k] = p
+        by = {}
+        for (tk, h), p in last.items():
+            by.setdefault(tk, []).append({'acc': h, 's': STANCE[p['stance_by_ticker'][tk]], 'p': p, 'at': p['time_utc']})
+        _VIEWS['by'] = by
+    rows = _VIEWS['by'].get(t) or []
+    nb, nr = sum(r['s'] == 'bull' for r in rows), sum(r['s'] == 'bear' for r in rows)
+    if not nb + nr:
+        return None
+    # Posts about this stock first (a reason written for it, or few tickers), then the newest
+    side = lambda s: sorted((r for r in rows if r['s'] == s), key=lambda r: (on_topic(r['p'], t), r['at']), reverse=True)  # noqa: E731
+    a, b = (side('bull'), side('bear')) if nb >= nr else (side('bear'), side('bull'))
+    mixed = [x for pair in zip(a, b) for x in pair] + a[len(b):] + b[len(a):]  # both sides near the top
+    return {'nb': nb, 'nr': nr, 'neu': len(rows) - nb - nr, 'accs': mixed}
+
+
+def on_topic(p, t):
+    """2: the post has a reason written for t; 1: it names at most 3 tickers; 0: a market roundup."""
+    return 2 if (p.get('ticker_notes') or {}).get(t) else (1 if len(p.get('tickers') or []) <= 3 else 0)
+
+
+CJK = re.compile('[\u3040-\u30ff\u3400-\u9fff\uf900-\ufaff]')
+
+
+def reason(row, t, lang, cut=None):
+    """One account's reason for its stance on t, from its post (ticker note, else the summary), or ''."""
+    p = row.get('p') or {}
+    if not on_topic(p, t):
+        return ''  # a roundup's summary is not a reason for this stock
+    note, few = (p.get('ticker_notes') or {}).get(t) or '', len(p.get('tickers') or []) <= 3
+    if lang == 'zh':
+        z = p.get('zh_summary') or ''
+        txt = note if CJK.search(note) or not (few and CJK.search(z)) else z
+        txt = txt or z
+    else:
+        txt = p.get('en_summary') or p.get('text') or ''
+        if not few:  # a roundup: keep only the sentence about this stock
+            hit = [x for x in re.split(r'(?<=[.;!?])\s+|\s+\|\s+', txt) if re.search(r'\$?\b' + re.escape(t) + r'\b', x)]
+            txt = hit[0] if hit else ''
+    txt = re.sub(r'^\((?:Reposted|轉發)\)\s*', '', txt)
+    h = re.sub(r'[^A-Za-z0-9_]', '', row.get('acc') or '')
+    sep = r'\s*(?:[:：]|表示|指出|認為|稱)'
+    txt = re.sub(r'^\s*(?:@' + h + f'(?:{sep})?|' + h + sep + r')\s*', '', txt, flags=re.I) if h else txt
+    txt = txt[:1].upper() + txt[1:] if lang == 'en' else txt
+    txt = re.sub(r'https?://\S+', '', txt)
+    txt = ' '.join(txt.split())
+    if lang == 'en' and CJK.search(txt):
+        return ''
+    cut = cut or (60 if lang == 'zh' else 110)
+    return txt if len(txt) <= cut else txt[:cut - 1].rstrip() + '…'
+
+
+def view_lines(v, t, lang):
+    """Caption lines: the latest bullish and the latest bearish account, each with its reason."""
+    w, out = T[lang], []
+    for s in ('bull', 'bear'):
+        for a in v['accs']:
+            if a['s'] == s:
+                why = reason(a, t, lang)
+                if why:
+                    out.append(w['why'](s, a['acc'], why))
+                    break
+    return out
 
 
 def facts(co):
@@ -177,7 +249,9 @@ def slides(co, lang):
     v, su = views(t), stock_url(lang, t)
     if v and su:
         out.append({'kind': 'views', 'title': c['views'], 'sub': c['views_sub'], 'ticker': t, 'nb': v['nb'], 'nr': v['nr'], 'neu': v['neu'],
-                    'labels': {'bull': c['bull'], 'bear': c['bear'], 'neu': c['neu']}, 'accs': v['accs'],
+                    'labels': {'bull': c['bull'], 'bear': c['bear'], 'neu': c['neu']},
+                    'accs': [{'acc': a['acc'], 's': a['s'], 'why': reason(a, t, lang, 70 if lang == 'zh' else 120)} for a in v['accs'][:4]],
+                    'extra': c['others'](len(v['accs']) - 4) if len(v['accs']) > 4 else '',
                     'more': c['views_more'] + su.replace('https://', '')})
     for x in out:
         x['of'] = len(out)
@@ -215,10 +289,14 @@ def captions(co, lang):
     v, su = views(t), stock_url(lang, t)
     n = 5 if v and su else 4
     say = (w['views'](v['nb'], v['nr']) if v else w['views_none']) + su if su else None
-    fb = '\n\n'.join([head, w['swipe'](n), body] + ([say] if say else []) + [f"{w['link']}{url}\n{give}", w['disc'], tg])
-    ig = sanitize_instagram('\n\n'.join([f'{head}｜{lines[0]}' if lang == 'zh' else f'{head}: {lines[0]}', w['swipe'](n), body] + ([say] if say else []) + [w['bio'], w['disc'],
+    why = '\n'.join(view_lines(v, t, lang)) if v and su else ''
+    say_long = f'{say}\n{why}' if why else say
+    fb = '\n\n'.join([head, w['swipe'](n), body] + ([say_long] if say else []) + [f"{w['link']}{url}\n{give}", w['disc'], tg])
+    ig = sanitize_instagram('\n\n'.join([f'{head}｜{lines[0]}' if lang == 'zh' else f'{head}: {lines[0]}', w['swipe'](n), body] + ([say_long.replace(' 👉 ' + su, '')] if v and su else []) + [w['bio'], w['disc'],
                                          ig_tags(lang, [t])]), lang)
-    threads = '\n\n'.join([head, body] + ([say] if say else []) + [f"{w['link']}{url}\n{give}", w['disc'], f"{w['tags'].split(' ')[0]} #{t}"])
+    threads = '\n\n'.join([head, body] + ([say_long] if say else []) + [f"{w['link']}{url}\n{give}", w['disc'], f"{w['tags'].split(' ')[0]} #{t}"])
+    if len(threads) > 490 and why:
+        threads = '\n\n'.join([head, body, say, f"{w['link']}{url}\n{give}", w['disc'], f"{w['tags'].split(' ')[0]} #{t}"])
     keep = list(lines)
     while len(threads) > 490 and len(keep) > 1:
         keep.pop()
