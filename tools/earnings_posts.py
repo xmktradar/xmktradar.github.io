@@ -5,7 +5,9 @@ next posting slot of a US-results day:
   1000  filled by the first update between 06:00 and 09:40 HKT, posted 10:00 HKT (zh, then en)
   2200  filled by the first update between 18:00 and 21:40 HKT, posted 22:00 HKT (zh, then en)
 At most DAILY_CAP companies a day (per language, same companies in both), largest market cap first; a company still
-waiting 72 hours after its results was found is dropped (the brief page stays on the site). Each post is 4 pictures
+waiting 72 hours after its results was found moves to the backlog. The backlog also holds every company that reported on or
+after BACKLOG_FROM without a post (Tim 2026-10-28: post those slowly); it gets BACKLOG_PER_DAY posts a day on top of DAILY_CAP plus any room
+new results leave, largest market cap first, and an entry older than BACKLOG_DAYS is dropped (the brief page stays on the site). Each post is 4 pictures
 (1080x1350, plus square copies for Facebook) drawn by tools/earnings_cards.js from work/earnings_cards.json, and
 captions for X, Threads, Instagram and Facebook. Writes data/earnings-posts.json and social/earnings.html via work/
 (copied in by update-site.yml once the pictures exist). The first slot of the day also picks the day's video:
@@ -18,7 +20,7 @@ import sys
 from datetime import datetime, timedelta
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from earnings_pages import L as PL, by_end, money, pct, prev_q, spct, ttm_fcf, year_ago, eps_s, margin  # noqa: E402
+from earnings_pages import L as PL, report_day, by_end, money, pct, prev_q, spct, ttm_fcf, year_ago, eps_s, margin  # noqa: E402
 from share import SITE, LANGS, ig_tags, sanitize_instagram, xlen  # noqa: E402
 from sitedata import notice, now_hk, read_json, work, write_json  # noqa: E402
 
@@ -27,6 +29,9 @@ STATE = 'data/earnings/state.json'
 CO_DIR = 'data/earnings/co'
 DAILY_CAP = 5
 WAIT_HOURS = 72
+BACKLOG_FROM = '2026-10-19'
+BACKLOG_DAYS = 30
+BACKLOG_PER_DAY = 3
 SLOTS = {'1000': ((6, 0), (9, 40), '10:00'), '2200': ((18, 0), (21, 40), '22:00')}
 VIDEO_AT = '11:00'
 
@@ -345,7 +350,7 @@ def social_html(ep):
                 langs.append(f'<details{" open" if lang == "zh" else ""}><summary>{names[lang]}</summary><div class="grid">{imgs}</div>'
                              f"{xn}{box('X', p['x'], 7)}{box('Threads', p['threads'], 10)}{box('Instagram', p['instagram'], 14)}"
                              f'<h4>Facebook 用正方形圖</h4><div class="grid">{fbs}</div>{box("Facebook", p["facebook"], 14)}</details>')
-            items.append(f'<article><h3>${it["t"]} {html.escape(it["name"])}・{it["label"]}</h3>{"".join(langs)}</article>')
+            items.append(f'<article><h3>${it["t"]} {html.escape(it["name"])}・{it["label"]}{"（補發）" if it.get("backlog") else ""}</h3>{"".join(langs)}</article>')
         out.append(f'<section><h2>{at} 財報貼文（{sl["day"]}，{len(sl["items"])} 間）</h2><p>製作時間 {sl["made_hkt"]} HKT</p>{"".join(items)}</section>')
     v = ep.get('video') or {}
     if v.get('video'):
@@ -367,36 +372,55 @@ def main():
     state = read_json(STATE, {}) or {}
     ep = read_json(DATA, {}) or {}
     queue, done = ep.setdefault('queue', []), ep.setdefault('done', [])
-    have = {(x['t'], x['end']) for x in queue} | {(x['t'], x['end']) for x in done}
+    have = {(x['t'], x['end']) for x in queue} | {(x['t'], x['end']) for x in done if not x.get('dropped')}
     for e in state.get('new') or []:
         if e.get('first_run') or (e['t'], e['end']) in have:
             continue
         queue.append({'t': e['t'], 'end': e['end'], 'label': e['label'], 'found_hkt': e['found_hkt']})
         have.add((e['t'], e['end']))
+    # Backlog: reported since BACKLOG_FROM (incl. the first run's companies) and never posted
+    import glob
+    old = (now - timedelta(days=BACKLOG_DAYS)).strftime('%Y-%m-%d')
+    for f in sorted(glob.glob(f'{CO_DIR}/*.json')):
+        co = read_json(f) or {}
+        if not co.get('q') or not co.get('latest') or (co['t'], co['q'][-1]['end']) in have:
+            continue
+        day = report_day(co)
+        if day >= max(BACKLOG_FROM, old):
+            q = co['q'][-1]
+            queue.append({'t': co['t'], 'end': q['end'], 'label': q['label'], 'found_hkt': day + ' 00:00', 'backlog': True})
+            have.add((co['t'], q['end']))
     cutoff = now - timedelta(hours=WAIT_HOURS)
-    fresh = []
+    keep = []
     for x in queue:
-        if datetime.fromisoformat(x['found_hkt']).replace(tzinfo=now.tzinfo) < cutoff:
+        if not x.get('backlog') and datetime.fromisoformat(x['found_hkt']).replace(tzinfo=now.tzinfo) < cutoff:
+            x['backlog'] = True
+        if x.get('backlog') and x['found_hkt'][:10] < old:
             done.append(dict(x, dropped=True))
         else:
-            fresh.append(x)
-    queue[:] = fresh
+            keep.append(x)
+    queue[:] = keep
     ep['done'] = [x for x in done if (now - datetime.fromisoformat(x['found_hkt']).replace(tzinfo=now.tzinfo)).days <= 60]
+    done = ep['done']
     key = slot_now(now) if os.environ.get('EARNINGS_SLOT') is None else os.environ['EARNINGS_SLOT']
     slots = ep.setdefault('slots', {})
     jobs, made = [], False
     if key and (slots.get(key) or {}).get('day') != today:
-        used = sum(len(v.get('items') or []) for v in slots.values() if v.get('day') == today)
-        room = max(0, DAILY_CAP - used)
+        its = [i for v in slots.values() if v.get('day') == today for i in v.get('items') or []]
+        used_b = sum(1 for i in its if i.get('backlog'))
+        room = max(0, DAILY_CAP - (len(its) - used_b))  # new results
+        room_b = max(0, BACKLOG_PER_DAY - used_b)  # backlog, on top of the new results' cap
         cands = []
         for x in queue:
             co = load_co(x['t'])
             if co and co['q'] and co['q'][-1]['end'] == x['end']:
                 cands.append((co.get('mcap') or 0, x, co))
-        cands.sort(key=lambda c: -c[0])
+        cands.sort(key=lambda c: (bool(c[1].get('backlog')), -c[0]))  # new results first, then the backlog
         items = []
-        for _, x, co in cands[:room]:
-            it = {'t': co['t'], 'name': co['name'], 'label': x['label'], 'end': x['end'], 'mcap': co.get('mcap'),
+        new = [c for c in cands if not c[1].get('backlog')][:room]
+        back = [c for c in cands if c[1].get('backlog')][:room_b + room - len(new)]  # plus any room new results leave
+        for _, x, co in new + back:
+            it = {'t': co['t'], 'name': co['name'], 'label': x['label'], 'end': x['end'], 'mcap': co.get('mcap'), 'backlog': bool(x.get('backlog')),
                   'images': {}, 'images_x': {}, 'images_fb': {}, 'posts': {}, 'url': {l: brief_url(l, co['t']) for l in LANGS}}
             for lang in LANGS:
                 ss = slides(co, lang)
@@ -420,13 +444,13 @@ def main():
         except Exception as e:  # tags are a nice-to-have
             print('utm', e)
         made = True
-        notice(f'財報貼文：{key} 時段 {len(items)} 間（{", ".join(i["t"] for i in items) or "冇"}），隊列尚餘 {len(queue)}')
+        notice(f'財報貼文：{key} 時段 {len(items)} 間（{", ".join(i["t"] for i in items) or "冇"}），隊列尚餘 {len(queue)}（補發 {sum(1 for x in queue if x.get("backlog"))}）')
     # The day's video: on the morning slot, the largest company posted since yesterday's 22:00 slot
     vid = None
     if key == '1000' and (ep.get('video') or {}).get('day') != today:
         y = (now - timedelta(days=1)).strftime('%Y-%m-%d')
         pool = [i for k, v in slots.items() for i in v.get('items') or []
-                if (k == '1000' and v.get('day') == today) or (k == '2200' and v.get('day') == y)]
+                if ((k == '1000' and v.get('day') == today) or (k == '2200' and v.get('day') == y)) and not i.get('backlog')]
         if pool:
             top = max(pool, key=lambda i: i.get('mcap') or 0)
             co = load_co(top['t'])
