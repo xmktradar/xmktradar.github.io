@@ -921,7 +921,8 @@ header.ap-top{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hd-t
 .ap-top nav.tabs::-webkit-scrollbar{display:none}
 .ap-top nav.tabs button{border:0!important;background:none;color:var(--tx);opacity:.78;font:400 14px/1 var(--f-body);padding:9px 12px;border-radius:999px;white-space:nowrap;margin:0;cursor:pointer}
 .ap-top nav.tabs button:hover{opacity:1}
-.ap-top nav.tabs button[aria-selected="true"]{opacity:1;font-weight:600;background:var(--panel2);color:var(--tx-strong)}
+.ap-top nav.tabs button[aria-selected="true"]{opacity:1;font-weight:700;background:var(--tx-strong);color:var(--bg)}
+.ap-top nav.tabs button[aria-selected="true"] .tab-rng{color:inherit;opacity:.75}
 .ap-top nav.tabs a.tab-earn{flex:0 0 auto;color:var(--tx);opacity:.78;font:400 14px/1 var(--f-body);padding:9px 12px;border-radius:999px;white-space:nowrap;text-decoration:none}
 .ap-top nav.tabs a.tab-earn:hover{opacity:1}
 .ap-top nav.tabs a.tab-earn .tab-cap{color:var(--mut);font-size:11.5px;font-weight:400}
@@ -962,7 +963,9 @@ header.ap-top{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hd-t
 /* 熱門個股 row under the hero (Tim, 2026-10-27): the most-discussed stocks at a glance */
 .hot-top{padding-top:22px!important;padding-bottom:0!important}
 .ht-h{margin:0 0 10px;font-size:17px;color:var(--tx-strong);letter-spacing:-.01em}.ht-h b{font-weight:600}.ht-h small{margin-left:6px;font-size:13px;color:var(--muted)}
-.ht-row{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;-webkit-mask-image:linear-gradient(90deg,#000 94%,transparent);mask-image:linear-gradient(90deg,#000 94%,transparent)}
+.ht-row{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;padding-inline-end:28px}
+.ht-row.ht-more{-webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent)}
+#view{scroll-margin-top:72px}
 .ht-row::-webkit-scrollbar{display:none}
 .ht-row a{flex:none;padding:8px 15px;border-radius:980px;background:var(--panel);color:var(--tx-strong);text-decoration:none;font-size:14px;font-weight:600;line-height:1.2}
 .ht-row a:hover{background:var(--hover)}.ht-row a span{margin-left:3px;color:var(--muted);font-weight:500;font-variant-numeric:tabular-nums}
@@ -1072,7 +1075,7 @@ header.ap-top{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hd-t
 </div>
 <div class="open-live"><a href="/zh/#account/GerberKawasaki">打開互動版（全部貼文）</a></div>
 </main>
-<footer class="wrap foot"><p><a href="/zh/">首頁</a> · <a href="/zh/tools/">工具</a> · <a href="/zh/support/">支持我哋</a> · <a href="/zh/newsletter/">電子報</a> · 更新時間 2026-10-28 12:47 HKT</p></footer>
+<footer class="wrap foot"><p><a href="/zh/">首頁</a> · <a href="/zh/tools/">工具</a> · <a href="/zh/support/">支持我哋</a> · <a href="/zh/newsletter/">電子報</a> · 更新時間 2026-10-28 14:55 HKT</p></footer>
 <script>document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var h='';try{h=new URL(a.href).hostname.toLowerCase()}catch(err){return}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com'))gtag('event','x_outbound',{link_url:a.href,page:'account',lang:document.documentElement.lang||'',transport_type:'beacon'})});</script>
 <button type="button" class="to-top" aria-label="回到頂部" title="回到頂部">↑</button>
 <style>.to-top{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:30;width:42px;height:42px;padding:0;border-radius:999px;border:1px solid var(--line-strong);background:var(--panel);color:var(--tx-strong);font:700 19px/1 var(--f-body);cursor:pointer;box-shadow:0 3px 10px rgba(59,47,37,.15);opacity:0;pointer-events:none;transition:opacity .2s}
