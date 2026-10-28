@@ -385,6 +385,22 @@ def test_fit_x_drops_trailing_facts_last():
     assert facts[0] in text and facts[-1] not in text
 
 
+def test_three_line_ticker_separates_event_flag():
+    """Homepage three-lines buttons join the ticker and event flag with a middle dot.
+    Social copy never glued the flag onto the ticker; it stays '$TICKER rest'.
+    """
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    html = open(os.path.join(root, 'index.html'), encoding='utf-8').read()
+    assert 'function ruxTk(t)' in html
+    assert "bits.join(' · ')" in html
+    assert 'ruxTk(T3.shift.t)' in html and 'ruxTk(T3.most.t)' in html and 'ruxTk(T3.split.t)' in html
+    lines, _ticks = three_why._fact_lines('en', {
+        'shift': None, 'most': None, 'split': {'t': 'GOOGL', 'b': 3, 'e': 2},
+    })
+    assert lines == ['Biggest disagreement: $GOOGL Bullish 3, bearish 2']
+    assert 'GOOGLEarnings' not in lines[0]
+
+
 def test_weekend_does_not_write_three_lines():
     sp = {'date': '2026-10-23', 'posts': {'zh': {'x': 'keep'}}}
     share.attach_weekend_slots(sp, '2026-10-24', {'daily': _daily(), 'weekly': {}}, {}, save=False)
@@ -399,6 +415,7 @@ def main():
     test_post_shape_limits_and_utm()
     test_long_and_short_x_threads()
     test_fit_x_drops_trailing_facts_last()
+    test_three_line_ticker_separates_event_flag()
     test_weekend_does_not_write_three_lines()
     print('test_three_lines: platforms, limits, UTM, window, X link and Threads topic ok')
 

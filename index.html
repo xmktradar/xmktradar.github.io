@@ -1318,6 +1318,8 @@ function ruxThreeLines(rows,hasPrev){let shift=null,most=null,split=null;
    if(c.bull>=1&&c.bear>=1){const m=Math.min(c.bull,c.bear),s=c.bull+c.bear;if(!split||m>split.m||(m===split.m&&s>split.b+split.e))split={t:r.t,b:c.bull,e:c.bear,m}}});
   if(!shift)rows.forEach(r=>{if(r.chg>0&&(!shift||r.chg>shift.n))shift={kind:'chg',t:r.t,n:r.chg}});
   return {shift,most,split}}
+// 三句裡的代號按鈕：事件標籤用「 · 」隔開（GOOGL · Earnings 10/28），唔好貼住代號
+function ruxTk(t){const bits=[esc(t)].concat((FLAGS[t]||[]).map(flagText).filter(Boolean));const o=OV[t];const tip=o&&!o.unconfirmed&&o.note?` title="${esc(o.note)}"`:'';return `<button class="tk" data-tk="${esc(t)}"${tip}>${bits.join(' · ')}</button>`}
 /*RUX-END*/
 function stanceList(w,tks,accs){const SHOW=10,K=['bull','bear','neu','none'];
  const rows=tks.map(t=>{const g={bull:[],bear:[],neu:[],none:[]};accs.forEach(a=>{const x=latest(a,t,w.from,w.to);if(x)g[x.s].push({a,x})});return {t,g,n:K.reduce((s,k)=>s+g[k].length,0)}}).filter(r=>r.n).sort((x,y)=>y.n-x.n||(y.g.bull.length+y.g.bear.length)-(x.g.bull.length+x.g.bear.length)||x.t.localeCompare(y.t));
@@ -1378,9 +1380,9 @@ function viewDaily(){
  const pct=x=>(x>0?'+':'')+Math.round(x*100)+'%';
  const METHOD='看多／看空點判斷：AI 逐則閱讀原帖，按作者對每隻股票的方向標示看多、看空或中性；每個帳號只計範圍內對該股票最新一則；沒有講明方向計作未表態。';
  const t3av=t=>apAvs([...new Set(cur.filter(x=>x.t===t).map(x=>x.acc))].slice(0,4));
- const t3=[T3.shift?`<li><b>共識變化最大</b>：${tkBtn(T3.shift.t)} ${T3.shift.kind==='delta'?`淨看多比例 ${pct(T3.shift.from)} → ${pct(T3.shift.to)}（${cmpLab}）`:`${T3.shift.n} 次立場轉變`}${t3av(T3.shift.t)}</li>`:'',
-  T3.most?`<li><b>最多人討論</b>：${tkBtn(T3.most.t)} ${T3.most.n} 個觀點、${T3.most.accs} 個帳號${t3av(T3.most.t)}</li>`:'',
-  T3.split?`<li><b>分歧最大</b>：${tkBtn(T3.split.t)} 看多 ${T3.split.b}、看空 ${T3.split.e}${t3av(T3.split.t)}</li>`:''].filter(Boolean);
+ const t3=[T3.shift?`<li><b>共識變化最大</b>：${ruxTk(T3.shift.t)} ${T3.shift.kind==='delta'?`淨看多比例 ${pct(T3.shift.from)} → ${pct(T3.shift.to)}（${cmpLab}）`:`${T3.shift.n} 次立場轉變`}${t3av(T3.shift.t)}</li>`:'',
+  T3.most?`<li><b>最多人討論</b>：${ruxTk(T3.most.t)} ${T3.most.n} 個觀點、${T3.most.accs} 個帳號${t3av(T3.most.t)}</li>`:'',
+  T3.split?`<li><b>分歧最大</b>：${ruxTk(T3.split.t)} 看多 ${T3.split.b}、看空 ${T3.split.e}${t3av(T3.split.t)}</li>`:''].filter(Boolean);
  if(priorLoading&&!allP)loadAllPosts().then(function(){whenIdle(renderChunked)});
  const head=`<div class="grid">
  ${moneyBar()}
@@ -1775,9 +1777,28 @@ function mountMore(){if(postsReady())return;var h=decodeURIComponent((location.h
  p.appendChild(b);v.appendChild(p);
  if(window.IntersectionObserver){var io=new IntersectionObserver(function(es){if(es.some(function(e){return e.isIntersecting})){io.disconnect();loadNextPosts().then(function(){render()})}},{rootMargin:'280px'});io.observe(b)}}
 window.__loadCore=loadCore;window.__loadAllPosts=loadAllPosts;window.__postsReady=postsReady();window.__dashReady=coreDone;
+// 每日英雄數字要等已載入的帖文蓋過今日分析窗起點先畫。inline 只得窗後的新帖，中途一頁會先顯示未完成的 300 再跳到 364。
+function dailyFromMs(w){if(!w||!w.from)return null;return w.from.length>10?rk(w.from):hkMs(w.from)}
+function dailyCovered(){
+ if(postsFailed||postsReady())return true;
+ if(!D._ext||!D._ext.posts||!D._ext.posts.length)return true;
+ const need=dailyFromMs(dailyWindow());
+ if(need==null||!isFinite(need))return true;
+ if(!ALLP.length)return false;
+ return ALLP[0].ms<=need;
+}
+let coverP=null;
+function loadDailyCover(){
+ if(dailyCovered())return Promise.resolve();
+ if(coverP)return coverP;
+ function step(){rebuildDerived();if(dailyCovered())return Promise.resolve();return loadNextPosts(true).then(step)}
+ coverP=step().finally(function(){coverP=null;rebuildDerived()});
+ return coverP;
+}
 function render(){const h=decodeURIComponent((location.hash||'#daily').slice(1));
  const ms=h.match(/^stock[\/-](.+)$/),ma=h.match(/^account\/(.+)$/);
  if((ms||ma||h==='weekly'||h==='monthly'||h==='macro')&&(!postsReady()||!coreDone)){if(!waitT&&!document.getElementById('dash-wait'))waitT=setTimeout(function(){waitT=0;if(postsReady()&&coreDone)return;var v=document.getElementById('view');if(v&&!v.querySelector('#dash-wait'))v.insertAdjacentHTML('afterbegin','<p id="dash-wait" class="note">'+esc(uiText('正在載入其餘資料','Loading the rest'))+'</p>')},400);Promise.all([loadAllPosts(),loadCore()]).then(function(){if(waitT){clearTimeout(waitT);waitT=0}var w=document.getElementById('dash-wait');if(w)w.remove();render()}).catch(function(e){console.error(e);coreDone=true;postsFailed=true;if(waitT){clearTimeout(waitT);waitT=0}render()});return}
+ if(!ms&&!ma&&h!=='weekly'&&h!=='monthly'&&h!=='macro'&&h!=='tracked'&&!dailyCovered()){loadDailyCover().then(function(){render()}).catch(function(e){console.error(e);postsFailed=true;render()});return}
  if(ms||ma){if(!document.getElementById('view').innerHTML)drawView();try{ms?openDive(ms[1].toUpperCase()):openAccount(ma[1])}catch(e){console.error(e);document.getElementById('dive').innerHTML='<div class="wrap">'+empty('畫面顯示錯誤：'+esc(e.message))+'</div>';showDive(document.getElementById('dive'))}return}
  closeDive();current=VIEWS[h]?h:'daily';drawView();
  if(h==='donate')setTimeout(()=>{const f=document.querySelector('[data-jump="donate"]');if(f)f.click()},50)}
@@ -1809,11 +1830,13 @@ function drawView(){document.querySelectorAll('nav.tabs button[data-v]').forEach
  try{const html=VIEWS[current]();const view=document.getElementById('view');
   if(lastViewKey===current&&lastViewHtml===html&&view.firstChild){if(coreDone){const ld=view.querySelector('#dash-load');if(ld)ld.remove()}mountStatus();mountMore()}
   else{const oldTape=view.querySelector('.mk-live[data-on]');if(putView(view,html)){if(oldTape){const nw=view.querySelector('.mk-live');if(nw&&nw!==oldTape)nw.replaceWith(oldTape)}linkHandles(view);fitTables(view);clampLists(view);try{mountTape(view)}catch(e){}}else if(coreDone){const ld=view.querySelector('#dash-load');if(ld)ld.remove()}mountStatus();mountMore();lastViewKey=current;lastViewHtml=html}}catch(e){console.error(e);document.getElementById('view').innerHTML=empty('畫面顯示錯誤：'+esc(e.message))}}
+let scrollTabs=false;
+function scrollTabPanel(){const el=document.getElementById('view')||document.querySelector('nav.tabs');if(!el)return;const head=document.querySelector('header.ap-top');const top=(head?head.getBoundingClientRect().height:0)+8;el.style.scrollMarginTop=top+'px';const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;el.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-tk]');if(b){e.preventDefault();location.hash='stock/'+b.dataset.tk;return}
- const v=e.target.closest('nav.tabs button[data-v]');if(v){location.hash=v.dataset.v;return}
+ const v=e.target.closest('nav.tabs button[data-v]');if(v){document.querySelectorAll('nav.tabs button[data-v]').forEach(x=>x.setAttribute('aria-selected',x===v?'true':'false'));scrollTabs=true;const cur=decodeURIComponent((location.hash||'#daily').slice(1));if(cur===v.dataset.v||(!location.hash&&v.dataset.v==='daily')){scrollTabPanel();scrollTabs=false}location.hash=v.dataset.v;return}
  const card=e.target.closest('.acc[data-href]');if(card&&!e.target.closest('a,button')){location.hash=card.dataset.href}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!document.getElementById('dive').hidden){location.hash=current;return}const card=e.target.closest&&e.target.closest('.acc[data-href]');if(card&&e.key==='Enter'&&e.target===card)location.hash=card.dataset.href});
-window.addEventListener('hashchange',render);
+window.addEventListener('hashchange',function(){render();if(!scrollTabs)return;scrollTabs=false;const h=decodeURIComponent((location.hash||'#daily').slice(1));if(h==='daily'||h==='weekly'||h==='monthly'||h==='macro'||h==='tracked')scrollTabPanel()});
 let rT=null;window.addEventListener('resize',()=>{clearTimeout(rT);rT=setTimeout(()=>{const m=decodeURIComponent(location.hash.slice(1)).match(/^stock[\/-](.+)$/);if(m)drawChart(m[1].toUpperCase())},150)});
 // 頁首
 function paintChrome(){const m=D.meta;const cut=document.getElementById('cutoff');const tCut=dataCutoffMs();cut.textContent=tCut?hkDate(tCut)+' '+hm(tCut)+'（HKT）':'資料不足';if(m.generated_hkt)cut.title='本頁重建於 '+m.generated_hkt+' HKT';
@@ -1837,6 +1860,12 @@ paintChrome();
 render();
 PV_BOOT=false;
 if(!coreDone){loadCore().then(function(){whenIdle(function(){paintChrome();renderChunked();window.__dashReady=true})}).catch(function(e){console.error(e);coreDone=true;window.__dashReady=true;paintChrome();render()})}else window.__dashReady=true;
+function fitHotRow(){document.querySelectorAll('.ht-row').forEach(function(row){row.classList.toggle('ht-more',row.scrollWidth-row.clientWidth-row.scrollLeft>1)})}
+document.querySelectorAll('.ht-row').forEach(function(row){row.addEventListener('scroll',fitHotRow,{passive:true})});
+addEventListener('resize',fitHotRow);addEventListener('load',fitHotRow);
+// apple-home 的 .ht-row 樣式在這段 script 之後，parse 當下尚未排成橫向捲動；DOMContentLoaded 先補一次，唔好等到圖片 load
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fitHotRow);else fitHotRow();
+requestAnimationFrame(fitHotRow);fitHotRow();
 document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com')){gtag('event','social_click',{platform:'x',link_url:u,transport_type:'beacon'});gtag('event','x_outbound',{link_url:u,page:'home',lang:document.documentElement.lang||'',transport_type:'beacon'});}else if(h==='instagram.com'||h.endsWith('.instagram.com'))gtag('event','social_click',{platform:'instagram',link_url:u,transport_type:'beacon'});else if(h==='threads.net'||h.endsWith('.threads.net')||h==='threads.com'||h.endsWith('.threads.com'))gtag('event','social_click',{platform:'threads',link_url:u,transport_type:'beacon'});else if(h==='paypal.com'||h.endsWith('.paypal.com')||h==='paypal.me'||h.endsWith('.paypal.me'))gtag('event','donate_click',{method:'paypal',page:'home',lang:document.documentElement.lang})});
 
 </script>
@@ -1972,7 +2001,8 @@ header.ap-top{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hd-t
 .ap-top nav.tabs::-webkit-scrollbar{display:none}
 .ap-top nav.tabs button{border:0!important;background:none;color:var(--tx);opacity:.78;font:400 14px/1 var(--f-body);padding:9px 12px;border-radius:999px;white-space:nowrap;margin:0;cursor:pointer}
 .ap-top nav.tabs button:hover{opacity:1}
-.ap-top nav.tabs button[aria-selected="true"]{opacity:1;font-weight:600;background:var(--panel2);color:var(--tx-strong)}
+.ap-top nav.tabs button[aria-selected="true"]{opacity:1;font-weight:700;background:var(--tx-strong);color:var(--bg)}
+.ap-top nav.tabs button[aria-selected="true"] .tab-rng{color:inherit;opacity:.75}
 .ap-top nav.tabs a.tab-earn{flex:0 0 auto;color:var(--tx);opacity:.78;font:400 14px/1 var(--f-body);padding:9px 12px;border-radius:999px;white-space:nowrap;text-decoration:none}
 .ap-top nav.tabs a.tab-earn:hover{opacity:1}
 .ap-top nav.tabs a.tab-earn .tab-cap{color:var(--mut);font-size:11.5px;font-weight:400}
@@ -2013,7 +2043,9 @@ header.ap-top{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hd-t
 /* 熱門個股 row under the hero (Tim, 2026-10-27): the most-discussed stocks at a glance */
 .hot-top{padding-top:22px!important;padding-bottom:0!important}
 .ht-h{margin:0 0 10px;font-size:17px;color:var(--tx-strong);letter-spacing:-.01em}.ht-h b{font-weight:600}.ht-h small{margin-left:6px;font-size:13px;color:var(--muted)}
-.ht-row{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;-webkit-mask-image:linear-gradient(90deg,#000 94%,transparent);mask-image:linear-gradient(90deg,#000 94%,transparent)}
+.ht-row{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;padding-inline-end:28px}
+.ht-row.ht-more{-webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 28px),transparent)}
+#view{scroll-margin-top:72px}
 .ht-row::-webkit-scrollbar{display:none}
 .ht-row a{flex:none;padding:8px 15px;border-radius:980px;background:var(--panel);color:var(--tx-strong);text-decoration:none;font-size:14px;font-weight:600;line-height:1.2}
 .ht-row a:hover{background:var(--hover)}.ht-row a span{margin-left:3px;color:var(--muted);font-weight:500;font-variant-numeric:tabular-nums}
