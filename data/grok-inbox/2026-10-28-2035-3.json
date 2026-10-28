@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2115371234473214224": {
+      "en_summary": "Notes AI Bubble Chase with $SOXL seeing one of the largest positive market-on-close imbalances since early summer, buy orders totaling just under $5.5 billion.",
+      "zh_summary": "指出AI泡沫追逐，其中$SOXL昨日出現自初夏以來最大的正向收盤市價不平衡，買盤訂單總額接近55億美元。",
+      "tickers": ["SOXL"],
+      "stance": "中性",
+      "stance_by_ticker": {"SOXL": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115368294194573628": {
+      "en_summary": "Announces first ever Stocktwits limited drop of Anthropic $ANT hoodies, only 99 left, UNRL brand.",
+      "zh_summary": "宣布Stocktwits首次限量推出Anthropic $ANT連帽衫，僅剩99件，品牌為UNRL。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115120552516227441": {
+      "en_summary": "Tags $CBRS in context of General Compute and VCs.",
+      "zh_summary": "在General Compute及風投背景下標記$CBRS。",
+      "tickers": ["CBRS"],
+      "stance": null,
+      "stance_by_ticker": {"CBRS": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115120319073849677": {
+      "en_summary": "General Compute raised $100M at $800M valuation after securing $100M annual AI compute contract. Using chips from $CBRS to build inference capacity in former Bitcoin mining sites.",
+      "zh_summary": "General Compute在獲得1億美元年度AI計算合約後，以8億美元估值融資1億美元。使用$CBRS晶片在前比特幣挖礦場地建設推理容量。",
+      "tickers": ["CBRS"],
+      "stance": "中性",
+      "stance_by_ticker": {"CBRS": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"CBRS": "用於前比特幣挖礦場地建設AI推理容量"}
+    },
+    "2115117883626066367": {
+      "en_summary": "$ORCL and $NVDA expanding Vera Rubin to multi-gigawatt scale on Oracle Cloud, with Nvidia's new Vera CPUs entering production. Nvidia capturing both GPU demand for AI models and CPU demand for agents, Oracle offering both on same platform.",
+      "zh_summary": "$ORCL與$NVDA將Vera Rubin擴展至甲骨文雲上的多吉瓦規模，輝達新Vera CPU也進入量產。輝達同時捕捉AI模型GPU需求與代理程式CPU需求，甲骨文可在同一平台提供兩者。",
+      "tickers": ["ORCL", "NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ORCL": "睇好", "NVDA": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "同時捕捉GPU與CPU需求", "ORCL": "同一平台提供GPU與CPU"}
+    }
+  }
+}
