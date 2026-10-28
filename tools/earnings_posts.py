@@ -57,15 +57,16 @@ T = {
                views=lambda b, r: f'🗣 What X accounts say (28 days): {b} bullish, {r} bearish 👉 ', views_none='🗣 What X accounts say 👉 ',
                why=lambda s, a, r: f"{'🟢 Bull' if s == 'bull' else '🔴 Bear'} @{a}: {r}"),
 }
+# Picture text (also shown in the earnings video): zh in standard written Chinese, not Cantonese (Tim, 2026-10-28).
 CARD = {
-    'zh': dict(kick='財報速覽', rev='收入', eps='經調整 EPS', est='預期', beat='好過預期', miss='差過預期', inline='符合預期',
-               growth='成長同利潤率', yoy='按年', qoq='按季', gm='毛利率', om='經營利潤率', nm='淨利率', rev8='最近 8 季收入',
-               lines='收入線拆解', share='佔比', noseg='公司冇按業務線拆解收入', cash='現金流', liquid='現金 + 短期投資', debt='債務',
+    'zh': dict(kick='財報速覽', rev='收入', eps='經調整 EPS', est='預期', beat='優於預期', miss='遜於預期', inline='符合預期',
+               growth='成長與利潤率', yoy='同比', qoq='環比', gm='毛利率', om='經營利潤率', nm='淨利率', rev8='最近 8 季收入',
+               lines='收入線拆分', share='佔比', noseg='公司未按業務線拆分收入', cash='現金流', liquid='現金 + 短期投資', debt='債務',
                fcf_q='自由現金流（今季）', fcf_4='自由現金流（4 季）', net_cash='淨現金', net_debt='淨負債',
-               ok='✅ 自由現金流為正', bad=lambda m: f'⚠️ 現金大約撐 {m} 個月', bank='銀行唔計撐得幾耐',
-               more='完整 5 章 👉 thecrowdtape.com', foot='⚠️ 唔構成投資建議', nodata='—', year='全年數字',
-               views='X 大神點睇', views_sub='近 28 日，每個帳號最新立場', bull='看多', bear='看空', neu='中性', views_more='全部大神點睇 👉 ',
-               others=lambda n: f'仲有 {n} 個大神，睇網站'),
+               ok='✅ 自由現金流為正', bad=lambda m: f'⚠️ 現金約可支撐 {m} 個月', bank='銀行不計算可支撐時間',
+               more='完整 5 章 👉 thecrowdtape.com', foot='⚠️ 不構成投資建議', nodata='—', year='全年數字',
+               views='X 大神怎麼看', views_sub='近 28 天，每個帳號的最新立場', bull='看多', bear='看空', neu='中性', views_more='全部大神觀點 👉 ',
+               others=lambda n: f'還有 {n} 位大神，請看網站'),
     'en': dict(kick='Earnings at a glance', rev='Revenue', eps='Adjusted EPS', est='est.', beat='Beat', miss='Miss', inline='In line',
                growth='Growth and margins', yoy='YoY', qoq='QoQ', gm='Gross margin', om='Operating margin', nm='Net margin', rev8='Revenue, last 8 quarters',
                lines='Revenue lines', share='share', noseg='No revenue breakdown in the filing', cash='Cash flow', liquid='Cash + short-term inv.', debt='Debt',
