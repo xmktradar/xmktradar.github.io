@@ -16,6 +16,18 @@
    "fcf": null
   },
   {
+   "end": "2025-09-27",
+   "label": "FY2025 Q3",
+   "rev": 4533000000,
+   "gp": 1657000000,
+   "op": 1151000000,
+   "ni": 644000000,
+   "eps": 2.03,
+   "ocf": 839000000,
+   "capex": 138000000,
+   "fcf": 701000000
+  },
+  {
    "end": "2026-06-27",
    "label": "FY2026 Q2",
    "rev": 4522000000,
@@ -26,35 +38,47 @@
    "ocf": null,
    "capex": null,
    "fcf": null
+  },
+  {
+   "end": "2026-09-26",
+   "label": "FY2026 Q3",
+   "rev": 4644000000,
+   "gp": 1715000000,
+   "op": 1161000000,
+   "ni": 726000000,
+   "eps": 2.29,
+   "ocf": 668000000,
+   "capex": 168000000,
+   "fcf": 500000000
   }
  ],
  "latest": {
-  "label": "FY2026 Q2",
-  "filed": "2026-08-05",
-  "accn": "0002089271-26-000021",
+  "label": "FY2026 Q3",
+  "filed": "2026-10-28",
+  "accn": "0002089271-26-000032",
   "form": "10-Q",
-  "end": "2026-06-27"
+  "end": "2026-09-26"
  },
  "bal": {
-  "end": "2026-06-27",
-  "cash": 1057000000,
+  "end": "2026-09-26",
+  "cash": 1558000000,
   "sti": null,
-  "debt": 15853000000
+  "debt": 15856000000
  },
  "bank": false,
  "seg": {
   "none": true,
-  "accn": "0002089271-26-000021"
+  "accn": "0002089271-26-000032"
  },
  "rules": 3,
  "diag": {
   "few": {
    "RevenueFromContractWithCustomerExcludingAssessedTax": {
-    "facts": 4,
-    "q": 2,
+    "facts": 32,
+    "q": 4,
     "first": "2025-06-28",
-    "last": "2026-06-27",
-    "labelled": 2
+    "last": "2026-09-26",
+    "labelled": 4
    }
   }
  },
@@ -62,10 +86,10 @@
  "next": "2026-10-28",
  "last_report": "2026-10-28",
  "est": {
-  "eps_act": 1.87,
-  "eps_est": 2.11904,
-  "rev_est": null,
-  "rev_est_seen": null
+  "eps_act": null,
+  "eps_est": null,
+  "rev_est": 4577695710,
+  "rev_est_seen": "2026-10-29"
  },
  "pending": null
 }

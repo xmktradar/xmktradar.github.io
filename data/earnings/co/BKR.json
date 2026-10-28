@@ -4,18 +4,6 @@
  "cik": 1701605,
  "q": [
   {
-   "end": "2023-09-30",
-   "label": "FY2023 Q3",
-   "rev": 6641000000,
-   "gp": null,
-   "op": 714000000,
-   "ni": 518000000,
-   "eps": null,
-   "ocf": 810000000,
-   "capex": 281000000,
-   "fcf": 529000000
-  },
-  {
    "end": "2023-12-31",
    "label": "FY2023 Q4",
    "rev": 6835000000,
@@ -146,52 +134,65 @@
    "ocf": 1345000000,
    "capex": 300000000,
    "fcf": 1045000000
+  },
+  {
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "rev": 8025000000,
+   "gp": null,
+   "op": null,
+   "ni": 411000000,
+   "eps": null,
+   "ocf": 1005000000,
+   "capex": 271000000,
+   "fcf": 734000000
   }
  ],
  "latest": {
-  "label": "FY2026 Q2",
-  "filed": "2026-07-27",
-  "accn": "0001701605-26-000023",
+  "label": "FY2026 Q3",
+  "filed": "2026-10-28",
+  "accn": "0001701605-26-000035",
   "form": "10-Q",
-  "end": "2026-06-30"
+  "end": "2026-09-30"
  },
  "bal": {
-  "end": "2026-06-30",
-  "cash": 15727000000,
+  "end": "2026-09-30",
+  "cash": 4068000000,
   "sti": null,
-  "debt": 15479000000
+  "debt": 17476000000
  },
  "bank": false,
  "seg": {
-  "axis": "srt:ProductOrServiceAxis",
+  "axis": "us-gaap:StatementBusinessSegmentsAxis",
   "basis": "quarter",
   "rows": [
    {
-    "name": "Sales of goods",
-    "val": 4292000000.0,
-    "prev": 4516000000.0
+    "name": "OFSE",
+    "val": 3660000000.0,
+    "prev": 3636000000.0
    },
    {
-    "name": "Sales of services",
-    "val": 2450000000.0,
-    "prev": 2394000000.0
+    "name": "IET",
+    "val": 3477000000.0,
+    "prev": 3374000000.0
+   },
+   {
+    "name": "Chart",
+    "val": 888000000.0,
+    "prev": 0.0
    }
   ],
-  "accn": "0001701605-26-000023"
+  "accn": "0001701605-26-000035"
  },
  "rules": 3,
  "mcap": 54259564544,
  "next": "2027-01-25",
  "last_report": "2026-10-27",
  "est": {
-  "eps_act": 0.64,
-  "eps_est": 0.48681,
-  "rev_est": null,
-  "rev_est_seen": null
- },
- "pending": {
-  "q": "2026-09-30",
   "eps_act": 0.7,
-  "eps_est": 0.61404
- }
+  "eps_est": 0.61404,
+  "rev_est": 7745525480,
+  "rev_est_seen": "2026-10-28"
+ },
+ "pending": null
 }

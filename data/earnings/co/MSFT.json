@@ -4,18 +4,6 @@
  "cik": 789019,
  "q": [
   {
-   "end": "2023-09-30",
-   "label": "FY2024 Q1",
-   "rev": 56517000000,
-   "gp": 40215000000,
-   "op": 26895000000,
-   "ni": 22291000000,
-   "eps": 2.99,
-   "ocf": 30583000000,
-   "capex": 9917000000,
-   "fcf": 20666000000
-  },
-  {
    "end": "2023-12-31",
    "label": "FY2024 Q2",
    "rev": 62020000000,
@@ -146,53 +134,60 @@
    "ocf": 55441000000,
    "capex": 35802000000,
    "fcf": 19639000000
+  },
+  {
+   "end": "2026-09-30",
+   "label": "FY2027 Q1",
+   "rev": 92279000000,
+   "gp": 62559000000,
+   "op": 45915000000,
+   "ni": 36629000000,
+   "eps": 4.92,
+   "ocf": 58000000000,
+   "capex": 39367000000,
+   "fcf": 18633000000
   }
  ],
  "latest": {
-  "label": "FY2026 Q4",
-  "filed": "2026-07-29",
-  "accn": "0001193125-26-323660",
-  "form": "10-K",
-  "end": "2026-06-30"
+  "label": "FY2027 Q1",
+  "filed": "2026-10-28",
+  "accn": "0001193125-26-436133",
+  "form": "10-Q",
+  "end": "2026-09-30"
  },
  "bal": {
-  "end": "2026-06-30",
-  "cash": 20935000000,
-  "sti": 55908000000,
-  "debt": 40294000000
+  "end": "2026-09-30",
+  "cash": 20281000000,
+  "sti": 44228000000,
+  "debt": 35481000000
  },
  "bank": false,
  "seg": {
   "axis": "us-gaap:StatementBusinessSegmentsAxis",
-  "basis": "year",
+  "basis": "quarter",
   "rows": [
    {
-    "name": "Productivity And Business Processes",
-    "val": 139996000000.0,
-    "prev": 120810000000.0
+    "name": "Agents And Infra",
+    "val": 76795000000.0,
+    "prev": 61672000000.0
    },
    {
-    "name": "Intelligent Cloud",
-    "val": 137791000000.0,
-    "prev": 106265000000.0
-   },
-   {
-    "name": "More Personal Computing",
-    "val": 54052000000.0,
-    "prev": 54649000000.0
+    "name": "Devices And Consumer",
+    "val": 15484000000.0,
+    "prev": 16001000000.0
    }
   ],
-  "accn": "0001193125-26-323660"
+  "accn": "0001193125-26-436133"
  },
  "rules": 3,
  "mcap": 3943039238144,
  "next": "2026-10-28",
  "last_report": "2026-10-28",
  "est": {
-  "eps_act": 4.74,
-  "eps_est": 4.23939,
-  "rev_est": null,
-  "rev_est_seen": null
+  "eps_act": 4.89,
+  "eps_est": 4.72072,
+  "rev_est": 90736182420,
+  "rev_est_seen": "2026-10-29"
  },
  "pending": null
 }
