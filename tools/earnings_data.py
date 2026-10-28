@@ -348,14 +348,16 @@ def instance_facts(xml_bytes):
     return out, fy, fp
 
 
-def supplement(facts, cik, after, log=None):
+def supplement(facts, cik, after, log=None, newest=0):
     """companyfacts can lag a company's filings by months (KO, V, C ... in 2026-10). Read the 10-Q / 10-K filings that
     report a period after `after` straight from their XBRL instance and add their facts in the companyfacts shape."""
     sub = sec_json(f'https://data.sec.gov/submissions/CIK{int(cik):010d}.json')
     r = ((sub or {}).get('filings') or {}).get('recent') or {}
     rows = zip(r.get('form') or [], r.get('accessionNumber') or [], r.get('filingDate') or [], r.get('reportDate') or [])
+    # 10-QT / 10-KT: a company that changes its fiscal year (FDX in 2026-10) files transition reports
     todo = sorted((rep, accn, filed, form) for form, accn, filed, rep in rows
-                  if form in ('10-Q', '10-K') and rep and rep > after)[:4]
+                  if form.startswith(('10-Q', '10-K')) and rep and rep > after)
+    todo = todo[-newest:] if newest else todo[:4]  # newest: backfill a thin history from the latest filings
     added = 0
     log = log if log is not None else []
     if not todo:
@@ -379,7 +381,7 @@ def supplement(facts, cik, after, log=None):
             continue
         log.append(f'{form} {rep} {accn}: {len(got)} facts, {sorted({g[0] for g in got if g[0] in REV})}')
         fy = fy or rep[:4]
-        fp = fp or ('FY' if form == '10-K' else None)
+        fp = fp or ('FY' if form.startswith('10-K') else None)
         gaap = facts.setdefault('facts', {}).setdefault('us-gaap', {})
         for n, st, en, v, unit in got:
             if not unit or not en:
@@ -812,6 +814,14 @@ def main():
                     except Exception as e:  # a strange filing must not stop the others
                         log.append(f'error: {e}')
                     st['supp'] = {'hkt': stamp, 'log': log[:6]}  # why a brief still shows an old quarter
+                if b and len(b['q']) < 6:  # companyfacts holds few revenue facts (XOM): each 10-Q/10-K also carries last year's quarter
+                    log = []
+                    try:
+                        if supplement(facts, info['cik'], '', log, newest=8):
+                            b = build_quarters(facts) or b
+                    except Exception as e:
+                        log.append(f'error: {e}')
+                    st['backfill'] = {'hkt': stamp, 'q': len(b['q']), 'log': log[:9]}
                 if not b:
                     st['no_10q'] = True
                     done += 1
