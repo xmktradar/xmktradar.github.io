@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2115475008113823855": {
+      "en_summary": "Gene Munster is getting more concerned about $AMZN as personalized bots make it easier to find what you want, attacking Amazon's key advantage of discovery while speed and trust remain. Early data and Zuck's comment on Muse's commerce use case support this; global daily bot usage ~20m, expected 2B in three years. Also concerned about $GOOG needing an answer to personalized bots, with cloud growth expectations of 92% Sept / 95% Dec and capex street at $201B CY26 / $312B CY27.",
+      "zh_summary": "Gene Munster 對 $AMZN 愈來愈擔憂，因為個人化機器人讓尋找所需商品變得更容易，衝擊亞馬遜在「找到想要的東西」這項關鍵優勢，而速度與信任仍在。早期數據及 Zuck 關於 Muse 主要用於商業的評論支持此觀點；全球每日機器人使用量約 2000 萬，預期三年內達 20 億。同時對 $GOOG 需要應對個人化機器人也感到擔憂，雲端增長預期 9 月 92%、12 月 95%，資本支出街預期 CY26 為 2010 億美元、CY27 為 3120 億美元。",
+      "tickers": ["AMZN", "GOOG"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"AMZN": "睇淡", "GOOG": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115474195509326148": {
+      "en_summary": "$SKHY is among top picks at @tenet_research to buy the dips, and today it is paying investors and swing traders.",
+      "zh_summary": "$SKHY 是 @tenet_research 逢低買入的頂級選擇之一，今日正回報投資者與波段交易者。",
+      "tickers": ["SKHY"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SKHY": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115473463372861441": {
+      "en_summary": "$SKHY is +13% on the day so far after a monster move lately. Previously noted as down 10 days in a row for -30%, RSI at 27, outside lower Bollinger Bands, near July lows, with potential for a 10-15% bounce next week.",
+      "zh_summary": "$SKHY 今日迄今上漲 13%，近期走勢強勁。先前曾連續 10 日下跌達 30%，RSI 為 27，完全落在下布林帶外，接近 7 月低點，有望下週出現 10-15% 反彈。",
+      "tickers": ["SKHY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SKHY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SKHY": "近期+13%，先前連跌後技術指標顯示可能反彈"}
+    },
+    "2115472751821803572": {
+      "en_summary": "Much better to spend $17B on self-driving efforts and store relationships than buying Instacart. Quoted: $UBER just added 300+ Key Food supermarkets across the Northeast and Florida to Uber Eats, becoming their digital storefront as grocery grows into one of Uber’s biggest growth levers.",
+      "zh_summary": "把 170 億美元花在自動駕駛努力與商店關係上，比收購 Instacart 更好。引用：$UBER 剛將東北與佛州超過 300 家 Key Food 超市加入 Uber Eats，成為其數位店面，雜貨正悄然成為 Uber 最大增長槓桿之一。",
+      "tickers": ["UBER"],
+      "stance": "睇好",
+      "stance_by_ticker": {"UBER": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"UBER": "擴展雜貨配送，成為獨立商店的數位店面"}
+    },
+    "2115471350114783595": {
+      "en_summary": "$AMZN shows insane demand. Quoted Amazon CEO Andy Jassy on AWS capacity: “26 is obviously at this point sold out, 27 is largely sold out ... a good chunk of 28 is sold out.” Expects shortages of data centers, power and memory to persist beyond 2027.",
+      "zh_summary": "$AMZN 顯示需求極為強勁。引用亞馬遜 CEO Andy Jassy 談 AWS 容量：「26 年目前顯然已售罄，27 年大部分已售罄……28 年也有相當部分已售罄。」預期數據中心、電力與記憶體短缺將持續至 2027 年之後。",
+      "tickers": ["AMZN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AMZN": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AMZN": "AWS 容量 2026-2028 年大部分已售罄，短缺持續"}
+    }
+  }
+}
