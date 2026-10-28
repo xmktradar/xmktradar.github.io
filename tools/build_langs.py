@@ -13,7 +13,7 @@ Korean (/ko/) was removed 2026-10-27; tools/ko_redirect.py sends old /ko/ links 
 - Every version gets <html lang>, canonical, hreflang, the language switch and absolute asset paths.
 - index.html itself gets the same switch and hreflang plus a script that sends visitors to the
   version matching their browser language.
-- The robot stock-picking page was deleted on 2026-10-27 (Tim). /robot.html and /en/robot.html are
+- The robot stock-picking page was deleted on 2026-10-27 (Tim). /robot.html, /zh/robot.html and /en/robot.html are
   kept as tiny noindex pages that send old links to /zh/ and /en/, and leave the sitemap.
 - Lighter pages: each version carries only the last LITE_DAYS of daily closes (plus the first one, for
   the one-year change) and no intraday lines; the stock page loads px/<ticker>.json (full closes and
@@ -459,7 +459,7 @@ def dedupe_sitemap(sm):
     return ''.join(out)
 
 
-ROBOT_REDIRECTS = {'robot.html': 'zh/', 'en/robot.html': 'en/'}
+ROBOT_REDIRECTS = {'robot.html': 'zh/', 'zh/robot.html': 'zh/', 'en/robot.html': 'en/'}
 
 
 def robot_redirect(target):

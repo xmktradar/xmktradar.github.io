@@ -410,12 +410,9 @@ function shell(master, lang, t, list, body, meta, stats, tvHref) {
   const styles = (head.match(/<style[^>]*>[\s\S]*?<\/style>/g) || []).join('\n');
   const ga = (head.match(/<script async src="https:\/\/www\.googletagmanager\.com[^>]*><\/script>\s*<script>window\.dataLayer[\s\S]*?<\/script>/) || [''])[0];
   const fonts = (head.match(/<link rel="(?:preconnect|stylesheet)"[^>]*>/g) || []).join('');
-  // Apple-style homepage (2026-10-27) has no brand-wrap: rebuild the old brand + tagline from its top bar and hero
-  const brandSrc = (master.match(/<div class="brand-wrap">([\s\S]*?)<nav class="lang-sw"/) || [])[1]
-    || ((master.match(/<h1 class="brand">[\s\S]*?<\/h1>/) || [''])[0]
-      + `<p class="brand-sub">${(master.match(/<p class="ap-h">([\s\S]*?)<\/p>/) || ['', ''])[1].replace(/<[^>]+>/g, '').replace(/[。.]$/, '')}</p>`);
-  const brand = brandSrc
-    .replace(/<h1 class="brand">([\s\S]*?)<\/h1>/, `<a href="/${lang}/" class="brand-home"><p class="brand">$1</p></a>`);
+  // Same short bar as the homepage. Do not put the hero sentence in the sticky header (it made the bar ~164px and covered the page).
+  const brandName = ((master.match(/<h1 class="brand">([\s\S]*?)<\/h1>/) || ['', 'The Crowd Tape'])[1] || 'The Crowd Tape').replace(/<[^>]+>/g, '').trim() || 'The Crowd Tape';
+  const logo = `<a class="ap-logo" href="/${lang}/"><img src="/apple-touch-icon.png" alt="" width="22" height="22"><p class="brand">${esc(brandName)}</p></a>`;
   // 儲存網站 (Tim, 2026-10-23): the same button, tip and script as the built page, already in this language
   // Apple-style look (2026-10-27): the homepage's theme block, so stock pages share its colours, font and dark mode
   const apple = (master.match(/<style id="apple-home">[\s\S]*?<\/style>/) || [''])[0];
@@ -448,19 +445,21 @@ ${ga}
 <script type="application/ld+json">${jsonLd(graph(lang, t, url, meta, stats))}</script>
 ${fonts}
 ${styles}
-<style>.brand-home{color:inherit;text-decoration:none}
-.lang-sw{position:static!important;float:none!important;inset:auto!important;margin:6px 0 2px!important;justify-content:flex-start}
-.brand-wrap .lang-sw{display:flex;flex-wrap:wrap}
-/* phones: the header scrolls away so the stock content gets the whole screen (Tim, 2026-10-21); ↑ button goes back up */
-@media(max-width:700px){header.top{position:static}}
+<style>
+html{scroll-padding-top:64px}
+.ap-logo{text-decoration:none}
+header.ap-top .ap-bar{flex-wrap:nowrap;align-items:center;gap:16px;min-height:52px;padding-top:0!important;padding-bottom:0!important}
+header.ap-top .site-nav{display:flex;flex-wrap:nowrap;align-items:center;gap:14px;margin:0;min-width:0}
+header.ap-top .site-nav a,header.ap-top .site-nav .save-site{box-sizing:border-box;max-width:100%;border:0;background:none;color:var(--tx);font:400 14px/1 var(--f-body);padding:0;text-decoration:none;white-space:nowrap}
+header.ap-top .ap-r{display:flex;align-items:center;margin-left:auto}
+header.ap-top .lang-sw{position:static!important;float:none!important;inset:auto!important;display:flex;gap:2px;margin:0!important}
+@media(max-width:734px){header.ap-top .ap-bar{flex-wrap:wrap;row-gap:4px}header.ap-top .site-nav{flex-wrap:wrap}}
+main.stock-static{scroll-margin-top:64px}
 .stock-static{padding-top:8px}.stock-static .back{text-decoration:none;display:inline-block}
 .advice{margin:8px 16px 0;padding:10px 12px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;background:var(--accent-soft);font-size:14px;line-height:1.45}
 .open-live{display:flex;justify-content:center;margin:8px 0 40px}.open-live a{font:600 15px/1 var(--f-body);padding:12px 20px;border-radius:999px;
 background:var(--accent);color:#fff;text-decoration:none}
-.site-nav{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;max-width:100%;min-width:0}
-.site-nav a{box-sizing:border-box;max-width:100%;font-size:12.5px;font-weight:700;padding:5px 10px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink);background:var(--panel);line-height:1.3}
-.site-nav a.nav-donate{background:var(--accent);color:#fff;border-color:var(--accent)}
-.site-nav .save-site{height:auto;padding:5px 10px;font-size:12.5px;line-height:1.3;border-color:var(--line)}
+.site-nav .save-site{height:auto;cursor:pointer}
 .money-bar{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;box-sizing:border-box;max-width:100%;min-width:0;margin:8px 16px 0;padding:8px 10px;border:1px dashed var(--line-strong);border-radius:12px;background:var(--panel);font-size:13px;font-weight:700}
 .money-bar a,.tv-line a{color:var(--ink);text-decoration:none}
 .money-bar .pj-tag,.tv-line .pj-tag,.foot .pj-tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;color:var(--mut);border:1px solid var(--line-strong);border-radius:999px;padding:1px 8px;line-height:1.4}
@@ -478,15 +477,16 @@ background:var(--accent);color:#fff;text-decoration:none}
 .tv-chart .px-sec{border:0;padding:0;background:transparent;box-shadow:none}
 .tv-chart .px-chart{max-height:140px}
 ${NL_CSS}</style>
-${apple}${apple ? `<style>header.top{background:var(--navbg)!important;-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px)}
-.brand-home .brand{font:600 19px/1.2 var(--f-display);color:var(--tx-strong);margin:0}.brand-sub{font-style:normal}
-.lang-sw a{border:0!important;background:var(--panel2)!important}.lang-sw a[aria-current]{background:var(--link-bg)!important;color:var(--tx-strong)!important}
-.site-nav a{border:0!important;background:var(--panel2)!important}.site-nav a.nav-donate{background:var(--accent)!important;color:#fff!important}
+${apple}${apple ? `<style>header.ap-top{background:var(--navbg)!important;-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px)}
+header.ap-top .ap-logo .brand{font:600 17px/1 var(--f-display);color:var(--tx);margin:0}
+header.ap-top .lang-sw a{border:0!important;background:none!important;color:var(--mut);font:500 13px/1 var(--f-body);padding:6px}
+header.ap-top .lang-sw a[aria-current]{background:none!important;color:var(--tx-strong)!important;font-weight:700}
+header.ap-top .site-nav a.nav-donate{background:var(--accent)!important;color:#fff!important;border-radius:999px;padding:7px 14px;font-weight:600}
 .stock-static .money-bar{display:flex!important;border:0;background:var(--panel);border-radius:16px}
 .advice{border:0;border-radius:16px}.open-live a{font-weight:500}</style>` : ''}
 </head>
 <body>
-<header class="top"><div class="wrap"><div class="brand-wrap">${brand}<nav class="lang-sw" aria-label="Language">${sw}</nav><nav class="site-nav" aria-label="${esc(T[lang].promo)}"><a href="/${lang}/tools/">${esc(T[lang].tools)}</a><a class="nav-donate" href="/${lang}/support/">${esc(T[lang].support)}</a>${saveBtn}</nav></div></div></header>
+<header class="top ap-top"><div class="wrap ap-bar">${logo}<nav class="site-nav" aria-label="${esc(T[lang].promo)}"><a class="ap-tools" href="/${lang}/tools/">${esc(T[lang].tools)}</a><a class="nav-donate ap-don" href="/${lang}/support/">${esc(T[lang].support)}</a>${saveBtn}</nav><div class="ap-r"><nav class="lang-sw" aria-label="Language">${sw}</nav></div></div></header>
 <main class="stock-static"><nav class="money-bar" aria-label="${esc(T[lang].promo)}"><span class="pj-tag">${esc(T[lang].promo)}</span><a href="/${lang}/tools/">${esc(T[lang].tools)}</a><a href="/${lang}/support/">${esc(T[lang].support)}</a><a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview" data-placement="money-bar">TradingView</a><a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover" data-placement="money-bar">Stock Rover</a></nav><p class="advice" role="note">${esc(T[lang].advice)}</p>${body}
 <p class="tv-line"><span class="pj-tag">${esc(T[lang].promo)}</span> <a href="${esc(tvHref)}" rel="sponsored noopener" target="_blank" data-tool="tradingview" data-ticker="${esc(t)}">${esc(T[lang].tv)}</a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover" data-ticker="${esc(t)}">Stock Rover</a></p>
 <div class="open-live"><a href="/${lang}/#stock/${encodeURIComponent(t)}">${esc(T[lang].open)}</a></div>
@@ -496,6 +496,7 @@ ${indexRow(lang, list)}</main>
 ${nlScript(nlCopy(lang).ok)}
 ${save}
 ${toTop(T[lang].top)}
+<script>(function(){var h=document.querySelector('header.ap-top');if(!h)return;function f(){var px=Math.ceil(h.getBoundingClientRect().height)+8;document.documentElement.style.scrollPaddingTop=px+'px';var m=document.querySelector('main.stock-static');if(m)m.style.scrollMarginTop=px+'px'}f();addEventListener('resize',f)})();</script>
 </body></html>
 `);
 }
@@ -802,4 +803,4 @@ if (require.main === module) {
 })();
 }
 
-module.exports = { avatars, dedupeSitemap, esc, slug, toTop, tvWidgetSrc, tvMappedSymbol, tvChartLink, tvChartBlock, ensureTvFrameSrc, TV_LOCALE, TV_SYMBOL_404 };
+module.exports = { avatars, dedupeSitemap, esc, slug, toTop, shell, tvWidgetSrc, tvMappedSymbol, tvChartLink, tvChartBlock, ensureTvFrameSrc, TV_LOCALE, TV_SYMBOL_404 };
