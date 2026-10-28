@@ -102,7 +102,8 @@ def test_cta_slide_last_and_files_exist():
             fb_urls = fb.get(lang)
             if isinstance(fb_urls, list):
                 assert not any(ig_boost.is_cta_url(u) for u in fb_urls), (key, lang, fb_urls)
-    assert found >= 3, found
+    # Early in the day only the 12:30 slot exists (one per language), so do not demand more than that.
+    assert found >= min(3, len(share.LANGS) * len(slots)), found
     daily = social.get('ig_threads_daily') or {}
     for lang in share.LANGS:
         ip = ((daily.get(lang) or {}).get('image_post') or {})
