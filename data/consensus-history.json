@@ -912,6 +912,8 @@
    "bull": [
     "SOFI",
     "BE",
+    "NBIS",
+    "SMH",
     "AMZN",
     "HOOD",
     "CLS",
@@ -919,9 +921,9 @@
     "INTC",
     "KO",
     "CDNS",
-    "SMH",
     "GLW",
-    "IWM"
+    "IWM",
+    "LITE"
    ],
    "bear": [
     "BA"
@@ -929,18 +931,18 @@
    "split": [
     "TSLA",
     "SPY",
-    "SPCX",
-    "NVDA",
     "QQQ",
+    "SPCX",
     "GOOGL",
     "MU",
+    "NVDA",
     "AMD",
     "GOOG",
     "META",
     "NFLX",
-    "CART",
     "SNDK",
     "SOXL",
+    "CART",
     "DASH",
     "COIN",
     "CRWV"
@@ -954,17 +956,17 @@
     "SPCX",
     "NVDA",
     "SPY",
-    "AMZN",
     "QQQ",
+    "AMZN",
     "GOOGL",
     "AMD",
     "MSFT",
     "MU"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-28 11:55"
+   "updated_hkt": "2026-10-28 12:20"
   }
  },
- "updated_hkt": "2026-10-28 11:55",
+ "updated_hkt": "2026-10-28 12:20",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
