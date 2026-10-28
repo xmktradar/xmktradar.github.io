@@ -1457,9 +1457,164 @@
       "ONON"
      ]
     }
+   },
+   "intraday_1": {
+    "post_et": "11:00",
+    "post_hkt": "23:00",
+    "generated_at": "2026-10-28T11:01:09-04:00",
+    "date": "2026-10-28",
+    "date_kst": "2026-10-29",
+    "quotes": {
+     "SPY": {
+      "price": 770.34,
+      "prev_close": 769.66,
+      "chg_pct": 0.09,
+      "time": "2026-10-28T11:01:08-04:00"
+     },
+     "QQQ": {
+      "price": 721.44,
+      "prev_close": 721.25,
+      "chg_pct": 0.03,
+      "time": "2026-10-28T11:01:08-04:00"
+     },
+     "DIA": {
+      "price": 523.84,
+      "prev_close": 523.28,
+      "chg_pct": 0.11,
+      "time": "2026-10-28T11:01:07-04:00"
+     },
+     "AMZN": {
+      "price": 252.235,
+      "prev_close": 253.1,
+      "chg_pct": -0.34,
+      "time": "2026-10-28T11:01:10-04:00"
+     },
+     "CLS": {
+      "price": 288.573,
+      "prev_close": 276.54,
+      "chg_pct": 4.35,
+      "time": "2026-10-28T11:01:04-04:00"
+     },
+     "CRDO": {
+      "price": 168.14,
+      "prev_close": 167.43,
+      "chg_pct": 0.42,
+      "time": "2026-10-28T11:01:09-04:00"
+     },
+     "INTC": {
+      "price": 93.595,
+      "prev_close": 93.74,
+      "chg_pct": -0.15,
+      "time": "2026-10-28T11:01:09-04:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-10-28T11:01:10-04:00",
+     "hkt": "2026-10-28 23:01"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "AMZN",
+      "chg_pct": -0.34,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "Beth_Kindig",
+       "OptionsHawk",
+       "StockSavvyShay",
+       "amitisinvesting",
+       "aleabitoreddit",
+       "EliteOptions2",
+       "RedDogT3",
+       "jimcramer"
+      ]
+     },
+     {
+      "ticker": "CLS",
+      "chg_pct": 4.35,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "StockSavvyShay",
+       "TrendSpider",
+       "ripster47"
+      ]
+     },
+     {
+      "ticker": "CRDO",
+      "chg_pct": 0.42,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "michaelsikand",
+       "ripster47",
+       "petenajarian"
+      ]
+     },
+     {
+      "ticker": "INTC",
+      "chg_pct": -0.15,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "StockSavvyShay",
+       "OptionsMike",
+       "TrendSpider",
+       "RedDogT3",
+       "Mr_Derivatives"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Late morning · As of 11:01 ET (23:01 HKT)\n\n$SPY +0.1% · $QQQ +0.0% · $DIA +0.1%\n\n$AMZN -0.3%, 2 accounts bullish on site\n$CLS +4.3%, 2 accounts bullish on site\n\nhttps://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_1\n\n⚠️ Not investment advice\n#StockMarket #AMZN #CLS",
+      "url": "https://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_1"
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "早盤觀察 · 截至 11:01 ET（23:01 HKT）\n\n$SPY +0.1% · $QQQ +0.0% · $DIA +0.1%\n\n$AMZN -0.3%，網站 2 個帳號看好\n$CLS +4.3%，網站 2 個帳號看好\n$CRDO +0.4%，網站 2 個帳號看好\n$INTC -0.1%，網站 2 個帳號看好\n\nhttps://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=intraday_1\n\n⚠️ 唔構成投資建議\n#美股 #AMZN #CLS",
+      "url": "https://thecrowdtape.com/zh/?utm_source=threads&utm_medium=social&utm_campaign=intraday_1"
+     },
+     "en": {
+      "text": "Late morning · As of 11:01 ET (23:01 HKT)\n\n$SPY +0.1% · $QQQ +0.0% · $DIA +0.1%\n\n$AMZN -0.3%, 2 accounts bullish on site\n$CLS +4.3%, 2 accounts bullish on site\n$CRDO +0.4%, 2 accounts bullish on site\n$INTC -0.1%, 2 accounts bullish on site\n\nhttps://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=intraday_1\n\n⚠️ Not investment advice\n#StockMarket #AMZN #CLS",
+      "url": "https://thecrowdtape.com/en/?utm_source=threads&utm_medium=social&utm_campaign=intraday_1"
+     }
+    },
+    "has_link": {
+     "x": true,
+     "threads": {
+      "zh": true,
+      "en": true
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "SOFI",
+      "BE",
+      "NBIS",
+      "SMH",
+      "AMZN",
+      "CLS",
+      "CRDO",
+      "INTC",
+      "KO",
+      "CDNS",
+      "IWM",
+      "GLW",
+      "LITE"
+     ],
+     "bear": [
+      "BA",
+      "ONON"
+     ]
+    }
    }
   },
-  "generated_at": "2026-10-28T09:53:23-04:00",
-  "generated_hkt": "2026-10-28 21:53"
+  "generated_at": "2026-10-28T11:01:09-04:00",
+  "generated_hkt": "2026-10-28 23:01"
  }
 }
