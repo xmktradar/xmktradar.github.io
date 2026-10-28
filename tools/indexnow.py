@@ -1,7 +1,7 @@
 """Step 13: tell search engines which pages changed, via IndexNow (Bing, Naver, Yandex, Seznam and others share it).
 
 The key file ccab4c5e388dc31f07a4976abba71466.txt at the site root proves the site is ours; no search-engine account is needed.
-Each run sends pages whose content really changed this build (data/indexnow-changed.json from tools/sitemap_lastmod.py; deleted pages fall back to the commit diff). Deleted stock pages are included so they leave the index.
+Each run sends pages whose content really changed this build (data/indexnow-changed.json from tools/sitemap_lastmod.py; deleted pages fall back to the commit diff). Deleted stock and account pages are included so they leave the index.
 The first Update site run of an HKT day (hour < 4, the 03:05 slot; INDEXNOW_BACKFILL=1 forces it) also sends up to BACKFILL sitemap URLs. Those are a deterministic rotating slice of the priority order (/zh/ /en/ /ko/, then other non-stock pages, then stock pages, sitemap order inside each group). The slice starts at (day_number * BACKFILL) mod N and wraps, so each URL is resubmitted about once per ceil(N/BACKFILL) days (8 days at the current sitemap size) and at most once a day. URLs already in the changed list are left out of the slice. No submission ledger is stored.
 Manual runs (workflow_dispatch) or --all send every page in sitemap.xml.
 Google does not use IndexNow; it reads sitemap.xml, which robots.txt points to.
@@ -22,7 +22,7 @@ CHANGED = 'data/indexnow-changed.json'
 BACKFILL = 150
 MAX = 10000
 HOMES = (SITE + 'zh/', SITE + 'en/')
-PAGE = re.compile(r'^(?:(zh|en)/(?:stock/([^/]+)/)?)?index\.html$')
+PAGE = re.compile(r'^(?:(zh|en)/(?:((?:stock|account)/[^/]+)/)?)?index\.html$')
 
 
 def changed():
@@ -35,7 +35,7 @@ def changed():
             m = PAGE.match(f)
             if m:
                 lang, tk = m.groups()
-                urls.append(SITE + (f'{lang}/' if lang else '') + (f'stock/{tk}/' if tk else ''))
+                urls.append(SITE + (f'{lang}/' if lang else '') + (f'{tk}/' if tk else ''))
         return urls
     out = subprocess.run(['git', 'diff', '--name-only', 'HEAD~1', 'HEAD'], capture_output=True, text=True, check=True).stdout
     urls = []
@@ -43,7 +43,7 @@ def changed():
         m = PAGE.match(f)
         if m:
             lang, tk = m.groups()
-            urls.append(SITE + (f'{lang}/' if lang else '') + (f'stock/{tk}/' if tk else ''))
+            urls.append(SITE + (f'{lang}/' if lang else '') + (f'{tk}/' if tk else ''))
     return urls
 
 
