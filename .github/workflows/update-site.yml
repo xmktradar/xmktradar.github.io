@@ -169,6 +169,12 @@ jobs:
         run: python3 tools/toolspage.py
       - name: About page
         run: python3 tools/about.py
+      - name: Weekly newsletter (first run Monday 07:00+ HKT; writes last week's issue, sends it via Resend once)
+        continue-on-error: true
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_AUDIENCE_ID: ${{ secrets.RESEND_AUDIENCE_ID }}
+        run: python3 tools/newsletter_auto.py
       - name: Newsletter pages
         run: python3 tools/newsletter.py
       - name: 404 page
