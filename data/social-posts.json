@@ -1603,9 +1603,170 @@
       "ONON"
      ]
     }
+   },
+   "intraday_2": {
+    "post_et": "12:15",
+    "post_hkt": "00:15",
+    "generated_at": "2026-10-28T12:31:33-04:00",
+    "date": "2026-10-28",
+    "date_kst": "2026-10-29",
+    "quotes": {
+     "SPY": {
+      "price": 771.195,
+      "prev_close": 769.66,
+      "chg_pct": 0.2,
+      "time": "2026-10-28T12:31:31-04:00"
+     },
+     "QQQ": {
+      "price": 722.16,
+      "prev_close": 721.25,
+      "chg_pct": 0.13,
+      "time": "2026-10-28T12:31:32-04:00"
+     },
+     "DIA": {
+      "price": 524.5,
+      "prev_close": 523.28,
+      "chg_pct": 0.23,
+      "time": "2026-10-28T12:31:32-04:00"
+     },
+     "BA": {
+      "price": 166.9,
+      "prev_close": 168.18,
+      "chg_pct": -0.76,
+      "time": "2026-10-28T12:31:33-04:00"
+     },
+     "ONON": {
+      "price": 32.445,
+      "prev_close": 32.17,
+      "chg_pct": 0.85,
+      "time": "2026-10-28T12:31:26-04:00"
+     },
+     "TSLA": {
+      "price": 400.935,
+      "prev_close": 407.46,
+      "chg_pct": -1.6,
+      "time": "2026-10-28T12:31:35-04:00"
+     },
+     "MU": {
+      "price": 972.38,
+      "prev_close": 928.76,
+      "chg_pct": 4.7,
+      "time": "2026-10-28T12:31:34-04:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-10-28T12:31:35-04:00",
+     "hkt": "2026-10-29 00:31"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "BA",
+      "chg_pct": -0.76,
+      "bull": 0,
+      "bear": 4,
+      "accounts": [
+       "Mr_Derivatives",
+       "KobeissiLetter",
+       "StockSavvyShay",
+       "TrendSpider",
+       "TheTranscript_",
+       "WallStJesus",
+       "bespokeinvest"
+      ]
+     },
+     {
+      "ticker": "ONON",
+      "chg_pct": 0.85,
+      "bull": 0,
+      "bear": 2,
+      "accounts": [
+       "KeithMcCullough",
+       "InvestorsLive"
+      ]
+     },
+     {
+      "ticker": "TSLA",
+      "chg_pct": -1.6,
+      "bull": 9,
+      "bear": 2,
+      "accounts": [
+       "RedDogT3",
+       "ripster47",
+       "OptionsHawk",
+       "jonnajarian",
+       "OptionsMike",
+       "jimcramer",
+       "EliteOptions2",
+       "elonmusk"
+      ]
+     },
+     {
+      "ticker": "MU",
+      "chg_pct": 4.7,
+      "bull": 5,
+      "bear": 1,
+      "accounts": [
+       "petenajarian",
+       "EliteOptions2",
+       "aleabitoreddit",
+       "TrendSpider",
+       "OptionsMike",
+       "michaelsikand",
+       "Beth_Kindig",
+       "StockSavvyShay"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Midday · As of 12:31 ET (00:31 HKT)\n\n$SPY +0.2% · $QQQ +0.1% · $DIA +0.2%\n\n$BA -0.8%, 4 accounts bearish on site\n$ONON +0.8%, 2 accounts bearish on site\n\nhttps://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_2\n\n⚠️ Not investment advice\n#StockMarket #BA #ONON",
+      "url": "https://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_2"
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午市觀察 · 截至 12:31 ET（00:31 HKT）\n\n$SPY +0.2% · $QQQ +0.1% · $DIA +0.2%\n\n$BA -0.8%，網站 4 個帳號看淡\n$ONON +0.8%，網站 2 個帳號看淡\n$TSLA -1.6%，網站 9 個帳號看好\n$MU +4.7%，網站 5 個帳號看好\n\n⚠️ 唔構成投資建議\n#美股 #BA #ONON",
+      "url": null
+     },
+     "en": {
+      "text": "Midday · As of 12:31 ET (00:31 HKT)\n\n$SPY +0.2% · $QQQ +0.1% · $DIA +0.2%\n\n$BA -0.8%, 4 accounts bearish on site\n$ONON +0.8%, 2 accounts bearish on site\n$TSLA -1.6%, 9 accounts bullish on site\n$MU +4.7%, 5 accounts bullish on site\n\n⚠️ Not investment advice\n#StockMarket #BA #ONON",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": true,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "SOFI",
+      "BE",
+      "NBIS",
+      "SMH",
+      "AMZN",
+      "CLS",
+      "CRDO",
+      "INTC",
+      "KO",
+      "CDNS",
+      "IWM",
+      "GLW",
+      "LITE"
+     ],
+     "bear": [
+      "BA",
+      "ONON"
+     ]
+    }
    }
   },
-  "generated_at": "2026-10-28T11:26:55-04:00",
-  "generated_hkt": "2026-10-28 23:26"
+  "generated_at": "2026-10-28T12:31:33-04:00",
+  "generated_hkt": "2026-10-29 00:31"
  }
 }
