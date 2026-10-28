@@ -6,8 +6,8 @@ next posting slot of a US-results day:
   2200  filled by the first update between 18:00 and 21:40 HKT, posted 22:00 HKT (zh, then en)
 At most DAILY_CAP companies a day (per language, same companies in both), largest market cap first; a company still
 waiting 72 hours after its results was found moves to the backlog. The backlog also holds every company that reported on or
-after BACKLOG_FROM without a post (Tim 2026-10-28: post those slowly); it gets BACKLOG_PER_DAY posts a day on top of DAILY_CAP plus any room
-new results leave, largest market cap first, and an entry older than BACKLOG_DAYS is dropped (the brief page stays on the site). Each post is 4 pictures
+after BACKLOG_FROM without a post (Tim 2026-10-28: post those slowly); it gets at most BACKLOG_PER_DAY posts a day on top of DAILY_CAP (total ≤8; unused new room is not lent),
+largest market cap first, and an entry older than BACKLOG_DAYS is dropped (the brief page stays on the site). Each post is 4 pictures
 (1080x1350, plus square copies for Facebook) drawn by tools/earnings_cards.js from work/earnings_cards.json, and
 captions for X, Threads, Instagram and Facebook. Writes data/earnings-posts.json and social/earnings.html via work/
 (copied in by update-site.yml once the pictures exist). The first slot of the day also picks the day's video:
@@ -418,9 +418,9 @@ def main():
         cands.sort(key=lambda c: (bool(c[1].get('backlog')), -c[0]))  # new results first, then the backlog
         items = []
         new = [c for c in cands if not c[1].get('backlog')][:room]
-        back = [c for c in cands if c[1].get('backlog')][:room_b + room - len(new)]  # plus any room new results leave
+        back = [c for c in cands if c[1].get('backlog')][:room_b]  # CEO/Tim 2026-10-28: ≤5 new + ≤3 補發 a day (≤8), no borrowing
         for _, x, co in new + back:
-            it = {'t': co['t'], 'name': co['name'], 'label': x['label'], 'end': x['end'], 'mcap': co.get('mcap'), 'backlog': bool(x.get('backlog')),
+            it = {'t': co['t'], 'name': co['name'], 'label': x['label'], 'end': x['end'], 'mcap': co.get('mcap'), 'backlog': bool(x.get('backlog')), 'tag': '補發' if x.get('backlog') else '',
                   'images': {}, 'images_x': {}, 'images_fb': {}, 'posts': {}, 'url': {l: brief_url(l, co['t']) for l in LANGS}}
             for lang in LANGS:
                 ss = slides(co, lang)
