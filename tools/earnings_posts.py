@@ -17,7 +17,7 @@ import html
 import os
 import re
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from earnings_pages import L as PL, report_day, by_end, money, pct, prev_q, spct, ttm_fcf, year_ago, eps_s, margin  # noqa: E402
@@ -99,7 +99,7 @@ def views(t):
     same posts the stock page lists), or None when no account was clearly bullish or bearish."""
     if 'by' not in _VIEWS:
         import glob
-        cut = (datetime.utcnow() - timedelta(days=28)).strftime('%Y-%m-%dT%H:%M:%SZ')
+        cut = (datetime.now(timezone.utc) - timedelta(days=28)).strftime('%Y-%m-%dT%H:%M:%SZ')
         last = {}
         for f in sorted(glob.glob(POSTS_GLOB)):
             for p in read_json(f, []) or []:
@@ -447,7 +447,24 @@ def main():
         notice(f'財報貼文：{key} 時段 {len(items)} 間（{", ".join(i["t"] for i in items) or "冇"}），隊列尚餘 {len(queue)}（補發 {sum(1 for x in queue if x.get("backlog"))}）')
     # The day's video: on the morning slot, the largest company posted since yesterday's 22:00 slot
     vid = None
-    if key == '1000' and (ep.get('video') or {}).get('day') != today:
+    ev = ep.get('video') or {}
+    missing = [l for l in LANGS if l not in (ev.get('video') or {})] if ev.get('day') == today else []
+    if missing and ev.get('t') and (6, 0) <= (now.hour, now.minute) <= (21, 40):
+        # A language whose video failed (e.g. the voice service sent no audio, 2026-10-28 en) is made again
+        # by the next update, for the same company; the made language is kept.
+        co = load_co(ev['t'])
+        if co:
+            vid = {'date': today, 'ticker': co['t'], 'lines': {l: video_lines(co, l) for l in missing},
+                   'images': {l: [f'og/e/{today}-video-{co["t"]}-{l}-{n + 1}.jpg' for n in range(4)] for l in missing},
+                   'slides': {l: [dict(x, of=4) for x in slides(co, l)[:4]] for l in missing}, 'out': {l: f'og/e/{today}-video-{l}.mp4' for l in missing},
+                   'cover': {l: f'og/e/{today}-video-{l}-cover.jpg' for l in missing}}
+            for l in missing:
+                jobs.append({'lang': l, 'date': today, 'ticker': co['t'], 'slides': vid['slides'][l], 'files': vid['images'][l], 'fb': None})
+                ev.setdefault('video', {})[l] = SITE + vid['out'][l]
+                ev.setdefault('video_cover', {})[l] = SITE + vid['cover'][l]
+            print(f'earnings video: making {missing} again for {co["t"]}')
+            made = True
+    elif key == '1000' and ev.get('day') != today:
         y = (now - timedelta(days=1)).strftime('%Y-%m-%d')
         pool = [i for k, v in slots.items() for i in v.get('items') or []
                 if ((k == '1000' and v.get('day') == today) or (k == '2200' and v.get('day') == y)) and not i.get('backlog')]
