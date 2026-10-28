@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2115242796219322469": {
+      "en_summary": "$SMH Look below and go in the making.",
+      "zh_summary": "$SMH 向下看然後向上的形態正在形成。",
+      "tickers": ["SMH"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SMH": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115239472006898009": {
+      "en_summary": "$HOOD Unless it closes green tomorrow, this name has got to be one of the worst names to go long on earnings day (for a short term trade). Red 8 of last 9 earnings reports.",
+      "zh_summary": "$HOOD 除非明天收綠，否則這是財報日做多最差的標的之一（短期交易）。過去 9 次財報中 8 次收紅。",
+      "tickers": ["HOOD"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"HOOD": "睇淡"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"HOOD": "過去 9 次財報 8 次收紅，財報日不適合做多"}
+    },
+    "2115235021087023411": {
+      "en_summary": "OpenAI reportedly plans to buy $GOOGL TPUs while $ORCL prepares to rent them out which would expand Google's custom chips beyond its own cloud. Great for $AVGO as AI labs increasingly add TPUs alongside $NVDA GPUs to secure more compute rather than rely on a single supplier.",
+      "zh_summary": "據報 OpenAI 計劃購買 $GOOGL TPU，而 $ORCL 準備出租，這將把 Google 客製晶片擴展至自家雲端之外。對 $AVGO 有利，因為 AI 實驗室越來越多地在 $NVDA GPU 之外加入 TPU 以確保更多算力，而非依賴單一供應商。",
+      "tickers": ["GOOGL", "ORCL", "AVGO", "NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"GOOGL": "睇好", "ORCL": "中性", "AVGO": "睇好", "NVDA": "中性"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AVGO": "AI 實驗室增加 TPU 需求"}
+    },
+    "2115233651734782426": {
+      "en_summary": "$SKHY SK hynix Q3 revenue $78.8B vs est $74B, operating profit $62.8B vs $58B. First quarter over ₩100T, ~80% margins. Guiding ~₩100T ($75B) shareholder returns FY26. ₩20,000 Q3 dividend half one-off. LTAs with 14 major customers cover 50%+ of 2027 and 2028 capacity. Demand to beat supply through 2030. Hard not to like. Also $MU $SNDK.",
+      "zh_summary": "$SKHY SK hynix 第三季營收 788 億美元對比預期 740 億，營業利潤 628 億對比 580 億。首季超過 100 兆韓元，約 80% 利潤率。指引 2026 財年約 100 兆韓元（750 億美元）股東回報。第三季股息 2 萬韓元，一半為一次性。與 14 家主要客戶的長期協議覆蓋 2027 和 2028 年 50% 以上產能。需求預計到 2030 年超過供應。難以不喜歡。亦提及 $MU $SNDK。",
+      "tickers": ["MU", "SNDK"],
+      "stance": "睇好",
+      "stance_by_ticker": {"MU": "睇好", "SNDK": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MU": "SK Hynix 強勁業績及長期需求利好記憶體", "SNDK": "同樣受益"}
+    },
+    "2115232166594380090": {
+      "en_summary": "TRADE PLAN for FOMC Wednesday. All eyes on FOMC/Warsh tomorrow. First move at 11am PST not real, wait for presser 11:30am. If SPX holds above 7700 and $QQQ above 715 after FOMC, market can rip higher into weekend. SPX to 7800 and QQQ to 734 possible. Chip and memory leading: $AMD from 501 to 560+, to 600 in November. $SMH from 517 to 560. $TSLA through 414 to 420-434. $NBIS bought up despite Elon's comments. Lots of bullish action with negative news. Time to buy the dip.",
+      "zh_summary": "FOMC 週三交易計劃。所有目光聚焦明天 FOMC/Warsh。11am PST 第一波動不是真實波動，等待 11:30am 記者會。如果 FOMC 後 SPX 守住 7700 以上、$QQQ 守住 715 以上，市場可繼續上漲至週末。SPX 看 7800，QQQ 看 734。晶片和記憶體領先：$AMD 從 501 反彈至 560+，11 月看 600。$SMH 從 517 至 560。$TSLA 突破 414 看 420-434。$NBIS 儘管 Elon 評論仍被買入。負面消息下大量看漲行動。是時候逢低買入。",
+      "tickers": ["SPY", "QQQ", "AMD", "SMH", "TSLA", "NBIS"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPY": "睇好", "QQQ": "睇好", "AMD": "睇好", "SMH": "睇好", "TSLA": "睇好", "NBIS": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {"SPY": "守住 7700 看 7800", "QQQ": "守住 715 看 734", "AMD": "反彈至 560+ 看 600", "TSLA": "突破 414 看 420-434"}
+    }
+  }
+}
