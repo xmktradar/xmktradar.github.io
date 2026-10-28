@@ -526,7 +526,7 @@ def test_cover_text_and_encode():
     zh = re.search(r'zh:\s*\{[^}]*\}', body).group(0)
     assert 'Daily Picks' in en and 'Most discussed' in en and 'Most bullish' in en
     assert HAN.search(en) is None, en
-    assert '每日精選' in zh and '最多人討論' in zh and '最多人睇好' in zh
+    assert '每日精選' in zh and '最多人討論' in zh and '最多人看好' in zh
     assert re.search(r'const COVER_FRAMES = 17', src)
     py = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'carousel.py'), encoding='utf-8').read()
     assert "['video_cover']" in py and '-cover.jpg' in py
@@ -552,6 +552,42 @@ def test_video_missing_redo():
     assert carousel.video_missing({}, '1230', at(7, 40))
     assert not carousel.video_missing({}, '1230', at(12, 10))  # too close to the 12:30 post
     assert not carousel.video_missing({}, '1630', at(11, 0))  # no video for that slot
+
+def test_zh_video_text_is_written_chinese():
+    """Tim 2026-10-28: Chinese text in the videos (and the pictures they show) is standard written Chinese, not Cantonese."""
+    import carousel
+    import carousel_vo
+    import earnings_posts
+    canto = re.compile('[嘅唔冇睇哋咗喺嗰啲仲企晒咁乜嚟俾]|撐得|講緊|點講|點睇|好過|差過|打和|今日')
+    bad = []
+
+    def check(where, v):
+        if callable(v):
+            v = v(3) if v.__code__.co_argcount == 1 else v(3, 2)
+        if isinstance(v, (list, tuple)):
+            for x in v:
+                check(where, x)
+        elif isinstance(v, str) and canto.search(v):
+            bad.append(f'{where}: {v}')
+    for k, v in carousel.PIC['zh'].items():
+        check(f'carousel.PIC.{k}', v)
+    check('carousel.TALK', carousel.TALK['zh'])
+    for k, v in earnings_posts.CARD['zh'].items():
+        check(f'earnings CARD.{k}', v)
+    co = {'kind': 'cover', 'big': 'SPY', 'sub': '15', 'pills': [{'c': 'g', 'x': '3'}, {'c': 'r', 'x': '6'}]}
+    job = {'lang': 'zh', 'slides': [co, {'secs': []}, {'secs': []}, {'secs': []}]}
+    check('carousel_vo.lines', carousel_vo.lines(job))
+    js = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'carousel_video.js'), encoding='utf-8').read()
+    for line in js.splitlines():
+        if line.strip().startswith(('zh:', 'vs:', 'caps:', 'outro:')) and not line.strip().startswith('console'):
+            if canto.search(line.replace('::warning::', '')):
+                bad.append('carousel_video.js: ' + line.strip())
+    for name in ('carousel.html', 'earnings_card.html'):
+        txt = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), name), encoding='utf-8').read()
+        m = re.search(r"const FL=\{zh:'([^']*)'", txt)
+        check(name, m.group(1) if m else '')
+    assert not bad, '\n'.join(bad)
+
 
 if __name__ == '__main__':
     for name, fn in list(globals().items()):

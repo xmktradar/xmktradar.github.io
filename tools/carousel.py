@@ -47,7 +47,7 @@ def video_missing(sl, key, now):
     return any(l not in have for l in VIDEO_LANGS)
 
 
-TALK = {'zh': '🗣️ 大神點講', 'en': '🗣️ What the accounts say'}
+TALK = {'zh': '🗣️ 大神怎麼說', 'en': '🗣️ What the accounts say'}
 
 ZH_PT = re.compile(r'目標價[^\d$。；，]{0,12}?(?:由\s*\$?[\d,.]+\s*(?:美元)?\s*(?:上調|下調|調)?(?:至|到)\s*)?\$?\s?(\d+(?:,\d{3})*(?:\.\d+)?)')
 EN_PT = re.compile(r'(?:price target|\bPT\b)[^\d$.;]{0,25}?(?:from \$?[\d,.]+ to )?\$\s?(\d+(?:,\d{3})*(?:\.\d+)?)'
@@ -72,6 +72,14 @@ U = {
                ask='💬 One view', d1='Today'),
 }
 STANCE = {'睇好': 'bull', '睇淡': 'bear'}
+# Picture text (also shown inside the motion videos): zh in standard written Chinese, not Cantonese (Tim, 2026-10-28).
+# Captions keep using U.
+PIC = {'zh': dict(U['zh'], bull='看好', bear='看空', nb=lambda n: f'{n} 個看好', nr=lambda n: f'{n} 個看空',
+                  swipe='👉 向左滑看 5 張', foot='⚠️ 不構成投資建議', give='☕ 支持我們：網站底部 PayPal',
+                  stocks=lambda n: f'{n} 檔股票', split='⚖️ 多空分歧', none='今天暫時沒有', vs=lambda b, r: f'{b} 多 vs {r} 空',
+                  who='你站哪一邊？留言告訴我們 👇', now=lambda a, b: f'{a} 個帳號（之前 {b} 個）', pt='🎯 帳號提到的目標價',
+                  views=lambda t: f'💬 帳號怎麼看 ${t}', hot=lambda a, b: f'24 小時內 {a} 個帳號提及（之前 {b} 個）', d1='今天'),
+       'en': U['en']}
 
 
 class Site:
@@ -141,7 +149,7 @@ def add_quotes(site, slides, lang):
 
 
 def stance_pills(lang, b, r, n):
-    u = U[lang]
+    u = PIC[lang]
     out = []
     if b:
         out.append({'c': 'g', 'x': u['nb'](b)})
@@ -151,13 +159,13 @@ def stance_pills(lang, b, r, n):
 
 
 def cta(lang):
-    u = U[lang]
+    u = PIC[lang]
     return [u['follow'], u['site'], u['give']]
 
 
 # ---------- 12:30 today's snapshot ----------
 def snap(site, s, lang, day, win):
-    u = U[lang]
+    u = PIC[lang]
     top = s['top']
     hero = top[0] if top else None
     qs = []  # up to 2 featured posts from different accounts, most liked first
@@ -232,12 +240,12 @@ def duel_three(rows):
 
 
 def duel(site, s, lang, day, win, pick):
-    u = U[lang]
+    u = PIC[lang]
     t, nb, nr, rows = pick
     spark, d1 = site.px(t) if t else ([], None)
     cover = {'kind': 'cover', 'kicker': TITLE['1630'][lang], 'win': win,
-             'lead': {'zh': '今日分歧最大', 'en': 'Most divided today'}[lang] if s['split'] else
-                     {'zh': '今日最多人講', 'en': 'Most talked-about today'}[lang],
+             'lead': {'zh': '今天分歧最大', 'en': 'Most divided today'}[lang] if s['split'] else
+                     {'zh': '今天討論最多', 'en': 'Most talked-about today'}[lang],
              'big': t or '', 'sub': u['vs'](nb, nr), 'bar': [nb, nr], 'spark': spark, 'd1': d1, 'd1l': u['d1'],
              'quote': None, 'swipe': u['swipe'], 'note': u['who']}
     cover['quotes'] = side_quotes(site, t, lang, skip={r['url'] for r in duel_three(rows)}, n=1) if t else []
@@ -332,7 +340,7 @@ def views_of(site, x, lang):
 
 
 def focus(site, s, lang, day, win, pick):
-    u = U[lang]
+    u = PIC[lang]
     hot, pts, alt = pick
     h0 = hot[0] if hot else None
     spark, d1 = site.px(h0['t']) if h0 else ([], None)

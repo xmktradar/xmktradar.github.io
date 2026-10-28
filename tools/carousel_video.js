@@ -25,7 +25,7 @@ const MAX_VIDEO_S = 29;
 const VOICES = { zh: 'zh-CN-XiaoxiaoNeural', en: 'en-US-AndrewNeural' };
 // Cover copy. Numbers and tickers come from the job slides, not from here. en has no Chinese.
 const COVER_TEXT = {
-  zh: { title: '每日精選', discussed: '最多人討論', bull: '最多人睇好', foot: '⚠️ 唔構成投資建議' },
+  zh: { title: '每日精選', discussed: '最多人討論', bull: '最多人看好', foot: '⚠️ 不構成投資建議' },
   en: { title: 'Daily Picks', discussed: 'Most discussed', bull: 'Most bullish', foot: '⚠️ Not investment advice' },
 };
 const SLOTS = (process.env.VIDEO_SLOTS || '1230').split(',').filter(Boolean);
@@ -81,10 +81,10 @@ function words(lang, S0) {
   const n = num(S0.sub), bull = num((S0.pills || []).find(p => p.c === 'g')?.x), bear = num((S0.pills || []).find(p => p.c === 'r')?.x);
   const w = bear > bull ? 0 : bull > bear ? 1 : 2, big = S0.big;
   const T = {
-    zh: { hook: ['今日', 'X 上 200 個美股大神', '最多人講嘅係…', '？？？'], reveal: `${n} 個帳號講緊！`,
-      vs: ['🟢 睇好', '🔴 睇淡', ['淡友大勝？😱', '好友大勝？🚀', '打和！🤝'][w]],
-      caps: [`大神點講 $${big}？💬`, '🔥 熱度 Top 4', '一齊睇好 🟢 定睇淡 🔴', '⚔️ 爭拗最大！你企邊？'],
-      outro: ['想睇晒全部？👇', 'thecrowdtape.com', '免費・唔使登入・每 4 小時更新', 'Follow @thecrowdtape 🔔', '⚠️ 唔構成投資建議'] },
+    zh: { hook: ['今天', 'X 上 200 位美股大神', '討論最多的是…', '？？？'], reveal: `${n} 個帳號正在討論！`,
+      vs: ['🟢 看好', '🔴 看空', ['空方大勝？😱', '多方大勝？🚀', '打平！🤝'][w]],
+      caps: [`大神怎麼看 $${big}？💬`, '🔥 熱度 Top 4', '共同看好 🟢 還是看空 🔴', '⚔️ 分歧最大！你站哪邊？'],
+      outro: ['想看完整內容？👇', 'thecrowdtape.com', '免費・無需登入・每 4 小時更新', 'Follow @thecrowdtape 🔔', '⚠️ 不構成投資建議'] },
     en: { hook: ['TODAY', '200 top US-stock voices on X', 'Most talked-about stock is…', '???'], reveal: `${n} accounts on it!`,
       vs: ['🟢 Bulls', '🔴 Bears', ['Bears winning? 😱', 'Bulls winning? 🚀', 'Dead even! 🤝'][w]],
       caps: [`What's said on $${big} 💬`, '🔥 Top 4 most talked', 'Bulls 🟢 or bears 🔴?', '⚔️ Pick a side!'],
