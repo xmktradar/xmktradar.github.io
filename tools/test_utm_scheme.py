@@ -15,6 +15,8 @@ Run from the repo root after python3 tools/utm.py --apply:
 import json
 import os
 import sys
+
+os.environ.setdefault('UTM_PROMO', '0')  # this file checks the plain scheme
 import tempfile
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))

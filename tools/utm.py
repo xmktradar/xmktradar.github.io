@@ -34,6 +34,30 @@ import sys
 from sitedata import read_json, write_json
 
 MEDIUM = 'social'
+
+# Meta One Advanced promotion (until 2026-11-28 HKT, inclusive): utm_medium=organic and
+# utm_campaign=meta_one_nov28_<slot> (e.g. meta_one_nov28_earnings, _daily, _top5, _tutorial).
+# Set UTM_PROMO=0 to force the plain scheme, UTM_PROMO=1 to force the promo scheme.
+PROMO_PREFIX = 'meta_one_nov28_'
+PROMO_MEDIUM = 'organic'
+PROMO_END = '2026-11-28'
+
+
+def promo_on(today=None):
+    flag = os.environ.get('UTM_PROMO')
+    if flag in ('0', '1'):
+        return flag == '1'
+    if today is None:
+        import datetime
+        today = (datetime.datetime.utcnow() + datetime.timedelta(hours=8)).strftime('%Y-%m-%d')
+    return today <= PROMO_END
+
+
+def base_campaign(campaign):
+    """Slot name with any promo prefix removed."""
+    if isinstance(campaign, str) and campaign.startswith(PROMO_PREFIX):
+        return campaign[len(PROMO_PREFIX):]
+    return campaign
 PLATFORM = {'x': 'x', 'instagram': 'instagram', 'threads': 'threads', 'facebook': 'facebook'}
 SOURCE_ALIAS = {'ig': 'instagram', 'fb': 'facebook'}
 POST_FIELDS = ('x', 'instagram', 'threads', 'facebook', 'facebook_cta')
@@ -75,7 +99,7 @@ def existing_campaign(url):
     for piece in query.split('&'):
         name, _, value = piece.partition('=')
         if name.lower() == 'utm_campaign' and value:
-            return value
+            return base_campaign(value)
     return None
 
 
@@ -92,6 +116,10 @@ def tag_url(url, source, campaign):
     if is_asset_path(path):
         return url
     source = canon_source(source)
+    campaign = base_campaign(campaign)
+    medium = MEDIUM
+    if promo_on():
+        campaign, medium = PROMO_PREFIX + campaign, PROMO_MEDIUM
     kept = []
     for piece in query.split('&'):
         if not piece:
@@ -101,7 +129,7 @@ def tag_url(url, source, campaign):
         kept.append(piece)
     utm = [
         f'utm_source={source}',
-        f'utm_medium={MEDIUM}',
+        f'utm_medium={medium}',
         f'utm_campaign={campaign}',
     ]
     return f'https://thecrowdtape.com{path}?{"&".join(kept + utm)}{frag}'
