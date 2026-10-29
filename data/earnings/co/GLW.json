@@ -4,18 +4,6 @@
  "cik": 24741,
  "q": [
   {
-   "end": "2023-09-30",
-   "label": "FY2023 Q3",
-   "rev": 3173000000,
-   "gp": 1004000000,
-   "op": 236000000,
-   "ni": 164000000,
-   "eps": 0.19,
-   "ocf": 722000000,
-   "capex": null,
-   "fcf": null
-  },
-  {
    "end": "2023-12-31",
    "label": "FY2023 Q4",
    "rev": 2994000000,
@@ -146,20 +134,32 @@
    "ocf": 1717000000,
    "capex": null,
    "fcf": null
+  },
+  {
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "rev": 4855000000,
+   "gp": 1810000000,
+   "op": 911000000,
+   "ni": 680000000,
+   "eps": 0.78,
+   "ocf": 1061000000,
+   "capex": null,
+   "fcf": null
   }
  ],
  "latest": {
-  "label": "FY2026 Q2",
-  "filed": "2026-07-29",
-  "accn": "0000024741-26-000255",
+  "label": "FY2026 Q3",
+  "filed": "2026-10-29",
+  "accn": "0000024741-26-000279",
   "form": "10-Q",
-  "end": "2026-06-30"
+  "end": "2026-09-30"
  },
  "bal": {
-  "end": "2026-06-30",
-  "cash": 2504000000,
+  "end": "2026-09-30",
+  "cash": 2537000000,
   "sti": null,
-  "debt": 7756000000
+  "debt": 7267000000
  },
  "bank": false,
  "seg": {
@@ -168,50 +168,46 @@
   "rows": [
    {
     "name": "Optical communications products",
-    "val": 2072000000.0,
-    "prev": 1566000000.0
+    "val": 2379000000.0,
+    "prev": 1652000000.0
    },
    {
     "name": "Electronics glass and advanced optics products",
-    "val": 1230000000.0,
-    "prev": 1267000000.0
+    "val": 1281000000.0,
+    "prev": 1390000000.0
    },
    {
     "name": "Automotive products",
-    "val": 474000000.0,
-    "prev": 457000000.0
+    "val": 471000000.0,
+    "prev": 453000000.0
    },
    {
     "name": "Polycrystalline silicon and solar products",
-    "val": 438000000.0,
-    "prev": 231000000.0
+    "val": 436000000.0,
+    "prev": 319000000.0
    },
    {
     "name": "Life Sciences products",
-    "val": 249000000.0,
-    "prev": 246000000.0
+    "val": 247000000.0,
+    "prev": 241000000.0
    },
    {
     "name": "All other products",
-    "val": 42000000.0,
-    "prev": 95000000.0
+    "val": 41000000.0,
+    "prev": 45000000.0
    }
   ],
-  "accn": "0000024741-26-000255"
+  "accn": "0000024741-26-000279"
  },
  "rules": 4,
- "mcap": 113462075392,
+ "mcap": 113427611648,
  "next": "2027-01-26",
  "last_report": "2026-10-27",
  "est": {
-  "eps_act": 0.78,
-  "eps_est": 0.75378,
-  "rev_est": null,
-  "rev_est_seen": null
- },
- "pending": {
-  "q": "2026-09-30",
   "eps_act": 0.91,
-  "eps_est": 0.88003
- }
+  "eps_est": 0.88003,
+  "rev_est": 5031163250,
+  "rev_est_seen": "2026-10-27"
+ },
+ "pending": null
 }
