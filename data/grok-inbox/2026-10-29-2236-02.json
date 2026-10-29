@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2115799072439148808": {
+      "en_summary": "(Reposted by @carlquintanilla) Mike Zaccardi notes $CAT is down 11%, the largest drop since March 2020, with the GFC before that.",
+      "zh_summary": "(Reposted by @carlquintanilla) Mike Zaccardi 指出 $CAT 下跌 11%，是自 2020 年 3 月以來最大跌幅，之前是全球金融危機。",
+      "tickers": ["CAT"],
+      "stance": "中性",
+      "stance_by_ticker": {"CAT": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115797024729915738": {
+      "en_summary": "Mr_Derivatives lists implied moves for today: $AMZN +/- 7.9%, $SNDK +/- 8.1%, $INTC +/- 8.9%, $RDDT +/- 12.7%, $COIN +/- 8.1%, $RBLX +/- 14.0%, $SBUX +/- 5.8%, $RIVN +/- 11.1%, $TWLO +/- 14.0%.",
+      "zh_summary": "Mr_Derivatives 列出今日隱含波動：$AMZN +/- 7.9%、$SNDK +/- 8.1%、$INTC +/- 8.9%、$RDDT +/- 12.7%、$COIN +/- 8.1%、$RBLX +/- 14.0%、$SBUX +/- 5.8%、$RIVN +/- 11.1%、$TWLO +/- 14.0%。",
+      "tickers": ["AMZN", "SNDK", "INTC", "RDDT", "COIN", "RBLX", "SBUX", "RIVN", "TWLO"],
+      "stance": "中性",
+      "stance_by_ticker": {"AMZN": "中性", "SNDK": "中性", "INTC": "中性", "RDDT": "中性", "COIN": "中性", "RBLX": "中性", "SBUX": "中性", "RIVN": "中性", "TWLO": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115795850169557049": {
+      "en_summary": "MrZackMorris reports stock flow this week: $GOOGL call share hit 81% Tuesday into earnings, now about 287 under its 300 put wall; $META had $904M + $898M blocks at 612.49 Wednesday; $MU $1.4B block at 928.76 Tuesday; $AMZN 72% calls on the week into tonight. Levels to watch, not financial advice.",
+      "zh_summary": "MrZackMorris 報告本周股票流動：$GOOGL 看漲期權份額在周二盈利前達到 81%，現在約在其 300 看跌牆下方 287；$META 在周三有 9.04 億 + 8.98 億美元區塊交易於 612.49；$MU 在周二有 14 億美元區塊於 928.76；$AMZN 本周看漲期權達 72% 直至今晚。關注水平，非財務建議。",
+      "tickers": ["GOOGL", "META", "MU", "AMZN"],
+      "stance": "中性",
+      "stance_by_ticker": {"GOOGL": "中性", "META": "中性", "MU": "中性", "AMZN": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"META": "大額區塊於 612.49", "MU": "14 億美元區塊於 928.76", "GOOGL": "300 看跌牆"}
+    },
+    "2115795789502914759": {
+      "en_summary": "TrendSpider welcomes earnings season with $MSFT and $GOOG.",
+      "zh_summary": "TrendSpider 歡迎盈利季節，提及 $MSFT 和 $GOOG。",
+      "tickers": ["MSFT", "GOOG"],
+      "stance": "中性",
+      "stance_by_ticker": {"MSFT": "中性", "GOOG": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115795572435399155": {
+      "en_summary": "StockSavvyShay notes a combination of $MRVL and $LITE could generate over $45B in annual revenue by 2029, making it one of the largest AI networking suppliers outside $NVDA and $AVGO. Lumentum is expected to grow faster than Marvell while bringing custom AI chips and optical interconnects under one roof. Quoting advanced talks of $MRVL acquiring $LITE to combine optical DSPs with lasers and transceivers.",
+      "zh_summary": "StockSavvyShay 指出 $MRVL 和 $LITE 的結合可能在 2029 年產生超過 450 億美元的年收入，成為 $NVDA 和 $AVGO 之外最大的 AI 網絡供應商之一。Lumentum 預計增長快於 Marvell，同時將自定義 AI 芯片和光學互連整合在一起。引用 $MRVL 正在高級談判收購 $LITE，以結合光學 DSP 與激光器和收發器。",
+      "tickers": ["MRVL", "LITE", "NVDA", "AVGO"],
+      "stance": "睇好",
+      "stance_by_ticker": {"MRVL": "睇好", "LITE": "睇好", "NVDA": "中性", "AVGO": "中性"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MRVL": "潛在收購 LITE，2029 年收入超 450 億美元"}
+    }
+  }
+}
