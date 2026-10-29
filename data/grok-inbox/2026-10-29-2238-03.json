@@ -1,1 +1,74 @@
-PLACEHOLDER_TO_REPLACE
+{
+  "posts": {
+    "2115794945890230719": {
+      "en_summary": "MrZackMorris reports stock flow this week: $GOOGL call share hit 81% Tuesday into earnings, now about 287 under its 300 put wall; $META had $904M + $898M blocks at 612.49 Wednesday; $MU $1.4B block at 928.76 Tuesday; $AMZN 72% calls on the week into tonight. Levels to watch, not financial advice.",
+      "zh_summary": "MrZackMorris 報告本周股票流動：$GOOGL 看漲期權份額在周二盈利前達到 81%，現在約在其 300 看跌牆下方 287；$META 在周三有 9.04 億 + 8.98 億美元區塊交易於 612.49；$MU 在周二有 14 億美元區塊於 928.76；$AMZN 本周看漲期權達 72% 直至今晚。關注水平，非財務建議。",
+      "tickers": ["GOOGL", "META", "MU", "AMZN"],
+      "stance": "中性",
+      "stance_by_ticker": {"GOOGL": "中性", "META": "中性", "MU": "中性", "AMZN": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"META": "大額區塊於 612.49", "MU": "14 億美元區塊於 928.76"}
+    },
+    "2115794937266765974": {
+      "en_summary": "MrZackMorris notes $SPY $QQQ pre-market on Thu Oct 29: ES -0.4%, NQ -1.2%. $SPY ~770.1 with PM high 771.39 / PM low 768.48. $QQQ ~718.7 with PM high 726.15 / PM low 714.98. QQQ much weaker than SPY as Big Tech splits.",
+      "zh_summary": "MrZackMorris 指出 $SPY $QQQ 周四 10 月 29 日盤前：ES -0.4%，NQ -1.2%。$SPY 約 770.1，盤前高 771.39 / 低 768.48。$QQQ 約 718.7，盤前高 726.15 / 低 714.98。由於大科技股分化，QQQ 比 SPY 弱得多。",
+      "tickers": ["SPY", "QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPY": "盤前約 770.1", "QQQ": "盤前約 718.7"}
+    },
+    "2115794829867380983": {
+      "en_summary": "RedDogT3 discusses the three-day rally facing its first real test today amid Big Tech earnings divergences, GOOGL earnings disaster, MSFT bounce, TSLA still working, META's broken bounce. Key levels: SPY 769 to defend, QQQ below 720 risking 713. Warns against holding through earnings, cites GOOGL drop from 390 to 320 then further, MSFT positive reaction, TSLA holding above 388-397, META needs to reclaim 624-625. Advises selectivity and respecting levels.",
+      "zh_summary": "RedDogT3 討論三天反彈今天面臨首次真正測試，大科技盈利造成分化，GOOGL 盈利災難，MSFT 反彈，TSLA 仍有效，META 的破碎反彈。關鍵水平：SPY 769 需防守，QQQ 低於 720 可能到 713。警告不要持倉過盈利，引用 GOOGL 從 390 跌到 320 再進一步，MSFT 正面反應，TSLA 持有 388-397 以上，META 需要收復 624-625。建議選擇性並尊重水平。",
+      "tickers": ["SPY", "QQQ", "GOOGL", "MSFT", "TSLA", "META"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "QQQ": "中性", "GOOGL": "睇淡", "MSFT": "中性", "TSLA": "睇好", "META": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPY": "769 關鍵防守", "QQQ": "720 關鍵", "TSLA": "388-397 支撐", "META": "需收復 624-625"}
+    },
+    "2115794295739625836": {
+      "en_summary": "OptionsHawk notes pre-earnings option flows nice hits with $INSM $FTAI $ALNY $CMG $WST $COHU, missed on $CVNA $GOOG. Speaks to the greater value in the lesser followed/active names, more unusual flows.",
+      "zh_summary": "OptionsHawk 指出盈利前期權流動在 $INSM $FTAI $ALNY $CMG $WST $COHU 上有不錯命中，在 $CVNA $GOOG 上錯失。說明較少關注/活躍的名字更有價值，有更多不尋常流動。",
+      "tickers": ["INSM", "FTAI", "ALNY", "CMG", "WST", "COHU", "CVNA", "GOOG"],
+      "stance": "中性",
+      "stance_by_ticker": {"INSM": "中性", "FTAI": "中性", "ALNY": "中性", "CMG": "中性", "WST": "中性", "COHU": "中性", "CVNA": "中性", "GOOG": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115793277333217476": {
+      "en_summary": "OptionsHawk notes $ALNY whacked here with the put buyer into earnings.",
+      "zh_summary": "OptionsHawk 指出 $ALNY 在這裡被打壓，盈利前有看跌買家。",
+      "tickers": ["ALNY"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"ALNY": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
