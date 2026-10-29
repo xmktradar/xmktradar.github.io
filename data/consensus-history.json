@@ -972,29 +972,29 @@
     "MU",
     "SKHY",
     "ORCL",
+    "GOOGL",
     "MSFT",
     "SPY",
     "VRT",
     "NBIS",
     "BE",
-    "GOOGL",
+    "SOFI",
     "SNDK",
     "SOXL",
     "CRWV",
-    "GEV",
     "MSTR",
+    "GEV",
     "NFLX",
     "SMH",
     "STRC",
     "STX",
-    "SOFI",
     "STRD",
     "STRF",
     "STRK"
    ],
    "bear": [
-    "CBRS",
-    "HOOD"
+    "HOOD",
+    "CBRS"
    ],
    "split": [
     "TSLA",
@@ -1005,7 +1005,7 @@
    ],
    "window": [
     "2026-10-28T07:30",
-    "2026-10-29T07:56"
+    "2026-10-29T08:39"
    ],
    "top": [
     "GOOGL",
@@ -1013,16 +1013,16 @@
     "SKHY",
     "SPY",
     "TSLA",
-    "QQQ",
     "MU",
+    "QQQ",
     "AMZN",
     "NVDA",
     "GOOG"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-29 10:17"
+   "updated_hkt": "2026-10-29 10:43"
   }
  },
- "updated_hkt": "2026-10-29 10:17",
+ "updated_hkt": "2026-10-29 10:43",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
