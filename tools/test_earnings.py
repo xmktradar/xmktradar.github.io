@@ -263,6 +263,16 @@ def test_labels_without_fiscal_period():
     assert got['2026-05-02'] == 'FY2027 Q1', got
 
 
+def test_fiscal_year_change():
+    """FDX 2026-10: moved from a May year to a calendar year; the recast Jul-Sep 2025 quarter replaces Jun-Aug 2025."""
+    f = facts_fixture()
+    f['facts']['us-gaap']['Revenues']['units']['USD'] += [
+        fact('2025-06-01', '2025-08-31', 90, 2025, 'Q3', filed='2025-09-20', accn='old'),
+        fact('2025-07-01', '2025-09-30', 95, 2025, 'Q3', filed='2026-10-28', accn='new')]
+    ends = [x['end'] for x in ed.build_quarters(f)['q']]
+    assert '2025-08-31' not in ends and ends.count('2025-09-30') == 1, ends
+
+
 if __name__ == '__main__':
     for name, fn in list(globals().items()):
         if name.startswith('test_') and callable(fn):

@@ -57,7 +57,7 @@ INST = {
     'std': ('ShortTermBorrowings', 'CommercialPaper'),
 }
 SEG_AXES = ('srt:ProductOrServiceAxis', 'us-gaap:StatementBusinessSegmentsAxis')
-RULES = 3  # bump when the extraction rules change: every company is read again from SEC
+RULES = 4  # bump when the extraction rules change: every company is read again from SEC
 STALE_DAYS = 125  # a latest quarter older than this is checked against SEC again once a day
 QMIN, QMAX = 75, 120  # days in a quarter: 13 weeks, or 16 weeks for retailers such as AZO and COST
 FILED_GAP = 100  # latest quarter older than this: look for newer 10-Q / 10-K filings companyfacts does not carry yet
@@ -402,7 +402,13 @@ def build_quarters(facts):
     flows = {k: first_of(facts, v, quarterly) for k, v in DUR.items()}
     cost = first_of(facts, COST, quarterly)
     eps = first_of(facts, EPS, quarterly, unit='USD/shares')
-    ends = sorted(e for e in rev if e in per)[-QUARTERS_KEPT:]
+    ends = []
+    for e in sorted(e for e in rev if e in per):
+        if ends and days(ends[-1], e) < 45:  # fiscal-year change (FDX 2026-10): the recast quarter replaces the old one
+            ends[-1] = e
+        else:
+            ends.append(e)
+    ends = ends[-QUARTERS_KEPT:]
     if not ends:
         return None
     qs = []
