@@ -976,7 +976,6 @@
     "VRT",
     "NBIS",
     "KLAC",
-    "MSTR",
     "STRC",
     "STRD",
     "STRF",
@@ -986,7 +985,6 @@
     "PLTR"
    ],
    "bear": [
-    "META",
     "HOOD"
    ],
    "split": [
@@ -994,6 +992,7 @@
     "ORCL",
     "MRVL",
     "MU",
+    "META",
     "NOW",
     "FTNT",
     "CRWV",
@@ -1001,6 +1000,7 @@
     "QQQ",
     "CBRS",
     "SNDK",
+    "SPCX",
     "STX",
     "APP",
     "WDC"
@@ -1022,9 +1022,9 @@
     "MU"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-29 23:41"
+   "updated_hkt": "2026-10-30 00:12"
   }
  },
- "updated_hkt": "2026-10-29 23:41",
+ "updated_hkt": "2026-10-30 00:12",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
