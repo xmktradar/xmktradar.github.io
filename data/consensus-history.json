@@ -1028,7 +1028,6 @@
   "2026-10-30": {
    "bull": [
     "LITE",
-    "GOOG",
     "CVNA",
     "CMG",
     "IWM",
@@ -1050,6 +1049,7 @@
     "META",
     "MU",
     "CRWV",
+    "AMZN",
     "ORCL",
     "SNDK",
     "CRWD"
@@ -1061,19 +1061,19 @@
    "top": [
     "GOOGL",
     "MSFT",
+    "AMZN",
     "NOW",
     "GOOG",
     "MRVL",
-    "LITE",
-    "AMZN",
     "INTC",
-    "SPY",
-    "META"
+    "LITE",
+    "META",
+    "SPY"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-30 06:41"
+   "updated_hkt": "2026-10-30 07:19"
   }
  },
- "updated_hkt": "2026-10-30 06:41",
+ "updated_hkt": "2026-10-30 07:19",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
