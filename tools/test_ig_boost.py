@@ -1,4 +1,4 @@
-"""Instagram reach upgrades: CTA last slide, 3–5 hashtags, ig_reel.
+"""Instagram reach upgrades: CTA last slide, at most 3 hashtags, ig_reel.
 
 Run from the repo root: python3 tools/test_ig_boost.py
 """
@@ -16,6 +16,8 @@ import date_kst  # noqa: E402
 import ig_boost  # noqa: E402
 import macro_week  # noqa: E402
 import share  # noqa: E402
+import humanize  # noqa: E402
+from humanize import BRAND, zh_written  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SOCIAL = os.path.join(ROOT, 'data', 'social-posts.json')
@@ -65,7 +67,7 @@ def _assert_caption(text, lang, where):
     assert isinstance(text, str) and text.strip(), where
     assert URL_RE.search(text) is None, (where, text[-200:])
     assert 'thecrowdtape.com' not in text.lower(), (where, text[-200:])
-    bios = [ln.strip() for ln in text.splitlines() if ln.strip() == share.IG_BIO[lang or 'en'] or ln.strip() in share.IG_BIO.values()]
+    bios = [ln.strip() for ln in text.splitlines() if ln.strip() in BRAND['zh'] + BRAND['en']]
     assert len(bios) == 1, (where, bios)
     tags = HASH.findall(text)
     assert share.IG_MIN_TAGS <= len(tags) <= share.IG_MAX_TAGS, (where, tags)
@@ -248,7 +250,13 @@ def test_apply_idempotent_and_fills_tags():
 
 
 def _non_hash(text):
-    return share.ig_non_hashtag_lines(text)
+    """Body lines as tools/humanize.py leaves them: link, bio and disclaimer lines out, written Chinese."""
+    out = []
+    for ln in share.ig_non_hashtag_lines(text):
+        c = humanize._clean_line(ln, 'zh')
+        if c:
+            out.append(zh_written(c))
+    return out
 
 
 def _preserved(orig, out):
@@ -294,10 +302,10 @@ def test_key_line_preserves_body_and_macro_date():
     ig_boost.apply_social_obj(data, root=ROOT)
     ig_boost.apply_social_obj(data, root=ROOT)
     zh = data['top5']['posts']['zh']['instagram']
-    assert zh.split('\n', 1)[0] == '最看好 $RSP（3 個帳號）・最看淡 $QQQ（5 個帳號）'
-    assert zh.count('最看好 $RSP（3 個帳號）・最看淡 $QQQ（5 個帳號）') == 1
+    assert zh.split('\n', 1)[0] == '最看好 $RSP（3 個帳號）・最看空 $QQQ（5 個帳號）'
+    assert zh.count('最看好 $RSP（3 個帳號）・最看空 $QQQ（5 個帳號）') == 1
     assert _preserved(_non_hash(raw), _non_hash(zh))
-    assert zh.index('最看好 2 隻') < zh.index('・$RSP 3 個帳號') < zh.index('・$WMT 2 個帳號')
+    assert zh.index('最看好 2 檔') < zh.index('・$RSP 3 個帳號') < zh.index('・$WMT 2 個帳號')
     en = data['top5']['posts']['en']['instagram']
     assert en.split('\n', 1)[0] == 'Most bullish $RSP (3 accounts) · most bearish $QQQ (5 accounts)'
     assert '・$RSP 3 accounts' in en and '・$WMT 2 accounts' in en
@@ -334,16 +342,16 @@ def test_key_line_preserves_body_and_macro_date():
     assert macro['ig_reel']['date_kst'] != macro['to']
     assert macro['ig_reel']['video_expected_path'] == 'assets/reels/2026-10-31-macro-week.mp4'
     mzh = macro['posts']['zh']['instagram']
-    assert mzh.split('\n', 1)[0] == '本週宏觀：最多人講「其他」（利好 10・利淡 11）'
-    assert mzh.count('本週宏觀：最多人講「其他」（利好 10・利淡 11）') == 1
+    assert mzh.split('\n', 1)[0] == '本週宏觀：最多人講「其他」（利好 10・利空 11）'
+    assert mzh.count('本週宏觀：最多人講「其他」（利好 10・利空 11）') == 1
     assert _preserved(_non_hash(old_zh), _non_hash(mzh))
-    assert '1️⃣ 其他：利好 10・利淡 11・中性 19（比上週轉好 ▲）' in mzh
+    assert '1. 其他：利好 10・利空 11・中性 19（比上週轉好 ▲）' in mzh
     assert macro['posts']['en']['instagram'].split('\n', 1)[0] == 'This week in macro: most discussed "Other" (bullish 10 · bearish 11)'
-    assert '1️⃣ Other: bullish 10 · bearish 11' in macro['posts']['en']['instagram']
+    assert '1. Other: bullish 10 · bearish 11' in macro['posts']['en']['instagram']
 
 
 def test_macro_ig_bio_once_per_lang():
-    """Macro IG captions keep the bio phrase exactly once per language and have no URLs."""
+    """Macro IG captions have the brand line exactly once per language and no URLs."""
     week = {
         'accounts': 10,
         'top': ['rates'],
@@ -351,28 +359,27 @@ def test_macro_ig_bio_once_per_lang():
     }
     for lang in share.LANGS:
         cap = macro_week.posts(lang, week, '10/19–10/25')['instagram']
-        bio = share.IG_BIO[lang]
-        lines = [ln.strip() for ln in cap.splitlines() if ln.strip() == bio or ln.strip() in share.IG_BIO.values()]
-        assert lines == [bio], (lang, lines, cap)
+        lines = [ln.strip() for ln in cap.splitlines() if ln.strip() in BRAND['zh'] + BRAND['en']]
+        assert len(lines) == 1 and lines[0] in BRAND[lang], (lang, lines, cap)
         assert URL_RE.search(cap) is None, (lang, cap[-200:])
         assert 'thecrowdtape.com' not in cap.lower(), (lang, cap[-200:])
     data = json.load(open(MACRO, encoding='utf-8'))
     for loc, text, lang in _walk_ig_captions(data):
-        bio = share.IG_BIO[lang or share._guess_ig_lang(text)]
-        n = sum(1 for ln in text.splitlines() if ln.strip() == bio)
-        assert n == 1, (loc, n, bio)
+        brand = BRAND[lang or share._guess_ig_lang(text)]
+        n = sum(1 for ln in text.splitlines() if ln.strip() in brand)
+        assert n == 1, (loc, n)
 
 
-def test_sanitize_min_three_tags():
-    out = share.sanitize_instagram('Most bullish: $WMT, 2 accounts\n#StockMarket', 'en')
+def test_sanitize_tags_capped():
+    out = share.sanitize_instagram('Most bullish: $WMT, 2 accounts\n#StockMarket #USStocks #Investing #MU #NVDA #AMD', 'en')
     tags = HASH.findall(out)
-    assert 3 <= len(tags) <= 5, tags
+    assert tags == ['#StockMarket', '#MU', '#NVDA'], tags
     assert out.split('\n', 1)[0].startswith('Most bullish: $WMT')
 
 
 def main():
     try:
-        test_sanitize_min_three_tags()
+        test_sanitize_tags_capped()
         test_key_line_preserves_body_and_macro_date()
         test_apply_idempotent_and_fills_tags()
         test_video_path_null_and_fixture()
@@ -381,7 +388,7 @@ def main():
         test_ig_reel_structure()
         test_macro_week_hashtags_max_5()
         test_macro_ig_bio_once_per_lang()
-        print('test_ig_boost: CTA last slide, captions 3-5, ig_reel, video_path ok')
+        print('test_ig_boost: CTA last slide, captions at most 3 hashtags, ig_reel, video_path ok')
     finally:
         shutil.rmtree(os.environ['WORK_DIR'], ignore_errors=True)
 

@@ -1,5 +1,8 @@
 """UTM tags on thecrowdtape.com page URLs inside social-post text.
 
+Since 2026-10-29 (Tim) captions carry no links at all: normalize_obj and tag_posts end with
+tools/humanize.py, which takes every URL out. tag_url stays for links outside captions.
+
 utm_source is the platform's full name (x, threads, instagram, facebook — not ig or fb).
 utm_medium is always social. utm_campaign is the slot (intraday uses the slot name, e.g. intraday_open):
 
@@ -262,6 +265,8 @@ def tag_posts(posts, campaign):
             by[plat] = new
             counts[plat] += n
     _fit_lang_posts(posts)
+    from humanize import humanize_tree
+    humanize_tree(posts)
     return counts
 
 
@@ -495,8 +500,10 @@ def normalize_obj(data, tutorial=False):
             _walk_intraday(data['intraday'], counts)
     _fit_threads_tree(data)
     from share import sanitize_instagram_tree, strip_dup_handles_tree
+    from humanize import humanize_tree
     strip_dup_handles_tree(data)
     sanitize_instagram_tree(data)
+    humanize_tree(data)  # no links, plain wording (Tim, 2026-10-29); the tags above only matter until then
     return counts
 
 
