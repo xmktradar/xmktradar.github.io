@@ -160,10 +160,6 @@ def main():
     print('test_humanize: no links, brand + disclaimer once, <=2 emoji, <=3 hashtags, written Chinese ok')
 
 
-if __name__ == '__main__':
-    main()
-
-
 def test_tree_x_en_text_capped_at_280():
     import humanize as H
     raw = ('$NVDA leads the tape as chip names rip into the open while yields slip and the dollar eases. '
@@ -178,3 +174,8 @@ def test_tree_x_en_text_capped_at_280():
     assert H.xlen(slot['x']['en']['text']) <= H.X_MAX
     assert slot['x']['en']['text'] == H.humanize(raw, None, 'post', 'x')
     assert len(slot['threads']['zh']['text']) <= 500
+
+
+if __name__ == '__main__':
+    test_tree_x_en_text_capped_at_280()
+    main()
