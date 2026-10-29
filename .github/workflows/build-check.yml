@@ -42,6 +42,8 @@ jobs:
         run: python3 tools/test_utm_promo.py
       - name: Captions have no links and read like a person (humanize)
         run: python3 tools/test_humanize.py && python3 tools/test_ig.py && python3 tools/test_utm_scheme.py
+      - name: Instagram plan (Chinese only, earnings at most 2 a day, one clean question)
+        run: python3 tools/test_ig_plan.py
       - name: Weekend guide schedule
         run: python3 tools/test_tutorial_schedule.py
       - name: IndexNow backfill tests

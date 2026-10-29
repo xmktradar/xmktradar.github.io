@@ -32,7 +32,7 @@ HASH = re.compile(r'#[^\s#]+')
 def _walk_ig(obj, path='', lang=None):
     if isinstance(obj, dict):
         this = obj.get('lang') if obj.get('lang') in share.LANGS else lang
-        if isinstance(obj.get('instagram'), str):
+        if isinstance(obj.get('instagram'), str) and obj['instagram'].strip():  # '' = not for Instagram (tools/ig_plan.py)
             yield path + '.instagram' if path else 'instagram', obj['instagram'], this
         for key, value in obj.items():
             nxt = key if key in share.LANGS else this

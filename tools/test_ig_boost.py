@@ -29,6 +29,13 @@ EMOJI_OR_HASH = re.compile(r'[\W_#]+', re.UNICODE)
 
 
 def _walk_ig_captions(obj, path='', lang=None):
+    """Instagram captions in obj; '' (English after tools/ig_plan.py: Instagram is Chinese only) is left out."""
+    for loc, text, lg in _walk_ig_all(obj, path, lang):
+        if text.strip():
+            yield loc, text, lg
+
+
+def _walk_ig_all(obj, path='', lang=None):
     if isinstance(obj, dict):
         this = obj.get('lang') if obj.get('lang') in share.LANGS else lang
         ig = obj.get('instagram')
@@ -50,10 +57,10 @@ def _walk_ig_captions(obj, path='', lang=None):
                 continue
             nxt = key if key in share.LANGS else this
             if isinstance(value, (dict, list)):
-                yield from _walk_ig_captions(value, f'{path}.{key}' if path else key, nxt)
+                yield from _walk_ig_all(value, f'{path}.{key}' if path else key, nxt)
     elif isinstance(obj, list):
         for i, value in enumerate(obj):
-            yield from _walk_ig_captions(value, f'{path}[{i}]', lang)
+            yield from _walk_ig_all(value, f'{path}[{i}]', lang)
 
 
 def _first_line(text):
@@ -132,7 +139,7 @@ def test_ig_captions_rules():
         for loc, text, lang in _walk_ig_captions(data):
             n += 1
             _assert_caption(text, lang or share._guess_ig_lang(text), f'{name}.{loc}')
-    assert n >= 9, n
+    assert n >= 5, n
 
 
 def test_ig_reel_structure():
@@ -147,7 +154,8 @@ def test_ig_reel_structure():
     if not os.path.isfile(os.path.join(ROOT, expected)):
         assert reel['video_path'] is None
     for lang in share.LANGS:
-        _assert_caption(reel['caption'][lang], lang, f'social.ig_reel.{lang}')
+        if lang != 'en' or reel['caption'][lang]:  # English is '' after tools/ig_plan.py
+            _assert_caption(reel['caption'][lang], lang, f'social.ig_reel.{lang}')
 
     macro = json.load(open(MACRO, encoding='utf-8'))
     mreel = macro['ig_reel']
@@ -164,7 +172,8 @@ def test_ig_reel_structure():
     if not os.path.isfile(os.path.join(ROOT, mexp)):
         assert mreel['video_path'] is None
     for lang in share.LANGS:
-        _assert_caption(mreel['caption'][lang], lang, f'macro.ig_reel.{lang}')
+        if lang != 'en' or mreel['caption'][lang]:
+            _assert_caption(mreel['caption'][lang], lang, f'macro.ig_reel.{lang}')
 
 
 def test_video_path_null_and_fixture():
