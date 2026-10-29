@@ -970,62 +970,61 @@
   "2026-10-29": {
    "bull": [
     "MSFT",
-    "SKHY",
     "LITE",
-    "VRT",
+    "SKHY",
     "SOFI",
+    "VRT",
+    "NBIS",
     "KLAC",
     "MSTR",
     "STRC",
-    "GEV",
     "STRD",
     "STRF",
     "STRK",
     "CVNA",
+    "GEV",
     "PLTR"
    ],
    "bear": [
-    "HOOD",
-    "META"
+    "META",
+    "HOOD"
    ],
    "split": [
     "GOOGL",
     "ORCL",
-    "MU",
     "MRVL",
+    "MU",
     "NOW",
     "FTNT",
     "CRWV",
     "GOOG",
     "QQQ",
-    "TSLA",
-    "SNDK",
-    "NBIS",
     "CBRS",
+    "SNDK",
     "STX",
     "APP",
     "WDC"
    ],
    "window": [
-    "2026-10-28T15:30",
-    "2026-10-29T19:22"
+    "2026-10-28T19:30",
+    "2026-10-29T21:44"
    ],
    "top": [
     "GOOGL",
     "MSFT",
     "MRVL",
-    "SPY",
     "NOW",
+    "SPY",
     "LITE",
     "ORCL",
     "QQQ",
-    "MU",
-    "TSLA"
+    "GOOG",
+    "MU"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-29 21:44"
+   "updated_hkt": "2026-10-29 23:14"
   }
  },
- "updated_hkt": "2026-10-29 21:44",
+ "updated_hkt": "2026-10-29 23:14",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
