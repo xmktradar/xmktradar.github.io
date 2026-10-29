@@ -567,7 +567,7 @@ def main():
                     posts['instagram'] = sanitize_instagram(posts['instagram'], lang)
                 for k, v in posts.items():
                     if isinstance(v, str):
-                        posts[k] = v.replace('utm_campaign=daily', f'utm_campaign=carousel-{key}')
+                        posts[k] = re.sub(r'utm_campaign=(meta_one_nov28_)?daily\b', lambda m: f'utm_campaign={m.group(1) or ""}carousel-{key}', v)
             elif key == '1630':
                 slides = duel(site, s, lang, day, win, pick)
                 posts = cap_duel(site, s, lang, day, pick)
