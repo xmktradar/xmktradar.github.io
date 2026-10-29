@@ -1027,7 +1027,6 @@
   },
   "2026-10-30": {
    "bull": [
-    "MSFT",
     "LITE",
     "QQQ",
     "CVNA",
@@ -1042,11 +1041,12 @@
    "split": [
     "GOOGL",
     "ORCL",
+    "MSFT",
     "MRVL",
-    "FTNT",
     "META",
-    "MU",
     "NOW",
+    "FTNT",
+    "MU",
     "CRWV",
     "GOOG",
     "CBRS",
@@ -1059,8 +1059,8 @@
    "top": [
     "GOOGL",
     "MSFT",
-    "MRVL",
     "NOW",
+    "MRVL",
     "GOOG",
     "LITE",
     "ORCL",
@@ -1069,9 +1069,9 @@
     "AMZN"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-30 02:41"
+   "updated_hkt": "2026-10-30 03:14"
   }
  },
- "updated_hkt": "2026-10-30 02:41",
+ "updated_hkt": "2026-10-30 03:14",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
