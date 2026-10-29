@@ -1,4 +1,4 @@
-"""Instagram captions: no URLs, one bio line, hashtag caps, handle dedupe, top5 window.
+"""Instagram captions: no URLs, one brand line, at most 3 hashtags, handle dedupe, top5 window.
 
 Run from the repo root: python3 tools/test_ig.py
 """
@@ -14,6 +14,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 os.environ['WORK_DIR'] = tempfile.mkdtemp(prefix='ig-test-')
 
 import share  # noqa: E402
+import humanize  # noqa: E402
+from humanize import BRAND, zh_written  # noqa: E402
 from utm import normalize_obj  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -45,9 +47,10 @@ def _assert_ig_text(text, lang, where):
     assert URL_RE.search(text) is None, (where, text[-200:])
     assert 'thecrowdtape.com' not in text.lower(), (where, text[-200:])
     assert '(thecrowdtape.com)' not in text
-    bios = [ln.strip() for ln in text.splitlines() if ln.strip() == BIO[lang or 'en'] or ln.strip() in BIO.values()]
+    lang = lang or share._guess_ig_lang(text)
+    bios = [ln.strip() for ln in text.splitlines() if ln.strip() in BRAND['zh'] + BRAND['en']]
     assert len(bios) == 1, (where, bios, text[-250:])
-    assert bios[0] == BIO[lang or share._guess_ig_lang(text)]
+    assert bios[0] in BRAND[lang], (where, bios)
     tags = HASH.findall(text)
     assert share.IG_MIN_TAGS <= len(tags) <= share.IG_MAX_TAGS, (where, tags)
     tickers = TICK_TAG.findall(text)
@@ -70,7 +73,13 @@ def test_dedupe_handle():
 
 
 def _non_hash(text):
-    return share.ig_non_hashtag_lines(text)
+    """Body lines as tools/humanize.py leaves them: link, bio and disclaimer lines out, written Chinese."""
+    out = []
+    for ln in share.ig_non_hashtag_lines(text):
+        c = humanize._clean_line(ln, 'zh')
+        if c:
+            out.append(zh_written(c))
+    return out
 
 
 def _preserved_in_order(orig, out):
@@ -103,11 +112,11 @@ def test_sanitizer_does_not_move_body_lines():
     key = '最看好 $RSP（3 個帳號）・最看淡 $QQQ（5 個帳號）'
     # Line 1 already has a digit, so a supplied key line is not prepended.
     out = share.sanitize_instagram(raw, 'zh', key_line=key)
-    assert out.split('\n', 1)[0] == '今日 X 大神共識：最看好 2 隻／最看淡 5 隻'
+    assert out.split('\n', 1)[0] == '今天 X 大神共識：最看好 2 檔／最看空 5 檔'
     assert _preserved_in_order(_non_hash(raw), _non_hash(out))
     assert out.count('・$RSP 3 個帳號') == 1
     assert out.count('・$WMT 2 個帳號') == 1
-    assert out.index('最看好 2 隻') < out.index('・$RSP 3 個帳號') < out.index('・$WMT 2 個帳號')
+    assert out.index('最看好 2 檔') < out.index('・$RSP 3 個帳號') < out.index('・$WMT 2 個帳號')
     again = share.sanitize_instagram(out, 'zh', key_line=key)
     assert again == out
 
@@ -121,11 +130,11 @@ def test_sanitizer_does_not_move_body_lines():
     # A key line is prepended only when line 1 lacks both a $TICKER and a digit.
     bare = '今日共識\n\n最看好 2 隻\n・$RSP 3 個帳號\n・$WMT 2 個帳號\n\n⚠️ 唔構成投資建議\n#美股'
     added = share.sanitize_instagram(bare, 'zh', key_line=key)
-    assert added.split('\n', 1)[0] == key
+    assert added.split('\n', 1)[0] == zh_written(key)
     assert _preserved_in_order(_non_hash(bare), _non_hash(added))
-    assert added.index('今日共識') < added.index('・$RSP 3 個帳號') < added.index('・$WMT 2 個帳號')
+    assert added.index('今天共識') < added.index('・$RSP 3 個帳號') < added.index('・$WMT 2 個帳號')
     unchanged = share.sanitize_instagram(bare, 'zh')
-    assert unchanged.split('\n', 1)[0] == '今日共識'
+    assert unchanged.split('\n', 1)[0] == '今天共識'
     assert _preserved_in_order(_non_hash(bare), _non_hash(unchanged))
 
 
@@ -152,11 +161,10 @@ def test_sanitize_instagram():
     )
     out = share.sanitize_instagram(raw, 'zh')
     _assert_ig_text(out, 'zh', 'sanitize')
-    assert '💬 @Acc：why' in out
+    assert '@Acc：why' in out and '💬' not in out
     assert DUP_RE.search(out) is None
-    tags = HASH.findall(out)
-    assert tags[:3] == ['#美股', '#美股投資', '#港人投資']
-    assert tags[-2:] == ['#WMT', '#QQQ']
+    assert HASH.findall(out) == ['#美股', '#WMT', '#QQQ']
+    assert '鍾意' not in out and 'PayPal' not in out and 'Follow' not in out
     again = share.sanitize_instagram(out, 'zh')
     assert again == out
 
@@ -171,8 +179,8 @@ def test_caption_bull_headline():
         'en': f'Data window: {win}',
     }
     joint = {
-        'zh': '🔵 共同看多：1 隻・共同看空：0 隻',
-        'en': '🔵 Joint bullish: 1 · Joint bearish: 0',
+        'zh': '共同看多：1 檔・共同看空：0 檔',
+        'en': 'Joint bullish: 1 · Joint bearish: 0',
     }
 
     def pack(top, ticker, n, bull=True):
@@ -189,7 +197,6 @@ def test_caption_bull_headline():
         assert cap['x'].split('\n', 1)[0] == head
         assert cap['threads'].split('\n', 1)[0] == head
         assert cap['facebook'].split('\n', 1)[0] == head
-        assert cap['reddit']['title'] == re.sub(r'\s*[📊💬]$', '', head)
         assert cap['instagram'].split('\n')[2] == window[lang]
         assert share.xlen(cap['x']) <= 280
         assert len(cap['threads']) <= 500
@@ -203,32 +210,32 @@ def test_caption_bull_headline():
 
     spy = {'t': 'SPY', 'accounts': 15, 'bull_accounts': 3, 'bear_accounts': 3}
     dual = {
-        'zh': '10/26 X 大神共識快照：最多人討論 $SPY（15 個帳號，3 好 3 淡）・最多人睇好 $INTC（3 個帳號）📊',
-        'en': 'Oct 26 · Most discussed: $SPY (15 accounts, 3 bull / 3 bear) · Most bullish: $INTC (3 accounts) 📊',
+        'zh': '今天 X 上討論最多的是 $SPY，有 15 個帳號提到，3 個看多、3 個看空；最多人看多的則是 $INTC，共 3 個帳號。',
+        'en': '$SPY got the most attention on X today (15 accounts, 3 bullish and 3 bearish), but $INTC had the most bulls (3 accounts).',
     }
     bull_only = {
-        'zh': '10/26 X 大神共識快照：最多人討論 $SPY（9 個帳號，4 個睇好）・最多人睇好 $INTC（2 個帳號）📊',
-        'en': 'Oct 26 · Most discussed: $SPY (9 accounts, 4 bullish) · Most bullish: $INTC (2 accounts) 📊',
+        'zh': '今天 X 上討論最多的是 $SPY，有 9 個帳號提到，其中 4 個看多；最多人看多的則是 $INTC，共 2 個帳號。',
+        'en': '$SPY got the most attention on X today (9 accounts, 4 bullish), but $INTC had the most bulls (2 accounts).',
     }
     bear_only = {
-        'zh': '10/26 X 大神共識快照：最多人討論 $SPY（1 個帳號，1 個睇淡）・最多人睇好 $INTC（1 個帳號）📊',
-        'en': 'Oct 26 · Most discussed: $SPY (1 account, 1 bearish) · Most bullish: $INTC (1 account) 📊',
+        'zh': '今天 X 上討論最多的是 $SPY，有 1 個帳號提到，其中 1 個看空；最多人看多的則是 $INTC，共 1 個帳號。',
+        'en': '$SPY got the most attention on X today (1 account, 1 bearish), but $INTC had the most bulls (1 account).',
     }
     zero = {
-        'zh': '10/26 X 大神共識快照：最多人討論 $SPY（15 個帳號）・最多人睇好 $INTC（3 個帳號）📊',
-        'en': 'Oct 26 · Most discussed: $SPY (15 accounts) · Most bullish: $INTC (3 accounts) 📊',
+        'zh': '今天 X 上討論最多的是 $SPY，有 15 個帳號提到；最多人看多的則是 $INTC，共 3 個帳號。',
+        'en': '$SPY got the most attention on X today (15 accounts), but $INTC had the most bulls (3 accounts).',
     }
     same = {
-        'zh': '10/26 X 大神共識快照：最多人討論兼最多人睇好 $INTC（15 個帳號，3 好 3 淡）📊',
-        'en': 'Oct 26 · Most discussed and most bullish: $INTC (15 accounts, 3 bull / 3 bear) 📊',
+        'zh': '今天 X 上討論最多、也最多人看多的是 $INTC，共 15 個帳號提到，3 個看多、3 個看空。',
+        'en': '$INTC was both the most talked-about and the most liked stock on X today: 15 accounts, 3 bullish and 3 bearish.',
     }
     old = {
-        'zh': '10/26 X 大神共識快照：最多人睇好 $INTC（3 個帳號）📊',
-        'en': 'Oct 26 · Most bullish: $INTC, 3 accounts 📊',
+        'zh': '今天 X 上最多人看多的是 $INTC，共 3 個帳號。',
+        'en': '$INTC had the most bulls on X today: 3 accounts.',
     }
     talked = {
-        'zh': '10/26 X 大神快照：今日最多人講 $INTC（3 個帳號）💬',
-        'en': 'Oct 26 · Most talked-about stock on X today: $INTC (3 accounts) 💬',
+        'zh': '今天 X 上最多人講的是 $INTC，共 3 個帳號。',
+        'en': '$INTC was the most talked-about stock on X today (3 accounts).',
     }
     body = {'zh': '・3 個帳號： $INTC', 'en': '・3 accounts: $INTC'}
 
@@ -267,12 +274,10 @@ def test_caption_ig():
         _assert_ig_text(cap['instagram'], lang, f'caption.{lang}')
         head = cap['instagram'].split('\n', 1)[0]
         if lang == 'zh':
-            assert '最多人睇好' in head and '$WMT' in head
+            assert '最多人看多' in head and '$WMT' in head
         else:
-            assert 'Most bullish' in head and '$WMT' in head
+            assert 'most bulls' in head and '$WMT' in head
         assert DUP_RE.search(cap['instagram']) is None
-        assert 'https://thecrowdtape.com' in cap['facebook']
-        assert 'https://thecrowdtape.com' in cap['x']
 
 
 def test_top5_window_and_headings():
@@ -295,9 +300,12 @@ def test_top5_window_and_headings():
         labels = share.top5_labels(lang, 1, 1)
         ig = slot['posts'][lang]['instagram']
         _assert_ig_text(ig, lang, f'top5.{lang}')
-        assert ig.split('\n', 1)[0] == share.top5_ig_key_line(lang, slot['bull'], slot['bear'])
+        key = share.top5_ig_key_line(lang, slot['bull'], slot['bear'])
+        assert ig.split('\n', 1)[0] == (zh_written(key) if lang == 'zh' else key)
         assert '・$ZZZ' in ig and '・$AAA' in ig
         assert ig.index('・$ZZZ') < ig.index('・$AAA')
+        if lang == 'zh':
+            labels = {k: zh_written(v) for k, v in labels.items()}
         assert labels['heading'] in ig
         assert labels['bull'] in ig and labels['bear'] in ig
         assert slot['posts'][lang]['has_link']['instagram'] is False
@@ -351,6 +359,8 @@ def test_real_social_posts():
             if isinstance(posts.get('has_link'), dict) and 'instagram' in posts['has_link']:
                 assert posts['has_link']['instagram'] is False
             labels = share.top5_labels(lang, len(top.get('bull') or []), len(top.get('bear') or []))
+            if lang == 'zh':
+                labels = {k: zh_written(v) for k, v in labels.items()}
             if posts.get('instagram'):
                 ig = posts['instagram']
                 assert labels['heading'] in ig

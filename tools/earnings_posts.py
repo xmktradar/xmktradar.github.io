@@ -22,6 +22,7 @@ from datetime import datetime, timedelta, timezone
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from earnings_pages import L as PL, report_day, by_end, money, pct, prev_q, spct, ttm_fcf, year_ago, eps_s, margin  # noqa: E402
 from share import SITE, LANGS, ig_tags, sanitize_instagram, xlen  # noqa: E402
+from humanize import humanize  # noqa: E402
 from sitedata import notice, now_hk, read_json, work, write_json  # noqa: E402
 
 DATA = 'data/earnings-posts.json'
@@ -36,17 +37,17 @@ SLOTS = {'1000': ((6, 0), (9, 40), '10:00'), '2200': ((18, 0), (21, 40), '22:00'
 VIDEO_AT = '11:00'
 
 T = {
-    'zh': dict(head=lambda t, q: f'📊 ${t} 財報（{q}）', rev=lambda r, y: f'收入 {r}，按年 {y}',
-               vs_rev=lambda d, w: f'，{w}市場預期 {abs(d):.1f}%', better='好過', worse='差過', inline='，同市場預期差唔多',
+    'zh': dict(head=lambda t, q: f'${t} 剛公布 {q} 財報，重點數字整理如下。', rev=lambda r, y: f'收入 {r}，按年 {y}',
+               vs_rev=lambda d, w: f'，{w}市場預期 {abs(d):.1f}%', better='優於', worse='遜於', inline='，與市場預期差不多',
                eps=lambda a, e, ok: f'經調整 EPS {a}' + (f'，預期 {e} {ok}' if e else ''),
                margins=lambda g, n: '｜'.join(x for x in (f'毛利率 {g}' if g else '', f'淨利率 {n}' if n else '') if x),
                seg=lambda n, s, y: f'最大收入線：{n} 佔 {s}' + (f'（按年 {y}）' if y else ''),
                fcf=lambda v: f'自由現金流（過去 4 季）{v}', link='完整 5 章簡報 👉 ', bio='完整 5 章簡報：連結在個人簡介',
                give='☕ 鍾意就支持我哋 👉 ', disc='⚠️ 只係整理公開財報數字，唔構成投資建議。',
                tags='#美股 #財報 #美股投資 #港人投資', swipe=lambda n: f'👉 向左滑睇 {n} 張',
-               views=lambda b, r: f'🗣 X 大神點睇（近 28 日）：{b} 個看多、{r} 個看空 👉 ', views_none='🗣 X 大神點睇 👉 ',
+               views=lambda b, r: f'🗣 X 大神點睇（近 28 日）：{b} 個看多、{r} 個看空 👉 ', views_none='X 大神怎麼看 👉 ',
                why=lambda s, a, r: f"{'🟢 看多' if s == 'bull' else '🔴 看空'} @{a}：{r}"),
-    'en': dict(head=lambda t, q: f'📊 ${t} earnings ({q})', rev=lambda r, y: f'Revenue {r}, {y} YoY',
+    'en': dict(head=lambda t, q: f'${t} just reported {q}. Here are the numbers that matter.', rev=lambda r, y: f'Revenue {r}, {y} YoY',
                vs_rev=lambda d, w: f', {w} estimates by {abs(d):.1f}%', better='beat', worse='missed', inline=', in line with estimates',
                eps=lambda a, e, ok: f'Adjusted EPS {a}' + (f' vs {e} expected {ok}' if e else ''),
                margins=lambda g, n: ' | '.join(x for x in (f'Gross margin {g}' if g else '', f'Net margin {n}' if n else '') if x),
@@ -298,7 +299,7 @@ def captions(co, lang):
     why = '\n'.join(view_lines(v, t, lang)) if v and su else ''
     say_long = f'{say}\n{why}' if why else say
     fb = '\n\n'.join([head, w['swipe'](n), body] + ([say_long] if say else []) + [f"{w['link']}{url}\n{give}", w['disc'], tg])
-    ig = sanitize_instagram('\n\n'.join([f'{head}｜{lines[0]}' if lang == 'zh' else f'{head}: {lines[0]}', w['swipe'](n), body] + ([say_long.replace(' 👉 ' + su, '')] if v and su else []) + [w['bio'], w['disc'],
+    ig = sanitize_instagram('\n\n'.join([head, w['swipe'](n), body] + ([say_long.replace(' 👉 ' + su, '')] if v and su else []) + [w['bio'], w['disc'],
                                          ig_tags(lang, [t])]), lang)
     threads = '\n\n'.join([head, body] + ([say_long] if say else []) + [f"{w['link']}{url}\n{give}", w['disc'], f"{w['tags'].split(' ')[0]} #{t}"])
     if len(threads) > 490 and why:
@@ -314,7 +315,8 @@ def captions(co, lang):
         if xlen(x) <= 270 or len(keep) <= 1:
             break
         keep.pop()
-    return {'x': x, 'threads': threads, 'instagram': ig, 'facebook': fb}
+    # No links, plain wording, at most 3 hashtags (Tim, 2026-10-29)
+    return {k: humanize(v, lang, 'post', k) for k, v in (('x', x), ('threads', threads), ('instagram', ig), ('facebook', fb))}
 
 
 def load_co(t):

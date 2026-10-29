@@ -13,7 +13,7 @@ and work/carousel.json for tools/carousel.js, which draws og/c/<day>-<slot>-<lan
 import html
 import os
 import re
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 from ranking import rank_rows
 from share import (SHORT, SITE, LANGS, IG_BIO, IG_FOLLOW, attach_new_posts, clean, dedupe_handle,
@@ -58,7 +58,7 @@ U = {
                swipe='👉 向左滑睇 5 張', foot='⚠️ 唔構成投資建議', follow='Follow @thecrowdtape',
                site='最新數字：thecrowdtape.com', give='☕ 支持我哋：網站底部 PayPal', posted=lambda n: f'{n} 個帳號發文',
                stocks=lambda n: f'{n} 隻股票', talk='🔥 最多人討論 Top 4', jb='🟢 共同看多', jr='🔴 共同看空', split='⚖️ 好淡分歧',
-               none='今日暫時未有', vs=lambda b, r: f'{b} 好 vs {r} 淡', who='你企邊邊？留言話我知 👇', heat='📈 升溫榜（24 小時 vs 前 24 小時）',
+               none='今日暫時未有', vs=lambda b, r: f'{b} 好 vs {r} 淡', who='你站哪一邊？留言告訴我們', heat='📈 升溫榜（24 小時 vs 前 24 小時）',
                now=lambda a, b: f'{a} 個帳號（之前 {b}）', pt='🎯 帳號講過嘅目標價', views=lambda t: f'💬 帳號點睇 ${t}',
                hot=lambda a, b: f'24 小時內 {a} 個帳號講（之前 {b} 個）', ask='💬 一句觀點', d1='今日'),
     'en': dict(acc=lambda n: f'{n} account{"" if n == 1 else "s"}', bull='Bullish', bear='Bearish', nb=lambda n: f'{n} bullish',
@@ -379,12 +379,27 @@ def label_talk(slides, lang):
 
 
 # ---------- captions ----------
-def head_line(slot, lang, day, lead):
-    m, dd = int(day[5:7]), int(day[8:10])
-    if lang == 'en':
-        mon = datetime.strptime(day, '%Y-%m-%d').strftime('%b %-d')
-        return f'{mon} · {TITLE[slot][lang]}: {lead}'
-    return f'{m}/{dd} {TITLE[slot][lang]}：{lead}' if lang == 'zh' else f'{m}/{dd} {TITLE[slot][lang]}: {lead}'
+# Captions open with one plain sentence, the way a person would say it (Tim, 2026-10-29). tools/humanize.py
+# then takes out links, emoji bullets and Cantonese, and adds the brand and disclaimer lines.
+SIDE_WORD = {'zh': {'bull': '看多', 'bear': '看空', 'neutral': '中性'}, 'en': {'bull': 'Bull', 'bear': 'Bear', 'neutral': 'Neutral'}}
+
+
+def duel_head(lang, t, nb, nr):
+    if lang == 'zh':
+        if nb and nr:
+            return f'今天 ${t} 的看法最分歧：{nb} 個帳號看多，{nr} 個看空。你怎麼看？'
+        return f'今天很多人在討論 ${t}，' + (f'{nb} 個帳號看多。' if nb else (f'{nr} 個帳號看空。' if nr else '大家怎麼看？'))
+    if nb and nr:
+        return f'${t} split the room today: {nb} accounts bullish, {nr} bearish. Where do you stand?'
+    return f'Lots of talk about ${t} today' + (f', with {nb} accounts bullish.' if nb else (f', with {nr} accounts bearish.' if nr else '.'))
+
+
+def focus_head(lang, h0, alt):
+    if h0:
+        if lang == 'zh':
+            return f"開市前，${h0['t']} 的熱度升得最快：過去 24 小時有 {h0['now']} 個帳號提到，之前只有 {h0['was']} 個。"
+        return f"Heading into the open, ${h0['t']} is heating up fastest: {h0['now']} accounts mentioned it in the last 24 hours, up from {h0['was']}."
+    return f"開市前值得留意 ${alt['t']}，看看大家怎麼說。" if lang == 'zh' else f"One to watch before the open: ${alt['t']}. Here is what people are saying."
 
 
 END = {'zh': ['👉 左右滑睇晒 5 張圖', IG_BIO['zh'], IG_FOLLOW['zh']],
@@ -439,14 +454,13 @@ def cap_duel(site, s, lang, day, pick):
     t, nb, nr, rows = pick
     if not t:
         return None
-    head = head_line('1630', lang, day, f'${t} {u["vs"](nb, nr)} ⚔️')
+    head = duel_head(lang, t, nb, nr)
     lines = []
     for r in duel_three(rows):
         p = site.by_url.get(r['url'], {})
-        icon = '🟢' if r['s'] == 'bull' else ('🔴' if r['s'] == 'bear' else '⚪')
         txt = dedupe_handle(r['acc'], site.text(p, lang, 150 if lang == 'en' else 80))
-        lines.append(f"{icon} @{r['acc']}：{txt}" if lang == 'zh' else
-                     f"{icon} @{r['acc']}: {txt}")
+        lines.append(f"{SIDE_WORD[lang].get(r['s'], SIDE_WORD[lang]['neutral'])} @{r['acc']}：{txt}" if lang == 'zh' else
+                     f"{SIDE_WORD[lang].get(r['s'], SIDE_WORD[lang]['neutral'])} @{r['acc']}: {txt}")
     return versions(lang, head, ['\n'.join(lines), u['who']], [t])
 
 
@@ -457,7 +471,7 @@ def cap_focus(site, s, lang, day, pick):
         return None
     h0 = hot[0] if hot else None
     sep = '：' if lang == 'zh' else ': '
-    head = head_line('2030', lang, day, f"${h0['t']} 🚀 {u['hot'](h0['now'], h0['was'])}" if h0 else f"${alt['t']}")
+    head = focus_head(lang, h0, alt)
     body = []
     if hot:
         body.append('\n'.join([u['heat']] + [f"・${x['t']}{sep}{u['now'](x['now'], x['was'])}" for x in hot[:5]]))
@@ -468,7 +482,7 @@ def cap_focus(site, s, lang, day, pick):
         vs = views_of(site, alt, lang)
         if vs:
             body.append('\n'.join([u['views'](alt['t'])] + [
-                f"{'🟢' if r['s'] == 'bull' else ('🔴' if r['s'] == 'bear' else '⚪')} @{r['acc']}{sep}{dedupe_handle(r['acc'], r['text'])}" for r in vs]))
+                f"{SIDE_WORD[lang].get(r['s'], SIDE_WORD[lang]['neutral'])} @{r['acc']}{sep}{dedupe_handle(r['acc'], r['text'])}" for r in vs]))
     tks = [x['t'] for x in hot[:3]] + [x['t'] for x in pts[:2]] + ([alt['t']] if alt else [])
     return versions(lang, head, body, list(dict.fromkeys(tks)))
 

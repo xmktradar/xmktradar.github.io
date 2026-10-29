@@ -183,13 +183,14 @@ def tags(lang, tks):
 # A key-point first line comes from the generator (top5 lead bull/bear, macro top theme).
 # sanitize_instagram never moves or deletes a body line to invent one. It may prepend
 # a key line built from structured data only when line 1 has neither a $TICKER nor a digit.
-IG_BIO = {'zh': '連結在個人簡介', 'en': 'link in bio'}
+# The brand line replaces "link in bio" (Tim, 2026-10-29: no links, nothing that looks like a scam).
+IG_BIO = {'zh': '詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。', 'en': 'Full numbers are on our site. Just search The Crowd Tape.'}
 IG_BASE_TAGS = {
     'zh': ('#美股', '#美股投資', '#港人投資'),
     'en': ('#StockMarket', '#USStocks', '#Stocks'),
 }
-IG_MIN_TAGS = 3
-IG_MAX_TAGS = 5
+IG_MIN_TAGS = 1
+IG_MAX_TAGS = 3  # at most 3 hashtags on every post (Tim, 2026-10-29)
 IG_CTA_COPY = {
     'zh': '覺得有用？收藏＋追蹤 @thecrowdtape，每日睇大神共識',
     'en': 'Found this useful? Save + follow @thecrowdtape for daily consensus',
@@ -204,7 +205,7 @@ def ig_cta_url(lang):
 
 
 IG_FOLLOW = {
-    'zh': 'Follow @thecrowdtape 每日睇街貨點諗。',
+    'zh': '追蹤 @thecrowdtape，每天看看市場在想什麼。',
     'en': 'Follow @thecrowdtape for the daily read on what the crowd thinks.',
 }
 _HANDLE_LEAD = re.compile(r'^@([A-Za-z0-9_]+)[：:]\s*')
@@ -372,7 +373,8 @@ def install_ig_headline(text, key_line):
     """
     if not isinstance(text, str):
         return text
-    key_line = (key_line or '').strip()
+    from humanize import zh_written
+    key_line = zh_written((key_line or '').strip())  # the caption itself is already in written Chinese
     if not key_line:
         return text
     lines = text.split('\n')
@@ -392,7 +394,8 @@ def _ig_prepend_key_line(lines, key_line):
 
     Never pops, moves, or deletes a line. No key_line: leave the lines as they are.
     """
-    key_line = (key_line or '').strip()
+    from humanize import zh_written
+    key_line = zh_written((key_line or '').strip())
     first_i = next((i for i, ln in enumerate(lines) if ln.strip()), None)
     if first_i is None:
         return [key_line] if key_line else lines
@@ -407,7 +410,7 @@ def _ig_prepend_key_line(lines, key_line):
 
 
 def sanitize_instagram(text, lang=None, key_line=None):
-    """One Instagram caption: no URLs/domain, one bio line, 3–5 hashtags.
+    """One Instagram caption: no URLs/domain, one brand line, at most 3 hashtags (tools/humanize.py runs last).
 
     key_line, when passed, is prepended only if line 1 has neither a $TICKER nor a
     digit. Body lines are never moved or deleted to manufacture a key point.
@@ -465,7 +468,8 @@ def sanitize_instagram(text, lang=None, key_line=None):
         unique.pop()
     unique.append('')
     unique.append(_ig_tag_line(lang, found_tags, '\n'.join(unique)))
-    return '\n'.join(unique).strip('\n')
+    from humanize import humanize
+    return humanize('\n'.join(unique).strip('\n'), lang, 'post', 'instagram')
 
 
 def _sanitize_ig_value(value, lang):
@@ -523,51 +527,32 @@ def mix(x, wrap, both, bull, bear):
     return wrap.format(both.format(b, r) if b and r else (bull.format(b) if b else bear.format(r)))
 
 
-def _discussed_paren(lang, n, bull_n, bear_n, acc):
-    """Account count for the cover ticker, plus stance. A 0 side is left out; both 0 drops the stance."""
-    row = {'bull': bull_n or 0, 'bear': bear_n or 0}
+def _stance_words(lang, b, r):
+    """", 3 bullish, 1 bearish" for a stock; a side with 0 is left out."""
     if lang == 'zh':
-        return '（' + acc(n) + mix(row, '，{}', '{} 好 {} 淡', '{} 個睇好', '{} 個睇淡') + '）'
-    both, one_b, one_r = ('{} bull / {} bear', '{} bullish', '{} bearish')
-    return '(' + acc(n) + mix(row, ', {}', both, one_b, one_r) + ')'
+        return f'，{b} 個看多、{r} 個看空' if b and r else (f'，其中 {b} 個看多' if b else (f'，其中 {r} 個看空' if r else ''))
+    return f', {b} bullish and {r} bearish' if b and r else (f', {b} bullish' if b else (f', {r} bearish' if r else ''))
 
 
 def _bull_headline(lang, prefix, h, top, acc):
-    """First line when a common-bullish leader exists.
+    """First line when a common-bullish leader exists: one plain sentence (Tim, 2026-10-29).
 
     Most-discussed is top[0], the same row as the carousel cover (t, accounts,
-    bull_accounts, bear_accounts). Most-bullish is h (items[0]). One line when
-    those tickers match, or when top is empty.
+    bull_accounts, bear_accounts). Most-bullish is h (items[0]). One clause when
+    those tickers match, or when top is empty. prefix is no longer shown.
     """
     T = lambda t: f'${t}'
-    mark = '📊' if lang == 'zh' else ' 📊'
     hero = top[0] if isinstance(top, list) and top else None
     if not isinstance(hero, dict) or not hero.get('t'):
-        old = {
-            'zh': f'最多人睇好 {T(h["t"])}（{acc(h["n"])}）',
-            'en': f'Most bullish: {T(h["t"])}, {acc(h["n"])}',
-        }[lang]
-        return f'{prefix}{old}{mark}'
-    paren = _discussed_paren(lang, hero.get('accounts') or 0, hero.get('bull_accounts') or 0,
-                             hero.get('bear_accounts') or 0, acc)
-    bull_n = f'（{acc(h["n"])}）' if lang == 'zh' else f'({acc(h["n"])})'
+        return {'zh': f'今天 X 上最多人看多的是 {T(h["t"])}，共 {acc(h["n"])}。',
+                'en': f'{T(h["t"])} had the most bulls on X today: {acc(h["n"])}.'}[lang]
+    n = hero.get('accounts') or 0
+    st = _stance_words(lang, hero.get('bull_accounts') or 0, hero.get('bear_accounts') or 0)
     if hero.get('t') == h['t']:
-        body = {
-            'zh': f'最多人討論兼最多人睇好 {T(h["t"])}{paren}',
-            'en': f'Most discussed and most bullish: {T(h["t"])} {paren}',
-        }[lang]
-    else:
-        sep = '・' if lang == 'zh' else ' · '
-        left = {
-            'zh': f'最多人討論 {T(hero["t"])}{paren}',
-            'en': f'Most discussed: {T(hero["t"])} {paren}',
-        }[lang]
-        right = {
-            'zh': f'最多人睇好 {T(h["t"])}{bull_n}',
-            'en': f'Most bullish: {T(h["t"])} {bull_n}',
-        }[lang]
-        body = left + sep + right
-    return f'{prefix}{body}{mark}'
+        return {'zh': f'今天 X 上討論最多、也最多人看多的是 {T(h["t"])}，共 {acc(n)}提到{st}。',
+                'en': f'{T(h["t"])} was both the most talked-about and the most liked stock on X today: {acc(n)}{st}.'}[lang]
+    return {'zh': f'今天 X 上討論最多的是 {T(hero["t"])}，有 {acc(n)}提到{st}；最多人看多的則是 {T(h["t"])}，共 {acc(h["n"])}。',
+            'en': f'{T(hero["t"])} got the most attention on X today ({acc(n)}{st}), but {T(h["t"])} had the most bulls ({acc(h["n"])}).'}[lang]
 
 
 def caption(lang, day, s, items, win, quote_):
@@ -582,7 +567,7 @@ def caption(lang, day, s, items, win, quote_):
             lines.append(_bull_headline('zh', f'{m}/{dd} X 大神共識快照：', items[0], s.get('top'), acc))
         else:
             h = items[0] if items else None
-            lines.append(f'{m}/{dd} X 大神快照：今日最多人講 {T(h["t"])}（{acc(h["n"])}）💬' if h else f'{m}/{dd} X 大神快照 💬')
+            lines.append(f'今天 X 上最多人講的是 {T(h["t"])}，共 {acc(h["n"])}。' if h else '今天 X 上大家在討論什麼？')
         lines += ['', f'數據範圍：{win}', '']
     else:
         acc = lambda n: f'{n} account{"" if n == 1 else "s"}'
@@ -591,7 +576,7 @@ def caption(lang, day, s, items, win, quote_):
             lines.append(_bull_headline('en', f'{mon} · ', items[0], s.get('top'), acc))
         else:
             h = items[0] if items else None
-            lines.append(f'{mon} · Most talked-about stock on X today: {T(h["t"])} ({acc(h["n"])}) 💬' if h else f'{mon} · X snapshot 💬')
+            lines.append(f'{T(h["t"])} was the most talked-about stock on X today ({acc(h["n"])}).' if h else 'What X was talking about today.')
         lines += ['', f'Data window: {win}', '']
 
     L = {'zh': dict(cb=f'🔵 共同看多：{len(s["bull"])} 隻・共同看空：{len(s["bear"])} 隻', rest=lambda k, n: f'・其餘 {k} 隻各 {n} 個帳號',
