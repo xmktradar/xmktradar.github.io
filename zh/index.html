@@ -2117,24 +2117,30 @@ header.ap-top{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hd-t
 </style>
 <style id="book-mode">/* 書本式閱讀（Tim 2026-10-28）：「今日」分成 7 頁，一次只顯示一頁 */
 #view.bk .grid>.bk-off{display:none!important}
-.bk-top{display:flex;align-items:center;justify-content:space-between;gap:8px 12px;flex-wrap:wrap;margin:4px 0 14px}
+.bk-top{min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:8px 12px;flex-wrap:wrap;margin:4px 0 14px}
 .bk-dots{display:flex;gap:6px;flex-wrap:wrap}
 .bk-dots button{min-width:32px;height:32px;padding:0 6px;border-radius:999px;border:1px solid var(--line);background:var(--surface,transparent);color:var(--muted);font:600 13px/1 inherit;cursor:pointer}
-.bk-dots button[aria-current="page"]{background:#0071e3;border-color:#0071e3;color:#fff}
+.bk-dots button[aria-current="page"]{background:var(--accent,#0071e3);border-color:var(--accent,#0071e3);color:#fff}
 .bk-t{font-size:14px;color:var(--muted);flex:1 1 auto;min-width:0}
 .bk-t b{color:var(--tx-strong,inherit)}
-.bk-mode{border:0;background:none;color:#0066cc;font:600 14px/1.2 inherit;cursor:pointer;padding:6px 0}
-.bk-bot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:18px 0 8px}
-.bk-bot button{min-height:44px;padding:0 20px;border-radius:999px;border:0;background:#0071e3;color:#fff;font:600 15px/1 inherit;cursor:pointer}
+.bk-mode{border:0;background:none;color:var(--link,#0066cc);font:600 14px/1.2 inherit;cursor:pointer;padding:6px 0}
+.bk-bot{min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:10px;margin:18px 0 8px}
+.bk-bot button{min-height:44px;padding:0 20px;border-radius:999px;border:0;background:var(--accent,#0071e3);color:#fff;font:600 15px/1 inherit;cursor:pointer}
 .bk-bot button.bk-prev{background:var(--panel2,#e8e8ed);color:var(--tx-strong,#1d1d1f)}
 .bk-bot span{font-size:14px;color:var(--muted)}
 .bk-bot .bk-gap{min-width:1px}
 .bk-end p{line-height:1.7}
 .bk-acts,.bk-more{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
-.bk-acts a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:#0071e3;color:#fff;font-weight:600;text-decoration:none}
+.bk-acts a{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:var(--accent,#0071e3);color:#fff;font-weight:600;text-decoration:none}
 .bk-acts a.bk-nl{background:var(--panel2,#e8e8ed);color:var(--tx-strong,#1d1d1f)}
-.bk-more a,.bk-more button{display:inline-flex;align-items:center;min-height:38px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:none;color:#0066cc;font:600 14px/1 inherit;text-decoration:none;cursor:pointer}
-@media (prefers-color-scheme:dark){.bk-mode,.bk-more a,.bk-more button{color:#2997ff}}
+.bk-more a,.bk-more button{display:inline-flex;align-items:center;min-height:38px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--link,#0066cc);font:600 14px/1 inherit;text-decoration:none;cursor:pointer}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .bk-mode,:root:not([data-theme=light]) .bk-more a,:root:not([data-theme=light]) .bk-more button{color:#2997ff}:root:not([data-theme=light]) .bk-bot button.bk-prev,:root:not([data-theme=light]) .bk-acts a.bk-nl{background:#2c2c2e;color:#f5f5f7}}
+:root[data-theme=dark] .bk-mode,:root[data-theme=dark] .bk-more a,:root[data-theme=dark] .bk-more button{color:#2997ff}
+:root[data-theme=dark] .bk-bot button.bk-prev,:root[data-theme=dark] .bk-acts a.bk-nl{background:#2c2c2e;color:#f5f5f7}
+.bk-top button:focus-visible,.bk-bot button:focus-visible,.bk-acts a:focus-visible,.bk-more a:focus-visible,.bk-more button:focus-visible{outline:2px solid var(--accent,#0071e3);outline-offset:2px}
+.bk-hint{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:60;padding:8px 16px;border-radius:999px;background:rgba(29,29,31,.88);color:#fff;font:600 13px/1.2 inherit;pointer-events:none;transition:opacity .5s;opacity:1}
+.bk-hint.bk-fade{opacity:0}
+@media (max-width:640px){.bk-bot{padding-bottom:calc(64px + env(safe-area-inset-bottom))}}
 </style>
 <script>/* 書本式閱讀（Tim 2026-10-28／29，見 dashboard/book-mode-spec.md）：
    今日／本週／本月按 view 函數的 data-bp 分頁（最後一頁「讀完」由這裡加上），連結 #daily/N、#weekly/N、#monthly/N；「全部展開」記在 localStorage。
@@ -2163,7 +2169,7 @@ function endCard(v,n){var s=document.createElement('section');s.className='c12 p
 function run(){
  var g=view.querySelector(':scope>.grid'),v=bookView();
  if(tool||!g||!v||!g.querySelector('[data-bp]')){view.classList.remove('bk');kill(':scope>.bk-top');kill(':scope>.bk-bot');if(g)kill('.bk-end');return}
- if(isFull()){view.classList.remove('bk');kill('.bk-end');kill(':scope>.bk-bot');put('bk-top','<span class="bk-t"></span><button type="button" class="bk-mode" data-bk-mode="book">📖 書本模式</button>',true);return}
+ if(isFull()){view.classList.remove('bk');kill('.bk-end');kill(':scope>.bk-bot');put('bk-top','<span class="bk-t"></span><button type="button" class="bk-mode" data-bk-mode="book" aria-pressed="false">📖 書本模式</button>',true);return}
  var T=TITLES[v],LAST=T.length,end=g.querySelector(':scope>.bk-end');
  if(end&&end.getAttribute('data-v')!==v){end.remove();end=null}
  if(!end)end=endCard(v,LAST);if(g.lastElementChild!==end)g.appendChild(end);
@@ -2174,11 +2180,15 @@ function run(){
  lastPage[v]=p;view.classList.add('bk');
  [].forEach.call(g.children,function(n){n.classList.toggle('bk-off',+n.getAttribute('data-bpg')!==p)});
  var pos=(i+1)+' / '+pages.length;
- put('bk-top','<div class="bk-dots">'+pages.map(function(x,k){return '<button type="button" data-bk="'+x+'" aria-label="'+T[x-1]+'"'+(x===p?' aria-current="page"':'')+'>'+(k+1)+'</button>'}).join('')+'</div>'+
-  '<span class="bk-t"><b>'+T[p-1]+'</b> · '+pos+'</span><button type="button" class="bk-mode" data-bk-mode="full">全部展開</button>',true);
+ put('bk-top','<nav class="bk-dots" aria-label="'+(v==='daily'?'今日頁數':'頁數')+'">'+pages.map(function(x,k){return '<button type="button" data-bk="'+x+'" aria-label="'+T[x-1]+'（'+(k+1)+' / '+pages.length+'）"'+(x===p?' aria-current="page"':'')+'>'+(k+1)+'</button>'}).join('')+'</nav>'+
+  '<span class="bk-t" aria-live="polite"><b>'+T[p-1]+'</b> · '+pos+'</span><button type="button" class="bk-mode" data-bk-mode="full" aria-pressed="true">全部展開</button>',true);hint();
  var prev=pages[i-1],next=pages[i+1];
  put('bk-bot',(prev?'<button type="button" class="bk-prev" data-bk="'+prev+'">‹ 上一頁</button>':'<span class="bk-gap"></span>')+'<span>'+pos+'</span>'+
-  (next?'<button type="button" class="bk-next" data-bk="'+next+'">下一頁 ›</button>':'<span class="bk-gap"></span>'),false)}
+  (next?'<button type="button" class="bk-next" data-bk="'+next+'">下一頁 ›</button>':'<span class="bk-gap"></span>'),false);
+ var bb=view.querySelector(':scope>.bk-bot');if(bb&&!bb.getAttribute('role')){bb.setAttribute('role','navigation');bb.setAttribute('aria-label','翻頁')}}
+function hint(){try{if(navigator.webdriver||!('ontouchstart' in window)||localStorage.getItem('ct_book_hint'))return;localStorage.setItem('ct_book_hint','1')}catch(e){return}
+ var h=document.createElement('div');h.className='bk-hint';h.setAttribute('role','status');h.textContent='左右滑動換頁';document.body.appendChild(h);
+ setTimeout(function(){h.classList.add('bk-fade')},2500);setTimeout(function(){h.remove()},3100)}
 function apply(){if(busy)return;busy=true;try{run()}catch(e){console.error(e)}finally{obs.takeRecords();busy=false}}
 var obs=new MutationObserver(apply);obs.observe(view,{childList:true,subtree:true});
 function go(n){var v=bookView();if(!v)return;if(n===hashPage(v)&&location.hash.indexOf('#'+v)===0)return;wantScroll=true;
