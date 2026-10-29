@@ -1,4 +1,4 @@
-"""Instagram plan (Tim, 2026-10-29): Chinese only on Instagram, at most 2 earnings picture posts a day there,
+"""Instagram plan (Tim, 2026-10-29): Chinese only on Instagram and Threads, at most 2 earnings picture posts a day there,
 and every Chinese Instagram caption ends with a genuine question that never asks for likes or shares.
 Checks tools/ig_plan.py on fixtures and on every post file in data/ (after applying it to a copy).
 
@@ -51,13 +51,21 @@ def test_caption():
 def test_tree():
     data = {'posts': {'zh': {'instagram': ZH, 'x': ZH, 'story': '#美股 #MU'},
                       'en': {'instagram': EN, 'x': EN, 'threads': EN, 'story': '#StockMarket #MU'}},
-            'three_lines': {'instagram': {'zh': {'text': ZH}, 'en': {'text': EN}}, 'x': {'en': {'text': EN}}},
+            'three_lines': {'instagram': {'zh': {'text': ZH}, 'en': {'text': EN}}, 'x': {'en': {'text': EN}},
+                            'threads': {'zh': {'text': ZH, 'url': ''}, 'en': {'text': EN, 'url': 'https://thecrowdtape.com/en/'}}},
+            'why_posts': [{'threads': {'zh': {'text': ZH}, 'en': {'text': EN}}, 'x': {'en': {'text': EN}}}],
+            'ig_threads_daily': {'zh': {'text_post': {'field': 'posts.zh.threads'}}, 'en': {'text_post': {'field': 'posts.en.threads'}}},
             'ig_reel': {'caption': {'zh': ZH, 'en': EN}},
             'images': {'en': ['https://thecrowdtape.com/og/a.jpg']}}
     ig_plan.apply(data)
     p = data['posts']
     assert p['en']['instagram'] == '' and p['en']['story'] == ''
-    assert p['en']['x'] == EN and p['en']['threads'] == EN  # other platforms keep English
+    assert p['en']['x'] == EN and p['en']['threads'] == ''  # X keeps English, Threads is Chinese only
+    assert data['three_lines']['threads']['en']['text'] == '' and data['three_lines']['threads']['zh']['text'] == ZH
+    assert data['three_lines']['threads']['en']['url'] == 'https://thecrowdtape.com/en/'
+    assert data['why_posts'][0]['threads']['en']['text'] == '' and data['why_posts'][0]['x']['en']['text'] == EN
+    assert data['why_posts'][0]['threads']['zh']['text'] == ZH  # zh Threads gets no Instagram question
+    assert list(data['ig_threads_daily']) == ['zh'] and data['threads_langs'] == ['zh']
     assert p['zh']['x'] == ZH and p['zh']['story'] == '#美股 #MU'  # only Instagram captions get the question
     assert p['zh']['instagram'] != ZH and '？' in p['zh']['instagram']
     assert data['three_lines']['instagram']['en']['text'] == ''
@@ -69,6 +77,9 @@ def test_tree():
     ig_plan.apply(again)
     assert again == data
     assert ig_plan.problems(data) == []
+    bad = copy.deepcopy(data)
+    bad['posts']['en']['threads'] = EN
+    assert ig_plan.problems(bad) == ['.posts.en.threads: English Threads text']
 
 
 def _item(t, mcap):
@@ -119,7 +130,7 @@ def main():
     test_tree()
     test_earnings_cap()
     test_real_files()
-    print('test_ig_plan: Instagram Chinese only, earnings <=2 a day, one clean question per zh caption ok')
+    print('test_ig_plan: Instagram + Threads Chinese only, earnings <=2 a day, one clean question per zh caption ok')
 
 
 if __name__ == '__main__':
