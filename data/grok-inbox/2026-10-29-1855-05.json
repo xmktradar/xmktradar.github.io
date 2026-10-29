@@ -1,0 +1,90 @@
+{
+  "posts": {
+    "2115540650066403432": {
+      "en_summary": "EARNINGS SUMMARY BY SIDEKICK: $MSFT $GOOG $NOW $FTNT",
+      "zh_summary": "SIDEKICK的財報摘要：$MSFT $GOOG $NOW $FTNT",
+      "tickers": ["MSFT", "GOOG", "NOW", "FTNT"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "MSFT": "中性",
+        "GOOG": "中性",
+        "NOW": "中性",
+        "FTNT": "中性"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115540609687826499": {
+      "en_summary": "Alphabet CEO: \"We had a strong quarter and are now on a half-trillion dollar revenue run rate. Our deep full stack approach is driving momentum across the business, with Alphabet revenues growing 25% year-over year\" $GOOGL: -8% AH",
+      "zh_summary": "Alphabet首席執行官：「我們有一個強勁的季度，現在正處於五千億美元的收入運行率。我們的深度全棧方法正在推動整個業務的勢頭，Alphabet收入同比增長25%」$GOOGL：盤後下跌8%",
+      "tickers": ["GOOGL"],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "GOOGL": "睇好"
+      },
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {
+        "GOOGL": "CEO: strong quarter, half-trillion run rate, revenues +25% YoY, but -8% AH"
+      }
+    },
+    "2115540447133393111": {
+      "en_summary": "$GOOGL just keeps putting up video game numbers every single quarter",
+      "zh_summary": "$GOOGL每個季度都在持續交出遊戲般的數字",
+      "tickers": ["GOOGL"],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "GOOGL": "睇好"
+      },
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115539814284140970": {
+      "en_summary": "$MSFT select products growth rates:",
+      "zh_summary": "$MSFT精選產品增長率：",
+      "tickers": ["MSFT"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "MSFT": "中性"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115539805631340651": {
+      "en_summary": "If you shorted $GOOGL and longed $MSFT:",
+      "zh_summary": "如果你做空$GOOGL並做多$MSFT：",
+      "tickers": ["GOOGL", "MSFT"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "GOOGL": "睇淡",
+        "MSFT": "睇好"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
