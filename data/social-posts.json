@@ -2242,9 +2242,150 @@
       "HOOD"
      ]
     }
+   },
+   "intraday_4": {
+    "post_et": "14:45",
+    "post_hkt": "02:45",
+    "generated_at": "2026-10-29T14:45:23-04:00",
+    "date": "2026-10-29",
+    "date_kst": "2026-10-30",
+    "quotes": {
+     "SPY": {
+      "price": 767.15,
+      "prev_close": 772.31,
+      "chg_pct": -0.67,
+      "time": "2026-10-29T14:45:22-04:00"
+     },
+     "QQQ": {
+      "price": 712.57,
+      "prev_close": 725.61,
+      "chg_pct": -1.8,
+      "time": "2026-10-29T14:45:21-04:00"
+     },
+     "DIA": {
+      "price": 521.17,
+      "prev_close": 524.68,
+      "chg_pct": -0.67,
+      "time": "2026-10-29T14:45:14-04:00"
+     },
+     "CVNA": {
+      "price": 68.3,
+      "prev_close": 59.05,
+      "chg_pct": 15.66,
+      "time": "2026-10-29T14:45:22-04:00"
+     },
+     "IWM": {
+      "price": 283.055,
+      "prev_close": 281.29,
+      "chg_pct": 0.63,
+      "time": "2026-10-29T14:45:24-04:00"
+     },
+     "PLTR": {
+      "price": 193.77,
+      "prev_close": 196.81,
+      "chg_pct": -1.54,
+      "time": "2026-10-29T14:45:22-04:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-10-29T14:45:24-04:00",
+     "hkt": "2026-10-30 02:45"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "QQQ",
+      "chg_pct": -1.8,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "TrendSpider",
+       "RyanDetrick",
+       "ripster47",
+       "bespokeinvest",
+       "MrZackMorris",
+       "RedDogT3",
+       "EliteOptions2",
+       "garyblack00"
+      ]
+     },
+     {
+      "ticker": "CVNA",
+      "chg_pct": 15.66,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "michaelsikand",
+       "TheTranscript_",
+       "OptionsHawk",
+       "WallStJesus"
+      ]
+     },
+     {
+      "ticker": "IWM",
+      "chg_pct": 0.63,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "ripster47",
+       "Mr_Derivatives",
+       "bespokeinvest"
+      ]
+     },
+     {
+      "ticker": "PLTR",
+      "chg_pct": -1.54,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "OptionsMike",
+       "TrendSpider",
+       "amitisinvesting"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Afternoon tape · As of 14:45 ET (02:45 HKT)\n\n$SPY -0.7% · $QQQ -1.8% · $DIA -0.7%\n\n$QQQ -1.8%, 2 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #QQQ #CVNA",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "尾盤前 · 截至 14:45 ET（02:45 HKT）\n\n$SPY -0.7% · $QQQ -1.8% · $DIA -0.7%\n\n$QQQ -1.8%，網站 2 個帳號看好\n$CVNA +15.7%，網站 2 個帳號看好\n$IWM +0.6%，網站 2 個帳號看好\n$PLTR -1.5%，網站 2 個帳號看好\n\n退出看好：$MSFT, $SKHY, $VRT, $NBIS\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #QQQ #CVNA",
+      "url": ""
+     },
+     "en": {
+      "text": "Afternoon tape · As of 14:45 ET (02:45 HKT)\n\n$SPY -0.7% · $QQQ -1.8% · $DIA -0.7%\n\n$QQQ -1.8%, 2 accounts bullish on site\n$CVNA +15.7%, 2 accounts bullish on site\n$IWM +0.6%, 2 accounts bullish on site\n$PLTR -1.5%, 2 accounts bullish on site\n\nLeft the bullish list: $MSFT, $SKHY, $VRT, $NBIS\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #QQQ #CVNA",
+      "url": ""
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "LITE",
+      "QQQ",
+      "CVNA",
+      "IWM",
+      "KLAC",
+      "PLTR",
+      "SOFI"
+     ],
+     "bear": [
+      "HOOD"
+     ]
+    }
    }
   },
-  "generated_at": "2026-10-29T13:36:33-04:00",
-  "generated_hkt": "2026-10-30 01:36"
+  "generated_at": "2026-10-29T14:45:23-04:00",
+  "generated_hkt": "2026-10-30 02:45"
  }
 }
