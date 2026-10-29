@@ -2,39 +2,39 @@
  "date": "2026-10-31",
  "date_kst": "2026-10-31",
  "frozen": false,
- "made_hkt": "2026-10-29 00:32",
- "from": "2026-10-23",
- "to": "2026-10-29",
+ "made_hkt": "2026-10-30 00:05",
+ "from": "2026-10-24",
+ "to": "2026-10-30",
  "themes": [
   {
    "theme": "rates",
-   "accounts": 20,
-   "n": 20,
+   "accounts": 23,
+   "n": 23,
    "bull": 2,
-   "bear": 9,
-   "neu": 9,
+   "bear": 10,
+   "neu": 11,
    "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "bespokeinvest",
+     "acc": "garyblack00",
      "impact": "neu",
-     "text": "明天的 FOMC 利率決定在東部時間下午 2:00，沃什的新聞發布會於下午 2:30 開始。能源庫存於上午 10:30 公佈，Oracle $ORCL 也舉行投資者日。",
-     "url": "https://x.com/bespokeinvest/status/2115195583719670139"
+     "text": "美股下跌（標普500指數-0.3%，納斯達克100指數-1.0%），因$GOOG業績疲弱（-10%，AI搜尋侵蝕廣告收入）及三星（-4%，晶片未達預期及高資本支出）重新引發對AI回報的疑慮。聯準會維持利率不變，但主席Warsh因經濟強勁及通膨黏性暗示可能進一步升息。10年期公債收益率下跌2.9個基點至4.99%。布蘭特原油下跌1.6%至113美元；MSFT因第三季超預期盤前上漲4%。其他科技股落後（NVDA -0.6%，MRVL因Lumentum談判-9.8%）。比特幣下跌1.4%至8.01萬美元。標普2026年每股收益預期仍因AI支出同比+33%，但股票估值相對國債收益率偏高。",
+     "url": "https://x.com/garyblack00/status/2115752635412193405"
     },
     "en": {
-     "acc": "bespokeinvest",
+     "acc": "garyblack00",
      "impact": "neu",
-     "text": "Tomorrow’s FOMC rate decision is at 2:00 PM ET, and Warsh’s press conference begins at 2:30 PM. Energy Inventories are out at 10:30 AM and Oracle $ORCL also holds its investor day.",
-     "url": "https://x.com/bespokeinvest/status/2115195583719670139"
+     "text": "U.S. stocks fell (SPX -0.3%, NDX -1.0%) after weak results from $GOOG (-10%, AI search eroding adv revs) and Samsung (-4%, chip miss and high capex) revived doubts about AI returns. Fed held rates steady but Chair Warsh flagged further hikes on strong economy and sticky inflation. 10-year yield fell 2.9 bp to 4.99%. Brent crude dropped 1.6% to $113; MSFT rose 4% pre-market on Q3 beat. Other tech lagged (NVDA -0.6%, MRVL -9.8% on Lumentum talks). #BTC slid 1.4% to $80.1K. S&P 2026 EPS estimates remain +33% YoY on AI spend, but valuations stretched vs treasury yields.",
+     "url": "https://x.com/garyblack00/status/2115752635412193405"
     }
    }
   },
   {
    "theme": "inflation",
-   "accounts": 11,
-   "n": 11,
+   "accounts": 10,
+   "n": 10,
    "bull": 1,
-   "bear": 8,
+   "bear": 7,
    "neu": 2,
    "arrow": "dn",
    "quotes": {
@@ -54,12 +54,12 @@
   },
   {
    "theme": "jobs",
-   "accounts": 8,
-   "n": 8,
+   "accounts": 7,
+   "n": 7,
    "bull": 1,
-   "bear": 5,
+   "bear": 4,
    "neu": 2,
-   "arrow": "dn",
+   "arrow": "flat",
    "quotes": {
     "zh": {
      "acc": "DiMartinoBooth",
@@ -79,32 +79,32 @@
    "theme": "growth",
    "accounts": 21,
    "n": 21,
-   "bull": 11,
+   "bull": 10,
    "bear": 5,
-   "neu": 5,
+   "neu": 6,
    "arrow": "up",
    "quotes": {
     "zh": {
-     "acc": "Stephanie_Link",
-     "impact": "bull",
-     "text": "$GS 執行長表示，推動這項技術（AI）所需的基礎設施建設需要龐大資本形成，目前對算力的需求更多，至於建置支出是 5 兆還是 10 兆美元或更多，沒有人真正知道。",
-     "url": "https://x.com/Stephanie_Link/status/2115420362858979752"
+     "acc": "TheTranscript_",
+     "impact": "neu",
+     "text": "$BX 黑石首席執行官史蒂夫·施瓦茨曼：過去兩年，儘管股價大幅下跌，盈利增長了近50%，股息也相應增長。標普500指數在第三季度略有上升，漲幅集中在最大的科技公司和能源板塊。儘管大多數個股下跌，中位數股票現在比近期高點低15%。",
+     "url": "https://x.com/TheTranscript_/status/2115519004337152418"
     },
     "en": {
-     "acc": "Stephanie_Link",
-     "impact": "bull",
-     "text": "CEO of $GS says there is an enormous amount of capital formations necessary to build the infrastructure to drive this technology (AI), more demand for compute right now, whether $5T or $10T or more on the buildout, nobody really knows.",
-     "url": "https://x.com/Stephanie_Link/status/2115420362858979752"
+     "acc": "TheTranscript_",
+     "impact": "neu",
+     "text": "$BX Blackstone CEO Steve Schwarzman: Over the past two years, while shares are down meaningfully, earnings have grown nearly 50% with commensurate growth in dividend. The S&P 500 index rose slightly in the third quarter, with gains concentrated in the largest tech companies and the energy sector. Although most individual stocks declined, and the median stock is now 15% below its recent high.",
+     "url": "https://x.com/TheTranscript_/status/2115519004337152418"
     }
    }
   },
   {
    "theme": "yields",
-   "accounts": 21,
-   "n": 21,
+   "accounts": 18,
+   "n": 18,
    "bull": 3,
    "bear": 9,
-   "neu": 9,
+   "neu": 6,
    "arrow": "flat",
    "quotes": {
     "zh": {
@@ -148,22 +148,22 @@
    "theme": "energy",
    "accounts": 23,
    "n": 23,
-   "bull": 8,
-   "bear": 10,
-   "neu": 5,
+   "bull": 9,
+   "bear": 11,
+   "neu": 3,
    "arrow": "up",
    "quotes": {
     "zh": {
-     "acc": "garyblack00",
-     "impact": "neu",
-     "text": "美股盤前溫和上漲（標普+0.1%，納指+0.3%），油價上升（布倫特超過115美元，因可能對伊朗進行美國打擊）抵消AI漲幅。等待鷹派維持利率的聯準會決定，以及今日$GOOG $MSFT和明日$AMZN業績。$SKHY因強勁業績及記憶體需求至2030年超過供應而大漲，帶動$MU。$TSLA和$SPCX因合併傳聞上漲，$HOOD因第三季疲弱下跌。標普2026年每股盈餘369美元意味20.9倍本益比（4.8%收益率）相對10年期5.01%，預期緊張緩解後利率下降。對$TSLA保持謹慎，因其估值偏高、盈餘下修，以及自動駕駛技術將成商品。",
-     "url": "https://x.com/garyblack00/status/2115389356307341625"
+     "acc": "JavierBlas",
+     "impact": "bull",
+     "text": "大型石油公司第三季財報：殼牌將股份回購提高至每季約50億美元（先前約30億美元），因高油價和液化天然氣價格以及，最重要的是，創紀錄的煉油利潤率，交付了有史以來第二高的季度淨收入。$SHEL",
+     "url": "https://x.com/JavierBlas/status/2115714054320722315"
     },
     "en": {
-     "acc": "garyblack00",
-     "impact": "neu",
-     "text": "US stocks modestly higher pre-market (SPX +0.1%, NDX +0.3%) as rising oil (Brent >$115 on possible US strikes on Iran) offset AI gains. Awaiting hawkish hold Fed and earnings from $GOOG $MSFT today, $AMZN tomorrow. $SKHY surged on strong results and memory demand exceeding supply to 2030, lifting $MU. $TSLA and $SPCX higher on merger speculation, $HOOD weak on 3Q. S&P 2026 EPS $369 implies 20.9x PE (4.8% yield) vs 10y 5.01%, expect ease as tensions fade. Cautious on $TSLA due to extended valuation, negative revisions, AV tech as commodity.",
-     "url": "https://x.com/garyblack00/status/2115389356307341625"
+     "acc": "JavierBlas",
+     "impact": "bull",
+     "text": "BIG OIL 3Q EARNINGS: Shell boosts share buybacks to ~$5 billion per quarter (from a rate of ~$3 billion previously) after delivering its 2nd highest ever quarterly net income thanks to high oil and LNG prices and -- most importantly -- record refining margins. $SHEL",
+     "url": "https://x.com/JavierBlas/status/2115714054320722315"
     }
    }
   },
@@ -171,45 +171,45 @@
    "theme": "policy",
    "accounts": 40,
    "n": 40,
-   "bull": 7,
-   "bear": 16,
+   "bull": 8,
+   "bear": 15,
    "neu": 17,
    "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "RedDogT3",
-     "impact": "neu",
-     "text": "@RedDogT3 提醒交易者不要追漲。$SPY 與 $QQQ 已連續三個交易日走勢良好，但 $SPY 仍處於 8 月 4 日以來的區間，771 美元附近是他可能減持的位置。市場預期下午 2 時聯儲局議息維持利率不變的機率約 90%，他警告聯儲局主席 Warsh 若發表意外鷹派言論可能引發拋售，因此會在公佈前降低倉位。他認為 $TSLA 突破 388 美元並站上 397 美元屬真正突破，但已是上漲第四天，不宜追高。他認為 $NVDA、$MU、$SNDK 與 $NBIS 只是破位後的反彈；不會持有 $GOOGL 過業績，其 200 日均線約在 327 美元；$AMZN 的後續動能仍未獲證實；$SPCX 則有攤薄疑慮，140.60 美元為風險控制位。附上影片縮圖。",
-     "url": "https://x.com/RedDogT3/status/2115431834469167469"
+     "acc": "leadlagreport",
+     "impact": "bull",
+     "text": "Lead-Lag Report 分享更多關於 $FMKT 的詳情，位於 freemarketsetf.com。子顧問 Point Bridge、SYKON 和 Tactical Rotation Management 使用篩選工具來識別符合策略的公司，倉位由投資委員會認為最可能從去監管中受益的股票決定。",
+     "url": "https://x.com/leadlagreport/status/2115800086642929723"
     },
     "en": {
-     "acc": "RedDogT3",
-     "impact": "neu",
-     "text": "@RedDogT3 urges traders not to chase the rally. $SPY and $QQQ have had three constructive sessions, but $SPY is still in a range dating back to Aug. 4, with the $771 area a level where he might trim. With markets pricing about a 90% chance of no rate change at the 2 p.m. FOMC, he warns hawkish comments from Fed Chair Warsh could trigger selling and would reduce exposure beforehand. He sees $TSLA as a genuine breakout after clearing $388 and pushing above $397, but on Day 4 of its advance he prefers not to chase. He calls $NVDA, $MU, $SNDK and $NBIS broken bounces, would not hold $GOOGL through earnings with its 200-day average near $327, sees $AMZN follow-through as unproven, and flags dilution concerns for $SPCX with $140.60 as a risk level. A video thumbnail is attached.",
-     "url": "https://x.com/RedDogT3/status/2115431834469167469"
+     "acc": "leadlagreport",
+     "impact": "bull",
+     "text": "Lead-Lag Report shares more details on $FMKT at freemarketsetf.com. Subadvisors Point Bridge, SYKON, and Tactical Rotation Management use screening tools to identify companies that fit the strategy, with positions based on stocks the committee believes will benefit most from deregulation.",
+     "url": "https://x.com/leadlagreport/status/2115800086642929723"
     }
    }
   },
   {
    "theme": "other",
-   "accounts": 46,
-   "n": 46,
-   "bull": 10,
-   "bear": 11,
-   "neu": 25,
+   "accounts": 42,
+   "n": 42,
+   "bull": 11,
+   "bear": 9,
+   "neu": 22,
    "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "Mr_Derivatives",
-     "impact": "bull",
-     "text": "$KOSPI 隔夜上漲 6%，幾乎回到 6000。那個雙底……引用電影名稱為圖表命名 HOPE。",
-     "url": "https://x.com/Mr_Derivatives/status/2115258863310238129"
+     "acc": "KeithMcCullough",
+     "impact": "bear",
+     "text": "昨日股價上漲時重新做空$NBIS（新雲）。引用：Hedgeye首席執行官@KeithMcCullough表示AI泡沫已開始破裂，從新雲開始。CoreWeave於10月23日收於54.24美元，較52週高點低約62%，2032年債券收益率約15%。Gartner預期超過80%的新雲供應商將在2030年前失去獨立性。",
+     "url": "https://x.com/KeithMcCullough/status/2115763034022940819"
     },
     "en": {
-     "acc": "Mr_Derivatives",
-     "impact": "bull",
-     "text": "$KOSPI up 6% overnight and almost back to 6,000. That double bottom… Quoted movie reference for HOPE chart.",
-     "url": "https://x.com/Mr_Derivatives/status/2115258863310238129"
+     "acc": "KeithMcCullough",
+     "impact": "bear",
+     "text": "Reloaded (shorted) on $NBIS (neocloud) on green yesterday. Quoted: Hedgeye CEO @KeithMcCullough says the AI bubble is already popping, started with the neoclouds. CoreWeave closed at $54.24 on Oct 23, about 62% below 52-week high, 2032 bonds yielding around 15%. Gartner expects >80% of neocloud providers to lose independence by 2030.",
+     "url": "https://x.com/KeithMcCullough/status/2115763034022940819"
     }
    }
   }
@@ -217,49 +217,49 @@
  "top": [
   "other",
   "policy",
-  "energy"
+  "rates"
  ],
  "accounts": 201,
- "range": "10/23–10/29",
+ "range": "10/24–10/30",
  "images": {
-  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-10-31-0032",
-  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-10-31-0032"
+  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-10-31-0005",
+  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-10-31-0005"
  },
  "stories": {
-  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-10-31-0032",
-  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-10-31-0032"
+  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-10-31-0005",
+  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-10-31-0005"
  },
  "posts": {
   "zh": {
-   "instagram": "本週宏觀：最多人講「其他」（利好 10・利空 11）\n\n本週宏觀｜201 個帳號怎麼看大環境（10/23–10/29）\n\n我們追蹤的 201 個 X 帳號，這個星期最多人講的宏觀題目：\n\n\\1. 其他：利好 10・利空 11・中性 25（同上週差不多）\n@Mr_Derivatives：「$KOSPI 隔夜上漲 6%，幾乎回到 6000。那個雙底……引用電影名稱為圖表命名 HOPE。」\n\n\\1. 關稅／政策／地緣政治：利好 7・利空 16・中性 17（同上週差不多）\n@RedDogT3 提醒交易者不要追漲。$SPY 與 $QQQ 已連續三個交易日走勢良好，但 $SPY 仍處於 8 月 4 日以來的區間，771 美元附近是他可能減持的位置。市場…\n\n\\1. 油價／能源：利好 8・利空 10・中性 5（比上週轉好 ▲）\n@garyblack00：「美股盤前溫和上漲（標普+0.1%，納指+0.3%），油價上升（布倫特超過115美元，因可能對伊朗進行美國打擊）抵消AI漲幅。等待鷹派維持利率的聯準會決定，以及今天$GOOG $M…」\n\n這週哪個宏觀消息最影響你的判斷？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #KOSPI #SPY",
-   "threads": "本週宏觀｜201 個帳號怎麼看大環境（10/23–10/29）\n\n我們追蹤的 201 個 X 帳號，這個星期最多人講的宏觀題目：\n\n\\1. 其他：利好 10・利空 11・中性 25（同上週差不多）\n\\1. 關稅／政策／地緣政治：利好 7・利空 16・中性 17（同上週差不多）\n\\1. 油價／能源：利好 8・利空 10・中性 5（比上週轉好 ▲）\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
-   "x": "本週宏觀\n\n其他 10/11/25\n關稅／政策／地緣政治 7/16/17\n油價／能源 8/10/5\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "instagram": "本週宏觀：最多人講「其他」（利好 11・利空 9）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（10/24–10/30）\n\n1. 其他：利好 11・利空 9・中性 22（同上週差不多）\n@KeithMcCullough：「昨日股價上漲時重新做空$NBIS（新雲）。引用：Hedgeye首席執行官@KeithMcCullough表示AI泡沫已開始破裂，從新雲開始。CoreWeave於10月23日收於5…」\n\n2. 關稅／政策／地緣政治：利好 8・利空 15・中性 17（同上週差不多）\n@leadlagreport：「Lead-Lag Report 分享更多關於 $FMKT 的詳情，位於 freemarketsetf.com。子顧問 Point Bridge、SYKON 和 Tactical…」\n\n3. 利率／聯儲局：利好 2・利空 10・中性 11（同上週差不多）\n@garyblack00：「美股下跌（標普500指數-0.3%，納斯達克100指數-1.0%），因$GOOG業績疲弱（-10%，AI搜尋侵蝕廣告收入）及三星（-4%，晶片未達預期及高資本支出）重新引發對AI…」\n\n你覺得下週市場最該留意哪個數據？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #NBIS #FMKT",
+   "threads": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（10/24–10/30）\n\n1. 其他：利好 11・利空 9・中性 22（同上週差不多）\n2. 關稅／政策／地緣政治：利好 8・利空 15・中性 17（同上週差不多）\n3. 利率／聯儲局：利好 2・利空 10・中性 11（同上週差不多）\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "x": "這星期大家最常聊的宏觀話題\n\n其他 11/9/22\n關稅／政策／地緣政治 8/15/17\n利率／聯儲局 2/10/11\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "reddit": {
-    "title": "本週宏觀｜201 個帳號點睇大環境（10/23–10/29）",
-    "body": "我們追蹤的 201 個 X 帳號，這個星期最多人講的宏觀題目：\n\n1. 其他：利好 10・利空 11・中性 25（同上週差不多）\n@Mr_Derivatives：「$KOSPI 隔夜上漲 6%，幾乎回到 6000。那個雙底……引用電影名稱為圖表命名 HOPE。」\n\n2. 關稅／政策／地緣政治：利好 7・利空 16・中性 17（同上週差不多）\n@RedDogT3 提醒交易者不要追漲。$SPY 與 $QQQ 已連續三個交易日走勢良好，但 $SPY 仍處於 8 月 4 日以來的區間，771 美元附近是他可能減持的位置。市場…\n\n3. 油價／能源：利好 8・利空 10・中性 5（比上週轉好 ▲）\n@garyblack00：「美股盤前溫和上漲（標普+0.1%，納指+0.3%），油價上升（布倫特超過115美元，因可能對伊朗進行美國打擊）抵消AI漲幅。等待鷹派維持利率的聯準會決定，以及今天$GOOG $M…」\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
+    "title": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（10/24–10/30）",
+    "body": "1. 其他：利好 11・利空 9・中性 22（同上週差不多）\n@KeithMcCullough：「昨日股價上漲時重新做空$NBIS（新雲）。引用：Hedgeye首席執行官@KeithMcCullough表示AI泡沫已開始破裂，從新雲開始。CoreWeave於10月23日收於5…」\n\n2. 關稅／政策／地緣政治：利好 8・利空 15・中性 17（同上週差不多）\n@leadlagreport：「Lead-Lag Report 分享更多關於 $FMKT 的詳情，位於 freemarketsetf.com。子顧問 Point Bridge、SYKON 和 Tactical…」\n\n3. 利率／聯儲局：利好 2・利空 10・中性 11（同上週差不多）\n@garyblack00：「美股下跌（標普500指數-0.3%，納斯達克100指數-1.0%），因$GOOG業績疲弱（-10%，AI搜尋侵蝕廣告收入）及三星（-4%，晶片未達預期及高資本支出）重新引發對AI…」\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
    },
-   "facebook": "本週宏觀｜201 個帳號怎麼看大環境（10/23–10/29）\n\n我們追蹤的 201 個 X 帳號，這個星期最多人講的宏觀題目：\n\n\\1. 其他：利好 10・利空 11・中性 25（同上週差不多）\n@Mr_Derivatives：「$KOSPI 隔夜上漲 6%，幾乎回到 6000。那個雙底……引用電影名稱為圖表命名 HOPE。」\n\n\\1. 關稅／政策／地緣政治：利好 7・利空 16・中性 17（同上週差不多）\n@RedDogT3 提醒交易者不要追漲。$SPY 與 $QQQ 已連續三個交易日走勢良好，但 $SPY 仍處於 8 月 4 日以來的區間，771 美元附近是他可能減持的位置。市場…\n\n\\1. 油價／能源：利好 8・利空 10・中性 5（比上週轉好 ▲）\n@garyblack00：「美股盤前溫和上漲（標普+0.1%，納指+0.3%），油價上升（布倫特超過115美元，因可能對伊朗進行美國打擊）抵消AI漲幅。等待鷹派維持利率的聯準會決定，以及今天$GOOG $M…」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "facebook": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（10/24–10/30）\n\n1. 其他：利好 11・利空 9・中性 22（同上週差不多）\n@KeithMcCullough：「昨日股價上漲時重新做空$NBIS（新雲）。引用：Hedgeye首席執行官@KeithMcCullough表示AI泡沫已開始破裂，從新雲開始。CoreWeave於10月23日收於5…」\n\n2. 關稅／政策／地緣政治：利好 8・利空 15・中性 17（同上週差不多）\n@leadlagreport：「Lead-Lag Report 分享更多關於 $FMKT 的詳情，位於 freemarketsetf.com。子顧問 Point Bridge、SYKON 和 Tactical…」\n\n3. 利率／聯儲局：利好 2・利空 10・中性 11（同上週差不多）\n@garyblack00：「美股下跌（標普500指數-0.3%，納斯達克100指數-1.0%），因$GOOG業績疲弱（-10%，AI搜尋侵蝕廣告收入）及三星（-4%，晶片未達預期及高資本支出）重新引發對AI…」\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "story": "#美股"
   },
   "en": {
    "instagram": "",
    "threads": "",
-   "x": "This week in macro\n\nOther 10/11/25\nTariffs / policy / geopolitics 7/16/17\nOil / energy 8/10/5\n(bullish/bearish/neutral)\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
+   "x": "What X talked about in macro this week\n\nOther 11/9/22\nTariffs / policy / geopolitics 8/15/17\nRates / Fed 2/10/11\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
    "reddit": {
-    "title": "This week in macro · how 201 accounts see the big picture (10/23–10/29)",
-    "body": "The macro topics the 201 X accounts we track talked about most this week:\n\n1. Other: bullish 10 · bearish 11 · neutral 25 (about the same as last week)\n@Mr_Derivatives: “$KOSPI up 6% overnight and almost back to 6,000. That double bottom… Quoted movie reference for HOPE chart.”\n\n2. Tariffs / policy / geopolitics: bullish 7 · bearish 16 · neutral 17 (about the same as last week)\n@RedDogT3 urges traders not to chase the rally. $SPY and $QQQ have had three constructive sessions, but $SPY is still in a range dating back to Aug…\n\n3. Oil / energy: bullish 8 · bearish 10 · neutral 5 (better than last week ▲)\n@garyblack00: “US stocks modestly higher pre-market (SPX +0.1%, NDX +0.3%) as rising oil (Brent >$115 on possible US strikes on Iran) offset AI gains. Awaiting hawk…”\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro"
+    "title": "The macro topics the 201 X accounts we follow talked about most this week (10/24–10/30)",
+    "body": "1. Other: bullish 11 · bearish 9 · neutral 22 (about the same as last week)\n@KeithMcCullough: “Reloaded (shorted) on $NBIS (neocloud) on green yesterday. Quoted: Hedgeye CEO @KeithMcCullough says the AI bubble is already popping, started with t…”\n\n2. Tariffs / policy / geopolitics: bullish 8 · bearish 15 · neutral 17 (about the same as last week)\n@leadlagreport: “Lead-Lag Report shares more details on $FMKT at freemarketsetf.com. Subadvisors Point Bridge, SYKON, and Tactical Rotation Management use screening t…”\n\n3. Rates / Fed: bullish 2 · bearish 10 · neutral 11 (about the same as last week)\n@garyblack00: “U.S. stocks fell (SPX -0.3%, NDX -1.0%) after weak results from $GOOG (-10%, AI search eroding adv revs) and Samsung (-4%, chip miss and high capex)…”\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro"
    },
-   "facebook": "This week in macro · how 201 accounts see the big picture (10/23–10/29)\n\nThe macro topics the 201 X accounts we track talked about most this week:\n\n\\1. Other: bullish 10 · bearish 11 · neutral 25 (about the same as last week)\n@Mr_Derivatives: “$KOSPI up 6% overnight and almost back to 6,000. That double bottom… Quoted movie reference for HOPE chart.”\n\n\\1. Tariffs / policy / geopolitics: bullish 7 · bearish 16 · neutral 17 (about the same as last week)\n@RedDogT3 urges traders not to chase the rally. $SPY and $QQQ have had three constructive sessions, but $SPY is still in a range dating back to Aug…\n\n\\1. Oil / energy: bullish 8 · bearish 10 · neutral 5 (better than last week ▲)\n@garyblack00: “US stocks modestly higher pre-market (SPX +0.1%, NDX +0.3%) as rising oil (Brent >$115 on possible US strikes on Iran) offset AI gains. Awaiting hawk…”\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro",
+   "facebook": "The macro topics the 201 X accounts we follow talked about most this week (10/24–10/30)\n\n1. Other: bullish 11 · bearish 9 · neutral 22 (about the same as last week)\n@KeithMcCullough: “Reloaded (shorted) on $NBIS (neocloud) on green yesterday. Quoted: Hedgeye CEO @KeithMcCullough says the AI bubble is already popping, started with t…”\n\n2. Tariffs / policy / geopolitics: bullish 8 · bearish 15 · neutral 17 (about the same as last week)\n@leadlagreport: “Lead-Lag Report shares more details on $FMKT at freemarketsetf.com. Subadvisors Point Bridge, SYKON, and Tactical Rotation Management use screening t…”\n\n3. Rates / Fed: bullish 2 · bearish 10 · neutral 11 (about the same as last week)\n@garyblack00: “U.S. stocks fell (SPX -0.3%, NDX -1.0%) after weak results from $GOOG (-10%, AI search eroding adv revs) and Samsung (-4%, chip miss and high capex)…”\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro",
    "story": ""
   }
  },
  "ig_images": {
   "zh": [
-   "https://thecrowdtape.com/og/macro-zh.png?v=2026-10-31-0032",
+   "https://thecrowdtape.com/og/macro-zh.png?v=2026-10-31-0005",
    "https://thecrowdtape.com/og/cta/ig-cta-zh.jpg"
   ],
   "en": [
-   "https://thecrowdtape.com/og/macro-en.png?v=2026-10-31-0032",
+   "https://thecrowdtape.com/og/macro-en.png?v=2026-10-31-0005",
    "https://thecrowdtape.com/og/cta/ig-cta-en.jpg"
   ]
  },
@@ -269,7 +269,7 @@
   "video_path": null,
   "video_expected_path": "assets/reels/2026-10-31-macro-week.mp4",
   "caption": {
-   "zh": "本週宏觀：最多人講「其他」（利好 10・利空 11）\n\n本週宏觀｜201 個帳號怎麼看大環境（10/23–10/29）\n\n我們追蹤的 201 個 X 帳號，這個星期最多人講的宏觀題目：\n\n\\1. 其他：利好 10・利空 11・中性 25（同上週差不多）\n@Mr_Derivatives：「$KOSPI 隔夜上漲 6%，幾乎回到 6000。那個雙底……引用電影名稱為圖表命名 HOPE。」\n\n\\1. 關稅／政策／地緣政治：利好 7・利空 16・中性 17（同上週差不多）\n@RedDogT3 提醒交易者不要追漲。$SPY 與 $QQQ 已連續三個交易日走勢良好，但 $SPY 仍處於 8 月 4 日以來的區間，771 美元附近是他可能減持的位置。市場…\n\n\\1. 油價／能源：利好 8・利空 10・中性 5（比上週轉好 ▲）\n@garyblack00：「美股盤前溫和上漲（標普+0.1%，納指+0.3%），油價上升（布倫特超過115美元，因可能對伊朗進行美國打擊）抵消AI漲幅。等待鷹派維持利率的聯準會決定，以及今天$GOOG $M…」\n\n這週哪個宏觀消息最影響你的判斷？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #KOSPI #SPY",
+   "zh": "本週宏觀：最多人講「其他」（利好 11・利空 9）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（10/24–10/30）\n\n1. 其他：利好 11・利空 9・中性 22（同上週差不多）\n@KeithMcCullough：「昨日股價上漲時重新做空$NBIS（新雲）。引用：Hedgeye首席執行官@KeithMcCullough表示AI泡沫已開始破裂，從新雲開始。CoreWeave於10月23日收於5…」\n\n2. 關稅／政策／地緣政治：利好 8・利空 15・中性 17（同上週差不多）\n@leadlagreport：「Lead-Lag Report 分享更多關於 $FMKT 的詳情，位於 freemarketsetf.com。子顧問 Point Bridge、SYKON 和 Tactical…」\n\n3. 利率／聯儲局：利好 2・利空 10・中性 11（同上週差不多）\n@garyblack00：「美股下跌（標普500指數-0.3%，納斯達克100指數-1.0%），因$GOOG業績疲弱（-10%，AI搜尋侵蝕廣告收入）及三星（-4%，晶片未達預期及高資本支出）重新引發對AI…」\n\n你覺得下週市場最該留意哪個數據？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #NBIS #FMKT",
    "en": ""
   }
  },
