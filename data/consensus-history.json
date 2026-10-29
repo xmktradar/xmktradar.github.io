@@ -973,8 +973,8 @@
     "MSFT",
     "SOFI",
     "VRT",
-    "NBIS",
     "LITE",
+    "NBIS",
     "BE",
     "SPY",
     "MSTR",
@@ -995,16 +995,17 @@
    "split": [
     "MU",
     "ORCL",
-    "GOOG",
     "TSLA",
     "GOOGL",
-    "SNDK",
-    "MRVL",
-    "QQQ",
+    "GOOG",
     "NOW",
+    "MRVL",
+    "SNDK",
+    "QQQ",
     "CRWV",
     "CBRS",
     "AMZN",
+    "FTNT",
     "STX",
     "APP",
     "QCOM",
@@ -1023,14 +1024,14 @@
     "SKHY",
     "SPY",
     "QQQ",
-    "ORCL",
     "AMZN",
-    "HOOD"
+    "ORCL",
+    "NOW"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-29 14:23"
+   "updated_hkt": "2026-10-29 14:51"
   }
  },
- "updated_hkt": "2026-10-29 14:23",
+ "updated_hkt": "2026-10-29 14:51",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
