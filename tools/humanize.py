@@ -270,6 +270,15 @@ def humanize(text, lang=None, kind='post', platform=None):
             brand = min(BRAND[lang], key=len)
             body = _fit(body, lambda b: size(_join(b, brand, disc, tag_line)) <= limit)
             out = _join(body, brand, disc, tag_line)
+        if platform == 'x' and xlen(out) > 280:  # hard ceiling: never emit an over-long X post
+            body = _fit(body, lambda b: xlen(_join(b, brand, disc, tag_line)) <= limit)
+            out = _join(body, brand, disc, tag_line)
+            while xlen(out) > 280 and tag_line:
+                tag_line = ' '.join(tag_line.split()[:-1])
+                out = _join(body, brand, disc, tag_line)
+            while xlen(out) > 280 and body:
+                body = body[:-1]
+                out = _join(body, brand, disc, tag_line)
     return out
 
 
@@ -284,8 +293,15 @@ def _platform(key, parent_key):
     return None
 
 
-def humanize_tree(obj, lang=None, key=None, parent_key=None):
-    """Rewrite every caption string under obj in place. Returns obj."""
+PLATFORMS = ('x', 'threads', 'instagram', 'facebook')
+
+
+def humanize_tree(obj, lang=None, key=None, parent_key=None, platform=None):
+    """Rewrite every caption string under obj in place. Returns obj.
+    platform is inherited from the nearest x/threads/instagram/facebook ancestor key,
+    so x.en.text is still fitted to X's limit."""
+    if key in PLATFORMS:
+        platform = key
     if isinstance(obj, dict):
         this = obj.get('lang') if obj.get('lang') in LANGS else lang
         for k, v in list(obj.items()):
@@ -293,9 +309,9 @@ def humanize_tree(obj, lang=None, key=None, parent_key=None):
                 continue
             lg = k if k in LANGS else this
             if isinstance(v, str):
-                obj[k] = _humanize_field(v, lg, k, key)
+                obj[k] = _humanize_field(v, lg, k, key, k if k in PLATFORMS else platform)
             elif isinstance(v, (dict, list)):
-                humanize_tree(v, lg, k, key)
+                humanize_tree(v, lg, k, key, platform)
         hl = obj.get('has_link')
         if isinstance(hl, bool):
             obj['has_link'] = False
@@ -310,10 +326,10 @@ def humanize_tree(obj, lang=None, key=None, parent_key=None):
         for i, v in enumerate(obj):
             if isinstance(v, str):
                 # An X thread is a list of posts: the brand and disclaimer go on the last one only.
-                obj[i] = _humanize_field(v, lang, key, parent_key) if i == last else \
+                obj[i] = _humanize_field(v, lang, key, parent_key, platform) if i == last else \
                     _humanize_field(v, lang, 'first_comment', parent_key)
             elif isinstance(v, (dict, list)):
-                humanize_tree(v, lang, key, parent_key)
+                humanize_tree(v, lang, key, parent_key, platform)
     return obj
 
 
@@ -325,7 +341,7 @@ def _caption_parent(key):
     return key in ('x', 'threads', 'facebook', 'instagram') or key in LANGS
 
 
-def _humanize_field(v, lang, key, parent_key):
+def _humanize_field(v, lang, key, parent_key, platform=None):
     if key == 'first_comment' or parent_key == 'first_comment':
         return humanize(v, lang, 'comment')
     if key in ('story', 'hashtags'):
@@ -334,5 +350,5 @@ def _humanize_field(v, lang, key, parent_key):
             (isinstance(key, str) and key in ('posts', 'langs')):
         if '\n' not in v and not URL_RE.search(v) and len(v) < 60 and not TAG_RE.search(v):
             return humanize(v, lang, 'comment') if lang == 'zh' else v  # a short label: wording only
-        return humanize(v, lang, 'post', _platform(key, parent_key))
+        return humanize(v, lang, 'post', platform or _platform(key, parent_key))
     return v
