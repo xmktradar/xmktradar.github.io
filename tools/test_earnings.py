@@ -273,6 +273,26 @@ def test_fiscal_year_change():
     assert '2025-08-31' not in ends and ends.count('2025-09-30') == 1, ends
 
 
+def test_predecessor_history():
+    """XOM 2026: the new holding company's facts hold 2 quarters; the old company (accession prefix) has the rest."""
+    new = {'entityName': 'ExxonMobil Holdings Corporation', 'facts': {'us-gaap': {'Revenues': {'units': {'USD': [
+        fact('2026-04-01', '2026-06-30', 80, 2026, 'Q2', filed='2026-08-03', accn='0000034088-26-000093'),
+        fact('2025-04-01', '2025-06-30', 81, 2026, 'Q2', filed='2026-08-03', accn='0000034088-26-000093')]}}}}}
+    old = facts_fixture()
+    old['entityName'] = 'EXXON MOBIL CORP'
+    got = {}
+    real = ed.sec_json
+    ed.sec_json = lambda url: got.setdefault(url, old if 'CIK0000034088' in url else None)  # noqa: E731
+    try:
+        log = []
+        assert ed.predecessor(new, 2115436, log) == 1, log
+    finally:
+        ed.sec_json = real
+    ends = [x['end'] for x in ed.build_quarters(new)['q']]
+    assert ends == ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-06-30'], ends
+    assert not ed.same_name('Donnelley Financial', 'ExxonMobil Holdings')
+
+
 if __name__ == '__main__':
     for name, fn in list(globals().items()):
         if name.startswith('test_') and callable(fn):
