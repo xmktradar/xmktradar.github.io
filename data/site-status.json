@@ -1,19 +1,22 @@
 {
  "note": "Written by GitHub Actions on every update. SuperGrok daily check reads this.",
- "checked_hkt": "2026-10-30 05:31",
- "generated_hkt": "2026-10-30 05:10",
- "cutoff_hkt": "2026-10-30T03:11:37+08:00",
- "posts_on_site": 6063,
- "added_this_run": 20,
+ "checked_hkt": "2026-10-30 07:06",
+ "generated_hkt": "2026-10-30 06:41",
+ "cutoff_hkt": "2026-10-30T05:05:16+08:00",
+ "posts_on_site": 6068,
+ "added_this_run": 5,
  "added_without_en_summary": 0,
- "waiting_for_summary": 664,
- "waiting_with_stock": 244,
- "expired_unsummarised_this_run": 96,
- "chitchat_skipped_this_run": 314,
- "pruned_this_run": 1,
- "fetch_failed": [],
+ "waiting_for_summary": 669,
+ "waiting_with_stock": 269,
+ "expired_unsummarised_this_run": 39,
+ "chitchat_skipped_this_run": 150,
+ "pruned_this_run": 0,
+ "fetch_failed": [
+  "GerberKawasaki（IncompleteRead(67381 bytes read, 15526 more expected)）"
+ ],
  "warnings": [
-  "未分析：664 則新帖等待 Grok 分析"
+  "攞帖失敗：GerberKawasaki",
+  "未分析：669 則新帖等待 Grok 分析"
  ],
  "writeups_applied": [],
  "writeups_rejected": [],
@@ -39,5 +42,5 @@
   "en 1280px：今日重點卡有 0 張（應該 3 張）",
   "en 390px：今日重點卡有 0 張（應該 3 張）"
  ],
- "layout_checked_hkt": "2026-10-30 05:34"
+ "layout_checked_hkt": "2026-10-30 07:14"
 }

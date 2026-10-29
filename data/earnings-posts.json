@@ -68,13 +68,6 @@
    "backlog": true
   },
   {
-   "t": "GE",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-20 00:00",
-   "backlog": true
-  },
-  {
    "t": "GM",
    "end": "2026-09-30",
    "label": "FY2026 Q3",
@@ -180,21 +173,7 @@
    "backlog": true
   },
   {
-   "t": "RTX",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-20 00:00",
-   "backlog": true
-  },
-  {
    "t": "T",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-21 00:00",
-   "backlog": true
-  },
-  {
-   "t": "TXN",
    "end": "2026-09-30",
    "label": "FY2026 Q3",
    "found_hkt": "2026-10-21 00:00",
@@ -336,12 +315,6 @@
    "found_hkt": "2026-10-29 07:04"
   },
   {
-   "t": "WFC",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-29 08:52"
-  },
-  {
    "t": "PLD",
    "end": "2026-09-30",
    "label": "FY2026 Q3",
@@ -352,12 +325,6 @@
    "end": "2026-09-30",
    "label": "FY2026 Q3",
    "found_hkt": "2026-10-29 08:52"
-  },
-  {
-   "t": "GOOGL",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-29 18:28"
   },
   {
    "t": "MO",
@@ -382,24 +349,6 @@
    "end": "2026-09-30",
    "label": "FY2026 Q3",
    "found_hkt": "2026-10-29 21:34"
-  },
-  {
-   "t": "LLY",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-30 01:00"
-  },
-  {
-   "t": "MA",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-30 01:00"
-  },
-  {
-   "t": "LIN",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-30 01:00"
   },
   {
    "t": "VZ",
@@ -472,6 +421,13 @@
    "end": "2026-09-30",
    "label": "FY2026 Q3",
    "found_hkt": "2026-10-30 05:28"
+  },
+  {
+   "t": "LHX",
+   "end": "2026-10-02",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-29 00:00",
+   "backlog": true
   }
  ],
  "done": [
@@ -608,6 +564,73 @@
    "backlog": true,
    "posted": "2026-10-29",
    "slot": "1000"
+  },
+  {
+   "t": "GOOGL",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-29 18:28",
+   "posted": "2026-10-30",
+   "slot": "1000"
+  },
+  {
+   "t": "LLY",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-30 01:00",
+   "posted": "2026-10-30",
+   "slot": "1000"
+  },
+  {
+   "t": "MA",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-30 01:00",
+   "posted": "2026-10-30",
+   "slot": "1000"
+  },
+  {
+   "t": "WFC",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-29 08:52",
+   "posted": "2026-10-30",
+   "slot": "1000"
+  },
+  {
+   "t": "LIN",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-30 01:00",
+   "posted": "2026-10-30",
+   "slot": "1000"
+  },
+  {
+   "t": "GE",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-20 00:00",
+   "backlog": true,
+   "posted": "2026-10-30",
+   "slot": "1000"
+  },
+  {
+   "t": "TXN",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-21 00:00",
+   "backlog": true,
+   "posted": "2026-10-30",
+   "slot": "1000"
+  },
+  {
+   "t": "RTX",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-20 00:00",
+   "backlog": true,
+   "posted": "2026-10-30",
+   "slot": "1000"
   }
  ],
  "slots": {
@@ -624,9 +647,9 @@
    "items": []
   },
   "1000": {
-   "day": "2026-10-29",
+   "day": "2026-10-30",
    "post_at": "10:00",
-   "made_hkt": "2026-10-29 07:10",
+   "made_hkt": "2026-10-30 07:09",
    "platforms": [
     "x",
     "threads",
@@ -635,594 +658,586 @@
    ],
    "items": [
     {
-     "t": "MSFT",
-     "name": "Microsoft Corporation",
-     "label": "FY2027 Q1",
+     "t": "GOOGL",
+     "name": "Alphabet Inc.",
+     "label": "FY2026 Q3",
      "end": "2026-09-30",
-     "mcap": 3943039238144,
+     "mcap": 3471100346368,
      "backlog": false,
      "tag": "",
      "images": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-zh-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-zh-5.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-en-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-en-5.jpg"
       ]
      },
      "images_x": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-zh-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-zh-5.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-en-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-en-5.jpg"
       ]
      },
      "images_fb": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-zh-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-zh-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-zh-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-zh-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-zh-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-zh-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-zh-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-zh-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-zh-4-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-zh-5-fb.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-en-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-en-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-en-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-en-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-MSFT-en-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-en-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-en-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-en-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-en-4-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GOOGL-en-5-fb.jpg"
       ]
      },
      "posts": {
       "zh": {
-       "x": "$MSFT 財報（FY2027 Q1）\n\n・收入 US$923 億，按年 +18.8%，好過市場預期 1.7%\n・經調整 EPS $4.89，預期 $4.72 ✅\n\nX 大神怎麼看（近 28 天）：11 個看多、0 個看空\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #MSFT",
-       "threads": "$MSFT 財報（FY2027 Q1）\n\n・收入 US$923 億，按年 +18.8%，好過市場預期 1.7%\n・經調整 EPS $4.89，預期 $4.72 ✅\n・毛利率 67.8%｜淨利率 39.7%\n・最大收入線：Agents And Infra 佔 83%（按年 +24.5%）\n・自由現金流（過去 4 季）US$600 億\n\nX 大神怎麼看（近 28 天）：11 個看多、0 個看空\n看多 @Schuldensuehner：$MSFT創一年來首個紀錄高位543.45美元，較6月低位上漲54%，對AI支出的憂慮讓位於4年來最快的雲端增長。但微…\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #MSFT",
-       "instagram": "$MSFT 財報（FY2027 Q1）｜收入 US$923 億，按年 +18.8%，好過市場預期 1.7%\n\n・收入 US$923 億，按年 +18.8%，好過市場預期 1.7%\n・經調整 EPS $4.89，預期 $4.72 ✅\n・毛利率 67.8%｜淨利率 39.7%\n・最大收入線：Agents And Infra 佔 83%（按年 +24.5%）\n・自由現金流（過去 4 季）US$600 億\n\nX 大神怎麼看（近 28 天）：11 個看多、0 個看空\n看多 @Schuldensuehner：$MSFT創一年來首個紀錄高位543.45美元，較6月低位上漲54%，對AI支出的憂慮讓位於4年來最快的雲端增長。但微…\n\n看完 $MSFT 這份成績單，你最在意哪個數字？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #MSFT",
-       "facebook": "$MSFT 財報（FY2027 Q1）\n\n・收入 US$923 億，按年 +18.8%，好過市場預期 1.7%\n・經調整 EPS $4.89，預期 $4.72 ✅\n・毛利率 67.8%｜淨利率 39.7%\n・最大收入線：Agents And Infra 佔 83%（按年 +24.5%）\n・自由現金流（過去 4 季）US$600 億\n\nX 大神怎麼看（近 28 天）：11 個看多、0 個看空\n看多 @Schuldensuehner：$MSFT創一年來首個紀錄高位543.45美元，較6月低位上漲54%，對AI支出的憂慮讓位於4年來最快的雲端增長。但微…\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #MSFT"
+       "x": "$GOOGL 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$1,276 億，按年 +24.7%，與市場預期差不多\n\nX 大神怎麼看（近 28 天）：4 個看多、9 個看空\n\n只是整理公開財報數字\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #GOOGL",
+       "threads": "$GOOGL 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$1,276 億，按年 +24.7%，與市場預期差不多\n・經調整 EPS $2.12，預期 $3.01 ❌\n・毛利率 59.7%｜淨利率 20.7%\n・最大收入線：Google Services 佔 76%（按年 +10.6%）\n・自由現金流（過去 4 季）US$197 億\n\nX 大神怎麼看（近 28 天）：4 個看多、9 個看空\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #GOOGL",
+       "instagram": "$GOOGL 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$1,276 億，按年 +24.7%，與市場預期差不多\n・經調整 EPS $2.12，預期 $3.01 ❌\n・毛利率 59.7%｜淨利率 20.7%\n・最大收入線：Google Services 佔 76%（按年 +10.6%）\n・自由現金流（過去 4 季）US$197 億\n\nX 大神怎麼看（近 28 天）：4 個看多、9 個看空\n看多 @Mr_Derivatives：$GOOGL儘管下跌10%，所有主要分析師仍有巨大目標價，範圍從375美元至425美元，仍較現價高30-47%。換句話…\n看空 @amitisinvesting：質疑如果 $GOOGL 對華爾街不值 3.5 萬億美元，那 Anthropic 值 2 萬億是否可以。今天抹去了 50…\n\n看完 $GOOGL 這份成績單，你最在意哪個數字？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #GOOGL",
+       "facebook": "$GOOGL 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$1,276 億，按年 +24.7%，與市場預期差不多\n・經調整 EPS $2.12，預期 $3.01 ❌\n・毛利率 59.7%｜淨利率 20.7%\n・最大收入線：Google Services 佔 76%（按年 +10.6%）\n・自由現金流（過去 4 季）US$197 億\n\nX 大神怎麼看（近 28 天）：4 個看多、9 個看空\n看多 @Mr_Derivatives：$GOOGL儘管下跌10%，所有主要分析師仍有巨大目標價，範圍從375美元至425美元，仍較現價高30-47%。換句話…\n看空 @amitisinvesting：質疑如果 $GOOGL 對華爾街不值 3.5 萬億美元，那 Anthropic 值 2 萬億是否可以。今天抹去了 50…\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #GOOGL"
       },
       "en": {
-       "x": "$MSFT earnings (FY2027 Q1)\n\n・Revenue $92.28B, +18.8% YoY, beat estimates by 1.7%\n\nWhat X accounts say (28 days): 11 bullish, 0 bearish\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #MSFT",
+       "x": "$GOOGL just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $127.6B, +24.7% YoY, in line with estimates\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #GOOGL",
        "threads": "",
        "instagram": "",
-       "facebook": "$MSFT earnings (FY2027 Q1)\n\n・Revenue $92.28B, +18.8% YoY, beat estimates by 1.7%\n・Adjusted EPS $4.89 vs $4.72 expected ✅\n・Gross margin 67.8% | Net margin 39.7%\n・Biggest line: Agents And Infra, 83% of revenue (+24.5% YoY)\n・Free cash flow (last 4 quarters) $59.96B\n\nWhat X accounts say (28 days): 11 bullish, 0 bearish\nBull @Schuldensuehner: $MSFT hit its first record in a year at $543.45, up 54% from June's low, as AI spending fears gave way to the…\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #MSFT"
+       "facebook": "$GOOGL just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $127.6B, +24.7% YoY, in line with estimates\n・Adjusted EPS $2.12 vs $3.01 expected ❌\n・Gross margin 59.7% | Net margin 20.7%\n・Biggest line: Google Services, 76% of revenue (+10.6% YoY)\n・Free cash flow (last 4 quarters) $19.75B\n\nWhat X accounts say (28 days): 4 bullish, 9 bearish\nBull @Mr_Derivatives: $GOOGL all major analysts still have huge price targets despite the -10% drop, ranging from $375 to $425, sti…\nBear @amitisinvesting: Questioned if $GOOGL isn’t worth $3.5T to Wall Street, is it okay for Anthropic to be worth $2T. $500b wiped…\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #GOOGL"
       }
      },
      "url": {
-      "zh": "https://thecrowdtape.com/zh/earnings/MSFT/",
-      "en": "https://thecrowdtape.com/en/earnings/MSFT/"
+      "zh": "https://thecrowdtape.com/zh/earnings/GOOGL/",
+      "en": "https://thecrowdtape.com/en/earnings/GOOGL/"
      },
      "ig": true
     },
     {
-     "t": "KO",
-     "name": "The Coca-Cola Company",
+     "t": "LLY",
+     "name": "Eli Lilly and Company",
      "label": "FY2026 Q3",
-     "end": "2026-10-02",
-     "mcap": 394581114880,
+     "end": "2026-09-30",
+     "mcap": 1224985149440,
      "backlog": false,
      "tag": "",
      "images": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-zh-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-zh-5.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-en-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-en-5.jpg"
       ]
      },
      "images_x": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-zh-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-zh-5.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-en-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-en-5.jpg"
       ]
      },
      "images_fb": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-zh-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-zh-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-zh-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-zh-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-zh-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-zh-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-zh-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-zh-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-zh-4-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-zh-5-fb.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-en-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-en-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-en-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-en-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-KO-en-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-en-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-en-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-en-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-en-4-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LLY-en-5-fb.jpg"
       ]
      },
      "posts": {
       "zh": {
-       "x": "$KO 財報（FY2026 Q3）\n\n・收入 US$134 億，按年 +7.4%，好過市場預期 3.5%\n・經調整 EPS $0.91，預期 $0.88 ✅\n\nX 大神怎麼看（近 28 天）：3 個看多、0 個看空\n\n只是整理公開財報數字\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #KO",
-       "threads": "$KO 財報（FY2026 Q3）\n\n・收入 US$134 億，按年 +7.4%，好過市場預期 3.5%\n・經調整 EPS $0.91，預期 $0.88 ✅\n・毛利率 63.2%｜淨利率 30.0%\n・最大收入線：Concentrate operations 佔 61%（按年 +9.3%）\n・自由現金流（過去 4 季）US$143 億\n\nX 大神怎麼看（近 28 天）：3 個看多、0 個看空\n看多 @TrendSpider：$KO第三季：經調整每股盈利0.91美元（預期0.88美元），營收134億美元（預期129億美元），並上調2026財年…\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #KO",
-       "instagram": "$KO 財報（FY2026 Q3）｜收入 US$134 億，按年 +7.4%，好過市場預期 3.5%\n\n・收入 US$134 億，按年 +7.4%，好過市場預期 3.5%\n・經調整 EPS $0.91，預期 $0.88 ✅\n・毛利率 63.2%｜淨利率 30.0%\n・最大收入線：Concentrate operations 佔 61%（按年 +9.3%）\n・自由現金流（過去 4 季）US$143 億\n\nX 大神怎麼看（近 28 天）：3 個看多、0 個看空\n看多 @TrendSpider：$KO第三季：經調整每股盈利0.91美元（預期0.88美元），營收134億美元（預期129億美元），並上調2026財年…\n\n你覺得 $KO 這次財報是好是壞？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #KO",
-       "facebook": "$KO 財報（FY2026 Q3）\n\n・收入 US$134 億，按年 +7.4%，好過市場預期 3.5%\n・經調整 EPS $0.91，預期 $0.88 ✅\n・毛利率 63.2%｜淨利率 30.0%\n・最大收入線：Concentrate operations 佔 61%（按年 +9.3%）\n・自由現金流（過去 4 季）US$143 億\n\nX 大神怎麼看（近 28 天）：3 個看多、0 個看空\n看多 @TrendSpider：$KO第三季：經調整每股盈利0.91美元（預期0.88美元），營收134億美元（預期129億美元），並上調2026財年…\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #KO"
+       "x": "$LLY 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$244 億，按年 +38.6%，優於市場預期 7.9%\n\nX 大神怎麼看（近 28 天）：4 個看多、0 個看空\n\n只是整理公開財報數字\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #LLY",
+       "threads": "$LLY 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$244 億，按年 +38.6%，優於市場預期 7.9%\n・經調整 EPS $7.48，預期 $6.35 ✅\n・毛利率 83.9%｜淨利率 26.4%\n\nX 大神怎麼看（近 28 天）：4 個看多、0 個看空\n看多 @APompliano：Anthony Pompliano 詢問 Eli Lilly 是否會在 5 年內成為全球最大公司；@jvisserla…\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #LLY",
+       "instagram": "$LLY 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$244 億，按年 +38.6%，優於市場預期 7.9%\n・經調整 EPS $7.48，預期 $6.35 ✅\n・毛利率 83.9%｜淨利率 26.4%\n\nX 大神怎麼看（近 28 天）：4 個看多、0 個看空\n看多 @APompliano：Anthony Pompliano 詢問 Eli Lilly 是否會在 5 年內成為全球最大公司；@jvisserla…\n\n你覺得 $LLY 這次財報是好是壞？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #LLY",
+       "facebook": "$LLY 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$244 億，按年 +38.6%，優於市場預期 7.9%\n・經調整 EPS $7.48，預期 $6.35 ✅\n・毛利率 83.9%｜淨利率 26.4%\n\nX 大神怎麼看（近 28 天）：4 個看多、0 個看空\n看多 @APompliano：Anthony Pompliano 詢問 Eli Lilly 是否會在 5 年內成為全球最大公司；@jvisserla…\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #LLY"
       },
       "en": {
-       "x": "$KO earnings (FY2026 Q3)\n\n・Revenue $13.38B, +7.4% YoY, beat estimates by 3.5%\n\nWhat X accounts say (28 days): 3 bullish, 0 bearish\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Earnings #KO",
+       "x": "$LLY just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $24.40B, +38.6% YoY, beat estimates by 7.9%\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #LLY",
        "threads": "",
        "instagram": "",
-       "facebook": "$KO earnings (FY2026 Q3)\n\n・Revenue $13.38B, +7.4% YoY, beat estimates by 3.5%\n・Adjusted EPS $0.91 vs $0.88 expected ✅\n・Gross margin 63.2% | Net margin 30.0%\n・Biggest line: Concentrate operations, 61% of revenue (+9.3% YoY)\n・Free cash flow (last 4 quarters) $14.28B\n\nWhat X accounts say (28 days): 3 bullish, 0 bearish\nBull @TrendSpider: $KO Q3: adj. EPS $0.91 vs $0.88 est, sales $13.4B vs $12.9B est, and raised FY2026 adj. EPS guidance.\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #KO"
+       "facebook": "$LLY just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $24.40B, +38.6% YoY, beat estimates by 7.9%\n・Adjusted EPS $7.48 vs $6.35 expected ✅\n・Gross margin 83.9% | Net margin 26.4%\n\nWhat X accounts say (28 days): 4 bullish, 0 bearish\nBull @APompliano: Anthony Pompliano asks if Eli Lilly will become largest company in 5 years; @jvisserlabs thinks so as helping…\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #LLY"
       }
      },
      "url": {
-      "zh": "https://thecrowdtape.com/zh/earnings/KO/",
-      "en": "https://thecrowdtape.com/en/earnings/KO/"
+      "zh": "https://thecrowdtape.com/zh/earnings/LLY/",
+      "en": "https://thecrowdtape.com/en/earnings/LLY/"
      },
      "ig": true
     },
     {
-     "t": "GEV",
-     "name": "GE Vernova Inc.",
+     "t": "MA",
+     "name": "Mastercard Incorporated",
      "label": "FY2026 Q3",
      "end": "2026-09-30",
-     "mcap": 233848881152,
+     "mcap": 556879511552,
      "backlog": false,
      "tag": "",
      "images": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-zh-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-zh-5.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-en-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-en-5.jpg"
       ]
      },
      "images_x": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-zh-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-zh-5.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-en-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-en-5.jpg"
       ]
      },
      "images_fb": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-zh-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-zh-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-zh-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-zh-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-zh-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-zh-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-zh-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-zh-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-zh-4-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-zh-5-fb.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-en-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-en-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-en-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-en-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-GEV-en-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-en-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-en-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-en-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-en-4-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-MA-en-5-fb.jpg"
       ]
      },
      "posts": {
       "zh": {
-       "x": "$GEV 財報（FY2026 Q3）\n\n・收入 US$126 億，按年 +26.8%，好過市場預期 5.3%\n・經調整 EPS $4.81，預期 $4.01 ✅\n\nX 大神怎麼看（近 28 天）：3 個看多、1 個看空\n\n只是整理公開財報數字\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #GEV",
-       "threads": "$GEV 財報（FY2026 Q3）\n\n・收入 US$126 億，按年 +26.8%，好過市場預期 5.3%\n・經調整 EPS $4.81，預期 $4.01 ✅\n・毛利率 24.6%｜淨利率 10.2%\n・最大收入線：Equipment 佔 66%（按年 +41.8%）\n・自由現金流（過去 4 季）US$171 億\n\nX 大神怎麼看（近 28 天）：3 個看多、1 個看空\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #GEV",
-       "instagram": "$GEV 財報（FY2026 Q3）｜收入 US$126 億，按年 +26.8%，好過市場預期 5.3%\n\n・收入 US$126 億，按年 +26.8%，好過市場預期 5.3%\n・經調整 EPS $4.81，預期 $4.01 ✅\n・毛利率 24.6%｜淨利率 10.2%\n・最大收入線：Equipment 佔 66%（按年 +41.8%）\n・自由現金流（過去 4 季）US$171 億\n\nX 大神怎麼看（近 28 天）：3 個看多、1 個看空\n看多 @Stephanie_Link：$GEV：燃氣合約積壓總量從 116GW 擴至 122GW（季對季），年末積壓現預期達 130GW 以上。電氣化訂單達…\n看空 @carlquintanilla：fallen 30-35% from late-June highs, spre\n\n看完 $GEV 這份成績單，你最在意哪個數字？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #GEV",
-       "facebook": "$GEV 財報（FY2026 Q3）\n\n・收入 US$126 億，按年 +26.8%，好過市場預期 5.3%\n・經調整 EPS $4.81，預期 $4.01 ✅\n・毛利率 24.6%｜淨利率 10.2%\n・最大收入線：Equipment 佔 66%（按年 +41.8%）\n・自由現金流（過去 4 季）US$171 億\n\nX 大神怎麼看（近 28 天）：3 個看多、1 個看空\n看多 @Stephanie_Link：$GEV：燃氣合約積壓總量從 116GW 擴至 122GW（季對季），年末積壓現預期達 130GW 以上。電氣化訂單達…\n看空 @carlquintanilla：fallen 30-35% from late-June highs, spre\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #GEV"
+       "x": "$MA 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$98.1 億，按年 +14.0%，優於市場預期 1.6%\n\nX 大神怎麼看（近 28 天）：2 個看多、0 個看空\n\n只是整理公開財報數字\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #MA",
+       "threads": "$MA 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$98.1 億，按年 +14.0%，優於市場預期 1.6%\n・經調整 EPS $5.31，預期 $5.17 ✅\n・淨利率 47.2%\n・最大收入線：Payment network 佔 59%（按年 +11.0%）\n・自由現金流（過去 4 季）US$161 億\n\nX 大神怎麼看（近 28 天）：2 個看多、0 個看空\n看多 @Mr_Derivatives：@bigideaportugal 對，而且MA和AXP甚至正在反轉\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #MA",
+       "instagram": "$MA 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$98.1 億，按年 +14.0%，優於市場預期 1.6%\n・經調整 EPS $5.31，預期 $5.17 ✅\n・淨利率 47.2%\n・最大收入線：Payment network 佔 59%（按年 +11.0%）\n・自由現金流（過去 4 季）US$161 億\n\nX 大神怎麼看（近 28 天）：2 個看多、0 個看空\n看多 @Mr_Derivatives：@bigideaportugal 對，而且MA和AXP甚至正在反轉\n\n你覺得 $MA 這次財報是好是壞？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #MA",
+       "facebook": "$MA 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$98.1 億，按年 +14.0%，優於市場預期 1.6%\n・經調整 EPS $5.31，預期 $5.17 ✅\n・淨利率 47.2%\n・最大收入線：Payment network 佔 59%（按年 +11.0%）\n・自由現金流（過去 4 季）US$161 億\n\nX 大神怎麼看（近 28 天）：2 個看多、0 個看空\n看多 @Mr_Derivatives：@bigideaportugal 對，而且MA和AXP甚至正在反轉\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #MA"
       },
       "en": {
-       "x": "$GEV earnings (FY2026 Q3)\n\n・Revenue $12.64B, +26.8% YoY, beat estimates by 5.3%\n\nWhat X accounts say (28 days): 3 bullish, 1 bearish\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #GEV",
+       "x": "$MA just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $9.81B, +14.0% YoY, beat estimates by 1.6%\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #MA",
        "threads": "",
        "instagram": "",
-       "facebook": "$GEV earnings (FY2026 Q3)\n\n・Revenue $12.64B, +26.8% YoY, beat estimates by 5.3%\n・Adjusted EPS $4.81 vs $4.01 expected ✅\n・Gross margin 24.6% | Net margin 10.2%\n・Biggest line: Equipment, 66% of revenue (+41.8% YoY)\n・Free cash flow (last 4 quarters) $17.11B\n\nWhat X accounts say (28 days): 3 bullish, 1 bearish\nBull @Stephanie_Link: $GEV: Total gas contract backlog expanded from 116GW to 122GW Q/Q with year-end backlog now seen at 130GW+. E…\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #GEV"
+       "facebook": "$MA just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $9.81B, +14.0% YoY, beat estimates by 1.6%\n・Adjusted EPS $5.31 vs $5.17 expected ✅\n・Net margin 47.2%\n・Biggest line: Payment network, 59% of revenue (+11.0% YoY)\n・Free cash flow (last 4 quarters) $16.08B\n\nWhat X accounts say (28 days): 2 bullish, 0 bearish\nBull @Mr_Derivatives: @bigideaportugal True, and MA and AXP even turning around\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #MA"
       }
      },
      "url": {
-      "zh": "https://thecrowdtape.com/zh/earnings/GEV/",
-      "en": "https://thecrowdtape.com/en/earnings/GEV/"
+      "zh": "https://thecrowdtape.com/zh/earnings/MA/",
+      "en": "https://thecrowdtape.com/en/earnings/MA/"
      },
      "ig": false
     },
     {
-     "t": "TMUS",
-     "name": "T-Mobile US, Inc.",
+     "t": "WFC",
+     "name": "Wells Fargo & Company",
      "label": "FY2026 Q3",
      "end": "2026-09-30",
-     "mcap": 158841208832,
+     "mcap": 254586929152,
      "backlog": false,
      "tag": "",
      "images": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-zh-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-zh-5.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-en-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-en-5.jpg"
       ]
      },
      "images_x": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-zh-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-zh-5.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-en-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-en-5.jpg"
       ]
      },
      "images_fb": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-zh-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-zh-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-zh-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-zh-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-zh-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-zh-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-zh-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-zh-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-zh-4-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-zh-5-fb.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-en-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-en-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-en-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-en-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-TMUS-en-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-en-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-en-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-en-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-en-4-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-WFC-en-5-fb.jpg"
       ]
      },
      "posts": {
       "zh": {
-       "x": "$TMUS 財報（FY2026 Q3）\n\n・收入 US$236 億，按年 +7.4%，好過市場預期 1.9%\n・淨利率 14.6%\n\nX 大神怎麼看（近 28 天）：0 個看多、2 個看空\n\n只是整理公開財報數字\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #TMUS",
-       "threads": "$TMUS 財報（FY2026 Q3）\n\n・收入 US$236 億，按年 +7.4%，好過市場預期 1.9%\n・淨利率 14.6%\n・最大收入線：Postpaid revenues 佔 69%（按年 +9.3%）\n・自由現金流（過去 4 季）US$187 億\n\nX 大神怎麼看（近 28 天）：0 個看多、2 個看空\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #TMUS",
-       "instagram": "$TMUS 財報（FY2026 Q3）｜收入 US$236 億，按年 +7.4%，好過市場預期 1.9%\n\n・收入 US$236 億，按年 +7.4%，好過市場預期 1.9%\n・淨利率 14.6%\n・最大收入線：Postpaid revenues 佔 69%（按年 +9.3%）\n・自由現金流（過去 4 季）US$187 億\n\nX 大神怎麼看（近 28 天）：0 個看多、2 個看空\n\n看完 $TMUS 這份成績單，你最在意哪個數字？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #TMUS",
-       "facebook": "$TMUS 財報（FY2026 Q3）\n\n・收入 US$236 億，按年 +7.4%，好過市場預期 1.9%\n・淨利率 14.6%\n・最大收入線：Postpaid revenues 佔 69%（按年 +9.3%）\n・自由現金流（過去 4 季）US$187 億\n\nX 大神怎麼看（近 28 天）：0 個看多、2 個看空\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #TMUS"
+       "x": "$WFC 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$219 億，按年 +2.0%\n・經調整 EPS $1.87，預期 $1.86 ✅\n\nX 大神怎麼看（近 28 天）：3 個看多、3 個看空\n\n只是整理公開財報數字\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #WFC",
+       "threads": "$WFC 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$219 億，按年 +2.0%\n・經調整 EPS $1.87，預期 $1.86 ✅\n・淨利率 27.2%\n\nX 大神怎麼看（近 28 天）：3 個看多、3 個看空\n看多 @Stephanie_Link：復甦勢頭增強時買入\n看空 @leadlagreport：高收益率下利差承壓，貸款增長快於NII，準備金大幅上升\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #WFC",
+       "instagram": "$WFC 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$219 億，按年 +2.0%\n・經調整 EPS $1.87，預期 $1.86 ✅\n・淨利率 27.2%\n\nX 大神怎麼看（近 28 天）：3 個看多、3 個看空\n看多 @Stephanie_Link：復甦勢頭增強時買入\n看空 @leadlagreport：高收益率下利差承壓，貸款增長快於NII，準備金大幅上升\n\n你覺得 $WFC 這次財報是好是壞？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #WFC",
+       "facebook": "$WFC 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$219 億，按年 +2.0%\n・經調整 EPS $1.87，預期 $1.86 ✅\n・淨利率 27.2%\n\nX 大神怎麼看（近 28 天）：3 個看多、3 個看空\n看多 @Stephanie_Link：復甦勢頭增強時買入\n看空 @leadlagreport：高收益率下利差承壓，貸款增長快於NII，準備金大幅上升\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #WFC"
       },
       "en": {
-       "x": "$TMUS earnings (FY2026 Q3)\n\n・Revenue $23.58B, +7.4% YoY, beat estimates by 1.9%\n\nWhat X accounts say (28 days): 0 bullish, 2 bearish\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #TMUS",
+       "x": "$WFC just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $21.87B, +2.0% YoY\n\nWhat X accounts say (28 days): 3 bullish, 3 bearish\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #WFC",
        "threads": "",
        "instagram": "",
-       "facebook": "$TMUS earnings (FY2026 Q3)\n\n・Revenue $23.58B, +7.4% YoY, beat estimates by 1.9%\n・Net margin 14.6%\n・Biggest line: Postpaid revenues, 69% of revenue (+9.3% YoY)\n・Free cash flow (last 4 quarters) $18.65B\n\nWhat X accounts say (28 days): 0 bullish, 2 bearish\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #TMUS"
+       "facebook": "$WFC just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $21.87B, +2.0% YoY\n・Adjusted EPS $1.87 vs $1.86 expected ✅\n・Net margin 27.2%\n\nWhat X accounts say (28 days): 3 bullish, 3 bearish\nBull @Stephanie_Link: My latest pick on @CNBCPro: $WFC. Wells Fargo stock, why I'm buying as its comeback gains momentum.\nBear @leadlagreport: $WFC shows where a 5.2% 10-year hurts a bank: the spread stops keeping up with the balance sheet. Average loa…\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #WFC"
       }
      },
      "url": {
-      "zh": "https://thecrowdtape.com/zh/earnings/TMUS/",
-      "en": "https://thecrowdtape.com/en/earnings/TMUS/"
+      "zh": "https://thecrowdtape.com/zh/earnings/WFC/",
+      "en": "https://thecrowdtape.com/en/earnings/WFC/"
      },
      "ig": false
     },
     {
-     "t": "NOW",
-     "name": "ServiceNow, Inc.",
+     "t": "LIN",
+     "name": "Linde plc",
      "label": "FY2026 Q3",
      "end": "2026-09-30",
-     "mcap": 155213709312,
+     "mcap": 231942160384,
      "backlog": false,
      "tag": "",
      "images": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-zh-4.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-en-4.jpg"
       ]
      },
      "images_x": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-zh-4.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-en-4.jpg"
       ]
      },
      "images_fb": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-zh-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-zh-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-zh-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-zh-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-zh-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-zh-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-zh-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-zh-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-zh-4-fb.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-en-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-en-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-en-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-en-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-NOW-en-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-en-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-en-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-en-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-LIN-en-4-fb.jpg"
       ]
      },
      "posts": {
       "zh": {
-       "x": "$NOW 財報（FY2026 Q3）\n\n・收入 US$41.1 億，按年 +20.5%，同市場預期差不多\n・毛利率 70.5%｜淨利率 6.7%\n\nX 大神怎麼看（近 28 天）：2 個看多、0 個看空\n\n只是整理公開財報數字\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #NOW",
-       "threads": "$NOW 財報（FY2026 Q3）\n\n・收入 US$41.1 億，按年 +20.5%，同市場預期差不多\n・毛利率 70.5%｜淨利率 6.7%\n・最大收入線：Subscription 佔 97%（按年 +20.9%）\n・自由現金流（過去 4 季）US$47.5 億\n\nX 大神怎麼看（近 28 天）：2 個看多、0 個看空\n看多 @StockSavvyShay：強勢突破150美元\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #NOW",
-       "instagram": "$NOW 財報（FY2026 Q3）｜收入 US$41.1 億，按年 +20.5%，同市場預期差不多\n\n・收入 US$41.1 億，按年 +20.5%，同市場預期差不多\n・毛利率 70.5%｜淨利率 6.7%\n・最大收入線：Subscription 佔 97%（按年 +20.9%）\n・自由現金流（過去 4 季）US$47.5 億\n\nX 大神怎麼看（近 28 天）：2 個看多、0 個看空\n看多 @StockSavvyShay：強勢突破150美元\n\n你覺得 $NOW 這次財報是好是壞？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #NOW",
-       "facebook": "$NOW 財報（FY2026 Q3）\n\n・收入 US$41.1 億，按年 +20.5%，同市場預期差不多\n・毛利率 70.5%｜淨利率 6.7%\n・最大收入線：Subscription 佔 97%（按年 +20.9%）\n・自由現金流（過去 4 季）US$47.5 億\n\nX 大神怎麼看（近 28 天）：2 個看多、0 個看空\n看多 @StockSavvyShay：強勢突破150美元\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #NOW"
+       "x": "$LIN 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$94.0 億，按年 +9.2%，優於市場預期 2.6%\n・經調整 EPS $4.59，預期 $4.52 ✅\n・淨利率 18.0%\n\n只是整理公開財報數字\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #LIN",
+       "threads": "$LIN 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$94.0 億，按年 +9.2%，優於市場預期 2.6%\n・經調整 EPS $4.59，預期 $4.52 ✅\n・淨利率 18.0%\n・最大收入線：Americas 佔 38%（按年 +10.7%）\n・自由現金流（過去 4 季）US$50.8 億\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #LIN",
+       "instagram": "$LIN 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$94.0 億，按年 +9.2%，優於市場預期 2.6%\n・經調整 EPS $4.59，預期 $4.52 ✅\n・淨利率 18.0%\n・最大收入線：Americas 佔 38%（按年 +10.7%）\n・自由現金流（過去 4 季）US$50.8 億\n\n看完 $LIN 這份成績單，你最在意哪個數字？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #LIN",
+       "facebook": "$LIN 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$94.0 億，按年 +9.2%，優於市場預期 2.6%\n・經調整 EPS $4.59，預期 $4.52 ✅\n・淨利率 18.0%\n・最大收入線：Americas 佔 38%（按年 +10.7%）\n・自由現金流（過去 4 季）US$50.8 億\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #LIN"
       },
       "en": {
-       "x": "$NOW earnings (FY2026 Q3)\n\n・Revenue $4.11B, +20.5% YoY, in line with estimates\n\nWhat X accounts say (28 days): 2 bullish, 0 bearish\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Earnings #NOW",
+       "x": "$LIN just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $9.40B, +9.2% YoY, beat estimates by 2.6%\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #LIN",
        "threads": "",
        "instagram": "",
-       "facebook": "$NOW earnings (FY2026 Q3)\n\n・Revenue $4.11B, +20.5% YoY, in line with estimates\n・Gross margin 70.5% | Net margin 6.7%\n・Biggest line: Subscription, 97% of revenue (+20.9% YoY)\n・Free cash flow (last 4 quarters) $4.75B\n\nWhat X accounts say (28 days): 2 bullish, 0 bearish\nBull @StockSavvyShay: Says $NOW is ripping past $150 right now. A chart is attached.\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #NOW"
+       "facebook": "$LIN just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $9.40B, +9.2% YoY, beat estimates by 2.6%\n・Adjusted EPS $4.59 vs $4.52 expected ✅\n・Net margin 18.0%\n・Biggest line: Americas, 38% of revenue (+10.7% YoY)\n・Free cash flow (last 4 quarters) $5.08B\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #LIN"
       }
      },
      "url": {
-      "zh": "https://thecrowdtape.com/zh/earnings/NOW/",
-      "en": "https://thecrowdtape.com/en/earnings/NOW/"
+      "zh": "https://thecrowdtape.com/zh/earnings/LIN/",
+      "en": "https://thecrowdtape.com/en/earnings/LIN/"
      },
      "ig": false
     },
     {
-     "t": "PG",
-     "name": "The Procter & Gamble Company",
-     "label": "FY2027 Q1",
-     "end": "2026-09-30",
-     "mcap": 366812332032,
-     "backlog": true,
-     "tag": "補發",
-     "images": {
-      "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-zh-5.jpg"
-      ],
-      "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-en-5.jpg"
-      ]
-     },
-     "images_x": {
-      "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-zh-5.jpg"
-      ],
-      "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-en-5.jpg"
-      ]
-     },
-     "images_fb": {
-      "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-zh-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-zh-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-zh-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-zh-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-zh-5-fb.jpg"
-      ],
-      "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-en-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-en-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-en-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-en-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PG-en-5-fb.jpg"
-      ]
-     },
-     "posts": {
-      "zh": {
-       "x": "$PG 財報（FY2027 Q1）\n\n・收入 US$233 億，按年 +4.0%\n・經調整 EPS $2.00，預期 $1.89 ✅\n\nX 大神怎麼看（近 28 天）：1 個看多、0 個看空\n\n只是整理公開財報數字\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #PG",
-       "threads": "$PG 財報（FY2027 Q1）\n\n・收入 US$233 億，按年 +4.0%\n・經調整 EPS $2.00，預期 $1.89 ✅\n・毛利率 49.8%｜淨利率 20.3%\n・自由現金流（過去 4 季）US$153 億\n\nX 大神怎麼看（近 28 天）：1 個看多、0 個看空\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #PG",
-       "instagram": "$PG 財報（FY2027 Q1）｜收入 US$233 億，按年 +4.0%\n\n・收入 US$233 億，按年 +4.0%\n・經調整 EPS $2.00，預期 $1.89 ✅\n・毛利率 49.8%｜淨利率 20.3%\n・自由現金流（過去 4 季）US$153 億\n\nX 大神怎麼看（近 28 天）：1 個看多、0 個看空\n\n看完 $PG 這份成績單，你最在意哪個數字？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #PG",
-       "facebook": "$PG 財報（FY2027 Q1）\n\n・收入 US$233 億，按年 +4.0%\n・經調整 EPS $2.00，預期 $1.89 ✅\n・毛利率 49.8%｜淨利率 20.3%\n・自由現金流（過去 4 季）US$153 億\n\nX 大神怎麼看（近 28 天）：1 個看多、0 個看空\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #PG"
-      },
-      "en": {
-       "x": "$PG earnings (FY2027 Q1)\n\n・Revenue $23.28B, +4.0% YoY\n\nWhat X accounts say (28 days): 1 bullish, 0 bearish\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #PG",
-       "threads": "",
-       "instagram": "",
-       "facebook": "$PG earnings (FY2027 Q1)\n\n・Revenue $23.28B, +4.0% YoY\n・Adjusted EPS $2.00 vs $1.89 expected ✅\n・Gross margin 49.8% | Net margin 20.3%\n・Free cash flow (last 4 quarters) $15.34B\n\nWhat X accounts say (28 days): 1 bullish, 0 bearish\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #PG"
-      }
-     },
-     "url": {
-      "zh": "https://thecrowdtape.com/zh/earnings/PG/",
-      "en": "https://thecrowdtape.com/en/earnings/PG/"
-     },
-     "ig": false
-    },
-    {
-     "t": "LRCX",
-     "name": "Lam Research Corporation",
-     "label": "FY2027 Q1",
-     "end": "2026-09-27",
-     "mcap": 317636542464,
-     "backlog": true,
-     "tag": "補發",
-     "images": {
-      "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-zh-5.jpg"
-      ],
-      "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-en-5.jpg"
-      ]
-     },
-     "images_x": {
-      "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-zh-5.jpg"
-      ],
-      "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-en-5.jpg"
-      ]
-     },
-     "images_fb": {
-      "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-zh-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-zh-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-zh-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-zh-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-zh-5-fb.jpg"
-      ],
-      "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-en-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-en-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-en-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-en-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-LRCX-en-5-fb.jpg"
-      ]
-     },
-     "posts": {
-      "zh": {
-       "x": "$LRCX 財報（FY2027 Q1）\n\n・收入 US$82.2 億，按年 +54.4%\n・經調整 EPS $2.20，預期 $2.18 ✅\n\nX 大神怎麼看（近 28 天）：3 個看多、2 個看空\n\n只是整理公開財報數字\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #LRCX",
-       "threads": "$LRCX 財報（FY2027 Q1）\n\n・收入 US$82.2 億，按年 +54.4%\n・經調整 EPS $2.20，預期 $2.18 ✅\n・毛利率 52.3%｜淨利率 33.5%\n・最大收入線：Systems revenue 佔 70%（按年 +61.6%）\n・自由現金流（過去 4 季）US$65.4 億\n\nX 大神怎麼看（近 28 天）：3 個看多、2 個看空\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #LRCX",
-       "instagram": "$LRCX 財報（FY2027 Q1）｜收入 US$82.2 億，按年 +54.4%\n\n・收入 US$82.2 億，按年 +54.4%\n・經調整 EPS $2.20，預期 $2.18 ✅\n・毛利率 52.3%｜淨利率 33.5%\n・最大收入線：Systems revenue 佔 70%（按年 +61.6%）\n・自由現金流（過去 4 季）US$65.4 億\n\nX 大神怎麼看（近 28 天）：3 個看多、2 個看空\n看多 @Beth_Kindig：引用Lam Research關於AI代幣需求：過去18個月平均每週代幣使用量約上升250倍。提及$LRCX $NVDA…\n看空 @carlquintanilla：fallen 30-35% from late-June highs, spre\n\n你覺得 $LRCX 這次財報是好是壞？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #LRCX #NVDA",
-       "facebook": "$LRCX 財報（FY2027 Q1）\n\n・收入 US$82.2 億，按年 +54.4%\n・經調整 EPS $2.20，預期 $2.18 ✅\n・毛利率 52.3%｜淨利率 33.5%\n・最大收入線：Systems revenue 佔 70%（按年 +61.6%）\n・自由現金流（過去 4 季）US$65.4 億\n\nX 大神怎麼看（近 28 天）：3 個看多、2 個看空\n看多 @Beth_Kindig：引用Lam Research關於AI代幣需求：過去18個月平均每週代幣使用量約上升250倍。提及$LRCX $NVDA…\n看空 @carlquintanilla：fallen 30-35% from late-June highs, spre\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #LRCX"
-      },
-      "en": {
-       "x": "$LRCX earnings (FY2027 Q1)\n\n・Revenue $8.22B, +54.4% YoY\n\nWhat X accounts say (28 days): 3 bullish, 2 bearish\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #LRCX",
-       "threads": "",
-       "instagram": "",
-       "facebook": "$LRCX earnings (FY2027 Q1)\n\n・Revenue $8.22B, +54.4% YoY\n・Adjusted EPS $2.20 vs $2.18 expected ✅\n・Gross margin 52.3% | Net margin 33.5%\n・Biggest line: Systems revenue, 70% of revenue (+61.6% YoY)\n・Free cash flow (last 4 quarters) $6.54B\n\nWhat X accounts say (28 days): 3 bullish, 2 bearish\nBull @Beth_Kindig: Cites Lam Research on AI token demand: average weekly token usage up roughly 250-fold in the past 18 months.…\nBear @TrendSpider: $LRCX is dumping on earnings despite Q1 adjusted EPS $2.20 vs $2.18 est and sales $8.219B vs $8.153B est.\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #LRCX"
-      }
-     },
-     "url": {
-      "zh": "https://thecrowdtape.com/zh/earnings/LRCX/",
-      "en": "https://thecrowdtape.com/en/earnings/LRCX/"
-     },
-     "ig": false
-    },
-    {
-     "t": "PM",
-     "name": "Philip Morris International Inc.",
+     "t": "GE",
+     "name": "GE Aerospace",
      "label": "FY2026 Q3",
      "end": "2026-09-30",
-     "mcap": 315837415424,
+     "mcap": 324808933376,
      "backlog": true,
      "tag": "補發",
      "images": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-zh-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-zh-5.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-en-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-en-5.jpg"
       ]
      },
      "images_x": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-zh-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-zh-5.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-en-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-en-5.jpg"
       ]
      },
      "images_fb": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-zh-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-zh-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-zh-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-zh-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-zh-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-zh-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-zh-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-zh-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-zh-4-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-zh-5-fb.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-en-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-en-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-en-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-en-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-10-29-1000-PM-en-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-en-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-en-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-en-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-en-4-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-GE-en-5-fb.jpg"
       ]
      },
      "posts": {
       "zh": {
-       "x": "$PM 財報（FY2026 Q3）\n\n・收入 US$114 億，按年 +5.5%\n・經調整 EPS $2.36，預期 $2.32 ✅\n\nX 大神怎麼看（近 28 天）：1 個看多、0 個看空\n\n只是整理公開財報數字\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #PM",
-       "threads": "$PM 財報（FY2026 Q3）\n\n・收入 US$114 億，按年 +5.5%\n・經調整 EPS $2.36，預期 $2.32 ✅\n・毛利率 68.7%｜淨利率 29.0%\n・最大收入線：International Combustibles 佔 59%（按年 -61.6%）\n・自由現金流（過去 4 季）US$136 億\n\nX 大神怎麼看（近 28 天）：1 個看多、0 個看空\n看多 @KeithMcCullough：在$KR、$PM及$ISRG等Signal Strength股份逢低買入做得好。\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #PM",
-       "instagram": "$PM 財報（FY2026 Q3）｜收入 US$114 億，按年 +5.5%\n\n・收入 US$114 億，按年 +5.5%\n・經調整 EPS $2.36，預期 $2.32 ✅\n・毛利率 68.7%｜淨利率 29.0%\n・最大收入線：International Combustibles 佔 59%（按年 -61.6%）\n・自由現金流（過去 4 季）US$136 億\n\nX 大神怎麼看（近 28 天）：1 個看多、0 個看空\n看多 @KeithMcCullough：在$KR、$PM及$ISRG等Signal Strength股份逢低買入做得好。\n\n你覺得 $PM 這次財報是好是壞？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #PM #KR",
-       "facebook": "$PM 財報（FY2026 Q3）\n\n・收入 US$114 億，按年 +5.5%\n・經調整 EPS $2.36，預期 $2.32 ✅\n・毛利率 68.7%｜淨利率 29.0%\n・最大收入線：International Combustibles 佔 59%（按年 -61.6%）\n・自由現金流（過去 4 季）US$136 億\n\nX 大神怎麼看（近 28 天）：1 個看多、0 個看空\n看多 @KeithMcCullough：在$KR、$PM及$ISRG等Signal Strength股份逢低買入做得好。\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #PM"
+       "x": "$GE 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$141 億，按年 +15.9%\n・經調整 EPS $2.25，預期 $2.02 ✅\n\nX 大神怎麼看（近 28 天）：3 個看多、1 個看空\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #GE",
+       "threads": "$GE 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$141 億，按年 +15.9%\n・經調整 EPS $2.25，預期 $2.02 ✅\n・淨利率 16.2%\n・最大收入線：Services 佔 66%（按年 +15.0%）\n・自由現金流（過去 4 季）US$80.2 億\n\nX 大神怎麼看（近 28 天）：3 個看多、1 個看空\n看多 @TheTranscript_：GE Aerospace CEO：現在預期收入增長19%-20%，此前為高 teens。預期CES增長低20s，高於先…\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #GE",
+       "instagram": "$GE 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$141 億，按年 +15.9%\n・經調整 EPS $2.25，預期 $2.02 ✅\n・淨利率 16.2%\n・最大收入線：Services 佔 66%（按年 +15.0%）\n・自由現金流（過去 4 季）US$80.2 億\n\nX 大神怎麼看（近 28 天）：3 個看多、1 個看空\n看多 @TheTranscript_：GE Aerospace CEO：現在預期收入增長19%-20%，此前為高 teens。預期CES增長低20s，高於先…\n\n你覺得 $GE 這次財報是好是壞？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #GE",
+       "facebook": "$GE 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$141 億，按年 +15.9%\n・經調整 EPS $2.25，預期 $2.02 ✅\n・淨利率 16.2%\n・最大收入線：Services 佔 66%（按年 +15.0%）\n・自由現金流（過去 4 季）US$80.2 億\n\nX 大神怎麼看（近 28 天）：3 個看多、1 個看空\n看多 @TheTranscript_：GE Aerospace CEO：現在預期收入增長19%-20%，此前為高 teens。預期CES增長低20s，高於先…\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #GE"
       },
       "en": {
-       "x": "$PM earnings (FY2026 Q3)\n\n・Revenue $11.44B, +5.5% YoY\n\nWhat X accounts say (28 days): 1 bullish, 0 bearish\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #PM",
+       "x": "$GE just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $14.12B, +15.9% YoY\n\nWhat X accounts say (28 days): 3 bullish, 1 bearish\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Earnings #GE",
        "threads": "",
        "instagram": "",
-       "facebook": "$PM earnings (FY2026 Q3)\n\n・Revenue $11.44B, +5.5% YoY\n・Adjusted EPS $2.36 vs $2.32 expected ✅\n・Gross margin 68.7% | Net margin 29.0%\n・Biggest line: International Combustibles, 59% of revenue (-61.6% YoY)\n・Free cash flow (last 4 quarters) $13.60B\n\nWhat X accounts say (28 days): 1 bullish, 0 bearish\nBull @KeithMcCullough: Nice job buying the dips in Signal Strength stocks like $KR, $PM and $ISRG.\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #PM"
+       "facebook": "$GE just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $14.12B, +15.9% YoY\n・Adjusted EPS $2.25 vs $2.02 expected ✅\n・Net margin 16.2%\n・Biggest line: Services, 66% of revenue (+15.0% YoY)\n・Free cash flow (last 4 quarters) $8.02B\n\nWhat X accounts say (28 days): 3 bullish, 1 bearish\nBull @TheTranscript_: GE Aerospace CEO: Now expecting revenue growth of 19%-20% from high teens previously. Expect CES growth of lo…\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #GE"
       }
      },
      "url": {
-      "zh": "https://thecrowdtape.com/zh/earnings/PM/",
-      "en": "https://thecrowdtape.com/en/earnings/PM/"
+      "zh": "https://thecrowdtape.com/zh/earnings/GE/",
+      "en": "https://thecrowdtape.com/en/earnings/GE/"
+     },
+     "ig": false
+    },
+    {
+     "t": "TXN",
+     "name": "Texas Instruments Incorporated",
+     "label": "FY2026 Q3",
+     "end": "2026-09-30",
+     "mcap": 286104682496,
+     "backlog": true,
+     "tag": "補發",
+     "images": {
+      "zh": [
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-zh-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-zh-5.jpg"
+      ],
+      "en": [
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-en-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-en-5.jpg"
+      ]
+     },
+     "images_x": {
+      "zh": [
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-zh-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-zh-5.jpg"
+      ],
+      "en": [
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-en-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-en-5.jpg"
+      ]
+     },
+     "images_fb": {
+      "zh": [
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-zh-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-zh-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-zh-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-zh-4-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-zh-5-fb.jpg"
+      ],
+      "en": [
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-en-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-en-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-en-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-en-4-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-TXN-en-5-fb.jpg"
+      ]
+     },
+     "posts": {
+      "zh": {
+       "x": "$TXN 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$60.5 億，按年 +27.7%\n・經調整 EPS $2.62，預期 $2.43 ✅\n\nX 大神怎麼看（近 28 天）：1 個看多、0 個看空\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #TXN",
+       "threads": "$TXN 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$60.5 億，按年 +27.7%\n・經調整 EPS $2.62，預期 $2.43 ✅\n・毛利率 64.2%｜淨利率 40.0%\n・最大收入線：Analog 佔 81%（按年 +31.7%）\n・自由現金流（過去 4 季）US$73.2 億\n\nX 大神怎麼看（近 28 天）：1 個看多、0 個看空\n看多 @alphatrends：本週可能建倉，止損設上週低位下方\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #TXN",
+       "instagram": "$TXN 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$60.5 億，按年 +27.7%\n・經調整 EPS $2.62，預期 $2.43 ✅\n・毛利率 64.2%｜淨利率 40.0%\n・最大收入線：Analog 佔 81%（按年 +31.7%）\n・自由現金流（過去 4 季）US$73.2 億\n\nX 大神怎麼看（近 28 天）：1 個看多、0 個看空\n看多 @alphatrends：本週可能建倉，止損設上週低位下方\n\n你覺得 $TXN 這次財報是好是壞？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #TXN",
+       "facebook": "$TXN 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$60.5 億，按年 +27.7%\n・經調整 EPS $2.62，預期 $2.43 ✅\n・毛利率 64.2%｜淨利率 40.0%\n・最大收入線：Analog 佔 81%（按年 +31.7%）\n・自由現金流（過去 4 季）US$73.2 億\n\nX 大神怎麼看（近 28 天）：1 個看多、0 個看空\n看多 @alphatrends：本週可能建倉，止損設上週低位下方\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #TXN"
+      },
+      "en": {
+       "x": "$TXN just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $6.05B, +27.7% YoY\n\nWhat X accounts say (28 days): 1 bullish, 0 bearish\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Earnings #TXN",
+       "threads": "",
+       "instagram": "",
+       "facebook": "$TXN just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $6.05B, +27.7% YoY\n・Adjusted EPS $2.62 vs $2.43 expected ✅\n・Gross margin 64.2% | Net margin 40.0%\n・Biggest line: Analog, 81% of revenue (+31.7% YoY)\n・Free cash flow (last 4 quarters) $7.32B\n\nWhat X accounts say (28 days): 1 bullish, 0 bearish\nBull @alphatrends: Says he mentioned $TXN on @traderTVLIVE last Tuesday and in his weekend video; he has no position yet but tha…\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #TXN"
+      }
+     },
+     "url": {
+      "zh": "https://thecrowdtape.com/zh/earnings/TXN/",
+      "en": "https://thecrowdtape.com/en/earnings/TXN/"
+     },
+     "ig": false
+    },
+    {
+     "t": "RTX",
+     "name": "RTX Corporation",
+     "label": "FY2026 Q3",
+     "end": "2026-09-30",
+     "mcap": 269078429696,
+     "backlog": true,
+     "tag": "補發",
+     "images": {
+      "zh": [
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-zh-4.jpg"
+      ],
+      "en": [
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-en-4.jpg"
+      ]
+     },
+     "images_x": {
+      "zh": [
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-zh-4.jpg"
+      ],
+      "en": [
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-en-4.jpg"
+      ]
+     },
+     "images_fb": {
+      "zh": [
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-zh-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-zh-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-zh-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-zh-4-fb.jpg"
+      ],
+      "en": [
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-en-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-en-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-en-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-10-30-1000-RTX-en-4-fb.jpg"
+      ]
+     },
+     "posts": {
+      "zh": {
+       "x": "$RTX 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$250 億，按年 +11.1%\n・經調整 EPS $2.26，預期 $1.78 ✅\n・淨利率 10.3%\n\n只是整理公開財報數字\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #RTX",
+       "threads": "$RTX 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$250 億，按年 +11.1%\n・經調整 EPS $2.26，預期 $1.78 ✅\n・淨利率 10.3%\n・最大收入線：Pratt & Whitney 佔 37%（按年 +9.4%）\n・自由現金流（過去 4 季）US$95.0 億\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #RTX",
+       "instagram": "$RTX 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$250 億，按年 +11.1%\n・經調整 EPS $2.26，預期 $1.78 ✅\n・淨利率 10.3%\n・最大收入線：Pratt & Whitney 佔 37%（按年 +9.4%）\n・自由現金流（過去 4 季）US$95.0 億\n\n看完 $RTX 這份成績單，你最在意哪個數字？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #RTX",
+       "facebook": "$RTX 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$250 億，按年 +11.1%\n・經調整 EPS $2.26，預期 $1.78 ✅\n・淨利率 10.3%\n・最大收入線：Pratt & Whitney 佔 37%（按年 +9.4%）\n・自由現金流（過去 4 季）US$95.0 億\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #RTX"
+      },
+      "en": {
+       "x": "$RTX just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $24.96B, +11.1% YoY\n\nWhat X accounts say\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #RTX",
+       "threads": "",
+       "instagram": "",
+       "facebook": "$RTX just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $24.96B, +11.1% YoY\n・Adjusted EPS $2.26 vs $1.78 expected ✅\n・Net margin 10.3%\n・Biggest line: Pratt & Whitney, 37% of revenue (+9.4% YoY)\n・Free cash flow (last 4 quarters) $9.50B\n\nWhat X accounts say\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #RTX"
+      }
+     },
+     "url": {
+      "zh": "https://thecrowdtape.com/zh/earnings/RTX/",
+      "en": "https://thecrowdtape.com/en/earnings/RTX/"
      },
      "ig": false
     }
@@ -1230,25 +1245,25 @@
   }
  },
  "video": {
-  "day": "2026-10-29",
-  "t": "MSFT",
+  "day": "2026-10-30",
+  "t": "GOOGL",
   "post_at": "11:00",
   "video": {
-   "zh": "https://thecrowdtape.com/og/e/2026-10-29-video-zh.mp4",
-   "en": "https://thecrowdtape.com/og/e/2026-10-29-video-en.mp4"
+   "zh": "https://thecrowdtape.com/og/e/2026-10-30-video-zh.mp4",
+   "en": "https://thecrowdtape.com/og/e/2026-10-30-video-en.mp4"
   },
   "video_cover": {
-   "zh": "https://thecrowdtape.com/og/e/2026-10-29-video-zh-cover.jpg",
-   "en": "https://thecrowdtape.com/og/e/2026-10-29-video-en-cover.jpg"
+   "zh": "https://thecrowdtape.com/og/e/2026-10-30-video-zh-cover.jpg",
+   "en": "https://thecrowdtape.com/og/e/2026-10-30-video-en-cover.jpg"
   },
   "posts": {
    "zh": {
-    "instagram": "$MSFT 財報（FY2027 Q1）｜收入 US$923 億，按年 +18.8%，好過市場預期 1.7%\n\n・收入 US$923 億，按年 +18.8%，好過市場預期 1.7%\n・經調整 EPS $4.89，預期 $4.72 ✅\n・毛利率 67.8%｜淨利率 39.7%\n・最大收入線：Agents And Infra 佔 83%（按年 +24.5%）\n・自由現金流（過去 4 季）US$600 億\n\nX 大神怎麼看（近 28 天）：11 個看多、0 個看空\n看多 @Schuldensuehner：$MSFT創一年來首個紀錄高位543.45美元，較6月低位上漲54%，對AI支出的憂慮讓位於4年來最快的雲端增長。但微…\n\n看完 $MSFT 這份成績單，你最在意哪個數字？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #MSFT",
-    "facebook": "$MSFT 財報（FY2027 Q1）\n\n・收入 US$923 億，按年 +18.8%，好過市場預期 1.7%\n・經調整 EPS $4.89，預期 $4.72 ✅\n・毛利率 67.8%｜淨利率 39.7%\n・最大收入線：Agents And Infra 佔 83%（按年 +24.5%）\n・自由現金流（過去 4 季）US$600 億\n\nX 大神怎麼看（近 28 天）：11 個看多、0 個看空\n看多 @Schuldensuehner：$MSFT創一年來首個紀錄高位543.45美元，較6月低位上漲54%，對AI支出的憂慮讓位於4年來最快的雲端增長。但微…\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #MSFT"
+    "instagram": "$GOOGL 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$1,276 億，按年 +24.7%，與市場預期差不多\n・經調整 EPS $2.12，預期 $3.01 ❌\n・毛利率 59.7%｜淨利率 20.7%\n・最大收入線：Google Services 佔 76%（按年 +10.6%）\n・自由現金流（過去 4 季）US$197 億\n\nX 大神怎麼看（近 28 天）：4 個看多、9 個看空\n看多 @Mr_Derivatives：$GOOGL儘管下跌10%，所有主要分析師仍有巨大目標價，範圍從375美元至425美元，仍較現價高30-47%。換句話…\n看空 @amitisinvesting：質疑如果 $GOOGL 對華爾街不值 3.5 萬億美元，那 Anthropic 值 2 萬億是否可以。今天抹去了 50…\n\n看完 $GOOGL 這份成績單，你最在意哪個數字？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #GOOGL",
+    "facebook": "$GOOGL 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$1,276 億，按年 +24.7%，與市場預期差不多\n・經調整 EPS $2.12，預期 $3.01 ❌\n・毛利率 59.7%｜淨利率 20.7%\n・最大收入線：Google Services 佔 76%（按年 +10.6%）\n・自由現金流（過去 4 季）US$197 億\n\nX 大神怎麼看（近 28 天）：4 個看多、9 個看空\n看多 @Mr_Derivatives：$GOOGL儘管下跌10%，所有主要分析師仍有巨大目標價，範圍從375美元至425美元，仍較現價高30-47%。換句話…\n看空 @amitisinvesting：質疑如果 $GOOGL 對華爾街不值 3.5 萬億美元，那 Anthropic 值 2 萬億是否可以。今天抹去了 50…\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #GOOGL"
    },
    "en": {
     "instagram": "",
-    "facebook": "$MSFT earnings (FY2027 Q1)\n\n・Revenue $92.28B, +18.8% YoY, beat estimates by 1.7%\n・Adjusted EPS $4.89 vs $4.72 expected ✅\n・Gross margin 67.8% | Net margin 39.7%\n・Biggest line: Agents And Infra, 83% of revenue (+24.5% YoY)\n・Free cash flow (last 4 quarters) $59.96B\n\nWhat X accounts say (28 days): 11 bullish, 0 bearish\nBull @Schuldensuehner: $MSFT hit its first record in a year at $543.45, up 54% from June's low, as AI spending fears gave way to the…\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #MSFT"
+    "facebook": "$GOOGL just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $127.6B, +24.7% YoY, in line with estimates\n・Adjusted EPS $2.12 vs $3.01 expected ❌\n・Gross margin 59.7% | Net margin 20.7%\n・Biggest line: Google Services, 76% of revenue (+10.6% YoY)\n・Free cash flow (last 4 quarters) $19.75B\n\nWhat X accounts say (28 days): 4 bullish, 9 bearish\nBull @Mr_Derivatives: $GOOGL all major analysts still have huge price targets despite the -10% drop, ranging from $375 to $425, sti…\nBear @amitisinvesting: Questioned if $GOOGL isn’t worth $3.5T to Wall Street, is it okay for Anthropic to be worth $2T. $500b wiped…\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #GOOGL"
    }
   }
  },
