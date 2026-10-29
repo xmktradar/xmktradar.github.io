@@ -171,12 +171,14 @@ def test_pages_and_posts():
             assert ss[4]['accs'][0]['why'] == ('a4 理由' if lang == 'zh' else 'Reason a4')
             caps = eo.captions(co, lang)
             assert '@a4' in caps['facebook'] and '@a2' in caps['facebook'] and '@a2' in caps['instagram']
-            for k in ('x', 'threads', 'facebook'):
-                assert f'{lang}/stock/ABCD/' in caps[k], (k, caps[k])
+            for k in ('x', 'threads', 'facebook', 'instagram'):
+                assert 'thecrowdtape.com' not in caps[k] and 'http' not in caps[k], (k, caps[k])
+                assert '#donate' not in caps[k] and '完整 5 章' not in caps[k] and 'Full brief' not in caps[k], (k, caps[k])
+            assert ('個看多' if lang == 'zh' else 'bullish') in caps['facebook'] and '👉 \n' not in caps['facebook']
             assert xlen(caps['x']) <= 270 and len(caps['threads']) <= 500
             assert ('5 張' if lang == 'zh' else 'all 5') in caps['facebook']
         eo._VIEWS['by'] = {}
-        assert len(eo.slides(co, 'zh')) == 4 and '/zh/stock/ABCD/' in eo.captions(co, 'zh')['facebook']
+        assert len(eo.slides(co, 'zh')) == 4 and 'thecrowdtape.com' not in eo.captions(co, 'zh')['facebook']
     finally:
         eo.stock_url = real
         eo._VIEWS.clear()

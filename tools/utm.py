@@ -148,26 +148,82 @@ def campaign_for(url, text, start, field, slot_campaign):
     return slot_campaign
 
 
-def retag_text(text, source, campaign, field=None):
-    """Rewrite page URLs in one post string. Returns (text, number changed)."""
-    if not isinstance(text, str) or 'https://thecrowdtape.com' not in text:
+SITE_ANY_RE = re.compile(r'(?:https?://)?(?:www\.)?thecrowdtape\.com[^\s)\]"，。]*')
+# Caption lines that only exist to send people to the site (donate, full brief, newsletter, ...).
+CTA_MARKERS = ('支持我', '支持我們', 'Support the site', '完整 5 章', '完整五章', '完整簡報', 'Full brief', 'Full five-chapter',
+               '電子報', 'newsletter', 'Newsletter', '最新數字', 'Live numbers', '全部大神觀點', 'All views', '#donate')
+
+
+def _is_asset(url):
+    return url.split('?')[0].lower().endswith(ASSET_EXT)
+
+
+def strip_site_text(text):
+    """Drop thecrowdtape.com page links from a caption. Returns (text, number removed).
+
+    Lines that are only a call to visit the site (support, full brief, newsletter, live numbers)
+    are removed whole; other lines keep their content (e.g. X 大神點睇 numbers) without the URL.
+    Image/asset URLs stay.
+    """
+    if not isinstance(text, str) or 'thecrowdtape.com' not in text:
         return text, 0
-    changed = 0
+    removed = 0
+    out = []
+    for line in text.split('\n'):
+        hits = [m for m in SITE_ANY_RE.finditer(line) if not _is_asset(m.group(0))]
+        if not hits:
+            out.append(line)
+            continue
+        removed += len(hits)
+        rest = SITE_ANY_RE.sub(lambda m: m.group(0) if _is_asset(m.group(0)) else '', line)
+        if any(k in rest for k in CTA_MARKERS):
+            continue
+        rest = re.sub(r'[\s👉:：,，]+$', '', rest.replace('👉', ' ').rstrip())
+        rest = re.sub(r'  +', ' ', rest)
+        left = rest.strip(' ・-—|｜')
+        if left and (len(left) > 4 or any(ch.isdigit() for ch in left)):  # drop a bare 「See」/「見」 left behind
+            out.append(rest)
+    text = re.sub(r'\n{3,}', '\n\n', '\n'.join(out)).strip('\n')
+    return text, removed
 
-    def repl(m):
-        nonlocal changed
-        camp = campaign_for(m.group(0), text, m.start(), field, campaign) if field == 'facebook_cta' else campaign
-        new = tag_url(m.group(0), source, camp)
-        if new != m.group(0):
-            changed += 1
-        return new
 
-    return URL_RE.sub(repl, text), changed
+_MEDIA_KEYS = ('image', 'images', 'img', 'url', 'urls', 'video', 'cover', 'media', 'link', 'href', 'src', 'thumb')
+
+
+def strip_posts_deep(node, inside=False):
+    """Strip site links from every caption string under any 'posts' key (posts.*.*, any platform). Mutates. Returns n."""
+    n = 0
+    if isinstance(node, dict):
+        for k, v in node.items():
+            here = inside or k == 'posts'
+            if here and isinstance(v, str) and k not in _MEDIA_KEYS:
+                node[k], c = strip_site_text(v)
+                n += c
+            elif isinstance(v, (dict, list)) and not (inside and k in _MEDIA_KEYS):
+                n += strip_posts_deep(v, here)
+    elif isinstance(node, list):
+        for i, v in enumerate(node):
+            if inside and isinstance(v, str):
+                node[i], c = strip_site_text(v)
+                n += c
+            else:
+                n += strip_posts_deep(v, inside)
+    return n
+
+
+def retag_text(text, source, campaign, field=None):
+    """Caption strings no longer carry site links (Tim, 2026-10-29): strip them. Returns (text, n)."""
+    return strip_site_text(text)
 
 
 def tag_text(text, source, campaign):
-    """Replace every thecrowdtape.com page URL in text; other domains stay as they are."""
-    return retag_text(text, source, campaign)[0]
+    """Replace every thecrowdtape.com page URL in text; other domains stay as they are.
+
+    For non-caption text (newsletter, pages). Captions go through strip_site_text instead.
+    """
+    if not isinstance(text, str) or 'https://thecrowdtape.com' not in text:
+        return text
+    return URL_RE.sub(lambda m: tag_url(m.group(0), source, campaign), text)
 
 
 def _fit_lang_posts(posts):
@@ -497,6 +553,7 @@ def normalize_obj(data, tutorial=False):
     from share import sanitize_instagram_tree, strip_dup_handles_tree
     strip_dup_handles_tree(data)
     sanitize_instagram_tree(data)
+    strip_posts_deep(data)  # final pass: no site links in any posts.*.* caption (reddit, first_comment, ...)
     return counts
 
 

@@ -44,7 +44,7 @@ T = {
                fcf=lambda v: f'自由現金流（過去 4 季）{v}', link='完整 5 章簡報 👉 ', bio='完整 5 章簡報：連結在個人簡介',
                give='☕ 鍾意就支持我哋 👉 ', disc='⚠️ 只係整理公開財報數字，唔構成投資建議。',
                tags='#美股 #財報 #美股投資 #港人投資', swipe=lambda n: f'👉 向左滑睇 {n} 張',
-               views=lambda b, r: f'🗣 X 大神點睇（近 28 日）：{b} 個看多、{r} 個看空 👉 ', views_none='🗣 X 大神點睇 👉 ',
+               views=lambda b, r: f'🗣 X 大神點睇（近 28 日）：{b} 個看多、{r} 個看空', views_none='🗣 X 大神點睇',
                why=lambda s, a, r: f"{'🟢 看多' if s == 'bull' else '🔴 看空'} @{a}：{r}"),
     'en': dict(head=lambda t, q: f'📊 ${t} earnings ({q})', rev=lambda r, y: f'Revenue {r}, {y} YoY',
                vs_rev=lambda d, w: f', {w} estimates by {abs(d):.1f}%', better='beat', worse='missed', inline=', in line with estimates',
@@ -54,7 +54,7 @@ T = {
                fcf=lambda v: f'Free cash flow (last 4 quarters) {v}', link='Full 5-chapter brief 👉 ', bio='Full 5-chapter brief: link in bio',
                give='☕ Support the site 👉 ', disc='⚠️ A summary of public results, not investment advice.',
                tags='#StockMarket #Earnings #USStocks #Investing', swipe=lambda n: f'👉 Swipe for all {n}',
-               views=lambda b, r: f'🗣 What X accounts say (28 days): {b} bullish, {r} bearish 👉 ', views_none='🗣 What X accounts say 👉 ',
+               views=lambda b, r: f'🗣 What X accounts say (28 days): {b} bullish, {r} bearish', views_none='🗣 What X accounts say',
                why=lambda s, a, r: f"{'🟢 Bull' if s == 'bull' else '🔴 Bear'} @{a}: {r}"),
 }
 # Picture text (also shown in the earnings video): zh in standard written Chinese, not Cantonese (Tim, 2026-10-28).
@@ -286,35 +286,44 @@ def caption_lines(co, lang):
 
 
 def captions(co, lang):
+    """Social captions. No site links (Tim, 2026-10-29): no full-brief, donate or 👉 URL lines."""
     w, t = T[lang], co['t']
     head, lines = caption_lines(co, lang)
-    url = brief_url(lang, t)
-    give = f"{w['give']}{SITE}{lang}/#donate"
     tg = f"{w['tags']} #{t}" if re.fullmatch(r'[A-Z]{1,6}', t) else w['tags']
     body = '\n'.join(f'・{x}' for x in lines)
     v, su = views(t), stock_url(lang, t)
     n = 5 if v and su else 4
-    say = (w['views'](v['nb'], v['nr']) if v else w['views_none']) + su if su else None
-    why = '\n'.join(view_lines(v, t, lang)) if v and su else ''
-    say_long = f'{say}\n{why}' if why else say
-    fb = '\n\n'.join([head, w['swipe'](n), body] + ([say_long] if say else []) + [f"{w['link']}{url}\n{give}", w['disc'], tg])
-    ig = sanitize_instagram('\n\n'.join([f'{head}｜{lines[0]}' if lang == 'zh' else f'{head}: {lines[0]}', w['swipe'](n), body] + ([say_long.replace(' 👉 ' + su, '')] if v and su else []) + [w['bio'], w['disc'],
+    say = w['views'](v['nb'], v['nr']) if v else None  # a bare 「X 大神點睇」 with no numbers says nothing without the link
+    why = '\n'.join(view_lines(v, t, lang)) if v else ''
+    say_long = f'{say}\n{why}' if why and say else say
+    fb = '\n\n'.join([head, w['swipe'](n), body] + ([say_long] if say else []) + [w['disc'], tg])
+    ig = sanitize_instagram('\n\n'.join([f'{head}｜{lines[0]}' if lang == 'zh' else f'{head}: {lines[0]}', w['swipe'](n), body] + ([say_long] if say else []) + [w['disc'],
                                          ig_tags(lang, [t])]), lang)
-    threads = '\n\n'.join([head, body] + ([say_long] if say else []) + [f"{w['link']}{url}\n{give}", w['disc'], f"{w['tags'].split(' ')[0]} #{t}"])
+    tags_short = f"{w['tags'].split(' ')[0]} #{t}"
+    threads = '\n\n'.join([head, body] + ([say_long] if say else []) + [w['disc'], tags_short])
     if len(threads) > 490 and why:
-        threads = '\n\n'.join([head, body, say, f"{w['link']}{url}\n{give}", w['disc'], f"{w['tags'].split(' ')[0]} #{t}"])
+        threads = '\n\n'.join([head, body, say, w['disc'], tags_short])
     keep = list(lines)
     while len(threads) > 490 and len(keep) > 1:
         keep.pop()
-        threads = '\n\n'.join([head, '\n'.join(f'・{x}' for x in keep)] + ([say] if say else []) + [f"{w['link']}{url}", w['disc'], f"{w['tags'].split(' ')[0]} #{t}"])
+        threads = '\n\n'.join([head, '\n'.join(f'・{x}' for x in keep)] + ([say] if say else []) + [w['disc'], tags_short])
     keep = list(lines)
     while True:
-        x = '\n\n'.join([head, '\n'.join(f'・{y}' for y in keep)] + ([say] if say else []) + [f"{w['link']}{url}", w['disc'].split('，')[0].split(',')[0] if lang == 'zh' else '⚠️ Not investment advice',
+        x = '\n\n'.join([head, '\n'.join(f'・{y}' for y in keep)] + ([say] if say else []) + [w['disc'].split('，')[0].split(',')[0] if lang == 'zh' else '⚠️ Not investment advice',
                          f"#{'財報' if lang == 'zh' else 'Earnings'} #{t}"])
         if xlen(x) <= 270 or len(keep) <= 1:
             break
         keep.pop()
     return {'x': x, 'threads': threads, 'instagram': ig, 'facebook': fb}
+
+
+def _no_site_links(ep):
+    """Final pass before writing: no thecrowdtape.com links in any posts.*.* caption."""
+    try:
+        from utm import strip_posts_deep
+        strip_posts_deep(ep)
+    except Exception as e:
+        print('strip links', e)
 
 
 def load_co(t):
@@ -485,11 +494,13 @@ def main():
                 made = True
     if not made:
         print('earnings posts: nothing new for a slot')
+        _no_site_links(ep)
         write_json(DATA, ep, indent=1)  # queue changes only
         return
     write_json(work('earnings_cards.json'), {'date': today, 'jobs': jobs})
     if vid:
         write_json(work('earnings_video.json'), vid)
+    _no_site_links(ep)
     write_json(work('earnings-posts.json'), ep, indent=1)
     open(work('earnings.html'), 'w', encoding='utf-8').write(social_html(ep))
 

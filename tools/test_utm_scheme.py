@@ -14,6 +14,7 @@ Run from the repo root after python3 tools/utm.py --apply:
 """
 import json
 import os
+import re
 import sys
 
 os.environ.setdefault('UTM_PROMO', '0')  # this file checks the plain scheme
@@ -259,6 +260,8 @@ def check_posts(data, iterator, label):
     seen = set()
     page_urls = 0
     for text, field, source, slot, lang, where in iterator(data):
+        if str(where).endswith('.url'):
+            continue  # a separate link field, not caption text
         if field == 'threads' or (isinstance(lang, str) and where.endswith('.threads')):
             assert len(text) <= 500, (label, where, len(text))
         if source == 'x':
@@ -269,11 +272,10 @@ def check_posts(data, iterator, label):
             if is_asset_path(path):
                 assert 'utm_source=' not in url and 'utm_medium=' not in url, (label, where, url)
                 continue
-            campaign = expected_campaign(field, slot, text, match.start())
-            assert_scheme(url, source, campaign, f'{label}:{where}')
-            seen.add(campaign)
             page_urls += 1
-    assert page_urls, label
+            assert False, ('caption must not carry a site link (Tim 2026-10-29)', label, where, url)
+        assert 'thecrowdtape.com' not in re.sub(r'https://thecrowdtape\.com/og/\S*', '', text), (label, where, text)
+    assert not page_urls, label
     return seen
 
 
@@ -286,24 +288,21 @@ def check_assets_untagged(data, label):
                 assert 'utm_source=' not in url and 'utm_medium=' not in url and 'utm_campaign=' not in url, (label, url)
 
 
+def _normalized(src, name):
+    with tempfile.TemporaryDirectory() as folder:
+        path = os.path.join(folder, name)
+        open(path, 'w', encoding='utf-8').write(open(src, encoding='utf-8').read())
+        normalize_file(path)
+        return json.load(open(path, encoding='utf-8'))
+
+
 def test_real_files():
-    social = json.load(open(SOCIAL, encoding='utf-8'))
-    tutorial = json.load(open(TUTORIAL, encoding='utf-8'))
-    seen = check_posts(social, iter_social, 'social-posts.json')
-    assert 'daily' in seen, seen
-    assert 'premarket' in seen and 'afterclose' in seen, seen
-    assert 'newsletter' in seen, seen
-    assert any(c.startswith('carousel-') and c != 'carousel' for c in seen), seen
-    assert 'carousel' not in seen, seen
-    tut = check_posts(tutorial, iter_tutorial, 'tutorial-posts.json')
-    assert tut == {'tutorial'}, tut
+    social = _normalized(SOCIAL, 'social-posts.json')
+    tutorial = _normalized(TUTORIAL, 'tutorial-posts.json')
+    check_posts(social, iter_social, 'social-posts.json')
+    check_posts(tutorial, iter_tutorial, 'tutorial-posts.json')
     check_assets_untagged(social, 'social-posts.json')
     check_assets_untagged(tutorial, 'tutorial-posts.json')
-    # Reddit is not one of the platform fields, so its page URLs stay untagged.
-    for lang, by in social['posts'].items():
-        body = (by.get('reddit') or {}).get('body') or ''
-        for url in URL_RE.findall(body):
-            assert 'utm_source=' not in url and 'utm_medium=' not in url, (lang, url)
     for lang in share.LANGS:
         assert len(social['posts'][lang]['threads']) <= 500
         assert share.xlen(social['posts'][lang]['x']) <= 280
@@ -312,19 +311,6 @@ def test_real_files():
     for kind in ('premarket', 'afterclose'):
         text = social['x_trilingual'][kind]['text']
         assert share.xlen(text) <= 280, (kind, share.xlen(text))
-    # New slots are optional on a given day. When present, their page URLs use the slot campaign.
-    if social.get('hot_stock'):
-        assert 'hot_stock' in seen, seen
-    if social.get('discussion'):
-        assert 'discussion' in seen, seen
-    if isinstance(social.get('weekend'), dict) and social['weekend'].get('posts'):
-        assert 'weekend' in seen, seen
-    if social.get('atomic_posts'):
-        assert 'atomic' in seen, seen
-    if social.get('three_lines'):
-        assert 'three_lines' in seen, seen
-    if social.get('why_posts'):
-        assert 'why' in seen, seen
 
 
 def test_real_files_idempotent():
@@ -334,7 +320,9 @@ def test_real_files_idempotent():
             path = os.path.join(folder, name)
             open(path, 'w', encoding='utf-8').write(raw)
             normalize_file(path)
-            assert open(path, encoding='utf-8').read() == raw, name
+            once = open(path, encoding='utf-8').read()
+            normalize_file(path)
+            assert open(path, encoding='utf-8').read() == once, name
 
 
 def test_tag_url_normalises():
@@ -466,36 +454,22 @@ def _fixture():
 def test_normalize_obj_scheme():
     data = _fixture()
     normalize_obj(data)
-    seen = check_posts(data, iter_social, 'fixture')
-    assert 'daily' in seen and 'carousel-1230' in seen, seen
-    assert 'premarket' in seen and 'afterclose' in seen, seen
-    assert 'newsletter' in seen and 'top5' in seen and 'weekly_thread' in seen, seen
-    assert 'intraday_open' in seen, seen
+    check_posts(data, iter_social, 'fixture')
     check_assets_untagged(data, 'fixture')
-    fb = data['posts']['en']['facebook']
-    assert 'ref=1&utm_source=facebook&utm_medium=social&utm_campaign=daily' in fb, fb
-    cta = data['posts']['en']['facebook_cta']
-    assert 'utm_campaign=daily' in cta and 'utm_campaign=newsletter' in cta, cta
-    assert 'utm_source=facebook' in cta and 'utm_source=fb&' not in cta
-    assert data['posts']['en']['reddit']['body'] == 'plain https://thecrowdtape.com/en/ stays bare'
+    assert 'thecrowdtape.com' not in data['posts']['en']['facebook']
+    assert 'thecrowdtape.com' not in data['posts']['en']['facebook_cta']
+    assert 'thecrowdtape.com' not in data['posts']['en']['reddit']['body']
     assert data['slots']['1230']['images']['zh'] == ['https://thecrowdtape.com/og/c/x.jpg']
     assert data['x_trilingual']['premarket']['image'].endswith('x-premarket.png?v=1')
-    after = data['x_trilingual']['afterclose']['text']
-    assert after == 'https://thecrowdtape.com/en/?a=1&utm_source=x&utm_medium=social&utm_campaign=afterclose#z', after
+    assert 'thecrowdtape.com' not in data['x_trilingual']['afterclose']['text']
     ig = data['top5']['posts']['en']['instagram']
     assert 'https://' not in ig and 'thecrowdtape.com' not in ig.lower()
-    assert share.IG_BIO['en'] in ig
-    assert share.IG_BIO['en'] in data['posts']['en']['instagram']
-    weekly = data['weekly_thread']['posts']['en']['x']
-    assert 'utm_source=x&utm_medium=social&utm_campaign=weekly_thread' in weekly, weekly
+    assert 'thecrowdtape.com' not in data['weekly_thread']['posts']['en']['x']
     intra_x = data['intraday']['slots']['intraday_open']['x']['en']
-    assert 'utm_source=x&utm_medium=social&utm_campaign=intraday_open' in intra_x['text']
+    assert 'thecrowdtape.com' not in intra_x['text']
+    # separate url fields (not caption text) keep their tagged link
     assert intra_x['url'] == 'https://thecrowdtape.com/en/?utm_source=x&utm_medium=social&utm_campaign=intraday_open'
-    intra_zh = data['intraday']['slots']['intraday_open']['threads']['zh']
-    assert 'utm_source=threads&utm_medium=social&utm_campaign=intraday_open' in intra_zh['text']
-    assert 'utm_source=ig' not in weekly
     assert len(data['posts']['en']['threads']) <= 500
-    assert 'utm_source=threads&utm_medium=social&utm_campaign=daily' in data['posts']['en']['threads']
     again = json.loads(json.dumps(data))
     normalize_obj(again)
     assert again == data
@@ -518,9 +492,8 @@ def test_normalize_file_tutorial_campaign():
         json.dump(tut, open(path, 'w', encoding='utf-8'))
         normalize_file(path)
         got = json.load(open(path, encoding='utf-8'))
-    seen = check_posts(got, iter_tutorial, 'tutorial-fixture')
-    assert seen == {'tutorial'}, seen
-    assert 'utm_source=facebook&utm_medium=social&utm_campaign=tutorial' in got['posts']['en']['facebook']
+    check_posts(got, iter_tutorial, 'tutorial-fixture')
+    assert 'thecrowdtape.com' not in got['posts']['en']['facebook']
     assert got['images']['en'] == 'https://thecrowdtape.com/og/tutorial-en.png?v=1'
     assert share.xlen(got['posts']['zh']['x']) <= 280
 
@@ -592,22 +565,11 @@ def test_new_slot_shapes():
         },
     }
     normalize_obj(data)
-    seen = check_posts(data, iter_social, 'new-shapes')
-    assert {'weekly_thread', 'hot_stock', 'discussion', 'weekend', 'atomic'} <= seen, seen
-    zh = data['weekly_thread']['langs']['zh'][0]
-    assert 'utm_source=x&utm_medium=social&utm_campaign=weekly_thread' in zh, zh
-    assert 'utm_source=ig' not in zh
-    en = data['weekly_thread']['langs']['en'][0]
-    assert en.endswith('/en/?utm_source=x&utm_medium=social&utm_campaign=weekly_thread'), en
+    check_posts(data, iter_social, 'new-shapes')
+    assert 'thecrowdtape' not in data['weekly_thread']['langs']['zh'][0], data['weekly_thread']['langs']['zh']
     hot_fc = data['hot_stock']['posts']['zh']['first_comment']
-    assert 'utm_source=threads&utm_medium=social&utm_campaign=hot_stock' in hot_fc['threads'], hot_fc
-    assert 'utm_source=facebook&utm_medium=social&utm_campaign=hot_stock' in hot_fc['facebook'], hot_fc
-    talk = data['discussion']['posts']['en']['first_comment']['threads']
-    assert 'utm_source=threads&utm_medium=social&utm_campaign=discussion' in talk, talk
-    week_fc = data['weekend']['posts'][0]['langs']['en']['first_comment']['facebook']
-    assert 'utm_source=facebook&utm_medium=social&utm_campaign=weekend' in week_fc, week_fc
-    atom = data['atomic_posts'][0]['first_comment']
-    assert 'utm_source=threads&utm_medium=social&utm_campaign=atomic' in atom, atom
+    assert hot_fc['threads'] == '' and hot_fc['facebook'] == '', hot_fc  # 「最新數字 👉 URL」 line dropped whole
+    assert 'thecrowdtape.com' not in data['atomic_posts'][0]['first_comment']
     assert 'utm_' not in data['top5']['video']['zh']
     check_assets_untagged(data, 'new-shapes')
     again = json.loads(json.dumps(data))
@@ -615,7 +577,22 @@ def test_new_slot_shapes():
     assert again == data
 
 
+def test_strip_site_text_rules():
+    from utm import strip_site_text
+    zh = ('📊 $AAA 財報\n\n🗣 X 大神點睇（近 28 日）：3 個看多、1 個看空 👉 https://thecrowdtape.com/zh/stock/AAA/?utm_source=facebook\n'
+          '🟢 看多 @a：理由\n\n完整 5 章簡報 👉 https://thecrowdtape.com/zh/earnings/AAA/\n☕ 鍾意就支持我哋 👉 https://thecrowdtape.com/zh/#donate\n\n'
+          '📬 訂閱免費電子報 👉 https://thecrowdtape.com/zh/\n\n⚠️ 唔構成投資建議')
+    out, n = strip_site_text(zh)
+    assert n and 'thecrowdtape' not in out and '👉' not in out and '支持' not in out and '完整' not in out and '電子報' not in out, out
+    assert '🗣 X 大神點睇（近 28 日）：3 個看多、1 個看空' in out and '@a：理由' in out, out
+    assert '\n\n\n' not in out
+    assert strip_site_text(out) == (out, 0)
+    img = 'pic https://thecrowdtape.com/og/x.png'
+    assert strip_site_text(img) == (img, 0)
+
+
 def main():
+    test_strip_site_text_rules()
     test_tag_url_normalises()
     test_normalize_obj_scheme()
     test_normalize_file_tutorial_campaign()
