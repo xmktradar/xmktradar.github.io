@@ -1427,7 +1427,10 @@ function viewDaily(){
 
 // ---------- 每週 ----------
 function viewWeekly(){
- const to=TODAY,from=addDays(TODAY,-6),pf=addDays(from,-7),pt=addDays(from,-1);const hasPrev=POSTS.some(x=>x.d>=pf&&x.d<=pt);
+ // 2026-10-29: the weekly brief is written for the 7 days ending on its own date (usually yesterday);
+ // use that end date for the header and tables too, so they cover the same window.
+ const sm0=summaryOf('weekly'),smd=sm0&&sm0.s&&sm0.s.date;
+ const to=(smd&&smd<=TODAY&&smd>=addDays(TODAY,-2))?smd:TODAY,from=addDays(to,-6),pf=addDays(from,-7),pt=addDays(from,-1);const hasPrev=POSTS.some(x=>x.d>=pf&&x.d<=pt);
  const days=[...Array(7)].map((_,i)=>addDays(from,i));
  const rows=TICKERS.map(t=>{const c=dist(t,from,to),c0=dist(t,pf,pt),ca=dist(t,from,to,true);const daily=days.map(d=>postsIn(d,d).filter(x=>x.t===t).length);return {t,c,c0,ca,daily,net:c.bull-c.bear,net0:c0.bull-c0.bear}}).filter(r=>r.ca.accs>=1).sort((a,b)=>b.ca.accs-a.ca.accs||b.c.mentions-a.c.mentions||a.t.localeCompare(b.t));
  const tot=rows.reduce((s,r)=>({b:s.b+r.c.bull,m:s.m+r.c.neu,n:s.n+r.c.none,r:s.r+r.c.bear}),{b:0,m:0,n:0,r:0});
