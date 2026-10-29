@@ -977,7 +977,6 @@
     "VRT",
     "NBIS",
     "KLAC",
-    "STRC",
     "STRD",
     "STRF",
     "STRK",
@@ -992,11 +991,11 @@
    "split": [
     "GOOGL",
     "ORCL",
-    "MRVL",
     "MU",
+    "MRVL",
+    "FTNT",
     "META",
     "NOW",
-    "FTNT",
     "CRWV",
     "GOOG",
     "CBRS",
@@ -1004,6 +1003,7 @@
     "SPCX",
     "STX",
     "APP",
+    "CRWD",
     "WDC"
    ],
    "window": [
@@ -1013,8 +1013,8 @@
    "top": [
     "GOOGL",
     "MSFT",
-    "MRVL",
     "NOW",
+    "MRVL",
     "SPY",
     "QQQ",
     "GOOG",
@@ -1023,9 +1023,9 @@
     "MU"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-30 00:41"
+   "updated_hkt": "2026-10-30 01:13"
   }
  },
- "updated_hkt": "2026-10-30 00:41",
+ "updated_hkt": "2026-10-30 01:13",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
