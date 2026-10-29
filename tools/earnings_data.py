@@ -394,6 +394,37 @@ def supplement(facts, cik, after, log=None, newest=0):
     return added
 
 
+def same_name(a, b):
+    k = lambda x: re.sub(r'[^a-z]', '', (x or '').lower())[:6]  # noqa: E731
+    return bool(k(a)) and k(a) == k(b)
+
+
+def predecessor(facts, cik, log):
+    """A new holding company (XOM became ExxonMobil Holdings, CIK 2115436, in 2026) starts with an empty history; its
+    filings are still submitted under the old company's CIK (accession 0000034088-...). Merge that company's facts."""
+    own = int(cik)
+    pre = set()
+    for tax in ('us-gaap', 'dei'):
+        for c in ((facts.get('facts') or {}).get(tax) or {}).values():
+            for es in (c.get('units') or {}).values():
+                pre.update(int(e['accn'][:10]) for e in es if str(e.get('accn', ''))[:10].isdigit())
+    pre.discard(own)
+    merged = 0
+    for p in sorted(pre)[:3]:
+        old = sec_json(f'https://data.sec.gov/api/xbrl/companyfacts/CIK{p:010d}.json')
+        if not old or not same_name(old.get('entityName'), facts.get('entityName')):
+            log.append(f'CIK {p}: not a predecessor ({(old or {}).get("entityName")})')
+            continue
+        for tax in ('us-gaap', 'dei'):
+            mine = facts.setdefault('facts', {}).setdefault(tax, {})
+            for n, c in ((old.get('facts') or {}).get(tax) or {}).items():
+                for u, es in (c.get('units') or {}).items():
+                    mine.setdefault(n, {}).setdefault('units', {}).setdefault(u, []).extend(es)
+        log.append(f'CIK {p} {old.get("entityName")}: merged as predecessor')
+        merged += 1
+    return merged
+
+
 def build_quarters(facts):
     rev, bank = revenue(facts)
     if not rev:
@@ -823,7 +854,9 @@ def main():
                 if b and len(b['q']) < 6:  # companyfacts holds few revenue facts (XOM): each 10-Q/10-K also carries last year's quarter
                     log = []
                     try:
-                        if supplement(facts, info['cik'], '', log, newest=8):
+                        if predecessor(facts, info['cik'], log):
+                            b = build_quarters(facts) or b
+                        if len(b['q']) < 6 and supplement(facts, info['cik'], '', log, newest=8):
                             b = build_quarters(facts) or b
                     except Exception as e:
                         log.append(f'error: {e}')
