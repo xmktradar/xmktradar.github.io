@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2115755222869983415": {
+      "en_summary": "$SHEL Q3 earnings: Adj EPS $3.86 vs $3.65 est (beat), Sales $92.848B vs $99.725B est (miss), +3.87% in pre-market.",
+      "zh_summary": "$SHEL第三季業績：調整後每股收益3.86美元對預期3.65美元（超預期），銷售額928.48億美元對預期997.25億美元（未達預期），盤前上漲3.87%。",
+      "tickers": ["SHEL"],
+      "stance": "中性",
+      "stance_by_ticker": {"SHEL": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115754908599353492": {
+      "en_summary": "$MRK Q3 earnings: Adj EPS $2.49 vs $2.08 est (beat), Sales $18.085B vs $17.313B est (beat). Raised FY2026 Adj EPS and Sales Guidance.",
+      "zh_summary": "$MRK第三季業績：調整後每股收益2.49美元對預期2.08美元（超預期），銷售額180.85億美元對預期173.13億美元（超預期）。上調2026財年調整後每股收益及銷售額指引。",
+      "tickers": ["MRK"],
+      "stance": "中性",
+      "stance_by_ticker": {"MRK": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115754626825781732": {
+      "en_summary": "$CAT Q3 earnings: Adj EPS $7.20 vs $7.08 est (beat), Sales $20.682B vs $20.545B est (beat), -7.48% in pre-market.",
+      "zh_summary": "$CAT第三季業績：調整後每股收益7.20美元對預期7.08美元（超預期），銷售額206.82億美元對預期205.45億美元（超預期），盤前下跌7.48%。",
+      "tickers": ["CAT"],
+      "stance": "中性",
+      "stance_by_ticker": {"CAT": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115752635412193405": {
+      "en_summary": "U.S. stocks fell (SPX -0.3%, NDX -1.0%) after weak results from $GOOG (-10%, AI search eroding adv revs) and Samsung (-4%, chip miss and high capex) revived doubts about AI returns. Fed held rates steady but Chair Warsh flagged further hikes on strong economy and sticky inflation. 10-year yield fell 2.9 bp to 4.99%. Brent crude dropped 1.6% to $113; MSFT rose 4% pre-market on Q3 beat. Other tech lagged (NVDA -0.6%, MRVL -9.8% on Lumentum talks). #BTC slid 1.4% to $80.1K. S&P 2026 EPS estimates remain +33% YoY on AI spend, but valuations stretched vs treasury yields.",
+      "zh_summary": "美股下跌（標普500指數-0.3%，納斯達克100指數-1.0%），因$GOOG業績疲弱（-10%，AI搜尋侵蝕廣告收入）及三星（-4%，晶片未達預期及高資本支出）重新引發對AI回報的疑慮。聯準會維持利率不變，但主席Warsh因經濟強勁及通膨黏性暗示可能進一步升息。10年期公債收益率下跌2.9個基點至4.99%。布蘭特原油下跌1.6%至113美元；MSFT因第三季超預期盤前上漲4%。其他科技股落後（NVDA -0.6%，MRVL因Lumentum談判-9.8%）。比特幣下跌1.4%至8.01萬美元。標普2026年每股收益預期仍因AI支出同比+33%，但股票估值相對國債收益率偏高。",
+      "tickers": ["GOOG", "MSFT", "NVDA", "MRVL", "SPY", "QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"GOOG": "中性", "MSFT": "中性", "NVDA": "中性", "MRVL": "中性", "SPY": "中性", "QQQ": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "rates",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2115752287826301371": {
+      "en_summary": "$GOOGL all major analysts still have huge price targets despite the -10% drop, ranging from $375 to $425, still 30-47% above current price. In other words buy the dip?",
+      "zh_summary": "$GOOGL儘管下跌10%，所有主要分析師仍有巨大目標價，範圍從375美元至425美元，仍較現價高30-47%。換句話說買入回調？",
+      "tickers": ["GOOGL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"GOOGL": "睇好"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"GOOGL": "Analyst PTs $375-$425 still 30-47% above current after -10% drop, suggesting buy the dip"}
+    }
+  }
+}
