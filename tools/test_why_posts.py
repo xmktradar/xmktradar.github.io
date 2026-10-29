@@ -599,7 +599,34 @@ def main():
     test_merge_into_touches_only_three_keys()
     test_atomic_slots_do_not_share_ticker_or_time()
     test_schedule_drops_same_ticker()
+    test_threads_en_fits_500_and_no_mid_word_cut()
+    test_skhy_json_threads_en_within_limit()
     print('test_why_posts: reasons, labels, UTM, atomic slots ok')
+
+
+def test_threads_en_fits_500_and_no_mid_word_cut():
+    import three_why as T
+    long = ('quoting his earlier post flagging repeat $SKHY activity ahead of 10/27 earnings, '
+            'says the sweepers are cashing in this morning with a total profit of +$4,061,300.')
+    c = T._clean_reason('ThetaWarrior', long, 'SKHY', 'en')
+    assert len(c) <= T._WHY_CAP
+    assert c.endswith('…') and 'profi…' not in c and not c.endswith(' …')
+    reasons = [{'acc': f'acc{i}', 'text': long} for i in range(6)]
+    text, _ = T._why_body('en', 'SKHY', 6, 0, 6, '10/29 00:00 – 05:07 HKT', reasons, [])
+    assert len(text) <= 500
+    for ln in text.split('\n'):
+        if ln.endswith('…'):
+            assert ln[:-1].split()[-1] != 'profi'
+
+
+def test_skhy_json_threads_en_within_limit():
+    import json, os
+    p = os.path.join(os.path.dirname(__file__), '..', 'data', 'social-posts.json')
+    d = json.load(open(p, encoding='utf-8'))
+    for w in d.get('why_posts') or []:
+        en = ((w.get('threads') or {}).get('en') or {}).get('text') or ''
+        assert len(en) <= 500, (w.get('ticker'), len(en))
+        assert 'total profi\n' not in en
 
 
 if __name__ == '__main__':
