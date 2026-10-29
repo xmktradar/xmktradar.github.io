@@ -46,6 +46,9 @@ HOT_TOP = re.compile(r'<!-- hot-top -->.*?<!-- hot-top -->', re.S)  # 熱門個�
 LITE_DAYS = 45  # covers the 28-day change, sparklines and the monthly view
 PX_DIR = 'px'
 
+EN_FONTS = ('<style id="en-latin-fonts">html[lang="en"]{'
+            '--f-body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans TC","PingFang TC",sans-serif!important;'
+            '--f-display:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans TC","PingFang TC",sans-serif!important}</style>')
 SWITCH_CSS = ('.lang-sw{display:flex;gap:4px;margin:6px 0 2px}.lang-sw a{font:600 12.5px/1 var(--f-body);'
               'padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);'
               'text-decoration:none;background:var(--surface)}.lang-sw a[aria-current]{color:var(--accent);'
@@ -406,6 +409,8 @@ def build(lang, master):
     out = [translate(part, tr.get('ui') or {}) for part in code]
     s = out[0] + blob + out[1]
     s = re.sub(r'<html lang="[^"]*"', f'<html lang="{LANGS[lang][0]}"', s, count=1)
+    if lang == 'en':  # 2026-10-29: CJK fonts draw ’ full-width ("week’ s"); put Latin fonts first on /en/
+        s = s.replace('</head>', EN_FONTS + '</head>', 1)
     s = faq_ld(master, s, lang, {**(tr.get('data') or {}), **(tr.get('ui') or {})})
     s = re.sub(r'(<meta property="og:url" content=")[^"]*', rf'\g<1>{SITE}{lang}/', s, count=1)
     s = s.replace('href="/zh/feed.xml"', f'href="/{lang}/feed.xml"', 1)
