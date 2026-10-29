@@ -96,7 +96,7 @@ async function checkAll() {
     if (shot.image) continue;  // drawn by another step of the same build
     for (const lang of ['zh', 'en']) {
       const fail = m => { bad.push(`第 ${e.n} 集：${m}`); console.log(`::error::第 ${e.n} 集：${m}`); };
-      if (shot.go && !shot.go.startsWith('#') && !fs.existsSync(path.join(ROOT, lang, shot.go.split('#')[0], 'index.html'))) { fail(`${lang}/${shot.go} 唔存在`); continue; }
+      if (shot.go && !shot.go.startsWith('#') && !fs.existsSync(path.join(ROOT, lang, shot.go.split(/[?#]/)[0], 'index.html'))) { fail(`${lang}/${shot.go} 唔存在`); continue; }
       try { await shoot(page, base, lang, shot, fail); }
       catch (err) { fail(`${lang}/${shot.go || ''} 截圖出錯：${String(err.message || err).split('\n')[0]}`); }
     }

@@ -1,6 +1,6 @@
 {
  "start": "2026-10-17",
- "note": "週末教學 post（Tim 2026-10-12）：星期六日各一集，由 start 起計第 1 集，最後一集後返第 1 集（第 27 集宏觀分頁 2026-10-13 加）。文案由 Claude 寫好，Grok bot 照貼。{TK}/{TKL}/{ACC}/{LANG} 由 tools/tutorial.py 每次換做當時最多人講嘅股票同帳號。 2026-10-27 Tim：加第 28–34 集（10/12 之後嘅新功能），new_first 由 from 嗰個星期六起先播一輪，播完先返原本輪次。",
+ "note": "週末教學 post（Tim 2026-10-12）：星期六日各一集，由 start 起計第 1 集，最後一集後返第 1 集（第 27 集宏觀分頁 2026-10-13 加）。文案由 Claude 寫好，Grok bot 照貼。{TK}/{TKL}/{ACC}/{LANG} 由 tools/tutorial.py 每次換做當時最多人講嘅股票同帳號。 2026-10-27 Tim：加第 28–34 集（10/12 之後嘅新功能），new_first 由 from 嗰個星期六起先播一輪，播完先返原本輪次。 2026-10-29 Tim：書本式上線，第 7–19、30 集「點用」改成第幾頁，加第 35 集（一頁頁睇）。",
  "episodes": [
   {
    "n": 1,
@@ -117,12 +117,12 @@
    "zh": {
     "t": "「共同看多」：幾個大神一齊睇好嘅股票",
     "b": "「共同看多」係指最少 2 個帳號最新立場都係睇好嘅股票，仲會列埋係邊幾個帳號。\n唔係一個人講咗就算，要幾個人方向一致先上榜。",
-    "how": "撳「每週」tab，第一格就係共同看多。"
+    "how": "撳「每週」tab，揭到第 2 頁「共識與分歧」就見到共同看多。"
    },
    "en": {
     "t": "\"Consensus bullish\": stocks several accounts like",
     "b": "\"Consensus bullish\" lists stocks where at least 2 accounts' latest view is bullish, and shows which accounts they are.\nOne loud voice is not enough; it takes several pointing the same way.",
-    "how": "Tap the \"Weekly\" tab; the first box is Consensus bullish."
+    "how": "Tap the \"Weekly\" tab and turn to page 2, \"Consensus and splits\"."
    }
   },
   {
@@ -138,12 +138,12 @@
    "zh": {
     "t": "「共同看空」：大神一齊睇淡邊隻？",
     "b": "同共同看多一樣，「共同看空」列出最少 2 個帳號最新立場都係睇淡嘅股票。\n買之前睇吓有冇人一齊唱淡，係一個好有用嘅提醒。",
-    "how": "「每日」「每週」「每月」tab 都有共同看空。"
+    "how": "「每日」「每週」「每月」tab 都有共同看空：每日喺第 5 頁，每週同每月喺第 2 頁。"
    },
    "en": {
     "t": "\"Consensus bearish\": what is the crowd selling?",
     "b": "Like Consensus bullish, \"Consensus bearish\" lists stocks where at least 2 accounts' latest view is bearish.\nBefore you buy, it is worth checking whether several people are warning against it.",
-    "how": "Daily, Weekly and Monthly all show Consensus bearish."
+    "how": "Daily (page 5), Weekly and Monthly (page 2) all show Consensus bearish."
    }
   },
   {
@@ -159,12 +159,12 @@
    "zh": {
     "t": "「好淡分歧」：邊隻股最有爭議？",
     "b": "有啲股票有人睇好、有人睇淡，網站會將佢哋放喺「好淡分歧」，寫明幾多個睇好、幾多個睇淡。\n爭議大嘅股票通常波動都大，入手前值得睇清楚兩邊理由。",
-    "how": "撳任何一隻股票，就睇到兩邊大神點講。"
+    "how": "撳「每週」tab 揭到第 2 頁，撳任何一隻股票，就睇到兩邊大神點講。"
    },
    "en": {
     "t": "\"Split\": which stocks divide the crowd?",
     "b": "When some accounts are bullish and others bearish on the same stock, it shows up under \"Split\", with the count on each side.\nSplit stocks are often volatile, so read both sides before you act.",
-    "how": "Tap any stock to see what each side says."
+    "how": "Turn to page 2 of the \"Weekly\" tab and tap any stock to see what each side says."
    }
   },
   {
@@ -176,12 +176,12 @@
    "zh": {
     "t": "「市場關注度變化」：邊隻股熱緊？",
     "b": "每隻股票一條棒：顏色分看多、中性、未表態同看空，括號係對比上一期多咗定少咗人講。\n已經冇人再講嘅股票會自動篩走；突然多人講嘅，通常就係市場下一個焦點。",
-    "how": "「每日」tab 入面嘅「市場關注度變化」。"
+    "how": "「每日」tab 第 4 頁「市場關注度變化」。"
    },
    "en": {
     "t": "\"Attention shifts\": what is heating up?",
     "b": "One bar per stock, split into bullish, neutral, no view and bearish, with the change versus last period in brackets.\nStocks nobody talks about any more drop off; a stock that suddenly gets attention is often the market's next focus.",
-    "how": "\"Attention shifts\" in the Daily tab."
+    "how": "\"Attention shifts\" on page 4 of the Daily tab."
    }
   },
   {
@@ -193,12 +193,12 @@
    "zh": {
     "t": "「各帳號立場」：每隻股邊個睇好、邊個睇淡",
     "b": "每隻股票一行，按幾多個帳號講過排先後；大神頭像分成看多、看空、中性同未表態幾組，仲有一句看多同看空理由。\n上面可以揀「有分歧」「多人看多」「多人看空」，撳一行就見到每個帳號嘅最新講法。",
-    "how": "「每日」tab 入面嘅「各帳號立場」，撳任何一行。"
+    "how": "「每日」tab 第 5 頁「各帳號立場」，撳任何一行。"
    },
    "en": {
     "t": "\"Stance by account\": who is bullish or bearish on each stock",
     "b": "One row per stock, ranked by how many accounts discussed it, with avatars grouped into bullish, bearish, neutral and no view, plus a one-line reason for each side.\nFilter by \"split\", \"many bullish\" or \"many bearish\", and tap a row to see each account's latest take.",
-    "how": "\"Stance by account\" in the Daily tab; tap any row."
+    "how": "\"Stance by account\" on page 5 of the Daily tab; tap any row."
    }
   },
   {
@@ -210,12 +210,12 @@
    "zh": {
     "t": "「重要觀點」：大神轉軚第一時間知",
     "b": "「重要觀點」會優先列出立場有變嘅貼文，例如由睇好轉睇淡，同埋講得最明確嘅表態。\n每則都附中文摘要同原帖，唔使自己逐個帳號碌。",
-    "how": "「每日」tab 碌落去就見到「重要觀點」。"
+    "how": "「每日」tab 揭到第 6 頁就見到「重要觀點」。"
    },
    "en": {
     "t": "\"Key views\": catch every change of mind",
     "b": "\"Key views\" puts stance changes first, like an account flipping from bullish to bearish, followed by the clearest calls.\nEach comes with a summary and the original post, so you don't have to scroll through every account.",
-    "how": "Scroll down the Daily tab to \"Key views\"."
+    "how": "Turn to page 6 of the Daily tab for \"Key views\"."
    }
   },
   {
@@ -227,12 +227,12 @@
    "zh": {
     "t": "「今日市場分析」：一段字幫你總結今日",
     "b": "唔得閒逐則睇？「今日市場分析」用幾段字總結今日大神最關心嘅股票、宏觀消息同分歧。\n通勤嗰幾分鐘就睇完。",
-    "how": "「每日」tab 最底嘅「今日市場分析」。"
+    "how": "「每日」tab 第 2 頁「今日市場分析」。"
    },
    "en": {
     "t": "\"Today's market analysis\": the day in a few paragraphs",
     "b": "No time to read every post? \"Today's market analysis\" sums up the stocks, macro news and disagreements the accounts cared about most.\nRead it in a few minutes on your commute.",
-    "how": "\"Today's market analysis\" at the bottom of the Daily tab."
+    "how": "\"Today's market analysis\" on page 2 of the Daily tab."
    }
   },
   {
@@ -244,12 +244,12 @@
    "zh": {
     "t": "「本週重點」：7 日內大神講咩",
     "b": "「每週」tab 將過去 7 日整理埋一齊：本週重點、共同看多看空、高度一致同明顯分歧。\n週末花 5 分鐘，就追返成個星期。",
-    "how": "撳頂部「每週」tab。"
+    "how": "撳頂部「每週」tab，第 1 頁就係本週重點。"
    },
    "en": {
     "t": "\"This week's highlights\": 7 days in one view",
     "b": "The Weekly tab rolls up the last 7 days: highlights, consensus bullish and bearish, strong agreement and clear splits.\nFive minutes on the weekend and you're caught up on the whole week.",
-    "how": "Tap the \"Weekly\" tab at the top."
+    "how": "Tap the \"Weekly\" tab at the top; page 1 is the week's highlights."
    }
   },
   {
@@ -261,12 +261,12 @@
    "zh": {
     "t": "「每月」：28 日看多同看空比例",
     "b": "「每月」tab 計埋 28 日所有貼文，睇大神整體係偏樂觀定偏悲觀，仲有本月趨勢總結。\n短期噪音過濾咗，大方向更清楚。",
-    "how": "撳「每月」tab，睇「看多與看空比例」。"
+    "how": "撳「每月」tab，揭到第 3 頁「看多與看空比例」。"
    },
    "en": {
     "t": "\"Monthly\": the 28-day bull vs bear ratio",
     "b": "The Monthly tab counts 28 days of posts to show whether the crowd leans optimistic or pessimistic, plus a monthly trends summary.\nShort-term noise filtered out, the big picture gets clearer.",
-    "how": "Tap \"Monthly\" and look at \"Bullish vs bearish\"."
+    "how": "Tap \"Monthly\" and turn to page 3, \"Bullish vs bearish\"."
    }
   },
   {
@@ -278,12 +278,12 @@
    "zh": {
     "t": "「立場一致性」：邊個大神成日轉軚？",
     "b": "網站會計每個帳號對同一隻股票前後立場有幾一致，仲會數埋幾多次「反轉」（由睇好直接變睇淡或者相反）。\n成日轉軚定好有堅持，一睇就知。",
-    "how": "「每月」tab 入面嘅「帳號立場的一致性」。"
+    "how": "「每月」tab 第 3 頁「帳號立場的一致性」。"
    },
    "en": {
     "t": "\"Stance consistency\": who flip-flops?",
     "b": "For each account, the site measures how consistent its stance on the same stock has been, and counts outright reversals (bullish straight to bearish or back).\nSee at a glance who sticks to their calls.",
-    "how": "\"Stance consistency by account\" in the Monthly tab."
+    "how": "\"Stance consistency by account\" on page 3 of the Monthly tab."
    }
   },
   {
@@ -295,12 +295,12 @@
    "zh": {
     "t": "熱力圖：每隻股每日嘅熱度同立場",
     "b": "每格係一日：顏色代表當日大神淨係睇好定睇淡，深淺代表有幾多人講；只列最少 3 個帳號講過、熱咗最少 3 日嘅股票。\n一隻股幾時開始熱、立場幾時轉，成個月一張圖睇晒。",
-    "how": "「每月」tab 最底嘅「個股關注度與觀點隨時間的變化」。"
+    "how": "「每月」tab 第 6 頁「個股關注度與觀點隨時間的變化」。"
    },
    "en": {
     "t": "Heat map: buzz and stance, day by day",
     "b": "Each square is one day: the colour shows whether the accounts were net bullish or bearish, and the shade shows how many talked about it. Only stocks with 3+ accounts on 3+ days are listed.\nSee when a stock heated up and when views turned, a whole month in one picture.",
-    "how": "\"Stock attention and views over time\" at the bottom of the Monthly tab."
+    "how": "\"Stock attention and views over time\" on page 6 of the Monthly tab."
    }
   },
   {
@@ -312,12 +312,12 @@
    "zh": {
     "t": "每個大神本月最睇好邊隻股？",
     "b": "網站幫每個帳號計佢本月最多次明確睇好嘅股票，再附埋近 1 年回報。\n想知 Elon Musk 或者你最鍾意嘅分析師最撐邊隻，一眼睇到。",
-    "how": "「每月」tab 入面嘅「每個帳號本月最看好的股票」。"
+    "how": "「每月」tab 第 4 頁「每個帳號本月最看好的股票」。"
    },
    "en": {
     "t": "Each account's top pick this month",
     "b": "For every account, the site finds the stock it called bullish most often this month, with its 1-year return.\nSee which stock your favourite analyst backs most.",
-    "how": "\"Each account's top stock this month\" in the Monthly tab."
+    "how": "\"Each account's top stock this month\" on page 4 of the Monthly tab."
    }
   },
   {
@@ -329,12 +329,12 @@
    "zh": {
     "t": "「股票排行榜」：28 日最多人講邊隻",
     "b": "排行榜列出 28 日內所有被提及嘅股票，有提及次數、好淡比例同一年回報。\n撳表頭就可以重新排序，自己揀睇最熱定最多人睇好。",
-    "how": "「每月」tab 入面嘅「股票排行榜」，撳表頭排序。"
+    "how": "「每月」tab 第 5 頁「股票排行榜」，撳表頭排序。"
    },
    "en": {
     "t": "\"Stock leaderboard\": the 28-day ranking",
     "b": "The leaderboard lists every stock mentioned in 28 days, with mentions, bull/bear mix and 1-year return.\nTap a column header to re-sort by what you care about.",
-    "how": "\"Stock leaderboard\" in the Monthly tab; tap a header to sort."
+    "how": "\"Stock leaderboard\" on page 5 of the Monthly tab; tap a header to sort."
    }
   },
   {
@@ -518,12 +518,12 @@
    "zh": {
     "t": "「今日三句重點」：10 秒知今日發生咩",
     "b": "打開網站第一格就係「今日三句重點」：共識變化最大、最多人講同最大分歧，三句講晒。\n每句都附股票代號，撳落去就見詳細。",
-    "how": "打開網站，「每日」tab 第一格。"
+    "how": "打開網站，「每日」tab 第 1 頁。"
    },
    "en": {
     "t": "\"Today in 3 lines\": the day in 10 seconds",
     "b": "The first box on the site is \"Today in 3 lines\": the biggest consensus shift, the most discussed stock and the biggest split, in three sentences.\nEach line has a ticker you can tap for the details.",
-    "how": "Open the site; it is the first box in the Daily tab."
+    "how": "Open the site; it is on page 1 of the Daily tab."
    }
   },
   {
@@ -594,6 +594,27 @@
     "b": "Not opening the site every day? Get the weekly newsletter: one email a week with the bull and bear counts.\nFree, cancel any time, and past issues are on the site.",
     "how": "Tap \"Newsletter\" at the bottom of the page, enter your email and tap Subscribe."
    }
+  },
+  {
+   "n": 35,
+   "shot": {
+    "go": "?book=1#daily",
+    "sel": "#view",
+    "part": [
+     0,
+     1
+    ]
+   },
+   "zh": {
+    "t": "一頁頁睇：每頁 5 分鐘內睇完",
+    "b": "資訊太多睇唔晒？而家每日、每週、每月都分成幾頁，好似睇書咁，每頁一個主題，5 分鐘內睇完就撳「下一頁」。\n頂部頁碼撳得去任何一頁；手機可以左右掃；想一次過睇晒就撳「全部展開」，下次會記得。",
+    "how": "打開網站，頁底撳「下一頁」，或者頂部撳頁碼。"
+   },
+   "en": {
+    "t": "Read it page by page: each page in under 5 minutes",
+    "b": "Too much to take in? Daily, Weekly and Monthly are now split into short pages like a book, one topic each, so you can finish a page in under 5 minutes and tap \"Next\".\nTap a page number at the top to jump; swipe on your phone; or tap \"Show all\" to see everything at once, and the site remembers.",
+    "how": "Open the site and tap \"Next\" at the bottom, or a page number at the top."
+   }
   }
  ],
  "new_first": {
@@ -605,7 +626,8 @@
    31,
    32,
    33,
-   34
+   34,
+   35
   ]
  }
 }
