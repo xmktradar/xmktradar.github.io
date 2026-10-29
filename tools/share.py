@@ -984,10 +984,8 @@ _XEMOJI = re.compile(r'\s*[📊💬🚀⚔️]+\s*$')
 
 
 def facebook_cta(text, lang):
-    """Facebook text plus the newsletter line. `text` is kept as it already is."""
-    line = FB_CTA[lang] + tag_url(page_url(lang), 'facebook', 'newsletter')
-    text = (text or '').rstrip()
-    return f'{text}\n\n{line}' if text else line
+    """Facebook text as it is. The newsletter link line was dropped (no site links in captions)."""
+    return (text or '').rstrip()
 
 
 def add_facebook_ctas(posts):
