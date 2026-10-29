@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2115792812113560053": {
+      "en_summary": "StockSavvyShay replies that $NOW is currently trading at 26x forward earnings.",
+      "zh_summary": "StockSavvyShay 回覆 $NOW 目前以 26 倍遠期盈利交易。",
+      "tickers": ["NOW"],
+      "stance": "中性",
+      "stance_by_ticker": {"NOW": "中性"},
+      "horizon": null,
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NOW": "26x 遠期盈利"}
+    },
+    "2115790849753694429": {
+      "en_summary": "EliteOptions2 provides TRADE PLAN for Oct 29th: $SPX gapping lower this morning, if it gives up 7700 avoid calls for today, let the market find a bottom. Need to see dips bought up otherwise more selling. Mentions $AMD $QQQ $SMH $SNDK.",
+      "zh_summary": "EliteOptions2 提供 10 月 29 日交易計劃：$SPX 今早低開，如果放棄 7700 則今天避免看漲，讓市場找到底部。需要看到下跌被買入，否則更多賣出。提及 $AMD $QQQ $SMH $SNDK。",
+      "tickers": ["SPX", "AMD", "QQQ", "SMH", "SNDK"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPX": "中性", "AMD": "中性", "QQQ": "中性", "SMH": "中性", "SNDK": "中性"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPX": "7700 關鍵水平"}
+    },
+    "2115790247502000632": {
+      "en_summary": "RedDogT3 notes $TSLA is trying to act better this week.",
+      "zh_summary": "RedDogT3 指出 $TSLA 本周試圖表現更好。",
+      "tickers": ["TSLA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TSLA": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115790229412208919": {
+      "en_summary": "StockSavvyShay notes $GOOGL is now pulling in about $1.4B in revenue every single day.",
+      "zh_summary": "StockSavvyShay 指出 $GOOGL 現在每天收入約 14 億美元。",
+      "tickers": ["GOOGL"],
+      "stance": "中性",
+      "stance_by_ticker": {"GOOGL": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"GOOGL": "每天收入約 14 億美元"}
+    },
+    "2115790104367395166": {
+      "en_summary": "RedDogT3 hopes $META can get better today, see if some early strength finally holds.",
+      "zh_summary": "RedDogT3 希望 $META 今天能更好，看看一些早期強勢是否最終能持有。",
+      "tickers": ["META"],
+      "stance": "中性",
+      "stance_by_ticker": {"META": "中性"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
