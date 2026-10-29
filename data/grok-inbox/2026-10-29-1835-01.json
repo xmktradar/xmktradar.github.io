@@ -1,1 +1,115 @@
-PLACEHOLDER_TO_REPLACE
+{
+  "posts": {
+    "2115740020728349025": {
+      "en_summary": "Good Morning! Futures mixed: $ES -0.4%, $NQ -1.2%, $YM +0.4%. 10Y 5.05%, DXY 102.2, WTI $101 (-1.6%), Brent $114 (-1.3%), BTC $79.8K (-1.6%). Analyst updates: $MSFT PT raised to $650 by Piper Sandler (from $610), Morgan Stanley ($650), Scotiabank (from $625), Barclays to $610 (from $600); $GOOGL d/g to Market Perform by Citizens, PT cuts to $400 (RBC from $425 Outperform), $375 (JPM from $425, MS from $400), $435 (Evercore ISI from $450), $460 (TD Cowen from $485); $NOW PT cut to $163 from $188 by Goldman Sachs; $PLTR initiated Overweight by JPM added to US Focus list; $FTNT PT cut to $140 from $163 by Scotiabank (Sector Perform); $KLAC PT raised to $238 from $200 by JPMorgan (Overweight); $V PT raised to $440 from $420 by Barclays and $438 from $425 by BMO; $BA PT cut to $240 from $290 by JPMorgan (Overweight); $KOF PT raised to $129 from $123 by Goldman Sachs; $ORCL PT cut to $205 from $215 by Scotiabank; $PYPL d/g to Underweight by Barclays PT $53; $RBRK initiated Overweight by MS PT $155; $HLT u/g to Outperform by Mizuho PT $421.",
+      "zh_summary": "早安！期貨漲跌互現：$ES下跌0.4%，$NQ下跌1.2%，$YM上漲0.4%。10年期國債收益率5.05%，美元指數102.2，WTI原油101美元（下跌1.6%），布倫特原油114美元（下跌1.3%），比特幣7.98萬美元（下跌1.6%）。分析師更新：$MSFT目標價被派珀桑德勒上調至650美元（原610美元）、摩根士丹利至650美元、豐業銀行從625美元上調、巴克萊至610美元（原600美元）；$GOOGL被Citizens下調至市場表現，目標價下調至400美元（RBC原425美元優於大市）、375美元（摩根大通原425美元、摩根士丹利原400美元）、435美元（Evercore ISI原450美元）、460美元（TD Cowen原485美元）；$NOW目標價被高盛下調至163美元（原188美元）；$PLTR被摩根大通啟動超配並加入美國焦點名單；$FTNT目標價被豐業銀行下調至140美元（原163美元行業表現）；$KLAC目標價被摩根大通上調至238美元（原200美元超配）；$V目標價被巴克萊上調至440美元（原420美元）、BMO至438美元（原425美元）；$BA目標價被摩根大通下調至240美元（原290美元超配）；$KOF目標價被高盛上調至129美元（原123美元）；$ORCL目標價被豐業銀行下調至205美元（原215美元）；$PYPL被巴克萊下調至低配目標價53美元；$RBRK被摩根士丹利啟動超配目標價155美元；$HLT被瑞穗上調至優於大市目標價421美元。",
+      "tickers": ["MSFT", "GOOGL", "NOW", "PLTR", "FTNT", "KLAC", "V", "BA", "KOF", "ORCL", "PYPL", "RBRK", "HLT"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "MSFT": "睇好",
+        "GOOGL": "睇淡",
+        "NOW": "睇淡",
+        "PLTR": "睇好",
+        "FTNT": "睇淡",
+        "KLAC": "睇好",
+        "V": "睇好",
+        "BA": "睇淡",
+        "KOF": "睇好",
+        "ORCL": "睇淡",
+        "PYPL": "睇淡",
+        "RBRK": "睇好",
+        "HLT": "睇好"
+      },
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {
+        "MSFT": "Multiple banks raised PT to $650 or $610",
+        "GOOGL": "Downgraded and multiple PT cuts",
+        "NOW": "PT cut to $163 by GS",
+        "PLTR": "Initiated Overweight by JPM",
+        "FTNT": "PT cut to $140",
+        "KLAC": "PT raised to $238 by JPM",
+        "V": "PT raised to $440 and $438",
+        "BA": "PT cut to $240 by JPM",
+        "KOF": "PT raised to $129 by GS",
+        "ORCL": "PT cut to $205",
+        "PYPL": "Downgraded to Underweight PT $53",
+        "RBRK": "Initiated Overweight PT $155 by MS",
+        "HLT": "Upgraded to Outperform PT $421"
+      }
+    },
+    "2115734974460735650": {
+      "en_summary": "@SJosephBurns asks @grok to design a moving average strategy on the daily chart that beats buy and hold investing on $SPY in returns since its existence, using a signal moving average or moving average crossovers, and to give entry and exit signals.",
+      "zh_summary": "@SJosephBurns要求@grok設計一個在日線圖上使用移動平均線策略，能夠自$SPY存在以來超越買入持有投資回報的策略，可使用訊號移動平均線或移動平均線交叉，並給出進出場訊號。",
+      "tickers": ["SPY"],
+      "stance": null,
+      "stance_by_ticker": {
+        "SPY": "未表態"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115734209964753360": {
+      "en_summary": "$SPX futures down 14 points as the market shakes out post FOMC and some earnings. $767ish is the active support spot for $SPY.",
+      "zh_summary": "$SPX期貨下跌14點，市場在聯儲會會議及部分財報後震盪整理。$SPY的活躍支撑位約在767美元附近。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "SPY": "中性"
+      },
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {
+        "SPY": "Active support around $767"
+      }
+    },
+    "2115733473755340976": {
+      "en_summary": "Positioning: Short-dated calendar volatility is way too complacent for $GOOGL and the bubble blowups out there.",
+      "zh_summary": "倉位：短期日曆波動率對於$GOOGL及市場上的泡沫破裂而言過於自滿。",
+      "tickers": ["GOOGL"],
+      "stance": "睇淡",
+      "stance_by_ticker": {
+        "GOOGL": "睇淡"
+      },
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {
+        "GOOGL": "Short-dated calendar vol too complacent"
+      }
+    },
+    "2115733048360595710": {
+      "en_summary": "Well said by @RickRieder: Higher rates cannot fix the supply shock of oil, higher rates worsen the housing supply shortage, and higher rates create more investment income leading to demand increase. Thus, calling for the Fed to hike might be creating more inflation. Mentions $BMNR and $BMNP.",
+      "zh_summary": "@RickRieder說得好：更高利率無法解決石油供應衝擊，更高利率會加劇住房供應短缺，更高利率會產生更多投資收入從而增加需求。因此，呼籲聯儲會加息可能正在製造更多通脹。提及$BMNR和$BMNP。",
+      "tickers": ["BMNR", "BMNP"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "BMNR": "未表態",
+        "BMNP": "未表態"
+      },
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "rates",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    }
+  }
+}
