@@ -62,8 +62,12 @@ jobs:
             sudo apt-get install -y -qq --no-install-recommends $PKGS
             mkdir -p ~/apt-debs && cp /var/cache/apt/archives/*.deb ~/apt-debs/ 2>/dev/null || true
           fi
-          ffmpeg -version | head -1
-          fc-list | grep -qi "Noto Sans CJK TC" || echo "::warning::Noto Sans CJK 裝唔到，社交圖有機會用後備字型"
+          ffmpeg -version | head -1 || true
+          ffmpeg -version >/dev/null 2>&1 || echo "::warning::ffmpeg 裝唔到"
+      - name: Require Chinese font for social pictures (fail instead of drawing tofu)
+        run: |
+          fc-list | grep -qi "Noto Sans CJK TC" || { sudo apt-get update -qq && sudo apt-get install -y -qq --no-install-recommends fonts-noto-cjk; }
+          fc-list | grep -qi "Noto Sans CJK TC" || { echo "::error::Noto Sans CJK TC 裝唔到，唔出社交圖（避免缺字）"; exit 1; }
       - name: Install Chinese converter
         continue-on-error: true
         run: pip install opencc-python-reimplemented==0.1.7

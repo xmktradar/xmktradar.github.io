@@ -24,6 +24,10 @@ const path = require('path');
       const t = new Promise(r => setTimeout(r, 20000));
       await Promise.race([Promise.all(want.map(f => document.fonts.load(f, document.body.innerText))), t]);
       await document.fonts.ready;
+        if (document.fonts.status !== 'loaded' || !document.fonts.check('700 28px "Noto Sans CJK TC"', '個看好')) {
+          await new Promise(r => setTimeout(r, 3000)); await document.fonts.ready;
+          if (document.fonts.status !== 'loaded') throw new Error('fonts not loaded (CJK) - refusing to draw tofu');
+        }
       await Promise.all([...document.images].map(i => i.decode().catch(() => {})));
       return [...new Set([...document.fonts].filter(f => f.status === 'loaded').map(f => f.family))];
     });
@@ -48,6 +52,10 @@ const path = require('path');
         const t = new Promise(r => setTimeout(r, 20000));
         await Promise.race([Promise.all(want.map(f => document.fonts.load(f, document.body.innerText))), t]);
         await document.fonts.ready;
+        if (document.fonts.status !== 'loaded' || !document.fonts.check('700 28px "Noto Sans CJK TC"', '個看好')) {
+          await new Promise(r => setTimeout(r, 3000)); await document.fonts.ready;
+          if (document.fonts.status !== 'loaded') throw new Error('fonts not loaded (CJK) - refusing to draw tofu');
+        }
         await Promise.all([...document.images].map(i => i.decode().catch(() => {})));
       });
       await ip.evaluate(() => { if (typeof fit === 'function') fit(); });
@@ -68,6 +76,10 @@ const path = require('path');
       const t = new Promise(r => setTimeout(r, 20000));
       await Promise.race([Promise.all(want.map(f => document.fonts.load(f, document.body.innerText))), t]);
       await document.fonts.ready;
+        if (document.fonts.status !== 'loaded' || !document.fonts.check('700 28px "Noto Sans CJK TC"', '個看好')) {
+          await new Promise(r => setTimeout(r, 3000)); await document.fonts.ready;
+          if (document.fonts.status !== 'loaded') throw new Error('fonts not loaded (CJK) - refusing to draw tofu');
+        }
       await Promise.all([...document.images].map(i => i.decode().catch(() => {})));
     });
     const pout = `og/portrait-${lang}.png`;
@@ -88,6 +100,10 @@ const path = require('path');
         const t = new Promise(r => setTimeout(r, 20000));
         await Promise.race([Promise.all(want.map(f => document.fonts.load(f, document.body.innerText))), t]);
         await document.fonts.ready;
+        if (document.fonts.status !== 'loaded' || !document.fonts.check('700 28px "Noto Sans CJK TC"', '個看好')) {
+          await new Promise(r => setTimeout(r, 3000)); await document.fonts.ready;
+          if (document.fonts.status !== 'loaded') throw new Error('fonts not loaded (CJK) - refusing to draw tofu');
+        }
         await Promise.all([...document.images].map(i => i.decode().catch(() => {})));
       });
       await sp.screenshot({ path: `og/story-${lang}.png` });

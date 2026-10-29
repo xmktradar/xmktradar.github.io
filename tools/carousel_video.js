@@ -144,6 +144,10 @@ async function one(browser, job, vo, outFile) {
   await sp.evaluate(async txt => {
     await Promise.race([Promise.all(['900 80px "Noto Sans TC"', '700 80px "Inter"'].map(f => document.fonts.load(f, txt))), new Promise(r => setTimeout(r, 20000))]);
     await document.fonts.ready;
+        if (document.fonts.status !== 'loaded' || !document.fonts.check('700 28px "Noto Sans CJK TC"', '個看好')) {
+          await new Promise(r => setTimeout(r, 3000)); await document.fonts.ready;
+          if (document.fonts.status !== 'loaded') throw new Error('fonts not loaded (CJK) - refusing to draw tofu');
+        }
   }, JSON.stringify(W) + JSON.stringify(C));
   const coverJpg = `og/c/${job.date}-${job.slot}-${job.lang}-cover.jpg`;
   await sp.evaluate(([nm, dd]) => setup(nm, dd), ['cover', C]);
@@ -174,7 +178,11 @@ async function one(browser, job, vo, outFile) {
     await p.evaluate(async () => {
       const want = ['900 46px "Noto Sans TC"', '700 32px "Noto Sans TC"', '700 48px "Inter"'];
       await Promise.race([Promise.all(want.map(f => document.fonts.load(f, document.body.innerText))), new Promise(r => setTimeout(r, 20000))]);
-      await document.fonts.ready; await Promise.all([...document.images].map(im => im.decode().catch(() => {})));
+      await document.fonts.ready;
+        if (document.fonts.status !== 'loaded' || !document.fonts.check('700 28px "Noto Sans CJK TC"', '個看好')) {
+          await new Promise(r => setTimeout(r, 3000)); await document.fonts.ready;
+          if (document.fonts.status !== 'loaded') throw new Error('fonts not loaded (CJK) - refusing to draw tofu');
+        } await Promise.all([...document.images].map(im => im.decode().catch(() => {})));
     });
     await p.evaluate(() => { const room = document.getElementById('main').clientHeight, box = document.getElementById('in'); let z = 1;
       while (box.getBoundingClientRect().height > room + 2 && z > 0.6) { z -= 0.05; box.style.zoom = z; } });
