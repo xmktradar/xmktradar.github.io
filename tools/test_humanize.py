@@ -162,3 +162,19 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+def test_tree_x_en_text_capped_at_280():
+    import humanize as H
+    raw = ('$NVDA leads the tape as chip names rip into the open while yields slip and the dollar eases. '
+           'Breadth is improving with small caps joining in, and $AMD, $AVGO and $TSM all trade higher on volume. '
+           'Watch the 11:30 ET reversal window; a hold above VWAP keeps the trend intact into lunch. '
+           'https://xmktradar.github.io/ #stocks #NVDA #semis #trading')
+    assert len(raw) > 280
+    tree = {'intraday': {'slots': {'intraday_1': {'x': {'en': {'text': raw}}, 'threads': {'zh': {'text': raw}}}}}}
+    H.humanize_tree(tree)
+    slot = tree['intraday']['slots']['intraday_1']
+    assert H.xlen(slot['x']['en']['text']) <= 280
+    assert H.xlen(slot['x']['en']['text']) <= H.X_MAX
+    assert slot['x']['en']['text'] == H.humanize(raw, None, 'post', 'x')
+    assert len(slot['threads']['zh']['text']) <= 500
