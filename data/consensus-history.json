@@ -975,7 +975,6 @@
     "VRT",
     "SOFI",
     "KLAC",
-    "NBIS",
     "MSTR",
     "STRC",
     "GEV",
@@ -990,17 +989,18 @@
     "META"
    ],
    "split": [
-    "ORCL",
     "GOOGL",
+    "ORCL",
     "MU",
     "MRVL",
     "NOW",
-    "GOOG",
     "FTNT",
+    "CRWV",
+    "GOOG",
     "QQQ",
     "TSLA",
     "SNDK",
-    "CRWV",
+    "NBIS",
     "CBRS",
     "STX",
     "APP",
@@ -1008,24 +1008,24 @@
    ],
    "window": [
     "2026-10-28T15:30",
-    "2026-10-29T17:38"
+    "2026-10-29T19:22"
    ],
    "top": [
     "GOOGL",
     "MSFT",
-    "SPY",
     "MRVL",
+    "SPY",
     "NOW",
-    "ORCL",
-    "MU",
-    "QQQ",
     "LITE",
-    "GOOG"
+    "ORCL",
+    "QQQ",
+    "MU",
+    "TSLA"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-29 19:38"
+   "updated_hkt": "2026-10-29 21:15"
   }
  },
- "updated_hkt": "2026-10-29 19:38",
+ "updated_hkt": "2026-10-29 21:15",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
