@@ -1762,9 +1762,161 @@
       "META"
      ]
     }
+   },
+   "intraday_1": {
+    "post_et": "11:00",
+    "post_hkt": "23:00",
+    "generated_at": "2026-10-29T11:01:00-04:00",
+    "date": "2026-10-29",
+    "date_kst": "2026-10-30",
+    "quotes": {
+     "SPY": {
+      "price": 769.298,
+      "prev_close": 772.31,
+      "chg_pct": -0.39,
+      "time": "2026-10-29T11:00:59-04:00"
+     },
+     "QQQ": {
+      "price": 715.5,
+      "prev_close": 725.61,
+      "chg_pct": -1.39,
+      "time": "2026-10-29T11:00:59-04:00"
+     },
+     "DIA": {
+      "price": 522.99,
+      "prev_close": 524.68,
+      "chg_pct": -0.32,
+      "time": "2026-10-29T11:00:58-04:00"
+     },
+     "SOFI": {
+      "price": 17.38,
+      "prev_close": 17.14,
+      "chg_pct": 1.4,
+      "time": "2026-10-29T11:01:01-04:00"
+     },
+     "NBIS": {
+      "price": 174.62,
+      "prev_close": 182.34,
+      "chg_pct": -4.23,
+      "time": "2026-10-29T11:00:58-04:00"
+     },
+     "KLAC": {
+      "price": 170.22,
+      "prev_close": 158.77,
+      "chg_pct": 7.21,
+      "time": "2026-10-29T11:01:01-04:00"
+     },
+     "MSTR": {
+      "price": 141.86,
+      "prev_close": 145.16,
+      "chg_pct": -2.27,
+      "time": "2026-10-29T11:00:59-04:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-10-29T11:01:01-04:00",
+     "hkt": "2026-10-29 23:01"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "SOFI",
+      "chg_pct": 1.4,
+      "bull": 3,
+      "bear": 0,
+      "accounts": [
+       "Jake__Wujastyk",
+       "Mr_Derivatives",
+       "StockSavvyShay"
+      ]
+     },
+     {
+      "ticker": "NBIS",
+      "chg_pct": -4.23,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "StockSavvyShay",
+       "ripster47",
+       "KeithMcCullough",
+       "RedDogT3"
+      ]
+     },
+     {
+      "ticker": "KLAC",
+      "chg_pct": 7.21,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "OptionsMike",
+       "TheTranscript_",
+       "RedDogT3",
+       "traderstewie"
+      ]
+     },
+     {
+      "ticker": "MSTR",
+      "chg_pct": -2.27,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "scottmelker",
+       "saylor",
+       "Jake__Wujastyk"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Late morning · As of 11:01 ET (23:01 HKT)\n\n$SPY -0.4% · $QQQ -1.4% · $DIA -0.3%\n\n$SOFI +1.4%, 3 accounts bullish on site\n$NBIS -4.2%, 2 accounts bullish on site\n\nNewly bullish on site: $NBIS\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #SOFI #NBIS",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "早盤觀察 · 截至 11:01 ET（23:01 HKT）\n\n$SPY -0.4% · $QQQ -1.4% · $DIA -0.3%\n\n$SOFI +1.4%，網站 3 個帳號看好\n$NBIS -4.2%，網站 2 個帳號看好\n$KLAC +7.2%，網站 2 個帳號看好\n$MSTR -2.3%，網站 2 個帳號看好\n\n網站新入看好：$NBIS\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SOFI #NBIS",
+      "url": null
+     },
+     "en": {
+      "text": "Late morning · As of 11:01 ET (23:01 HKT)\n\n$SPY -0.4% · $QQQ -1.4% · $DIA -0.3%\n\n$SOFI +1.4%, 3 accounts bullish on site\n$NBIS -4.2%, 2 accounts bullish on site\n$KLAC +7.2%, 2 accounts bullish on site\n$MSTR -2.3%, 2 accounts bullish on site\n\nNewly bullish on site: $NBIS\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #SOFI #NBIS",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "MSFT",
+      "LITE",
+      "SKHY",
+      "SOFI",
+      "VRT",
+      "NBIS",
+      "KLAC",
+      "MSTR",
+      "STRC",
+      "STRD",
+      "STRF",
+      "STRK",
+      "CVNA",
+      "GEV",
+      "PLTR"
+     ],
+     "bear": [
+      "META",
+      "HOOD"
+     ]
+    }
    }
   },
-  "generated_at": "2026-10-29T09:48:09-04:00",
-  "generated_hkt": "2026-10-29 21:48"
+  "generated_at": "2026-10-29T11:01:00-04:00",
+  "generated_hkt": "2026-10-29 23:01"
  }
 }
