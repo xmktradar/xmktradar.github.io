@@ -35,7 +35,9 @@ body{color:var(--ink);font-variant-numeric:tabular-nums;-webkit-font-smoothing:a
 .cta div:first-child{color:#2997ff}
 
 /* bull / bear / neutral */
-.pill{border:0!important}
+/* Chinese on pills (2026-10-29, IG $MU tofu): use the apt-installed Noto Sans CJK TC first, not the lazily
+   loaded Google Fonts 900 slices; 700 weight + more padding so 「N 個看好」 is not cramped. */
+.pill{border:0!important;font-family:"Inter","Noto Sans CJK TC","Noto Sans TC",sans-serif!important;font-weight:700!important}
 .pill.g{color:var(--bull);background:var(--bull-bg)}
 .pill.r{color:var(--bear);background:var(--bear-bg)}
 .pill.n{color:var(--neu);background:var(--neu-bg)}
