@@ -766,8 +766,21 @@ def _clean_reason(acc, why, ticker, lang='zh'):
     if lang != 'zh' and han_outside_tickers(text):
         return ''
     if lang != 'zh' and len(text) > _WHY_CAP:
-        text = text[:_WHY_CAP].rstrip()
+        text = _cut_words(text, _WHY_CAP)
     return text
+
+
+def _cut_words(text, cap):
+    """Shorten to <= cap code points, ending on a word boundary with an ellipsis. Never mid-word."""
+    text = (text or '').strip()
+    if len(text) <= cap:
+        return text
+    room = max(cap - 1, 0)
+    cut = text[:room]
+    if ' ' in cut and not text[room:room + 1].isspace():
+        cut = cut[:cut.rfind(' ')]
+    cut = cut.rstrip(' ,;:-–—.…')
+    return (cut + '…') if cut else ''
 
 
 def _index_posts(dash):
@@ -932,17 +945,30 @@ def _why_body(lang, ticker, nb, nr, accounts, label, bull_reasons, bear_reasons)
         bits.append(S._count_phrase(lang, 'bear', nr))
     if bits:
         parts.append(' · '.join(str(b) for b in bits))
-    def dump(head, reasons):
-        if not reasons:
-            return
-        lines = [_attr(lang, r['acc'], r['text']) for r in reasons]
-        parts.append(head + '\n' + '\n'.join(lines))
-    dump(L['bull_h'], bull_reasons)
-    dump(L['bear_h'], bear_reasons)
     disc, tag = _close_bits(lang, [ticker])
-    parts.extend([disc, tag])
-    body = '\n\n'.join(p for p in parts if p)
-    body = S.strip_dup_handles(body)
+    bull = [dict(r) for r in (bull_reasons or [])]
+    bear = [dict(r) for r in (bear_reasons or [])]
+
+    def render():
+        out = list(parts)
+        for head, reasons in ((L['bull_h'], bull), (L['bear_h'], bear)):
+            if reasons:
+                out.append(head + '\n' + '\n'.join(_attr(lang, r['acc'], r['text']) for r in reasons))
+        out.extend([disc, tag])
+        return S.strip_dup_handles('\n\n'.join(p for p in out if p))
+
+    body = render()
+    # Threads hard limit: 500 code points. Drop trailing reasons first (keep at least one),
+    # then shorten the last reason on a word boundary with an ellipsis. Never cut mid-word.
+    while len(body) > S.THREADS_MAX and len(bull) + len(bear) > 1:
+        (bear if bear else bull).pop()
+        body = render()
+    if len(body) > S.THREADS_MAX:
+        last = bear[-1] if bear else (bull[-1] if bull else None)
+        if last is not None:
+            over = len(body) - S.THREADS_MAX
+            last['text'] = _cut_words(last['text'], max(len(last['text']) - over, 20))
+            body = render()
     return S.fit_threads(body, lang), disc
 
 
