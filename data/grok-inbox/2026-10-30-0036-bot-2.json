@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2115822508746170468": {
+      "en_summary": "Learn more about the ATAC Credit Rotation ETF $JOJO at https://atacfunds.com/jojo/. Lead-Lag Publishing, LLC is not an affiliate of Tidal/Toroso or ACA/Foreside.",
+      "zh_summary": "更多關於 ATAC Credit Rotation ETF $JOJO 的資訊請見 https://atacfunds.com/jojo/。Lead-Lag Publishing, LLC 並非 Tidal/Toroso 或 ACA/Foreside 的關聯方。",
+      "tickers": ["JOJO"],
+      "stance": "中性",
+      "stance_by_ticker": {"JOJO": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115821277676294373": {
+      "en_summary": "The S&P 500 Equal Weight $RSP is rallying today, up 85 bps, while the Mag 7 $MAGS drops 2%.",
+      "zh_summary": "標普 500 等權重 $RSP 今日上漲，上升 85 個基點，而 Mag 7 $MAGS 下跌 2%。",
+      "tickers": ["RSP", "MAGS"],
+      "stance": "中性",
+      "stance_by_ticker": {"RSP": "中性", "MAGS": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115819568363188321": {
+      "en_summary": "$OPEN. Mike Alfred joins the board of directors at Opendoor (NASDAQ: OPEN), an important company solving a big problem in a massive market. He has begun working with Kaz and the board.",
+      "zh_summary": "$OPEN。Mike Alfred 加入 Opendoor（NASDAQ: OPEN）董事會，這是一家在龐大市場中解決重大問題的重要公司。他已開始與 Kaz 及董事會合作。",
+      "tickers": ["OPEN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"OPEN": "睇好"},
+      "horizon": "中線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"OPEN": "Mike Alfred joins board"}
+    },
+    "2115819502357324248": {
+      "en_summary": "$MRVL is projected to grow profits nearly 10x to ~$14B by FY2029 as operating margins climb to 44%. With hyperscalers like $GOOGL and $MSFT still ramping AI spending, Marvell wants $LITE laser capacity.",
+      "zh_summary": "$MRVL 預計到 FY2029 利潤增長近 10 倍至約 $14B，營運利潤率攀升至 44%。隨著 $GOOGL 和 $MSFT 等超大規模企業持續增加 AI 支出，Marvell 希望獲得 $LITE 激光產能。",
+      "tickers": ["MRVL", "GOOGL", "MSFT", "LITE"],
+      "stance": "睇好",
+      "stance_by_ticker": {"MRVL": "睇好", "GOOGL": "中性", "MSFT": "中性", "LITE": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MRVL": "profits nearly 10x to ~$14B by FY2029, margins to 44%"}
+    },
+    "2115817466697830519": {
+      "en_summary": "Yesterday on @CNBC used big positive gamma at $550 in $MSFT to structure a call diagonal spread. Not a home run trade, but a decent trade.",
+      "zh_summary": "昨日在 @CNBC 使用 $MSFT $550 的大型正 gamma 來構建看漲對角價差。不是本壘打交易，但算是不錯的交易。",
+      "tickers": ["MSFT"],
+      "stance": "睇好",
+      "stance_by_ticker": {"MSFT": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MSFT": "positive gamma at $550 for call diagonal spread"}
+    }
+  }
+}
