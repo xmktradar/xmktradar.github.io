@@ -1,8 +1,9 @@
 """Instagram plan (Tim, 2026-10-29, thread 「制定 IG 吸引人流方案」): last pass on the post files before Publish.
 
-  1. Instagram gets Chinese only. Every English Instagram caption, Story tag line and Reel caption is
-     emptied; X, Threads and Facebook keep their English text. An empty instagram field tells the bots
-     not to post that one to Instagram.
+  1. Instagram and Threads get Chinese only (Threads added by Tim 2026-10-29: 「IG & Threads 之後永遠只係發中文」).
+     Every English Instagram caption, Story tag line, Reel caption and Threads text is emptied, and the
+     English half of ig_threads_daily is dropped; X and Facebook keep their English text. An empty
+     instagram / threads field tells the bots not to post that one there.
   2. Earnings picture posts: at most IG_EARNINGS_PER_DAY (2) a day go to Instagram, the largest market
      caps first, the 10:00 slot before the 22:00 one. Each item gets ig: true/false; the captions are kept
      (the 11:00 earnings video copies its caption from an item).
@@ -29,6 +30,8 @@ from humanize import BRAND, TAG_RE  # noqa: E402
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FILES = ('data/social-posts.json', 'data/earnings-posts.json', 'data/tutorial-posts.json', 'data/macro-week.json')
 IG_LANGS = ('zh',)
+THREADS_LANGS = ('zh',)
+TH_KEYS = ('threads',)  # a string under one of these is a Threads text
 IG_EARNINGS_PER_DAY = 2
 IG_KEYS = ('instagram', 'ig_reel')  # a string under one of these is an Instagram caption
 SKIP_KEYS = {'url', 'urls', 'link', 'title', 'quotes', 'themes', 'slides', 'av', 'avatar', 'bull_reasons', 'bear_reasons',
@@ -94,32 +97,33 @@ def add_question(text):
     return '\n'.join(head + ['', q, ''] + lines[bi:])
 
 
-def _walk(obj, lang=None, ig=False, key=None):
-    """Rewrite Instagram strings under obj in place."""
+def _walk(obj, lang=None, ig=False, key=None, th=False):
+    """Rewrite Instagram and Threads strings under obj in place."""
     if isinstance(obj, dict):
         for k, v in list(obj.items()):
             if k in SKIP_KEYS:
                 continue
             lg = k if k in ('zh', 'en') else lang
             ig_here = ig or k in IG_KEYS
+            th_here = th or k in TH_KEYS
             if isinstance(v, str):
-                obj[k] = _fix(v, lg, ig_here, k)
+                obj[k] = _fix(v, lg, ig_here, k, th_here)
             elif isinstance(v, (dict, list)):
-                _walk(v, lg, ig_here, k)
+                _walk(v, lg, ig_here, k, th_here)
     elif isinstance(obj, list):
         for i, v in enumerate(obj):
             if isinstance(v, str):
-                obj[i] = _fix(v, lang, ig, key)
+                obj[i] = _fix(v, lang, ig, key, th)
             elif isinstance(v, (dict, list)):
-                _walk(v, lang, ig, key)
+                _walk(v, lang, ig, key, th)
     return obj
 
 
-def _fix(v, lang, ig, key):
+def _fix(v, lang, ig, key, th=False):
     if re.fullmatch(r'https?://\S+', v.strip() or 'x'):
         return v
-    if lang == 'en' and (ig or key == 'story'):
-        return ''  # Instagram (posts, Story, Reels) is Chinese only
+    if lang == 'en' and (ig or th or key == 'story'):
+        return ''  # Instagram (posts, Story, Reels) and Threads are Chinese only
     if lang == 'zh' and ig:
         return add_question(v)
     return v
@@ -148,7 +152,12 @@ def apply(data, name=''):
     _walk(data)
     if name.endswith('earnings-posts.json'):
         _earnings(data)
+    daily = data.get('ig_threads_daily')
+    if isinstance(daily, dict):
+        for lang in [k for k in daily if k not in IG_LANGS]:
+            del daily[lang]  # the daily IG + Threads posts are Chinese only
     data['ig_langs'] = list(IG_LANGS)
+    data['threads_langs'] = list(THREADS_LANGS)
     return data
 
 
@@ -156,22 +165,25 @@ def problems(data, name=''):
     """What in data breaks the plan (empty list when fine)."""
     out = []
 
-    def walk(o, path, lang=None, ig=False, key=None):
+    def walk(o, path, lang=None, ig=False, key=None, th=False):
         if isinstance(o, dict):
             for k, v in o.items():
                 if k not in SKIP_KEYS:
-                    walk(v, f'{path}.{k}', k if k in ('zh', 'en') else lang, ig or k in IG_KEYS, k)
+                    walk(v, f'{path}.{k}', k if k in ('zh', 'en') else lang, ig or k in IG_KEYS, k, th or k in TH_KEYS)
         elif isinstance(o, list):
             for n, v in enumerate(o):
-                walk(v, f'{path}[{n}]', lang, ig, key)
+                walk(v, f'{path}[{n}]', lang, ig, key, th)
         elif isinstance(o, str) and o.strip() and not re.fullmatch(r'https?://\S+', o.strip()):
             if lang == 'en' and (ig or key == 'story'):
                 out.append(f'{path}: English Instagram text')
+            elif lang == 'en' and th:
+                out.append(f'{path}: English Threads text')
             if lang == 'zh' and ig and any(ln.strip() in BRAND['zh'] for ln in o.split('\n')):
                 body = o.split('\n')[:[ln.strip() in BRAND['zh'] for ln in o.split('\n')].index(True)]
                 if not any(_is_question(ln) for ln in body):
                     out.append(f'{path}: no question')
     walk(data, name)
+    out += [f'{name}: ig_threads_daily.{k} is not Chinese' for k in (data.get('ig_threads_daily') or {}) if k not in IG_LANGS]
     if name.endswith('earnings-posts.json'):
         per_day = {}
         for s in (data.get('slots') or {}).values():

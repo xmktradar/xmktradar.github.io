@@ -215,7 +215,7 @@ jobs:
       - name: Instagram plan (Chinese only, at most 2 earnings posts a day, a question at the end; Tim 2026-10-29)
         continue-on-error: true
         run: |
-          python3 tools/ig_plan.py && python3 tools/ig_plan.py --check || echo "::error::IG 方案檢查唔合格（tools/ig_plan.py），bot 會照手冊只發中文"
+          python3 tools/ig_plan.py && python3 tools/ig_plan.py --check || echo "::error::IG／Threads 方案檢查唔合格（tools/ig_plan.py），bot 會照手冊只發中文"
       - name: Slim homepages
         run: python3 tools/slim_pages.py --slim
       - name: Check the pages
