@@ -12,13 +12,11 @@ episode n (for checking a single episode); TUTORIAL_FORCE=1 rebuilds today's epi
 """
 import html
 import os
-import re
 from collections import Counter
 from datetime import date, timedelta
 
 from sitedata import load, notice, now_hk, read_json, work, write_json
-from share import fit_threads, fit_threads_posts, page_url, xlen
-from utm import normalize_file, tag_posts
+from humanize import humanize
 
 SITE = 'https://thecrowdtape.com/'
 LANGS = ('zh', 'en')
@@ -26,17 +24,8 @@ SOCIAL_HOUR = 7
 NOT_STOCKS = {'SPY', 'QQQ', 'IWM', 'DIA', 'VOO', 'VTI', 'GLD', 'SLV', 'TLT', 'BTC', 'ETH', 'SOL', 'DXY', 'VIX', 'TQQQ', 'SQQQ'}
 
 TXT = {
-    'zh': dict(series='📘 The Crowd Tape 教學', how='👉 點用：', bio='網站免費，連結喺 bio 👉 thecrowdtape.com',
-               give='☕ 鍾意就支持我哋：bio 連結，網站底部 PayPal 🙏', follow='Follow @thecrowdtape，逢星期六日教你用一個功能。',
-               live='試吓 👉 ', give_s='☕ 鍾意就支持我哋 👉 ', disc='⚠️ 唔構成投資建議',
-               disc_long='⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。投資有風險，請自行判斷。',
-               tags='#美股 #港人投資 #美股投資 #投資 #USStocks #StockMarket #香港投資 #投資教學 #美股新手'),
-    'en': dict(series='📘 The Crowd Tape guide', how='👉 How: ', bio='The site is free. Link in bio 👉 thecrowdtape.com',
-               give='☕ Enjoy it? Buy us a coffee: link in bio, PayPal at the bottom of the site 🙏',
-               follow='Follow @thecrowdtape: one feature every Saturday and Sunday.',
-               live='Try it 👉 ', give_s='☕ Support the site 👉 ', disc='⚠️ Not investment advice',
-               disc_long='⚠️ A summary of public social media posts, not investment advice. Investing involves risk; do your own research.',
-               tags='#StockMarket #USStocks #Stocks #Investing #FinTwit #WallStreet #InvestingTips #StocksForBeginners'),
+    'zh': dict(series=lambda n, total: f'The Crowd Tape 小教學 {n}/{total}', how='怎麼用：', tags='#美股 #投資教學'),
+    'en': dict(series=lambda n, total: f'The Crowd Tape tip {n}/{total}', how='How: ', tags='#StockMarket #InvestingTips'),
 }
 
 
@@ -75,41 +64,17 @@ def fill(s, ex):
     return s
 
 
-def posts(lang, n, total, e, url):
+def posts(lang, n, total, e):
+    """Per-platform captions. No links (Tim, 2026-10-29): tools/humanize.py adds the brand line and the
+    disclaimer, keeps at most 3 hashtags and fits X (280) and Threads (500) by dropping lines from the end."""
     L = TXT[lang]
-    head = f"{L['series']} {n}/{total}｜{e['t']}" if lang == 'zh' else f"{L['series']} {n}/{total} · {e['t']}"
+    head = f"{e['t']}（{L['series'](n, total)}）" if lang == 'zh' else f"{e['t']} ({L['series'](n, total)})"
     how = L['how'] + e['how']
-    tags = L['tags']
-    give_url = page_url(lang, '#donate')
-    give = f"{L['give_s']}{give_url}"
-    ig = '\n\n'.join([head, e['b'], how, L['bio'], L['give'], L['follow'], L['disc_long'], tags])
-    fb = '\n\n'.join([head, e['b'], how, f"{L['live']}{url}", give, L['follow'], L['disc_long'], tags])
-    # Threads: 500 characters, one topic tag. Drop the second paragraph of the body if it is too long.
-    body = e['b']
-    while True:
-        threads = '\n\n'.join([head, body, how, f"{L['live']}{url}\n{give}\n{L['disc']}", tags.split(' ')[0]])
-        if len(threads) <= 480 or '\n' not in body:
-            break
-        body = body.rsplit('\n', 1)[0]
-    threads = fit_threads(threads, lang)
-    # X: 280 with CJK counted double. Headline, link, hashtags; then the first body line, the how line and the
-    # donation line while they still fit.
-    xtags = ' '.join(tags.split(' ')[:3])
-    first = e['b'].split('\n')[0]
-    x = None
-    for parts in ([head, first, f"{L['live']}{url}\n{give}\n{L['disc']}", xtags],
-                  [head, first, f"{L['live']}{url}\n{L['disc']}", xtags],
-                  [head, how, f"{L['live']}{url}\n{L['disc']}", xtags],
-                  [head, f"{L['live']}{url}\n{L['disc']}", xtags],
-                  [head, f"{L['live']}{url}", tags.split(' ')[0]]):
-        x = '\n\n'.join(parts)
-        if xlen(x) <= 270:
-            break
-    reddit = {'title': re.sub(r'^📘\s*', '', head),
-              'body': '\n\n'.join([e['b'], how, f"{L['live']}[{url}]({url})", f"{L['give_s']}[{give_url}]({give_url})",
-                                   L['disc_long'], tags])}
-    return {'instagram': ig, 'threads': threads, 'x': x, 'reddit': reddit, 'facebook': fb,
-            'story': ' '.join(tags.split(' ')[:5])}
+    full = '\n\n'.join([head, e['b'], how, L['tags']])
+    short = '\n\n'.join([head, e['b'].split('\n')[0], how, L['tags']])
+    return {'instagram': humanize(full, lang, 'post', 'instagram'), 'threads': humanize(full, lang, 'post', 'threads'),
+            'x': humanize(short, lang, 'post', 'x'), 'reddit': {'title': head, 'body': humanize(full, lang)},
+            'facebook': humanize(full, lang, 'post', 'facebook'), 'story': L['tags']}
 
 
 def page(tp):
@@ -179,15 +144,9 @@ def main():
         ex = {'TK': tk, 'TKL': tk.lower()[:3], 'ACC': acc, 'LANG': lang, 'N': n_acc}
         txt = {k: fill(v, ex) for k, v in e[lang].items()}
         shot = {k: fill(v, ex) if isinstance(v, str) else v for k, v in e['shot'].items()}
-        go = shot.get('go', '')
-        url = page_url(lang, go)
-        tp['posts'][lang] = posts(lang, n, len(eps), txt, url)
+        tp['posts'][lang] = posts(lang, n, len(eps), txt)
         job['langs'][lang] = {'title': txt['t'], 'how': txt['how'], 'shot': shot}
-    tag_posts(tp['posts'], 'tutorial')
-    fit_threads_posts(tp['posts'])
     write_json('data/tutorial-posts.json', tp, indent=1)
-    normalize_file('data/tutorial-posts.json')
-    tp = read_json('data/tutorial-posts.json')
     os.makedirs('social', exist_ok=True)
     open('social/tutorial.html', 'w', encoding='utf-8').write(page(tp))
     write_json(work('tutorial.json'), job)

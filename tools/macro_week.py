@@ -36,19 +36,19 @@ NAMES = {
 }
 IMP = {'bullish': 'bull', 'bearish': 'bear', 'neutral': 'neu'}
 TXT = {
-    'zh': dict(head='🌐 本週宏觀｜{N} 個帳號點睇大環境', short='🌐 本週宏觀', bull='利好', bear='利淡', neu='中性',
+    'zh': dict(head='這星期我們追蹤的 {N} 個 X 帳號，最常聊的宏觀話題是這幾個', short='這星期大家最常聊的宏觀話題', bull='利好', bear='利淡', neu='中性',
                up='比上週轉好 ▲', dn='比上週轉差 ▼', flat='同上週差唔多', none='上週未有數據',
-               intro='我哋追蹤嘅 {N} 個 X 帳號，呢個星期最多人講嘅宏觀題目：', quiet='本週宏觀觀點唔多，去網站睇各帳號最新講法。',
+               intro='', quiet='這星期談宏觀的人不多，各帳號的最新說法都整理在網站上。',
                more='9 個主題全部喺呢度 👉 ',
                give='☕ 鍾意就支持我哋：bio 連結，網站底部 PayPal 🙏', give_s='☕ 鍾意就支持我哋 👉 ',
                follow='Follow @thecrowdtape，逢星期六出一週宏觀總結。', disc='⚠️ 唔構成投資建議',
                disc_long='⚠️ 只係整理公開社交媒體貼文，唔構成投資建議。投資有風險，請自行判斷。',
                tags='#美股 #宏觀經濟 #聯儲局 #港人投資 #美股投資 #USStocks #Macro #StockMarket #投資'),
-    'en': dict(head='🌐 This week in macro · how {N} accounts see the big picture', short='🌐 This week in macro',
+    'en': dict(head='The macro topics the {N} X accounts we follow talked about most this week', short='What X talked about in macro this week',
                bull='bullish', bear='bearish', neu='neutral', up='better than last week ▲', dn='worse than last week ▼',
                flat='about the same as last week', none='no data for last week yet',
-               intro='The macro topics the {N} X accounts we track talked about most this week:',
-               quiet='Not many macro views this week. See each account\'s latest take on the site.',
+               intro='',
+               quiet='Not many macro views this week. Each account\'s latest take is on our site.',
                more='All 9 topics 👉 ',
                give='☕ Enjoy it? Buy us a coffee: link in bio, PayPal at the bottom of the site 🙏', give_s='☕ Support the site 👉 ',
                follow='Follow @thecrowdtape for a macro roundup every Saturday.', disc='⚠️ Not investment advice',
@@ -56,7 +56,7 @@ TXT = {
                tags='#Macro #StockMarket #USStocks #Fed #Economy #Investing #FinTwit #WallStreet'),
 }
 SUMKEY = {'zh': 'zh_summary', 'en': 'en_summary'}
-NUM = ['1️⃣', '2️⃣', '3️⃣']
+NUM = ['1.', '2.', '3.']  # plain numbers, no emoji (Tim, 2026-10-29)
 
 
 def theme_of(p):
@@ -177,7 +177,7 @@ def posts(lang, w, rng):
             say = f"💬 {t}" if t.lower().startswith('@' + q['acc'].lower()) else \
                 f"💬 @{q['acc']}：「{t}」" if lang == 'zh' else f"💬 @{q['acc']}: “{t}”"
         blocks.append((line, say))
-    body = '\n\n'.join([L['intro']] + ['\n'.join(x for x in b if x) for b in blocks]) if blocks else L['quiet']
+    body = '\n\n'.join([x for x in [L['intro']] if x] + ['\n'.join(x for x in b if x) for b in blocks]) if blocks else L['quiet']
     tags = L['tags']
     # Line 1 is the top theme and its counts. The old heading and every theme block stay under it.
     key = macro_ig_key_line(lang, w)
@@ -186,7 +186,7 @@ def posts(lang, w, rng):
     # Threads: 500 characters; drop the quotes, then the intro, if too long.
     short_body = '\n'.join(b[0] for b in blocks) if blocks else L['quiet']
     threads = None
-    for b in (body, '\n\n'.join([L['intro'], short_body]) if blocks else body, short_body):
+    for b in (body, '\n\n'.join([x for x in [L['intro'], short_body] if x]) if blocks else body, short_body):
         threads = '\n\n'.join([head, b, f"{L['more']}{url}\n{give}\n{L['disc']}", tags.split(' ')[0]])
         if len(threads) <= 480:
             break
@@ -273,7 +273,7 @@ def main():
     write_json('data/macro-week.json', mw, indent=1)
     from ig_boost import apply_macro_file
     apply_macro_file('data/macro-week.json')
-    mw = read_json('data/macro-week.json')
+    mw = read_json('data/macro-week.json')  # apply_macro_file ends with tools/humanize.py: no links, plain wording
     os.makedirs('social', exist_ok=True)
     open('social/macro.html', 'w', encoding='utf-8').write(page(mw))
     write_json(work('macro_week.json'), {'range': rng, 'themes': w['themes'], 'top': w['top'], 'names': NAMES, 'accounts': w['accounts']})

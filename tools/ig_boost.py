@@ -28,6 +28,7 @@ import subprocess
 import sys
 
 import date_kst
+from humanize import humanize_tree
 from sitedata import read_json, write_json
 from share import (LANGS, SITE, IG_CTA_COPY, IG_CTA_REL, IG_BIO, ig_cta_url,
                    install_ig_headline, sanitize_instagram, sanitize_instagram_tree,
@@ -290,6 +291,7 @@ def apply_social_obj(data, root=None):
     reel_day = data.get('date_kst') or data.get('date') or ''
     data['ig_reel'] = build_ig_reel(reel_day, 'daily', captions=_social_reel_captions(data), root=root)
     sanitize_instagram_tree(data.get('ig_reel'))
+    humanize_tree(data)
     return data
 
 
@@ -305,6 +307,7 @@ def apply_macro_obj(data, root=None):
         date_kst._place(data, 'date_kst', day, after='date' if 'date' in data else None)
     data['ig_reel'] = build_ig_reel(day, 'macro-week', captions=_macro_reel_captions(data), root=root)
     sanitize_instagram_tree(data.get('ig_reel'))
+    humanize_tree(data)
     return data
 
 
