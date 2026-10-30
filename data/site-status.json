@@ -1,43 +1,49 @@
 {
  "note": "Written by GitHub Actions on every update. SuperGrok daily check reads this.",
- "checked_hkt": "2026-10-30 14:43",
- "generated_hkt": "2026-10-30 14:24",
- "cutoff_hkt": "2026-10-30T11:42:26+08:00",
- "posts_on_site": 6176,
- "added_this_run": 0,
+ "checked_hkt": "2026-10-30 15:09",
+ "generated_hkt": "2026-10-30 14:50",
+ "cutoff_hkt": "2026-10-30T12:54:51+08:00",
+ "posts_on_site": 6196,
+ "added_this_run": 20,
  "added_without_en_summary": 0,
- "waiting_for_summary": 693,
- "waiting_with_stock": 232,
- "expired_unsummarised_this_run": 4,
- "chitchat_skipped_this_run": 42,
+ "waiting_for_summary": 674,
+ "waiting_with_stock": 212,
+ "expired_unsummarised_this_run": 1,
+ "chitchat_skipped_this_run": 27,
  "pruned_this_run": 0,
  "fetch_failed": [],
  "warnings": [
-  "未分析：693 則新帖等待 Grok 分析"
+  "未分析：674 則新帖等待 Grok 分析"
  ],
- "writeups_applied": [],
+ "writeups_applied": [
+  "zh/daily 2026-10-30",
+  "zh/weekly 2026-10-30",
+  "zh/monthly 2026-10-30",
+  "zh/highlights 2026-10-30",
+  "zh/briefing 2026-10-30",
+  "en/daily 2026-10-30",
+  "en/weekly 2026-10-30",
+  "en/monthly 2026-10-30",
+  "en/highlights 2026-10-30",
+  "en/briefing 2026-10-30"
+ ],
  "writeups_rejected": [],
  "latest_writeups": {
   "zh": {
-   "daily": "2026-10-28",
-   "weekly": "2026-10-28",
-   "monthly": "2026-10-28",
-   "highlights": "2026-10-28",
-   "briefing": "2026-10-28"
+   "daily": "2026-10-30",
+   "weekly": "2026-10-30",
+   "monthly": "2026-10-30",
+   "highlights": "2026-10-30",
+   "briefing": "2026-10-30"
   },
   "en": {
-   "daily": "2026-10-28",
-   "weekly": "2026-10-28",
-   "monthly": "2026-10-28",
-   "highlights": "2026-10-28",
-   "briefing": "2026-10-28"
+   "daily": "2026-10-30",
+   "weekly": "2026-10-30",
+   "monthly": "2026-10-30",
+   "highlights": "2026-10-30",
+   "briefing": "2026-10-30"
   }
  },
- "layout_warnings": [
-  "zh 1280px：今日重點卡有 0 張（應該 3 張）",
-  "zh 390px：今日重點卡有 0 張（應該 3 張）",
-  "en 1280px：今日重點卡有 0 張（應該 3 張）",
-  "en 390px：今日重點卡有 0 張（應該 3 張）"
- ],
- "layout_checked_hkt": "2026-10-30 14:46"
+ "layout_warnings": [],
+ "layout_checked_hkt": "2026-10-30 15:13"
 }
