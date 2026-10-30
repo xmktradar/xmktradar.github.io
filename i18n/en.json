@@ -409,7 +409,7 @@
   "免責聲明：": "Disclaimer: ",
   "所有內容整理自被追蹤帳號的公開貼文，只反映帳號本身的說法；任何「資金流向」或「交易紀錄」均為「據貼文所述」，未經查證。本頁不構成投資建議。": "All content is compiled from public posts by tracked accounts and reflects only those accounts’ own claims; any “fund flows” or “trade records” are “per the post” and unverified. This page is not investment advice.",
   "立場資料：": "Stance data: ",
-  "由分析師逐篇標示（已標示": "Tagged post by post by an analyst (",
+  "由分析師逐篇標示（已標示": "Tagged one-by-one by an analyst (",
   "篇貼文）；沒有標示立場的一律列為「未表態」。": "posts tagged); untagged posts are all listed as “No stance”.",
   "尚未有分析師立場資料，所有貼文暫列為「未表態」。": "No analyst stance data yet; all posts are listed as “No stance” for now.",
   "日收市價，截至": "daily close, as of",
@@ -615,7 +615,15 @@
   "本月讀完": "You’re done for this month",
   "本週讀完": "You’re done for this week",
   "關注度熱圖": "Attention heatmap",
-  "感謝你讀完。網站免費、無需登入，每 4 小時更新；如果覺得有用，歡迎請我們喝杯咖啡，你的支持將用於維持網站運作。": "Thanks for reading. The site is free, needs no sign-in and updates every 4 hours. If you find it useful, you’re welcome to buy us a coffee; your support keeps the site running."
+  "感謝你讀完。網站免費、無需登入，每 4 小時更新；如果覺得有用，歡迎請我們喝杯咖啡，你的支持將用於維持網站運作。": "Thanks for reading. The site is free, needs no sign-in and updates every 4 hours. If you find it useful, you’re welcome to buy us a coffee; your support keeps the site running.",
+  "過時": "Stale",
+  "（最新寫手分析截至": "(latest writer analysis as of ",
+  "，非今日": ", not today ",
+  "今日寫手分析尚未更新（仍停在": "Today's writer analysis is not updated yet (still on ",
+  "）。以下先用即時資料自動整理；過時原文已收合，不當作今日主文。": "). Showing a live auto summary for now; the stale writeup is collapsed and is not today's lead.",
+  "查看過時寫手分析（": "View stale writer analysis (",
+  "個有提股票的帳號（今日發文": "accounts that mentioned a stock (posted today ",
+  "）・按討論帳號數排列，點選一行查看每個帳號的理由": ") · sorted by how many stocks they discussed; open a row for each account's reasons"
  },
  "data": {
   "10 年期債息": "10-year Treasury yield",
@@ -941,7 +949,7 @@
   "航空股指數，不是個股": "Airline index, not a stock",
   "韓國上市 SK 海力士（000660.KS），非美股": "Korea-listed SK hynix (000660.KS), not a US stock",
   "黃金（以 COMEX 期貨報價），不是個股": "Gold (quoted via COMEX futures), not a stock",
-  "細價股，Yahoo Finance 暫無股價資料": "Penny stock; no Yahoo Finance price data yet",
+  "細價股，Yahoo Finance 暫無股價資料": "moved to penny stock; Yahoo Finance has no price data",
   "航空股指數，暫無股價資料": "Airline index; no price data yet",
   "今日至今 vs 昨日全日": "Yesterday's overlap vs today",
   "今日至今未再上榜：{removed}": "No longer overlapping: {removed}"

@@ -16,6 +16,7 @@ from datetime import date, datetime, timedelta, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from sitedata import notice, read_json  # noqa: E402
+from build_langs import with_root_redirect  # noqa: E402
 
 SITE = 'https://thecrowdtape.com/'
 LANGS = {'zh': 'zh-Hant', 'en': 'en'}
@@ -584,6 +585,9 @@ def main():
             os.makedirs(f'{base}/{co["t"]}', exist_ok=True)
             open(f'{base}/{co["t"]}/index.html', 'w', encoding='utf-8').write(brief_page(co, lang, stamp, has_stock))
         open(f'{base}/index.html', 'w', encoding='utf-8').write(list_page(cos, lang, stamp))
+    zh_list = open('zh/earnings/index.html', encoding='utf-8').read()
+    os.makedirs('earnings', exist_ok=True)
+    open('earnings/index.html', 'w', encoding='utf-8').write(with_root_redirect(zh_list, 'earnings'))
     # English pages must not carry Chinese (company names and revenue lines come from SEC, in English)
     han = re.compile(r'[一-鿿]')
     for co in cos[:400]:
@@ -595,7 +599,7 @@ def main():
     links = add_stock_links(sorted(keep))
     add_home_links()
     sitemap(sorted(keep))
-    notice(f'財報頁：{len(cos)} 間公司 × 2 個語言，個股頁連結 {links} 個')
+    notice(f'財報頁：{len(cos)} 間公司 × 2 個語言，個股頁連結 {links} 個；根目錄 /earnings/ 已設導向')
 
 
 if __name__ == '__main__':
