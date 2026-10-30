@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2115942348794298562": {
+      "en_summary": "Criticizes Josh Brown's bullish and simplistic views on technology earnings and stock prices, quoting his comments that earnings expectations for tech are going higher, there is an anti-bubble in technology, and Amazon $AMZN earnings could be explosive. Notes Josh recently recommended $RDDT which fell from $106 after hours by 21% or $28, and about $100 over ten weeks, with no contrition or pushback on CNBC.",
+      "zh_summary": "批評Josh Brown對科技股盈利和股價的看漲且過於簡化的觀點，引用他表示科技股盈利預期正在上升、科技股存在反泡沫，以及Amazon $AMZN 盈利可能爆炸性增長的評論。指出Josh最近推薦的 $RDDT 盤後從106美元下跌21%即28美元，過去十週約下跌100美元，CNBC上未見悔意或反駁。",
+      "tickers": ["AMZN", "RDDT"],
+      "stance": "中性",
+      "stance_by_ticker": {"AMZN": "中性", "RDDT": "睇淡"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"RDDT": "推薦後下跌21%至約106美元"}
+    },
+    "2115940898425192827": {
+      "en_summary": "(Reposted by @hkuppy) One thing about the $LINC / $UTI thesis that's definitely working out: we'll all be unemployed soon and we'll need to learn real trades.",
+      "zh_summary": "（由 @hkuppy 轉推）關於 $LINC / $UTI 論點中確實正在實現的一點：我們很快都會失業，並需要學習真正的技藝。",
+      "tickers": ["LINC", "UTI"],
+      "stance": "中性",
+      "stance_by_ticker": {"LINC": "中性", "UTI": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "jobs",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2115935604940882113": {
+      "en_summary": "The AWS guide is good for the AI trade. $AMZN",
+      "zh_summary": "AWS指引對AI交易有利。$AMZN",
+      "tickers": ["AMZN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AMZN": "睇好"},
+      "horizon": "中線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AMZN": "AWS指引有利AI交易"}
+    },
+    "2115933320106189095": {
+      "en_summary": "$AMZN message received: we’re an AI company. Don’t worry about bots threatening retail, AWS will be on fire for years.",
+      "zh_summary": "$AMZN 訊息已收到：我們是一家AI公司。不用擔心機器人威脅零售，AWS將在未來多年表現強勁。",
+      "tickers": ["AMZN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AMZN": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AMZN": "定位為AI公司，AWS將長期強勁"}
+    },
+    "2115930426275422719": {
+      "en_summary": "We gave Claude Opus 5.5 one goal: Beat the Nasdaq. $QQQ: +63.8% $QLD: +111.5% Opus 5.5 Strat: +126.8%",
+      "zh_summary": "我們給Claude Opus 5.5一個目標：擊敗納斯達克。$QQQ：+63.8% $QLD：+111.5% Opus 5.5策略：+126.8%",
+      "tickers": ["QQQ", "QLD"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性", "QLD": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
