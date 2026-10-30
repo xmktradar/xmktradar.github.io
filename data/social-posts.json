@@ -1954,136 +1954,126 @@
    "intraday_close": {
     "post_et": "15:40",
     "post_hkt": "03:40",
-    "generated_at": "2026-10-30T15:44:59-04:00",
+    "generated_at": "2026-10-30T15:48:47-04:00",
     "date": "2026-10-30",
     "date_kst": "2026-10-31",
     "quotes": {
      "SPY": {
-      "price": 753.285,
+      "price": 753.85,
       "prev_close": 769.36,
-      "chg_pct": -2.09,
-      "time": "2026-10-30T15:44:57-04:00"
+      "chg_pct": -2.02,
+      "time": "2026-10-30T15:48:46-04:00"
      },
      "QQQ": {
-      "price": 687.91,
+      "price": 689.03,
       "prev_close": 715.34,
-      "chg_pct": -3.83,
-      "time": "2026-10-30T15:44:58-04:00"
+      "chg_pct": -3.68,
+      "time": "2026-10-30T15:48:47-04:00"
      },
      "DIA": {
-      "price": 515.935,
+      "price": 516.14,
       "prev_close": 522.73,
-      "chg_pct": -1.3,
-      "time": "2026-10-30T15:44:52-04:00"
+      "chg_pct": -1.26,
+      "time": "2026-10-30T15:48:41-04:00"
      },
-     "NVDA": {
-      "price": 202.95,
-      "prev_close": 213.66,
-      "chg_pct": -5.01,
-      "time": "2026-10-30T15:44:59-04:00"
+     "GOOGL": {
+      "price": 279.3,
+      "prev_close": 283.82,
+      "chg_pct": -1.59,
+      "time": "2026-10-30T15:48:47-04:00"
      },
-     "RDDT": {
-      "price": 91.73,
-      "prev_close": 129.6,
-      "chg_pct": -29.22,
-      "time": "2026-10-30T15:45:00-04:00"
+     "CRWV": {
+      "price": 54.85,
+      "prev_close": 60.74,
+      "chg_pct": -9.7,
+      "time": "2026-10-30T15:48:47-04:00"
      },
-     "META": {
-      "price": 614.355,
-      "prev_close": 624.52,
-      "chg_pct": -1.63,
-      "time": "2026-10-30T15:44:59-04:00"
+     "AAPL": {
+      "price": 344.03,
+      "prev_close": 348.91,
+      "chg_pct": -1.4,
+      "time": "2026-10-30T15:48:47-04:00"
      },
-     "TSLA": {
-      "price": 398.485,
-      "prev_close": 403.3,
-      "chg_pct": -1.19,
-      "time": "2026-10-30T15:45:01-04:00"
+     "IREN": {
+      "price": 23.855,
+      "prev_close": 26.25,
+      "chg_pct": -9.12,
+      "time": "2026-10-30T15:48:47-04:00"
      }
     },
     "quote_time": {
-     "et": "2026-10-30T15:45:01-04:00",
-     "hkt": "2026-10-31 03:45"
+     "et": "2026-10-30T15:48:47-04:00",
+     "hkt": "2026-10-31 03:48"
     },
     "quote_source": "Yahoo Finance",
     "quotes_ok": true,
     "fallback": false,
     "hot": [
      {
-      "ticker": "NVDA",
-      "chg_pct": -5.01,
-      "bull": 3,
-      "bear": 0,
+      "ticker": "GOOGL",
+      "chg_pct": -1.59,
+      "bull": 1,
+      "bear": 3,
       "accounts": [
-       "Jason",
+       "saxena_puru",
+       "hkuppy",
+       "EliteOptions2",
+       "spotgamma",
        "StockSavvyShay",
-       "munster_gene",
-       "Beth_Kindig",
-       "garyblack00",
-       "Mr_Derivatives",
-       "kevinxu",
+       "TheTranscript_",
+       "InvestorsLive",
+       "Mr_Derivatives"
+      ]
+     },
+     {
+      "ticker": "CRWV",
+      "chg_pct": -9.7,
+      "bull": 1,
+      "bear": 1,
+      "accounts": [
+       "ripster47",
+       "spotgamma",
+       "StockSavvyShay",
        "RedDogT3"
       ]
      },
      {
-      "ticker": "RDDT",
-      "chg_pct": -29.22,
-      "bull": 0,
-      "bear": 10,
-      "accounts": [
-       "ripster47",
-       "StockSavvyShay",
-       "OptionsMike",
-       "OptionsHawk",
-       "Greenbackd",
-       "carlquintanilla",
-       "dampedspring",
-       "JC_ParetsX"
-      ]
-     },
-     {
-      "ticker": "META",
-      "chg_pct": -1.63,
-      "bull": 2,
-      "bear": 2,
-      "accounts": [
-       "RedDogT3",
-       "TrendSpider",
-       "hkuppy",
-       "spotgamma",
-       "KeithMcCullough",
-       "Mr_Derivatives",
-       "Greenbackd",
-       "StockSavvyShay"
-      ]
-     },
-     {
-      "ticker": "TSLA",
-      "chg_pct": -1.19,
-      "bull": 2,
+      "ticker": "AAPL",
+      "chg_pct": -1.4,
+      "bull": 1,
       "bear": 1,
       "accounts": [
-       "RedDogT3",
-       "RyanDetrick",
-       "garyblack00",
+       "TrendSpider",
        "Mr_Derivatives",
-       "InvestorsLive"
+       "carlquintanilla",
+       "StockSavvyShay",
+       "Greenbackd"
+      ]
+     },
+     {
+      "ticker": "IREN",
+      "chg_pct": -9.12,
+      "bull": 1,
+      "bear": 1,
+      "accounts": [
+       "TrendSpider",
+       "StockSavvyShay"
       ]
      }
     ],
     "x": {
      "en": {
-      "text": "Into the close · As of 15:45 ET (03:45 HKT)\n\n$SPY -2.1% · $QQQ -3.8% · $DIA -1.3%\n\n$NVDA -5.0%, 3 accounts bullish on site\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #NVDA #RDDT",
+      "text": "Into the close · As of 15:48 ET (03:48 HKT)\n\n$SPY -2.0% · $QQQ -3.7% · $DIA -1.3%\n\n$GOOGL -1.6%, 3 accounts bearish on site\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #GOOGL #CRWV",
       "url": ""
      }
     },
     "threads": {
      "zh": {
-      "text": "收市前回顧 · 截至 15:45 ET（03:45 HKT）\n\n$SPY -2.1% · $QQQ -3.8% · $DIA -1.3%\n\n$NVDA -5.0%，網站 3 個帳號看好\n$RDDT -29.2%，網站 10 個帳號看空\n$META -1.6%，網站 2 個帳號看好\n$TSLA -1.2%，網站 2 個帳號看好\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #NVDA #RDDT",
+      "text": "收市前回顧 · 截至 15:48 ET（03:48 HKT）\n\n$SPY -2.0% · $QQQ -3.7% · $DIA -1.3%\n\n$GOOGL -1.6%，網站 3 個帳號看空\n$CRWV -9.7%，網站 1 個帳號看好\n$AAPL -1.4%，網站 1 個帳號看好\n$IREN -9.1%，網站 1 個帳號看好\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #GOOGL #CRWV",
       "url": ""
      },
      "en": {
-      "text": "Into the close · As of 15:45 ET (03:45 HKT)\n\n$SPY -2.1% · $QQQ -3.8% · $DIA -1.3%\n\n$NVDA -5.0%, 3 accounts bullish on site\n$RDDT -29.2%, 10 accounts bearish on site\n$META -1.6%, 2 accounts bullish on site\n$TSLA -1.2%, 2 accounts bullish on site\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #NVDA #RDDT",
+      "text": "Into the close · As of 15:48 ET (03:48 HKT)\n\n$SPY -2.0% · $QQQ -3.7% · $DIA -1.3%\n\n$GOOGL -1.6%, 3 accounts bearish on site\n$CRWV -9.7%, 1 account bullish on site\n$AAPL -1.4%, 1 account bullish on site\n$IREN -9.1%, 1 account bullish on site\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #GOOGL #CRWV",
       "url": ""
      }
     },
@@ -2116,7 +2106,7 @@
     }
    }
   },
-  "generated_at": "2026-10-30T15:44:59-04:00",
-  "generated_hkt": "2026-10-31 03:44"
+  "generated_at": "2026-10-30T15:48:47-04:00",
+  "generated_hkt": "2026-10-31 03:48"
  }
 }
