@@ -159,12 +159,15 @@ def test_ig_reel_structure():
 
     macro = json.load(open(MACRO, encoding='utf-8'))
     mreel = macro['ig_reel']
-    # Posting Saturday at 20:00 HKT, not the data-window end (`to`), which can be earlier.
+    # Posting Saturday at 20:00 HKT. Window `to` can be earlier mid-week; when the
+    # window ends on that Saturday, `to` equals `date` and the reel date matches both.
     mday = date_kst.macro_post_date_kst(macro.get('date'))
     assert mday and mday == macro.get('date')
     assert mreel['date_kst'] == mday
     assert mreel['date_kst'] == macro.get('date_kst')
-    assert mreel['date_kst'] != macro.get('to')
+    to = macro.get('to')
+    if to and to != macro.get('date'):
+        assert mreel['date_kst'] != to
     assert mreel['slot'] == 'macro-week'
     mexp = f'assets/reels/{mday}-macro-week.mp4'
     assert mreel['video_expected_path'] == mexp
