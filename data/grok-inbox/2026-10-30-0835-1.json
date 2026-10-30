@@ -1,1 +1,74 @@
-PLACEHOLDER_TO_REPLACE
+{
+  "posts": {
+    "2115942976480563597": {
+      "en_summary": "@Jake__Wujastyk comments \"It all comes down at once. Amazing\" on the report that Binance was hacked with over $5.6 billion stolen, including $1.45 billion $BTC, $875 million $ETH, $234 million $TRX, $50 million $XAUT, $1.57 billion $USDT, $823 million $USDC, $75 million $WBETH, $88.5 million $RLUSD, and $447.5 million additional cryptocurrencies, described as the largest hack in crypto history by @WatcherGuru.",
+      "zh_summary": "@Jake__Wujastyk 評論「一切同時崩塌。太神奇了」，針對 Binance 遭黑客攻擊、超過 56 億美元被盜的報導，其中包括 14.5 億美元 $BTC、8.75 億美元 $ETH、2.34 億美元 $TRX、5000 萬美元 $XAUT、15.7 億美元 $USDT、8.23 億美元 $USDC、7500 萬美元 $WBETH、8850 萬美元 $RLUSD 以及 4.475 億美元其他加密貨幣，@WatcherGuru 稱此為加密貨幣史上最大黑客事件。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115940242918350906": {
+      "en_summary": "$NVDA is reportedly in talks to provide over $5B in credit guarantees for Nscale's 460MW data center backed by a $45B $ANT compute contract. Nvidia would essentially be financing power and construction rather than GPUs, which could help bring more Vera Rubin capacity online faster while lowering borrowing costs for its customers.",
+      "zh_summary": "$NVDA 據報正洽談為 Nscale 的 460MW 數據中心提供超過 50 億美元信用擔保，該數據中心有 450 億美元 $ANT 算力合約支持。Nvidia 實質上是在為電力與建設融資而非 GPU，這可能有助於更快將更多 Vera Rubin 產能上線，同時降低客戶借款成本。",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "提供超過50億美元信用擔保，加速 Vera Rubin 產能上線並降低客戶融資成本"}
+    },
+    "2115935913914077399": {
+      "en_summary": "$INTC post quoting @jukan05: \"Wow… Intel’s earnings are absolute dogshit.\"",
+      "zh_summary": "$INTC 帖文引用 @jukan05：「哇……英特爾的盈利表現糟透了。」",
+      "tickers": ["INTC"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"INTC": "睇淡"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"INTC": "盈利表現糟透了"}
+    },
+    "2115935868678775080": {
+      "en_summary": "$AMZN plans to start selling Trainium chips outside AWS in late 2027, with CEO Andy Jassy expecting “a very significant business selling chips externally.” Jassy notes those same chips generate more cash flow inside AWS over 5 to 6 years, so Amazon aims to capture both direct chip sales and years of recurring cloud revenue.",
+      "zh_summary": "$AMZN 計劃於 2027 年末開始在 AWS 以外銷售 Trainium 芯片，CEO Andy Jassy 預期「對外銷售芯片將成為非常重要的業務」。Jassy 指出這些芯片在 AWS 內部可於 5 至 6 年內產生更多現金流，因此亞馬遜希望同時獲取直接芯片銷售收入與多年持續的雲端收入。",
+      "tickers": ["AMZN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AMZN": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AMZN": "2027 年末對外銷售 Trainium 芯片，預期成為重要業務，並同時獲取雲端現金流"}
+    },
+    "2115933865349099880": {
+      "en_summary": "Futures: Looks like we will fall well short of Tom Lee’s 8,000 $SPX prediction by end of October.",
+      "zh_summary": "期貨：看起來我們將遠低於 Tom Lee 對 10 月底 $SPX 達到 8000 點的預測。",
+      "tickers": ["SPY"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPY": "睇淡"},
+      "horizon": "短線",
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPY": "預計遠低於 Tom Lee 的 8000 點預測"}
+    }
+  }
+}
