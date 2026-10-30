@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2115929196467982576": {
+      "en_summary": "$AMZN says Leo “remains on track to begin initial service” by year-end as Amazon prepares to enter satellite broadband market. Its planned $11.5B Globalstar acquisition could extend that push into satellite-to-phone through access to spectrum and an existing $AAPL relationship as $ASTS and $SPCX build out their own services.",
+      "zh_summary": "$AMZN 表示 Leo 「仍按計劃於年底開始初步服務」，亞馬遜準備進入衛星寬頻市場。其計劃中的 115 億美元 Globalstar 收購可能透過獲取頻譜以及與 $AAPL 的現有關係，將此擴展至衛星對手機服務，而 $ASTS 與 $SPCX 也在建設各自的服務。",
+      "tickers": ["AMZN", "AAPL", "ASTS", "SPCX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AMZN": "睇好", "AAPL": "中性", "ASTS": "中性", "SPCX": "中性"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AMZN": "衛星寬頻服務年底上線，計劃以115億美元收購Globalstar拓展至衛星手機"}
+    },
+    "2115929199320199465": {
+      "en_summary": "Tech down + hack + $COIN -3.5% $MSTR -4% after ER. $IBIT may be more than just a good equity downside hedge. Quoted: The Binance hacker is depositing stolen $USDT on Aave and borrowing $ETH against it. He’s never paying it back. Doesn’t need to. USDT can be frozen by Tether. ETH can’t.",
+      "zh_summary": "科技股下跌 + 黑客事件 + $COIN -3.5% $MSTR -4%（財報後）。$IBIT 可能不僅是良好的股票下行對沖工具。引用：Binance 黑客將被盜的 $USDT 存入 Aave 並以之借貸 $ETH。他不會償還。不需要。USDT 可被 Tether 凍結，ETH 則不能。",
+      "tickers": ["COIN", "MSTR", "IBIT"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"COIN": "睇淡", "MSTR": "睇淡", "IBIT": "睇好"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"COIN": "下跌 3.5%", "MSTR": "下跌 4%", "IBIT": "可能是良好的股票下行對沖"}
+    },
+    "2115925864013762696": {
+      "en_summary": "$AMZN CEO Andy Jassy says “we've over a million robots now in our fulfillment network” and is now looking to automate the final 100 yards of deliveries. At that scale even small reductions in labor costs per delivery could have a massive impact on retail margins.",
+      "zh_summary": "$AMZN CEO Andy Jassy 表示「我們的履約網絡現在已有超過一百萬個機器人」，並正尋求自動化配送的最後 100 碼。在此規模下，即使每筆配送的人工成本小幅降低，也可能對零售利潤率產生巨大影響。",
+      "tickers": ["AMZN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AMZN": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AMZN": "履約網絡已有超過百萬機器人，正自動化最後配送環節以降低人工成本"}
+    },
+    "2115925562841846121": {
+      "en_summary": "$AMZN CEO post quoting Andy Jassy arguing that the scale and pace of the AI opportunity justify aggressive upfront CapEx, despite the pressure on near-term FCF. Describes it as a once-in-a-lifetime opportunity.",
+      "zh_summary": "$AMZN CEO 帖文引用 Andy Jassy 認為 AI 機會的規模與速度足以證明積極的前期資本支出是合理的，儘管對近期自由現金流造成壓力。將其描述為千載難逢的機會。",
+      "tickers": ["AMZN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AMZN": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AMZN": "AI 機會規模足以證明積極 CapEx 合理，視為千載難逢機會"}
+    },
+    "2115925501344895304": {
+      "en_summary": "lol AI trains on $RDDT so now people don't use it.",
+      "zh_summary": "哈哈，AI 在 $RDDT 上訓練，所以現在人們不再使用它了。",
+      "tickers": ["RDDT"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"RDDT": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"RDDT": "AI 在其上訓練導致人們不再使用"}
+    }
+  }
+}
