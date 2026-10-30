@@ -1,1 +1,94 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2115981180638277900": {
+      "en_summary": "Every Magnificent 7 stock dropped the day after their earnings: MSFT, TSLA, META, GOOGL all red. AMZN (tomorrow) also red. AAPL reports on Monday Nov 2nd, NVDA reports Nov 17th. Will Apple break the trend or continue the trend?",
+      "zh_summary": "每一隻「Magnificent 7」股票在業績公佈後翌日均下跌：MSFT、TSLA、META、GOOGL均下跌。AMZN（明天）亦下跌。AAPL於11月2日星期一公佈業績，NVDA於11月17日公佈。蘋果會打破這趨勢還是繼續這趨勢？",
+      "tickers": ["AAPL", "AMZN", "GOOGL", "META", "MSFT", "NVDA", "TSLA"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "AAPL": "中性",
+        "AMZN": "中性",
+        "GOOGL": "中性",
+        "META": "中性",
+        "MSFT": "中性",
+        "NVDA": "中性",
+        "TSLA": "中性"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115977948448936342": {
+      "en_summary": "$QQQ Analog surprisingly still tracking. The Midterms await… (quoting prior analog for fun).",
+      "zh_summary": "$QQQ 類比令人驚訝地仍在追蹤。中期選舉即將到來……（引用先前的假設類比，僅供娛樂）。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "QQQ": "中性"
+      },
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2115976887793283311": {
+      "en_summary": "$QQQ below $700 overnight…",
+      "zh_summary": "$QQQ 隔夜跌破700美元……",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "QQQ": "中性"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115976375924650241": {
+      "en_summary": "🤔 (reacting to quote: $MSTR CFO just resigned. A sudden departure like that is almost always a huge red flag for any company. Think Enron, WorldCom, Lehman Brothers, etc.)",
+      "zh_summary": "🤔（回應引用：$MSTR 財務長剛辭職。像這樣的突然離職對任何公司幾乎都是巨大的紅旗。想想安然、世通、雷曼兄弟等。）",
+      "tickers": ["MSTR"],
+      "stance": "睇淡",
+      "stance_by_ticker": {
+        "MSTR": "睇淡"
+      },
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {
+        "MSTR": "CFO sudden resignation seen as major red flag similar to past corporate scandals"
+      }
+    },
+    "2115976277366571300": {
+      "en_summary": "Our Q3 2026 $MSTR Earnings Call covered record financial results (848,517 BTC, record earnings), Digital Capital, Digital Equity, Digital Credit, tokenization, and strategy for the next bull market. $STRC daily dividends start Nov 1; $MSTR positioned as Amplified Bitcoin with fortress balance sheet and tokenized equity plans.",
+      "zh_summary": "我們的2026年第三季 $MSTR 業績電話會議涵蓋了創紀錄的財務業績（848,517枚比特幣、創紀錄盈利）、數字資本、數字權益、數字信貸、代幣化以及我們對下一個牛市的策略。$STRC 每日股息從11月1日開始；$MSTR 定位為放大版比特幣，擁有堡壘式資產負債表及代幣化股權計劃。",
+      "tickers": ["MSTR"],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "MSTR": "睇好"
+      },
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {
+        "MSTR": "Record Q3 results with 848,517 BTC held; strategy for next bull market including tokenization and digital credit"
+      }
+    }
+  }
+}
