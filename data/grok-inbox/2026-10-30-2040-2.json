@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2116112010861551991": {
+      "en_summary": "(Reposted by @DougKass) Thank you for calling out these charlatans. Quoted criticism of Josh Brown's bullish views on technology earnings and stock prices, including higher tech earnings expectations, an anti-bubble, potential explosive $AMZN results, and a past $RDDT recommendation that dropped sharply (-21% after hours to $106, down about $100 over ten weeks).",
+      "zh_summary": "（由 @DougKass 轉載）感謝你指出這些騙子。引述對 Josh Brown 關於科技盈利及股價看漲觀點的批評，包括科技盈利預期上升、反泡沫、潛在爆發性 $AMZN 業績，以及過去推薦的 $RDDT 大幅下跌（盤後跌21%至106美元，十週內約跌100美元）。",
+      "tickers": ["AMZN", "RDDT"],
+      "stance": "中性",
+      "stance_by_ticker": {"AMZN": "中性", "RDDT": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116111675237511360": {
+      "en_summary": "While no one paid to pump the US stock market is talking about it, Indonesia's $IDX stock market has crashed -45% since January, and we are short it.",
+      "zh_summary": "當無人談及美國股市時，印尼 $IDX 股市自一月以來已暴跌 45%，我們正做空它。",
+      "tickers": ["IDX"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"IDX": "睇淡"},
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "利淡",
+      "ticker_notes": {"IDX": "自一月以來暴跌45%，正做空"}
+    },
+    "2116110621410574667": {
+      "en_summary": "AI bubble tip of the spear remains South Korea's stock market bubble imploding, down another -3.5% overnight taking the #Quad4 Crash to -37.1% since June. Remain short SK via $EWY and semis via $DRAM.",
+      "zh_summary": "AI泡沫的先鋒仍是南韓股市泡沫崩潰，隔夜再跌3.5%，自六月以來 #Quad4 Crash 累計下跌37.1%。我們繼續透過 $EWY 做空南韓，並透過 $DRAM 做空半導體。",
+      "tickers": ["EWY", "DRAM"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"EWY": "睇淡", "DRAM": "睇淡"},
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "利淡",
+      "ticker_notes": {"EWY": "南韓股市泡沫崩潰，做空", "DRAM": "半導體做空"}
+    },
+    "2116107027315302711": {
+      "en_summary": "While $INTC holds only a 0.70% weighting in SPX, it is currently the second-largest holding in SOXX at about 8.3%, meaning a decline of this magnitude is likely to drag down the broader semiconductor index and could create a significant MOC imbalance in $SOXL, its 3x leveraged equivalent. - Captain Craig @t1alpha",
+      "zh_summary": "雖然 $INTC 在標普500僅佔0.70%權重，但在 SOXX 中是第二大持股約8.3%，因此大幅下跌可能拖累更廣泛半導體指數，並在其三倍槓桿對應 $SOXL 造成顯著MOC失衡。 - Captain Craig @t1alpha",
+      "tickers": ["INTC", "SOXL"],
+      "stance": "中性",
+      "stance_by_ticker": {"INTC": "中性", "SOXL": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116106824445497486": {
+      "en_summary": "$MCD almost at $261, $NKE almost at $39. Max fear in these just 3 weeks ago, and has really had a nice rebound.",
+      "zh_summary": "$MCD 接近261美元，$NKE 接近39美元。三週前極度恐懼，如今已有不錯反彈。",
+      "tickers": ["MCD", "NKE"],
+      "stance": "睇好",
+      "stance_by_ticker": {"MCD": "睇好", "NKE": "睇好"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MCD": "從極度恐懼反彈", "NKE": "從極度恐懼反彈"}
+    }
+  }
+}
