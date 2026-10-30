@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2115905715088802243": {
+      "en_summary": "$INTC falls to lowest price since April following earnings.",
+      "zh_summary": "$INTC 在財報後跌至 4 月以來最低價。",
+      "tickers": ["INTC"],
+      "stance": "中性",
+      "stance_by_ticker": {"INTC": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115905401275167099": {
+      "en_summary": "Added aggressively to $AMZN following the earnings release.",
+      "zh_summary": "在財報發布後積極加倉 $AMZN。",
+      "tickers": ["AMZN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AMZN": "睇好"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AMZN": "Added aggressively after earnings release"}
+    },
+    "2115904790568001986": {
+      "en_summary": "Jim Cramer: \"I am disappointed in Intel, actually furious about it\" $INTC.",
+      "zh_summary": "吉姆·克拉默：「我對英特爾感到失望，實際上是憤怒」$INTC。",
+      "tickers": ["INTC"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"INTC": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"INTC": "Cramer disappointed and furious after earnings"}
+    },
+    "2115904628797919489": {
+      "en_summary": "A person who is consistently wrong is just as valuable as someone who’s always right.",
+      "zh_summary": "一個持續犯錯的人與總是正確的人一樣有價值。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2115904600444166448": {
+      "en_summary": "$QQQ closed at 715.34 today, down 1.4%, snapping a 3-day win streak. Gapped down and never filled: day high 718.07 vs yesterday's 725.61 close. Tomorrow: reclaim and hold 718 = calls. Reject it = puts.",
+      "zh_summary": "$QQQ 今日收於 715.34，下跌 1.4%，結束連續 3 日上漲。開盤跳空低開且未回補：當日高點 718.07 對比昨日收盤 725.61。明日：收復並守住 718 看漲期權。拒絕則看跌期權。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"QQQ": "Closed 715.34 down 1.4%; key level 718 for tomorrow"}
+    }
+  }
+}
