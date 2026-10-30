@@ -882,60 +882,6 @@
    "suggested_kst": "17:00"
   }
  ],
- "atomic_posts": [
-  {
-   "id": "zh-number-daily-posts",
-   "lang": "zh",
-   "slot_kst": "20:00",
-   "date_kst": "2026-10-30",
-   "format": "text_question",
-   "point_type": "number",
-   "hook": "今天帖文數 290",
-   "text": "今天帖文數 290\n\n你怎麼看這個數？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
-   "hashtags": "#美股",
-   "has_link": false,
-   "first_comment": ""
-  },
-  {
-   "id": "zh-stock-MU",
-   "lang": "zh",
-   "slot_kst": "22:30",
-   "date_kst": "2026-10-30",
-   "format": "image_card",
-   "point_type": "stock",
-   "hook": "$MU 14 個帳號看好",
-   "text": "$MU 14 個帳號看好\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #MU",
-   "hashtags": "#美股 #MU",
-   "has_link": false,
-   "ticker": "MU"
-  },
-  {
-   "id": "en-number-daily-posts",
-   "lang": "en",
-   "slot_kst": "20:00",
-   "date_kst": "2026-10-30",
-   "format": "text_question",
-   "point_type": "number",
-   "hook": "Posts today 290",
-   "text": "Posts today 290\n\nWhat do you make of this number?\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket",
-   "hashtags": "#StockMarket",
-   "has_link": false,
-   "first_comment": ""
-  },
-  {
-   "id": "en-stock-MU",
-   "lang": "en",
-   "slot_kst": "22:30",
-   "date_kst": "2026-10-30",
-   "format": "image_card",
-   "point_type": "stock",
-   "hook": "$MU 14 bullish accounts",
-   "text": "$MU 14 bullish accounts\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #MU",
-   "hashtags": "#StockMarket #MU",
-   "has_link": false,
-   "ticker": "MU"
-  }
- ],
  "ig_reel": {
   "date_kst": "2026-10-30",
   "slot": "daily",
@@ -2108,5 +2054,204 @@
   },
   "generated_at": "2026-10-30T15:48:47-04:00",
   "generated_hkt": "2026-10-31 03:48"
- }
+ },
+ "weekend": {
+  "date": "2026-10-31",
+  "date_kst": "2026-10-31",
+  "source": "data/writeup-input.json weekly",
+  "posts": [
+   {
+    "id": "weekend-sat-bulls",
+    "format": "image_card",
+    "langs": {
+     "zh": {
+      "threads": "本週最看好\n\n$SOFI 7 個帳號看好\n$SKHY 5 個帳號看好\n$SMH 5 個帳號看好\n$LLY 4 個帳號看好\n$MA 4 個帳號看好\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SOFI #SKHY",
+      "facebook": "本週最看好\n\n$SOFI 7 個帳號看好\n$SKHY 5 個帳號看好\n$SMH 5 個帳號看好\n$LLY 4 個帳號看好\n$MA 4 個帳號看好\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SOFI #SKHY",
+      "instagram": "本週最看好\n\n$SOFI 7 個帳號看好\n$SKHY 5 個帳號看好\n$SMH 5 個帳號看好\n$LLY 4 個帳號看好\n$MA 4 個帳號看好\n\n今天這些股票裡，你最留意哪一檔？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SOFI #SKHY",
+      "has_link": {
+       "threads": false,
+       "facebook": false,
+       "instagram": false
+      },
+      "first_comment": {
+       "threads": ""
+      }
+     },
+     "en": {
+      "threads": "",
+      "facebook": "Most bullish this week\n\n$SOFI 7 bullish accounts\n$SKHY 5 bullish accounts\n$SMH 5 bullish accounts\n$LLY 4 bullish accounts\n$MA 4 bullish accounts\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #SOFI #SKHY",
+      "instagram": "",
+      "has_link": {
+       "threads": false,
+       "facebook": false,
+       "instagram": false
+      },
+      "first_comment": {
+       "threads": ""
+      }
+     }
+    },
+    "ticker": "SOFI"
+   },
+   {
+    "id": "weekend-sat-totals",
+    "format": "text_question",
+    "langs": {
+     "zh": {
+      "threads": "本週共識數字\n\n看好標的 33 · 看空標的 13\n\n你怎麼看這組數字？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+      "facebook": "本週共識數字\n\n看好標的 33 · 看空標的 13\n\n你怎麼看這組數字？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+      "instagram": "本週共識數字\n\n看好標的 33 · 看空標的 13\n\n你怎麼看這組數字？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+      "has_link": {
+       "threads": false,
+       "facebook": false,
+       "instagram": false
+      },
+      "first_comment": {
+       "threads": ""
+      }
+     },
+     "en": {
+      "threads": "",
+      "facebook": "This week's consensus counts\n\nBullish names 33 · Bearish names 13\n\nWhat do you make of these counts?\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket",
+      "instagram": "",
+      "has_link": {
+       "threads": false,
+       "facebook": false,
+       "instagram": false
+      },
+      "first_comment": {
+       "threads": ""
+      }
+     }
+    }
+   }
+  ]
+ },
+ "atomic_posts": [
+  {
+   "id": "zh-number-daily-posts",
+   "lang": "zh",
+   "slot_kst": "09:00",
+   "date_kst": "2026-10-31",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "今天帖文數 320",
+   "text": "今天帖文數 320\n\n你怎麼看這個數？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "hashtags": "#美股",
+   "has_link": false,
+   "first_comment": ""
+  },
+  {
+   "id": "zh-number-daily-accounts",
+   "lang": "zh",
+   "slot_kst": "11:30",
+   "date_kst": "2026-10-31",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "今天帳號數 58",
+   "text": "今天帳號數 58\n\n你怎麼看這個數？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "hashtags": "#美股",
+   "has_link": false
+  },
+  {
+   "id": "zh-number-daily-originals",
+   "lang": "zh",
+   "slot_kst": "14:00",
+   "date_kst": "2026-10-31",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "今天原創帖 298",
+   "text": "今天原創帖 298\n\n你怎麼看這個數？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "hashtags": "#美股",
+   "has_link": false,
+   "first_comment": ""
+  },
+  {
+   "id": "zh-number-daily-reposts",
+   "lang": "zh",
+   "slot_kst": "17:00",
+   "date_kst": "2026-10-31",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "今天轉帖 22",
+   "text": "今天轉帖 22\n\n你怎麼看這個數？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "hashtags": "#美股",
+   "has_link": false
+  },
+  {
+   "id": "zh-number-daily-bull_views",
+   "lang": "zh",
+   "slot_kst": "20:00",
+   "date_kst": "2026-10-31",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "今天看好觀點 139",
+   "text": "今天看好觀點 139\n\n你怎麼看這個數？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "hashtags": "#美股",
+   "has_link": false,
+   "first_comment": ""
+  },
+  {
+   "id": "en-number-daily-posts",
+   "lang": "en",
+   "slot_kst": "09:00",
+   "date_kst": "2026-10-31",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "Posts today 320",
+   "text": "Posts today 320\n\nWhat do you make of this number?\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket",
+   "hashtags": "#StockMarket",
+   "has_link": false
+  },
+  {
+   "id": "en-number-daily-accounts",
+   "lang": "en",
+   "slot_kst": "11:30",
+   "date_kst": "2026-10-31",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "Accounts today 58",
+   "text": "Accounts today 58\n\nWhat do you make of this number?\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket",
+   "hashtags": "#StockMarket",
+   "has_link": false,
+   "first_comment": ""
+  },
+  {
+   "id": "en-number-daily-originals",
+   "lang": "en",
+   "slot_kst": "14:00",
+   "date_kst": "2026-10-31",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "Original posts today 298",
+   "text": "Original posts today 298\n\nWhat do you make of this number?\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket",
+   "hashtags": "#StockMarket",
+   "has_link": false
+  },
+  {
+   "id": "en-number-daily-reposts",
+   "lang": "en",
+   "slot_kst": "17:00",
+   "date_kst": "2026-10-31",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "Reposts today 22",
+   "text": "Reposts today 22\n\nWhat do you make of this number?\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket",
+   "hashtags": "#StockMarket",
+   "has_link": false,
+   "first_comment": ""
+  },
+  {
+   "id": "en-number-daily-bull_views",
+   "lang": "en",
+   "slot_kst": "20:00",
+   "date_kst": "2026-10-31",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "Bullish views today 139",
+   "text": "Bullish views today 139\n\nWhat do you make of this number?\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket",
+   "hashtags": "#StockMarket",
+   "has_link": false
+  }
+ ]
 }

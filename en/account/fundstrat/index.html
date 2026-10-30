@@ -388,7 +388,7 @@ body .hbar{grid-template-columns:118px minmax(0,1fr) 70px}
 body .hbar .tk{min-width:0;max-width:100%;display:flex;flex-wrap:wrap;align-items:center;gap:3px}
 body .hbar .tk .flag{margin-left:0;max-width:100%;white-space:normal;line-height:1.25;text-align:left}
 @media(max-width:600px){
-  body .hbar{grid-template-columns:84px minmax(0,1fr) 56px;gap:8px}
+  body .hbar{grid-template-columns:84px minmax(0,1fr) 92px;gap:8px}.hbar .n{justify-self:end;text-align:right;white-space:nowrap;overflow:visible}
   body .hbar .tk .flag{font-size:10.5px;padding:1px 6px}
 }
 
@@ -801,7 +801,7 @@ a.go{text-decoration:none}
 td:not(:first-child) .note{white-space:nowrap}
 
 .acc{min-width:0}.acc .bio{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-@media(max-width:600px){.acc-grid{grid-template-columns:minmax(0,1fr)}.hbar{grid-template-columns:60px minmax(0,1fr) 64px}.divehead h1{font-size:26px}.meta{font-size:11.5px}}
+@media(max-width:600px){.acc-grid{grid-template-columns:minmax(0,1fr)}.hbar{grid-template-columns:60px minmax(0,1fr) 88px}.divehead h1{font-size:26px}.meta{font-size:11.5px}}
 
 .grid>.vs-bar{margin:0}.vs-bar .vs-br{flex-basis:100%;height:0}
 @media(max-width:640px){nav.tabs{width:100%}nav.tabs button{padding-left:8px;padding-right:8px}}
@@ -1076,7 +1076,7 @@ header.ap-top{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hd-t
 </div>
 <div class="open-live"><a href="/en/#account/fundstrat">Open the interactive page (all posts)</a></div>
 </main>
-<footer class="wrap foot"><p><a href="/en/">Home</a> · <a href="/en/tools/">Tools</a> · <a href="/en/support/">Support us</a> · <a href="/en/newsletter/">Newsletter</a> · Updated 2026-10-31 03:05 HKT</p></footer>
+<footer class="wrap foot"><p><a href="/en/">Home</a> · <a href="/en/tools/">Tools</a> · <a href="/en/support/">Support us</a> · <a href="/en/newsletter/">Newsletter</a> · Updated 2026-10-31 05:02 HKT</p></footer>
 <script>document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var h='';try{h=new URL(a.href).hostname.toLowerCase()}catch(err){return}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com'))gtag('event','x_outbound',{link_url:a.href,page:'account',lang:document.documentElement.lang||'',transport_type:'beacon'})});</script>
 <button type="button" class="to-top" aria-label="Back to top" title="Back to top">↑</button>
 <style>.to-top{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:30;width:42px;height:42px;padding:0;border-radius:999px;border:1px solid var(--line-strong);background:var(--panel);color:var(--tx-strong);font:700 19px/1 var(--f-body);cursor:pointer;box-shadow:0 3px 10px rgba(59,47,37,.15);opacity:0;pointer-events:none;transition:opacity .2s}
