@@ -1092,31 +1092,34 @@
     "XLV"
    ],
    "bear": [
-    "INTC",
     "RDDT",
+    "INTC",
     "NOW",
+    "SPY",
     "RBLX",
     "QQQ",
-    "SPY",
     "TWLO",
     "COIN",
     "PINS"
    ],
    "split": [
-    "AMZN",
     "SNDK",
+    "AMZN",
     "GOOGL",
     "META",
+    "MRVL",
     "TSLA",
     "MSTR",
     "ORCL",
-    "MSFT",
     "CRWV",
-    "MRVL",
+    "AAPL",
+    "MSFT",
+    "IREN",
     "SBUX",
     "ASTS",
     "AXTI",
     "BMNR",
+    "CBRS",
     "PURR",
     "SMCI",
     "TLT"
@@ -1135,12 +1138,12 @@
     "META",
     "SNDK",
     "NVDA",
-    "GOOG"
+    "SPCX"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-31 02:40"
+   "updated_hkt": "2026-10-31 03:08"
   }
  },
- "updated_hkt": "2026-10-31 02:40",
+ "updated_hkt": "2026-10-31 03:08",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
