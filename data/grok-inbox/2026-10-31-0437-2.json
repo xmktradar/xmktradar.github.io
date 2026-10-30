@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2116238461409562947": {
+      "en_summary": "Less government interference often means more growth. The Free Markets ETF ($FMKT) is built on this belief, investing in companies where deregulation can unlock new value.",
+      "zh_summary": "較少政府干預通常意味著更多增長。自由市場ETF（$FMKT）建立在這一信念之上，投資於去監管能夠釋放新價值的公司。",
+      "tickers": ["FMKT"],
+      "stance": "睇好",
+      "stance_by_ticker": {"FMKT": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    },
+    "2116238163442106524": {
+      "en_summary": "Our firm’s back of the napkin math shows that Nvidia’s $NVDA ACIE segment could potentially overtake hyperscalers in two to six quarters. ACIE revenue grew faster at 138.5% vs 101.2%, QoQ 25% vs 13%. Conservatively overtake in 5-6 quarters at 14% QoQ vs 10%. Dell $DELL agrees, expecting enterprises and neoclouds to contribute half of AI data center capacity growth through 2030, $1 trillion TAM. Unlike hyperscalers, these customers lack budgets for custom chips and prefer ready-to-deploy servers from Dell and Super Micro $SMCI.",
+      "zh_summary": "我們公司的粗略計算顯示，Nvidia的$NVDA ACIE部門可能在兩到六個季度內超越超大規模雲端服務商。ACIE營收增長更快，為138.5%對比101.2%，環比25%對比13%。保守估計在5-6個季度以14%環比增長超越超大規模的10%。Dell $DELL同意，預期企業和新雲端將貢獻至2030年AI數據中心容量增長的一半，總可尋址市場達1萬億美元。與超大規模不同，這些客戶沒有預算購買定制芯片，更偏好Dell和Super Micro $SMCI的即時部署伺服器。",
+      "tickers": ["NVDA", "DELL", "SMCI"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好", "DELL": "睇好", "SMCI": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "ACIE segment growth may overtake hyperscalers in 2-6 quarters, more resilient revenue."}
+    },
+    "2116237481448448322": {
+      "en_summary": "Very ugly day in the markets. $SPY 748.80 spot to watch.",
+      "zh_summary": "市場非常難看的一天。$SPY 748.80是值得關注的點位。",
+      "tickers": ["SPY"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPY": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPY": "Watch 748.80 spot after ugly day."}
+    },
+    "2116237100320223640": {
+      "en_summary": "Worst day for $QQQ since June 5th. But also what happened on June 5th? Something with Iran? I'm not making a joke or something, what was that selloff about?",
+      "zh_summary": "這是自6月5日以來$QQQ最差的一天。但6月5日發生了什麼？與伊朗有關？我不是在開玩笑，那次拋售是關於什麼？",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116237017638117557": {
+      "en_summary": "$qqq getting to that 200day here $684-$685. (Quoted previous: $qqq gapped below August range support.)",
+      "zh_summary": "$qqq正在接近200日均線，這裡是$684-$685。（引用先前：$qqq缺口跌破八月區間支撑。）",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"QQQ": "Approaching 200-day at 684-685."}
+    }
+  }
+}
