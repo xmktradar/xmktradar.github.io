@@ -64,7 +64,7 @@ test('other TradingView links keep aff_id=1172819', () => {
 test('chart block is a plain iframe above the svg', () => {
   const svg = '<section class="c12 panel px-sec"><svg class="px-chart"></svg></section>';
   const html = tvChartBlock('en', 'NVDA', SYMBOLS, svg);
-  assert.match(html, /<iframe class="tv-frame"[^>]*loading="lazy"/);
+  assert.match(html, /<iframe class="tv-frame"[^>]*loading="eager"/);
   assert.equal(/<script/i.test(html), false);
   assert.ok(html.indexOf('class="tv-frame"') < html.indexOf('class="px-chart"'));
   assert.equal(html.includes('aff_id'), false);

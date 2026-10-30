@@ -1441,7 +1441,7 @@ function viewWeekly(){
  const cards=wkAccs.map(accCard).sort((x,y)=>y.n-x.n||x.a.localeCompare(y.a));
  return `<div class="grid">
  ${moneyBar()}
- <section class="c12 analysis"><div class="range">彙整 ${from} 至 ${to}（7 天）</div>
+ <section class="c12 analysis"><div class="range">彙整 ${from} 至 ${to}（7 天）</div>${to<TODAY?'<p class="note wk-roll">每週為滾動 7 天，以最新每週分析的日期為終點；新一份每週分析出爐後會自動滾到截至今日</p>':''}
   <h2>本週重點 ${sm?'':'<span class="sub">每週分析尚未產生，以下由資料自動整理</span>'}</h2>
   ${daysNote(from,to)}
   ${sm?sumBody(sm.s,false):`<p>${rows.length?`獲得最多帳號關注的是 ${rows.slice(0,3).map(r=>tkBtn(r.t)).join('、')}。`:'本週沒有股票被提及。'}高度一致的有 ${aligned.map(r=>tkBtn(r.t)).join('、')||'無'}；明顯分歧的有 ${split.map(r=>tkBtn(r.t)).join('、')||'無'}。本週立場變化 ${chgs.length} 次${chgs.length?'：'+chgs.slice(0,3).map(y=>`@${esc(y.x.acc)} ${tkBtn(y.x.t)} ${y.ch}`).join('；'):''}。</p>`}</section>
@@ -1856,7 +1856,7 @@ function paintChrome(){const m=D.meta;const cut=document.getElementById('cutoff'
  const nonUS=Object.entries(D.prices).filter(([t])=>!UNC(t)&&!isUS(t)).map(([t,p])=>`$${esc(t)} 以 ${esc(p.symbol||t)}（${esc((OV[t]&&OV[t].exchange)||p.exchange||'')}，${CURNAME[curOf(t)]||curOf(t)}，${esc(p.source)}，截至 ${esc(p.as_of)} ${tradeDay(t)}）報價，非美股`);const fet=Object.values(D.prices).map(p=>p.fetched_hkt).sort().pop();const unc=Object.keys(OV).filter(UNC);
  document.getElementById('foot').innerHTML=`<p><b>免責聲明：</b>所有內容整理自被追蹤帳號的公開貼文，只反映帳號本身的說法；任何「資金流向」或「交易紀錄」均為「據貼文所述」，未經查證。本頁不構成投資建議。</p>
 <p>立場資料：${m.stance.files.length?`由分析師逐篇標示（已標示 ${m.stance.matched} 篇貼文）；沒有標示立場的一律列為「未表態」。`:'尚未有分析師立場資料，所有貼文暫列為「未表態」。'}</p>
-<p>${Object.keys(srcs).length?`股價資料截至 ${esc(asof)}（美東交易日）：${Object.keys(srcs).map(esc).join('、')} 日收市價，抓取於 ${esc(fet)} HKT`:'沒有股價資料'}${(()=>{const pm=m.price_missing.filter(t=>!UNC(t));const wn=pm.filter(t=>OV[t]&&OV[t].price_note),wo=pm.filter(t=>!(OV[t]&&OV[t].price_note));return (wn.length?'；'+wn.map(t=>'$'+esc(t)+' 為'+esc(OV[t].price_note)).join('；'):'')+(wo.length?`；暫時未有股價資料：${wo.map(t=>'$'+esc(t)).join(' ')}`:'')})()}${nonUS.length?'；非美股以當地交易所及貨幣報價（個股頁已標示）':''}。</p>
+<p>${Object.keys(srcs).length?`股價資料截至 ${esc(asof)}（美東交易日）：${Object.keys(srcs).map(esc).join('、')} 日收市價，抓取於 ${esc(fet)} HKT`:'沒有股價資料'}${(()=>{const pm=m.price_missing.filter(t=>!UNC(t));const wn=pm.filter(t=>OV[t]&&OV[t].price_note),wo=pm.filter(t=>!(OV[t]&&OV[t].price_note));return (wn.length?'；'+wn.map(t=>'$'+esc(t)+' 轉為'+esc(OV[t].price_note.replace(/^Penny/,'penny'))).join('；'):'')+(wo.length?`；暫時未有股價資料：${wo.map(t=>'$'+esc(t)).join(' ')}`:'')})()}${nonUS.length?'；非美股以當地交易所及貨幣報價（個股頁已標示）':''}。</p>
 ${MAC&&MAC.rows.length?`<p>大市數據：${[...new Set(MAC.rows.map(r=>(r.src||'').replace(/（.*?）|\(.*?\)/g,'').trim()).filter(Boolean))].map(esc).join('、')||'—'}${MAC.as_of?`，截至 ${esc(MAC.as_of)} HKT`:''}。</p>`:''}<p>時間均為香港時間（HKT, UTC+8）。帳號頭像與簡介來自各帳號的 X 個人頁。</p>
 <p>本站部分連結屬聯盟推廣連結，你經由連結註冊或購買，我們可能獲得佣金，你無需多付。佣金不會影響好淡統計。本站內容不構成投資建議。</p>
 <p><a href="tools/">工具</a> · <a href="support/">支持我們</a> · <a href="newsletter/">電子報</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank">TradingView <span class="pj-tag">推廣</span></a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="pj-tag">推廣</span></a> · <a href="advertise/">廣告合作</a> · <a href="about/">關於本站及方法</a></p>`;linkHandles(document.getElementById('foot'))}

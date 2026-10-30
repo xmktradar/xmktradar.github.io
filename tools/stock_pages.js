@@ -312,7 +312,7 @@ function tvWidgetSrc(ticker, symbols, lang) {
 function tvChartBlock(lang, ticker, symbols, svg) {
   const src = tvWidgetSrc(ticker, symbols, lang);
   const title = T[lang].chartTitle(ticker);
-  const frame = `<div class="tv-embed"><iframe class="tv-frame" title="${esc(title)}" src="${esc(src)}" loading="lazy" width="100%" height="420" frameborder="0"></iframe></div>`;
+  const frame = `<div class="tv-embed"><iframe class="tv-frame" title="${esc(title)}" src="${esc(src)}" loading="eager" width="100%" height="420" frameborder="0"></iframe></div>`;
   const fallback = svg ? `<div class="px-fallback">${svg}</div>` : '';
   return `<section class="c12 panel tv-chart">${frame}${fallback}</section>`;
 }
