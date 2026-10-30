@@ -1,1 +1,84 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2116124596382638173": {
+      "en_summary": "Watching $SLV today at the $50/oz area, which has been absolutely pummeled lately.",
+      "zh_summary": "今日正觀察 $SLV 於每盎司 50 美元區域，最近已被大幅打壓。",
+      "tickers": ["SLV"],
+      "stance": "中性",
+      "stance_by_ticker": {"SLV": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116118263394705652": {
+      "en_summary": "$QQQ is now -8.5% off from all-time highs, or near a technical correction by definition.",
+      "zh_summary": "$QQQ 目前較歷史高位下跌 8.5%，按定義接近技術性調整。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116118139582697581": {
+      "en_summary": "U.S. stocks fell sharply pre-market (SPX -1.0%, NDX -2.2%) after weak $INTC and $AMZN results and guidance accelerated a rotation out of tech amid slowing growth. INTC plunged 25% on a soft PC demand outlook projected to persist through mid-2027; AMZN missed overall revenue estimates even as AWS beat and CapEx was higher than expected. Tech peers fell sharply with $NVDA -2.9%, $AVGO -4.0%, $MU -5.2%, and $DELL -10%. Brent crude rose 1.6% to $117/bbl. 10-year yield fell to 4.93% as investors sought safety. BTC dropped 1.5% to $75.6K post Binance’s $6.3B North Korea-linked hack. Gold and silver declined. S&P 2026 EPS estimates remain robust at $369 (+33% YoY) despite the weakness in tech. We remain cautious on $TSLA.",
+      "zh_summary": "美國股市盤前大幅下跌（標普500指數 -1.0%，納斯達克100指數 -2.2%），因 $INTC 與 $AMZN 業績及指引疲弱，加速科技股資金外流，成長放緩。$INTC 因個人電腦需求展望疲軟（預計持續至2027年中）暴跌25%；$AMZN 整體營收低於預期，儘管AWS表現優異且資本支出高於預期。科技同業大幅下跌：$NVDA -2.9%、$AVGO -4.0%、$MU -5.2%、$DELL -10%。布倫特原油上漲1.6%至每桶117美元。10年期國債收益率跌至4.93%，投資者尋求避險。比特幣下跌1.5%至7.56萬美元，因幣安涉及北朝鮮的63億美元黑客事件。黃金與白銀下跌。標普2026年每股盈利預估仍強勁，達369美元（同比+33%），儘管科技股疲弱。我們對 $TSLA 保持謹慎。",
+      "tickers": ["SPY", "QQQ", "INTC", "AMZN", "NVDA", "AVGO", "MU", "DELL", "TSLA"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "SPY": "中性",
+        "QQQ": "中性",
+        "INTC": "睇淡",
+        "AMZN": "中性",
+        "NVDA": "中性",
+        "AVGO": "中性",
+        "MU": "中性",
+        "DELL": "中性",
+        "TSLA": "睇淡"
+      },
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "利淡",
+      "ticker_notes": {"TSLA": "保持謹慎"}
+    },
+    "2116115655305146701": {
+      "en_summary": "Scott Redler’s #630club LIVE Premarket Stock Market Update covering $NVDA $MU $SPCX $SNDK.",
+      "zh_summary": "Scott Redler 的 #630club 直播盤前股市更新，涵蓋 $NVDA、$MU、$SPCX、$SNDK。",
+      "tickers": ["NVDA", "MU", "SPCX", "SNDK"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "未表態", "MU": "未表態", "SPCX": "未表態", "SNDK": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116114640371679520": {
+      "en_summary": "$QQQ and the all important $700 level today.",
+      "zh_summary": "$QQQ 與今日關鍵的 700 美元關口。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
