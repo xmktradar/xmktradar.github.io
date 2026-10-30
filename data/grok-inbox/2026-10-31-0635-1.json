@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2116274462672785479": {
+      "en_summary": "$QQQ post close by @RedDogT3.",
+      "zh_summary": "@RedDogT3 表示 $QQQ 收盤。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116271956987154764": {
+      "en_summary": "BREAKING: Short interest in $QQQ up to ~82 million shares, highest since March 2023. Surged +18 million shares or +28% over last several weeks, nearly doubled YTD. $SPY short interest declined -30 million shares since March to ~92 million, near lowest in at least 5 years. In 2022 bear market peaked at ~90 million for $QQQ and ~180 million for $SPY. Short interest in tech is very high right now. By @KobeissiLetter.",
+      "zh_summary": "突發：$QQQ 空頭倉位升至約 8200 萬股，為 2023 年 3 月以來最高。近數週急增 1800 萬股或 +28%，年初至今近乎翻倍。$SPY 空頭倉位自 3 月以來減少 3000 萬股至約 9200 萬股，接近至少 5 年低點。2022 年熊市高峰時 $QQQ 約 9000 萬股、$SPY 約 1.8 億股。科技股空頭倉位目前非常高。（@KobeissiLetter）",
+      "tickers": ["QQQ", "SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性", "SPY": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2116271110849474986": {
+      "en_summary": "Another monster week is coming with the jobs report + $AAPL $PLTR $AMD $ARM $QCOM earnings and more. Get preview on Monday morning at https://t3live.com/rd. By @RedDogT3.",
+      "zh_summary": "另一個大週即將到來，包括就業報告以及 $AAPL、$PLTR、$AMD、$ARM、$QCOM 等財報。週一早上可獲取預覽：https://t3live.com/rd。（@RedDogT3）",
+      "tickers": ["AAPL", "PLTR", "AMD", "ARM", "QCOM"],
+      "stance": "中性",
+      "stance_by_ticker": {"AAPL": "中性", "PLTR": "中性", "AMD": "中性", "ARM": "中性", "QCOM": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "jobs",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2116263422342160385": {
+      "en_summary": "$INTC down a record 28.5% today. Intel up 67.0% for the year. By @RyanDetrick.",
+      "zh_summary": "$INTC 今日下跌創紀錄 28.5%。Intel 年初至今上漲 67.0%。（@RyanDetrick）",
+      "tickers": ["INTC"],
+      "stance": "中性",
+      "stance_by_ticker": {"INTC": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116262651349127678": {
+      "en_summary": "Blood bath week, let's see if we get a Black Monday this time. We caught $SNDK $QQQ $AMD and more. Sign up for Elite Options Community for real-time trade alerts, live sessions, and more. By @EliteOptions2.",
+      "zh_summary": "本週血洗，看看會否出現黑色星期一。我們抓住了 $SNDK、$QQQ、$AMD 等。加入 Elite Options 社群以獲取即時交易警報、直播環節等。（@EliteOptions2）",
+      "tickers": ["SNDK", "QQQ", "AMD"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SNDK": "中性", "QQQ": "睇淡", "AMD": "中性"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    }
+  }
+}
