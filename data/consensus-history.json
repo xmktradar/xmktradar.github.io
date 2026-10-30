@@ -1029,13 +1029,16 @@
    "bull": [
     "LITE",
     "PLTR",
+    "SPCX",
     "CVNA",
     "MA",
     "CMG",
+    "IWM",
     "KLAC",
     "SHEL",
-    "IWM",
     "TTE",
+    "KRMN",
+    "ONDS",
     "XLP",
     "XLV"
    ],
@@ -1045,18 +1048,20 @@
    ],
    "split": [
     "GOOGL",
+    "NOW",
     "MSFT",
     "FTNT",
     "MRVL",
-    "NOW",
     "CRWV",
     "AMZN",
     "SNDK",
     "MU",
+    "ORCL",
     "META",
     "CAT",
-    "ORCL",
+    "RDDT",
     "NBIS",
+    "BMNR",
     "CRWD"
    ],
    "window": [
@@ -1076,9 +1081,9 @@
     "LITE"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-30 23:10"
+   "updated_hkt": "2026-10-31 00:11"
   }
  },
- "updated_hkt": "2026-10-30 23:10",
+ "updated_hkt": "2026-10-31 00:11",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
