@@ -1328,9 +1328,156 @@
       "HOOD"
      ]
     }
+   },
+   "intraday_1": {
+    "post_et": "11:00",
+    "post_hkt": "23:00",
+    "generated_at": "2026-10-30T11:04:55-04:00",
+    "date": "2026-10-30",
+    "date_kst": "2026-10-31",
+    "quotes": {
+     "SPY": {
+      "price": 758.97,
+      "prev_close": 769.36,
+      "chg_pct": -1.35,
+      "time": "2026-10-30T11:04:55-04:00"
+     },
+     "QQQ": {
+      "price": 695.37,
+      "prev_close": 715.34,
+      "chg_pct": -2.79,
+      "time": "2026-10-30T11:04:55-04:00"
+     },
+     "DIA": {
+      "price": 520.11,
+      "prev_close": 522.73,
+      "chg_pct": -0.5,
+      "time": "2026-10-30T11:04:54-04:00"
+     },
+     "CMG": {
+      "price": 32.095,
+      "prev_close": 31.28,
+      "chg_pct": 2.61,
+      "time": "2026-10-30T11:04:55-04:00"
+     },
+     "KLAC": {
+      "price": 161.835,
+      "prev_close": 167.43,
+      "chg_pct": -3.34,
+      "time": "2026-10-30T11:04:56-04:00"
+     },
+     "SHEL": {
+      "price": 108.73,
+      "prev_close": 107.67,
+      "chg_pct": 0.98,
+      "time": "2026-10-30T11:04:48-04:00"
+     },
+     "IWM": {
+      "price": 280.06,
+      "prev_close": 284.01,
+      "chg_pct": -1.39,
+      "time": "2026-10-30T11:04:57-04:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-10-30T11:04:57-04:00",
+     "hkt": "2026-10-30 23:04"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "CMG",
+      "chg_pct": 2.61,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "OptionsHawk",
+       "TheTranscript_",
+       "ripster47"
+      ]
+     },
+     {
+      "ticker": "KLAC",
+      "chg_pct": -3.34,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "OptionsMike",
+       "TheTranscript_",
+       "ripster47",
+       "RedDogT3"
+      ]
+     },
+     {
+      "ticker": "SHEL",
+      "chg_pct": 0.98,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "TheTranscript_",
+       "JavierBlas",
+       "TrendSpider"
+      ]
+     },
+     {
+      "ticker": "IWM",
+      "chg_pct": -1.39,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "ripster47",
+       "Mr_Derivatives",
+       "bespokeinvest"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Late morning · As of 11:04 ET (23:04 HKT)\n\n$SPY -1.4% · $QQQ -2.8% · $DIA -0.5%\n\n$CMG +2.6%, 2 accounts bullish on site\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #CMG #KLAC",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "早盤觀察 · 截至 11:04 ET（23:04 HKT）\n\n$SPY -1.4% · $QQQ -2.8% · $DIA -0.5%\n\n$CMG +2.6%，網站 2 個帳號看好\n$KLAC -3.3%，網站 2 個帳號看好\n$SHEL +1.0%，網站 2 個帳號看好\n$IWM -1.4%，網站 2 個帳號看好\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #CMG #KLAC",
+      "url": ""
+     },
+     "en": {
+      "text": "Late morning · As of 11:04 ET (23:04 HKT)\n\n$SPY -1.4% · $QQQ -2.8% · $DIA -0.5%\n\n$CMG +2.6%, 2 accounts bullish on site\n$KLAC -3.3%, 2 accounts bullish on site\n$SHEL +1.0%, 2 accounts bullish on site\n$IWM -1.4%, 2 accounts bullish on site\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #CMG #KLAC",
+      "url": ""
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "LITE",
+      "PLTR",
+      "CVNA",
+      "MA",
+      "CMG",
+      "KLAC",
+      "SHEL",
+      "IWM",
+      "TTE",
+      "XLP",
+      "XLV"
+     ],
+     "bear": [
+      "INTC",
+      "HOOD"
+     ]
+    }
    }
   },
-  "generated_at": "2026-10-30T09:51:31-04:00",
-  "generated_hkt": "2026-10-30 21:51"
+  "generated_at": "2026-10-30T11:04:55-04:00",
+  "generated_hkt": "2026-10-30 23:04"
  }
 }
