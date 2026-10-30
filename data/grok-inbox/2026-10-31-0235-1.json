@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2116216048844149142": {
+      "en_summary": "TSMC $TSM is reportedly planning to increase CoWoS packaging prices by up to 20% next year as packaging demand continues to grow across GPUs, server CPUs and custom silicon. $NVDA $AMD $AVGO",
+      "zh_summary": "台積電 $TSM 據報計劃明年將 CoWoS 封裝價格上調最多 20%，原因是 GPU、伺服器 CPU 及客製化晶片的封裝需求持續增長。$NVDA $AMD $AVGO",
+      "tickers": ["TSM", "NVDA", "AMD", "AVGO"],
+      "stance": "中性",
+      "stance_by_ticker": {"TSM": "中性", "NVDA": "中性", "AMD": "中性", "AVGO": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116215950328676677": {
+      "en_summary": "$QQQ almost -4%. First circuit breaker activates at -7%. Not like that will happen today.",
+      "zh_summary": "$QQQ 幾乎下跌 4%。第一個熔斷機制在下跌 7% 時啟動。今天不太可能發生。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116212226474512889": {
+      "en_summary": "$ANT is reportedly expected to receive a junk credit rating after its IPO with Blackstone now anticipating a double-B rating instead of investment grade. Not ideal when planning over $800B in compute spending and $AVGO is already guaranteeing $42B of your loans.",
+      "zh_summary": "$ANT 據報在 IPO 後預期將獲得垃圾信用評級，黑石現預期為雙 B 評級而非投資級。這並不理想，尤其是計劃超過 8000 億美元計算支出，且 $AVGO 已擔保 420 億美元貸款的情況下。",
+      "tickers": ["ANT", "AVGO"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"ANT": "睇淡", "AVGO": "中性"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ANT": "預期垃圾評級及雙 B 而非投資級"}
+    },
+    "2116209160853565612": {
+      "en_summary": "Back on June 2nd, Jensen Huang said $MRVL will be a $1T market cap company. Since then stock is down 33% and just hit a fresh 3 month low. If you still believe in his thesis, better entry now right?",
+      "zh_summary": "6 月 2 日，黃仁勳表示 $MRVL 將成為 1 兆美元市值公司。自那時以來股價下跌 33%，並剛創 3 個月新低。如果你仍相信他的論點，現在是否是更好的入場點？",
+      "tickers": ["MRVL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"MRVL": "睇好"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MRVL": "黃仁勳曾言將達 1 兆市值，現下跌 33% 或為更好入場點"}
+    },
+    "2116208327864762417": {
+      "en_summary": "$INTC is on pace for its worst day in over 50 years even though estimates still have profits growing more than 10x to nearly $20B by 2028. Data center operating margins have reached 42% and cost of making newest chips has fallen ~40% since Q1.",
+      "zh_summary": "$INTC 正邁向超過 50 年來最差的一天，儘管估計利潤仍將增長超過 10 倍，至 2028 年接近 200 億美元。數據中心營業利潤率已達 42%，最新晶片製造成本自第一季以來下降約 40%。",
+      "tickers": ["INTC"],
+      "stance": "中性",
+      "stance_by_ticker": {"INTC": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"INTC": "利潤預期大幅增長，數據中心利潤率 42%，成本下降 40%"}
+    }
+  }
+}
