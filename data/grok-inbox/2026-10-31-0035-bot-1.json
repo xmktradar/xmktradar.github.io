@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2116185308010299727": {
+      "en_summary": "MrZackMorris states he gave Grok Bot access to alert live when price hits key levels (PM high, PM low, the 200) and GEX aligns. The quoted alert shows $QQQ at PM low 696.23 with a big options level; hold = calls, rejection = puts. Wait for the candle to close. It is not a buy signal but tells where to look.",
+      "zh_summary": "MrZackMorris 表示已將 Grok Bot 接入，以便在價格觸及關鍵水平（盤前高點、盤前低點及 200）且 GEX 對齊時即時發出警報。引用的警報顯示 $QQQ 位於盤前低點 696.23，同時存在大額期權水平；持有等於看漲期權，拒絕等於看跌期權。應等待蠟燭收盤確認。這並非買入信號，而是指示應關注的位置。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"QQQ": "價格位於盤前低點 696.23，持有看漲、拒絕看跌"}
+    },
+    "2116184874713510211": {
+      "en_summary": "@StockSavvyShay replies to @VanquishTrader that it is a great read on what happened yesterday in $INTC earnings.",
+      "zh_summary": "StockSavvyShay 回覆 @VanquishTrader，稱其為關於昨日 $INTC 財報所發生情況的精彩解讀。",
+      "tickers": ["INTC"],
+      "stance": "中性",
+      "stance_by_ticker": {"INTC": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116184158053732667": {
+      "en_summary": "Bespoke notes it is interesting that Amazon $AMZN has opened down more than 4% following quarterly earnings nearly 40% of the time since 2001 (back when it was below $1/share split adjusted).",
+      "zh_summary": "Bespoke 指出，自 2001 年以來（當時拆股調整後股價低於 1 美元），Amazon $AMZN 在季度財報後開盤下跌超過 4% 的情況接近 40% 的時間，這頗為有趣。",
+      "tickers": ["AMZN"],
+      "stance": "中性",
+      "stance_by_ticker": {"AMZN": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116184128622055828": {
+      "en_summary": "Keith McCullough asks to imagine your advisor had you chasing Semis, Neoclouds, and $ORCL on green earlier this week.",
+      "zh_summary": "Keith McCullough 表示，想像你的顧問讓你在本週早些時候追漲半導體、新雲端及 $ORCL 的情況。",
+      "tickers": ["ORCL"],
+      "stance": "瞭淡",
+      "stance_by_ticker": {"ORCL": "瞭淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ORCL": "批評本週早些時候追漲半導體、新雲端及 ORCL"}
+    },
+    "2116183576542900333": {
+      "en_summary": "$RDDT is now in its biggest drawdown ever as $GOOGL AI Mode continues eating into the search traffic Reddit has relied on for years. CEO Steve Huffman says “Google is crawling us as hard as ever” which is brutal as Google still gets Reddit's content while Reddit gets fewer and fewer clicks in return.",
+      "zh_summary": "$RDDT 目前正處於有史以來最大的回撤之中，因為 $GOOGL 的 AI Mode 持續侵蝕 Reddit 多年來依賴的搜尋流量。CEO Steve Huffman 表示「Google 正以一如既往的強度爬取我們」，這相當殘酷，因為 Google 仍獲取 Reddit 的內容，而 Reddit 得到的點擊卻越來越少。",
+      "tickers": ["RDDT", "GOOGL"],
+      "stance": "瞭淡",
+      "stance_by_ticker": {"RDDT": "瞭淡", "GOOGL": "中性"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"RDDT": "受 Google AI Mode 侵蝕搜尋流量影響，處於最大回撤", "GOOGL": "AI Mode 持續獲取 Reddit 內容但回饋點擊減少"}
+    }
+  }
+}
