@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2116178511627272225": {
+      "en_summary": "Theta Warrior posts $SPY REPEAT SWEEPER with media.",
+      "zh_summary": "Theta Warrior 發佈 $SPY REPEAT SWEEPER 及相關媒體。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116178046453428505": {
+      "en_summary": "Scott Redler notes at least $TSLA gave a way to navigate it with a tier system. $387-$388 held to add and manage.",
+      "zh_summary": "Scott Redler 指出，至少 $TSLA 提供了以分層系統來導航的方式。$387-$388 持有以增加及管理。",
+      "tickers": ["TSLA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TSLA": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TSLA": "$387-$388 水平持有以增加及管理"}
+    },
+    "2116177677732446324": {
+      "en_summary": "Joe Kunkle reports Semi Bull 3X $SOXL size opening sale 10K Jan.2 029 $45 puts at 20.20.",
+      "zh_summary": "Joe Kunkle 報告 Semi Bull 3X $SOXL 規模開倉出售 10K 張 2029 年 1 月 2 日 $45 看跌期權，價格 20.20。",
+      "tickers": ["SOXL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SOXL": "睇好"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SOXL": "開倉出售大量 2029 年 1 月 $45 看跌期權，顯示看漲"}
+    },
+    "2116177549440979140": {
+      "en_summary": "Joe Weisenthal notes a little bounce, but $QQQ -2.8%.",
+      "zh_summary": "Joe Weisenthal 指出有小幅反彈，但 $QQQ 仍下跌 2.8%。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116177472332894268": {
+      "en_summary": "Ripster notes $SPY $QQQ $SPX 10 AM shorts as VIX pushes over 19. Watch 20 next.",
+      "zh_summary": "Ripster 指出 $SPY $QQQ $SPX 在上午 10 點做空，因為 VIX 推升至 19 以上。下一個觀察 20。",
+      "tickers": ["SPY", "QQQ"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPY": "睇淡", "QQQ": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"SPY": "VIX 超過 19 時做空", "QQQ": "VIX 超過 19 時做空"}
+    }
+  }
+}
