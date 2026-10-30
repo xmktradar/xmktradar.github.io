@@ -1638,9 +1638,176 @@
       "HOOD"
      ]
     }
+   },
+   "intraday_3": {
+    "post_et": "13:30",
+    "post_hkt": "01:30",
+    "generated_at": "2026-10-30T13:36:50-04:00",
+    "date": "2026-10-30",
+    "date_kst": "2026-10-31",
+    "quotes": {
+     "SPY": {
+      "price": 755.97,
+      "prev_close": 769.36,
+      "chg_pct": -1.74,
+      "time": "2026-10-30T13:05:55-04:00"
+     },
+     "QQQ": {
+      "price": 688.63,
+      "prev_close": 715.34,
+      "chg_pct": -3.73,
+      "time": "2026-10-30T13:34:55-04:00"
+     },
+     "DIA": {
+      "price": 517.61,
+      "prev_close": 522.73,
+      "chg_pct": -0.98,
+      "time": "2026-10-30T13:35:41-04:00"
+     },
+     "SNDK": {
+      "price": 1159.0,
+      "prev_close": 1330.05,
+      "chg_pct": -12.86,
+      "time": "2026-10-30T13:05:55-04:00"
+     },
+     "MU": {
+      "price": 871.62,
+      "prev_close": 934.27,
+      "chg_pct": -6.71,
+      "time": "2026-10-30T13:36:14-04:00"
+     },
+     "AMZN": {
+      "price": 238.355,
+      "prev_close": 243.79,
+      "chg_pct": -2.23,
+      "time": "2026-10-30T13:35:08-04:00"
+     },
+     "NOW": {
+      "price": 104.19,
+      "prev_close": 109.67,
+      "chg_pct": -5.0,
+      "time": "2026-10-30T13:17:24-04:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-10-30T13:36:14-04:00",
+     "hkt": "2026-10-31 01:36"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "SNDK",
+      "chg_pct": -12.86,
+      "bull": 3,
+      "bear": 1,
+      "accounts": [
+       "RedDogT3",
+       "TheTranscript_",
+       "ripster47",
+       "KobeissiLetter",
+       "Mr_Derivatives",
+       "kevinxu",
+       "EliteOptions2",
+       "OptionsMike"
+      ]
+     },
+     {
+      "ticker": "MU",
+      "chg_pct": -6.71,
+      "bull": 3,
+      "bear": 1,
+      "accounts": [
+       "APompliano",
+       "EliteOptions2",
+       "ThetaWarrior",
+       "KobeissiLetter",
+       "MrZackMorris",
+       "ripster47"
+      ]
+     },
+     {
+      "ticker": "AMZN",
+      "chg_pct": -2.23,
+      "bull": 2,
+      "bear": 2,
+      "accounts": [
+       "Brian_Stoffel_",
+       "Beth_Kindig",
+       "munster_gene",
+       "hkuppy",
+       "amitisinvesting",
+       "StockSavvyShay",
+       "garyblack00",
+       "bespokeinvest"
+      ]
+     },
+     {
+      "ticker": "NOW",
+      "chg_pct": -5.0,
+      "bull": 2,
+      "bear": 5,
+      "accounts": [
+       "StockSavvyShay",
+       "TheTranscript_",
+       "Mr_Derivatives",
+       "kevinxu",
+       "OptionsMike",
+       "KobeissiLetter",
+       "TrendSpider",
+       "RyanDetrick"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Early afternoon · As of 13:36 ET (01:36 HKT)\n\n$SPY -1.7% · $QQQ -3.7% · $DIA -1.0%\n\n$SNDK -12.9%, 3 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #SNDK #MU",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午后觀察 · 截至 13:36 ET（01:36 HKT）\n\n$SPY -1.7% · $QQQ -3.7% · $DIA -1.0%\n\n$SNDK -12.9%，網站 3 個帳號看好\n$MU -6.7%，網站 3 個帳號看好\n$AMZN -2.2%，網站 2 個帳號看好\n$NOW -5.0%，網站 5 個帳號看空\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SNDK #MU",
+      "url": ""
+     },
+     "en": {
+      "text": "Early afternoon · As of 13:36 ET (01:36 HKT)\n\n$SPY -1.7% · $QQQ -3.7% · $DIA -1.0%\n\n$SNDK -12.9%, 3 accounts bullish on site\n$MU -6.7%, 3 accounts bullish on site\n$AMZN -2.2%, 2 accounts bullish on site\n$NOW -5.0%, 5 accounts bearish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #SNDK #MU",
+      "url": ""
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "LITE",
+      "PLTR",
+      "SPCX",
+      "CVNA",
+      "MA",
+      "CMG",
+      "IWM",
+      "KLAC",
+      "SHEL",
+      "TTE",
+      "KRMN",
+      "ONDS",
+      "XLP",
+      "XLV"
+     ],
+     "bear": [
+      "INTC",
+      "HOOD"
+     ]
+    }
    }
   },
-  "generated_at": "2026-10-30T12:19:34-04:00",
-  "generated_hkt": "2026-10-31 00:19"
+  "generated_at": "2026-10-30T13:36:50-04:00",
+  "generated_hkt": "2026-10-31 01:36"
  }
 }
