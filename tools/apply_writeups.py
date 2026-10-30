@@ -77,7 +77,15 @@ def clean_html(s):
     p = Clean()
     p.feed(s)
     p.close()
-    return p.result().strip() or None
+    out = p.result().strip() or None
+    if not out:
+        return None
+    # Space before X/Twitter cite links so "stops.post" / "low.post" do not glue.
+    return re.sub(
+        r'(?<!\s)(<a\s+[^>]*href="https://(?:x|twitter)\.com/[^"]*"[^>]*>)',
+        r' \1',
+        out,
+    )
 
 
 def plain(s, limit=400):

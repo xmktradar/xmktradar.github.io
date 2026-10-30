@@ -179,7 +179,7 @@ def head_tags(cur):
         js += (';' + lang_pick_js('localStorage.getItem(k)')
                + ';function ctFixRoot(root){(root||document).querySelectorAll("a[href]").forEach(function(a){'
                'var h=a.getAttribute("href")||"";'
-               'if(/^(tools|support|about|advertise|newsletter)\\//.test(h))a.setAttribute("href","/"+l+"/"+h)})}'
+               'if(/^(tools|support|about|advertise|newsletter|earnings)\\//.test(h))a.setAttribute("href","/"+l+"/"+h)})}'
                'document.addEventListener("DOMContentLoaded",function(){ctFixRoot(document)});'
                'new MutationObserver(function(){ctFixRoot(document)}).observe(document.documentElement,{childList:true,subtree:true});'
                'if(!/(github\\.io|thecrowdtape\\.com)$/.test(location.hostname))return;'
