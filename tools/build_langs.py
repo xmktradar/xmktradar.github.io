@@ -220,6 +220,43 @@ def overlay(zh, tr):
     return zh if tr is None else tr
 
 
+CJK = re.compile(r'[\u3400-\u9fff]')
+LATIN = re.compile(r'[A-Za-z]')
+
+
+TYPOS = {'\u770b\u6dE9': '\u770b\u6de1'}  # 2026-11-01 patrol: writeups wrote 看(淩) for 看淡 (bearish)
+
+
+def fix_typos(s):
+    for a, b in TYPOS.items():
+        s = s.replace(a, b)
+    return s
+
+
+def looks_zh(o):
+    """True when an item's visible text is still mostly Chinese (an untranslated copy)."""
+    txt = re.sub(r'<[^>]*>|https?://\S+|\$[A-Za-z.]+|@\w+', ' ', json.dumps(o, ensure_ascii=False))
+    c, l = len(CJK.findall(txt)), len(LATIN.findall(txt))
+    return c > 40 and c > l * 0.5
+
+
+def translated_only(zh, tr):
+    """Non-Chinese pages: keep only items that have a translation (2026-11-01 patrol: old briefings,
+    summaries and highlights showed in Chinese on /en/). Untranslated items are left out, not shown in Chinese."""
+    if isinstance(zh, dict) and all(isinstance(v, list) for v in zh.values()):  # summaries
+        tr = tr if isinstance(tr, dict) else {}
+        return {k: translated_only(v, tr.get(k)) for k, v in zh.items()}
+    if isinstance(zh, dict):  # highlights by day
+        tr = tr if isinstance(tr, dict) else {}
+        return {k: v for k, v in tr.items() if k in zh and not looks_zh(v)}
+    if isinstance(zh, list):
+        tr = tr if isinstance(tr, list) else []
+        key = lambda x: (x.get('date'), json.dumps(x.get('win'), sort_keys=True)) if isinstance(x, dict) else None  # noqa: E731
+        by = {key(x): x for x in tr}
+        return [by[key(x)] for x in zh if key(x) in by and not looks_zh(by[key(x)])]
+    return zh if tr is None else tr
+
+
 def px_name(t):
     return re.sub(r'[^A-Za-z0-9.\-]', '_', t)  # same as the page's loadPx()
 
@@ -285,8 +322,10 @@ def lighten(d):
 
 def swap_data(d, lang, fixed):
     d = copy.deepcopy(d)
-    for k in CONTENT:  # translated items replace the Chinese ones; items not yet translated stay in Chinese
-        if d.get(f'{k}_{lang}'):
+    for k in CONTENT:  # translated items replace the Chinese ones; untranslated items are dropped on non-zh pages
+        if lang != 'zh' and k in d:
+            d[k] = translated_only(d.get(k), d.get(f'{k}_{lang}'))
+        elif d.get(f'{k}_{lang}'):
             d[k] = overlay(d.get(k), d[f'{k}_{lang}'])
     for p in d['posts']:
         alt = (p.get('en_summary') or p.get('text')) if lang == 'en' else None
@@ -405,6 +444,7 @@ def build(lang, master):
     blob = kept_slim(prev, d)
     if blob is None:
         blob = json.dumps(lighten(swap_data(d, lang, fixed)), ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
+    blob = fix_typos(blob)
     code = master[:m.start(2)], master[m.end(2):]
     out = [translate(part, tr.get('ui') or {}) for part in code]
     s = out[0] + blob + out[1]

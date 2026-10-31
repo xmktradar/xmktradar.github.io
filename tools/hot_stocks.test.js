@@ -112,3 +112,16 @@ test('30-day sitemap filter uses the same window and page rule', () => {
   assert.equal(kept.length, 1);
   assert.equal(left.length, 3);
 });
+
+test('promo/disclosure posts skipped and one account capped per ticker (2026-11-01 $JOJO)', () => {
+  const { isPromo, PER_ACC_CAP } = require('./hot_stocks.js');
+  assert.equal(isPromo('Learn more about the ATAC Credit Rotation ETF $JOJO at https://atacfunds.com/jojo/'), true);
+  assert.equal(isPromo('Past performance does not guarantee future results. Not investment advice.'), true);
+  assert.equal(isPromo('$NVDA guide looks strong'), false);
+  const rows = [];
+  for (let i = 0; i < 64; i++) rows.push({ t: 'JOJO', ms: 10, id: 'p' + i, acc: 'leadlagreport' });
+  rows.push({ t: 'JOJO', ms: 10, id: 'x', acc: 'other', promo: true });
+  rows.push({ t: 'NVDA', ms: 10, id: 'y', acc: 'a' });
+  const out = rankHot(rows, 10, 7, 30);
+  assert.deepEqual(out.find(r => r.t === 'JOJO'), { t: 'JOJO', n: PER_ACC_CAP });
+});

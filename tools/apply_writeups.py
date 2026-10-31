@@ -71,9 +71,20 @@ class Clean(HTMLParser):
         return ''.join(self.out).replace('——', '，').replace('—', '，')
 
 
+TYPOS = {'\u770b\u6dE9': '\u770b\u6de1'}  # 2026-11-01 patrol: 看(淩) typo for 看淡 (bearish); writeups are fixed on apply
+
+
+def fix_typos(s):
+    if isinstance(s, str):
+        for a, b in TYPOS.items():
+            s = s.replace(a, b)
+    return s
+
+
 def clean_html(s):
     if not isinstance(s, str) or not s.strip():
         return None
+    s = fix_typos(s)
     p = Clean()
     p.feed(s)
     p.close()
@@ -92,7 +103,7 @@ def plain(s, limit=400):
     """Card text is shown as plain text: no tags, no dashes."""
     if not isinstance(s, str):
         return None
-    s = re.sub(r'<[^>]*>', '', s).replace('<', '').replace('>', '').replace('——', '，').replace('—', '，').strip()
+    s = re.sub(r'<[^>]*>', '', fix_typos(s)).replace('<', '').replace('>', '').replace('——', '，').replace('—', '，').strip()
     return s[:limit] or None
 
 
