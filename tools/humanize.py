@@ -299,9 +299,12 @@ PLATFORMS = ('x', 'threads', 'instagram', 'facebook')
 def humanize_tree(obj, lang=None, key=None, parent_key=None, platform=None):
     """Rewrite every caption string under obj in place. Returns obj.
     platform is inherited from the nearest x/threads/instagram/facebook ancestor key,
-    so x.en.text is still fitted to X's limit."""
+    so x.en.text is still fitted to X's limit. x_trilingual (zh+en afterclose/premarket)
+    is X-only, so it inherits platform='x' the same way."""
     if key in PLATFORMS:
         platform = key
+    elif key == 'x_trilingual':
+        platform = 'x'
     if isinstance(obj, dict):
         this = obj.get('lang') if obj.get('lang') in LANGS else lang
         for k, v in list(obj.items()):
@@ -312,6 +315,9 @@ def humanize_tree(obj, lang=None, key=None, parent_key=None, platform=None):
                 obj[k] = _humanize_field(v, lg, k, key, k if k in PLATFORMS else platform)
             elif isinstance(v, (dict, list)):
                 humanize_tree(v, lg, k, key, platform)
+        # Afterclose/premarket entries store xlen beside text; keep it in sync after X fit.
+        if platform == 'x' and isinstance(obj.get('text'), str) and isinstance(obj.get('xlen'), (int, float)):
+            obj['xlen'] = xlen(obj['text'])
         hl = obj.get('has_link')
         if isinstance(hl, bool):
             obj['has_link'] = False
