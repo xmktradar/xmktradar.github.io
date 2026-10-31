@@ -1088,6 +1088,7 @@
     "NVDA",
     "IBIT",
     "ONDS",
+    "CBOE",
     "XLP",
     "XLV"
    ],
@@ -1098,21 +1099,24 @@
     "NOW",
     "RBLX",
     "QQQ",
+    "MSTR",
     "TWLO",
     "COIN",
-    "PINS"
+    "PINS",
+    "DRAM"
    ],
    "split": [
-    "AMZN",
     "SNDK",
+    "AMZN",
     "GOOGL",
     "META",
+    "MSFT",
     "MRVL",
     "TSLA",
-    "MSTR",
+    "GLD",
     "ORCL",
+    "SPCX",
     "CRWV",
-    "MSFT",
     "AAPL",
     "IREN",
     "SBUX",
@@ -1121,6 +1125,7 @@
     "BMNR",
     "CBRS",
     "SMCI",
+    "SMH",
     "PURR",
     "TLT"
    ],
@@ -1137,13 +1142,13 @@
     "QQQ",
     "META",
     "SNDK",
-    "NVDA",
-    "SPCX"
+    "SPCX",
+    "NVDA"
    ],
    "src": "live",
-   "updated_hkt": "2026-10-31 10:43"
+   "updated_hkt": "2026-10-31 12:05"
   }
  },
- "updated_hkt": "2026-10-31 10:43",
+ "updated_hkt": "2026-10-31 12:05",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
