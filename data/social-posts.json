@@ -376,7 +376,7 @@
    "text": "10/30 開市前：$LITE 4 個帳號看多 · $GOOG 2 個\nOct 30 pre-market: $LITE 4 accounts bullish · $GOOG 2\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "image": "https://thecrowdtape.com/og/x-premarket.png?v=2026-10-30-LITE",
    "image_ticker": "LITE",
-   "xlen": 196,
+   "xlen": 193,
    "form": "short",
    "counts": {
     "bull": 4,
@@ -386,10 +386,10 @@
   },
   "afterclose": {
    "post_at_hkt": "08:00",
-   "text": "$GOOGL，有 19 個帳號提到，3 個看多、5 個看空；最多人看多的則是 $LITE，共 4 個帳號。\n$GOOGL got the most attention on X today (19 accounts, 3 bullish and 5 bearish), but $LITE had the most bulls (4 ac…\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "text": "$GOOGL，有 19 個帳號提到，3 個看多、5 個看空；最多人看多的則是 $LITE，共 4 個帳號。\n$GOOGL got the most attention on X today (19 accounts, 3 bullish and 5 bearish), but $LITE had…\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "image": "https://thecrowdtape.com/og/x-afterclose.png?v=2026-10-30-GOOGL",
    "image_ticker": "GOOGL",
-   "xlen": 276,
+   "xlen": 264,
    "form": "short",
    "counts": {
     "bull": 3,
@@ -2091,7 +2091,43 @@
       }
      }
     },
-    "ticker": "SOFI"
+    "ticker": "SOFI",
+    "bull": [
+     {
+      "t": "SOFI",
+      "n": 7
+     },
+     {
+      "t": "SKHY",
+      "n": 5
+     },
+     {
+      "t": "LLY",
+      "n": 4
+     },
+     {
+      "t": "MA",
+      "n": 4
+     },
+     {
+      "t": "LMT",
+      "n": 4
+     }
+    ],
+    "range": {
+     "from": "2026-10-25",
+     "to": "2026-10-31"
+    },
+    "images": {
+     "zh": {
+      "portrait": "https://thecrowdtape.com/og/weekend-bulls-zh.png?v=2026-10-31",
+      "square": "https://thecrowdtape.com/og/weekend-bulls-zh-sq.png?v=2026-10-31"
+     },
+     "en": {
+      "portrait": "https://thecrowdtape.com/og/weekend-bulls-en.png?v=2026-10-31",
+      "square": "https://thecrowdtape.com/og/weekend-bulls-en-sq.png?v=2026-10-31"
+     }
+    }
    },
    {
     "id": "weekend-sat-totals",
