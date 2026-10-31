@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2116539432912220448": {
+      "en_summary": "Big Oil shareholders are the only ones smiling at higher prices 🛢️ $XOM $CVX $SHEL $COP",
+      "zh_summary": "大石油股東是唯一對更高價格微笑的人 🛢️ $XOM $CVX $SHEL $COP",
+      "tickers": ["XOM", "CVX", "SHEL", "COP"],
+      "stance": "睇好",
+      "stance_by_ticker": {"XOM": "睇好", "CVX": "睇好", "SHEL": "睇好", "COP": "睇好"},
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "energy",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    },
+    "2116538195307552942": {
+      "en_summary": "Visa and Mastercard expect sustained double-digit revenue growth: $V CFO: \"Pulling this all together, with strength across our growth pillars of consumer, CMS and VAS, we expect full year adjusted net revenue growth to be in the low double digits, with Q2 being the growth low point as a result of lapping the very strong performance last year.\" $MA CFO: \"For the full year 2026, we expect net revenue growth to remain at the high end of low double digits range on a currency-neutral basis, excluding inorganic activity.\"",
+      "zh_summary": "Visa和Mastercard預期持續兩位數收入增長：$V CFO：「將這一切綜合起來，憑借我們消費者、CMS和VAS增長支柱的強勁，我們預期全年調整後淨收入增長將處於低兩位數，由於去年非常強勁表現的基數，Q2將是增長低點。」$MA CFO：「對於2026全年，我們預期淨收入增長在排除非有機活動後，以貨幣中性基礎保持在低兩位數範圍的高端。」",
+      "tickers": ["V", "MA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"V": "睇好", "MA": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"V": "預期全年低兩位數調整後淨收入增長", "MA": "預期2026全年低兩位數高端淨收入增長"}
+    },
+    "2116536906339307987": {
+      "en_summary": "One of most overlooked opportunities for $NBIS, $CRWV and $DOCN is how much more revenue they could eventually generate from every megawatt of AI compute. Right now DigitalOcean generates ~$20M per MW through higher-value cloud services while CoreWeave sits around $10M and just ~$7M for Nebius which is still bringing capacity online faster than it can fill it while large hyperscaler contracts like $META and $MSFT also tend to carry lower pricing. And with all three projected to approach $25M per MW by 2035 I think the opportunity goes beyond adding capacity as CoreWeave improves utilization while Nebius's Token Factory and DigitalOcean's inference services help them earn more from same infrastructure.",
+      "zh_summary": "$NBIS、$CRWV和$DOCN最被忽視的機會之一是它們最終能從每兆瓦AI計算中產生多少更多收入。目前DigitalOcean透過更高價值雲服務每MW產生約2000萬美元，而CoreWeave約1000萬美元，Nebius僅約700萬美元，後者仍在比填充更快地上線容量，而像$META和$MSFT的大型超大規模合約也傾向於較低定價。而隨著這三家預計到2035年接近每MW 2500萬美元，我認為機會超越增加容量，因為CoreWeave改善利用率，而Nebius的Token Factory和DigitalOcean的推理服務幫助它們從相同基礎設施賺取更多。",
+      "tickers": ["NBIS", "CRWV", "DOCN", "META", "MSFT"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NBIS": "睇好", "CRWV": "睇好", "DOCN": "睇好", "META": "中性", "MSFT": "中性"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NBIS": "每MW收入有提升空間至2500萬", "CRWV": "利用率改善有助收入", "DOCN": "每MW已較高，仍有成長"}
+    },
+    "2116535903460171949": {
+      "en_summary": "@RetailWarrior5 Scary times. That’s why for me, $IBIT is good enough lol",
+      "zh_summary": "@RetailWarrior5 可怕的時代。這就是為什麼對我來說，$IBIT 就夠好了 lol",
+      "tickers": ["IBIT"],
+      "stance": "睇好",
+      "stance_by_ticker": {"IBIT": "睇好"},
+      "horizon": "中線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {"IBIT": "在可怕時代是足夠好的選擇"}
+    },
+    "2116532892646220278": {
+      "en_summary": "A good majority of the votes has no faith in $AAPL on Monday… Typically my polls are fairly accurate and are NOT contrarian indicators, historically speaking. I mean given all the Magnificent 7 destruction lately and Apple’s recent “buck the trend” meteoric rise, look for a healthy pullback?",
+      "zh_summary": "大多數投票對星期一的 $AAPL 沒有信心……通常我的民調相當準確，而且歷史上不是反向指標。我的意思是，鑒於最近所有Magnificent 7的破壞以及Apple最近「逆勢」的流星般上升，尋找健康回調？",
+      "tickers": ["AAPL"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"AAPL": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"AAPL": "多數投票無信心，可能健康回調"}
+    }
+  }
+}
