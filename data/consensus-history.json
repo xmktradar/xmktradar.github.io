@@ -1168,12 +1168,12 @@
     "NFLX"
    ],
    "bear": [
-    "INTC",
     "RDDT"
    ],
    "split": [
-    "QQQ",
+    "INTC",
     "AMZN",
+    "QQQ",
     "SPY",
     "NVDA",
     "META",
@@ -1182,13 +1182,13 @@
    ],
    "window": [
     "2026-10-30T23:30",
-    "2026-11-01T01:10"
+    "2026-11-01T03:00"
    ],
    "top": [
     "QQQ",
     "INTC",
-    "SPY",
     "AMZN",
+    "SPY",
     "GOOGL",
     "NVDA",
     "MSFT",
@@ -1197,9 +1197,9 @@
     "NFLX"
    ],
    "src": "live",
-   "updated_hkt": "2026-11-01 03:06"
+   "updated_hkt": "2026-11-01 04:39"
   }
  },
- "updated_hkt": "2026-11-01 03:06",
+ "updated_hkt": "2026-11-01 04:39",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
