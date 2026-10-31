@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2116407763089973307": {
+      "en_summary": "John_Hempton says some things deserve a blog post because they are so silly, this one on Arbor Realty ($ABR). Most credit to @viceroyresearch and @Gabe_Bernarde. Links to substack on liquidity not adding up.",
+      "zh_summary": "John_Hempton 表示有些事情因為太荒謬而值得寫一篇部落格文章，這一篇是關於 Arbor Realty ($ABR)。大部分功勞應歸於 @viceroyresearch 和 @Gabe_Bernarde。連結到關於流動性對不上的 Substack。",
+      "tickers": ["ABR"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"ABR": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116396590009074025": {
+      "en_summary": "MrZackMorris ran backtests on the $QQQ open. It bounced on 58 of 60 mornings. Buying the first dip lost more often than not. The real low usually came between 9:45 and 10. Letting it sweep PM low and waiting for a candle to close back above won 70-78% of the time in a small sample. Patience pays. Not a buy signal. Promotes Trade the Zones indicator at $5 a month for 3 months with code ZACK5.",
+      "zh_summary": "MrZackMorris 對 $QQQ 開盤進行回測。58 個早晨中有 60 個反彈。但買入第一個回調往往虧損。真正的低點通常在 9:45 到 10 點之間。讓它掃過盤前低點並等待蠟燭收盤回升上方，在小樣本中贏得 70-78% 的時間。耐心有回報。不是買入信號。推廣 Trade the Zones 指標，每月 $5 持續 3 個月，代碼 ZACK5。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116179386030342497": {
+      "en_summary": "KobeissiLetter lists tech stocks in bear market territory with declines: AppLovin $APP -68%, Coinbase $COIN -62%, CoreWeave $CRWV -60%, Arm Holdings $ARM -55%, Western Digital $WDC -54%, Intel $INTC -54%, Oracle $ORCL -51%, SanDisk $SNDK -49%, Circle $CRCL -48%, ServiceNow $NOW -44%, Robinhood $HOOD -44%, Seagate $STX -42%, Marvell $MRVL -39%, Super Micro $SMCI -39%, Broadcom $AVGO -34%, Alphabet $GOOGL -31%, Adobe $ADBE -29%, Micron $MU -29%, IBM $IBM -23%, Meta $META -21%, Amazon $AMZN -21%. The Nasdaq 100 is now down nearly $5 trillion since October 6th.",
+      "zh_summary": "KobeissiLetter 列出處於熊市領域的科技股跌幅：AppLovin $APP -68%、Coinbase $COIN -62%、CoreWeave $CRWV -60%、Arm Holdings $ARM -55%、Western Digital $WDC -54%、Intel $INTC -54%、Oracle $ORCL -51%、SanDisk $SNDK -49%、Circle $CRCL -48%、ServiceNow $NOW -44%、Robinhood $HOOD -44%、Seagate $STX -42%、Marvell $MRVL -39%、Super Micro $SMCI -39%、Broadcom $AVGO -34%、Alphabet $GOOGL -31%、Adobe $ADBE -29%、Micron $MU -29%、IBM $IBM -23%、Meta $META -21%、Amazon $AMZN -21%。納斯達克 100 指數自 10 月 6 日以來已下跌近 5 萬億美元。",
+      "tickers": ["APP", "COIN", "CRWV", "ARM", "WDC", "INTC", "ORCL", "SNDK", "CRCL", "NOW", "HOOD", "STX", "MRVL", "SMCI", "AVGO", "GOOGL", "ADBE", "MU", "IBM", "META", "AMZN", "QQQ"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"APP": "睇淡", "COIN": "睇淡", "CRWV": "睇淡", "ARM": "睇淡", "WDC": "睇淡", "INTC": "睇淡", "ORCL": "睇淡", "SNDK": "睇淡", "CRCL": "睇淡", "NOW": "睇淡", "HOOD": "睇淡", "STX": "睇淡", "MRVL": "睇淡", "SMCI": "睇淡", "AVGO": "睇淡", "GOOGL": "睇淡", "ADBE": "睇淡", "MU": "睇淡", "IBM": "睇淡", "META": "睇淡", "AMZN": "睇淡", "QQQ": "睇淡"},
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2116174511863402864": {
+      "en_summary": "alphatrends notes a nice look at $ANT lockup. Keep in mind it is one small piece, remember how obsessed people were with $SPCX lock up. With SpaceX people went silent on the lockups as the stock rallied and they will likely start talking about them again now that the stock broke critical support and is declining. Quoted TedHZhang on Anthropic's share lockup expiration schedule.",
+      "zh_summary": "alphatrends 指出對 $ANT 鎖定的良好觀察。記住這只是一小部分，回想人們對 $SPCX 鎖定的痴迷。SpaceX 相關人士在股票上漲時對鎖定保持沉默，現在股票跌破關鍵支撐並下跌，他們可能會再次談論。引用 TedHZhang 關於 Anthropic 股份鎖定到期時間表。",
+      "tickers": ["ANT", "SPCX"],
+      "stance": "中性",
+      "stance_by_ticker": {"ANT": "中性", "SPCX": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116172807285715219": {
+      "en_summary": "StockSavvyShay reports CNBC says $MRVL potential acquisition of $LITE would be an all-stock deal potentially making it one of the biggest mergers in semiconductor history.",
+      "zh_summary": "StockSavvyShay 報導 CNBC 稱 $MRVL 潛在收購 $LITE 將是全股票交易，可能成為半導體歷史上最大的合併之一。",
+      "tickers": ["MRVL", "LITE"],
+      "stance": "中性",
+      "stance_by_ticker": {"MRVL": "中性", "LITE": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
