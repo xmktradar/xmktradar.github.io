@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2116164536785076325": {
+      "en_summary": "$QQQ alert. Price is at PM low 696.23. Big options level sitting right here too. Hold = calls. Rejection = puts. Wait for the candle to close. Let it show you.",
+      "zh_summary": "$QQQ 警報。價格在盤前低點 696.23。這裡也有大型期權水平。持有 = 看漲。拒絕 = 看跌。等待蠟燭收盤。讓它告訴你。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116164348854854089": {
+      "en_summary": "$INTC - My 50/80 Rule is alive and kickin!",
+      "zh_summary": "$INTC - 我的 50/80 規則仍然有效！",
+      "tickers": ["INTC"],
+      "stance": "中性",
+      "stance_by_ticker": {"INTC": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116164278298583264": {
+      "en_summary": "Amazon $AMZN ten minutes in a buyer 2000 Sep. 2027 $240 calls at $34.75 for $6.95M.",
+      "zh_summary": "亞馬遜 $AMZN 十分鐘內有買家以 $34.75 購買 2000 張 2027 年 9 月 $240 看漲期權，價值 $6.95M。",
+      "tickers": ["AMZN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AMZN": "睇好"},
+      "horizon": "長線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AMZN": "Large buyer of Sep 2027 $240 calls for $6.95M"}
+    },
+    "2116164013889609749": {
+      "en_summary": "$RDDT JUST BROKE BELOW $100.",
+      "zh_summary": "$RDDT 剛剛跌破 $100。",
+      "tickers": ["RDDT"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"RDDT": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116163892305166514": {
+      "en_summary": "$TWLO looking to hammer YTD VWAP and 200MA, 450 Nov 200 calls buy $7.",
+      "zh_summary": "$TWLO 看起來要敲擊年初至今 VWAP 和 200MA，450 張 11 月 200 看漲期權以 $7 買入。",
+      "tickers": ["TWLO"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TWLO": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TWLO": "Buyer of Nov 200 calls at $7, targeting VWAP and 200MA"}
+    }
+  }
+}
