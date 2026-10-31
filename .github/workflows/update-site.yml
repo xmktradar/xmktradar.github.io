@@ -106,6 +106,7 @@ jobs:
           fi
           if [ -f "$WORK_DIR/xcards.json" ]; then node tools/xcard.js "$WORK_DIR/xcards.json" || echo "::warning::X card failed"; fi
           if [ -f "$WORK_DIR/top5cards.json" ]; then node tools/top5card.js "$WORK_DIR/top5cards.json" || echo "::warning::top5 card failed"; fi
+          if [ -f "$WORK_DIR/weekend-bulls-cards.json" ]; then node tools/weekend_bulls.js "$WORK_DIR/weekend-bulls-cards.json" || echo "::warning::weekend bulls card failed"; fi
       - name: Top5 vertical video
         run: |
           if ! command -v ffmpeg >/dev/null 2>&1; then

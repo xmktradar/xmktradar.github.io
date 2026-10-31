@@ -2582,6 +2582,107 @@ WEEKEND_FMT = {
     'splits': 'carousel', 'split_poll': 'poll',
 }
 
+def _weekend_range_label(weekly):
+    """MM/DD – MM/DD from weekly.from / weekly.to. Empty when either side is missing."""
+    weekly = weekly if isinstance(weekly, dict) else {}
+    a, b = _as_day(weekly.get('from')), _as_day(weekly.get('to'))
+    if not a or not b:
+        return ''
+    def md(s):
+        y, m, d = s.split('-')
+        return f'{int(m):02d}/{int(d):02d}'
+    return f'{md(a)} – {md(b)}'
+
+
+def _weekend_bulls_rows(weekly, limit=5):
+    """Top weekly bulls as {t, n} (nb), same order as the caption."""
+    return _side_rows((weekly or {}).get('bull'), 'nb', limit)
+
+
+def _weekend_bulls_images(day):
+    day = _as_day(day) or str(day or '')
+    return {lang: {
+        'portrait': f'{SITE}og/weekend-bulls-{lang}.png?v={day}',
+        'square': f'{SITE}og/weekend-bulls-{lang}-sq.png?v={day}',
+    } for lang in LANGS}
+
+
+def _weekend_bulls_card_data(bulls, day, window, lang):
+    """Payload for tools/weekend_bulls.html render()."""
+    if lang == 'zh':
+        heading, bull_label, win_label, none = '本週最看好', '本週最看好', '本週', '本週暫無'
+    else:
+        heading, bull_label, win_label, none = (
+            'Most bullish this week', 'Most bullish this week', 'This week', 'None this week')
+    return {
+        'lang': lang,
+        'date': _as_day(day) or str(day or ''),
+        'window': window or '',
+        'win_label': win_label,
+        'heading': heading,
+        'bull_label': bull_label,
+        'none': none,
+        'bull': bulls or [],
+        'foot': SHORT[lang]['disc'],
+    }
+
+
+def write_weekend_bulls_jobs(bulls, day, window):
+    """work/weekend-bulls-cards.json for tools/weekend_bulls.js."""
+    jobs = []
+    for lang in LANGS:
+        data = _weekend_bulls_card_data(bulls, day, window, lang)
+        jobs.append({'lang': lang, 'size': 'portrait', 'out': f'og/weekend-bulls-{lang}.png', 'data': data})
+        jobs.append({'lang': lang, 'size': 'square', 'out': f'og/weekend-bulls-{lang}-sq.png', 'data': data})
+    write_json(work('weekend-bulls-cards.json'), {'jobs': jobs}, indent=1)
+    return jobs
+
+
+def attach_weekend_bulls_images(item, weekly, day):
+    """Put dedicated weekend-bulls portrait/square URLs on a bulls image_card item.
+
+    Also stores bull[{t,n}] and range so the card matches the caption. Returns True when
+    the item is a bulls angle and rows exist (jobs should be written).
+    """
+    if not isinstance(item, dict) or not str(item.get('id') or '').endswith('-bulls'):
+        return False
+    bulls = _weekend_bulls_rows(weekly)
+    if not bulls:
+        return False
+    day = _as_day(day) or str(day or '')
+    window = _weekend_range_label(weekly)
+    item['format'] = 'image_card'
+    item['bull'] = bulls
+    item['range'] = {'from': (weekly or {}).get('from'), 'to': (weekly or {}).get('to')}
+    item['images'] = _weekend_bulls_images(day)
+    return True
+
+
+def ensure_weekend_bulls_images(sp, weekly, day=None):
+    """Attach dedicated bulls images on an existing weekend object and write card jobs.
+
+    Used when Saturday/Sunday already wrote captions (so main() would skip rebuild) but the
+    posts still need og/weekend-bulls-* instead of falling back to og/social-*.png.
+    Returns True when jobs were written.
+    """
+    if not isinstance(sp, dict):
+        return False
+    weekend = sp.get('weekend')
+    if not isinstance(weekend, dict) or not isinstance(weekend.get('posts'), list):
+        return False
+    day = _as_day(day or weekend.get('date')) or ''
+    weekly = weekly if isinstance(weekly, dict) else {}
+    wrote = False
+    bulls_for_jobs = None
+    window = _weekend_range_label(weekly)
+    for item in weekend['posts']:
+        if attach_weekend_bulls_images(item, weekly, day):
+            wrote = True
+            bulls_for_jobs = item.get('bull') or bulls_for_jobs
+    if wrote and bulls_for_jobs:
+        write_weekend_bulls_jobs(bulls_for_jobs, day, window)
+    return wrote
+
 
 def history_path():
     return os.environ.get('SOCIAL_HISTORY') or 'data/social-history.json'
@@ -3115,6 +3216,10 @@ def build_weekend(weekly, day):
             item['ticker'] = piece['ticker']
         posts.append(item)
     day_s = _as_day(day)
+    weekly = weekly if isinstance(weekly, dict) else {}
+    for item in posts:
+        if attach_weekend_bulls_images(item, weekly, day_s):
+            write_weekend_bulls_jobs(item.get('bull') or [], day_s, _weekend_range_label(weekly))
     return {
         'date': day_s,
         'date_kst': date_kst.kst_date(day_s, date_kst.WEEKEND_KST),
@@ -3785,6 +3890,16 @@ def main():
         from ig_boost import apply_social_file
         apply_social_file('data/social-posts.json')
         notice(f'週末社交槽已寫好：{day}')
+    elif _is_weekend(day) and isinstance(sp.get('weekend'), dict) and sp['weekend'].get('date') == day:
+        # Captions already written today: still refresh dedicated bulls card images so
+        # weekend-sat-bulls does not keep falling back to og/social-*.png (daily snapshot).
+        writeup = read_json('data/writeup-input.json', {}) or {}
+        if ensure_weekend_bulls_images(sp, (writeup if isinstance(writeup, dict) else {}).get('weekly') or {}, day):
+            write_json('data/social-posts.json', sp, indent=1)
+            normalize_file('data/social-posts.json')
+            from ig_boost import apply_social_file
+            apply_social_file('data/social-posts.json')
+            notice(f'週末看好圖已對齊 caption：{day}')
     if draw or social:
         write_json(work('og.json'), {'date': day, 'hash': digest, 'social': social, 'langs': langs})
 
