@@ -209,6 +209,23 @@ Saturday and Sunday (HKT date). `build_weekend` returns at least two posts or th
 | Sunday | `weekend-sun-bears` | `carousel` | `weekly.bear` order, count = `nr`, up to five |
 | Sunday | `weekend-sun-split_poll` | `poll` | one split row, options as in `discussion` |
 
+`weekend-*-bulls` is a dedicated Apple-style card (not `og/social-<lang>.png`). The daily snapshot card showed the previous trading day's leaders (e.g. `$LITE`) while the weekend caption lists this week's most-bullish names (e.g. `$SOFI`). `build_weekend` / `ensure_weekend_bulls_images` attach:
+
+```json
+"images": {
+  "zh": {
+    "portrait": "https://thecrowdtape.com/og/weekend-bulls-zh.png?v=2026-10-31",
+    "square": "https://thecrowdtape.com/og/weekend-bulls-zh-sq.png?v=2026-10-31"
+  },
+  "en": {
+    "portrait": "https://thecrowdtape.com/og/weekend-bulls-en.png?v=2026-10-31",
+    "square": "https://thecrowdtape.com/og/weekend-bulls-en-sq.png?v=2026-10-31"
+  }
+}
+```
+
+Portrait is 1080×1350 (Instagram / Threads; zh-first from 2026-10-29). Square is 1080×1080 (Facebook). The same post also carries `bull: [{t, n}]` (up to five, `nb`) and `range: {from, to}` from `weekly`. `share.py` writes `work/weekend-bulls-cards.json`; the update workflow runs `node tools/weekend_bulls.js` (Playwright, `social_apple.css`, local Noto Sans CJK TC fail-closed like PR #252). Do not fall back to `og/social-*.png` when the card fails. On a Saturday/Sunday where captions were already written, `main()` still refreshes these image URLs and the jobs file so the next Update site redraws the card.
+
 ```json
 {
   "date": "2026-10-24",
@@ -218,6 +235,13 @@ Saturday and Sunday (HKT date). `build_weekend` returns at least two posts or th
       "id": "weekend-sat-bulls",
       "format": "image_card",
       "ticker": "AMZN",
+      "bull": [{"t": "AMZN", "n": 12}],
+      "images": {
+        "zh": {
+          "portrait": "https://thecrowdtape.com/og/weekend-bulls-zh.png?v=2026-10-24",
+          "square": "https://thecrowdtape.com/og/weekend-bulls-zh-sq.png?v=2026-10-24"
+        }
+      },
       "langs": {
         "zh": {"threads": "", "facebook": "", "has_link": {"threads": true, "facebook": false}, "first_comment": {}}
       }

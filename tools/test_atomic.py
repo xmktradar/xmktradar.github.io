@@ -208,6 +208,14 @@ def test_weekend_two_angles():
     assert sun['posts'][0]['format'] == 'carousel'
     assert sun['posts'][1]['format'] == 'poll'
     assert sat['posts'][0]['ticker'] == 'AMZN'
+    # Dedicated weekend bulls card — never og/social-*.png (daily snapshot).
+    bulls = sat['posts'][0]
+    assert bulls['bull'] == [{'t': 'AMZN', 'n': 12}, {'t': 'GOOG', 'n': 8}]
+    assert bulls['images']['zh']['portrait'].endswith('og/weekend-bulls-zh.png?v=2026-10-24')
+    assert bulls['images']['zh']['square'].endswith('og/weekend-bulls-zh-sq.png?v=2026-10-24')
+    assert bulls['images']['en']['portrait'].endswith('og/weekend-bulls-en.png?v=2026-10-24')
+    assert 'social-zh.png' not in bulls['images']['zh']['portrait']
+    assert os.path.isfile(os.path.join(os.environ['WORK_DIR'], 'weekend-bulls-cards.json'))
     assert sun['posts'][0]['ticker'] == 'MRNA'
     assert sun['posts'][1]['ticker'] == 'SPCX'
     assert sun['posts'][1]['poll']['en']['options'] == ['Bullish', 'Bearish', 'Neutral']
