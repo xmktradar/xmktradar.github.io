@@ -1,0 +1,92 @@
+{
+  "posts": {
+    "2116604564308885690": {
+      "en_summary": "Bill Gates daughter did something similar… The prop firm industry in the last couple weeks needs to clean up their act. I’m not opposed to the idea of prop trading personally, but recent events is definitely not helping the cause.",
+      "zh_summary": "比爾·蓋茨的女兒做了類似的事情…… prop firm 行業在過去幾週需要整頓自己的行為。我個人並不反對 prop trading 的想法，但最近的事件肯定沒有幫助這個事業。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116604126473895959": {
+      "en_summary": "Discussion on gold denominator importance, prior ceiling 50% in 1969. If sold in June 1997 at 50%, underperformed for 2.5 yrs, but SPX has underperformed gold ever since. Companies are heavily levered on and off balance sheet, leverage cuts both ways, not good for EPS when things slow or for multiples over time.",
+      "zh_summary": "討論黃金分母的重要性，先前天花板為 1969 年的 50%。如果在 1997 年 6 月以 50% 賣出，會低表現 2.5 年，但此後 SPX 一直跑輸黃金。公司在表內外高度槓桿化，槓桿雙向切割，在事情放緩時對 EPS 不利，或長期對倍數不利。",
+      "tickers": [
+        "SPY"
+      ],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "SPY": "中性"
+      },
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2116602429886050452": {
+      "en_summary": "Backtested: the 2010 euro crisis and flash crash, Apr 23 to Jul 2, 2010. S&P 500 -15.7%. High yield -3.32%. JOJO.Index +10.28%, in long Treasuries 9 of 11 weeks. Just holding long Treasuries did better at +12.97%. The rotation gave up some of that to avoid picking a side.",
+      "zh_summary": "回測：2010 年歐元危機和閃崩，2010 年 4 月 23 日至 7 月 2 日。標普 500 下跌 15.7%。高收益下跌 3.32%。JOJO.Index 上漲 10.28%，在 11 週中有 9 週持有長期國債。單純持有長期國債表現更好，為 +12.97%。輪動放棄了一些收益以避免選邊。",
+      "tickers": [
+        "SPY",
+        "JOJO"
+      ],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "SPY": "中性",
+        "JOJO": "中性"
+      },
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2116602431584850022": {
+      "en_summary": "JOJO.Index = ATAC Credit-On/Credit-Off Index, launched 6/14/2021. Results before launch are backtested and hypothetical. Indexes are unmanaged, have no fees and cannot be invested in directly. Past performance does not guarantee future results. Not investment advice.",
+      "zh_summary": "JOJO.Index = ATAC Credit-On/Credit-Off Index，於 2021 年 6 月 14 日推出。推出前結果為回測和假設。指數無管理、無費用，不能直接投資。過去表現不保證未來結果。非投資建議。",
+      "tickers": [
+        "JOJO"
+      ],
+      "stance": null,
+      "stance_by_ticker": {
+        "JOJO": "未表態"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116596010126565567": {
+      "en_summary": "@elonmusk @SpaceX 😂",
+      "zh_summary": "@elonmusk @SpaceX 😂",
+      "tickers": [
+        "SPCX"
+      ],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "SPCX": "中性"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
