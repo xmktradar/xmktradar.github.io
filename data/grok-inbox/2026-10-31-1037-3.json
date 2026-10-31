@@ -1,1 +1,74 @@
-PLACEHOLDER_BATCH3
+{
+  "posts": {
+    "2116306410770137214": {
+      "en_summary": "If your clients are 60/40 and the 40 is passive bonds, they have zero positioning against credit widening. $JOJO adds tactical rotation to the fixed income sleeve.",
+      "zh_summary": "如果客戶是60/40配置，且40%是被動債券，他們對信用利差擴大沒有任何倉位。$JOJO為固定收益部分增加戰術輪動。",
+      "tickers": ["JOJO"],
+      "stance": "睇好",
+      "stance_by_ticker": {"JOJO": "睇好"},
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "yields",
+      "macro_impact": "利好",
+      "ticker_notes": {"JOJO": "針對信用利差擴大提供戰術輪動"}
+    },
+    "2116306412443697229": {
+      "en_summary": "Learn more about the ATAC Credit Rotation ETF $JOJO at https://atacfunds.com/jojo/. Lead-Lag Publishing, LLC is not an affiliate of Tidal/Toroso or ACA/Foreside.",
+      "zh_summary": "了解更多關於ATAC信用輪動ETF $JOJO，網址https://atacfunds.com/jojo/。Lead-Lag Publishing, LLC不是Tidal/Toroso或ACA/Foreside的關聯方。",
+      "tickers": ["JOJO"],
+      "stance": "中性",
+      "stance_by_ticker": {"JOJO": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116296707629846552": {
+      "en_summary": "We gave Claude Opus 5.5 one goal: Beat Nvidia. $NVDA: +12.2% $NVDL: -14.6% Opus 5.5 Strat: +169.4%. Add this strategy for free.",
+      "zh_summary": "我們給Claude Opus 5.5一個目標：擊敗Nvidia。$NVDA：+12.2% $NVDL：-14.6% Opus 5.5策略：+169.4%。免費添加此策略。",
+      "tickers": ["NVDA", "NVDL"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "NVDL": "睇淡"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDL": "策略表現+169.4%對比NVDL -14.6%"}
+    },
+    "2116281740645843252": {
+      "en_summary": "Cumulative investment in data centers and related AI infrastructure is forecast to reach $10.3 trillion from 2025 to 2032, per the WSJ. $NVDA $GOOG $AMZN $MSFT",
+      "zh_summary": "據《華爾街日報》，數據中心及相關人工智能基礎設施的累計投資預計從2025年到2032年將達到10.3萬億美元。$NVDA $GOOG $AMZN $MSFT",
+      "tickers": ["NVDA", "GOOG", "AMZN", "MSFT"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好", "GOOG": "睇好", "AMZN": "睇好", "MSFT": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "利好",
+      "ticker_notes": {"NVDA": "AI基建投資10.3萬億", "GOOG": "AI基建投資10.3萬億", "AMZN": "AI基建投資10.3萬億", "MSFT": "AI基建投資10.3萬億"}
+    },
+    "2116279836532695206": {
+      "en_summary": "$VIX has not closed above 20 for 66 straight days despite October events. Longest such streak since Oct 27 2023 to Aug 2 2024 (191 days).",
+      "zh_summary": "$VIX儘管十月發生諸多事件，仍連續66天未收於20以上。這是自2023年10月27日至2024年8月2日（191天）以來最長的此類連續記錄。",
+      "tickers": ["VIX"],
+      "stance": "中性",
+      "stance_by_ticker": {"VIX": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    }
+  }
+}
