@@ -53,6 +53,10 @@ def clean(a):
         o['macro_theme'] = th if o['macro'] and th in MACRO_THEMES else None
         o['macro_impact'] = MACRO_IMPACT.get(a.get('macro_impact')) if o['macro_theme'] else None
     st = a.get('stance') if a.get('stance') in ('睇好', '睇淡', '中性') else None
+    if a.get('promo'):  # 2026-11-01: issuer/fund promo (e.g. @leadlagreport $JOJO) is never a bull/bear call
+        o['promo'] = str(a['promo'])[:20]
+        sbt = {t: '未表態' for t in sbt}
+        st = None
     if tickers:
         o['stance_by_ticker'] = sbt
         if st is None and any(v != '未表態' for v in sbt.values()):

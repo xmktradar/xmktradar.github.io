@@ -49,7 +49,7 @@ def site_post(x, a):
             p[k] = a[k]
     if a.get('tickers'):
         p['specific'] = bool(a.get('specific'))
-    for k in ('stance_by_ticker', 'ticker_notes'):
+    for k in ('stance_by_ticker', 'ticker_notes', 'promo'):
         if a.get(k):
             p[k] = a[k]
     p['zh_summary'] = a['zh_summary']

@@ -240,6 +240,11 @@ def looks_zh(o):
     return c > 40 and c > l * 0.5
 
 
+def shown(o):
+    """Analyst flags (c7bf462): untranslated:true or gap:true items are never shown."""
+    return not (isinstance(o, dict) and (o.get('untranslated') or o.get('gap')))
+
+
 def translated_only(zh, tr):
     """Non-Chinese pages: keep only items that have a translation (2026-11-01 patrol: old briefings,
     summaries and highlights showed in Chinese on /en/). Untranslated items are left out, not shown in Chinese."""
@@ -248,12 +253,12 @@ def translated_only(zh, tr):
         return {k: translated_only(v, tr.get(k)) for k, v in zh.items()}
     if isinstance(zh, dict):  # highlights by day
         tr = tr if isinstance(tr, dict) else {}
-        return {k: v for k, v in tr.items() if k in zh and not looks_zh(v)}
+        return {k: v for k, v in tr.items() if k in zh and shown(v) and not looks_zh(v)}
     if isinstance(zh, list):
         tr = tr if isinstance(tr, list) else []
         key = lambda x: (x.get('date'), json.dumps(x.get('win'), sort_keys=True)) if isinstance(x, dict) else None  # noqa: E731
         by = {key(x): x for x in tr}
-        return [by[key(x)] for x in zh if key(x) in by and not looks_zh(by[key(x)])]
+        return [by[key(x)] for x in zh if key(x) in by and shown(by[key(x)]) and not looks_zh(by[key(x)])]
     return zh if tr is None else tr
 
 
@@ -327,6 +332,8 @@ def swap_data(d, lang, fixed):
             d[k] = translated_only(d.get(k), d.get(f'{k}_{lang}'))
         elif d.get(f'{k}_{lang}'):
             d[k] = overlay(d.get(k), d[f'{k}_{lang}'])
+        if lang == 'zh' and isinstance(d.get(k), dict) and not all(isinstance(v, list) for v in d[k].values()):
+            d[k] = {kk: v for kk, v in d[k].items() if shown(v)}  # gap:true highlight days
     for p in d['posts']:
         alt = (p.get('en_summary') or p.get('text')) if lang == 'en' else None
         if lang == 'en' and p.get('en_summary') and p.get('text'):

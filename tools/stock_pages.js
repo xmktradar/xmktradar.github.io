@@ -649,7 +649,7 @@ if (require.main === module) {
             if (post) idOf.set(post, id);
           }
           const text = String((post && (post.text || post.en_summary)) || '');
-          rows.push({ t: x.t, ms: x.ms, id, page: true, acc: x.acc, promo: promoRe.test(text) });
+          rows.push({ t: x.t, ms: x.ms, id, page: true, acc: x.acc, promo: !!(post && post.promo) || promoRe.test(text) });
         }
         return { list, cutoffMs: cut, rows };
       }, [MIN_ACCOUNTS, PROMO_SRC]);
