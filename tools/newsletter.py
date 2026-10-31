@@ -274,7 +274,7 @@ h1{{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!im
   </nav>
 </header>
 <main class="issue">
-  <nav class="money-bar" aria-label="Promotion"><span class="aff-tag">Promotion</span><a href="/en/tools/">Tools</a><a href="/en/support/">Support us</a><a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview" data-placement="money-bar">TradingView</a><a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover" data-placement="money-bar">Stock Rover</a></nav>
+  <nav class="money-bar" aria-label="Promotion"><span class="aff-tag">Promotion</span><a href="/en/tools/">Tools</a><a href="/en/support/">Support us</a><a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview" data-placement="money-bar">TradingView</a><a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover" data-placement="money-bar">Stock Rover</a><a href="https://optionstrat.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="optionstrat" data-placement="money-bar">OptionStrat</a></nav>
   {body}
   <aside class="note">
     <b>Not investment advice</b>
@@ -314,7 +314,7 @@ h1{{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!im
   <p><a class="back" href="/en/newsletter/">{back}</a></p>
 </main>
 <footer class="site-foot">
-  <p><a href="/en/about/">About</a> · <a href="/en/tools/">Tools</a> · <a href="/en/support/">Support us</a> · <a href="/en/newsletter/">Newsletter</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">TradingView <span class="aff-tag">Promotion</span></a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="aff-tag">Promotion</span></a></p>
+  <p><a href="/en/about/">About</a> · <a href="/en/tools/">Tools</a> · <a href="/en/support/">Support us</a> · <a href="/en/newsletter/">Newsletter</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">TradingView <span class="aff-tag">Promotion</span></a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="aff-tag">Promotion</span></a> · <a href="https://optionstrat.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="optionstrat">OptionStrat <span class="aff-tag">Promotion</span></a></p>
 </footer>
 </div>
 <script>

@@ -5,8 +5,8 @@ Writes tools/index.html (Chinese) and zh|en/tools/index.html, and lists
 the three language URLs in sitemap.xml.
 The IBKR card (data-region="ibkr") is omitted on the Korean page.
 Cards follow data/money-links.json: a card shows only when enabled AND it
-earns (affiliate/referral). Stock Rover is shown only when tools.stockrover
-is true and stockrover_url is a real URL; otherwise the card is removed.
+earns (affiliate/referral). Stock Rover / OptionStrat show only when their
+tools.* flag is true and their *_url is a real URL; otherwise the card is removed.
 """
 import html as html_lib
 import json
@@ -25,27 +25,32 @@ DEFAULT_TOOLS = {
     'koyfin': False,
     'ibkr': False,
     'stockrover': False,
+    'optionstrat': False,
 }
 
 
 def money_links():
     """Load data/money-links.json. Defaults: tradingview true, others false."""
     tools = dict(DEFAULT_TOOLS)
-    url = ''
+    sr_url = ''
+    os_url = ''
     path = os.path.join(ROOT, 'data', 'money-links.json')
     try:
         data = json.load(open(path, encoding='utf-8'))
     except (OSError, json.JSONDecodeError):
-        return tools, url
+        return tools, sr_url, os_url
     if not isinstance(data, dict):
-        return tools, url
+        return tools, sr_url, os_url
     got = data.get('tools') or {}
     if isinstance(got, dict):
         tools.update(got)
-    url = data.get('stockrover_url') or ''
-    if not isinstance(url, str):
-        url = ''
-    return tools, url
+    sr_url = data.get('stockrover_url') or ''
+    if not isinstance(sr_url, str):
+        sr_url = ''
+    os_url = data.get('optionstrat_url') or ''
+    if not isinstance(os_url, str):
+        os_url = ''
+    return tools, sr_url, os_url
 
 
 def table(lang):
@@ -70,6 +75,14 @@ def stockrover(html, url):
     return html.replace('{{sr_hidden}}', ' hidden').replace('{{sr_href}}', '')
 
 
+def optionstrat(html, url):
+    """Fill OptionStrat placeholders; hide the card when the URL is empty."""
+    url = (url or '').strip()
+    if url:
+        return html.replace('{{os_hidden}}', '').replace('{{os_href}}', html_lib.escape(url, quote=True))
+    return html.replace('{{os_hidden}}', ' hidden').replace('{{os_href}}', '')
+
+
 def drop_disabled(html, tools):
     """Remove each <article> whose inner a.tool-btn has tools[data-tool] false."""
     def keep(m):
@@ -81,9 +94,10 @@ def drop_disabled(html, tools):
     return re.sub(r'\s*<article\b[^>]*>.*?</article>', keep, html, flags=re.S)
 
 
-def page(template, lang, tools, sr_url):
+def page(template, lang, tools, sr_url, os_url):
     cur = {k: (' aria-current="page"' if k == lang else '') for k in LANGS}
     html = stockrover(template, sr_url)
+    html = optionstrat(html, os_url)
     html = html.replace('{{lang}}', LANGS[lang]).replace('{{lang_code}}', lang)
     html = html.replace('{{canon}}', f'{SITE}{lang}/tools/')
     html = html.replace('{{home}}', f'/{lang}/')
@@ -93,6 +107,8 @@ def page(template, lang, tools, sr_url):
     enabled = dict(tools)
     if not (sr_url or '').strip():
         enabled['stockrover'] = False
+    if not (os_url or '').strip():
+        enabled['optionstrat'] = False
     html = drop_disabled(html, enabled)
     return html
 
@@ -144,13 +160,13 @@ def sitemap():
 
 def main():
     os.chdir(ROOT)
-    tools, sr_url = money_links()
+    tools, sr_url, os_url = money_links()
     template = open(os.path.join(ROOT, 'tools', 'toolspage.html'), encoding='utf-8').read()
-    zh = page(template, 'zh', tools, sr_url)
+    zh = page(template, 'zh', tools, sr_url, os_url)
     write('tools/index.html', with_root_redirect(zh, 'tools'))
     write('zh/tools/index.html', zh)
     for lang in ('en',):
-        html = page(template, lang, tools, sr_url)
+        html = page(template, lang, tools, sr_url, os_url)
         body = re.sub(r'<nav class="lang".*?</nav>', '', html, flags=re.S)
         left = HAN.findall(body)
         if left:
