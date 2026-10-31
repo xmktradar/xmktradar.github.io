@@ -176,6 +176,35 @@ def test_tree_x_en_text_capped_at_280():
     assert len(slot['threads']['zh']['text']) <= 500
 
 
+def test_tree_x_trilingual_afterclose_capped_at_280():
+    """x_trilingual.afterclose.text is X (zh+en); humanize_tree must hard-cap ≤280 weighted.
+
+    Same failure mode as the old nested x.en.text bug (PR #253): without platform='x' on
+    the x_trilingual ancestor, brand/disc/tags push a free-account post over 280.
+    """
+    import humanize as H
+    zh = ('$GOOGL，有 19 個帳號提到，3 個看多、5 個看空；最多人看多的則是 $LITE，共 4 個帳號。')
+    en = ('$GOOGL got the most attention on X today (19 accounts, 3 bullish and 5 bearish), '
+          'but $LITE had the most bulls (4 accounts).')
+    raw = (f'{zh}\nhttps://thecrowdtape.com/zh/?utm_source=x&utm_medium=social&utm_campaign=afterclose\n'
+           f'{en}\nhttps://thecrowdtape.com/?utm_source=x&utm_medium=social&utm_campaign=afterclose\n'
+           '⚠ Public X posts only · Not investment advice')
+    tree = {'x_trilingual': {'afterclose': {'post_at_hkt': '08:00', 'text': raw, 'xlen': 999, 'form': 'full'}}}
+    # Uncapped humanize (no platform) exceeds 280 — the bug we are locking out.
+    uncapped = H.humanize(raw, None, 'post', None)
+    assert H.xlen(uncapped) > 280, H.xlen(uncapped)
+    H.humanize_tree(tree)
+    text = tree['x_trilingual']['afterclose']['text']
+    assert H.xlen(text) <= 280, (H.xlen(text), text)
+    assert H.xlen(text) <= H.X_MAX, H.xlen(text)
+    assert tree['x_trilingual']['afterclose']['xlen'] == H.xlen(text)
+    # No mid-token ellipsis junk like "4 ac…"
+    for line in text.split('\n'):
+        if line.endswith('…'):
+            assert not re.search(r'\b\w{1,2}…$', line), line
+            assert ' ac…' not in line
+
 if __name__ == '__main__':
     test_tree_x_en_text_capped_at_280()
+    test_tree_x_trilingual_afterclose_capped_at_280()
     main()

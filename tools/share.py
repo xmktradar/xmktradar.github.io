@@ -1104,8 +1104,12 @@ def _cap_pairs(pairs, disc):
         if not line or xlen(line) <= 12:
             break
         drop = 8 if len(line) > 24 else 2
-        cut = line[:-drop].rstrip()
-        if not cut or cut == line:
+        cut = line[:-drop].rstrip(' …')
+        # Prefer a word/sentence boundary so we never emit mid-token junk like "4 ac…".
+        if ' ' in cut and not re.search(r'[一-鿿]', cut[-1:]):
+            cut = cut.rsplit(' ', 1)[0].rstrip(' ,;:')
+        cut = re.sub(r'\$[A-Z.]*$', '', cut).rstrip(' ,;:…')
+        if not cut or cut == line.rstrip(' …'):
             break
         ps[i] = (cut + '…', url)
         text = _assemble_lang_lines(ps, disc)
