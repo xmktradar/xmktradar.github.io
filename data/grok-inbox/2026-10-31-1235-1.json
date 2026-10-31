@@ -1,0 +1,94 @@
+{
+  "posts": {
+    "2116373342395453575": {
+      "en_summary": "Starting Monday, a Grok Bot with access to tools will watch the market live and alert when $SPY or $QQQ hits a king node. Put wall equals calls, call wall equals puts. It will call out choppy days to sit on hands. These are not buy signals; wait for the candle to close.",
+      "zh_summary": "從週一開始，一個擁有工具存取權的 Grok Bot 將即時監控市場，並在 $SPY 或 $QQQ 觸及 king node 時發出警報。Put wall 等於看漲期權，Call wall 等於看跌期權。它也會指出震盪日以便按兵不動。這些不是買入信號；等待蠟燭收盤。",
+      "tickers": [
+        "SPY",
+        "QQQ"
+      ],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "SPY": "中性",
+        "QQQ": "中性"
+      },
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116354300226199898": {
+      "en_summary": "Optics greater than dollar value. Quoting a reply that this is a negligible amount of money to the country.",
+      "zh_summary": "觀感大於金錢價值。引用回覆稱這對國家而言是微不足道的金額。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116349442894999555": {
+      "en_summary": "Insider Buy Alert: The CEO of Accenture $ACN just spent $3,000,000 on shares as price looks to reclaim its 200-week EMA. Add a $200,000 buy by director Paula Price that same day, the company’s first open-market insider buying in over 13 years.",
+      "zh_summary": "內部人士買入警報：埃森哲 $ACN 的首席執行官剛花費 3,000,000 美元購買股票，價格正尋求重奪其 200 週 EMA。同日董事 Paula Price 買入 200,000 美元，這是該公司超過 13 年來首次公開市場內部人士買入。",
+      "tickers": [
+        "ACN"
+      ],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "ACN": "睇好"
+      },
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {
+        "ACN": "CEO 買入 300 萬美元及董事買入 20 萬美元，13 年來首次公開市場內部買入，價格尋求重奪 200 週 EMA"
+      }
+    },
+    "2116347125621473285": {
+      "en_summary": "Enjoyed interview with “Nini” one of the most popular finfluencers in Korea (1.4mil subs). Major in ETF industry in Asia (Blackrock works with them). They lean degen, especially using $SOXL but also use $VOO and $QQQ. Tried to encourage more of the latter.",
+      "zh_summary": "享受與韓國最受歡迎的財經影響者之一「Nini」（140 萬訂閱）的訪談。他們在亞洲 ETF 行業佔有重要地位（貝萊德與他們合作）。他們偏向投機，特別使用 $SOXL，但也使用 $VOO 和 $QQQ。試圖鼓勵更多使用後者。",
+      "tickers": [
+        "SOXL",
+        "VOO",
+        "QQQ"
+      ],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "SOXL": "中性",
+        "VOO": "中性",
+        "QQQ": "中性"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116343917067309389": {
+      "en_summary": "Keep building! Quoting research that @trondao's institutional access widened in Q3 2026. $TRX gained regulated US exposure through a futures listing on CFTC-regulated Bitnomial and the Canary Staked TRX ETF (TRXS) on the Cboe BZX Exchange, the first US-listed TRON product with $50M in assets under management.",
+      "zh_summary": "繼續建設！引用研究稱 @trondao 的機構准入在 2026 年第三季度擴大。$TRX 透過 CFTC 監管的 Bitnomial 期貨上市及 Cboe BZX 交易所的 Canary Staked TRX ETF (TRXS) 獲得受監管美國曝光，首個美國上市 TRON 產品，資產管理規模 5000 萬美元。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
