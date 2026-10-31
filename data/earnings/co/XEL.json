@@ -1,0 +1,296 @@
+{
+ "t": "XEL",
+ "name": "Xcel Energy Inc.",
+ "cik": 72903,
+ "q": [
+  {
+   "end": "2016-12-31",
+   "label": "FY2016 Q4",
+   "rev": 2795000000,
+   "gp": null,
+   "op": 465000000,
+   "ni": 227000000,
+   "eps": 0.45,
+   "ocf": 626659000,
+   "capex": 1008517000,
+   "fcf": -381858000
+  },
+  {
+   "end": "2017-03-31",
+   "label": "FY2017 Q1",
+   "rev": 2946000000,
+   "gp": null,
+   "op": 492000000,
+   "ni": 239000000,
+   "eps": 0.47,
+   "ocf": 718000000,
+   "capex": 749000000,
+   "fcf": -31000000
+  },
+  {
+   "end": "2017-06-30",
+   "label": "FY2017 Q2",
+   "rev": 2645000000,
+   "gp": null,
+   "op": 466000000,
+   "ni": 227000000,
+   "eps": 0.45,
+   "ocf": 574000000,
+   "capex": 725000000,
+   "fcf": -151000000
+  },
+  {
+   "end": "2017-09-30",
+   "label": "FY2017 Q3",
+   "rev": 3017000000,
+   "gp": null,
+   "op": 824000000,
+   "ni": 492000000,
+   "eps": 0.97,
+   "ocf": 1075000000,
+   "capex": 782000000,
+   "fcf": 293000000
+  },
+  {
+   "end": "2017-12-31",
+   "label": "FY2017 Q4",
+   "rev": 2796000000,
+   "gp": null,
+   "op": 440000000,
+   "ni": 189000000,
+   "eps": 0.37,
+   "ocf": 759000000,
+   "capex": 988000000,
+   "fcf": -229000000
+  },
+  {
+   "end": "2018-03-31",
+   "label": "FY2018 Q1",
+   "rev": 2951000000,
+   "gp": null,
+   "op": 480000000,
+   "ni": 291000000,
+   "eps": 0.57,
+   "ocf": 887000000,
+   "capex": 860000000,
+   "fcf": 27000000
+  },
+  {
+   "end": "2018-06-30",
+   "label": "FY2018 Q2",
+   "rev": 2658000000,
+   "gp": null,
+   "op": 450000000,
+   "ni": 265000000,
+   "eps": 0.52,
+   "ocf": 550000000,
+   "capex": 994000000,
+   "fcf": -444000000
+  },
+  {
+   "end": "2018-09-30",
+   "label": "FY2018 Q3",
+   "rev": 3048000000,
+   "gp": null,
+   "op": 696000000,
+   "ni": 491000000,
+   "eps": 0.96,
+   "ocf": 1056000000,
+   "capex": 827000000,
+   "fcf": 229000000
+  },
+  {
+   "end": "2018-12-31",
+   "label": "FY2018 Q4",
+   "rev": 2880000000,
+   "gp": null,
+   "op": 339000000,
+   "ni": 214000000,
+   "eps": 0.42,
+   "ocf": 629000000,
+   "capex": 1276000000,
+   "fcf": -647000000
+  },
+  {
+   "end": "2019-03-31",
+   "label": "FY2019 Q1",
+   "rev": 3141000000,
+   "gp": null,
+   "op": 486000000,
+   "ni": 315000000,
+   "eps": 0.61,
+   "ocf": 793000000,
+   "capex": 844000000,
+   "fcf": -51000000
+  },
+  {
+   "end": "2019-06-30",
+   "label": "FY2019 Q2",
+   "rev": 2577000000,
+   "gp": null,
+   "op": 410000000,
+   "ni": 238000000,
+   "eps": 0.46,
+   "ocf": 541000000,
+   "capex": 845000000,
+   "fcf": -304000000
+  },
+  {
+   "end": "2019-09-30",
+   "label": "FY2019 Q3",
+   "rev": 3013000000,
+   "gp": null,
+   "op": 758000000,
+   "ni": 527000000,
+   "eps": 1.01,
+   "ocf": 1223000000,
+   "capex": 1329000000,
+   "fcf": -106000000
+  }
+ ],
+ "latest": {
+  "label": "FY2019 Q3",
+  "filed": "2019-10-25",
+  "accn": "0000072903-19-000074",
+  "form": "10-Q",
+  "end": "2019-09-30"
+ },
+ "bal": {
+  "end": "2019-09-30",
+  "cash": 864000000,
+  "sti": null,
+  "debt": 18605000000
+ },
+ "bank": false,
+ "seg": {
+  "axis": "us-gaap:StatementBusinessSegmentsAxis",
+  "basis": "quarter",
+  "rows": [
+   {
+    "name": "Regulated Electric",
+    "val": 2771000000.0,
+    "prev": 2802000000.0
+   },
+   {
+    "name": "Regulated Natural Gas",
+    "val": 222000000.0,
+    "prev": 227000000.0
+   },
+   {
+    "name": "All Other",
+    "val": 20000000.0,
+    "prev": 19000000.0
+   }
+  ],
+  "accn": "0000072903-19-000074"
+ },
+ "rules": 4,
+ "diag": {
+  "newest": "2026-09-30",
+  "rev_last": "2019-09-30",
+  "have": [
+   {
+    "c": "us-gaap:OtherCostOfOperatingRevenue",
+    "start": "2026-01-01",
+    "end": "2026-09-30",
+    "val": 7000000,
+    "form": "10-Q",
+    "fp": "Q3",
+    "filed": "2026-10-29"
+   },
+   {
+    "c": "us-gaap:OtherCostOfOperatingRevenue",
+    "start": "2026-07-01",
+    "end": "2026-09-30",
+    "val": 2000000,
+    "form": "10-Q",
+    "fp": "Q3",
+    "filed": "2026-10-29"
+   },
+   {
+    "c": "us-gaap:RegulatedAndUnregulatedOperatingRevenue",
+    "start": "2026-01-01",
+    "end": "2026-09-30",
+    "val": 11312000000,
+    "form": "10-Q",
+    "fp": "Q3",
+    "filed": "2026-10-29"
+   },
+   {
+    "c": "us-gaap:RegulatedAndUnregulatedOperatingRevenue",
+    "start": "2026-07-01",
+    "end": "2026-09-30",
+    "val": 4172000000,
+    "form": "10-Q",
+    "fp": "Q3",
+    "filed": "2026-10-29"
+   },
+   {
+    "c": "us-gaap:RegulatedOperatingRevenueGas",
+    "start": "2026-01-01",
+    "end": "2026-09-30",
+    "val": 1667000000,
+    "form": "10-Q",
+    "fp": "Q3",
+    "filed": "2026-10-29"
+   },
+   {
+    "c": "us-gaap:RegulatedOperatingRevenueGas",
+    "start": "2026-07-01",
+    "end": "2026-09-30",
+    "val": 272000000,
+    "form": "10-Q",
+    "fp": "Q3",
+    "filed": "2026-10-29"
+   },
+   {
+    "c": "us-gaap:UnregulatedOperatingRevenue",
+    "start": "2026-01-01",
+    "end": "2026-09-30",
+    "val": 41000000,
+    "form": "10-Q",
+    "fp": "Q3",
+    "filed": "2026-10-29"
+   },
+   {
+    "c": "us-gaap:UnregulatedOperatingRevenue",
+    "start": "2026-07-01",
+    "end": "2026-09-30",
+    "val": 12000000,
+    "form": "10-Q",
+    "fp": "Q3",
+    "filed": "2026-10-29"
+   }
+  ],
+  "rev_concepts_last": {
+   "Revenues": {
+    "start": "2019-01-01",
+    "end": "2019-09-30",
+    "form": "10-Q",
+    "fp": "Q3",
+    "filed": "2019-10-25"
+   },
+   "RevenueFromContractWithCustomerExcludingAssessedTax": {
+    "start": "2019-01-01",
+    "end": "2019-03-31",
+    "form": "10-Q",
+    "fp": "Q1",
+    "filed": "2019-04-26"
+   }
+  }
+ },
+ "mcap": 51234418688,
+ "next": "2026-10-29",
+ "last_report": "2026-10-29",
+ "est": {
+  "eps_act": null,
+  "eps_est": null,
+  "rev_est": null,
+  "rev_est_seen": null
+ },
+ "pending": {
+  "q": "2026-09-30",
+  "eps_act": 1.52,
+  "eps_est": 1.39265
+ }
+}
