@@ -22,7 +22,7 @@ const fs = require('fs');
 const path = require('path');
 const { start, pageUrl } = require('./local_server');
 const { buildPxChartFromFile } = require('./px_chart.js');
-const { rankHot, sitemapTickers } = require('./hot_stocks.js');
+const { rankHot, sitemapTickers, PROMO_SRC } = require('./hot_stocks.js');
 
 const SITE = 'https://thecrowdtape.com/';
 const EMBED = require('./embed.js');
@@ -629,7 +629,8 @@ if (require.main === module) {
     if (!tvSymbols) tvSymbols = await p.evaluate(() => D.tv_symbols || {});
     if (!list) {
       // Facts only: distinct valid POSTS rows for tickers that have a page. rankHot applies the window.
-      const packed = await p.evaluate((min) => {
+      const packed = await p.evaluate(([min, promoSrc]) => {
+        const promoRe = new RegExp(promoSrc, 'i');
         const lim = addDays(TODAY, -27), m = {};
         POSTS.forEach(x => { if (x.d >= lim) (m[x.t] = m[x.t] || new Set()).add(x.acc) });
         const list = Object.entries(m).filter(([t, s]) => s.size >= min && !UNC(t)).map(([t, s]) => [t, s.size])
@@ -647,10 +648,11 @@ if (require.main === module) {
             id = (post && post.url) || x.url || ('#' + seq++);
             if (post) idOf.set(post, id);
           }
-          rows.push({ t: x.t, ms: x.ms, id, page: true });
+          const text = String((post && (post.text || post.en_summary)) || '');
+          rows.push({ t: x.t, ms: x.ms, id, page: true, acc: x.acc, promo: !!(post && post.promo) || promoRe.test(text) });
         }
         return { list, cutoffMs: cut, rows };
-      }, MIN_ACCOUNTS);
+      }, [MIN_ACCOUNTS, PROMO_SRC]);
       list = packed.list;
       HOT = rankHot(packed.rows, packed.cutoffMs, 7, 30);
       sitemapCounts = {};

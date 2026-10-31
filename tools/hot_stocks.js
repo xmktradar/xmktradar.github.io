@@ -5,6 +5,20 @@
 'use strict';
 
 const DAY_MS = 864e5;
+// 2026-11-01 patrol: $JOJO ranked #11 on 64 posts, nearly all @leadlagreport fund promo and disclosure
+// boilerplate. Promo/disclosure posts do not count, and one account adds at most PER_ACC_CAP posts per ticker.
+const PER_ACC_CAP = 5;
+const PROMO_RE = new RegExp([
+  'not investment advice\\.?\\s*$', 'past performance (?:does not|is no) guarantee', 'cannot be invested in directly',
+  'backtested and hypothetical', 'is not an? affiliate of', 'learn more about the .{0,60}\\betf\\b',
+  'carefully consider the (?:fund|investment)', 'read (?:it|the prospectus) carefully', 'sponsored\\b', '#ad\\b',
+  'paid (?:promotion|partnership)', 'distributed by .{0,40}(?:foreside|distributors)',
+].join('|'), 'i');
+
+/** True for fund promo / disclosure boilerplate that should not count as a mention. */
+function isPromo(text) {
+  return typeof text === 'string' && PROMO_RE.test(text);
+}
 
 /**
  * Top tickers by distinct in-window posts.
@@ -22,10 +36,11 @@ function rankHot(rows, cutoffMs, days, n) {
   const span = Number(days) * DAY_MS;
   const open = Number.isFinite(cutoffMs) && Number.isFinite(span) && span >= 0;
   const ids = new Map();
+  const perAcc = new Map();
   const list = Array.isArray(rows) ? rows : [];
   for (let i = 0; i < list.length; i++) {
     const row = list[i];
-    if (!row || row.page === false || row.t == null || row.t === '') continue;
+    if (!row || row.page === false || row.promo || row.t == null || row.t === '') continue;
     const ms = row.ms;
     if (!open || typeof ms !== 'number' || !Number.isFinite(ms)) continue;
     if (ms < cutoffMs - span || ms > cutoffMs) continue;
@@ -33,6 +48,13 @@ function rankHot(rows, cutoffMs, days, n) {
     const id = row.id != null ? row.id : '\0' + i;
     let set = ids.get(t);
     if (!set) ids.set(t, set = new Set());
+    if (set.has(id)) continue;
+    if (row.acc != null && row.acc !== '') {
+      const k = t + '\0' + String(row.acc).toLowerCase();
+      const c = perAcc.get(k) || 0;
+      if (c >= PER_ACC_CAP) continue;
+      perAcc.set(k, c + 1);
+    }
     set.add(id);
   }
   const ranked = [];
@@ -76,4 +98,4 @@ function sitemapTickers(counts30, min = 2) {
   return out;
 }
 
-module.exports = { rankHot, sitemapTickers, DAY_MS };
+module.exports = { rankHot, sitemapTickers, isPromo, PROMO_SRC: PROMO_RE.source, PER_ACC_CAP, DAY_MS };
