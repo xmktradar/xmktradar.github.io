@@ -1,12 +1,12 @@
 name: Update site
-# Every 4 hours (HKT 03:05, 07:05, 11:05, 15:05, 19:05, 23:05), about 1.5 h before each SuperGrok summary task (:35),
+# Every 4 hours (HKT 03:17, 07:17, 11:17, 15:17, 19:17, 23:17; off :05 because GitHub often drops/delays top-of-hour-ish schedules), about 1.25 h before each SuperGrok summary task (:35),
 # so new posts are on the site before SuperGrok reads them: fetch new posts, apply SuperGrok summaries and write-ups,
 # refresh prices, consensus history and share image, build the language versions and stock pages, check, then publish.
 # Steps: fetch posts, merge SuperGrok summaries and write-ups, prices, stats, publish.
 on:
   workflow_dispatch:
   schedule:
-    - cron: '5 3-23/4 * * *'  # UTC 03:05, 07:05 ... = HKT 11:05, 15:05, 19:05, 23:05, 03:05, 07:05
+    - cron: '17 3-23/4 * * *'  # UTC 03:17, 07:17 ... = HKT 11:17, 15:17, 19:17, 23:17, 03:17, 07:17
   push:
     branches: [main]
     paths: ['tools/**', '.github/workflows/update-site.yml', 'data/super-grok-analysis.json', 'data/grok-inbox/**', 'data/super-grok-writeups.json']
@@ -83,8 +83,17 @@ jobs:
         continue-on-error: true
         run: python3 tools/apply_writeups.py
       - name: Update prices
+        # Scheduled runs on UTC Saturday/Sunday skip the slow price refresh (US market closed;
+        # Friday close is captured by the UTC Fri 23:17 = HKT Sat 07:17 run). Weekdays, push and
+        # manual dispatch always refresh prices.
         continue-on-error: true
-        run: python3 tools/update_prices.py index.html
+        run: |
+          dow=$(date -u +%u)
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$dow" -ge 6 ]; then
+            echo "UTC weekend scheduled run (day $dow): skipping price refresh; keeping last prices."
+            exit 0
+          fi
+          python3 tools/update_prices.py index.html
       - name: Earnings brief numbers (US stocks >= $50B; SEC + Yahoo, no AI; tools/earnings_data.py)
         continue-on-error: true
         timeout-minutes: 12
