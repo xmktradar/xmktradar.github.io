@@ -2,96 +2,24 @@
  "note": "已抓取但未經 Grok 分析嘅帖，只收股票同宏觀帖（閒聊帖唔寫），有股票代號嘅排最前，等超過 24 個鐘就唔再等。",
  "posts": [
   {
-   "id": "2116720122878362096",
+   "id": "2116738249582641286",
    "handle": "TheTranscript_",
    "name": "The Transcript",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-11-01T02:32:58Z",
-   "url": "https://x.com/TheTranscript_/status/2116720122878362096",
-   "text": "$GNRC CEO: Generac's data center generator backlog nearly tripled to $4.5B following its landmark long-term agreement with Amazon.\n\n“The third quarter also marked a tremendous step forward in solidifying our position as a leading supplier to the data center market as we entered a long-term supply agreement with Amazon for data center backup power generators. Initial deliveries in this agreement are expected to be a combined $2.4 billion in 2027 and 2028, driving the increase in our backlog for products sold to the data center market to approximately $4.5 billion nearly tripling from just 90 days ago.”",
+   "time_utc": "2026-11-01T03:45:00Z",
+   "url": "https://x.com/TheTranscript_/status/2116738249582641286",
+   "text": "$FVRR: Fiverr CEO gave a lengthy response on the disruption AI agents are causing to the internet, particularly search, advertising, e-commerce, and brand loyalty.\n\n\"This is changing the complete economics of search\"",
    "quoted": null,
-   "media": [],
-   "likes": 3,
-   "views": 2011,
+   "media": [
+    "https://pbs.twimg.com/media/HWAqOEfbQAEDoJS.jpg?name=orig"
+   ],
+   "likes": 14,
+   "views": 2957,
    "cashtags": [
-    "GNRC"
+    "FVRR"
    ],
-   "n_media": 0
-  },
-  {
-   "id": "2116729592249561380",
-   "handle": "saxena_puru",
-   "name": "Puru Saxena",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T03:10:36Z",
-   "url": "https://x.com/saxena_puru/status/2116729592249561380",
-   "text": "The AI selloff is not about demand evaporating. It is about cash flow, financing cost and how long the market is willing to wait for the returns.\n\nDemand signals remain extremely strong.\n\nSK hynix just reported Q3 revenue of 104.6 trillion won (+328% YoY) and operating profit of 83.3 trillion won with an ~80% margin. Management said DRAM and HBM volumes are effectively sold out through 2029, customer HBM requests are roughly double what they can supply, and they expect the supply shortage to persist through 2030. Long-term agreements already cover more than half of 2027–2028 capacity with 14 major customers. That is not a demand problem.⁠\n\nAnthropic’s S-1 shows the unit economics at the model layer improving sharply. Revenue per dollar of compute and infrastructure expense rose from $0.40 in Q1 2025 to $2.08 in Q2 2026 - a 5.2× improvement in five quarters. Compute costs fell from 251% of revenue to 48%. The company generated its first quarterly operating profit. Revenue grew 1,368% YoY while compute expense rose only ~300%. Efficiency is rising, not collapsing.⁠\n\nGPU rental prices have turned higher again. B200 on-demand rates rose more than 20% in a month in some indices; H100 and H200 also firmed. Tightness in the spot and short-term rental market is consistent with the hyperscalers’ own comments that they still cannot meet all the demand they see.⁠\n\nOn the supply side the hyperscalers themselves are not signalling a slowdown. Amazon maintained ~$220 billion 2026 cash capex and said it will spend “meaningfully more” in 2027, with Andy Jassy noting that even at these levels demand will still exceed capacity. Alphabet kept its $195–205 billion 2026 range and said 2027 capex will rise significantly. Meta raised the bottom of its range. These are the companies closest to the demand. They are still leaving demand on the table and planning higher spend next year.⁠\n\nWhat the market is reacting to is the cash flow and financing picture.\n\nIn Q3, Amazon, Alphabet and Meta reported negative free cash flow. Theses companies are now funding the gap with a combination of operating cash, new debt and equity issuance. Amazon alone raised substantial long-term debt in the quarter. Combined 2026 capex guidance across the major hyperscalers is now in the $700+ billion range.⁠\n\nThis is the classic tension Philip Fisher described in Common Stocks and Uncommon Profits: exceptional companies will temporarily depress free cash flow and reported earnings when they invest heavily in capacity that expands long-term earning power. The market often treats the near-term cash burn as a problem rather than the necessary cost of building the next phase of growth. Fisher’s view was that investors who focus on the long-range profit outlook and are willing to look through the temporary expense should benefit when the results arrive.\n\nThe valuation backdrop is also different from prior bubbles. The NASDAQ Composite’s trailing PE is in the high-20s today versus roughly 190× at the March 2000 peak. The multiple then was several times higher. This is not a pure multiple-expansion story running on narratives alone.\n\nThe risks are there and they are mostly about financing and timing, not about whether the underlying demand for AI compute exists:\n\n- How long free cash flow stays under pressure and how expensive or available the external capital becomes.\n- Whether power, memory and data-centre delivery constraints stretch the payback further than expected.\n- Whether core businesses (search, advertising, traditional cloud) slow enough to offset the AI-driven growth in the near term.\n\nNonetheless the primary evidence from the companies building the capacity (hyperscalers), the companies supplying the critical components (memory) and the companies delivering the models (Anthropic and others) points to demand that continues to exceed available supply. The stocks have sold off because investors are now focused on the cash flow gap and the cost of bridging it, not because ",
-   "quoted": null,
-   "media": [],
-   "likes": 42,
-   "views": 3763,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2116526876130672839",
-   "handle": "leadlagreport",
-   "name": "Michael A. Gayed, CFA",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "leadlagreport"
-   },
-   "time_utc": "2026-10-31T13:45:05Z",
-   "url": "https://x.com/leadlagreport/status/2116526876130672839",
-   "text": "JOJO.Index = ATAC Credit-On/Credit-Off Index, launched 6/14/2021. Results before launch are backtested and hypothetical. Indexes are unmanaged, have no fees and cannot be invested in directly. Past performance does not guarantee future results. Not investment advice.",
-   "quoted": null,
-   "media": [],
-   "likes": 3,
-   "views": 2184,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2116526873966424252",
-   "handle": "leadlagreport",
-   "name": "Michael A. Gayed, CFA",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-31T13:45:04Z",
-   "url": "https://x.com/leadlagreport/status/2116526873966424252",
-   "text": "281 weeks since the June 2021 launch. 81 regime flips. Credit-off 47% of the time.\n\nIn the 132 credit-off weeks, the average week: JOJO.Index -0.106%, high yield +0.063%.\n\nIn the 148 credit-on weeks: index +0.067%, long Treasuries -0.133%.\n\nLive, being defensive has had a cost.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HV9p-bxX0AACxyN.jpg?name=orig"
-   ],
-   "likes": 10,
-   "views": 6408,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2116525794378060164",
-   "handle": "Mr_Derivatives",
-   "name": "Heisenberg",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-31T13:40:47Z",
-   "url": "https://x.com/Mr_Derivatives/status/2116525794378060164",
-   "text": "Every now and then CNBC has some web gems. \n\nLike the UPST guy who doesn’t know what they do to this…\n\nThis is CZ from the 2022 interview right around the FTX bankruptcy.\n\nFigure given Binance’s recent SNAFU (heh play on his SAFU acronym get it?!), good time to bring this up again.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/amplify_video_thumb/2116525741139791872/img/f4GYB8KXVxD_weF-.jpg"
-   ],
-   "likes": 94,
-   "views": 33994,
-   "cashtags": [],
    "n_media": 1
   },
   {
@@ -1740,26 +1668,6 @@
    "media": [],
    "likes": 1,
    "views": 1532,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2116380411836440623",
-   "handle": "chamath",
-   "name": "Chamath Palihapitiya",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-10-31T04:03:05Z",
-   "url": "https://x.com/chamath/status/2116380411836440623",
-   "text": "Yup",
-   "quoted": {
-    "handle": "theallinpod",
-    "text": "Chamath: The AI Boom Has a Borrowing Problem\n\n“The entire United States economy is levered to the AI complex.\n\nSo very narrowly, we're talking about seven or eight companies that set the tone for the entire country. And whether we like it or not, that is where we are.\n\nWhy do I say that? The most important companies in the world are in a massive spending binge, right?\n\nThese were highly profitable, highly cash accretive, highly cash flow generative businesses that have said, ‘We're going to put the foot down on spending because we believe in what's coming into the future.’ That's what drives GDP and it's what drives growth.\n\nNow, as they do that though, they deplete their cash and they have to raise debt.\n\nThe AI complex now owes $340-400 billion to the market. And you'd say, ‘Okay, why is that important?’\n\nThe problem is this: These companies are raising so much money it starts to crowd out the capital markets.\n\nAnd the most important part of the capital market that it starts to crowd out, is the appetite for government treasuries.\n\nAnd what you can see here is that when you look at these AI firms, the amount of money that they need to raise through the end of '27, it's 30% of all of what the Treasury's about to issue in that same period.\n\nSo, whether we like it or not, they are going to start competing for demand.”"
-   },
-   "media": [],
-   "likes": 220,
-   "views": 63226,
    "cashtags": [],
    "n_media": 0
   }
