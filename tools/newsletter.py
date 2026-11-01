@@ -274,7 +274,7 @@ h1{{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!im
   </nav>
 </header>
 <main class="issue">
-  <nav class="money-bar" aria-label="Promotion"><span class="aff-tag">Promotion</span><a href="/en/tools/">Tools</a><a href="/en/support/">Support us</a><a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview" data-placement="money-bar">TradingView</a><a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover" data-placement="money-bar">Stock Rover</a><a href="https://optionstrat.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="optionstrat" data-placement="money-bar">OptionStrat</a></nav>
+  <nav class="money-bar" aria-label="Promotion"><span class="aff-tag">Promotion</span><a href="/en/tools/">Tools</a><a href="/en/support/">Support us</a><a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview" data-placement="money-bar">TradingView</a><a href="https://www.stockrover.com/thecrowdtape?utm_source=thecrowdtape&utm_medium=tools&utm_campaign=stockrover" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover" data-placement="money-bar">Stock Rover</a><a href="https://optionstrat.com/thecrowdtape?utm_source=thecrowdtape&utm_medium=tools&utm_campaign=optionstrat" rel="sponsored nofollow noopener" target="_blank" data-tool="optionstrat" data-placement="money-bar">OptionStrat</a></nav>
   {body}
   <aside class="note">
     <b>Not investment advice</b>
@@ -284,6 +284,7 @@ h1{{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!im
     <label for="ct-email-issue" class="ct-news-t">{form_label}</label>
     <input id="ct-email-issue" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
     <input type="hidden" name="lang" value="en">
+    <input type="hidden" name="src" value="newsletter-issue">
     <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
     <button type="submit">{form_btn}</button>
     <small>{form_note}</small>
@@ -291,8 +292,8 @@ h1{{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!im
   </form>
   <script>
   (function(){{
-    var M={{en:["Thanks! You're subscribed.","Please check the email address and try again."],
-           zh:["Thanks! You're subscribed.","Please check the email address and try again."]}};
+    var M={{en:["Thanks! You're subscribed. Free checklist: /en/checklist/earnings/","Please check the email address and try again."],
+           zh:["Thanks! You're subscribed. Free checklist: /en/checklist/earnings/","Please check the email address and try again."]}};
     document.querySelectorAll('form.ct-news').forEach(function(f){{
       f.addEventListener('submit',function(e){{
         e.preventDefault();
@@ -314,7 +315,7 @@ h1{{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!im
   <p><a class="back" href="/en/newsletter/">{back}</a></p>
 </main>
 <footer class="site-foot">
-  <p><a href="/en/about/">About</a> · <a href="/en/tools/">Tools</a> · <a href="/en/support/">Support us</a> · <a href="/en/newsletter/">Newsletter</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">TradingView <span class="aff-tag">Promotion</span></a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="aff-tag">Promotion</span></a> · <a href="https://optionstrat.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="optionstrat">OptionStrat <span class="aff-tag">Promotion</span></a></p>
+  <p><a href="/en/about/">About</a> · <a href="/en/tools/">Tools</a> · <a href="/en/support/">Support us</a> · <a href="/en/newsletter/">Newsletter</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">TradingView <span class="aff-tag">Promotion</span></a> · <a href="https://www.stockrover.com/thecrowdtape?utm_source=thecrowdtape&utm_medium=tools&utm_campaign=stockrover" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="aff-tag">Promotion</span></a> · <a href="https://optionstrat.com/thecrowdtape?utm_source=thecrowdtape&utm_medium=tools&utm_campaign=optionstrat" rel="sponsored nofollow noopener" target="_blank" data-tool="optionstrat">OptionStrat <span class="aff-tag">Promotion</span></a></p>
 </footer>
 </div>
 <script>

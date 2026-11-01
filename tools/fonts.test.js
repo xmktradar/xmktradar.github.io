@@ -59,10 +59,11 @@ test('homepage, about, support, tools, stock and embed pages load the fonts', ()
     'support/index.html', 'zh/support/index.html', 'en/support/index.html',
     'tools/index.html', 'zh/tools/index.html', 'en/tools/index.html',
     'newsletter/index.html', 'zh/newsletter/index.html', 'en/newsletter/index.html',
+    'checklist/earnings/index.html', 'zh/checklist/earnings/index.html', 'en/checklist/earnings/index.html',
     'newsletter/issue-1/index.html',
     'advertise/index.html', 'zh/advertise/index.html', 'en/advertise/index.html',
     'zh/embed/index.html', 'en/embed/index.html',
-    'tools/about.html', 'tools/support.html', 'tools/toolspage.html', 'tools/newsletter.html', 'tools/advertise.html',
+    'tools/about.html', 'tools/support.html', 'tools/toolspage.html', 'tools/newsletter.html', 'tools/checklist.html', 'tools/advertise.html',
     'tools/embed.js', 'tools/newsletter.py', 'tools/page404.py',
   ];
   for (const lang of ['zh', 'en']) {

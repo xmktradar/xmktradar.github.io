@@ -67,9 +67,20 @@ def apply(html, tr):
     return html
 
 
+
+def with_utm(url, campaign):
+    """Append Crowd Tape tools UTMs when the URL has no utm_campaign yet."""
+    url = (url or '').strip()
+    if not url:
+        return url
+    if 'utm_campaign=' in url:
+        return url
+    join = '&' if ('?' in url) else '?'
+    return f"{url}{join}utm_source=thecrowdtape&utm_medium=tools&utm_campaign={campaign}"
+
 def stockrover(html, url):
     """Fill Stock Rover placeholders; hide the card when the URL is empty."""
-    url = (url or '').strip()
+    url = with_utm((url or '').strip(), 'stockrover')
     if url:
         return html.replace('{{sr_hidden}}', '').replace('{{sr_href}}', html_lib.escape(url, quote=True))
     return html.replace('{{sr_hidden}}', ' hidden').replace('{{sr_href}}', '')
@@ -77,7 +88,7 @@ def stockrover(html, url):
 
 def optionstrat(html, url):
     """Fill OptionStrat placeholders; hide the card when the URL is empty."""
-    url = (url or '').strip()
+    url = with_utm((url or '').strip(), 'optionstrat')
     if url:
         return html.replace('{{os_hidden}}', '').replace('{{os_href}}', html_lib.escape(url, quote=True))
     return html.replace('{{os_hidden}}', ' hidden').replace('{{os_href}}', '')

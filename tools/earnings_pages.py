@@ -31,7 +31,7 @@ L = {
     'zh': dict(
         brief='財報簡報', list_title='最新財報簡報：市值 500 億美元以上美股｜The Crowd Tape',
         list_h1='最新財報簡報', list_lead='市值 500 億美元以上嘅美國上市公司，每間最新一季財報整理成 5 章：結果 vs 預期、成長率、收入線、利潤率、現金流。數字全部來自 SEC 文件同 Yahoo Finance，每 4 小時自動更新。',
-        list_desc='市值 500 億美元以上美股最新季度財報：收入、EPS 對比市場預期、按年增長、業務線拆解、利潤率同現金流，每 4 小時自動更新。',
+        list_desc='市值 500 億美元以上美股最新季度財報：收入、EPS、指引與現金流。免費領取財報解讀清單，每 4 小時自動更新。',
         recent='過去 30 日公布', upcoming='未來 14 日將公布', all='全部公司', none='暫時冇。',
         th_date='日期', th_co='公司', th_q='財季', th_rev='收入按年', th_eps='EPS vs 預期',
         reported='公布', find='搵公司（代號或名稱）', no_match='搵唔到。', open_brief='睇完整簡報',
@@ -63,9 +63,9 @@ L = {
         nav='網站', lang_nav='語言', na_short='—',
     ),
     'en': dict(
-        brief='Earnings brief', list_title='Latest earnings briefs: US stocks worth $50B+ | The Crowd Tape',
+        brief='Earnings brief', list_title='Latest $50B+ US earnings briefs | The Crowd Tape',
         list_h1='Latest earnings briefs', list_lead="Every US-listed company worth $50B or more, its latest quarter in 5 chapters: results vs estimates, growth, revenue lines, margins and cash flow. All numbers come from SEC filings and Yahoo Finance and update automatically every 4 hours.",
-        list_desc='Latest quarterly results of US stocks worth $50B+: revenue and EPS vs estimates, growth, revenue lines, margins and cash flow, updated every 4 hours.',
+        list_desc='Latest $50B+ US earnings: revenue, EPS, guidance and cash flow. Get the free earnings checklist. Updated every 4 hours.',
         recent='Reported in the last 30 days', upcoming='Reporting in the next 14 days', all='All companies', none='None right now.',
         th_date='Date', th_co='Company', th_q='Quarter', th_rev='Revenue YoY', th_eps='EPS vs est.',
         reported='Reported', find='Find a company (ticker or name)', no_match='No match.', open_brief='Full brief',
@@ -148,6 +148,14 @@ th{font-size:12.5px;color:var(--muted);font-weight:700}
 .pv-more{display:block;margin-top:6px;font-size:12.5px;color:var(--link);font-weight:600}
 .pv-find{width:100%;font:inherit;font-size:15px;padding:9px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);margin:0 0 10px}
 .site-foot{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.ct-news{position:relative;overflow-x:clip;box-sizing:border-box;width:100%;max-width:100%;margin:16px 0;padding:14px 16px;background:var(--surface);border:0;border-radius:20px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ct-news-t{flex:1 0 100%;margin:0;font-weight:700;font-size:15px;line-height:1.45}
+.ct-news input[type=email]{flex:1 1 140px;min-width:0;max-width:100%;box-sizing:border-box;margin:0;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:16px}
+.ct-news button[type=submit]{flex:0 1 auto;margin:0;padding:8px 16px;border:0;border-radius:999px;background:var(--accent);color:#fff;font:inherit;font-weight:700;font-size:14px;cursor:pointer}
+.ct-news small,.ct-news-msg{flex:1 0 100%;margin:0;font-size:12.5px;line-height:1.4;color:var(--muted)}
+.ct-news-msg{font-size:14px;color:var(--ink)}
+.ct-news input[name=website]{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0}
+.ct-upgrade a{font-weight:700}
 @media(max-width:480px){h1{font-size:26px}.wrap{padding:16px 14px 40px}th,td{padding:6px 5px;font-size:13.5px}.bar b{font-size:9px}.bar small{font-size:8.5px}}
 """
 
@@ -229,6 +237,44 @@ def verdict(act, est, lang):
 
 # ---------- page parts ----------
 
+def news_cta(lang, src):
+    """Email-only content-upgrade CTA → checklist magnet."""
+    import json as _json
+    check = f'/{lang}/checklist/earnings/'
+    if lang == 'zh':
+        title, note, btn = '免費領取財報解讀清單', '唔會濫發，隨時取消。', '電郵領取'
+        ok = '多謝！完整清單：' + check
+        bad = '電郵地址有誤，請再試。'
+        more = f'或者直接打開 <a href="{check}">財報解讀清單</a>。'
+    else:
+        title, note, btn = 'Get the free earnings checklist', 'No spam. Unsubscribe anytime.', 'Email me the list'
+        ok = 'Thanks! Full checklist: ' + check
+        bad = 'Please check the email address and try again.'
+        more = f'Or open the <a href="{check}">earnings checklist</a>.'
+    fid = 'ct-email-' + re.sub(r'[^a-z0-9]+', '-', src.lower())
+    ok_js, bad_js = _json.dumps(ok, ensure_ascii=False), _json.dumps(bad, ensure_ascii=False)
+    return (
+        f'<aside class="ct-upgrade ch" style="padding:16px 18px">'
+        f'<form class="ct-news" data-lang="{lang}" action="https://crowdtape-newsletter.vercel.app/api/subscribe" method="POST">'
+        f'<label for="{fid}" class="ct-news-t">{E(title)}</label>'
+        f'<input id="{fid}" type="email" name="email" required autocomplete="email" placeholder="you@example.com">'
+        f'<input type="hidden" name="lang" value="{lang}">'
+        f'<input type="hidden" name="src" value="{E(src)}">'
+        f'<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">'
+        f'<button type="submit">{E(btn)}</button>'
+        f'<small>{E(note)} {more}</small>'
+        f'<p class="ct-news-msg" role="status" hidden></p>'
+        f'</form>'
+        f'<script>(function(){{var ok={ok_js},bad={bad_js};'
+        f'document.currentScript.previousElementSibling.addEventListener("submit",function(e){{'
+        f'e.preventDefault();var f=e.target,m=f.querySelector(".ct-news-msg"),d=Object.fromEntries(new FormData(f));'
+        f'fetch(f.action,{{method:"POST",headers:{{"Content-Type":"application/json"}},body:JSON.stringify(d)}})'
+        f'.then(function(r){{return r.json()}}).then(function(j){{m.hidden=false;m.textContent=j.ok?ok:bad;'
+        f'if(j.ok){{f.reset();if(window.gtag)gtag("event","newsletter_signup",{{lang:f.dataset.lang||"",src:d.src||""}});}}}})'
+        f'.catch(function(){{m.hidden=false;m.textContent=bad;}});}});}})();</script></aside>'
+    )
+
+
 def shell(lang, title, desc, canon_path, body, alt_paths=None, ld=None):
     alt = ''.join(f'<link rel="alternate" hreflang="{LANGS[k]}" href="{SITE}{k}/{canon_path}">' for k in LANGS)
     switch = ''.join(f'<a href="/{k}/{canon_path}" hreflang="{LANGS[k]}"{" aria-current=\"page\"" if k == lang else ""}>{"中" if k == "zh" else "EN"}</a>' for k in LANGS)
@@ -262,7 +308,7 @@ def shell(lang, title, desc, canon_path, body, alt_paths=None, ld=None):
 <main>
 {body}
 </main>
-<footer class="site-foot"><p><a href="/{lang}/">{t['home']}</a> · <a href="/{lang}/earnings/">{t['all_briefs']}</a> · <a href="/{lang}/support/">{'支持我們' if lang == 'zh' else 'Support us'}</a></p></footer>
+<footer class="site-foot"><p><a href="/{lang}/">{t['home']}</a> · <a href="/{lang}/earnings/">{t['all_briefs']}</a> · <a href="/{lang}/checklist/earnings/">{'財報清單' if lang == 'zh' else 'Earnings checklist'}</a> · <a href="/{lang}/newsletter/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=newsletter">{'電子報' if lang == 'zh' else 'Newsletter'}</a> · <a href="/{lang}/support/">{'支持我們' if lang == 'zh' else 'Support us'}</a></p></footer>
 </div>
 </body>
 </html>
@@ -428,6 +474,7 @@ def brief_page(co, lang, stamp, has_stock):
     if p:
         parts.append(f'<p class="note">{E(t["pending"](p["q"], eps_s(p["eps_act"]), eps_s(p["eps_est"]) if p.get("eps_est") is not None else ""))}</p>')
     parts += [chap1(co, lang), chap2(co, lang), chap3(co, lang), chap4(co, lang), chap5(co, lang)]
+    parts.append(news_cta(lang, f'earnings-{tk}'))
     parts.append(f'<p class="small">{E(t["source"](co["latest"].get("filed") or "—"))} {t["updated"]} {stamp} HKT</p>')
     parts.append(f'<p><a href="/{lang}/earnings/">← {E(t["back"])}</a></p>')
     ld = {'@context': 'https://schema.org', '@type': 'Article', 'headline': title[:110], 'description': desc,
@@ -494,6 +541,7 @@ def list_page(cos, lang, stamp):
                if up_rows else f'<p class="small">{t["none"]}</p>'),
             ch(3, f'{t["all"]}（{len(cos)}）' if lang == 'zh' else f'{t["all"]} ({len(cos)})', f'<input id="pv-find" class="pv-find" type="search" placeholder="{E(t["find"])}" aria-label="{E(t["find"])}">'
                f'<div class="pv-grid" id="pv-all">{alpha}</div><p class="small" id="pv-none" hidden>{E(t["no_match"])}</p>' + FIND_JS),
+            news_cta(lang, 'earnings-index'),
             f'<p class="small">{E(t["source"]("10-Q / 10-K"))} {t["updated"]} {stamp} HKT</p>']
     return shell(lang, t['list_title'], t['list_desc'], 'earnings/', '\n'.join(body))
 
