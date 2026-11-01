@@ -92,11 +92,27 @@ def clean_html(s):
     if not out:
         return None
     # Space before X/Twitter cite links so "stops.post" / "low.post" do not glue.
-    return re.sub(
+    out = re.sub(
         r'(?<!\s)(<a\s+[^>]*href="https://(?:x|twitter)\.com/[^"]*"[^>]*>)',
         r' \1',
         out,
     )
+    # Adjacent cite links both labeled "post"/"原帖" render as "post post" — keep the
+    # first label, replace later ones with a middot so the links stay clickable.
+    cite = (
+        r'(<a\s+[^>]*href="https://(?:x|twitter)\.com/[^"]*"[^>]*>)'
+        r'(post|原帖)'
+        r'(</a>)'
+        r'(\s*)'
+        r'(<a\s+[^>]*href="https://(?:x|twitter)\.com/[^"]*"[^>]*>)'
+        r'\2'
+        r'(</a>)'
+    )
+    prev = None
+    while prev != out:
+        prev = out
+        out = re.sub(cite, r'\1\2\3\4\5·\6', out, count=1, flags=re.I)
+    return out
 
 
 def plain(s, limit=400):
@@ -122,11 +138,33 @@ def summary_item(x, win=None):
     return item
 
 
-def card(c):
+TONE_ZH = ('看好', '看淡', '分歧', '中性')
+TONE_EN = ('Bullish', 'Bearish', 'Mixed', 'Neutral')
+# Inbox may mix ZH/EN (or legacy Split); map both directions.
+TONE_TO_EN = {
+    '看好': 'Bullish', '看淡': 'Bearish', '分歧': 'Mixed', '中性': 'Neutral',
+    'Bullish': 'Bullish', 'Bearish': 'Bearish', 'Mixed': 'Mixed', 'Neutral': 'Neutral',
+    'Split': 'Mixed', 'Bull': 'Bullish', 'Bear': 'Bearish',
+}
+TONE_TO_ZH = {
+    '看好': '看好', '看淡': '看淡', '分歧': '分歧', '中性': '中性',
+    'Bullish': '看好', 'Bearish': '看淡', 'Mixed': '分歧', 'Neutral': '中性',
+    'Split': '分歧', 'Bull': '看好', 'Bear': '看淡',
+}
+
+
+def normalize_tone(tone, lang='zh'):
+    t = str(tone or '').strip()
+    if lang == 'en':
+        return TONE_TO_EN.get(t, 'Neutral')
+    return TONE_TO_ZH.get(t, '中性')
+
+
+def card(c, lang='zh'):
     if not isinstance(c, dict) or not plain(c.get('headline')):
         return None
     o = {k: plain(c.get(k), 200) for k in ('headline', 'theme', 'source_note')}
-    o['tone'] = c.get('tone') if c.get('tone') in ('看好', '看淡', '分歧', '中性') else '中性'
+    o['tone'] = normalize_tone(c.get('tone'), lang)
     o['points'] = [p for p in (plain(x, 200) for x in (c.get('points') or [])[:5]) if p]
     o['tickers'] = [str(t).upper().lstrip('$') for t in (c.get('tickers') or [])[:8] if re.match(r'^\$?[A-Za-z0-9.\-]{1,12}$', str(t))]
     o['handles'] = [str(h).lstrip('@') for h in (c.get('handles') or [])[:8] if re.match(r'^@?\w{1,30}$', str(h))]
@@ -136,10 +174,10 @@ def card(c):
     return {k: v for k, v in o.items() if v is not None}
 
 
-def highlights_item(x):
+def highlights_item(x, lang='zh'):
     if not isinstance(x, dict) or not DATE.match(str(x.get('date', ''))):
         return None, None
-    cards = [c for c in (card(c) for c in (x.get('cards') or [])[:4]) if c]
+    cards = [c for c in (card(c, lang) for c in (x.get('cards') or [])[:4]) if c]
     if not cards:
         return None, None
     o = {'cards': cards}
@@ -203,7 +241,7 @@ def main():
             upsert(d.setdefault('summaries' + sfx, {}).setdefault(period, []), item)
             done.append(f'{lang}/{period} {item["date"]}')
         if 'highlights' in part:
-            day, hl = highlights_item(part['highlights'])
+            day, hl = highlights_item(part['highlights'], lang)
             if hl:
                 rg = card_range(day, lang, hl.get('range'), raw.get('updated_hkt'))
                 if rg:

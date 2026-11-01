@@ -189,7 +189,7 @@ def main():
     d['meta']['build_id'] = 'build-' + now.strftime('%Y%m%d-%H%M%S')
     d['meta']['update_slots_hkt'] = UPDATE_SLOTS
     d['meta']['scrape_slots_hkt'] = SCRAPE_SLOTS
-    warn = [w for w in (d['meta'].get('warnings') or []) if not str(w).startswith(('攞帖失敗', '未分析'))]
+    warn = [w for w in (d['meta'].get('warnings') or []) if not str(w).startswith(('攞帖失敗', '未分析', 'Fetch failed', 'Unanalyzed'))]
     if new.get('failed'):
         warn.append('攞帖失敗：' + '、'.join(f.split('（')[0] for f in new['failed']))
     if keep:

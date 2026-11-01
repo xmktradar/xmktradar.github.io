@@ -46,9 +46,10 @@ test('unanalyzed count is parsed from the stored warning', () => {
   const api = load('en', envFor(EN));
   assert.equal(api.unanalyzedCount(WARN), 106);
   assert.equal(api.unanalyzedCount(['未分析: 106 則']), 106);
+  assert.equal(api.unanalyzedCount(['Unanalyzed: 93 new posts waiting for Grok analysis']), 93);
   assert.equal(api.unanalyzedCount([]), 0);
   assert.equal(api.unanalyzedCount(null), 0);
-  assert.match(block[1], /未分析\[\^\\d\]\{0,6\}\(\\d\+\)/);
+  assert.match(block[1], /(?:未分析|Unanalyzed)[^\d]{0,12}(\d+)/i);
   assert.doesNotMatch(block[1], /未分析：/);
 });
 

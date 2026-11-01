@@ -133,9 +133,10 @@ def localize_news(html, lang):
 
 
 def lang_pick_js(storage_expr):
-    """JS that sets `l` from localStorage, else the browser language. Unknown languages fall back to English.
-    A stored "ko" (Korean was removed 2026-10-27) counts as nothing stored."""
+    """JS that sets `l` from localStorage, else referrer /en|/zh, else the browser language.
+    Unknown languages fall back to English. A stored "ko" (removed 2026-10-27) counts as unset."""
     return (f'var l;try{{l={storage_expr}}}catch(_){{}}if(l!=="zh"&&l!=="en")l=0;'
+            'if(!l){var r=document.referrer||"",m=r.match(/\/(zh|en)(?:\/|$)/);if(m)l=m[1]}'
             'if(!l){var n=(navigator.languages||[navigator.language||""]).join(",").toLowerCase();'
             'l=/^zh|,zh/.test(n)?"zh":"en"}')
 
@@ -175,6 +176,8 @@ def head_tags(cur):
           'new MutationObserver(function(){var d=document.getElementById("dive"),n=document.querySelector("header .lang-sw");'
           'if(d&&n&&!d.querySelector(".lang-sw"))d.insertBefore(n.cloneNode(true),d.firstChild)})'
           '.observe(document.documentElement,{childList:true,subtree:true})')
+    if cur in LANGS:  # remember the page language so root /about/ etc. follow EN/ZH context
+        js += f';try{{localStorage.setItem(k,"{cur}")}}catch(_){{}}'
     if cur is None:  # root master: detect a language, rewrite relative subpage links, then redirect on the live hosts
         js += (';' + lang_pick_js('localStorage.getItem(k)')
                + ';function ctFixRoot(root){(root||document).querySelectorAll("a[href]").forEach(function(a){'
@@ -241,19 +244,31 @@ def looks_zh(o):
 
 
 def shown(o):
-    """Analyst flags (c7bf462): untranslated:true or gap:true items are never shown."""
-    return not (isinstance(o, dict) and (o.get('untranslated') or o.get('gap')))
+    """Hide untranslated copies. Gap days (empty cards + gap_note) ARE shown so the day is not blank
+    (2026-11-02 UX: 10/29 had coverage but no SuperGrok write-up)."""
+    if not isinstance(o, dict):
+        return True
+    if o.get('gap'):
+        return True
+    return not o.get('untranslated')
 
 
 def translated_only(zh, tr):
     """Non-Chinese pages: keep only items that have a translation (2026-11-01 patrol: old briefings,
-    summaries and highlights showed in Chinese on /en/). Untranslated items are left out, not shown in Chinese."""
+    summaries and highlights showed in Chinese on /en/). Untranslated items are left out, not shown in Chinese.
+    Gap-only highlight days are kept when the EN pack marks gap (with an English gap_note)."""
     if isinstance(zh, dict) and all(isinstance(v, list) for v in zh.values()):  # summaries
         tr = tr if isinstance(tr, dict) else {}
         return {k: translated_only(v, tr.get(k)) for k, v in zh.items()}
     if isinstance(zh, dict):  # highlights by day
         tr = tr if isinstance(tr, dict) else {}
-        return {k: v for k, v in tr.items() if k in zh and shown(v) and not looks_zh(v)}
+        out = {}
+        for k, v in tr.items():
+            if k not in zh or not shown(v):
+                continue
+            if v.get('gap') or not looks_zh(v):
+                out[k] = v
+        return out
     if isinstance(zh, list):
         tr = tr if isinstance(tr, list) else []
         key = lambda x: (x.get('date'), json.dumps(x.get('win'), sort_keys=True)) if isinstance(x, dict) else None  # noqa: E731
@@ -333,7 +348,7 @@ def swap_data(d, lang, fixed):
         elif d.get(f'{k}_{lang}'):
             d[k] = overlay(d.get(k), d[f'{k}_{lang}'])
         if lang == 'zh' and isinstance(d.get(k), dict) and not all(isinstance(v, list) for v in d[k].values()):
-            d[k] = {kk: v for kk, v in d[k].items() if shown(v)}  # gap:true highlight days
+            d[k] = {kk: v for kk, v in d[k].items() if shown(v)}  # drop untranslated; keep gap days
     for p in d['posts']:
         alt = (p.get('en_summary') or p.get('text')) if lang == 'en' else None
         if lang == 'en' and p.get('en_summary') and p.get('text'):
@@ -362,6 +377,26 @@ def swap_data(d, lang, fixed):
             if m:
                 est = bool(m.group(3))
                 f['note'] = f'Quarterly results {m.group(1)}/{m.group(2)} (US time){", date estimated, not confirmed by the company" if est else ""} (Yahoo Finance)'
+
+    # Locale-specific meta.warnings (master stores Chinese from merge_posts).
+    if lang == 'en':
+        localized = []
+        for w in (d.get('meta') or {}).get('warnings') or []:
+            s = str(w)
+            m = re.match(r'未分析[:：]\s*(\d+)\s*則新帖等待 Grok 分析', s)
+            if m:
+                localized.append(f'Unanalyzed: {m.group(1)} new posts waiting for Grok analysis')
+                continue
+            m = re.match(r'Unanalyzed[:：]\s*(\d+)', s, re.I)
+            if m:
+                localized.append(f'Unanalyzed: {m.group(1)} new posts waiting for Grok analysis')
+                continue
+            m = re.match(r'攞帖失敗[:：]\s*(.+)', s)
+            if m:
+                localized.append('Fetch failed: ' + m.group(1))
+                continue
+            localized.append(s)
+        d.setdefault('meta', {})['warnings'] = localized
 
     def walk(o):
         if isinstance(o, dict):
