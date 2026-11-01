@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2116566171256533186": {
+      "en_summary": "@alphatrends replies with SPCX.",
+      "zh_summary": "@alphatrends回覆SPCX。",
+      "tickers": ["SPCX"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPCX": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116565961385857101": {
+      "en_summary": "@ylecun agrees that the evil nature of non-linearities that cannot produce zero-mean output distributions has been known for a long time. They create badly conditioned cost functions. Links to NeurIPS 1990 paper and citation.",
+      "zh_summary": "@ylecun同意，無法產生零均值輸出分佈的非線性「邪惡本質」早已為人所知。它們會產生條件不佳的成本函數。附上1990年NeurIPS論文和引用連結。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116559924662878349": {
+      "en_summary": "@OddStats: The S&P 500 has just put together three straight calendar weeks of -0.45% weekly returns, but VIX was still under 20 at the end of the event. Asks how SPX done the 9 times prior with similar setups, implying lots of green.",
+      "zh_summary": "@OddStats：標普500剛連續三個日曆週每週回報-0.45%，但事件結束時VIX仍低於20。詢問此前9次類似設置中SPX的表現，暗示大量綠色（上漲）。",
+      "tickers": ["SPY"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPY": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利好",
+      "ticker_notes": {"SPY": "連續三週-0.45%且VIX<20後，歷史9次多為上漲"}
+    },
+    "2116553547986935826": {
+      "en_summary": "@elonmusk posts 100 in agreement with quoted post by @Rothmus about James Talarico wanting to kill the filibuster so Democrats can pack the Supreme Court and make DC a state. References Manchin and Sinema saving 60 vote rule in 2022.",
+      "zh_summary": "@elonmusk發文100，同意@Rothmus引用的帖子，關於James Talarico想廢除冗長辯論以便民主黨擴充最高法院並讓DC成為州。提及2022年Manchin和Sinema保住60票規則。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2116552974583406681": {
+      "en_summary": "(Reposted by @saylor) 18 years ago, at 2:10 pm EDT, Satoshi Nakamoto started a fire in cyberspace. Happy Bitcoin Whitepaper Day.",
+      "zh_summary": "（由@saylor轉發）18年前，東部時間下午2:10，中本聰在網路空間點燃了火。比特幣白皮書日快樂。",
+      "tickers": ["MSTR"],
+      "stance": "中性",
+      "stance_by_ticker": {"MSTR": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
