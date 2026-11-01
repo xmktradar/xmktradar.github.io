@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2116937238722625816": {
+      "en_summary": "UBS models $META Muse at 3M daily users, requiring ~3,000 $AMD EPYC chips in base case (750K agents with 4x CPU sharing) or ~23,800 without sharing. At 100M users, nearly 100,000 chips plus 8GB RAM and 100GB SSD per agent, pushing DRAM toward 2TB per host, creating opportunity for $MU and $SNDK.",
+      "zh_summary": "UBS模型顯示$META Muse僅有300萬每日用戶，基本情況下需要約3000顆$AMD EPYC晶片（75萬代理同時運行且4倍CPU共享），或無共享時約23800顆。若達1億用戶，幾乎需要10萬顆晶片，加上每代理8GB RAM和100GB SSD，DRAM需求可能達每主機2TB，為$MU和$SNDK帶來機會。",
+      "tickers": ["META", "AMD", "MU", "SNDK"],
+      "stance": "睇好",
+      "stance_by_ticker": {"META": "中性", "AMD": "睇好", "MU": "睇好", "SNDK": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116934542074528074": {
+      "en_summary": "When the going gets tough, you can always count on Wally World $WMT.",
+      "zh_summary": "當情況變得艱難時，你總是可以依靠沃爾瑪$WMT。",
+      "tickers": ["WMT"],
+      "stance": "睇好",
+      "stance_by_ticker": {"WMT": "睇好"},
+      "horizon": "中線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116930768136245591": {
+      "en_summary": "The largest US physical-gold backed ETF $GLD recorded -$1.8 billion outflows in October, biggest monthly since June and 3rd-largest since Feb 2024. YTD -$3.8 billion, on track for first annual outflow since 2023, versus +$23.0 billion in 2025. Investors withdrew -$1.5 billion from gold and precious metal funds last week, 2nd weekly outflow in 7 weeks. Gold flows highly volatile.",
+      "zh_summary": "美國最大實體黃金支持ETF $GLD在10月錄得-18億美元流出，為6月以來最大月度撤資，也是2024年2月以來第三大。年初至今-38億美元，有望成為2023年以來首次年度流出，相比2025年+230億美元。投資者上週從黃金及其他貴金屬基金撤出-15億美元，為過去7週第二次週流出。黃金資金流目前高度波動。",
+      "tickers": ["GLD"],
+      "stance": "中性",
+      "stance_by_ticker": {"GLD": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2116928239562338616": {
+      "en_summary": "2027 shaping up as biggest step change in AI power density: $NVDA Rubin Ultra ~500kW per rack, $AMD MI500 ~1,000kW, $AMZN Trainium4 ~330kW, $GOOGL TPU v9 ~200kW. Traditional data centers built for ~10kW CPU racks will need major upgrades and different electrical and liquid cooling systems.",
+      "zh_summary": "2027年將成為AI功率密度最大步進變化：$NVDA Rubin Ultra每機架約500kW，$AMD MI500約1000kW，$AMZN Trainium4約330kW，$GOOGL TPU v9約200kW。傳統資料中心為約10kW CPU機架建造，需要大量升級現有設施，並在新建中採用不同的電力與液冷系統。",
+      "tickers": ["NVDA", "AMD", "AMZN", "GOOGL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好", "AMD": "睇好", "AMZN": "睇好", "GOOGL": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116928179495735484": {
+      "en_summary": "Binance says it has seen about $3.64 billion in net outflows since reopening withdrawals, 2.1% of its $171 billion in assets. (Quoted: withdrawals for $ZEC, $SUI, $USDT and GRAM on TON re-enabled.)",
+      "zh_summary": "Binance表示自重新開放提款以來看到約36.4億美元淨流出，佔其1710億美元資產的2.1%。（引用：ZEC、SUI、USDT及TON上的GRAM提款已重新啟用。）",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
