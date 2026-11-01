@@ -2,6 +2,52 @@
  "note": "已抓取但未經 Grok 分析嘅帖，只收股票同宏觀帖（閒聊帖唔寫），有股票代號嘅排最前，等超過 24 個鐘就唔再等。",
  "posts": [
   {
+   "id": "2116937238722625816",
+   "handle": "StockSavvyShay",
+   "name": "Shay Boloor",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T16:55:43Z",
+   "url": "https://x.com/StockSavvyShay/status/2116937238722625816",
+   "text": "UBS models $META Muse at just 3M daily users with number of $AMD EPYC chips required depending heavily on how many agents are running simultaneously and how efficiently CPU capacity is shared: \n\n• Base case ~3,000 chips if 750K agents run simultaneously with 4x CPU sharing\n• High engagement ~23,800 chips if 1.5M agents run simultaneously without CPU sharing\n\nBut the bigger opportunity is what happens as adoption scales because same base assumptions would imply nearly 100,000 EPYC chips at 100M daily users while each Muse agent also requires its own 8GB of RAM and 100GB of SSD storage.\n\nThat could push DRAM requirements toward 2TB per host at 4x CPU sharing creating a huge opportunity for $MU and $SKHY in DRAM and $SNDK in NAND flash storage.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWDdS17b0AAK2yV.jpg?name=orig"
+   ],
+   "likes": 40,
+   "views": 10240,
+   "cashtags": [
+    "AMD",
+    "META",
+    "MU",
+    "SKHY",
+    "SNDK"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2116934542074528074",
+   "handle": "TrendSpider",
+   "name": "TrendSpider",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T16:45:00Z",
+   "url": "https://x.com/TrendSpider/status/2116934542074528074",
+   "text": "When the going gets tough, you can always count on Wally World 🔆\n$WMT",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HV_HkJuWoAAm1qt.jpg?name=orig"
+   ],
+   "likes": 54,
+   "views": 13628,
+   "cashtags": [
+    "WMT"
+   ],
+   "n_media": 1
+  },
+  {
    "id": "2116930768136245591",
    "handle": "KobeissiLetter",
    "name": "The Kobeissi Letter",
@@ -15,12 +61,56 @@
    "media": [
     "https://pbs.twimg.com/media/HWC-o-IWEAAYTOp.jpg?name=orig"
    ],
-   "likes": 129,
-   "views": 34398,
+   "likes": 401,
+   "views": 73065,
    "cashtags": [
     "GLD"
    ],
    "n_media": 1
+  },
+  {
+   "id": "2116928239562338616",
+   "handle": "StockSavvyShay",
+   "name": "Shay Boloor",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T16:19:57Z",
+   "url": "https://x.com/StockSavvyShay/status/2116928239562338616",
+   "text": "2027 is shaping up to be biggest step change in AI power density yet: \n\n• $NVDA Rubin Ultra ~500kW per rack\n• $AMD MI500 ~1,000kW per rack\n• $AMZN Trainium4 ~330kW per rack\n• $GOOGL TPU v9 ~200kW per rack\n\nTraditional data centers were built for CPU racks of just ~10kW so this shift will require a lot of upgrades to existing facilities and fundamentally different electrical and liquid cooling systems in new builds.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWDW4ktbQAA-nnB.png?name=orig"
+   ],
+   "likes": 118,
+   "views": 18983,
+   "cashtags": [
+    "AMD",
+    "AMZN",
+    "GOOGL",
+    "NVDA"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2116928179495735484",
+   "handle": "scottmelker",
+   "name": "The Wolf Of All Streets",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T16:19:43Z",
+   "url": "https://x.com/scottmelker/status/2116928179495735484",
+   "text": "BINANCE SAYS IT HAS SEEN ABOUT $3.64 BILLION IN NET OUTFLOWS SINCE REOPENING WITHDRAWALS, 2.1% OF ITS $171 BILLION IN ASSETS",
+   "quoted": {
+    "handle": "scottmelker",
+    "text": "BINANCE SAYS $ZEC AND $SUI WITHDRAWALS ARE NOW RE-ENABLED, ALONG WITH $USDT AND GRAM ON TON"
+   },
+   "media": [],
+   "likes": 32,
+   "views": 10778,
+   "cashtags": [],
+   "n_media": 0
   },
   {
    "id": "2116926994692895116",
@@ -34,8 +124,8 @@
    "text": "$GOOGL Alphabet CEO: Google processes 32B AI tokens per minute, up more than 4x YoY.\n\n\"Our first-party model APIs are now processing nearly 32 billion tokens per minute, 40% more than last quarter and more than 4x what we processed a year ago.\"",
    "quoted": null,
    "media": [],
-   "likes": 9,
-   "views": 2448,
+   "likes": 28,
+   "views": 4161,
    "cashtags": [
     "GOOGL"
    ],
@@ -56,8 +146,8 @@
     "text": "Uncle did the math on GTA 6. 🤓\n\n(via marktilbury)\n\n#GTA6 #GTAVI #GTA6Map #RockstarGames #GrandTheftAutoVI"
    },
    "media": [],
-   "likes": 0,
-   "views": 718,
+   "likes": 5,
+   "views": 3321,
    "cashtags": [
     "TTWO"
    ],
@@ -77,8 +167,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWDL9QJXkAABetl.jpg?name=orig"
    ],
-   "likes": 700,
-   "views": 20265,
+   "likes": 982,
+   "views": 34909,
    "cashtags": [
     "MSTR",
     "STRC"
@@ -99,8 +189,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWDNebtWkAA5Jny.png?name=orig"
    ],
-   "likes": 67,
-   "views": 7258,
+   "likes": 76,
+   "views": 8273,
    "cashtags": [
     "AAPL",
     "NVDA"
@@ -119,8 +209,8 @@
    "text": "October stats:  $SPX down 93 bps but 9/11 sectors rose, 327/500 stocks were up 2% r more, and names that went above 50 day moving average went from 20% to 61%.  $MS prime brokerage saw the biggest degrossing ever.  Set up seems pretty good into end of year.",
    "quoted": null,
    "media": [],
-   "likes": 71,
-   "views": 4693,
+   "likes": 83,
+   "views": 5759,
    "cashtags": [
     "MS",
     "SPX"
@@ -139,8 +229,8 @@
    "text": "The following stocks are flashing deeply oversold readings on daily RSI right now: \n\n• $NOW ~26\n• $FTNT ~26\n• $OKLO ~26\n• $OSS ~26\n• $CIFR ~25\n• $INTC ~25\n• $APP ~25\n• $SE ~23\n• $GOOGL ~21\n• $RDDT ~18",
    "quoted": null,
    "media": [],
-   "likes": 79,
-   "views": 15516,
+   "likes": 165,
+   "views": 28980,
    "cashtags": [
     "APP",
     "CIFR",
@@ -154,327 +244,6 @@
     "SE"
    ],
    "n_media": 0
-  },
-  {
-   "id": "2116903356270604738",
-   "handle": "munster_gene",
-   "name": "Gene Munster",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T14:41:04Z",
-   "url": "https://x.com/munster_gene/status/2116903356270604738",
-   "text": "A growing threat to $AMZN’s retail business is shopping bots. One answer is for them to kill the golden goose, embrace the ad model, and connect buyers directly to all retailers and brands not just the ones on the platform.\n\nGood thing they’re now an AI infrastructure company.\n\nWSJ wrote today on the topic:\n\nhttps://www.wsj.com/tech/the-shopping-bots-are-coming-for-amazon-701caa57?st=bDmAan",
-   "quoted": {
-    "handle": "munster_gene",
-    "text": "$AMZN: Google results were a warning sign to Amazon investors. \n\nTonight the Street will likely discount favorable Sep results and an inline Dec guide because the long-term (starting second half of 2027) risk that personalized bots pose to the business is increasingly real.  \n\nSome of that is getting priced in today, with shares down 3.5% going into the print vs. Nasdaq down 1.5%.\n\nPersonalized bots will make it easy to find just what you’re looking for, making them a logical starting point for anything we buy.\n\nAmazon wins for three reasons: 1. Finding what you want, 2. Speed, 3. Trust. The first will increasingly be under attack."
-   },
-   "media": [],
-   "likes": 121,
-   "views": 16869,
-   "cashtags": [
-    "AMZN’S"
-   ],
-   "n_media": 0
-  },
-  {
-   "id": "2116901358129279131",
-   "handle": "OptionsMike",
-   "name": "Options Mike",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T14:33:08Z",
-   "url": "https://x.com/OptionsMike/status/2116901358129279131",
-   "text": "$SNDK Good report 8-1 Split and SPLAT!!!\n\nUnder the 200D now\n\n1000 in play and some support",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HWC-kLfXEAAgkyi.jpg?name=orig"
-   ],
-   "likes": 4,
-   "views": 1949,
-   "cashtags": [
-    "SNDK"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2116901013718216757",
-   "handle": "OptionsMike",
-   "name": "Options Mike",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T14:31:46Z",
-   "url": "https://x.com/OptionsMike/status/2116901013718216757",
-   "text": "$MU has one of the lowest forward p/e of the semis and getting beaten up. \n\n850 big spot.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HWC-QKUXkAAtwOL.jpg?name=orig"
-   ],
-   "likes": 11,
-   "views": 2022,
-   "cashtags": [
-    "MU"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2116900747757400179",
-   "handle": "OptionsMike",
-   "name": "Options Mike",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T14:30:43Z",
-   "url": "https://x.com/OptionsMike/status/2116900747757400179",
-   "text": "$LITE Rumor $MRVL is trying to buy them.\n\nHow? Would be $110B to buy out? $MRVL has 3B in cash.. \n\nThe stock dilution would be off the charts. \n\nWatch the 200D on this one",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HWC-AqZXgAAyw5W.jpg?name=orig"
-   ],
-   "likes": 3,
-   "views": 1889,
-   "cashtags": [
-    "LITE",
-    "MRVL"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2116900573899616713",
-   "handle": "TheTranscript_",
-   "name": "The Transcript",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T14:30:01Z",
-   "url": "https://x.com/TheTranscript_/status/2116900573899616713",
-   "text": "Visa and Mastercard see agentic commerce as a significant long-term opportunity, although current transaction volumes remain very small.\n\n$V Visa CEO: \"It's still very early. So we do have conviction that the opportunity is significant. We do have conviction that there's real incremental opportunities. But as we think about the next 4 quarters in '27, it all remains very small in the big scheme of the enormous size of our business.\"\n\n$MA Mastercard CEO: \"It is still early days, and the numbers are not yet significant in the grand scheme. But as the AI agentic assistants have emerged, agentic transactions are ramping up at impressive weekly growth rates. We're now seeing the early stages of consumer adoption.\"",
-   "quoted": null,
-   "media": [],
-   "likes": 23,
-   "views": 4435,
-   "cashtags": [
-    "MA",
-    "V"
-   ],
-   "n_media": 0
-  },
-  {
-   "id": "2116900374770516336",
-   "handle": "OptionsMike",
-   "name": "Options Mike",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T14:29:14Z",
-   "url": "https://x.com/OptionsMike/status/2116900374770516336",
-   "text": "$NVDA Poster child for AI trade. \n\nIf you believe this is a massive bubble, then get out or short. \n\nMe Id be interested around 190\n\n200D held Friday.. barley",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HWC9WgxWIAA6xPb.jpg?name=orig"
-   ],
-   "likes": 10,
-   "views": 1878,
-   "cashtags": [
-    "NVDA"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2116900354717589597",
-   "handle": "KobeissiLetter",
-   "name": "The Kobeissi Letter",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T14:29:09Z",
-   "url": "https://x.com/KobeissiLetter/status/2116900354717589597",
-   "text": "AI is burning Big Tech's free cash flow:\n\nThe combined CapEx of Amazon, $AMZN, Alphabet, $GOOGL, Meta, $META, and Microsoft, $MSFT, rose +$36.9 billion in Q3 2026, to a record $201.9 billion.\n\nThis figure has more than doubled over the last 12 months and is up +356% since Q1 2024.\n\nBig Tech has now spent $1.6 trillion on CapEx over the last 3 years.\n\nMeanwhile, the combined free cash flow of these companies fell -$33.1 billion last quarter, to -$26.4 billion, its lowest on record.\n\nFree cash flow among these firms has dropped -$88.2 billion over the last year.\n\nOnly Microsoft reported positive free cash flow in Q3.\n\nLooking ahead, these 4 companies plan to spend another $232 billion on CapEx in Q4, potentially lifting their combined CapEx to a record $740 billion in 2026.\n\nBig Tech is undertaking one of the largest infrastructure buildouts in history.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HWC9fxUXYAAqt90.jpg?name=orig"
-   ],
-   "likes": 909,
-   "views": 117011,
-   "cashtags": [
-    "AMZN",
-    "GOOGL",
-    "META",
-    "MSFT"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2116899334658891864",
-   "handle": "OptionsMike",
-   "name": "Options Mike",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T14:25:06Z",
-   "url": "https://x.com/OptionsMike/status/2116899334658891864",
-   "text": "$INTC ... SHITEL... what a mess. \n\nYou want to be a AI company then blame PC sales for your horrific guidance...  So your not a AI company. \n\nRegardless, you have a massive Island top\n\n52 Area feels in play unless some big chip maker decides to bail out their miserable  Foundry",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HWC8uUlWcAAEBZJ.jpg?name=orig"
-   ],
-   "likes": 6,
-   "views": 2070,
-   "cashtags": [
-    "INTC"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2116898725855642045",
-   "handle": "StockSavvyShay",
-   "name": "Shay Boloor",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T14:22:40Z",
-   "url": "https://x.com/StockSavvyShay/status/2116898725855642045",
-   "text": "The three largest cloud platforms are now generating a combined ~$440B in annualized revenue:\n\n• $AMZN AWS ~$184B (+39% YoY)\n• $MSFT Azure ~$133B (+48% YoY)\n• $GOOGL Cloud ~$123B (+103% YoY)\n\nAgentic AI is becoming a massive tailwind of cloud demand as AWS customers deployed twice as many AgentCore agents in Q3 as previous three quarters combined while Bedrock token volume grew ~17x and Google’s model API usage more than quadrupled YoY and AI agents now start over 40% of GitHub pull requests.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HWC6N6vbkAAff3X.jpg?name=orig"
-   ],
-   "likes": 207,
-   "views": 27509,
-   "cashtags": [
-    "AMZN",
-    "GOOGL",
-    "MSFT"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2116898305703825833",
-   "handle": "OptionsMike",
-   "name": "Options Mike",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T14:21:00Z",
-   "url": "https://x.com/OptionsMike/status/2116898305703825833",
-   "text": "$DELL Chart says it all. \n\nSome support here then 380 Fears of AI trade busting is going to hit them all.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HWC7yfMXwAAG294.jpg?name=orig"
-   ],
-   "likes": 4,
-   "views": 1986,
-   "cashtags": [
-    "DELL"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2116897965109297468",
-   "handle": "OptionsMike",
-   "name": "Options Mike",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T14:19:39Z",
-   "url": "https://x.com/OptionsMike/status/2116897965109297468",
-   "text": "$CRWV Will trade it wont own it. \n\n15% borrowing rate is just not viable. \n\nI wonder if the ATL is now in play",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HWC7esTXwAEGu3g.jpg?name=orig"
-   ],
-   "likes": 5,
-   "views": 1874,
-   "cashtags": [
-    "CRWV"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2116897469300969563",
-   "handle": "OptionsMike",
-   "name": "Options Mike",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T14:17:41Z",
-   "url": "https://x.com/OptionsMike/status/2116897469300969563",
-   "text": "$SMH So if you are fearful and a bear, under 500 you have massive problems with no support til 430\n\nThat said held the 200D, nice gap above now. \n\nIf this unwinds, would be a huge headwind for the markets",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HWC7BzeX0AAitnP.jpg?name=orig"
-   ],
-   "likes": 7,
-   "views": 2107,
-   "cashtags": [
-    "SMH"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2116896793644654909",
-   "handle": "TrendSpider",
-   "name": "TrendSpider",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T14:15:00Z",
-   "url": "https://x.com/TrendSpider/status/2116896793644654909",
-   "text": "Wall Street switching from chips to fries 🍟 \n$MCD",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HV_KrvGX0AAQIxA.jpg?name=orig"
-   ],
-   "likes": 180,
-   "views": 35280,
-   "cashtags": [
-    "MCD"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2116896722068603028",
-   "handle": "OptionsMike",
-   "name": "Options Mike",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T14:14:43Z",
-   "url": "https://x.com/OptionsMike/status/2116896722068603028",
-   "text": "$COST Safety name, retail has been on fire.. got me why but sure.\n\n1020 Break on watch",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HWC6WTTW4AAn4JQ.jpg?name=orig"
-   ],
-   "likes": 1,
-   "views": 1798,
-   "cashtags": [
-    "COST"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2116894967813538140",
-   "handle": "OptionsMike",
-   "name": "Options Mike",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T14:07:44Z",
-   "url": "https://x.com/OptionsMike/status/2116894967813538140",
-   "text": "$RDDT Oh man 135-91 on earnings.\n\nI'll make this easy 80 is your line in the sand under it can get much worse.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HWC4wO7XAAAF0Jl.jpg?name=orig"
-   ],
-   "likes": 2,
-   "views": 1351,
-   "cashtags": [
-    "RDDT"
-   ],
-   "n_media": 1
   },
   {
    "id": "2116894462840316351",
@@ -640,6 +409,144 @@
    "n_media": 1
   },
   {
+   "id": "2116941445458547191",
+   "handle": "AlderLaneEggs",
+   "name": "Marc Cohodes",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T17:12:26Z",
+   "url": "https://x.com/AlderLaneEggs/status/2116941445458547191",
+   "text": "There is no law and order in Arctic Mexico",
+   "quoted": {
+    "handle": "ronmortgageguy",
+    "text": "Toronto Police Had This Guy & Let Him Go: Have We All Gone Nuts?\n\nI mean have ALL OF US gone NUTS?\n\n- Police \n- Crown Prosecutors\n- Attorney General \n- Provincial Government\n- Federal Government\n- Majority of Voters\n\nEveryone losing their minds? \n\nHow else to explain it?\n\n2/"
+   },
+   "media": [],
+   "likes": 0,
+   "views": 346,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2116940739896619427",
+   "handle": "firstadopter",
+   "name": "tae kim",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T17:09:37Z",
+   "url": "https://x.com/firstadopter/status/2116940739896619427",
+   "text": "Preach",
+   "quoted": {
+    "handle": "sudoraohacker",
+    "text": "“AI has provided ‘zero payoff’ to corporate America outside of the technology sector, according to Apollo Global Management Chief Economist Torsten Slok.”\n\nWhat Slok and many others are missing is that the massive boosts in software creation and reasoning are elemental, and can be extended across all knowledge work (work in front of a computer) and then across any work that requires intelligence over 5-10 years, and eventually manual labor and dexterity as it’s the software that’s holding back robots from being useful.  Astra and upcoming robot foundation models will change this.\n\nMajor tech firms don’t make big bets on fads and herding-they’re just the first to see the productivity boosts (revenue per employee sharply up) and this will extend to the Fortune 1000 over 5-10 years."
+   },
+   "media": [],
+   "likes": 0,
+   "views": 509,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2116940466612564231",
+   "handle": "firstadopter",
+   "name": "tae kim",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T17:08:32Z",
+   "url": "https://x.com/firstadopter/status/2116940466612564231",
+   "text": "Yup\n\n“many investors still keep forgetting that search and ads are 75%+ of Google’s revenues and 90%+ of profits.  Cloud and TPUs can’t make up for that.  So as personal agents take off, AI models won’t save Google and Gemini in the consumers app has to deliver.”",
+   "quoted": {
+    "handle": "sudoraohacker",
+    "text": "Meta vs Google:  many investors still keep forgetting that search and ads are 75%+ of Google’s revenues and 90%+ of profits.  Cloud and TPUs can’t make up for that.  So as personal agents take off, AI models won’t save Google and Gemini in the consumers app has to deliver.  \n\nCurrently Muse is a much superior personal agent and Gemini is stuck and not great as an agent (while the Carbon model is good on Vertex, even paid consumer users don’t have app access to it in the Gemini app or G-suite - I’m an Ultra subscriber and still am not getting Argon or Carbon, and that’s a major deployment failure for a new model where you have 1-2 weeks at most to win over users).  And the problem is structural and incentive driven - the Cloud and the API teams want Carbon access so consumers haven’t gotten it and Muse keeps getting better and improving while the Gemini app is stuck.\n\nSo the early trends suggest Meta wins the consumer agent market and the golden goose at Google (search and ads) is much more vulnerable than many expect.  I hope they get better at deploying and @joshwoodward can get new models out to consumers before they stop going to the Gemini app and build a habit to go to Muse.\n\nhttps://www.cnbc.com/2026/11/01/ai-meta-ads-google-search.html"
+   },
+   "media": [],
+   "likes": 2,
+   "views": 628,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2116938653087957059",
+   "handle": "GerberKawasaki",
+   "name": "Ross Gerber",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T17:01:20Z",
+   "url": "https://x.com/GerberKawasaki/status/2116938653087957059",
+   "text": "This distills some of the issues with the evolution of bitcoin that has made itself obsolete…. Its become worse than what it was meant to replace.  A tool of the corrupt tech elites… totally centralized controlled by a few… bitcoin’s soul has been crushed by greed.",
+   "quoted": {
+    "handle": "mttjon",
+    "text": "Excellent comment on this FT article about the Binance hack\n\nhttps://www.ft.com/content/1d4dd7b2-9dee-433b-ac2a-e8022af1dd07?desktop=true&segmentId=d8d3e364-5197-20eb-17cf-2437841d178a&syn-25a6b1a6=1#myft:notification:instant-email:content"
+   },
+   "media": [],
+   "likes": 1,
+   "views": 1252,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2116937748791894332",
+   "handle": "TrungTPhan",
+   "name": "Trung Phan",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T16:57:44Z",
+   "url": "https://x.com/TrungTPhan/status/2116937748791894332",
+   "text": "The pest control industry is worth $29B. Largest 2 firms (Rollins, Rentokil Terminix) account for 50% of revenue among top 100 pest control firms in US.\n\nMarket cap for both are down between 20-40% this year. One reason: people using AI chatbots for pest control reccomendations, and are being offered local options (while these global brands get hammered with bad reviews on Reddit).",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWDfqZEbYAA3Ot6.jpg?name=orig",
+    "https://pbs.twimg.com/media/HWDfqZLbwAA9AfV.jpg?name=orig"
+   ],
+   "likes": 7,
+   "views": 3147,
+   "cashtags": [],
+   "n_media": 2
+  },
+  {
+   "id": "2116936183141835232",
+   "handle": "OddStats",
+   "name": "OddStats",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "TradeInColour"
+   },
+   "time_utc": "2026-11-01T16:51:31Z",
+   "url": "https://x.com/OddStats/status/2116936183141835232",
+   "text": "@TradeInColour No problem, I just dropped by to hide your stupid comments and block you.",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 41,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2116933535441224065",
+   "handle": "steve_hanke",
+   "name": "Steve Hanke",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T16:41:00Z",
+   "url": "https://x.com/steve_hanke/status/2116933535441224065",
+   "text": "Last night, riots broke out in Birmingham, England. Rioters launched FIREWORKS at storefronts and police officers.\n\nEUROPE'S BIGGEST UPRISINGS ALL SPREAD THE SAME WAY: PARIS LIGHTS THE MATCH AND THE REST OF THE CONTINENT CATCHES FIRE.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2116726324278493184/img/bNJV4cah0nFCllFt.jpg"
+   ],
+   "likes": 24,
+   "views": 6372,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
    "id": "2116926072176472091",
    "handle": "SawyerMerritt",
    "name": "Sawyer Merritt",
@@ -653,8 +560,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2112648573271601152/img/RW5cOtxcn_NbgbOG.jpg"
    ],
-   "likes": 334,
-   "views": 16363,
+   "likes": 765,
+   "views": 29597,
    "cashtags": [],
    "n_media": 1
   },
@@ -672,8 +579,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWDSvRPWkAA9Enu.jpg?name=orig"
    ],
-   "likes": 42,
-   "views": 5453,
+   "likes": 61,
+   "views": 7028,
    "cashtags": [],
    "n_media": 1
   },
@@ -691,8 +598,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2116920486466605056/img/pwM726XczIEK37Ni.jpg"
    ],
-   "likes": 5,
-   "views": 3780,
+   "likes": 7,
+   "views": 4454,
    "cashtags": [],
    "n_media": 1
   },
@@ -711,8 +618,8 @@
     "text": "@TheStalwart Reed grad here. I saw a NYT article last week saying enrollment in a Harvard humanities class was soaring, so maybe this is a post AI trend: self-cultivation and the desire to think for yourself. Maybe the LA colleges won’t just survive but thrive as people seek ways to be human."
    },
    "media": [],
-   "likes": 25,
-   "views": 7952,
+   "likes": 26,
+   "views": 9035,
    "cashtags": [],
    "n_media": 0
   },
@@ -734,7 +641,7 @@
    },
    "media": [],
    "likes": 0,
-   "views": 160,
+   "views": 217,
    "cashtags": [],
    "n_media": 0
   },
@@ -753,8 +660,8 @@
     "text": "@OddStats Can you run the same scan on ndx?"
    },
    "media": [],
-   "likes": 28,
-   "views": 4664,
+   "likes": 33,
+   "views": 5385,
    "cashtags": [],
    "n_media": 0
   },
@@ -775,8 +682,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWC-YWxXIAAl9Af.png?name=orig"
    ],
-   "likes": 354,
-   "views": 83047,
+   "likes": 406,
+   "views": 95398,
    "cashtags": [],
    "n_media": 1
   },
@@ -1316,6 +1223,149 @@
    "n_media": 4
   },
   {
+   "id": "2116941371013804066",
+   "handle": "mcuban",
+   "name": "Mark Cuban",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T17:12:08Z",
+   "url": "https://x.com/mcuban/status/2116941371013804066",
+   "text": "Multiple roommates.  Ramen noodles.  Near public transportation.  Respect to the people who do whatever it takes.  \n\nI worked as a bartender.  Bar-back. $2.15 an hr plus whatever tips got shared.  Worked at a retail store. Never had benefits at any job.  \n\nHad 5 roommates in a 3 br apt.  Ate lousy food out of cans and ate  a ton of peanuts and shit food  at happy hour.  Had credit cards ripped up.  Etc.  \n\nBut I learned a ton.  Taught me what was right and wrong about running a business by watching my bosses and their bosses \n\nYeah I know. It was much easier then, when inflation was 15 pct and national unemployment was 10 %.  I know I was fortunate when I finally got fired from the store, and had to start my own business with zero cash.   Bill collectors everywhere. \nEven luckier when I found my first customer so I could pay my bills\n\nBut I recognize it’s so much harder today.  \n\nWhich is why I respect the people who are willing to do what it takes to get started",
+   "quoted": {
+    "handle": "tek_sauce",
+    "text": "@BarefootStudent Would love @mcuban to explain how someone at McDonalds can afford rent (and other living expenses)"
+   },
+   "media": [],
+   "likes": 0,
+   "views": null,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2116940819080868138",
+   "handle": "mcuban",
+   "name": "Mark Cuban",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "tek_sauce"
+   },
+   "time_utc": "2026-11-01T17:09:56Z",
+   "url": "https://x.com/mcuban/status/2116940819080868138",
+   "text": "Multiple roommates.  Ramen noodles.  Near public transportation.  Respect to the people who do whatever it takes.  \n\nI worked as a bartender.  Bar-back. $2.15 an hr plus whatever tips got shared.  Worked at a retail store. Never had benefits at any job.  \n\nHad 5 roommates in a 3 br apt.  Ate lousy food out of cans and ate  a ton of peanuts and shit food  at happy hour.  Had credit cards ripped up.  Etc.  \n\nBut I learned a ton.  Taught me what was right and wrong about running a business by watching my bosses and their bosses \n\nYeah I know. It was much easier then, when inflation was 15 pct and national unemployment was 10 %.  I know I was fortunate when I finally got fired from the store, and had to start my own business with zero cash.   Bill collectors everywhere. \nEven luckier when I found my first customer so I could pay my bills\n\nBut I recognize it’s so much harder today.  \n\nWhich is why I respect the people who are willing to do what it takes to get started",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 362,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2116939394057679103",
+   "handle": "QCompounding",
+   "name": "Compounding Quality",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "QCompounding"
+   },
+   "time_utc": "2026-11-01T17:04:17Z",
+   "url": "https://x.com/QCompounding/status/2116939394057679103",
+   "text": "Questions to ask yourself:\n\n1️⃣ Are most earnings translated into operating cash flow?\n2️⃣ Does the company have a positive free cash flow (operating cash flow – CAPEX)?\n3️⃣ Did the company manage to increase its cash position compared to last year?",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 657,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2116935320545665101",
+   "handle": "biancoresearch",
+   "name": "Jim Bianco",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "BCorr_AI"
+   },
+   "time_utc": "2026-11-01T16:48:05Z",
+   "url": "https://x.com/biancoresearch/status/2116935320545665101",
+   "text": "@BCorr_AI @SantiagoAuFund https://x.com/biancoresearch/status/2116934214335520777",
+   "quoted": {
+    "handle": "biancoresearch",
+    "text": "Where AI stands after Friday.\n\nThe 7th-largest sell-off in the last two years, after rallying over 500% since ChatGPT's November 2022 release.\n\nAlso note, the all-time high was October 6, less than a month ago."
+   },
+   "media": [],
+   "likes": 1,
+   "views": 198,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2116934508108722208",
+   "handle": "biancoresearch",
+   "name": "Jim Bianco",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "A_Eye_Bubble"
+   },
+   "time_utc": "2026-11-01T16:44:52Z",
+   "url": "https://x.com/biancoresearch/status/2116934508108722208",
+   "text": "@A_Eye_Bubble https://x.com/biancoresearch/status/2116934214335520777",
+   "quoted": {
+    "handle": "biancoresearch",
+    "text": "Where AI stands after Friday.\n\nThe 7th-largest sell-off in the last two years, after rallying over 500% since ChatGPT's November 2022 release.\n\nAlso note, the all-time high was October 6, less than a month ago."
+   },
+   "media": [],
+   "likes": 2,
+   "views": 220,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2116934214335520777",
+   "handle": "biancoresearch",
+   "name": "Jim Bianco",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T16:43:42Z",
+   "url": "https://x.com/biancoresearch/status/2116934214335520777",
+   "text": "Where AI stands after Friday.\n\nThe 7th-largest sell-off in the last two years, after rallying over 500% since ChatGPT's November 2022 release.\n\nAlso note, the all-time high was October 6, less than a month ago.",
+   "quoted": {
+    "handle": "biancoresearch",
+    "text": "Where the stock market stands after Friday."
+   },
+   "media": [
+    "https://pbs.twimg.com/media/HWDbgMFXcAAJzEF.png?name=orig"
+   ],
+   "likes": 41,
+   "views": 10421,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2116929759808536748",
+   "handle": "carlquintanilla",
+   "name": "Carl Quintanilla",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T16:26:00Z",
+   "url": "https://x.com/carlquintanilla/status/2116929759808536748",
+   "text": "FEDWATCH: “.. The AI bubble has been deflating since June, but the unwind may not be over yet. Relative to the S&P Equal Weight ex-AI index, there is still room for further mean reversion.”\n\n@Marcomadness2",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWDYZeMXcAE3z4R.jpg?name=orig"
+   ],
+   "likes": 40,
+   "views": 4642,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
    "id": "2116920449078825101",
    "handle": "jasonfurman",
    "name": "Jason Furman",
@@ -1331,8 +1381,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWDB_1MWUAABt4m.png?name=orig"
    ],
-   "likes": 1,
-   "views": 246,
+   "likes": 2,
+   "views": 524,
    "cashtags": [],
    "n_media": 1
   },
