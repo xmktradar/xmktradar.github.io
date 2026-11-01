@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2116956854882275346": {
+      "en_summary": "Don't forget $BETR $12,000 target, in reply to @TheOneLanceB and @ericjackson.",
+      "zh_summary": "別忘了$BETR的12000美元目標，回覆@TheOneLanceB和@ericjackson。",
+      "tickers": ["BETR"],
+      "stance": "睇好",
+      "stance_by_ticker": {"BETR": "睇好"},
+      "horizon": "長線",
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"BETR": "目標價12000美元"}
+    },
+    "2116956336705687691": {
+      "en_summary": "Weekend indicators quoting Liquid update: buyers picking through Friday tech selloff wreckage, over 80% of tracked contracts above Friday close. Memory strong with $MU +2.23%, $DRAM ETF +2.20%, $SNDK $WDC $STX >1%. Optical $LITE $AAOI higher. $AMD +1.52%, $MRVL +1.22%, $GOOGL +1.37%, $NVDA marginally positive, $AAPL slightly lower. Neoclouds $NBIS +1.73%, $IREN +1.62%, $CRWV +0.80%. Crypto-linked supported by Bitcoin >$78,000: $MSTR +3.12%, $COIN +2.26%, others mixed. Partial recovery amid AI spending debates and Binance outflows.",
+      "zh_summary": "週末指標引用Liquid更新：買家在週五科技股拋售殘骸中挑選，超過80%追蹤合約高於週五收盤。記憶體強勢，$MU上漲2.23%，$DRAM ETF上漲2.20%，$SNDK、$WDC、$STX均超過1%。光學$LITE、$AAOI上漲。$AMD上漲1.52%，$MRVL上漲1.22%，$GOOGL上漲1.37%，$NVDA略微正值，$AAPL略低。新雲$NBIS上漲1.73%，$IREN上漲1.62%，$CRWV上漲0.80%。加密相關受比特幣高於78000美元支持：$MSTR上漲3.12%，$COIN上漲2.26%，其他混合。部分復甦，AI支出辯論及幣安流出持續。",
+      "tickers": ["MU", "SNDK", "WDC", "STX", "LITE", "AAOI", "AMD", "MRVL", "GOOGL", "NVDA", "AAPL", "NBIS", "IREN", "CRWV", "MSTR", "COIN", "BMNR", "CRCL", "PURR"],
+      "stance": "中性",
+      "stance_by_ticker": {"MU": "中性", "SNDK": "中性", "WDC": "中性", "STX": "中性", "LITE": "中性", "AAOI": "中性", "AMD": "中性", "MRVL": "中性", "GOOGL": "中性", "NVDA": "中性", "AAPL": "中性", "NBIS": "中性", "IREN": "中性", "CRWV": "中性", "MSTR": "中性", "COIN": "中性", "BMNR": "中性", "CRCL": "中性", "PURR": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2116953427918156276": {
+      "en_summary": "$BX Blackstone COO Jonathan Gray: economic value of computing infrastructure may support asset-backed financing independent of individual tech company credit, similar to aircraft lending based on shortage rather than airline credit. Over time this will expand insurance capacity for data centers or chips.",
+      "zh_summary": "$BX黑石營運長Jonathan Gray：計算基礎設施的經濟價值可能支持與個別科技公司信用無關的資產抵押融資，類似航空器貸款基於短缺而非航空公司信用。隨時間推移這將擴大保險公司對數據中心或晶片的容量。",
+      "tickers": ["BX"],
+      "stance": "中性",
+      "stance_by_ticker": {"BX": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116953420636787147": {
+      "en_summary": "Coinbase bulls: long-only algo backtested +74% while stock lost 63% in same period, just signaled another move higher on $COIN.",
+      "zh_summary": "Coinbase多頭：僅做多演算法回測期間+74%，而股票同期下跌63%，剛對$COIN發出再次上漲信號。",
+      "tickers": ["COIN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"COIN": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116947923544289388": {
+      "en_summary": "Futurum mapped every layer of CPU supply chain: Architecture/IP ($ARM, $IBM, $AMD $INTC), EDA ($CDNS $SNPS), Manufacturing memory ($MU), foundries ($TSM $INTC $GFS), packaging ($TSM $INTC $AMKR), equipment ($ASML $AMAT $LRCX $KLAC). End markets enterprise/mobile/consumer/agentic AI/cloud listing $AMD $INTC $IBM $AAPL $QCOM $GOOGL $ARM $NVDA $AMZN $MSFT $META $BABA.",
+      "zh_summary": "Futurum繪製CPU供應鏈每一層：架構/IP（$ARM、$IBM、$AMD $INTC）、EDA（$CDNS $SNPS）、製造記憶體（$MU）、晶圓廠（$TSM $INTC $GFS）、封裝（$TSM $INTC $AMKR）、設備（$ASML $AMAT $LRCX $KLAC）。終端市場企業/行動/消費/代理AI/雲端列出$AMD $INTC $IBM $AAPL $QCOM $GOOGL $ARM $NVDA $AMZN $MSFT $META $BABA。",
+      "tickers": ["ARM", "IBM", "AMD", "INTC", "CDNS", "SNPS", "MU", "TSM", "GFS", "AMKR", "ASML", "AMAT", "LRCX", "KLAC", "AAPL", "QCOM", "GOOGL", "NVDA", "AMZN", "MSFT", "META", "BABA"],
+      "stance": "中性",
+      "stance_by_ticker": {"ARM": "中性", "IBM": "中性", "AMD": "中性", "INTC": "中性", "CDNS": "中性", "SNPS": "中性", "MU": "中性", "TSM": "中性", "GFS": "中性", "AMKR": "中性", "ASML": "中性", "AMAT": "中性", "LRCX": "中性", "KLAC": "中性", "AAPL": "中性", "QCOM": "中性", "GOOGL": "中性", "NVDA": "中性", "AMZN": "中性", "MSFT": "中性", "META": "中性", "BABA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
