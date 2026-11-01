@@ -1,1 +1,74 @@
-PLACEHOLDER_TO_REPLACE
+{
+  "posts": {
+    "2116926994692895116": {
+      "en_summary": "$GOOGL Alphabet CEO: Google processes 32B AI tokens per minute, up more than 4x YoY. First-party model APIs nearly 32 billion tokens per minute, 40% more than last quarter and more than 4x a year ago.",
+      "zh_summary": "$GOOGL Alphabet執行長：Google每分鐘處理320億AI令牌，同比增長超過4倍。第一方模型API每分鐘近320億令牌，比上季多40%，比一年前多超過4倍。",
+      "tickers": ["GOOGL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"GOOGL": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116923599483466052": {
+      "en_summary": "LOL. So true. Can’t wait for this game. GTA6 looks awesome. $TTWO",
+      "zh_summary": "哈哈。太真實了。迫不及待想玩這款遊戲。GTA6看起來很棒。$TTWO",
+      "tickers": ["TTWO"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TTWO": "睇好"},
+      "horizon": "中線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116918421925527712": {
+      "en_summary": "(Reposted by @saylor) We have paid every Digital Credit dividend since inception. Starting today, $STRC dividends go daily. $MSTR",
+      "zh_summary": "（由@saylor轉發）我們自成立以來已支付每一筆數位信貸股息。從今天起，$STRC股息改為每日發放。$MSTR",
+      "tickers": ["MSTR", "STRC"],
+      "stance": "中性",
+      "stance_by_ticker": {"MSTR": "中性", "STRC": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116918400832393530": {
+      "en_summary": "Mag 7 Q3 YoY EPS is only 22.6% (only five reported, no $AAPL or $NVDA yet). The 493 is 32.6%. Could be the first time since Q4 '22 the 493 do better. Nice find from John Butters at @FactSet.",
+      "zh_summary": "Mag 7第三季同比EPS僅22.6%（僅五家已報告，尚未包括$AAPL或$NVDA）。其餘493家為32.6%。這可能是自2022年第四季以來首次493家表現更好。來自@FactSet的John Butters的好發現。",
+      "tickers": ["AAPL", "NVDA", "SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"AAPL": "未表態", "NVDA": "未表態", "SPY": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2116918384180809867": {
+      "en_summary": "October stats: $SPX down 93 bps but 9/11 sectors rose, 327/500 stocks were up 2% or more, and names above 50 day moving average went from 20% to 61%. $MS prime brokerage saw the biggest degrossing ever. Set up seems pretty good into end of year.",
+      "zh_summary": "10月統計：$SPX下跌93個基點，但11個板塊中有9個上漲，500隻股票中有327隻上漲2%或更多，突破50日移動平均線的股票從20%升至61%。$MS主經紀商看到有史以來最大的減倉。年底前的設置看起來相當不錯。",
+      "tickers": ["SPY", "MS"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPY": "睇好", "MS": "中性"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    }
+  }
+}
