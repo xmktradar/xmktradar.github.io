@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2116973415437570408": {
+      "en_summary": "Jake Wujastyk notes that from October highs to lows, INTC had a 49.84% candle, describing it as slightly volatile.",
+      "zh_summary": "Jake Wujastyk 指出 INTC 從十月高點到低點出現 49.84% 的蠟燭，形容為稍為波動。",
+      "tickers": ["INTC"],
+      "stance": "中性",
+      "stance_by_ticker": {"INTC": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"INTC": "October high to low 49.84% candle, slightly volatile"}
+    },
+    "2116968521754398860": {
+      "en_summary": "The Transcript quotes MSCI Chief Product Officer that AI has reduced factor model development from several weeks to a couple of hours, and eventually minutes. This transforms models to be created on demand targeted to specific user needs, previously impossible.",
+      "zh_summary": "The Transcript 引用 MSCI 首席產品官稱 AI 已將因子模型開發時間從數週縮短至數小時，最終可至數分鐘。這改變模型可按特定用戶需求即時創建，以往不可能。",
+      "tickers": ["MSCI"],
+      "stance": "眼好",
+      "stance_by_ticker": {"MSCI": "眼好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MSCI": "AI reduces factor model development time from weeks to hours/minutes, enabling on-demand models"}
+    },
+    "2117000719001588157": {
+      "en_summary": "Charlie Bilello notes the S&P 500 fell 1.8% last Friday, its 22nd decline above 1% this year. This is normal volatility; average year since 1928 has 29 large declines. Downside risk is the price of admission for reward.",
+      "zh_summary": "Charlie Bilello 指出標普500上週五下跌 1.8%，是今年第 22 次跌幅超過 1%。這屬正常波動；自 1928 年以來平均每年有 29 次大幅下跌。下行風險是獲得回報的入場費。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116996244295860306": {
+      "en_summary": "Mark Cuban replies that everyone should strive for that, but asks what an unemployed person should do about a job and paying their bills.",
+      "zh_summary": "Mark Cuban 回覆每個人都應努力追求那個目標，但詢問失業者應如何處理工作及支付帳單。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "jobs",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2116995004883255763": {
+      "en_summary": "Charlie Bilello states Apple is now the only Mag 7 stock outperforming the S&P 500 this year because it generates more free cash flow than any other Mag 7 company while largely avoiding the AI spending binge draining its hyperscaler peers.",
+      "zh_summary": "Charlie Bilello 表示蘋果現在是今年唯一跑贏標普500的 Magnificent 7 股票，因為它產生比任何其他 Mag 7 公司更多的自由現金流，同時基本上避免了正在消耗其超大規模同業的 AI 支出熱潮。",
+      "tickers": ["AAPL"],
+      "stance": "眼好",
+      "stance_by_ticker": {"AAPL": "眼好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AAPL": "Only Mag 7 outperforming S&P 500 this year due to higher FCF and avoiding AI spending binge"}
+    }
+  }
+}
