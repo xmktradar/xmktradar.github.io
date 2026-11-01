@@ -2,115 +2,133 @@
  "note": "已抓取但未經 Grok 分析嘅帖，只收股票同宏觀帖（閒聊帖唔寫），有股票代號嘅排最前，等超過 24 個鐘就唔再等。",
  "posts": [
   {
-   "id": "2116937238722625816",
+   "id": "2116960624261636101",
    "handle": "StockSavvyShay",
    "name": "Shay Boloor",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-11-01T16:55:43Z",
-   "url": "https://x.com/StockSavvyShay/status/2116937238722625816",
-   "text": "UBS models $META Muse at just 3M daily users with number of $AMD EPYC chips required depending heavily on how many agents are running simultaneously and how efficiently CPU capacity is shared: \n\n• Base case ~3,000 chips if 750K agents run simultaneously with 4x CPU sharing\n• High engagement ~23,800 chips if 1.5M agents run simultaneously without CPU sharing\n\nBut the bigger opportunity is what happens as adoption scales because same base assumptions would imply nearly 100,000 EPYC chips at 100M daily users while each Muse agent also requires its own 8GB of RAM and 100GB of SSD storage.\n\nThat could push DRAM requirements toward 2TB per host at 4x CPU sharing creating a huge opportunity for $MU and $SKHY in DRAM and $SNDK in NAND flash storage.",
+   "time_utc": "2026-11-01T18:28:38Z",
+   "url": "https://x.com/StockSavvyShay/status/2116960624261636101",
+   "text": "Trump was asked about Chinese intelligence concerns involving $NVDA CEO Jensen Huang and responded “when it comes to chips, there’s never been anybody like him.”\n\nHe added that Jensen has always been “very aboveboard.”",
    "quoted": null,
    "media": [
-    "https://pbs.twimg.com/media/HWDdS17b0AAK2yV.jpg?name=orig"
+    "https://pbs.twimg.com/amplify_video_thumb/2116951585498734592/img/K_taoRKaaFom5Ilm.jpg"
    ],
-   "likes": 40,
-   "views": 10240,
+   "likes": 29,
+   "views": 8938,
    "cashtags": [
-    "AMD",
-    "META",
-    "MU",
-    "SKHY",
-    "SNDK"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2116934542074528074",
-   "handle": "TrendSpider",
-   "name": "TrendSpider",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T16:45:00Z",
-   "url": "https://x.com/TrendSpider/status/2116934542074528074",
-   "text": "When the going gets tough, you can always count on Wally World 🔆\n$WMT",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HV_HkJuWoAAm1qt.jpg?name=orig"
-   ],
-   "likes": 54,
-   "views": 13628,
-   "cashtags": [
-    "WMT"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2116930768136245591",
-   "handle": "KobeissiLetter",
-   "name": "The Kobeissi Letter",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T16:30:00Z",
-   "url": "https://x.com/KobeissiLetter/status/2116930768136245591",
-   "text": "BREAKING: The largest US physical-gold backed ETF, $GLD, recorded -$1.8 billion in outflows in October, its biggest monthly withdrawal since June.\n\nThis also marks its 3rd-largest monthly outflow since February 2024.\n\nYear-to-date, $GLD has seen -$3.8 billion in withdrawals, putting it on track for its first annual outflow since 2023.\n\nBy comparison, the fund attracted +$23.0 billion in inflows in 2025, its largest annual intake on record.\n\nMeanwhile, investors withdrew -$1.5 billion from gold and other precious metal funds last week, marking their 2nd weekly outflow over the last 7 weeks.\n\nGold flows are highly volatile right now.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HWC-o-IWEAAYTOp.jpg?name=orig"
-   ],
-   "likes": 401,
-   "views": 73065,
-   "cashtags": [
-    "GLD"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2116928239562338616",
-   "handle": "StockSavvyShay",
-   "name": "Shay Boloor",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T16:19:57Z",
-   "url": "https://x.com/StockSavvyShay/status/2116928239562338616",
-   "text": "2027 is shaping up to be biggest step change in AI power density yet: \n\n• $NVDA Rubin Ultra ~500kW per rack\n• $AMD MI500 ~1,000kW per rack\n• $AMZN Trainium4 ~330kW per rack\n• $GOOGL TPU v9 ~200kW per rack\n\nTraditional data centers were built for CPU racks of just ~10kW so this shift will require a lot of upgrades to existing facilities and fundamentally different electrical and liquid cooling systems in new builds.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HWDW4ktbQAA-nnB.png?name=orig"
-   ],
-   "likes": 118,
-   "views": 18983,
-   "cashtags": [
-    "AMD",
-    "AMZN",
-    "GOOGL",
     "NVDA"
    ],
    "n_media": 1
   },
   {
-   "id": "2116928179495735484",
-   "handle": "scottmelker",
-   "name": "The Wolf Of All Streets",
+   "id": "2116956854882275346",
+   "handle": "InvestorsLive",
+   "name": "Nathan Michaud",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "TheOneLanceB"
+   },
+   "time_utc": "2026-11-01T18:13:40Z",
+   "url": "https://x.com/InvestorsLive/status/2116956854882275346",
+   "text": "@TheOneLanceB @ericjackson Don't forget $BETR $12,000 target",
+   "quoted": {
+    "handle": "ericjackson",
+    "text": "@InvestorsLive Who are you?"
+   },
+   "media": [],
+   "likes": 3,
+   "views": 324,
+   "cashtags": [
+    "BETR"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2116956336705687691",
+   "handle": "Mr_Derivatives",
+   "name": "Heisenberg",
    "type": "post",
    "reposted_by": null,
    "replying_to": null,
-   "time_utc": "2026-11-01T16:19:43Z",
-   "url": "https://x.com/scottmelker/status/2116928179495735484",
-   "text": "BINANCE SAYS IT HAS SEEN ABOUT $3.64 BILLION IN NET OUTFLOWS SINCE REOPENING WITHDRAWALS, 2.1% OF ITS $171 BILLION IN ASSETS",
+   "time_utc": "2026-11-01T18:11:36Z",
+   "url": "https://x.com/Mr_Derivatives/status/2116956336705687691",
+   "text": "Weekend indicators:",
    "quoted": {
-    "handle": "scottmelker",
-    "text": "BINANCE SAYS $ZEC AND $SUI WITHDRAWALS ARE NOW RE-ENABLED, ALONG WITH $USDT AND GRAM ON TON"
+    "handle": "liquidtrading",
+    "text": "Markets don’t close on Liquid. Here’s your Sunday update.\n\nBuyers are picking through the wreckage of Friday’s tech selloff with over 80 percent of stock and ETF contracts tracked on Liquid are above Friday’s close. The recovery stretches across memory chips, AI infrastructure and crypto-linked names, although the weekend gains recover only part of the damage.\n\nMemory is one of the clearest pockets of strength. $MU is up 2.23%, while the memory-focused $DRAM ETF has gained 2.20%. $SNDK, $WDC and $STX are all more than 1% higher. Optical networking names are participating too, with $LITE and $AAOI both above Friday’s closes.\n\nThe rebound extends beyond memory. $AMD is up 1.52% and $MRVL has gained 1.22%, while $GOOGL is 1.37% higher. But the biggest names aren’t moving together: $NVDA is only marginally positive, while $AAPL remains slightly lower.\n\nNeoclouds are also finding buyers. $NBIS is up 1.73% and $IREN has gained 1.62%, with $CRWV following at +0.80%. The sector is participating in the recovery, even as the debate over AI spending, financing costs and future returns remains unresolved.\n\nCrypto-linked equities are getting support from Bitcoin’s move back above $78,000. $MSTR is up 3.12%, followed by $COIN at +2.26%. $BMNR and $CRCL are also higher, although $PURR is bucking the move at −1.95%. The rebound comes as Binance resumes withdrawals after the hack, but confidence is still being tested: Reuters reports more than $3.5 billion in net outflows on Sunday.\n\n Anthrop"
    },
    "media": [],
-   "likes": 32,
-   "views": 10778,
+   "likes": 81,
+   "views": 17927,
    "cashtags": [],
    "n_media": 0
+  },
+  {
+   "id": "2116953427918156276",
+   "handle": "TheTranscript_",
+   "name": "The Transcript",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T18:00:02Z",
+   "url": "https://x.com/TheTranscript_/status/2116953427918156276",
+   "text": "$BX Blackstone COO Jonathan Gray: The economic value of computing infrastructure may increasingly support asset-backed financing independent of individual technology-company credit profiles.\n\n\"When you look at the airline business, lending against aircraft is an investment-grade business, not because Spirit Airlines or an emerging market airline has great credit themselves, but it's because of the shortage of commercial aviation in the world. Today, when it comes to compute, be it data centers or chips, people are not putting much value on the underlying assets. They're solely looking at the credit of the counterparties. I think that will evolve over time, which will expand some of the capacity these insurance companies have.\"",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWDt7FsbgAAX7I9.jpg?name=orig"
+   ],
+   "likes": 12,
+   "views": 2464,
+   "cashtags": [
+    "BX"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2116947923544289388",
+   "handle": "StockSavvyShay",
+   "name": "Shay Boloor",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T17:38:10Z",
+   "url": "https://x.com/StockSavvyShay/status/2116947923544289388",
+   "text": "FUTURUM JUST MAPPED EVERY LAYER OF THE CPU SUPPLY CHAIN\n\nCPU Architecture & IP\n• Arm: $ARM\n• Proprietary: $IBM\n• x86: $AMD $INTC\n\nChip Design Software\n• EDA: $CDNS $SNPS \n\nManufacturing\n• Memory: $MU $SKHY\n• Foundries: $TSM $INTC $GFS \n• Advanced Packaging: $TSM $INTC $AMKR\n• Wafer Fab Equipment: $ASML $AMAT $LRCX $KLAC\n\nCPU End Markets\n• Enterprise: $AMD $INTC $IBM\n• Mobile: $AAPL $QCOM $GOOGL\n• Consumer: $AMD $INTC $AAPL $QCOM\n• Agentic AI: $ARM $NVDA $QCOM $AMD $INTC\n• Cloud: $AMD $INTC $NVDA $AMZN $GOOGL $MSFT $META $BABA",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWDoecfbwAEeUqM.jpg?name=orig"
+   ],
+   "likes": 121,
+   "views": 20998,
+   "cashtags": [
+    "AAPL",
+    "AMAT",
+    "AMD",
+    "AMKR",
+    "AMZN",
+    "ARM",
+    "ASML",
+    "BABA",
+    "CDNS",
+    "GFS",
+    "GOOGL",
+    "IBM",
+    "INTC",
+    "KLAC",
+    "LRCX",
+    "META",
+    "MSFT",
+    "MU",
+    "NVDA",
+    "QCOM",
+    "SKHY",
+    "SNPS",
+    "TSM"
+   ],
+   "n_media": 1
   },
   {
    "id": "2116926994692895116",
@@ -124,8 +142,8 @@
    "text": "$GOOGL Alphabet CEO: Google processes 32B AI tokens per minute, up more than 4x YoY.\n\n\"Our first-party model APIs are now processing nearly 32 billion tokens per minute, 40% more than last quarter and more than 4x what we processed a year ago.\"",
    "quoted": null,
    "media": [],
-   "likes": 28,
-   "views": 4161,
+   "likes": 62,
+   "views": 7644,
    "cashtags": [
     "GOOGL"
    ],
@@ -189,8 +207,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWDNebtWkAA5Jny.png?name=orig"
    ],
-   "likes": 76,
-   "views": 8273,
+   "likes": 87,
+   "views": 10084,
    "cashtags": [
     "AAPL",
     "NVDA"
@@ -229,8 +247,8 @@
    "text": "The following stocks are flashing deeply oversold readings on daily RSI right now: \n\n• $NOW ~26\n• $FTNT ~26\n• $OKLO ~26\n• $OSS ~26\n• $CIFR ~25\n• $INTC ~25\n• $APP ~25\n• $SE ~23\n• $GOOGL ~21\n• $RDDT ~18",
    "quoted": null,
    "media": [],
-   "likes": 165,
-   "views": 28980,
+   "likes": 232,
+   "views": 39287,
    "cashtags": [
     "APP",
     "CIFR",
@@ -409,6 +427,86 @@
    "n_media": 1
   },
   {
+   "id": "2116954918280183855",
+   "handle": "TrungTPhan",
+   "name": "Trung Phan",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "TrungTPhan"
+   },
+   "time_utc": "2026-11-01T18:05:58Z",
+   "url": "https://x.com/TrungTPhan/status/2116954918280183855",
+   "text": "full read here: https://www.economist.com/business/2026/10/29/why-its-a-bad-time-to-be-a-rat-killer\n\nthat reddit data training though",
+   "quoted": {
+    "handle": "TrungTPhan",
+    "text": "“Reddit is blocking logged out users to prevent AI labs from scraping content for LLM training data.”\n\nThe training data:"
+   },
+   "media": [],
+   "likes": 3,
+   "views": 3548,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2116949349246881851",
+   "handle": "carlquintanilla",
+   "name": "Carl Quintanilla",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T17:43:50Z",
+   "url": "https://x.com/carlquintanilla/status/2116949349246881851",
+   "text": "Congrats to @NYCityCenter for this NYT “Critic’s Pick”.\n\n“.. it sometimes felt as if we were driving the whole theater through an uptown stretch of Broadway, changing stations on the radio, rolling the windows down.” 💕\n\n@Lin_Manuel @MrMikeRosenberg \nhttps://www.nytimes.com/2026/11/01/theater/in-the-heights-review-lin-manuel-miranda.html?smid=nytcore-ios-share",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWDqMO7WkAAz9PA.jpg?name=orig"
+   ],
+   "likes": 2,
+   "views": 4416,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2116949137744683343",
+   "handle": "elerianm",
+   "name": "Mohamed A. El-Erian",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T17:43:00Z",
+   "url": "https://x.com/elerianm/status/2116949137744683343",
+   "text": "Please find below the usual monthly performance snapshot across major assets and asset classes.\nOctober was characterized by significant dispersion, both across asset classes and within them.\nOf note:\n• Marked Nasdaq underperformance relative to both the Dow and European equities. \n• The surge in oil prices. \n• Dispersion among what many perceive as \"safe havens.\" While gold and Bitcoin fell, government bonds rallied strongly as US 10-year yields declined by 36 bps, the largest monthly drop since 2023.\n#markets #economy #investing #investors #stocks #bonds #gold #bitcoin #oil",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWDp9fNWwAAOeBI.jpg?name=orig"
+   ],
+   "likes": 46,
+   "views": 11741,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2116943460565766477",
+   "handle": "jam_croissant",
+   "name": "Cem Karsan 🥐",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T17:20:26Z",
+   "url": "https://x.com/jam_croissant/status/2116943460565766477",
+   "text": "Incentives drive outcomes…\n\n& there is only one way out. \n\n🖨️ 💵;➕📈\n\nState run capitalism imminent.",
+   "quoted": {
+    "handle": "MilkRoadAI",
+    "text": "Chamath Palihapitiya just raised a pretty serious concern about the AI boom and I think this could become one of the biggest issues facing the bond market over the next few years.\n\nFor context, the largest AI companies have accumulated an estimated $340 billion to $400 billion in debt, and the amount of money they need to raise is only getting bigger. Companies like Google, Amazon, and Meta are spending hundreds of billions building data centers, purchasing GPUs, expanding power infrastructure, and developing AI models. The problem is that even some of the most profitable companies in the world are reaching a point where their operating cash flow isn't enough to comfortably finance all that spending.\n\n@chamath estimates that the additional financing these companies will need through the end of 2027 could equal roughly 30% of everything the US Treasury is expected to issue over that same period. Think about what that means. Some of the largest corporations in America are now competing with the U.S. government for capital from the same institutional investors, pension funds, insurance companies, and bond funds. If these companies continue flooding the bond market with hundreds of billions in new debt, investors may demand higher yields to absorb all that supply. That creates the potential for upward pressure on borrowing costs across the economy, including mortgages, corporate loans, and government debt. And higher yields would also put pressure on stock valuations, especially "
+   },
+   "media": [],
+   "likes": 64,
+   "views": 13123,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
    "id": "2116941445458547191",
    "handle": "AlderLaneEggs",
    "name": "Marc Cohodes",
@@ -443,8 +541,8 @@
     "text": "“AI has provided ‘zero payoff’ to corporate America outside of the technology sector, according to Apollo Global Management Chief Economist Torsten Slok.”\n\nWhat Slok and many others are missing is that the massive boosts in software creation and reasoning are elemental, and can be extended across all knowledge work (work in front of a computer) and then across any work that requires intelligence over 5-10 years, and eventually manual labor and dexterity as it’s the software that’s holding back robots from being useful.  Astra and upcoming robot foundation models will change this.\n\nMajor tech firms don’t make big bets on fads and herding-they’re just the first to see the productivity boosts (revenue per employee sharply up) and this will extend to the Fortune 1000 over 5-10 years."
    },
    "media": [],
-   "likes": 0,
-   "views": 509,
+   "likes": 14,
+   "views": 4429,
    "cashtags": [],
    "n_media": 0
   },
@@ -463,8 +561,8 @@
     "text": "Meta vs Google:  many investors still keep forgetting that search and ads are 75%+ of Google’s revenues and 90%+ of profits.  Cloud and TPUs can’t make up for that.  So as personal agents take off, AI models won’t save Google and Gemini in the consumers app has to deliver.  \n\nCurrently Muse is a much superior personal agent and Gemini is stuck and not great as an agent (while the Carbon model is good on Vertex, even paid consumer users don’t have app access to it in the Gemini app or G-suite - I’m an Ultra subscriber and still am not getting Argon or Carbon, and that’s a major deployment failure for a new model where you have 1-2 weeks at most to win over users).  And the problem is structural and incentive driven - the Cloud and the API teams want Carbon access so consumers haven’t gotten it and Muse keeps getting better and improving while the Gemini app is stuck.\n\nSo the early trends suggest Meta wins the consumer agent market and the golden goose at Google (search and ads) is much more vulnerable than many expect.  I hope they get better at deploying and @joshwoodward can get new models out to consumers before they stop going to the Gemini app and build a habit to go to Muse.\n\nhttps://www.cnbc.com/2026/11/01/ai-meta-ads-google-search.html"
    },
    "media": [],
-   "likes": 2,
-   "views": 628,
+   "likes": 63,
+   "views": 7454,
    "cashtags": [],
    "n_media": 0
   },
@@ -503,8 +601,8 @@
     "https://pbs.twimg.com/media/HWDfqZEbYAA3Ot6.jpg?name=orig",
     "https://pbs.twimg.com/media/HWDfqZLbwAA9AfV.jpg?name=orig"
    ],
-   "likes": 7,
-   "views": 3147,
+   "likes": 141,
+   "views": 19832,
    "cashtags": [],
    "n_media": 2
   },
@@ -523,7 +621,7 @@
    "quoted": null,
    "media": [],
    "likes": 0,
-   "views": 41,
+   "views": 78,
    "cashtags": [],
    "n_media": 0
   },
@@ -541,8 +639,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2116726324278493184/img/bNJV4cah0nFCllFt.jpg"
    ],
-   "likes": 24,
-   "views": 6372,
+   "likes": 76,
+   "views": 10242,
    "cashtags": [],
    "n_media": 1
   },
@@ -560,8 +658,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2112648573271601152/img/RW5cOtxcn_NbgbOG.jpg"
    ],
-   "likes": 765,
-   "views": 29597,
+   "likes": 1320,
+   "views": 48001,
    "cashtags": [],
    "n_media": 1
   },
@@ -579,8 +677,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWDSvRPWkAA9Enu.jpg?name=orig"
    ],
-   "likes": 61,
-   "views": 7028,
+   "likes": 111,
+   "views": 10149,
    "cashtags": [],
    "n_media": 1
   },
@@ -589,7 +687,7 @@
    "handle": "MarketRebels",
    "name": "Market Rebellion",
    "type": "repost",
-   "reposted_by": "jonnajarian",
+   "reposted_by": "petenajarian",
    "replying_to": null,
    "time_utc": "2026-11-01T15:49:28Z",
    "url": "https://x.com/MarketRebels/status/2116920568444285175",
@@ -598,8 +696,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2116920486466605056/img/pwM726XczIEK37Ni.jpg"
    ],
-   "likes": 7,
-   "views": 4454,
+   "likes": 8,
+   "views": 5967,
    "cashtags": [],
    "n_media": 1
   },
@@ -618,8 +716,8 @@
     "text": "@TheStalwart Reed grad here. I saw a NYT article last week saying enrollment in a Harvard humanities class was soaring, so maybe this is a post AI trend: self-cultivation and the desire to think for yourself. Maybe the LA colleges won’t just survive but thrive as people seek ways to be human."
    },
    "media": [],
-   "likes": 26,
-   "views": 9035,
+   "likes": 29,
+   "views": 10509,
    "cashtags": [],
    "n_media": 0
   },
@@ -641,7 +739,7 @@
    },
    "media": [],
    "likes": 0,
-   "views": 217,
+   "views": 299,
    "cashtags": [],
    "n_media": 0
   },
@@ -660,8 +758,8 @@
     "text": "@OddStats Can you run the same scan on ndx?"
    },
    "media": [],
-   "likes": 33,
-   "views": 5385,
+   "likes": 39,
+   "views": 6534,
    "cashtags": [],
    "n_media": 0
   },
@@ -682,8 +780,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWC-YWxXIAAl9Af.png?name=orig"
    ],
-   "likes": 406,
-   "views": 95398,
+   "likes": 530,
+   "views": 118366,
    "cashtags": [],
    "n_media": 1
   },
@@ -1223,6 +1321,102 @@
    "n_media": 4
   },
   {
+   "id": "2116960934056910860",
+   "handle": "steve_hanke",
+   "name": "Steve Hanke",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T18:29:52Z",
+   "url": "https://x.com/steve_hanke/status/2116960934056910860",
+   "text": "Last night, Ukrainian drones struck the NORSI oil refinery in Kstovo, Russia.\n\nThis is the THIRD Russian oil refinery struck in the last THREE DAYS. \n\nZelensky has put Trump's request for Ukraine to stop hitting Russian refineries IN THE TRASH.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2116755315433590785/img/fQnbonnYyiggoypn.jpg",
+    "https://pbs.twimg.com/amplify_video_thumb/2116755315471306752/img/Q2AtRjYUwubKPYA5.jpg"
+   ],
+   "likes": 5,
+   "views": 4002,
+   "cashtags": [],
+   "n_media": 2
+  },
+  {
+   "id": "2116960292856836186",
+   "handle": "BrianFeroldi",
+   "name": "Brian Feroldi",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T18:27:19Z",
+   "url": "https://x.com/BrianFeroldi/status/2116960292856836186",
+   "text": "EBITDA Ratios\n\nEBITDA is an acronym for Earnings Before Interest, Taxes, Depreciation & Amortization.\n\nHere are 5 key ratios to study:",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWD0Kn-WwAAZ2hs.jpg?name=orig"
+   ],
+   "likes": 4,
+   "views": 3902,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2116947211917402215",
+   "handle": "KobeissiLetter",
+   "name": "The Kobeissi Letter",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T17:35:20Z",
+   "url": "https://x.com/KobeissiLetter/status/2116947211917402215",
+   "text": "BREAKING: The US goods trade deficit widened by -$2.8 billion in September, or -2.1%, to -$134.9 billion, its widest gap since March 2025.\n\nImports rose +$8.1 billion, or +2.4%, to a record $344.2 billion.\n\nThis jump was led by a +7.5% MoM increase in capital goods, which include computers and accessories, semiconductors, and telecommunications equipment fueling the AI buildout.\n\nNow, the capital goods deficit has widened by -$54.3 billion YoY, accounting for more than the entire increase in the overall trade deficit.\n\nMeanwhile, US goods exports jumped +$5.3 billion in September, or +2.6%, to $209.2 billion, driven by a +12.8% increase in food shipments.\n\nThe US trade deficit is rapidly widening again.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HV4vmg8WYAEACJa.jpg?name=orig"
+   ],
+   "likes": 302,
+   "views": 76307,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2116946022442385767",
+   "handle": "TheTranscript_",
+   "name": "The Transcript",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "TheTranscript_"
+   },
+   "time_utc": "2026-11-01T17:30:37Z",
+   "url": "https://x.com/TheTranscript_/status/2116946022442385767",
+   "text": "Enjoyed this? \n\nSubscribe to our weekly newsletter here to get key quotes from earnings calls on Email: \n\nhttps://thetranscript.substack.com/subscribe",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 1286,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2116944886968848763",
+   "handle": "TheTranscript_",
+   "name": "The Transcript",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "TheTranscript_"
+   },
+   "time_utc": "2026-11-01T17:26:06Z",
+   "url": "https://x.com/TheTranscript_/status/2116944886968848763",
+   "text": "Enjoyed this? \n\nSubscribe to our weekly newsletter here to get key quotes from earnings calls on Email: \n\nhttps://thetranscript.substack.com/subscribe",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 1294,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
    "id": "2116941371013804066",
    "handle": "mcuban",
    "name": "Mark Cuban",
@@ -1275,8 +1469,8 @@
    "text": "Questions to ask yourself:\n\n1️⃣ Are most earnings translated into operating cash flow?\n2️⃣ Does the company have a positive free cash flow (operating cash flow – CAPEX)?\n3️⃣ Did the company manage to increase its cash position compared to last year?",
    "quoted": null,
    "media": [],
-   "likes": 1,
-   "views": 657,
+   "likes": 3,
+   "views": 2241,
    "cashtags": [],
    "n_media": 0
   },
@@ -1297,8 +1491,8 @@
     "text": "Where AI stands after Friday.\n\nThe 7th-largest sell-off in the last two years, after rallying over 500% since ChatGPT's November 2022 release.\n\nAlso note, the all-time high was October 6, less than a month ago."
    },
    "media": [],
-   "likes": 1,
-   "views": 198,
+   "likes": 2,
+   "views": 589,
    "cashtags": [],
    "n_media": 0
   },
@@ -1319,8 +1513,8 @@
     "text": "Where AI stands after Friday.\n\nThe 7th-largest sell-off in the last two years, after rallying over 500% since ChatGPT's November 2022 release.\n\nAlso note, the all-time high was October 6, less than a month ago."
    },
    "media": [],
-   "likes": 2,
-   "views": 220,
+   "likes": 5,
+   "views": 642,
    "cashtags": [],
    "n_media": 0
   },
@@ -1341,8 +1535,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWDbgMFXcAAJzEF.png?name=orig"
    ],
-   "likes": 41,
-   "views": 10421,
+   "likes": 106,
+   "views": 20476,
    "cashtags": [],
    "n_media": 1
   },
@@ -1360,8 +1554,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWDYZeMXcAE3z4R.jpg?name=orig"
    ],
-   "likes": 40,
-   "views": 4642,
+   "likes": 93,
+   "views": 7471,
    "cashtags": [],
    "n_media": 1
   },
@@ -1382,7 +1576,7 @@
     "https://pbs.twimg.com/media/HWDB_1MWUAABt4m.png?name=orig"
    ],
    "likes": 2,
-   "views": 524,
+   "views": 612,
    "cashtags": [],
    "n_media": 1
   },
