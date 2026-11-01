@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2116893172244590829": {
+      "en_summary": "$LMT I don't own or trade the defense names. They are all saying we are going back to war. Huge move and run here.",
+      "zh_summary": "$LMT我不擁有或交易國防名稱。他們都在說我們要重回戰爭。這裡有巨大的走勢和上漲。",
+      "tickers": ["LMT"],
+      "stance": "中性",
+      "stance_by_ticker": {"LMT": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2116892887942066190": {
+      "en_summary": "$FDX Not a bad report, issues... yes... but held and up. $FDX and $UPS are a barometer of the US economy.. we don't go to stores we have stuff shipped. If market doesn't dump I think 340 test is possible.",
+      "zh_summary": "$FDX報告不錯，有問題...是的...但守住並上漲。$FDX和$UPS是美國經濟的晴雨表..我們不去商店，而是有東西被運送。如果市場不暴跌，我認為測試340是可能的。",
+      "tickers": ["FDX", "UPS"],
+      "stance": "睇好",
+      "stance_by_ticker": {"FDX": "睇好", "UPS": "中性"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "利好",
+      "ticker_notes": {"FDX": "可能測試340"}
+    },
+    "2116892407790731598": {
+      "en_summary": "$CAT This and $BA are the main reason the $DIA wasn't up. Guidance.. ugh... margins.. tariffs... supply restraints.. too much. Into some support @ 522 area.",
+      "zh_summary": "$CAT這和$BA是$DIA沒有上漲的主要原因。指引..呃...利潤率..關稅...供應限制..太多了。進入522區域的一些支撐。",
+      "tickers": ["CAT", "BA", "DIA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"CAT": "睇淡", "BA": "睇淡", "DIA": "中性"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "利淡",
+      "ticker_notes": {"CAT": "進入522區域支撐"}
+    },
+    "2116941445458547191": {
+      "en_summary": "There is no law and order in Arctic Mexico. (Quoted post about Toronto Police incident and government response.)",
+      "zh_summary": "北極墨西哥沒有法律和秩序。（引用關於多倫多警察事件及政府回應的帖文。）",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116940739896619427": {
+      "en_summary": "Preach. (Quoted: AI has provided ‘zero payoff’ to corporate America outside of the technology sector, according to Apollo Global Management Chief Economist Torsten Slok. What Slok and many others are missing is tha...)",
+      "zh_summary": "說得對。（引用：根據Apollo Global Management首席經濟學家Torsten Slok，AI對科技行業以外的美國企業提供了「零回報」。Slok和許多其他人錯過的是...）",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    }
+  }
+}
