@@ -2,30 +2,30 @@
  "date": "2026-11-07",
  "date_kst": "2026-11-07",
  "frozen": false,
- "made_hkt": "2026-11-01 00:24",
- "from": "2026-10-26",
- "to": "2026-11-01",
+ "made_hkt": "2026-11-02 00:00",
+ "from": "2026-10-27",
+ "to": "2026-11-02",
  "themes": [
   {
    "theme": "rates",
-   "accounts": 22,
-   "n": 22,
-   "bull": 2,
-   "bear": 11,
-   "neu": 9,
-   "arrow": "flat",
+   "accounts": 19,
+   "n": 19,
+   "bull": 0,
+   "bear": 9,
+   "neu": 10,
+   "arrow": "dn",
    "quotes": {
     "zh": {
-     "acc": "garyblack00",
+     "acc": "TheTranscript_",
      "impact": "bear",
-     "text": "NDX (-3.7%) 今日因令人失望的 $INTC 及其他科技股業績，以及對龐大 AI 資本建設回報的不確定性而遭受重挫。主要驅動因素：$INTC 因 PC 銷量疲弱而指引第四季營收低於預期後下跌 30%；$GOOGL 和 $AMZN 本週業績弱於預期；科技巨頭持續增加資本支出；鷹派聯儲評論指向年底前再次加息。抵消因素：10 年期國債收益率從 9/30 的 5.3% 降至今日的 4.94%。",
-     "url": "https://x.com/garyblack00/status/2116220018018955433"
+     "text": "Travelers 首席財務官 Daniel Frey 表示，本季度利率大幅上升導致稅後淨未實現投資虧損從 6 月 30 日的 20 億美元增至 9 月 30 日的 64 億美元，並強調未實現虧損由利率驅動，而非信用品質問題。$TRV",
+     "url": "https://x.com/TheTranscript_/status/2116606137114169780"
     },
     "en": {
-     "acc": "garyblack00",
+     "acc": "TheTranscript_",
      "impact": "bear",
-     "text": "NDX (-3.7%) getting crushed today on disappointing $INTC and other tech earnings and uncertainty about returns on huge AI capital buildout. Key drivers: $INTC -30% after guiding weaker 4Q revs on sluggish PC volume; weaker earnings from $GOOGL and $AMZN; increased capex from tech heavyweights; hawkish Fed commentary pointing to another rate hike by year-end. Offsetting: 10-yr yields declined from 5.3% on 9/30 to 4.94% today.",
-     "url": "https://x.com/garyblack00/status/2116220018018955433"
+     "text": "Travelers CFO Daniel Frey stated that the significant increase in interest rates during the quarter increased the net unrealized investment loss from $2 billion after tax at June 30 to $6.4 billion after tax at September 30, emphasizing the unrealized loss is interest rate driven, not credit quality driven. $TRV",
+     "url": "https://x.com/TheTranscript_/status/2116606137114169780"
     }
    }
   },
@@ -33,31 +33,31 @@
    "theme": "inflation",
    "accounts": 8,
    "n": 8,
-   "bull": 1,
-   "bear": 6,
-   "neu": 1,
+   "bull": 0,
+   "bear": 5,
+   "neu": 3,
    "arrow": "dn",
    "quotes": {
     "zh": {
      "acc": "steve_hanke",
-     "impact": "bear",
-     "text": "Steve Hanke 指出埃及通脹率為 14.0%/年，是其長期目標 3-7%/年上限的兩倍，埃及鎊是垃圾貨幣，如石頭般下沉。",
-     "url": "https://x.com/steve_hanke/status/2116455135346114836"
+     "impact": "neu",
+     "text": "烏幹達10月通脹率為5.8%，高於其 5.0%/年的目標。貨幣供應量（M3）年增長18.4%，高於漢克的黃金增長率13.9%/年（與 5%通脹目標一致）。通脹故事就是貨幣供應故事。",
+     "url": "https://x.com/steve_hanke/status/2116837150461186550"
     },
     "en": {
      "acc": "steve_hanke",
-     "impact": "bear",
-     "text": "Steve Hanke notes Egypt’s inflation is 14.0%/yr, double the upper end of its long-term target of 3-7%/yr, and the Egyptian pound is a junk currency sinking like a stone.",
-     "url": "https://x.com/steve_hanke/status/2116455135346114836"
+     "impact": "neu",
+     "text": "Uganda's inflation came in at 5.8% in October, above its target of 5.0%/yr. Money supply (M3) is growing at 18.4%/yr, above Hanke's Golden Growth Rate of 13.9%/yr consistent with the 5% target. Inflation story is a money supply story.",
+     "url": "https://x.com/steve_hanke/status/2116837150461186550"
     }
    }
   },
   {
    "theme": "jobs",
-   "accounts": 9,
-   "n": 9,
+   "accounts": 8,
+   "n": 8,
    "bull": 1,
-   "bear": 4,
+   "bear": 3,
    "neu": 4,
    "arrow": "up",
    "quotes": {
@@ -79,68 +79,68 @@
    "theme": "growth",
    "accounts": 21,
    "n": 21,
-   "bull": 6,
+   "bull": 7,
    "bear": 10,
-   "neu": 5,
+   "neu": 4,
    "arrow": "dn",
    "quotes": {
     "zh": {
-     "acc": "Beth_Kindig",
+     "acc": "saxena_puru",
      "impact": "bull",
-     "text": "據《華爾街日報》，數據中心及相關人工智能基礎設施的累計投資預計從2025年到2032年將達到10.3萬億美元。$NVDA $GOOG $AMZN $MSFT",
-     "url": "https://x.com/Beth_Kindig/status/2116281740645843252"
+     "text": "JPM表示AI資本支出將從2027年的9000億美元上升至1.5-2萬億美元。當前週期並非類似於互聯網泡沫時期，當時投機性投資跑在需求前面。",
+     "url": "https://x.com/saxena_puru/status/2116807559059513619"
     },
     "en": {
-     "acc": "Beth_Kindig",
+     "acc": "saxena_puru",
      "impact": "bull",
-     "text": "Cumulative investment in data centers and related AI infrastructure is forecast to reach $10.3 trillion from 2025 to 2032, per the WSJ. $NVDA $GOOG $AMZN $MSFT",
-     "url": "https://x.com/Beth_Kindig/status/2116281740645843252"
+     "text": "JPM says AI capex to rise from $900B to $1.5-2T in '27. The current cycle is NOT analogous to the dot-com boom, when speculative investment ran ahead of demand.",
+     "url": "https://x.com/saxena_puru/status/2116807559059513619"
     }
    }
   },
   {
    "theme": "yields",
-   "accounts": 17,
-   "n": 17,
-   "bull": 4,
-   "bear": 9,
-   "neu": 4,
-   "arrow": "flat",
+   "accounts": 12,
+   "n": 12,
+   "bull": 2,
+   "bear": 7,
+   "neu": 3,
+   "arrow": "dn",
    "quotes": {
     "zh": {
-     "acc": "leadlagreport",
-     "impact": "neu",
-     "text": "當信用利差提供真實補償時風險偏好，否則風險規避。這就是JOJO的一句話總結。基於市場實際信號的戰術性信用輪動。",
-     "url": "https://x.com/leadlagreport/status/2116505474250023121"
+     "acc": "robin_j_brooks",
+     "impact": "bear",
+     "text": "是的。在新興市場你只會有貨幣貶值。歐元區通過這些TARGET2流量延遲了那次貶值。最簡單的方式是想象TARGET2歸零會發生什麼。這將要求ECB出售其所有主權債務持倉。債息將急昇，我們將陷入大危機。",
+     "url": "https://x.com/robin_j_brooks/status/2116859662867771478"
     },
     "en": {
-     "acc": "leadlagreport",
-     "impact": "neu",
-     "text": "Risk-on when credit spreads offer real compensation, risk-off when they do not. That is $JOJO in a sentence. Tactical credit rotation based on what the market is actually telling you.",
-     "url": "https://x.com/leadlagreport/status/2116505474250023121"
+     "acc": "robin_j_brooks",
+     "impact": "bear",
+     "text": "Yes. In EM you would have just had a currency devaluation. The Euro zone has delayed that devaluation with these TARGET2 flows. Easiest way to see this is to think what would happen if TARGET2 goes to zero. It would require the ECB to sell all its sovereign debt holdings. Yields would spike and we’d be in a big crisis.",
+     "url": "https://x.com/robin_j_brooks/status/2116859662867771478"
     }
    }
   },
   {
    "theme": "fx",
-   "accounts": 7,
-   "n": 7,
-   "bull": 3,
+   "accounts": 6,
+   "n": 5,
+   "bull": 2,
    "bear": 2,
-   "neu": 2,
-   "arrow": "up",
+   "neu": 1,
+   "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "dampedspring",
-     "impact": "neu",
-     "text": "想通了？你的意思是「是的，Andy，你在 2025 年 8 月是對的，當時你和 @LynAldenContact 以及 @_DannyKnowles 辯論穩定幣，你說增長將會緩慢，因為使用案例僅限於持有美元紙幣和硬幣的外國人，而整個作為美元現金新需求來源的想法只是希望和夢想，而且 $CRCL 是死錢」。是的，我是對的。",
-     "url": "https://x.com/dampedspring/status/2116289306566210024"
+     "acc": "robin_j_brooks",
+     "impact": "bear",
+     "text": "不。德國的TARGET2債權基本上是高債務外圍國家人為債息上限及貨幣大幅高估的對應物。這無法輕算消。若沒有這些債權，外圍貨幣已經大幅貶值，當然它們有一天仍可能這樣做…",
+     "url": "https://x.com/robin_j_brooks/status/2116857457540550699"
     },
     "en": {
-     "acc": "dampedspring",
-     "impact": "neu",
-     "text": "Came around? You mean 'yeah Andy you were right in August 2025 when you and @LynAldenContact and @_DannyKnowles debated stable coins and you said growth was going to be slow because the use case was limited to foreigners with USD currency bills and coins and the whole idea of it being a new source of demand for USD cash was hopes and dreams and also the $CRCL was dead money'. Yep I was right.",
-     "url": "https://x.com/dampedspring/status/2116289306566210024"
+     "acc": "robin_j_brooks",
+     "impact": "bear",
+     "text": "No. Germany’s TARGET2 claims are basically the counterpart to artificial yield caps and big currency overvaluations on the high-debt periphery. There is no netting this out. Without these claims, periphery currencies would have devalued massively and of course they still might one day…",
+     "url": "https://x.com/robin_j_brooks/status/2116857457540550699"
     }
    }
   },
@@ -148,118 +148,118 @@
    "theme": "energy",
    "accounts": 18,
    "n": 18,
-   "bull": 7,
-   "bear": 8,
-   "neu": 3,
-   "arrow": "flat",
+   "bull": 3,
+   "bear": 7,
+   "neu": 8,
+   "arrow": "dn",
    "quotes": {
     "zh": {
-     "acc": "robin_j_brooks",
+     "acc": "RaoulGMI",
      "impact": "bear",
-     "text": "Robin Brooks 展示各資產回報與油價的 30 日滾動相關性；對抗熱戰回歸的最佳對沖是做多美元尤其對新興市場，而標普 500、黃金和白銀易受影響。",
-     "url": "https://x.com/robin_j_brooks/status/2116460592567349483"
+     "text": "美元、利率和油價全都在上升…這三者都緊縮金融條件，從而帶動流動性，再帶動市場。加密貨幣需要這三者消散。中期選舉即將到來，特朗普希望油價、利率和美元下降。油價可能通過伊朗解決方案完成…這將重新點燃風險承受能力並把資本帶回市場。",
+     "url": "https://x.com/RaoulGMI/status/2116852542638264735"
     },
     "en": {
-     "acc": "robin_j_brooks",
+     "acc": "RaoulGMI",
      "impact": "bear",
-     "text": "Robin Brooks presents rolling 30-day correlations of various asset returns with oil prices; best hedge against a return to a 'hot' war is long the US Dollar especially versus EM, while the S&P 500, gold and silver are vulnerable.",
-     "url": "https://x.com/robin_j_brooks/status/2116460592567349483"
+     "text": "Dollar, rates and oil all going up... all three tighten financial conditions, which leads liquidity, which leads markets. Crypto needs those three to dissipate. Coming into the midterms Trump wants oil, rates and the dollar down. Oil probably gets done via an Iran resolution... Thats what reignites the ability to take risk and brings capital back into markets.",
+     "url": "https://x.com/RaoulGMI/status/2116852542638264735"
     }
    }
   },
   {
    "theme": "policy",
-   "accounts": 38,
-   "n": 38,
-   "bull": 8,
-   "bear": 15,
-   "neu": 15,
+   "accounts": 30,
+   "n": 30,
+   "bull": 5,
+   "bear": 9,
+   "neu": 16,
    "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "steve_hanke",
-     "impact": "bear",
-     "text": "關於關稅，Milton Friedman說：「我們稱關稅為保護措施。它確實保護。它很好地保護消費者免受一件事：低價格。」關稅人Donald Trump應該聽聽。",
-     "url": "https://x.com/steve_hanke/status/2116488603887104095"
+     "acc": "OptionsMike",
+     "impact": "neu",
+     "text": "$SPY出現大缺口後回落，現低於除了20日均線外的所有均線。下方有小缺口及更低缺口可帶來至200日均線。中期選舉、伊朗及更多盈利需關注。200日均線觸及可能是關鍵位。",
+     "url": "https://x.com/OptionsMike/status/2116876033236369679"
     },
     "en": {
-     "acc": "steve_hanke",
-     "impact": "bear",
-     "text": "On tariffs, Milton Friedman said: \"We call a tariff a protective measure. It does protect. It protects the consumer very well against one thing. It protects the consumer against low prices.\" Donald Trump, the TARIFF MAN, should take a listen.",
-     "url": "https://x.com/steve_hanke/status/2116488603887104095"
+     "acc": "OptionsMike",
+     "impact": "neu",
+     "text": "$SPY big gap and crap, under all the MA's now but the 20D. Small gap below and a gap lower that would bring us to the 200D. Midterms/Iran and more earnings on watch. 200D touch could be the spot.",
+     "url": "https://x.com/OptionsMike/status/2116876033236369679"
     }
    }
   },
   {
    "theme": "other",
-   "accounts": 36,
-   "n": 36,
-   "bull": 4,
-   "bear": 12,
-   "neu": 20,
-   "arrow": "dn",
+   "accounts": 37,
+   "n": 37,
+   "bull": 7,
+   "bear": 11,
+   "neu": 19,
+   "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "StockSavvyShay",
-     "impact": "neu",
-     "text": "儘管市場被指處於泡沫，主要公司的2027年盈利倍數仍屬適中：AMZN約23倍、MSFT約22倍、GOOGL約20倍、AVGO約19倍、META約19倍、TSM約18倍、NVDA約17倍、NFLX約16倍、DELL約15倍、ORCL約15倍、SNDK約4倍、MU約4倍、SKHY約4倍。",
-     "url": "https://x.com/StockSavvyShay/status/2116517758943056015"
+     "acc": "DougKass",
+     "impact": "bear",
+     "text": "Doug Kass在過去兩年在@TheStreetPro撰寫267篇《More Tales From Nvidia》專欄。表達與Roger McNamee相同的擔憂：社會未為AI負面後果做好準備；創造者回避責任；AI現實未達預期且企業客戶付費不足；大型語言模型限制與機率誤差即使擴張仍存在；大規模整合成本及債務融資的AI投資造成時間風險與通臀壓力，情況比互聯網時代更糟；只有少數AI公司可能成功，風險是數百億美元撥銷；$CRWV（空頭）與$ORCL（空頭）已處困境，資產負債表延長並有離岸融資。其他風險包括欺詐、網絡安全、技能下降與權力集中。並連結McNamee關於AI金融泡沫的文章。",
+     "url": "https://x.com/DougKass/status/2116869131358065063"
     },
     "en": {
-     "acc": "StockSavvyShay",
-     "impact": "neu",
-     "text": "Despite claims the market is in a bubble, 2027 earnings multiples for major companies remain moderate: $AMZN ~23x, $MSFT ~22x, $GOOGL ~20x, $AVGO ~19x, $META ~19x, $TSM ~18x, $NVDA ~17x, $NFLX ~16x, $DELL ~15x, $ORCL ~15x, $SNDK ~4x, $MU ~4x, $SKHY ~4x.",
-     "url": "https://x.com/StockSavvyShay/status/2116517758943056015"
+     "acc": "DougKass",
+     "impact": "bear",
+     "text": "Doug Kass has written 267 columns (More Tales From Nvidia) on @TheStreetPro over two years. Expresses concerns shared with Roger McNamee: society ill-prepared for AI risks; creators evade accountability; AI falls short of expectations with few paying enterprise customers; LLM limitations and errors persist despite scaling; massive integration costs and debt-financed AI investment create timing risks and inflationary pressure worse than internet era; only few AI firms likely succeed risking hundreds of billions in writeoffs; $CRWV (short) and $ORCL (short) already distressed with extended balance sheets and offshore financing. Other risks include fraud, cybersecurity, deskilling and power concentration. Links McNamee article on AI financial bubble.",
+     "url": "https://x.com/DougKass/status/2116869131358065063"
     }
    }
   }
  ],
  "top": [
-  "policy",
   "other",
-  "rates"
+  "policy",
+  "growth"
  ],
  "accounts": 201,
- "range": "10/26–11/1",
+ "range": "10/27–11/2",
  "images": {
-  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-07-0024",
-  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-07-0024"
+  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-07-0000",
+  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-07-0000"
  },
  "stories": {
-  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-07-0024",
-  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-07-0024"
+  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-07-0000",
+  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-07-0000"
  },
  "posts": {
   "zh": {
-   "instagram": "本週宏觀：最多人講「關稅／政策／地緣政治」（利好 8・利空 15）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（10/26–11/1）\n\n1. 關稅／政策／地緣政治：利好 8・利空 15・中性 15（同上週差不多）\n@steve_hanke：「關於關稅，Milton Friedman說：「我們稱關稅為保護措施。它確實保護。它很好地保護消費者免受一件事：低價格。」關稅人Donald Trump應該聽聽。」\n\n2. 其他：利好 4・利空 12・中性 20（比上週轉差 ▼）\n@StockSavvyShay：「儘管市場被指處於泡沫，主要公司的2027年盈利倍數仍屬適中：AMZN約23倍、MSFT約22倍、GOOGL約20倍、AVGO約19倍、META約19倍、TSM約18倍、NVDA約…」\n\n3. 利率／聯儲局：利好 2・利空 11・中性 9（同上週差不多）\n@garyblack00：「NDX (-3.7%) 今天因令人失望的 $INTC 及其他科技股業績，以及對龐大 AI 資本建設回報的不確定性而遭受重挫。主要驅動因素：$INTC 因 PC 銷量疲弱而指引第四…」\n\n這週哪個宏觀消息最影響你的判斷？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #INTC",
-   "threads": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（10/26–11/1）\n\n1. 關稅／政策／地緣政治：利好 8・利空 15・中性 15（同上週差不多）\n2. 其他：利好 4・利空 12・中性 20（比上週轉差 ▼）\n3. 利率／聯儲局：利好 2・利空 11・中性 9（同上週差不多）\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
-   "x": "這星期大家最常聊的宏觀話題\n\n關稅／政策／地緣政治 8/15/15\n其他 4/12/20\n利率／聯儲局 2/11/9\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "instagram": "本週宏觀：最多人講「其他」（利好 7・利空 11）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（10/27–11/2）\n\n1. 其他：利好 7・利空 11・中性 19（同上週差不多）\n@DougKass：「Doug Kass在過去兩年在@TheStreetPro撰寫267篇《More Tales From Nvidia》專欄。表達與Roger McNamee相同的擔憂：社會未為AI…」\n\n2. 關稅／政策／地緣政治：利好 5・利空 9・中性 16（同上週差不多）\n@OptionsMike：「$SPY出現大缺口後回落，現低於除了20日均線外的所有均線。下方有小缺口及更低缺口可帶來至200日均線。中期選舉、伊朗及更多盈利需關注。200日均線觸及可能是關鍵位。」\n\n3. 經濟增長／衰退：利好 7・利空 10・中性 4（比上週轉差 ▼）\n@saxena_puru：「JPM表示AI資本支出將從2027年的9000億美元上升至1.5-2萬億美元。當前週期並非類似於互聯網泡沫時期，當時投機性投資跑在需求前面。」\n\n你覺得下週市場最該留意哪個數據？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "threads": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（10/27–11/2）\n\n1. 其他：利好 7・利空 11・中性 19（同上週差不多）\n2. 關稅／政策／地緣政治：利好 5・利空 9・中性 16（同上週差不多）\n3. 經濟增長／衰退：利好 7・利空 10・中性 4（比上週轉差 ▼）\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "x": "這星期大家最常聊的宏觀話題\n\n其他 7/11/19\n關稅／政策／地緣政治 5/9/16\n經濟增長／衰退 7/10/4\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "reddit": {
-    "title": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（10/26–11/1）",
-    "body": "1. 關稅／政策／地緣政治：利好 8・利空 15・中性 15（同上週差不多）\n@steve_hanke：「關於關稅，Milton Friedman說：「我們稱關稅為保護措施。它確實保護。它很好地保護消費者免受一件事：低價格。」關稅人Donald Trump應該聽聽。」\n\n2. 其他：利好 4・利空 12・中性 20（比上週轉差 ▼）\n@StockSavvyShay：「儘管市場被指處於泡沫，主要公司的2027年盈利倍數仍屬適中：AMZN約23倍、MSFT約22倍、GOOGL約20倍、AVGO約19倍、META約19倍、TSM約18倍、NVDA約…」\n\n3. 利率／聯儲局：利好 2・利空 11・中性 9（同上週差不多）\n@garyblack00：「NDX (-3.7%) 今天因令人失望的 $INTC 及其他科技股業績，以及對龐大 AI 資本建設回報的不確定性而遭受重挫。主要驅動因素：$INTC 因 PC 銷量疲弱而指引第四…」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
+    "title": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（10/27–11/2）",
+    "body": "1. 其他：利好 7・利空 11・中性 19（同上週差不多）\n@DougKass：「Doug Kass在過去兩年在@TheStreetPro撰寫267篇《More Tales From Nvidia》專欄。表達與Roger McNamee相同的擔憂：社會未為AI…」\n\n2. 關稅／政策／地緣政治：利好 5・利空 9・中性 16（同上週差不多）\n@OptionsMike：「$SPY出現大缺口後回落，現低於除了20日均線外的所有均線。下方有小缺口及更低缺口可帶來至200日均線。中期選舉、伊朗及更多盈利需關注。200日均線觸及可能是關鍵位。」\n\n3. 經濟增長／衰退：利好 7・利空 10・中性 4（比上週轉差 ▼）\n@saxena_puru：「JPM表示AI資本支出將從2027年的9000億美元上升至1.5-2萬億美元。當前週期並非類似於互聯網泡沫時期，當時投機性投資跑在需求前面。」\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
    },
-   "facebook": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（10/26–11/1）\n\n1. 關稅／政策／地緣政治：利好 8・利空 15・中性 15（同上週差不多）\n@steve_hanke：「關於關稅，Milton Friedman說：「我們稱關稅為保護措施。它確實保護。它很好地保護消費者免受一件事：低價格。」關稅人Donald Trump應該聽聽。」\n\n2. 其他：利好 4・利空 12・中性 20（比上週轉差 ▼）\n@StockSavvyShay：「儘管市場被指處於泡沫，主要公司的2027年盈利倍數仍屬適中：AMZN約23倍、MSFT約22倍、GOOGL約20倍、AVGO約19倍、META約19倍、TSM約18倍、NVDA約…」\n\n3. 利率／聯儲局：利好 2・利空 11・中性 9（同上週差不多）\n@garyblack00：「NDX (-3.7%) 今天因令人失望的 $INTC 及其他科技股業績，以及對龐大 AI 資本建設回報的不確定性而遭受重挫。主要驅動因素：$INTC 因 PC 銷量疲弱而指引第四…」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "facebook": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（10/27–11/2）\n\n1. 其他：利好 7・利空 11・中性 19（同上週差不多）\n@DougKass：「Doug Kass在過去兩年在@TheStreetPro撰寫267篇《More Tales From Nvidia》專欄。表達與Roger McNamee相同的擔憂：社會未為AI…」\n\n2. 關稅／政策／地緣政治：利好 5・利空 9・中性 16（同上週差不多）\n@OptionsMike：「$SPY出現大缺口後回落，現低於除了20日均線外的所有均線。下方有小缺口及更低缺口可帶來至200日均線。中期選舉、伊朗及更多盈利需關注。200日均線觸及可能是關鍵位。」\n\n3. 經濟增長／衰退：利好 7・利空 10・中性 4（比上週轉差 ▼）\n@saxena_puru：「JPM表示AI資本支出將從2027年的9000億美元上升至1.5-2萬億美元。當前週期並非類似於互聯網泡沫時期，當時投機性投資跑在需求前面。」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "story": "#美股"
   },
   "en": {
    "instagram": "",
    "threads": "",
-   "x": "What X talked about in macro this week\n\nTariffs / policy / geopolitics 8/15/15\nOther 4/12/20\nRates / Fed 2/11/9\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
+   "x": "What X talked about in macro this week\n\nOther 7/11/19\nTariffs / policy / geopolitics 5/9/16\nGrowth / recession 7/10/4\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
    "reddit": {
-    "title": "The macro topics the 201 X accounts we follow talked about most this week (10/26–11/1)",
-    "body": "1. Tariffs / policy / geopolitics: bullish 8 · bearish 15 · neutral 15 (about the same as last week)\n@steve_hanke: “On tariffs, Milton Friedman said: \"We call a tariff a protective measure. It does protect. It protects the consumer very well against one thing. It p…”\n\n2. Other: bullish 4 · bearish 12 · neutral 20 (worse than last week ▼)\n@StockSavvyShay: “Despite claims the market is in a bubble, 2027 earnings multiples for major companies remain moderate: $AMZN ~23x, $MSFT ~22x, $GOOGL ~20x, $AVGO ~19…”\n\n3. Rates / Fed: bullish 2 · bearish 11 · neutral 9 (about the same as last week)\n@garyblack00: “NDX (-3.7%) getting crushed today on disappointing $INTC and other tech earnings and uncertainty about returns on huge AI capital buildout. Key drive…”\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro"
+    "title": "The macro topics the 201 X accounts we follow talked about most this week (10/27–11/2)",
+    "body": "1. Other: bullish 7 · bearish 11 · neutral 19 (about the same as last week)\n@DougKass: “Doug Kass has written 267 columns (More Tales From Nvidia) on @TheStreetPro over two years. Expresses concerns shared with Roger McNamee: society ill…”\n\n2. Tariffs / policy / geopolitics: bullish 5 · bearish 9 · neutral 16 (about the same as last week)\n@OptionsMike: “$SPY big gap and crap, under all the MA's now but the 20D. Small gap below and a gap lower that would bring us to the 200D. Midterms/Iran and more ea…”\n\n3. Growth / recession: bullish 7 · bearish 10 · neutral 4 (worse than last week ▼)\n@saxena_puru: “JPM says AI capex to rise from $900B to $1.5-2T in '27. The current cycle is NOT analogous to the dot-com boom, when speculative investment ran ahead…”\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro"
    },
-   "facebook": "The macro topics the 201 X accounts we follow talked about most this week (10/26–11/1)\n\n1. Tariffs / policy / geopolitics: bullish 8 · bearish 15 · neutral 15 (about the same as last week)\n@steve_hanke: “On tariffs, Milton Friedman said: \"We call a tariff a protective measure. It does protect. It protects the consumer very well against one thing. It p…”\n\n2. Other: bullish 4 · bearish 12 · neutral 20 (worse than last week ▼)\n@StockSavvyShay: “Despite claims the market is in a bubble, 2027 earnings multiples for major companies remain moderate: $AMZN ~23x, $MSFT ~22x, $GOOGL ~20x, $AVGO ~19…”\n\n3. Rates / Fed: bullish 2 · bearish 11 · neutral 9 (about the same as last week)\n@garyblack00: “NDX (-3.7%) getting crushed today on disappointing $INTC and other tech earnings and uncertainty about returns on huge AI capital buildout. Key drive…”\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro",
+   "facebook": "The macro topics the 201 X accounts we follow talked about most this week (10/27–11/2)\n\n1. Other: bullish 7 · bearish 11 · neutral 19 (about the same as last week)\n@DougKass: “Doug Kass has written 267 columns (More Tales From Nvidia) on @TheStreetPro over two years. Expresses concerns shared with Roger McNamee: society ill…”\n\n2. Tariffs / policy / geopolitics: bullish 5 · bearish 9 · neutral 16 (about the same as last week)\n@OptionsMike: “$SPY big gap and crap, under all the MA's now but the 20D. Small gap below and a gap lower that would bring us to the 200D. Midterms/Iran and more ea…”\n\n3. Growth / recession: bullish 7 · bearish 10 · neutral 4 (worse than last week ▼)\n@saxena_puru: “JPM says AI capex to rise from $900B to $1.5-2T in '27. The current cycle is NOT analogous to the dot-com boom, when speculative investment ran ahead…”\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro",
    "story": ""
   }
  },
  "ig_images": {
   "zh": [
-   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-07-0024",
+   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-07-0000",
    "https://thecrowdtape.com/og/cta/ig-cta-zh.jpg"
   ],
   "en": [
-   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-07-0024",
+   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-07-0000",
    "https://thecrowdtape.com/og/cta/ig-cta-en.jpg"
   ]
  },
@@ -269,7 +269,7 @@
   "video_path": null,
   "video_expected_path": "assets/reels/2026-11-07-macro-week.mp4",
   "caption": {
-   "zh": "本週宏觀：最多人講「關稅／政策／地緣政治」（利好 8・利空 15）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（10/26–11/1）\n\n1. 關稅／政策／地緣政治：利好 8・利空 15・中性 15（同上週差不多）\n@steve_hanke：「關於關稅，Milton Friedman說：「我們稱關稅為保護措施。它確實保護。它很好地保護消費者免受一件事：低價格。」關稅人Donald Trump應該聽聽。」\n\n2. 其他：利好 4・利空 12・中性 20（比上週轉差 ▼）\n@StockSavvyShay：「儘管市場被指處於泡沫，主要公司的2027年盈利倍數仍屬適中：AMZN約23倍、MSFT約22倍、GOOGL約20倍、AVGO約19倍、META約19倍、TSM約18倍、NVDA約…」\n\n3. 利率／聯儲局：利好 2・利空 11・中性 9（同上週差不多）\n@garyblack00：「NDX (-3.7%) 今天因令人失望的 $INTC 及其他科技股業績，以及對龐大 AI 資本建設回報的不確定性而遭受重挫。主要驅動因素：$INTC 因 PC 銷量疲弱而指引第四…」\n\n這週哪個宏觀消息最影響你的判斷？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #INTC",
+   "zh": "本週宏觀：最多人講「其他」（利好 7・利空 11）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（10/27–11/2）\n\n1. 其他：利好 7・利空 11・中性 19（同上週差不多）\n@DougKass：「Doug Kass在過去兩年在@TheStreetPro撰寫267篇《More Tales From Nvidia》專欄。表達與Roger McNamee相同的擔憂：社會未為AI…」\n\n2. 關稅／政策／地緣政治：利好 5・利空 9・中性 16（同上週差不多）\n@OptionsMike：「$SPY出現大缺口後回落，現低於除了20日均線外的所有均線。下方有小缺口及更低缺口可帶來至200日均線。中期選舉、伊朗及更多盈利需關注。200日均線觸及可能是關鍵位。」\n\n3. 經濟增長／衰退：利好 7・利空 10・中性 4（比上週轉差 ▼）\n@saxena_puru：「JPM表示AI資本支出將從2027年的9000億美元上升至1.5-2萬億美元。當前週期並非類似於互聯網泡沫時期，當時投機性投資跑在需求前面。」\n\n你覺得下週市場最該留意哪個數據？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "en": ""
   }
  },

@@ -2,6 +2,99 @@
  "note": "已抓取但未經 Grok 分析嘅帖，只收股票同宏觀帖（閒聊帖唔寫），有股票代號嘅排最前，等超過 24 個鐘就唔再等。",
  "posts": [
   {
+   "id": "2116915670281605388",
+   "handle": "TrendSpider",
+   "name": "TrendSpider",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T15:30:00Z",
+   "url": "https://x.com/TrendSpider/status/2116915670281605388",
+   "text": "Amazon $AMZN testing its all-time trendline 👀\n\nThe last 3 times it was tested? \n2001, 2008 and 2022...",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HV_FD-YXAAAjeRF.jpg?name=orig"
+   ],
+   "likes": 21,
+   "views": 6403,
+   "cashtags": [
+    "AMZN"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2116908125177676156",
+   "handle": "StockSavvyShay",
+   "name": "Shay Boloor",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T15:00:01Z",
+   "url": "https://x.com/StockSavvyShay/status/2116908125177676156",
+   "text": "Annual AI data center capacity additions are projected to quadruple to 104GW by 2030: \n\n• $NVDA GPUs ~50GW\n• $GOOGL TPUs ~21GW\n• $AMZN Trainium ~15GW\n• $AMD GPUs ~9GW\n\nWhat's even more interesting is that rack density is projected to more than triple to ~285kW by 2030 forcing a major shift toward liquid cooling and redesigned power distribution that could make infrastructure readiness a massive gating factor for how fast AI can scale: \n\n• $CLS builds high-density racks & is engineering for 500kW designs\n• $VRT coolant distribution units, liquid cooling & fluid services plus factory-built systems like SmartIT\n• $GEV high-voltage gear & transformers through Prolec GE plus its Trench deal\n• $FPS switchgear, transformers, power distribution units & eHouses needed to bring new capacity online\n• $ON silicon carbide for 800V DC plus reported Ferric acquisition talks for power at the chip\n• $NVTS gallium nitride & silicon carbide for 800V DC racks",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWC_eGsbMAAUqC7.png?name=orig"
+   ],
+   "likes": 87,
+   "views": 16407,
+   "cashtags": [
+    "AMD",
+    "AMZN",
+    "CLS",
+    "FPS",
+    "GEV",
+    "GOOGL",
+    "NVDA",
+    "NVTS",
+    "ON",
+    "VRT"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2116904775589789949",
+   "handle": "OptionsMike",
+   "name": "Options Mike",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T14:46:43Z",
+   "url": "https://x.com/OptionsMike/status/2116904775589789949",
+   "text": "$TSLA held in well Friday. \n\nClosed on the 8D above all the MA's. \n\n410 on watch if we bounce. Stronger name",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWDBqqrX0AA5cYn.jpg?name=orig"
+   ],
+   "likes": 13,
+   "views": 1603,
+   "cashtags": [
+    "TSLA"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2116904120720167321",
+   "handle": "OptionsMike",
+   "name": "Options Mike",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T14:44:07Z",
+   "url": "https://x.com/OptionsMike/status/2116904120720167321",
+   "text": "$AMZN there was a lot to unpack in this report. \n\nRetail side of the house missed. AWS beat. \n\nGuidance, AWS 2027 40% and again in 2028 huge.\n\nCapex \"we wish we could spread this over 25 years, but this is a once in a lifetime opportunity\" \n\nBig bounce back. Watch 225 area",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWDBEn5XcAApgT9.jpg?name=orig"
+   ],
+   "likes": 8,
+   "views": 1645,
+   "cashtags": [
+    "AMZN"
+   ],
+   "n_media": 1
+  },
+  {
    "id": "2116903518321971234",
    "handle": "OptionsMike",
    "name": "Options Mike",
@@ -15,12 +108,34 @@
    "media": [
     "https://pbs.twimg.com/media/HWDAhfJWIAAYWNo.jpg?name=orig"
    ],
-   "likes": 1,
-   "views": 145,
+   "likes": 10,
+   "views": 1612,
    "cashtags": [
     "GOOGL"
    ],
    "n_media": 1
+  },
+  {
+   "id": "2116903356270604738",
+   "handle": "munster_gene",
+   "name": "Gene Munster",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T14:41:04Z",
+   "url": "https://x.com/munster_gene/status/2116903356270604738",
+   "text": "A growing threat to $AMZN’s retail business is shopping bots. One answer is for them to kill the golden goose, embrace the ad model, and connect buyers directly to all retailers and brands not just the ones on the platform.\n\nGood thing they’re now an AI infrastructure company.\n\nWSJ wrote today on the topic:\n\nhttps://www.wsj.com/tech/the-shopping-bots-are-coming-for-amazon-701caa57?st=bDmAan",
+   "quoted": {
+    "handle": "munster_gene",
+    "text": "$AMZN: Google results were a warning sign to Amazon investors. \n\nTonight the Street will likely discount favorable Sep results and an inline Dec guide because the long-term (starting second half of 2027) risk that personalized bots pose to the business is increasingly real.  \n\nSome of that is getting priced in today, with shares down 3.5% going into the print vs. Nasdaq down 1.5%.\n\nPersonalized bots will make it easy to find just what you’re looking for, making them a logical starting point for anything we buy.\n\nAmazon wins for three reasons: 1. Finding what you want, 2. Speed, 3. Trust. The first will increasingly be under attack."
+   },
+   "media": [],
+   "likes": 67,
+   "views": 9247,
+   "cashtags": [
+    "AMZN’S"
+   ],
+   "n_media": 0
   },
   {
    "id": "2116901358129279131",
@@ -36,8 +151,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWC-kLfXEAAgkyi.jpg?name=orig"
    ],
-   "likes": 0,
-   "views": 784,
+   "likes": 2,
+   "views": 1695,
    "cashtags": [
     "SNDK"
    ],
@@ -57,8 +172,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWC-QKUXkAAtwOL.jpg?name=orig"
    ],
-   "likes": 2,
-   "views": 800,
+   "likes": 9,
+   "views": 1748,
    "cashtags": [
     "MU"
    ],
@@ -78,8 +193,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWC-AqZXgAAyw5W.jpg?name=orig"
    ],
-   "likes": 1,
-   "views": 789,
+   "likes": 3,
+   "views": 1637,
    "cashtags": [
     "LITE",
     "MRVL"
@@ -98,8 +213,8 @@
    "text": "Visa and Mastercard see agentic commerce as a significant long-term opportunity, although current transaction volumes remain very small.\n\n$V Visa CEO: \"It's still very early. So we do have conviction that the opportunity is significant. We do have conviction that there's real incremental opportunities. But as we think about the next 4 quarters in '27, it all remains very small in the big scheme of the enormous size of our business.\"\n\n$MA Mastercard CEO: \"It is still early days, and the numbers are not yet significant in the grand scheme. But as the AI agentic assistants have emerged, agentic transactions are ramping up at impressive weekly growth rates. We're now seeing the early stages of consumer adoption.\"",
    "quoted": null,
    "media": [],
-   "likes": 4,
-   "views": 1456,
+   "likes": 14,
+   "views": 3194,
    "cashtags": [
     "MA",
     "V"
@@ -120,8 +235,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWC9WgxWIAA6xPb.jpg?name=orig"
    ],
-   "likes": 1,
-   "views": 861,
+   "likes": 7,
+   "views": 1645,
    "cashtags": [
     "NVDA"
    ],
@@ -141,8 +256,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWC9fxUXYAAqt90.jpg?name=orig"
    ],
-   "likes": 170,
-   "views": 37416,
+   "likes": 650,
+   "views": 88928,
    "cashtags": [
     "AMZN",
     "GOOGL",
@@ -165,8 +280,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWC8uUlWcAAEBZJ.jpg?name=orig"
    ],
-   "likes": 1,
-   "views": 1026,
+   "likes": 5,
+   "views": 1800,
    "cashtags": [
     "INTC"
    ],
@@ -186,8 +301,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWC6N6vbkAAff3X.jpg?name=orig"
    ],
-   "likes": 72,
-   "views": 12030,
+   "likes": 174,
+   "views": 23448,
    "cashtags": [
     "AMZN",
     "GOOGL",
@@ -209,8 +324,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWC7yfMXwAAG294.jpg?name=orig"
    ],
-   "likes": 2,
-   "views": 1168,
+   "likes": 4,
+   "views": 1781,
    "cashtags": [
     "DELL"
    ],
@@ -230,8 +345,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWC7esTXwAEGu3g.jpg?name=orig"
    ],
-   "likes": 2,
-   "views": 1034,
+   "likes": 5,
+   "views": 1646,
    "cashtags": [
     "CRWV"
    ],
@@ -251,8 +366,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWC7BzeX0AAitnP.jpg?name=orig"
    ],
-   "likes": 2,
-   "views": 1185,
+   "likes": 6,
+   "views": 1869,
    "cashtags": [
     "SMH"
    ],
@@ -272,8 +387,8 @@
    "media": [
     "https://pbs.twimg.com/media/HV_KrvGX0AAQIxA.jpg?name=orig"
    ],
-   "likes": 50,
-   "views": 13652,
+   "likes": 128,
+   "views": 26981,
    "cashtags": [
     "MCD"
    ],
@@ -293,8 +408,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWC6WTTW4AAn4JQ.jpg?name=orig"
    ],
-   "likes": 0,
-   "views": 1097,
+   "likes": 1,
+   "views": 1612,
    "cashtags": [
     "COST"
    ],
@@ -356,8 +471,8 @@
    "text": "$PLTR 157% net retention means its existing customers are spending 57% more than they did a year ago which shows how much growth Palantir can generate without adding a single new customer.",
    "quoted": null,
    "media": [],
-   "likes": 19,
-   "views": 4541,
+   "likes": 24,
+   "views": 7150,
    "cashtags": [
     "PLTR"
    ],
@@ -377,8 +492,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWC2K8_b0AAbJ3d.jpg?name=orig"
    ],
-   "likes": 87,
-   "views": 16926,
+   "likes": 162,
+   "views": 24857,
    "cashtags": [
     "DDOG",
     "DT",
@@ -432,8 +547,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWC3HudW8AIRv3J.jpg?name=orig"
    ],
-   "likes": 0,
-   "views": 1229,
+   "likes": 2,
+   "views": 1814,
    "cashtags": [
     "LMT"
    ],
@@ -540,8 +655,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWC0RLwWoAAKZIV.jpg?name=orig"
    ],
-   "likes": 2,
-   "views": 1471,
+   "likes": 3,
+   "views": 1857,
    "cashtags": [
     "NOW"
    ],
@@ -561,8 +676,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWCzxZ0WoAAbE0m.jpg?name=orig"
    ],
-   "likes": 0,
-   "views": 1474,
+   "likes": 1,
+   "views": 1807,
    "cashtags": [
     "ORCL"
    ],
@@ -582,8 +697,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWCygm5aIAAVey5.png?name=orig"
    ],
-   "likes": 202,
-   "views": 21065,
+   "likes": 274,
+   "views": 28269,
    "cashtags": [
     "AMD",
     "INTC",
@@ -625,8 +740,8 @@
    "text": "Implied moves for tomorrow:\n\n$SPY +/- 7.57 points or about .99% either way\n\n$QQQ +/- 10.63 points or about 1.53% either way\n\nAll eyes on Apple.",
    "quoted": null,
    "media": [],
-   "likes": 230,
-   "views": 22188,
+   "likes": 337,
+   "views": 31722,
    "cashtags": [
     "QQQ",
     "SPY"
@@ -668,8 +783,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWCyAP5XsAAOAXi.png?name=orig"
    ],
-   "likes": 8,
-   "views": 4094,
+   "likes": 11,
+   "views": 5135,
    "cashtags": [
     "AXP",
     "COST",
@@ -760,8 +875,8 @@
    "text": "Weekend IG Indicators:\n\n$QQQ +.42%\n\nTake with grain of salt.",
    "quoted": null,
    "media": [],
-   "likes": 164,
-   "views": 25224,
+   "likes": 210,
+   "views": 33123,
    "cashtags": [
     "QQQ"
    ],
@@ -779,8 +894,8 @@
    "text": "Key Events This Week:\n\n1. October ISM Manufacturing PMI data - Monday\n\n2. Apple, $AAPL, and Palantir, $PLTR, Report Earnings - Monday\n\n3. US Midterm Elections - Tuesday\n\n4. September JOLTS Job Openings data - Tuesday\n\n5. AMD, $AMD, and SMCI, $SMCI, Report Earnings - Tuesday\n\n6. October ADP Nonfarm Employment Change - Wednesday\n\n7. October ISM Non-Manufacturing PMI data - Wednesday\n\n8. October Jobs Report - Friday\n\n9. November MI Inflation Expectations and Consumer Sentiment data - Friday\n\n10. ~20% of S&P 500 Companies Report Earnings This Week\n\n11. Total of 5 Fed Speaker Events This Week\n\nBuckle up for a huge week ahead.",
    "quoted": null,
    "media": [],
-   "likes": 632,
-   "views": 96555,
+   "likes": 896,
+   "views": 128334,
    "cashtags": [
     "AAPL",
     "AMD",
@@ -870,7 +985,7 @@
     "https://pbs.twimg.com/media/HWCutDuWQAA7daT.jpg?name=orig"
    ],
    "likes": 2,
-   "views": 1599,
+   "views": 1871,
    "cashtags": [
     "BE"
    ],
@@ -1071,27 +1186,6 @@
    "n_media": 0
   },
   {
-   "id": "2116876561626562851",
-   "handle": "OptionsMike",
-   "name": "Options Mike",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T12:54:36Z",
-   "url": "https://x.com/OptionsMike/status/2116876561626562851",
-   "text": "$QQQ Flirty with correction territory briefly on Friday, down over 10% before a bounce. \n\n200D close, but that big gap fill lower might make more sense.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HWCn_4rWIAAwz8m.jpg?name=orig"
-   ],
-   "likes": 6,
-   "views": 1944,
-   "cashtags": [
-    "QQQ"
-   ],
-   "n_media": 1
-  },
-  {
    "id": "2116876411185373242",
    "handle": "StockSavvyShay",
    "name": "Shay Boloor",
@@ -1119,94 +1213,6 @@
     "SPCX"
    ],
    "n_media": 1
-  },
-  {
-   "id": "2116876033236369679",
-   "handle": "OptionsMike",
-   "name": "Options Mike",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T12:52:30Z",
-   "url": "https://x.com/OptionsMike/status/2116876033236369679",
-   "text": "$SPY  Big gap and crap, under all the MA's now but the 20D. \n\nSmall gap below, and there gap lower that world bring us to the 200D. \n\nMidterms/Iran and more earnings on watch. \n\n200D touch could be the spot",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HWCmJ-OXsAAwCmY.jpg?name=orig"
-   ],
-   "likes": 17,
-   "views": 2438,
-   "cashtags": [
-    "SPY"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2116875785013530650",
-   "handle": "OptionsMike",
-   "name": "Options Mike",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T12:51:31Z",
-   "url": "https://x.com/OptionsMike/status/2116875785013530650",
-   "text": "Another big earnings week\n\n$AAPL $PLTR $AMD $APP $QCOM $SHOP $MRNA $SMCI $UBER $LITE $COHR $NVTS $ANET $FSLY $AAOI $BMRN $NET $OKLO $TEM $PFE $CAVA $TEAM $ABNB $DDOG $U $ALAB $ARM",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HWCm_0nXAAA1RH7.jpg?name=orig"
-   ],
-   "likes": 3,
-   "views": 1840,
-   "cashtags": [
-    "AAOI",
-    "AAPL",
-    "ABNB",
-    "ALAB",
-    "AMD",
-    "ANET",
-    "APP",
-    "ARM",
-    "BMRN",
-    "CAVA",
-    "COHR",
-    "DDOG",
-    "FSLY",
-    "LITE",
-    "MRNA",
-    "NET",
-    "NVTS",
-    "OKLO",
-    "PFE",
-    "PLTR",
-    "QCOM",
-    "SHOP",
-    "SMCI",
-    "TEAM",
-    "TEM",
-    "U",
-    "UBER"
-   ],
-   "n_media": 1
-  },
-  {
-   "id": "2116869131358065063",
-   "handle": "DougKass",
-   "name": "Dougie Kass",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T12:25:05Z",
-   "url": "https://x.com/DougKass/status/2116869131358065063",
-   "text": "I have written 267 columns (\"More Tales From Nvidia\") on The StreetPro over the last two years. @TheStreetPro \n\nI have expressed a number of concerns (from a lay person's perspective) - some of which Roger McNamee and I share in common:\n\n*  Society is ill prepared for the negative consequences and safety issues associated with AI.\n\n*  The AI creators and practitioners take no responsibility for those consequences and issues.  Indeed, they are trying to the opposite - evading accountability.\n\n* The reality of AI has fallen far short of expectations and applications.\n\n*  Thus far the apparent absence of enterprise customers (who pay more for AI services than it costs a vendor to provide them), the benefits of scaling training sets and data centers and the widely anticipated productivity gains have been slow to materialize.\n\n* The limitations of large language models is growing more apparent. The systems are inherently probabilistic - resulting in varying degrees of errors and non-predictive results. Those shortcomings are not being overcome by scaling computer power.\n\n* A one size fits all product requires massive amounts of time and money to integrate into existing systems - with limitations already developing on funding.\n\n* The speed to market and scale of AI investment failed to wait for innovation to drive down the price of infrastructure (in fact the opposite is happening with costs rising)  and has created not only a timing problem between outlays and revenues but (also) potential risk to the bond and the broader economy far worse than the Internet era.\n\n* Though more than two handfuls of companies are in competition with different AI products, history shows that only a few will likely be successful. The potential for hundreds of billions of dollars of writeoffs is rising.\n\n* The size of AI infrastructure investment and the amount of debt being employed is inflationary, raises interest rates and crowds out other borrowers. Already investors' appetite appears to becoming sated and companies like $CRWV CoreWeave (a short) and $ORCL Oracle (also a short) are already \"in distress\" with extended balance sheets and off shore financing.\n\n* Other risks from AI products include fraud, cybersecurity, deskilling workers and students and social isolation.\n\n* AI concentrates power in the hands of a few - some of whom have previously expressed authoritarian tendencies.\n\nFrom Roger McNamee:\n\nRoger McNamee: AI’s ‘existential risks’ are all hype. But there's a real, and dangerous, financial bubble building \nhttps://www.thenerve.news/p/roger-mcnamee-ai-risks-financial-stability-deskilling-errors-bubble-burst     \n\n@tomkeene @AnneMarie @ferrotv @business @andrewrsorkin @BeckyQuick @squawkbox @cnbcfastmoney @cnbchalftime @saraeisen @SullyCNBC @JoeSquawk @guyadami @WhitneyTilson @convertbond @peterboockvar @LanceRoberts @KeithMcCullough @hedgeye @Hedgeye_HGRO @RPKInvestor @HedgeyeDJ @gnoble79  @lisaabramowicz1 @AlderLaneEggs @SullyCNBC @carlquintanilla @TheJudgeCNBC @jimcramer @Jim22Palmer @annmarie @fundstrat @DivesTech @DanielTNiles @DanielSLoeb1 @ptj_official",
-   "quoted": null,
-   "media": [],
-   "likes": 21,
-   "views": 3251,
-   "cashtags": [
-    "CRWV",
-    "ORCL"
-   ],
-   "n_media": 0
   },
   {
    "id": "2116858640103817266",
@@ -1257,6 +1263,224 @@
    "n_media": 0
   },
   {
+   "id": "2116917062102651271",
+   "handle": "OddStats",
+   "name": "OddStats",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "avonnc"
+   },
+   "time_utc": "2026-11-01T15:35:32Z",
+   "url": "https://x.com/OddStats/status/2116917062102651271",
+   "text": "@avonnc https://x.com/OddStats/status/2116916975733477416",
+   "quoted": {
+    "handle": "OddStats",
+    "text": "[I have QQQ but not NDX handy, so...]\n\nThere have been 15 years in history where QQQ was up at least as much as it is right now YTD, at the same point.\n\nOnly TWICE was QQQ negative for the rest of the year from there.\n\nOne of those was last year.\nThe other was 2007."
+   },
+   "media": [],
+   "likes": 0,
+   "views": 2,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2116916975733477416",
+   "handle": "OddStats",
+   "name": "OddStats",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T15:35:12Z",
+   "url": "https://x.com/OddStats/status/2116916975733477416",
+   "text": "[I have QQQ but not NDX handy, so...]\n\nThere have been 15 years in history where QQQ was up at least as much as it is right now YTD, at the same point.\n\nOnly TWICE was QQQ negative for the rest of the year from there.\n\nOne of those was last year.\nThe other was 2007.",
+   "quoted": {
+    "handle": "avonnc",
+    "text": "@OddStats Can you run the same scan on ndx?"
+   },
+   "media": [],
+   "likes": 3,
+   "views": 524,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2116916423138132362",
+   "handle": "KobeissiLetter",
+   "name": "The Kobeissi Letter",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T15:33:00Z",
+   "url": "https://x.com/KobeissiLetter/status/2116916423138132362",
+   "text": "BREAKING: The S&P 500 Equal-Weight Index outperformed the S&P 500 by +5.7 percentage points in October, its largest monthly outperformance since April 2009.\n\nThis also marked its 2nd-largest monthly outperformance since the 1990s.\n\nThe Equal-Weight Index surged +4.8% in October, while the S&P 500 fell -0.9%.\n\nYear-to-date, the Equal-Weight Index has gained +13.9%, exceeding the S&P 500's +10.7% return as technology stocks lag the broader market.\n\nMeanwhile, the S&P 500 ex-AI Index has jumped +14.2% year-to-date, reaching a new all-time high on Friday.\n\nMarket leadership is rapidly shifting.",
+   "quoted": {
+    "handle": "KobeissiLetter",
+    "text": "The \"stealth\" bear market is in full-swing.\n\nWhile the Nasdaq 100 erased -$4 trillion in 25 days, the \"S&P 500 Excluding AI\" hit a RECORD high on Friday.\n\nAI stocks fell over -13% in October while the S&P 500 Excluding AI gained+8%.\n\nWhat's happening? Let us explain.\n\n(a thread)"
+   },
+   "media": [
+    "https://pbs.twimg.com/media/HWC-YWxXIAAl9Af.png?name=orig"
+   ],
+   "likes": 0,
+   "views": 173,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2116915340286296466",
+   "handle": "OddStats",
+   "name": "OddStats",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "pshoe001"
+   },
+   "time_utc": "2026-11-01T15:28:42Z",
+   "url": "https://x.com/OddStats/status/2116915340286296466",
+   "text": "@pshoe001 https://x.com/OddStats/status/2071006260502188441",
+   "quoted": {
+    "handle": "OddStats",
+    "text": "FOR MY GAMBLERS (that's you)\n\nI just wasted 3 hours of my life going back thru all 373 tweets since I came back to see how I would have done if I \"invested\" (ha!) on anything I've posted with\n▪ At least n=7\n▪ At least a 75% historical win rate\n▪ Shorter than 3mo\n\nI didn't cherry pick anything, I checked for those 3 criteria and put it in my spreadsheet and then went back to see if they would have won or not.\n\nLet's see if you found this as interesting as I did.\n\nFirst, some ground rules. \n\n▪ I set my bets to close at 50% of possible profit. I've learned over the years that too many times, waiting to expiration is a loser when closing at 50% would have yielded a winner.\n▪ I don't use stops. Why? I don't bet more than I can afford. For each bet, I assumed $1000 in. \n▪ I assumed that I placed each bet when posting the tweet, or at the open the next day if the market was closed.\n▪ For almost all bets, I used ATM call verticals or ATM put verticals (long ATM, short at the target spot)\n\nThere have been 27 bets that have finished and 8 that are still open.\n\n▪ Without stops, I went 21-6 (78% win rate). No shit.\n▪ With stops, obviously that's lower based on one's own tolerance level.\n▪ If I were dumb enough to hold to expiration to try to collect 100%, I went 15-12 (56% win rate).\n\nAnyway, I'll let you know when I'm ready to go subscription only and jinx the fuck out of these win rates.\n\nAs always, this is not investment advice and you're a goddamn fool for betting on my posts. But si"
+   },
+   "media": [],
+   "likes": 0,
+   "views": 37,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2116915259785248811",
+   "handle": "davidgokhshtein",
+   "name": "David Gokhshtein",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "kkarasavvas"
+   },
+   "time_utc": "2026-11-01T15:28:22Z",
+   "url": "https://x.com/davidgokhshtein/status/2116915259785248811",
+   "text": "@kkarasavvas Let the market decide.\n\nAnd if Bitcoin is the generational asset that it is, it’ll survive.",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 93,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2116909025405055210",
+   "handle": "OddStats",
+   "name": "OddStats",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "michaelrathbun7"
+   },
+   "time_utc": "2026-11-01T15:03:36Z",
+   "url": "https://x.com/OddStats/status/2116909025405055210",
+   "text": "@michaelrathbun7 I don't know if you think I'm making a joke, but I have no confidence in anything market wise other than it will take the most money from the most fools most of the time.  Period.",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 138,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2116904913376792905",
+   "handle": "OptionsMike",
+   "name": "Options Mike",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T14:47:16Z",
+   "url": "https://x.com/OptionsMike/status/2116904913376792905",
+   "text": "Okay guys ton of charts, lots of thoughts \n\nHope you enjoyed them. Big week ahead, \n\nInflows Monday AM!\n\nGo Giants we can't lose!!",
+   "quoted": null,
+   "media": [],
+   "likes": 5,
+   "views": 1569,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2116904363364954185",
+   "handle": "leadlagreport",
+   "name": "Michael A. Gayed, CFA",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T14:45:05Z",
+   "url": "https://x.com/leadlagreport/status/2116904363364954185",
+   "text": "Backtested from June 2007 to the June 2021 launch, the JOJO.Index returned 548.45%. High yield: 106.35%. Long Treasuries: 150.56%.\n\nLive since launch: -7.23%. High yield: +18.84%.\n\nSame rules, very different era. Rising rates changed the math for the defensive sleeve.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWDBTNkXUAATnBB.jpg?name=orig"
+   ],
+   "likes": 18,
+   "views": 4907,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2116904365311115637",
+   "handle": "leadlagreport",
+   "name": "Michael A. Gayed, CFA",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "leadlagreport"
+   },
+   "time_utc": "2026-11-01T14:45:05Z",
+   "url": "https://x.com/leadlagreport/status/2116904365311115637",
+   "text": "JOJO.Index = ATAC Credit-On/Credit-Off Index, launched 6/14/2021. Results before launch are backtested and hypothetical. Indexes are unmanaged, have no fees and cannot be invested in directly. Past performance does not guarantee future results. Not investment advice.",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 1698,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2116904128743973216",
+   "handle": "patrick_oshag",
+   "name": "Patrick OShaughnessy",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-01T14:44:09Z",
+   "url": "https://x.com/patrick_oshag/status/2116904128743973216",
+   "text": "Cliff Sosin on why demand for frontier AI may narrow as models get smarter:\n\n\"It's like this diamond-shaped demand frontier, where initially, you get wider and wider uses, and then it starts to get more and more rarefied. How often do you really need a 300 IQ?\n\nIt strikes me as totally reasonable that there are very few use cases for super elite intelligence. \n\nThere are lots of use cases for very good intelligence. That very good intelligence is highly competitive and commoditized.\n\nHow big is the market if good enough intelligence is very, very cheap?\"",
+   "quoted": {
+    "handle": "patrick_oshag",
+    "text": "Cliff Sosin (@CliffordSosin) is one of my favorite people to call, ask some big questions, and then shut up and listen.\n\nThis conversation is a version of one of those calls.\n\nWe discuss:\n- The limits of intelligence\n- Owning the complements to it\n- Meta, the frontier labs, and the AI build-out\n- Capital markets\n-  Why he's comfortable with 80% of his portfolio in Carvana.\n\nTIMESTAMPS\n0:00 Intro  \n10:41 The Limits of Intelligence  \n18:03 Investing Beyond Cheap Intelligence  \n24:03 Will AI Become Commoditized?  \n35:10 Who Profits From AI?  \n43:00 AI Agents Reshape Competition  \n52:06 America's Capital Markets  \n58:04 Transforming Companies With AI  \n68:19 AI and Portfolio Concentration  \n73:16 Education in the AI Era"
+   },
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2116901688724406272/img/GHe2qvgU5sHKd4Xr.jpg"
+   ],
+   "likes": 14,
+   "views": 6841,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2116904085664288820",
+   "handle": "OddStats",
+   "name": "OddStats",
+   "type": "repost",
+   "reposted_by": "carlquintanilla",
+   "replying_to": null,
+   "time_utc": "2026-11-01T14:43:58Z",
+   "url": "https://x.com/OddStats/status/2116904085664288820",
+   "text": "SPX is up +10.7% YTD at the end of October 2026.\n\nThere have been 28 prior years where SPX was up at least that much at this point.\n\nCare to guess how many times SPX was negative for the rest of the year after that?\n\n3 times.\nOf 28 years.\nNone worse than -0.75%.",
+   "quoted": null,
+   "media": [],
+   "likes": 58,
+   "views": 8024,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
    "id": "2116902076663972228",
    "handle": "APompliano",
    "name": "Anthony Pompliano 🌪",
@@ -1268,8 +1492,8 @@
    "text": "We launched a new feature for @cfosilvia every day last week:\n\nMonday: MCP connections\nTuesday: Silvia News\nWednesday: Multi-currency support\nThursday: Silvia Legacy\nFriday: Multiple portfolios per user\n\nWe have ~ 10 full-time employees, but our pace of shipping is accelerating.",
    "quoted": null,
    "media": [],
-   "likes": 4,
-   "views": 6023,
+   "likes": 46,
+   "views": 14865,
    "cashtags": [],
    "n_media": 0
   },
@@ -1287,8 +1511,8 @@
    "text": "@GhastlyOverton All eyes are on Apple and AMD earnings this week.",
    "quoted": null,
    "media": [],
-   "likes": 0,
-   "views": 892,
+   "likes": 2,
+   "views": 2232,
    "cashtags": [],
    "n_media": 0
   },
@@ -1306,8 +1530,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWC9ZMmWkAAINhH.png?name=orig"
    ],
-   "likes": 17,
-   "views": 2403,
+   "likes": 43,
+   "views": 5245,
    "cashtags": [],
    "n_media": 1
   },
@@ -1344,8 +1568,8 @@
    "text": "@michaelrathbun7 As always, I am neither bullish nor bearish.  I haven't a fucking clue which way the market will go and don't waste my time guessing.\n\nIf I had to guess how Nov+Dec will go, it will do whatever costs FinTwit the most money.",
    "quoted": null,
    "media": [],
-   "likes": 0,
-   "views": 172,
+   "likes": 3,
+   "views": 412,
    "cashtags": [],
    "n_media": 0
   },
@@ -1361,8 +1585,8 @@
    "text": "Listen, I can explain the spreadsheet I just ran, but you don't give a shit and frankly, would speed read it and get lost anyway. What I'm trying to say is that you are a barely literate ignoramus, for whom I have not one ounce of respect.\n\nThat being said, here's what I wanted you to try to get through your thick, dense skull: when negative calendar months on SPX in the past were as tame as the negative months we've had in 2026...[November+December] has almost always been positive (combined; not both months individually).\n\nGo get daddy a beer.",
    "quoted": null,
    "media": [],
-   "likes": 43,
-   "views": 3849,
+   "likes": 80,
+   "views": 8889,
    "cashtags": [],
    "n_media": 0
   },
@@ -1379,7 +1603,7 @@
    "quoted": null,
    "media": [],
    "likes": 0,
-   "views": 80,
+   "views": 133,
    "cashtags": [],
    "n_media": 0
   },
@@ -1400,8 +1624,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2116890115008077824/img/e6CkoCHzZwEMFXQ-.jpg"
    ],
-   "likes": 62,
-   "views": 13745,
+   "likes": 110,
+   "views": 20439,
    "cashtags": [],
    "n_media": 1
   },
@@ -1419,8 +1643,8 @@
    "media": [
     "https://pbs.twimg.com/media/HV-rWUQWcAAZXih.jpg"
    ],
-   "likes": 70,
-   "views": 4789,
+   "likes": 134,
+   "views": 8899,
    "cashtags": [],
    "n_media": 1
   },
@@ -1436,8 +1660,8 @@
    "text": "More breadth expansion again this week! I hope everyone complaining about market breadth is now thrilled. That's 4 straight weeks of increases in NYSE stocks > 200 day moving avg. Same for the % > 50 day. And 6 straight weeks of increase for stocks > 20 day. I hope you're happy!",
    "quoted": null,
    "media": [],
-   "likes": 52,
-   "views": 5126,
+   "likes": 73,
+   "views": 6762,
    "cashtags": [],
    "n_media": 0
   },
@@ -1445,16 +1669,16 @@
    "id": "2116887452904194383",
    "handle": "OddStats",
    "name": "OddStats",
-   "type": "post",
-   "reposted_by": null,
+   "type": "repost",
+   "reposted_by": "carlquintanilla",
    "replying_to": null,
    "time_utc": "2026-11-01T13:37:53Z",
    "url": "https://x.com/OddStats/status/2116887452904194383",
    "text": "This is now the 9th time in the past 40 years that the S&P 500 saw at least 6 negative calendar months thru the end of October.\n\n7 of the previous 8 times this happened, SPX finished negative for the entire year (Jan-Dec).\n\n2005 was the only positive year overall.",
    "quoted": null,
    "media": [],
-   "likes": 79,
-   "views": 7552,
+   "likes": 116,
+   "views": 13841,
    "cashtags": [],
    "n_media": 0
   },
@@ -1473,28 +1697,8 @@
     "text": "X led major social media websites in average visit duration in September 2026, with users spending 13 minutes and 25 seconds per visit, followed by Facebook (10:15) and Instagram (8:38)."
    },
    "media": [],
-   "likes": 2549,
-   "views": 704717,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2116879037175898424",
-   "handle": "elonmusk",
-   "name": "Elon Musk",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T13:04:26Z",
-   "url": "https://x.com/elonmusk/status/2116879037175898424",
-   "text": "Anyone with a brain is on 𝕏",
-   "quoted": {
-    "handle": "cb_doge",
-    "text": "BREAKING: 𝕏 beats Instagram, Reddit, Facebook and TikTok in average website visit duration, according to Similarweb’s September 2026 data.\n\n𝕏 is winning. People stay longer where the conversation matters."
-   },
-   "media": [],
-   "likes": 11875,
-   "views": 881182,
+   "likes": 3074,
+   "views": 817409,
    "cashtags": [],
    "n_media": 0
   },
@@ -1654,8 +1858,8 @@
    "text": "@MRRydon It's not about what I'm hoping for. But if the Fed doesn't hike in December the hiking cycle may be over. Since inflation will be higher come December if there is no hike its either because of weakness in the economy or labor markets, or a big selloff in the stock market.",
    "quoted": null,
    "media": [],
-   "likes": 0,
-   "views": 231,
+   "likes": 8,
+   "views": 1049,
    "cashtags": [],
    "n_media": 0
   },
@@ -1671,8 +1875,28 @@
    "text": "When asked why the Fed didn't hike rates in October, given its current outlook on the economy and inflation, Warsh did not answer the question. He responded to the question, but his response really didn't constitute an answer. That's because he didn't want to tell the truth.",
    "quoted": null,
    "media": [],
-   "likes": 78,
-   "views": 10604,
+   "likes": 345,
+   "views": 31369,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2116897539139981452",
+   "handle": "ZLiscow",
+   "name": "Zachary Liscow",
+   "type": "repost",
+   "reposted_by": "jasonfurman",
+   "replying_to": null,
+   "time_utc": "2026-11-01T14:17:58Z",
+   "url": "https://x.com/ZLiscow/status/2116897539139981452",
+   "text": "Agreed w/ Ernie & Jason. There's no evidence that growth alone will stabilize debt-to-GDP, but it can help. Who knows what will happen with AI, and/or maybe we'll find very pro-growth policies, but it's very unlikely these will do the job, & we definitely shouldn't count on it.",
+   "quoted": {
+    "handle": "ernietedeschi",
+    "text": "Would add: proactive growth policy is a valid & often-desirable way to make fiscal challenges easier. Growth won't stabilize debt-to-GDP by itself, but it is one of several tools.\nWhat we should *not* bank on in fiscal forecasting is a huge exogenous growth surprise, e.g. from AI"
+   },
+   "media": [],
+   "likes": 12,
+   "views": 2706,
    "cashtags": [],
    "n_media": 0
   },
@@ -1690,8 +1914,8 @@
    "text": "@goc_87 @biancoresearch Yes, it’s cumulative which is fine. \n\nBut I don’t think it’s entirely accurate to label it as an isolated event. Because most folks reading that will interpret “wow the S&P crashed 19% during the SVB saga”. When in reality the drawdown from that specific event was much lower.",
    "quoted": null,
    "media": [],
-   "likes": 3,
-   "views": 175,
+   "likes": 4,
+   "views": 468,
    "cashtags": [],
    "n_media": 0
   },
@@ -1710,45 +1934,7 @@
    "quoted": null,
    "media": [],
    "likes": 0,
-   "views": 1458,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2116859662867771478",
-   "handle": "robin_j_brooks",
-   "name": "Robin Brooks",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "AlbertAnaBoss"
-   },
-   "time_utc": "2026-11-01T11:47:27Z",
-   "url": "https://x.com/robin_j_brooks/status/2116859662867771478",
-   "text": "Yes. In EM you would have just had a currency devaluation. The Euro zone has delayed that devaluation with these TARGET2 flows. Easiest way to see this is to think what would happen if TARGET2 goes to zero. It would require the ECB to sell all its sovereign debt holdings. Yields would spike and we’d be in a big crisis.",
-   "quoted": null,
-   "media": [],
-   "likes": 2,
-   "views": 350,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2116859119546089544",
-   "handle": "robin_j_brooks",
-   "name": "Robin Brooks",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "MaRoEn12"
-   },
-   "time_utc": "2026-11-01T11:45:18Z",
-   "url": "https://x.com/robin_j_brooks/status/2116859119546089544",
-   "text": "The problem is that German politicians and their proxies at the ECB know all this very well, but everyone has an incentive to kick the can a little further down the road so that the eventual and inevitable blow-up doesn’t happen on their watch. What’s needed are claw-backs so these people act responsibly and don’t scurry off before the blow-up.",
-   "quoted": null,
-   "media": [],
-   "likes": 5,
-   "views": 442,
+   "views": 1719,
    "cashtags": [],
    "n_media": 0
   },
@@ -1770,44 +1956,6 @@
    "n_media": 0
   },
   {
-   "id": "2116857457540550699",
-   "handle": "robin_j_brooks",
-   "name": "Robin Brooks",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "KeineWunder"
-   },
-   "time_utc": "2026-11-01T11:38:41Z",
-   "url": "https://x.com/robin_j_brooks/status/2116857457540550699",
-   "text": "No. Germany’s TARGET2 claims are basically the counterpart to artificial yield caps and big currency overvaluations on the high-debt periphery. There is no netting this out. Without these claims, periphery currencies would have devalued massively and of course they still might one day…",
-   "quoted": null,
-   "media": [],
-   "likes": 3,
-   "views": 847,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2116853934887153750",
-   "handle": "robin_j_brooks",
-   "name": "Robin Brooks",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "Dav_Kaiser"
-   },
-   "time_utc": "2026-11-01T11:24:41Z",
-   "url": "https://x.com/robin_j_brooks/status/2116853934887153750",
-   "text": "No. Easiest way is to draw the contrast with any EM debt crisis. Private capital flows collapse and the currency devalues. That’s not possible in the Euro, so private flows got replaced by official ones, ie ECB purchases of public debt under QE. That artificially caps yields and props up currencies that are really much weaker.",
-   "quoted": null,
-   "media": [],
-   "likes": 3,
-   "views": 455,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
    "id": "2116853285785141281",
    "handle": "SJosephBurns",
    "name": "Steve Burns",
@@ -1823,25 +1971,6 @@
    "views": 7914,
    "cashtags": [],
    "n_media": 0
-  },
-  {
-   "id": "2116852542638264735",
-   "handle": "RaoulGMI",
-   "name": "Raoul Pal",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-01T11:19:10Z",
-   "url": "https://x.com/RaoulGMI/status/2116852542638264735",
-   "text": "Dollar, rates and oil all going up... all three tighten financial conditions, which leads liquidity, which leads markets. Crypto needs those three to dissipate.\n\nComing into the midterms Trump wants oil, rates and the dollar down. Oil probably gets done via an Iran resolution...\n\nThats what reignites the ability to take risk and brings capital back into markets.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/ext_tw_video_thumb/2116852373242937344/pu/img/PqdXLc55kQw8pSOx.jpg"
-   ],
-   "likes": 341,
-   "views": 48469,
-   "cashtags": [],
-   "n_media": 1
   },
   {
    "id": "2116850676680548592",
@@ -1865,25 +1994,6 @@
    "n_media": 1
   },
   {
-   "id": "2116850038915608776",
-   "handle": "robin_j_brooks",
-   "name": "Robin Brooks",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "Alea_"
-   },
-   "time_utc": "2026-11-01T11:09:13Z",
-   "url": "https://x.com/robin_j_brooks/status/2116850038915608776",
-   "text": "@Alea_ The whole discussion that this is NOT debt is that the South owes the North (basically Germany) is symptomatic how broken the Euro zone is. Germany helps and then the people who get help turn around and deny that any help was given, which is what this is about. So tedious...",
-   "quoted": null,
-   "media": [],
-   "likes": 9,
-   "views": 579,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
    "id": "2116849698132926943",
    "handle": "SJosephBurns",
    "name": "Steve Burns",
@@ -1899,26 +2009,6 @@
    "media": [],
    "likes": 0,
    "views": 160,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2116848864288244223",
-   "handle": "capitaledgenote",
-   "name": "Capital Edge Notes",
-   "type": "repost",
-   "reposted_by": "robin_j_brooks",
-   "replying_to": null,
-   "time_utc": "2026-11-01T11:04:33Z",
-   "url": "https://x.com/capitaledgenote/status/2116848864288244223",
-   "text": "Brent +10% maps to gold −4% and silver −8%, on Brooks's numbers from the second half of October.\nI think this is a hot-war liquidity trade, not a rates trade.\nUS real 10y yields fell about 30bp in October while Brent rose 13.6%, and that should have helped gold.\nTwo weeks of daily data is a short window, so I'd treat the link as fragile if Hormuz reopens.",
-   "quoted": {
-    "handle": "robin_j_brooks",
-    "text": "I did my usual Sunday morning live stream on possible further downside for gold and silver if we go back to a \"hot\" war in the coming days. A 10% rise in Brent maps into a 4% drop for gold and 8% fall for silver. I talk through all this on the link below:\nhttps://robinjbrooks.substack.com/p/how-much-will-gold-fall-in-a-hot-053"
-   },
-   "media": [],
-   "likes": 17,
-   "views": 5209,
    "cashtags": [],
    "n_media": 0
   }
