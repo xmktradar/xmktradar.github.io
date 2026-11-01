@@ -3,11 +3,11 @@
     "image_alt": "The Crowd Tape: which US stocks the top X accounts are bullish or bearish on, updated every 4 hours."
   },
   "ui": {
-    "｜看X大神在做什麼，不是看我怎麼想": " · What top X accounts are doing, not what I think",
+    "｜看X大神在做什麼，不是看我怎麼想": " · What top X accounts are doing",
     "：每 4 小時整理 X 上美股大神、宏觀分析與市場快訊的觀點，看大家共同看好還是看淡哪檔股票。全中文，免費看，不構成投資建議。": ": Every 4 hours, we sum up what top US-stock accounts, macro analysts and market news on X are saying, and which stocks they are jointly bullish or bearish on. In English, free, not investment advice.",
     "每 4 小時整理 X 上美股大神、宏觀分析與市場快訊的觀點，看大家共同看好還是看淡哪檔股票。": "Every 4 hours, we sum up what top US-stock accounts, macro analysts and market news on X are saying, and which stocks they are jointly bullish or bearish on.",
     "向右滑動查看所有股票": "Swipe right to see all stocks",
-    "看X大神在做什麼，不是看我怎麼想": "What top X accounts are doing, not what I think",
+    "看X大神在做什麼，不是看我怎麼想": "What top X accounts are doing",
     "中": "Neu",
     "已瀏覽次數：": "Page views: ",
     "富途開戶禮遇": "Futu sign-up offer",
@@ -623,7 +623,14 @@
     "）。以下先用即時資料自動整理；過時原文已收合，不當作今日主文。": "). Showing a live auto summary for now; the stale writeup is collapsed and is not today's lead.",
     "查看過時寫手分析（": "View stale writer analysis (",
     "個有提股票的帳號（今日發文": "accounts that mentioned a stock (posted today ",
-    "）・按討論帳號數排列，點選一行查看每個帳號的理由": ") · sorted by how many stocks they discussed; open a row for each account's reasons"
+    "）・按討論帳號數排列，點選一行查看每個帳號的理由": ") · sorted by how many stocks they discussed; open a row for each account's reasons",
+    "免費領取財報解讀清單": "Get the free earnings checklist",
+    "唔會濫發，隨時取消。": "No spam. Unsubscribe anytime.",
+    "電郵領取": "Email me the list",
+    "完整清單": "Full checklist",
+    "多謝！你已成功訂閱。免費財報清單：/zh/checklist/earnings/": "Thanks! You're subscribed. Free checklist: /en/checklist/earnings/",
+    "財報清單": "Earnings checklist",
+    "Thanks! You're subscribed. Free checklist: /en/checklist/earnings/": "Thanks! You're subscribed. Free checklist: /en/checklist/earnings/"
   },
   "data": {
     "10 年期債息": "10-year Treasury yield",
@@ -1071,7 +1078,7 @@
     "打開 Stock Rover": "Open Stock Rover",
     "支持我們": "Support us",
     "我們用來核實「群眾」的工具": "Tools we use to check the crowd",
-    "The Crowd Tape 統計 X 上大約 200 個美股帳號的好淡，但統計不等於買賣訊號。想看圖表、篩股或查基本面時，我們會用以下工具。": "The Crowd Tape counts what ~200 US-stock accounts on X are saying. A tally isn't a trade, though. These are the tools we open when we want to check the chart, screen for names, or look at the fundamentals.",
+    "The Crowd Tape 統計 X 上大約 200 個美股帳號的好淡，但統計不等於買賣訊號。想看圖表、篩股或查基本面時，我們會用以下工具。": "The Crowd Tape counts what ~200 US-stock accounts on X are saying. A tally isn't a trade, though. These are the tools we use for charts, screens and fundamentals.",
     "看群眾熱烈討論的股票實際走勢。有免費版，支援中文介面。": "What we use it for: checking the price action behind a ticker the crowd is excited or worried about. Free plan available. Interface in English, Chinese and Korean.",
     "比較估值、評分與基本面，追蹤你的投資組合。": "Compare valuations, ratings and fundamentals, and track your portfolio.",
     "看大市熱力圖，按板塊、流通量、業績日快速篩股。免費版已夠用，Elite 有即時數據。": "What we use it for: the market heatmap and quick screens (sector, float, earnings date). The free version is enough to start. Elite adds real-time data.",
@@ -1095,7 +1102,11 @@
     "比較估值、盈利增長與財務數據，看看最多人看好的股票是否已經太貴": "Compare valuation, earnings growth and financials to see whether the most-liked stock is already too expensive",
     "用自己的條件篩選股票，找出群眾未留意的公司": "Screen stocks with your own rules and find companies the crowd has missed",
     "連結投資組合，持股表現與基本面一頁看清": "Link your portfolio and see performance and fundamentals on one page",
-    "聯盟推廣連結，你無需多付；佣金不影響好淡統計。": "Affiliate link: it costs you nothing extra, and the commission never affects our bull/bear counts."
+    "聯盟推廣連結，你無需多付；佣金不影響好淡統計。": "Affiliate link: it costs you nothing extra, and the commission never affects our bull/bear counts.",
+    "工具｜OptionStrat、Stock Rover 與圖表｜The Crowd Tape": "Tools: OptionStrat, Stock Rover & charts | The Crowd Tape",
+    "The Crowd Tape 用 OptionStrat、Stock Rover、TradingView 等工具核實 X 上群眾好淡：圖表、篩股與期權結構。統計唔等於買賣訊號。": "OptionStrat, Stock Rover and TradingView help us check the X crowd: charts, screens and options structure. A tally is not a trade signal.",
+    "多謝！你已成功訂閱。免費財報清單：/zh/checklist/earnings/": "Thanks! You're subscribed. Free earnings checklist: /en/checklist/earnings/",
+    "Thanks! You're subscribed. Open the free earnings checklist: /en/checklist/earnings/": "Thanks! You're subscribed. Open the free earnings checklist: /en/checklist/earnings/"
   },
   "about": {
     "工具": "Tools",
@@ -1134,7 +1145,9 @@
     "多謝！你已成功訂閱。": "Thanks! You're subscribed.",
     "電郵地址有誤，請再試。": "Please check the email address and try again.",
     "支持我們": "Support us",
-    "每週好淡統計，直送你的電郵": "Weekly bull/bear stats, delivered to your email"
+    "每週好淡統計，直送你的電郵": "Weekly bull/bear stats, delivered to your email",
+    "多謝！你已成功訂閱。免費財報清單：/zh/checklist/earnings/": "Thanks! You're subscribed. Free checklist: /en/checklist/earnings/",
+    "每週好淡統計電子報過往期數；免費訂閱並領取財報解讀清單。": "Past weekly bull/bear digests. Subscribe free and get the earnings checklist."
   },
   "nl": {
     "aria": "Subscribe to daily email",

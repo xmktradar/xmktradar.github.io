@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <title>電子報 — The Crowd Tape</title>
-<meta name="description" content="每週電子報的過往期數。">
+<meta name="description" content="每週好淡統計電子報過往期數；免費訂閱並領取財報解讀清單。">
 <link rel="canonical" href="https://thecrowdtape.com/zh/newsletter/">
 <link rel="alternate" hreflang="zh-Hant" href="https://thecrowdtape.com/zh/newsletter/">
 <link rel="alternate" hreflang="en" href="https://thecrowdtape.com/en/newsletter/">
@@ -104,6 +104,7 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
     <label for="ct-email-newsletter" class="ct-news-t">每週好淡統計，直送你的電郵</label>
     <input id="ct-email-newsletter" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
     <input type="hidden" name="lang" value="zh">
+    <input type="hidden" name="src" value="newsletter">
     <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
     <button type="submit">訂閱</button>
     <small>免費・每週一封・隨時取消</small>
@@ -111,8 +112,8 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
   </form>
   <script>
   (function(){
-    var M={en:["Thanks! You're subscribed.","Please check the email address and try again."],
-           zh:["多謝！你已成功訂閱。","電郵地址有誤，請再試。"]};
+    var M={en:["Thanks! You're subscribed. Free checklist: /en/checklist/earnings/","Please check the email address and try again."],
+           zh:["多謝！你已成功訂閱。免費財報清單：/zh/checklist/earnings/","電郵地址有誤，請再試。"]};
     document.querySelectorAll('form.ct-news').forEach(function(f){
       f.addEventListener('submit',function(e){
         e.preventDefault();

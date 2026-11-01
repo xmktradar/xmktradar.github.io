@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <title>Newsletter — The Crowd Tape</title>
-<meta name="description" content="Past issues of the weekly newsletter.">
+<meta name="description" content="Past weekly bull/bear digests. Subscribe free and get the earnings checklist.">
 <link rel="canonical" href="https://thecrowdtape.com/en/newsletter/">
 <link rel="alternate" hreflang="zh-Hant" href="https://thecrowdtape.com/zh/newsletter/">
 <link rel="alternate" hreflang="en" href="https://thecrowdtape.com/en/newsletter/">
@@ -104,6 +104,7 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
     <label for="ct-email-newsletter" class="ct-news-t">Weekly bull/bear stats, delivered to your email</label>
     <input id="ct-email-newsletter" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
     <input type="hidden" name="lang" value="en">
+    <input type="hidden" name="src" value="newsletter">
     <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
     <button type="submit">Subscribe</button>
     <small>Free · weekly · unsubscribe anytime.</small>
@@ -111,8 +112,8 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
   </form>
   <script>
   (function(){
-    var M={en:["Thanks! You're subscribed.","Please check the email address and try again."],
-           zh:["Thanks! You're subscribed.","Please check the email address and try again."]};
+    var M={en:["Thanks! You're subscribed. Free checklist: /en/checklist/earnings/","Please check the email address and try again."],
+           zh:["Thanks! You're subscribed. Free checklist: /en/checklist/earnings/","Please check the email address and try again."]};
     document.querySelectorAll('form.ct-news').forEach(function(f){
       f.addEventListener('submit',function(e){
         e.preventDefault();

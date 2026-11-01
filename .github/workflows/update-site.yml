@@ -183,6 +183,8 @@ jobs:
         run: python3 tools/toolspage.py
       - name: About page
         run: python3 tools/about.py
+      - name: Earnings checklist magnet pages
+        run: python3 tools/checklist.py
       - name: Weekly newsletter (first run Monday 07:00+ HKT; writes last week's issue, sends it via Resend once)
         continue-on-error: true
         env:
@@ -245,7 +247,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
           # og/ includes og/c motion mp4s, cover jpgs, and *.vo.json voiceover markers
-          git add -A index.html zh/ en/ ko/ support/ advertise/ about/ newsletter/ tools/index.html data/ og/ px/ av/ embed/ social/ sitemap.xml llms-full.txt 404.html ccab4c5e388dc31f07a4976abba71466.txt
+          git add -A index.html zh/ en/ ko/ support/ advertise/ about/ newsletter/ checklist/ tools/index.html data/ og/ px/ av/ embed/ social/ sitemap.xml llms-full.txt 404.html ccab4c5e388dc31f07a4976abba71466.txt
           git diff --cached --quiet && exit 0
           git commit -m "定時重建 $(date '+%Y-%m-%d %H:%M') HKT"
           # --autostash: build steps can leave tracked files changed that are not published (they used to stop the pull).
