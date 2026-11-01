@@ -13,10 +13,10 @@ from sitedata import ET, HK, load, notice, now_hk, parse_iso, read_json, save, w
 
 PENDING = 'data/pending-posts.json'
 WAIT_HOURS = 24  # posts with no summary after this long stop waiting (Tim, 2026-10-12)
-# "Update site" runs at HKT 03:05, 07:05 ... 23:05 (.github/workflows/update-site.yml). GitHub starts it
-# 20-30 minutes late and it takes about 11 minutes, so posts are fetched around :30 and the new page is
-# usually up around :40. The header's 下次更新 shows the next of these.
-UPDATE_SLOTS = ['03:40', '07:40', '11:40', '15:40', '19:40', '23:40']
+# "Update site" runs at HKT 03:17, 07:17 ... 23:17 (.github/workflows/update-site.yml cron minute 17).
+# With cronOf, #nextup minutes stay :17 (same as the schedule). GitHub may still start a bit late;
+# the header's 下次更新 shows the next of these slots.
+UPDATE_SLOTS = ['03:17', '07:17', '11:17', '15:17', '19:17', '23:17']
 SCRAPE_SLOTS = ['03:30', '07:30', '11:30', '15:30', '19:30', '23:30']
 
 
