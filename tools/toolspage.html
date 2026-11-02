@@ -106,6 +106,7 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
 <main>
   <h1>我們用來核實「群眾」的工具</h1>
   <p class="lead">The Crowd Tape 統計 X 上大約 200 個美股帳號的好淡，但統計不等於買賣訊號。想看圖表、篩股或查基本面時，我們會用以下工具。</p>
+  <p class="ct-tools-top" id="ct-tools-top" style="margin:0 0 16px;font-size:14.5px;line-height:1.5">免費領取財報解讀清單——訂閱電子報即送。<a href="#ct-news-tools" style="font-weight:700;margin-left:6px">電郵領取</a></p>
   <aside class="note">
     <p>披露：本站部分連結屬聯盟推廣連結，你經由連結註冊或購買，我們可能獲得佣金，你無需多付。佣金不會影響好淡統計。本站內容不構成投資建議。</p>
   </aside>
@@ -166,7 +167,7 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
   <section class="cta">
     <h2>訂閱每週電子報</h2>
     <form class="ct-news" id="ct-news-tools" data-lang="{{lang_code}}" action="https://crowdtape-newsletter.vercel.app/api/subscribe" method="POST">
-      <label for="ct-email-tools" class="ct-news-t">每週好淡統計，直送你的電郵</label>
+      <label for="ct-email-tools" class="ct-news-t">免費領取財報解讀清單（電子報）</label>
       <input id="ct-email-tools" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
       <input type="hidden" name="lang" value="{{lang_code}}">
       <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
@@ -194,8 +195,12 @@ document.addEventListener('click',function(e){
 </script>
 <script>
 (function(){
-  var M={en:["Thanks! You're subscribed.","Please check the email address and try again."],
-         zh:["多謝！你已成功訂閱。","電郵地址有誤，請再試。"]};
+  var M={en:["Thanks! Opening your free earnings checklist…","Please check the email address and try again."],
+         zh:["多謝！正在開啟免費財報清單…","電郵地址有誤，請再試。"]};
+  function checklistUrl(l){
+    var lang=(l==='zh')?'zh':'en';
+    return 'https://thecrowdtape.com/'+lang+'/checklist/earnings/?utm_source=resend&utm_medium=email&utm_campaign=welcome1';
+  }
   document.querySelectorAll('form.ct-news').forEach(function(f){
     f.addEventListener('submit',function(e){
       e.preventDefault();
@@ -203,14 +208,15 @@ document.addEventListener('click',function(e){
       fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
         .then(function(r){return r.json()}).then(function(j){
           m.hidden=false;m.textContent=M[l][j.ok?0:1];
-          if(j.ok){f.reset();if(window.gtag)gtag('event','newsletter_signup',{lang:l});}
+          if(j.ok){f.reset();if(window.gtag)gtag('event','newsletter_signup',{lang:l,src:d.src||'tools'});location.assign(checklistUrl(l));}
         }).catch(function(){m.hidden=false;m.textContent=M[l][1];});
     });
   });
   var sub=new URLSearchParams(location.search).get('subscribed');
-  if(sub==='1'||sub==='0') document.querySelectorAll('form.ct-news').forEach(function(f){
+  if(sub==='1'){var lang=(document.documentElement.lang||'').toLowerCase().indexOf('zh')===0?'zh':'en';location.replace(checklistUrl(lang));}
+  else if(sub==='0') document.querySelectorAll('form.ct-news').forEach(function(f){
     var l=f.dataset.lang||'en',m=f.querySelector('.ct-news-msg');
-    m.hidden=false;m.textContent=M[l][sub==='1'?0:1];
+    m.hidden=false;m.textContent=M[l][1];
   });
 })();
 </script>

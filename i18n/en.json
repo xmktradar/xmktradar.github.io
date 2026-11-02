@@ -630,7 +630,12 @@
     "完整清單": "Full checklist",
     "多謝！你已成功訂閱。免費財報清單：/zh/checklist/earnings/": "Thanks! You're subscribed. Free checklist: /en/checklist/earnings/",
     "財報清單": "Earnings checklist",
-    "Thanks! You're subscribed. Free checklist: /en/checklist/earnings/": "Thanks! You're subscribed. Free checklist: /en/checklist/earnings/"
+    "Thanks! You're subscribed. Free checklist: /en/checklist/earnings/": "Thanks! You're subscribed. Free checklist: /en/checklist/earnings/",
+    "分析截至 ": "Analysis as of ",
+    "涵蓋 ": "covers ",
+    " 則（寫作統計，非即時卡片總數）": " posts (writeup count; not the live card total)",
+    "未分析 ": "not yet analyzed ",
+    " 則": " posts"
   },
   "data": {
     "10 年期債息": "10-year Treasury yield",
@@ -951,11 +956,11 @@
     "指數，不是個股": "An index, not a stock",
     "期貨，不是個股": "Futures, not a stock",
     "比特幣兌美元（加密貨幣），不是美股，不顯示股價、不計入共識": "Bitcoin vs US dollar (cryptocurrency), not a US stock, no price shown, not counted in consensus",
-    "細價股，可能已除牌": "Penny stock, possibly delisted",
+    "細價股，可能已除牌": "Small-cap / penny name, possibly delisted",
     "航空股指數，不是個股": "Airline index, not a stock",
     "韓國上市 SK 海力士（000660.KS），非美股": "Korea-listed SK hynix (000660.KS), not a US stock",
     "黃金（以 COMEX 期貨報價），不是個股": "Gold (quoted via COMEX futures), not a stock",
-    "細價股，Yahoo Finance 暫無股價資料": "moved to penny stock; Yahoo Finance has no price data",
+    "細價股，Yahoo Finance 暫無股價資料": "Yahoo Finance has no price data for this ticker",
     "航空股指數，暫無股價資料": "Airline index; no price data yet",
     "今日至今 vs 昨日全日": "Yesterday's overlap vs today",
     "今日至今未再上榜：{removed}": "No longer overlapping: {removed}",
@@ -985,7 +990,10 @@
     "每週好淡統計，直送你的電郵": "Weekly bull/bear stats, delivered to your email",
     "披露：本站部分連結屬聯盟推廣連結，你經由連結註冊或購買，我們可能獲得佣金，你無需多付。佣金不會影響好淡統計。本站內容不構成投資建議。": "Disclosure: some links are affiliate links. If you sign up or buy through them we may earn a commission at no extra cost to you. This never affects our bull/bear tallies. Nothing on this site is investment advice.",
     "本站部分連結屬聯盟推廣連結，你經由連結註冊或購買，我們可能獲得佣金，你無需多付。佣金不會影響好淡統計。本站內容不構成投資建議。": "Some links are affiliate links. If you sign up or buy through them we may earn a commission at no extra cost to you. This never affects our bull/bear tallies. Nothing on this site is investment advice.",
-    "Stock Rover：深度基本面研究與投資組合追蹤": "Stock Rover: deep fundamental research and portfolio tracking"
+    "Stock Rover：深度基本面研究與投資組合追蹤": "Stock Rover: deep fundamental research and portfolio tracking",
+    "Stripe": "Stripe",
+    "信用卡／借記卡捐款連結準備中（Coming soon）。": "Card donation link coming soon.",
+    "多謝！正在開啟免費財報清單…": "Thanks! Opening your free earnings checklist…"
   },
   "advertise": {
     "工具": "Tools",
@@ -1106,7 +1114,11 @@
     "工具｜OptionStrat、Stock Rover 與圖表｜The Crowd Tape": "Tools: OptionStrat, Stock Rover & charts | The Crowd Tape",
     "The Crowd Tape 用 OptionStrat、Stock Rover、TradingView 等工具核實 X 上群眾好淡：圖表、篩股與期權結構。統計唔等於買賣訊號。": "OptionStrat, Stock Rover and TradingView help us check the X crowd: charts, screens and options structure. A tally is not a trade signal.",
     "多謝！你已成功訂閱。免費財報清單：/zh/checklist/earnings/": "Thanks! You're subscribed. Free earnings checklist: /en/checklist/earnings/",
-    "Thanks! You're subscribed. Open the free earnings checklist: /en/checklist/earnings/": "Thanks! You're subscribed. Open the free earnings checklist: /en/checklist/earnings/"
+    "Thanks! You're subscribed. Open the free earnings checklist: /en/checklist/earnings/": "Thanks! You're subscribed. Open the free earnings checklist: /en/checklist/earnings/",
+    "免費領取財報解讀清單——訂閱電子報即送。": "Get the free earnings checklist — subscribe to the newsletter.",
+    "電郵領取": "Get it by email",
+    "免費領取財報解讀清單（電子報）": "Free earnings checklist (newsletter)",
+    "多謝！正在開啟免費財報清單…": "Thanks! Opening your free earnings checklist…"
   },
   "about": {
     "工具": "Tools",
@@ -1127,7 +1139,8 @@
     "多謝！你已成功訂閱。": "Thanks! You're subscribed.",
     "電郵地址有誤，請再試。": "Please check the email address and try again.",
     "支持我們": "Support us",
-    "每週好淡統計，直送你的電郵": "Weekly bull/bear stats, delivered to your email"
+    "每週好淡統計，直送你的電郵": "Weekly bull/bear stats, delivered to your email",
+    "多謝！正在開啟免費財報清單…": "Thanks! Opening your free earnings checklist…"
   },
   "newsletter": {
     "工具": "Tools",
