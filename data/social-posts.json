@@ -1539,9 +1539,153 @@
       "INTC"
      ]
     }
+   },
+   "intraday_4": {
+    "post_et": "14:45",
+    "post_hkt": "03:45",
+    "generated_at": "2026-11-02T14:55:31-05:00",
+    "date": "2026-11-02",
+    "date_kst": "2026-11-03",
+    "quotes": {
+     "SPY": {
+      "price": 754.09,
+      "prev_close": 755.72,
+      "chg_pct": -0.22,
+      "time": "2026-11-02T14:55:30-05:00"
+     },
+     "QQQ": {
+      "price": 684.02,
+      "prev_close": 690.49,
+      "chg_pct": -0.94,
+      "time": "2026-11-02T14:55:30-05:00"
+     },
+     "DIA": {
+      "price": 520.31,
+      "prev_close": 517.13,
+      "chg_pct": 0.61,
+      "time": "2026-11-02T14:55:23-05:00"
+     },
+     "AAPL": {
+      "price": 337.64,
+      "prev_close": 344.63,
+      "chg_pct": -2.03,
+      "time": "2026-11-02T14:55:31-05:00"
+     },
+     "META": {
+      "price": 610.51,
+      "prev_close": 614.99,
+      "chg_pct": -0.73,
+      "time": "2026-11-02T14:55:29-05:00"
+     },
+     "INTC": {
+      "price": 60.105,
+      "prev_close": 65.76,
+      "chg_pct": -8.6,
+      "time": "2026-11-02T14:55:32-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-02T14:55:32-05:00",
+     "hkt": "2026-11-03 03:55"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "AAPL",
+      "chg_pct": -2.03,
+      "bull": 4,
+      "bear": 0,
+      "accounts": [
+       "charliebilello",
+       "JC_ParetsX",
+       "bespokeinvest",
+       "TrendSpider",
+       "Mr_Derivatives",
+       "StockSavvyShay",
+       "KobeissiLetter",
+       "ripster47"
+      ]
+     },
+     {
+      "ticker": "META",
+      "chg_pct": -0.73,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "OptionsMike",
+       "Mr_Derivatives",
+       "StockSavvyShay",
+       "patrick_oshag",
+       "KobeissiLetter",
+       "saxena_puru",
+       "carlquintanilla"
+      ]
+     },
+     {
+      "ticker": "QQQ",
+      "chg_pct": -0.94,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "spotgamma",
+       "OddStats",
+       "Jake__Wujastyk",
+       "OptionsMike",
+       "Mr_Derivatives"
+      ]
+     },
+     {
+      "ticker": "INTC",
+      "chg_pct": -8.6,
+      "bull": 0,
+      "bear": 2,
+      "accounts": [
+       "OptionsMike",
+       "TheOneLanceB",
+       "Jake__Wujastyk",
+       "StockSavvyShay"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Afternoon tape · As of 14:55 ET (03:55 HKT)\n\n$SPY -0.2% · $QQQ -0.9% · $DIA +0.6%\n\n$AAPL -2.0%, 4 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #AAPL #META",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "尾盤前 · 截至 14:55 ET（03:55 HKT）\n\n$SPY -0.2% · $QQQ -0.9% · $DIA +0.6%\n\n$AAPL -2.0%，網站 4 個帳號看好\n$META -0.7%，網站 2 個帳號看好\n$QQQ -0.9%，網站 2 個帳號看好\n$INTC -8.6%，網站 2 個帳號看空\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #AAPL #META",
+      "url": ""
+     },
+     "en": {
+      "text": "Afternoon tape · As of 14:55 ET (03:55 HKT)\n\n$SPY -0.2% · $QQQ -0.9% · $DIA +0.6%\n\n$AAPL -2.0%, 4 accounts bullish on site\n$META -0.7%, 2 accounts bullish on site\n$QQQ -0.9%, 2 accounts bullish on site\n$INTC -8.6%, 2 accounts bearish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #AAPL #META",
+      "url": ""
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "AMZN",
+      "AAPL",
+      "META",
+      "QQQ"
+     ],
+     "bear": [
+      "INTC"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-02T13:35:05-05:00",
-  "generated_hkt": "2026-11-03 02:35"
+  "generated_at": "2026-11-02T14:55:31-05:00",
+  "generated_hkt": "2026-11-03 03:55"
  }
 }
