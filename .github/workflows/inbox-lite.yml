@@ -1,0 +1,82 @@
+name: Inbox lite
+# Fast path when bots push analysed batches to data/grok-inbox/**.
+# Debounces rapid pushes (cancel-in-progress) and skips Playwright / earnings / video /
+# prices / share-image heavy steps. Full rebuild remains on Update site schedule.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['data/grok-inbox/**']
+permissions:
+  contents: write
+concurrency:
+  group: inbox-lite
+  cancel-in-progress: true
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      WORK_DIR: /tmp/site-work
+      TZ: Asia/Hong_Kong
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Restore full page data
+        run: python3 tools/slim_pages.py --restore
+      - name: Analyse posts with Grok
+        # Applies inbox JSON into pending analysis; usually no API when batches are pre-analysed.
+        continue-on-error: true
+        run: python3 tools/analyse_posts.py
+      - name: Add posts to the site
+        run: python3 tools/merge_posts.py
+      - name: Apply SuperGrok write-ups
+        continue-on-error: true
+        run: python3 tools/apply_writeups.py
+      - name: Consensus and counts
+        run: |
+          mkdir -p "$WORK_DIR"
+          echo '{"daily": null}' > "$WORK_DIR/windows.json"
+          node tools/stats.js index.html "$WORK_DIR/windows.json" "$WORK_DIR/stats.json" || { echo "::error::共識計算失敗"; exit 1; }
+      - name: Language versions
+        run: python3 tools/build_langs.py
+      - name: Slim homepages
+        run: python3 tools/slim_pages.py --slim
+      - name: Check the pages
+        run: |
+          for f in index.html zh/index.html en/index.html; do
+            node tools/check.js "$f" || { echo "::error::網頁檢查唔合格：$f"; exit 1; }
+          done
+      - name: Publish
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          ok=0
+          for i in 1 2 3; do
+            git add -A index.html zh/ en/ data/pending-posts.json data/dash data/grok-inbox data/super-grok-analysis.json data/super-grok-writeups.json
+            if git diff --cached --quiet; then
+              ok=1
+              break
+            fi
+            git commit -m "inbox lite $(date '+%Y-%m-%d %H:%M') HKT" || true
+            if git pull --rebase --autostash origin main && git push origin HEAD:main; then
+              ok=1
+              break
+            fi
+            echo "::warning::inbox-lite publish conflict (try $i); reset to main and retry merge outputs"
+            git rebase --abort 2>/dev/null || true
+            git fetch origin main
+            git reset --hard origin/main
+            python3 tools/slim_pages.py --restore
+            python3 tools/analyse_posts.py || true
+            python3 tools/merge_posts.py
+            python3 tools/apply_writeups.py || true
+            mkdir -p "$WORK_DIR"
+            echo '{"daily": null}' > "$WORK_DIR/windows.json"
+            node tools/stats.js index.html "$WORK_DIR/windows.json" "$WORK_DIR/stats.json"
+            python3 tools/build_langs.py
+            python3 tools/slim_pages.py --slim
+            sleep $((i * 5))
+          done
+          [ "$ok" = 1 ] || { echo "::error::inbox-lite publish failed after retries"; exit 1; }
