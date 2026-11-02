@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2116904363364954185": {
+      "en_summary": "Backtested from June 2007 to the June 2021 launch, the JOJO.Index returned 548.45%. High yield: 106.35%. Long Treasuries: 150.56%. Live since launch: -7.23%. High yield: +18.84%. Same rules, very different era. Rising rates changed the math for the defensive sleeve.",
+      "zh_summary": "從 2007 年 6 月至 2021 年 6 月推出回測，JOJO.Index 回報 548.45%。高收益：106.35%。長期國債：150.56%。推出後實盤：-7.23%。高收益：+18.84%。相同規則，完全不同時代。利率上升改變了防禦性部分的計算。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "rates",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2116904365311115637": {
+      "en_summary": "JOJO.Index = ATAC Credit-On/Credit-Off Index, launched 6/14/2021. Results before launch are backtested and hypothetical. Indexes are unmanaged, have no fees and cannot be invested in directly. Past performance does not guarantee future results. Not investment advice.",
+      "zh_summary": "JOJO.Index = ATAC Credit-On/Credit-Off Index，於 2021 年 6 月 14 日推出。推出前回報為回測及假設性。指數未經管理、無費用，且不能直接投資。過去表現不保證未來結果。非投資建議。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2116904128743973216": {
+      "en_summary": "Cliff Sosin on why demand for frontier AI may narrow as models get smarter: diamond-shaped demand frontier, few use cases for super elite (300 IQ) intelligence, lots for very good intelligence which is competitive and commoditized. Question on market size if good enough intelligence is very cheap. Quoted discussion includes Meta, frontier labs, and why comfortable with 80% portfolio in Carvana.",
+      "zh_summary": "Cliff Sosin 談為何前沿 AI 需求可能隨模型變聰明而收窄：鑽石形需求前沿，超精英（300 IQ）智能用途極少，優質智能用途很多但高度競爭及商品化。若足夠好的智能非常便宜，市場有多大？引用討論包括 Meta、前沿實驗室，以及為何對 Carvana 持倉 80% 感到舒適。",
+      "tickers": ["META", "CVNA"],
+      "stance": "中性",
+      "stance_by_ticker": {"META": "中性", "CVNA": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"CVNA": "Cliff Sosin 持有 80% 投資組合於 Carvana"}
+    },
+    "2116904085664288820": {
+      "en_summary": "SPX is up +10.7% YTD at the end of October 2026. There have been 28 prior years where SPX was up at least that much at this point. Only 3 times was SPX negative for the rest of the year after that. Of 28 years. None worse than -0.75%.",
+      "zh_summary": "標普 500 於 2026 年 10 月底年至今上升 +10.7%。歷史上有 28 年同期升幅至少如此。其後全年餘下時間僅 3 次為負。28 年中無一次跌幅超過 -0.75%。",
+      "tickers": ["SPY"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPY": "睇好"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    },
+    "2116902076663972228": {
+      "en_summary": "We launched a new feature for @cfosilvia every day last week: Monday MCP connections, Tuesday Silvia News, Wednesday Multi-currency support, Thursday Silvia Legacy, Friday Multiple portfolios per user. We have ~10 full-time employees, but our pace of shipping is accelerating.",
+      "zh_summary": "我們上週每天為 @cfosilvia 推出新功能：週一 MCP 連接、週二 Silvia 新聞、週三多貨幣支援、週四 Silvia Legacy、週五每位用戶多投資組合。我們有約 10 名全職員工，但發布速度正在加快。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
