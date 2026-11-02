@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2117275026772897909": {
+      "en_summary": "@AlderLaneEggs says $FGII will be the way to invest in @tzero Long/Short, while $NXH is a suckers bet on playing @tzero.",
+      "zh_summary": "@AlderLaneEggs 表示$FGII將是投資@tzero多空的方式，而$NXH是玩@tzero的傻瓜賭注。",
+      "tickers": ["FGII", "NXH"],
+      "stance": "中性",
+      "stance_by_ticker": {"FGII": "睇好", "NXH": "睇淡"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"FGII": "作為投資tZERO多空的方式", "NXH": "被視為傻瓜賭注"}
+    },
+    "2117273662642667707": {
+      "en_summary": "@StockSavvyShay notes $IREN is now in its biggest drawdown in 4 years.",
+      "zh_summary": "@StockSavvyShay 指出$IREN目前處於四年來最大回撤中。",
+      "tickers": ["IREN"],
+      "stance": "中性",
+      "stance_by_ticker": {"IREN": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2117271217577365883": {
+      "en_summary": "@StockSavvyShay says $ANT has now mapped out over $400B in $GOOGL TPU compute including $161B in $AVGO equipment leases and another ~$135B of expected capacity through 2031. Google is turning its in-house TPUs into a much larger external AI compute business while also holding option to invest another $10B in Anthropic at its IPO price.",
+      "zh_summary": "@StockSavvyShay 表示$ANT已規劃超過4000億美元的$GOOGL TPU算力，包括1610億美元的$AVGO設備租賃以及至2031年約1350億美元的預期產能。Google正將其內部TPU轉變為更大規模的外部AI算力業務，同時持有以IPO價格再投資100億美元於Anthropic的選擇權。",
+      "tickers": ["ANT", "GOOGL", "AVGO"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ANT": "睇好", "GOOGL": "睇好", "AVGO": "中性"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ANT": "規劃逾4000億美元GOOGL TPU算力", "GOOGL": "將內部TPU轉為外部AI算力業務並有投資Anthropic選擇權"}
+    },
+    "2117269765228003331": {
+      "en_summary": "@PeterSchiff says Strategy has already burned through 92% of its flexible cash reserves since Aug. 30, leaving just $133 million left. It has spent about $2.25 billion buying back $STRC this year. At the recent rate of cash depletion, the remaining cash could be gone within days. Questions what happens to STRC's price when Strategy can no longer afford to support it.",
+      "zh_summary": "@PeterSchiff 表示Strategy自8月30日以來已耗盡92%的靈活現金儲備，僅剩1.33億美元。今年已花費約22.5億美元回購$STRC。按近期現金消耗速度，剩餘現金可能在數日內耗盡。質疑當Strategy無力支持時$STRC價格會如何。",
+      "tickers": ["STRC", "MSTR"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"STRC": "睇淡", "MSTR": "睇淡"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"STRC": "現金儲備即將耗盡，無力繼續支持回購", "MSTR": "現金消耗迅速，回購能力受質疑"}
+    },
+    "2117269492283642126": {
+      "en_summary": "@ThetaWarrior notes $SPY BULL LOCKS IN GAINS AT THE OPEN.",
+      "zh_summary": "@ThetaWarrior 指出$SPY多頭在開盤鎖定收益。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
