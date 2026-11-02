@@ -147,7 +147,7 @@ th{font-size:12.5px;color:var(--muted);font-weight:700}
 .pv dl{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;margin:0;font-size:13.5px}.pv dt{color:var(--muted)}.pv dd{margin:0;text-align:right;white-space:nowrap}
 .pv-more{display:block;margin-top:6px;font-size:12.5px;color:var(--link);font-weight:600}
 .pv-find{width:100%;font:inherit;font-size:15px;padding:9px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);margin:0 0 10px}
-.site-foot{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+.tool-btn{display:inline-block;padding:8px 16px;border-radius:999px;background:var(--accent,#0071e3);color:#fff;font-weight:700;font-size:14px;text-decoration:none}.aff-tag{display:inline-block;margin-left:6px;padding:1px 8px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--muted);font-size:12px;font-weight:700;vertical-align:middle}.site-foot{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
 .ct-news{position:relative;overflow-x:clip;box-sizing:border-box;width:100%;max-width:100%;margin:16px 0;padding:14px 16px;background:var(--surface);border:0;border-radius:20px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .ct-news-t{flex:1 0 100%;margin:0;font-weight:700;font-size:15px;line-height:1.45}
 .ct-news input[type=email]{flex:1 1 140px;min-width:0;max-width:100%;box-sizing:border-box;margin:0;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:16px}
@@ -238,21 +238,23 @@ def verdict(act, est, lang):
 # ---------- page parts ----------
 
 def news_cta(lang, src):
-    """Email-only content-upgrade CTA → checklist magnet."""
+    """Email-only content-upgrade CTA → checklist magnet (redirect on success)."""
     import json as _json
-    check = f'/{lang}/checklist/earnings/'
+    check = f'https://thecrowdtape.com/{lang}/checklist/earnings/?utm_source=resend&utm_medium=email&utm_campaign=welcome1'
     if lang == 'zh':
         title, note, btn = '免費領取財報解讀清單', '唔會濫發，隨時取消。', '電郵領取'
-        ok = '多謝！完整清單：' + check
+        ok = '多謝！正在開啟免費財報清單…'
         bad = '電郵地址有誤，請再試。'
-        more = f'或者直接打開 <a href="{check}">財報解讀清單</a>。'
+        more = f'或者直接打開 <a href="/{lang}/checklist/earnings/">財報解讀清單</a>。'
     else:
         title, note, btn = 'Get the free earnings checklist', 'No spam. Unsubscribe anytime.', 'Email me the list'
-        ok = 'Thanks! Full checklist: ' + check
+        ok = 'Thanks! Opening your free earnings checklist…'
         bad = 'Please check the email address and try again.'
-        more = f'Or open the <a href="{check}">earnings checklist</a>.'
+        more = f'Or open the <a href="/{lang}/checklist/earnings/">earnings checklist</a>.'
     fid = 'ct-email-' + re.sub(r'[^a-z0-9]+', '-', src.lower())
-    ok_js, bad_js = _json.dumps(ok, ensure_ascii=False), _json.dumps(bad, ensure_ascii=False)
+    ok_js, bad_js, check_js = (_json.dumps(ok, ensure_ascii=False),
+                               _json.dumps(bad, ensure_ascii=False),
+                               _json.dumps(check, ensure_ascii=False))
     return (
         f'<aside class="ct-upgrade ch" style="padding:16px 18px">'
         f'<form class="ct-news" data-lang="{lang}" action="https://crowdtape-newsletter.vercel.app/api/subscribe" method="POST">'
@@ -265,13 +267,36 @@ def news_cta(lang, src):
         f'<small>{E(note)} {more}</small>'
         f'<p class="ct-news-msg" role="status" hidden></p>'
         f'</form>'
-        f'<script>(function(){{var ok={ok_js},bad={bad_js};'
+        f'<script>(function(){{var ok={ok_js},bad={bad_js},go={check_js};'
         f'document.currentScript.previousElementSibling.addEventListener("submit",function(e){{'
         f'e.preventDefault();var f=e.target,m=f.querySelector(".ct-news-msg"),d=Object.fromEntries(new FormData(f));'
         f'fetch(f.action,{{method:"POST",headers:{{"Content-Type":"application/json"}},body:JSON.stringify(d)}})'
         f'.then(function(r){{return r.json()}}).then(function(j){{m.hidden=false;m.textContent=j.ok?ok:bad;'
-        f'if(j.ok){{f.reset();if(window.gtag)gtag("event","newsletter_signup",{{lang:f.dataset.lang||"",src:d.src||""}});}}}})'
+        f'if(j.ok){{f.reset();if(window.gtag)gtag("event","newsletter_signup",{{lang:f.dataset.lang||"",src:d.src||""}});location.assign(go);}}}})'
         f'.catch(function(){{m.hidden=false;m.textContent=bad;}});}});}})();</script></aside>'
+    )
+
+
+def aff_optionstrat(lang):
+    """One end-of-article OptionStrat module (earnings / options-oriented)."""
+    url = ('https://optionstrat.com/thecrowdtape'
+           '?utm_source=thecrowdtape&utm_medium=article&utm_campaign=optionstrat')
+    if lang == 'zh':
+        title = '想睇呢個結構嘅損益圖？用 OptionStrat 試'
+        note = '聯盟連結；你無需多付。佣金不影響好淡統計。'
+        btn = '打開 OptionStrat'
+    else:
+        title = 'Want to map this payoff visually? Try OptionStrat'
+        note = 'Affiliate link; you pay nothing extra. Commission does not affect bull/bear stats.'
+        btn = 'Open OptionStrat'
+    return (
+        f'<aside class="aff-article ch" data-tool="optionstrat" style="padding:16px 18px;'
+        f'border:1px dashed var(--line);border-radius:16px;background:var(--surface)">'
+        f'<p style="margin:0 0 6px;font-weight:700">{E(title)} '
+        f'<span class="aff-tag">{"聯盟推廣" if lang=="zh" else "Affiliate"}</span></p>'
+        f'<p style="margin:0 0 10px;font-size:13.5px;color:var(--muted)">{E(note)}</p>'
+        f'<a class="tool-btn" href="{E(url)}" rel="sponsored nofollow noopener" target="_blank" '
+        f'data-tool="optionstrat" data-placement="article">{E(btn)}</a></aside>'
     )
 
 
@@ -474,6 +499,7 @@ def brief_page(co, lang, stamp, has_stock):
     if p:
         parts.append(f'<p class="note">{E(t["pending"](p["q"], eps_s(p["eps_act"]), eps_s(p["eps_est"]) if p.get("eps_est") is not None else ""))}</p>')
     parts += [chap1(co, lang), chap2(co, lang), chap3(co, lang), chap4(co, lang), chap5(co, lang)]
+    parts.append(aff_optionstrat(lang))
     parts.append(news_cta(lang, f'earnings-{tk}'))
     parts.append(f'<p class="small">{E(t["source"](co["latest"].get("filed") or "—"))} {t["updated"]} {stamp} HKT</p>')
     parts.append(f'<p><a href="/{lang}/earnings/">← {E(t["back"])}</a></p>')

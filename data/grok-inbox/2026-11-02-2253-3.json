@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2117233515104464961": {
+      "en_summary": "The deal is 4.5x Marvell shares for every Lumentum share. 4.5x * 196 = $882 (floating), so you're getting that for $LITE, which is still more than current prices. If Marvell recovers, so does Lumentum shares now.",
+      "zh_summary": "交易是每 1 股 Lumentum 換取 4.5 股 Marvell。4.5 倍 * 196 = 882 美元（浮動），所以你為 $LITE 獲得的是這個價格，仍然高於當前價格。如果 Marvell 回升，$LITE 股價也會跟著回升。",
+      "tickers": ["LITE", "MRVL"],
+      "stance": "中性",
+      "stance_by_ticker": {"LITE": "中性", "MRVL": "中性"},
+      "horizon": null,
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"LITE": "按 4.5x MRVL 計算約 $882，高於當前價，若 MRVL 回升則受益"}
+    },
+    "2117232605146034649": {
+      "en_summary": "I actually thought $MRVL would buy $SIVE given smaller MC, but they went ahead and bought $LITE instead. Since it looked like Marvell was heading the Broadcom direction with vertical integration and needed lasers. $SIVE / $AAOI are much more strategically valuable now (both as independent suppliers + M&A prospects).",
+      "zh_summary": "我原本以為 $MRVL 會買下市值較小的 $SIVE，但他們選擇了收購 $LITE。因為看起來 Marvell 正朝 Broadcom 方向進行垂直整合並需要激光器。$SIVE / $AAOI 現在更具戰略價值（作為獨立供應商 + 併購前景）。",
+      "tickers": ["AAOI", "LITE", "MRVL", "SIVE"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AAOI": "睇好", "SIVE": "睇好", "LITE": "中性", "MRVL": "中性"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SIVE": "作為獨立供應商及併購目標更具戰略價值", "AAOI": "作為獨立供應商及併購目標更具戰略價值"}
+    },
+    "2117230746746409187": {
+      "en_summary": "$CIFR first HPC rent came in at an ~88% cash gross margin vs ~30% on bitcoin mining. Cipher collects long-term rent on powered data centers while tenants own and depreciate the GPUs which is why its project debt priced at 6% while GPU lessors like $CRWV now see bond yields near 15%.",
+      "zh_summary": "$CIFR 首筆 HPC 租金現金毛利率約 88%，而比特幣挖礦約 30%。Cipher 收取供電數據中心的長期租金，而租戶擁有並折舊 GPU，這就是為什麼其項目債務定價為 6%，而像 $CRWV 這樣的 GPU 出租商債券收益率接近 15%。",
+      "tickers": ["CIFR", "CRWV"],
+      "stance": "睇好",
+      "stance_by_ticker": {"CIFR": "睇好", "CRWV": "中性"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"CIFR": "HPC 租金現金毛利率約 88% vs 挖礦 30%，債務成本較低"}
+    },
+    "2117230238136688943": {
+      "en_summary": "Found this break of resistance browsing charts with our Bullish or Bearish? tool. LyondellBasell Industries $LYB closed above August highs on Friday.",
+      "zh_summary": "使用我們的看漲或看跌工具瀏覽圖表時發現了這個阻力突破。LyondellBasell Industries $LYB 上週五收盤高於 8 月高點。",
+      "tickers": ["LYB"],
+      "stance": "睇好",
+      "stance_by_ticker": {"LYB": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2117229748266905942": {
+      "en_summary": "In today's Early Look: \"The #Quad4 Express\". All the while, the Big Bros with their Big Tech $XLK bats struck out again, down another -2.0% last week to -8.3% in the last month. The Machine is throwing the CNBC-type “Retail Investor” (down -5.6% Friday) what Nolan would call a “bowtie.”",
+      "zh_summary": "在今天的 Early Look：「#Quad4 Express」。與此同時，大型科技股 $XLK 再次失利，上週再跌 2.0%，近一個月累計下跌 8.3%。機器正在向 CNBC 式「散戶投資者」（上週五下跌 5.6%）投出 Nolan 所稱的「蝴蝶結」。",
+      "tickers": ["XLK"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"XLK": "睇淡"},
+      "horizon": "短線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}

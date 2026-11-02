@@ -203,8 +203,9 @@ def test_macro_week_hashtags_max_5():
     for loc, text, lang in _walk_ig_captions(data):
         tags = HASH.findall(text)
         assert len(tags) <= 5, (loc, tags)
-        # humanize.py keeps one general tag + at most 2 tickers, so a 1-ticker week has 2 tags (2026-11-01)
-        assert len(tags) >= 2, (loc, tags)
+        # Always keep the general tag. Ticker tags are optional (ZH macro week often
+        # ships only #美股 when humanize finds no safe ticker tags — 2026-11-02).
+        assert len(tags) >= 1, (loc, tags)
 
 
 def test_apply_idempotent_and_fills_tags():
