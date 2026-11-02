@@ -9,7 +9,8 @@ on:
     - cron: '17 3-23/4 * * *'  # UTC 03:17, 07:17 ... = HKT 11:17, 15:17, 19:17, 23:17, 03:17, 07:17
   push:
     branches: [main]
-    paths: ['tools/**', '.github/workflows/update-site.yml', 'data/super-grok-analysis.json', 'data/grok-inbox/**', 'data/super-grok-writeups.json']
+    # grok-inbox pushes handled by inbox-lite.yml (debounce + skip heavy steps). Full rebuild stays on schedule/dispatch/tools.
+    paths: ['tools/**', '.github/workflows/update-site.yml', 'data/super-grok-analysis.json', 'data/super-grok-writeups.json']
 permissions:
   contents: write
 concurrency:
