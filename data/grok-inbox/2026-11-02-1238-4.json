@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2117056544181543044": {
+      "en_summary": "Karpathy built his own YouTube algo by getting Claude to read 43m Hacker News comments from last 20 years and pull every vid recommendation. 6,454 vids on HackerTube with playlist The HN Canon.",
+      "zh_summary": "Karpathy 通過讓 Claude 閱讀過去20年的4300萬條 Hacker News 評論並提取每個視頻推薦，構建了自己的 YouTube 算法。HackerTube 上有6,454個視頻，播放列表名為 The HN Canon。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2117052494467498316": {
+      "en_summary": "The stock market is not the economy. Since 1929, the S&P 500 has suffered 12 bear markets without a recession, including recent declines of 20% or more in 2018, 2022, and 2025. Stocks can crash without the economy contracting.",
+      "zh_summary": "股票市場不是經濟。自1929年以來，標普500經歷了12次無衰退的熊市，包括2018、2022和2025年近期20%或以上的下跌。股票可以在經濟未收縮時崩盤。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2117051265716744310": {
+      "en_summary": "From a trusted pilot: too early to tell all factors but likely complacency and inexperience. From ATC audio and radar, inexperienced pilot or pilots and weather. Likely failed to follow procedures.",
+      "zh_summary": "來自一位信任的飛行員：太早無法判斷所有因素，但可能是自滿和缺乏經驗。從ATC音頻和雷達來看，經驗不足的飛行員和天氣。可能未能遵循程序。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2117049243152400412": {
+      "en_summary": "Extremely bullish sign that people are getting value from their bots. For $5k a year you can have two or three competent mid-tier employees. Grok bots represent $30 an hour employees on average (from $15-25 clerical and $50-100 analyst). Quoted @elonmusk: cost of serving Grok Bot was unsustainably high relative to revenue.",
+      "zh_summary": "人們從他們的機器人中獲得價值是極其看漲的跡象。每年5000美元可以擁有兩三個有能力的中級員工。Grok 機器人平均代表每小時30美元的員工（從15-25美元文職到50-100美元分析師）。引用 @elonmusk：提供 Grok Bot 的成本相對於收入不可持續地高。",
+      "tickers": ["SPCX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPCX": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPCX": "Grok Bot 被視為每小時30美元的員工價值"}
+    },
+    "2117048116168003670": {
+      "en_summary": "(Reposted by @TrungTPhan) incredible... Quoted Karpathy's HackerTube weekend hack using Claude on 43M Hacker News comments.",
+      "zh_summary": "（由 @TrungTPhan 轉發）令人難以置信……引用 Karpathy 使用 Claude 處理4300萬條 Hacker News 評論的 HackerTube 週末黑客項目。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
