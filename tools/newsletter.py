@@ -292,8 +292,12 @@ h1{{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!im
   </form>
   <script>
   (function(){{
-    var M={{en:["Thanks! You're subscribed. Free checklist: /en/checklist/earnings/","Please check the email address and try again."],
-           zh:["Thanks! You're subscribed. Free checklist: /en/checklist/earnings/","Please check the email address and try again."]}};
+    var M={{en:["Thanks! Opening your free earnings checklist…","Please check the email address and try again."],
+           zh:["多謝！正在開啟免費財報清單…","電郵地址有誤，請再試。"]}};
+    function checklistUrl(l){{
+      var lang=(l==='zh')?'zh':'en';
+      return 'https://thecrowdtape.com/'+lang+'/checklist/earnings/?utm_source=resend&utm_medium=email&utm_campaign=welcome1';
+    }}
     document.querySelectorAll('form.ct-news').forEach(function(f){{
       f.addEventListener('submit',function(e){{
         e.preventDefault();
@@ -301,14 +305,15 @@ h1{{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!im
         fetch(f.action,{{method:'POST',headers:{{'Content-Type':'application/json'}},body:JSON.stringify(d)}})
           .then(function(r){{return r.json()}}).then(function(j){{
             m.hidden=false;m.textContent=M[l][j.ok?0:1];
-            if(j.ok){{f.reset();if(window.gtag)gtag('event','newsletter_signup',{{lang:l}});}}
+            if(j.ok){{f.reset();if(window.gtag)gtag('event','newsletter_signup',{{lang:l}});location.assign(checklistUrl(l));}}
           }}).catch(function(){{m.hidden=false;m.textContent=M[l][1];}});
       }});
     }});
     var sub=new URLSearchParams(location.search).get('subscribed');
-    if(sub==='1'||sub==='0') document.querySelectorAll('form.ct-news').forEach(function(f){{
+    if(sub==='1'){{var lang=(document.documentElement.lang||'').toLowerCase().indexOf('zh')===0?'zh':'en';location.replace(checklistUrl(lang));}}
+    else if(sub==='0') document.querySelectorAll('form.ct-news').forEach(function(f){{
       var l=f.dataset.lang||'en',m=f.querySelector('.ct-news-msg');
-      m.hidden=false;m.textContent=M[l][sub==='1'?0:1];
+      m.hidden=false;m.textContent=M[l][1];
     }});
   }})();
   </script>

@@ -99,6 +99,16 @@ def clean_html(s):
     )
     # Adjacent cite links both labeled "post"/"原帖" render as "post post" — keep the
     # first label, replace later ones with a middot so the links stay clickable.
+    # Also collapse plain "post post" / "原帖 原帖" left after earlier HTML cleanups,
+    # and "word.post" glued cite text (stops.post) already handled above.
+    out = _dedupe_adjacent_cites(out)
+    return out
+
+
+def _dedupe_adjacent_cites(out):
+    """Collapse back-to-back X/Twitter cite anchors that share the same label."""
+    if not out:
+        return out
     cite = (
         r'(<a\s+[^>]*href="https://(?:x|twitter)\.com/[^"]*"[^>]*>)'
         r'(post|原帖)'
@@ -112,6 +122,9 @@ def clean_html(s):
     while prev != out:
         prev = out
         out = re.sub(cite, r'\1\2\3\4\5·\6', out, count=1, flags=re.I)
+    # Plain-text residue if cite tags were stripped elsewhere: "post post" / "原帖原帖"
+    out = re.sub(r'(?<![\w])(post)(\s+)\1(?![\w])', r'\1', out, flags=re.I)
+    out = re.sub(r'(原帖)(\s*)\1', r'\1', out)
     return out
 
 
