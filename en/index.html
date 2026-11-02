@@ -1088,8 +1088,8 @@ function analysisTag(when, n, gap){
   return p.join(' · ');
  }
  const p=['Analysis as of '+when+' HKT'];
- if(n!=null) p.push('covers '+n+' posts (writeup count; not the live card total)');
- if(gap) p.push(gap+' not yet analyzed');
+ if(n!=null) p.push('covers '+n+' 則 (寫作統計, 非即時卡片總數)');
+ if(gap) p.push('not yet analyzed '+gap+' posts');
  return p.join(' · ');
 }
 function analysisLead(date, sm){
@@ -1675,7 +1675,7 @@ function hlTicker(t){const c=UNC(t)?null:closes(t);const loading=!coreDone&&!(D.
 function hlAvatar(h){const i=infoOf(h);const name=i.name||h;return `<a href="${xUrl(h)}" target="_blank" rel="noopener" title="@${esc(h)}" aria-label="@${esc(h)} X profile">${i.avatar?`<img src="${esc(i.avatar)}" alt="">`:esc((Array.from(name.replace(/^[^\p{L}\p{N}]+/u,''))[0]||'@').toUpperCase())}</a>`}
 // 寫手嘅 tone（看好／看淡／分歧／中性）用返全站同一套字眼顯示，en／ko 亦會翻譯（原本直接顯示資料入面嘅中文）
 const TONE_TXT={'看好':'Bullish','看淡':'Bearish','分歧':'Mixed','中性':'Neutral','Bullish':'Bullish','Bearish':'Bearish','Mixed':'Mixed','Neutral':'Neutral'};
-function highlightsHtml(date,w){const H=D.highlights&&D.highlights[date];if(!H)return '';if(!H.cards||!H.cards.length){ if(!(H.gap||H.gap_note))return ''; const note=H.gap_note||(PAGE_LANG==='en'?('No SuperGrok write-up was produced for '+date+'; highlights intentionally left empty.'):(date+'; no SuperGrok write-up that day — gap left intentional. ')); return `<section class="c12 panel hl-gap"><p class="note">${esc(note)}</p></section>`;}
+function highlightsHtml(date,w){const H=D.highlights&&D.highlights[date];if(!H)return '';if(!H.cards||!H.cards.length){ if(!(H.gap||H.gap_note))return ''; const note=H.gap_note||(PAGE_LANG==='en'?('No SuperGrok write-up was produced for '+date+'; highlights intentionally left empty.'):(date+' ; no SuperGrok write-up that day — gap left intentional.')); return `<section class="c12 panel hl-gap"><p class="note">${esc(note)}</p></section>`;}
  const card=c=>`<article class="hl ${toneCls(c.tone)}"><div class="hl-body"><div class="hl-tags">${c.theme?`<span class="hl-theme">${esc(c.theme)}</span>`:''}${c.tone?`<span class="hl-tone">${esc(TONE_TXT[c.tone]||c.tone)}</span>`:''}</div><h3>${esc(c.headline)}</h3>${c.big?`<div class="hl-big${c.tickers.length?' inline':''}"><div class="v">${esc(c.big.value)}</div>${c.big.label?`<div class="l">${esc(c.big.label)}</div>`:''}</div>`:''}${c.tickers.length?`<div class="hl-tks">${c.tickers.map(hlTicker).join('')}</div>`:''}${c.points.length?`<ol>${c.points.slice(0,3).map(x=>`<li><span>${numHi(x)}</span></li>`).join('')}</ol>`:''}</div>${c.handles.length||c.source_note?`<div class="hl-foot">${c.handles.length?`<div class="hl-avs">${c.handles.map(hlAvatar).join('')}</div>`:''}<div class="hl-who">${c.handles.map(h=>`<a href="${xUrl(h)}" target="_blank" rel="noopener">@${esc(h)}</a>`).join(', ')}${c.handles.length&&c.source_note?'<br>':''}${c.source_note?esc(c.source_note):''}</div></div>`:''}</article>`;
  const lead=analysisLead(date);const rg=lead||(w&&w.from&&w.to?`${fmtR(w.from)} – ${fmtR(w.to)} HKT`:(H.range||''));
  return `<section class="c12 hl-sec" aria-label="Today’s highlights"><div class="hl-head"><h2>Today’s highlights</h2>${rg?`<span class="rg">${esc(rg)}</span>`:''}</div><div class="hl-grid">${H.cards.slice(0,3).map(card).join('')}</div>${H.stats_note?`<p class="note" style="margin:10px 0 0">${esc(H.stats_note)}</p>`:''}</section>`}
