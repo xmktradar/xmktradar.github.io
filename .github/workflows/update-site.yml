@@ -248,12 +248,49 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
           # og/ includes og/c motion mp4s, cover jpgs, and *.vo.json voiceover markers
-          git add -A index.html zh/ en/ ko/ support/ advertise/ about/ newsletter/ checklist/ tools/index.html data/ og/ px/ av/ embed/ social/ sitemap.xml llms-full.txt 404.html ccab4c5e388dc31f07a4976abba71466.txt
+          PUBLISH_PATHS="index.html zh/ en/ ko/ support/ advertise/ about/ newsletter/ checklist/ tools/index.html data/ og/ px/ av/ embed/ social/ sitemap.xml llms-full.txt 404.html ccab4c5e388dc31f07a4976abba71466.txt"
+          git add -A $PUBLISH_PATHS
           git diff --cached --quiet && exit 0
           git commit -m "定時重建 $(date '+%Y-%m-%d %H:%M') HKT"
           # --autostash: build steps can leave tracked files changed that are not published (they used to stop the pull).
-          git pull --rebase --autostash origin main || { git rebase --abort; echo "::error::main 嘋更新期間有新改動，今次唔發佈，下次再試"; exit 1; }
-          git push origin HEAD:main
+          # Conflict retry once (esp. data/grok-inbox + index.html): prefer remote inbox, keep our rebuild. No force-push.
+          resolve_rebase_conflicts() {
+            local conflicts
+            conflicts=$(git diff --name-only --diff-filter=U || true)
+            if [ -z "$conflicts" ]; then
+              return 1
+            fi
+            echo "::warning::Publish rebase conflicts: $conflicts"
+            while IFS= read -r f; do
+              [ -z "$f" ] && continue
+              case "$f" in
+                data/grok-inbox/*)
+                  git checkout --theirs -- "$f" 2>/dev/null || git rm -f -- "$f" 2>/dev/null || true
+                  git add -- "$f" 2>/dev/null || true
+                  ;;
+                *)
+                  git checkout --ours -- "$f" 2>/dev/null || true
+                  git add -- "$f" 2>/dev/null || true
+                  ;;
+              esac
+            done <<< "$conflicts"
+            if [ -n "$(git diff --name-only --diff-filter=U)" ]; then
+              echo "::error::unresolved conflicts remain after prefer-ours/theirs"
+              return 1
+            fi
+            GIT_EDITOR=true git rebase --continue
+          }
+          if ! git pull --rebase --autostash origin main; then
+            if resolve_rebase_conflicts && git push origin HEAD:main; then
+              echo "::warning::Publish succeeded after one conflict resolve"
+            else
+              git rebase --abort 2>/dev/null || true
+              echo "::error::main 喺更新期間有新改動，今次唔發佈，下次再試"
+              exit 1
+            fi
+          else
+            git push origin HEAD:main
+          fi
           echo published > "$WORK_DIR/published"
       - name: Tell search engines (IndexNow)
         continue-on-error: true
