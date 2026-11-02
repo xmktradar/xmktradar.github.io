@@ -1203,12 +1203,16 @@
    "bull": [
     "AMZN",
     "AAPL",
-    "MSFT",
-    "META"
+    "META",
+    "QQQ"
    ],
-   "bear": [],
+   "bear": [
+    "INTC"
+   ],
    "split": [
     "SPCX",
+    "MSFT",
+    "SPY",
     "TSLA",
     "GOOGL",
     "COIN",
@@ -1220,20 +1224,20 @@
    ],
    "top": [
     "AMZN",
-    "GOOGL",
+    "SPY",
     "AAPL",
-    "SPCX",
+    "GOOGL",
     "NVDA",
+    "SPCX",
     "AMD",
     "META",
-    "SPY",
     "MSFT",
-    "TSLA"
+    "QQQ"
    ],
    "src": "live",
-   "updated_hkt": "2026-11-02 16:40"
+   "updated_hkt": "2026-11-02 17:10"
   }
  },
- "updated_hkt": "2026-11-02 16:40",
+ "updated_hkt": "2026-11-02 17:10",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
