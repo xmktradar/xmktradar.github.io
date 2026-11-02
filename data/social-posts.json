@@ -1683,9 +1683,162 @@
       "INTC"
      ]
     }
+   },
+   "intraday_close": {
+    "post_et": "15:40",
+    "post_hkt": "04:40",
+    "generated_at": "2026-11-02T15:33:56-05:00",
+    "date": "2026-11-02",
+    "date_kst": "2026-11-03",
+    "quotes": {
+     "SPY": {
+      "price": 752.99,
+      "prev_close": 755.72,
+      "chg_pct": -0.36,
+      "time": "2026-11-02T15:33:55-05:00"
+     },
+     "QQQ": {
+      "price": 681.895,
+      "prev_close": 690.49,
+      "chg_pct": -1.24,
+      "time": "2026-11-02T15:33:56-05:00"
+     },
+     "DIA": {
+      "price": 520.06,
+      "prev_close": 517.13,
+      "chg_pct": 0.57,
+      "time": "2026-11-02T15:33:55-05:00"
+     },
+     "AMZN": {
+      "price": 246.36,
+      "prev_close": 240.35,
+      "chg_pct": 2.5,
+      "time": "2026-11-02T15:33:57-05:00"
+     },
+     "AAPL": {
+      "price": 338.98,
+      "prev_close": 344.63,
+      "chg_pct": -1.64,
+      "time": "2026-11-02T15:33:57-05:00"
+     },
+     "META": {
+      "price": 609.63,
+      "prev_close": 614.99,
+      "chg_pct": -0.87,
+      "time": "2026-11-02T15:33:57-05:00"
+     },
+     "INTC": {
+      "price": 59.815,
+      "prev_close": 65.76,
+      "chg_pct": -9.04,
+      "time": "2026-11-02T15:33:58-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-02T15:33:58-05:00",
+     "hkt": "2026-11-03 04:33"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "AMZN",
+      "chg_pct": 2.5,
+      "bull": 4,
+      "bear": 0,
+      "accounts": [
+       "OptionsMike",
+       "TheTranscript_",
+       "Mr_Derivatives",
+       "TrungTPhan",
+       "StockSavvyShay",
+       "TrendSpider",
+       "munster_gene",
+       "KobeissiLetter"
+      ]
+     },
+     {
+      "ticker": "AAPL",
+      "chg_pct": -1.64,
+      "bull": 4,
+      "bear": 0,
+      "accounts": [
+       "charliebilello",
+       "JC_ParetsX",
+       "bespokeinvest",
+       "TrendSpider",
+       "Mr_Derivatives",
+       "StockSavvyShay",
+       "KobeissiLetter",
+       "ripster47"
+      ]
+     },
+     {
+      "ticker": "META",
+      "chg_pct": -0.87,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "OptionsMike",
+       "Mr_Derivatives",
+       "StockSavvyShay",
+       "patrick_oshag",
+       "KobeissiLetter",
+       "saxena_puru",
+       "carlquintanilla"
+      ]
+     },
+     {
+      "ticker": "INTC",
+      "chg_pct": -9.04,
+      "bull": 0,
+      "bear": 2,
+      "accounts": [
+       "OptionsMike",
+       "TheOneLanceB",
+       "Jake__Wujastyk",
+       "StockSavvyShay"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Into the close · As of 15:33 ET (04:33 HKT)\n\n$SPY -0.4% · $QQQ -1.2% · $DIA +0.6%\n\n$AMZN +2.5%, 4 accounts bullish on site\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #AMZN #AAPL",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "收市前回顧 · 截至 15:33 ET（04:33 HKT）\n\n$SPY -0.4% · $QQQ -1.2% · $DIA +0.6%\n\n$AMZN +2.5%，網站 4 個帳號看好\n$AAPL -1.6%，網站 4 個帳號看好\n$META -0.9%，網站 2 個帳號看好\n$INTC -9.0%，網站 2 個帳號看空\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #AMZN #AAPL",
+      "url": null
+     },
+     "en": {
+      "text": "Into the close · As of 15:33 ET (04:33 HKT)\n\n$SPY -0.4% · $QQQ -1.2% · $DIA +0.6%\n\n$AMZN +2.5%, 4 accounts bullish on site\n$AAPL -1.6%, 4 accounts bullish on site\n$META -0.9%, 2 accounts bullish on site\n$INTC -9.0%, 2 accounts bearish on site\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #AMZN #AAPL",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "AMZN",
+      "AAPL",
+      "META",
+      "QQQ"
+     ],
+     "bear": [
+      "INTC"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-02T14:55:31-05:00",
-  "generated_hkt": "2026-11-03 03:55"
+  "generated_at": "2026-11-02T15:33:56-05:00",
+  "generated_hkt": "2026-11-03 04:33"
  }
 }
