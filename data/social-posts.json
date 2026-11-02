@@ -1391,9 +1391,157 @@
       "INTC"
      ]
     }
+   },
+   "intraday_3": {
+    "post_et": "13:30",
+    "post_hkt": "02:30",
+    "generated_at": "2026-11-02T13:35:05-05:00",
+    "date": "2026-11-02",
+    "date_kst": "2026-11-03",
+    "quotes": {
+     "SPY": {
+      "price": 758.01,
+      "prev_close": 755.72,
+      "chg_pct": 0.3,
+      "time": "2026-11-02T13:34:57-05:00"
+     },
+     "QQQ": {
+      "price": 690.13,
+      "prev_close": 690.49,
+      "chg_pct": -0.05,
+      "time": "2026-11-02T13:35:05-05:00"
+     },
+     "DIA": {
+      "price": 522.11,
+      "prev_close": 517.13,
+      "chg_pct": 0.96,
+      "time": "2026-11-02T13:34:50-05:00"
+     },
+     "SPCX": {
+      "price": 139.074,
+      "prev_close": 134.72,
+      "chg_pct": 3.23,
+      "time": "2026-11-02T13:35:06-05:00"
+     },
+     "MSFT": {
+      "price": 518.75,
+      "prev_close": 521.91,
+      "chg_pct": -0.61,
+      "time": "2026-11-02T13:35:06-05:00"
+     },
+     "TSLA": {
+      "price": 407.83,
+      "prev_close": 399.81,
+      "chg_pct": 2.01,
+      "time": "2026-11-02T13:35:07-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-02T13:35:07-05:00",
+     "hkt": "2026-11-03 02:35"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "SPCX",
+      "chg_pct": 3.23,
+      "bull": 3,
+      "bear": 1,
+      "accounts": [
+       "elonmusk",
+       "SawyerMerritt",
+       "TrendSpider",
+       "compound248",
+       "OptionsMike",
+       "firstadopter",
+       "Jake__Wujastyk",
+       "StockSavvyShay"
+      ]
+     },
+     {
+      "ticker": "MSFT",
+      "chg_pct": -0.61,
+      "bull": 3,
+      "bear": 1,
+      "accounts": [
+       "OptionsMike",
+       "bespokeinvest",
+       "Mr_Derivatives",
+       "APompliano",
+       "StockSavvyShay",
+       "KobeissiLetter"
+      ]
+     },
+     {
+      "ticker": "SPY",
+      "chg_pct": 0.3,
+      "bull": 2,
+      "bear": 1,
+      "accounts": [
+       "Stephanie_Link",
+       "OddStats",
+       "carlquintanilla",
+       "charliebilello",
+       "leadlagreport",
+       "Jake__Wujastyk",
+       "RyanDetrick",
+       "KobeissiLetter"
+      ]
+     },
+     {
+      "ticker": "TSLA",
+      "chg_pct": 2.01,
+      "bull": 2,
+      "bear": 1,
+      "accounts": [
+       "OptionsMike",
+       "TrendSpider",
+       "garyblack00",
+       "elonmusk",
+       "compound248",
+       "Jake__Wujastyk"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Early afternoon · As of 13:35 ET (02:35 HKT)\n\n$SPY +0.3% · $QQQ -0.1% · $DIA +1.0%\n\n$SPCX +3.2%, 3 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #SPCX #MSFT",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午后觀察 · 截至 13:35 ET（02:35 HKT）\n\n$SPY +0.3% · $QQQ -0.1% · $DIA +1.0%\n\n$SPCX +3.2%，網站 3 個帳號看好\n$MSFT -0.6%，網站 3 個帳號看好\n$SPY +0.3%，網站 2 個帳號看好\n$TSLA +2.0%，網站 2 個帳號看好\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SPCX #MSFT",
+      "url": null
+     },
+     "en": {
+      "text": "Early afternoon · As of 13:35 ET (02:35 HKT)\n\n$SPY +0.3% · $QQQ -0.1% · $DIA +1.0%\n\n$SPCX +3.2%, 3 accounts bullish on site\n$MSFT -0.6%, 3 accounts bullish on site\n$SPY +0.3%, 2 accounts bullish on site\n$TSLA +2.0%, 2 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #SPCX #MSFT",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "AMZN",
+      "AAPL",
+      "META",
+      "QQQ"
+     ],
+     "bear": [
+      "INTC"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-02T12:21:06-05:00",
-  "generated_hkt": "2026-11-03 01:21"
+  "generated_at": "2026-11-02T13:35:05-05:00",
+  "generated_hkt": "2026-11-03 02:35"
  }
 }
