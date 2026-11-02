@@ -1,5 +1,6 @@
 name: Update prices
-# Prices also refresh inside "Update site" every 4 hours; this one is for a manual refresh.
+# Prices also refresh inside "Update site" every 4 hours; this workflow is manual / tools-path only.
+# Own concurrency group so it does not queue behind or block the 60min site-update group.
 on:
   workflow_dispatch:
   push:
@@ -8,7 +9,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: site-update
+  group: update-prices
   cancel-in-progress: false
 jobs:
   prices:
