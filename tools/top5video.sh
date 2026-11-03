@@ -1,10 +1,14 @@
 #!/bin/sh
-# Silent 1080x1920 ~12s clip from og/top5-<lang>.png.
+# Silent 1080x1920 ~12s clip from og/top5-<lang>.png (fixed name).
+# Always writes og/top5-<lang>.mp4 for site / latest compat.
+# When YYYY-MM-DD is given (or a dated portrait PNG exists), also writes
+# og/top5-<lang>-<date>.mp4 so social-posts can point at a path-cache-safe URL.
 # Blurred cover background, the card kept sharp and centered, slow zoom that
 # stays inside the card's margin. crf 28, no audio. Needs ffmpeg.
-# Usage: tools/top5video.sh zh|en|ko
+# Usage: tools/top5video.sh zh|en|ko [YYYY-MM-DD]
 set -eu
 lang=${1:?lang zh|en|ko}
+day=${2:-}
 root=$(CDPATH= cd -- "$(dirname "$0")/.." && pwd)
 png="$root/og/top5-${lang}.png"
 out="$root/og/top5-${lang}.mp4"
@@ -23,3 +27,12 @@ ffmpeg -y -i "$png" \
   -an -c:v libx264 -preset veryfast -crf 28 -pix_fmt yuv420p -movflags +faststart \
   "$out"
 echo "wrote $out"
+if [ -z "$day" ]; then
+  # Newest dated portrait written alongside the fixed name (from top5card.js).
+  day=$(ls -1 "$root"/og/top5-"$lang"-????-??-??.png 2>/dev/null | sed -n "s|.*/top5-${lang}-\\([0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]\\)\\.png\$|\\1|p" | sort | tail -1 || true)
+fi
+if [ -n "$day" ]; then
+  dated="$root/og/top5-${lang}-${day}.mp4"
+  cp "$out" "$dated"
+  echo "wrote $dated"
+fi

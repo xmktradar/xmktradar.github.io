@@ -2239,10 +2239,10 @@ def build_top5(daily, day, made_hkt, fallback_window=None):
       bull: [{t, n}],   # up to 5, rank_rows bull: nb desc, n_posts desc, ticker asc
       bear: [{t, n}],   # up to 5, rank_rows bear: nr desc, n_posts desc, ticker asc
       images: {zh|en: {
-        portrait: SITE+'og/top5-<lang>.png?v=<date>',       # 1080x1350, X / IG / Threads
-        square:   SITE+'og/top5-<lang>-sq.png?v=<date>'}},  # 1080x1080, Facebook
+        portrait: SITE+'og/top5-<lang>-<date>.png',         # 1080x1350, X / IG / Threads
+        square:   SITE+'og/top5-<lang>-<date>-sq.png'}},    # 1080x1080, Facebook
       format: image_card,
-      video: {zh|en: SITE+'og/top5-<lang>.mp4?v=<date>'},
+      video: {zh|en: SITE+'og/top5-<lang>-<date>.mp4'},
       posts: {zh|en: {x, instagram, threads, facebook, has_link, first_comment}},
     }
 
@@ -2257,7 +2257,7 @@ def build_top5(daily, day, made_hkt, fallback_window=None):
     Threads is fit_threads (500 code points).
     Every thecrowdtape.com link is tag_url(..., platform, 'top5').
     Each post ends with SHORT[lang]['disc'] and the usual hashtags.
-    format is image_card. video.<lang> points at og/top5-<lang>.mp4.
+    format is image_card. video.<lang> points at og/top5-<lang>-<date>.mp4 (dated path so X/CDN path cache cannot serve yesterday's card; fixed og/top5-<lang>.mp4 is still written for site/latest compat).
     """
     daily = daily if isinstance(daily, dict) else {}
     bulls = _side_rows(rank_rows(daily.get('bull'), 'bull'), 'nb', 5)
@@ -2281,20 +2281,35 @@ def build_top5(daily, day, made_hkt, fallback_window=None):
         'format': 'image_card',
         'bull': bulls,
         'bear': bears,
-        'images': {lang: {'portrait': f'{SITE}og/top5-{lang}.png?v={day}',
-                          'square': f'{SITE}og/top5-{lang}-sq.png?v={day}'} for lang in LANGS},
-        'video': {lang: f'{SITE}og/top5-{lang}.mp4?v={day}' for lang in LANGS},
+        'images': {lang: {'portrait': f'{SITE}og/top5-{lang}-{day}.png',
+                          'square': f'{SITE}og/top5-{lang}-{day}-sq.png'} for lang in LANGS},
+        'video': {lang: f'{SITE}og/top5-{lang}-{day}.mp4' for lang in LANGS},
         'posts': posts,
     }
 
 
 def write_top5_jobs(slot):
-    """work/top5cards.json for tools/top5card.js. One portrait and one square job per language."""
+    """work/top5cards.json for tools/top5card.js. One portrait and one square job per language.
+
+    Primary out is the dated path (X / CDN path-cache safe). also is the fixed
+    name still overwritten for site / latest compat.
+    """
+    day = _as_day(slot.get('date')) or str(slot.get('date') or '')
     jobs = []
     for lang in LANGS:
         data = _top5_card_data(slot, lang)
-        jobs.append({'lang': lang, 'size': 'portrait', 'out': f'og/top5-{lang}.png', 'data': data})
-        jobs.append({'lang': lang, 'size': 'square', 'out': f'og/top5-{lang}-sq.png', 'data': data})
+        jobs.append({
+            'lang': lang, 'size': 'portrait', 'date': day,
+            'out': f'og/top5-{lang}-{day}.png',
+            'also': f'og/top5-{lang}.png',
+            'data': data,
+        })
+        jobs.append({
+            'lang': lang, 'size': 'square', 'date': day,
+            'out': f'og/top5-{lang}-{day}-sq.png',
+            'also': f'og/top5-{lang}-sq.png',
+            'data': data,
+        })
     write_json(work('top5cards.json'), {'jobs': jobs}, indent=1)
     return jobs
 

@@ -16,6 +16,7 @@ from datetime import datetime, timedelta, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 os.environ['WORK_DIR'] = tempfile.mkdtemp(prefix='top5-test-')
+os.environ.setdefault('UTM_PROMO', '0')  # assert plain utm; promo covered by test_utm_promo
 
 import share  # noqa: E402
 
@@ -129,7 +130,7 @@ def _assert_slot(slot, bulls, bears):
     assert len(slot['bull']) <= 5 and len(slot['bear']) <= 5
     assert slot['format'] == 'image_card'
     for lang in share.LANGS:
-        assert slot['video'][lang] == f'https://thecrowdtape.com/og/top5-{lang}.mp4?v={DAY}'
+        assert slot['video'][lang] == f'https://thecrowdtape.com/og/top5-{lang}-{DAY}.mp4'
         fc = slot['posts'][lang]['first_comment']
         th = fc['threads']
         assert f'utm_source=threads' in th and 'utm_medium=social' in th and 'utm_campaign=top5' in th
@@ -150,8 +151,8 @@ def _assert_slot(slot, bulls, bears):
         assert slot['posts'][lang]['has_link']['threads'] is True
         assert slot['posts'][lang]['has_link']['x'] is True
         assert slot['posts'][lang]['has_link']['instagram'] is False
-        assert slot['images'][lang]['portrait'] == f'https://thecrowdtape.com/og/top5-{lang}.png?v={DAY}'
-        assert slot['images'][lang]['square'] == f'https://thecrowdtape.com/og/top5-{lang}-sq.png?v={DAY}'
+        assert slot['images'][lang]['portrait'] == f'https://thecrowdtape.com/og/top5-{lang}-{DAY}.png'
+        assert slot['images'][lang]['square'] == f'https://thecrowdtape.com/og/top5-{lang}-{DAY}-sq.png'
         for platform in ('x', 'instagram', 'threads', 'facebook'):
             _assert_post(slot['posts'][lang][platform], lang, platform, bulls, bears)
 
@@ -220,8 +221,13 @@ def test_job_file():
     raw = json.load(open(path, encoding='utf-8'))
     outs = [(j['lang'], j['size'], j['out']) for j in raw['jobs']]
     assert outs == [
-        ('zh', 'portrait', 'og/top5-zh.png'), ('zh', 'square', 'og/top5-zh-sq.png'),
-        ('en', 'portrait', 'og/top5-en.png'), ('en', 'square', 'og/top5-en-sq.png'),
+        ('zh', 'portrait', f'og/top5-zh-{DAY}.png'), ('zh', 'square', f'og/top5-zh-{DAY}-sq.png'),
+        ('en', 'portrait', f'og/top5-en-{DAY}.png'), ('en', 'square', f'og/top5-en-{DAY}-sq.png'),
+    ]
+    alsos = [(j['lang'], j['size'], j.get('also'), j.get('date')) for j in raw['jobs']]
+    assert alsos == [
+        ('zh', 'portrait', 'og/top5-zh.png', DAY), ('zh', 'square', 'og/top5-zh-sq.png', DAY),
+        ('en', 'portrait', 'og/top5-en.png', DAY), ('en', 'square', 'og/top5-en-sq.png', DAY),
     ]
     assert raw['jobs'][0]['data']['bull'] == [{'t': 'AAA', 'n': 2}]
     assert raw['jobs'][0]['data']['bear'] == [{'t': 'QQQ', 'n': 4}]
