@@ -48,6 +48,7 @@ h1{font-family:var(--f-display);font-size:28px;line-height:1.3;margin:0 0 8px;ov
 .card h2{font-size:16px;line-height:1.35;margin:0;overflow-wrap:anywhere}
 .card img{width:min(180px,100%);border-radius:8px;background:#fff}
 .btn{display:inline-block;margin-top:4px;padding:8px 16px;border-radius:999px;background:var(--accent);color:#fff;font-weight:700;font-size:14px;text-decoration:none}
+.btn[data-method^=stripe]{align-self:stretch;display:flex;align-items:center;justify-content:center;width:100%;max-width:100%;min-width:0;margin-top:8px;padding:14px 16px;font-size:17px;line-height:1.3;text-align:center}
 .btn-paypal{align-self:stretch;display:flex;align-items:center;justify-content:center;box-sizing:border-box;width:100%;max-width:100%;min-width:0;margin-top:8px;padding:14px 16px;background:#0070ba;font-size:17px;line-height:1.3;text-align:center;white-space:normal;overflow-wrap:anywhere}
 .badge{display:inline-block;margin-top:4px;padding:4px 10px;border-radius:999px;background:#e4e0d8;color:#8a8175;font-size:12px;font-weight:700}
 .note{margin-top:16px;padding:14px 16px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;background:var(--accent-soft)}
@@ -109,8 +110,9 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
     </article>
     <article class="card">
       <h2>Stripe</h2>
-      <span class="badge">即將推出</span>
-      <p style="margin:0;font-size:13px;color:var(--muted);line-height:1.45">信用卡／借記卡捐款連結準備中（Coming soon）。</p>
+      <p style="margin:0;font-size:13px;color:var(--muted);line-height:1.45">信用卡／借記卡；可調數量（USD 單位 $1，預設 5＝$5；HKD 單位 $10，預設 5＝$50）。</p>
+      <a class="btn" href="https://donate.stripe.com/aFabJ1cmsexu1qMgAd2cg00?utm_source=site&utm_medium=support&utm_campaign=stripe_donate" target="_blank" rel="noopener" data-method="stripe_usd">Tip in USD</a>
+      <a class="btn" href="https://donate.stripe.com/fZu00j3PW4WU0mIabP2cg01?utm_source=site&utm_medium=support&utm_campaign=stripe_donate" target="_blank" rel="noopener" data-method="stripe_hkd">Tip in HKD</a>
     </article>
     <article class="card">
       <h2>Ko-fi / Buy Me a Coffee</h2>
@@ -174,7 +176,7 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
 document.addEventListener("click",function(e){
   var a=e.target&&e.target.closest&&e.target.closest("a[href]");
   if(!a||!window.gtag)return;
-  if(a.hasAttribute("data-method"))gtag("event","donate_click",{method:"paypal",lang:document.documentElement.lang});
+  if(a.hasAttribute("data-method"))gtag("event","donate_click",{method:a.getAttribute("data-method")||"paypal",lang:document.documentElement.lang});
   var u=a.href,h="";
   try{h=new URL(u).hostname.toLowerCase()}catch(err){return}
   if(a.getAttribute("data-tool")||h==="tradingview.com"||h.endsWith(".tradingview.com"))gtag("event","affiliate_click",{tool:(a.getAttribute("data-tool")||"tradingview").toLowerCase(),lang:document.documentElement.lang||""});
