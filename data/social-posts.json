@@ -2036,9 +2036,170 @@
       "ASTS"
      ]
     }
+   },
+   "intraday_close": {
+    "post_et": "15:40",
+    "post_hkt": "04:40",
+    "generated_at": "2026-11-03T15:47:52-05:00",
+    "date": "2026-11-03",
+    "date_kst": "2026-11-04",
+    "quotes": {
+     "SPY": {
+      "price": 754.67,
+      "prev_close": 752.1,
+      "chg_pct": 0.34,
+      "time": "2026-11-03T15:47:51-05:00"
+     },
+     "QQQ": {
+      "price": 686.41,
+      "prev_close": 681.09,
+      "chg_pct": 0.78,
+      "time": "2026-11-03T15:47:51-05:00"
+     },
+     "DIA": {
+      "price": 516.625,
+      "prev_close": 519.34,
+      "chg_pct": -0.52,
+      "time": "2026-11-03T15:47:50-05:00"
+     },
+     "INTC": {
+      "price": 60.705,
+      "prev_close": 59.97,
+      "chg_pct": 1.23,
+      "time": "2026-11-03T15:47:52-05:00"
+     },
+     "NVDA": {
+      "price": 207.39,
+      "prev_close": 202.06,
+      "chg_pct": 2.64,
+      "time": "2026-11-03T15:47:53-05:00"
+     },
+     "MSTR": {
+      "price": 135.475,
+      "prev_close": 130.76,
+      "chg_pct": 3.61,
+      "time": "2026-11-03T15:47:48-05:00"
+     },
+     "MU": {
+      "price": 855.745,
+      "prev_close": 833.59,
+      "chg_pct": 2.66,
+      "time": "2026-11-03T15:47:54-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-03T15:47:54-05:00",
+     "hkt": "2026-11-04 04:47"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "INTC",
+      "chg_pct": 1.23,
+      "bull": 1,
+      "bear": 3,
+      "accounts": [
+       "Mr_Derivatives",
+       "KeithMcCullough",
+       "RedDogT3",
+       "sentimentrader",
+       "KobeissiLetter",
+       "petenajarian",
+       "WallStJesus",
+       "aleabitoreddit"
+      ]
+     },
+     {
+      "ticker": "NVDA",
+      "chg_pct": 2.64,
+      "bull": 1,
+      "bear": 1,
+      "accounts": [
+       "EliteOptions2",
+       "RedDogT3",
+       "StockSavvyShay",
+       "DougKass",
+       "michaelsikand",
+       "aleabitoreddit",
+       "Mr_Derivatives",
+       "garyblack00"
+      ]
+     },
+     {
+      "ticker": "MSTR",
+      "chg_pct": 3.61,
+      "bull": 1,
+      "bear": 1,
+      "accounts": [
+       "OptionsMike",
+       "PeterSchiff",
+       "scottmelker",
+       "saylor"
+      ]
+     },
+     {
+      "ticker": "MU",
+      "chg_pct": 2.66,
+      "bull": 1,
+      "bear": 2,
+      "accounts": [
+       "StockSavvyShay",
+       "Jake__Wujastyk",
+       "KeithMcCullough",
+       "DougKass",
+       "garyblack00",
+       "RedDogT3"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Into the close · As of 15:47 ET (04:47 HKT)\n\n$SPY +0.3% · $QQQ +0.8% · $DIA -0.5%\n\n$INTC +1.2%, 3 accounts bearish on site\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #INTC #NVDA",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "收市前回顧 · 截至 15:47 ET（04:47 HKT）\n\n$SPY +0.3% · $QQQ +0.8% · $DIA -0.5%\n\n$INTC +1.2%，網站 3 個帳號看空\n$NVDA +2.6%，網站 1 個帳號看好\n$MSTR +3.6%，網站 1 個帳號看好\n$MU +2.7%，網站 2 個帳號看空\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #INTC #NVDA",
+      "url": ""
+     },
+     "en": {
+      "text": "Into the close · As of 15:47 ET (04:47 HKT)\n\n$SPY +0.3% · $QQQ +0.8% · $DIA -0.5%\n\n$INTC +1.2%, 3 accounts bearish on site\n$NVDA +2.6%, 1 account bullish on site\n$MSTR +3.6%, 1 account bullish on site\n$MU +2.7%, 2 accounts bearish on site\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #INTC #NVDA",
+      "url": ""
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "TSLA",
+      "PLTR",
+      "AAPL",
+      "SPCX",
+      "AEHR",
+      "COHR",
+      "TEM",
+      "SKHY",
+      "AXTI",
+      "RIVN",
+      "RSP"
+     ],
+     "bear": [
+      "ORCL",
+      "CBRS",
+      "ASTS"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-03T14:52:15-05:00",
-  "generated_hkt": "2026-11-04 03:52"
+  "generated_at": "2026-11-03T15:47:52-05:00",
+  "generated_hkt": "2026-11-04 04:47"
  }
 }
