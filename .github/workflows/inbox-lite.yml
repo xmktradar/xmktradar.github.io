@@ -1,8 +1,8 @@
 name: Inbox lite
 # Fast path when bots push analysed batches to data/grok-inbox/**.
-# Debounces rapid pushes (cancel-in-progress) and skips Playwright / stats.js /
+# Debounces rapid pushes (cancel-in-progress) and skips Playwright / stats.js / check.js /
 # earnings / video / prices / share-image heavy steps. Merge posts + langs + publish
-# only; full consensus runs on the Update site schedule.
+# only; full consensus + page check run on the Update site schedule.
 on:
   workflow_dispatch:
   push:
@@ -41,11 +41,8 @@ jobs:
         run: python3 tools/build_langs.py
       - name: Slim homepages
         run: python3 tools/slim_pages.py --slim
-      - name: Check the pages
-        run: |
-          for f in index.html zh/index.html en/index.html; do
-            node tools/check.js "$f" || { echo "::error::網頁檢查唔合格：$f"; exit 1; }
-          done
+      - name: Skip page check (no Playwright on lite)
+        run: echo "Skipping tools/check.js — Playwright not installed on inbox-lite; full check on Update site schedule."
       - name: Publish
         run: |
           git config user.name "github-actions[bot]"
