@@ -1,17 +1,18 @@
 name: Update site
-# Every 4 hours (HKT 03:17, 07:17, 11:17, 15:17, 19:17, 23:17; off :05 because GitHub often drops/delays top-of-hour-ish schedules), about 1.25 h before each SuperGrok summary task (:35),
+# Every 4 hours on the hour (HKT 03:00, 07:00, 11:00, 15:00, 19:00, 23:00; Tim 2026-11-03), about 1.5–2 h before each SuperGrok summary task (:35),
 # so new posts are on the site before SuperGrok reads them: fetch new posts, apply SuperGrok summaries and write-ups,
 # refresh prices, consensus history and share image, build the language versions and stock pages, check, then publish.
 # Steps: fetch posts, merge SuperGrok summaries and write-ups, prices, stats, publish.
 #
-# Anti-miss (2026-11-03): GitHub may delay or silently skip a schedule slot (e.g. HKT 07:17 = UTC 23:17 had
-# no run while concurrency was idle). A +30m backup cron catches drops. Workflow concurrency serializes runs;
+# Anti-miss (2026-11-03): GitHub may delay or silently skip a schedule slot (historically HKT 07:17 = UTC 23:17
+# had no run while concurrency was idle). A +30m backup cron catches drops. Workflow concurrency serializes runs;
 # `gate` then skips the backup when a 定時重建 commit landed in the last 2h so we do not double-rebuild.
+# Keep UPDATE_SLOTS in tools/merge_posts.py (+ index #nextup) aligned with these crons.
 on:
   workflow_dispatch:
   schedule:
-    - cron: '17 3-23/4 * * *'  # primary UTC 03:17, 07:17 ... = HKT 11:17, 15:17, 19:17, 23:17, 03:17, 07:17
-    - cron: '47 3-23/4 * * *'  # backup +30m if GitHub drops/delays the :17 slot
+    - cron: '0 3-23/4 * * *'   # primary UTC 03/07/11/15/19/23:00 = HKT 11/15/19/23/03/07:00
+    - cron: '30 3-23/4 * * *'  # backup +30m if GitHub drops/delays the :00 slot
   push:
     branches: [main]
     # grok-inbox pushes handled by inbox-lite.yml (debounce + skip heavy steps). Full rebuild stays on schedule/dispatch/tools.
@@ -128,7 +129,7 @@ jobs:
         run: python3 tools/apply_writeups.py
       - name: Update prices
         # Scheduled runs on UTC Saturday/Sunday skip the slow price refresh (US market closed;
-        # Friday close is captured by the UTC Fri 23:17 = HKT Sat 07:17 run). Weekdays, push and
+        # Friday close is captured by the UTC Fri 23:00 = HKT Sat 07:00 run). Weekdays, push and
         # manual dispatch always refresh prices.
         continue-on-error: true
         run: |
