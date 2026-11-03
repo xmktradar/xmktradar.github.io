@@ -1886,9 +1886,159 @@
       "ASTS"
      ]
     }
+   },
+   "intraday_4": {
+    "post_et": "14:45",
+    "post_hkt": "03:45",
+    "generated_at": "2026-11-03T14:52:15-05:00",
+    "date": "2026-11-03",
+    "date_kst": "2026-11-04",
+    "quotes": {
+     "SPY": {
+      "price": 754.58,
+      "prev_close": 752.1,
+      "chg_pct": 0.33,
+      "time": "2026-11-03T14:52:12-05:00"
+     },
+     "QQQ": {
+      "price": 684.971,
+      "prev_close": 681.09,
+      "chg_pct": 0.57,
+      "time": "2026-11-03T14:52:15-05:00"
+     },
+     "DIA": {
+      "price": 517.37,
+      "prev_close": 519.34,
+      "chg_pct": -0.38,
+      "time": "2026-11-03T14:52:13-05:00"
+     },
+     "AXTI": {
+      "price": 51.32,
+      "prev_close": 48.2,
+      "chg_pct": 6.47,
+      "time": "2026-11-03T14:52:13-05:00"
+     },
+     "RIVN": {
+      "price": 13.23,
+      "prev_close": 13.19,
+      "chg_pct": 0.3,
+      "time": "2026-11-03T14:52:11-05:00"
+     },
+     "RSP": {
+      "price": 219.44,
+      "prev_close": 219.98,
+      "chg_pct": -0.25,
+      "time": "2026-11-03T14:52:14-05:00"
+     },
+     "LITE": {
+      "price": 673.57,
+      "prev_close": 684.4,
+      "chg_pct": -1.58,
+      "time": "2026-11-03T14:52:12-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-03T14:52:15-05:00",
+     "hkt": "2026-11-04 03:52"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "AXTI",
+      "chg_pct": 6.47,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "ripster47",
+       "aleabitoreddit"
+      ]
+     },
+     {
+      "ticker": "RIVN",
+      "chg_pct": 0.3,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "Mr_Derivatives",
+       "OptionsMike",
+       "ripster47"
+      ]
+     },
+     {
+      "ticker": "RSP",
+      "chg_pct": -0.25,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "KeithMcCullough",
+       "Mr_Derivatives"
+      ]
+     },
+     {
+      "ticker": "LITE",
+      "chg_pct": -1.58,
+      "bull": 1,
+      "bear": 3,
+      "accounts": [
+       "michaelsikand",
+       "amitisinvesting",
+       "garyblack00",
+       "StockSavvyShay",
+       "OptionsMike",
+       "Mr_Derivatives",
+       "kevinxu",
+       "aleabitoreddit"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Afternoon tape · As of 14:52 ET (03:52 HKT)\n\n$SPY +0.3% · $QQQ +0.6% · $DIA -0.4%\n\n$AXTI +6.5%, 2 accounts bullish on site\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #AXTI #RIVN",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "尾盤前 · 截至 14:52 ET（03:52 HKT）\n\n$SPY +0.3% · $QQQ +0.6% · $DIA -0.4%\n\n$AXTI +6.5%，網站 2 個帳號看好\n$RIVN +0.3%，網站 2 個帳號看好\n$RSP -0.2%，網站 2 個帳號看好\n$LITE -1.6%，網站 3 個帳號看空\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #AXTI #RIVN",
+      "url": null
+     },
+     "en": {
+      "text": "Afternoon tape · As of 14:52 ET (03:52 HKT)\n\n$SPY +0.3% · $QQQ +0.6% · $DIA -0.4%\n\n$AXTI +6.5%, 2 accounts bullish on site\n$RIVN +0.3%, 2 accounts bullish on site\n$RSP -0.2%, 2 accounts bullish on site\n$LITE -1.6%, 3 accounts bearish on site\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #AXTI #RIVN",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "TSLA",
+      "PLTR",
+      "AAPL",
+      "SPCX",
+      "AEHR",
+      "COHR",
+      "TEM",
+      "SKHY",
+      "AXTI",
+      "RIVN",
+      "RSP"
+     ],
+     "bear": [
+      "ORCL",
+      "CBRS",
+      "ASTS"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-03T13:35:21-05:00",
-  "generated_hkt": "2026-11-04 02:35"
+  "generated_at": "2026-11-03T14:52:15-05:00",
+  "generated_hkt": "2026-11-04 03:52"
  }
 }
