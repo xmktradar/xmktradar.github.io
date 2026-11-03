@@ -171,10 +171,14 @@
  "next": "2026-11-02",
  "last_report": "2026-11-02",
  "est": {
-  "eps_act": 0.369,
+  "eps_act": 0.3691,
   "eps_est": 0.42274,
   "rev_est": null,
   "rev_est_seen": null
  },
- "pending": null
+ "pending": {
+  "q": "2026-09-30",
+  "eps_act": 0.4286,
+  "eps_est": 0.43472
+ }
 }
