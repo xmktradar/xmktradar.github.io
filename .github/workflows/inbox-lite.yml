@@ -1,7 +1,8 @@
 name: Inbox lite
 # Fast path when bots push analysed batches to data/grok-inbox/**.
-# Debounces rapid pushes (cancel-in-progress) and skips Playwright / earnings / video /
-# prices / share-image heavy steps. Full rebuild remains on Update site schedule.
+# Debounces rapid pushes (cancel-in-progress) and skips Playwright / stats.js /
+# earnings / video / prices / share-image heavy steps. Merge posts + langs + publish
+# only; full consensus runs on the Update site schedule.
 on:
   workflow_dispatch:
   push:
@@ -34,11 +35,8 @@ jobs:
       - name: Apply SuperGrok write-ups
         continue-on-error: true
         run: python3 tools/apply_writeups.py
-      - name: Consensus and counts
-        run: |
-          mkdir -p "$WORK_DIR"
-          echo '{"daily": null}' > "$WORK_DIR/windows.json"
-          node tools/stats.js index.html "$WORK_DIR/windows.json" "$WORK_DIR/stats.json" || { echo "::error::共識計算失敗"; exit 1; }
+      - name: Skip consensus (no Playwright on lite)
+        run: echo "Skipping tools/stats.js — Playwright not installed on inbox-lite; full consensus on Update site schedule."
       - name: Language versions
         run: python3 tools/build_langs.py
       - name: Slim homepages
@@ -72,9 +70,7 @@ jobs:
             python3 tools/analyse_posts.py || true
             python3 tools/merge_posts.py
             python3 tools/apply_writeups.py || true
-            mkdir -p "$WORK_DIR"
-            echo '{"daily": null}' > "$WORK_DIR/windows.json"
-            node tools/stats.js index.html "$WORK_DIR/windows.json" "$WORK_DIR/stats.json"
+            # stats.js skipped on lite (no Playwright); Update site schedule owns consensus
             python3 tools/build_langs.py
             python3 tools/slim_pages.py --slim
             sleep $((i * 5))
