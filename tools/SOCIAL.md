@@ -29,13 +29,13 @@ Today's five most bullish and five most bearish names. `tools/ranking.py` `rank_
   "bear": [{"t": "QQQ", "n": 4}],
   "images": {
     "zh": {
-      "portrait": "https://thecrowdtape.com/og/top5-zh.png?v=2026-10-23",
-      "square": "https://thecrowdtape.com/og/top5-zh-sq.png?v=2026-10-23"
+      "portrait": "https://thecrowdtape.com/og/top5-zh-2026-10-23.png",
+      "square": "https://thecrowdtape.com/og/top5-zh-2026-10-23-sq.png"
     }
   },
   "format": "image_card",
   "video": {
-    "zh": "https://thecrowdtape.com/og/top5-zh.mp4?v=2026-10-23"
+    "zh": "https://thecrowdtape.com/og/top5-zh-2026-10-23.mp4"
   },
   "posts": {
     "zh": {"x": "", "instagram": "", "threads": "", "facebook": "", "has_link": {}, "first_comment": {}}
@@ -43,7 +43,7 @@ Today's five most bullish and five most bearish names. `tools/ranking.py` `rank_
 }
 ```
 
-`images`, `video` and `posts` have `zh` and `en`. Portrait is 1080×1350 (`og/top5-<lang>.png`, for X, Instagram, and Threads). Square is 1080×1080 (`og/top5-<lang>-sq.png`, for Facebook). `video.<lang>` points at `og/top5-<lang>.mp4` (1080×1920, about 12 seconds, silent), made by `tools/top5video.sh` from the portrait PNG. The update workflow runs that script after `top5card.js` when `ffmpeg` is on `PATH` and the PNG exists.
+`images`, `video` and `posts` have `zh` and `en`. Portrait is 1080×1350 (`og/top5-<lang>-<date>.png`, for X, Instagram, and Threads). Square is 1080×1080 (`og/top5-<lang>-<date>-sq.png`, for Facebook). `video.<lang>` points at `og/top5-<lang>-<date>.mp4` (1080×1920, about 12 seconds, silent). Dated paths defeat X / GitHub Pages path caches that ignore `?v=`; the fixed names `og/top5-<lang>.png` / `-sq.png` / `.mp4` are still overwritten for site / `latest` compat. `tools/top5video.sh` reads the fixed portrait PNG and also copies the mp4 to the dated name when a dated portrait exists. The update workflow runs that script after `top5card.js` when `ffmpeg` is on `PATH` and the PNG exists. `top5card.js` keeps dated assets for today and yesterday.
 
 Headings use the real list length on each side (5 kept when 5):
 

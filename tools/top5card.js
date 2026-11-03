@@ -1,18 +1,30 @@
 // Draw the daily top-5 cards from tools/top5card.html.
 // Usage: node tools/top5card.js work/top5cards.json [outdir]
-// Each job {lang, size, out, data} becomes <out>:
-//   portrait og/top5-<lang>.png     1080x1350 (X / Instagram / Threads)
-//   square   og/top5-<lang>-sq.png  1080x1080 (Facebook)
+// Each job {lang, size, out, also?, date?, data} becomes <out>:
+//   portrait og/top5-<lang>-<date>.png     1080x1350 (X / Instagram / Threads)
+//   square   og/top5-<lang>-<date>-sq.png  1080x1080 (Facebook)
+// When also is set, the same bytes are copied to the fixed name
+// (og/top5-<lang>.png / -sq.png) for site / latest compat.
+// Dated og/top5-<lang>-YYYY-MM-DD*.png|mp4 older than yesterday are removed
+// (same retention window as tools/carousel.js).
 // CHROME_PATH, when set, is the browser executable (same as tools/xcard.js).
 const { chromium } = require('playwright');
 const fs = require('fs');
 const path = require('path');
 const SIZE = { portrait: [1080, 1350], square: [1080, 1080] };
+const DATED_RE = /^top5-(zh|en|ko)-(\d{4}-\d{2}-\d{2})(?:-sq)?\.(png|mp4)$/;
 (async () => {
   const raw = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
   const jobs = Array.isArray(raw) ? raw : (raw.jobs || []);
   const outdir = process.argv[3];
   const dest = j => outdir ? path.join(outdir, path.basename(j.out)) : j.out;
+  const alsoDest = j => {
+    if (!j.also) return null;
+    return outdir ? path.join(outdir, path.basename(j.also)) : j.also;
+  };
+  const jobDay = (jobs.find(j => j.date) || {}).date
+    || ((jobs[0] && jobs[0].data) || {}).date
+    || '';
   let b, bad = 0;
   try {
     b = await chromium.launch(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {});
@@ -41,15 +53,40 @@ const SIZE = { portrait: [1080, 1350], square: [1080, 1080] };
         await p.evaluate(() => { if (typeof fit === 'function') fit(); });
         await p.screenshot({ path: out });
         console.log('top5', j.lang, j.size, out);
+        const also = alsoDest(j);
+        if (also) {
+          fs.mkdirSync(path.dirname(also), { recursive: true });
+          fs.copyFileSync(out, also);
+          console.log('top5 also', j.lang, j.size, also);
+        }
       } catch (e) {
         bad++; console.error('top5 failed', j.lang, j.size, e.message);
-        if (fs.existsSync('og/social-en.png')) fs.copyFileSync('og/social-en.png', out);
+        if (fs.existsSync('og/social-en.png')) {
+          fs.copyFileSync('og/social-en.png', out);
+          const also = alsoDest(j);
+          if (also) fs.copyFileSync('og/social-en.png', also);
+        }
       }
     }
     if (errs.length) console.error('page errors:', errs.join(' | '));
   } catch (e) {
     bad++; console.error('top5 failed', e.message);
-    for (const j of jobs) if (fs.existsSync('og/social-en.png')) fs.copyFileSync('og/social-en.png', dest(j));
+    for (const j of jobs) {
+      if (!fs.existsSync('og/social-en.png')) continue;
+      fs.copyFileSync('og/social-en.png', dest(j));
+      const also = alsoDest(j);
+      if (also) fs.copyFileSync('og/social-en.png', also);
+    }
   } finally { if (b) await b.close(); }
+  if (jobDay && /^\d{4}-\d{2}-\d{2}$/.test(jobDay) && fs.existsSync('og')) {
+    const keep = new Date(Date.parse(jobDay + 'T00:00:00Z') - 864e5).toISOString().slice(0, 10);
+    for (const f of fs.readdirSync('og')) {
+      const m = f.match(DATED_RE);
+      if (m && m[2] < keep) {
+        fs.unlinkSync(path.join('og', f));
+        console.log('top5 removed', f);
+      }
+    }
+  }
   process.exit(bad ? 1 : 0);
 })();
