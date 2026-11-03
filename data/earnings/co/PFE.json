@@ -186,7 +186,7 @@
   "accn": "0000078003-26-000095"
  },
  "rules": 4,
- "mcap": 174808989696,
+ "mcap": 174524006400,
  "next": "2026-11-03",
  "last_report": "2026-11-03",
  "est": {
@@ -195,5 +195,9 @@
   "rev_est": null,
   "rev_est_seen": null
  },
- "pending": null
+ "pending": {
+  "q": "2026-09-30",
+  "eps_act": 0.87,
+  "eps_est": 0.73567
+ }
 }
