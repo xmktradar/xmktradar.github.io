@@ -3,10 +3,15 @@ name: Update site
 # so new posts are on the site before SuperGrok reads them: fetch new posts, apply SuperGrok summaries and write-ups,
 # refresh prices, consensus history and share image, build the language versions and stock pages, check, then publish.
 # Steps: fetch posts, merge SuperGrok summaries and write-ups, prices, stats, publish.
+#
+# Anti-miss (2026-11-03): GitHub may delay or silently skip a schedule slot (e.g. HKT 07:17 = UTC 23:17 had
+# no run while concurrency was idle). A +30m backup cron catches drops. Workflow concurrency serializes runs;
+# `gate` then skips the backup when a 定時重建 commit landed in the last 2h so we do not double-rebuild.
 on:
   workflow_dispatch:
   schedule:
-    - cron: '17 3-23/4 * * *'  # UTC 03:17, 07:17 ... = HKT 11:17, 15:17, 19:17, 23:17, 03:17, 07:17
+    - cron: '17 3-23/4 * * *'  # primary UTC 03:17, 07:17 ... = HKT 11:17, 15:17, 19:17, 23:17, 03:17, 07:17
+    - cron: '47 3-23/4 * * *'  # backup +30m if GitHub drops/delays the :17 slot
   push:
     branches: [main]
     # grok-inbox pushes handled by inbox-lite.yml (debounce + skip heavy steps). Full rebuild stays on schedule/dispatch/tools.
@@ -15,9 +20,47 @@ permissions:
   contents: write
 concurrency:
   group: site-update
-  cancel-in-progress: false
+  cancel-in-progress: false  # never cancel a schedule/push mid-flight; queue instead
 jobs:
+  # Runs first in each workflow run. After concurrency releases a queued backup, this sees the primary's publish.
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      run_update: ${{ steps.check.outputs.run_update }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 30
+      - name: Skip duplicate schedule if site already rebuilt recently
+        id: check
+        run: |
+          set -e
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "run_update=true" >> "$GITHUB_OUTPUT"
+            echo "Non-schedule (${{ github.event_name }}) — always rebuild."
+            exit 0
+          fi
+          ts=$(git log -1 --format=%ct --grep='^定時重建' 2>/dev/null || echo 0)
+          now=$(date +%s)
+          if [ "$ts" != 0 ]; then
+            age=$((now - ts))
+            echo "Last 定時重建 age=${age}s ($(date -d "@$ts" '+%Y-%m-%d %H:%M:%S %Z' 2>/dev/null || date -r "$ts" 2>/dev/null || echo "ts=$ts"))"
+            if [ "$age" -lt 7200 ]; then
+              echo "run_update=false" >> "$GITHUB_OUTPUT"
+              echo "Recent publish within 2h — skip this schedule (backup cron or delayed duplicate)."
+              exit 0
+            fi
+          else
+            echo "No 定時重建 commit in recent history."
+          fi
+          echo "run_update=true" >> "$GITHUB_OUTPUT"
+          echo "Schedule slot needs a rebuild."
+
   update:
+    needs: gate
+    if: needs.gate.outputs.run_update == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 60
     env:
