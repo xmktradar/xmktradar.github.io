@@ -93,38 +93,54 @@ const T = {
 // i18n/zh.json is a list of UI strings, so the Chinese block stays here.
 const NL_ENDPOINT = 'https://crowdtape-newsletter.vercel.app/api/subscribe';
 const NL_ZH = {
-  aria: '訂閱每日電郵',
-  title: '每天收到這檔股票的大神觀點變化',
-  note: '免費・隨時退訂・不構成投資建議',
+  aria: '訂閱每日觀點並領取財報清單',
+  title: '免費：每天收到這檔股票的 X 觀點變化',
+  note: '隨時退訂・不構成投資建議・訂閱後開啟財報清單',
   label: '電郵地址',
   placeholder: '你的電郵',
-  button: '訂閱',
-  ok: '已收到，請查看確認信。',
+  button: '免費訂閱',
+  ok: '多謝！正在開啟免費財報清單…',
 };
 const NL_CSS = `/* The Crowd Tape — newsletter signup box (A/B). Scoped to .ct-nl. Uses site :root vars only; no bull/bear colours. */
 .ct-nl{margin-top:12px;display:flex;align-items:center;gap:6px 10px;flex-wrap:wrap;
-  padding:6px 10px;border:1px solid var(--line);border-radius:10px;background:var(--accent-soft);
+  padding:10px 12px;border:1px solid var(--line-strong,var(--line));border-radius:12px;background:var(--accent-soft);
   font-family:var(--f-body);color:var(--ink);box-sizing:border-box}
 .ct-nl[hidden]{display:none}
 /* narrow column (desktop c4 panel ~280px): stack text over form */
 .ct-nl{container-type:inline-size}
 @container (max-width:420px){.ct-nl__txt,.ct-nl__f{flex-basis:100%}}
-.ct-nl__txt{flex:1 1 220px;min-width:0;line-height:1.3}
-.ct-nl__t{font-size:13px;line-height:16px;font-weight:600;margin:0}
-.ct-nl__n{font-size:10.5px;line-height:13px;color:var(--muted);margin:0}
+.ct-nl__txt{flex:1 1 220px;min-width:0;line-height:1.35}
+.ct-nl__t{font-size:14px;line-height:18px;font-weight:700;margin:0}
+.ct-nl__n{font-size:11px;line-height:14px;color:var(--muted);margin:2px 0 0}
 .ct-nl__f{display:flex;gap:6px;flex:0 1 330px;min-width:0;margin:0}
-.ct-nl__in{flex:1 1 auto;min-width:0;height:28px;padding:0 10px;font:inherit;font-size:13px;color:var(--ink);
+.ct-nl__in{flex:1 1 auto;min-width:0;height:32px;padding:0 10px;font:inherit;font-size:13px;color:var(--ink);
   background:var(--surface);border:1px solid var(--line);border-radius:8px;box-sizing:border-box}
 .ct-nl__in:focus{outline:2px solid var(--accent);outline-offset:0;border-color:var(--accent)}
-.ct-nl__btn{height:28px;padding:0 14px;font:inherit;font-size:13px;font-weight:600;white-space:nowrap;
+.ct-nl__btn{height:32px;padding:0 16px;font:inherit;font-size:13px;font-weight:700;white-space:nowrap;
   color:#fff;background:var(--accent);border:0;border-radius:8px;cursor:pointer}
 .ct-nl__btn:hover{filter:brightness(1.08)}
 .ct-nl__ok{font-size:12.5px;color:var(--accent);margin:0}
 .ct-nl .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ct-nl-end{display:block;margin:16px 16px 0;padding:16px 18px;border:2px solid var(--accent);border-radius:16px;
+  background:var(--accent-soft);box-sizing:border-box;font-family:var(--f-body);color:var(--ink)}
+.ct-nl-end__t{margin:0 0 4px;font-size:17px;line-height:1.3;font-weight:700;letter-spacing:-.01em}
+.ct-nl-end__n{margin:0 0 12px;font-size:13px;line-height:1.45;color:var(--mut,var(--muted))}
+.ct-nl-end__n a{font-weight:700}
+.ct-nl-end__f{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0}
+.ct-nl-end__in{flex:1 1 180px;min-width:0;height:40px;padding:0 14px;font:inherit;font-size:15px;color:var(--ink);
+  background:var(--surface,var(--panel));border:1px solid var(--line);border-radius:999px;box-sizing:border-box}
+.ct-nl-end__in:focus{outline:2px solid var(--accent);outline-offset:0;border-color:var(--accent)}
+.ct-nl-end__btn{height:40px;padding:0 18px;font:inherit;font-size:14px;font-weight:700;white-space:nowrap;
+  color:#fff;background:var(--accent);border:0;border-radius:999px;cursor:pointer}
+.ct-nl-end__btn:hover{filter:brightness(1.08)}
+.ct-nl-end__ok{font-size:14px;color:var(--accent);margin:0}
+.ct-nl-end .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ct-nl-end input[name=website]{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0}
 @media (max-width:600px){
-  .ct-nl{gap:6px;padding:6px 8px}
+  .ct-nl{gap:6px;padding:8px}
   .ct-nl__txt{flex-basis:100%}
   .ct-nl__f{flex:1 1 100%}
+  .ct-nl-end{margin:14px 12px 0;padding:14px}
 }
 `;
 const NL_SNIPPET = `<aside class="ct-nl" data-ab="B" data-ab-test="nl-stock-2026-10" data-ticker="{{TICKER}}" aria-label="{{nl.aria}}" hidden>
@@ -193,8 +209,12 @@ function insertAfterKpis(html, box) {
   }
   return html;
 }
-function nlScript(ok) {
+function checklistGo(lang, campaign) {
+  return 'https://thecrowdtape.com/' + lang + '/checklist/earnings/?utm_source=site&utm_medium=cta&utm_campaign=' + campaign;
+}
+function nlScript(ok, lang) {
   const okLit = JSON.stringify(esc(ok)).replace(/</g, '\\u003c');
+  const goLit = JSON.stringify(checklistGo(lang, 'stock_kpi')).replace(/</g, '\\u003c');
   return `<script>(function(){
 var aside=document.querySelector('aside.ct-nl');
 if(!aside)return;
@@ -233,6 +253,7 @@ if(v==='B'&&window.IntersectionObserver){
 var form=aside.querySelector('form.ct-nl__f');
 if(!form)return;
 var OK=${okLit};
+var GO=${goLit};
 form.addEventListener('submit',function(e){
   e.preventDefault();
   if(form.getAttribute('data-sending'))return;
@@ -244,11 +265,65 @@ form.addEventListener('submit',function(e){
       if(!j||!j.ok){form.removeAttribute('data-sending');return;}
       form.outerHTML='<p class="ct-nl__ok">'+OK+'<\\/p>';
       if(window.gtag)gtag('event','newsletter_signup',{variant:'B',ticker:T,lang:d.get('lang'),src:'stock'});
+      location.assign(GO);
     })
     .catch(function(){form.removeAttribute('data-sending');});
 });
 })();</script>`;
 }
+function stockFooterCta(lang, ticker) {
+  const checkRel = '/' + lang + '/checklist/earnings/?utm_source=site&utm_medium=cta&utm_campaign=stock_footer';
+  const newsRel = '/' + lang + '/newsletter/?utm_source=site&utm_medium=cta&utm_campaign=stock_footer';
+  const go = checklistGo(lang, 'stock_footer');
+  let aria, title, note, label, placeholder, button, ok, bad, more;
+  if (lang === 'zh') {
+    aria = '訂閱並領取財報解讀清單';
+    title = '免費領取財報解讀清單';
+    note = '訂閱後即開清單；唔會濫發，隨時取消。';
+    label = '電郵地址';
+    placeholder = '你的電郵';
+    button = '電郵領取清單';
+    ok = '多謝！正在開啟免費財報清單…';
+    bad = '電郵地址有誤，請再試。';
+    more = '或者直接打開 <a href="' + checkRel + '">財報解讀清單</a> · <a href="' + newsRel + '">電子報</a>。';
+  } else {
+    aria = 'Get the free earnings checklist';
+    title = 'Get the free earnings checklist';
+    note = 'Email signup opens the checklist. No spam. Unsubscribe anytime.';
+    label = 'Email address';
+    placeholder = 'you@email.com';
+    button = 'Email me the checklist';
+    ok = 'Thanks! Opening your free earnings checklist…';
+    bad = 'Please check the email address and try again.';
+    more = 'Or open the <a href="' + checkRel + '">earnings checklist</a> · <a href="' + newsRel + '">newsletter</a>.';
+  }
+  const fid = 'ct-nl-end-' + String(ticker).replace(/[^A-Za-z0-9.\-]/g, '_').toLowerCase();
+  const okLit = JSON.stringify(ok).replace(/</g, '\\u003c');
+  const badLit = JSON.stringify(bad).replace(/</g, '\\u003c');
+  const goLit = JSON.stringify(go).replace(/</g, '\\u003c');
+  return (
+    '<aside class="ct-nl-end" data-src="stock-footer" data-ticker="' + esc(ticker) + '" aria-label="' + esc(aria) + '">' +
+    '<p class="ct-nl-end__t">' + esc(title) + '</p>' +
+    '<p class="ct-nl-end__n">' + esc(note) + ' ' + more + '</p>' +
+    '<form class="ct-nl-end__f" action="' + NL_ENDPOINT + '" method="post">' +
+    '<label class="sr" for="' + fid + '">' + esc(label) + '</label>' +
+    '<input class="ct-nl-end__in" id="' + fid + '" type="email" name="email" required autocomplete="email" placeholder="' + esc(placeholder) + '">' +
+    '<input type="hidden" name="lang" value="' + lang + '">' +
+    '<input type="hidden" name="src" value="stock-footer-' + esc(ticker) + '">' +
+    '<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+    '<button class="ct-nl-end__btn" type="submit">' + esc(button) + '</button>' +
+    '</form>' +
+    '<script>(function(){var ok=' + okLit + ',bad=' + badLit + ',go=' + goLit + ';' +
+    'var f=document.currentScript.previousElementSibling;if(!f||f.tagName!=="FORM")return;' +
+    'f.addEventListener("submit",function(e){e.preventDefault();if(f.getAttribute("data-sending"))return;f.setAttribute("data-sending","1");' +
+    'var d=new FormData(f);fetch(f.action,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:d.get("email"),lang:d.get("lang"),src:d.get("src"),website:d.get("website")})})' +
+    '.then(function(r){return r.json()}).then(function(j){if(!j||!j.ok){f.removeAttribute("data-sending");f.insertAdjacentHTML("afterend","<p class=\\"ct-nl-end__ok\\">"+bad+"<\\/p>");return;}' +
+    'f.outerHTML="<p class=\\"ct-nl-end__ok\\">"+ok+"<\\/p>";if(window.gtag)gtag("event","newsletter_signup",{lang:d.get("lang"),src:d.get("src")||"stock-footer"});location.assign(go);})' +
+    '.catch(function(){f.removeAttribute("data-sending");});});})();</script>' +
+    '</aside>'
+  );
+}
+
 
 const slug = t => t.replace(/[^A-Za-z0-9.\-]/g, '_');  // same as px/ file names
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -489,6 +564,7 @@ header.ap-top .site-nav a.nav-donate{background:var(--accent)!important;color:#f
 <header class="top ap-top"><div class="wrap ap-bar">${logo}<nav class="site-nav" aria-label="${esc(T[lang].promo)}"><a class="ap-tools" href="/${lang}/tools/">${esc(T[lang].tools)}</a><a class="nav-donate ap-don" href="/${lang}/support/">${esc(T[lang].support)}</a>${saveBtn}</nav><div class="ap-r"><nav class="lang-sw" aria-label="Language">${sw}</nav></div></div></header>
 <main class="stock-static"><nav class="money-bar" aria-label="${esc(T[lang].promo)}"><span class="pj-tag">${esc(T[lang].promo)}</span><a href="/${lang}/tools/">${esc(T[lang].tools)}</a><a href="/${lang}/support/">${esc(T[lang].support)}</a><a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview" data-placement="money-bar">TradingView</a><a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover" data-placement="money-bar">Stock Rover</a><a href="https://optionstrat.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="optionstrat" data-placement="money-bar">OptionStrat</a></nav><p class="advice" role="note">${esc(T[lang].advice)}</p>${body}
 <p class="tv-line"><span class="pj-tag">${esc(T[lang].promo)}</span> <a href="${esc(tvHref)}" rel="sponsored noopener" target="_blank" data-tool="tradingview" data-ticker="${esc(t)}">${esc(T[lang].tv)}</a></p>
+${stockFooterCta(lang, t)}
 <aside class="aff-article" data-tool="stockrover" style="margin:12px 16px 0;padding:14px 16px;border:1px dashed var(--line-strong);border-radius:14px;background:var(--panel)">
 <p style="margin:0 0 6px;font-weight:700">${lang==='zh'?'想核對估值同基本面？用 Stock Rover 試':'Want to check valuation and fundamentals? Try Stock Rover'} <span class="pj-tag">${esc(T[lang].promo)}</span></p>
 <p style="margin:0 0 10px;font-size:13px;color:var(--mut)">${lang==='zh'?'聯盟連結；你無需多付。佣金不影響好淡統計。':'Affiliate link; you pay nothing extra. Commission does not affect bull/bear stats.'}</p>
@@ -496,9 +572,9 @@ header.ap-top .site-nav a.nav-donate{background:var(--accent)!important;color:#f
 </aside>
 <div class="open-live"><a href="/${lang}/#stock/${encodeURIComponent(t)}">${esc(T[lang].open)}</a></div>
 ${indexRow(lang, list)}</main>
-<footer class="wrap foot"><p><a href="/${lang}/tools/">${esc(T[lang].tools)}</a> · <a href="/${lang}/support/">${esc(T[lang].support)}</a> · <a href="/${lang}/newsletter/">${esc(T[lang].news)}</a> · <a href="/${lang}/embed/?t=${encodeURIComponent(t)}&amp;utm_source=stock&amp;utm_medium=footer&amp;utm_campaign=embed" class="embed-link">${esc(T[lang].embed)}</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">TradingView <span class="pj-tag">${esc(T[lang].promo)}</span></a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="pj-tag">${esc(T[lang].promo)}</span></a> · <a href="https://optionstrat.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="optionstrat">OptionStrat <span class="pj-tag">${esc(T[lang].promo)}</span></a></p></footer>
+<footer class="wrap foot"><p><a href="/${lang}/tools/">${esc(T[lang].tools)}</a> · <a href="/${lang}/support/">${esc(T[lang].support)}</a> · <a href="/${lang}/newsletter/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=stock_footer">${esc(T[lang].news)}</a> · <a href="/${lang}/embed/?t=${encodeURIComponent(t)}&amp;utm_source=stock&amp;utm_medium=footer&amp;utm_campaign=embed" class="embed-link">${esc(T[lang].embed)}</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">TradingView <span class="pj-tag">${esc(T[lang].promo)}</span></a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="pj-tag">${esc(T[lang].promo)}</span></a> · <a href="https://optionstrat.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="optionstrat">OptionStrat <span class="pj-tag">${esc(T[lang].promo)}</span></a></p></footer>
 <script>document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}var tool=a.getAttribute('data-tool');if(tool||h==='tradingview.com'||h.endsWith('.tradingview.com')){var aff={tool:(tool||'tradingview').toLowerCase(),lang:document.documentElement.lang||''};var ticker=a.getAttribute('data-ticker');if(ticker)aff.ticker=ticker;gtag('event','affiliate_click',aff);}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com'))gtag('event','x_outbound',{link_url:u,page:'stock',lang:document.documentElement.lang||'',transport_type:'beacon'})});</script>
-${nlScript(nlCopy(lang).ok)}
+${nlScript(nlCopy(lang).ok, lang)}
 ${save}
 ${toTop(T[lang].top)}
 <script>(function(){var h=document.querySelector('header.ap-top');if(!h)return;function f(){var px=Math.ceil(h.getBoundingClientRect().height)+8;document.documentElement.style.scrollPaddingTop=px+'px';var m=document.querySelector('main.stock-static');if(m)m.style.scrollMarginTop=px+'px'}f();addEventListener('resize',f)})();</script>
@@ -810,4 +886,4 @@ if (require.main === module) {
 })();
 }
 
-module.exports = { avatars, dedupeSitemap, esc, slug, toTop, shell, tvWidgetSrc, tvMappedSymbol, tvChartLink, tvChartBlock, ensureTvFrameSrc, TV_LOCALE, TV_SYMBOL_404 };
+module.exports = { avatars, dedupeSitemap, esc, slug, toTop, shell, stockFooterCta, tvWidgetSrc, tvMappedSymbol, tvChartLink, tvChartBlock, ensureTvFrameSrc, TV_LOCALE, TV_SYMBOL_404 };

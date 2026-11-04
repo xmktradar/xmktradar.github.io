@@ -148,13 +148,14 @@ th{font-size:12.5px;color:var(--muted);font-weight:700}
 .pv-more{display:block;margin-top:6px;font-size:12.5px;color:var(--link);font-weight:600}
 .pv-find{width:100%;font:inherit;font-size:15px;padding:9px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);margin:0 0 10px}
 .tool-btn{display:inline-block;padding:8px 16px;border-radius:999px;background:var(--accent,#0071e3);color:#fff;font-weight:700;font-size:14px;text-decoration:none}.aff-tag{display:inline-block;margin-left:6px;padding:1px 8px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--muted);font-size:12px;font-weight:700;vertical-align:middle}.site-foot{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
-.ct-news{position:relative;overflow-x:clip;box-sizing:border-box;width:100%;max-width:100%;margin:16px 0;padding:14px 16px;background:var(--surface);border:0;border-radius:20px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.ct-news-t{flex:1 0 100%;margin:0;font-weight:700;font-size:15px;line-height:1.45}
-.ct-news input[type=email]{flex:1 1 140px;min-width:0;max-width:100%;box-sizing:border-box;margin:0;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:16px}
-.ct-news button[type=submit]{flex:0 1 auto;margin:0;padding:8px 16px;border:0;border-radius:999px;background:var(--accent);color:#fff;font:inherit;font-weight:700;font-size:14px;cursor:pointer}
-.ct-news small,.ct-news-msg{flex:1 0 100%;margin:0;font-size:12.5px;line-height:1.4;color:var(--muted)}
+.ct-news{position:relative;overflow-x:clip;box-sizing:border-box;width:100%;max-width:100%;margin:0;padding:0;background:transparent;border:0;border-radius:0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ct-news-t{flex:1 0 100%;margin:0;font-weight:700;font-size:18px;line-height:1.3;letter-spacing:-.01em}
+.ct-news input[type=email]{flex:1 1 160px;min-width:0;max-width:100%;box-sizing:border-box;margin:0;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--ink);font:inherit;font-size:16px}
+.ct-news button[type=submit]{flex:0 1 auto;margin:0;padding:10px 18px;border:0;border-radius:999px;background:var(--accent);color:#fff;font:inherit;font-weight:700;font-size:15px;cursor:pointer}
+.ct-news small,.ct-news-msg{flex:1 0 100%;margin:0;font-size:13px;line-height:1.45;color:var(--muted)}
 .ct-news-msg{font-size:14px;color:var(--ink)}
 .ct-news input[name=website]{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0}
+.ct-upgrade{margin:16px 0;padding:18px 20px;border:2px solid var(--accent);border-radius:20px;background:var(--accent-soft);box-sizing:border-box}
 .ct-upgrade a{font-weight:700}
 @media(max-width:480px){h1{font-size:26px}.wrap{padding:16px 14px 40px}th,td{padding:6px 5px;font-size:13.5px}.bar b{font-size:9px}.bar small{font-size:8.5px}}
 """
@@ -240,23 +241,29 @@ def verdict(act, est, lang):
 def news_cta(lang, src):
     """Email-only content-upgrade CTA → checklist magnet (redirect on success)."""
     import json as _json
-    check = f'https://thecrowdtape.com/{lang}/checklist/earnings/?utm_source=resend&utm_medium=email&utm_campaign=welcome1'
+    # Site CTA uses site/cta UTMs; welcome email still uses resend/welcome1 on the thank-you page itself.
+    check = (f'https://thecrowdtape.com/{lang}/checklist/earnings/'
+             f'?utm_source=site&utm_medium=cta&utm_campaign=earnings_footer')
+    check_rel = f'/{lang}/checklist/earnings/?utm_source=site&utm_medium=cta&utm_campaign=earnings_footer'
+    news_rel = f'/{lang}/newsletter/?utm_source=site&utm_medium=cta&utm_campaign=earnings_footer'
     if lang == 'zh':
-        title, note, btn = '免費領取財報解讀清單', '唔會濫發，隨時取消。', '電郵領取'
+        title, note, btn = '免費領取財報解讀清單', '訂閱後即開清單；唔會濫發，隨時取消。', '電郵領取清單'
         ok = '多謝！正在開啟免費財報清單…'
         bad = '電郵地址有誤，請再試。'
-        more = f'或者直接打開 <a href="/{lang}/checklist/earnings/">財報解讀清單</a>。'
+        more = (f'或者直接打開 <a href="{check_rel}">財報解讀清單</a>'
+                f' · <a href="{news_rel}">電子報</a>。')
     else:
-        title, note, btn = 'Get the free earnings checklist', 'No spam. Unsubscribe anytime.', 'Email me the list'
+        title, note, btn = 'Get the free earnings checklist', 'Email signup opens the checklist. No spam. Unsubscribe anytime.', 'Email me the checklist'
         ok = 'Thanks! Opening your free earnings checklist…'
         bad = 'Please check the email address and try again.'
-        more = f'Or open the <a href="/{lang}/checklist/earnings/">earnings checklist</a>.'
+        more = (f'Or open the <a href="{check_rel}">earnings checklist</a>'
+                f' · <a href="{news_rel}">newsletter</a>.')
     fid = 'ct-email-' + re.sub(r'[^a-z0-9]+', '-', src.lower())
     ok_js, bad_js, check_js = (_json.dumps(ok, ensure_ascii=False),
                                _json.dumps(bad, ensure_ascii=False),
                                _json.dumps(check, ensure_ascii=False))
     return (
-        f'<aside class="ct-upgrade ch" style="padding:16px 18px">'
+        f'<aside class="ct-upgrade ch" aria-label="{E(title)}">'
         f'<form class="ct-news" data-lang="{lang}" action="https://crowdtape-newsletter.vercel.app/api/subscribe" method="POST">'
         f'<label for="{fid}" class="ct-news-t">{E(title)}</label>'
         f'<input id="{fid}" type="email" name="email" required autocomplete="email" placeholder="you@example.com">'
@@ -333,7 +340,7 @@ def shell(lang, title, desc, canon_path, body, alt_paths=None, ld=None):
 <main>
 {body}
 </main>
-<footer class="site-foot"><p><a href="/{lang}/">{t['home']}</a> · <a href="/{lang}/earnings/">{t['all_briefs']}</a> · <a href="/{lang}/checklist/earnings/">{'財報清單' if lang == 'zh' else 'Earnings checklist'}</a> · <a href="/{lang}/newsletter/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=newsletter">{'電子報' if lang == 'zh' else 'Newsletter'}</a> · <a href="/{lang}/support/">{'支持我們' if lang == 'zh' else 'Support us'}</a></p></footer>
+<footer class="site-foot"><p><a href="/{lang}/">{t['home']}</a> · <a href="/{lang}/earnings/">{t['all_briefs']}</a> · <a href="/{lang}/checklist/earnings/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=earnings_footer">{'財報清單' if lang == 'zh' else 'Earnings checklist'}</a> · <a href="/{lang}/newsletter/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=earnings_footer">{'電子報' if lang == 'zh' else 'Newsletter'}</a> · <a href="/{lang}/support/">{'支持我們' if lang == 'zh' else 'Support us'}</a></p></footer>
 </div>
 </body>
 </html>
@@ -499,8 +506,8 @@ def brief_page(co, lang, stamp, has_stock):
     if p:
         parts.append(f'<p class="note">{E(t["pending"](p["q"], eps_s(p["eps_act"]), eps_s(p["eps_est"]) if p.get("eps_est") is not None else ""))}</p>')
     parts += [chap1(co, lang), chap2(co, lang), chap3(co, lang), chap4(co, lang), chap5(co, lang)]
-    parts.append(aff_optionstrat(lang))
     parts.append(news_cta(lang, f'earnings-{tk}'))
+    parts.append(aff_optionstrat(lang))
     parts.append(f'<p class="small">{E(t["source"](co["latest"].get("filed") or "—"))} {t["updated"]} {stamp} HKT</p>')
     parts.append(f'<p><a href="/{lang}/earnings/">← {E(t["back"])}</a></p>')
     ld = {'@context': 'https://schema.org', '@type': 'Article', 'headline': title[:110], 'description': desc,
