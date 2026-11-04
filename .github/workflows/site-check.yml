@@ -1,0 +1,21 @@
+name: Site Check
+# Replaces SuperGrok Site Check. Fails if live generated_hkt is older than 9h
+# (Update site is every 8h HKT 03/11/19; Tim/CEO 2026-11-05). No xAI calls.
+on:
+  workflow_dispatch:
+  schedule:
+    # Every 2h UTC — catch a missed 8h Update within the 9h SLA
+    - cron: '20 */2 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: site-check
+  cancel-in-progress: true
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check live generated_hkt age (max 9h)
+        run: python3 tools/site_check.py --max-age-h 9

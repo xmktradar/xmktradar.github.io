@@ -4,7 +4,7 @@
   monthly), so SuperGrok's write-ups use the same numbers as the page, plus a few
   reasons and post links per ticker for quoting.
 - data/site-status.json: when the site last updated, how many posts wait for a
-  summary, warnings, and the newest write-up dates. The daily check reads this.
+  summary, warnings, and the newest write-up dates. Actions Site Check reads this.
 
 It also removes summaries the site has already used: data/grok-inbox/ batch files are
 deleted once used, and data/super-grok-analysis.json is reset if it holds used or broken
@@ -77,7 +77,7 @@ def main():
         dates[lang]['highlights'] = max(d.get('highlights' + sfx, {}) or [''], default='') or None
         dates[lang]['briefing'] = latest(d.get('briefings' + sfx, []))
     write_json('data/site-status.json', {
-        'note': 'Written by GitHub Actions on every update. SuperGrok daily check reads this.',
+        'note': 'Written by GitHub Actions on every update. Actions Site Check reads this.',
         'checked_hkt': now_hk().strftime('%Y-%m-%d %H:%M'),
         'generated_hkt': gen, 'cutoff_hkt': d['meta'].get('cutoff_hkt'),
         'posts_on_site': len(d.get('posts', [])),
