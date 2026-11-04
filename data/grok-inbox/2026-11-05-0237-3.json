@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2118023300098212045": {
+      "en_summary": "Crazy seeing $CIFR down nearly 80% in just five months.",
+      "zh_summary": "看到$CIFR 在短短五個月內下跌近80%，真是瘋狂。",
+      "tickers": ["CIFR"],
+      "stance": "中性",
+      "stance_by_ticker": {"CIFR": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2118023135718973640": {
+      "en_summary": "$DAX",
+      "zh_summary": "$DAX",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2118022302646546820": {
+      "en_summary": "Lot of funds / pods reportedly blew up recently so there's been a lot of forced selling. Even if $POET goes below their net cash, funds can be forced to liquidate holdings anyway. Even if another name looks operationally bullish like $NBIS, stock prices can look catastrophic and irrational until deleveraging stops.",
+      "zh_summary": "據報最近許多基金/ pods 爆倉，因此有大量被迫拋售。即使$POET 跌破淨現金，基金也可能被迫清算持倉。即使另一個名稱像$NBIS 在營運上看似看漲，股價也可能看起來災難性且非理性，直到去槓桿停止。",
+      "tickers": ["NBIS", "POET"],
+      "stance": "中性",
+      "stance_by_ticker": {"NBIS": "中性", "POET": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2118021283028058554": {
+      "en_summary": "Pretty interesting seeing $TSLA and $SPCX sell off after Democrats swept Congress while odds of a merger have barely budged and are still at 75% likelihood.",
+      "zh_summary": "看到$TSLA 和 $SPCX 在民主黨橫掃國會後拋售，而合併的機率幾乎沒有變化，仍然在75%的可能性，這相當有趣。",
+      "tickers": ["SPCX", "TSLA"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPCX": "未表態", "TSLA": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2118021039930109970": {
+      "en_summary": "Most of our Tech Shorts including $DRAM are down in an up tape, Bob. Work your process better - we're not long Oil or Energy Stocks either.",
+      "zh_summary": "我們大多數科技空頭包括$DRAM 在上漲行情中下跌，Bob。更好地執行你的流程 - 我們也沒有做多石油或能源股票。",
+      "tickers": ["DRAM"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"DRAM": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
