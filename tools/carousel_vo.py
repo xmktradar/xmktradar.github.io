@@ -1,4 +1,4 @@
-"""Voiceover for the carousel motion videos.
+"""Voiceover for the carousel motion videos (v6 Bloomberg / terminal).
 
 zh: Mandarin, zh-CN-XiaoxiaoNeural, rate +10%. Lines, voice, rate and the zh pass are unchanged.
 en: English, en-US-AndrewNeural (override with VO_VOICE_en). Starts at +10%. If the video would
@@ -7,15 +7,15 @@ en: English, en-US-AndrewNeural (override with VO_VOICE_en). Starts at +10%. If 
     (no silent / music-only mp4). Never shipped over 29.0s.
 
 Reads work/carousel.json (the same slides the pictures use), writes one line per video scene
-(8 scenes: hook, reveal, vs, 4 pictures, outro), reads each line with edge-tts (free, no key)
+(5 scenes: open, split, m1, m2, cta), reads each line with edge-tts (free, no key)
 and writes <out>/vo.json: {"<slot>-<lang>": [{"file": ".../vo-0.mp3", "dur": 2.31}, ...]}.
 A video gets a voice only when every line of it was read; anything failing leaves that video
 out of vo.json, so tools/carousel_video.js skips that language. Lines never say buy, sell,
 a price target or a prediction.
 Usage: python3 tools/carousel_vo.py work/carousel.json <out dir>   (VO_LANGS=zh,en  VO_VOICE_zh=... VO_VOICE_en=...)
        VO_FAKE=1 makes silent stand-in files of a plausible length (local tests, no network).
-Video length uses the same beat sum as tools/carousel_video.js (scene grows to fit the line +0.4s),
-plus the opening cover (~0.7s). The cover is not spoken; the 8 lines start after it.
+Video length uses the same beat sum as tools/carousel_video.js (scene grows to fit the line +0.4s).
+Cover is merged into open (COVER_FRAMES = 0); the 5 lines start at each scene's +0.15s lead-in.
 """
 import asyncio
 import json
@@ -31,8 +31,8 @@ RATE = '+10%'
 TIMEOUT = 30
 # Keep in sync with BASE / BEAT / COVER_FRAMES in tools/carousel_video.js.
 BEAT = 60 / 124
-BASE_BEATS = (5, 4, 6, 7, 7, 6, 6, 7)  # hook, reveal, vs, 4 pictures, outro
-COVER_FRAMES = 17  # ~0.7s opening cover at 24 fps. The 29s guard includes it.
+BASE_BEATS = (6, 6, 7, 7, 5)  # open, split, m1, m2, cta
+COVER_FRAMES = 0  # cover merged into open; 29s guard still uses COVER_S for parity
 COVER_S = COVER_FRAMES / 24
 MAX_VIDEO_S = 29.0
 # English only. Normal script first; faster rates before the shorter script.
@@ -76,10 +76,10 @@ def first_cards(slide, mark=None):
 
 
 def video_total(durs):
-    """Seconds, matching carousel_video.js, including the opening cover.
+    """Seconds, matching carousel_video.js.
 
-    No durs: the 48-beat silent cut plus the cover. A voiced scene is
-    max(base beats, ceil((line + 0.4s) / beat)) beats. The cover is not a line.
+    No durs: the silent cut (sum of BASE_BEATS) plus COVER_S (0 in v6). A voiced scene is
+    max(base beats, ceil((line + 0.4s) / beat)) beats.
     """
     if not durs:
         return sum(BASE_BEATS) * BEAT + COVER_S
@@ -98,7 +98,7 @@ def _count_en(n, one, many):
 
 
 def en_lines(job, short=False):
-    """8 English lines, one per scene. Tickers go through spell(). No buy, sell, target or prediction."""
+    """5 English lines, one per scene. Tickers go through spell(). No buy, sell, target or prediction."""
     s = job['slides']
     big = s[0].get('big', '')
     n, bull, bear = counts(s[0])
@@ -106,42 +106,34 @@ def en_lines(job, short=False):
     up, down = first_cards(s[2], '🟢')[:1], first_cards(s[2], '🔴')[:1]
     split = first_cards(s[3])[:1]
     if bull > bear:
-        verdict = 'Bulls.' if short else 'Bulls ahead!'
+        verdict = 'Bulls.' if short else 'Bulls ahead.'
     elif bear > bull:
-        verdict = 'Bears.' if short else 'Bears ahead!'
+        verdict = 'Bears.' if short else 'Bears ahead.'
     else:
-        verdict = 'Tie.' if short else "It's a tie!"
+        verdict = 'Tie.' if short else "It's a tie."
+    top = ', '.join(spell(t) for t in top4) if top4 else ("Today's ranking." if not short else 'Ranking.')
+    bits = ([f'bull {spell(up[0])}'] if up else []) + ([f'bear {spell(down[0])}'] if down else [])
+    joint = ', '.join(bits)
+    m2 = joint if joint else (f'{spell(split[0])}, biggest split.' if split else 'Which side?')
     if short:
-        vs = f'{bull} bull, {bear} bear. {verdict}'
-        bits = ([f'bull {spell(up[0])}'] if up else []) + ([f'bear {spell(down[0])}'] if down else [])
-        joint = ', '.join(bits)
         return [
-            'Hottest stock?',
             f'{spell(big)}, {_count_en(n, "account", "accounts")}.',
-            vs,
-            'What they say.',
-            'Top 4 on screen.' if top4 else "Today's ranking.",
-            joint if joint else 'The consensus.',
-            f'{spell(split[0])}, biggest split.' if split else 'Which side?',
+            f'{bull} bull, {bear} bear. {verdict}',
+            top if top4 else 'Ranking.',
+            m2,
             'thecrowdtape dot com',
         ]
-    vs = f'{_count_en(bull, "bull", "bulls")}, {_count_en(bear, "bear", "bears")}. {verdict}'
-    bits = ([f'bullish {spell(up[0])}'] if up else []) + ([f'bearish {spell(down[0])}'] if down else [])
-    joint = ', '.join(bits)
     return [
-        "Today's hottest stock?",
         f'{spell(big)}, {_count_en(n, "account", "accounts")}.',
-        vs,
-        'What are they saying?',
-        'Top 4, on screen.' if top4 else "Today's ranking.",
-        joint if joint else 'Where they agree.',
-        f'{spell(split[0])}, biggest split.' if split else 'Which side are you on?',
+        f'{_count_en(bull, "bull", "bulls")}, {_count_en(bear, "bear", "bears")}. {verdict}',
+        f'Top 4: {top}' if top4 else "Today's ranking.",
+        m2 if joint else (f'{spell(split[0])}, biggest split.' if split else 'Where they agree.'),
         'Details at thecrowdtape dot com',
     ]
 
 
 def lines(job):
-    """The 8 lines for one video, or None when the language has no script."""
+    """The 5 lines for one video, or None when the language has no script."""
     if job['lang'] == 'zh':
         s = job['slides']
         big = s[0].get('big', '')
@@ -149,17 +141,15 @@ def lines(job):
         top4 = first_cards(s[1])[:4]
         up, down = first_cards(s[2], '🟢')[:1], first_cards(s[2], '🔴')[:1]
         split = first_cards(s[3])[:1]
-        # short lines so the zh video fits ~29 s at RATE +10% (2026-10-25: the longer script needed +40%)
-        vs = f'{bull} 看好，{bear} 看空，' + ('多方領先！' if bull > bear else '空方領先！' if bear > bull else '打平！')
+        vs = f'{bull} 看好，{bear} 看空，' + ('多方領先。' if bull > bear else '空方領先。' if bear > bull else '打平。')
         joint = '，'.join(([f'看好 {spell(up[0])}'] if up else []) + ([f'看空 {spell(down[0])}'] if down else []))
+        m2 = joint if joint else (f'{spell(split[0])} 分歧最大。' if split else '你站哪邊？')
+        top = '、'.join(spell(t) for t in top4)
         return [
-            '今天最熱門的美股是？',
             f'{spell(big)}，{n} 個帳號在聊',
             vs,
-            '大神怎麼說？',
-            '熱度前四，一張圖看完' if top4 else '今天的熱度排行',  # the 4 tickers are on the picture
-            joint if joint else '大神們的共識',
-            f'{spell(split[0])} 分歧最大！' if split else '你站哪邊？',
+            f'熱度前四：{top}' if top4 else '今天的熱度排行',
+            m2,
             '詳情看 thecrowdtape.com',
         ]
     if job['lang'] == 'en':
@@ -192,12 +182,12 @@ async def speak(text, voice, path, rate=RATE):
     import edge_tts
     for attempt in range(4):
         if attempt:
-            await asyncio.sleep(2 ** attempt)  # "No audio was received" often clears after a short wait
+            await asyncio.sleep(2 ** attempt)
         try:
             await asyncio.wait_for(edge_tts.Communicate(text, voice, rate=rate).save(path), TIMEOUT)
             if os.path.getsize(path) > 1000:
                 return True
-        except Exception as e:  # network, service change, timeout
+        except Exception as e:
             print(f'voiceover: {voice} try {attempt + 1} failed: {e}', file=sys.stderr)
     return False
 
@@ -248,23 +238,31 @@ def main(job_file, out_dir):
     for job in jobs:
         if job['lang'] not in want or job['slot'] not in slots:
             continue
-        ls = lines(job)
-        if not ls:
-            continue
-        voice = os.environ.get(f"VO_VOICE_{job['lang']}", VOICES[job['lang']])
         key = f"{job['slot']}-{job['lang']}"
+        texts = lines(job)
+        if not texts:
+            print(f'::warning::{key} 無旁白腳本，今次唔出呢條片')
+            continue
+        voice = os.environ.get(f"VO_VOICE_{job['lang']}") or VOICES.get(job['lang'])
+        if not voice:
+            print(f'::warning::{key} 無聲線，今次唔出呢條片')
+            continue
         if job['lang'] == 'en':
             got = fit_en(job, voice, out_dir, key)
+        else:
+            got = render_lines(texts, voice, out_dir, key, RATE)
             if got:
-                result[key] = got
-            continue
-        got = render_lines(ls, voice, out_dir, key, RATE)
+                total = video_total([g['dur'] for g in got])
+                print(f'voiceover: {key} rate {RATE} video {total:.2f}s')
+                # zh is emitted once at +10%; carousel_video.js skips if voiced total > 29s.
         if got:
             result[key] = got
-            print(f'voiceover: {key} {sum(g["dur"] for g in got):.1f}s')
+            print(f'voiceover: {key} {len(got)} lines')
         else:
             print(f'::warning::{key} 配音失敗，今次唔出呢條片')
-    json.dump(result, open(os.path.join(out_dir, 'vo.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    path = os.path.join(out_dir, 'vo.json')
+    json.dump(result, open(path, 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
+    print(f'voiceover wrote {path} ({len(result)} videos)')
 
 
 if __name__ == '__main__':

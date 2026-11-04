@@ -7,7 +7,7 @@
 > ⑩（2026-10-26）片最頭加約 0.7 秒封面。第 0 格係畫好嘅封面（IG 格仔唔再係灰色放射線）。中文「每日精選」，英文「Daily Picks」，再加當日日期、最多人討論嘅代號同帳號數、最多人睇好嘅代號、發文帳號數。數字全部來自輪播數據，唔估。英文封面冇中文。旁白 8 句唔改，開始時間順延封面長度。29 秒上限包括封面。
 > ⑪（2026-10-26 Tim）**所有每日短片（中、英）必須有配音。** 唔出無聲或者淨音樂嘅片。配音失敗、冇 VO 檔、或者配音後超過 29.0 秒：嗰條語言唔出片，好過出冇旁白版。YouTube Shorts／之後其他短片同一條規則。
 > ⑦（15:41 Tim OK）跟**第 4 版樣板**做：跟拍剪接、全畫面快閃大字、VS 對決、輪播圖完整顯示（唔放大）加黃色發光框。
-> 樣板：Claude 項目檔 `motion-sample/sample-1230-zh-v4.mp4`。**2026-10-25 Claude 已經寫好正式程式（見第四節）**，Grok Bot 唔使再寫，只需要做 V5（發 Reels）。
+> 樣板：Claude 項目檔 `motion-sample/sample-1230-zh-v4.mp4`（**comic v4 已棄用**，只留作歷史對照）。**2026-10-25 Claude 已經寫好 comic 正式程式（見第四節）**；**現行視覺係 v6 Bloomberg／terminal（見「視覺 v6／Bloomberg」）**。任務表入面嘅 **V6＝自動測試** 唔變，唔好同視覺 v6 搞亂。
 > 畫面設計原稿：Claude 項目檔 `carousel-motion-video-script.md`（本檔第一節已經包括最新設計）。
 
 ---
@@ -109,7 +109,7 @@
 ## 四、實作（已完成）
 
 **檔案**
-- `tools/carousel_video.js`：主程式。讀 `work/carousel.json`，只做 `VIDEO_SLOTS`（預設 `1230`）同 `VIDEO_LANGS`（預設 `zh,en`）嘅 job，兩個語言同時做。開頭封面 `COVER_FRAMES = 17`（24 fps，約 0.7 秒），跟住 8 段時間以拍計（`BASE`：5、4、6、7、7、6、6、7），一拍 = 60/124 秒。有配音嗰段會加長到 `max(基本拍, ceil((句長 + 0.4 秒) / 一拍))` 拍。總長 = 封面 + 各段。中、英都必須有配音而且 `<= 29.0` 秒（計埋封面）；冇 VO 條目、VO 檔唔齊、或者配音後超過 29 秒：**唔出嗰條語言**（刪 `.part.mp4`，唔寫 mp4）。冇「丢掉配音出靜音版」呢條後路。混好確認之後先寫 sidecar `og/c/<day>-<slot>-<lang>.vo.json`（`{voice, duration, vo:true}`）。旁白 `at` 係封面長度 + 該段開始 + 0.15 秒。輸出 `og/c/<day>-<slot>-<lang>.mp4`（先寫 `.part.mp4` 再改名）同封面 `og/c/<day>-<slot>-<lang>-cover.jpg`（第 0 格）。ffmpeg：`libx264` profile high、`-vf scale=1080:1920:in_range=pc:out_range=tv,format=yuv420p`、`-pix_fmt yuv420p`、`-color_range tv`、AAC 128k、`-ar 44100`、`-movflags +faststart`。最後時長寫喺 log：`carousel video … Ns (voiceover)`。
+- `tools/carousel_video.js`：主程式。讀 `work/carousel.json`，只做 `VIDEO_SLOTS`（預設 `1230`）同 `VIDEO_LANGS`（預設 `zh,en`）嘅 job，兩個語言同時做。（**v6 起改為 Bloomberg 5 段，詳見「視覺 v6／Bloomberg」**；以下 comic 描述保留作歷史。）開頭封面 `COVER_FRAMES = 17`（24 fps，約 0.7 秒），跟住 8 段時間以拍計（`BASE`：5、4、6、7、7、6、6、7），一拍 = 60/124 秒。有配音嗰段會加長到 `max(基本拍, ceil((句長 + 0.4 秒) / 一拍))` 拍。總長 = 封面 + 各段。中、英都必須有配音而且 `<= 29.0` 秒（計埋封面）；冇 VO 條目、VO 檔唔齊、或者配音後超過 29 秒：**唔出嗰條語言**（刪 `.part.mp4`，唔寫 mp4）。冇「丢掉配音出靜音版」呢條後路。混好確認之後先寫 sidecar `og/c/<day>-<slot>-<lang>.vo.json`（`{voice, duration, vo:true}`）。旁白 `at` 係封面長度 + 該段開始 + 0.15 秒。輸出 `og/c/<day>-<slot>-<lang>.mp4`（先寫 `.part.mp4` 再改名）同封面 `og/c/<day>-<slot>-<lang>-cover.jpg`（第 0 格）。ffmpeg：`libx264` profile high、`-vf scale=1080:1920:in_range=pc:out_range=tv,format=yuv420p`、`-pix_fmt yuv420p`、`-color_range tv`、AAC 128k、`-ar 44100`、`-movflags +faststart`。最後時長寫喺 log：`carousel video … Ns (voiceover)`。
 - `tools/carousel_scene.html` + `tools/carousel_scenes.js`：全畫面場景（封面、快閃開場、揭曉、VS、結尾）。封面喺 `t = 0` 已經畫完。
 - `tools/carousel_motion.js`：注入 `tools/carousel.html` 嘅動畫（元素出場、外框、大標題、黃色發光框）。靜態圖唔會載入佢，所以 4 張 jpg 同以前一樣。
 - `tools/carousel_vo.py`：寫 8 句旁白，用 edge-tts 讀出，寫 `vo.json`。任何一句失敗，嗰條語言唔寫入 `vo.json`，`carousel_video.js` 就唔出嗰條片。`VO_FAKE=1` 用假聲做本機測試。`VO_LANGS` 預設 `zh,en`（workflow 嗰步亦設 `VO_LANGS=zh,en`；`ko` 的 `lines()` 回傳 `None`，所以韓文冇配音）。
@@ -135,3 +135,34 @@
 **2026-10-26 Tim：配音必須有**。中、英每日短片都要有旁白。冇 VO、VO 檔失敗、或者配音後 >29s：嗰條語言唔出片，唔出無聲／淨音樂版。成功混音之後寫 `og/c/<day>-<slot>-<lang>.vo.json`。`carousel_video_post.py` 冇 marker／冇聲軌／太長就刪嗰個語言。Shorts 之後同一條規則。韓文繼續冇片、冇配音。
 
 **2026-10-26 封面同 IG 編碼**：片頭 17 格封面，第 0 格係「每日精選」／「Daily Picks」加當日代號同帳號數。旁白 8 句唔改，開始時間順延封面。JPEG 輸入會出 `yuvj420p`（full range），而家用 `scale=1080:1920:in_range=pc:out_range=tv,format=yuv420p` 同 `-color_range tv`，probe 係 `yuv420p`、`color_range=tv`。封面 jpg 網址喺 `slots.<slot>.video_cover`。
+
+---
+
+## 視覺 v6／Bloomberg
+
+**唔好同任務表「V6＝自動測試」搞亂。** 呢一節係 Shorts **畫面樣式**（Bloomberg／terminal），取代 comic v4。
+
+### 目標
+- 極簡深色 Bloomberg／終端機風 Shorts（唔係漫畫）。
+- 零 emoji、零彩紙、零震動、零白閃；音效只用輕 tick／whoosh／soft pop／ding。
+- 開場即見 `$TICKER` + 討論帳號數（封面併入 `open`；`COVER_FRAMES = 0`；frame 0 同時寫 `*-cover.jpg`）。
+- 場景（5）：`open` → `split` → `m1` → `m2` → `cta`。最多 2 個數據鏡（m1／m2）。
+- 配音必須有（zh Xiaoxiao／en Andrew）；總長 ≤ 29.0s；數字只嚟自 job 數據。
+- 編碼：1080×1920 H.264 High limited `yuv420p` + AAC 128k + `+faststart`。
+- 主站底色對齊 `--bg:#0e1116`；面板 `#0e1522`、髮線 `#1e2a3a`、字 `#e8eef7`、muted `#8b9bb4`、amber `#f5a623`、up `#3dd68c`、down `#ff5c7a`。
+- Homepage 唔 embed 片；`social/index.html` 只播 `og/c/*.mp4`。唔做 Meta。
+
+### 檔案（v6）
+- `tools/carousel_scene.html` + `tools/carousel_scenes.js`：Bloomberg 場景（open／split／m1／m2／cta）。
+- `tools/carousel_video.js`：`BASE` = open 6、split 6、m1 7、m2 7、cta 5；**唔再**載入 `carousel.html`／`carousel_motion.js` comic 幻燈。
+- `tools/carousel_vo.py`：5 句旁白；`BASE_BEATS`／`COVER_FRAMES` 同 JS 同步。
+- `tools/carousel_motion.js`：comic 幻燈動畫；**動態片路徑唔再用**（靜態輪播 jpg 亦唔載入）。
+
+### 節拍同旁白
+- 一拍 = 60/124 秒。有配音段：`max(基本拍, ceil((句長 + 0.4s) / 拍))`。
+- 旁白 `at` = 該段開始 + 0.15s（封面已併入 open，無額外 COVER 延遲）。
+- zh 5 句：① `{代號}，{N} 個帳號在聊` ② 好淡數 + 領先 ③ 熱度前四 ④ 共同／分歧 ⑤ `詳情看 thecrowdtape.com`。
+- en 5 句：對應英文；超時先加速再短稿，仍然 >29s 唔出片。
+
+### 棄用（comic v4）
+- 8 段 hook／reveal／vs／s1–s4／outro、封面 17 格、「每日精選」封面文案、emoji／slam／shake／confetti／白閃，一律唔再用於新片。
