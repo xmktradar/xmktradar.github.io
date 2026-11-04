@@ -40,3 +40,6 @@ Independent: every 2.8s ±0.6, duration 2 frames (~120ms), use `blink` (eyes clo
 
 ### Head
 CSS while mouth≠idle: `rotate` ±2.5° @ 1.2s + vertical bob 6px @ 2.4s.
+
+### Wire note — Specs point-L
+No `specs-point-L.png` in v1 pack. Use CSS `transform: scaleX(-1)` on `specs-point-R` for bull-side point (cue t≈5.5). Keep Wave L/R as separate files.

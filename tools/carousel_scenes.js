@@ -180,10 +180,12 @@ function setCat(id, pose, side) {
   if (!layer) return;
   const sideCls = side === 'left' ? 'cat-host--left' : (side === 'center' ? 'cat-host--center' : '');
   const src = catSrc(id, pose);
+  // No specs-point-L.png — mirror specs-point-R (design CUE / MANIFEST).
+  const flip = (id === 'specs' && pose === 'point-L') ? ' style="transform:scaleX(-1)"' : '';
   layer.innerHTML =
     `<div class="cat-host bobbing ${sideCls}" id="catHost" data-cat="${esc(id)}" data-pose="${esc(pose)}">` +
-    `<img class="cat-body" id="catBody" alt="" src="${src}">` +
-    `<img class="cat-mouth" id="catMouth" alt="" src="${src}">` +
+    `<img class="cat-body" id="catBody" alt="" src="${src}"${flip}>` +
+    `<img class="cat-mouth" id="catMouth" alt="" src="${src}"${flip}>` +
     `</div>`;
   window.__cat = { id, pose, side: side || 'right' };
 }
