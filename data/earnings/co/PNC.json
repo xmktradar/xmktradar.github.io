@@ -4,18 +4,6 @@
  "cik": 713676,
  "q": [
   {
-   "end": "2023-09-30",
-   "label": "FY2023 Q3",
-   "rev": 5233000000,
-   "gp": null,
-   "op": null,
-   "ni": 1440000000,
-   "eps": 3.6,
-   "ocf": 115000000,
-   "capex": null,
-   "fcf": null
-  },
-  {
    "end": "2023-12-31",
    "label": "FY2023 Q4",
    "rev": 5361000000,
@@ -105,7 +93,7 @@
    "rev": 5915000000,
    "gp": null,
    "op": null,
-   "ni": 1723000000,
+   "ni": 1808000000,
    "eps": 4.35,
    "ocf": 2656000000,
    "capex": null,
@@ -146,39 +134,47 @@
    "ocf": 2147000000,
    "capex": null,
    "fcf": null
+  },
+  {
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "rev": 6562000000,
+   "gp": null,
+   "op": null,
+   "ni": 2081000000,
+   "eps": 4.97,
+   "ocf": 3065000000,
+   "capex": null,
+   "fcf": null
   }
  ],
  "latest": {
-  "label": "FY2026 Q2",
-  "filed": "2026-08-05",
-  "accn": "0001628280-26-053170",
+  "label": "FY2026 Q3",
+  "filed": "2026-11-03",
+  "accn": "0001628280-26-069377",
   "form": "10-Q",
-  "end": "2026-06-30"
+  "end": "2026-09-30"
  },
  "bal": {
-  "end": "2026-06-30",
-  "cash": 28745000000,
+  "end": "2026-09-30",
+  "cash": 30425000000,
   "sti": null,
-  "debt": 85723000000
+  "debt": 79757000000
  },
  "bank": false,
  "seg": {
   "none": true,
-  "accn": "0001628280-26-053170"
+  "accn": "0001628280-26-069377"
  },
  "rules": 4,
- "mcap": 91131420672,
+ "mcap": 91711389696,
  "next": "2027-01-15",
  "last_report": null,
  "est": {
-  "eps_act": 4.81,
-  "eps_est": 4.45296,
+  "eps_act": 4.97,
+  "eps_est": 4.89238,
   "rev_est": null,
   "rev_est_seen": null
  },
- "pending": {
-  "q": "2026-09-30",
-  "eps_act": 4.97,
-  "eps_est": 4.89238
- }
+ "pending": null
 }
