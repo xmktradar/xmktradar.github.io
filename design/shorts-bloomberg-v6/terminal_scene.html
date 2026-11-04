@@ -1,0 +1,29 @@
+<!doctype html>
+<meta charset="utf-8">
+<!-- Blank 1080×1920 shell for terminal shorts scenes (tools/terminal_scenes.js).
+     Drop-in replacement for tools/carousel_scene.html.
+     Minimal: #bg + #c only. No #flash, #rays, comic strokes, or social_apple.css. -->
+<title>TCT Terminal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700&display=block">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  html, body {
+    margin: 0;
+    width: 1080px;
+    height: 1920px;
+    overflow: hidden;
+    background: #0a0c10;
+    color: var(--text, #f0f3f6);
+    font-family: var(--font-sans, "Inter", "Noto Sans TC", sans-serif);
+  }
+  body { position: relative; }
+  #bg, #c { position: absolute; inset: 0; }
+  #bg { z-index: 0; background: #0a0c10; }
+  #c { z-index: 2; }
+</style>
+<body>
+  <div id="bg"></div>
+  <div id="c"></div>
+</body>

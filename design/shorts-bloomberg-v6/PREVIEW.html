@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="zh-Hant">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TCT Terminal Shorts — 設計簽收</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700&display=block">
+<link rel="stylesheet" href="tokens.css">
+<style>
+  html, body {
+    margin: 0;
+    background: #07080b;
+    color: #cfd3da;
+    font-family: "Inter", "Noto Sans TC", "Noto Sans CJK TC", sans-serif;
+  }
+  body { padding: 48px 40px 96px; }
+  .pv-head { max-width: 1480px; margin: 0 auto 48px; }
+  .pv-kicker {
+    font-family: "Inter", monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #00d26a;
+  }
+  .pv-head h1 {
+    font-size: 36px;
+    font-weight: 600;
+    color: #f4f6f8;
+    letter-spacing: -0.03em;
+    margin: 8px 0 12px;
+  }
+  .pv-head p { margin: 0; font-size: 15px; line-height: 1.55; color: #8b93a1; max-width: 720px; }
+  .shots { display: flex; flex-direction: column; gap: 64px; max-width: 1480px; margin: 0 auto; }
+  .shot { display: grid; grid-template-columns: 320px 432px; gap: 36px; align-items: start; }
+  @media (max-width: 860px) { .shot { grid-template-columns: 1fr; } }
+  .shot-meta h2 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #f4f6f8;
+  }
+  .shot-meta .tag {
+    display: inline-block;
+    font-family: "Inter", monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: #c8a35a;
+    margin-bottom: 12px;
+  }
+  .shot-meta dl { margin: 0; }
+  .shot-meta dt {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #5c6573;
+    margin-top: 14px;
+  }
+  .shot-meta dd { margin: 4px 0 0; font-size: 14px; line-height: 1.5; color: #cfd3da; }
+  .frame {
+    width: 432px;
+    height: 768px;
+    overflow: hidden;
+    border: 1px solid #1c2430;
+    background: #0a0c10;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  }
+  .stage {
+    position: relative;
+    width: 1080px;
+    height: 1920px;
+    transform: scale(0.4);
+    transform-origin: top left;
+    overflow: hidden;
+    background: #0a0c10;
+  }
+  .stage #bg, .stage #c, .stage #flash, .stage #rays { position: absolute; inset: 0; }
+  .stage #bg { z-index: 0; }
+  .stage #c { z-index: 2; }
+  .stage #rays { display: none; }
+  .stage #flash { opacity: 0; }
+  code { font-family: "Inter", monospace; font-size: 12px; color: #8b93a1; }
+</style>
+
+<body>
+  <header class="pv-head">
+    <div class="pv-kicker">The Crowd Tape · 1080×1920 · 設計簽收</div>
+    <h1>Bloomberg／終端風 Shorts</h1>
+    <p>六鏡 hold 格，用 sample NVDA。真片由 <code>setup(name, D)</code> + <code>draw(t, gt)</code> 逐格畫。s1–s4 輪播圖唔喺呢頁。打開本檔即可捲動簽收。</p>
+  </header>
+  <div class="shots" id="shots"></div>
+
+<script>
+const cl = v => Math.max(0, Math.min(1, v));
+const out = p => 1 - Math.pow(1 - p, 3);
+const back = p => { const c = 1.9; return 1 + (c + 1) * Math.pow(p - 1, 3) + c * Math.pow(p - 1, 2); };
+const BEAT = 60 / 124, TOTAL = 29;
+function chrome() { return 1; }
+</script>
+<script src="terminal_scenes.js"></script>
+<script>
+const SAMPLE = {
+  date: "2026-11-03",
+  title: "今日焦點",
+  ticker: "NVDA",
+  hero: "+12%",
+  heroLabel: "看多人氣",
+  bull: 42,
+  bear: 11,
+  bullL: "看多",
+  bearL: "看空",
+  fact1: "討論量較昨日 +38%",
+  fact2: "55 個帳號提及",
+  cta: "thecrowdtape.com",
+  handle: "@thecrowdtape",
+  foot: "不構成投資建議"
+};
+
+const SHOTS = [
+  {
+    name: "cover", t: 0,
+    title: "1 · 短封面",
+    tag: "cover  ·  0.00–0.71s  ·  生產片頭 17 格",
+    copy: "$NVDA　+12%　今日焦點　看多人氣　42 / 11",
+    move: "無。t=0 已經畫完，當 cover.jpg。",
+    hold: "全程靜止。"
+  },
+  {
+    name: "hook", t: 1.4,
+    title: "2 · 主 ticker 鎖定",
+    tag: "hook  ·  5 拍 ≈2.42s  ·  入場已見代號",
+    copy: "頂欄 $NVDA +12%　SESSION　今日焦點　01 看多人氣　02 $NVDA +12%",
+    move: "標題 fade+slide；log 逐行 0.22s。",
+    hold: "t≥1.0s 之後。"
+  },
+  {
+    name: "reveal", t: 1.2,
+    title: "3 · 主數字揭曉",
+    tag: "reveal  ·  4 拍 ≈1.94s",
+    copy: "LAST　$NVDA　+12%　看多人氣",
+    move: "代號 slide；+12% count-up；label fade。",
+    hold: "數字到位後 hold。"
+  },
+  {
+    name: "vs", t: 2.2,
+    title: "4 · 多空數字 / 幼 bar",
+    tag: "vs  ·  6 拍 ≈2.90s",
+    copy: "看多 42　看空 11　79% / 21%　01 +38%　02 55 個帳號",
+    move: "count-up + bar 拉闊；數據行 ~1.2s 入。",
+    hold: "最後兩拍。"
+  },
+  {
+    name: "facts", t: 1.2,
+    title: "5 · 兩句關鍵數據",
+    tag: "facts  ·  可選 scene  ·  生產摺入 vs",
+    copy: "01 討論量較昨日 +38%　02 55 個帳號提及",
+    move: "兩行 fade+slide。",
+    hold: "第二行入完。"
+  },
+  {
+    name: "outro", t: 1.6,
+    title: "6 · CTA",
+    tag: "outro  ·  7 拍 ≈3.39s  ·  s1–s4 之後",
+    copy: "thecrowdtape.com　@thecrowdtape　不構成投資建議",
+    move: "URL → handle → 其餘行。",
+    hold: "最後約兩拍。"
+  }
+];
+
+const root = document.getElementById("shots");
+SHOTS.forEach((shot, i) => {
+  const wrap = document.createElement("section");
+  wrap.className = "shot";
+  wrap.innerHTML = `
+    <div class="shot-meta">
+      <div class="tag">${shot.tag}</div>
+      <h2>${shot.title}</h2>
+      <dl>
+        <dt>畫面字</dt><dd>${shot.copy}</dd>
+        <dt>動</dt><dd>${shot.move}</dd>
+        <dt>停</dt><dd>${shot.hold}</dd>
+        <dt>setup</dt><dd><code>setup("${shot.name}", SAMPLE)</code> · hold t=${shot.t}s</dd>
+      </dl>
+    </div>
+    <div class="frame"><div class="stage" id="stage-${shot.name}">
+      <div id="bg"></div><div id="rays"></div><div id="c"></div><div id="flash"></div>
+    </div></div>`;
+  root.appendChild(wrap);
+});
+
+SHOTS.forEach(shot => {
+  const stage = document.getElementById("stage-" + shot.name);
+  window.__TERM_ROOT = stage;
+  window.TAPE = null;
+  setup(shot.name, SAMPLE);
+  draw(shot.t, shot.t);
+});
+window.__TERM_ROOT = document;
+</script>
+</body>
+</html>
