@@ -29,7 +29,7 @@ YML = os.path.join(ROOT, '.github', 'workflows', 'update-site.yml')
 UPDATE_Q = '網站多久更新一次？'
 DISCLAIM_Q = '這是投資建議嗎？'
 COUNT_TMPL = '目前追蹤 <b>{n}</b> 個帳號，其中 {parts}，分成 <b>{nc}</b> 類。'
-SCHED_TMPL = '由 GitHub Actions 每 4 小時自動重建一次。排程為 UTC {utc}，即香港時間 {hkt}。'
+SCHED_TMPL = '由 GitHub Actions 每 8 小時自動重建一次。排程為 UTC {utc}，即香港時間 {hkt}。'
 PLAT_LABEL = {'x': 'X', 'truthsocial': 'Truth Social'}
 
 

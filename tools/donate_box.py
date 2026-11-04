@@ -16,8 +16,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAYPAL = 'https://www.paypal.com/qrcodes/p2pqrc/3KT8QNVNRWJMA'
 OPEN, CLOSE = '<!-- donate-box -->', '<!-- /donate-box -->'
 TEXT = {
-    'zh': ('本頁免費、每 4 小時自動更新。覺得有用的話，歡迎請我們喝杯咖啡 ☕', '用 PayPal 支持'),
-    'en': ('This page is free and updates every 4 hours. If it helps you, you can buy us a coffee ☕', 'Support with PayPal'),
+    'zh': ('本頁免費、每 8 小時自動更新。覺得有用的話，歡迎請我們喝杯咖啡 ☕', '用 PayPal 支持'),
+    'en': ('This page is free and updates every 8 hours. If it helps you, you can buy us a coffee ☕', 'Support with PayPal'),
 }
 CSS = ('.ct-donate{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;box-sizing:border-box;max-width:100%;'
        'margin:16px 0;padding:12px 14px;border-radius:16px;background:var(--accent-soft,#f8ecda);'

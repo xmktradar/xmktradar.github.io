@@ -51,7 +51,7 @@ const T = {
     pxNote: '起點為發帖前最後一個收市價，終點為最新收市價（Yahoo Finance），非即時報價。',
     advice: '不構成投資建議。本頁只整理公開貼文，供參考。',
     title: (nm, h) => `${nm}（@${h}）最近看多、看空哪些股票？｜The Crowd Tape`,
-    desc: (h, b, r, ts) => `過去 28 天 @${h} 明確看多 ${b} 隻、看空 ${r} 隻股票：${ts}。查看每隻股票的立場、理由、原帖及表態後股價變化，每 4 小時更新，不構成投資建議。`,
+    desc: (h, b, r, ts) => `過去 28 天 @${h} 明確看多 ${b} 隻、看空 ${r} 隻股票：${ts}。查看每隻股票的立場、理由、原帖及表態後股價變化，每 8 小時更新，不構成投資建議。`,
     upd: '更新時間',
   },
   en: {
@@ -78,7 +78,7 @@ const T = {
     pxNote: 'Start = last daily close before the post; end = latest daily close (Yahoo Finance). Not a live quote.',
     advice: 'Not investment advice. This page only summarises public posts.',
     title: (nm, h) => `${nm} (@${h}): which stocks are they bullish or bearish on? | The Crowd Tape`,
-    desc: (h, b, r, ts) => `In the last 28 days @${h} was bullish on ${b} and bearish on ${r} stocks: ${ts}. Each stance, reason, original post and the price change since, updated every 4 hours. Not investment advice.`,
+    desc: (h, b, r, ts) => `In the last 28 days @${h} was bullish on ${b} and bearish on ${r} stocks: ${ts}. Each stance, reason, original post and the price change since, updated every 8 hours. Not investment advice.`,
     upd: 'Updated',
   },
 };

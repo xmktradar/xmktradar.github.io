@@ -17,8 +17,8 @@ WAIT_HOURS = 24  # posts with no summary after this long stop waiting (Tim, 2026
 # (GitHub 管理員 owns .github/; may still be minute 17 + :47 backup until they change it).
 # With cronOf, #nextup minutes follow UPDATE_SLOTS; GitHub may still start a bit late.
 # the header's 下次更新 shows the next of these slots.
-UPDATE_SLOTS = ['03:00', '07:00', '11:00', '15:00', '19:00', '23:00']
-SCRAPE_SLOTS = ['03:30', '07:30', '11:30', '15:30', '19:30', '23:30']
+UPDATE_SLOTS = ['03:00', '11:00', '19:00']
+SCRAPE_SLOTS = ['03:30', '11:30', '19:30']
 
 
 def has_stock(x):

@@ -30,8 +30,8 @@ E = html.escape
 L = {
     'zh': dict(
         brief='財報簡報', list_title='最新財報簡報：市值 500 億美元以上美股｜The Crowd Tape',
-        list_h1='最新財報簡報', list_lead='市值 500 億美元以上嘅美國上市公司，每間最新一季財報整理成 5 章：結果 vs 預期、成長率、收入線、利潤率、現金流。數字全部來自 SEC 文件同 Yahoo Finance，每 4 小時自動更新。',
-        list_desc='市值 500 億美元以上美股最新季度財報：收入、EPS、指引與現金流。免費領取財報解讀清單，每 4 小時自動更新。',
+        list_h1='最新財報簡報', list_lead='市值 500 億美元以上嘅美國上市公司，每間最新一季財報整理成 5 章：結果 vs 預期、成長率、收入線、利潤率、現金流。數字全部來自 SEC 文件同 Yahoo Finance，每 8 小時自動更新。',
+        list_desc='市值 500 億美元以上美股最新季度財報：收入、EPS、指引與現金流。免費領取財報解讀清單，每 8 小時自動更新。',
         recent='過去 30 日公布', upcoming='未來 14 日將公布', all='全部公司', none='暫時冇。',
         th_date='日期', th_co='公司', th_q='財季', th_rev='收入按年', th_eps='EPS vs 預期',
         reported='公布', find='搵公司（代號或名稱）', no_match='搵唔到。', open_brief='睇完整簡報',
@@ -64,8 +64,8 @@ L = {
     ),
     'en': dict(
         brief='Earnings brief', list_title='Latest $50B+ US earnings briefs | The Crowd Tape',
-        list_h1='Latest earnings briefs', list_lead="Every US-listed company worth $50B or more, its latest quarter in 5 chapters: results vs estimates, growth, revenue lines, margins and cash flow. All numbers come from SEC filings and Yahoo Finance and update automatically every 4 hours.",
-        list_desc='Latest $50B+ US earnings: revenue, EPS, guidance and cash flow. Get the free earnings checklist. Updated every 4 hours.',
+        list_h1='Latest earnings briefs', list_lead="Every US-listed company worth $50B or more, its latest quarter in 5 chapters: results vs estimates, growth, revenue lines, margins and cash flow. All numbers come from SEC filings and Yahoo Finance and update automatically every 8 hours.",
+        list_desc='Latest $50B+ US earnings: revenue, EPS, guidance and cash flow. Get the free earnings checklist. Updated every 8 hours.',
         recent='Reported in the last 30 days', upcoming='Reporting in the next 14 days', all='All companies', none='None right now.',
         th_date='Date', th_co='Company', th_q='Quarter', th_rev='Revenue YoY', th_eps='EPS vs est.',
         reported='Reported', find='Find a company (ticker or name)', no_match='No match.', open_brief='Full brief',

@@ -88,9 +88,9 @@ const esc=v=>String(v==null?'':v).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;',
 document.documentElement.lang=lang;document.body.className=D.mode;
 const L={
  zh:{snap:'快照',hb:'今日最多人看好：',ht:'今日最多人討論：',acc:n=>`${n} 個帳號`,sb:'🟢 共同看多',sr:'🔴 共同看淡',sa:'🗣️ 今日發文帳號',st:'💬 討論股票',u:'隻',ua:'個',
-   tb:'🏆 最多人看好 Top 4',tt:'🔥 最多人討論 Top 4',stk:n=>`🔥 連續 ${n} 日上榜`,fs:n=>`🔥${n}日`,pb:n=>`${n} 個看好`,pt:n=>`${n} 個帳號`,pr:n=>`${n} 個看淡`,fl:'不構成投資建議',m1:'走勢：1 個月',cta:'每 4 小時更新 👉'},
+   tb:'🏆 最多人看好 Top 4',tt:'🔥 最多人討論 Top 4',stk:n=>`🔥 連續 ${n} 日上榜`,fs:n=>`🔥${n}日`,pb:n=>`${n} 個看好`,pt:n=>`${n} 個帳號`,pr:n=>`${n} 個看淡`,fl:'不構成投資建議',m1:'走勢：1 個月',cta:'每 8 小時更新 👉'},
  en:{snap:'',hb:'Most bullish today:',ht:'Most discussed today:',acc:n=>`${n} account${n===1?'':'s'}`,sb:'🟢 Joint bullish',sr:'🔴 Joint bearish',sa:'🗣️ Accounts posting',st:'💬 Stocks discussed',u:'',ua:'',
-   tb:'🏆 Most bullish · Top 4',tt:'🔥 Most discussed · Top 4',stk:n=>`🔥 ${n} days in a row`,fs:n=>`🔥${n}d`,pb:n=>`${n} bullish`,pt:n=>`${n} account${n===1?'':'s'}`,pr:n=>`${n} bearish`,fl:'Not investment advice',m1:'charts: 1 month',cta:'Updated every 4h 👉'}}[lang];
+   tb:'🏆 Most bullish · Top 4',tt:'🔥 Most discussed · Top 4',stk:n=>`🔥 ${n} days in a row`,fs:n=>`🔥${n}d`,pb:n=>`${n} bullish`,pt:n=>`${n} account${n===1?'':'s'}`,pr:n=>`${n} bearish`,fl:'Not investment advice',m1:'charts: 1 month',cta:'Updated every 8h 👉'}}[lang];
 const m1=x=>x.spark&&x.spark.length>1?(x.spark[x.spark.length-1]/x.spark[0]-1)*100:null;
 const pct=v=>v==null?'':(v>=0?'▲':'▼')+Math.abs(v).toFixed(1)+'%';
 const tape=(D.tape||[]).map(x=>`<span>$${x.t}<i class="${x.d1>=0?'u':'d'}">${pct(x.d1)}</i></span><span class="sep">✦</span>`).join('');

@@ -273,7 +273,7 @@ function words(lang, slides) {
     ? { title: zh ? '共同看好／看空' : 'Where they agree', date: S0.win || '', rows: jointRows.slice(0, 4) }
     : { title: zh ? '好淡分歧' : 'Biggest split', date: S0.win || '', rows: splitRows.slice(0, 4) };
   const cta = {
-    foot: zh ? '免費 · 無需登入 · 每 4 小時更新 · 不構成投資建議' : 'Free · No login · Every 4h · Not investment advice',
+    foot: zh ? '免費 · 無需登入 · 每 8 小時更新 · 不構成投資建議' : 'Free · No login · Every 8h · Not investment advice',
     date: S0.win || '',
     t: zh ? ['詳情看 thecrowdtape.com', '@thecrowdtape'] : ['Full tape, free.', 'thecrowdtape.com', '@thecrowdtape'],
   };
