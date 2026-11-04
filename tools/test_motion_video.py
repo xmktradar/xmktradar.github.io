@@ -38,11 +38,11 @@ ZH_LINES = [
     '詳情看 thecrowdtape.com',
 ]
 EN_LINES = [
-    'S P Y, 15 accounts.',
-    '3 bulls, 6 bears. Bears ahead.',
-    'Top 4: S P Y, S P C X, A M Z N, M E T A',
-    'bull M E T A, bear Q Q Q',
-    'Details at thecrowdtape dot com',
+    'S P Y jumped in discussion today — where did that value go?',
+    'On S P Y the tape is 3 bulls versus 6 bears. Bears ahead.',
+    'Like a rock bid at one hundred, then ten — ninety dollars of value vanished, but the rock never left.',
+    'Same idea on the tape: bull M E T A, bear Q Q Q.',
+    'Full tape, free, at thecrowdtape dot com',
 ]
 BAD_EN = re.compile(r'\b(buy|sell|buys|sells|buying|selling|target|targets|prediction|predictions|forecast|forecasts)\b', re.I)
 
@@ -57,7 +57,7 @@ def job(lang='zh'):
 
 def test_defaults():
     assert carousel.VIDEO_SLOTS == ('1230',), carousel.VIDEO_SLOTS
-    assert carousel.VIDEO_LANGS == ('zh', 'en'), carousel.VIDEO_LANGS  # Tim: no Korean video
+    assert carousel.VIDEO_LANGS == ('en',), carousel.VIDEO_LANGS  # Tim 2026-11-04: daily Shorts en-only
 
 
 def _assert_no_advice(lines):
@@ -92,12 +92,12 @@ def test_en_lines():
     assert ls == EN_LINES, ls
     assert len(ls) == 5, ls
     _assert_no_advice(ls)
-    assert 'S P Y' in ls[0] and '15' in ls[0], ls[0]
+    assert 'S P Y' in ls[0] and 'where did that value go' in ls[0], ls[0]
     assert 'bulls' in ls[1] and 'bears' in ls[1] and 'Bears ahead' in ls[1], ls[1]
-    assert 'Top 4' in ls[2] and 'S P Y' in ls[2], ls[2]
+    assert 'rock bid' in ls[2].lower() and 'never left' in ls[2], ls[2]
     assert 'M E T A' in ls[3] and 'Q Q Q' in ls[3], ls[3]
-    assert ls[4] == 'Details at thecrowdtape dot com'
-    assert carousel_vo.vo_langs() == ['zh', 'en']
+    assert ls[4] == 'Full tape, free, at thecrowdtape dot com'
+    assert carousel_vo.vo_langs() == ['en']
     short = carousel_vo.en_lines(job('en'), short=True)
     assert len(short) == 5, short
     _assert_no_advice(short)
@@ -107,14 +107,14 @@ def test_en_lines():
     one = job('en')
     one['slides'][0]['sub'] = '1 account'
     one['slides'][0]['pills'] = [{'c': 'g', 'x': '1 bullish'}]
-    assert carousel_vo.lines(one)[0] == 'S P Y, 1 account.'
-    assert carousel_vo.lines(one)[1] == '1 bull, 0 bears. Bulls ahead.'
+    assert 'where did that value go' in carousel_vo.lines(one)[0]
+    assert '1 bull versus 0 bears' in carousel_vo.lines(one)[1] and 'Bulls ahead' in carousel_vo.lines(one)[1]
     tie = job('en')
     tie['slides'][0]['pills'] = [{'c': 'g', 'x': '4 bullish'}, {'c': 'r', 'x': '4 bearish'}]
     assert "It's a tie." in carousel_vo.lines(tie)[1]
     bulls = job('en')
     bulls['slides'][0]['pills'] = [{'c': 'g', 'x': '8 bullish'}, {'c': 'r', 'x': '2 bearish'}]
-    assert carousel_vo.lines(bulls)[1] == '8 bulls, 2 bears. Bulls ahead.'
+    assert '8 bulls versus 2 bears' in carousel_vo.lines(bulls)[1] and 'Bulls ahead' in carousel_vo.lines(bulls)[1]
 
 
 
@@ -124,8 +124,8 @@ def test_en_missing_sections():
     j['slides'][2]['secs'] = [{'h': '🟢 Joint bullish', 'cards': [{'t': 'META'}]}]
     j['slides'][3]['secs'] = []
     ls = carousel_vo.lines(j)
-    assert ls[2] == "Today's ranking.", ls[2]
-    assert ls[3] == 'bull M E T A' and 'bear' not in ls[3], ls[3]
+    assert 'rock bid' in ls[2].lower(), ls[2]  # parable beat stays even when top4 empty
+    assert 'bull M E T A' in ls[3] and 'Q Q Q' not in ls[3], ls[3]
     _assert_no_advice(ls)
     short = carousel_vo.en_lines(j, short=True)
     assert 'M E T A' in short[3] and 'Q Q Q' not in short[3], short[3]
@@ -195,7 +195,7 @@ def test_duration_guard():
 
     vo, calls = _run_vo([job('en')], lambda rate, text: 5.0, langs='en')
     assert '1230-en' not in vo  # still over 29s after every try: no voice, rather than a long video
-    assert any('account' in t for _, t in calls)
+    assert any('Rock bid' in t or 'where did the value go' in t for _, t in calls)
     assert calls[-1] == ('+30%', 'thecrowdtape dot com')
 
     # A zh read that would be over 29s is still emitted once, at +10%, with the snapshot lines.

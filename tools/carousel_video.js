@@ -1,10 +1,12 @@
-// Motion videos from the daily multi-picture posts (v6 Bloomberg / terminal).
+// Motion videos from the daily multi-picture posts (v6.1 Bloomberg / terminal + hookQ/parable).
 // Usage: node tools/carousel_video.js work/carousel.json   (after tools/carousel.js, from the repo root)
-// For each job whose slot is in VIDEO_SLOTS (default 1230) and language in VIDEO_LANGS (default zh,en) it writes og/c/<day>-<slot>-<lang>.mp4:
+// For each job whose slot is in VIDEO_SLOTS (default 1230) and language in VIDEO_LANGS (default en) it writes og/c/<day>-<slot>-<lang>.mp4:
 // 1080x1920, H.264 limited yuv420p + AAC +faststart. Cover is merged into the open scene: frame 0 already
 // shows $TICKER + the discussion count. Soft terminal cuts (open, split, m1, m2, cta) — no comic slides,
 // no emoji / confetti / shake / white-flash. VO from tools/carousel_vo.py is required; skip the language
 // if VO is missing or the voiced cut would exceed 29s. Sidecar og/c/<day>-<slot>-<lang>.vo.json after mix.
+// Tim 2026-11-04: default VIDEO_LANGS=en (no daily *-zh.mp4). Override with VIDEO_LANGS=zh,en if needed.
+// v6.1 scheme A: words() fills open.hookQ + m1 parable for en; empty → legacy #278 layout.
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
@@ -18,7 +20,7 @@ const COVER = COVER_FRAMES / FPS;
 const MAX_VIDEO_S = 29;
 const VOICES = { zh: 'zh-CN-XiaoxiaoNeural', en: 'en-US-AndrewNeural' };
 const SLOTS = (process.env.VIDEO_SLOTS || '1230').split(',').filter(Boolean);
-const LANGS = (process.env.VIDEO_LANGS || 'zh,en').split(',').filter(Boolean);
+const LANGS = (process.env.VIDEO_LANGS || 'en').split(',').filter(Boolean);
 const TOOLS = __dirname;
 
 function voiceName(lang) {
@@ -141,6 +143,19 @@ function words(lang, slides) {
     foot: zh ? '免費 · 無需登入 · 每 4 小時更新 · 不構成投資建議' : 'Free · No login · Every 4h · Not investment advice',
     date: S0.win || '',
   };
+  // v6.1 scheme A (en): cold-open question + rock-valuation parable on m1. Empty → #278 rows.
+  if (!zh && big) {
+    open.hookQ = `${big} jumped in the tape today — where did that value go?`;
+    m1.mode = 'parable';
+    m1.title = 'PARABLE';
+    m1.parable = [
+      'Someone offers $100 for your rock.',
+      'A week later: only $10.',
+      "$90 of 'value' gone — rock unchanged.",
+    ];
+    m1.anchor = `$${big}`;
+    m1.punch = 'Quotes moved on the tape — same idea.';
+  }
   return { open, split: splitD, m1, m2, cta, n, bull, bear, big };
 }
 

@@ -32,7 +32,7 @@ TITLE = {'1230': {'zh': '今日快照', 'en': "Today's snapshot"},
          '2030': {'zh': '開市前焦點', 'en': 'Before the open'}}
 # Slots and languages that also get a motion video og/c/<day>-<slot>-<lang>.mp4 (tools/carousel_video.js, Tim 2026-10-24: 12:30 only).
 VIDEO_SLOTS = tuple(x for x in os.environ.get('VIDEO_SLOTS', '1230').split(',') if x)
-VIDEO_LANGS = tuple(x for x in os.environ.get('VIDEO_LANGS', 'zh,en').split(',') if x)  # Tim 2026-10-25: no Korean video
+VIDEO_LANGS = tuple(x for x in os.environ.get('VIDEO_LANGS', 'en').split(',') if x)  # Tim 2026-11-04: daily Shorts/carousel video en-only (override with VIDEO_LANGS)
 TARGET_DAYS = 7  # price targets from the last week
 
 def video_missing(sl, key, now):

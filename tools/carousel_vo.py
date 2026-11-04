@@ -12,8 +12,9 @@ and writes <out>/vo.json: {"<slot>-<lang>": [{"file": ".../vo-0.mp3", "dur": 2.3
 A video gets a voice only when every line of it was read; anything failing leaves that video
 out of vo.json, so tools/carousel_video.js skips that language. Lines never say buy, sell,
 a price target or a prediction.
-Usage: python3 tools/carousel_vo.py work/carousel.json <out dir>   (VO_LANGS=zh,en  VO_VOICE_zh=... VO_VOICE_en=...)
+Usage: python3 tools/carousel_vo.py work/carousel.json <out dir>   (VO_LANGS=en  VO_VOICE_en=...; override VO_LANGS=zh,en)
        VO_FAKE=1 makes silent stand-in files of a plausible length (local tests, no network).
+Tim 2026-11-04: default VO_LANGS=en (daily Shorts en-only). en 5-line rhythm: question → split → parable → data → CTA.
 Video length uses the same beat sum as tools/carousel_video.js (scene grows to fit the line +0.4s).
 Cover is merged into open (COVER_FRAMES = 0); the 5 lines start at each scene's +0.15s lead-in.
 """
@@ -47,7 +48,7 @@ EN_TRIES = (
 
 
 def vo_langs():
-    return [x for x in os.environ.get('VO_LANGS', 'zh,en').split(',') if x]
+    return [x for x in os.environ.get('VO_LANGS', 'en').split(',') if x]
 
 
 def spell(t):
@@ -98,7 +99,10 @@ def _count_en(n, one, many):
 
 
 def en_lines(job, short=False):
-    """5 English lines, one per scene. Tickers go through spell(). No buy, sell, target or prediction."""
+    """5 English lines (v6.1): question → split → parable → data → CTA.
+
+    Tickers go through spell(). No buy, sell, target or prediction.
+    """
     s = job['slides']
     big = s[0].get('big', '')
     n, bull, bear = counts(s[0])
@@ -106,29 +110,37 @@ def en_lines(job, short=False):
     up, down = first_cards(s[2], '🟢')[:1], first_cards(s[2], '🔴')[:1]
     split = first_cards(s[3])[:1]
     if bull > bear:
-        verdict = 'Bulls.' if short else 'Bulls ahead.'
+        lean = 'Bulls ahead.' if not short else 'Bulls.'
     elif bear > bull:
-        verdict = 'Bears.' if short else 'Bears ahead.'
+        lean = 'Bears ahead.' if not short else 'Bears.'
     else:
-        verdict = 'Tie.' if short else "It's a tie."
-    top = ', '.join(spell(t) for t in top4) if top4 else ("Today's ranking." if not short else 'Ranking.')
+        lean = "It's a tie." if not short else 'Tie.'
     bits = ([f'bull {spell(up[0])}'] if up else []) + ([f'bear {spell(down[0])}'] if down else [])
     joint = ', '.join(bits)
-    m2 = joint if joint else (f'{spell(split[0])}, biggest split.' if split else 'Which side?')
+    if joint:
+        data = joint if short else f'Same idea on the tape: {joint}.'
+    elif split:
+        data = (f'{spell(split[0])}, biggest split.' if short
+                else f'Same idea on the tape: {spell(split[0])}, biggest split.')
+    elif top4:
+        top = ', '.join(spell(t) for t in top4)
+        data = (f'Top: {top}' if short else f'Same idea on the tape: top names {top}.')
+    else:
+        data = 'On the tape today.' if short else 'Same idea on the tape: quotes moved; here is what accounts said.'
     if short:
         return [
-            f'{spell(big)}, {_count_en(n, "account", "accounts")}.',
-            f'{bull} bull, {bear} bear. {verdict}',
-            top if top4 else 'Ranking.',
-            m2,
+            f'{spell(big)} — where did the value go?',
+            f'{bull} bull, {bear} bear. {lean}',
+            'Rock bid one hundred, then ten — paper value gone.',
+            data,
             'thecrowdtape dot com',
         ]
     return [
-        f'{spell(big)}, {_count_en(n, "account", "accounts")}.',
-        f'{_count_en(bull, "bull", "bulls")}, {_count_en(bear, "bear", "bears")}. {verdict}',
-        f'Top 4: {top}' if top4 else "Today's ranking.",
-        m2 if joint else (f'{spell(split[0])}, biggest split.' if split else 'Where they agree.'),
-        'Details at thecrowdtape dot com',
+        f'{spell(big)} jumped in discussion today — where did that value go?',
+        f'On {spell(big)} the tape is {_count_en(bull, "bull", "bulls")} versus {_count_en(bear, "bear", "bears")}. {lean}',
+        'Like a rock bid at one hundred, then ten — ninety dollars of value vanished, but the rock never left.',
+        data,
+        'Full tape, free, at thecrowdtape dot com',
     ]
 
 
