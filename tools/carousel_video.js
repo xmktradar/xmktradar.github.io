@@ -1,10 +1,12 @@
-// Motion videos from the daily multi-picture posts (v6 Bloomberg / terminal).
+// Motion videos from the daily multi-picture posts (v6.1 Tape Cats pose-only: cream BG + PNG cats + real X quote).
 // Usage: node tools/carousel_video.js work/carousel.json   (after tools/carousel.js, from the repo root)
-// For each job whose slot is in VIDEO_SLOTS (default 1230) and language in VIDEO_LANGS (default zh,en) it writes og/c/<day>-<slot>-<lang>.mp4:
+// For each job whose slot is in VIDEO_SLOTS (default 1230) and language in VIDEO_LANGS (default en) it writes og/c/<day>-<slot>-<lang>.mp4:
 // 1080x1920, H.264 limited yuv420p + AAC +faststart. Cover is merged into the open scene: frame 0 already
-// shows $TICKER + the discussion count. Soft terminal cuts (open, split, m1, m2, cta) — no comic slides,
-// no emoji / confetti / shake / white-flash. VO from tools/carousel_vo.py is required; skip the language
-// if VO is missing or the voiced cut would exceed 29s. Sidecar og/c/<day>-<slot>-<lang>.vo.json after mix.
+// shows $TICKER + the discussion count. Soft cuts (open, split, m1, m2, cta) — cream + cat poses; mouth stub reserved;
+// no emoji / confetti / shake / white-flash / comic. VO from tools/carousel_vo.py is required; skip the language
+// if VO is missing or the voiced cut would exceed 40s (target 30–40s). Sidecar og/c/<day>-<slot>-<lang>.vo.json after mix.
+// Tim 2026-11-04: default VIDEO_LANGS=en (no daily *-zh.mp4). Override with VIDEO_LANGS=zh,en if needed.
+// v3: words() fills hookQ + m1 quote (handle/lines) from writeups/highlights; empty → legacy #278 rows.
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
@@ -12,14 +14,34 @@ const { execFileSync } = require('child_process');
 
 const FPS = 24, BPM = 124, BEAT = 60 / BPM;
 // Keep in sync with BASE_BEATS / COVER_FRAMES in tools/carousel_vo.py.
-const BASE = [['open', 6], ['split', 6], ['m1', 7], ['m2', 7], ['cta', 5]];
+const BASE = [['open', 12], ['split', 12], ['m1', 14], ['m2', 14], ['cta', 12]];
 const COVER_FRAMES = 0; // cover merged into open; frame 0 of open is also written as *-cover.jpg
 const COVER = COVER_FRAMES / FPS;
-const MAX_VIDEO_S = 29;
+const MIN_VIDEO_S = 30;
+const MAX_VIDEO_S = 40;
 const VOICES = { zh: 'zh-CN-XiaoxiaoNeural', en: 'en-US-AndrewNeural' };
-const SLOTS = (process.env.VIDEO_SLOTS || '1230').split(',').filter(Boolean);
-const LANGS = (process.env.VIDEO_LANGS || 'zh,en').split(',').filter(Boolean);
+const SLOTS = (process.env.VIDEO_SLOTS || '1230,1630').split(',').filter(Boolean);
+const LANGS = (process.env.VIDEO_LANGS || 'en').split(',').filter(Boolean);
 const TOOLS = __dirname;
+// Stable stems for YT Shorts + X (same mp4). Docs: MOTION_VIDEO.md § Tape Cats paths.
+// Slot codes → show id. Override with VIDEO_SHOW_MAP=1230:tape-take,1630:crowd-heat,sat:week-tape
+const DEFAULT_SHOW = { '1230': 'tape-take', '1630': 'crowd-heat', 'sat': 'week-tape', 'week': 'week-tape' };
+function showMap() {
+  const m = { ...DEFAULT_SHOW };
+  for (const pair of String(process.env.VIDEO_SHOW_MAP || '').split(',').filter(Boolean)) {
+    const [k, v] = pair.split(':');
+    if (k && v) m[k.trim()] = v.trim();
+  }
+  return m;
+}
+/** og/c/<day>-<show>-<lang>.mp4 — stable for bots. */
+function videoStem(job) {
+  const show = (job && job.show) || showMap()[job && job.slot] || (job && job.slot) || 'tape-take';
+  return `${job.date}-${show}-${job.lang}`;
+}
+function videoOut(job) { return `og/c/${videoStem(job)}.mp4`; }
+function coverOut(job) { return `og/c/${videoStem(job)}-cover.jpg`; }
+
 
 function voiceName(lang) {
   return process.env['VO_VOICE_' + lang] || VOICES[lang] || lang;
@@ -82,7 +104,120 @@ function pillCount(card, color) {
   return p ? num(p.x) : 0;
 }
 
-/** Scene copy — numbers/tickers only from job slides. Zero emoji. */
+/** Load today's real X hero quote from writeups/highlights (never invent). */
+function readJson(p) {
+  try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch (_) { return null; }
+}
+
+function splitQuoteLines(text, max = 3) {
+  let t = String(text || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  if (!t) return [];
+  t = t.replace(/^@[\w.]+\s*[:：]\s*/, '');
+  let parts = t.split(/\s*[;；]\s*/).map(x => x.trim()).filter(Boolean);
+  if (parts.length < 2) parts = t.split(/(?<=[.!?])\s+/).map(x => x.trim()).filter(Boolean);
+  if (parts.length < 2) parts = [t];
+  return parts.slice(0, max).map(x => (x.length > 96 ? x.slice(0, 93) + '…' : x));
+}
+
+function parsePoint(point) {
+  const s = String(point || '').trim();
+  const m = s.match(/^@([\w.]+)\s*[:：]\s*([\s\S]+)$/);
+  if (m) return { handle: '@' + m[1], text: m[2].trim() };
+  return null;
+}
+
+/** Prefer highlight point matching ticker; else first usable EN point. */
+function loadHeroQuote(big) {
+  const root = path.join(TOOLS, '..');
+  const files = [
+    path.join(root, 'data/super-grok-writeups.json'),
+    path.join(root, 'work/writeups.json'),
+  ];
+  let data = null;
+  for (const f of files) { data = readJson(f); if (data) break; }
+  if (!data) return null;
+  const en = data.en || data;
+  const cards = (((en.highlights || {}).cards) || []);
+  const want = String(big || '').toUpperCase();
+  const ordered = [
+    ...cards.filter(c => (c.tickers || []).map(t => String(t).toUpperCase()).includes(want)),
+    ...cards,
+  ];
+  function pack(card, parsed, tick) {
+    const lines = splitQuoteLines(parsed.text, 3);
+    if (!lines.length) return null;
+    const stance = /bear|看空|淡/i.test(String(card.tone || '')) ? 'bear'
+      : /bull|看好|多/i.test(String(card.tone || '')) ? 'bull' : '';
+    const postsNote = (card.big && card.big.value) ? `${card.big.value} ${card.big.label || ''}`.trim() : '';
+    const use = tick || want || ((card.tickers || [])[0] || '');
+    return {
+      hook_q: use
+        ? `Everyone's screaming about $${use} — who's actually making sense?`
+        : `Who's actually making sense on the tape today?`,
+      quote_handle: parsed.handle,
+      quote_text: lines.join(' '),
+      lines,
+      stance,
+      ticker: use,
+      punch: postsNote
+        ? `One voice. ${postsNote}.`
+        : 'One voice. Full quotes on the tape today.',
+      source: 'data/super-grok-writeups.json en.highlights',
+    };
+  }
+  // 1) point that names the hero ticker
+  if (want) {
+    for (const card of ordered) {
+      for (const pt of (card.points || [])) {
+        if (!new RegExp('\\b' + want + '\\b', 'i').test(pt)) continue;
+        const parsed = parsePoint(pt);
+        if (!parsed) continue;
+        const got = pack(card, parsed, want);
+        if (got) return got;
+      }
+    }
+  }
+  // 2) card tagged with hero ticker — first point
+  if (want) {
+    for (const card of ordered) {
+      const tags = (card.tickers || []).map(t => String(t).toUpperCase());
+      if (!tags.includes(want)) continue;
+      for (const pt of (card.points || [])) {
+        const parsed = parsePoint(pt);
+        if (!parsed) continue;
+        const got = pack(card, parsed, want);
+        if (got) return got;
+      }
+    }
+    return null; // never invent; don't steal another ticker's quote
+  }
+  // 3) no hero ticker asked — first usable point of the day
+  for (const card of cards) {
+    for (const pt of (card.points || [])) {
+      const parsed = parsePoint(pt);
+      if (!parsed) continue;
+      const got = pack(card, parsed, ((card.tickers || [])[0] || ''));
+      if (got) return got;
+    }
+  }
+  // Fallback: writeup-input bull/bear rows (zh why → skip unless we only need handle; prefer highlights)
+  const wi = readJson(path.join(root, 'data/writeup-input.json'));
+  const daily = wi && wi.daily;
+  if (daily) {
+    for (const bucket of ['bull', 'bear', 'split']) {
+      for (const block of (daily[bucket] || [])) {
+        if (want && String(block.t || '').toUpperCase() !== want) continue;
+        const row = (block.rows || [])[0];
+        if (!row || !row.acc) continue;
+        // EN highlights missing — do not invent English from zh why
+        return null;
+      }
+    }
+  }
+  return null;
+}
+
+/** Scene copy — numbers/tickers from job slides; EN quote from day writeups. Zero emoji. */
 function words(lang, slides) {
   const S0 = slides[0] || {};
   const n = num(S0.sub), bull = num((S0.pills || []).find(p => p.c === 'g')?.x), bear = num((S0.pills || []).find(p => p.c === 'r')?.x);
@@ -140,8 +275,43 @@ function words(lang, slides) {
   const cta = {
     foot: zh ? '免費 · 無需登入 · 每 4 小時更新 · 不構成投資建議' : 'Free · No login · Every 4h · Not investment advice',
     date: S0.win || '',
+    t: zh ? ['詳情看 thecrowdtape.com', '@thecrowdtape'] : ['Full tape, free.', 'thecrowdtape.com', '@thecrowdtape'],
   };
-  return { open, split: splitD, m1, m2, cta, n, bull, bear, big };
+  // v3 (en): cold-open question + real X quote on m1. No quote → legacy #278 rows (never fake).
+  if (!zh) {
+    const hero = loadHeroQuote(big);
+    if (hero && hero.lines && hero.lines.length) {
+      const tick = hero.ticker || big;
+      if (tick) open.big = tick;
+      open.hookQ = hero.hook_q || (tick ? `Everyone's screaming about $${tick} — who's actually making sense?` : open.lead);
+      if (hero.stance === 'bull' || hero.stance === 'bear') {
+        // keep slide counts; enrich verdict
+        splitD.verdict = hero.stance === 'bull'
+          ? (bull || n ? `${bull || n} bull / ${bear} bear — crowd long` : 'Crowd leans long')
+          : (bear || n ? `${bull} bull / ${bear || n} bear — crowd short` : 'Crowd leans short');
+      }
+      m1.mode = 'quote';
+      m1.kicker = 'ON X';
+      m1.handle = hero.quote_handle;
+      m1.lines = hero.lines;
+      m1.anchor = tick ? `$${tick}` : '';
+      m1.stance = hero.stance || '';
+      m1.title = 'ON X';
+      delete m1.parable;
+      m2.title = 'ON THE TAPE';
+      m2.punch = hero.punch || '';
+      if (!m2.rows || !m2.rows.length) {
+        m2.rows = [
+          { t: tick || big || 'TAPE', v: `${n} accounts`, tone: 'amber' },
+          { t: 'BULL', v: String(bull), tone: 'up' },
+          { t: 'BEAR', v: String(bear), tone: 'down' },
+        ].filter(r => r.t);
+      }
+      cta.foot = 'Full tape, free — thecrowdtape.com';
+    }
+    // else: leave m1 rows (legacy). Do not invent quote or rock parable.
+  }
+  return { open, split: splitD, m1, m2, cta, n, bull, bear, big: open.big || big };
 }
 
 const header = total => `
@@ -180,7 +350,7 @@ async function one(browser, job, vo, outFile) {
     }
   }, JSON.stringify(W));
 
-  const coverJpg = `og/c/${job.date}-${job.slot}-${job.lang}-cover.jpg`;
+  const coverJpg = coverOut(job);
   const scene = async (k, data) => {
     const n = Math.round(SC[k][1] * BEAT * FPS);
     await sp.evaluate(([nm, dd]) => setup(nm, dd), [SC[k][0], data]);
@@ -256,7 +426,7 @@ async function main() {
   const ready = [];
   for (const j of jobs) {
     const clips = vo[`${j.slot}-${j.lang}`];
-    const out = `og/c/${j.date}-${j.slot}-${j.lang}.mp4`;
+    const out = videoOut(j);
     const why = voiceoverSkip(clips);
     if (why) { refuseVideo(j, out, why); continue; }
     ready.push([j, clips, out]);
@@ -281,5 +451,6 @@ if (require.main === module) main();
 
 module.exports = {
   voicedTotal, voiceoverSkip, refuseVideo, removePartial, writeVoMarker, voMarkerPath,
-  voiceName, MAX_VIDEO_S, COVER, BEAT, BASE, VOICES, words, COVER_FRAMES,
+  voiceName, MIN_VIDEO_S, MAX_VIDEO_S, COVER, BEAT, BASE, VOICES, words, COVER_FRAMES,
+  loadHeroQuote, splitQuoteLines, parsePoint, one, videoStem, videoOut, coverOut, showMap, DEFAULT_SHOW,
 };

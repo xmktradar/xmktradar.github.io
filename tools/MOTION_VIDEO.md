@@ -94,7 +94,7 @@
 - [ ] V2b 講嘢時節拍收細，聽得清楚
 - [ ] V2b 配音失敗時嗰條語言唔出片（唔出冇配音版），網站更新照常
 - [ ] V2b 第一條真片（樣板）Tim 聽過 OK
-- [ ] V3 交易日 12:30 時段出咗 2 條片，`slots.1230.video` 有 2 個網址（zh、en）
+- [ ] V3 交易日 12:30 時段出咗 **1 條 en 片**，`slots.1230.video` 有 en 網址（Tim 2026-11-04：停產 zh mp4；可用 `VIDEO_LANGS` 覆寫）
 - [ ] V3 16:30、20:30、週末都冇出片
 - [ ] V3 出片失敗時，網站更新同輪播帖照常
 - [ ] V3 2 日前嘅片已經自動刪除
@@ -109,20 +109,20 @@
 ## 四、實作（已完成）
 
 **檔案**
-- `tools/carousel_video.js`：主程式。讀 `work/carousel.json`，只做 `VIDEO_SLOTS`（預設 `1230`）同 `VIDEO_LANGS`（預設 `zh,en`）嘅 job，兩個語言同時做。（**v6 起改為 Bloomberg 5 段，詳見「視覺 v6／Bloomberg」**；以下 comic 描述保留作歷史。）開頭封面 `COVER_FRAMES = 17`（24 fps，約 0.7 秒），跟住 8 段時間以拍計（`BASE`：5、4、6、7、7、6、6、7），一拍 = 60/124 秒。有配音嗰段會加長到 `max(基本拍, ceil((句長 + 0.4 秒) / 一拍))` 拍。總長 = 封面 + 各段。中、英都必須有配音而且 `<= 29.0` 秒（計埋封面）；冇 VO 條目、VO 檔唔齊、或者配音後超過 29 秒：**唔出嗰條語言**（刪 `.part.mp4`，唔寫 mp4）。冇「丢掉配音出靜音版」呢條後路。混好確認之後先寫 sidecar `og/c/<day>-<slot>-<lang>.vo.json`（`{voice, duration, vo:true}`）。旁白 `at` 係封面長度 + 該段開始 + 0.15 秒。輸出 `og/c/<day>-<slot>-<lang>.mp4`（先寫 `.part.mp4` 再改名）同封面 `og/c/<day>-<slot>-<lang>-cover.jpg`（第 0 格）。ffmpeg：`libx264` profile high、`-vf scale=1080:1920:in_range=pc:out_range=tv,format=yuv420p`、`-pix_fmt yuv420p`、`-color_range tv`、AAC 128k、`-ar 44100`、`-movflags +faststart`。最後時長寫喺 log：`carousel video … Ns (voiceover)`。
+- `tools/carousel_video.js`：主程式。讀 `work/carousel.json`，只做 `VIDEO_SLOTS`（預設 `1230`）同 `VIDEO_LANGS`（預設 `en`；Tim 2026-11-04 en-only）嘅 job。（**v6 起改為 Bloomberg 5 段，詳見「視覺 v6／Bloomberg」**；以下 comic 描述保留作歷史。）開頭封面 `COVER_FRAMES = 17`（24 fps，約 0.7 秒），跟住 8 段時間以拍計（`BASE`：5、4、6、7、7、6、6、7），一拍 = 60/124 秒。有配音嗰段會加長到 `max(基本拍, ceil((句長 + 0.4 秒) / 一拍))` 拍。總長 = 封面 + 各段。中、英都必須有配音而且 `<= 29.0` 秒（計埋封面）；冇 VO 條目、VO 檔唔齊、或者配音後超過 29 秒：**唔出嗰條語言**（刪 `.part.mp4`，唔寫 mp4）。冇「丢掉配音出靜音版」呢條後路。混好確認之後先寫 sidecar `og/c/<day>-<slot>-<lang>.vo.json`（`{voice, duration, vo:true}`）。旁白 `at` 係封面長度 + 該段開始 + 0.15 秒。輸出 `og/c/<day>-<slot>-<lang>.mp4`（先寫 `.part.mp4` 再改名）同封面 `og/c/<day>-<slot>-<lang>-cover.jpg`（第 0 格）。ffmpeg：`libx264` profile high、`-vf scale=1080:1920:in_range=pc:out_range=tv,format=yuv420p`、`-pix_fmt yuv420p`、`-color_range tv`、AAC 128k、`-ar 44100`、`-movflags +faststart`。最後時長寫喺 log：`carousel video … Ns (voiceover)`。
 - `tools/carousel_scene.html` + `tools/carousel_scenes.js`：全畫面場景（封面、快閃開場、揭曉、VS、結尾）。封面喺 `t = 0` 已經畫完。
 - `tools/carousel_motion.js`：注入 `tools/carousel.html` 嘅動畫（元素出場、外框、大標題、黃色發光框）。靜態圖唔會載入佢，所以 4 張 jpg 同以前一樣。
-- `tools/carousel_vo.py`：寫 8 句旁白，用 edge-tts 讀出，寫 `vo.json`。任何一句失敗，嗰條語言唔寫入 `vo.json`，`carousel_video.js` 就唔出嗰條片。`VO_FAKE=1` 用假聲做本機測試。`VO_LANGS` 預設 `zh,en`（workflow 嗰步亦設 `VO_LANGS=zh,en`；`ko` 的 `lines()` 回傳 `None`，所以韓文冇配音）。
+- `tools/carousel_vo.py`：寫 8 句旁白，用 edge-tts 讀出，寫 `vo.json`。任何一句失敗，嗰條語言唔寫入 `vo.json`，`carousel_video.js` 就唔出嗰條片。`VO_FAKE=1` 用假聲做本機測試。`VO_LANGS` 預設 `en`（workflow 設 `VO_LANGS=en VIDEO_LANGS=en`；可用 env 覆寫加返 zh；`ko` 的 `lines()` 回傳 `None`）。
   - **聲線**：中文 `zh-CN-XiaoxiaoNeural`（`VO_VOICE_zh`），英文 `en-US-AndrewNeural`（`VO_VOICE_en`）。韓文聲線 `ko-KR-SunHiNeural` 只係留喺表，冇稿就唔會讀。
   - **語速**：中文固定 `+10%`（`RATE`），唔會因為長度再試第二遍。英文先 `+10%`，片長（同一個拍數式）超過 29.0 秒就再試普通稿 `+20%`、`+30%`，然後短稿 `+10%`、`+20%`、`+30%`。
   - **29 秒**：中、英最終片長必須 `<= 29.0`，**包括封面**（`COVER_S = 17/24`，同 `carousel_video.js` 一樣）。英文再試完仍然超過就唔寫入 `vo.json`，JS 唔出嗰條片。log 寫 `voiceover: <slot>-en final <秒>s`；丢掉嗰陣寫會超幾多秒。中文已經 `<= 29` 秒嘅輸出唔經呢個再試；中文配音後 >29s 一樣由 JS 跳過。封面本身冇旁白。
   - **英文短稿**：同一 8 段、更少字。代號一樣 `spell()` 逐個字母。唔講 buy、sell、target、prediction。
   - **英文普通稿**（對應畫面）：① Today's hottest stock? ② `{代號}, {N} accounts` ③ `{好} bulls, {淡} bears` 加 Bulls ahead / Bears ahead / It's a tie ④ What are they saying? ⑤ Top 4, on screen（代號喺圖上，唔讀）⑥ bullish `{共同看好}`, bearish `{共同看空}` ⑦ `{分歧代號}, biggest split` ⑧ Details at thecrowdtape dot com。
 - `tools/carousel_audio.py`：生成節拍同音效，再混入旁白。節拍軌先乘 0.55。每句旁白由 ffmpeg 解成 44100 單聲道，按峰值歸一後乘 0.8，放喺該段開始之後 0.15 秒（`carousel_video.js` 寫嘅 `at`）。講緊嘢嗰段，音樂包絡收到 0.35，兩邊用 0.15 秒滑動平均抹平。有任何旁白時音效再乘 0.8。混音 = 音樂 × 閃避 + 音效 + 旁白。最後 1.2 秒淡出，再 `tanh(混音 × 1.1) × 0.85`，寫成 16-bit 立體聲。
-- `tools/carousel.py`：`VIDEO_SLOTS`、`VIDEO_LANGS`；寫 `slots.<slot>.video = {zh, en}` 同 `slots.<slot>.video_cover = {zh, en}`（`og/c/<day>-<slot>-<lang>-cover.jpg`）；`/social/` 頁顯示片同下載連結。
+- `tools/carousel.py`：`VIDEO_SLOTS`、`VIDEO_LANGS`；寫 `slots.<slot>.video = {en}` 同 `slots.<slot>.video_cover = {en}`（預設；`VIDEO_LANGS` 可覆寫）（`og/c/<day>-<slot>-<lang>-cover.jpg`）；`/social/` 頁顯示片同下載連結。
 - `tools/carousel_video_post.py`：只保留「mp4 存在 + sidecar `vo:true` +（ffprobe 若有：有聲軌同 duration `<= 29.0s`）」嘅語言；`video_cover` 跟住 `video` 走。ffprobe 檢查可以注入（測試用）；冇裝 ffprobe 就信 marker。全部冇就刪成格 `video` 或 `video_cover`，刪 `.part.mp4`，有改就重寫 `social/index.html`。
 - `tools/test_motion_video.py`：測試（Build check 有跑）：冇 VO → 冇 mp4；>29s → 冇 mp4；post 冇 marker／冇聲軌／太長就刪；happy path 保留。
-- `.github/workflows/update-site.yml`：多圖帖之後兩步：「Motion videos…（zh+en voiceover）」（`continue-on-error`、12 分鐘上限，`pip install numpy edge-tts==7.3.1`，`VO_LANGS=zh,en`）同「Keep only motion videos that exist」。Publish `git add` `og/`（包括 `og/c/*.vo.json` marker）。`tools/carousel.js` 清理 `og/c` 只留今日同昨日（連 marker）。
+- `.github/workflows/update-site.yml`：多圖帖之後兩步：「Motion videos…（en-only voiceover）」（`continue-on-error`、12 分鐘上限，`pip install numpy edge-tts==7.3.1`，`VO_LANGS=en VIDEO_LANGS=en`）同「Keep only motion videos that exist」。Publish `git add` `og/`（包括 `og/c/*.vo.json` marker）。`tools/carousel.js` 清理 `og/c` 只留今日同昨日（連 marker）。
 
 **本機試（2026-10-25）**：用真數據出到中、英片；中文用假聲測試配音流程（長度約 40 秒，真聲預計約 30 秒）。Claude 雲端環境連唔到 edge-tts，所以真配音要等 GitHub 第一次跑先聽到。本機 3 條片同時做要約 4 分鐘（2 核心），GitHub runner 預計 2 至 3 分鐘，只影響 12:30 嗰次更新。
 
@@ -138,7 +138,7 @@
 
 ---
 
-## 視覺 v6／Bloomberg
+## 視覺 v6／Bloomberg（＋ v6.1 故事疊加）
 
 **唔好同任務表「V6＝自動測試」搞亂。** 呢一節係 Shorts **畫面樣式**（Bloomberg／terminal），取代 comic v4。
 
@@ -147,22 +147,68 @@
 - 零 emoji、零彩紙、零震動、零白閃；音效只用輕 tick／whoosh／soft pop／ding。
 - 開場即見 `$TICKER` + 討論帳號數（封面併入 `open`；`COVER_FRAMES = 0`；frame 0 同時寫 `*-cover.jpg`）。
 - 場景（5）：`open` → `split` → `m1` → `m2` → `cta`。最多 2 個數據鏡（m1／m2）。
-- 配音必須有（zh Xiaoxiao／en Andrew）；總長 ≤ 29.0s；數字只嚟自 job 數據。
+- **每日片預設只出英文**（`VIDEO_LANGS`／`VO_LANGS` 預設 `en`；唔寫 `*-zh.mp4`）。配音必須有（en Andrew；zh 仍可用 env 覆寫）；總長 ≤ 29.0s；數字只嚟自 job 數據。
 - 編碼：1080×1920 H.264 High limited `yuv420p` + AAC 128k + `+faststart`。
-- 主站底色對齊 `--bg:#0e1116`；面板 `#0e1522`、髮線 `#1e2a3a`、字 `#e8eef7`、muted `#8b9bb4`、amber `#f5a623`、up `#3dd68c`、down `#ff5c7a`。
+- 字色跟 #278（amber `#f5a623`、up `#3dd68c`、down `#ff5c7a`、字 `#e8eef7`、muted `#8b9bb4`；**唔跟 #279 去琥珀**）。v3 底改 `#07080c`＋radial flare／impact slabs（見 `VISUAL-BG.md`）；面板仍深色半透明保可讀。
 - Homepage 唔 embed 片；`social/index.html` 只播 `og/c/*.mp4`。唔做 Meta。
 
-### 檔案（v6）
-- `tools/carousel_scene.html` + `tools/carousel_scenes.js`：Bloomberg 場景（open／split／m1／m2／cta）。
-- `tools/carousel_video.js`：`BASE` = open 6、split 6、m1 7、m2 7、cta 5；**唔再**載入 `carousel.html`／`carousel_motion.js` comic 幻燈。
-- `tools/carousel_vo.py`：5 句旁白；`BASE_BEATS`／`COVER_FRAMES` 同 JS 同步。
+
+## Tape Cats（v6.1 full · 2026-11-04 Tim／CEO）
+
+### Shows（ET）
+| Day | Show | Hero | Slot code | Stable stem |
+|---|---|---|---|---|
+| Mon–Fri A | **Tape Take** | Wave | `1230` | `og/c/<YYYY-MM-DD>-tape-take-en.mp4` |
+| Mon–Fri B | **Crowd Heat** | Specs→Boom | `1630` | `og/c/<YYYY-MM-DD>-crowd-heat-en.mp4` |
+| Sat | **Week Tape** | all | `sat` | `og/c/<YYYY-MM-DD>-week-tape-en.mp4` |
+| Sun | OFF | — | — | — |
+
+Cover / VO sidecar share the stem: `*-cover.jpg`, `*.vo.json`.  
+`data/social-posts.json` → `slots.<slot>.show` + `slots.<slot>.video.en`（same URL）. YT Shorts bot + X 文案／① 讀同一檔。
+
+### Duration
+**30–40s**（`MIN_VIDEO_S=30` `MAX_VIDEO_S=40`）。`BASE` beats `(12,12,14,14,12)` @ 124 BPM ≈ 31s silent；VO pads up. Over 40s → skip language（唔出片）.
+
+### Visual
+Cream `#FFF6EC` + Tape Cats 24 PNG（pose + talk + blink + nod）+ `CUE-TABLE.md` mouth／pose cues. Design: `design/shorts-maneki/`.
+
+### Formal render
+GitHub Actions: `.github/workflows/tape-cats-shorts.yml`（ET cron）＋ Update site motion step. **唔用 box 本機當正式產製.**
+
+### Cron（UTC ≈ EDT）
+- `30 16 * * 1-5` — Mon–Fri Tape Take ~12:30 ET
+- `30 20 * * 1-5` — Mon–Fri Crowd Heat ~16:30 ET
+- `0 16 * * 6` — Sat Week Tape ~12:00 ET
+
+
+### v6.1 Tape Cats pose-only（superseded by full mouth+cue）— cream BG ＋ PNG cats
+- **唔合舊 cream-only／dark energy 樣片當 Tim 審片**；本骨架係 **internal draft**（mouth＋beat cue 未上線）。
+- BG：`#FFF6EC` cream + petal／orb（`design/shorts-maneki/token-bright.css`）；**禁** `#0e1116`／`#07080c`／深紫壓黑。
+- Cats：`design/shorts-maneki/assets/` 8 張透明 PNG；一 beat 一 hero（open→Specs，m1→Wave 指 quote，m2／cta→Boom）；CSS bob + **scene pose swap**（raise／idle／point／cheer）。
+- **Mouth stub**：`setMouth` / `catMouthOpen` in `carousel_scenes.js`（no-op until talk PNG + `CUE-TABLE.md`）；`#catMouth` overlay reserved.
+- Quote／EN-only／BASE 不變；真實 `@handle`；唔造假引句；唔做 Meta。
+- Sample：`tools/samples/2026-11-04-1230-en-v61.mp4`（Tape Cats pose-only **draft**；唔交 Tim 審至 mouth+cue）。
+
+### v6.1 v3（CEO 2026-11-04）— 真實 X quote ＋ energy BG
+- **BASE 不變**（open 6／split 6／m1 7／m2 7／cta 5）；**每日片只 en**。
+- `open`：有 `hookQ` 就喺 ticker 上顯示疑問冷開；無則跟 #278 `lead`。BG：violet／amber flare ＋ amber impact slab。
+- `m1`：有 `mode:'quote'`（`handle`＋`lines[]`）顯示 `ON X` 真實大神引句；無則維持 rows。**唔再用 rock parable 做 sample**。BG：loud flare ＋ violet／amber slab；quote card `rgba(14,21,34,.92)` 保可讀。
+- `split`／`m2`／`cta`：bull／bear／amber slabs；可選 scan line；**禁** emoji／彩紙／shake／白閃／comic。
+- 字色仍 #278（amber ticker `#f5a623`、bull `#3dd68c`、bear `#ff5c7a`）；底改 `#07080c` ＋ radial flare（唔再淨 flat `#0e1116`）。
+- `carousel_video.js` `words()`（en）由 `data/super-grok-writeups.json` highlights 填 `hookQ`／`m1.handle`／`m1.lines`／`punch`（欄位對齊 `hook_q`／`quote_handle`／`quote_text`／`stance`／`punch`）；無匹配 quote → legacy rows（唔造假）。
+- en VO 5 句：①疑問 ②對決 ③**具名 @handle 引句** ④拉返今日數據 ⑤CTA。設計包：`/workspace/shorts-story-v6-20261104/`（`STORYBOARD-EN-v3.md`＋`VISUAL-BG.md`）。
+
+### 檔案（v6／v6.1 v3）
+- `tools/carousel_scene.html` + `tools/carousel_scenes.js`：Bloomberg 場景（open／split／m1／m2／cta；＋ hookQ／quote；energy BG flare／slabs／scan）。
+- `tools/carousel_video.js`：`BASE` = open 6、split 6、m1 7、m2 7、cta 5；**唔再**載入 `carousel.html`／`carousel_motion.js` comic 幻燈；預設 `VIDEO_LANGS=en`。
+- `tools/carousel_vo.py`：5 句旁白；`BASE_BEATS`／`COVER_FRAMES` 同 JS 同步；預設 `VO_LANGS=en`。
 - `tools/carousel_motion.js`：comic 幻燈動畫；**動態片路徑唔再用**（靜態輪播 jpg 亦唔載入）。
 
 ### 節拍同旁白
 - 一拍 = 60/124 秒。有配音段：`max(基本拍, ceil((句長 + 0.4s) / 拍))`。
 - 旁白 `at` = 該段開始 + 0.15s（封面已併入 open，無額外 COVER 延遲）。
-- zh 5 句：① `{代號}，{N} 個帳號在聊` ② 好淡數 + 領先 ③ 熱度前四 ④ 共同／分歧 ⑤ `詳情看 thecrowdtape.com`。
-- en 5 句：對應英文；超時先加速再短稿，仍然 >29s 唔出片。
+- zh 5 句（僅 `VO_LANGS` 含 zh 時）：① `{代號}，{N} 個帳號在聊` ② 好淡數 + 領先 ③ 熱度前四 ④ 共同／分歧 ⑤ `詳情看 thecrowdtape.com`。
+- en 5 句（v3）：①疑問 hook ② bull/bear 對決 ③ 具名 @handle 真實引句 ④ 拉返今日數據 ⑤ CTA；超時先加速再短稿，仍然 >29s 唔出片。
 
 ### 棄用（comic v4）
 - 8 段 hook／reveal／vs／s1–s4／outro、封面 17 格、「每日精選」封面文案、emoji／slam／shake／confetti／白閃，一律唔再用於新片。

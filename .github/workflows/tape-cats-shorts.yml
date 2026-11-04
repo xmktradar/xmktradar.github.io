@@ -1,0 +1,115 @@
+# Tape Cats EN Shorts — YT + X share the same mp4 (stable stems).
+# Schedule (America/New_York wall clock → UTC cron; EDT=UTC-4 / EST=UTC-5):
+#   Mon–Fri Tape Take  ~12:30 ET → cron 30 16 * * 1-5  (16:30 UTC ≈ 12:30 EDT)
+#   Mon–Fri Crowd Heat ~16:30 ET → cron 30 20 * * 1-5  (20:30 UTC ≈ 16:30 EDT)
+#   Sat Week Tape      ~12:00 ET → cron 0 16 * * 6     (16:00 UTC ≈ 12:00 EDT)
+#   Sun OFF
+# EST winter is +1h later local vs these UTC slots; bots still pick latest og/c stem for the day.
+# Outputs (EN only):
+#   og/c/<YYYY-MM-DD>-tape-take-en.mp4|.vo.json|-cover.jpg
+#   og/c/<YYYY-MM-DD>-crowd-heat-en.mp4|.vo.json|-cover.jpg
+#   og/c/<YYYY-MM-DD>-week-tape-en.mp4|.vo.json|-cover.jpg  (Sat)
+# Slot map: 1230→tape-take, 1630→crowd-heat, sat→week-tape (tools/MOTION_VIDEO.md).
+# Formal render = this workflow / Update site motion step — not box-local.
+name: Tape Cats Shorts
+on:
+  workflow_dispatch:
+    inputs:
+      show:
+        description: 'tape-take | crowd-heat | week-tape | all'
+        required: false
+        default: 'all'
+  schedule:
+    - cron: '30 16 * * 1-5'   # Mon–Fri 12:30 ET (EDT) Tape Take
+    - cron: '30 20 * * 1-5'   # Mon–Fri 16:30 ET (EDT) Crowd Heat
+    - cron: '0 16 * * 6'      # Sat 12:00 ET (EDT) Week Tape
+permissions:
+  contents: write
+concurrency:
+  group: tape-cats-shorts
+  cancel-in-progress: false
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      WORK_DIR: /tmp/site-work
+      TZ: America/New_York
+      VIDEO_LANGS: en
+      VO_LANGS: en
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Pick show from cron / input
+        id: pick
+        run: |
+          set -e
+          SHOW='${{ github.event.inputs.show }}'
+          if [ -z "$SHOW" ] || [ "$SHOW" = 'all' ]; then
+            # cron: map UTC hour → show (EDT-oriented)
+            H=$(date -u +%H)
+            DOW=$(date -u +%u)  # 1=Mon … 6=Sat 7=Sun
+            if [ "$DOW" = 7 ]; then echo "Sun OFF"; echo "skip=true" >> "$GITHUB_OUTPUT"; exit 0; fi
+            if [ "$DOW" = 6 ]; then SHOW=week-tape
+            elif [ "$H" -lt 18 ]; then SHOW=tape-take
+            else SHOW=crowd-heat
+            fi
+          fi
+          echo "show=$SHOW" >> "$GITHUB_OUTPUT"
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+          case "$SHOW" in
+            tape-take) echo "slots=1230" >> "$GITHUB_OUTPUT" ;;
+            crowd-heat) echo "slots=1630" >> "$GITHUB_OUTPUT" ;;
+            week-tape) echo "slots=sat" >> "$GITHUB_OUTPUT" ;;
+            *) echo "slots=1230,1630" >> "$GITHUB_OUTPUT" ;;
+          esac
+          echo "Picked show=$SHOW"
+      - name: Restore pages + deps
+        if: steps.pick.outputs.skip != 'true'
+        run: |
+          python3 tools/slim_pages.py --restore
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-noto-cjk >/dev/null
+          pip install -q numpy edge-tts==7.3.1
+          npx --yes playwright@1.48.0 install chromium || true
+      - name: Build carousel job + render EN Short
+        if: steps.pick.outputs.skip != 'true'
+        env:
+          VIDEO_SLOTS: ${{ steps.pick.outputs.slots }}
+          CHROME_PATH: /usr/bin/google-chrome-stable
+        run: |
+          set -e
+          mkdir -p "$WORK_DIR" og/c
+          # Prefer existing daily carousel when Update site already wrote it; else force snap job.
+          if [ ! -f data/social-posts.json ]; then echo "::warning::no social-posts yet"; fi
+          CAROUSEL_FORCE=1 python3 tools/carousel.py || true
+          if [ ! -f "$WORK_DIR/carousel.json" ]; then
+            echo "::error::no carousel.json — skip render"
+            exit 0
+          fi
+          # Keep only requested slots in the job list for this run
+          node -e '
+            const fs=require("fs");
+            const slots=(process.env.VIDEO_SLOTS||"").split(",").filter(Boolean);
+            const j=JSON.parse(fs.readFileSync(process.env.WORK_DIR+"/carousel.json","utf8"));
+            j.jobs=(j.jobs||[]).filter(x=>slots.includes(x.slot)&&x.lang==="en");
+            // tag show id for stable stems
+            const map={1230:"tape-take",1630:"crowd-heat",sat:"week-tape"};
+            for (const job of j.jobs) job.show = map[job.slot]||job.slot;
+            fs.writeFileSync(process.env.WORK_DIR+"/carousel.json", JSON.stringify(j,null,2));
+            console.log("jobs", j.jobs.map(x=>x.slot+":"+x.show));
+          '
+          VO_LANGS=en VIDEO_LANGS=en VIDEO_SLOTS="$VIDEO_SLOTS" \
+            node tools/carousel_video.js "$WORK_DIR/carousel.json" || echo "::warning::render failed"
+          python3 tools/carousel_video_post.py || true
+          echo "Artifacts:"; ls -la og/c/*-en.mp4 2>/dev/null || true
+      - name: Publish mp4 stems to main
+        if: steps.pick.outputs.skip != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add og/c/*-tape-take-en* og/c/*-crowd-heat-en* og/c/*-week-tape-en* data/social-posts.json social/index.html 2>/dev/null || true
+          if git diff --cached --quiet; then echo "Nothing to publish"; exit 0; fi
+          git commit -m "Tape Cats Shorts: ${{ steps.pick.outputs.show }} EN (YT+X same stem)"
+          git pull --rebase origin main || true
+          git push origin HEAD:main

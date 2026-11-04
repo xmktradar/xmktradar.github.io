@@ -1,27 +1,108 @@
 <!doctype html><meta charset="utf-8">
-<!-- Blank page for Bloomberg/terminal motion scenes (tools/carousel_scenes.js). v6 -->
+<!-- Motion scenes. v6.1 Tape Cats pose-only: real X quote + bright cream BG + PNG cat layer. Mouth stub reserved. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+TC:wght@500;700;900&display=block">
 <style>
+/* === token-bright.css (inlined from design/shorts-maneki/) === */
+:root {
+  --bg0: #FFF6EC;
+  --bg-lilac: #F0E8FF;
+  --bg-sky: #E5F7FF;
+  --petal-coral: #FF6B8A;
+  --petal-apricot: #FFB347;
+  --petal-lilac: #B794F6;
+  --petal-mint: #5EEAD4;
+  --petal-lemon: #FFE066;
+  --ink: #1d1d1f;
+  --ink-muted: #6e6e73;
+  --card: #fffffff0;
+  --ticker: #E8940A;
+  --bull: #0A9F5C;
+  --bear: #E11D48;
+}
 html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
-body{position:relative;font-family:'Inter','Noto Sans TC','Noto Sans CJK TC',sans-serif;background:#0e1116;color:#e8eef7}
-#bg{position:absolute;inset:0;background:#0e1116}
-#c{position:absolute;inset:0}
-.panel{position:absolute;left:56px;right:56px;background:#0e1522;border:1px solid #1e2a3a;border-radius:18px}
-.hair{position:absolute;left:56px;right:56px;height:1px;background:#1e2a3a}
-.muted{color:#8b9bb4}
-.amber{color:#f5a623}
-.up{color:#3dd68c}
-.down{color:#ff5c7a}
+body{position:relative;font-family:'Inter','Noto Sans TC','Noto Sans CJK TC',sans-serif;background:var(--bg0);color:var(--ink)}
+#bg{position:absolute;inset:0;background:var(--bg0);overflow:hidden;z-index:0}
+#c{position:absolute;inset:0;z-index:2}
+#cat-layer{position:absolute;inset:0;z-index:3;pointer-events:none;overflow:hidden}
+.frame-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(90% 70% at 12% 18%, color-mix(in srgb, var(--petal-apricot) 45%, transparent) 0%, transparent 55%),
+    radial-gradient(80% 65% at 88% 78%, color-mix(in srgb, var(--petal-lilac) 40%, transparent) 0%, transparent 50%),
+    radial-gradient(60% 50% at 70% 20%, color-mix(in srgb, var(--petal-coral) 30%, transparent) 0%, transparent 45%),
+    var(--bg0);
+}
+.scene-open .frame-bg{background:
+  radial-gradient(100% 80% at 20% 15%, #FFB34766 0%, transparent 55%),
+  radial-gradient(70% 50% at 80% 70%, #FF6B8A44 0%, transparent 50%),
+  #FFF6EC}
+.scene-split .frame-bg{background:linear-gradient(90deg, #E5F7FF 0 50%, #FFF0F3 50% 100%)}
+.scene-m1 .frame-bg{background:
+  radial-gradient(80% 60% at 50% 40%, #B794F655 0%, transparent 60%),
+  #FFF6EC}
+.scene-m2 .frame-bg,.scene-cta .frame-bg{background:#E5F7FF}
+.petal{position:absolute;width:42%;height:28%;border-radius:60% 40% 55% 45%;opacity:.38;pointer-events:none;z-index:0;will-change:transform,opacity}
+.petal--coral{background:var(--petal-coral)}.petal--apricot{background:var(--petal-apricot)}
+.petal--lilac{background:var(--petal-lilac)}.petal--mint{background:var(--petal-mint)}
+.petal--lemon{background:var(--petal-lemon)}
+.orb{position:absolute;width:55%;height:40%;border-radius:50%;filter:blur(32px);opacity:.5;pointer-events:none;z-index:0;will-change:transform,opacity}
+.orb--hook{background:var(--petal-apricot);top:8%;left:-8%}
+.orb--quote{background:var(--petal-lilac);bottom:12%;right:-10%}
+.orb--mint{background:var(--petal-mint)}.orb--coral{background:var(--petal-coral)}
+.orb--lemon{background:var(--petal-lemon)}
+.ribbon{position:absolute;height:10px;width:70%;border-radius:999px;opacity:.35;pointer-events:none;z-index:0;
+  background:linear-gradient(90deg,var(--petal-mint),var(--petal-lemon),var(--petal-coral));transform:rotate(-18deg)}
+.stripe{position:absolute;inset:0;opacity:.1;pointer-events:none;z-index:0;
+  background:repeating-linear-gradient(-32deg,#FFB347 0 14px,transparent 14px 36px)}
+.dot{position:absolute;border-radius:50%;opacity:.4;pointer-events:none;z-index:0}
+.panel{position:absolute;left:56px;right:56px;background:var(--card);border:1px solid rgba(29,29,31,.08);border-radius:20px;box-shadow:0 12px 40px #1d1d1f14;backdrop-filter:blur(2px);color:var(--ink)}
+.muted{color:var(--ink-muted)}
+.amber,.type-ticker{color:var(--ticker)}
+.up,.type-bull{color:var(--bull)}
+.down,.type-bear{color:var(--bear)}
 .mono{font-family:'Inter','Noto Sans TC',ui-monospace,monospace;font-variant-numeric:tabular-nums}
 .brand{position:absolute;left:56px;top:56px;display:flex;align-items:center;gap:14px;z-index:5}
 .brand img{width:44px;height:44px;border-radius:10px;object-fit:cover;opacity:.92}
-.brand .name{font-weight:700;font-size:28px;letter-spacing:.2px}
-.brand .date{margin-left:10px;font:600 24px Inter,sans-serif;color:#8b9bb4}
+.brand .name{font-weight:700;font-size:28px;letter-spacing:.2px;color:var(--ink)}
+.brand .date{margin-left:10px;font:600 24px Inter,sans-serif;color:var(--ink-muted)}
 .row{display:flex;align-items:baseline;justify-content:space-between;gap:24px}
 .tk{font-weight:800;letter-spacing:-2px}
 .num{font-weight:800;letter-spacing:-1px}
-.label{font-weight:600;font-size:28px;color:#8b9bb4;text-transform:uppercase;letter-spacing:1.5px}
-.card{background:#0e1522;border:1px solid #1e2a3a;border-radius:16px;padding:28px 32px}
-.fade{opacity:0}
+.label{font-weight:600;font-size:28px;color:var(--ink-muted);text-transform:uppercase;letter-spacing:1.5px}
+.card{background:var(--card);color:var(--ink);border:1px solid rgba(29,29,31,.08);border-radius:16px;padding:28px 32px;box-shadow:0 8px 28px #1d1d1f10}
+.hookQ{font-weight:700;font-size:44px;line-height:1.25;letter-spacing:-.5px;color:var(--ink-muted)}
+.parable-line,.quote-line{font-size:40px;font-weight:600;line-height:1.35;margin:10px 0;color:var(--ink-muted)}
+.quote-handle{font-weight:800;font-size:56px;letter-spacing:-1px;margin:8px 0 20px}
+.stance-pill{display:inline-block;font:700 26px Inter,sans-serif;letter-spacing:1px;text-transform:uppercase;padding:8px 18px;border-radius:999px;border:1px solid currentColor}
+.type{color:var(--ink)}
+/* Tape Cats pose layer — lower-third / side; never cover quote/ticker type */
+.cat-host{
+  position:absolute;bottom:48px;right:24px;width:420px;height:480px;
+  display:flex;align-items:flex-end;justify-content:center;
+  transform-origin:50% 90%;
+  will-change:transform;
+}
+.cat-host--left{right:auto;left:24px}
+.cat-host--center{left:50%;right:auto;transform:translateX(-50%);width:460px}
+.cat-host img.cat-body{
+  width:100%;height:auto;max-height:480px;object-fit:contain;
+  filter:drop-shadow(0 18px 28px rgba(29,29,31,.18));
+  user-select:none;-webkit-user-drag:none;
+}
+/* Mouth overlay stub: same framing as body; hidden until talk PNGs land */
+.cat-host img.cat-mouth{
+  position:absolute;left:0;right:0;bottom:0;width:100%;height:auto;max-height:480px;
+  object-fit:contain;opacity:0;pointer-events:none;
+}
+@keyframes cat-bob {
+  0%,100%{transform:translateY(0) rotate(-1.5deg)}
+  50%{transform:translateY(-10px) rotate(1.5deg)}
+}
+.cat-host.bobbing{animation:cat-bob 2.4s ease-in-out infinite}
+.cat-host.bobbing.cat-host--center{animation-name:cat-bob-center}
+@keyframes cat-bob-center {
+  0%,100%{transform:translateX(-50%) translateY(0) rotate(-1.5deg)}
+  50%{transform:translateX(-50%) translateY(-10px) rotate(1.5deg)}
+}
 </style>
-<body><div id="bg"></div><div id="c"></div></body>
+<body class="scene-open"><div id="bg"></div><div id="c"></div><div id="cat-layer" aria-hidden="true"></div></body>

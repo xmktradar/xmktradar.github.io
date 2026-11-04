@@ -2,9 +2,9 @@
 
 zh: Mandarin, zh-CN-XiaoxiaoNeural, rate +10%. Lines, voice, rate and the zh pass are unchanged.
 en: English, en-US-AndrewNeural (override with VO_VOICE_en). Starts at +10%. If the video would
-    run past 29.0s, retries +20% then +30%, then the same rates on a shorter script. Still too
+    run past 40.0s, retries +20% then +30%, then the same rates on a shorter script. Still too
     long: that video is left out of vo.json, so tools/carousel_video.js skips the language
-    (no silent / music-only mp4). Never shipped over 29.0s.
+    (no silent / music-only mp4). Target 30–40s; never ship over 40.0s.
 
 Reads work/carousel.json (the same slides the pictures use), writes one line per video scene
 (5 scenes: open, split, m1, m2, cta), reads each line with edge-tts (free, no key)
@@ -12,8 +12,9 @@ and writes <out>/vo.json: {"<slot>-<lang>": [{"file": ".../vo-0.mp3", "dur": 2.3
 A video gets a voice only when every line of it was read; anything failing leaves that video
 out of vo.json, so tools/carousel_video.js skips that language. Lines never say buy, sell,
 a price target or a prediction.
-Usage: python3 tools/carousel_vo.py work/carousel.json <out dir>   (VO_LANGS=zh,en  VO_VOICE_zh=... VO_VOICE_en=...)
+Usage: python3 tools/carousel_vo.py work/carousel.json <out dir>   (VO_LANGS=en  VO_VOICE_en=...; override VO_LANGS=zh,en)
        VO_FAKE=1 makes silent stand-in files of a plausible length (local tests, no network).
+Tim 2026-11-04: default VO_LANGS=en (daily Shorts en-only). en 5-line rhythm: question → split → named @handle quote → data → CTA.
 Video length uses the same beat sum as tools/carousel_video.js (scene grows to fit the line +0.4s).
 Cover is merged into open (COVER_FRAMES = 0); the 5 lines start at each scene's +0.15s lead-in.
 """
@@ -31,10 +32,11 @@ RATE = '+10%'
 TIMEOUT = 30
 # Keep in sync with BASE / BEAT / COVER_FRAMES in tools/carousel_video.js.
 BEAT = 60 / 124
-BASE_BEATS = (6, 6, 7, 7, 5)  # open, split, m1, m2, cta
-COVER_FRAMES = 0  # cover merged into open; 29s guard still uses COVER_S for parity
+BASE_BEATS = (12, 12, 14, 14, 12)  # open, split, m1, m2, cta — ~30s silent @124bpm; VO pads toward 30–40s
+COVER_FRAMES = 0  # cover merged into open; 40s guard still uses COVER_S for parity
 COVER_S = COVER_FRAMES / 24
-MAX_VIDEO_S = 29.0
+MIN_VIDEO_S = 30.0
+MAX_VIDEO_S = 40.0
 # English only. Normal script first; faster rates before the shorter script.
 EN_TRIES = (
     (False, '+10%'),
@@ -47,7 +49,7 @@ EN_TRIES = (
 
 
 def vo_langs():
-    return [x for x in os.environ.get('VO_LANGS', 'zh,en').split(',') if x]
+    return [x for x in os.environ.get('VO_LANGS', 'en').split(',') if x]
 
 
 def spell(t):
@@ -97,38 +99,152 @@ def _count_en(n, one, many):
     return f'{n} {one if n == 1 else many}'
 
 
+def _read_json(path):
+    try:
+        with open(path, encoding='utf-8') as f:
+            return json.load(f)
+    except Exception:
+        return None
+
+
+def load_hero_quote(big=''):
+    """Real EN highlight quote for VO. Never invent; None → generic tape line (no rock)."""
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    data = None
+    for rel in ('data/super-grok-writeups.json', 'work/writeups.json'):
+        data = _read_json(os.path.join(root, rel))
+        if data:
+            break
+    if not data:
+        return None
+    en = data.get('en') or data
+    cards = ((en.get('highlights') or {}).get('cards')) or []
+    want = str(big or '').upper()
+    ordered = [c for c in cards if want and want in [str(t).upper() for t in (c.get('tickers') or [])]] + list(cards)
+
+    def parse_point(pt):
+        m = re.match(r'^@([\w.]+)\s*[:：]\s*([\s\S]+)$', str(pt or '').strip())
+        if not m:
+            return None
+        return {'handle': '@' + m.group(1), 'text': m.group(2).strip()}
+
+    def ok(card, parsed, tick):
+        body = re.sub(r'\s+', ' ', parsed['text']).strip()
+        if not body:
+            return None
+        # VO must not trip advice filter: rewrite common "buy-and-hold" phrasing.
+        vo_text = re.sub(r'\bbuy-and-hold\b', 'hold', body, flags=re.I)
+        vo_text = re.sub(r'\b(buy|sell|target|prediction|forecast)s?\b', '', vo_text, flags=re.I)
+        vo_text = re.sub(r'\s{2,}', ' ', vo_text).strip(' ,;.-')
+        if not vo_text:
+            vo_text = 'their read is on the tape today'
+        tickers = card.get('tickers') or ['']
+        return {
+            'handle': parsed['handle'],
+            'text': vo_text,
+            'ticker': tick or want or tickers[0],
+            'stance': 'bear' if re.search(r'bear|看空|淡', str(card.get('tone') or ''), re.I) else (
+                'bull' if re.search(r'bull|看好|多', str(card.get('tone') or ''), re.I) else ''),
+        }
+
+    if want:
+        for card in ordered:
+            for pt in (card.get('points') or []):
+                if not re.search(r'\b' + re.escape(want) + r'\b', str(pt), re.I):
+                    continue
+                parsed = parse_point(pt)
+                if not parsed:
+                    continue
+                got = ok(card, parsed, want)
+                if got:
+                    return got
+    if want:
+        for card in ordered:
+            tags = [str(x).upper() for x in (card.get('tickers') or [])]
+            if want not in tags:
+                continue
+            for pt in (card.get('points') or []):
+                parsed = parse_point(pt)
+                if not parsed:
+                    continue
+                got = ok(card, parsed, want)
+                if got:
+                    return got
+        return None  # never invent; don't steal another ticker's quote
+    for card in cards:
+        for pt in (card.get('points') or []):
+            parsed = parse_point(pt)
+            if not parsed:
+                continue
+            tickers = card.get('tickers') or ['']
+            got = ok(card, parsed, tickers[0])
+            if got:
+                return got
+    return None
+
+
 def en_lines(job, short=False):
-    """5 English lines, one per scene. Tickers go through spell(). No buy, sell, target or prediction."""
+    """5 English lines (v3): question → split → named @handle quote → data → CTA.
+
+    Tickers go through spell(). No buy, sell, target or prediction. No rock parable.
+    """
     s = job['slides']
     big = s[0].get('big', '')
     n, bull, bear = counts(s[0])
     top4 = first_cards(s[1])[:4]
     up, down = first_cards(s[2], '🟢')[:1], first_cards(s[2], '🔴')[:1]
     split = first_cards(s[3])[:1]
+    hero = load_hero_quote(big)
+    if hero and hero.get('ticker'):
+        big = hero['ticker'] or big
     if bull > bear:
-        verdict = 'Bulls.' if short else 'Bulls ahead.'
+        lean = 'Bulls ahead.' if not short else 'Bulls.'
     elif bear > bull:
-        verdict = 'Bears.' if short else 'Bears ahead.'
+        lean = 'Bears ahead.' if not short else 'Bears.'
     else:
-        verdict = 'Tie.' if short else "It's a tie."
-    top = ', '.join(spell(t) for t in top4) if top4 else ("Today's ranking." if not short else 'Ranking.')
+        lean = "It's a tie." if not short else 'Tie.'
     bits = ([f'bull {spell(up[0])}'] if up else []) + ([f'bear {spell(down[0])}'] if down else [])
     joint = ', '.join(bits)
-    m2 = joint if joint else (f'{spell(split[0])}, biggest split.' if split else 'Which side?')
+    if joint:
+        data = joint if short else f'Across the tape: {joint}.'
+    elif split:
+        data = (f'{spell(split[0])}, biggest split.' if short
+                else f'Across the tape: {spell(split[0])}, biggest split.')
+    elif top4:
+        top = ', '.join(spell(t) for t in top4)
+        data = (f'Top: {top}' if short else f'Across the tape: top names {top}.')
+    else:
+        data = 'On the tape today.' if short else 'Across the tape: here is what accounts said.'
+    if hero and hero.get('handle') and hero.get('text'):
+        handle = hero['handle']
+        # Keep VO short: handle + one compact clause
+        q = hero['text']
+        if len(q) > 110:
+            q = q[:107].rsplit(' ', 1)[0] + '…'
+        if short:
+            quote_line = f'{handle}: {q}' if len(q) < 70 else f'{handle} on {spell(big)}.'
+        else:
+            quote_line = f'{handle}: {q}'
+    else:
+        # No usable real quote — stay generic, never invent rock metaphor
+        quote_line = (f'Top voice on {spell(big)} is on the tape.' if big
+                      else 'Top voices are on the tape.')
+        if short:
+            quote_line = f'{spell(big)} — top voice on tape.' if big else 'Top voice on tape.'
     if short:
         return [
-            f'{spell(big)}, {_count_en(n, "account", "accounts")}.',
-            f'{bull} bull, {bear} bear. {verdict}',
-            top if top4 else 'Ranking.',
-            m2,
+            f'{spell(big)} — who is making sense?',
+            f'{bull} bull, {bear} bear. {lean}',
+            quote_line,
+            data,
             'thecrowdtape dot com',
         ]
     return [
-        f'{spell(big)}, {_count_en(n, "account", "accounts")}.',
-        f'{_count_en(bull, "bull", "bulls")}, {_count_en(bear, "bear", "bears")}. {verdict}',
-        f'Top 4: {top}' if top4 else "Today's ranking.",
-        m2 if joint else (f'{spell(split[0])}, biggest split.' if split else 'Where they agree.'),
-        'Details at thecrowdtape dot com',
+        f"Everyone's screaming about {spell(big)} — who's actually making sense?",
+        f'On {spell(big)} the tape is {_count_en(bull, "bull", "bulls")} versus {_count_en(bear, "bear", "bears")}. {lean}',
+        quote_line,
+        data,
+        'Full tape, free, at thecrowdtape dot com',
     ]
 
 
@@ -211,7 +327,7 @@ def render_lines(texts, voice, out_dir, key, rate):
 
 
 def fit_en(job, voice, out_dir, key):
-    """Speak English, speeding up or shortening until the video would be <= 29.0s. None skips the language."""
+    """Speak English, speeding up or shortening until the video would be <= 40.0s. None skips the language."""
     last = None
     for short, rate in EN_TRIES:
         got = render_lines(en_lines(job, short=short), voice, out_dir, key, rate)
@@ -254,7 +370,7 @@ def main(job_file, out_dir):
             if got:
                 total = video_total([g['dur'] for g in got])
                 print(f'voiceover: {key} rate {RATE} video {total:.2f}s')
-                # zh is emitted once at +10%; carousel_video.js skips if voiced total > 29s.
+                # zh is emitted once at +10%; carousel_video.js skips if voiced total > 40s.
         if got:
             result[key] = got
             print(f'voiceover: {key} {len(got)} lines')

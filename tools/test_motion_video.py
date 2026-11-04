@@ -1,6 +1,6 @@
 """Motion videos (tools/MOTION_VIDEO.md): which slots and languages get one, the voiceover lines,
 dropping videos that were not made, and the /social/ page. Offline, no browser, no network.
-The 29s guard is exercised on the VO_FAKE=1 path (durations are supplied; no edge-tts).
+The 40s guard is exercised on the VO_FAKE=1 path (durations are supplied; no edge-tts).
 Tim 2026-10-26: no silent/music-only mp4; a language without VO is skipped.
 Run from the repo root: python3 tools/test_motion_video.py
 """
@@ -38,11 +38,11 @@ ZH_LINES = [
     '詳情看 thecrowdtape.com',
 ]
 EN_LINES = [
-    'S P Y, 15 accounts.',
-    '3 bulls, 6 bears. Bears ahead.',
-    'Top 4: S P Y, S P C X, A M Z N, M E T A',
-    'bull M E T A, bear Q Q Q',
-    'Details at thecrowdtape dot com',
+    "Everyone's screaming about S P Y — who's actually making sense?",
+    'On S P Y the tape is 3 bulls versus 6 bears. Bears ahead.',
+    'Top voice on S P Y is on the tape.',  # no writeup quote for SPY fixture → generic (never rock)
+    'Across the tape: bull M E T A, bear Q Q Q.',
+    'Full tape, free, at thecrowdtape dot com',
 ]
 BAD_EN = re.compile(r'\b(buy|sell|buys|sells|buying|selling|target|targets|prediction|predictions|forecast|forecasts)\b', re.I)
 
@@ -56,8 +56,8 @@ def job(lang='zh'):
 
 
 def test_defaults():
-    assert carousel.VIDEO_SLOTS == ('1230',), carousel.VIDEO_SLOTS
-    assert carousel.VIDEO_LANGS == ('zh', 'en'), carousel.VIDEO_LANGS  # Tim: no Korean video
+    assert carousel.VIDEO_SLOTS == ('1230', '1630'), carousel.VIDEO_SLOTS
+    assert carousel.VIDEO_LANGS == ('en',), carousel.VIDEO_LANGS  # Tim 2026-11-04: daily Shorts en-only
 
 
 def _assert_no_advice(lines):
@@ -92,29 +92,29 @@ def test_en_lines():
     assert ls == EN_LINES, ls
     assert len(ls) == 5, ls
     _assert_no_advice(ls)
-    assert 'S P Y' in ls[0] and '15' in ls[0], ls[0]
+    assert 'S P Y' in ls[0] and 'making sense' in ls[0], ls[0]
     assert 'bulls' in ls[1] and 'bears' in ls[1] and 'Bears ahead' in ls[1], ls[1]
-    assert 'Top 4' in ls[2] and 'S P Y' in ls[2], ls[2]
+    assert 'rock' not in ls[2].lower() and 'Top voice' in ls[2], ls[2]
     assert 'M E T A' in ls[3] and 'Q Q Q' in ls[3], ls[3]
-    assert ls[4] == 'Details at thecrowdtape dot com'
-    assert carousel_vo.vo_langs() == ['zh', 'en']
+    assert ls[4] == 'Full tape, free, at thecrowdtape dot com'
+    assert carousel_vo.vo_langs() == ['en']
     short = carousel_vo.en_lines(job('en'), short=True)
     assert len(short) == 5, short
     _assert_no_advice(short)
-    assert 'S P Y' in short[0] and 'M E T A' in short[3] and 'Q Q Q' in short[3], short
+    assert 'S P Y' in short[0] and 'making sense' in short[0] and 'M E T A' in short[3] and 'Q Q Q' in short[3], short
     assert short[4] == 'thecrowdtape dot com'
     assert short != ls
     one = job('en')
     one['slides'][0]['sub'] = '1 account'
     one['slides'][0]['pills'] = [{'c': 'g', 'x': '1 bullish'}]
-    assert carousel_vo.lines(one)[0] == 'S P Y, 1 account.'
-    assert carousel_vo.lines(one)[1] == '1 bull, 0 bears. Bulls ahead.'
+    assert 'making sense' in carousel_vo.lines(one)[0]
+    assert '1 bull versus 0 bears' in carousel_vo.lines(one)[1] and 'Bulls ahead' in carousel_vo.lines(one)[1]
     tie = job('en')
     tie['slides'][0]['pills'] = [{'c': 'g', 'x': '4 bullish'}, {'c': 'r', 'x': '4 bearish'}]
     assert "It's a tie." in carousel_vo.lines(tie)[1]
     bulls = job('en')
     bulls['slides'][0]['pills'] = [{'c': 'g', 'x': '8 bullish'}, {'c': 'r', 'x': '2 bearish'}]
-    assert carousel_vo.lines(bulls)[1] == '8 bulls, 2 bears. Bulls ahead.'
+    assert '8 bulls versus 2 bears' in carousel_vo.lines(bulls)[1] and 'Bulls ahead' in carousel_vo.lines(bulls)[1]
 
 
 
@@ -124,11 +124,28 @@ def test_en_missing_sections():
     j['slides'][2]['secs'] = [{'h': '🟢 Joint bullish', 'cards': [{'t': 'META'}]}]
     j['slides'][3]['secs'] = []
     ls = carousel_vo.lines(j)
-    assert ls[2] == "Today's ranking.", ls[2]
-    assert ls[3] == 'bull M E T A' and 'bear' not in ls[3], ls[3]
+    assert 'rock' not in ls[2].lower() and ('Top voice' in ls[2] or '@' in ls[2]), ls[2]
+    assert 'bull M E T A' in ls[3] and 'Q Q Q' not in ls[3], ls[3]
     _assert_no_advice(ls)
     short = carousel_vo.en_lines(j, short=True)
     assert 'M E T A' in short[3] and 'Q Q Q' not in short[3], short[3]
+
+
+
+def test_en_quote_from_highlights():
+    """When writeups have a matching ticker quote, VO names the @handle (no rock)."""
+    hero = carousel_vo.load_hero_quote('TSLA')
+    if not hero:
+        return  # offline box without writeups — skip
+    j = job('en')
+    j['slides'][0]['big'] = 'TSLA'
+    j['slides'][0]['sub'] = '6 accounts'
+    j['slides'][0]['pills'] = [{'c': 'g', 'x': '6 bullish'}, {'c': 'r', 'x': '0 bearish'}]
+    ls = carousel_vo.lines(j)
+    assert hero['handle'] in ls[2], ls[2]
+    assert 'rock' not in ('\n'.join(ls)).lower()
+    _assert_no_advice(ls)
+
 
 
 
@@ -172,43 +189,43 @@ def _run_vo(jobs, dur, langs):
 
 
 def test_duration_guard():
-    """English over 29s retries faster rates, then shorter lines, then drops the voice. zh does not."""
-    assert carousel_vo.fits(29.0) and not carousel_vo.fits(29.03)
+    """English over 40s retries faster rates, then shorter lines, then drops the voice. zh does not."""
+    assert carousel_vo.fits(40.0) and not carousel_vo.fits(40.03)
     assert carousel_vo.fits(carousel_vo.video_total(None))
     assert carousel_vo.COVER_FRAMES == 0 and carousel_vo.COVER_S == 0
     assert abs(carousel_vo.video_total(None) - (sum(carousel_vo.BASE_BEATS) * carousel_vo.BEAT)) < 1e-9
-    long = [5.5] * 5
-    assert carousel_vo.video_total(long) > 29.0
-    assert carousel_vo.video_total([1.2] * 5) <= 29.0
+    long = [9.0] * 5
+    assert carousel_vo.video_total(long) > 40.0
+    assert carousel_vo.video_total([1.2] * 5) <= 40.0
     assert [r for _, r in carousel_vo.EN_TRIES] == ['+10%', '+20%', '+30%', '+10%', '+20%', '+30%']
 
     vo, calls = _run_vo([job('en')], lambda rate, text: 1.2, langs='en')
     assert len(calls) == 5 and {r for r, _ in calls} == {'+10%'}
     assert [x['text'] for x in vo['1230-en']] == EN_LINES
-    assert carousel_vo.video_total([x['dur'] for x in vo['1230-en']]) <= 29.0
+    assert carousel_vo.video_total([x['dur'] for x in vo['1230-en']]) <= 40.0
 
-    vo, calls = _run_vo([job('en')], lambda rate, text: 1.2 if rate == '+30%' else 5.0, langs='en')
+    vo, calls = _run_vo([job('en')], lambda rate, text: 1.2 if rate == '+30%' else 9.0, langs='en')
     assert [x['text'] for x in vo['1230-en']] == EN_LINES  # fitted on the normal script, not the short one
     assert calls[0][0] == '+10%' and calls[-1][0] == '+30%'
     assert all(t != 'Hottest stock?' for _, t in calls)
-    assert carousel_vo.video_total([x['dur'] for x in vo['1230-en']]) <= 29.0
+    assert carousel_vo.video_total([x['dur'] for x in vo['1230-en']]) <= 40.0
 
-    vo, calls = _run_vo([job('en')], lambda rate, text: 5.0, langs='en')
-    assert '1230-en' not in vo  # still over 29s after every try: no voice, rather than a long video
-    assert any('account' in t for _, t in calls)
+    vo, calls = _run_vo([job('en')], lambda rate, text: 9.0, langs='en')
+    assert '1230-en' not in vo  # still over 40s after every try: no voice, rather than a long video
+    assert any('who is making sense' in t or 'Top voice' in t or t.startswith('@') for _, t in calls)
     assert calls[-1] == ('+30%', 'thecrowdtape dot com')
 
-    # A zh read that would be over 29s is still emitted once, at +10%, with the snapshot lines.
-    vo, calls = _run_vo([job('zh')], lambda rate, text: 5.0, langs='zh')
+    # A zh read that would be over 40s is still emitted once, at +10%, with the snapshot lines.
+    vo, calls = _run_vo([job('zh')], lambda rate, text: 9.0, langs='zh')
     assert [x['text'] for x in vo['1230-zh']] == ZH_LINES
     assert len(calls) == 5 and {r for r, _ in calls} == {'+10%'}
-    assert carousel_vo.video_total([x['dur'] for x in vo['1230-zh']]) > 29.0
+    assert carousel_vo.video_total([x['dur'] for x in vo['1230-zh']]) > 40.0
 
     j = job('en')
     j['slides'][0]['big'] = 'GOOGL'
     vo, calls = _run_vo([j], lambda rate, text: carousel_vo.fake_seconds(text, rate), langs='en')
     if '1230-en' in vo:
-        assert carousel_vo.video_total([x['dur'] for x in vo['1230-en']]) <= 29.0
+        assert carousel_vo.video_total([x['dur'] for x in vo['1230-en']]) <= 40.0
         assert any('G O O G L' in x['text'] for x in vo['1230-en'])
     else:
         assert calls and calls[-1][0] == '+30%'
@@ -223,7 +240,7 @@ def test_video_total_matches_js():
     cases.append([round(7 * 60 / 124 - 0.4, 3)] * n)  # ceil boundary
     script = (
         'const fs = require("fs");\n'
-        'const BEAT = 60 / 124, BASE = [6, 6, 7, 7, 5];\n'
+        'const BEAT = 60 / 124, BASE = [12, 12, 14, 14, 12];\n'
         'const COVER = %d / 24;\n'
         'const cases = JSON.parse(fs.readFileSync(0, "utf8"));\n'
         'for (const vo of cases) {\n'
@@ -324,14 +341,14 @@ console.log(why);
     assert '出冇配音版' not in src
 
 
-def test_over_29_no_mp4():
-    """Voiced cut > 29s (zh and en): skip, no mp4. Same rule for both languages."""
+def test_over_40_no_mp4():
+    """Voiced cut > 40s (zh and en): skip, no mp4. Same rule for both languages."""
     d = tempfile.mkdtemp()
     clips = []
     for i in range(len(carousel_vo.BASE_BEATS)):
         p = os.path.join(d, f'vo-{i}.mp3')
         open(p, 'wb').write(b'x')
-        clips.append({'file': p, 'dur': 5.5})
+        clips.append({'file': p, 'dur': 9.0})
     out = os.path.join(d, '2026-10-23-1230-en.mp4')
     open(out + '.part.mp4', 'w').write('part')
     script = r'''
@@ -342,7 +359,7 @@ const out = process.argv[2];
 if (!(voicedTotal(clips) > MAX_VIDEO_S)) process.exit(2);
 for (const lang of ['en', 'zh']) {
   const why = voiceoverSkip(clips);
-  if (!why || !why.includes('> 29')) process.exit(3);
+  if (!why || !why.includes('> 40')) process.exit(3);
   refuseVideo({slot:'1230', lang}, out, why);
 }
 if (fs.existsSync(out + '.part.mp4')) process.exit(4);
@@ -355,7 +372,7 @@ console.log('ok');
     _node(script, [json.dumps(clips), out])
     assert not os.path.exists(out)
     src = open(os.path.join(TOOLS, 'carousel_video.js'), encoding='utf-8').read()
-    assert "job.lang === 'en' && total > 29" not in src
+    assert "job.lang === 'en' && total > 40" not in src
 
 
 def test_missing_vo_audio_no_mp4():
@@ -460,7 +477,7 @@ def test_prune_too_long():
         '2026-10-23-1230-zh.vo.json': MARK_ZH,
     }):
         sp = _slot(langs=('zh',))
-        assert prune(sp, probe=lambda p: {'audio': True, 'duration': 29.01})
+        assert prune(sp, probe=lambda p: {'audio': True, 'duration': 40.01})
         assert 'video' not in sp['slots']['1230']
 
 
@@ -474,7 +491,7 @@ def test_prune_happy_path():
         '2026-10-23-1230-en-cover.jpg': True,
     }):
         sp = _slot(cover=True)
-        assert not prune(sp, probe=lambda p: {'audio': True, 'duration': 29.0})
+        assert not prune(sp, probe=lambda p: {'audio': True, 'duration': 40.0})
         assert set(sp['slots']['1230']['video']) == {'zh', 'en'}
         assert set(sp['slots']['1230']['video_cover']) == {'zh', 'en'}
         # no ffprobe: marker is enough
@@ -519,8 +536,14 @@ def test_cover_text_and_encode():
     assert 'carousel_motion.js' not in src  # comic slides no longer filmed
     assert '🚀' not in src and '😱' not in src
     scenes = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'carousel_scenes.js'), encoding='utf-8').read()
-    assert '#0e1116' in open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'carousel_scene.html'), encoding='utf-8').read()
+    html = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'carousel_scene.html'), encoding='utf-8').read()
+    assert '#FFF6EC' in html and 'frame-bg' in html and 'cat-host' in html
+    assert '#E8940A' in html or '--ticker' in html  # cream-world ticker
+    assert '#07080c' not in html and 'bg-flare' not in html  # no dark energy crush
     assert 'setup' in scenes and 'open' in scenes and 'cta' in scenes
+    assert "mode === 'quote'" in scenes or 'isQuote' in scenes
+    assert 'energyBg' in scenes or 'brightBg' in scenes
+    assert 'setCat' in scenes and 'catMouthOpen' in scenes
     py = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'carousel.py'), encoding='utf-8').read()
     assert "['video_cover']" in py and '-cover.jpg' in py
 
@@ -545,7 +568,8 @@ def test_video_missing_redo():
     assert carousel.video_missing({'video': {'zh': URL.format('zh')}}, '1230', at(11, 30))
     assert carousel.video_missing({}, '1230', at(7, 40))
     assert not carousel.video_missing({}, '1230', at(12, 10))  # too close to the 12:30 post
-    assert not carousel.video_missing({}, '1630', at(11, 0))  # no video for that slot
+    assert carousel.video_missing({}, '1630', at(11, 0))  # Crowd Heat also gets video
+    assert not carousel.video_missing({}, '2030', at(11, 0))  # 2030 still no video
 
 def test_zh_video_text_is_written_chinese():
     """Tim 2026-10-28: Chinese text in the videos (and the pictures they show) is standard written Chinese, not Cantonese."""

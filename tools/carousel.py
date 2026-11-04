@@ -31,8 +31,17 @@ TITLE = {'1230': {'zh': '今日快照', 'en': "Today's snapshot"},
          '1630': {'zh': '好淡對決', 'en': 'Bull vs bear'},
          '2030': {'zh': '開市前焦點', 'en': 'Before the open'}}
 # Slots and languages that also get a motion video og/c/<day>-<slot>-<lang>.mp4 (tools/carousel_video.js, Tim 2026-10-24: 12:30 only).
-VIDEO_SLOTS = tuple(x for x in os.environ.get('VIDEO_SLOTS', '1230').split(',') if x)
-VIDEO_LANGS = tuple(x for x in os.environ.get('VIDEO_LANGS', 'zh,en').split(',') if x)  # Tim 2026-10-25: no Korean video
+VIDEO_SLOTS = tuple(x for x in os.environ.get('VIDEO_SLOTS', '1230,1630').split(',') if x)  # Tape Take + Crowd Heat (Mon–Fri ET)
+# Stable show ids for YT+X bots (same mp4 path). Sat week-tape via VIDEO_SLOTS=sat or show key.
+SHOW_BY_SLOT = {'1230': 'tape-take', '1630': 'crowd-heat', 'sat': 'week-tape', 'week': 'week-tape'}
+
+def show_id(slot):
+    return SHOW_BY_SLOT.get(slot, slot)
+
+def video_stem(day, slot, lang):
+    return f'{day}-{show_id(slot)}-{lang}'
+
+VIDEO_LANGS = tuple(x for x in os.environ.get('VIDEO_LANGS', 'en').split(',') if x)  # Tim 2026-11-04: daily Shorts/carousel video en-only (override with VIDEO_LANGS)
 TARGET_DAYS = 7  # price targets from the last week
 
 def video_missing(sl, key, now):
@@ -614,8 +623,9 @@ def main():
             slots[key]['stories'] = sp.get('stories', {})
         if key in VIDEO_SLOTS:  # tools/carousel_video_post.py drops a language whose file was not made
             vlangs = [l for l in LANGS if l in VIDEO_LANGS]
-            slots[key]['video'] = {l: f'{SITE}og/c/{day}-{key}-{l}.mp4' for l in vlangs}
-            slots[key]['video_cover'] = {l: f'{SITE}og/c/{day}-{key}-{l}-cover.jpg' for l in vlangs}
+            slots[key]['show'] = show_id(key)  # tape-take | crowd-heat | week-tape
+            slots[key]['video'] = {l: f"{SITE}og/c/{video_stem(day, key, l)}.mp4" for l in vlangs}
+            slots[key]['video_cover'] = {l: f"{SITE}og/c/{video_stem(day, key, l)}-cover.jpg" for l in vlangs}
         written.append(key)
     if not jobs:
         return
