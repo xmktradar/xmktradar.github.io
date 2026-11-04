@@ -40,11 +40,11 @@ a.c{box-sizing:border-box;display:flex;flex-direction:column;justify-content:spa
 }
 
 const COPY = {
-  zh: { lang: 'zh-Hant', title: '把好淡卡片嵌入你的網站', desc: '免費把任何美股的 X 大神好淡統計卡片嵌入你的網站或部落格：複製一行 iframe 代碼即可，每 4 小時自動更新。',
-    h: '嵌入好淡卡片', p1: '把下面一行代碼貼到你的網站、部落格或論壇文章，就會顯示該股票最新的看多／看空帳號數（每個帳號只計最近一則觀點，每 4 小時更新）。',
+  zh: { lang: 'zh-Hant', title: '把好淡卡片嵌入你的網站', desc: '免費把任何美股的 X 大神好淡統計卡片嵌入你的網站或部落格：複製一行 iframe 代碼即可，每 8 小時自動更新。',
+    h: '嵌入好淡卡片', p1: '把下面一行代碼貼到你的網站、部落格或論壇文章，就會顯示該股票最新的看多／看空帳號數（每個帳號只計最近一則觀點，每 8 小時更新）。',
     p2: '把網址中的 NVDA 換成你想要的股票代號（大寫），例如 TSLA、AAPL。卡片大小 320×120，不含任何 JavaScript。', ex: '預覽', back: '返回首頁', note: '卡片內容只整理公開貼文，不構成投資建議。' },
-  en: { lang: 'en', title: 'Embed a crowd sentiment card on your site', desc: 'Free embeddable card showing how tracked X accounts lean on any US stock. Copy one line of iframe code; it updates every 4 hours.',
-    h: 'Embed a sentiment card', p1: 'Paste this one line into your site, blog or forum post to show the latest count of bullish and bearish accounts on a stock (each account counted once, by its latest view; updated every 4 hours).',
+  en: { lang: 'en', title: 'Embed a crowd sentiment card on your site', desc: 'Free embeddable card showing how tracked X accounts lean on any US stock. Copy one line of iframe code; it updates every 8 hours.',
+    h: 'Embed a sentiment card', p1: 'Paste this one line into your site, blog or forum post to show the latest count of bullish and bearish accounts on a stock (each account counted once, by its latest view; updated every 8 hours).',
     p2: 'Replace NVDA in the URL with any ticker (upper case), e.g. TSLA or AAPL. The card is 320×120 and contains no JavaScript.', ex: 'Preview', back: 'Back to the dashboard', note: 'The card summarises public posts only. Not investment advice.' },
 };
 

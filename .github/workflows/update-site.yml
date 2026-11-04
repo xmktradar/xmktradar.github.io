@@ -1,18 +1,17 @@
 name: Update site
-# Every 4 hours on the hour (HKT 03:00, 07:00, 11:00, 15:00, 19:00, 23:00; Tim 2026-11-03), about 1.5–2 h before each SuperGrok summary task (:35),
-# so new posts are on the site before SuperGrok reads them: fetch new posts, apply SuperGrok summaries and write-ups,
+# Every 8 hours on the hour (HKT 03:00, 11:00, 19:00; Tim／CEO 2026-11-05), ~25–35 min after SuperGrok Post Summary (:35),
+# so new posts are on the site after SuperGrok feeds the slot: fetch new posts, apply SuperGrok summaries and write-ups,
 # refresh prices, consensus history and share image, build the language versions and stock pages, check, then publish.
 # Steps: fetch posts, merge SuperGrok summaries and write-ups, prices, stats, publish.
 #
-# Anti-miss (2026-11-03): GitHub may delay or silently skip a schedule slot (historically HKT 07:17 = UTC 23:17
-# had no run while concurrency was idle). A +30m backup cron catches drops. Workflow concurrency serializes runs;
-# `gate` then skips the backup when a 定時重建 commit landed in the last 2h so we do not double-rebuild.
-# Keep UPDATE_SLOTS in tools/merge_posts.py (+ index #nextup) aligned with these crons.
+# Anti-miss (2026-11-03): GitHub may delay or silently skip a schedule slot. A +30m backup cron catches drops.
+# Workflow concurrency serializes runs; `gate` then skips the backup when a 定時重建 commit landed in the last 2h
+# so we do not double-rebuild. Keep UPDATE_SLOTS in tools/merge_posts.py (+ index #nextup) aligned with these crons.
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 3-23/4 * * *'   # primary UTC 03/07/11/15/19/23:00 = HKT 11/15/19/23/03/07:00
-    - cron: '30 3-23/4 * * *'  # backup +30m if GitHub drops/delays the :00 slot
+    - cron: '0 3,11,19 * * *'   # primary UTC 03/11/19:00 = HKT 11:00 / 19:00 / 03:00
+    - cron: '30 3,11,19 * * *'  # backup +30m if GitHub drops/delays the :00 slot
   push:
     branches: [main]
     # grok-inbox pushes handled by inbox-lite.yml (debounce + skip heavy steps). Full rebuild stays on schedule/dispatch/tools.
