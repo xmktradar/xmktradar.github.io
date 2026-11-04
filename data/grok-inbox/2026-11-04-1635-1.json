@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2117847326022906329": {
+      "en_summary": "Reminder that everything was ripping on $AMD and $SMCI earnings before midterms started. AI trade is still on. Wild moves noted: $NBIS 158 to 142, $CRDO 156 to 142, $DELL 422 to 390. Overnight traders had great trades. Back to Iran War discussion.",
+      "zh_summary": "提醒中期選舉開始前AMD與SMCI業績後一切都在大漲。AI交易仍在進行。指出劇烈波動：NBIS從158到142，CRDO從156到142，DELL從422到390。隔夜交易者獲得絕佳交易。回到伊朗戰爭話題。",
+      "tickers": ["AMD", "SMCI", "NBIS", "CRDO", "DELL"],
+      "stance": "中性",
+      "stance_by_ticker": {"AMD": "中性", "SMCI": "中性", "NBIS": "中性", "CRDO": "中性", "DELL": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2117835682702110999": {
+      "en_summary": "X and Elon rhetoric is apocalyptic on Democrats winning, but AI is a bipartisan national security priority. $NVDA historic rally and AI buildout acceleration occurred under Biden. No market-wide doomsday even with Democratic governor; some headwinds for developers but incentives shift to areas like solar manufacturing. Bitcoin and Ethereum performed better under Gensler regulation. Markets move on after worst-case fears such as helium disruption affecting Samsung, $TSM and the memory trade.",
+      "zh_summary": "X上及Elon對民主黨獲勝的言論偏向末日，但AI是兩黨國家安全優先事項。NVDA歷史性反彈及AI建設加速發生在拜登政府期間。即使有民主黨州長也不會有市場全面末日；個別開發者有阻力，但激勵轉向太陽能製造等領域。比特幣與以太坊在Gensler監管下表現更好。市場在幾週後從最壞情況如氦氣中斷影響三星、TSM及記憶體交易中恢復。",
+      "tickers": ["NVDA", "CRWV", "TSM"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "睇好", "CRWV": "中性", "TSM": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {"NVDA": "historic rally under Biden admin"}
+    },
+    "2117832474348990972": {
+      "en_summary": "If $QQQ closed the year at current level, it would be the smallest up year since 2016. Since Trump became President there have been 4 separate 10%+ declines in the Qs. Still a bull market but challenging lately.",
+      "zh_summary": "如果QQQ以目前水準收盤年度，將是自2016年以來最小的上漲年。自特朗普就任總統以來，納指有4次單獨超過10%的下跌。仍是牛市，但近期具挑戰性。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2117828348256629066": {
+      "en_summary": "$FISV stock clocks best day in over 2 decades after strong Q3 results. Goldman Sachs raises price target to $61 from $56 and maintains Neutral. Baird raises target to $70 from $62 and maintains Outperform. Stock soared more than 12%.",
+      "zh_summary": "FISV股票在強勁Q3業績後錄得超過20年最佳單日漲幅。高盛將目標價從56美元上調至61美元並維持中性評級。Baird將目標價從62美元上調至70美元並維持跑贏評級。股價大漲超過12%。",
+      "tickers": ["FISV"],
+      "stance": "睇好",
+      "stance_by_ticker": {"FISV": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"FISV": "GS PT $61 Neutral, Baird PT $70 Outperform after Q3 beat"}
+    },
+    "2117828285832819180": {
+      "en_summary": "$EWT with puts seeing interest again in the Taiwan ETF. Taiwan's Taiex extends decline, last 3.3% lower at 41888.44.",
+      "zh_summary": "EWT台灣ETF看跌期權再次出現興趣。台灣加權指數延續下跌，最後下跌3.3%至41888.44。",
+      "tickers": ["EWT"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"EWT": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
