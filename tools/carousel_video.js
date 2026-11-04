@@ -1,10 +1,10 @@
-// Motion videos from the daily multi-picture posts (v6.1 Bloomberg / terminal + real X quote + energy BG).
+// Motion videos from the daily multi-picture posts (v6.1 Tape Cats pose-only: cream BG + PNG cats + real X quote).
 // Usage: node tools/carousel_video.js work/carousel.json   (after tools/carousel.js, from the repo root)
 // For each job whose slot is in VIDEO_SLOTS (default 1230) and language in VIDEO_LANGS (default en) it writes og/c/<day>-<slot>-<lang>.mp4:
 // 1080x1920, H.264 limited yuv420p + AAC +faststart. Cover is merged into the open scene: frame 0 already
-// shows $TICKER + the discussion count. Soft terminal cuts (open, split, m1, m2, cta) — energy flare/slabs OK;
+// shows $TICKER + the discussion count. Soft cuts (open, split, m1, m2, cta) — cream + cat poses; mouth stub reserved;
 // no emoji / confetti / shake / white-flash / comic. VO from tools/carousel_vo.py is required; skip the language
-// if VO is missing or the voiced cut would exceed 29s. Sidecar og/c/<day>-<slot>-<lang>.vo.json after mix.
+// if VO is missing or the voiced cut would exceed 40s (target 30–40s). Sidecar og/c/<day>-<slot>-<lang>.vo.json after mix.
 // Tim 2026-11-04: default VIDEO_LANGS=en (no daily *-zh.mp4). Override with VIDEO_LANGS=zh,en if needed.
 // v3: words() fills hookQ + m1 quote (handle/lines) from writeups/highlights; empty → legacy #278 rows.
 const fs = require('fs');
@@ -14,14 +14,34 @@ const { execFileSync } = require('child_process');
 
 const FPS = 24, BPM = 124, BEAT = 60 / BPM;
 // Keep in sync with BASE_BEATS / COVER_FRAMES in tools/carousel_vo.py.
-const BASE = [['open', 6], ['split', 6], ['m1', 7], ['m2', 7], ['cta', 5]];
+const BASE = [['open', 12], ['split', 12], ['m1', 14], ['m2', 14], ['cta', 12]];
 const COVER_FRAMES = 0; // cover merged into open; frame 0 of open is also written as *-cover.jpg
 const COVER = COVER_FRAMES / FPS;
-const MAX_VIDEO_S = 29;
+const MIN_VIDEO_S = 30;
+const MAX_VIDEO_S = 40;
 const VOICES = { zh: 'zh-CN-XiaoxiaoNeural', en: 'en-US-AndrewNeural' };
-const SLOTS = (process.env.VIDEO_SLOTS || '1230').split(',').filter(Boolean);
+const SLOTS = (process.env.VIDEO_SLOTS || '1230,1630').split(',').filter(Boolean);
 const LANGS = (process.env.VIDEO_LANGS || 'en').split(',').filter(Boolean);
 const TOOLS = __dirname;
+// Stable stems for YT Shorts + X (same mp4). Docs: MOTION_VIDEO.md § Tape Cats paths.
+// Slot codes → show id. Override with VIDEO_SHOW_MAP=1230:tape-take,1630:crowd-heat,sat:week-tape
+const DEFAULT_SHOW = { '1230': 'tape-take', '1630': 'crowd-heat', 'sat': 'week-tape', 'week': 'week-tape' };
+function showMap() {
+  const m = { ...DEFAULT_SHOW };
+  for (const pair of String(process.env.VIDEO_SHOW_MAP || '').split(',').filter(Boolean)) {
+    const [k, v] = pair.split(':');
+    if (k && v) m[k.trim()] = v.trim();
+  }
+  return m;
+}
+/** og/c/<day>-<show>-<lang>.mp4 — stable for bots. */
+function videoStem(job) {
+  const show = (job && job.show) || showMap()[job && job.slot] || (job && job.slot) || 'tape-take';
+  return `${job.date}-${show}-${job.lang}`;
+}
+function videoOut(job) { return `og/c/${videoStem(job)}.mp4`; }
+function coverOut(job) { return `og/c/${videoStem(job)}-cover.jpg`; }
+
 
 function voiceName(lang) {
   return process.env['VO_VOICE_' + lang] || VOICES[lang] || lang;
@@ -330,7 +350,7 @@ async function one(browser, job, vo, outFile) {
     }
   }, JSON.stringify(W));
 
-  const coverJpg = `og/c/${job.date}-${job.slot}-${job.lang}-cover.jpg`;
+  const coverJpg = coverOut(job);
   const scene = async (k, data) => {
     const n = Math.round(SC[k][1] * BEAT * FPS);
     await sp.evaluate(([nm, dd]) => setup(nm, dd), [SC[k][0], data]);
@@ -406,7 +426,7 @@ async function main() {
   const ready = [];
   for (const j of jobs) {
     const clips = vo[`${j.slot}-${j.lang}`];
-    const out = `og/c/${j.date}-${j.slot}-${j.lang}.mp4`;
+    const out = videoOut(j);
     const why = voiceoverSkip(clips);
     if (why) { refuseVideo(j, out, why); continue; }
     ready.push([j, clips, out]);
@@ -431,6 +451,6 @@ if (require.main === module) main();
 
 module.exports = {
   voicedTotal, voiceoverSkip, refuseVideo, removePartial, writeVoMarker, voMarkerPath,
-  voiceName, MAX_VIDEO_S, COVER, BEAT, BASE, VOICES, words, COVER_FRAMES,
-  loadHeroQuote, splitQuoteLines, parsePoint,
+  voiceName, MIN_VIDEO_S, MAX_VIDEO_S, COVER, BEAT, BASE, VOICES, words, COVER_FRAMES,
+  loadHeroQuote, splitQuoteLines, parsePoint, one, videoStem, videoOut, coverOut, showMap, DEFAULT_SHOW,
 };

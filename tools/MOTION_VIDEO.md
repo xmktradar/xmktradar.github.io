@@ -152,6 +152,43 @@
 - 字色跟 #278（amber `#f5a623`、up `#3dd68c`、down `#ff5c7a`、字 `#e8eef7`、muted `#8b9bb4`；**唔跟 #279 去琥珀**）。v3 底改 `#07080c`＋radial flare／impact slabs（見 `VISUAL-BG.md`）；面板仍深色半透明保可讀。
 - Homepage 唔 embed 片；`social/index.html` 只播 `og/c/*.mp4`。唔做 Meta。
 
+
+## Tape Cats（v6.1 full · 2026-11-04 Tim／CEO）
+
+### Shows（ET）
+| Day | Show | Hero | Slot code | Stable stem |
+|---|---|---|---|---|
+| Mon–Fri A | **Tape Take** | Wave | `1230` | `og/c/<YYYY-MM-DD>-tape-take-en.mp4` |
+| Mon–Fri B | **Crowd Heat** | Specs→Boom | `1630` | `og/c/<YYYY-MM-DD>-crowd-heat-en.mp4` |
+| Sat | **Week Tape** | all | `sat` | `og/c/<YYYY-MM-DD>-week-tape-en.mp4` |
+| Sun | OFF | — | — | — |
+
+Cover / VO sidecar share the stem: `*-cover.jpg`, `*.vo.json`.  
+`data/social-posts.json` → `slots.<slot>.show` + `slots.<slot>.video.en`（same URL）. YT Shorts bot + X 文案／① 讀同一檔。
+
+### Duration
+**30–40s**（`MIN_VIDEO_S=30` `MAX_VIDEO_S=40`）。`BASE` beats `(12,12,14,14,12)` @ 124 BPM ≈ 31s silent；VO pads up. Over 40s → skip language（唔出片）.
+
+### Visual
+Cream `#FFF6EC` + Tape Cats 24 PNG（pose + talk + blink + nod）+ `CUE-TABLE.md` mouth／pose cues. Design: `design/shorts-maneki/`.
+
+### Formal render
+GitHub Actions: `.github/workflows/tape-cats-shorts.yml`（ET cron）＋ Update site motion step. **唔用 box 本機當正式產製.**
+
+### Cron（UTC ≈ EDT）
+- `30 16 * * 1-5` — Mon–Fri Tape Take ~12:30 ET
+- `30 20 * * 1-5` — Mon–Fri Crowd Heat ~16:30 ET
+- `0 16 * * 6` — Sat Week Tape ~12:00 ET
+
+
+### v6.1 Tape Cats pose-only（superseded by full mouth+cue）— cream BG ＋ PNG cats
+- **唔合舊 cream-only／dark energy 樣片當 Tim 審片**；本骨架係 **internal draft**（mouth＋beat cue 未上線）。
+- BG：`#FFF6EC` cream + petal／orb（`design/shorts-maneki/token-bright.css`）；**禁** `#0e1116`／`#07080c`／深紫壓黑。
+- Cats：`design/shorts-maneki/assets/` 8 張透明 PNG；一 beat 一 hero（open→Specs，m1→Wave 指 quote，m2／cta→Boom）；CSS bob + **scene pose swap**（raise／idle／point／cheer）。
+- **Mouth stub**：`setMouth` / `catMouthOpen` in `carousel_scenes.js`（no-op until talk PNG + `CUE-TABLE.md`）；`#catMouth` overlay reserved.
+- Quote／EN-only／BASE 不變；真實 `@handle`；唔造假引句；唔做 Meta。
+- Sample：`tools/samples/2026-11-04-1230-en-v61.mp4`（Tape Cats pose-only **draft**；唔交 Tim 審至 mouth+cue）。
+
 ### v6.1 v3（CEO 2026-11-04）— 真實 X quote ＋ energy BG
 - **BASE 不變**（open 6／split 6／m1 7／m2 7／cta 5）；**每日片只 en**。
 - `open`：有 `hookQ` 就喺 ticker 上顯示疑問冷開；無則跟 #278 `lead`。BG：violet／amber flare ＋ amber impact slab。

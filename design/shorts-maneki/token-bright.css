@@ -1,0 +1,87 @@
+/* Shorts EN v4 bright BG — drop-in tokens for #281
+   KILL dark frame: do NOT use #0e1116 #07080c #0a0c10 #1a0a2e as root BG.
+   Quote content / EN-only / ticker accent can stay. */
+
+:root {
+  --bg0: #FFF6EC;
+  --bg-lilac: #F0E8FF;
+  --bg-sky: #E5F7FF;
+  --petal-coral: #FF6B8A;
+  --petal-apricot: #FFB347;
+  --petal-lilac: #B794F6;
+  --petal-mint: #5EEAD4;
+  --petal-lemon: #FFE066;
+  --ink: #1d1d1f;
+  --ink-muted: #6e6e73;
+  --card: #fffffff0;
+  --ticker: #E8940A;   /* #278 amber family, darkened for cream */
+  --bull: #0A9F5C;
+  --bear: #E11D48;
+}
+
+.frame-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(90% 70% at 12% 18%, color-mix(in srgb, var(--petal-apricot) 45%, transparent) 0%, transparent 55%),
+    radial-gradient(80% 65% at 88% 78%, color-mix(in srgb, var(--petal-lilac) 40%, transparent) 0%, transparent 50%),
+    radial-gradient(60% 50% at 70% 20%, color-mix(in srgb, var(--petal-coral) 30%, transparent) 0%, transparent 45%),
+    var(--bg0);
+}
+
+.petal {
+  position: absolute;
+  width: 42%; height: 28%;
+  border-radius: 60% 40% 55% 45%;
+  opacity: 0.38;
+  pointer-events: none;
+}
+.petal--coral { background: var(--petal-coral); }
+.petal--apricot { background: var(--petal-apricot); }
+.petal--lilac { background: var(--petal-lilac); }
+.petal--mint { background: var(--petal-mint); }
+.petal--lemon { background: var(--petal-lemon); }
+
+.orb {
+  position: absolute;
+  width: 55%; height: 40%;
+  border-radius: 50%;
+  filter: blur(32px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+.orb--hook { background: var(--petal-apricot); top: 8%; left: -8%; }
+.orb--quote { background: var(--petal-lilac); bottom: 12%; right: -10%; }
+
+.ribbon {
+  position: absolute;
+  height: 10px; width: 70%;
+  border-radius: 999px;
+  opacity: 0.35;
+  background: linear-gradient(90deg, var(--petal-mint), var(--petal-lemon), var(--petal-coral));
+  transform: rotate(-18deg);
+}
+
+.card {
+  background: var(--card);
+  color: var(--ink);
+  border-radius: 20px;
+  box-shadow: 0 12px 40px #1d1d1f14;
+}
+
+/* Scene helpers */
+.scene-open .frame-bg { background:
+  radial-gradient(100% 80% at 20% 15%, #FFB34766 0%, transparent 55%),
+  radial-gradient(70% 50% at 80% 70%, #FF6B8A44 0%, transparent 50%),
+  #FFF6EC; }
+.scene-split .frame-bg { background:
+  linear-gradient(90deg, #E5F7FF 0 50%, #FFF0F3 50% 100%); }
+.scene-m1 .frame-bg { background:
+  radial-gradient(80% 60% at 50% 40%, #B794F655 0%, transparent 60%),
+  #FFF6EC; }
+.scene-m2 .frame-bg,
+.scene-cta .frame-bg { background: #E5F7FF; }
+
+.type { color: var(--ink); }
+.type-ticker { color: var(--ticker); font-variant-numeric: tabular-nums; }
+.type-bull { color: var(--bull); }
+.type-bear { color: var(--bear); }

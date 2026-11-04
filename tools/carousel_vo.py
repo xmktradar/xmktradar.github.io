@@ -2,9 +2,9 @@
 
 zh: Mandarin, zh-CN-XiaoxiaoNeural, rate +10%. Lines, voice, rate and the zh pass are unchanged.
 en: English, en-US-AndrewNeural (override with VO_VOICE_en). Starts at +10%. If the video would
-    run past 29.0s, retries +20% then +30%, then the same rates on a shorter script. Still too
+    run past 40.0s, retries +20% then +30%, then the same rates on a shorter script. Still too
     long: that video is left out of vo.json, so tools/carousel_video.js skips the language
-    (no silent / music-only mp4). Never shipped over 29.0s.
+    (no silent / music-only mp4). Target 30–40s; never ship over 40.0s.
 
 Reads work/carousel.json (the same slides the pictures use), writes one line per video scene
 (5 scenes: open, split, m1, m2, cta), reads each line with edge-tts (free, no key)
@@ -32,10 +32,11 @@ RATE = '+10%'
 TIMEOUT = 30
 # Keep in sync with BASE / BEAT / COVER_FRAMES in tools/carousel_video.js.
 BEAT = 60 / 124
-BASE_BEATS = (6, 6, 7, 7, 5)  # open, split, m1, m2, cta
-COVER_FRAMES = 0  # cover merged into open; 29s guard still uses COVER_S for parity
+BASE_BEATS = (12, 12, 14, 14, 12)  # open, split, m1, m2, cta — ~30s silent @124bpm; VO pads toward 30–40s
+COVER_FRAMES = 0  # cover merged into open; 40s guard still uses COVER_S for parity
 COVER_S = COVER_FRAMES / 24
-MAX_VIDEO_S = 29.0
+MIN_VIDEO_S = 30.0
+MAX_VIDEO_S = 40.0
 # English only. Normal script first; faster rates before the shorter script.
 EN_TRIES = (
     (False, '+10%'),
@@ -326,7 +327,7 @@ def render_lines(texts, voice, out_dir, key, rate):
 
 
 def fit_en(job, voice, out_dir, key):
-    """Speak English, speeding up or shortening until the video would be <= 29.0s. None skips the language."""
+    """Speak English, speeding up or shortening until the video would be <= 40.0s. None skips the language."""
     last = None
     for short, rate in EN_TRIES:
         got = render_lines(en_lines(job, short=short), voice, out_dir, key, rate)
@@ -369,7 +370,7 @@ def main(job_file, out_dir):
             if got:
                 total = video_total([g['dur'] for g in got])
                 print(f'voiceover: {key} rate {RATE} video {total:.2f}s')
-                # zh is emitted once at +10%; carousel_video.js skips if voiced total > 29s.
+                # zh is emitted once at +10%; carousel_video.js skips if voiced total > 40s.
         if got:
             result[key] = got
             print(f'voiceover: {key} {len(got)} lines')

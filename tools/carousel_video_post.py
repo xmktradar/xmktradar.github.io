@@ -3,7 +3,7 @@
 tools/carousel.py writes slots.<slot>.video = {lang: url} and slots.<slot>.video_cover = {lang: url}
 up front. A language is kept only when the mp4 exists, a sidecar og/c/<day>-<slot>-<lang>.vo.json
 exists with vo:true, and (when ffprobe is available) the file has an audio stream and duration
-<= 29.0s. Silent / music-only / over-long / missing-marker files are dropped so Grok bot never
+<= 40.0s. Silent / music-only / over-long / missing-marker files are dropped so Grok bot never
 gets a dead or voiceless link. Drop the whole key when none is left. Rewrites social/index.html
 when something changed.
 Usage: python3 tools/carousel_video_post.py   (from the repo root)
@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from sitedata import notice, read_json  # noqa: E402
 
 POSTS = 'data/social-posts.json'
-MAX_VIDEO_S = 29.0
+MAX_VIDEO_S = 40.0
 
 # field, warning when a language is dropped. Drop the whole key when none is left.
 MEDIA = (
