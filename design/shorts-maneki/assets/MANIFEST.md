@@ -1,13 +1,24 @@
-# Tape Cats sprites v2 (pose + talk + blink + nod)
+# Tape Cats sprites — v1 poses + v2 mouth/reaction
 
-Transparent PNG after chroma key. Repo: `design/shorts-maneki/assets/`.
+Path: `design/shorts-maneki/assets/`
 
-## v1 poses (8)
-specs-idle · specs-raise · specs-point-R · wave-idle · wave-point-L · wave-point-R · boom-idle · boom-cheer
+## Base poses (v1)
+specs-idle, specs-raise, specs-point-R  
+wave-idle, wave-point-L, wave-point-R  
+boom-idle, boom-cheer
 
-## v2 talk / reaction (16)
-specs-talk-closed|half|open · specs-blink · specs-nod  
-wave-talk-closed|half|open · wave-blink · wave-nod · wave-surprise  
-boom-talk-closed|half|open · boom-blink · boom-nod  
+## Talk / blink / reaction (v2) — frame-swap mouth
+| file | use |
+|---|---|
+| specs-talk-closed/half/open | Specs lip-sync |
+| specs-blink, specs-nod | blink / agree on numbers |
+| wave-talk-closed/half/open | Wave lip-sync |
+| wave-blink, wave-nod, wave-surprise | quote reactions |
+| boom-talk-closed/half/open | Boom lip-sync |
+| boom-blink, boom-nod | numbers / prep |
+| boom-cheer | CTA (v1) |
 
-Wire with cream BG (`../token-bright.css`). Cue: `../CUE-TABLE.md`. Schedule: `../SCHEDULE-BEATS.md`. EN only. Real quotes only.
+Drive with `CUE-TABLE.md`. Cream BG via token-bright.css.
+
+## Fallback
+`specs-point-L` → CSS mirror of `specs-point-R` (`scaleX(-1)`).

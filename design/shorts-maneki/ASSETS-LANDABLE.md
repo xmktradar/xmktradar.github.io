@@ -33,3 +33,6 @@ whileSpeaking(cat) { mouthCycle(90); headBob(); maybeBlink(); }
 ```
 
 See `CUE-TABLE.md` for timestamps.
+
+## Missing pose fallback
+`specs-point-L` — not shipped; mirror `specs-point-R` with `scaleX(-1)`.
