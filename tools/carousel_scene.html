@@ -1,12 +1,24 @@
 <!doctype html><meta charset="utf-8">
-<!-- Blank page for Bloomberg/terminal motion scenes (tools/carousel_scenes.js). v6.1 scheme A -->
+<!-- Blank page for Bloomberg/terminal motion scenes (tools/carousel_scenes.js). v6.1 v3 quote + energy BG -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+TC:wght@500;700;900&display=block">
 <style>
 html,body{margin:0;width:1080px;height:1920px;overflow:hidden}
-body{position:relative;font-family:'Inter','Noto Sans TC','Noto Sans CJK TC',sans-serif;background:#0e1116;color:#e8eef7}
-#bg{position:absolute;inset:0;background:#0e1116}
-#c{position:absolute;inset:0}
-.panel{position:absolute;left:56px;right:56px;background:#0e1522;border:1px solid #1e2a3a;border-radius:18px}
+body{position:relative;font-family:'Inter','Noto Sans TC','Noto Sans CJK TC',sans-serif;background:#07080c;color:#e8eef7}
+#bg{position:absolute;inset:0;background:#07080c;overflow:hidden}
+#c{position:absolute;inset:0;z-index:2}
+.bg-flare{position:absolute;inset:0;background:
+  radial-gradient(120% 80% at 20% 10%,#1a0a2e 0%,transparent 55%),
+  radial-gradient(100% 70% at 90% 80%,#2a0610 0%,transparent 50%),
+  radial-gradient(80% 60% at 70% 20%,#032018 0%,transparent 45%),
+  #07080c}
+.bg-flare.dim{opacity:.4}
+.slab{position:absolute;border-radius:8px;mix-blend-mode:normal;opacity:0;pointer-events:none;z-index:1;filter:blur(2px)}
+.slab-amber{background:#ff9100}
+.slab-bull{background:#00e676}
+.slab-bear{background:#ff1744}
+.slab-violet{background:#7c4dff}
+.scan{position:absolute;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#e8eef7 40%,#ff9100 50%,#e8eef7 60%,transparent);opacity:.22;z-index:1;pointer-events:none}
+.panel{position:absolute;left:56px;right:56px;background:rgba(14,21,34,.92);border:1px solid #1e2a3a;border-radius:18px;backdrop-filter:blur(2px)}
 .hair{position:absolute;left:56px;right:56px;height:1px;background:#1e2a3a}
 .muted{color:#8b9bb4}
 .amber{color:#f5a623}
@@ -21,9 +33,11 @@ body{position:relative;font-family:'Inter','Noto Sans TC','Noto Sans CJK TC',san
 .tk{font-weight:800;letter-spacing:-2px}
 .num{font-weight:800;letter-spacing:-1px}
 .label{font-weight:600;font-size:28px;color:#8b9bb4;text-transform:uppercase;letter-spacing:1.5px}
-.card{background:#0e1522;border:1px solid #1e2a3a;border-radius:16px;padding:28px 32px}
+.card{background:rgba(14,21,34,.92);border:1px solid #1e2a3a;border-radius:16px;padding:28px 32px}
 .fade{opacity:0}
 .hookQ{font-weight:700;font-size:44px;line-height:1.25;letter-spacing:-.5px;color:#8b9bb4}
-.parable-line{font-size:40px;font-weight:600;line-height:1.35;margin:10px 0}
+.parable-line,.quote-line{font-size:40px;font-weight:600;line-height:1.35;margin:10px 0}
+.quote-handle{font-weight:800;font-size:56px;letter-spacing:-1px;margin:8px 0 20px}
+.stance-pill{display:inline-block;font:700 26px Inter,sans-serif;letter-spacing:1px;text-transform:uppercase;padding:8px 18px;border-radius:999px;border:1px solid currentColor}
 </style>
 <body><div id="bg"></div><div id="c"></div></body>

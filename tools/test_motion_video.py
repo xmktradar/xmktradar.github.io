@@ -38,10 +38,10 @@ ZH_LINES = [
     '詳情看 thecrowdtape.com',
 ]
 EN_LINES = [
-    'S P Y jumped in discussion today — where did that value go?',
+    "Everyone's screaming about S P Y — who's actually making sense?",
     'On S P Y the tape is 3 bulls versus 6 bears. Bears ahead.',
-    'Like a rock bid at one hundred, then ten — ninety dollars of value vanished, but the rock never left.',
-    'Same idea on the tape: bull M E T A, bear Q Q Q.',
+    'Top voice on S P Y is on the tape.',  # no writeup quote for SPY fixture → generic (never rock)
+    'Across the tape: bull M E T A, bear Q Q Q.',
     'Full tape, free, at thecrowdtape dot com',
 ]
 BAD_EN = re.compile(r'\b(buy|sell|buys|sells|buying|selling|target|targets|prediction|predictions|forecast|forecasts)\b', re.I)
@@ -92,22 +92,22 @@ def test_en_lines():
     assert ls == EN_LINES, ls
     assert len(ls) == 5, ls
     _assert_no_advice(ls)
-    assert 'S P Y' in ls[0] and 'where did that value go' in ls[0], ls[0]
+    assert 'S P Y' in ls[0] and 'making sense' in ls[0], ls[0]
     assert 'bulls' in ls[1] and 'bears' in ls[1] and 'Bears ahead' in ls[1], ls[1]
-    assert 'rock bid' in ls[2].lower() and 'never left' in ls[2], ls[2]
+    assert 'rock' not in ls[2].lower() and 'Top voice' in ls[2], ls[2]
     assert 'M E T A' in ls[3] and 'Q Q Q' in ls[3], ls[3]
     assert ls[4] == 'Full tape, free, at thecrowdtape dot com'
     assert carousel_vo.vo_langs() == ['en']
     short = carousel_vo.en_lines(job('en'), short=True)
     assert len(short) == 5, short
     _assert_no_advice(short)
-    assert 'S P Y' in short[0] and 'M E T A' in short[3] and 'Q Q Q' in short[3], short
+    assert 'S P Y' in short[0] and 'making sense' in short[0] and 'M E T A' in short[3] and 'Q Q Q' in short[3], short
     assert short[4] == 'thecrowdtape dot com'
     assert short != ls
     one = job('en')
     one['slides'][0]['sub'] = '1 account'
     one['slides'][0]['pills'] = [{'c': 'g', 'x': '1 bullish'}]
-    assert 'where did that value go' in carousel_vo.lines(one)[0]
+    assert 'making sense' in carousel_vo.lines(one)[0]
     assert '1 bull versus 0 bears' in carousel_vo.lines(one)[1] and 'Bulls ahead' in carousel_vo.lines(one)[1]
     tie = job('en')
     tie['slides'][0]['pills'] = [{'c': 'g', 'x': '4 bullish'}, {'c': 'r', 'x': '4 bearish'}]
@@ -124,11 +124,28 @@ def test_en_missing_sections():
     j['slides'][2]['secs'] = [{'h': '🟢 Joint bullish', 'cards': [{'t': 'META'}]}]
     j['slides'][3]['secs'] = []
     ls = carousel_vo.lines(j)
-    assert 'rock bid' in ls[2].lower(), ls[2]  # parable beat stays even when top4 empty
+    assert 'rock' not in ls[2].lower() and ('Top voice' in ls[2] or '@' in ls[2]), ls[2]
     assert 'bull M E T A' in ls[3] and 'Q Q Q' not in ls[3], ls[3]
     _assert_no_advice(ls)
     short = carousel_vo.en_lines(j, short=True)
     assert 'M E T A' in short[3] and 'Q Q Q' not in short[3], short[3]
+
+
+
+def test_en_quote_from_highlights():
+    """When writeups have a matching ticker quote, VO names the @handle (no rock)."""
+    hero = carousel_vo.load_hero_quote('TSLA')
+    if not hero:
+        return  # offline box without writeups — skip
+    j = job('en')
+    j['slides'][0]['big'] = 'TSLA'
+    j['slides'][0]['sub'] = '6 accounts'
+    j['slides'][0]['pills'] = [{'c': 'g', 'x': '6 bullish'}, {'c': 'r', 'x': '0 bearish'}]
+    ls = carousel_vo.lines(j)
+    assert hero['handle'] in ls[2], ls[2]
+    assert 'rock' not in ('\n'.join(ls)).lower()
+    _assert_no_advice(ls)
+
 
 
 
@@ -195,7 +212,7 @@ def test_duration_guard():
 
     vo, calls = _run_vo([job('en')], lambda rate, text: 5.0, langs='en')
     assert '1230-en' not in vo  # still over 29s after every try: no voice, rather than a long video
-    assert any('Rock bid' in t or 'where did the value go' in t for _, t in calls)
+    assert any('who is making sense' in t or 'Top voice' in t or t.startswith('@') for _, t in calls)
     assert calls[-1] == ('+30%', 'thecrowdtape dot com')
 
     # A zh read that would be over 29s is still emitted once, at +10%, with the snapshot lines.
@@ -519,8 +536,12 @@ def test_cover_text_and_encode():
     assert 'carousel_motion.js' not in src  # comic slides no longer filmed
     assert '🚀' not in src and '😱' not in src
     scenes = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'carousel_scenes.js'), encoding='utf-8').read()
-    assert '#0e1116' in open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'carousel_scene.html'), encoding='utf-8').read()
+    html = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'carousel_scene.html'), encoding='utf-8').read()
+    assert '#07080c' in html and 'bg-flare' in html and 'slab-amber' in html
+    assert '#f5a623' in html  # #278 amber ticker retained
     assert 'setup' in scenes and 'open' in scenes and 'cta' in scenes
+    assert "mode === 'quote'" in scenes or 'isQuote' in scenes
+    assert 'energyBg' in scenes
     py = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'carousel.py'), encoding='utf-8').read()
     assert "['video_cover']" in py and '-cover.jpg' in py
 

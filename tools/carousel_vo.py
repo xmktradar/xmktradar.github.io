@@ -14,7 +14,7 @@ out of vo.json, so tools/carousel_video.js skips that language. Lines never say 
 a price target or a prediction.
 Usage: python3 tools/carousel_vo.py work/carousel.json <out dir>   (VO_LANGS=en  VO_VOICE_en=...; override VO_LANGS=zh,en)
        VO_FAKE=1 makes silent stand-in files of a plausible length (local tests, no network).
-Tim 2026-11-04: default VO_LANGS=en (daily Shorts en-only). en 5-line rhythm: question → split → parable → data → CTA.
+Tim 2026-11-04: default VO_LANGS=en (daily Shorts en-only). en 5-line rhythm: question → split → named @handle quote → data → CTA.
 Video length uses the same beat sum as tools/carousel_video.js (scene grows to fit the line +0.4s).
 Cover is merged into open (COVER_FRAMES = 0); the 5 lines start at each scene's +0.15s lead-in.
 """
@@ -98,10 +98,94 @@ def _count_en(n, one, many):
     return f'{n} {one if n == 1 else many}'
 
 
-def en_lines(job, short=False):
-    """5 English lines (v6.1): question → split → parable → data → CTA.
+def _read_json(path):
+    try:
+        with open(path, encoding='utf-8') as f:
+            return json.load(f)
+    except Exception:
+        return None
 
-    Tickers go through spell(). No buy, sell, target or prediction.
+
+def load_hero_quote(big=''):
+    """Real EN highlight quote for VO. Never invent; None → generic tape line (no rock)."""
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    data = None
+    for rel in ('data/super-grok-writeups.json', 'work/writeups.json'):
+        data = _read_json(os.path.join(root, rel))
+        if data:
+            break
+    if not data:
+        return None
+    en = data.get('en') or data
+    cards = ((en.get('highlights') or {}).get('cards')) or []
+    want = str(big or '').upper()
+    ordered = [c for c in cards if want and want in [str(t).upper() for t in (c.get('tickers') or [])]] + list(cards)
+
+    def parse_point(pt):
+        m = re.match(r'^@([\w.]+)\s*[:：]\s*([\s\S]+)$', str(pt or '').strip())
+        if not m:
+            return None
+        return {'handle': '@' + m.group(1), 'text': m.group(2).strip()}
+
+    def ok(card, parsed, tick):
+        body = re.sub(r'\s+', ' ', parsed['text']).strip()
+        if not body:
+            return None
+        # VO must not trip advice filter: rewrite common "buy-and-hold" phrasing.
+        vo_text = re.sub(r'\bbuy-and-hold\b', 'hold', body, flags=re.I)
+        vo_text = re.sub(r'\b(buy|sell|target|prediction|forecast)s?\b', '', vo_text, flags=re.I)
+        vo_text = re.sub(r'\s{2,}', ' ', vo_text).strip(' ,;.-')
+        if not vo_text:
+            vo_text = 'their read is on the tape today'
+        tickers = card.get('tickers') or ['']
+        return {
+            'handle': parsed['handle'],
+            'text': vo_text,
+            'ticker': tick or want or tickers[0],
+            'stance': 'bear' if re.search(r'bear|看空|淡', str(card.get('tone') or ''), re.I) else (
+                'bull' if re.search(r'bull|看好|多', str(card.get('tone') or ''), re.I) else ''),
+        }
+
+    if want:
+        for card in ordered:
+            for pt in (card.get('points') or []):
+                if not re.search(r'\b' + re.escape(want) + r'\b', str(pt), re.I):
+                    continue
+                parsed = parse_point(pt)
+                if not parsed:
+                    continue
+                got = ok(card, parsed, want)
+                if got:
+                    return got
+    if want:
+        for card in ordered:
+            tags = [str(x).upper() for x in (card.get('tickers') or [])]
+            if want not in tags:
+                continue
+            for pt in (card.get('points') or []):
+                parsed = parse_point(pt)
+                if not parsed:
+                    continue
+                got = ok(card, parsed, want)
+                if got:
+                    return got
+        return None  # never invent; don't steal another ticker's quote
+    for card in cards:
+        for pt in (card.get('points') or []):
+            parsed = parse_point(pt)
+            if not parsed:
+                continue
+            tickers = card.get('tickers') or ['']
+            got = ok(card, parsed, tickers[0])
+            if got:
+                return got
+    return None
+
+
+def en_lines(job, short=False):
+    """5 English lines (v3): question → split → named @handle quote → data → CTA.
+
+    Tickers go through spell(). No buy, sell, target or prediction. No rock parable.
     """
     s = job['slides']
     big = s[0].get('big', '')
@@ -109,6 +193,9 @@ def en_lines(job, short=False):
     top4 = first_cards(s[1])[:4]
     up, down = first_cards(s[2], '🟢')[:1], first_cards(s[2], '🔴')[:1]
     split = first_cards(s[3])[:1]
+    hero = load_hero_quote(big)
+    if hero and hero.get('ticker'):
+        big = hero['ticker'] or big
     if bull > bear:
         lean = 'Bulls ahead.' if not short else 'Bulls.'
     elif bear > bull:
@@ -118,27 +205,43 @@ def en_lines(job, short=False):
     bits = ([f'bull {spell(up[0])}'] if up else []) + ([f'bear {spell(down[0])}'] if down else [])
     joint = ', '.join(bits)
     if joint:
-        data = joint if short else f'Same idea on the tape: {joint}.'
+        data = joint if short else f'Across the tape: {joint}.'
     elif split:
         data = (f'{spell(split[0])}, biggest split.' if short
-                else f'Same idea on the tape: {spell(split[0])}, biggest split.')
+                else f'Across the tape: {spell(split[0])}, biggest split.')
     elif top4:
         top = ', '.join(spell(t) for t in top4)
-        data = (f'Top: {top}' if short else f'Same idea on the tape: top names {top}.')
+        data = (f'Top: {top}' if short else f'Across the tape: top names {top}.')
     else:
-        data = 'On the tape today.' if short else 'Same idea on the tape: quotes moved; here is what accounts said.'
+        data = 'On the tape today.' if short else 'Across the tape: here is what accounts said.'
+    if hero and hero.get('handle') and hero.get('text'):
+        handle = hero['handle']
+        # Keep VO short: handle + one compact clause
+        q = hero['text']
+        if len(q) > 110:
+            q = q[:107].rsplit(' ', 1)[0] + '…'
+        if short:
+            quote_line = f'{handle}: {q}' if len(q) < 70 else f'{handle} on {spell(big)}.'
+        else:
+            quote_line = f'{handle}: {q}'
+    else:
+        # No usable real quote — stay generic, never invent rock metaphor
+        quote_line = (f'Top voice on {spell(big)} is on the tape.' if big
+                      else 'Top voices are on the tape.')
+        if short:
+            quote_line = f'{spell(big)} — top voice on tape.' if big else 'Top voice on tape.'
     if short:
         return [
-            f'{spell(big)} — where did the value go?',
+            f'{spell(big)} — who is making sense?',
             f'{bull} bull, {bear} bear. {lean}',
-            'Rock bid one hundred, then ten — paper value gone.',
+            quote_line,
             data,
             'thecrowdtape dot com',
         ]
     return [
-        f'{spell(big)} jumped in discussion today — where did that value go?',
+        f"Everyone's screaming about {spell(big)} — who's actually making sense?",
         f'On {spell(big)} the tape is {_count_en(bull, "bull", "bulls")} versus {_count_en(bear, "bear", "bears")}. {lean}',
-        'Like a rock bid at one hundred, then ten — ninety dollars of value vanished, but the rock never left.',
+        quote_line,
         data,
         'Full tape, free, at thecrowdtape dot com',
     ]

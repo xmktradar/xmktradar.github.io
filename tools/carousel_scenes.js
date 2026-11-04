@@ -1,7 +1,8 @@
-// Bloomberg / terminal scenes for carousel motion videos (v6.1).
+// Bloomberg / terminal scenes for carousel motion videos (v6.1 v3).
 // setup(name, data) builds a scene; draw(t, globalT) paints one frame.
 // Shared helpers cl/out/back/BEAT/chrome come from the header injected by carousel_video.js.
-// v6.1: optional hookQ on open + parable layout on m1 (scheme A). Empty → #278 behavior.
+// v3: real X quote on m1 (mode=quote) + explosive energy BG (flare/slabs/scan). Empty quote → #278 rows.
+// parable layout kept as optional dead path only. Type colors stay #278.
 const esc = v => String(v == null ? '' : v).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 function brandBar(D) {
@@ -9,12 +10,41 @@ function brandBar(D) {
     (D.date ? `<span class="date mono">${esc(D.date)}</span>` : '') + `</div>`;
 }
 
+function energyBg(name, D) {
+  const bg = document.getElementById('bg');
+  document.body.style.background = '#07080c';
+  let slabs = '';
+  if (name === 'open') {
+    slabs = `<div class="slab slab-amber" id="slab0" style="left:6%;top:26%;width:88%;height:42%"></div>`;
+  } else if (name === 'split') {
+    slabs =
+      `<div class="slab slab-bull" id="slabL" style="left:4%;top:22%;width:44%;height:58%"></div>` +
+      `<div class="slab slab-bear" id="slabR" style="right:4%;top:22%;width:44%;height:58%"></div>`;
+  } else if (name === 'm1') {
+    slabs = `<div class="slab slab-violet" id="slab0" style="left:8%;top:24%;width:84%;height:52%"></div>`;
+  } else if (name === 'm2') {
+    slabs = `<div class="slab slab-amber" id="slab0" style="left:10%;top:30%;width:80%;height:40%"></div>`;
+  } else if (name === 'cta') {
+    slabs = `<div class="slab slab-amber" id="slab0" style="left:18%;top:38%;width:64%;height:28%"></div>`;
+  }
+  const dim = (name === 'm2') ? ' dim' : '';
+  bg.innerHTML = `<div class="bg-flare${dim}"></div><div class="scan" id="scan"></div>${slabs}`;
+}
+
+function isQuote(D) {
+  return D && (D.mode === 'quote' || (D.handle && D.lines && D.lines.length));
+}
+
+function isParable(D) {
+  return D && (D.mode === 'parable' || (D.parable && D.parable.length));
+}
+
 function setup(name, D) {
   window.D_ = D;
   const c = document.getElementById('c');
   c.innerHTML = '';
   c.style.transform = '';
-  document.getElementById('bg').style.background = '#0e1116';
+  energyBg(name, D);
   window.S = { name, D, els: [] };
   if (name === 'open') {
     const head = D.hookQ
@@ -48,7 +78,27 @@ function setup(name, D) {
       <div class="muted" style="position:absolute;left:56px;right:56px;bottom:72px;text-align:center;font-size:32px;font-weight:600">${esc(D.verdict || '')}</div>`;
     return;
   }
-  if (name === 'm1' && (D.mode === 'parable' || (D.parable && D.parable.length))) {
+  if (name === 'm1' && isQuote(D)) {
+    const handle = String(D.handle || '').startsWith('@') ? D.handle : ('@' + (D.handle || ''));
+    const lines = (D.lines || []).slice(0, 3).map((line, i) =>
+      `<div class="quote-line muted" id="q${i}" style="opacity:0;transform:translateY(24px)">${esc(line)}</div>`).join('');
+    const stance = String(D.stance || '').toLowerCase();
+    const pill = stance === 'bull' || stance === 'bear'
+      ? `<span class="stance-pill ${stance === 'bull' ? 'up' : 'down'}">${stance === 'bull' ? 'BULL' : 'BEAR'}</span>`
+      : '';
+    c.innerHTML = brandBar(D) + `
+      <div class="panel" style="top:180px;bottom:140px;padding:48px 44px;display:flex;flex-direction:column;gap:8px">
+        <div class="label" style="margin-bottom:8px">${esc(D.kicker || 'ON X')}</div>
+        <div class="quote-handle mono amber" id="qHandle">${esc(handle)}</div>
+        ${lines}
+        <div class="row" style="margin-top:auto;padding-top:28px;align-items:center">
+          ${D.anchor ? `<div class="tk mono amber" style="font-size:48px">${esc(D.anchor)}</div>` : '<div></div>'}
+          ${pill}
+        </div>
+      </div>`;
+    return;
+  }
+  if (name === 'm1' && isParable(D)) {
     const lines = (D.parable || []).slice(0, 4).map((line, i) =>
       `<div class="parable-line muted" id="p${i}" style="opacity:0;transform:translateY(24px)">${esc(line)}</div>`).join('');
     c.innerHTML = brandBar(D) + `
@@ -64,22 +114,25 @@ function setup(name, D) {
     const rows = (D.rows || []).slice(0, 4).map(r => `
       <div class="row" style="padding:22px 0;border-bottom:1px solid #1e2a3a">
         <div class="tk mono" style="font-size:56px">$${esc(r.t)}</div>
-        <div class="num mono" style="font-size:44px;color:${r.tone === 'down' ? '#ff5c7a' : r.tone === 'up' ? '#3dd68c' : '#e8eef7'}">${esc(r.v)}</div>
+        <div class="num mono" style="font-size:44px;color:${r.tone === 'down' ? '#ff5c7a' : r.tone === 'up' ? '#3dd68c' : '#e8eef7'}">${esc(r.v || r.n || '')}</div>
       </div>`).join('');
     c.innerHTML = brandBar(D) + `
       <div class="panel" style="top:180px;bottom:140px;padding:48px 44px">
         <div class="label" style="margin-bottom:28px">${esc(D.title || '')}</div>
         ${rows || `<div class="muted" style="font-size:36px">${esc(D.empty || '')}</div>`}
-        ${D.note ? `<div class="muted" style="margin-top:36px;font-size:28px;line-height:1.4">${esc(D.note)}</div>` : ''}
+        ${D.note || D.punch ? `<div class="muted" style="margin-top:36px;font-size:28px;line-height:1.4">${esc(D.note || D.punch || '')}</div>` : ''}
       </div>`;
     return;
   }
   if (name === 'cta') {
+    const lines = (D.t || []).filter(Boolean);
+    const foot = D.foot || (lines[0] || '');
+    const mid = lines[1] || 'Follow @thecrowdtape';
     c.innerHTML = brandBar(D) + `
       <div class="panel" style="top:420px;bottom:420px;padding:64px 48px;display:flex;flex-direction:column;justify-content:center;gap:40px;text-align:center">
         <div class="mono amber" style="font-size:56px;font-weight:800">thecrowdtape.com</div>
-        <div style="font-size:44px;font-weight:700">Follow @thecrowdtape</div>
-        <div class="muted" style="font-size:30px;line-height:1.45">${esc(D.foot || '')}</div>
+        <div style="font-size:44px;font-weight:700">${esc(mid.startsWith('Follow') ? mid : 'Follow @thecrowdtape')}</div>
+        <div class="muted" style="font-size:30px;line-height:1.45">${esc(foot)}</div>
       </div>`;
   }
 }
@@ -88,8 +141,28 @@ function lerpRgb(a, b, e) {
   return `rgb(${Math.round(a[0] + (b[0] - a[0]) * e)},${Math.round(a[1] + (b[1] - a[1]) * e)},${Math.round(a[2] + (b[2] - a[2]) * e)})`;
 }
 
+function drawEnergy(t, gt) {
+  const scan = document.getElementById('scan');
+  if (scan) {
+    const y = ((gt * 40) % 1920);
+    scan.style.top = y + 'px';
+  }
+  const pulse = 0.42 + 0.12 * Math.sin(gt * 2.2);
+  const slide = out(cl(t / 0.4));
+  for (const id of ['slab0', 'slabL', 'slabR']) {
+    const el = document.getElementById(id);
+    if (!el) continue;
+    const base = (S.name === 'm2') ? 0.32 : (S.name === 'cta' ? 0.45 : 0.55);
+    el.style.opacity = String(base * slide * (0.9 + 0.1 * Math.sin(gt * 2.2)));
+    const s = 1 + 0.03 * Math.sin(gt * 2.4);
+    el.style.transform = `scale(${s})`;
+    el.style.transformOrigin = 'center center';
+  }
+}
+
 function draw(t, gt) {
   chrome(gt);
+  drawEnergy(t, gt);
   const c = document.getElementById('c');
   c.style.transform = 'none';
   // Soft fade-in of the whole scene; ticker/numbers are already in the DOM at t=0 (open).
@@ -109,7 +182,18 @@ function draw(t, gt) {
     if (bn) bn.textContent = String(Math.round((D_.bull || 0) * e));
     if (rn) rn.textContent = String(Math.round((D_.bear || 0) * e));
   }
-  if (S.name === 'm1' && D_ && (D_.mode === 'parable' || (D_.parable && D_.parable.length))) {
+  if (S.name === 'm1' && isQuote(D_)) {
+    const n = (D_.lines || []).length;
+    for (let i = 0; i < n; i++) {
+      const el = document.getElementById('q' + i);
+      if (!el) continue;
+      const e = out(cl(Math.max(0, t - 0.25 * i) / 0.35));
+      el.style.opacity = String(e);
+      el.style.transform = `translateY(${(1 - e) * 24}px)`;
+      el.style.color = e > 0.92 ? '#e8eef7' : '#8b9bb4';
+    }
+  }
+  if (S.name === 'm1' && isParable(D_) && !isQuote(D_)) {
     const n = (D_.parable || []).length;
     for (let i = 0; i < n; i++) {
       const el = document.getElementById('p' + i);
@@ -122,4 +206,4 @@ function draw(t, gt) {
   }
 }
 
-if (typeof module !== 'undefined') module.exports = { setup, draw, esc };
+if (typeof module !== 'undefined') module.exports = { setup, draw, esc, isQuote, isParable, energyBg };

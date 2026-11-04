@@ -149,18 +149,20 @@
 - 場景（5）：`open` → `split` → `m1` → `m2` → `cta`。最多 2 個數據鏡（m1／m2）。
 - **每日片預設只出英文**（`VIDEO_LANGS`／`VO_LANGS` 預設 `en`；唔寫 `*-zh.mp4`）。配音必須有（en Andrew；zh 仍可用 env 覆寫）；總長 ≤ 29.0s；數字只嚟自 job 數據。
 - 編碼：1080×1920 H.264 High limited `yuv420p` + AAC 128k + `+faststart`。
-- 主站底色對齊 `--bg:#0e1116`；面板 `#0e1522`、髮線 `#1e2a3a`、字 `#e8eef7`、muted `#8b9bb4`、amber `#f5a623`、up `#3dd68c`、down `#ff5c7a`（**跟 #278；唔跟 #279 去琥珀**）。
+- 字色跟 #278（amber `#f5a623`、up `#3dd68c`、down `#ff5c7a`、字 `#e8eef7`、muted `#8b9bb4`；**唔跟 #279 去琥珀**）。v3 底改 `#07080c`＋radial flare／impact slabs（見 `VISUAL-BG.md`）；面板仍深色半透明保可讀。
 - Homepage 唔 embed 片；`social/index.html` 只播 `og/c/*.mp4`。唔做 Meta。
 
-### v6.1 scheme A（CEO 2026-11-04）
-- **BASE 不變**（open 6／split 6／m1 7／m2 7／cta 5）。
-- `open`：有 `hookQ` 就喺 ticker 上顯示疑問冷開（muted→白）；無則跟 #278 `lead`。
-- `m1`：有 `mode:'parable'` 或 `parable[]` 用 2–4 行比喻字鏡；無則維持 rows。
-- `carousel_video.js` `words()`（en）填 `hookQ`＋`parable`；空 → 舊行為。
-- en VO 5 句節奏：①疑問 ②對決 ③比喻 ④數據 ⑤CTA。設計包：`/workspace/shorts-story-v6-20261104/`。
+### v6.1 v3（CEO 2026-11-04）— 真實 X quote ＋ energy BG
+- **BASE 不變**（open 6／split 6／m1 7／m2 7／cta 5）；**每日片只 en**。
+- `open`：有 `hookQ` 就喺 ticker 上顯示疑問冷開；無則跟 #278 `lead`。BG：violet／amber flare ＋ amber impact slab。
+- `m1`：有 `mode:'quote'`（`handle`＋`lines[]`）顯示 `ON X` 真實大神引句；無則維持 rows。**唔再用 rock parable 做 sample**。BG：loud flare ＋ violet／amber slab；quote card `rgba(14,21,34,.92)` 保可讀。
+- `split`／`m2`／`cta`：bull／bear／amber slabs；可選 scan line；**禁** emoji／彩紙／shake／白閃／comic。
+- 字色仍 #278（amber ticker `#f5a623`、bull `#3dd68c`、bear `#ff5c7a`）；底改 `#07080c` ＋ radial flare（唔再淨 flat `#0e1116`）。
+- `carousel_video.js` `words()`（en）由 `data/super-grok-writeups.json` highlights 填 `hookQ`／`m1.handle`／`m1.lines`／`punch`（欄位對齊 `hook_q`／`quote_handle`／`quote_text`／`stance`／`punch`）；無匹配 quote → legacy rows（唔造假）。
+- en VO 5 句：①疑問 ②對決 ③**具名 @handle 引句** ④拉返今日數據 ⑤CTA。設計包：`/workspace/shorts-story-v6-20261104/`（`STORYBOARD-EN-v3.md`＋`VISUAL-BG.md`）。
 
-### 檔案（v6／v6.1）
-- `tools/carousel_scene.html` + `tools/carousel_scenes.js`：Bloomberg 場景（open／split／m1／m2／cta；＋ hookQ／parable）。
+### 檔案（v6／v6.1 v3）
+- `tools/carousel_scene.html` + `tools/carousel_scenes.js`：Bloomberg 場景（open／split／m1／m2／cta；＋ hookQ／quote；energy BG flare／slabs／scan）。
 - `tools/carousel_video.js`：`BASE` = open 6、split 6、m1 7、m2 7、cta 5；**唔再**載入 `carousel.html`／`carousel_motion.js` comic 幻燈；預設 `VIDEO_LANGS=en`。
 - `tools/carousel_vo.py`：5 句旁白；`BASE_BEATS`／`COVER_FRAMES` 同 JS 同步；預設 `VO_LANGS=en`。
 - `tools/carousel_motion.js`：comic 幻燈動畫；**動態片路徑唔再用**（靜態輪播 jpg 亦唔載入）。
@@ -169,7 +171,7 @@
 - 一拍 = 60/124 秒。有配音段：`max(基本拍, ceil((句長 + 0.4s) / 拍))`。
 - 旁白 `at` = 該段開始 + 0.15s（封面已併入 open，無額外 COVER 延遲）。
 - zh 5 句（僅 `VO_LANGS` 含 zh 時）：① `{代號}，{N} 個帳號在聊` ② 好淡數 + 領先 ③ 熱度前四 ④ 共同／分歧 ⑤ `詳情看 thecrowdtape.com`。
-- en 5 句（v6.1）：①疑問 hook ② bull/bear 對決 ③ rock 比喻 ④ 拉返今日數據 ⑤ CTA；超時先加速再短稿，仍然 >29s 唔出片。
+- en 5 句（v3）：①疑問 hook ② bull/bear 對決 ③ 具名 @handle 真實引句 ④ 拉返今日數據 ⑤ CTA；超時先加速再短稿，仍然 >29s 唔出片。
 
 ### 棄用（comic v4）
 - 8 段 hook／reveal／vs／s1–s4／outro、封面 17 格、「每日精選」封面文案、emoji／slam／shake／confetti／白閃，一律唔再用於新片。
