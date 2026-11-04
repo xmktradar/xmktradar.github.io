@@ -1012,9 +1012,163 @@
       "ASTS"
      ]
     }
+   },
+   "intraday_1": {
+    "post_et": "11:00",
+    "post_hkt": "00:00",
+    "generated_at": "2026-11-04T11:06:58-05:00",
+    "date": "2026-11-04",
+    "date_kst": "2026-11-05",
+    "quotes": {
+     "SPY": {
+      "price": 764.56,
+      "prev_close": 754.35,
+      "chg_pct": 1.35,
+      "time": "2026-11-04T11:06:58-05:00"
+     },
+     "QQQ": {
+      "price": 690.8,
+      "prev_close": 685.28,
+      "chg_pct": 0.81,
+      "time": "2026-11-04T11:06:58-05:00"
+     },
+     "DIA": {
+      "price": 530.09,
+      "prev_close": 517.06,
+      "chg_pct": 2.52,
+      "time": "2026-11-04T11:06:58-05:00"
+     },
+     "AEHR": {
+      "price": 57.595,
+      "prev_close": 65.11,
+      "chg_pct": -11.54,
+      "time": "2026-11-04T11:06:49-05:00"
+     },
+     "COHR": {
+      "price": 188.111,
+      "prev_close": 207.49,
+      "chg_pct": -9.34,
+      "time": "2026-11-04T11:06:59-05:00"
+     },
+     "TEM": {
+      "price": 72.85,
+      "prev_close": 77.8,
+      "chg_pct": -6.36,
+      "time": "2026-11-04T11:06:58-05:00"
+     },
+     "SKHY": {
+      "price": 142.02,
+      "prev_close": 150.79,
+      "chg_pct": -5.82,
+      "time": "2026-11-04T11:06:59-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-04T11:06:59-05:00",
+     "hkt": "2026-11-05 00:06"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "AEHR",
+      "chg_pct": -11.54,
+      "bull": 3,
+      "bear": 0,
+      "accounts": [
+       "kevinxu",
+       "ripster47",
+       "TrendSpider",
+       "aleabitoreddit",
+       "SJosephBurns"
+      ]
+     },
+     {
+      "ticker": "COHR",
+      "chg_pct": -9.34,
+      "bull": 3,
+      "bear": 0,
+      "accounts": [
+       "michaelsikand",
+       "aleabitoreddit",
+       "StockSavvyShay",
+       "SJosephBurns"
+      ]
+     },
+     {
+      "ticker": "TEM",
+      "chg_pct": -6.36,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "RichardMoglen",
+       "StockSavvyShay",
+       "OptionsMike",
+       "WallStJesus",
+       "ripster47",
+       "SJosephBurns"
+      ]
+     },
+     {
+      "ticker": "SKHY",
+      "chg_pct": -5.82,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "StockSavvyShay",
+       "aleabitoreddit",
+       "ripster47",
+       "garyblack00"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Late morning · As of 11:06 ET (00:06 HKT)\n\n$SPY +1.4% · $QQQ +0.8% · $DIA +2.5%\n\n$AEHR -11.5%, 3 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #AEHR #COHR",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "早盤觀察 · 截至 11:06 ET（00:06 HKT）\n\n$SPY +1.4% · $QQQ +0.8% · $DIA +2.5%\n\n$AEHR -11.5%，網站 3 個帳號看好\n$COHR -9.3%，網站 3 個帳號看好\n$TEM -6.4%，網站 2 個帳號看好\n$SKHY -5.8%，網站 2 個帳號看好\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #AEHR #COHR",
+      "url": null
+     },
+     "en": {
+      "text": "Late morning · As of 11:06 ET (00:06 HKT)\n\n$SPY +1.4% · $QQQ +0.8% · $DIA +2.5%\n\n$AEHR -11.5%, 3 accounts bullish on site\n$COHR -9.3%, 3 accounts bullish on site\n$TEM -6.4%, 2 accounts bullish on site\n$SKHY -5.8%, 2 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #AEHR #COHR",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "TSLA",
+      "PLTR",
+      "AAPL",
+      "SPCX",
+      "AEHR",
+      "COHR",
+      "TEM",
+      "SKHY",
+      "AXTI",
+      "RIVN",
+      "RSP"
+     ],
+     "bear": [
+      "ORCL",
+      "CBRS",
+      "ASTS"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-04T09:47:51-05:00",
-  "generated_hkt": "2026-11-04 22:47"
+  "generated_at": "2026-11-04T11:06:58-05:00",
+  "generated_hkt": "2026-11-05 00:06"
  }
 }
