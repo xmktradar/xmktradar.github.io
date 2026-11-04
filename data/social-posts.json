@@ -1170,128 +1170,130 @@
    "intraday_2": {
     "post_et": "12:15",
     "post_hkt": "01:15",
-    "generated_at": "2026-11-04T12:22:16-05:00",
+    "generated_at": "2026-11-04T12:27:05-05:00",
     "date": "2026-11-04",
     "date_kst": "2026-11-05",
     "quotes": {
      "SPY": {
-      "price": 767.96,
+      "price": 768.49,
       "prev_close": 754.35,
-      "chg_pct": 1.8,
-      "time": "2026-11-04T12:22:14-05:00"
+      "chg_pct": 1.87,
+      "time": "2026-11-04T12:27:04-05:00"
      },
      "QQQ": {
-      "price": 695.54,
+      "price": 696.37,
       "prev_close": 685.28,
-      "chg_pct": 1.5,
-      "time": "2026-11-04T12:22:15-05:00"
+      "chg_pct": 1.62,
+      "time": "2026-11-04T12:27:05-05:00"
      },
      "DIA": {
-      "price": 532.3,
+      "price": 532.27,
       "prev_close": 517.06,
-      "chg_pct": 2.95,
-      "time": "2026-11-04T12:22:07-05:00"
+      "chg_pct": 2.94,
+      "time": "2026-11-04T12:27:04-05:00"
      },
-     "ORCL": {
-      "price": 126.185,
-      "prev_close": 126.19,
-      "chg_pct": -0.0,
-      "time": "2026-11-04T12:22:16-05:00"
+     "MRVL": {
+      "price": 159.35,
+      "prev_close": 171.97,
+      "chg_pct": -7.34,
+      "time": "2026-11-04T12:27:06-05:00"
      },
-     "CBRS": {
-      "price": 93.72,
-      "prev_close": 97.82,
-      "chg_pct": -4.19,
-      "time": "2026-11-04T12:22:15-05:00"
+     "GOOGL": {
+      "price": 291.815,
+      "prev_close": 280.03,
+      "chg_pct": 4.21,
+      "time": "2026-11-04T12:27:06-05:00"
      },
-     "ASTS": {
-      "price": 36.55,
-      "prev_close": 37.15,
-      "chg_pct": -1.62,
-      "time": "2026-11-04T12:22:13-05:00"
-     },
-     "AMZN": {
-      "price": 267.82,
-      "prev_close": 250.69,
-      "chg_pct": 6.83,
-      "time": "2026-11-04T12:22:16-05:00"
+     "AAOI": {
+      "price": 59.725,
+      "prev_close": 63.97,
+      "chg_pct": -6.64,
+      "time": "2026-11-04T12:27:06-05:00"
      }
     },
     "quote_time": {
-     "et": "2026-11-04T12:22:16-05:00",
-     "hkt": "2026-11-05 01:22"
+     "et": "2026-11-04T12:27:06-05:00",
+     "hkt": "2026-11-05 01:27"
     },
     "quote_source": "Yahoo Finance",
     "quotes_ok": true,
     "fallback": false,
     "hot": [
      {
-      "ticker": "ORCL",
-      "chg_pct": -0.0,
-      "bull": 0,
-      "bear": 3,
+      "ticker": "MRVL",
+      "chg_pct": -7.34,
+      "bull": 2,
+      "bear": 1,
       "accounts": [
-       "KeithMcCullough",
-       "RedDogT3",
-       "KobeissiLetter",
-       "amitisinvesting",
-       "spotgamma",
-       "dampedspring",
-       "RyanDetrick",
-       "ripster47"
-      ]
-     },
-     {
-      "ticker": "CBRS",
-      "chg_pct": -4.19,
-      "bull": 0,
-      "bear": 2,
-      "accounts": [
-       "LeopoldTracker_",
+       "ripster47",
        "StockSavvyShay",
-       "aleabitoreddit"
+       "amitisinvesting",
+       "Mr_Derivatives",
+       "michaelsikand",
+       "garyblack00",
+       "aleabitoreddit",
+       "WallStJesus"
       ]
      },
      {
-      "ticker": "ASTS",
-      "chg_pct": -1.62,
-      "bull": 0,
-      "bear": 2,
-      "accounts": [
-       "KeithMcCullough",
-       "Jake__Wujastyk"
-      ]
-     },
-     {
-      "ticker": "AMZN",
-      "chg_pct": 6.83,
-      "bull": 3,
+      "ticker": "SPY",
+      "chg_pct": 1.87,
+      "bull": 2,
       "bear": 1,
       "accounts": [
        "TrendSpider",
-       "StockSavvyShay",
-       "OptionsMike",
-       "DougKass",
-       "bespokeinvest",
        "RyanDetrick",
+       "DougKass",
+       "OddStats",
+       "ThetaWarrior",
+       "RedDogT3",
+       "spotgamma",
+       "Mr_Derivatives"
+      ]
+     },
+     {
+      "ticker": "GOOGL",
+      "chg_pct": 4.21,
+      "bull": 2,
+      "bear": 1,
+      "accounts": [
+       "StockSavvyShay",
+       "dylan522p",
+       "DougKass",
+       "spotgamma",
+       "RyanDetrick",
+       "RedDogT3",
        "Mr_Derivatives",
-       "aleabitoreddit"
+       "garyblack00"
+      ]
+     },
+     {
+      "ticker": "AAOI",
+      "chg_pct": -6.64,
+      "bull": 2,
+      "bear": 1,
+      "accounts": [
+       "michaelsikand",
+       "aleabitoreddit",
+       "kevinxu",
+       "StockSavvyShay",
+       "SJosephBurns"
       ]
      }
     ],
     "x": {
      "en": {
-      "text": "Midday · As of 12:22 ET (01:22 HKT)\n\n$SPY +1.8% · $QQQ +1.5% · $DIA +3.0%\n\n$ORCL -0.0%, 3 accounts bearish on site\n$CBRS -4.2%, 2 accounts bearish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #ORCL #CBRS",
+      "text": "Midday · As of 12:27 ET (01:27 HKT)\n\n$SPY +1.9% · $QQQ +1.6% · $DIA +2.9%\n\n$MRVL -7.3%, 2 accounts bullish on site\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #MRVL #SPY",
       "url": ""
      }
     },
     "threads": {
      "zh": {
-      "text": "午市觀察 · 截至 12:22 ET（01:22 HKT）\n\n$SPY +1.8% · $QQQ +1.5% · $DIA +3.0%\n\n$ORCL -0.0%，網站 3 個帳號看空\n$CBRS -4.2%，網站 2 個帳號看空\n$ASTS -1.6%，網站 2 個帳號看空\n$AMZN +6.8%，網站 3 個帳號看好\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #ORCL #CBRS",
+      "text": "午市觀察 · 截至 12:27 ET（01:27 HKT）\n\n$SPY +1.9% · $QQQ +1.6% · $DIA +2.9%\n\n$MRVL -7.3%，網站 2 個帳號看好\n$SPY +1.9%，網站 2 個帳號看好\n$GOOGL +4.2%，網站 2 個帳號看好\n$AAOI -6.6%，網站 2 個帳號看好\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #MRVL #SPY",
       "url": ""
      },
      "en": {
-      "text": "Midday · As of 12:22 ET (01:22 HKT)\n\n$SPY +1.8% · $QQQ +1.5% · $DIA +3.0%\n\n$ORCL -0.0%, 3 accounts bearish on site\n$CBRS -4.2%, 2 accounts bearish on site\n$ASTS -1.6%, 2 accounts bearish on site\n$AMZN +6.8%, 3 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #ORCL #CBRS",
+      "text": "Midday · As of 12:27 ET (01:27 HKT)\n\n$SPY +1.9% · $QQQ +1.6% · $DIA +2.9%\n\n$MRVL -7.3%, 2 accounts bullish on site\n$SPY +1.9%, 2 accounts bullish on site\n$GOOGL +4.2%, 2 accounts bullish on site\n$AAOI -6.6%, 2 accounts bullish on site\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #MRVL #SPY",
       "url": ""
      }
     },
@@ -1324,7 +1326,7 @@
     }
    }
   },
-  "generated_at": "2026-11-04T12:22:16-05:00",
-  "generated_hkt": "2026-11-05 01:22"
+  "generated_at": "2026-11-04T12:27:05-05:00",
+  "generated_hkt": "2026-11-05 01:27"
  }
 }
