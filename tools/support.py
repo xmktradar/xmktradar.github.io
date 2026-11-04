@@ -3,6 +3,10 @@
 i18n/<lang>.json["support"] maps each Chinese string to its translation.
 Writes support/index.html (Chinese) and zh|en/support/index.html, and lists
 the three language URLs in sitemap.xml.
+
+Source of truth: tools/support.html (+ i18n). Update site runs this every rebuild;
+hand edits to support/ zh/support/ en/support/ are overwritten — put Tip/Stripe
+and other lasting copy in the template (see #276 regression).
 """
 import json
 import os
