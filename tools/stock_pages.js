@@ -210,7 +210,7 @@ function insertAfterKpis(html, box) {
   return html;
 }
 function checklistGo(lang, campaign) {
-  return 'https://thecrowdtape.com/' + lang + '/checklist/earnings/?utm_source=site&utm_medium=cta&utm_campaign=' + campaign;
+  return 'https://thecrowdtape.com/' + lang + '/checklist/earnings/?utm_source=site&utm_medium=cta&utm_campaign=' + campaign + '&subscribed=1';
 }
 function nlScript(ok, lang) {
   const okLit = JSON.stringify(esc(ok)).replace(/</g, '\\u003c');

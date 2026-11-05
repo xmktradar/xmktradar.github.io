@@ -930,13 +930,14 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
 <aside class="contact" id="contact" aria-label="聯絡我們"><b class="contact-h">✉️ 工作及廣告合作</b><p class="contact-t">歡迎來信洽談工作機會、廣告或品牌合作。</p><a class="contact-btn" id="contact-mail" href="#contact" data-u="grokbottimli" data-d="gmail.com" data-s="工作及廣告合作查詢">✉️ 電郵聯絡我們</a></aside>
 <script>(function(){var a=document.getElementById('contact-mail');if(!a)return;var m=a.getAttribute('data-u')+'@'+a.getAttribute('data-d');a.href='mailto:'+m+'?subject='+encodeURIComponent('The Crowd Tape: '+a.getAttribute('data-s'));a.textContent='✉️ '+m;a.addEventListener('click',function(){if(window.gtag)gtag('event','contact_click');});})();</script>
 <form class="ct-news" id="ct-news-home" data-lang="zh" action="https://crowdtape-newsletter.vercel.app/api/subscribe" method="POST">
-  <label for="ct-email-home" class="ct-news-t">每週好淡統計，直送你的電郵</label>
+  <label for="ct-email-home" class="ct-news-t">免費領取財報解讀清單</label>
   <input id="ct-email-home" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
   <input type="hidden" name="lang" value="zh">
   <input type="hidden" name="src" value="home-mid">
+  <input type="hidden" name="utm_source" value="site"><input type="hidden" name="utm_medium" value="cta"><input type="hidden" name="utm_campaign" value="newsletter">
   <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
-  <button type="submit">訂閱</button>
-  <small>免費・每週一封・隨時取消</small>
+  <button type="submit">電郵領取</button>
+  <small>免費 · 唔會 spam · 隨時取消</small>
   <p class="ct-news-msg" role="status" hidden></p>
 </form>
 <script>
@@ -1878,9 +1879,10 @@ ${MAC&&MAC.rows.length?`<p>大市數據：${[...new Set(MAC.rows.map(r=>(r.src||
 <input id="ct-email-footer" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
 <input type="hidden" name="lang" value="zh">
 <input type="hidden" name="src" value="home-footer">
+<input type="hidden" name="utm_source" value="site"><input type="hidden" name="utm_medium" value="cta"><input type="hidden" name="utm_campaign" value="newsletter">
 <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
 <button type="submit">電郵領取</button>
-<small>唔會濫發，隨時取消。</small>
+<small>免費 · 唔會 spam · 隨時取消</small>
 <p class="ct-news-msg" role="status" hidden></p>
 </form>
 <p><a href="tools/">工具</a> · <a href="support/">支持我們</a> · <a href="newsletter/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=newsletter">電子報</a> · <a href="checklist/earnings/">財報清單</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank">TradingView <span class="pj-tag">推廣</span></a> · <a href="https://www.stockrover.com/thecrowdtape?utm_source=thecrowdtape&amp;utm_medium=tools&amp;utm_campaign=stockrover" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="pj-tag">推廣</span></a> · <a href="https://optionstrat.com/thecrowdtape?utm_source=thecrowdtape&amp;utm_medium=tools&amp;utm_campaign=optionstrat" rel="sponsored nofollow noopener" target="_blank" data-tool="optionstrat">OptionStrat <span class="pj-tag">推廣</span></a> · <a href="advertise/">廣告合作</a> · <a href="/${PAGE_LANG==='en'?'en':'zh'}/about/">關於本站及方法</a></p>`;linkHandles(document.getElementById('foot'))}

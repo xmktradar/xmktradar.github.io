@@ -4,6 +4,7 @@ Chinese master lives in tools/checklist.html with {{placeholders}}.
 Writes checklist/earnings/ (root → zh redirect), zh|en/checklist/earnings/,
 and lists the language URLs in sitemap.xml.
 """
+import json
 import os
 import re
 
@@ -59,7 +60,8 @@ COPY = {
         ],
         form_title='免費領取財報解讀清單',
         form_btn='電郵領取',
-        form_note='唔會濫發，隨時取消。',
+        form_note='免費 · 唔會 spam · 隨時取消',
+        thanks_html='下一步：睇<a href="/zh/earnings/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=newsletter">最新財報簡報</a> · <a href="/zh/tools/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=newsletter">我們用的工具</a>',
         welcome_note='提示：請把本頁加入書籤；歡迎電郵（Resend）應附上同一連結：https://thecrowdtape.com/zh/checklist/earnings/ — 若未設定自動 welcome，CEO 可於 Resend 手動加。',
         back_earnings='返回最新財報簡報',
         to_tools='我們用的工具',
@@ -101,6 +103,7 @@ COPY = {
         form_title='Get the free earnings checklist',
         form_btn='Email me the list',
         form_note='No spam. Unsubscribe anytime.',
+        thanks_html='Next: read the <a href="/en/earnings/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=newsletter">latest earnings briefs</a> · <a href="/en/tools/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=newsletter">Tools we use</a>',
         welcome_note='Tip: bookmark this page. Welcome email (Resend) should include: https://thecrowdtape.com/en/checklist/earnings/ — if auto-welcome is not set, CEO can add it in Resend.',
         back_earnings='Back to latest earnings briefs',
         to_tools='Tools we use',
@@ -136,7 +139,7 @@ def page(template, lang):
         '{{preview_h2}}': c['preview_h2'],
         '{{preview_items}}': lis(c['preview_items']),
         '{{full_h2}}': c['full_h2'],
-        '{{full_items}}': lis(c['full_items']),
+        '{{thanks_html}}': c['thanks_html'],
         '{{form_title}}': c['form_title'],
         '{{form_btn}}': c['form_btn'],
         '{{form_note}}': c['form_note'],
@@ -222,6 +225,10 @@ def main():
     if left:
         print(f'::warning::en checklist still has Chinese: {"".join(left[:12])}')
     write('en/checklist/earnings/index.html', en)
+    # Gated full list: served as data, never inlined in the page HTML.
+    for lang in LANGS:
+        write(f'data/checklist/earnings-{lang}.json',
+              json.dumps(COPY[lang]['full_items'], ensure_ascii=False, indent=1) + '\n')
     sitemap()
 
 
