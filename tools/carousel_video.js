@@ -5,6 +5,7 @@
 // shows $TICKER + the discussion count. Soft cuts (open, split, m1, m2, cta) — cream + cat poses; mouth stub reserved;
 // no emoji / confetti / shake / white-flash / comic. VO from tools/carousel_vo.py is required; skip the language
 // if VO is missing or the voiced cut would exceed 40s (target 30–40s). Sidecar og/c/<day>-<slot>-<lang>.vo.json after mix.
+// YT Shorts: also write og/c/<day>-<show>-en-yt-title.txt + …-yt-desc.txt (tools/yt_sidecars.js).
 // Tim 2026-11-04: default VIDEO_LANGS=en (no daily *-zh.mp4). Override with VIDEO_LANGS=zh,en if needed.
 // v3: words() fills hookQ + m1 quote (handle/lines) from writeups/highlights; empty → legacy #278 rows.
 const fs = require('fs');
@@ -23,6 +24,7 @@ const VOICES = { zh: 'zh-CN-XiaoxiaoNeural', en: 'en-US-AndrewNeural' };
 const SLOTS = (process.env.VIDEO_SLOTS || '1230,1630').split(',').filter(Boolean);
 const LANGS = (process.env.VIDEO_LANGS || 'en').split(',').filter(Boolean);
 const TOOLS = __dirname;
+const { writeYtSidecars } = require('./yt_sidecars');
 // Stable stems for YT Shorts + X (same mp4). Docs: MOTION_VIDEO.md § Tape Cats paths.
 // Slot codes → show id. Override with VIDEO_SHOW_MAP=1230:tape-take,1630:crowd-heat,sat:week-tape
 const DEFAULT_SHOW = { '1230': 'tape-take', '1630': 'crowd-heat', 'sat': 'week-tape', 'week': 'week-tape' };
@@ -421,6 +423,11 @@ async function one(browser, job, vo, outFile) {
   }
   console.log(`carousel cover ${coverJpg}`);
   console.log(`carousel video ${outFile} ${total.toFixed(1)}s (voiceover)`);
+  try {
+    writeYtSidecars(job, W, { videoStem, alsoSamples: process.env.YT_SAMPLES === '1' });
+  } catch (e) {
+    console.log('::warning::YT sidecar 寫唔到：' + (e && e.message));
+  }
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }
@@ -468,4 +475,5 @@ module.exports = {
   voicedTotal, voiceoverSkip, refuseVideo, removePartial, writeVoMarker, voMarkerPath,
   voiceName, MIN_VIDEO_S, MAX_VIDEO_S, COVER, BEAT, BASE, VOICES, words, COVER_FRAMES,
   loadHeroQuote, splitQuoteLines, parsePoint, one, videoStem, videoOut, coverOut, showMap, DEFAULT_SHOW, SHOW_LABELS, words,
+  writeYtSidecars,
 };

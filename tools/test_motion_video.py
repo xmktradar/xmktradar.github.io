@@ -624,6 +624,28 @@ def test_zh_video_text_is_written_chinese():
     assert not bad, '\n'.join(bad)
 
 
+
+def test_yt_sidecars_js():
+    """EN YT title/desc sidecar helper (tools/yt_sidecars.js) — Tim 2026-11-05 complete sets."""
+    script = r"""
+const { buildYtCopy, shortWindow } = require('./tools/yt_sidecars');
+const assert = require('assert');
+assert.strictEqual(shortWindow('11/3 21:10 – 11/5 01:19 HKT'), '11/3–11/5 HKT');
+const job = { date: '2026-11-05', slot: '1630', lang: 'en', show: 'crowd-heat' };
+const W = {
+  showId: 'crowd-heat', showLabel: 'Crowd Heat', big: 'PLTR', n: 4, bull: 3, bear: 1,
+  open: { big: 'PLTR', hookQ: "Everyone's screaming about $PLTR — who's actually making sense?", date: '11/3–11/4 HKT' },
+  m1: { handle: '@amitisinvesting', lines: ['PLTR revenue +96%, US commercial +148% YoY.'] },
+};
+const { title, desc } = buildYtCopy(job, W);
+assert.ok(title.includes('Crowd Heat') && title.includes('$PLTR') && title.includes('#Shorts'));
+assert.ok(desc.includes('On X, @amitisinvesting:'));
+assert.ok(desc.includes('Tape Cats · Crowd Heat'));
+console.log('ok');
+"""
+    r = subprocess.run(['node', '-e', script], cwd=ROOT, capture_output=True, text=True)
+    assert r.returncode == 0, r.stderr or r.stdout
+
 if __name__ == '__main__':
     for name, fn in list(globals().items()):
         if name.startswith('test_') and callable(fn):

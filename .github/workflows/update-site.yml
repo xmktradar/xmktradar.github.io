@@ -24,7 +24,7 @@ concurrency:
 jobs:
   # Runs first in each workflow run. After concurrency releases a queued backup, this sees the primary's publish.
   gate:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # pin: playwright@1.56.1 lacks ubuntu26.04 deps (2026-11-05)
     timeout-minutes: 5
     outputs:
       run_update: ${{ steps.check.outputs.run_update }}
@@ -61,7 +61,7 @@ jobs:
   update:
     needs: gate
     if: needs.gate.outputs.run_update == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # pin: playwright@1.56.1 lacks ubuntu26.04 deps (2026-11-05)
     timeout-minutes: 60
     env:
       WORK_DIR: /tmp/site-work
