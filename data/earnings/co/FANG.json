@@ -4,18 +4,6 @@
  "cik": 1539838,
  "q": [
   {
-   "end": "2023-09-30",
-   "label": "FY2023 Q3",
-   "rev": 2340000000,
-   "gp": null,
-   "op": 1340000000,
-   "ni": 915000000,
-   "eps": 5.07,
-   "ocf": 1358000000,
-   "capex": null,
-   "fcf": null
-  },
-  {
    "end": "2023-12-31",
    "label": "FY2023 Q4",
    "rev": 2228000000,
@@ -146,39 +134,70 @@
    "ocf": 3589000000,
    "capex": null,
    "fcf": null
+  },
+  {
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "rev": 5431000000,
+   "gp": null,
+   "op": 2500000000,
+   "ni": 1603000000,
+   "eps": 5.69,
+   "ocf": 2599000000,
+   "capex": null,
+   "fcf": null
   }
  ],
  "latest": {
-  "label": "FY2026 Q2",
-  "filed": "2026-08-05",
-  "accn": "0001539838-26-000142",
+  "label": "FY2026 Q3",
+  "filed": "2026-11-04",
+  "accn": "0001539838-26-000183",
   "form": "10-Q",
-  "end": "2026-06-30"
+  "end": "2026-09-30"
  },
  "bal": {
-  "end": "2026-06-30",
-  "cash": 462000000,
+  "end": "2026-09-30",
+  "cash": 558000000,
   "sti": null,
-  "debt": 11066000000
+  "debt": 11682000000
  },
  "bank": false,
  "seg": {
-  "none": true,
-  "accn": "0001539838-26-000142"
+  "axis": "srt:ProductOrServiceAxis",
+  "basis": "quarter",
+  "rows": [
+   {
+    "name": "Oil sales",
+    "val": 4216000000.0,
+    "prev": 2994000000.0
+   },
+   {
+    "name": "Sales of purchased oil",
+    "val": 536000000.0,
+    "prev": 459000000.0
+   },
+   {
+    "name": "Natural gas liquid sales",
+    "val": 487000000.0,
+    "prev": 366000000.0
+   },
+   {
+    "name": "Natural gas sales",
+    "val": 151000000.0,
+    "prev": 87000000.0
+   }
+  ],
+  "accn": "0001539838-26-000183"
  },
  "rules": 4,
- "mcap": 50975584256,
+ "mcap": 51067736064,
  "next": "2026-11-02",
  "last_report": "2026-11-02",
  "est": {
-  "eps_act": 6.48,
-  "eps_est": 5.98201,
-  "rev_est": null,
-  "rev_est_seen": null
- },
- "pending": {
-  "q": "2026-09-30",
   "eps_act": 5.86,
-  "eps_est": 5.6005
- }
+  "eps_est": 5.6005,
+  "rev_est": 5182634290,
+  "rev_est_seen": "2026-11-05"
+ },
+ "pending": null
 }
