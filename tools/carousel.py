@@ -544,6 +544,7 @@ def write_page(sp, path):
 def main():
     st = read_json(work('stats.json'))
     if not st:
+        notice('carousel: no stats.json in WORK_DIR — run stats.js first', 'warning')
         return
     day, s = st['today'], st['daily']
     sp = read_json('data/social-posts.json', {})
@@ -553,9 +554,17 @@ def main():
         return
     now = now_hk()
     slots = sp.get('slots') or {}
-    if force or any(v.get('day') != day for v in slots.values()):
+    only_pre = [x for x in os.environ.get('CAROUSEL_ONLY_SLOTS', '').split(',') if x]
+    if only_pre:
+        # Keep sibling slots (e.g. keep 1230 Tape Take when forcing 1630 Crowd Heat).
+        slots = {k: v for k, v in slots.items() if k not in only_pre}
+    elif force or any(v.get('day') != day for v in slots.values()):
         slots = {}
     todo = [k for k, h, _ in SLOTS if (now.hour >= h or force) and (k not in slots or force or video_missing(slots[k], k, now))]
+    # Tape Cats Shorts: only build the requested video slots (do not remake 1230 when rendering 1630).
+    only = [x for x in os.environ.get('CAROUSEL_ONLY_SLOTS', '').split(',') if x]
+    if only:
+        todo = [k for k in todo if k in only]
     if not todo:
         return
     # Slim homepages keep accounts and older posts in external files. full_data

@@ -6,11 +6,12 @@
 #   Sun OFF
 # EST winter is +1h later local vs these UTC slots; bots still pick latest og/c stem for the day.
 # Outputs (EN only):
-#   og/c/<YYYY-MM-DD>-tape-take-en.mp4|.vo.json|-cover.jpg
-#   og/c/<YYYY-MM-DD>-crowd-heat-en.mp4|.vo.json|-cover.jpg
-#   og/c/<YYYY-MM-DD>-week-tape-en.mp4|.vo.json|-cover.jpg  (Sat)
+#   og/c/<YYYY-MM-DD>-tape-take-en.mp4|.vo.json|-cover.jpg|-yt-title.txt|-yt-desc.txt
+#   og/c/<YYYY-MM-DD>-crowd-heat-en.mp4|.vo.json|-cover.jpg|-yt-title.txt|-yt-desc.txt
+#   og/c/<YYYY-MM-DD>-week-tape-en.mp4|.vo.json|-cover.jpg|-yt-title.txt|-yt-desc.txt  (Sat)
 # Slot map: 1230→tape-take, 1630→crowd-heat, sat→week-tape (tools/MOTION_VIDEO.md).
 # Formal render = this workflow / Update site motion step — not box-local.
+# Self-contained: restore + stats.js + CAROUSEL_FORCE carousel.json (must NOT depend on Update site).
 name: Tape Cats Shorts
 on:
   workflow_dispatch:
@@ -30,7 +31,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   render:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # pin: playwright@1.56.1 lacks ubuntu26.04 deps (2026-11-05)
     timeout-minutes: 45
     env:
       WORK_DIR: /tmp/site-work
@@ -68,24 +69,32 @@ jobs:
       - name: Restore pages + deps
         if: steps.pick.outputs.skip != 'true'
         run: |
+          set -e
           python3 tools/slim_pages.py --restore
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg fonts-noto-cjk >/dev/null
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg fonts-noto-cjk fonts-inter
           pip install -q numpy edge-tts==7.3.1
-          npx --yes playwright@1.48.0 install chromium || true
+          npm install --no-save --no-audit --no-fund playwright@1.56.1
+          npx playwright install --with-deps chromium
+          ffmpeg -version | head -1
       - name: Build carousel job + render EN Short
         if: steps.pick.outputs.skip != 'true'
         env:
           VIDEO_SLOTS: ${{ steps.pick.outputs.slots }}
-          CHROME_PATH: /usr/bin/google-chrome-stable
         run: |
           set -e
           mkdir -p "$WORK_DIR" og/c
-          # Prefer existing daily carousel when Update site already wrote it; else force snap job.
-          if [ ! -f data/social-posts.json ]; then echo "::warning::no social-posts yet"; fi
-          CAROUSEL_FORCE=1 python3 tools/carousel.py || true
+          # Same stats path as Update site / Build check — carousel.py needs WORK_DIR/stats.json.
+          echo '{"daily": null}' > "$WORK_DIR/windows.json"
+          node tools/stats.js index.html "$WORK_DIR/windows.json" "$WORK_DIR/stats.json" \
+            || { echo "::error::stats.js failed — cannot build carousel.json"; exit 1; }
+          # Force write carousel.json for requested slots (independent of Update site hour gate).
+          CAROUSEL_FORCE=1 VIDEO_SLOTS="$VIDEO_SLOTS" python3 tools/carousel.py \
+            || { echo "::error::carousel.py failed"; exit 1; }
           if [ ! -f "$WORK_DIR/carousel.json" ]; then
-            echo "::error::no carousel.json — skip render"
-            exit 0
+            echo "::error::no carousel.json after CAROUSEL_FORCE — refuse silent skip"
+            ls -la "$WORK_DIR" || true
+            exit 1
           fi
           # Keep only requested slots in the job list for this run
           node -e '
@@ -98,18 +107,26 @@ jobs:
             for (const job of j.jobs) job.show = map[job.slot]||job.slot;
             fs.writeFileSync(process.env.WORK_DIR+"/carousel.json", JSON.stringify(j,null,2));
             console.log("jobs", j.jobs.map(x=>x.slot+":"+x.show));
+            if (!j.jobs.length) { console.error("no EN jobs for slots", slots); process.exit(1); }
           '
-          VO_LANGS=en VIDEO_LANGS=en VIDEO_SLOTS="$VIDEO_SLOTS" \
-            node tools/carousel_video.js "$WORK_DIR/carousel.json" || echo "::warning::render failed"
+          # Draw stills then motion (stills optional for video but duel slides expect files later)
+          if [ -f "$WORK_DIR/carousel.json" ]; then
+            node tools/carousel.js "$WORK_DIR/carousel.json" || echo "::warning::carousel stills failed (video may still render)"
+          fi
+          VO_LANGS=en VIDEO_LANGS=en VIDEO_SLOTS="$VIDEO_SLOTS" YT_SAMPLES=1 \
+            node tools/carousel_video.js "$WORK_DIR/carousel.json" \
+            || { echo "::error::render failed"; exit 1; }
           python3 tools/carousel_video_post.py || true
-          echo "Artifacts:"; ls -la og/c/*-en.mp4 2>/dev/null || true
-      - name: Publish mp4 stems to main
+          echo "Artifacts:"; ls -la og/c/*-en.mp4 og/c/*-yt-*.txt 2>/dev/null || true
+      - name: Publish mp4 stems + YT captions to main
         if: steps.pick.outputs.skip != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add og/c/*-tape-take-en* og/c/*-crowd-heat-en* og/c/*-week-tape-en* data/social-posts.json social/index.html 2>/dev/null || true
+          git add og/c/*-tape-take-en* og/c/*-crowd-heat-en* og/c/*-week-tape-en* \
+            tools/samples/*-yt-*.txt \
+            data/social-posts.json social/index.html 2>/dev/null || true
           if git diff --cached --quiet; then echo "Nothing to publish"; exit 0; fi
-          git commit -m "Tape Cats Shorts: ${{ steps.pick.outputs.show }} EN (YT+X same stem)"
+          git commit -m "Tape Cats Shorts: ${{ steps.pick.outputs.show }} EN (YT+X same stem + captions)"
           git pull --rebase origin main || true
           git push origin HEAD:main
