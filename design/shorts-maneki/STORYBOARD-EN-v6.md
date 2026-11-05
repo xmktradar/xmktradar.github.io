@@ -30,3 +30,6 @@ BG: `token-bright.css`. Cards white, ink dark.
 2. Wire: time cues from `CUE-TABLE.md`（scale to VO duration）
 3. Mouth cycle + blink + CSS head bob
 4. New #281 sample after wire
+
+## Canva lock 2026-11-05
+Open scene chrome = show-badge + speech-bubble hook + subline + lightning on cream `#FFF9EE`. See `VISUAL-BG.md` + `canva-tape-take-ref-2026-11-05.png`. Mouth/cue path unchanged.

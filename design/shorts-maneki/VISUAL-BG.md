@@ -1,5 +1,22 @@
 # Shorts EN — bright / fun BG guide（#281 HOLD · replace dark pack）
 
+## Tim／CEO Canva lock（2026-11-05）
+Design id **DAHaCls9wB8** · mockup `canva-tape-take-ref-2026-11-05.png` (Canva link archived in PR).
+After this lock: **daily Shorts come from Playwright/HTML (`tools/carousel_scene.html` + `carousel_scenes.js`) — not routine Canva exports.**
+
+| Chrome | Spec |
+|---|---|
+| Frame | 9:16 1080×1920 · cream `#FFF9EE` (no dark BG) |
+| Show badge | Top-left pale yellow · **Tape Take** / **Crowd Heat** / **Week Tape** (from `job.show`) |
+| Hook | White speech-bubble + thin yellow outline · bold italic EN question · accent `#F06A4D` on key words (`everyone`, `$TICKER`) · ink `#3D3D3D` |
+| Subline | Light-blue border box · `One crowd quote.` + `One punch.` |
+| Lightning | `#BAE6FD` bolts · top-right + bottom-left |
+| Cat | Existing Tape Cats PNG BR · mouth/cue/blink/nod unchanged |
+| Safe margins | `--safe-top: 120px` / `--safe-bottom: 160px` (Shorts UI chrome) |
+
+Tokens live in `token-bright.css` and are **inlined** into `tools/carousel_scene.html` — keep them in sync.
+
+---
 ## ⛔ DELETE from draft before re-render
 Do **not** leave any of these as frame BG:
 `#0e1116` `#07080c` `#0a0c10` `#1a0a2e` `#2a0610` dark violet-on-black radial.
@@ -19,10 +36,10 @@ Bright · playful · decorative · scroll-stopping. Candy / pop energy, still no
 ## Base (bright)
 | Token | Value | Use |
 |---|---|---|
-| `--bg0` | `#FFF6EC` | warm cream full-bleed |
+| `--bg0` | `#FFF9EE` (Canva; `#FFF6EC` OK) | warm cream full-bleed |
 | `--bg1` | `#F0E8FF` | soft lilac alternate wash |
 | `--bg2` | `#E5F7FF` | sky mint wash (split／cta) |
-| `--ink` | `#1d1d1f` | primary type on bright |
+| `--ink` | `#3D3D3D` | primary type on bright |
 | `--ink-muted` | `#6e6e73` | secondary |
 | `--card` | `#FFFFFF` @ 92% | quote／number cards (soft shadow) |
 

@@ -36,3 +36,7 @@ See `CUE-TABLE.md` for timestamps.
 
 ## Missing pose fallback
 `specs-point-L` — not shipped; mirror `specs-point-R` with `scaleX(-1)`.
+
+## Canva visual lock ref（2026-11-05）
+- `canva-tape-take-ref-2026-11-05.png` — Tim/CEO free Canva mockup (DAHaCls9wB8). Layout reference only; cats stay PNG under `assets/`.
+- Renderer: Playwright/HTML Tape Cats (`tools/carousel_*`), not Remotion, not daily Canva.

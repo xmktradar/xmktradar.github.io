@@ -537,13 +537,17 @@ def test_cover_text_and_encode():
     assert '🚀' not in src and '😱' not in src
     scenes = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'carousel_scenes.js'), encoding='utf-8').read()
     html = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'carousel_scene.html'), encoding='utf-8').read()
-    assert '#FFF6EC' in html and 'frame-bg' in html and 'cat-host' in html
+    # Canva lock 2026-11-05 cream (#FFF9EE); legacy #FFF6EC still accepted as close.
+    assert ('#FFF9EE' in html or '#FFF6EC' in html) and 'frame-bg' in html and 'cat-host' in html
     assert '#E8940A' in html or '--ticker' in html  # cream-world ticker
     assert '#07080c' not in html and 'bg-flare' not in html  # no dark energy crush
+    assert 'show-badge' in html and 'speech-bubble' in html and 'lightning' in html
+    assert '#F06A4D' in html and '#BAE6FD' in html
     assert 'setup' in scenes and 'open' in scenes and 'cta' in scenes
     assert "mode === 'quote'" in scenes or 'isQuote' in scenes
     assert 'energyBg' in scenes or 'brightBg' in scenes
-    assert 'setCat' in scenes and 'catMouthOpen' in scenes
+    assert 'showBadge' in scenes and 'accentHookHtml' in scenes
+    assert 'setCat' in scenes and 'catMouthOpen' in scenes and 'setMouth' in scenes
     py = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'carousel.py'), encoding='utf-8').read()
     assert "['video_cover']" in py and '-cover.jpg' in py
 
