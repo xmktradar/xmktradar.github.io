@@ -1,10 +1,11 @@
 name: Intraday social
 # Generation is 5 minutes before each US/Eastern slot (09:45, 11:00, 12:15, 13:30, 14:45, 15:40).
 # Clocks: 09:40, 10:55, 12:10, 13:25, 14:40, 15:35 ET.
-# Cron polls every 15 minutes Mon–Fri UTC. The Guard step selects the nearest ET
-# generation time within ±20 min (a dispatch up to 10 min early or late still hits)
-# on a NYSE trading day and skips weekends, holidays, and early-close slots after 13:00 ET.
+# Main path: hard UTC cron at each gen clock for BOTH EST (UTC−5) and EDT (UTC−4).
+# Guard keeps America/New_York ±20 min on a NYSE day (off-season DST twin exits in seconds).
+# Backup +10m if GitHub drops/delays the primary. Bot Intraday A–F workflow_dispatch stays as fringe.
 # workflow_dispatch: slot=auto|force|<name> (force bypasses the time guard).
+# Tim／CEO 2026-11-05: hard cron primary; reduce Bot A–F reliance.
 on:
   workflow_dispatch:
     inputs:
@@ -12,13 +13,25 @@ on:
         description: 'Slot name, auto, or force (bypass time guard; still writes)'
         required: false
         default: auto
-  # GitHub often skips or delays sparse schedules on a newly added workflow (the
-  # 12 EDT/EST crons never fired on 2026-10-23). Poll every 15 minutes Mon–Fri UTC;
-  # the Guard step keeps only America/New_York times within ±20 min of a generation
-  # time (09:40, 10:55, 12:10, 13:25, 14:40, 15:35 ET) on a NYSE trading day, so
-  # off-window runs exit in seconds.
   schedule:
-    - cron: '*/15 * * * 1-5'
+    # Gen 09:40 ET → 13:40 UTC (EDT) / 14:40 UTC (EST); backup +10
+    - cron: '40 13,14 * * 1-5'
+    - cron: '50 13,14 * * 1-5'
+    # Gen 10:55 ET → 14:55 / 15:55 UTC
+    - cron: '55 14,15 * * 1-5'
+    - cron: '5 15,16 * * 1-5'
+    # Gen 12:10 ET → 16:10 / 17:10 UTC
+    - cron: '10 16,17 * * 1-5'
+    - cron: '20 16,17 * * 1-5'
+    # Gen 13:25 ET → 17:25 / 18:25 UTC
+    - cron: '25 17,18 * * 1-5'
+    - cron: '35 17,18 * * 1-5'
+    # Gen 14:40 ET → 18:40 / 19:40 UTC
+    - cron: '40 18,19 * * 1-5'
+    - cron: '50 18,19 * * 1-5'
+    # Gen 15:35 ET → 19:35 / 20:35 UTC
+    - cron: '35 19,20 * * 1-5'
+    - cron: '45 19,20 * * 1-5'
 permissions:
   contents: write
 # Not site-update: update-site holds that group for 60-90 min, and GitHub keeps
