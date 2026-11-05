@@ -15,9 +15,9 @@
 <meta name="generator" content="market-consensus build-20261105-193529">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://thecrowdtape.com/#website","name":"The Crowd Tape","url":"https://thecrowdtape.com/","inLanguage":["zh-Hant","en"],"publisher":{"@id":"https://thecrowdtape.com/#org"}},{"@type":"Organization","@id":"https://thecrowdtape.com/#org","name":"The Crowd Tape","url":"https://thecrowdtape.com/","logo":"https://thecrowdtape.com/apple-touch-icon.png"}]}</script>
 <script type="application/ld+json" id="faq-ld">{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"zh-Hant","mainEntity":[{"@type":"Question","name":"本站追蹤哪些帳號？","acceptedAnswer":{"@type":"Answer","text":"目前追蹤 201 個帳號，其中 200 個在 X、1 個在 Truth Social，分成 6 類：大人物／企業家、宏觀、股市意見、基本面／主題、半導體／AI、交易員。只收錄與股票或宏觀有關的貼文：貼文或它所引用的貼文帶有股票代號、價格資料中的公司名稱或代號，或聯儲局、通脹、就業、利率、國債孳息這類宏觀字眼。沒有這些內容的閒聊不會做摘要，也不會顯示。"}},{"@type":"Question","name":"看好和看淡是怎樣判斷的？","acceptedAnswer":{"@type":"Answer","text":"分析師為每則貼文的每隻股票標示四種立場之一：睇好、睇淡、中性、未表態，頁面上顯示為看多、看空、中性、未表態。頁面按個股讀取這個逐股立場，不用整篇貼文的單一立場。若貼文沒有逐股立場、只有整篇的睇好、睇淡或中性，才把整篇立場套用到文內每隻股票，並以星號標明。共同看多是指在當日資料窗內，至少 2 個帳號對該已確認美股的最新立場是看多，而且沒有帳號看空；共同看空則相反。若同時有帳號看多、有帳號看空，就列為分歧，不算共同看多或共同看空。某個帳號類別若標成不計入共識，該類不參與；目前 6 類都計入。中性與未表態不會單獨構成共同看多或共同看空。"}},{"@type":"Question","name":"網站多久更新一次？","acceptedAnswer":{"@type":"Answer","text":"由 GitHub Actions 每 8 小時自動重建一次。排程為 UTC 03:00、11:00 和 19:00，即香港時間 11:00、19:00 和 03:00。"}},{"@type":"Question","name":"這是投資建議嗎？","acceptedAnswer":{"@type":"Answer","text":"不是。本站只整理第三方的公開貼文，供參考，不構成投資建議，也不是買賣任何股票的邀請。"}}]}</script>
-<title>The Crowd Tape｜看X大神在做什麼，不是看我怎麼想</title>
+<title>The Crowd Tape｜201 個 X 美股大神，今日共同看好／看淡邊隻？</title>
 <meta name="description" content="The Crowd Tape：每 8 小時整理 X 上美股大神、宏觀分析與市場快訊的觀點，看大家共同看好還是看淡哪檔股票。全中文，免費看，不構成投資建議。">
-<meta property="og:title" content="The Crowd Tape">
+<meta property="og:title" content="The Crowd Tape｜201 個 X 美股大神，今日共同看好／看淡邊隻？">
 <meta property="og:description" content="每 8 小時整理 X 上美股大神、宏觀分析與市場快訊的觀點，看大家共同看好還是看淡哪檔股票。">
 <meta property="og:url" content="https://thecrowdtape.com/">
 <meta property="og:type" content="website">
@@ -482,7 +482,7 @@ header.top .meta{flex-wrap:wrap}
 header.top .meta .social{flex-basis:100%;width:100%;min-width:112px;box-sizing:border-box;margin-top:10px}
 header.top .meta .social .social-l{display:block;margin-bottom:4px;font-size:11.5px;line-height:1.3;color:var(--mut)}
 header.top .meta .social .social-row{display:flex;gap:8px;flex-wrap:nowrap;justify-content:flex-start;align-items:center}
-header.top .meta .social .soc{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:32px;height:32px;border-radius:50%;border:1px solid var(--line-strong);background:var(--panel);color:var(--ink,#3b2f25);text-decoration:none;-webkit-tap-highlight-color:transparent}
+header.top .meta .social .soc{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:32px;height:32px;border-radius:50%;border:1px solid var(--line-strong);background:var(--panel);color:var(--ink,#3b2f25);text-decoration:none;-webkit-tap-highlight-color:transparent}.soc-lab{font:600 12.5px/1.2 var(--f-body);margin-left:4px}.soc-yt{color:#c00}.social-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center}
 header.top .meta .social .soc:hover,header.top .meta .social .soc:active{background:var(--bg-dot)}
 header.top .meta .social .soc:focus-visible{outline:2px solid var(--ink,#3b2f25);outline-offset:2px}
 header.top .meta .social .soc svg{display:block;width:18px;height:18px}
@@ -890,23 +890,22 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
       <button role="tab" data-v="tracked" id="tab-tracked">追蹤名單</button>
       <a class="tab-earn" href="earnings/" title="市值 500 億美元以上美股"><span aria-hidden="true">📊</span> 最新財報簡報<small class="tab-cap">（市值 50B 以上）</small></a>
     </nav>
-    <div class="ap-r"><a class="ap-tools" href="tools/">工具</a><button type="button" class="srch-btn" id="srch-btn" aria-label="搜尋股票" title="搜尋股票" aria-expanded="false" aria-controls="srch">🔍</button><span class="ap-lang"><nav class="lang-sw" aria-label="Language"><a href="/zh/" data-lang="zh" aria-current="page">中</a><a href="/en/" data-lang="en">EN</a></nav></span><a class="ap-don" href="https://www.paypal.com/qrcodes/p2pqrc/3KT8QNVNRWJMA" target="_blank" rel="noopener">捐款支持</a></div>
+    <div class="ap-r"><a class="ap-tools" href="tools/">工具</a><button type="button" class="srch-btn" id="srch-btn" aria-label="搜尋股票" title="搜尋股票" aria-expanded="false" aria-controls="srch">🔍</button><span class="ap-lang"><nav class="lang-sw" aria-label="Language"><a href="/zh/" data-lang="zh" aria-current="page">中</a><a href="/en/" data-lang="en">EN</a></nav></span><a class="ap-don donate-jump" href="#donate">捐款支持</a></div>
   </div>
   <div class="wrap ap-srch"><div class="srch" id="srch" role="search" hidden><div class="srch-row"><input id="srch-q" type="search" placeholder="輸入代號或公司名稱，例如 NVDA" aria-label="搜尋股票" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go"><button type="button" class="srch-x" id="srch-x" aria-label="關閉搜尋">✕</button></div><ul id="srch-r" role="listbox" aria-label="搜尋結果"></ul></div></div>
 </header>
 <section class="ap-hero" aria-label="簡介">
   <div class="wrap">
-    <p class="ap-eyebrow">每日市場共識</p>
-    <p class="ap-h"><span class="ap-h1">看市場在做什麼，</span><span class="ap-grad">不是看我怎麼想。</span></p>
-    <p class="ap-sub">追蹤 X 上的美股帳號，整理他們的看多、看淡與分歧，每 8 小時自動更新。</p>
-    <div class="ap-cta"><a class="ap-btn" href="#view">看今日重點</a><a class="ap-btn ap-ghost donate-jump home-donate" href="https://www.paypal.com/qrcodes/p2pqrc/3KT8QNVNRWJMA" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>捐款支持</a></div>
+    <p class="ap-eyebrow">201 帳號｜6 類｜每 8 小時更新</p>
+    <p class="ap-h"><span class="ap-h1">201 個 X 美股大神，</span><span class="ap-grad">今日共同看好／看淡邊隻？</span></p>
+    <p class="ap-sub">每 8 小時自動整理看多、看淡同分歧，全中文、免費</p>
+    <div class="ap-cta"><a class="ap-btn" href="#view">看今日重點</a><a class="ap-btn ap-ghost" href="#ct-news-home">訂閱每週好淡統計</a></div>
     <div class="meta ap-meta">
       <span>帖文資料截至 <b id="cutoff"></b></span>
       <span>下次更新 <b id="nextup"></b></span>
       <span>追蹤帳號 <a href="#tracked" class="acclink"><b id="acccount"></b></a></span>
-      <div class="views">已瀏覽次數：<b id="viewcount">2,527</b></div>
     </div>
-    <div class="social ap-social"><div class="social-row"><a class="soc soc-x" href="https://x.com/thecrowdtape" target="_blank" rel="noopener" aria-label="The Crowd Tape 的 X" title="The Crowd Tape 的 X" data-net="x"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg></a><button type="button" class="save-site" aria-haspopup="dialog">📲 <span>儲存網站</span></button></div></div>
+    <div class="social ap-social"><div class="social-row"><a class="soc soc-x" href="https://x.com/thecrowdtape" target="_blank" rel="noopener" aria-label="X @thecrowdtape" title="X @thecrowdtape" data-net="x"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"/></svg><span class="soc-lab">X @thecrowdtape</span></a><a class="soc soc-yt" href="https://www.youtube.com/channel/UC5dRRzJ2hmGH2Jt6Gj9km9w" target="_blank" rel="noopener" aria-label="YouTube Shorts" title="YouTube Shorts" data-net="youtube"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.6 3.2H6.4C3.9 3.2 2 5.1 2 7.6v8.8c0 2.5 1.9 4.4 4.4 4.4h11.2c2.5 0 4.4-1.9 4.4-4.4V7.6c0-2.5-1.9-4.4-4.4-4.4zM10 15.5v-7l6 3.5-6 3.5z"/></svg><span class="soc-lab">YouTube Shorts</span></a><button type="button" class="save-site" aria-haspopup="dialog">📲 <span>儲存網站</span></button></div></div>
   </div>
 </section>
 <!-- hot-top --><nav id="hot-stocks" class="wrap hot-top" aria-label="熱門個股"><p class="ht-h"><b>熱門個股</b> <small>近 7 日提及次數</small></p><div class="ht-row"><a href="/zh/stock/AMZN/">AMZN <span>101</span></a><a href="/zh/stock/SPY/">SPY <span>101</span></a><a href="/zh/stock/QQQ/">QQQ <span>90</span></a><a href="/zh/stock/INTC/">INTC <span>82</span></a><a href="/zh/stock/GOOGL/">GOOGL <span>78</span></a><a href="/zh/stock/NVDA/">NVDA <span>56</span></a><a href="/zh/stock/AAPL/">AAPL <span>52</span></a><a href="/zh/stock/META/">META <span>52</span></a><a href="/zh/stock/SPCX/">SPCX <span>50</span></a><a href="/zh/stock/TSLA/">TSLA <span>50</span></a><a href="/zh/stock/MSFT/">MSFT <span>48</span></a><a href="/zh/stock/SNDK/">SNDK <span>42</span></a><a href="/zh/stock/PLTR/">PLTR <span>38</span></a><a href="/zh/stock/RDDT/">RDDT <span>37</span></a><a href="/zh/stock/LITE/">LITE <span>35</span></a><a href="/zh/stock/MRVL/">MRVL <span>34</span></a><a href="/zh/stock/MU/">MU <span>34</span></a><a href="/zh/stock/AMD/">AMD <span>33</span></a><a href="/zh/stock/ORCL/">ORCL <span>27</span></a><a href="/zh/stock/GOOG/">GOOG <span>25</span></a><a href="/zh/stock/SPX/">SPX <span>25</span></a><a href="/zh/stock/CRWV/">CRWV <span>23</span></a><a href="/zh/stock/NOW/">NOW <span>23</span></a><a href="/zh/stock/COIN/">COIN <span>22</span></a><a href="/zh/stock/NBIS/">NBIS <span>17</span></a><a href="/zh/stock/MSTR/">MSTR <span>16</span></a><a href="/zh/stock/VIX/">VIX <span>16</span></a><a href="/zh/stock/IREN/">IREN <span>15</span></a><a href="/zh/stock/SMH/">SMH <span>15</span></a><a href="/zh/stock/CAT/">CAT <span>14</span></a></div></nav><!-- hot-top --><nav class="wrap ap-promo" aria-label="推廣">
@@ -1923,7 +1922,7 @@ fetch(API+(seen?'get/':'hit/')+KEY,{cache:'no-store'}).then(function(r){return r
 function f(){var m=matchMedia('(max-width:700px)').matches;document.documentElement.style.setProperty('--hd-top',m?-(t.getBoundingClientRect().top-h.getBoundingClientRect().top)+'px':'0px')}
 f();addEventListener('resize',f);if(window.ResizeObserver)new ResizeObserver(f).observe(h)})();</script>
 <script>/* Phones: once the header's donate button has scrolled away, show a small one in the corner, hidden again near the donation area. */
-(function(){var fab=document.querySelector('.donate-fab'),top=document.querySelector('.ap-hero .donate-jump,header .donate-jump'),box=document.getElementById('donate');if(!fab||!top||!window.IntersectionObserver)return;
+(function(){var fab=document.querySelector('.donate-fab'),top=document.querySelector('.ap-hero .donate-jump,header .donate-jump,header .ap-don'),box=document.getElementById('donate');if(!fab||!box||!window.IntersectionObserver)return;if(!top)top=box;
 var a=true,b=false;function u(){fab.classList.toggle('on',!a&&!b)}
 new IntersectionObserver(function(e){a=e[0].isIntersecting;u()}).observe(top);if(box)new IntersectionObserver(function(e){b=e[0].isIntersecting;u()}).observe(box)})();</script>
 <button type="button" class="to-top" aria-label="回到頂部" title="回到頂部">↑</button>
