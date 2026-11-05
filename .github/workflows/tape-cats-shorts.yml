@@ -89,7 +89,7 @@ jobs:
           node tools/stats.js index.html "$WORK_DIR/windows.json" "$WORK_DIR/stats.json" \
             || { echo "::error::stats.js failed — cannot build carousel.json"; exit 1; }
           # Force write carousel.json for requested slots (independent of Update site hour gate).
-          CAROUSEL_FORCE=1 VIDEO_SLOTS="$VIDEO_SLOTS" python3 tools/carousel.py \
+          CAROUSEL_FORCE=1 CAROUSEL_ONLY_SLOTS="$VIDEO_SLOTS" VIDEO_SLOTS="$VIDEO_SLOTS" python3 tools/carousel.py \
             || { echo "::error::carousel.py failed"; exit 1; }
           if [ ! -f "$WORK_DIR/carousel.json" ]; then
             echo "::error::no carousel.json after CAROUSEL_FORCE — refuse silent skip"
@@ -121,12 +121,18 @@ jobs:
       - name: Publish mp4 stems + YT captions to main
         if: steps.pick.outputs.skip != 'true'
         run: |
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add og/c/*-tape-take-en* og/c/*-crowd-heat-en* og/c/*-week-tape-en* \
-            tools/samples/*-yt-*.txt \
-            data/social-posts.json social/index.html 2>/dev/null || true
-          if git diff --cached --quiet; then echo "Nothing to publish"; exit 0; fi
+          # nullglob: unmatched *-week-tape-* must not abort git add (was silent "Nothing to publish").
+          shopt -s nullglob
+          files=(og/c/*-tape-take-en* og/c/*-crowd-heat-en* og/c/*-week-tape-en* tools/samples/*-yt-*.txt)
+          echo "Publish candidates (${#files[@]}): ${files[*]:-none}"
+          if [ ${#files[@]} -eq 0 ]; then echo "Nothing to publish (no stem files)"; exit 0; fi
+          git add -- "${files[@]}"
+          # Update site owns data/social-posts.json — do not stage it here.
+          if git diff --cached --quiet; then echo "Nothing to publish (unchanged)"; exit 0; fi
+          git status --short
           git commit -m "Tape Cats Shorts: ${{ steps.pick.outputs.show }} EN (YT+X same stem + captions)"
           git pull --rebase origin main || true
           git push origin HEAD:main
