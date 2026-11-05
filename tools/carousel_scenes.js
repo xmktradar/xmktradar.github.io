@@ -1,4 +1,4 @@
-// Tape Cats scenes for carousel motion videos (v6.1 full: cream + pose + mouth/cue).
+// Tape Cats scenes for carousel motion videos (v6.2: Canva Tape Take lock 2026-11-05 + mouth/cue).
 // setup(name, data) builds a scene; draw(t, globalT) paints one frame.
 // Shared helpers cl/out/back/BEAT/chrome come from header injected by carousel_video.js.
 // Bright cream BG + PNG cats; mouth follows VO cue table; blink/nod overlays.
@@ -73,31 +73,61 @@ const TALK_CYCLE = ['talk-closed', 'talk-half', 'talk-open', 'talk-half'];
 const MOUTH_MS = 100;
 
 function brandBar(D) {
+  // Legacy logo bar — kept for callers; Canva lock prefers showBadge.
   return `<div class="brand"><img src="logo.png" alt=""><span class="name">The Crowd Tape</span>` +
     (D.date ? `<span class="date mono">${esc(D.date)}</span>` : '') + `</div>`;
+}
+
+/** Canva top-left show label: Tape Take | Crowd Heat | Week Tape */
+function showBadge(D) {
+  const label = (D && D.showLabel) || 'Tape Take';
+  return `<div class="show-badge">${esc(label)}` +
+    (D && D.date ? `<span class="date mono">${esc(D.date)}</span>` : '') + `</div>`;
+}
+
+const LIGHTNING_PATH = 'M38 2 L14 52 H32 L22 94 L54 40 H34 Z';
+function lightningChrome() {
+  return (
+    `<svg class="lightning lightning--tr" viewBox="0 0 64 96" fill="currentColor" aria-hidden="true"><path d="${LIGHTNING_PATH}"/></svg>` +
+    `<svg class="lightning lightning--bl" viewBox="0 0 64 96" fill="currentColor" aria-hidden="true"><path d="${LIGHTNING_PATH}"/></svg>`
+  );
+}
+
+/** Accent $TICKER + "everyone" for Canva orange-red key words. Never invents copy. */
+function accentHookHtml(text, big) {
+  let s = esc(text);
+  s = s.replace(/\$([A-Z]{1,6})\b/g, '<span class="accent">$$$1</span>');
+  s = s.replace(/\b(everyone)\b/gi, '<span class="accent">$1</span>');
+  const tick = String(big || '').replace(/[^A-Za-z0-9]/g, '');
+  if (tick && !s.includes('$' + tick)) {
+    const re = new RegExp('\\b(' + tick + ')\\b', 'g');
+    s = s.replace(re, '<span class="accent">$1</span>');
+  }
+  return s;
 }
 
 function brightBg(name) {
   const bg = document.getElementById('bg');
   document.body.className = 'scene-' + name;
-  document.body.style.background = '#FFF6EC';
+  document.body.style.background = '#FFF9EE';
   let decor = '';
   if (name === 'open') {
-    decor = `<div class="frame-bg"></div><div class="orb orb--hook"></div>` +
-      `<div class="petal petal--apricot" style="left:-8%;top:18%;width:48%;height:32%"></div>` +
-      `<div class="petal petal--coral" style="right:-6%;bottom:22%;width:40%;height:26%"></div><div class="stripe"></div>`;
+    // Quiet wash — cream + lightning + bubble dominate (Canva lock)
+    decor = `<div class="frame-bg"></div>` +
+      `<div class="orb orb--hook" style="opacity:.18"></div>` +
+      `<div class="petal petal--apricot" style="left:-10%;top:14%;width:40%;height:26%;opacity:.14"></div>`;
   } else if (name === 'split') {
     decor = `<div class="frame-bg"></div>` +
-      `<div class="orb orb--mint" style="left:-12%;top:30%;width:50%;height:40%;opacity:.35"></div>` +
-      `<div class="orb orb--coral" style="right:-12%;top:30%;width:50%;height:40%;opacity:.35"></div>`;
+      `<div class="orb orb--mint" style="left:-12%;top:30%;width:50%;height:40%;opacity:.28"></div>` +
+      `<div class="orb orb--coral" style="right:-12%;top:30%;width:50%;height:40%;opacity:.28"></div>`;
   } else if (name === 'm1') {
-    decor = `<div class="frame-bg"></div><div class="orb orb--quote"></div>` +
-      `<div class="petal petal--lilac" style="left:8%;top:12%;width:36%;height:22%"></div>` +
-      `<div class="petal petal--lemon" style="right:4%;bottom:18%;width:34%;height:24%"></div>`;
+    decor = `<div class="frame-bg"></div><div class="orb orb--quote" style="opacity:.22"></div>` +
+      `<div class="petal petal--lilac" style="left:8%;top:12%;width:36%;height:22%;opacity:.18"></div>` +
+      `<div class="petal petal--lemon" style="right:4%;bottom:18%;width:34%;height:24%;opacity:.16"></div>`;
   } else if (name === 'm2') {
-    decor = `<div class="frame-bg"></div><div class="orb orb--mint" style="right:-8%;bottom:10%;width:45%;height:32%;opacity:.32"></div>`;
+    decor = `<div class="frame-bg"></div><div class="orb orb--mint" style="right:-8%;bottom:10%;width:45%;height:32%;opacity:.26"></div>`;
   } else if (name === 'cta') {
-    decor = `<div class="frame-bg"></div><div class="orb orb--mint" id="ctaOrb" style="left:20%;top:28%;width:60%;height:36%;opacity:.4"></div>`;
+    decor = `<div class="frame-bg"></div><div class="orb orb--mint" id="ctaOrb" style="left:20%;top:28%;width:60%;height:36%;opacity:.32"></div>`;
   } else {
     decor = `<div class="frame-bg"></div>`;
   }
@@ -245,11 +275,25 @@ function setup(name, D) {
   else window.__cueScale = 1;
   ensureCat(name);
   if (name === 'open') {
-    const head = D.hookQ
-      ? `<div class="hookQ" id="hookQ">${esc(D.hookQ)}</div>`
-      : `<div class="label">${esc(D.lead || '')}</div>`;
-    c.innerHTML = brandBar(D) + `
-      <div class="panel" style="top:180px;bottom:360px;padding:64px 48px;display:flex;flex-direction:column;justify-content:center;gap:36px">
+    const chromeTop = showBadge(D) + lightningChrome();
+    if (D.hookQ) {
+      const sub1 = D.subline1 || 'One crowd quote.';
+      const sub2 = D.subline2 || 'One punch.';
+      c.innerHTML = chromeTop + `
+      <div class="speech-bubble-wrap" style="position:absolute;left:48px;right:180px;top:280px;z-index:4">
+        <div class="speech-bubble">
+          <div class="hookQ" id="hookQ">${accentHookHtml(D.hookQ, D.big)}</div>
+        </div>
+      </div>
+      <div class="subline" style="position:absolute;left:56px;top:1020px;z-index:4">
+        <span>${esc(sub1)}</span>
+        <span class="punch">${esc(sub2)}</span>
+      </div>`;
+      return;
+    }
+    const head = `<div class="label">${esc(D.lead || '')}</div>`;
+    c.innerHTML = chromeTop + `
+      <div class="panel" style="top:280px;bottom:360px;padding:64px 48px;display:flex;flex-direction:column;justify-content:center;gap:36px">
         ${head}
         <div class="row"><div class="tk mono amber" style="font-size:${String(D.big || '').length > 4 ? 160 : 200}px">$${esc(D.big || '')}</div></div>
         <div class="num mono" style="font-size:72px">${esc(D.metric || '')}</div>
@@ -260,8 +304,8 @@ function setup(name, D) {
   }
   if (name === 'split') {
     const bull = D.bull | 0, bear = D.bear | 0;
-    c.innerHTML = brandBar(D) + `
-      <div style="position:absolute;left:56px;right:56px;top:200px;bottom:320px;display:flex;gap:28px">
+    c.innerHTML = showBadge(D) + lightningChrome() + `
+      <div style="position:absolute;left:56px;right:56px;top:280px;bottom:320px;display:flex;gap:28px">
         <div class="card" style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:28px">
           <div class="label up">${esc(D.bullL || 'Bulls')}</div>
           <div class="num mono up" id="bullN" style="font-size:160px">${bull}</div>
@@ -284,8 +328,8 @@ function setup(name, D) {
     const pill = stance === 'bull' || stance === 'bear'
       ? `<span class="stance-pill ${stance === 'bull' ? 'up' : 'down'}">${stance === 'bull' ? 'BULL' : 'BEAR'}</span>`
       : '';
-    c.innerHTML = brandBar(D) + `
-      <div class="panel" style="top:180px;bottom:360px;padding:48px 44px;display:flex;flex-direction:column;gap:8px">
+    c.innerHTML = showBadge(D) + lightningChrome() + `
+      <div class="panel" style="top:280px;bottom:360px;padding:48px 44px;display:flex;flex-direction:column;gap:8px">
         <div class="label" style="margin-bottom:8px">${esc(D.kicker || 'ON X')}</div>
         <div class="quote-handle mono amber" id="qHandle">${esc(handle)}</div>
         ${lines}
@@ -299,8 +343,8 @@ function setup(name, D) {
   if (name === 'm1' && isParable(D)) {
     const lines = (D.parable || []).slice(0, 4).map((line, i) =>
       `<div class="parable-line muted" id="p${i}" style="opacity:0;transform:translateY(24px)">${esc(line)}</div>`).join('');
-    c.innerHTML = brandBar(D) + `
-      <div class="panel" style="top:180px;bottom:360px;padding:48px 44px;display:flex;flex-direction:column;gap:8px">
+    c.innerHTML = showBadge(D) + lightningChrome() + `
+      <div class="panel" style="top:280px;bottom:360px;padding:48px 44px;display:flex;flex-direction:column;gap:8px">
         <div class="label" style="margin-bottom:20px">${esc(D.title || 'PARABLE')}</div>
         ${lines}
         ${D.anchor ? `<div class="tk mono amber" style="margin-top:28px;font-size:48px">${esc(D.anchor)}</div>` : ''}
@@ -314,8 +358,8 @@ function setup(name, D) {
         <div class="tk mono" style="font-size:56px">$${esc(r.t)}</div>
         <div class="num mono" style="font-size:44px;color:${r.tone === 'down' ? 'var(--bear)' : r.tone === 'up' ? 'var(--bull)' : 'var(--ink)'}">${esc(r.v || r.n || '')}</div>
       </div>`).join('');
-    c.innerHTML = brandBar(D) + `
-      <div class="panel" style="top:180px;bottom:360px;padding:48px 44px">
+    c.innerHTML = showBadge(D) + lightningChrome() + `
+      <div class="panel" style="top:280px;bottom:360px;padding:48px 44px">
         <div class="label" style="margin-bottom:28px">${esc(D.title || '')}</div>
         ${rows || `<div class="muted" style="font-size:36px">${esc(D.empty || '')}</div>`}
         ${D.note || D.punch ? `<div class="muted" style="margin-top:36px;font-size:28px;line-height:1.4">${esc(D.note || D.punch || '')}</div>` : ''}
@@ -326,7 +370,7 @@ function setup(name, D) {
     const lines = (D.t || []).filter(Boolean);
     const foot = D.foot || (lines[0] || '');
     const mid = lines[1] || 'Follow @thecrowdtape';
-    c.innerHTML = brandBar(D) + `
+    c.innerHTML = showBadge(D) + lightningChrome() + `
       <div class="panel" style="top:360px;bottom:420px;padding:64px 48px;display:flex;flex-direction:column;justify-content:center;gap:40px;text-align:center">
         <div class="mono amber" style="font-size:56px;font-weight:800">thecrowdtape.com</div>
         <div style="font-size:44px;font-weight:700">${esc(mid.startsWith('Follow') ? mid : 'Follow @thecrowdtape')}</div>
@@ -367,7 +411,7 @@ function draw(t, gt) {
     if (hq) {
       const e = out(cl(t / 0.45));
       hq.style.opacity = String(0.45 + 0.55 * e);
-      hq.style.color = lerpRgb([110, 110, 115], [29, 29, 31], e);
+      // keep CSS .accent orange-red — do not override color
     }
   }
   if (S.name === 'split' && D_) {
@@ -403,6 +447,7 @@ function draw(t, gt) {
 if (typeof module !== 'undefined') {
   module.exports = {
     setup, draw, esc, isQuote, isParable, brightBg, energyBg,
+    brandBar, showBadge, lightningChrome, accentHookHtml,
     setCat, setMouth, catMouthOpen, CAT_POSES, SCENE_CAT, CUES, activeCue, catSrc,
   };
 }

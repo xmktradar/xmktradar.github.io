@@ -217,8 +217,16 @@ function loadHeroQuote(big) {
   return null;
 }
 
+const SHOW_LABELS = {
+  'tape-take': 'Tape Take',
+  'crowd-heat': 'Crowd Heat',
+  'week-tape': 'Week Tape',
+};
+
 /** Scene copy — numbers/tickers from job slides; EN quote from day writeups. Zero emoji. */
-function words(lang, slides) {
+function words(lang, slides, job) {
+  const showId = (job && job.show) || showMap()[(job && job.slot)] || (job && job.slot) || 'tape-take';
+  const showLabel = SHOW_LABELS[showId] || SHOW_LABELS[String(showId).toLowerCase()] || 'Tape Take';
   const S0 = slides[0] || {};
   const n = num(S0.sub), bull = num((S0.pills || []).find(p => p.c === 'g')?.x), bear = num((S0.pills || []).find(p => p.c === 'r')?.x);
   const big = S0.big || '';
@@ -311,7 +319,14 @@ function words(lang, slides) {
     }
     // else: leave m1 rows (legacy). Do not invent quote or rock parable.
   }
-  return { open, split: splitD, m1, m2, cta, n, bull, bear, big: open.big || big };
+  open.showLabel = showLabel; open.showId = showId;
+  open.subline1 = open.subline1 || 'One crowd quote.';
+  open.subline2 = open.subline2 || 'One punch.';
+  splitD.showLabel = showLabel; splitD.showId = showId;
+  m1.showLabel = showLabel; m1.showId = showId;
+  m2.showLabel = showLabel; m2.showId = showId;
+  cta.showLabel = showLabel; cta.showId = showId;
+  return { open, split: splitD, m1, m2, cta, n, bull, bear, big: open.big || big, showLabel, showId };
 }
 
 const header = total => `
@@ -327,7 +342,7 @@ function chrome(gt){
 async function one(browser, job, vo, outFile) {
   const why = voiceoverSkip(vo);
   if (why) { refuseVideo(job, outFile, why); return; }
-  const W = words(job.lang, job.slides);
+  const W = words(job.lang, job.slides, job);
   const SC = BASE.map(([name, b], i) => [name, Math.max(b, Math.ceil((vo[i].dur + 0.4) / BEAT))]);
   const starts = []; let acc = 0; for (const [, b] of SC) { starts.push(acc); acc += b * BEAT; }
   const total = acc + COVER;
@@ -452,5 +467,5 @@ if (require.main === module) main();
 module.exports = {
   voicedTotal, voiceoverSkip, refuseVideo, removePartial, writeVoMarker, voMarkerPath,
   voiceName, MIN_VIDEO_S, MAX_VIDEO_S, COVER, BEAT, BASE, VOICES, words, COVER_FRAMES,
-  loadHeroQuote, splitQuoteLines, parsePoint, one, videoStem, videoOut, coverOut, showMap, DEFAULT_SHOW,
+  loadHeroQuote, splitQuoteLines, parsePoint, one, videoStem, videoOut, coverOut, showMap, DEFAULT_SHOW, SHOW_LABELS, words,
 };

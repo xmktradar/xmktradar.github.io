@@ -1,9 +1,9 @@
-/* Shorts EN v4 bright BG — drop-in tokens for #281
-   KILL dark frame: do NOT use #0e1116 #07080c #0a0c10 #1a0a2e as root BG.
+/* Shorts EN — Canva Tape Take lock 2026-11-05 (DAHaCls9wB8)
+   Bright cream frame. KILL dark: no #0e1116 #07080c #0a0c10 #1a0a2e as root BG.
    Quote content / EN-only / ticker accent can stay. */
 
 :root {
-  --bg0: #FFF6EC;
+  --bg0: #FFF9EE;          /* Canva cream (was #FFF6EC; close OK) */
   --bg-lilac: #F0E8FF;
   --bg-sky: #E5F7FF;
   --petal-coral: #FF6B8A;
@@ -11,20 +11,27 @@
   --petal-lilac: #B794F6;
   --petal-mint: #5EEAD4;
   --petal-lemon: #FFE066;
-  --ink: #1d1d1f;
+  --ink: #3D3D3D;          /* Canva dark grey */
   --ink-muted: #6e6e73;
+  --accent: #F06A4D;       /* Canva orange-red key words */
+  --lightning: #BAE6FD;    /* Canva light-blue bolts */
+  --badge-bg: #FFE8B8;     /* pale yellow/orange show badge */
+  --badge-ink: #E85A3A;
+  --bubble-outline: #FFD28A;
+  --subline-border: #BAE6FD;
   --card: #fffffff0;
-  --ticker: #E8940A;   /* #278 amber family, darkened for cream */
+  --ticker: #E8940A;       /* #278 amber family, darkened for cream */
   --bull: #0A9F5C;
   --bear: #E11D48;
+  --safe-top: 120px;       /* Shorts UI chrome clearance */
+  --safe-bottom: 160px;
 }
 
 .frame-bg {
   position: absolute; inset: 0;
   background:
-    radial-gradient(90% 70% at 12% 18%, color-mix(in srgb, var(--petal-apricot) 45%, transparent) 0%, transparent 55%),
-    radial-gradient(80% 65% at 88% 78%, color-mix(in srgb, var(--petal-lilac) 40%, transparent) 0%, transparent 50%),
-    radial-gradient(60% 50% at 70% 20%, color-mix(in srgb, var(--petal-coral) 30%, transparent) 0%, transparent 45%),
+    radial-gradient(90% 70% at 12% 18%, color-mix(in srgb, var(--petal-apricot) 28%, transparent) 0%, transparent 55%),
+    radial-gradient(80% 65% at 88% 78%, color-mix(in srgb, var(--petal-lilac) 22%, transparent) 0%, transparent 50%),
     var(--bg0);
 }
 
@@ -32,7 +39,7 @@
   position: absolute;
   width: 42%; height: 28%;
   border-radius: 60% 40% 55% 45%;
-  opacity: 0.38;
+  opacity: 0.22;
   pointer-events: none;
 }
 .petal--coral { background: var(--petal-coral); }
@@ -46,7 +53,7 @@
   width: 55%; height: 40%;
   border-radius: 50%;
   filter: blur(32px);
-  opacity: 0.5;
+  opacity: 0.28;
   pointer-events: none;
 }
 .orb--hook { background: var(--petal-apricot); top: 8%; left: -8%; }
@@ -56,7 +63,7 @@
   position: absolute;
   height: 10px; width: 70%;
   border-radius: 999px;
-  opacity: 0.35;
+  opacity: 0.28;
   background: linear-gradient(90deg, var(--petal-mint), var(--petal-lemon), var(--petal-coral));
   transform: rotate(-18deg);
 }
@@ -68,18 +75,93 @@
   box-shadow: 0 12px 40px #1d1d1f14;
 }
 
-/* Scene helpers */
+/* Scene helpers — cream + quiet wash; open dominated by bubble/lightning */
 .scene-open .frame-bg { background:
-  radial-gradient(100% 80% at 20% 15%, #FFB34766 0%, transparent 55%),
-  radial-gradient(70% 50% at 80% 70%, #FF6B8A44 0%, transparent 50%),
-  #FFF6EC; }
+  radial-gradient(90% 70% at 18% 12%, #FFB34733 0%, transparent 55%),
+  radial-gradient(60% 45% at 82% 78%, #BAE6FD44 0%, transparent 50%),
+  #FFF9EE; }
 .scene-split .frame-bg { background:
   linear-gradient(90deg, #E5F7FF 0 50%, #FFF0F3 50% 100%); }
 .scene-m1 .frame-bg { background:
-  radial-gradient(80% 60% at 50% 40%, #B794F655 0%, transparent 60%),
-  #FFF6EC; }
+  radial-gradient(80% 60% at 50% 40%, #B794F644 0%, transparent 60%),
+  #FFF9EE; }
 .scene-m2 .frame-bg,
 .scene-cta .frame-bg { background: #E5F7FF; }
+
+/* Canva lock chrome */
+.show-badge {
+  position: absolute; left: 56px; top: var(--safe-top);
+  z-index: 5;
+  background: var(--badge-bg);
+  color: var(--badge-ink);
+  font: 800 34px/1 Inter, sans-serif;
+  letter-spacing: 0.2px;
+  padding: 14px 28px;
+  border-radius: 18px;
+  box-shadow: 0 6px 18px #f06a4d22;
+}
+.show-badge .date {
+  margin-left: 14px;
+  font: 600 24px Inter, sans-serif;
+  color: var(--ink-muted);
+}
+
+.speech-bubble {
+  position: relative;
+  background: #fff;
+  color: var(--ink);
+  border: 4px solid var(--bubble-outline);
+  border-radius: 28px;
+  padding: 48px 44px 56px;
+  box-shadow: 0 16px 48px #3d3d3d18;
+  /* soft starburst silhouette via outer spikes */
+  clip-path: polygon(
+    0% 12%, 4% 6%, 10% 10%, 14% 2%, 22% 8%, 28% 0%, 36% 7%, 44% 1%,
+    52% 8%, 60% 0%, 68% 8%, 76% 1%, 84% 9%, 90% 2%, 96% 10%, 100% 14%,
+    96% 22%, 100% 30%, 95% 38%, 100% 46%, 94% 54%, 100% 62%, 95% 70%,
+    100% 78%, 94% 86%, 98% 94%, 88% 92%, 80% 100%, 72% 93%, 64% 100%,
+    56% 92%, 48% 100%, 40% 93%, 32% 100%, 24% 92%, 16% 100%, 10% 90%,
+    2% 96%, 6% 86%, 0% 78%, 6% 70%, 0% 62%, 7% 54%, 0% 46%, 7% 38%,
+    0% 30%, 6% 22%
+  );
+}
+.speech-bubble-wrap {
+  /* keep readable padding inside jagged clip */
+  filter: drop-shadow(0 14px 28px rgba(61,61,61,.12));
+}
+.speech-bubble .hookQ {
+  font-weight: 800;
+  font-size: 56px;
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+  font-style: italic;
+  color: var(--ink);
+}
+.speech-bubble .hookQ .accent,
+.hookQ .accent { color: var(--accent); font-style: italic; }
+
+.subline {
+  background: #fff;
+  border: 3px solid var(--subline-border);
+  border-radius: 18px;
+  padding: 22px 28px;
+  box-shadow: 0 8px 24px #3d3d3d12;
+  font: 700 32px/1.35 Inter, sans-serif;
+  color: var(--ink);
+  max-width: 520px;
+}
+.subline .punch { color: var(--accent); display: block; margin-top: 4px; }
+
+.lightning {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  color: var(--lightning);
+  opacity: 0.95;
+  filter: drop-shadow(0 4px 10px #bae6fd88);
+}
+.lightning--tr { top: 140px; right: 48px; width: 120px; height: 180px; }
+.lightning--bl { bottom: 200px; left: 36px; width: 100px; height: 150px; transform: scaleY(-1) rotate(18deg); }
 
 .type { color: var(--ink); }
 .type-ticker { color: var(--ticker); font-variant-numeric: tabular-nums; }
