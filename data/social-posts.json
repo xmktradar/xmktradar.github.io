@@ -864,118 +864,121 @@
    "intraday_close": {
     "post_et": "15:40",
     "post_hkt": "04:40",
-    "generated_at": "2026-11-05T15:52:29-05:00",
+    "generated_at": "2026-11-05T15:57:59-05:00",
     "date": "2026-11-05",
     "date_kst": "2026-11-06",
     "quotes": {
      "SPY": {
-      "price": 736.1,
+      "price": 734.02,
       "prev_close": 766.81,
-      "chg_pct": -4.0,
-      "time": "2026-11-05T15:52:29-05:00"
+      "chg_pct": -4.28,
+      "time": "2026-11-05T15:56:57-05:00"
      },
      "QQQ": {
-      "price": 651.9,
+      "price": 648.22,
       "prev_close": 691.95,
-      "chg_pct": -5.79,
-      "time": "2026-11-05T15:52:29-05:00"
+      "chg_pct": -6.32,
+      "time": "2026-11-05T15:57:40-05:00"
      },
      "DIA": {
-      "price": 515.875,
+      "price": 514.79,
       "prev_close": 533.11,
-      "chg_pct": -3.23,
-      "time": "2026-11-05T15:52:30-05:00"
+      "chg_pct": -3.44,
+      "time": "2026-11-05T15:56:58-05:00"
      },
-     "AMD": {
-      "price": 414.21,
-      "prev_close": 488.78,
-      "chg_pct": -15.26,
-      "time": "2026-11-05T15:52:30-05:00"
+     "MU": {
+      "price": 654.67,
+      "prev_close": 795.23,
+      "chg_pct": -17.68,
+      "time": "2026-11-05T15:57:40-05:00"
      },
-     "GOOGL": {
-      "price": 283.905,
-      "prev_close": 288.93,
-      "chg_pct": -1.74,
-      "time": "2026-11-05T15:52:30-05:00"
+     "NBIS": {
+      "price": 120.01,
+      "prev_close": 141.52,
+      "chg_pct": -15.2,
+      "time": "2026-11-05T15:57:41-05:00"
      },
-     "IREN": {
-      "price": 18.645,
-      "prev_close": 21.71,
-      "chg_pct": -14.12,
-      "time": "2026-11-05T15:52:31-05:00"
+     "NVDA": {
+      "price": 182.4,
+      "prev_close": 200.13,
+      "chg_pct": -8.86,
+      "time": "2026-11-05T15:57:41-05:00"
      }
     },
     "quote_time": {
-     "et": "2026-11-05T15:52:31-05:00",
-     "hkt": "2026-11-06 04:52"
+     "et": "2026-11-05T15:57:41-05:00",
+     "hkt": "2026-11-06 04:57"
     },
     "quote_source": "Yahoo Finance",
     "quotes_ok": true,
     "fallback": false,
     "hot": [
      {
-      "ticker": "AMD",
-      "chg_pct": -15.26,
+      "ticker": "SPY",
+      "chg_pct": -4.28,
       "bull": 2,
-      "bear": 0,
+      "bear": 1,
+      "accounts": [
+       "michaelsikand",
+       "EliteOptions2",
+       "RedDogT3",
+       "Mr_Derivatives",
+       "ripster47",
+       "TrendSpider",
+       "bespokeinvest",
+       "amitisinvesting"
+      ]
+     },
+     {
+      "ticker": "MU",
+      "chg_pct": -17.68,
+      "bull": 1,
+      "bear": 2,
       "accounts": [
        "EliteOptions2",
-       "StockSavvyShay",
-       "WallStJesus",
+       "LeopoldTracker_",
        "RedDogT3",
        "spotgamma"
       ]
      },
      {
-      "ticker": "GOOGL",
-      "chg_pct": -1.74,
-      "bull": 2,
-      "bear": 0,
-      "accounts": [
-       "amitisinvesting",
-       "TheTranscript_"
-      ]
-     },
-     {
-      "ticker": "IREN",
-      "chg_pct": -14.12,
-      "bull": 0,
+      "ticker": "NBIS",
+      "chg_pct": -15.2,
+      "bull": 1,
       "bear": 2,
       "accounts": [
+       "EliteOptions2",
        "LeopoldTracker_",
-       "michaelsikand"
+       "RedDogT3",
+       "aleabitoreddit"
       ]
      },
      {
-      "ticker": "QQQ",
-      "chg_pct": -5.79,
-      "bull": 3,
-      "bear": 3,
+      "ticker": "NVDA",
+      "chg_pct": -8.86,
+      "bull": 1,
+      "bear": 1,
       "accounts": [
-       "MrZackMorris",
        "EliteOptions2",
-       "carlquintanilla",
-       "KawzInvests",
-       "KobeissiLetter",
        "RedDogT3",
        "Mr_Derivatives",
-       "ripster47"
+       "aleabitoreddit"
       ]
      }
     ],
     "x": {
      "en": {
-      "text": "Into the close · As of 15:52 ET (04:52 HKT)\n\n$SPY -4.0% · $QQQ -5.8% · $DIA -3.2%\n\n$AMD -15.3%, 2 accounts bullish on site\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #AMD #GOOGL",
+      "text": "Into the close · As of 15:57 ET (04:57 HKT)\n\n$SPY -4.3% · $QQQ -6.3% · $DIA -3.4%\n\n$SPY -4.3%, 2 accounts bullish on site\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #SPY #MU",
       "url": ""
      }
     },
     "threads": {
      "zh": {
-      "text": "收市前回顧 · 截至 15:52 ET（04:52 HKT）\n\n$SPY -4.0% · $QQQ -5.8% · $DIA -3.2%\n\n$AMD -15.3%，網站 2 個帳號看好\n$GOOGL -1.7%，網站 2 個帳號看好\n$IREN -14.1%，網站 2 個帳號看空\n$QQQ -5.8%，網站 3 個帳號看好\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #AMD #GOOGL",
+      "text": "收市前回顧 · 截至 15:57 ET（04:57 HKT）\n\n$SPY -4.3% · $QQQ -6.3% · $DIA -3.4%\n\n$SPY -4.3%，網站 2 個帳號看好\n$MU -17.7%，網站 2 個帳號看空\n$NBIS -15.2%，網站 2 個帳號看空\n$NVDA -8.9%，網站 1 個帳號看好\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SPY #MU",
       "url": ""
      },
      "en": {
-      "text": "Into the close · As of 15:52 ET (04:52 HKT)\n\n$SPY -4.0% · $QQQ -5.8% · $DIA -3.2%\n\n$AMD -15.3%, 2 accounts bullish on site\n$GOOGL -1.7%, 2 accounts bullish on site\n$IREN -14.1%, 2 accounts bearish on site\n$QQQ -5.8%, 3 accounts bullish on site\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #AMD #GOOGL",
+      "text": "Into the close · As of 15:57 ET (04:57 HKT)\n\n$SPY -4.3% · $QQQ -6.3% · $DIA -3.4%\n\n$SPY -4.3%, 2 accounts bullish on site\n$MU -17.7%, 2 accounts bearish on site\n$NBIS -15.2%, 2 accounts bearish on site\n$NVDA -8.9%, 1 account bullish on site\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #SPY #MU",
       "url": ""
      }
     },
@@ -997,7 +1000,7 @@
     }
    }
   },
-  "generated_at": "2026-11-05T15:52:29-05:00",
-  "generated_hkt": "2026-11-06 04:52"
+  "generated_at": "2026-11-05T15:57:59-05:00",
+  "generated_hkt": "2026-11-06 04:57"
  }
 }
