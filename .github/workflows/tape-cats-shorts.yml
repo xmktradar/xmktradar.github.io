@@ -66,16 +66,39 @@ jobs:
             *) echo "slots=1230,1630" >> "$GITHUB_OUTPUT" ;;
           esac
           echo "Picked show=$SHOW"
+      # Mirror Update site: cache playwright + apt debs; no cold --with-deps (Tim soft item).
+      - name: Cache Playwright browsers
+        if: steps.pick.outputs.skip != 'true'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: pw-chromium-1.56.1-${{ runner.os }}
+      - name: Cache apt packages (ffmpeg, fonts)
+        if: steps.pick.outputs.skip != 'true'
+        uses: actions/cache@v4
+        with:
+          path: ~/apt-debs
+          key: apt-debs-v1-${{ runner.os }}-ffmpeg-fonts-noto-cjk-fonts-inter
       - name: Restore pages + deps
         if: steps.pick.outputs.skip != 'true'
+        timeout-minutes: 20
         run: |
           set -e
           python3 tools/slim_pages.py --restore
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq --no-install-recommends ffmpeg fonts-noto-cjk fonts-inter
+          PKGS="ffmpeg fonts-noto-cjk fonts-inter"
+          if ls ~/apt-debs/*.deb >/dev/null 2>&1; then
+            sudo dpkg -i ~/apt-debs/*.deb >/dev/null 2>&1 || sudo apt-get install -y -qq -f --no-install-recommends
+          fi
+          if ! command -v ffmpeg >/dev/null 2>&1 || ! fc-list | grep -qi "Noto Sans CJK"; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq --no-install-recommends $PKGS
+            mkdir -p ~/apt-debs && cp /var/cache/apt/archives/*.deb ~/apt-debs/ 2>/dev/null || true
+          fi
           pip install -q numpy edge-tts==7.3.1
           npm install --no-save --no-audit --no-fund playwright@1.56.1
-          npx playwright install --with-deps chromium
+          npx playwright install chromium
+          # Only fetch system libs when chromium cannot start (same as Update site).
+          node -e "require('playwright').chromium.launch().then(b=>b.close())" 2>/dev/null || npx playwright install-deps chromium
           ffmpeg -version | head -1
       - name: Build carousel job + render EN Short
         if: steps.pick.outputs.skip != 'true'
