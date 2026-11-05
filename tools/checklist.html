@@ -95,6 +95,9 @@ h1{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",var(--f-body);f
     <input id="ct-email-checklist" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
     <input type="hidden" name="lang" value="{{lang_code}}">
     <input type="hidden" name="src" value="checklist-earnings">
+    <input type="hidden" name="utm_source" value="site">
+    <input type="hidden" name="utm_medium" value="cta">
+    <input type="hidden" name="utm_campaign" value="newsletter">
     <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
     <button type="submit">{{form_btn}}</button>
     <small>{{form_note}}</small>
@@ -102,17 +105,28 @@ h1{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",var(--f-body);f
   </form>
   <section class="card full" id="checklist-full" hidden>
     <h2>{{full_h2}}</h2>
-    <ol>
-      {{full_items}}
-    </ol>
+    <ol id="checklist-items"></ol>
     <p class="note">{{welcome_note}}</p>
+    <p class="note" id="checklist-thanks">{{thanks_html}}</p>
     <p><a href="{{home}}earnings/">{{back_earnings}}</a> · <a href="{{home}}tools/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=checklist">{{to_tools}}</a></p>
   </section>
   <script>
   (function(){
-    var M={en:["Thanks! Full checklist unlocked below. Welcome email will also include this link.","Please check the email address and try again."],
-           zh:["多謝！完整清單已喺下面解鎖。歡迎電郵亦會附上呢個連結。","電郵地址有誤，請再試。"]};
-    var full=document.getElementById('checklist-full');
+    // Gate (client-side): the full 12 steps are NOT in this page's HTML. They load from
+    // /data/checklist/earnings-{{lang_code}}.json only after a successful subscribe
+    // (or when this browser already subscribed / arrives from the welcome email).
+    var M={en:["Thanks! Check your inbox to confirm, then come back any time. Full checklist unlocked below.","Please check the email address and try again."],
+           zh:["多謝！請去收件匣確認電郵。完整清單已喺下面解鎖。","電郵地址有誤，請再試。"]};
+    var full=document.getElementById('checklist-full'),ol=document.getElementById('checklist-items'),done=false;
+    function unlock(scroll){
+      try{localStorage.setItem('ct-sub','1')}catch(err){}
+      if(done||!full)return;done=true;
+      fetch('/data/checklist/earnings-{{lang_code}}.json').then(function(r){return r.json()}).then(function(items){
+        ol.innerHTML='';items.forEach(function(t){var li=document.createElement('li');li.textContent=t;ol.appendChild(li);});
+        full.hidden=false;
+        if(scroll){try{full.scrollIntoView({behavior:'smooth',block:'start'})}catch(err){}}
+      }).catch(function(){done=false;});
+    }
     document.querySelectorAll('form.ct-news').forEach(function(f){
       f.addEventListener('submit',function(e){
         e.preventDefault();
@@ -121,20 +135,21 @@ h1{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",var(--f-body);f
           .then(function(r){return r.json()}).then(function(j){
             m.hidden=false;m.textContent=M[l][j.ok?0:1];
             if(j.ok){
-              f.reset();
-              if(full){full.hidden=false;try{full.scrollIntoView({behavior:'smooth',block:'start'})}catch(err){}}
+              f.reset();unlock(true);
               if(window.gtag)gtag('event','newsletter_signup',{lang:l,src:'checklist-earnings'});
             }
           }).catch(function(){m.hidden=false;m.textContent=M[l][1];});
       });
     });
-    var sub=new URLSearchParams(location.search).get('subscribed');
+    var q=new URLSearchParams(location.search),sub=q.get('subscribed');
     if(sub==='1'||sub==='0') document.querySelectorAll('form.ct-news').forEach(function(f){
       var l=f.dataset.lang||'en',m=f.querySelector('.ct-news-msg');
       m.hidden=false;m.textContent=M[l][sub==='1'?0:1];
-      if(sub==='1'&&full) full.hidden=false;
     });
+    var ls='';try{ls=localStorage.getItem('ct-sub')}catch(err){}
+    if(sub==='1'||q.get('utm_source')==='resend'||ls==='1') unlock(false);
   })();
+  </script>
   </script>
 </main>
 <footer class="site-foot">

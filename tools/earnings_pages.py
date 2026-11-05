@@ -243,17 +243,17 @@ def news_cta(lang, src):
     import json as _json
     # Site CTA uses site/cta UTMs; welcome email still uses resend/welcome1 on the thank-you page itself.
     check = (f'https://thecrowdtape.com/{lang}/checklist/earnings/'
-             f'?utm_source=site&utm_medium=cta&utm_campaign=earnings_footer')
+             f'?utm_source=site&utm_medium=cta&utm_campaign=newsletter&subscribed=1')
     check_rel = f'/{lang}/checklist/earnings/?utm_source=site&utm_medium=cta&utm_campaign=earnings_footer'
     news_rel = f'/{lang}/newsletter/?utm_source=site&utm_medium=cta&utm_campaign=earnings_footer'
     if lang == 'zh':
-        title, note, btn = '免費領取財報解讀清單', '訂閱後即開清單；唔會濫發，隨時取消。', '電郵領取清單'
+        title, note, btn = '免費領取財報解讀清單', '免費 · 唔會 spam · 隨時取消', '電郵領取清單'
         ok = '多謝！正在開啟免費財報清單…'
         bad = '電郵地址有誤，請再試。'
         more = (f'或者直接打開 <a href="{check_rel}">財報解讀清單</a>'
                 f' · <a href="{news_rel}">電子報</a>。')
     else:
-        title, note, btn = 'Get the free earnings checklist', 'Email signup opens the checklist. No spam. Unsubscribe anytime.', 'Email me the checklist'
+        title, note, btn = 'Get the free earnings checklist', 'No spam. Unsubscribe anytime.', 'Email me the checklist'
         ok = 'Thanks! Opening your free earnings checklist…'
         bad = 'Please check the email address and try again.'
         more = (f'Or open the <a href="{check_rel}">earnings checklist</a>'
@@ -269,6 +269,7 @@ def news_cta(lang, src):
         f'<input id="{fid}" type="email" name="email" required autocomplete="email" placeholder="you@example.com">'
         f'<input type="hidden" name="lang" value="{lang}">'
         f'<input type="hidden" name="src" value="{E(src)}">'
+        f'<input type="hidden" name="utm_source" value="site"><input type="hidden" name="utm_medium" value="cta"><input type="hidden" name="utm_campaign" value="newsletter">'
         f'<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">'
         f'<button type="submit">{E(btn)}</button>'
         f'<small>{E(note)} {more}</small>'
@@ -279,7 +280,7 @@ def news_cta(lang, src):
         f'e.preventDefault();var f=e.target,m=f.querySelector(".ct-news-msg"),d=Object.fromEntries(new FormData(f));'
         f'fetch(f.action,{{method:"POST",headers:{{"Content-Type":"application/json"}},body:JSON.stringify(d)}})'
         f'.then(function(r){{return r.json()}}).then(function(j){{m.hidden=false;m.textContent=j.ok?ok:bad;'
-        f'if(j.ok){{f.reset();if(window.gtag)gtag("event","newsletter_signup",{{lang:f.dataset.lang||"",src:d.src||""}});location.assign(go);}}}})'
+        f'if(j.ok){{f.reset();if(window.gtag)gtag("event","newsletter_signup",{{lang:f.dataset.lang||"",src:d.src||""}});try{{localStorage.setItem("ct-sub","1")}}catch(x){{}}location.assign(go);}}}})'
         f'.catch(function(){{m.hidden=false;m.textContent=bad;}});}});}})();</script></aside>'
     )
 

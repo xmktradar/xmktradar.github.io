@@ -106,7 +106,19 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
 <main>
   <h1>Tools we use to check the crowd</h1>
   <p class="lead">The Crowd Tape counts what ~200 US-stock accounts on X are saying. A tally isn't a trade, though. These are the tools we use for charts, screens and fundamentals.</p>
-  <p class="ct-tools-top" id="ct-tools-top" style="margin:0 0 16px;font-size:14.5px;line-height:1.5">Get the free earnings checklist — subscribe to the newsletter.<a href="#ct-news-tools" style="font-weight:700;margin-left:6px">Get it by email</a></p>
+  <form class="ct-news" id="ct-news-tools" data-lang="en" action="https://crowdtape-newsletter.vercel.app/api/subscribe" method="POST" style="margin:0 0 16px">
+    <label for="ct-email-tools" class="ct-news-t">Get the free earnings checklist</label>
+    <input id="ct-email-tools" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
+    <input type="hidden" name="lang" value="en">
+    <input type="hidden" name="src" value="tools-top">
+    <input type="hidden" name="utm_source" value="site">
+    <input type="hidden" name="utm_medium" value="cta">
+    <input type="hidden" name="utm_campaign" value="newsletter">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+    <button type="submit">Email me the list</button>
+    <small>No spam. Unsubscribe anytime.</small>
+    <p class="ct-news-msg" role="status" hidden></p>
+  </form>
   <aside class="note">
     <p>Disclosure: some links are affiliate links. If you sign up or buy through them we may earn a commission at no extra cost to you. This never affects our bull/bear tallies. Nothing on this site is investment advice.</p>
   </aside>
@@ -148,18 +160,6 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
       <a class="tool-btn" href="https://optionstrat.com/thecrowdtape?utm_source=thecrowdtape&amp;utm_medium=tools&amp;utm_campaign=optionstrat" rel="sponsored nofollow noopener" target="_blank" data-tool="optionstrat">Open OptionStrat</a>
     </article>
   </div>
-  <section class="cta">
-    <h2>Get the weekly digest by email</h2>
-    <form class="ct-news" id="ct-news-tools" data-lang="en" action="https://crowdtape-newsletter.vercel.app/api/subscribe" method="POST">
-      <label for="ct-email-tools" class="ct-news-t">Free earnings checklist (newsletter)</label>
-      <input id="ct-email-tools" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
-      <input type="hidden" name="lang" value="en">
-      <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
-      <button type="submit">Subscribe</button>
-      <small>Free · weekly · unsubscribe anytime.</small>
-      <p class="ct-news-msg" role="status" hidden></p>
-    </form>
-  </section>
   <p><a class="back" href="/en/">Back to home</a></p>
 </main>
 <footer class="site-foot">

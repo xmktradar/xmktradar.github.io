@@ -101,19 +101,22 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
   <h1>Newsletter</h1>
   <p class="lead">Past issues of the weekly newsletter.</p>
   <form class="ct-news" id="ct-news-newsletter" data-lang="en" action="https://crowdtape-newsletter.vercel.app/api/subscribe" method="POST">
-    <label for="ct-email-newsletter" class="ct-news-t">Weekly bull/bear stats, delivered to your email</label>
+    <label for="ct-email-newsletter" class="ct-news-t">Get the free earnings checklist</label>
     <input id="ct-email-newsletter" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
     <input type="hidden" name="lang" value="en">
     <input type="hidden" name="src" value="newsletter">
+    <input type="hidden" name="utm_source" value="site">
+    <input type="hidden" name="utm_medium" value="cta">
+    <input type="hidden" name="utm_campaign" value="newsletter">
     <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
-    <button type="submit">Subscribe</button>
-    <small>Free · weekly · unsubscribe anytime.</small>
+    <button type="submit">Email me the list</button>
+    <small>No spam. Unsubscribe anytime.</small>
     <p class="ct-news-msg" role="status" hidden></p>
   </form>
   <script>
   (function(){
-    var M={en:["Thanks! You're subscribed. Free checklist: /en/checklist/earnings/","Please check the email address and try again."],
-           zh:["Thanks! You're subscribed. Free checklist: /en/checklist/earnings/","Please check the email address and try again."]};
+    var M={en:["Thanks! Check your inbox to confirm. Opening your free earnings checklist…","Please check the email address and try again."],
+           zh:["Thanks! Check your inbox to confirm. Opening your free earnings checklist…","Please check the email address and try again."]};
     document.querySelectorAll('form.ct-news').forEach(function(f){
       f.addEventListener('submit',function(e){
         e.preventDefault();
@@ -121,7 +124,7 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
         fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
           .then(function(r){return r.json()}).then(function(j){
             m.hidden=false;m.textContent=M[l][j.ok?0:1];
-            if(j.ok){f.reset();if(window.gtag)gtag('event','newsletter_signup',{lang:l});}
+            if(j.ok){f.reset();if(window.gtag)gtag('event','newsletter_signup',{lang:l});try{localStorage.setItem('ct-sub','1')}catch(err){}location.assign('/'+(l==='zh'?'zh':'en')+'/checklist/earnings/?subscribed=1');}
           }).catch(function(){m.hidden=false;m.textContent=M[l][1];});
       });
     });

@@ -928,13 +928,14 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
 <aside class="contact" id="contact" aria-label="Contact us"><b class="contact-h">✉️ Jobs & advertising</b><p class="contact-t">Email us about job opportunities, advertising or brand partnerships.</p><a class="contact-btn" id="contact-mail" href="#contact" data-u="grokbottimli" data-d="gmail.com" data-s="Jobs & advertising enquiry">✉️ Email us</a></aside>
 <script>(function(){var a=document.getElementById('contact-mail');if(!a)return;var m=a.getAttribute('data-u')+'@'+a.getAttribute('data-d');a.href='mailto:'+m+'?subject='+encodeURIComponent('The Crowd Tape: '+a.getAttribute('data-s'));a.textContent='✉️ '+m;a.addEventListener('click',function(){if(window.gtag)gtag('event','contact_click');});})();</script>
 <form class="ct-news" id="ct-news-home" data-lang="en" action="https://crowdtape-newsletter.vercel.app/api/subscribe" method="POST">
-  <label for="ct-email-home" class="ct-news-t">One email a week: top 5 consensus picks + top 3 biggest splits</label>
+  <label for="ct-email-home" class="ct-news-t">Get the free earnings checklist</label>
   <input id="ct-email-home" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
   <input type="hidden" name="lang" value="en">
   <input type="hidden" name="src" value="home-mid">
+  <input type="hidden" name="utm_source" value="site"><input type="hidden" name="utm_medium" value="cta"><input type="hidden" name="utm_campaign" value="newsletter">
   <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
-  <button type="submit">Subscribe</button>
-  <small>Free · weekly · unsubscribe anytime.</small>
+  <button type="submit">Email me the list</button>
+  <small>No spam. Unsubscribe anytime.</small>
   <p class="ct-news-msg" role="status" hidden></p>
 </form>
 <script>
@@ -1876,6 +1877,7 @@ ${MAC&&MAC.rows.length?`<p>Market data: ${[...new Set(MAC.rows.map(r=>(r.src||''
 <input id="ct-email-footer" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
 <input type="hidden" name="lang" value="en">
 <input type="hidden" name="src" value="home-footer">
+<input type="hidden" name="utm_source" value="site"><input type="hidden" name="utm_medium" value="cta"><input type="hidden" name="utm_campaign" value="newsletter">
 <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
 <button type="submit">Email me the list</button>
 <small>No spam. Unsubscribe anytime.</small>
