@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2118519609985011866": {
+      "en_summary": "Keith McCullough calls a young person a Jedi risk manager in the making. The quoted post says if Jack hit the button on $EWT he scored big today, giving credit for possibly hitting an ATH in dad chirps and noting impressive notes at such a young age.",
+      "zh_summary": "Keith McCullough 稱一位年輕人是正在成長的絕地武士風險經理。被引用的帖文表示，如果 Jack 按下了 $EWT 的按鈕，他今天就大賺了一筆，讚揚可能達到父親閒聊的歷史高點，並指出他在這麼年輕的年紀做筆記令人印象深刻。",
+      "tickers": ["EWT"],
+      "stance": null,
+      "stance_by_ticker": {"EWT": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2118519031464710170": {
+      "en_summary": "Brian Stoffel asks if Axon stock cut in half is a falling knife or a gift. $AXON",
+      "zh_summary": "Brian Stoffel 詢問 Axon 股票被砍半是落刀還是禮物。$AXON",
+      "tickers": ["AXON"],
+      "stance": null,
+      "stance_by_ticker": {"AXON": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2118511604459520170": {
+      "en_summary": "Kuppy says Florida is the last sane place in the USA and asks Got $JOE. Quoted post says Texas has fallen and Florida's new governor is ready.",
+      "zh_summary": "Kuppy 表示佛羅里達是美國最後理智的地方，並詢問是否持有 $JOE。被引用的帖文說德州已經淪陷，佛羅里達的新州長已準備好。",
+      "tickers": ["JOE"],
+      "stance": "中性",
+      "stance_by_ticker": {"JOE": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2118510062591500419": {
+      "en_summary": "Andy Constan notes $NVDA has a $235BN authorized buyback program and is buying back stock and reloading. He questions why they would support the stock when they are a buyer instead of buying cheaper, arguing that screwing the sellers is good for shareholders versus rewarding the sellers with an elevated price. Quotes Jim Cramer: if the cheapest asset is your stock, you should buy it.",
+      "zh_summary": "Andy Constan 指出 $NVDA 有 2350 億美元授權回購計劃，並且正在回購股票和重新裝填。他質疑為什麼他們在作為買家時要支撐股價而不是買得更便宜，認為坑賣家對股東有利，而不是用高價獎勵賣家。引用 Jim Cramer：如果最便宜的資產是你的股票，你應該買它。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "有2350億美元授權回購並正在回購"}
+    },
+    "2118508735765115071": {
+      "en_summary": "After today if you have held $TSLA the last 5 years you are down 2%. Not great. Mentions @TheStalwart @Mr_Derivatives.",
+      "zh_summary": "今天之後，如果你過去5年持有 $TSLA，你虧損了2%。不太好。提及 @TheStalwart @Mr_Derivatives。",
+      "tickers": ["TSLA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"TSLA": "睇淡"},
+      "horizon": "長線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TSLA": "過去5年持有虧損2%"}
+    }
+  }
+}
