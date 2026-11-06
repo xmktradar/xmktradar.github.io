@@ -819,46 +819,83 @@
    "intraday_close": {
     "post_et": "15:40",
     "post_hkt": "04:40",
-    "generated_at": "2026-11-06T15:42:54-05:00",
+    "generated_at": "2026-11-06T15:49:21-05:00",
     "date": "2026-11-06",
     "date_kst": "2026-11-07",
     "quotes": {
      "SPY": {
-      "price": 736.93,
+      "price": 737.17,
       "prev_close": 733.0,
-      "chg_pct": 0.54,
-      "time": "2026-11-06T15:42:53-05:00"
+      "chg_pct": 0.57,
+      "time": "2026-11-06T15:49:20-05:00"
      },
      "QQQ": {
-      "price": 657.735,
+      "price": 657.49,
       "prev_close": 647.05,
-      "chg_pct": 1.65,
-      "time": "2026-11-06T15:42:53-05:00"
+      "chg_pct": 1.61,
+      "time": "2026-11-06T15:49:20-05:00"
      },
      "DIA": {
-      "price": 512.86,
+      "price": 513.22,
       "prev_close": 514.27,
-      "chg_pct": -0.27,
-      "time": "2026-11-06T15:42:49-05:00"
+      "chg_pct": -0.2,
+      "time": "2026-11-06T15:49:10-05:00"
+     },
+     "ORCL": {
+      "price": 115.523,
+      "prev_close": 115.16,
+      "chg_pct": 0.32,
+      "time": "2026-11-06T15:49:21-05:00"
+     },
+     "NVDA": {
+      "price": 187.355,
+      "prev_close": 181.6,
+      "chg_pct": 3.17,
+      "time": "2026-11-06T15:49:22-05:00"
      },
      "APP": {
-      "price": 391.39,
+      "price": 388.974,
       "prev_close": 356.1,
-      "chg_pct": 9.91,
-      "time": "2026-11-06T15:42:55-05:00"
+      "chg_pct": 9.23,
+      "time": "2026-11-06T15:49:22-05:00"
      }
     },
     "quote_time": {
-     "et": "2026-11-06T15:42:55-05:00",
-     "hkt": "2026-11-07 04:42"
+     "et": "2026-11-06T15:49:22-05:00",
+     "hkt": "2026-11-07 04:49"
     },
     "quote_source": "Yahoo Finance",
     "quotes_ok": true,
     "fallback": false,
     "hot": [
      {
+      "ticker": "ORCL",
+      "chg_pct": 0.32,
+      "bull": 0,
+      "bear": 4,
+      "accounts": [
+       "StockSavvyShay",
+       "KobeissiLetter",
+       "ripster47",
+       "DougKass"
+      ]
+     },
+     {
+      "ticker": "NVDA",
+      "chg_pct": 3.17,
+      "bull": 1,
+      "bear": 1,
+      "accounts": [
+       "Beth_Kindig",
+       "howardlindzon",
+       "StockSavvyShay",
+       "SJosephBurns",
+       "dampedspring"
+      ]
+     },
+     {
       "ticker": "APP",
-      "chg_pct": 9.91,
+      "chg_pct": 9.23,
       "bull": 2,
       "bear": 0,
       "accounts": [
@@ -868,43 +905,33 @@
      },
      {
       "ticker": "QQQ",
-      "chg_pct": 1.65,
+      "chg_pct": 1.61,
       "bull": 0,
       "bear": 2,
       "accounts": [
        "carlquintanilla",
        "RedDogT3",
        "Mr_Derivatives",
+       "SJosephBurns",
        "TrendSpider",
        "ripster47",
        "leadlagreport"
-      ]
-     },
-     {
-      "ticker": "SPY",
-      "chg_pct": 0.54,
-      "bull": 0,
-      "bear": 2,
-      "accounts": [
-       "howardlindzon",
-       "RedDogT3",
-       "ripster47"
       ]
      }
     ],
     "x": {
      "en": {
-      "text": "Into the close · As of 15:42 ET (04:42 HKT)\n\n$SPY +0.5% · $QQQ +1.6% · $DIA -0.3%\n\n$APP +9.9%, 2 accounts bullish on site\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #APP #QQQ",
+      "text": "Into the close · As of 15:49 ET (04:49 HKT)\n\n$SPY +0.6% · $QQQ +1.6% · $DIA -0.2%\n\n$ORCL +0.3%, 4 accounts bearish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #ORCL #NVDA",
       "url": ""
      }
     },
     "threads": {
      "zh": {
-      "text": "收市前回顧 · 截至 15:42 ET（04:42 HKT）\n\n$SPY +0.5% · $QQQ +1.6% · $DIA -0.3%\n\n$APP +9.9%，網站 2 個帳號看好\n$QQQ +1.6%，網站 2 個帳號看空\n$SPY +0.5%，網站 2 個帳號看空\n\n網站新入看好：$APP\n網站新入看空：$QQQ, $SPY\n退出看好：$AMD, $GOOGL\n退出看空：$IREN\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #APP #QQQ",
+      "text": "收市前回顧 · 截至 15:49 ET（04:49 HKT）\n\n$SPY +0.6% · $QQQ +1.6% · $DIA -0.2%\n\n$ORCL +0.3%，網站 4 個帳號看空\n$NVDA +3.2%，網站 1 個帳號看好\n$APP +9.2%，網站 2 個帳號看好\n$QQQ +1.6%，網站 2 個帳號看空\n\n網站新入看空：$ORCL\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #ORCL #NVDA",
       "url": null
      },
      "en": {
-      "text": "Into the close · As of 15:42 ET (04:42 HKT)\n\n$SPY +0.5% · $QQQ +1.6% · $DIA -0.3%\n\n$APP +9.9%, 2 accounts bullish on site\n$QQQ +1.6%, 2 accounts bearish on site\n$SPY +0.5%, 2 accounts bearish on site\n\nNewly bullish on site: $APP\nNewly bearish on site: $QQQ, $SPY\nLeft the bullish list: $AMD, $GOOGL\nLeft the bearish list: $IREN\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #APP #QQQ",
+      "text": "Into the close · As of 15:49 ET (04:49 HKT)\n\n$SPY +0.6% · $QQQ +1.6% · $DIA -0.2%\n\n$ORCL +0.3%, 4 accounts bearish on site\n$NVDA +3.2%, 1 account bullish on site\n$APP +9.2%, 2 accounts bullish on site\n$QQQ +1.6%, 2 accounts bearish on site\n\nNewly bearish on site: $ORCL\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #ORCL #NVDA",
       "url": null
      }
     },
@@ -920,13 +947,14 @@
       "APP"
      ],
      "bear": [
+      "ORCL",
       "QQQ",
       "SPY"
      ]
     }
    }
   },
-  "generated_at": "2026-11-06T15:42:54-05:00",
-  "generated_hkt": "2026-11-07 04:42"
+  "generated_at": "2026-11-06T15:49:21-05:00",
+  "generated_hkt": "2026-11-07 04:49"
  }
 }
