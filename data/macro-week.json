@@ -2,18 +2,18 @@
  "date": "2026-11-07",
  "date_kst": "2026-11-07",
  "frozen": false,
- "made_hkt": "2026-11-06 03:01",
- "from": "2026-10-31",
- "to": "2026-11-06",
+ "made_hkt": "2026-11-07 02:16",
+ "from": "2026-11-01",
+ "to": "2026-11-07",
  "themes": [
   {
    "theme": "rates",
-   "accounts": 8,
-   "n": 8,
+   "accounts": 3,
+   "n": 3,
    "bull": 0,
-   "bear": 4,
-   "neu": 4,
-   "arrow": "flat",
+   "bear": 2,
+   "neu": 1,
+   "arrow": "dn",
    "quotes": {
     "zh": {
      "acc": "MarkNewtonCMT",
@@ -54,11 +54,11 @@
   },
   {
    "theme": "jobs",
-   "accounts": 4,
-   "n": 4,
+   "accounts": 3,
+   "n": 3,
    "bull": 0,
    "bear": 0,
-   "neu": 4,
+   "neu": 3,
    "arrow": "up",
    "quotes": {
     "zh": {
@@ -77,12 +77,12 @@
   },
   {
    "theme": "growth",
-   "accounts": 15,
-   "n": 15,
-   "bull": 5,
-   "bear": 5,
-   "neu": 5,
-   "arrow": "flat",
+   "accounts": 11,
+   "n": 11,
+   "bull": 4,
+   "bear": 3,
+   "neu": 4,
+   "arrow": "up",
    "quotes": {
     "zh": {
      "acc": "bespokeinvest",
@@ -100,11 +100,11 @@
   },
   {
    "theme": "yields",
-   "accounts": 10,
-   "n": 10,
+   "accounts": 9,
+   "n": 9,
    "bull": 1,
    "bear": 4,
-   "neu": 5,
+   "neu": 4,
    "arrow": "flat",
    "quotes": {
     "zh": {
@@ -123,11 +123,11 @@
   },
   {
    "theme": "fx",
-   "accounts": 3,
-   "n": 2,
+   "accounts": 2,
+   "n": 1,
    "bull": 0,
    "bear": 1,
-   "neu": 1,
+   "neu": 0,
    "arrow": "dn",
    "quotes": {
     "zh": {
@@ -146,12 +146,12 @@
   },
   {
    "theme": "energy",
-   "accounts": 21,
-   "n": 20,
-   "bull": 4,
-   "bear": 8,
-   "neu": 8,
-   "arrow": "dn",
+   "accounts": 14,
+   "n": 14,
+   "bull": 3,
+   "bear": 5,
+   "neu": 6,
+   "arrow": "flat",
    "quotes": {
     "zh": {
      "acc": "canuck2usa",
@@ -169,47 +169,47 @@
   },
   {
    "theme": "policy",
-   "accounts": 22,
-   "n": 21,
+   "accounts": 19,
+   "n": 19,
    "bull": 1,
    "bear": 8,
-   "neu": 12,
-   "arrow": "flat",
+   "neu": 10,
+   "arrow": "dn",
    "quotes": {
     "zh": {
-     "acc": "LeopoldTracker_",
-     "impact": "bear",
-     "text": "選舉可能摧毀Leopold Aschenbrenner。昨天民主黨橫掃眾議院和參議院，有26名候選人主張關閉數據中心。這就是為什麼更廣泛的市場今天上漲1.5%，但Leopold的AI押注沒有：$SNDK（#1持倉）：-8.8%，$MU（#2持倉）：-6.0%，$IREN：-12.0%，$CRWV：-9.6%，$BE：-9.3%，$NBIS：-6.7%。持倉反映他的第二季13F，在Citadel拋售前提交。他的第三季持倉將於11月16日在此帳戶發布。",
-     "url": "https://x.com/LeopoldTracker_/status/2118019152963100963"
+     "acc": "StockSavvyShay",
+     "impact": "neu",
+     "text": "德州當選州長 Gina Hinojosa 表示她可以與 Elon Musk 有強有力的工作關係，但僅限於我們的條件。鑑於 $TSLA 和 $SPCX 已在德州大量投資，這聽起來更像是關於稅收減免和誰支付新電力基礎設施的談判，而不是試圖將他們趕出去。",
+     "url": "https://x.com/StockSavvyShay/status/2118494724516622662"
     },
     "en": {
-     "acc": "LeopoldTracker_",
-     "impact": "bear",
-     "text": "The elections could wreck Leopold Aschenbrenner. Yesterday Democrats swept the House and Senate, with 26 candidates running on killing data centers. That's why the broader market is up 1.5% today, but Leopold's AI bets aren't: $SNDK (#1 holding): -8.8%, $MU (#2 holding): -6.0%, $IREN: -12.0%, $CRWV: -9.6%, $BE: -9.3%, $NBIS: -6.7%. Holdings reflect his Q2 13F, filed before Citadel fire sale. His Q3 holdings release November 16 on this account.",
-     "url": "https://x.com/LeopoldTracker_/status/2118019152963100963"
+     "acc": "StockSavvyShay",
+     "impact": "neu",
+     "text": "Texas Governor-elect Gina Hinojosa says she can have a strong working relationship with Elon Musk but only on our terms. With $TSLA and $SPCX already heavily invested in Texas this sounds more like a negotiation over tax breaks and who pays for new power infrastructure than an attempt to push them out.",
+     "url": "https://x.com/StockSavvyShay/status/2118494724516622662"
     }
    }
   },
   {
    "theme": "other",
-   "accounts": 42,
-   "n": 42,
-   "bull": 7,
-   "bear": 10,
-   "neu": 25,
+   "accounts": 35,
+   "n": 35,
+   "bull": 5,
+   "bear": 7,
+   "neu": 23,
    "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "EliteOptions2",
-     "impact": "bull",
-     "text": "星期三交易計劃：$AMD 在財報後跳空高開，並帶動半導體和 AI 股票在盤後上漲。中期選舉今晚舉行；過去 19 次中期選舉後股市 12 個月表現均為正。在每個行業中尋找最佳公司，並在未來 2-3 週開始買入，至少持有 6-9 個月。期待 QQQ 在週五收盤高於 700，以及 $SPX 高於 7620。$NBIS 有機會達到 170，$MU 達到 900，$SNDK 達到 1250 有可能，如果 $SMH 本週能守住 525 上方，下週可看到 550。",
-     "url": "https://x.com/EliteOptions2/status/2117783939016237388"
+     "acc": "ripster47",
+     "impact": "neu",
+     "text": "一些安慰：納斯達剋期貨今天與韓國脫節。所有人現在可以放鬆。$NQ",
+     "url": "https://x.com/ripster47/status/2118499666790687017"
     },
     "en": {
-     "acc": "EliteOptions2",
-     "impact": "bull",
-     "text": "Trade plan for Wednesday: $AMD gapping higher after earnings and lifting semiconductor and AI stocks after hours. Midterm elections tonight; the 12-month performance of the stock market after midterms has been positive the past 19 elections. Find the best companies in each sector and start buying over the next 2-3 weeks and hold for at least 6-9 months. Looking for QQQ to close above 700 and $SPX above 7620 by Friday. $NBIS to 170 in play, $MU to 900, $SNDK to 1250 possible, if $SMH can hold above 525 this week we can see 550 next week.",
-     "url": "https://x.com/EliteOptions2/status/2117783939016237388"
+     "acc": "ripster47",
+     "impact": "neu",
+     "text": "Some consolation: Nasdaq Futures are disconnected from Korea today. All can relax for now. $NQ",
+     "url": "https://x.com/ripster47/status/2118499666790687017"
     }
    }
   }
@@ -220,46 +220,46 @@
   "energy"
  ],
  "accounts": 201,
- "range": "10/31–11/6",
+ "range": "11/1–11/7",
  "images": {
-  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-07-0301",
-  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-07-0301"
+  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-07-0216",
+  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-07-0216"
  },
  "stories": {
-  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-07-0301",
-  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-07-0301"
+  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-07-0216",
+  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-07-0216"
  },
  "posts": {
   "zh": {
-   "instagram": "本週宏觀：最多人講「其他」（利好 7・利空 10）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（10/31–11/6）\n\n1. 其他：利好 7・利空 10・中性 25（同上週差不多）\n@EliteOptions2：「星期三交易計劃：$AMD 在財報後跳空高開，並帶動半導體和 AI 股票在盤後上漲。中期選舉今晚舉行；過去 19 次中期選舉後股市 12 個月表現均為正。在每個行業中尋找最佳公司…」\n\n2. 關稅／政策／地緣政治：利好 1・利空 8・中性 12（同上週差不多）\n@LeopoldTracker_：「選舉可能摧毀Leopold Aschenbrenner。昨天民主黨橫掃眾議院和參議院，有26名候選人主張關閉數據中心。這就是為什麼更廣泛的市場今天上漲1.5%，但Leopold的…」\n\n3. 油價／能源：利好 4・利空 8・中性 8（比上週轉差 ▼）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n看完 $AMD 這份成績單，你最在意哪個數字？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #AMD",
-   "threads": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（10/31–11/6）\n\n1. 其他：利好 7・利空 10・中性 25（同上週差不多）\n2. 關稅／政策／地緣政治：利好 1・利空 8・中性 12（同上週差不多）\n3. 油價／能源：利好 4・利空 8・中性 8（比上週轉差 ▼）\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
-   "x": "這星期大家最常聊的宏觀話題\n\n其他 7/10/25\n關稅／政策／地緣政治 1/8/12\n油價／能源 4/8/8\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "instagram": "本週宏觀：最多人講「其他」（利好 5・利空 7）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/1–11/7）\n\n1. 其他：利好 5・利空 7・中性 23（同上週差不多）\n@ripster47：「一些安慰：納斯達剋期貨今天與韓國脫節。所有人現在可以放鬆。$NQ」\n\n2. 關稅／政策／地緣政治：利好 1・利空 8・中性 10（比上週轉差 ▼）\n@StockSavvyShay：「德州當選州長 Gina Hinojosa 表示她可以與 Elon Musk 有強有力的工作關係，但僅限於我們的條件。鑑於 $TSLA 和 $SPCX 已在德州大量投資，這聽起來更…」\n\n3. 油價／能源：利好 3・利空 5・中性 6（同上週差不多）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n你覺得下週市場最該留意哪個數據？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #NQ #TSLA",
+   "threads": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/1–11/7）\n\n1. 其他：利好 5・利空 7・中性 23（同上週差不多）\n@ripster47：「一些安慰：納斯達剋期貨今天與韓國脫節。所有人現在可以放鬆。$NQ」\n\n2. 關稅／政策／地緣政治：利好 1・利空 8・中性 10（比上週轉差 ▼）\n@StockSavvyShay：「德州當選州長 Gina Hinojosa 表示她可以與 Elon Musk 有強有力的工作關係，但僅限於我們的條件。鑑於 $TSLA 和 $SPCX 已在德州大量投資，這聽起來更…」\n\n3. 油價／能源：利好 3・利空 5・中性 6（同上週差不多）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "x": "這星期大家最常聊的宏觀話題\n\n其他 5/7/23\n關稅／政策／地緣政治 1/8/10\n油價／能源 3/5/6\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "reddit": {
-    "title": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（10/31–11/6）",
-    "body": "1. 其他：利好 7・利空 10・中性 25（同上週差不多）\n@EliteOptions2：「星期三交易計劃：$AMD 在財報後跳空高開，並帶動半導體和 AI 股票在盤後上漲。中期選舉今晚舉行；過去 19 次中期選舉後股市 12 個月表現均為正。在每個行業中尋找最佳公司…」\n\n2. 關稅／政策／地緣政治：利好 1・利空 8・中性 12（同上週差不多）\n@LeopoldTracker_：「選舉可能摧毀Leopold Aschenbrenner。昨天民主黨橫掃眾議院和參議院，有26名候選人主張關閉數據中心。這就是為什麼更廣泛的市場今天上漲1.5%，但Leopold的…」\n\n3. 油價／能源：利好 4・利空 8・中性 8（比上週轉差 ▼）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
+    "title": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/1–11/7）",
+    "body": "1. 其他：利好 5・利空 7・中性 23（同上週差不多）\n@ripster47：「一些安慰：納斯達剋期貨今天與韓國脫節。所有人現在可以放鬆。$NQ」\n\n2. 關稅／政策／地緣政治：利好 1・利空 8・中性 10（比上週轉差 ▼）\n@StockSavvyShay：「德州當選州長 Gina Hinojosa 表示她可以與 Elon Musk 有強有力的工作關係，但僅限於我們的條件。鑑於 $TSLA 和 $SPCX 已在德州大量投資，這聽起來更…」\n\n3. 油價／能源：利好 3・利空 5・中性 6（同上週差不多）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
    },
-   "facebook": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（10/31–11/6）\n\n1. 其他：利好 7・利空 10・中性 25（同上週差不多）\n@EliteOptions2：「星期三交易計劃：$AMD 在財報後跳空高開，並帶動半導體和 AI 股票在盤後上漲。中期選舉今晚舉行；過去 19 次中期選舉後股市 12 個月表現均為正。在每個行業中尋找最佳公司…」\n\n2. 關稅／政策／地緣政治：利好 1・利空 8・中性 12（同上週差不多）\n@LeopoldTracker_：「選舉可能摧毀Leopold Aschenbrenner。昨天民主黨橫掃眾議院和參議院，有26名候選人主張關閉數據中心。這就是為什麼更廣泛的市場今天上漲1.5%，但Leopold的…」\n\n3. 油價／能源：利好 4・利空 8・中性 8（比上週轉差 ▼）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "facebook": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/1–11/7）\n\n1. 其他：利好 5・利空 7・中性 23（同上週差不多）\n@ripster47：「一些安慰：納斯達剋期貨今天與韓國脫節。所有人現在可以放鬆。$NQ」\n\n2. 關稅／政策／地緣政治：利好 1・利空 8・中性 10（比上週轉差 ▼）\n@StockSavvyShay：「德州當選州長 Gina Hinojosa 表示她可以與 Elon Musk 有強有力的工作關係，但僅限於我們的條件。鑑於 $TSLA 和 $SPCX 已在德州大量投資，這聽起來更…」\n\n3. 油價／能源：利好 3・利空 5・中性 6（同上週差不多）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "story": "#美股"
   },
   "en": {
    "instagram": "",
    "threads": "",
-   "x": "What X talked about in macro this week\n\nOther 7/10/25\nTariffs / policy / geopolitics 1/8/12\nOil / energy 4/8/8\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
+   "x": "What X talked about in macro this week\n\nOther 5/7/23\nTariffs / policy / geopolitics 1/8/10\nOil / energy 3/5/6\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
    "reddit": {
-    "title": "The macro topics the 201 X accounts we follow talked about most this week (10/31–11/6)",
-    "body": "1. Other: bullish 7 · bearish 10 · neutral 25 (about the same as last week)\n@EliteOptions2: “Trade plan for Wednesday: $AMD gapping higher after earnings and lifting semiconductor and AI stocks after hours. Midterm elections tonight; the 12-m…”\n\n2. Tariffs / policy / geopolitics: bullish 1 · bearish 8 · neutral 12 (about the same as last week)\n@LeopoldTracker_: “The elections could wreck Leopold Aschenbrenner. Yesterday Democrats swept the House and Senate, with 26 candidates running on killing data centers…”\n\n3. Oil / energy: bullish 4 · bearish 8 · neutral 8 (worse than last week ▼)\n@canuck2usa: “$CL_F cliff diving.”\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro"
+    "title": "The macro topics the 201 X accounts we follow talked about most this week (11/1–11/7)",
+    "body": "1. Other: bullish 5 · bearish 7 · neutral 23 (about the same as last week)\n@ripster47: “Some consolation: Nasdaq Futures are disconnected from Korea today. All can relax for now. $NQ”\n\n2. Tariffs / policy / geopolitics: bullish 1 · bearish 8 · neutral 10 (worse than last week ▼)\n@StockSavvyShay: “Texas Governor-elect Gina Hinojosa says she can have a strong working relationship with Elon Musk but only on our terms. With $TSLA and $SPCX already…”\n\n3. Oil / energy: bullish 3 · bearish 5 · neutral 6 (about the same as last week)\n@canuck2usa: “$CL_F cliff diving.”\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro"
    },
-   "facebook": "The macro topics the 201 X accounts we follow talked about most this week (10/31–11/6)\n\n1. Other: bullish 7 · bearish 10 · neutral 25 (about the same as last week)\n@EliteOptions2: “Trade plan for Wednesday: $AMD gapping higher after earnings and lifting semiconductor and AI stocks after hours. Midterm elections tonight; the 12-m…”\n\n2. Tariffs / policy / geopolitics: bullish 1 · bearish 8 · neutral 12 (about the same as last week)\n@LeopoldTracker_: “The elections could wreck Leopold Aschenbrenner. Yesterday Democrats swept the House and Senate, with 26 candidates running on killing data centers…”\n\n3. Oil / energy: bullish 4 · bearish 8 · neutral 8 (worse than last week ▼)\n@canuck2usa: “$CL_F cliff diving.”\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro",
+   "facebook": "The macro topics the 201 X accounts we follow talked about most this week (11/1–11/7)\n\n1. Other: bullish 5 · bearish 7 · neutral 23 (about the same as last week)\n@ripster47: “Some consolation: Nasdaq Futures are disconnected from Korea today. All can relax for now. $NQ”\n\n2. Tariffs / policy / geopolitics: bullish 1 · bearish 8 · neutral 10 (worse than last week ▼)\n@StockSavvyShay: “Texas Governor-elect Gina Hinojosa says she can have a strong working relationship with Elon Musk but only on our terms. With $TSLA and $SPCX already…”\n\n3. Oil / energy: bullish 3 · bearish 5 · neutral 6 (about the same as last week)\n@canuck2usa: “$CL_F cliff diving.”\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
    "story": ""
   }
  },
  "ig_images": {
   "zh": [
-   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-07-0301",
+   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-07-0216",
    "https://thecrowdtape.com/og/cta/ig-cta-zh.jpg"
   ],
   "en": [
-   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-07-0301",
+   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-07-0216",
    "https://thecrowdtape.com/og/cta/ig-cta-en.jpg"
   ]
  },
@@ -269,7 +269,7 @@
   "video_path": null,
   "video_expected_path": "assets/reels/2026-11-07-macro-week.mp4",
   "caption": {
-   "zh": "本週宏觀：最多人講「其他」（利好 7・利空 10）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（10/31–11/6）\n\n1. 其他：利好 7・利空 10・中性 25（同上週差不多）\n@EliteOptions2：「星期三交易計劃：$AMD 在財報後跳空高開，並帶動半導體和 AI 股票在盤後上漲。中期選舉今晚舉行；過去 19 次中期選舉後股市 12 個月表現均為正。在每個行業中尋找最佳公司…」\n\n2. 關稅／政策／地緣政治：利好 1・利空 8・中性 12（同上週差不多）\n@LeopoldTracker_：「選舉可能摧毀Leopold Aschenbrenner。昨天民主黨橫掃眾議院和參議院，有26名候選人主張關閉數據中心。這就是為什麼更廣泛的市場今天上漲1.5%，但Leopold的…」\n\n3. 油價／能源：利好 4・利空 8・中性 8（比上週轉差 ▼）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n看完 $AMD 這份成績單，你最在意哪個數字？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #AMD",
+   "zh": "本週宏觀：最多人講「其他」（利好 5・利空 7）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/1–11/7）\n\n1. 其他：利好 5・利空 7・中性 23（同上週差不多）\n@ripster47：「一些安慰：納斯達剋期貨今天與韓國脫節。所有人現在可以放鬆。$NQ」\n\n2. 關稅／政策／地緣政治：利好 1・利空 8・中性 10（比上週轉差 ▼）\n@StockSavvyShay：「德州當選州長 Gina Hinojosa 表示她可以與 Elon Musk 有強有力的工作關係，但僅限於我們的條件。鑑於 $TSLA 和 $SPCX 已在德州大量投資，這聽起來更…」\n\n3. 油價／能源：利好 3・利空 5・中性 6（同上週差不多）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n你覺得下週市場最該留意哪個數據？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #NQ #TSLA",
    "en": ""
   }
  },
