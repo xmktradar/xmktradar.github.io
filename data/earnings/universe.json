@@ -1,5 +1,5 @@
 {
- "day": "2026-11-07",
+ "day": "2026-11-08",
  "companies": {
   "AAPL": {
    "cik": 320193,
@@ -64,7 +64,7 @@
   "WMT": {
    "cik": 104169,
    "name": "Walmart Inc.",
-   "mcap": 995843768320
+   "mcap": 998898073600
   },
   "SKHY": {
    "cik": 2120882,
@@ -461,15 +461,15 @@
    "name": "Anheuser-Busch InBev SA/NV",
    "mcap": 165328060416
   },
-  "COP": {
-   "cik": 1163165,
-   "name": "ConocoPhillips",
-   "mcap": 161116815360
-  },
   "DHR": {
    "cik": 313616,
    "name": "Danaher Corporation",
    "mcap": 161862533120
+  },
+  "COP": {
+   "cik": 1163165,
+   "name": "ConocoPhillips",
+   "mcap": 161116815360
   },
   "ISRG": {
    "cik": 1035267,
@@ -494,7 +494,7 @@
   "TJX": {
    "cik": 109198,
    "name": "The TJX Companies, Inc.",
-   "mcap": 149466513408
+   "mcap": 148826488832
   },
   "BX": {
    "cik": 1393818,
@@ -634,7 +634,7 @@
   "SPOT": {
    "cik": 1639920,
    "name": "Spotify Technology S.A.",
-   "mcap": 123990958080
+   "mcap": 123969331200
   },
   "PLD": {
    "cik": 1045609,
@@ -701,15 +701,15 @@
    "name": "BP p.l.c.",
    "mcap": 114693783552
   },
-  "ABNB": {
-   "cik": 1559720,
-   "name": "Airbnb, Inc.",
-   "mcap": 113375051776
-  },
   "MFG": {
    "cik": 1335730,
    "name": "Mizuho Financial Group, Inc.",
    "mcap": 113480548352
+  },
+  "ABNB": {
+   "cik": 1559720,
+   "name": "Airbnb, Inc.",
+   "mcap": 113375051776
   },
   "SNY": {
    "cik": 1121404,
@@ -719,7 +719,7 @@
   "BNS": {
    "cik": 9631,
    "name": "The Bank of Nova Scotia",
-   "mcap": 111568994304
+   "mcap": 111754518528
   },
   "CVNA": {
    "cik": 1690820,
@@ -791,11 +791,6 @@
    "name": "Equinix, Inc.",
    "mcap": 100246462464
   },
-  "CNQ": {
-   "cik": 1017413,
-   "name": "Canadian Natural Resources Limited",
-   "mcap": 98805555200
-  },
   "DUK": {
    "cik": 1326160,
    "name": "Duke Energy Corporation",
@@ -810,6 +805,11 @@
    "cik": 1140625,
    "name": "Equinor ASA",
    "mcap": 99385630720
+  },
+  "CNQ": {
+   "cik": 1017413,
+   "name": "Canadian Natural Resources Limited",
+   "mcap": 98805555200
   },
   "WDC": {
    "cik": 106040,
@@ -836,6 +836,11 @@
    "name": "Valero Energy Corporation",
    "mcap": 96619511808
   },
+  "NET": {
+   "cik": 1477333,
+   "name": "Cloudflare, Inc.",
+   "mcap": 96317915136
+  },
   "ICE": {
    "cik": 1571949,
    "name": "Intercontinental Exchange, Inc.",
@@ -845,11 +850,6 @@
    "cik": 1534701,
    "name": "Phillips 66",
    "mcap": 95848579072
-  },
-  "NET": {
-   "cik": 1477333,
-   "name": "Cloudflare, Inc.",
-   "mcap": 96317915136
   },
   "GD": {
    "cik": 40533,
@@ -914,7 +914,7 @@
   "EMR": {
    "cik": 32604,
    "name": "Emerson Electric Co.",
-   "mcap": 90932232192
+   "mcap": 90558832640
   },
   "ING": {
    "cik": 1039765,
@@ -976,15 +976,15 @@
    "name": "Moody's Corporation",
    "mcap": 87189684224
   },
-  "SPG": {
-   "cik": 1063761,
-   "name": "Simon Property Group, Inc.",
-   "mcap": 86464774144
-  },
   "CMCSA": {
    "cik": 1166691,
    "name": "Comcast Corporation",
    "mcap": 86609035264
+  },
+  "SPG": {
+   "cik": 1063761,
+   "name": "Simon Property Group, Inc.",
+   "mcap": 86464774144
   },
   "SNPS": {
    "cik": 883241,
@@ -1033,8 +1033,8 @@
   },
   "HLT": {
    "cik": 1585689,
-   "name": "Hilton Worldwide Holdings Inc.",
-   "mcap": 83779559424
+   "name": "Hilton Worldwide Holdings Inc. Common Stock",
+   "mcap": 82426740736
   },
   "HWM": {
    "cik": 4281,
@@ -1101,11 +1101,6 @@
    "name": "The Cigna Group",
    "mcap": 77361717248
   },
-  "EOG": {
-   "cik": 821189,
-   "name": "EOG Resources, Inc.",
-   "mcap": 76284583936
-  },
   "AMX": {
    "cik": 1129137,
    "name": "América Móvil, S.A.B. de C.V.",
@@ -1120,6 +1115,11 @@
    "cik": 1099590,
    "name": "MercadoLibre, Inc.",
    "mcap": 76552167424
+  },
+  "EOG": {
+   "cik": 821189,
+   "name": "EOG Resources, Inc.",
+   "mcap": 76284583936
   },
   "RSG": {
    "cik": 1060391,
@@ -1144,7 +1144,7 @@
   "ROST": {
    "cik": 745732,
    "name": "Ross Stores, Inc.",
-   "mcap": 73822420992
+   "mcap": 74129301504
   },
   "SLB": {
    "cik": 87347,
@@ -1189,7 +1189,7 @@
   "TGT": {
    "cik": 27419,
    "name": "Target Corporation",
-   "mcap": 71964311552
+   "mcap": 71965147136
   },
   "NSC": {
    "cik": 702165,
@@ -1274,7 +1274,7 @@
   "TDG": {
    "cik": 1260221,
    "name": "TransDigm Group Incorporated",
-   "mcap": 66953060352
+   "mcap": 66166550528
   },
   "URI": {
    "cik": 1067701,
@@ -1326,25 +1326,25 @@
    "name": "NXP Semiconductors N.V.",
    "mcap": 62582235136
   },
-  "MET": {
-   "cik": 1099219,
-   "name": "MetLife, Inc.",
-   "mcap": 61757005824
-  },
   "BSX": {
    "cik": 885725,
    "name": "Boston Scientific Corporation",
    "mcap": 61964984320
   },
-  "CMI": {
-   "cik": 26172,
-   "name": "Cummins Inc.",
-   "mcap": 61694644224
-  },
   "WPM": {
    "cik": 1323404,
    "name": "Wheaton Precious Metals Corp.",
    "mcap": 61910495232
+  },
+  "MET": {
+   "cik": 1099219,
+   "name": "MetLife, Inc.",
+   "mcap": 61757005824
+  },
+  "CMI": {
+   "cik": 26172,
+   "name": "Cummins Inc.",
+   "mcap": 61694644224
   },
   "NWG": {
    "cik": 844150,
@@ -1426,15 +1426,15 @@
    "name": "NIKE, Inc.",
    "mcap": 57318068224
   },
-  "LNG": {
-   "cik": 3570,
-   "name": "Cheniere Energy, Inc.",
-   "mcap": 56758480896
-  },
   "TRGP": {
    "cik": 1389170,
    "name": "Targa Resources Corp.",
    "mcap": 56768847872
+  },
+  "LNG": {
+   "cik": 3570,
+   "name": "Cheniere Energy, Inc.",
+   "mcap": 56758480896
   },
   "MPLX": {
    "cik": 1552000,
