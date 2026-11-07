@@ -1,39 +1,41 @@
 # The Crowd Tape
 
-Generated (HKT): 2026-11-07 09:16
+Generated (HKT): 2026-11-07 09:44
 Data cutoff: 2026-11-07T01:49:27+08:00
 Tracked accounts: 201
 - X: 200
 - Truth Social: 1
 
-Window: 2026-11-07 to 2026-11-07 HKT
-Window source: days
+Window: 2026-11-05T19:30 to 2026-11-07T01:49 HKT
+Window source: writer
 
 ## Joint bullish
 Confirmed US stocks where at least 2 tracked accounts have a latest stance of bullish in this window and none are bearish.
-- none
+- APP: 2 bullish, 0 bearish
 
 ## Joint bearish
 Confirmed US stocks where at least 2 tracked accounts have a latest stance of bearish in this window and none are bullish.
+- QQQ: 0 bullish, 2 bearish
+- SPY: 0 bullish, 2 bearish
 - ORCL: 0 bullish, 2 bearish
 
 ## Most discussed
 Tickers in this window, ranked by unique accounts and then by mentions.
-- NVDA: 3 accounts, 4 mentions
+- QQQ: 7 accounts, 9 mentions
+- NVDA: 5 accounts, 7 mentions
+- SPY: 4 accounts, 4 mentions
+- TSLA: 3 accounts, 3 mentions
+- AMD: 2 accounts, 2 mentions
+- APP: 2 accounts, 2 mentions
 - IREN: 2 accounts, 2 mentions
 - MSFT: 2 accounts, 2 mentions
 - ORCL: 2 accounts, 2 mentions
-- QQQ: 2 accounts, 2 mentions
 - SMH: 2 accounts, 2 mentions
-- SNDK: 1 accounts, 2 mentions
-- AAPL: 1 accounts, 1 mentions
-- AMD: 1 accounts, 1 mentions
-- AMZN: 1 accounts, 1 mentions
 
 ## Latest English daily summary
-Date: 2026-11-06
+Date: 2026-11-07
 Field: summaries_en.daily.brief
-After the midterm results the broader market bounced while data-center names were hit. The past ~30 hours saw only 62 posts from 30 accounts, noticeably quieter. Clearest consensus is bullish on $AMD and $GOOGL , while $IREN is clustered bearish on Texas election and data-center shutdown talk. The biggest split is on $QQQ , some seeing a reversal, others saying the weakness is not done.
+Only 41 posts from 21 accounts in the last ~30 hours, and the tone leans cautious. Common bearish views sit on the indices: @RedDogT3 notes $QQQ quickly broke below 680 for a pullback and $SPY broke the 762 gap pivot, changing the setup; Goldman’s trading desk also sees limited defensive signs. Divergence appears on $NVDA , with @Beth_Kindig highlighting Vera Rubin NVL72 racks potentially more than tripling total rack output value to $711B next year, while @howardlindzon frames the $2.5T single-day tech value destruction (half of NVDA) as just a flesh wound. The clearest shift is the report that MSFT is gradually reducing older NVDA capacity leased from $ORCL and shifting toward newer GPUs, making AI infrastructure reallocation concrete.
 
 ## Disclaimer
 Not investment advice. The content summarises public posts by third parties and is for information only.
