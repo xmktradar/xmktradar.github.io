@@ -1,42 +1,42 @@
 {
- "date": "2026-11-07",
- "date_kst": "2026-11-07",
- "frozen": true,
- "made_hkt": "2026-11-07 17:40",
- "from": "2026-11-01",
- "to": "2026-11-07",
+ "date": "2026-11-14",
+ "date_kst": "2026-11-14",
+ "frozen": false,
+ "made_hkt": "2026-11-08 00:51",
+ "from": "2026-11-02",
+ "to": "2026-11-08",
  "themes": [
   {
    "theme": "rates",
+   "accounts": 2,
+   "n": 2,
+   "bull": 0,
+   "bear": 1,
+   "neu": 1,
+   "arrow": "flat",
+   "quotes": {
+    "zh": {
+     "acc": "TheTranscript_",
+     "impact": "bear",
+     "text": "@TheTranscript_ 分享 $JPM JPMorgan Chase 高管 Charles Bristow：AI 驅動的存款流動性最終可能通過削弱銀行資助長期貸款的能力而提高全經濟體的借貸成本。指出存款速度越高，對期限資產的需求越少。",
+     "url": "https://x.com/TheTranscript_/status/2118886235099758884"
+    },
+    "en": {
+     "acc": "TheTranscript_",
+     "impact": "bear",
+     "text": "@TheTranscript_ shares $JPM JPMorgan Chase Executive Charles Bristow: AI-driven deposit mobility could ultimately raise economy-wide borrowing costs by undermining banks' ability to fund long-term loans. Notes higher velocity in deposits means less demand for duration-bearing assets.",
+     "url": "https://x.com/TheTranscript_/status/2118886235099758884"
+    }
+   }
+  },
+  {
+   "theme": "inflation",
    "accounts": 3,
    "n": 3,
    "bull": 0,
    "bear": 2,
    "neu": 1,
    "arrow": "dn",
-   "quotes": {
-    "zh": {
-     "acc": "MarkNewtonCMT",
-     "impact": "neu",
-     "text": "$KYMR Kymera Therapeutics- 我繼續發現許多醫療保健股票目前比許多科技股更具吸引力。醫療保健子行業正在發生漂亮的長期基底突破。雖然我預期科技股可以帶領下週反彈，但仍有一些障礙需要克服。選舉可以成為減少黨派之爭的正面力量，但如果利率尚未正式見頂，它們並不是許多人預期的市場清除事件。",
-     "url": "https://x.com/MarkNewtonCMT/status/2117768307285606441"
-    },
-    "en": {
-     "acc": "MarkNewtonCMT",
-     "impact": "neu",
-     "text": "$KYMR Kymera Therapeutics- I continue to find many HC stocks far more attractive than many within Tech these days. Beautiful long-term base breakouts are happening across sub-sectors within Healthcare. While I do anticipate Tech can lead the bounce into next week, it's got some wood to chop. Elections can be a positive force for Partisanship lessening, but they're not the market clearing event many expect if Rates haven't officially peaked yet.",
-     "url": "https://x.com/MarkNewtonCMT/status/2117768307285606441"
-    }
-   }
-  },
-  {
-   "theme": "inflation",
-   "accounts": 5,
-   "n": 5,
-   "bull": 0,
-   "bear": 3,
-   "neu": 2,
-   "arrow": "flat",
    "quotes": {
     "zh": {
      "acc": "steve_hanke",
@@ -54,11 +54,11 @@
   },
   {
    "theme": "jobs",
-   "accounts": 3,
-   "n": 3,
+   "accounts": 2,
+   "n": 2,
    "bull": 0,
    "bear": 0,
-   "neu": 3,
+   "neu": 2,
    "arrow": "up",
    "quotes": {
     "zh": {
@@ -77,12 +77,12 @@
   },
   {
    "theme": "growth",
-   "accounts": 11,
-   "n": 11,
-   "bull": 4,
+   "accounts": 8,
+   "n": 8,
+   "bull": 2,
    "bear": 3,
-   "neu": 4,
-   "arrow": "up",
+   "neu": 3,
+   "arrow": "flat",
    "quotes": {
     "zh": {
      "acc": "bespokeinvest",
@@ -100,12 +100,12 @@
   },
   {
    "theme": "yields",
-   "accounts": 9,
-   "n": 9,
+   "accounts": 6,
+   "n": 6,
    "bull": 1,
-   "bear": 4,
+   "bear": 1,
    "neu": 4,
-   "arrow": "flat",
+   "arrow": "up",
    "quotes": {
     "zh": {
      "acc": "KobeissiLetter",
@@ -123,34 +123,21 @@
   },
   {
    "theme": "fx",
-   "accounts": 2,
-   "n": 1,
+   "accounts": 0,
+   "n": 0,
    "bull": 0,
-   "bear": 1,
+   "bear": 0,
    "neu": 0,
-   "arrow": "dn",
-   "quotes": {
-    "zh": {
-     "acc": "robin_j_brooks",
-     "impact": "bear",
-     "text": "不。德國的TARGET2債權基本上是高債務外圍國家人為債息上限及貨幣大幅高估的對應物。這無法輕算消。若沒有這些債權，外圍貨幣已經大幅貶值，當然它們有一天仍可能這樣做…",
-     "url": "https://x.com/robin_j_brooks/status/2116857457540550699"
-    },
-    "en": {
-     "acc": "robin_j_brooks",
-     "impact": "bear",
-     "text": "No. Germany’s TARGET2 claims are basically the counterpart to artificial yield caps and big currency overvaluations on the high-debt periphery. There is no netting this out. Without these claims, periphery currencies would have devalued massively and of course they still might one day…",
-     "url": "https://x.com/robin_j_brooks/status/2116857457540550699"
-    }
-   }
+   "arrow": "none",
+   "quotes": {}
   },
   {
    "theme": "energy",
-   "accounts": 14,
-   "n": 14,
-   "bull": 3,
-   "bear": 5,
-   "neu": 6,
+   "accounts": 9,
+   "n": 9,
+   "bull": 2,
+   "bear": 4,
+   "neu": 3,
    "arrow": "flat",
    "quotes": {
     "zh": {
@@ -169,34 +156,34 @@
   },
   {
    "theme": "policy",
-   "accounts": 19,
-   "n": 19,
+   "accounts": 17,
+   "n": 16,
    "bull": 1,
-   "bear": 8,
-   "neu": 10,
-   "arrow": "dn",
+   "bear": 6,
+   "neu": 9,
+   "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "StockSavvyShay",
+     "acc": "TheTranscript_",
      "impact": "neu",
-     "text": "德州當選州長 Gina Hinojosa 表示她可以與 Elon Musk 有強有力的工作關係，但僅限於我們的條件。鑑於 $TSLA 和 $SPCX 已在德州大量投資，這聽起來更像是關於稅收減免和誰支付新電力基礎設施的談判，而不是試圖將他們趕出去。",
-     "url": "https://x.com/StockSavvyShay/status/2118494724516622662"
+     "text": "@TheTranscript_ 分享 $JPM JPMorgan Chase 高管 Charles Bristow 認為選舉後財政緊縮前景渺茫，預計是擴張而非緊縮，因為各方同意支出。",
+     "url": "https://x.com/TheTranscript_/status/2118884467729203500"
     },
     "en": {
-     "acc": "StockSavvyShay",
+     "acc": "TheTranscript_",
      "impact": "neu",
-     "text": "Texas Governor-elect Gina Hinojosa says she can have a strong working relationship with Elon Musk but only on our terms. With $TSLA and $SPCX already heavily invested in Texas this sounds more like a negotiation over tax breaks and who pays for new power infrastructure than an attempt to push them out.",
-     "url": "https://x.com/StockSavvyShay/status/2118494724516622662"
+     "text": "@TheTranscript_ shares $JPM JPMorgan Chase Executive Charles Bristow sees little prospect of fiscal austerity following the elections, expecting expansion rather than austerity as parties agree on spending.",
+     "url": "https://x.com/TheTranscript_/status/2118884467729203500"
     }
    }
   },
   {
    "theme": "other",
-   "accounts": 35,
-   "n": 35,
-   "bull": 5,
-   "bear": 7,
-   "neu": 23,
+   "accounts": 27,
+   "n": 27,
+   "bull": 4,
+   "bear": 4,
+   "neu": 19,
    "arrow": "flat",
    "quotes": {
     "zh": {
@@ -220,56 +207,56 @@
   "energy"
  ],
  "accounts": 201,
- "range": "11/1–11/7",
+ "range": "11/2–11/8",
  "images": {
-  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-07-1740",
-  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-07-1740"
+  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-14-0051",
+  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-14-0051"
  },
  "stories": {
-  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-07-1740",
-  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-07-1740"
+  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-14-0051",
+  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-14-0051"
  },
  "posts": {
   "zh": {
-   "instagram": "本週宏觀：最多人講「其他」（利好 5・利空 7）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/1–11/7）\n\n1. 其他：利好 5・利空 7・中性 23（同上週差不多）\n@MarkNewtonCMT：「Mark Newton 指出除科技外，標普指數從 5 月初到週四超過 6 個月幾乎沒有變化。等權重標普 500 $RSP 自 10 月 1 日以來上漲了 7%。」\n\n2. 關稅／政策／地緣政治：利好 1・利空 8・中性 10（比上週轉差 ▼）\n@StockSavvyShay：「德州當選州長 Gina Hinojosa 表示她可以與 Elon Musk 有強有力的工作關係，但僅限於我們的條件。鑑於 $TSLA 和 $SPCX 已在德州大量投資，這聽起來更…」\n\n3. 油價／能源：利好 3・利空 5・中性 6（同上週差不多）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n這週哪個宏觀消息最影響你的判斷？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #RSP #TSLA",
-   "threads": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/1–11/7）\n\n1. 其他：利好 5・利空 7・中性 23（同上週差不多）\n2. 關稅／政策／地緣政治：利好 1・利空 8・中性 10（比上週轉差 ▼）\n3. 油價／能源：利好 3・利空 5・中性 6（同上週差不多）\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
-   "x": "這星期大家最常聊的宏觀話題\n\n其他 5/7/23\n關稅／政策／地緣政治 1/8/10\n油價／能源 3/5/6\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "instagram": "本週宏觀：最多人講「其他」（利好 4・利空 4）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/2–11/8）\n\n1. 其他：利好 4・利空 4・中性 19（同上週差不多）\n@MarkNewtonCMT：「Mark Newton 指出除科技外，標普指數從 5 月初到週四超過 6 個月幾乎沒有變化。等權重標普 500 $RSP 自 10 月 1 日以來上漲了 7%。」\n\n2. 關稅／政策／地緣政治：利好 1・利空 6・中性 9（同上週差不多）\n@TheTranscript_ 分享 $JPM JPMorgan Chase 高管 Charles Bristow 認為選舉後財政緊縮前景渺茫，預計是擴張而非緊縮，因為各方同意支…\n\n3. 油價／能源：利好 2・利空 4・中性 3（同上週差不多）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n這週哪個宏觀消息最影響你的判斷？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #RSP #JPM",
+   "threads": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/2–11/8）\n\n1. 其他：利好 4・利空 4・中性 19（同上週差不多）\n@MarkNewtonCMT：「Mark Newton 指出除科技外，標普指數從 5 月初到週四超過 6 個月幾乎沒有變化。等權重標普 500 $RSP 自 10 月 1 日以來上漲了 7%。」\n\n2. 關稅／政策／地緣政治：利好 1・利空 6・中性 9（同上週差不多）\n@TheTranscript_ 分享 $JPM JPMorgan Chase 高管 Charles Bristow 認為選舉後財政緊縮前景渺茫，預計是擴張而非緊縮，因為各方同意支…\n\n3. 油價／能源：利好 2・利空 4・中性 3（同上週差不多）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "x": "這星期大家最常聊的宏觀話題\n\n其他 4/4/19\n關稅／政策／地緣政治 1/6/9\n油價／能源 2/4/3\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "reddit": {
-    "title": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/1–11/7）",
-    "body": "1. 其他：利好 5・利空 7・中性 23（同上週差不多）\n@MarkNewtonCMT：「Mark Newton 指出除科技外，標普指數從 5 月初到週四超過 6 個月幾乎沒有變化。等權重標普 500 $RSP 自 10 月 1 日以來上漲了 7%。」\n\n2. 關稅／政策／地緣政治：利好 1・利空 8・中性 10（比上週轉差 ▼）\n@StockSavvyShay：「德州當選州長 Gina Hinojosa 表示她可以與 Elon Musk 有強有力的工作關係，但僅限於我們的條件。鑑於 $TSLA 和 $SPCX 已在德州大量投資，這聽起來更…」\n\n3. 油價／能源：利好 3・利空 5・中性 6（同上週差不多）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
+    "title": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/2–11/8）",
+    "body": "1. 其他：利好 4・利空 4・中性 19（同上週差不多）\n@MarkNewtonCMT：「Mark Newton 指出除科技外，標普指數從 5 月初到週四超過 6 個月幾乎沒有變化。等權重標普 500 $RSP 自 10 月 1 日以來上漲了 7%。」\n\n2. 關稅／政策／地緣政治：利好 1・利空 6・中性 9（同上週差不多）\n@TheTranscript_ 分享 $JPM JPMorgan Chase 高管 Charles Bristow 認為選舉後財政緊縮前景渺茫，預計是擴張而非緊縮，因為各方同意支…\n\n3. 油價／能源：利好 2・利空 4・中性 3（同上週差不多）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
    },
-   "facebook": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/1–11/7）\n\n1. 其他：利好 5・利空 7・中性 23（同上週差不多）\n@MarkNewtonCMT：「Mark Newton 指出除科技外，標普指數從 5 月初到週四超過 6 個月幾乎沒有變化。等權重標普 500 $RSP 自 10 月 1 日以來上漲了 7%。」\n\n2. 關稅／政策／地緣政治：利好 1・利空 8・中性 10（比上週轉差 ▼）\n@StockSavvyShay：「德州當選州長 Gina Hinojosa 表示她可以與 Elon Musk 有強有力的工作關係，但僅限於我們的條件。鑑於 $TSLA 和 $SPCX 已在德州大量投資，這聽起來更…」\n\n3. 油價／能源：利好 3・利空 5・中性 6（同上週差不多）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "facebook": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/2–11/8）\n\n1. 其他：利好 4・利空 4・中性 19（同上週差不多）\n@MarkNewtonCMT：「Mark Newton 指出除科技外，標普指數從 5 月初到週四超過 6 個月幾乎沒有變化。等權重標普 500 $RSP 自 10 月 1 日以來上漲了 7%。」\n\n2. 關稅／政策／地緣政治：利好 1・利空 6・中性 9（同上週差不多）\n@TheTranscript_ 分享 $JPM JPMorgan Chase 高管 Charles Bristow 認為選舉後財政緊縮前景渺茫，預計是擴張而非緊縮，因為各方同意支…\n\n3. 油價／能源：利好 2・利空 4・中性 3（同上週差不多）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "story": "#美股"
   },
   "en": {
    "instagram": "",
    "threads": "",
-   "x": "What X talked about in macro this week\n\nOther 5/7/23\nTariffs / policy / geopolitics 1/8/10\nOil / energy 3/5/6\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
+   "x": "What X talked about in macro this week\n\nOther 4/4/19\nTariffs / policy / geopolitics 1/6/9\nOil / energy 2/4/3\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
    "reddit": {
-    "title": "The macro topics the 201 X accounts we follow talked about most this week (11/1–11/7)",
-    "body": "1. Other: bullish 5 · bearish 7 · neutral 23 (about the same as last week)\n@MarkNewtonCMT: “Mark Newton notes outside of Tech, SPX was literally unchanged from early May over 6 months until Thursday. Equal-weighted S&P 500 $RSP was up litera…”\n\n2. Tariffs / policy / geopolitics: bullish 1 · bearish 8 · neutral 10 (worse than last week ▼)\n@StockSavvyShay: “Texas Governor-elect Gina Hinojosa says she can have a strong working relationship with Elon Musk but only on our terms. With $TSLA and $SPCX already…”\n\n3. Oil / energy: bullish 3 · bearish 5 · neutral 6 (about the same as last week)\n@canuck2usa: “$CL_F cliff diving.”\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro"
+    "title": "The macro topics the 201 X accounts we follow talked about most this week (11/2–11/8)",
+    "body": "1. Other: bullish 4 · bearish 4 · neutral 19 (about the same as last week)\n@MarkNewtonCMT: “Mark Newton notes outside of Tech, SPX was literally unchanged from early May over 6 months until Thursday. Equal-weighted S&P 500 $RSP was up litera…”\n\n2. Tariffs / policy / geopolitics: bullish 1 · bearish 6 · neutral 9 (about the same as last week)\n@TheTranscript_ shares $JPM JPMorgan Chase Executive Charles Bristow sees little prospect of fiscal austerity following the elections, expecting expa…\n\n3. Oil / energy: bullish 2 · bearish 4 · neutral 3 (about the same as last week)\n@canuck2usa: “$CL_F cliff diving.”\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro"
    },
-   "facebook": "The macro topics the 201 X accounts we follow talked about most this week (11/1–11/7)\n\n1. Other: bullish 5 · bearish 7 · neutral 23 (about the same as last week)\n@MarkNewtonCMT: “Mark Newton notes outside of Tech, SPX was literally unchanged from early May over 6 months until Thursday. Equal-weighted S&P 500 $RSP was up litera…”\n\n2. Tariffs / policy / geopolitics: bullish 1 · bearish 8 · neutral 10 (worse than last week ▼)\n@StockSavvyShay: “Texas Governor-elect Gina Hinojosa says she can have a strong working relationship with Elon Musk but only on our terms. With $TSLA and $SPCX already…”\n\n3. Oil / energy: bullish 3 · bearish 5 · neutral 6 (about the same as last week)\n@canuck2usa: “$CL_F cliff diving.”\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
+   "facebook": "The macro topics the 201 X accounts we follow talked about most this week (11/2–11/8)\n\n1. Other: bullish 4 · bearish 4 · neutral 19 (about the same as last week)\n@MarkNewtonCMT: “Mark Newton notes outside of Tech, SPX was literally unchanged from early May over 6 months until Thursday. Equal-weighted S&P 500 $RSP was up litera…”\n\n2. Tariffs / policy / geopolitics: bullish 1 · bearish 6 · neutral 9 (about the same as last week)\n@TheTranscript_ shares $JPM JPMorgan Chase Executive Charles Bristow sees little prospect of fiscal austerity following the elections, expecting expa…\n\n3. Oil / energy: bullish 2 · bearish 4 · neutral 3 (about the same as last week)\n@canuck2usa: “$CL_F cliff diving.”\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
    "story": ""
   }
  },
  "ig_images": {
   "zh": [
-   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-07-1740",
+   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-14-0051",
    "https://thecrowdtape.com/og/cta/ig-cta-zh.jpg"
   ],
   "en": [
-   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-07-1740",
+   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-14-0051",
    "https://thecrowdtape.com/og/cta/ig-cta-en.jpg"
   ]
  },
  "ig_reel": {
-  "date_kst": "2026-11-07",
+  "date_kst": "2026-11-14",
   "slot": "macro-week",
   "video_path": null,
-  "video_expected_path": "assets/reels/2026-11-07-macro-week.mp4",
+  "video_expected_path": "assets/reels/2026-11-14-macro-week.mp4",
   "caption": {
-   "zh": "本週宏觀：最多人講「其他」（利好 5・利空 7）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/1–11/7）\n\n1. 其他：利好 5・利空 7・中性 23（同上週差不多）\n@MarkNewtonCMT：「Mark Newton 指出除科技外，標普指數從 5 月初到週四超過 6 個月幾乎沒有變化。等權重標普 500 $RSP 自 10 月 1 日以來上漲了 7%。」\n\n2. 關稅／政策／地緣政治：利好 1・利空 8・中性 10（比上週轉差 ▼）\n@StockSavvyShay：「德州當選州長 Gina Hinojosa 表示她可以與 Elon Musk 有強有力的工作關係，但僅限於我們的條件。鑑於 $TSLA 和 $SPCX 已在德州大量投資，這聽起來更…」\n\n3. 油價／能源：利好 3・利空 5・中性 6（同上週差不多）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n這週哪個宏觀消息最影響你的判斷？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #RSP #TSLA",
+   "zh": "本週宏觀：最多人講「其他」（利好 4・利空 4）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/2–11/8）\n\n1. 其他：利好 4・利空 4・中性 19（同上週差不多）\n@MarkNewtonCMT：「Mark Newton 指出除科技外，標普指數從 5 月初到週四超過 6 個月幾乎沒有變化。等權重標普 500 $RSP 自 10 月 1 日以來上漲了 7%。」\n\n2. 關稅／政策／地緣政治：利好 1・利空 6・中性 9（同上週差不多）\n@TheTranscript_ 分享 $JPM JPMorgan Chase 高管 Charles Bristow 認為選舉後財政緊縮前景渺茫，預計是擴張而非緊縮，因為各方同意支…\n\n3. 油價／能源：利好 2・利空 4・中性 3（同上週差不多）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n這週哪個宏觀消息最影響你的判斷？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #RSP #JPM",
    "en": ""
   }
  },
