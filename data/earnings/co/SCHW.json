@@ -4,18 +4,6 @@
  "cik": 316709,
  "q": [
   {
-   "end": "2023-09-30",
-   "label": "FY2023 Q3",
-   "rev": 4606000000,
-   "gp": null,
-   "op": null,
-   "ni": 1125000000,
-   "eps": 0.56,
-   "ocf": -5011000000,
-   "capex": 239000000,
-   "fcf": -5250000000
-  },
-  {
    "end": "2023-12-31",
    "label": "FY2023 Q4",
    "rev": 4459000000,
@@ -146,20 +134,32 @@
    "ocf": 4300000000,
    "capex": 185000000,
    "fcf": 4115000000
+  },
+  {
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "rev": 7171000000,
+   "gp": null,
+   "op": null,
+   "ni": 2906000000,
+   "eps": 1.62,
+   "ocf": 1614000000,
+   "capex": 314000000,
+   "fcf": 1300000000
   }
  ],
  "latest": {
-  "label": "FY2026 Q2",
-  "filed": "2026-08-07",
-  "accn": "0000316709-26-000031",
+  "label": "FY2026 Q3",
+  "filed": "2026-11-06",
+  "accn": "0000316709-26-000038",
   "form": "10-Q",
-  "end": "2026-06-30"
+  "end": "2026-09-30"
  },
  "bal": {
-  "end": "2026-06-30",
-  "cash": 40580000000,
+  "end": "2026-09-30",
+  "cash": 36657000000,
   "sti": null,
-  "debt": 22669000000
+  "debt": 23808000000
  },
  "bank": false,
  "seg": {
@@ -168,76 +168,72 @@
   "rows": [
    {
     "name": "Asset management and administration fees",
-    "val": 1825000000.0,
-    "prev": 1570000000.0
+    "val": 1913000000.0,
+    "prev": 1673000000.0
    },
    {
     "name": "Trading revenue",
-    "val": 1215000000.0,
-    "prev": 952000000.0
+    "val": 1158000000.0,
+    "prev": 995000000.0
    },
    {
     "name": "Mutual funds, ETFs, CTFs, and alternatives",
-    "val": 1020000000.0,
-    "prev": 898000000.0
+    "val": 1051000000.0,
+    "prev": 961000000.0
    },
    {
     "name": "Managed investing solutions",
-    "val": 707000000.0,
-    "prev": 589000000.0
+    "val": 761000000.0,
+    "prev": 619000000.0
    },
    {
     "name": "Order flow revenue",
-    "val": 624000000.0,
-    "prev": 466000000.0
+    "val": 638000000.0,
+    "prev": 490000000.0
    },
    {
     "name": "Commissions",
-    "val": 528000000.0,
-    "prev": 431000000.0
-   },
-   {
-    "name": "Other",
-    "val": 342000000.0,
-    "prev": 260000000.0
+    "val": 463000000.0,
+    "prev": 453000000.0
    },
    {
     "name": "Bank deposit account fees",
-    "val": 333000000.0,
+    "val": 345000000.0,
     "prev": 247000000.0
    },
    {
     "name": "Other",
-    "val": 98000000.0,
-    "prev": 83000000.0
-   },
-   {
-    "name": "Principal transactions",
-    "val": 63000000.0,
-    "prev": 55000000.0
+    "val": 279000000.0,
+    "prev": 170000000.0
    },
    {
     "name": "Other",
-    "val": 317000000.0,
+    "val": 101000000.0,
+    "prev": 93000000.0
+   },
+   {
+    "name": "Principal transactions",
+    "val": 57000000.0,
+    "prev": 52000000.0
+   },
+   {
+    "name": "Other",
+    "val": 405000000.0,
     "prev": null,
     "other": true
    }
   ],
-  "accn": "0000316709-26-000031"
+  "accn": "0000316709-26-000038"
  },
  "rules": 4,
- "mcap": 158407147520,
+ "mcap": 158216912896,
  "next": "2027-01-21",
  "last_report": null,
  "est": {
-  "eps_act": 1.62,
-  "eps_est": 1.54954,
+  "eps_act": 1.69,
+  "eps_est": 1.65538,
   "rev_est": null,
   "rev_est_seen": null
  },
- "pending": {
-  "q": "2026-09-30",
-  "eps_act": 1.69,
-  "eps_est": 1.65538
- }
+ "pending": null
 }

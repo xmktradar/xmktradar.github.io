@@ -4,18 +4,6 @@
  "cik": 1393818,
  "q": [
   {
-   "end": "2023-09-30",
-   "label": "FY2023 Q3",
-   "rev": 2541285000,
-   "gp": null,
-   "op": null,
-   "ni": 551994000,
-   "eps": 0.73,
-   "ocf": 1082914000,
-   "capex": 62668000,
-   "fcf": 1020246000
-  },
-  {
    "end": "2023-12-31",
    "label": "FY2023 Q4",
    "rev": 1285020000,
@@ -146,39 +134,80 @@
    "ocf": 1941404000,
    "capex": 31963000,
    "fcf": 1909441000
+  },
+  {
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "rev": 3062888000,
+   "gp": null,
+   "op": null,
+   "ni": 662372000,
+   "eps": 0.83,
+   "ocf": 1962937000,
+   "capex": 45972000,
+   "fcf": 1916965000
   }
  ],
  "latest": {
-  "label": "FY2026 Q2",
-  "filed": "2026-08-07",
-  "accn": "0001193125-26-340208",
+  "label": "FY2026 Q3",
+  "filed": "2026-11-06",
+  "accn": "0001193125-26-451802",
   "form": "10-Q",
-  "end": "2026-06-30"
+  "end": "2026-09-30"
  },
  "bal": {
-  "end": "2026-06-30",
-  "cash": 2507073000,
+  "end": "2026-09-30",
+  "cash": 3037534000,
   "sti": null,
-  "debt": 13318636000
+  "debt": 13521893000
  },
  "bank": false,
  "seg": {
-  "none": true,
-  "accn": "0001193125-26-340208"
+  "axis": "srt:ProductOrServiceAxis",
+  "basis": "quarter",
+  "rows": [
+   {
+    "name": "Investment Advice",
+    "val": 2178108000.0,
+    "prev": 2056248000.0
+   },
+   {
+    "name": "Investment Performance",
+    "val": 172729000.0,
+    "prev": 200675000.0
+   },
+   {
+    "name": "Other",
+    "val": 712051000.0,
+    "prev": null,
+    "other": true
+   }
+  ],
+  "accn": "0001193125-26-451802"
  },
  "rules": 4,
- "mcap": 149008334848,
+ "diag": {
+  "newest": "2026-10-31",
+  "rev_last": "2026-09-30",
+  "have": [],
+  "rev_concepts_last": {
+   "Revenues": {
+    "start": "2026-01-01",
+    "end": "2026-09-30",
+    "form": "10-Q",
+    "fp": "Q3",
+    "filed": "2026-11-06"
+   }
+  }
+ },
+ "mcap": 148610383872,
  "next": "2027-01-28",
  "last_report": "2026-10-22",
  "est": {
-  "eps_act": 1.52,
-  "eps_est": 1.33671,
+  "eps_act": 1.32,
+  "eps_est": 1.25859,
   "rev_est": null,
   "rev_est_seen": null
  },
- "pending": {
-  "q": "2026-09-30",
-  "eps_act": 1.32,
-  "eps_est": 1.25859
- }
+ "pending": null
 }
