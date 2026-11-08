@@ -2,9 +2,9 @@
  "date": "2026-11-14",
  "date_kst": "2026-11-14",
  "frozen": false,
- "made_hkt": "2026-11-08 00:51",
- "from": "2026-11-02",
- "to": "2026-11-08",
+ "made_hkt": "2026-11-09 01:02",
+ "from": "2026-11-03",
+ "to": "2026-11-09",
  "themes": [
   {
    "theme": "rates",
@@ -31,80 +31,54 @@
   },
   {
    "theme": "inflation",
-   "accounts": 3,
-   "n": 3,
+   "accounts": 1,
+   "n": 1,
    "bull": 0,
-   "bear": 2,
+   "bear": 0,
    "neu": 1,
-   "arrow": "dn",
+   "arrow": "up",
    "quotes": {
     "zh": {
-     "acc": "steve_hanke",
+     "acc": "charliebilello",
      "impact": "neu",
-     "text": "烏克蘭通臀為 10.0%/年，高於其 5.0%/年目標。烏克蘭貨幣供應量（M3）以 14.6%/年增長，高於 Hanke 的黃金增長率 9.3%/年，該比率與 5%/年通臀目標一致。通臀故事 = 貨幣供應。",
-     "url": "https://x.com/steve_hanke/status/2117283089055445371"
+     "text": "過去 10 年... NVIDIA $NVDA：+11,159%，比特幣 $BTC：+10,587%，$AMD：+6,745%，特斯拉 $TSLA：+2,720%，蘋果 $AAPL：+1,269%，微軟 $MSFT：+918%，谷歌 $GOOGL：+636%，亞馬遜 $AMZN：+588%，Meta $META：+410%，標普 $SPY：+313%，黃金 $GLD：+199%，美國通臀：+39%，美國債券 $AGG：+16%。",
+     "url": "https://x.com/charliebilello/status/2119085968313717013"
     },
     "en": {
-     "acc": "steve_hanke",
+     "acc": "charliebilello",
      "impact": "neu",
-     "text": "Ukraine's inflation came in at 10.0%/yr. That's ABOVE its target of 5.0%/yr. Ukraine's money supply (M3) is growing at 14.6%/yr, ABOVE Hanke's Golden Growth Rate of 9.3%/yr, a rate consistent with Ukraine's inflation target of 5%/yr. THE INFLATION STORY = A MONEY SUPPLY.",
-     "url": "https://x.com/steve_hanke/status/2117283089055445371"
+     "text": "Last 10 Years... NVIDIA $NVDA: +11,159%, Bitcoin $BTC: +10,587%, $AMD: +6,745%, Tesla $TSLA: +2,720%, Apple $AAPL: +1,269%, Microsoft $MSFT: +918%, Google $GOOGL: +636%, Amazon $AMZN: +588%, Meta $META: +410%, S&P $SPY: +313%, Gold $GLD: +199%, US Inflation: +39%, US Bonds $AGG: +16%.",
+     "url": "https://x.com/charliebilello/status/2119085968313717013"
     }
    }
   },
   {
    "theme": "jobs",
+   "accounts": 0,
+   "n": 0,
+   "bull": 0,
+   "bear": 0,
+   "neu": 0,
+   "arrow": "none",
+   "quotes": {}
+  },
+  {
+   "theme": "growth",
+   "accounts": 0,
+   "n": 0,
+   "bull": 0,
+   "bear": 0,
+   "neu": 0,
+   "arrow": "none",
+   "quotes": {}
+  },
+  {
+   "theme": "yields",
    "accounts": 2,
    "n": 2,
    "bull": 0,
    "bear": 0,
    "neu": 2,
-   "arrow": "up",
-   "quotes": {
-    "zh": {
-     "acc": "spotgamma",
-     "impact": "neu",
-     "text": "從週五公開收盤起的選舉週 SPX 期權。估計在正常日之上額外定價 1-sigma 波動：週二選舉日 + JOLTS：32 點（0.42%）週三 $AAPL 反應 + 中期選舉：45 點（0.60%）週四：27 點（0.35%）週五薪資數據：38 點（0.50%）",
-     "url": "https://x.com/spotgamma/status/2117262268945826140"
-    },
-    "en": {
-     "acc": "spotgamma",
-     "impact": "neu",
-     "text": "Election week in SPX options, from Friday's public close. Extra 1-sigma move priced on top of a normal day (est.): Tue, Election Day + JOLTS: 32 pts (0.42%) Wed, $AAPL reaction + midterms: 45 pts (0.60%) Thu: 27 pts (0.35%) Fri, payrolls: 38 pts (0.50%)",
-     "url": "https://x.com/spotgamma/status/2117262268945826140"
-    }
-   }
-  },
-  {
-   "theme": "growth",
-   "accounts": 8,
-   "n": 8,
-   "bull": 2,
-   "bear": 3,
-   "neu": 3,
-   "arrow": "flat",
-   "quotes": {
-    "zh": {
-     "acc": "bespokeinvest",
-     "impact": "bear",
-     "text": "@bespokeinvest 指出納斯達克100ETF $QQQ在十月下跌6.66%。附圖。",
-     "url": "https://x.com/bespokeinvest/status/2117258679460253833"
-    },
-    "en": {
-     "acc": "bespokeinvest",
-     "impact": "bear",
-     "text": "@bespokeinvest notes the Nasdaq 100 ETF $QQQ was down 6.66% in October. A chart image is attached.",
-     "url": "https://x.com/bespokeinvest/status/2117258679460253833"
-    }
-   }
-  },
-  {
-   "theme": "yields",
-   "accounts": 6,
-   "n": 6,
-   "bull": 1,
-   "bear": 1,
-   "neu": 4,
    "arrow": "up",
    "quotes": {
     "zh": {
@@ -133,7 +107,30 @@
   },
   {
    "theme": "energy",
-   "accounts": 9,
+   "accounts": 5,
+   "n": 5,
+   "bull": 0,
+   "bear": 4,
+   "neu": 1,
+   "arrow": "dn",
+   "quotes": {
+    "zh": {
+     "acc": "Jake__Wujastyk",
+     "impact": "bear",
+     "text": "@Jake__Wujastyk 評論，世界總能找到適應事物的方式，特別是考慮到目前 $CL_F 圖表設置非常看跌。",
+     "url": "https://x.com/Jake__Wujastyk/status/2119206172939124772"
+    },
+    "en": {
+     "acc": "Jake__Wujastyk",
+     "impact": "bear",
+     "text": "@Jake__Wujastyk comments that the world finds a way to adapt to things, especially interesting given how bearish the $CL_F chart setup is right now.",
+     "url": "https://x.com/Jake__Wujastyk/status/2119206172939124772"
+    }
+   }
+  },
+  {
+   "theme": "policy",
+   "accounts": 10,
    "n": 9,
    "bull": 2,
    "bear": 4,
@@ -141,62 +138,39 @@
    "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "canuck2usa",
-     "impact": "bear",
-     "text": "$CL_F 懸崖式下跌。",
-     "url": "https://x.com/canuck2usa/status/2118027566741336344"
+     "acc": "aleabitoreddit",
+     "impact": "bull",
+     "text": "作者對NASA的100億美元合約開始月球定居感到興奮。選定$SPCX（SpaceX）、Blue Origin、$FLY（Firefly）、$LUNR（Lunar）、$LMT、$NOC、$VOYG、iSpace US競爭未來月球運送任務。包括13億美元發射訂單、9400萬美元給Blue Origin的探測車、CLPS上限提升至42億美元，以及$RDW的月球電力塔獎項。",
+     "url": "https://x.com/aleabitoreddit/status/2119287752730738722"
     },
     "en": {
-     "acc": "canuck2usa",
-     "impact": "bear",
-     "text": "$CL_F cliff diving.",
-     "url": "https://x.com/canuck2usa/status/2118027566741336344"
-    }
-   }
-  },
-  {
-   "theme": "policy",
-   "accounts": 17,
-   "n": 16,
-   "bull": 1,
-   "bear": 6,
-   "neu": 9,
-   "arrow": "flat",
-   "quotes": {
-    "zh": {
-     "acc": "TheTranscript_",
-     "impact": "neu",
-     "text": "@TheTranscript_ 分享 $JPM JPMorgan Chase 高管 Charles Bristow 認為選舉後財政緊縮前景渺茫，預計是擴張而非緊縮，因為各方同意支出。",
-     "url": "https://x.com/TheTranscript_/status/2118884467729203500"
-    },
-    "en": {
-     "acc": "TheTranscript_",
-     "impact": "neu",
-     "text": "@TheTranscript_ shares $JPM JPMorgan Chase Executive Charles Bristow sees little prospect of fiscal austerity following the elections, expecting expansion rather than austerity as parties agree on spending.",
-     "url": "https://x.com/TheTranscript_/status/2118884467729203500"
+     "acc": "aleabitoreddit",
+     "impact": "bull",
+     "text": "Author excited about NASA's $10 Billion contract to begin settling on the moon. Selected $SPCX (SpaceX), Blue Origin, $FLY (Firefly), $LUNR (Lunar), $LMT, $NOC, $VOYG, iSpace US to compete for future lunar delivery missions. Includes $1.3B launch orders, $94 million for Blue Origin rover, CLPS ceiling raised to $4.2B, and $RDW award for lunar power tower.",
+     "url": "https://x.com/aleabitoreddit/status/2119287752730738722"
     }
    }
   },
   {
    "theme": "other",
-   "accounts": 27,
-   "n": 27,
-   "bull": 4,
-   "bear": 4,
-   "neu": 19,
+   "accounts": 16,
+   "n": 16,
+   "bull": 1,
+   "bear": 2,
+   "neu": 13,
    "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "MarkNewtonCMT",
+     "acc": "aleabitoreddit",
      "impact": "neu",
-     "text": "Mark Newton 指出除科技外，標普指數從 5 月初到週四超過 6 個月幾乎沒有變化。等權重標普 500 $RSP 自 10 月 1 日以來上漲了 7%。",
-     "url": "https://x.com/MarkNewtonCMT/status/2118850904443216007"
+     "text": "作者認為「AI泡沫」標籤被過度用於基礎設施相關公司。從三星到$ESMT的記憶體公司遠期市盈率僅1-3倍，且高頻寬記憶體廠商已簽下超大規模企業多年價格底線長期協議。光學公司$POET交易價格低於淨現金9700萬美元。$COHR簽署200億美元長期協議，$LITE簽署50億美元長期協議。作者對瓶頸領域復蘇有信心，隨著盈利與自由現金流累積，更像是2026年AI大去槓桿而非需求破壞。",
+     "url": "https://x.com/aleabitoreddit/status/2119363124147191823"
     },
     "en": {
-     "acc": "MarkNewtonCMT",
+     "acc": "aleabitoreddit",
      "impact": "neu",
-     "text": "Mark Newton notes outside of Tech, SPX was literally unchanged from early May over 6 months until Thursday. Equal-weighted S&P 500 $RSP was up literally 7% since Oct 1.",
-     "url": "https://x.com/MarkNewtonCMT/status/2118850904443216007"
+     "text": "Author argues the \"AI Bubble\" label is overused for infrastructure names. Memory companies from Samsung to $ESMT trade at 1-3x forward P/E with hyperscaler multi-year HBM price floor LTAs. Optical $POET trades $97M under net cash. $COHR signed $20B LTAs and $LITE $5B LTAs. Confident in recovery especially in bottlenecks as earnings and FCF accumulate, calling it more the Great AI Deleveraging of 2026 than demand destruction.",
+     "url": "https://x.com/aleabitoreddit/status/2119363124147191823"
     }
    }
   }
@@ -207,46 +181,46 @@
   "energy"
  ],
  "accounts": 201,
- "range": "11/2–11/8",
+ "range": "11/3–11/9",
  "images": {
-  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-14-0051",
-  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-14-0051"
+  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-14-0102",
+  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-14-0102"
  },
  "stories": {
-  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-14-0051",
-  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-14-0051"
+  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-14-0102",
+  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-14-0102"
  },
  "posts": {
   "zh": {
-   "instagram": "本週宏觀：最多人講「其他」（利好 4・利空 4）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/2–11/8）\n\n1. 其他：利好 4・利空 4・中性 19（同上週差不多）\n@MarkNewtonCMT：「Mark Newton 指出除科技外，標普指數從 5 月初到週四超過 6 個月幾乎沒有變化。等權重標普 500 $RSP 自 10 月 1 日以來上漲了 7%。」\n\n2. 關稅／政策／地緣政治：利好 1・利空 6・中性 9（同上週差不多）\n@TheTranscript_ 分享 $JPM JPMorgan Chase 高管 Charles Bristow 認為選舉後財政緊縮前景渺茫，預計是擴張而非緊縮，因為各方同意支…\n\n3. 油價／能源：利好 2・利空 4・中性 3（同上週差不多）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n這週哪個宏觀消息最影響你的判斷？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #RSP #JPM",
-   "threads": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/2–11/8）\n\n1. 其他：利好 4・利空 4・中性 19（同上週差不多）\n@MarkNewtonCMT：「Mark Newton 指出除科技外，標普指數從 5 月初到週四超過 6 個月幾乎沒有變化。等權重標普 500 $RSP 自 10 月 1 日以來上漲了 7%。」\n\n2. 關稅／政策／地緣政治：利好 1・利空 6・中性 9（同上週差不多）\n@TheTranscript_ 分享 $JPM JPMorgan Chase 高管 Charles Bristow 認為選舉後財政緊縮前景渺茫，預計是擴張而非緊縮，因為各方同意支…\n\n3. 油價／能源：利好 2・利空 4・中性 3（同上週差不多）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
-   "x": "這星期大家最常聊的宏觀話題\n\n其他 4/4/19\n關稅／政策／地緣政治 1/6/9\n油價／能源 2/4/3\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "instagram": "本週宏觀：最多人講「其他」（利好 1・利空 2）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/3–11/9）\n\n1. 其他：利好 1・利空 2・中性 13（同上週差不多）\n@aleabitoreddit：「作者認為「AI泡沫」標籤被過度用於基礎設施相關公司。從三星到$ESMT的記憶體公司遠期市盈率僅1-3倍，且高頻寬記憶體廠商已簽下超大規模企業多年價格底線長期協議。光學公司$POE…」\n\n2. 關稅／政策／地緣政治：利好 2・利空 4・中性 3（同上週差不多）\n@aleabitoreddit：「作者對NASA的100億美元合約開始月球定居感到興奮。選定$SPCX（SpaceX）、Blue Origin、$FLY（Firefly）、$LUNR（Lunar）、$LMT、$N…」\n\n3. 油價／能源：利好 0・利空 4・中性 1（比上週轉差 ▼）\n@Jake__Wujastyk 評論，世界總能找到適應事物的方式，特別是考慮到目前 $CL_F 圖表設置非常看跌。\n\n這週哪個宏觀消息最影響你的判斷？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #POE #SPCX",
+   "threads": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/3–11/9）\n\n1. 其他：利好 1・利空 2・中性 13（同上週差不多）\n2. 關稅／政策／地緣政治：利好 2・利空 4・中性 3（同上週差不多）\n3. 油價／能源：利好 0・利空 4・中性 1（比上週轉差 ▼）\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "x": "這星期大家最常聊的宏觀話題\n\n其他 1/2/13\n關稅／政策／地緣政治 2/4/3\n油價／能源 0/4/1\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "reddit": {
-    "title": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/2–11/8）",
-    "body": "1. 其他：利好 4・利空 4・中性 19（同上週差不多）\n@MarkNewtonCMT：「Mark Newton 指出除科技外，標普指數從 5 月初到週四超過 6 個月幾乎沒有變化。等權重標普 500 $RSP 自 10 月 1 日以來上漲了 7%。」\n\n2. 關稅／政策／地緣政治：利好 1・利空 6・中性 9（同上週差不多）\n@TheTranscript_ 分享 $JPM JPMorgan Chase 高管 Charles Bristow 認為選舉後財政緊縮前景渺茫，預計是擴張而非緊縮，因為各方同意支…\n\n3. 油價／能源：利好 2・利空 4・中性 3（同上週差不多）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
+    "title": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/3–11/9）",
+    "body": "1. 其他：利好 1・利空 2・中性 13（同上週差不多）\n@aleabitoreddit：「作者認為「AI泡沫」標籤被過度用於基礎設施相關公司。從三星到$ESMT的記憶體公司遠期市盈率僅1-3倍，且高頻寬記憶體廠商已簽下超大規模企業多年價格底線長期協議。光學公司$POE…」\n\n2. 關稅／政策／地緣政治：利好 2・利空 4・中性 3（同上週差不多）\n@aleabitoreddit：「作者對NASA的100億美元合約開始月球定居感到興奮。選定$SPCX（SpaceX）、Blue Origin、$FLY（Firefly）、$LUNR（Lunar）、$LMT、$N…」\n\n3. 油價／能源：利好 0・利空 4・中性 1（比上週轉差 ▼）\n@Jake__Wujastyk 評論，世界總能找到適應事物的方式，特別是考慮到目前 $CL_F 圖表設置非常看跌。\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
    },
-   "facebook": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/2–11/8）\n\n1. 其他：利好 4・利空 4・中性 19（同上週差不多）\n@MarkNewtonCMT：「Mark Newton 指出除科技外，標普指數從 5 月初到週四超過 6 個月幾乎沒有變化。等權重標普 500 $RSP 自 10 月 1 日以來上漲了 7%。」\n\n2. 關稅／政策／地緣政治：利好 1・利空 6・中性 9（同上週差不多）\n@TheTranscript_ 分享 $JPM JPMorgan Chase 高管 Charles Bristow 認為選舉後財政緊縮前景渺茫，預計是擴張而非緊縮，因為各方同意支…\n\n3. 油價／能源：利好 2・利空 4・中性 3（同上週差不多）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "facebook": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/3–11/9）\n\n1. 其他：利好 1・利空 2・中性 13（同上週差不多）\n@aleabitoreddit：「作者認為「AI泡沫」標籤被過度用於基礎設施相關公司。從三星到$ESMT的記憶體公司遠期市盈率僅1-3倍，且高頻寬記憶體廠商已簽下超大規模企業多年價格底線長期協議。光學公司$POE…」\n\n2. 關稅／政策／地緣政治：利好 2・利空 4・中性 3（同上週差不多）\n@aleabitoreddit：「作者對NASA的100億美元合約開始月球定居感到興奮。選定$SPCX（SpaceX）、Blue Origin、$FLY（Firefly）、$LUNR（Lunar）、$LMT、$N…」\n\n3. 油價／能源：利好 0・利空 4・中性 1（比上週轉差 ▼）\n@Jake__Wujastyk 評論，世界總能找到適應事物的方式，特別是考慮到目前 $CL_F 圖表設置非常看跌。\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "story": "#美股"
   },
   "en": {
    "instagram": "",
    "threads": "",
-   "x": "What X talked about in macro this week\n\nOther 4/4/19\nTariffs / policy / geopolitics 1/6/9\nOil / energy 2/4/3\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
+   "x": "What X talked about in macro this week\n\nOther 1/2/13\nTariffs / policy / geopolitics 2/4/3\nOil / energy 0/4/1\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
    "reddit": {
-    "title": "The macro topics the 201 X accounts we follow talked about most this week (11/2–11/8)",
-    "body": "1. Other: bullish 4 · bearish 4 · neutral 19 (about the same as last week)\n@MarkNewtonCMT: “Mark Newton notes outside of Tech, SPX was literally unchanged from early May over 6 months until Thursday. Equal-weighted S&P 500 $RSP was up litera…”\n\n2. Tariffs / policy / geopolitics: bullish 1 · bearish 6 · neutral 9 (about the same as last week)\n@TheTranscript_ shares $JPM JPMorgan Chase Executive Charles Bristow sees little prospect of fiscal austerity following the elections, expecting expa…\n\n3. Oil / energy: bullish 2 · bearish 4 · neutral 3 (about the same as last week)\n@canuck2usa: “$CL_F cliff diving.”\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro"
+    "title": "The macro topics the 201 X accounts we follow talked about most this week (11/3–11/9)",
+    "body": "1. Other: bullish 1 · bearish 2 · neutral 13 (about the same as last week)\n@aleabitoreddit: “Author argues the \"AI Bubble\" label is overused for infrastructure names. Memory companies from Samsung to $ESMT trade at 1-3x forward P/E with hyper…”\n\n2. Tariffs / policy / geopolitics: bullish 2 · bearish 4 · neutral 3 (about the same as last week)\n@aleabitoreddit: “Author excited about NASA's $10 Billion contract to begin settling on the moon. Selected $SPCX (SpaceX), Blue Origin, $FLY (Firefly), $LUNR (Lunar)…”\n\n3. Oil / energy: bullish 0 · bearish 4 · neutral 1 (worse than last week ▼)\n@Jake__Wujastyk comments that the world finds a way to adapt to things, especially interesting given how bearish the $CL_F chart setup is right now.\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro"
    },
-   "facebook": "The macro topics the 201 X accounts we follow talked about most this week (11/2–11/8)\n\n1. Other: bullish 4 · bearish 4 · neutral 19 (about the same as last week)\n@MarkNewtonCMT: “Mark Newton notes outside of Tech, SPX was literally unchanged from early May over 6 months until Thursday. Equal-weighted S&P 500 $RSP was up litera…”\n\n2. Tariffs / policy / geopolitics: bullish 1 · bearish 6 · neutral 9 (about the same as last week)\n@TheTranscript_ shares $JPM JPMorgan Chase Executive Charles Bristow sees little prospect of fiscal austerity following the elections, expecting expa…\n\n3. Oil / energy: bullish 2 · bearish 4 · neutral 3 (about the same as last week)\n@canuck2usa: “$CL_F cliff diving.”\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
+   "facebook": "The macro topics the 201 X accounts we follow talked about most this week (11/3–11/9)\n\n1. Other: bullish 1 · bearish 2 · neutral 13 (about the same as last week)\n@aleabitoreddit: “Author argues the \"AI Bubble\" label is overused for infrastructure names. Memory companies from Samsung to $ESMT trade at 1-3x forward P/E with hyper…”\n\n2. Tariffs / policy / geopolitics: bullish 2 · bearish 4 · neutral 3 (about the same as last week)\n@aleabitoreddit: “Author excited about NASA's $10 Billion contract to begin settling on the moon. Selected $SPCX (SpaceX), Blue Origin, $FLY (Firefly), $LUNR (Lunar)…”\n\n3. Oil / energy: bullish 0 · bearish 4 · neutral 1 (worse than last week ▼)\n@Jake__Wujastyk comments that the world finds a way to adapt to things, especially interesting given how bearish the $CL_F chart setup is right now.\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
    "story": ""
   }
  },
  "ig_images": {
   "zh": [
-   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-14-0051",
+   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-14-0102",
    "https://thecrowdtape.com/og/cta/ig-cta-zh.jpg"
   ],
   "en": [
-   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-14-0051",
+   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-14-0102",
    "https://thecrowdtape.com/og/cta/ig-cta-en.jpg"
   ]
  },
@@ -256,7 +230,7 @@
   "video_path": null,
   "video_expected_path": "assets/reels/2026-11-14-macro-week.mp4",
   "caption": {
-   "zh": "本週宏觀：最多人講「其他」（利好 4・利空 4）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/2–11/8）\n\n1. 其他：利好 4・利空 4・中性 19（同上週差不多）\n@MarkNewtonCMT：「Mark Newton 指出除科技外，標普指數從 5 月初到週四超過 6 個月幾乎沒有變化。等權重標普 500 $RSP 自 10 月 1 日以來上漲了 7%。」\n\n2. 關稅／政策／地緣政治：利好 1・利空 6・中性 9（同上週差不多）\n@TheTranscript_ 分享 $JPM JPMorgan Chase 高管 Charles Bristow 認為選舉後財政緊縮前景渺茫，預計是擴張而非緊縮，因為各方同意支…\n\n3. 油價／能源：利好 2・利空 4・中性 3（同上週差不多）\n@canuck2usa：「$CL_F 懸崖式下跌。」\n\n這週哪個宏觀消息最影響你的判斷？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #RSP #JPM",
+   "zh": "本週宏觀：最多人講「其他」（利好 1・利空 2）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/3–11/9）\n\n1. 其他：利好 1・利空 2・中性 13（同上週差不多）\n@aleabitoreddit：「作者認為「AI泡沫」標籤被過度用於基礎設施相關公司。從三星到$ESMT的記憶體公司遠期市盈率僅1-3倍，且高頻寬記憶體廠商已簽下超大規模企業多年價格底線長期協議。光學公司$POE…」\n\n2. 關稅／政策／地緣政治：利好 2・利空 4・中性 3（同上週差不多）\n@aleabitoreddit：「作者對NASA的100億美元合約開始月球定居感到興奮。選定$SPCX（SpaceX）、Blue Origin、$FLY（Firefly）、$LUNR（Lunar）、$LMT、$N…」\n\n3. 油價／能源：利好 0・利空 4・中性 1（比上週轉差 ▼）\n@Jake__Wujastyk 評論，世界總能找到適應事物的方式，特別是考慮到目前 $CL_F 圖表設置非常看跌。\n\n這週哪個宏觀消息最影響你的判斷？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #POE #SPCX",
    "en": ""
   }
  },
