@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2119465694110822718": {
+      "en_summary": "@garyblack00 says he has seen $TSLA repeatedly make marketing decisions without basic consumer research, with Cybertruck as the latest example, and that passenger statistics should not be conflated with actual ride demand.",
+      "zh_summary": "@garyblack00 表示，他見到 $TSLA 反覆在未進行基本消費者研究的情況下作出行銷決策，Cybertruck 是最新例子，並認為不應將乘客統計數據與實際乘車需求混為一談。",
+      "tickers": ["TSLA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"TSLA": "睇淡"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2119463708099547346": {
+      "en_summary": "$OTIS CEO: China's property reforms are ending developers' reliance on customer deposits to fund construction. For any presales, for the first time in 2 decades, those down payments have to go to escrow, so they can't be used to finance the next project.",
+      "zh_summary": "$OTIS 行政總裁：中國房地產改革正在結束開發商依賴客戶訂金資助建設的做法。對於任何預售，二十年來首次，那些首付款必須存入託管帳戶，因此不能用於資助下一個項目。",
+      "tickers": ["OTIS"],
+      "stance": "中性",
+      "stance_by_ticker": {"OTIS": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2119463286743953489": {
+      "en_summary": "@howardlindzon posts \"pwettty pweaaase with ice cream on top...\" quoting that CoreWeave $CRWV sent a letter to new Texas governor Gina Hinojosa today.",
+      "zh_summary": "@howardlindzon 發文「pwettty pweaaase with ice cream on top...」，引用 CoreWeave $CRWV 今日向新任德州州長 Gina Hinojosa 發送信件的消息。",
+      "tickers": ["CRWV"],
+      "stance": "中性",
+      "stance_by_ticker": {"CRWV": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2119458807554449586": {
+      "en_summary": "@StockSavvyShay details Futurum's four layers of agentic AI economy: applications with $META, $AXON, $GOOGL, $MSFT, $APP, $SHOP, $PLTR; inference platforms with $IREN, $MSFT, $AMZN, $GOOGL, $ORCL, $NBIS, $CRWV, $NET, $DOCN; compute/networking with $MU, $SKHY, $CBRS, $AVGO, $AEHR, $CRDO, $NVDA, $SITM, $ARM, $AMD, $ALAB, $MRVL, $LITE; and power/cooling with $GEV, $CEG, $VST, $NVTS, $FPS, $BE, $VRT, $ON.",
+      "zh_summary": "@StockSavvyShay 詳細介紹 Futurum 的智能體 AI 經濟四層結構：應用層包括 $META、$AXON、$GOOGL、$MSFT、$APP、$SHOP、$PLTR；推理平台層包括 $IREN、$MSFT、$AMZN、$GOOGL、$ORCL、$NBIS、$CRWV、$NET、$DOCN；計算/網絡層包括 $MU、$SKHY、$CBRS、$AVGO、$AEHR、$CRDO、$NVDA、$SITM、$ARM、$AMD、$ALAB、$MRVL、$LITE；以及電力/冷卻層包括 $GEV、$CEG、$VST、$NVTS、$FPS、$BE、$VRT、$ON。",
+      "tickers": ["META", "AXON", "GOOGL", "MSFT", "APP", "SHOP", "PLTR", "IREN", "AMZN", "ORCL", "NBIS", "CRWV", "NET", "DOCN", "MU", "CBRS", "AVGO", "AEHR", "CRDO", "NVDA", "SITM", "ARM", "AMD", "ALAB", "MRVL", "LITE", "GEV", "CEG", "VST", "NVTS", "FPS", "BE", "VRT", "ON"],
+      "stance": "睇好",
+      "stance_by_ticker": {"META": "睇好", "AXON": "睇好", "GOOGL": "睇好", "MSFT": "睇好", "APP": "睇好", "SHOP": "睇好", "PLTR": "睇好", "IREN": "睇好", "AMZN": "睇好", "ORCL": "睇好", "NBIS": "睇好", "CRWV": "睇好", "NET": "睇好", "DOCN": "睇好", "MU": "睇好", "CBRS": "睇好", "AVGO": "睇好", "AEHR": "睇好", "CRDO": "睇好", "NVDA": "睇好", "SITM": "睇好", "ARM": "睇好", "AMD": "睇好", "ALAB": "睇好", "MRVL": "睇好", "LITE": "睇好", "GEV": "睇好", "CEG": "睇好", "VST": "睇好", "NVTS": "睇好", "FPS": "睇好", "BE": "睇好", "VRT": "睇好", "ON": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2119458038260318634": {
+      "en_summary": "@aleabitoreddit shares various commentary from Qualcomm, Arm, to Meta executives during the AI selloff, including $LITE CEO noting massive disconnect between demand books and market selloff, $AMD CEO saying demand higher than supply and beginning of adoption cycle, $ARM CEO on global demand and US competition with China, $APLD on robust demand despite financing risks, $QCOM on supply-bound not demand-bound, and $META on political risks but cooperation. TLDR: extremely bullish from accelerator, networking, and semi companies; no evidence of AI demand destruction.",
+      "zh_summary": "@aleabitoreddit 分享 AI 拋售期間來自高通、Arm 至 Meta 高管的各種評論，包括 $LITE 行政總裁指出需求帳與市場拋售之間存在巨大脫節，$AMD 行政總裁表示需求高於供應且處於採用週期初期，$ARM 行政總裁談全球需求及美國與中國的競爭，$APLD 稱需求極為強勁儘管有融資風險，$QCOM 指是供應受限而非需求受限，以及 $META 談政治風險但有合作。總結：加速器、網絡和半導體公司極為看多；未見 AI 需求破壞的證據。",
+      "tickers": ["LITE", "AMD", "ARM", "APLD", "QCOM", "META", "IREN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"LITE": "睇好", "AMD": "睇好", "ARM": "睇好", "APLD": "睇好", "QCOM": "睇好", "META": "中性", "IREN": "中性"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "利好",
+      "ticker_notes": {"LITE": "CEO notes massive disconnect between demand and market selloff", "AMD": "CEO: demand higher than supply, beginning of adoption"}
+    }
+  }
+}
