@@ -1,5 +1,5 @@
 {
- "day": "2026-11-08",
+ "day": "2026-11-09",
  "companies": {
   "AAPL": {
    "cik": 320193,
@@ -286,6 +286,11 @@
    "name": "Amgen Inc.",
    "mcap": 249046466560
   },
+  "QH": {
+   "cik": 1781193,
+   "name": "Quhuo Limited",
+   "mcap": 237677117440
+  },
   "LIN": {
    "cik": 1707925,
    "name": "Linde plc",
@@ -471,11 +476,6 @@
    "name": "ConocoPhillips",
    "mcap": 161116815360
   },
-  "ISRG": {
-   "cik": 1035267,
-   "name": "Intuitive Surgical, Inc.",
-   "mcap": 156960276480
-  },
   "SCHW": {
    "cik": 316709,
    "name": "The Charles Schwab Corporation",
@@ -485,6 +485,11 @@
    "cik": 313838,
    "name": "Sony Group Corporation",
    "mcap": 157362847744
+  },
+  "ISRG": {
+   "cik": 1035267,
+   "name": "Intuitive Surgical, Inc.",
+   "mcap": 156960276480
   },
   "ACN": {
    "cik": 1467373,
@@ -541,15 +546,15 @@
    "name": "Vertex Pharmaceuticals Incorporated",
    "mcap": 138707943424
   },
-  "BBVA": {
-   "cik": 842180,
-   "name": "Banco Bilbao Vizcaya Argentaria, S.A.",
-   "mcap": 136547860480
-  },
   "BA": {
    "cik": 12927,
    "name": "The Boeing Company",
    "mcap": 137410813952
+  },
+  "BBVA": {
+   "cik": 842180,
+   "name": "Banco Bilbao Vizcaya Argentaria, S.A.",
+   "mcap": 136547860480
   },
   "RIO": {
    "cik": 863064,
@@ -771,15 +776,15 @@
    "name": "HCA Healthcare, Inc.",
    "mcap": 103399694336
   },
-  "MPC": {
-   "cik": 1510295,
-   "name": "Marathon Petroleum Corporation",
-   "mcap": 101490491392
-  },
   "MRNA": {
    "cik": 1682852,
    "name": "Moderna, Inc.",
    "mcap": 102850600960
+  },
+  "MPC": {
+   "cik": 1510295,
+   "name": "Marathon Petroleum Corporation",
+   "mcap": 101490491392
   },
   "GSK": {
    "cik": 1131399,
@@ -906,15 +911,15 @@
    "name": "Intuit Inc.",
    "mcap": 91261091840
   },
-  "CSX": {
-   "cik": 277948,
-   "name": "CSX Corporation",
-   "mcap": 90547724288
-  },
   "EMR": {
    "cik": 32604,
    "name": "Emerson Electric Co.",
    "mcap": 90932232192
+  },
+  "CSX": {
+   "cik": 277948,
+   "name": "CSX Corporation",
+   "mcap": 90547724288
   },
   "ING": {
    "cik": 1039765,
@@ -1033,8 +1038,8 @@
   },
   "HLT": {
    "cik": 1585689,
-   "name": "Hilton Worldwide Holdings Inc. Common Stock",
-   "mcap": 83779559424
+   "name": "Hilton Worldwide Holdings Inc.",
+   "mcap": 82426740736
   },
   "HWM": {
    "cik": 4281,
@@ -1171,11 +1176,6 @@
    "name": "Lloyds Banking Group plc",
    "mcap": 72514584576
   },
-  "ORLY": {
-   "cik": 898173,
-   "name": "O'Reilly Automotive, Inc.",
-   "mcap": 72096153600
-  },
   "AJG": {
    "cik": 354190,
    "name": "Arthur J. Gallagher & Co.",
@@ -1185,6 +1185,11 @@
    "cik": 1048911,
    "name": "FedEx Corporation",
    "mcap": 72166195200
+  },
+  "ORLY": {
+   "cik": 898173,
+   "name": "O'Reilly Automotive, Inc.",
+   "mcap": 72096153600
   },
   "TGT": {
    "cik": 27419,
@@ -1256,6 +1261,11 @@
    "name": "Digital Realty Trust, Inc.",
    "mcap": 67065409536
   },
+  "TDG": {
+   "cik": 1260221,
+   "name": "TransDigm Group Incorporated",
+   "mcap": 66953060352
+  },
   "B": {
    "cik": 756894,
    "name": "Barrick Mining Corporation",
@@ -1270,11 +1280,6 @@
    "cik": 55785,
    "name": "Kimberly-Clark Corporation",
    "mcap": 66540814336
-  },
-  "TDG": {
-   "cik": 1260221,
-   "name": "TransDigm Group Incorporated",
-   "mcap": 66953060352
   },
   "URI": {
    "cik": 1067701,
@@ -1548,7 +1553,7 @@
   },
   "VMRK": {
    "cik": 906107,
-   "name": "AvalonBay Communities, Inc.",
+   "name": "Vivmark Residential",
    "mcap": 50663776256
   },
   "INFY": {
