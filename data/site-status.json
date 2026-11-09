@@ -1,43 +1,49 @@
 {
  "note": "Written by GitHub Actions on every update. Actions Site Check reads this.",
- "checked_hkt": "2026-11-09 09:39",
- "generated_hkt": "2026-11-09 09:17",
+ "checked_hkt": "2026-11-09 10:19",
+ "generated_hkt": "2026-11-09 09:51",
  "cutoff_hkt": "2026-11-09T00:22:53+08:00",
- "posts_on_site": 6517,
+ "posts_on_site": 6516,
  "added_this_run": 0,
  "added_without_en_summary": 0,
- "waiting_for_summary": 348,
- "waiting_with_stock": 147,
+ "waiting_for_summary": 378,
+ "waiting_with_stock": 160,
  "expired_unsummarised_this_run": 0,
- "chitchat_skipped_this_run": 297,
- "pruned_this_run": 19,
+ "chitchat_skipped_this_run": 334,
+ "pruned_this_run": 1,
  "fetch_failed": [],
  "warnings": [
-  "未分析：348 則新帖等待 Grok 分析"
+  "未分析：378 則新帖等待 Grok 分析"
  ],
- "writeups_applied": [],
+ "writeups_applied": [
+  "zh/daily 2026-11-09",
+  "zh/weekly 2026-11-09",
+  "zh/monthly 2026-11-09",
+  "zh/highlights 2026-11-09",
+  "zh/briefing 2026-11-09",
+  "en/daily 2026-11-09",
+  "en/weekly 2026-11-09",
+  "en/monthly 2026-11-09",
+  "en/highlights 2026-11-09",
+  "en/briefing 2026-11-09"
+ ],
  "writeups_rejected": [],
  "latest_writeups": {
   "zh": {
-   "daily": "2026-11-08",
-   "weekly": "2026-11-08",
-   "monthly": "2026-11-08",
-   "highlights": "2026-11-08",
-   "briefing": "2026-11-08"
+   "daily": "2026-11-09",
+   "weekly": "2026-11-09",
+   "monthly": "2026-11-09",
+   "highlights": "2026-11-09",
+   "briefing": "2026-11-09"
   },
   "en": {
-   "daily": "2026-11-08",
-   "weekly": "2026-11-08",
-   "monthly": "2026-11-08",
-   "highlights": "2026-11-08",
-   "briefing": "2026-11-08"
+   "daily": "2026-11-09",
+   "weekly": "2026-11-09",
+   "monthly": "2026-11-09",
+   "highlights": "2026-11-09",
+   "briefing": "2026-11-09"
   }
  },
- "layout_warnings": [
-  "zh 1280px：今日重點卡有 0 張（應該 3 張）",
-  "zh 390px：今日重點卡有 0 張（應該 3 張）",
-  "en 1280px：今日重點卡有 0 張（應該 3 張）",
-  "en 390px：今日重點卡有 0 張（應該 3 張）"
- ],
- "layout_checked_hkt": "2026-11-09 09:45"
+ "layout_warnings": [],
+ "layout_checked_hkt": "2026-11-09 10:21"
 }
