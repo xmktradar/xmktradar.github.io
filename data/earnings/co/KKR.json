@@ -4,18 +4,6 @@
  "cik": 1404912,
  "q": [
   {
-   "end": "2023-09-30",
-   "label": "FY2023 Q3",
-   "rev": 3315481000,
-   "gp": null,
-   "op": null,
-   "ni": 1490126000,
-   "eps": null,
-   "ocf": 1971073000,
-   "capex": null,
-   "fcf": null
-  },
-  {
    "end": "2023-12-31",
    "label": "FY2023 Q4",
    "rev": 4429831000,
@@ -146,18 +134,30 @@
    "ocf": 3252532000,
    "capex": null,
    "fcf": null
+  },
+  {
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "rev": 4563679000,
+   "gp": null,
+   "op": null,
+   "ni": 1161606000,
+   "eps": null,
+   "ocf": 2144008000,
+   "capex": null,
+   "fcf": null
   }
  ],
  "latest": {
-  "label": "FY2026 Q2",
-  "filed": "2026-08-06",
-  "accn": "0001404912-26-000027",
+  "label": "FY2026 Q3",
+  "filed": "2026-11-09",
+  "accn": "0001404912-26-000034",
   "form": "10-Q",
-  "end": "2026-06-30"
+  "end": "2026-09-30"
  },
  "bal": {
-  "end": "2026-06-30",
-  "cash": 21202194000,
+  "end": "2026-09-30",
+  "cash": 22640867000,
   "sti": null,
   "debt": null
  },
@@ -168,26 +168,26 @@
   "rows": [
    {
     "name": "Insurance",
-    "val": 3523068000.0,
-    "prev": 3253677000.0
+    "val": 2801894000.0,
+    "prev": 3781973000.0
    },
    {
     "name": "Asset Management and Strategic Holdings",
-    "val": 2202823000.0,
-    "prev": 1835166000.0
+    "val": 1761785000.0,
+    "prev": 1744002000.0
    }
   ],
-  "accn": "0001404912-26-000027"
+  "accn": "0001404912-26-000034"
  },
  "rules": 4,
- "mcap": 89108021248,
+ "mcap": 90594992128,
  "next": "2026-11-09",
  "last_report": "2026-11-09",
  "est": {
-  "eps_act": 1.63,
-  "eps_est": 1.42696,
-  "rev_est": null,
-  "rev_est_seen": null
+  "eps_act": 1.78,
+  "eps_est": 1.58245,
+  "rev_est": 2588083670,
+  "rev_est_seen": "2026-11-09"
  },
  "pending": null
 }

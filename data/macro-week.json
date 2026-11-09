@@ -2,30 +2,30 @@
  "date": "2026-11-14",
  "date_kst": "2026-11-14",
  "frozen": false,
- "made_hkt": "2026-11-09 01:02",
- "from": "2026-11-03",
- "to": "2026-11-09",
+ "made_hkt": "2026-11-10 05:45",
+ "from": "2026-11-04",
+ "to": "2026-11-10",
  "themes": [
   {
    "theme": "rates",
-   "accounts": 2,
-   "n": 2,
+   "accounts": 3,
+   "n": 3,
    "bull": 0,
    "bear": 1,
-   "neu": 1,
+   "neu": 2,
    "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "TheTranscript_",
-     "impact": "bear",
-     "text": "@TheTranscript_ 分享 $JPM JPMorgan Chase 高管 Charles Bristow：AI 驅動的存款流動性最終可能通過削弱銀行資助長期貸款的能力而提高全經濟體的借貸成本。指出存款速度越高，對期限資產的需求越少。",
-     "url": "https://x.com/TheTranscript_/status/2118886235099758884"
+     "acc": "UrbanKaoboy",
+     "impact": "neu",
+     "text": "11/8/26 當日隨想：我還以為無風險利率是風險大廈最底層的積木！引用了一則含 $NVDA 的帖文。",
+     "url": "https://x.com/UrbanKaoboy/status/2119606823183687689"
     },
     "en": {
-     "acc": "TheTranscript_",
-     "impact": "bear",
-     "text": "@TheTranscript_ shares $JPM JPMorgan Chase Executive Charles Bristow: AI-driven deposit mobility could ultimately raise economy-wide borrowing costs by undermining banks' ability to fund long-term loans. Notes higher velocity in deposits means less demand for duration-bearing assets.",
-     "url": "https://x.com/TheTranscript_/status/2118886235099758884"
+     "acc": "UrbanKaoboy",
+     "impact": "neu",
+     "text": "Musings of the Day, 11/8/26: And here I thought the Risk Free Rate was the bottommost Jenga block of the risk edifice! Quotes a post with $NVDA.",
+     "url": "https://x.com/UrbanKaoboy/status/2119606823183687689"
     }
    }
   },
@@ -64,13 +64,26 @@
   },
   {
    "theme": "growth",
-   "accounts": 0,
-   "n": 0,
-   "bull": 0,
+   "accounts": 2,
+   "n": 2,
+   "bull": 2,
    "bear": 0,
    "neu": 0,
-   "arrow": "none",
-   "quotes": {}
+   "arrow": "up",
+   "quotes": {
+    "zh": {
+     "acc": "aleabitoreddit",
+     "impact": "bull",
+     "text": "@aleabitoreddit 分享 AI 拋售期間來自高通、Arm 至 Meta 高管的各種評論，包括 $LITE 行政總裁指出需求帳與市場拋售之間存在巨大脫節，$AMD 行政總裁表示需求高於供應且處於採用週期初期，$ARM 行政總裁談全球需求及美國與中國的競爭，$APLD 稱需求極為強勁儘管有融資風險，$QCOM 指是供應受限而非需求受限，以及 $META 談政治風險但有合作。總結：加速器、網絡和半導體公司極為看多；未見 AI 需求破壞的證據。",
+     "url": "https://x.com/aleabitoreddit/status/2119458038260318634"
+    },
+    "en": {
+     "acc": "aleabitoreddit",
+     "impact": "bull",
+     "text": "@aleabitoreddit shares various commentary from Qualcomm, Arm, to Meta executives during the AI selloff, including $LITE CEO noting massive disconnect between demand books and market selloff, $AMD CEO saying demand higher than supply and beginning of adoption cycle, $ARM CEO on global demand and US competition with China, $APLD on robust demand despite financing risks, $QCOM on supply-bound not demand-bound, and $META on political risks but cooperation. TLDR: extremely bullish from accelerator, networking, and semi companies; no evidence of AI demand destruction.",
+     "url": "https://x.com/aleabitoreddit/status/2119458038260318634"
+    }
+   }
   },
   {
    "theme": "yields",
@@ -82,16 +95,16 @@
    "arrow": "up",
    "quotes": {
     "zh": {
-     "acc": "KobeissiLetter",
+     "acc": "leadlagreport",
      "impact": "neu",
-     "text": "投資者湧入國債：納斯達克 100 與 $TLT 的比率降至 342.5，為 7 月 31 日以來最低。自 10 月 7 日歷史高點以來比率下跌 15.4%，$TLT 上升 7.1%，納斯達克 100 下跌 10.2%。連續第 5 週下跌，為 2022 年熊市以來最長。買入債券以防範 AI 拋售。",
-     "url": "https://x.com/KobeissiLetter/status/2117715904947429856"
+     "text": "@leadlagreport 表示大多數債券 ETF 只提供曝險，而 $JOJO 提供策略。當風險可能獲得回報時輪動至高收益，否則輪動至國債。設計用於收益加上定位。",
+     "url": "https://x.com/leadlagreport/status/2119456416742154266"
     },
     "en": {
-     "acc": "KobeissiLetter",
+     "acc": "leadlagreport",
      "impact": "neu",
-     "text": "Investors rushing into Treasuries: Nasdaq 100 to $TLT ratio down to 342.5, lowest since July 31. Ratio fallen -15.4% since Oct 7 ATH, $TLT up +7.1%, Nasdaq 100 down -10.2%. 5th consecutive weekly decline, longest since 2022 bear. Buying bonds to protect against AI selloff.",
-     "url": "https://x.com/KobeissiLetter/status/2117715904947429856"
+     "text": "@leadlagreport says most bond ETFs give you exposure while $JOJO gives you a strategy. Rotate to high yield when risk may be rewarded, rotate to Treasuries when it's not. Designed for income plus positioning.",
+     "url": "https://x.com/leadlagreport/status/2119456416742154266"
     }
    }
   },
@@ -107,70 +120,70 @@
   },
   {
    "theme": "energy",
-   "accounts": 5,
-   "n": 5,
-   "bull": 0,
-   "bear": 4,
-   "neu": 1,
+   "accounts": 3,
+   "n": 3,
+   "bull": 1,
+   "bear": 2,
+   "neu": 0,
    "arrow": "dn",
    "quotes": {
     "zh": {
-     "acc": "Jake__Wujastyk",
-     "impact": "bear",
-     "text": "@Jake__Wujastyk 評論，世界總能找到適應事物的方式，特別是考慮到目前 $CL_F 圖表設置非常看跌。",
-     "url": "https://x.com/Jake__Wujastyk/status/2119206172939124772"
+     "acc": "garyblack00",
+     "impact": "bull",
+     "text": "美股盤前上漲（SPX +0.4%、NDX +0.3%），因特朗普對伊朗較為和解的言論令布倫特原油下跌1.1%至97美元/桶，抵消了NVDA因執行長黃仁勳承認與一名疑似中國間諜有長期婚外情而下跌4.4%的影響；董事會正在調查，但認為未洩露公司機密或危害國家安全。晶片需求預計未來數年將超過供應，NVDA 2027年市盈率19倍具吸引力。能源價格回落及標普2026年盈利增長強勁（同比+33%）意味著20倍市盈率，應支持股市。對TSLA保持謹慎，因其估值偏高、盈利下修及自動駕駛技術商品化。",
+     "url": "https://x.com/garyblack00/status/2119744600894058722"
     },
     "en": {
-     "acc": "Jake__Wujastyk",
-     "impact": "bear",
-     "text": "@Jake__Wujastyk comments that the world finds a way to adapt to things, especially interesting given how bearish the $CL_F chart setup is right now.",
-     "url": "https://x.com/Jake__Wujastyk/status/2119206172939124772"
+     "acc": "garyblack00",
+     "impact": "bull",
+     "text": "US stocks rose pre-market (SPX +0.4%, NDX +0.3%) as Brent crude fell 1.1% to $97/bbl on Trump’s more conciliatory Iran comments, offsetting $NVDA’s -4.4% drop after CEO Jensen Huang admitted an extended affair with a suspected Chinese spy; board investigating but sees no secrets or national security compromised. Chip demand expected to exceed supply for years, $NVDA 2027 P/E 19x compelling. Easing energy prices and strong S&P 2026 EPS growth (+33% YoY) implying 20x P/E should support equities. Remains cautious on $TSLA due to stretched valuation, negative earnings revisions, and commoditization of autonomous tech.",
+     "url": "https://x.com/garyblack00/status/2119744600894058722"
     }
    }
   },
   {
    "theme": "policy",
-   "accounts": 10,
-   "n": 9,
+   "accounts": 9,
+   "n": 8,
    "bull": 2,
    "bear": 4,
-   "neu": 3,
+   "neu": 2,
    "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "aleabitoreddit",
-     "impact": "bull",
-     "text": "作者對NASA的100億美元合約開始月球定居感到興奮。選定$SPCX（SpaceX）、Blue Origin、$FLY（Firefly）、$LUNR（Lunar）、$LMT、$NOC、$VOYG、iSpace US競爭未來月球運送任務。包括13億美元發射訂單、9400萬美元給Blue Origin的探測車、CLPS上限提升至42億美元，以及$RDW的月球電力塔獎項。",
-     "url": "https://x.com/aleabitoreddit/status/2119287752730738722"
+     "acc": "TheTranscript_",
+     "impact": "bear",
+     "text": "$OTIS 行政總裁：中國房地產改革正在結束開發商依賴客戶訂金資助建設的做法。對於任何預售，二十年來首次，那些首付款必須存入託管帳戶，因此不能用於資助下一個項目。",
+     "url": "https://x.com/TheTranscript_/status/2119463708099547346"
     },
     "en": {
-     "acc": "aleabitoreddit",
-     "impact": "bull",
-     "text": "Author excited about NASA's $10 Billion contract to begin settling on the moon. Selected $SPCX (SpaceX), Blue Origin, $FLY (Firefly), $LUNR (Lunar), $LMT, $NOC, $VOYG, iSpace US to compete for future lunar delivery missions. Includes $1.3B launch orders, $94 million for Blue Origin rover, CLPS ceiling raised to $4.2B, and $RDW award for lunar power tower.",
-     "url": "https://x.com/aleabitoreddit/status/2119287752730738722"
+     "acc": "TheTranscript_",
+     "impact": "bear",
+     "text": "$OTIS CEO: China's property reforms are ending developers' reliance on customer deposits to fund construction. For any presales, for the first time in 2 decades, those down payments have to go to escrow, so they can't be used to finance the next project.",
+     "url": "https://x.com/TheTranscript_/status/2119463708099547346"
     }
    }
   },
   {
    "theme": "other",
-   "accounts": 16,
-   "n": 16,
-   "bull": 1,
-   "bear": 2,
-   "neu": 13,
-   "arrow": "flat",
+   "accounts": 10,
+   "n": 10,
+   "bull": 3,
+   "bear": 1,
+   "neu": 6,
+   "arrow": "up",
    "quotes": {
     "zh": {
      "acc": "aleabitoreddit",
-     "impact": "neu",
-     "text": "作者認為「AI泡沫」標籤被過度用於基礎設施相關公司。從三星到$ESMT的記憶體公司遠期市盈率僅1-3倍，且高頻寬記憶體廠商已簽下超大規模企業多年價格底線長期協議。光學公司$POET交易價格低於淨現金9700萬美元。$COHR簽署200億美元長期協議，$LITE簽署50億美元長期協議。作者對瓶頸領域復蘇有信心，隨著盈利與自由現金流累積，更像是2026年AI大去槓桿而非需求破壞。",
-     "url": "https://x.com/aleabitoreddit/status/2119363124147191823"
+     "impact": "bull",
+     "text": "臺灣從聯發科到華邦電的每隻AI股似乎都漲停。加權指數：+4.94%，歷史第二大單日漲幅。市場對NVDA黃仁勳在這個年齡的活力印象深刻？",
+     "url": "https://x.com/aleabitoreddit/status/2119689635869954503"
     },
     "en": {
      "acc": "aleabitoreddit",
-     "impact": "neu",
-     "text": "Author argues the \"AI Bubble\" label is overused for infrastructure names. Memory companies from Samsung to $ESMT trade at 1-3x forward P/E with hyperscaler multi-year HBM price floor LTAs. Optical $POET trades $97M under net cash. $COHR signed $20B LTAs and $LITE $5B LTAs. Confident in recovery especially in bottlenecks as earnings and FCF accumulate, calling it more the Great AI Deleveraging of 2026 than demand destruction.",
-     "url": "https://x.com/aleabitoreddit/status/2119363124147191823"
+     "impact": "bull",
+     "text": "Every AI name in Taiwan from Mediatek to Winbond looks like its limit up. TAIEX: +4.94%, its 2nd largest daily gain in history. Market impressed by $NVDA’s Jensen Huang vitality at his age?",
+     "url": "https://x.com/aleabitoreddit/status/2119689635869954503"
     }
    }
   }
@@ -178,49 +191,49 @@
  "top": [
   "other",
   "policy",
-  "energy"
+  "rates"
  ],
  "accounts": 201,
- "range": "11/3–11/9",
+ "range": "11/4–11/10",
  "images": {
-  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-14-0102",
-  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-14-0102"
+  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-14-0545",
+  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-14-0545"
  },
  "stories": {
-  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-14-0102",
-  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-14-0102"
+  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-14-0545",
+  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-14-0545"
  },
  "posts": {
   "zh": {
-   "instagram": "本週宏觀：最多人講「其他」（利好 1・利空 2）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/3–11/9）\n\n1. 其他：利好 1・利空 2・中性 13（同上週差不多）\n@aleabitoreddit：「作者認為「AI泡沫」標籤被過度用於基礎設施相關公司。從三星到$ESMT的記憶體公司遠期市盈率僅1-3倍，且高頻寬記憶體廠商已簽下超大規模企業多年價格底線長期協議。光學公司$POE…」\n\n2. 關稅／政策／地緣政治：利好 2・利空 4・中性 3（同上週差不多）\n@aleabitoreddit：「作者對NASA的100億美元合約開始月球定居感到興奮。選定$SPCX（SpaceX）、Blue Origin、$FLY（Firefly）、$LUNR（Lunar）、$LMT、$N…」\n\n3. 油價／能源：利好 0・利空 4・中性 1（比上週轉差 ▼）\n@Jake__Wujastyk 評論，世界總能找到適應事物的方式，特別是考慮到目前 $CL_F 圖表設置非常看跌。\n\n這週哪個宏觀消息最影響你的判斷？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #POE #SPCX",
-   "threads": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/3–11/9）\n\n1. 其他：利好 1・利空 2・中性 13（同上週差不多）\n2. 關稅／政策／地緣政治：利好 2・利空 4・中性 3（同上週差不多）\n3. 油價／能源：利好 0・利空 4・中性 1（比上週轉差 ▼）\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
-   "x": "這星期大家最常聊的宏觀話題\n\n其他 1/2/13\n關稅／政策／地緣政治 2/4/3\n油價／能源 0/4/1\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "instagram": "本週宏觀：最多人講「其他」（利好 3・利空 1）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/4–11/10）\n\n1. 其他：利好 3・利空 1・中性 6（比上週轉好 ▲）\n@aleabitoreddit：「臺灣從聯發科到華邦電的每檔AI股似乎都漲停。加權指數：+4.94%，歷史第二大單日漲幅。市場對NVDA黃仁勳在這個年齡的活力印象深刻？」\n\n2. 關稅／政策／地緣政治：利好 2・利空 4・中性 2（同上週差不多）\n@TheTranscript_：「$OTIS 行政總裁：中國房地產改革正在結束開發商依賴客戶訂金資助建設的做法。對於任何預售，二十年來首次，那些首付款必須存入託管帳戶，因此不能用於資助下一個項目。」\n\n3. 利率／聯儲局：利好 0・利空 1・中性 2（同上週差不多）\n@UrbanKaoboy：「11/8/26 當日隨想：我還以為無風險利率是風險大廈最底層的積木！引用了一則含 $NVDA 的帖文。」\n\n你覺得下週市場最該留意哪個數據？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #OTIS #NVDA",
+   "threads": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/4–11/10）\n\n1. 其他：利好 3・利空 1・中性 6（比上週轉好 ▲）\n2. 關稅／政策／地緣政治：利好 2・利空 4・中性 2（同上週差不多）\n3. 利率／聯儲局：利好 0・利空 1・中性 2（同上週差不多）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "x": "這星期大家最常聊的宏觀話題\n\n其他 3/1/6\n關稅／政策／地緣政治 2/4/2\n利率／聯儲局 0/1/2\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "reddit": {
-    "title": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/3–11/9）",
-    "body": "1. 其他：利好 1・利空 2・中性 13（同上週差不多）\n@aleabitoreddit：「作者認為「AI泡沫」標籤被過度用於基礎設施相關公司。從三星到$ESMT的記憶體公司遠期市盈率僅1-3倍，且高頻寬記憶體廠商已簽下超大規模企業多年價格底線長期協議。光學公司$POE…」\n\n2. 關稅／政策／地緣政治：利好 2・利空 4・中性 3（同上週差不多）\n@aleabitoreddit：「作者對NASA的100億美元合約開始月球定居感到興奮。選定$SPCX（SpaceX）、Blue Origin、$FLY（Firefly）、$LUNR（Lunar）、$LMT、$N…」\n\n3. 油價／能源：利好 0・利空 4・中性 1（比上週轉差 ▼）\n@Jake__Wujastyk 評論，世界總能找到適應事物的方式，特別是考慮到目前 $CL_F 圖表設置非常看跌。\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
+    "title": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/4–11/10）",
+    "body": "1. 其他：利好 3・利空 1・中性 6（比上週轉好 ▲）\n@aleabitoreddit：「臺灣從聯發科到華邦電的每檔AI股似乎都漲停。加權指數：+4.94%，歷史第二大單日漲幅。市場對NVDA黃仁勳在這個年齡的活力印象深刻？」\n\n2. 關稅／政策／地緣政治：利好 2・利空 4・中性 2（同上週差不多）\n@TheTranscript_：「$OTIS 行政總裁：中國房地產改革正在結束開發商依賴客戶訂金資助建設的做法。對於任何預售，二十年來首次，那些首付款必須存入託管帳戶，因此不能用於資助下一個項目。」\n\n3. 利率／聯儲局：利好 0・利空 1・中性 2（同上週差不多）\n@UrbanKaoboy：「11/8/26 當日隨想：我還以為無風險利率是風險大廈最底層的積木！引用了一則含 $NVDA 的帖文。」\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
    },
-   "facebook": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/3–11/9）\n\n1. 其他：利好 1・利空 2・中性 13（同上週差不多）\n@aleabitoreddit：「作者認為「AI泡沫」標籤被過度用於基礎設施相關公司。從三星到$ESMT的記憶體公司遠期市盈率僅1-3倍，且高頻寬記憶體廠商已簽下超大規模企業多年價格底線長期協議。光學公司$POE…」\n\n2. 關稅／政策／地緣政治：利好 2・利空 4・中性 3（同上週差不多）\n@aleabitoreddit：「作者對NASA的100億美元合約開始月球定居感到興奮。選定$SPCX（SpaceX）、Blue Origin、$FLY（Firefly）、$LUNR（Lunar）、$LMT、$N…」\n\n3. 油價／能源：利好 0・利空 4・中性 1（比上週轉差 ▼）\n@Jake__Wujastyk 評論，世界總能找到適應事物的方式，特別是考慮到目前 $CL_F 圖表設置非常看跌。\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "facebook": "這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/4–11/10）\n\n1. 其他：利好 3・利空 1・中性 6（比上週轉好 ▲）\n@aleabitoreddit：「臺灣從聯發科到華邦電的每檔AI股似乎都漲停。加權指數：+4.94%，歷史第二大單日漲幅。市場對NVDA黃仁勳在這個年齡的活力印象深刻？」\n\n2. 關稅／政策／地緣政治：利好 2・利空 4・中性 2（同上週差不多）\n@TheTranscript_：「$OTIS 行政總裁：中國房地產改革正在結束開發商依賴客戶訂金資助建設的做法。對於任何預售，二十年來首次，那些首付款必須存入託管帳戶，因此不能用於資助下一個項目。」\n\n3. 利率／聯儲局：利好 0・利空 1・中性 2（同上週差不多）\n@UrbanKaoboy：「11/8/26 當日隨想：我還以為無風險利率是風險大廈最底層的積木！引用了一則含 $NVDA 的帖文。」\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "story": "#美股"
   },
   "en": {
    "instagram": "",
    "threads": "",
-   "x": "What X talked about in macro this week\n\nOther 1/2/13\nTariffs / policy / geopolitics 2/4/3\nOil / energy 0/4/1\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
+   "x": "What X talked about in macro this week\n\nOther 3/1/6\nTariffs / policy / geopolitics 2/4/2\nRates / Fed 0/1/2\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
    "reddit": {
-    "title": "The macro topics the 201 X accounts we follow talked about most this week (11/3–11/9)",
-    "body": "1. Other: bullish 1 · bearish 2 · neutral 13 (about the same as last week)\n@aleabitoreddit: “Author argues the \"AI Bubble\" label is overused for infrastructure names. Memory companies from Samsung to $ESMT trade at 1-3x forward P/E with hyper…”\n\n2. Tariffs / policy / geopolitics: bullish 2 · bearish 4 · neutral 3 (about the same as last week)\n@aleabitoreddit: “Author excited about NASA's $10 Billion contract to begin settling on the moon. Selected $SPCX (SpaceX), Blue Origin, $FLY (Firefly), $LUNR (Lunar)…”\n\n3. Oil / energy: bullish 0 · bearish 4 · neutral 1 (worse than last week ▼)\n@Jake__Wujastyk comments that the world finds a way to adapt to things, especially interesting given how bearish the $CL_F chart setup is right now.\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro"
+    "title": "The macro topics the 201 X accounts we follow talked about most this week (11/4–11/10)",
+    "body": "1. Other: bullish 3 · bearish 1 · neutral 6 (better than last week ▲)\n@aleabitoreddit: “Every AI name in Taiwan from Mediatek to Winbond looks like its limit up. TAIEX: +4.94%, its 2nd largest daily gain in history. Market impressed by $…”\n\n2. Tariffs / policy / geopolitics: bullish 2 · bearish 4 · neutral 2 (about the same as last week)\n@TheTranscript_: “$OTIS CEO: China's property reforms are ending developers' reliance on customer deposits to fund construction. For any presales, for the first time i…”\n\n3. Rates / Fed: bullish 0 · bearish 1 · neutral 2 (about the same as last week)\n@UrbanKaoboy: “Musings of the Day, 11/8/26: And here I thought the Risk Free Rate was the bottommost Jenga block of the risk edifice! Quotes a post with $NVDA.”\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro"
    },
-   "facebook": "The macro topics the 201 X accounts we follow talked about most this week (11/3–11/9)\n\n1. Other: bullish 1 · bearish 2 · neutral 13 (about the same as last week)\n@aleabitoreddit: “Author argues the \"AI Bubble\" label is overused for infrastructure names. Memory companies from Samsung to $ESMT trade at 1-3x forward P/E with hyper…”\n\n2. Tariffs / policy / geopolitics: bullish 2 · bearish 4 · neutral 3 (about the same as last week)\n@aleabitoreddit: “Author excited about NASA's $10 Billion contract to begin settling on the moon. Selected $SPCX (SpaceX), Blue Origin, $FLY (Firefly), $LUNR (Lunar)…”\n\n3. Oil / energy: bullish 0 · bearish 4 · neutral 1 (worse than last week ▼)\n@Jake__Wujastyk comments that the world finds a way to adapt to things, especially interesting given how bearish the $CL_F chart setup is right now.\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
+   "facebook": "The macro topics the 201 X accounts we follow talked about most this week (11/4–11/10)\n\n1. Other: bullish 3 · bearish 1 · neutral 6 (better than last week ▲)\n@aleabitoreddit: “Every AI name in Taiwan from Mediatek to Winbond looks like its limit up. TAIEX: +4.94%, its 2nd largest daily gain in history. Market impressed by $…”\n\n2. Tariffs / policy / geopolitics: bullish 2 · bearish 4 · neutral 2 (about the same as last week)\n@TheTranscript_: “$OTIS CEO: China's property reforms are ending developers' reliance on customer deposits to fund construction. For any presales, for the first time i…”\n\n3. Rates / Fed: bullish 0 · bearish 1 · neutral 2 (about the same as last week)\n@UrbanKaoboy: “Musings of the Day, 11/8/26: And here I thought the Risk Free Rate was the bottommost Jenga block of the risk edifice! Quotes a post with $NVDA.”\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
    "story": ""
   }
  },
  "ig_images": {
   "zh": [
-   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-14-0102",
+   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-14-0545",
    "https://thecrowdtape.com/og/cta/ig-cta-zh.jpg"
   ],
   "en": [
-   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-14-0102",
+   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-14-0545",
    "https://thecrowdtape.com/og/cta/ig-cta-en.jpg"
   ]
  },
@@ -230,7 +243,7 @@
   "video_path": null,
   "video_expected_path": "assets/reels/2026-11-14-macro-week.mp4",
   "caption": {
-   "zh": "本週宏觀：最多人講「其他」（利好 1・利空 2）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/3–11/9）\n\n1. 其他：利好 1・利空 2・中性 13（同上週差不多）\n@aleabitoreddit：「作者認為「AI泡沫」標籤被過度用於基礎設施相關公司。從三星到$ESMT的記憶體公司遠期市盈率僅1-3倍，且高頻寬記憶體廠商已簽下超大規模企業多年價格底線長期協議。光學公司$POE…」\n\n2. 關稅／政策／地緣政治：利好 2・利空 4・中性 3（同上週差不多）\n@aleabitoreddit：「作者對NASA的100億美元合約開始月球定居感到興奮。選定$SPCX（SpaceX）、Blue Origin、$FLY（Firefly）、$LUNR（Lunar）、$LMT、$N…」\n\n3. 油價／能源：利好 0・利空 4・中性 1（比上週轉差 ▼）\n@Jake__Wujastyk 評論，世界總能找到適應事物的方式，特別是考慮到目前 $CL_F 圖表設置非常看跌。\n\n這週哪個宏觀消息最影響你的判斷？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #POE #SPCX",
+   "zh": "本週宏觀：最多人講「其他」（利好 3・利空 1）\n\n這星期我們追蹤的 201 個 X 帳號，最常聊的宏觀話題是這幾個（11/4–11/10）\n\n1. 其他：利好 3・利空 1・中性 6（比上週轉好 ▲）\n@aleabitoreddit：「臺灣從聯發科到華邦電的每檔AI股似乎都漲停。加權指數：+4.94%，歷史第二大單日漲幅。市場對NVDA黃仁勳在這個年齡的活力印象深刻？」\n\n2. 關稅／政策／地緣政治：利好 2・利空 4・中性 2（同上週差不多）\n@TheTranscript_：「$OTIS 行政總裁：中國房地產改革正在結束開發商依賴客戶訂金資助建設的做法。對於任何預售，二十年來首次，那些首付款必須存入託管帳戶，因此不能用於資助下一個項目。」\n\n3. 利率／聯儲局：利好 0・利空 1・中性 2（同上週差不多）\n@UrbanKaoboy：「11/8/26 當日隨想：我還以為無風險利率是風險大廈最底層的積木！引用了一則含 $NVDA 的帖文。」\n\n你覺得下週市場最該留意哪個數據？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #OTIS #NVDA",
    "en": ""
   }
  },
