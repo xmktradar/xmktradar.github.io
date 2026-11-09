@@ -4,18 +4,6 @@
  "cik": 1067983,
  "q": [
   {
-   "end": "2023-09-30",
-   "label": "FY2023 Q3",
-   "rev": 93210000000,
-   "gp": null,
-   "op": null,
-   "ni": -12767000000,
-   "eps": null,
-   "ocf": 13669000000,
-   "capex": 5303000000,
-   "fcf": 8366000000
-  },
-  {
    "end": "2023-12-31",
    "label": "FY2023 Q4",
    "rev": 93376000000,
@@ -146,18 +134,30 @@
    "ocf": 11215000000,
    "capex": 5645000000,
    "fcf": 5570000000
+  },
+  {
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "rev": 105647000000,
+   "gp": null,
+   "op": null,
+   "ni": 22112000000,
+   "eps": null,
+   "ocf": 12261000000,
+   "capex": 5506000000,
+   "fcf": 6755000000
   }
  ],
  "latest": {
-  "label": "FY2026 Q2",
-  "filed": "2026-08-10",
-  "accn": "0001193125-26-341032",
+  "label": "FY2026 Q3",
+  "filed": "2026-11-09",
+  "accn": "0001193125-26-452412",
   "form": "10-Q",
-  "end": "2026-06-30"
+  "end": "2026-09-30"
  },
  "bal": {
-  "end": "2026-06-30",
-  "cash": 41360000000,
+  "end": "2026-09-30",
+  "cash": 41658000000,
   "sti": null,
   "debt": null
  },
@@ -168,55 +168,51 @@
   "rows": [
    {
     "name": "Insurance Corporate And Other",
-    "val": 27310000000.0,
-    "prev": 27259000000.0
+    "val": 26862000000.0,
+    "prev": 27244000000.0
    },
    {
     "name": "Manufacturing Businesses",
-    "val": 22520000000.0,
-    "prev": 19940000000.0
+    "val": 23961000000.0,
+    "prev": 20015000000.0
    },
    {
     "name": "Pilot Travel Centers LLC",
-    "val": 14925000000.0,
-    "prev": 10095000000.0
+    "val": 16116000000.0,
+    "prev": 10879000000.0
    },
    {
     "name": "Mc Lane Company",
-    "val": 11888000000.0,
-    "prev": 12399000000.0
+    "val": 12130000000.0,
+    "prev": 12960000000.0
    },
    {
     "name": "Service And Retailing Businesses",
-    "val": 11858000000.0,
-    "prev": 10671000000.0
+    "val": 11944000000.0,
+    "prev": 10568000000.0
    },
    {
     "name": "Berkshire Hathaway Energy Company",
-    "val": 6730000000.0,
-    "prev": 6405000000.0
+    "val": 7766000000.0,
+    "prev": 7293000000.0
    },
    {
     "name": "Burlington Northern Santa Fe Corporation",
-    "val": 6577000000.0,
-    "prev": 5746000000.0
+    "val": 6868000000.0,
+    "prev": 6013000000.0
    }
   ],
-  "accn": "0001193125-26-341032"
+  "accn": "0001193125-26-452412"
  },
  "rules": 4,
  "mcap": 1222505267200,
  "next": "2026-11-09",
- "last_report": "2026-11-07",
+ "last_report": "2026-11-09",
  "est": {
-  "eps_act": 9038.298,
-  "eps_est": 7499.7656,
-  "rev_est": null,
-  "rev_est_seen": null
- },
- "pending": {
-  "q": "2026-09-30",
   "eps_act": 8907.214,
-  "eps_est": 9092.319
- }
+  "eps_est": 9092.319,
+  "rev_est": 0,
+  "rev_est_seen": "2026-11-08"
+ },
+ "pending": null
 }
