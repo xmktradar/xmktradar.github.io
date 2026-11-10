@@ -283,8 +283,8 @@ function stockFooterCta(lang, ticker) {
   const go = checklistGo(lang, 'stock_footer');
   let aria, title, note, label, placeholder, button, ok, bad, more;
   if (lang === 'zh') {
-    aria = '訂閱並領取財報解讀清單';
-    title = '免費領取財報解讀清單';
+    aria = '免費領取財報解讀清單 · 開市前盤勢訊號';
+    title = '免費領取財報解讀清單 · 開市前盤勢訊號';
     note = '訂閱後即開清單；唔會濫發，隨時取消。';
     label = '電郵地址';
     placeholder = '你的電郵';
@@ -293,8 +293,8 @@ function stockFooterCta(lang, ticker) {
     bad = '電郵地址有誤，請再試。';
     more = '或者直接打開 <a href="' + checkRel + '">財報解讀清單</a> · <a href="' + newsRel + '">電子報</a>。';
   } else {
-    aria = 'Get the free earnings checklist';
-    title = 'Get the free earnings checklist';
+    aria = 'Get the free earnings checklist · tape tells before the open';
+    title = 'Get the free earnings checklist · tape tells before the open';
     note = 'Email signup opens the checklist. No spam. Unsubscribe anytime.';
     label = 'Email address';
     placeholder = 'you@email.com';
@@ -308,14 +308,14 @@ function stockFooterCta(lang, ticker) {
   const badLit = JSON.stringify(bad).replace(/</g, '\\u003c');
   const goLit = JSON.stringify(go).replace(/</g, '\\u003c');
   return (
-    '<aside class="ct-nl-end" data-src="stock-footer" data-ticker="' + esc(ticker) + '" aria-label="' + esc(aria) + '">' +
+    '<aside class="ct-nl-end" data-src="footer" data-ticker="' + esc(ticker) + '" aria-label="' + esc(aria) + '">' +
     '<p class="ct-nl-end__t">' + esc(title) + '</p>' +
     '<p class="ct-nl-end__n">' + esc(note) + ' ' + more + '</p>' +
     '<form class="ct-nl-end__f" action="' + NL_ENDPOINT + '" method="post">' +
     '<label class="sr" for="' + fid + '">' + esc(label) + '</label>' +
     '<input class="ct-nl-end__in" id="' + fid + '" type="email" name="email" required autocomplete="email" placeholder="' + esc(placeholder) + '">' +
     '<input type="hidden" name="lang" value="' + lang + '">' +
-    '<input type="hidden" name="src" value="stock-footer-' + esc(ticker) + '">' +
+    '<input type="hidden" name="src" value="footer">' +
     '<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">' +
     '<div class="cf-turnstile" data-sitekey="0x4AAAAAAF1CD19oqPdgLqWt"></div>' +
     '<button class="ct-nl-end__btn" type="submit">' + esc(button) + '</button>' +
@@ -326,7 +326,7 @@ function stockFooterCta(lang, ticker) {
     'var d=new FormData(f);var tok=d.get("cf-turnstile-response")||"";if(!tok){f.insertAdjacentHTML("afterend","<p class=\\"ct-nl-end__ok\\">"+bad+"<\\/p>");return;}f.setAttribute("data-sending","1");' +
     'fetch(f.action,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:d.get("email"),lang:d.get("lang"),src:d.get("src"),website:d.get("website"),"cf-turnstile-response":tok})})' +
     '.then(function(r){return r.json()}).then(function(j){if(!j||!j.ok){f.removeAttribute("data-sending");f.insertAdjacentHTML("afterend","<p class=\\"ct-nl-end__ok\\">"+bad+"<\\/p>");return;}' +
-    'f.outerHTML="<p class=\\"ct-nl-end__ok\\">"+ok+"<\\/p>";if(window.gtag)gtag("event","newsletter_signup",{lang:d.get("lang"),src:d.get("src")||"stock-footer"});if(j.token){location.assign(go+(go.indexOf("?")>=0?"&":"?")+"t="+encodeURIComponent(j.token));}})' +
+    'f.outerHTML="<p class=\\"ct-nl-end__ok\\">"+ok+"<\\/p>";if(window.gtag)gtag("event","newsletter_signup",{lang:d.get("lang"),src:d.get("src")||"footer"});if(j.token){location.assign(go+(go.indexOf("?")>=0?"&":"?")+"t="+encodeURIComponent(j.token));}})' +
     '.catch(function(){f.removeAttribute("data-sending");});});})();</script>' +
     '</aside>'
   );
