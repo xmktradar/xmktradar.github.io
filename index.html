@@ -464,6 +464,7 @@ body .hbar .tk .flag{margin-left:0;max-width:100%;white-space:normal;line-height
 .ct-news button[type=submit]{flex:0 1 auto;max-width:100%;box-sizing:border-box;margin:0;padding:8px 16px;border:0;border-radius:999px;background:var(--accent);color:var(--surface);font:inherit;font-weight:700;font-size:14px;cursor:pointer}
 .ct-news small{flex:1 0 100%;margin:0;color:var(--muted);font-size:12.5px;line-height:1.4}
 .ct-news-msg{flex:1 0 100%;margin:0;font-size:14px;line-height:1.45;color:var(--ink);overflow-wrap:anywhere}
+.ct-news .cf-turnstile{flex:1 0 100%}
 .ct-news input[name=website]{position:absolute!important;left:0!important;top:0!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;border:0!important;white-space:nowrap}
 .foot .ct-news{max-width:100%;margin:12px 0}
 @media(max-width:640px){.ct-news{margin:12px 12px 10px;padding:14px}}
@@ -926,6 +927,7 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
 <script>document.addEventListener('click',function(e){var j=e.target.closest&&e.target.closest('[data-jump]');if(j){e.preventDefault();var p=document.getElementById(j.getAttribute('data-jump'));if(p){var hd=document.querySelector('header.top'); var hh=0; if(hd){var ps=getComputedStyle(hd).position; if(ps==='sticky'||ps==='fixed') hh=hd.getBoundingClientRect().height+Math.min(0,parseFloat(getComputedStyle(hd).top)||0);} var r=p.getBoundingClientRect(); var free=window.innerHeight-hh; var pad=Math.max(8,(free-r.height)/2); window.scrollTo({top:Math.max(0,r.top+window.scrollY-hh-pad),behavior:'smooth'});p.classList.remove('flash');void p.offsetWidth;p.classList.add('flash');setTimeout(function(){p.classList.remove('flash');},2000);}return;}});</script>
 <aside class="contact" id="contact" aria-label="聯絡我們"><b class="contact-h">✉️ 工作及廣告合作</b><p class="contact-t">歡迎來信洽談工作機會、廣告或品牌合作。</p><a class="contact-btn" id="contact-mail" href="#contact" data-u="grokbottimli" data-d="gmail.com" data-s="工作及廣告合作查詢">✉️ 電郵聯絡我們</a></aside>
 <script>(function(){var a=document.getElementById('contact-mail');if(!a)return;var m=a.getAttribute('data-u')+'@'+a.getAttribute('data-d');a.href='mailto:'+m+'?subject='+encodeURIComponent('The Crowd Tape: '+a.getAttribute('data-s'));a.textContent='✉️ '+m;a.addEventListener('click',function(){if(window.gtag)gtag('event','contact_click');});})();</script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <form class="ct-news" id="ct-news-home" data-lang="zh" action="https://crowdtape-newsletter.vercel.app/api/subscribe" method="POST">
   <label for="ct-email-home" class="ct-news-t">免費領取財報解讀清單</label>
   <input id="ct-email-home" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
@@ -933,17 +935,20 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
   <input type="hidden" name="src" value="home-mid">
   <input type="hidden" name="utm_source" value="site"><input type="hidden" name="utm_medium" value="cta"><input type="hidden" name="utm_campaign" value="newsletter">
   <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+  <div class="cf-turnstile" data-sitekey="0x4AAAAAAF1CD19oqPdgLqWt"></div>
   <button type="submit">電郵領取</button>
   <small>免費 · 唔會 spam · 隨時取消</small>
   <p class="ct-news-msg" role="status" hidden></p>
 </form>
 <script>
 (function(){
-  var M={en:["Thanks! Opening your free earnings checklist…","Please check the email address and try again."],
-         zh:["多謝！正在開啟免費財報清單…","電郵地址有誤，請再試。"]};
-  function checklistUrl(l){
+  var M={en:["Thanks! Opening your free earnings checklist…","Please check the email address and try again.","Please complete the captcha and try again."],
+         zh:["多謝！正在開啟免費財報清單…","電郵地址有誤，請再試。","請完成驗證後再試。"]};
+  function checklistUrl(l,token){
     var lang=(l==='en')?'en':'zh';
-    return 'https://thecrowdtape.com/'+lang+'/checklist/earnings/?utm_source=resend&utm_medium=email&utm_campaign=welcome1';
+    var u='https://thecrowdtape.com/'+lang+'/checklist/earnings/?utm_source=resend&utm_medium=email&utm_campaign=welcome1';
+    if(token) u+='&t='+encodeURIComponent(token);
+    return u;
   }
   function bindMsg(f, ok){
     var l=f.dataset.lang||'zh',m=f.querySelector('.ct-news-msg');
@@ -954,10 +959,12 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
     if(!f||!f.classList||!f.classList.contains('ct-news'))return;
     e.preventDefault();
     var l=f.dataset.lang||'zh',m=f.querySelector('.ct-news-msg'),d=Object.fromEntries(new FormData(f));
+    var tok=d['cf-turnstile-response']||'';
+    if(!tok){if(m){m.hidden=false;m.textContent=M[l][2];}return;}
     fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
       .then(function(r){return r.json()}).then(function(j){
         bindMsg(f, !!j.ok);
-        if(j.ok){f.reset();if(window.gtag)gtag('event','newsletter_signup',{lang:l,src:d.src||'home'});location.assign(checklistUrl(l));}
+        if(j.ok){f.reset();if(window.gtag)gtag('event','newsletter_signup',{lang:l,src:d.src||'home'});location.assign(checklistUrl(l,j.token));}
       }).catch(function(){bindMsg(f,false);});
   });
   var sub=new URLSearchParams(location.search).get('subscribed');
@@ -1872,12 +1879,13 @@ function paintChrome(){const m=D.meta;const cut=document.getElementById('cutoff'
 ${MAC&&MAC.rows.length?`<p>大市數據：${[...new Set(MAC.rows.map(r=>(r.src||'').replace(/（.*?）|\(.*?\)/g,'').trim()).filter(Boolean))].map(esc).join('、')||'—'}${MAC.as_of?`，截至 ${esc(MAC.as_of)} HKT`:''}。</p>`:''}<p>時間均為香港時間（HKT, UTC+8）。帳號頭像與簡介來自各帳號的 X 個人頁。</p>
 <p>本站部分連結屬聯盟推廣連結，你經由連結註冊或購買，我們可能獲得佣金，你無需多付。佣金不會影響好淡統計。本站內容不構成投資建議。</p>
 <form class="ct-news" id="ct-news-footer" data-lang="zh" action="https://crowdtape-newsletter.vercel.app/api/subscribe" method="POST" style="margin:12px 0">
-<label for="ct-email-footer" class="ct-news-t">免費領取財報解讀清單</label>
+<label for="ct-email-footer" class="ct-news-t">免費領取財報解讀清單 · 開市前盤勢訊號</label>
 <input id="ct-email-footer" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
 <input type="hidden" name="lang" value="zh">
-<input type="hidden" name="src" value="home-footer">
+<input type="hidden" name="src" value="footer">
 <input type="hidden" name="utm_source" value="site"><input type="hidden" name="utm_medium" value="cta"><input type="hidden" name="utm_campaign" value="newsletter">
 <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+<div class="cf-turnstile" data-sitekey="0x4AAAAAAF1CD19oqPdgLqWt"></div>
 <button type="submit">電郵領取</button>
 <small>免費 · 唔會 spam · 隨時取消</small>
 <p class="ct-news-msg" role="status" hidden></p>
