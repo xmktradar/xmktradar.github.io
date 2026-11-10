@@ -243,7 +243,7 @@ def news_cta(lang, src):
     import json as _json
     # Site CTA uses site/cta UTMs; welcome email still uses resend/welcome1 on the thank-you page itself.
     check = (f'https://thecrowdtape.com/{lang}/checklist/earnings/'
-             f'?utm_source=site&utm_medium=cta&utm_campaign=newsletter&subscribed=1')
+             f'?utm_source=site&utm_medium=cta&utm_campaign=newsletter')
     check_rel = f'/{lang}/checklist/earnings/?utm_source=site&utm_medium=cta&utm_campaign=earnings_footer'
     news_rel = f'/{lang}/newsletter/?utm_source=site&utm_medium=cta&utm_campaign=earnings_footer'
     if lang == 'zh':
@@ -271,16 +271,20 @@ def news_cta(lang, src):
         f'<input type="hidden" name="src" value="{E(src)}">'
         f'<input type="hidden" name="utm_source" value="site"><input type="hidden" name="utm_medium" value="cta"><input type="hidden" name="utm_campaign" value="newsletter">'
         f'<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">'
+        f'<div class="cf-turnstile" data-sitekey="0x4AAAAAAF1CD19oqPdgLqWt"></div>'
         f'<button type="submit">{E(btn)}</button>'
         f'<small>{E(note)} {more}</small>'
         f'<p class="ct-news-msg" role="status" hidden></p>'
         f'</form>'
-        f'<script>(function(){{var ok={ok_js},bad={bad_js},go={check_js};'
+        f'<script>(function(){{var ok={ok_js},bad={bad_js},cap="Please complete the captcha and try again.",go={check_js};'
         f'document.currentScript.previousElementSibling.addEventListener("submit",function(e){{'
         f'e.preventDefault();var f=e.target,m=f.querySelector(".ct-news-msg"),d=Object.fromEntries(new FormData(f));'
+        f'var tok=d["cf-turnstile-response"]||"";'
+        f'if(!tok){{m.hidden=false;m.textContent=cap;return;}}'
         f'fetch(f.action,{{method:"POST",headers:{{"Content-Type":"application/json"}},body:JSON.stringify(d)}})'
-        f'.then(function(r){{return r.json()}}).then(function(j){{m.hidden=false;m.textContent=j.ok?ok:bad;'
-        f'if(j.ok){{f.reset();if(window.gtag)gtag("event","newsletter_signup",{{lang:f.dataset.lang||"",src:d.src||""}});try{{localStorage.setItem("ct-sub","1")}}catch(x){{}}location.assign(go);}}}})'
+        f'.then(function(r){{return r.json()}}).then(function(j){{m.hidden=false;m.textContent=(j&&j.ok)?ok:bad;'
+        f'if(j&&j.ok){{f.reset();if(window.gtag)gtag("event","newsletter_signup",{{lang:f.dataset.lang||"",src:d.src||""}});'
+        f'if(j.token){{location.assign(go+(go.indexOf("?")>=0?"&":"?")+"t="+encodeURIComponent(j.token));}}}}}})'
         f'.catch(function(){{m.hidden=false;m.textContent=bad;}});}});}})();</script></aside>'
     )
 
@@ -330,6 +334,7 @@ def shell(lang, title, desc, canon_path, body, alt_paths=None, ld=None):
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
 <style>{CSS}</style>
 {ldj}
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 <div class="wrap">
