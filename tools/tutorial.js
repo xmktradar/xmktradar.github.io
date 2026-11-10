@@ -12,6 +12,16 @@ const http = require('http');
 const path = require('path');
 
 const ROOT = process.cwd();
+const captchaBlocked = new WeakSet();
+
+// Local/CI screenshots only: the Turnstile script keeps Playwright's networkidle from settling
+// (~15s extra per homepage load). Abort it here; production pages are unchanged.
+async function ignoreCaptcha(page) {
+  if (captchaBlocked.has(page)) return;
+  captchaBlocked.add(page);
+  await page.route(/challenges\.cloudflare\.com/i, route => route.abort());
+}
+
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.json': 'application/json', '.css': 'text/css',
   '.png': 'image/png', '.jpg': 'image/jpeg', '.webp': 'image/webp', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.xml': 'application/xml' };
 const W = 390, SHOT_H = 693;  // a 9:16 phone screen at iPhone width
@@ -35,6 +45,7 @@ async function shoot(page, base, lang, shot, warn) {
     warn(`教學圖：搵唔到 ${f}，改用網站首頁截圖`);
     shot = { go: '', sel: '@top' };
   }
+  await ignoreCaptcha(page);
   await page.emulateMedia({ colorScheme: shot.dark ? 'dark' : 'light' });
   // Outside sites (TradingView, Google Fonts, avatars) can keep the network busy on the GitHub runner, so 'networkidle'
   // alone may never come: wait for the page itself, then give the network up to 15 s to settle.
