@@ -2,6 +2,339 @@
  "note": "已抓取但未經 Grok 分析嘅帖，只收股票同宏觀帖（閒聊帖唔寫），有股票代號嘅排最前，等超過 24 個鐘就唔再等。",
  "posts": [
   {
+   "id": "2119958118948020420",
+   "handle": "alphatrends",
+   "name": "Brian Shannon, CMT ⚓️",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-10T00:59:37Z",
+   "url": "https://x.com/alphatrends/status/2119958118948020420",
+   "text": "I have been asked about 24 hour trading a lot recently.  \n\nFor most stocks on most days it won't matter much because the overnight volume is likely to be low relative to regular trade hours (RTH)\n\nFor stocks with a catalyst that causes large volume outside of RTH,  it makes sense to include that price and volume action.\n\nNotice how the price of $NVDA reacted to the Sunday night open of the stock vs the RTH.\n\nThe black VWAP includes the 24 hour session and the red is just RTH.  There was significant volume (esp premarket) but you can see how the RTH volume opening bar made the overnight nearly irrelevant.\n\nAbout an hour into day, the 2 vwaps converged (red circle) and then traded pretty much identically.\n\nWe see this same action each day with $ES_F - most days the overnight VWAP is quickly overwhelmed by the 930am VWAP.\n\nThere are unusual times when it makes sense to be aware of both because the overnight range was large enough and came with enough volume to still hold significance\n\nThese are my evolving thoughts which are likely to shift as the market gives us more feedback on 24 hr trading.\n\nOn a side note, the TradingView colors of sessions remind me of ice cream",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWuak2RagAAJjve.jpg?name=orig"
+   ],
+   "likes": 9,
+   "views": 3358,
+   "cashtags": [
+    "ES_F",
+    "NVDA"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2119946891089568168",
+   "handle": "TrendSpider",
+   "name": "TrendSpider",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-10T00:15:00Z",
+   "url": "https://x.com/TrendSpider/status/2119946891089568168",
+   "text": "Déjà vu 🔮 $COHR",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWuBSKeXgAIoPES.jpg?name=orig"
+   ],
+   "likes": 38,
+   "views": 17465,
+   "cashtags": [
+    "COHR"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2119943540650148300",
+   "handle": "leadlagreport",
+   "name": "Michael A. Gayed, CFA",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-10T00:01:41Z",
+   "url": "https://x.com/leadlagreport/status/2119943540650148300",
+   "text": "I could have walked away from $JOJO a dozen times. The bond market gave me every reason to. I didn't. Because this is the cycle where credit rotation matters most.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWuNanGWQAAipW2.jpg?name=orig"
+   ],
+   "likes": 9,
+   "views": 4774,
+   "cashtags": [
+    "JOJO"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2119943542432727512",
+   "handle": "leadlagreport",
+   "name": "Michael A. Gayed, CFA",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "leadlagreport"
+   },
+   "time_utc": "2026-11-10T00:01:41Z",
+   "url": "https://x.com/leadlagreport/status/2119943542432727512",
+   "text": "Learn more about the ATAC Credit Rotation ETF $JOJO at https://atacfunds.com/jojo/\n\nLead-Lag Publishing, LLC is not an affiliate of Tidal/Toroso or ACA/Foreside.",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 1793,
+   "cashtags": [
+    "JOJO"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2119943127884878060",
+   "handle": "TheTranscript_",
+   "name": "The Transcript",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-10T00:00:02Z",
+   "url": "https://x.com/TheTranscript_/status/2119943127884878060",
+   "text": "In the Q3 26 earnings $GSK's CEO promised to disclose difficult developments rather than bury them in financial reports\n\n\"we're going to call things as we see them. And we're not going to park crap on Page 41 of a press release and hope none of you notice it.\"",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWuNCkdbEAAGWeF.jpg?name=orig"
+   ],
+   "likes": 3,
+   "views": 2794,
+   "cashtags": [
+    "GSK'S"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2119940450438234438",
+   "handle": "Brian_Stoffel_",
+   "name": "Brian Stoffel",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T23:49:24Z",
+   "url": "https://x.com/Brian_Stoffel_/status/2119940450438234438",
+   "text": "Rocket Lab’s Backlog Just Tripled. So Why’d It Fall?\n$RKLB",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2119940035294228480/img/IyDe22nLJ6uqVQEb.jpg"
+   ],
+   "likes": 7,
+   "views": 3011,
+   "cashtags": [
+    "RKLB"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2119937712102760784",
+   "handle": "KobeissiLetter",
+   "name": "The Kobeissi Letter",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T23:38:31Z",
+   "url": "https://x.com/KobeissiLetter/status/2119937712102760784",
+   "text": "BREAKING: Nvidia, $NVDA, and Jensen Huang are being sued in a class action lawsuit, accusing ‌them of defrauding shareholders by concealing Huang's ties with a suspected Chinese spy.\n\nThe lawsuit claims that shareholders were misled about Huang's alleged relationship with a woman identified by US intelligence as a Chinese intelligence asset.\n\nThe lawsuit seeks unspecified damages.",
+   "quoted": null,
+   "media": [],
+   "likes": 2441,
+   "views": 277176,
+   "cashtags": [
+    "NVDA"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2119928630705090972",
+   "handle": "TrendSpider",
+   "name": "TrendSpider",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T23:02:26Z",
+   "url": "https://x.com/TrendSpider/status/2119928630705090972",
+   "text": "You can count on one hand the number of times Broadcom $AVGO has visited its 100-week EMA in the last decade\n\nRight now is one of those times 👀",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWt-3mlWgAE7Xd_.jpg?name=orig"
+   ],
+   "likes": 305,
+   "views": 34931,
+   "cashtags": [
+    "AVGO"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2119927918042435712",
+   "handle": "carlquintanilla",
+   "name": "Carl Quintanilla",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T22:59:36Z",
+   "url": "https://x.com/carlquintanilla/status/2119927918042435712",
+   "text": "Culper gets the TechCrunch treatment.\n\n@TechCrunch $NVDA \nhttps://techcrunch.com/2026/11/09/a-short-seller-flagged-nvidia-ceos-ties-to-a-suspected-chinese-spy-six-months-before-the-scandal/",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWt_NM6WMAAuGYb.jpg?name=orig"
+   ],
+   "likes": 60,
+   "views": 8196,
+   "cashtags": [
+    "NVDA"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2119914943516725563",
+   "handle": "Strategy",
+   "name": "Strategy",
+   "type": "repost",
+   "reposted_by": "saylor",
+   "replying_to": null,
+   "time_utc": "2026-11-09T22:08:03Z",
+   "url": "https://x.com/Strategy/status/2119914943516725563",
+   "text": "Our USD Assets cover 3.4 years of annual interest and dividends, up from 0.5 years at the end of May. $MSTR $STRC",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWtxzNoXgAAmqVy.jpg?name=orig"
+   ],
+   "likes": 489,
+   "views": 31133,
+   "cashtags": [
+    "MSTR",
+    "STRC"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2119912974403957227",
+   "handle": "gokhshtein",
+   "name": "Gokhshtein",
+   "type": "repost",
+   "reposted_by": "davidgokhshtein",
+   "replying_to": null,
+   "time_utc": "2026-11-09T22:00:13Z",
+   "url": "https://x.com/gokhshtein/status/2119912974403957227",
+   "text": "$BTC closed at $74,953. Up 1.3% on the day.\n\nThe close is below the $75,038 swing support identified in the 30D data. That level has flipped to resistance.\n\nFear & Greed: 29. The 30D low is $62,525. That is the floor on record.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWtxnb4WsAAf8Ei.jpg?name=orig"
+   ],
+   "likes": 3,
+   "views": 1333,
+   "cashtags": [
+    "BTC"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2119905950421406104",
+   "handle": "TrendSpider",
+   "name": "TrendSpider",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T21:32:19Z",
+   "url": "https://x.com/TrendSpider/status/2119905950421406104",
+   "text": "$ASTS Q3 EARNINGS DOUBLE MISS 🩸\n\nEPS: $(0.44) vs $(0.40) est ❌\nSales: $42.3M vs $46.6M est ❌\n\n🟥 -6% in after-hours",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWtrOJaWoAIXa-a.jpg?name=orig"
+   ],
+   "likes": 164,
+   "views": 46205,
+   "cashtags": [
+    "ASTS"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2119904469450097088",
+   "handle": "TrendSpider",
+   "name": "TrendSpider",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T21:26:26Z",
+   "url": "https://x.com/TrendSpider/status/2119904469450097088",
+   "text": "$HIMS BRUTAL EARNINGS MISS 🩸\n\nEPS: $(0.14) vs $0.08 est ❌\nSales: $890M vs $892M est ❌\n\nLowered Q4 Sales Guidance ❌",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWtp2tkXcAATk5P.jpg?name=orig"
+   ],
+   "likes": 241,
+   "views": 49470,
+   "cashtags": [
+    "HIMS"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2119903703347966000",
+   "handle": "Brian_Stoffel_",
+   "name": "Brian Stoffel",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T21:23:23Z",
+   "url": "https://x.com/Brian_Stoffel_/status/2119903703347966000",
+   "text": "The backlog at $RKLB was up 52%....\n\nSEQUENTIALLY!",
+   "quoted": null,
+   "media": [],
+   "likes": 121,
+   "views": 13258,
+   "cashtags": [
+    "RKLB"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2119903642698305551",
+   "handle": "Jason",
+   "name": "@jason",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T21:23:08Z",
+   "url": "https://x.com/Jason/status/2119903642698305551",
+   "text": "This short report came out in May... and everyone seemed to miss it.\n\nEverything happens on X first... it's just a matter of if anyone sees it I guess",
+   "quoted": {
+    "handle": "CulperResearch",
+    "text": "NEW: We are short Nvidia $NVDA. We believe Nvidia has a significant China problem. Please see our full report and disclosures now available on our website, link in bio."
+   },
+   "media": [],
+   "likes": 766,
+   "views": 74482,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119902819746758660",
+   "handle": "TrendSpider",
+   "name": "TrendSpider",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "TrendSpider"
+   },
+   "time_utc": "2026-11-09T21:19:52Z",
+   "url": "https://x.com/TrendSpider/status/2119902819746758660",
+   "text": "$TTD Announces Additional $731M Buyback Plan",
+   "quoted": null,
+   "media": [],
+   "likes": 35,
+   "views": 8994,
+   "cashtags": [
+    "TTD"
+   ],
+   "n_media": 0
+  },
+  {
    "id": "2119902351368855723",
    "handle": "TrendSpider",
    "name": "TrendSpider",
@@ -15,8 +348,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtn8FVWMAAcAZ8.jpg?name=orig"
    ],
-   "likes": 2,
-   "views": 1518,
+   "likes": 31,
+   "views": 24450,
    "cashtags": [
     "OXY"
    ],
@@ -39,8 +372,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtntr8WAAA-TTE.jpg?name=orig"
    ],
-   "likes": 10,
-   "views": 2361,
+   "likes": 134,
+   "views": 30701,
    "cashtags": [
     "TTD"
    ],
@@ -60,8 +393,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtmxFMWkAAb5MU.jpg?name=orig"
    ],
-   "likes": 20,
-   "views": 8228,
+   "likes": 43,
+   "views": 25888,
    "cashtags": [
     "MARA"
    ],
@@ -81,8 +414,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtmrCvW0AA7t8q.jpg?name=orig"
    ],
-   "likes": 38,
-   "views": 8111,
+   "likes": 169,
+   "views": 26907,
    "cashtags": [
     "ZETA"
    ],
@@ -105,8 +438,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtmedEXEAE3ZC1.jpg?name=orig"
    ],
-   "likes": 40,
-   "views": 9679,
+   "likes": 142,
+   "views": 33434,
    "cashtags": [
     "RKLB"
    ],
@@ -126,8 +459,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtmPV6W0AAomZt.jpg?name=orig"
    ],
-   "likes": 18,
-   "views": 8909,
+   "likes": 36,
+   "views": 24479,
    "cashtags": [
     "LCID"
    ],
@@ -168,8 +501,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtmB30WQAEQdN2.jpg?name=orig"
    ],
-   "likes": 19,
-   "views": 9947,
+   "likes": 45,
+   "views": 25282,
    "cashtags": [
     "ACHR"
    ],
@@ -211,8 +544,8 @@
     "https://pbs.twimg.com/media/HWtlvMnW4AEVP92.jpg?name=orig",
     "https://pbs.twimg.com/media/HWtl2ehW8AAr9z4.jpg?name=orig"
    ],
-   "likes": 44,
-   "views": 11557,
+   "likes": 112,
+   "views": 29858,
    "cashtags": [
     "TTWO"
    ],
@@ -253,8 +586,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtlelcWMAAMvJY.jpg?name=orig"
    ],
-   "likes": 14,
-   "views": 10842,
+   "likes": 29,
+   "views": 23751,
    "cashtags": [
     "QUBT"
    ],
@@ -295,8 +628,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtlUbTWIAAkl5i.jpg?name=orig"
    ],
-   "likes": 56,
-   "views": 12923,
+   "likes": 245,
+   "views": 60071,
    "cashtags": [
     "TTD"
    ],
@@ -336,7 +669,7 @@
    "quoted": null,
    "media": [],
    "likes": 0,
-   "views": 2347,
+   "views": 4614,
    "cashtags": [
     "TTD"
    ],
@@ -354,8 +687,8 @@
    "text": "I told one of the PMs that I was going to give him a crow-bar for christmas if he didn't get out of $NVDA last week",
    "quoted": null,
    "media": [],
-   "likes": 7,
-   "views": 2153,
+   "likes": 27,
+   "views": 7253,
    "cashtags": [
     "NVDA"
    ],
@@ -376,7 +709,7 @@
    "quoted": null,
    "media": [],
    "likes": 2,
-   "views": 1036,
+   "views": 2143,
    "cashtags": [
     "JOJO"
    ],
@@ -396,8 +729,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtkNupX0AA2lf6.jpg?name=orig"
    ],
-   "likes": 5,
-   "views": 3029,
+   "likes": 10,
+   "views": 5978,
    "cashtags": [
     "JOJO"
    ],
@@ -415,12 +748,34 @@
    "text": "Stock Market Today with @IBD_RFox and @IBD_JNielsen: Rebound gets stronger; is it enough? BrightSpring, Block, Victory Capital in focus $BTSG $XYZ $VCTR\n\nhttps://www.youtube.com/live/2YLSYbRseT4",
    "quoted": null,
    "media": [],
-   "likes": 0,
-   "views": 1999,
+   "likes": 2,
+   "views": 4662,
    "cashtags": [
     "BTSG",
     "VCTR",
     "XYZ"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2119897534181073137",
+   "handle": "HumbleandH",
+   "name": "HumbleandHappy",
+   "type": "repost",
+   "reposted_by": "AlderLaneEggs",
+   "replying_to": null,
+   "time_utc": "2026-11-09T20:58:52Z",
+   "url": "https://x.com/HumbleandH/status/2119897534181073137",
+   "text": "@tZERO #TZERO #Tzero_Bros $FGII This is what leadership looks like, and what keeping your word to your investors looks like.\n\nWe all remember the day Alan took over at #tZERO and addressed us on video and on X. He owned the company’s mistakes and shortcomings. He could have blamed others, but he didn’t, and he never spoke negatively about anyone. He took responsibility, laid out his plan, and made a promise: he would communicate with us, and if the plan changed, he would explain why.\n\nThen he took on the hard work of transforming tZERO while dealing with one of the most complicated investor structures out there. He never asked for blind trust. We told him we would trust but verify, and he accepted that as more than fair.\n\nHere we stand today. Most of us know what bad leadership looks like. Some of us have lived through it, and some of us may own a stock right now with a CEO who is letting us down. That makes moments like this worth recognizing. This is outstanding leadership, and we should all be grateful for it.",
+   "quoted": {
+    "handle": "tZERO",
+    "text": "Why is @tZERO going public now?\n\nCEO @Alan_Konevsky joins @JennSanasie on @CoinDesk's Public Keys to discuss the proposed FG Imperii SPAC merger, why becoming a public company is an important next step in tZERO's evolution, tZERO's expansion into derivative infrastructure-as-a-service and why he believes tokenization will go mainstream.\n\nThis post contains forward-looking statements and relates to a proposed transaction. See the announcement below for important information, including risk factors and where to find the registration statement/proxy statement when available. This is not an offer to sell or a solicitation of an offer to buy any securities. \n\nWatch the interview: https://www.coindesk.com/video/ondo-tops-4b-and-tokenizes-anthropic-as-tzero-eyes-350m-spac"
+   },
+   "media": [],
+   "likes": 19,
+   "views": 1826,
+   "cashtags": [
+    "FGII"
    ],
    "n_media": 0
   },
@@ -458,8 +813,8 @@
    "text": "Wild day, market pushed, $QQQ at the 200D, big spot. $SPY above the 8D.\n\n$MSFT $AMZN $META $TSLA $AAPL all nice days..\n\n$SMH nice recovery, $AMD leading.\n\n$NVDA lets see what happens next\n\nLong small $AAPL and $NVDA calls with time\n\nHAGN!",
    "quoted": null,
    "media": [],
-   "likes": 9,
-   "views": 1611,
+   "likes": 12,
+   "views": 2920,
    "cashtags": [
     "AAPL",
     "AMD",
@@ -486,8 +841,8 @@
    "text": "Sam @Hedgeye_HGRO nice job staying accountable to your process - one of the Hedgeye Research picks you've liked is $BBY , why?",
    "quoted": null,
    "media": [],
-   "likes": 1,
-   "views": 2479,
+   "likes": 7,
+   "views": 4714,
    "cashtags": [
     "BBY"
    ],
@@ -505,8 +860,8 @@
    "text": "How many CNBC-type \"Retail Investors\" are getting rinsed in $RIG ?",
    "quoted": null,
    "media": [],
-   "likes": 1,
-   "views": 2337,
+   "likes": 2,
+   "views": 4405,
    "cashtags": [
     "RIG"
    ],
@@ -587,8 +942,8 @@
    "text": "$MSTR remains Bearish TREND @Hedgeye alongside BTC",
    "quoted": null,
    "media": [],
-   "likes": 1,
-   "views": 2607,
+   "likes": 6,
+   "views": 4568,
    "cashtags": [
     "MSTR"
    ],
@@ -609,8 +964,8 @@
     "text": "@KeithMcCullough Gold bugs are sure active today haha. If the miners fail at trend it'll be lots of excuses!"
    },
    "media": [],
-   "likes": 4,
-   "views": 3065,
+   "likes": 7,
+   "views": 5090,
    "cashtags": [
     "GDX"
    ],
@@ -628,8 +983,8 @@
    "text": "$NVDA remains Bearish TREND @Hedgeye",
    "quoted": null,
    "media": [],
-   "likes": 4,
-   "views": 2818,
+   "likes": 5,
+   "views": 4595,
    "cashtags": [
     "NVDA"
    ],
@@ -647,8 +1002,8 @@
    "text": "The Philly SOX semis index is up 12.1% over the last two days, which would be its best 2-day gain since the April 9th tariff tantrum bounce back.  32nd best two-day move in its history.  $SOX $SMH $SOXX",
    "quoted": null,
    "media": [],
-   "likes": 7,
-   "views": 3010,
+   "likes": 14,
+   "views": 5096,
    "cashtags": [
     "SMH",
     "SOX",
@@ -668,8 +1023,8 @@
    "text": "$LULU  SEP 2027 BUYER..",
    "quoted": null,
    "media": [],
-   "likes": 3,
-   "views": 3644,
+   "likes": 7,
+   "views": 5595,
    "cashtags": [
     "LULU"
    ],
@@ -690,8 +1045,8 @@
     "text": "I didn't have $HYG up this week, but it was. Small positive sign?"
    },
    "media": [],
-   "likes": 26,
-   "views": 6114,
+   "likes": 47,
+   "views": 9557,
    "cashtags": [
     "HYG"
    ],
@@ -711,8 +1066,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtfTgzWcAAsJI1.png?name=orig"
    ],
-   "likes": 4,
-   "views": 2934,
+   "likes": 5,
+   "views": 4549,
    "cashtags": [
     "KRUS"
    ],
@@ -773,7 +1128,7 @@
    "quoted": null,
    "media": [],
    "likes": 0,
-   "views": 3042,
+   "views": 4029,
    "cashtags": [
     "ALL"
    ],
@@ -791,8 +1146,8 @@
    "text": "Bought the damn dip in REITS $XLRE last week too #timestamped",
    "quoted": null,
    "media": [],
-   "likes": 6,
-   "views": 3059,
+   "likes": 7,
+   "views": 4863,
    "cashtags": [
     "XLRE"
    ],
@@ -850,8 +1205,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2119856147079299072/img/PXu7dla1VozzLLl9.jpg"
    ],
-   "likes": 4,
-   "views": 4217,
+   "likes": 5,
+   "views": 5457,
    "cashtags": [
     "KKR"
    ],
@@ -869,8 +1224,8 @@
    "text": "Jensen Huang affair puts $NVDA’s future at risk, with no clear successor to the renowned CEO\n\nAnnie Palmer\nhttp://CNBC.com - 11/9/2026\n\n- Nvidia's investigation into CEO Jensen Huang's affair with a purported Chinese spy has raised questions about whether he may be forced to step back from leading the chipmaker.\n\n- Huang is practically synonymous with Nvidia, which he co-founded in 1993 and turned into one of the most valuable companies on the planet.\n\n- “The issue at Nvidia is that there is no clear successor to Jensen, and we had expected him to stay in this role for at least 10 more years,\" analysts at Melius Research said in a note on Monday.\n\nJensen Huang, chief executive officer of Nvidia Corp., during the Nvidia GTC conference in San Jose, California, US, on Wednesday, March 18, 2026.\n\nNvidia CEO Jensen Huang's admission of an affair with a purported Chinese spy has raised questions about his future at the company, and what happens if the 63-year-old co-founder, who built the chipmaker into one of the most valuable businesses on the planet, is forced out.\n\nShares of Nvidia sank more than 5% on Monday, even as the broader market rallied sharply, after Huang acknowledged the affair in a message to staff on Sunday, and said that the board was launching an investigation into whether he was targeted by a foreign intelligence agency. The board said it has \"confidence in Jensen,\" and that it has \"no reason to believe that either national security or Nvidia secrets were compromised.\"\n\nThe New York Times first reported that the Chinese businesswoman was a spy for China's Ministry of State Security, according to people briefed on the intelligence circulated in a memo among the Trump administration in the spring. China has called the allegation a smear.\n\nWhile Nvidia says Huang will continue to lead the company during the probe, pressure is rapidly mounting on the chipmaker, whose technology has powered the first four years of the generative artificial intelligence boom. Leaders from both parties are calling for briefings, and Democrats poised to take control of both houses of Congress are calling for investigations and new legislation \"to stop advanced AI chips from fueling China's military,\" Sen. Elizabeth Warren of Massachusetts wrote in a post on X on Monday.\n\nHuang has outsized influence over Nvidia, and is the sole face of the company with no clear second-in-command. He's also among the loudest champions of AI in the country, is critical to the financing of the broader infrastructure buildout and has a close relationship with President Donald Trump, giving Nvidia a front-row seat when it comes to discussions on AI policy, safety and regulation.\n\n\"The issue at Nvidia is that there is no clear successor to Jensen, and we had expected him to stay in this role for at least 10 more years,\" analysts at Melius Research said in a Monday research note.\n\nStacy Rasgon, an analyst at Bernstein, told CNBC's \"Squawk on the Street\" on Monday that, \"Jensen is Nvidia. Nvidia is Jensen.\" He added that Huang \"runs the thing pretty much top down,\" and \"sort of pulls all the strings.\"\n\nNvidia didn't immediately respond to a request for comment.\n\nNvidia has long maintained a flat, non-hierarchical organizational structure. Huang has deep involvement in the company's day-to-day operations, with around 60 direct reports, and frequently serves as its spokesperson in front of world leaders and at industry conferences. In addition to being co-founder and CEO, Huang is also Nvidia's president.",
    "quoted": null,
    "media": [],
-   "likes": 29,
-   "views": 13050,
+   "likes": 40,
+   "views": 19647,
    "cashtags": [
     "NVDA’S"
    ],
@@ -891,8 +1246,8 @@
     "text": "Today we’re launching @Uber  Parking.\n\nNo more circling the lot before a concert. Find a spot, book it in just a few taps with the payment already saved in your Uber account, and Uber One members get 10% back in credits\nhttps://www.cnet.com/roadshow/rideshare/uber-parking-launch/"
    },
    "media": [],
-   "likes": 43,
-   "views": 15452,
+   "likes": 113,
+   "views": 32440,
    "cashtags": [
     "UBER"
    ],
@@ -913,8 +1268,8 @@
     "text": "$ETH affirmed as store of value by @VitalikButerin"
    },
    "media": [],
-   "likes": 243,
-   "views": 26404,
+   "likes": 353,
+   "views": 36834,
    "cashtags": [],
    "n_media": 0
   },
@@ -932,8 +1287,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtT0QkXsAAV3xg.jpg?name=orig"
    ],
-   "likes": 7,
-   "views": 5184,
+   "likes": 8,
+   "views": 6534,
    "cashtags": [],
    "n_media": 1
   },
@@ -952,7 +1307,7 @@
    "quoted": null,
    "media": [],
    "likes": 2,
-   "views": 2058,
+   "views": 2464,
    "cashtags": [
     "FMKT"
    ],
@@ -992,8 +1347,8 @@
    "text": "$BABA -3.85%",
    "quoted": null,
    "media": [],
-   "likes": 22,
-   "views": 9360,
+   "likes": 26,
+   "views": 12442,
    "cashtags": [
     "BABA"
    ],
@@ -1056,8 +1411,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWrNsNGWgAADwra.png?name=orig"
    ],
-   "likes": 533,
-   "views": 109631,
+   "likes": 800,
+   "views": 147999,
    "cashtags": [
     "AMZN",
     "GOOGL",
@@ -1147,8 +1502,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtQBodXQAA3KbT.jpg?name=orig"
    ],
-   "likes": 57,
-   "views": 15287,
+   "likes": 87,
+   "views": 21407,
    "cashtags": [
     "NVDA"
    ],
@@ -1168,8 +1523,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2119855851024384000/img/39Aqmm0f1zAusMrX.jpg"
    ],
-   "likes": 3,
-   "views": 4668,
+   "likes": 5,
+   "views": 5702,
    "cashtags": [
     "AMD"
    ],
@@ -1190,7 +1545,7 @@
     "https://pbs.twimg.com/media/HWtOiJRXIAA8E4W.png?name=orig"
    ],
    "likes": 1,
-   "views": 4695,
+   "views": 5509,
    "cashtags": [
     "RGLD"
    ],
@@ -1211,8 +1566,8 @@
     "text": "For those who figured it out $OMH \n\nOhmyhome $20/share fade so far - have about 20% left I am hopeful for a relief rally to re-scale. \n\nWhat a beautiful fade."
    },
    "media": [],
-   "likes": 5,
-   "views": 4442,
+   "likes": 7,
+   "views": 5945,
    "cashtags": [
     "OMH"
    ],
@@ -1230,8 +1585,8 @@
    "text": "Strong breadth day.\n\nThe S&P 500 and S&P 500 Equal Weight are both up roughly 2.3% on the day.  $SPY $RSP",
    "quoted": null,
    "media": [],
-   "likes": 15,
-   "views": 5908,
+   "likes": 25,
+   "views": 7378,
    "cashtags": [
     "RSP",
     "SPY"
@@ -1271,8 +1626,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtL5iyXsAAGoNP.png?name=orig"
    ],
-   "likes": 282,
-   "views": 31878,
+   "likes": 365,
+   "views": 39871,
    "cashtags": [
     "NVDA"
    ],
@@ -1293,8 +1648,8 @@
     "https://pbs.twimg.com/media/HWtLu3NW4AAqBx6.jpg?name=orig",
     "https://pbs.twimg.com/media/HWtLu3HX0AAZ8h9.jpg?name=orig"
    ],
-   "likes": 58,
-   "views": 7390,
+   "likes": 88,
+   "views": 10192,
    "cashtags": [
     "BA",
     "PEP"
@@ -1315,8 +1670,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtKQezagAAJSki.png?name=orig"
    ],
-   "likes": 108,
-   "views": 27717,
+   "likes": 173,
+   "views": 37458,
    "cashtags": [
     "EMD_F",
     "ES_F"
@@ -1337,8 +1692,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2119855513739382784/img/Q0jUiYQ8-11af_W0.jpg"
    ],
-   "likes": 5,
-   "views": 4809,
+   "likes": 7,
+   "views": 5992,
    "cashtags": [
     "CRWV"
    ],
@@ -1382,8 +1737,8 @@
    "text": "$OTIS Otis CEO: Data centers and industrial reshoring are displacing residential construction as higher-value equipment demand drivers\n\n\"We're selling high-value units there that now are in our orders that will become -- and now our backlog when you look at fabrication facilities, factories, data centers. And that is overtaking some of the lower -- more volume business, but at a lower -- obviously, lower price point for what we call residential apartments, condominiums.\"",
    "quoted": null,
    "media": [],
-   "likes": 22,
-   "views": 4985,
+   "likes": 34,
+   "views": 7777,
    "cashtags": [
     "OTIS"
    ],
@@ -1407,8 +1762,8 @@
     "https://pbs.twimg.com/media/HWtHm3iaEAAsL0D.jpg?name=orig",
     "https://pbs.twimg.com/media/HWtHnE9a8AA5IB9.jpg?name=orig"
    ],
-   "likes": 19,
-   "views": 5002,
+   "likes": 22,
+   "views": 5637,
    "cashtags": [
     "VIX"
    ],
@@ -1471,8 +1826,8 @@
    "text": "@KartiLoco $BTC action is confusing today, went down with Nvidia and never came back",
    "quoted": null,
    "media": [],
-   "likes": 5,
-   "views": 1512,
+   "likes": 7,
+   "views": 1865,
    "cashtags": [
     "BTC"
    ],
@@ -1536,8 +1891,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtDBmOWkAAzmiv.jpg?name=orig"
    ],
-   "likes": 160,
-   "views": 12436,
+   "likes": 272,
+   "views": 21748,
    "cashtags": [
     "META"
    ],
@@ -1557,8 +1912,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2119856438419791872/img/jGWY6ePzYMFkCGNW.jpg"
    ],
-   "likes": 10,
-   "views": 5420,
+   "likes": 12,
+   "views": 6439,
    "cashtags": [
     "NVDA"
    ],
@@ -1576,8 +1931,8 @@
    "text": "JUST IN: PNC Bank now accepts incoming $USDC payments for corporate and institutional clients on Ethereum via Coinbase, initially as a pilot.",
    "quoted": null,
    "media": [],
-   "likes": 9,
-   "views": 990,
+   "likes": 12,
+   "views": 1505,
    "cashtags": [
     "USDC"
    ],
@@ -1618,8 +1973,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWs-iwMWsAAQVep.jpg?name=orig"
    ],
-   "likes": 17,
-   "views": 6068,
+   "likes": 19,
+   "views": 7594,
    "cashtags": [
     "JOJO"
    ],
@@ -1640,7 +1995,7 @@
    "quoted": null,
    "media": [],
    "likes": 2,
-   "views": 2223,
+   "views": 2422,
    "cashtags": [
     "JOJO"
    ],
@@ -1660,8 +2015,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWs-JLLX0AAo3aa.jpg?name=orig"
    ],
-   "likes": 1607,
-   "views": 158155,
+   "likes": 2079,
+   "views": 198897,
    "cashtags": [
     "VIX"
    ],
@@ -1727,8 +2082,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWswe36WsAAAYXo.jpg?name=orig"
    ],
-   "likes": 281,
-   "views": 36158,
+   "likes": 407,
+   "views": 46379,
    "cashtags": [
     "AMD",
     "NVDA"
@@ -1747,8 +2102,8 @@
    "text": "$ADP Automatic Data Processing CEO: AI recruiting agents reduce interview-related time by 75%, with over half of interviews occurring after hours.\n\n\"More than 4,400 AI interviews have been completed since the start of September with a 75% reduction in interview-related time spent, and more than half of those interviews were captured after hours, ensuring businesses don't miss out on strong candidates regardless of when they apply. Candidates themselves are responding well with the recruiting agent earning high satisfaction scores.\"",
    "quoted": null,
    "media": [],
-   "likes": 7,
-   "views": 3823,
+   "likes": 9,
+   "views": 4619,
    "cashtags": [
     "ADP"
    ],
@@ -1891,8 +2246,8 @@
    "text": "oil down, stocks up\n\neverything RIPPING except Nvidia\n\nshows you how much of a drag oil has been on stocks, obviously certain names are still in huge drawdowns but we haven’t seen WTI sustain $87 for months\n\nimagine if it actually goes down to $75\n\nnot horrible for equities\n\nalso interesting to note that the market has moved forward today WITHOUT Nvidia, implying that…maybe the market doesn’t need to be this dependent on one company which actually does feel more bullish on the overall health of equities\n\n$NVDA $SPY $QQQ",
    "quoted": null,
    "media": [],
-   "likes": 1106,
-   "views": 88548,
+   "likes": 1243,
+   "views": 106471,
    "cashtags": [
     "NVDA",
     "QQQ",
@@ -1934,7 +2289,7 @@
    "quoted": null,
    "media": [],
    "likes": 11,
-   "views": 5278,
+   "views": 5874,
    "cashtags": [
     "XLC"
    ],
@@ -2025,8 +2380,8 @@
    "text": "What is currently happening in the market seemed impossible prior to today.\n\nOn a day where Nvidia, $NVDA, is down -6.5%, erasing -$300 billion in market cap, the Nasdaq 100 is now up +3.2%.\n\nEven as the leader of not only the AI trade, but the broader market, accounting for nearly 8% of the S&P 500, falls sharply, investors are aggressively buying the dip.\n\nPrice action over the last 5 days has been a testament to just how powerful the AI Revolution truly is.\n\nInvestors are incredibly eager to buy the dip in US technology stocks, even if it means leaving the biggest leader of the AI Revolution behind.\n\nIn fact, the AI trade, and the market's rally as a whole, appears to be broadening.\n\nInnovation is at an all-time high and markets know it.\n\nThis is the most resilient market in history.",
    "quoted": null,
    "media": [],
-   "likes": 2261,
-   "views": 243737,
+   "likes": 2767,
+   "views": 303476,
    "cashtags": [
     "NVDA"
    ],
@@ -2112,8 +2467,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2119834678072852480/img/hwQ5qWv2rConwjwn.jpg"
    ],
-   "likes": 592,
-   "views": 45594,
+   "likes": 708,
+   "views": 52806,
    "cashtags": [
     "MSTR",
     "STRC"
@@ -2134,8 +2489,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWspMjSW4AEBbMb.jpg?name=orig"
    ],
-   "likes": 143,
-   "views": 37327,
+   "likes": 184,
+   "views": 43406,
    "cashtags": [
     "TTD"
    ],
@@ -2202,7 +2557,7 @@
     "https://pbs.twimg.com/media/HWsoZTvWoAAuwPw.png?name=orig"
    ],
    "likes": 1,
-   "views": 2757,
+   "views": 2887,
    "cashtags": [],
    "n_media": 1
   },
@@ -2219,7 +2574,7 @@
    "quoted": null,
    "media": [],
    "likes": 2,
-   "views": 6952,
+   "views": 7558,
    "cashtags": [
     "MRNA"
    ],
@@ -2321,8 +2676,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWslAt3bUAAV-KM.png?name=orig"
    ],
-   "likes": 169,
-   "views": 18612,
+   "likes": 202,
+   "views": 22037,
    "cashtags": [
     "QQQ",
     "SMH",
@@ -2344,8 +2699,8 @@
    "text": "@TripleDTrader You guys called it real-time. Right or wrong, quite a call at the moment 👏 \n\nAnd $HYG bottoming at 2pm ET that day with stocks making new lows rest of afternoon stands out to me.",
    "quoted": null,
    "media": [],
-   "likes": 13,
-   "views": 1640,
+   "likes": 14,
+   "views": 1788,
    "cashtags": [
     "HYG"
    ],
@@ -2365,8 +2720,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsjxogXsAArUlB.png?name=orig"
    ],
-   "likes": 2,
-   "views": 4925,
+   "likes": 3,
+   "views": 5281,
    "cashtags": [
     "CHYM"
    ],
@@ -2387,7 +2742,7 @@
     "https://pbs.twimg.com/media/HWsjo3KWYAA_9hi.png?name=orig"
    ],
    "likes": 2,
-   "views": 4920,
+   "views": 5284,
    "cashtags": [
     "PYPL"
    ],
@@ -2407,8 +2762,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsiAl5bUAEW6Dp.jpg?name=orig"
    ],
-   "likes": 332,
-   "views": 37870,
+   "likes": 412,
+   "views": 47839,
    "cashtags": [
     "QQQ"
    ],
@@ -2427,7 +2782,7 @@
    "quoted": null,
    "media": [],
    "likes": 14,
-   "views": 4684,
+   "views": 5146,
    "cashtags": [
     "PSX"
    ],
@@ -2447,8 +2802,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsia05WcAA0Mx-.jpg?name=orig"
    ],
-   "likes": 114,
-   "views": 18488,
+   "likes": 128,
+   "views": 19691,
    "cashtags": [
     "NVDA"
    ],
@@ -2493,8 +2848,8 @@
    "media": [
     "https://pbs.twimg.com/tweet_video_thumb/HWsgoL1XAAA9toj.jpg"
    ],
-   "likes": 52,
-   "views": 12290,
+   "likes": 55,
+   "views": 13247,
    "cashtags": [],
    "n_media": 1
   },
@@ -2533,7 +2888,7 @@
    "quoted": null,
    "media": [],
    "likes": 8,
-   "views": 2862,
+   "views": 3086,
    "cashtags": [
     "SPY"
    ],
@@ -2573,7 +2928,7 @@
     "https://pbs.twimg.com/media/HWseUQoWcAAzr5V.png?name=orig"
    ],
    "likes": 4,
-   "views": 4833,
+   "views": 5169,
    "cashtags": [
     "MGNI"
    ],
@@ -2635,7 +2990,7 @@
     "https://pbs.twimg.com/media/HWsdH5eXsAAhY_Y.jpg?name=orig"
    ],
    "likes": 17,
-   "views": 6712,
+   "views": 7150,
    "cashtags": [
     "JOJO"
    ],
@@ -2656,7 +3011,7 @@
    "quoted": null,
    "media": [],
    "likes": 3,
-   "views": 2204,
+   "views": 2287,
    "cashtags": [
     "JOJO"
    ],
@@ -2678,7 +3033,7 @@
    },
    "media": [],
    "likes": 14,
-   "views": 3180,
+   "views": 3649,
    "cashtags": [
     "VIX"
    ],
@@ -2717,8 +3072,8 @@
    "text": "$ES_F approaching that 1-month VWAP bounce target at 7559",
    "quoted": null,
    "media": [],
-   "likes": 9,
-   "views": 5301,
+   "likes": 10,
+   "views": 5690,
    "cashtags": [
     "ES_F"
    ],
@@ -2738,8 +3093,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsaW92XEAAQmjK.jpg?name=orig"
    ],
-   "likes": 4,
-   "views": 5152,
+   "likes": 5,
+   "views": 5574,
    "cashtags": [
     "AAPL",
     "AMAT",
@@ -2768,8 +3123,8 @@
     "text": "4/\n\"Over the past week, we acquired 9,587 ETH. Bitmine's track record of consistent buying of crypto is unmatched by any public company in the world. Bitmine has bought ETH each and every week since the inception of the ETH Treasury Strategy on June 30, 2025,\" stated Lee.\n\nWeekly ETH buys (by week ending):\n-11/9/26: 9,587 ETH coins\n-11/2/26: 8,573 ETH\n-10/26/26: 10,452 ETH\n-10/19/26: 12,535 ETH\n-10/12/26: 12,532 ETH\n-10/5/26: 15,112 ETH\n-9/28/26: 17,362 ETH\n-9/21/26: 27,562 ETH\n-9/14/26: 27,180 ETH\n-9/7/26: 28,086 ETH\n-8/31/26: 53,501 ETH\n-8/24/26: 32,447 ETH\n-8/17/26: 9,926 ETH\n-8/10/26: 7,391 ETH\n-8/3/26: 10,399 ETH\n-7/27/26: 9,946 ETH\n-7/20/26: 7,430 ETH\n-7/13/26: 27,801 ETH\n-7/6/26: 42,197 ETH\n-6/29/26: 27,084 ETH\n-6/22/26: 52,203 ETH\n-6/15/26: 76,881 ETH\n-6/8/26: 126,971 ETH\n-6/1/26: 26,947 ETH\n-5/26/26: 111,942 ETH\n-5/18/26: 71,672 ETH\n-5/11/26: 26,659 ETH\n-5/3/26: 101,745 ETH\n-4/26/26: 101,901 ETH\n-4/19/26: 101,627 ETH\n-4/12/26: 71,524 ETH\n-4/5/26: 71,252 ETH\n-3/29/26: 71,179 ETH\n-3/22/26: 65,341 ETH\n-3/15/26: 60,999 ETH\n-3/8/26: 60,976 ETH\n-3/1/26: 50,928 ETH\n-2/23/26: 51,162 ETH\n-2/17/26: 45,759 ETH\n-2/9/26: 40,613 ETH\n-2/1/26: 41,788 ETH\n-1/26/26: 40,302 ETH\n-1/20/26: 35,628 ETH\n-1/12/26: 24,266 ETH\n-1/5/26: 32,977 ETH\n-12/29/25: 44,463 ETH\n-12/22/25: 98,852 ETH\n-12/15/25: 102,259 ETH\n-12/8/25: 138,452 ETH\n-12/1/25: 96,798 ETH\n-11/24/25: 69,822 ETH\n-11/17/25: 54,156 ETH\n-11/10/25: 110,288 ETH\n-11/3/25: 82,353 ETH\n-10/27/25: 77,055 ETH"
    },
    "media": [],
-   "likes": 1054,
-   "views": 57377,
+   "likes": 1203,
+   "views": 66141,
    "cashtags": [
     "BMNR",
     "ETH"
@@ -2816,8 +3171,8 @@
     "text": "$135 BILLION?! In two years?!\n\nTalk about burying the lede!\n\nFrom paragraph 15 in this Bloomberg article about Google commercializing TPU sales to third parties:\n\n“Google’s new life as a chip seller is proving lucrative. By 2028, TPU sales will top $135 billion, including related software and hardware, according to Bloomberg Intelligence. That’s up from an estimated $12 billion this year, and it doesn’t include sales from clients using the chips through Google Cloud.” \n$GOOG $NVDA"
    },
    "media": [],
-   "likes": 7,
-   "views": 2072,
+   "likes": 8,
+   "views": 2444,
    "cashtags": [],
    "n_media": 0
   },
@@ -3013,8 +3368,8 @@
    "text": "Musings of the Day, 11/9/26\n\nI’ve said repeatedly that I don’t think it was a good idea to allow $NVDA to sell to China.\n\nThe best counter I’ve heard was: if we at least sell them older tech, it keeps them sucking at the teat of US tech versus trying to develop their own stack.\n\nIdk about that. China’s historical modus operandi has been to steal US IP and then use it in direct competition to the US.\n\nHoping this scandal results in smarter policy around Export Controls especially around tech to China.\n\nNvidia’s spy scandal hands Hill hawks fresh ammo on China chips \n\nhttps://www.politico.com/news/2026/11/09/nvidias-spy-scandal-china-chips-01156241",
    "quoted": null,
    "media": [],
-   "likes": 20,
-   "views": 4792,
+   "likes": 22,
+   "views": 5210,
    "cashtags": [
     "NVDA"
    ],
@@ -3072,8 +3427,8 @@
    "text": "The semis are up 5% even though its biggest member is down 5%.  Wild times. $SOXX $SMH $NVDA",
    "quoted": null,
    "media": [],
-   "likes": 21,
-   "views": 6929,
+   "likes": 27,
+   "views": 7631,
    "cashtags": [
     "NVDA",
     "SMH",
@@ -3187,8 +3542,8 @@
     "text": "🧵\n1/\nBitMine provided its latest holdings update for November 9, 2026\n\n$14.3 billion in total crypto + \"moonshots\":\n- 6,070,092 ETH at $2,234 per ETH (per @coinbase)\n- 216 Bitcoin (BTC)\n- $180 million stake in Beast Industries @MrBeast\n- $75 million stake in Eightco Holdings (NASDAQ:$ORBS) (“moonshots”) and\n- total cash and marketable securities of $475 million.\n\nTicker:\n$BMNR common equity\n$BMNP 9.5% perpetual preferred, dividends paid weekly\nChairman: Tom Lee @fundstrat \n\nLink ⛓️\nhttps://www.prnewswire.com/news-releases/bitmine-immersion-technologies-bmnr-announces-eth-holdings-reach-6-07-million-tokens-and-total-crypto-and-total-cash--marketable-securities-holdings-of-14-3-billion-302932890.html"
    },
    "media": [],
-   "likes": 966,
-   "views": 51497,
+   "likes": 1110,
+   "views": 57109,
    "cashtags": [],
    "n_media": 0
   },
@@ -3251,8 +3606,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsN0nnXMAA94Pt.jpg?name=orig"
    ],
-   "likes": 78,
-   "views": 45203,
+   "likes": 87,
+   "views": 47971,
    "cashtags": [
     "SPX"
    ],
@@ -3422,8 +3777,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsLkrcXUAAPu44.jpg?name=orig"
    ],
-   "likes": 204,
-   "views": 36251,
+   "likes": 225,
+   "views": 38494,
    "cashtags": [
     "NVDA"
    ],
@@ -3443,8 +3798,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsLHqZWAAA4HCy.png?name=orig"
    ],
-   "likes": 13,
-   "views": 6127,
+   "likes": 14,
+   "views": 6586,
    "cashtags": [
     "NVDA"
    ],
@@ -3509,8 +3864,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWrOMF1WgAARNDO.jpg?name=orig"
    ],
-   "likes": 649,
-   "views": 146599,
+   "likes": 705,
+   "views": 155908,
    "cashtags": [
     "COPX"
    ],
@@ -3602,6 +3957,28 @@
    "n_media": 0
   },
   {
+   "id": "2119795322465513843",
+   "handle": "compound248",
+   "name": "Compound248 💰",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "compound248"
+   },
+   "time_utc": "2026-11-09T14:12:43Z",
+   "url": "https://x.com/compound248/status/2119795322465513843",
+   "text": "…and from paragraph 21!\n\n“Part of the appeal of TPUs is their price for performance, said Mandeep Singh, an analyst at Bloomberg Intelligence. They cost about 30% less than Nvidia’s GPUs but do a competitive job in terms of throughput — the amount of data that can be processed over a given time.”\n\nIf only someone had told you about this 2.5 years ago… 🧐",
+   "quoted": {
+    "handle": "compound248",
+    "text": "In addition to SEARCH - the greatest business in history - $GOOG also owns its own:\n\n• AWS\n• Nvidia\n• Square\n• OpenAI\n• Fiber ISP\n• MS Office\n• Trade Desk\n• iOS / AppStore\n• Sequoia Capital\n• Netflix / IG / TikTok\n• Self-driving tech stack\n\n+ more\n\nProbably not a zero"
+   },
+   "media": [],
+   "likes": 15,
+   "views": 3143,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
    "id": "2119795324793606451",
    "handle": "StockSavvyShay",
    "name": "Shay Boloor",
@@ -3625,28 +4002,6 @@
    "n_media": 1
   },
   {
-   "id": "2119795322465513843",
-   "handle": "compound248",
-   "name": "Compound248 💰",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "compound248"
-   },
-   "time_utc": "2026-11-09T14:12:43Z",
-   "url": "https://x.com/compound248/status/2119795322465513843",
-   "text": "…and from paragraph 21!\n\n“Part of the appeal of TPUs is their price for performance, said Mandeep Singh, an analyst at Bloomberg Intelligence. They cost about 30% less than Nvidia’s GPUs but do a competitive job in terms of throughput — the amount of data that can be processed over a given time.”\n\nIf only someone had told you about this 2.5 years ago… 🧐",
-   "quoted": {
-    "handle": "compound248",
-    "text": "In addition to SEARCH - the greatest business in history - $GOOG also owns its own:\n\n• AWS\n• Nvidia\n• Square\n• OpenAI\n• Fiber ISP\n• MS Office\n• Trade Desk\n• iOS / AppStore\n• Sequoia Capital\n• Netflix / IG / TikTok\n• Self-driving tech stack\n\n+ more\n\nProbably not a zero"
-   },
-   "media": [],
-   "likes": 13,
-   "views": 2962,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
    "id": "2119795318120137095",
    "handle": "compound248",
    "name": "Compound248 💰",
@@ -3660,8 +4015,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsGl9_WYAAB-fy.jpg?name=orig"
    ],
-   "likes": 125,
-   "views": 20002,
+   "likes": 148,
+   "views": 23951,
    "cashtags": [
     "GOOG",
     "NVDA"
@@ -3703,8 +4058,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsFOWHXoAADrY5.png?name=orig"
    ],
-   "likes": 12,
-   "views": 7351,
+   "likes": 13,
+   "views": 7716,
    "cashtags": [
     "NVDA"
    ],
@@ -3726,7 +4081,7 @@
    },
    "media": [],
    "likes": 4,
-   "views": 5153,
+   "views": 5402,
    "cashtags": [],
    "n_media": 0
   },
@@ -3815,7 +4170,7 @@
     "https://pbs.twimg.com/media/HWsC-wiWMAAdUvH.jpg?name=orig"
    ],
    "likes": 5,
-   "views": 5603,
+   "views": 5864,
    "cashtags": [
     "SPY"
    ],
@@ -3899,8 +4254,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWr-s4RXEAA_fka.jpg?name=orig"
    ],
-   "likes": 29,
-   "views": 6383,
+   "likes": 31,
+   "views": 6867,
    "cashtags": [
     "QQQE"
    ],
@@ -3940,7 +4295,7 @@
    "quoted": null,
    "media": [],
    "likes": 7,
-   "views": 3219,
+   "views": 3332,
    "cashtags": [
     "BTC",
     "QQQ",
@@ -3962,8 +4317,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWr-X4EXUAAce7X.png?name=orig"
    ],
-   "likes": 16,
-   "views": 7282,
+   "likes": 18,
+   "views": 7623,
    "cashtags": [
     "NVDA"
    ],
@@ -4197,7 +4552,7 @@
    "quoted": null,
    "media": [],
    "likes": 9,
-   "views": 1756,
+   "views": 1829,
    "cashtags": [
     "BTC"
    ],
@@ -4241,8 +4596,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2119778512533909504/img/osmg2xpUn90aU16N.jpg"
    ],
-   "likes": 109,
-   "views": 26030,
+   "likes": 129,
+   "views": 28172,
    "cashtags": [
     "SOXL"
    ],
@@ -4260,8 +4615,8 @@
    "text": "Strategy has acquired 1,036 $BTC and repurchased $188M of $STRC. As of 11/8/26, we hold 850,364 BTC and $4.9B of USD Assets. $MSTR https://www.strategy.com/press/strategy-acquires-1036-btc-and-repurchases-188-million-of-strc_11-09-2026",
    "quoted": null,
    "media": [],
-   "likes": 9557,
-   "views": 415651,
+   "likes": 10221,
+   "views": 462781,
    "cashtags": [
     "BTC",
     "MSTR",
@@ -4281,8 +4636,8 @@
    "text": "$NVDA:  Huang Exit Might Rattle AI Mood, Not Growth: Bloomberg Intelligence \nRobert Schiffman \nNovember 9, 2026\nThe possibility that Nvidia's investigation could lead to Jensen Huang's exit as CEO could spark negative sentiment across AI, given his central roles setting company strategy and serving as the industry's most prominent spokesman. Yet our scenario is for little near- to medium-term effect on Nvidia's growth prospects, cash generation and ability to fund customers, as well as the broader AI ecosystem -- or, ultimately, its credit quality -- as the board has expressed confidence in Huang and said it has no reason to believe that company secrets were compromised. That points to little lasting read-through to hyperscaler credit quality or valuations, even if equity markets initially extrapolate the risk of a Huang departure into a broader AI selloff.",
    "quoted": null,
    "media": [],
-   "likes": 76,
-   "views": 21484,
+   "likes": 78,
+   "views": 22821,
    "cashtags": [
     "NVDA"
    ],
@@ -4434,7 +4789,7 @@
     "https://pbs.twimg.com/media/HWrqyEPW4AAINJi.png?name=orig"
    ],
    "likes": 8,
-   "views": 6959,
+   "views": 7213,
    "cashtags": [
     "EXPD"
    ],
@@ -4457,8 +4812,8 @@
    "media": [
     "https://pbs.twimg.com/tweet_video_thumb/HWrqjH-WAAAQO1U.jpg"
    ],
-   "likes": 22,
-   "views": 6620,
+   "likes": 23,
+   "views": 6812,
    "cashtags": [
     "NVDA"
    ],
@@ -4476,8 +4831,8 @@
    "text": "$NVDA -4.9%",
    "quoted": null,
    "media": [],
-   "likes": 123,
-   "views": 17474,
+   "likes": 126,
+   "views": 17989,
    "cashtags": [
     "NVDA"
    ],
@@ -4498,7 +4853,7 @@
     "https://pbs.twimg.com/media/HWrlRwgWgAAeJhd.jpg?name=orig"
    ],
    "likes": 12,
-   "views": 6584,
+   "views": 6805,
    "cashtags": [
     "NVDA"
    ],
@@ -4516,8 +4871,8 @@
    "text": "Nvidia Gate!\n\nI find it hysterical (and remarkably egocentric and at the height of arrogance) when a minor portfolio manager who has never modelled a MAG7 company (now on @CNBC @squawkbox) confidently gives advice to hyperscalers on how they should present their \"stories.\" \n\nFurthermore, Fin TV will spend all day and all week discussing 'Nvidia Gate' without any substantive discussion of the numerous existential threats developing in AI and for $NVDA.\n\nThe discourse will be repetitive and not value added.\n\nTo quote Gertrude Stein.. \"there will be no there there.\" \n\nI have now written 272 critical \"More Tales From Nvidia\" over the last two years. \n\nI am not a technology analyst - I present my concerns and industry headwinds from a common sense and using an analytical frameowrk.\n\nToday's opening missive on @thestreetpro is over 5k words and provides an interesting viewpoint that makes you think about NVDA and AI as an investment strategy. \n\n@andrewrsorkin @beckyquick @squawkbox\n@KeithMcCullough @HedgeyeDJ @Hedgeye_HGRO @RPKInvestor @HedgeyeDJ @gnoble79",
    "quoted": null,
    "media": [],
-   "likes": 45,
-   "views": 9078,
+   "likes": 54,
+   "views": 10729,
    "cashtags": [
     "NVDA"
    ],
@@ -4537,8 +4892,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWrjhU5W4AAHt1x.jpg?name=orig"
    ],
-   "likes": 71,
-   "views": 18983,
+   "likes": 72,
+   "views": 19570,
    "cashtags": [
     "SPY"
    ],
@@ -4622,8 +4977,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWrakpXaYAAMJI-.jpg?name=orig"
    ],
-   "likes": 26,
-   "views": 8738,
+   "likes": 30,
+   "views": 9339,
    "cashtags": [
     "AMAT",
     "BAP",
@@ -4644,6 +4999,27 @@
     "TTWO",
     "WIX",
     "YETI"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2119746889004339551",
+   "handle": "gokhshtein",
+   "name": "Gokhshtein",
+   "type": "repost",
+   "reposted_by": "davidgokhshtein",
+   "replying_to": null,
+   "time_utc": "2026-11-09T11:00:15Z",
+   "url": "https://x.com/gokhshtein/status/2119746889004339551",
+   "text": "$BTC is at $74,117. Down 2.2% today. Flat on the week.\n\nFear & Greed is 29. Price is compressing after failing to hold $75,776.\n\nThe level: $75,038. That is the nearest swing support. It has not held on close.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWraj_oWcAAVahA.jpg?name=orig"
+   ],
+   "likes": 6,
+   "views": 1774,
+   "cashtags": [
+    "BTC"
    ],
    "n_media": 1
   },
@@ -5023,6 +5399,690 @@
    "n_media": 1
   },
   {
+   "id": "2119957885849649227",
+   "handle": "JC_ParetsX",
+   "name": "J.C. Parets",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-10T00:58:41Z",
+   "url": "https://x.com/JC_ParetsX/status/2119957885849649227",
+   "text": "@WeAreNot_OK They've been bullish all year. They're sick fucks.",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 74,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119951821544538441",
+   "handle": "kevinxu",
+   "name": "Kevin Xu",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-10T00:34:35Z",
+   "url": "https://x.com/kevinxu/status/2119951821544538441",
+   "text": "Claude just one-shotted a AAA game for $550 you can play in your browser right now.\n\nYou are not bullish enough.",
+   "quoted": {
+    "handle": "felixrieseberg",
+    "text": "I wanted to test Fable 5.2's quality with one-shot prompts without human feedback.\n\nEverything in this game is from scratch: models, sounds, textures. ~$550 at API pricing, ~2.7M output and 445M input tokens, heavily cached. Took 8 hours!\n\nPlay it here: https://claude.ai/artifact/BGY1SztrAYcJQHSsnHHGmp"
+   },
+   "media": [],
+   "likes": 29,
+   "views": 8951,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119945777015296459",
+   "handle": "mcuban",
+   "name": "Mark Cuban",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "theobjectivist"
+   },
+   "time_utc": "2026-11-10T00:10:34Z",
+   "url": "https://x.com/mcuban/status/2119945777015296459",
+   "text": "You really should ask grok how the healthcare billing and supply chains work for employers. \n\nThe reason no one knows what anything healthcare related costs has nothing to do with government.  Except for some government contracts where they allowed carriers to hide what they charge the taxpayers.  \n\nWhen I say no one knows what anything costs it means this:\n\nCarrier owned ASOs will charge an employer  for a medical service,  and hide the amount of the care in the weekly bill they get.  Then they won't provide all the claims that they were charged for, preventing the employer from being able to connect the claim to the price they paid.  \n\nMeaning they don't know what they paid. \n\nSame thing happens with drugs.  They hide the way they charge fees in contracts that are so long, no one can analyze them and catch the contractual terrorism the vertically integrated carriers engage in. \n\nThose are choices the carriers make. I'm trying to open up the contracts and pricing so employers can make decisions about their benefits. \n\nRight now even the biggest companies are being taken advantage of.",
+   "quoted": null,
+   "media": [],
+   "likes": 29,
+   "views": 2995,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119944216034083113",
+   "handle": "TrungTPhan",
+   "name": "Trung Phan",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-10T00:04:22Z",
+   "url": "https://x.com/TrungTPhan/status/2119944216034083113",
+   "text": "Jensen seeing people use Nvidia GPUs to make video and image memes about Jensen",
+   "quoted": {
+    "handle": "thomasunise",
+    "text": "Jensen Huang after learning about the Chinese honeypot scandal"
+   },
+   "media": [
+    "https://pbs.twimg.com/media/HWuOAlVbQAArjPA.jpg?name=orig"
+   ],
+   "likes": 171,
+   "views": 11658,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2119942560269435059",
+   "handle": "DougKass",
+   "name": "Dougie Kass",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T23:57:47Z",
+   "url": "https://x.com/DougKass/status/2119942560269435059",
+   "text": "@TheStreetPro  (published this morning) \n\nBY DOUG KASS · Nov 9, 2026, 11:05 AM EST\n\nWhy I Am No Longer a Cassandra\n\n* Expanding on my more bullish views presented last week\n\nI don’t want to bury the lede:\n\nI am returning to the land of the living, as on Thursday I pivoted and have begun to accumulate selected equities, as I said at the time.\n\nYes, I have had an ursine market view — for several years now. \n\nMy concerns, written almost daily in my Diary, were multiple, and I’ll repeat them here:\n\n* The rising prospects for “slugfation” (sluggish economic growth and sticky inflation)\n* The lack of fiscal discipline on the part of both the Republicans and Democrats) in Washington, DC.\n* Interest rates will likely be higher for longer\n* Improvisational foreign policy that had potential adverse social, interest rate and economic ramifications\n* The AI trade has been the straw that stirs the drink” of the U.S. economy, corporate profits and the U.S. stock market – we saw a wide range of concerns (including political objections to data center expansion) and have questioned the optimistic ROIC assumptions regarding the massive AI capital spending spree\n* Investor optimism seemed extreme as valuations have been elevated – with most traditional valuation metrics in the 90%-tile or higher\n* For years investors have increasingly acted as if they were at a casino (gambling/speculating and not investing) – as measured by the popularity and proliferation of leveraged ETFs and ODTE (zero days till expiration) options\n* Market structure posed a potential risk should price momentum abruptly reverse\n\nThough my arguments had merit (and most were generally proven accurate), the markets ignored my concerns.\n\nWhile the price of the S&P Index has remained elevated, over the last several months there has been a stealth Bear Market which has accelerated dramatically over the last week. Since the early summer, many widely-held stocks technology stocks have fallen by 50% or more.\n\n1.  Consider for example, Dell Technologies’ (DELL) shares which traded at $595 on Oct. 8 and, less than a month later Thursday, Nov. 5, I initiated a long position at $319.\n2.  We are finding plenty of emerging value opportunities outside of technology.  As an example, we initiated a long in “best of class” Morgan Stanley also on Thursday at $181 compared to its share price of $235 less than four months ago.\n3. We have other examples of developing that we will share in the future in my Diary.\n\nNo Longer a Cassandra\n\nAs repeatedly stated, my hedge fund is not a short or short-biased fund.\n\nI recognize that I have sounded Cassandra-like in my bearish views but, as mentioned, many of my concerns were valid and on target. Specifically, interest rates rose rapidly (absolutely and relative to expectations), inflation was sticky economic growth was disappointing, improvisational policy led to an unwanted war and the efficacy and profitability of AI is now suspect.\n\nWe have often written that being long stocks can generate wealth and being short stocks (and/or having large cash reserves) can help to preserve capital.\n\nUntil recently, most stocks failed to meet our standards for investing. This is changing rapidly – as, on Thursday, the major Indices each fell by about 5%.\n\nThe concerns expressed above have largely been accepted by most investors and some have begun to be discounted (“second level thinking”) in an increasingly greater number of stocks.\n\nImportantly, some of the major concerns (discussed above) are likely to moderate:\n\n* While the cumulative or “stacked” inflation since 2021 remains problematic, we now see signposts (e.g. lower energy prices) that inflation will moderate relative to consensus expectations\n* If inflation does retreat, the domestic economy (fueled by the consumer) may exhibit better growth than we previously expected\n* Interest rates may have peaked for the cycle\n* The current Administration’s potential improvisational policies are likely to be diluted by ",
+   "quoted": null,
+   "media": [],
+   "likes": 32,
+   "views": 4018,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119941066589958144",
+   "handle": "firstadopter",
+   "name": "tae kim",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T23:51:51Z",
+   "url": "https://x.com/firstadopter/status/2119941066589958144",
+   "text": "The media is being completely irresponsible again, taking an offhand comment and creating a false, manufactured narrative.\n\nOf course, Nvidia has a succession plan. That's literally the board's number one job. I know the board members. They are not incompetent.\n\nThe WSJ did no actual reporting whatsoever. I don't know how they can run such a false and sensationalized headline at the top of their home page. Journalistic malpractice.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWuK3meWIAAPSaH.png?name=orig"
+   ],
+   "likes": 82,
+   "views": 7818,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2119935366002008311",
+   "handle": "denverpost",
+   "name": "The Denver Post",
+   "type": "repost",
+   "reposted_by": "carlquintanilla",
+   "replying_to": null,
+   "time_utc": "2026-11-09T23:29:12Z",
+   "url": "https://x.com/denverpost/status/2119935366002008311",
+   "text": "BREAKING NEWS: Democrat Eileen Laubacher declared victory Monday in her race against U.S. Rep. Lauren Boebert in Colorado’s most conservative district.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWuF-AaWIAAsUK9.jpg?name=orig"
+   ],
+   "likes": 74,
+   "views": 6032,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2119933682672967829",
+   "handle": "davidgura",
+   "name": "David Gura",
+   "type": "repost",
+   "reposted_by": "carlquintanilla",
+   "replying_to": null,
+   "time_utc": "2026-11-09T23:22:31Z",
+   "url": "https://x.com/davidgura/status/2119933682672967829",
+   "text": "In his new memoir, Ken Chenault recounts the American Express board meeting at which he was voted in as CEO. \n\nVernon Jordan wrote a note on a piece of paper, and passed it down the table to Chenault:",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWuEcumWwAAx13N.jpg?name=orig"
+   ],
+   "likes": 35,
+   "views": 7081,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2119930778243260424",
+   "handle": "bchesky",
+   "name": "Brian Chesky",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "DanielLurie"
+   },
+   "time_utc": "2026-11-09T23:10:58Z",
+   "url": "https://x.com/bchesky/status/2119930778243260424",
+   "text": "@DanielLurie Thanks @DanielLurie. Airbnb started with three airbeds on the floor of my San Francisco apartment. This city has given me so much, and I’m grateful to give something back.",
+   "quoted": null,
+   "media": [],
+   "likes": 149,
+   "views": 2900,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119927468824101083",
+   "handle": "AlderLaneEggs",
+   "name": "Marc Cohodes",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T22:57:49Z",
+   "url": "https://x.com/AlderLaneEggs/status/2119927468824101083",
+   "text": "Jensen is in such Hot Water, I dont even know if Sitrick can help him",
+   "quoted": {
+    "handle": "CGasparino",
+    "text": "Im sure the crisis communications (AKA corporate flack) community is literally jerking off over the @JensenHuang -@nvidia mess, tripping over themselves offering useless advice on how to deal with the fallout. I say useless because most of their strategies (circle the wagons; project confidence etc) fail miserably for the simple reason that you can't spin certain things including the poor judgment of sleeping with a communist Chinese spy"
+   },
+   "media": [],
+   "likes": 14,
+   "views": 5875,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119924259841556491",
+   "handle": "leadlagreport",
+   "name": "Michael A. Gayed, CFA",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T22:45:04Z",
+   "url": "https://x.com/leadlagreport/status/2119924259841556491",
+   "text": "A live episode: the August 2024 yen carry unwind, Jul 16 to Aug 5, 2024.\n\nS&P 500 -8.41%. High yield -0.85%. Long Treasuries +5.27%.\n\nThe JOJO.Index returned +6.26%, credit-off for 3 of 4 weeks. Live, not backtested.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWt74VzWsAApsFh.jpg?name=orig"
+   ],
+   "likes": 5,
+   "views": 5443,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2119924261552869473",
+   "handle": "leadlagreport",
+   "name": "Michael A. Gayed, CFA",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "leadlagreport"
+   },
+   "time_utc": "2026-11-09T22:45:04Z",
+   "url": "https://x.com/leadlagreport/status/2119924261552869473",
+   "text": "JOJO.Index = ATAC Credit-On/Credit-Off Index, launched 6/14/2021. Results before launch are backtested and hypothetical. Indexes are unmanaged, have no fees and cannot be invested in directly. Past performance does not guarantee future results. Not investment advice.",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 2108,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119923946791281104",
+   "handle": "politico",
+   "name": "POLITICO",
+   "type": "repost",
+   "reposted_by": "carlquintanilla",
+   "replying_to": null,
+   "time_utc": "2026-11-09T22:43:49Z",
+   "url": "https://x.com/politico/status/2119923946791281104",
+   "text": "Embattled Nvidia CEO will be ‘in good shape,’ Trump says https://politi.co/4zhqPDv",
+   "quoted": null,
+   "media": [],
+   "likes": 6,
+   "views": 16712,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119923741618802919",
+   "handle": "TheStalwart",
+   "name": "Joe Weisenthal",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T22:43:00Z",
+   "url": "https://x.com/TheStalwart/status/2119923741618802919",
+   "text": "Kinda surprised by how modest the market reaction was today. Here is the crown jewel of the AI ecosystem, both in terms of its technology, and also its ability to finance various partners, and we really have no idea yet about the business/legal/operational fallout.",
+   "quoted": {
+    "handle": "semaforben",
+    "text": "Weak board, no successor — governance nightmare https://www.semafor.com/article/11/09/2026/with-a-weak-board-and-no-successor-nvidia-confronts-a-governance-crisis"
+   },
+   "media": [],
+   "likes": 330,
+   "views": 27399,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119923523192012933",
+   "handle": "SawyerMerritt",
+   "name": "Sawyer Merritt",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T22:42:08Z",
+   "url": "https://x.com/SawyerMerritt/status/2119923523192012933",
+   "text": "Here’s Tesla’s new Cybercab backpack. \n\nFront flap closes magnetically. Tesla and Cybercab logos are metal. Has a padded laptop pocket, which a 16” MacBook Pro fits well in.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2119923293377425408/img/kJAKr2LWT8xX7yIS.jpg"
+   ],
+   "likes": 455,
+   "views": 44444,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2119923388584235097",
+   "handle": "traderstewie",
+   "name": "Traderstewie",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "traderstewie"
+   },
+   "time_utc": "2026-11-09T22:41:36Z",
+   "url": "https://x.com/traderstewie/status/2119923388584235097",
+   "text": "Restrictions apply. Trading in event contracts is not appropriate for everyone. Event contracts are offered by Moomoo Financial Inc., an FCM registered with the CFTC. Not all contracts are available in all U.S. states.\nUse (https://www.moomoo.com/us/events/exclusive$200) to get up to $1,000 in NVDA shares with a qualifying deposit + up to 8.1% APY for 2 months. Promo 8.1% APY (as of 12/10/25) (2 months, $20K max) Rates may change | Actual APY may vary | Moomoo is not a bank.\nProgram Terms: http://moomoo.com/us/support/topic4_222\nBank List: http://moomoo.com/us/support/topic4_221",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 4508,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119923365926551765",
+   "handle": "sundarpichai",
+   "name": "Sundar Pichai",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "finkd"
+   },
+   "time_utc": "2026-11-09T22:41:31Z",
+   "url": "https://x.com/sundarpichai/status/2119923365926551765",
+   "text": "@finkd Congrats and welcome to the model garden, excited to serve our Google Cloud customers!",
+   "quoted": null,
+   "media": [],
+   "likes": 767,
+   "views": 24301,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119922061724504270",
+   "handle": "elwasson",
+   "name": "Erik Wasson",
+   "type": "repost",
+   "reposted_by": "carlquintanilla",
+   "replying_to": null,
+   "time_utc": "2026-11-09T22:36:20Z",
+   "url": "https://x.com/elwasson/status/2119922061724504270",
+   "text": "The White House already put out a statement supporting the deal which helps both renewables and fossil fuel projects",
+   "quoted": {
+    "handle": "atrupar",
+    "text": "Q: Will you approve wind turbines?\n\nTRUMP: No I will not\n\nQ: Well that's part of this permitting bill\n\nTRUMP: It hasn't been fully negotiated. Wind turbines are a major loser."
+   },
+   "media": [],
+   "likes": 26,
+   "views": 7878,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119921881860243764",
+   "handle": "JC_ParetsX",
+   "name": "J.C. Parets",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T22:35:37Z",
+   "url": "https://x.com/JC_ParetsX/status/2119921881860243764",
+   "text": "I'm old enough to remember when weakening market breadth was being used as an excuse to sell stocks.",
+   "quoted": {
+    "handle": "KevRGordon",
+    "text": "Best day of the year so far for the S&P 500’s advance-decline spread"
+   },
+   "media": [],
+   "likes": 31,
+   "views": 6041,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119920059577455027",
+   "handle": "SawyerMerritt",
+   "name": "Sawyer Merritt",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "GuyDealership"
+   },
+   "time_utc": "2026-11-09T22:28:23Z",
+   "url": "https://x.com/SawyerMerritt/status/2119920059577455027",
+   "text": "@GuyDealership @Tesla 🔥",
+   "quoted": null,
+   "media": [],
+   "likes": 58,
+   "views": 2367,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119919929700847719",
+   "handle": "AP",
+   "name": "The Associated Press",
+   "type": "repost",
+   "reposted_by": "carlquintanilla",
+   "replying_to": null,
+   "time_utc": "2026-11-09T22:27:52Z",
+   "url": "https://x.com/AP/status/2119919929700847719",
+   "text": "President Trump says the FBI is looking at Nvidia CEO Jensen Huang's affair with a Chinese agent. https://apnews.com/article/china-denies-spy-jensen-huang-nvidia-3345b9f05c54d58909e88f6dcb9c1cd8?taid=6af248e722159d000165758a&utm_campaign=TrueAnthem&utm_medium=AP&utm_source=Twitter",
+   "quoted": null,
+   "media": [],
+   "likes": 167,
+   "views": 67953,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119918526706209080",
+   "handle": "GrantCardone",
+   "name": "Grant Cardone",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T22:22:17Z",
+   "url": "https://x.com/GrantCardone/status/2119918526706209080",
+   "text": "Real estate investing hasn’t had an update in 65 years since the creation of the REIT structure.  For the first 40 years it out performed the S&P 500. It quit doing so 15 years ago.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWt2qkfWwAAxVbn.jpg?name=orig"
+   ],
+   "likes": 155,
+   "views": 8969,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2119918255959584985",
+   "handle": "KeithMcCullough",
+   "name": "Keith McCullough",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T22:21:13Z",
+   "url": "https://x.com/KeithMcCullough/status/2119918255959584985",
+   "text": "Morals over money, making a comeback!",
+   "quoted": {
+    "handle": "unusual_whales",
+    "text": "BREAKING: Nvidia and CEO Jensen Huang have been sued in a proposed class action, per Reuters.\n\nA shareholder accuses them of defrauding investors by hiding Huang’s ties to a suspected Chinese spy."
+   },
+   "media": [],
+   "likes": 11,
+   "views": 6586,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119916955192955052",
+   "handle": "firstadopter",
+   "name": "tae kim",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T22:16:02Z",
+   "url": "https://x.com/firstadopter/status/2119916955192955052",
+   "text": "Narrator: There was no Black Monday.",
+   "quoted": {
+    "handle": "moninvestor",
+    "text": "Wow.\n\nBlack Monday incoming."
+   },
+   "media": [],
+   "likes": 62,
+   "views": 6526,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119916350974091410",
+   "handle": "firesidealpha",
+   "name": "Fireside Alpha",
+   "type": "repost",
+   "reposted_by": "carlquintanilla",
+   "replying_to": null,
+   "time_utc": "2026-11-09T22:13:38Z",
+   "url": "https://x.com/firesidealpha/status/2119916350974091410",
+   "text": "President Trump reveals he spoke to Nvidia's Jensen Huang today to see if he was feeling all right: “He said, I had no idea that she was a spy. And I really believe him”\n\nQ: “In sticking with Jensen Huang, when you went to China earlier this year in May, did you know about these alleged ties to the Chinese by then?”\n\nTRUMP: “No. I didn’t hear about it then. But a lot of people have heard about it, and Jensen totally denies that. I asked him today because I did speak to him today just to see if he’s feeling all right, how you doing? And I asked him about that. And he had, He said he had absolutely no idea that the person in question was a spy.”\n\nQ: “Are you concerned about that?”\n\nTRUMP: “I asked him that question. Did you have any idea that she was a spy? He said, I had no idea that she was a spy. And I really believe him.”",
+   "quoted": {
+    "handle": "firesidealpha",
+    "text": "House Minority Leader Hakeem Jeffries on Jensen Huang: “There are real concerns that need to be addressed with respect to the Nvidia situation”\n\nJeffries was asked about Nvidia's CEO after a classified briefing for congressional leaders:\n\nQ: “Mister Leader, I know you just talked about Jensen Huang, but just to put a finer point in it, you had that briefing downstairs. We know that it came up. You said earlier that you would be asking about it. Are you concerned by what you’ve seen publicly in this Huang case?”\n\nJEFFRIES: “There are real concerns that need to be addressed with respect to the Nvidia situation. The briefing was primarily about Iran and the situation as it currently exists. It was undertaken by the director of national intelligence, Jay Clayton, and the CIA director, John Ratcliffe. What is clear, and the NVIDIA issue did come up, but that we’re going to need a full briefing specifically as it relates to the NVIDIA issue so we could all get to the bottom of what has happened and what the implications are in terms of America’s national security.”"
+   },
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2119915886471708672/img/oDrjFaT18X9N9s8K.jpg"
+   ],
+   "likes": 166,
+   "views": 76133,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2119915853760102444",
+   "handle": "jeffrlin",
+   "name": "Jeffrey Lin",
+   "type": "repost",
+   "reposted_by": "TheStalwart",
+   "replying_to": null,
+   "time_utc": "2026-11-09T22:11:40Z",
+   "url": "https://x.com/jeffrlin/status/2119915853760102444",
+   "text": "Great conversation about exciting trash policy in NYC, including some fun historical nuggets of how things came to be. Full trash containerization by 2031? 🚀",
+   "quoted": {
+    "handle": "TheStalwart",
+    "text": "NEW ODD LOTS\n\nHow NYC takes out the trash\n\n@tracyalloway and I talk to @jshgdmn, deputy commissioner at the sanitation department, about the multi-year plan to revolutionize garbage collection in the city https://podcasts.apple.com/us/podcast/odd-lots/id1056200096?i=1000800729523"
+   },
+   "media": [],
+   "likes": 3,
+   "views": 6229,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119915537019142626",
+   "handle": "JC_ParetsX",
+   "name": "J.C. Parets",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T22:10:24Z",
+   "url": "https://x.com/JC_ParetsX/status/2119915537019142626",
+   "text": "Chart of the Day fam!",
+   "quoted": {
+    "handle": "TheChartReport",
+    "text": "Today's Chart of the Day was shared by @JC_ParetsX \n\nThe Nasdaq is reclaiming a key support level after a brief break below it, and if the failed breakdown holds, the snapback could be just as sharp as the selloff.\n\nGet the full details in today's report plus more great charts. ⬇️\n\nhttps://www.thechartreport.com/11-09-2026"
+   },
+   "media": [],
+   "likes": 17,
+   "views": 6699,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119912796468969885",
+   "handle": "FlyEaglesFly529",
+   "name": "Polish Assassin2.0",
+   "type": "repost",
+   "reposted_by": "AlderLaneEggs",
+   "replying_to": null,
+   "time_utc": "2026-11-09T21:59:31Z",
+   "url": "https://x.com/FlyEaglesFly529/status/2119912796468969885",
+   "text": "@AlderLaneEggs @BillAckman @mcelarier make a billion pay 290m fine\nBill still walked scot free\nanyone else would be tried criminally",
+   "quoted": null,
+   "media": [],
+   "likes": 4,
+   "views": 2124,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119910354369257529",
+   "handle": "finkd",
+   "name": "Mark Zuckerberg",
+   "type": "repost",
+   "reposted_by": "TheTranscript_",
+   "replying_to": null,
+   "time_utc": "2026-11-09T21:49:49Z",
+   "url": "https://x.com/finkd/status/2119910354369257529",
+   "text": "Muse Ember, Muse Spark 1.3, and Muse Wonder are now available on Google Cloud.",
+   "quoted": null,
+   "media": [],
+   "likes": 2725,
+   "views": 113214,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119909619145343376",
+   "handle": "DeItaone",
+   "name": "*Walter Bloomberg",
+   "type": "repost",
+   "reposted_by": "carlquintanilla",
+   "replying_to": null,
+   "time_utc": "2026-11-09T21:46:53Z",
+   "url": "https://x.com/DeItaone/status/2119909619145343376",
+   "text": "*NVIDIA CEO JENSEN SUED IN PROPOSED CLASS ACTION: COURT FILING",
+   "quoted": null,
+   "media": [],
+   "likes": 1533,
+   "views": 248448,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119908819555823882",
+   "handle": "Lingling_Wei",
+   "name": "Lingling Wei 魏玲灵",
+   "type": "repost",
+   "reposted_by": "carlquintanilla",
+   "replying_to": null,
+   "time_utc": "2026-11-09T21:43:43Z",
+   "url": "https://x.com/Lingling_Wei/status/2119908819555823882",
+   "text": "Read this 👇",
+   "quoted": {
+    "handle": "JulianGewirtz",
+    "text": "Jensen Huang reportedly instructed his team at Nvidia \"never to think about\" planning for a Taiwan contingency.\n\nDespite the fact that their business is reliant on TSMC.\n\nThe Jensen-Megaspeed mess really puts these incredible — and barely-noticed — details from Stephen Witt's The Thinking Machine in a new light:\n\nHuang refuses to consider the impact on his global business if China were to blockade or invade Taiwan, despite the regular threats emanating from Beijing to do just that. “To my great surprise, Nvidia had done no contingency planning for this eventuality,” Witt writes. \n\nHe quotes Deb Shoquist, Nvidia’s executive vice-president of operations: “If something happens to Taiwan and TSMC, the ramifications are so large it’s almost like asking me what I’d do if California fell into the ocean.” Huang had instructed her “never to think about this question.”\n\n—from my @nybooks essay earlier this year on Nvidia and American policy toward China:  https://www.nybooks.com/articles/2026/02/26/when-the-chips-are-down-china-us-ai/\n\n—more thoughts from me today: https://juliangewirtz.substack.com/p/does-jensen-huang-still-have-trumps"
+   },
+   "media": [],
+   "likes": 77,
+   "views": 36268,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119908006590562481",
+   "handle": "gokhshtein",
+   "name": "Gokhshtein",
+   "type": "repost",
+   "reposted_by": "davidgokhshtein",
+   "replying_to": null,
+   "time_utc": "2026-11-09T21:40:29Z",
+   "url": "https://x.com/gokhshtein/status/2119908006590562481",
+   "text": "Gokhshtein Retail Money Index, Nov 9: 57 (Chasing), up 10 from yesterday.\n\nLoudest signal: risk-curve position — 71% of tracked conversation is outside Bitcoin, Ether, and stablecoins.\n\nMethod and history: https://gokhshtein.com/retail-money-index",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 1401,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119907759365956004",
+   "handle": "JulianGewirtz",
+   "name": "Julian Gewirtz",
+   "type": "repost",
+   "reposted_by": "TheStalwart",
+   "replying_to": null,
+   "time_utc": "2026-11-09T21:39:30Z",
+   "url": "https://x.com/JulianGewirtz/status/2119907759365956004",
+   "text": "Jensen Huang reportedly instructed his team at Nvidia \"never to think about\" planning for a Taiwan contingency.\n\nDespite the fact that their business is reliant on TSMC.\n\nThe Jensen-Megaspeed mess really puts these incredible — and barely-noticed — details from Stephen Witt's The Thinking Machine in a new light:\n\nHuang refuses to consider the impact on his global business if China were to blockade or invade Taiwan, despite the regular threats emanating from Beijing to do just that. “To my great surprise, Nvidia had done no contingency planning for this eventuality,” Witt writes. \n\nHe quotes Deb Shoquist, Nvidia’s executive vice-president of operations: “If something happens to Taiwan and TSMC, the ramifications are so large it’s almost like asking me what I’d do if California fell into the ocean.” Huang had instructed her “never to think about this question.”\n\n—from my @nybooks essay earlier this year on Nvidia and American policy toward China:  https://www.nybooks.com/articles/2026/02/26/when-the-chips-are-down-china-us-ai/\n\n—more thoughts from me today: https://juliangewirtz.substack.com/p/does-jensen-huang-still-have-trumps",
+   "quoted": null,
+   "media": [],
+   "likes": 293,
+   "views": 90261,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119904491562545169",
+   "handle": "Alan_Konevsky",
+   "name": "Alan Konevsky",
+   "type": "repost",
+   "reposted_by": "AlderLaneEggs",
+   "replying_to": null,
+   "time_utc": "2026-11-09T21:26:31Z",
+   "url": "https://x.com/Alan_Konevsky/status/2119904491562545169",
+   "text": "Proud to see @avax team on the NYSE-affiliated platform @tzero is partnering on as well, and as a key tech layer for our @Lynq_Network platform.  Congratulations.",
+   "quoted": {
+    "handle": "avax",
+    "text": "BREAKING: Upcoming NYSE-affiliated tokenized securities platform’s core clearing and settlement layer will be built on top of Avalanche technology.\n\nAvalanche will support the platform’s clearing firm, supporting the development of infrastructure for 24/7 trading, clearing, and settlement.\n\nA landmark step toward the next generation of global financial markets."
+   },
+   "media": [],
+   "likes": 86,
+   "views": 3514,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119903638529179911",
+   "handle": "brianstelter",
+   "name": "Brian Stelter",
+   "type": "repost",
+   "reposted_by": "carlquintanilla",
+   "replying_to": null,
+   "time_utc": "2026-11-09T21:23:07Z",
+   "url": "https://x.com/brianstelter/status/2119903638529179911",
+   "text": "Skydance (CNN's parent) has put out info about where the promised $6 billion in synergies will come from:\n\n\"By combining two global streaming services, two film and TV studio groups, two television portfolios, and overlapping corporate functions, we can reduce duplicative spend across an expense base of more than $50 billion. We have identified multi-billion dollar opportunities in key areas, including non-labor and labor spend...\"",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWtoRtbXsAApISF.jpg?name=orig"
+   ],
+   "likes": 46,
+   "views": 17342,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2119902619518882249",
+   "handle": "Jason",
+   "name": "@jason",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T21:19:05Z",
+   "url": "https://x.com/Jason/status/2119902619518882249",
+   "text": "you can clip on X! i like the sample video @XCreators @theallinpod!",
+   "quoted": {
+    "handle": "XCreators",
+    "text": "Clipping is here 🎬\n\nGrab your favorite moment from any video, add your take, and post it without leaving X. \n\nCreators: every clip credits your original video and links back to it, so new viewers can find your work and keep watching.\n\nClippers: you now have an easy, native way to share moments from your favorite creators directly on X.\n\nThe best part? Both the original creator and the clipper can earn from views on the clip through Original Content Rewards.\n\nEveryone wins when great moments travel. Clipping is one more step toward making X the best place to create, grow and earn."
+   },
+   "media": [],
+   "likes": 107,
+   "views": 16107,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
    "id": "2119901616060989558",
    "handle": "EliteOptions2",
    "name": "EliteOptionsTrader",
@@ -5110,7 +6170,7 @@
     "https://pbs.twimg.com/media/HWtlErHXgAA_72I.jpg?name=orig"
    ],
    "likes": 1,
-   "views": 2404,
+   "views": 4807,
    "cashtags": [],
    "n_media": 1
   },
@@ -5184,8 +6244,8 @@
     "text": "A 28-year-old UMass graduate student got a homework assignment to reproduce a famous economics paper, couldn't make the numbers match, and found a spreadsheet mistake in a study that politicians had used to argue for budget cuts.\n\nHis name is Thomas Herndon.\n\nIn 2010, two Harvard economists, Carmen Reinhart and Kenneth Rogoff, published a short paper called Growth in a Time of Debt. Its headline finding: once a country's public debt goes above 90% of its economy, growth falls off a cliff. In their numbers, average growth for that group was minus 0.1%.\n\nIt came out right after the 2008 financial crisis, and it spread fast. In the US, the Paul Ryan budget cited it as its only evidence on what high debt does to growth.\n\nIn Europe, an EU commissioner pointed to the research in a speech. In Britain, George Osborne cited the authors by name.\n\nHerndon was a PhD student at the University of Massachusetts Amherst, taking a class called Econ 753: Applied Econometrics. The big assignment was to pick a well-known paper and replicate it.\n\nHe picked this one. He couldn't get the same results.\n\nHe asked the authors for their spreadsheet, and they sent it. When he spotted the problem, he called his girlfriend over to make sure he wasn't seeing things.\n\nHe wasn't.\n\n> One formula stopped five rows short\n> That quietly left out five countries: Australia, Austria, Belgium, Canada and Denmark\n> Some available years of data for other countries weren't included\n> The way the averages were weighted "
    },
    "media": [],
-   "likes": 49,
-   "views": 5762,
+   "likes": 152,
+   "views": 25929,
    "cashtags": [],
    "n_media": 0
   },
@@ -5201,8 +6261,8 @@
    "text": "More Tales From Nvidia: Questions I Ask Myself (Issue #274!)\n\nnow on the blog tab of https://seabreezepartnerslp.com/blog",
    "quoted": null,
    "media": [],
-   "likes": 3,
-   "views": 1006,
+   "likes": 4,
+   "views": 1821,
    "cashtags": [],
    "n_media": 0
   },
@@ -5218,8 +6278,28 @@
    "text": "Rocket Lab Earnings LIVE - With Against All Odds @MikeMKTs https://x.com/i/broadcasts/2pekeYBQWQeZmo",
    "quoted": null,
    "media": [],
-   "likes": 17,
-   "views": 20329,
+   "likes": 29,
+   "views": 44636,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119894475380236340",
+   "handle": "JoseyWalesPace",
+   "name": "Rich",
+   "type": "repost",
+   "reposted_by": "AlderLaneEggs",
+   "replying_to": null,
+   "time_utc": "2026-11-09T20:46:43Z",
+   "url": "https://x.com/JoseyWalesPace/status/2119894475380236340",
+   "text": "@tZERO",
+   "quoted": {
+    "handle": "tZERO",
+    "text": "Why is @tZERO going public now?\n\nCEO @Alan_Konevsky joins @JennSanasie on @CoinDesk's Public Keys to discuss the proposed FG Imperii SPAC merger, why becoming a public company is an important next step in tZERO's evolution, tZERO's expansion into derivative infrastructure-as-a-service and why he believes tokenization will go mainstream.\n\nThis post contains forward-looking statements and relates to a proposed transaction. See the announcement below for important information, including risk factors and where to find the registration statement/proxy statement when available. This is not an offer to sell or a solicitation of an offer to buy any securities. \n\nWatch the interview: https://www.coindesk.com/video/ondo-tops-4b-and-tokenizes-anthropic-as-tzero-eyes-350m-spac"
+   },
+   "media": [],
+   "likes": 10,
+   "views": 1747,
    "cashtags": [],
    "n_media": 0
   },
@@ -5237,8 +6317,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2119892718767742976/img/fLFfGmIsWBTeOuY1.jpg"
    ],
-   "likes": 6,
-   "views": 4050,
+   "likes": 8,
+   "views": 7268,
    "cashtags": [],
    "n_media": 1
   },
@@ -5300,8 +6380,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWteE7lXoAAX_8w.jpg?name=orig"
    ],
-   "likes": 16,
-   "views": 5961,
+   "likes": 28,
+   "views": 11930,
    "cashtags": [],
    "n_media": 1
   },
@@ -5318,7 +6398,7 @@
    "quoted": null,
    "media": [],
    "likes": 3,
-   "views": 1274,
+   "views": 1768,
    "cashtags": [],
    "n_media": 0
   },
@@ -5479,8 +6559,8 @@
     "text": "Next week, Tesla plans to launch robotaxis in Austin— before Texas’ new AV safety law takes effect. We’re urging a delay until those safety standards are in place.\n\nPublic trust comes from safety and transparency. We look forward to working with Tesla to achieve both.  #txlege"
    },
    "media": [],
-   "likes": 616,
-   "views": 30210,
+   "likes": 1146,
+   "views": 47032,
    "cashtags": [],
    "n_media": 0
   },
@@ -5498,8 +6578,8 @@
    "media": [
     "https://pbs.twimg.com/tweet_video_thumb/HWtXRBTXgAA6lg3.jpg"
    ],
-   "likes": 70,
-   "views": 6166,
+   "likes": 103,
+   "views": 8640,
    "cashtags": [],
    "n_media": 1
   },
@@ -5527,16 +6607,16 @@
    "id": "2119883871974285325",
    "handle": "BobPisani",
    "name": "Bob Pisani",
-   "type": "post",
-   "reposted_by": null,
+   "type": "repost",
+   "reposted_by": "EricBalchunas",
    "replying_to": null,
    "time_utc": "2026-11-09T20:04:35Z",
    "url": "https://x.com/BobPisani/status/2119883871974285325",
    "text": "Eric Balchunas and James Seyffart’s new book, Both Sides of the Coin: A Guide to Bitcoin and Crypto Investing for Everyday Investors, gives bitcoin a fair hearing at a tough time for the cryptocurrency.  It's worth a read.  https://bobpisani.substack.com/p/both-sides-of-bitcoin-fairly-told\n @EricBalchunas @JSeyff",
    "quoted": null,
    "media": [],
-   "likes": 7,
-   "views": 3365,
+   "likes": 35,
+   "views": 9105,
    "cashtags": [],
    "n_media": 0
   },
@@ -5555,7 +6635,7 @@
    "quoted": null,
    "media": [],
    "likes": 0,
-   "views": 27,
+   "views": 37,
    "cashtags": [],
    "n_media": 0
   },
@@ -5591,8 +6671,8 @@
    "text": "Jensen Huang’s affair with an alleged Chinese spy is plausibly the most expensive extramarital affair in human history. https://www.bloomberg.com/opinion/newsletters/2026-11-09/is-the-nvidia-affair-securities-fraud?taid=6af2264f7186690001d911a9&utm_campaign=trueanthem&utm_content=view&utm_medium=social&utm_source=twitter",
    "quoted": null,
    "media": [],
-   "likes": 18,
-   "views": 4858,
+   "likes": 30,
+   "views": 6190,
    "cashtags": [],
    "n_media": 0
   },
@@ -5610,8 +6690,8 @@
    "text": "Pg 2 of 2.  Huang's limited ownership\nHowever, relative to some of his founder peers in tech like Meta's Mark Zuckerberg and Elon Musk at SpaceX, Huang has minimal actual control. He owns just over 3% of the outstanding shares and is one of 11 members on a board that has no official chair.\n\nAnd in the risk factors of Nvidia's financial filings, Huang isn't specifically identified as a key person. Rather, the company says, \"We are highly dependent on the services of our longstanding executive team.\"  Failure to ensure effective succession planning, transfer of knowledge, and smooth transitions involving executives and key employees could hinder our strategic planning, execution, and long-term success,\" Nvidia says.\n\nStill, Huang's influence is undeniable, so much so that the question of succession is one that's hardly broached among analysts and investors.\n\nTimm Schulze-Melander, an analyst at Rothschild & Co. Redburn, wrote in a Monday note that Huang could be forced to step back from the CEO role if the board's investigation reveals \"something materially more serious\" than an undisclosed relationship.\nBut Schulze-Melander said Huang's potential resignation isn't a foregone conclusion of the investigation, pointing to the importance of his leadership at the company.\n\nNvidia's board \"needs to demonstrate independence and protect shareholders without destabilizing a company whose success is unusually dependent on its founder,\" Schulze-Melander wrote. \"Its initial statement suggests it is attempting to achieve both.\"\n\nSeveral analysts said the investigation could lead to governance changes at Nvidia, including putting a transition contingency plan in place.\n\nThe Melius analysts wrote that Nvidia has a \"strong bench\" of executive talent across its networking, hyperscale and high-performance computing businesses, along with \"technical expertise\" stemming from Chief Technology Officer Michael Kagan and Chief Scientist Bill Dally.\n\n\"While these folks can keep the engine running, Jensen is one of a kind, and his energy will be needed to maintain confidence in the AI trade,\" the analysts wrote.\n\n— CNBC's Kif Leswing, Kristina Partsinevelos and Michael Bloom contributed to this report.",
    "quoted": null,
    "media": [],
-   "likes": 7,
-   "views": 3087,
+   "likes": 12,
+   "views": 4370,
    "cashtags": [],
    "n_media": 0
   },
@@ -5632,8 +6712,27 @@
    "media": [
     "https://pbs.twimg.com/media/HWtVMKOXAAE6Eo8.jpg?name=orig"
    ],
-   "likes": 140,
-   "views": 23642,
+   "likes": 228,
+   "views": 34087,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2119880324075377094",
+   "handle": "yukez",
+   "name": "Yuke Zhu",
+   "type": "repost",
+   "reposted_by": "DrJimFan",
+   "replying_to": null,
+   "time_utc": "2026-11-09T19:50:29Z",
+   "url": "https://x.com/yukez/status/2119880324075377094",
+   "text": "Meet GR00T 2, our new generation of world-action models (WAMs): it imagines how the physical world will unfold and generates the actions that get it there. One model runs on parallel grippers, dexterous hands, and humanoids.\n\nhttp://research.nvidia.com/labs/gear/gr00t-2",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2119879033412255744/img/raBQcCvyTDnDZCrF.jpg"
+   ],
+   "likes": 646,
+   "views": 32195,
    "cashtags": [],
    "n_media": 1
   },
@@ -5668,8 +6767,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtSr1jWEAAvea5.jpg?name=orig"
    ],
-   "likes": 19,
-   "views": 5600,
+   "likes": 21,
+   "views": 7126,
    "cashtags": [],
    "n_media": 1
   },
@@ -5687,8 +6786,8 @@
    "text": "JOJO.Index = ATAC Credit-On/Credit-Off Index, launched 6/14/2021. Results before launch are backtested and hypothetical. Indexes are unmanaged, have no fees and cannot be invested in directly. Past performance does not guarantee future results. Not investment advice.",
    "quoted": null,
    "media": [],
-   "likes": 3,
-   "views": 1940,
+   "likes": 4,
+   "views": 2290,
    "cashtags": [],
    "n_media": 0
   },
@@ -5704,8 +6803,8 @@
    "text": "@TheStalwart In a couple of years:\n\n\"Most people think we use Alice as one of the parties in cryptography examples because of the 2026 NVIDIA incident, however....\"\n\nWaiting for the Bob player to drop in this story.",
    "quoted": null,
    "media": [],
-   "likes": 5,
-   "views": 6248,
+   "likes": 7,
+   "views": 7471,
    "cashtags": [],
    "n_media": 0
   },
@@ -5727,8 +6826,8 @@
     "https://pbs.twimg.com/media/HWtR0mibEAA3yLm.jpg?name=orig",
     "https://pbs.twimg.com/media/HWtR0mjboAAixed.jpg?name=orig"
    ],
-   "likes": 140,
-   "views": 18076,
+   "likes": 242,
+   "views": 32679,
    "cashtags": [],
    "n_media": 2
   },
@@ -5823,8 +6922,8 @@
    "text": "For the sake of both current and future generations, the UK's economic debate needs to move boldly beyond simple budget arithmetic. As such, it is encouraging to see a comprehensive growth strategy coming together.\nNeedless to say, sustained implementation will be key.\nhttps://www.newstatesman.com/politics/2026/11/britain-is-finally-serious-about-growth\n#growth #economy #uk #markets",
    "quoted": null,
    "media": [],
-   "likes": 41,
-   "views": 14742,
+   "likes": 77,
+   "views": 19704,
    "cashtags": [],
    "n_media": 0
   },
@@ -5840,8 +6939,8 @@
    "text": "PEPSICO IS CUTTING AROUND 1,000 JOBS ACROSS NORTH AMERICA - WSJ",
    "quoted": null,
    "media": [],
-   "likes": 161,
-   "views": 91187,
+   "likes": 204,
+   "views": 113583,
    "cashtags": [],
    "n_media": 0
   },
@@ -5850,7 +6949,7 @@
    "handle": "ginamilan_",
    "name": "Gina Milan",
    "type": "repost",
-   "reposted_by": "Jason",
+   "reposted_by": "BillAckman",
    "replying_to": null,
    "time_utc": "2026-11-09T19:02:34Z",
    "url": "https://x.com/ginamilan_/status/2119868265228812501",
@@ -5859,8 +6958,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtI8_FXsAAoRm4.jpg?name=orig"
    ],
-   "likes": 1662,
-   "views": 23075,
+   "likes": 3544,
+   "views": 110939,
    "cashtags": [],
    "n_media": 1
   },
@@ -5879,8 +6978,8 @@
     "text": "Scott Galloway says he owned a Tesla, but sold it because of Elon.\n\n\"Not before taking a giant dump in the passenger seat. True story.\"\n\nHe's gone from suggesting Elon be executed to telling stories of taking dumps in a car he owned because it was made by Elon's company.\n\nThis is a broken, deranged and utterly toxic individual."
    },
    "media": [],
-   "likes": 97,
-   "views": 19510,
+   "likes": 300,
+   "views": 35716,
    "cashtags": [],
    "n_media": 0
   },
@@ -5897,7 +6996,7 @@
    "quoted": null,
    "media": [],
    "likes": 2,
-   "views": 3431,
+   "views": 4261,
    "cashtags": [],
    "n_media": 0
   },
@@ -5936,8 +7035,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtGi7-XEAEePRX.jpg?name=orig"
    ],
-   "likes": 4,
-   "views": 4190,
+   "likes": 9,
+   "views": 6216,
    "cashtags": [],
    "n_media": 1
   },
@@ -5953,8 +7052,8 @@
    "text": "Cool! Kudos to @bchesky. https://www.sfchronicle.com/sf/article/airbnb-ceo-donation-parks-lurie-22516918.php",
    "quoted": null,
    "media": [],
-   "likes": 646,
-   "views": 95004,
+   "likes": 1024,
+   "views": 205866,
    "cashtags": [],
    "n_media": 0
   },
@@ -5975,8 +7074,8 @@
     "text": "🚨 JUST IN: GINA HINOJOSA CLARIFIES HER PLANS FOR TEXAS, ANNOUNCES MAJOR CHANGES TO DATA CENTRE TAX INCENTIVES AND EXPLAINS WHY SHE HAS HALTED ACTION ON ELON MUSK’S PROPOSED SPACE EXPANSION LAND DEAL!\n\nTexas Governor-elect Gina Hinojosa has begun outlining what her administration intends to change after her historic election victory, addressing growing concerns surrounding major technology companies, data centres, corporate tax incentives and Elon Musk’s SpaceX operations.\n\nDuring her first post-election press conference and subsequent media interviews, Hinojosa made it clear that Texas would no longer approach large technology investments in exactly the same way under her incoming administration.\n\n1. MAJOR CHANGES TO DATA CENTRE TAX BREAKS AND NEW REGULATIONS\n\nHinojosa wants to end the generous tax incentives currently available to large data centre operators, arguing that taxpayers should not be subsidising massive corporations while ordinary Texans face concerns over rising electricity costs and pressure on local resources.\n\nShe specifically wants data centres to pay sales taxes on the electricity they consume, arguing that the existing exemption costs Texas more than $1 billion annually in potential revenue.\n\nShe has also called for a temporary halt to new data centre approvals until lawmakers introduce stronger protections for local communities.\n\nHer proposed measures include:\n\n• Ending tax subsidies and exemptions for large data centre operators.\n\n• Requiring data centre"
    },
    "media": [],
-   "likes": 7,
-   "views": 1733,
+   "likes": 10,
+   "views": 1981,
    "cashtags": [],
    "n_media": 0
   },
@@ -5995,8 +7094,8 @@
     "text": "CoRL Keynote. Hilton Austin. Monday Nov 9, 1:45 pm. 2 days countdown.\n\nSomething extraordinary."
    },
    "media": [],
-   "likes": 104,
-   "views": 14509,
+   "likes": 137,
+   "views": 19800,
    "cashtags": [],
    "n_media": 0
   },
@@ -6036,8 +7135,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2119857032488509440/img/HxhYP0P2iE--E8Yi.jpg"
    ],
-   "likes": 5,
-   "views": 5188,
+   "likes": 7,
+   "views": 5933,
    "cashtags": [],
    "n_media": 1
   },
@@ -6074,8 +7173,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtAi0MaYAAFcGv.png?name=orig"
    ],
-   "likes": 257,
-   "views": 34987,
+   "likes": 350,
+   "views": 44431,
    "cashtags": [],
    "n_media": 1
   },
@@ -6114,8 +7213,8 @@
     "text": "Thrilled to share a big milestone from our AI & Infrastructure team at @Google.\n\nToday we’re expanding our 8th generation TPU portfolio with:\n• TPU 8i Max: Built for massive context windows and the highest compute density per rack\n• TPU 8tx: Purpose-built for secure, confidential inference\n\nThis marks the first time we’ve introduced four distinct TPU systems in a single generation, in one year.\n\nFor developers, hardware is only as good as the software stack. And we want you to be able to build with TPUs as easily and efficiently as we do at Google. You can now:\n↳ Run native PyTorch & Hugging Face models via TorchTPU (zero code rewrites)\n↳ Cut KV transfer latency >90% with open-source TPU Sync\n↳ Eliminate idle compute waste with Agent Compute Engine\n\nRead more about our newest TPUs on our blog: https://bit.ly/3VfETPR\n\nI look forward to connecting with builders, researchers, engineers and organizations pushing the boundaries of AI and computing!"
    },
    "media": [],
-   "likes": 2150,
-   "views": 129835,
+   "likes": 3037,
+   "views": 183169,
    "cashtags": [],
    "n_media": 0
   },
@@ -6133,8 +7232,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWs-Qd3WAAA1i5I.jpg?name=orig"
    ],
-   "likes": 901,
-   "views": 40553,
+   "likes": 1233,
+   "views": 53257,
    "cashtags": [],
    "n_media": 1
   },
@@ -6153,8 +7252,8 @@
     "https://pbs.twimg.com/media/HWs8vhza8AAP4fw.jpg?name=orig",
     "https://pbs.twimg.com/media/HWs8vhuakAAVr9I.jpg?name=orig"
    ],
-   "likes": 934,
-   "views": 149582,
+   "likes": 1352,
+   "views": 230395,
    "cashtags": [],
    "n_media": 2
   },
@@ -6172,8 +7271,8 @@
    "text": "Grab your copy: https://www.amazon.com/dp/1804094196?lv=shuf&channelId=500&plpRedirect=mhFallback",
    "quoted": null,
    "media": [],
-   "likes": 17,
-   "views": 10545,
+   "likes": 22,
+   "views": 11935,
    "cashtags": [],
    "n_media": 0
   },
@@ -6193,7 +7292,7 @@
    },
    "media": [],
    "likes": 1,
-   "views": 724,
+   "views": 786,
    "cashtags": [],
    "n_media": 0
   },
@@ -6209,8 +7308,8 @@
    "text": "AMD Stock Rises On Google Cloud Deal, Wall Street Upgrade\nhttps://www.investors.com/news/technology/amd-stock-rises-on-google-cloud-deal-wall-street-upgrade/",
    "quoted": null,
    "media": [],
-   "likes": 3,
-   "views": 3556,
+   "likes": 4,
+   "views": 4502,
    "cashtags": [],
    "n_media": 0
   },
@@ -6243,8 +7342,8 @@
    "text": "Often folks forget that just because an asset or a strategy is diversifying *over time* doesn't mean its diversifying *all the time.*",
    "quoted": null,
    "media": [],
-   "likes": 42,
-   "views": 10239,
+   "likes": 48,
+   "views": 12035,
    "cashtags": [],
    "n_media": 0
   },
@@ -6262,8 +7361,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2119849320660783104/img/3tfD1NRekIB0H0ot.jpg"
    ],
-   "likes": 2768,
-   "views": 102764,
+   "likes": 4059,
+   "views": 153731,
    "cashtags": [],
    "n_media": 1
   },
@@ -6282,7 +7381,7 @@
    "quoted": null,
    "media": [],
    "likes": 2,
-   "views": 168,
+   "views": 169,
    "cashtags": [],
    "n_media": 0
   },
@@ -6334,8 +7433,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2119847744881692672/img/ARQywprKf1DCeE3R.jpg"
    ],
-   "likes": 945,
-   "views": 56526,
+   "likes": 1210,
+   "views": 73565,
    "cashtags": [],
    "n_media": 1
   },
@@ -6373,8 +7472,8 @@
     "text": "The issue at hand is not whether sensitive information about Nvidia or its products might have been compromised by Chinese intelligence services (though that is obviously a concern).\n\nThe issue at hand is whether Mr. Huang's confidential personal relationship with his customer might have weighed materially on any decision to export Nvidia's products to Megaspeed—or to defend the company's broader client relationship with Megaspeed—even after it was revealed the Commerce Department was investigating that company for surreptitiously diverting Nvidia's products for resale to China, in contravention of U.S. law.\n\nAny independent investigation should get to the bottom of that very obvious apparent conflict of interest, and spillover risk to U.S. national security."
    },
    "media": [],
-   "likes": 43,
-   "views": 2548,
+   "likes": 158,
+   "views": 17049,
    "cashtags": [],
    "n_media": 0
   },
@@ -6415,8 +7514,8 @@
     "text": "People have no idea how sophisticated nation state activities are\n\nIf you are a target of opportunity for China it’s not unheard of for them to dedicate O(1000) humans dedicated to compromising you\n\nThis is what happened w their NYT hack in 2013, which was designed to send a message\n\nThey will compromise your friend’s friend’s friend to compromise you\n\nAnd work down that chain until your friend invites you on a fun trip on a private plane to Mexico/Thailand/wherever (example)\n\nWhere some night you have a very boozy dinner and then you show back up at the house and some girls are there\n\nYou’re drunk and make a mistake and then you’re owned until you’re disposable\n\nNation state kompromat for “target’s of choice” is a system designed to find any individual’s weakness (you’re bisexual; a gambler, an alcoholic, drug addict, have a debt, adulterous, etc) and then force them into a situation of maximum amplification of this weakness\n\n99% of people can be compromised using nation state capabilities and tactics\n\nhttps://www.nytimes.com/2013/01/31/technology/chinese-hackers-infiltrate-new-york-times-computers.html?smid=nytcore-ios-share"
    },
    "media": [],
-   "likes": 691,
-   "views": 46834,
+   "likes": 843,
+   "views": 59245,
    "cashtags": [],
    "n_media": 0
   },
@@ -6432,8 +7531,8 @@
    "text": "NEW @WIRED: Nvidia CEO Jensen Huang began working with consultants from Heller crisis comms as early as October 2025, around the same time he was first linked to a suspected Chinese spy, my colleague @LaurenGoode reports https://www.wired.com/story/nvidia-ceo-jensen-huang-hired-a-pr-firm-known-for-handling-sex-scandals-last-year/",
    "quoted": null,
    "media": [],
-   "likes": 423,
-   "views": 37011,
+   "likes": 471,
+   "views": 43984,
    "cashtags": [],
    "n_media": 0
   },
@@ -6451,8 +7550,8 @@
    "text": "@Bearlovesbull bullish",
    "quoted": null,
    "media": [],
-   "likes": 26,
-   "views": 2789,
+   "likes": 29,
+   "views": 3040,
    "cashtags": [],
    "n_media": 0
   },
@@ -6490,8 +7589,8 @@
     "text": "AI total spend continues to flatline even within a pool most receptive to adoption.\n\nCertainly nothing like the parabolic growth required to make all the downstream expectations & commitments pay off."
    },
    "media": [],
-   "likes": 16,
-   "views": 2176,
+   "likes": 20,
+   "views": 2969,
    "cashtags": [],
    "n_media": 0
   },
@@ -6515,6 +7614,26 @@
    "n_media": 1
   },
   {
+   "id": "2119841298928570630",
+   "handle": "roily23",
+   "name": "KPR",
+   "type": "repost",
+   "reposted_by": "AlderLaneEggs",
+   "replying_to": null,
+   "time_utc": "2026-11-09T17:15:25Z",
+   "url": "https://x.com/roily23/status/2119841298928570630",
+   "text": "just to remind everyone how where this started and  how @tZERO ties it all together\nhttps://www.businesswire.com/news/home/20250716019467/en/Lynq-the-Real-Time-Interest-Bearing-Settlement-Network-Launches-with-First-Transaction-on-the-Avalanche-Blockchain-and-First-Peer-to-Peer-Transfer-on-Platform",
+   "quoted": {
+    "handle": "NYSE",
+    "text": "WSJ Exclusive: Avalanche (@avax) will provide the core ledger technology for the clearing firm on the NYSE-affiliated tokenized securities platform.   \n\nSubject to regulatory approvals, the platform is designed to support 24/7 trading, clearing and settlement for its subscribers. \n\n@WSJ in thread"
+   },
+   "media": [],
+   "likes": 20,
+   "views": 2456,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
    "id": "2119839586046312543",
    "handle": "AlderLaneEggs",
    "name": "Marc Cohodes",
@@ -6529,8 +7648,8 @@
     "text": "An alert:\n\n@JensenHuang is human. And he is an incredible human. Even incredible humans make mistakes. \n\nHe takes full responsibility as he should. \n\nWe should all support him and his family. \n\nOnward."
    },
    "media": [],
-   "likes": 216,
-   "views": 16800,
+   "likes": 304,
+   "views": 21713,
    "cashtags": [],
    "n_media": 0
   },
@@ -6568,8 +7687,8 @@
     "https://pbs.twimg.com/media/HWstXP1XEAA6iuB.jpg?name=orig",
     "https://pbs.twimg.com/media/HWstXPzXgAEdEnz.jpg?name=orig"
    ],
-   "likes": 201,
-   "views": 28292,
+   "likes": 247,
+   "views": 33634,
    "cashtags": [],
    "n_media": 2
   },
@@ -6587,8 +7706,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWstLd1bAAA3BGu.jpg?name=orig"
    ],
-   "likes": 201,
-   "views": 7573,
+   "likes": 284,
+   "views": 9644,
    "cashtags": [],
    "n_media": 1
   },
@@ -6604,8 +7723,8 @@
    "text": "Sen. Bennet sending around a letter to senators urging them to cut off war funding in the next spending bill (deadline Dec. 11)\n\n\"We would abdicate our responsibility if we voted to provide billions of additional dollars for President Trump’s war of choice in Iran. We must refuse to\ninvoke cloture on any package that includes another cent for his war\"\n\nhttps://www.bennet.senate.gov/wp-content/uploads/2026/11/11.7.26-Bennet-Dear-Colleague-.pdf",
    "quoted": null,
    "media": [],
-   "likes": 151,
-   "views": 35774,
+   "likes": 171,
+   "views": 39528,
    "cashtags": [],
    "n_media": 0
   },
@@ -6621,8 +7740,8 @@
    "text": "11 Stable High-Dividend Payers Are Also Topping The S&P 500\nhttps://www.investors.com/etfs-and-funds/sectors/sp500-stable-high-dividend-payers-are-also-topping/",
    "quoted": null,
    "media": [],
-   "likes": 2,
-   "views": 3837,
+   "likes": 3,
+   "views": 4452,
    "cashtags": [],
    "n_media": 0
   },
@@ -6663,8 +7782,8 @@
     "text": "https://x.com/i/article/2118738577211453440"
    },
    "media": [],
-   "likes": 172,
-   "views": 23503,
+   "likes": 217,
+   "views": 29635,
    "cashtags": [],
    "n_media": 0
   },
@@ -6702,8 +7821,8 @@
     "text": "“The risk of passive investing” is one of the crappiest theories invented and beloved by veteran Wall Street cranks. It’s crappy bc it’s almost entirely rejected by empirical data but its adherents won’t support espousing and trumpeting it esp every time we get a little sell off. \n\nGod, passive and index investing has grown in market share for decades and gotten seriously big like over 50% of US market by some estimates. And it’s not like we haven’t some serious shocks over the last 10 years to really test the resiliency of the equilibrium and expose the real risk of passive investing. \n\nWhat have we seen? Na-da. Have the cranks gotten the message and gone away? Nope. That’s how you know it’s not a serious theory. It’s a religion for these people. They have a conclusion and are on the search for affirmative evidence. \n\nIt’s honestly just sad at this point."
    },
    "media": [],
-   "likes": 216,
-   "views": 20233,
+   "likes": 275,
+   "views": 24972,
    "cashtags": [],
    "n_media": 0
   },
@@ -6723,8 +7842,8 @@
     "https://pbs.twimg.com/media/HWsp6ygWYAA28vA.jpg?name=orig",
     "https://pbs.twimg.com/media/HWspdaKW4AAItL2.jpg?name=orig"
    ],
-   "likes": 270,
-   "views": 43113,
+   "likes": 419,
+   "views": 70914,
    "cashtags": [],
    "n_media": 3
   },
@@ -6760,8 +7879,8 @@
    "text": "What P/E is NVIDIA trading at now?!",
    "quoted": null,
    "media": [],
-   "likes": 590,
-   "views": 173649,
+   "likes": 742,
+   "views": 224980,
    "cashtags": [],
    "n_media": 0
   },
@@ -6779,8 +7898,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsoNK_W8AAPVDk.jpg?name=orig"
    ],
-   "likes": 42,
-   "views": 21924,
+   "likes": 58,
+   "views": 25233,
    "cashtags": [],
    "n_media": 1
   },
@@ -6798,8 +7917,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsoAL7WcAAfhXx.jpg?name=orig"
    ],
-   "likes": 151,
-   "views": 13421,
+   "likes": 210,
+   "views": 18301,
    "cashtags": [],
    "n_media": 1
   },
@@ -6879,8 +7998,8 @@
     "text": "Nvidia’s board stated today that it has found “no reason to believe that either national security or Nvidia secrets were compromised” as a result of Jensen’s actions.\n\nThey are initiating an independent investigation overseen by a committee of independent directors, assisted by outside independent counsel, that will examine all available information. This will be an unbiased, exhaustive and thorough investigation given the fiduciary responsibilities of these independent directors.\n\nJensen said that “I support the investigation and will cooperate fully. I love our country and our company. I am committed to protecting NVIDIA and supporting America’s national security. I am proud and grateful to be an American.”\n\nI have known Jensen for almost 30 years. I simply do not believe he would ever knowingly do anything to disadvantage either America or Nvidia. \n\nThe only thing he has ever said to me about China is the absolute importance of keeping the American hardware ecosystem, led by Nvidia, ahead of China. That’s it.\n\nMore detailed thoughts follow below:"
    },
    "media": [],
-   "likes": 472,
-   "views": 22421,
+   "likes": 599,
+   "views": 37138,
    "cashtags": [],
    "n_media": 0
   },
@@ -6898,8 +8017,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsk3rPXIAAoabK.jpg?name=orig"
    ],
-   "likes": 320,
-   "views": 85828,
+   "likes": 407,
+   "views": 104011,
    "cashtags": [],
    "n_media": 1
   },
@@ -6971,8 +8090,8 @@
    "text": "BREAKING: US stocks add +$1.5 trillion in market cap, rising to a new high of the day, as the rally gains momentum and technology stocks rebound.\n\n1. S&P 500: +2.1%\n2. Nasdaq 100: +3.0%\n3. Dow Jones: +1.8%\n4. WTI Crude: -3.5%\n5. Brent: -4.0%\n6. Gold: +1.5%\n\nThe S&P 500 is now 4% away from a new record high.",
    "quoted": null,
    "media": [],
-   "likes": 1585,
-   "views": 172949,
+   "likes": 1799,
+   "views": 194120,
    "cashtags": [],
    "n_media": 0
   },
@@ -6988,8 +8107,8 @@
    "text": "The first casualty of the Nvidia firestorm might not be Jensen but instead Lutnick",
    "quoted": null,
    "media": [],
-   "likes": 84,
-   "views": 8776,
+   "likes": 106,
+   "views": 11210,
    "cashtags": [],
    "n_media": 0
   },
@@ -7008,8 +8127,8 @@
     "text": "NEW ODD LOTS\n\nHow NYC takes out the trash\n\n@tracyalloway and I talk to @jshgdmn, deputy commissioner at the sanitation department, about the multi-year plan to revolutionize garbage collection in the city https://podcasts.apple.com/us/podcast/odd-lots/id1056200096?i=1000800729523"
    },
    "media": [],
-   "likes": 22,
-   "views": 7278,
+   "likes": 24,
+   "views": 7603,
    "cashtags": [],
    "n_media": 0
   },
@@ -7046,8 +8165,8 @@
    "text": "Full article. https://www.nytimes.com/2026/11/09/business/economy/nvidia-megaspeed-investigation-huang.html?searchResultPosition=1",
    "quoted": null,
    "media": [],
-   "likes": 924,
-   "views": 578642,
+   "likes": 1045,
+   "views": 699921,
    "cashtags": [],
    "n_media": 0
   },
@@ -7101,8 +8220,8 @@
    "text": "NASDAQ +2.5%",
    "quoted": null,
    "media": [],
-   "likes": 32,
-   "views": 10139,
+   "likes": 33,
+   "views": 10758,
    "cashtags": [],
    "n_media": 0
   },
@@ -7137,8 +8256,8 @@
    "text": "*NVIDIA INTERVENED IN US PROBE OF MEGASPEED: NYT",
    "quoted": null,
    "media": [],
-   "likes": 1232,
-   "views": 273999,
+   "likes": 1363,
+   "views": 315041,
    "cashtags": [],
    "n_media": 0
   },
@@ -7174,8 +8293,8 @@
    "text": "Tesla China Sales Sink, Robotaxi Adds New City\nhttps://www.investors.com/news/tesla-elon-musk-robotaxi-china/",
    "quoted": null,
    "media": [],
-   "likes": 0,
-   "views": 3919,
+   "likes": 1,
+   "views": 4321,
    "cashtags": [],
    "n_media": 0
   },
@@ -7218,8 +8337,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsd_gGawAEJGSh.jpg?name=orig"
    ],
-   "likes": 192,
-   "views": 30009,
+   "likes": 224,
+   "views": 34542,
    "cashtags": [],
    "n_media": 1
   },
@@ -7257,7 +8376,7 @@
     "https://pbs.twimg.com/media/HWsbzxCWgAAQob1.jpg?name=orig"
    ],
    "likes": 9,
-   "views": 5412,
+   "views": 6007,
    "cashtags": [],
    "n_media": 1
   },
@@ -7331,8 +8450,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsYqWnXoAAIh2R.jpg?name=orig"
    ],
-   "likes": 927,
-   "views": 57366,
+   "likes": 1081,
+   "views": 66296,
    "cashtags": [],
    "n_media": 1
   },
@@ -7373,7 +8492,7 @@
    },
    "media": [],
    "likes": 4,
-   "views": 1688,
+   "views": 1829,
    "cashtags": [],
    "n_media": 0
   },
@@ -7429,7 +8548,7 @@
    "quoted": null,
    "media": [],
    "likes": 10,
-   "views": 6910,
+   "views": 7408,
    "cashtags": [],
    "n_media": 0
   },
@@ -7464,8 +8583,8 @@
    "text": "Berkshire: Ready, Willing, and Abel https://bespokeinvest.substack.com/p/berkshire-ready-willing-and-abel?r=826dn&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true",
    "quoted": null,
    "media": [],
-   "likes": 1,
-   "views": 5511,
+   "likes": 2,
+   "views": 5891,
    "cashtags": [],
    "n_media": 0
   },
@@ -7483,8 +8602,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2119758302330380288/img/89xGwmLLkq04WozA.jpg"
    ],
-   "likes": 2086,
-   "views": 57758,
+   "likes": 2499,
+   "views": 68576,
    "cashtags": [],
    "n_media": 1
   },
@@ -7558,8 +8677,8 @@
    "text": "Thank you, Becky, for the interesting conversation on Squawk Box this morning.\nhttps://www.cnbc.com/video/2026/11/09/allianzs-mohamed-el-erian-nvidia-has-systemic-importance-in-the-tech-ecosystem.html\n#economy #markets @CNBC @SquawkCNBC @BeckyQuick",
    "quoted": null,
    "media": [],
-   "likes": 51,
-   "views": 16677,
+   "likes": 65,
+   "views": 19219,
    "cashtags": [],
    "n_media": 0
   },
@@ -7576,7 +8695,7 @@
    "quoted": null,
    "media": [],
    "likes": 3,
-   "views": 4097,
+   "views": 4466,
    "cashtags": [],
    "n_media": 0
   },
@@ -7594,8 +8713,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsTsxbWgAASgdV.jpg?name=orig"
    ],
-   "likes": 7,
-   "views": 3482,
+   "likes": 9,
+   "views": 3806,
    "cashtags": [],
    "n_media": 1
   },
@@ -7614,7 +8733,7 @@
    "quoted": null,
    "media": [],
    "likes": 1,
-   "views": 149,
+   "views": 167,
    "cashtags": [],
    "n_media": 0
   },
@@ -7689,8 +8808,8 @@
    "text": "\"... Simply put, there is more oil from the Middle East, but there is also more demand for it, notably from renewed buying from China...\" -- Jim Burkhard, global head of crude oil research at S&P Global Energy",
    "quoted": null,
    "media": [],
-   "likes": 156,
-   "views": 22882,
+   "likes": 182,
+   "views": 24952,
    "cashtags": [],
    "n_media": 0
   },
@@ -7708,8 +8827,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsQsWNWYAA0sVs.png?name=orig"
    ],
-   "likes": 999,
-   "views": 48911,
+   "likes": 1100,
+   "views": 53001,
    "cashtags": [],
    "n_media": 1
   },
@@ -7784,8 +8903,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsQ5uJbkAAukPa.png?name=orig"
    ],
-   "likes": 428,
-   "views": 66117,
+   "likes": 506,
+   "views": 75657,
    "cashtags": [],
    "n_media": 1
   },
@@ -7825,8 +8944,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsPJTcXgAAIcjE.jpg?name=orig"
    ],
-   "likes": 4682,
-   "views": 1151179,
+   "likes": 5458,
+   "views": 1448852,
    "cashtags": [],
    "n_media": 1
   },
@@ -7844,8 +8963,8 @@
    "text": "@lord_fed JHEQX year end collar strike for a pin.",
    "quoted": null,
    "media": [],
-   "likes": 3,
-   "views": 1518,
+   "likes": 4,
+   "views": 1659,
    "cashtags": [],
    "n_media": 0
   },
@@ -7864,8 +8983,8 @@
     "text": "Thrilled to share a big milestone from our AI & Infrastructure team at @Google.\n\nToday we’re expanding our 8th generation TPU portfolio with:\n• TPU 8i Max: Built for massive context windows and the highest compute density per rack\n• TPU 8tx: Purpose-built for secure, confidential inference\n\nThis marks the first time we’ve introduced four distinct TPU systems in a single generation, in one year.\n\nFor developers, hardware is only as good as the software stack. And we want you to be able to build with TPUs as easily and efficiently as we do at Google. You can now:\n↳ Run native PyTorch & Hugging Face models via TorchTPU (zero code rewrites)\n↳ Cut KV transfer latency >90% with open-source TPU Sync\n↳ Eliminate idle compute waste with Agent Compute Engine\n\nRead more about our newest TPUs on our blog: https://bit.ly/3VfETPR\n\nI look forward to connecting with builders, researchers, engineers and organizations pushing the boundaries of AI and computing!"
    },
    "media": [],
-   "likes": 1533,
-   "views": 70685,
+   "likes": 1763,
+   "views": 82623,
    "cashtags": [],
    "n_media": 0
   },
@@ -7921,8 +9040,8 @@
     "text": "https://t.co/4HTfhXi2kq"
    },
    "media": [],
-   "likes": 38,
-   "views": 7116,
+   "likes": 39,
+   "views": 7587,
    "cashtags": [],
    "n_media": 0
   },
@@ -7962,8 +9081,8 @@
    "media": [
     "https://pbs.twimg.com/tweet_video_thumb/HWsOL1wXUAAjCI2.jpg"
    ],
-   "likes": 75,
-   "views": 9182,
+   "likes": 83,
+   "views": 9758,
    "cashtags": [],
    "n_media": 1
   },
@@ -8006,6 +9125,23 @@
    "n_media": 1
   },
   {
+   "id": "2119803404180435319",
+   "handle": "libsoftiktok",
+   "name": "Libs of TikTok",
+   "type": "repost",
+   "reposted_by": "BillAckman",
+   "replying_to": null,
+   "time_utc": "2026-11-09T14:44:50Z",
+   "url": "https://x.com/libsoftiktok/status/2119803404180435319",
+   "text": "UPDATE: 25 companies have now confirmed they will not advertise on the “I’ve had it” podcast after hosts Jennifer Welch and Angie Sullivan laughed at Charlie’s m*rder:\n\nCash App\nChewy\nBoll & Branch\nZenni Optical\nMomentous\nHoneylove\nCasper\nHexClad\nEthos\nBranch Basics\nLadder\nNutrafol\nJones Road Beauty\nZipRecruiter\nPAKA\nEmber\nBetterHelp\nPrimal Queen\nMonarch Money\niRestore\nHomeServe\nRidge Wallet\nLola Blankets\nNOBL Travel\nDupe",
+   "quoted": null,
+   "media": [],
+   "likes": 24980,
+   "views": 587467,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
    "id": "2119802815367528894",
    "handle": "KobeissiLetter",
    "name": "The Kobeissi Letter",
@@ -8019,8 +9155,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsNbMdW0AE52OR.jpg?name=orig"
    ],
-   "likes": 4507,
-   "views": 296370,
+   "likes": 5001,
+   "views": 330406,
    "cashtags": [],
    "n_media": 1
   },
@@ -8038,8 +9174,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsM_MGXgAAY_6e.jpg?name=orig"
    ],
-   "likes": 619,
-   "views": 52113,
+   "likes": 641,
+   "views": 56653,
    "cashtags": [],
    "n_media": 1
   },
@@ -8057,8 +9193,8 @@
    "text": "@RPMComo @ttmygh @CultishCreative @profplum99 @SantiagoAuFund @Behind_BalSheet Then overlay that US & the entire western world will default on their sovereign debt and/or Entitlements or \"print the vig\" if the SPX returns 0% for the next decade as the tweet notes & things get really spicy.🔥",
    "quoted": null,
    "media": [],
-   "likes": 30,
-   "views": 1763,
+   "likes": 33,
+   "views": 1918,
    "cashtags": [],
    "n_media": 0
   },
@@ -8078,7 +9214,7 @@
    },
    "media": [],
    "likes": 18,
-   "views": 7608,
+   "views": 7830,
    "cashtags": [],
    "n_media": 0
   },
@@ -8116,8 +9252,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWqU7BcaoAAFo9_.jpg?name=orig"
    ],
-   "likes": 49,
-   "views": 10156,
+   "likes": 55,
+   "views": 11076,
    "cashtags": [],
    "n_media": 1
   },
@@ -8154,8 +9290,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2119795083088142336/img/d9CZg-oPg8V9J9Qe.jpg"
    ],
-   "likes": 1920,
-   "views": 170039,
+   "likes": 2311,
+   "views": 215803,
    "cashtags": [],
    "n_media": 1
   },
@@ -8173,8 +9309,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsE3xLXEAAQmTs.jpg"
    ],
-   "likes": 137,
-   "views": 26500,
+   "likes": 161,
+   "views": 29099,
    "cashtags": [],
    "n_media": 1
   },
@@ -8228,8 +9364,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWqSfIDagAELaTa.png?name=orig"
    ],
-   "likes": 18,
-   "views": 8268,
+   "likes": 21,
+   "views": 8731,
    "cashtags": [],
    "n_media": 1
   },
@@ -8266,8 +9402,8 @@
    "text": "@herbertong @Tesla I have a feeling very soon",
    "quoted": null,
    "media": [],
-   "likes": 108,
-   "views": 4080,
+   "likes": 120,
+   "views": 4347,
    "cashtags": [],
    "n_media": 0
   },
@@ -8288,8 +9424,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWr-wfhXUAADF_G.jpg?name=orig"
    ],
-   "likes": 107,
-   "views": 15826,
+   "likes": 128,
+   "views": 16710,
    "cashtags": [],
    "n_media": 1
   },
@@ -8305,8 +9441,8 @@
    "text": "Thrilled to share a big milestone from our AI & Infrastructure team at @Google.\n\nToday we’re expanding our 8th generation TPU portfolio with:\n• TPU 8i Max: Built for massive context windows and the highest compute density per rack\n• TPU 8tx: Purpose-built for secure, confidential inference\n\nThis marks the first time we’ve introduced four distinct TPU systems in a single generation, in one year.\n\nFor developers, hardware is only as good as the software stack. And we want you to be able to build with TPUs as easily and efficiently as we do at Google. You can now:\n↳ Run native PyTorch & Hugging Face models via TorchTPU (zero code rewrites)\n↳ Cut KV transfer latency >90% with open-source TPU Sync\n↳ Eliminate idle compute waste with Agent Compute Engine\n\nRead more about our newest TPUs on our blog: https://bit.ly/3VfETPR\n\nI look forward to connecting with builders, researchers, engineers and organizations pushing the boundaries of AI and computing!",
    "quoted": null,
    "media": [],
-   "likes": 2854,
-   "views": 332778,
+   "likes": 3198,
+   "views": 423824,
    "cashtags": [],
    "n_media": 0
   },
@@ -8326,7 +9462,7 @@
    },
    "media": [],
    "likes": 15,
-   "views": 21293,
+   "views": 22086,
    "cashtags": [],
    "n_media": 0
   },
@@ -8342,8 +9478,8 @@
    "text": "Coinbase just got full federal approval to run a national trust bank.\n\nRemember when the SEC was suing them?",
    "quoted": null,
    "media": [],
-   "likes": 173,
-   "views": 13280,
+   "likes": 198,
+   "views": 15838,
    "cashtags": [],
    "n_media": 0
   },
@@ -8416,8 +9552,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWr46ZvXYAA9vQ9.jpg?name=orig"
    ],
-   "likes": 169,
-   "views": 25826,
+   "likes": 196,
+   "views": 28938,
    "cashtags": [],
    "n_media": 1
   },
@@ -8435,8 +9571,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWr4iAhXwAEM7aP.jpg?name=orig"
    ],
-   "likes": 120,
-   "views": 76682,
+   "likes": 124,
+   "views": 80285,
    "cashtags": [],
    "n_media": 1
   },
@@ -8457,8 +9593,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWr4M3DaAAE5cVR.jpg?name=orig"
    ],
-   "likes": 98,
-   "views": 13973,
+   "likes": 104,
+   "views": 15238,
    "cashtags": [],
    "n_media": 1
   },
@@ -8476,8 +9612,8 @@
    "text": "USD Duration is 3.4 yrs and STRC's BTC Credit tightened to 58 bps (-2 bps), assuming 10% BTC ARR, 40% BTC Vol, and a BTC price of $75,800. Learn more about Strategy's credit metrics: https://strategy.com/credit",
    "quoted": null,
    "media": [],
-   "likes": 340,
-   "views": 45211,
+   "likes": 352,
+   "views": 47996,
    "cashtags": [],
    "n_media": 0
   },
@@ -8515,8 +9651,8 @@
    "media": [
     "https://pbs.twimg.com/amplify_video_thumb/2119777414909775872/img/N12B9bKuXWrCH2Sa.jpg"
    ],
-   "likes": 1803,
-   "views": 62805,
+   "likes": 2053,
+   "views": 70614,
    "cashtags": [],
    "n_media": 1
   },
@@ -8571,7 +9707,7 @@
    "quoted": null,
    "media": [],
    "likes": 4,
-   "views": 1943,
+   "views": 2003,
    "cashtags": [],
    "n_media": 0
   },
@@ -8589,8 +9725,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWrzb1hWQAA5S4y.jpg?name=orig"
    ],
-   "likes": 1699,
-   "views": 90056,
+   "likes": 1866,
+   "views": 97616,
    "cashtags": [],
    "n_media": 1
   },
@@ -8627,8 +9763,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWqdWMNaIAAAkHG.jpg?name=orig"
    ],
-   "likes": 1507,
-   "views": 46285,
+   "likes": 1592,
+   "views": 48743,
    "cashtags": [],
    "n_media": 1
   },
@@ -8647,8 +9783,8 @@
     "text": "@OwenSparks It is insanely fucking hard to build a high-volume factory. That’s why. \n\nPrototypes are trivial by comparison."
    },
    "media": [],
-   "likes": 2020,
-   "views": 156104,
+   "likes": 2336,
+   "views": 178479,
    "cashtags": [],
    "n_media": 0
   },
@@ -8667,8 +9803,8 @@
     "text": "The Cybertruck order rate far exceeds our production rate. We will try to make as many as possible before shutting down the line in about 8 months, but will have to return deposits for a lot of people.\n\nThis is not a case of Cybertruck being unprofitable, as has been misreported by legacy media, but rather that the opportunity cost of the complexity of Cybertruck is vastly outweighed by the value of incremental Cybercab production."
    },
    "media": [],
-   "likes": 745,
-   "views": 75294,
+   "likes": 816,
+   "views": 82382,
    "cashtags": [],
    "n_media": 0
   },
@@ -8708,8 +9844,8 @@
     "https://pbs.twimg.com/media/HWrwMWjWgAAjrpV.jpg?name=orig",
     "https://pbs.twimg.com/media/HWrwMWjXMAAPmOl.jpg?name=orig"
    ],
-   "likes": 1749,
-   "views": 140884,
+   "likes": 2039,
+   "views": 175044,
    "cashtags": [],
    "n_media": 4
   },
@@ -8727,8 +9863,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWrv5kCXkAAjbI5.jpg?name=orig"
    ],
-   "likes": 122,
-   "views": 13878,
+   "likes": 135,
+   "views": 14447,
    "cashtags": [],
    "n_media": 1
   },
@@ -8799,8 +9935,8 @@
    "text": "BREAKING: US stock market futures rise as traders buy the dip in technology stocks and oil prices fall below $90/barrel:\n\n1. S&P 500: +0.7%\n2. Nasdaq 100: +0.5%\n3. Dow Jones: +1.1%\n4. WTI Crude: -2.9%\n5. Brent: -3.0%\n6. Gold: +1.1%\n\nThe S&P 500 is set to open above 7,400.",
    "quoted": null,
    "media": [],
-   "likes": 2183,
-   "views": 230437,
+   "likes": 2229,
+   "views": 238185,
    "cashtags": [],
    "n_media": 0
   },
@@ -8819,8 +9955,8 @@
     "https://pbs.twimg.com/media/HWrnE4ZXUAAIklj.jpg?name=orig",
     "https://pbs.twimg.com/media/HWrnE4bXoAA7ESk.jpg?name=orig"
    ],
-   "likes": 48,
-   "views": 14712,
+   "likes": 51,
+   "views": 16969,
    "cashtags": [],
    "n_media": 2
   },
@@ -8838,8 +9974,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWrlAuMbQAAgYRI.png?name=orig"
    ],
-   "likes": 3,
-   "views": 4201,
+   "likes": 4,
+   "views": 4483,
    "cashtags": [],
    "n_media": 1
   },
@@ -8878,8 +10014,8 @@
     "text": "Introducing Coinbase National Trust Company, our federally chartered trust company.\n\nOCC approved."
    },
    "media": [],
-   "likes": 1290,
-   "views": 62530,
+   "likes": 1367,
+   "views": 67071,
    "cashtags": [],
    "n_media": 0
   },
@@ -8915,8 +10051,8 @@
     "text": "我的乖乖，真的戳心窝子，兄弟们\n\n看完百亿对冲基金大佬 Bill Ackman 谈马斯克的这段切片，最戳心窝子的根本不是 SpaceX 和特斯拉的万亿估值，而是他提到自己女儿时的那半句话，\n\n身家百亿美金的华尔街巨鳄，可以用钱买下这世上99%的顶级资源，唯独买不回女儿重新看见世界、重新开口说话的生理机能，\n\n而今天唯一能给他女儿带来这种物理希望的 Neuralink，\n恰恰来自一个二十年前就可以彻底躺平退休、却偏偏选择继续拿命死磕硬科技的疯子。\n\n很多人总喜欢拿世俗的功利算盘去揣测马斯克为什么还不收手，\n\n却忘了如果当年他在把特斯拉做上市后就去买游艇打高尔夫，\n\n今天人类既不会有占全球过半运力的可回收火箭，更不会有让无数失明失语者重获新生的微米级脑机电极丝。\n\n这就相当于一个早就通关了财富游戏的玩家，非但没有退服养老，反而把赢来的全部金币熔铸成手术刀和发动机，孤身一人去撞人类物理与医学边界上最硬的那堵墙，\n\n所以 Ackman 最后那句感慨才显得格外沉重：当一个人明明拥有随时退场享受人生的特权，却依然留在泥泞的工程第一线替全人类蹚雷，这样的人出现在我们的时代，本身就是整个人类文明最不该被辜负的幸运\n https://x.com/XFreeze/status/2119678201949733099/video/1"
    },
    "media": [],
-   "likes": 5252,
-   "views": 274899,
+   "likes": 5825,
+   "views": 306250,
    "cashtags": [],
    "n_media": 0
   },
@@ -8932,8 +10068,8 @@
    "text": "NEW ODD LOTS\n\nHow NYC takes out the trash\n\n@tracyalloway and I talk to @jshgdmn, deputy commissioner at the sanitation department, about the multi-year plan to revolutionize garbage collection in the city https://podcasts.apple.com/us/podcast/odd-lots/id1056200096?i=1000800729523",
    "quoted": null,
    "media": [],
-   "likes": 116,
-   "views": 52563,
+   "likes": 125,
+   "views": 60999,
    "cashtags": [],
    "n_media": 0
   },
@@ -8968,8 +10104,8 @@
    "text": "HSBC CUTS US TREASURIES TO NEUTRAL FROM STRONG OVERWEIGHT",
    "quoted": null,
    "media": [],
-   "likes": 393,
-   "views": 144919,
+   "likes": 407,
+   "views": 148569,
    "cashtags": [],
    "n_media": 0
   },
@@ -9756,6 +10892,116 @@
    "n_media": 1
   },
   {
+   "id": "2119957946935255389",
+   "handle": "JC_ParetsX",
+   "name": "J.C. Parets",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-10T00:58:56Z",
+   "url": "https://x.com/JC_ParetsX/status/2119957946935255389",
+   "text": "@v__RaBBiT__v Inflation hedge bro",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 67,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119929149640876176",
+   "handle": "RealVision",
+   "name": "Real Vision",
+   "type": "repost",
+   "reposted_by": "jam_croissant",
+   "replying_to": null,
+   "time_utc": "2026-11-09T23:04:30Z",
+   "url": "https://x.com/RealVision/status/2119929149640876176",
+   "text": "“What’s worked for the last 40 years is an anomaly,” @jam_croissant on the 60/40 portfolio.\n\nIt worked because interest rates fell from 20% to zero.\n\nBefore that, it made 0% in real terms for 60 of 82 years, across three separate 20-year stretches.\n\nThat's three-quarters of a lifetime for nothing.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/ext_tw_video_thumb/2119928969508065280/pu/img/AAdOVvKl1-Qz_XYd.jpg"
+   ],
+   "likes": 16,
+   "views": 7718,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2119927716426461439",
+   "handle": "JavierBlas",
+   "name": "Javier Blas",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "gbrew24"
+   },
+   "time_utc": "2026-11-09T22:58:48Z",
+   "url": "https://x.com/JavierBlas/status/2119927716426461439",
+   "text": "@gbrew24 Looking at the physical oil market, I would argue the price movement is also downstream of a significant - and now clearly sustained - flow of Middle East crude into the global market. It started in mid-Sep.; continued, despite Iran's attacks, throughout Oct., and now into Nov.",
+   "quoted": null,
+   "media": [],
+   "likes": 29,
+   "views": 3415,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119922195799355860",
+   "handle": "JavierBlas",
+   "name": "Javier Blas",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "JavierBlas"
+   },
+   "time_utc": "2026-11-09T22:36:52Z",
+   "url": "https://x.com/JavierBlas/status/2119922195799355860",
+   "text": "Two weeks ago, I warned in an @Opinion column about the potential that \"the current deadlock becomes the new normal, creating a forever stalemate.\" https://www.bloomberg.com/opinion/articles/2026-10-28/the-oil-market-should-brace-for-a-forever-stalemate-in-iran",
+   "quoted": null,
+   "media": [],
+   "likes": 9,
+   "views": 5750,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119913013645853013",
+   "handle": "IBDinvestors",
+   "name": "Investors.com",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-09T22:00:23Z",
+   "url": "https://x.com/IBDinvestors/status/2119913013645853013",
+   "text": "Ionis Stock Crashes After Triglycerides Buster Widely Misses Sales Forecasts\nhttps://www.investors.com/news/technology/ionis-stock-ionis-pharmaceuticals-earnings-q3-2026/",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 3531,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2119905700256063489",
+   "handle": "RealVision",
+   "name": "Real Vision",
+   "type": "repost",
+   "reposted_by": "jam_croissant",
+   "replying_to": null,
+   "time_utc": "2026-11-09T21:31:19Z",
+   "url": "https://x.com/RealVision/status/2119905700256063489",
+   "text": ".@jam_croissant on why the Fed will eventually buy up Treasuries.\n\n\"What matters is the long end of the curve.\"\n\n\"There are no buyers, ultimately, in the big picture of U.S. bonds. And so there has to be a buyer of last resort. And who is the buyer of last resort? It's the Federal Reserve.\"\n\nWith @ashbennington.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/ext_tw_video_thumb/2119905639891615744/pu/img/9JNqxC24dE8aiOz5.jpg"
+   ],
+   "likes": 16,
+   "views": 8972,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
    "id": "2119902159202296077",
    "handle": "firstadopter",
    "name": "tae kim",
@@ -9767,8 +11013,8 @@
    "text": "LFG!\n\nWSJ: \"Anthropic .. aiming for its shares to start trading Thursday or Friday next week, according to people familiar with the matter.\" https://www.wsj.com/finance/stocks/anthropic-prepares-to-push-ahead-with-ipo-despite-market-jitters-843dd16c?mod=hp_lead_pos2",
    "quoted": null,
    "media": [],
-   "likes": 5,
-   "views": 410,
+   "likes": 212,
+   "views": 19531,
    "cashtags": [],
    "n_media": 0
   },
@@ -9784,8 +11030,8 @@
    "text": "The Bank of England governor says AI might not live up to what markets expect.\n\nI think a year from now we look back at this AI selloff the same way we look at every crypto dip.",
    "quoted": null,
    "media": [],
-   "likes": 15,
-   "views": 3814,
+   "likes": 43,
+   "views": 7575,
    "cashtags": [],
    "n_media": 0
   },
@@ -9804,8 +11050,8 @@
     "text": "really excellent piece on the growth impacts of the AI buildout. \n\nessentially, GDP has benefited almost entirely from the wealth effect, with ambiguous effects otherwise as income flows to Korea and Taiwan.\n\nFRB/US (and Eric, fwiw) suggests a deep bear market would be deleterious for economic growth whereas a halt in the buildout alone wouldn’t do much on its own."
    },
    "media": [],
-   "likes": 5,
-   "views": 1102,
+   "likes": 8,
+   "views": 2274,
    "cashtags": [],
    "n_media": 0
   },
@@ -9824,10 +11070,29 @@
     "text": "Economists expect growth in the core CPI to have moderated in October to around 0.22%, though the full range of estimates is broad enough to round down to 0.1% or round up to 0.3%.\n\nDue to the government shutdown in Oct 2025, there's no tidy year-earlier figure."
    },
    "media": [],
-   "likes": 11,
-   "views": 2878,
+   "likes": 39,
+   "views": 5746,
    "cashtags": [],
    "n_media": 0
+  },
+  {
+   "id": "2119894071669862500",
+   "handle": "RitholtzWealth",
+   "name": "Ritholtz",
+   "type": "repost",
+   "reposted_by": "ritholtz",
+   "replying_to": null,
+   "time_utc": "2026-11-09T20:45:07Z",
+   "url": "https://x.com/RitholtzWealth/status/2119894071669862500",
+   "text": "Quant Quake II? Thoughts on the Selloff \n\n\"Investors, especially the financial press, spend a lot of time trying to explain what just happened.\"\n\nhttps://buff.ly/ZwuL2Ln \n\nby @Ritholtz",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HWtgbI_XAAAmqYh.jpg?name=orig"
+   ],
+   "likes": 10,
+   "views": 3660,
+   "cashtags": [],
+   "n_media": 1
   },
   {
    "id": "2119891528550412326",
@@ -9861,8 +11126,8 @@
    "text": "Shorting more of that Energy ETF I covered a lot lower in Real-Time Alerts last week",
    "quoted": null,
    "media": [],
-   "likes": 5,
-   "views": 3545,
+   "likes": 7,
+   "views": 5064,
    "cashtags": [],
    "n_media": 0
   },
@@ -9878,8 +11143,8 @@
    "text": "Sell-SOME of those winners and buy that currency I'm Long with the proceeds ahead of CPI",
    "quoted": null,
    "media": [],
-   "likes": 7,
-   "views": 3550,
+   "likes": 12,
+   "views": 6019,
    "cashtags": [],
    "n_media": 0
   },
@@ -9935,8 +11200,8 @@
    "text": "Holy volume on that ETF Hedgeye Nation bought this morning!",
    "quoted": null,
    "media": [],
-   "likes": 5,
-   "views": 3036,
+   "likes": 6,
+   "views": 4358,
    "cashtags": [],
    "n_media": 0
   },
@@ -9954,8 +11219,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtYYNzWUAAJBjT.png?name=orig"
    ],
-   "likes": 109,
-   "views": 29455,
+   "likes": 249,
+   "views": 54780,
    "cashtags": [],
    "n_media": 1
   },
@@ -9988,8 +11253,8 @@
    "text": "Nuke Stock Constellation Fueled By Earnings; NRG Hits Gas On Buybacks\nhttps://www.investors.com/news/constellation-energy-ceg-stock-nrg-energy-q3-earnings-asset-sales-buybacks/",
    "quoted": null,
    "media": [],
-   "likes": 2,
-   "views": 3110,
+   "likes": 3,
+   "views": 4188,
    "cashtags": [],
    "n_media": 0
   },
@@ -10027,7 +11292,7 @@
    "quoted": null,
    "media": [],
    "likes": 0,
-   "views": 25,
+   "views": 34,
    "cashtags": [],
    "n_media": 0
   },
@@ -10046,7 +11311,7 @@
    "quoted": null,
    "media": [],
    "likes": 0,
-   "views": 34,
+   "views": 39,
    "cashtags": [],
    "n_media": 0
   },
@@ -10064,8 +11329,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtSYE9WwAAxplA.jpg?name=orig"
    ],
-   "likes": 38,
-   "views": 5941,
+   "likes": 69,
+   "views": 9184,
    "cashtags": [],
    "n_media": 1
   },
@@ -10081,8 +11346,8 @@
    "text": "The banks are really taking over crypto.",
    "quoted": null,
    "media": [],
-   "likes": 116,
-   "views": 8331,
+   "likes": 296,
+   "views": 16031,
    "cashtags": [],
    "n_media": 0
   },
@@ -10103,8 +11368,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtPbaIbUAAYnUH.jpg?name=orig"
    ],
-   "likes": 44,
-   "views": 6690,
+   "likes": 94,
+   "views": 13048,
    "cashtags": [],
    "n_media": 1
   },
@@ -10161,8 +11426,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWtHoJVW0AAc1wp.jpg?name=orig"
    ],
-   "likes": 34,
-   "views": 9513,
+   "likes": 64,
+   "views": 12989,
    "cashtags": [],
    "n_media": 1
   },
@@ -10203,8 +11468,8 @@
     "text": "1-800-BREAKPOINT.\n\nNovember 15-17. Olympia, London."
    },
    "media": [],
-   "likes": 20,
-   "views": 15201,
+   "likes": 31,
+   "views": 19484,
    "cashtags": [],
    "n_media": 0
   },
@@ -10241,8 +11506,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWs-zEyX0AAbpIM.jpg?name=orig"
    ],
-   "likes": 117,
-   "views": 14645,
+   "likes": 183,
+   "views": 22505,
    "cashtags": [],
    "n_media": 1
   },
@@ -10262,7 +11527,7 @@
    },
    "media": [],
    "likes": 7,
-   "views": 3971,
+   "views": 4408,
    "cashtags": [],
    "n_media": 0
   },
@@ -10278,8 +11543,8 @@
    "text": "Today would be just the third 2%+ up day for the S&P this year (if it holds).",
    "quoted": null,
    "media": [],
-   "likes": 14,
-   "views": 6016,
+   "likes": 18,
+   "views": 6961,
    "cashtags": [],
    "n_media": 0
   },
@@ -10297,8 +11562,8 @@
    "text": "@Alea_ @lucasguttenberg It's worse than that in my view. There's a ruling elite in Europe that wants to stay in power at all cost (no surprise). So anything gets called great even if it clearly isn't. Things like early departures from the ECB so Macron can still install his picks, etc. The list is long.",
    "quoted": null,
    "media": [],
-   "likes": 2,
-   "views": 224,
+   "likes": 3,
+   "views": 255,
    "cashtags": [],
    "n_media": 0
   },
@@ -10317,7 +11582,7 @@
    "quoted": null,
    "media": [],
    "likes": 0,
-   "views": 151,
+   "views": 175,
    "cashtags": [],
    "n_media": 0
   },
@@ -10335,8 +11600,8 @@
    "text": "@GuntherSchnabl The single biggest problem in the Euro zone is that high-debt countries have successfully linked survival of the Euro to avoidance of debt crises. That's what has to be fixed and Klaas Knot is definitely NOT the guy to fix this. He's a key enabler of the broken status quo...",
    "quoted": null,
    "media": [],
-   "likes": 22,
-   "views": 1393,
+   "likes": 36,
+   "views": 2118,
    "cashtags": [],
    "n_media": 0
   },
@@ -10354,8 +11619,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWs40gYakAAA3v5.jpg?name=orig"
    ],
-   "likes": 1,
-   "views": 3325,
+   "likes": 2,
+   "views": 3835,
    "cashtags": [],
    "n_media": 1
   },
@@ -10371,8 +11636,8 @@
    "text": "I think the long end, not the Fed, is where this cycle gets decided.",
    "quoted": null,
    "media": [],
-   "likes": 85,
-   "views": 10721,
+   "likes": 120,
+   "views": 12746,
    "cashtags": [],
    "n_media": 0
   },
@@ -10388,8 +11653,8 @@
    "text": "West of Suez, oil freight costs are falling hard (from all-time highs). The WAF-to-Europe route has more than halved, for example, dropping to its lowest since early September. East of Suez freight remains expensive, however, with the Persian Gulf-to-Far East still >$1m per day.",
    "quoted": null,
    "media": [],
-   "likes": 100,
-   "views": 19188,
+   "likes": 123,
+   "views": 22446,
    "cashtags": [],
    "n_media": 0
   },
@@ -10407,8 +11672,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsu6w4WkAAPL2P.jpg?name=orig"
    ],
-   "likes": 80,
-   "views": 10182,
+   "likes": 94,
+   "views": 11537,
    "cashtags": [],
    "n_media": 1
   },
@@ -10426,8 +11691,8 @@
    "text": "@choffstein Ok, so should it be down 15% instead of 11%? Who cares? \n\nIs it worth missing out on actual earnings growth over this minor distortion?\n\nThe anti-passive crowd is arguing over pennies while missing out on dollars",
    "quoted": null,
    "media": [],
-   "likes": 4,
-   "views": 1233,
+   "likes": 5,
+   "views": 1457,
    "cashtags": [],
    "n_media": 0
   },
@@ -10443,8 +11708,8 @@
    "text": "ETF IQ: Rob Arbott on today on latest stuff from his lab, cinthia Murphy, Franklin and more   Starts now",
    "quoted": null,
    "media": [],
-   "likes": 12,
-   "views": 11544,
+   "likes": 18,
+   "views": 13074,
    "cashtags": [],
    "n_media": 0
   },
@@ -10481,8 +11746,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsqn7tXcAAsSEC.jpg?name=orig"
    ],
-   "likes": 13,
-   "views": 7181,
+   "likes": 15,
+   "views": 8479,
    "cashtags": [],
    "n_media": 1
   },
@@ -10501,7 +11766,7 @@
    "quoted": null,
    "media": [],
    "likes": 0,
-   "views": 50,
+   "views": 56,
    "cashtags": [],
    "n_media": 0
   },
@@ -10519,8 +11784,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWspLTLWcAAh2DD.jpg?name=orig"
    ],
-   "likes": 51,
-   "views": 6745,
+   "likes": 59,
+   "views": 7414,
    "cashtags": [],
    "n_media": 1
   },
@@ -10575,8 +11840,8 @@
    "text": "BLS didn't publish CPI in October 2025 due to the shutdown and as a result won't publish 12-month changes tomorrow.\n\nMy tentative plan is to publish 12-month numbers using an interpolated index for October 2025 (the geometric average of Sep and Nov).\n\nWhat are others doing?",
    "quoted": null,
    "media": [],
-   "likes": 31,
-   "views": 7604,
+   "likes": 37,
+   "views": 9143,
    "cashtags": [],
    "n_media": 0
   },
@@ -10594,8 +11859,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsj7g0XAAE44ub.jpg?name=orig"
    ],
-   "likes": 61,
-   "views": 12116,
+   "likes": 68,
+   "views": 15328,
    "cashtags": [],
    "n_media": 1
   },
@@ -10630,8 +11895,8 @@
    "text": "Saudi Arabia says its critical East-West oil pipeline was attacked again, resulting in a small fire. But Riyadh says the pipeline, the key bypass to avoid the Strait of Hormuz, remains operational despite the attack. \n\nhttps://spa.gov.sa/ar/N2722231?type=news&uuid=N2722231",
    "quoted": null,
    "media": [],
-   "likes": 305,
-   "views": 34710,
+   "likes": 326,
+   "views": 37898,
    "cashtags": [],
    "n_media": 0
   },
@@ -10649,8 +11914,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWshwd1XQAAF4Gb.png?name=orig"
    ],
-   "likes": 14,
-   "views": 6282,
+   "likes": 17,
+   "views": 6939,
    "cashtags": [],
    "n_media": 1
   },
@@ -10685,8 +11950,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsglzjWcAAEw-I.jpg?name=orig"
    ],
-   "likes": 26,
-   "views": 9056,
+   "likes": 34,
+   "views": 10434,
    "cashtags": [],
    "n_media": 1
   },
@@ -10738,8 +12003,8 @@
    "text": "Thanks to newly released data, we now have a handle on the scale of the Japanese government's FX interventions to support the yen.\nActing on behalf of the Ministry of Finance, the Bank of Japan deployed a total of ¥15.39 trillion (nearly $100 billion) in the third quarter alone. The largest single tranche of ¥7.97 trillion was during the joint end-July intervention with the United States.\nAs regards the spillovers, this scale of intervention served to amplify the upward pressure on US Treasury yields in July-August, a dynamic that has moderated significantly thereafter.\n#economy #markets #japan #fx #yen #currency #bonds #yields",
    "quoted": null,
    "media": [],
-   "likes": 181,
-   "views": 31563,
+   "likes": 225,
+   "views": 36956,
    "cashtags": [],
    "n_media": 0
   },
@@ -10757,8 +12022,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsY5ZDXcAA6_mD.png?name=orig"
    ],
-   "likes": 27,
-   "views": 7202,
+   "likes": 30,
+   "views": 7804,
    "cashtags": [],
    "n_media": 1
   },
@@ -10815,7 +12080,7 @@
    "quoted": null,
    "media": [],
    "likes": 3,
-   "views": 411,
+   "views": 462,
    "cashtags": [],
    "n_media": 0
   },
@@ -10835,7 +12100,7 @@
    },
    "media": [],
    "likes": 7,
-   "views": 3642,
+   "views": 3813,
    "cashtags": [],
    "n_media": 0
   },
@@ -10853,8 +12118,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsV64aWkAAkEKW.png?name=orig"
    ],
-   "likes": 117,
-   "views": 19785,
+   "likes": 133,
+   "views": 21631,
    "cashtags": [],
    "n_media": 1
   },
@@ -10870,8 +12135,8 @@
    "text": "The choice for ECB head is between a candidate from Spain, who’s interest is obviously to protect the high-debt South, and a guy from the North who describes himself as a “pragmatist,” so he’s the same. And the ECB wrings its hands about fiscal policy…\nhttps://giftarticle.ft.com/giftarticle/actions/redeem/3b423a80-8a19-42bb-8398-18502629e385",
    "quoted": null,
    "media": [],
-   "likes": 61,
-   "views": 16512,
+   "likes": 74,
+   "views": 19145,
    "cashtags": [],
    "n_media": 0
   },
@@ -10907,7 +12172,7 @@
    "quoted": null,
    "media": [],
    "likes": 0,
-   "views": 208,
+   "views": 228,
    "cashtags": [],
    "n_media": 0
   },
@@ -10926,7 +12191,7 @@
    "quoted": null,
    "media": [],
    "likes": 4,
-   "views": 392,
+   "views": 427,
    "cashtags": [],
    "n_media": 0
   },
@@ -10961,8 +12226,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsQBX0W8AAiwGm.png?name=orig"
    ],
-   "likes": 96,
-   "views": 19409,
+   "likes": 117,
+   "views": 22099,
    "cashtags": [],
    "n_media": 1
   },
@@ -10983,8 +12248,8 @@
     "text": "I was pleased to meet with Paraguayan President Santiago Peña to discuss the growing economic partnership between the United States and Paraguay.\n\nWe reaffirmed our shared commitment to strengthening economic cooperation and advancing secure and resilient critical minerals supply chains."
    },
    "media": [],
-   "likes": 26,
-   "views": 12124,
+   "likes": 28,
+   "views": 13374,
    "cashtags": [],
    "n_media": 0
   },
@@ -11003,8 +12268,8 @@
     "text": "The president of Paraguay, Santiago Peña, who'd allied his government closely with the Trump administration, is now out. A massive banking scandal not only ended his three-year presidency but damaged the image of a fast-growing, export-driven economy. https://www.wsj.com/world/americas/paraguays-president-resigns-as-collapse-of-bank-with-close-ties-to-him-sparks-crisis-a62895f1?st=tP2JvK @WSJ"
    },
    "media": [],
-   "likes": 93,
-   "views": 36113,
+   "likes": 103,
+   "views": 40624,
    "cashtags": [],
    "n_media": 0
   },
@@ -11023,8 +12288,8 @@
     "text": "🇪🇺 Klaas Knot making the case for \"principled pragmatism\" if he becomes ECB president:\n\"If circumstances so dictate, we won’t hesitate [to intervene]. I wouldn’t even exclude the fact that we would design another more tailor-made tool.\"\nhttps://www.ft.com/content/4dfbc7b0-1add-4bc3-ab5e-78c18b2ca87a?syn-25a6b1a6=1"
    },
    "media": [],
-   "likes": 75,
-   "views": 9511,
+   "likes": 89,
+   "views": 10765,
    "cashtags": [],
    "n_media": 0
   },
@@ -11063,8 +12328,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWsJu66W0AA2YIp.png?name=orig"
    ],
-   "likes": 38,
-   "views": 15325,
+   "likes": 42,
+   "views": 16427,
    "cashtags": [],
    "n_media": 1
   },
@@ -11083,8 +12348,8 @@
     "text": "New #FEDSNote: The Effect of Oil Prices on Core Inflation: Recent Evidence from the Advanced Economies: https://www.federalreserve.gov/econres/notes/feds-notes/the-effect-of-oil-prices-on-core-inflation-recent-evidence-from-the-advanced-economies-20261109.html"
    },
    "media": [],
-   "likes": 120,
-   "views": 43528,
+   "likes": 138,
+   "views": 48163,
    "cashtags": [],
    "n_media": 0
   },
@@ -11139,8 +12404,8 @@
     "text": "Lessons from the recent oil price spike\n1. This wasn't about oil supply (which has normalized)\n2. It also wasn't about higher shipping costs\n3. It wasn't about China buying more oil\n4. It wasn't about restocking inventories\n5. It was just a risk premium\nhttps://robinjbrooks.substack.com/p/whats-priced-into-brent-at-117"
    },
    "media": [],
-   "likes": 2,
-   "views": 1847,
+   "likes": 5,
+   "views": 3738,
    "cashtags": [],
    "n_media": 0
   },
@@ -11158,8 +12423,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWr_ZzWa4AAJ-hn.png?name=orig"
    ],
-   "likes": 36,
-   "views": 15479,
+   "likes": 40,
+   "views": 16763,
    "cashtags": [],
    "n_media": 1
   },
@@ -11177,8 +12442,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWr-EkHXAAAhsS3.png?name=orig"
    ],
-   "likes": 17,
-   "views": 6541,
+   "likes": 19,
+   "views": 6878,
    "cashtags": [],
    "n_media": 1
   },
@@ -11216,7 +12481,7 @@
    "quoted": null,
    "media": [],
    "likes": 0,
-   "views": 2136,
+   "views": 2194,
    "cashtags": [],
    "n_media": 0
   },
@@ -11251,8 +12516,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWr21d6XEAAoghj.png?name=orig"
    ],
-   "likes": 70,
-   "views": 14953,
+   "likes": 76,
+   "views": 17488,
    "cashtags": [],
    "n_media": 1
   },
@@ -11287,8 +12552,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWrw0uVWEAASjOE.png?name=orig"
    ],
-   "likes": 38,
-   "views": 11837,
+   "likes": 44,
+   "views": 14253,
    "cashtags": [],
    "n_media": 1
   },
@@ -11326,8 +12591,8 @@
     "text": "@EricBalchunas @NateGeraci @JSeyff Eric, Great timing.  Anti-Crypto Dems taking over congress.  Trump family hearings on crypto.  And a massive drop in Crypto prices has begun.  \n\nWith that backdrop I could of wrote your book in two words, \"Stay Out\"."
    },
    "media": [],
-   "likes": 165,
-   "views": 29808,
+   "likes": 182,
+   "views": 32795,
    "cashtags": [],
    "n_media": 0
   },
@@ -11362,8 +12627,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWrf8FPXoAAhDS3.jpg?name=orig"
    ],
-   "likes": 158,
-   "views": 31603,
+   "likes": 178,
+   "views": 42346,
    "cashtags": [],
    "n_media": 1
   },
@@ -11382,7 +12647,7 @@
    "quoted": null,
    "media": [],
    "likes": 0,
-   "views": 67,
+   "views": 68,
    "cashtags": [],
    "n_media": 0
   },
@@ -11403,8 +12668,8 @@
    "media": [
     "https://pbs.twimg.com/media/HWrpXPeW0AAtM_W.png?name=orig"
    ],
-   "likes": 143,
-   "views": 19218,
+   "likes": 152,
+   "views": 19774,
    "cashtags": [],
    "n_media": 1
   },
@@ -11442,8 +12707,8 @@
     "https://pbs.twimg.com/media/HWrnjBZWUAAtp2s.jpg?name=orig",
     "https://pbs.twimg.com/media/HWrnjBZWUAEjTAe.jpg?name=orig"
    ],
-   "likes": 96,
-   "views": 15906,
+   "likes": 104,
+   "views": 17701,
    "cashtags": [],
    "n_media": 2
   },
@@ -11462,7 +12727,7 @@
     "https://pbs.twimg.com/media/HWd-IKfXIAAp1KW.png?name=orig"
    ],
    "likes": 10,
-   "views": 6486,
+   "views": 6732,
    "cashtags": [],
    "n_media": 1
   },
@@ -11482,7 +12747,7 @@
    },
    "media": [],
    "likes": 20,
-   "views": 7027,
+   "views": 7443,
    "cashtags": [],
    "n_media": 0
   },
