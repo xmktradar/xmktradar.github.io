@@ -272,9 +272,9 @@ form.addEventListener('submit',function(e){
 })();</script>`;
 }
 function stockFooterCta(lang, ticker) {
-  const checkRel = '/' + lang + '/checklist/earnings/?utm_source=site&utm_medium=cta&utm_campaign=stock_footer';
-  const newsRel = '/' + lang + '/newsletter/?utm_source=site&utm_medium=cta&utm_campaign=stock_footer';
-  const go = checklistGo(lang, 'stock_footer');
+  const checkRel = '/' + lang + '/checklist/earnings/?utm_source=site&utm_medium=cta&utm_campaign=newsletter';
+  const newsRel = '/' + lang + '/newsletter/?utm_source=site&utm_medium=cta&utm_campaign=newsletter';
+  const go = checklistGo(lang, 'newsletter');
   let aria, title, note, label, placeholder, button, ok, bad, more;
   if (lang === 'zh') {
     aria = '免費領取財報解讀清單 · 開市前盤勢訊號';
@@ -310,6 +310,9 @@ function stockFooterCta(lang, ticker) {
     '<input class="ct-nl-end__in" id="' + fid + '" type="email" name="email" required autocomplete="email" placeholder="' + esc(placeholder) + '">' +
     '<input type="hidden" name="lang" value="' + lang + '">' +
     '<input type="hidden" name="src" value="footer">' +
+    '<input type="hidden" name="utm_source" value="site">' +
+    '<input type="hidden" name="utm_medium" value="cta">' +
+    '<input type="hidden" name="utm_campaign" value="newsletter">' +
     '<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">' +
     '<button class="ct-nl-end__btn" type="submit">' + esc(button) + '</button>' +
     '</form>' +
