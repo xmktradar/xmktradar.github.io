@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2119988441622397337": {
+      "en_summary": "EliteOptions2 analyzes 76 years of post-midterm CPI data suggesting tomorrow is a small green day, though 2022 says otherwise. Since closing under 7400 on Friday, the S&P 500 has rallied over 170 points to 7550 after Thursday’s 4.4% flush. October CPI hits at 8:30 AM ET tomorrow, the first print since the midterms. Reviews all 19 post-midterm CPI prints since 1950 for $SPX close that day, outlining three potential scenarios.",
+      "zh_summary": "EliteOptions2 分析76年中期選舉後CPI數據，顯示明日可能為小幅上漲日，儘管2022年情況相反。自週五收於7400以下後，標普500指數已反彈超過170點至7550，此前週四出現4.4%的大跌。明日上午8:30 ET將公布10月CPI，為中期選舉後首份數據。回顧1950年以來全部19次中期選舉後CPI公布當日$SPX的收盤情況，並提出三種潛在情景。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": "短線",
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "inflation",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2119986015850922273": {
+      "en_summary": "Fundstrat views the languishing of $ETH price as more a reflection of market impatience. Notes steady progress on tokenization supercycle in 2026 mostly on Ethereum, @VitalikButerin affirms $ETH as store of value, crypto bull market just started, AI narrative not consuming all incremental capital. Adds up to bullish outlook for crypto next 24-36 months.",
+      "zh_summary": "Fundstrat 認為$ETH價格疲弱更多反映市場不耐煩。指出2026年代幣化超級週期取得穩定進展，絕大部分在以太坊上，@VitalikButerin 確認$ETH為價值儲存手段，加密貨幣牛市剛開始，人工智能敘事並未消耗所有增量資本。總體對未來24-36個月加密貨幣前景看多。",
+      "tickers": [],
+      "stance": "睇好",
+      "stance_by_ticker": {},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2119984640396247544": {
+      "en_summary": "TrendSpider notes oversold bounce with a MACD cross on deck for $META, all eyes on the fibs.",
+      "zh_summary": "TrendSpider 指出$META出現超賣反彈，MACD交叉即將到來，所有目光聚焦斐波那契水平。",
+      "tickers": ["META"],
+      "stance": "睇好",
+      "stance_by_ticker": {"META": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2119974300383944906": {
+      "en_summary": "Keith McCullough highlights a big day for people getting rinsed by the AI Bubble, with $SOXL up 22% but needing another +426% from here to get back to June's breakeven.",
+      "zh_summary": "Keith McCullough 強調對被人工智能泡沫衝洗的人來說是大日子，$SOXL上漲22%，但從現在起還需再漲426%才能回到6月的盈虧平衡點。",
+      "tickers": ["SOXL"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SOXL": "睇淡"},
+      "horizon": "中線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SOXL": "needs +426% from here to recover to June breakeven after AI bubble rinse"}
+    },
+    "2119971053426626919": {
+      "en_summary": "Michael Sikand observes that $COHR looks like the new sentiment leader in optics, outperforming the peer group hard on a green day, never seen before. After $AAOI missed guidance and $LITE is in topsy turvy land with its $MRVL deal, $COHR beta should go way up.",
+      "zh_summary": "Michael Sikand 觀察到$COHR似乎成為光學領域新的情緒領導者，在上漲日大幅跑贏同行，前所未見。在$AAOI錯過指引、$LITE因$MRVL交易處於混亂狀態後，$COHR的貝塔應會大幅上升。",
+      "tickers": ["COHR", "AAOI", "LITE", "MRVL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"COHR": "睇好", "AAOI": "睇淡", "LITE": "中性", "MRVL": "中性"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"COHR": "new sentiment leader in optics, outperforming peers hard", "AAOI": "missed guidance", "LITE": "topsy turvy with MRVL deal"}
+    }
+  }
+}
