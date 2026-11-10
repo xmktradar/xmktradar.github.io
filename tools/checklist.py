@@ -4,7 +4,6 @@ Chinese master lives in tools/checklist.html with {{placeholders}}.
 Writes checklist/earnings/ (root → zh redirect), zh|en/checklist/earnings/,
 and lists the language URLs in sitemap.xml.
 """
-import json
 import os
 import re
 
@@ -225,10 +224,8 @@ def main():
     if left:
         print(f'::warning::en checklist still has Chinese: {"".join(left[:12])}')
     write('en/checklist/earnings/index.html', en)
-    # Gated full list: served as data, never inlined in the page HTML.
-    for lang in LANGS:
-        write(f'data/checklist/earnings-{lang}.json',
-              json.dumps(COPY[lang]['full_items'], ensure_ascii=False, indent=1) + '\n')
+    # Full list is gated server-side via crowdtape-newsletter /api/checklist?t=
+    # (do not publish data/checklist/earnings-*.json).
     sitemap()
 
 

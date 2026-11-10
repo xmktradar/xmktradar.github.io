@@ -61,6 +61,7 @@ h1{font-family:var(--f-display);font-size:28px;line-height:1.3;margin:0 0 8px;ov
 .site-foot a{font-weight:700}
 @media(min-width:720px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(min-width:960px){.cards{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .ct-news{position:relative;overflow-x:clip;box-sizing:border-box;width:100%;max-width:100%;margin:18px 0 0;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ct-news .cf-turnstile{flex:1 0 100%}
 .ct-news-t{flex:1 0 100%;margin:0;font-weight:700;font-size:15px;line-height:1.45;overflow-wrap:anywhere}
 .ct-news input[type=email]{flex:1 1 140px;min-width:0;max-width:100%;box-sizing:border-box;margin:0;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);font:inherit;font-size:16px}
 .ct-news button[type=submit]{flex:0 1 auto;max-width:100%;box-sizing:border-box;margin:0;padding:8px 16px;border:0;border-radius:999px;background:var(--accent);color:#fff;font:inherit;font-weight:700;font-size:14px;cursor:pointer}
@@ -85,6 +86,7 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
 .ct-news input[type=email]{background:var(--bg)!important;color:var(--ink)!important;border-color:var(--line)!important}
 .site-foot{border-top-color:var(--line)!important}
 </style>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 <div class="wrap">
@@ -136,26 +138,31 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
     <input id="ct-email-support" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
     <input type="hidden" name="lang" value="{{lang_code}}">
     <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAAF1CD19oqPdgLqWt"></div>
     <button type="submit">訂閱</button>
     <small>免費・每週一封・隨時取消</small>
     <p class="ct-news-msg" role="status" hidden></p>
   </form>
   <script>
   (function(){
-        var M={en:["Thanks! Opening your free earnings checklist…","Please check the email address and try again."],
-           zh:["多謝！正在開啟免費財報清單…","電郵地址有誤，請再試。"]};
-    function checklistUrl(l){
+        var M={en:["Thanks! Opening your free earnings checklist…","Please check the email address and try again.","Please complete the captcha and try again."],
+           zh:["多謝！正在開啟免費財報清單…","電郵地址有誤，請再試。","請完成驗證後再試。"]};
+    function checklistUrl(l,token){
       var lang=(l==='zh')?'zh':'en';
-      return 'https://thecrowdtape.com/'+lang+'/checklist/earnings/?utm_source=resend&utm_medium=email&utm_campaign=welcome1';
+      var u='https://thecrowdtape.com/'+lang+'/checklist/earnings/?utm_source=resend&utm_medium=email&utm_campaign=welcome1';
+      if(token) u+='&t='+encodeURIComponent(token);
+      return u;
     }
     document.querySelectorAll('form.ct-news').forEach(function(f){
       f.addEventListener('submit',function(e){
         e.preventDefault();
         var l=f.dataset.lang||'en',m=f.querySelector('.ct-news-msg'),d=Object.fromEntries(new FormData(f));
+        var tok=d['cf-turnstile-response']||'';
+        if(!tok){m.hidden=false;m.textContent=M[l][2];return;}
         fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
           .then(function(r){return r.json()}).then(function(j){
-            m.hidden=false;m.textContent=M[l][j.ok?0:1];
-            if(j.ok){f.reset();if(window.gtag)gtag('event','newsletter_signup',{lang:l});location.assign(checklistUrl(l));}
+            m.hidden=false;m.textContent=M[l][(j&&j.ok)?0:1];
+            if(j&&j.ok){f.reset();if(window.gtag)gtag('event','newsletter_signup',{lang:l});if(j.token){location.assign(checklistUrl(l,j.token));}}
           }).catch(function(){m.hidden=false;m.textContent=M[l][1];});
       });
     });
