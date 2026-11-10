@@ -60,12 +60,14 @@ h1{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",var(--f-body);f
 .ct-news button[type=submit]{flex:0 1 auto;max-width:100%;box-sizing:border-box;margin:0;padding:8px 16px;border:0;border-radius:999px;background:var(--accent);color:#fff;font:inherit;font-weight:700;font-size:14px;cursor:pointer}
 .ct-news small{flex:1 0 100%;margin:0;color:var(--muted);font-size:12.5px;line-height:1.4}
 .ct-news-msg{flex:1 0 100%;margin:0;font-size:14px;line-height:1.45}
+.ct-news .cf-turnstile{flex:1 0 100%}
 .ct-news input[name=website]{position:absolute!important;left:0!important;top:0!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;border:0!important;white-space:nowrap}
 .note{margin:14px 0 0;padding:12px 14px;border-radius:16px;background:var(--accent-soft);font-size:14px}
 .site-foot{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;line-height:1.7}
 .site-foot a{font-weight:700}
 @media(max-width:420px){.wrap{padding:16px 14px 40px}}
 </style>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
 <div class="wrap">
@@ -101,6 +103,7 @@ h1{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",var(--f-body);f
     <input type="hidden" name="utm_medium" value="cta">
     <input type="hidden" name="utm_campaign" value="newsletter">
     <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAAF1CD19oqPdgLqWt"></div>
     <button type="submit">Email me the list</button>
     <small>No spam. Unsubscribe anytime.</small>
     <p class="ct-news-msg" role="status" hidden></p>
@@ -114,17 +117,25 @@ h1{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",var(--f-body);f
   </section>
   <script>
   (function(){
-    // Gate (client-side): the full 12 steps are NOT in this page's HTML. They load from
-    // /data/checklist/earnings-en.json only after a successful subscribe
-    // (or when this browser already subscribed / arrives from the welcome email).
-    var M={en:["Thanks! Check your inbox to confirm, then come back any time. Full checklist unlocked below.","Please check the email address and try again."],
-           zh:["多謝！請去收件匣確認電郵。完整清單已喺下面解鎖。","電郵地址有誤，請再試。"]};
+    // Gate (server-side): full checklist items load from crowdtape-newsletter
+    // GET /api/checklist?t= after subscribe returns a token (or URL ?t= / sessionStorage).
+    // Do NOT unlock from bare localStorage, ?subscribed=1, or public /data/checklist JSON.
+    var M={en:["Thanks! Check your inbox to confirm, then come back any time. Full checklist unlocked below.","Please check the email address and try again.","Please complete the captcha and try again."],
+           zh:["多謝！請去收件匣確認電郵。完整清單已喺下面解鎖。","電郵地址有誤，請再試。","請完成驗證後再試。"]};
+    var API='https://crowdtape-newsletter.vercel.app/api/checklist?t=';
     var full=document.getElementById('checklist-full'),ol=document.getElementById('checklist-items'),done=false;
-    function unlock(scroll){
-      try{localStorage.setItem('ct-sub','1')}catch(err){}
-      if(done||!full)return;done=true;
-      fetch('/data/checklist/earnings-en.json').then(function(r){return r.json()}).then(function(items){
-        ol.innerHTML='';items.forEach(function(t){var li=document.createElement('li');li.textContent=t;ol.appendChild(li);});
+    function unlockWithToken(token,scroll){
+      if(!token||!full)return;
+      if(done)return;
+      fetch(API+encodeURIComponent(token)).then(function(r){
+        if(!r.ok)throw new Error('gate');
+        return r.json();
+      }).then(function(j){
+        if(!j||!j.ok||!Array.isArray(j.items))throw new Error('gate');
+        done=true;
+        try{sessionStorage.setItem('ct-checklist-t',token)}catch(err){}
+        ol.innerHTML='';
+        j.items.forEach(function(t){var li=document.createElement('li');li.textContent=t;ol.appendChild(li);});
         full.hidden=false;
         if(scroll){try{full.scrollIntoView({behavior:'smooth',block:'start'})}catch(err){}}
       }).catch(function(){done=false;});
@@ -133,26 +144,36 @@ h1{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",var(--f-body);f
       f.addEventListener('submit',function(e){
         e.preventDefault();
         var l=f.dataset.lang||'en',m=f.querySelector('.ct-news-msg'),d=Object.fromEntries(new FormData(f));
+        var tok=d['cf-turnstile-response']||'';
+        if(!tok){m.hidden=false;m.textContent=M[l][2];return;}
         fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
           .then(function(r){return r.json()}).then(function(j){
-            m.hidden=false;m.textContent=M[l][j.ok?0:1];
-            if(j.ok){
-              f.reset();unlock(true);
+            m.hidden=false;
+            if(j&&j.ok){
+              m.textContent=M[l][0];
+              f.reset();
               if(window.gtag)gtag('event','newsletter_signup',{lang:l,src:'checklist-earnings'});
+              // Honeypot path returns ok without token — show success, do NOT unlock.
+              if(j.token) unlockWithToken(j.token,true);
+            }else{
+              m.textContent=M[l][1];
             }
           }).catch(function(){m.hidden=false;m.textContent=M[l][1];});
       });
     });
-    var q=new URLSearchParams(location.search),sub=q.get('subscribed');
+    var q=new URLSearchParams(location.search),sub=q.get('subscribed'),t=q.get('t');
     if(sub==='1'||sub==='0') document.querySelectorAll('form.ct-news').forEach(function(f){
       var l=f.dataset.lang||'en',m=f.querySelector('.ct-news-msg');
       m.hidden=false;m.textContent=M[l][sub==='1'?0:1];
     });
-    var ls='';try{ls=localStorage.getItem('ct-sub')}catch(err){}
-    if(sub==='1'||q.get('utm_source')==='resend'||ls==='1') unlock(false);
+    if(t){unlockWithToken(t,false);}
+    else{
+      var st='';try{st=sessionStorage.getItem('ct-checklist-t')||''}catch(err){}
+      if(st)unlockWithToken(st,false);
+    }
   })();
   </script>
-  </script>
+
 </main>
 <footer class="site-foot">
   <p><a href="/en/">Home</a> · <a href="/en/newsletter/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=newsletter">Newsletter</a> · <a href="/en/earnings/">Earnings</a> · <a href="/en/tools/">Tools</a></p>

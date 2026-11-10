@@ -1874,10 +1874,10 @@ function paintChrome(){const m=D.meta;const cut=document.getElementById('cutoff'
 ${MAC&&MAC.rows.length?`<p>大市數據：${[...new Set(MAC.rows.map(r=>(r.src||'').replace(/（.*?）|\(.*?\)/g,'').trim()).filter(Boolean))].map(esc).join('、')||'—'}${MAC.as_of?`，截至 ${esc(MAC.as_of)} HKT`:''}。</p>`:''}<p>時間均為香港時間（HKT, UTC+8）。帳號頭像與簡介來自各帳號的 X 個人頁。</p>
 <p>本站部分連結屬聯盟推廣連結，你經由連結註冊或購買，我們可能獲得佣金，你無需多付。佣金不會影響好淡統計。本站內容不構成投資建議。</p>
 <form class="ct-news" id="ct-news-footer" data-lang="zh" action="https://crowdtape-newsletter.vercel.app/api/subscribe" method="POST" style="margin:12px 0">
-<label for="ct-email-footer" class="ct-news-t">免費領取財報解讀清單 · 開市前盤勢訊號</label>
+<label for="ct-email-footer" class="ct-news-t">免費領取財報解讀清單</label>
 <input id="ct-email-footer" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
 <input type="hidden" name="lang" value="zh">
-<input type="hidden" name="src" value="footer">
+<input type="hidden" name="src" value="home-footer">
 <input type="hidden" name="utm_source" value="site"><input type="hidden" name="utm_medium" value="cta"><input type="hidden" name="utm_campaign" value="newsletter">
 <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
 <button type="submit">電郵領取</button>

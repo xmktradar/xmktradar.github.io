@@ -135,7 +135,7 @@ const NL_CSS = `/* The Crowd Tape — newsletter signup box (A/B). Scoped to .ct
 .ct-nl-end__btn:hover{filter:brightness(1.08)}
 .ct-nl-end__ok{font-size:14px;color:var(--accent);margin:0}
 .ct-nl-end .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.ct-nl-end input[name=website]{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0}
+.ct-nl-end .cf-turnstile{flex:1 0 100%;margin-top:4px}.ct-nl .cf-turnstile{flex:1 0 100%;margin-top:4px}.ct-nl-end input[name=website]{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0}
 @media (max-width:600px){
   .ct-nl{gap:6px;padding:8px}
   .ct-nl__txt{flex-basis:100%}
@@ -152,6 +152,8 @@ const NL_SNIPPET = `<aside class="ct-nl" data-ab="B" data-ab-test="nl-stock-2026
     <label class="sr" for="ct-nl-email">{{nl.label}}</label>
     <input class="ct-nl__in" id="ct-nl-email" type="email" name="email" required autocomplete="email" placeholder="{{nl.placeholder}}">
     <input type="hidden" name="lang" value="{{LANG}}"><input type="hidden" name="src" value="stock-{{TICKER}}">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAAF1CD19oqPdgLqWt"></div>
     <button class="ct-nl__btn" type="submit">{{nl.button}}</button>
   </form>
 </aside>`;
@@ -209,8 +211,10 @@ function insertAfterKpis(html, box) {
   }
   return html;
 }
-function checklistGo(lang, campaign) {
-  return 'https://thecrowdtape.com/' + lang + '/checklist/earnings/?utm_source=site&utm_medium=cta&utm_campaign=' + campaign + '&subscribed=1';
+function checklistGo(lang, campaign, token) {
+  var u = 'https://thecrowdtape.com/' + lang + '/checklist/earnings/?utm_source=site&utm_medium=cta&utm_campaign=' + campaign;
+  if (token) u += '&t=' + encodeURIComponent(token);
+  return u;
 }
 function nlScript(ok, lang) {
   const okLit = JSON.stringify(esc(ok)).replace(/</g, '\\u003c');
@@ -257,24 +261,26 @@ var GO=${goLit};
 form.addEventListener('submit',function(e){
   e.preventDefault();
   if(form.getAttribute('data-sending'))return;
-  form.setAttribute('data-sending','1');
   var d=new FormData(form);
-  fetch(form.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:d.get('email'),lang:d.get('lang'),src:d.get('src')})})
+  var tok=d.get('cf-turnstile-response')||'';
+  if(!tok)return;
+  form.setAttribute('data-sending','1');
+  fetch(form.action,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:d.get('email'),lang:d.get('lang'),src:d.get('src'),website:d.get('website')||'','cf-turnstile-response':tok})})
     .then(function(r){return r.json();})
     .then(function(j){
       if(!j||!j.ok){form.removeAttribute('data-sending');return;}
       form.outerHTML='<p class="ct-nl__ok">'+OK+'<\\/p>';
       if(window.gtag)gtag('event','newsletter_signup',{variant:'B',ticker:T,lang:d.get('lang'),src:'stock'});
-      location.assign(GO);
+      if(j.token){location.assign(GO+(GO.indexOf('?')>=0?'&':'?')+'t='+encodeURIComponent(j.token));}
     })
     .catch(function(){form.removeAttribute('data-sending');});
 });
 })();</script>`;
 }
 function stockFooterCta(lang, ticker) {
-  const checkRel = '/' + lang + '/checklist/earnings/?utm_source=site&utm_medium=cta&utm_campaign=newsletter';
-  const newsRel = '/' + lang + '/newsletter/?utm_source=site&utm_medium=cta&utm_campaign=newsletter';
-  const go = checklistGo(lang, 'newsletter');
+  const checkRel = '/' + lang + '/checklist/earnings/?utm_source=site&utm_medium=cta&utm_campaign=stock_footer';
+  const newsRel = '/' + lang + '/newsletter/?utm_source=site&utm_medium=cta&utm_campaign=stock_footer';
+  const go = checklistGo(lang, 'stock_footer');
   let aria, title, note, label, placeholder, button, ok, bad, more;
   if (lang === 'zh') {
     aria = '免費領取財報解讀清單 · 開市前盤勢訊號';
@@ -310,18 +316,17 @@ function stockFooterCta(lang, ticker) {
     '<input class="ct-nl-end__in" id="' + fid + '" type="email" name="email" required autocomplete="email" placeholder="' + esc(placeholder) + '">' +
     '<input type="hidden" name="lang" value="' + lang + '">' +
     '<input type="hidden" name="src" value="footer">' +
-    '<input type="hidden" name="utm_source" value="site">' +
-    '<input type="hidden" name="utm_medium" value="cta">' +
-    '<input type="hidden" name="utm_campaign" value="newsletter">' +
     '<input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+    '<div class="cf-turnstile" data-sitekey="0x4AAAAAAF1CD19oqPdgLqWt"></div>' +
     '<button class="ct-nl-end__btn" type="submit">' + esc(button) + '</button>' +
     '</form>' +
     '<script>(function(){var ok=' + okLit + ',bad=' + badLit + ',go=' + goLit + ';' +
     'var f=document.currentScript.previousElementSibling;if(!f||f.tagName!=="FORM")return;' +
-    'f.addEventListener("submit",function(e){e.preventDefault();if(f.getAttribute("data-sending"))return;f.setAttribute("data-sending","1");' +
-    'var d=new FormData(f);fetch(f.action,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:d.get("email"),lang:d.get("lang"),src:d.get("src"),website:d.get("website")})})' +
+    'f.addEventListener("submit",function(e){e.preventDefault();if(f.getAttribute("data-sending"))return;' +
+    'var d=new FormData(f);var tok=d.get("cf-turnstile-response")||"";if(!tok){f.insertAdjacentHTML("afterend","<p class=\\"ct-nl-end__ok\\">"+bad+"<\\/p>");return;}f.setAttribute("data-sending","1");' +
+    'fetch(f.action,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:d.get("email"),lang:d.get("lang"),src:d.get("src"),website:d.get("website"),"cf-turnstile-response":tok})})' +
     '.then(function(r){return r.json()}).then(function(j){if(!j||!j.ok){f.removeAttribute("data-sending");f.insertAdjacentHTML("afterend","<p class=\\"ct-nl-end__ok\\">"+bad+"<\\/p>");return;}' +
-    'f.outerHTML="<p class=\\"ct-nl-end__ok\\">"+ok+"<\\/p>";if(window.gtag)gtag("event","newsletter_signup",{lang:d.get("lang"),src:d.get("src")||"footer"});location.assign(go);})' +
+    'f.outerHTML="<p class=\\"ct-nl-end__ok\\">"+ok+"<\\/p>";if(window.gtag)gtag("event","newsletter_signup",{lang:d.get("lang"),src:d.get("src")||"footer"});if(j.token){location.assign(go+(go.indexOf("?")>=0?"&":"?")+"t="+encodeURIComponent(j.token));}})' +
     '.catch(function(){f.removeAttribute("data-sending");});});})();</script>' +
     '</aside>'
   );
@@ -484,7 +489,7 @@ b.addEventListener('click',function(){scrollTo({top:0,behavior:matchMedia('(pref
 }
 
 function shell(master, lang, t, list, body, meta, stats, tvHref) {
-  const head = master.slice(0, master.indexOf('</head>'));
+  const head = master.slice(0, master.indexOf('<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script></head>'));
   const styles = (head.match(/<style[^>]*>[\s\S]*?<\/style>/g) || []).join('\n');
   const ga = (head.match(/<script async src="https:\/\/www\.googletagmanager\.com[^>]*><\/script>\s*<script>window\.dataLayer[\s\S]*?<\/script>/) || [''])[0];
   const fonts = (head.match(/<link rel="(?:preconnect|stylesheet)"[^>]*>/g) || []).join('');

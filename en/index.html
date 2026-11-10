@@ -1873,10 +1873,10 @@ function paintChrome(){const m=D.meta;const cut=document.getElementById('cutoff'
 ${MAC&&MAC.rows.length?`<p>Market data: ${[...new Set(MAC.rows.map(r=>(r.src||'').replace(/（.*?）|\(.*?\)/g,'').trim()).filter(Boolean))].map(esc).join(', ')||'—'}${MAC.as_of?`, as of ${esc(MAC.as_of)} HKT`:''}. </p>`:''}<p>All times are Hong Kong time (HKT, UTC+8). Account avatars and bios come from each account’s X profile.</p>
 <p>Some links are affiliate links. If you sign up or buy through them we may earn a commission at no extra cost to you. This never affects our bull/bear tallies. Nothing on this site is investment advice.</p>
 <form class="ct-news" id="ct-news-footer" data-lang="en" action="https://crowdtape-newsletter.vercel.app/api/subscribe" method="POST" style="margin:12px 0">
-<label for="ct-email-footer" class="ct-news-t">Get the free earnings checklist · tape tells before the open</label>
+<label for="ct-email-footer" class="ct-news-t">Get the free earnings checklist</label>
 <input id="ct-email-footer" type="email" name="email" required autocomplete="email" placeholder="you@example.com">
 <input type="hidden" name="lang" value="en">
-<input type="hidden" name="src" value="footer">
+<input type="hidden" name="src" value="home-footer">
 <input type="hidden" name="utm_source" value="site"><input type="hidden" name="utm_medium" value="cta"><input type="hidden" name="utm_campaign" value="newsletter">
 <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
 <button type="submit">Email me the list</button>
