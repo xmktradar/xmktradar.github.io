@@ -223,6 +223,8 @@ jobs:
         run: python3 tools/support.py
       - name: Advertise page
         run: python3 tools/advertise.py
+      - name: Weekly sales page
+        run: python3 tools/weekly.py
       - name: Tools page
         run: python3 tools/toolspage.py
       - name: About page
@@ -291,7 +293,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
           # og/ includes og/c motion mp4s, cover jpgs, and *.vo.json voiceover markers
-          PUBLISH_PATHS="index.html zh/ en/ ko/ support/ advertise/ about/ newsletter/ checklist/ tools/index.html data/ og/ px/ av/ embed/ social/ sitemap.xml llms-full.txt 404.html ccab4c5e388dc31f07a4976abba71466.txt"
+          PUBLISH_PATHS="index.html zh/ en/ ko/ support/ advertise/ weekly/ about/ newsletter/ checklist/ tools/index.html data/ og/ px/ av/ embed/ social/ sitemap.xml llms-full.txt 404.html ccab4c5e388dc31f07a4976abba71466.txt"
           git add -A $PUBLISH_PATHS
           git diff --cached --quiet && exit 0
           git commit -m "定時重建 $(date '+%Y-%m-%d %H:%M') HKT"
