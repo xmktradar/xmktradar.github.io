@@ -217,8 +217,6 @@ jobs:
             cp "$WORK_DIR/earnings-posts.json" data/earnings-posts.json
             mkdir -p social && cp "$WORK_DIR/earnings.html" social/earnings.html
           fi
-      - name: Sync roster count copy from official list
-        run: python3 tools/sync_roster_copy.py
       - name: Language versions
         run: python3 tools/build_langs.py
       - name: Support page
@@ -282,6 +280,9 @@ jobs:
           python3 tools/ig_plan.py && python3 tools/ig_plan.py --check || echo "::error::IG／Threads 方案檢查唔合格（tools/ig_plan.py），bot 會照手冊只發中文"
       - name: Slim homepages
         run: python3 tools/slim_pages.py --slim
+      # Sync after generators so the same run can correct generated roster-count copy.
+      - name: Sync roster count copy from official list
+        run: python3 tools/sync_roster_copy.py
       - name: Check the pages
         run: |
           for f in index.html zh/index.html en/index.html; do
