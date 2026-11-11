@@ -5,8 +5,10 @@ change on every build without the content changing (build ids, timestamps, view 
 only moves to this build's time when that hash changes. State lives in data/sitemap-lastmod.json.
 URLs whose content changed in this build are written to data/indexnow-changed.json (used by tools/indexnow.py).
 
-The bare root https://thecrowdtape.com/ is dropped from the final sitemap: it only redirects by language and its
-canonical is /zh/ (publish_extras.py re-adds it each build because the generators read the build time from it).
+The bare root https://thecrowdtape.com/ is dropped from the final sitemap: on the live hosts it
+sends visitors to /zh/ and its canonical is /zh/ (publish_extras.py re-adds it each build because
+the generators read the build time from it). GitHub Pages cannot emit HTTP 301; Engineering Lead
+adds that at the edge.
 
 --seed: build the state from git history (oldest commit of the newest run of identical content per page).
 """

@@ -1,7 +1,7 @@
 """Write the donation pages from tools/support.html (Chinese master).
 
 i18n/<lang>.json["support"] maps each Chinese string to its translation.
-Writes support/index.html (Chinese) and zh|en/support/index.html, and lists
+Writes support/index.html (thin redirect to /zh/support/) and zh|en/support/index.html, and lists
 the three language URLs in sitemap.xml.
 
 Source of truth: tools/support.html (+ i18n). Update site runs this every rebuild;

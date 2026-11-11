@@ -17,7 +17,7 @@ JSON keys that become a row or block when present:
   top_countries                  country line, names translated per language
   updated                        更新日期：{updated}
 
-Writes advertise/index.html (Chinese) and zh|en/advertise/index.html, and
+Writes advertise/index.html (thin redirect to /zh/advertise/) and zh|en/advertise/index.html, and
 lists the three language URLs in sitemap.xml.
 """
 import html as html_mod

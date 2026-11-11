@@ -815,7 +815,16 @@ if (require.main === module) {
       const ga = (hd.match(/<script async src="https:\/\/www\.googletagmanager\.com[^>]*><\/script>\s*<script>window\.dataLayer[\s\S]*?<\/script>/) || [''])[0];
       fs.mkdirSync(path.join(lang, 'embed'), { recursive: true });
       fs.writeFileSync(path.join(lang, 'embed', 'index.html'), EMBED.howto(lang, ga, names.includes('NVDA') ? 'NVDA' : slug(names[0]))); }
-    if (lang === 'en') for (const f of fs.readdirSync('embed')) if (f.endsWith('.html') && !have.has(f.slice(0, -5))) fs.rmSync(path.join('embed', f));
+    if (lang === 'en') {
+      // /embed/index.html is a thin redirect to /zh/embed/, not a ticker card.
+      // GitHub 管理員 should keep running this stock_pages step so rootStub() is rewritten and not deleted.
+      fs.mkdirSync('embed', { recursive: true });
+      fs.writeFileSync(path.join('embed', 'index.html'), EMBED.rootStub());
+      for (const f of fs.readdirSync('embed')) {
+        if (f === 'index.html') continue;
+        if (f.endsWith('.html') && !have.has(f.slice(0, -5))) fs.rmSync(path.join('embed', f));
+      }
+    }
     // link row above the footer of the language page (idempotent: drop any previous marked row first)
     fs.writeFileSync(file, withStockIndex(master, lang, list));
     await p.close();

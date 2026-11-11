@@ -1,13 +1,13 @@
 """Write the earnings checklist lead-magnet pages (ZH+EN).
 
 Chinese master lives in tools/checklist.html with {{placeholders}}.
-Writes checklist/earnings/ (root → zh redirect), zh|en/checklist/earnings/,
+Writes checklist/earnings/ (thin always-/zh/checklist/earnings/ stub), zh|en/checklist/earnings/,
 and lists the language URLs in sitemap.xml.
 """
 import os
 import re
 
-from build_langs import lang_pick_js
+from build_langs import with_root_redirect
 
 SITE = 'https://thecrowdtape.com/'
 LANGS = {'zh': 'zh-Hant', 'en': 'en'}
@@ -15,17 +15,13 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HAN = re.compile(r'[\u4e00-\u9fff]')
 
 def with_nested_root_redirect(html, path):
-    """Like with_root_redirect but allows nested paths (e.g. checklist/earnings)."""
-    seg = path.strip('/')
-    if not re.fullmatch(r'[a-z]+(?:/[a-z]+)*', seg):
-        raise ValueError(path)
-    script = ('<script>(function(){if(!/(github\\.io|thecrowdtape\\.com)$/.test(location.hostname))return;'
-              + lang_pick_js('localStorage.getItem("ct-lang")')
-              + f'location.replace("/"+l+"/{seg}/"+location.search+location.hash)'
-              + '})();</script>')
-    if '</head>' not in html:
-        raise ValueError('no </head> in ' + path)
-    return html.replace('</head>', script + '</head>', 1)
+    """Thin always-/zh/ stub for a nested repo-root path (checklist/earnings).
+
+    Same document as with_root_redirect: no full-page copy, no language detect.
+    GitHub Pages cannot emit a real HTTP 301. A true HTTP 301 has to be added
+    at the edge by Engineering Lead.
+    """
+    return with_root_redirect(html, path)
 
 
 
