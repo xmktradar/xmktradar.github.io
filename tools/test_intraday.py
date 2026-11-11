@@ -14,6 +14,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 os.environ['WORK_DIR'] = tempfile.mkdtemp(prefix='intraday-test-')
 os.environ['SOCIAL_HISTORY'] = os.path.join(os.environ['WORK_DIR'], 'social-history.json')
 os.environ['SOCIAL_POSTS'] = os.path.join(os.environ['WORK_DIR'], 'social-posts.json')
+os.environ['UTM_PROMO'] = '0'  # assert plain utm; promo covered by test_utm_promo
 
 import share  # noqa: E402
 import intraday as intra  # noqa: E402
@@ -163,21 +164,25 @@ def test_guard_weekend_holiday_early_close():
     assert not intra.is_trading_day('2026-11-26', holidays)
     assert not intra.is_trading_day('2026-12-25', holidays)
 
-    # Early close: skip slots after 13:00 ET (3, 4, close). 12:15 still runs.
+    # Early close: skip slots after 13:00 ET (3, 4, close). 12:15 still runs
+    # once the earlier permitted slots are already written.
     assert intra.is_early_close('2026-11-27', holidays)
     assert intra.slot_permitted('2026-11-27', 'intraday_2', holidays)
     assert not intra.slot_permitted('2026-11-27', 'intraday_3', holidays)
     assert not intra.slot_permitted('2026-11-27', 'intraday_close', holidays)
+    early_prior = ['intraday_open', 'intraday_1']
     early_mid = datetime(2026, 11, 27, 12, 10, tzinfo=NY)
-    ok, slot, reason = intra.evaluate_guard(early_mid, 'auto', holidays=holidays)
+    ok, slot, reason = intra.evaluate_guard(
+        early_mid, 'auto', holidays=holidays, existing_slots=early_prior)
     assert ok and slot == 'intraday_2', (ok, slot, reason)
     early_late = datetime(2026, 11, 27, 13, 25, tzinfo=NY)
-    ok, slot, reason = intra.evaluate_guard(early_late, 'auto', holidays=holidays)
+    ok, slot, reason = intra.evaluate_guard(
+        early_late, 'auto', holidays=holidays, existing_slots=early_prior + ['intraday_2'])
     assert not ok, reason
 
     # Friday open generation time is 09:40 ET, five minutes before the 09:45 post.
     fri = datetime(2026, 10, 23, 9, 40, tzinfo=NY)
-    ok, slot, reason = intra.evaluate_guard(fri, 'auto', holidays=holidays)
+    ok, slot, reason = intra.evaluate_guard(fri, 'auto', holidays=holidays, existing_slots=[])
     assert ok and slot == 'intraday_open', (ok, slot, reason)
     too_early = datetime(2026, 10, 23, 9, 0, tzinfo=NY)
     ok, slot, reason = intra.evaluate_guard(too_early, 'auto', holidays=holidays)
@@ -332,15 +337,36 @@ def test_no_repeated_x_and_merge():
 
 def test_utm_normalize_intraday():
     sl = _slot('intraday_open')
+    # Stale campaign: normalize's intraday walk must retag before humanize strips links.
+    stale = 'utm_campaign=daily'
+    fresh = 'utm_campaign=intraday_open'
+    sl['x']['en']['url'] = sl['x']['en']['url'].replace(fresh, 'utm_campaign=daily')
+    sl['x']['en']['text'] = sl['x']['en']['text'].replace(fresh, 'utm_campaign=daily')
+    for lang in share.LANGS:
+        node = sl['threads'][lang]
+        if node.get('url'):
+            node['url'] = node['url'].replace(fresh, 'utm_campaign=daily')
+        if node.get('text'):
+            node['text'] = node['text'].replace(fresh, 'utm_campaign=daily')
     data = {'intraday': {'date': SUMMER, 'slots': {'intraday_open': sl}}}
-    normalize_obj(data)
+    from utm import _walk_intraday
+    _walk_intraday(data['intraday'], {})
     x = data['intraday']['slots']['intraday_open']['x']['en']
     assert 'utm_source=x&utm_medium=social&utm_campaign=intraday_open' in (x['url'] or '')
+    assert stale not in (x['url'] or '')
     th = data['intraday']['slots']['intraday_open']['threads']
     for lang in share.LANGS:
         if th[lang]['url']:
             assert f'utm_source=threads&utm_medium=social&utm_campaign=intraday_open' in th[lang]['url']
             assert f'/{lang}/' in th[lang]['url']
+    normalize_obj(data)
+    x = data['intraday']['slots']['intraday_open']['x']['en']
+    th = data['intraday']['slots']['intraday_open']['threads']
+    assert x['url'] == ''
+    assert 'http' not in (x['text'] or '')
+    for lang in share.LANGS:
+        assert th[lang]['url'] == ''
+        assert 'http' not in th[lang]['text']
         assert len(th[lang]['text']) <= 500
 
 
@@ -479,6 +505,15 @@ def test_merge_from_keeps_same_day_and_appends_history():
 
 def test_generate_writes_slot_file():
     now = datetime(2026, 10, 23, 10, 55, tzinfo=NY)
+    # 10:55 is the intraday_1 clock. Open is already due, so it has to be on
+    # today's file or auto catch-up would write open instead.
+    with open(intra.posts_path(), 'w', encoding='utf-8') as f:
+        json.dump({
+            'intraday': {
+                'date': SUMMER,
+                'slots': {'intraday_open': {'post_et': '09:45'}},
+            },
+        }, f)
     saved = intra.generate('auto', now=now, chart_fn=_chart, sleep=0, save=True)
     assert saved and saved['post_et'] == '11:00'
     payload = json.load(open(intra.slot_file_path(), encoding='utf-8'))
@@ -495,15 +530,26 @@ def test_generate_writes_slot_file():
     assert on_disk['intraday']['slots']['intraday_1']['date_kst'] == '2026-10-24'
 
 
+def _prior_slots(name):
+    prior = []
+    for slot_name, _hour, _minute in intra.SLOT_DEFS:
+        if slot_name == name:
+            break
+        prior.append(slot_name)
+    return prior
+
+
 def test_auto_dispatch_around_generation():
-    """External dispatch ±10 min from each generation time picks that slot.
+    """On-time ±10/±20 around each generation clock picks that unwritten slot.
 
     Checked in EDT (2026-10-23) and EST (2026-11-03), including the same instant
-    expressed in UTC. Weekends, Thanksgiving, and early-close slots after 13:00 ET
-    are rejected. ±20 is inside the guard; ±21 is not, and does not snap to a neighbor.
+    expressed in UTC. Earlier slots are marked written so catch-up does not
+    steal the clock under test. ±21 before does not start that slot. ±21 after
+    still catch-up writes it. Weekends, Thanksgiving, and early-close slots
+    after 13:00 ET stay rejected.
     """
     holidays = intra.load_holidays()
-    offsets = (-10, -5, 0, 5, 10)
+    offsets = (-20, -10, -5, 0, 5, 10, 20)
     seasons = (
         (SUMMER, timedelta(hours=-4)),
         (WINTER, timedelta(hours=-5)),
@@ -513,27 +559,36 @@ def test_auto_dispatch_around_generation():
         assert noon.utcoffset() == offset, (day, noon.utcoffset())
         for name, hour, minute in intra.SLOT_DEFS:
             gen = intra.gen_dt(day, hour, minute)
+            prior = _prior_slots(name)
             assert gen.utcoffset() == offset, (day, name, gen.utcoffset())
             for off in offsets:
                 now = gen + timedelta(minutes=off)
-                ok, slot, reason = intra.evaluate_guard(now, 'auto', holidays=holidays)
+                ok, slot, reason = intra.evaluate_guard(
+                    now, 'auto', holidays=holidays, existing_slots=prior)
                 assert ok and slot == name, (day, name, off, ok, slot, reason)
                 utc = now.astimezone(timezone.utc)
-                ok_u, slot_u, reason_u = intra.evaluate_guard(utc, 'auto', holidays=holidays)
+                ok_u, slot_u, reason_u = intra.evaluate_guard(
+                    utc, 'auto', holidays=holidays, existing_slots=prior)
                 assert ok_u and slot_u == name, (day, name, off, utc.isoformat(), ok_u, slot_u, reason_u)
-        # Window edge. Open and close are the ends; close's −21 stays clear of slot 4.
-        for post_h, post_m, slot_name in ((9, 45, 'intraday_open'), (15, 40, 'intraday_close')):
-            gen = intra.gen_dt(day, post_h, post_m)
-            for off in (-20, 20):
-                ok, slot, reason = intra.evaluate_guard(gen + timedelta(minutes=off), 'auto', holidays=holidays)
-                assert ok and slot == slot_name, (day, slot_name, off, ok, slot, reason)
-            for off in (-21, 21):
-                ok, slot, reason = intra.evaluate_guard(gen + timedelta(minutes=off), 'auto', holidays=holidays)
-                assert not ok and slot is None, (day, slot_name, off, ok, slot, reason)
+            too_early = gen + timedelta(minutes=-21)
+            ok, slot, reason = intra.evaluate_guard(
+                too_early, 'auto', holidays=holidays, existing_slots=prior)
+            assert not ok and slot is None, (day, name, 'early', ok, slot, reason)
+            late = gen + timedelta(minutes=21)
+            ok, slot, reason = intra.evaluate_guard(
+                late, 'auto', holidays=holidays, existing_slots=prior)
+            assert ok and slot == name, (day, name, 'late', ok, slot, reason)
+            utc_late = late.astimezone(timezone.utc)
+            ok_u, slot_u, reason_u = intra.evaluate_guard(
+                utc_late, 'auto', holidays=holidays, existing_slots=prior)
+            assert ok_u and slot_u == name, (day, name, utc_late.isoformat(), ok_u, slot_u, reason_u)
 
-    # 10:20 ET sits between open (09:40) and intraday_1 (10:55).
+    # 10:20 ET sits between open (09:40) and intraday_1 (10:55). Open is due.
     gap = datetime(2026, 10, 23, 10, 20, tzinfo=NY)
-    ok, slot, reason = intra.evaluate_guard(gap, 'auto', holidays=holidays)
+    ok, slot, reason = intra.evaluate_guard(gap, 'auto', holidays=holidays, existing_slots=[])
+    assert ok and slot == 'intraday_open', (ok, slot, reason)
+    ok, slot, reason = intra.evaluate_guard(
+        gap, 'auto', holidays=holidays, existing_slots=['intraday_open'])
     assert not ok and slot is None, (ok, slot, reason)
 
     for y, mo, d in ((2026, 10, 24), (2026, 10, 25)):
@@ -553,15 +608,183 @@ def test_auto_dispatch_around_generation():
     skipped = {'intraday_3', 'intraday_4', 'intraday_close'}
     for name, hour, minute in intra.SLOT_DEFS:
         gen = intra.gen_dt(early, hour, minute)
+        prior = _prior_slots(name)
         for off in offsets:
             now = gen + timedelta(minutes=off)
-            ok, slot, reason = intra.evaluate_guard(now, 'auto', holidays=holidays)
+            ok, slot, reason = intra.evaluate_guard(
+                now, 'auto', holidays=holidays, existing_slots=prior)
             if name in skipped:
                 assert not ok and slot is None, (name, off, ok, slot, reason)
                 ok_n, slot_n, reason_n = intra.evaluate_guard(now, name, holidays=holidays)
                 assert not ok_n and slot_n is None, (name, off, ok_n, slot_n, reason_n)
             else:
                 assert ok and slot == name, (name, off, ok, slot, reason)
+
+
+def test_guard_catch_up_same_et_day():
+    """Late ticks write the earliest missed slot. The next ET date does not."""
+    holidays = intra.load_holidays()
+    # 21 minutes before intraday_1, open is already due and unwritten.
+    gen1 = intra.gen_dt(SUMMER, 11, 0)
+    ok, slot, reason = intra.evaluate_guard(
+        gen1 + timedelta(minutes=-21), 'auto', holidays=holidays, existing_slots=[])
+    assert ok and slot == 'intraday_open', (ok, slot, reason)
+    # Same instant with open stored does not start intraday_1 yet.
+    ok, slot, reason = intra.evaluate_guard(
+        gen1 + timedelta(minutes=-21), 'auto', holidays=holidays, existing_slots=['intraday_open'])
+    assert not ok and slot is None, (ok, slot, reason)
+
+    # 21 minutes before the close, with only slot 4 still missing, catch up slot 4.
+    # With nothing written, the earliest due slot is open. With all six written, skip.
+    close_gen = intra.gen_dt(WINTER, 15, 40)
+    before_close = close_gen + timedelta(minutes=-21)
+    ok, slot, reason = intra.evaluate_guard(
+        before_close, 'auto', holidays=holidays, existing_slots=_prior_slots('intraday_4'))
+    assert ok and slot == 'intraday_4', (ok, slot, reason)
+    ok, slot, reason = intra.evaluate_guard(
+        before_close, 'auto', holidays=holidays, existing_slots=[])
+    assert ok and slot == 'intraday_open', (ok, slot, reason)
+    ok, slot, reason = intra.evaluate_guard(
+        before_close, 'auto', holidays=holidays, existing_slots=list(intra.SLOT_NAMES))
+    assert not ok and slot is None, (ok, slot, reason)
+
+    # 20 minutes before intraday_2 still prefers an earlier unwritten slot.
+    gen2 = intra.gen_dt(SUMMER, 12, 15)
+    early2 = gen2 + timedelta(minutes=-20)
+    ok, slot, reason = intra.evaluate_guard(
+        early2, 'auto', holidays=holidays, existing_slots=[])
+    assert ok and slot == 'intraday_open', (ok, slot, reason)
+    ok, slot, reason = intra.evaluate_guard(
+        early2, 'auto', holidays=holidays, existing_slots=['intraday_open', 'intraday_1'])
+    assert ok and slot == 'intraday_2', (ok, slot, reason)
+
+    # Mid-afternoon gap: slot 2 is past its clock and still the one to write.
+    gap_after = datetime(2026, 10, 23, 12, 40, tzinfo=NY)
+    ok, slot, reason = intra.evaluate_guard(
+        gap_after, 'auto', holidays=holidays, existing_slots=['intraday_open', 'intraday_1'])
+    assert ok and slot == 'intraday_2', (ok, slot, reason)
+    ok, slot, reason = intra.evaluate_guard(
+        gap_after, 'auto', holidays=holidays,
+        existing_slots=['intraday_open', 'intraday_1', 'intraday_2'])
+    assert not ok and slot is None, (ok, slot, reason)
+
+    # Evening, same ET day. Latest observed schedule delay was about 21:25 ET.
+    late = datetime(2026, 11, 3, 21, 25, tzinfo=NY)
+    assert late.utcoffset() == timedelta(hours=-5)
+    ok, slot, reason = intra.evaluate_guard(late, 'auto', holidays=holidays, existing_slots=[])
+    assert ok and slot == 'intraday_open', (ok, slot, reason)
+    ok, slot, reason = intra.evaluate_guard(
+        late, 'auto', holidays=holidays, existing_slots=list(intra.SLOT_NAMES[:-1]))
+    assert ok and slot == 'intraday_close', (ok, slot, reason)
+    ok, slot, reason = intra.evaluate_guard(
+        late, 'auto', holidays=holidays, existing_slots=list(intra.SLOT_NAMES))
+    assert not ok and slot is None, (ok, slot, reason)
+    almost_midnight = datetime(2026, 10, 23, 23, 50, tzinfo=NY)
+    ok, slot, reason = intra.evaluate_guard(
+        almost_midnight, 'auto', holidays=holidays, existing_slots=[])
+    assert ok and slot == 'intraday_open', (ok, slot, reason)
+    # Named slot still skips the clock. force still bypasses the trading-day check.
+    ok, slot, reason = intra.evaluate_guard(late, 'intraday_close', holidays=holidays)
+    assert ok and slot == 'intraday_close', (ok, slot, reason)
+    ok, slot, reason = intra.evaluate_guard(late, 'force', holidays=holidays)
+    assert ok and slot == 'intraday_close', (ok, slot, reason)
+
+    # 00:10 ET the next calendar day does not write yesterday's slots.
+    nxt = datetime(2026, 11, 4, 0, 10, tzinfo=NY)
+    yesterday = {
+        'date': '2026-11-03',
+        'slots': {name: {'post_et': '09:45'} for name in intra.SLOT_NAMES},
+    }
+    ok, slot, reason = intra.evaluate_guard(
+        nxt, 'auto', holidays=holidays, existing_slots=yesterday)
+    assert not ok and slot is None, (ok, slot, reason)
+    ok, slot, reason = intra.evaluate_guard(nxt, 'auto', holidays=holidays, existing_slots=[])
+    assert not ok and slot is None, (ok, slot, reason)
+    # Saturday 00:10 is a new ET date and not a trading day.
+    sat = datetime(2026, 10, 24, 0, 10, tzinfo=NY)
+    ok, slot, reason = intra.evaluate_guard(sat, 'auto', holidays=holidays, existing_slots=[])
+    assert not ok and slot is None, (ok, slot, reason)
+
+    # Early close: nothing written yet still catch-up the earliest permitted slot,
+    # and a post-13:00 name stays rejected.
+    early_late = datetime(2026, 11, 27, 15, 35, tzinfo=NY)
+    ok, slot, reason = intra.evaluate_guard(
+        early_late, 'auto', holidays=holidays, existing_slots=[])
+    assert ok and slot == 'intraday_open', (ok, slot, reason)
+    ok, slot, reason = intra.evaluate_guard(
+        early_late, 'auto', holidays=holidays,
+        existing_slots=['intraday_open', 'intraday_1', 'intraday_2'])
+    assert not ok and slot is None, (ok, slot, reason)
+    ok, slot, reason = intra.evaluate_guard(early_late, 'intraday_close', holidays=holidays)
+    assert not ok and slot is None, (ok, slot, reason)
+
+    # Guard reads today's posts file when existing_slots is omitted.
+    path = intra.posts_path()
+    prev = open(path, encoding='utf-8').read() if os.path.exists(path) else None
+    try:
+        with open(path, 'w', encoding='utf-8') as f:
+            json.dump({
+                'posts': {'en': {'x': 'keep me'}},
+                'intraday': {
+                    'date': WINTER,
+                    'slots': {'intraday_open': {'post_et': '09:45'}},
+                },
+            }, f)
+        at_clock = datetime(2026, 11, 3, 10, 55, tzinfo=NY)
+        ok, slot, reason = intra.evaluate_guard(at_clock, 'auto', holidays=holidays)
+        assert ok and slot == 'intraday_1', (ok, slot, reason)
+        with open(path, 'w', encoding='utf-8') as f:
+            json.dump({
+                'intraday': {
+                    'date': WINTER,
+                    'slots': {name: {'post_et': 'x'} for name in intra.SLOT_NAMES},
+                },
+            }, f)
+        at_close = datetime(2026, 11, 3, 15, 35, tzinfo=NY)
+        ok, slot, reason = intra.evaluate_guard(at_close, 'auto', holidays=holidays)
+        assert not ok and slot is None, (ok, slot, reason)
+        with open(path, 'w', encoding='utf-8') as f:
+            json.dump({
+                'intraday': {
+                    'date': '2026-11-02',
+                    'slots': {name: {'post_et': 'x'} for name in intra.SLOT_NAMES},
+                },
+            }, f)
+        morning = datetime(2026, 11, 3, 0, 10, tzinfo=NY)
+        ok, slot, reason = intra.evaluate_guard(morning, 'auto', holidays=holidays)
+        assert not ok and slot is None, (ok, slot, reason)
+    finally:
+        if prev is None:
+            if os.path.exists(path):
+                os.remove(path)
+        else:
+            with open(path, 'w', encoding='utf-8') as f:
+                f.write(prev)
+
+
+def test_auto_does_not_rewrite_written_slot():
+    now = datetime(2026, 10, 23, 10, 20, tzinfo=NY)
+    with open(intra.posts_path(), 'w', encoding='utf-8') as f:
+        json.dump({}, f)
+    saved = intra.generate('auto', now=now, chart_fn=_chart, sleep=0, save=True)
+    assert saved and saved['post_et'] == '09:45'
+    again = intra.generate('auto', now=now, chart_fn=_chart, sleep=0, save=True)
+    assert again is None
+    on_disk = json.load(open(intra.posts_path(), encoding='utf-8'))
+    assert list(on_disk['intraday']['slots']) == ['intraday_open']
+
+
+def test_workflow_schedule_is_one_weekday_tick():
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '.github', 'workflows', 'intraday.yml')
+    text = open(path, encoding='utf-8').read()
+    crons = re.findall(r"^\s*- cron:\s*'([^']+)'", text, re.M)
+    assert crons == ['*/10 13-23 * * 1-5'], crons
+    assert 'group: intraday' in text
+    assert 'cancel-in-progress: false' in text
+    assert 'workflow_dispatch:' in text
+    assert 'ref: main' in text
+    assert 'timeout-minutes: 30' in text
+    assert 'slot=auto|force|<name>' in text
 
 
 def test_auto_pick():
@@ -586,8 +809,11 @@ def main():
     test_merge_from_keeps_same_day_and_appends_history()
     test_generate_writes_slot_file()
     test_auto_dispatch_around_generation()
+    test_guard_catch_up_same_et_day()
+    test_auto_does_not_rewrite_written_slot()
+    test_workflow_schedule_is_one_weekday_tick()
     test_auto_pick()
-    print('test_intraday: schedule, guard, X/Threads, quotes, fallback, history, merge-from ok')
+    print('test_intraday: schedule, guard, catch-up, X/Threads, quotes, fallback, history, merge-from ok')
 
 
 if __name__ == '__main__':

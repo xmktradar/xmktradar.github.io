@@ -2,6 +2,8 @@
 
 US/Eastern post times: open 09:45, 1 11:00, 2 12:15, 3 13:30, 4 14:45, close 15:40.
 Generation is 5 minutes before each post: 09:40, 10:55, 12:10, 13:25, 14:40, 15:35 ET.
+`auto` writes the earliest permitted slot not already stored for today's ET date, from
+20 minutes before its generation time through the rest of that America/New_York day.
 HKT is ET+12 in summer (EDT) and ET+13 in winter (EST, from the first Sunday in November).
 One English X post per slot; Threads in zh/en. No Facebook.
 
@@ -190,15 +192,11 @@ def generation_times(date, holidays=None):
     return out
 
 
-def within_minutes(delta_min, window):
-    return abs(delta_min) <= window
-
-
 def pick_auto_slot(now, holidays=None, force=False):
     """Next post within 30 min, or the previous one within 20. Used by `force`.
 
-    `--slot auto` does not use this. It uses near_generation so a dispatch a few
-    minutes early or late still lands on the slot being generated.
+    `--slot auto` does not use this. It uses earliest_due_slot so a late tick
+    still writes the earliest unwritten slot for today's ET date.
     `force` ignores the trading-day filter and, if nothing is close, returns the
     next remaining slot today, or the last one.
     """
@@ -231,32 +229,67 @@ def pick_auto_slot(now, holidays=None, force=False):
     return SLOT_NAMES[-1]
 
 
-def near_generation(now, holidays=None):
-    """Slot whose generation time is nearest, when that distance is within ±20 min.
+def written_slot_names(date, existing_slots=None):
+    """Slot names already stored for this ET trade date.
 
-    Generation times are 55–75 minutes apart, so the ±20 windows do not overlap.
-    A dispatch 10 minutes early or late still resolves to that one slot.
+    `existing_slots` is None (read posts_path(); honor intraday.date), a list or
+    set of names, a `{name: entry}` dict, or an intraday object `{date, slots}`.
+    A different intraday.date does not count. Catch-up never crosses midnight ET.
+    """
+    date = as_day(date)
+    if existing_slots is None:
+        sp = read_json(posts_path(), {}) or {}
+        intra = sp.get('intraday') if isinstance(sp, dict) else None
+        if not isinstance(intra, dict) or as_day(intra.get('date')) != date:
+            return set()
+        slots = intra.get('slots') if isinstance(intra.get('slots'), dict) else {}
+        return {name for name in slots if name in SLOT_HM}
+    if isinstance(existing_slots, dict):
+        nested = existing_slots.get('slots')
+        looks_like_intraday = isinstance(nested, dict) and (
+            'date' in existing_slots or not any(name in SLOT_HM for name in existing_slots)
+        )
+        if looks_like_intraday:
+            stamped = as_day(existing_slots.get('date')) if existing_slots.get('date') else date
+            if stamped != date:
+                return set()
+            return {name for name in nested if name in SLOT_HM}
+        return {name for name in existing_slots if name in SLOT_HM}
+    return {str(name) for name in existing_slots if str(name) in SLOT_HM}
+
+
+def earliest_due_slot(now, holidays=None, existing_slots=None):
+    """Earliest permitted unwritten slot that is not more than 20 minutes early.
+
+    A slot is eligible from GUARD_WINDOW_MIN before its America/New_York
+    generation time until the end of that ET calendar day. Slots already in
+    today's intraday.slots are skipped. The next clock is chosen only when
+    every earlier due slot is already written.
     """
     now = now_et(now)
     date = now.date().isoformat()
-    best = None
-    best_abs = None
+    written = written_slot_names(date, existing_slots)
+    lead = timedelta(minutes=GUARD_WINDOW_MIN)
     for name, when in generation_times(date, holidays):
-        delta = abs((now - when).total_seconds()) / 60.0
-        if delta <= GUARD_WINDOW_MIN and (best_abs is None or delta < best_abs):
-            best, best_abs = name, delta
-    return best
+        if name in written:
+            continue
+        if now >= when - lead:
+            return name
+    return None
 
 
-def evaluate_guard(now, slot='auto', force=False, holidays=None):
+def evaluate_guard(now, slot='auto', force=False, holidays=None, existing_slots=None):
     """Return (ok, resolved_slot, reason).
 
-    `auto` is the permitted slot whose ET generation time is nearest within
-    ±GUARD_WINDOW_MIN. Weekends, NYSE holidays, and early-close slots after
-    13:00 ET are not generation times, so they do not match. A named slot skips
-    the clock (the workflow resolves auto in Guard, then writes that name after
-    the fetch) and still rejects a closed or early-close day. `force` bypasses
-    both checks.
+    `auto` on a NYSE day picks the earliest permitted slot that is not already
+    in today's intraday.slots and whose America/New_York generation time is at
+    most GUARD_WINDOW_MIN minutes ahead, or already past. That covers the old
+    ±20 window, the gaps between clocks, and the rest of the ET calendar day,
+    so a late GitHub tick can still write missed A–F. It does not start a slot
+    more than 20 minutes early, and it does not catch up a previous ET date
+    after midnight. Weekends, NYSE holidays, and early-close slots after
+    13:00 ET are not eligible. A named slot skips the clock and still rejects
+    a closed or early-close day. `force` bypasses both checks.
     """
     now = now_et(now)
     date = now.date().isoformat()
@@ -275,9 +308,9 @@ def evaluate_guard(now, slot='auto', force=False, holidays=None):
             if not picked:
                 return False, None, f'no slot within {AUTO_AHEAD_MIN} min of {now.strftime("%H:%M")} ET'
             return True, picked, f'ok {picked}'
-        picked = near_generation(now, holidays)
+        picked = earliest_due_slot(now, holidays, existing_slots)
         if not picked:
-            return False, None, f'{now.strftime("%H:%M")} ET is not within {GUARD_WINDOW_MIN} min of a generation time'
+            return False, None, f'{now.strftime("%H:%M")} ET has no due unwritten intraday slot'
         return True, picked, f'ok {picked}'
     if not force and not slot_permitted(date, raw, holidays):
         if is_early_close(date, holidays) and slot_after_early_close(raw):
