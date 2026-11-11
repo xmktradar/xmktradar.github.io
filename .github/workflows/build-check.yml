@@ -58,10 +58,17 @@ jobs:
         run: python3 tools/check_contract.py
       - name: Restore full page data
         run: python3 tools/slim_pages.py --restore
+      - name: Cache headless browser
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: pw-chromium-1.56.1-${{ runner.os }}
       - name: Install headless browser
         run: |
           npm install --no-save --no-audit --no-fund playwright@1.56.1
-          npx playwright install --with-deps chromium
+          npx playwright install chromium
+          # the runner image normally has the system libraries; only fetch them when the browser cannot start
+          node -e "require('playwright').chromium.launch().then(b=>b.close())" 2>/dev/null || npx playwright install-deps chromium
       - name: Install Chinese converter
         continue-on-error: true
         run: pip install opencc-python-reimplemented==0.1.7
