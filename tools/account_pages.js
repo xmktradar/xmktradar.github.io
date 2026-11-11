@@ -77,8 +77,8 @@ const T = {
     note: 'Shows only the price change since the stance. It does not measure the account\'s accuracy. Not investment advice.',
     pxNote: 'Start = last daily close before the post; end = latest daily close (Yahoo Finance). Not a live quote.',
     advice: 'Not investment advice. This page only summarises public posts.',
-    title: (nm, h) => `${nm} (@${h}): which stocks are they bullish or bearish on? | The Crowd Tape`,
-    desc: (h, b, r, ts) => `In the last 28 days @${h} was bullish on ${b} and bearish on ${r} stocks: ${ts}. Each stance, reason, original post and the price change since, updated every 8 hours. Not investment advice.`,
+    title: (nm, h) => `@${h} bullish vs bearish stocks | The Crowd Tape`,
+    desc: (h, b, r, ts) => `Last 28 days: @${h} was bullish on ${b} and bearish on ${r} stocks. Stance, reason, original post and price change since. Not investment advice.`,
     upd: 'Updated',
   },
 };

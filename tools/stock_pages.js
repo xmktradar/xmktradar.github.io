@@ -76,8 +76,8 @@ const T = {
     menName: 'Mentioning accounts',
     dsName: t => `X-account bull/bear stats for $${t}`,
     dsDesc: (t, s) => `Latest stance of each tracked account that mentioned $${t}. Data window ${s.from} to ${s.to} (Hong Kong time). Bullish accounts: ${s.bull}. Bearish accounts: ${s.bear}. Mentioning accounts: ${s.mentions}. Not investment advice.`,
-    title: (t, nm, c) => `${t}${nm ? ` (${nm})` : ''} stock sentiment: ${c.bull} bullish, ${c.bear} bearish, ${c.neu} neutral | The Crowd Tape`,
-    desc: (t, n, c) => `${n} tracked X accounts mentioned $${t} in the last 28 days: ${c.bull} bullish, ${c.neu} neutral, ${c.bear} bearish, ${c.none} no stance. Each account's latest view, reasons and original post, updated every 8 hours. Not investment advice.`,
+    title: (t, nm, c) => `${t} stock sentiment on X | The Crowd Tape`,
+    desc: (t, n, c) => `${n} tracked X accounts mentioned $${t} in the last 28 days: ${c.bull} bullish, ${c.bear} bearish, ${c.neu} neutral. Latest views and original posts. Not investment advice.`,
     related: 'Related stocks',
     hot: 'Hot stocks',
     hotNote: 'mentions, last 7 days',
@@ -903,4 +903,4 @@ if (require.main === module) {
 })();
 }
 
-module.exports = { avatars, dedupeSitemap, esc, slug, toTop, shell, stockFooterCta, tvWidgetSrc, tvMappedSymbol, tvChartLink, tvChartBlock, ensureTvFrameSrc, TV_LOCALE, TV_SYMBOL_404 };
+module.exports = { avatars, dedupeSitemap, esc, slug, toTop, shell, stockFooterCta, tvWidgetSrc, tvMappedSymbol, tvChartLink, tvChartBlock, ensureTvFrameSrc, TV_LOCALE, TV_SYMBOL_404, T };

@@ -293,6 +293,27 @@ def test_predecessor_history():
     assert not ed.same_name('Donnelley Financial', 'ExxonMobil Holdings')
 
 
+def test_en_title_meta_length():
+    """EN earnings title/meta stay within SERP length; ticker first, no company name in the title."""
+    import earnings_pages as ep
+    en = ep.L['en']
+    cases = [
+        ('NVDA', 'NVIDIA Corporation', 'FY2027 Q2', '$96.22B', '+105.9%'),
+        ('TRV', 'The Travelers Companies, Inc.', 'FY2026 Q3', '$12.01B', '+4.2%'),
+        ('GOOGL', 'Alphabet Inc. Class A', 'FY2026 Q4', '$1,234.56B', '+12.3%'),
+    ]
+    for t, n, q, r, y in cases:
+        title = en['title'](t, n, q)
+        desc = en['desc'](t, n, q, r, y)
+        assert title.startswith(t + ' '), title
+        assert title.endswith('| The Crowd Tape'), title
+        assert n not in title, title
+        assert len(title) <= 70, (title, len(title))
+        assert 120 <= len(desc) <= 160, (desc, len(desc))
+        assert desc.startswith(t + ' '), desc
+
+
+
 if __name__ == '__main__':
     for name, fn in list(globals().items()):
         if name.startswith('test_') and callable(fn):
