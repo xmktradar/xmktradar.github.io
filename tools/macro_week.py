@@ -159,7 +159,9 @@ def counts(lang, r):
 
 
 def posts(lang, w, rng):
-    L, N = {k: v.replace('{N}', str(w['accounts'])) for k, v in TXT[lang].items()}, NAMES[lang]
+    # “X 帳號” / “X accounts” is the X-only count. A fixture with only accounts keeps that number.
+    n_x = w['x_accounts'] if 'x_accounts' in w else w['accounts']
+    L, N = {k: v.replace('{N}', str(n_x)) for k, v in TXT[lang].items()}, NAMES[lang]
     url = page_url(lang, '#macro')
     give = f"{L['give_s']}{page_url(lang, '#donate')}"
     by = {r['theme']: r for r in w['themes']}
@@ -263,7 +265,10 @@ def main():
     end = today if (freeze or force) else min(today, sat)
     d = load('index.html')
     w = week(d, end)
-    w['accounts'] = len(d['tracked']['accounts'])  # the tracked list grows in batches (2026-10-13), so never hard-code 100
+    roster = d['tracked']['accounts']
+    w['accounts'] = len(roster)  # whole official list; grows in batches (2026-10-13), so never hard-code a size
+    # Same X rule as sync_roster_copy: platform x, twitter, or empty. Truth Social is the rest.
+    w['x_accounts'] = sum(1 for a in roster if (a.get('platform') or 'x').lower() in ('x', 'twitter', ''))
     rng = f"{int(w['from'][5:7])}/{int(w['from'][8:])}–{int(w['to'][5:7])}/{int(w['to'][8:])}"
     v = f"{sat.isoformat()}-{now.strftime('%H%M')}"
     mw = {'date': sat.isoformat(), 'frozen': freeze, 'made_hkt': now.strftime('%Y-%m-%d %H:%M'), **w, 'range': rng,
@@ -276,7 +281,8 @@ def main():
     mw = read_json('data/macro-week.json')  # apply_macro_file ends with tools/humanize.py: no links, plain wording
     os.makedirs('social', exist_ok=True)
     open('social/macro.html', 'w', encoding='utf-8').write(page(mw))
-    write_json(work('macro_week.json'), {'range': rng, 'themes': w['themes'], 'top': w['top'], 'names': NAMES, 'accounts': w['accounts']})
+    # Saturday images say “X 帳號” / “X accounts”, so this field is the X-only count.
+    write_json(work('macro_week.json'), {'range': rng, 'themes': w['themes'], 'top': w['top'], 'names': NAMES, 'accounts': w['x_accounts']})
     notice(f"星期六宏觀貼文{'（已定數）' if freeze else '（預覽）'}：{SITE}social/macro.html，頭 3 個主題 {', '.join(w['top']) or '無'}")
 
 
