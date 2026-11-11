@@ -5,7 +5,7 @@ const test = require('node:test');
 const assert = require('node:assert');
 const fs = require('fs');
 const path = require('path');
-const { tvWidgetSrc, tvMappedSymbol, tvChartLink, tvChartBlock, ensureTvFrameSrc } = require('./stock_pages.js');
+const { tvWidgetSrc, tvMappedSymbol, tvChartLink, tvChartBlock, ensureTvFrameSrc, T } = require('./stock_pages.js');
 
 const SYMBOLS = {
   NVDA: 'NASDAQ:NVDA',
@@ -140,5 +140,22 @@ test('generated stock pages embed the iframe and keep the svg', () => {
     const { src } = iframeSrc(fs.readFileSync(page, 'utf8'));
     assert.equal(new URL(src).searchParams.get('symbol'), symbol, ticker);
     assert.equal(new URL(src).searchParams.has('aff_id'), false, ticker);
+  }
+});
+
+test('EN stock title and meta stay within SERP length', () => {
+  const cases = [
+    { t: 'AAPL', nm: 'Apple Inc.', n: 52, c: { bull: 9, bear: 5, neu: 29, none: 9 } },
+    { t: 'NVDA', nm: 'NVIDIA Corporation', n: 60, c: { bull: 12, bear: 8, neu: 29, none: 11 } },
+    { t: 'BRK.B', nm: 'Berkshire Hathaway Inc. Class B', n: 200, c: { bull: 120, bear: 80, neu: 199, none: 99 } },
+  ];
+  for (const x of cases) {
+    const title = T.en.title(x.t, x.nm, x.c);
+    const desc = T.en.desc(x.t, x.n, x.c);
+    assert.ok(title.startsWith(x.t + ' '), title);
+    assert.ok(title.endsWith('| The Crowd Tape'), title);
+    assert.ok(title.length <= 70, `${title} (${title.length})`);
+    assert.ok(desc.length >= 120 && desc.length <= 160, `${desc} (${desc.length})`);
+    assert.match(desc, new RegExp('\\$' + x.t.replace('.', '\\.')));
   }
 });
