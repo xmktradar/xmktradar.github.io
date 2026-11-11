@@ -54,6 +54,8 @@ jobs:
         run: python3 tools/test_tutorial_schedule.py
       - name: IndexNow backfill tests
         run: python3 tools/test_indexnow.py
+      - name: Roster count copy stays in sync with official list
+        run: python3 tools/test_sync_roster_copy.py
       - name: Page structure the build needs
         run: python3 tools/check_contract.py
       - name: Restore full page data
