@@ -88,6 +88,58 @@ def chart(sym, rng, interval):
     return res['meta'], [(t, c) for t, c in zip(ts, closes) if c is not None]
 
 
+def chart_ohlcv(sym, rng='2y', interval='1d'):
+    """Daily OHLCV sibling of chart(). Page price cards keep chart()'s (meta, [(ts, close)]) shape.
+
+    Same URL. Returns (meta, rows) or None on 404 / empty / unparseable. Each row is
+    date (exchange-local, via local_date), open, high, low, close, volume.
+    """
+    q = urllib.parse.quote(sym, safe='')
+    body = get(f'https://query1.finance.yahoo.com/v8/finance/chart/{q}?range={rng}&interval={interval}&includePrePost=false')
+    if not body:
+        return None
+    try:
+        res = json.loads(body)['chart']['result'][0]
+    except (KeyError, IndexError, TypeError, ValueError):
+        return None
+    if not isinstance(res, dict):
+        return None
+    ts = res.get('timestamp') or []
+    quote = ((res.get('indicators') or {}).get('quote') or [{}])[0] or {}
+    opens = quote.get('open') or []
+    highs = quote.get('high') or []
+    lows = quote.get('low') or []
+    closes = quote.get('close') or []
+    vols = quote.get('volume') or []
+    meta = res.get('meta') or {}
+
+    def _at(arr, i):
+        if i >= len(arr) or arr[i] is None:
+            return None
+        return arr[i]
+
+    rows = []
+    for i, t in enumerate(ts):
+        c = _at(closes, i)
+        if c is None:
+            continue
+        rows.append({
+            'date': local_date(t, meta),
+            'open': _at(opens, i),
+            'high': _at(highs, i),
+            'low': _at(lows, i),
+            'close': c,
+            'volume': _at(vols, i),
+        })
+    dedup = {}
+    for row in rows:
+        dedup[row['date']] = row
+    rows = [dedup[k] for k in sorted(dedup)]
+    if not rows:
+        return None
+    return meta, rows
+
+
 def search(t):
     """Yahoo's symbol search. None if Yahoo didn't answer, so an outage never counts as 'not found'."""
     body = get('https://query2.finance.yahoo.com/v1/finance/search?q=' + urllib.parse.quote(t) +

@@ -31,6 +31,10 @@ const SCENE_CAT = {
   m1: { id: 'wave', side: 'right' },
   m2: { id: 'boom', side: 'right' },
   cta: { id: 'boom', side: 'right' },
+  hook: { id: 'specs', side: 'right' },
+  heat: { id: 'wave', side: 'right' },
+  ta: { id: 'specs', side: 'right' },
+  views: { id: 'specs', side: 'center' },
 };
 
 /**
@@ -68,6 +72,10 @@ const CUES = {
     { t: 4.5, pose: 'cheer', mouth: 'closed' },
   ],
 };
+CUES.hook = CUES.open;
+CUES.heat = CUES.m1;
+CUES.ta = CUES.m2;
+CUES.views = CUES.split;
 
 const TALK_CYCLE = ['talk-closed', 'talk-half', 'talk-open', 'talk-half'];
 const MOUTH_MS = 100;
@@ -107,26 +115,28 @@ function accentHookHtml(text, big) {
 }
 
 function brightBg(name) {
+  const alias = { hook: 'open', heat: 'm1', ta: 'm2', views: 'split' };
+  const look = alias[name] || name;
   const bg = document.getElementById('bg');
-  document.body.className = 'scene-' + name;
+  document.body.className = 'scene-' + look;
   document.body.style.background = '#FFF9EE';
   let decor = '';
-  if (name === 'open') {
+  if (look === 'open') {
     // Quiet wash — cream + lightning + bubble dominate (Canva lock)
     decor = `<div class="frame-bg"></div>` +
       `<div class="orb orb--hook" style="opacity:.18"></div>` +
       `<div class="petal petal--apricot" style="left:-10%;top:14%;width:40%;height:26%;opacity:.14"></div>`;
-  } else if (name === 'split') {
+  } else if (look === 'split') {
     decor = `<div class="frame-bg"></div>` +
       `<div class="orb orb--mint" style="left:-12%;top:30%;width:50%;height:40%;opacity:.28"></div>` +
       `<div class="orb orb--coral" style="right:-12%;top:30%;width:50%;height:40%;opacity:.28"></div>`;
-  } else if (name === 'm1') {
+  } else if (look === 'm1') {
     decor = `<div class="frame-bg"></div><div class="orb orb--quote" style="opacity:.22"></div>` +
       `<div class="petal petal--lilac" style="left:8%;top:12%;width:36%;height:22%;opacity:.18"></div>` +
       `<div class="petal petal--lemon" style="right:4%;bottom:18%;width:34%;height:24%;opacity:.16"></div>`;
-  } else if (name === 'm2') {
+  } else if (look === 'm2') {
     decor = `<div class="frame-bg"></div><div class="orb orb--mint" style="right:-8%;bottom:10%;width:45%;height:32%;opacity:.26"></div>`;
-  } else if (name === 'cta') {
+  } else if (look === 'cta') {
     decor = `<div class="frame-bg"></div><div class="orb orb--mint" id="ctaOrb" style="left:20%;top:28%;width:60%;height:36%;opacity:.32"></div>`;
   } else {
     decor = `<div class="frame-bg"></div>`;
@@ -263,6 +273,10 @@ function drawCat(t, gt) {
   }
 }
 
+function safeType(inner) {
+  return `<div class="safe-type">${inner}</div>`;
+}
+
 function setup(name, D) {
   window.D_ = D;
   const c = document.getElementById('c');
@@ -274,13 +288,87 @@ function setup(name, D) {
   if (typeof TOTAL === 'number' && TOTAL > 0) window.__cueScale = TOTAL / 28;
   else window.__cueScale = 1;
   ensureCat(name);
+  const ticker = `$${esc(D.big || D.ticker || '')}`;
+  if (name === 'hook') {
+    const tickers = D.tickers || [];
+    const flash = D.flash && tickers.length;
+    const chips = flash
+      ? `<div style="display:flex;flex-wrap:wrap;gap:12px 28px">${tickers.map(t => `<div class="tk mono amber" style="font-size:72px">$${esc(t)}</div>`).join('')}</div>`
+      : `<div class="tk mono amber" style="font-size:${String(D.big || '').length > 4 ? 120 : 168}px">${ticker}</div>`;
+    c.innerHTML = safeType(`
+      <div style="display:flex;flex-direction:column;justify-content:center;height:100%;gap:36px">
+        <div style="font-size:64px;font-weight:800;line-height:1.12">${esc(D.caption || '')}</div>
+        ${chips}
+      </div>`);
+    return;
+  }
+  if (name === 'heat') {
+    c.innerHTML = showBadge(D) + lightningChrome() + safeType(`
+      <div style="display:flex;flex-direction:column;justify-content:center;height:100%;gap:28px">
+        <div class="tk mono amber" style="font-size:148px">${ticker}</div>
+        <div style="font-size:52px;font-weight:800">${esc(D.caption || '')}</div>
+      </div>`);
+    return;
+  }
+  if (name === 'ta') {
+    const cap = String(D.caption || D.fact || '');
+    const os = D.on_screen || {};
+    const val = os.value != null ? String(os.value) : '';
+    const reading = val && cap.indexOf(val) < 0
+      ? `<div class="mono" style="font-size:48px;font-weight:800;letter-spacing:-1px">${esc(val)}</div>`
+      : '';
+    const fine = D.disclaimer
+      ? `<div style="font-size:22px;font-weight:600;line-height:1.2;opacity:.72">${esc(D.disclaimer)}</div>`
+      : '';
+    c.innerHTML = showBadge(D) + lightningChrome() + safeType(`
+      <div style="display:flex;flex-direction:column;justify-content:center;height:100%;gap:22px">
+        <div class="tk mono amber" style="font-size:112px">${ticker}</div>
+        <div style="font-size:60px;font-weight:800;line-height:1.15">${esc(cap)}</div>
+        ${reading}
+        ${fine}
+      </div>`);
+    return;
+  }
+  if (name === 'views') {
+    const bull = D.bull | 0, bear = D.bear | 0;
+    if (D.angle === 'split') {
+      c.innerHTML = showBadge(D) + lightningChrome() + safeType(`
+        <div style="display:flex;flex-direction:column;height:100%;justify-content:center;gap:28px">
+          <div class="tk mono amber" style="font-size:80px">${ticker}</div>
+          <div style="display:flex;gap:24px">
+            <div class="card" style="flex:1;text-align:center">
+              <div class="label up">Bulls</div>
+              <div class="num mono up" id="bullN" style="font-size:132px">${bull}</div>
+            </div>
+            <div class="card" style="flex:1;text-align:center">
+              <div class="label down">Bears</div>
+              <div class="num mono down" id="bearN" style="font-size:132px">${bear}</div>
+            </div>
+          </div>
+          <div style="font-size:40px;font-weight:800;text-align:center">${esc(D.caption || '')}</div>
+        </div>`);
+      return;
+    }
+    const leanBear = D.angle === 'one_sided_bear';
+    const n = leanBear ? bear : bull;
+    const label = leanBear ? 'Bearish' : 'Bullish';
+    const cls = leanBear ? 'down' : 'up';
+    c.innerHTML = showBadge(D) + lightningChrome() + safeType(`
+      <div style="display:flex;flex-direction:column;height:100%;justify-content:center;gap:20px">
+        <div class="tk mono amber" style="font-size:96px">${ticker}</div>
+        <div class="label ${cls}">${label}</div>
+        <div class="num mono ${cls}" id="leanN" style="font-size:180px">${n}</div>
+        <div style="font-size:42px;font-weight:800">${esc(D.caption || '')}</div>
+      </div>`);
+    return;
+  }
   if (name === 'open') {
-    const chromeTop = showBadge(D) + lightningChrome();
+    const chromeTop = D.hideChrome ? '' : (showBadge(D) + lightningChrome());
     if (D.hookQ) {
       const sub1 = D.subline1 || 'One crowd quote.';
       const sub2 = D.subline2 || 'One punch.';
       c.innerHTML = chromeTop + `
-      <div class="speech-bubble-wrap" style="position:absolute;left:48px;right:180px;top:280px;z-index:4">
+      <div class="speech-bubble-wrap" style="position:absolute;left:80px;right:180px;top:280px;z-index:4">
         <div class="speech-bubble">
           <div class="hookQ" id="hookQ">${accentHookHtml(D.hookQ, D.big)}</div>
         </div>
@@ -299,13 +387,13 @@ function setup(name, D) {
         <div class="num mono" style="font-size:72px">${esc(D.metric || '')}</div>
         <div class="muted" style="font-size:36px;font-weight:600;line-height:1.35">${esc(D.ctx || '')}</div>
       </div>
-      <div class="muted" style="position:absolute;left:56px;right:56px;bottom:72px;font-size:26px;font-weight:600;z-index:4">thecrowdtape.com</div>`;
+      ${D.hideChrome ? '' : '<div class="muted" style="position:absolute;left:80px;right:80px;bottom:72px;font-size:26px;font-weight:600;z-index:4">thecrowdtape.com</div>'}`;
     return;
   }
   if (name === 'split') {
     const bull = D.bull | 0, bear = D.bear | 0;
     c.innerHTML = showBadge(D) + lightningChrome() + `
-      <div style="position:absolute;left:56px;right:56px;top:280px;bottom:320px;display:flex;gap:28px">
+      <div style="position:absolute;left:80px;right:80px;top:280px;bottom:320px;display:flex;gap:28px">
         <div class="card" style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:28px">
           <div class="label up">${esc(D.bullL || 'Bulls')}</div>
           <div class="num mono up" id="bullN" style="font-size:160px">${bull}</div>
@@ -366,6 +454,14 @@ function setup(name, D) {
       </div>`;
     return;
   }
+  if (name === 'cta' && D.discussion) {
+    c.innerHTML = safeType(`
+      <div style="display:flex;flex-direction:column;justify-content:center;height:100%;text-align:center;gap:28px">
+        ${D.big ? `<div class="tk mono amber" style="font-size:72px">${ticker}</div>` : ''}
+        <div style="font-size:60px;font-weight:800;line-height:1.15">${esc(D.caption || D.line || '')}</div>
+      </div>`);
+    return;
+  }
   if (name === 'cta') {
     const lines = (D.t || []).filter(Boolean);
     const foot = D.foot || (lines[0] || '');
@@ -414,11 +510,17 @@ function draw(t, gt) {
       // keep CSS .accent orange-red — do not override color
     }
   }
-  if (S.name === 'split' && D_) {
+  if ((S.name === 'split' || (S.name === 'views' && D_ && D_.angle === 'split')) && D_) {
     const e = out(cl(t / 0.55));
     const bn = document.getElementById('bullN'), rn = document.getElementById('bearN');
     if (bn) bn.textContent = String(Math.round((D_.bull || 0) * e));
     if (rn) rn.textContent = String(Math.round((D_.bear || 0) * e));
+  }
+  if (S.name === 'views' && D_ && D_.angle !== 'split') {
+    const e = out(cl(t / 0.55));
+    const el = document.getElementById('leanN');
+    const n = D_.angle === 'one_sided_bear' ? (D_.bear || 0) : (D_.bull || 0);
+    if (el) el.textContent = String(Math.round(n * e));
   }
   if (S.name === 'm1' && isQuote(D_)) {
     const n = (D_.lines || []).length;

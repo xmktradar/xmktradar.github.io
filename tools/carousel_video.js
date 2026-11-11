@@ -4,8 +4,10 @@
 // 1080x1920, H.264 limited yuv420p + AAC +faststart. Cover is merged into the open scene: frame 0 already
 // shows $TICKER + the discussion count. Soft cuts (open, split, m1, m2, cta) — cream + cat poses; mouth stub reserved;
 // no emoji / confetti / shake / white-flash / comic. VO from tools/carousel_vo.py is required; skip the language
-// if VO is missing or the voiced cut would exceed 40s (target 30–40s). Sidecar og/c/<day>-<slot>-<lang>.vo.json after mix.
-// YT Shorts: also write og/c/<day>-<show>-en-yt-title.txt + …-yt-desc.txt (tools/yt_sidecars.js).
+// if VO is missing or the voiced cut exceeds the cap (40s weekday / Saturday single; 75s Week Tape hot-list).
+// Sidecar og/c/<day>-<slot>-<lang>.vo.json after mix.
+// Optional caption sidecars (not a YouTube upload): og/c/<day>-<show>-en-yt-title.txt + …-yt-desc.txt.
+// New videos are X-native. YouTube upload is blocked; the channel is not deleted.
 // Tim 2026-11-04: default VIDEO_LANGS=en (no daily *-zh.mp4). Override with VIDEO_LANGS=zh,en if needed.
 // v3: words() fills hookQ + m1 quote (handle/lines) from writeups/highlights; empty → legacy #278 rows.
 const fs = require('fs');
@@ -15,17 +17,18 @@ const { execFileSync } = require('child_process');
 
 const FPS = 24, BPM = 124, BEAT = 60 / BPM;
 // Keep in sync with BASE_BEATS / COVER_FRAMES in tools/carousel_vo.py.
-const BASE = [['open', 12], ['split', 12], ['m1', 14], ['m2', 14], ['cta', 12]];
+const BASE = [['open', 6], ['split', 20], ['m1', 13], ['m2', 20], ['cta', 14]];
 const COVER_FRAMES = 0; // cover merged into open; frame 0 of open is also written as *-cover.jpg
 const COVER = COVER_FRAMES / FPS;
 const MIN_VIDEO_S = 30;
 const MAX_VIDEO_S = 40;
+const WEEK_MAX_VIDEO_S = 75; // Saturday hot-list ~60s; a little over is ok. Not the 40s fail.
 const VOICES = { zh: 'zh-CN-XiaoxiaoNeural', en: 'en-US-AndrewNeural' };
 const SLOTS = (process.env.VIDEO_SLOTS || '1230,1630').split(',').filter(Boolean);
 const LANGS = (process.env.VIDEO_LANGS || 'en').split(',').filter(Boolean);
 const TOOLS = __dirname;
 const { writeYtSidecars } = require('./yt_sidecars');
-// Stable stems for YT Shorts + X (same mp4). Docs: MOTION_VIDEO.md § Tape Cats paths.
+// Stable stems for the X-native short (same mp4). Docs: MOTION_VIDEO.md § Tape Cats paths.
 // Slot codes → show id. Override with VIDEO_SHOW_MAP=1230:tape-take,1630:crowd-heat,sat:week-tape
 const DEFAULT_SHOW = { '1230': 'tape-take', '1630': 'crowd-heat', 'sat': 'week-tape', 'week': 'week-tape' };
 function showMap() {
@@ -53,20 +56,51 @@ function voMarkerPath(outFile) {
   return outFile.replace(/\.mp4$/i, '.vo.json');
 }
 
-function voicedTotal(vo) {
+function videoCap(job) {
+  if (!job) return MAX_VIDEO_S;
+  if (job.mode === 'hot-list') return WEEK_MAX_VIDEO_S;
+  const beats = job.beats || [];
+  if (beats.filter(b => b && b.role === 'heat').length > 1) return WEEK_MAX_VIDEO_S;
+  return MAX_VIDEO_S;
+}
+
+function sceneBases(vo, job) {
+  const beats = (job && job.beats) || [];
+  const n = Math.max(beats.length, (vo && vo.length) || 0, beats.length ? 0 : BASE.length);
+  const out = [];
+  for (let i = 0; i < n; i++) {
+    const fromVo = vo && vo[i] && typeof vo[i].base === 'number' ? vo[i].base : null;
+    const fromBeat = beats[i] && typeof beats[i].base === 'number' ? beats[i].base : null;
+    const fromBase = BASE[i] ? BASE[i][1] : 8;
+    out.push(fromVo != null ? fromVo : (fromBeat != null ? fromBeat : fromBase));
+  }
+  return out;
+}
+
+function voicedTotal(vo, job) {
+  const bases = sceneBases(vo, job);
+  const n = Math.min(bases.length, vo ? vo.length : 0);
   let acc = 0;
-  for (let i = 0; i < BASE.length; i++) acc += Math.max(BASE[i][1], Math.ceil((vo[i].dur + 0.4) / BEAT)) * BEAT;
+  for (let i = 0; i < n; i++) acc += Math.max(bases[i], Math.ceil((vo[i].dur + 0.4) / BEAT)) * BEAT;
   return acc + COVER;
 }
 
-function voiceoverSkip(vo, exists = p => fs.existsSync(p)) {
-  if (!Array.isArray(vo) || vo.length < BASE.length) return 'no voiceover';
-  for (let i = 0; i < BASE.length; i++) {
+function voiceoverSkip(vo, exists, job) {
+  // voiceoverSkip(vo) and voiceoverSkip(vo, existsFn) stay valid. A non-function
+  // second arg is the job (older call sites pass nothing).
+  if (typeof exists !== 'function') {
+    job = exists;
+    exists = p => fs.existsSync(p);
+  }
+  const need = (job && job.beats && job.beats.length) ? job.beats.length : BASE.length;
+  if (!Array.isArray(vo) || vo.length < need) return 'no voiceover';
+  for (let i = 0; i < need; i++) {
     const v = vo[i];
     if (!v || typeof v.dur !== 'number' || !v.file || !exists(v.file)) return 'voiceover audio missing';
   }
-  const total = voicedTotal(vo);
-  if (total > MAX_VIDEO_S) return `voiced ${total.toFixed(2)}s > ${MAX_VIDEO_S}`;
+  const total = voicedTotal(vo, job);
+  const cap = videoCap(job);
+  if (total > cap) return `voiced ${total.toFixed(2)}s > ${cap}`;
   return null;
 }
 
@@ -74,6 +108,37 @@ function removePartial(outFile) {
   for (const p of [outFile + '.part.mp4']) {
     try { fs.unlinkSync(p); } catch (_) {}
   }
+}
+
+function writeSkip(job) {
+  const stem = videoStem(job || {});
+  const og = path.join('og', 'c');
+  fs.mkdirSync(og, { recursive: true });
+  const signal = (job && job.signal) || {};
+  const payload = {
+    publishable: false,
+    reason: signal.reason || (job && job.reason) || 'no_heat',
+    detail: signal.detail || (job && job.detail) || '',
+    slot: job && job.slot,
+    show: (job && job.show) || showMap()[job && job.slot] || (job && job.slot) || 'tape-take',
+    date: job && job.date,
+    lang: (job && job.lang) || 'en',
+  };
+  const skipPath = path.join(og, `${stem}.skip.json`);
+  if (!fs.existsSync(skipPath)) fs.writeFileSync(skipPath, JSON.stringify(payload, null, 2) + '\n');
+  for (const extra of ['.mp4', '.part.mp4', '-cover.jpg', '.vo.json', '-yt-title.txt', '-yt-desc.txt']) {
+    try { fs.unlinkSync(path.join(og, stem + extra)); } catch (_) {}
+  }
+  const msg = `${payload.show} ${payload.date} skipped: ${payload.reason} — ${payload.detail}`;
+  console.log(`::notice::${msg}`);
+  console.log(`::warning::${msg}`);
+  return skipPath;
+}
+
+function isVideoSkip(job) {
+  if (!job) return false;
+  const signal = job.signal || {};
+  return !!(job.video_skip || job.skip || job.publishable === false || signal.publishable === false);
 }
 
 function refuseVideo(job, outFile, why) {
@@ -90,6 +155,32 @@ function writeVoMarker(outFile, job, total) {
 }
 
 const num = (s, d = 0) => { const m = String(s || '').match(/\d+/); return m ? +m[0] : d; };
+
+/** Bull/bear from pills, or duel `bar: [nb, nr]`, or `nb`/`nr`, or a versus subtitle. */
+function stanceFrom(S0) {
+  const cover = S0 || {};
+  const pills = cover.pills || [];
+  const g = pills.find(p => p && p.c === 'g');
+  const r = pills.find(p => p && p.c === 'r');
+  let bull = g ? num(g.x) : 0;
+  let bear = r ? num(r.x) : 0;
+  const bar = cover.bar;
+  if (Array.isArray(bar) && bar.length >= 2) {
+    if (!g) bull = +bar[0] || 0;
+    if (!r) bear = +bar[1] || 0;
+  } else if (!g && !r) {
+    if (cover.nb != null || cover.nr != null) {
+      bull = +cover.nb || 0;
+      bear = +cover.nr || 0;
+    } else {
+      const sub = String(cover.sub || '');
+      let m = sub.match(/(\d+)\s*(?:bull\w*|好).*?(\d+)\s*(?:bear\w*|淡|空)/i);
+      if (!m) m = sub.match(/(\d+)\s*vs\s*(\d+)/i);
+      if (m) { bull = +m[1]; bear = +m[2]; }
+    }
+  }
+  return { n: num(cover.sub), bull, bear };
+}
 
 function firstCards(slide, mark) {
   const out = [];
@@ -154,8 +245,8 @@ function loadHeroQuote(big) {
     const use = tick || want || ((card.tickers || [])[0] || '');
     return {
       hook_q: use
-        ? `Everyone's screaming about $${use} — who's actually making sense?`
-        : `Who's actually making sense on the tape today?`,
+        ? `${use} is the most discussed name on the tape today.`
+        : `The most discussed name on the tape today.`,
       quote_handle: parsed.handle,
       quote_text: lines.join(' '),
       lines,
@@ -230,7 +321,8 @@ function words(lang, slides, job) {
   const showId = (job && job.show) || showMap()[(job && job.slot)] || (job && job.slot) || 'tape-take';
   const showLabel = SHOW_LABELS[showId] || SHOW_LABELS[String(showId).toLowerCase()] || 'Tape Take';
   const S0 = slides[0] || {};
-  const n = num(S0.sub), bull = num((S0.pills || []).find(p => p.c === 'g')?.x), bear = num((S0.pills || []).find(p => p.c === 'r')?.x);
+  const stance = stanceFrom(S0);
+  const n = stance.n, bull = stance.bull, bear = stance.bear;
   const big = S0.big || '';
   const top = firstCards(slides[1]).slice(0, 4);
   const up = firstCards(slides[2], '🟢').slice(0, 3);
@@ -287,39 +379,30 @@ function words(lang, slides, job) {
     date: S0.win || '',
     t: zh ? ['詳情看 thecrowdtape.com', '@thecrowdtape'] : ['Full tape, free.', 'thecrowdtape.com', '@thecrowdtape'],
   };
-  // v3 (en): cold-open question + real X quote on m1. No quote → legacy #278 rows (never fake).
+  // EN: hook + discussion CTA from the three-beat script. No site URL, no invented quote.
   if (!zh) {
-    const hero = loadHeroQuote(big);
-    if (hero && hero.lines && hero.lines.length) {
-      const tick = hero.ticker || big;
-      if (tick) open.big = tick;
-      open.hookQ = hero.hook_q || (tick ? `Everyone's screaming about $${tick} — who's actually making sense?` : open.lead);
-      if (hero.stance === 'bull' || hero.stance === 'bear') {
-        // keep slide counts; enrich verdict
-        splitD.verdict = hero.stance === 'bull'
-          ? (bull || n ? `${bull || n} bull / ${bear} bear — crowd long` : 'Crowd leans long')
-          : (bear || n ? `${bull} bull / ${bear || n} bear — crowd short` : 'Crowd leans short');
-      }
-      m1.mode = 'quote';
-      m1.kicker = 'ON X';
-      m1.handle = hero.quote_handle;
-      m1.lines = hero.lines;
-      m1.anchor = tick ? `$${tick}` : '';
-      m1.stance = hero.stance || '';
-      m1.title = 'ON X';
-      delete m1.parable;
-      m2.title = 'ON THE TAPE';
-      m2.punch = hero.punch || '';
-      if (!m2.rows || !m2.rows.length) {
-        m2.rows = [
-          { t: tick || big || 'TAPE', v: `${n} accounts`, tone: 'amber' },
-          { t: 'BULL', v: String(bull), tone: 'up' },
-          { t: 'BEAR', v: String(bear), tone: 'down' },
-        ].filter(r => r.t);
-      }
-      cta.foot = 'Full tape, free — thecrowdtape.com';
+    const beats = (job && job.beats) || [];
+    const hookBeat = beats.find(b => b && b.role === 'hook') || null;
+    const ctaBeat = [...beats].reverse().find(b => b && b.role === 'cta') || null;
+    const tick = String((hookBeat && hookBeat.visual && hookBeat.visual.big) || big || '').replace(/^\$/, '');
+    if (tick) open.big = tick;
+    open.hideChrome = true;
+    open.hookQ = (hookBeat && hookBeat.vo) || (tick
+      ? `${tick} is the most discussed name on the tape today.`
+      : 'The most discussed name on the tape today.');
+    open.caption = (hookBeat && hookBeat.caption) || 'Most discussed name';
+    cta.discussion = true;
+    cta.line = (ctaBeat && ctaBeat.vo) || (tick ? `Bull or bear on ${tick}?` : 'Bull or bear?');
+    cta.caption = 'Bull or bear?';
+    cta.t = [cta.caption];
+    cta.foot = cta.line;
+    const viewsBeat = [...beats].reverse().find(b => b && b.role === 'views');
+    if (viewsBeat && viewsBeat.visual) {
+      splitD.bull = viewsBeat.visual.bull != null ? viewsBeat.visual.bull : bull;
+      splitD.bear = viewsBeat.visual.bear != null ? viewsBeat.visual.bear : bear;
+      splitD.angle = viewsBeat.visual.angle || '';
+      splitD.verdict = viewsBeat.caption || splitD.verdict;
     }
-    // else: leave m1 rows (legacy). Do not invent quote or rock parable.
   }
   open.showLabel = showLabel; open.showId = showId;
   open.subline1 = open.subline1 || 'One crowd quote.';
@@ -341,11 +424,32 @@ function chrome(gt){
  return 1;
 }`;
 
+function scenePlan(job, vo, W) {
+  if (job && job.beats && job.beats.length) {
+    return job.beats.map((b, i) => {
+      const dur = vo[i] ? vo[i].dur : 0;
+      const base = (vo[i] && typeof vo[i].base === 'number') ? vo[i].base : (b.base || 8);
+      const visual = Object.assign({}, b.visual || {}, {
+        caption: (b.visual && b.visual.caption) || b.caption,
+        showLabel: W.showLabel,
+        showId: W.showId,
+      });
+      return { name: b.scene || b.role || 'heat', beats: Math.max(base, Math.ceil((dur + 0.4) / BEAT)), data: visual };
+    });
+  }
+  return BASE.map(([name, b], i) => ({
+    name,
+    beats: Math.max(b, Math.ceil((vo[i].dur + 0.4) / BEAT)),
+    data: W[name] || {},
+  }));
+}
+
 async function one(browser, job, vo, outFile) {
-  const why = voiceoverSkip(vo);
+  const why = voiceoverSkip(vo, p => fs.existsSync(p), job);
   if (why) { refuseVideo(job, outFile, why); return; }
   const W = words(job.lang, job.slides, job);
-  const SC = BASE.map(([name, b], i) => [name, Math.max(b, Math.ceil((vo[i].dur + 0.4) / BEAT))]);
+  const plan = scenePlan(job, vo, W);
+  const SC = plan.map(s => [s.name, s.beats]);
   const starts = []; let acc = 0; for (const [, b] of SC) { starts.push(acc); acc += b * BEAT; }
   const total = acc + COVER;
   const events = [];
@@ -380,16 +484,11 @@ async function one(browser, job, vo, outFile) {
   };
 
   // Soft FX only — ticks / whoosh / soft pop. No boom / slam / stamp spam.
-  await scene(0, W.open);
-  events.push({ at: 0, type: 'tick' }, { at: BEAT, type: 'tick' }, { at: 2 * BEAT, type: 'whoosh' });
-  await scene(1, W.split);
-  events.push({ at: starts[1], type: 'whoosh' }, { at: starts[1] + 2 * BEAT, type: 'tick' }, { at: starts[1] + 3 * BEAT, type: 'pop' });
-  await scene(2, W.m1);
-  events.push({ at: starts[2], type: 'whoosh' }, { at: starts[2] + BEAT, type: 'tick' }, { at: starts[2] + 3 * BEAT, type: 'tick' });
-  await scene(3, W.m2);
-  events.push({ at: starts[3], type: 'whoosh' }, { at: starts[3] + 2 * BEAT, type: 'tick' });
-  await scene(4, W.cta);
-  events.push({ at: starts[4], type: 'whoosh' }, { at: starts[4] + BEAT, type: 'ding' });
+  // One name at a time when the job carries beats (Week Tape hot-list or weekday single).
+  for (let k = 0; k < plan.length; k++) {
+    await scene(k, plan[k].data);
+    events.push({ at: starts[k], type: k === plan.length - 1 ? 'ding' : (k === 0 ? 'tick' : 'whoosh') });
+  }
 
   await sp.close();
   // Frame 0 of open doubles as the IG cover still (already shows $TICKER + count).
@@ -438,18 +537,30 @@ async function main() {
   const all = JSON.parse(fs.readFileSync(file, 'utf8'));
   const jobs = all.jobs.filter(j => SLOTS.includes(j.slot) && LANGS.includes(j.lang));
   if (!jobs.length) { console.log('carousel video: no slot to film'); return; }
+  fs.mkdirSync('og/c', { recursive: true });
+  const live = [];
+  for (const j of jobs) {
+    if (isVideoSkip(j)) {
+      writeSkip(j);
+      continue;
+    }
+    live.push(j);
+  }
+  if (!live.length) {
+    console.log('::notice::carousel video: nothing publishable');
+    return;
+  }
   let vo = {};
   try {
     const voDir = path.join(path.dirname(path.resolve(file)), 'vo');
     execFileSync('python3', [path.join(TOOLS, 'carousel_vo.py'), file, voDir], { stdio: 'inherit', timeout: 240000 });
     vo = JSON.parse(fs.readFileSync(path.join(voDir, 'vo.json'), 'utf8'));
   } catch (e) { console.log('::warning::配音整唔到，今次唔出片：' + e.message); }
-  fs.mkdirSync('og/c', { recursive: true });
   const ready = [];
-  for (const j of jobs) {
+  for (const j of live) {
     const clips = vo[`${j.slot}-${j.lang}`];
     const out = videoOut(j);
-    const why = voiceoverSkip(clips);
+    const why = voiceoverSkip(clips, p => fs.existsSync(p), j);
     if (why) { refuseVideo(j, out, why); continue; }
     ready.push([j, clips, out]);
   }
@@ -473,7 +584,7 @@ if (require.main === module) main();
 
 module.exports = {
   voicedTotal, voiceoverSkip, refuseVideo, removePartial, writeVoMarker, voMarkerPath,
-  voiceName, MIN_VIDEO_S, MAX_VIDEO_S, COVER, BEAT, BASE, VOICES, words, COVER_FRAMES,
-  loadHeroQuote, splitQuoteLines, parsePoint, one, videoStem, videoOut, coverOut, showMap, DEFAULT_SHOW, SHOW_LABELS, words,
-  writeYtSidecars,
+  voiceName, MIN_VIDEO_S, MAX_VIDEO_S, WEEK_MAX_VIDEO_S, COVER, BEAT, BASE, VOICES, words, COVER_FRAMES,
+  loadHeroQuote, splitQuoteLines, parsePoint, one, videoStem, videoOut, coverOut, showMap, DEFAULT_SHOW, SHOW_LABELS,
+  writeYtSidecars, writeSkip, videoCap, stanceFrom, isVideoSkip,
 };

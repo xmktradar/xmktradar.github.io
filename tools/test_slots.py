@@ -13,6 +13,10 @@ import tempfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 os.environ['WORK_DIR'] = tempfile.mkdtemp(prefix='slots-test-')
 os.environ['SOCIAL_HISTORY'] = os.path.join(os.environ['WORK_DIR'], 'social-history.json')
+# Assertions below expect the plain utm_medium=social scheme. The Meta One
+# promo (through 2026-11-28) would rewrite those links. Promo coverage is
+# tools/test_utm_promo.py.
+os.environ['UTM_PROMO'] = '0'
 
 import share  # noqa: E402
 
