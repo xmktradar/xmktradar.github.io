@@ -1,14 +1,17 @@
-# Tape Cats EN Shorts — YT + X share the same mp4 (stable stems).
+# Tape Cats EN Shorts — X-native mp4 (stable stems).
+# New videos are not uploaded to YouTube. The channel stays; this workflow has
+# no YouTube upload and no YOUTUBE_ token. Caption sidecar files may still be
+# written next to the mp4. They are files only, not an upload.
 # Schedule (America/New_York wall clock → UTC cron; EDT=UTC-4 / EST=UTC-5):
 #   Mon–Fri Tape Take  ~12:30 ET → cron 30 16 * * 1-5  (16:30 UTC ≈ 12:30 EDT)
 #   Mon–Fri Crowd Heat ~16:30 ET → cron 30 20 * * 1-5  (20:30 UTC ≈ 16:30 EDT)
 #   Sat Week Tape      ~12:00 ET → cron 0 16 * * 6     (16:00 UTC ≈ 12:00 EDT)
 #   Sun OFF
 # EST winter is +1h later local vs these UTC slots; bots still pick latest og/c stem for the day.
-# Outputs (EN only):
-#   og/c/<YYYY-MM-DD>-tape-take-en.mp4|.vo.json|-cover.jpg|-yt-title.txt|-yt-desc.txt
-#   og/c/<YYYY-MM-DD>-crowd-heat-en.mp4|.vo.json|-cover.jpg|-yt-title.txt|-yt-desc.txt
-#   og/c/<YYYY-MM-DD>-week-tape-en.mp4|.vo.json|-cover.jpg|-yt-title.txt|-yt-desc.txt  (Sat)
+# Outputs (EN only, X-native). A skip writes *.skip.json and does not publish an mp4.
+#   og/c/<YYYY-MM-DD>-tape-take-en.mp4|.vo.json|-cover.jpg|optional caption sidecars
+#   og/c/<YYYY-MM-DD>-crowd-heat-en.mp4|.vo.json|-cover.jpg|optional caption sidecars
+#   og/c/<YYYY-MM-DD>-week-tape-en.mp4|.vo.json|-cover.jpg|optional caption sidecars  (Sat)
 # Slot map: 1230→tape-take, 1630→crowd-heat, sat→week-tape (tools/MOTION_VIDEO.md).
 # Formal render = this workflow / Update site motion step — not box-local.
 # Self-contained: restore + stats.js + CAROUSEL_FORCE carousel.json (must NOT depend on Update site).
@@ -129,8 +132,10 @@ jobs:
             const map={1230:"tape-take",1630:"crowd-heat",sat:"week-tape"};
             for (const job of j.jobs) job.show = map[job.slot]||job.slot;
             fs.writeFileSync(process.env.WORK_DIR+"/carousel.json", JSON.stringify(j,null,2));
-            console.log("jobs", j.jobs.map(x=>x.slot+":"+x.show));
+            console.log("jobs", j.jobs.map(x=>x.slot+":"+x.show+":"+(x.video_skip?"skip":"live")));
             if (!j.jobs.length) { console.error("no EN jobs for slots", slots); process.exit(1); }
+            const live = j.jobs.filter(x => !(x.video_skip || x.skip || x.publishable === false || (x.signal && x.signal.publishable === false)));
+            if (!live.length) console.log("::notice::selection skip — no publishable EN short for " + slots.join(","));
           '
           # Draw stills then motion (stills optional for video but duel slides expect files later)
           if [ -f "$WORK_DIR/carousel.json" ]; then
@@ -141,7 +146,7 @@ jobs:
             || { echo "::error::render failed"; exit 1; }
           python3 tools/carousel_video_post.py || true
           echo "Artifacts:"; ls -la og/c/*-en.mp4 og/c/*-yt-*.txt 2>/dev/null || true
-      - name: Publish mp4 stems + YT captions to main
+      - name: Publish mp4 stems to main
         if: steps.pick.outputs.skip != 'true'
         run: |
           set -e
@@ -149,13 +154,16 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           # nullglob: unmatched *-week-tape-* must not abort git add (was silent "Nothing to publish").
           shopt -s nullglob
-          files=(og/c/*-tape-take-en* og/c/*-crowd-heat-en* og/c/*-week-tape-en* tools/samples/*-yt-*.txt)
+          DAY=$(python3 -c 'import json,os; p=os.environ["WORK_DIR"]+"/carousel.json"; print((json.load(open(p)).get("date") or ""))')
+          if [ -z "$DAY" ]; then echo "No carousel date — nothing to publish"; exit 0; fi
+          # Today only. A previous day's mp4 must not be staged as this run's output.
+          files=(og/c/${DAY}-tape-take-en* og/c/${DAY}-crowd-heat-en* og/c/${DAY}-week-tape-en* tools/samples/${DAY}-*-yt-*.txt)
           echo "Publish candidates (${#files[@]}): ${files[*]:-none}"
           if [ ${#files[@]} -eq 0 ]; then echo "Nothing to publish (no stem files)"; exit 0; fi
           git add -- "${files[@]}"
           # Update site owns data/social-posts.json — do not stage it here.
           if git diff --cached --quiet; then echo "Nothing to publish (unchanged)"; exit 0; fi
           git status --short
-          git commit -m "Tape Cats Shorts: ${{ steps.pick.outputs.show }} EN (YT+X same stem + captions)"
+          git commit -m "Tape Cats Shorts: ${{ steps.pick.outputs.show }} EN (X-native mp4, no YouTube upload)"
           git pull --rebase origin main || true
           git push origin HEAD:main

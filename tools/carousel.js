@@ -16,6 +16,10 @@ const path = require('path');
   const sq = await b.newPage({ viewport: { width: 1350, height: 1350 } });
   fs.mkdirSync('og/c', { recursive: true });
   for (const j of job.jobs) {
+    if (j.skip_stills || !j.files || !j.files.length) {
+      console.log('carousel stills skip', j.slot, j.lang);
+      continue;
+    }
     for (let i = 0; i < 4; i++) {
       await p.evaluate(([l, t, d, n, s]) => render(l, t, d, n, s), [j.lang, j.theme, j.date, i + 1, j.slides[i]]);
       await p.evaluate(async () => {

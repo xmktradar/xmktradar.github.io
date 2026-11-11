@@ -21,6 +21,7 @@ from share import (SHORT, SITE, LANGS, IG_BIO, IG_FOLLOW, attach_new_posts, clea
                     social_page, tags, trading_day, xlen)
 from sitedata import load, notice, now_hk, parse_iso, read_json, work, write_json
 from utm import normalize_file, tag_posts
+import video_signal
 
 HTML = 'index.html'
 SLOTS = (('1230', 7, ('12:30', '13:00', '13:30')),
@@ -32,7 +33,8 @@ TITLE = {'1230': {'zh': '今日快照', 'en': "Today's snapshot"},
          '2030': {'zh': '開市前焦點', 'en': 'Before the open'}}
 # Slots and languages that also get a motion video og/c/<day>-<slot>-<lang>.mp4 (tools/carousel_video.js, Tim 2026-10-24: 12:30 only).
 VIDEO_SLOTS = tuple(x for x in os.environ.get('VIDEO_SLOTS', '1230,1630').split(',') if x)  # Tape Take + Crowd Heat (Mon–Fri ET)
-# Stable show ids for YT+X bots (same mp4 path). Sat week-tape via VIDEO_SLOTS=sat or show key.
+# Stable show ids for the X-native short (same mp4 path). No YouTube upload.
+# Sat week-tape via VIDEO_SLOTS=sat or show key.
 SHOW_BY_SLOT = {'1230': 'tape-take', '1630': 'crowd-heat', 'sat': 'week-tape', 'week': 'week-tape'}
 
 def show_id(slot):
@@ -49,7 +51,10 @@ def video_missing(sl, key, now):
     before its first post (2026-10-27: the runner had no ffmpeg at 07:05, so no video all day)."""
     if key not in VIDEO_SLOTS or not isinstance(sl, dict):
         return False
-    h, m = map(int, next(t for k, _, t in SLOTS if k == key)[0].split(':'))
+    row = next((t for k, _, t in SLOTS if k == key), None)
+    if not row:
+        return False  # sat Week Tape has no picture clock
+    h, m = map(int, row[0].split(':'))
     if now.hour * 60 + now.minute >= h * 60 + m - 20:
         return False
     have = sl.get('video') or {}
@@ -541,6 +546,75 @@ def write_page(sp, path):
     open(path, 'w', encoding='utf-8').write(page)
 
 
+def _with_heat(st, site, now):
+    """Copy daily/weekly windows and attach carousel.heat() `now` for the rank tie-break."""
+    try:
+        rows = heat(site.d, now)
+    except Exception:
+        rows = []
+    out = dict(st)
+    for key in ('daily', 'weekly'):
+        window = st.get(key)
+        if isinstance(window, dict):
+            merged = dict(window)
+            merged['heat'] = rows
+            out[key] = merged
+    return out
+
+
+def _apply_video(job, key, day, decision):
+    """Stamp a picture job with beats, or mark it skipped. Skip writes no mp4 URL."""
+    show = show_id(key)
+    publishable = bool(decision.get('publishable'))
+    job['show'] = show
+    job['mode'] = decision.get('mode') or 'skip'
+    job['signal'] = {
+        'publishable': publishable,
+        'reason': decision.get('reason'),
+        'detail': decision.get('detail') or '',
+        'mode': decision.get('mode'),
+        'slot': key,
+        'show': show,
+        'date': day,
+        'lang': 'en',
+    }
+    if not publishable:
+        job['video_skip'] = True
+        job['publishable'] = False
+        video_signal.write_skip(job['signal'])
+        return False
+    # Names are already selected. TA runs here, before beats and VO. A fetch
+    # failure omits beat ②; it does not invent a fact and it does not skip the show.
+    try:
+        doc = video_signal.textbook_ta.publish_ta(decision)
+    except Exception:
+        video_signal.textbook_ta.log_ta_omit('*', 'yahoo_unavailable')
+        doc = {'tickers': []}
+    job['ta_facts'] = doc
+    job['beats'] = video_signal.script_beats(decision, facts=doc)
+    job['names'] = decision.get('names') or []
+    job['publishable'] = True
+    return True
+
+
+def _week_tape_job(st, day):
+    decision = video_signal.evaluate_slot('sat', st, date=day, lang='en')
+    names = decision.get('names') or []
+    lead = names[0]['t'] if names else ''
+    job = {
+        'slot': 'sat',
+        'theme': 'week',
+        'lang': 'en',
+        'date': day,
+        'show': 'week-tape',
+        'slides': [{'kind': 'cover', 'big': lead, 'sub': ''}] if lead else [],
+        'files': [],
+        'skip_stills': True,
+    }
+    _apply_video(job, 'sat', day, decision)
+    return decision, job
+
+
 def main():
     st = read_json(work('stats.json'))
     if not st:
@@ -565,6 +639,9 @@ def main():
     only = [x for x in os.environ.get('CAROUSEL_ONLY_SLOTS', '').split(',') if x]
     if only:
         todo = [k for k in todo if k in only]
+    # Saturday Week Tape is a motion job, not one of the three picture slots.
+    if 'sat' in VIDEO_SLOTS and (not only or 'sat' in only) and 'sat' not in todo:
+        todo.append('sat')
     if not todo:
         return
     # Slim homepages keep accounts and older posts in external files. full_data
@@ -577,9 +654,28 @@ def main():
     from share import window
     win = window(s)
     jobs, written = [], []
+    signal_stats = _with_heat(st, site, now)
     used = [s['top'][0]['t']] if s['top'] else []  # each slot leads with a different stock when it can
     used += [v['ticker'] for v in slots.values() if v.get('ticker')]
     for key in todo:
+        if key == 'sat':
+            decision, job = _week_tape_job(signal_stats, day)
+            jobs.append(job)
+            if decision.get('publishable'):
+                names = decision.get('names') or []
+                lead = names[0]['t'] if names else None
+                slots['sat'] = {
+                    'day': day, 'theme': 'week', 'ticker': lead,
+                    'title': {'zh': '本週最多人討論', 'en': 'Week Tape'},
+                    'made_hkt': now.strftime('%Y-%m-%d %H:%M'),
+                    'post_at': {'en': '12:00'},
+                    'story': False, 'platforms': ['x'], 'show': 'week-tape',
+                    'mode': decision.get('mode'), 'images': {},
+                    'video': {'en': f"{SITE}og/c/{video_stem(day, 'sat', 'en')}.mp4"},
+                    'video_cover': {'en': f"{SITE}og/c/{video_stem(day, 'sat', 'en')}-cover.jpg"},
+                }
+            written.append('sat')
+            continue
         if key == '1230':
             pick = None
         elif key == '1630':
@@ -631,14 +727,24 @@ def main():
         if key == '1230':
             slots[key]['stories'] = sp.get('stories', {})
         if key in VIDEO_SLOTS:  # tools/carousel_video_post.py drops a language whose file was not made
-            vlangs = [l for l in LANGS if l in VIDEO_LANGS]
-            slots[key]['show'] = show_id(key)  # tape-take | crowd-heat | week-tape
-            slots[key]['video'] = {l: f"{SITE}og/c/{video_stem(day, key, l)}.mp4" for l in vlangs}
-            slots[key]['video_cover'] = {l: f"{SITE}og/c/{video_stem(day, key, l)}-cover.jpg" for l in vlangs}
+            decision = video_signal.evaluate_slot(key, signal_stats, date=day, lang='en')
+            en_job = next((j for j in reversed(jobs) if j.get('slot') == key and j.get('lang') == 'en'), None)
+            publishable = bool(en_job and _apply_video(en_job, key, day, decision))
+            slots[key]['show'] = show_id(key)
+            slots[key]['mode'] = decision.get('mode') or 'skip'
+            if publishable:
+                vlangs = [l for l in LANGS if l in VIDEO_LANGS]
+                slots[key]['video'] = {l: f"{SITE}og/c/{video_stem(day, key, l)}.mp4" for l in vlangs}
+                slots[key]['video_cover'] = {l: f"{SITE}og/c/{video_stem(day, key, l)}-cover.jpg" for l in vlangs}
+            else:
+                slots[key].pop('video', None)
+                slots[key].pop('video_cover', None)
         written.append(key)
     if not jobs:
         return
     sp['slots'] = {k: slots[k] for k, _, _ in SLOTS if k in slots}
+    if 'sat' in slots:
+        sp['slots']['sat'] = slots['sat']
     sp.pop('pose_log', None)
     for key, sl in (sp.get('slots') or {}).items():
         if isinstance(sl, dict):

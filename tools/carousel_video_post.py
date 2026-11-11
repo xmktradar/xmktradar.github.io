@@ -76,7 +76,20 @@ def load_marker(mp4, exists=os.path.isfile):
     return data if isinstance(data, dict) else None
 
 
-def voiced_ok(mp4, exists=os.path.isfile, probe=None):
+def max_for_slot(key, sl=None):
+    """40s weekday and Saturday single. Week Tape hot-list may run about 60s (cap 75)."""
+    sl = sl or {}
+    show = str(sl.get('show') or '')
+    mode = str(sl.get('mode') or '')
+    week = str(key) in ('sat', 'week') or show == 'week-tape'
+    if week and mode != 'single':
+        return 75.0
+    if mode == 'hot-list':
+        return 75.0
+    return MAX_VIDEO_S
+
+
+def voiced_ok(mp4, exists=os.path.isfile, probe=None, cap=None):
     """True when mp4 exists, sidecar says vo:true, and ffprobe (if any) agrees."""
     if not mp4 or not exists(mp4):
         return False
@@ -92,7 +105,8 @@ def voiced_ok(mp4, exists=os.path.isfile, probe=None):
         dur = float(info['duration'])
     except (TypeError, ValueError, KeyError):
         return False
-    return dur <= MAX_VIDEO_S
+    limit = MAX_VIDEO_S if cap is None else cap
+    return dur <= limit
 
 
 def prune(sp, exists=os.path.isfile, probe=None):
@@ -108,10 +122,11 @@ def prune(sp, exists=os.path.isfile, probe=None):
             continue
         vid = sl.get('video')
         keep_video = {}
+        cap = max_for_slot(key, sl)
         if isinstance(vid, dict):
             for lang, url in vid.items():
                 path = local_path(url) if isinstance(url, str) else None
-                if path and voiced_ok(path, exists, probe):
+                if path and voiced_ok(path, exists, probe, cap):
                     keep_video[lang] = url
             if keep_video != vid:
                 changed = True

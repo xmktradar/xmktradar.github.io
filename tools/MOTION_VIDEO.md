@@ -164,10 +164,11 @@
 | Sun | OFF | — | — | — |
 
 Cover / VO sidecar share the stem: `*-cover.jpg`, `*.vo.json`.  
-`data/social-posts.json` → `slots.<slot>.show` + `slots.<slot>.video.en`（same URL）. YT Shorts bot + X 文案／① 讀同一檔。
+`data/social-posts.json` → `slots.<slot>.show` + `slots.<slot>.video.en`（same URL）. 新片只係 X。YouTube 頻道保留，呢個 workflow 唔上傳新片（冇 upload API、冇 `YOUTUBE_` token）。
 
 ### Duration
-**30–40s**（`MIN_VIDEO_S=30` `MAX_VIDEO_S=40`）。`BASE` beats `(12,12,14,14,12)` @ 124 BPM ≈ 31s silent；VO pads up. Over 40s → skip language（唔出片）.
+**30–40s** 平日同星期六單名（`MIN_VIDEO_S=30` `MAX_VIDEO_S=40`）。`BASE` beats `(12,12,14,14,12)` @ 124 BPM ≈ 31s silent；VO pads up. Over 40s → skip language（唔出片）.
+星期六 Week Tape 熱榜（2–5 個名）約 60 秒，上限 75 秒（`WEEK_MAX_VIDEO_S`），唔用 40 秒硬失敗。見文末「選片閘門同 Week Tape 熱榜」。
 
 ### Visual
 Cream `#FFF6EC` + Tape Cats 24 PNG（pose + talk + blink + nod）+ `CUE-TABLE.md` mouth／pose cues. Design: `design/shorts-maneki/`.
@@ -212,3 +213,61 @@ GitHub Actions: `.github/workflows/tape-cats-shorts.yml`（ET cron）＋ Update 
 
 ### 棄用（comic v4）
 - 8 段 hook／reveal／vs／s1–s4／outro、封面 17 格、「每日精選」封面文案、emoji／slam／shake／confetti／白閃，一律唔再用於新片。
+
+---
+
+## 選片閘門同 Week Tape 熱榜（2026-11-11）
+
+數字只可以嚟自官方 `tracked.accounts` 已經寫入 stats 嘅列（`top` / `split` / `bull` / `bear`）。唔發明專家、句引、或者價錢。TA 唔讀 `px/` 價格卡。
+
+### 選片閘門
+一個名要同時過晒先可以出鏡：討論帳號 `>= 3`、至少一條可引用嘅官方帖、唔係 0 看好 0 看淡、唔係空談。
+**split／fight** 只係 `is_split` 為真：兩邊都 `>= 2`、加總 `>= 5`、細邊／大邊 `>= 0.35`。5/4 同 68/51 係 split。99/1 唔係。8 看好／0 看淡有熱度可以選，角度係一面倒（one-sided），旁白講 lean，唔好叫 split 或者 fight。
+
+### Week Tape（星期六 `sat`）
+熱榜，一次一個名。唔係一場 split 對打片，亦唔係週表／recap。唔墊名。
+- **3–5** 個過閘：出熱榜，上限 5，入面每個都過閘。
+- **2** 個：出 2 個，唔墊到 5。
+- **1** 個：用平日單名結構，30–40 秒，唔墊成清單。
+- **0** 個（空，或者全部 0–0）：skip。
+
+### 平日（Tape Take／Crowd Heat）
+只出一個名，而且當日要有明確熱度龍頭，或者一個真正 split。一堆弱／溫和、冇龍頭：skip。最多人提嘅名如果係 0/0，唔好用佢做主角；當日有過閘嘅名（例如 QQQ 6/5，或者一面倒但夠熱）就出嗰個名。
+
+### 三拍同英文稿
+每個名：熱度 → ② 教科書技術分析（有先出）→ 官方帳號好淡。開頭同結尾係 hook／CTA。
+- Week Tape 熱榜 hook：`This week's most discussed stocks.`
+- 平日 hook：`$TICKER is the most discussed name on the tape today.`（讀名逐個字母）。只有真 split 先至 `The fight today is $TICKER.`
+- Week Tape 熱榜 CTA：`Which of these are you on — bull or bear?`
+- 平日 CTA：`Bull or bear on $TICKER?`
+英文旁白同三拍畫面唔放網站網址、唔叫 Follow、唔叫 Subscribe、唔講 `thecrowdtape dot com`。
+
+### ② 技術分析（先閘門，後一個事實；省略就唔出第②步）
+
+跟 textbook TA spec v1（2026-11-11 鎖定）。選股只用官方 `tracked.accounts`。TA 另拉 Yahoo 2 年日線 OHLCV，寫 `work/ta-bars.json`，唔改 `px/<TICKER>.json` 價格卡。事實寫 `work/ta-facts.json`（`spec: textbook-ta-v1`，每個 slot 一檔，帶 `as_of` 同 `fetched_hkt`）。
+
+閘門先決定 skip 定入選。過唔到：唔產可發佈 MP4，亦唔計 TA 去救。只有入選代號先計，每隻剛好一個事實，中咗就停。計唔到就省略第②步（①同③照出），log 一行 `ta_omit <ticker> <reason>`：`yahoo_unavailable`、`insufficient_bars`、`stale_bars`、`no_clear_fact`。唔發明價位。
+
+時區 America/New_York，只用已完成正規時段 K。Tape Take（12:30 ET）用上一個交易日；Crowd Heat（16:30 ET）當日已收市先用當日，否則用上一日；Week Tape 用最後一個已完成交易日。代號解析同 `update_prices.py`（手寫 override、`INDEX_SYMBOLS`、美股交易所精確配對）。節流約 0.3 秒。
+
+靠近係收市價距離該線 **≤ 1%**。1% 以外、又唔係剛穿越，就係仍在上或下。冇 1.5% 帶，亦冇 3% clear 帶。
+
+優先序：
+1. 剛失守／剛收復／剛突破：50-day、200-day，或一個支撐／阻力（要有 high/low；只有收市價就唔講）。「剛」＝最近 1–2 根已完成日線；Week Tape 只計最後一個交易日對上一日，再舊用 still。
+2. 靠近（≤ 1%）上述線或位。
+3. 仍在 50-day 或 200-day 之上或之下。兩條都得：較近一次穿越嗰條；否則 50-day；只有 200-day 清楚先用 200-day。
+4. RSI(14) Wilder，只係 ≥ 70 或 ≤ 30。
+5. MACD(12,26,9) 最近 1–3 根剛穿信號線。
+6. 結構：仍然較低高點或較高低點，或收市突破 60 日區間。唔自動命名頭肩頂、雙頂。
+7. 否則省略。
+
+口播同字幕只用 EN 句庫原句（模板有一個數字先填一個）。Week Tape 每隻 3–4 秒，口播唔唸 “This is not a trade signal.”，每個 TA 畫面加一行細字 “Not a trade signal.”。平日單名第②步 5–8 秒，事實加免責聲明仍然入到，先至可以喺口播末加 “This is not a trade signal.”。禁止 buy／sell／now、目標價、止蝕、should。
+
+### Skip
+閘門唔過：job 成功退出（exit 0），唔跑 ffmpeg。寫 `og/c/<day>-<show>-en.skip.json` 同／或 `work/video-status.json`，`publishable: false`。唔留可發佈 mp4、cover、`vo:true`、或者 yt sidecar。
+
+### 長度
+平日同星期六單名：30–40 秒，超過 40 秒唔出。Week Tape 熱榜：約 60 秒，上限 75 秒，唔用 40 秒硬失敗。
+
+### 發行
+新片只係 X。YouTube 頻道唔刪，但新片唔上傳（冇 upload API、冇 `YOUTUBE_` token）。Caption sidecar 如果測試仲要，只係檔案，唔係上傳。
