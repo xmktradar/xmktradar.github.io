@@ -1318,9 +1318,145 @@
      ],
      "bear": []
     }
+   },
+   "intraday_3": {
+    "post_et": "13:30",
+    "post_hkt": "02:30",
+    "generated_at": "2026-11-11T15:08:50-05:00",
+    "date": "2026-11-11",
+    "date_kst": "2026-11-12",
+    "quotes": {
+     "SPY": {
+      "price": 760.31,
+      "prev_close": 749.92,
+      "chg_pct": 1.39,
+      "time": "2026-11-11T15:08:47-05:00"
+     },
+     "QQQ": {
+      "price": 691.55,
+      "prev_close": 674.76,
+      "chg_pct": 2.49,
+      "time": "2026-11-11T15:08:48-05:00"
+     },
+     "DIA": {
+      "price": 524.315,
+      "prev_close": 521.73,
+      "chg_pct": 0.5,
+      "time": "2026-11-11T15:08:46-05:00"
+     },
+     "NVDA": {
+      "price": 174.95,
+      "prev_close": 168.7956,
+      "chg_pct": 3.65,
+      "time": "2026-11-11T15:08:50-05:00"
+     },
+     "INTC": {
+      "price": 62.54,
+      "prev_close": 58.13,
+      "chg_pct": 7.59,
+      "time": "2026-11-11T15:08:51-05:00"
+     },
+     "NBIS": {
+      "price": 156.83,
+      "prev_close": 134.0,
+      "chg_pct": 17.04,
+      "time": "2026-11-11T15:08:51-05:00"
+     },
+     "AMD": {
+      "price": 555.89,
+      "prev_close": 515.21,
+      "chg_pct": 7.9,
+      "time": "2026-11-11T15:08:52-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-11T15:08:52-05:00",
+     "hkt": "2026-11-12 04:08"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "NVDA",
+      "chg_pct": 3.65,
+      "bull": 2,
+      "bear": 1,
+      "accounts": [
+       "StockSavvyShay",
+       "Mr_Derivatives",
+       "OptionsMike"
+      ]
+     },
+     {
+      "ticker": "INTC",
+      "chg_pct": 7.59,
+      "bull": 1,
+      "bear": 1,
+      "accounts": [
+       "StockSavvyShay",
+       "TrendSpider",
+       "charliebilello"
+      ]
+     },
+     {
+      "ticker": "NBIS",
+      "chg_pct": 17.04,
+      "bull": 1,
+      "bear": 1,
+      "accounts": [
+       "StockSavvyShay",
+       "TrendSpider"
+      ]
+     },
+     {
+      "ticker": "AMD",
+      "chg_pct": 7.9,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "StockSavvyShay",
+       "aleabitoreddit",
+       "Beth_Kindig"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Early afternoon · As of 15:08 ET (04:08 HKT)\n\n$SPY +1.4% · $QQQ +2.5% · $DIA +0.5%\n\n$NVDA +3.6%, 2 accounts bullish on site\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #NVDA #INTC",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午后觀察 · 截至 15:08 ET（04:08 HKT）\n\n$SPY +1.4% · $QQQ +2.5% · $DIA +0.5%\n\n$NVDA +3.6%，網站 2 個帳號看好\n$INTC +7.6%，網站 1 個帳號看好\n$NBIS +17.0%，網站 1 個帳號看好\n$AMD +7.9%，網站 2 個帳號看好\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #NVDA #INTC",
+      "url": ""
+     },
+     "en": {
+      "text": "Early afternoon · As of 15:08 ET (04:08 HKT)\n\n$SPY +1.4% · $QQQ +2.5% · $DIA +0.5%\n\n$NVDA +3.6%, 2 accounts bullish on site\n$INTC +7.6%, 1 account bullish on site\n$NBIS +17.0%, 1 account bullish on site\n$AMD +7.9%, 2 accounts bullish on site\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #NVDA #INTC",
+      "url": ""
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "AMD",
+      "AMZN",
+      "LITE",
+      "ARM",
+      "SHOP"
+     ],
+     "bear": []
+    }
    }
   },
-  "generated_at": "2026-11-11T15:08:46-05:00",
+  "generated_at": "2026-11-11T15:08:50-05:00",
   "generated_hkt": "2026-11-12 04:08"
  }
 }
