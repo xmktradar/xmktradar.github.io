@@ -1,7 +1,7 @@
 """Write the tools pages from tools/toolspage.html (Chinese master).
 
 i18n/<lang>.json["toolspage"] maps each Chinese string to its translation.
-Writes tools/index.html (Chinese) and zh|en/tools/index.html, and lists
+Writes tools/index.html (thin redirect to /zh/tools/) and zh|en/tools/index.html, and lists
 the three language URLs in sitemap.xml.
 The IBKR card (data-region="ibkr") is omitted on the Korean page.
 Cards follow data/money-links.json: a card shows only when enabled AND it

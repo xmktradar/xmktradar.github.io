@@ -11,8 +11,10 @@ Korean (/ko/) was removed 2026-10-27; tools/ko_redirect.py sends old /ko/ links 
 - Parts wrapped in <!-- zh-only --> ... <!-- /zh-only --> in index.html stay on /zh/ only and are
   left out of /en/ (the Futu invite box: only Hong Kong residents can use it).
 - Every version gets <html lang>, canonical, hreflang, the language switch and absolute asset paths.
-- index.html itself gets the same switch and hreflang plus a script that sends visitors to the
-  version matching their browser language.
+- index.html itself gets the same switch and hreflang. On thecrowdtape.com and github.io it always
+  sends visitors to /zh/ (query and hash kept), not to a language-detected /en/. The hostname guard
+  leaves local previews on the master. GitHub Pages cannot emit a real HTTP 301; Engineering Lead
+  adds that at the edge. x-default hreflang is https://thecrowdtape.com/zh/.
 - The robot stock-picking page was deleted on 2026-10-27 (Tim). /robot.html, /zh/robot.html and /en/robot.html are
   kept as tiny noindex pages that send old links to /zh/ and /en/, and leave the sitemap.
 - Lighter pages: each version carries only the last LITE_DAYS of daily closes (plus the first one, for
@@ -134,7 +136,8 @@ def localize_news(html, lang):
 
 def lang_pick_js(storage_expr):
     """JS that sets `l` from localStorage, else referrer /en|/zh, else the browser language.
-    Unknown languages fall back to English. A stored "ko" (removed 2026-10-27) counts as unset."""
+    Unknown languages fall back to English. A stored "ko" (removed 2026-10-27) counts as unset.
+    Repo-root redirects do not call this. / and the unprefixed stubs always go to /zh/."""
     return (f'var l;try{{l={storage_expr}}}catch(_){{}}if(l!=="zh"&&l!=="en")l=0;'
             'if(!l){var r=document.referrer||"",m=r.match(/\/(zh|en)(?:\/|$)/);if(m)l=m[1]}'
             'if(!l){var n=(navigator.languages||[navigator.language||""]).join(",").toLowerCase();'
@@ -142,31 +145,59 @@ def lang_pick_js(storage_expr):
 
 
 def root_redirect_script(segment):
-    """Script for a repo-root Chinese subpage. On the live hosts, go to /<lang>/<segment>/."""
+    """Hostname-guarded location.replace straight to /zh/<segment>/ (query and hash kept).
+
+    GitHub Pages cannot emit a real HTTP 301. This script is the live-host half of the
+    repo-side stand-in used by with_root_redirect. A true HTTP 301 has to be added at
+    the edge by Engineering Lead. Do not add wrangler, _redirects, or Cloudflare files.
+    """
     seg = segment.strip('/')
-    if not re.fullmatch(r'[a-z]+', seg):
+    if not re.fullmatch(r'[a-z]+(?:/[a-z]+)*', seg):
         raise ValueError(segment)
     return ('<script>(function(){if(!/(github\\.io|thecrowdtape\\.com)$/.test(location.hostname))return;'
-            + lang_pick_js('localStorage.getItem("ct-lang")')
-            + f'location.replace("/"+l+"/{seg}/"+location.search+location.hash)'
-            + '})();</script>')
+            f'location.replace("/zh/{seg}/"+location.search+location.hash)'
+            '})();</script>')
 
 
-def with_root_redirect(html, segment):
-    """Insert the root redirect before </head>. Language copies are left alone."""
-    script = root_redirect_script(segment)
-    if '</head>' not in html:
-        raise ValueError('no </head> in ' + segment)
-    return html.replace('</head>', script + '</head>', 1)
+def with_root_redirect(_html, segment):
+    """Thin repo-root document that always goes to /zh/<segment>/.
+
+    Callers still pass the full Chinese page. That body is not written at the
+    repo-root path: the full page stays only under /zh/ and /en/. Every caller
+    (about, tools, support, advertise, newsletter, earnings, checklist/earnings)
+    gets this always-/zh/ stub. There is no language detect to /en/.
+
+    GitHub Pages cannot emit a real HTTP 301. The stub is the repo-side stand-in:
+    hostname-guarded location.replace (query and hash kept), a meta refresh, and
+    rel=canonical to the Chinese URL. A true HTTP 301 has to be added at the edge
+    by Engineering Lead. Do not add wrangler, _redirects, or Cloudflare files.
+    """
+    seg = segment.strip('/')
+    script = root_redirect_script(seg)
+    target = f'/zh/{seg}/'
+    url = f'{SITE}zh/{seg}/'
+    return (
+        '<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8">'
+        '<meta name="viewport" content="width=device-width,initial-scale=1">'
+        '<meta name="robots" content="noindex">'
+        f'<link rel="canonical" href="{url}">'
+        f'<meta http-equiv="refresh" content="0;url={target}">'
+        '<title>The Crowd Tape</title>'
+        f'{script}</head>'
+        f'<body><p><a href="{target}">The Crowd Tape</a></p></body></html>\n')
 
 
 def head_tags(cur):
-    # Root (/) keeps zh-Hant-HK content for no-JS crawlers; canonical points at /zh/.
-    # Live browsers on thecrowdtape.com/github.io are redirected by language (default en).
-    # Sitemap omits the bare root (see tools/sitemap_lastmod.py). x-default hreflang stays /.
+    # Root (/) stays the Chinese master (build_langs.py reads it; no-JS crawlers still see it).
+    # Canonical is /zh/. On thecrowdtape.com and github.io the master always location.replace's
+    # to /zh/ (query and hash kept), not a language detect. The hostname guard leaves local
+    # previews on the master. GitHub Pages cannot emit a real HTTP 301; Engineering Lead adds
+    # that at the edge. x-default hreflang is /zh/ on /, /zh/ and /en/.
+    # Sitemap omits the bare root (see tools/sitemap_lastmod.py). Homepage sitemap rows have
+    # no x-default; do not add one.
 
     alt = ''.join(f'<link rel="alternate" hreflang="{LANGS[k][0]}" href="{SITE}{k}/">' for k in LANGS)
-    alt += f'<link rel="alternate" hreflang="x-default" href="{SITE}">'
+    alt += f'<link rel="alternate" hreflang="x-default" href="{SITE}zh/">'
     canon = f'<link rel="canonical" href="{SITE}{cur or "zh"}/">'
     js = ('<script>(function(){var k="ct-lang";document.addEventListener("click",function(e){'
           'var a=e.target.closest&&e.target.closest(".lang-sw a");if(!a)return;'
@@ -176,17 +207,16 @@ def head_tags(cur):
           'new MutationObserver(function(){var d=document.getElementById("dive"),n=document.querySelector("header .lang-sw");'
           'if(d&&n&&!d.querySelector(".lang-sw"))d.insertBefore(n.cloneNode(true),d.firstChild)})'
           '.observe(document.documentElement,{childList:true,subtree:true})')
-    if cur in LANGS:  # remember the page language so root /about/ etc. follow EN/ZH context
+    if cur in LANGS:  # remember the page language (the switch writes ct-lang; other pages read it)
         js += f';try{{localStorage.setItem(k,"{cur}")}}catch(_){{}}'
-    if cur is None:  # root master: detect a language, rewrite relative subpage links, then redirect on the live hosts
-        js += (';' + lang_pick_js('localStorage.getItem(k)')
-               + ';function ctFixRoot(root){(root||document).querySelectorAll("a[href]").forEach(function(a){'
+    if cur is None:  # root master: on the live hosts always go to /zh/ (not a language detect)
+        js += (';function ctFixRoot(root){(root||document).querySelectorAll("a[href]").forEach(function(a){'
                'var h=a.getAttribute("href")||"";'
-               'if(/^(tools|support|about|advertise|newsletter|earnings)\\//.test(h))a.setAttribute("href","/"+l+"/"+h)})}'
+               'if(/^(tools|support|about|advertise|newsletter|earnings)\\//.test(h))a.setAttribute("href","/zh/"+h)})}'
                'document.addEventListener("DOMContentLoaded",function(){ctFixRoot(document)});'
                'new MutationObserver(function(){ctFixRoot(document)}).observe(document.documentElement,{childList:true,subtree:true});'
                'if(!/(github\\.io|thecrowdtape\\.com)$/.test(location.hostname))return;'
-               'location.replace("/"+l+"/"+location.search+location.hash)')
+               'location.replace("/zh/"+location.search+location.hash)')
     js += '})();</script>'
     return f'{MARK}{canon}{alt}<style>{SWITCH_CSS}</style>{js}{MARK}'
 

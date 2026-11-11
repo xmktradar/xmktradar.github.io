@@ -7,7 +7,7 @@ The unsubscribe line and any {{...}} placeholders are dropped. The rest of the
 issue text is kept verbatim. $TICKER links to /en/stock/<T>/ only when that
 page exists. @handle links to https://x.com/<handle>.
 
-Writes newsletter/index.html (Chinese), zh|en/newsletter/index.html, and
+Writes newsletter/index.html (thin redirect to /zh/newsletter/), zh|en/newsletter/index.html, and
 newsletter/<slug>/index.html. Sitemap: three language archive URLs plus each issue.
 """
 import html

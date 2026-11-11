@@ -55,13 +55,13 @@ test('homepage, about, support, tools, stock and embed pages load the fonts', ()
   const pages = [
     'index.html', '404.html',
     'zh/index.html', 'en/index.html',
-    'about/index.html', 'zh/about/index.html', 'en/about/index.html',
-    'support/index.html', 'zh/support/index.html', 'en/support/index.html',
-    'tools/index.html', 'zh/tools/index.html', 'en/tools/index.html',
-    'newsletter/index.html', 'zh/newsletter/index.html', 'en/newsletter/index.html',
-    'checklist/earnings/index.html', 'zh/checklist/earnings/index.html', 'en/checklist/earnings/index.html',
+    'zh/about/index.html', 'en/about/index.html',
+    'zh/support/index.html', 'en/support/index.html',
+    'zh/tools/index.html', 'en/tools/index.html',
+    'zh/newsletter/index.html', 'en/newsletter/index.html',
+    'zh/checklist/earnings/index.html', 'en/checklist/earnings/index.html',
     'newsletter/issue-1/index.html',
-    'advertise/index.html', 'zh/advertise/index.html', 'en/advertise/index.html',
+    'zh/advertise/index.html', 'en/advertise/index.html',
     'zh/embed/index.html', 'en/embed/index.html',
     'tools/about.html', 'tools/support.html', 'tools/toolspage.html', 'tools/newsletter.html', 'tools/checklist.html', 'tools/advertise.html',
     'tools/embed.js', 'tools/newsletter.py', 'tools/page404.py',
@@ -74,17 +74,17 @@ test('homepage, about, support, tools, stock and embed pages load the fonts', ()
     assert.ok(name, 'no stock page under ' + lang);
     pages.push(`${lang}/stock/${name}/index.html`);
   }
-  const card = fs.readdirSync(path.join(ROOT, 'embed')).find(f => f.endsWith('.html'));
+  const card = fs.readdirSync(path.join(ROOT, 'embed')).find(f => f.endsWith('.html') && f !== 'index.html');
   assert.ok(card, 'no embed card');
   pages.push('embed/' + card);
   for (const file of pages) assertFonts(file);
 });
 
 test('about, support and tools numbers use --f-data', () => {
-  for (const file of ['tools/about.html', 'about/index.html', 'en/about/index.html', 'tools/support.html', 'support/index.html', 'tools/toolspage.html', 'tools/index.html', 'en/tools/index.html']) {
+  for (const file of ['tools/about.html', 'zh/about/index.html', 'en/about/index.html', 'tools/support.html', 'zh/support/index.html', 'tools/toolspage.html', 'zh/tools/index.html', 'en/tools/index.html']) {
     const s = fs.readFileSync(path.join(ROOT, file), 'utf8');
     assert.match(s, /\.n,\.count b\{[^}]*font-family:var\(--f-data\)/, file);
   }
-  assert.match(fs.readFileSync(path.join(ROOT, 'advertise/index.html'), 'utf8'), /\.stats b\{[^}]*font-family:var\(--f-data\)/);
-  assert.match(fs.readFileSync(path.join(ROOT, 'newsletter/index.html'), 'utf8'), /\.issues \.dates\{[^}]*font-family:var\(--f-data\)/);
+  assert.match(fs.readFileSync(path.join(ROOT, 'zh/advertise/index.html'), 'utf8'), /\.stats b\{[^}]*font-family:var\(--f-data\)/);
+  assert.match(fs.readFileSync(path.join(ROOT, 'zh/newsletter/index.html'), 'utf8'), /\.issues \.dates\{[^}]*font-family:var\(--f-data\)/);
 });

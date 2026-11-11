@@ -13,6 +13,7 @@ from urllib.parse import unquote
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import advertise  # noqa: E402
+from build_langs import with_root_redirect  # noqa: E402
 
 ROOT = advertise.ROOT
 HAN = advertise.HAN
@@ -128,7 +129,14 @@ def test_real_pages():
         disk = open(os.path.join(ROOT, lang, 'advertise', 'index.html'), encoding='utf-8').read()
         assert disk == rendered[lang], lang + ' advertise/index.html is stale; run python3 tools/advertise.py'
     root = open(os.path.join(ROOT, 'advertise', 'index.html'), encoding='utf-8').read()
-    assert root == rendered['zh']
+    stub = with_root_redirect(rendered['zh'], 'advertise')
+    assert root == stub, 'advertise/index.html should be the thin /zh/advertise/ redirect'
+    assert '每月訪客' not in root
+    assert 'location.replace("/zh/advertise/"+location.search+location.hash)' in root
+    assert '/"+l+"/' not in root
+    assert 'navigator.language' not in root
+    assert 'rel="canonical" href="https://thecrowdtape.com/zh/advertise/"' in root
+    assert 'http-equiv="refresh" content="0;url=/zh/advertise/"' in root
     assert '待更新' not in advertise.load_template()
     assert 'Stripe' not in advertise.load_template()
 

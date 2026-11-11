@@ -3,6 +3,10 @@
 //    Type comes from the Google Fonts stylesheet (the same families as the site).
 //    Counts = the stock page's stance mix (each account's latest view in the 28-day window, same rule as the site).
 //  - /<lang>/embed/: how-to page with the copy-paste <iframe> code, fully in that language.
+//  - /embed/ (embed/index.html): thin stub to /zh/embed/, from rootStub(). Not a ticker card.
+//    stock_pages.js writes it on the embed pass and must not delete it. GitHub 管理員 should
+//    keep running that step. GitHub Pages cannot emit a real HTTP 301; Engineering Lead adds
+//    that at the edge. Do not add wrangler, _redirects, or Cloudflare files.
 // Every link out of the badge carries utm_source=embed&utm_medium=widget&utm_campaign=badge.
 const SITE = 'https://thecrowdtape.com/';
 const UTM = 'utm_source=embed&utm_medium=widget&utm_campaign=badge';
@@ -85,4 +89,21 @@ ${code}
 `;
 }
 
-module.exports = { card, howto, UTM };
+function rootStub() {
+  // Same stand-in as tools/build_langs.py with_root_redirect: hostname-guarded
+  // location.replace (query and hash kept), meta refresh, canonical to /zh/embed/.
+  // How-to hreflang (including x-default=/en/embed/) stays on the language pages.
+  const target = '/zh/embed/';
+  const url = `${SITE}zh/embed/`;
+  return `<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8">`
+    + `<meta name="viewport" content="width=device-width,initial-scale=1">`
+    + `<meta name="robots" content="noindex">`
+    + `<link rel="canonical" href="${url}">`
+    + `<meta http-equiv="refresh" content="0;url=${target}">`
+    + `<title>The Crowd Tape</title>`
+    + `<script>(function(){if(!/(github\\.io|thecrowdtape\\.com)$/.test(location.hostname))return;`
+    + `location.replace("${target}"+location.search+location.hash)})();</script></head>`
+    + `<body><p><a href="${target}">The Crowd Tape</a></p></body></html>\n`;
+}
+
+module.exports = { card, howto, rootStub, UTM };

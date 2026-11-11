@@ -1,7 +1,9 @@
 """Earnings briefs, step 2: static pages from data/earnings/co/*.json (written by tools/earnings_data.py).
 
 Writes /zh/earnings/<T>/ and /en/earnings/<T>/ (5 chapters: results vs estimates, growth, revenue lines, margins,
-cash flow), the list pages /zh/earnings/ and /en/earnings/ (last 30 days, next 14 days, all companies), a link on
+cash flow), the list pages /zh/earnings/ and /en/earnings/ (last 30 days, next 14 days, all companies).
+Repo-root /earnings/ is a thin always-/zh/earnings/ redirect (GitHub Pages cannot emit HTTP 301;
+Engineering Lead adds that at the edge). Also writes a link on
 each stock page /<lang>/stock/<T>/ that has a brief, a link row on the homepages, and the sitemap rows.
 Pages of companies that left the list are deleted. Readable without JavaScript. No AI: every number comes from
 SEC filings or Yahoo Finance, with the source named on the page. Run after tools/stock_pages.js.

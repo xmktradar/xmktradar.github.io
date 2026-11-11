@@ -8,7 +8,7 @@ comes from the cron in .github/workflows/update-site.yml (GitHub cron is UTC;
 Hong Kong is UTC+8). When that clock matches the FAQ answer, the FAQ wording
 is used as-is.
 
-Writes about/index.html (Chinese) and zh|en/about/index.html, and lists
+Writes about/index.html (thin redirect to /zh/about/) and zh|en/about/index.html, and lists
 the three language URLs in sitemap.xml.
 """
 import html
