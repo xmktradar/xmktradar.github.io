@@ -1,19 +1,19 @@
 {
  "note": "Written by GitHub Actions on every update. Actions Site Check reads this.",
- "checked_hkt": "2026-11-12 02:16",
- "generated_hkt": "2026-11-12 01:52",
- "cutoff_hkt": "2026-11-11T08:44:13+08:00",
- "posts_on_site": 5895,
- "added_this_run": 0,
+ "checked_hkt": "2026-11-12 06:14",
+ "generated_hkt": "2026-11-12 05:49",
+ "cutoff_hkt": "2026-11-12T01:51:03+08:00",
+ "posts_on_site": 5818,
+ "added_this_run": 16,
  "added_without_en_summary": 0,
- "waiting_for_summary": 1334,
- "waiting_with_stock": 609,
+ "waiting_for_summary": 918,
+ "waiting_with_stock": 484,
  "expired_unsummarised_this_run": 0,
- "chitchat_skipped_this_run": 1615,
- "pruned_this_run": 11,
+ "chitchat_skipped_this_run": 1205,
+ "pruned_this_run": 65,
  "fetch_failed": [],
  "warnings": [
-  "未分析：1334 則新帖等待 Grok 分析"
+  "未分析：918 則新帖等待 Grok 分析"
  ],
  "writeups_applied": [
   "zh/daily 2026-11-11",
@@ -44,6 +44,11 @@
    "briefing": "2026-11-11"
   }
  },
- "layout_warnings": [],
- "layout_checked_hkt": "2026-11-12 02:19"
+ "layout_warnings": [
+  "zh 1280px：今日重點卡有 0 張（應該 3 張）",
+  "zh 390px：今日重點卡有 0 張（應該 3 張）",
+  "en 1280px：今日重點卡有 0 張（應該 3 張）",
+  "en 390px：今日重點卡有 0 張（應該 3 張）"
+ ],
+ "layout_checked_hkt": "2026-11-12 06:19"
 }
