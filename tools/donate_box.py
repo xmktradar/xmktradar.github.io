@@ -26,13 +26,29 @@ CSS = ('.ct-donate{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;b
        '.ct-donate a{flex:0 0 auto;display:inline-block;padding:8px 16px;border-radius:999px;background:var(--accent,#a5672c);'
        'color:#fff!important;font-weight:600;text-decoration:none;white-space:nowrap}'
        '.ct-donate.k-stock{margin:16px}')
+# Earnings only. The shared `.ct-donate a` rule paints every anchor as the pill button, so the QR link opts out.
+CSS_QR = ('.ct-donate .ct-donate-pay{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;flex:0 1 auto;min-width:0}'
+          '.ct-donate a.ct-donate-qr{flex:0 0 auto;display:block;padding:0;background:transparent!important;border-radius:8px;'
+          'line-height:0;white-space:normal}'
+          '.ct-donate a.ct-donate-qr img{display:block;width:120px;height:120px;max-width:100%;background:#fff;'
+          'border:1px solid var(--line,#e3e3e8);border-radius:8px;padding:4px;box-sizing:border-box}'
+          '@media(max-width:480px){.ct-donate .ct-donate-pay{flex:1 1 100%}.ct-donate a.ct-donate-qr img{width:140px;height:140px}}')
+QR_ALT = {'zh': 'PayPal 捐贈 QR code', 'en': 'PayPal donation QR code'}
 
 
 def box(lang, kind):
     msg, btn = TEXT[lang]
     click = ("if(window.gtag)gtag('event','donate_click',{method:'paypal',page:'%s',lang:'%s'})" % (kind, lang))
-    return (f'{OPEN}<style>{CSS}</style><aside class="ct-donate k-{kind}" aria-label="{btn}"><p>{msg}</p>'
-            f'<a href="{PAYPAL}" target="_blank" rel="noopener" onclick="{click}">{btn}</a></aside>{CLOSE}')
+    link = f'<a href="{PAYPAL}" target="_blank" rel="noopener" onclick="{click}">{btn}</a>'
+    css = CSS
+    if kind == 'earnings':
+        css = CSS + CSS_QR
+        link = (f'<span class="ct-donate-pay">{link}'
+                f'<a class="ct-donate-qr" href="{PAYPAL}" target="_blank" rel="noopener" onclick="{click}">'
+                f'<img src="/assets/donate/paypal.png" alt="{QR_ALT[lang]}" width="120" height="120" '
+                f'loading="lazy" decoding="async"></a></span>')
+    return (f'{OPEN}<style>{css}</style><aside class="ct-donate k-{kind}" aria-label="{btn}"><p>{msg}</p>'
+            f'{link}</aside>{CLOSE}')
 
 
 def anchor_at(html, kind):

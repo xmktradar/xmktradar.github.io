@@ -291,27 +291,69 @@ def news_cta(lang, src):
     )
 
 
-def aff_optionstrat(lang):
-    """One end-of-article OptionStrat module (earnings / options-oriented)."""
-    url = ('https://optionstrat.com/thecrowdtape'
-           '?utm_source=thecrowdtape&utm_medium=article&utm_campaign=optionstrat')
-    if lang == 'zh':
-        title = '想睇呢個結構嘅損益圖？用 OptionStrat 試'
-        note = '聯盟連結；你無需多付。佣金不影響好淡統計。'
-        btn = '打開 OptionStrat'
-    else:
-        title = 'Want to map this payoff visually? Try OptionStrat'
-        note = 'Affiliate link; you pay nothing extra. Commission does not affect bull/bear stats.'
-        btn = 'Open OptionStrat'
+# End-of-article cards. URLs are the existing site links; do not add UTM except OptionStrat's article campaign.
+TV_URL = 'https://www.tradingview.com/?aff_id=1172819'
+SR_URL = 'https://www.stockrover.com/thecrowdtape'
+OS_URL = ('https://optionstrat.com/thecrowdtape'
+          '?utm_source=thecrowdtape&utm_medium=article&utm_campaign=optionstrat')
+# Same invite href as homepage #promo .promo-btn / the 富途開戶禮遇 tile. ZH only.
+FUTU_URL = ('https://invest.futuhk.com/invite-centre_share?lang=zh-hk'
+            '&invite_code=MMKAXKFN&inviter=15056112&channel=1287&subchannel=1'
+            '&global_content=%7B%22promote_content%22%3A%2230%22%2C%22promote_id%22%3A16069'
+            '%2C%22promote_type%22%3A1%2C%22sub_promote_id%22%3A14%2C%22invite%22%3A15056112%7D')
+AFF_NOTE = {
+    'zh': '聯盟連結；你無需多付。佣金不影響好淡統計。',
+    'en': 'Affiliate link; you pay nothing extra. Commission does not affect bull/bear stats.',
+}
+# Homepage #promo note. A brokerage invite, so it does not reuse the commission sentence.
+FUTU_NOTE = '推廣連結：透過此連結開戶，我們可能會獲得獎勵；優惠詳情與條款以富途官網為準。'
+
+
+def aff_card(lang, tool, url, title, btn, note):
+    """One end-of-article card. Same markup as the original OptionStrat module."""
+    tag = '聯盟推廣' if lang == 'zh' else 'Affiliate'
     return (
-        f'<aside class="aff-article ch" data-tool="optionstrat" style="padding:16px 18px;'
+        f'<aside class="aff-article ch" data-tool="{tool}" style="padding:16px 18px;'
         f'border:1px dashed var(--line);border-radius:16px;background:var(--surface)">'
         f'<p style="margin:0 0 6px;font-weight:700">{E(title)} '
-        f'<span class="aff-tag">{"聯盟推廣" if lang=="zh" else "Affiliate"}</span></p>'
+        f'<span class="aff-tag">{tag}</span></p>'
         f'<p style="margin:0 0 10px;font-size:13.5px;color:var(--muted)">{E(note)}</p>'
         f'<a class="tool-btn" href="{E(url)}" rel="sponsored nofollow noopener" target="_blank" '
-        f'data-tool="optionstrat" data-placement="article">{E(btn)}</a></aside>'
+        f'data-tool="{tool}" data-placement="article">{E(btn)}</a></aside>'
     )
+
+
+def aff_cards(lang):
+    """TradingView, Stock Rover, OptionStrat, and (ZH only) the Futu invite."""
+    note = AFF_NOTE[lang]
+    if lang == 'zh':
+        rows = [
+            ('tradingview', TV_URL, '看完好淡，打開圖表驗證', '打開 TradingView', note),
+            ('stockrover', SR_URL, '人人看好？先看估值與基本面', '打開 Stock Rover', note),
+            ('optionstrat', OS_URL, '想睇呢個結構嘅損益圖？用 OptionStrat 試', '打開 OptionStrat', note),
+            ('futu', FUTU_URL, '香港用戶開美股戶口迎新優惠', '去富途開戶', FUTU_NOTE),
+        ]
+    else:
+        rows = [
+            ('tradingview', TV_URL, 'Saw the bull/bear tally? Check the chart', 'Open TradingView', note),
+            ('stockrover', SR_URL, 'Everyone bullish? Check valuation and fundamentals first', 'Open Stock Rover', note),
+            ('optionstrat', OS_URL, 'Want to map this payoff visually? Try OptionStrat', 'Open OptionStrat', note),
+        ]
+    return '\n'.join(aff_card(lang, *row) for row in rows)
+
+
+def aff_listeners():
+    """affiliate_click for the three tools; promo_click for Futu. No-ops when the link is absent."""
+    ev = "gtag('event','affiliate_click',{tool:'%s',page:'earnings',placement:a.dataset.placement||'',lang:document.documentElement.lang})"
+    tv = ("document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*=\"tradingview.com\"]');"
+          "if(!a||!window.gtag||a.closest('.tradingview-widget-copyright'))return;" + ev % 'tradingview' + ";});")
+    sr = ("document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*=\"stockrover.com\"]');"
+          "if(!a||!window.gtag)return;" + ev % 'stockrover' + ";});")
+    os_ = ("document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*=\"optionstrat.com\"]');"
+           "if(!a||!window.gtag)return;" + ev % 'optionstrat' + ";});")
+    fu = ("document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*=\"futuhk.com\"]');"
+          "if(a&&window.gtag)gtag('event','promo_click',{link_domain:'futuhk.com'});});")
+    return ''.join(f'<script>{s}</script>\n' for s in (tv, sr, os_, fu))
 
 
 def shell(lang, title, desc, canon_path, body, alt_paths=None, ld=None):
@@ -350,7 +392,7 @@ def shell(lang, title, desc, canon_path, body, alt_paths=None, ld=None):
 </main>
 <footer class="site-foot"><p><a href="/{lang}/">{t['home']}</a> · <a href="/{lang}/earnings/">{t['all_briefs']}</a> · <a href="/{lang}/checklist/earnings/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=earnings_footer">{'財報清單' if lang == 'zh' else 'Earnings checklist'}</a> · <a href="/{lang}/newsletter/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=earnings_footer">{'電子報' if lang == 'zh' else 'Newsletter'}</a> · <a href="/{lang}/support/">{'支持我們' if lang == 'zh' else 'Support us'}</a></p></footer>
 </div>
-</body>
+{aff_listeners()}</body>
 </html>
 """
 
@@ -515,7 +557,7 @@ def brief_page(co, lang, stamp, has_stock):
         parts.append(f'<p class="note">{E(t["pending"](p["q"], eps_s(p["eps_act"]), eps_s(p["eps_est"]) if p.get("eps_est") is not None else ""))}</p>')
     parts += [chap1(co, lang), chap2(co, lang), chap3(co, lang), chap4(co, lang), chap5(co, lang)]
     parts.append(news_cta(lang, f'earnings-{tk}'))
-    parts.append(aff_optionstrat(lang))
+    parts.append(aff_cards(lang))
     parts.append(f'<p class="small">{E(t["source"](co["latest"].get("filed") or "—"))} {t["updated"]} {stamp} HKT</p>')
     parts.append(f'<p><a href="/{lang}/earnings/">← {E(t["back"])}</a></p>')
     ld = {'@context': 'https://schema.org', '@type': 'Article', 'headline': title[:110], 'description': desc,
