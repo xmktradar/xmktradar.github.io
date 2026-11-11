@@ -8,7 +8,7 @@ humanize(text, lang, kind) makes one caption follow the house rules:
     The Crowd Tape so people can search for it
   - no emoji bullets and no 👉 ☕ 🙏; at most 2 emoji in the whole caption
   - one short disclaimer line
-  - at most 3 hashtags: one general tag plus at most 2 tickers, on the last line
+  - at most 3 hashtags: one general tag plus at most 2 tickers, on the last line; mid-body / mid-quote hashtags are demoted to plain words so only those footer tags remain
   - zh is standard written Chinese (Mandarin), Traditional characters, not Cantonese
 
 kind 'post' adds the brand and disclaimer lines, 'comment' (a first comment) only strips links and
@@ -159,6 +159,12 @@ def _clean_line(ln, lang):
     s = DROP_EMOJI.sub('', s)
     s = LEAD_EMOJI.sub('', s)
     s = re.sub(r'[ \t]{2,}', ' ', s).strip()
+    # Standalone and trailing tags were lifted in _body. Anything left is mid-body / mid-quote.
+    # Repeat so ##Quad4 (TAG_RE matches the second #) does not survive to fail the ≤3 count.
+    prev = None
+    while prev != s:
+        prev = s
+        s = TAG_RE.sub(lambda m: m.group(0)[1:], s)
     if had_link:
         s = re.sub(r'[\s:：→»>-]+$', '', s).strip()
         bare = re.sub(r'[\s\W_]+', '', s)
