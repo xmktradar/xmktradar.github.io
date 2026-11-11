@@ -293,6 +293,80 @@ def test_predecessor_history():
     assert not ed.same_name('Donnelley Financial', 'ExxonMobil Holdings')
 
 
+def test_affiliate_cards_and_paypal_qr():
+    """End-of-article cards on every ticker brief, PayPal QR on the earnings donate box only."""
+    import glob
+    import html
+    import re
+    import earnings_pages as ep
+    import donate_box as db
+
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    home = open(os.path.join(root, 'index.html'), encoding='utf-8').read()
+    promo = re.search(r'class="promo-btn" href="([^"]+)"', home)
+    assert promo and html.unescape(promo.group(1)) == ep.FUTU_URL
+    assert 'invite_code=MMKAXKFN' in ep.FUTU_URL
+    os_href = html.escape(ep.OS_URL, quote=True)
+    listeners = ep.aff_listeners().strip()
+
+    for lang, tools in (('zh', ('tradingview', 'stockrover', 'optionstrat', 'futu')),
+                        ('en', ('tradingview', 'stockrover', 'optionstrat'))):
+        page = ep.brief_page(fixture_co(), lang, '2026-10-27 20:00', False)
+        assert page.count('class="aff-article') == len(tools)
+        for tool in tools:
+            assert f'data-tool="{tool}"' in page and 'data-placement="article"' in page
+        assert f'href="{ep.TV_URL}"' in page
+        assert f'href="{ep.SR_URL}"' in page and f'href="{ep.SR_URL}?' not in page
+        assert os_href in page and 'utm_medium=home' not in page
+        assert listeners in page
+        assert "tool:'tradingview',page:'earnings'" in page
+        assert "tool:'stockrover',page:'earnings'" in page
+        assert "tool:'optionstrat',page:'earnings'" in page
+        assert "gtag('event','promo_click',{link_domain:'futuhk.com'})" in page
+        assert '.tradingview-widget-copyright' in page
+        if lang == 'zh':
+            assert 'invite_code=MMKAXKFN' in page and '去富途開戶' in page
+            assert '看完好淡，打開圖表驗證' in page and '人人看好？先看估值與基本面' in page
+        else:
+            assert 'data-tool="futu"' not in page and 'MMKAXKFN' not in page
+            assert 'Saw the bull/bear tally? Check the chart' in page
+            assert 'Everyone bullish? Check valuation and fundamentals first' in page
+        listed = ep.list_page([fixture_co()], lang, '2026-10-27 20:00')
+        assert 'aff-article' not in listed and 'data-tool="tradingview"' not in listed
+
+    for lang, kind in (('zh', 'stock'), ('en', 'account'), ('zh', 'earnings'), ('en', 'earnings')):
+        boxed = db.box(lang, kind)
+        assert db.PAYPAL in boxed and '3KT8QNVNRWJMA' in boxed
+        if kind == 'earnings':
+            assert '/assets/donate/paypal.png' in boxed and db.QR_ALT[lang] in boxed
+            assert boxed.count(db.PAYPAL) == 2
+            assert f"page:'earnings',lang:'{lang}'" in boxed
+        else:
+            assert 'paypal.png' not in boxed and 'ct-donate-qr' not in boxed
+
+    for lang, ntools in (('zh', 4), ('en', 3)):
+        files = glob.glob(os.path.join(root, lang, 'earnings', '*', 'index.html'))
+        assert len(files) > 200, lang
+        for f in files:
+            s = open(f, encoding='utf-8').read()
+            assert s.count('class="aff-article') == ntools, f
+            assert f'href="{ep.TV_URL}"' in s and f'href="{ep.SR_URL}"' in s
+            assert f'href="{ep.SR_URL}?' not in s and os_href in s
+            assert '/assets/donate/paypal.png' in s and db.PAYPAL in s and 'ct-donate-qr' in s
+            assert listeners in s and s.count("tool:'tradingview'") == 1
+            if lang == 'zh':
+                assert 'invite_code=MMKAXKFN' in s and 'data-tool="futu"' in s
+            else:
+                assert 'data-tool="futu"' not in s and 'MMKAXKFN' not in s
+    for rel in ('zh/earnings/index.html', 'en/earnings/index.html'):
+        s = open(os.path.join(root, rel), encoding='utf-8').read()
+        assert 'aff-article' not in s and 'paypal.png' not in s and 'data-tool="futu"' not in s
+    stock = open(os.path.join(root, 'zh/stock/AAPL/index.html'), encoding='utf-8').read()
+    account = open(os.path.join(root, 'en/account/elonmusk/index.html'), encoding='utf-8').read()
+    assert 'paypal.png' not in stock and 'ct-donate-qr' not in stock and db.PAYPAL in stock
+    assert 'paypal.png' not in account and 'ct-donate-qr' not in account and db.PAYPAL in account
+
+
 def test_en_title_meta_length():
     """EN earnings title/meta stay within SERP length; ticker first, no company name in the title."""
     import earnings_pages as ep
