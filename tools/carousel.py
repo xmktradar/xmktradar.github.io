@@ -583,7 +583,15 @@ def _apply_video(job, key, day, decision):
         job['publishable'] = False
         video_signal.write_skip(job['signal'])
         return False
-    job['beats'] = video_signal.script_beats(decision)
+    # Names are already selected. TA runs here, before beats and VO. A fetch
+    # failure omits beat ②; it does not invent a fact and it does not skip the show.
+    try:
+        doc = video_signal.textbook_ta.publish_ta(decision)
+    except Exception:
+        video_signal.textbook_ta.log_ta_omit('*', 'yahoo_unavailable')
+        doc = {'tickers': []}
+    job['ta_facts'] = doc
+    job['beats'] = video_signal.script_beats(decision, facts=doc)
     job['names'] = decision.get('names') or []
     job['publishable'] = True
     return True

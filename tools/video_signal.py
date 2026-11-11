@@ -20,13 +20,17 @@ two. Exactly one name uses the weekday single structure. Zero names skip.
 Weekday Tape Take / Crowd Heat: one name, and only when the day has a clear
 heat leader or a real split. A pile of mild names skips.
 
-TA is one textbook fact from closes already on disk (`px/<TICKER>.json`). If
-none of the rules fire, beat 2 is omitted. No second indicator. No trade call.
+TA runs only after that gate, and only for selected names. One textbook fact
+(spec v1) from a separate 2-year Yahoo OHLCV pull — never from `px/` price
+cards, and never invented to rescue a skip. If nothing qualifies, beat ② is
+omitted and the job log gets `ta_omit`.
 """
 import json
 import os
 import re
 from datetime import date as date_cls
+
+import textbook_ta
 
 MIN_HEAT_ACCOUNTS = 3
 MIN_SIDE = 2
@@ -35,11 +39,7 @@ SPLIT_RATIO = 0.35
 CLEAR_HEAT = 6          # standout discussion count for a weekday heat leader
 CLEAR_GAP = 2           # accounts ahead of #2, or 1.5x, counts as a clear leader
 LEADER_OVER_SPLIT = 3   # a one-sided name this far ahead of a split wins on heat
-SMA_BAND = 0.015        # |close/SMA50 - 1| <= 1.5% → "sitting on the 50-day"
-SMA_CLEAR = 0.03        # clearly above / below the 50-day
-RSI_HI = 70
-RSI_LO = 30
-SUPPORT_BREAK = 0.005   # last close at least 0.5% through a swing low
+SMA_BAND = textbook_ta.SMA_BAND  # |close/SMA - 1| <= 1% → sitting on that line
 WEEK_CAP = 5
 MAX_VIDEO_S = 40.0
 WEEK_MAX_VIDEO_S = 75.0  # Saturday hot-list ~60s; a little over is ok. Not the 40s fail.
@@ -473,105 +473,13 @@ def evaluate_slot(slot, stats, date=None, lang='en', weekday=None):
 
 # ---------- technical fact (one, or none) ----------
 
-def sma(closes, n=50):
-    if not closes or len(closes) < n:
-        return None
-    window = closes[-n:]
-    return sum(window) / float(n)
+sma = textbook_ta.sma
+rsi_wilder = textbook_ta.rsi_wilder
 
 
-def rsi_wilder(closes, period=14):
-    """Standard Wilder RSI. None when the series is shorter than period+1."""
-    if not closes or len(closes) < period + 1:
-        return None
-    deltas = [closes[i] - closes[i - 1] for i in range(1, len(closes))]
-    gain = sum(max(d, 0.0) for d in deltas[:period]) / period
-    loss = sum(max(-d, 0.0) for d in deltas[:period]) / period
-    for d in deltas[period:]:
-        gain = (gain * (period - 1) + max(d, 0.0)) / period
-        loss = (loss * (period - 1) + max(-d, 0.0)) / period
-    if loss == 0:
-        return 100.0 if gain > 0 else 50.0
-    rs = gain / loss
-    return 100.0 - (100.0 / (1.0 + rs))
-
-
-def lost_support(closes):
-    """Price just lost support.
-
-    Rule (deterministic, closes only): look at the 20 closes before the last
-    bar. A swing low is a close strictly below both neighbors (1-bar fractal).
-    Support is the most recent swing low in that window. The line fires only
-    when the last close is at least 0.5% under that level and the previous
-    close had not yet broken it. Otherwise omit — do not invent a level.
-    """
-    if not closes or len(closes) < 8:
-        return False
-    window = list(closes[:-1])[-20:]
-    swing = None
-    for i in range(1, len(window) - 1):
-        if window[i] < window[i - 1] and window[i] < window[i + 1]:
-            swing = window[i]
-    if swing is None or swing <= 0:
-        return False
-    last, prev = closes[-1], closes[-2]
-    level = swing * (1.0 - SUPPORT_BREAK)
-    return last < level and prev >= level
-
-
-def ta_fact(closes):
-    """Exactly one textbook fact, or None. Never a second indicator. Never a price.
-
-    Preference: sitting on the 50-day, then stretched RSI, then a support break,
-    then a clear above/below the 50-day. Mid-range RSI and a mushy MA (between
-    1.5% and 3%) do not force a line.
-    """
-    if not closes or len(closes) < 2:
-        return None
-    close = float(closes[-1])
-    sma50 = sma(closes, 50)
-    rsi = rsi_wilder(closes, 14)
-    broke = lost_support(closes)
-    if sma50:
-        rel = close / sma50 - 1.0
-        if abs(rel) <= SMA_BAND:
-            return {
-                'id': 'sma50_on',
-                'line': "It's sitting on the 50-day.",
-                'caption': 'On the 50-day',
-                'note': 'This is not a trade signal.',
-            }
-    if rsi is not None and (rsi >= RSI_HI or rsi <= RSI_LO):
-        return {
-            'id': 'rsi_stretch',
-            'line': 'RSI is stretched.',
-            'caption': 'RSI is stretched',
-            'note': 'This is not a trade signal.',
-        }
-    if broke:
-        return {
-            'id': 'lost_support',
-            'line': 'Price just lost support.',
-            'caption': 'Price lost support',
-            'note': 'This is not a trade signal.',
-        }
-    if sma50:
-        rel = close / sma50 - 1.0
-        if rel >= SMA_CLEAR:
-            return {
-                'id': 'sma50_above',
-                'line': "It's above the 50-day.",
-                'caption': 'Above the 50-day',
-                'note': 'This is not a trade signal.',
-            }
-        if rel <= -SMA_CLEAR:
-            return {
-                'id': 'sma50_below',
-                'line': "It's below the 50-day.",
-                'caption': 'Below the 50-day',
-                'note': 'This is not a trade signal.',
-            }
-    return None
+def ta_fact(series, slot='1230', just_bars=None):
+    """Exactly one textbook fact, or None. Never a second indicator. Never a made-up price."""
+    return textbook_ta.ta_fact(series, slot=slot, just_bars=just_bars)
 
 
 def load_closes(ticker, root=None):
@@ -683,7 +591,32 @@ def _beat(role, scene, base, base_short, vo, vo_short, caption, visual):
     }
 
 
-def _single_beats(name, fact, weekly_single=False):
+def _ta_voice(fact, speak):
+    """Week Tape keeps the short line. A weekday single may add the spoken disclaimer."""
+    line = (fact.get('line') or fact.get('vo_en') or '').strip()
+    if speak and line and textbook_ta.disclaimer_fits(line):
+        note = (fact.get('note') or textbook_ta.SPOKEN_DISCLAIMER).strip()
+        if note:
+            return f'{line} {note}'.strip(), line
+    return line, line
+
+
+def _ta_visual(ticker, fact, line, speak):
+    visual = {
+        'ticker': ticker,
+        'big': ticker,
+        'caption': fact.get('caption') or fact.get('caption_en') or '',
+        'fact': line,
+        'factId': fact.get('id') or fact.get('method'),
+    }
+    if fact.get('on_screen'):
+        visual['on_screen'] = fact['on_screen']
+    if not speak:
+        visual['disclaimer'] = textbook_ta.SCREEN_DISCLAIMER
+    return visual
+
+
+def _single_beats(name, fact, weekly_single=False, speak_disclaimer=True):
     bull, bear = name['bull_accounts'], name['bear_accounts']
     n = name['accounts']
     ticker = name['t']
@@ -707,11 +640,10 @@ def _single_beats(name, fact, weekly_single=False):
               {'ticker': ticker, 'big': ticker, 'accounts': n, 'caption': f'{n} accounts on it'}),
     ]
     if fact:
-        ta_line = fact['line']
-        note = fact.get('note') or ''
-        ta_vo = f'{ta_line} {note}'.strip()
-        beats.append(_beat('ta', 'ta', table['ta'], short['ta'], ta_vo, ta_line, fact['caption'],
-                           {'ticker': ticker, 'big': ticker, 'caption': fact['caption'], 'fact': ta_line, 'factId': fact['id']}))
+        ta_vo, ta_line = _ta_voice(fact, speak_disclaimer)
+        caption = fact.get('caption') or fact.get('caption_en') or ''
+        beats.append(_beat('ta', 'ta', table['ta'], short['ta'], ta_vo, ta_line, caption,
+                           _ta_visual(ticker, fact, ta_line, speak_disclaimer)))
     beats.append(_beat('views', 'views', table['views'], short['views'], views, views_s, _views_caption(bull, bear),
                        {'ticker': ticker, 'big': ticker, 'bull': bull, 'bear': bear, 'angle': ang,
                         'caption': _views_caption(bull, bear)}))
@@ -743,12 +675,11 @@ def _list_beats(names, facts):
                            {'ticker': name['t'], 'big': name['t'], 'accounts': name['accounts'],
                             'caption': f'{name["accounts"]} accounts on it'}))
         if fact and ta_b:
-            ta_line = fact['line']
-            note = fact.get('note') or ''
+            ta_vo, ta_line = _ta_voice(fact, speak=False)
+            caption = fact.get('caption') or fact.get('caption_en') or ''
             beats.append(_beat('ta', 'ta', ta_b, max(4, int(round(ta_b * 0.75))),
-                               f'{ta_line} {note}'.strip(), ta_line, fact['caption'],
-                               {'ticker': name['t'], 'big': name['t'], 'caption': fact['caption'],
-                                'fact': ta_line, 'factId': fact['id']}))
+                               ta_vo, ta_line, caption,
+                               _ta_visual(name['t'], fact, ta_line, speak=False)))
         beats.append(_beat('views', 'views', views_b, max(4, int(round(views_b * 0.75))), views, views_s,
                            _views_caption(bull, bear),
                            {'ticker': name['t'], 'big': name['t'], 'bull': bull, 'bear': bear,
@@ -758,31 +689,69 @@ def _list_beats(names, facts):
     return beats
 
 
-def build_beats(names, mode='single', weekly_single=False, facts=None):
+def build_beats(names, mode='single', weekly_single=False, facts=None, speak_disclaimer=None):
     """Beats for a decision. One qualifying name always uses the 30–40s single."""
     names = [norm(n) if 'angle' not in n else n for n in names]
     facts = facts or {}
+    if speak_disclaimer is None:
+        speak_disclaimer = mode != 'hot-list'
     if mode != 'hot-list' or len(names) <= 1:
         if not names:
             return []
-        return _single_beats(names[0], facts.get(names[0]['t']), weekly_single=weekly_single or (mode == 'single' and weekly_single))
+        return _single_beats(
+            names[0], facts.get(names[0]['t']),
+            weekly_single=weekly_single or (mode == 'single' and weekly_single),
+            speak_disclaimer=speak_disclaimer,
+        )
     return _list_beats(names, facts)
 
 
-def script_beats(decision, closes_for=None):
-    """Attach one TA fact per name from closes. `closes_for(ticker) -> [float]`."""
-    closes_for = closes_for or load_closes
-    facts = {}
-    for n in decision.get('names') or []:
-        ticker = n.get('t')
-        try:
-            series = closes_for(ticker) if ticker else []
-        except Exception:
-            series = []
-        facts[ticker] = ta_fact(series or [])
-    weekly_single = decision.get('mode') == 'single' and decision.get('slot') in ('sat', 'week')
-    return build_beats(decision.get('names') or [], mode=decision.get('mode') or 'single',
-                       weekly_single=weekly_single, facts=facts)
+def _fact_map_from_doc(doc):
+    out = {}
+    for row in (doc or {}).get('tickers') or []:
+        ticker = row.get('ticker')
+        out[ticker] = row if row.get('emit') else None
+    return out
+
+
+def script_beats(decision, closes_for=None, bars_for=None, facts=None):
+    """Beats for a decision that already passed the gate.
+
+    A skip returns no beats and does not read prices. `facts` is a ta-facts
+    document or a `{ticker: fact}` map. Otherwise one fact is assessed from
+    injected bars or closes — not from `px/` unless the caller passes `load_closes`.
+    """
+    if not isinstance(decision, dict) or decision.get('publishable') is False or decision.get('mode') == 'skip':
+        return []
+    names = decision.get('names') or []
+    slot = decision.get('slot') or '1230'
+    if facts is None and closes_for is None and bars_for is None:
+        facts = textbook_ta.publish_ta(decision)
+    if isinstance(facts, dict) and 'tickers' in facts:
+        fact_map = _fact_map_from_doc(facts)
+    elif facts is not None:
+        fact_map = facts
+    else:
+        fact_map = {}
+        for n in names:
+            ticker = n.get('t')
+            try:
+                if bars_for is not None:
+                    series = bars_for(ticker) if ticker else []
+                else:
+                    series = closes_for(ticker) if ticker else []
+            except Exception:
+                series = []
+            row = textbook_ta.assess_series(series or [], slot=slot)
+            if row.get('emit'):
+                fact_map[ticker] = row
+            else:
+                fact_map[ticker] = None
+                textbook_ta.log_ta_omit(ticker, row.get('omit_reason') or 'no_clear_fact')
+    weekly_single = decision.get('mode') == 'single' and slot in ('sat', 'week')
+    speak = textbook_ta.speak_disclaimer(decision.get('mode'), decision.get('slot'), decision.get('show'))
+    return build_beats(names, mode=decision.get('mode') or 'single', weekly_single=weekly_single,
+                       facts=fact_map, speak_disclaimer=speak)
 
 
 def derive_beats(job):
@@ -813,7 +782,8 @@ def derive_beats(job):
         facts[names[0]['t']] = ta_fact(job['closes'])
     mode = job.get('mode') or ('hot-list' if len(names) > 1 else 'single')
     weekly_single = mode == 'single' and str(job.get('slot') or '') in ('sat', 'week')
-    return build_beats(names, mode=mode, weekly_single=weekly_single, facts=facts)
+    speak = textbook_ta.speak_disclaimer(mode, job.get('slot'), job.get('show'))
+    return build_beats(names, mode=mode, weekly_single=weekly_single, facts=facts, speak_disclaimer=speak)
 
 
 def en_lines(job, short=False):

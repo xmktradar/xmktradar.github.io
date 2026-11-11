@@ -250,6 +250,10 @@ def test_ta_short_series_omits_beat():
     assert rsi is not None and 30 < rsi < 70, rsi
     assert video_signal.sma(closes, 50) is None
     assert video_signal.ta_fact(closes) is None
+    row = video_signal.textbook_ta.assess_series(closes)
+    assert row['emit'] is False and row['omit_reason'] == 'no_clear_fact', row
+    assert row['vo_en'] == ''
+    assert row['last_close'] in (None, 432.1)
     name = cited('QQQ', 8, 6, 2)
     got = video_signal.select_weekday([name])
     lines, beats = _lines(got, closes_for=lambda _t: closes)
@@ -263,16 +267,19 @@ def test_ta_short_series_omits_beat():
 
 
 def test_ta_on_sma50_is_one_fact():
-    """Close within 1.5% of the 50-day: exactly one fact, no second indicator."""
+    """Close within 1% of the 50-day: exactly one fact, no second indicator."""
+    assert video_signal.SMA_BAND == 0.01
     closes = [100.0] * 49 + [101.0]
     assert len(closes) >= 50
     sma50 = video_signal.sma(closes, 50)
     rel = closes[-1] / sma50 - 1.0
     assert abs(rel) <= video_signal.SMA_BAND, rel
+    assert abs(rel) > 0.005
     fact = video_signal.ta_fact(closes)
     assert fact is not None
-    assert fact['id'] == 'sma50_on', fact
+    assert fact['id'] == 'sma_touch', fact
     assert fact['line'] == "It's sitting on the 50-day."
+    assert fact['caption'] == 'Sitting on the 50-day'
     assert 'rsi' not in fact['line'].lower()
     assert 'support' not in fact['line'].lower()
     assert fact['note'] == 'This is not a trade signal.'
@@ -282,13 +289,13 @@ def test_ta_on_sma50_is_one_fact():
     ta = [b for b in beats if b['role'] == 'ta']
     assert len(ta) == 1, [b['role'] for b in beats]
     vo = ta[0]['vo']
-    assert "It's sitting on the 50-day." in vo
-    assert 'This is not a trade signal.' in vo
+    assert vo == "It's sitting on the 50-day. This is not a trade signal.", vo
     assert 'rsi' not in vo.lower()
     assert 'lost support' not in vo.lower()
     assert 'above the 50-day' not in vo.lower()
     assert '101' not in vo and '100' not in vo
     assert [b['role'] for b in beats].count('ta') == 1
+    assert 5.0 <= ta[0]['base'] * BEAT <= 8.0
 
 
 def test_counts_bar_without_pills():
@@ -352,10 +359,15 @@ def test_duration_caps():
     hot_beats = video_signal.build_beats(
         five['names'], mode='hot-list',
         facts={n['t']: {
-            'id': 'sma50_on', 'line': "It's sitting on the 50-day.",
-            'caption': 'On the 50-day', 'note': 'This is not a trade signal.',
+            'id': 'sma_touch', 'line': "It's sitting on the 50-day.",
+            'caption': 'Sitting on the 50-day', 'note': 'This is not a trade signal.',
         } for n in five['names']},
     )
+    for b in hot_beats:
+        if b['role'] == 'ta':
+            assert 'This is not a trade signal.' not in b['vo'], b['vo']
+            assert b['visual'].get('disclaimer') == 'Not a trade signal.'
+            assert b['caption'] == 'Sitting on the 50-day'
     hot_s = _seconds(hot_beats)
     assert hot_s > 40.0, hot_s
     assert hot_s <= 75.0, hot_s

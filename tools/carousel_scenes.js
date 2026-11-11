@@ -311,10 +311,21 @@ function setup(name, D) {
     return;
   }
   if (name === 'ta') {
+    const cap = String(D.caption || D.fact || '');
+    const os = D.on_screen || {};
+    const val = os.value != null ? String(os.value) : '';
+    const reading = val && cap.indexOf(val) < 0
+      ? `<div class="mono" style="font-size:48px;font-weight:800;letter-spacing:-1px">${esc(val)}</div>`
+      : '';
+    const fine = D.disclaimer
+      ? `<div style="font-size:22px;font-weight:600;line-height:1.2;opacity:.72">${esc(D.disclaimer)}</div>`
+      : '';
     c.innerHTML = showBadge(D) + lightningChrome() + safeType(`
-      <div style="display:flex;flex-direction:column;justify-content:center;height:100%;gap:28px">
+      <div style="display:flex;flex-direction:column;justify-content:center;height:100%;gap:22px">
         <div class="tk mono amber" style="font-size:112px">${ticker}</div>
-        <div style="font-size:60px;font-weight:800;line-height:1.15">${esc(D.caption || D.fact || '')}</div>
+        <div style="font-size:60px;font-weight:800;line-height:1.15">${esc(cap)}</div>
+        ${reading}
+        ${fine}
       </div>`);
     return;
   }
