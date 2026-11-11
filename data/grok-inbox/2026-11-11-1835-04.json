@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2120282615479517294": {
+      "en_summary": "I sat down with @DivesTech to break down the Jensen Huang controversy and what it means for Nvidia, China, and the entire AI industry. We also discuss Anthropic’s IPO, OpenAI, TSLA, SPCX, PLTR, CRWV, META, and whether the AI bull market can survive this moment.",
+      "zh_summary": "我與 @DivesTech 坐下來分析 Jensen Huang 爭議對 Nvidia、中國和整個 AI 產業的意義。我們還討論了 Anthropic 的 IPO、OpenAI、TSLA、SPCX、PLTR、CRWV、META，以及 AI 牛市能否挺過這一刻。",
+      "tickers": ["TSLA", "SPCX", "PLTR", "CRWV", "META", "NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"TSLA": "中性", "SPCX": "中性", "PLTR": "中性", "CRWV": "中性", "META": "中性", "NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2120281360610840622": {
+      "en_summary": "While the S&P 500 SPY fell around 40 bps today, breadth was slightly positive with four more stocks up than down in the index. Financials XLF was the best performing sector, while Tech XLK was the worst.",
+      "zh_summary": "雖然標普 500 SPY 今天下跌約 40 個基點，但廣度略為正面，指數中上漲股票比下跌多四隻。金融 XLF 是表現最好的板塊，而科技 XLK 是最差的。",
+      "tickers": ["SPY", "XLF", "XLK"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "XLF": "中性", "XLK": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2120275356535890041": {
+      "en_summary": "BTC closed at $73,785. Down 1.5% today. Fear & Greed: 32 — Fear. The 30D low is $62,525. Nearest prior swing support: $75,038. Today's close broke below it. That level is now resistance. Watch $75,038 on any recovery attempt.",
+      "zh_summary": "BTC 收於 $73,785。今天下跌 1.5%。恐懼與貪婪指數：32 — 恐懼。30 日低點為 $62,525。最近先前波動支撐：$75,038。今日收盤跌破該水平。該水平現在是阻力。任何反彈嘗試時關注 $75,038。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2120272589243470268": {
+      "en_summary": "SPY post close as today could have been a constructive inside type day.",
+      "zh_summary": "SPY 收盤後，今天可能是建設性的內部類型日。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2120268505388069094": {
+      "en_summary": "NVDA Daily RSI lowest since June 2019. Weekly RSI lowest since October 2022. Monthly RSI lowest since December 2022. Just be careful shorting into the hole here if you are bearish. If anything wait for that bounce now...",
+      "zh_summary": "NVDA 日線 RSI 自 2019 年 6 月以來最低。週線 RSI 自 2022 年 10 月以來最低。月線 RSI 自 2022 年 12 月以來最低。如果看空，小心在這裡做空。如果有什麼，現在等待反彈...",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "多週期 RSI 多年最低，小心做空，等待反彈"}
+    }
+  }
+}
