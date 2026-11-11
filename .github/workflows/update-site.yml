@@ -217,6 +217,8 @@ jobs:
             cp "$WORK_DIR/earnings-posts.json" data/earnings-posts.json
             mkdir -p social && cp "$WORK_DIR/earnings.html" social/earnings.html
           fi
+      - name: Sync roster count copy from official list
+        run: python3 tools/sync_roster_copy.py
       - name: Language versions
         run: python3 tools/build_langs.py
       - name: Support page
