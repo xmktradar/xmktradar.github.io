@@ -150,12 +150,68 @@ def test_real_files():
     assert n >= 10, n
 
 
+def test_midquote_hashtags_stripped():
+    """A #word inside a quote must become a plain word; footer tags stay and the caption stays ≤3."""
+    zh_in = '\n'.join([
+        '@KeithMcCullough：「Keith McCullough 感謝 Maggie @maggielake，並認為比特幣是即將到來的經濟 #Quad4 的最佳領先指標，相較於 $QQQ」',
+        '#美股 #OTIS #QQQ',
+    ])
+    zh = humanize(zh_in, 'zh', 'post', 'instagram')
+    assert '#Quad4' not in zh, zh
+    assert 'Quad4' in zh, zh
+    assert '$QQQ' in zh and '@maggielake' in zh, zh
+    zh_tags = TAG_RE.findall(zh)
+    assert zh_tags == ['#美股', '#OTIS', '#QQQ'], zh_tags
+    assert_rules(zh, 'zh', 'midquote zh')
+    assert humanize(zh, 'zh', 'post', 'instagram') == zh
+
+    en_in = '\n'.join([
+        '@KeithMcCullough: “... pending economic #Quad4, with $QQQ ...” @maggielake',
+        '#StockMarket #OTIS #QQQ',
+    ])
+    en = humanize(en_in, 'en', 'post', 'instagram')
+    assert '#Quad4' not in en, en
+    assert 'Quad4' in en and '$QQQ' in en and '@maggielake' in en, en
+    en_tags = TAG_RE.findall(en)
+    assert en_tags == ['#StockMarket', '#OTIS', '#QQQ'], en_tags
+    assert_rules(en, 'en', 'midquote en')
+    assert humanize(en, 'en', 'post', 'instagram') == en
+
+    # Comments have no footer, so a leftover mid-body #word would still fail a whole-text count.
+    assert humanize('即將到來的經濟 #Quad4 的最佳領先指標 $QQQ @maggielake', 'zh', 'comment') == \
+        '即將到來的經濟 Quad4 的最佳領先指標 $QQQ @maggielake'
+    assert humanize('pending economic #Quad4, with $QQQ @maggielake', 'en', 'comment') == \
+        'pending economic Quad4, with $QQQ @maggielake'
+    assert humanize('#美股 #OTIS #QQQ', 'zh', 'tags') == '#美股 #OTIS #QQQ'
+
+    tree = {
+        'posts': {
+            'zh': {'instagram': zh_in, 'facebook': zh_in, 'reddit': {'body': zh_in}},
+            'en': {'instagram': en_in, 'facebook': en_in, 'reddit': {'body': en_in}},
+        },
+        'ig_reel': {'caption': {'zh': zh_in, 'en': en_in}},
+    }
+    humanize_tree(tree)
+    fields = (
+        tree['posts']['zh']['instagram'], tree['posts']['zh']['facebook'], tree['posts']['zh']['reddit']['body'],
+        tree['posts']['en']['instagram'], tree['posts']['en']['facebook'], tree['posts']['en']['reddit']['body'],
+        tree['ig_reel']['caption']['zh'], tree['ig_reel']['caption']['en'],
+    )
+    for text in fields:
+        assert '#Quad4' not in text and 'Quad4' in text, text
+        assert len(TAG_RE.findall(text)) <= 3, (TAG_RE.findall(text), text)
+    again = json.loads(json.dumps(tree))
+    humanize_tree(again)
+    assert again == tree
+
+
 def main():
     test_old_captions()
     test_first_comment_and_tags()
     test_fit()
     test_zh_written()
     test_tree()
+    test_midquote_hashtags_stripped()
     test_real_files()
     print('test_humanize: no links, brand + disclaimer once, <=2 emoji, <=3 hashtags, written Chinese ok')
 
