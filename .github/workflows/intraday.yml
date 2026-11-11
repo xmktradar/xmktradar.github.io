@@ -1,11 +1,13 @@
 name: Intraday social
 # Generation is 5 minutes before each US/Eastern slot (09:45, 11:00, 12:15, 13:30, 14:45, 15:40).
 # Clocks: 09:40, 10:55, 12:10, 13:25, 14:40, 15:35 ET.
-# Main path: hard UTC cron at each gen clock for BOTH EST (UTC−5) and EDT (UTC−4).
-# Guard keeps America/New_York ±20 min on a NYSE day (off-season DST twin exits in seconds).
-# Backup +10m if GitHub drops/delays the primary. Bot Intraday A–F workflow_dispatch stays as fringe.
+# One weekday tick every 10 minutes, 13:00–23:50 UTC: EDT open through EST close,
+# plus evening catch-up when GitHub delivers the schedule hours late.
+# Guard uses America/New_York. It will not start a slot more than 20 minutes early.
+# Once a clock is due, it writes the earliest unwritten slot for that ET trade date
+# (on time, in the gaps, or the rest of the evening). One job can fill the rest, cap 6.
+# Bot Intraday A–F workflow_dispatch stays as fringe.
 # workflow_dispatch: slot=auto|force|<name> (force bypasses the time guard).
-# Tim／CEO 2026-11-05: hard cron primary; reduce Bot A–F reliance.
 on:
   workflow_dispatch:
     inputs:
@@ -14,28 +16,14 @@ on:
         required: false
         default: auto
   schedule:
-    # Gen 09:40 ET → 13:40 UTC (EDT) / 14:40 UTC (EST); backup +10
-    - cron: '40 13,14 * * 1-5'
-    - cron: '50 13,14 * * 1-5'
-    # Gen 10:55 ET → 14:55 / 15:55 UTC
-    - cron: '55 14,15 * * 1-5'
-    - cron: '5 15,16 * * 1-5'
-    # Gen 12:10 ET → 16:10 / 17:10 UTC
-    - cron: '10 16,17 * * 1-5'
-    - cron: '20 16,17 * * 1-5'
-    # Gen 13:25 ET → 17:25 / 18:25 UTC
-    - cron: '25 17,18 * * 1-5'
-    - cron: '35 17,18 * * 1-5'
-    # Gen 14:40 ET → 18:40 / 19:40 UTC
-    - cron: '40 18,19 * * 1-5'
-    - cron: '50 18,19 * * 1-5'
-    # Gen 15:35 ET → 19:35 / 20:35 UTC
-    - cron: '35 19,20 * * 1-5'
-    - cron: '45 19,20 * * 1-5'
+    # Tick every 10 minutes, 13:00–23:50 UTC Mon–Fri.
+    # Covers EDT open gen (13:40 UTC) through EST close (20:35 UTC), plus hours of
+    # catch-up when GitHub delivers the schedule late (observed delays of 2–5 hours).
+    - cron: '*/10 13-23 * * 1-5'
 permissions:
   contents: write
 # Not site-update: update-site holds that group for 60-90 min, and GitHub keeps
-# only one pending run per group, so a queued intraday run misses its slot.
+# only one pending run per group, so a queued intraday run is dropped.
 concurrency:
   group: intraday
   cancel-in-progress: false
@@ -87,36 +75,57 @@ jobs:
           mkdir -p "$WORK_DIR"
           echo '{"daily": null}' > "$WORK_DIR/windows.json"
           node tools/stats.js index.html "$WORK_DIR/windows.json" "$WORK_DIR/stats.json" || { echo "::error::共識計算失敗"; exit 1; }
-      - name: Write intraday slot
+      - name: Write and publish intraday slots
         if: steps.guard.outputs.run == 'true'
         env:
           SLOT: ${{ steps.guard.outputs.slot }}
           FORCE: ${{ steps.guard.outputs.force }}
         run: |
-          extra=""
-          if [ "$FORCE" = "true" ]; then extra=--force; fi
-          python3 tools/intraday.py --slot "$SLOT" $extra
-      - name: Publish data
-        if: steps.guard.outputs.run == 'true'
-        run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
           # update-site may push a rewritten social-posts.json while this job runs.
           # Drop local data edits, rebuild one slot commit on latest main, and retry the push.
-          ok=0
-          for i in 1 2 3 4 5 6; do
-            git stash -u -q || true
-            git fetch origin main
-            git reset --hard origin/main
-            python3 tools/intraday.py --merge-from "$WORK_DIR/intraday-slot.json"
-            git add data/social-posts.json data/social-history.json
-            if git diff --cached --quiet; then
-              ok=1
+          publish_one() {
+            slot="$1"
+            extra=""
+            if [ "$FORCE" = "true" ]; then extra=--force; fi
+            python3 tools/intraday.py --slot "$slot" $extra
+            ok=0
+            for i in 1 2 3 4 5 6; do
+              git stash -u -q || true
+              git fetch origin main
+              git reset --hard origin/main
+              python3 tools/intraday.py --merge-from "$WORK_DIR/intraday-slot.json"
+              git add data/social-posts.json data/social-history.json
+              if git diff --cached --quiet; then
+                ok=1
+                break
+              fi
+              git commit -m "盤中社交槽 $(TZ=America/New_York date '+%Y-%m-%d %H:%M') ET"
+              git push origin HEAD:main && { ok=1; break; }
+              echo "::warning::push failed (try $i), retrying"
+              sleep $((i * 8))
+            done
+            [ "$ok" = 1 ] || { echo "::error::push failed after retries"; exit 1; }
+          }
+          publish_one "$SLOT"
+          # force bypasses the clock; do not walk the rest of the day.
+          if [ "$FORCE" = "true" ]; then
+            exit 0
+          fi
+          # Shared fetch already ran. A late tick can fill every still-due slot (cap 6).
+          n=1
+          while [ "$n" -lt 6 ]; do
+            n=$((n + 1))
+            gout=$(mktemp)
+            GITHUB_OUTPUT="$gout" python3 tools/intraday.py --guard --slot auto
+            runv=$(awk -F= '$1=="run"{print $2; exit}' "$gout")
+            next=$(awk -F= '$1=="slot"{print $2; exit}' "$gout")
+            rm -f "$gout"
+            if [ "$runv" != "true" ] || [ -z "$next" ]; then
+              echo "catch-up done ($((n - 1)) slot(s) this job)"
               break
             fi
-            git commit -m "盤中社交槽 $(TZ=America/New_York date '+%Y-%m-%d %H:%M') ET"
-            git push origin HEAD:main && { ok=1; break; }
-            echo "::warning::push failed (try $i), retrying"
-            sleep $((i * 8))
+            echo "catch-up $next ($n/6)"
+            publish_one "$next"
           done
-          [ "$ok" = 1 ] || { echo "::error::push failed after retries"; exit 1; }
