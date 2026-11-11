@@ -38,11 +38,16 @@ ZH_LINES = [
     '詳情看 thecrowdtape.com',
 ]
 EN_LINES = [
-    "Everyone's screaming about S P Y — who's actually making sense?",
-    'On S P Y the tape is 3 bulls versus 6 bears. Bears ahead.',
-    'Top voice on S P Y is on the tape.',  # no writeup quote for SPY fixture → generic (never rock)
-    'Across the tape: bull M E T A, bear Q Q Q.',
-    'Full tape, free, at thecrowdtape dot com',
+    'The fight today is S P Y.',
+    'S P Y is the most talked-about name today — 15 tracked accounts are on it.',
+    'Tracked accounts are split: 3 bulls versus 6 bears.',
+    'Bull or bear on S P Y?',
+]
+EN_SHORT = [
+    'The fight today is S P Y.',
+    'S P Y — 15 tracked accounts.',
+    'Split: 3 bulls versus 6 bears.',
+    'Bull or bear on S P Y?',
 ]
 BAD_EN = re.compile(r'\b(buy|sell|buys|sells|buying|selling|target|targets|prediction|predictions|forecast|forecasts)\b', re.I)
 
@@ -102,60 +107,59 @@ def test_en_lines():
         assert os.environ.get('VO_VOICE_en', carousel_vo.VOICES['en']) == 'en-US-AndrewNeural'
         ls = carousel_vo.lines(job('en'))
         assert ls == EN_LINES, ls
-        assert len(ls) == 5, ls
+        assert len(ls) == 4, ls
         _assert_no_advice(ls)
-        assert 'S P Y' in ls[0] and 'making sense' in ls[0], ls[0]
-        assert 'bulls' in ls[1] and 'bears' in ls[1] and 'Bears ahead' in ls[1], ls[1]
-        assert 'rock' not in ls[2].lower() and 'Top voice' in ls[2], ls[2]
-        assert 'M E T A' in ls[3] and 'Q Q Q' in ls[3], ls[3]
-        assert ls[4] == 'Full tape, free, at thecrowdtape dot com'
+        assert ls[0] == 'The fight today is S P Y.', ls[0]
+        assert 'tracked accounts' in ls[1] and '15' in ls[1], ls[1]
+        assert 'split' in ls[2] and '3 bulls' in ls[2] and '6 bears' in ls[2], ls[2]
+        assert ls[3] == 'Bull or bear on S P Y?', ls[3]
+        assert 'thecrowdtape' not in '\n'.join(ls).lower()
+        assert "everyone's screaming" not in '\n'.join(ls).lower()
         assert carousel_vo.vo_langs() == ['en']
         short = carousel_vo.en_lines(job('en'), short=True)
-        assert len(short) == 5, short
+        assert short == EN_SHORT, short
         _assert_no_advice(short)
-        assert 'S P Y' in short[0] and 'making sense' in short[0] and 'M E T A' in short[3] and 'Q Q Q' in short[3], short
-        assert short[4] == 'thecrowdtape dot com'
+        assert 'thecrowdtape' not in '\n'.join(short).lower()
         assert short != ls
         one = job('en')
         one['slides'][0]['sub'] = '1 account'
         one['slides'][0]['pills'] = [{'c': 'g', 'x': '1 bullish'}]
-        assert 'making sense' in carousel_vo.lines(one)[0]
-        assert '1 bull versus 0 bears' in carousel_vo.lines(one)[1] and 'Bulls ahead' in carousel_vo.lines(one)[1]
+        lone = '\n'.join(carousel_vo.lines(one))
+        assert 'most discussed name' in lone and 'fight' not in lone.lower(), lone
+        assert 'lean bullish' in lone and 'almost no bear case' in lone and '1 bull versus 0 bears' in lone
+        assert 'split' not in lone.lower()
         tie = job('en')
         tie['slides'][0]['pills'] = [{'c': 'g', 'x': '4 bullish'}, {'c': 'r', 'x': '4 bearish'}]
-        assert "It's a tie." in carousel_vo.lines(tie)[1]
+        tied = '\n'.join(carousel_vo.lines(tie))
+        assert 'split' in tied.lower() and "it's a tie" not in tied.lower(), tied
         bulls = job('en')
         bulls['slides'][0]['pills'] = [{'c': 'g', 'x': '8 bullish'}, {'c': 'r', 'x': '2 bearish'}]
-        assert '8 bulls versus 2 bears' in carousel_vo.lines(bulls)[1] and 'Bulls ahead' in carousel_vo.lines(bulls)[1]
-
-
-
-    def test_en_missing_sections():
-        j = job('en')
-        j['slides'][1]['secs'] = [{'h': '🔥 Most discussed · Top 4', 'cards': []}]
-        j['slides'][2]['secs'] = [{'h': '🟢 Joint bullish', 'cards': [{'t': 'META'}]}]
-        j['slides'][3]['secs'] = []
-        ls = carousel_vo.lines(j)
-        assert 'rock' not in ls[2].lower() and ('Top voice' in ls[2] or '@' in ls[2]), ls[2]
-        assert 'bull M E T A' in ls[3] and 'Q Q Q' not in ls[3], ls[3]
-        _assert_no_advice(ls)
-        short = carousel_vo.en_lines(j, short=True)
-        assert 'M E T A' in short[3] and 'Q Q Q' not in short[3], short[3]
+        leaned = '\n'.join(carousel_vo.lines(bulls))
+        assert '8 bulls versus 2 bears' in leaned and 'lean bullish' in leaned, leaned
+        assert 'split' not in leaned.lower() and 'fight' not in leaned.lower() and 'almost no' not in leaned.lower()
+        missing = job('en')
+        missing['slides'][1]['secs'] = []
+        missing['slides'][2]['secs'] = []
+        missing['slides'][3]['secs'] = []
+        assert carousel_vo.lines(missing) == EN_LINES
 
 
 
 def test_en_quote_from_highlights():
-    """When writeups have a matching ticker quote, VO names the @handle (no rock)."""
-    hero = carousel_vo.load_hero_quote('TSLA')
-    if not hero:
-        return  # offline box without writeups — skip
+    """EN VO does not invent an expert from writeups. Counts stay on the cover."""
     j = job('en')
     j['slides'][0]['big'] = 'TSLA'
     j['slides'][0]['sub'] = '6 accounts'
     j['slides'][0]['pills'] = [{'c': 'g', 'x': '6 bullish'}, {'c': 'r', 'x': '0 bearish'}]
     ls = carousel_vo.lines(j)
-    assert hero['handle'] in ls[2], ls[2]
-    assert 'rock' not in ('\n'.join(ls)).lower()
+    text = '\n'.join(ls)
+    assert "everyone's screaming" not in text.lower()
+    assert 'thecrowdtape' not in text.lower()
+    assert ls[0] == 'T S L A is the most discussed name on the tape today.', ls[0]
+    assert 'lean bullish' in ls[2] and 'split' not in ls[2].lower() and 'fight' not in ls[0].lower()
+    hero = carousel_vo.load_hero_quote('TSLA')
+    if hero and hero.get('handle'):
+        assert hero['handle'] not in text
     _assert_no_advice(ls)
 
 
@@ -213,20 +217,20 @@ def test_duration_guard():
 
     with no_hero_quote():
         vo, calls = _run_vo([job('en')], lambda rate, text: 1.2, langs='en')
-        assert len(calls) == 5 and {r for r, _ in calls} == {'+10%'}
+        assert len(calls) == 4 and {r for r, _ in calls} == {'+10%'}
         assert [x['text'] for x in vo['1230-en']] == EN_LINES
         assert carousel_vo.video_total([x['dur'] for x in vo['1230-en']]) <= 40.0
 
-        vo, calls = _run_vo([job('en')], lambda rate, text: 1.2 if rate == '+30%' else 9.0, langs='en')
+        vo, calls = _run_vo([job('en')], lambda rate, text: 1.2 if rate == '+30%' else 12.0, langs='en')
         assert [x['text'] for x in vo['1230-en']] == EN_LINES  # fitted on the normal script, not the short one
         assert calls[0][0] == '+10%' and calls[-1][0] == '+30%'
         assert all(t != 'Hottest stock?' for _, t in calls)
         assert carousel_vo.video_total([x['dur'] for x in vo['1230-en']]) <= 40.0
 
-        vo, calls = _run_vo([job('en')], lambda rate, text: 9.0, langs='en')
+        vo, calls = _run_vo([job('en')], lambda rate, text: 12.0, langs='en')
         assert '1230-en' not in vo  # still over 40s after every try: no voice, rather than a long video
-        assert any('who is making sense' in t or 'Top voice' in t or t.startswith('@') for _, t in calls)
-        assert calls[-1] == ('+30%', 'thecrowdtape dot com')
+        assert any('tracked accounts' in t or 'Bull or bear' in t for _, t in calls)
+        assert calls[-1] == ('+30%', 'Bull or bear on S P Y?')
 
     # A zh read that would be over 40s is still emitted once, at +10%, with the snapshot lines.
     vo, calls = _run_vo([job('zh')], lambda rate, text: 9.0, langs='zh')
@@ -251,21 +255,18 @@ def test_video_total_matches_js():
     n = len(carousel_vo.BASE_BEATS)
     cases = [[round(rng.uniform(0.8, 6.5), 3) for _ in range(n)] for _ in range(80)]
     cases.append([round(7 * 60 / 124 - 0.4, 3)] * n)  # ceil boundary
-    script = (
-        'const fs = require("fs");\n'
-        'const BEAT = 60 / 124, BASE = [12, 12, 14, 14, 12];\n'
-        'const COVER = %d / 24;\n'
-        'const cases = JSON.parse(fs.readFileSync(0, "utf8"));\n'
-        'for (const vo of cases) {\n'
-        '  let acc = 0;\n'
-        '  for (let i = 0; i < BASE.length; i++) acc += Math.max(BASE[i], Math.ceil((vo[i] + 0.4) / BEAT)) * BEAT;\n'
-        '  console.log(acc + COVER);\n'
-        '}\n'
-    ) % carousel_vo.COVER_FRAMES
+    script = r'''
+const fs = require("fs");
+const { voicedTotal } = require("./tools/carousel_video.js");
+const cases = JSON.parse(fs.readFileSync(0, "utf8"));
+for (const durs of cases) {
+  console.log(voicedTotal(durs.map(dur => ({ dur, file: "x" }))));
+}
+'''
     env = os.environ.copy()
     env.pop('FORCE_COLOR', None)
     env['NO_COLOR'] = '1'
-    proc = subprocess.run(['node', '-e', script], input=json.dumps(cases), text=True, capture_output=True, check=True, env=env)
+    proc = subprocess.run(['node', '-e', script], input=json.dumps(cases), text=True, capture_output=True, check=True, env=env, cwd=ROOT)
     nums = re.findall(r'[-+]?\d+(?:\.\d+)?(?:[eE][-+]?\d+)?', proc.stdout)
     got = [float(x) for x in nums]
     assert len(got) == len(cases)

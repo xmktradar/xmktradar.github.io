@@ -1,10 +1,11 @@
 """Voiceover for the carousel motion videos (v6 Bloomberg / terminal).
 
 zh: Mandarin, zh-CN-XiaoxiaoNeural, rate +10%. Lines, voice, rate and the zh pass are unchanged.
-en: English, en-US-AndrewNeural (override with VO_VOICE_en). Starts at +10%. If the video would
-    run past 40.0s, retries +20% then +30%, then the same rates on a shorter script. Still too
-    long: that video is left out of vo.json, so tools/carousel_video.js skips the language
-    (no silent / music-only mp4). Target 30–40s; never ship over 40.0s.
+en: English, en-US-AndrewNeural (override with VO_VOICE_en). Three beats per name
+    (heat, one TA fact, tracked-account lean) plus hook and CTA. Starts at +10%. If the
+    cut would run past the cap (40s weekday / Saturday single, 75s Week Tape hot-list),
+    retries +20% then +30%, then a shorter script. Still too long: that video is left out
+    of vo.json (no silent / music-only mp4). Weekday target 30–40s. No site-URL closer.
 
 Reads work/carousel.json (the same slides the pictures use), writes one line per video scene
 (5 scenes: open, split, m1, m2, cta), reads each line with edge-tts (free, no key)
@@ -14,7 +15,7 @@ out of vo.json, so tools/carousel_video.js skips that language. Lines never say 
 a price target or a prediction.
 Usage: python3 tools/carousel_vo.py work/carousel.json <out dir>   (VO_LANGS=en  VO_VOICE_en=...; override VO_LANGS=zh,en)
        VO_FAKE=1 makes silent stand-in files of a plausible length (local tests, no network).
-Tim 2026-11-04: default VO_LANGS=en (daily Shorts en-only). en 5-line rhythm: question → split → named @handle quote → data → CTA.
+Tim 2026-11-04: default VO_LANGS=en (daily Shorts en-only). EN lines come from tools/video_signal.py.
 Video length uses the same beat sum as tools/carousel_video.js (scene grows to fit the line +0.4s).
 Cover is merged into open (COVER_FRAMES = 0); the 5 lines start at each scene's +0.15s lead-in.
 """
@@ -26,13 +27,15 @@ import re
 import subprocess
 import sys
 
+import video_signal
+
 VOICES = {'zh': 'zh-CN-XiaoxiaoNeural', 'en': 'en-US-AndrewNeural'}
 BACKUP_VOICES = {'zh': ['zh-CN-XiaoyiNeural'], 'en': ['en-US-BrianNeural', 'en-US-ChristopherNeural']}
 RATE = '+10%'
 TIMEOUT = 30
 # Keep in sync with BASE / BEAT / COVER_FRAMES in tools/carousel_video.js.
 BEAT = 60 / 124
-BASE_BEATS = (12, 12, 14, 14, 12)  # open, split, m1, m2, cta — ~30s silent @124bpm; VO pads toward 30–40s
+BASE_BEATS = (6, 20, 13, 20, 14)  # open, split, m1, m2, cta — weekday-with-TA floor ~35s @124bpm
 COVER_FRAMES = 0  # cover merged into open; 40s guard still uses COVER_S for parity
 COVER_S = COVER_FRAMES / 24
 MIN_VIDEO_S = 30.0
@@ -63,10 +66,8 @@ def num(s, d=0):
 
 
 def counts(cover):
-    pills = cover.get('pills') or []
-    bull = num(next((p['x'] for p in pills if p.get('c') == 'g'), ''))
-    bear = num(next((p['x'] for p in pills if p.get('c') == 'r'), ''))
-    return num(cover.get('sub')), bull, bear
+    """Accounts, bull, bear. Pills, or duel `bar` / `nb`/`nr` / a versus subtitle."""
+    return video_signal.counts(cover or {})
 
 
 def first_cards(slide, mark=None):
@@ -77,16 +78,27 @@ def first_cards(slide, mark=None):
     return out
 
 
-def video_total(durs):
+def video_total(durs, bases=None):
     """Seconds, matching carousel_video.js.
 
-    No durs: the silent cut (sum of BASE_BEATS) plus COVER_S (0 in v6). A voiced scene is
-    max(base beats, ceil((line + 0.4s) / beat)) beats.
+    No durs: the silent cut (sum of bases, default BASE_BEATS) plus COVER_S (0 in v6).
+    A voiced scene is max(base beats, ceil((line + 0.4s) / beat)) beats.
+    Five durations and no bases use BASE_BEATS. Four use the weekday no-TA floor.
     """
     if not durs:
-        return sum(BASE_BEATS) * BEAT + COVER_S
+        beats = bases if bases is not None else BASE_BEATS
+        return sum(beats) * BEAT + COVER_S
+    if bases is None:
+        if len(durs) == len(BASE_BEATS):
+            bases = BASE_BEATS
+        elif len(durs) == 4:
+            bases = (video_signal.WEEKDAY_NOTA['hook'], video_signal.WEEKDAY_NOTA['heat'],
+                     video_signal.WEEKDAY_NOTA['views'], video_signal.WEEKDAY_NOTA['cta'])
+        else:
+            bases = tuple(8 for _ in durs)
     total = 0.0
-    for base, dur in zip(BASE_BEATS, durs):
+    for i, dur in enumerate(durs):
+        base = bases[i] if i < len(bases) else 8
         total += max(base, math.ceil((float(dur) + 0.4) / BEAT)) * BEAT
     return total + COVER_S
 
@@ -184,68 +196,13 @@ def load_hero_quote(big=''):
 
 
 def en_lines(job, short=False):
-    """5 English lines (v3): question → split → named @handle quote → data → CTA.
+    """English lines for one cut. Hook, heat, optional TA, tracked lean, CTA.
 
-    Tickers go through spell(). No buy, sell, target or prediction. No rock parable.
+    Tickers go through spell(). Counts come from the cover (`pills` or `bar`) or
+    from `job['beats']` when the selector already built them. No buy, sell, target,
+    prediction, or site-URL closer. Does not read `px/` by itself.
     """
-    s = job['slides']
-    big = s[0].get('big', '')
-    n, bull, bear = counts(s[0])
-    top4 = first_cards(s[1])[:4]
-    up, down = first_cards(s[2], '🟢')[:1], first_cards(s[2], '🔴')[:1]
-    split = first_cards(s[3])[:1]
-    hero = load_hero_quote(big)
-    if hero and hero.get('ticker'):
-        big = hero['ticker'] or big
-    if bull > bear:
-        lean = 'Bulls ahead.' if not short else 'Bulls.'
-    elif bear > bull:
-        lean = 'Bears ahead.' if not short else 'Bears.'
-    else:
-        lean = "It's a tie." if not short else 'Tie.'
-    bits = ([f'bull {spell(up[0])}'] if up else []) + ([f'bear {spell(down[0])}'] if down else [])
-    joint = ', '.join(bits)
-    if joint:
-        data = joint if short else f'Across the tape: {joint}.'
-    elif split:
-        data = (f'{spell(split[0])}, biggest split.' if short
-                else f'Across the tape: {spell(split[0])}, biggest split.')
-    elif top4:
-        top = ', '.join(spell(t) for t in top4)
-        data = (f'Top: {top}' if short else f'Across the tape: top names {top}.')
-    else:
-        data = 'On the tape today.' if short else 'Across the tape: here is what accounts said.'
-    if hero and hero.get('handle') and hero.get('text'):
-        handle = hero['handle']
-        # Keep VO short: handle + one compact clause
-        q = hero['text']
-        if len(q) > 110:
-            q = q[:107].rsplit(' ', 1)[0] + '…'
-        if short:
-            quote_line = f'{handle}: {q}' if len(q) < 70 else f'{handle} on {spell(big)}.'
-        else:
-            quote_line = f'{handle}: {q}'
-    else:
-        # No usable real quote — stay generic, never invent rock metaphor
-        quote_line = (f'Top voice on {spell(big)} is on the tape.' if big
-                      else 'Top voices are on the tape.')
-        if short:
-            quote_line = f'{spell(big)} — top voice on tape.' if big else 'Top voice on tape.'
-    if short:
-        return [
-            f'{spell(big)} — who is making sense?',
-            f'{bull} bull, {bear} bear. {lean}',
-            quote_line,
-            data,
-            'thecrowdtape dot com',
-        ]
-    return [
-        f"Everyone's screaming about {spell(big)} — who's actually making sense?",
-        f'On {spell(big)} the tape is {_count_en(bull, "bull", "bulls")} versus {_count_en(bear, "bear", "bears")}. {lean}',
-        quote_line,
-        data,
-        'Full tape, free, at thecrowdtape dot com',
-    ]
+    return video_signal.en_lines(job, short=short)
 
 
 def lines(job):
@@ -327,21 +284,33 @@ def render_lines(texts, voice, out_dir, key, rate):
 
 
 def fit_en(job, voice, out_dir, key):
-    """Speak English, speeding up or shortening until the video would be <= 40.0s. None skips the language."""
+    """Speak English until the cut is inside the slot cap. None skips the language.
+
+    Weekday and a Saturday single stay at 40s. A Week Tape hot-list may run to 75s.
+    The short pass shrinks middle beats; hook and CTA bases stay.
+    """
+    cap = video_signal.video_cap(job)
     last = None
     for short, rate in EN_TRIES:
-        got = render_lines(en_lines(job, short=short), voice, out_dir, key, rate)
+        texts = en_lines(job, short=short)
+        if not texts:
+            print(f'::warning::{key} 無旁白腳本，今次唔出呢條片')
+            return None
+        got = render_lines(texts, voice, out_dir, key, rate)
         if not got:
             print(f'::warning::{key} 配音失敗，今次唔出呢條片')
             return None
-        total = video_total([g['dur'] for g in got])
+        bases = video_signal.bases_for(job, short=short)
+        for clip, base in zip(got, bases):
+            clip['base'] = base
+        total = video_total([g['dur'] for g in got], bases)
         last = total
         print(f'voiceover: {key} rate {rate}{" short" if short else ""} video {total:.2f}s')
-        if fits(total):
+        if total <= cap:
             print(f'voiceover: {key} final {total:.2f}s')
             return got
-    bare = video_total(None)
-    print(f'::warning::{key} 英文旁白 {last:.2f}s 超過 {MAX_VIDEO_S:.1f} 秒，今次唔出呢條片（bare {bare:.2f}s）')
+    bare = video_total(None, video_signal.bases_for(job, short=False))
+    print(f'::warning::{key} 英文旁白 {last:.2f}s 超過 {cap:.1f} 秒，今次唔出呢條片（bare {bare:.2f}s）')
     return None
 
 
@@ -353,6 +322,10 @@ def main(job_file, out_dir):
     result = {}
     for job in jobs:
         if job['lang'] not in want or job['slot'] not in slots:
+            continue
+        signal = job.get('signal') if isinstance(job.get('signal'), dict) else {}
+        if job.get('video_skip') or job.get('skip') or job.get('publishable') is False or signal.get('publishable') is False:
+            print(f"::notice::{job.get('slot')} {job.get('lang')} skipped before voiceover")
             continue
         key = f"{job['slot']}-{job['lang']}"
         texts = lines(job)

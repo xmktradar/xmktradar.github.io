@@ -59,8 +59,8 @@ function buildYtCopy(job, W) {
   const handle = String(m1.handle || '').trim() || '@thecrowdtape';
   const quote = cleanQuote((m1.lines || []).join(' ') || m1.quote_text || '');
   const hook = String(open.hookQ || (tick
-    ? `Everyone's screaming about ${tick} — who's actually making sense?`
-    : `Who's actually making sense on the tape today?`)).trim();
+    ? `${tick} is the most discussed name on the tape today.`
+    : `The most discussed name on the tape today.`)).trim();
   const n = Number(W && W.n) || 0;
   const bull = Number(W && W.bull) || 0;
   const bear = Number(W && W.bear) || 0;
