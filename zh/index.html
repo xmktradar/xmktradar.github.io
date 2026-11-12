@@ -1052,6 +1052,8 @@ function clipDailyRange(from,to,cutMs){const a=_parseHkt(from,false),z=_parseHkt
  if(typeof cutMs==='number'&&cutMs>0&&cutMs<z)end=Math.max(a,cutMs);
  return {from:String(from).length>10?from:from+'T00:00',to:_tsOf(end)}}
 function priorDailyRange(from,to){const DAY=864e5;return {pf:_tsOf(_parseHkt(from,false)-DAY),pt:_tsOf(_parseHkt(to,true)-DAY)}}
+// Writer `to` is the minute start (no +59999). Equal to cutoff is still fresh; only a strictly earlier end with posts after it is stale.
+function writerWinStale(win,cutMs,hasPostsAfter){if(!win||!win.to||!hasPostsAfter||!(typeof cutMs==='number'&&cutMs>0))return false;const to=_parseHkt(win.to,false);return to<cutMs}
 // 摘要截止（briefAsOf）同本頁統計窗唔同時，先分開講兩個時間；冇獨立截止就仍然係同一範圍
 function rangeSrcNote(src,bx,cx){if(src!=='writer')return '今個抓帖周期';if(bx&&cx&&bx===cx)return '與今日市場分析相同';if(bx&&cx)return '今日市場分析截至 '+bx+' HKT，本頁統計至 '+cx+' HKT';return '與今日市場分析相同'}
 /*DAILY-WIN-END*/
@@ -1129,7 +1131,7 @@ function numHi(s){
 }
 /*ANALYSIS-LABEL-END*/
 function dailyWindow(){const cut=dataCutoffMs();const sm=summaryOf('daily',TODAY);const win=sm&&!sm.stale&&sm.s.win;
- if(win&&win.from&&win.to){const c=clipDailyRange(win.from,win.to,cut);const n=rawIn(c.from,c.to).filter(valid).length;return {from:c.from,to:c.to,day:TODAY,timed:true,src:'writer',merged:false,n}}
+ if(win&&win.from&&win.to){const hasPostsAfter=!!(cut&&rawIn(win.from,tsOf(cut)).filter(valid).some(p=>p.ms>_parseHkt(win.to,true)));if(!writerWinStale(win,cut,hasPostsAfter)){const c=clipDailyRange(win.from,win.to,cut);const n=rawIn(c.from,c.to).filter(valid).length;return {from:c.from,to:c.to,day:TODAY,timed:true,src:'writer',merged:false,n}}}
  if(SCRAPE_SLOTS.length&&cut){
   const cands=[];[0,1].forEach(k=>SCRAPE_SLOTS.forEach(sl=>{const t=Date.parse(addDays(hkDate(cut),-k)+'T'+sl+':00+08:00');if(t<=cut)cands.push(t)}));
   const last=cands.length?Math.max(...cands):cut;const from=tsOf(last-DAY),to=tsOf(cut);const n=rawIn(from,to).filter(valid).length;

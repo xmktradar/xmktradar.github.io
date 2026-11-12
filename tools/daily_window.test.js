@@ -4,7 +4,7 @@ const fs = require('fs'), path = require('path');
 const src = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
 const m = src.match(/\/\*DAILY-WIN\*\/([\s\S]*?)\/\*DAILY-WIN-END\*\//);
 assert.ok(m, 'DAILY-WIN block missing from index.html');
-const F = new Function(m[1] + ';return {clipDailyRange,priorDailyRange,rangeSrcNote};')();
+const F = new Function(m[1] + ';return {clipDailyRange,priorDailyRange,rangeSrcNote,writerWinStale};')();
 
 test('prior window end is current end minus 24h (timed)', () => {
   const p = F.priorDailyRange('2026-10-25T00:00', '2026-10-25T09:15');
@@ -42,6 +42,37 @@ test('range label says the windows match only when the brief end equals the wind
   assert.equal(F.rangeSrcNote('writer', '09:15', ''), '與今日市場分析相同');
   assert.match(src, /rangeSrcNote\(w\.src,briefAsOf\(w,sm\),w\.to&&w\.to\.length>10\?w\.to\.slice\(11,16\):''\)/);
   assert.doesNotMatch(src, /w\.src==='writer'\?'與今日市場分析相同'/);
+});
+
+test('writer window earlier than cutoff is stale only when posts follow it', () => {
+  const win = {from:'2026-11-10T19:30', to:'2026-11-12T01:51'};
+  const cut = Date.parse('2026-11-12T19:04:57+08:00');
+  assert.equal(F.writerWinStale(win, cut, true), true);
+  assert.equal(F.writerWinStale(win, cut, false), false);
+});
+
+test('writer window ending exactly at cutoff is not stale', () => {
+  const cut = Date.parse('2026-11-12T19:04:00+08:00');
+  assert.equal(F.writerWinStale({from:'2026-11-10T19:30', to:'2026-11-12T19:04'}, cut, true), false);
+});
+
+test('writer window later than cutoff is not stale; clipDailyRange still shortens', () => {
+  const cut = Date.parse('2026-11-12T19:04:57+08:00');
+  assert.equal(F.writerWinStale({from:'2026-11-10T19:30', to:'2026-11-12T23:59'}, cut, true), false);
+  const c = F.clipDailyRange('2026-11-10T19:30', '2026-11-12T23:59', cut);
+  assert.equal(c.from, '2026-11-10T19:30');
+  assert.equal(c.to, '2026-11-12T19:04');
+});
+
+test('dailyWindow drops a stale writer window when valid posts are strictly after win.to', () => {
+  assert.match(src, /hasPostsAfter=!!\(cut&&rawIn\(win\.from,tsOf\(cut\)\)\.filter\(valid\)\.some\(p=>p\.ms>_parseHkt\(win\.to,true\)\)\)/);
+  assert.match(src, /if\(!writerWinStale\(win,cut,hasPostsAfter\)\)/);
+  for (const rel of ['zh/index.html', 'en/index.html']) {
+    const page = fs.readFileSync(path.join(__dirname, '..', rel), 'utf8');
+    assert.match(page, /function writerWinStale\(win,cutMs,hasPostsAfter\)/);
+    assert.match(page, /if\(!writerWinStale\(win,cut,hasPostsAfter\)\)/);
+    assert.match(page, /p\.ms>_parseHkt\(win\.to,true\)/);
+  }
 });
 
 test('briefAsOf end feeds the range label (highlights range, else writer window)', () => {
