@@ -1869,9 +1869,160 @@
       "SMCI"
      ]
     }
+   },
+   "intraday_close": {
+    "post_et": "15:40",
+    "post_hkt": "04:40",
+    "generated_at": "2026-11-12T15:43:58-05:00",
+    "date": "2026-11-12",
+    "date_kst": "2026-11-13",
+    "quotes": {
+     "SPY": {
+      "price": 756.97,
+      "prev_close": 759.81,
+      "chg_pct": -0.37,
+      "time": "2026-11-12T15:43:48-05:00"
+     },
+     "QQQ": {
+      "price": 687.16,
+      "prev_close": 690.38,
+      "chg_pct": -0.47,
+      "time": "2026-11-12T15:43:56-05:00"
+     },
+     "DIA": {
+      "price": 523.018,
+      "prev_close": 524.44,
+      "chg_pct": -0.27,
+      "time": "2026-11-12T15:43:53-05:00"
+     },
+     "AMD": {
+      "price": 581.34,
+      "prev_close": 552.9,
+      "chg_pct": 5.14,
+      "time": "2026-11-12T15:43:57-05:00"
+     },
+     "GOOGL": {
+      "price": 299.27,
+      "prev_close": 293.45,
+      "chg_pct": 1.98,
+      "time": "2026-11-12T15:43:58-05:00"
+     },
+     "SMCI": {
+      "price": 27.317,
+      "prev_close": 30.43,
+      "chg_pct": -10.23,
+      "time": "2026-11-12T15:44:00-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-12T15:44:00-05:00",
+     "hkt": "2026-11-13 04:44"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "AMD",
+      "chg_pct": 5.14,
+      "bull": 9,
+      "bear": 0,
+      "accounts": [
+       "3PeaksTrading",
+       "TrendSpider",
+       "FuturumEquities",
+       "wallstengine",
+       "Frenchie_",
+       "EliteOptions2",
+       "KeithMcCullough",
+       "Jesse_Livermore"
+      ]
+     },
+     {
+      "ticker": "GOOGL",
+      "chg_pct": 1.98,
+      "bull": 3,
+      "bear": 0,
+      "accounts": [
+       "3PeaksTrading",
+       "DeItaone",
+       "Mr_Derivatives",
+       "OpenOutcrier",
+       "justinsuntron",
+       "KEDM_COM"
+      ]
+     },
+     {
+      "ticker": "SPY",
+      "chg_pct": -0.37,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "3PeaksTrading",
+       "ACInvestorBlog",
+       "RedDogT3",
+       "ripster47",
+       "MikeZaccardi",
+       "EliteOptions2",
+       "MichaelKantro",
+       "nieto"
+      ]
+     },
+     {
+      "ticker": "SMCI",
+      "chg_pct": -10.23,
+      "bull": 0,
+      "bear": 2,
+      "accounts": [
+       "wallstengine",
+       "tenet_research",
+       "OpenOutcrier"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Into the close · As of 15:44 ET (04:44 HKT)\n\n$SPY -0.4% · $QQQ -0.5% · $DIA -0.3%\n\n$AMD +5.1%, 9 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #AMD #GOOGL",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "收市前回顧 · 截至 15:44 ET（04:44 HKT）\n\n$SPY -0.4% · $QQQ -0.5% · $DIA -0.3%\n\n$AMD +5.1%，網站 9 個帳號看好\n$GOOGL +2.0%，網站 3 個帳號看好\n$SPY -0.4%，網站 2 個帳號看好\n$SMCI -10.2%，網站 2 個帳號看空\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #AMD #GOOGL",
+      "url": null
+     },
+     "en": {
+      "text": "Into the close · As of 15:44 ET (04:44 HKT)\n\n$SPY -0.4% · $QQQ -0.5% · $DIA -0.3%\n\n$AMD +5.1%, 9 accounts bullish on site\n$GOOGL +2.0%, 3 accounts bullish on site\n$SPY -0.4%, 2 accounts bullish on site\n$SMCI -10.2%, 2 accounts bearish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #AMD #GOOGL",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "AMD",
+      "GOOGL",
+      "SPY",
+      "AVGO",
+      "AAPL",
+      "ASTS",
+      "ONDS",
+      "BE",
+      "GOOG",
+      "MNTS"
+     ],
+     "bear": [
+      "SMCI"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-12T15:43:54-05:00",
+  "generated_at": "2026-11-12T15:43:58-05:00",
   "generated_hkt": "2026-11-13 04:43"
  }
 }
