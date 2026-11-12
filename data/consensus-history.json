@@ -1586,16 +1586,18 @@
     "ONDS",
     "MNTS"
    ],
-   "bear": [],
+   "bear": [
+    "CRWV"
+   ],
    "split": [
     "NVDA",
     "MU",
-    "NBIS",
-    "SPCX"
+    "SPCX",
+    "NBIS"
    ],
    "window": [
-    "2026-11-11T19:30",
-    "2026-11-12T21:23"
+    "2026-11-11T11:30",
+    "2026-11-12T23:39"
    ],
    "top": [
     "NVDA",
@@ -1603,16 +1605,16 @@
     "AMD",
     "CRWV",
     "MU",
+    "QQQ",
+    "SPCX",
     "GOOGL",
     "SPY",
-    "SPCX",
-    "SPX",
-    "QQQ"
+    "AVGO"
    ],
    "src": "live",
-   "updated_hkt": "2026-11-13 00:37"
+   "updated_hkt": "2026-11-13 01:22"
   }
  },
- "updated_hkt": "2026-11-13 00:37",
+ "updated_hkt": "2026-11-13 01:22",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
