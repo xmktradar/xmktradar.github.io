@@ -13,7 +13,8 @@ and work/carousel.json for tools/carousel.js, which draws og/c/<day>-<slot>-<lan
 import html
 import os
 import re
-from datetime import timedelta
+from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 
 from ranking import rank_rows
 from share import (SHORT, SITE, LANGS, IG_BIO, IG_FOLLOW, attach_new_posts, clean, dedupe_handle,
@@ -45,6 +46,34 @@ def video_stem(day, slot, lang):
 
 VIDEO_LANGS = tuple(x for x in os.environ.get('VIDEO_LANGS', 'en').split(',') if x)  # Tim 2026-11-04: daily Shorts/carousel video en-only (override with VIDEO_LANGS)
 TARGET_DAYS = 7  # price targets from the last week
+NY = ZoneInfo('America/New_York')
+
+
+def now_et(now=None):
+    """Timezone-aware America/New_York clock. Tests patch carousel.now_et. Not sitedata.ET (fixed UTC-4)."""
+    if now is None:
+        return datetime.now(NY)
+    if now.tzinfo is None:
+        return now.replace(tzinfo=NY)
+    return now.astimezone(NY)
+
+
+def _requested_slots(only=None):
+    if only is None:
+        only = [x for x in os.environ.get('CAROUSEL_ONLY_SLOTS', '').split(',') if x]
+    if only:
+        return list(only)
+    return [x for x in VIDEO_SLOTS if x]
+
+
+def _job_is_skip(job):
+    if not isinstance(job, dict):
+        return True
+    if job.get('video_skip') or job.get('skip') or job.get('publishable') is False:
+        return True
+    signal = job.get('signal') if isinstance(job.get('signal'), dict) else {}
+    return signal.get('publishable') is False
+
 
 def video_missing(sl, key, now):
     """A video slot with a language's video missing is made again on later runs, until 20 minutes
@@ -615,6 +644,30 @@ def _week_tape_job(st, day):
     return decision, job
 
 
+def _force_en_job(st, key, day):
+    """EN video or skip job so CAROUSEL_FORCE still writes carousel.json. No mp4 URL."""
+    decision = video_signal.evaluate_slot(key, st, date=day, lang='en')
+    names = decision.get('names') or []
+    lead = names[0]['t'] if names else ''
+    job = {
+        'slot': key,
+        'theme': THEME.get(key) or ('week' if key in ('sat', 'week') else key),
+        'lang': 'en',
+        'date': day,
+        'slides': [{'kind': 'cover', 'big': lead, 'sub': ''}] if lead else [],
+        'files': [],
+        'skip_stills': True,
+    }
+    _apply_video(job, key, day, decision)
+    if _job_is_skip(job):
+        job['skip_stills'] = True
+        job['files'] = []
+        job['slides'] = []
+        job.pop('beats', None)
+        job.pop('fb', None)
+    return decision, job
+
+
 def main():
     st = read_json(work('stats.json'))
     if not st:
@@ -623,25 +676,33 @@ def main():
     day, s = st['today'], st['daily']
     sp = read_json('data/social-posts.json', {})
     force = os.environ.get('CAROUSEL_FORCE') == '1'
-    if sp.get('date') != day or not (trading_day(day) or force):
+    # Update site (no FORCE): a social-posts date mismatch or a non-trading day still
+    # returns without rewriting leftover slots. FORCE is Tape Cats and must not use this.
+    if not force and (sp.get('date') != day or not trading_day(day)):
         print('carousel: no posts today')
         return
+    if force:
+        # Show date is the America/New_York calendar day of the run, not cutoff_hkt / stats.today.
+        day = now_et().date().isoformat()
     now = now_hk()
     slots = sp.get('slots') or {}
-    only_pre = [x for x in os.environ.get('CAROUSEL_ONLY_SLOTS', '').split(',') if x]
-    if only_pre:
+    only = [x for x in os.environ.get('CAROUSEL_ONLY_SLOTS', '').split(',') if x]
+    if only:
         # Keep sibling slots (e.g. keep 1230 Tape Take when forcing 1630 Crowd Heat).
-        slots = {k: v for k, v in slots.items() if k not in only_pre}
+        slots = {k: v for k, v in slots.items() if k not in only}
     elif force or any(v.get('day') != day for v in slots.values()):
         slots = {}
     todo = [k for k, h, _ in SLOTS if (now.hour >= h or force) and (k not in slots or force or video_missing(slots[k], k, now))]
     # Tape Cats Shorts: only build the requested video slots (do not remake 1230 when rendering 1630).
-    only = [x for x in os.environ.get('CAROUSEL_ONLY_SLOTS', '').split(',') if x]
     if only:
         todo = [k for k in todo if k in only]
     # Saturday Week Tape is a motion job, not one of the three picture slots.
     if 'sat' in VIDEO_SLOTS and (not only or 'sat' in only) and 'sat' not in todo:
         todo.append('sat')
+    if force:
+        for key in _requested_slots(only):
+            if key not in todo:
+                todo.append(key)
     if not todo:
         return
     # Slim homepages keep accounts and older posts in external files. full_data
@@ -740,29 +801,64 @@ def main():
                 slots[key].pop('video', None)
                 slots[key].pop('video_cover', None)
         written.append(key)
+    if force:
+        for key in _requested_slots(only):
+            ens = [j for j in jobs if j.get('slot') == key and j.get('lang') == 'en']
+            if not ens:
+                _, job = _force_en_job(signal_stats, key, day)
+                jobs.append(job)
+                ens = [job]
+            else:
+                for j in ens:
+                    if 'signal' not in j:
+                        decision = video_signal.evaluate_slot(key, signal_stats, date=day, lang='en')
+                        _apply_video(j, key, day, decision)
+            if any(_job_is_skip(j) for j in ens):
+                keep = ens[-1]
+                keep['skip_stills'] = True
+                keep['files'] = []
+                keep['slides'] = []
+                keep.pop('beats', None)
+                keep.pop('fb', None)
+                jobs = [j for j in jobs if j.get('slot') != key or j is keep]
     if not jobs:
         return
-    sp['slots'] = {k: slots[k] for k, _, _ in SLOTS if k in slots}
-    if 'sat' in slots:
-        sp['slots']['sat'] = slots['sat']
-    sp.pop('pose_log', None)
-    for key, sl in (sp.get('slots') or {}).items():
-        if isinstance(sl, dict):
-            sl.pop('poses', None)
-        if sl.get('posts'):
-            tag_posts(sl['posts'], f'carousel-{key}')
-            fit_threads_posts(sl['posts'])
-    # 19:05 writes the 2030 slot before the 21:00 trilingual post, so premarket is rebuilt with that day's card.
-    attach_new_posts(sp, rebuild_premarket='2030' in written)
-    # The new text goes into place only after tools/carousel.js has drawn the pictures (see update-site.yml).
-    write_json(work('carousel.json'), {'date': day, 'jobs': jobs})
-    write_json(work('social-posts.json'), sp, indent=1)
-    normalize_file(work('social-posts.json'))
-    from ig_boost import apply_social_file
-    apply_social_file(work('social-posts.json'))
-    sp = read_json(work('social-posts.json'))
-    write_page(sp, work('social.html'))
-    notice(f"社交多圖帖已寫好：{', '.join(todo)}（{SITE}social/）")
+    live = any(isinstance(j, dict) and j.get('publishable') is True and not j.get('video_skip') for j in jobs)
+    # A FORCE skip, or a show date that is not the social-posts date, must not clobber Update site slots.
+    write_social = (not force) or (sp.get('date') == day and live)
+    if force:
+        # Tape Cats only needs this file. Write it before social side effects so a skip still exits 0.
+        write_json(work('carousel.json'), {'date': day, 'jobs': jobs})
+        if not write_social:
+            return
+    try:
+        sp['slots'] = {k: slots[k] for k, _, _ in SLOTS if k in slots}
+        if 'sat' in slots:
+            sp['slots']['sat'] = slots['sat']
+        sp.pop('pose_log', None)
+        for key, sl in (sp.get('slots') or {}).items():
+            if isinstance(sl, dict):
+                sl.pop('poses', None)
+            if sl.get('posts'):
+                tag_posts(sl['posts'], f'carousel-{key}')
+                fit_threads_posts(sl['posts'])
+        # 19:05 writes the 2030 slot before the 21:00 trilingual post, so premarket is rebuilt with that day's card.
+        attach_new_posts(sp, rebuild_premarket='2030' in written)
+        # Update site writes carousel.json only after the social text is ready, and only when that step succeeds.
+        if not force:
+            write_json(work('carousel.json'), {'date': day, 'jobs': jobs})
+        # The new text goes into place only after tools/carousel.js has drawn the pictures (see update-site.yml).
+        write_json(work('social-posts.json'), sp, indent=1)
+        normalize_file(work('social-posts.json'))
+        from ig_boost import apply_social_file
+        apply_social_file(work('social-posts.json'))
+        sp = read_json(work('social-posts.json'))
+        write_page(sp, work('social.html'))
+        notice(f"社交多圖帖已寫好：{', '.join(todo)}（{SITE}social/）")
+    except Exception:
+        if not force:
+            raise
+        notice('carousel: social-posts left unchanged', 'warning')
 
 
 if __name__ == '__main__':
