@@ -1568,9 +1568,162 @@
       "SMCI"
      ]
     }
+   },
+   "intraday_3": {
+    "post_et": "13:30",
+    "post_hkt": "02:30",
+    "generated_at": "2026-11-12T15:43:50-05:00",
+    "date": "2026-11-12",
+    "date_kst": "2026-11-13",
+    "quotes": {
+     "SPY": {
+      "price": 756.97,
+      "prev_close": 759.81,
+      "chg_pct": -0.37,
+      "time": "2026-11-12T15:43:48-05:00"
+     },
+     "QQQ": {
+      "price": 687.2,
+      "prev_close": 690.38,
+      "chg_pct": -0.46,
+      "time": "2026-11-12T15:43:50-05:00"
+     },
+     "DIA": {
+      "price": 523.01,
+      "prev_close": 524.44,
+      "chg_pct": -0.27,
+      "time": "2026-11-12T15:43:48-05:00"
+     },
+     "NBIS": {
+      "price": 126.45,
+      "prev_close": 154.69,
+      "chg_pct": -18.26,
+      "time": "2026-11-12T15:43:50-05:00"
+     },
+     "CRWV": {
+      "price": 55.69,
+      "prev_close": 60.77,
+      "chg_pct": -8.36,
+      "time": "2026-11-12T15:43:51-05:00"
+     },
+     "GOOG": {
+      "price": 296.165,
+      "prev_close": 290.63,
+      "chg_pct": 1.9,
+      "time": "2026-11-12T15:43:50-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-12T15:43:51-05:00",
+     "hkt": "2026-11-13 04:43"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "QQQ",
+      "chg_pct": -0.46,
+      "bull": 2,
+      "bear": 1,
+      "accounts": [
+       "tenet_research",
+       "ACInvestorBlog",
+       "KeithMcCullough",
+       "MrZackMorris",
+       "TradingThomas3",
+       "MikeZaccardi",
+       "ripster47",
+       "EliteOptions2"
+      ]
+     },
+     {
+      "ticker": "NBIS",
+      "chg_pct": -18.26,
+      "bull": 1,
+      "bear": 1,
+      "accounts": [
+       "ACInvestorBlog",
+       "Frenchie_",
+       "Beth_Kindig",
+       "daniel_koss",
+       "StockSavvyShay",
+       "PhotonBull",
+       "Sandeman52",
+       "tenet_research"
+      ]
+     },
+     {
+      "ticker": "CRWV",
+      "chg_pct": -8.36,
+      "bull": 1,
+      "bear": 2,
+      "accounts": [
+       "Beth_Kindig",
+       "spotgamma",
+       "Frenchie_",
+       "OpenOutcrier",
+       "InvestmentGuru_",
+       "wallstengine",
+       "themissinglinks",
+       "ripster47"
+      ]
+     },
+     {
+      "ticker": "GOOG",
+      "chg_pct": 1.9,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "Beth_Kindig",
+       "OpenOutcrier",
+       "InvestmentGuru_"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Early afternoon · As of 15:43 ET (04:43 HKT)\n\n$SPY -0.4% · $QQQ -0.5% · $DIA -0.3%\n\n$QQQ -0.5%, 2 accounts bullish on site\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #QQQ #NBIS",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午后觀察 · 截至 15:43 ET（04:43 HKT）\n\n$SPY -0.4% · $QQQ -0.5% · $DIA -0.3%\n\n$QQQ -0.5%，網站 2 個帳號看好\n$NBIS -18.3%，網站 1 個帳號看好\n$CRWV -8.4%，網站 2 個帳號看空\n$GOOG +1.9%，網站 2 個帳號看好\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #QQQ #NBIS",
+      "url": null
+     },
+     "en": {
+      "text": "Early afternoon · As of 15:43 ET (04:43 HKT)\n\n$SPY -0.4% · $QQQ -0.5% · $DIA -0.3%\n\n$QQQ -0.5%, 2 accounts bullish on site\n$NBIS -18.3%, 1 account bullish on site\n$CRWV -8.4%, 2 accounts bearish on site\n$GOOG +1.9%, 2 accounts bullish on site\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #QQQ #NBIS",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "AMD",
+      "GOOGL",
+      "SPY",
+      "AVGO",
+      "AAPL",
+      "ASTS",
+      "ONDS",
+      "BE",
+      "GOOG",
+      "MNTS"
+     ],
+     "bear": [
+      "SMCI"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-12T15:43:46-05:00",
+  "generated_at": "2026-11-12T15:43:50-05:00",
   "generated_hkt": "2026-11-13 04:43"
  }
 }
