@@ -1,1 +1,74 @@
-PLACEHOLDER_BATCH2
+{
+  "posts": {
+    "2120684293181878281": {
+      "en_summary": "@themissinglinks replies '@Polymarket @tim_cook is the only choice' to their own post about locking in most of $NVD bag, noting stock probably bounces hard once uncertainty over, and imagining if @nvidia board hires @tim_cook what he could do with the cash flow machine like at Apple. @JensenHuang let tim have the ball.",
+      "zh_summary": "@themissinglinks回覆「@Polymarket @tim_cook是唯一選擇」至其關於鎖定大部分$NVD持倉的帖文，指出一旦不確定性結束股票可能大幅反彈，並想像如果@nvidia董事會聘請@tim_cook，他能如何像在蘋果一樣運用這現金流機器。@JensenHuang讓tim接手。",
+      "tickers": ["NVDA", "AAPL"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "AAPL": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2120683976398635236": {
+      "en_summary": "@wallstengine reports Bernstein downgraded $NVDA and cut price target in half to $200 from $400 as crisis around CEO Jensen Huang deepens. Analyst Stacy Rasgon wrote 'Our gut tells us that we probably haven't yet fully probed the depths of what might be found here' and prefer to watch from sidelines. Third downgrade of the day after Aletheia and Baird.",
+      "zh_summary": "@wallstengine報告Bernstein下調$NVDA並將目標價減半至$200（原$400），因CEO Jensen Huang危機加深。分析師Stacy Rasgon寫道「我們的直覺告訴我們可能還沒完全探查到可能發現的深度」，偏好從旁觀望。這是當日第三次下調，繼Aletheia和Baird之後。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "Bernstein目標價從$400減至$200，分析師偏好觀望"}
+    },
+    "2120683355339649338": {
+      "en_summary": "@unusual_whales notes $NVDA has plunged on Polymarket on news of a second affair. Last week his affair with Alice Huang was revealed. Quotes @Poly_Perps: BREAKING: NVDA plunges following reports that Jensen Huang had a second extramarital affair with Nvidia's VP of health care.",
+      "zh_summary": "@unusual_whales指出$NVDA在Polymarket上因第二次外遇新聞而暴跌。上週其與Alice Huang的外遇被揭露。引用@Poly_Perps：BREAKING：NVDA在Jensen Huang與Nvidia醫療保健VP有第二次婚外情的報導後暴跌。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2120683126200377482": {
+      "en_summary": "@EliteOptions2 shares TRADE PLAN for Thursday: Jensen strikes again (affair with subordinate grounds for termination). Watch for official news of him stepping down which may cascade stock lower to 153. $QQQ down 6+ after hours, $AMD up 25+ after hours, AMD to 600 coming. Deeper pullback in tech due to Jensen news. Tomorrow need $SNDK back above 1000 and $MU above 820 for more bullish. Buy zone for $SPX near 7570 if pullback, $QQQ to 680-681 for long entry. Be patient after huge bounce from last Friday.",
+      "zh_summary": "@EliteOptions2分享週四交易計劃：Jensen再次出擊（與下屬外遇構成終止理由）。關注其辭職官方新聞，可能使股價再跌至153。$QQQ盤後跌6+，$AMD盤後升25+，AMD將至600。因Jensen新聞科技股更深回調。明天需$SNDK回到1000以上及$MU在820以上才更看多。若回調，$SPX買區近7570，$QQQ至680-681做多進場。耐心，因上週五以來大反彈。",
+      "tickers": ["NVDA", "QQQ", "AMD", "SNDK", "MU", "SPY"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡", "QQQ": "中性", "AMD": "睇好", "SNDK": "中性", "MU": "中性", "SPY": "中性"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"NVDA": "可能因辭職新聞再跌至153", "AMD": "盤後升25+，目標600"}
+    },
+    "2120683072266063941": {
+      "en_summary": "@OpenOutcrier says 'Itsa me, Benson Wong' quoting @Off_The_Tape: sources familiar with the matter indicate this is new $NVDA CEO. anyone ever seen or heard of him, any AI experience?",
+      "zh_summary": "@OpenOutcrier說「Itsa me, Benson Wong」，引用@Off_The_Tape：知情人士指這是新$NVDA CEO。有人見過或聽過他嗎，有AI經驗嗎？",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
