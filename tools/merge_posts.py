@@ -1,12 +1,14 @@
 """Step 4: add analysed posts to the site data; keep the rest for the next run.
 
 Updates posts, days, meta.cutoff_hkt / generated_hkt / build_id and data/pending-posts.json.
-Writes work/merge.json with what changed, for the analysis step.
+Missing work/new_posts.json is a skipped fetch (inbox-lite), not an empty one: pending
+posts stay candidates so merge cannot overwrite the queue with []. Writes work/merge.json
+with what changed, for the analysis step.
 """
 import re
 from datetime import timezone
 
-from analyse_posts import NOT_TICKERS
+from analyse_posts import NOT_TICKERS, load_candidates
 from macro_themes import tag_posts
 from relevance import build, relevant, tier
 from sitedata import ET, HK, load, notice, now_hk, parse_iso, read_json, save, work, write_json
@@ -160,7 +162,7 @@ def main():
         p.pop('summary_ko', None)
     for k in [k for k in d if k.endswith('_ko')]:
         del d[k]
-    new = read_json(work('new_posts.json'), {'posts': [], 'failed': [], 'accounts': 0})
+    new = load_candidates()  # missing new_posts.json → pending; never treat as empty fetch
     done = read_json(work('analysed.json'), {})
     have = {p['url'].lower() for p in d['posts']}
     add, keep = [], []

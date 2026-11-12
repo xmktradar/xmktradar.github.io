@@ -3,8 +3,10 @@
 SuperGrok (the subscription, not API credits) reads new posts and writes an English summary
 first, then a Traditional Chinese translation of it (2026-10-11; Korean dropped 2026-10-27), one small file per batch, into data/grok-inbox/
 (the older single file data/super-grok-analysis.json is still read). This step only
-copies well-formed rows into work/analysed.json. Posts without a summary stay in
-data/pending-posts.json. write_status.py removes inbox files once the site has used them.
+copies well-formed rows into work/analysed.json for this run's candidates (work/new_posts.json,
+or data/pending-posts.json when that fetch file is missing — inbox-lite skips fetch).
+Posts without a summary stay in data/pending-posts.json. write_status.py removes inbox files
+once the site has used them.
 """
 import glob
 import json
@@ -12,6 +14,8 @@ import os
 import re
 
 from sitedata import notice, read_json, work, write_json
+
+PENDING = 'data/pending-posts.json'
 
 try:  # SuperGrok sometimes slips into Simplified Chinese when translating from English (2026-10-11)
     import opencc
@@ -119,8 +123,45 @@ def load_inbox():
     return inbox
 
 
+def load_candidates():
+    """Posts to analyse/merge this run. A missing fetch file is not an empty scrape.
+
+    inbox-lite does not run fetch_posts.py. If work/new_posts.json is missing, candidates
+    are the current data/pending-posts.json posts and failed is [] (do not invent fetch
+    failures). If the file exists, start from its posts/failed/accounts, then union in
+    pending posts not already present (dedupe by id and by url lowercased). After a real
+    fetch that union is a no-op because fetch already copied pending.
+    """
+    path = work('new_posts.json')
+    if os.path.isfile(path):
+        new = read_json(path, {'posts': [], 'failed': [], 'accounts': 0}) or {}
+        posts = list(new.get('posts') or [])
+        failed = list(new.get('failed') or [])
+        accounts = new.get('accounts') or 0
+    else:
+        posts, failed, accounts = [], [], 0
+    pending = read_json(PENDING, {'posts': []}) or {}
+    extra = list(pending.get('posts') or []) if isinstance(pending, dict) else []
+    seen_id, seen_url, out = set(), set(), []
+    for p in posts + extra:
+        if not isinstance(p, dict):
+            continue
+        pid = str(p.get('id') or '')
+        url = str(p.get('url') or '').lower()
+        if not pid and not url:
+            continue
+        if (pid and pid in seen_id) or (url and url in seen_url):
+            continue
+        if pid:
+            seen_id.add(pid)
+        if url:
+            seen_url.add(url)
+        out.append(p)
+    return {'posts': out, 'failed': failed, 'accounts': accounts}
+
+
 def main():
-    posts = read_json(work('new_posts.json'), {'posts': []})['posts']
+    posts = load_candidates()['posts']
     done = read_json(work('analysed.json'), {})
     if not isinstance(done, dict):
         done = {}
