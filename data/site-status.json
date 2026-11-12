@@ -1,43 +1,49 @@
 {
  "note": "Written by GitHub Actions on every update. Actions Site Check reads this.",
- "checked_hkt": "2026-11-12 09:41",
- "generated_hkt": "2026-11-12 09:19",
- "cutoff_hkt": "2026-11-12T01:51:03+08:00",
- "posts_on_site": 5781,
+ "checked_hkt": "2026-11-12 17:12",
+ "generated_hkt": "2026-11-12 16:52",
+ "cutoff_hkt": "2026-11-12T09:16:06+08:00",
+ "posts_on_site": 5749,
  "added_this_run": 0,
  "added_without_en_summary": 0,
- "waiting_for_summary": 1640,
- "waiting_with_stock": 858,
- "expired_unsummarised_this_run": 8,
- "chitchat_skipped_this_run": 1202,
- "pruned_this_run": 6,
+ "waiting_for_summary": 840,
+ "waiting_with_stock": 361,
+ "expired_unsummarised_this_run": 0,
+ "chitchat_skipped_this_run": 547,
+ "pruned_this_run": 4,
  "fetch_failed": [],
  "warnings": [
-  "未分析：1640 則新帖等待 Grok 分析"
+  "未分析：840 則新帖等待 Grok 分析"
  ],
- "writeups_applied": [],
+ "writeups_applied": [
+  "zh/daily 2026-11-12",
+  "zh/weekly 2026-11-12",
+  "zh/monthly 2026-11-12",
+  "zh/highlights 2026-11-12",
+  "zh/briefing 2026-11-12",
+  "en/daily 2026-11-12",
+  "en/weekly 2026-11-12",
+  "en/monthly 2026-11-12",
+  "en/highlights 2026-11-12",
+  "en/briefing 2026-11-12"
+ ],
  "writeups_rejected": [],
  "latest_writeups": {
   "zh": {
-   "daily": "2026-11-11",
-   "weekly": "2026-11-11",
-   "monthly": "2026-11-11",
-   "highlights": "2026-11-11",
-   "briefing": "2026-11-11"
+   "daily": "2026-11-12",
+   "weekly": "2026-11-12",
+   "monthly": "2026-11-12",
+   "highlights": "2026-11-12",
+   "briefing": "2026-11-12"
   },
   "en": {
-   "daily": "2026-11-11",
-   "weekly": "2026-11-11",
-   "monthly": "2026-11-11",
-   "highlights": "2026-11-11",
-   "briefing": "2026-11-11"
+   "daily": "2026-11-12",
+   "weekly": "2026-11-12",
+   "monthly": "2026-11-12",
+   "highlights": "2026-11-12",
+   "briefing": "2026-11-12"
   }
  },
- "layout_warnings": [
-  "zh 1280px：今日重點卡有 0 張（應該 3 張）",
-  "zh 390px：今日重點卡有 0 張（應該 3 張）",
-  "en 1280px：今日重點卡有 0 張（應該 3 張）",
-  "en 390px：今日重點卡有 0 張（應該 3 張）"
- ],
- "layout_checked_hkt": "2026-11-12 09:43"
+ "layout_warnings": [],
+ "layout_checked_hkt": "2026-11-12 17:14"
 }

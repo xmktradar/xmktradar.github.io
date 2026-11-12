@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2120710636795785373": {
+      "en_summary": "Hears there is a class action lawsuit against $PFE now.",
+      "zh_summary": "聽說現在有針對 $PFE 的集體訴訟。",
+      "tickers": ["PFE"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"PFE": "睇淡"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2120709570662424598": {
+      "en_summary": "This episode seems likely to get a second look, linking Reuters on Trump demanding highly conflicted Intel CEO resign over China ties, related to $INTC.",
+      "zh_summary": "這集似乎可能得到重新審視，連結路透社關於特朗普要求利益衝突嚴重的英特爾執行長因中國關係辭職，與 $INTC 相關。",
+      "tickers": ["INTC"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"INTC": "睇淡"},
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2120709187567067308": {
+      "en_summary": "@GranderTheGreat was all over $NVDL dip anticipating a pop once uncertainty over and Jensen out. Author got back in $NVDA 157s. Advises just trade for now, lock in trades on the way up, don't marry anything.",
+      "zh_summary": "@GranderTheGreat 全力把握 $NVDL 下跌，預期不確定性結束且黃仁勳出局後會反彈。作者重新進場 $NVDA 157。建議目前只是交易，上漲時鎖定交易，不要執著於任何東西。",
+      "tickers": ["NVDA", "NVDL"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "NVDL": "睇好"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "Re-entered at 157s, treat as trade"}
+    },
+    "2120708070691008546": {
+      "en_summary": "$NVDA: There is no clear replacement for Jensen Huang. Confident that his departure would ultimately be a net negative for Nvidia, its shareholders, and the AI Revolution.",
+      "zh_summary": "$NVDA：沒有明確的黃仁勳替代者。相信他的離開最終對Nvidia、其股東和AI革命是淨負面。",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "No clear replacement; departure net negative for company and AI"}
+    },
+    "2120707022882844818": {
+      "en_summary": "Peloton $PTON TTM Subscription Gross Profits ~13% five-year CAGR and record highs in Q1 FY27.",
+      "zh_summary": "Peloton $PTON 過去十二個月訂閱毛利約13%五年複合增長率，並在FY27第一季創下紀錄高點。",
+      "tickers": ["PTON"],
+      "stance": "睇好",
+      "stance_by_ticker": {"PTON": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"PTON": "Subscription gross profits ~13% 5yr CAGR, record highs"}
+    }
+  }
+}
