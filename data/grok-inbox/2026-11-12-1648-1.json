@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2120786255575224337": {
+      "en_summary": "China tells the US not to use the NVIDIA $NVDA CEO scandal to justify tech curbs. Beijing is in touch with US officials ahead of a planned meeting between the two countries' leaders, per Bloomberg.",
+      "zh_summary": "中國要求美國不要利用NVIDIA $NVDA執行長醜聞來合理化技術限制。據彭博報導，北京正與美國官員保持接觸，以準備兩國領導人計劃中的會晤。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2120785013704687767": {
+      "en_summary": "Analyzes who decides Jensen Huang's fate at $NVDA. Board of 11 directors requires 6 votes to remove him. Details founding loyalists who made ~$15.6B from stock, swing votes and independents. Author's view is that the board knows keeping Jensen is in Nvidia's economic interest as he is the vision and holds key relationships, and will do everything possible to keep him as CEO while finding plausible deniability within rules.",
+      "zh_summary": "分析誰決定 $NVDA 黃仁勳的命運。11人董事會移除他需要6票。詳列創始忠誠者（約賺了156億美元）、搖擺票與獨立董事。作者觀點：董事會清楚知道保留黃仁勳符合Nvidia經濟利益，因為他是願景所在並掌握關鍵關係；他們會盡一切可能讓他繼續擔任執行長，同時在規則內找到合理借口。",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "Board likely to keep Jensen for economic interest as key man"}
+    },
+    "2120781617560162373": {
+      "en_summary": "Notes that something is a bit biased, linking to a post by @KobeissiLetter.",
+      "zh_summary": "指出某事有點偏頇，並連結至 @KobeissiLetter 的帖文。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2120780017185501558": {
+      "en_summary": "Details Nvidia CEO scandal with second affair involving Kimberly Powell. Board meeting for possible ouster. After-hours $NVDA -8%, ~$600B market cap lost this week. Bernstein cuts multiple and target from $400 to $200. Mentions $AMD +4.3% and $AVGO +2.4% as winners, $TSM -2% and $MU -2.8%. Author thinks $NVDA should keep Jensen.",
+      "zh_summary": "詳述Nvidia執行長醜聞，涉及與Kimberly Powell的第二段關係。董事會開會可能罷免。盤後 $NVDA 跌8%，本周市值損失約6000億美元。Bernstein將倍數與目標價從400美元下調至200美元。提到 $AMD 漲4.3%、$AVGO 漲2.4%為贏家，$TSM 跌2%、$MU 跌2.8%。作者認為 $NVDA 應保留黃仁勳。",
+      "tickers": ["NVDA", "AMD", "AVGO", "CRWV", "MU", "NBIS", "TSM"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "AMD": "睇好", "AVGO": "睇好", "CRWV": "睇淡", "MU": "睇淡", "NBIS": "睇淡", "TSM": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "Bernstein target cut to $200, after-hours -8%; author prefers keeping Jensen", "AMD": "After-hours +4.3% as alternative AI compute exposure", "AVGO": "After-hours +2.4% benefiting from shift away from Jensen risk"}
+    },
+    "2120778771963748677": {
+      "en_summary": "Alibaba $BABA shares drop 7% in Hong Kong as the Nvidia saga stokes fears over Chinese cloud operators' access to advanced chips, per Bloomberg.",
+      "zh_summary": "阿里巴巴 $BABA 股價在香港下跌7%，因Nvidia事件引發對中國雲運營商取得先進晶片的擔憂，據彭博報導。",
+      "tickers": ["BABA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"BABA": "睇淡"},
+      "horizon": "短線",
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "利淡",
+      "ticker_notes": {"BABA": "Drop of 7% in HK on fears of restricted advanced chip access for Chinese clouds"}
+    }
+  }
+}
