@@ -1,1 +1,74 @@
-PLACEHOLDER3
+{
+  "posts": {
+    "2120682947468489027": {
+      "en_summary": "@MikeZaccardi notes $AAPL among today's 52wk highs and $KO Berkshire too.",
+      "zh_summary": "@MikeZaccardi指出$AAPL為今日52週高點之一，$KO也是Berkshire的。",
+      "tickers": ["AAPL", "KO"],
+      "stance": "中性",
+      "stance_by_ticker": {"AAPL": "中性", "KO": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2120682723618464152": {
+      "en_summary": "@OpenOutcrier posts $GOOG $GOOGL $NVDA quoting @EdLudlow on Bloomberg Intelligence research @TheTerminal looking at how Nvidia’s leadership crisis could push major AI customers toward Google’s lower-cost TPU chips, accelerating their adoption as alternative to Nvidia’s GPUs and potentially boosting Google Cloud revenue.",
+      "zh_summary": "@OpenOutcrier發帖$GOOG $GOOGL $NVDA，引用@EdLudlow關於彭博智能@TheTerminal研究，探討Nvidia領導危機如何推動主要AI客戶轉向Google較低成本TPU晶片，加速其作為Nvidia GPU替代的採用，並可能提升Google Cloud收入。",
+      "tickers": ["GOOG", "GOOGL", "NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"GOOG": "睇好", "GOOGL": "睇好", "NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"GOOG": "領導危機可能推動客戶轉向TPU，提升雲收入", "NVDA": "領導危機可能不利"}
+    },
+    "2120682079323390086": {
+      "en_summary": "@unusual_whales BREAKING: Jensen Huang of $NVDA is suspected of having another extramarital affair with a direct report Kimberly Powell, Nvidia’s vice president of healthcare. Powell, like Huang, is married.",
+      "zh_summary": "@unusual_whales BREAKING：Nvidia的Jensen Huang被懷疑與直屬下屬Kimberly Powell（Nvidia醫療保健副總裁）有另一段婚外情。Powell與Huang一樣已婚。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2120682063682806184": {
+      "en_summary": "@kevinxu posts 'The $NVDA board to Jensen tonight:'",
+      "zh_summary": "@kevinxu發帖「$NVDA董事會今晚對Jensen：」",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2120682053771641125": {
+      "en_summary": "@AndreasSteno says 'No smoke without fire' quoting @Kalshi_Finance: BREAKING: Jensen Huang had another affair with an Nvidia executive, per NYT. 69% chance he's out as $NVDA CEO before 2028.",
+      "zh_summary": "@AndreasSteno說「無風不起浪」，引用@Kalshi_Finance：BREAKING：據NYT，Jensen Huang與Nvidia高管有另一段外遇。69%機會他在2028年前卸任$NVDA CEO。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "Kalshi顯示69%機會2028年前卸任CEO"}
+    }
+  }
+}
