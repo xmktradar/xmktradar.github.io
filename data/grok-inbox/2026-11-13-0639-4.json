@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2120893541501006219": {
+      "en_summary": "Someone just loaded $1M+ of Nebius $NBIS calls in 4 seconds. All OPENING. 12/4 $130s, volume 1,506 vs 42 open interest. Stock's down 10%+ on the capex news... they're buying the dump.",
+      "zh_summary": "有人剛剛在4秒內買入超過100萬美元的Nebius $NBIS看漲期權。全部開倉。12/4 $130，成交量1,506對比42未平倉。股票因資本支出消息下跌10%以上...他們在買入拋售。",
+      "tickers": ["NBIS"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NBIS": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NBIS": "異常大額12/4 $130看漲期權開倉，在下跌中買入"}
+    },
+    "2120893428611572024": {
+      "en_summary": "$NVDA #JensenHuang",
+      "zh_summary": "$NVDA #JensenHuang",
+      "tickers": ["NVDA"],
+      "stance": null,
+      "stance_by_ticker": {"NVDA": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2120893377944424538": {
+      "en_summary": "Wall Street is turning on Nvidia $NVDA. Four firms downgraded the stock this morning: Bernstein to Market Perform, price target halved to $200 from $400; Oppenheimer to Perform, price target withdrawn; William Blair to Market Perform; Evercore ISI to In Line, price target $186. Five more cut their price targets including Stifel to $205 from $315, Citi to $225 from $285.",
+      "zh_summary": "華爾街正在轉向Nvidia $NVDA。四家公司今早下調股票評級：Bernstein至市場表現，目標價從400美元減半至200美元；Oppenheimer至表現，目標價撤回；William Blair至市場表現；Evercore ISI至符合，目標價186美元。另外五家下調目標價，包括Stifel從315美元至205美元，Citi從285美元至225美元。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "多家公司下調評級，Bernstein目標價減半至$200"}
+    },
+    "2120892752150028783": {
+      "en_summary": "$SPY getting into gap fill fast and zero gamma today is 758 so holding above would be positive. $QQQ would need to get over 691 for that same zero gamma flip to more stable gamma territory.",
+      "zh_summary": "$SPY快速進入缺口填充，今天零伽瑪是758，所以保持在其上會是正面的。$QQQ需要超過691才能實現相同的零伽瑪翻轉到更穩定的伽瑪區域。",
+      "tickers": ["SPY", "QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPY": "零伽瑪758，保持其上正面", "QQQ": "需超過691翻轉零伽瑪"}
+    },
+    "2120892722387009635": {
+      "en_summary": "$NBIS - our updated valuation after Q3. Nebius traded near $123 before the open after Q3. We cut revenue per active MW in our capacity model by about 10%, in line with peers like CoreWeave ($9–11m per MW). Weighted value: ~$220 a share. Base: $271 (was $302). 1,750 MW active by end-2027 at $10.8m per MW. FY2027 revenue of $12.4bn, inside the new $12–13bn outlook. $6.3bn of FY2027 EBITDA at 16x.",
+      "zh_summary": "$NBIS - 第三季後我們更新的估值。Nebius在第三季後開盤前交易近$123。我們在容量模型中將每活躍MW收入下調約10%，與CoreWeave等同行一致（每MW 900-1100萬美元）。加權價值：約每股$220。基準：$271（原$302）。到2027年底活躍1,750 MW，每MW $10.8m。2027財年收入124億美元，在新的120-130億美元展望內。2027財年EBITDA 63億美元按16倍。",
+      "tickers": ["NBIS"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NBIS": "睇好"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NBIS": "更新估值加權約$220，基準$271，2027財年收入124億"}
+    }
+  }
+}
