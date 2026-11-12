@@ -2,30 +2,30 @@
  "date": "2026-11-14",
  "date_kst": "2026-11-14",
  "frozen": false,
- "made_hkt": "2026-11-12 00:22",
- "from": "2026-11-06",
- "to": "2026-11-12",
+ "made_hkt": "2026-11-13 00:10",
+ "from": "2026-11-07",
+ "to": "2026-11-13",
  "themes": [
   {
    "theme": "rates",
-   "accounts": 2,
-   "n": 2,
-   "bull": 0,
+   "accounts": 4,
+   "n": 4,
+   "bull": 1,
    "bear": 1,
-   "neu": 1,
-   "arrow": "flat",
+   "neu": 2,
+   "arrow": "up",
    "quotes": {
     "zh": {
-     "acc": "UrbanKaoboy",
-     "impact": "neu",
-     "text": "11/8/26 當日隨想：我還以為無風險利率是風險大廈最底層的積木！引用了一則含 $NVDA 的帖文。",
-     "url": "https://x.com/UrbanKaoboy/status/2119606823183687689"
+     "acc": "RedDogT3",
+     "impact": "bull",
+     "text": "全球市場混合，$NVDA 下跌 8% 至新的月度低點，油價走低。$SPX 從 7346 反彈至 7635，7571 現為關鍵持守水平。聯準會發言人成為焦點，因市場定價 12 月降息。觀察是否能從戰術交易轉向更積極的多頭方法進入年底。",
+     "url": "https://x.com/RedDogT3/status/2120857027828203835"
     },
     "en": {
-     "acc": "UrbanKaoboy",
-     "impact": "neu",
-     "text": "Musings of the Day, 11/8/26: And here I thought the Risk Free Rate was the bottommost Jenga block of the risk edifice! Quotes a post with $NVDA.",
-     "url": "https://x.com/UrbanKaoboy/status/2119606823183687689"
+     "acc": "RedDogT3",
+     "impact": "bull",
+     "text": "Mixed global markets as $NVDA drops 8% to new monthly lows and oil moves lower. $SPX bounced from 7346 to 7635, with 7571 now a key level to hold. Fed speakers in focus as markets price in a December rate cut. Watching whether we can shift from tactical trading to a more active long approach into year-end.",
+     "url": "https://x.com/RedDogT3/status/2120857027828203835"
     }
    }
   },
@@ -87,36 +87,49 @@
   },
   {
    "theme": "yields",
-   "accounts": 1,
-   "n": 1,
+   "accounts": 2,
+   "n": 2,
    "bull": 0,
    "bear": 0,
-   "neu": 1,
+   "neu": 2,
    "arrow": "up",
    "quotes": {
     "zh": {
-     "acc": "leadlagreport",
+     "acc": "OptionsMike",
      "impact": "neu",
-     "text": "利差最終總會擴大。總是如此。唯一的變量是何時以及多快。$JOJO不預測日期。它跟隨信號。而信號正在轉變。",
-     "url": "https://x.com/leadlagreport/status/2120306467764940851"
+     "text": "早安！期貨：ES -0.4%，NQ -0.9%，YM持平。$NVDA盤前下跌6%，因董事會權衡Jensen Huang的未來；董事會整夜開會。10年期國債收益率5.01%（+2基點），退伍軍人節後債券重開。比特幣約7.38萬美元，持平。分析師動作包括$NVDA被Bernstein下調至Market Perform，目標價從400美元降至200美元；Oppenheimer下調至Perform並移除目標價；Stifel目標價從315美元降至205美元，維持Buy。$ORCL被DBS目標價從310美元降至290美元，Buy。$RKLB被摩根士丹利目標價從105美元降至103美元；Berenberg從83美元上調至85美元。其他多隻股票如$SE、$CVX、$KOS、$GIS、$RWT、$PTRN、$ENGN、$CAPR、$KE、$AGLT、$CRL、$AZTA、$JAZZ、$PLNT、$GCT、$MANE、$CI、$DGII、$HUT、$IONS有目標價調整。",
+     "url": "https://x.com/OptionsMike/status/2120830164045058180"
     },
     "en": {
-     "acc": "leadlagreport",
+     "acc": "OptionsMike",
      "impact": "neu",
-     "text": "Spreads always widen eventually. Always. The only variable is when and how fast. $JOJO doesn't predict the date. It follows the signal. And signals are shifting.",
-     "url": "https://x.com/leadlagreport/status/2120306467764940851"
+     "text": "Good Morning! Futures: ES -0.4%, NQ -0.9%, YM flat. $NVDA -6% premarket as board weighs Jensen Huang's future; board met all night. 10yr 5.01% (+2bps) as bonds reopen after Veterans Day. Bitcoin ~$73.8K flat. Analyst actions include $NVDA d/g Market Perform @ Bernstein pt $200 from $400; d/g Perform @ Oppenheimer pt removed; pt cut $205 from $315 @ Stifel keeps Buy. $ORCL pt cut $290 from $310 @ DBS Buy. $RKLB pt cut $103 from $105 @ Morgan Stanley; raised $85 from $83 @ Berenberg. Other PT cuts/raises for $SE, $CVX, $KOS, $GIS, $RWT, $PTRN, $ENGN, $CAPR, $KE, $AGLT, $CRL, $AZTA, $JAZZ, $PLNT, $GCT, $MANE, $CI, $DGII, $HUT, $IONS.",
+     "url": "https://x.com/OptionsMike/status/2120830164045058180"
     }
    }
   },
   {
    "theme": "fx",
-   "accounts": 0,
-   "n": 0,
+   "accounts": 3,
+   "n": 2,
    "bull": 0,
    "bear": 0,
-   "neu": 0,
-   "arrow": "none",
-   "quotes": {}
+   "neu": 2,
+   "arrow": "up",
+   "quotes": {
+    "zh": {
+     "acc": "sunchartist",
+     "impact": "neu",
+     "text": "$USDIDR 創歷史新高",
+     "url": "https://x.com/sunchartist/status/2120796586779328834"
+    },
+    "en": {
+     "acc": "sunchartist",
+     "impact": "neu",
+     "text": "$USDIDR Record highs",
+     "url": "https://x.com/sunchartist/status/2120796586779328834"
+    }
+   }
   },
   {
    "theme": "energy",
@@ -143,97 +156,98 @@
   },
   {
    "theme": "policy",
-   "accounts": 3,
-   "n": 3,
+   "accounts": 9,
+   "n": 9,
    "bull": 1,
-   "bear": 1,
-   "neu": 1,
-   "arrow": "up",
+   "bear": 3,
+   "neu": 5,
+   "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "TheTranscript_",
-     "impact": "bear",
-     "text": "$OTIS 行政總裁：中國房地產改革正在結束開發商依賴客戶訂金資助建設的做法。對於任何預售，二十年來首次，那些首付款必須存入託管帳戶，因此不能用於資助下一個項目。",
-     "url": "https://x.com/TheTranscript_/status/2119463708099547346"
+     "acc": "WallStJesus",
+     "impact": "neu",
+     "text": "對那些傲慢年輕人的崩潰聲的抱怨，他們一直買入川普白宮看多的一切，從垃圾太空、無人機和加密股票到稀土礦物和數據中心玩法，現在甚至他們心愛的 $NVDA 也與其他 AI 晶片板塊一起受損。教訓已學到，市場之神會讓大聲和直言的人謙卑。",
+     "url": "https://x.com/WallStJesus/status/2120857497053331939"
     },
     "en": {
-     "acc": "TheTranscript_",
-     "impact": "bear",
-     "text": "$OTIS CEO: China's property reforms are ending developers' reliance on customer deposits to fund construction. For any presales, for the first time in 2 decades, those down payments have to go to escrow, so they can't be used to finance the next project.",
-     "url": "https://x.com/TheTranscript_/status/2119463708099547346"
+     "acc": "WallStJesus",
+     "impact": "neu",
+     "text": "Rant that the blowup sound of cocky arrogant youngsters who kept buying everything the Trump White House is bullish on from garbage space, drone and crypto stocks to rare earth mineral and datacenter plays, and now even their beloved $NVDA taking a hickey with the rest of AI chip sector. Lessons learned as the market gods humble the loud and outspoken.",
+     "url": "https://x.com/WallStJesus/status/2120857497053331939"
     }
    }
   },
   {
    "theme": "other",
-   "accounts": 9,
-   "n": 9,
-   "bull": 2,
-   "bear": 1,
-   "neu": 6,
-   "arrow": "up",
+   "accounts": 16,
+   "n": 16,
+   "bull": 3,
+   "bear": 3,
+   "neu": 10,
+   "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "aleabitoreddit",
+     "acc": "DeItaone",
      "impact": "bull",
-     "text": "臺灣從聯發科到華邦電的每隻AI股似乎都漲停。加權指數：+4.94%，歷史第二大單日漲幅。市場對NVDA黃仁勳在這個年齡的活力印象深刻？",
-     "url": "https://x.com/aleabitoreddit/status/2119689635869954503"
+     "text": "HSBC 表示「不要浪費一個好的拋售」並列出 11 隻買入股票：$GOOGL Alphabet、$AMAT Applied Materials、$BKR Baker Hughes、$BE Bloom Energy、$C Citigroup、$FCX Freeport-McMoRan、$GEV GE Vernova、$NEE NextEra Energy、$ORCL Oracle、$SRE Sempra、$VRT Vertiv。HSBC 偏好超賣的 AI 基礎設施、半導體和電力相關股票，因為市場調整過度。",
+     "url": "https://x.com/DeItaone/status/2120860701421928577"
     },
     "en": {
-     "acc": "aleabitoreddit",
+     "acc": "DeItaone",
      "impact": "bull",
-     "text": "Every AI name in Taiwan from Mediatek to Winbond looks like its limit up. TAIEX: +4.94%, its 2nd largest daily gain in history. Market impressed by $NVDA’s Jensen Huang vitality at his age?",
-     "url": "https://x.com/aleabitoreddit/status/2119689635869954503"
+     "text": "HSBC says “DON'T WASTE A GOOD SELL-OFF” and lists 11 stocks to buy: $GOOGL Alphabet, $AMAT Applied Materials, $BKR Baker Hughes, $BE Bloom Energy, $C Citigroup, $FCX Freeport-McMoRan, $GEV GE Vernova, $NEE NextEra Energy, $ORCL Oracle, $SRE Sempra, $VRT Vertiv. HSBC favors oversold AI infrastructure, semiconductors and power-related stocks as the market correction is overdone.",
+     "url": "https://x.com/DeItaone/status/2120860701421928577"
     }
    }
   }
  ],
  "top": [
   "other",
-  "growth",
-  "policy"
+  "policy",
+  "rates"
  ],
  "accounts": 454,
- "range": "11/6–11/12",
+ "x_accounts": 453,
+ "range": "11/7–11/13",
  "images": {
-  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-14-0022",
-  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-14-0022"
+  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-14-0010",
+  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-14-0010"
  },
  "stories": {
-  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-14-0022",
-  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-14-0022"
+  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-14-0010",
+  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-14-0010"
  },
  "posts": {
   "zh": {
-   "instagram": "本週宏觀：最多人講「其他」（利好 2・利空 1）\n\n這星期我們追蹤的 453 個 X 帳號，最常聊的宏觀話題是這幾個（11/6–11/12）\n\n1. 其他：利好 2・利空 1・中性 6（比上週轉好 ▲）\n@aleabitoreddit：「臺灣從聯發科到華邦電的每檔AI股似乎都漲停。加權指數：+4.94%，歷史第二大單日漲幅。市場對NVDA黃仁勳在這個年齡的活力印象深刻？」\n\n2. 經濟增長／衰退：利好 2・利空 1・中性 0（比上週轉好 ▲）\n@KeithMcCullough：「Keith McCullough 感謝 Maggie @maggielake，並認為比特幣是即將到來的經濟 Quad4 的最佳領先指標之一，相較於 $QQQ，2027 年初有兩…」\n\n3. 關稅／政策／地緣政治：利好 1・利空 1・中性 1（比上週轉好 ▲）\n@TheTranscript_：「$OTIS 行政總裁：中國房地產改革正在結束開發商依賴客戶訂金資助建設的做法。對於任何預售，二十年來首次，那些首付款必須存入託管帳戶，因此不能用於資助下一個項目。」\n\n你覺得下週市場最該留意哪個數據？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #QQQ #OTIS",
-   "threads": "這星期我們追蹤的 453 個 X 帳號，最常聊的宏觀話題是這幾個（11/6–11/12）\n\n1. 其他：利好 2・利空 1・中性 6（比上週轉好 ▲）\n2. 經濟增長／衰退：利好 2・利空 1・中性 0（比上週轉好 ▲）\n3. 關稅／政策／地緣政治：利好 1・利空 1・中性 1（比上週轉好 ▲）\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
-   "x": "這星期大家最常聊的宏觀話題\n\n其他 2/1/6\n經濟增長／衰退 2/1/0\n關稅／政策／地緣政治 1/1/1\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "instagram": "本週宏觀：最多人講「其他」（利好 3・利空 3）\n\n這星期我們追蹤的 453 個 X 帳號，最常聊的宏觀話題是這幾個（11/7–11/13）\n\n1. 其他：利好 3・利空 3・中性 10（同上週差不多）\n@DeItaone：「HSBC 表示「不要浪費一個好的拋售」並列出 11 檔買入股票：$GOOGL Alphabet、$AMAT Applied Materials、$BKR Baker Hughes…」\n\n2. 關稅／政策／地緣政治：利好 1・利空 3・中性 5（同上週差不多）\n@WallStJesus：「對那些傲慢年輕人的崩潰聲的抱怨，他們一直買入川普白宮看多的一切，從垃圾太空、無人機和加密股票到稀土礦物和數據中心玩法，現在甚至他們心愛的 $NVDA 也與其他 AI 晶片板塊一起…」\n\n3. 利率／聯儲局：利好 1・利空 1・中性 2（比上週轉好 ▲）\n@RedDogT3：「全球市場混合，$NVDA 下跌 8% 至新的月度低點，油價走低。$SPX 從 7346 反彈至 7635，7571 現為關鍵持守水平。聯準會發言人成為焦點，因市場定價 12 月降…」\n\n你覺得下週市場最該留意哪個數據？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #GOOGL #AMAT",
+   "threads": "這星期我們追蹤的 453 個 X 帳號，最常聊的宏觀話題是這幾個（11/7–11/13）\n\n1. 其他：利好 3・利空 3・中性 10（同上週差不多）\n2. 關稅／政策／地緣政治：利好 1・利空 3・中性 5（同上週差不多）\n3. 利率／聯儲局：利好 1・利空 1・中性 2（比上週轉好 ▲）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "x": "這星期大家最常聊的宏觀話題\n\n其他 3/3/10\n關稅／政策／地緣政治 1/3/5\n利率／聯儲局 1/1/2\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "reddit": {
-    "title": "這星期我們追蹤的 453 個 X 帳號，最常聊的宏觀話題是這幾個（11/6–11/12）",
-    "body": "1. 其他：利好 2・利空 1・中性 6（比上週轉好 ▲）\n@aleabitoreddit：「臺灣從聯發科到華邦電的每檔AI股似乎都漲停。加權指數：+4.94%，歷史第二大單日漲幅。市場對NVDA黃仁勳在這個年齡的活力印象深刻？」\n\n2. 經濟增長／衰退：利好 2・利空 1・中性 0（比上週轉好 ▲）\n@KeithMcCullough：「Keith McCullough 感謝 Maggie @maggielake，並認為比特幣是即將到來的經濟 Quad4 的最佳領先指標之一，相較於 $QQQ，2027 年初有兩…」\n\n3. 關稅／政策／地緣政治：利好 1・利空 1・中性 1（比上週轉好 ▲）\n@TheTranscript_：「$OTIS 行政總裁：中國房地產改革正在結束開發商依賴客戶訂金資助建設的做法。對於任何預售，二十年來首次，那些首付款必須存入託管帳戶，因此不能用於資助下一個項目。」\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
+    "title": "這星期我們追蹤的 453 個 X 帳號，最常聊的宏觀話題是這幾個（11/7–11/13）",
+    "body": "1. 其他：利好 3・利空 3・中性 10（同上週差不多）\n@DeItaone：「HSBC 表示「不要浪費一個好的拋售」並列出 11 檔買入股票：$GOOGL Alphabet、$AMAT Applied Materials、$BKR Baker Hughes…」\n\n2. 關稅／政策／地緣政治：利好 1・利空 3・中性 5（同上週差不多）\n@WallStJesus：「對那些傲慢年輕人的崩潰聲的抱怨，他們一直買入川普白宮看多的一切，從垃圾太空、無人機和加密股票到稀土礦物和數據中心玩法，現在甚至他們心愛的 $NVDA 也與其他 AI 晶片板塊一起…」\n\n3. 利率／聯儲局：利好 1・利空 1・中性 2（比上週轉好 ▲）\n@RedDogT3：「全球市場混合，$NVDA 下跌 8% 至新的月度低點，油價走低。$SPX 從 7346 反彈至 7635，7571 現為關鍵持守水平。聯準會發言人成為焦點，因市場定價 12 月降…」\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
    },
-   "facebook": "這星期我們追蹤的 453 個 X 帳號，最常聊的宏觀話題是這幾個（11/6–11/12）\n\n1. 其他：利好 2・利空 1・中性 6（比上週轉好 ▲）\n@aleabitoreddit：「臺灣從聯發科到華邦電的每檔AI股似乎都漲停。加權指數：+4.94%，歷史第二大單日漲幅。市場對NVDA黃仁勳在這個年齡的活力印象深刻？」\n\n2. 經濟增長／衰退：利好 2・利空 1・中性 0（比上週轉好 ▲）\n@KeithMcCullough：「Keith McCullough 感謝 Maggie @maggielake，並認為比特幣是即將到來的經濟 Quad4 的最佳領先指標之一，相較於 $QQQ，2027 年初有兩…」\n\n3. 關稅／政策／地緣政治：利好 1・利空 1・中性 1（比上週轉好 ▲）\n@TheTranscript_：「$OTIS 行政總裁：中國房地產改革正在結束開發商依賴客戶訂金資助建設的做法。對於任何預售，二十年來首次，那些首付款必須存入託管帳戶，因此不能用於資助下一個項目。」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "facebook": "這星期我們追蹤的 453 個 X 帳號，最常聊的宏觀話題是這幾個（11/7–11/13）\n\n1. 其他：利好 3・利空 3・中性 10（同上週差不多）\n@DeItaone：「HSBC 表示「不要浪費一個好的拋售」並列出 11 檔買入股票：$GOOGL Alphabet、$AMAT Applied Materials、$BKR Baker Hughes…」\n\n2. 關稅／政策／地緣政治：利好 1・利空 3・中性 5（同上週差不多）\n@WallStJesus：「對那些傲慢年輕人的崩潰聲的抱怨，他們一直買入川普白宮看多的一切，從垃圾太空、無人機和加密股票到稀土礦物和數據中心玩法，現在甚至他們心愛的 $NVDA 也與其他 AI 晶片板塊一起…」\n\n3. 利率／聯儲局：利好 1・利空 1・中性 2（比上週轉好 ▲）\n@RedDogT3：「全球市場混合，$NVDA 下跌 8% 至新的月度低點，油價走低。$SPX 從 7346 反彈至 7635，7571 現為關鍵持守水平。聯準會發言人成為焦點，因市場定價 12 月降…」\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "story": "#美股"
   },
   "en": {
    "instagram": "",
    "threads": "",
-   "x": "What X talked about in macro this week\n\nOther 2/1/6\nGrowth / recession 2/1/0\nTariffs / policy / geopolitics 1/1/1\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
+   "x": "What X talked about in macro this week\n\nOther 3/3/10\nTariffs / policy / geopolitics 1/3/5\nRates / Fed 1/1/2\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
    "reddit": {
-    "title": "The macro topics the 453 X accounts we follow talked about most this week (11/6–11/12)",
-    "body": "1. Other: bullish 2 · bearish 1 · neutral 6 (better than last week ▲)\n@aleabitoreddit: “Every AI name in Taiwan from Mediatek to Winbond looks like its limit up. TAIEX: +4.94%, its 2nd largest daily gain in history. Market impressed by $…”\n\n2. Growth / recession: bullish 2 · bearish 1 · neutral 0 (better than last week ▲)\n@KeithMcCullough: “Keith McCullough thanks Maggie @maggielake and views Bitcoin as one of the best leading indicators of a pending economic Quad4, with 2 quarterly one…”\n\n3. Tariffs / policy / geopolitics: bullish 1 · bearish 1 · neutral 1 (better than last week ▲)\n@TheTranscript_: “$OTIS CEO: China's property reforms are ending developers' reliance on customer deposits to fund construction. For any presales, for the first time i…”\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro"
+    "title": "The macro topics the 453 X accounts we follow talked about most this week (11/7–11/13)",
+    "body": "1. Other: bullish 3 · bearish 3 · neutral 10 (about the same as last week)\n@DeItaone: “HSBC says “DON'T WASTE A GOOD SELL-OFF” and lists 11 stocks to buy: $GOOGL Alphabet, $AMAT Applied Materials, $BKR Baker Hughes, $BE Bloom Energy, $C…”\n\n2. Tariffs / policy / geopolitics: bullish 1 · bearish 3 · neutral 5 (about the same as last week)\n@WallStJesus: “Rant that the blowup sound of cocky arrogant youngsters who kept buying everything the Trump White House is bullish on from garbage space, drone and…”\n\n3. Rates / Fed: bullish 1 · bearish 1 · neutral 2 (better than last week ▲)\n@RedDogT3: “Mixed global markets as $NVDA drops 8% to new monthly lows and oil moves lower. $SPX bounced from 7346 to 7635, with 7571 now a key level to hold. Fe…”\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro"
    },
-   "facebook": "The macro topics the 453 X accounts we follow talked about most this week (11/6–11/12)\n\n1. Other: bullish 2 · bearish 1 · neutral 6 (better than last week ▲)\n@aleabitoreddit: “Every AI name in Taiwan from Mediatek to Winbond looks like its limit up. TAIEX: +4.94%, its 2nd largest daily gain in history. Market impressed by $…”\n\n2. Growth / recession: bullish 2 · bearish 1 · neutral 0 (better than last week ▲)\n@KeithMcCullough: “Keith McCullough thanks Maggie @maggielake and views Bitcoin as one of the best leading indicators of a pending economic Quad4, with 2 quarterly one…”\n\n3. Tariffs / policy / geopolitics: bullish 1 · bearish 1 · neutral 1 (better than last week ▲)\n@TheTranscript_: “$OTIS CEO: China's property reforms are ending developers' reliance on customer deposits to fund construction. For any presales, for the first time i…”\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
+   "facebook": "The macro topics the 453 X accounts we follow talked about most this week (11/7–11/13)\n\n1. Other: bullish 3 · bearish 3 · neutral 10 (about the same as last week)\n@DeItaone: “HSBC says “DON'T WASTE A GOOD SELL-OFF” and lists 11 stocks to buy: $GOOGL Alphabet, $AMAT Applied Materials, $BKR Baker Hughes, $BE Bloom Energy, $C…”\n\n2. Tariffs / policy / geopolitics: bullish 1 · bearish 3 · neutral 5 (about the same as last week)\n@WallStJesus: “Rant that the blowup sound of cocky arrogant youngsters who kept buying everything the Trump White House is bullish on from garbage space, drone and…”\n\n3. Rates / Fed: bullish 1 · bearish 1 · neutral 2 (better than last week ▲)\n@RedDogT3: “Mixed global markets as $NVDA drops 8% to new monthly lows and oil moves lower. $SPX bounced from 7346 to 7635, with 7571 now a key level to hold. Fe…”\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
    "story": ""
   }
  },
  "ig_images": {
   "zh": [
-   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-14-0022",
+   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-14-0010",
    "https://thecrowdtape.com/og/cta/ig-cta-zh.jpg"
   ],
   "en": [
-   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-14-0022",
+   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-14-0010",
    "https://thecrowdtape.com/og/cta/ig-cta-en.jpg"
   ]
  },
@@ -243,7 +257,7 @@
   "video_path": null,
   "video_expected_path": "assets/reels/2026-11-14-macro-week.mp4",
   "caption": {
-   "zh": "本週宏觀：最多人講「其他」（利好 2・利空 1）\n\n這星期我們追蹤的 453 個 X 帳號，最常聊的宏觀話題是這幾個（11/6–11/12）\n\n1. 其他：利好 2・利空 1・中性 6（比上週轉好 ▲）\n@aleabitoreddit：「臺灣從聯發科到華邦電的每檔AI股似乎都漲停。加權指數：+4.94%，歷史第二大單日漲幅。市場對NVDA黃仁勳在這個年齡的活力印象深刻？」\n\n2. 經濟增長／衰退：利好 2・利空 1・中性 0（比上週轉好 ▲）\n@KeithMcCullough：「Keith McCullough 感謝 Maggie @maggielake，並認為比特幣是即將到來的經濟 Quad4 的最佳領先指標之一，相較於 $QQQ，2027 年初有兩…」\n\n3. 關稅／政策／地緣政治：利好 1・利空 1・中性 1（比上週轉好 ▲）\n@TheTranscript_：「$OTIS 行政總裁：中國房地產改革正在結束開發商依賴客戶訂金資助建設的做法。對於任何預售，二十年來首次，那些首付款必須存入託管帳戶，因此不能用於資助下一個項目。」\n\n你覺得下週市場最該留意哪個數據？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #QQQ #OTIS",
+   "zh": "本週宏觀：最多人講「其他」（利好 3・利空 3）\n\n這星期我們追蹤的 453 個 X 帳號，最常聊的宏觀話題是這幾個（11/7–11/13）\n\n1. 其他：利好 3・利空 3・中性 10（同上週差不多）\n@DeItaone：「HSBC 表示「不要浪費一個好的拋售」並列出 11 檔買入股票：$GOOGL Alphabet、$AMAT Applied Materials、$BKR Baker Hughes…」\n\n2. 關稅／政策／地緣政治：利好 1・利空 3・中性 5（同上週差不多）\n@WallStJesus：「對那些傲慢年輕人的崩潰聲的抱怨，他們一直買入川普白宮看多的一切，從垃圾太空、無人機和加密股票到稀土礦物和數據中心玩法，現在甚至他們心愛的 $NVDA 也與其他 AI 晶片板塊一起…」\n\n3. 利率／聯儲局：利好 1・利空 1・中性 2（比上週轉好 ▲）\n@RedDogT3：「全球市場混合，$NVDA 下跌 8% 至新的月度低點，油價走低。$SPX 從 7346 反彈至 7635，7571 現為關鍵持守水平。聯準會發言人成為焦點，因市場定價 12 月降…」\n\n你覺得下週市場最該留意哪個數據？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #GOOGL #AMAT",
    "en": ""
   }
  },
