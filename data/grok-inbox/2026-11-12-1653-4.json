@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2120737517435764981": {
+      "en_summary": "Short reaction 'Damn...' with no specific details.",
+      "zh_summary": "簡短反應「Damn...」，無具體細節。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2120735190532444641": {
+      "en_summary": "Jokes that by author's math, 6 more affairs and $NVDA goes negative.",
+      "zh_summary": "開玩笑說按照作者的計算，再多6段外遇 $NVDA 就會變負。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2120728743631012300": {
+      "en_summary": "Mentions @steve2bacon and links to a post, no clear stock analysis.",
+      "zh_summary": "提及 @steve2bacon 並連結一篇帖文，無明確股票分析。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2120728294786240803": {
+      "en_summary": "After hours, $NVDAUSDT on Binance moved -8.39%. Notes $200M in short positions avg entry $172.5, $22M in long at avg $164.9, OI at 347M.",
+      "zh_summary": "盤後，幣安上的 $NVDAUSDT 變動-8.39%。指出2億美元空頭持倉平均入場價172.5美元，2200萬美元多頭平均164.9美元，持倉量達3.47億。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "After-hours -8.39% on Binance with significant short interest"}
+    },
+    "2120727519800578387": {
+      "en_summary": "Comments that it's not that bad for Lori at the end of the day regarding $NVDA.",
+      "zh_summary": "評論說到頭來對Lori來說 $NVDA 也沒那麼糟。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
