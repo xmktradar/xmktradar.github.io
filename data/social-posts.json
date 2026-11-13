@@ -1371,9 +1371,170 @@
       "SMCI"
      ]
     }
+   },
+   "intraday_1": {
+    "post_et": "11:00",
+    "post_hkt": "00:00",
+    "generated_at": "2026-11-13T15:22:14-05:00",
+    "date": "2026-11-13",
+    "date_kst": "2026-11-14",
+    "quotes": {
+     "SPY": {
+      "price": 753.31,
+      "prev_close": 757.12,
+      "chg_pct": -0.5,
+      "time": "2026-11-13T15:22:13-05:00"
+     },
+     "QQQ": {
+      "price": 679.46,
+      "prev_close": 688.17,
+      "chg_pct": -1.27,
+      "time": "2026-11-13T15:22:14-05:00"
+     },
+     "DIA": {
+      "price": 522.82,
+      "prev_close": 522.47,
+      "chg_pct": 0.07,
+      "time": "2026-11-13T15:22:12-05:00"
+     },
+     "AMD": {
+      "price": 532.919,
+      "prev_close": 585.3,
+      "chg_pct": -8.95,
+      "time": "2026-11-13T15:22:14-05:00"
+     },
+     "AAPL": {
+      "price": 356.831,
+      "prev_close": 354.88,
+      "chg_pct": 0.55,
+      "time": "2026-11-13T15:22:14-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-13T15:22:14-05:00",
+     "hkt": "2026-11-14 04:22"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "AMD",
+      "chg_pct": -8.95,
+      "bull": 10,
+      "bear": 0,
+      "accounts": [
+       "3PeaksTrading",
+       "OptionsMike",
+       "scheplick",
+       "FuturumEquities",
+       "OptionsHawk",
+       "wallstengine",
+       "Frenchie_",
+       "KeithMcCullough"
+      ]
+     },
+     {
+      "ticker": "AAPL",
+      "chg_pct": 0.55,
+      "bull": 6,
+      "bear": 0,
+      "accounts": [
+       "3PeaksTrading",
+       "OptionsMike",
+       "munster_gene",
+       "StockSavvyShay",
+       "MikeZaccardi",
+       "canuck2usa",
+       "MarketRebels",
+       "JonahLupton"
+      ]
+     },
+     {
+      "ticker": "SPY",
+      "chg_pct": -0.5,
+      "bull": 5,
+      "bear": 0,
+      "accounts": [
+       "RyanDetrick",
+       "3PeaksTrading",
+       "ACInvestorBlog",
+       "TradingThomas3",
+       "EliteOptions2",
+       "ColeMacro",
+       "Mr_Derivatives",
+       "Jake__Wujastyk"
+      ]
+     },
+     {
+      "ticker": "QQQ",
+      "chg_pct": -1.27,
+      "bull": 5,
+      "bear": 0,
+      "accounts": [
+       "KobeissiLetter",
+       "RedDogT3",
+       "tenet_research",
+       "ACInvestorBlog",
+       "CKCapitalxx",
+       "sentimentrader",
+       "JasonL_Capital",
+       "EliteOptions2"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Late morning · As of 15:22 ET (04:22 HKT)\n\n$SPY -0.5% · $QQQ -1.3% · $DIA +0.1%\n\n$AMD -8.9%, 10 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #AMD #AAPL",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "早盤觀察 · 截至 15:22 ET（04:22 HKT）\n\n$SPY -0.5% · $QQQ -1.3% · $DIA +0.1%\n\n$AMD -8.9%，網站 10 個帳號看好\n$AAPL +0.6%，網站 6 個帳號看好\n$SPY -0.5%，網站 5 個帳號看好\n$QQQ -1.3%，網站 5 個帳號看好\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #AMD #AAPL",
+      "url": ""
+     },
+     "en": {
+      "text": "Late morning · As of 15:22 ET (04:22 HKT)\n\n$SPY -0.5% · $QQQ -1.3% · $DIA +0.1%\n\n$AMD -8.9%, 10 accounts bullish on site\n$AAPL +0.6%, 6 accounts bullish on site\n$SPY -0.5%, 5 accounts bullish on site\n$QQQ -1.3%, 5 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #AMD #AAPL",
+      "url": ""
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "AMD",
+      "AMAT",
+      "AAPL",
+      "SPY",
+      "QQQ",
+      "RKLB",
+      "AVGO",
+      "GOOGL",
+      "NU",
+      "ONDS",
+      "ASTS",
+      "GOOG",
+      "LUNR",
+      "BE",
+      "MRNA",
+      "MNTS",
+      "MOD",
+      "NEE",
+      "VLO"
+     ],
+     "bear": [
+      "SMCI"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-13T15:22:07-05:00",
+  "generated_at": "2026-11-13T15:22:14-05:00",
   "generated_hkt": "2026-11-14 04:22"
  }
 }
