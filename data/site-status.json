@@ -1,21 +1,32 @@
 {
  "note": "Written by GitHub Actions on every update. Actions Site Check reads this.",
- "checked_hkt": "2026-11-13 09:46",
- "generated_hkt": "2026-11-13 09:22",
+ "checked_hkt": "2026-11-13 10:18",
+ "generated_hkt": "2026-11-13 09:58",
  "cutoff_hkt": "2026-11-13T01:18:28+08:00",
- "posts_on_site": 5800,
+ "posts_on_site": 5791,
  "added_this_run": 0,
  "added_without_en_summary": 0,
- "waiting_for_summary": 1775,
- "waiting_with_stock": 715,
- "expired_unsummarised_this_run": 14,
- "chitchat_skipped_this_run": 1045,
- "pruned_this_run": 10,
+ "waiting_for_summary": 1871,
+ "waiting_with_stock": 747,
+ "expired_unsummarised_this_run": 24,
+ "chitchat_skipped_this_run": 1118,
+ "pruned_this_run": 9,
  "fetch_failed": [],
  "warnings": [
-  "未分析：1775 則新帖等待 Grok 分析"
+  "未分析：1871 則新帖等待 Grok 分析"
  ],
- "writeups_applied": [],
+ "writeups_applied": [
+  "zh/daily 2026-11-13",
+  "zh/weekly 2026-11-13",
+  "zh/monthly 2026-11-13",
+  "zh/highlights 2026-11-13",
+  "zh/briefing 2026-11-13",
+  "en/daily 2026-11-13",
+  "en/weekly 2026-11-13",
+  "en/monthly 2026-11-13",
+  "en/highlights 2026-11-13",
+  "en/briefing 2026-11-13"
+ ],
  "writeups_rejected": [],
  "latest_writeups": {
   "zh": {
@@ -34,5 +45,5 @@
   }
  },
  "layout_warnings": [],
- "layout_checked_hkt": "2026-11-13 09:49"
+ "layout_checked_hkt": "2026-11-13 10:21"
 }
