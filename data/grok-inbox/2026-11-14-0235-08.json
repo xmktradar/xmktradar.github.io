@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2120965665112953244": {
+      "en_summary": "@themahmud5 @vishal_better He did resign and that impacted the neocloud companies like $NBIS and $CR",
+      "zh_summary": "@themahmud5 @vishal_better 他確實辭職了，這影響了新雲公司如 $NBIS 和 $CR",
+      "tickers": ["NBIS"],
+      "stance": "中性",
+      "stance_by_ticker": {"NBIS": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2120965376616128931": {
+      "en_summary": "Now in IMAX & 3D in a cinema near you! - $NVDA",
+      "zh_summary": "現在在你附近的電影院以 IMAX 和 3D 放映！- $NVDA",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2120965282886017264": {
+      "en_summary": "Reuters reports that Jensen Huang had an intimate relationship with another $NVDA employee. This ma",
+      "zh_summary": "路透社報導 Jensen Huang 與另一名 $NVDA 員工有親密關係。這 ma",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "另一名員工親密關係"}
+    },
+    "2120965020808818703": {
+      "en_summary": "BREAKING: The White House is considering firing Howard Lutnick over his role in the Nvidia chip expo",
+      "zh_summary": "突發：白宮正在考慮因 Howard Lutnick 在 Nvidia 晶片出口中的角色而解雇他",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "利淡",
+      "ticker_notes": {"NVDA": "白宮考慮解雇相關官員"}
+    },
+    "2120964848800686560": {
+      "en_summary": "Broadcom $AVGO catches the Nvidia overflow, up around 4%. Investors hunting for alternatives like it",
+      "zh_summary": "Broadcom $AVGO 承接 Nvidia 溢出，上漲約 4%。投資者尋找像它這樣的替代品",
+      "tickers": ["AVGO", "NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AVGO": "睇好", "NVDA": "中性"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AVGO": "上漲約 4%，承接 Nvidia 溢出"}
+    }
+  }
+}
