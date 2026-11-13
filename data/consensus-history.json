@@ -1626,7 +1626,8 @@
     "LUNR",
     "ONDS",
     "BE",
-    "MNTS"
+    "MNTS",
+    "VLO"
    ],
    "bear": [
     "SMCI"
@@ -1634,8 +1635,8 @@
    "split": [
     "NVDA",
     "SPCX",
-    "QQQ",
     "NBIS",
+    "QQQ",
     "CRWV",
     "MU"
    ],
@@ -1648,17 +1649,17 @@
     "NBIS",
     "AMD",
     "SPCX",
-    "QQQ",
     "SPY",
+    "QQQ",
     "CRWV",
     "MU",
     "AAPL",
     "AVGO"
    ],
    "src": "live",
-   "updated_hkt": "2026-11-13 08:08"
+   "updated_hkt": "2026-11-13 09:22"
   }
  },
- "updated_hkt": "2026-11-13 08:08",
+ "updated_hkt": "2026-11-13 09:22",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
