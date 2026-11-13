@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2121056024585285884": {
+      "en_summary": "@RampCapitalLLC replies to @EconomPic 'Don’t be a Panican' in the context of a quoted post saying 'Lmk if this helps $NVDA'.",
+      "zh_summary": "@RampCapitalLLC 回覆 @EconomPic「不要成為恐慌者」，背景是一則引述帖文「讓我知道這是否有助於 $NVDA」。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121055900807172309": {
+      "en_summary": "Chris Ray notes people complained about $ONDS OpEx last quarter, and it is nice to see Eric and team address it head-on with a dedicated slide and thoughtfully broken-out line items this time.",
+      "zh_summary": "克里斯·雷指出人們上一季度對 $ONDS 營運支出抱怨很多，今次看到埃里克及團隊以專門幻燈片及仔細分項正面回應，確實令人高興。",
+      "tickers": ["ONDS"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ONDS": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121055445661925696": {
+      "en_summary": "Chris Ray says it is hard to claim $ONDS has no organic growth when it actually does. Companies under the $ONDS umbrella are growing significantly, and it has only been about 1 year or less.",
+      "zh_summary": "克里斯·雷表示難以說 $ONDS 沒有有機增長，因為它確實有。$ONDS 旗下公司增長顯著，而且只過了約一年或更短時間。",
+      "tickers": ["ONDS"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ONDS": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121054437632360512": {
+      "en_summary": "$CBRS missed headline numbers with a wider loss but beat on core revenue of $230.9M. Next quarter guided at $310–330M core revenue well above consensus against $26B backlog, and a new agreement with $MSFT was disclosed. Cloud revenue growing fast while hardware sales shrink. Guide and backlog prove demand is real but do not prove profitability is near. Shares jumped after hours. Long term if cloud model scales it becomes recurring-revenue inference provider with cost edge.",
+      "zh_summary": "$CBRS 標題數字未達標且虧損擴大，但核心收入 $230.9M 超預期。下季核心收入指引 $310–330M 遠高於共識，對比 $26B 積壓訂單，並披露與 $MSFT 的新協議。雲端收入快速增長而硬件銷售收縮。指引與積壓證明需求真實，但不證明盈利能力接近。股價盤後上漲。長期若雲端模式擴張，將成為具成本優勢的經常性收入推理服務提供商。",
+      "tickers": ["CBRS", "MSFT"],
+      "stance": "中性",
+      "stance_by_ticker": {"CBRS": "中性", "MSFT": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"CBRS": "強勁指引及大額積壓支持需求，但盈利能力仍待證明"}
+    },
+    "2121054304270537217": {
+      "en_summary": "Ed Zitron claims a post about $200 billion worth of chips sitting in warehouses because data centers aren't ready came from his work. Quoted CEO of Sixth Street, Alex Waxman, says AI demand is real but inventory buildup may cause a dislocation in AI spend. Mentions $GOOGL $META $MSFT $AMZN $ORCL.",
+      "zh_summary": "埃德·齊特龍聲稱關於價值約2000億美元晶片因數據中心未就緒而存放於倉庫的帖文來自其工作。引述 Sixth Street 行政總裁 Alex Waxman 稱 AI 需求真實，但庫存積壓可能導致 AI 支出錯配。提及 $GOOGL $META $MSFT $AMZN $ORCL。",
+      "tickers": ["GOOGL", "META", "MSFT", "AMZN", "ORCL"],
+      "stance": "中性",
+      "stance_by_ticker": {"GOOGL": "中性", "META": "中性", "MSFT": "中性", "AMZN": "中性", "ORCL": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    }
+  }
+}
