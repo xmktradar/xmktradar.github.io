@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2120986381799272509": {
+      "en_summary": "Laid out the plan for subs on buying 3 tranches of $NVDA shares. Now have a juicy long-term position with nice average, buying 2nd tranche near the exact bottom. Subs have been bottom sniping on $NBIS at 115, $AAOI at 41 (sold at 51), and $NVDA at 149.",
+      "zh_summary": "為訂閱者制定了買入三批 $NVDA 股票的計劃。現已持有長期良好平均成本的倉位，第二次買入接近當日底部。訂閱者已在 $NBIS 115美元、$AAOI 41美元（已於51美元賣出）及 $NVDA 149美元底部抄底。",
+      "tickers": ["NVDA", "NBIS", "AAOI"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好", "NBIS": "睇好", "AAOI": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "分三批買入，最低149美元，長期倉位", "NBIS": "於115美元抄底", "AAOI": "於41美元買入，51美元賣出獲利"}
+    },
+    "2120986242821304373": {
+      "en_summary": "This will be huuuuge. Quoting that a SpaceX $SPCX × Tesla $TSLA merger could create the most powerful company in the world with vertical integration across space launch, Starlink, xAI, AI infrastructure, semiconductors, EVs, autonomous driving, robotics, energy and more.",
+      "zh_summary": "這將會非常巨大。引用觀點認為SpaceX $SPCX 與 Tesla $TSLA 合併可創造世界上最強大的公司，垂直整合太空發射、Starlink、xAI、AI基礎設施、半導體、電動車、自動駕駛、機器人、能源等。",
+      "tickers": ["SPCX", "TSLA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPCX": "睇好", "TSLA": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPCX": "與TSLA合併潛力巨大", "TSLA": "與SPCX合併垂直整合優勢"}
+    },
+    "2120986149543882964": {
+      "en_summary": "We've been short the AI infrastructure trade since last December, targeting $ORCL then adding $CRWV, $ALAB and $IREN. Oracle down 33.5%, CoreWeave 48.2%, Astera Labs 47.6%, IREN 55.1% since the call, now shorting $NVDA at the center.",
+      "zh_summary": "自去年12月以來我們一直做空AI基礎設施交易，先後針對 $ORCL，然後加入 $CRWV、$ALAB 和 $IREN。Oracle下跌33.5%，CoreWeave 48.2%，Astera Labs 47.6%，IREN 55.1%，現在做空處於中心的 $NVDA。",
+      "tickers": ["ORCL", "CRWV", "ALAB", "IREN", "NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"ORCL": "睇淡", "CRWV": "睇淡", "ALAB": "睇淡", "IREN": "睇淡", "NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "做空AI基礎設施中心公司", "ORCL": "自做空以來下跌33.5%", "CRWV": "下跌48.2%", "ALAB": "下跌47.6%", "IREN": "下跌55.1%"}
+    },
+    "2120986121731784943": {
+      "en_summary": "$ANT Anthropic’s IPO is about six times oversubscribed according to Bloomberg. 6x oversubscribed is generally considered very good.",
+      "zh_summary": "根據彭博社，$ANT Anthropic 的IPO約超額認購六倍。六倍超額認購通常被認為非常好。",
+      "tickers": ["ANT"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ANT": "睇好"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ANT": "IPO超額認購六倍，被認為非常好"}
+    },
+    "2120985993251635216": {
+      "en_summary": "$NVDA spiked at the close. Likely shorts covering.",
+      "zh_summary": "$NVDA 在收盤時飆升。可能是空頭回補。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
