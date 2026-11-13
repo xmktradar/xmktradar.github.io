@@ -1703,9 +1703,182 @@
       "SMCI"
      ]
     }
+   },
+   "intraday_3": {
+    "post_et": "13:30",
+    "post_hkt": "02:30",
+    "generated_at": "2026-11-13T15:22:23-05:00",
+    "date": "2026-11-13",
+    "date_kst": "2026-11-14",
+    "quotes": {
+     "SPY": {
+      "price": 753.31,
+      "prev_close": 757.12,
+      "chg_pct": -0.5,
+      "time": "2026-11-13T15:22:22-05:00"
+     },
+     "QQQ": {
+      "price": 679.49,
+      "prev_close": 688.17,
+      "chg_pct": -1.26,
+      "time": "2026-11-13T15:22:22-05:00"
+     },
+     "DIA": {
+      "price": 522.78,
+      "prev_close": 522.47,
+      "chg_pct": 0.06,
+      "time": "2026-11-13T15:22:21-05:00"
+     },
+     "CSCO": {
+      "price": 95.79,
+      "prev_close": 102.01,
+      "chg_pct": -6.1,
+      "time": "2026-11-13T15:22:22-05:00"
+     },
+     "NBIS": {
+      "price": 116.86,
+      "prev_close": 128.64,
+      "chg_pct": -9.16,
+      "time": "2026-11-13T15:22:23-05:00"
+     },
+     "TSLA": {
+      "price": 390.4,
+      "prev_close": 397.45,
+      "chg_pct": -1.77,
+      "time": "2026-11-13T15:22:23-05:00"
+     },
+     "CRWV": {
+      "price": 53.24,
+      "prev_close": 56.6,
+      "chg_pct": -5.94,
+      "time": "2026-11-13T15:22:23-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-13T15:22:23-05:00",
+     "hkt": "2026-11-14 04:22"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "CSCO",
+      "chg_pct": -6.1,
+      "bull": 9,
+      "bear": 1,
+      "accounts": [
+       "BarbarianCap",
+       "tenet_research",
+       "TheTranscript_",
+       "PhotonBull",
+       "JonkooTrades",
+       "LiveSquawk",
+       "wallstengine",
+       "TrendSpider"
+      ]
+     },
+     {
+      "ticker": "NBIS",
+      "chg_pct": -9.16,
+      "bull": 8,
+      "bear": 2,
+      "accounts": [
+       "moninvestor",
+       "Sandeman52",
+       "JonahLupton",
+       "StockSavvyShay",
+       "itschrisray",
+       "JonkooTrades",
+       "midascabal",
+       "CheddarFlow"
+      ]
+     },
+     {
+      "ticker": "TSLA",
+      "chg_pct": -1.77,
+      "bull": 6,
+      "bear": 1,
+      "accounts": [
+       "PhotonBull",
+       "MikeZaccardi",
+       "midascabal",
+       "3PeaksTrading",
+       "Couzin_Vinny",
+       "Mr_Derivatives",
+       "garyblack00",
+       "zeroshorts"
+      ]
+     },
+     {
+      "ticker": "CRWV",
+      "chg_pct": -5.94,
+      "bull": 3,
+      "bear": 4,
+      "accounts": [
+       "StockSavvyShay",
+       "moninvestor",
+       "Beth_Kindig",
+       "gnoble79",
+       "KeithMcCullough",
+       "spotgamma",
+       "Frenchie_",
+       "MarketRebels"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Early afternoon · As of 15:22 ET (04:22 HKT)\n\n$SPY -0.5% · $QQQ -1.3% · $DIA +0.1%\n\n$CSCO -6.1%, 9 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #CSCO #NBIS",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午后觀察 · 截至 15:22 ET（04:22 HKT）\n\n$SPY -0.5% · $QQQ -1.3% · $DIA +0.1%\n\n$CSCO -6.1%，網站 9 個帳號看好\n$NBIS -9.2%，網站 8 個帳號看好\n$TSLA -1.8%，網站 6 個帳號看好\n$CRWV -5.9%，網站 4 個帳號看空\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #CSCO #NBIS",
+      "url": ""
+     },
+     "en": {
+      "text": "Early afternoon · As of 15:22 ET (04:22 HKT)\n\n$SPY -0.5% · $QQQ -1.3% · $DIA +0.1%\n\n$CSCO -6.1%, 9 accounts bullish on site\n$NBIS -9.2%, 8 accounts bullish on site\n$TSLA -1.8%, 6 accounts bullish on site\n$CRWV -5.9%, 4 accounts bearish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #CSCO #NBIS",
+      "url": ""
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "AMD",
+      "AMAT",
+      "AAPL",
+      "SPY",
+      "QQQ",
+      "RKLB",
+      "AVGO",
+      "GOOGL",
+      "NU",
+      "ONDS",
+      "ASTS",
+      "GOOG",
+      "LUNR",
+      "BE",
+      "MRNA",
+      "MNTS",
+      "MOD",
+      "NEE",
+      "VLO"
+     ],
+     "bear": [
+      "SMCI"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-13T15:22:18-05:00",
+  "generated_at": "2026-11-13T15:22:23-05:00",
   "generated_hkt": "2026-11-14 04:22"
  }
 }
