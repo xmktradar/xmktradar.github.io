@@ -1594,9 +1594,169 @@
       "SMCI"
      ]
     }
+   },
+   "intraday_3": {
+    "post_et": "13:30",
+    "post_hkt": "02:30",
+    "generated_at": "2026-11-12T20:36:46-05:00",
+    "date": "2026-11-12",
+    "date_kst": "2026-11-13",
+    "quotes": {
+     "SPY": {
+      "price": 757.12,
+      "prev_close": 759.81,
+      "chg_pct": -0.35,
+      "time": "2026-11-12T16:00:00-05:00"
+     },
+     "QQQ": {
+      "price": 688.17,
+      "prev_close": 690.38,
+      "chg_pct": -0.32,
+      "time": "2026-11-12T16:00:00-05:00"
+     },
+     "DIA": {
+      "price": 522.47,
+      "prev_close": 524.44,
+      "chg_pct": -0.38,
+      "time": "2026-11-12T16:00:00-05:00"
+     },
+     "NBIS": {
+      "price": 128.64,
+      "prev_close": 154.69,
+      "chg_pct": -16.84,
+      "time": "2026-11-12T16:00:00-05:00"
+     },
+     "MU": {
+      "price": 798.44,
+      "prev_close": 811.3,
+      "chg_pct": -1.59,
+      "time": "2026-11-12T16:00:01-05:00"
+     },
+     "CRWV": {
+      "price": 56.6,
+      "prev_close": 60.77,
+      "chg_pct": -6.86,
+      "time": "2026-11-12T16:00:01-05:00"
+     },
+     "ONDS": {
+      "price": 5.32,
+      "prev_close": 5.73,
+      "chg_pct": -7.16,
+      "time": "2026-11-12T16:00:00-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-12T16:00:01-05:00",
+     "hkt": "2026-11-13 05:00"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "NBIS",
+      "chg_pct": -16.84,
+      "bull": 3,
+      "bear": 2,
+      "accounts": [
+       "ACInvestorBlog",
+       "CheddarFlow",
+       "JonkooTrades",
+       "schaeffers",
+       "Frenchie_",
+       "Beth_Kindig",
+       "daniel_koss",
+       "StockSavvyShay"
+      ]
+     },
+     {
+      "ticker": "MU",
+      "chg_pct": -1.59,
+      "bull": 2,
+      "bear": 1,
+      "accounts": [
+       "TradexWhisperer",
+       "themissinglinks",
+       "Frenchie_",
+       "TheValueist",
+       "ripster47",
+       "EliteOptions2",
+       "ThetaWarrior"
+      ]
+     },
+     {
+      "ticker": "CRWV",
+      "chg_pct": -6.86,
+      "bull": 1,
+      "bear": 2,
+      "accounts": [
+       "Beth_Kindig",
+       "spotgamma",
+       "Frenchie_",
+       "OpenOutcrier",
+       "InvestmentGuru_",
+       "wallstengine",
+       "themissinglinks",
+       "ripster47"
+      ]
+     },
+     {
+      "ticker": "ONDS",
+      "chg_pct": -7.16,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "StockSavvyShay",
+       "PhotonBull",
+       "tenet_research"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Early afternoon · As of 16:00 ET (05:00 HKT)\n\n$SPY -0.3% · $QQQ -0.3% · $DIA -0.4%\n\n$NBIS -16.8%, 3 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #NBIS #MU",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午后觀察 · 截至 16:00 ET（05:00 HKT）\n\n$SPY -0.3% · $QQQ -0.3% · $DIA -0.4%\n\n$NBIS -16.8%，網站 3 個帳號看好\n$MU -1.6%，網站 2 個帳號看好\n$CRWV -6.9%，網站 2 個帳號看空\n$ONDS -7.2%，網站 2 個帳號看好\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #NBIS #MU",
+      "url": null
+     },
+     "en": {
+      "text": "Early afternoon · As of 16:00 ET (05:00 HKT)\n\n$SPY -0.3% · $QQQ -0.3% · $DIA -0.4%\n\n$NBIS -16.8%, 3 accounts bullish on site\n$MU -1.6%, 2 accounts bullish on site\n$CRWV -6.9%, 2 accounts bearish on site\n$ONDS -7.2%, 2 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #NBIS #MU",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "AMD",
+      "SPY",
+      "AAPL",
+      "GOOGL",
+      "AVGO",
+      "ASTS",
+      "GOOG",
+      "LUNR",
+      "ONDS",
+      "BE",
+      "MNTS",
+      "VLO"
+     ],
+     "bear": [
+      "SMCI"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-12T20:36:42-05:00",
+  "generated_at": "2026-11-12T20:36:46-05:00",
   "generated_hkt": "2026-11-13 09:36"
  }
 }
