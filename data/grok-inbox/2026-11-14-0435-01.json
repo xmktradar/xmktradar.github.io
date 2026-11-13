@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2120961329129496754": {
+      "en_summary": "(Reposted by @carlquintanilla) $NVDA | Former Nvidia CEO Jensen Huang Had An Intimate Relationship With A Second Employee – RTRS Sources",
+      "zh_summary": "(轉推自 @carlquintanilla) $NVDA | 前 Nvidia CEO Jensen Huang 與第二名員工有親密關係 – 路透社消息來源",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "前 CEO 與第二名員工有親密關係"}
+    },
+    "2120960467753394353": {
+      "en_summary": "(Reposted by @AndreasSteno) Be honest, did you expect this? I sure didn't. $NVDA is down 12% for the week right now, but $SMH is up 8%. NVDA is 20% of the SMH. The lifeblood of a bull market is rotation.",
+      "zh_summary": "(轉推自 @AndreasSteno) 老實說，你預料到這個嗎？我確實沒有。$NVDA 本周目前下跌 12%，但 $SMH 上漲 8%。NVDA 佔 SMH 的 20%。牛市的生命線是輪動。",
+      "tickers": ["NVDA", "SMH"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "睇淡", "SMH": "睇好"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": "中性",
+      "ticker_notes": {"NVDA": "本周下跌 12%", "SMH": "上漲 8%，輪動"}
+    },
+    "2120960425105981939": {
+      "en_summary": "Today is the day, bulls! The S&P 500 enters one of its strongest 15 day seasonal windows of the year. We analyzed $SPX performance around Black Friday. $SPX gained in 27 of past 31 years, from 10 trading days before to 5 trading days after Black Friday. Not bad, huh.",
+      "zh_summary": "今天是日子，牛市！標普 500 進入一年中最強的 15 天季節性窗口之一。我們分析了 $SPX 在黑色星期五附近的表現。$SPX 在過去 31 年中有 27 年上漲，從黑色星期五前 10 個交易日到後 5 個交易日。不錯吧。",
+      "tickers": ["SPY"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPY": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": "利好",
+      "ticker_notes": {"SPY": "過去 31 年中 27 年在黑色星期五窗口上漲"}
+    },
+    "2120960315080745043": {
+      "en_summary": "Never gets old....",
+      "zh_summary": "永遠不會過時....",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2120960173208482240": {
+      "en_summary": "$NVDA $SPX \"I think we need more cowbell\"",
+      "zh_summary": "$NVDA $SPX \"我覺得我們需要更多牛鈴\"",
+      "tickers": ["NVDA", "SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "SPY": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
