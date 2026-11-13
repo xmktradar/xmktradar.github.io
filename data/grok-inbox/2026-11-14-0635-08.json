@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2121039402528915622": {
+      "en_summary": "Reuters' @ReutersJamie says rotation from tech into value stocks explains Wall Street's resilience despite the AI sell-off. The data support that view—for now. But Jensen Huang just resigned.",
+      "zh_summary": "路透社的 @ReutersJamie 表示，從科技股輪動到價值股解釋了華爾街盡管 AI 拋售仍具韌性。數據支持這一觀點——目前為止。但 Jensen Huang 剛剛辭職。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2121039278092485118": {
+      "en_summary": "<3 let's ignore the affairs <3 let's ignore the chip smuggling <3 all that matters is revenue growth <3 no morals, only number go up",
+      "zh_summary": "<3 讓我們忽略外遇 <3 讓我們忽略晶片走私 <3 唯一重要的是收入增長 <3 沒有道德，只有數字上漲",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121039131463840252": {
+      "en_summary": "Not a bad idea, who has the guts to stand up for their leader?",
+      "zh_summary": "不是壞主意，誰有勇氣為他們的領導站出來？",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121038738436317606": {
+      "en_summary": "@urfavAIengineer @chromosphere @MrMilkTrading @satymahajan They are going to try and run this up to SPX 7700 prior to NVDA.",
+      "zh_summary": "@urfavAIengineer @chromosphere @MrMilkTrading @satymahajan 他們將試圖在 NVDA 之前將此推高至 SPX 7700。",
+      "tickers": ["NVDA", "SPY"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "中性", "SPY": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": "利好",
+      "ticker_notes": {"SPY": "試圖推高至 7700"}
+    },
+    "2121038722435064127": {
+      "en_summary": "US AI is generating far more revenue than Chinese AI: As of the end of September, OpenAI and Anthropic had a combined estimated annualized revenue run rate of $105 billion. This is nearly 10 times t",
+      "zh_summary": "美國 AI 產生的收入遠多於中國 AI：截至9月底，OpenAI 和 Anthropic 的合計估計年化收入運行率為1050億美元。這幾乎是 t",
+      "tickers": [],
+      "stance": "睇好",
+      "stance_by_ticker": {},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
