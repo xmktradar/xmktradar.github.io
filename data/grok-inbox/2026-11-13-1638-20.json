@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2121011524110049562": {
+      "en_summary": "PhotonBull asks how everyone feels about $NVDA at this price and is curious about the sentiment here.",
+      "zh_summary": "PhotonBull 問大家對 $NVDA 在這個價格的感覺如何，並對此地的情緒感到好奇。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121011432213070156": {
+      "en_summary": "StockSavvyShay reports $CBRS confirmed $MSFT as newest hyperscaler customer adding Azure to inference partners including $AMZN AWS, $ORCL and OpenAI. Cloud revenue surged 272% YoY and management expects total revenue to triple in 2027.",
+      "zh_summary": "StockSavvyShay 報導 $CBRS 確認 $MSFT 為最新超大規模客戶，將 Azure 加入推理合作夥伴列表，包括 $AMZN AWS、$ORCL 和 OpenAI。雲端收入同比增長 272%，管理層預期總收入在 2027 年翻三倍。",
+      "tickers": ["CBRS", "MSFT", "AMZN", "ORCL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"CBRS": "睇好", "MSFT": "中性", "AMZN": "中性", "ORCL": "中性"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"CBRS": "新增MSFT客戶，預期2027年收入翻三倍"}
+    },
+    "2121011154109792315": {
+      "en_summary": "wallstengine reports top Democrats Ron Wyden and Richard Neal opened an inquiry into how the Trump administration handled Nvidia $NVDA chip sales to China. Their letter calls the H200 tariff arrangement an 'unconstitutional export tax system'. Source: TechCrunch.",
+      "zh_summary": "wallstengine 報導頂尖民主黨人士 Ron Wyden 和 Richard Neal 對特朗普政府如何處理 Nvidia $NVDA 芯片銷往中國展開調查。他們的信將 H200 關稅安排稱為「違憲的出口稅系統」。來源：TechCrunch。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "利淡",
+      "ticker_notes": {"NVDA": "民主黨調查中國芯片銷售與關稅安排"}
+    },
+    "2121011117472321830": {
+      "en_summary": "KevInvestingYT expects aggressive PT cuts from analysts tomorrow morning after Jensen Huang’s exit from $NVDA.",
+      "zh_summary": "KevInvestingYT 預期明天早上分析師將因 Jensen Huang 離開 $NVDA 而激進調降目標價。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "估值",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "預期分析師激進調降目標價"}
+    },
+    "2121011089651466728": {
+      "en_summary": "(Reposted by @fundstrat) FundstratDirect quotes Tom Lee on @CNBCClosingBell: 'I don’t think a single Nvidia customer is going to cancel an order.' Members get the playbook of 5 reasons Lee expects $NVDA to dominate.",
+      "zh_summary": "（由 @fundstrat 轉發）FundstratDirect 引述 Tom Lee 在 @CNBCClosingBell 表示：「我不認為會有任何一個 Nvidia 客戶取消訂單。」會員可獲得 Lee 預期 $NVDA 將主導的 5 個理由。",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "Tom Lee 認為客戶不會取消訂單，預期將主導"}
+    }
+  }
+}
