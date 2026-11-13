@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2120985200578469937": {
+      "en_summary": "We need a @CNBC special $NVDA.",
+      "zh_summary": "我們需要一個關於 $NVDA 的 @CNBC 特別節目。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2120985149664014720": {
+      "en_summary": "RECAP 11/12 Unusual Puts: $NVDA Dec-28 120 P, $INTC Nov 56 P, $UAA Sep 5 P, $KWEB Feb 21 P, $NVDA Jan 100 P, $JD Dec 26 P, $PFE Mar 27 P, $NKE Nov 35 P, $PDD Sep 65 P, $CSCO Jan 92.5 P, $TTWO Dec 180 P, $T Jan-28 20 P, $BBD Feb 2 P, $FXI Jan 32 P, $CORZ Nov 14 P, $SMH Nov 340 P, $INTC Feb 50 P.",
+      "zh_summary": "11/12 異常看跌期權回顧：$NVDA Dec-28 120 P、$INTC Nov 56 P、$UAA Sep 5 P、$KWEB Feb 21 P、$NVDA Jan 100 P、$JD Dec 26 P、$PFE Mar 27 P、$NKE Nov 35 P、$PDD Sep 65 P、$CSCO Jan 92.5 P、$TTWO Dec 180 P、$T Jan-28 20 P、$BBD Feb 2 P、$FXI Jan 32 P、$CORZ Nov 14 P、$SMH Nov 340 P、$INTC Feb 50 P。",
+      "tickers": ["NVDA", "INTC", "UAA", "KWEB", "JD", "PFE", "NKE", "PDD", "CSCO", "TTWO", "T", "BBD", "FXI", "CORZ", "SMH"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "INTC": "中性", "UAA": "中性", "KWEB": "中性", "JD": "中性", "PFE": "中性", "NKE": "中性", "PDD": "中性", "CSCO": "中性", "TTWO": "中性", "T": "中性", "BBD": "中性", "FXI": "中性", "CORZ": "中性", "SMH": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2120985125479714875": {
+      "en_summary": "RECAP 11/12 Unusual Calls: $NVDA Jan 170 C, $USAR Jan 8 C, $GXO Nov 57.5 C, $IREN Jan-29 50 C, $DCH Jan-28 7 C, $GFL Jan 45/50 C Spd, $VG May 20 C, $CIFR Jun 15 C, $DRAM Mar 61 C, $WULF Jan-29 12 C, $PCG Nov27 15 C.",
+      "zh_summary": "11/12 異常看漲期權回顧：$NVDA Jan 170 C、$USAR Jan 8 C、$GXO Nov 57.5 C、$IREN Jan-29 50 C、$DCH Jan-28 7 C、$GFL Jan 45/50 C Spd、$VG May 20 C、$CIFR Jun 15 C、$DRAM Mar 61 C、$WULF Jan-29 12 C、$PCG Nov27 15 C。",
+      "tickers": ["NVDA", "USAR", "GXO", "IREN", "DCH", "GFL", "VG", "CIFR", "DRAM", "WULF", "PCG"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "USAR": "中性", "GXO": "中性", "IREN": "中性", "DCH": "中性", "GFL": "中性", "VG": "中性", "CIFR": "中性", "DRAM": "中性", "WULF": "中性", "PCG": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2120985091669447056": {
+      "en_summary": "$NVDA remains Bearish TREND according to @Hedgeye and the low-end of the Risk Range is a lot lower.",
+      "zh_summary": "根據 @Hedgeye，$NVDA 仍然是看跌趨勢，風險範圍的低端低很多。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "Hedgeye 維持看跌趨勢，風險範圍低端更低"}
+    },
+    "2120985081552785710": {
+      "en_summary": "Anthropic IPO 6X oversubscribed. This one is gonna be a banger! $ANT",
+      "zh_summary": "Anthropic IPO 超額認購6倍。這一個將會很棒！$ANT",
+      "tickers": ["ANT"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ANT": "睇好"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ANT": "IPO超額認購6倍，預期表現出色"}
+    }
+  }
+}
