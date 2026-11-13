@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2120984722444787969": {
+      "en_summary": "$SMCI remains Bearish TREND according to @Hedgeye.",
+      "zh_summary": "根據 @Hedgeye，$SMCI 仍然是看跌趨勢。",
+      "tickers": ["SMCI"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SMCI": "睇淡"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SMCI": "Hedgeye 維持看跌趨勢"}
+    },
+    "2120984551644426613": {
+      "en_summary": "$NVDA closing strong above 165 and big bull candle right off 150 support. Will be interesting how this trades into earnings next week and year end but great price action after washout.",
+      "zh_summary": "$NVDA 收盤強勁高於165，並在150支撑上方出現大陽燭。將有趣看它如何交易至下週業績和年底，但洗盤後價格行動出色。",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "收盤高於165，從150支撑出現大陽燭，洗盤後價格行動出色"}
+    },
+    "2120984463844823309": {
+      "en_summary": "Quite the day, $NVDA saga, Trump Posts... market held in. $AMD massive move.. $GOOGL gap.. $AMZN tried but couldn't hold. $AAPL new ATH. Out of my calls. Traded $AMZN $GOOGL long out and $MU short out. PPI in the AM.",
+      "zh_summary": "相當的一天，$NVDA 事件，Trump 帖文... 市場守住。$AMD 大幅波動.. $GOOGL 缺口.. $AMZN 嘗試但未能守住。$AAPL 新高。我的看漲期權出場。交易 $AMZN $GOOGL 做多出場和 $MU 做空出場。早上有PPI。",
+      "tickers": ["NVDA", "AMD", "GOOGL", "AMZN", "AAPL", "MU", "SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "AMD": "睇好", "GOOGL": "中性", "AMZN": "中性", "AAPL": "睇好", "MU": "睇淡", "SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {"AAPL": "新歷史高點", "AMD": "大幅波動"}
+    },
+    "2120983329243648234": {
+      "en_summary": "Thanks @sam_vadas and @SchwabNetwork for having me back on to discuss $NVDA, rotation, volatility, and why this is still a bull market.",
+      "zh_summary": "感謝 @sam_vadas 和 @SchwabNetwork 再次邀請我討論 $NVDA、輪動、波動性，以及為什麼這仍然是牛市。",
+      "tickers": ["NVDA", "SPY"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "中性", "SPY": "睇好"},
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    },
+    "2120983275040539044": {
+      "en_summary": "I continue to believe a $SPCX - $TSLA merger using $SPCX equity will result in little windfall for TSLA investors given the massive dilution of SPCX shares and the long expected lead time (12-18 months) between deal announcement and deal close.",
+      "zh_summary": "我繼續相信使用 $SPCX 股權的 $SPCX - $TSLA 合併將為 TSLA 投資者帶來很少意外之財，因為 SPCX 股份的大量稀釋以及交易宣布到交易完成之間預期的漫長時間（12-18個月）。",
+      "tickers": ["SPCX", "TSLA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPCX": "中性", "TSLA": "睇淡"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TSLA": "合併將因SPCX股份大量稀釋和12-18個月時間而對投資者利好有限"}
+    }
+  }
+}
