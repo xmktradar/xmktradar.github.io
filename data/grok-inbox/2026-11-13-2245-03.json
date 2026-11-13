@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2120985847008751733": {
+      "en_summary": "If $NBIS has 2GW of connected power by end of 2027 and billing on all of that capacity in 2028 Q1 then full year CY2028 revs should be $40B+ at $18-20M per MW blended rate plus any new capacity connected in CY2028.",
+      "zh_summary": "如果 $NBIS 在2027年底擁有2GW已連接電力，並在2028年第一季對全部容量計費，則2028全年收入應超過400億美元，按每MW 1800-2000萬美元混合費率計算，加上2028年新連接的任何容量。",
+      "tickers": ["NBIS"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NBIS": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NBIS": "若2027年底2GW已連接，2028收入或超400億美元"}
+    },
+    "2120985682319462556": {
+      "en_summary": "APPLIED MATERIALS $AMAT Q4’26 earnings: Revenue $10.41B (est. $10.3B), +53% YoY; Adj. EPS $4.16 (est. $4.05); Q1 Guide Revenue $11.10B +/- $500M (est. $10.89B); Fiscal 2026 Revenue $34.45B +21% YoY, Adj. EPS $12.89 +37% YoY.",
+      "zh_summary": "APPLIED MATERIALS $AMAT 2026年第四季業績：收入104.1億美元（預期103億美元），同比增長53%；調整後每股收益4.16美元（預期4.05美元）；第一季指引收入111億美元+/-5億美元（預期108.9億美元）；2026財年收入344.5億美元，同比增長21%，調整後每股收益12.89美元，同比增長37%。",
+      "tickers": ["AMAT"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AMAT": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AMAT": "業績超預期，全年指引強勁"}
+    },
+    "2120985667303772453": {
+      "en_summary": "Stock Market Today with @AlissaCoram and @IBD_ECarson: Stocks weather Nvidia news, yields; Arista Networks, Five Below, Cloudflare in focus $ANET $FIVE $NET.",
+      "zh_summary": "今日股市與 @AlissaCoram 和 @IBD_ECarson：股票抵禦Nvidia消息和收益率；Arista Networks、Five Below、Cloudflare 受關注 $ANET $FIVE $NET。",
+      "tickers": ["ANET", "FIVE", "NET"],
+      "stance": "中性",
+      "stance_by_ticker": {"ANET": "中性", "FIVE": "中性", "NET": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "yields",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2120985555970531742": {
+      "en_summary": "$SPX @spotgamma #gex at the close. This is the 5 day look ahead into Thursday positioning next week. Basically we need to stay above the hedge wall 7600 if bullish.",
+      "zh_summary": "$SPX 在收盤時的 @spotgamma #gex。這是未來5天展望至下週四的定位。基本上如果看漲需要保持在對沖牆7600上方。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPY": "需保持在對沖牆7600上方以維持看漲"}
+    },
+    "2120985427976814948": {
+      "en_summary": "$AMD $AVGO offset $NVDA ... SPX -0.3% yawn. $TSLA $SPCX up.",
+      "zh_summary": "$AMD $AVGO 抵消 $NVDA ... SPX 下跌0.3% 無感。$TSLA $SPCX 上漲。",
+      "tickers": ["AMD", "AVGO", "NVDA", "TSLA", "SPCX", "SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"AMD": "中性", "AVGO": "中性", "NVDA": "中性", "TSLA": "睇好", "SPCX": "睇好", "SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
