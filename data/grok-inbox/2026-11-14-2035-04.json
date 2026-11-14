@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2121255303085715469": {
+      "en_summary": "Someone just loaded $5.8M+ of $NVDA puts in about 10 minutes. $3.2M of it on one Dec 2027 270 put.",
+      "zh_summary": "有人在約 10 分鐘內載入超過 $5.8M 的 $NVDA 看跌期權。其中 $3.2M 在一張 Dec 2027 270 看跌。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "$5.8M+ 看跌，其中 $3.2M 於 Dec 2027 270"}
+    },
+    "2121255293216542943": {
+      "en_summary": "Adding to $NBIS on this drawdown because the market is missing the forest for the trees on one-time revenue and retired ARR while overlooking new contracts pricing above $25M per megawatt, customers prepaying.",
+      "zh_summary": "在這次回撤中加倉 $NBIS，因為認為市場見樹不見林，糾結於一次性收入和退役 ARR 指標，而忽略新合約定價超過每兆瓦 $25M，客戶預付。",
+      "tickers": ["NBIS"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NBIS": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NBIS": "新合約定價超每兆瓦 $25M，加倉"}
+    },
+    "2121254507430674618": {
+      "en_summary": "It may be different, but the rally alone hasn't proven it. After similar surges, QQQ was higher a year later only 16 times out of 33, with a median return of -6.8%. The next few weeks are still the test.",
+      "zh_summary": "可能不同，但單靠反彈尚未證明。在類似飆升後，QQQ 一年後更高只有 33 次中的 16 次，中位數回報 -6.8%。接下來幾週仍是考驗。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121253789067870493": {
+      "en_summary": "$NBIS went from +200% to +28% YTD. A lot of AI stocks have seen similar sell-offs. Stocks are very unpredictable. Who would have predicted Jensen’s affair + resignation? Unexpected events can hit share prices hard. Taking profits is a must in this sector.",
+      "zh_summary": "$NBIS 從年初至今 +200% 降至 +28%。許多 AI 股票出現類似拋售。股票非常不可預測。誰能預測 Jensen 的風流韻事 + 辭職？這類意外事件可重創股價。因此認為在此板塊獲利了結是必須的。",
+      "tickers": ["NBIS"],
+      "stance": "中性",
+      "stance_by_ticker": {"NBIS": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2121253442442203495": {
+      "en_summary": "$NU market likes it too.",
+      "zh_summary": "$NU 市場也喜歡它。",
+      "tickers": ["NU"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NU": "睇好"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
