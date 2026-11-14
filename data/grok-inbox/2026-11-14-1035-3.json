@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2121409313570947262": {
+      "en_summary": "Stephanie Link notes a wild week with $NVDA and hot inflation. Yet GDP at 3.5% is encouraging, and EPS up 28%. Big week ahead with retail EPS.",
+      "zh_summary": "Stephanie Link指出本週因$NVDA和熱通膨而波動劇烈。然而GDP達3.5%令人鼓舞，EPS上漲28%。未來一週有零售EPS值得關注。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "inflation",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2121409053230518562": {
+      "en_summary": "damnang2 agrees that concerns about Nvidia's CUDA moat breaking down need to be taken seriously and watched closely, as covered in previous AMD article. (Morgan Stanley quote: larger frontier model companies are architecture agnostic, CUDA not relevant for years, yet NVIDIA maintains over 80% revenue share.)",
+      "zh_summary": "damnang2同意有關英偉達CUDA護城河崩潰的擔憂需要認真對待並密切關注，如先前AMD文章所詳細討論。（摩根士丹利引述：大型前沿模型公司已轉向架構無關方法，CUDA多年來不相關，但英偉達仍保持超過80%的收入份額。）",
+      "tickers": ["NVDA", "AMD"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "AMD": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121408830383018216": {
+      "en_summary": "Ed Zitron states that everyone involved is actively supporting a philanderer who helped smuggle billions of dollars of GPUs illegally to China. This is an objective appraisal; no investigation necessary as it has been proven in vast detail. (In context of shareholder calls for Jensen Huang's potential return to $NVDA.)",
+      "zh_summary": "Ed Zitron表示，所有相關人士都在積極支持一個幫助非法走私數十億美元GPU到中國的通姦者。這是客觀評估；無需調查，因為已有大量細節證明。（背景是股東呼籲黃仁勳可能重返$NVDA。）",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121407774466932818": {
+      "en_summary": "TrendSpider notes that $ZETA is checking every box.",
+      "zh_summary": "TrendSpider指出$ZETA正在滿足所有條件。",
+      "tickers": ["ZETA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ZETA": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121407661170405836": {
+      "en_summary": "unusual_whales reports that Elon Musk of Tesla $TSLA and SpaceX $SPCX has announced a petition to reinstate Jensen Huang as CEO of Nvidia $NVDA, and Elon himself will sign it. Asks if others would sign this petition.",
+      "zh_summary": "unusual_whales報導特斯拉$TSLA和SpaceX $SPCX的Elon Musk宣布有請願要求重新任命黃仁勳為英偉達$NVDA首席執行官，Elon本人將簽署。並詢問是否有人會簽署此請願。",
+      "tickers": ["TSLA", "SPCX", "NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"TSLA": "中性", "SPCX": "中性", "NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
