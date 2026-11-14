@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2121592989805896013": {
+      "en_summary": "No standout DJIA stock YTD. $CVX +44%, $AMGN +42%, $KO +42%, $MRK +40%, $TRV +39%, $JNJ +38%. $NVDA 6th worst at -13%. $GS $CAT up less than 5%.",
+      "zh_summary": "今年迄今無突出的DJIA股票。$CVX +44%，$AMGN +42%，$KO +42%，$MRK +40%，$TRV +39%，$JNJ +38%。$NVDA第六差，-13%。$GS $CAT上漲不到5%。",
+      "tickers": ["CVX", "AMGN", "KO", "MRK", "TRV", "JNJ", "NVDA", "GS", "CAT"],
+      "stance": "中性",
+      "stance_by_ticker": {"CVX": "睇好", "AMGN": "睇好", "KO": "睇好", "MRK": "睇好", "TRV": "睇好", "JNJ": "睇好", "NVDA": "睇淡", "GS": "中性", "CAT": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121592062466195802": {
+      "en_summary": "Positive development for $NU as it has secured approval for a Brazilian banking licence. Crucially, it comes without additional capital or liquidity requirements.",
+      "zh_summary": "對$NU的正面發展，因為它已獲得巴西銀行牌照批准。關鍵是，它沒有額外的資本或流動性要求。",
+      "tickers": ["NU"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NU": "睇好"},
+      "horizon": "中線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NU": "巴西銀行牌照批准，無額外資本要求"}
+    },
+    "2121590976707698785": {
+      "en_summary": "$NVDA hangs on to the No. 2 market-cap spot behind $AAPL.",
+      "zh_summary": "$NVDA緊咬在$AAPL之後的第二市值位置。",
+      "tickers": ["NVDA", "AAPL"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "AAPL": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121590836219859455": {
+      "en_summary": "$TLT Weekly chart from @TrendSpider.",
+      "zh_summary": "$TLT週線圖來自@TrendSpider。",
+      "tickers": ["TLT"],
+      "stance": "中性",
+      "stance_by_ticker": {"TLT": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "yields",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2121590556400734525": {
+      "en_summary": "$RKLB: Congrats on 100.",
+      "zh_summary": "$RKLB：恭喜達到100。",
+      "tickers": ["RKLB"],
+      "stance": "睇好",
+      "stance_by_ticker": {"RKLB": "睇好"},
+      "horizon": "短線",
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
