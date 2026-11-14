@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2121638213831799097": {
+      "en_summary": "Wtf is going on. Quoted: $BTC down more than 4%.",
+      "zh_summary": "搞什麼鬼。引用：$BTC下跌超過4%。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2121638146068676817": {
+      "en_summary": "$SPCX: Starship still looking good for return to launch site today. History in the making. Quoted: Flight 15 Update: Starship coasting in orbit, still looking good for return to launch site today. Pad and tower systems are go for catch.",
+      "zh_summary": "$SPCX：Starship今天返回發射場仍然看起來不錯。歷史正在創造中。引用：Flight 15更新：Starship在軌道滑行，今天返回發射場仍然看起來不錯。發射台和塔系統已準備好進行捕捉。",
+      "tickers": ["SPCX"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPCX": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121638036241105340": {
+      "en_summary": "$ANT Anthropic CEO Dario Amodei discusses compute as the deepest business dilemma. Huge uncertainty on how technological growth transfers to economic value. Buying too much compute risks financial overextension; buying too little risks falling behind.",
+      "zh_summary": "$ANT Anthropic CEO Dario Amodei討論計算力是最深層的商業困境。技術增長如何轉化為經濟價值存在巨大不確定性。購買過多計算力有財務過度擴張風險；購買過少有落後風險。",
+      "tickers": ["ANT"],
+      "stance": "中性",
+      "stance_by_ticker": {"ANT": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121637624108720448": {
+      "en_summary": "One of wildest things about AI memory shortage is that regular DRAM now costs more per GB than HBM, showing demand reshaping the memory market. Breaks down 6 layers of memory and storage and which stocks benefit: SRAM for $CBRS & $NVDA, HBM by $SKHY $MU Samsung to $NVDA & $AMD, DRAM etc. Mentions $AMD $CBRS $IBM $MU $NVDA $SKHY $SNDK $STX $WDC.",
+      "zh_summary": "AI記憶體短缺最瘋狂的一點是普通DRAM每GB成本現已高於HBM，顯示需求正在重塑記憶體市場。分解6層記憶體與儲存及哪些股票受益：SRAM用於$CBRS與$NVDA，HBM由$SKHY $MU三星供應給$NVDA與$AMD，DRAM等。提及$AMD $CBRS $IBM $MU $NVDA $SKHY $SNDK $STX $WDC。",
+      "tickers": ["AMD", "CBRS", "IBM", "MU", "NVDA", "SKHY", "SNDK", "STX", "WDC"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AMD": "睇好", "CBRS": "睇好", "IBM": "中性", "MU": "睇好", "NVDA": "睇好", "SKHY": "睇好", "SNDK": "睇好", "STX": "中性", "WDC": "中性"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MU": "DRAM與HBM需求受益", "NVDA": "SRAM與HBM需求受益"}
+    },
+    "2121637296373923875": {
+      "en_summary": "If your clients are 60/40 and the 40 is passive bonds, they have zero positioning against credit widening. $JOJO adds tactical rotation to the fixed income sleeve.",
+      "zh_summary": "如果你的客戶是60/40配置，且40%是被動債券，他們對信用利差擴大沒有任何定位。$JOJO為固定收益部分增加戰術性輪動。",
+      "tickers": ["JOJO"],
+      "stance": "睇好",
+      "stance_by_ticker": {"JOJO": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "yields",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    }
+  }
+}
