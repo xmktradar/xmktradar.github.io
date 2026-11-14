@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2121253305250934792": {
+      "en_summary": "$VNT up 800%+.",
+      "zh_summary": "$VNT 上漲 800%+。",
+      "tickers": ["VNT"],
+      "stance": "中性",
+      "stance_by_ticker": {"VNT": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121252802089587178": {
+      "en_summary": "Some good stuff from Bloomberg @business yesterday regarding Jensen and Nvidia $NVDA.",
+      "zh_summary": "昨天 Bloomberg @business 關於 Jensen 和 Nvidia $NVDA 的一些好內容。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121252624980734169": {
+      "en_summary": "Nice action @IUTraders $SPY.",
+      "zh_summary": "不錯的行動 @IUTraders $SPY。",
+      "tickers": ["SPY"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPY": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121252421879972187": {
+      "en_summary": "Today is a good day to see if your gamma/gex platform is lying to you. No meaningfully sized 0dte $SPX positions anywhere near spot as of now. If they have a \"king node\" or \"golden level\" near spot, they're full of it.",
+      "zh_summary": "今天是查看你的 gamma/gex 平台是否在說謊的好日子。目前沒有任何有意義規模的 0dte $SPX 倉位靠近現價。如果他們有「王節點」或「黃金水平」靠近現價，他們是在胡說。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121252379853267222": {
+      "en_summary": "Buying $NVDA right now is like jumping into a puddle where you’ve got no idea how deep it goes.",
+      "zh_summary": "現在買入 $NVDA 就像跳進一個你不知道有多深的水坑。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
