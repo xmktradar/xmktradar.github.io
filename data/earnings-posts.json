@@ -36,13 +36,6 @@
    "backlog": true
   },
   {
-   "t": "ELV",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-21 00:00",
-   "backlog": true
-  },
-  {
    "t": "GM",
    "end": "2026-09-30",
    "label": "FY2026 Q3",
@@ -218,13 +211,6 @@
    "backlog": true
   },
   {
-   "t": "TT",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-30 05:28",
-   "backlog": true
-  },
-  {
    "t": "ECL",
    "end": "2026-09-30",
    "label": "FY2026 Q3",
@@ -355,13 +341,6 @@
    "end": "2026-09-26",
    "label": "FY2027 Q1",
    "found_hkt": "2026-11-04 09:33",
-   "backlog": true
-  },
-  {
-   "t": "PNC",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-11-05 01:09",
    "backlog": true
   },
   {
@@ -1672,6 +1651,33 @@
    "backlog": true,
    "posted": "2026-11-13",
    "slot": "1000"
+  },
+  {
+   "t": "ELV",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-21 00:00",
+   "backlog": true,
+   "posted": "2026-11-14",
+   "slot": "1000"
+  },
+  {
+   "t": "PNC",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-11-05 01:09",
+   "backlog": true,
+   "posted": "2026-11-14",
+   "slot": "1000"
+  },
+  {
+   "t": "TT",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-30 05:28",
+   "backlog": true,
+   "posted": "2026-11-14",
+   "slot": "1000"
   }
  ],
  "slots": {
@@ -1688,9 +1694,9 @@
    "items": []
   },
   "1000": {
-   "day": "2026-11-13",
+   "day": "2026-11-14",
    "post_at": "10:00",
-   "made_hkt": "2026-11-13 08:38",
+   "made_hkt": "2026-11-14 08:21",
    "platforms": [
     "x",
     "threads",
@@ -1699,290 +1705,212 @@
    ],
    "items": [
     {
-     "t": "JCI",
-     "name": "Johnson Controls International plc",
-     "label": "FY2026 Q4",
+     "t": "ELV",
+     "name": "Elevance Health, Inc.",
+     "label": "FY2026 Q3",
      "end": "2026-09-30",
-     "mcap": 86348447744,
-     "backlog": false,
-     "tag": "",
-     "images": {
-      "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-zh-4.jpg"
-      ],
-      "en": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-en-4.jpg"
-      ]
-     },
-     "images_x": {
-      "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-zh-4.jpg"
-      ],
-      "en": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-en-4.jpg"
-      ]
-     },
-     "images_fb": {
-      "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-zh-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-zh-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-zh-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-zh-4-fb.jpg"
-      ],
-      "en": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-en-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-en-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-en-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-JCI-en-4-fb.jpg"
-      ]
-     },
-     "posts": {
-      "zh": {
-       "x": "$JCI 剛公布 FY2026 Q4 財報，重點數字整理如下。\n\n・收入 US$71.1 億，按年 +10.4%，優於市場預期 1.0%\n・經調整 EPS $1.66，預期 $1.59 ✅\n・毛利率 38.0%｜淨利率 13.6%\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #JCI",
-       "threads": "$JCI 剛公布 FY2026 Q4 財報，重點數字整理如下。\n\n・收入 US$71.1 億，按年 +10.4%，優於市場預期 1.0%\n・經調整 EPS $1.66，預期 $1.59 ✅\n・毛利率 38.0%｜淨利率 13.6%\n・最大收入線：Americas 佔 68%（按年 +9.9%）\n・自由現金流（過去 4 季）US$34.1 億\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #JCI",
-       "instagram": "$JCI 剛公布 FY2026 Q4 財報，重點數字整理如下。\n\n・收入 US$71.1 億，按年 +10.4%，優於市場預期 1.0%\n・經調整 EPS $1.66，預期 $1.59 ✅\n・毛利率 38.0%｜淨利率 13.6%\n・最大收入線：Americas 佔 68%（按年 +9.9%）\n・自由現金流（過去 4 季）US$34.1 億\n\n你覺得 $JCI 這次財報是好是壞？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #JCI",
-       "facebook": "$JCI 剛公布 FY2026 Q4 財報，重點數字整理如下。\n\n・收入 US$71.1 億，按年 +10.4%，優於市場預期 1.0%\n・經調整 EPS $1.66，預期 $1.59 ✅\n・毛利率 38.0%｜淨利率 13.6%\n・最大收入線：Americas 佔 68%（按年 +9.9%）\n・自由現金流（過去 4 季）US$34.1 億\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #JCI"
-      },
-      "en": {
-       "x": "$JCI just reported FY2026 Q4. Here are the numbers that matter.\n\n・Revenue $7.11B, +10.4% YoY, beat estimates by 1.0%\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #JCI",
-       "threads": "",
-       "instagram": "",
-       "facebook": "$JCI just reported FY2026 Q4. Here are the numbers that matter.\n\n・Revenue $7.11B, +10.4% YoY, beat estimates by 1.0%\n・Adjusted EPS $1.66 vs $1.59 expected ✅\n・Gross margin 38.0% | Net margin 13.6%\n・Biggest line: Americas, 68% of revenue (+9.9% YoY)\n・Free cash flow (last 4 quarters) $3.41B\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #JCI"
-      }
-     },
-     "url": {
-      "zh": "https://thecrowdtape.com/zh/earnings/JCI/",
-      "en": "https://thecrowdtape.com/en/earnings/JCI/"
-     },
-     "ig": false
-    },
-    {
-     "t": "SBUX",
-     "name": "Starbucks Corporation",
-     "label": "FY2025 Q4",
-     "end": "2026-09-27",
-     "mcap": 122287128576,
+     "mcap": 92837052416,
      "backlog": true,
      "tag": "補發",
      "images": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-zh-4.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-en-4.jpg"
       ]
      },
      "images_x": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-zh-4.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-en-4.jpg"
       ]
      },
      "images_fb": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-zh-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-zh-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-zh-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-zh-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-zh-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-zh-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-zh-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-zh-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-zh-4-fb.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-en-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-en-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-en-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-en-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-SBUX-en-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-en-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-en-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-en-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-ELV-en-4-fb.jpg"
       ]
      },
      "posts": {
       "zh": {
-       "x": "$SBUX 剛公布 FY2025 Q4 財報，重點數字整理如下。\n\n・收入 US$91.4 億，按年 -4.5%，遜於市場預期 1.0%\n\nX 大神怎麼看（近 28 天）：1 個看多、1 個看空\n\n只是整理公開財報數字\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #SBUX",
-       "threads": "$SBUX 剛公布 FY2025 Q4 財報，重點數字整理如下。\n\n・收入 US$91.4 億，按年 -4.5%，遜於市場預期 1.0%\n・經調整 EPS $0.80，預期 $0.71 ✅\n・淨利率 7.4%\n・自由現金流（過去 4 季）US$37.2 億\n\nX 大神怎麼看（近 28 天）：1 個看多、1 個看空\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SBUX",
-       "instagram": "$SBUX 剛公布 FY2025 Q4 財報，重點數字整理如下。\n\n・收入 US$91.4 億，按年 -4.5%，遜於市場預期 1.0%\n・經調整 EPS $0.80，預期 $0.71 ✅\n・淨利率 7.4%\n・自由現金流（過去 4 季）US$37.2 億\n\nX 大神怎麼看（近 28 天）：1 個看多、1 個看空\n\n你覺得 $SBUX 這次財報是好是壞？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SBUX",
-       "facebook": "$SBUX 剛公布 FY2025 Q4 財報，重點數字整理如下。\n\n・收入 US$91.4 億，按年 -4.5%，遜於市場預期 1.0%\n・經調整 EPS $0.80，預期 $0.71 ✅\n・淨利率 7.4%\n・自由現金流（過去 4 季）US$37.2 億\n\nX 大神怎麼看（近 28 天）：1 個看多、1 個看空\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SBUX"
+       "x": "$ELV 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$514 億，按年 +1.4%\n・經調整 EPS $6.99，預期 $4.69 ✅\n・毛利率 89.0%｜淨利率 2.7%\n・自由現金流（過去 4 季）US$65.1 億\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #ELV",
+       "threads": "$ELV 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$514 億，按年 +1.4%\n・經調整 EPS $6.99，預期 $4.69 ✅\n・毛利率 89.0%｜淨利率 2.7%\n・自由現金流（過去 4 季）US$65.1 億\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #ELV",
+       "instagram": "$ELV 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$514 億，按年 +1.4%\n・經調整 EPS $6.99，預期 $4.69 ✅\n・毛利率 89.0%｜淨利率 2.7%\n・自由現金流（過去 4 季）US$65.1 億\n\n你覺得 $ELV 這次財報是好是壞？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #ELV",
+       "facebook": "$ELV 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$514 億，按年 +1.4%\n・經調整 EPS $6.99，預期 $4.69 ✅\n・毛利率 89.0%｜淨利率 2.7%\n・自由現金流（過去 4 季）US$65.1 億\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #ELV"
       },
       "en": {
-       "x": "$SBUX just reported FY2025 Q4. Here are the numbers that matter.\n\n・Revenue $9.14B, -4.5% YoY, missed estimates by 1.0%\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #SBUX",
+       "x": "$ELV just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $51.43B, +1.4% YoY\n・Adjusted EPS $6.99 vs $4.69 expected ✅\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Earnings #ELV",
        "threads": "",
        "instagram": "",
-       "facebook": "$SBUX just reported FY2025 Q4. Here are the numbers that matter.\n\n・Revenue $9.14B, -4.5% YoY, missed estimates by 1.0%\n・Adjusted EPS $0.80 vs $0.71 expected ✅\n・Net margin 7.4%\n・Free cash flow (last 4 quarters) $3.72B\n\nWhat X accounts say (28 days): 1 bullish, 1 bearish\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #SBUX"
+       "facebook": "$ELV just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $51.43B, +1.4% YoY\n・Adjusted EPS $6.99 vs $4.69 expected ✅\n・Gross margin 89.0% | Net margin 2.7%\n・Free cash flow (last 4 quarters) $6.51B\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #ELV"
       }
      },
      "url": {
-      "zh": "https://thecrowdtape.com/zh/earnings/SBUX/",
-      "en": "https://thecrowdtape.com/en/earnings/SBUX/"
+      "zh": "https://thecrowdtape.com/zh/earnings/ELV/",
+      "en": "https://thecrowdtape.com/en/earnings/ELV/"
      },
      "ig": true
     },
     {
-     "t": "WM",
-     "name": "Waste Management, Inc.",
+     "t": "PNC",
+     "name": "The PNC Financial Services Group, Inc.",
      "label": "FY2026 Q3",
      "end": "2026-09-30",
-     "mcap": 97066655744,
+     "mcap": 92167561216,
      "backlog": true,
      "tag": "補發",
      "images": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-zh-4.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-en-4.jpg"
       ]
      },
      "images_x": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-zh-4.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-en-4.jpg"
       ]
      },
      "images_fb": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-zh-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-zh-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-zh-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-zh-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-zh-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-zh-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-zh-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-zh-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-zh-4-fb.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-en-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-en-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-en-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-en-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-WM-en-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-en-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-en-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-en-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-PNC-en-4-fb.jpg"
       ]
      },
      "posts": {
       "zh": {
-       "x": "$WM 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$68.5 億，按年 +6.3%，與市場預期差不多\n\nX 大神怎麼看（近 28 天）：0 個看多、1 個看空\n\n只是整理公開財報數字\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #WM",
-       "threads": "$WM 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$68.5 億，按年 +6.3%，與市場預期差不多\n・經調整 EPS $2.15，預期 $2.18 ❌\n・毛利率 40.2%｜淨利率 12.0%\n・最大收入線：East Tier 佔 35%（按年 +3.5%）\n・自由現金流（過去 4 季）US$37.4 億\n\nX 大神怎麼看（近 28 天）：0 個看多、1 個看空\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #WM",
-       "instagram": "$WM 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$68.5 億，按年 +6.3%，與市場預期差不多\n・經調整 EPS $2.15，預期 $2.18 ❌\n・毛利率 40.2%｜淨利率 12.0%\n・最大收入線：East Tier 佔 35%（按年 +3.5%）\n・自由現金流（過去 4 季）US$37.4 億\n\nX 大神怎麼看（近 28 天）：0 個看多、1 個看空\n\n你覺得 $WM 這次財報是好是壞？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #WM",
-       "facebook": "$WM 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$68.5 億，按年 +6.3%，與市場預期差不多\n・經調整 EPS $2.15，預期 $2.18 ❌\n・毛利率 40.2%｜淨利率 12.0%\n・最大收入線：East Tier 佔 35%（按年 +3.5%）\n・自由現金流（過去 4 季）US$37.4 億\n\nX 大神怎麼看（近 28 天）：0 個看多、1 個看空\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #WM"
+       "x": "$PNC 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$65.6 億，按年 +10.9%\n・經調整 EPS $4.97，預期 $4.89 ✅\n・淨利率 31.7%\n\n只是整理公開財報數字\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #PNC",
+       "threads": "$PNC 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$65.6 億，按年 +10.9%\n・經調整 EPS $4.97，預期 $4.89 ✅\n・淨利率 31.7%\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #PNC",
+       "instagram": "$PNC 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$65.6 億，按年 +10.9%\n・經調整 EPS $4.97，預期 $4.89 ✅\n・淨利率 31.7%\n\n你覺得 $PNC 這次財報是好是壞？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #PNC",
+       "facebook": "$PNC 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$65.6 億，按年 +10.9%\n・經調整 EPS $4.97，預期 $4.89 ✅\n・淨利率 31.7%\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #PNC"
       },
       "en": {
-       "x": "$WM just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $6.85B, +6.3% YoY, in line with estimates\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #WM",
+       "x": "$PNC just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $6.56B, +10.9% YoY\n・Adjusted EPS $4.97 vs $4.89 expected ✅\n・Net margin 31.7%\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #PNC",
        "threads": "",
        "instagram": "",
-       "facebook": "$WM just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $6.85B, +6.3% YoY, in line with estimates\n・Adjusted EPS $2.15 vs $2.18 expected ❌\n・Gross margin 40.2% | Net margin 12.0%\n・Biggest line: East Tier, 35% of revenue (+3.5% YoY)\n・Free cash flow (last 4 quarters) $3.74B\n\nWhat X accounts say (28 days): 0 bullish, 1 bearish\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #WM"
+       "facebook": "$PNC just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $6.56B, +10.9% YoY\n・Adjusted EPS $4.97 vs $4.89 expected ✅\n・Net margin 31.7%\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #PNC"
       }
      },
      "url": {
-      "zh": "https://thecrowdtape.com/zh/earnings/WM/",
-      "en": "https://thecrowdtape.com/en/earnings/WM/"
+      "zh": "https://thecrowdtape.com/zh/earnings/PNC/",
+      "en": "https://thecrowdtape.com/en/earnings/PNC/"
      },
      "ig": true
     },
     {
-     "t": "USB",
-     "name": "U.S. Bancorp",
+     "t": "TT",
+     "name": "Trane Technologies plc",
      "label": "FY2026 Q3",
      "end": "2026-09-30",
-     "mcap": 94224883712,
+     "mcap": 91496062976,
      "backlog": true,
      "tag": "補發",
      "images": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-zh-4.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-zh-4.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-en-4.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-en-4.jpg"
       ]
      },
      "images_x": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-zh-4.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-zh-4.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-en-4.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-en-4.jpg"
       ]
      },
      "images_fb": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-zh-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-zh-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-zh-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-zh-4-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-zh-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-zh-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-zh-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-zh-4-fb.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-en-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-en-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-en-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-13-1000-USB-en-4-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-en-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-en-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-en-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-14-1000-TT-en-4-fb.jpg"
       ]
      },
      "posts": {
       "zh": {
-       "x": "$USB 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$79.7 億，按年 +8.7%\n・經調整 EPS $1.34，預期 $1.32 ✅\n・淨利率 27.6%\n\n只是整理公開財報數字\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #USB",
-       "threads": "$USB 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$79.7 億，按年 +8.7%\n・經調整 EPS $1.34，預期 $1.32 ✅\n・淨利率 27.6%\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #USB",
-       "instagram": "$USB 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$79.7 億，按年 +8.7%\n・經調整 EPS $1.34，預期 $1.32 ✅\n・淨利率 27.6%\n\n你覺得 $USB 這次財報是好是壞？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #USB",
-       "facebook": "$USB 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$79.7 億，按年 +8.7%\n・經調整 EPS $1.34，預期 $1.32 ✅\n・淨利率 27.6%\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #USB"
+       "x": "$TT 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$67.6 億，按年 +17.7%，優於市場預期 3.9%\n・經調整 EPS $4.86，預期 $4.74 ✅\n・毛利率 35.3%｜淨利率 15.5%\n\n只是整理公開財報數字\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #TT",
+       "threads": "$TT 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$67.6 億，按年 +17.7%，優於市場預期 3.9%\n・經調整 EPS $4.86，預期 $4.74 ✅\n・毛利率 35.3%｜淨利率 15.5%\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #TT",
+       "instagram": "$TT 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$67.6 億，按年 +17.7%，優於市場預期 3.9%\n・經調整 EPS $4.86，預期 $4.74 ✅\n・毛利率 35.3%｜淨利率 15.5%\n\n你覺得 $TT 這次財報是好是壞？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #TT",
+       "facebook": "$TT 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$67.6 億，按年 +17.7%，優於市場預期 3.9%\n・經調整 EPS $4.86，預期 $4.74 ✅\n・毛利率 35.3%｜淨利率 15.5%\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #TT"
       },
       "en": {
-       "x": "$USB just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $7.97B, +8.7% YoY\n・Adjusted EPS $1.34 vs $1.32 expected ✅\n・Net margin 27.6%\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Earnings #USB",
+       "x": "$TT just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $6.76B, +17.7% YoY, beat estimates by 3.9%\n・Adjusted EPS $4.86 vs $4.74 expected ✅\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Earnings #TT",
        "threads": "",
        "instagram": "",
-       "facebook": "$USB just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $7.97B, +8.7% YoY\n・Adjusted EPS $1.34 vs $1.32 expected ✅\n・Net margin 27.6%\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #USB"
+       "facebook": "$TT just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $6.76B, +17.7% YoY, beat estimates by 3.9%\n・Adjusted EPS $4.86 vs $4.74 expected ✅\n・Gross margin 35.3% | Net margin 15.5%\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #TT"
       }
      },
      "url": {
-      "zh": "https://thecrowdtape.com/zh/earnings/USB/",
-      "en": "https://thecrowdtape.com/en/earnings/USB/"
+      "zh": "https://thecrowdtape.com/zh/earnings/TT/",
+      "en": "https://thecrowdtape.com/en/earnings/TT/"
      },
      "ig": false
     }
