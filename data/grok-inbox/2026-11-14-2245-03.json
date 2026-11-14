@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2121242249979625571": {
+      "en_summary": "PPI comes in cooler than expected – is the year-end rally back on? Cooler-than-expected PPI gives bulls hope for year-end rally. After sharp correction and rebound, question if sustainable recovery or oversold bounce. $SPY fell from ~$781 to $732, recovered to $763, key test at $753 support. $QQQ from ~$762 to $647, rebound to $695-696 resistance, $679 key support. $NVDA reached weekly support after Jensen departure, high-volume hammer, rebound toward $171 gap-fill, suggest trim near lows. $TSLA-$SPCX takeover rumors heating up, possible deal around $420. Deployed 25% of Blood in the Street Account during correction.",
+      "zh_summary": "PPI 低於預期 – 年底反彈是否回歸？低於預期的 PPI 給予多頭年底反彈希望。在急劇修正和反彈後，問題是可持續恢復還是超賣反彈。$SPY 從約 $781 跌至 $732，恢復至 $763，關鍵測試 $753 支撑。$QQQ 從約 $762 至 $647，反彈至 $695-696 阻力，$679 關鍵支撑。$NVDA 在 Jensen 離職後達到週線支撑，高成交量錘頭，反彈向 $171 缺口填充，建議近低點修剪。$TSLA-$SPCX 收購傳聞升溫，可能交易約 $420。在修正期間部署 Blood in the Street 帳戶的 25%。",
+      "tickers": ["SPY", "QQQ", "NVDA", "TSLA", "SPCX"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "QQQ": "中性", "NVDA": "中性", "TSLA": "中性", "SPCX": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "inflation",
+      "macro_impact": "利好",
+      "ticker_notes": {"SPY": "關鍵測試 $753 支撑", "QQQ": "$679 關鍵支撑", "NVDA": "反彈向 $171，建議修剪"}
+    },
+    "2121241748890394882": {
+      "en_summary": "Lots of earnings blowups happening (cost inflation finally hitting P&Ls?) $FLO - miss + guidance cut + volumes still falling. $PAL - levered acquisition + earnings collapsed. $CTVA - sales falling + guidance cut. $ADIG - first post-spin earnings + guidance cut = down 50%.",
+      "zh_summary": "大量業績爆雷發生（成本通臀終於衝擊損益表？）$FLO - 未達標 + 指引下調 + 銷量仍下降。$PAL - 槓桿收購 + 業績崩潰。$CTVA - 銷售下降 + 指引下調。$ADIG - 首次分拆後業績 + 指引下調 = 下跌 50%。",
+      "tickers": ["FLO", "PAL", "CTVA", "ADIG"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"FLO": "睇淡", "PAL": "睇淡", "CTVA": "睇淡", "ADIG": "睇淡"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "inflation",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2121241680355410385": {
+      "en_summary": "Tech stocks that actually pay dividends, ranked by yield: $HPQ – HP Inc, 4.3%; $IBM – IBM, 2.7%; $ACN – Accenture, 2.7%; $QCOM – Qualcomm, 2.2%; $TXN – Texas Instruments, 2.0%; $CSCO – Cisco, 1.6%; $ORCL – Oracle, 1.6%; $ADI – Analog Devices, 1.1%; $GLW – Corning, 0.9%. Tech doesn't have to mean zero dividends.",
+      "zh_summary": "實際支付股息的科技股，按收益率排名：$HPQ – HP Inc, 4.3%；$IBM – IBM, 2.7%；$ACN – Accenture, 2.7%；$QCOM – Qualcomm, 2.2%；$TXN – Texas Instruments, 2.0%；$CSCO – Cisco, 1.6%；$ORCL – Oracle, 1.6%；$ADI – Analog Devices, 1.1%；$GLW – Corning, 0.9%。科技不必意味零股息。",
+      "tickers": ["HPQ", "IBM", "ACN", "QCOM", "TXN", "CSCO", "ORCL", "ADI", "GLW"],
+      "stance": "中性",
+      "stance_by_ticker": {"HPQ": "中性", "IBM": "中性", "ACN": "中性", "QCOM": "中性", "TXN": "中性", "CSCO": "中性", "ORCL": "中性", "ADI": "中性", "GLW": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121241249047081136": {
+      "en_summary": "All 8 Globalstar satellites built on $RKLB buses have passed their initial tests in orbit which is a huge step given that $AMZN ~$12B acquisition depends on replacement constellation meeting deployment milestones. These satellites are also destined for the network behind $AAPL Emergency SOS so Rocket Lab is already part of the supply chain ahead of Amazon’s D2D expansion.",
+      "zh_summary": "所有 8 顆基於 $RKLB 巴士建造的 Globalstar 衛星已通過軌道上的初始測試，這是重大一步，因為 $AMZN 約 120 億美元收購取決於替代星座滿足部署里程碑。這些衛星也將用於 $AAPL 緊急 SOS 背後的網絡，因此 Rocket Lab 已在 Amazon D2D 擴張前成為供應鏈一部分。",
+      "tickers": ["RKLB", "AMZN", "AAPL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"RKLB": "睇好", "AMZN": "中性", "AAPL": "中性"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"RKLB": "8 顆衛星通過軌道測試，支持 AMZN 收購里程碑"}
+    },
+    "2121239875047354804": {
+      "en_summary": "$SPX futures +35 post PPI",
+      "zh_summary": "$SPX 期貨在 PPI 後 +35",
+      "tickers": ["SPY"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPY": "睇好"},
+      "horizon": "短線",
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "inflation",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    }
+  }
+}
