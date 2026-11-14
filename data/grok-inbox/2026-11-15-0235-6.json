@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2121632726419689605": {
+      "en_summary": "$CSU long thesis.",
+      "zh_summary": "$CSU看多論點。",
+      "tickers": ["CSU"],
+      "stance": "睇好",
+      "stance_by_ticker": {"CSU": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121632318553047065": {
+      "en_summary": "You can’t have a sexual relationship with someone who works for you. That’s a clear violation of $NVDA’s policies. Authorizing the sale of high performance GPUs to a firm run by a Chinese national with whom you’re having a sexual relationship while such a sale is prohibited by the U.S. govt put our national security at risk. Jensen was...",
+      "zh_summary": "你不能與為你工作的人有性關係。這明顯違反$NVDA的政策。授權向由與你有性關係的中國公民經營的公司出售高性能GPU，而此類銷售被美國政府禁止，這將國家安全置於風險中。Jensen曾...",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "利淡",
+      "ticker_notes": {"NVDA": "政策違反與國家安全風險指控"}
+    },
+    "2121632191235125409": {
+      "en_summary": "Pretty insane that Goldman forecasts ~$3.8T in AI infrastructure spending tied to $NVDA, $AVGO and $AMD systems through 2028: Nvidia ~$2.7T (63% of CapEx, 47% of GW), Broadcom ~$876B (21% of CapEx, 31% of GW), AMD ~$228B (5% of CapEx, 6% of GW). Nvidia still captures majority of spending but gap between dollars spent and capacity deployed.",
+      "zh_summary": "高盛預測到2028年與$NVDA、$AVGO和$AMD系統相關的AI基礎設施支出約3.8萬億美元，相當瘋狂：Nvidia約2.7萬億（資本支出的63%，GW的47%），Broadcom約8760億（資本支出的21%，GW的31%），AMD約2280億（資本支出的5%，GW的6%）。Nvidia仍佔據大部分支出，但支出金額與部署容量之間存在差距。",
+      "tickers": ["NVDA", "AVGO", "AMD"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好", "AVGO": "睇好", "AMD": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "預計佔AI基建支出大部分"}
+    },
+    "2121630917621887017": {
+      "en_summary": "Most stocks do not go up in a straight line. They go up, they fall apart, and then they go up again — and the fall is where the money is made, if the story is still true. $PLTR went to $45 in early 2021. Then it fell to $7-8, and the bottom printed near $6. More than an 80% drawdown. Everyone wrote it off. The business kept building.",
+      "zh_summary": "大多數股票不會直線上漲。它們上漲、崩跌，然後再次上漲——如果故事仍然真實，下跌就是賺錢的地方。$PLTR在2021年初漲到45美元。然後跌到7-8美元，底部接近6美元。超過80%的回撤。所有人都放棄了它。業務卻持續建設。",
+      "tickers": ["PLTR"],
+      "stance": "睇好",
+      "stance_by_ticker": {"PLTR": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"PLTR": "大幅回撤後業務持續，若故事不變則為機會"}
+    },
+    "2121630740580331894": {
+      "en_summary": "$NVDA tumbled from 5.5% of the global stock market to 3.8% $ACWI @augurinfinity.",
+      "zh_summary": "$NVDA從全球股市的5.5%跌至3.8% $ACWI。",
+      "tickers": ["NVDA", "ACWI"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡", "ACWI": "中性"},
+      "horizon": "短線",
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    }
+  }
+}
