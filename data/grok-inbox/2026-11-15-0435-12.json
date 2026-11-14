@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2121600004024320067": {
+      "en_summary": "This week is the moment. $NVDA prints Tuesday, $ANT Anthropic prices Wednesday and trades Thursday. which one excites you?",
+      "zh_summary": "本週是時刻。$NVDA 週二公布， $ANT Anthropic週三定價週四交易。哪個讓你興奮？",
+      "tickers": ["NVDA", "ANT"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "ANT": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121598525574160882": {
+      "en_summary": "3-2-1 crack spread has plunged from $75 to $44 @RBNEnergy $VLO $MPC $PSX",
+      "zh_summary": "3-2-1裂解價差從75美元暴跌至44美元 @RBNEnergy $VLO $MPC $PSX",
+      "tickers": ["VLO", "MPC", "PSX"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"VLO": "睇淡", "MPC": "睇淡", "PSX": "睇淡"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "energy",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2121598406959497379": {
+      "en_summary": "$NVDA Ex-Nvidia CEO Jensen Huang \"Quite Arrogant, Humility Was An Act\": Biographer Stephen Witt, Witt alleged that Huang's affair with Kimberly Powell, an executive in the health care group at Nvidia and his direct subordinate, was common knowledge in the company.",
+      "zh_summary": "$NVDA 前Nvidia CEO Jensen Huang “相當傲慢，謙遜是表演”：傳記作者Stephen Witt，Witt聲稱Huang與Kimberly Powell（Nvidia醫療保健組高管且其直接下屬）的婚外情在公司是公開的知識。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121598101425094766": {
+      "en_summary": "$NVDA Approaches UK Chipmaker $ARM CEO Rene Haas To Succeed Jensen Huang",
+      "zh_summary": "$NVDA 接觸英國芯片製造商 $ARM CEO Rene Haas以接替Jensen Huang",
+      "tickers": ["NVDA", "ARM"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "ARM": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121598064578424874": {
+      "en_summary": "When I sold $NBIS at $284 \"You're an idiot, you sold way too early.\" Now $NBIS at $115, after a ton of progress, some of the same people: \"I'm selling everything, it's going to 0\"",
+      "zh_summary": "當我在284美元賣出 $NBIS 時“你是白痴，你賣得太早了。”現在 $NBIS 在115美元，經過大量進展，一些相同的人：“我賣出一切，它要到0”",
+      "tickers": ["NBIS"],
+      "stance": "中性",
+      "stance_by_ticker": {"NBIS": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NBIS": "從284跌至115"}
+    }
+  }
+}
