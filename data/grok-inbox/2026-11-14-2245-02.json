@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2121243817944944878": {
+      "en_summary": "TURN ON THE STARLINK. HISTORY WILL NOT BE KIND.... $SPCX @SpaceXSI",
+      "zh_summary": "開啟 STARLINK。歷史不會仁慈.... $SPCX @SpaceXSI",
+      "tickers": ["SPCX"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPCX": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121243685039878338": {
+      "en_summary": "This is the complaint every time DHT times a top in rates",
+      "zh_summary": "這是每次 DHT 準確預測利率頂部時的抱怨",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "rates",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2121243670750085322": {
+      "en_summary": "$CRWV is seeking a $4B loan backed by $META contracts at ~7.5% which is well below 16% yield on its unsecured bonds. That’s higher than the 5.9% it secured in March but it also shows why having investment-grade customers locked into long-term contracts is so valuable when financing next wave of AI capacity.",
+      "zh_summary": "$CRWV 正尋求一筆由 $META 合約擔保的 40 億美元貸款，利率約 7.5%，遠低於其無擔保債券 16% 的收益率。這高於三月份獲得的 5.9%，但也顯示了當融資下一波 AI 產能時，擁有投資級客戶鎖定長期合約的價值。",
+      "tickers": ["CRWV", "META"],
+      "stance": "睇好",
+      "stance_by_ticker": {"CRWV": "睇好", "META": "中性"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"CRWV": "尋求 40 億美元貸款，利率約 7.5%，由 META 合約擔保"}
+    },
+    "2121242931990344068": {
+      "en_summary": "Energy and gold sentiment just flipped. On Monday, $GLD sentiment stood at 86.77 versus just 28.26 for $XLE. By Thursday, the positions had reversed: XLE rose to 64.19 while GLD plunged to 3.92. In just three trading days, their sentiment gap swung 118.78 points, the largest shift toward XLE since 2015.",
+      "zh_summary": "能源與黃金情緒剛剛反轉。週一，$GLD 情緒為 86.77，而 $XLE 僅 28.26。到週四，位置反轉：XLE 升至 64.19，而 GLD 暴跌至 3.92。僅三個交易日，其情緒差距擺動 118.78 點，為自 2015 年以來最大向 XLE 的轉變。",
+      "tickers": ["GLD", "XLE"],
+      "stance": "中性",
+      "stance_by_ticker": {"GLD": "中性", "XLE": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2121242924633776579": {
+      "en_summary": "Jensen fan and all. However its probably a good thing long term what's happening at Nvidia. Jensen was clearly too close to the sun. $NVDA",
+      "zh_summary": "Jensen 粉絲等等。然而，Nvidia 正在發生的事情長期來看可能是好事。Jensen 顯然太接近太陽了。$NVDA",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "長期來看可能是好事，Jensen 太接近太陽"}
+    }
+  }
+}
