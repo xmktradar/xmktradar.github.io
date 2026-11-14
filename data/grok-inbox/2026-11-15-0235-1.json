@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2121648444670439764": {
+      "en_summary": "Explains two schools of thought on markets: efficient (info already in price) versus irrational (biases create persistent mispricings such as momentum and pre/post-earnings drift). Notes a pre-earnings drift in NVDA that should close prior to earnings, which is where the poster does their work.",
+      "zh_summary": "解釋市場運作的兩派觀點：效率市場（資訊已反映於價格）與非理性市場（認知偏誤造成持續錯價，如動能與財報前後漂移）。指出NVDA存在財報前漂移，該缺口應在財報前收斂，這正是發帖者的工作所在。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121646812021035468": {
+      "en_summary": "Questions why NVIDIA has only up to $900 million of Side A only D&O insurance with no Side B or Side C, leaving the company balance sheet exposed to litigation costs. Quotes a post calling the situation a total disaster and astronomical miss involving $NVDA $MU $SNDK $LITE. Suggests possible failure of diligence or deliberate risk allocation favoring executives over shareholders.",
+      "zh_summary": "質疑為何NVIDIA僅有最高9億美元的Side A董事及高管責任保險，而無Side B或Side C，使公司資產負債表暴露於訴訟成本。引用帖文稱涉及$NVDA $MU $SNDK $LITE的情況是完全災難及天文數字的錯失。暗示可能是盡職調查失敗或故意將風險分配偏向高管而非股東。",
+      "tickers": ["NVDA", "MU", "SNDK", "LITE"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡", "MU": "睇淡", "SNDK": "睇淡", "LITE": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "僅Side A保險，股東承擔訴訟風險"}
+    },
+    "2121646261547970565": {
+      "en_summary": "Notes the irony of Elon Musk publicly questioning the credibility of Nvidia's $NVDA board of directors amid the controversy surrounding Jensen Huang's departure as CEO.",
+      "zh_summary": "指出Elon Musk公開質疑Nvidia $NVDA董事會可信度的諷刺之處，背景是Jensen Huang卸任CEO的爭議。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121645688220180735": {
+      "en_summary": "Claims that Trump invested millions in $NVDA, then changed China policy and made a profit.",
+      "zh_summary": "聲稱特朗普投資數百萬美元於$NVDA，隨後改變對華政策並獲利。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2121645566832640509": {
+      "en_summary": "Crypto has been under intense selling pressure despite mostly positive fundamentals. Reasons include AI/semi/$NVDA selloff triggering margin calls (particularly Asia retail) and the coming @AnthropicAI IPO as a supply shock for equities. Mentions $ANT $ETH $HOOD.",
+      "zh_summary": "加密貨幣承受激烈拋售壓力，盡管基本面大多正面。原因包括AI/半導體/$NVDA拋售觸發保證金追繳（尤其亞洲散戶），以及即將到來的@AnthropicAI IPO作為股票供應衝擊。提及$ANT $ETH $HOOD。",
+      "tickers": ["NVDA", "ANT", "ETH", "HOOD"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡", "ANT": "中性", "ETH": "睇淡", "HOOD": "中性"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    }
+  }
+}
