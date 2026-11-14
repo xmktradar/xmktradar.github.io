@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2121256786858824088": {
+      "en_summary": "$CRWV 20Nov $50 put 1st target hit at $2.00, up 65% in 20 mins. Thanks @ryanmastro5 @petenajarian.",
+      "zh_summary": "$CRWV 20Nov $50 看跌期權第一目標達到 $2.00，20 分鐘內上漲 65%。感謝 @ryanmastro5 @petenajarian。",
+      "tickers": ["CRWV"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"CRWV": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"CRWV": "20Nov $50 看跌目標 $2.00 達成，上漲 65%"}
+    },
+    "2121256246401499295": {
+      "en_summary": "$QQQ testing 200D again.",
+      "zh_summary": "$QQQ 再次測試 200 日均線。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121256024203989244": {
+      "en_summary": "Locked in more of our $NVDA premarket at 170. The way they sold memory after a good PPI and Bibi pushing war that made crude ripping was the tell for the sell off today after they trapped bulls on PPI pop.",
+      "zh_summary": "我們在盤前 170 鎖定了更多 $NVDA。他們在良好 PPI 後賣出記憶體，以及 Bibi 推動戰爭使原油暴漲，是今天拋售的信號，在 PPI 彈升後困住多頭。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "inflation",
+      "macro_impact": "利淡",
+      "ticker_notes": {"NVDA": "盤前 170 鎖定利潤，PPI 後拋售信號"}
+    },
+    "2121255955438465370": {
+      "en_summary": "BREAKING: AMD $AMD has outperformed Nvidia $NVDA by +53.2 percentage points over the last 5 trading days, the most since Nvidia’s IPO in January 1999. $AMD rallied +44.7%, while $NVDA dropped -8.5%. Previous record +49.9 pp in April 2016. So far in 2026, $AMD outperforming $NVDA by +184.",
+      "zh_summary": "最新：AMD $AMD 在過去 5 個交易日跑贏 Nvidia $NVDA +53.2 個百分點，為 1999 年 1 月 Nvidia IPO 以來最多。$AMD 上漲 +44.7%，而 $NVDA 下跌 -8.5%。先前紀錄為 2016 年 4 月 +49.9 個百分點。2026 年迄今，$AMD 跑贏 $NVDA +184。",
+      "tickers": ["AMD", "NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"AMD": "中性", "NVDA": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121255563472363857": {
+      "en_summary": "Nvidia $NVDA is expected to report $108.7 billion in sales for the quarter. Almost double last year's number.",
+      "zh_summary": "Nvidia $NVDA 預期本季報告 $108.7 億銷售額。幾乎是去年數字的兩倍。",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "預期本季銷售 $108.7 億，幾乎翻倍"}
+    }
+  }
+}
