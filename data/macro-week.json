@@ -1,42 +1,42 @@
 {
- "date": "2026-11-14",
- "date_kst": "2026-11-14",
- "frozen": true,
- "made_hkt": "2026-11-14 17:56",
- "from": "2026-11-08",
- "to": "2026-11-14",
+ "date": "2026-11-21",
+ "date_kst": "2026-11-21",
+ "frozen": false,
+ "made_hkt": "2026-11-15 01:03",
+ "from": "2026-11-09",
+ "to": "2026-11-15",
  "themes": [
   {
    "theme": "rates",
-   "accounts": 5,
-   "n": 5,
+   "accounts": 6,
+   "n": 6,
    "bull": 2,
    "bear": 0,
-   "neu": 3,
+   "neu": 4,
    "arrow": "up",
    "quotes": {
     "zh": {
-     "acc": "3PeaksTrading",
-     "impact": "bull",
-     "text": "$MAGS Mag7 ETF強勁，接近大型MACD買入觸發突破。如果NVDA在此消息見底且其他Mag7持續強勢，將進一步支持年底反彈。巨型科技股亦受惠於較高利率，因其擁有數十億現金賺取5%利率。",
-     "url": "https://x.com/3PeaksTrading/status/2120924326312685801"
+     "acc": "aRishisays",
+     "impact": "neu",
+     "text": "退一步，我再次主張 2010 年代（零利率下限）是偏離常態。利率的水平和波動性似乎已恢復到 *典型* 水平。",
+     "url": "https://x.com/aRishisays/status/2121461040517161014"
     },
     "en": {
-     "acc": "3PeaksTrading",
-     "impact": "bull",
-     "text": "$MAGS Mag7 ETF strong and nearing a big MACD buy trigger breakout. If NVDA bottoms with this news and other Mag7 continue strength, it further supports year-end rally case. Mega tech benefit from higher rates as they have billions in cash earning 5%.",
-     "url": "https://x.com/3PeaksTrading/status/2120924326312685801"
+     "acc": "aRishisays",
+     "impact": "neu",
+     "text": "taking a step back, I’d once again argue that 2010s (ZLB) was the departure from norm. both the level and vol in rates seems like it has returned to *typical* levels.",
+     "url": "https://x.com/aRishisays/status/2121461040517161014"
     }
    }
   },
   {
    "theme": "inflation",
-   "accounts": 4,
-   "n": 4,
+   "accounts": 6,
+   "n": 6,
    "bull": 0,
-   "bear": 1,
-   "neu": 3,
-   "arrow": "up",
+   "bear": 2,
+   "neu": 4,
+   "arrow": "flat",
    "quotes": {
     "zh": {
      "acc": "Stephanie_Link",
@@ -64,24 +64,24 @@
   },
   {
    "theme": "growth",
-   "accounts": 9,
-   "n": 9,
-   "bull": 2,
+   "accounts": 8,
+   "n": 8,
+   "bull": 0,
    "bear": 4,
-   "neu": 3,
+   "neu": 4,
    "arrow": "dn",
    "quotes": {
     "zh": {
-     "acc": "LONGCONVEXITY",
+     "acc": "ACInvestorBlog",
      "impact": "neu",
-     "text": "美聯儲的 Williams：跡象表明經濟正遵循 K 型模式",
-     "url": "https://x.com/RedboxWire/status/2121041471054971209"
+     "text": "$NDX 1997 年納斯達克回調與當前回調均發生在對重大技術浪潮高度樂觀時期（90 年代末網際網路／技術基礎設施，今日 AI 基礎設施）。1997 年因亞洲金融危機經歷約 12% 修正（10 月 27 日單日約 7% 下跌），較短暫，數月內恢復，牛市持續。當前（2026 年 11 月中）規模類似，納斯達克綜合指數於 10 月 6 日見頂近 27,600，至 11 月初下跌約 12%，上週有單日 +6% 下跌；觸發因素為對 AI 數據中心／GPU 支出回報的質疑及高估值。快速技術變革期間此類修正較常見。認為仍處於 90 年代末，大泡沫尚未到來。2026 年納斯達克 100 遠期本益比約 19-23，對比 1997 年約 24-26；真正極端估值（倍數遠超 40-50）出現在 1999-2000 年。",
+     "url": "https://x.com/ACInvestorBlog/status/2121531120571281772"
     },
     "en": {
-     "acc": "LONGCONVEXITY",
+     "acc": "ACInvestorBlog",
      "impact": "neu",
-     "text": "Fed's Williams: Signs Indicate The Economy Is Following A K-Shaped Pattern",
-     "url": "https://x.com/RedboxWire/status/2121041471054971209"
+     "text": "$NDX Both the 1997 Nasdaq pullback and the current one happened during high optimism around a major technology wave (internet/tech infrastructure late ’90s, AI infrastructure today). 1997 saw ~12% correction (single-day ~7% drop on Oct 27) triggered by Asian financial crisis, short-lived, recovered in months, bull market continued. Current (mid-Nov 2026) similar size, Nasdaq Composite peaked near 27,600 on Oct 6, fell ~12% by early Nov, +6% single-day drop last week; trigger internal questions on AI data center/GPU spending returns and high valuations. Corrections common during rapid tech change. Believes still in late 1990s, big bubble still coming. 2026 Nasdaq 100 forward PE around 19-23 vs 1997 around 24-26; extreme valuations (multiples >40-50) came in 1999-2000.",
+     "url": "https://x.com/ACInvestorBlog/status/2121531120571281772"
     }
    }
   },
@@ -92,7 +92,7 @@
    "bull": 0,
    "bear": 1,
    "neu": 6,
-   "arrow": "up",
+   "arrow": "flat",
    "quotes": {
     "zh": {
      "acc": "leadlagreport",
@@ -110,33 +110,33 @@
   },
   {
    "theme": "fx",
-   "accounts": 4,
-   "n": 3,
+   "accounts": 6,
+   "n": 5,
    "bull": 1,
    "bear": 0,
-   "neu": 2,
+   "neu": 4,
    "arrow": "none",
    "quotes": {
     "zh": {
-     "acc": "Hedgeye",
-     "impact": "bull",
-     "text": "突發：美元延續漲幅+0.3%至新周期高位。我們在$UUP方面保持多頭。",
-     "url": "https://x.com/Hedgeye/status/2120898918674530665"
+     "acc": "ColeMacro",
+     "impact": "neu",
+     "text": "我在觀察的…… 👀 不是預測或投資／交易建議，只是觀察。$DXY pr",
+     "url": "https://x.com/FormerDrJeff/status/2121265374285226475"
     },
     "en": {
-     "acc": "Hedgeye",
-     "impact": "bull",
-     "text": "BREAKING: The U.S. Dollar extends gains +0.3% to new Cycle Highs. We remain long in $UUP terms.",
-     "url": "https://x.com/Hedgeye/status/2120898918674530665"
+     "acc": "ColeMacro",
+     "impact": "neu",
+     "text": "What I'm watching... 👀 Not a prediction or investment/trading advice--just an observation. $DXY pr",
+     "url": "https://x.com/FormerDrJeff/status/2121265374285226475"
     }
    }
   },
   {
    "theme": "energy",
-   "accounts": 5,
-   "n": 5,
+   "accounts": 4,
+   "n": 4,
    "bull": 3,
-   "bear": 2,
+   "bear": 1,
    "neu": 0,
    "arrow": "up",
    "quotes": {
@@ -156,47 +156,47 @@
   },
   {
    "theme": "policy",
-   "accounts": 24,
-   "n": 24,
-   "bull": 2,
+   "accounts": 28,
+   "n": 28,
+   "bull": 1,
    "bear": 11,
-   "neu": 11,
+   "neu": 16,
    "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "leadlagreport",
+     "acc": "zeroshorts",
      "impact": "neu",
-     "text": "自由市場ETF（$FMKT）今日收盤於21.08美元，下跌0.18%。即使今日微跌，FMKT仍是市場上唯一專注於從去監管環境中捕捉價值的ETF。",
-     "url": "https://x.com/leadlagreport/status/2121354308541145270"
+     "text": "#Lutnick #corruptaf（引用 CNBC：Cantor Fitzgerald 報告的 Nvidia 持股數量在 2025 年 9 月至 2026 年 3 月間幾乎減半。那是 Axios 報告商務部長 Howard Lutnick 面臨行政官員壓力以解決涉嫌走私 Nvidia 先進 AI 芯片到中國的時期。該公司以前由 Lutnick 擔任主席，現由其兒子經營，與 Nvidia 保持廣泛商業聯繫。）",
+     "url": "https://x.com/zeroshorts/status/2121501292464152733"
     },
     "en": {
-     "acc": "leadlagreport",
+     "acc": "zeroshorts",
      "impact": "neu",
-     "text": "The Free Markets ETF ($FMKT) ended trading at $21.08 today, down 0.18%. Even with today's slight dip, FMKT remains the market's only ETF focused on capturing value from deregulatory environments.",
-     "url": "https://x.com/leadlagreport/status/2121354308541145270"
+     "text": "#Lutnick #corruptaf (Quoted CNBC: Cantor Fitzgerald’s reported Nvidia share count fell by nearly half between September 2025 and March 2026. That was the period when Axios reported Commerce Secretary Howard Lutnick faced pressure from administration officials to address suspected smuggling of Nvidia’s advanced AI chips to China. The firm, formerly chaired by Lutnick and now run by his sons, maintained extensive commercial ties to Nvidia.)",
+     "url": "https://x.com/zeroshorts/status/2121501292464152733"
     }
    }
   },
   {
    "theme": "other",
-   "accounts": 26,
-   "n": 26,
-   "bull": 5,
-   "bear": 8,
-   "neu": 13,
+   "accounts": 33,
+   "n": 33,
+   "bull": 6,
+   "bear": 12,
+   "neu": 15,
    "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "leadlagreport",
-     "impact": "bull",
-     "text": "市場測試了$JOJO。它也測試了我。我們仍然在這裡。宏觀設置正與論點一致。如果你曾經考慮過信用輪換，現在可能是時候了。",
-     "url": "https://x.com/leadlagreport/status/2121346872157540516"
+     "acc": "moninvestor",
+     "impact": "neu",
+     "text": "許多人本年大幅虧損，尤其若重倉 AI 板塊過去一個月受挫。投資組合一直波動，對標普 500 或 ETF 不感興趣。現時六位數投資組合，大幅波動（上下六位數）促使重新思考管理。仍為長線投資者，不恐慌，若相信業務則持有長線，短線通常快速止損。改變：不會全押一隻股票；多取利潤並保留現金；關注其他板塊，從 AI 稍作分散，因負面頭條可觸發板塊拋售。因金額更大需更好管理風險。非投資建議。",
+     "url": "https://x.com/moninvestor/status/2121529643580682277"
     },
     "en": {
-     "acc": "leadlagreport",
-     "impact": "bull",
-     "text": "The market tested $JOJO. It tested me. We're still here. And the macro setup is aligning with the thesis. If you've ever considered credit rotation, now may be the time.",
-     "url": "https://x.com/leadlagreport/status/2121346872157540516"
+     "acc": "moninvestor",
+     "impact": "neu",
+     "text": "Many down significantly this year, especially if heavily in AI sector hit over past month. Portfolio always volatile, not interested in S&P 500 or ETFs. Now with six-figure portfolio, large swings (up/down six figures) make rethink management. Still long-term investor, not panicking, hold long-term if believe in business, cut short-term losses quickly. Changes: won't go all-in on one stock; take more profits and keep cash; look at other sectors, diversify a little from AI as negative headlines trigger sector sell-offs. Manage risks better with larger amounts. NFA.",
+     "url": "https://x.com/moninvestor/status/2121529643580682277"
     }
    }
   }
@@ -208,56 +208,56 @@
  ],
  "accounts": 454,
  "x_accounts": 453,
- "range": "11/8–11/14",
+ "range": "11/9–11/15",
  "images": {
-  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-14-1756",
-  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-14-1756"
+  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-21-0103",
+  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-21-0103"
  },
  "stories": {
-  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-14-1756",
-  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-14-1756"
+  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-21-0103",
+  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-21-0103"
  },
  "posts": {
   "zh": {
-   "instagram": "本週宏觀：最多人講「其他」（利好 5・利空 8）\n\n這星期我們追蹤的 453 個 X 帳號，最常聊的宏觀話題是這幾個（11/8–11/14）\n\n1. 其他：利好 5・利空 8・中性 13（同上週差不多）\n@leadlagreport：「市場測試了$JOJO。它也測試了我。我們仍然在這裡。宏觀設置正與論點一致。如果你曾經考慮過信用輪換，現在可能是時候了。」\n\n2. 關稅／政策／地緣政治：利好 2・利空 11・中性 11（同上週差不多）\n@leadlagreport：「自由市場ETF（$FMKT）今天收盤於21.08美元，下跌0.18%。即使今天微跌，FMKT仍是市場上唯一專注於從去監管環境中捕捉價值的ETF。」\n\n3. 經濟增長／衰退：利好 2・利空 4・中性 3（比上週轉差 ▼）\n@LONGCONVEXITY：「美聯儲的 Williams：跡象表明經濟正遵循 K 型模式」\n\n你覺得下週市場最該留意哪個數據？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #JOJO #FMKT",
-   "threads": "這星期我們追蹤的 453 個 X 帳號，最常聊的宏觀話題是這幾個（11/8–11/14）\n\n1. 其他：利好 5・利空 8・中性 13（同上週差不多）\n2. 關稅／政策／地緣政治：利好 2・利空 11・中性 11（同上週差不多）\n3. 經濟增長／衰退：利好 2・利空 4・中性 3（比上週轉差 ▼）\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
-   "x": "這星期大家最常聊的宏觀話題\n\n其他 5/8/13\n關稅／政策／地緣政治 2/11/11\n經濟增長／衰退 2/4/3\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "instagram": "本週宏觀：最多人講「其他」（利好 6・利空 12）\n\n這星期我們追蹤的 453 個 X 帳號，最常聊的宏觀話題是這幾個（11/9–11/15）\n\n1. 其他：利好 6・利空 12・中性 15（同上週差不多）\n@moninvestor：「許多人本年大幅虧損，尤其若重倉 AI 板塊過去一個月受挫。投資組合一直波動，對標普 500 或 ETF 不感興趣。現時六位數投資組合，大幅波動（上下六位數）促使重新思考管理。仍為…」\n\n2. 關稅／政策／地緣政治：利好 1・利空 11・中性 16（同上週差不多）\n@zeroshorts：「Lutnick corruptaf（引用 CNBC：Cantor Fitzgerald 報告的 Nvidia 持股數量在 2025 年 9 月至 2026 年 3 月間幾乎減…」\n\n3. 經濟增長／衰退：利好 0・利空 4・中性 4（比上週轉差 ▼）\n@ACInvestorBlog：「$NDX 1997 年納斯達克回調與當前回調均發生在對重大技術浪潮高度樂觀時期（90 年代末網際網路／技術基礎設施，今天 AI 基礎設施）。1997 年因亞洲金融危機經歷約 12…」\n\n這週哪個宏觀消息最影響你的判斷？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #NDX",
+   "threads": "這星期我們追蹤的 453 個 X 帳號，最常聊的宏觀話題是這幾個（11/9–11/15）\n\n1. 其他：利好 6・利空 12・中性 15（同上週差不多）\n2. 關稅／政策／地緣政治：利好 1・利空 11・中性 16（同上週差不多）\n3. 經濟增長／衰退：利好 0・利空 4・中性 4（比上週轉差 ▼）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "x": "這星期大家最常聊的宏觀話題\n\n其他 6/12/15\n關稅／政策／地緣政治 1/11/16\n經濟增長／衰退 0/4/4\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "reddit": {
-    "title": "這星期我們追蹤的 453 個 X 帳號，最常聊的宏觀話題是這幾個（11/8–11/14）",
-    "body": "1. 其他：利好 5・利空 8・中性 13（同上週差不多）\n@leadlagreport：「市場測試了$JOJO。它也測試了我。我們仍然在這裡。宏觀設置正與論點一致。如果你曾經考慮過信用輪換，現在可能是時候了。」\n\n2. 關稅／政策／地緣政治：利好 2・利空 11・中性 11（同上週差不多）\n@leadlagreport：「自由市場ETF（$FMKT）今天收盤於21.08美元，下跌0.18%。即使今天微跌，FMKT仍是市場上唯一專注於從去監管環境中捕捉價值的ETF。」\n\n3. 經濟增長／衰退：利好 2・利空 4・中性 3（比上週轉差 ▼）\n@LONGCONVEXITY：「美聯儲的 Williams：跡象表明經濟正遵循 K 型模式」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
+    "title": "這星期我們追蹤的 453 個 X 帳號，最常聊的宏觀話題是這幾個（11/9–11/15）",
+    "body": "1. 其他：利好 6・利空 12・中性 15（同上週差不多）\n@moninvestor：「許多人本年大幅虧損，尤其若重倉 AI 板塊過去一個月受挫。投資組合一直波動，對標普 500 或 ETF 不感興趣。現時六位數投資組合，大幅波動（上下六位數）促使重新思考管理。仍為…」\n\n2. 關稅／政策／地緣政治：利好 1・利空 11・中性 16（同上週差不多）\n@zeroshorts：「Lutnick corruptaf（引用 CNBC：Cantor Fitzgerald 報告的 Nvidia 持股數量在 2025 年 9 月至 2026 年 3 月間幾乎減…」\n\n3. 經濟增長／衰退：利好 0・利空 4・中性 4（比上週轉差 ▼）\n@ACInvestorBlog：「$NDX 1997 年納斯達克回調與當前回調均發生在對重大技術浪潮高度樂觀時期（90 年代末網際網路／技術基礎設施，今天 AI 基礎設施）。1997 年因亞洲金融危機經歷約 12…」\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
    },
-   "facebook": "這星期我們追蹤的 453 個 X 帳號，最常聊的宏觀話題是這幾個（11/8–11/14）\n\n1. 其他：利好 5・利空 8・中性 13（同上週差不多）\n@leadlagreport：「市場測試了$JOJO。它也測試了我。我們仍然在這裡。宏觀設置正與論點一致。如果你曾經考慮過信用輪換，現在可能是時候了。」\n\n2. 關稅／政策／地緣政治：利好 2・利空 11・中性 11（同上週差不多）\n@leadlagreport：「自由市場ETF（$FMKT）今天收盤於21.08美元，下跌0.18%。即使今天微跌，FMKT仍是市場上唯一專注於從去監管環境中捕捉價值的ETF。」\n\n3. 經濟增長／衰退：利好 2・利空 4・中性 3（比上週轉差 ▼）\n@LONGCONVEXITY：「美聯儲的 Williams：跡象表明經濟正遵循 K 型模式」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "facebook": "這星期我們追蹤的 453 個 X 帳號，最常聊的宏觀話題是這幾個（11/9–11/15）\n\n1. 其他：利好 6・利空 12・中性 15（同上週差不多）\n@moninvestor：「許多人本年大幅虧損，尤其若重倉 AI 板塊過去一個月受挫。投資組合一直波動，對標普 500 或 ETF 不感興趣。現時六位數投資組合，大幅波動（上下六位數）促使重新思考管理。仍為…」\n\n2. 關稅／政策／地緣政治：利好 1・利空 11・中性 16（同上週差不多）\n@zeroshorts：「Lutnick corruptaf（引用 CNBC：Cantor Fitzgerald 報告的 Nvidia 持股數量在 2025 年 9 月至 2026 年 3 月間幾乎減…」\n\n3. 經濟增長／衰退：利好 0・利空 4・中性 4（比上週轉差 ▼）\n@ACInvestorBlog：「$NDX 1997 年納斯達克回調與當前回調均發生在對重大技術浪潮高度樂觀時期（90 年代末網際網路／技術基礎設施，今天 AI 基礎設施）。1997 年因亞洲金融危機經歷約 12…」\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "story": "#美股"
   },
   "en": {
    "instagram": "",
    "threads": "",
-   "x": "What X talked about in macro this week\n\nOther 5/8/13\nTariffs / policy / geopolitics 2/11/11\nGrowth / recession 2/4/3\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
+   "x": "What X talked about in macro this week\n\nOther 6/12/15\nTariffs / policy / geopolitics 1/11/16\nGrowth / recession 0/4/4\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
    "reddit": {
-    "title": "The macro topics the 453 X accounts we follow talked about most this week (11/8–11/14)",
-    "body": "1. Other: bullish 5 · bearish 8 · neutral 13 (about the same as last week)\n@leadlagreport: “The market tested $JOJO. It tested me. We're still here. And the macro setup is aligning with the thesis. If you've ever considered credit rotation…”\n\n2. Tariffs / policy / geopolitics: bullish 2 · bearish 11 · neutral 11 (about the same as last week)\n@leadlagreport: “The Free Markets ETF ($FMKT) ended trading at $21.08 today, down 0.18%. Even with today's slight dip, FMKT remains the market's only ETF focused on c…”\n\n3. Growth / recession: bullish 2 · bearish 4 · neutral 3 (worse than last week ▼)\n@LONGCONVEXITY: “Fed's Williams: Signs Indicate The Economy Is Following A K-Shaped Pattern”\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro"
+    "title": "The macro topics the 453 X accounts we follow talked about most this week (11/9–11/15)",
+    "body": "1. Other: bullish 6 · bearish 12 · neutral 15 (about the same as last week)\n@moninvestor: “Many down significantly this year, especially if heavily in AI sector hit over past month. Portfolio always volatile, not interested in S&P 500 or ET…”\n\n2. Tariffs / policy / geopolitics: bullish 1 · bearish 11 · neutral 16 (about the same as last week)\n@zeroshorts: “Lutnick corruptaf (Quoted CNBC: Cantor Fitzgerald’s reported Nvidia share count fell by nearly half between September 2025 and March 2026. That was…”\n\n3. Growth / recession: bullish 0 · bearish 4 · neutral 4 (worse than last week ▼)\n@ACInvestorBlog: “$NDX Both the 1997 Nasdaq pullback and the current one happened during high optimism around a major technology wave (internet/tech infrastructure lat…”\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro"
    },
-   "facebook": "The macro topics the 453 X accounts we follow talked about most this week (11/8–11/14)\n\n1. Other: bullish 5 · bearish 8 · neutral 13 (about the same as last week)\n@leadlagreport: “The market tested $JOJO. It tested me. We're still here. And the macro setup is aligning with the thesis. If you've ever considered credit rotation…”\n\n2. Tariffs / policy / geopolitics: bullish 2 · bearish 11 · neutral 11 (about the same as last week)\n@leadlagreport: “The Free Markets ETF ($FMKT) ended trading at $21.08 today, down 0.18%. Even with today's slight dip, FMKT remains the market's only ETF focused on c…”\n\n3. Growth / recession: bullish 2 · bearish 4 · neutral 3 (worse than last week ▼)\n@LONGCONVEXITY: “Fed's Williams: Signs Indicate The Economy Is Following A K-Shaped Pattern”\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro",
+   "facebook": "The macro topics the 453 X accounts we follow talked about most this week (11/9–11/15)\n\n1. Other: bullish 6 · bearish 12 · neutral 15 (about the same as last week)\n@moninvestor: “Many down significantly this year, especially if heavily in AI sector hit over past month. Portfolio always volatile, not interested in S&P 500 or ET…”\n\n2. Tariffs / policy / geopolitics: bullish 1 · bearish 11 · neutral 16 (about the same as last week)\n@zeroshorts: “Lutnick corruptaf (Quoted CNBC: Cantor Fitzgerald’s reported Nvidia share count fell by nearly half between September 2025 and March 2026. That was…”\n\n3. Growth / recession: bullish 0 · bearish 4 · neutral 4 (worse than last week ▼)\n@ACInvestorBlog: “$NDX Both the 1997 Nasdaq pullback and the current one happened during high optimism around a major technology wave (internet/tech infrastructure lat…”\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro",
    "story": ""
   }
  },
  "ig_images": {
   "zh": [
-   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-14-1756",
+   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-21-0103",
    "https://thecrowdtape.com/og/cta/ig-cta-zh.jpg"
   ],
   "en": [
-   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-14-1756",
+   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-21-0103",
    "https://thecrowdtape.com/og/cta/ig-cta-en.jpg"
   ]
  },
  "ig_reel": {
-  "date_kst": "2026-11-14",
+  "date_kst": "2026-11-21",
   "slot": "macro-week",
   "video_path": null,
-  "video_expected_path": "assets/reels/2026-11-14-macro-week.mp4",
+  "video_expected_path": "assets/reels/2026-11-21-macro-week.mp4",
   "caption": {
-   "zh": "本週宏觀：最多人講「其他」（利好 5・利空 8）\n\n這星期我們追蹤的 453 個 X 帳號，最常聊的宏觀話題是這幾個（11/8–11/14）\n\n1. 其他：利好 5・利空 8・中性 13（同上週差不多）\n@leadlagreport：「市場測試了$JOJO。它也測試了我。我們仍然在這裡。宏觀設置正與論點一致。如果你曾經考慮過信用輪換，現在可能是時候了。」\n\n2. 關稅／政策／地緣政治：利好 2・利空 11・中性 11（同上週差不多）\n@leadlagreport：「自由市場ETF（$FMKT）今天收盤於21.08美元，下跌0.18%。即使今天微跌，FMKT仍是市場上唯一專注於從去監管環境中捕捉價值的ETF。」\n\n3. 經濟增長／衰退：利好 2・利空 4・中性 3（比上週轉差 ▼）\n@LONGCONVEXITY：「美聯儲的 Williams：跡象表明經濟正遵循 K 型模式」\n\n你覺得下週市場最該留意哪個數據？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #JOJO #FMKT",
+   "zh": "本週宏觀：最多人講「其他」（利好 6・利空 12）\n\n這星期我們追蹤的 453 個 X 帳號，最常聊的宏觀話題是這幾個（11/9–11/15）\n\n1. 其他：利好 6・利空 12・中性 15（同上週差不多）\n@moninvestor：「許多人本年大幅虧損，尤其若重倉 AI 板塊過去一個月受挫。投資組合一直波動，對標普 500 或 ETF 不感興趣。現時六位數投資組合，大幅波動（上下六位數）促使重新思考管理。仍為…」\n\n2. 關稅／政策／地緣政治：利好 1・利空 11・中性 16（同上週差不多）\n@zeroshorts：「Lutnick corruptaf（引用 CNBC：Cantor Fitzgerald 報告的 Nvidia 持股數量在 2025 年 9 月至 2026 年 3 月間幾乎減…」\n\n3. 經濟增長／衰退：利好 0・利空 4・中性 4（比上週轉差 ▼）\n@ACInvestorBlog：「$NDX 1997 年納斯達克回調與當前回調均發生在對重大技術浪潮高度樂觀時期（90 年代末網際網路／技術基礎設施，今天 AI 基礎設施）。1997 年因亞洲金融危機經歷約 12…」\n\n這週哪個宏觀消息最影響你的判斷？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #NDX",
    "en": ""
   }
  },
