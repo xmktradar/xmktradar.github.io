@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2121364772364993017": {
+      "en_summary": "I got through all 6.5 hours of the $PRAX science day. Tomorrow, I move on to $PCVX.",
+      "zh_summary": "我完成了$PRAX科學日的全部6.5小時。明天，我將轉向$PCVX。",
+      "tickers": ["PRAX", "PCVX"],
+      "stance": "中性",
+      "stance_by_ticker": {"PRAX": "中性", "PCVX": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121363531731964314": {
+      "en_summary": "Soros Fund Bought $INTC and sold $AMZN and $MSFT.",
+      "zh_summary": "Soros基金買入$INTC並賣出$AMZN和$MSFT。",
+      "tickers": ["INTC", "AMZN", "MSFT"],
+      "stance": "中性",
+      "stance_by_ticker": {"INTC": "睇好", "AMZN": "睇淡", "MSFT": "睇淡"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121361006555537719": {
+      "en_summary": "Qualcomm raised $4 billion in the bond market across five tranches: 2028 $750M at 5.00%, 2029 $750M at 5.15%, 2031 $1B at 5.35%, 2033 $750M at 5.60%, 2036 $750M at 5.80%. $QCOM is paying 5.80% to borrow for 10 years, compared with the US10Y tsy. yield of 5.14%.",
+      "zh_summary": "Qualcomm在債券市場籌集了40億美元，分為五個批次：2028年7.5億美元利率5.00%，2029年7.5億美元5.15%，2031年10億美元5.35%，2033年7.5億美元5.60%，2036年7.5億美元5.80%。$QCOM為10年期借款支付5.80%，而美國10年期國債收益率為5.14%。",
+      "tickers": ["QCOM"],
+      "stance": "中性",
+      "stance_by_ticker": {"QCOM": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": true,
+      "macro_theme": "yields",
+      "macro_impact": "中性",
+      "ticker_notes": {"QCOM": "Raised $4B bonds, 2036 tranche at 5.80% vs US10Y 5.14%"}
+    },
+    "2121359317949714905": {
+      "en_summary": "OpenAI last week completed an $11 billion funding round valuing the firm at $1.25 trillion, down from the $1.5 trillion valuation it was originally seeking, per Reuters. $MSFT $AMZN $GOOG $NVDA",
+      "zh_summary": "OpenAI上週完成了110億美元融資輪，公司估值為1.25萬億美元，低於原本尋求的1.5萬億美元，據Reuters。$MSFT $AMZN $GOOG $NVDA",
+      "tickers": ["MSFT", "AMZN", "GOOG", "NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"MSFT": "中性", "AMZN": "中性", "GOOG": "中性", "NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121358721527767297": {
+      "en_summary": "Liquidated my entire $MDGL position for a small loss here. It was one company that I bought into the biotech correction, and I really wasn't fond of after doing all my research. Being able to sell it into a nice rally was good, and I have that cash to put to work in other companies I like better.",
+      "zh_summary": "在此以小虧損清算了我的全部$MDGL持倉。這是我在生物科技修正中買入的一家公司，做完所有研究後我其實不太喜歡它。能在不錯的反彈中賣出是好事，現在有現金可以投入其他我更喜歡的公司。",
+      "tickers": ["MDGL"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"MDGL": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MDGL": "Liquidated entire position for small loss after research"}
+    }
+  }
+}
