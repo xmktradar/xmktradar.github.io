@@ -29,13 +29,6 @@
    "backlog": true
   },
   {
-   "t": "CMCSA",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-22 00:00",
-   "backlog": true
-  },
-  {
    "t": "GM",
    "end": "2026-09-30",
    "label": "FY2026 Q3",
@@ -96,13 +89,6 @@
    "end": "2026-09-30",
    "label": "FY2026 Q3",
    "found_hkt": "2026-10-21 00:00",
-   "backlog": true
-  },
-  {
-   "t": "CDNS",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-28 21:03",
    "backlog": true
   },
   {
@@ -488,13 +474,6 @@
    "end": "2026-09-30",
    "label": "FY2026 Q3",
    "found_hkt": "2026-11-06 08:21",
-   "backlog": true
-  },
-  {
-   "t": "SPG",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-11-07 02:11",
    "backlog": true
   },
   {
@@ -1684,6 +1663,33 @@
    "backlog": true,
    "posted": "2026-11-15",
    "slot": "1000"
+  },
+  {
+   "t": "CMCSA",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-22 00:00",
+   "backlog": true,
+   "posted": "2026-11-16",
+   "slot": "1000"
+  },
+  {
+   "t": "CDNS",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-28 21:03",
+   "backlog": true,
+   "posted": "2026-11-16",
+   "slot": "1000"
+  },
+  {
+   "t": "SPG",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-11-07 02:11",
+   "backlog": true,
+   "posted": "2026-11-16",
+   "slot": "1000"
   }
  ],
  "slots": {
@@ -1700,9 +1706,9 @@
    "items": []
   },
   "1000": {
-   "day": "2026-11-15",
+   "day": "2026-11-16",
    "post_at": "10:00",
-   "made_hkt": "2026-11-15 07:04",
+   "made_hkt": "2026-11-16 07:34",
    "platforms": [
     "x",
     "threads",
@@ -1711,216 +1717,220 @@
    ],
    "items": [
     {
-     "t": "MNST",
-     "name": "Monster Beverage Corporation",
+     "t": "CMCSA",
+     "name": "Comcast Corporation",
      "label": "FY2026 Q3",
      "end": "2026-09-30",
-     "mcap": 90946002944,
+     "mcap": 89343311872,
      "backlog": true,
      "tag": "補發",
      "images": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-zh-4.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-zh-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-zh-5.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-en-4.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-en-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-en-5.jpg"
       ]
      },
      "images_x": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-zh-4.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-zh-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-zh-5.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-en-4.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-en-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-en-5.jpg"
       ]
      },
      "images_fb": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-zh-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-zh-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-zh-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-zh-4-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-zh-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-zh-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-zh-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-zh-4-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-zh-5-fb.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-en-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-en-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-en-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-MNST-en-4-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-en-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-en-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-en-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-en-4-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CMCSA-en-5-fb.jpg"
       ]
      },
      "posts": {
       "zh": {
-       "x": "$MNST 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$25.6 億，按年 +16.7%，優於市場預期 2.8%\n・經調整 EPS $0.29，預期 $0.30 ❌\n・毛利率 54.7%｜淨利率 22.2%\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #MNST",
-       "threads": "$MNST 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$25.6 億，按年 +16.7%，優於市場預期 2.8%\n・經調整 EPS $0.29，預期 $0.30 ❌\n・毛利率 54.7%｜淨利率 22.2%\n・最大收入線：Monster Energy Drinks 佔 93%（按年 +17.1%）\n・自由現金流（過去 4 季）US$19.2 億\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #MNST",
-       "instagram": "$MNST 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$25.6 億，按年 +16.7%，優於市場預期 2.8%\n・經調整 EPS $0.29，預期 $0.30 ❌\n・毛利率 54.7%｜淨利率 22.2%\n・最大收入線：Monster Energy Drinks 佔 93%（按年 +17.1%）\n・自由現金流（過去 4 季）US$19.2 億\n\n看完 $MNST 這份成績單，你最在意哪個數字？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #MNST",
-       "facebook": "$MNST 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$25.6 億，按年 +16.7%，優於市場預期 2.8%\n・經調整 EPS $0.29，預期 $0.30 ❌\n・毛利率 54.7%｜淨利率 22.2%\n・最大收入線：Monster Energy Drinks 佔 93%（按年 +17.1%）\n・自由現金流（過去 4 季）US$19.2 億\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #MNST"
+       "x": "$CMCSA 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$293 億，按年 -6.1%\n・經調整 EPS $1.07，預期 $0.99 ✅\n\nX 大神怎麼看（近 28 天）：1 個看多、0 個看空\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #CMCSA",
+       "threads": "$CMCSA 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$293 億，按年 -6.1%\n・經調整 EPS $1.07，預期 $0.99 ✅\n・淨利率 11.8%\n・自由現金流（過去 4 季）US$197 億\n\nX 大神怎麼看（近 28 天）：1 個看多、0 個看空\n看多 @RagingVentures：在回覆中表示持有大量 $CMCSA。\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #CMCSA",
+       "instagram": "$CMCSA 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$293 億，按年 -6.1%\n・經調整 EPS $1.07，預期 $0.99 ✅\n・淨利率 11.8%\n・自由現金流（過去 4 季）US$197 億\n\nX 大神怎麼看（近 28 天）：1 個看多、0 個看空\n看多 @RagingVentures：在回覆中表示持有大量 $CMCSA。\n\n你覺得 $CMCSA 這次財報是好是壞？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #CMCSA",
+       "facebook": "$CMCSA 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$293 億，按年 -6.1%\n・經調整 EPS $1.07，預期 $0.99 ✅\n・淨利率 11.8%\n・自由現金流（過去 4 季）US$197 億\n\nX 大神怎麼看（近 28 天）：1 個看多、0 個看空\n看多 @RagingVentures：在回覆中表示持有大量 $CMCSA。\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #CMCSA"
       },
       "en": {
-       "x": "$MNST just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $2.56B, +16.7% YoY, beat estimates by 2.8%\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #MNST",
+       "x": "$CMCSA just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $29.30B, -6.1% YoY\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #CMCSA",
        "threads": "",
        "instagram": "",
-       "facebook": "$MNST just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $2.56B, +16.7% YoY, beat estimates by 2.8%\n・Adjusted EPS $0.29 vs $0.30 expected ❌\n・Gross margin 54.7% | Net margin 22.2%\n・Biggest line: Monster Energy Drinks, 93% of revenue (+17.1% YoY)\n・Free cash flow (last 4 quarters) $1.92B\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #MNST"
+       "facebook": "$CMCSA just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $29.30B, -6.1% YoY\n・Adjusted EPS $1.07 vs $0.99 expected ✅\n・Net margin 11.8%\n・Free cash flow (last 4 quarters) $19.67B\n\nWhat X accounts say (28 days): 1 bullish, 0 bearish\nBull @RagingVentures: States ownership of a lot of $CMCSA in a reply.\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #CMCSA"
       }
      },
      "url": {
-      "zh": "https://thecrowdtape.com/zh/earnings/MNST/",
-      "en": "https://thecrowdtape.com/en/earnings/MNST/"
+      "zh": "https://thecrowdtape.com/zh/earnings/CMCSA/",
+      "en": "https://thecrowdtape.com/en/earnings/CMCSA/"
      },
      "ig": true
     },
     {
-     "t": "PWR",
-     "name": "Quanta Services, Inc.",
+     "t": "CDNS",
+     "name": "Cadence Design Systems, Inc.",
      "label": "FY2026 Q3",
      "end": "2026-09-30",
-     "mcap": 90709155840,
+     "mcap": 88627167232,
      "backlog": true,
      "tag": "補發",
      "images": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-zh-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-zh-5.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-en-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-en-5.jpg"
       ]
      },
      "images_x": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-zh-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-zh-5.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-en-4.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-en-5.jpg"
       ]
      },
      "images_fb": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-zh-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-zh-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-zh-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-zh-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-zh-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-zh-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-zh-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-zh-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-zh-4-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-zh-5-fb.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-en-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-en-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-en-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-en-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-PWR-en-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-en-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-en-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-en-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-en-4-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-CDNS-en-5-fb.jpg"
       ]
      },
      "posts": {
       "zh": {
-       "x": "$PWR 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$120 億，按年 +57.4%，優於市場預期 9.4%\n\nX 大神怎麼看（近 28 天）：2 個看多、0 個看空\n\n只是整理公開財報數字\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #PWR",
-       "threads": "$PWR 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$120 億，按年 +57.4%，優於市場預期 9.4%\n・經調整 EPS $6.06，預期 $5.03 ✅\n・毛利率 16.7%｜淨利率 5.8%\n・最大收入線：Electric 佔 82%（按年 +58.8%）\n・自由現金流（過去 4 季）US$31.6 億\n\nX 大神怎麼看（近 28 天）：2 個看多、0 個看空\n看多 @Stephanie_Link：$PWR 又一次超預期並上調，TR 增長 +57% y/y，積壓訂單 +19% q/q，自由現金流 +115%。電力基…\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #PWR",
-       "instagram": "$PWR 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$120 億，按年 +57.4%，優於市場預期 9.4%\n・經調整 EPS $6.06，預期 $5.03 ✅\n・毛利率 16.7%｜淨利率 5.8%\n・最大收入線：Electric 佔 82%（按年 +58.8%）\n・自由現金流（過去 4 季）US$31.6 億\n\nX 大神怎麼看（近 28 天）：2 個看多、0 個看空\n看多 @Stephanie_Link：$PWR 又一次超預期並上調，TR 增長 +57% y/y，積壓訂單 +19% q/q，自由現金流 +115%。電力基…\n\n看完 $PWR 這份成績單，你最在意哪個數字？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #PWR",
-       "facebook": "$PWR 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$120 億，按年 +57.4%，優於市場預期 9.4%\n・經調整 EPS $6.06，預期 $5.03 ✅\n・毛利率 16.7%｜淨利率 5.8%\n・最大收入線：Electric 佔 82%（按年 +58.8%）\n・自由現金流（過去 4 季）US$31.6 億\n\nX 大神怎麼看（近 28 天）：2 個看多、0 個看空\n看多 @Stephanie_Link：$PWR 又一次超預期並上調，TR 增長 +57% y/y，積壓訂單 +19% q/q，自由現金流 +115%。電力基…\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #PWR"
+       "x": "$CDNS 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$16.3 億，按年 +22.0%\n・經調整 EPS $2.11，預期 $2.05 ✅\n\nX 大神怎麼看（近 28 天）：3 個看多、0 個看空\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #CDNS",
+       "threads": "$CDNS 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$16.3 億，按年 +22.0%\n・經調整 EPS $2.11，預期 $2.05 ✅\n・淨利率 17.7%\n・最大收入線：Product and maintenance 佔 91%（按年 +23.2%）\n・自由現金流（過去 4 季）US$17.6 億\n\nX 大神怎麼看（近 28 天）：3 個看多、0 個看空\n看多 @TheTranscript_：$CDNS Cadence CEO：台積電預期未來五年晶片尺寸將增加 48 倍。台積電展示製程路線圖：未來 5 年晶片…\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #CDNS",
+       "instagram": "$CDNS 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$16.3 億，按年 +22.0%\n・經調整 EPS $2.11，預期 $2.05 ✅\n・淨利率 17.7%\n・最大收入線：Product and maintenance 佔 91%（按年 +23.2%）\n・自由現金流（過去 4 季）US$17.6 億\n\nX 大神怎麼看（近 28 天）：3 個看多、0 個看空\n看多 @TheTranscript_：$CDNS Cadence CEO：台積電預期未來五年晶片尺寸將增加 48 倍。台積電展示製程路線圖：未來 5 年晶片…\n\n看完 $CDNS 這份成績單，你最在意哪個數字？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #CDNS",
+       "facebook": "$CDNS 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$16.3 億，按年 +22.0%\n・經調整 EPS $2.11，預期 $2.05 ✅\n・淨利率 17.7%\n・最大收入線：Product and maintenance 佔 91%（按年 +23.2%）\n・自由現金流（過去 4 季）US$17.6 億\n\nX 大神怎麼看（近 28 天）：3 個看多、0 個看空\n看多 @TheTranscript_：$CDNS Cadence CEO：台積電預期未來五年晶片尺寸將增加 48 倍。台積電展示製程路線圖：未來 5 年晶片…\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #CDNS"
       },
       "en": {
-       "x": "$PWR just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $12.01B, +57.4% YoY, beat estimates by 9.4%\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Earnings #PWR",
+       "x": "$CDNS just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $1.63B, +22.0% YoY\n\nWhat X accounts say (28 days): 3 bullish, 0 bearish\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #CDNS",
        "threads": "",
        "instagram": "",
-       "facebook": "$PWR just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $12.01B, +57.4% YoY, beat estimates by 9.4%\n・Adjusted EPS $6.06 vs $5.03 expected ✅\n・Gross margin 16.7% | Net margin 5.8%\n・Biggest line: Electric, 82% of revenue (+58.8% YoY)\n・Free cash flow (last 4 quarters) $3.16B\n\nWhat X accounts say (28 days): 2 bullish, 0 bearish\nBull @Stephanie_Link: $PWR another beat/raise with TR g +57% y/y, backlog +19% q/q and FCF +115%. Electric Infra org g +39% & Under…\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #PWR"
+       "facebook": "$CDNS just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $1.63B, +22.0% YoY\n・Adjusted EPS $2.11 vs $2.05 expected ✅\n・Net margin 17.7%\n・Biggest line: Product and maintenance, 91% of revenue (+23.2% YoY)\n・Free cash flow (last 4 quarters) $1.76B\n\nWhat X accounts say (28 days): 3 bullish, 0 bearish\nBull @TheTranscript_: $CDNS Cadence CEO: TSMC expects a 48× increase in chip size over five years. TSMC showed process roadmap: chi…\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #CDNS"
       }
      },
      "url": {
-      "zh": "https://thecrowdtape.com/zh/earnings/PWR/",
-      "en": "https://thecrowdtape.com/en/earnings/PWR/"
+      "zh": "https://thecrowdtape.com/zh/earnings/CDNS/",
+      "en": "https://thecrowdtape.com/en/earnings/CDNS/"
      },
      "ig": true
     },
     {
-     "t": "WAT",
-     "name": "Waters Corporation",
+     "t": "SPG",
+     "name": "Simon Property Group, Inc.",
      "label": "FY2026 Q3",
-     "end": "2026-10-03",
-     "mcap": 90454654976,
+     "end": "2026-09-30",
+     "mcap": 88187109376,
      "backlog": true,
      "tag": "補發",
      "images": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-zh-4.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-zh-4.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-en-4.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-en-4.jpg"
       ]
      },
      "images_x": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-zh-4.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-zh-4.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-en-4.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-en-4.jpg"
       ]
      },
      "images_fb": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-zh-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-zh-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-zh-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-zh-4-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-zh-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-zh-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-zh-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-zh-4-fb.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-en-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-en-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-en-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-15-1000-WAT-en-4-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-en-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-en-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-en-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-16-1000-SPG-en-4-fb.jpg"
       ]
      },
      "posts": {
       "zh": {
-       "x": "$WAT 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$17.7 億，按年 +120.9%\n・經調整 EPS $4.10，預期 $4.00 ✅\n・淨利率 4.6%\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #WAT",
-       "threads": "$WAT 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$17.7 億，按年 +120.9%\n・經調整 EPS $4.10，預期 $4.00 ✅\n・淨利率 4.6%\n・最大收入線：Consumables 佔 46%（按年 +410.1%）\n・自由現金流（過去 4 季）US$2.9 億\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #WAT",
-       "instagram": "$WAT 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$17.7 億，按年 +120.9%\n・經調整 EPS $4.10，預期 $4.00 ✅\n・淨利率 4.6%\n・最大收入線：Consumables 佔 46%（按年 +410.1%）\n・自由現金流（過去 4 季）US$2.9 億\n\n你覺得 $WAT 這次財報是好是壞？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #WAT",
-       "facebook": "$WAT 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$17.7 億，按年 +120.9%\n・經調整 EPS $4.10，預期 $4.00 ✅\n・淨利率 4.6%\n・最大收入線：Consumables 佔 46%（按年 +410.1%）\n・自由現金流（過去 4 季）US$2.9 億\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #WAT"
+       "x": "$SPG 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$18.1 億，按年 +13.3%，優於市場預期 9.4%\n・經調整 EPS $1.94，預期 $1.62 ✅\n・淨利率 27.5%\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #SPG",
+       "threads": "$SPG 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$18.1 億，按年 +13.3%，優於市場預期 9.4%\n・經調整 EPS $1.94，預期 $1.62 ✅\n・淨利率 27.5%\n・自由現金流（過去 4 季）US$33.5 億\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SPG",
+       "instagram": "$SPG 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$18.1 億，按年 +13.3%，優於市場預期 9.4%\n・經調整 EPS $1.94，預期 $1.62 ✅\n・淨利率 27.5%\n・自由現金流（過去 4 季）US$33.5 億\n\n看完 $SPG 這份成績單，你最在意哪個數字？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SPG",
+       "facebook": "$SPG 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$18.1 億，按年 +13.3%，優於市場預期 9.4%\n・經調整 EPS $1.94，預期 $1.62 ✅\n・淨利率 27.5%\n・自由現金流（過去 4 季）US$33.5 億\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SPG"
       },
       "en": {
-       "x": "$WAT just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $1.77B, +120.9% YoY\n・Adjusted EPS $4.10 vs $4.00 expected ✅\n・Net margin 4.6%\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #WAT",
+       "x": "$SPG just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $1.81B, +13.3% YoY, beat estimates by 9.4%\n・Adjusted EPS $1.94 vs $1.62 expected ✅\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Earnings #SPG",
        "threads": "",
        "instagram": "",
-       "facebook": "$WAT just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $1.77B, +120.9% YoY\n・Adjusted EPS $4.10 vs $4.00 expected ✅\n・Net margin 4.6%\n・Biggest line: Consumables, 46% of revenue (+410.1% YoY)\n・Free cash flow (last 4 quarters) $291M\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #WAT"
+       "facebook": "$SPG just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $1.81B, +13.3% YoY, beat estimates by 9.4%\n・Adjusted EPS $1.94 vs $1.62 expected ✅\n・Net margin 27.5%\n・Free cash flow (last 4 quarters) $3.35B\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #SPG"
       }
      },
      "url": {
-      "zh": "https://thecrowdtape.com/zh/earnings/WAT/",
-      "en": "https://thecrowdtape.com/en/earnings/WAT/"
+      "zh": "https://thecrowdtape.com/zh/earnings/SPG/",
+      "en": "https://thecrowdtape.com/en/earnings/SPG/"
      },
      "ig": false
     }
