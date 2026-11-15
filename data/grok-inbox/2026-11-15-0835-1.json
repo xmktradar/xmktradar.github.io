@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2121735324921663569": {
+      "en_summary": "$QQQ weekend indicators implication: -0.80%.",
+      "zh_summary": "$QQQ 週末指標顯示 -0.80% 的影響。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121734165196390602": {
+      "en_summary": "Yields and the dollar breaking out, gold and bitcoin down; stock market will get the memo shortly. Quoted comment that liquidity is done and gone, confirmed by Bitcoin, and $NVDA reports Tuesday night.",
+      "zh_summary": "收益率和美元突破，黃金和比特幣下跌；股市即將收到訊息。引用評論指流動性已完結，由比特幣確認，且 $NVDA 週二晚間發布業績。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "未表態"},
+      "horizon": "短線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "yields",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2121730611597681045": {
+      "en_summary": "Roughly 10 million $UBER drivers worldwide means 0.1% by 2028 is completely insignificant relative to Waymo and Tesla. Not the robotaxi revolution expected.",
+      "zh_summary": "全球約 1000 萬 $UBER 司機，2028 年 0.1% 相對 Waymo 和 Tesla 而言完全不重要。並非預期中的 robotaxi 革命。",
+      "tickers": ["UBER", "TSLA"],
+      "stance": "中性",
+      "stance_by_ticker": {"UBER": "睇淡", "TSLA": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121726712207593956": {
+      "en_summary": "Sold $AAOI at $44, not $40. Invests on a thesis and sells when the bear case validates. $INDI was tax harvesting and dropped another 25% after the sale before a 60% bounce from earnings. Bounces do not change the sell reasons.",
+      "zh_summary": "以 $44 賣出 $AAOI，而非 $40。根據論點投資，當熊市情況驗證時賣出。$INDI 是稅務收割，賣出後再跌 25%，然後因業績反彈 60%。反彈不會改變賣出原因。",
+      "tickers": ["AAOI", "INDI"],
+      "stance": "中性",
+      "stance_by_ticker": {"AAOI": "睇淡", "INDI": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AAOI": "Sold at $44 on thesis, bear case validated"}
+    },
+    "2121720706912186404": {
+      "en_summary": "This is incredible. Congratulations SpaceX and @elonmusk $SPCX. Quoted SpaceX announcement of Mechazilla catching Starship.",
+      "zh_summary": "這太不可思議了。恭喜 SpaceX 和 @elonmusk $SPCX。引用 SpaceX 關於 Mechazilla 捕捉 Starship 的公告。",
+      "tickers": ["SPCX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPCX": "睇好"},
+      "horizon": "長線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
