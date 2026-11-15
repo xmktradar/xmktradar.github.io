@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2121807878537519506": {
+      "en_summary": "Great analogy. Quoting discussion of $NVDA as the \"Central Bank of AI\" analogue to LTCM, with residual-value guarantees acting as written puts on GPU collateral creating wrong-way risk, and implications of moving from easing to tightening for the AI system.",
+      "zh_summary": "「很好的比喻。」引用討論將$NVDA視為「AI的中央銀行」，類似LTCM，殘餘價值保證相當於對GPU抵押品寫出認沽期權，形成錯向風險，以及從寬鬆轉向緊縮對AI系統的影響。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"NVDA": "wrong-way risk from residual-value guarantees as puts"}
+    },
+    "2121800354119508214": {
+      "en_summary": "That's one well-built cup and handle $SWK. Scan for breakouts.",
+      "zh_summary": "「這是一個建得很好的杯柄形態$SWK。掃描突破。」",
+      "tickers": ["SWK"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SWK": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121798445694582980": {
+      "en_summary": "$GLD IS CRASHING. lol. Quoting that $GLD is going to crash soon, mentioning $SPY.",
+      "zh_summary": "「$GLD正在崩潰。哈哈。」引用稱$GLD很快會崩潰，提到$SPY。",
+      "tickers": ["GLD", "SPY"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"GLD": "睇淡", "SPY": "中性"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2121789085627105427": {
+      "en_summary": "Six-byline alert: NYT story based on a year of reporting and discussions with more than 100 people including current and former $NVDA executives on how Mr. Huang’s secret slowly spilled into the open.",
+      "zh_summary": "「六人署名警報：」《紐約時報》基於一年報導及與超過100人討論（包括現任及前$NVDA高管），關於Huang先生秘密如何慢慢公開的故事。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121787722813550717": {
+      "en_summary": "WSJ: Huang’s affair didn’t just blow up his career. They now threaten to implode the entire lucrative ecosystem he built in Asia to get China the chips it needed. $NVDA",
+      "zh_summary": "「《華爾街日報》：Huang的風流事不僅破壞他的職業。它們現在威脅要壞掉他在亞洲建立以向中國提供晶片的整個獲利生態系統。$NVDA」",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "affair threatens Asia ecosystem for China chips"}
+    }
+  }
+}
