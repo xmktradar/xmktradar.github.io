@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2122001625921266129": {
+      "en_summary": "@munster_gene addresses growing narrative that $NVDA has downside because $MU trades at 4x CY27 earnings vs 10x for NVIDIA. Both surged on AI infrastructure. Misses: 1. Street expects Micron earnings grow 18% in CY27 vs 68% for Nvidia. Even if Micron 30% and Nvidia slows to 45% from Asia restrictions, Nvidia growing 50% faster. 2. Businesses different: Micron cyclical commodity memory, Nvidia proprietary GPUs and CUDA create stronger moat.",
+      "zh_summary": "@munster_gene 回應日益增長的敘事指 $NVDA 有下行風險因為 $MU 以 4 倍 CY27 盈利交易 vs NVIDIA 10 倍。兩者因 AI 基建上漲。遺漏：1. 街頭預期美光 CY27 盈利增長 18% vs Nvidia 68%。即使美光 30% 且 Nvidia 因亞洲限制放緩至 45%，Nvidia 仍快 50%。2. 業務根本不同：美光主要週期性商品記憶體，Nvidia 專有 GPU 及 CUDA 創造更強護城河。",
+      "tickers": ["NVDA", "MU"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好", "MU": "中性"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "Higher growth 68% vs MU 18%, stronger moat via GPUs/CUDA vs commodity memory"}
+    },
+    "2122001249289814174": {
+      "en_summary": "@Jake__Wujastyk on $IWM $RTY_F $RTY: If rates continue to spike aggressively higher like they did last week, can't see a world where this flag doesn't continue lower with the trend.",
+      "zh_summary": "@Jake__Wujastyk 關於 $IWM $RTY_F $RTY：如果利率繼續像上週那樣激進地飆升，無法看到這個旗形不隨趨勢繼續走低的世界。",
+      "tickers": ["IWM"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"IWM": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "rates",
+      "macro_impact": "利淡",
+      "ticker_notes": {"IWM": "Flag likely continues lower if rates spike aggressively"}
+    },
+    "2122000711172919524": {
+      "en_summary": "@KarelMercx on $CWEN combines 5.77% dividend yield with dividend increased every quarter in recent years. Five-year annual dividend growth: 7.29%. High income today, growing income stream tomorrow. That's why owns Clearway Energy.",
+      "zh_summary": "@KarelMercx 關於 $CWEN 結合 5.77% 股息收益率與近年每季增加的股息。五年年化股息增長：7.29%。今天高收入，明天增長的收入流。這就是為什麼擁有 Clearway Energy。",
+      "tickers": ["CWEN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"CWEN": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"CWEN": "5.77% yield, dividend up every quarter, 5yr growth 7.29%, owns for high and growing income"}
+    },
+    "2122000422684721195": {
+      "en_summary": "@StockSavvyShay lists brutal drawdowns across growthland in 2026: $EOSE -90%, $TE -85%, $OPEN -84%, $AAOI -78%, $OKLO -78%, $CIFR -77%, $ASTS -76%, $IREN -74%, $PL -74%, $NVTS -72%, $RDW -70%, $QBTS -70%, $CRWV -63%, $ONDS -63%, $RKLB -60%, $IONQ -60%.",
+      "zh_summary": "@StockSavvyShay 列出 2026 年增長領域殘酷回撤：$EOSE -90%、$TE -85%、$OPEN -84%、$AAOI -78%、$OKLO -78%、$CIFR -77%、$ASTS -76%、$IREN -74%、$PL -74%、$NVTS -72%、$RDW -70%、$QBTS -70%、$CRWV -63%、$ONDS -63%、$RKLB -60%、$IONQ -60%。",
+      "tickers": ["EOSE", "TE", "OPEN", "AAOI", "OKLO", "CIFR", "ASTS", "IREN", "PL", "NVTS", "RDW", "QBTS", "CRWV", "ONDS", "RKLB", "IONQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"EOSE": "未表態", "TE": "未表態", "OPEN": "未表態", "AAOI": "未表態", "OKLO": "未表態", "CIFR": "未表態", "ASTS": "未表態", "IREN": "未表態", "PL": "未表態", "NVTS": "未表態", "RDW": "未表態", "QBTS": "未表態", "CRWV": "未表態", "ONDS": "未表態", "RKLB": "未表態", "IONQ": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122000423737545003": {
+      "en_summary": "@TheTranscript_ quotes $KMX CarMax CEO Keith Barr: \"I think one of the challenges of CarMax when I got here was we protected margin at the expense of sales over a number of years.\"",
+      "zh_summary": "@TheTranscript_ 引用 $KMX CarMax CEO Keith Barr：「我認為我到這裡時 CarMax 的挑戰之一是我們在多年間以銷售為代價保護利潤率。」",
+      "tickers": ["KMX"],
+      "stance": "中性",
+      "stance_by_ticker": {"KMX": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
