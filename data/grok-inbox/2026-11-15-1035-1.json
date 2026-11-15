@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2121783766356234367": {
+      "en_summary": "$BTC and $ETH both at 18 RSI with significant bloodshed lately.",
+      "zh_summary": "$BTC 與 $ETH 均處於 18 RSI，近期出現大幅拋售。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121781856047951903": {
+      "en_summary": "$100/kg is not priced in for $SPCX. (Quoted: $SPCX $100 per kg to the space is not a concept anymore)",
+      "zh_summary": "$SPCX 的每公斤 100 美元尚未被市場定價。(引用：$SPCX 每公斤 100 美元進入太空已不再是概念)",
+      "tickers": ["SPCX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPCX": "睇好"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPCX": "$100/kg not priced in"}
+    },
+    "2121781314538057951": {
+      "en_summary": "$MU positioned for 2027 via Strategic Customer Agreements pioneered by Sanjay and team. Hyperscalers need multiples more HBM than exists; memory makers refuse overbuilding after 2023 collapse. Customer deposits and take-or-pay commitments fund expansion with price floors, supply visibility through 2030-2031, ensuring AI buildout continues without memory choke.",
+      "zh_summary": "$MU 因 Sanjay 及其團隊開創的策略性客戶協議，在 2027 年具備良好定位。超大規模客戶需要遠超現有供應的 HBM；記憶體製造商因 2023 年崩潰而拒絕過度建設。客戶以現金存款和 take-or-pay 承諾資助擴張，並設有價格下限，供應能見度延伸至 2030-2031 年，確保 AI 建置不會因記憶體供應而受阻。",
+      "tickers": ["MU"],
+      "stance": "睇好",
+      "stance_by_ticker": {"MU": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MU": "Strategic agreements ensure HBM supply for AI through 2030-2031"}
+    },
+    "2121780182285709315": {
+      "en_summary": "Taco Bell serves more chips than $NVDA. (Quoted: criticism of Nvidia board member Melissa B. Lora with Taco Bell background, questioning qualifications for $NVDA board role)",
+      "zh_summary": "Taco Bell 供應的 chips 比 $NVDA 更多。(引用對 Nvidia 董事 Melissa B. Lora 來自 Taco Bell 背景的批評，質疑其擔任 $NVDA 董事的資格)",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121774130374828450": {
+      "en_summary": "$BTC under $63k.",
+      "zh_summary": "$BTC 低於 63,000 美元。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
