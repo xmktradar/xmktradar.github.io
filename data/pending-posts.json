@@ -2,106 +2,6 @@
  "note": "已抓取但未經 Grok 分析嘅帖，只收股票同宏觀帖（閒聊帖唔寫），有股票代號嘅排最前，等超過 24 個鐘就唔再等。",
  "posts": [
   {
-   "id": "2121687124424687959",
-   "handle": "ACInvestorBlog",
-   "name": "Antonio Costa",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "Polymarket"
-   },
-   "time_utc": "2026-11-14T19:30:04Z",
-   "url": "https://x.com/ACInvestorBlog/status/2121687124424687959",
-   "text": "@Polymarket Correct, they came to hire the Nvidia CEO once they found out he was available and unemployed.",
-   "quoted": null,
-   "media": [],
-   "likes": 10,
-   "views": 1457,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2121680816803889519",
-   "handle": "firesidealpha",
-   "name": "Fireside Alpha",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-14T19:05:00Z",
-   "url": "https://x.com/firesidealpha/status/2121680816803889519",
-   "text": "Ron Baron says Elon Musk believes that 'if programs aren’t failing, you’re not innovating enough'\n\n“Elon thinks to be most successful, you should fail more often. If programs are not failing, you’re not innovating enough. Avoiding failure during development makes finished systems less safe. Elon believes hardware should be sacrificed for information.”\n\n“Others think it’s safer to go slowly and make incremental progress, which is probably why SpaceX and Tesla are so many years ahead of competitors, and the gap is getting wider.”\n\n“Obsession. Baron is obsessed with growth, and so are the founders in whom we invest. Those entrepreneurs often don’t have an exact growth algorithm, but they do have a road map. And in Elon’s case, his road map doesn’t even involve roads.”",
-   "quoted": {
-    "handle": "elonmusk",
-    "text": "Yes, the green flame is caused by burning copper from depleting fuel in the regenerative cooling circuit and going oxygen-rich (closer to stoichiometric temperature) in the main combustion chamber. \n\nSlight underperformance of engines on this flight is the reason. The booster is meant to land with tiny residuals, so the solution is to improve engine performance and performance consistency (underway with Raptor V3.2), as well as adjust flight software to do MECO1 about one second earlier to ensure enough propellant for boostback and landing (tiny change).\n\nThese early ships and boosters are already outdated by improved designs in production or on the test stand, so this booster loss does not change our timeline to reach high volume, fully reusable Starship flights."
-   },
-   "media": [
-    "https://pbs.twimg.com/amplify_video_thumb/2121672219646644224/img/G3CasGXerMQzUQZM.jpg"
-   ],
-   "likes": 29,
-   "views": 3211,
-   "cashtags": [],
-   "n_media": 1
-  },
-  {
-   "id": "2121679705732772336",
-   "handle": "GaryMarcus",
-   "name": "Gary Marcus",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-14T19:00:35Z",
-   "url": "https://x.com/GaryMarcus/status/2121679705732772336",
-   "text": "what Sacks, Baker, Fridman, and Gerstner definitely *don’t* want you to focus on:",
-   "quoted": {
-    "handle": "maggieNYT",
-    "text": "\"The concerns in the U.S. intelligence community that Ms. Huang was spying on behalf of Beijing were taken so seriously that Mr. Trump was twice briefed on it, late last year and again this spring.\" .@julianbarnes @jonathanvswan me https://www.nytimes.com/2026/11/13/us/politics/nvidia-scandal-what-it-means-to-be-a-spy.html"
-   },
-   "media": [],
-   "likes": 108,
-   "views": 9252,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2121679050577965288",
-   "handle": "packyM",
-   "name": "Packy McCormick",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-14T18:57:59Z",
-   "url": "https://x.com/packyM/status/2121679050577965288",
-   "text": "1. Elon hires Jensen to run Terafab. \n2. Control the whole stack. \n3. Open source frontier-level Grok.\n4. Open source Grok is a much bigger threat to the labs than anything Jensen was building / supporting at Nvidia. Maybe even team up with Meta for fun, since OS benefits them more than the labs.\n\nThe thesis on why China is so pro open source AI is that it's a complement to all the physical stuff they beat us on, so they can turn better AI into valuable robots, cars, factories, bio labs, etc...\n\nThe same logic applies to SpaceX / Tesla vs. all of the other western competitors at least.\n\nCommoditize your complements (trillion dollar labs in this case).\n\nThe most entertaining outcome is the most likely.",
-   "quoted": null,
-   "media": [],
-   "likes": 349,
-   "views": 33723,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2121678839189307407",
-   "handle": "sonusvarghese",
-   "name": "Sonu Varghese",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "CihunSol"
-   },
-   "time_utc": "2026-11-14T18:57:08Z",
-   "url": "https://x.com/sonusvarghese/status/2121678839189307407",
-   "text": "@CihunSol @RealMikeLarson @MoneyShow @RyanDetrick Not just the Fed stance",
-   "quoted": {
-    "handle": "sonusvarghese",
-    "text": "Thinking ... \n\n1) D sweep (of states especially) raises cost of capital for AI buildout\n\n2) Nvidia stepping back from guarantees/backstops raises financing costs\n\n3) Fed lagging inflation, which is also lagging (h/t @RenMacLLC) - tries to catch up in a hurry\n\nMoney's tight 😬"
-   },
-   "media": [],
-   "likes": 1,
-   "views": 35,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
    "id": "2121673577841991941",
    "handle": "dividendology",
    "name": "Dividendology",
@@ -1594,25 +1494,6 @@
    "n_media": 0
   },
   {
-   "id": "2121616994839785531",
-   "handle": "PeterSchiff",
-   "name": "Peter Schiff",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "aibolatl2017"
-   },
-   "time_utc": "2026-11-14T14:51:23Z",
-   "url": "https://x.com/PeterSchiff/status/2121616994839785531",
-   "text": "@aibolatl2017 No, you would have to physically break into the vault and steal the gold. Bitcoin can be stolen remotely by computer hack. That's a huge differene.",
-   "quoted": null,
-   "media": [],
-   "likes": 21,
-   "views": 2477,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
    "id": "2121873698621714704",
    "handle": "NorthstarCharts",
    "name": "Northstar",
@@ -2718,23 +2599,6 @@
    "views": 6545,
    "cashtags": [],
    "n_media": 1
-  },
-  {
-   "id": "2121616899385802813",
-   "handle": "BarbarianCap",
-   "name": "Barbarian Capital",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-14T14:51:01Z",
-   "url": "https://x.com/BarbarianCap/status/2121616899385802813",
-   "text": "🤡\nEric Trump-backed robot soldier startup can't pay staff after founder borrowed $4.6 million from company to buy home https://www.cnbc.com/2026/11/14/foundation-payroll-ceo-loan.html",
-   "quoted": null,
-   "media": [],
-   "likes": 3,
-   "views": 791,
-   "cashtags": [],
-   "n_media": 0
   }
  ]
 }
