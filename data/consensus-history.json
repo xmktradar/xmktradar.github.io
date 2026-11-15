@@ -1734,56 +1734,57 @@
    "bull": [
     "AMD",
     "RKLB",
-    "SNDK",
     "AVGO",
+    "SNDK",
     "CBRS",
     "DRAM",
     "NBIS",
-    "APP",
     "CSCO",
-    "KO",
+    "APP",
+    "LLY",
     "NU",
     "FRMI",
     "U",
+    "XLV",
     "ZETA"
    ],
-   "bear": [
-    "AAPL",
-    "UBER"
-   ],
+   "bear": [],
    "split": [
     "NVDA",
     "SPCX",
     "MU",
     "TSLA",
     "QQQ",
+    "SPY",
     "AMZN",
     "LITE",
+    "AAPL",
+    "IREN",
     "INTC",
     "MSFT",
-    "IREN",
+    "GOOGL",
     "MRVL"
    ],
    "window": [
     "2026-11-14T03:30",
-    "2026-11-15T06:41"
+    "2026-11-15T09:54"
    ],
    "top": [
     "NVDA",
     "SPCX",
     "QQQ",
     "SPY",
-    "AMZN",
     "MU",
-    "NBIS",
-    "TSLA",
     "AMD",
+    "AMZN",
+    "TSLA",
+    "NBIS",
     "MSFT"
    ],
    "src": "live",
-   "updated_hkt": "2026-11-15 09:55"
+   "updated_hkt": "2026-11-15 18:27"
   }
  },
- "updated_hkt": "2026-11-15 09:55",
+ "updated_hkt": "2026-11-15 18:27",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
