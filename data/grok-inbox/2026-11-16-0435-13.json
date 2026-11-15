@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2121987724911497219": {
+      "en_summary": "@OptionsMike notes a big week ahead with $NVDA earnings and $ANT IPO, sharing thoughts in a linked video.",
+      "zh_summary": "@OptionsMike 指出未來一週重要，有 $NVDA 財報及 $ANT IPO，並在連結影片中分享想法。",
+      "tickers": ["NVDA", "ANT"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "未表態", "ANT": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121987588051599400": {
+      "en_summary": "@KobeissiLetter reports short interest in $QQQ up to 11% of outstanding shares, highest since 2023, surged +5 percentage points since January. Compared to 2022 bear market peak ~14%. US tech long-to-short ratio among hedge funds down to 1.5, lowest since 2016 per Goldman Sachs, declined -0.6 points since June. Asks if tech stocks setting up for a short squeeze.",
+      "zh_summary": "@KobeissiLetter 報告 $QQQ 空頭利息升至流通股 11%，為 2023 年以來最高，自 1 月以來激增 5 個百分點。相比 2022 年熊市高峰約 14%。據高盛，對沖基金美國科技多空比率降至 1.5，為 2016 年數據以來最低，自 6 月以來下降 0.6 點。詢問科技股是否正為軛空做準備。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2121987366197813363": {
+      "en_summary": "@DougKass tells @HammanShares that on point #2 about sizing up and increasing the weighting of $VREOF, whose share price from September 15, 2026 to Friday declined from $12.85 to $6.13. Case closed.",
+      "zh_summary": "@DougKass 告訴 @HammanShares，關於第 2 點增加 $VREOF 權重，其股價從 2026 年 9 月 15 日至週五從 $12.85 跌至 $6.13。案件結束。",
+      "tickers": ["VREOF"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"VREOF": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"VREOF": "Share price declined from $12.85 to $6.13 since Sep 15, 2026"}
+    },
+    "2121986836335599940": {
+      "en_summary": "@MikeZaccardi notes $NVDA a 32% drawdown and asks how deep this one will be, linking @koyfincharts.",
+      "zh_summary": "@MikeZaccardi 指出 $NVDA 32% 回撤，並詢問這一次會有多深，連結 @koyfincharts。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2121986624888373437": {
+      "en_summary": "@StockSavvyShay states $GOOGL could be exiting 2028 generating ~$750M of profit every single day.",
+      "zh_summary": "@StockSavvyShay 表示 $GOOGL 可能在 2028 年結束時每天產生約 7.5 億美元利潤。",
+      "tickers": ["GOOGL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"GOOGL": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"GOOGL": "Could generate ~$750M profit every day exiting 2028"}
+    }
+  }
+}
