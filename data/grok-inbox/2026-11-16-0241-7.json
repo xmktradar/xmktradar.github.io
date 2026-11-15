@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2122007300571349224": {
+      "en_summary": "@BlackPantherCap says if you understand this, then you know what’s coming. Quotes @LeifInvests on being in a safe-haven stock bubble: high forward P/Es like $COST ~49x, $WMT ~43x, $AAPL ~38x, $MNST ~37x etc near historical highs, while projected ~10% EPS growth average next year. Nasdaq-100 near COVID-era forward P/E lows with high-growth tech at unjustifiably low valuations, indexes propped by expensive defensives.",
+      "zh_summary": "@BlackPantherCap 說如果你理解這個，那麼你知道即將發生什麼。引用 @LeifInvests 關於處於避險股票泡沫：高遠期市盈率如 $COST ~49倍、$WMT ~43倍、$AAPL ~38倍、$MNST ~37倍等接近歷史高位，而明年平均 EPS 增長預測僅 ~10%。納斯達克-100 接近 COVID 時代遠期市盈率低點，高增長科技股估值不合理低，指數由昂貴防禦股支撐。",
+      "tickers": ["COST", "WMT", "AAPL", "MNST", "RSG", "KO", "JNJ", "BRK.B", "MCK", "ABBV", "QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"COST": "中性", "WMT": "中性", "AAPL": "中性", "MNST": "中性", "RSG": "中性", "KO": "中性", "JNJ": "中性", "BRK.B": "中性", "MCK": "中性", "ABBV": "中性", "QQQ": "中性"},
+      "horizon": null,
+      "basis": "估值",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2122006400587227513": {
+      "en_summary": "@StockSavvyShay reports last night’s Saturday Night Live cold open featured a CIA briefing on how to spot foreign spies following the scandal involving former $NVDA CEO Jensen Huang. The skit included $SPCX Elon Musk, $META Mark Zuckerberg and $ANT Dario Amodei.",
+      "zh_summary": "@StockSavvyShay 報告昨晚 Saturday Night Live 冷開場有 CIA 簡報關於如何識別外國間諜，跟進前 $NVDA CEO Jensen Huang 醜聞。短劇包括 $SPCX Elon Musk、$META Mark Zuckerberg 及 $ANT Dario Amodei。",
+      "tickers": ["NVDA", "SPCX", "META", "ANT"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "未表態", "SPCX": "未表態", "META": "未表態", "ANT": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122004833377108018": {
+      "en_summary": "@tenet_research reports $NVDA approached Taiwanese political officials after prosecutors charged one of its managers in alleged AI-chip smuggling operation, Bloomberg. Nvidia disputed charges and defended employee, drawing scrutiny over handling of suspected chip diversion to China. Details: manager Chang among nine defendants facilitating sales of 130 Super Micro $SMCI servers containing 1,040 Nvidia B300 chips; 74 allegedly reached China via Indonesia and Japan, 56 seized by Taiwan Coast Guard in May. Alleged concealed transactions, forgery, breach-of-trust charges max 5 years.",
+      "zh_summary": "@tenet_research 報告 $NVDA 在檢察官指控其一名經理涉嫌 AI 晶片走私行動後接觸台灣政治官員，據 Bloomberg。Nvidia 否認指控並為員工辯護，引發對其處理疑似晶片轉運至中國的審查。詳情：經理 Chang 為九名被告之一，促進銷售 130 台 Super Micro $SMCI 伺服器含 1,040 個 Nvidia B300 晶片；74 個據稱經印尼及日本到達中國，56 個於 5 月被台灣海巡署扣押。涉嫌隱藏交易、偽造、背信罪最高 5 年。",
+      "tickers": ["NVDA", "SMCI"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡", "SMCI": "中性"},
+      "horizon": "中線",
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "Manager charged in AI-chip smuggling involving 1,040 B300 chips in SMCI servers, some to China; company defended employee"}
+    },
+    "2122004024497238512": {
+      "en_summary": "@tenet_research reports Wedbush's Dan Ives says no single executive can truly replace Jensen Huang at $NVDA, arguing the company's iconic founder-led identity cannot be replicated. Believes Huang's return as CEO highly unlikely given legal, board and political scrutiny. Says NVIDIA must focus on moving forward, with Tuesday's Q3 FY2027 earnings marking first major test under interim CEO Colette Kress.",
+      "zh_summary": "@tenet_research 報告 Wedbush 的 Dan Ives 說沒有單一高管能真正取代 $NVDA 的 Jensen Huang，認為公司標誌性創辦人領導身份無法複製。相信鑑於法律、董事會及政治審查，Huang 回歸 CEO 極不可能。說 NVIDIA 必須專注前進，週二 Q3 FY2027 財報是臨時 CEO Colette Kress 下的首個重大測試。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "Dan Ives: no one can replace Huang, return unlikely, earnings test under Colette Kress"}
+    },
+    "2122003107223830975": {
+      "en_summary": "@zeroshorts posts “It’s not just an affair. Nvidia’s bigger issue could be chip smuggling.” $NVDA #JensenHuang linking Washington Post article on Jensen Huang Nvidia face questions over knowledge of chip smuggling.",
+      "zh_summary": "@zeroshorts 發帖「這不只是一場風波。Nvidia 更大的問題可能是晶片走私。」$NVDA #JensenHuang 連結華盛頓郵報文章關於 Jensen Huang Nvidia 面對對晶片走私知情的問題。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "Bigger issue could be chip smuggling, questions over knowledge"}
+    }
+  }
+}
