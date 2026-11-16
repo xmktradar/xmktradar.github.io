@@ -1783,6 +1783,7 @@
    "bull": [
     "MU",
     "NBIS",
+    "AVGO",
     "PANW",
     "HD",
     "LOW",
@@ -1792,6 +1793,8 @@
     "MELI"
    ],
    "bear": [
+    "BA",
+    "LMT",
     "SMMT"
    ],
    "split": [
@@ -1799,11 +1802,13 @@
     "SPCX",
     "QQQ",
     "SPY",
-    "AMD",
-    "CRWV",
     "GOOGL",
-    "AAOI",
+    "AMD",
+    "AMZN",
+    "CRWV",
     "AAPL",
+    "TSLA",
+    "AAOI",
     "COHR"
    ],
    "window": [
@@ -1815,17 +1820,17 @@
     "SPCX",
     "SPY",
     "QQQ",
-    "MU",
-    "AMD",
-    "NBIS",
     "GOOGL",
+    "AMD",
+    "AMZN",
+    "MU",
     "META",
-    "CRWV"
+    "NBIS"
    ],
    "src": "live",
-   "updated_hkt": "2026-11-16 18:44"
+   "updated_hkt": "2026-11-17 05:00"
   }
  },
- "updated_hkt": "2026-11-16 18:44",
+ "updated_hkt": "2026-11-17 05:00",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
