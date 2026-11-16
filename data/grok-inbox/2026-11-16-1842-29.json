@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2122125178675306884": {
+      "en_summary": "Amazon loses 40 internet satellites in rocket failure. A joint venture of Boeing and Lockheed Martin.",
+      "zh_summary": "亞馬遜在火箭失敗中損失40顆互聯網衛星。波音和洛克希德馬丁的合資企業。",
+      "tickers": ["AMZN", "BA", "LMT"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"AMZN": "睇淡", "BA": "睇淡", "LMT": "睇淡"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122124489987125345": {
+      "en_summary": "Tech giants are driving historic growth in global earnings: MSCI All Country World Index (ACWI) earnings.",
+      "zh_summary": "科技巨頭正在推動全球盈利的歷史性增長：MSCI全球所有國家指數（ACWI）盈利。",
+      "tickers": ["SPY", "QQQ"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPY": "睇好", "QQQ": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    },
+    "2122124056845582590": {
+      "en_summary": "The “overhead supply wall” above SPY is probably not a wall. Nearly half of SPY’s volume since June...",
+      "zh_summary": "SPY上方的「上方供應牆」可能不是牆。自6月以來SPY近一半的成交量...",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122123975887376677": {
+      "en_summary": "Goldman desk: AI confidence is fading. Judging by conversations with clients last week.",
+      "zh_summary": "高盛交易台：AI信心正在消退。根據上週與客戶的談話判斷。",
+      "tickers": ["NVDA", "QQQ"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡", "QQQ": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122123848380207349": {
+      "en_summary": "The make up of momentum is changing: AI stocks move to the short leg as Goldman's 12-month momo has...",
+      "zh_summary": "動量構成正在改變：AI股票轉向空頭一方，因為高盛的12個月動量已...",
+      "tickers": ["NVDA", "QQQ"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡", "QQQ": "睇淡"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
