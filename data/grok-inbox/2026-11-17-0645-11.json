@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2122421642890494135": {
+      "en_summary": "$TLT up just a little",
+      "zh_summary": "$TLT只上漲了一點點",
+      "tickers": ["TLT"],
+      "stance": "中性",
+      "stance_by_ticker": {"TLT": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "yields",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2122421589564162283": {
+      "en_summary": "$VIX got to 24.5... that ugly mid-20s zone I like to talk about @stockcharts",
+      "zh_summary": "$VIX達到24.5……那個我喜歡談論的醜陋中20區間 @stockcharts",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2122421154585686243": {
+      "en_summary": "Jensen Huang moved over $10.5B worth of $NVDA shares into a family trust months before his resignation and the stock’s s",
+      "zh_summary": "Jensen Huang在辭職和股票……之前幾個月將價值超過105億美元的$NVDA股票轉移到家族信託中",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "Huang在辭職前將超過105億美元股票轉入家族信託"}
+    },
+    "2122421131026239513": {
+      "en_summary": "Roaches everywhere 🪳 $NVDA",
+      "zh_summary": "到處都是蟑螂 🪳 $NVDA",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "到處都是蟑螂"}
+    },
+    "2122420527960588737": {
+      "en_summary": "I'm not even going to tweet about Staples $XLP printing new all-time highs for The Fam today",
+      "zh_summary": "我甚至不會發推文關於消費必需品 $XLP今天為The Fam創下新的歷史高點",
+      "tickers": ["XLP"],
+      "stance": "睇好",
+      "stance_by_ticker": {"XLP": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"XLP": "創下新的歷史高點"}
+    }
+  }
+}
