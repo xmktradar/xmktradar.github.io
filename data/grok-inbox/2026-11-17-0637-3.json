@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2122432173680820577": {
+      "en_summary": "MOC imbalance actually on buy side $2.5B $SPY",
+      "zh_summary": "收盤市價單不平衡實際上在買方 $2.5B $SPY",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122432169977024524": {
+      "en_summary": "$SPCX is the hedge",
+      "zh_summary": "$SPCX是對衝",
+      "tickers": ["SPCX"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPCX": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122431635010592771": {
+      "en_summary": "Stanley Druckenmiller initiated a new $PLTR position buying 80,100 shares worth about $13M.",
+      "zh_summary": "Stanley Druckenmiller開設新的$PLTR倉位，買入80,100股，價值約1300萬美元。",
+      "tickers": ["PLTR"],
+      "stance": "睇好",
+      "stance_by_ticker": {"PLTR": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"PLTR": "Druckenmiller新買入約1300萬美元倉位"}
+    },
+    "2122431515376464362": {
+      "en_summary": "(Quoted) Nvidia director Mark Stevens sold about $947 million of stock in late August and September, roughly two months before the Jensen Huang scandal broke, according to his SEC filings. He sold without a pre-set trading plan. $NVDA",
+      "zh_summary": "(引用) 根據SEC文件，Nvidia董事Mark Stevens在8月底和9月出售約9.47億美元股票，大約在Jensen Huang醜聞爆發前兩個月。他沒有預設交易計劃就出售。$NVDA",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "董事在醜聞前出售約9.47億美元股票"}
+    },
+    "2122431226124644756": {
+      "en_summary": "$QQQ $SPY $DIA Lines and potential lines...",
+      "zh_summary": "$QQQ $SPY $DIA 線和潛在線...",
+      "tickers": ["QQQ", "SPY", "DIA"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "未表態", "SPY": "未表態", "DIA": "未表態"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
