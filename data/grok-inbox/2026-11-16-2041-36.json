@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2122102602863374375": {
+      "en_summary": "Nassim Nicholas Taleb calls Marco Rubio @marcorubio a piece of shit, quoting a story about a Christian priest from Bethlehem denied a US visa because he is Palestinian.",
+      "zh_summary": "納西姆·尼古拉斯·塔勒布稱馬可·盧比奧@marcorubio是混蛋，引述伯利恆基督教神父因是巴勒斯坦人而被拒美國簽證的故事。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122102595938308169": {
+      "en_summary": "unusual_whales reports Foxconn Chairman Young Liu says there is no AI bubble: “We are not in a bubble.” Foxconn builds AI servers for Nvidia and its cloud and networking business including AI servers now makes up more than half its revenue.",
+      "zh_summary": "unusual_whales報導富士康董事長劉揚偉表示沒有AI泡沫：「我們不在泡沫中。」富士康為英偉達建造AI服務器，其雲端和網絡業務（包括AI服務器）現佔收入一半以上。",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "富士康否認AI泡沫，AI服務器業務佔收入過半"}
+    },
+    "2122101101541646375": {
+      "en_summary": "davidgokhshtein notes Jensen Huang quit Nvidia on Thursday and by Sunday is already talking about coming back as CEO, contrasting with Steve Jobs who took 12 years.",
+      "zh_summary": "davidgokhshtein指出Jensen黃週四辭去英偉達職務，到週日已在談論回歸CEO，對比史蒂夫·喬布斯花了12年。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122100640688304415": {
+      "en_summary": "market_sleuth suggests plotting SPY against DXY for the last 3 trading sessions, in reply to @alphaticaio.",
+      "zh_summary": "market_sleuth建議繪製最近3個交易日SPY與DXY的對比圖，回覆@alphaticaio。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "fx",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2122099950557319623": {
+      "en_summary": "scheplick says “Now that’s interesting” quoting that under @nvidia bylaws, shareholders holding at least 15% of voting power can call a special meeting and vote to replace the board.",
+      "zh_summary": "scheplick說「這很有趣」，引述根據@nvidia章程，持有至少15%投票權的股東可召開特別會議並投票更換董事會。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "15%投票權股東可召開特別會議更換董事會"}
+    }
+  }
+}
