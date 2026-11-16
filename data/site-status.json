@@ -1,43 +1,49 @@
 {
  "note": "Written by GitHub Actions on every update. Actions Site Check reads this.",
- "checked_hkt": "2026-11-16 09:46",
- "generated_hkt": "2026-11-16 09:23",
+ "checked_hkt": "2026-11-16 10:23",
+ "generated_hkt": "2026-11-16 09:59",
  "cutoff_hkt": "2026-11-16T07:16:02+08:00",
- "posts_on_site": 6310,
+ "posts_on_site": 6308,
  "added_this_run": 0,
  "added_without_en_summary": 0,
- "waiting_for_summary": 480,
- "waiting_with_stock": 97,
- "expired_unsummarised_this_run": 4,
- "chitchat_skipped_this_run": 194,
- "pruned_this_run": 3,
+ "waiting_for_summary": 506,
+ "waiting_with_stock": 104,
+ "expired_unsummarised_this_run": 0,
+ "chitchat_skipped_this_run": 181,
+ "pruned_this_run": 2,
  "fetch_failed": [],
  "warnings": [
-  "未分析：480 則新帖等待 Grok 分析"
+  "未分析：506 則新帖等待 Grok 分析"
  ],
- "writeups_applied": [],
+ "writeups_applied": [
+  "zh/daily 2026-11-16",
+  "zh/weekly 2026-11-16",
+  "zh/monthly 2026-11-16",
+  "zh/highlights 2026-11-16",
+  "zh/briefing 2026-11-16",
+  "en/daily 2026-11-16",
+  "en/weekly 2026-11-16",
+  "en/monthly 2026-11-16",
+  "en/highlights 2026-11-16",
+  "en/briefing 2026-11-16"
+ ],
  "writeups_rejected": [],
  "latest_writeups": {
   "zh": {
-   "daily": "2026-11-15",
-   "weekly": "2026-11-15",
-   "monthly": "2026-11-15",
-   "highlights": "2026-11-15",
-   "briefing": "2026-11-15"
+   "daily": "2026-11-16",
+   "weekly": "2026-11-16",
+   "monthly": "2026-11-16",
+   "highlights": "2026-11-16",
+   "briefing": "2026-11-16"
   },
   "en": {
-   "daily": "2026-11-15",
-   "weekly": "2026-11-15",
-   "monthly": "2026-11-15",
-   "highlights": "2026-11-15",
-   "briefing": "2026-11-15"
+   "daily": "2026-11-16",
+   "weekly": "2026-11-16",
+   "monthly": "2026-11-16",
+   "highlights": "2026-11-16",
+   "briefing": "2026-11-16"
   }
  },
- "layout_warnings": [
-  "zh 1280px：今日重點卡有 0 張（應該 3 張）",
-  "zh 390px：今日重點卡有 0 張（應該 3 張）",
-  "en 1280px：今日重點卡有 0 張（應該 3 張）",
-  "en 390px：今日重點卡有 0 張（應該 3 張）"
- ],
- "layout_checked_hkt": "2026-11-16 09:50"
+ "layout_warnings": [],
+ "layout_checked_hkt": "2026-11-16 10:26"
 }
