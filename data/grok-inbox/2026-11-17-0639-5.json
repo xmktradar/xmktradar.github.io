@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2122428876748206564": {
+      "en_summary": "Most projections are noise and reactionary. Sky-high projections for $ANT $700-$800B ARR over next few years is stirring up hype that gets revised down later. Important to model in capex. Mentions $NVDA $IREN $LITE $NBIS $TE",
+      "zh_summary": "大多數預測是噪音和反應性的。$ANT未來幾年700-800億美元ARR的天高預測正在煽動炒作，之後會下調。重要的是要將資本支出納入模型。提及$NVDA $IREN $LITE $NBIS $TE",
+      "tickers": ["NVDA", "IREN", "LITE", "NBIS", "TE"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "未表態", "IREN": "未表態", "LITE": "未表態", "NBIS": "未表態", "TE": "未表態"},
+      "horizon": null,
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122428470005313559": {
+      "en_summary": "If you missed today's flow, here's the 5 most unusual trades from the session: $CRWV Dec 60P $13.7 MILLION sweep above the ask; $MU Jan 27 730C/740C $9.9M of calls; $SPY Nov 20 750P $9M in 30 minutes; $INTC Jan 28 calls.",
+      "zh_summary": "如果你錯過今天的流量，以下是本場5筆最不尋常的交易：$CRWV 12月60P 1370萬美元掃單高於賣價；$MU 2027年1月730C/740C 990萬美元認購；$SPY 11月20日750P 30分鐘內900萬美元；$INTC 2028年1月認購。",
+      "tickers": ["CRWV", "MU", "SPY", "INTC"],
+      "stance": "中性",
+      "stance_by_ticker": {"CRWV": "睇淡", "MU": "睇好", "SPY": "睇淡", "INTC": "睇好"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"CRWV": "大額put掃單", "MU": "大額call", "SPY": "大額put", "INTC": "長期call"}
+    },
+    "2122428265315078483": {
+      "en_summary": "As for the Crypto Pumpers $SOLZ , I have no idea why you trust their bullshit",
+      "zh_summary": "至於加密貨幣炒作者 $SOLZ，我不知道你為什麼相信他們的廢話",
+      "tickers": ["SOLZ"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SOLZ": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SOLZ": "不信任加密炒作者的廢話"}
+    },
+    "2122428198994460887": {
+      "en_summary": "Dollar now +5.4% YTD... highest since March 2025 $DXY",
+      "zh_summary": "美元現在年初至今上漲5.4%...自2025年3月以來最高 $DXY",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "fx",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2122427371189928142": {
+      "en_summary": "$RIG is another one , just getting rinsed",
+      "zh_summary": "$RIG是另一個，正在被沖洗",
+      "tickers": ["RIG"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"RIG": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"RIG": "正在被沖洗"}
+    }
+  }
+}
