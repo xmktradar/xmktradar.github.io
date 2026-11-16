@@ -1519,9 +1519,155 @@
       "LMT"
      ]
     }
+   },
+   "intraday_2": {
+    "post_et": "12:15",
+    "post_hkt": "01:15",
+    "generated_at": "2026-11-16T17:48:56-05:00",
+    "date": "2026-11-16",
+    "date_kst": "2026-11-17",
+    "quotes": {
+     "SPY": {
+      "price": 739.95,
+      "prev_close": 754.37,
+      "chg_pct": -1.91,
+      "time": "2026-11-16T16:00:00-05:00"
+     },
+     "QQQ": {
+      "price": 661.75,
+      "prev_close": 679.89,
+      "chg_pct": -2.67,
+      "time": "2026-11-16T16:00:00-05:00"
+     },
+     "DIA": {
+      "price": 515.68,
+      "prev_close": 523.15,
+      "chg_pct": -1.43,
+      "time": "2026-11-16T16:00:00-05:00"
+     },
+     "AMZN": {
+      "price": 257.75,
+      "prev_close": 266.66,
+      "chg_pct": -3.34,
+      "time": "2026-11-16T16:00:00-05:00"
+     },
+     "BA": {
+      "price": 165.22,
+      "prev_close": 171.5,
+      "chg_pct": -3.66,
+      "time": "2026-11-16T16:00:02-05:00"
+     },
+     "LMT": {
+      "price": 585.21,
+      "prev_close": 596.04,
+      "chg_pct": -1.82,
+      "time": "2026-11-16T16:00:02-05:00"
+     },
+     "MU": {
+      "price": 719.02,
+      "prev_close": 778.31,
+      "chg_pct": -7.62,
+      "time": "2026-11-16T16:00:01-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-16T16:00:02-05:00",
+     "hkt": "2026-11-17 05:00"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "AMZN",
+      "chg_pct": -3.34,
+      "bull": 0,
+      "bear": 3,
+      "accounts": [
+       "FirstSquawk",
+       "LiveSquawk",
+       "wallstengine",
+       "IUTraders"
+      ]
+     },
+     {
+      "ticker": "BA",
+      "chg_pct": -3.66,
+      "bull": 0,
+      "bear": 3,
+      "accounts": [
+       "FirstSquawk",
+       "LiveSquawk",
+       "wallstengine"
+      ]
+     },
+     {
+      "ticker": "LMT",
+      "chg_pct": -1.82,
+      "bull": 0,
+      "bear": 3,
+      "accounts": [
+       "FirstSquawk",
+       "LiveSquawk",
+       "wallstengine"
+      ]
+     },
+     {
+      "ticker": "MU",
+      "chg_pct": -7.62,
+      "bull": 3,
+      "bear": 1,
+      "accounts": [
+       "CheddarFlow",
+       "EliteOptions2",
+       "WheelieInvestor",
+       "KeithMcCullough",
+       "TradexWhisperer",
+       "TheValueist"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Midday · As of 16:00 ET (05:00 HKT)\n\n$SPY -1.9% · $QQQ -2.7% · $DIA -1.4%\n\n$AMZN -3.3%, 3 accounts bearish on site\n$BA -3.7%, 3 accounts bearish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #AMZN #BA",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午市觀察 · 截至 16:00 ET（05:00 HKT）\n\n$SPY -1.9% · $QQQ -2.7% · $DIA -1.4%\n\n$AMZN -3.3%，網站 3 個帳號看空\n$BA -3.7%，網站 3 個帳號看空\n$LMT -1.8%，網站 3 個帳號看空\n$MU -7.6%，網站 3 個帳號看好\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #AMZN #BA",
+      "url": ""
+     },
+     "en": {
+      "text": "Midday · As of 16:00 ET (05:00 HKT)\n\n$SPY -1.9% · $QQQ -2.7% · $DIA -1.4%\n\n$AMZN -3.3%, 3 accounts bearish on site\n$BA -3.7%, 3 accounts bearish on site\n$LMT -1.8%, 3 accounts bearish on site\n$MU -7.6%, 3 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #AMZN #BA",
+      "url": ""
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "SPCX",
+      "GOOGL",
+      "AVGO",
+      "LLY",
+      "CVX",
+      "WMT"
+     ],
+     "bear": [
+      "AMZN",
+      "BA",
+      "LMT"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-16T17:48:52-05:00",
+  "generated_at": "2026-11-16T17:48:56-05:00",
   "generated_hkt": "2026-11-17 06:48"
  }
 }
