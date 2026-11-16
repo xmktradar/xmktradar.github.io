@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2122026164185337937": {
+      "en_summary": "This is a bfd. Either these sales were illicit or they weren’t! And the Treasury Secretary is saying it’s likely the former.",
+      "zh_summary": "這是一件大事。要麼這些銷售是非法的，要麼不是！而財政部長說很可能是前者。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2122020395729776694": {
+      "en_summary": "Based on what Bessent is saying, Nvidia will likely now enforce server level location tracking from next year.",
+      "zh_summary": "根據貝森特所說，英偉達很可能從明年開始強制執行服務器級別的位置追踪。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2122019790462075237": {
+      "en_summary": "% Below All-Time High: Apple: -1%, S&P 500: -4%, Microsoft: -7%, Amazon: -7%, Meta: -20%, AMD: -20%, Palantir: -21%, Tesla: -22%, Google: -28%, Gold: -31%, Nvidia: -33%, SpaceX: -38%, Bitcoin: -49%, Netflix: -54%, Ethereum: -64%, Strategy: -79%, Dogecoin: -92%, TrumpCoin: -99%, MelaniaCoin: -99%.",
+      "zh_summary": "距離歷史高點百分比：蘋果：-1%，標普500：-4%，微軟：-7%，亞馬遜：-7%，Meta：-20%，AMD：-20%，Palantir：-21%，特斯拉：-22%，谷歌：-28%，黃金：-31%，英偉達：-33%，SpaceX：-38%，比特幣：-49%，Netflix：-54%，以太坊：-64%，Strategy：-79%，狗狗幣：-92%，TrumpCoin：-99%，MelaniaCoin：-99%。",
+      "tickers": ["AAPL", "SPY", "MSFT", "AMZN", "META", "AMD", "PLTR", "TSLA", "GOOGL", "NVDA", "NFLX"],
+      "stance": "中性",
+      "stance_by_ticker": {"AAPL": "中性", "SPY": "中性", "MSFT": "中性", "AMZN": "中性", "META": "中性", "AMD": "中性", "PLTR": "中性", "TSLA": "中性", "GOOGL": "中性", "NVDA": "中性", "NFLX": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122019731024548086": {
+      "en_summary": "Spent the weekend developing the next version of the TTI Trade Desk. Looks great. Works better. And will have the ability to have personal agents use it and develop new trades, strategies and more using our Flow System. Excited to see what it can do for our members.",
+      "zh_summary": "週末開發了TTI Trade Desk的下一版本。看起來很棒。運行更好。並將有能力讓個人代理使用它並使用我們的Flow System開發新交易、策略等。興奮地看它能為我們的成員做什麼。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122018443973292203": {
+      "en_summary": "Brent crude positioning... Same positioning level and higher price... Bullish divergence.... *PMPU = Producer/Merchant/Processor/User Gross #oott #iran",
+      "zh_summary": "布倫特原油持倉……相同持倉水平與更高價格……看漲背離…… *PMPU = 生產者/商人/加工者/用戶總計 #oott #iran",
+      "tickers": [],
+      "stance": "睇好",
+      "stance_by_ticker": {},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "energy",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    }
+  }
+}
