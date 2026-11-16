@@ -1807,9 +1807,152 @@
       "LMT"
      ]
     }
+   },
+   "intraday_4": {
+    "post_et": "14:45",
+    "post_hkt": "03:45",
+    "generated_at": "2026-11-16T17:49:04-05:00",
+    "date": "2026-11-16",
+    "date_kst": "2026-11-17",
+    "quotes": {
+     "SPY": {
+      "price": 739.95,
+      "prev_close": 754.37,
+      "chg_pct": -1.91,
+      "time": "2026-11-16T16:00:00-05:00"
+     },
+     "QQQ": {
+      "price": 661.75,
+      "prev_close": 679.89,
+      "chg_pct": -2.67,
+      "time": "2026-11-16T16:00:00-05:00"
+     },
+     "DIA": {
+      "price": 515.68,
+      "prev_close": 523.15,
+      "chg_pct": -1.43,
+      "time": "2026-11-16T16:00:00-05:00"
+     },
+     "GOOGL": {
+      "price": 283.72,
+      "prev_close": 295.77,
+      "chg_pct": -4.07,
+      "time": "2026-11-16T16:00:01-05:00"
+     },
+     "AVGO": {
+      "price": 333.4,
+      "prev_close": 347.01,
+      "chg_pct": -3.92,
+      "time": "2026-11-16T16:00:01-05:00"
+     },
+     "LLY": {
+      "price": 1431.67,
+      "prev_close": 1443.5,
+      "chg_pct": -0.82,
+      "time": "2026-11-16T16:03:23-05:00"
+     },
+     "CVX": {
+      "price": 217.14,
+      "prev_close": 219.89,
+      "chg_pct": -1.25,
+      "time": "2026-11-16T16:02:39-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-16T16:03:23-05:00",
+     "hkt": "2026-11-17 05:03"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "GOOGL",
+      "chg_pct": -4.07,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "damnang2",
+       "jukan05",
+       "wallstengine",
+       "zephyr_z9",
+       "mingchikuo"
+      ]
+     },
+     {
+      "ticker": "AVGO",
+      "chg_pct": -3.92,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "damnang2",
+       "jukan05",
+       "wallstengine",
+       "mingchikuo"
+      ]
+     },
+     {
+      "ticker": "LLY",
+      "chg_pct": -0.82,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "philrosenn",
+       "Couzin_Vinny"
+      ]
+     },
+     {
+      "ticker": "CVX",
+      "chg_pct": -1.25,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "LiveSquawk",
+       "TheTranscript_"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Afternoon tape · As of 16:03 ET (05:03 HKT)\n\n$SPY -1.9% · $QQQ -2.7% · $DIA -1.4%\n\n$GOOGL -4.1%, 2 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #GOOGL #AVGO",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "尾盤前 · 截至 16:03 ET（05:03 HKT）\n\n$SPY -1.9% · $QQQ -2.7% · $DIA -1.4%\n\n$GOOGL -4.1%，網站 2 個帳號看好\n$AVGO -3.9%，網站 2 個帳號看好\n$LLY -0.8%，網站 2 個帳號看好\n$CVX -1.2%，網站 2 個帳號看好\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #GOOGL #AVGO",
+      "url": ""
+     },
+     "en": {
+      "text": "Afternoon tape · As of 16:03 ET (05:03 HKT)\n\n$SPY -1.9% · $QQQ -2.7% · $DIA -1.4%\n\n$GOOGL -4.1%, 2 accounts bullish on site\n$AVGO -3.9%, 2 accounts bullish on site\n$LLY -0.8%, 2 accounts bullish on site\n$CVX -1.2%, 2 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #GOOGL #AVGO",
+      "url": ""
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "SPCX",
+      "GOOGL",
+      "AVGO",
+      "LLY",
+      "CVX",
+      "WMT"
+     ],
+     "bear": [
+      "AMZN",
+      "BA",
+      "LMT"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-16T17:49:00-05:00",
+  "generated_at": "2026-11-16T17:49:04-05:00",
   "generated_hkt": "2026-11-17 06:49"
  }
 }
