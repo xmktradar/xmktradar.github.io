@@ -1,0 +1,109 @@
+{
+  "posts": {
+    "2122477734719095001": {
+      "en_summary": "@josenajarro predicts Nvidia $NVDA reports earnings tomorrow.",
+      "zh_summary": "@josenajarro 預測 Nvidia $NVDA 明天公布財報。",
+      "tickers": [
+        "NVDA"
+      ],
+      "stance": null,
+      "stance_by_ticker": {
+        "NVDA": "未表態"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122476036327931960": {
+      "en_summary": "@scottmelker reports NEAR PROTOCOL $NEAR governance approves cutting its maximum annual issuance from 2.5% to 1.6%, its second inflation cut in just over a year.",
+      "zh_summary": "@scottmelker 報導 NEAR PROTOCOL $NEAR 治理批准將其最大年度發行量從 2.5% 削減至 1.6%，這是一年多來第二次通脹削減。",
+      "tickers": [
+        "NEAR"
+      ],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "NEAR": "睇好"
+      },
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {
+        "NEAR": "最大年度發行從 2.5% 降至 1.6%，第二次通脹削減"
+      }
+    },
+    "2122475254161551535": {
+      "en_summary": "@Mr_Derivatives says full port long $NVDA.",
+      "zh_summary": "@Mr_Derivatives 表示全力做多 $NVDA。",
+      "tickers": [
+        "NVDA"
+      ],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "NVDA": "睇好"
+      },
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {
+        "NVDA": "全力做多倉位"
+      }
+    },
+    "2122474417053974953": {
+      "en_summary": "@wallstengine notes Ian Buck took the stage at Nvidia's first major keynote since Jensen resigned, at SC26 in Chicago. He's reportedly a leading internal candidate to become $NVDA's next CEO. Jensen recruited him out of Stanford in 2004. He created CUDA & has spent 22 years at Nvidia.",
+      "zh_summary": "@wallstengine 指出 Ian Buck 在 Jensen 辭職後 Nvidia 首次大型主題演講（SC26 芝加哥）上登場。他據報是成為 $NVDA 下任行政總裁的領先內部候選人。Jensen 於 2004 年從斯坦福招募他。他創建了 CUDA，並在 Nvidia 工作了 22 年。",
+      "tickers": [
+        "NVDA"
+      ],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "NVDA": "中性"
+      },
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122472820701548579": {
+      "en_summary": "@TedHZhang clip from @RevereAsset: huge failed breakout. Huge leverage deleveraging event, rally into resistance on S&P then down. Back below 150-day, near 200-day. Still in deleveraging, bleak. $RSP trying to hold 20-day but failed breakout lower high. Nasdaq weaker, below 200-day and key MAs, near Leopold low; break could hit 635 or 600. $QQQE breaking 40-week. Dow below 30-week and 150-day. Huge volatility, potential topping. Mid caps below 40-week. $IWM below all key MAs, could break below 270.",
+      "zh_summary": "@TedHZhang 來自 @RevereAsset 的片段：巨大失敗突破。巨大槓桿去槓桿事件，標普反彈至阻力後下跌。重回 150 日均線下方，接近 200 日。仍在去槓桿中，前景黯淡。$RSP 試圖守住 20 日但失敗突破形成更低高點。納指更弱，低於 200 日及關鍵均線，接近 Leopold 低點；突破可能至 635 或 600。$QQQE 跌破 40 週。道指低於 30 週及 150 日。巨大波動，潛在頂部區域。中盤股低於 40 週。$IWM 低於所有關鍵均線，可能跌破 270。",
+      "tickers": [
+        "SPY",
+        "QQQ",
+        "RSP",
+        "QQQE",
+        "IWM"
+      ],
+      "stance": "睇淡",
+      "stance_by_ticker": {
+        "SPY": "睇淡",
+        "QQQ": "睇淡",
+        "RSP": "睇淡",
+        "QQQE": "睇淡",
+        "IWM": "睇淡"
+      },
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {
+        "QQQ": "低於 200 日均線，突破 Leopold 低點可能至 635 或 600",
+        "IWM": "可能跌破 270"
+      }
+    }
+  }
+}
