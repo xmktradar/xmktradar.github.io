@@ -1,0 +1,97 @@
+{
+  "posts": {
+    "2122402762155872702": {
+      "en_summary": "@jukan05 says Anthropic’s IPO is going to be huge.",
+      "zh_summary": "@jukan05 表示 Anthropic 的 IPO 將會非常巨大。",
+      "tickers": ["ANT"],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "ANT": "睇好"
+      },
+      "horizon": "中線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122402649932980364": {
+      "en_summary": "@JonkooTrades suggests if high beta stocks are being killed due to uncertainty, move portfolio to proven players like $AVGO $TSM $AMZN $GOOGL. Once the tide turns, there is plenty of time to get back into high beta names.",
+      "zh_summary": "@JonkooTrades 建議如果高 beta 股票因不確定性被殺，將投資組合轉向已證明的玩家如 $AVGO $TSM $AMZN $GOOGL。一旦潮水轉向，有充足時間重新進入高 beta 名稱。",
+      "tickers": ["AVGO", "TSM", "AMZN", "GOOGL"],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "AVGO": "睇好",
+        "TSM": "睇好",
+        "AMZN": "睇好",
+        "GOOGL": "睇好"
+      },
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {
+        "AVGO": "不確定性下的已證明玩家",
+        "TSM": "不確定性下的已證明玩家",
+        "AMZN": "不確定性下的已證明玩家",
+        "GOOGL": "不確定性下的已證明玩家"
+      }
+    },
+    "2122402269249290660": {
+      "en_summary": "@Couzin_Vinny on $SPX: if zoom out to multi-day view @spotgamma shows pocket of positive gamma building near 7350 (200d sma). Would like a test first, then bounce and reassess. Dates along the bottom > 11/20.",
+      "zh_summary": "@Couzin_Vinny 談 $SPX：若放大至多日視圖，@spotgamma 顯示在 7350（200 日均線）附近正 gamma 口袋正在建立。希望先測試，然後反彈再評估。底部日期 > 11/20。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "SPY": "中性"
+      },
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {
+        "SPY": "7350 附近正 gamma，希望先測試再反彈"
+      }
+    },
+    "2122401594239287755": {
+      "en_summary": "@OptionsHawk notes -1381 Extreme TICK into that low, bit of a washout, as $QQQ hits YTD VWAP and $SPY hits AVWAP off the March lows.",
+      "zh_summary": "@OptionsHawk 指出 -1381 極端 TICK 進入該低點，有點洗盤，因為 $QQQ 觸及年初至今 VWAP，$SPY 觸及三月低點的 AVWAP。",
+      "tickers": ["QQQ", "SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "QQQ": "中性",
+        "SPY": "中性"
+      },
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2122401208786624920": {
+      "en_summary": "@WheelieInvestor says he was originally planning to trade $NBIS for a bounce, now he is a long term shareholder.",
+      "zh_summary": "@WheelieInvestor 表示他原本計劃交易 $NBIS 以捕捉反彈，現在他是長期股東。",
+      "tickers": ["NBIS"],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "NBIS": "睇好"
+      },
+      "horizon": "長線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {
+        "NBIS": "從短線反彈轉為長期股東"
+      }
+    }
+  }
+}
