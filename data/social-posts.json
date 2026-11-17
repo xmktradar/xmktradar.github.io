@@ -1901,9 +1901,179 @@
       "XLK"
      ]
     }
+   },
+   "intraday_close": {
+    "post_et": "15:40",
+    "post_hkt": "04:40",
+    "generated_at": "2026-11-17T16:47:38-05:00",
+    "date": "2026-11-17",
+    "date_kst": "2026-11-18",
+    "quotes": {
+     "SPY": {
+      "price": 732.44,
+      "prev_close": 739.95,
+      "chg_pct": -1.01,
+      "time": "2026-11-17T16:00:00-05:00"
+     },
+     "QQQ": {
+      "price": 656.95,
+      "prev_close": 661.75,
+      "chg_pct": -0.73,
+      "time": "2026-11-17T16:00:00-05:00"
+     },
+     "DIA": {
+      "price": 507.31,
+      "prev_close": 515.68,
+      "chg_pct": -1.62,
+      "time": "2026-11-17T16:00:00-05:00"
+     },
+     "TSLA": {
+      "price": 380.11,
+      "prev_close": 379.74,
+      "chg_pct": 0.1,
+      "time": "2026-11-17T16:00:01-05:00"
+     },
+     "GOOGL": {
+      "price": 280.2,
+      "prev_close": 283.72,
+      "chg_pct": -1.24,
+      "time": "2026-11-17T16:00:00-05:00"
+     },
+     "IREN": {
+      "price": 15.805,
+      "prev_close": 16.39,
+      "chg_pct": -3.57,
+      "time": "2026-11-17T16:00:01-05:00"
+     },
+     "INTC": {
+      "price": 55.17,
+      "prev_close": 55.442,
+      "chg_pct": -0.49,
+      "time": "2026-11-17T16:00:01-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-17T16:00:01-05:00",
+     "hkt": "2026-11-18 05:00"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "TSLA",
+      "chg_pct": 0.1,
+      "bull": 3,
+      "bear": 1,
+      "accounts": [
+       "tenet_research",
+       "WheelieInvestor",
+       "StockSavvyShay",
+       "zeroshorts",
+       "OptionsMike",
+       "JonkooTrades",
+       "Jesse_Livermore",
+       "MarketRebels"
+      ]
+     },
+     {
+      "ticker": "GOOGL",
+      "chg_pct": -1.24,
+      "bull": 2,
+      "bear": 2,
+      "accounts": [
+       "damnang2",
+       "aleabitoreddit",
+       "BennettWoodman",
+       "ripster47",
+       "LiveSquawk",
+       "econvitals",
+       "unusual_whales",
+       "KevInvestingYT"
+      ]
+     },
+     {
+      "ticker": "IREN",
+      "chg_pct": -3.57,
+      "bull": 2,
+      "bear": 1,
+      "accounts": [
+       "ACInvestorBlog",
+       "midascabal",
+       "TrendSpider",
+       "JonahLupton",
+       "tenet_research",
+       "capitalflows",
+       "StockSavvyShay",
+       "aleabitoreddit"
+      ]
+     },
+     {
+      "ticker": "INTC",
+      "chg_pct": -0.49,
+      "bull": 2,
+      "bear": 3,
+      "accounts": [
+       "CheddarFlow",
+       "TradingThomas3",
+       "wallstengine",
+       "Hedgeye",
+       "tenet_research",
+       "dampedspring",
+       "OpenOutcrier",
+       "StockSavvyShay"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Into the close · As of 16:00 ET (05:00 HKT)\n\n$SPY -1.0% · $QQQ -0.7% · $DIA -1.6%\n\n$TSLA +0.1%, 3 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #TSLA #GOOGL",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "收市前回顧 · 截至 16:00 ET（05:00 HKT）\n\n$SPY -1.0% · $QQQ -0.7% · $DIA -1.6%\n\n$TSLA +0.1%，網站 3 個帳號看好\n$GOOGL -1.2%，網站 2 個帳號看好\n$IREN -3.6%，網站 2 個帳號看好\n$INTC -0.5%，網站 3 個帳號看空\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #TSLA #GOOGL",
+      "url": ""
+     },
+     "en": {
+      "text": "Into the close · As of 16:00 ET (05:00 HKT)\n\n$SPY -1.0% · $QQQ -0.7% · $DIA -1.6%\n\n$TSLA +0.1%, 3 accounts bullish on site\n$GOOGL -1.2%, 2 accounts bullish on site\n$IREN -3.6%, 2 accounts bullish on site\n$INTC -0.5%, 3 accounts bearish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #TSLA #GOOGL",
+      "url": ""
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "SPCX",
+      "XLP",
+      "NET",
+      "CRWD",
+      "XLU"
+     ],
+     "bear": [
+      "SPY",
+      "SMH",
+      "UAL",
+      "BABA",
+      "BAC",
+      "JPM",
+      "RCAT",
+      "WFC",
+      "SMMT",
+      "EWT",
+      "USB",
+      "XLK"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-17T16:47:34-05:00",
+  "generated_at": "2026-11-17T16:47:38-05:00",
   "generated_hkt": "2026-11-18 05:47"
  }
 }
