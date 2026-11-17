@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2122453049725857886": {
+      "en_summary": "@KawzInvests reports Sam Altman says it's hard to imagine the AI revolution without Jensen. Altman declines to say if he should return to $NVDA, advising the board to take time amid pushes from Trump, Musk and Congress.",
+      "zh_summary": "@KawzInvests報告Sam Altman表示很難想像沒有黃仁勳的AI革命。Altman拒絕表態他是否應重返$NVDA，並建議董事會在特朗普、馬斯克和國會推動下慢慢來。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2122452708053700749": {
+      "en_summary": "@PhotonBull says $NBIS is down more than 50% since the end of this period and he is probably liquidated again. Quoted notes Leopold’s Situational Awareness disclosed a new $333M call position in $NBIS.",
+      "zh_summary": "@PhotonBull表示$NBIS自該時期結束以來下跌超過50%，他可能再次被清算。引用指出Leopold的Situational Awareness剛披露了$NBIS的新$333M認購權倉位。",
+      "tickers": ["NBIS"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NBIS": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122452160772542712": {
+      "en_summary": "@Hedgeye details Nvidia $NVDA 13F: increased SpaceX $SPCX stake by 6% to 130.5M shares, reduced Intel $INTC by 25% to 161.1M shares. Holdings valued at $48.33B at end of Q3, down from $63.44B in Q2.",
+      "zh_summary": "@Hedgeye詳述Nvidia $NVDA 13F：將SpaceX $SPCX持股增加6%至1.305億股，將Intel $INTC減少25%至1.611億股。Q3末持股價值483.3億美元，低於Q2的634.4億美元。",
+      "tickers": ["NVDA", "SPCX", "INTC"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "SPCX": "睇好", "INTC": "睇淡"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPCX": "Nvidia增持6%至130.5M股", "INTC": "Nvidia減持25%至161.1M股"}
+    },
+    "2122450955300192391": {
+      "en_summary": "@Mr_Derivatives questions why Polymarket and Kalshi still have Jensen Huang at 10% odds to become next $NVDA CEO, calling No side free money.",
+      "zh_summary": "@Mr_Derivatives質疑為何Polymarket和Kalshi仍將黃仁勳成為下一任$NVDA執行長的機率定為10%，稱No方是免費的錢。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122450738223644762": {
+      "en_summary": "@scheplick finds Druckenmiller building massive Seagate $STX position interesting, arguing next big AI winners are storage/HDD companies as more content will be created in next 5 years than all history. Quoted: increased $STX by 180%, new $PLTR $15M and $SPCX $30M.",
+      "zh_summary": "@scheplick認為Druckenmiller建立大量Seagate $STX倉位很有趣，主張下一波大AI贏家是儲存/HDD公司，因未來5年創造的內容將超過歷史總和。引用：增持$STX 180%，新倉$PLTR $15M和$SPCX $30M。",
+      "tickers": ["STX", "PLTR", "SPCX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"STX": "睇好", "PLTR": "中性", "SPCX": "中性"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"STX": "Druckenmiller增持180%，看好AI儲存需求"}
+    }
+  }
+}
