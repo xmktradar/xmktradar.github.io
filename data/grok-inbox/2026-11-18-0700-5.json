@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2122535843390959975": {
+      "en_summary": "Short comment: Arsonist “eventually stopped setting fire to house”.",
+      "zh_summary": "簡短評論：縱火犯「最終停止放火燒房子」。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122535314497662988": {
+      "en_summary": "Reflection on an episode listened on Friday, reminded of being econ-pilled since 2008 bank failures. If teaching undergrad econ, would plan class on law firms and partner incentives.",
+      "zh_summary": "對星期五聽的一集的反思，提醒自己自2008年銀行倒閉以來一直是經濟迷。如果教本科經濟，會計劃關於律師事務所和合夥人激勵的課程。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2122533751259275294": {
+      "en_summary": "Major US tech disruptions in a single week: Microsoft outage, FAA ground stop, bank access failures, airline systems down. All blamed on technical glitches. Members-only link.",
+      "zh_summary": "單週內重大美國科技中斷：微軟中斷、FAA地面停止、銀行存取失敗、航空公司系統停機。全部歸咎於技術故障。僅限會員連結。",
+      "tickers": ["MSFT"],
+      "stance": "中性",
+      "stance_by_ticker": {"MSFT": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2122533005457604986": {
+      "en_summary": "AI-related construction was a big part of last year's GDP growth while everything else was mostly moot. Midterms + Nvidia + unraveling of AI might give the president less to talk about next quarter. Link to newsletter with @svaneksmith.",
+      "zh_summary": "AI相關建設是去年GDP增長的重要部分，而其他一切大多無關緊要。中期選舉 + Nvidia + AI瓦解可能讓總統下季度少有談資。與@svaneksmith的通訊連結。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "中性",
+      "ticker_notes": {"NVDA": "AI建設是GDP增長重要部分，可能瓦解"}
+    },
+    "2122532931432558906": {
+      "en_summary": "Much of the fix has now been done for Microsoft global outage. Link to Unusual Whales / BBC.",
+      "zh_summary": "微軟全球中斷的大部分修復現已完成。連結至Unusual Whales / BBC。",
+      "tickers": ["MSFT"],
+      "stance": "中性",
+      "stance_by_ticker": {"MSFT": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
