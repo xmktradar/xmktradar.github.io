@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2122405180742185442": {
+      "en_summary": "Not the market for breakout trading",
+      "zh_summary": "不是突破交易的市場",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2122404787912364531": {
+      "en_summary": "These 10 people just decided the fate of humanity.",
+      "zh_summary": "這10個人剛剛決定了人類的命運。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122404712800723209": {
+      "en_summary": "I don't know what it takes to convince the Taco Bell board member or Washington at this point? $NVDA is not the same thing as Apple or McDonalds. You also cannot replace Jensen with ARM CEO or Palo Alto Networks CEO... then expect local Taiwanese factories to move as fast.",
+      "zh_summary": "我不知道現在要什麼才能說服Taco Bell董事會成員或華盛頓？$NVDA不是和蘋果或麥當勞一樣的東西。你也不能用ARM CEO或Palo Alto Networks CEO取代Jensen……然後期望台灣本地工廠移動得那麼快。",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "不能輕易取代Jensen，台灣工廠速度"}
+    },
+    "2122404648980021595": {
+      "en_summary": "GS: We see gold prices grinding higher to $4,650/toz by end-2027 $GLD",
+      "zh_summary": "GS：我們看到金價到2027年底緩慢上升至每盎司4,650美元 $GLD",
+      "tickers": ["GLD"],
+      "stance": "睇好",
+      "stance_by_ticker": {"GLD": "睇好"},
+      "horizon": "長線",
+      "basis": "估值",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利好",
+      "ticker_notes": {"GLD": "GS目標2027年底$4,650/toz"}
+    },
+    "2122404562422341693": {
+      "en_summary": "Interesting where $QQQ bounced there so far at 660.5 where that gap fills from a week ago",
+      "zh_summary": "有趣的是$QQQ到目前為止在660.5反彈，那裡填補了一週前的缺口",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"QQQ": "在660.5反彈，填補一週前缺口"}
+    }
+  }
+}
