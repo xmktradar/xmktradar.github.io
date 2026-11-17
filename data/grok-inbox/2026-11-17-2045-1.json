@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2122653718248132878": {
+      "en_summary": "Scott Redler is live on #630club with a premarket stock market update, highlighting $NVDA, $MU, $SPCX and $SNDK.",
+      "zh_summary": "Scott Redler 正在 #630club 直播盤前股市更新，提及 $NVDA、$MU、$SPCX 和 $SNDK。",
+      "tickers": ["NVDA", "MU", "SPCX", "SNDK"],
+      "stance": null,
+      "stance_by_ticker": {"NVDA": "未表態", "MU": "未表態", "SPCX": "未表態", "SNDK": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122652077591859700": {
+      "en_summary": "Asia sold off overnight on the chip curbs with Korea down 2.6% and Taiwan down 2.3%. Futures point lower and $NVDA is down 0.5% premarket. Retail sales data at 8:30, then $NVDA after the close. The guide is the test, not the quarter.",
+      "zh_summary": "亞洲因晶片限制隔夜下跌，韓國跌2.6%，台灣跌2.3%。期貨指向較低，$NVDA盤前跌0.5%。今日8:30有零售銷售數據，然後$NVDA收盤後公布。指引才是考驗，而非本季業績。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2122650968177447223": {
+      "en_summary": "Trump administration pressing ahead with ban on Chinese data centre tech despite lobbying from $AMZN, $GOOGL, $META, $CSCO and $CRWV.",
+      "zh_summary": "特朗普政府儘管有 $AMZN、$GOOGL、$META、$CSCO 和 $CRWV 的遊說，仍推進對中國數據中心技術的禁令。",
+      "tickers": ["AMZN", "GOOGL", "META", "CSCO", "CRWV"],
+      "stance": "中性",
+      "stance_by_ticker": {"AMZN": "未表態", "GOOGL": "未表態", "META": "未表態", "CSCO": "未表態", "CRWV": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2122650930776846470": {
+      "en_summary": "$KO weighting in Berkshire Hathaway's equity portfolio, referencing the market value of the $KO position.",
+      "zh_summary": "$KO 在 Berkshire Hathaway 股票投資組合中的權重，提及 $KO 持倉的市值。",
+      "tickers": ["KO"],
+      "stance": null,
+      "stance_by_ticker": {"KO": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122650694964457811": {
+      "en_summary": "$BKKT short position and short ratio are at all-time highs while several well-known names meaningfully increased or initiated positions during Q3. With very high short interest and the stock near multi-year lows, this setup may see selling exhaustion and potential short covering.",
+      "zh_summary": "$BKKT 的空頭倉位和空頭比率處於歷史高位，而幾家知名機構在第三季大幅增加或新建倉位。結合極高的空頭利息和股價接近多年低點，這可能是賣壓耗盡加潛在空頭回補的機會。",
+      "tickers": ["BKKT"],
+      "stance": "視好",
+      "stance_by_ticker": {"BKKT": "視好"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
