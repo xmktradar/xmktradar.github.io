@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2122392814088569279": {
+      "en_summary": "@JonahLupton replies to @BourbonCap that $AXON finally filled that gap from August 2024.",
+      "zh_summary": "@JonahLupton 回覆 @BourbonCap，$AXON 終於填補了 2024 年 8 月的缺口。",
+      "tickers": ["AXON"],
+      "stance": "中性",
+      "stance_by_ticker": {"AXON": "中性"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122392740994703582": {
+      "en_summary": "@Bluekurtic notes ahead of Anthropic $ANT IPO: all 7 large cap IPOs debuted above $10B market value in 2026 are currently negative (7 out of 7). Even among IPOs valued above $1B, 41 of 51 stocks are trading below their first day closing prices.",
+      "zh_summary": "@Bluekurtic 指出在 Anthropic $ANT IPO 前：2026 年所有 7 隻市值超過 100 億美元的大型 IPO 目前均為負回報（7 中 7）。即使市值超過 10 億美元的 IPO 中，51 隻中有 41 隻交易低於首日收盤價。",
+      "tickers": ["ANT"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"ANT": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ANT": "2026 年大型 IPO 普遍表現不佳，7 中 7 為負"}
+    },
+    "2122391553159369083": {
+      "en_summary": "@asymco says since its Oct. 6 record, Nvidia ($NVDA) has shed more than $1.7 trillion in market value. Eli Lilly ($LLY) has added more than $250 billion over the same stretch. Only Apple ($AAPL) added more.",
+      "zh_summary": "@asymco 表示自 10 月 6 日高點以來，Nvidia（$NVDA）市值已蒸發超過 1.7 萬億美元。Eli Lilly（$LLY）同期增加超過 2500 億美元。只有 Apple（$AAPL）增加更多。",
+      "tickers": ["NVDA", "LLY", "AAPL"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "睇淡", "LLY": "睇好", "AAPL": "睇好"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {"NVDA": "自 10 月 6 日高點蒸發超過 1.7 萬億美元市值", "LLY": "同期增加超過 2500 億美元市值"}
+    },
+    "2122390864395997619": {
+      "en_summary": "@tenet_research reports $NVDA - NVIDIA EXTENDS DROP TO 4%, FRESH SESSION LOW.",
+      "zh_summary": "@tenet_research 報導 $NVDA - NVIDIA 跌幅擴大至 4%，創盤中新低。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "跌幅擴大至 4%，創盤中新低"}
+    },
+    "2122390835270758829": {
+      "en_summary": "@ColeMacro discusses Strive’s Bitcoin strategy, managing balance sheet risk, roles of $SATA and $SATS, Bitcoin outlook, and more from @Official_Cantor Convergence. Mentions $ASST $SATA $SATS $STRC.",
+      "zh_summary": "@ColeMacro 討論 Strive 的比特幣策略、資產負債表風險管理、$SATA 與 $SATS 的角色、比特幣展望等，來自 @Official_Cantor Convergence。提及 $ASST $SATA $SATS $STRC。",
+      "tickers": ["ASST", "SATA", "SATS", "STRC"],
+      "stance": "中性",
+      "stance_by_ticker": {"ASST": "中性", "SATA": "中性", "SATS": "中性", "STRC": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    }
+  }
+}
