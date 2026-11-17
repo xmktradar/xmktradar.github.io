@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2122413406225650146": {
+      "en_summary": "$NVDA straddle: 8.2% @optionrats Biggest since February 2025 (right after DeepSeek)",
+      "zh_summary": "$NVDA跨式：8.2% @optionrats 自2025年2月以來最大（DeepSeek之後）",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "未表態"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "跨式8.2%，自2025年2月以來最大"}
+    },
+    "2122412450775757216": {
+      "en_summary": "FED’S HAMMACK SAYS SHE GOES INTO ALL FOMC MEETINGS WITH AN OPEN MIND, THAT THERE IS NOT MUCH TENSION BETWEEN THE FED’S MANDATES, AND THAT INFLATION IS GOING IN THE WRONG DIRECTION, WITH INFLATION PRESSURES APPEARING TO BROADEN - $SPY $QQQ",
+      "zh_summary": "聯儲局Hammack表示她以開放心態參加所有FOMC會議，聯儲局職責之間沒有太大緊張，通臀正往錯誤方向發展，通臀壓力似乎在擴大 - $SPY $QQQ",
+      "tickers": ["SPY", "QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "QQQ": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "inflation",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2122412369326309781": {
+      "en_summary": "$DUOL gains 4.5% while the Nasdaq loses 2.5%",
+      "zh_summary": "$DUOL上漲4.5%，而納斯達克下跌2.5%",
+      "tickers": ["DUOL", "QQQ"],
+      "stance": "睇好",
+      "stance_by_ticker": {"DUOL": "睇好", "QQQ": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {"DUOL": "上漲4.5%"}
+    },
+    "2122411464694604166": {
+      "en_summary": "$NVDA - JENSEN HUANG TRANSFERRED OVER $10 BILLION IN NVIDIA STOCK TO FAMILY TRUST BEFORE DOWNFALL Former Nvidia CEO Jensen Huang and his wife transferred nearly 60 million shares, worth over $10.5 billion, into an irrevocable family trust in March, according to SEC filings reviewed by Barron's. The transfer followed a 10-year estate-planning strategy using trusts initially funded with approximately $51 million in Nvidia shares in 2016. Estate attorneys say the structure could allow the accumulated gains to pass to heirs without federal estate tax. The transfer preceded Huang's resignation and Nvidia's recent stock selloff.",
+      "zh_summary": "$NVDA - JENSEN HUANG在下台前將超過100億美元的NVIDIA股票轉移到家族信託中 前Nvidia CEO Jensen Huang和他的妻子根據Barron's審查的SEC文件，在3月將近6000萬股、價值超過105億美元的股票轉移到不可撤銷的家族信託中。該轉移遵循10年遺產規劃策略，使用2016年最初以約5100萬美元Nvidia股票資助的信託。遺產律師表示該結構可能允許累積收益傳給繼承人而無需聯邦遺產稅。該轉移先於Huang的辭職和Nvidia最近的股票拋售。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "Huang在辭職前將超過105億美元股票轉入家族信託"}
+    },
+    "2122411449142186297": {
+      "en_summary": "JOURNEE DE PURGE SUR LA TECH (Tech purge day). Underestimating what's happening with Nvidia and Anthropic IPO. After Taiex -6.03% overnight, second biggest points drop in history, Wall Street on session lows. $SOXX -4.7%, Nasdaq 100 -2.3%, S&P 500 -1.6%. VIX +14% to 22, 10Y US at 5.13%. Washington tightening export licenses for advanced AI chips to SE Asia etc.",
+      "zh_summary": "科技股清洗日。低估了Nvidia和Anthropic IPO正在發生的事。Taiex隔夜-6.03%，歷史第二大點數跌幅，華爾街在場內低點。$SOXX -4.7%，納斯達克100 -2.3%，標普500 -1.6%。VIX +14%至22，美國10年期5.13%。華盛頓收緊對東南亞等先進AI晶片出口許可。",
+      "tickers": ["SOXX", "NVDA", "AMD", "ANT", "CRWV", "MRVL", "MU", "NBIS", "TSM"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SOXX": "睇淡", "NVDA": "睇淡", "AMD": "睇淡", "ANT": "中性", "CRWV": "睇淡", "MRVL": "睇淡", "MU": "睇淡", "NBIS": "睇淡", "TSM": "睇淡"},
+      "horizon": "短線",
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "利淡",
+      "ticker_notes": {"SOXX": "-4.7%", "NVDA": "涉及清洗"}
+    }
+  }
+}
