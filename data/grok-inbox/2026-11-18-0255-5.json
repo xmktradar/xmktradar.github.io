@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2122379530023117189": {
+      "en_summary": "$NVDA - Sam Altman \"AI revolution without Jensen Huang is hard to imagine\"",
+      "zh_summary": "$NVDA - Sam Altman「沒有黃仁勳的AI革命難以想像」",
+      "tickers": ["NVDA"],
+      "stance": "瞭好",
+      "stance_by_ticker": {"NVDA": "瞭好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122379168252043434": {
+      "en_summary": "Increasing unusual option volume: $EWT $IHI $CCC $PODD $UPS $MXEF $SGOV $MDLN",
+      "zh_summary": "不尋常期權成交量增加：$EWT $IHI $CCC $PODD $UPS $MXEF $SGOV $MDLN",
+      "tickers": ["EWT", "IHI", "CCC", "PODD", "UPS", "MXEF", "SGOV", "MDLN"],
+      "stance": "中性",
+      "stance_by_ticker": {"EWT": "中性", "IHI": "中性", "CCC": "中性", "PODD": "中性", "UPS": "中性", "MXEF": "中性", "SGOV": "中性", "MDLN": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122378880501920187": {
+      "en_summary": "$BKKT From the September peak of $9.79 to current levels of ~$3.00, the stock is down approximately 70%. This company has a clean, debt-free balance sheet with a solid net cash position relative to its size. Management reiterated ambitious Total Transacting Volume targets of approximately $3 billion for full-year 2026 and $6 billion for the first half of 2027. It's deeply oversold and heavily shorted with a short ratio of 9.2 (Days to cover). Stock is trading at a 0.15x sales.",
+      "zh_summary": "$BKKT從9月高位9.79美元到目前約3.00美元，股票下跌約70%。這家公司有乾淨、無債務的資產負債表，相對其規模有穩健的淨現金頭寸。管理層重申雄心勃勃的總交易量目標，2026全年約30億美元，2027上半年60億美元。它深度超賣且被大量做空，空頭比率9.2（天數覆蓋）。股票以0.15倍銷售額交易。",
+      "tickers": ["BKKT"],
+      "stance": "瞭好",
+      "stance_by_ticker": {"BKKT": "瞭好"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"BKKT": "下跌70%，無債、超賣、0.15x銷售，目標交易量高"}
+    },
+    "2122378341864899016": {
+      "en_summary": "Money's getting tight even for hyperscalars. $AMZN FCF is negative & long-term debt up more than 2.5x in 2026. Selling 75% of 13 data center shells at a 7% cap rate raises cash without issuing more bonds. But that's ~200bps over 10y & ~100bps over its own recent bonds.",
+      "zh_summary": "即使對超大規模企業來說錢也變緊了。$AMZN自由現金流為負，長期債務在2026年增加超過2.5倍。以7%資本化率出售13個數據中心殼的75%來籌集現金，而無需發行更多債券。但這比10年期高約200個基點，比其自身近期債券高約100個基點。",
+      "tickers": ["AMZN"],
+      "stance": "瞭淡",
+      "stance_by_ticker": {"AMZN": "瞭淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AMZN": "FCF負、債務大增，出售數據中心籌資但收益率偏高"}
+    },
+    "2122378319954124871": {
+      "en_summary": "$BTC That line is everything...",
+      "zh_summary": "$BTC那條線就是一切...",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
