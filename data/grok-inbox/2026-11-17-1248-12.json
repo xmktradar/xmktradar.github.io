@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2122438430949073395": {
+      "en_summary": "@unusual_whales: Bridgewater and Tudor Investment updated portfolios. Many funds reduced tech exposure in last 13Fs selling $GOOGL $AMZN $NVDA $MU and more.",
+      "zh_summary": "@unusual_whales：Bridgewater和Tudor Investment更新了投資組合。許多基金在最近13F中減少科技敞口，賣出$GOOGL $AMZN $NVDA $MU等。",
+      "tickers": ["GOOGL", "AMZN", "NVDA", "MU"],
+      "stance": "中性",
+      "stance_by_ticker": {"GOOGL": "中性", "AMZN": "中性", "NVDA": "中性", "MU": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122438310056607916": {
+      "en_summary": "@tenet_research $ACM | AECOM Q4 FY2026 Earnings: Adjusted EPS $1.63 vs $1.59 consensus beat by $0.04, Revenue $1.92B in line, growth +3.0% YoY, Total backlog increased 13% to record high.",
+      "zh_summary": "@tenet_research $ACM | AECOM Q4 FY2026盈利：調整後EPS 1.63對共識1.59超0.04，收入19.2億美元符合預期，同比增長+3.0%，總積壓訂單增加13%至紀錄高。",
+      "tickers": ["ACM"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ACM": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122437765988307146": {
+      "en_summary": "@ACInvestorBlog: $META looks like a short-term consolidation / digestion phase after the prior advance and subsequent pullback. Needs to break above immediate resistance at 648.45 for more upside.",
+      "zh_summary": "@ACInvestorBlog：$META看起來像是先前上漲及隨後回調後的短期盤整/消化階段。需要突破648.45的即時阻力才能有更多上行。",
+      "tickers": ["META"],
+      "stance": "中性",
+      "stance_by_ticker": {"META": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122437728407298286": {
+      "en_summary": "@Hedgeye: Nvidia's, $NVDA, market cap is now below $4,000,000,000,000.",
+      "zh_summary": "@Hedgeye：Nvidia的$NVDA市值現在低於4萬億美元。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122437615848955991": {
+      "en_summary": "@BULLOFBRITAIN: Just like when $AAPL lost their CEO. The stock price of $NVDA will just go to zero!",
+      "zh_summary": "@BULLOFBRITAIN：就像$AAPL失去他們的CEO時一樣。$NVDA的股價將直接歸零！",
+      "tickers": ["NVDA", "AAPL"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡", "AAPL": "中性"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
