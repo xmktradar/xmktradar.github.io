@@ -1435,9 +1435,173 @@
       "SMMT"
      ]
     }
+   },
+   "intraday_3": {
+    "post_et": "13:30",
+    "post_hkt": "02:30",
+    "generated_at": "2026-11-16T23:56:43-05:00",
+    "date": "2026-11-16",
+    "date_kst": "2026-11-17",
+    "quotes": {
+     "SPY": {
+      "price": 739.95,
+      "prev_close": 754.37,
+      "chg_pct": -1.91,
+      "time": "2026-11-16T16:00:00-05:00"
+     },
+     "QQQ": {
+      "price": 661.75,
+      "prev_close": 679.89,
+      "chg_pct": -2.67,
+      "time": "2026-11-16T16:00:00-05:00"
+     },
+     "DIA": {
+      "price": 515.68,
+      "prev_close": 523.15,
+      "chg_pct": -1.43,
+      "time": "2026-11-16T16:00:00-05:00"
+     },
+     "NVDA": {
+      "price": 156.14,
+      "prev_close": 162.85,
+      "chg_pct": -4.12,
+      "time": "2026-11-16T16:00:01-05:00"
+     },
+     "MU": {
+      "price": 719.02,
+      "prev_close": 778.31,
+      "chg_pct": -7.62,
+      "time": "2026-11-16T16:00:01-05:00"
+     },
+     "AAPL": {
+      "price": 352.78,
+      "prev_close": 356.27,
+      "chg_pct": -0.98,
+      "time": "2026-11-16T16:00:01-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-16T16:00:01-05:00",
+     "hkt": "2026-11-17 05:00"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "NVDA",
+      "chg_pct": -4.12,
+      "bull": 15,
+      "bear": 21,
+      "accounts": [
+       "wallstengine",
+       "WheelieInvestor",
+       "Mr_Derivatives",
+       "midascabal",
+       "scheplick",
+       "FuturumEquities",
+       "TradingThomas3",
+       "DanielTNiles"
+      ]
+     },
+     {
+      "ticker": "QQQ",
+      "chg_pct": -2.67,
+      "bull": 5,
+      "bear": 9,
+      "accounts": [
+       "traderstewie",
+       "FirstSquawk",
+       "AndreasSteno",
+       "KobeissiLetter",
+       "Bluekurtic",
+       "TedHZhang",
+       "midascabal",
+       "Jesse_Livermore"
+      ]
+     },
+     {
+      "ticker": "MU",
+      "chg_pct": -7.62,
+      "bull": 3,
+      "bear": 5,
+      "accounts": [
+       "WheelieInvestor",
+       "Mr_Derivatives",
+       "CheddarFlow",
+       "EliteOptions2",
+       "MrMikeInvesting",
+       "KawzInvests",
+       "KeithMcCullough",
+       "Frenchie_"
+      ]
+     },
+     {
+      "ticker": "AAPL",
+      "chg_pct": -0.98,
+      "bull": 3,
+      "bear": 1,
+      "accounts": [
+       "Mr_Derivatives",
+       "DataTrekMB",
+       "GaryMarcus",
+       "UrbanKaoboy",
+       "tenet_research",
+       "BULLOFBRITAIN",
+       "davidgokhshtein",
+       "MarketRebels"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Early afternoon · As of 16:00 ET (05:00 HKT)\n\n$SPY -1.9% · $QQQ -2.7% · $DIA -1.4%\n\n$NVDA -4.1%, 21 accounts bearish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #NVDA #QQQ",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午后觀察 · 截至 16:00 ET（05:00 HKT）\n\n$SPY -1.9% · $QQQ -2.7% · $DIA -1.4%\n\n$NVDA -4.1%，網站 21 個帳號看空\n$QQQ -2.7%，網站 9 個帳號看空\n$MU -7.6%，網站 5 個帳號看空\n$AAPL -1.0%，網站 3 個帳號看好\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #NVDA #QQQ",
+      "url": null
+     },
+     "en": {
+      "text": "Early afternoon · As of 16:00 ET (05:00 HKT)\n\n$SPY -1.9% · $QQQ -2.7% · $DIA -1.4%\n\n$NVDA -4.1%, 21 accounts bearish on site\n$QQQ -2.7%, 9 accounts bearish on site\n$MU -7.6%, 5 accounts bearish on site\n$AAPL -1.0%, 3 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #NVDA #QQQ",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "SPCX",
+      "XLP",
+      "GOOGL",
+      "LLY",
+      "UBER",
+      "CGON",
+      "CVX",
+      "RKLB",
+      "WMT"
+     ],
+     "bear": [
+      "SMH",
+      "UAL",
+      "AMZN",
+      "BA",
+      "LMT",
+      "MSFT",
+      "RCAT",
+      "SMMT"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-16T23:56:39-05:00",
+  "generated_at": "2026-11-16T23:56:43-05:00",
   "generated_hkt": "2026-11-17 12:56"
  }
 }
