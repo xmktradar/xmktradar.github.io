@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2122410227525959685": {
+      "en_summary": "$NVA mineral properties discussion. Why isn't the account increasing after all the $$$ being spent for studies, drilling, etc?",
+      "zh_summary": "$NVA礦產物業討論。為什麼在花費所有$$$進行研究、鑽探等之後帳戶沒有增加？",
+      "tickers": ["NVA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVA": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122409506181407049": {
+      "en_summary": "$NVDA $NVDL Largest company in the world going straight down 35% within 6 weeks is a wild 2026 event to see play out",
+      "zh_summary": "$NVDA $NVDL 世界最大公司在6週內直跌35%是2026年一個瘋狂的事件",
+      "tickers": ["NVDA", "NVDL"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡", "NVDL": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "6週內下跌35%"}
+    },
+    "2122409077410021616": {
+      "en_summary": "Baidu $BIDU has broken down to its lowest level since July 2010 today:",
+      "zh_summary": "百度 $BIDU今天跌破至2010年7月以來的最低水平：",
+      "tickers": ["BIDU"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"BIDU": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"BIDU": "跌破至2010年7月以來最低"}
+    },
+    "2122408623116591200": {
+      "en_summary": "$4M+ of MORE $SPY Puts",
+      "zh_summary": "超過400萬美元更多$SPY看跌期權",
+      "tickers": ["SPY"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPY": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPY": "超過400萬美元更多put"}
+    },
+    "2122408435752763490": {
+      "en_summary": "Through mid quarter on Friday, $AAPL’s +31.0% YTD gain was the sole net US Big Tech contributor to S&P 500 returns this year (+2.3 points), with the other 6 stocks collectively hitting the index for -0.4 points. $NVDA was down -12.7% YTD, a drag of -0.9 points on the index.",
+      "zh_summary": "截至週五季中，$AAPL年初至今+31.0%漲幅是今年對標普500回報的唯一淨美國大型科技貢獻者（+2.3點），其他6隻股票 collectively 對指數造成-0.4點拖累。$NVDA年初至今下跌-12.7%，對指數拖累-0.9點。",
+      "tickers": ["AAPL", "NVDA", "SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"AAPL": "睇好", "NVDA": "睇淡", "SPY": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {"AAPL": "YTD +31%，唯一淨貢獻者", "NVDA": "YTD -12.7%，拖累-0.9點"}
+    }
+  }
+}
