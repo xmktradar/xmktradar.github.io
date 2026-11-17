@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2122383157043601560": {
+      "en_summary": "That's definitely a possibility. Paul Tudor Jones talked about this. I think it's important for people to be very open minded and to not be stubborn. Listen to what the market is telling them. Thanks for sharing. (Quoted: Everyone is “buying the dip” and/or hoping for a quick rebound. Very few acknowledge that this is a new bear market that will last many months. $QQQ $SPY)",
+      "zh_summary": "這絕對是一種可能性。Paul Tudor Jones談過這個。我認為人們保持開放心態、不要固執很重要。聽市場告訴他們的東西。謝謝分享。（引用：每個人都在「買入下跌」和/或希望快速反彈。很少人承認這是一個將持續數月的新熊市。$QQQ $SPY）",
+      "tickers": ["QQQ", "SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性", "SPY": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2122383006073758081": {
+      "en_summary": "$SPX remember Friday? $9B into MOC. $2.5B at 7445 so far potential support? @spotgamma chart",
+      "zh_summary": "$SPX記得星期五嗎？9B進入MOC。到目前為止在7445有2.5B，潛在支撐？@spotgamma圖表",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPY": "MOC資金流入，7445潛在支撐"}
+    },
+    "2122382809452941410": {
+      "en_summary": "Appreciated my time on @cnbc Squawk on The Street. Questions asked include what to hear from Colette Kress tomorrow as interim CEO, circular financing and NVIDIA's financial commitments, if sales to Southeast Asia cut in half or zero what revenue looks like, chip sales to shell companies in Asia ending in China, technology to track chips already exists. $NVDA",
+      "zh_summary": "感謝在@cnbc Squawk on The Street的時間。被問到的問題包括明日作為臨時CEO的Colette Kress想聽到什麼、循環融資和NVIDIA的財務承諾、如果對東南亞銷售減半或歸零收入會怎樣、芯片銷售給亞洲空殼公司最終到中國、追蹤芯片的技術已存在。$NVDA",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2122381685346255271": {
+      "en_summary": "A growing business at a shrinking price tag... Adobe is getting hard to ignore 👀 $ADBE",
+      "zh_summary": "一個在縮水價格標籤下的成長業務... Adobe變得難以忽視 👀 $ADBE",
+      "tickers": ["ADBE"],
+      "stance": "瞭好",
+      "stance_by_ticker": {"ADBE": "瞭好"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ADBE": "成長業務但價格縮水，難以忽視"}
+    },
+    "2122381441640120621": {
+      "en_summary": "$NVDA ok I think we got it.... Jensen bad. Mind numbing What about the other 499 stocks in the $SPX index? Top 5 by weight: $AAPL 7.98% $NVDA 6.05% $MSFT 5.97% $AMZN 4.02% $GOOG 2.66% $AVGO 2.53% $META 2.17% $TSLA 1.69% $BRK.B 1.69% #noise #politics always gets in the way....and selective outrage.",
+      "zh_summary": "$NVDA好吧我想我們明白了....黃仁勳不好。令人麻木。$SPX指數中其他499隻股票怎麼樣？按權重前5：$AAPL 7.98% $NVDA 6.05% $MSFT 5.97% $AMZN 4.02% $GOOG 2.66% $AVGO 2.53% $META 2.17% $TSLA 1.69% $BRK.B 1.69% #噪音 #政治總是礙事....和選擇性憤怒。",
+      "tickers": ["NVDA", "SPY", "AAPL", "MSFT", "AMZN", "GOOG", "AVGO", "META", "TSLA", "BRK.B"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "SPY": "中性", "AAPL": "中性", "MSFT": "中性", "AMZN": "中性", "GOOG": "中性", "AVGO": "中性", "META": "中性", "TSLA": "中性", "BRK.B": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "批評過度關注Jensen，列出SPX權重"}
+    }
+  }
+}
