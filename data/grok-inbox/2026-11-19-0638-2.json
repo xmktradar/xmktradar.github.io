@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123091149703545065": {
+      "en_summary": "$MSTR still sucks",
+      "zh_summary": "$MSTR 仍然很差",
+      "tickers": ["MSTR"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"MSTR": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123091013681963439": {
+      "en_summary": "The Dow is on pace to close down 1%+ on Monday, Tuesday, and Wednesday to start the week. Last time that happened was 10/8/08. Has only happened 5 other times since 1952. $DIA",
+      "zh_summary": "道琼斯指數本週一、二、三有望連續下跌 1% 以上。上一次發生是 2008 年 10 月 8 日。自 1952 年以來只發生過另外 5 次。$DIA",
+      "tickers": ["DIA"],
+      "stance": "中性",
+      "stance_by_ticker": {"DIA": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2123090881796583841": {
+      "en_summary": "(Reposted by @AyeshaTariq) $150 is a big area for $NVDA. We have a put wall down there as well as prior technical resistance becoming potential support. With a company wide meeting coming up, we can expect additional volatility in the stock. Investors continue to look for clarity on leadership.",
+      "zh_summary": "（由 @AyeshaTariq 轉發）150 美元是 $NVDA 的重要區域。下方有看跌期權牆，以及先前的技術阻力轉為潛在支撑。即將舉行公司全體會議，預計股票將有額外波動。投資者持續尋求領導層的清晰度。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "150 美元為重要區域，有看跌期權牆及阻力轉支撑，公司會議或帶來額外波動，投資者尋求領導層清晰度"}
+    },
+    "2123090830520938716": {
+      "en_summary": "$LULU now #IBDpartner #retail in-play. Quoted: $XRT retail Outside day #bullish #IBDpartner watching $TGT $FIVE $TJX among others.",
+      "zh_summary": "$LULU 現在 #IBDpartner #retail 活躍中。轉引：$XRT 零售外部日看漲，關注 $TGT $FIVE $TJX 等。",
+      "tickers": ["LULU", "XRT", "TGT", "FIVE", "TJX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"LULU": "睇好", "XRT": "睇好", "TGT": "中性", "FIVE": "中性", "TJX": "中性"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123090830005338444": {
+      "en_summary": "Relative strength in the restaurant group. $SG has almost doubled in the past two months while riding its 20dEMA. $CBRK is at new 52-week highs, etc.",
+      "zh_summary": "餐廳板塊顯示相對強勢。$SG 在過去兩個月幾乎翻倍，同時沿 20 日 EMA 運行。$CBRK 處於新的 52 週高點等。",
+      "tickers": ["SG", "CBRK"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SG": "睇好", "CBRK": "睇好"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SG": "過去兩個月幾乎翻倍，沿 20 日 EMA 運行", "CBRK": "新的 52 週高點"}
+    }
+  }
+}
