@@ -66,6 +66,10 @@ h2{font-family:var(--f-display);font-size:22px;line-height:1.35;margin:22px 0 8p
 .ct-news small{flex:1 0 100%;margin:0;color:var(--muted);font-size:12.5px;line-height:1.4}
 .ct-news-msg{flex:1 0 100%;margin:0;font-size:14px;line-height:1.45;overflow-wrap:anywhere}
 .ct-news input[name=website]{position:absolute!important;left:0!important;top:0!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;border:0!important;white-space:nowrap}
+a.btn{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;max-width:100%;margin-top:4px;padding:14px 28px;border-radius:999px;background:var(--accent);color:#fff;font-weight:700;font-size:18px;line-height:1.25;text-align:center;text-decoration:none;overflow-wrap:anywhere}
+.lead-cta{margin:16px 0 18px}
+.lead-cta a.btn{width:100%;margin-top:0;padding:16px 24px}
+a.btn:hover{filter:brightness(1.06);color:#fff}
 @media(max-width:420px){h1{font-size:24px}.wrap{padding:16px 14px 40px}h2{font-size:20px}}
 /* Apple-style look (2026-10-27): same colours, font and cards as the homepage; dark mode follows the device */
 :root{--bg:#f5f5f7;--surface:#fff;--ink:#1d1d1f;--muted:#6e6e73;--line:#e3e3e8;--accent:#0071e3;--accent-soft:#e8f1fb;--link:#0066cc;--hero:#fff;--grad:linear-gradient(90deg,#0071e3,#9f5afd 52%,#e3366e);color-scheme:light dark}
@@ -140,6 +144,7 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
     });
   })();
   </script>
+  <p class="lead-cta"><a class="btn" href="/zh/weekly/">每月 USD 5 訂閱週報（隨時可取消）</a></p>
   <h2>過往期數</h2>
   {{issues}}
   <aside class="note">
