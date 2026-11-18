@@ -88,6 +88,11 @@
       var cls = side === 'bull' ? 'ct-bull' : side === 'bear' ? 'ct-bear' : '';
       return '<p><a href="#stock/' + encodeURIComponent(ticker) + '">' + esc(ticker) + '</a> <span class="' + cls + '">' + label + '</span></p>';
     }).join('');
+    var named = mine.filter(function (ticker) { return bucket(map, ticker) !== 'none'; });
+    if (named.length) {
+      slot.innerHTML += '<p>' + t('上週這些代號有沒有新列入，這頁不寫。', 'Whether these were newly listed last week is not on this page.')
+        + ' <a class="ct-pay-btn" href="/zh/weekly/">' + t('星期一替我對倉，每月 USD 5', 'Monday book check, USD 5 / month') + '</a></p>';
+    }
   }
   function css() {
     if (document.getElementById('ct-pay-css')) return;
@@ -102,7 +107,8 @@
       + '#ct-pay input{box-sizing:border-box;min-height:44px;max-width:100%;border-radius:12px;border:1px solid var(--line,#e3e3e8);background:transparent;color:inherit;font:inherit;padding:8px 10px}'
       + '#ct-pay .ct-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}'
       + '#ct-pay .ct-bull{color:#127a3a;font-weight:700}#ct-pay .ct-bear{color:#c2410c;font-weight:700}'
-      + '#ct-pay a{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}';
+      + '#ct-pay #ct-book-out a,#ct-pay #ct-weight a{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}'
+      + '#ct-pay a.ct-pay-btn{display:inline-flex;box-sizing:border-box;margin-top:8px;padding:10px 16px;border-radius:999px;background:#0071e3;color:#fff;font-family:inherit;font-weight:700;text-decoration:none}';
     document.head.appendChild(s);
   }
   function links(tickers) {
@@ -165,7 +171,7 @@
       + '<div id="ct-book-out"></div>'
       + '<p>' + t('上週有沒有新列入、上次同類齊聲之後 10 日相對 QQQ 是贏是輸，星期一電郵才有。',
         'Whether it was newly added last week, and the last settled 10-session result versus QQQ, is in the Monday email.') + '</p>'
-      + '<p><a href="/zh/weekly/">' + t('每月 USD 5 訂閱週報（隨時可取消）', 'Subscribe, USD 5 / month, cancel any time') + '</a></p>'
+      + '<p><a class="ct-pay-btn" href="/zh/weekly/">' + t('星期一替我對倉，每月 USD 5', 'Monday book check, USD 5 / month') + '</a></p>'
       + '<h2>' + t('按類別重算', 'Recalculate by category') + '</h2>'
       + '<p>' + t('六類都計入時，與官方共識相同。關掉一類，只改下面這一欄，官方名單不變。',
         'With every category on, this matches the official consensus. Turning one off changes only the list below.') + '</p>'

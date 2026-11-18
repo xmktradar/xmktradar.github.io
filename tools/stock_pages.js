@@ -258,10 +258,13 @@ function ledgerMarkup(lang, ticker, ft) {
     }
   }
   const note = lang === 'zh' ? '不是投資建議。' : 'Not investment advice.';
+  const pay = lang === 'zh'
+    ? '<p class="ct-ledger-pay"><a href="/zh/weekly/">這個數字免費。你持有的股票下一次新列入，星期一電郵才寫上次是贏是輸。每月 USD 5。</a></p>'
+    : '<p class="ct-ledger-pay"><a href="/zh/weekly/">This number is free. The Monday email covers whether a stock you hold was newly listed, and whether the last call beat QQQ. USD 5 a month.</a></p>';
   const label = lang === 'zh' ? '已結算成績' : 'Settled result';
   const empty = lang === 'zh' ? '未有已結算紀錄。' : 'No settled 10-session result yet.';
   const body = lines.length ? lines.join('') : `<p>${empty}</p>`;
-  return `<aside class="ct-ledger" aria-label="${label}"><style>.ct-ledger{margin:12px 0;padding:10px 12px;border-radius:12px;background:var(--surface,#fff);font-size:14px;line-height:1.55}.ct-ledger p{margin:0 0 6px}.ct-ledger p:last-child{margin:0}.ct-ledger .up{color:#127a3a;font-weight:700}.ct-ledger .dn{color:#c2410c;font-weight:700}@media (prefers-color-scheme:dark){.ct-ledger .up{color:#3dd68c}.ct-ledger .dn{color:#ff7a59}}</style>${body}<p>${note}</p></aside>`;
+  return `<aside class="ct-ledger" aria-label="${label}"><style>.ct-ledger{margin:12px 0;padding:10px 12px;border-radius:12px;background:var(--surface,#fff);font-size:14px;line-height:1.55}.ct-ledger p{margin:0 0 6px}.ct-ledger p:last-child{margin:0}.ct-ledger .up{color:#127a3a;font-weight:700}.ct-ledger .dn{color:#c2410c;font-weight:700}.ct-ledger a{font-weight:700}@media (prefers-color-scheme:dark){.ct-ledger .up{color:#3dd68c}.ct-ledger .dn{color:#ff7a59}}</style>${body}${pay}<p>${note}</p></aside>`;
 }
 function checklistGo(lang, campaign, token) {
   var u = 'https://thecrowdtape.com/' + lang + '/checklist/earnings/?utm_source=site&utm_medium=cta&utm_campaign=' + campaign;

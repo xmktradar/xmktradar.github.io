@@ -912,7 +912,7 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
     <p class="ap-eyebrow">500 帳號｜6 類｜每 8 小時更新</p>
     <p class="ap-h"><span class="ap-h1">500 個美股帳號，</span><span class="ap-grad">今日共同看好／看淡邊隻？</span></p>
     <p class="ap-sub">每 8 小時自動整理看多、看淡同分歧，全中文、免費</p>
-    <div class="ap-cta"><a class="ap-btn" href="#view">看今日重點</a><a class="ap-btn ap-ghost" href="#ct-news-home">訂閱每週好淡統計</a><a class="ap-btn" href="/zh/weekly/">每月 USD 5 訂閱週報（隨時可取消）</a></div>
+    <div class="ap-cta"><a class="ap-btn" href="#view">看今日重點</a><a class="ap-btn ap-ghost" href="#ct-news-home">訂閱每週好淡統計</a><a class="ap-btn" href="/zh/weekly/">星期一替我對倉，每月 USD 5</a></div>
     <div class="meta ap-meta">
       <span>帖文資料截至 <b id="cutoff"></b></span>
       <span>下次更新 <b id="nextup"></b></span>
@@ -2289,7 +2289,7 @@ function put(cls,html,before){var n=view.querySelector(':scope>.'+cls);if(!n){n=
 function endCard(v,n){var s=document.createElement('section');s.className='c12 panel bk-end';s.setAttribute('data-bp',n);s.setAttribute('data-v',v);
  var more=Object.keys(TABS).filter(function(k){return k!==v}).map(function(k){return '<a href="'+TABS[k][0]+'">'+TABS[k][1]+'</a>'}).join('');
  s.innerHTML='<h2>'+(v==='daily'?'今日讀完':v==='weekly'?'本週讀完':'本月讀完')+' 🎉</h2><p>感謝你讀完。網站免費、無需登入，每 8 小時更新；如果覺得有用，歡迎請我們喝杯咖啡，你的支持將用於維持網站運作。</p>'+
- '<div class="bk-acts"><a href="https://www.paypal.com/qrcodes/p2pqrc/3KT8QNVNRWJMA" target="_blank" rel="noopener">☕ 捐款支持</a><a class="bk-nl" href="newsletter/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=newsletter">✉️ 訂閱每週電子報</a><a class="bk-weekly" href="/zh/weekly/">每月 USD 5 訂閱週報（隨時可取消）</a></div>'+
+ '<div class="bk-acts"><a href="https://www.paypal.com/qrcodes/p2pqrc/3KT8QNVNRWJMA" target="_blank" rel="noopener">☕ 捐款支持</a><a class="bk-nl" href="newsletter/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=newsletter">✉️ 訂閱每週電子報</a><a class="bk-weekly" href="/zh/weekly/">星期一替我對倉，每月 USD 5</a></div>'+
  '<p class="note">想看更多：</p><div class="bk-more">'+more+'<button type="button" data-jump="stock-index" class="bk-si">個股頁面</button><button type="button" data-bk="1">從頭再看</button></div>';return s}
 function run(){
  var g=view.querySelector(':scope>.grid'),v=bookView();
