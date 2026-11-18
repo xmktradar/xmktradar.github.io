@@ -3,6 +3,7 @@
   var KEY = 'ct_weights_off';
   var WATCH = 'ct_watch';
   var SIDE = 'ct_watch_side';
+  var BOOK = 'ct_book';
   var LABELS = {
     '大人物／企業家': 'Prominent',
     '宏觀': 'Macro',
@@ -62,6 +63,32 @@
   function watches() {
     return read(WATCH, []).filter(function (s) { return /^[A-Z][A-Z0-9.]{0,9}$/.test(s); });
   }
+  function book() {
+    return read(BOOK, []).filter(function (s) { return /^[A-Z][A-Z0-9.]{0,9}$/.test(s); });
+  }
+  function parseBook(text) {
+    var seen = {};
+    var out = [];
+    String(text || '').toUpperCase().split(/[^A-Z0-9.]+/).forEach(function (ticker) {
+      if (!/^[A-Z][A-Z0-9.]{0,9}$/.test(ticker) || seen[ticker]) return;
+      seen[ticker] = 1;
+      if (out.length < 30) out.push(ticker);
+    });
+    return out;
+  }
+  function showBook(box) {
+    var slot = box.querySelector('#ct-book-out');
+    if (!slot) return;
+    var map = lists(null);
+    var mine = book();
+    if (!map || !mine.length) { slot.innerHTML = ''; return; }
+    slot.innerHTML = mine.map(function (ticker) {
+      var side = bucket(map, ticker);
+      var label = side === 'none' ? t('不在名單', 'Not listed') : sideName(side);
+      var cls = side === 'bull' ? 'ct-bull' : side === 'bear' ? 'ct-bear' : '';
+      return '<p><a href="#stock/' + encodeURIComponent(ticker) + '">' + esc(ticker) + '</a> <span class="' + cls + '">' + label + '</span></p>';
+    }).join('');
+  }
   function css() {
     if (document.getElementById('ct-pay-css')) return;
     var s = document.createElement('style');
@@ -118,7 +145,7 @@
       box.setAttribute('aria-label', t('週報、類別、關注', 'Weekly, categories, watchlist'));
     }
     if (view.firstChild !== box) view.insertBefore(box, view.firstChild);
-    if (box.contains(document.activeElement)) { fillResults(box); return; }
+    if (box.contains(document.activeElement)) { fillResults(box); showBook(box); return; }
     var off = offSet();
     var names = cats();
     var chips = names.map(function (name) {
@@ -130,10 +157,15 @@
     var watchChips = mine.map(function (ticker) {
       return '<button type="button" data-drop="' + esc(ticker) + '">' + esc(ticker) + ' ×</button>';
     }).join('');
-    box.innerHTML = '<h2>' + t('今個星期的名稱在電郵', 'This week’s names are in the email') + '</h2>'
-      + '<p>' + t('首頁這張名單是現時共識，免費。已結算的 10 日成績（包括跑輸）在週報頁公開。今個星期新列入的名稱不寫在網頁，下週一寄給訂戶。',
-        'The list on this page is the current consensus, and it is free. Settled 10-session results, including losses, are public on the weekly page. Names newly added this week are not on the site; subscribers get them on Monday.') + '</p>'
-      + '<p><a href="/zh/weekly/">' + t('看已結算成績並訂閱（每月 USD 5）', 'Settled results and subscribe (USD 5 / month)') + '</a></p>'
+    box.innerHTML = '<h2>' + t('對倉，不是跟單', 'Check your book. Not a signal to follow.') + '</h2>'
+      + '<p>' + t('輸入持有的代號。這裡只對照今日免費共識，回答共同看好、共同看淡、分歧，或不在名單。',
+        'Enter the tickers you hold. This checks only today’s free consensus: bullish, bearish, split, or not listed.') + '</p>'
+      + '<div class="ct-row"><input id="ct-book-in" inputmode="latin" autocapitalize="characters" maxlength="80" placeholder="' + t('例如 NVDA MU QQQ', 'e.g. NVDA MU QQQ') + '" aria-label="' + t('持有代號', 'Holdings') + '">'
+      + '<button type="button" class="ct-add" id="ct-book-go">' + t('對照今日', 'Check today') + '</button></div>'
+      + '<div id="ct-book-out"></div>'
+      + '<p>' + t('上週有沒有新列入、上次同類齊聲之後 10 日相對 QQQ 是贏是輸，星期一電郵才有。',
+        'Whether it was newly added last week, and the last settled 10-session result versus QQQ, is in the Monday email.') + '</p>'
+      + '<p><a href="/zh/weekly/">' + t('每月 USD 5 訂閱週報（隨時可取消）', 'Subscribe, USD 5 / month, cancel any time') + '</a></p>'
       + '<h2>' + t('按類別重算', 'Recalculate by category') + '</h2>'
       + '<p>' + t('六類都計入時，與官方共識相同。關掉一類，只改下面這一欄，官方名單不變。',
         'With every category on, this matches the official consensus. Turning one off changes only the list below.') + '</p>'
@@ -186,7 +218,17 @@
           : t('未獲允許，不會通知。', 'Permission was not granted.');
       });
     });
+    var bookGo = box.querySelector('#ct-book-go');
+    var bookIn = box.querySelector('#ct-book-in');
+    function checkBook() {
+      write(BOOK, parseBook(bookIn.value));
+      bookIn.value = '';
+      showBook(box);
+    }
+    bookGo.addEventListener('click', checkBook);
+    bookIn.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); checkBook(); } });
     fillResults(box);
+    showBook(box);
   }
   function fillResults(box) {
     var slot = box.querySelector('#ct-weight');
@@ -196,7 +238,7 @@
     if (!base) { slot.textContent = ''; return; }
     checkWatch(base);
     if (!custom || offSet().length === 0) {
-      slot.innerHTML = '<p>' + t('而家計入全部類別，與官方共識相同。', 'Every category is included. This matches the official consensus.') + '</p>';
+      slot.innerHTML = '<p>' + t('目前計入全部類別，與官方共識相同。', 'Every category is included. This matches the official consensus.') + '</p>';
       return;
     }
     slot.innerHTML = '<p>' + t('這個選法跟官方共識不同。', 'This selection differs from the official consensus.') + '</p>'

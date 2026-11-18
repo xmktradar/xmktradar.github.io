@@ -211,6 +211,58 @@ function insertAfterKpis(html, box) {
   }
   return html;
 }
+function loadLedger() {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'followthrough.json'), 'utf8'));
+  } catch (e) {
+    return { rows: [] };
+  }
+}
+function ledgerPct(v) {
+  if (typeof v !== 'number' || !isFinite(v)) return '—';
+  return (v > 0 ? '+' : '') + (v * 100).toFixed(1) + '%';
+}
+function latestSettled(ft, ticker) {
+  const out = {};
+  for (const row of (ft && ft.rows) || []) {
+    if (row.ticker !== ticker || (row.side !== 'bull' && row.side !== 'bear')) continue;
+    if (typeof row.xs !== 'number') continue;
+    const signal = String(row.signal || '').slice(0, 10);
+    if (signal.length !== 10) continue;
+    if (!out[row.side] || signal > out[row.side].signal) out[row.side] = row;
+  }
+  return out;
+}
+function ledgerMarkup(lang, ticker, ft) {
+  const found = latestSettled(ft, ticker);
+  const lines = [];
+  for (const side of ['bull', 'bear']) {
+    const row = found[side];
+    if (!row) continue;
+    const xs = row.xs;
+    const ret = ledgerPct(row.ret);
+    const xsTxt = ledgerPct(xs);
+    const signal = String(row.signal).slice(0, 10);
+    const month = Number(signal.slice(5, 7));
+    const day = Number(signal.slice(8, 10));
+    if (lang === 'zh') {
+      const word = side === 'bull' ? '共同看好' : '共同看淡';
+      const cls = side === 'bull' ? 'up' : 'dn';
+      const beat = xs > 0 ? '，跑贏' : xs < 0 ? '，跑輸' : '';
+      lines.push(`<p>上一次<span class="${cls}">${word}</span>（${month}月${day}日）10 日股價 ${ret}，相對 QQQ ${xsTxt}${beat}。</p>`);
+    } else {
+      const word = side === 'bull' ? 'Consensus bullish' : 'Consensus bearish';
+      const cls = side === 'bull' ? 'up' : 'dn';
+      const beat = xs > 0 ? ', ahead of QQQ' : xs < 0 ? ', behind QQQ' : '';
+      lines.push(`<p>Last <span class="${cls}">${word}</span> (${day} ${['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][month - 1]}): 10-session price ${ret}, versus QQQ ${xsTxt}${beat}.</p>`);
+    }
+  }
+  const note = lang === 'zh' ? '不是投資建議。' : 'Not investment advice.';
+  const label = lang === 'zh' ? '已結算成績' : 'Settled result';
+  const empty = lang === 'zh' ? '未有已結算紀錄。' : 'No settled 10-session result yet.';
+  const body = lines.length ? lines.join('') : `<p>${empty}</p>`;
+  return `<aside class="ct-ledger" aria-label="${label}"><style>.ct-ledger{margin:12px 0;padding:10px 12px;border-radius:12px;background:var(--surface,#fff);font-size:14px;line-height:1.55}.ct-ledger p{margin:0 0 6px}.ct-ledger p:last-child{margin:0}.ct-ledger .up{color:#127a3a;font-weight:700}.ct-ledger .dn{color:#c2410c;font-weight:700}@media (prefers-color-scheme:dark){.ct-ledger .up{color:#3dd68c}.ct-ledger .dn{color:#ff7a59}}</style>${body}<p>${note}</p></aside>`;
+}
 function checklistGo(lang, campaign, token) {
   var u = 'https://thecrowdtape.com/' + lang + '/checklist/earnings/?utm_source=site&utm_medium=cta&utm_campaign=' + campaign;
   if (token) u += '&t=' + encodeURIComponent(token);
@@ -698,6 +750,7 @@ if (require.main === module) {
   let fallbackPages = 0;
   const urls = [];
   const sectors = loadSectors();
+  const ledger = loadLedger();
   for (const lang of Object.keys(LANGS)) {
     const file = path.resolve(lang, 'index.html');
     const p = await b.newPage();
@@ -793,7 +846,7 @@ if (require.main === module) {
       // Iframe fills the old chart slot. The SVG stays under it when the px file exists.
       // The "recent changes" heading stays too: the iframe is there even with no SVG.
       body = body.replace('<!--px-chart:' + pg.t + '-->', tvChartBlock(lang, pg.t, tvSymbols, svg));
-      const boxed = insertAfterKpis(body, nlMarkup(lang, pg.t));
+      const boxed = insertAfterKpis(body, ledgerMarkup(lang, pg.t, ledger) + nlMarkup(lang, pg.t));
       if (boxed === body) {
         console.log('::error::股票網頁沒有電子報位置：' + lang + '/' + pg.t);
         process.exit(1);

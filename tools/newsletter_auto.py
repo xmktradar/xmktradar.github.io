@@ -232,16 +232,7 @@ def subscriber_extra(D, d0, d1):
     rows = pay_moments.week_rows(pay_moments.episodes(D.get('cons_hist') or {}), d0, d1)
     if not rows:
         return ''
-    lines = [
-        '',
-        'NEW INCLUSIONS',
-        'Names newly added last week. This list is in the subscriber email only, not on the public weekly page. Not investment advice.',
-        '上一週新列入的名稱只在這封電郵。同一方向連續留在名單上只計第一次。不是投資建議。',
-    ]
-    for row in rows:
-        side = '共同看好' if row['side'] == 'bull' else '共同看淡'
-        lines.append(f"{row['d'][5:]} ${row['t']} {side}")
-    return '\n'.join(lines)
+    return pay_moments.email_block(rows, pay_moments.load_followthrough())
 
 
 def send(n, subject, text, html_body):
