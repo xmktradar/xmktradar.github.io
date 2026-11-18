@@ -78,29 +78,18 @@ def pct(value):
     return f'{"+" if value > 0 else ""}{value * 100:.1f}%'
 
 
-def sample_html(pub_rows):
-    """Three public settled rows, written the way the Monday email is written."""
-    ranked = sorted(
-        (row for row in pub_rows if row.get('side') in ('bull', 'bear') and isinstance(row.get('xs'), (int, float))),
-        key=lambda row: abs(row['xs']),
-        reverse=True,
-    )[:3]
-    if not ranked:
-        return ''
+def sample_html():
+    """Eight redacted slots. No tickers and no numbers from the public scorecard."""
     parts = [
-        '<h2>電郵長這樣</h2>',
-        '<p>下面三行用星期一電郵的寫法。數字是上面這一週已經公開的成績，不是今個星期。今個星期的名稱仍然不寫在這頁。電郵不叫人跟。</p>',
+        '<h2>星期一電郵最多八隻</h2>',
+        '<p>只挑上週新列入、上次同類又跑輸最多的。名稱只在電郵。這裡不重複下面的成績表。</p>',
     ]
-    for row in ranked:
-        side = '<span class="wk-up">共同看好</span>' if row.get('side') == 'bull' else '<span class="wk-dn">共同看淡</span>'
-        xs_v = row['xs']
-        klass = 'wk-up' if xs_v > 0 else 'wk-dn' if xs_v < 0 else ''
-        beat = '跑贏' if xs_v > 0 else '跑輸' if xs_v < 0 else '持平'
-        signal = str(row.get('signal') or '')[5:10]
+    for n in range(1, 9):
         parts.append(
-            f'<div class="wk-row"><span class="wk-t">{signal} ${row.get("ticker")}</span><span>{side}</span>'
-            f'<span class="{klass}">10 日相對 QQQ {pct(xs_v)}，{beat}</span>'
-            f'<span>不是投資建議。</span></div>'
+            f'<div class="wk-row"><span class="wk-t">{n}. $____</span>'
+            '<span>共同看好或共同看淡</span>'
+            '<span class="wk-dn">上次同類：跑輸</span>'
+            '<span>今次是新列入。不是投資建議。</span></div>'
         )
     return ''.join(parts)
 
@@ -123,7 +112,7 @@ def scorecard_html():
     if os.path.isfile(ft_path):
         ft = json.load(open(ft_path, encoding='utf-8'))
     pub_start, pub_rows = pay_moments.public_score(ft, today)
-    parts = ['<section class="wk" id="settled">']
+    parts = ['<section class="wk" id="settled">', sample_html()]
     if pub_start and pub_rows:
         pub_end = pay_moments.plus_days(pub_start, 6)
         xs = [row['xs'] for row in pub_rows if isinstance(row.get('xs'), (int, float))]
@@ -138,19 +127,23 @@ def scorecard_html():
             f'看好或看淡裡，正數佔 {hit}。看淡的正數代表當時看淡之後跑贏 QQQ，不是股價上升。跑輸的也列在下面。不是投資建議。</p>'
         )
         parts.append('<div>')
+        lag_shown = False
         for row in sorted(pub_rows, key=lambda r: (r.get('signal') or '', r.get('ticker') or '')):
             ticker = str(row.get('ticker') or '')
             side = '<span class="wk-up">共同看好</span>' if row.get('side') == 'bull' else '<span class="wk-dn">共同看淡</span>' if row.get('side') == 'bear' else '分歧'
             xs_v = row.get('xs')
             klass = 'wk-up' if isinstance(xs_v, (int, float)) and xs_v > 0 else 'wk-dn' if isinstance(xs_v, (int, float)) and xs_v < 0 else ''
             beat = '跑贏' if isinstance(xs_v, (int, float)) and xs_v > 0 else '跑輸' if isinstance(xs_v, (int, float)) and xs_v < 0 else ''
+            lag = ''
+            if isinstance(xs_v, (int, float)) and xs_v < 0 and not lag_shown:
+                lag = '<a class="btn" href="https://buy.stripe.com/cNiaEXfyE8961qM83H2cg02">星期一替我對倉，每月 USD 5</a>'
+                lag_shown = True
             parts.append(
                 f'<div class="wk-row"><span class="wk-t">{ticker}</span><span>{side}</span>'
                 f'<span>股價 {pct(row.get("ret"))}</span>'
-                f'<span class="{klass}">相對 QQQ {pct(xs_v)} {beat}</span></div>'
+                f'<span class="{klass}">相對 QQQ {pct(xs_v)} {beat}</span>{lag}</div>'
             )
         parts.append('</div>')
-        parts.append(sample_html(pub_rows))
     else:
         parts.append('<h2>已結算成績</h2><p>暫時沒有已結算的星期。</p>')
     parts.append('</section>')
@@ -158,7 +151,7 @@ def scorecard_html():
     parts.append(f'<h2>今個星期 · {pay_moments.zh_span(start, end)}</h2>')
     parts.append(
         f'<p>截至 {today}，新列入<span class="wk-up">共同看好</span> {bulls} 次、<span class="wk-dn">共同看淡</span> {bears} 次。'
-        '名稱不寫在這個頁面。訂戶在下一個週一的電郵收到上一整週的名稱。'
+        '名稱不寫在這個頁面。電郵最多八隻，只挑上次同類跑輸最多的。'
         '分歧只在首頁免費顯示。同一方向連續留在名單上只計第一次。</p>'
     )
     parts.append('</section>')

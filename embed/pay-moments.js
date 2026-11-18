@@ -164,8 +164,8 @@
       return '<button type="button" data-drop="' + esc(ticker) + '">' + esc(ticker) + ' ×</button>';
     }).join('');
     box.innerHTML = '<h2>' + t('對倉，不是跟單', 'Check your book. Not a signal to follow.') + '</h2>'
-      + '<p>' + t('輸入持有的代號。這裡只對照今日免費共識，回答共同看好、共同看淡、分歧，或不在名單。',
-        'Enter the tickers you hold. This checks only today’s free consensus: bullish, bearish, split, or not listed.') + '</p>'
+      + '<p>' + t('輸入持有的代號。這裡只對照今日免費共識。電郵最多八隻，只挑上週新列入、上次同類又跑輸最多的，星期一才寫名稱。',
+        'Enter the tickers you hold. This checks only today’s free consensus. The Monday email names at most eight, the new listings whose last call lagged the most.') + '</p>'
       + '<div class="ct-row"><input id="ct-book-in" inputmode="latin" autocapitalize="characters" maxlength="80" placeholder="' + t('例如 NVDA MU QQQ', 'e.g. NVDA MU QQQ') + '" aria-label="' + t('持有代號', 'Holdings') + '">'
       + '<button type="button" class="ct-add" id="ct-book-go">' + t('對照今日', 'Check today') + '</button></div>'
       + '<div id="ct-book-out"></div>'
