@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Today's consensus | The Crowd Tape</title>
+<meta name="description" content="Today's consensus bullish and bearish names, the biggest splits, and the 10-session record versus QQQ after a name newly joins. Not investment advice.">
+<link rel="canonical" href="https://thecrowdtape.com/en/board/">
+<link rel="alternate" hreflang="zh-Hant" href="https://thecrowdtape.com/zh/board/">
+<link rel="alternate" hreflang="en" href="https://thecrowdtape.com/en/board/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#fbf6ec">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&display=swap">
+<style>
+:root{
+  --bg:#fbf6ec; --bg-dot:#f1e7d3; --panel:#fffaf2; --line:#ece1cc; --line-strong:#dccbab;
+  --tx:#3b2f24; --tx-strong:#2a2119; --mut:#87776a; --link:#a5672c;
+  --bull:#25803c; --bull-bg:#e5f4e7; --bull-line:#bfe2c6;
+  --bear:#c22f2a; --bear-bg:#fde6e4; --bear-line:#f6c3be;
+  --div:#9a6b12; --div-bg:#fdf1d2; --div-line:#f0dba0;
+  --f-display:"Noto Serif TC","Source Han Serif TC","Songti TC","PMingLiU",serif;
+  --f-body:"Noto Sans TC","PingFang TC","Noto Sans CJK TC","Microsoft JhengHei",system-ui,sans-serif;
+  --f-data:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{overflow-x:clip}
+body{margin:0;background:var(--bg) radial-gradient(var(--bg-dot) 1px,transparent 1px) 0 0/14px 14px;color:var(--tx);font-family:var(--f-body);font-size:15px;line-height:1.55}
+a{color:var(--link)}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px 64px}
+header{position:sticky;top:0;z-index:5;background:rgba(251,246,236,.94);border-bottom:1px solid var(--line);backdrop-filter:saturate(1.2) blur(8px)}
+.bar{max-width:980px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--tx-strong);font-family:var(--f-display);font-weight:700;font-size:20px;letter-spacing:.02em}
+.brand img{border-radius:6px}
+.lang{display:flex;gap:4px}
+.lang a{font:600 12.5px/1 var(--f-body);padding:6px 10px;border:1px solid var(--line-strong);border-radius:999px;color:var(--mut);text-decoration:none;background:var(--panel);min-height:32px;display:inline-flex;align-items:center}
+.lang a[aria-current]{color:var(--tx-strong);border-color:var(--tx);background:#fff}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;margin:14px 0 8px}
+nav.tabs button{background:none;border:0;border-bottom:2px solid transparent;padding:10px 14px;min-height:44px;font-weight:500;color:var(--mut);cursor:pointer;white-space:nowrap}
+nav.tabs button[aria-selected="true"]{color:var(--tx-strong);border-bottom-color:var(--tx-strong)}
+h1{font-family:var(--f-display);font-weight:700;font-size:1.7rem;letter-spacing:.01em;margin:8px 0}
+.lead,.muted{color:var(--mut)}
+.cards{display:grid;gap:12px}
+@media(min-width:800px){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 14px 16px;box-shadow:0 1px 3px rgba(120,90,50,.06)}
+.card h2,.panel h2{margin:0;font-size:14px;font-weight:700}
+.card.bull{border-left:5px solid var(--bull)}
+.card.bear{border-left:5px solid var(--bear)}
+.card.split{border-left:5px solid var(--div)}
+.bull{color:var(--bull)}.bear{color:var(--bear)}.split{color:var(--div)}
+.n{font:600 28px/1.1 var(--f-data);margin:10px 0 4px;color:var(--tx-strong)}
+.row{display:flex;align-items:center;gap:8px;margin-top:8px}
+.tk{display:inline-flex;align-items:center;min-height:36px;padding:0 10px;border:1px solid var(--line-strong);border-radius:999px;text-decoration:none;color:var(--tx-strong);font-family:var(--f-data);font-size:13px;font-weight:600;background:var(--bg)}
+.row .tk{flex:1;border-radius:10px;justify-content:center}
+.ghost{min-height:36px;border:1px solid var(--line-strong);background:transparent;border-radius:999px;padding:0 12px;cursor:pointer}
+.ghost.on{background:var(--tx-strong);color:var(--bg);border-color:var(--tx-strong)}
+.panel{margin-top:12px}
+.panel h2{margin-bottom:8px}
+label.line{display:flex;align-items:flex-start;gap:8px;min-height:44px;padding-top:8px}
+input[type="search"],input[type="email"]{width:100%;min-height:44px;border:1px solid var(--line-strong);border-radius:10px;background:#fff;padding:0 12px}
+.chips{display:flex;gap:6px;overflow-x:auto;margin:10px 0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{color:var(--mut);font-weight:600;font-size:12px}
+.note{margin-top:18px;font-size:12px;color:var(--mut)}
+.alert{margin-top:12px;background:var(--div-bg);border:1px solid var(--div-line);border-radius:12px;padding:12px}
+[hidden]{display:none!important}
+.hot{display:flex;flex-wrap:wrap;gap:8px}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <a class="brand" href="/en/"><img src="/apple-touch-icon.png" alt="" width="22" height="22">The Crowd Tape</a>
+    <nav class="lang" aria-label="Language"><a href="/en/board/" hreflang="en" aria-current="page">EN</a><a href="/zh/board/" hreflang="zh-Hant">中</a></nav>
+  </div>
+</header>
+<div class="wrap">
+<nav class="tabs" aria-label="Today's consensus">
+  <button type="button" data-tab="today" aria-selected="true">Today</button>
+  <button type="button" data-tab="follow" aria-selected="false">Follow-through</button>
+  <button type="button" data-tab="search" aria-selected="false">Search</button>
+  <button type="button" data-tab="score" aria-selected="false">Accuracy</button>
+  <button type="button" data-tab="plans" aria-selected="false">Weekly</button>
+</nav>
+<section id="today">
+  <h1>Today's consensus</h1>
+  <p class="muted" id="window">Loading the consensus.</p>
+  <div class="cards" id="cards"></div>
+  <div class="panel" id="delta"></div>
+  <div class="panel" id="watch"></div>
+  <div class="panel">
+    <h2>Hot, last 7 days</h2>
+    <p class="muted">Weighted by each day's rank, not by mention count.</p>
+    <div class="hot" id="hot"></div>
+  </div>
+</section>
+<section id="follow" hidden>
+  <h1>After the consensus</h1>
+  <p class="lead">Once a stock newly joins the consensus-bullish or consensus-bearish list, this is the next 10 sessions versus QQQ. A name that stays on the list is counted once.</p>
+  <div id="follow-body"></div>
+</section>
+<section id="search" hidden>
+  <h1>Search</h1>
+  <p class="lead">Tickers come from the consensus record. Accounts are the 435 already classified.</p>
+  <input id="q" type="search" placeholder="Ticker or account, for example NVDA" aria-label="Search tickers or accounts">
+  <div class="chips" id="cats"></div>
+  <div id="hits"></div>
+</section>
+<section id="score" hidden>
+  <h1>Account accuracy</h1>
+  <p class="lead">A call opens only when one post names one ticker and the stance changes. A score is shown only after 8 settled calls in 90 days. No account has reached that yet.</p>
+  <div id="ledger"></div>
+</section>
+<section id="plans" hidden>
+  <h1>Why USD 5 a month</h1>
+  <p>The homepage only says which names are in consensus today. The weekly letter turns the past seven days — who changed stance, and which names went from a split to a consensus — into one note, with the original posts. USD 5 a month, one letter a week, in Traditional Chinese.</p>
+  <div class="panel">
+    <p><b>Free: today's consensus bullish, bearish and split lists; search; a watchlist on this device; the 10-session record versus QQQ. Account accuracy appears only after 8 settled calls.</b></p>
+    <p><b>USD 5: the week's note and the source posts. No trade advice, no target prices, and no win rate before 8 calls have settled.</b></p>
+    <p><b>Not for sale yet: custom weights for the six categories, settled history longer than 90 days, and email that is actually sent. Those are not charged for until they exist.</b></p>
+    <p><a href="/zh/weekly/">Open the weekly letter</a></p>
+  </div>
+</section>
+<p class="note">This page only organises the shared stance in public posts. It is not investment advice. Consensus bullish or bearish requires at least two accounts on the same side and none on the other. News-wire accounts are excluded.</p>
+</div>
+<script>
+
+const CATS = ["大人物／企業家", "宏觀", "股市意見", "基本面／主題", "半導體／AI", "交易員"];
+const CATLABEL = {"大人物／企業家": "Prominent", "宏觀": "Macro", "股市意見": "Market opinions", "基本面／主題": "Fundamentals / thematic", "半導體／AI": "Semiconductors / AI", "交易員": "Traders"};
+const T = {"lang": "en", "title": "Today's consensus | The Crowd Tape", "desc": "Today's consensus bullish and bearish names, the biggest splits, and the 10-session record versus QQQ after a name newly joins. Not investment advice.", "home": "/en/", "other_href": "/zh/board/", "other_label": "中", "self_label": "EN", "self_current": true, "tabs": [["today", "Today"], ["follow", "Follow-through"], ["search", "Search"], ["score", "Accuracy"], ["plans", "Weekly"]], "h_today": "Today's consensus", "loading": "Loading the consensus.", "window": "Window {a} to {b} (HKT). Updated {u}.", "bull": "Consensus bullish", "bear": "Consensus bearish", "split": "Split", "split_note": "{n} names with both sides", "vs": "Against the previous window", "new_bull": "Newly consensus bullish", "drop_bull": "Left the bullish list", "new_bear": "Newly consensus bearish", "drop_bear": "Left the bearish list", "none": "None", "hot": "Hot, last 7 days", "hot_note": "Weighted by each day's rank, not by mention count.", "watch": "Watchlist", "watch_empty": "None yet. Press Watch beside a ticker. The list stays on this device.", "watch_on": "Watching", "watch_off": "Watch", "alert": "Show a notice on this page when a watched name becomes consensus bullish or bearish.", "email_ph": "Email stays on this device", "alert_title": "Notice for this window", "alert_bull": "newly consensus bullish", "alert_bear": "newly consensus bearish", "alert_mail": "Email is not connected. The lines above are what would be sent.", "same": "Same as the previous window", "absent": "Not on the previous window either", "left": "Left this window", "chg": "From {a} to {b}", "lab_bull": "Consensus bullish", "lab_bear": "Consensus bearish", "lab_split": "Split", "lab_none": "No shared stance", "h_follow": "After the consensus", "follow_lead": "Once a stock newly joins the consensus-bullish or consensus-bearish list, this is the next 10 sessions versus QQQ. A name that stays on the list is counted once.", "follow_fail": "The follow-through figures could not be loaded.", "avg": "Average versus QQQ · {n} settled", "hit": "{p}% beat QQQ · median {m}", "open_n": "Not yet 10 sessions: {n} · {hint}", "hint_bull": "A positive figure beat QQQ", "hint_bear": "A positive figure means the short beat a short QQQ", "method": "From {a} through the close of {b}. Entry is the close of the next session still open when the window ended, held for {h} sessions. Names short of {h} sessions are left out of the average.", "recent": "Recently settled", "th": ["Signal", "Ticker", "Side", "10 sessions", "Vs QQQ"], "side_bull": "Bullish", "side_bear": "Bearish", "h_search": "Search", "search_lead": "Tickers come from the consensus record. Accounts are the 435 already classified.", "search_ph": "Ticker or account, for example NVDA", "search_aria": "Search tickers or accounts", "all": "All", "search_hint": "Enter a ticker or an account name, or pick a category.", "search_none": "No matching account.", "h_score": "Account accuracy", "score_lead": "A call opens only when one post names one ticker and the stance changes. A score is shown only after 8 settled calls in 90 days. No account has reached that yet.", "ledger": "As of {asof}. Sample of {posts} labelled posts, {calls} calls opened, 0 settled.", "th_score": ["Account", "Ticker", "Side", "Entry"], "wait": "Waiting for the close", "h_plans": "Why USD 5 a month", "plans_lead": "The homepage only says which names are in consensus today. The weekly letter turns the past seven days — who changed stance, and which names went from a split to a consensus — into one note, with the original posts. USD 5 a month, one letter a week, in Traditional Chinese.", "free": "Free: today's consensus bullish, bearish and split lists; search; a watchlist on this device; the 10-session record versus QQQ. Account accuracy appears only after 8 settled calls.", "paid": "USD 5: the week's note and the source posts. No trade advice, no target prices, and no win rate before 8 calls have settled.", "later": "Not for sale yet: custom weights for the six categories, settled history longer than 90 days, and email that is actually sent. Those are not charged for until they exist.", "weekly": "Open the weekly letter", "weekly_href": "/zh/weekly/", "note": "This page only organises the shared stance in public posts. It is not investment advice. Consensus bullish or bearish requires at least two accounts on the same side and none on the other. News-wire accounts are excluded.", "fail": "The consensus could not be loaded: ", "stock": "/en/stock/", "account": "/en/account/"};
+const KEY = "crowd-tape-watch";
+const ALERT = "crowd-tape-alert";
+const EMAIL = "crowd-tape-email";
+
+function readWatch(){ try { const v = JSON.parse(localStorage.getItem(KEY) || "[]"); return Array.isArray(v) ? v.filter(x => typeof x === "string") : []; } catch { return []; } }
+function writeWatch(list){ localStorage.setItem(KEY, JSON.stringify(list)); }
+function bucket(list, tk){
+  if ((list.bull || []).includes(tk)) return "bull";
+  if ((list.bear || []).includes(tk)) return "bear";
+  if ((list.split || []).includes(tk)) return "split";
+  return "none";
+}
+const LAB = { bull: T.lab_bull, bear: T.lab_bear, split: T.lab_split, none: T.lab_none };
+function change(now, prev){
+  if (now === prev) return now === "none" ? T.absent : T.same;
+  if (now === "bull") return T.alert_bull;
+  if (now === "bear") return T.alert_bear;
+  if (now === "none") return T.left;
+  return T.chg.replace("{a}", LAB[prev]).replace("{b}", LAB[now]);
+}
+function el(tag, cls, text){ const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+function linkTicker(tk){ const a = el("a", "tk", tk); a.href = T.stock + encodeURIComponent(tk) + "/"; return a; }
+function watchBtn(tk){
+  const on = readWatch().includes(tk);
+  const b = el("button", "ghost", on ? T.watch_on : T.watch_off);
+  b.type = "button";
+  if (on) b.classList.add("on");
+  b.addEventListener("click", () => {
+    const cur = readWatch();
+    const next = cur.includes(tk) ? cur.filter(x => x !== tk) : cur.concat(tk);
+    writeWatch(next);
+    paintWatch();
+    document.querySelectorAll(".ghost").forEach(btn => {
+      if (btn.dataset.tk === tk) { btn.textContent = next.includes(tk) ? T.watch_on : T.watch_off; btn.classList.toggle("on", next.includes(tk)); }
+    });
+  });
+  b.dataset.tk = tk;
+  return b;
+}
+function card(title, cls, tickers, note){
+  const s = el("section", "card " + cls);
+  s.append(el("h2", cls, title), el("p", "n", String(tickers.length)));
+  tickers.forEach(tk => { const row = el("div", "row"); row.append(linkTicker(tk), watchBtn(tk)); s.append(row); });
+  if (note) s.append(el("p", "muted", note));
+  return s;
+}
+function pct(x){
+  if (x == null || Number.isNaN(Number(x))) return "—";
+  const n = Number(x) * 100;
+  return (n > 0 ? "+" : "") + n.toFixed(1) + "%";
+}
+let TODAY, PREV, DIR = [], HOT = [], UNIVERSE = [];
+function paintWatch(){
+  const box = document.getElementById("watch");
+  box.replaceChildren();
+  box.append(el("h2", "", T.watch));
+  const list = readWatch();
+  if (!list.length) box.append(el("p", "muted", T.watch_empty));
+  list.forEach(tk => {
+    const now = bucket(TODAY, tk), prev = bucket(PREV, tk);
+    const row = el("div", "row");
+    const sub = el("span", "muted", LAB[now] + " · " + change(now, prev));
+    sub.style.fontSize = "12px";
+    const wrap = el("div"); wrap.style.flex = "1"; wrap.append(linkTicker(tk), sub);
+    row.append(wrap, watchBtn(tk));
+    box.append(row);
+  });
+  const lab = el("label", "line", "");
+  const cb = document.createElement("input");
+  cb.type = "checkbox";
+  cb.checked = localStorage.getItem(ALERT) === "1";
+  cb.addEventListener("change", () => localStorage.setItem(ALERT, cb.checked ? "1" : "0"));
+  lab.append(cb, document.createTextNode(T.alert));
+  box.append(lab);
+  if (!cb.checked) return;
+  const email = document.createElement("input");
+  email.type = "email"; email.placeholder = T.email_ph; email.value = localStorage.getItem(EMAIL) || "";
+  email.addEventListener("change", () => { if (!email.value || email.value.includes("@")) localStorage.setItem(EMAIL, email.value.trim()); });
+  box.append(email);
+  const hits = list.filter(tk => {
+    const now = bucket(TODAY, tk), prev = bucket(PREV, tk);
+    return (now === "bull" && prev !== "bull") || (now === "bear" && prev !== "bear");
+  });
+  if (!hits.length) return;
+  const a = el("div", "alert");
+  a.append(el("p", "", T.alert_title));
+  hits.forEach(tk => a.append(el("p", "", tk + " " + (bucket(TODAY, tk) === "bull" ? T.alert_bull : T.alert_bear))));
+  a.append(el("p", "muted", T.alert_mail));
+  box.append(a);
+}
+function renderFollow(ft){
+  const box = document.getElementById("follow-body");
+  box.replaceChildren();
+  if (!ft || !ft.bull) { box.append(el("p", "muted", T.follow_fail)); return; }
+  const cards = el("div", "cards");
+  function stat(title, cls, block, hint){
+    const s = el("section", "card " + cls);
+    s.append(el("h2", cls, title));
+    s.append(el("p", "n " + (block.avg_xs > 0 ? "bull" : "bear"), pct(block.avg_xs)));
+    s.append(el("p", "muted", T.avg.replace("{n}", block.settled)));
+    s.append(el("p", "muted", T.hit.replace("{p}", Math.round(block.hit * 100)).replace("{m}", pct(block.median_xs))));
+    s.append(el("p", "muted", T.open_n.replace("{n}", block.immature).replace("{hint}", hint)));
+    return s;
+  }
+  cards.append(stat(T.bull, "bull", ft.bull, T.hint_bull));
+  cards.append(stat(T.bear, "bear", ft.bear, T.hint_bear));
+  box.append(cards);
+  box.append(el("p", "muted", T.method.replace("{a}", ft.from).replace("{b}", ft.as_of).replaceAll("{h}", ft.horizon)));
+  const table = document.createElement("table");
+  const head = document.createElement("tr");
+  T.th.forEach(name => head.append(el("th", "", name)));
+  table.append(head);
+  (ft.rows || []).forEach(r => {
+    const tr = document.createElement("tr");
+    const td = el("td", ""); td.append(linkTicker(r.ticker));
+    tr.append(el("td", "", String(r.signal).slice(5)), td);
+    tr.append(el("td", r.side === "bull" ? "bull" : "bear", r.side === "bull" ? T.side_bull : T.side_bear));
+    tr.append(el("td", "", pct(r.ret)));
+    tr.append(el("td", r.xs > 0 ? "bull" : "bear", pct(r.xs)));
+    table.append(tr);
+  });
+  const panel = el("div", "panel");
+  panel.append(el("h2", "", T.recent), table);
+  box.append(panel);
+}
+function renderToday(){
+  const w = TODAY.window || [];
+  document.getElementById("window").textContent = T.window.replace("{a}", w[0] || "").replace("{b}", w[1] || "").replace("{u}", TODAY.updated_hkt || "");
+  document.getElementById("cards").replaceChildren(
+    card(T.bull, "bull", TODAY.bull || [], ""),
+    card(T.bear, "bear", TODAY.bear || [], ""),
+    card(T.split, "split", (TODAY.split || []).slice(0, 8), T.split_note.replace("{n}", (TODAY.split || []).length))
+  );
+  const delta = document.getElementById("delta");
+  delta.replaceChildren(el("h2", "", T.vs));
+  [[T.new_bull, (TODAY.bull || []).filter(t => !(PREV.bull || []).includes(t))],
+   [T.drop_bull, (PREV.bull || []).filter(t => !(TODAY.bull || []).includes(t))],
+   [T.new_bear, (TODAY.bear || []).filter(t => !(PREV.bear || []).includes(t))],
+   [T.drop_bear, (PREV.bear || []).filter(t => !(TODAY.bear || []).includes(t))]].forEach(([label, tks]) => {
+    const p = el("p", "");
+    p.append(el("span", "muted", label + " "), document.createTextNode(tks.length ? tks.join(", ") : T.none));
+    delta.append(p);
+  });
+  const hot = document.getElementById("hot");
+  hot.replaceChildren();
+  HOT.forEach((tk, i) => { const a = linkTicker((i + 1) + " " + tk); a.href = T.stock + encodeURIComponent(tk) + "/"; hot.append(a); });
+  paintWatch();
+}
+document.querySelectorAll("nav.tabs button").forEach(btn => btn.addEventListener("click", () => {
+  document.querySelectorAll("nav.tabs button").forEach(b => b.setAttribute("aria-selected", b === btn ? "true" : "false"));
+  ["today","follow","search","score","plans"].forEach(id => document.getElementById(id).hidden = id !== btn.dataset.tab);
+}));
+let CAT = "";
+function catName(c){ return CATLABEL[c] || c; }
+function renderSearch(){
+  const q = document.getElementById("q").value.trim();
+  const box = document.getElementById("hits");
+  box.replaceChildren();
+  const needle = q.replace(/^\$/, "").toUpperCase();
+  if (needle) {
+    UNIVERSE.filter(t => t.includes(needle)).slice(0, 12).forEach(tk => {
+      const row = el("div", "row"); row.append(linkTicker(tk), watchBtn(tk)); box.append(row);
+    });
+  }
+  const n = q.replace(/^@/, "").toLowerCase();
+  if (!n && !CAT) { if (!needle) box.append(el("p", "muted", T.search_hint)); return; }
+  const rows = DIR.filter(a => (!CAT || a.c === CAT) && (!n || a.h.toLowerCase().includes(n) || String(a.n).toLowerCase().includes(n))).slice(0, 40);
+  rows.forEach(a => {
+    const p = el("p", "");
+    const link = el("a", "", a.n); link.href = T.account + encodeURIComponent(a.h) + "/";
+    p.append(link, el("span", "muted", " @" + a.h + " · " + catName(a.c)));
+    box.append(p);
+  });
+  if (!rows.length && !needle) box.append(el("p", "muted", T.search_none));
+}
+async function start(){
+  const [hist, dir, ledger, ft] = await Promise.all([
+    fetch("/data/consensus-history.json").then(r => r.json()),
+    fetch("/zh/board/directory.json").then(r => r.json()),
+    fetch("/zh/board/ledger.json").then(r => r.json()),
+    fetch("/data/followthrough.json").then(r => r.ok ? r.json() : null).catch(() => null)
+  ]);
+  DIR = dir;
+  const days = Object.keys(hist.days).sort();
+  TODAY = hist.days[days.at(-1)];
+  PREV = hist.days[days.at(-2)] || {bull:[],bear:[],split:[]};
+  const score = new Map();
+  days.slice(-7).forEach(day => (hist.days[day].top || []).forEach((tk, i) => score.set(tk, (score.get(tk) || 0) + (8 - i))));
+  HOT = [...score.entries()].sort((a,b) => b[1] - a[1]).slice(0, 10).map(x => x[0]);
+  const universe = new Set();
+  days.forEach(day => ["bull","bear","split","top"].forEach(k => (hist.days[day][k] || []).forEach(t => universe.add(t))));
+  UNIVERSE = [...universe];
+  renderToday();
+  renderFollow(ft);
+  const cats = document.getElementById("cats");
+  [["", T.all], ...CATS.map(c => [c, catName(c)])].forEach(([id, name]) => {
+    const b = el("button", "ghost", name);
+    b.type = "button";
+    b.addEventListener("click", () => { CAT = id; cats.querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b)); renderSearch(); });
+    cats.append(b);
+  });
+  document.getElementById("q").addEventListener("input", renderSearch);
+  const box = document.getElementById("ledger");
+  box.append(el("p", "", T.ledger.replace("{asof}", ledger.asOf).replace("{posts}", ledger.posts).replace("{calls}", ledger.calls.length)));
+  const table = document.createElement("table");
+  const head = document.createElement("tr");
+  T.th_score.forEach(name => head.append(el("th", "", name)));
+  table.append(head);
+  ledger.calls.forEach(c => {
+    const tr = document.createElement("tr");
+    const who = el("td", "");
+    const a = el("a", "", "@" + c.handle); a.href = T.account + encodeURIComponent(c.handle) + "/";
+    who.append(a);
+    tr.append(who, el("td", "", c.ticker), el("td", c.direction === "bull" ? "bull" : "bear", c.direction === "bull" ? T.side_bull : T.side_bear));
+    tr.append(el("td", "", c.entryPx ? c.entryDate + " · " + c.entryPx : T.wait));
+    table.append(tr);
+  });
+  box.append(table);
+}
+start().catch(err => { document.getElementById("window").textContent = T.fail + err.message; });
+
+</script>
+</body>
+</html>

@@ -2,121 +2,135 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>今日共同看好同看淡｜The Crowd Tape</title>
-<meta name="description" content="今日共同看好、看淡、分歧，以及齊聲之後 10 個交易日相對 QQQ。不是投資建議。">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>今日共識｜共同看多與共同看空｜The Crowd Tape</title>
+<meta name="description" content="今日共同看多、共同看空與分歧，以及新列入之後 10 個交易日相對 QQQ 的紀錄。並非投資建議。">
 <link rel="canonical" href="https://thecrowdtape.com/zh/board/">
-<link rel="icon" href="/favicon.ico">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&display=swap">
+<link rel="alternate" hreflang="zh-Hant" href="https://thecrowdtape.com/zh/board/">
+<link rel="alternate" hreflang="en" href="https://thecrowdtape.com/en/board/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#fbf6ec">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&display=swap">
 <style>
 :root{
-  --bg:#f3f4f7; --surface:#fff; --ink:#161a21; --muted:#5b6372; --line:#dde1e8;
-  --accent:#2d48c9; --bull:#11845a; --bear:#c3343a; --warn:#a3640a; --warn-soft:#fbefd9;
-  --f-display:"Noto Serif TC",serif; --f-body:"Noto Sans TC",system-ui,sans-serif; --f-data:"IBM Plex Mono",ui-monospace,monospace;
+  --bg:#fbf6ec; --bg-dot:#f1e7d3; --panel:#fffaf2; --line:#ece1cc; --line-strong:#dccbab;
+  --tx:#3b2f24; --tx-strong:#2a2119; --mut:#87776a; --link:#a5672c;
+  --bull:#25803c; --bull-bg:#e5f4e7; --bull-line:#bfe2c6;
+  --bear:#c22f2a; --bear-bg:#fde6e4; --bear-line:#f6c3be;
+  --div:#9a6b12; --div-bg:#fdf1d2; --div-line:#f0dba0;
+  --f-display:"Noto Serif TC","Source Han Serif TC","Songti TC","PMingLiU",serif;
+  --f-body:"Noto Sans TC","PingFang TC","Noto Sans CJK TC","Microsoft JhengHei",system-ui,sans-serif;
+  --f-data:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
-@media (prefers-color-scheme: dark){:root{
-  --bg:#0e1116; --surface:#161a21; --ink:#e6e9ee; --muted:#9aa2b0; --line:#2a303a;
-  --accent:#93a5ff; --bull:#3cc58b; --bear:#f2686d; --warn:#e6a94a; --warn-soft:#3a2c14; color-scheme:dark}}
 *{box-sizing:border-box}
 html{overflow-x:clip}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55}
-a{color:var(--accent)}
+body{margin:0;background:var(--bg) radial-gradient(var(--bg-dot) 1px,transparent 1px) 0 0/14px 14px;color:var(--tx);font-family:var(--f-body);font-size:15px;line-height:1.55}
+a{color:var(--link)}
 button,input{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.wrap{max-width:880px;margin:0 auto;padding:16px 16px 64px}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
-.brand{font-family:var(--f-display);font-size:20px;font-weight:700;color:var(--ink);text-decoration:none}
-nav{display:flex;gap:6px;overflow-x:auto;margin:0 0 16px}
-nav button{min-height:44px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;white-space:nowrap;cursor:pointer}
-nav button[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-h1{font-family:var(--f-display);font-size:28px;line-height:1.25;margin:0 0 8px}
-.muted{color:var(--muted)}
+:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px 64px}
+header{position:sticky;top:0;z-index:5;background:rgba(251,246,236,.94);border-bottom:1px solid var(--line);backdrop-filter:saturate(1.2) blur(8px)}
+.bar{max-width:980px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--tx-strong);font-family:var(--f-display);font-weight:700;font-size:20px;letter-spacing:.02em}
+.brand img{border-radius:6px}
+.lang{display:flex;gap:4px}
+.lang a{font:600 12.5px/1 var(--f-body);padding:6px 10px;border:1px solid var(--line-strong);border-radius:999px;color:var(--mut);text-decoration:none;background:var(--panel);min-height:32px;display:inline-flex;align-items:center}
+.lang a[aria-current]{color:var(--tx-strong);border-color:var(--tx);background:#fff}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;margin:14px 0 8px}
+nav.tabs button{background:none;border:0;border-bottom:2px solid transparent;padding:10px 14px;min-height:44px;font-weight:500;color:var(--mut);cursor:pointer;white-space:nowrap}
+nav.tabs button[aria-selected="true"]{color:var(--tx-strong);border-bottom-color:var(--tx-strong)}
+h1{font-family:var(--f-display);font-weight:700;font-size:1.7rem;letter-spacing:.01em;margin:8px 0}
+.lead,.muted{color:var(--mut)}
 .cards{display:grid;gap:12px}
 @media(min-width:800px){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.card,.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px}
-.card h2{margin:0;font-size:14px}
-.bull{color:var(--bull)}.bear{color:var(--bear)}
-.n{font:500 28px/1 var(--f-data);margin:8px 0}
-ul{list-style:none;margin:0;padding:0}
+.card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 14px 16px;box-shadow:0 1px 3px rgba(120,90,50,.06)}
+.card h2,.panel h2{margin:0;font-size:14px;font-weight:700}
+.card.bull{border-left:5px solid var(--bull)}
+.card.bear{border-left:5px solid var(--bear)}
+.card.split{border-left:5px solid var(--div)}
+.bull{color:var(--bull)}.bear{color:var(--bear)}.split{color:var(--div)}
+.n{font:600 28px/1.1 var(--f-data);margin:10px 0 4px;color:var(--tx-strong)}
 .row{display:flex;align-items:center;gap:8px;margin-top:8px}
-.tk{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border:1px solid var(--line);border-radius:10px;text-decoration:none;color:var(--ink);font-family:var(--f-data);font-size:14px}
-.row .tk{flex:1}
-.ghost{min-height:44px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:0 12px;cursor:pointer}
-.ghost.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tk{display:inline-flex;align-items:center;min-height:36px;padding:0 10px;border:1px solid var(--line-strong);border-radius:999px;text-decoration:none;color:var(--tx-strong);font-family:var(--f-data);font-size:13px;font-weight:600;background:var(--bg)}
+.row .tk{flex:1;border-radius:10px;justify-content:center}
+.ghost{min-height:36px;border:1px solid var(--line-strong);background:transparent;border-radius:999px;padding:0 12px;cursor:pointer}
+.ghost.on{background:var(--tx-strong);color:var(--bg);border-color:var(--tx-strong)}
 .panel{margin-top:12px}
-.panel h2{margin:0 0 8px;font-size:15px}
-label.line{display:flex;align-items:center;gap:8px;min-height:44px}
-input[type="search"],input[type="email"]{width:100%;min-height:44px;border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:0 12px}
-.chips{display:flex;gap:6px;overflow-x:auto;margin-top:10px}
+.panel h2{margin-bottom:8px}
+label.line{display:flex;align-items:flex-start;gap:8px;min-height:44px;padding-top:8px}
+input[type="search"],input[type="email"]{width:100%;min-height:44px;border:1px solid var(--line-strong);border-radius:10px;background:#fff;padding:0 12px}
+.chips{display:flex;gap:6px;overflow-x:auto;margin:10px 0}
 table{width:100%;border-collapse:collapse;font-size:14px}
-th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
-.note{margin-top:16px;font-size:12px;color:var(--muted)}
-.alert{margin-top:12px;background:var(--warn-soft);border-radius:12px;padding:12px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{color:var(--mut);font-weight:600;font-size:12px}
+.note{margin-top:18px;font-size:12px;color:var(--mut)}
+.alert{margin-top:12px;background:var(--div-bg);border:1px solid var(--div-line);border-radius:12px;padding:12px}
 [hidden]{display:none!important}
+.hot{display:flex;flex-wrap:wrap;gap:8px}
 </style>
 </head>
 <body>
-<div class="wrap">
 <header>
-  <a class="brand" href="/zh/">The Crowd Tape</a>
-  <a href="/zh/weekly/">週報</a>
+  <div class="bar">
+    <a class="brand" href="/zh/"><img src="/apple-touch-icon.png" alt="" width="22" height="22">The Crowd Tape</a>
+    <nav class="lang" aria-label="Language"><a href="/zh/board/" hreflang="zh-Hant" aria-current="page">中</a><a href="/en/board/" hreflang="en">EN</a></nav>
+  </div>
 </header>
-<nav>
+<div class="wrap">
+<nav class="tabs" aria-label="今日共識">
   <button type="button" data-tab="today" aria-selected="true">今日</button>
   <button type="button" data-tab="follow" aria-selected="false">跟進</button>
   <button type="button" data-tab="search" aria-selected="false">搜尋</button>
   <button type="button" data-tab="score" aria-selected="false">準確度</button>
-  <button type="button" data-tab="plans" aria-selected="false">點解 USD 5</button>
+  <button type="button" data-tab="plans" aria-selected="false">週報</button>
 </nav>
-
 <section id="today">
-  <h1>今日邊隻齊聲</h1>
-  <p class="muted" id="window">載入共識…</p>
+  <h1>今日共識</h1>
+  <p class="muted" id="window">正在載入共識。</p>
   <div class="cards" id="cards"></div>
   <div class="panel" id="delta"></div>
   <div class="panel" id="watch"></div>
   <div class="panel">
     <h2>近 7 日熱門</h2>
-    <p class="muted">按每日熱門名單的名次加權，不是提及次數。</p>
-    <div class="row" id="hot" style="flex-wrap:wrap"></div>
+    <p class="muted">依每日熱門名單的名次加權，並非提及次數。</p>
+    <div class="hot" id="hot"></div>
   </div>
 </section>
-
 <section id="follow" hidden>
   <h1>齊聲之後</h1>
-  <p class="muted">新列入共同看好或看淡的股票，10 個交易日之後相對 QQQ。連續上榜只計第一次。</p>
+  <p class="lead">股票新列入共同看多或共同看空之後，持有 10 個交易日、相對 QQQ 的結果。同一方向連續上榜只計第一次。</p>
   <div id="follow-body"></div>
 </section>
-
 <section id="search" hidden>
   <h1>搜尋</h1>
-  <p class="muted">代碼來自共識歷史。帳號是已分類的 435 個。</p>
-  <input id="q" type="search" placeholder="NVDA 或 Serenity" aria-label="搜尋代碼或帳號">
+  <p class="lead">代號來自共識紀錄。帳號為已分類的 435 個。</p>
+  <input id="q" type="search" placeholder="代號或帳號，例如 NVDA" aria-label="搜尋代號或帳號">
   <div class="chips" id="cats"></div>
   <div id="hits"></div>
 </section>
-
 <section id="score" hidden>
   <h1>帳號準確度</h1>
-  <p class="muted">只計一帖一隻、轉態先開新注。90 日內至少 8 注已結算先公開。這批還沒有人達標。</p>
+  <p class="lead">只計算一帖一股、且立場有變才開立的新倉。過去 90 日至少 8 筆已結算，才公開準確度。目前沒有帳號達標。</p>
   <div id="ledger"></div>
 </section>
-
 <section id="plans" hidden>
-  <h1>點解要付每月 USD 5</h1>
-  <p>首頁只答今日邊隻齊聲。週報把過去 7 日誰改口、邊隻由分歧變齊聲寫成一段，並附原帖。一個月 USD 5，每週一封繁中。</p>
+  <h1>為何每月 5 美元</h1>
+  <p>首頁只回答今日哪些股票形成共識。週報把過去 7 日的改口，以及由分歧轉為齊聲的股票，寫成一段並附上原帖。每月 5 美元，每週一封繁體中文。</p>
   <div class="panel">
-    <p><b>免費有：</b>今日共同看好、看淡、分歧；搜尋；這部裝置上的關注清單；齊聲之後 10 日相對 QQQ。帳號準確度要滿 8 注先顯示。</p>
-    <p><b>USD 5 有：</b>一週敘事同原帖。沒有買賣建議，沒有目標價，未滿 8 注也不會寫成勝率。</p>
-    <p><b>更高階未開賣：</b>自訂六類權重、長過 90 日的已結算明細、真正的電郵。未做好之前不收款。</p>
-    <p><a href="/zh/weekly/">去現有的週報頁</a></p>
+    <p><b>免費提供：今日共同看多、共同看空與分歧；搜尋；本機關注清單；齊聲之後 10 日相對 QQQ 的紀錄。帳號準確度須滿 8 筆已結算才顯示。</b></p>
+    <p><b>5 美元提供：一週的敘述與原帖。沒有買賣建議，沒有目標價；未滿 8 筆亦不寫成勝率。</b></p>
+    <p><b>尚未發售：自訂六類權重、長於 90 日的已結算明細，以及真正寄出的電郵。未完成前不收費。</b></p>
+    <p><a href="/zh/weekly/">前往週報</a></p>
   </div>
 </section>
-
-<p class="note">只整理公開帖文的共同立場，不是投資建議。共同看好或看淡要至少兩個帳號同一方向，快訊帳號不計。</p>
+<p class="note">本頁只整理公開帖文的共同立場，並非投資建議。共同看多或共同看空須至少兩個帳號方向一致，且沒有相反方向；快訊帳號不計。</p>
 </div>
 <script>
-const CATS = ["大人物／企業家","宏觀","股市意見","基本面／主題","半導體／AI","交易員"];
+
+const CATS = ["大人物／企業家", "宏觀", "股市意見", "基本面／主題", "半導體／AI", "交易員"];
+const CATLABEL = {"大人物／企業家": "大人物／企業家", "宏觀": "宏觀", "股市意見": "股市意見", "基本面／主題": "基本面／主題", "半導體／AI": "半導體／AI", "交易員": "交易員"};
+const T = {"lang": "zh-Hant", "title": "今日共識｜共同看多與共同看空｜The Crowd Tape", "desc": "今日共同看多、共同看空與分歧，以及新列入之後 10 個交易日相對 QQQ 的紀錄。並非投資建議。", "home": "/zh/", "other_href": "/en/board/", "other_label": "EN", "self_label": "中", "self_current": true, "tabs": [["today", "今日"], ["follow", "跟進"], ["search", "搜尋"], ["score", "準確度"], ["plans", "週報"]], "h_today": "今日共識", "loading": "正在載入共識。", "window": "資料窗 {a} 至 {b}（香港時間）。更新於 {u}。", "bull": "共同看多", "bear": "共同看空", "split": "分歧", "split_note": "共 {n} 隻同時有看多與看空", "vs": "相對上一個資料窗", "new_bull": "新列入看多", "drop_bull": "不再列入看多", "new_bear": "新列入看空", "drop_bear": "不再列入看空", "none": "無", "hot": "近 7 日熱門", "hot_note": "依每日熱門名單的名次加權，並非提及次數。", "watch": "關注清單", "watch_empty": "尚未加入。請在代號旁按「關注」。清單只保存在這部裝置。", "watch_on": "已關注", "watch_off": "關注", "alert": "關注中的股票新列入共同看多或共同看空時，在本頁提示。", "email_ph": "電郵只保存在這部裝置", "alert_title": "本資料窗的提示", "alert_bull": "新列入共同看多", "alert_bear": "新列入共同看空", "alert_mail": "電郵尚未接通。以上即為應寄出的內容。", "same": "與上一個資料窗相同", "absent": "上一個資料窗亦未列入", "left": "已離開本資料窗", "chg": "由{a}改為{b}", "lab_bull": "共同看多", "lab_bear": "共同看空", "lab_split": "分歧", "lab_none": "沒有共同立場", "h_follow": "齊聲之後", "follow_lead": "股票新列入共同看多或共同看空之後，持有 10 個交易日、相對 QQQ 的結果。同一方向連續上榜只計第一次。", "follow_fail": "跟進數據暫時無法載入。", "avg": "平均相對 QQQ · {n} 筆已結算", "hit": "{p}% 跑贏 · 中位數 {m}", "open_n": "未滿 10 日：{n} · {hint}", "hint_bull": "正數表示跑贏 QQQ", "hint_bear": "正數表示沽出該股的回報高於沽出 QQQ", "method": "自 {a} 起計，至收市日 {b}。入場價為資料窗結束時下一個尚未收市之交易日的收市價，持有 {h} 個交易日。未滿 {h} 日者不計入平均。", "recent": "最近已結算", "th": ["信號日", "代號", "方向", "10 日", "相對 QQQ"], "side_bull": "看多", "side_bear": "看空", "h_search": "搜尋", "search_lead": "代號來自共識紀錄。帳號為已分類的 435 個。", "search_ph": "代號或帳號，例如 NVDA", "search_aria": "搜尋代號或帳號", "all": "全部", "search_hint": "請輸入代號或帳號，或先選擇類別。", "search_none": "沒有符合的帳號。", "h_score": "帳號準確度", "score_lead": "只計算一帖一股、且立場有變才開立的新倉。過去 90 日至少 8 筆已結算，才公開準確度。目前沒有帳號達標。", "ledger": "截至 {asof}。抽樣 {posts} 則已標註帖文，開倉 {calls} 筆，已結算 0 筆。", "th_score": ["帳號", "代號", "方向", "入場"], "wait": "待收市", "h_plans": "為何每月 5 美元", "plans_lead": "首頁只回答今日哪些股票形成共識。週報把過去 7 日的改口，以及由分歧轉為齊聲的股票，寫成一段並附上原帖。每月 5 美元，每週一封繁體中文。", "free": "免費提供：今日共同看多、共同看空與分歧；搜尋；本機關注清單；齊聲之後 10 日相對 QQQ 的紀錄。帳號準確度須滿 8 筆已結算才顯示。", "paid": "5 美元提供：一週的敘述與原帖。沒有買賣建議，沒有目標價；未滿 8 筆亦不寫成勝率。", "later": "尚未發售：自訂六類權重、長於 90 日的已結算明細，以及真正寄出的電郵。未完成前不收費。", "weekly": "前往週報", "weekly_href": "/zh/weekly/", "note": "本頁只整理公開帖文的共同立場，並非投資建議。共同看多或共同看空須至少兩個帳號方向一致，且沒有相反方向；快訊帳號不計。", "fail": "共識載入失敗：", "stock": "/zh/stock/", "account": "/zh/account/"};
 const KEY = "crowd-tape-watch";
 const ALERT = "crowd-tape-alert";
 const EMAIL = "crowd-tape-email";
@@ -124,64 +138,63 @@ const EMAIL = "crowd-tape-email";
 function readWatch(){ try { const v = JSON.parse(localStorage.getItem(KEY) || "[]"); return Array.isArray(v) ? v.filter(x => typeof x === "string") : []; } catch { return []; } }
 function writeWatch(list){ localStorage.setItem(KEY, JSON.stringify(list)); }
 function bucket(list, tk){
-  if (list.bull.includes(tk)) return "bull";
-  if (list.bear.includes(tk)) return "bear";
-  if (list.split.includes(tk)) return "split";
+  if ((list.bull || []).includes(tk)) return "bull";
+  if ((list.bear || []).includes(tk)) return "bear";
+  if ((list.split || []).includes(tk)) return "split";
   return "none";
 }
-const LAB = { bull:"共同看好", bear:"共同看淡", split:"分歧", none:"沒有共同立場" };
+const LAB = { bull: T.lab_bull, bear: T.lab_bear, split: T.lab_split, none: T.lab_none };
 function change(now, prev){
-  if (now === prev) return now === "none" ? "上一個窗口也沒有" : "跟上一個窗口一樣";
-  if (now === "bull") return "新列入共同看好";
-  if (now === "bear") return "新列入共同看淡";
-  if (now === "none") return "跌出今個窗口";
-  return "由" + LAB[prev] + "改為" + LAB[now];
+  if (now === prev) return now === "none" ? T.absent : T.same;
+  if (now === "bull") return T.alert_bull;
+  if (now === "bear") return T.alert_bear;
+  if (now === "none") return T.left;
+  return T.chg.replace("{a}", LAB[prev]).replace("{b}", LAB[now]);
 }
 function el(tag, cls, text){ const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
-function linkTicker(tk){ const a = el("a", "tk", tk); a.href = "/zh/stock/" + encodeURIComponent(tk) + "/"; return a; }
+function linkTicker(tk){ const a = el("a", "tk", tk); a.href = T.stock + encodeURIComponent(tk) + "/"; return a; }
 function watchBtn(tk){
-  const b = el("button", "ghost", readWatch().includes(tk) ? "已關注" : "關注");
+  const on = readWatch().includes(tk);
+  const b = el("button", "ghost", on ? T.watch_on : T.watch_off);
   b.type = "button";
-  if (readWatch().includes(tk)) b.classList.add("on");
+  if (on) b.classList.add("on");
   b.addEventListener("click", () => {
     const cur = readWatch();
     const next = cur.includes(tk) ? cur.filter(x => x !== tk) : cur.concat(tk);
     writeWatch(next);
     paintWatch();
     document.querySelectorAll(".ghost").forEach(btn => {
-      if (btn.dataset.tk === tk) { btn.textContent = next.includes(tk) ? "已關注" : "關注"; btn.classList.toggle("on", next.includes(tk)); }
+      if (btn.dataset.tk === tk) { btn.textContent = next.includes(tk) ? T.watch_on : T.watch_off; btn.classList.toggle("on", next.includes(tk)); }
     });
   });
   b.dataset.tk = tk;
   return b;
 }
 function card(title, cls, tickers, note){
-  const s = el("section", "card");
-  const h = el("h2", cls, title);
-  s.append(h, el("p", "n", String(tickers.length)));
-  tickers.forEach(tk => {
-    const row = el("div", "row");
-    row.append(linkTicker(tk), watchBtn(tk));
-    s.append(row);
-  });
+  const s = el("section", "card " + cls);
+  s.append(el("h2", cls, title), el("p", "n", String(tickers.length)));
+  tickers.forEach(tk => { const row = el("div", "row"); row.append(linkTicker(tk), watchBtn(tk)); s.append(row); });
   if (note) s.append(el("p", "muted", note));
   return s;
 }
-
+function pct(x){
+  if (x == null || Number.isNaN(Number(x))) return "—";
+  const n = Number(x) * 100;
+  return (n > 0 ? "+" : "") + n.toFixed(1) + "%";
+}
 let TODAY, PREV, DIR = [], HOT = [], UNIVERSE = [];
 function paintWatch(){
   const box = document.getElementById("watch");
   box.replaceChildren();
-  box.append(el("h2", "", "我的關注"));
+  box.append(el("h2", "", T.watch));
   const list = readWatch();
-  if (!list.length) box.append(el("p", "muted", "未有關注。喺上面的股票按「關注」，清單只存在這部裝置。"));
+  if (!list.length) box.append(el("p", "muted", T.watch_empty));
   list.forEach(tk => {
     const now = bucket(TODAY, tk), prev = bucket(PREV, tk);
     const row = el("div", "row");
-    const a = linkTicker(tk);
     const sub = el("span", "muted", LAB[now] + " · " + change(now, prev));
     sub.style.fontSize = "12px";
-    const wrap = el("div"); wrap.style.flex = "1"; wrap.append(a, sub);
+    const wrap = el("div"); wrap.style.flex = "1"; wrap.append(linkTicker(tk), sub);
     row.append(wrap, watchBtn(tk));
     box.append(row);
   });
@@ -190,102 +203,88 @@ function paintWatch(){
   cb.type = "checkbox";
   cb.checked = localStorage.getItem(ALERT) === "1";
   cb.addEventListener("change", () => localStorage.setItem(ALERT, cb.checked ? "1" : "0"));
-  lab.append(cb, document.createTextNode("新列入共同看好或看淡時，在這頁提醒"));
+  lab.append(cb, document.createTextNode(T.alert));
   box.append(lab);
-  if (cb.checked) {
-    const email = document.createElement("input");
-    email.type = "email"; email.placeholder = "電郵只記在這部裝置"; email.value = localStorage.getItem(EMAIL) || "";
-    email.addEventListener("change", () => { if (!email.value || email.value.includes("@")) localStorage.setItem(EMAIL, email.value.trim()); });
-    box.append(email);
-    const hits = list.filter(tk => {
-      const now = bucket(TODAY, tk), prev = bucket(PREV, tk);
-      return (now === "bull" && prev !== "bull") || (now === "bear" && prev !== "bear");
-    });
-    if (hits.length) {
-      const a = el("div", "alert");
-      a.append(el("p", "", "今個窗口的提醒"));
-      hits.forEach(tk => a.append(el("p", "", tk + " " + (bucket(TODAY, tk) === "bull" ? "新列入共同看好" : "新列入共同看淡"))));
-      a.append(el("p", "muted", "電郵未接上發送。上面就係你應收到的內容。"));
-      box.append(a);
-    }
-  }
-}
-
-
-function pct(x){
-  if (x == null || Number.isNaN(Number(x))) return "—";
-  const n = Number(x) * 100;
-  return (n > 0 ? "+" : "") + n.toFixed(1) + "%";
+  if (!cb.checked) return;
+  const email = document.createElement("input");
+  email.type = "email"; email.placeholder = T.email_ph; email.value = localStorage.getItem(EMAIL) || "";
+  email.addEventListener("change", () => { if (!email.value || email.value.includes("@")) localStorage.setItem(EMAIL, email.value.trim()); });
+  box.append(email);
+  const hits = list.filter(tk => {
+    const now = bucket(TODAY, tk), prev = bucket(PREV, tk);
+    return (now === "bull" && prev !== "bull") || (now === "bear" && prev !== "bear");
+  });
+  if (!hits.length) return;
+  const a = el("div", "alert");
+  a.append(el("p", "", T.alert_title));
+  hits.forEach(tk => a.append(el("p", "", tk + " " + (bucket(TODAY, tk) === "bull" ? T.alert_bull : T.alert_bear))));
+  a.append(el("p", "muted", T.alert_mail));
+  box.append(a);
 }
 function renderFollow(ft){
   const box = document.getElementById("follow-body");
   box.replaceChildren();
-  if (!ft || !ft.bull) { box.append(el("p", "muted", "跟進數字暫時載入唔到。")); return; }
+  if (!ft || !ft.bull) { box.append(el("p", "muted", T.follow_fail)); return; }
   const cards = el("div", "cards");
   function stat(title, cls, block, hint){
-    const s = el("section", "card");
+    const s = el("section", "card " + cls);
     s.append(el("h2", cls, title));
-    const n = el("p", "n " + (block.avg_xs > 0 ? "bull" : "bear"), pct(block.avg_xs));
-    s.append(n);
-    s.append(el("p", "muted", "平均相對 QQQ · " + block.settled + " 注已結算"));
-    s.append(el("p", "muted", Math.round(block.hit * 100) + "% 跑贏 · 中位數 " + pct(block.median_xs)));
-    s.append(el("p", "muted", "未到期 " + block.immature + " · " + hint));
+    s.append(el("p", "n " + (block.avg_xs > 0 ? "bull" : "bear"), pct(block.avg_xs)));
+    s.append(el("p", "muted", T.avg.replace("{n}", block.settled)));
+    s.append(el("p", "muted", T.hit.replace("{p}", Math.round(block.hit * 100)).replace("{m}", pct(block.median_xs))));
+    s.append(el("p", "muted", T.open_n.replace("{n}", block.immature).replace("{hint}", hint)));
     return s;
   }
-  cards.append(stat("共同看好", "bull", ft.bull, "正數先係跑贏"));
-  cards.append(stat("共同看淡", "bear", ft.bear, "正數先係沽出後跑贏沽 QQQ"));
+  cards.append(stat(T.bull, "bull", ft.bull, T.hint_bull));
+  cards.append(stat(T.bear, "bear", ft.bear, T.hint_bear));
   box.append(cards);
-  box.append(el("p", "muted", "由 " + ft.from + " 計到收市 " + ft.as_of + "。窗口結束之後，用下一個未收市的交易日收市價入場，持有 " + ft.horizon + " 個交易日。未滿 " + ft.horizon + " 日的不計入平均。"));
+  box.append(el("p", "muted", T.method.replace("{a}", ft.from).replace("{b}", ft.as_of).replaceAll("{h}", ft.horizon)));
   const table = document.createElement("table");
   const head = document.createElement("tr");
-  ["信號日", "代碼", "方向", "10日", "相對QQQ"].forEach(name => head.append(el("th", "", name)));
+  T.th.forEach(name => head.append(el("th", "", name)));
   table.append(head);
   (ft.rows || []).forEach(r => {
     const tr = document.createElement("tr");
-    const td = el("td", "");
-    td.append(linkTicker(r.ticker));
+    const td = el("td", ""); td.append(linkTicker(r.ticker));
     tr.append(el("td", "", String(r.signal).slice(5)), td);
-    tr.append(el("td", r.side === "bull" ? "bull" : "bear", r.side === "bull" ? "看好" : "看淡"));
+    tr.append(el("td", r.side === "bull" ? "bull" : "bear", r.side === "bull" ? T.side_bull : T.side_bear));
     tr.append(el("td", "", pct(r.ret)));
     tr.append(el("td", r.xs > 0 ? "bull" : "bear", pct(r.xs)));
     table.append(tr);
   });
   const panel = el("div", "panel");
-  panel.append(el("h2", "", "最近已結算"));
-  panel.append(table);
+  panel.append(el("h2", "", T.recent), table);
   box.append(panel);
 }
-
 function renderToday(){
-  document.getElementById("window").textContent = (TODAY.window || []).join(" – ") + " HKT。更新 " + (TODAY.updated_hkt || "") + "。";
-  const cards = document.getElementById("cards");
-  cards.replaceChildren(
-    card("共同看好", "bull", TODAY.bull, ""),
-    card("共同看淡", "bear", TODAY.bear, ""),
-    card("最大分歧", "", TODAY.split.slice(0, 8), "共 " + TODAY.split.length + " 隻兩邊都有人")
+  const w = TODAY.window || [];
+  document.getElementById("window").textContent = T.window.replace("{a}", w[0] || "").replace("{b}", w[1] || "").replace("{u}", TODAY.updated_hkt || "");
+  document.getElementById("cards").replaceChildren(
+    card(T.bull, "bull", TODAY.bull || [], ""),
+    card(T.bear, "bear", TODAY.bear || [], ""),
+    card(T.split, "split", (TODAY.split || []).slice(0, 8), T.split_note.replace("{n}", (TODAY.split || []).length))
   );
   const delta = document.getElementById("delta");
-  delta.replaceChildren(el("h2", "", "對上一個窗口"));
-  [["新列入看好", TODAY.bull.filter(t => !PREV.bull.includes(t))],
-   ["跌出看好", PREV.bull.filter(t => !TODAY.bull.includes(t))],
-   ["新列入看淡", TODAY.bear.filter(t => !PREV.bear.includes(t))],
-   ["跌出看淡", PREV.bear.filter(t => !TODAY.bear.includes(t))]].forEach(([label, tks]) => {
+  delta.replaceChildren(el("h2", "", T.vs));
+  [[T.new_bull, (TODAY.bull || []).filter(t => !(PREV.bull || []).includes(t))],
+   [T.drop_bull, (PREV.bull || []).filter(t => !(TODAY.bull || []).includes(t))],
+   [T.new_bear, (TODAY.bear || []).filter(t => !(PREV.bear || []).includes(t))],
+   [T.drop_bear, (PREV.bear || []).filter(t => !(TODAY.bear || []).includes(t))]].forEach(([label, tks]) => {
     const p = el("p", "");
-    p.append(el("span", "muted", label + " "), document.createTextNode(tks.length ? tks.join("、") : "沒有"));
+    p.append(el("span", "muted", label + " "), document.createTextNode(tks.length ? tks.join(", ") : T.none));
     delta.append(p);
   });
   const hot = document.getElementById("hot");
   hot.replaceChildren();
-  HOT.forEach((tk, i) => { const a = linkTicker((i + 1) + " " + tk); a.href = "/zh/stock/" + tk + "/"; hot.append(a); });
+  HOT.forEach((tk, i) => { const a = linkTicker((i + 1) + " " + tk); a.href = T.stock + encodeURIComponent(tk) + "/"; hot.append(a); });
   paintWatch();
 }
-
-document.querySelectorAll("nav button").forEach(btn => btn.addEventListener("click", () => {
-  document.querySelectorAll("nav button").forEach(b => b.setAttribute("aria-selected", b === btn ? "true" : "false"));
+document.querySelectorAll("nav.tabs button").forEach(btn => btn.addEventListener("click", () => {
+  document.querySelectorAll("nav.tabs button").forEach(b => b.setAttribute("aria-selected", b === btn ? "true" : "false"));
   ["today","follow","search","score","plans"].forEach(id => document.getElementById(id).hidden = id !== btn.dataset.tab);
 }));
-
 let CAT = "";
+function catName(c){ return CATLABEL[c] || c; }
 function renderSearch(){
   const q = document.getElementById("q").value.trim();
   const box = document.getElementById("hits");
@@ -297,31 +296,27 @@ function renderSearch(){
     });
   }
   const n = q.replace(/^@/, "").toLowerCase();
-  if (!n && !CAT) {
-    if (!needle) box.append(el("p", "muted", "輸入代碼或帳號，或先揀一個類別。"));
-    return;
-  }
-  const rows = DIR.filter(a => (!CAT || a.c === CAT) && (!n || a.h.toLowerCase().includes(n) || a.n.toLowerCase().includes(n))).slice(0, 40);
+  if (!n && !CAT) { if (!needle) box.append(el("p", "muted", T.search_hint)); return; }
+  const rows = DIR.filter(a => (!CAT || a.c === CAT) && (!n || a.h.toLowerCase().includes(n) || String(a.n).toLowerCase().includes(n))).slice(0, 40);
   rows.forEach(a => {
     const p = el("p", "");
-    const link = el("a", "", a.n); link.href = "/zh/account/" + encodeURIComponent(a.h) + "/";
-    p.append(link, el("span", "muted", " @" + a.h + " · " + a.c));
+    const link = el("a", "", a.n); link.href = T.account + encodeURIComponent(a.h) + "/";
+    p.append(link, el("span", "muted", " @" + a.h + " · " + catName(a.c)));
     box.append(p);
   });
-  if (!rows.length && !needle) box.append(el("p", "muted", "沒有符合的帳號。"));
+  if (!rows.length && !needle) box.append(el("p", "muted", T.search_none));
 }
-
 async function start(){
   const [hist, dir, ledger, ft] = await Promise.all([
     fetch("/data/consensus-history.json").then(r => r.json()),
-    fetch("directory.json").then(r => r.json()),
-    fetch("ledger.json").then(r => r.json()),
+    fetch("/zh/board/directory.json").then(r => r.json()),
+    fetch("/zh/board/ledger.json").then(r => r.json()),
     fetch("/data/followthrough.json").then(r => r.ok ? r.json() : null).catch(() => null)
   ]);
   DIR = dir;
   const days = Object.keys(hist.days).sort();
   TODAY = hist.days[days.at(-1)];
-  PREV = hist.days[days.at(-2)];
+  PREV = hist.days[days.at(-2)] || {bull:[],bear:[],split:[]};
   const score = new Map();
   days.slice(-7).forEach(day => (hist.days[day].top || []).forEach((tk, i) => score.set(tk, (score.get(tk) || 0) + (8 - i))));
   HOT = [...score.entries()].sort((a,b) => b[1] - a[1]).slice(0, 10).map(x => x[0]);
@@ -331,28 +326,32 @@ async function start(){
   renderToday();
   renderFollow(ft);
   const cats = document.getElementById("cats");
-  ["全部", ...CATS].forEach(name => {
+  [["", T.all], ...CATS.map(c => [c, catName(c)])].forEach(([id, name]) => {
     const b = el("button", "ghost", name);
     b.type = "button";
-    b.addEventListener("click", () => { CAT = name === "全部" ? "" : name; cats.querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b)); renderSearch(); });
+    b.addEventListener("click", () => { CAT = id; cats.querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b)); renderSearch(); });
     cats.append(b);
   });
   document.getElementById("q").addEventListener("input", renderSearch);
   const box = document.getElementById("ledger");
-  box.append(el("p", "", "截至 " + ledger.asOf + "。抽樣 " + ledger.posts + " 則已標註帖，開注 " + ledger.calls.length + "，已結算 0。"));
+  box.append(el("p", "", T.ledger.replace("{asof}", ledger.asOf).replace("{posts}", ledger.posts).replace("{calls}", ledger.calls.length)));
   const table = document.createElement("table");
   const head = document.createElement("tr");
-  ["帳號","代碼","方向","入場"].forEach(t => head.append(el("th", "", t)));
+  T.th_score.forEach(name => head.append(el("th", "", name)));
   table.append(head);
   ledger.calls.forEach(c => {
     const tr = document.createElement("tr");
-    tr.append(el("td", "", "@" + c.handle), el("td", "", c.ticker), el("td", c.direction === "bull" ? "bull" : "bear", c.direction === "bull" ? "看多" : "看空"));
-    tr.append(el("td", "", c.entryPx ? c.entryDate + " · " + c.entryPx : "等收市"));
+    const who = el("td", "");
+    const a = el("a", "", "@" + c.handle); a.href = T.account + encodeURIComponent(c.handle) + "/";
+    who.append(a);
+    tr.append(who, el("td", "", c.ticker), el("td", c.direction === "bull" ? "bull" : "bear", c.direction === "bull" ? T.side_bull : T.side_bear));
+    tr.append(el("td", "", c.entryPx ? c.entryDate + " · " + c.entryPx : T.wait));
     table.append(tr);
   });
   box.append(table);
 }
-start().catch(err => { document.getElementById("window").textContent = "共識載入失敗：" + err.message; });
+start().catch(err => { document.getElementById("window").textContent = T.fail + err.message; });
+
 </script>
 </body>
 </html>
