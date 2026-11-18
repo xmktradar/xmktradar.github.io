@@ -1,0 +1,93 @@
+{
+  "posts": {
+    "2122869326822744458": {
+      "en_summary": "@DougKass at 8:46PM $SPY -$5 and $QQQ -$8 from my sales at 6:15PM. Insanity.",
+      "zh_summary": "@DougKass晚上8:46 $SPY從我6:15的賣出下跌5美元，$QQQ下跌8美元。瘋狂。",
+      "tickers": ["SPY", "QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "SPY": "中性",
+        "QQQ": "中性"
+      },
+      "horizon": null,
+      "basis": "情緒",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2122869193582203224": {
+      "en_summary": "@KobeissiLetter Nvidia's dominance in the global data center chip market is unprecedented: Nvidia accounted for 76% of global server GPU revenue in Q4 2025. This is more than 3 times the combined revenue of all its",
+      "zh_summary": "@KobeissiLetter Nvidia在全球數據中心芯片市場的主導地位是前所未有的：Nvidia在2025年第四季佔全球伺服器GPU收入的76%。這是其所有",
+      "tickers": ["NVDA", "AMD", "AVGO"],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "NVDA": "睇好",
+        "AMD": "未表態",
+        "AVGO": "未表態"
+      },
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {
+        "NVDA": "2025第四季佔全球伺服器GPU收入76%，超過其他所有合計3倍"
+      }
+    },
+    "2122868643222757435": {
+      "en_summary": "@TrendSpider the options market knows what week it is. This week’s IV: ~52%. Next week: ~41%. $GOOGL",
+      "zh_summary": "@TrendSpider期權市場知道這是哪一週。本週IV：約52%。下週：約41%。 $GOOGL",
+      "tickers": ["GOOGL"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "GOOGL": "中性"
+      },
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {
+        "GOOGL": "本週IV約52%，下週約41%"
+      }
+    },
+    "2122867756865564930": {
+      "en_summary": "@MParekh 'Hope Against Hope' in AI. Nvidia, Washington & Anthropic. ARD post 208 AI Ramblings Daily podcast #208 on AI-RTZ $NVDA YouTube link with show notes.",
+      "zh_summary": "@MParekh AI中的‘希望對抗希望’。Nvidia、華盛頓及Anthropic。ARD帖208 AI Ramblings Daily播客#208關於AI-RTZ $NVDA YouTube鏈接及節目筆記。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "NVDA": "中性"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2122866673430491376": {
+      "en_summary": "@benitoz with the biggest bear on Wall Street for $nvda $130 PT @jaygoldberg. He says a Jensen comeback is not out of the cards.",
+      "zh_summary": "@benitoz與華爾街對$nvda $130目標價的最大空頭@jaygoldberg。他說Jensen回歸並非不可能。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "NVDA": "中性"
+      },
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {
+        "NVDA": "最大空頭目標價130，Jensen回歸可能"
+      }
+    }
+  }
+}
