@@ -74,6 +74,7 @@
       + '#ct-pay button[aria-pressed="false"]{opacity:.45}'
       + '#ct-pay input{box-sizing:border-box;min-height:44px;max-width:100%;border-radius:12px;border:1px solid var(--line,#e3e3e8);background:transparent;color:inherit;font:inherit;padding:8px 10px}'
       + '#ct-pay .ct-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}'
+      + '#ct-pay .ct-bull{color:#127a3a;font-weight:700}#ct-pay .ct-bear{color:#c2410c;font-weight:700}'
       + '#ct-pay a{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}';
     document.head.appendChild(s);
   }
@@ -199,8 +200,8 @@
       return;
     }
     slot.innerHTML = '<p>' + t('這個選法跟官方共識不同。', 'This selection differs from the official consensus.') + '</p>'
-      + '<p>' + t('共同看好', 'Bullish') + '：' + links(custom.bull) + '</p>'
-      + '<p>' + t('共同看淡', 'Bearish') + '：' + links(custom.bear) + '</p>'
+      + '<p><span class="ct-bull">' + t('共同看好', 'Bullish') + '</span>：' + links(custom.bull) + '</p>'
+      + '<p><span class="ct-bear">' + t('共同看淡', 'Bearish') + '</span>：' + links(custom.bear) + '</p>'
       + '<p>' + t('分歧', 'Split') + '：' + links(custom.split) + '</p>';
   }
 
