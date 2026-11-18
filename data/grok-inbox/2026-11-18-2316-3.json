@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123034813753905563": {
+      "en_summary": "Mixed global markets despite solid NVDA results. SPX testing 7346 support, 7288 next level. AI trade remains fragile as markets look for relief. FOMC minutes at 2 PM. Key days ahead, stay tactical and manage risk.",
+      "zh_summary": "儘管NVDA業績穩健，全球市場混合。SPX測試7346支撐，下一個關注7288。AI交易仍然脆弱，市場尋求緩解。下午2點FOMC會議紀要。未來關鍵日子，保持戰術並管理風險。",
+      "tickers": ["NVDA", "SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "SPY": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {"SPY": "testing 7346 support, 7288 next"}
+    },
+    "2123034405006434766": {
+      "en_summary": "(Replying to @1991Wolfpack) Good Morning, yea I would have thought it would have bounced more overnight on NVDA.",
+      "zh_summary": "（回覆@1991Wolfpack）早安，是的，我以為NVDA會在隔夜反彈更多。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123033750179315911": {
+      "en_summary": "(Replying to @rbarrows9) Link to another post: https://x.com/mrzackmorris/status/1899475562814435795",
+      "zh_summary": "（回覆@rbarrows9）鏈接至另一帖文：https://x.com/mrzackmorris/status/1899475562814435795",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123032575107338252": {
+      "en_summary": "DUMP QQQ to $560, SPY to $640 and NVDA to $95.",
+      "zh_summary": "拋售QQQ至560美元，SPY至640美元，NVDA至95美元。",
+      "tickers": ["QQQ", "SPY", "NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"QQQ": "睇淡", "SPY": "睇淡", "NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"QQQ": "to $560", "SPY": "to $640", "NVDA": "to $95"}
+    },
+    "2123031673520746741": {
+      "en_summary": "$TJX | TJX Q3 2026 Earnings: Comp Sales +4% (est +3%), Net Sales $16.0B (est $15.84B), EPS $1.39 vs $1.28 Y/Y. Sees Q4 Comp +2% to +3% (est +3.04%), Q4 EPS $1.39 to $1.42. To buyback $3B during FY27.",
+      "zh_summary": "$TJX | TJX 2026財年第三季業績：可比銷售額+4%（預期+3%），淨銷售額160億美元（預期158.4億），EPS 1.39美元對比去年1.28美元。預計第四季可比銷售額+2%至+3%（預期+3.04%），第四季EPS 1.39至1.42美元。財年27將回購30億美元。",
+      "tickers": ["TJX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TJX": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TJX": "Q3 beat, Q4 guidance, $3B buyback"}
+    }
+  }
+}
