@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>今日共同看好同看淡｜The Crowd Tape</title>
-<meta name="description" content="今日共同看好、共同看淡同最大分歧。可搜尋代碼、按六類篩選帳號，關注清單記在這部裝置。不是投資建議。">
+<meta name="description" content="今日共同看好、看淡、分歧，以及齊聲之後 10 個交易日相對 QQQ。不是投資建議。">
 <link rel="canonical" href="https://thecrowdtape.com/zh/board/">
 <link rel="icon" href="/favicon.ico">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&display=swap">
@@ -63,6 +63,7 @@ th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);verti
 </header>
 <nav>
   <button type="button" data-tab="today" aria-selected="true">今日</button>
+  <button type="button" data-tab="follow" aria-selected="false">跟進</button>
   <button type="button" data-tab="search" aria-selected="false">搜尋</button>
   <button type="button" data-tab="score" aria-selected="false">準確度</button>
   <button type="button" data-tab="plans" aria-selected="false">點解 USD 5</button>
@@ -79,6 +80,12 @@ th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);verti
     <p class="muted">按每日熱門名單的名次加權，不是提及次數。</p>
     <div class="row" id="hot" style="flex-wrap:wrap"></div>
   </div>
+</section>
+
+<section id="follow" hidden>
+  <h1>齊聲之後</h1>
+  <p class="muted">新列入共同看好或看淡的股票，10 個交易日之後相對 QQQ。連續上榜只計第一次。</p>
+  <div id="follow-body"></div>
 </section>
 
 <section id="search" hidden>
@@ -99,7 +106,7 @@ th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);verti
   <h1>點解要付每月 USD 5</h1>
   <p>首頁只答今日邊隻齊聲。週報把過去 7 日誰改口、邊隻由分歧變齊聲寫成一段，並附原帖。一個月 USD 5，每週一封繁中。</p>
   <div class="panel">
-    <p><b>免費有：</b>今日共同看好、看淡、分歧；搜尋；這部裝置上的關注清單。準確度要滿 8 注先顯示。</p>
+    <p><b>免費有：</b>今日共同看好、看淡、分歧；搜尋；這部裝置上的關注清單；齊聲之後 10 日相對 QQQ。帳號準確度要滿 8 注先顯示。</p>
     <p><b>USD 5 有：</b>一週敘事同原帖。沒有買賣建議，沒有目標價，未滿 8 注也不會寫成勝率。</p>
     <p><b>更高階未開賣：</b>自訂六類權重、長過 90 日的已結算明細、真正的電郵。未做好之前不收款。</p>
     <p><a href="/zh/weekly/">去現有的週報頁</a></p>
@@ -204,6 +211,51 @@ function paintWatch(){
   }
 }
 
+
+function pct(x){
+  if (x == null || Number.isNaN(Number(x))) return "—";
+  const n = Number(x) * 100;
+  return (n > 0 ? "+" : "") + n.toFixed(1) + "%";
+}
+function renderFollow(ft){
+  const box = document.getElementById("follow-body");
+  box.replaceChildren();
+  if (!ft || !ft.bull) { box.append(el("p", "muted", "跟進數字暫時載入唔到。")); return; }
+  const cards = el("div", "cards");
+  function stat(title, cls, block, hint){
+    const s = el("section", "card");
+    s.append(el("h2", cls, title));
+    const n = el("p", "n " + (block.avg_xs > 0 ? "bull" : "bear"), pct(block.avg_xs));
+    s.append(n);
+    s.append(el("p", "muted", "平均相對 QQQ · " + block.settled + " 注已結算"));
+    s.append(el("p", "muted", Math.round(block.hit * 100) + "% 跑贏 · 中位數 " + pct(block.median_xs)));
+    s.append(el("p", "muted", "未到期 " + block.immature + " · " + hint));
+    return s;
+  }
+  cards.append(stat("共同看好", "bull", ft.bull, "正數先係跑贏"));
+  cards.append(stat("共同看淡", "bear", ft.bear, "正數先係沽出後跑贏沽 QQQ"));
+  box.append(cards);
+  box.append(el("p", "muted", "由 " + ft.from + " 計到收市 " + ft.as_of + "。窗口結束之後，用下一個未收市的交易日收市價入場，持有 " + ft.horizon + " 個交易日。未滿 " + ft.horizon + " 日的不計入平均。"));
+  const table = document.createElement("table");
+  const head = document.createElement("tr");
+  ["信號日", "代碼", "方向", "10日", "相對QQQ"].forEach(name => head.append(el("th", "", name)));
+  table.append(head);
+  (ft.rows || []).forEach(r => {
+    const tr = document.createElement("tr");
+    const td = el("td", "");
+    td.append(linkTicker(r.ticker));
+    tr.append(el("td", "", String(r.signal).slice(5)), td);
+    tr.append(el("td", r.side === "bull" ? "bull" : "bear", r.side === "bull" ? "看好" : "看淡"));
+    tr.append(el("td", "", pct(r.ret)));
+    tr.append(el("td", r.xs > 0 ? "bull" : "bear", pct(r.xs)));
+    table.append(tr);
+  });
+  const panel = el("div", "panel");
+  panel.append(el("h2", "", "最近已結算"));
+  panel.append(table);
+  box.append(panel);
+}
+
 function renderToday(){
   document.getElementById("window").textContent = (TODAY.window || []).join(" – ") + " HKT。更新 " + (TODAY.updated_hkt || "") + "。";
   const cards = document.getElementById("cards");
@@ -230,7 +282,7 @@ function renderToday(){
 
 document.querySelectorAll("nav button").forEach(btn => btn.addEventListener("click", () => {
   document.querySelectorAll("nav button").forEach(b => b.setAttribute("aria-selected", b === btn ? "true" : "false"));
-  ["today","search","score","plans"].forEach(id => document.getElementById(id).hidden = id !== btn.dataset.tab);
+  ["today","follow","search","score","plans"].forEach(id => document.getElementById(id).hidden = id !== btn.dataset.tab);
 }));
 
 let CAT = "";
@@ -260,10 +312,11 @@ function renderSearch(){
 }
 
 async function start(){
-  const [hist, dir, ledger] = await Promise.all([
+  const [hist, dir, ledger, ft] = await Promise.all([
     fetch("/data/consensus-history.json").then(r => r.json()),
     fetch("directory.json").then(r => r.json()),
-    fetch("ledger.json").then(r => r.json())
+    fetch("ledger.json").then(r => r.json()),
+    fetch("/data/followthrough.json").then(r => r.ok ? r.json() : null).catch(() => null)
   ]);
   DIR = dir;
   const days = Object.keys(hist.days).sort();
@@ -276,6 +329,7 @@ async function start(){
   days.forEach(day => ["bull","bear","split","top"].forEach(k => (hist.days[day][k] || []).forEach(t => universe.add(t))));
   UNIVERSE = [...universe];
   renderToday();
+  renderFollow(ft);
   const cats = document.getElementById("cats");
   ["全部", ...CATS].forEach(name => {
     const b = el("button", "ghost", name);

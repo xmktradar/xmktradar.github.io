@@ -148,6 +148,9 @@ jobs:
           node tools/stats.js index.html "$WORK_DIR/windows.json" "$WORK_DIR/stats.json" || { echo "::error::共識計算失敗"; exit 1; }
       - name: Consensus history, share text, sitemap
         run: python3 tools/publish_extras.py
+      - name: Consensus follow-through
+        continue-on-error: true
+        run: python3 tools/followthrough.py
       - name: Files for SuperGrok (consensus numbers, site status)
         continue-on-error: true
         run: python3 tools/write_status.py
