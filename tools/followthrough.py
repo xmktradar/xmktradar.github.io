@@ -5,8 +5,10 @@ One episode per entry. A name that stays on the list does not open another
 episode until it drops off and comes back. Entry is the close of the next US
 session that had not finished when the window ended. Hold for 10 sessions.
 Bull excess is the stock minus QQQ. Bear excess is QQQ minus the stock, the
-result of being short. Writes data/followthrough.json. If prices cannot be
-loaded, keeps the previous file and exits 0.
+result of being short. Split excess is the stock minus QQQ. Writes
+data/followthrough.json, including a by_ticker index for stock pages.
+Split rows stay out of `rows` so the homepage table does not label them bearish.
+If prices cannot be loaded, keeps the previous file and exits 0.
 """
 import json
 import time
@@ -94,12 +96,38 @@ def median(xs):
     return (s[n // 2 - 1] + s[n // 2]) / 2
 
 
+def side_stats(part):
+    """Settled 10-session results for one side. hit is the share with xs > 0."""
+    settled = [r for r in part if r.get("status") == "settled"]
+    xs = [r["xs"] for r in settled]
+    rets = [r["ret"] for r in settled]
+    return {
+        "opened": len(part),
+        "settled": len(settled),
+        "immature": sum(1 for r in part if r.get("status") == "immature"),
+        "avg_ret": round(sum(rets) / len(rets), 6) if rets else None,
+        "avg_xs": round(sum(xs) / len(xs), 6) if xs else None,
+        "hit": round(sum(1 for x in xs if x > 0) / len(xs), 6) if xs else None,
+    }
+
+
+def index_by_ticker(rows):
+    buckets = {}
+    for r in rows:
+        buckets.setdefault(r["ticker"], {}).setdefault(r["side"], []).append(r)
+    return {
+        t: {side: side_stats(part) for side, part in sides.items() if part}
+        for t, sides in buckets.items()
+    }
+
+
 def main():
     hist = json.loads(HIST.read_text(encoding="utf-8"))["days"]
     tickers = {"QQQ"}
     for v in hist.values():
         tickers.update(v.get("bull") or [])
         tickers.update(v.get("bear") or [])
+        tickers.update(v.get("split") or [])
     bars = {}
     for t in sorted(tickers):
         b = yahoo(sym_of(t))
@@ -111,7 +139,7 @@ def main():
         return
     sessions = sorted(bars["QQQ"])
     rows = []
-    for side in ("bull", "bear"):
+    for side in ("bull", "bear", "split"):
         prev = set()
         for day in sorted(hist):
             cur = set(hist[day].get(side) or [])
@@ -160,7 +188,7 @@ def main():
         if bull["settled"] < 20 and (old.get("bull") or {}).get("settled", 0) >= 20:
             print("new sample too small, keep previous")
             return
-    show = [r for r in rows if r["status"] == "settled"]
+    show = [r for r in rows if r["status"] == "settled" and r["side"] in ("bull", "bear")]
     show.sort(key=lambda r: (r["signal"], r["ticker"]), reverse=True)
     now = datetime.now(HKT).strftime("%Y-%m-%d %H:%M")
     out = {
@@ -171,6 +199,7 @@ def main():
         "updated_hkt": now,
         "bull": bull,
         "bear": block("bear"),
+        "by_ticker": index_by_ticker(rows),
         "rows": [{k: r[k] for k in ("ticker", "side", "signal", "entry", "exit", "ret", "qqq", "xs")} for r in show[:40]],
     }
     OUT.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")

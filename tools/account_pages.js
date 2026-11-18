@@ -47,7 +47,16 @@ const T = {
     post: '原始貼文 ↗',
     stockPage: '個股頁',
     summary: (b, r) => `過去 28 天明確看多 ${b} 隻、看空 ${r} 隻股票。`,
-    note: '只計算表態後的股價變化，不代表帳號準確度，不構成投資建議。',
+    note: '下列每一列是由表態日至最新收市價，不是 10 日成績，不構成投資建議。',
+    scoreTitle: '近 90 日，表態後 10 個交易日',
+    scoreSide: (side, n, wins, avg, xs) => {
+      const name = side === 'bull' ? '看多' : '看空';
+      const hit = side === 'bull' ? '股價上升' : '股價下跌';
+      const vs = xs ? (side === 'bull' ? `，相對 QQQ ${xs}` : `，看淡方向相對 QQQ ${xs}`) : '';
+      return `${name} ${n} 次，10 日${hit} ${wins} 次，平均 ${avg}${vs}`;
+    },
+    scoreNote: '只計算已滿 10 個交易日的表態。看多之後股價上升、看空之後股價下跌，計為一次命中。少於 3 次不顯示。不是投資建議，亦不作排名。',
+    scoreCta: '每週日把這本帳寄出：週報每月 USD 5',
     pxNote: '起點為發帖前最後一個收市價，終點為最新收市價（Yahoo Finance），非即時報價。',
     advice: '不構成投資建議。本頁只整理公開貼文，供參考。',
     title: (nm, h) => `${nm}（@${h}）最近看多、看空哪些股票？｜The Crowd Tape`,
@@ -74,7 +83,16 @@ const T = {
     post: 'Original post ↗',
     stockPage: 'Stock page',
     summary: (b, r) => `Clearly bullish on ${b} and bearish on ${r} stocks in the last 28 days.`,
-    note: 'Shows only the price change since the stance. It does not measure the account\'s accuracy. Not investment advice.',
+    note: 'Each row is the price change from the stance to the latest close, not a 10-session result. Not investment advice.',
+    scoreTitle: '10 sessions after a stance, last 90 days',
+    scoreSide: (side, n, wins, avg, xs) => {
+      const name = side === 'bull' ? 'Bullish' : 'Bearish';
+      const hit = side === 'bull' ? 'price up' : 'price down';
+      const vs = xs ? (side === 'bull' ? `, versus QQQ ${xs}` : `, bearish side versus QQQ ${xs}`) : '';
+      return `${name} ${n}, ${hit} ${wins}, average ${avg}${vs}`;
+    },
+    scoreNote: 'Only stances with 10 completed sessions. A bullish win is a higher price; a bearish win is a lower price. Hidden when fewer than 3. Not investment advice, and not a ranking.',
+    scoreCta: 'The Sunday brief that lists these results is in Chinese.',
     pxNote: 'Start = last daily close before the post; end = latest daily close (Yahoo Finance). Not a live quote.',
     advice: 'Not investment advice. This page only summarises public posts.',
     title: (nm, h) => `@${h} bullish vs bearish stocks | The Crowd Tape`,
@@ -109,6 +127,34 @@ function collect(min) {
     if (last[1] / base[1] > 5 || last[1] / base[1] < 0.2) return { state: 'none' };
     return { state: 'ok', base: base[1], baseD: base[0], now: last[1], nowD: last[0], pct: (last[1] / base[1] - 1) * 100 };
   }
+  function barsOf(t) {
+    const pr = (D.prices || {})[t];
+    return pr && Array.isArray(pr.c) ? pr.c.filter(x => Array.isArray(x) && typeof x[1] === 'number' && x[1] > 0) : [];
+  }
+  // Entry = last close before the post (or that day's close if posted after 16:00 ET). Exit = 10 bars later.
+  function forward10(t, ms, side) {
+    const c = barsOf(t);
+    if (c.length < 11) return null;
+    const e = etOf(ms);
+    const after = e.hm >= 16 * 60;
+    let bi = -1;
+    for (let i = 0; i < c.length; i++) if (after ? c[i][0] <= e.d : c[i][0] < e.d) bi = i;
+    if (bi < 0 || dayGap(c[bi][0], e.d) > 6 || bi + 10 >= c.length) return null;
+    const base = c[bi], ex = c[bi + 10];
+    if (ex[1] / base[1] > 5 || ex[1] / base[1] < 0.2) return null;
+    const ret = ex[1] / base[1] - 1;
+    let xs = null;
+    const q = barsOf('QQQ');
+    const qb = q.find(x => x[0] === base[0]);
+    const qe = q.find(x => x[0] === ex[0]);
+    if (qb && qe && qb[1] > 0 && qe[1] / qb[1] <= 5 && qe[1] / qb[1] >= 0.2) {
+      const qr = qe[1] / qb[1] - 1;
+      xs = side === 'bear' ? (qr - ret) : (ret - qr);
+    }
+    return { side, ret, xs };
+  }
+  const lim90 = addDays(TODAY, -89);
+  const scorer = typeof scoreCalls === 'function' ? scoreCalls : (typeof window !== 'undefined' ? window.scoreCalls : null);
   const out = [];
   for (const h of HANDLES) {
     const xs = POSTS.filter(x => x.acc.toLowerCase() === String(h).toLowerCase()).sort((a, b) => a.ms - b.ms);
@@ -138,6 +184,22 @@ function collect(min) {
     }
     if (stocks.length < min) continue;
     stocks.sort((a, b) => b.lastMs - a.lastMs || a.t.localeCompare(b.t));
+    const calls = [];
+    if (typeof scorer === 'function') {
+      for (const [t, rows] of Object.entries(byT)) {
+        if (UNC(t)) continue;
+        let prev = '';
+        for (const row of rows.filter(x => x.s !== 'none')) {
+          if (row.s !== 'bull' && row.s !== 'bear') { prev = row.s; continue; }
+          if (row.s === prev) continue;
+          prev = row.s;
+          const day = (row.p && row.p.time_hkt ? String(row.p.time_hkt).slice(0, 10) : row.d) || '';
+          if (day < lim90) continue;
+          const c = forward10(t, row.ms, row.s);
+          if (c) calls.push(c);
+        }
+      }
+    }
     const info = accInfo(real);
     out.push({
       h: real,
@@ -147,12 +209,30 @@ function collect(min) {
       xUrl: xUrl(real),
       plat: platName(real),
       stocks,
+      score: typeof scorer === 'function' ? scorer(calls) : null,
       modified: xs[xs.length - 1].p.time_utc || '',
     });
   }
   return { accounts: out, today: TODAY, gen: (D.meta && (D.meta.cutoff_hkt || D.meta.generated_hkt)) || '' };
 }
 
+function scoreHtml(lang, score) {
+  if (!score || score.n < 3) return '';
+  const L = T[lang];
+  const bits = [];
+  for (const side of ['bull', 'bear']) {
+    const b = score[side];
+    if (!b) continue;
+    bits.push(L.scoreSide(side, b.n, b.wins, fmtPct(b.avg), b.avgXs == null ? '' : fmtPct(b.avgXs)));
+  }
+  if (!bits.length) return '';
+  const weekly = `<p class="ac-score-cta"><a href="/zh/weekly/">${esc(L.scoreCta)}</a></p>`;
+  return `<aside class="ac-score"><b>${esc(L.scoreTitle)}</b><p>${esc(bits.join(lang === 'zh' ? '。' : '. '))}${lang === 'zh' ? '。' : '.'}</p><p class="ac-score-note">${esc(L.scoreNote)}</p>${weekly}</aside>`;
+}
+function fmtPct(x) {
+  const n = Math.round(Number(x) * 1000) / 10 || 0;
+  return (n > 0 ? '+' : '') + n.toFixed(1) + '%';
+}
 const fmtPx = v => v >= 100 ? v.toFixed(2) : v >= 1 ? v.toFixed(2) : v.toPrecision(3);
 function pxLine(lang, px) {
   const L = T[lang];
@@ -183,6 +263,7 @@ function body(lang, a, pages, avSrc) {
 <div class="ac-head">${av}<div class="ac-id"><h1>${esc(a.name)}</h1><p class="ac-h">@${esc(a.h)} · <a href="${esc(a.xUrl)}" target="_blank" rel="noopener">${esc(L.profile(a.plat))}</a></p></div></div>
 ${a.bio ? `<p class="ac-bio">${esc(a.bio)}</p>` : ''}
 <p class="ac-sum">${esc(L.summary(b, r))}</p>
+${scoreHtml(lang, a.score)}
 <p class="ac-note" role="note">${esc(L.note)}</p>
 <ul class="ac-list">${a.stocks.map(x => stockRow(lang, x, pages)).join('')}</ul>
 <p class="ac-px-note">${esc(L.pxNote)}</p>
@@ -197,6 +278,11 @@ const CSS = `.ac-wrap{padding:8px 16px 8px;max-width:860px;box-sizing:border-box
 .ac-h{margin:4px 0 0;font-size:14px;color:var(--muted,#87776a);overflow-wrap:anywhere}
 .ac-bio{margin:12px 0 0;font-size:14px;line-height:1.5;color:var(--muted,#87776a);overflow-wrap:anywhere}
 .ac-sum{margin:14px 0 6px;font-size:16px;font-weight:600}
+.ac-score{margin:0 0 10px;padding:10px 12px;border-radius:12px;background:var(--panel,#fff);border:1px solid var(--line,#ece1cc);font-size:14px;line-height:1.5}
+.ac-score b{display:block;margin-bottom:4px}
+.ac-score p{margin:4px 0}
+.ac-score-note{font-size:12px;color:var(--muted,#87776a)}
+.ac-score-cta{font-weight:700}
 .ac-note{margin:0 0 14px;padding:8px 12px;border-radius:12px;background:var(--accent-soft,#f8ecda);font-size:13px;line-height:1.45}
 .ac-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
 .ac-row{min-width:0;padding:12px 14px;border-radius:16px;background:var(--panel,#fff);border:1px solid var(--line,#ece1cc)}
@@ -324,6 +410,7 @@ function linkStockPages(lang, have) {
   return n;
 }
 
+const { scoreCalls } = require('./account_score.js');
 if (require.main === module) {
 (async () => {
   const { chromium } = require('playwright');
@@ -352,6 +439,7 @@ if (require.main === module) {
       if (window.__loadAllPosts) await window.__loadAllPosts();
       if (window.__postsFailed) throw new Error('older posts failed to load');
     });
+    await p.evaluate(src => { window.scoreCalls = (0, eval)('(' + src + ')'); }, scoreCalls.toString());
     const got = await p.evaluate(collect, MIN_STOCKS);
     if (errs.length) { console.log('::error::帳號網頁生成時有錯誤：' + errs.join('；')); process.exit(1); }
     await p.close();

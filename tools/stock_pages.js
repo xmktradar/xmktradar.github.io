@@ -89,6 +89,67 @@ const T = {
   },
 };
 
+const FT_LABEL = {
+  zh: { bull: '共同看好', bear: '共同看淡', split: '明顯分歧' },
+  en: { bull: 'joint bullish', bear: 'joint bearish', split: 'clearly split' },
+};
+
+function pctPts(x) {
+  if (x == null || Number.isNaN(Number(x))) return null;
+  const n = Number(x) * 100;
+  return (n > 0 ? '+' : '') + n.toFixed(1) + '%';
+}
+
+// One line per side that has any episode. Positive versus-QQQ means that side beat QQQ.
+function followBox(lang, ticker, book) {
+  const t = book && book.by_ticker && book.by_ticker[ticker];
+  if (!t) return '';
+  const order = ['bull', 'bear', 'split'];
+  const lines = [];
+  for (const side of order) {
+    const s = t[side];
+    if (!s || !(s.settled || s.immature)) continue;
+    const name = FT_LABEL[lang][side];
+    const ret = pctPts(s.avg_ret);
+    const xs = pctPts(s.avg_xs);
+    if (lang === 'zh') {
+      if (s.settled && ret && xs) {
+        const vs = side === 'bear'
+          ? `若當時看淡，相對 QQQ ${xs}（正數代表看淡方向跑贏 QQQ）`
+          : `相對 QQQ ${xs}（正數代表股價跑贏 QQQ）`;
+        lines.push(`新列入${name} ${s.opened} 次，已滿 10 個交易日 ${s.settled} 次：平均股價 ${ret}，${vs}。尚未結算 ${s.immature} 次。`);
+      } else {
+        lines.push(`新列入${name} ${s.opened} 次，尚未滿 10 個交易日。`);
+      }
+    } else if (s.settled && ret && xs) {
+      const vs = side === 'bear'
+        ? `a short versus QQQ ${xs} (positive means the bearish side beat QQQ)`
+        : `versus QQQ ${xs} (positive means the price beat QQQ)`;
+      lines.push(`Newly added to the ${name} list ${s.opened} time${s.opened === 1 ? '' : 's'}; ${s.settled} completed 10 sessions: average price ${ret}, ${vs}. ${s.immature} not yet complete.`);
+    } else {
+      lines.push(`Newly added to the ${name} list ${s.opened} time${s.opened === 1 ? '' : 's'}; none have completed 10 sessions yet.`);
+    }
+  }
+  if (!lines.length) return '';
+  const from = esc(String(book.from || ''));
+  const asof = esc(String(book.as_of || ''));
+  const note = lang === 'zh'
+    ? `一次列入只計一次，留在名單上不重複計算。起點是該次窗口結束後的下一個美股收市價，持有 10 個交易日。紀錄由 ${from} 至 ${asof}。不是投資建議。`
+    : `Counted once per entry. Staying on the list does not open another episode. Entry is the next US close after that window; hold is 10 sessions. Record ${from} to ${asof}. Not investment advice.`;
+  const cta = lang === 'zh'
+    ? `<p class="ft-cta"><a href="/zh/weekly/">每週日把這本帳寄出：週報每月 USD 5</a></p>`
+    : `<p class="ft-cta"><a href="/zh/weekly/">The Sunday brief that lists these follow-throughs is in Chinese.</a></p>`;
+  return `<aside class="ft-stock"><b>${lang === 'zh' ? '列入之後 10 個交易日' : '10 sessions after joining the list'}</b>`
+    + lines.map(x => `<p>${esc(x)}</p>`).join('')
+    + `<p class="ft-note">${note}</p>${cta}</aside>`;
+}
+
+const FT_CSS = `.ft-stock{margin:12px 0;padding:10px 12px;border-radius:12px;background:var(--accent-soft);font-size:14px;line-height:1.5}
+.ft-stock b{display:block;margin-bottom:4px}
+.ft-stock p{margin:4px 0}
+.ft-stock .ft-note{font-size:12px;color:var(--muted)}
+.ft-stock .ft-cta{margin-top:6px;font-weight:700}`;
+
 // Newsletter A/B box (nl-stock-2026-10). en copy lives in i18n/en.json under "nl".
 // i18n/zh.json is a list of UI strings, so the Chinese block stays here.
 const NL_ENDPOINT = 'https://crowdtape-newsletter.vercel.app/api/subscribe';
@@ -559,7 +620,8 @@ background:var(--accent);color:#fff;text-decoration:none}
 .tv-chart .px-fallback{margin-top:10px;max-width:100%;min-width:0;overflow:hidden}
 .tv-chart .px-sec{border:0;padding:0;background:transparent;box-shadow:none}
 .tv-chart .px-chart{max-height:140px}
-${NL_CSS}</style>
+${NL_CSS}
+${FT_CSS}</style>
 ${apple}${apple ? `<style>header.ap-top{background:var(--navbg)!important;-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px)}
 header.ap-top .ap-logo .brand{font:600 17px/1 var(--f-display);color:var(--tx);margin:0}
 header.ap-top .lang-sw a{border:0!important;background:none!important;color:var(--mut);font:500 13px/1 var(--f-body);padding:6px}
@@ -698,6 +760,8 @@ if (require.main === module) {
   let fallbackPages = 0;
   const urls = [];
   const sectors = loadSectors();
+  let followBook = {};
+  try { followBook = JSON.parse(fs.readFileSync(path.join(root, 'data', 'followthrough.json'), 'utf8')); } catch (_) { followBook = {}; }
   for (const lang of Object.keys(LANGS)) {
     const file = path.resolve(lang, 'index.html');
     const p = await b.newPage();
@@ -793,7 +857,7 @@ if (require.main === module) {
       // Iframe fills the old chart slot. The SVG stays under it when the px file exists.
       // The "recent changes" heading stays too: the iframe is there even with no SVG.
       body = body.replace('<!--px-chart:' + pg.t + '-->', tvChartBlock(lang, pg.t, tvSymbols, svg));
-      const boxed = insertAfterKpis(body, nlMarkup(lang, pg.t));
+      const boxed = insertAfterKpis(body, followBox(lang, pg.t, followBook) + nlMarkup(lang, pg.t));
       if (boxed === body) {
         console.log('::error::股票網頁沒有電子報位置：' + lang + '/' + pg.t);
         process.exit(1);
@@ -903,4 +967,4 @@ if (require.main === module) {
 })();
 }
 
-module.exports = { avatars, dedupeSitemap, esc, slug, toTop, shell, stockFooterCta, tvWidgetSrc, tvMappedSymbol, tvChartLink, tvChartBlock, ensureTvFrameSrc, TV_LOCALE, TV_SYMBOL_404, T };
+module.exports = { avatars, dedupeSitemap, esc, slug, toTop, shell, stockFooterCta, tvWidgetSrc, tvMappedSymbol, tvChartLink, tvChartBlock, ensureTvFrameSrc, TV_LOCALE, TV_SYMBOL_404, T, followBox };
