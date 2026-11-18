@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123107426220265877": {
+      "en_summary": "$ANT pre-IPO contracts are already trading at $97 on Liquid implying a ~$1.7T valuation.",
+      "zh_summary": "$ANT 的 pre-IPO 合約已在 Liquid 以 97 美元交易，意味著約 1.7 兆美元的估值。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123107126511816990": {
+      "en_summary": "Market is bouncing on Ackman attacking the Nvidia board and giving hope to AI bulls that he has a strategy to help reinstate Jensen as CEO. The author is skeptical, comparing it to previous failed hopes like petitions or public pleas, and bets that Bill had strategically positioned calls just before this PR ploy so algos will trap gullible bulls for worried investors to sell into. $NVDA headline bounce is likened to the new \"Trade wars are easy to win.\"",
+      "zh_summary": "市場正因 Ackman 攻擊 Nvidia 董事會並給 AI 多頭希望（他有策略協助 Jensen 重返執行長）而反彈。作者持懷疑態度，將其比作之前失敗的希望如請願或公開懇求，並猜測 Bill 在此公關策略前已策略性佈局看漲期權，讓演算法困住輕信的多頭供擔憂的投資者賣出。$NVDA 標題反彈被比喻為新的「貿易戰很容易贏」。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "Ackman 攻擊董事會製造反彈希望，作者懷疑是策略性陷阱，類似「貿易戰很容易贏」的標題反彈"}
+    },
+    "2123107057046003904": {
+      "en_summary": "$SPY $QQQ $SOXL $VIX are ripping higher. 7000 people on live stream just followed the guidance for Mid Day Ripster 5/12 curls for lunch with VIX break and Ripster curls.",
+      "zh_summary": "$SPY $QQQ $SOXL $VIX 正大幅上漲。直播中有 7000 人剛跟隨指導進行午間 Ripster 5/12 捲曲交易，伴隨 VIX 突破和 Ripster 捲曲。",
+      "tickers": ["SPY", "QQQ", "SOXL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPY": "睇好", "QQQ": "睇好", "SOXL": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123106495780774151": {
+      "en_summary": "We've seen nothing like this move in Tech over the last 10 years. Hedge funds have absolutely unloaded Tech over the last 6 weeks, a 4+ sigma event nearly 2x the prior record, involving $QQQ $XLK $SOX.",
+      "zh_summary": "過去 10 年科技股從未出現過這樣的走勢。對沖基金在過去 6 週徹底拋售科技股，這是一個 4+ 西格瑪事件，幾乎是先前紀錄的兩倍，涉及 $QQQ $XLK $SOX。",
+      "tickers": ["QQQ", "XLK"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性", "XLK": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"QQQ": "對沖基金過去 6 週大規模拋售科技股，4+ 西格瑪事件", "XLK": "科技板塊遭遇異常大規模拋售"}
+    },
+    "2123106464625754549": {
+      "en_summary": "Trade schools were put on the inflection monitor in June because college is quite expensive and employers cannot find enough electricians, welders, or mechanics. Last quarter the market took UTI and Lincoln Tech to the slaughterhouse after one slower quarter of student starts. This quarter Lincoln Tech $LINC was back at 15% growth. The author questions if the market is now doing the same to another stock.",
+      "zh_summary": "由於大學費用昂貴且雇主難以找到足夠的電工、焊工或機械師，交易學校在六月被列入拐點監測名單。上季在學生入學放緩一季後，市場對 UTI 和 Lincoln Tech 進行大屠殺。本季 Lincoln Tech $LINC 恢復 15% 增長。作者質疑市場是否正對另一隻股票做同樣的事。",
+      "tickers": ["LINC"],
+      "stance": "中性",
+      "stance_by_ticker": {"LINC": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"LINC": "本季恢復 15% 增長，上季因入學放緩被市場重挫"}
+    }
+  }
+}
