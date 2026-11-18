@@ -1,36 +1,47 @@
 {
  "note": "Written by GitHub Actions on every update. Actions Site Check reads this.",
- "checked_hkt": "2026-11-18 09:57",
- "generated_hkt": "2026-11-18 09:28",
- "cutoff_hkt": "2026-11-17T19:30:58+08:00",
- "posts_on_site": 6452,
+ "checked_hkt": "2026-11-18 15:32",
+ "generated_hkt": "2026-11-18 15:06",
+ "cutoff_hkt": "2026-11-18T09:22:34+08:00",
+ "posts_on_site": 6490,
  "added_this_run": 0,
  "added_without_en_summary": 0,
- "waiting_for_summary": 1114,
- "waiting_with_stock": 517,
- "expired_unsummarised_this_run": 7,
- "chitchat_skipped_this_run": 1194,
- "pruned_this_run": 18,
+ "waiting_for_summary": 1179,
+ "waiting_with_stock": 511,
+ "expired_unsummarised_this_run": 2,
+ "chitchat_skipped_this_run": 318,
+ "pruned_this_run": 0,
  "fetch_failed": [],
  "warnings": [
-  "未分析：1114 則新帖等待 Grok 分析"
+  "未分析：1179 則新帖等待 Grok 分析"
  ],
- "writeups_applied": [],
+ "writeups_applied": [
+  "zh/daily 2026-11-17",
+  "zh/weekly 2026-11-17",
+  "zh/monthly 2026-11-17",
+  "zh/highlights 2026-11-17",
+  "zh/briefing 2026-11-17",
+  "en/daily 2026-11-17",
+  "en/weekly 2026-11-17",
+  "en/monthly 2026-11-17",
+  "en/highlights 2026-11-17",
+  "en/briefing 2026-11-17"
+ ],
  "writeups_rejected": [],
  "latest_writeups": {
   "zh": {
-   "daily": "2026-11-16",
-   "weekly": "2026-11-16",
-   "monthly": "2026-11-16",
-   "highlights": "2026-11-16",
-   "briefing": "2026-11-16"
+   "daily": "2026-11-17",
+   "weekly": "2026-11-17",
+   "monthly": "2026-11-17",
+   "highlights": "2026-11-17",
+   "briefing": "2026-11-17"
   },
   "en": {
-   "daily": "2026-11-16",
-   "weekly": "2026-11-16",
-   "monthly": "2026-11-16",
-   "highlights": "2026-11-16",
-   "briefing": "2026-11-16"
+   "daily": "2026-11-17",
+   "weekly": "2026-11-17",
+   "monthly": "2026-11-17",
+   "highlights": "2026-11-17",
+   "briefing": "2026-11-17"
   }
  },
  "layout_warnings": [
@@ -39,5 +50,5 @@
   "en 1280px：今日重點卡有 0 張（應該 3 張）",
   "en 390px：今日重點卡有 0 張（應該 3 張）"
  ],
- "layout_checked_hkt": "2026-11-18 10:00"
+ "layout_checked_hkt": "2026-11-18 15:37"
 }
