@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>今日共同看好同看淡｜The Crowd Tape</title>
+<meta name="description" content="今日共同看好、共同看淡同最大分歧。可搜尋代碼、按六類篩選帳號，關注清單記在這部裝置。不是投資建議。">
+<link rel="canonical" href="https://thecrowdtape.com/zh/board/">
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700&display=swap">
+<style>
+:root{
+  --bg:#f3f4f7; --surface:#fff; --ink:#161a21; --muted:#5b6372; --line:#dde1e8;
+  --accent:#2d48c9; --bull:#11845a; --bear:#c3343a; --warn:#a3640a; --warn-soft:#fbefd9;
+  --f-display:"Noto Serif TC",serif; --f-body:"Noto Sans TC",system-ui,sans-serif; --f-data:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#0e1116; --surface:#161a21; --ink:#e6e9ee; --muted:#9aa2b0; --line:#2a303a;
+  --accent:#93a5ff; --bull:#3cc58b; --bear:#f2686d; --warn:#e6a94a; --warn-soft:#3a2c14; color-scheme:dark}}
+*{box-sizing:border-box}
+html{overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55}
+a{color:var(--accent)}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:880px;margin:0 auto;padding:16px 16px 64px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.brand{font-family:var(--f-display);font-size:20px;font-weight:700;color:var(--ink);text-decoration:none}
+nav{display:flex;gap:6px;overflow-x:auto;margin:0 0 16px}
+nav button{min-height:44px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;white-space:nowrap;cursor:pointer}
+nav button[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+h1{font-family:var(--f-display);font-size:28px;line-height:1.25;margin:0 0 8px}
+.muted{color:var(--muted)}
+.cards{display:grid;gap:12px}
+@media(min-width:800px){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.card,.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px}
+.card h2{margin:0;font-size:14px}
+.bull{color:var(--bull)}.bear{color:var(--bear)}
+.n{font:500 28px/1 var(--f-data);margin:8px 0}
+ul{list-style:none;margin:0;padding:0}
+.row{display:flex;align-items:center;gap:8px;margin-top:8px}
+.tk{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border:1px solid var(--line);border-radius:10px;text-decoration:none;color:var(--ink);font-family:var(--f-data);font-size:14px}
+.row .tk{flex:1}
+.ghost{min-height:44px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:0 12px;cursor:pointer}
+.ghost.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.panel{margin-top:12px}
+.panel h2{margin:0 0 8px;font-size:15px}
+label.line{display:flex;align-items:center;gap:8px;min-height:44px}
+input[type="search"],input[type="email"]{width:100%;min-height:44px;border:1px solid var(--line);border-radius:10px;background:var(--bg);padding:0 12px}
+.chips{display:flex;gap:6px;overflow-x:auto;margin-top:10px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.note{margin-top:16px;font-size:12px;color:var(--muted)}
+.alert{margin-top:12px;background:var(--warn-soft);border-radius:12px;padding:12px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a class="brand" href="/zh/">The Crowd Tape</a>
+  <a href="/zh/weekly/">週報</a>
+</header>
+<nav>
+  <button type="button" data-tab="today" aria-selected="true">今日</button>
+  <button type="button" data-tab="search" aria-selected="false">搜尋</button>
+  <button type="button" data-tab="score" aria-selected="false">準確度</button>
+  <button type="button" data-tab="plans" aria-selected="false">點解 USD 5</button>
+</nav>
+
+<section id="today">
+  <h1>今日邊隻齊聲</h1>
+  <p class="muted" id="window">載入共識…</p>
+  <div class="cards" id="cards"></div>
+  <div class="panel" id="delta"></div>
+  <div class="panel" id="watch"></div>
+  <div class="panel">
+    <h2>近 7 日熱門</h2>
+    <p class="muted">按每日熱門名單的名次加權，不是提及次數。</p>
+    <div class="row" id="hot" style="flex-wrap:wrap"></div>
+  </div>
+</section>
+
+<section id="search" hidden>
+  <h1>搜尋</h1>
+  <p class="muted">代碼來自共識歷史。帳號是已分類的 435 個。</p>
+  <input id="q" type="search" placeholder="NVDA 或 Serenity" aria-label="搜尋代碼或帳號">
+  <div class="chips" id="cats"></div>
+  <div id="hits"></div>
+</section>
+
+<section id="score" hidden>
+  <h1>帳號準確度</h1>
+  <p class="muted">只計一帖一隻、轉態先開新注。90 日內至少 8 注已結算先公開。這批還沒有人達標。</p>
+  <div id="ledger"></div>
+</section>
+
+<section id="plans" hidden>
+  <h1>點解要付每月 USD 5</h1>
+  <p>首頁只答今日邊隻齊聲。週報把過去 7 日誰改口、邊隻由分歧變齊聲寫成一段，並附原帖。一個月 USD 5，每週一封繁中。</p>
+  <div class="panel">
+    <p><b>免費有：</b>今日共同看好、看淡、分歧；搜尋；這部裝置上的關注清單。準確度要滿 8 注先顯示。</p>
+    <p><b>USD 5 有：</b>一週敘事同原帖。沒有買賣建議，沒有目標價，未滿 8 注也不會寫成勝率。</p>
+    <p><b>更高階未開賣：</b>自訂六類權重、長過 90 日的已結算明細、真正的電郵。未做好之前不收款。</p>
+    <p><a href="/zh/weekly/">去現有的週報頁</a></p>
+  </div>
+</section>
+
+<p class="note">只整理公開帖文的共同立場，不是投資建議。共同看好或看淡要至少兩個帳號同一方向，快訊帳號不計。</p>
+</div>
+<script>
+const CATS = ["大人物／企業家","宏觀","股市意見","基本面／主題","半導體／AI","交易員"];
+const KEY = "crowd-tape-watch";
+const ALERT = "crowd-tape-alert";
+const EMAIL = "crowd-tape-email";
+
+function readWatch(){ try { const v = JSON.parse(localStorage.getItem(KEY) || "[]"); return Array.isArray(v) ? v.filter(x => typeof x === "string") : []; } catch { return []; } }
+function writeWatch(list){ localStorage.setItem(KEY, JSON.stringify(list)); }
+function bucket(list, tk){
+  if (list.bull.includes(tk)) return "bull";
+  if (list.bear.includes(tk)) return "bear";
+  if (list.split.includes(tk)) return "split";
+  return "none";
+}
+const LAB = { bull:"共同看好", bear:"共同看淡", split:"分歧", none:"沒有共同立場" };
+function change(now, prev){
+  if (now === prev) return now === "none" ? "上一個窗口也沒有" : "跟上一個窗口一樣";
+  if (now === "bull") return "新列入共同看好";
+  if (now === "bear") return "新列入共同看淡";
+  if (now === "none") return "跌出今個窗口";
+  return "由" + LAB[prev] + "改為" + LAB[now];
+}
+function el(tag, cls, text){ const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+function linkTicker(tk){ const a = el("a", "tk", tk); a.href = "/zh/stock/" + encodeURIComponent(tk) + "/"; return a; }
+function watchBtn(tk){
+  const b = el("button", "ghost", readWatch().includes(tk) ? "已關注" : "關注");
+  b.type = "button";
+  if (readWatch().includes(tk)) b.classList.add("on");
+  b.addEventListener("click", () => {
+    const cur = readWatch();
+    const next = cur.includes(tk) ? cur.filter(x => x !== tk) : cur.concat(tk);
+    writeWatch(next);
+    paintWatch();
+    document.querySelectorAll(".ghost").forEach(btn => {
+      if (btn.dataset.tk === tk) { btn.textContent = next.includes(tk) ? "已關注" : "關注"; btn.classList.toggle("on", next.includes(tk)); }
+    });
+  });
+  b.dataset.tk = tk;
+  return b;
+}
+function card(title, cls, tickers, note){
+  const s = el("section", "card");
+  const h = el("h2", cls, title);
+  s.append(h, el("p", "n", String(tickers.length)));
+  tickers.forEach(tk => {
+    const row = el("div", "row");
+    row.append(linkTicker(tk), watchBtn(tk));
+    s.append(row);
+  });
+  if (note) s.append(el("p", "muted", note));
+  return s;
+}
+
+let TODAY, PREV, DIR = [], HOT = [], UNIVERSE = [];
+function paintWatch(){
+  const box = document.getElementById("watch");
+  box.replaceChildren();
+  box.append(el("h2", "", "我的關注"));
+  const list = readWatch();
+  if (!list.length) box.append(el("p", "muted", "未有關注。喺上面的股票按「關注」，清單只存在這部裝置。"));
+  list.forEach(tk => {
+    const now = bucket(TODAY, tk), prev = bucket(PREV, tk);
+    const row = el("div", "row");
+    const a = linkTicker(tk);
+    const sub = el("span", "muted", LAB[now] + " · " + change(now, prev));
+    sub.style.fontSize = "12px";
+    const wrap = el("div"); wrap.style.flex = "1"; wrap.append(a, sub);
+    row.append(wrap, watchBtn(tk));
+    box.append(row);
+  });
+  const lab = el("label", "line", "");
+  const cb = document.createElement("input");
+  cb.type = "checkbox";
+  cb.checked = localStorage.getItem(ALERT) === "1";
+  cb.addEventListener("change", () => localStorage.setItem(ALERT, cb.checked ? "1" : "0"));
+  lab.append(cb, document.createTextNode("新列入共同看好或看淡時，在這頁提醒"));
+  box.append(lab);
+  if (cb.checked) {
+    const email = document.createElement("input");
+    email.type = "email"; email.placeholder = "電郵只記在這部裝置"; email.value = localStorage.getItem(EMAIL) || "";
+    email.addEventListener("change", () => { if (!email.value || email.value.includes("@")) localStorage.setItem(EMAIL, email.value.trim()); });
+    box.append(email);
+    const hits = list.filter(tk => {
+      const now = bucket(TODAY, tk), prev = bucket(PREV, tk);
+      return (now === "bull" && prev !== "bull") || (now === "bear" && prev !== "bear");
+    });
+    if (hits.length) {
+      const a = el("div", "alert");
+      a.append(el("p", "", "今個窗口的提醒"));
+      hits.forEach(tk => a.append(el("p", "", tk + " " + (bucket(TODAY, tk) === "bull" ? "新列入共同看好" : "新列入共同看淡"))));
+      a.append(el("p", "muted", "電郵未接上發送。上面就係你應收到的內容。"));
+      box.append(a);
+    }
+  }
+}
+
+function renderToday(){
+  document.getElementById("window").textContent = (TODAY.window || []).join(" – ") + " HKT。更新 " + (TODAY.updated_hkt || "") + "。";
+  const cards = document.getElementById("cards");
+  cards.replaceChildren(
+    card("共同看好", "bull", TODAY.bull, ""),
+    card("共同看淡", "bear", TODAY.bear, ""),
+    card("最大分歧", "", TODAY.split.slice(0, 8), "共 " + TODAY.split.length + " 隻兩邊都有人")
+  );
+  const delta = document.getElementById("delta");
+  delta.replaceChildren(el("h2", "", "對上一個窗口"));
+  [["新列入看好", TODAY.bull.filter(t => !PREV.bull.includes(t))],
+   ["跌出看好", PREV.bull.filter(t => !TODAY.bull.includes(t))],
+   ["新列入看淡", TODAY.bear.filter(t => !PREV.bear.includes(t))],
+   ["跌出看淡", PREV.bear.filter(t => !TODAY.bear.includes(t))]].forEach(([label, tks]) => {
+    const p = el("p", "");
+    p.append(el("span", "muted", label + " "), document.createTextNode(tks.length ? tks.join("、") : "沒有"));
+    delta.append(p);
+  });
+  const hot = document.getElementById("hot");
+  hot.replaceChildren();
+  HOT.forEach((tk, i) => { const a = linkTicker((i + 1) + " " + tk); a.href = "/zh/stock/" + tk + "/"; hot.append(a); });
+  paintWatch();
+}
+
+document.querySelectorAll("nav button").forEach(btn => btn.addEventListener("click", () => {
+  document.querySelectorAll("nav button").forEach(b => b.setAttribute("aria-selected", b === btn ? "true" : "false"));
+  ["today","search","score","plans"].forEach(id => document.getElementById(id).hidden = id !== btn.dataset.tab);
+}));
+
+let CAT = "";
+function renderSearch(){
+  const q = document.getElementById("q").value.trim();
+  const box = document.getElementById("hits");
+  box.replaceChildren();
+  const needle = q.replace(/^\$/, "").toUpperCase();
+  if (needle) {
+    UNIVERSE.filter(t => t.includes(needle)).slice(0, 12).forEach(tk => {
+      const row = el("div", "row"); row.append(linkTicker(tk), watchBtn(tk)); box.append(row);
+    });
+  }
+  const n = q.replace(/^@/, "").toLowerCase();
+  if (!n && !CAT) {
+    if (!needle) box.append(el("p", "muted", "輸入代碼或帳號，或先揀一個類別。"));
+    return;
+  }
+  const rows = DIR.filter(a => (!CAT || a.c === CAT) && (!n || a.h.toLowerCase().includes(n) || a.n.toLowerCase().includes(n))).slice(0, 40);
+  rows.forEach(a => {
+    const p = el("p", "");
+    const link = el("a", "", a.n); link.href = "/zh/account/" + encodeURIComponent(a.h) + "/";
+    p.append(link, el("span", "muted", " @" + a.h + " · " + a.c));
+    box.append(p);
+  });
+  if (!rows.length && !needle) box.append(el("p", "muted", "沒有符合的帳號。"));
+}
+
+async function start(){
+  const [hist, dir, ledger] = await Promise.all([
+    fetch("/data/consensus-history.json").then(r => r.json()),
+    fetch("directory.json").then(r => r.json()),
+    fetch("ledger.json").then(r => r.json())
+  ]);
+  DIR = dir;
+  const days = Object.keys(hist.days).sort();
+  TODAY = hist.days[days.at(-1)];
+  PREV = hist.days[days.at(-2)];
+  const score = new Map();
+  days.slice(-7).forEach(day => (hist.days[day].top || []).forEach((tk, i) => score.set(tk, (score.get(tk) || 0) + (8 - i))));
+  HOT = [...score.entries()].sort((a,b) => b[1] - a[1]).slice(0, 10).map(x => x[0]);
+  const universe = new Set();
+  days.forEach(day => ["bull","bear","split","top"].forEach(k => (hist.days[day][k] || []).forEach(t => universe.add(t))));
+  UNIVERSE = [...universe];
+  renderToday();
+  const cats = document.getElementById("cats");
+  ["全部", ...CATS].forEach(name => {
+    const b = el("button", "ghost", name);
+    b.type = "button";
+    b.addEventListener("click", () => { CAT = name === "全部" ? "" : name; cats.querySelectorAll("button").forEach(x => x.classList.toggle("on", x === b)); renderSearch(); });
+    cats.append(b);
+  });
+  document.getElementById("q").addEventListener("input", renderSearch);
+  const box = document.getElementById("ledger");
+  box.append(el("p", "", "截至 " + ledger.asOf + "。抽樣 " + ledger.posts + " 則已標註帖，開注 " + ledger.calls.length + "，已結算 0。"));
+  const table = document.createElement("table");
+  const head = document.createElement("tr");
+  ["帳號","代碼","方向","入場"].forEach(t => head.append(el("th", "", t)));
+  table.append(head);
+  ledger.calls.forEach(c => {
+    const tr = document.createElement("tr");
+    tr.append(el("td", "", "@" + c.handle), el("td", "", c.ticker), el("td", c.direction === "bull" ? "bull" : "bear", c.direction === "bull" ? "看多" : "看空"));
+    tr.append(el("td", "", c.entryPx ? c.entryDate + " · " + c.entryPx : "等收市"));
+    table.append(tr);
+  });
+  box.append(table);
+}
+start().catch(err => { document.getElementById("window").textContent = "共識載入失敗：" + err.message; });
+</script>
+</body>
+</html>
