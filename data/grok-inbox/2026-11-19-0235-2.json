@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123109449284157784": {
+      "en_summary": "$NVDA is trading like a meme stock. Over $150,000,000,000 wiped from Nvidia in the past hour, with a 10% chance Jensen Huang returns as $NVDA CEO.",
+      "zh_summary": "$NVDA 正像迷因股一樣交易。過去一小時 Nvidia 市值蒸發超過 1500 億美元，Jensen Huang 回歸擔任 $NVDA 執行長的機率為 10%。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "過去一小時市值蒸發超過 1500 億美元，Jensen Huang 回歸機率僅 10%，被形容像迷因股交易"}
+    },
+    "2123109327451934994": {
+      "en_summary": "$TEM and $AZN have extended their strategic partnership in a $200M five-year deal from 2027 to 2031. AstraZeneca will use Tempus’ AI technology and medical data to accelerate cancer research, drug development, and clinical trials.",
+      "zh_summary": "$TEM 與 $AZN 延長策略夥伴關係，簽訂價值 2 億美元、為期五年（2027–2031）的協議。AstraZeneca 將使用 Tempus 的 AI 技術和醫療數據，以加速癌症研究、藥物開發和臨床試驗。",
+      "tickers": ["TEM", "AZN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TEM": "睇好", "AZN": "睇好"},
+      "horizon": "長線",
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TEM": "與 AstraZeneca 簽訂 2 億美元五年協議（2027-2031），使用 AI 技術加速癌症研究", "AZN": "延長與 Tempus 的策略夥伴，利用其 AI 和醫療數據推進藥物開發和臨床試驗"}
+    },
+    "2123108485868974183": {
+      "en_summary": "Long Cast @RJInvMgmt has been bullish on Pro-Dex $PDEX for some time and sees Zimmer Biomet’s $ZBH new knee-replacement robot as a catalyst. $ZBH is developing a surgeon-guided knee surgery platform and expects to file for FDA clearance soon. $PDEX has an exclusive agreement to supply key cutting components and is described as a ‘blossoming flower’.",
+      "zh_summary": "Long Cast @RJInvMgmt 長期看好 Pro-Dex $PDEX，並視 Zimmer Biomet $ZBH 新款膝關節置換機器人為催化劑。$ZBH 正在開發由外科醫生引導的膝關節手術平台，並預計很快申請 FDA 批准。$PDEX 擁有獨家供應關鍵切割組件的協議，被形容為「綻放的花朵」。",
+      "tickers": ["PDEX", "ZBH"],
+      "stance": "睇好",
+      "stance_by_ticker": {"PDEX": "睇好", "ZBH": "中性"},
+      "horizon": "中線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"PDEX": "獨家供應 Zimmer Biomet 新膝關節機器人關鍵切割組件，被視為催化劑和「綻放的花朵」"}
+    },
+    "2123108049577537793": {
+      "en_summary": "$VIX decomposition as of 11/17/26 shows the whole vol surface lifting with yesterday’s sell, which is not surprising. The left tail actually softened while the right tail held a bit firmer.",
+      "zh_summary": "截至 11/17/26 的 $VIX 分解顯示，昨日拋售導致整個波動率曲面上升，這並不意外。突出的是左尾實際上軟化，而右尾則略為堅挺。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2123107844635627859": {
+      "en_summary": "(Reposted by @zeroshorts) $NVDA is down despite a beat and raise quarter because they didn’t file their 10q at the same time as earnings, the call and Q&A didn’t address investor concerns including the claim of zero sales to China, and large holders likely didn’t like the answers leading to a long squeeze. Additional issues include competition taking advantage of leadership disruption to lower gross margins, neo clouds having trouble getting financing, DSOs of receivables rising to 64 from 60 last quarter and 45 prior, SEC and DOJ investigation overhang, and macro credit markets questioning the AI buildout cycle.",
+      "zh_summary": "（轉推自 @zeroshorts）儘管業績超預期並上調指引，$NVDA 仍下跌，原因包括未與業績同時提交 10q、電話會議和問答未回應包括聲稱零中國銷售在內的投資者擔憂、大型持有人可能不滿答案導致長倉擠壓。其他問題包括競爭利用領導層動盪壓低毛利率、新雲服務難以獲得融資、應收帳款 DSO 從上季 60 和之前 45 升至 64、SEC 和 DOJ 調查懸而未決，以及宏觀信貸市場對 AI 建設週期的質疑。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"NVDA": "未同步提交 10q、中國銷售聲稱受質疑、DSO 升至 64、SEC/DOJ 調查及 AI 建設融資疑慮導致長倉擠壓"}
+    }
+  }
+}
