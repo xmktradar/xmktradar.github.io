@@ -2,53 +2,53 @@
  "date": "2026-11-21",
  "date_kst": "2026-11-21",
  "frozen": false,
- "made_hkt": "2026-11-18 09:58",
- "from": "2026-11-12",
- "to": "2026-11-18",
+ "made_hkt": "2026-11-19 01:04",
+ "from": "2026-11-13",
+ "to": "2026-11-19",
  "themes": [
   {
    "theme": "rates",
-   "accounts": 17,
-   "n": 17,
-   "bull": 2,
+   "accounts": 15,
+   "n": 15,
+   "bull": 1,
    "bear": 9,
-   "neu": 6,
-   "arrow": "flat",
+   "neu": 5,
+   "arrow": "dn",
    "quotes": {
     "zh": {
      "acc": "garyblack00",
-     "impact": "bear",
-     "text": "美股盤前延續下跌（SPX -0.3%，NDX -0.3%），因今晚 $NVDA 業績和 Anthropic IPO。布倫特原油升至93美元/桶，10年期美債收益率回落至5.10%。比特幣跌至6.43萬美元，金銀小幅上漲。$NVDA 跌0.4%但成立國家安全監督委員會。市場定價12月美聯儲加息概率超100%，因近期經濟數據強勁，2027年可能減息。標普2026年EPS估計369美元（同比+33%）意味20.1倍市盈率。",
-     "url": "https://x.com/garyblack00/status/2122649520169193837"
+     "impact": "neu",
+     "text": "@garyblack00 報告美股盤前反彈（標普 +0.7%，納指 +1.2%），因 Nvidia 強勁 Q4 及 2027 指引確認穩健 AI 需求，$NVDA 盤前漲 3.1% 至 $160，同業 $AMD $AVGO $MU $DELL 漲 2-3%。Anthropic（$ANT）今晚將定價史上最大 IPO，募資達 900 億美元，估值可能達 1.4 兆美元。布倫特原油跌 1.1% 至 $92，10 年期收益率降至 5.09%，市場定價 12 月聯儲加息概率超 100%。標普 2026 年 EPS $369（同比 +33%）隱含 19.9 倍市盈率。",
+     "url": "https://x.com/garyblack00/status/2123016725981806665"
     },
     "en": {
      "acc": "garyblack00",
-     "impact": "bear",
-     "text": "US stocks extended pre-market declines (SPX -0.3%, NDX -0.3%) ahead of tonight’s $NVDA earnings and Anthropic IPO. Brent crude rose to $93/bbl, 10-year yield eased to 5.10%. Bitcoin dropped to $64.3K, gold and silver rose modestly. $NVDA slipped 0.4% but created a national security oversight committee. Markets price >100% chance of December Fed rate hike on strong data, potential cuts in 2027. S&P 2026 EPS estimates $369 (+33% YoY) imply 20.1x P/E.",
-     "url": "https://x.com/garyblack00/status/2122649520169193837"
+     "impact": "neu",
+     "text": "@garyblack00 reports US stocks rebounded pre-market (SPX +0.7%, NDX +1.2%) on Nvidia’s strong Q4 and 2027 guidance affirming robust AI demand, $NVDA up 3.1% pre-mkt to $160, peers $AMD $AVGO $MU $DELL 2-3% higher. Anthropic ($ANT) to price largest IPO ever tonight up to $90B at $1.4T valuation. Brent fell 1.1% to $92, 10yr yield to 5.09%, markets price over 100% odds of Dec Fed rate hike. S&P 2026 EPS $369 (+33% YoY) implies 19.9x P/E.",
+     "url": "https://x.com/garyblack00/status/2123016725981806665"
     }
    }
   },
   {
    "theme": "inflation",
-   "accounts": 13,
-   "n": 13,
+   "accounts": 14,
+   "n": 14,
    "bull": 0,
-   "bear": 8,
+   "bear": 9,
    "neu": 5,
    "arrow": "dn",
    "quotes": {
     "zh": {
-     "acc": "carlquintanilla",
-     "impact": "neu",
-     "text": "「..第五大道租金過去一年平均跳升35%，遠超全球3%增長..」@WSJ #NYC",
-     "url": "https://x.com/carlquintanilla/status/2122650149704941661"
+     "acc": "KeithMcCullough",
+     "impact": "bear",
+     "text": "能源：通縮終於到來，我們仍然做空XOP CRAK等。",
+     "url": "https://x.com/KeithMcCullough/status/2123000969986535518"
     },
     "en": {
-     "acc": "carlquintanilla",
-     "impact": "neu",
-     "text": "“.. Rents on Fifth Avenue have jumped an average 35% over the past year, far outpacing 3% growth worldwide ..” @WSJ #NYC https://www.wsj.com/real-estate/commercial/fifth-avenue-reclaims-its-crown-as-the-worlds-premier-home-to-luxury-retailers-83e484a1",
-     "url": "https://x.com/carlquintanilla/status/2122650149704941661"
+     "acc": "KeithMcCullough",
+     "impact": "bear",
+     "text": "ENERGY: Disinflation is finally here and we remain short of XOP CRAK etc.",
+     "url": "https://x.com/KeithMcCullough/status/2123000969986535518"
     }
    }
   },
@@ -64,35 +64,35 @@
   },
   {
    "theme": "growth",
-   "accounts": 26,
-   "n": 26,
-   "bull": 3,
-   "bear": 7,
-   "neu": 16,
-   "arrow": "dn",
+   "accounts": 27,
+   "n": 27,
+   "bull": 4,
+   "bear": 6,
+   "neu": 17,
+   "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "LiveSquawk",
+     "acc": "Retail_Guru",
      "impact": "bull",
-     "text": "2027年展望：富國銀行預計標普500指數到2027年底達到8200點。- 將美國消費必需品板塊從等權下調至低配 - 將美國消費可選板塊從等權上調至超配 - 將美國金融板塊從超配下調至等權 - 將美國工業板塊從超配下調至等權 - 將美國能源板塊從低配上調至等權 - 將美國通信服務板塊從等權上調至超配",
-     "url": "https://x.com/LiveSquawk/status/2122649921694142630"
+     "text": "Depot和街頭說comps改善全是份額增長。但在高度整合市場，HD和LOW剛剛實現四年來最佳comps。很難辯稱這不是消費潮上升。TGT流量+5%，自2022年1月以來最佳。提及XLY XLF XRT。",
+     "url": "https://x.com/Retail_Guru/status/2123036404699873406"
     },
     "en": {
-     "acc": "LiveSquawk",
+     "acc": "Retail_Guru",
      "impact": "bull",
-     "text": "Outlook 2027: Wells Fargo Expects S&P 500 Index To Hit 8,200 Points By Year-End 2027. - Downgrades US Consumer Staples Sector To Underweight From Equal Weight - Upgrades US Consumer Discretionary Sector To Overweight From Equal Weight - Downgrades US Financials Sector To Equal Weight From Overweight - Downgrades US Industrials Sector To Equal Weight From Overweight - Upgrades US Energy Sector To Equal Weight From Underweight - Upgrades US Communication Services Sector To Overweight From Equal Weight",
-     "url": "https://x.com/LiveSquawk/status/2122649921694142630"
+     "text": "Depot & street say comp improvement all share gain. But in consolidated market, HD & LOW just comped their best in 4 years. Hard to argue that isn't rising consumer tide. TGT traffic +5%, best since Jan 2022. Mentions XLY XLF XRT.",
+     "url": "https://x.com/Retail_Guru/status/2123036404699873406"
     }
    }
   },
   {
    "theme": "yields",
-   "accounts": 18,
-   "n": 18,
+   "accounts": 16,
+   "n": 16,
    "bull": 0,
    "bear": 5,
-   "neu": 13,
-   "arrow": "none",
+   "neu": 11,
+   "arrow": "dn",
    "quotes": {
     "zh": {
      "acc": "chigrl",
@@ -110,12 +110,12 @@
   },
   {
    "theme": "fx",
-   "accounts": 16,
-   "n": 15,
+   "accounts": 14,
+   "n": 14,
    "bull": 1,
    "bear": 5,
-   "neu": 9,
-   "arrow": "none",
+   "neu": 8,
+   "arrow": "dn",
    "quotes": {
     "zh": {
      "acc": "KeithMcCullough",
@@ -133,12 +133,12 @@
   },
   {
    "theme": "energy",
-   "accounts": 12,
-   "n": 12,
-   "bull": 5,
+   "accounts": 11,
+   "n": 11,
+   "bull": 4,
    "bear": 3,
    "neu": 4,
-   "arrow": "up",
+   "arrow": "dn",
    "quotes": {
     "zh": {
      "acc": "aeberman12",
@@ -158,45 +158,45 @@
    "theme": "policy",
    "accounts": 66,
    "n": 66,
-   "bull": 4,
-   "bear": 20,
+   "bull": 3,
+   "bear": 21,
    "neu": 42,
    "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "InvestmentGuru_",
-     "impact": "bear",
-     "text": "亞洲因晶片限制隔夜下跌，韓國跌2.6%，台灣跌2.3%。期貨指向較低，$NVDA盤前跌0.5%。今日8:30有零售銷售數據，然後$NVDA收盤後公布。指引才是考驗，而非本季業績。",
-     "url": "https://x.com/InvestmentGuru_/status/2122652077591859700"
+     "acc": "RedDogT3",
+     "impact": "neu",
+     "text": "儘管NVDA業績穩健，全球市場混合。SPX測試7346支撐，下一個關注7288。AI交易仍然脆弱，市場尋求緩解。下午2點FOMC會議紀要。未來關鍵日子，保持戰術並管理風險。",
+     "url": "https://x.com/RedDogT3/status/2123034813753905563"
     },
     "en": {
-     "acc": "InvestmentGuru_",
-     "impact": "bear",
-     "text": "Asia sold off overnight on the chip curbs with Korea down 2.6% and Taiwan down 2.3%. Futures point lower and $NVDA is down 0.5% premarket. Retail sales data at 8:30, then $NVDA after the close. The guide is the test, not the quarter.",
-     "url": "https://x.com/InvestmentGuru_/status/2122652077591859700"
+     "acc": "RedDogT3",
+     "impact": "neu",
+     "text": "Mixed global markets despite solid NVDA results. SPX testing 7346 support, 7288 next level. AI trade remains fragile as markets look for relief. FOMC minutes at 2 PM. Key days ahead, stay tactical and manage risk.",
+     "url": "https://x.com/RedDogT3/status/2123034813753905563"
     }
    }
   },
   {
    "theme": "other",
-   "accounts": 104,
-   "n": 103,
-   "bull": 13,
-   "bear": 34,
-   "neu": 56,
+   "accounts": 105,
+   "n": 104,
+   "bull": 16,
+   "bear": 35,
+   "neu": 53,
    "arrow": "dn",
    "quotes": {
     "zh": {
-     "acc": "unusual_whales",
-     "impact": "neu",
-     "text": "突發：駭客向至少178家主要組織運營的網站傳播惡意軟件，包括Zoom、CNN、BBC、Fox News、HSBC、Equifax、Salesforce、IKEA和Air France-KLM，據安全公司Report URI。攻擊者利用網站測試平台Optimizely的漏洞植入旨在竊取支付數據、劫持加密支付並針對較舊 iPhone的代碼。銀行和金融受創最重，32家組織受影響，包括多個市場的HSBC。Optimizely表示漏洞已修復。Report URI目前追蹤到約7000美元被盜加密貨幣。",
-     "url": "https://x.com/unusual_whales/status/2122652720788349419"
+     "acc": "DougKass",
+     "impact": "bull",
+     "text": "@cnbc @beckyquick節目解釋為何金融股絕對有意義，並作為對大型科技股的對沖。開始在金融/銀行領域累積多頭倉位，作為市場輪動的受益。",
+     "url": "https://x.com/DougKass/status/2123027182809153783"
     },
     "en": {
-     "acc": "unusual_whales",
-     "impact": "neu",
-     "text": "BREAKING: Hackers spread malware to websites run by at least 178 major organizations, including Zoom, CNN, BBC, Fox News, HSBC, Equifax, Salesforce, IKEA and Air France-KLM, per security firm Report URI. Attackers exploited a flaw in Optimizely, a website-testing platform, to plant code designed to steal payment data, hijack crypto payments and target older iPhones. Banking and finance was hit hardest, with 32 organizations affected, including HSBC across multiple markets. Optimizely says the flaw is fixed. Report URI has traced about $7,000 in stolen crypto so far.",
-     "url": "https://x.com/unusual_whales/status/2122652720788349419"
+     "acc": "DougKass",
+     "impact": "bull",
+     "text": "@cnbc @beckyquick segment why financials make sense absolutely and as a hedge against large cap Tech. Began to accumulate long positions in financials/banks as benefit of market rotation.",
+     "url": "https://x.com/DougKass/status/2123027182809153783"
     }
    }
   }
@@ -206,48 +206,48 @@
   "policy",
   "growth"
  ],
- "accounts": 454,
- "x_accounts": 453,
- "range": "11/12–11/18",
+ "accounts": 500,
+ "x_accounts": 499,
+ "range": "11/13–11/19",
  "images": {
-  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-21-0958",
-  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-21-0958"
+  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-21-0104",
+  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-21-0104"
  },
  "stories": {
-  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-21-0958",
-  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-21-0958"
+  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-21-0104",
+  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-21-0104"
  },
  "posts": {
   "zh": {
-   "instagram": "本週宏觀：最多人講「其他」（利好 13・利空 34）\n\n這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/12–11/18）\n\n1. 其他：利好 13・利空 34・中性 56（比上週轉差 ▼）\n@unusual_whales：「突發：駭客向至少178家主要組織運營的網站傳播惡意軟件，包括Zoom、CNN、BBC、Fox News、HSBC、Equifax、Salesforce、IKEA和Air Fran…」\n\n2. 關稅／政策／地緣政治：利好 4・利空 20・中性 42（同上週差不多）\n@InvestmentGuru_：「亞洲因晶片限制隔夜下跌，韓國跌2.6%，台灣跌2.3%。期貨指向較低，$NVDA盤前跌0.5%。今天8:30有零售銷售數據，然後$NVDA收盤後公布。指引才是考驗，而非本季業績。」\n\n3. 經濟增長／衰退：利好 3・利空 7・中性 16（比上週轉差 ▼）\n@LiveSquawk：「2027年展望：富國銀行預計標普500指數到2027年底達到8200點。- 將美國消費必需品板塊從等權下調至低配 - 將美國消費可選板塊從等權上調至超配 - 將美國金融板塊從超配…」\n\n你覺得下週市場最該留意哪個數據？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
-   "threads": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/12–11/18）\n\n1. 其他：利好 13・利空 34・中性 56（比上週轉差 ▼）\n2. 關稅／政策／地緣政治：利好 4・利空 20・中性 42（同上週差不多）\n3. 經濟增長／衰退：利好 3・利空 7・中性 16（比上週轉差 ▼）\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
-   "x": "這星期大家最常聊的宏觀話題\n\n其他 13/34/56\n關稅／政策／地緣政治 4/20/42\n經濟增長／衰退 3/7/16\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "instagram": "本週宏觀：最多人講「其他」（利好 16・利空 35）\n\n這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/13–11/19）\n\n1. 其他：利好 16・利空 35・中性 53（比上週轉差 ▼）\n@DougKass：「@cnbc @beckyquick節目解釋為何金融股絕對有意義，並作為對大型科技股的對沖。開始在金融/銀行領域累積多頭倉位，作為市場輪動的受益。」\n\n2. 關稅／政策／地緣政治：利好 3・利空 21・中性 42（同上週差不多）\n@RedDogT3：「儘管NVDA業績穩健，全球市場混合。SPX測試7346支撐，下一個關注7288。AI交易仍然脆弱，市場尋求緩解。下午2點FOMC會議紀要。未來關鍵日子，保持戰術並管理風險。」\n\n3. 經濟增長／衰退：利好 4・利空 6・中性 17（同上週差不多）\n@Retail_Guru：「Depot和街頭說comps改善全是份額增長。但在高度整合市場，HD和LOW剛剛實現四年來最佳comps。很難辯稱這不是消費潮上升。TGT流量+5%，自2022年1月以來最佳。提…」\n\n這週哪個宏觀消息最影響你的判斷？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "threads": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/13–11/19）\n\n1. 其他：利好 16・利空 35・中性 53（比上週轉差 ▼）\n2. 關稅／政策／地緣政治：利好 3・利空 21・中性 42（同上週差不多）\n3. 經濟增長／衰退：利好 4・利空 6・中性 17（同上週差不多）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "x": "這星期大家最常聊的宏觀話題\n\n其他 16/35/53\n關稅／政策／地緣政治 3/21/42\n經濟增長／衰退 4/6/17\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "reddit": {
-    "title": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/12–11/18）",
-    "body": "1. 其他：利好 13・利空 34・中性 56（比上週轉差 ▼）\n@unusual_whales：「突發：駭客向至少178家主要組織運營的網站傳播惡意軟件，包括Zoom、CNN、BBC、Fox News、HSBC、Equifax、Salesforce、IKEA和Air Fran…」\n\n2. 關稅／政策／地緣政治：利好 4・利空 20・中性 42（同上週差不多）\n@InvestmentGuru_：「亞洲因晶片限制隔夜下跌，韓國跌2.6%，台灣跌2.3%。期貨指向較低，$NVDA盤前跌0.5%。今天8:30有零售銷售數據，然後$NVDA收盤後公布。指引才是考驗，而非本季業績。」\n\n3. 經濟增長／衰退：利好 3・利空 7・中性 16（比上週轉差 ▼）\n@LiveSquawk：「2027年展望：富國銀行預計標普500指數到2027年底達到8200點。- 將美國消費必需品板塊從等權下調至低配 - 將美國消費可選板塊從等權上調至超配 - 將美國金融板塊從超配…」\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
+    "title": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/13–11/19）",
+    "body": "1. 其他：利好 16・利空 35・中性 53（比上週轉差 ▼）\n@DougKass：「@cnbc @beckyquick節目解釋為何金融股絕對有意義，並作為對大型科技股的對沖。開始在金融/銀行領域累積多頭倉位，作為市場輪動的受益。」\n\n2. 關稅／政策／地緣政治：利好 3・利空 21・中性 42（同上週差不多）\n@RedDogT3：「儘管NVDA業績穩健，全球市場混合。SPX測試7346支撐，下一個關注7288。AI交易仍然脆弱，市場尋求緩解。下午2點FOMC會議紀要。未來關鍵日子，保持戰術並管理風險。」\n\n3. 經濟增長／衰退：利好 4・利空 6・中性 17（同上週差不多）\n@Retail_Guru：「Depot和街頭說comps改善全是份額增長。但在高度整合市場，HD和LOW剛剛實現四年來最佳comps。很難辯稱這不是消費潮上升。TGT流量+5%，自2022年1月以來最佳。提…」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
    },
-   "facebook": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/12–11/18）\n\n1. 其他：利好 13・利空 34・中性 56（比上週轉差 ▼）\n@unusual_whales：「突發：駭客向至少178家主要組織運營的網站傳播惡意軟件，包括Zoom、CNN、BBC、Fox News、HSBC、Equifax、Salesforce、IKEA和Air Fran…」\n\n2. 關稅／政策／地緣政治：利好 4・利空 20・中性 42（同上週差不多）\n@InvestmentGuru_：「亞洲因晶片限制隔夜下跌，韓國跌2.6%，台灣跌2.3%。期貨指向較低，$NVDA盤前跌0.5%。今天8:30有零售銷售數據，然後$NVDA收盤後公布。指引才是考驗，而非本季業績。」\n\n3. 經濟增長／衰退：利好 3・利空 7・中性 16（比上週轉差 ▼）\n@LiveSquawk：「2027年展望：富國銀行預計標普500指數到2027年底達到8200點。- 將美國消費必需品板塊從等權下調至低配 - 將美國消費可選板塊從等權上調至超配 - 將美國金融板塊從超配…」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "facebook": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/13–11/19）\n\n1. 其他：利好 16・利空 35・中性 53（比上週轉差 ▼）\n@DougKass：「@cnbc @beckyquick節目解釋為何金融股絕對有意義，並作為對大型科技股的對沖。開始在金融/銀行領域累積多頭倉位，作為市場輪動的受益。」\n\n2. 關稅／政策／地緣政治：利好 3・利空 21・中性 42（同上週差不多）\n@RedDogT3：「儘管NVDA業績穩健，全球市場混合。SPX測試7346支撐，下一個關注7288。AI交易仍然脆弱，市場尋求緩解。下午2點FOMC會議紀要。未來關鍵日子，保持戰術並管理風險。」\n\n3. 經濟增長／衰退：利好 4・利空 6・中性 17（同上週差不多）\n@Retail_Guru：「Depot和街頭說comps改善全是份額增長。但在高度整合市場，HD和LOW剛剛實現四年來最佳comps。很難辯稱這不是消費潮上升。TGT流量+5%，自2022年1月以來最佳。提…」\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "story": "#美股"
   },
   "en": {
    "instagram": "",
    "threads": "",
-   "x": "What X talked about in macro this week\n\nOther 13/34/56\nTariffs / policy / geopolitics 4/20/42\nGrowth / recession 3/7/16\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
+   "x": "What X talked about in macro this week\n\nOther 16/35/53\nTariffs / policy / geopolitics 3/21/42\nGrowth / recession 4/6/17\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
    "reddit": {
-    "title": "The macro topics the 499 X accounts we follow talked about most this week (11/12–11/18)",
-    "body": "1. Other: bullish 13 · bearish 34 · neutral 56 (worse than last week ▼)\n@unusual_whales: “BREAKING: Hackers spread malware to websites run by at least 178 major organizations, including Zoom, CNN, BBC, Fox News, HSBC, Equifax, Salesforce…”\n\n2. Tariffs / policy / geopolitics: bullish 4 · bearish 20 · neutral 42 (about the same as last week)\n@InvestmentGuru_: “Asia sold off overnight on the chip curbs with Korea down 2.6% and Taiwan down 2.3%. Futures point lower and $NVDA is down 0.5% premarket. Retail sal…”\n\n3. Growth / recession: bullish 3 · bearish 7 · neutral 16 (worse than last week ▼)\n@LiveSquawk: “Outlook 2027: Wells Fargo Expects S&P 500 Index To Hit 8,200 Points By Year-End 2027. - Downgrades US Consumer Staples Sector To Underweight From Equ…”\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro"
+    "title": "The macro topics the 499 X accounts we follow talked about most this week (11/13–11/19)",
+    "body": "1. Other: bullish 16 · bearish 35 · neutral 53 (worse than last week ▼)\n@DougKass: “@cnbc @beckyquick segment why financials make sense absolutely and as a hedge against large cap Tech. Began to accumulate long positions in financial…”\n\n2. Tariffs / policy / geopolitics: bullish 3 · bearish 21 · neutral 42 (about the same as last week)\n@RedDogT3: “Mixed global markets despite solid NVDA results. SPX testing 7346 support, 7288 next level. AI trade remains fragile as markets look for relief. FOMC…”\n\n3. Growth / recession: bullish 4 · bearish 6 · neutral 17 (about the same as last week)\n@Retail_Guru: “Depot & street say comp improvement all share gain. But in consolidated market, HD & LOW just comped their best in 4 years. Hard to argue that isn't…”\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro"
    },
-   "facebook": "The macro topics the 499 X accounts we follow talked about most this week (11/12–11/18)\n\n1. Other: bullish 13 · bearish 34 · neutral 56 (worse than last week ▼)\n@unusual_whales: “BREAKING: Hackers spread malware to websites run by at least 178 major organizations, including Zoom, CNN, BBC, Fox News, HSBC, Equifax, Salesforce…”\n\n2. Tariffs / policy / geopolitics: bullish 4 · bearish 20 · neutral 42 (about the same as last week)\n@InvestmentGuru_: “Asia sold off overnight on the chip curbs with Korea down 2.6% and Taiwan down 2.3%. Futures point lower and $NVDA is down 0.5% premarket. Retail sal…”\n\n3. Growth / recession: bullish 3 · bearish 7 · neutral 16 (worse than last week ▼)\n@LiveSquawk: “Outlook 2027: Wells Fargo Expects S&P 500 Index To Hit 8,200 Points By Year-End 2027. - Downgrades US Consumer Staples Sector To Underweight From Equ…”\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
+   "facebook": "The macro topics the 499 X accounts we follow talked about most this week (11/13–11/19)\n\n1. Other: bullish 16 · bearish 35 · neutral 53 (worse than last week ▼)\n@DougKass: “@cnbc @beckyquick segment why financials make sense absolutely and as a hedge against large cap Tech. Began to accumulate long positions in financial…”\n\n2. Tariffs / policy / geopolitics: bullish 3 · bearish 21 · neutral 42 (about the same as last week)\n@RedDogT3: “Mixed global markets despite solid NVDA results. SPX testing 7346 support, 7288 next level. AI trade remains fragile as markets look for relief. FOMC…”\n\n3. Growth / recession: bullish 4 · bearish 6 · neutral 17 (about the same as last week)\n@Retail_Guru: “Depot & street say comp improvement all share gain. But in consolidated market, HD & LOW just comped their best in 4 years. Hard to argue that isn't…”\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
    "story": ""
   }
  },
  "ig_images": {
   "zh": [
-   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-21-0958",
+   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-21-0104",
    "https://thecrowdtape.com/og/cta/ig-cta-zh.jpg"
   ],
   "en": [
-   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-21-0958",
+   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-21-0104",
    "https://thecrowdtape.com/og/cta/ig-cta-en.jpg"
   ]
  },
@@ -257,7 +257,7 @@
   "video_path": null,
   "video_expected_path": "assets/reels/2026-11-21-macro-week.mp4",
   "caption": {
-   "zh": "本週宏觀：最多人講「其他」（利好 13・利空 34）\n\n這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/12–11/18）\n\n1. 其他：利好 13・利空 34・中性 56（比上週轉差 ▼）\n@unusual_whales：「突發：駭客向至少178家主要組織運營的網站傳播惡意軟件，包括Zoom、CNN、BBC、Fox News、HSBC、Equifax、Salesforce、IKEA和Air Fran…」\n\n2. 關稅／政策／地緣政治：利好 4・利空 20・中性 42（同上週差不多）\n@InvestmentGuru_：「亞洲因晶片限制隔夜下跌，韓國跌2.6%，台灣跌2.3%。期貨指向較低，$NVDA盤前跌0.5%。今天8:30有零售銷售數據，然後$NVDA收盤後公布。指引才是考驗，而非本季業績。」\n\n3. 經濟增長／衰退：利好 3・利空 7・中性 16（比上週轉差 ▼）\n@LiveSquawk：「2027年展望：富國銀行預計標普500指數到2027年底達到8200點。- 將美國消費必需品板塊從等權下調至低配 - 將美國消費可選板塊從等權上調至超配 - 將美國金融板塊從超配…」\n\n你覺得下週市場最該留意哪個數據？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "zh": "本週宏觀：最多人講「其他」（利好 16・利空 35）\n\n這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/13–11/19）\n\n1. 其他：利好 16・利空 35・中性 53（比上週轉差 ▼）\n@DougKass：「@cnbc @beckyquick節目解釋為何金融股絕對有意義，並作為對大型科技股的對沖。開始在金融/銀行領域累積多頭倉位，作為市場輪動的受益。」\n\n2. 關稅／政策／地緣政治：利好 3・利空 21・中性 42（同上週差不多）\n@RedDogT3：「儘管NVDA業績穩健，全球市場混合。SPX測試7346支撐，下一個關注7288。AI交易仍然脆弱，市場尋求緩解。下午2點FOMC會議紀要。未來關鍵日子，保持戰術並管理風險。」\n\n3. 經濟增長／衰退：利好 4・利空 6・中性 17（同上週差不多）\n@Retail_Guru：「Depot和街頭說comps改善全是份額增長。但在高度整合市場，HD和LOW剛剛實現四年來最佳comps。很難辯稱這不是消費潮上升。TGT流量+5%，自2022年1月以來最佳。提…」\n\n這週哪個宏觀消息最影響你的判斷？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "en": ""
   }
  },

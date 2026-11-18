@@ -1904,16 +1904,22 @@
   },
   "2026-11-18": {
    "bull": [
-    "QQQ",
     "TGT",
     "MU",
-    "SPY",
-    "MSFT"
+    "LOW",
+    "MSFT",
+    "TTWO",
+    "UBER"
    ],
-   "bear": [],
+   "bear": [
+    "GLD"
+   ],
    "split": [
     "NVDA",
+    "QQQ",
+    "SPY",
     "AMD",
+    "AAOI",
     "AVGO"
    ],
    "window": [
@@ -1923,19 +1929,19 @@
    "top": [
     "NVDA",
     "SPY",
+    "QQQ",
     "AMD",
     "MU",
-    "QQQ",
+    "TGT",
     "AVGO",
     "PANW",
-    "TGT",
     "SPX",
-    "SNDK"
+    "AAOI"
    ],
    "src": "live",
-   "updated_hkt": "2026-11-18 23:28"
+   "updated_hkt": "2026-11-19 00:38"
   }
  },
- "updated_hkt": "2026-11-18 23:28",
+ "updated_hkt": "2026-11-19 00:38",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
