@@ -903,16 +903,16 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
       <a class="tab-earn" href="#follow">Consensus</a>
       <a class="tab-earn" href="earnings/" title="US stocks worth $50B+"><span aria-hidden="true">📊</span> Latest earnings<small class="tab-cap"> ($50B+ market cap)</small></a>
     </nav>
-    <div class="ap-r"><a class="ap-tools" href="tools/">Tools</a><button type="button" class="srch-btn" id="srch-btn" aria-label="Search stocks" title="Search stocks" aria-expanded="false" aria-controls="srch">🔍</button><span class="ap-lang"><nav class="lang-sw" aria-label="Language"><a href="/zh/" data-lang="zh">中</a><a href="/en/" data-lang="en" aria-current="page">EN</a></nav></span><a class="ap-don donate-jump" href="#donate">Donate</a></div>
+    <div class="ap-r"><a class="ap-tools" href="tools/">Tools</a><button type="button" class="srch-btn" id="srch-btn" aria-label="Search stocks" title="Search stocks" aria-expanded="false" aria-controls="srch">🔍</button><span class="ap-lang"><nav class="lang-sw" aria-label="Language"><a href="/zh/" data-lang="zh">中</a><a href="/en/" data-lang="en" aria-current="page">EN</a></nav></span></div>
   </div>
   <div class="wrap ap-srch"><div class="srch" id="srch" role="search" hidden><div class="srch-row"><input id="srch-q" type="search" placeholder="Ticker or company name, e.g. NVDA" aria-label="Search stocks" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go"><button type="button" class="srch-x" id="srch-x" aria-label="Close search">✕</button></div><ul id="srch-r" role="listbox" aria-label="Search results"></ul></div></div>
 </header>
 <section class="ap-hero" aria-label="About">
   <div class="wrap">
     <p class="ap-eyebrow">500 accounts · 6 categories · every 8 hours</p>
-    <p class="ap-h"><span class="ap-h1">500 US-stock accounts: </span><span class="ap-grad">who's bullish/bearish together today?</span></p>
-    <p class="ap-sub">Bullish, bearish, and divergence auto-refreshed every 8 hours. Free.</p>
-    <div class="ap-cta"><a class="ap-btn" href="#view">See today's highlights</a><a class="ap-btn ap-ghost" href="#ct-news-home">Get the weekly bull/bear digest</a><a class="ap-btn" href="/zh/weekly/">Monday book check, USD 5/month</a></div>
+    <p class="ap-h"><span class="ap-h1">Today’s list is free.</span><span class="ap-grad">Monday names last week’s new listings, and whether following them lagged.</span></p>
+    <p class="ap-sub">The email has at most eight names: new listings whose last same-side call lagged the most.</p>
+    <div class="ap-cta"><a class="ap-btn" href="#view">See today's highlights</a><a class="ap-btn" href="/zh/weekly/">Monday book check, USD 5/month</a></div>
     <div class="meta ap-meta">
       <span>Posts as of <b id="cutoff"></b></span>
       <span>Next update <b id="nextup"></b></span>
@@ -2011,7 +2011,6 @@ fetch(API+(seen?'get/':'hit/')+KEY,{cache:'no-store'}).then(function(r){return r
 .multi-scroll thead th,.cons-scroll thead th{position:sticky;top:0;z-index:2;background:var(--panel)}
 .stack thead th{position:static}</style>
 
-<button type="button" class="donate-fab" data-jump="donate">☕ <span>Donate</span></button>
 <style>.donate-fab{display:none}
 @media(max-width:700px){.donate-fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:inline-flex;align-items:center;gap:4px;padding:9px 14px;border-radius:999px;border:1px dashed var(--line-strong);background:var(--panel);color:var(--tx-strong);font-weight:700;font-size:14px;box-shadow:0 3px 10px rgba(59,47,37,.15);opacity:0;pointer-events:none;transition:opacity .2s}
  .donate-fab.on{opacity:1;pointer-events:auto}}</style>
@@ -2288,7 +2287,7 @@ function put(cls,html,before){var n=view.querySelector(':scope>.'+cls);if(!n){n=
 function endCard(v,n){var s=document.createElement('section');s.className='c12 panel bk-end';s.setAttribute('data-bp',n);s.setAttribute('data-v',v);
  var more=Object.keys(TABS).filter(function(k){return k!==v}).map(function(k){return '<a href="'+TABS[k][0]+'">'+TABS[k][1]+'</a>'}).join('');
  s.innerHTML='<h2>'+(v==='daily'?'You’re done for today':v==='weekly'?'You’re done for this week':'You’re done for this month')+' 🎉</h2><p>Thanks for reading. The site is free, needs no sign-in and updates every 8 hours. If you find it useful, you’re welcome to buy us a coffee; your support keeps the site running.</p>'+
- '<div class="bk-acts"><a href="https://www.paypal.com/qrcodes/p2pqrc/3KT8QNVNRWJMA" target="_blank" rel="noopener">☕ Donate</a><a class="bk-nl" href="newsletter/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=newsletter">✉️ Get the weekly newsletter</a><a class="bk-weekly" href="/zh/weekly/">Monday book check, USD 5/month</a></div>'+
+ '<div class="bk-acts"><a class="bk-weekly" href="/zh/weekly/">Monday book check, USD 5/month</a></div>'+
  '<p class="note">See more:</p><div class="bk-more">'+more+'<button type="button" data-jump="stock-index" class="bk-si">Stock pages</button><button type="button" data-bk="1">Start over</button></div>';return s}
 function run(){
  var g=view.querySelector(':scope>.grid'),v=bookView();

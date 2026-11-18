@@ -73,23 +73,35 @@ def load_followthrough():
     return json.load(open(path, encoding='utf-8'))
 
 
+def email_rows(rows, ft, limit=8):
+    """At most eight new inclusions, the ones whose last same-side call lagged QQQ the most."""
+    lagged = []
+    for row in rows:
+        prev = prior_settled(ft, row['t'], row['side'], row['d'])
+        if not prev or not isinstance(prev.get('xs'), (int, float)) or prev['xs'] >= 0:
+            continue
+        lagged.append((prev['xs'], row['t'], row))
+    lagged.sort()
+    return [row for _, _, row in lagged[:limit]]
+
+
 def email_block(rows, ft):
-    """Subscriber email only. Each new inclusion, then the previous settled result."""
+    """Subscriber email only. At most eight names, each with the previous settled miss."""
+    chosen = email_rows(rows, ft)
     lines = [
         '',
         '對倉，不是跟單',
-        '上一週新列入的名稱只在這封電郵。每一行附上一次同類齊聲、已結算的 10 日相對 QQQ。同一方向連續留在名單上只計第一次。不是投資建議。',
+        '這一封最多八隻。只寫上週新列入、上次同類已結算又跑輸最多的。同一方向連續留在名單上只計第一次。不是投資建議。',
     ]
-    for row in rows:
+    if not chosen:
+        lines.append('上週新列入裡，沒有上次同類已結算而且跑輸的名稱。今次不列名單。')
+        return '\n'.join(lines)
+    for row in chosen:
         side = '共同看好' if row['side'] == 'bull' else '共同看淡'
         lines.append(f"{row['d'][5:]} ${row['t']} {side}")
         prev = prior_settled(ft, row['t'], row['side'], row['d'])
-        if not prev:
-            lines.append('未有已結算紀錄。')
-        else:
-            xs = prev['xs']
-            beat = '跑贏' if xs > 0 else '跑輸' if xs < 0 else '持平'
-            lines.append(f'上次同類已結算：10 日相對 QQQ {signed_pct(xs)}，{beat}')
+        xs = prev['xs']
+        lines.append(f'上次同類已結算：10 日相對 QQQ {signed_pct(xs)}，跑輸')
         lines.append('今次是新列入。不是投資建議。')
         lines.append('')
     return '\n'.join(lines).rstrip()

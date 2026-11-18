@@ -200,7 +200,7 @@ function insertAfterKpis(html, box) {
       i = close + 6;
       if (depth === 0) {
         const out = html.slice(0, i) + '\n' + box + '\n' + html.slice(i);
-        const boxAt = out.indexOf('data-ab-test="nl-stock-2026-10"', sec);
+        const boxAt = out.indexOf('class="ct-ledger"', sec);
         const sectionClose = out.indexOf('</section>', boxAt);
         const table = out.indexOf('<div class="tablewrap"', boxAt);
         if (boxAt < 0 || sectionClose < 0 || boxAt > sectionClose) return html;
@@ -258,13 +258,31 @@ function ledgerMarkup(lang, ticker, ft) {
     }
   }
   const note = lang === 'zh' ? '不是投資建議。' : 'Not investment advice.';
-  const pay = lang === 'zh'
-    ? '<p class="ct-ledger-pay"><a href="/zh/weekly/">這個數字免費。你持有的股票下一次新列入，星期一電郵才寫上次是贏是輸。每月 USD 5。</a></p>'
-    : '<p class="ct-ledger-pay"><a href="/zh/weekly/">This number is free. The Monday email covers whether a stock you hold was newly listed, and whether the last call beat QQQ. USD 5 a month.</a></p>';
+  const rows = ['bull', 'bear'].map(side => found[side]).filter(Boolean);
+  const lagged = rows.filter(row => row.xs < 0).sort((a, b) => a.xs - b.xs);
+  const picked = lagged[0] || rows.slice().sort((a, b) => String(b.signal).localeCompare(String(a.signal)))[0];
+  const btn = '<a class="ct-ledger-btn" href="/zh/weekly/">' + (lang === 'zh' ? '星期一替我對倉，每月 USD 5' : 'Monday book check, USD 5/month') + '</a>';
+  let pay;
+  if (!picked) {
+    pay = lang === 'zh'
+      ? `<p>${esc(ticker)} 未有已結算紀錄。如果你持有，下一次轉成共同看好或共同看淡，星期一先寫。 ${btn}</p>`
+      : `<p>${esc(ticker)} has no settled result yet. If you hold it, the Monday email covers the next time it turns bullish or bearish together. ${btn}</p>`;
+  } else {
+    const abs = ledgerPct(Math.abs(picked.xs)).replace('+', '');
+    if (lang === 'zh') {
+      const word = picked.side === 'bull' ? '看好' : '看淡';
+      const beat = picked.xs < 0 ? '跑輸' : picked.xs > 0 ? '跑贏' : '持平';
+      pay = `<p>${esc(ticker)} 上次齊聲${word}${beat} ${abs}。如果你持有，下一次轉成共同看好或共同看淡，星期一先寫。 ${btn}</p>`;
+    } else {
+      const word = picked.side === 'bull' ? 'bullish' : 'bearish';
+      const beat = picked.xs < 0 ? 'lagged QQQ by' : picked.xs > 0 ? 'beat QQQ by' : 'matched QQQ at';
+      pay = `<p>${esc(ticker)} last turned ${word} together and ${beat} ${abs}. If you hold it, the Monday email covers the next turn. ${btn}</p>`;
+    }
+  }
   const label = lang === 'zh' ? '已結算成績' : 'Settled result';
   const empty = lang === 'zh' ? '未有已結算紀錄。' : 'No settled 10-session result yet.';
   const body = lines.length ? lines.join('') : `<p>${empty}</p>`;
-  return `<aside class="ct-ledger" aria-label="${label}"><style>.ct-ledger{margin:12px 0;padding:10px 12px;border-radius:12px;background:var(--surface,#fff);font-size:14px;line-height:1.55}.ct-ledger p{margin:0 0 6px}.ct-ledger p:last-child{margin:0}.ct-ledger .up{color:#127a3a;font-weight:700}.ct-ledger .dn{color:#c2410c;font-weight:700}.ct-ledger a{font-weight:700}@media (prefers-color-scheme:dark){.ct-ledger .up{color:#3dd68c}.ct-ledger .dn{color:#ff7a59}}</style>${body}${pay}<p>${note}</p></aside>`;
+  return `<aside class="ct-ledger" aria-label="${label}"><style>.ct-ledger{margin:12px 0;padding:10px 12px;border-radius:12px;background:var(--surface,#fff);font-size:14px;line-height:1.55}.ct-ledger p{margin:0 0 6px}.ct-ledger p:last-child{margin:0}.ct-ledger .up{color:#127a3a;font-weight:700}.ct-ledger .dn{color:#c2410c;font-weight:700}.ct-ledger a.ct-ledger-btn{display:inline-flex;box-sizing:border-box;margin:6px 0 0;padding:8px 12px;border-radius:999px;background:#0071e3;color:#fff;font-weight:700;text-decoration:none}@media (prefers-color-scheme:dark){.ct-ledger .up{color:#3dd68c}.ct-ledger .dn{color:#ff7a59}}</style>${body}${pay}<p>${note}</p></aside>`;
 }
 function checklistGo(lang, campaign, token) {
   var u = 'https://thecrowdtape.com/' + lang + '/checklist/earnings/?utm_source=site&utm_medium=cta&utm_campaign=' + campaign;
@@ -849,7 +867,7 @@ if (require.main === module) {
       // Iframe fills the old chart slot. The SVG stays under it when the px file exists.
       // The "recent changes" heading stays too: the iframe is there even with no SVG.
       body = body.replace('<!--px-chart:' + pg.t + '-->', tvChartBlock(lang, pg.t, tvSymbols, svg));
-      const boxed = insertAfterKpis(body, ledgerMarkup(lang, pg.t, ledger) + nlMarkup(lang, pg.t));
+      const boxed = insertAfterKpis(body, ledgerMarkup(lang, pg.t, ledger));
       if (boxed === body) {
         console.log('::error::股票網頁沒有電子報位置：' + lang + '/' + pg.t);
         process.exit(1);
