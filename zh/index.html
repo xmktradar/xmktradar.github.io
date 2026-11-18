@@ -881,7 +881,16 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
 #srch-r .n{font-size:12px;color:var(--muted);white-space:nowrap}
 #srch-r .none{padding:8px;color:var(--muted);font-size:13px}
 @media(max-width:700px){.srch{left:12px;right:12px;width:auto}}</style>
-<!-- lang-head --><link rel="canonical" href="https://thecrowdtape.com/zh/"><link rel="alternate" hreflang="zh-Hant" href="https://thecrowdtape.com/zh/"><link rel="alternate" hreflang="en" href="https://thecrowdtape.com/en/"><link rel="alternate" hreflang="x-default" href="https://thecrowdtape.com/zh/"><style>.lang-sw{display:flex;gap:4px;margin:6px 0 2px}.lang-sw a{font:600 12.5px/1 var(--f-body);padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);text-decoration:none;background:var(--surface)}.lang-sw a[aria-current]{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}#dive>.lang-sw{position:static;justify-content:flex-start;margin:8px 16px 4px;clear:both}@media(max-width:600px){.flag{white-space:normal;max-width:100%;flex-wrap:wrap}.tk:has(.flag){white-space:normal!important;max-width:100%}html:not([lang^=zh]) td:not(:first-child) .note{white-space:normal}}</style><script>(function(){var k="ct-lang";document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".lang-sw a");if(!a)return;try{localStorage.setItem(k,a.dataset.lang)}catch(_){}e.preventDefault();location.href=a.getAttribute("href")+location.search+location.hash});new MutationObserver(function(){var d=document.getElementById("dive"),n=document.querySelector("header .lang-sw");if(d&&n&&!d.querySelector(".lang-sw"))d.insertBefore(n.cloneNode(true),d.firstChild)}).observe(document.documentElement,{childList:true,subtree:true});try{localStorage.setItem(k,"zh")}catch(_){}})();</script><!-- lang-head --></head>
+<!-- lang-head --><link rel="canonical" href="https://thecrowdtape.com/zh/"><link rel="alternate" hreflang="zh-Hant" href="https://thecrowdtape.com/zh/"><link rel="alternate" hreflang="en" href="https://thecrowdtape.com/en/"><link rel="alternate" hreflang="x-default" href="https://thecrowdtape.com/zh/"><style>.lang-sw{display:flex;gap:4px;margin:6px 0 2px}.lang-sw a{font:600 12.5px/1 var(--f-body);padding:5px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted);text-decoration:none;background:var(--surface)}.lang-sw a[aria-current]{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}#dive>.lang-sw{position:static;justify-content:flex-start;margin:8px 16px 4px;clear:both}@media(max-width:600px){.flag{white-space:normal;max-width:100%;flex-wrap:wrap}.tk:has(.flag){white-space:normal!important;max-width:100%}html:not([lang^=zh]) td:not(:first-child) .note{white-space:normal}}</style><script>(function(){var k="ct-lang";document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest(".lang-sw a");if(!a)return;try{localStorage.setItem(k,a.dataset.lang)}catch(_){}e.preventDefault();location.href=a.getAttribute("href")+location.search+location.hash});new MutationObserver(function(){var d=document.getElementById("dive"),n=document.querySelector("header .lang-sw");if(d&&n&&!d.querySelector(".lang-sw"))d.insertBefore(n.cloneNode(true),d.firstChild)}).observe(document.documentElement,{childList:true,subtree:true});try{localStorage.setItem(k,"zh")}catch(_){}})();</script><!-- lang-head --><style id="ft-home">
+#follow{scroll-margin-top:72px}
+.ft-n{font-family:var(--f-data);font-weight:700}
+.ft-n.up,td.up{color:var(--bull-ink,#25803c)}
+.ft-n.dn,td.dn{color:var(--bear-ink,#c22f2a)}
+.ft-table{flex-basis:100%;width:100%;border-collapse:collapse;font-size:13px}
+.ft-table th,.ft-table td{text-align:left;padding:6px 4px;border-bottom:1px solid var(--line);vertical-align:middle}
+.ft-table a{font-family:var(--f-data);font-weight:700;text-decoration:none;color:var(--tx-strong)}
+</style>
+</head>
 <body>
 <header class="top ap-top">
   <div class="wrap ap-bar"><a class="ap-logo" href="#daily"><img src="/apple-touch-icon.png" alt="" width="22" height="22"><h1 class="brand">The Crowd Tape</h1></a>
@@ -891,7 +900,7 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
       <button role="tab" data-v="monthly" id="tab-monthly">每月<small class="tab-rng">（28 天）</small></button>
       <button role="tab" data-v="macro" id="tab-macro">宏觀</button>
       <button role="tab" data-v="tracked" id="tab-tracked">追蹤名單</button>
-      <a class="tab-earn" href="/zh/board/">共識</a>
+      <a class="tab-earn" href="#follow">共識</a>
       <a class="tab-earn" href="earnings/" title="市值 500 億美元以上美股"><span aria-hidden="true">📊</span> 最新財報簡報<small class="tab-cap">（市值 50B 以上）</small></a>
     </nav>
     <div class="ap-r"><a class="ap-tools" href="tools/">工具</a><button type="button" class="srch-btn" id="srch-btn" aria-label="搜尋股票" title="搜尋股票" aria-expanded="false" aria-controls="srch">🔍</button><span class="ap-lang"><nav class="lang-sw" aria-label="Language"><a href="/zh/" data-lang="zh" aria-current="page">中</a><a href="/en/" data-lang="en">EN</a></nav></span><a class="ap-don donate-jump" href="#donate">捐款支持</a></div>
@@ -1283,6 +1292,70 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-lbk]');if(
 // 新人睇唔明「重疊」：標題同兩個分組用白話覆蓋寫手字稿（2026-10-21）
 const VS_FIX=(()=>{const L=PAGE_LANG;if(L==='en')return{label:'Consensus bullish / bearish: today so far vs the same hours yesterday',dropped:'Not on the list so far today: {removed}',stayed:'On the list {streak} days in a row: {kept}'};return{label:'共同看多／看空：今日至今 vs 昨日同時段',dropped:'今日至今未再上榜：{removed}',stayed:'連續 {streak} 日上榜：{kept}'};})();
 const VSC=D.vs_copy?{...D.vs_copy,...VS_FIX}:null,CH=D.cons_hist||null;
+
+let FT_STATE='need', FT_DATA=null;
+const FT_COPY=(()=>{const L=PAGE_LANG;if(L==='en')return{
+ title:'After the consensus',
+ hint:'Once a name newly joins the consensus-bullish or consensus-bearish list, the next 10 sessions versus QQQ. A name that stays on the list is counted once.',
+ loading:'Calculating.',
+ fail:'The follow-through figures could not be loaded.',
+ bull:'Consensus bullish',
+ bear:'Consensus bearish',
+ avg:'average versus QQQ',
+ settled:'settled',
+ beat:'beat QQQ',
+ median:'median',
+ pending:'not yet 10 sessions',
+ method:'From {from} through the close of {asof}. Entry is the close of the next session that was still open when the window ended. Names short of 10 sessions are left out of the average. Not investment advice.',
+ recent:'Recently settled',
+ th:['Signal','Ticker','Side','10 sessions','Vs QQQ'],
+ sideB:'Bullish', sideS:'Bearish'
+};return{
+ title:'齊聲之後',
+ hint:'新列入共同看多或共同看空之後，持有 10 個交易日，與 QQQ 比較。同一方向連續上榜只計一次。',
+ loading:'正在計算。',
+ fail:'跟進數據暫時無法載入。',
+ bull:'共同看多',
+ bear:'共同看空',
+ avg:'平均相對 QQQ',
+ settled:'筆已結算',
+ beat:'跑贏',
+ median:'中位數',
+ pending:'未滿 10 日',
+ method:'自 {from} 起計，至收市日 {asof}。入場價為資料窗結束時、下一個尚未收市之交易日的收市價。未滿 10 日者不計入平均。並非投資建議。',
+ recent:'最近已結算',
+ th:['信號日','代號','方向','10 日','相對 QQQ'],
+ sideB:'看多', sideS:'看空'
+};})();
+function ftHtml(){
+ const C=FT_COPY;
+ if(FT_STATE==='need'){
+  FT_STATE='load';
+  fetch('/data/followthrough.json').then(r=>r.ok?r.json():null).then(d=>{FT_DATA=d;FT_STATE=d?'ok':'bad';if(typeof render==='function')render()}).catch(()=>{FT_STATE='bad';if(typeof render==='function')render()});
+ }
+ const shell=inner=>`<section class="c12 vs-bar" id="follow" aria-label="${esc(C.title)}"><span class="vs-l">${esc(C.title)}</span><span class="vs-hint">${esc(C.hint)}</span><span class="vs-br"></span>${inner}</section>`;
+ if(FT_STATE!=='ok'||!FT_DATA||!FT_DATA.bull) return shell(`<span class="vs-hint">${esc(FT_STATE==='bad'?C.fail:C.loading)}</span>`);
+ const pct=x=>{if(x==null||Number.isNaN(Number(x)))return '—';const n=Number(x)*100;return (n>0?'+':'')+n.toFixed(1)+'%'};
+ const cls=x=>Number(x)>0?'up':'dn';
+ const line=(title,b)=>`<span class="vs-grp"><b>${esc(title)}</b> <span class="ft-n ${cls(b.avg_xs)}">${pct(b.avg_xs)}</span> · ${esc(C.avg)} · ${b.settled} ${esc(C.settled)} · ${Math.round(b.hit*100)}% ${esc(C.beat)} · ${esc(C.median)} <span class="ft-n ${cls(b.median_xs)}">${pct(b.median_xs)}</span> · ${esc(C.pending)} ${b.immature}</span><span class="vs-br"></span>`;
+ const method=C.method.replace('{from}',FT_DATA.from).replace('{asof}',FT_DATA.as_of);
+ const head='<tr>'+C.th.map(x=>'<th>'+esc(x)+'</th>').join('')+'</tr>';
+ const rows=(FT_DATA.rows||[]).slice(0,8).map(r=>{
+  const side=r.side==='bull'?C.sideB:C.sideS;
+  const href='#stock/'+encodeURIComponent(r.ticker);
+  return '<tr><td>'+esc(String(r.signal).slice(5))+'</td><td><a href="'+href+'">'+esc(r.ticker)+'</a></td><td class="'+(r.side==='bull'?'up':'dn')+'">'+esc(side)+'</td><td class="ft-n '+cls(r.ret)+'">'+pct(r.ret)+'</td><td class="ft-n '+cls(r.xs)+'">'+pct(r.xs)+'</td></tr>';
+ }).join('');
+ return shell(line(C.bull,FT_DATA.bull)+line(C.bear,FT_DATA.bear)+'<span class="vs-hint">'+esc(method)+'</span><span class="vs-br"></span><table class="ft-table"><thead>'+head+'</thead><tbody>'+rows+'</tbody></table>');
+}
+document.addEventListener('click',function(e){
+ const a=e.target.closest&&e.target.closest('a[href="#follow"]');
+ if(!a)return;
+ e.preventDefault();
+ const go=()=>{const n=document.getElementById('follow');if(n)n.scrollIntoView({behavior:'smooth',block:'start'})};
+ const h=location.hash||'#daily';
+ if(h!=='#daily'&&h!==''){location.hash='daily';setTimeout(go,90)}
+ else go();
+});
 function vsHtml(w){if(!VSC||!CH)return '';
  const G=consGroups(w.from,w.to),T={bull:G.bull.map(g=>g.t),bear:G.bear.map(g=>g.t)};
  const pr=priorDailyRange(w.from,w.to),G0=consGroups(pr.pf,pr.pt),Y={bull:G0.bull.map(g=>g.t),bear:G0.bear.map(g=>g.t)};
@@ -1437,6 +1510,7 @@ function viewDaily(){
  <p class="c12 note ctx">以上數字：${ctx}</p>`;
  return pvJoin(head,[
  ()=>vsHtml(w),
+ ()=>ftHtml(),
  ()=>bpTag(4,highlightsHtml(w.day,w)),
  ()=>`<section class="c12 panel" data-bp="4"><h2>市場關注度變化 <span class="sub">只列仍有帳號關注的股票${attGone.length?`，已篩走 ${attGone.length} 隻已沒有人再關注的股票`:''}；括號為${cmpLab}</span></h2><p class="note ctx">${ctx}</p>
   ${att.length?`<div class="scrollbox" style="display:grid;gap:8px;align-content:start">${att.map(x=>{const k={bull:0,neu:0,none:0,bear:0};cur.filter(y=>y.t===x.t).forEach(y=>k[y.s]=(k[y.s]||0)+1);const seg=(c,n,l)=>n?`<span class="${c}" style="width:${n/mx*100}%" title="${l} ${n}"></span>`:'';return `<div class="hbar">${tkBtn(x.t)}<div class="track stk">${seg('b',k.bull,'看多')}${seg('m',k.neu,'中性')}${seg('u',k.none,'未表態')}${seg('r',k.bear,'看空')}</div><span class="n">${x.n} ${hasPrev?`(${signed(x.d)})`:''}</span></div>`}).join('')}</div><div style="margin-top:10px">${legend}</div>${hasPrev?'':priorLoading?'<p class="note">對比資料載入中…</p>':`<p class="note">${priorOpen}${w.timed?`${fmtR(pf)} – ${fmtR(pt)}`:`${fmt(pf)}${len>1?'–'+fmt(pt):''}`}）沒有資料，暫時無法比較。</p>`}`:empty('此範圍內沒有股票被提及。')}</section>`,
