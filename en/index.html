@@ -902,7 +902,7 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
     <p class="ap-eyebrow">454 accounts · 6 categories · every 8 hours</p>
     <p class="ap-h"><span class="ap-h1">454 US-stock accounts: </span><span class="ap-grad">who's bullish/bearish together today?</span></p>
     <p class="ap-sub">Bullish, bearish, and divergence auto-refreshed every 8 hours. Free.</p>
-    <div class="ap-cta"><a class="ap-btn" href="#view">See today's highlights</a><a class="ap-btn ap-ghost" href="#ct-news-home">Get the weekly bull/bear digest</a></div>
+    <div class="ap-cta"><a class="ap-btn" href="#view">See today's highlights</a><a class="ap-btn ap-ghost" href="#ct-news-home">Get the weekly bull/bear digest</a><a class="ap-btn" href="/zh/weekly/">Subscribe to the weekly report for USD 5/month (cancel anytime)</a></div>
     <div class="meta ap-meta">
       <span>Posts as of <b id="cutoff"></b></span>
       <span>Next update <b id="nextup"></b></span>
@@ -2201,7 +2201,7 @@ function put(cls,html,before){var n=view.querySelector(':scope>.'+cls);if(!n){n=
 function endCard(v,n){var s=document.createElement('section');s.className='c12 panel bk-end';s.setAttribute('data-bp',n);s.setAttribute('data-v',v);
  var more=Object.keys(TABS).filter(function(k){return k!==v}).map(function(k){return '<a href="'+TABS[k][0]+'">'+TABS[k][1]+'</a>'}).join('');
  s.innerHTML='<h2>'+(v==='daily'?'You’re done for today':v==='weekly'?'You’re done for this week':'You’re done for this month')+' 🎉</h2><p>Thanks for reading. The site is free, needs no sign-in and updates every 8 hours. If you find it useful, you’re welcome to buy us a coffee; your support keeps the site running.</p>'+
- '<div class="bk-acts"><a href="https://www.paypal.com/qrcodes/p2pqrc/3KT8QNVNRWJMA" target="_blank" rel="noopener">☕ Donate</a><a class="bk-nl" href="newsletter/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=newsletter">✉️ Get the weekly newsletter</a></div>'+
+ '<div class="bk-acts"><a href="https://www.paypal.com/qrcodes/p2pqrc/3KT8QNVNRWJMA" target="_blank" rel="noopener">☕ Donate</a><a class="bk-nl" href="newsletter/?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=newsletter">✉️ Get the weekly newsletter</a><a class="bk-weekly" href="/zh/weekly/">Subscribe to the weekly report for USD 5/month (cancel anytime)</a></div>'+
  '<p class="note">See more:</p><div class="bk-more">'+more+'<button type="button" data-jump="stock-index" class="bk-si">Stock pages</button><button type="button" data-bk="1">Start over</button></div>';return s}
 function run(){
  var g=view.querySelector(':scope>.grid'),v=bookView();
