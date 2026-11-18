@@ -78,6 +78,33 @@ def pct(value):
     return f'{"+" if value > 0 else ""}{value * 100:.1f}%'
 
 
+def sample_html(pub_rows):
+    """Three public settled rows, written the way the Monday email is written."""
+    ranked = sorted(
+        (row for row in pub_rows if row.get('side') in ('bull', 'bear') and isinstance(row.get('xs'), (int, float))),
+        key=lambda row: abs(row['xs']),
+        reverse=True,
+    )[:3]
+    if not ranked:
+        return ''
+    parts = [
+        '<h2>電郵長這樣</h2>',
+        '<p>下面三行用星期一電郵的寫法。數字是上面這一週已經公開的成績，不是今個星期。今個星期的名稱仍然不寫在這頁。電郵不叫人跟。</p>',
+    ]
+    for row in ranked:
+        side = '<span class="wk-up">共同看好</span>' if row.get('side') == 'bull' else '<span class="wk-dn">共同看淡</span>'
+        xs_v = row['xs']
+        klass = 'wk-up' if xs_v > 0 else 'wk-dn' if xs_v < 0 else ''
+        beat = '跑贏' if xs_v > 0 else '跑輸' if xs_v < 0 else '持平'
+        signal = str(row.get('signal') or '')[5:10]
+        parts.append(
+            f'<div class="wk-row"><span class="wk-t">{signal} ${row.get("ticker")}</span><span>{side}</span>'
+            f'<span class="{klass}">10 日相對 QQQ {pct(xs_v)}，{beat}</span>'
+            f'<span>不是投資建議。</span></div>'
+        )
+    return ''.join(parts)
+
+
 def scorecard_html():
     """Public settled week, plus a count of this week's new names. No current-week tickers."""
     data = dash()
@@ -123,6 +150,7 @@ def scorecard_html():
                 f'<span class="{klass}">相對 QQQ {pct(xs_v)} {beat}</span></div>'
             )
         parts.append('</div>')
+        parts.append(sample_html(pub_rows))
     else:
         parts.append('<h2>已結算成績</h2><p>暫時沒有已結算的星期。</p>')
     parts.append('</section>')

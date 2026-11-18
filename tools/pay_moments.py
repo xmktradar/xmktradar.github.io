@@ -7,6 +7,7 @@ email appends them for subscribers only.
 python3 tools/pay_moments.py   injects the homepage bridge (also called
 from tools/board_page.py after the pages are slimmed).
 """
+import json
 import os
 from datetime import date, timedelta
 
@@ -42,6 +43,56 @@ def zh_span(d0, d1):
     if d0.month == d1.month:
         return f'{d0.month}月{d0.day}日至{d1.day}日'
     return f'{d0.month}月{d0.day}日至{d1.month}月{d1.day}日'
+
+
+def prior_settled(ft, ticker, side, before):
+    """Latest settled episode of this ticker and side before this inclusion."""
+    best = None
+    before = str(before)[:10]
+    for row in (ft or {}).get('rows') or []:
+        if row.get('ticker') != ticker or row.get('side') != side:
+            continue
+        if not isinstance(row.get('xs'), (int, float)):
+            continue
+        signal = str(row.get('signal') or '')[:10]
+        if len(signal) != 10 or signal >= before:
+            continue
+        if best is None or signal > str(best.get('signal') or '')[:10]:
+            best = row
+    return best
+
+
+def signed_pct(value):
+    return f'{"+" if value > 0 else ""}{value * 100:.1f}%'
+
+
+def load_followthrough():
+    path = os.path.join(ROOT, 'data', 'followthrough.json')
+    if not os.path.isfile(path):
+        return {}
+    return json.load(open(path, encoding='utf-8'))
+
+
+def email_block(rows, ft):
+    """Subscriber email only. Each new inclusion, then the previous settled result."""
+    lines = [
+        '',
+        '對倉，不是跟單',
+        '上一週新列入的名稱只在這封電郵。每一行附上一次同類齊聲、已結算的 10 日相對 QQQ。同一方向連續留在名單上只計第一次。不是投資建議。',
+    ]
+    for row in rows:
+        side = '共同看好' if row['side'] == 'bull' else '共同看淡'
+        lines.append(f"{row['d'][5:]} ${row['t']} {side}")
+        prev = prior_settled(ft, row['t'], row['side'], row['d'])
+        if not prev:
+            lines.append('未有已結算紀錄。')
+        else:
+            xs = prev['xs']
+            beat = '跑贏' if xs > 0 else '跑輸' if xs < 0 else '持平'
+            lines.append(f'上次同類已結算：10 日相對 QQQ {signed_pct(xs)}，{beat}')
+        lines.append('今次是新列入。不是投資建議。')
+        lines.append('')
+    return '\n'.join(lines).rstrip()
 
 
 def episodes(cons_hist):
