@@ -1983,6 +1983,18 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 requestAnimationFrame(fitHotRow);fitHotRow();
 document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var u=a.href,h='';try{h=new URL(u).hostname.toLowerCase()}catch(err){return}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com')){gtag('event','social_click',{platform:'x',link_url:u,transport_type:'beacon'});gtag('event','x_outbound',{link_url:u,page:'home',lang:document.documentElement.lang||'',transport_type:'beacon'});}else if(h==='instagram.com'||h.endsWith('.instagram.com'))gtag('event','social_click',{platform:'instagram',link_url:u,transport_type:'beacon'});else if(h==='threads.net'||h.endsWith('.threads.net')||h==='threads.com'||h.endsWith('.threads.com'))gtag('event','social_click',{platform:'threads',link_url:u,transport_type:'beacon'});else if(h==='paypal.com'||h.endsWith('.paypal.com')||h==='paypal.me'||h.endsWith('.paypal.me'))gtag('event','donate_click',{method:'paypal',page:'home',lang:document.documentElement.lang})});
 
+
+/* ct-pay-bridge */
+function ctGroups(from,to,allow){
+  const ok=h=>{if(!inCons(h))return false;if(!allow)return true;const c=CAT[String(h).toLowerCase()];return !c||allow[c]===true};
+  const out={bull:[],bear:[],split:[]};
+  TICKERS.forEach(t=>{if(UNC(t)||!isUS(t))return;const rows=accsOf(from,to).filter(ok).map(a=>latest(a,t,from,to)).filter(Boolean);if(!rows.length)return;const nb=rows.filter(x=>x.s==='bull').length,nr=rows.filter(x=>x.s==='bear').length;const k=nb&&nr?'split':nb>=2?'bull':nr>=2?'bear':null;if(!k)return;const nPosts=new Set(postsIn(from,to).filter(x=>x.t===t).map(x=>x.url)).size;out[k].push({t,nb,nr,nPosts})});
+  ['bull','bear','split'].forEach(k=>out[k].sort((a,b)=>(b.nb+b.nr)-(a.nb+a.nr)||b.nPosts-a.nPosts||a.t.localeCompare(b.t)));
+  return out;
+}
+window.__ct={win:function(){return dailyWindow()},groups:ctGroups,cats:function(){return ((D.tracked&&D.tracked.categories)||[]).map(function(c){return c.name}).filter(Boolean)}};
+(function(){if(typeof render!=='function'||render.__ct)return;var prev=render;var wrapped=function(){var out=prev.apply(this,arguments);if(window.__ctAfter)try{window.__ctAfter()}catch(e){console.error(e)}return out};wrapped.__ct=1;render=wrapped})();
+
 </script>
 <script>
 // 已瀏覽次數：網頁自己數（abacus 免費計數器），由 Google Analytics 最後一個數字 397 接住數；同一個瀏覽器分頁只計一次
@@ -2327,4 +2339,5 @@ view.addEventListener('touchend',function(e){if(sk||!view.classList.contains('bk
  if(Math.abs(dx)>70&&Math.abs(dx)>2*Math.abs(dy))nav(dx<0?1:-1)},{passive:true});
 apply();
 })();</script>
+<script src="/embed/pay-moments.js" defer></script>
 </body></html>
