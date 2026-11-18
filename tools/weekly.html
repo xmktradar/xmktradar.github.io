@@ -72,7 +72,7 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .wk p{margin:0 0 10px}
 .wk-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;padding:8px 0;border-top:1px solid var(--line);font-size:14px}
 .wk-t{font-family:var(--f-data);font-weight:600}
-.wk-up{color:#127a3a}.wk-dn{color:#c2410c}
+.wk-up{color:#127a3a;font-weight:700}.wk-dn{color:#c2410c;font-weight:700}
 @media (prefers-color-scheme: dark){.wk-up{color:#3dd68c}.wk-dn{color:#ff7a59}}
 /* Apple-style look (2026-10-27): same colours, font and cards as the homepage; dark mode follows the device */
 :root{--bg:#f5f5f7;--surface:#fff;--ink:#1d1d1f;--muted:#6e6e73;--line:#e3e3e8;--accent:#0071e3;--accent-soft:#e8f1fb;--link:#0066cc;--hero:#fff;--grad:linear-gradient(90deg,#0071e3,#9f5afd 52%,#e3366e);color-scheme:light dark}
@@ -112,7 +112,7 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
   <p>適合已經關注美股、平日時間不多、想先看群眾節奏再自己決定的人。</p>
   <p>每週一早上收到一封繁體中文電郵，內容包括：</p>
   <ul>
-    <li>上一週新列入共同看好、共同看淡的名稱（只在電郵，不在這個頁面）</li>
+    <li>上一週新列入<span class="wk-up">共同看好</span>、<span class="wk-dn">共同看淡</span>的名稱（只在電郵，不在這個頁面）</li>
     <li>本週共識與最大變化</li>
     <li>明顯分歧</li>
   </ul>

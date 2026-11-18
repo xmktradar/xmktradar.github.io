@@ -113,7 +113,7 @@ def scorecard_html():
         parts.append('<div>')
         for row in sorted(pub_rows, key=lambda r: (r.get('signal') or '', r.get('ticker') or '')):
             ticker = str(row.get('ticker') or '')
-            side = '共同看好' if row.get('side') == 'bull' else '共同看淡' if row.get('side') == 'bear' else '分歧'
+            side = '<span class="wk-up">共同看好</span>' if row.get('side') == 'bull' else '<span class="wk-dn">共同看淡</span>' if row.get('side') == 'bear' else '分歧'
             xs_v = row.get('xs')
             klass = 'wk-up' if isinstance(xs_v, (int, float)) and xs_v > 0 else 'wk-dn' if isinstance(xs_v, (int, float)) and xs_v < 0 else ''
             beat = '跑贏' if isinstance(xs_v, (int, float)) and xs_v > 0 else '跑輸' if isinstance(xs_v, (int, float)) and xs_v < 0 else ''
@@ -129,7 +129,7 @@ def scorecard_html():
     parts.append('<section class="wk" id="this-week">')
     parts.append(f'<h2>今個星期 · {pay_moments.zh_span(start, end)}</h2>')
     parts.append(
-        f'<p>截至 {today}，新列入共同看好 {bulls} 次、共同看淡 {bears} 次。'
+        f'<p>截至 {today}，新列入<span class="wk-up">共同看好</span> {bulls} 次、<span class="wk-dn">共同看淡</span> {bears} 次。'
         '名稱不寫在這個頁面。訂戶在下一個週一的電郵收到上一整週的名稱。'
         '分歧只在首頁免費顯示。同一方向連續留在名單上只計第一次。</p>'
     )
