@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123101308269813853": {
+      "en_summary": "People love to say bulls are greedy but if you lived through the 2022 bear market you know that bears are in fact the greediest of them all. $NVDA lost nearly 70% of its value in 10 months and people still said it was overvalued. They shorted the entirety of 2023 while claiming the new uptrend was simply a bear market rally. By the time the market broke out into new all-time highs in 2024, they switched their stance.",
+      "zh_summary": "人們喜歡說多頭貪婪，但如果你經歷過 2022 年熊市，你知道空頭才是最貪婪的。$NVDA 在 10 個月內損失了近 70% 的價值，人們仍說它估值過高。他們在整個 2023 年做空，同時聲稱新上漲趨勢只是熊市反彈。等到 2024 年市場突破新高時，他們才改變立場。",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "長線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "在 10 個月內損失近 70% 後仍被說估值過高，空頭在 2023 年全程做空並誤判上漲為熊市反彈"}
+    },
+    "2123101129575989376": {
+      "en_summary": "$NOW just broke below $90.",
+      "zh_summary": "$NOW 剛剛跌破 90 美元。",
+      "tickers": ["NOW"],
+      "stance": "中性",
+      "stance_by_ticker": {"NOW": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NOW": "剛剛跌破 90 美元"}
+    },
+    "2123100938135044511": {
+      "en_summary": "$AMZN morning star doji - 3 candle reversal at the 50d. Nice!",
+      "zh_summary": "$AMZN 晨星十字星 - 在 50 日均線的 3 根蠟燭反轉。不錯！",
+      "tickers": ["AMZN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AMZN": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AMZN": "在 50 日均線出現晨星十字星 3 根蠟燭反轉形態"}
+    },
+    "2123100528871899511": {
+      "en_summary": "$TSLA $TSLAQ related to #FSD #Robotaxis #Autopilot. Quoted that according to @elonmusk's own @grok, $TSLA has the highest rate of fatal car crashes in the USA among car companies.",
+      "zh_summary": "$TSLA $TSLAQ 相關於 #FSD #Robotaxis #Autopilot。轉推稱根據 @elonmusk 自己的 @grok，$TSLA 在美國汽車公司中致命車禍率最高。",
+      "tickers": ["TSLA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"TSLA": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TSLA": "根據 Grok，$TSLA 在美國汽車公司中致命車禍率最高"}
+    },
+    "2123100277418996074": {
+      "en_summary": "Rebel’s Edge 1pm lineup includes #VIX $NVDA $TJX $TTWO $TGT and sports discussion on college football shockers UCLA and Wake Forest, which NFL team has the easiest schedule, and can Denver win 5 in a row.",
+      "zh_summary": "Rebel’s Edge 下午 1 點陣容包括 #VIX $NVDA $TJX $TTWO $TGT 以及關於大學足球震撼 UCLA 和 Wake Forest、哪支 NFL 球隊賽程最容易、Denver 能否連勝 5 場的體育討論。",
+      "tickers": ["NVDA", "TJX", "TTWO", "TGT"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "TJX": "中性", "TTWO": "中性", "TGT": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
