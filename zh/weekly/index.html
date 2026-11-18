@@ -67,6 +67,13 @@ a.btn:hover{filter:brightness(1.06);color:#fff}
 .site-foot a{font-weight:700}
 a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 @media(max-width:420px){h1{font-size:24px}.wrap{padding:16px 14px 40px}}
+.wk{margin:18px 0;padding:16px;border-radius:16px;background:var(--surface)}
+.wk h2{margin:0 0 8px;font-size:20px}
+.wk p{margin:0 0 10px}
+.wk-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;padding:8px 0;border-top:1px solid var(--line);font-size:14px}
+.wk-t{font-family:var(--f-data);font-weight:600}
+.wk-up{color:#127a3a}.wk-dn{color:#c2410c}
+@media (prefers-color-scheme: dark){.wk-up{color:#3dd68c}.wk-dn{color:#ff7a59}}
 /* Apple-style look (2026-10-27): same colours, font and cards as the homepage; dark mode follows the device */
 :root{--bg:#f5f5f7;--surface:#fff;--ink:#1d1d1f;--muted:#6e6e73;--line:#e3e3e8;--accent:#0071e3;--accent-soft:#e8f1fb;--link:#0066cc;--hero:#fff;--grad:linear-gradient(90deg,#0071e3,#9f5afd 52%,#e3366e);color-scheme:light dark}
 @media (prefers-color-scheme: dark){:root{--bg:#000;--surface:#1c1c1e;--ink:#f5f5f7;--muted:#a1a1a6;--line:#38383a;--accent:#0a84ff;--accent-soft:#0a2540;--link:#2997ff;--hero:#000}}
@@ -98,19 +105,20 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
 </header>
 <main>
   <h1>Crowd Tape 週報—每週 10 分鐘，看清 500 個美股帳號呢一週達成乜共識。</h1>
-  <aside class="note" id="checkout-ok" hidden role="status"><p>訂閱已完成，下一個週日開始收到週報。</p></aside>
+  <aside class="note" id="checkout-ok" hidden role="status"><p>訂閱已完成。下一個週一早上開始收到週報。</p></aside>
   <p class="lead-cta"><a class="btn" href="https://buy.stripe.com/cNiaEXfyE8961qM83H2cg02">每月 USD 5 訂閱週報（隨時可取消）</a></p>
-  <p class="lead"><a href="/zh/">免費站</a>每 8 小時更新當下好淡。週報畀你喺周一開市前，一次過睇完呢一週的變化、共識同分歧—唔使自己再翻 500 個帳號。</p>
-  <p>適合已經關注美股、平日時間唔多、想先睇群眾節奏再自己決定的人。</p>
-  <p>每週日晚收到一封繁中電郵，內容包括：</p>
+  <section class="wk" id="settled"><h2>已結算成績 · 11月2日至8日</h2><p>這是最近一個已經有 10 個交易日收市價的星期，不是仍未結算的一週。共 17 段，相對 QQQ 平均 -2.3%。看好或看淡裡，正數佔 47%。看淡的正數代表當時看淡之後跑贏 QQQ，不是股價上升。跑輸的也列在下面。不是投資建議。</p><div><div class="wk-row"><span class="wk-t">AMZN</span><span>共同看好</span><span>股價 +4.9%</span><span class="wk-up">相對 QQQ +7.8% 跑贏</span></div><div class="wk-row"><span class="wk-t">INTC</span><span>共同看淡</span><span>股價 -7.5%</span><span class="wk-up">相對 QQQ +4.7% 跑贏</span></div><div class="wk-row"><span class="wk-t">META</span><span>共同看好</span><span>股價 +3.2%</span><span class="wk-up">相對 QQQ +6.1% 跑贏</span></div><div class="wk-row"><span class="wk-t">QQQ</span><span>共同看好</span><span>股價 -2.8%</span><span class="">相對 QQQ 0.0% </span></div><div class="wk-row"><span class="wk-t">AEHR</span><span>共同看好</span><span>股價 -23.6%</span><span class="wk-dn">相對 QQQ -19.5% 跑輸</span></div><div class="wk-row"><span class="wk-t">ASTS</span><span>共同看淡</span><span>股價 -25.7%</span><span class="wk-up">相對 QQQ +21.6% 跑贏</span></div><div class="wk-row"><span class="wk-t">AXTI</span><span>共同看好</span><span>股價 -29.0%</span><span class="wk-dn">相對 QQQ -24.9% 跑輸</span></div><div class="wk-row"><span class="wk-t">CBRS</span><span>共同看淡</span><span>股價 +6.5%</span><span class="wk-dn">相對 QQQ -10.6% 跑輸</span></div><div class="wk-row"><span class="wk-t">COHR</span><span>共同看好</span><span>股價 +1.6%</span><span class="wk-up">相對 QQQ +5.8% 跑贏</span></div><div class="wk-row"><span class="wk-t">ORCL</span><span>共同看淡</span><span>股價 -8.9%</span><span class="wk-up">相對 QQQ +4.7% 跑贏</span></div><div class="wk-row"><span class="wk-t">PLTR</span><span>共同看好</span><span>股價 -10.7%</span><span class="wk-dn">相對 QQQ -6.6% 跑輸</span></div><div class="wk-row"><span class="wk-t">RIVN</span><span>共同看好</span><span>股價 -10.6%</span><span class="wk-dn">相對 QQQ -6.5% 跑輸</span></div><div class="wk-row"><span class="wk-t">RSP</span><span>共同看好</span><span>股價 -1.6%</span><span class="wk-up">相對 QQQ +2.5% 跑贏</span></div><div class="wk-row"><span class="wk-t">SKHY</span><span>共同看好</span><span>股價 -18.7%</span><span class="wk-dn">相對 QQQ -14.6% 跑輸</span></div><div class="wk-row"><span class="wk-t">SPCX</span><span>共同看好</span><span>股價 +0.3%</span><span class="wk-up">相對 QQQ +4.4% 跑贏</span></div><div class="wk-row"><span class="wk-t">TEM</span><span>共同看好</span><span>股價 -18.5%</span><span class="wk-dn">相對 QQQ -14.3% 跑輸</span></div><div class="wk-row"><span class="wk-t">TSLA</span><span>共同看好</span><span>股價 -4.6%</span><span class="wk-dn">相對 QQQ -0.5% 跑輸</span></div></div></section><section class="wk" id="this-week"><h2>今個星期 · 11月16日至22日</h2><p>截至 2026-11-18，新列入共同看好 16 次、共同看淡 14 次。名稱不寫在這個頁面。訂戶在下一個週一的電郵收到上一整週的名稱。分歧只在首頁免費顯示。同一方向連續留在名單上只計第一次。</p></section>
+  <p class="lead">首頁每 8 小時更新當下共識，免費。週報做兩件首頁沒有整理好的事：已結算的 10 日成績公開在這一頁，包括跑輸；上一週新列入的名稱只寫在週一電郵。</p>
+  <p>適合已經關注美股、平日時間不多、想先看群眾節奏再自己決定的人。</p>
+  <p>每週一早上收到一封繁體中文電郵，內容包括：</p>
   <ul>
-    <li>本週共識</li>
-    <li>最大變化</li>
+    <li>上一週新列入共同看好、共同看淡的名稱（只在電郵，不在這個頁面）</li>
+    <li>本週共識與最大變化</li>
     <li>明顯分歧</li>
   </ul>
-  <p>不是買賣訊號，亦唔會叫你買定賣。統計的係 X 上的公開討論，唔等於任何投資建議。</p>
+  <p>不是買賣訊號，也不會叫你買或賣。統計的是 X 上的公開討論，不等於任何投資建議。同一方向連續留在名單上只計第一次。</p>
   <p>圖表、基本面同期權工具仍在免費 <a href="/zh/tools/">https://thecrowdtape.com/tools</a> 供自行核實。</p>
-  <p>每月 USD 5，隨時可取消。訂閱後，下一個週日開始收到週報。</p>
+  <p>每月 USD 5，隨時可取消。訂閱後，下一個週一早上開始收到週報。</p>
   <aside class="note">
     <p>免責：內容只供參考，唔構成投資建議。投資涉及風險，包括可能損失本金。</p>
   </aside>

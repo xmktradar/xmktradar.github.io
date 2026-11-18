@@ -1,0 +1,118 @@
+"""Homepage pay moments, and the weekly inclusion list.
+
+The public weekly page shows the last settled 10-session scorecard.
+Names newly added this week are not written into that page. The Monday
+email appends them for subscribers only.
+
+python3 tools/pay_moments.py   injects the homepage bridge (also called
+from tools/board_page.py after the pages are slimmed).
+"""
+import os
+from datetime import date, timedelta
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MARKER = '/* ct-pay-bridge */'
+TAG = '<script src="/embed/pay-moments.js" defer></script>'
+PAGES = ('index.html', 'zh/index.html', 'en/index.html')
+BRIDGE = r"""
+/* ct-pay-bridge */
+function ctGroups(from,to,allow){
+  const ok=h=>{if(!inCons(h))return false;if(!allow)return true;const c=CAT[String(h).toLowerCase()];return !c||allow[c]===true};
+  const out={bull:[],bear:[],split:[]};
+  TICKERS.forEach(t=>{if(UNC(t)||!isUS(t))return;const rows=accsOf(from,to).filter(ok).map(a=>latest(a,t,from,to)).filter(Boolean);if(!rows.length)return;const nb=rows.filter(x=>x.s==='bull').length,nr=rows.filter(x=>x.s==='bear').length;const k=nb&&nr?'split':nb>=2?'bull':nr>=2?'bear':null;if(!k)return;const nPosts=new Set(postsIn(from,to).filter(x=>x.t===t).map(x=>x.url)).size;out[k].push({t,nb,nr,nPosts})});
+  ['bull','bear','split'].forEach(k=>out[k].sort((a,b)=>(b.nb+b.nr)-(a.nb+a.nr)||b.nPosts-a.nPosts||a.t.localeCompare(b.t)));
+  return out;
+}
+window.__ct={win:function(){return dailyWindow()},groups:ctGroups,cats:function(){return ((D.tracked&&D.tracked.categories)||[]).map(function(c){return c.name}).filter(Boolean)}};
+(function(){if(typeof render!=='function'||render.__ct)return;var prev=render;var wrapped=function(){var out=prev.apply(this,arguments);if(window.__ctAfter)try{window.__ctAfter()}catch(e){console.error(e)}return out};wrapped.__ct=1;render=wrapped})();
+"""
+
+
+def monday(iso):
+    y, m, d = (int(x) for x in str(iso)[:10].split('-'))
+    dt = date(y, m, d)
+    return dt - timedelta(days=dt.weekday())
+
+
+def plus_days(dt, n):
+    return dt + timedelta(days=n)
+
+
+def zh_span(d0, d1):
+    if d0.month == d1.month:
+        return f'{d0.month}月{d0.day}日至{d1.day}日'
+    return f'{d0.month}月{d0.day}日至{d1.month}月{d1.day}日'
+
+
+def episodes(cons_hist):
+    """First day a ticker enters bull or bear. A repeat of the same side does not count."""
+    active = set()
+    out = []
+    for day in sorted(cons_hist or {}):
+        snap = cons_hist[day] or {}
+        today = set()
+        for side in ('bull', 'bear'):
+            for ticker in snap.get(side) or []:
+                if isinstance(ticker, str) and ticker:
+                    today.add((ticker, side))
+        for ticker, side in sorted(today - active):
+            out.append({'d': day, 't': ticker, 'side': side})
+        active = today
+    return out
+
+
+def week_rows(rows, start, end):
+    a, b = start.isoformat(), end.isoformat()
+    return [row for row in rows if a <= row['d'] <= b]
+
+
+def public_score(ft, today):
+    """Latest follow-through week that is already closed. Current week stays out."""
+    cur = monday(today)
+    weeks = {}
+    for row in (ft or {}).get('rows') or []:
+        signal = str(row.get('signal') or '')[:10]
+        if len(signal) != 10:
+            continue
+        start = monday(signal)
+        if start >= cur:
+            continue
+        weeks.setdefault(start, []).append(row)
+    if not weeks:
+        return None, []
+    start = max(weeks)
+    return start, weeks[start]
+
+
+def inject_html(html):
+    if 'function consGroups' not in html:
+        raise SystemExit('pay moments: page has no consGroups')
+    if MARKER not in html:
+        i = html.find('function consGroups')
+        j = html.find('</script>', i)
+        if j < 0:
+            raise SystemExit('pay moments: dashboard script is not closed')
+        html = html[:j] + BRIDGE + '\n' + html[j:]
+    if TAG not in html:
+        if '</body>' not in html:
+            raise SystemExit('pay moments: page has no </body>')
+        html = html.replace('</body>', TAG + '\n</body>', 1)
+    return html
+
+
+def inject_all():
+    for rel in PAGES:
+        path = os.path.join(ROOT, rel)
+        if not os.path.isfile(path):
+            raise SystemExit('pay moments: missing ' + rel)
+        html = open(path, encoding='utf-8').read()
+        out = inject_html(html)
+        if out != html:
+            open(path, 'w', encoding='utf-8').write(out)
+            print('pay moments injected', rel)
+        else:
+            print('pay moments already in', rel)
+
+
+if __name__ == '__main__':
+    inject_all()
