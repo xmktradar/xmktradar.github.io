@@ -1906,8 +1906,12 @@
    "bull": [
     "TGT",
     "MU",
+    "NBIS",
+    "CRWV",
     "LOW",
     "MSFT",
+    "DELL",
+    "IREN",
     "TTWO",
     "UBER"
    ],
@@ -1920,7 +1924,8 @@
     "SPY",
     "AMD",
     "AAOI",
-    "AVGO"
+    "AVGO",
+    "NKE"
    ],
    "window": [
     "2026-11-17T19:30",
@@ -1933,15 +1938,15 @@
     "AMD",
     "MU",
     "TGT",
-    "AVGO",
-    "PANW",
+    "AAOI",
     "SPX",
-    "AAOI"
+    "AVGO",
+    "CRWV"
    ],
    "src": "live",
-   "updated_hkt": "2026-11-19 00:38"
+   "updated_hkt": "2026-11-19 01:53"
   }
  },
- "updated_hkt": "2026-11-19 00:38",
+ "updated_hkt": "2026-11-19 01:53",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
