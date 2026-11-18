@@ -26,3 +26,6 @@ for rel, (link, anchor) in LINKS.items():
         raise SystemExit(f"anchor missing in {rel}")
     path.write_text(text.replace(anchor, anchor + "\n      " + link, 1), encoding="utf-8")
     print("linked", rel)
+
+from pay_moments import inject_all
+inject_all()

@@ -25,6 +25,7 @@ from datetime import date, datetime, timedelta
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from sitedata import HK, load, read_json, work  # noqa: E402
 import macro_week  # noqa: E402
+import pay_moments  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = 'https://thecrowdtape.com/'
@@ -226,6 +227,23 @@ def find_audience():
     return None
 
 
+def subscriber_extra(D, d0, d1):
+    """New inclusions for the mailed week. Appended at send time, not written to the public archive."""
+    rows = pay_moments.week_rows(pay_moments.episodes(D.get('cons_hist') or {}), d0, d1)
+    if not rows:
+        return ''
+    lines = [
+        '',
+        'NEW INCLUSIONS',
+        'Names newly added last week. This list is in the subscriber email only, not on the public weekly page. Not investment advice.',
+        '上一週新列入的名稱只在這封電郵。同一方向連續留在名單上只計第一次。不是投資建議。',
+    ]
+    for row in rows:
+        side = '共同看好' if row['side'] == 'bull' else '共同看淡'
+        lines.append(f"{row['d'][5:]} ${row['t']} {side}")
+    return '\n'.join(lines)
+
+
 def send(n, subject, text, html_body):
     if not os.environ.get('RESEND_API_KEY'):
         notice(f'電子報 #{n} 已寫好，但 GitHub 未有 RESEND_API_KEY，今次冇寄出')
@@ -339,7 +357,9 @@ def main():
     if a.no_send:
         return
     subject = f'The Crowd Tape weekly #{n} · {row["dates"]} · 一週大神好淡'
-    bid = send(n, subject, text, email_html(text, n))
+    extra = subscriber_extra(D, d0, d1)
+    mail = text + ('\n' + extra if extra else '')
+    bid = send(n, subject, mail, email_html(mail, n))
     if bid:
         sent[str(n)] = {'broadcast': bid, 'sent_hkt': now.strftime('%Y-%m-%d %H:%M')}
         json.dump(sent, open(SENT, 'w', encoding='utf-8'), indent=1)

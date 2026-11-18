@@ -24,6 +24,8 @@ import os
 import re
 from datetime import datetime, timedelta, timezone
 
+import pay_moments
+
 SITE = 'https://thecrowdtape.com/'
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PAYMENT_LINK = 'https://buy.stripe.com/cNiaEXfyE8961qM83H2cg02'
@@ -50,27 +52,104 @@ FORBIDDEN = (
 )
 
 
+def dash():
+    master = open(os.path.join(ROOT, 'index.html'), encoding='utf-8').read()
+    m = DASH.search(master)
+    if not m:
+        raise SystemExit('index.html has no dash-data block')
+    return json.loads(m.group(1).replace('<\\/', '</'))
+
+
 def account_count():
     """Official roster size: len(tracked.accounts) in index.html dash-data.
 
     index.html is the Chinese master. zh/index.html can lag it, so do not read that copy.
     """
-    master = open(os.path.join(ROOT, 'index.html'), encoding='utf-8').read()
-    m = DASH.search(master)
-    if not m:
-        raise SystemExit('index.html has no dash-data block')
-    data = json.loads(m.group(1).replace('<\\/', '</'))
+    data = dash()
     accounts = (data.get('tracked') or {}).get('accounts')
     if not isinstance(accounts, list) or not accounts:
         raise SystemExit('dash-data has no tracked.accounts')
     return len(accounts)
 
 
-def page(template, accounts):
+def pct(value):
+    if value is None:
+        return '—'
+    return f'{"+" if value > 0 else ""}{value * 100:.1f}%'
+
+
+def scorecard_html():
+    """Public settled week, plus a count of this week's new names. No current-week tickers."""
+    data = dash()
+    hist = data.get('cons_hist') or {}
+    if not hist:
+        return '<section class="wk"><p>共識紀錄暫時讀不到。</p></section>'
+    today = max(hist)
+    eps = pay_moments.episodes(hist)
+    start = pay_moments.monday(today)
+    end = pay_moments.plus_days(start, 6)
+    current = pay_moments.week_rows(eps, start, end)
+    bulls = sum(1 for row in current if row['side'] == 'bull')
+    bears = sum(1 for row in current if row['side'] == 'bear')
+    ft_path = os.path.join(ROOT, 'data', 'followthrough.json')
+    ft = {}
+    if os.path.isfile(ft_path):
+        ft = json.load(open(ft_path, encoding='utf-8'))
+    pub_start, pub_rows = pay_moments.public_score(ft, today)
+    parts = ['<section class="wk" id="settled">']
+    if pub_start and pub_rows:
+        pub_end = pay_moments.plus_days(pub_start, 6)
+        xs = [row['xs'] for row in pub_rows if isinstance(row.get('xs'), (int, float))]
+        directional = [row for row in pub_rows if row.get('side') in ('bull', 'bear') and isinstance(row.get('xs'), (int, float))]
+        hits = [row for row in directional if row['xs'] > 0]
+        avg = sum(xs) / len(xs) if xs else None
+        hit = f'{round(100 * len(hits) / len(directional))}%' if directional else '—'
+        parts.append(f'<h2>已結算成績 · {pay_moments.zh_span(pub_start, pub_end)}</h2>')
+        parts.append(
+            '<p>這是最近一個已經有 10 個交易日收市價的星期，不是仍未結算的一週。'
+            f'共 {len(pub_rows)} 段，相對 QQQ 平均 {pct(avg)}。'
+            f'看好或看淡裡，正數佔 {hit}。看淡的正數代表當時看淡之後跑贏 QQQ，不是股價上升。跑輸的也列在下面。不是投資建議。</p>'
+        )
+        parts.append('<div>')
+        for row in sorted(pub_rows, key=lambda r: (r.get('signal') or '', r.get('ticker') or '')):
+            ticker = str(row.get('ticker') or '')
+            side = '共同看好' if row.get('side') == 'bull' else '共同看淡' if row.get('side') == 'bear' else '分歧'
+            xs_v = row.get('xs')
+            klass = 'wk-up' if isinstance(xs_v, (int, float)) and xs_v > 0 else 'wk-dn' if isinstance(xs_v, (int, float)) and xs_v < 0 else ''
+            beat = '跑贏' if isinstance(xs_v, (int, float)) and xs_v > 0 else '跑輸' if isinstance(xs_v, (int, float)) and xs_v < 0 else ''
+            parts.append(
+                f'<div class="wk-row"><span class="wk-t">{ticker}</span><span>{side}</span>'
+                f'<span>股價 {pct(row.get("ret"))}</span>'
+                f'<span class="{klass}">相對 QQQ {pct(xs_v)} {beat}</span></div>'
+            )
+        parts.append('</div>')
+    else:
+        parts.append('<h2>已結算成績</h2><p>暫時沒有已結算的星期。</p>')
+    parts.append('</section>')
+    parts.append('<section class="wk" id="this-week">')
+    parts.append(f'<h2>今個星期 · {pay_moments.zh_span(start, end)}</h2>')
+    parts.append(
+        f'<p>截至 {today}，新列入共同看好 {bulls} 次、共同看淡 {bears} 次。'
+        '名稱不寫在這個頁面。訂戶在下一個週一的電郵收到上一整週的名稱。'
+        '分歧只在首頁免費顯示。同一方向連續留在名單上只計第一次。</p>'
+    )
+    parts.append('</section>')
+    html = ''.join(parts)
+    public = {str(row.get('ticker') or '') for row in pub_rows}
+    public.add('QQQ')
+    leaked = sorted({row['t'] for row in current if row['t'] not in public})
+    for ticker in leaked:
+        if re.search(r'(?<![A-Z0-9])' + re.escape(ticker) + r'(?![A-Z0-9])', html):
+            raise SystemExit('weekly page leaked a current-week name: ' + ticker)
+    return html
+
+
+def page(template, accounts, scorecard):
     html = template.replace('{{lang}}', 'zh-Hant')
     html = html.replace('{{canon}}', SITE + 'zh/weekly/')
     html = html.replace('{{home}}', '/zh/')
     html = html.replace('{{accounts}}', str(accounts))
+    html = html.replace('{{scorecard}}', scorecard)
     return html
 
 
@@ -177,7 +256,8 @@ def main():
     os.chdir(ROOT)
     accounts = account_count()
     template = open(os.path.join(ROOT, 'tools', 'weekly.html'), encoding='utf-8').read()
-    html = page(template, accounts)
+    card = scorecard_html()
+    html = page(template, accounts, card)
     root_html = with_zh_redirect(html)
     check(html, root_html, accounts)
     write('zh/weekly/index.html', html)
