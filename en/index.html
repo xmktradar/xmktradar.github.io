@@ -1537,10 +1537,11 @@ function viewWeekly(){
  const cards=wkAccs.map(accCard).sort((x,y)=>y.n-x.n||x.a.localeCompare(y.a));
  return `<div class="grid">
  ${moneyBar()}
- <section class="c12 analysis"><div class="range">Covering ${from} to ${to} (7 days)</div>${to<TODAY?'<p class="note wk-roll">The weekly view is a rolling 7 days ending on the latest weekly brief date; it rolls forward to today as soon as a new weekly brief is published</p>':''}
-  <h2>This week’s highlights ${sm?'':'<span class="sub">Weekly analysis is not ready yet; auto-generated from data below</span>'}</h2>
+ <section class="c12 analysis"><div class="range">Covering ${from} to ${to} (7 days)</div>
+  <h2>This week’s highlights</h2>
   ${daysNote(from,to)}
-  ${sm?sumBody(sm.s,false):`<p>${rows.length?`Stocks drawing the most accounts: ${rows.slice(0,3).map(r=>tkBtn(r.t)).join(', ')}. `:'No stocks mentioned this week.'} Strongly aligned: ${aligned.map(r=>tkBtn(r.t)).join(', ')||'none'}; clearly split: ${split.map(r=>tkBtn(r.t)).join(', ')||'none'}. This week’s stance changes: ${chgs.length} times${chgs.length?': '+chgs.slice(0,3).map(y=>`@${esc(y.x.acc)} ${tkBtn(y.x.t)} ${y.ch}`).join('; '):''}. </p>`}</section>
+  <p>${rows.length?`Stocks drawing the most accounts: ${rows.slice(0,3).map(r=>tkBtn(r.t)).join(', ')}. `:'No stocks mentioned this week.'} Strongly aligned: ${aligned.map(r=>tkBtn(r.t)).join(', ')||'none'}; clearly split: ${split.map(r=>tkBtn(r.t)).join(', ')||'none'}. This week’s stance changes: ${chgs.length} times${chgs.length?': '+chgs.slice(0,3).map(y=>`@${esc(y.x.acc)} ${tkBtn(y.x.t)} ${y.ch}`).join('; '):''}. </p>
+  <p class="note">This page lists counts only. Names that were newly included last week and lagged last time are only in the Monday email. <a href="/zh/weekly/">Check my book on Monday, USD 5 a month</a></p></section>
  ${bpTag(2,consHtml(from,to,'This week',7,'7 d return'))}
  <section class="c4 panel" data-bp="3"><h2>Stance mix <span class="sub">Each account’s latest stance on each stock</span></h2>
   ${distBar({bull:tot.b,neu:tot.m,none:tot.n,bear:tot.r})}
@@ -1570,9 +1571,10 @@ function viewMonthly(){
  const sm=summaryOf('monthly');const srcs=[...new Set(Object.entries(D.prices).filter(([t])=>!UNC(t)).map(([,p])=>p.source))];const asof=Object.entries(D.prices).filter(([t])=>isUS(t)).map(([,p])=>p.as_of).sort().pop();
  return `<div class="grid">
  ${moneyBar()}
- <section class="c12 analysis"><div class="range">Covering ${from} to ${to} (28 days)</div><h2>Monthly trends ${sm?'':'<span class="sub">Monthly analysis is not ready yet; auto-generated from data below</span>'}</h2>
+ <section class="c12 analysis"><div class="range">Covering ${from} to ${to} (28 days)</div><h2>Monthly trends</h2>
   ${daysNote(from,to)}
-  ${sm?sumBody(sm.s,false):`<p>28 days, total ${all.length} mentions, bullish ${B} posts, bearish ${X} posts${B+X?`, bullish share ${(B/(B+X)*100).toFixed(0)}%`:', bullish share n/a (no bullish or bearish views)'}. ${rows.length?`Most mentioned: ${rows.slice(0,3).map(r=>tkBtn(r.t)).join(', ')}. `:''}</p>`}</section>
+  <p>28 days, total ${all.length} mentions, bullish ${B} posts, bearish ${X} posts${B+X?`, bullish share ${(B/(B+X)*100).toFixed(0)}%`:', bullish share n/a (no bullish or bearish views)'}. ${rows.length?`Most mentioned: ${rows.slice(0,3).map(r=>tkBtn(r.t)).join(', ')}. `:''}</p>
+  <p class="note">The 28-day view lists mention counts only. To match your own holdings, use the Monday email. The names are not on this page. <a href="/zh/weekly/">Check my book on Monday, USD 5 a month</a></p></section>
  ${bpTag(2,consHtml(from,to,'This month',28,'28 d return'))}
  <section class="c4 panel" data-bp="3"><h2>Bullish vs bearish <span class="sub">${B+X?`Bullish ${(B/(B+X)*100).toFixed(0)}% (of bull + bear)`:'Not enough data'}</span></h2>${distBar({bull:B,neu:M,none:U,bear:X})}
   <div class="kpis k3" style="margin-top:12px"><div class="kpi"><div class="l">Total mentions</div><div class="v">${all.length}</div></div><div class="kpi"><div class="l">Bullish</div><div class="v up">${B}</div></div><div class="kpi"><div class="l">Bearish</div><div class="v dn">${X}</div></div></div>
