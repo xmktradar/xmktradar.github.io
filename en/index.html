@@ -1483,8 +1483,8 @@ function viewDaily(){
  <section class="c12 panel t3" data-bp="1" aria-label="Today in 3 lines"><h2>Today in 3 lines <span class="sub">${ctx}</span></h2>${t3.length?`<ol class="t3-l">${t3.join('')}</ol>`:empty('Not enough data in this window yet.')}<p class="note ctx">${METHOD}</p></section>
  <section class="c12 analysis" data-bp="2" aria-label="Market analysis">
   
-  <h2>${sm&&sm.stale?'Market analysis':'Today’s market analysis'} ${(()=>{const lead=analysisLead(w.day,sm);const asof=(!sm||sm.stale)?'':(lead?`<span class="sub">${esc(lead)}</span>`:'');const stale=sm&&sm.stale?`<span class="pill stale-pill">Stale</span> <span class="sub">(latest writer analysis as of  ${esc(sm.s.date)}, not today  ${esc(w.day)})</span>`:(!sm&&!lead?'<span class="sub">Today’s analysis is not ready yet; auto-generated from data below</span>':'');return [asof,stale].filter(Boolean).join(' ')})()}</h2>
-  ${sm&&sm.stale?`<div class="notice stale-banner" role="status">Today's writer analysis is not updated yet (still on  ${esc(sm.s.date)}). Showing a live auto summary for now; the stale writeup is collapsed and is not today's lead.</div>`:''}
+  <h2>Today’s market analysis ${(()=>{const lead=analysisLead(w.day,sm);const asof=(!sm||sm.stale)?'':(lead?`<span class="sub">${esc(lead)}</span>`:'');const stale=(!sm&&!lead)?'<span class="sub">Today’s analysis is not ready yet; auto-generated from data below</span>':'';return [asof,stale].filter(Boolean).join(' ')})()}</h2>
+  ${''}
   ${sm&&!sm.stale?'':sparse}
   ${(()=>{if(sm&&sm.stale)return '';const lead=analysisLead(w.day,sm);return lead?`<p class="note">${esc(lead)}</p>`:''})()}
   ${sm&&!sm.stale?sumBody(sm.s,true):auto}

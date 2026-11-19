@@ -1482,8 +1482,8 @@ function viewDaily(){
  <section class="c12 panel t3" data-bp="1" aria-label="今日三句重點"><h2>今日三句重點 <span class="sub">${ctx}</span></h2>${t3.length?`<ol class="t3-l">${t3.join('')}</ol>`:empty('範圍內資料不足，暫時未能整理。')}<p class="note ctx">${METHOD}</p></section>
  <section class="c12 analysis" data-bp="2" aria-label="市場分析">
   
-  <h2>${sm&&sm.stale?'市場分析':'今日市場分析'} ${(()=>{const lead=analysisLead(w.day,sm);const asof=(!sm||sm.stale)?'':(lead?`<span class="sub">${esc(lead)}</span>`:'');const stale=sm&&sm.stale?`<span class="pill stale-pill">過時</span> <span class="sub">（最新寫手分析截至 ${esc(sm.s.date)}，非今日 ${esc(w.day)}）</span>`:(!sm&&!lead?'<span class="sub">今日分析尚未產生，以下由資料自動整理</span>':'');return [asof,stale].filter(Boolean).join(' ')})()}</h2>
-  ${sm&&sm.stale?`<div class="notice stale-banner" role="status">今日寫手分析尚未更新（仍停在 ${esc(sm.s.date)}）。以下先用即時資料自動整理；過時原文已收合，不當作今日主文。</div>`:''}
+  <h2>今日市場分析 ${(()=>{const lead=analysisLead(w.day,sm);const asof=(!sm||sm.stale)?'':(lead?`<span class="sub">${esc(lead)}</span>`:'');const stale=(!sm&&!lead)?'<span class="sub">今日分析尚未產生，以下由資料自動整理</span>':'';return [asof,stale].filter(Boolean).join(' ')})()}</h2>
+  ${''}
   ${sm&&!sm.stale?'':sparse}
   ${(()=>{if(sm&&sm.stale)return '';const lead=analysisLead(w.day,sm);return lead?`<p class="note">${esc(lead)}</p>`:''})()}
   ${sm&&!sm.stale?sumBody(sm.s,true):auto}
