@@ -1749,9 +1749,173 @@
       "UNH"
      ]
     }
+   },
+   "intraday_3": {
+    "post_et": "13:30",
+    "post_hkt": "02:30",
+    "generated_at": "2026-11-19T16:16:34-05:00",
+    "date": "2026-11-19",
+    "date_kst": "2026-11-20",
+    "quotes": {
+     "SPY": {
+      "price": 715.87,
+      "prev_close": 730.2,
+      "chg_pct": -1.96,
+      "time": "2026-11-19T16:00:00-05:00"
+     },
+     "QQQ": {
+      "price": 645.04,
+      "prev_close": 659.51,
+      "chg_pct": -2.19,
+      "time": "2026-11-19T16:00:01-05:00"
+     },
+     "DIA": {
+      "price": 490.79,
+      "prev_close": 501.73,
+      "chg_pct": -2.18,
+      "time": "2026-11-19T16:00:00-05:00"
+     },
+     "NVDA": {
+      "price": 145.98,
+      "prev_close": 150.96,
+      "chg_pct": -3.3,
+      "time": "2026-11-19T16:00:01-05:00"
+     },
+     "AMD": {
+      "price": 489.19,
+      "prev_close": 530.14,
+      "chg_pct": -7.72,
+      "time": "2026-11-19T16:00:01-05:00"
+     },
+     "MU": {
+      "price": 690.44,
+      "prev_close": 705.27,
+      "chg_pct": -2.1,
+      "time": "2026-11-19T16:00:01-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-19T16:00:01-05:00",
+     "hkt": "2026-11-20 05:00"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "NVDA",
+      "chg_pct": -3.3,
+      "bull": 13,
+      "bear": 18,
+      "accounts": [
+       "MrMikeInvesting",
+       "KobeissiLetter",
+       "Biotech2k1",
+       "firesidealpha",
+       "edzitron",
+       "farzyness",
+       "capitalflows",
+       "munster_gene"
+      ]
+     },
+     {
+      "ticker": "QQQ",
+      "chg_pct": -2.19,
+      "bull": 6,
+      "bear": 2,
+      "accounts": [
+       "Jake__Wujastyk",
+       "themissinglinks",
+       "EliteOptions2",
+       "3PeaksTrading",
+       "Mr_Derivatives",
+       "garyblack00",
+       "WishingWealth",
+       "MrZackMorris"
+      ]
+     },
+     {
+      "ticker": "AMD",
+      "chg_pct": -7.72,
+      "bull": 6,
+      "bear": 3,
+      "accounts": [
+       "EliteOptions2",
+       "3PeaksTrading",
+       "TheTranscript_",
+       "OptionsMike",
+       "wallstengine",
+       "garyblack00",
+       "SamanthaLaDuc",
+       "KevInvestingYT"
+      ]
+     },
+     {
+      "ticker": "MU",
+      "chg_pct": -2.1,
+      "bull": 6,
+      "bear": 2,
+      "accounts": [
+       "dee_bosa",
+       "Biotech2k1",
+       "themissinglinks",
+       "EliteOptions2",
+       "OptionsMike",
+       "garyblack00",
+       "TedHZhang",
+       "wliang"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Early afternoon · As of 16:00 ET (05:00 HKT)\n\n$SPY -2.0% · $QQQ -2.2% · $DIA -2.2%\n\n$NVDA -3.3%, 18 accounts bearish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #NVDA #QQQ",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午后觀察 · 截至 16:00 ET（05:00 HKT）\n\n$SPY -2.0% · $QQQ -2.2% · $DIA -2.2%\n\n$NVDA -3.3%，網站 18 個帳號看空\n$QQQ -2.2%，網站 6 個帳號看好\n$AMD -7.7%，網站 6 個帳號看好\n$MU -2.1%，網站 6 個帳號看好\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #NVDA #QQQ",
+      "url": ""
+     },
+     "en": {
+      "text": "Early afternoon · As of 16:00 ET (05:00 HKT)\n\n$SPY -2.0% · $QQQ -2.2% · $DIA -2.2%\n\n$NVDA -3.3%, 18 accounts bearish on site\n$QQQ -2.2%, 6 accounts bullish on site\n$AMD -7.7%, 6 accounts bullish on site\n$MU -2.1%, 6 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #NVDA #QQQ",
+      "url": ""
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "PANW",
+      "TGT",
+      "TJX",
+      "LOW",
+      "P",
+      "TTWO",
+      "UBER",
+      "AAPL",
+      "DIS",
+      "DELL",
+      "BE",
+      "CRWD",
+      "XRT"
+     ],
+     "bear": [
+      "GLD",
+      "MSTR",
+      "META",
+      "UNH"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-19T16:16:29-05:00",
+  "generated_at": "2026-11-19T16:16:34-05:00",
   "generated_hkt": "2026-11-20 05:16"
  }
 }
