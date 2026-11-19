@@ -1950,11 +1950,12 @@
    "bull": [
     "TGT",
     "INTC",
+    "LOW",
     "NBIS",
     "SPCX",
     "CRWV",
-    "LOW",
     "AMZN",
+    "TJX",
     "DELL",
     "IREN",
     "TTWO",
@@ -1970,22 +1971,23 @@
     "QQQ",
     "AMD",
     "SPY",
-    "MSFT",
     "MU",
+    "MSFT",
     "AAOI",
-    "MRVL",
     "PANW",
     "SNDK",
-    "AVGO",
+    "MRVL",
     "SMH",
+    "AVGO",
+    "TSLA",
+    "ORCL",
     "NKE",
     "OPEN",
-    "ORCL",
     "TSM"
    ],
    "window": [
-    "2026-11-17T19:30",
-    "2026-11-19T01:49"
+    "2026-11-18T03:30",
+    "2026-11-19T09:00"
    ],
    "top": [
     "NVDA",
@@ -1994,15 +1996,15 @@
     "AMD",
     "MU",
     "MSFT",
+    "SPCX",
+    "PANW",
     "TGT",
-    "SPX",
-    "INTC",
-    "PANW"
+    "INTC"
    ],
    "src": "live",
-   "updated_hkt": "2026-11-19 10:47"
+   "updated_hkt": "2026-11-19 11:47"
   }
  },
- "updated_hkt": "2026-11-19 10:47",
+ "updated_hkt": "2026-11-19 11:47",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
