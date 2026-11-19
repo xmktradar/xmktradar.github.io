@@ -1901,9 +1901,167 @@
       "MSTR"
      ]
     }
+   },
+   "intraday_close": {
+    "post_et": "15:40",
+    "post_hkt": "04:40",
+    "generated_at": "2026-11-18T21:39:01-05:00",
+    "date": "2026-11-18",
+    "date_kst": "2026-11-19",
+    "quotes": {
+     "SPY": {
+      "price": 730.2,
+      "prev_close": 732.44,
+      "chg_pct": -0.31,
+      "time": "2026-11-18T16:00:00-05:00"
+     },
+     "QQQ": {
+      "price": 659.51,
+      "prev_close": 656.95,
+      "chg_pct": 0.39,
+      "time": "2026-11-18T16:00:01-05:00"
+     },
+     "DIA": {
+      "price": 501.73,
+      "prev_close": 507.31,
+      "chg_pct": -1.1,
+      "time": "2026-11-18T16:00:00-05:00"
+     },
+     "PANW": {
+      "price": 339.92,
+      "prev_close": 309.29,
+      "chg_pct": 9.9,
+      "time": "2026-11-18T16:00:00-05:00"
+     },
+     "SNDK": {
+      "price": 776.22,
+      "prev_close": 797.24,
+      "chg_pct": -2.64,
+      "time": "2026-11-18T16:00:00-05:00"
+     },
+     "AAOI": {
+      "price": 40.79,
+      "prev_close": 45.22,
+      "chg_pct": -9.8,
+      "time": "2026-11-18T16:00:01-05:00"
+     },
+     "AVGO": {
+      "price": 354.05,
+      "prev_close": 341.6,
+      "chg_pct": 3.64,
+      "time": "2026-11-18T16:00:00-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-18T16:00:01-05:00",
+     "hkt": "2026-11-19 05:00"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "PANW",
+      "chg_pct": 9.9,
+      "bull": 1,
+      "bear": 1,
+      "accounts": [
+       "ivanhoff",
+       "tastyliveshow",
+       "MarketRebels",
+       "InvestmentGuru_",
+       "wallstengine",
+       "bespokeinvest",
+       "CNBCFastMoney"
+      ]
+     },
+     {
+      "ticker": "SNDK",
+      "chg_pct": -2.64,
+      "bull": 1,
+      "bear": 1,
+      "accounts": [
+       "tenet_research",
+       "wliang",
+       "TradexWhisperer",
+       "RedDogT3",
+       "TheValueist"
+      ]
+     },
+     {
+      "ticker": "AAOI",
+      "chg_pct": -9.8,
+      "bull": 1,
+      "bear": 3,
+      "accounts": [
+       "BlackPantherCap",
+       "StockSavvyShay",
+       "JonahLupton",
+       "aleabitoreddit",
+       "Kaizen_Investor"
+      ]
+     },
+     {
+      "ticker": "AVGO",
+      "chg_pct": 3.64,
+      "bull": 1,
+      "bear": 1,
+      "accounts": [
+       "garyblack00",
+       "RagingVentures",
+       "MarketRebels",
+       "Kaizen_Investor",
+       "KobeissiLetter",
+       "Couzin_Vinny"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Into the close · As of 16:00 ET (05:00 HKT)\n\n$SPY -0.3% · $QQQ +0.4% · $DIA -1.1%\n\n$PANW +9.9%, 1 account bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #PANW #SNDK",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "收市前回顧 · 截至 16:00 ET（05:00 HKT）\n\n$SPY -0.3% · $QQQ +0.4% · $DIA -1.1%\n\n$PANW +9.9%，網站 1 個帳號看好\n$SNDK -2.6%，網站 1 個帳號看好\n$AAOI -9.8%，網站 3 個帳號看空\n$AVGO +3.6%，網站 1 個帳號看好\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #PANW #SNDK",
+      "url": null
+     },
+     "en": {
+      "text": "Into the close · As of 16:00 ET (05:00 HKT)\n\n$SPY -0.3% · $QQQ +0.4% · $DIA -1.1%\n\n$PANW +9.9%, 1 account bullish on site\n$SNDK -2.6%, 1 account bullish on site\n$AAOI -9.8%, 3 accounts bearish on site\n$AVGO +3.6%, 1 account bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #PANW #SNDK",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "TGT",
+      "INTC",
+      "NBIS",
+      "SPCX",
+      "CRWV",
+      "LOW",
+      "AMZN",
+      "DELL",
+      "IREN",
+      "TTWO",
+      "UBER",
+      "XRT"
+     ],
+     "bear": [
+      "GLD",
+      "MSTR"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-18T21:38:56-05:00",
-  "generated_hkt": "2026-11-19 10:38"
+  "generated_at": "2026-11-18T21:39:01-05:00",
+  "generated_hkt": "2026-11-19 10:39"
  }
 }
