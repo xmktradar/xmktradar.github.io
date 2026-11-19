@@ -166,13 +166,13 @@
       return '<button type="button" data-drop="' + esc(ticker) + '">' + esc(ticker) + ' ×</button>';
     }).join('');
     box.innerHTML = '<h2>' + t('週報・潛力觀察', 'Weekly brief, and names to watch') + '</h2>'
-      + '<p>' + t('輸入持有的代號。這裡只對照今日免費共識。電郵最多八隻，以做多為主，只挑上週新列入、上次做多又同時跑贏 QQQ 同 SPY 的，星期一才寫名稱。',
-        'Enter the tickers you hold. This checks only today’s free consensus. The Monday email names at most eight, mostly long: new bullish listings whose last bullish call beat both QQQ and SPY.') + '</p>'
+      + '<p>' + t('輸入持有的代號。這裡只對照今日免費共識。電郵最多八隻做多，只挑上週新列入、上一次看好之後跑贏 QQQ 也跑贏 SPY 的，星期一才寫名稱。',
+        'Enter the tickers you hold. This checks only today’s free consensus. The Monday email names at most eight bullish ideas: new listings whose last bullish call beat QQQ and also beat SPY.') + '</p>'
       + '<div class="ct-row"><input id="ct-book-in" inputmode="latin" autocapitalize="characters" maxlength="80" placeholder="' + t('例如 NVDA MU QQQ', 'e.g. NVDA MU QQQ') + '" aria-label="' + t('持有代號', 'Holdings') + '">'
       + '<button type="button" class="ct-add" id="ct-book-go">' + t('對照今日', 'Check today') + '</button></div>'
       + '<div id="ct-book-out"></div>'
-      + '<p>' + t('上週新列入的做多有沒有同時跑贏 QQQ 同 SPY，星期一電郵才寫名稱。',
-        'Whether last week’s new bullish names beat both QQQ and SPY is written only in the Monday email.') + '</p>'
+      + '<p>' + t('上週新列入的做多有沒有跑贏 QQQ，也跑贏 SPY，星期一電郵才寫名稱。',
+        'Whether last week’s new bullish names beat QQQ and also beat SPY is written only in the Monday email.') + '</p>'
       + '<p><a class="ct-pay-btn" href="' + weeklyHref + '">' + weeklyCta + '</a></p>'
       + '<h2>' + t('按類別重算', 'Recalculate by category') + '</h2>'
       + '<p>' + t('六類都計入時，與官方共識相同。關掉一類，只改下面這一欄，官方名單不變。',
