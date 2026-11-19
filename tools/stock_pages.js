@@ -261,7 +261,8 @@ function ledgerMarkup(lang, ticker, ft) {
   const rows = ['bull', 'bear'].map(side => found[side]).filter(Boolean);
   const lagged = rows.filter(row => row.xs < 0).sort((a, b) => a.xs - b.xs);
   const picked = lagged[0] || rows.slice().sort((a, b) => String(b.signal).localeCompare(String(a.signal)))[0];
-  const btn = '<a class="ct-ledger-btn" href="/zh/weekly/">' + (lang === 'zh' ? '星期一替我對倉，每月 USD 5' : 'Monday book check, USD 5/month') + '</a>';
+  const href = lang === 'zh' ? '/zh/weekly/' : '/en/weekly/';
+  const btn = '<a class="ct-ledger-btn" href="' + href + '">' + (lang === 'zh' ? '訂週報・潛力觀察（每月 USD 5）' : 'Weekly brief and names to watch (USD 5/month)') + '</a>';
   let pay;
   if (!picked) {
     pay = lang === 'zh'

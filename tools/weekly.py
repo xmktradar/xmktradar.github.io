@@ -1,8 +1,8 @@
-"""Write the weekly comparison page in Chinese and English.
+"""Write the weekly sales page in Chinese and English.
 
 Writes zh/weekly/index.html and en/weekly/index.html. /weekly/ redirects to
-the Chinese page and keeps the query and hash. Monday's comparison includes
-the weekly report; it is not a second product.
+the Chinese page and keeps the query and hash. The subscription is the Monday
+brief plus the names to watch. It is not a second product.
 
 The subscribe button links to the Stripe Payment Link for USD 5/month
 (same tab). The tracked-account count is len(tracked.accounts) from the
@@ -165,30 +165,34 @@ def scorecard_html(t):
 ZH = {
     'lang': 'zh', 'html_lang': 'zh-Hant', 'canon': SITE + 'zh/weekly/', 'home': '/zh/',
     'zh_current': 'aria-current="page"', 'en_current': '',
-    'title': '對倉，不是跟單｜The Crowd Tape 週報',
-    'desc': '星期一的對倉包括週報。上週新列入、上次跟了會否跑輸，名稱只在電郵。已結算成績由升幅最高排到跌幅最多。每月 USD 5。不是投資建議。',
+    'title': '週報・潛力觀察｜The Crowd Tape',
+    'desc': '星期一電郵是一份週報，加上最多八隻值得再看的股票。你的持倉、上週新列入、方向最齊和最分裂的對照。名稱只在電郵。每月 USD 5。不是投資建議。',
     'nav_label': '網站', 'lang_label': '語言', 'nav_tools': '工具', 'nav_support': '支持我們', 'nav_news': '電子報', 'aff_tag': '推廣',
-    'h1': '對倉，不是跟單',
-    'checkout_ok': '訂閱已完成。下一個週一早上開始收到對倉，當中包括週報。',
-    'lead': '今日名單免費。星期一替你對倉，而對倉包括週報：上週新列入、上次跟了會否跑輸，以及那封寫好的週報。名稱只在電郵。',
-    'cta': '星期一替我對倉，每月 USD 5（隨時可取消）',
-    'form_lead': '用付款同一個電郵，填最多八隻持倉。星期一的對倉包括週報，另有一段只寫這八隻。未填的人仍會收到週報，但沒有個人那一段。',
+    'h1': '週報・潛力觀察',
+    'checkout_ok': '訂閱已完成。下一個週一早上開始收到週報，以及最多八隻潛力觀察。',
+    'lead': '今日名單免費。星期一電郵是一份週報，加上最多八隻值得再看的股票。名稱只在電郵。不是買入名單。',
+    'get_h': '訂閱後，每星期一你會收到',
+    'get1': '你自己最多八隻持倉，對照這一期群眾怎麼講。未填仍會收到週報，只是沒有個人那一封。',
+    'get2': '上週新列入、而且上次同類跑輸 QQQ 最多的名稱，最多八隻。用來再看，不是待買名單。',
+    'get3': '一封週報：本週一句話、方向最齊的一隻、意見最分裂的一隻、相對上一期的變化，以及 QQQ、SOX 是否同向。價格未核對就寫「未核」，不報勝率。',
+    'cta': '訂週報・潛力觀察，每月 USD 5（隨時可取消）',
+    'form_lead': '用付款同一個電郵，填最多八隻持倉。填了的人，星期一另外收到一封，只寫這八隻。未填的人仍會收到週報。',
     'email_label': '付款電郵', 'hold_label': '持倉，最多八隻', 'save_btn': '儲存持倉',
-    'saved': '已儲存。下一個週一的對倉會包括這八隻。',
+    'saved': '已儲存。下一個週一會另有一封寫這八隻。週報仍然會寄出。',
     'save_fail': '未能儲存。請用付款同一個電郵再試一次。',
     'save_later': '未能儲存。請稍後再試。',
-    'includes': '追蹤 {{accounts}} 個帳號。這次訂閱就是星期一的對倉，對倉包括週報，不是另買一份。週報照固定結構寫。價格未核對的會寫「未核」，不補數字。',
-    'inc1': '本週一句話，以及方向最齊、討論最多但意見最分裂的對照',
-    'inc2': '相對上一期的淨值變化；上期未進入前列的，不寫成上期是零',
-    'inc3': '歷史準確度留固定位置；未核對 QQQ、SOX 收市價就不報勝率',
-    'inc4': '下週要回答的問題，只追本期寫過的名稱',
-    'fit': '適合已經持有美股、不想每星期自己對名單的人。電郵不叫人買，也不叫人賣。下一個週一早上開始收到。',
+    'includes': '追蹤 {{accounts}} 個帳號。一次訂閱就是星期一的週報・潛力觀察，不是另買一份。電郵不叫人買，也不叫人賣。',
+    'inc1': '上期沒有列入的名稱，不寫成上期是零',
+    'inc2': '未核對 QQQ、SOX 收市價，就不報勝率',
+    'inc3': '下週要回答的問題，只追本期寫過的名稱',
+    'inc4': '潛力觀察不是即將上升。那八隻是上次同類跑輸之後的新列入',
+    'fit': '適合已經持有美股、想每星期知道群眾在講什麼、又不想自己對名單的人。下一個週一早上開始收到。',
     'disclaimer': '免責：內容只供參考，不構成投資建議。投資涉及風險，包括可能損失本金。',
     'aff_title': '聯盟推廣連結聲明',
     'aff_body': '本站部分連結屬聯盟推廣連結。你經由連結註冊或購買，我們可能獲得佣金，你無需多付。佣金不會影響好淡統計。本站內容不構成投資建議。',
     'back': '返回首頁',
-    'sample_h': '星期一電郵最多八隻',
-    'sample_p': '對倉包括週報。這八隻只挑上週新列入、上次同類又跑輸最多的。名稱只在電郵。',
+    'sample_h': '潛力觀察，最多八隻',
+    'sample_p': '這八隻只挑上週新列入、上次同類又跑輸最多的。名稱只在電郵。不是買入名單。',
     'sample_side': '共同看好或共同看淡',
     'sample_meta': '上次同類：跑輸。今次是新列入。不是投資建議。',
     'no_hist': '共識紀錄暫時讀不到。',
@@ -198,7 +202,7 @@ ZH = {
     'price': '股價', 'vs': '相對 QQQ', 'beat': '跑贏', 'miss': '跑輸',
     'no_settled': '暫時沒有已結算的星期。',
     'week_h': '今個星期',
-    'week_p': '<p>截至 {today}，新列入<span class="wk-up">共同看好</span> {bulls} 次、<span class="wk-dn">共同看淡</span> {bears} 次。其中討論突然集中 {focus} 隻。名稱只在星期一的對倉電郵，而那封電郵包括週報。這不是即將爆發。不是投資建議。</p>',
+    'week_p': '<p>截至 {today}，新列入<span class="wk-up">共同看好</span> {bulls} 次、<span class="wk-dn">共同看淡</span> {bears} 次。其中討論突然集中 {focus} 隻。名稱只在星期一的週報電郵。這不是即將爆發。不是投資建議。</p>',
     'count': '{n} 個帳號',
 }
 
@@ -206,30 +210,34 @@ ZH = {
 EN = {
     'lang': 'en', 'html_lang': 'en', 'canon': SITE + 'en/weekly/', 'home': '/en/',
     'zh_current': '', 'en_current': 'aria-current="page"',
-    'title': 'Compare your book, do not copy the crowd | The Crowd Tape',
-    'desc': 'Monday\'s comparison includes the weekly report. New names from last week stay in the email. Settled results run from the biggest gain to the biggest drop. USD 5 a month. Not investment advice.',
+    'title': 'Weekly brief and names to watch | The Crowd Tape',
+    'desc': 'Monday\'s email is a written brief plus at most eight names worth another look. Your holdings, last week\'s new names, and the most agreed versus most divided name. Names stay in the email. USD 5 a month. Not investment advice.',
     'nav_label': 'Site', 'lang_label': 'Language', 'nav_tools': 'Tools', 'nav_support': 'Support', 'nav_news': 'Newsletter', 'aff_tag': 'Affiliate',
-    'h1': 'Compare your book. Do not copy it.',
-    'checkout_ok': 'You are subscribed. Next Monday\'s comparison includes the weekly report.',
-    'lead': 'Today\'s list is free. On Monday the comparison includes the weekly report: last week\'s new names, whether that kind of call beat QQQ, and the written brief. Names stay in the email.',
-    'cta': 'Compare my book on Monday, USD 5 a month (cancel any time)',
-    'form_lead': 'Use the same email you paid with. Save up to eight holdings. Monday\'s comparison includes the weekly report, plus a short section on these eight. If you leave this blank, you still get the report, without that section.',
+    'h1': 'Weekly brief, and names to watch',
+    'checkout_ok': 'You are subscribed. Next Monday you get the brief, plus at most eight names to watch.',
+    'lead': 'Today\'s list is free. Monday\'s email is a written brief plus at most eight names worth another look. The names stay in the email. It is not a buy list.',
+    'get_h': 'What you get every Monday',
+    'get1': 'Your own holdings, up to eight, set against what the crowd said that week. If you leave them blank, you still get the brief, without the separate note.',
+    'get2': 'At most eight names newly listed last week whose previous call of the same kind lagged QQQ the most. Worth another look, not a list of stocks to buy.',
+    'get3': 'The brief itself: one line on the week, the most agreed name, the most divided name, the change from last issue, and whether QQQ and SOX moved the same way. If a price was not checked, it says so and gives no win rate.',
+    'cta': 'Get the Monday brief, USD 5 a month (cancel any time)',
+    'form_lead': 'Use the same email you paid with. Save up to eight holdings. If you do, Monday also sends a separate note on just these eight. If you leave this blank, you still get the brief.',
     'email_label': 'Payment email', 'hold_label': 'Holdings, up to eight', 'save_btn': 'Save holdings',
-    'saved': 'Saved. Next Monday\'s comparison will include these eight.',
+    'saved': 'Saved. Next Monday also sends a note on these eight. The brief still goes out.',
     'save_fail': 'Not saved. Use the same email you paid with and try again.',
     'save_later': 'Not saved. Try again later.',
-    'includes': 'Tracking {{accounts}} accounts. This subscription is the Monday comparison, and the comparison includes the weekly report. It is not a second purchase. Where a price has not been checked, the report says so and does not fill in a number.',
-    'inc1': 'One line on the week, plus the most agreed name and the most divided name',
-    'inc2': 'How the net bullish count changed from the previous issue',
-    'inc3': 'A fixed place for the track record; no win rate unless QQQ and SOX closes were checked',
-    'inc4': 'Three questions the next issue has to answer, only about names already written up',
-    'fit': 'For people who already hold US stocks and do not want to check the list themselves every week. The email does not say buy or sell. It starts next Monday morning.',
+    'includes': 'Tracking {{accounts}} accounts. One subscription is the Monday brief and the names to watch. It is not a second purchase. The email does not say buy or sell.',
+    'inc1': 'A name that was not on last issue\'s list is not written as zero last issue',
+    'inc2': 'No win rate unless the QQQ and SOX closes were checked',
+    'inc3': 'Next issue\'s questions follow only names already written up',
+    'inc4': 'Names to watch are not stocks about to rise. They are new listings after a lag',
+    'fit': 'For people who already hold US stocks and want to know what the crowd said, without checking the list themselves. The email does not say buy or sell. It starts next Monday morning.',
     'disclaimer': 'Disclaimer: for reference only, not investment advice. Investing involves risk, including loss of principal.',
     'aff_title': 'Affiliate links',
     'aff_body': 'Some links are affiliate links. If you sign up or buy through them, we may earn a commission at no extra cost to you. Commission does not change the bullish or bearish counts. This is not investment advice.',
     'back': 'Back to the homepage',
-    'sample_h': 'Monday\'s email names at most eight',
-    'sample_p': 'The comparison includes the weekly report. These eight are last week\'s new names whose previous call of the same kind lagged the most. The names stay in the email.',
+    'sample_h': 'Names to watch, at most eight',
+    'sample_p': 'These eight are last week\'s new names whose previous call of the same kind lagged the most. The names stay in the email. Not a buy list.',
     'sample_side': 'Jointly bullish or jointly bearish',
     'sample_meta': 'Previous call of the same kind lagged. This one is newly listed. Not investment advice.',
     'no_hist': 'The consensus record is not available.',
@@ -239,7 +247,7 @@ EN = {
     'price': 'Price', 'vs': 'vs QQQ', 'beat': 'ahead', 'miss': 'behind',
     'no_settled': 'No settled week yet.',
     'week_h': 'This week',
-    'week_p': '<p>As of {today}, newly listed <span class="wk-up">jointly bullish</span> {bulls}, <span class="wk-dn">jointly bearish</span> {bears}. Discussion suddenly concentrated: {focus}. Names stay in Monday\'s comparison email, and that email includes the weekly report. This is not a list of stocks about to surge. Not investment advice.</p>',
+    'week_p': '<p>As of {today}, newly listed <span class="wk-up">jointly bullish</span> {bulls}, <span class="wk-dn">jointly bearish</span> {bears}. Discussion suddenly concentrated: {focus}. Names stay in Monday\'s brief. This is not a list of stocks about to surge. Not investment advice.</p>',
     'count': '{n} accounts',
 }
 
@@ -353,8 +361,16 @@ def check(html, root_html, en_html, accounts):
         raise SystemExit('English weekly page is missing the tracked account count')
     if '/en/weekly/' not in html or '/zh/weekly/' not in en_html:
         raise SystemExit('weekly pages must link to each other')
-    if '對倉包括週報' not in html or 'includes the weekly report' not in en_html:
-        raise SystemExit('the comparison must say it includes the weekly report')
+    if '對倉' in html or '對倉' in en_html:
+        raise SystemExit('subscription name is no longer 對倉')
+    if '潛力觀察' not in html or 'names to watch' not in en_html:
+        raise SystemExit('weekly page is missing the subscription name')
+    if html.find('class="wk-get"') > html.find('class="lead-cta"'):
+        raise SystemExit('what you get must sit above the subscribe button')
+    if '你會收到' not in html or 'What you get' not in en_html:
+        raise SystemExit('weekly page must say what the subscriber gets')
+    if '不是另買一份' not in html or 'not a second purchase' not in en_html:
+        raise SystemExit('one subscription must include the brief')
     if '<a class="btn"' in html.split('id="settled"')[-1].split('id="this-week"')[0]:
         raise SystemExit('do not put the subscribe button inside a stock row')
     if REDIRECT not in root_html:
