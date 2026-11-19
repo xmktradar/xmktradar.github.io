@@ -1913,9 +1913,157 @@
       "UNH"
      ]
     }
+   },
+   "intraday_4": {
+    "post_et": "14:45",
+    "post_hkt": "03:45",
+    "generated_at": "2026-11-19T16:16:39-05:00",
+    "date": "2026-11-19",
+    "date_kst": "2026-11-20",
+    "quotes": {
+     "SPY": {
+      "price": 715.87,
+      "prev_close": 730.2,
+      "chg_pct": -1.96,
+      "time": "2026-11-19T16:00:00-05:00"
+     },
+     "QQQ": {
+      "price": 645.04,
+      "prev_close": 659.51,
+      "chg_pct": -2.19,
+      "time": "2026-11-19T16:00:01-05:00"
+     },
+     "DIA": {
+      "price": 490.79,
+      "prev_close": 501.73,
+      "chg_pct": -2.18,
+      "time": "2026-11-19T16:00:00-05:00"
+     },
+     "UBER": {
+      "price": 65.6,
+      "prev_close": 68.76,
+      "chg_pct": -4.6,
+      "time": "2026-11-19T16:00:02-05:00"
+     },
+     "DELL": {
+      "price": 312.62,
+      "prev_close": 313.11,
+      "chg_pct": -0.16,
+      "time": "2026-11-19T16:00:00-05:00"
+     },
+     "BE": {
+      "price": 168.11,
+      "prev_close": 170.98,
+      "chg_pct": -1.68,
+      "time": "2026-11-19T16:00:02-05:00"
+     },
+     "CRWD": {
+      "price": 243.46,
+      "prev_close": 237.03,
+      "chg_pct": 2.71,
+      "time": "2026-11-19T16:00:01-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-19T16:00:02-05:00",
+     "hkt": "2026-11-20 05:00"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "UBER",
+      "chg_pct": -4.6,
+      "bull": 3,
+      "bear": 0,
+      "accounts": [
+       "BoyarValue",
+       "tenet_research",
+       "wallstengine"
+      ]
+     },
+     {
+      "ticker": "DELL",
+      "chg_pct": -0.16,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "garyblack00",
+       "DougKass",
+       "MikeZaccardi"
+      ]
+     },
+     {
+      "ticker": "BE",
+      "chg_pct": -1.68,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "MrMikeInvesting",
+       "OpenOutcrier"
+      ]
+     },
+     {
+      "ticker": "CRWD",
+      "chg_pct": 2.71,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "OptionsMike",
+       "ivanhoff"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Afternoon tape · As of 16:00 ET (05:00 HKT)\n\n$SPY -2.0% · $QQQ -2.2% · $DIA -2.2%\n\n$UBER -4.6%, 3 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #UBER #DELL",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "尾盤前 · 截至 16:00 ET（05:00 HKT）\n\n$SPY -2.0% · $QQQ -2.2% · $DIA -2.2%\n\n$UBER -4.6%，網站 3 個帳號看好\n$DELL -0.2%，網站 2 個帳號看好\n$BE -1.7%，網站 2 個帳號看好\n$CRWD +2.7%，網站 2 個帳號看好\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #UBER #DELL",
+      "url": null
+     },
+     "en": {
+      "text": "Afternoon tape · As of 16:00 ET (05:00 HKT)\n\n$SPY -2.0% · $QQQ -2.2% · $DIA -2.2%\n\n$UBER -4.6%, 3 accounts bullish on site\n$DELL -0.2%, 2 accounts bullish on site\n$BE -1.7%, 2 accounts bullish on site\n$CRWD +2.7%, 2 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #UBER #DELL",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "PANW",
+      "TGT",
+      "TJX",
+      "LOW",
+      "P",
+      "TTWO",
+      "UBER",
+      "AAPL",
+      "DIS",
+      "DELL",
+      "BE",
+      "CRWD",
+      "XRT"
+     ],
+     "bear": [
+      "GLD",
+      "MSTR",
+      "META",
+      "UNH"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-19T16:16:34-05:00",
+  "generated_at": "2026-11-19T16:16:39-05:00",
   "generated_hkt": "2026-11-20 05:16"
  }
 }
