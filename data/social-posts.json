@@ -1596,9 +1596,162 @@
       "UNH"
      ]
     }
+   },
+   "intraday_2": {
+    "post_et": "12:15",
+    "post_hkt": "01:15",
+    "generated_at": "2026-11-19T16:16:29-05:00",
+    "date": "2026-11-19",
+    "date_kst": "2026-11-20",
+    "quotes": {
+     "SPY": {
+      "price": 715.87,
+      "prev_close": 730.2,
+      "chg_pct": -1.96,
+      "time": "2026-11-19T16:00:00-05:00"
+     },
+     "QQQ": {
+      "price": 645.04,
+      "prev_close": 659.51,
+      "chg_pct": -2.19,
+      "time": "2026-11-19T16:00:01-05:00"
+     },
+     "DIA": {
+      "price": 490.79,
+      "prev_close": 501.73,
+      "chg_pct": -2.18,
+      "time": "2026-11-19T16:00:00-05:00"
+     },
+     "GLD": {
+      "price": 335.18,
+      "prev_close": 341.19,
+      "chg_pct": -1.76,
+      "time": "2026-11-19T16:00:00-05:00"
+     },
+     "MSTR": {
+      "price": 86.13,
+      "prev_close": 90.32,
+      "chg_pct": -4.64,
+      "time": "2026-11-19T16:00:01-05:00"
+     },
+     "META": {
+      "price": 596.22,
+      "prev_close": 616.38,
+      "chg_pct": -3.27,
+      "time": "2026-11-19T16:00:01-05:00"
+     },
+     "UNH": {
+      "price": 330.48,
+      "prev_close": 349.91,
+      "chg_pct": -5.55,
+      "time": "2026-11-19T16:00:02-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-19T16:00:02-05:00",
+     "hkt": "2026-11-20 05:00"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "GLD",
+      "chg_pct": -1.76,
+      "bull": 0,
+      "bear": 3,
+      "accounts": [
+       "RenMacLLC",
+       "capitalflows",
+       "alphatrends",
+       "Mr_Derivatives",
+       "MikeZaccardi"
+      ]
+     },
+     {
+      "ticker": "MSTR",
+      "chg_pct": -4.64,
+      "bull": 0,
+      "bear": 3,
+      "accounts": [
+       "OpenOutcrier",
+       "KeithMcCullough",
+       "KevInvestingYT"
+      ]
+     },
+     {
+      "ticker": "META",
+      "chg_pct": -3.27,
+      "bull": 0,
+      "bear": 2,
+      "accounts": [
+       "KevInvestingYT",
+       "InvestmentGuru_",
+       "hhhypergrowth",
+       "MikeZaccardi"
+      ]
+     },
+     {
+      "ticker": "UNH",
+      "chg_pct": -5.55,
+      "bull": 0,
+      "bear": 2,
+      "accounts": [
+       "wallstengine",
+       "StockSavvyShay",
+       "RenMacLLC"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Midday · As of 16:00 ET (05:00 HKT)\n\n$SPY -2.0% · $QQQ -2.2% · $DIA -2.2%\n\n$GLD -1.8%, 3 accounts bearish on site\n$MSTR -4.6%, 3 accounts bearish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #GLD #MSTR",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午市觀察 · 截至 16:00 ET（05:00 HKT）\n\n$SPY -2.0% · $QQQ -2.2% · $DIA -2.2%\n\n$GLD -1.8%，網站 3 個帳號看空\n$MSTR -4.6%，網站 3 個帳號看空\n$META -3.3%，網站 2 個帳號看空\n$UNH -5.5%，網站 2 個帳號看空\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #GLD #MSTR",
+      "url": null
+     },
+     "en": {
+      "text": "Midday · As of 16:00 ET (05:00 HKT)\n\n$SPY -2.0% · $QQQ -2.2% · $DIA -2.2%\n\n$GLD -1.8%, 3 accounts bearish on site\n$MSTR -4.6%, 3 accounts bearish on site\n$META -3.3%, 2 accounts bearish on site\n$UNH -5.5%, 2 accounts bearish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #GLD #MSTR",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "PANW",
+      "TGT",
+      "TJX",
+      "LOW",
+      "P",
+      "TTWO",
+      "UBER",
+      "AAPL",
+      "DIS",
+      "DELL",
+      "BE",
+      "CRWD",
+      "XRT"
+     ],
+     "bear": [
+      "GLD",
+      "MSTR",
+      "META",
+      "UNH"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-19T16:16:24-05:00",
+  "generated_at": "2026-11-19T16:16:29-05:00",
   "generated_hkt": "2026-11-20 05:16"
  }
 }
