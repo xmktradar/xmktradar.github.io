@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123159837316145659": {
+      "en_summary": "Post contains a link to another post.",
+      "zh_summary": "帖文包含另一帖文的連結。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123159708886544842": {
+      "en_summary": "$PANW -- Palo Alto to Buy AI-Startup Applied Compute, Executives Say -- WSJ.",
+      "zh_summary": "$PANW -- Palo Alto 將收購 AI 新創 Applied Compute，高管表示 -- 華爾街日報。",
+      "tickers": ["PANW"],
+      "stance": "中性",
+      "stance_by_ticker": {"PANW": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123159607459577995": {
+      "en_summary": "Demand for AI compute isn't really what's breaking here. Obviously, the financing is. -@StockSavvyShay. Nvidia named $NBIS among the first partners running Vera Rubin racks. Nebius converts carry coupons of 0.50% and 4.50%.",
+      "zh_summary": "AI 計算需求並非這裡的問題，明顯是融資問題。-@StockSavvyShay。Nvidia 將 $NBIS 列為首批運行 Vera Rubin 機架的合作夥伴。Nebius 轉換搶購票息 0.50% 與 4.50%。",
+      "tickers": ["NBIS", "NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NBIS": "中性", "NVDA": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NBIS": "被 Nvidia 列為 Vera Rubin 機架合作夥伴"}
+    },
+    "2123159480137580591": {
+      "en_summary": "RECAP 11/18 Unusual Puts: $KO Jan 92.5 P, $C Dec 105 P, $HL Jan-28 10 P, $XLV Sep 120 P, $GDX Dec 70 P, $JEF Jun 35 P, $BILI Jan-29 8 P, $FIG May 15 P, $CRWV Jan 40 P, $SPCE Apr 1 P.",
+      "zh_summary": "11/18 異常看跌期權摘要：$KO 1 月 92.5 看跌、$C 12 月 105 看跌、$HL 1 月 28 日 10 看跌、$XLV 9 月 120 看跌、$GDX 12 月 70 看跌、$JEF 6 月 35 看跌、$BILI 1 月 29 日 8 看跌、$FIG 5 月 15 看跌、$CRWV 1 月 40 看跌、$SPCE 4 月 1 看跌。",
+      "tickers": ["KO", "C", "HL", "XLV", "GDX", "JEF", "BILI", "FIG", "CRWV", "SPCE"],
+      "stance": "中性",
+      "stance_by_ticker": {"KO": "中性", "C": "中性", "HL": "中性", "XLV": "中性", "GDX": "中性", "JEF": "中性", "BILI": "中性", "FIG": "中性", "CRWV": "中性", "SPCE": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123159454934049192": {
+      "en_summary": "RECAP 11/18 Unusual Calls: $PURR Dec 10 C, $CORZ Dec 17 C, $LQD Feb 105 C, $OPEN Nov27 1.5 C, $RKT Nov27 14 C, $CLSK Nov27 6.5 C, $BB Dec04 10 C, $AMZN Dec 280 C, $SLS Apr 40 C, $CVX Nov 220 C, $CLSK Mar 6 C, $STWD May 11 C, $SE Nov 70 C, $AMZN Jan 350 C.",
+      "zh_summary": "11/18 異常看漲期權摘要：$PURR 12 月 10 看漲、$CORZ 12 月 17 看漲、$LQD 2 月 105 看漲、$OPEN 11 月 27 日 1.5 看漲、$RKT 11 月 27 日 14 看漲、$CLSK 11 月 27 日 6.5 看漲、$BB 12 月 4 日 10 看漲、$AMZN 12 月 280 看漲、$SLS 4 月 40 看漲、$CVX 11 月 220 看漲、$CLSK 3 月 6 看漲、$STWD 5 月 11 看漲、$SE 11 月 70 看漲、$AMZN 1 月 350 看漲。",
+      "tickers": ["PURR", "CORZ", "LQD", "OPEN", "RKT", "CLSK", "BB", "AMZN", "SLS", "CVX", "STWD", "SE"],
+      "stance": "中性",
+      "stance_by_ticker": {"PURR": "中性", "CORZ": "中性", "LQD": "中性", "OPEN": "中性", "RKT": "中性", "CLSK": "中性", "BB": "中性", "AMZN": "中性", "SLS": "中性", "CVX": "中性", "STWD": "中性", "SE": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
