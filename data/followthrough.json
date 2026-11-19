@@ -1,60 +1,30 @@
 {
- "as_of": "2026-11-18",
+ "as_of": "2026-11-17",
  "from": "2026-10-06",
  "horizon": 10,
  "benchmark": "QQQ",
- "updated_hkt": "2026-11-19 03:00",
+ "updated_hkt": "2026-11-19 09:50",
  "bull": {
-  "opened": 269,
-  "settled": 204,
-  "immature": 65,
-  "no_price": 0,
-  "avg_xs": -0.054985,
-  "median_xs": -0.041892,
-  "hit": 0.348039,
-  "avg_ret": -0.098717
+  "opened": 273,
+  "settled": 202,
+  "immature": 57,
+  "no_price": 14,
+  "avg_xs": -0.05623,
+  "median_xs": -0.042776,
+  "hit": 0.341584,
+  "avg_ret": -0.09995
  },
  "bear": {
-  "opened": 78,
-  "settled": 52,
+  "opened": 79,
+  "settled": 51,
   "immature": 26,
-  "no_price": 0,
-  "avg_xs": -0.005732,
-  "median_xs": 0.002142,
-  "hit": 0.5,
-  "avg_ret": -0.028504
+  "no_price": 2,
+  "avg_xs": -0.010671,
+  "median_xs": 0.0,
+  "hit": 0.490196,
+  "avg_ret": -0.023355
  },
  "rows": [
-  {
-   "ticker": "IREN",
-   "side": "bear",
-   "signal": "2026-11-05",
-   "entry": "2026-11-04",
-   "exit": "2026-11-18",
-   "ret": -0.29111,
-   "qqq": -0.04496,
-   "xs": 0.24615
-  },
-  {
-   "ticker": "GOOGL",
-   "side": "bull",
-   "signal": "2026-11-05",
-   "entry": "2026-11-04",
-   "exit": "2026-11-18",
-   "ret": -0.017617,
-   "qqq": -0.04496,
-   "xs": 0.027343
-  },
-  {
-   "ticker": "AMD",
-   "side": "bull",
-   "signal": "2026-11-05",
-   "entry": "2026-11-04",
-   "exit": "2026-11-18",
-   "ret": 0.069223,
-   "qqq": -0.04496,
-   "xs": 0.114183
-  },
   {
    "ticker": "TSLA",
    "side": "bull",
@@ -424,6 +394,36 @@
    "ret": -0.142542,
    "qqq": -0.015351,
    "xs": 0.127191
+  },
+  {
+   "ticker": "COIN",
+   "side": "bear",
+   "signal": "2026-10-31",
+   "entry": "2026-10-30",
+   "exit": "2026-11-13",
+   "ret": -0.110701,
+   "qqq": -0.015351,
+   "xs": 0.095349
+  },
+  {
+   "ticker": "CBOE",
+   "side": "bull",
+   "signal": "2026-10-31",
+   "entry": "2026-10-30",
+   "exit": "2026-11-13",
+   "ret": 0.118887,
+   "qqq": -0.015351,
+   "xs": 0.134238
+  },
+  {
+   "ticker": "AVGO",
+   "side": "bear",
+   "signal": "2026-10-31",
+   "entry": "2026-10-30",
+   "exit": "2026-11-13",
+   "ret": 0.064187,
+   "qqq": -0.015351,
+   "xs": -0.079538
   }
  ]
 }
