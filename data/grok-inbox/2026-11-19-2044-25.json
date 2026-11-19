@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123166849244291469": {
+      "en_summary": "Rough week so far: $SPY -3.2% $QQQ -3.0% $IWM -2.7% $VEU -4.1% $USO -6.5% $GLD -4.0% $IBIT -9.2% Bonds, dollar up",
+      "zh_summary": "本週至今艱難：$SPY -3.2% $QQQ -3.0% $IWM -2.7% $VEU -4.1% $USO -6.5% $GLD -4.0% $IBIT -9.2% 債券、美元上漲",
+      "tickers": ["SPY", "QQQ", "IWM", "VEU", "USO", "GLD", "IBIT"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "QQQ": "中性", "IWM": "中性", "VEU": "中性", "USO": "中性", "GLD": "中性", "IBIT": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123166143729012796": {
+      "en_summary": "$WWD Earnings Review. Key highlights: Revenue: $1.16B, +16.6% YoY. Adjusted EPS: $2.83, +35% YoY. Operating income: $187M, +24.1%. Aerospace revenue: $781M, +18% YoY. FY27 revenue growth guide: 8%–10%.",
+      "zh_summary": "$WWD 財報回顧。主要亮點：收入：11.6 億美元，同比 +16.6%。調整後 EPS：2.83 美元，同比 +35%。營業收入：1.87 億美元，+24.1%。航空航天收入：7.81 億美元，同比 +18%。FY27 收入增長指引：8%–10%。",
+      "tickers": ["WWD"],
+      "stance": "睇好",
+      "stance_by_ticker": {"WWD": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"WWD": "收入+16.6% YoY，EPS +35%，FY27 指引8-10%增長"}
+    },
+    "2123166113270013977": {
+      "en_summary": "$PANW earnings would be no shock to you if you followed all the research on cyber sec we have shared since June. Our latest CSO survey detailed this at length and our beneficiary map accordingly.",
+      "zh_summary": "如果你跟隨我們自六月以來分享的所有網路安全研究，$PANW 財報不會令你意外。我們最新的 CSO 調查詳細說明了這一點，以及我們的受益人地圖。",
+      "tickers": ["PANW"],
+      "stance": "睇好",
+      "stance_by_ticker": {"PANW": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"PANW": "基於自六月以來的網路安全研究，財報不出意外"}
+    },
+    "2123166064402145765": {
+      "en_summary": "$U Unity Vector advertising is +126% YOY and 40% sequentially. There is tremendous operating leverage. The true multiple by my estimates is 20x Q3 FCF runrate, after subtracting the SBC. 👀👀",
+      "zh_summary": "$U Unity Vector 廣告同比 +126%，環比 +40%。有巨大的經營槓桿。根據我的估計，扣除 SBC 後，真實倍數是 Q3 FCF 運行率的 20 倍。👀👀",
+      "tickers": ["U"],
+      "stance": "睇好",
+      "stance_by_ticker": {"U": "睇好"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"U": "Vector 廣告 +126% YoY，估計真實倍數20x Q3 FCF"}
+    },
+    "2123165651657429338": {
+      "en_summary": "Travis Kalanick says Jensen Huang is the number one guy standing between us and an AI 'overlord,' and that’s why everyone should back his return. Discusses wanting AI on our terms for liberty, privacy, not stealing intelligence.",
+      "zh_summary": "Travis Kalanick 說 Jensen Huang 是站在我們與 AI「霸主」之間的第一人，這就是為什麼每個人都應該支持他的回歸。討論希望 AI 按我們的條款運作，為自由、隱私，不竊取智能。",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "Jensen Huang 被視為防止 AI 霸主的關鍵人物"}
+    }
+  }
+}
