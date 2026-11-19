@@ -107,6 +107,111 @@ def email_block(rows, ft):
     return '\n'.join(lines).rstrip()
 
 
+def load_mentions():
+    """Counts from the Chinese post archive. Empty when that archive is absent."""
+    mentions = {}
+    posts_by_day = {}
+    seen = set()
+    folder = os.path.join(ROOT, 'data', 'dash')
+    if not os.path.isdir(folder):
+        return mentions, posts_by_day
+    for name in sorted(os.listdir(folder)):
+        if not (name.startswith('zh-posts-') and name.endswith('.json')):
+            continue
+        try:
+            posts = json.load(open(os.path.join(folder, name), encoding='utf-8'))
+        except (OSError, ValueError):
+            continue
+        for post in posts or []:
+            url = post.get('url')
+            if url:
+                if url in seen:
+                    continue
+                seen.add(url)
+            day = str(post.get('day') or '')[:10]
+            if len(day) != 10:
+                continue
+            posts_by_day[day] = posts_by_day.get(day, 0) + 1
+            tickers = set()
+            for raw in post.get('tickers') or []:
+                tickers.add(str(raw).lstrip('$').upper())
+            stance = post.get('stance_by_ticker') or {}
+            if isinstance(stance, dict):
+                for raw in stance:
+                    tickers.add(str(raw).lstrip('$').upper())
+            for ticker in tickers:
+                if ticker:
+                    mentions[(day, ticker)] = mentions.get((day, ticker), 0) + 1
+    return mentions, posts_by_day
+
+
+def _mention_span(mentions, posts_by_day, ticker, end):
+    year, month, day = (int(part) for part in str(end)[:10].split('-'))
+    cursor = date(year, month, day)
+    hits = posts = 0
+    for _ in range(7):
+        key = cursor.isoformat()
+        posts += posts_by_day.get(key, 0)
+        hits += mentions.get((key, ticker), 0)
+        cursor -= timedelta(days=1)
+    return hits, posts
+
+
+def focus_rows(rows, mentions, posts_by_day, limit=None):
+    """New inclusions whose share of posts at least doubled.
+
+    The 7 days ending on the inclusion need at least 8 mentions and 2% of
+    posts in that window. The prior 7 days must already have mentions, so a
+    thin archive week cannot look like a surge.
+    """
+    ranked = []
+    for row in rows:
+        now, posts = _mention_span(mentions, posts_by_day, row['t'], row['d'])
+        prev_end = plus_days(date.fromisoformat(str(row['d'])[:10]), -7).isoformat()
+        prev, prev_posts = _mention_span(mentions, posts_by_day, row['t'], prev_end)
+        if now < 8 or posts < 1 or prev < 1 or prev_posts < 1:
+            continue
+        share = now / posts
+        prev_share = prev / prev_posts
+        if share < 0.02 or share < 2 * prev_share:
+            continue
+        ranked.append((share / prev_share, now, {
+            'd': row['d'], 't': row['t'], 'side': row['side'],
+            'mentions': now, 'share': share, 'prev_share': prev_share,
+        }))
+    ranked.sort(key=lambda item: (-item[0], -item[1], item[2]['t']))
+    chosen = [item[2] for item in ranked]
+    return chosen[:limit] if limit is not None else chosen
+
+
+def focus_block(rows, mentions, posts_by_day, ft, limit=8):
+    """Subscriber email only. Names whose discussion share jumped. Not a forecast."""
+    chosen = focus_rows(rows, mentions, posts_by_day, limit)
+    lines = [
+        '',
+        '本週討論突然集中',
+        '只寫今次新列入、這 7 日提及佔全站比例至少是之前 7 日兩倍、這 7 日至少 8 則、而且佔全站至少 2% 的名稱。最多八隻。這不是即將爆發。不是投資建議。',
+    ]
+    if not chosen:
+        lines.append('上週新列入裡，沒有符合這條的名稱。今次不列。')
+        return '\n'.join(lines)
+    for row in chosen:
+        side = '共同看好' if row['side'] == 'bull' else '共同看淡'
+        lines.append(f"{row['d'][5:]} ${row['t']} {side}")
+        lines.append(
+            f"這 7 日 {row['mentions']} 則，佔全站 {row['share'] * 100:.1f}%；之前 7 日佔 {row['prev_share'] * 100:.1f}%。"
+        )
+        prev = prior_settled(ft, row['t'], row['side'], row['d'])
+        if prev and isinstance(prev.get('xs'), (int, float)):
+            word = '跑贏' if prev['xs'] > 0 else '跑輸' if prev['xs'] < 0 else '持平'
+            lines.append(f"上次同類已結算：10 日相對 QQQ {signed_pct(prev['xs'])}，{word}")
+        else:
+            lines.append('上次同類未有已結算紀錄。')
+        lines.append('不是投資建議。')
+        lines.append('')
+    return '\n'.join(lines).rstrip()
+
+
 def episodes(cons_hist):
     """First day a ticker enters bull or bear. A repeat of the same side does not count."""
     active = set()
