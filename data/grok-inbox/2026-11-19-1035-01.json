@@ -1,1 +1,100 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2123219778324054030": {
+      "en_summary": "TRADE PLAN for Thursday: Market held up better than Mon/Tue with after-hours gap up. If QQQ holds above 661 and SPX above 7350, push to SPX 7400 and QQQ 669. AMD at 530+ AH; if holds higher low above 525, push to 550. SNDK through 800 can gain momentum to 880, MU needs 750+ to push higher. SMH winding up for 480-485 if chip stocks run next 2 days. Market oversold, expect relief rally within next 2 days if supports hold.",
+      "zh_summary": "周四交易計劃：市場較周一及周二表現更佳，盤後出現跳空高開。若QQQ能守住661上方且標普500能守住7350上方，可望推動標普至7400及QQQ至669。AMD盤後報530以上；若能守住525上方較高低點，可望推升至550。SNDK突破800可加速至880，MU需750以上才能進一步上攻。若芯片股未來兩日走強，SMH醞釀480-485行情。市場超賣，若支撐守住，未來兩日應見反彈。",
+      "tickers": ["QQQ", "SPY", "AMD", "SNDK", "MU", "SMH"],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "QQQ": "睇好",
+        "SPY": "睇好",
+        "AMD": "睇好",
+        "SNDK": "睇好",
+        "MU": "睇好",
+        "SMH": "睇好"
+      },
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {
+        "QQQ": "hold above 661 for push to 669",
+        "SPY": "SPX hold above 7350 for push to 7400",
+        "AMD": "hold higher low above 525 for push to 550",
+        "SNDK": "through 800 to 880",
+        "MU": "needs 750+ to push higher",
+        "SMH": "to 480-485 if chips run"
+      }
+    },
+    "2123219713949831489": {
+      "en_summary": "$CIFR getting further and further from Wall Street's price target. Opportunity or does Wall Street have this one dead wrong?",
+      "zh_summary": "CIFR股價正逐漸遠離華爾街目標價。這是機會，還是華爾街徹底看錯了？",
+      "tickers": ["CIFR"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "CIFR": "中性"
+      },
+      "horizon": null,
+      "basis": "估值",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123219462111342983": {
+      "en_summary": "Nice little rally this evening. SPY +0.8% from 4pm ET, QQQ +1.4%. Gold and bitcoin bouncing too.",
+      "zh_summary": "今晚出現不錯的反彈。SPY自美東時間下午4時起上漲0.8%，QQQ上漲1.4%。黃金及比特幣亦同步反彈。",
+      "tickers": ["SPY", "QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "SPY": "中性",
+        "QQQ": "中性"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123218180156092569": {
+      "en_summary": "A bombshell after bombshell, delivered matter-of-factly. SPCX TSLA",
+      "zh_summary": "一枚又一枚重磅炸彈，以平靜的口吻發布。SPCX TSLA",
+      "tickers": ["SPCX", "TSLA"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "SPCX": "中性",
+        "TSLA": "中性"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123217967479398522": {
+      "en_summary": "We have a new YTD DJIA leader... KO +40%. AAPL sneaking up... +30%. NVDA 5th worst -19% @barchart",
+      "zh_summary": "道瓊斯指數出現新的年初至今領先股……KO上漲40%。AAPL悄然跟上……上漲30%。NVDA排名倒數第五，下跌19% @barchart",
+      "tickers": ["KO", "AAPL", "NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "KO": "中性",
+        "AAPL": "中性",
+        "NVDA": "中性"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
