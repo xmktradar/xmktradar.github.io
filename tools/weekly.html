@@ -89,6 +89,9 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
 .lang a[aria-current]{color:var(--ink)!important;background:var(--accent-soft)!important}
 .aff-tag{background:transparent!important}
 .site-foot{border-top-color:var(--line)!important}
+.book-mail{margin:12px 0 18px}
+.book-mail input{display:block;width:100%;max-width:420px;box-sizing:border-box;margin:0 0 8px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit}
+.book-mail button{min-height:44px}
 </style>
 </head>
 <body>
@@ -108,6 +111,14 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
   <aside class="note" id="checkout-ok" hidden role="status"><p>訂閱已完成。下一個週一早上開始收到週報。</p></aside>
   <p class="lead">今日名單免費。星期一先講上週新列入，上次跟了會否跑輸。電郵最多八隻。</p>
   <p class="lead-cta"><a class="btn" href="https://buy.stripe.com/cNiaEXfyE8961qM83H2cg02">星期一替我對倉，每月 USD 5（隨時可取消）</a></p>
+  <form class="book-mail" id="book-mail">
+    <p>用付款同一個電郵，填最多八隻持倉。星期一另有一封短信，只寫這八隻有沒有新列入，以及上次同類跑贏還是跑輸。未填的人不會收到這封。</p>
+    <label>付款電郵<br><input type="email" name="email" required autocomplete="email" placeholder="you@example.com"></label>
+    <label>持倉，最多八隻<br><input type="text" name="holdings" required maxlength="80" placeholder="NVDA, TSLA" autocomplete="off"></label>
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+    <button class="btn" type="submit">儲存持倉</button>
+    <p class="note" id="book-mail-msg" hidden></p>
+  </form>
   {{scorecard}}
   <p class="lead">追蹤 {{accounts}} 個帳號。首頁每 8 小時更新今日共識，免費。星期一電郵只多做一件事：上一週新列入的名稱，加上一次同類齊聲之後 10 日相對 QQQ 是贏是輸。</p>
   <p>適合已經持有美股、不想每星期自己對名單的人。電郵不叫人買，也不叫人賣。下一個週一早上開始收到。</p>
@@ -125,6 +136,27 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
 </footer>
 </div>
 <script>
+(function(){
+  var form=document.getElementById("book-mail");
+  if(!form)return;
+  var box=form.querySelector("[name=holdings]");
+  try{
+    var saved=JSON.parse(localStorage.getItem("ct_book"))||[];
+    if(box&&!box.value&&Array.isArray(saved)&&saved.length)box.value=saved.slice(0,8).join(", ");
+  }catch(e){}
+  form.addEventListener("submit",function(ev){
+    ev.preventDefault();
+    var msg=document.getElementById("book-mail-msg");
+    var body={email:form.email.value,holdings:form.holdings.value,website:form.website.value};
+    fetch("https://crowdtape-newsletter.vercel.app/api/holdings",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)})
+      .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j}})})
+      .then(function(x){
+        msg.hidden=false;
+        msg.textContent=x.ok?"已儲存。下一個週一寄出，只寫這八隻。":"未能儲存。請用付款同一個電郵再試一次。";
+      })
+      .catch(function(){msg.hidden=false;msg.textContent="未能儲存。請稍後再試。";});
+  });
+})();
 (function(){
   var ok=false;
   try{ok=new URLSearchParams(location.search).get("checkout")==="success"}catch(e){}

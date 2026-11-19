@@ -198,11 +198,14 @@ def email_html(text, n):
             'font-size:15px;line-height:1.5;color:#1d1d1f;max-width:620px">' + ''.join(body) + '</div>')
 
 
-def resend(method, path, body=None):
+def resend(method, path, body=None, extra_headers=None):
     key = os.environ.get('RESEND_API_KEY', '')
+    headers = {'Authorization': 'Bearer ' + key, 'Content-Type': 'application/json',
+               'User-Agent': 'thecrowdtape-newsletter'}
+    if extra_headers:
+        headers.update(extra_headers)
     req = urllib.request.Request(API + path, method=method, data=json.dumps(body).encode() if body is not None else None,
-                                 headers={'Authorization': 'Bearer ' + key, 'Content-Type': 'application/json',
-                                          'User-Agent': 'thecrowdtape-newsletter'})
+                                 headers=headers)
     with urllib.request.urlopen(req, timeout=60) as r:
         return json.loads(r.read().decode() or '{}')
 
@@ -238,6 +241,85 @@ def subscriber_extra(D, d0, d1):
         parts.append(pay_moments.email_block(rows, ft))
     parts.append(pay_moments.focus_block(rows, mentions, posts_by_day, ft))
     return '\n\n'.join(part for part in parts if part)
+
+
+def property_text(properties, key):
+    if not isinstance(properties, dict):
+        return ''
+    value = properties.get(key)
+    if isinstance(value, dict):
+        value = value.get('value')
+    return '' if value is None else str(value)
+
+
+def list_contacts(segment_id):
+    """Contacts on the same list the Monday broadcast uses. Empty when the list cannot be read."""
+    found = []
+    after = ''
+    for _ in range(10):
+        path = '/contacts?limit=100&segment_id=' + segment_id
+        if after:
+            path += '&after=' + after
+        try:
+            body = resend('GET', path)
+        except urllib.error.HTTPError:
+            path = '/contacts?limit=100&audience_id=' + segment_id
+            if after:
+                path += '&after=' + after
+            body = resend('GET', path)
+        rows = body.get('data') or []
+        found.extend(row for row in rows if isinstance(row, dict))
+        if not body.get('has_more') or not rows:
+            break
+        after = str(rows[-1].get('id') or '')
+        if not after:
+            break
+    return found
+
+
+def contact_holdings(row):
+    text = property_text(row.get('properties'), 'holdings')
+    if text or not row.get('id'):
+        return text
+    try:
+        full = resend('GET', '/contacts/' + row['id'])
+    except urllib.error.HTTPError:
+        return ''
+    return property_text(full.get('properties'), 'holdings')
+
+
+def send_books(n, dates, rows, ft, segment_id):
+    """One extra letter per subscriber who saved holdings. The public archive is unchanged."""
+    if not segment_id or not os.environ.get('RESEND_API_KEY'):
+        return 0
+    try:
+        contacts = list_contacts(segment_id)
+    except Exception as e:
+        detail = e.read().decode()[:300] if isinstance(e, urllib.error.HTTPError) else str(e)
+        notice(f'電子報 #{n} 讀不到訂戶持倉：{detail}')
+        return 0
+    sent_n = 0
+    for row in contacts:
+        email = str(row.get('email') or '').strip().lower()
+        tickers = pay_moments.parse_holdings(contact_holdings(row))
+        if not email or not tickers:
+            continue
+        text = pay_moments.book_block(tickers, rows, ft).strip() + '\n'
+        subject = f'你的八隻 · {dates}'
+        try:
+            resend('POST', '/emails', {
+                'from': FROM,
+                'to': [email],
+                'subject': subject,
+                'text': text,
+                'html': email_html(text, n),
+            }, {'Idempotency-Key': f'ct-book-{n}-{email}'})
+            sent_n += 1
+        except Exception as e:
+            detail = e.read().decode()[:200] if isinstance(e, urllib.error.HTTPError) else str(e)
+            notice(f'電子報 #{n} 寄不到 {email} 的持倉信：{detail}')
+    print(f'newsletter #{n}: book letters {sent_n}')
+    return sent_n
 
 
 def send(n, subject, text, html_body):
@@ -356,8 +438,11 @@ def main():
     extra = subscriber_extra(D, d0, d1)
     mail = text + ('\n' + extra if extra else '')
     bid = send(n, subject, mail, email_html(mail, n))
-    if bid:
-        sent[str(n)] = {'broadcast': bid, 'sent_hkt': now.strftime('%Y-%m-%d %H:%M')}
+    audience = os.environ.get('RESEND_AUDIENCE_ID') or find_audience()
+    week_rows = pay_moments.week_rows(pay_moments.episodes(D.get('cons_hist') or {}), d0, d1)
+    books = send_books(n, row['dates'], week_rows, pay_moments.load_followthrough(), audience)
+    if bid or books:
+        sent[str(n)] = {'broadcast': bid, 'books': books, 'sent_hkt': now.strftime('%Y-%m-%d %H:%M')}
         json.dump(sent, open(SENT, 'w', encoding='utf-8'), indent=1)
 
 

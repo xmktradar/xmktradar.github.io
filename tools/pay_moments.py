@@ -260,6 +260,64 @@ def receipt_block(cons_hist, ft, mail_start):
     return '\n'.join(lines).rstrip()
 
 
+def parse_holdings(text, limit=8):
+    """Up to eight tickers. Order kept, duplicates dropped."""
+    raw = str(text or '').upper()
+    tickers = []
+    seen = set()
+    cur = []
+
+    def flush():
+        ticker = ''.join(cur)
+        cur.clear()
+        if not ticker or ticker in seen or len(tickers) >= limit:
+            return
+        if len(ticker) > 10 or not ticker[0].isalpha():
+            return
+        if any(not (ch.isalnum() or ch == '.') for ch in ticker):
+            return
+        seen.add(ticker)
+        tickers.append(ticker)
+
+    for ch in raw:
+        if ch.isalnum() or ch == '.':
+            cur.append(ch)
+        else:
+            flush()
+    flush()
+    return tickers
+
+
+def book_block(tickers, rows, ft):
+    """First lines of one subscriber's Monday letter. Not written on the site."""
+    chosen = parse_holdings(tickers if isinstance(tickers, str) else ','.join(tickers or []))
+    lines = ['', '你的持倉']
+    if not chosen:
+        lines.append('你未填持倉，今次沒有個人對倉。')
+        return '\n'.join(lines)
+    by = {}
+    for row in rows or []:
+        by.setdefault(row['t'], row)
+    hits = [by[ticker] for ticker in chosen if ticker in by]
+    if not hits:
+        lines.append('你呢八隻今次沒有新列入。')
+        lines.append('不是投資建議。')
+        return '\n'.join(lines)
+    for row in hits:
+        side = '共同看好' if row['side'] == 'bull' else '共同看淡'
+        lines.append(f"${row['t']} 今次新列入{side}。")
+        prev = prior_settled(ft, row['t'], row['side'], row['d'])
+        if prev and isinstance(prev.get('xs'), (int, float)):
+            word = '跑贏' if prev['xs'] > 0 else '跑輸' if prev['xs'] < 0 else '持平'
+            lines.append(f"上次同類：10 日相對 QQQ {signed_pct(prev['xs'])}，{word}。")
+        else:
+            lines.append('上次同類未有已結算紀錄。')
+    if len(hits) < len(chosen):
+        lines.append('其餘沒有新列入。')
+    lines.append('不是投資建議。')
+    return '\n'.join(lines)
+
+
 def episodes(cons_hist):
     """First day a ticker enters bull or bear. A repeat of the same side does not count."""
     active = set()
