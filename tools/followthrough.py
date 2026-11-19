@@ -4,9 +4,10 @@
 One episode per entry. A name that stays on the list does not open another
 episode until it drops off and comes back. Entry is the close of the next US
 session that had not finished when the window ended. Hold for 10 sessions.
-Bull excess is the stock minus QQQ. Bear excess is QQQ minus the stock, the
-result of being short. Writes data/followthrough.json. If prices cannot be
-loaded, keeps the previous file and exits 0.
+Bull excess is the stock minus each index. Bear excess is the index minus
+the stock, the result of being short. The indexes checked are QQQ and SPY.
+Writes data/followthrough.json. If prices cannot be loaded, keeps the
+previous file and exits 0.
 """
 import json
 import time
@@ -94,9 +95,13 @@ def median(xs):
     return (s[n // 2 - 1] + s[n // 2]) / 2
 
 
+def excess(ret, bench, side):
+    return (bench - ret) if side == "bear" else (ret - bench)
+
+
 def main():
     hist = json.loads(HIST.read_text(encoding="utf-8"))["days"]
-    tickers = {"QQQ"}
+    tickers = {"QQQ", "SPY"}
     for v in hist.values():
         tickers.update(v.get("bull") or [])
         tickers.update(v.get("bear") or [])
@@ -106,7 +111,7 @@ def main():
         if b:
             bars[t] = b
         time.sleep(0.15)
-    if "QQQ" not in bars or len(bars) < 40:
+    if "QQQ" not in bars or "SPY" not in bars or len(bars) < 40:
         print("prices short, keep previous follow-through")
         return
     sessions = sorted(bars["QQQ"])
@@ -127,15 +132,25 @@ def main():
                         rec["status"] = "immature"
                     else:
                         ex = sessions[xi]
-                        sp, sq = px_on(bars, sessions, t, ent), px_on(bars, sessions, "QQQ", ent)
-                        ep, eq = px_on(bars, sessions, t, ex), px_on(bars, sessions, "QQQ", ex)
-                        if not all((sp, sq, ep, eq)) or min(sp, sq) <= 0:
+                        sp = px_on(bars, sessions, t, ent)
+                        sq = px_on(bars, sessions, "QQQ", ent)
+                        ss = px_on(bars, sessions, "SPY", ent)
+                        ep = px_on(bars, sessions, t, ex)
+                        eq = px_on(bars, sessions, "QQQ", ex)
+                        es = px_on(bars, sessions, "SPY", ex)
+                        if not all((sp, sq, ss, ep, eq, es)) or min(sp, sq, ss) <= 0:
                             rec["status"] = "no_price"
                         else:
                             ret = ep / sp - 1
                             qr = eq / sq - 1
-                            xs = (qr - ret) if side == "bear" else (ret - qr)
-                            rec.update(exit=ex, ret=round(ret, 6), qqq=round(qr, 6), xs=round(xs, 6), status="settled")
+                            sr = es / ss - 1
+                            rec.update(
+                                exit=ex, ret=round(ret, 6),
+                                qqq=round(qr, 6), spy=round(sr, 6),
+                                xs=round(excess(ret, qr, side), 6),
+                                xs_spy=round(excess(ret, sr, side), 6),
+                                status="settled",
+                            )
                 rows.append(rec)
             prev = cur
 
@@ -167,11 +182,11 @@ def main():
         "as_of": sessions[-1],
         "from": min(hist),
         "horizon": HORIZON,
-        "benchmark": "QQQ",
+        "benchmark": "QQQ,SPY",
         "updated_hkt": now,
         "bull": bull,
         "bear": block("bear"),
-        "rows": [{k: r[k] for k in ("ticker", "side", "signal", "entry", "exit", "ret", "qqq", "xs")} for r in show[:40]],
+        "rows": [{k: r[k] for k in ("ticker", "side", "signal", "entry", "exit", "ret", "qqq", "spy", "xs", "xs_spy") if k in r} for r in show[:40]],
     }
     OUT.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print("follow-through", out["as_of"], "bull", bull["settled"], "bear", out["bear"]["settled"])

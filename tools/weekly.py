@@ -80,6 +80,14 @@ def sample_html(t):
     return ''.join(parts)
 
 
+def vs_html(t, label, value):
+    if not isinstance(value, (int, float)):
+        return f'{label} {t["unchecked"]}'
+    klass = 'wk-up' if value > 0 else 'wk-dn' if value < 0 else ''
+    beat = t['beat'] if value > 0 else t['miss'] if value < 0 else ''
+    return f'<span class="{klass}">{label} {pct(value)} {beat}</span>'
+
+
 def by_move(row):
     """Highest price gain first, biggest drop last. Missing prices go last."""
     ret = row.get('ret')
@@ -110,14 +118,16 @@ def scorecard_html(t):
     if pub_start and pub_rows:
         pub_end = pay_moments.plus_days(pub_start, 6)
         xs = [row['xs'] for row in pub_rows if isinstance(row.get('xs'), (int, float))]
-        directional = [row for row in pub_rows if row.get('side') in ('bull', 'bear') and isinstance(row.get('xs'), (int, float))]
-        hits = [row for row in directional if row['xs'] > 0]
+        spy_xs = [row['xs_spy'] for row in pub_rows if isinstance(row.get('xs_spy'), (int, float))]
+        directional = [row for row in pub_rows if row.get('side') in ('bull', 'bear') and isinstance(row.get('xs'), (int, float)) and isinstance(row.get('xs_spy'), (int, float))]
+        hits = [row for row in directional if row['xs'] > 0 and row['xs_spy'] > 0]
         avg = sum(xs) / len(xs) if xs else None
+        spy_avg = sum(spy_xs) / len(spy_xs) if spy_xs else None
         hit = f'{round(100 * len(hits) / len(directional))}%' if directional else '—'
         span = pay_moments.zh_span(pub_start, pub_end) if t['lang'] == 'zh' else f'{pub_start.month}/{pub_start.day}–{pub_end.month}/{pub_end.day}'
         parts.append(f'<h2>{t["settled_h"]} · {span}</h2>')
         parts.append(
-            f'<p>{t["settled_p"].format(n=len(pub_rows), avg=pct(avg), hit=hit)}</p>'
+            f'<p>{t["settled_p"].format(n=len(pub_rows), avg=pct(avg), spy=pct(spy_avg), hit=hit)}</p>'
         )
         parts.append('<div>')
         ordered = sorted(pub_rows, key=by_move)
@@ -130,12 +140,12 @@ def scorecard_html(t):
             else:
                 side = f'<span class="wk-side">{t["split"]}</span>'
             xs_v = row.get('xs')
-            klass = 'wk-up' if isinstance(xs_v, (int, float)) and xs_v > 0 else 'wk-dn' if isinstance(xs_v, (int, float)) and xs_v < 0 else ''
-            beat = t['beat'] if isinstance(xs_v, (int, float)) and xs_v > 0 else t['miss'] if isinstance(xs_v, (int, float)) and xs_v < 0 else ''
+            spy_v = row.get('xs_spy')
             parts.append(
                 f'<div class="wk-row"><span class="wk-t">{ticker}</span>{side}'
                 f'<span class="wk-meta">{t["price"]} {pct(row.get("ret"))}'
-                f' · <span class="{klass}">{t["vs"]} {pct(xs_v)} {beat}</span></span></div>'
+                f' · {vs_html(t, t["vs_qqq"], xs_v)}'
+                f' · {vs_html(t, t["vs_spy"], spy_v)}</span></div>'
             )
         parts.append('</div>')
     else:
@@ -151,6 +161,7 @@ def scorecard_html(t):
     html = ''.join(parts)
     public = {str(row.get('ticker') or '') for row in pub_rows}
     public.add('QQQ')
+    public.add('SPY')
     leaked = sorted({row['t'] for row in current if row['t'] not in public})
     for ticker in leaked:
         if re.search(r'(?<![A-Z0-9])' + re.escape(ticker) + r'(?![A-Z0-9])', html):
@@ -166,15 +177,15 @@ ZH = {
     'lang': 'zh', 'html_lang': 'zh-Hant', 'canon': SITE + 'zh/weekly/', 'home': '/zh/',
     'zh_current': 'aria-current="page"', 'en_current': '',
     'title': '週報・潛力觀察｜The Crowd Tape',
-    'desc': '星期一電郵是一封週報，加上最多八隻做多為主的名字。上週新列入，上一回同一種看好跑贏了 QQQ。名稱只在電郵。每月 USD 5。不是投資建議。',
+    'desc': '星期一電郵是一封週報，加上最多八隻做多為主的名字。上週新列入，上一回同一種看好同時跑贏了 QQQ 同 SPY。名稱只在電郵。每月 USD 5。不是投資建議。',
     'nav_label': '網站', 'lang_label': '語言', 'nav_tools': '工具', 'nav_support': '支持我們', 'nav_news': '電子報', 'aff_tag': '推廣',
     'h1': '週報・潛力觀察',
     'checkout_ok': '訂閱已完成。下一個週一早上開始收到週報，以及最多八隻潛力觀察。',
-    'lead': '今日名單免費。星期一的信是一封週報，加上最多八隻做多為主、上次跑贏 QQQ 的名字。代號只在電郵。',
+    'lead': '今日名單免費。星期一的信是一封週報，加上最多八隻做多為主、上次同時跑贏 QQQ 同 SPY 的名字。代號只在電郵。',
     'get_h': '訂閱後，每星期一你會收到',
     'get1': '你自己最多八隻持倉，對照這一期群眾怎麼講。未填仍會收到週報，只是沒有個人那一封。',
-    'get2': '最多八隻，以做多為主：上週新列入的共同看好，上一回同一種做多跑贏了 QQQ。用來對照你的倉，不是呼叫買入。',
-    'get3': '一封週報：本週一句話、方向最齊的一隻、意見最分裂的一隻、相對上一期的變化，以及 QQQ、SOX 是否同向。價格未核對就寫「未核」，不報勝率。',
+    'get2': '最多八隻，以做多為主：上週新列入的共同看好，上一回同一種做多同時跑贏了 QQQ 同 SPY。用來對照你的倉，不是呼叫買入。',
+    'get3': '一封週報：本週一句話、方向最齊的一隻、意見最分裂的一隻、相對上一期的變化，以及 QQQ、SPY 是否同向。價格未核對就寫「未核」，不報勝率。',
     'cta': '訂週報・潛力觀察，每月 USD 5（隨時可取消）',
     'form_lead': '用付款同一個電郵，填最多八隻持倉。填了的人，星期一另外收到一封，只寫這八隻。未填的人仍會收到週報。',
     'email_label': '付款電郵', 'hold_label': '持倉，最多八隻', 'save_btn': '儲存持倉',
@@ -183,23 +194,23 @@ ZH = {
     'save_later': '未能儲存。請稍後再試。',
     'includes': '追蹤 {{accounts}} 個帳號。一次訂閱就是星期一的週報・潛力觀察，不是另買一份。電郵不叫人買，也不叫人賣。',
     'inc1': '上期沒有列入的名稱，不寫成上期是零',
-    'inc2': '未核對 QQQ、SOX 收市價，就不報勝率',
+    'inc2': '未核對 QQQ、SPY 收市價，就不報勝率',
     'inc3': '下週要回答的問題，只追本期寫過的名稱',
-    'inc4': '潛力觀察不是保證再升。條件只是上次做多跑贏，而且今次才新列入',
+    'inc4': '潛力觀察不是保證再升。條件只是上次做多同時跑贏 QQQ 同 SPY，而且今次才新列入',
     'fit': '適合已經持有美股、想每星期知道群眾在講什麼、又不想自己對名單的人。下一個週一早上開始收到。',
     'disclaimer': '免責：內容只供參考，不構成投資建議。投資涉及風險，包括可能損失本金。',
     'aff_title': '聯盟推廣連結聲明',
     'aff_body': '本站部分連結屬聯盟推廣連結。你經由連結註冊或購買，我們可能獲得佣金，你無需多付。佣金不會影響好淡統計。本站內容不構成投資建議。',
     'back': '返回首頁',
     'sample_h': '潛力觀察，最多八隻',
-    'sample_p': '這八隻以做多為主。上週才被寫成共同看好；上一回同一種做多，十個交易日跑贏了 QQQ。星期一先用它看升勢還在不在，再對照你自己的倉。名稱只在電郵，不放這一頁。',
+    'sample_p': '這八隻以做多為主。上週才被寫成共同看好；上一回同一種做多，十個交易日同時跑贏了 QQQ 同 SPY。星期一先用它看升勢還在不在，再對照你自己的倉。名稱只在電郵，不放這一頁。',
     'sample_side': '共同看好',
-    'sample_meta': '上次做多跑贏 QQQ。今次新列入。不是投資建議。',
+    'sample_meta': '上次做多同時跑贏 QQQ 同 SPY。今次新列入。不是投資建議。',
     'no_hist': '共識紀錄暫時讀不到。',
     'settled_h': '已結算成績',
-    'settled_p': '這是最近一個已經有 10 個交易日收市價的星期。共 {n} 段，相對 QQQ 平均 {avg}。看好或看淡裡，正數佔 {hit}。下面由股價升幅最高排到跌幅最多。看淡的正數代表當時看淡之後跑贏 QQQ，不是股價上升。不是投資建議。',
+    'settled_p': '這是最近一個已經有 10 個交易日收市價的星期。共 {n} 段，相對 QQQ 平均 {avg}，相對 SPY 平均 {spy}。看好或看淡裡，兩個指數都是正數的佔 {hit}。下面由股價升幅最高排到跌幅最多。看淡的正數代表當時看淡之後跑贏該指數，不是股價上升。指數未核的寫「未核」。不是投資建議。',
     'bull': '共同看好', 'bear': '共同看淡', 'split': '分歧',
-    'price': '股價', 'vs': '相對 QQQ', 'beat': '跑贏', 'miss': '跑輸',
+    'price': '股價', 'vs_qqq': '相對 QQQ', 'vs_spy': '相對 SPY', 'beat': '跑贏', 'miss': '跑輸', 'unchecked': '未核',
     'no_settled': '暫時沒有已結算的星期。',
     'week_h': '今個星期',
     'week_p': '<p>截至 {today}，新列入<span class="wk-up">共同看好</span> {bulls} 次、<span class="wk-dn">共同看淡</span> {bears} 次。其中討論突然集中 {focus} 隻。名稱只在星期一的週報電郵。這不是即將爆發。不是投資建議。</p>',
@@ -211,15 +222,15 @@ EN = {
     'lang': 'en', 'html_lang': 'en', 'canon': SITE + 'en/weekly/', 'home': '/en/',
     'zh_current': '', 'en_current': 'aria-current="page"',
     'title': 'Weekly brief and names to watch | The Crowd Tape',
-    'desc': 'Monday\'s email is a written brief plus at most eight names, mostly long. Newly listed last week, after that kind of bullish call beat QQQ. Names stay in the email. USD 5 a month. Not investment advice.',
+    'desc': 'Monday\'s email is a written brief plus at most eight names, mostly long. Newly listed last week, after that kind of bullish call beat both QQQ and SPY. Names stay in the email. USD 5 a month. Not investment advice.',
     'nav_label': 'Site', 'lang_label': 'Language', 'nav_tools': 'Tools', 'nav_support': 'Support', 'nav_news': 'Newsletter', 'aff_tag': 'Affiliate',
     'h1': 'Weekly brief, and names to watch',
     'checkout_ok': 'You are subscribed. Next Monday you get the brief, plus at most eight names to watch.',
-    'lead': 'Today\'s list is free. Monday\'s letter is a written brief plus at most eight names, mostly long, whose last bullish call beat QQQ. Tickers stay in the email.',
+    'lead': 'Today\'s list is free. Monday\'s letter is a written brief plus at most eight names, mostly long, whose last bullish call beat both QQQ and SPY. Tickers stay in the email.',
     'get_h': 'What you get every Monday',
     'get1': 'Your own holdings, up to eight, set against what the crowd said that week. If you leave them blank, you still get the brief, without the separate note.',
-    'get2': 'Up to eight, mostly long: newly listed as jointly bullish last week, after the previous bullish call beat QQQ. For comparing with what you hold, not a call to buy.',
-    'get3': 'The brief itself: one line on the week, the most agreed name, the most divided name, the change from last issue, and whether QQQ and SOX moved the same way. If a price was not checked, it says so and gives no win rate.',
+    'get2': 'Up to eight, mostly long: newly listed as jointly bullish last week, after the previous bullish call beat both QQQ and SPY. For comparing with what you hold, not a call to buy.',
+    'get3': 'The brief itself: one line on the week, the most agreed name, the most divided name, the change from last issue, and whether QQQ and SPY moved the same way. If a price was not checked, it says so and gives no win rate.',
     'cta': 'Get the Monday brief, USD 5 a month (cancel any time)',
     'form_lead': 'Use the same email you paid with. Save up to eight holdings. If you do, Monday also sends a separate note on just these eight. If you leave this blank, you still get the brief.',
     'email_label': 'Payment email', 'hold_label': 'Holdings, up to eight', 'save_btn': 'Save holdings',
@@ -228,23 +239,23 @@ EN = {
     'save_later': 'Not saved. Try again later.',
     'includes': 'Tracking {{accounts}} accounts. One subscription is the Monday brief and the names to watch. It is not a second purchase. The email does not say buy or sell.',
     'inc1': 'A name that was not on last issue\'s list is not written as zero last issue',
-    'inc2': 'No win rate unless the QQQ and SOX closes were checked',
+    'inc2': 'No win rate unless the QQQ and SPY closes were checked',
     'inc3': 'Next issue\'s questions follow only names already written up',
-    'inc4': 'Names to watch are not a promise they rise again. The rule is only that the last bullish call beat QQQ, and the name is newly listed',
+    'inc4': 'Names to watch are not a promise they rise again. The rule is only that the last bullish call beat both QQQ and SPY, and the name is newly listed',
     'fit': 'For people who already hold US stocks and want to know what the crowd said, without checking the list themselves. The email does not say buy or sell. It starts next Monday morning.',
     'disclaimer': 'Disclaimer: for reference only, not investment advice. Investing involves risk, including loss of principal.',
     'aff_title': 'Affiliate links',
     'aff_body': 'Some links are affiliate links. If you sign up or buy through them, we may earn a commission at no extra cost to you. Commission does not change the bullish or bearish counts. This is not investment advice.',
     'back': 'Back to the homepage',
     'sample_h': 'Names to watch, at most eight',
-    'sample_p': 'These eight are long ideas. They were newly marked jointly bullish last week, and the last time that kind of bullish call beat QQQ over ten sessions. On Monday you see whether that move is still standing, then compare it with what you hold. Tickers stay in the email, not on this page.',
+    'sample_p': 'These eight are long ideas. They were newly marked jointly bullish last week, and the last time that kind of bullish call beat both QQQ and SPY over ten sessions. On Monday you see whether that move is still standing, then compare it with what you hold. Tickers stay in the email, not on this page.',
     'sample_side': 'Jointly bullish',
-    'sample_meta': 'The last bullish call beat QQQ. Newly listed this time. Not investment advice.',
+    'sample_meta': 'The last bullish call beat both QQQ and SPY. Newly listed this time. Not investment advice.',
     'no_hist': 'The consensus record is not available.',
     'settled_h': 'Settled results',
-    'settled_p': 'This is the latest week that already has ten session closes. {n} episodes, average versus QQQ {avg}. Of the bullish or bearish calls, {hit} were positive versus QQQ. Listed from the biggest price gain to the biggest drop. A positive number on a bearish call means the bearish call beat QQQ, not that the stock rose. Not investment advice.',
+    'settled_p': 'This is the latest week that already has ten session closes. {n} episodes, average versus QQQ {avg}, average versus SPY {spy}. Of the bullish or bearish calls, {hit} were ahead of both indexes. Listed from the biggest price gain to the biggest drop. A positive number on a bearish call means the bearish call beat that index, not that the stock rose. An index that was not checked says so. Not investment advice.',
     'bull': 'Jointly bullish', 'bear': 'Jointly bearish', 'split': 'Split',
-    'price': 'Price', 'vs': 'vs QQQ', 'beat': 'ahead', 'miss': 'behind',
+    'price': 'Price', 'vs_qqq': 'vs QQQ', 'vs_spy': 'vs SPY', 'beat': 'ahead', 'miss': 'behind', 'unchecked': 'not checked',
     'no_settled': 'No settled week yet.',
     'week_h': 'This week',
     'week_p': '<p>As of {today}, newly listed <span class="wk-up">jointly bullish</span> {bulls}, <span class="wk-dn">jointly bearish</span> {bears}. Discussion suddenly concentrated: {focus}. Names stay in Monday\'s brief. This is not a list of stocks about to surge. Not investment advice.</p>',
