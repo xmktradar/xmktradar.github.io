@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123152274595713364": {
+      "en_summary": "$ANT ... a long road to the IPO @CNBC",
+      "zh_summary": "$ANT …… IPO 之路漫長 @CNBC",
+      "tickers": ["ANT"],
+      "stance": "中性",
+      "stance_by_ticker": {"ANT": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123152181234991104": {
+      "en_summary": "$FIRY is now up 21% lol. Quoted: FIRY oddly strong this week",
+      "zh_summary": "$FIRY 現在上漲 21% lol。引用：FIRY 本週異常強勢",
+      "tickers": ["FIRY"],
+      "stance": "睇好",
+      "stance_by_ticker": {"FIRY": "睇好"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"FIRY": "上漲21%，本週異常強勢"}
+    },
+    "2123152079833174025": {
+      "en_summary": "$TJX +9%... best day in 6 years @jeffmacke",
+      "zh_summary": "$TJX +9%…… 6 年來最佳單日表現 @jeffmacke",
+      "tickers": ["TJX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TJX": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TJX": "+9%，6年來最佳單日"}
+    },
+    "2123151817198404063": {
+      "en_summary": "Turning more and more bullish on the whole $SPCX saga. Could this be turning into the all-in-one utopic super stock? Can @elonmusk and his team turn this into reality? I'm in for the ride. Going to cover $SPCX and the journey in full depth for the next foreseeable future. Enjoy the ride friends. Quoted discusses what happens when one company brings together intelligence, compute, energy and global connectivity, $SPCX may show us.",
+      "zh_summary": "對整個 $SPCX 傳奇越來越看漲。這會變成一體化烏托邦超級股票嗎？@elonmusk 和他的團隊能將這變成現實嗎？我加入這趟旅程。未來可預見的時間內將全面深入報導 $SPCX 和這段旅程。享受旅程朋友們。引用討論當一家公司整合智能、計算、能源和全球連接時會發生什麼，$SPCX 可能向我們展示。",
+      "tickers": ["SPCX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPCX": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPCX": "越來越看漲，計劃全面深入報導旅程"}
+    },
+    "2123151661409415628": {
+      "en_summary": "Winter is coming... #natgas highest since early February. $3.40MMBtu on Henry Hub $UNG",
+      "zh_summary": "冬天來了…… #natgas 自二月初以來最高。Henry Hub $3.40MMBtu $UNG",
+      "tickers": ["UNG"],
+      "stance": "中性",
+      "stance_by_ticker": {"UNG": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "energy",
+      "macro_impact": "中性",
+      "ticker_notes": {"UNG": "天然氣自二月初以來最高，Henry Hub $3.40"}
+    }
+  }
+}
