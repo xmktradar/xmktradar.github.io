@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123147766088007821": {
+      "en_summary": "So now all eyes on $ANT Tomorrow. $NVDA earnings didn’t help much in this market.",
+      "zh_summary": "所以現在所有目光都集中在明天的 $ANT。$NVDA 財報在這個市場沒有太大幫助。",
+      "tickers": ["ANT", "NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"ANT": "中性", "NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2123146611748450442": {
+      "en_summary": "$AMD is a safe haven stock now. (Quoted: $AMD king liquid)",
+      "zh_summary": "$AMD 現在是避風港股票。（引用：$AMD 流動性之王）",
+      "tickers": ["AMD"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AMD": "睇好"},
+      "horizon": "中線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123146281602187742": {
+      "en_summary": "$NVDA $MU $SNDK $LITE Buybacks are the only opportunity right now for the GAI infrastructure names to drive up share prices. No one trusts the current GAI story and frankly no one really understands what is going on other than those working at the GAI companies themselves. If you listen to any of the research calls, it's simply people throwing shit against the wall to see what sticks. They are totally random and disjointed. We are in a situation where GAI companies must use their FCF to buyback stock. They must put their money where their mouth is. (Quoted SK HYNIX buybacks of 350,000 shares a day.)",
+      "zh_summary": "$NVDA $MU $SNDK $LITE 回購是目前 GAI 基礎設施名稱推動股價上漲的唯一機會。沒有人信任目前的 GAI 故事，坦白說除了在 GAI 公司工作的人之外，沒有人真正理解正在發生的事情。如果你聽任何研究電話，那只是人們把屎扔到牆上看看什麼能粘住。它們完全是隨機和脫節的。我們處於 GAI 公司必須使用其自由現金流回購股票的情況。他們必須把錢放在嘴邊。（引用 SK HYNIX 每天回購 35 萬股。）",
+      "tickers": ["NVDA", "MU", "SNDK", "LITE"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好", "MU": "睇好", "SNDK": "睇好", "LITE": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "Must use FCF for buybacks to drive prices", "MU": "Must use FCF for buybacks to drive prices", "SNDK": "Must use FCF for buybacks to drive prices", "LITE": "Must use FCF for buybacks to drive prices"}
+    },
+    "2123146254003884074": {
+      "en_summary": "$RKLB Archimedes line can already build one engine every 8 days before Neutron has even flown. It’s the same playbook that made Electron the fastest commercial rocket to reach 100 launches.",
+      "zh_summary": "$RKLB Archimedes 線已經可以每 8 天建造一台引擎，而 Neutron 甚至還沒飛行。這是使 Electron 成為最快達到 100 次發射的商業火箭的相同策略。",
+      "tickers": ["RKLB"],
+      "stance": "睇好",
+      "stance_by_ticker": {"RKLB": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123146199322759238": {
+      "en_summary": "We like ai bios for a bounce Got some $WGS 49 today. $PRME and $TWST. For ai stocks $ALAB and $NBIS",
+      "zh_summary": "我們喜歡 AI 生物科技反彈，今天以 49 美元買了一些 $WGS。$PRME 和 $TWST。對於 AI 股票 $ALAB 和 $NBIS",
+      "tickers": ["WGS", "PRME", "TWST", "ALAB", "NBIS"],
+      "stance": "睇好",
+      "stance_by_ticker": {"WGS": "睇好", "PRME": "睇好", "TWST": "睇好", "ALAB": "睇好", "NBIS": "睇好"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"WGS": "Bought some at 49 for bounce"}
+    }
+  }
+}
