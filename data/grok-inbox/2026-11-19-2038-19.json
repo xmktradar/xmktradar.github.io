@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2123171800528142825": {
+      "en_summary": "(Reposted by @TheTranscript_) LFG!! Go $PANW!",
+      "zh_summary": "（由 @TheTranscript_ 轉推）LFG!! 加油 $PANW！",
+      "tickers": ["PANW"],
+      "stance": "睇好",
+      "stance_by_ticker": {"PANW": "睇好"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123171792638394416": {
+      "en_summary": "Almost forgot this. Took me a second. $SNDK stock split tomorrow. Quoted post notes you'll be able to buy $SNDK tomorrow for < $100/share.",
+      "zh_summary": "差點忘了這件事。花了我一秒才想到。$SNDK 明天股票分割。引用貼文指出明天可以以低於 100 美元的價格買入 $SNDK。",
+      "tickers": ["SNDK"],
+      "stance": "中性",
+      "stance_by_ticker": {"SNDK": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SNDK": "明日股票分割，價格可低於100美元"}
+    },
+    "2123171655652647059": {
+      "en_summary": "$QQQ went from the “V” to the “W”. Now it’s hanging into a 2X bottom by a thread. Watch that spot. $647ish. Tomorrow we use the “Art Of The 1st Day” for $ANT IPO.",
+      "zh_summary": "$QQQ 從「V」型走勢轉為「W」型。現在正勉強守住雙底位置。留意該點位，約 647 美元。明天將使用「首日藝術」應對 $ANT IPO。",
+      "tickers": ["QQQ", "ANT"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性", "ANT": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"QQQ": "約647美元位置需留意雙底"}
+    },
+    "2123171309878174068": {
+      "en_summary": "(Reposted by @scottmelker) Really good overview by @YuvalRooz! $CC @CantonNetwork. Quoted discusses DTCC tokenizing top 1000 market cap companies with legal ownership, enabling use as collateral at clearing houses like CME.",
+      "zh_summary": "（由 @scottmelker 轉推）@YuvalRooz 提供了非常好的概述！$CC @CantonNetwork。引用內容討論 DTCC 將市值前 1000 家公司代幣化並具法律所有權，使其可作為 CME 等清算所的抵押品。",
+      "tickers": ["CC"],
+      "stance": "中性",
+      "stance_by_ticker": {"CC": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123171231725699524": {
+      "en_summary": "$ASTS The big picture. Needs to hold the $25 area.",
+      "zh_summary": "$ASTS 大局。需要守住 25 美元區域。",
+      "tickers": ["ASTS"],
+      "stance": "中性",
+      "stance_by_ticker": {"ASTS": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ASTS": "需守住25美元區域"}
+    }
+  }
+}
