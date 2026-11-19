@@ -13,6 +13,8 @@
     '交易員': 'Traders'
   };
   var zh = (document.documentElement.lang || '').toLowerCase().indexOf('zh') === 0;
+  var weeklyHref = zh ? '/zh/weekly/' : '/en/weekly/';
+  var weeklyCta = t('訂週報・潛力觀察（每月 USD 5）', 'Weekly brief and names to watch (USD 5/month)');
 
   function t(zhText, enText) { return zh ? zhText : enText; }
   function read(key, fallback) {
@@ -91,7 +93,7 @@
     var named = mine.filter(function (ticker) { return bucket(map, ticker) !== 'none'; });
     if (named.length) {
       slot.innerHTML += '<p>' + t('上週這些代號有沒有新列入，這頁不寫。', 'Whether these were newly listed last week is not on this page.')
-        + ' <a class="ct-pay-btn" href="/zh/weekly/">' + t('星期一替我對倉，每月 USD 5', 'Monday book check, USD 5 / month') + '</a></p>';
+        + ' <a class="ct-pay-btn" href="' + weeklyHref + '">' + weeklyCta + '</a></p>';
     }
   }
   function css() {
@@ -163,7 +165,7 @@
     var watchChips = mine.map(function (ticker) {
       return '<button type="button" data-drop="' + esc(ticker) + '">' + esc(ticker) + ' ×</button>';
     }).join('');
-    box.innerHTML = '<h2>' + t('對倉，不是跟單', 'Check your book. Not a signal to follow.') + '</h2>'
+    box.innerHTML = '<h2>' + t('週報・潛力觀察', 'Weekly brief, and names to watch') + '</h2>'
       + '<p>' + t('輸入持有的代號。這裡只對照今日免費共識。電郵最多八隻，只挑上週新列入、上次同類又跑輸最多的，星期一才寫名稱。',
         'Enter the tickers you hold. This checks only today’s free consensus. The Monday email names at most eight, the new listings whose last call lagged the most.') + '</p>'
       + '<div class="ct-row"><input id="ct-book-in" inputmode="latin" autocapitalize="characters" maxlength="80" placeholder="' + t('例如 NVDA MU QQQ', 'e.g. NVDA MU QQQ') + '" aria-label="' + t('持有代號', 'Holdings') + '">'
@@ -171,7 +173,7 @@
       + '<div id="ct-book-out"></div>'
       + '<p>' + t('上週有沒有新列入、上次同類齊聲之後 10 日相對 QQQ 是贏是輸，星期一電郵才有。',
         'Whether it was newly added last week, and the last settled 10-session result versus QQQ, is in the Monday email.') + '</p>'
-      + '<p><a class="ct-pay-btn" href="/zh/weekly/">' + t('星期一替我對倉，每月 USD 5', 'Monday book check, USD 5 / month') + '</a></p>'
+      + '<p><a class="ct-pay-btn" href="' + weeklyHref + '">' + weeklyCta + '</a></p>'
       + '<h2>' + t('按類別重算', 'Recalculate by category') + '</h2>'
       + '<p>' + t('六類都計入時，與官方共識相同。關掉一類，只改下面這一欄，官方名單不變。',
         'With every category on, this matches the official consensus. Turning one off changes only the list below.') + '</p>'

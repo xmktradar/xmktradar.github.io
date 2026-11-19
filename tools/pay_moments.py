@@ -90,8 +90,8 @@ def email_block(rows, ft):
     chosen = email_rows(rows, ft)
     lines = [
         '',
-        '對倉，不是跟單',
-        '這一封最多八隻。只寫上週新列入、上次同類已結算又跑輸最多的。同一方向連續留在名單上只計第一次。不是投資建議。',
+        '週報・潛力觀察',
+        '這一封是週報，名單最多八隻。只寫上週新列入、上次同類已結算又跑輸最多的。用來再看，不是買入名單。同一方向連續留在名單上只計第一次。不是投資建議。',
     ]
     if not chosen:
         lines.append('上週新列入裡，沒有上次同類已結算而且跑輸的名稱。今次不列名單。')
@@ -293,7 +293,7 @@ def book_block(tickers, rows, ft):
     chosen = parse_holdings(tickers if isinstance(tickers, str) else ','.join(tickers or []))
     lines = ['', '你的持倉']
     if not chosen:
-        lines.append('你未填持倉，今次沒有個人對倉。')
+        lines.append('你未填持倉，今次沒有個人那一封。週報仍會寄出。')
         return '\n'.join(lines)
     by = {}
     for row in rows or []:

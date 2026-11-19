@@ -54,6 +54,9 @@ h2{font-family:var(--f-display);font-size:20px;line-height:1.35;margin:26px 0 8p
 p,li{overflow-wrap:anywhere}
 .lead{margin:0 0 14px}
 .lead-cta{margin:0 0 18px}
+.wk-get{margin:0 0 16px;padding:14px 16px 8px;border-radius:16px;background:var(--surface)}
+.wk-get h2{margin:0 0 8px;font-size:18px}
+.wk-get ul{margin:0}
 main ul{margin:0 0 14px;padding-left:1.2em}
 main li{margin:4px 0}
 a.btn{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;max-width:100%;margin-top:4px;padding:14px 28px;border-radius:999px;background:var(--accent);color:#fff;font-weight:700;font-size:18px;line-height:1.25;text-align:center;text-decoration:none;overflow-wrap:anywhere}
@@ -116,6 +119,14 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
   <h1>{{h1}}</h1>
   <aside class="note" id="checkout-ok" hidden role="status"><p>{{checkout_ok}}</p></aside>
   <p class="lead">{{lead}}</p>
+  <section class="wk-get">
+    <h2>{{get_h}}</h2>
+    <ul>
+      <li>{{get1}}</li>
+      <li>{{get2}}</li>
+      <li>{{get3}}</li>
+    </ul>
+  </section>
   <p class="lead-cta"><a class="btn" href="https://buy.stripe.com/cNiaEXfyE8961qM83H2cg02">{{cta}}</a></p>
   <form class="book-mail" id="book-mail" data-saved="{{saved}}" data-fail="{{save_fail}}" data-later="{{save_later}}">
     <p>{{form_lead}}</p>
