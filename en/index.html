@@ -910,8 +910,8 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
 <section class="ap-hero" aria-label="About">
   <div class="wrap">
     <p class="ap-eyebrow">500 accounts · 6 categories · every 8 hours</p>
-    <p class="ap-h"><span class="ap-h1">Today's list is free. </span><span class="ap-grad">Monday's letter names eight long ideas whose last bullish call beat QQQ.</span></p>
-    <p class="ap-sub">Mostly long. Newly listed last week, and the previous bullish call beat QQQ over ten sessions. Names stay in the email.</p>
+    <p class="ap-h"><span class="ap-h1">Today's list is free. </span><span class="ap-grad">Monday's letter names eight long ideas whose last bullish call beat both QQQ and SPY.</span></p>
+    <p class="ap-sub">Mostly long. Newly listed last week, and the previous bullish call beat both QQQ and SPY over ten sessions. Names stay in the email.</p>
     <div class="ap-cta"><a class="ap-btn" href="#view">See today's highlights</a><a class="ap-btn" href="/zh/weekly/">Weekly brief and names to watch (USD 5/month)</a></div>
     <div class="meta ap-meta">
       <span>Posts as of <b id="cutoff"></b></span>
@@ -1541,7 +1541,7 @@ function viewWeekly(){
   <h2>This week’s highlights</h2>
   ${daysNote(from,to)}
   <p>${rows.length?`Stocks drawing the most accounts: ${rows.slice(0,3).map(r=>tkBtn(r.t)).join(', ')}. `:'No stocks mentioned this week.'} Strongly aligned: ${aligned.map(r=>tkBtn(r.t)).join(', ')||'none'}; clearly split: ${split.map(r=>tkBtn(r.t)).join(', ')||'none'}. This week’s stance changes: ${chgs.length} times${chgs.length?': '+chgs.slice(0,3).map(y=>`@${esc(y.x.acc)} ${tkBtn(y.x.t)} ${y.ch}`).join('; '):''}. </p>
-  <p class="note">This page only shows counts. Names newly listed last week whose last bullish call beat QQQ are only in the Monday email. <a href="/zh/weekly/">Weekly brief and names to watch (USD 5/month)</a></p></section>
+  <p class="note">This page only shows counts. Names newly listed last week whose last bullish call beat both QQQ and SPY are only in the Monday email. <a href="/zh/weekly/">Weekly brief and names to watch (USD 5/month)</a></p></section>
  ${bpTag(2,consHtml(from,to,'This week',7,'7 d return'))}
  <section class="c4 panel" data-bp="3"><h2>Stance mix <span class="sub">Each account’s latest stance on each stock</span></h2>
   ${distBar({bull:tot.b,neu:tot.m,none:tot.n,bear:tot.r})}

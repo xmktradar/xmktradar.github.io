@@ -66,6 +66,25 @@ def signed_pct(value):
     return f'{"+" if value > 0 else ""}{value * 100:.1f}%'
 
 
+def beat_both(xs, xs_spy):
+    return isinstance(xs, (int, float)) and isinstance(xs_spy, (int, float)) and xs > 0 and xs_spy > 0
+
+
+def index_clause(xs, xs_spy):
+    """Excess versus QQQ and SPY. 跑贏 only when both are ahead. Missing SPY stays 未核."""
+    if isinstance(xs_spy, (int, float)):
+        spy = f'，相對 SPY {signed_pct(xs_spy)}'
+        if beat_both(xs, xs_spy):
+            word = '，跑贏'
+        elif xs < 0 or xs_spy < 0:
+            word = '，跑輸'
+        else:
+            word = '，持平'
+    else:
+        spy, word = '，相對 SPY 未核', ''
+    return f'相對 QQQ {signed_pct(xs)}{spy}{word}'
+
+
 def load_followthrough():
     path = os.path.join(ROOT, 'data', 'followthrough.json')
     if not os.path.isfile(path):
@@ -89,36 +108,38 @@ def lagged_rows(rows, ft, limit=8):
 
 
 def email_rows(rows, ft, limit=8):
-    """At most eight new inclusions. Bullish only, last long call beat QQQ, biggest beat first."""
+    """At most eight new inclusions. Bullish only, and the last long call beat both QQQ and SPY."""
     ranked = []
     for row in rows:
         if row.get('side') != 'bull':
             continue
         prev = prior_settled(ft, row['t'], row['side'], row['d'])
-        if not prev or not isinstance(prev.get('xs'), (int, float)) or prev['xs'] <= 0:
+        spy = None if not prev else prev.get('xs_spy')
+        if not prev or not isinstance(prev.get('xs'), (int, float)) or not isinstance(spy, (int, float)):
             continue
-        ranked.append((-prev['xs'], str(row.get('t') or ''), row))
+        if not beat_both(prev['xs'], spy):
+            continue
+        ranked.append((-min(prev['xs'], spy), str(row.get('t') or ''), row))
     ranked.sort()
     return [row for _, _, row in ranked[:limit]]
 
 
 def email_block(rows, ft):
-    """Subscriber email only. At most eight bullish names whose last long call beat QQQ."""
+    """Subscriber email only. At most eight bullish names that beat both QQQ and SPY."""
     chosen = email_rows(rows, ft)
     lines = [
         '',
         '週報・潛力觀察',
-        '這一封是週報，名單最多八隻，以做多為主。只寫上週新列入共同看好、上次同類已結算又跑贏 QQQ 的。先看升勢還在不在，再對照自己的倉。不是買入名單。同一方向連續留在名單上只計第一次。不是投資建議。',
+        '這一封是週報，名單最多八隻，以做多為主。只寫上週新列入共同看好、上次同類已結算又同時跑贏 QQQ 同 SPY 的。先看升勢還在不在，再對照自己的倉。不是買入名單。同一方向連續留在名單上只計第一次。不是投資建議。',
     ]
     if not chosen:
-        lines.append('上週新列入裡，沒有上次做多已結算而且跑贏 QQQ 的名稱。今次不列名單。')
+        lines.append('上週新列入裡，沒有上次做多已結算而且同時跑贏 QQQ 同 SPY 的名稱。今次不列名單。')
         return '\n'.join(lines)
     for row in chosen:
         side = '共同看好' if row['side'] == 'bull' else '共同看淡'
         lines.append(f"{row['d'][5:]} ${row['t']} {side}")
         prev = prior_settled(ft, row['t'], row['side'], row['d'])
-        xs = prev['xs']
-        lines.append(f'上次同類已結算：10 日相對 QQQ {signed_pct(xs)}，跑贏')
+        lines.append(f"上次同類已結算：10 日{index_clause(prev['xs'], prev.get('xs_spy'))}")
         lines.append('今次是新列入。不是投資建議。')
         lines.append('')
     return '\n'.join(lines).rstrip()
@@ -220,8 +241,7 @@ def focus_block(rows, mentions, posts_by_day, ft, limit=8):
         )
         prev = prior_settled(ft, row['t'], row['side'], row['d'])
         if prev and isinstance(prev.get('xs'), (int, float)):
-            word = '跑贏' if prev['xs'] > 0 else '跑輸' if prev['xs'] < 0 else '持平'
-            lines.append(f"上次同類已結算：10 日相對 QQQ {signed_pct(prev['xs'])}，{word}")
+            lines.append(f"上次同類已結算：10 日{index_clause(prev['xs'], prev.get('xs_spy'))}")
         else:
             lines.append('上次同類未有已結算紀錄。')
         lines.append('不是投資建議。')
@@ -266,13 +286,12 @@ def receipt_block(cons_hist, ft, mail_start):
     wins = 0
     for row, hit in settled:
         side = '共同看好' if row['side'] == 'bull' else '共同看淡'
-        word = '跑贏' if hit['xs'] > 0 else '跑輸' if hit['xs'] < 0 else '持平'
-        if hit['xs'] > 0:
+        if beat_both(hit['xs'], hit.get('xs_spy')):
             wins += 1
         lines.append(f"{row['d'][5:]} ${row['t']} {side}")
-        lines.append(f"10 日股價 {signed_pct(hit['ret'])}，相對 QQQ {signed_pct(hit['xs'])}，{word}")
+        lines.append(f"10 日股價 {signed_pct(hit['ret'])}，{index_clause(hit['xs'], hit.get('xs_spy'))}")
         lines.append('')
-    lines.append(f'已結算 {len(settled)} 隻，其中 {wins} 隻跑贏。')
+    lines.append(f'已結算 {len(settled)} 隻，其中 {wins} 隻同時跑贏 QQQ 同 SPY。')
     if pending:
         lines.append(f'其餘 {pending} 隻未到 10 日，不先報。')
     return '\n'.join(lines).rstrip()
@@ -326,8 +345,7 @@ def book_block(tickers, rows, ft):
         lines.append(f"${row['t']} 今次新列入{side}。")
         prev = prior_settled(ft, row['t'], row['side'], row['d'])
         if prev and isinstance(prev.get('xs'), (int, float)):
-            word = '跑贏' if prev['xs'] > 0 else '跑輸' if prev['xs'] < 0 else '持平'
-            lines.append(f"上次同類：10 日相對 QQQ {signed_pct(prev['xs'])}，{word}。")
+            lines.append(f"上次同類：10 日{index_clause(prev['xs'], prev.get('xs_spy'))}。")
         else:
             lines.append('上次同類未有已結算紀錄。')
     if len(hits) < len(chosen):

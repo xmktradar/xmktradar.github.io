@@ -908,8 +908,8 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
 <section class="ap-hero" aria-label="簡介">
   <div class="wrap">
     <p class="ap-eyebrow">500 帳號｜6 類｜每 8 小時更新</p>
-    <p class="ap-h"><span class="ap-h1">今日名單免費。</span><span class="ap-grad">星期一先寫八隻做多，上次這種看好跑贏了 QQQ。</span></p>
-    <p class="ap-sub">以做多為主。上週新列入，上一回同一種看好，十個交易日跑贏 QQQ。名稱只在電郵。</p>
+    <p class="ap-h"><span class="ap-h1">今日名單免費。</span><span class="ap-grad">星期一先寫八隻做多，上次這種看好同時跑贏了 QQQ 同 SPY。</span></p>
+    <p class="ap-sub">以做多為主。上週新列入，上一回同一種看好，十個交易日同時跑贏 QQQ 同 SPY。名稱只在電郵。</p>
     <div class="ap-cta"><a class="ap-btn" href="#view">看今日重點</a><a class="ap-btn" href="/zh/weekly/">訂週報・潛力觀察（每月 USD 5）</a></div>
     <div class="meta ap-meta">
       <span>帖文資料截至 <b id="cutoff"></b></span>
@@ -1540,7 +1540,7 @@ function viewWeekly(){
   <h2>本週重點</h2>
   ${daysNote(from,to)}
   <p>${rows.length?`獲得最多帳號關注的是 ${rows.slice(0,3).map(r=>tkBtn(r.t)).join('、')}。`:'本週沒有股票被提及。'}高度一致的有 ${aligned.map(r=>tkBtn(r.t)).join('、')||'無'}；明顯分歧的有 ${split.map(r=>tkBtn(r.t)).join('、')||'無'}。本週立場變化 ${chgs.length} 次${chgs.length?'：'+chgs.slice(0,3).map(y=>`@${esc(y.x.acc)} ${tkBtn(y.x.t)} ${y.ch}`).join('；'):''}。</p>
-  <p class="note">這一頁只列人數。上週新列入、上次做多又跑贏的名稱，只寫在星期一電郵。<a href="/zh/weekly/">訂週報・潛力觀察（每月 USD 5）</a></p></section>
+  <p class="note">這一頁只列人數。上週新列入、上次做多又同時跑贏 QQQ 同 SPY 的名稱，只寫在星期一電郵。<a href="/zh/weekly/">訂週報・潛力觀察（每月 USD 5）</a></p></section>
  ${bpTag(2,consHtml(from,to,'本週',7,'7 日回報'))}
  <section class="c4 panel" data-bp="3"><h2>觀點分布 <span class="sub">各帳號對各股票的最新立場</span></h2>
   ${distBar({bull:tot.b,neu:tot.m,none:tot.n,bear:tot.r})}

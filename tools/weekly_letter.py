@@ -120,7 +120,7 @@ def paid_letter(st, prior, d0, d1, n, tracked, theme_line=''):
         '',
         '你好，',
         '',
-        f'本週一句話：整體 {bull_n} 好 / {bear_n} 淡。價格對照本期未核，不寫與 QQQ 或 SOX 同向或背離。',
+        f'本週一句話：整體 {bull_n} 好 / {bear_n} 淡。價格對照本期未核，不寫與 QQQ 或 SPY 同向或背離。',
         '',
     ]
     if aligned and torn and aligned['t'] != torn['t']:
@@ -144,7 +144,7 @@ def paid_letter(st, prior, d0, d1, n, tracked, theme_line=''):
         f'以下只反映已追蹤帳號在 {dates}（美東）的公開討論，並與上一期的點數對照。觀察與對照不是買賣訊號，也不構成投資建議。',
         '',
         '歷史準確度紀錄',
-        '這是以後每期的固定位置。口徑是整體好淡方向，對當週 QQQ 與 SOX（上週五收市對本週五收市）。'
+        '這是以後每期的固定位置。口徑是整體好淡方向，對當週 QQQ 與 SPY（上週五收市對本週五收市）。'
         '本期未核對這兩個收市價，不報勝率，也不倒推未核期數。',
         '',
         '淨情緒方向變化',
