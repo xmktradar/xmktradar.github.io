@@ -7,18 +7,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<title>對倉，不是跟單｜The Crowd Tape 週報</title>
-<meta name="description" content="星期一電郵最多八隻：上週新列入、上次同類又跑輸最多的。名稱只在電郵。已結算成績公開，包括跑輸。每月 USD 5，隨時可取消。不是投資建議。">
+<title>{{title}}</title>
+<meta name="description" content="{{desc}}">
 <link rel="canonical" href="{{canon}}">
 <link rel="alternate" hreflang="zh-Hant" href="https://thecrowdtape.com/zh/weekly/">
+<link rel="alternate" hreflang="en" href="https://thecrowdtape.com/en/weekly/">
+<link rel="alternate" hreflang="x-default" href="https://thecrowdtape.com/zh/weekly/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="對倉，不是跟單｜The Crowd Tape 週報">
-<meta property="og:description" content="星期一電郵最多八隻：上週新列入、上次同類又跑輸最多的。名稱只在電郵。每月 USD 5。不是投資建議。">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{desc}}">
 <meta property="og:url" content="{{canon}}">
 <meta property="og:image" content="https://thecrowdtape.com/og/ig-zh.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="對倉，不是跟單｜The Crowd Tape 週報">
-<meta name="twitter:description" content="星期一電郵最多八隻：上週新列入、上次同類又跑輸最多的。名稱只在電郵。每月 USD 5。不是投資建議。">
+<meta name="twitter:title" content="{{title}}">
+<meta name="twitter:description" content="{{desc}}">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,8 +72,11 @@ a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .wk{margin:18px 0;padding:16px;border-radius:16px;background:var(--surface)}
 .wk h2{margin:0 0 8px;font-size:20px}
 .wk p{margin:0 0 10px}
-.wk-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 12px;padding:8px 0;border-top:1px solid var(--line);font-size:14px}
-.wk-t{font-family:var(--f-data);font-weight:600}
+.wk-row{display:grid;grid-template-columns:minmax(72px,auto) minmax(0,1fr);column-gap:12px;row-gap:2px;align-items:baseline;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+.wk-t{font-family:var(--f-data);font-weight:600;font-size:16px}
+.wk-side{font-weight:700}
+.wk-meta{grid-column:2;color:var(--muted);font-size:13px}
+.wk-row a.btn{grid-column:1 / -1;width:auto;margin-top:6px;padding:8px 14px;font-size:14px}
 .wk-up{color:#127a3a;font-weight:700}.wk-dn{color:#c2410c;font-weight:700}
 @media (prefers-color-scheme: dark){.wk-up{color:#3dd68c}.wk-dn{color:#ff7a59}}
 /* Apple-style look (2026-10-27): same colours, font and cards as the homepage; dark mode follows the device */
@@ -98,47 +103,48 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
 <div class="wrap">
 <header>
   <a class="brand" href="{{home}}">The Crowd Tape</a>
-  <nav class="site-nav" aria-label="網站">
-    <a href="{{home}}tools/">工具</a>
-    <a class="nav-donate" href="{{home}}support/">支持我們</a>
+  <nav class="site-nav" aria-label="{{nav_label}}">
+    <a href="{{home}}tools/">{{nav_tools}}</a>
+    <a class="nav-donate" href="{{home}}support/">{{nav_support}}</a>
   </nav>
-  <nav class="lang" aria-label="語言">
-    <a href="/zh/weekly/" hreflang="zh-Hant" aria-current="page">中</a>
+  <nav class="lang" aria-label="{{lang_label}}">
+    <a href="/zh/weekly/" hreflang="zh-Hant" {{zh_current}}>中</a>
+    <a href="/en/weekly/" hreflang="en" {{en_current}}>EN</a>
   </nav>
 </header>
 <main>
-  <h1>對倉，不是跟單</h1>
-  <aside class="note" id="checkout-ok" hidden role="status"><p>訂閱已完成。下一個週一早上開始收到週報。</p></aside>
-  <p class="lead">今日名單免費。星期一先講上週新列入，上次跟了會否跑輸。電郵最多八隻。</p>
-  <p class="lead-cta"><a class="btn" href="https://buy.stripe.com/cNiaEXfyE8961qM83H2cg02">星期一替我對倉，每月 USD 5（隨時可取消）</a></p>
-  <form class="book-mail" id="book-mail">
-    <p>用付款同一個電郵，填最多八隻持倉。星期一另有一封短信，只寫這八隻有沒有新列入，以及上次同類跑贏還是跑輸。未填的人不會收到這封。</p>
-    <label>付款電郵<br><input type="email" name="email" required autocomplete="email" placeholder="you@example.com"></label>
-    <label>持倉，最多八隻<br><input type="text" name="holdings" required maxlength="80" placeholder="NVDA, TSLA" autocomplete="off"></label>
+  <h1>{{h1}}</h1>
+  <aside class="note" id="checkout-ok" hidden role="status"><p>{{checkout_ok}}</p></aside>
+  <p class="lead">{{lead}}</p>
+  <p class="lead-cta"><a class="btn" href="https://buy.stripe.com/cNiaEXfyE8961qM83H2cg02">{{cta}}</a></p>
+  <form class="book-mail" id="book-mail" data-saved="{{saved}}" data-fail="{{save_fail}}" data-later="{{save_later}}">
+    <p>{{form_lead}}</p>
+    <label>{{email_label}}<br><input type="email" name="email" required autocomplete="email" placeholder="you@example.com"></label>
+    <label>{{hold_label}}<br><input type="text" name="holdings" required maxlength="80" placeholder="NVDA, TSLA" autocomplete="off"></label>
     <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
-    <button class="btn" type="submit">儲存持倉</button>
+    <button class="btn" type="submit">{{save_btn}}</button>
     <p class="note" id="book-mail-msg" hidden></p>
   </form>
   {{scorecard}}
-  <p class="lead">追蹤 {{accounts}} 個帳號。首頁每 8 小時更新今日共識，免費。星期一那封信照固定結構寫，價格未核對的會寫「未核」，不補數字。</p>
+  <p class="lead">{{includes}}</p>
   <ul>
-    <li>本週一句話，以及方向最齊、討論最多但意見最分裂的對照</li>
-    <li>相對上一期的淨值變化；上期未進入前列的，不寫成上期是零</li>
-    <li>歷史準確度留固定位置；未核對 QQQ、SOX 收市價就不報勝率</li>
-    <li>下週要回答的問題，只追本期寫過的名稱</li>
+    <li>{{inc1}}</li>
+    <li>{{inc2}}</li>
+    <li>{{inc3}}</li>
+    <li>{{inc4}}</li>
   </ul>
-  <p>適合已經持有美股、不想每星期自己對名單的人。電郵不叫人買，也不叫人賣。下一個週一早上開始收到。</p>
+  <p>{{fit}}</p>
   <aside class="note">
-    <p>免責：內容只供參考，唔構成投資建議。投資涉及風險，包括可能損失本金。</p>
+    <p>{{disclaimer}}</p>
   </aside>
   <aside class="note">
-    <b>聯盟推廣連結聲明</b>
-    <p>本站部分連結屬聯盟推廣連結，你經由連結註冊或購買，我們可能獲得佣金，你無需多付。佣金不會影響好淡統計。本站內容不構成投資建議。</p>
+    <b>{{aff_title}}</b>
+    <p>{{aff_body}}</p>
   </aside>
-  <p><a class="back" href="{{home}}">返回首頁</a></p>
+  <p><a class="back" href="{{home}}">{{back}}</a></p>
 </main>
 <footer class="site-foot">
-  <p><a href="{{home}}tools/">工具</a> · <a href="{{home}}support/">支持我們</a> · <a href="{{home}}newsletter/">電子報</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">TradingView <span class="aff-tag">推廣</span></a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="aff-tag">推廣</span></a> · <a href="https://optionstrat.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="optionstrat">OptionStrat <span class="aff-tag">推廣</span></a></p>
+  <p><a href="{{home}}tools/">{{nav_tools}}</a> · <a href="{{home}}support/">{{nav_support}}</a> · <a href="{{home}}newsletter/">{{nav_news}}</a> · <a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview">TradingView <span class="aff-tag">{{aff_tag}}</span></a> · <a href="https://www.stockrover.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover">Stock Rover <span class="aff-tag">{{aff_tag}}</span></a> · <a href="https://optionstrat.com/thecrowdtape" rel="sponsored nofollow noopener" target="_blank" data-tool="optionstrat">OptionStrat <span class="aff-tag">{{aff_tag}}</span></a></p>
 </footer>
 </div>
 <script>
@@ -158,9 +164,9 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
       .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j}})})
       .then(function(x){
         msg.hidden=false;
-        msg.textContent=x.ok?"已儲存。下一個週一寄出，只寫這八隻。":"未能儲存。請用付款同一個電郵再試一次。";
+        msg.textContent=x.ok?form.getAttribute("data-saved"):form.getAttribute("data-fail");
       })
-      .catch(function(){msg.hidden=false;msg.textContent="未能儲存。請稍後再試。";});
+      .catch(function(){msg.hidden=false;msg.textContent=form.getAttribute("data-later");});
   });
 })();
 (function(){
