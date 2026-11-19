@@ -1538,10 +1538,11 @@ function viewWeekly(){
  const cards=wkAccs.map(accCard).sort((x,y)=>y.n-x.n||x.a.localeCompare(y.a));
  return `<div class="grid">
  ${moneyBar()}
- <section class="c12 analysis"><div class="range">彙整 ${from} 至 ${to}（7 天）</div>${to<TODAY?'<p class="note wk-roll">每週為滾動 7 天，以最新每週分析的日期為終點；新一份每週分析出爐後會自動滾到截至今日</p>':''}
-  <h2>本週重點 ${sm?'':'<span class="sub">每週分析尚未產生，以下由資料自動整理</span>'}</h2>
+ <section class="c12 analysis"><div class="range">彙整 ${from} 至 ${to}（7 天）</div>
+  <h2>本週重點</h2>
   ${daysNote(from,to)}
-  ${sm?sumBody(sm.s,false):`<p>${rows.length?`獲得最多帳號關注的是 ${rows.slice(0,3).map(r=>tkBtn(r.t)).join('、')}。`:'本週沒有股票被提及。'}高度一致的有 ${aligned.map(r=>tkBtn(r.t)).join('、')||'無'}；明顯分歧的有 ${split.map(r=>tkBtn(r.t)).join('、')||'無'}。本週立場變化 ${chgs.length} 次${chgs.length?'：'+chgs.slice(0,3).map(y=>`@${esc(y.x.acc)} ${tkBtn(y.x.t)} ${y.ch}`).join('；'):''}。</p>`}</section>
+  <p>${rows.length?`獲得最多帳號關注的是 ${rows.slice(0,3).map(r=>tkBtn(r.t)).join('、')}。`:'本週沒有股票被提及。'}高度一致的有 ${aligned.map(r=>tkBtn(r.t)).join('、')||'無'}；明顯分歧的有 ${split.map(r=>tkBtn(r.t)).join('、')||'無'}。本週立場變化 ${chgs.length} 次${chgs.length?'：'+chgs.slice(0,3).map(y=>`@${esc(y.x.acc)} ${tkBtn(y.x.t)} ${y.ch}`).join('；'):''}。</p>
+  <p class="note">這一頁只列人數。上週新列入、而且上次同類跑輸的名稱，只寫在星期一電郵。<a href="/zh/weekly/">星期一替我對倉，每月 USD 5</a></p></section>
  ${bpTag(2,consHtml(from,to,'本週',7,'7 日回報'))}
  <section class="c4 panel" data-bp="3"><h2>觀點分布 <span class="sub">各帳號對各股票的最新立場</span></h2>
   ${distBar({bull:tot.b,neu:tot.m,none:tot.n,bear:tot.r})}
@@ -1571,9 +1572,10 @@ function viewMonthly(){
  const sm=summaryOf('monthly');const srcs=[...new Set(Object.entries(D.prices).filter(([t])=>!UNC(t)).map(([,p])=>p.source))];const asof=Object.entries(D.prices).filter(([t])=>isUS(t)).map(([,p])=>p.as_of).sort().pop();
  return `<div class="grid">
  ${moneyBar()}
- <section class="c12 analysis"><div class="range">彙整 ${from} 至 ${to}（28 天）</div><h2>本月趨勢 ${sm?'':'<span class="sub">每月分析尚未產生，以下由資料自動整理</span>'}</h2>
+ <section class="c12 analysis"><div class="range">彙整 ${from} 至 ${to}（28 天）</div><h2>本月趨勢</h2>
   ${daysNote(from,to)}
-  ${sm?sumBody(sm.s,false):`<p>28 天內共 ${all.length} 則提及，看多觀點 ${B} 則、看空 ${X} 則${B+X?`，看多比例 ${(B/(B+X)*100).toFixed(0)}%`:'，未能計算看多比例（沒有看多或看空觀點）'}。${rows.length?`提及最多的是 ${rows.slice(0,3).map(r=>tkBtn(r.t)).join('、')}。`:''}</p>`}</section>
+  <p>28 天內共 ${all.length} 則提及，看多觀點 ${B} 則、看空 ${X} 則${B+X?`，看多比例 ${(B/(B+X)*100).toFixed(0)}%`:'，未能計算看多比例（沒有看多或看空觀點）'}。${rows.length?`提及最多的是 ${rows.slice(0,3).map(r=>tkBtn(r.t)).join('、')}。`:''}</p>
+  <p class="note">28 日只列提及次數與多空人數。若要對照自己的持倉，請看星期一電郵，名稱不在這一頁。<a href="/zh/weekly/">星期一替我對倉，每月 USD 5</a></p></section>
  ${bpTag(2,consHtml(from,to,'本月',28,'28 日回報'))}
  <section class="c4 panel" data-bp="3"><h2>看多與看空比例 <span class="sub">${B+X?`看多 ${(B/(B+X)*100).toFixed(0)}%（多＋空為分母）`:'資料不足'}</span></h2>${distBar({bull:B,neu:M,none:U,bear:X})}
   <div class="kpis k3" style="margin-top:12px"><div class="kpi"><div class="l">總提及</div><div class="v">${all.length}</div></div><div class="kpi"><div class="l">看多</div><div class="v up">${B}</div></div><div class="kpi"><div class="l">看空</div><div class="v dn">${X}</div></div></div>
