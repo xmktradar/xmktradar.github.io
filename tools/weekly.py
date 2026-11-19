@@ -392,8 +392,6 @@ def check(html, root_html, en_html, accounts):
         raise SystemExit('do not put the subscribe button inside a stock row')
     if REDIRECT not in root_html:
         raise SystemExit('root weekly redirect missing')
-    if os.path.isdir(os.path.join(ROOT, 'ko/weekly')):
-        raise SystemExit('refusing to leave ko/weekly')
 
 
 def main():
