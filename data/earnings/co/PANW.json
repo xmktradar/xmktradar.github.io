@@ -4,18 +4,6 @@
  "cik": 1327567,
  "q": [
   {
-   "end": "2023-10-31",
-   "label": "FY2024 Q1",
-   "rev": 1878100000,
-   "gp": 1405300000,
-   "op": 215200000,
-   "ni": 194200000,
-   "eps": 0.56,
-   "ocf": 1526000000,
-   "capex": 36800000,
-   "fcf": 1489200000
-  },
-  {
    "end": "2024-01-31",
    "label": "FY2024 Q2",
    "rev": 1975100000,
@@ -146,53 +134,70 @@
    "ocf": 1357000000,
    "capex": 103000000,
    "fcf": 1254000000
+  },
+  {
+   "end": "2026-10-31",
+   "label": "FY2027 Q1",
+   "rev": 3445000000,
+   "gp": 2342000000,
+   "op": 96000000,
+   "ni": 482000000,
+   "eps": 0.57,
+   "ocf": 1929000000,
+   "capex": 87000000,
+   "fcf": 1842000000
   }
  ],
  "latest": {
-  "label": "FY2026 Q4",
-  "filed": "2026-09-10",
-  "accn": "0001327567-26-000023",
-  "form": "10-K",
-  "end": "2026-07-31"
+  "label": "FY2027 Q1",
+  "filed": "2026-11-19",
+  "accn": "0001327567-26-000033",
+  "form": "10-Q",
+  "end": "2026-10-31"
  },
  "bal": {
-  "end": "2026-07-31",
-  "cash": 2514000000,
-  "sti": 557000000,
+  "end": "2026-10-31",
+  "cash": 2594000000,
+  "sti": 461000000,
   "debt": null
  },
  "bank": false,
  "seg": {
-  "axis": "srt:ProductOrServiceAxis",
-  "basis": "year",
+  "axis": "us-gaap:StatementBusinessSegmentsAxis",
+  "basis": "quarter",
   "rows": [
    {
-    "name": "Subscription",
-    "val": 6239000000.0,
-    "prev": 4974000000.0
+    "name": "Network & AI Security",
+    "val": 2282000000.0,
+    "prev": 1904000000.0
    },
    {
-    "name": "Support",
-    "val": 2961000000.0,
-    "prev": 2445000000.0
+    "name": "Cortex",
+    "val": 647000000.0,
+    "prev": 422000000.0
    },
    {
-    "name": "Product",
-    "val": 2280000000.0,
-    "prev": 1802000000.0
+    "name": "Idira",
+    "val": 353000000.0,
+    "prev": 0.0
+   },
+   {
+    "name": "Corporate & Other",
+    "val": 163000000.0,
+    "prev": 148000000.0
    }
   ],
-  "accn": "0001327567-26-000023"
+  "accn": "0001327567-26-000033"
  },
  "rules": 4,
  "mcap": 278316875776,
- "next": "2026-11-18",
+ "next": "2027-02-16",
  "last_report": "2026-11-18",
  "est": {
-  "eps_act": 1.02,
-  "eps_est": 0.97745,
-  "rev_est": null,
-  "rev_est_seen": null
+  "eps_act": 1.05,
+  "eps_est": 0.97032,
+  "rev_est": 3307485170,
+  "rev_est_seen": "2026-11-19"
  },
  "pending": null
 }
