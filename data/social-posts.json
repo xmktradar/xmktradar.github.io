@@ -1431,9 +1431,174 @@
       "UNH"
      ]
     }
+   },
+   "intraday_1": {
+    "post_et": "11:00",
+    "post_hkt": "00:00",
+    "generated_at": "2026-11-19T16:16:24-05:00",
+    "date": "2026-11-19",
+    "date_kst": "2026-11-20",
+    "quotes": {
+     "SPY": {
+      "price": 715.87,
+      "prev_close": 730.2,
+      "chg_pct": -1.96,
+      "time": "2026-11-19T16:00:00-05:00"
+     },
+     "QQQ": {
+      "price": 645.04,
+      "prev_close": 659.51,
+      "chg_pct": -2.19,
+      "time": "2026-11-19T16:00:01-05:00"
+     },
+     "DIA": {
+      "price": 490.79,
+      "prev_close": 501.73,
+      "chg_pct": -2.18,
+      "time": "2026-11-19T16:00:00-05:00"
+     },
+     "PANW": {
+      "price": 361.73,
+      "prev_close": 339.92,
+      "chg_pct": 6.42,
+      "time": "2026-11-19T16:00:00-05:00"
+     },
+     "TGT": {
+      "price": 167.53,
+      "prev_close": 165.93,
+      "chg_pct": 0.96,
+      "time": "2026-11-19T15:59:59-05:00"
+     },
+     "LOW": {
+      "price": 219.12,
+      "prev_close": 222.78,
+      "chg_pct": -1.64,
+      "time": "2026-11-19T15:59:59-05:00"
+     },
+     "TTWO": {
+      "price": 208.65,
+      "prev_close": 216.61,
+      "chg_pct": -3.67,
+      "time": "2026-11-19T16:00:00-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-19T16:00:01-05:00",
+     "hkt": "2026-11-20 05:00"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "PANW",
+      "chg_pct": 6.42,
+      "bull": 15,
+      "bear": 0,
+      "accounts": [
+       "MrMikeInvesting",
+       "InvestmentGuru_",
+       "StockMarketNerd",
+       "danielnewmanUV",
+       "Stephanie_Link",
+       "CKCapitalxx",
+       "wolfofharcourt",
+       "kevinxu"
+      ]
+     },
+     {
+      "ticker": "TGT",
+      "chg_pct": 0.96,
+      "bull": 7,
+      "bear": 0,
+      "accounts": [
+       "BarbarianCap",
+       "Mr_Derivatives",
+       "Retail_Guru",
+       "Stephanie_Link",
+       "DeItaone",
+       "wallstengine",
+       "LiveSquawk",
+       "IBDinvestors"
+      ]
+     },
+     {
+      "ticker": "LOW",
+      "chg_pct": -1.64,
+      "bull": 4,
+      "bear": 0,
+      "accounts": [
+       "BarbarianCap",
+       "Retail_Guru",
+       "LiveSquawk",
+       "wallstengine",
+       "InvestmentGuru_",
+       "MarketRebels"
+      ]
+     },
+     {
+      "ticker": "TTWO",
+      "chg_pct": -3.67,
+      "bull": 3,
+      "bear": 0,
+      "accounts": [
+       "TheTranscript_",
+       "PhotonBull",
+       "wallstengine",
+       "CGasparino",
+       "MarketRebels"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Late morning · As of 16:00 ET (05:00 HKT)\n\n$SPY -2.0% · $QQQ -2.2% · $DIA -2.2%\n\n$PANW +6.4%, 15 accounts bullish on site\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #PANW #TGT",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "早盤觀察 · 截至 16:00 ET（05:00 HKT）\n\n$SPY -2.0% · $QQQ -2.2% · $DIA -2.2%\n\n$PANW +6.4%，網站 15 個帳號看好\n$TGT +1.0%，網站 7 個帳號看好\n$LOW -1.6%，網站 4 個帳號看好\n$TTWO -3.7%，網站 3 個帳號看好\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #PANW #TGT",
+      "url": ""
+     },
+     "en": {
+      "text": "Late morning · As of 16:00 ET (05:00 HKT)\n\n$SPY -2.0% · $QQQ -2.2% · $DIA -2.2%\n\n$PANW +6.4%, 15 accounts bullish on site\n$TGT +1.0%, 7 accounts bullish on site\n$LOW -1.6%, 4 accounts bullish on site\n$TTWO -3.7%, 3 accounts bullish on site\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #PANW #TGT",
+      "url": ""
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "PANW",
+      "TGT",
+      "TJX",
+      "LOW",
+      "P",
+      "TTWO",
+      "UBER",
+      "AAPL",
+      "DIS",
+      "DELL",
+      "BE",
+      "CRWD",
+      "XRT"
+     ],
+     "bear": [
+      "GLD",
+      "MSTR",
+      "META",
+      "UNH"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-19T16:16:16-05:00",
+  "generated_at": "2026-11-19T16:16:24-05:00",
   "generated_hkt": "2026-11-20 05:16"
  }
 }
