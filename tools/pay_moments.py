@@ -73,35 +73,52 @@ def load_followthrough():
     return json.load(open(path, encoding='utf-8'))
 
 
-def email_rows(rows, ft, limit=8):
-    """At most eight new inclusions, the ones whose last same-side call lagged QQQ the most."""
+BEAT_FROM = date(2026, 11, 23)  # first Monday letter that names beats, not lags
+
+
+def lagged_rows(rows, ft, limit=8):
+    """Old rule, used only to settle letters sent before BEAT_FROM."""
     lagged = []
     for row in rows:
         prev = prior_settled(ft, row['t'], row['side'], row['d'])
         if not prev or not isinstance(prev.get('xs'), (int, float)) or prev['xs'] >= 0:
             continue
-        lagged.append((prev['xs'], row['t'], row))
+        lagged.append((prev['xs'], str(row.get('t') or ''), row))
     lagged.sort()
     return [row for _, _, row in lagged[:limit]]
 
 
+def email_rows(rows, ft, limit=8):
+    """At most eight new inclusions. Bullish only, last long call beat QQQ, biggest beat first."""
+    ranked = []
+    for row in rows:
+        if row.get('side') != 'bull':
+            continue
+        prev = prior_settled(ft, row['t'], row['side'], row['d'])
+        if not prev or not isinstance(prev.get('xs'), (int, float)) or prev['xs'] <= 0:
+            continue
+        ranked.append((-prev['xs'], str(row.get('t') or ''), row))
+    ranked.sort()
+    return [row for _, _, row in ranked[:limit]]
+
+
 def email_block(rows, ft):
-    """Subscriber email only. At most eight names, each with the previous settled miss."""
+    """Subscriber email only. At most eight bullish names whose last long call beat QQQ."""
     chosen = email_rows(rows, ft)
     lines = [
         '',
         '週報・潛力觀察',
-        '這一封是週報，名單最多八隻。只寫上週新列入、上次同類已結算又跑輸最多的。用來再看，不是買入名單。同一方向連續留在名單上只計第一次。不是投資建議。',
+        '這一封是週報，名單最多八隻，以做多為主。只寫上週新列入共同看好、上次同類已結算又跑贏 QQQ 的。先看升勢還在不在，再對照自己的倉。不是買入名單。同一方向連續留在名單上只計第一次。不是投資建議。',
     ]
     if not chosen:
-        lines.append('上週新列入裡，沒有上次同類已結算而且跑輸的名稱。今次不列名單。')
+        lines.append('上週新列入裡，沒有上次做多已結算而且跑贏 QQQ 的名稱。今次不列名單。')
         return '\n'.join(lines)
     for row in chosen:
         side = '共同看好' if row['side'] == 'bull' else '共同看淡'
         lines.append(f"{row['d'][5:]} ${row['t']} {side}")
         prev = prior_settled(ft, row['t'], row['side'], row['d'])
         xs = prev['xs']
-        lines.append(f'上次同類已結算：10 日相對 QQQ {signed_pct(xs)}，跑輸')
+        lines.append(f'上次同類已結算：10 日相對 QQQ {signed_pct(xs)}，跑贏')
         lines.append('今次是新列入。不是投資建議。')
         lines.append('')
     return '\n'.join(lines).rstrip()
@@ -221,7 +238,8 @@ def receipt_block(cons_hist, ft, mail_start):
     start = mail_start if isinstance(mail_start, date) else date.fromisoformat(str(mail_start)[:10])
     start = plus_days(start, -21)
     end = plus_days(start, 6)
-    chosen = email_rows(week_rows(episodes(cons_hist), start, end), ft)
+    chosen = (email_rows if start >= BEAT_FROM else lagged_rows)(
+        week_rows(episodes(cons_hist), start, end), ft)
     lines = [
         '',
         '三週前回條',
