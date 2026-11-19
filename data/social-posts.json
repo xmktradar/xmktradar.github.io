@@ -2061,9 +2061,173 @@
       "UNH"
      ]
     }
+   },
+   "intraday_close": {
+    "post_et": "15:40",
+    "post_hkt": "04:40",
+    "generated_at": "2026-11-19T16:16:44-05:00",
+    "date": "2026-11-19",
+    "date_kst": "2026-11-20",
+    "quotes": {
+     "SPY": {
+      "price": 715.87,
+      "prev_close": 730.2,
+      "chg_pct": -1.96,
+      "time": "2026-11-19T16:00:00-05:00"
+     },
+     "QQQ": {
+      "price": 645.04,
+      "prev_close": 659.51,
+      "chg_pct": -2.19,
+      "time": "2026-11-19T16:00:01-05:00"
+     },
+     "DIA": {
+      "price": 490.79,
+      "prev_close": 501.73,
+      "chg_pct": -2.18,
+      "time": "2026-11-19T16:00:00-05:00"
+     },
+     "MSFT": {
+      "price": 498.3,
+      "prev_close": 507.31,
+      "chg_pct": -1.78,
+      "time": "2026-11-19T16:00:01-05:00"
+     },
+     "AMZN": {
+      "price": 257.37,
+      "prev_close": 267.74,
+      "chg_pct": -3.87,
+      "time": "2026-11-19T16:00:01-05:00"
+     },
+     "SPCX": {
+      "price": 138.43,
+      "prev_close": 143.5,
+      "chg_pct": -3.53,
+      "time": "2026-11-19T16:00:01-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-19T16:00:01-05:00",
+     "hkt": "2026-11-20 05:00"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "MSFT",
+      "chg_pct": -1.78,
+      "bull": 6,
+      "bear": 1,
+      "accounts": [
+       "InvestmentGuru_",
+       "TheTranscript_",
+       "LiveSquawk",
+       "wallstengine",
+       "PatrickMoorhead",
+       "ripster47",
+       "wliang",
+       "TrendSpider"
+      ]
+     },
+     {
+      "ticker": "SPY",
+      "chg_pct": -1.96,
+      "bull": 5,
+      "bear": 6,
+      "accounts": [
+       "EliteOptions2",
+       "Bluekurtic",
+       "Micro2Macr0",
+       "garyblack00",
+       "KeithMcCullough",
+       "InvestmentGuru_",
+       "carlquintanilla",
+       "CheddarFlow"
+      ]
+     },
+     {
+      "ticker": "AMZN",
+      "chg_pct": -3.87,
+      "bull": 5,
+      "bear": 1,
+      "accounts": [
+       "InvestmentGuru_",
+       "PhotonBull",
+       "OptionsMike",
+       "Couzin_Vinny",
+       "JonkooTrades",
+       "KevInvestingYT",
+       "hhhypergrowth",
+       "MikeZaccardi"
+      ]
+     },
+     {
+      "ticker": "SPCX",
+      "chg_pct": -3.53,
+      "bull": 3,
+      "bear": 1,
+      "accounts": [
+       "SpaceInvestor_D",
+       "StockSavvyShay",
+       "JonkooTrades",
+       "Biotech2k1",
+       "rubicon59",
+       "TheTranscript_",
+       "firesidealpha",
+       "MikeZaccardi"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Into the close · As of 16:00 ET (05:00 HKT)\n\n$SPY -2.0% · $QQQ -2.2% · $DIA -2.2%\n\n$MSFT -1.8%, 6 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #MSFT #SPY",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "收市前回顧 · 截至 16:00 ET（05:00 HKT）\n\n$SPY -2.0% · $QQQ -2.2% · $DIA -2.2%\n\n$MSFT -1.8%，網站 6 個帳號看好\n$SPY -2.0%，網站 6 個帳號看空\n$AMZN -3.9%，網站 5 個帳號看好\n$SPCX -3.5%，網站 3 個帳號看好\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #MSFT #SPY",
+      "url": ""
+     },
+     "en": {
+      "text": "Into the close · As of 16:00 ET (05:00 HKT)\n\n$SPY -2.0% · $QQQ -2.2% · $DIA -2.2%\n\n$MSFT -1.8%, 6 accounts bullish on site\n$SPY -2.0%, 6 accounts bearish on site\n$AMZN -3.9%, 5 accounts bullish on site\n$SPCX -3.5%, 3 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #MSFT #SPY",
+      "url": ""
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "PANW",
+      "TGT",
+      "TJX",
+      "LOW",
+      "P",
+      "TTWO",
+      "UBER",
+      "AAPL",
+      "DIS",
+      "DELL",
+      "BE",
+      "CRWD",
+      "XRT"
+     ],
+     "bear": [
+      "GLD",
+      "MSTR",
+      "META",
+      "UNH"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-19T16:16:39-05:00",
+  "generated_at": "2026-11-19T16:16:44-05:00",
   "generated_hkt": "2026-11-20 05:16"
  }
 }
