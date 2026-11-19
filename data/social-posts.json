@@ -1595,9 +1595,170 @@
       "MSTR"
      ]
     }
+   },
+   "intraday_3": {
+    "post_et": "13:30",
+    "post_hkt": "02:30",
+    "generated_at": "2026-11-18T21:38:52-05:00",
+    "date": "2026-11-18",
+    "date_kst": "2026-11-19",
+    "quotes": {
+     "SPY": {
+      "price": 730.2,
+      "prev_close": 732.44,
+      "chg_pct": -0.31,
+      "time": "2026-11-18T16:00:00-05:00"
+     },
+     "QQQ": {
+      "price": 659.51,
+      "prev_close": 656.95,
+      "chg_pct": 0.39,
+      "time": "2026-11-18T16:00:01-05:00"
+     },
+     "DIA": {
+      "price": 501.73,
+      "prev_close": 507.31,
+      "chg_pct": -1.1,
+      "time": "2026-11-18T16:00:00-05:00"
+     },
+     "MSFT": {
+      "price": 508.29,
+      "prev_close": 506.24,
+      "chg_pct": 0.4,
+      "time": "2026-11-18T16:00:01-05:00"
+     },
+     "MU": {
+      "price": 705.27,
+      "prev_close": 712.42,
+      "chg_pct": -1.0,
+      "time": "2026-11-18T16:00:01-05:00"
+     },
+     "AMD": {
+      "price": 530.14,
+      "prev_close": 503.41,
+      "chg_pct": 5.31,
+      "time": "2026-11-18T16:00:01-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-18T16:00:01-05:00",
+     "hkt": "2026-11-19 05:00"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "SPY",
+      "chg_pct": -0.31,
+      "bull": 5,
+      "bear": 1,
+      "accounts": [
+       "ripster47",
+       "Micro2Macr0",
+       "garyblack00",
+       "MikeZaccardi",
+       "KeithMcCullough",
+       "MrZackMorris",
+       "Couzin_Vinny",
+       "DataTrekMB"
+      ]
+     },
+     {
+      "ticker": "MSFT",
+      "chg_pct": 0.4,
+      "bull": 5,
+      "bear": 1,
+      "accounts": [
+       "tenet_research",
+       "wallstengine",
+       "LiveSquawk",
+       "PatrickMoorhead",
+       "ripster47",
+       "wliang",
+       "StockSavvyShay",
+       "philrosenn"
+      ]
+     },
+     {
+      "ticker": "MU",
+      "chg_pct": -1.0,
+      "bull": 4,
+      "bear": 1,
+      "accounts": [
+       "garyblack00",
+       "The_AI_Investor",
+       "aleabitoreddit",
+       "tenet_research",
+       "wliang",
+       "TradexWhisperer",
+       "RedDogT3",
+       "TheValueist"
+      ]
+     },
+     {
+      "ticker": "AMD",
+      "chg_pct": 5.31,
+      "bull": 3,
+      "bear": 5,
+      "accounts": [
+       "wallstengine",
+       "JonkooTrades",
+       "garyblack00",
+       "SamanthaLaDuc",
+       "KevInvestingYT",
+       "RagingVentures",
+       "vstocks7",
+       "paola_rojas"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Early afternoon · As of 16:00 ET (05:00 HKT)\n\n$SPY -0.3% · $QQQ +0.4% · $DIA -1.1%\n\n$SPY -0.3%, 5 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #SPY #MSFT",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午后觀察 · 截至 16:00 ET（05:00 HKT）\n\n$SPY -0.3% · $QQQ +0.4% · $DIA -1.1%\n\n$SPY -0.3%，網站 5 個帳號看好\n$MSFT +0.4%，網站 5 個帳號看好\n$MU -1.0%，網站 4 個帳號看好\n$AMD +5.3%，網站 5 個帳號看空\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SPY #MSFT",
+      "url": null
+     },
+     "en": {
+      "text": "Early afternoon · As of 16:00 ET (05:00 HKT)\n\n$SPY -0.3% · $QQQ +0.4% · $DIA -1.1%\n\n$SPY -0.3%, 5 accounts bullish on site\n$MSFT +0.4%, 5 accounts bullish on site\n$MU -1.0%, 4 accounts bullish on site\n$AMD +5.3%, 5 accounts bearish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #SPY #MSFT",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "TGT",
+      "INTC",
+      "NBIS",
+      "SPCX",
+      "CRWV",
+      "LOW",
+      "AMZN",
+      "DELL",
+      "IREN",
+      "TTWO",
+      "UBER",
+      "XRT"
+     ],
+     "bear": [
+      "GLD",
+      "MSTR"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-18T21:38:48-05:00",
+  "generated_at": "2026-11-18T21:38:52-05:00",
   "generated_hkt": "2026-11-19 10:38"
  }
 }
