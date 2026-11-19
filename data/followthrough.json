@@ -3,26 +3,26 @@
  "from": "2026-10-06",
  "horizon": 10,
  "benchmark": "QQQ",
- "updated_hkt": "2026-11-19 10:31",
+ "updated_hkt": "2026-11-19 11:17",
  "bull": {
   "opened": 273,
-  "settled": 204,
+  "settled": 203,
   "immature": 69,
-  "no_price": 0,
-  "avg_xs": -0.054915,
-  "median_xs": -0.041892,
-  "hit": 0.348039,
-  "avg_ret": -0.098665
+  "no_price": 1,
+  "avg_xs": -0.054582,
+  "median_xs": -0.041797,
+  "hit": 0.349754,
+  "avg_ret": -0.098276
  },
  "bear": {
   "opened": 79,
-  "settled": 52,
+  "settled": 51,
   "immature": 27,
-  "no_price": 0,
-  "avg_xs": -0.005637,
-  "median_xs": 0.002142,
-  "hit": 0.5,
-  "avg_ret": -0.028637
+  "no_price": 1,
+  "avg_xs": -0.010785,
+  "median_xs": 0.0,
+  "hit": 0.490196,
+  "avg_ret": -0.022816
  },
  "rows": [
   {
