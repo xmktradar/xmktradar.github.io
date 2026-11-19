@@ -26,6 +26,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from sitedata import HK, load, read_json, work  # noqa: E402
 import macro_week  # noqa: E402
 import pay_moments  # noqa: E402
+import weekly_letter  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = 'https://thecrowdtape.com/'
@@ -190,7 +191,7 @@ def email_html(text, n):
     for line in text.rstrip('\n').split('\n'):
         if not line:
             continue
-        if line.isupper() or line == '中文摘要' or line.startswith('THE CROWD TAPE'):
+        if line.isupper() or line in weekly_letter.HEADS or line.startswith('Crowd Tape 週報') or line == '中文摘要' or line.startswith('THE CROWD TAPE'):
             body.append(f'<h3 style="margin:18px 0 6px;font-size:15px">{one(line)}</h3>')
         else:
             body.append(f'<p style="margin:0 0 8px">{one(line)}</p>')
@@ -434,9 +435,21 @@ def main():
         print(f'newsletter #{n}: written ({row["dates"]})')
     if a.no_send:
         return
-    subject = f'The Crowd Tape weekly #{n} · {row["dates"]} · 一週大神好淡'
+    subject = f'Crowd Tape 週報｜第 {n} 期｜{zh_dates(d0, d1)}'
     extra = subscriber_extra(D, d0, d1)
-    mail = text + ('\n' + extra if extra else '')
+    st_mail = st if 'st' in dir() else run_stats(d0, d1)
+    prior_end = d0 - timedelta(days=1)
+    prior = run_stats(prior_end - timedelta(days=6), prior_end)
+    macro = macro_week.week(D, d1)
+    top = sorted((r for r in macro['themes'] if r['theme'] != 'other' and r['n'] >= macro_week.MIN_STANCED),
+                 key=lambda r: (-r['n'], -r['accounts']))
+    theme_line = ''
+    if top:
+        r = top[0]
+        theme_line = f"{macro_week.NAMES['zh'][r['theme']]}：{r['accounts']} 個帳號，利淡 {r['bear']} 對利好 {r['bull']}。"
+    tracked = len((D.get('meta') or {}).get('handles') or []) or st_mail.get('accounts') or 0
+    letter = weekly_letter.paid_letter(st_mail, prior, d0, d1, n, tracked, theme_line)
+    mail = letter + ('\n' + extra if extra else '')
     bid = send(n, subject, mail, email_html(mail, n))
     audience = os.environ.get('RESEND_AUDIENCE_ID') or find_audience()
     week_rows = pay_moments.week_rows(pay_moments.episodes(D.get('cons_hist') or {}), d0, d1)
