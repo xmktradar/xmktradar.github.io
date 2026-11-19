@@ -230,9 +230,13 @@ def find_audience():
 def subscriber_extra(D, d0, d1):
     """New inclusions for the mailed week. Appended at send time, not written to the public archive."""
     rows = pay_moments.week_rows(pay_moments.episodes(D.get('cons_hist') or {}), d0, d1)
-    if not rows:
-        return ''
-    return pay_moments.email_block(rows, pay_moments.load_followthrough())
+    ft = pay_moments.load_followthrough()
+    mentions, posts_by_day = pay_moments.load_mentions()
+    parts = []
+    if rows:
+        parts.append(pay_moments.email_block(rows, ft))
+    parts.append(pay_moments.focus_block(rows, mentions, posts_by_day, ft))
+    return '\n\n'.join(part for part in parts if part)
 
 
 def send(n, subject, text, html_body):

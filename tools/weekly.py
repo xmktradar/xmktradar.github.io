@@ -149,10 +149,15 @@ def scorecard_html():
     parts.append('</section>')
     parts.append('<section class="wk" id="this-week">')
     parts.append(f'<h2>今個星期 · {pay_moments.zh_span(start, end)}</h2>')
+    mentions, posts_by_day = pay_moments.load_mentions()
+    focus = pay_moments.focus_rows(current, mentions, posts_by_day)
     parts.append(
         f'<p>截至 {today}，新列入<span class="wk-up">共同看好</span> {bulls} 次、<span class="wk-dn">共同看淡</span> {bears} 次。'
-        '名稱不寫在這個頁面。電郵最多八隻，只挑上次同類跑輸最多的。'
-        '分歧只在首頁免費顯示。同一方向連續留在名單上只計第一次。</p>'
+        f'其中討論突然集中 {len(focus)} 隻。'
+        '條件是今次新列入，這 7 日提及佔全站比例至少是之前 7 日的兩倍，而且這 7 日至少 8 則、佔全站至少 2%。'
+        '名稱只在星期一電郵。這不是即將爆發。'
+        '電郵另外最多八隻，只挑上次同類跑輸最多的。'
+        '分歧只在首頁免費顯示。同一方向連續留在名單上只計第一次。不是投資建議。</p>'
     )
     parts.append('</section>')
     html = ''.join(parts)
