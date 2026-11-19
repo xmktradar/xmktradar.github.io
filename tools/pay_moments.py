@@ -212,6 +212,54 @@ def focus_block(rows, mentions, posts_by_day, ft, limit=8):
     return '\n'.join(lines).rstrip()
 
 
+def receipt_block(cons_hist, ft, mail_start):
+    """Email only. Settles the names the letter three weeks earlier would have named.
+
+    Uses the same eight-name rule as that letter. A name is listed only after its
+    own 10-session result is in the settled file. Nothing here is written to the site.
+    """
+    start = mail_start if isinstance(mail_start, date) else date.fromisoformat(str(mail_start)[:10])
+    start = plus_days(start, -21)
+    end = plus_days(start, 6)
+    chosen = email_rows(week_rows(episodes(cons_hist), start, end), ft)
+    lines = [
+        '',
+        '三週前回條',
+        f'{zh_span(start, end)} 那封點過名的，有 10 日結果才在這裡結算。名稱不在網站。不是投資建議。',
+    ]
+    if not chosen:
+        lines.append('那一週沒有符合點名規則的名稱。今次沒有回條。')
+        return '\n'.join(lines)
+    index = {}
+    for row in (ft or {}).get('rows') or []:
+        signal = str(row.get('signal') or '')[:10]
+        index[(row.get('ticker'), row.get('side'), signal)] = row
+    settled = []
+    pending = 0
+    for row in chosen:
+        hit = index.get((row['t'], row['side'], row['d']))
+        if not hit or not isinstance(hit.get('xs'), (int, float)) or not isinstance(hit.get('ret'), (int, float)):
+            pending += 1
+            continue
+        settled.append((row, hit))
+    if not settled:
+        lines.append(f'那封點名 {len(chosen)} 隻，尚未有 10 日結算。今次不列結果。')
+        return '\n'.join(lines)
+    wins = 0
+    for row, hit in settled:
+        side = '共同看好' if row['side'] == 'bull' else '共同看淡'
+        word = '跑贏' if hit['xs'] > 0 else '跑輸' if hit['xs'] < 0 else '持平'
+        if hit['xs'] > 0:
+            wins += 1
+        lines.append(f"{row['d'][5:]} ${row['t']} {side}")
+        lines.append(f"10 日股價 {signed_pct(hit['ret'])}，相對 QQQ {signed_pct(hit['xs'])}，{word}")
+        lines.append('')
+    lines.append(f'已結算 {len(settled)} 隻，其中 {wins} 隻跑贏。')
+    if pending:
+        lines.append(f'其餘 {pending} 隻未到 10 日，不先報。')
+    return '\n'.join(lines).rstrip()
+
+
 def episodes(cons_hist):
     """First day a ticker enters bull or bear. A repeat of the same side does not count."""
     active = set()
