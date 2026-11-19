@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123153520635297814": {
+      "en_summary": "Nvidia $NVDA is moving up pay raises and stock grants to hold on to employees after Jensen Huang’s exit, per WIRED. At her first all-hands meeting as interim CEO, Colette Kress told staff they’ll get raises and additional equity in December, months earlier than planned. Pay was the top issue among about 700 questions; board transparency next but unaddressed. Thousands lobbied for Huang’s return, but board chair Harvey Jones said Huang won’t be invited back.",
+      "zh_summary": "Nvidia $NVDA 正在提前加薪和股票授予，以在 Jensen Huang 離任後留住員工，據 WIRED。臨時執行長 Colette Kress 在首次全體會議上告訴員工，他們將在十二月獲得加薪和額外股權，比計劃提前數月。薪酬是約 700 個問題中的首要問題；董事會透明度其次但未解決。數千名員工遊說 Huang 回歸，但董事會主席 Harvey Jones 表示不會邀請 Huang 回來。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123153290787484130": {
+      "en_summary": "The rest of $SCPX SpaceX lockup expiration schedule. The next big one is Dec 8th, when the remaining 17% of the 180-day pool expires and is unlocked.",
+      "zh_summary": "$SCPX SpaceX 鎖定期到期時間表的其餘部分。下一個大的是 12 月 8 日，屆時 180 天池中剩餘的 17% 將到期並解鎖。",
+      "tickers": ["SPCX"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPCX": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPCX": "下一個大鎖定期到期為12月8日，剩餘17%解鎖"}
+    },
+    "2123153145211801808": {
+      "en_summary": "I called the $NVDA post-earnings crash. Here's my $PANW earnings prediction:",
+      "zh_summary": "我預測了 $NVDA 財報後的崩盤。這裡是我的 $PANW 財報預測：",
+      "tickers": ["NVDA", "PANW"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "PANW": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123152505039114426": {
+      "en_summary": "I've been seeing a lot of doomsday-level short positions on AI infra. Thesis: if Jensen has been propping up chip prices through circular financing and that unravels, neoclouds' rented chips could be worth half what paid, devouring them by debt. $NBIS has $14B debt on ~$35B company. Would reset prices for Google TPUs, GPU rentals, data centers, power deals, memory and networking suppliers. Very bad short-term news for debt-laden tech like $AMZN, $META, $GOOGL. Not financial advice. Quoted: It’s so over… $NBIS",
+      "zh_summary": "我一直看到許多對 AI 基礎設施的末日級空頭部位。論點：如果 Jensen 一直透過循環融資支撐晶片價格而這點瓦解，新雲端租用的晶片可能只值支付價格的一半，被債務吞噬。$NBIS 作為約 350 億美元公司有 140 億美元債務。將重設 Google TPU、GPU 租賃、數據中心、電力交易、記憶體和網路供應商的價格。對背負債務的科技公司如 $AMZN、$META、$GOOGL 短期非常壞消息。非投資建議。引用：結束了… $NBIS",
+      "tickers": ["NBIS", "AMZN", "META", "GOOGL"],
+      "stance": "中性",
+      "stance_by_ticker": {"NBIS": "中性", "AMZN": "中性", "META": "中性", "GOOGL": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NBIS": "約350億美元公司有140億美元債務，若晶片價值減半可能被債務吞噬"}
+    },
+    "2123152437578002839": {
+      "en_summary": "$DXY big, beautiful dollar.. +5.6% YTD",
+      "zh_summary": "$DXY 大而美的美元…… 年初至今 +5.6%",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "fx",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    }
+  }
+}
