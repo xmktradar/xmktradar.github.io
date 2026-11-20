@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123220745752895627": {
+      "en_summary": "market_sleuth replies to @MikeQuinones_ thanks, if we follow the SPCX script it’s a technical bounce only. There’s so much technical damage that this will take a bit to undo.",
+      "zh_summary": "market_sleuth 回覆 @MikeQuinones_ 謝謝，如果我們遵循 SPCX 劇本，這只是技術性反彈。技術損害太大，需要一段時間才能修復。",
+      "tickers": ["SPCX"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPCX": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123219623760068934": {
+      "en_summary": "Traderstewie recommends adding snap peas into stir-frys, once you do you don't go back.",
+      "zh_summary": "Traderstewie 推薦在炒菜中加入甜豆，一旦嘗試就不會回頭。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123219409275891857": {
+      "en_summary": "Wall St Engine reports Trump spoke to Xi about chips, AI last night. Might have referred to NVIDIA situation just briefly. Could sell Blackwells in 2, 3 years. Haven't heard Huang affair was national security issue.",
+      "zh_summary": "Wall St Engine 報導特朗普昨晚與習近平談論芯片、人工智能。可能只是簡要提到 NVIDIA 情況。可能在 2、3 年後出售 Blackwell。沒有聽說黃仁勳事件是國家安全問題。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2123218198791159969": {
+      "en_summary": "Brent Donnelly notes NVDA has repriced and the shock has worn off, ANT funders are done selling, Fed is max hawkish as commodities crumble and NOV CPI turns negative, Thanksgiving week has a 77% win rate and 1.01% median return vs base rate of 55% and 0.25% for all other weeks. Likes DRAM, SPCX, SKHY and similar blown out AI stuff for next 10 trading days or so. Not investment advice.",
+      "zh_summary": "Brent Donnelly 指出 NVDA 已經重新定價，衝擊已經消退，ANT 出資者已經賣完，聯儲局極度鷹派，因為商品崩潰，11 月 CPI 轉負，感恩節週有 77% 勝率和 1.01% 中位數回報，相比其他週的 55% 和 0.25% 基準。喜歡 DRAM、SPCX、SKHY 和類似超賣的人工智能東西，大約未來 10 個交易日。非投資建議。",
+      "tickers": ["NVDA", "ANT", "SPCX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "中性", "ANT": "中性", "SPCX": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "inflation",
+      "macro_impact": "利好",
+      "ticker_notes": {"SPCX": "likes for next 10 trading days with similar AI stuff"}
+    },
+    "2123217976778170850": {
+      "en_summary": "Barbarian Capital notes JPMorgan seeks to revive stalled software debt sale with steep price cuts.",
+      "zh_summary": "Barbarian Capital 指出摩根大通尋求以大幅降價重啟停滯的軟件債務銷售。",
+      "tickers": ["JPM"],
+      "stance": "中性",
+      "stance_by_ticker": {"JPM": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
