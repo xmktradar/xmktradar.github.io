@@ -4,18 +4,6 @@
  "cik": 896878,
  "q": [
   {
-   "end": "2023-10-31",
-   "label": "FY2024 Q1",
-   "rev": 2978000000,
-   "gp": null,
-   "op": 307000000,
-   "ni": 241000000,
-   "eps": 0.85,
-   "ocf": -97000000,
-   "capex": 84000000,
-   "fcf": -181000000
-  },
-  {
    "end": "2024-01-31",
    "label": "FY2024 Q2",
    "rev": 3386000000,
@@ -146,48 +134,65 @@
    "ocf": 1331000000,
    "capex": 27000000,
    "fcf": 1304000000
+  },
+  {
+   "end": "2026-10-31",
+   "label": "FY2027 Q1",
+   "rev": 4354000000,
+   "gp": null,
+   "op": 868000000,
+   "ni": 695000000,
+   "eps": 2.59,
+   "ocf": 1062000000,
+   "capex": 75000000,
+   "fcf": 987000000
   }
  ],
  "latest": {
-  "label": "FY2026 Q4",
-  "filed": "2026-09-09",
-  "accn": "0000896878-26-000037",
-  "form": "10-K",
-  "end": "2026-07-31"
+  "label": "FY2027 Q1",
+  "filed": "2026-11-19",
+  "accn": "0000896878-26-000045",
+  "form": "10-Q",
+  "end": "2026-10-31"
  },
  "bal": {
-  "end": "2026-07-31",
-  "cash": 4705000000,
+  "end": "2026-10-31",
+  "cash": 4042000000,
   "sti": null,
-  "debt": 7669000000
+  "debt": 6922000000
  },
  "bank": false,
  "seg": {
-  "axis": "srt:ProductOrServiceAxis",
-  "basis": "year",
+  "axis": "us-gaap:StatementBusinessSegmentsAxis",
+  "basis": "quarter",
   "rows": [
    {
-    "name": "Service",
-    "val": 18911000000.0,
-    "prev": 16400000000.0
+    "name": "Global Business Solutions",
+    "val": 3083000000.0,
+    "prev": 2674000000.0
    },
    {
-    "name": "Product and other",
-    "val": 2537000000.0,
-    "prev": 2431000000.0
+    "name": "Consumer",
+    "val": 958000000.0,
+    "prev": 894000000.0
+   },
+   {
+    "name": "Mailchimp",
+    "val": 313000000.0,
+    "prev": 317000000.0
    }
   ],
-  "accn": "0000896878-26-000037"
+  "accn": "0000896878-26-000045"
  },
  "rules": 4,
- "mcap": 83709001728,
+ "mcap": 82848505856,
  "next": "2026-11-19",
  "last_report": "2026-11-19",
  "est": {
-  "eps_act": 4.03,
-  "eps_est": 3.58739,
-  "rev_est": null,
-  "rev_est_seen": null
+  "eps_act": 2.91,
+  "eps_est": 2.6409,
+  "rev_est": 4305825900,
+  "rev_est_seen": "2026-11-19"
  },
  "pending": null
 }

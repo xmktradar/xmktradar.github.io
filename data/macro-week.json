@@ -2,201 +2,214 @@
  "date": "2026-11-21",
  "date_kst": "2026-11-21",
  "frozen": false,
- "made_hkt": "2026-11-19 01:04",
- "from": "2026-11-13",
- "to": "2026-11-19",
+ "made_hkt": "2026-11-20 15:08",
+ "from": "2026-11-14",
+ "to": "2026-11-20",
  "themes": [
   {
    "theme": "rates",
-   "accounts": 15,
-   "n": 15,
-   "bull": 1,
-   "bear": 9,
-   "neu": 5,
+   "accounts": 19,
+   "n": 19,
+   "bull": 0,
+   "bear": 11,
+   "neu": 8,
    "arrow": "dn",
    "quotes": {
     "zh": {
-     "acc": "garyblack00",
-     "impact": "neu",
-     "text": "@garyblack00 報告美股盤前反彈（標普 +0.7%，納指 +1.2%），因 Nvidia 強勁 Q4 及 2027 指引確認穩健 AI 需求，$NVDA 盤前漲 3.1% 至 $160，同業 $AMD $AVGO $MU $DELL 漲 2-3%。Anthropic（$ANT）今晚將定價史上最大 IPO，募資達 900 億美元，估值可能達 1.4 兆美元。布倫特原油跌 1.1% 至 $92，10 年期收益率降至 5.09%，市場定價 12 月聯儲加息概率超 100%。標普 2026 年 EPS $369（同比 +33%）隱含 19.9 倍市盈率。",
-     "url": "https://x.com/garyblack00/status/2123016725981806665"
+     "acc": "DrJStrategy",
+     "impact": "bear",
+     "text": "James E. Thorne 回覆 @vexor4i：當通脹下降時，維持利率不變按定義即是緊縮。",
+     "url": "https://x.com/DrJStrategy/status/2123250709697302668"
     },
     "en": {
-     "acc": "garyblack00",
-     "impact": "neu",
-     "text": "@garyblack00 reports US stocks rebounded pre-market (SPX +0.7%, NDX +1.2%) on Nvidia’s strong Q4 and 2027 guidance affirming robust AI demand, $NVDA up 3.1% pre-mkt to $160, peers $AMD $AVGO $MU $DELL 2-3% higher. Anthropic ($ANT) to price largest IPO ever tonight up to $90B at $1.4T valuation. Brent fell 1.1% to $92, 10yr yield to 5.09%, markets price over 100% odds of Dec Fed rate hike. S&P 2026 EPS $369 (+33% YoY) implies 19.9x P/E.",
-     "url": "https://x.com/garyblack00/status/2123016725981806665"
+     "acc": "DrJStrategy",
+     "impact": "bear",
+     "text": "James E. Thorne replies to @vexor4i: When inflation falls, keeping rates steady by definition is tightening.",
+     "url": "https://x.com/DrJStrategy/status/2123250709697302668"
     }
    }
   },
   {
    "theme": "inflation",
-   "accounts": 14,
-   "n": 14,
-   "bull": 0,
-   "bear": 9,
-   "neu": 5,
-   "arrow": "dn",
+   "accounts": 12,
+   "n": 12,
+   "bull": 2,
+   "bear": 8,
+   "neu": 2,
+   "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "KeithMcCullough",
+     "acc": "FirstSquawk",
      "impact": "bear",
-     "text": "能源：通縮終於到來，我們仍然做空XOP CRAK等。",
-     "url": "https://x.com/KeithMcCullough/status/2123000969986535518"
+     "text": "First Squawk：IMF 的 Georgieva 表示全球通脹上升增加多個經濟體貨幣政策緊縮的必要性。",
+     "url": "https://x.com/FirstSquawk/status/2123234670364233769"
     },
     "en": {
-     "acc": "KeithMcCullough",
+     "acc": "FirstSquawk",
      "impact": "bear",
-     "text": "ENERGY: Disinflation is finally here and we remain short of XOP CRAK etc.",
-     "url": "https://x.com/KeithMcCullough/status/2123000969986535518"
+     "text": "First Squawk: IMF's Georgieva says higher global inflation is increasing the need for monetary policy tightening across multiple economies.",
+     "url": "https://x.com/FirstSquawk/status/2123234670364233769"
     }
    }
   },
   {
    "theme": "jobs",
-   "accounts": 0,
-   "n": 0,
-   "bull": 0,
+   "accounts": 2,
+   "n": 2,
+   "bull": 1,
    "bear": 0,
-   "neu": 0,
+   "neu": 1,
    "arrow": "none",
-   "quotes": {}
+   "quotes": {
+    "zh": {
+     "acc": "Austan_Goolsbee",
+     "impact": "neu",
+     "text": "週一，舊金山聯邦儲備銀行、Warsh主席和聯邦儲備委員會舉辦了生產力和就業工作組會議。",
+     "url": "https://x.com/MaryDalyEcon/status/2123225910354870527"
+    },
+    "en": {
+     "acc": "Austan_Goolsbee",
+     "impact": "neu",
+     "text": "On Monday, the Federal Reserve Bank of San Francisco, Chairman Warsh, and the Federal Reserve Board hosted the Productivity and Jobs Task Force Conference.",
+     "url": "https://x.com/MaryDalyEcon/status/2123225910354870527"
+    }
+   }
   },
   {
    "theme": "growth",
-   "accounts": 27,
-   "n": 27,
-   "bull": 4,
-   "bear": 6,
+   "accounts": 28,
+   "n": 28,
+   "bull": 6,
+   "bear": 5,
    "neu": 17,
-   "arrow": "flat",
+   "arrow": "up",
    "quotes": {
     "zh": {
-     "acc": "Retail_Guru",
-     "impact": "bull",
-     "text": "Depot和街頭說comps改善全是份額增長。但在高度整合市場，HD和LOW剛剛實現四年來最佳comps。很難辯稱這不是消費潮上升。TGT流量+5%，自2022年1月以來最佳。提及XLY XLF XRT。",
-     "url": "https://x.com/Retail_Guru/status/2123036404699873406"
+     "acc": "JC_ParetsX",
+     "impact": "neu",
+     "text": "J.C. Parets 問連看淡市場與衰退來臨的人是否也去 Cheesecake Factory。",
+     "url": "https://x.com/JC_ParetsX/status/2123235105648828825"
     },
     "en": {
-     "acc": "Retail_Guru",
-     "impact": "bull",
-     "text": "Depot & street say comp improvement all share gain. But in consolidated market, HD & LOW just comped their best in 4 years. Hard to argue that isn't rising consumer tide. TGT traffic +5%, best since Jan 2022. Mentions XLY XLF XRT.",
-     "url": "https://x.com/Retail_Guru/status/2123036404699873406"
+     "acc": "JC_ParetsX",
+     "impact": "neu",
+     "text": "J.C. Parets asks if even the bear market and recession coming people go to the Cheesecake Factory.",
+     "url": "https://x.com/JC_ParetsX/status/2123235105648828825"
     }
    }
   },
   {
    "theme": "yields",
-   "accounts": 16,
-   "n": 16,
-   "bull": 0,
-   "bear": 5,
-   "neu": 11,
+   "accounts": 15,
+   "n": 15,
+   "bull": 1,
+   "bear": 4,
+   "neu": 10,
    "arrow": "dn",
    "quotes": {
     "zh": {
-     "acc": "chigrl",
-     "impact": "neu",
-     "text": "T. Rowe堅持看淡國債的押注，推動了出色的2026年。自2026年初押注英國金邊債券並做空美國國債，為T. Rowe Price的Scott Solomon帶來回報，他不急於平倉這些押注。他共同管理的8億美元Dynamic Global Bond Fund今年迄今上漲約5%，跑贏97%同行，有望創2020年以來最佳年度表現。支撑這一回報的基本信念是：美國經濟將繼續超越其他經濟體，給國債帶來壓力。「我們堅持美國強勁增長、世界其他地區增長不那麼好的觀點，」Solomon說。",
-     "url": "https://x.com/chigrl/status/2122649962710175974"
+     "acc": "Couzin_Vinny",
+     "impact": "bull",
+     "text": "$IWM 搭配 $TNX 10 年期收益率下降看起來更好？相對便宜的隱含波動率及低風險反轉。@spotgamma 圖表是快速判斷策略是否穩健的好工具。",
+     "url": "https://x.com/Couzin_Vinny/status/2123095009784455196"
     },
     "en": {
-     "acc": "chigrl",
-     "impact": "neu",
-     "text": "T. Rowe Sticks to Bearish Treasuries Bet That Fueled Banner 2026. Betting on UK gilts and against US Treasuries since early 2026 is paying off for T. Rowe Price’s Scott Solomon, who isn’t in any hurry to unwind those wagers. His co-managed $800 million Dynamic Global Bond Fund is up around 5% so far this year, beating 97% of peers and on track for its best annual performance since 2020. Underpinning that return was a basic conviction: That the US economy would keep outpacing other economies, putting pressure on Treasuries. “We’ve stuck with the view of strong growth in the US and not quite as good growth in the rest of the world,” Solomon said.",
-     "url": "https://x.com/chigrl/status/2122649962710175974"
+     "acc": "Couzin_Vinny",
+     "impact": "bull",
+     "text": "$IWM with $TNX 10yr fading looking better? relatively cheap IV and low risk reversal. @spotgamma graphic - a nice tool to tell you quickly if your strategy is solid.",
+     "url": "https://x.com/Couzin_Vinny/status/2123095009784455196"
     }
    }
   },
   {
    "theme": "fx",
-   "accounts": 14,
-   "n": 14,
-   "bull": 1,
-   "bear": 5,
-   "neu": 8,
+   "accounts": 15,
+   "n": 15,
+   "bull": 2,
+   "bear": 7,
+   "neu": 6,
    "arrow": "dn",
    "quotes": {
     "zh": {
-     "acc": "KeithMcCullough",
-     "impact": "bear",
-     "text": "比特幣：在相關因子上，現在是相對於我們美元多頭的第一大宏觀空頭。",
-     "url": "https://x.com/KeithMcCullough/status/2122633394203054579"
+     "acc": "robin_j_brooks",
+     "impact": "neu",
+     "text": "juan_gonzalesP 指出 @robin_j_brooks 剛剛標誌了宏觀中最重要的脫鉤：美元正在飆升，但它沒有追蹤利率差異。這是信用事件信號，不是利率交易。",
+     "url": "https://x.com/juan_gonzalesP/status/2123205540796920028"
     },
     "en": {
-     "acc": "KeithMcCullough",
-     "impact": "bear",
-     "text": "BITCOIN: on Correlation Factor, now the #1 Macro Short vs. our USD Long.",
-     "url": "https://x.com/KeithMcCullough/status/2122633394203054579"
+     "acc": "robin_j_brooks",
+     "impact": "neu",
+     "text": "juan_gonzalesP notes @robin_j_brooks just flagged the most important decoupling in macro: the dollar is surging, but it is NOT tracking rate differentials. This is a credit event signal, not a rates trade.",
+     "url": "https://x.com/juan_gonzalesP/status/2123205540796920028"
     }
    }
   },
   {
    "theme": "energy",
-   "accounts": 11,
-   "n": 11,
-   "bull": 4,
-   "bear": 3,
-   "neu": 4,
+   "accounts": 12,
+   "n": 12,
+   "bull": 3,
+   "bear": 1,
+   "neu": 8,
    "arrow": "dn",
    "quotes": {
     "zh": {
-     "acc": "aeberman12",
+     "acc": "FirstSquawk",
      "impact": "neu",
-     "text": "每個人都在跳上石油過剩的樂隊花車，包括高盛。然而高盛預測2027年12月Brent為78美元，比2025年12月其62美元平均價高26%，那是最後一次所謂過剩。什麼過剩。敘事跑在證據前面。",
-     "url": "https://x.com/aeberman12/status/2122650183280497052"
+     "text": "First Squawk：布倫特原油期貨上漲 1.08 美元至每桶 93.03 美元。",
+     "url": "https://x.com/FirstSquawk/status/2123234132415381593"
     },
     "en": {
-     "acc": "aeberman12",
+     "acc": "FirstSquawk",
      "impact": "neu",
-     "text": "Everyone is jumping on the oil glut bandwagon, including Goldman Sachs. Yet Goldman forecasts Brent at $78 in December 2027, 26% above its $62 average in December 2025, the last supposed glut. Some glut. The narrative is running ahead of the evidence. https://www.goldmansachs.com/insights/articles/the-global-economy-is-forecast-to-grow-2-point-8-percent-in-2027-as-oil-prices-decline?chl=og&plt=tw&cid=cb&agp=aat&cre=globecon&plc=feed",
-     "url": "https://x.com/aeberman12/status/2122650183280497052"
+     "text": "First Squawk: Brent crude futures edge higher by $1.08 to $93.03/bbl.",
+     "url": "https://x.com/FirstSquawk/status/2123234132415381593"
     }
    }
   },
   {
    "theme": "policy",
-   "accounts": 66,
-   "n": 66,
-   "bull": 3,
-   "bear": 21,
-   "neu": 42,
+   "accounts": 64,
+   "n": 64,
+   "bull": 2,
+   "bear": 17,
+   "neu": 45,
    "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "RedDogT3",
-     "impact": "neu",
-     "text": "儘管NVDA業績穩健，全球市場混合。SPX測試7346支撐，下一個關注7288。AI交易仍然脆弱，市場尋求緩解。下午2點FOMC會議紀要。未來關鍵日子，保持戰術並管理風險。",
-     "url": "https://x.com/RedDogT3/status/2123034813753905563"
+     "acc": "themissinglinks",
+     "impact": "bull",
+     "text": "X上每個人都在提及2018年類比，讓人想起今年被喊出的10個黑色星期一。聯準會背景相似，央行/行政部門在中期選舉聚焦可負擔性後肯定希望市場降溫以產生財富效應。並未排除，特別是如果聯準會瘋狂到降50基點就知道他們認真了。但如果只降25基點如定價且增長背景仍不錯，仍認為12月下半月正面。下週也設定得相當不錯有些上漲空間。",
+     "url": "https://x.com/themissinglinks/status/2123258734197579811"
     },
     "en": {
-     "acc": "RedDogT3",
-     "impact": "neu",
-     "text": "Mixed global markets despite solid NVDA results. SPX testing 7346 support, 7288 next level. AI trade remains fragile as markets look for relief. FOMC minutes at 2 PM. Key days ahead, stay tactical and manage risk.",
-     "url": "https://x.com/RedDogT3/status/2123034813753905563"
+     "acc": "themissinglinks",
+     "impact": "bull",
+     "text": "Everyone on X mentioning 2018 analogues, reminding of 10 black Mondays called this year. Fed backdrop similar, central banks/admin want market to cool for wealth effect after midterms focused on affordability. Not ruling out, especially if Fed goes 50bps then serious. But if only 25bps as priced and growth decent, still thinks second half of December positive. Next week setting up for some upside.",
+     "url": "https://x.com/themissinglinks/status/2123258734197579811"
     }
    }
   },
   {
    "theme": "other",
-   "accounts": 105,
-   "n": 104,
-   "bull": 16,
+   "accounts": 111,
+   "n": 110,
+   "bull": 18,
    "bear": 35,
-   "neu": 53,
-   "arrow": "dn",
+   "neu": 57,
+   "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "DougKass",
-     "impact": "bull",
-     "text": "@cnbc @beckyquick節目解釋為何金融股絕對有意義，並作為對大型科技股的對沖。開始在金融/銀行領域累積多頭倉位，作為市場輪動的受益。",
-     "url": "https://x.com/DougKass/status/2123027182809153783"
+     "acc": "cullenroche",
+     "impact": "neu",
+     "text": "Cullen Roche 解釋基本銀行會計：存款對持有人是資產、對銀行是負債；準備金是銀行資產、聯準會僅對銀行的負債，並非對存款人。個人無法持有準備金，只有銀行可以。提領現金是持有聯準會負債的唯一方式。",
+     "url": "https://x.com/cullenroche/status/2123257784758358326"
     },
     "en": {
-     "acc": "DougKass",
-     "impact": "bull",
-     "text": "@cnbc @beckyquick segment why financials make sense absolutely and as a hedge against large cap Tech. Began to accumulate long positions in financials/banks as benefit of market rotation.",
-     "url": "https://x.com/DougKass/status/2123027182809153783"
+     "acc": "cullenroche",
+     "impact": "neu",
+     "text": "Cullen Roche explains basic bank accounting: deposits are assets for holders and liabilities for banks; reserves are bank assets and Fed liabilities to banks only, not to depositors. Individuals cannot hold reserves; only banks can. Cash withdrawal is the sole way to hold a Fed liability.",
+     "url": "https://x.com/cullenroche/status/2123257784758358326"
     }
    }
   }
@@ -208,46 +221,46 @@
  ],
  "accounts": 500,
  "x_accounts": 499,
- "range": "11/13–11/19",
+ "range": "11/14–11/20",
  "images": {
-  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-21-0104",
-  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-21-0104"
+  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-21-1508",
+  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-21-1508"
  },
  "stories": {
-  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-21-0104",
-  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-21-0104"
+  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-21-1508",
+  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-21-1508"
  },
  "posts": {
   "zh": {
-   "instagram": "本週宏觀：最多人講「其他」（利好 16・利空 35）\n\n這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/13–11/19）\n\n1. 其他：利好 16・利空 35・中性 53（比上週轉差 ▼）\n@DougKass：「@cnbc @beckyquick節目解釋為何金融股絕對有意義，並作為對大型科技股的對沖。開始在金融/銀行領域累積多頭倉位，作為市場輪動的受益。」\n\n2. 關稅／政策／地緣政治：利好 3・利空 21・中性 42（同上週差不多）\n@RedDogT3：「儘管NVDA業績穩健，全球市場混合。SPX測試7346支撐，下一個關注7288。AI交易仍然脆弱，市場尋求緩解。下午2點FOMC會議紀要。未來關鍵日子，保持戰術並管理風險。」\n\n3. 經濟增長／衰退：利好 4・利空 6・中性 17（同上週差不多）\n@Retail_Guru：「Depot和街頭說comps改善全是份額增長。但在高度整合市場，HD和LOW剛剛實現四年來最佳comps。很難辯稱這不是消費潮上升。TGT流量+5%，自2022年1月以來最佳。提…」\n\n這週哪個宏觀消息最影響你的判斷？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
-   "threads": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/13–11/19）\n\n1. 其他：利好 16・利空 35・中性 53（比上週轉差 ▼）\n2. 關稅／政策／地緣政治：利好 3・利空 21・中性 42（同上週差不多）\n3. 經濟增長／衰退：利好 4・利空 6・中性 17（同上週差不多）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
-   "x": "這星期大家最常聊的宏觀話題\n\n其他 16/35/53\n關稅／政策／地緣政治 3/21/42\n經濟增長／衰退 4/6/17\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "instagram": "本週宏觀：最多人講「其他」（利好 18・利空 35）\n\n這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/14–11/20）\n\n1. 其他：利好 18・利空 35・中性 57（同上週差不多）\n@cullenroche：「Cullen Roche 解釋基本銀行會計：存款對持有人是資產、對銀行是負債；準備金是銀行資產、聯準會僅對銀行的負債，並非對存款人。個人無法持有準備金，只有銀行可以。提領現金是持…」\n\n2. 關稅／政策／地緣政治：利好 2・利空 17・中性 45（同上週差不多）\n@themissinglinks：「X上每個人都在提及2018年類比，讓人想起今年被喊出的10個黑色星期一。聯準會背景相似，央行/行政部門在中期選舉聚焦可負擔性後肯定希望市場降溫以產生財富效應。並未排除，特別是如果…」\n\n3. 經濟增長／衰退：利好 6・利空 5・中性 17（比上週轉好 ▲）\n@JC_ParetsX：「J.C. Parets 問連看空市場與衰退來臨的人是否也去 Cheesecake Factory。」\n\n你覺得下週市場最該留意哪個數據？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "threads": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/14–11/20）\n\n1. 其他：利好 18・利空 35・中性 57（同上週差不多）\n2. 關稅／政策／地緣政治：利好 2・利空 17・中性 45（同上週差不多）\n3. 經濟增長／衰退：利好 6・利空 5・中性 17（比上週轉好 ▲）\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "x": "這星期大家最常聊的宏觀話題\n\n其他 18/35/57\n關稅／政策／地緣政治 2/17/45\n經濟增長／衰退 6/5/17\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "reddit": {
-    "title": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/13–11/19）",
-    "body": "1. 其他：利好 16・利空 35・中性 53（比上週轉差 ▼）\n@DougKass：「@cnbc @beckyquick節目解釋為何金融股絕對有意義，並作為對大型科技股的對沖。開始在金融/銀行領域累積多頭倉位，作為市場輪動的受益。」\n\n2. 關稅／政策／地緣政治：利好 3・利空 21・中性 42（同上週差不多）\n@RedDogT3：「儘管NVDA業績穩健，全球市場混合。SPX測試7346支撐，下一個關注7288。AI交易仍然脆弱，市場尋求緩解。下午2點FOMC會議紀要。未來關鍵日子，保持戰術並管理風險。」\n\n3. 經濟增長／衰退：利好 4・利空 6・中性 17（同上週差不多）\n@Retail_Guru：「Depot和街頭說comps改善全是份額增長。但在高度整合市場，HD和LOW剛剛實現四年來最佳comps。很難辯稱這不是消費潮上升。TGT流量+5%，自2022年1月以來最佳。提…」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
+    "title": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/14–11/20）",
+    "body": "1. 其他：利好 18・利空 35・中性 57（同上週差不多）\n@cullenroche：「Cullen Roche 解釋基本銀行會計：存款對持有人是資產、對銀行是負債；準備金是銀行資產、聯準會僅對銀行的負債，並非對存款人。個人無法持有準備金，只有銀行可以。提領現金是持…」\n\n2. 關稅／政策／地緣政治：利好 2・利空 17・中性 45（同上週差不多）\n@themissinglinks：「X上每個人都在提及2018年類比，讓人想起今年被喊出的10個黑色星期一。聯準會背景相似，央行/行政部門在中期選舉聚焦可負擔性後肯定希望市場降溫以產生財富效應。並未排除，特別是如果…」\n\n3. 經濟增長／衰退：利好 6・利空 5・中性 17（比上週轉好 ▲）\n@JC_ParetsX：「J.C. Parets 問連看空市場與衰退來臨的人是否也去 Cheesecake Factory。」\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
    },
-   "facebook": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/13–11/19）\n\n1. 其他：利好 16・利空 35・中性 53（比上週轉差 ▼）\n@DougKass：「@cnbc @beckyquick節目解釋為何金融股絕對有意義，並作為對大型科技股的對沖。開始在金融/銀行領域累積多頭倉位，作為市場輪動的受益。」\n\n2. 關稅／政策／地緣政治：利好 3・利空 21・中性 42（同上週差不多）\n@RedDogT3：「儘管NVDA業績穩健，全球市場混合。SPX測試7346支撐，下一個關注7288。AI交易仍然脆弱，市場尋求緩解。下午2點FOMC會議紀要。未來關鍵日子，保持戰術並管理風險。」\n\n3. 經濟增長／衰退：利好 4・利空 6・中性 17（同上週差不多）\n@Retail_Guru：「Depot和街頭說comps改善全是份額增長。但在高度整合市場，HD和LOW剛剛實現四年來最佳comps。很難辯稱這不是消費潮上升。TGT流量+5%，自2022年1月以來最佳。提…」\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "facebook": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/14–11/20）\n\n1. 其他：利好 18・利空 35・中性 57（同上週差不多）\n@cullenroche：「Cullen Roche 解釋基本銀行會計：存款對持有人是資產、對銀行是負債；準備金是銀行資產、聯準會僅對銀行的負債，並非對存款人。個人無法持有準備金，只有銀行可以。提領現金是持…」\n\n2. 關稅／政策／地緣政治：利好 2・利空 17・中性 45（同上週差不多）\n@themissinglinks：「X上每個人都在提及2018年類比，讓人想起今年被喊出的10個黑色星期一。聯準會背景相似，央行/行政部門在中期選舉聚焦可負擔性後肯定希望市場降溫以產生財富效應。並未排除，特別是如果…」\n\n3. 經濟增長／衰退：利好 6・利空 5・中性 17（比上週轉好 ▲）\n@JC_ParetsX：「J.C. Parets 問連看空市場與衰退來臨的人是否也去 Cheesecake Factory。」\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "story": "#美股"
   },
   "en": {
    "instagram": "",
    "threads": "",
-   "x": "What X talked about in macro this week\n\nOther 16/35/53\nTariffs / policy / geopolitics 3/21/42\nGrowth / recession 4/6/17\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
+   "x": "What X talked about in macro this week\n\nOther 18/35/57\nTariffs / policy / geopolitics 2/17/45\nGrowth / recession 6/5/17\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
    "reddit": {
-    "title": "The macro topics the 499 X accounts we follow talked about most this week (11/13–11/19)",
-    "body": "1. Other: bullish 16 · bearish 35 · neutral 53 (worse than last week ▼)\n@DougKass: “@cnbc @beckyquick segment why financials make sense absolutely and as a hedge against large cap Tech. Began to accumulate long positions in financial…”\n\n2. Tariffs / policy / geopolitics: bullish 3 · bearish 21 · neutral 42 (about the same as last week)\n@RedDogT3: “Mixed global markets despite solid NVDA results. SPX testing 7346 support, 7288 next level. AI trade remains fragile as markets look for relief. FOMC…”\n\n3. Growth / recession: bullish 4 · bearish 6 · neutral 17 (about the same as last week)\n@Retail_Guru: “Depot & street say comp improvement all share gain. But in consolidated market, HD & LOW just comped their best in 4 years. Hard to argue that isn't…”\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro"
+    "title": "The macro topics the 499 X accounts we follow talked about most this week (11/14–11/20)",
+    "body": "1. Other: bullish 18 · bearish 35 · neutral 57 (about the same as last week)\n@cullenroche: “Cullen Roche explains basic bank accounting: deposits are assets for holders and liabilities for banks; reserves are bank assets and Fed liabilities…”\n\n2. Tariffs / policy / geopolitics: bullish 2 · bearish 17 · neutral 45 (about the same as last week)\n@themissinglinks: “Everyone on X mentioning 2018 analogues, reminding of 10 black Mondays called this year. Fed backdrop similar, central banks/admin want market to coo…”\n\n3. Growth / recession: bullish 6 · bearish 5 · neutral 17 (better than last week ▲)\n@JC_ParetsX: “J.C. Parets asks if even the bear market and recession coming people go to the Cheesecake Factory.”\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro"
    },
-   "facebook": "The macro topics the 499 X accounts we follow talked about most this week (11/13–11/19)\n\n1. Other: bullish 16 · bearish 35 · neutral 53 (worse than last week ▼)\n@DougKass: “@cnbc @beckyquick segment why financials make sense absolutely and as a hedge against large cap Tech. Began to accumulate long positions in financial…”\n\n2. Tariffs / policy / geopolitics: bullish 3 · bearish 21 · neutral 42 (about the same as last week)\n@RedDogT3: “Mixed global markets despite solid NVDA results. SPX testing 7346 support, 7288 next level. AI trade remains fragile as markets look for relief. FOMC…”\n\n3. Growth / recession: bullish 4 · bearish 6 · neutral 17 (about the same as last week)\n@Retail_Guru: “Depot & street say comp improvement all share gain. But in consolidated market, HD & LOW just comped their best in 4 years. Hard to argue that isn't…”\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
+   "facebook": "The macro topics the 499 X accounts we follow talked about most this week (11/14–11/20)\n\n1. Other: bullish 18 · bearish 35 · neutral 57 (about the same as last week)\n@cullenroche: “Cullen Roche explains basic bank accounting: deposits are assets for holders and liabilities for banks; reserves are bank assets and Fed liabilities…”\n\n2. Tariffs / policy / geopolitics: bullish 2 · bearish 17 · neutral 45 (about the same as last week)\n@themissinglinks: “Everyone on X mentioning 2018 analogues, reminding of 10 black Mondays called this year. Fed backdrop similar, central banks/admin want market to coo…”\n\n3. Growth / recession: bullish 6 · bearish 5 · neutral 17 (better than last week ▲)\n@JC_ParetsX: “J.C. Parets asks if even the bear market and recession coming people go to the Cheesecake Factory.”\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro",
    "story": ""
   }
  },
  "ig_images": {
   "zh": [
-   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-21-0104",
+   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-21-1508",
    "https://thecrowdtape.com/og/cta/ig-cta-zh.jpg"
   ],
   "en": [
-   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-21-0104",
+   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-21-1508",
    "https://thecrowdtape.com/og/cta/ig-cta-en.jpg"
   ]
  },
@@ -257,7 +270,7 @@
   "video_path": null,
   "video_expected_path": "assets/reels/2026-11-21-macro-week.mp4",
   "caption": {
-   "zh": "本週宏觀：最多人講「其他」（利好 16・利空 35）\n\n這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/13–11/19）\n\n1. 其他：利好 16・利空 35・中性 53（比上週轉差 ▼）\n@DougKass：「@cnbc @beckyquick節目解釋為何金融股絕對有意義，並作為對大型科技股的對沖。開始在金融/銀行領域累積多頭倉位，作為市場輪動的受益。」\n\n2. 關稅／政策／地緣政治：利好 3・利空 21・中性 42（同上週差不多）\n@RedDogT3：「儘管NVDA業績穩健，全球市場混合。SPX測試7346支撐，下一個關注7288。AI交易仍然脆弱，市場尋求緩解。下午2點FOMC會議紀要。未來關鍵日子，保持戰術並管理風險。」\n\n3. 經濟增長／衰退：利好 4・利空 6・中性 17（同上週差不多）\n@Retail_Guru：「Depot和街頭說comps改善全是份額增長。但在高度整合市場，HD和LOW剛剛實現四年來最佳comps。很難辯稱這不是消費潮上升。TGT流量+5%，自2022年1月以來最佳。提…」\n\n這週哪個宏觀消息最影響你的判斷？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "zh": "本週宏觀：最多人講「其他」（利好 18・利空 35）\n\n這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/14–11/20）\n\n1. 其他：利好 18・利空 35・中性 57（同上週差不多）\n@cullenroche：「Cullen Roche 解釋基本銀行會計：存款對持有人是資產、對銀行是負債；準備金是銀行資產、聯準會僅對銀行的負債，並非對存款人。個人無法持有準備金，只有銀行可以。提領現金是持…」\n\n2. 關稅／政策／地緣政治：利好 2・利空 17・中性 45（同上週差不多）\n@themissinglinks：「X上每個人都在提及2018年類比，讓人想起今年被喊出的10個黑色星期一。聯準會背景相似，央行/行政部門在中期選舉聚焦可負擔性後肯定希望市場降溫以產生財富效應。並未排除，特別是如果…」\n\n3. 經濟增長／衰退：利好 6・利空 5・中性 17（比上週轉好 ▲）\n@JC_ParetsX：「J.C. Parets 問連看空市場與衰退來臨的人是否也去 Cheesecake Factory。」\n\n你覺得下週市場最該留意哪個數據？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "en": ""
   }
  },
