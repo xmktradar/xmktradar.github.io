@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2123611373242351725": {
+      "en_summary": "Back in January, Silver was up 64% on the year and Gold was up 25%. Today, Silver is down 38% on the year and Gold is down 15%. At the highs in January everyone loved Silver and Gold. Today with Silver 65% lower and Gold 35% lower, the love is gone. That's markets. $SLV $GLD",
+      "zh_summary": "一月時白銀年內上漲 64%，黃金上漲 25%。今天白銀年內下跌 38%，黃金下跌 15%。一月高點時人人熱愛白銀和黃金。今天白銀低 65%、黃金低 35%，熱愛已消失。這就是市場。$SLV $GLD",
+      "tickers": ["SLV", "GLD"],
+      "stance": "中性",
+      "stance_by_ticker": {"SLV": "中性", "GLD": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2123608236649775253": {
+      "en_summary": "Cathie Wood bought some $ANT today. Does she not remember what happened when she bought $CBRS multiple times at $300+?",
+      "zh_summary": "Cathie Wood 今天買了一些 $ANT。她不記得當她多次在 300 美元以上買入 $CBRS 時發生了什麼嗎？",
+      "tickers": ["ANT", "CBRS"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"ANT": "睇淡", "CBRS": "睇淡"},
+      "horizon": "中線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ANT": "Skeptical of Cathie Wood buy, referencing past $CBRS losses at high prices"}
+    },
+    "2123607720330756395": {
+      "en_summary": "(Reposted by @carlquintanilla) $ANT - Japan's Nikkei plunges nearly 5% as Anthropic IPO fails to revive AI confidence. Nikkei hit seven-month low, tech stocks heavy selling: SoftBank -14.4%, Kioxia -11.62%, Advantest -10.15%, Tokyo Electron -6.07%. Anthropic opened 34% above $83 IPO price but closed at $97.17, trimming gains to 17%. Fading rally disappointed investors hoping listing would revive AI stocks. ~90% of Tokyo prime-market stocks declined.",
+      "zh_summary": "（由 @carlquintanilla 轉發）$ANT - 日本日經指數暴跌近 5%，因 Anthropic IPO 未能重振 AI 信心。日經創七個月新低，科技股大幅拋售：軟銀 -14.4%、Kioxia -11.62%、Advantest -10.15%、東京電子 -6.07%。Anthropic 開盤高於 83 美元 IPO 價 34%，但收於 97.17 美元，漲幅縮至 17%。褪色的反彈令希望上市重振 AI 股的投資者失望。東京主板約 90% 股票下跌。",
+      "tickers": ["ANT"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"ANT": "睇淡"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"ANT": "IPO failed to sustain gains, closed at $97.17 after opening much higher, contributing to Nikkei plunge"}
+    },
+    "2123605764988449173": {
+      "en_summary": "$OKLO smart decision but missed for $NBIS",
+      "zh_summary": "$OKLO 明智決定，但錯過了 $NBIS",
+      "tickers": ["OKLO", "NBIS"],
+      "stance": "中性",
+      "stance_by_ticker": {"OKLO": "睇好", "NBIS": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123605453271675367": {
+      "en_summary": "Bath & Body Works CEO Says Turnaround Progressing But Incomplete $BBWI",
+      "zh_summary": "Bath & Body Works 執行長表示轉型進展中但不完整 $BBWI",
+      "tickers": ["BBWI"],
+      "stance": "中性",
+      "stance_by_ticker": {"BBWI": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"BBWI": "CEO notes turnaround progressing but still incomplete"}
+    }
+  }
+}
