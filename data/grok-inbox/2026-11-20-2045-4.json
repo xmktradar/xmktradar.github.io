@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123713951120916990": {
+      "en_summary": "F is for F-Bucket. Not good for either $QQQ or Russell $IWM and we're short both.",
+      "zh_summary": "F代表F-Bucket。對 $QQQ 或羅素 $IWM 都不好，我們做空兩者。",
+      "tickers": ["QQQ", "IWM"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"QQQ": "睇淡", "IWM": "睇淡"},
+      "horizon": "短線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2123713674430890157": {
+      "en_summary": "BONDS. Good news: if you re-allocated your hard-earned capital out of $QQQ and into $TLT you made the right #Quad4 move. Bond Markt Vol continues to break down = Bullish for Bonds.",
+      "zh_summary": "債券。好消息：如果你將辛苦賺來的資本從 $QQQ 重新配置到 $TLT，你做了正確的 #Quad4 動作。債券市場波動率繼續下降 = 對債券看漲。",
+      "tickers": ["TLT", "QQQ"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TLT": "睇好", "QQQ": "睇淡"},
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "yields",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    },
+    "2123713013589139478": {
+      "en_summary": "$NBIS On pure growth rate alone, a 2x-ish forward sales multiple for a company expected to roughly quadruple revenue into 2027 looks cheap, in other words a Bargain.",
+      "zh_summary": "$NBIS 單從成長率來看，預期到2027年收入大致翻四倍的公司，約2倍的遠期銷售倍數看起來便宜，換言之是便宜貨。",
+      "tickers": ["NBIS"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NBIS": "睇好"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NBIS": "Looks cheap at ~2x forward sales given expected revenue quadruple by 2027"}
+    },
+    "2123711867310981130": {
+      "en_summary": "HSBC upgrades $TSLA from Reduce to Hold and raises its price target to $359 from $157, citing a potential acquisition by SpaceX. Values using two scenarios: SpaceX acquisition $507/share, standalone $212/share (up from $193). 50% weighting each results in $359 target. Current share price offers an anchor irrespective of fundamentals. No guarantee deal happens or gets approval; could trade on fundamentals if no acquisition.",
+      "zh_summary": "HSBC將 $TSLA 從減持升級至持有，並將目標價從$157上調至$359，理由是可能被SpaceX收購。使用兩種情景估值：SpaceX收購$507/股，獨立估值$212/股（從$193上調）。各50%權重得出$359目標。目前股價提供錨定，不論基本面。不保證交易發生或獲得批准；若無收購可能按基本面交易。",
+      "tickers": ["TSLA"],
+      "stance": "中性",
+      "stance_by_ticker": {"TSLA": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TSLA": "HSBC PT $359 from $157, scenarios $507 or $212"}
+    },
+    "2123710257289474309": {
+      "en_summary": "Added a few more shares of $NBIS in pre-market at 93.19. I can wait. The panic of some is the opportunity of many.",
+      "zh_summary": "在盤前以93.19加倉了幾股 $NBIS。我可以等。一些人的恐慌是許多人的機會。",
+      "tickers": ["NBIS"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NBIS": "睇好"},
+      "horizon": "中線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NBIS": "Added at 93.19 pre-market"}
+    }
+  }
+}
