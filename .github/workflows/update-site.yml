@@ -2,7 +2,9 @@ name: Update site
 # Every 8 hours on the hour (HKT 03:00, 11:00, 19:00; Tim／CEO 2026-11-05), ~25–35 min after SuperGrok Post Summary (:35),
 # so new posts are on the site after SuperGrok feeds the slot: fetch new posts, apply SuperGrok summaries and write-ups,
 # refresh prices, consensus history and share image, build the language versions and stock pages, check, then publish.
-# Steps: fetch posts, merge SuperGrok summaries and write-ups, prices, stats, publish.
+# Permanent (Tim, 2026-11-20): this schedule does not expire. A side page that fails
+# keeps its previous file and the rest of the site still publishes, so one bad page
+# cannot stop the cron. The publish commit also keeps the repository active.
 #
 # Anti-miss (2026-11-03): GitHub may delay or silently skip a schedule slot. A +30m backup cron catches drops.
 # Workflow concurrency serializes runs; `gate` then skips the backup when a 定時重建 commit landed in the last 2h
@@ -155,6 +157,7 @@ jobs:
         continue-on-error: true
         run: python3 tools/write_status.py
       - name: Share image and social posts
+        continue-on-error: true
         run: |
           python3 tools/share.py
           if [ -f "$WORK_DIR/og.json" ]; then
@@ -164,6 +167,7 @@ jobs:
           if [ -f "$WORK_DIR/top5cards.json" ]; then node tools/top5card.js "$WORK_DIR/top5cards.json" || echo "::warning::top5 card failed"; fi
           if [ -f "$WORK_DIR/weekend-bulls-cards.json" ]; then node tools/weekend_bulls.js "$WORK_DIR/weekend-bulls-cards.json" || echo "::warning::weekend bulls card failed"; fi
       - name: Top5 vertical video
+        continue-on-error: true
         run: |
           if ! command -v ffmpeg >/dev/null 2>&1; then
             echo "::warning::ffmpeg not installed; skip top5 video"
@@ -221,21 +225,33 @@ jobs:
             mkdir -p social && cp "$WORK_DIR/earnings.html" social/earnings.html
           fi
       - name: X account photos for every mentioned handle
-        run: python3 tools/fill_avatars.py
+        continue-on-error: true
+        run: python3 tools/fill_avatars.py || echo "::warning::頭像補唔到，下次更新再試"
       - name: Language versions
         run: python3 tools/build_langs.py
       - name: Support page
-        run: python3 tools/support.py
+        continue-on-error: true
+        run: python3 tools/support.py || echo "::warning::支持頁今次整唔到，留返舊頁"
       - name: Advertise page
-        run: python3 tools/advertise.py
+        continue-on-error: true
+        run: python3 tools/advertise.py || echo "::warning::廣告頁今次整唔到，留返舊頁"
       - name: Weekly brief sales page
-        run: python3 tools/weekly.py
+        continue-on-error: true
+        run: |
+          python3 tools/weekly.py || {
+            git checkout -- weekly zh/weekly en/weekly sitemap.xml 2>/dev/null || true
+            echo "::warning::週報頁今次整唔到，留返舊頁，其餘照發佈"
+            exit 1
+          }
       - name: Tools page
-        run: python3 tools/toolspage.py
+        continue-on-error: true
+        run: python3 tools/toolspage.py || echo "::warning::工具頁今次整唔到，留返舊頁"
       - name: About page
-        run: python3 tools/about.py
+        continue-on-error: true
+        run: python3 tools/about.py || echo "::warning::關於頁今次整唔到，留返舊頁"
       - name: Earnings checklist magnet pages
-        run: python3 tools/checklist.py
+        continue-on-error: true
+        run: python3 tools/checklist.py || echo "::warning::清單頁今次整唔到，留返舊頁"
       - name: Weekly newsletter (first run Monday 07:00+ HKT; writes last week's issue, sends it via Resend once)
         continue-on-error: true
         env:
@@ -243,24 +259,31 @@ jobs:
           RESEND_AUDIENCE_ID: ${{ secrets.RESEND_AUDIENCE_ID }}
         run: python3 tools/newsletter_auto.py
       - name: Newsletter pages
-        run: python3 tools/newsletter.py
+        continue-on-error: true
+        run: python3 tools/newsletter.py || echo "::warning::訂閱頁今次整唔到，留返舊頁"
       - name: 404 page
-        run: python3 tools/page404.py
+        continue-on-error: true
+        run: python3 tools/page404.py || echo "::warning::404 今次整唔到，留返舊頁"
       - name: llms-full.txt
-        run: python3 tools/llms_full.py
+        continue-on-error: true
+        run: python3 tools/llms_full.py || echo "::warning::llms-full 今次整唔到"
       - name: Stock pages
         run: node tools/stock_pages.js
       - name: Earnings brief pages (/zh|en/earnings/; links on stock pages and homepages; sitemap)
         continue-on-error: true
         run: python3 tools/earnings_pages.py
       - name: Account pages (/zh|en/account/; links from stock pages and homepages; sitemap)
-        run: node tools/account_pages.js
+        continue-on-error: true
+        run: node tools/account_pages.js || echo "::warning::帳號頁今次整唔到，留返舊頁"
       - name: Donate box on stock, earnings and account pages
-        run: python3 tools/donate_box.py
+        continue-on-error: true
+        run: python3 tools/donate_box.py || echo "::warning::贊助框今次加唔到"
       - name: Old Korean links go to the English page (Korean removed 2026-10-27)
-        run: python3 tools/ko_redirect.py
+        continue-on-error: true
+        run: python3 tools/ko_redirect.py || echo "::warning::韓文跳轉今次整唔到"
       - name: Sitemap lastmod (real content-change time per page)
-        run: python3 tools/sitemap_lastmod.py
+        continue-on-error: true
+        run: python3 tools/sitemap_lastmod.py || echo "::warning::sitemap 時間今次更新唔到"
       - name: Weekend guide posts (Saturday and Sunday)
         continue-on-error: true
         run: |
@@ -287,9 +310,11 @@ jobs:
         run: python3 tools/slim_pages.py --slim
       # Sync after generators so the same run can correct generated roster-count copy.
       - name: Sync roster count copy from official list
-        run: python3 tools/sync_roster_copy.py
+        continue-on-error: true
+        run: python3 tools/sync_roster_copy.py || echo "::warning::人數文字今次對唔到"
       - name: Consensus board link
-        run: python3 tools/board_page.py
+        continue-on-error: true
+        run: python3 tools/board_page.py || echo "::warning::共識板今次整唔到，留返舊頁"
       - name: Check the pages
         run: |
           for f in index.html zh/index.html en/index.html; do
