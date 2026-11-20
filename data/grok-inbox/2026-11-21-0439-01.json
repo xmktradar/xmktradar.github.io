@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2123854576684036360": {
+      "en_summary": "GavinSBaker replies that he does not think Trump would be saying this about wanting Jensen Huang back at Nvidia if there were any national security concerns after a thorough review over the last month. Much stronger language than initial comments. Just his opinion. $NVDA",
+      "zh_summary": "GavinSBaker 回覆表示，他認為特朗普不會在經過上月徹底審查後仍說出希望黃仁勳重返輝達的話，如果存在任何國家安全顧慮的話。措辭比最初評論更強硬。僅為其個人意見。 $NVDA",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123854462334783657": {
+      "en_summary": "Couzin_Vinny posts that he wants to sit down and trade $SPX but someone is in his office chair. $SPX",
+      "zh_summary": "Couzin_Vinny 發帖稱他想坐下交易 $SPX，但有人坐在他的辦公椅上。 $SPX",
+      "tickers": ["SPY"],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123854456156823728": {
+      "en_summary": "Michael Parekh posts about Aftermath in AI covering Anthropic, Asia, Wall Street and Robotaxis. Anthropic gives back its IPO pop, Asia’s AI trade slides, Trump and Xi say little on tech, and robotaxis ditch Uber. $ANT $GOOG",
+      "zh_summary": "Michael Parekh 發帖討論 AI 的後果，涵蓋 Anthropic、亞洲、華爾街與無人駕駛計程車。Anthropic 回吐其 IPO 漲幅，亞洲 AI 交易下滑，特朗普與習近平對科技少有提及，無人駕駛計程車放棄 Uber。 $ANT $GOOG",
+      "tickers": ["GOOG"],
+      "stance": "中性",
+      "stance_by_ticker": {"GOOG": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2123853945085075799": {
+      "en_summary": "TheTranscript_ quotes $AMZN CEO on AWS: high CapEx for data centers, servers and networking gear well in advance creates short-term free cash flow headwinds amid unprecedented growth, but long-term economics strong with favorable free cash flow and ROIC, expecting much larger company and AWS business. $AMZN",
+      "zh_summary": "TheTranscript_ 引用 $AMZN 執行長談 AWS：需提前為資料中心、伺服器及網路設備投入大量資本支出，在前所未有增長下對短期自由現金流造成阻力，但長期經濟效益強勁，自由現金流與投資回報良好，預計公司及 AWS 業務將大幅擴大。 $AMZN",
+      "tickers": ["AMZN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AMZN": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123853790390681654": {
+      "en_summary": "damnang2 posts Finally it happened quoting that $QCOM lays off over 500 California employees and over 1000 in India, expecting Google and Microsoft to follow, noting sadness for employees with down equities and lost jobs. $QCOM",
+      "zh_summary": "damnang2 發帖稱終於發生了，引用 $QCOM 裁減超過 500 名加州員工及超過 1000 名印度員工的新聞，預期 Google 與 Microsoft 將跟進，並對股權下跌及失業的員工表示遺憾。 $QCOM",
+      "tickers": ["QCOM", "GOOG", "MSFT"],
+      "stance": "中性",
+      "stance_by_ticker": {"QCOM": "中性", "GOOG": "中性", "MSFT": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "jobs",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    }
+  }
+}
