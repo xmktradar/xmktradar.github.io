@@ -60,6 +60,8 @@ L = {
         runway_na='現金流數據未齊，暫時計唔到。',
         runway_bank='銀行嘅現金流主要受存款同貸款變動影響，唔適合用嚟計「撐得幾耐」。',
         source=lambda f: f'資料來源：SEC EDGAR（XBRL，{f} 提交）、Yahoo Finance。只係整理公開數字，唔構成投資建議。',
+        source_yh='資料來源：Yahoo Finance 季度財務（SEC 冇呢間公司嘅季度 10-Q）。只係整理公開數字，唔構成投資建議。',
+        fx_note=lambda c, r: f'原幣係 {c}，已按今日匯率 1 美元 = {r} {c} 折成美元，只係對照用。',
         updated='更新時間', back='返回最新財報列表', home='首頁', stock='大神點睇呢隻股', all_briefs='最新財報簡報',
         link_row='📊 最新財報簡報', link_note='市值 500 億美元以上美股', bn=lambda v: fmt_zh(v),
         nav='網站', lang_nav='語言', na_short='—',
@@ -94,6 +96,8 @@ L = {
         runway_na='Cash flow figures are incomplete, so this cannot be worked out yet.',
         runway_bank="A bank's cash flow mostly moves with deposits and loans, so 'how long the cash lasts' does not apply.",
         source=lambda f: f'Sources: SEC EDGAR (XBRL, filed {f}), Yahoo Finance. A summary of public numbers, not investment advice.',
+        source_yh='Sources: Yahoo Finance quarterly financials (this company files no quarterly 10-Q with the SEC). A summary of public numbers, not investment advice.',
+        fx_note=lambda c, r: f'Figures were reported in {c} and converted at today\'s rate of 1 USD = {r} {c}, for comparison only.',
         updated='Updated', back='Back to the latest earnings briefs', home='Home', stock='What the accounts say about this stock', all_briefs='Latest earnings briefs',
         link_row='📊 Latest earnings briefs', link_note='US stocks worth $50B+', bn=lambda v: fmt_en(v),
         nav='Site', lang_nav='Language', na_short='—',
@@ -558,7 +562,13 @@ def brief_page(co, lang, stamp, has_stock):
     parts += [chap1(co, lang), chap2(co, lang), chap3(co, lang), chap4(co, lang), chap5(co, lang)]
     parts.append(news_cta(lang, f'earnings-{tk}'))
     parts.append(aff_cards(lang))
-    parts.append(f'<p class="small">{E(t["source"](co["latest"].get("filed") or "—"))} {t["updated"]} {stamp} HKT</p>')
+    if co.get('latest', {}).get('form') == 'Yahoo':
+        src = t['source_yh']
+        if co.get('fx'):
+            src += ' ' + t['fx_note'](co['fx']['ccy'], co['fx']['per_usd'])
+    else:
+        src = t['source'](co['latest'].get('filed') or '—')
+    parts.append(f'<p class="small">{E(src)} {t["updated"]} {stamp} HKT</p>')
     parts.append(f'<p><a href="/{lang}/earnings/">← {E(t["back"])}</a></p>')
     ld = {'@context': 'https://schema.org', '@type': 'Article', 'headline': title[:110], 'description': desc,
           'inLanguage': LANGS[lang], 'dateModified': datetime.now(HK).isoformat(timespec='minutes'),
