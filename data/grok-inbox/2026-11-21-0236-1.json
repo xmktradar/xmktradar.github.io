@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123545798407340417": {
+      "en_summary": "$NVDA - California AG: California DOJ asking Nvidia if its advanced chips or confidential data may have been sent to China.",
+      "zh_summary": "$NVDA - 加州總檢察長：加州司法部詢問英偉達其先進芯片或機密數據是否可能已送往中國。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123544598983123376": {
+      "en_summary": "Cash almost as good as stocks YTD. $BIL $SPY $ACWI @stockcharts",
+      "zh_summary": "現金今年迄今幾乎與股票一樣好。$BIL $SPY $ACWI @stockcharts",
+      "tickers": ["BIL", "SPY", "ACWI"],
+      "stance": "中性",
+      "stance_by_ticker": {"BIL": "中性", "SPY": "中性", "ACWI": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2123544471908319615": {
+      "en_summary": "BJ’s Wholesale $BJ, Buckle $BKE, Frontline $FRO, and Moog $MOG.A report tomorrow before the open.",
+      "zh_summary": "BJ’s Wholesale $BJ、Buckle $BKE、Frontline $FRO和Moog $MOG.A將於明天開盤前發布財報。",
+      "tickers": ["BJ", "BKE", "FRO", "MOG.A"],
+      "stance": "中性",
+      "stance_by_ticker": {"BJ": "中性", "BKE": "中性", "FRO": "中性", "MOG.A": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123544463058379086": {
+      "en_summary": "$TTWO - GRAND THEFT AUTO VI sales set to top more than $3 billion in first week: Semafor.",
+      "zh_summary": "$TTWO - 《俠盜獵車手VI》首週銷售預計超過30億美元：Semafor。",
+      "tickers": ["TTWO"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TTWO": "睇好"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TTWO": "GTA VI first week sales expected over $3B"}
+    },
+    "2123543746444984671": {
+      "en_summary": "When everything starts dropping together, that is a liquidation event. We just started getting that the last 2-3 days. Hedges like $NKE $PEP $MCD etc all moving with the market, this is generally a sign of forced liquidations, closer to the “finale” than not.",
+      "zh_summary": "當一切開始一起下跌時，那就是清算事件。我們在過去2-3天剛剛開始出現這種情況。像$NKE $PEP $MCD等對沖標的都隨著市場移動，這通常是強制清算的跡象，更接近「終章」而不是不是。",
+      "tickers": ["NKE", "PEP", "MCD"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NKE": "中性", "PEP": "中性", "MCD": "中性"},
+      "horizon": "短線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    }
+  }
+}
