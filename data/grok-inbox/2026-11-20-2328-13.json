@@ -1,0 +1,102 @@
+{
+  "posts": {
+    "2123566333875138623": {
+      "en_summary": "Apple $AAPL is developing its own autonomous AI agent for coding and other tasks to compete against Anthropic, Google $GOOGL, OpenAI, and Meta $META, per Bloomberg.",
+      "zh_summary": "蘋果$AAPL正在開發自己的自主人工智能代理，用於編程和其他任務，以與Anthropic、谷歌$GOOGL、OpenAI和Meta $META競爭，據彭博社報道。",
+      "tickers": [
+        "AAPL",
+        "GOOGL",
+        "META"
+      ],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "AAPL": "中性",
+        "GOOGL": "中性",
+        "META": "中性"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123566104589250938": {
+      "en_summary": "$QQQ $NDX $NQ_F almost fully through the volume gap.",
+      "zh_summary": "$QQQ $NDX $NQ_F幾乎完全穿過成交量缺口。",
+      "tickers": [
+        "QQQ"
+      ],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "QQQ": "中性"
+      },
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123565775395209224": {
+      "en_summary": "$SPY $SPX $ES_F moving straight through the volume gap.",
+      "zh_summary": "$SPY $SPX $ES_F正直接穿過成交量缺口。",
+      "tickers": [
+        "SPY"
+      ],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "SPY": "中性"
+      },
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123565736643936489": {
+      "en_summary": "Nvidia stock doesn't look like a buy here according to @JayWoods3, who says $NVDA at $146 a share looks like a risky technical breakdown.",
+      "zh_summary": "根據@JayWoods3的說法，英偉達股票在此處看起來不像買入機會，他表示$NVDA在146美元的價格看起來像是一次風險性的技術面崩潰。",
+      "tickers": [
+        "NVDA"
+      ],
+      "stance": "睇淡",
+      "stance_by_ticker": {
+        "NVDA": "睇淡"
+      },
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {
+        "NVDA": "技術面出現風險性崩潰，146美元看起來風險高"
+      }
+    },
+    "2123564514499338528": {
+      "en_summary": "Stopped out in profit on $AMD and $NVDA with 0.5R loss, emphasizing use of stops and good discussions amid tough market.",
+      "zh_summary": "在$AMD上止盈，在$NVDA上以0.5R虧損止損，強調在艱難市場中使用止損並進行良好討論。",
+      "tickers": [
+        "AMD",
+        "NVDA"
+      ],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "AMD": "中性",
+        "NVDA": "中性"
+      },
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
