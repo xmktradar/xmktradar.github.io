@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123851531539882108": {
+      "en_summary": "JasonL_Capital notes VIX just hit 30. Last 5 times: $SPY up 5 of 5 one month later +7.0% avg, 4 of 5 six months +13.4% avg, 3 of 4 one year +14.6% avg. One miss Dec 2021 before 2022 bear. $SPY",
+      "zh_summary": "JasonL_Capital 指出 VIX 剛觸及 30。過去 5 次：$SPY 一個月後 5 次全升平均 +7.0%，六個月後 4 次升平均 +13.4%，一年後 3 次升平均 +14.6%。唯一錯過是 2021 年 12 月，2022 熊市前。 $SPY",
+      "tickers": ["SPY"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPY": "睇好"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": "利好",
+      "ticker_notes": {"SPY": "historical positive after VIX 30"}
+    },
+    "2123851528171622433": {
+      "en_summary": "dividendology notes $ASML now back to 22x earnings. Last time near this level returned over 100% in less than a year. Is this time different? $ASML",
+      "zh_summary": "dividendology 指出 $ASML 現回到 22 倍盈利。上次接近此水平時不到一年回報超過 100%。這次會不同嗎？ $ASML",
+      "tickers": ["ASML"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ASML": "睇好"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ASML": "22x earnings historical strong return"}
+    },
+    "2123851054790099326": {
+      "en_summary": "zeroshorts posts #Lutnick $NVDA",
+      "zh_summary": "zeroshorts 發帖 #Lutnick $NVDA",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123850613188612397": {
+      "en_summary": "scottmelker posts LAYERZERO $ZRO opens pre-genesis staking for its zero blockchain on Monday Nov. 23 ahead of mainnet, staked ZRO locked until March 31 2027. $ZRO",
+      "zh_summary": "scottmelker 發帖 LAYERZERO $ZRO 於 11 月 23 日星期一開放其零區塊鏈的預創世質押，主網上線前，質押的 ZRO 鎖定至 2027 年 3 月 31 日。 $ZRO",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123850467427934560": {
+      "en_summary": "JerryCap posts I can't believe Imma sell $GPN for the same multiple I buy $NVDA. $GPN $NVDA",
+      "zh_summary": "JerryCap 發帖我不敢相信我會以買 $NVDA 相同的倍數賣出 $GPN。 $GPN $NVDA",
+      "tickers": ["GPN", "NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"GPN": "睇淡", "NVDA": "睇好"},
+      "horizon": null,
+      "basis": "估值",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
