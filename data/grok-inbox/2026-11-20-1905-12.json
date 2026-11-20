@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123586256097464631": {
+      "en_summary": "$AAPL Health AI: Apple and OpenEvidence launch a study app that answers health questions from medical research. App uses peer-reviewed research, shows sources, can use personal Health data. Study data won't train AI models. Research study for up to 200,000 US adults 21+ with iPhone 15 Pro or later.",
+      "zh_summary": "$AAPL 健康 AI：Apple 和 OpenEvidence 推出研究應用，從醫學研究回答健康問題。應用使用同行評審研究、顯示來源，可使用個人健康數據。研究數據不會用於訓練 AI 模型。針對最多 20 萬名 21 歲以上美國成人、擁有 iPhone 15 Pro 或更新機型的研究。",
+      "tickers": ["AAPL"],
+      "stance": "中性",
+      "stance_by_ticker": {"AAPL": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123585383136940281": {
+      "en_summary": "CFTC CHAIR SELIG SAYS ONCHAIN PLATFORMS LIKE HYPERLIQUID $HYPE MUST REGISTER AS AN EXCHANGE OR PARTNER WITH ONE TO SERVE US RETAIL TRADERS",
+      "zh_summary": "CFTC 主席 SELIG 表示，像 Hyperliquid $HYPE 這樣的鏈上平台必須註冊為交易所或與一家合作，才能服務美國散戶交易者",
+      "tickers": ["HYPE"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"HYPE": "睇淡"},
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "利淡",
+      "ticker_notes": {"HYPE": "Must register as exchange or partner to serve US retail"}
+    },
+    "2123584500651508039": {
+      "en_summary": "Presented $MRVL for $LITE merger as example of what goes wrong using own stock to buy another. MRVL dropped -45% in over a month, cutting +24% premium for LITE to -41% discount. Massive dilution and arbitragers. Same dynamic likely when $SPCX offers +24% premium for $TSLA using SPCX stock: short-term pop then downward pressure. LITE now down -41% to $535 from $914 pre-deal. TSLA at $374 +24% could be -25% less within a month due to dilution.",
+      "zh_summary": "將 $MRVL 收購 $LITE 作為用自己股票買另一家公司出錯的例子。一個多月內 MRVL 下跌 -45%，將對 LITE 的 +24% 溢價變成 -41% 折扣。巨大稀釋和套利者。$SPCX 用 SPCX 股票對 $TSLA 提供 +24% 溢價時可能同樣動態：短期上漲後向下壓力。LITE 從交易前 914 美元跌至 535 美元，下跌 -41%。TSLA 在 374 美元 +24% 可能因稀釋在一個月內低 25%。",
+      "tickers": ["MRVL", "LITE", "SPCX", "TSLA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"MRVL": "睇淡", "LITE": "睇淡", "SPCX": "睇淡", "TSLA": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MRVL": "Stock drop from dilution in LITE deal", "LITE": "Premium turned to discount, down 41%", "SPCX": "Potential similar dilution in TSLA deal", "TSLA": "Possible downward pressure post-deal"}
+    },
+    "2123584485266506080": {
+      "en_summary": "$SPCX lenders to a ~$40B SpaceX-affiliated chip debt package insisted that Elon not fire the semiconductors into space as doing so would prevent them from reclaiming the silicon in the event of default",
+      "zh_summary": "$SPCX 約 400 億美元 SpaceX 關聯芯片債務包的貸款人堅持 Elon 不要將半導體射入太空，因為這樣會阻止他們在違約時收回硅片",
+      "tickers": ["SPCX"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPCX": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPCX": "Lenders require not firing chips into space to allow reclamation on default"}
+    },
+    "2123582268908212301": {
+      "en_summary": "the market doesnt believe in the durability of $NVDA cash flows",
+      "zh_summary": "市場不相信 $NVDA 現金流的持久性",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "Market doubts durability of cash flows"}
+    }
+  }
+}
