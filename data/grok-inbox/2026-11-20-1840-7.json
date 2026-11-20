@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123605341422145578": {
+      "en_summary": "$NBIS still 140% up on this position",
+      "zh_summary": "$NBIS 這個倉位仍然上漲 140%",
+      "tickers": ["NBIS"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NBIS": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NBIS": "Position still up 140%"}
+    },
+    "2123605131694407939": {
+      "en_summary": "Store sales fell again in the most recent quarter, while the retailer’s revenue from e-commerce, advertising and other newer businesses is growing. Walmart’s Digital Sales Are Now Driving Its Growth, Not Stores $WMT",
+      "zh_summary": "最近一季門店銷售再次下跌，而零售商來自電子商務、廣告及其他較新業務的收入正在增長。沃爾瑪的數字銷售現在推動其增長，而非門店 $WMT",
+      "tickers": ["WMT"],
+      "stance": "中性",
+      "stance_by_ticker": {"WMT": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"WMT": "Store sales down but digital and newer businesses driving growth"}
+    },
+    "2123604914345553944": {
+      "en_summary": "Yes the weirdo who thinks he’s getting rich off $GME knows so much very sad",
+      "zh_summary": "是的，那個認為自己能靠 $GME 致富的怪人知道這麼多，非常可悲",
+      "tickers": ["GME"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"GME": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123604665313132658": {
+      "en_summary": "sold to $BSP Intuit to Sell Mailchimp for $3.68 Billion",
+      "zh_summary": "賣給 $BSP Intuit 將以 36.8 億美元出售 Mailchimp",
+      "tickers": ["BSP", "INTU"],
+      "stance": "中性",
+      "stance_by_ticker": {"BSP": "中性", "INTU": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"INTU": "Selling Mailchimp for $3.68 billion to $BSP"}
+    },
+    "2123604372290744542": {
+      "en_summary": "Gap Cuts Outlook After Warm Fall Weather Weighs on Sales $GAP",
+      "zh_summary": "Gap 在溫暖秋季天氣影響銷售後下調展望 $GAP",
+      "tickers": ["GAP"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"GAP": "睇淡"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"GAP": "Cuts outlook as warm fall weather weighs on sales"}
+    }
+  }
+}
