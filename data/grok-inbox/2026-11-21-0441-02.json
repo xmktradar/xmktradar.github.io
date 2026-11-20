@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123853617790922874": {
+      "en_summary": "carlquintanilla quotes NYT findings showing a web of relationships linking Ms. Huang’s family and companies that acquired Nvidia chips to Chinese state-owned defense contractors that supply the PLA. @nytimes $NVDA",
+      "zh_summary": "carlquintanilla 引用紐約時報發現，顯示黃女士家族及收購輝達晶片的公司與供應解放軍的中國國有國防承包商之間存在關係網絡。 @nytimes $NVDA",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2123853453223133229": {
+      "en_summary": "Couzin_Vinny posts $SPX @spotgamma waking up too. #HIRO quoting $SPX 7000 #GEX tested and held with high tick alerts. $SPX",
+      "zh_summary": "Couzin_Vinny 發帖稱 $SPX @spotgamma 也醒了。#HIRO，引用 $SPX 7000 #GEX 測試並守住，現有高點數警報。 $SPX",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPY": "7000 GEX held"}
+    },
+    "2123853234615799865": {
+      "en_summary": "Couzin_Vinny posts $SPX 7000 #GEX tested and held. Now HIGH TICK ALERTS! $SPX",
+      "zh_summary": "Couzin_Vinny 發帖稱 $SPX 7000 #GEX 測試並守住。現在高點數警報！ $SPX",
+      "tickers": ["SPY"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPY": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPY": "7000 level held"}
+    },
+    "2123853115183227307": {
+      "en_summary": "ripster47 updates $SPY $QQQ here we go see before/after quoting basing for first time keep eyes on VIX not out of woods until clouds curls VIX needs to reject 32 and fade to 30s. $SPY $QQQ",
+      "zh_summary": "ripster47 更新 $SPY $QQQ 開始了見前後對比，引用首次築底，關注 VIX，未脫險直至雲層捲曲，VIX 需拒絕 32 並回落至 30s。 $SPY $QQQ",
+      "tickers": ["SPY", "QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPY": "watch VIX 32", "QQQ": "basing"}
+    },
+    "2123852950917242927": {
+      "en_summary": "Couzin_Vinny posts $ANT go time quoting bought a few shares stop if drops below LOD (83). $ANT",
+      "zh_summary": "Couzin_Vinny 發帖稱 $ANT 到時間了，引用買了一些股份，若跌破當日低點（83）則止損。 $ANT",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
