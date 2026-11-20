@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123659991945261555": {
+      "en_summary": "Looks like $ANT didn’t save the market or the fate of the world yesterday.",
+      "zh_summary": "看起來 $ANT 昨天沒有拯救市場或世界的命運。",
+      "tickers": ["ANT"],
+      "stance": "中性",
+      "stance_by_ticker": {"ANT": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123659787569422640": {
+      "en_summary": "$KOSPI200EW KOSPI 200 equal-weight YTD is now negative 1.40%.",
+      "zh_summary": "$KOSPI200EW KOSPI 200 等權重今年迄今為負 1.40%。",
+      "tickers": ["KOSPI200EW"],
+      "stance": "中性",
+      "stance_by_ticker": {"KOSPI200EW": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123657619848265855": {
+      "en_summary": "Smartkarma thread on Alibaba Q2 earnings: Beyond the Shopping Cart - Alibaba’s Reign as China’s AI Landlord by David Mudd. Mentions $BABA.US.",
+      "zh_summary": "Smartkarma 線程關於阿里巴巴第二季盈利：超越購物車 - 阿里巴巴作為中國 AI 房東的統治地位，作者 David Mudd。提及 $BABA.US。",
+      "tickers": ["BABA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"BABA": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"BABA": "Positioned as China’s AI landlord beyond e-commerce"}
+    },
+    "2123654630835933332": {
+      "en_summary": "$AAOI, which was up over 500% on the year, is just a few percent from going red YTD.",
+      "zh_summary": "$AAOI 今年曾上漲超過 500%，現在距離今年迄今轉負只剩幾個百分點。",
+      "tickers": ["AAOI"],
+      "stance": "中性",
+      "stance_by_ticker": {"AAOI": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123654520504713657": {
+      "en_summary": "The $ANT IPO was solid: raised more than expected, closed up 17% (above 10-15% success threshold) but opened +34%, peaked +39%, closed +17%. Decline likely caused S&P from +1.3% morning to -2.0% close. Test is if stays above $83 IPO price next 30 days. Longer-term positives: pro-regulatory midterms, less open-weight push after NVDA CEO gone, enterprise focus, scarcity, $40T TAM. Negatives: slowing growth (~50% q/q), increasing price competition, lower margins, open-weight models. If pick one LLM surviving commoditization, Anthropic, but not favorite for AI near-term. Mentions $NVDA $MSFT $AAPL $GOOGL.",
+      "zh_summary": "$ANT IPO 表現穩固：籌集超預期，收盤上漲 17%（超過 10-15% 成功門檻），但開盤 +34%、高峰 +39%、收盤 +17%。下跌可能導致標普從早盤 +1.3% 到收盤 -2.0%。測試是未來 30 天是否保持在 83 美元 IPO 價以上。長期正面：親監管中期選舉、NVDA CEO 離開後開放權重推力減少、企業聚焦、稀缺性、40 兆美元 TAM。負面：增長放緩（約 50% 季比）、價格競爭加劇、利潤率下降、開放權重模型。如果選擇一個能在商品化中存活的 LLM，是 Anthropic，但短期不是 AI 最喜歡的。提及 $NVDA $MSFT $AAPL $GOOGL。",
+      "tickers": ["ANT", "NVDA", "MSFT", "AAPL", "GOOGL"],
+      "stance": "中性",
+      "stance_by_ticker": {"ANT": "中性", "NVDA": "中性", "MSFT": "中性", "AAPL": "中性", "GOOGL": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {"ANT": "IPO solid but mixed price action; longer-term positives amid competition risks"}
+    }
+  }
+}
