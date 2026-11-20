@@ -1,0 +1,260 @@
+{
+ "t": "AZN",
+ "name": "AstraZeneca PLC",
+ "cik": 901832,
+ "q": [
+  {
+   "end": "2019-09-30",
+   "label": "FY2019 Q2",
+   "rev": 6132000000,
+   "gp": null,
+   "op": null,
+   "ni": null,
+   "eps": null,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2019-12-31",
+   "label": "FY2019 Q4",
+   "rev": 6250000000,
+   "gp": null,
+   "op": null,
+   "ni": null,
+   "eps": null,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2020-03-31",
+   "label": "FY2020 Q2",
+   "rev": 6311000000,
+   "gp": null,
+   "op": null,
+   "ni": null,
+   "eps": null,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2020-06-30",
+   "label": "FY2020 Q2",
+   "rev": 6275000000,
+   "gp": 5291000000,
+   "op": 1284000000,
+   "ni": 738000000,
+   "eps": 0.58,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2020-09-30",
+   "label": "FY2020 Q2",
+   "rev": 6520000000,
+   "gp": null,
+   "op": null,
+   "ni": null,
+   "eps": null,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2020-12-31",
+   "label": "FY2020 Q4",
+   "rev": 7011000000,
+   "gp": null,
+   "op": null,
+   "ni": null,
+   "eps": null,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2021-03-31",
+   "label": "FY2021 Q2",
+   "rev": 7257000000,
+   "gp": null,
+   "op": null,
+   "ni": null,
+   "eps": null,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2021-06-30",
+   "label": "FY2021 Q2",
+   "rev": 8220000000,
+   "gp": 6029000000,
+   "op": 1127000000,
+   "ni": 550000000,
+   "eps": 0.42,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2022-06-30",
+   "label": "FY2022 Q2",
+   "rev": 10771000000,
+   "gp": 7773000000,
+   "op": 539000000,
+   "ni": 360000000,
+   "eps": 0.23,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2023-06-30",
+   "label": "FY2023 Q2",
+   "rev": 11416000000,
+   "gp": 9456000000,
+   "op": 2456000000,
+   "ni": 1820000000,
+   "eps": 1.17,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2024-06-30",
+   "label": "FY2024 Q2",
+   "rev": 12938000000,
+   "gp": 10755000000,
+   "op": 2746000000,
+   "ni": 1928000000,
+   "eps": 1.24,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2025-06-30",
+   "label": "FY2025 Q2",
+   "rev": 14457000000,
+   "gp": 11984000000,
+   "op": 3508000000,
+   "ni": 2448000000,
+   "eps": 1.57,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  }
+ ],
+ "latest": {
+  "label": "FY2025 Q2",
+  "filed": "2025-07-29",
+  "accn": "0001104659-25-071432",
+  "form": "6-K",
+  "end": "2025-06-30"
+ },
+ "bal": {
+  "end": "2025-06-30",
+  "cash": 7058000000,
+  "sti": null,
+  "debt": null
+ },
+ "bank": false,
+ "seg": {
+  "none": true,
+  "accn": "0001104659-25-071432"
+ },
+ "rules": 4,
+ "diag": {
+  "newest": "2025-12-31",
+  "rev_last": "2025-06-30",
+  "have": [
+   {
+    "c": "ifrs-full:CostOfSales",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 10633000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-02-24"
+   },
+   {
+    "c": "ifrs-full:ProceedsFromSalesOfIntangibleAssetsClassifiedAsInvestingActivities",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 136000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-02-24"
+   },
+   {
+    "c": "ifrs-full:ProceedsFromSalesOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 13000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-02-24"
+   },
+   {
+    "c": "ifrs-full:Revenue",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 58739000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-02-24"
+   },
+   {
+    "c": "ifrs-full:RevenueFromSaleOfGoods",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 55573000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-02-24"
+   },
+   {
+    "c": "ifrs-full:RevenueThatWasIncludedInContractLiabilityBalanceAtBeginningOfPeriod",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 107000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-02-24"
+   }
+  ],
+  "rev_concepts_last": {
+   "Revenue": {
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-02-24"
+   },
+   "RevenueFromContractsWithCustomers": {
+    "start": "2021-01-01",
+    "end": "2021-12-31",
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2022-02-22"
+   }
+  }
+ },
+ "mcap": 272046473216,
+ "next": "2026-10-30",
+ "last_report": "2026-10-30",
+ "est": {
+  "eps_act": null,
+  "eps_est": null,
+  "rev_est": null,
+  "rev_est_seen": null
+ },
+ "pending": {
+  "q": "2026-09-30",
+  "eps_act": 1.0,
+  "eps_est": 1.14571
+ }
+}

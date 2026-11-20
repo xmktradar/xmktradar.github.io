@@ -1,0 +1,208 @@
+{
+ "t": "B",
+ "name": "Barrick Mining Corporation",
+ "cik": 756894,
+ "q": [
+  {
+   "end": "2017-06-30",
+   "label": "FY2017 Q2",
+   "rev": 2160000000,
+   "gp": null,
+   "op": null,
+   "ni": 1137000000,
+   "eps": 0.93,
+   "ocf": 448000000,
+   "capex": 405000000,
+   "fcf": 43000000
+  },
+  {
+   "end": "2018-06-30",
+   "label": "FY2018 Q2",
+   "rev": 1712000000,
+   "gp": null,
+   "op": null,
+   "ni": -76000000,
+   "eps": -0.08,
+   "ocf": 141000000,
+   "capex": 313000000,
+   "fcf": -172000000
+  },
+  {
+   "end": "2019-06-30",
+   "label": "FY2019 Q2",
+   "rev": 2063000000,
+   "gp": null,
+   "op": null,
+   "ni": 223000000,
+   "eps": 0.11,
+   "ocf": 434000000,
+   "capex": 379000000,
+   "fcf": 55000000
+  },
+  {
+   "end": "2020-06-30",
+   "label": "FY2020 Q2",
+   "rev": 3055000000,
+   "gp": null,
+   "op": null,
+   "ni": 622000000,
+   "eps": 0.2,
+   "ocf": 1031000000,
+   "capex": 509000000,
+   "fcf": 522000000
+  },
+  {
+   "end": "2021-06-30",
+   "label": "FY2021 Q2",
+   "rev": 2893000000,
+   "gp": null,
+   "op": null,
+   "ni": 694000000,
+   "eps": 0.23,
+   "ocf": 639000000,
+   "capex": 658000000,
+   "fcf": -19000000
+  },
+  {
+   "end": "2022-06-30",
+   "label": "FY2022 Q2",
+   "rev": 2859000000,
+   "gp": null,
+   "op": 1085000000,
+   "ni": 717000000,
+   "eps": 0.27,
+   "ocf": 924000000,
+   "capex": 755000000,
+   "fcf": 169000000
+  },
+  {
+   "end": "2023-06-30",
+   "label": "FY2023 Q2",
+   "rev": 2833000000,
+   "gp": null,
+   "op": 810000000,
+   "ni": 502000000,
+   "eps": 0.17,
+   "ocf": 832000000,
+   "capex": 769000000,
+   "fcf": 63000000
+  },
+  {
+   "end": "2024-06-30",
+   "label": "FY2024 Q2",
+   "rev": 3162000000,
+   "gp": null,
+   "op": 1092000000,
+   "ni": 634000000,
+   "eps": 0.21,
+   "ocf": 1159000000,
+   "capex": 819000000,
+   "fcf": 340000000
+  },
+  {
+   "end": "2025-06-30",
+   "label": "FY2025 Q2",
+   "rev": 3681000000,
+   "gp": null,
+   "op": 1416000000,
+   "ni": 1256000000,
+   "eps": 0.47,
+   "ocf": 1329000000,
+   "capex": 934000000,
+   "fcf": 395000000
+  }
+ ],
+ "latest": {
+  "label": "FY2025 Q2",
+  "filed": "2025-08-11",
+  "accn": "0001193125-25-178085",
+  "form": "6-K",
+  "end": "2025-06-30"
+ },
+ "bal": {
+  "end": "2025-06-30",
+  "cash": 4802000000,
+  "sti": null,
+  "debt": null
+ },
+ "bank": false,
+ "seg": {
+  "none": true,
+  "accn": "0001193125-25-178085"
+ },
+ "rules": 4,
+ "diag": {
+  "newest": "2025-12-31",
+  "rev_last": "2025-06-30",
+  "have": [
+   {
+    "c": "ifrs-full:CostOfSales",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 8265000000,
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-02-05"
+   },
+   {
+    "c": "ifrs-full:ProceedsFromSalesOfInvestmentsOtherThanInvestmentsAccountedForUsingEquityMethod",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 43000000,
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-02-05"
+   },
+   {
+    "c": "ifrs-full:ProceedsFromSalesOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 4000000,
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-02-05"
+   },
+   {
+    "c": "ifrs-full:Revenue",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 16956000000,
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-02-05"
+   },
+   {
+    "c": "ifrs-full:RevenueFromInterest",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 45000000,
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-02-05"
+   }
+  ],
+  "rev_concepts_last": {
+   "Revenue": {
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-02-05"
+   }
+  }
+ },
+ "mcap": 54347481088,
+ "next": "2027-02-04",
+ "last_report": "2026-11-09",
+ "est": {
+  "eps_act": null,
+  "eps_est": null,
+  "rev_est": null,
+  "rev_est_seen": null
+ },
+ "pending": {
+  "q": "2026-09-30",
+  "eps_act": 0.82,
+  "eps_est": 0.7896
+ }
+}

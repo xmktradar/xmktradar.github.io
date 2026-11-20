@@ -1,0 +1,101 @@
+{
+ "t": "SAN",
+ "name": "Banco Santander, S.A.",
+ "cik": 891478,
+ "q": [
+  {
+   "end": "2025-06-30",
+   "label": "FY2025 Q2",
+   "rev": 15752912728.072104,
+   "gp": null,
+   "op": null,
+   "ni": 3771158496.372829,
+   "eps": null,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2025-09-30",
+   "label": "FY2025 Q3",
+   "rev": 15582545614.420752,
+   "gp": null,
+   "op": null,
+   "ni": 3851395911.189272,
+   "eps": null,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2025-12-31",
+   "label": "FY2025 Q4",
+   "rev": 16462958892.06419,
+   "gp": null,
+   "op": null,
+   "ni": 4137173005.056056,
+   "eps": null,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2026-03-31",
+   "label": "FY2026 Q1",
+   "rev": 16975159375.686964,
+   "gp": null,
+   "op": null,
+   "ni": 5995823257.85887,
+   "eps": null,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2026-06-30",
+   "label": "FY2026 Q2",
+   "rev": 17057595075.840843,
+   "gp": null,
+   "op": null,
+   "ni": 3866783908.5513296,
+   "eps": null,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  }
+ ],
+ "latest": {
+  "label": "FY2026 Q2",
+  "filed": "2026-06-30",
+  "accn": null,
+  "form": "Yahoo",
+  "end": "2026-06-30"
+ },
+ "bal": {
+  "end": "2026-06-30",
+  "cash": 294088810727.63245,
+  "sti": null,
+  "debt": 382575291272.8072
+ },
+ "bank": false,
+ "seg": null,
+ "rules": 4,
+ "fx": {
+  "ccy": "EUR",
+  "per_usd": 0.9098
+ },
+ "mcap": 163939008512,
+ "next": "2026-10-28",
+ "last_report": "2026-10-28",
+ "est": {
+  "eps_act": 0.28523,
+  "eps_est": 0.29479,
+  "rev_est": null,
+  "rev_est_seen": null
+ },
+ "pending": {
+  "q": "2026-09-30",
+  "eps_act": 0.27855,
+  "eps_est": 0.29032
+ }
+}

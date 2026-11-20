@@ -1,0 +1,278 @@
+{
+ "t": "SHEL",
+ "name": "Shell plc",
+ "cik": 1306965,
+ "q": [
+  {
+   "end": "2020-03-31",
+   "label": "FY2020 Q2",
+   "rev": 60029000000,
+   "gp": null,
+   "op": null,
+   "ni": -23000000,
+   "eps": null,
+   "ocf": 14851000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2020-06-30",
+   "label": "FY2020 Q2",
+   "rev": 32504000000,
+   "gp": null,
+   "op": null,
+   "ni": -18101000000,
+   "eps": null,
+   "ocf": 2563000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2021-03-31",
+   "label": "FY2021 Q2",
+   "rev": 55665000000,
+   "gp": null,
+   "op": null,
+   "ni": 5784000000,
+   "eps": null,
+   "ocf": 8294000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2021-06-30",
+   "label": "FY2021 Q2",
+   "rev": 60515000000,
+   "gp": null,
+   "op": null,
+   "ni": 3559000000,
+   "eps": null,
+   "ocf": 12617000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2022-03-31",
+   "label": "FY2022 Q2",
+   "rev": 84204000000,
+   "gp": null,
+   "op": null,
+   "ni": 7319000000,
+   "eps": null,
+   "ocf": 14815000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2022-06-30",
+   "label": "FY2022 Q2",
+   "rev": 100059000000,
+   "gp": null,
+   "op": null,
+   "ni": 18238000000,
+   "eps": null,
+   "ocf": 18655000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2023-03-31",
+   "label": "FY2023 Q2",
+   "rev": 86959000000,
+   "gp": null,
+   "op": null,
+   "ni": 8772000000,
+   "eps": null,
+   "ocf": 14159000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2023-06-30",
+   "label": "FY2023 Q2",
+   "rev": 74578000000,
+   "gp": null,
+   "op": null,
+   "ni": 3154000000,
+   "eps": null,
+   "ocf": 15130000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2024-03-31",
+   "label": "FY2024 Q2",
+   "rev": 72478000000,
+   "gp": null,
+   "op": null,
+   "ni": 7439000000,
+   "eps": null,
+   "ocf": 13330000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2024-06-30",
+   "label": "FY2024 Q2",
+   "rev": 74463000000,
+   "gp": null,
+   "op": null,
+   "ni": 3650000000,
+   "eps": null,
+   "ocf": 13508000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2025-03-31",
+   "label": "FY2025 Q2",
+   "rev": 69234000000,
+   "gp": null,
+   "op": null,
+   "ni": 4875000000,
+   "eps": null,
+   "ocf": 9281000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2025-06-30",
+   "label": "FY2025 Q2",
+   "rev": 65406000000,
+   "gp": null,
+   "op": null,
+   "ni": 3644000000,
+   "eps": null,
+   "ocf": 11937000000,
+   "capex": null,
+   "fcf": null
+  }
+ ],
+ "latest": {
+  "label": "FY2025 Q2",
+  "filed": "2025-07-31",
+  "accn": "0001306965-25-000031",
+  "form": "6-K",
+  "end": "2025-06-30"
+ },
+ "bal": {
+  "end": "2025-06-30",
+  "cash": 32682000000,
+  "sti": null,
+  "debt": null
+ },
+ "bank": false,
+ "seg": {
+  "none": true,
+  "accn": "0001306965-25-000031"
+ },
+ "rules": 4,
+ "diag": {
+  "newest": "2025-12-31",
+  "rev_last": "2025-06-30",
+  "have": [
+   {
+    "c": "ifrs-full:OtherRevenue",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 9534000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-12"
+   },
+   {
+    "c": "ifrs-full:ProceedsFromSalesOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 1148000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-12"
+   },
+   {
+    "c": "ifrs-full:ProceedsFromSalesOrMaturityOfFinancialInstrumentsClassifiedAsInvestingActivities",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 33000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-12"
+   },
+   {
+    "c": "ifrs-full:Revenue",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 266886000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-12"
+   },
+   {
+    "c": "ifrs-full:RevenueAndOperatingIncome",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 273731000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-12"
+   },
+   {
+    "c": "ifrs-full:RevenueFromDividends",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 82000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-12"
+   },
+   {
+    "c": "ifrs-full:RevenueFromInterest",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 1960000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-12"
+   },
+   {
+    "c": "ifrs-full:RevenueFromContractsWithCustomers",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 257352000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-12"
+   }
+  ],
+  "rev_concepts_last": {
+   "Revenue": {
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-12"
+   },
+   "RevenueFromContractsWithCustomers": {
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-12"
+   }
+  }
+ },
+ "mcap": 265545449472,
+ "next": "2026-10-29",
+ "last_report": "2026-10-29",
+ "est": {
+  "eps_act": null,
+  "eps_est": null,
+  "rev_est": null,
+  "rev_est_seen": null
+ },
+ "pending": {
+  "q": "2026-09-30",
+  "eps_act": 3.86,
+  "eps_est": 3.67461
+ }
+}

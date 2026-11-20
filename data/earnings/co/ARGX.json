@@ -1,0 +1,130 @@
+{
+ "t": "ARGX",
+ "name": "argenx SE",
+ "cik": 1697862,
+ "q": [
+  {
+   "end": "2022-06-30",
+   "label": "FY2022 Q2",
+   "rev": 95996000,
+   "gp": null,
+   "op": null,
+   "ni": null,
+   "eps": null,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  }
+ ],
+ "latest": {
+  "label": "FY2022 Q2",
+  "filed": "2022-07-28",
+  "accn": "0001558370-22-011211",
+  "form": "6-K",
+  "end": "2022-06-30"
+ },
+ "bal": {
+  "end": "2022-06-30",
+  "cash": 1367288000,
+  "sti": null,
+  "debt": null
+ },
+ "bank": false,
+ "seg": {
+  "none": true,
+  "accn": "0001558370-22-011211"
+ },
+ "rules": 4,
+ "diag": {
+  "newest": "2025-12-31",
+  "rev_last": "2022-06-30",
+  "have": [
+   {
+    "c": "ifrs-full:RevenueAndOperatingIncome",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 4248050000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-19"
+   },
+   {
+    "c": "ifrs-full:SalesAndMarketingExpense",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 395374000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-19"
+   },
+   {
+    "c": "ifrs-full:CostOfSales",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 450665000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-19"
+   },
+   {
+    "c": "ifrs-full:RevenueFromRenderingOfServices",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 2166000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-19"
+   },
+   {
+    "c": "ifrs-full:RevenueFromSaleOfGoods",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 4151316000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-19"
+   },
+   {
+    "c": "ifrs-full:ProceedsFromSalesOrMaturityOfFinancialInstrumentsClassifiedAsInvestingActivities",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 2388445000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-19"
+   }
+  ],
+  "rev_concepts_last": {
+   "RevenueFromContractsWithCustomers": {
+    "start": "2023-01-01",
+    "end": "2023-12-31",
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2024-03-21"
+   }
+  },
+  "few": {
+   "RevenueFromContractsWithCustomers": {
+    "facts": 13,
+    "q": 1,
+    "first": "2022-06-30",
+    "last": "2022-06-30",
+    "labelled": 1
+   }
+  }
+ },
+ "mcap": 59241193472,
+ "next": "2026-10-22",
+ "last_report": "2026-10-22",
+ "est": {
+  "eps_act": null,
+  "eps_est": null,
+  "rev_est": null,
+  "rev_est_seen": null
+ },
+ "pending": {
+  "q": "2026-09-30",
+  "eps_act": 7.8,
+  "eps_est": -27.83
+ }
+}

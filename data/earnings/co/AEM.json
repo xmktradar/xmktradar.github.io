@@ -1,0 +1,179 @@
+{
+ "t": "AEM",
+ "name": "Agnico Eagle Mines Limited",
+ "cik": 2809,
+ "q": [
+  {
+   "end": "2009-03-31",
+   "label": "FY2009 Q1",
+   "rev": 110718000,
+   "gp": null,
+   "op": null,
+   "ni": 54341000,
+   "eps": 0.35,
+   "ocf": 48823000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2010-03-31",
+   "label": "FY2010 Q1",
+   "rev": 239305000,
+   "gp": null,
+   "op": null,
+   "ni": 22332000,
+   "eps": 0.14,
+   "ocf": 74491000,
+   "capex": null,
+   "fcf": null
+  }
+ ],
+ "latest": {
+  "label": "FY2010 Q1",
+  "filed": "2010-05-13",
+  "accn": "0001047469-10-005246",
+  "form": "6-K",
+  "end": "2010-03-31"
+ },
+ "bal": {
+  "end": "2010-03-31",
+  "cash": 113615000,
+  "sti": null,
+  "debt": null
+ },
+ "bank": false,
+ "seg": {
+  "none": true,
+  "accn": "0001047469-10-005246"
+ },
+ "rules": 4,
+ "diag": {
+  "newest": "2025-12-31",
+  "rev_last": "2010-03-31",
+  "have": [
+   {
+    "c": "ifrs-full:CostOfSales",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 3340684000,
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-02-13"
+   },
+   {
+    "c": "ifrs-full:Revenue",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 11907851000,
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-02-13"
+   },
+   {
+    "c": "ifrs-full:RevenueFromContractsWithCustomers",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 11880601000,
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-02-13"
+   },
+   {
+    "c": "ifrs-full:RevenueFromInterest",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 58144000,
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-02-13"
+   },
+   {
+    "c": "ifrs-full:RevenueFromSaleOfCopper",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 50276000,
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-02-13"
+   },
+   {
+    "c": "ifrs-full:RevenueFromSaleOfGold",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 11718661000,
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-02-13"
+   },
+   {
+    "c": "ifrs-full:RevenueFromSaleOfSilver",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 102466000,
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-02-13"
+   }
+  ],
+  "rev_concepts_last": {
+   "Revenues": {
+    "start": "2010-01-01",
+    "end": "2010-03-31",
+    "form": "6-K",
+    "fp": "Q1",
+    "filed": "2010-05-13"
+   },
+   "Revenue": {
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-02-13"
+   },
+   "RevenueFromContractsWithCustomers": {
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-02-13"
+   }
+  },
+  "few": {
+   "Revenues": {
+    "facts": 5,
+    "q": 2,
+    "first": "2009-03-31",
+    "last": "2010-03-31",
+    "labelled": 2
+   },
+   "Revenue": {
+    "facts": 4,
+    "q": 0,
+    "first": null,
+    "last": null,
+    "labelled": 0
+   },
+   "RevenueFromContractsWithCustomers": {
+    "facts": 4,
+    "q": 0,
+    "first": null,
+    "last": null,
+    "labelled": 0
+   }
+  }
+ },
+ "mcap": 79997681664,
+ "next": "2026-10-28",
+ "last_report": "2026-10-28",
+ "est": {
+  "eps_act": null,
+  "eps_est": null,
+  "rev_est": null,
+  "rev_est_seen": null
+ },
+ "pending": {
+  "q": "2026-09-30",
+  "eps_act": 2.61,
+  "eps_est": 2.55748
+ }
+}

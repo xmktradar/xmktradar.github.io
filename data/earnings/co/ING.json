@@ -1,0 +1,101 @@
+{
+ "t": "ING",
+ "name": "ING Groep N.V.",
+ "cik": 1039765,
+ "q": [
+  {
+   "end": "2025-06-30",
+   "label": "FY2025 Q2",
+   "rev": 6268410639.701033,
+   "gp": null,
+   "op": null,
+   "ni": 1841063970.1033194,
+   "eps": null,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2025-09-30",
+   "label": "FY2025 Q3",
+   "rev": 6434381182.677511,
+   "gp": null,
+   "op": null,
+   "ni": 1964167948.99978,
+   "eps": null,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2025-12-31",
+   "label": "FY2025 Q4",
+   "rev": 6372829193.22928,
+   "gp": null,
+   "op": null,
+   "ni": 1550890305.5616617,
+   "eps": null,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2026-03-31",
+   "label": "FY2026 Q1",
+   "rev": 6401406902.615959,
+   "gp": null,
+   "op": null,
+   "ni": 1710265992.5258298,
+   "eps": null,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2026-06-30",
+   "label": "FY2026 Q2",
+   "rev": 6876236535.502308,
+   "gp": null,
+   "op": null,
+   "ni": 2140030775.994724,
+   "eps": null,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  }
+ ],
+ "latest": {
+  "label": "FY2026 Q2",
+  "filed": "2026-06-30",
+  "accn": null,
+  "form": "Yahoo",
+  "end": "2026-06-30"
+ },
+ "bal": {
+  "end": "2026-06-30",
+  "cash": 71393712903.93492,
+  "sti": null,
+  "debt": 203428225983.73267
+ },
+ "bank": false,
+ "seg": null,
+ "rules": 4,
+ "fx": {
+  "ccy": "EUR",
+  "per_usd": 0.9098
+ },
+ "mcap": 86905307136,
+ "next": "2027-01-28",
+ "last_report": "2026-10-29",
+ "est": {
+  "eps_act": 0.77387,
+  "eps_est": 0.74411,
+  "rev_est": null,
+  "rev_est_seen": null
+ },
+ "pending": {
+  "q": "2026-09-30",
+  "eps_act": 0.72448,
+  "eps_est": 0.75765
+ }
+}

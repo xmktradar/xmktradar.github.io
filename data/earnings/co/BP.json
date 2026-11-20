@@ -1,0 +1,206 @@
+{
+ "t": "BP",
+ "name": "BP p.l.c.",
+ "cik": 313807,
+ "q": [
+  {
+   "end": "2017-06-30",
+   "label": "FY2016 Q4",
+   "rev": 57366000000,
+   "gp": null,
+   "op": 1469000000,
+   "ni": 156000000,
+   "eps": null,
+   "ocf": 4890000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2018-06-30",
+   "label": "FY2018 Q2",
+   "rev": 76907000000,
+   "gp": null,
+   "op": 5556000000,
+   "ni": 2873000000,
+   "eps": null,
+   "ocf": 6306000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2019-06-30",
+   "label": "FY2019 Q2",
+   "rev": 73747000000,
+   "gp": null,
+   "op": 4016000000,
+   "ni": 1904000000,
+   "eps": null,
+   "ocf": 6815000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2020-06-30",
+   "label": "FY2020 Q2",
+   "rev": 20776000000,
+   "gp": null,
+   "op": -20813000000,
+   "ni": -17522000000,
+   "eps": null,
+   "ocf": 3737000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2021-06-30",
+   "label": "FY2021 Q2",
+   "rev": 37598000000,
+   "gp": null,
+   "op": 5825000000,
+   "ni": 3354000000,
+   "eps": null,
+   "ocf": 5411000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2022-06-30",
+   "label": "FY2022 Q2",
+   "rev": 69506000000,
+   "gp": null,
+   "op": 14602000000,
+   "ni": 9536000000,
+   "eps": null,
+   "ocf": 10863000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2023-06-30",
+   "label": "FY2023 Q2",
+   "rev": 49479000000,
+   "gp": null,
+   "op": 4353000000,
+   "ni": 1953000000,
+   "eps": null,
+   "ocf": 6293000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2024-06-30",
+   "label": "FY2024 Q2",
+   "rev": 48250000000,
+   "gp": null,
+   "op": 2430000000,
+   "ni": 70000000,
+   "eps": null,
+   "ocf": 8100000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2025-06-30",
+   "label": "FY2025 Q2",
+   "rev": 47677000000,
+   "gp": null,
+   "op": 4056000000,
+   "ni": 1929000000,
+   "eps": null,
+   "ocf": 6271000000,
+   "capex": null,
+   "fcf": null
+  }
+ ],
+ "latest": {
+  "label": "FY2025 Q2",
+  "filed": "2025-08-05",
+  "accn": "0000313807-25-000026",
+  "form": "6-K",
+  "end": "2025-06-30"
+ },
+ "bal": {
+  "end": "2025-06-30",
+  "cash": 35067000000,
+  "sti": null,
+  "debt": null
+ },
+ "bank": false,
+ "seg": {
+  "none": true,
+  "accn": "0000313807-25-000026"
+ },
+ "rules": 4,
+ "diag": {
+  "newest": "2025-12-31",
+  "rev_last": "2025-06-30",
+  "have": [
+   {
+    "c": "ifrs-full:OtherRevenue",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 30456000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-06"
+   },
+   {
+    "c": "ifrs-full:Revenue",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 192549000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-06"
+   },
+   {
+    "c": "ifrs-full:RevenueAndOperatingIncome",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 189335000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-06"
+   },
+   {
+    "c": "ifrs-full:RevenueFromContractsWithCustomers",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 158879000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-06"
+   }
+  ],
+  "rev_concepts_last": {
+   "Revenue": {
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-06"
+   },
+   "RevenueFromContractsWithCustomers": {
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-06"
+   }
+  }
+ },
+ "mcap": 111293923328,
+ "next": "2026-10-30",
+ "last_report": "2026-10-30",
+ "est": {
+  "eps_act": null,
+  "eps_est": null,
+  "rev_est": null,
+  "rev_est_seen": null
+ },
+ "pending": {
+  "q": "2026-09-30",
+  "eps_act": 3.26,
+  "eps_est": 2.63236
+ }
+}

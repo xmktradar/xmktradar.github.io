@@ -1,0 +1,184 @@
+{
+ "t": "PDD",
+ "name": "PDD Holdings Inc.",
+ "cik": 1737806,
+ "q": [
+  {
+   "end": "2020-12-31",
+   "label": "FY2020 Q4",
+   "rev": 4265377000,
+   "gp": 2452619000,
+   "op": -357629000,
+   "ni": -245597000,
+   "eps": -0.05000000000000002,
+   "ocf": 2369802000,
+   "capex": 3937000,
+   "fcf": 2365865000
+  }
+ ],
+ "latest": {
+  "label": "FY2020 Q4",
+  "filed": "2021-04-30",
+  "accn": "0001104659-21-058237",
+  "form": "20-F",
+  "end": "2020-12-31"
+ },
+ "bal": {
+  "end": "2020-12-31",
+  "cash": 3436198000,
+  "sti": 9892888000,
+  "debt": null
+ },
+ "bank": false,
+ "seg": {
+  "axis": "srt:ProductOrServiceAxis",
+  "basis": "year",
+  "rows": [
+   {
+    "name": "Online marketing services and others",
+    "val": 7349238000.0,
+    "prev": 26813641000.0
+   },
+   {
+    "name": "Transaction services",
+    "val": 886960000.0,
+    "prev": 3328245000.0
+   },
+   {
+    "name": "Merchandise sales",
+    "val": 881329000.0,
+    "prev": null
+   }
+  ],
+  "accn": "0001104659-21-058237"
+ },
+ "rules": 4,
+ "diag": {
+  "newest": "2025-12-31",
+  "rev_last": "2020-12-31",
+  "have": [
+   {
+    "c": "us-gaap:ContractWithCustomerLiabilityRevenueRecognized",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 7798170000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-04-29"
+   },
+   {
+    "c": "us-gaap:ContractWithCustomerLiabilityRevenueRecognized",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 1115123000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-04-29"
+   },
+   {
+    "c": "us-gaap:CostOfRevenue",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 188801753000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-04-29"
+   },
+   {
+    "c": "us-gaap:CostOfRevenue",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 26998292000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-04-29"
+   },
+   {
+    "c": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 431845713000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-04-29"
+   },
+   {
+    "c": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 61753116000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-04-29"
+   },
+   {
+    "c": "us-gaap:PaymentsToAcquireAvailableForSaleSecuritiesDebt",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 28544366000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-04-29"
+   },
+   {
+    "c": "us-gaap:PaymentsToAcquireAvailableForSaleSecuritiesDebt",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 4081790000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-04-29"
+   },
+   {
+    "c": "us-gaap:ProceedsFromSaleOfAvailableForSaleSecuritiesDebt",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 6862682000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-04-29"
+   },
+   {
+    "c": "us-gaap:ProceedsFromSaleOfAvailableForSaleSecuritiesDebt",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 981350000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-04-29"
+   }
+  ],
+  "rev_concepts_last": {
+   "RevenueFromContractWithCustomerExcludingAssessedTax": {
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-04-29"
+   }
+  },
+  "few": {
+   "RevenueFromContractWithCustomerExcludingAssessedTax": {
+    "facts": 9,
+    "q": 0,
+    "first": null,
+    "last": null,
+    "labelled": 0
+   }
+  }
+ },
+ "mcap": 122412097536,
+ "next": "2026-11-19",
+ "last_report": "2026-11-19",
+ "est": {
+  "eps_act": null,
+  "eps_est": null,
+  "rev_est": null,
+  "rev_est_seen": null
+ },
+ "pending": {
+  "q": "2026-09-30",
+  "eps_act": 21.04,
+  "eps_est": 18.84143
+ }
+}

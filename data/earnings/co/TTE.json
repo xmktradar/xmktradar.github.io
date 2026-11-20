@@ -1,0 +1,233 @@
+{
+ "t": "TTE",
+ "name": "TotalEnergies SE",
+ "cik": 879764,
+ "q": [
+  {
+   "end": "2020-03-31",
+   "label": "FY2020 Q2",
+   "rev": 38577000000,
+   "gp": null,
+   "op": null,
+   "ni": 2000000,
+   "eps": -0.01,
+   "ocf": 1299000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2020-06-30",
+   "label": "FY2020 Q2",
+   "rev": 25730000000,
+   "gp": null,
+   "op": -8491000000,
+   "ni": -8422000000,
+   "eps": -3.27,
+   "ocf": 3479000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2021-03-31",
+   "label": "FY2021 Q2",
+   "rev": 43737000000,
+   "gp": null,
+   "op": null,
+   "ni": 3412000000,
+   "eps": 1.23,
+   "ocf": 5598000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2021-06-30",
+   "label": "FY2021 Q2",
+   "rev": 47049000000,
+   "gp": null,
+   "op": 4953000000,
+   "ni": 2299000000,
+   "eps": 0.8,
+   "ocf": 7551000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2022-03-31",
+   "label": "FY2022 Q2",
+   "rev": 68606000000,
+   "gp": null,
+   "op": null,
+   "ni": 5051000000,
+   "eps": 1.85,
+   "ocf": 7617000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2022-06-30",
+   "label": "FY2022 Q2",
+   "rev": 74774000000,
+   "gp": null,
+   "op": 13742000000,
+   "ni": 5804000000,
+   "eps": 2.16,
+   "ocf": 16284000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2023-03-31",
+   "label": "FY2023 Q2",
+   "rev": 62603000000,
+   "gp": null,
+   "op": null,
+   "ni": 5631000000,
+   "eps": 2.21,
+   "ocf": 5133000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2023-06-30",
+   "label": "FY2023 Q2",
+   "rev": 56271000000,
+   "gp": null,
+   "op": 6596000000,
+   "ni": 4152000000,
+   "eps": 1.64,
+   "ocf": 9900000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2024-03-31",
+   "label": "FY2024 Q2",
+   "rev": 56278000000,
+   "gp": null,
+   "op": null,
+   "ni": 5804000000,
+   "eps": 2.4,
+   "ocf": 2169000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2024-06-30",
+   "label": "FY2024 Q2",
+   "rev": 53743000000,
+   "gp": null,
+   "op": null,
+   "ni": 3847000000,
+   "eps": 1.6,
+   "ocf": 9007000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2025-03-31",
+   "label": "FY2025 Q2",
+   "rev": 52254000000,
+   "gp": null,
+   "op": null,
+   "ni": 3921000000,
+   "eps": 1.68,
+   "ocf": 2563000000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2025-06-30",
+   "label": "FY2025 Q2",
+   "rev": 49627000000,
+   "gp": null,
+   "op": null,
+   "ni": 2746000000,
+   "eps": 1.17,
+   "ocf": 5960000000,
+   "capex": null,
+   "fcf": null
+  }
+ ],
+ "latest": {
+  "label": "FY2025 Q2",
+  "filed": "2025-07-24",
+  "accn": "0001410578-25-001493",
+  "form": "6-K",
+  "end": "2025-06-30"
+ },
+ "bal": {
+  "end": "2025-06-30",
+  "cash": 20424000000,
+  "sti": null,
+  "debt": null
+ },
+ "bank": false,
+ "seg": {
+  "none": true,
+  "accn": "0001410578-25-001493"
+ },
+ "rules": 4,
+ "diag": {
+  "newest": "2025-12-31",
+  "rev_last": "2025-06-30",
+  "have": [
+   {
+    "c": "ifrs-full:OtherCashReceiptsFromSalesOfEquityOrDebtInstrumentsOfOtherEntitiesClassifiedAsInvestingActivities",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 329000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-27"
+   },
+   {
+    "c": "ifrs-full:RevenueFromContractsWithCustomers",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 201196000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-27"
+   },
+   {
+    "c": "ifrs-full:RevenueFromDividends",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 205000000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-27"
+   }
+  ],
+  "rev_concepts_last": {
+   "Revenue": {
+    "start": "2018-01-01",
+    "end": "2018-06-30",
+    "form": "6-K",
+    "fp": "H1",
+    "filed": "2018-07-27"
+   },
+   "RevenueFromContractsWithCustomers": {
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-03-27"
+   }
+  }
+ },
+ "mcap": 189154017280,
+ "next": "2026-10-29",
+ "last_report": "2026-10-29",
+ "est": {
+  "eps_act": null,
+  "eps_est": null,
+  "rev_est": null,
+  "rev_est_seen": null
+ },
+ "pending": {
+  "q": "2026-09-30",
+  "eps_act": 4.03,
+  "eps_est": 3.606
+ }
+}
