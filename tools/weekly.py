@@ -170,8 +170,12 @@ def scorecard_html(t):
     public.add('SPY')
     leaked = sorted({row['t'] for row in current if row['t'] not in public})
     for ticker in leaked:
-        if re.search(r'(?<![A-Z0-9])' + re.escape(ticker) + r'(?![A-Z0-9])', html):
+        # Lower case counts as part of a word. Otherwise ticker P matches PingFang, Plex and Pro, and the whole site update stops before prices are published.
+        if len(ticker) < 2:
+            continue
+        if re.search(r'(?<![A-Za-z0-9])' + re.escape(ticker) + r'(?![A-Za-z0-9])', html):
             raise SystemExit('weekly page leaked a current-week name: ' + ticker)
+
     rets = [row.get('ret') for row in ordered] if pub_start and pub_rows else []
     nums = [v for v in rets if isinstance(v, (int, float))]
     if nums != sorted(nums, reverse=True):
