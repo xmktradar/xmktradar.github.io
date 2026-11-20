@@ -2,7 +2,7 @@
 
 Spec: Claude project file dashboard/earnings-brief-spec.md. No AI, no paid API:
   - company list: SEC's ticker list (Nasdaq/NYSE) + Yahoo v7 quotes (market cap, next results date), once a day
-  - reported numbers: SEC XBRL companyfacts (10-Q / 10-K). Only companies that file 10-Q get a brief.
+  - reported numbers: SEC XBRL companyfacts (10-Q / 10-K, and 20-F / 6-K for US-listed foreign filers).
   - revenue lines: the segment facts inside the latest 10-Q / 10-K instance (SEC Archives)
   - estimates: Yahoo quoteSummary (earningsHistory = EPS actual vs estimate; earningsTrend = revenue estimate,
     saved before the results so it can be compared afterwards)
@@ -37,19 +37,23 @@ BUDGET = float(os.environ.get('EARNINGS_BUDGET', '540'))  # seconds; the rest wa
 START = time.time()
 
 REV = ('Revenues', 'RevenueFromContractWithCustomerExcludingAssessedTax', 'RevenueFromContractWithCustomerIncludingAssessedTax',
-       'SalesRevenueNet', 'SalesRevenueGoodsNet', 'RevenuesNetOfInterestExpense')
+       'SalesRevenueNet', 'SalesRevenueGoodsNet', 'RevenuesNetOfInterestExpense',
+       'Revenue', 'RevenueFromContractsWithCustomers')
 BANK_REV = 'RevenuesNetOfInterestExpense'
 COST = ('CostOfRevenue', 'CostOfGoodsAndServicesSold', 'CostOfGoodsSold')
 DUR = {
     'gp': ('GrossProfit',),
-    'op': ('OperatingIncomeLoss',),
+    'op': ('OperatingIncomeLoss', 'ProfitLossFromOperatingActivities'),
     'ni': ('NetIncomeLoss', 'NetIncomeLossAvailableToCommonStockholdersBasic', 'ProfitLoss'),
-    'ocf': ('NetCashProvidedByUsedInOperatingActivities', 'NetCashProvidedByUsedInOperatingActivitiesContinuingOperations'),
-    'capex': ('PaymentsToAcquirePropertyPlantAndEquipment', 'PaymentsToAcquireProductiveAssets'),
+    'ocf': ('NetCashProvidedByUsedInOperatingActivities', 'NetCashProvidedByUsedInOperatingActivitiesContinuingOperations',
+            'CashFlowsFromUsedInOperatingActivities'),
+    'capex': ('PaymentsToAcquirePropertyPlantAndEquipment', 'PaymentsToAcquireProductiveAssets',
+              'PurchaseOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities'),
 }
-EPS = ('EarningsPerShareDiluted', 'EarningsPerShareBasicAndDiluted')
+EPS = ('EarningsPerShareDiluted', 'EarningsPerShareBasicAndDiluted', 'DilutedEarningsLossPerShare', 'BasicEarningsLossPerShare')
 INST = {
-    'cash': ('CashAndCashEquivalentsAtCarryingValue', 'CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents', 'CashAndDueFromBanks'),
+    'cash': ('CashAndCashEquivalentsAtCarryingValue', 'CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents',
+             'CashAndDueFromBanks', 'CashAndCashEquivalents'),
     'sti': ('ShortTermInvestments', 'MarketableSecuritiesCurrent', 'AvailableForSaleSecuritiesDebtSecuritiesCurrent'),
     'ltd': ('LongTermDebt',),
     'ltd_nc': ('LongTermDebtNoncurrent', 'LongTermDebtAndCapitalLeaseObligations'),
@@ -179,15 +183,25 @@ def today_ny():
 
 # ---------- XBRL companyfacts -> quarters ----------
 
+# 20-F / 6-K: a US-listed foreign company (TSM, BABA) does not file a 10-Q.
+FORMS = ('10-Q', '10-K', '20-F', '6-K')
+
+
+def is_filing(e):
+    return str(e.get('form', '')).startswith(FORMS) and 'val' in e
+
+
 def entries(facts, name, unit='USD'):
+    out = []
     for tax in ('us-gaap', 'ifrs-full'):
         c = ((facts.get('facts') or {}).get(tax) or {}).get(name)
-        if c:
-            u = c.get('units') or {}
-            got = u.get(unit) or (u.get('USD/shares') if unit == 'USD/shares' else None)
-            if got:
-                return [e for e in got if str(e.get('form', '')).startswith(('10-Q', '10-K')) and 'val' in e]
-    return []
+        if not c:
+            continue
+        u = c.get('units') or {}
+        got = u.get(unit) or (u.get('USD/shares') if unit == 'USD/shares' else None)
+        if got:
+            out.extend(e for e in got if is_filing(e))
+    return out
 
 
 def best(es):
@@ -264,12 +278,11 @@ def periods(facts):
     labelled fact covers gets its label from the fiscal year-end month (XOM in 2026-10)."""
     first, any_ = {}, {}
     fye = None
-    for tax in ('us-gaap', 'dei'):
+    for tax in ('us-gaap', 'ifrs-full', 'dei'):
         for c in ((facts.get('facts') or {}).get(tax) or {}).values():
             for es in (c.get('units') or {}).values():
                 for e in es:
-                    form = str(e.get('form', ''))
-                    if not form.startswith(('10-Q', '10-K')):
+                    if not is_filing(e):
                         continue
                     k = e['end']
                     if k not in any_ or e.get('filed', '') < any_[k].get('filed', ''):
@@ -485,7 +498,7 @@ def newest_period(facts):
         for c in cs.values():
             for es in (c.get('units') or {}).values():
                 for e in es:
-                    if e.get('start') and str(e.get('form', '')).startswith(('10-Q', '10-K')) and e['end'] <= e.get('filed', ''):
+                    if e.get('start') and is_filing(e) and e['end'] <= e.get('filed', ''):
                         if best_ is None or e['end'] > best_:
                             best_ = e['end']
     return best_
@@ -504,7 +517,7 @@ def diagnose(facts, rev_last):
                 continue
             for unit, es in (c.get('units') or {}).items():
                 for e in es:
-                    if e['end'] == newest and e.get('start') and str(e.get('form', '')).startswith(('10-Q', '10-K')):
+                    if e['end'] == newest and e.get('start') and is_filing(e):
                         found.append({'c': f'{tax}:{name}', 'start': e['start'], 'end': e['end'], 'val': e['val'], 'form': e.get('form'),
                                       'fp': e.get('fp'), 'filed': e.get('filed')})
     last = {}
@@ -776,6 +789,93 @@ def estimate_for(st, end):
             'rev_est': rev and rev.get('rev'), 'rev_est_seen': rev and rev.get('seen')}
 
 
+_fx = {}
+
+
+def usd_per(ccy):
+    """How many units of ccy one US dollar buys. Yahoo's CCY=X quote."""
+    if not ccy or ccy == 'USD':
+        return 1.0
+    if ccy in _fx:
+        return _fx[ccy]
+    c = crumb()
+    j = yahoo('https://query1.finance.yahoo.com/v7/finance/quote?symbols=' + urllib.parse.quote(ccy + '=X') +
+              '&crumb=' + urllib.parse.quote(c or ''))
+    px = None
+    for q in ((j or {}).get('quoteResponse') or {}).get('result') or []:
+        px = q.get('regularMarketPrice')
+    _fx[ccy] = px if isinstance(px, (int, float)) and px > 0 else None
+    return _fx[ccy]
+
+
+def yahoo_quarters(sym):
+    """Quarterly figures for a US-listed company whose SEC file has no 10-Q (a 20-F filer).
+
+    Yahoo reports the home-currency numbers. They are converted to USD at today's rate so the
+    brief stays in dollars. Returns None when there are not four quarters, or no FX rate.
+    """
+    c = crumb()
+    if not c:
+        return None
+    types = ','.join((
+        'quarterlyTotalRevenue', 'quarterlyGrossProfit', 'quarterlyOperatingIncome', 'quarterlyNetIncome',
+        'quarterlyOperatingCashFlow', 'quarterlyCapitalExpenditure',
+        'quarterlyCashAndCashEquivalents', 'quarterlyTotalDebt'))
+    url = ('https://query1.finance.yahoo.com/ws/fundamentals-timeseries/v1/finance/timeseries/'
+           f'{urllib.parse.quote(sym)}?symbol={urllib.parse.quote(sym)}&type={types}'
+           f'&period1=1577836800&period2=1900000000&crumb={urllib.parse.quote(c)}')
+    ts = yahoo(url)
+    series = {}
+    for s in ((ts or {}).get('timeseries') or {}).get('result') or []:
+        meta = s.get('meta') or {}
+        typ = meta.get('type')
+        if isinstance(typ, list):
+            typ = typ[0] if typ else None
+        for row in s.get(typ) or []:
+            if not isinstance(row, dict) or row.get('periodType') not in (None, '3M'):
+                continue
+            val, end = raw(row.get('reportedValue')), row.get('asOfDate')
+            if val in (None, 0) or not end:
+                continue
+            series.setdefault(typ, {})[end] = (val, row.get('currencyCode') or 'USD')
+    rev = series.get('quarterlyTotalRevenue') or {}
+    if len(rev) < 4:
+        return None
+    ends = sorted(rev)
+    ccy = rev[ends[-1]][1] or 'USD'
+    rate = usd_per(ccy)
+    if not rate:
+        return None
+    fx = None if ccy == 'USD' else {'ccy': ccy, 'per_usd': round(rate, 4)}
+
+    def usd(end, typ, absolute=False):
+        pair = (series.get(typ) or {}).get(end)
+        if not pair or not pair[0]:
+            return None
+        val = abs(pair[0]) if absolute else pair[0]
+        return val / rate
+
+    def qlabel(end):
+        y, m, _ = end.split('-')
+        return f'FY{y} Q{(int(m) - 1) // 3 + 1}'
+
+    qs = []
+    for e in ends[-QUARTERS_KEPT:]:
+        ocf, capex = usd(e, 'quarterlyOperatingCashFlow'), usd(e, 'quarterlyCapitalExpenditure', absolute=True)
+        qs.append({'end': e, 'label': qlabel(e), 'rev': usd(e, 'quarterlyTotalRevenue'),
+                   'gp': usd(e, 'quarterlyGrossProfit'), 'op': usd(e, 'quarterlyOperatingIncome'),
+                   'ni': usd(e, 'quarterlyNetIncome'), 'eps': None, 'ocf': ocf, 'capex': capex,
+                   'fcf': (ocf - capex) if ocf is not None and capex is not None else None})
+    last = qs[-1]
+    cash, debt = usd(last['end'], 'quarterlyCashAndCashEquivalents'), usd(last['end'], 'quarterlyTotalDebt')
+    bal = {'end': last['end'], 'cash': cash, 'sti': None, 'debt': debt} if cash is not None or debt is not None else None
+    out = {'q': qs, 'latest': {'label': last['label'], 'filed': last['end'], 'accn': None, 'form': 'Yahoo', 'end': last['end']},
+           'bal': bal, 'bank': False, 'diag': None}
+    if fx:
+        out['fx'] = fx
+    return out
+
+
 def write_if_changed(path, obj):
     old = read_json(path)
     if old == obj:
@@ -831,9 +931,9 @@ def main():
         waiting = lr and latest_end and lr > latest_end and days(lr, tny) <= 60
         checked = st.get('facts_hkt')
         stale = not checked or (now - datetime.fromisoformat(checked).replace(tzinfo=HK)) >= timedelta(hours=3)
-        if co is None and st.get('no_10q') and checked and (now - datetime.fromisoformat(checked).replace(tzinfo=HK)) < timedelta(days=7):
+        if co is None and st.get('no_10q') and st.get('fpi') == 1 and checked and (now - datetime.fromisoformat(checked).replace(tzinfo=HK)) < timedelta(days=7):
             done += 1
-            continue  # foreign filer (20-F / 6-K): checked again weekly
+            continue  # foreign filer still has no usable 20-F / 6-K: checked again weekly
         thin = co is not None and len(co.get('q') or []) < 6  # too few quarters (XOM): read again daily too
         old = latest_end and (days(latest_end, tny) > STALE_DAYS or thin) and (
             not checked or (now - datetime.fromisoformat(checked).replace(tzinfo=HK)) >= timedelta(hours=24))
@@ -841,53 +941,59 @@ def main():
             facts = sec_json(f'https://data.sec.gov/api/xbrl/companyfacts/CIK{int(info["cik"]):010d}.json')
             st['facts_hkt'] = stamp
             fetched += 1
-            if facts:
-                b = build_quarters(facts)
-                if b and (days(b['latest']['end'], tny) > FILED_GAP or (lr and lr > b['latest']['end'])):
-                    log = []
-                    try:
-                        if supplement(facts, info['cik'], b['latest']['end'], log):
-                            b = build_quarters(facts)
-                    except Exception as e:  # a strange filing must not stop the others
-                        log.append(f'error: {e}')
-                    st['supp'] = {'hkt': stamp, 'log': log[:6]}  # why a brief still shows an old quarter
-                if b and len(b['q']) < 6:  # companyfacts holds few revenue facts (XOM): each 10-Q/10-K also carries last year's quarter
-                    log = []
-                    try:
-                        if predecessor(facts, info['cik'], log):
-                            b = build_quarters(facts) or b
-                        if len(b['q']) < 6 and supplement(facts, info['cik'], '', log, newest=8):
-                            b = build_quarters(facts) or b
-                    except Exception as e:
-                        log.append(f'error: {e}')
-                    st['backfill'] = {'hkt': stamp, 'q': len(b['q']), 'log': log[:9]}
-                if not b:
-                    st['no_10q'] = True
-                    done += 1
-                    continue
-                st.pop('no_10q', None)
-                new_end = b['latest']['end']
-                fresh = b['latest'].get('filed') and days(b['latest']['filed'], tny) <= 5  # never post an old quarter found late
-                if co and latest_end and new_end > latest_end and fresh:
-                    events.append({'t': t, 'end': new_end, 'label': b['latest']['label'], 'filed': b['latest']['filed'],
-                                   'report': lr if lr and lr >= new_end else b['latest']['filed'], 'found_hkt': stamp,
-                                   'first_run': first_run})
-                seg = (co or {}).get('seg')
-                if not seg or seg.get('accn') != b['latest']['accn']:
-                    try:
-                        got = fetch_segments(info['cik'], b['latest']['accn'], new_end, b['q'][-1]['rev'], year_total(facts, new_end))
-                    except Exception as e:  # a strange filing must not stop the others
-                        print(f'segments {t}: {e}', file=sys.stderr)
-                        got = None
-                    if got is not None:
-                        seg = dict(got, accn=b['latest']['accn'])
-                    elif seg and seg.get('accn') != b['latest']['accn']:
-                        seg = None
-                co = {'t': t, 'name': info['name'], 'cik': info['cik'], 'q': b['q'], 'latest': b['latest'], 'bal': b['bal'],
-                      'bank': b['bank'], 'seg': seg, 'rules': RULES}
-                if b['diag']:
-                    co['diag'] = b['diag']
-                latest_end = new_end
+            b = build_quarters(facts) if facts else None
+            if b and (days(b['latest']['end'], tny) > FILED_GAP or (lr and lr > b['latest']['end'])):
+                log = []
+                try:
+                    if supplement(facts, info['cik'], b['latest']['end'], log):
+                        b = build_quarters(facts)
+                except Exception as e:  # a strange filing must not stop the others
+                    log.append(f'error: {e}')
+                st['supp'] = {'hkt': stamp, 'log': log[:6]}  # why a brief still shows an old quarter
+            if b and len(b['q']) < 6:  # companyfacts holds few revenue facts (XOM): each 10-Q/10-K also carries last year's quarter
+                log = []
+                try:
+                    if predecessor(facts, info['cik'], log):
+                        b = build_quarters(facts) or b
+                    if len(b['q']) < 6 and supplement(facts, info['cik'], '', log, newest=8):
+                        b = build_quarters(facts) or b
+                except Exception as e:
+                    log.append(f'error: {e}')
+                st['backfill'] = {'hkt': stamp, 'q': len(b['q']), 'log': log[:9]}
+            if not b:
+                b = yahoo_quarters(t)  # US-listed foreign filer: no quarterly 10-Q in companyfacts
+            if not b:
+                st['no_10q'] = True
+                st['fpi'] = 1
+                done += 1
+                continue
+            st.pop('no_10q', None)
+            st.pop('fpi', None)
+            new_end = b['latest']['end']
+            fresh = b['latest'].get('filed') and days(b['latest']['filed'], tny) <= 5  # never post an old quarter found late
+            if co and latest_end and new_end > latest_end and fresh:
+                events.append({'t': t, 'end': new_end, 'label': b['latest']['label'], 'filed': b['latest']['filed'],
+                               'report': lr if lr and lr >= new_end else b['latest']['filed'], 'found_hkt': stamp,
+                               'first_run': first_run})
+            seg = (co or {}).get('seg')
+            accn = b['latest'].get('accn')
+            if accn and (not seg or seg.get('accn') != accn):
+                try:
+                    got = fetch_segments(info['cik'], accn, new_end, b['q'][-1]['rev'], year_total(facts, new_end))
+                except Exception as e:  # a strange filing must not stop the others
+                    print(f'segments {t}: {e}', file=sys.stderr)
+                    got = None
+                if got is not None:
+                    seg = dict(got, accn=accn)
+                elif seg and seg.get('accn') != accn:
+                    seg = None
+            co = {'t': t, 'name': info['name'], 'cik': info['cik'], 'q': b['q'], 'latest': b['latest'], 'bal': b['bal'],
+                  'bank': b['bank'], 'seg': seg, 'rules': RULES}
+            if b.get('fx'):
+                co['fx'] = b['fx']
+            if b['diag']:
+                co['diag'] = b['diag']
+            latest_end = new_end
         if co is None:
             done += 1
             continue
