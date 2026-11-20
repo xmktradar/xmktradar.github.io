@@ -4,6 +4,18 @@
  "cik": 1089113,
  "q": [
   {
+   "end": "2025-03-31",
+   "label": "FY2025 Q1",
+   "rev": 17740000000.0,
+   "gp": null,
+   "op": null,
+   "ni": 7324000000.0,
+   "eps": null,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
    "end": "2025-06-30",
    "label": "FY2025 Q2",
    "rev": 17657000000.0,
@@ -50,42 +62,30 @@
    "ocf": null,
    "capex": null,
    "fcf": null
-  },
-  {
-   "end": "2026-06-30",
-   "label": "FY2026 Q2",
-   "rev": 19043000000.0,
-   "gp": null,
-   "op": null,
-   "ni": 7914000000.0,
-   "eps": null,
-   "ocf": null,
-   "capex": null,
-   "fcf": null
   }
  ],
  "latest": {
-  "label": "FY2026 Q2",
-  "filed": "2026-06-30",
+  "label": "FY2026 Q1",
+  "filed": "2026-03-31",
   "accn": null,
   "form": "Yahoo",
-  "end": "2026-06-30"
+  "end": "2026-03-31"
  },
  "bal": {
-  "end": "2026-06-30",
-  "cash": 227800000000.0,
+  "end": "2026-03-31",
+  "cash": 214707000000.0,
   "sti": null,
-  "debt": 132899000000.0
+  "debt": 101742000000.0
  },
  "bank": false,
  "seg": null,
  "rules": 4,
- "mcap": 284853469184,
+ "mcap": 274327027712,
  "next": "2026-10-27",
  "last_report": "2026-10-27",
  "est": {
-  "eps_act": 2.25,
-  "eps_est": 2.32568,
+  "eps_act": 2.2,
+  "eps_est": 2.16126,
   "rev_est": null,
   "rev_est_seen": null
  },

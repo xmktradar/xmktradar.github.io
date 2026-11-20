@@ -29,13 +29,6 @@
    "backlog": true
   },
   {
-   "t": "KMI",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-21 00:00",
-   "backlog": true
-  },
-  {
    "t": "NDAQ",
    "end": "2026-09-30",
    "label": "FY2026 Q3",
@@ -54,13 +47,6 @@
    "end": "2026-09-30",
    "label": "FY2026 Q3",
    "found_hkt": "2026-10-26 00:00",
-   "backlog": true
-  },
-  {
-   "t": "URI",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-21 00:00",
    "backlog": true
   },
   {
@@ -442,13 +428,6 @@
    "backlog": true
   },
   {
-   "t": "WAB",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-21 00:00",
-   "backlog": true
-  },
-  {
    "t": "ARM",
    "end": "2026-09-30",
    "label": "FY2027 Q2",
@@ -593,13 +572,6 @@
    "end": "2026-09-30",
    "label": "FY2026 Q3",
    "found_hkt": "2026-11-03 00:00",
-   "backlog": true
-  },
-  {
-   "t": "SAP",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-21 00:00",
    "backlog": true
   },
   {
@@ -1987,6 +1959,38 @@
    "backlog": true,
    "posted": "2026-11-20",
    "slot": "2200"
+  },
+  {
+   "t": "KMI",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-21 00:00",
+   "backlog": true,
+   "dropped": true
+  },
+  {
+   "t": "URI",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-21 00:00",
+   "backlog": true,
+   "dropped": true
+  },
+  {
+   "t": "WAB",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-21 00:00",
+   "backlog": true,
+   "dropped": true
+  },
+  {
+   "t": "SAP",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-21 00:00",
+   "backlog": true,
+   "dropped": true
   }
  ],
  "slots": {
