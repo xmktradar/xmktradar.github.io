@@ -220,6 +220,8 @@ jobs:
             cp "$WORK_DIR/earnings-posts.json" data/earnings-posts.json
             mkdir -p social && cp "$WORK_DIR/earnings.html" social/earnings.html
           fi
+      - name: X account photos for every mentioned handle
+        run: python3 tools/fill_avatars.py
       - name: Language versions
         run: python3 tools/build_langs.py
       - name: Support page
