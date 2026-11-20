@@ -1,1 +1,74 @@
-PLACEHOLDER_TO_BE_REPLACED
+{
+  "posts": {
+    "2123563538325356994": {
+      "en_summary": "Finally seeing $NYMO and $NAMO registering actual oversold readings after big gap up and fade, a missing piece for sustained upside reversal after recent 15% pullback in indices that began 6 weeks ago. Big spike in $VXX $VIX as NASDAQ closed below Wednesday's reversal stick. $NAMO most oversold since Nov 2025, $NYMO since March 2026, both preceded multi-week moves higher.",
+      "zh_summary": "終於看到$NYMO和$NAMO出現真正的超賣讀數，在大幅跳空高開後逐漸回落，這是在指數近期自6週前開始的15%回撤後，尋找持續上行反轉所缺失的部分。$VXX $VIX大幅飆升，納斯達克收於週三反轉棒下方。$NAMO為2025年11月以來最超賣，$NYMO為2026年3月以來最超賣，兩者此前均預示股票出現多週上漲。",
+      "tickers": ["QQQ"],
+      "stance": "睇好",
+      "stance_by_ticker": {"QQQ": "睇好"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    },
+    "2123563516049424774": {
+      "en_summary": "Now is time for India $INDZ.",
+      "zh_summary": "現在是印度$INDZ的時機。",
+      "tickers": ["INDZ"],
+      "stance": "睇好",
+      "stance_by_ticker": {"INDZ": "睇好"},
+      "horizon": "中線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123561279831121952": {
+      "en_summary": "Silver Collapse $SI_F. The Silver market voted A, far lower than expected; expected $50 to hold, at worst $48.",
+      "zh_summary": "白銀崩潰$SI_F。白銀市場投了A，遠低於預期；預期50美元會守住，最差48美元。",
+      "tickers": [],
+      "stance": "睇淡",
+      "stance_by_ticker": {},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123560447370842563": {
+      "en_summary": "$NVDA $NVDL straight through the volume gap in 2 candles. Nuts.",
+      "zh_summary": "$NVDA $NVDL在2根K線內直接穿過成交量缺口。瘋狂。",
+      "tickers": ["NVDA", "NVDL"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "NVDL": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123560148186873870": {
+      "en_summary": "Definitely was odd to see the flip back to backwardation today and not just front two months so worth staying cautious until $VIX un-inverts.",
+      "zh_summary": "今天看到重新轉為反向期貨結構確實奇怪，而且不只是前兩個月，因此在$VIX解除反向之前值得保持謹慎。",
+      "tickers": ["VIX"],
+      "stance": "中性",
+      "stance_by_ticker": {"VIX": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    }
+  }
+}
