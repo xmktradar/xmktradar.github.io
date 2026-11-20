@@ -37,6 +37,10 @@ jobs:
         run: python3 tools/apply_writeups.py
       - name: Skip consensus (no Playwright on lite)
         run: echo "Skipping tools/stats.js — Playwright not installed on inbox-lite; full consensus on Update site schedule."
+      - name: X account photos for every mentioned handle
+        env:
+          FILL_AVATAR_SECONDS: '180'
+        run: python3 tools/fill_avatars.py
       - name: Language versions
         run: python3 tools/build_langs.py
       - name: Slim homepages
@@ -49,7 +53,7 @@ jobs:
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
           ok=0
           for i in 1 2 3; do
-            git add -A index.html zh/ en/ data/pending-posts.json data/dash data/grok-inbox data/super-grok-analysis.json data/super-grok-writeups.json
+            git add -A index.html zh/ en/ data/pending-posts.json data/dash data/avatar-miss.json data/grok-inbox data/super-grok-analysis.json data/super-grok-writeups.json
             if git diff --cached --quiet; then
               ok=1
               break
@@ -68,6 +72,7 @@ jobs:
             python3 tools/merge_posts.py
             python3 tools/apply_writeups.py || true
             # stats.js skipped on lite (no Playwright); Update site schedule owns consensus
+            FILL_AVATAR_SECONDS=180 python3 tools/fill_avatars.py || true
             python3 tools/build_langs.py
             python3 tools/slim_pages.py --slim
             sleep $((i * 5))
