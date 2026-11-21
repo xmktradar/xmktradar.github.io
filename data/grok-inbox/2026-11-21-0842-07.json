@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123840564231643179": {
+      "en_summary": "Unreal. $7 MILLION of brand new $IWM puts now. RELENTLESS put buying across $SPY $QQQ & $IWM today.",
+      "zh_summary": "不真實。現在有 700 萬美元的全新 $IWM 看跌期權。今天在 $SPY $QQQ 和 $IWM 上持續買入看跌期權。",
+      "tickers": ["IWM", "SPY", "QQQ"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"IWM": "睇淡", "SPY": "睇淡", "QQQ": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"IWM": "$7M brand new puts", "SPY": "relentless put buying", "QQQ": "relentless put buying"}
+    },
+    "2123840481687658768": {
+      "en_summary": "$INTU cut its 2027 fiscal revenue outlook, citing a slowdown in Credit Karma.",
+      "zh_summary": "$INTU 下調了 2027 財年收入展望，理由是 Credit Karma 放緩。",
+      "tickers": ["INTU"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"INTU": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"INTU": "cut 2027 fiscal revenue outlook due to Credit Karma slowdown"}
+    },
+    "2123840452252352831": {
+      "en_summary": "$QQQ last bit of cope, hitting weekly triggers here. Ken griffin i'm sorry for posting the down syndrome meme. (Quoted: $QQQ just printed one of the rarest setups on file. A five-day drop this deep has shown up in only a handful of stretches since 2011.)",
+      "zh_summary": "$QQQ 最後一點應對，在這裡觸及每週觸發。Ken griffin 我為發布唐氏綜合症迷因感到抱歉。（引用：$QQQ 剛剛印出檔案中最罕見的設定之一。自 2011 年以來，如此深度的五日下跌僅出現在少數幾段時間。）",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "未表態"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2123840369163194764": {
+      "en_summary": "$AAPL is in focus after Bloomberg reported the tech behemoth is building its own AI agent for users.",
+      "zh_summary": "$AAPL 成為焦點，彭博報導這家科技巨頭正在為用戶構建自己的 AI 代理。",
+      "tickers": ["AAPL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AAPL": "睇好"},
+      "horizon": "中線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AAPL": "building its own AI agent for users"}
+    },
+    "2123840248161432042": {
+      "en_summary": "Investors running away from \"scary\" tech stocks and buying \"safe\" defensive stocks at perfectly reasonable valuations. $COST 53.7x P/E, $WMT 47.6x P/E, $CL 38.5x P/E, $KO 28.8x P/E. Forget AI. Toothpaste and household products are the future of investing.",
+      "zh_summary": "投資者從「可怕的」科技股逃離，買入「安全」的防禦股，估值完全合理。$COST 53.7x P/E，$WMT 47.6x P/E，$CL 38.5x P/E，$KO 28.8x P/E。忘記 AI。牙膏和家居產品是投資的未來。",
+      "tickers": ["COST", "WMT", "CL", "KO"],
+      "stance": "中性",
+      "stance_by_ticker": {"COST": "中性", "WMT": "中性", "CL": "中性", "KO": "中性"},
+      "horizon": null,
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"COST": "53.7x P/E", "WMT": "47.6x P/E", "CL": "38.5x P/E", "KO": "28.8x P/E"}
+    }
+  }
+}
