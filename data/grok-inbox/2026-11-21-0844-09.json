@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123838073217950186": {
+      "en_summary": "$SPX closed down 7 days in a row. It's now 10.2% under the Oct 6 high. Last time it did that was Feb 2020.",
+      "zh_summary": "$SPX 連續 7 天下跌收盤。現在比 10 月 6 日高點低 10.2%。上次發生這種情況是在 2020 年 2 月。",
+      "tickers": ["SPY"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPY": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"SPY": "down 7 days in a row, 10.2% under Oct 6 high, last in Feb 2020"}
+    },
+    "2123837527375356159": {
+      "en_summary": "Increasing unusual call option volume: $CG $FNV $MTDR $ALLY $REAL $FRSH $CKHP $INSM $UNIT $SEV $REPL $ESTC $FVRR",
+      "zh_summary": "不尋常看漲期權成交量增加：$CG $FNV $MTDR $ALLY $REAL $FRSH $CKHP $INSM $UNIT $SEV $REPL $ESTC $FVRR",
+      "tickers": ["CG", "FNV", "MTDR", "ALLY", "REAL", "FRSH", "CKHP", "INSM", "UNIT", "SEV", "REPL", "ESTC", "FVRR"],
+      "stance": "中性",
+      "stance_by_ticker": {"CG": "未表態", "FNV": "未表態", "MTDR": "未表態", "ALLY": "未表態", "REAL": "未表態", "FRSH": "未表態", "CKHP": "未表態", "INSM": "未表態", "UNIT": "未表態", "SEV": "未表態", "REPL": "未表態", "ESTC": "未表態", "FVRR": "未表態"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123837277671436471": {
+      "en_summary": "Solving the Riemann is undoubtedly very impressive. The case for anthropic changing their business structure to using their models themselves to solve problems rather than selling tokens grows stronger every day. They have the experts and the compute. One $ANT employee with fable 5.x is clearly orders of magnitude more impactful than the public streaming token.",
+      "zh_summary": "解決黎曼猜想無疑非常令人印象深刻。Anthropic 改變其業務結構，使用自己的模型解決問題而不是銷售代幣的案例每天都在增強。他們有專家和計算能力。一個擁有 fable 5.x 的 $ANT 員工顯然比公共流式代幣更具影響力數個數量級。",
+      "tickers": ["ANT"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ANT": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ANT": "case for using models internally to solve problems grows stronger"}
+    },
+    "2123836840431997298": {
+      "en_summary": "$SPX is 12 points above its biggest put wall. The 7,000 strike has -5B of net gamma and 85K+ puts open. Net gamma is -58.5B. Lose 7,000 and dealers are selling into the drop.",
+      "zh_summary": "$SPX 比其最大看跌期權牆高 12 點。7000 行使價有 -50 億淨伽瑪和 85K+ 未平倉看跌。淨伽瑪為 -585 億。跌破 7000 則交易商將在下跌中賣出。",
+      "tickers": ["SPY"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPY": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"SPY": "12 points above biggest put wall at 7000, net gamma -58.5B"}
+    },
+    "2123836786543862221": {
+      "en_summary": "Now that $ANT is trading here's how the lockup actually works. Only about 7% of Anthropic is public float. $SPCX floated about 4% in June and ran from $135 to $225 in three sessions. By late July it had lost about half its value from the peak before the first lock up even expired. Anthropic’s lock up is staged too and it started sooner. Employees and insiders could sell up to 315M shares.",
+      "zh_summary": "現在 $ANT 正在交易，這是鎖定的實際運作方式。Anthropic 只有約 7% 是公眾流通股。$SPCX 在 6 月流通約 4%，三個交易日從 135 美元漲到 225 美元。到 7 月底，在第一次鎖定到期前已從峰值失去約一半價值。Anthropic 的鎖定也是分階段的，而且開始得更早。員工和內部人士最多可以出售 3.15 億股。",
+      "tickers": ["ANT", "SPCX"],
+      "stance": "中性",
+      "stance_by_ticker": {"ANT": "中性", "SPCX": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ANT": "~7% public float, staged lockup, insiders can sell up to 315M shares", "SPCX": "floated 4% in June, ran $135 to $225 then lost half before lockup expired"}
+    }
+  }
+}
