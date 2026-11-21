@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2124198163909390757": {
+      "en_summary": "Activist Nelson Peltz has returned to Wendy's ($WEN) after previously walking away from the investment he loved most, according to a WSJ article.",
+      "zh_summary": "激進投資者 Nelson Peltz 在離開他最喜愛的投資後重返 Wendy's（$WEN），根據《華爾街日報》報導。",
+      "tickers": ["WEN"],
+      "stance": "中性",
+      "stance_by_ticker": {"WEN": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124197454530969656": {
+      "en_summary": "On the $CRWD and $ZS acquisition rumor: $ZS is the original Zero Trust player competing against $PANW, $FTNT, $CSCO (which pivoted to SASE) and rising upstarts like $NTSK, $NET and Cato. Suggests it would be cheaper for CrowdStrike to look at $NTSK or startups Cato or Versa to choose its preferred architecture instead of adopting Zscaler's. References a quoted view questioning synergies due to integration challenges, high churn and poor customer perception of Zscaler.",
+      "zh_summary": "關於 $CRWD 與 $ZS 收購傳聞：$ZS 是原始零信任玩家，與已轉型至 SASE 的 $PANW、$FTNT、$CSCO 以及新興的 $NTSK、$NET 和 Cato 競爭。建議 CrowdStrike 考慮 $NTSK 或初創公司 Cato 或 Versa 更便宜，可選擇偏好架構而非採用 Zscaler 的。引用觀點質疑協同效應，因整合挑戰、高流失率及 Zscaler 客戶認知差。",
+      "tickers": ["CRWD", "ZS", "PANW", "FTNT", "CSCO", "NTSK", "NET"],
+      "stance": "中性",
+      "stance_by_ticker": {"CRWD": "中性", "ZS": "中性", "PANW": "中性", "FTNT": "中性", "CSCO": "中性", "NTSK": "中性", "NET": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124196957639852200": {
+      "en_summary": "Stats on a severe market week: $SPY fell 8.5% (worst since April 2025, 7 consecutive red days worst since March 2020); $7.5T market cap lost this week (GFC took 2 years for $10.5T); $QQQ dropped 10% (worst since March 2020, -5.3% Friday, now negative for 2026, 9th worst week ever); $SMH fell 17% (worst since 2001); $NVDA dropped 14% Friday and lost over $2T since October; $SMH up only 11% YTD (was 80% in June); S&P P/E crashed to 16.5x (lowest since early 2023); 42.3% of S&P hit new 20-day low (most since March); S&P down over 7% in November (similar to 2008 and 2000); Taiwan imposed short-selling restrictions after 18% weekly plunge, $TSM down 17%. Questions if volatility continues or buyers step in.",
+      "zh_summary": "市場嚴重一週的統計：$SPY 下跌 8.5%（自 2025 年 4 月以來最差，連續 7 日收紅自 2020 年 3 月以來最差）；本週市值損失 7.5 萬億美元（全球金融危機花 2 年損失 10.5 萬億）；$QQQ 下跌 10%（自 2020 年 3 月以來最差，週五 -5.3%，2026 年轉負，史上第 9 差一週）；$SMH 下跌 17%（自 2001 年以來最差）；$NVDA 週五下跌 14%，自 10 月以來損失超過 2 萬億市值；$SMH 年初至今僅上漲 11%（6 月曾為 80%）；標普市盈率跌至 16.5 倍（自 2023 年初以來最低）；42.3% 標普成分股創 20 日新低（自 3 月以來最多）；標普 11 月下跌超過 7%（類似 2008 及 2000 年）；台灣在單週暴跌 18% 後實施空頭限制，$TSM 本週下跌 17%。質疑波動是否持續或買家進場。",
+      "tickers": ["SPY", "QQQ", "SMH", "NVDA", "TSM"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "QQQ": "中性", "SMH": "中性", "NVDA": "中性", "TSM": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2124195375216988270": {
+      "en_summary": "CrowdStrike $CRWD finally wants to move into SASE and is looking to buy close partner Zscaler $ZS. Author has entertained this idea since buying CRWD on day 1 after IPO, but it required Zscaler's founding CEO to be ready to retire. Views the deal as absolutely additive to CRWD's platform by adding networking security capabilities including SSE/SASE, inline CASB and DLP.",
+      "zh_summary": "CrowdStrike $CRWD 終於想進入 SASE，正尋求收購親密合作夥伴 Zscaler $ZS。作者自 IPO 後首日購買 CRWD 以來就考慮過此想法，但需等待 Zscaler 創始 CEO 準備退休。認為此交易對 CRWD 平台絕對有加成作用，加入網絡安全能力，包括 SSE/SASE、內聯 CASB 和 DLP。",
+      "tickers": ["CRWD", "ZS"],
+      "stance": "睇好",
+      "stance_by_ticker": {"CRWD": "睇好", "ZS": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124195152600436910": {
+      "en_summary": "Reply explaining why $NBIS is not included: it is building a full-stack AI cloud with its own software layer and sells tokens rather than megawatts, funded its buildout with low-coupon converts (less than 4.5%) instead of expensive GPU-backed debt. It is closer to a mini-hyperscaler.",
+      "zh_summary": "回覆解釋為何 $NBIS 未被列入：它正在建設擁有自身軟件層的全棧 AI 雲，銷售代幣而非兆瓦，並以低息可轉債（低於 4.5%）而非昂貴的 GPU 支持債務融資其建設。它更接近迷你超大規模雲提供商。",
+      "tickers": ["NBIS"],
+      "stance": "中性",
+      "stance_by_ticker": {"NBIS": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
