@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123841418577973727": {
+      "en_summary": "Democrats: \"Let's ban new datacenters in the US\". Trump: \"Let's ban new datacenters overseas\". $CRWV: ???",
+      "zh_summary": "民主黨：「讓我們禁止美國新數據中心」。川普：「讓我們禁止海外新數據中心」。$CRWV：？？？",
+      "tickers": ["CRWV"],
+      "stance": "中性",
+      "stance_by_ticker": {"CRWV": "未表態"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2123841257927528878": {
+      "en_summary": "$META remains the worst stock",
+      "zh_summary": "$META 仍然是最差的股票",
+      "tickers": ["META"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"META": "睇淡"},
+      "horizon": "中線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123841137144439196": {
+      "en_summary": "@TQInvestor @DivesTech A few of them have held up well but $GOOG is down -33% and $META is down -27%.",
+      "zh_summary": "@TQInvestor @DivesTech 其中一些表現不錯，但 $GOOG 下跌 33%，$META 下跌 27%。",
+      "tickers": ["GOOG", "META"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"GOOG": "睇淡", "META": "睇淡"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"GOOG": "down -33%", "META": "down -27%"}
+    },
+    "2123840848097853851": {
+      "en_summary": "$SPX oversold for the first time since the March 2026 market low. Short-term bounce into next week a likely scenario... but I'm not feeling \"this all over with\" vibes today. You?",
+      "zh_summary": "$SPX 自 2026 年 3 月市場低點以來首次超賣。短期反彈至下週是可能的情景……但今天我沒有「這一切都結束了」的感覺。你呢？",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {"SPY": "oversold for first time since March 2026 low, short-term bounce likely"}
+    },
+    "2123840577313935743": {
+      "en_summary": "$ROST Reported a disappointing current-quarter outlook",
+      "zh_summary": "$ROST 報告了令人失望的當季展望",
+      "tickers": ["ROST"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"ROST": "睇淡"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ROST": "disappointing current-quarter outlook"}
+    }
+  }
+}
