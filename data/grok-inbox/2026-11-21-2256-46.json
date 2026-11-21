@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123823979081122299": {
+      "en_summary": "Last move on tech today is some $DOCN. I will come back later and see if I want to do any more buying.",
+      "zh_summary": "今天科技股的最後動作是一些$DOCN。我稍後會回來看看是否想再買入。",
+      "tickers": ["DOCN"],
+      "stance": "中性",
+      "stance_by_ticker": {"DOCN": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123823942423224423": {
+      "en_summary": "$DELL down over 50% since October highs",
+      "zh_summary": "$DELL自10月高點以來下跌超過50%",
+      "tickers": ["DELL"],
+      "stance": "中性",
+      "stance_by_ticker": {"DELL": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123823858478096394": {
+      "en_summary": "Nvidia now trades at 9x forward earnings, lowest in 15 years. Way cheaper than TSMC, AMD, Alphabet, Microsoft and the S&P 500. Hard to see $NVDA staying at these levels given it's expected to make $100+ billion every 3 months for a long time.",
+      "zh_summary": "Nvidia現在以9倍前瞻盈利交易，為15年來最低。比台積電、AMD、Alphabet、Microsoft和標普500便宜得多。鑑於預期長期每3個月賺1000億美元以上，很難看到$NVDA停留在這些水平。",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "9倍前瞻盈利，15年最低，預期每3個月賺1000億以上"}
+    },
+    "2123823614457991409": {
+      "en_summary": "#Prez to speak shortly $SPX $QQQ shorts winning.",
+      "zh_summary": "#Prez即將發言 $SPX $QQQ 空頭獲勝。",
+      "tickers": ["SPY", "QQQ"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPY": "睇淡", "QQQ": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2123822960272351287": {
+      "en_summary": "Puts paid all week. 14 for 14 on trades alerts in the discord... $SPX setting up for that 7000 test next. $QQQ already broke the 637 support , dropped 15 points... does it flush to 600? lets see. No sign of a bottom yet, don't fight the trend.",
+      "zh_summary": "看跌期權本週全部獲利。discord中14/14交易警報... $SPX接下來設置7000測試。$QQQ已經突破637支撑，下跌15點... 會沖到600嗎？讓我們看看。還沒有見底跡象，不要對抗趨勢。",
+      "tickers": ["SPY", "QQQ"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPY": "睇淡", "QQQ": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPY": "設置7000測試", "QQQ": "突破637支撑，可能沖到600"}
+    }
+  }
+}
