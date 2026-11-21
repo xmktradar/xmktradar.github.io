@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123842778199101840": {
+      "en_summary": "Check the comments. $TTWO. (Quoted: Grand Theft Auto VI is now available for PlayStation 5 and XBOX Series X|S.)",
+      "zh_summary": "查看評論。$TTWO。（引用：俠盜獵車手 VI 現已在 PlayStation 5 和 Xbox Series X|S 上推出。）",
+      "tickers": ["TTWO"],
+      "stance": "中性",
+      "stance_by_ticker": {"TTWO": "未表態"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123842736939814984": {
+      "en_summary": "@JonahLupton Makes sense. Investors running away from \"scary\" tech stocks and buying \"safe\" defensive stocks at perfectly reasonable valuations. $COST 53.7x P/E, $WMT 47.6x P/E, $CL 38x.",
+      "zh_summary": "@JonahLupton 有道理。投資者從「可怕的」科技股逃離，買入「安全」的防禦股，估值完全合理。$COST 53.7x P/E，$WMT 47.6x P/E，$CL 38x。",
+      "tickers": ["COST", "WMT", "CL"],
+      "stance": "中性",
+      "stance_by_ticker": {"COST": "中性", "WMT": "中性", "CL": "中性"},
+      "horizon": null,
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"COST": "53.7x P/E", "WMT": "47.6x P/E", "CL": "38x P/E"}
+    },
+    "2123841821822345581": {
+      "en_summary": "Consumer staples ($XLP) stocks now trading at a +50% earnings multiple premium to technology stocks ($QQQ)... with technology stocks growing earnings 6x faster than consumer staples stocks. #ThisIsWhatPeakFearLooksLike",
+      "zh_summary": "必需消費品 ($XLP) 股票現在以比科技股 ($QQQ) 高 50% 的盈利倍數交易……而科技股的盈利增長速度是必需消費品股票的 6 倍。#這就是巾峰恐懼的樣子",
+      "tickers": ["XLP", "QQQ"],
+      "stance": "睇好",
+      "stance_by_ticker": {"XLP": "睇淡", "QQQ": "睇好"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"QQQ": "growing earnings 6x faster, trading at discount to XLP", "XLP": "+50% earnings multiple premium to QQQ"}
+    },
+    "2123841677005590782": {
+      "en_summary": "$ANT bought a few shares. Stop if it drops below LOD (83).",
+      "zh_summary": "$ANT 買了一些股份。如果跌破 LOD (83) 就止損。",
+      "tickers": ["ANT"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ANT": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ANT": "bought shares, stop below LOD 83"}
+    },
+    "2123841513293566110": {
+      "en_summary": "BREAKING: Nvidia $NVDA now trading below its 200-day moving average by the largest margin in 4 years.",
+      "zh_summary": "突發：Nvidia $NVDA 現在以 4 年來最大幅度低於其 200 日移動平均線交易。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "below 200-day MA by largest margin in 4 years"}
+    }
+  }
+}
