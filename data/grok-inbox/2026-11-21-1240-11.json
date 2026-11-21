@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123894905814782043": {
+      "en_summary": "Stock Market, Crypto & Gold Analysis 11/20/26. $SPY $QQQQ $SMH $NVDA $IWM $XBI $TLT $GLD #Bitcoin #Ethereum etc",
+      "zh_summary": "2026年11月20日股市、加密貨幣與黃金分析。$SPY $QQQQ $SMH $NVDA $IWM $XBI $TLT $GLD #Bitcoin #Ethereum等。",
+      "tickers": ["SPY", "QQQ", "SMH", "NVDA", "IWM", "XBI", "TLT", "GLD"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "QQQ": "中性", "SMH": "中性", "NVDA": "中性", "IWM": "中性", "XBI": "中性", "TLT": "中性", "GLD": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2123894067969081354": {
+      "en_summary": "$BX Blackstone President and COO Jon Gray: I grew up in suburban Chicago. I'd never been to the East Coast until college at University of Pennsylvania. Made one really good decision to get a dual degree, English major and Wharton finance. Met a young woman in romantic poetry class, got a job at a small investment advisory firm in New York. 35 years later, with the same woman and working at the same firm. Luck is a core competency. When I joined Blackstone, there were 70 people, managed one LBO fund for $750 million. Today the firm manages $1.4 trillion. I feel incredibly lucky and it energizes me every day.",
+      "zh_summary": "$BX Blackstone總裁兼首席營運官Jon Gray：我在芝加哥郊區長大。上賓夕法尼亞大學之前從未去過東海岸。做了一個很好的決定，取得雙學位，英語專業和沃頓金融。在浪漫詩班認識一位年輕女子，幾週後在紐約一家小型投資顧問公司找到工作。35年後，與同一位女士在一起，在同一家公司工作。運氣是核心競爭力。加入Blackstone時只有70人，管理一個7.5億美元的LBO基金。今天公司管理1.4萬億美元。我感到非常幸運，這每天都激勵我。",
+      "tickers": ["BX"],
+      "stance": "中性",
+      "stance_by_ticker": {"BX": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123893577369452850": {
+      "en_summary": "@MartinShkreli Do you have stats for what $SPY did after?",
+      "zh_summary": "@MartinShkreli 你有$SPY之後的統計數據嗎？",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123892932902006993": {
+      "en_summary": "Tech imploded unlike anything since March 2020. $XLK",
+      "zh_summary": "科技股暴跌，程度自2020年3月以來未見。$XLK",
+      "tickers": ["XLK"],
+      "stance": "中性",
+      "stance_by_ticker": {"XLK": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2123891084296163750": {
+      "en_summary": "BREAKING: CrowdStrike $CRWD in talks to acquire Zscaler $ZS. $CRWD -9% after-hours. $ZS +18% after-hours.",
+      "zh_summary": "突發：CrowdStrike $CRWD正洽談收購Zscaler $ZS。$CRWD盤後下跌9%。$ZS盤後上漲18%。",
+      "tickers": ["CRWD", "ZS"],
+      "stance": "中性",
+      "stance_by_ticker": {"CRWD": "中性", "ZS": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"CRWD": "洽談收購$ZS，盤後-9%", "ZS": "被收購傳聞，盤後+18%"}
+    }
+  }
+}
