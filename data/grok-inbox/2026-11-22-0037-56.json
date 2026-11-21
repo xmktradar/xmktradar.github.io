@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123814777650630928": {
+      "en_summary": "To add insult to injury QYLD is selling 10BN notional 50% delta NDX calls from 11:30-1:30. Probs frontrun $QQQ.",
+      "zh_summary": "雪上加霜，QYLD正在從11:30-1:30出售100億名義價值的50% delta NDX看漲期權。可能搶跑$QQQ。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123814568514228594": {
+      "en_summary": "Added more $SOFI and $LMND to come to $SOFI 10.64% $AFRM 9.75% $LMND 9.11% $LIFE 6.66% $KLAR 6.38% $DAVE 6.64% $UPST 6.04%. Total stock is now 55.23% in my fintech portfolio.",
+      "zh_summary": "增加了更多$SOFI和$LMND，達到$SOFI 10.64%、$AFRM 9.75%、$LMND 9.11%、$LIFE 6.66%、$KLAR 6.38%、$DAVE 6.64%、$UPST 6.04%。我的金融科技投資組合中股票總計現在為55.23%。",
+      "tickers": ["SOFI", "AFRM", "LMND", "LIFE", "KLAR", "DAVE", "UPST"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SOFI": "睇好", "AFRM": "睇好", "LMND": "睇好", "LIFE": "睇好", "KLAR": "睇好", "DAVE": "睇好", "UPST": "睇好"},
+      "horizon": "中線",
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123814196605243501": {
+      "en_summary": "Hey @grok, when are $ANT put options scheduled to start trading?",
+      "zh_summary": "嗩 @grok，$ANT看跌期權何時開始交易？",
+      "tickers": ["ANT"],
+      "stance": "中性",
+      "stance_by_ticker": {"ANT": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123813997359268148": {
+      "en_summary": "Scammer gets scammed buddy. $ANT heading to $50 IMO. Quoted: BREAKING: Anthropic has entered bear market territory. $1,000,000,000,000 wiped from stock market in past hour.",
+      "zh_summary": "騙子被騙了兄弟。$ANT 我認為正前往50美元。引用：突發：Anthropic已進入熊市領域，過去一小時股市蒸發1萬億美元。",
+      "tickers": ["ANT"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ANT": "睇好"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"ANT": "認為正前往50美元"}
+    },
+    "2123813887262982220": {
+      "en_summary": "Clearly, $NVDA was not in a positive trend prior to the scandal, but our modeling says shares would be around $178-185, so we believe 15–20% of downside caused by the scandal & Jensen's departure.",
+      "zh_summary": "顯然，$NVDA在醜聞之前並未處於正趨勢，但我們的模型顯示股價應在178-185美元左右，因此我們認為15-20%的下跌是由醜聞和Jensen離職造成的。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "模型顯示應在178-185美元，15-20%下跌由醜聞和Jensen離職造成"}
+    }
+  }
+}
