@@ -1,1 +1,74 @@
-PLACEHOLDER_TO_BE_REPLACED
+{
+  "posts": {
+    "2123902958819770841": {
+      "en_summary": "S&P 500 $SPY just flashed capitulation for the 2nd time all year.",
+      "zh_summary": "標普500 $SPY今年第二次閃現投降信號。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2123902647052927002": {
+      "en_summary": "A short Thanksgiving week ahead, but plenty of earnings to watch. $DELL, $HPQ, $WDAY, $ADSK, $DE, $BBY, $ADI, $MDT, $ZM, and more are set to report.",
+      "zh_summary": "即將到來的感恩節週較短，但有許多財報需要關注。$DELL、$HPQ、$WDAY、$ADSK、$DE、$BBY、$ADI、$MDT、$ZM等即將公佈財報。",
+      "tickers": ["DELL", "HPQ", "WDAY", "ADSK", "DE", "BBY", "ADI", "MDT", "ZM"],
+      "stance": "中性",
+      "stance_by_ticker": {"DELL": "中性", "HPQ": "中性", "WDAY": "中性", "ADSK": "中性", "DE": "中性", "BBY": "中性", "ADI": "中性", "MDT": "中性", "ZM": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123901203545243953": {
+      "en_summary": "(Reposted by @LynAldenContact) In 2022, $BTC was trading around $16K. She said to check back in 2–3 years. Bitcoin went on to surpass $120K. And now everyone's panicking again. Zoom out. You're not bullish enough on $BTC.",
+      "zh_summary": "（轉推自@LynAldenContact）2022年$BTC交易價約16,000美元。她說2-3年後再看。比特幣後來超過120,000美元。現在大家又在恐慌。放大看。你對$BTC不夠看好。",
+      "tickers": [],
+      "stance": "睇好",
+      "stance_by_ticker": {},
+      "horizon": "長線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123900925857214545": {
+      "en_summary": "$QQQ down over 10% this week btw, hasn't happened since March of 2020. buy the dip, etc etc",
+      "zh_summary": "$QQQ本週下跌超過10%，自2020年3月以來未發生過。買入下跌等。",
+      "tickers": ["QQQ"],
+      "stance": "睇好",
+      "stance_by_ticker": {"QQQ": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2123900472914256010": {
+      "en_summary": "(Reposted by @tastyliveshow) BRUTAL STOCK MARKET SELLOFF | Nov. 20. Worst week since April 2025 with another rout. $NDX lost 9.9% on the week, the S&P 500 dropped 8.5%, and the Dow fell 7.9%. $ANT slid on day two, $NVDA hit an 18-month closing low, and the $SPX and $DIA joined the Nasdaq in correction territory. Friday’s close $SPX −3.59% to 6,918 | $QQQ −5.13% | $DIA −1.85%. Seven straight red sessions for $SPX. Sector medals: Staples $XLP +0.67%, Health Care $XLV -0.12%, Utilities $XLU -0.74%. Biggest laggards: Technology $XLK −7.70%, Industrials $XLI −3.30%, Discretionary $XLY −2.95%. $VIX jumped from 28.44 to 38.48.",
+      "zh_summary": "（轉推自@tastyliveshow）殘酷股市拋售 | 11月20日。自2025年4月以來最差一週，再次暴跌。$NDX本週下跌9.9%，標普500下跌8.5%，道指下跌7.9%。$ANT第二天下滑，$NVDA創18個月收盤低點，$SPX和$DIA加入納斯達克進入修正區間。週五收盤$SPX -3.59%至6918 | $QQQ -5.13% | $DIA -1.85%。$SPX連續七個紅色交易日。板塊：必需消費$XLP +0.67%，醫療保健$XLV -0.12%，公用事業$XLU -0.74%。最大落後者：科技$XLK -7.70%，工業$XLI -3.30%，非必需消費$XLY -2.95%。$VIX從28.44跳升至38.48。",
+      "tickers": ["QQQ", "SPY", "DIA", "NVDA", "ANT", "XLP", "XLV", "XLU", "XLK", "XLI", "XLY"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性", "SPY": "中性", "DIA": "中性", "NVDA": "中性", "ANT": "中性", "XLP": "中性", "XLV": "中性", "XLU": "中性", "XLK": "中性", "XLI": "中性", "XLY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"SPY": "週五收於6918，下跌3.59%，連續七紅"}
+    }
+  }
+}
