@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2123872597490176052": {
+      "en_summary": "Nearly half of this S&P 500 downturn is from Nvidia $NVDA market cap loss alone. A near-$6 trillion company has lost -48% in 45 days, an unprecedented single-stock market cap decline.",
+      "zh_summary": "標普500指數本次下跌近一半歸因於輝達$NVDA市值損失。一家接近6萬億美元的公司在45天內下跌48%，這是前所未有的單一股票市值損失。",
+      "tickers": ["NVDA", "SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "SPY": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123872534601052533": {
+      "en_summary": "Shared a link with no additional text provided.",
+      "zh_summary": "分享了一個連結，沒有提供額外文字內容。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123871830062604735": {
+      "en_summary": "Dan Ives (@DivesTech) is not worried about the stock market sell-off. Demand for AI and compute continues to accelerate, with fundamentals improving despite bears negative view.",
+      "zh_summary": "丹·艾夫斯（@DivesTech）對股市拋售並不擔憂。人工智能和算力需求持續加速，儘管空頭持負面看法，基本面實際上在改善。",
+      "tickers": ["SPY", "QQQ"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPY": "睇好", "QQQ": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    },
+    "2123871791710187739": {
+      "en_summary": "Calls to bring Jensen Huang back so $NVDA can go above $200.",
+      "zh_summary": "呼籲讓黃仁勳回來，以便$NVDA能升至200美元以上。",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "中線",
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "希望黃仁勳回歸以推升股價至200美元以上"}
+    },
+    "2123871685313212455": {
+      "en_summary": "$ANT Anthropic started the largest market crash in stock market history.",
+      "zh_summary": "$ANT Anthropic引發了股票市場歷史上最大的崩盤。",
+      "tickers": ["ANT"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"ANT": "睇淡"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"ANT": "被指引發歷史最大市場崩盤"}
+    }
+  }
+}
