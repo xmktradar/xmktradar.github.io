@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2124184781428850917": {
+      "en_summary": "Weekly RSI flashing oversold straight into the November 2025 floor $NBIS.",
+      "zh_summary": "週線 RSI 顯示超賣，直接進入 2025 年 11 月的地板 $NBIS。",
+      "tickers": ["NBIS"],
+      "stance": "中性",
+      "stance_by_ticker": {"NBIS": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124183472893809002": {
+      "en_summary": "A “common sense” credit card rate cap would crush the availability of credit and tank the economy. What are we even doing here?",
+      "zh_summary": "一個“常識”的信用卡利率上限將摧毀信貸供應並重創經濟。我們在這裡做什麼？",
+      "tickers": [],
+      "stance": "睇淡",
+      "stance_by_ticker": {},
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2124182270663663730": {
+      "en_summary": "The Magnificent 7 are down 5% in 2026 but the AIR 7 basket of stocks is up more than 25%. Veteran investor @kmahnhw is bullish on this group for the year ahead which includes Taiwan Semiconductor $TSM Vertiv $VRT Comfort Systems $FIX and others.",
+      "zh_summary": "Magnificent 7 在 2026 年下跌 5%，但 AIR 7 股票籃子上漲超過 25%。資深投資者 @kmahnhw 對未來一年這個包括台灣半導體 $TSM、Vertiv $VRT、Comfort Systems $FIX 等的組別看好。",
+      "tickers": ["TSM", "VRT", "FIX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TSM": "睇好", "VRT": "睇好", "FIX": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124182024470532413": {
+      "en_summary": "Every time the $VIX closed at 40 or above while Fear & Greed sat in extreme fear, stocks were higher a year later. Four times since 2011, four out of four. On average the S&P was up 25.7% and the Nasdaq 35.7% twelve months later.",
+      "zh_summary": "每次 $VIX 收盤在 40 或以上，同時恐懼與貪婪指數處於極端恐懼時，股票一年後都更高。自 2011 年以來四次，四次中的四次。平均標普上漲 25.7%，納斯達克上漲 35.7%，十二個月後。",
+      "tickers": ["SPY", "QQQ", "VIX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPY": "睇好", "QQQ": "睇好", "VIX": "中性"},
+      "horizon": "長線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利好",
+      "ticker_notes": {"SPY": "歷史上平均一年後上漲 25.7%", "QQQ": "歷史上平均一年後上漲 35.7%"}
+    },
+    "2124181958708314257": {
+      "en_summary": "*TRUMP: I WOULD WORK WITH DEMOCRATS ON A 10% CAP ON CREDIT CARD INTEREST RATES. I WOULD DO IT. *TRUMP: THE CREDIT CARD COMPANIES ARE GETTING TOO MUCH. THE FEES ARE TOO HIGH AND THE INTEREST IS TOO HIGH $COF $SYF $AXP $V $MA. *TRUMP: I KNOW SOME PEOPLE SAY IT'S NOT FREE ENTERPRISE. I'M A COMMON SENSE PERSON.",
+      "zh_summary": "*特朗普：我會與民主黨合作對信用卡利率實施 10% 上限。我會做的。*特朗普：信用卡公司拿得太多。費用太高，利息太高 $COF $SYF $AXP $V $MA。*特朗普：我知道有些人說這不是自由企業。我是一個常識人。",
+      "tickers": ["COF", "SYF", "AXP", "V", "MA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"COF": "睇淡", "SYF": "睇淡", "AXP": "睇淡", "V": "睇淡", "MA": "睇淡"},
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "利淡",
+      "ticker_notes": {"COF": "特朗普提及利率上限影響", "SYF": "特朗普提及利率上限影響", "AXP": "特朗普提及利率上限影響", "V": "特朗普提及費用和利息太高", "MA": "特朗普提及費用和利息太高"}
+    }
+  }
+}
