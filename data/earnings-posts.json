@@ -15,34 +15,6 @@
    "backlog": true
   },
   {
-   "t": "BE",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-22 00:00",
-   "backlog": true
-  },
-  {
-   "t": "HON",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-22 00:00",
-   "backlog": true
-  },
-  {
-   "t": "NDAQ",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-22 00:00",
-   "backlog": true
-  },
-  {
-   "t": "NSC",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-22 00:00",
-   "backlog": true
-  },
-  {
    "t": "PSA",
    "end": "2026-09-30",
    "label": "FY2026 Q3",
@@ -442,13 +414,6 @@
    "backlog": true
   },
   {
-   "t": "BCS",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-22 00:00",
-   "backlog": true
-  },
-  {
    "t": "BUD",
    "end": "2026-09-30",
    "label": "FY2026 Q3",
@@ -572,13 +537,6 @@
    "end": "2026-09-30",
    "label": "FY2026 Q3",
    "found_hkt": "2026-11-05 00:00",
-   "backlog": true
-  },
-  {
-   "t": "SPOT",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-22 00:00",
    "backlog": true
   },
   {
@@ -2019,6 +1977,54 @@
    "backlog": true,
    "posted": "2026-11-21",
    "slot": "1000"
+  },
+  {
+   "t": "BE",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-22 00:00",
+   "backlog": true,
+   "dropped": true
+  },
+  {
+   "t": "HON",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-22 00:00",
+   "backlog": true,
+   "dropped": true
+  },
+  {
+   "t": "NDAQ",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-22 00:00",
+   "backlog": true,
+   "dropped": true
+  },
+  {
+   "t": "NSC",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-22 00:00",
+   "backlog": true,
+   "dropped": true
+  },
+  {
+   "t": "BCS",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-22 00:00",
+   "backlog": true,
+   "dropped": true
+  },
+  {
+   "t": "SPOT",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-22 00:00",
+   "backlog": true,
+   "dropped": true
   }
  ],
  "slots": {

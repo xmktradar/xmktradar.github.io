@@ -1,17 +1,17 @@
 {
- "date": "2026-11-21",
- "date_kst": "2026-11-21",
- "frozen": true,
- "made_hkt": "2026-11-21 18:51",
- "from": "2026-11-15",
- "to": "2026-11-21",
+ "date": "2026-11-28",
+ "date_kst": "2026-11-28",
+ "frozen": false,
+ "made_hkt": "2026-11-22 02:08",
+ "from": "2026-11-16",
+ "to": "2026-11-22",
  "themes": [
   {
    "theme": "rates",
-   "accounts": 19,
-   "n": 19,
+   "accounts": 17,
+   "n": 17,
    "bull": 1,
-   "bear": 11,
+   "bear": 9,
    "neu": 7,
    "arrow": "dn",
    "quotes": {
@@ -31,12 +31,12 @@
   },
   {
    "theme": "inflation",
-   "accounts": 13,
-   "n": 13,
+   "accounts": 11,
+   "n": 11,
    "bull": 2,
-   "bear": 8,
+   "bear": 6,
    "neu": 3,
-   "arrow": "flat",
+   "arrow": "up",
    "quotes": {
     "zh": {
      "acc": "Bluekurtic",
@@ -77,56 +77,56 @@
   },
   {
    "theme": "growth",
-   "accounts": 28,
-   "n": 28,
+   "accounts": 27,
+   "n": 27,
    "bull": 6,
    "bear": 6,
-   "neu": 16,
+   "neu": 15,
    "arrow": "up",
    "quotes": {
     "zh": {
-     "acc": "SamanthaLaDuc",
-     "impact": "bear",
-     "text": "風險持續上升。我們現在處於清算階段。數據中心、就業與政治：這是同一筆交易。很快：AI 解除遇上美元毀滅球遇上衰退風險。波動性不等於賣出底部。數據中心政治遇上循環融資：2008 風格。正面市場廣度無法修復。$NVDA",
-     "url": "https://x.com/SamanthaLaDuc/status/2123589410843148535"
+     "acc": "philrosenn",
+     "impact": "bull",
+     "text": "丹·艾夫斯（@DivesTech）對股市拋售並不擔憂。人工智能和算力需求持續加速，儘管空頭持負面看法，基本面實際上在改善。",
+     "url": "https://x.com/philrosenn/status/2123871830062604735"
     },
     "en": {
-     "acc": "SamanthaLaDuc",
-     "impact": "bear",
-     "text": "The risks keep rising. We Are In A Liquidation Phase Now. Data Centers, Jobs & Politics: It’s All One Trade. Soon: AI Unwind Meets Dollar Wrecking Ball Meets Recession Risk. Volatility Does Not Equal Selling Bottom. Politics Of Datacenters Meet Circular Financing: 2008-Style. Positive Market Breadth Won’t Fix It. $NVDA",
-     "url": "https://x.com/SamanthaLaDuc/status/2123589410843148535"
+     "acc": "philrosenn",
+     "impact": "bull",
+     "text": "Dan Ives (@DivesTech) is not worried about the stock market sell-off. Demand for AI and compute continues to accelerate, with fundamentals improving despite bears negative view.",
+     "url": "https://x.com/philrosenn/status/2123871830062604735"
     }
    }
   },
   {
    "theme": "yields",
-   "accounts": 14,
-   "n": 14,
+   "accounts": 13,
+   "n": 13,
    "bull": 2,
    "bear": 4,
-   "neu": 8,
+   "neu": 7,
    "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "KeithMcCullough",
-     "impact": "bull",
-     "text": "債券。好消息：如果你將辛苦賺來的資本從 $QQQ 重新配置到 $TLT，你做了正確的 #Quad4 動作。債券市場波動率繼續下降 = 對債券看漲。",
-     "url": "https://x.com/KeithMcCullough/status/2123713674430890157"
+     "acc": "Mayhem4Markets",
+     "impact": "bear",
+     "text": "開始了... 債務變得昂貴。彭博報導 SpaceX 剛剛完成了 320 億美元的 Nvidia 芯片融資，利率超過 8%。據報導，美國高評級債券平均收益率為 5.95%。如果 SpaceX 以這些利率融資，我們肯定會看到對較小公司的更多壓力",
+     "url": "https://x.com/AyeshaTariq/status/2123831770525086155"
     },
     "en": {
-     "acc": "KeithMcCullough",
-     "impact": "bull",
-     "text": "BONDS. Good news: if you re-allocated your hard-earned capital out of $QQQ and into $TLT you made the right #Quad4 move. Bond Markt Vol continues to break down = Bullish for Bonds.",
-     "url": "https://x.com/KeithMcCullough/status/2123713674430890157"
+     "acc": "Mayhem4Markets",
+     "impact": "bear",
+     "text": "Here we go... Debt has become expensive. Bloomberg reports that SpaceX has just completed their $32B financing for Nvidia chips at north of 8%. The average US high-grade bond yield is 5.95%, according to the report. If SpaceX finances at these rates, we're sure to see more pressure on smaller comp",
+     "url": "https://x.com/AyeshaTariq/status/2123831770525086155"
     }
    }
   },
   {
    "theme": "fx",
-   "accounts": 15,
-   "n": 15,
+   "accounts": 14,
+   "n": 14,
    "bull": 2,
-   "bear": 7,
+   "bear": 6,
    "neu": 6,
    "arrow": "dn",
    "quotes": {
@@ -146,12 +146,12 @@
   },
   {
    "theme": "energy",
-   "accounts": 11,
-   "n": 11,
-   "bull": 3,
+   "accounts": 9,
+   "n": 9,
+   "bull": 1,
    "bear": 1,
    "neu": 7,
-   "arrow": "flat",
+   "arrow": "dn",
    "quotes": {
     "zh": {
      "acc": "FirstSquawk",
@@ -169,11 +169,11 @@
   },
   {
    "theme": "policy",
-   "accounts": 62,
-   "n": 62,
-   "bull": 3,
-   "bear": 17,
-   "neu": 42,
+   "accounts": 55,
+   "n": 55,
+   "bull": 1,
+   "bear": 16,
+   "neu": 38,
    "arrow": "flat",
    "quotes": {
     "zh": {
@@ -192,11 +192,11 @@
   },
   {
    "theme": "other",
-   "accounts": 117,
-   "n": 116,
+   "accounts": 112,
+   "n": 111,
    "bull": 14,
-   "bear": 36,
-   "neu": 66,
+   "bear": 33,
+   "neu": 64,
    "arrow": "flat",
    "quotes": {
     "zh": {
@@ -221,56 +221,56 @@
  ],
  "accounts": 500,
  "x_accounts": 499,
- "range": "11/15–11/21",
+ "range": "11/16–11/22",
  "images": {
-  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-21-1851",
-  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-21-1851"
+  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-28-0208",
+  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-28-0208"
  },
  "stories": {
-  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-21-1851",
-  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-21-1851"
+  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-28-0208",
+  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-28-0208"
  },
  "posts": {
   "zh": {
-   "instagram": "本週宏觀：最多人講「其他」（利好 14・利空 36）\n\n這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/15–11/21）\n\n1. 其他：利好 14・利空 36・中性 66（同上週差不多）\n@Biotech2k1 告訴 @RosannaInvests，$BE 在他的名單上，但他必須在上次賣出後等待。他非常喜歡 $VRT 和 $BE 作為數據中心的核心押注，如果崩盤持…\n\n2. 關稅／政策／地緣政治：利好 3・利空 17・中性 42（同上週差不多）\n@garyblack00：「AI交易平倉導致科技領域大災難，大多數AI股今天下跌10%以上：$NVDA -11.8% $MU -12.9% $DELL -11.2% $AMD -11.9% $ANT -10…」\n\n3. 經濟增長／衰退：利好 6・利空 6・中性 16（比上週轉好 ▲）\n@SamanthaLaDuc：「風險持續上升。我們現在處於清算階段。數據中心、就業與政治：這是同一筆交易。很快：AI 解除遇上美元毀滅球遇上衰退風險。波動性不等於賣出底部。數據中心政治遇上循環融資：2008 風…」\n\n你覺得下週市場最該留意哪個數據？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #BE #VRT",
-   "threads": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/15–11/21）\n\n1. 其他：利好 14・利空 36・中性 66（同上週差不多）\n2. 關稅／政策／地緣政治：利好 3・利空 17・中性 42（同上週差不多）\n3. 經濟增長／衰退：利好 6・利空 6・中性 16（比上週轉好 ▲）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
-   "x": "這星期大家最常聊的宏觀話題\n\n其他 14/36/66\n關稅／政策／地緣政治 3/17/42\n經濟增長／衰退 6/6/16\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "instagram": "本週宏觀：最多人講「其他」（利好 14・利空 33）\n\n這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/16–11/22）\n\n1. 其他：利好 14・利空 33・中性 64（同上週差不多）\n@Biotech2k1 告訴 @RosannaInvests，$BE 在他的名單上，但他必須在上次賣出後等待。他非常喜歡 $VRT 和 $BE 作為數據中心的核心押注，如果崩盤持…\n\n2. 關稅／政策／地緣政治：利好 1・利空 16・中性 38（同上週差不多）\n@garyblack00：「AI交易平倉導致科技領域大災難，大多數AI股今天下跌10%以上：$NVDA -11.8% $MU -12.9% $DELL -11.2% $AMD -11.9% $ANT -10…」\n\n3. 經濟增長／衰退：利好 6・利空 6・中性 15（比上週轉好 ▲）\n@philrosenn：「丹·艾夫斯（@DivesTech）對股市拋售並不擔憂。人工智能和算力需求持續加速，儘管空頭持負面看法，基本面實際上在改善。」\n\n你覺得下週市場最該留意哪個數據？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #BE #VRT",
+   "threads": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/16–11/22）\n\n1. 其他：利好 14・利空 33・中性 64（同上週差不多）\n2. 關稅／政策／地緣政治：利好 1・利空 16・中性 38（同上週差不多）\n3. 經濟增長／衰退：利好 6・利空 6・中性 15（比上週轉好 ▲）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "x": "這星期大家最常聊的宏觀話題\n\n其他 14/33/64\n關稅／政策／地緣政治 1/16/38\n經濟增長／衰退 6/6/15\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "reddit": {
-    "title": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/15–11/21）",
-    "body": "1. 其他：利好 14・利空 36・中性 66（同上週差不多）\n@Biotech2k1 告訴 @RosannaInvests，$BE 在他的名單上，但他必須在上次賣出後等待。他非常喜歡 $VRT 和 $BE 作為數據中心的核心押注，如果崩盤持…\n\n2. 關稅／政策／地緣政治：利好 3・利空 17・中性 42（同上週差不多）\n@garyblack00：「AI交易平倉導致科技領域大災難，大多數AI股今天下跌10%以上：$NVDA -11.8% $MU -12.9% $DELL -11.2% $AMD -11.9% $ANT -10…」\n\n3. 經濟增長／衰退：利好 6・利空 6・中性 16（比上週轉好 ▲）\n@SamanthaLaDuc：「風險持續上升。我們現在處於清算階段。數據中心、就業與政治：這是同一筆交易。很快：AI 解除遇上美元毀滅球遇上衰退風險。波動性不等於賣出底部。數據中心政治遇上循環融資：2008 風…」\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
+    "title": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/16–11/22）",
+    "body": "1. 其他：利好 14・利空 33・中性 64（同上週差不多）\n@Biotech2k1 告訴 @RosannaInvests，$BE 在他的名單上，但他必須在上次賣出後等待。他非常喜歡 $VRT 和 $BE 作為數據中心的核心押注，如果崩盤持…\n\n2. 關稅／政策／地緣政治：利好 1・利空 16・中性 38（同上週差不多）\n@garyblack00：「AI交易平倉導致科技領域大災難，大多數AI股今天下跌10%以上：$NVDA -11.8% $MU -12.9% $DELL -11.2% $AMD -11.9% $ANT -10…」\n\n3. 經濟增長／衰退：利好 6・利空 6・中性 15（比上週轉好 ▲）\n@philrosenn：「丹·艾夫斯（@DivesTech）對股市拋售並不擔憂。人工智能和算力需求持續加速，儘管空頭持負面看法，基本面實際上在改善。」\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
    },
-   "facebook": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/15–11/21）\n\n1. 其他：利好 14・利空 36・中性 66（同上週差不多）\n@Biotech2k1 告訴 @RosannaInvests，$BE 在他的名單上，但他必須在上次賣出後等待。他非常喜歡 $VRT 和 $BE 作為數據中心的核心押注，如果崩盤持…\n\n2. 關稅／政策／地緣政治：利好 3・利空 17・中性 42（同上週差不多）\n@garyblack00：「AI交易平倉導致科技領域大災難，大多數AI股今天下跌10%以上：$NVDA -11.8% $MU -12.9% $DELL -11.2% $AMD -11.9% $ANT -10…」\n\n3. 經濟增長／衰退：利好 6・利空 6・中性 16（比上週轉好 ▲）\n@SamanthaLaDuc：「風險持續上升。我們現在處於清算階段。數據中心、就業與政治：這是同一筆交易。很快：AI 解除遇上美元毀滅球遇上衰退風險。波動性不等於賣出底部。數據中心政治遇上循環融資：2008 風…」\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "facebook": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/16–11/22）\n\n1. 其他：利好 14・利空 33・中性 64（同上週差不多）\n@Biotech2k1 告訴 @RosannaInvests，$BE 在他的名單上，但他必須在上次賣出後等待。他非常喜歡 $VRT 和 $BE 作為數據中心的核心押注，如果崩盤持…\n\n2. 關稅／政策／地緣政治：利好 1・利空 16・中性 38（同上週差不多）\n@garyblack00：「AI交易平倉導致科技領域大災難，大多數AI股今天下跌10%以上：$NVDA -11.8% $MU -12.9% $DELL -11.2% $AMD -11.9% $ANT -10…」\n\n3. 經濟增長／衰退：利好 6・利空 6・中性 15（比上週轉好 ▲）\n@philrosenn：「丹·艾夫斯（@DivesTech）對股市拋售並不擔憂。人工智能和算力需求持續加速，儘管空頭持負面看法，基本面實際上在改善。」\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "story": "#美股"
   },
   "en": {
    "instagram": "",
    "threads": "",
-   "x": "What X talked about in macro this week\n\nOther 14/36/66\nTariffs / policy / geopolitics 3/17/42\nGrowth / recession 6/6/16\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
+   "x": "What X talked about in macro this week\n\nOther 14/33/64\nTariffs / policy / geopolitics 1/16/38\nGrowth / recession 6/6/15\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
    "reddit": {
-    "title": "The macro topics the 499 X accounts we follow talked about most this week (11/15–11/21)",
-    "body": "1. Other: bullish 14 · bearish 36 · neutral 66 (about the same as last week)\n@Biotech2k1 tells @RosannaInvests that $BE is on his list but he must wait after his last sale. He really likes $VRT and $BE as a core play on data c…\n\n2. Tariffs / policy / geopolitics: bullish 3 · bearish 17 · neutral 42 (about the same as last week)\n@garyblack00: “The unwinding of the AI trade is causing absolute carnage in the tech arena, with most AI names down 10%+ today: $NVDA -11.8% $MU -12.9% $DELL -11.2%…”\n\n3. Growth / recession: bullish 6 · bearish 6 · neutral 16 (better than last week ▲)\n@SamanthaLaDuc: “The risks keep rising. We Are In A Liquidation Phase Now. Data Centers, Jobs & Politics: It’s All One Trade. Soon: AI Unwind Meets Dollar Wrecking Ba…”\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro"
+    "title": "The macro topics the 499 X accounts we follow talked about most this week (11/16–11/22)",
+    "body": "1. Other: bullish 14 · bearish 33 · neutral 64 (about the same as last week)\n@Biotech2k1 tells @RosannaInvests that $BE is on his list but he must wait after his last sale. He really likes $VRT and $BE as a core play on data c…\n\n2. Tariffs / policy / geopolitics: bullish 1 · bearish 16 · neutral 38 (about the same as last week)\n@garyblack00: “The unwinding of the AI trade is causing absolute carnage in the tech arena, with most AI names down 10%+ today: $NVDA -11.8% $MU -12.9% $DELL -11.2%…”\n\n3. Growth / recession: bullish 6 · bearish 6 · neutral 15 (better than last week ▲)\n@philrosenn: “Dan Ives (@DivesTech) is not worried about the stock market sell-off. Demand for AI and compute continues to accelerate, with fundamentals improving…”\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro"
    },
-   "facebook": "The macro topics the 499 X accounts we follow talked about most this week (11/15–11/21)\n\n1. Other: bullish 14 · bearish 36 · neutral 66 (about the same as last week)\n@Biotech2k1 tells @RosannaInvests that $BE is on his list but he must wait after his last sale. He really likes $VRT and $BE as a core play on data c…\n\n2. Tariffs / policy / geopolitics: bullish 3 · bearish 17 · neutral 42 (about the same as last week)\n@garyblack00: “The unwinding of the AI trade is causing absolute carnage in the tech arena, with most AI names down 10%+ today: $NVDA -11.8% $MU -12.9% $DELL -11.2%…”\n\n3. Growth / recession: bullish 6 · bearish 6 · neutral 16 (better than last week ▲)\n@SamanthaLaDuc: “The risks keep rising. We Are In A Liquidation Phase Now. Data Centers, Jobs & Politics: It’s All One Trade. Soon: AI Unwind Meets Dollar Wrecking Ba…”\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
+   "facebook": "The macro topics the 499 X accounts we follow talked about most this week (11/16–11/22)\n\n1. Other: bullish 14 · bearish 33 · neutral 64 (about the same as last week)\n@Biotech2k1 tells @RosannaInvests that $BE is on his list but he must wait after his last sale. He really likes $VRT and $BE as a core play on data c…\n\n2. Tariffs / policy / geopolitics: bullish 1 · bearish 16 · neutral 38 (about the same as last week)\n@garyblack00: “The unwinding of the AI trade is causing absolute carnage in the tech arena, with most AI names down 10%+ today: $NVDA -11.8% $MU -12.9% $DELL -11.2%…”\n\n3. Growth / recession: bullish 6 · bearish 6 · neutral 15 (better than last week ▲)\n@philrosenn: “Dan Ives (@DivesTech) is not worried about the stock market sell-off. Demand for AI and compute continues to accelerate, with fundamentals improving…”\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro",
    "story": ""
   }
  },
  "ig_images": {
   "zh": [
-   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-21-1851",
+   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-28-0208",
    "https://thecrowdtape.com/og/cta/ig-cta-zh.jpg"
   ],
   "en": [
-   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-21-1851",
+   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-28-0208",
    "https://thecrowdtape.com/og/cta/ig-cta-en.jpg"
   ]
  },
  "ig_reel": {
-  "date_kst": "2026-11-21",
+  "date_kst": "2026-11-28",
   "slot": "macro-week",
   "video_path": null,
-  "video_expected_path": "assets/reels/2026-11-21-macro-week.mp4",
+  "video_expected_path": "assets/reels/2026-11-28-macro-week.mp4",
   "caption": {
-   "zh": "本週宏觀：最多人講「其他」（利好 14・利空 36）\n\n這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/15–11/21）\n\n1. 其他：利好 14・利空 36・中性 66（同上週差不多）\n@Biotech2k1 告訴 @RosannaInvests，$BE 在他的名單上，但他必須在上次賣出後等待。他非常喜歡 $VRT 和 $BE 作為數據中心的核心押注，如果崩盤持…\n\n2. 關稅／政策／地緣政治：利好 3・利空 17・中性 42（同上週差不多）\n@garyblack00：「AI交易平倉導致科技領域大災難，大多數AI股今天下跌10%以上：$NVDA -11.8% $MU -12.9% $DELL -11.2% $AMD -11.9% $ANT -10…」\n\n3. 經濟增長／衰退：利好 6・利空 6・中性 16（比上週轉好 ▲）\n@SamanthaLaDuc：「風險持續上升。我們現在處於清算階段。數據中心、就業與政治：這是同一筆交易。很快：AI 解除遇上美元毀滅球遇上衰退風險。波動性不等於賣出底部。數據中心政治遇上循環融資：2008 風…」\n\n你覺得下週市場最該留意哪個數據？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #BE #VRT",
+   "zh": "本週宏觀：最多人講「其他」（利好 14・利空 33）\n\n這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/16–11/22）\n\n1. 其他：利好 14・利空 33・中性 64（同上週差不多）\n@Biotech2k1 告訴 @RosannaInvests，$BE 在他的名單上，但他必須在上次賣出後等待。他非常喜歡 $VRT 和 $BE 作為數據中心的核心押注，如果崩盤持…\n\n2. 關稅／政策／地緣政治：利好 1・利空 16・中性 38（同上週差不多）\n@garyblack00：「AI交易平倉導致科技領域大災難，大多數AI股今天下跌10%以上：$NVDA -11.8% $MU -12.9% $DELL -11.2% $AMD -11.9% $ANT -10…」\n\n3. 經濟增長／衰退：利好 6・利空 6・中性 15（比上週轉好 ▲）\n@philrosenn：「丹·艾夫斯（@DivesTech）對股市拋售並不擔憂。人工智能和算力需求持續加速，儘管空頭持負面看法，基本面實際上在改善。」\n\n你覺得下週市場最該留意哪個數據？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #BE #VRT",
    "en": ""
   }
  },
