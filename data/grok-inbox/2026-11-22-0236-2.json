@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2124194723334389970": {
+      "en_summary": "Where the AI trade sits on the market cycle right now: Neoclouds ($NBIS, $CRWV, $IREN) moving from capitulation into anger; AI infrastructure ($NVDA, $AMD, $MU, $SNDK, $SKHY, $AVGO, $ORCL, $MRVL, $VRT) firmly in panic; Megacaps ($MSFT, $GOOGL, $AMZN, $META) still in anxiety.",
+      "zh_summary": "AI 交易目前在市場週期中的位置：新雲（$NBIS、$CRWV、$IREN）正從投降轉向憤怒；AI 基礎設施（$NVDA、$AMD、$MU、$SNDK、$SKHY、$AVGO、$ORCL、$MRVL、$VRT）穩固處於恐慌；大型股（$MSFT、$GOOGL、$AMZN、$META）仍處於焦慮。",
+      "tickers": ["NBIS", "CRWV", "IREN", "NVDA", "AMD", "MU", "SNDK", "SKHY", "AVGO", "ORCL", "MRVL", "VRT", "MSFT", "GOOGL", "AMZN", "META"],
+      "stance": "中性",
+      "stance_by_ticker": {"NBIS": "中性", "CRWV": "中性", "IREN": "中性", "NVDA": "中性", "AMD": "中性", "MU": "中性", "SNDK": "中性", "SKHY": "中性", "AVGO": "中性", "ORCL": "中性", "MRVL": "中性", "VRT": "中性", "MSFT": "中性", "GOOGL": "中性", "AMZN": "中性", "META": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2124191840111153519": {
+      "en_summary": "$BTCCAD with shrug emoji. Quotes Kraken support noting heavy selling pressure on CAD pairs starting around 20:00 UTC on Nov 20 that pushed prices well below other markets, with platform processing orders correctly and no signs of breach or compromised accounts; executed trades stand.",
+      "zh_summary": "$BTCCAD 配合聲肩表情。引用 Kraken 支持指出，11 月 20 日約 20:00 UTC 開始 CAD 交易對出現大量賣壓，將價格推至遠低於其他市場，平台正確處理所有訂單，安全團隊未發現入侵或帳戶受損跡象；已執行交易有效。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124189224287019293": {
+      "en_summary": "SK Hynix $SKHY has reportedly surpassed a 70% yield for its HBM4 chips, with the company starting full-scale mass production and shipments in Q3. Mentions $MU $NVDA.",
+      "zh_summary": "SK Hynix $SKHY 據報其 HBM4 晶片良率已超過 70%，公司將在第三季開始全規模量產及出貨。提及 $MU $NVDA。",
+      "tickers": ["SKHY", "MU", "NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SKHY": "睇好", "MU": "睇好", "NVDA": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124187136635367483": {
+      "en_summary": "#Bitcoin starting moving into the volume gap last night, but for now, back into the shelf. $BTC",
+      "zh_summary": "#Bitcoin 昨晚開始進入成交量缺口，但目前回到貨架區域。$BTC",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124186077363601732": {
+      "en_summary": "Boring income ETFs that just pay: $SPHD ~ low volatility, high dividend, 5%; $FTHI ~ buy-write income since 2014; $KNG ~ Dividend Aristocrats + monthly income; $BUYW ~ steady buy-write, paid monthly; $ISPY ~ S&P 500 income, 6%; $BALI ~ BlackRock premium income, 6.6%. Nothing flashy, just steady checks. Asks which is in your portfolio.",
+      "zh_summary": "無聊的收入 ETF，就是支付： $SPHD ~ 低波動、高股息，5%；$FTHI ~ 自 2014 年起的買入寫入收入；$KNG ~ 股息貴族 + 每月收入；$BUYW ~ 穩定買入寫入，每月支付；$ISPY ~ 標普 500 收入，6%；$BALI ~ 貝萊德溢價收入，6.6%。沒有花哨，只是穩定支票。詢問哪個在你的投資組合中。",
+      "tickers": ["SPHD", "FTHI", "KNG", "BUYW", "ISPY", "BALI"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPHD": "睇好", "FTHI": "睇好", "KNG": "睇好", "BUYW": "睇好", "ISPY": "睇好", "BALI": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPHD": "低波動高股息約 5%", "FTHI": "買入寫入收入自 2014", "KNG": "股息貴族每月收入", "BUYW": "穩定買入寫入每月支付", "ISPY": "標普 500 收入約 6%", "BALI": "貝萊德溢價收入約 6.6%"}
+    }
+  }
+}
