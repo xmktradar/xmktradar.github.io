@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123830906725044656": {
+      "en_summary": "Since the Oct 6 high: SPX down 10% $QQQ down 18% $IWM down 8% $VEU down 11% $AGG up 2% Bitcoin down 31% Gold down 15% Dollar up 2%",
+      "zh_summary": "自 10 月 6 日高點以來：SPX 下跌 10% $QQQ 下跌 18% $IWM 下跌 8% $VEU 下跌 11% $AGG 上漲 2% 比特幣下跌 31% 黃金下跌 15% 美元上漲 2%",
+      "tickers": ["SPY", "QQQ", "IWM", "VEU", "AGG"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "QQQ": "中性", "IWM": "中性", "VEU": "中性", "AGG": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123830728370659381": {
+      "en_summary": "Michael Burry has reportedly cut his bearish semiconductor bets, selling half of his put positions in $NVDA and $SMH",
+      "zh_summary": "據報導，Michael Burry 已削減他的看跌半導體賭注，賣出了他在 $NVDA 和 $SMH 上的一半看跌期權倉位",
+      "tickers": ["NVDA", "SMH"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "SMH": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123830660871954485": {
+      "en_summary": "$MU has officially been cut in half from its highs over the past six months.",
+      "zh_summary": "$MU 在過去六個月中已從高點正式腰斫。",
+      "tickers": ["MU"],
+      "stance": "中性",
+      "stance_by_ticker": {"MU": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123830548837908805": {
+      "en_summary": "GTA6 is a living movie. I've never experienced anything like it as a game. It's so real. A breathing real city. So much fun. So immersive you lose track of time. A perfect place to go during a market correction.... $TTWO",
+      "zh_summary": "GTA6 是一部活的電影。我從未作為遊戲體驗過類似的東西。它如此真實。一座呼吸的真實城市。如此有趣。如此沉浸以致你失去時間感。市場調整期間的完美去處.... $TTWO",
+      "tickers": ["TTWO"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TTWO": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TTWO": "GTA6 沉浸體驗，市場調整期間好去處"}
+    },
+    "2123830405396619651": {
+      "en_summary": "In case is was too small to read. Quoted: $SPX $SPY no shit",
+      "zh_summary": "以防太小看不清。引用：$SPX $SPY 沒有廢話",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
