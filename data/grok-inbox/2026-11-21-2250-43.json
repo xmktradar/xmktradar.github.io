@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123827213472502006": {
+      "en_summary": "ASTER $ASTER says coordinated trading by a group of newly registered accounts drove the Nov. 15 price swing that triggered liquidations on both sides.",
+      "zh_summary": "ASTER $ASTER 表示，一群新註冊帳戶的協調交易推動了11月15日的價格波動，觸發了雙方的清算。",
+      "tickers": ["ASTER"],
+      "stance": "中性",
+      "stance_by_ticker": {"ASTER": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123827055674712255": {
+      "en_summary": "$SPX is down more than 7% in November. The last two times: 2008: −7.5%, 2000: −8.0%.",
+      "zh_summary": "$SPX 在11月下跌超過7%。最近兩次：2008年：−7.5%，2000年：−8.0%。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123827016080445539": {
+      "en_summary": "Took a slight detour but $QQQ looking like 590-600 is coming.",
+      "zh_summary": "稍微繞路，但$QQQ看起來590-600正在到來。",
+      "tickers": ["QQQ"],
+      "stance": "睇好",
+      "stance_by_ticker": {"QQQ": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"QQQ": "目標590-600"}
+    },
+    "2123826970886586725": {
+      "en_summary": "(Reposted by @carlquintanilla) AI STOCKS PLUNGE AS WALL STREET SELLOFF ACCELERATES. $IREN -13.29%, $NBIS -12.62%, $ANT -12.28%, $MU -12.26%, $XPEV -11.06%, $AMD -10.98%, $CRWV -10.60%, $SMCI -7.82%, $ORCL -7.03%, $NVDA -6.96%, $SPCX -6.83%, $TSLA -5.52%. $QQQ -3.48%, $SPY -1.81%, Gold -2.36%. The sharp declines highlight widespread deleveraging and deteriorating sentiment toward AI-related investments.",
+      "zh_summary": "（由@carlquintanilla轉推）AI股票暴跌，華爾街拋售加速。$IREN -13.29%，$NBIS -12.62%，$ANT -12.28%，$MU -12.26%，$XPEV -11.06%，$AMD -10.98%，$CRWV -10.60%，$SMCI -7.82%，$ORCL -7.03%，$NVDA -6.96%，$SPCX -6.83%，$TSLA -5.52%。$QQQ -3.48%，$SPY -1.81%，黃金 -2.36%。急劇下跌凸顯廣泛去槓桿和對AI相關投資情緒惡化。",
+      "tickers": ["IREN", "NBIS", "ANT", "MU", "XPEV", "AMD", "CRWV", "SMCI", "ORCL", "NVDA", "SPCX", "TSLA", "QQQ", "SPY"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"IREN": "睇淡", "NBIS": "睇淡", "ANT": "睇淡", "MU": "睇淡", "XPEV": "睇淡", "AMD": "睇淡", "CRWV": "睇淡", "SMCI": "睇淡", "ORCL": "睇淡", "NVDA": "睇淡", "SPCX": "睇淡", "TSLA": "睇淡", "QQQ": "睇淡", "SPY": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2123826719216091406": {
+      "en_summary": "Well, $QQQ broke through the spot I liked for a bounce L",
+      "zh_summary": "好吧，$QQQ突破了我喜歡的反彈點位 L",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
