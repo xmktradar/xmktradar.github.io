@@ -1,0 +1,102 @@
+{
+  "posts": {
+    "2123940960891437196": {
+      "en_summary": "@MikeZaccardi reports $VIX hit 40.00 high of day at 3:57pm ET then drifted down to 35.90 by 4:15pm.",
+      "zh_summary": "@MikeZaccardi 報告 $VIX 在美東時間下午 3:57 達到當日高點 40.00，然後在 4:15 前回落至 35.90。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2123940653960777904": {
+      "en_summary": "@carlquintanilla quotes that with the full option exercised, Morgan Stanley can no longer use open-market purchases to cover any remaining overallotment if shares fall below the $83 IPO price for $ANT. Quotes Reuters on Anthropic's IPO bank closing position meant to stabilize stock.",
+      "zh_summary": "@carlquintanilla 引述，隨著全額選擇權行使，摩根士丹利不再能使用公開市場購買來覆蓋任何剩餘的超額配售，如果股價跌破 $ANT 的 83 美元 IPO 價格。引用路透社關於 Anthropic IPO 銀行關閉旨在穩定股票的倉位。",
+      "tickers": [
+        "ANT"
+      ],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "ANT": "中性"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {
+        "ANT": "IPO price $83, green shoe exercised, support removed"
+      }
+    },
+    "2123938514719187171": {
+      "en_summary": "@dampedspring explains that it goes fine and the green shoe is exercised. Today the green shoe on $ANT was exercised because the lead manager understood the allocation, had after-market buying orders from real investors, and perhaps built a short position.",
+      "zh_summary": "@dampedspring 解釋一切順利且綠鞋選擇權已行使。今日 $ANT 的綠鞋被行使，因為主承銷商理解配售情況，口袋裡有真實投資者的盤後買單，或許還在盤後建立了空頭倉位。",
+      "tickers": [
+        "ANT"
+      ],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "ANT": "中性"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123937181274411113": {
+      "en_summary": "@CKCapitalxx replies to @SingularityRes that he believed they switched their short to $IREN.",
+      "zh_summary": "@CKCapitalxx 回覆 @SingularityRes，他認為他們已將空頭轉向 $IREN。",
+      "tickers": [
+        "IREN"
+      ],
+      "stance": "睇淡",
+      "stance_by_ticker": {
+        "IREN": "睇淡"
+      },
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {
+        "IREN": "believed switched short position to IREN"
+      }
+    },
+    "2123936934385057998": {
+      "en_summary": "@TrendSpider notes that NVIDIA $NVDA just lost an entire Amazon $AMZN worth in market cap in 6 weeks. Only three other public companies in the world are worth more than what NVIDIA lost: Microsoft $MSFT, Alphabet $GOOGL, and Apple $AAPL.",
+      "zh_summary": "@TrendSpider 指出 NVIDIA $NVDA 在 6 週內市值損失相當於整個 Amazon $AMZN。世界上只有另外三家上市公司的市值超過 NVIDIA 損失的金額：微軟 $MSFT、Alphabet $GOOGL 和蘋果 $AAPL。",
+      "tickers": [
+        "NVDA",
+        "AMZN",
+        "MSFT",
+        "GOOGL",
+        "AAPL"
+      ],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "NVDA": "中性",
+        "AMZN": "中性",
+        "MSFT": "中性",
+        "GOOGL": "中性",
+        "AAPL": "中性"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    }
+  }
+}
