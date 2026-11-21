@@ -1,1 +1,74 @@
-PLACEHOLDER3
+{
+  "posts": {
+    "2123870821810856282": {
+      "en_summary": "(Reposted by @tastyliveshow) It is rough out there.",
+      "zh_summary": "（由@tastyliveshow轉推）外面情況很艱難。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123869694016778398": {
+      "en_summary": "Almost down 5% now on $QQQ.",
+      "zh_summary": "$QQQ現在幾乎下跌了5%。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123869245104697736": {
+      "en_summary": "Nvidia $NVDA losing its shit is one issue. But PE, credit and banks are also losing their shit for the first time collectively this cycle.",
+      "zh_summary": "輝達$NVDA大幅下跌是一個問題。但私募股權、信貸和銀行也是本輪週期首次集體大幅下跌。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2123869203585180068": {
+      "en_summary": "The $VIX has blown through the OH SH*T level for the first time since March 2026. Back in March, the $SPX went down another three weeks before the eventual low.",
+      "zh_summary": "$VIX首次自2026年3月以來突破OH SH*T水平。回到3月，$SPX在最終低點前又下跌了三週。",
+      "tickers": ["SPY"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPY": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123867426034962668": {
+      "en_summary": "Approach to shorting the market like Ichiro: get in, take profits aggressively. Taking another 25% off $GLD position, covered $QQQ hedge, looking for short-dated plays on EOW capitulation.",
+      "zh_summary": "做空市場的方法像一郎：進場，積極獲利了結。再從$GLD倉位中減持25%，已平掉$QQQ對沖，尋找週末投降時的短期交易。",
+      "tickers": ["GLD", "QQQ"],
+      "stance": "睇好",
+      "stance_by_ticker": {"GLD": "睇好", "QQQ": "中性"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"GLD": "減持25%倉位，已覆蓋初始成本"}
+    }
+  }
+}
