@@ -1,1 +1,74 @@
-PLACEHOLDER8
+{
+  "posts": {
+    "2123859747539718184": {
+      "en_summary": "(Reposted by @zeroshorts) Content regarding market or short positions.",
+      "zh_summary": "（由@zeroshorts轉推）關於市場或做空倉位的內容。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123858895638757871": {
+      "en_summary": "(Reposted by @zeroshorts) I was blasted two days ago for suggesting accounting/securities fraud at $NVDA. Meanwhile @michaeljburry and others have been documenting this for two years. Nobody can say they were not warned.",
+      "zh_summary": "（由@zeroshorts轉推）兩天前我因為建議$NVDA存在會計/證券欺詐而被抨擊。同時@michaeljburry等人已經記錄了兩年。沒有人能說他們沒有被警告。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "被指存在會計/證券欺詐，已被記錄兩年"}
+    },
+    "2123858100025495895": {
+      "en_summary": "The SEC is reportedly investigating $NVDA over potential accounting issues. When it rains, it pours.",
+      "zh_summary": "據報導，SEC正在調查$NVDA潛在的會計問題。禍不單行。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "SEC調查潛在會計問題"}
+    },
+    "2123857762027471187": {
+      "en_summary": "BREAKING: The S&P 500 falls below 7,000 for the first time since April 15th on reports that the SEC is launching an investigation into Nvidia $NVDA. The Nasdaq 100 is now down -4.3% today.",
+      "zh_summary": "突發：標普500指數自4月15日以來首次跌破7000點，原因是有報導稱SEC正在對輝達$NVDA展開調查。納斯達克100指數今天已下跌4.3%。",
+      "tickers": ["SPY", "QQQ", "NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPY": "睇淡", "QQQ": "睇淡", "NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123857626014601230": {
+      "en_summary": "SECURITIES AND EXCHANGE COMMISSION PROBE INTO NVIDIA IS EXPLORING POTENTIAL ACCOUNTING ISSUES lol they making themselves very clear. $NVDA",
+      "zh_summary": "證券交易委員會對輝達的調查正在探索潛在的會計問題，lol他們把自己說得很清楚。$NVDA",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "SEC調查潛在會計問題"}
+    }
+  }
+}
