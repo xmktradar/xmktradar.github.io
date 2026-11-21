@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2123820783247995032": {
+      "en_summary": "$MCD holding up very well @SunriseTrader - thx for that one! $WMT $COST also showing relative strength post-EPS - reduced risk in these two - smaller positions.",
+      "zh_summary": "$MCD表現非常好 @SunriseTrader - 謝謝那個！$WMT $COST在財報後也顯示相對強勢 - 這兩個風險降低 - 較小倉位。",
+      "tickers": ["MCD", "WMT", "COST"],
+      "stance": "睇好",
+      "stance_by_ticker": {"MCD": "睇好", "WMT": "睇好", "COST": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MCD": "表現非常好", "WMT": "財報後相對強勢", "COST": "財報後相對強勢"}
+    },
+    "2123820731029127482": {
+      "en_summary": "Highest equity put/call ratio of 2026 $QQQ $SPY $NVDA",
+      "zh_summary": "2026年最高股票看跌/看漲比率 $QQQ $SPY $NVDA",
+      "tickers": ["QQQ", "SPY", "NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性", "SPY": "中性", "NVDA": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123820585054548362": {
+      "en_summary": "$V is green. That is all. Carry on.",
+      "zh_summary": "$V是綠色的。就是這樣。繼續。",
+      "tickers": ["V"],
+      "stance": "中性",
+      "stance_by_ticker": {"V": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123820350328930425": {
+      "en_summary": "$ANT is now down 25% from its IPO high.",
+      "zh_summary": "$ANT現在從IPO高點下跌25%。",
+      "tickers": ["ANT"],
+      "stance": "中性",
+      "stance_by_ticker": {"ANT": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123819911587750240": {
+      "en_summary": "Options with decreasing option implied volatility: $KLAR $SLS $DLO $KMB $P $TGT $PCG $AS $BEKE $CSCO $PDD $WMT $DIS",
+      "zh_summary": "期權隱含波動率下降的期權：$KLAR $SLS $DLO $KMB $P $TGT $PCG $AS $BEKE $CSCO $PDD $WMT $DIS",
+      "tickers": ["KLAR", "SLS", "DLO", "KMB", "P", "TGT", "PCG", "AS", "BEKE", "CSCO", "PDD", "WMT", "DIS"],
+      "stance": "中性",
+      "stance_by_ticker": {"KLAR": "中性", "SLS": "中性", "DLO": "中性", "KMB": "中性", "P": "中性", "TGT": "中性", "PCG": "中性", "AS": "中性", "BEKE": "中性", "CSCO": "中性", "PDD": "中性", "WMT": "中性", "DIS": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
