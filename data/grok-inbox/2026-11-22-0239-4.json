@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2124181126180680040": {
+      "en_summary": "Another @BULLOFBRITAIN W. Even when I don't care about market I win.",
+      "zh_summary": "又一個 @BULLOFBRITAIN W。即使我不關心市場我也贏。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124179666743538139": {
+      "en_summary": "$QQQ Deeply over sold and also technically broken (below all MAs).",
+      "zh_summary": "$QQQ 深度超賣，並且技術上已破位（低於所有移動平均線）。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124176765153059010": {
+      "en_summary": "The SOXX had its worst week since 2001... -17.1% $SMH.",
+      "zh_summary": "SOXX 經歷了自 2001 年以來最差的一週…… -17.1% $SMH。",
+      "tickers": ["SMH"],
+      "stance": "中性",
+      "stance_by_ticker": {"SMH": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2124172816589197597": {
+      "en_summary": "“.. Once Anthropic started trading, the market just absolutely puked, and that’s because they raised $100 billion — it’s a big, big number.” @business $ANT. Links to Bloomberg article on Wall Street nearing breaking point as fear grips global markets.",
+      "zh_summary": "“.. 一旦 Anthropic 開始交易，市場就完全嘔吐了，因為他們籌集了 1000 億美元——這是一個非常大的數字。” @business $ANT。鏈接到彭博文章，關於華爾街接近崩潰點，恐懼籠罩全球市場。",
+      "tickers": ["ANT"],
+      "stance": "中性",
+      "stance_by_ticker": {"ANT": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"ANT": "籌集 1000 億美元導致市場反應"}
+    },
+    "2124172258549907604": {
+      "en_summary": "$NVDA is expected to exit 2027 earning ~$50B in profit every month which is more than the entire neocloud group's combined market cap right now: $CRWV ~$22B, $HUT ~$5.5B, $IREN ~$5.5B, $WULF ~$4.9B, $CORZ ~$3.6B, $APLD ~$3.5B, $CIFR ~$2.5B, $WYFI ~$290M.",
+      "zh_summary": "$NVDA 預計在 2027 年結束時每月盈利約 500 億美元，這超過了目前整個新雲組別的合併市值：$CRWV 約 220 億，$HUT 約 55 億，$IREN 約 55 億，$WULF 約 49 億，$CORZ 約 36 億，$APLD 約 35 億，$CIFR 約 25 億，$WYFI 約 2.9 億。",
+      "tickers": ["NVDA", "CRWV", "HUT", "IREN", "WULF", "CORZ", "APLD", "CIFR", "WYFI"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好", "CRWV": "中性", "HUT": "中性", "IREN": "中性", "WULF": "中性", "CORZ": "中性", "APLD": "中性", "CIFR": "中性", "WYFI": "中性"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "預計 2027 年每月盈利約 500 億美元"}
+    }
+  }
+}
