@@ -1,1 +1,74 @@
-PLACEHOLDER5
+{
+  "posts": {
+    "2123865174033719644": {
+      "en_summary": "(Reposted by @JerryCap) I told myself at $NVDA 130 I would buy but I lied I do not have the courage. Probably means it is a buy tho.",
+      "zh_summary": "（由@JerryCap轉推）我告訴自己在$NVDA 130時會買，但我撒謎了，我沒有勇氣。可能意味著這是一個買入時機。",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "在130美元時本想買入但缺乏勇氣，可能是買點"}
+    },
+    "2123864171997696291": {
+      "en_summary": "$NVDA is on track for its worst weekly decline in nearly 20 years.",
+      "zh_summary": "$NVDA正邁向近20年來最差的單週跌幅。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123863951549014246": {
+      "en_summary": "Active options: $NVDA $AMD $TSLA $SPCX $MU $AAPL $AMZN $INTC $GME $GOOGL $IREN $NFLX $CRWV $MSTR $META",
+      "zh_summary": "活躍期權：$NVDA $AMD $TSLA $SPCX $MU $AAPL $AMZN $INTC $GME $GOOGL $IREN $NFLX $CRWV $MSTR $META",
+      "tickers": ["NVDA", "AMD", "TSLA", "SPCX", "MU", "AAPL", "AMZN", "INTC", "GME", "GOOGL", "IREN", "NFLX", "CRWV", "MSTR", "META"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "AMD": "中性", "TSLA": "中性", "SPCX": "中性", "MU": "中性", "AAPL": "中性", "AMZN": "中性", "INTC": "中性", "GME": "中性", "GOOGL": "中性", "IREN": "中性", "NFLX": "中性", "CRWV": "中性", "MSTR": "中性", "META": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123863898533314633": {
+      "en_summary": "Really looking forward to this @Deepvue",
+      "zh_summary": "非常期待這個 @Deepvue",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2123863703074275440": {
+      "en_summary": "$NVDA discussion in the 120s",
+      "zh_summary": "$NVDA在120美元區間的討論",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
