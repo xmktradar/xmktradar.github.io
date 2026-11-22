@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2124272913121476742": {
+      "en_summary": "Disclaimer for JOJO.Index = ATAC Credit-On/Credit-Off Index, launched 6/14/2021. Results before launch backtested and hypothetical. Indexes unmanaged, no fees, cannot invest directly. Past performance no guarantee. Not investment advice.",
+      "zh_summary": "JOJO.Index = ATAC Credit-On/Credit-Off Index 的免責聲明，於2021年6月14日推出。推出前結果為回測及假設性。指數未經管理、無費用，無法直接投資。過去表現不保證未來結果。非投資建議。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124272911422759076": {
+      "en_summary": "When the yen carry trade unwound (Credit-off 3 of 4 weeks, Jul 16 to Aug 5, 2024, live): JOJO.Index +6.26%, Long Treasuries +5.27%, High yield -0.85%, S&P 500 -8.41%.",
+      "zh_summary": "日圓套利交易解除期間（2024年7月16日至8月5日，Credit-off 3週中的4週，實時）：JOJO.Index +6.26%，長期國債 +5.27%，高收益 -0.85%，標普500 -8.41%。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "fx",
+      "macro_impact": "中性",
+      "ticker_notes": {"SPY": "S&P 500 -8.41% during yen carry unwind period"}
+    },
+    "2124272685266206863": {
+      "en_summary": "@StochAlpha I was going to say no 3x levered ETFs. So I’ll count your vote as SOXX.",
+      "zh_summary": "@StochAlpha 我本來要說不要3倍槓桿ETF。所以我會把你的投票算作 SOXX。",
+      "tickers": ["SOXX"],
+      "stance": "中性",
+      "stance_by_ticker": {"SOXX": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124272580022665637": {
+      "en_summary": "(Reposted by @TrungTPhan) Blackstone’s Jon Gray on AI uses: rental housing processes applications 90% faster; Ancestry.com processes data 30x faster; European classifieds answers CS 80% faster; ads at lower cost; Chamberlain AI digital doorman from 0 to $50M run-rate in <2 years, CEO projects $500M.",
+      "zh_summary": "（由 @TrungTPhan 轉推）Blackstone 的 Jon Gray 談 AI 應用：租賃住房公司申請處理快90%；Ancestry.com 數據處理快30倍；歐洲分類廣告客服回答快80%；廣告成本更低；Chamberlain AI 數位門衛從零到5000萬美元年化收入不到2年，CEO 預測未來幾年達5億美元。",
+      "tickers": ["BX", "AMZN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"BX": "睇好", "AMZN": "中性"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"BX": "AI driving efficiency and new revenue like Chamberlain $50M run-rate projecting $500M"}
+    },
+    "2124272387600581027": {
+      "en_summary": "Looks like this SA intern kiddo still hasn’t learned their lesson. (Quoted: SemiAnalysis BREAKING: Jensen Huang reportedly told NVIDIA employees if AMD's Minimax Inferact kernels beat NVIDIA's on AgentX, he would reset every NVIDIA employee's GTA 6 progress. Employees cried. Jensen called it high-performance levers of motivation.)",
+      "zh_summary": "看起來這位 SA 實習生還未吸取教訓。（引用：SemiAnalysis 突發：Jensen Huang 據報告訴 NVIDIA 員工，如果 AMD 的 Minimax Inferact 核心在 AgentX 表現上擊敗 NVIDIA，他會重置每位 NVIDIA 員工的 GTA 6 進度。員工哭了。Jensen 稱之為高性能激勵槓桿。）",
+      "tickers": ["NVDA", "AMD"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "AMD": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
