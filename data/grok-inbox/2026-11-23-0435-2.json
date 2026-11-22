@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2124550418344919213": {
+      "en_summary": "Provided the technical levels you need to be aware of for a huge range of stocks this weekend: $SPY $QQQ $IWM #Bitcoin $NVDA $AMD $PEP $MCD $MU $SNDK $CELH $ASST $MSTR $ONDS $CIFR $IREN $TSLA $MSFT $AAPL $GOOGL $NBIS $AMZN $AVGO $PLTR $HOOD $INTC",
+      "zh_summary": "提供本週末需留意的大量股票技術水平：$SPY $QQQ $IWM #Bitcoin $NVDA $AMD $PEP $MCD $MU $SNDK $CELH $ASST $MSTR $ONDS $CIFR $IREN $TSLA $MSFT $AAPL $GOOGL $NBIS $AMZN $AVGO $PLTR $HOOD $INTC",
+      "tickers": ["SPY", "QQQ", "IWM", "NVDA", "AMD", "PEP", "MCD", "MU", "SNDK", "CELH", "ASST", "MSTR", "ONDS", "CIFR", "IREN", "TSLA", "MSFT", "AAPL", "GOOGL", "NBIS", "AMZN", "AVGO", "PLTR", "HOOD", "INTC"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "QQQ": "中性", "IWM": "中性", "NVDA": "中性", "AMD": "中性", "PEP": "中性", "MCD": "中性", "MU": "中性", "SNDK": "中性", "CELH": "中性", "ASST": "中性", "MSTR": "中性", "ONDS": "中性", "CIFR": "中性", "IREN": "中性", "TSLA": "中性", "MSFT": "中性", "AAPL": "中性", "GOOGL": "中性", "NBIS": "中性", "AMZN": "中性", "AVGO": "中性", "PLTR": "中性", "HOOD": "中性", "INTC": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124550267223871864": {
+      "en_summary": "With $VIX hitting $40+, Tech seeing its largest drawdown since 2003, & best yet… Contrarian signal, Jim Cramer turning bearish. This is the moment you should be eyeing to aggressively buy strong, undervalued companies. 1. $GOOGL (Google) 2. $BE (Bloom Energy) 3. $AMD (Advanced Micro Devices) 4. $TSLA (Tesla) 5. $ZETA (Zeta Global) In the long run, these investments will serve as generational buys.",
+      "zh_summary": "隨著 $VIX 觸及 $40+，科技股出現 2003 年以來最大回撤，而且最好的是……逆向訊號，Jim Cramer 轉為看空。這是你應該積極買入強勁、被低估公司的時刻。1. $GOOGL (Google) 2. $BE (Bloom Energy) 3. $AMD (Advanced Micro Devices) 4. $TSLA (Tesla) 5. $ZETA (Zeta Global) 長遠來看，這些投資將成為世代買入機會。",
+      "tickers": ["GOOGL", "BE", "AMD", "TSLA", "ZETA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"GOOGL": "睇好", "BE": "睇好", "AMD": "睇好", "TSLA": "睇好", "ZETA": "睇好"},
+      "horizon": "長線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124548478298976502": {
+      "en_summary": "“.. We are taking unattended operations to a whole new level,” Luc Reynaert, chief product supply officer, said on Thursday .. @nytimes $PG",
+      "zh_summary": "「……我們正將無人操作提升至全新水平，」首席產品供應官 Luc Reynaert 於週四表示…… @nytimes $PG",
+      "tickers": ["PG"],
+      "stance": "中性",
+      "stance_by_ticker": {"PG": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124547036523466760": {
+      "en_summary": "(Reposted by @KevInvestingYT) *NVIDIA PROBE IN CALIFORNIA EXTENDS TO POTENTIAL CRIMINAL VIOLATIONS: BLOOMBERG $NVDA",
+      "zh_summary": "（由 @KevInvestingYT 轉發）*NVIDIA 加州調查延伸至潛在刑事違規：BLOOMBERG $NVDA",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124544941359579226": {
+      "en_summary": "S&P 500 an 11.6% drawdown $NVDA a 47.5% drawdown @koyfincharts h/t @mattcerminaro @awealthofcs",
+      "zh_summary": "標普 500 回撤 11.6% $NVDA 回撤 47.5% @koyfincharts h/t @mattcerminaro @awealthofcs",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "回撤 47.5%"}
+    }
+  }
+}
