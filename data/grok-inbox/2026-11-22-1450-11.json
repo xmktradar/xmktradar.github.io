@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2124222881853063553": {
+      "en_summary": "$NBIS #NBIS This trend zone is in the mid $50's.",
+      "zh_summary": "$NBIS #NBIS 這個趨勢區域在 50 美元中段。",
+      "tickers": ["NBIS"],
+      "stance": "中性",
+      "stance_by_ticker": {"NBIS": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124222260059799563": {
+      "en_summary": "Great summary of the extraordinary progress that was made in AI over the past 2 years. If we only looked at the start and end of $NVDA as a representative of the value of a key input into AI economy, it might look as though everything had been anticipated. But $NVDA went from $132 on June 14, 2024 to a recent high of ~$239 on Oct 6, 2026. Not everything was priced in. Meanwhile in private markets, OpenAI went 15x higher, and Anthropic 85x higher.",
+      "zh_summary": "過去 2 年 AI 非凡進展的精彩總結。如果我們只看 $NVDA 作為 AI 經濟關鍵投入價值的代表的開始和結束，看起來好像一切都已被預期。但 $NVDA 從 2024 年 6 月 14 日的 132 美元到 2026 年 10 月 6 日的近期高點約 239 美元。並非一切都已定價。同時在私人市場，OpenAI 上漲 15 倍，Anthropic 上漲 85 倍。",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "from $132 Jun 2024 to ~$239 Oct 2026"}
+    },
+    "2124221984943100005": {
+      "en_summary": "$QQQ $NDX $NQ_F This volume shelf HAS to hold up here, or this could turn into an all out crash in December.",
+      "zh_summary": "$QQQ $NDX $NQ_F 這個成交量平台必須在這裡守住，否則可能在十二月變成全面崩潰。",
+      "tickers": ["QQQ"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"QQQ": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    },
+    "2124221465478168845": {
+      "en_summary": "Two questions 1) Will $NVDA have had the same trajectory in the AI boom as $CSCO had in the telecom boom? 2) Will Huawei have the same trajectory in post-boom AI as Huawei had in post-boom telecom?",
+      "zh_summary": "兩個問題 1) $NVDA 在 AI 繁榮中是否會有與 $CSCO 在電信繁榮中相同的軌跡？2) 華為在後繁榮 AI 中是否會有與華為在後繁榮電信中相同的軌跡？",
+      "tickers": ["NVDA", "CSCO"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "CSCO": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124221438043525217": {
+      "en_summary": "$SPY $SPX $ES_F I don't love how thin things are below on this monthly candle chart.",
+      "zh_summary": "$SPY $SPX $ES_F 我不喜歡這個月線蠟燭圖下方有多薄。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    }
+  }
+}
