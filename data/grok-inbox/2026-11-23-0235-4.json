@@ -1,1 +1,74 @@
-TEMP4
+{
+  "posts": {
+    "2124556089932870009": {
+      "en_summary": "VIX touched 40. @jonnajarian tells @larry_kudlow that a VIX above 32 means the market expects 2% swings a day, and extreme fear is when you buy. Anthropic $ANT bounced from $86 to back over $100, and Nvidia $NVDA rallied after the close.",
+      "zh_summary": "VIX 觸及 40。@jonnajarian 告訴 @larry_kudlow，VIX 高於 32 意味市場預期每日 2% 波動，極端恐懼時是買入時機。Anthropic $ANT 從 86 美元反彈回逾 100 美元，Nvidia $NVDA 收盤後上漲。",
+      "tickers": ["ANT", "NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ANT": "睇好", "NVDA": "睇好"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ANT": "從 86 美元反彈逾 100 美元", "NVDA": "收盤後上漲"}
+    },
+    "2124555331296514437": {
+      "en_summary": "Jensen you dog!",
+      "zh_summary": "Jensen 你這狗！",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124554371430056168": {
+      "en_summary": "Reply to @1991Wolfpack: I think $CRWV will have to be bought out for their infrastructure.",
+      "zh_summary": "回覆 @1991Wolfpack：我認為 $CRWV 因其基礎設施必須被收購。",
+      "tickers": ["CRWV"],
+      "stance": "睇好",
+      "stance_by_ticker": {"CRWV": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"CRWV": "因其基礎設施可能被收購"}
+    },
+    "2124553889752272940": {
+      "en_summary": "Forward P/E of $MU $SNDK were large when the moves just started a year ago signaling investors willingness to pay the price for the growth that did come. A low forward P/E could actually mean that the growth isn’t coming in the eyes of investors instead of it being cheap.",
+      "zh_summary": "$MU $SNDK 的遠期市盈率在一年前走勢剛開始時很大，顯示投資者願意為隨後到來的增長支付價格。低遠期市盈率實際上可能意味在投資者眼中增長不會到來，而非便宜。",
+      "tickers": ["MU", "SNDK"],
+      "stance": "中性",
+      "stance_by_ticker": {"MU": "中性", "SNDK": "中性"},
+      "horizon": null,
+      "basis": "估值",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124553634872430783": {
+      "en_summary": "$MANU Manchester United @ManUtd is the Neocloud of the Premier League. This isn’t a criticism, but comparative evidence of a historic club I love, where it’s hard to identify the real bottom. They change players and managers constantly, yet nothing improves. There’s only one solution, the problem may well be in the administration. I’m still a fan of this English historic club.",
+      "zh_summary": "$MANU 曼聯 @ManUtd 是英超的 Neocloud。這不是批評，而是我喜愛的歷史俱樂部的比較證據，很難識別真正底部。他們不斷更換球員和經理，卻無改善。唯一解決方案可能在管理層。我仍是這支英國歷史俱樂部的粉絲。",
+      "tickers": ["MANU"],
+      "stance": "中性",
+      "stance_by_ticker": {"MANU": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
