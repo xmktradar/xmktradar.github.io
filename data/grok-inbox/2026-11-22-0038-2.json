@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2124282745312743495": {
+      "en_summary": "@damnang2 posts '이민희 바보~' quoting BNK Securities cutting SK Hynix target by 36% to ₩1.05M from ₩1.65M, HOLD rating, 2027 op profit cut 12%, and forecasting 89% profit drop in 2028E to ₩34.6T from higher prior years.",
+      "zh_summary": "@damnang2 發文「이민희 바보~」，引用 BNK Securities 將 SK Hynix 目標價下調 36% 至 ₩1.05M（原 ₩1.65M），評級 HOLD，2027 年營運利潤下調 12%，並預測 2028 年利潤下降 89% 至 ₩34.6T。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124282426209775663": {
+      "en_summary": "@KobeissiLetter notes Anthropic's cash and equivalents at record $237B after IPO raised $81B plus $26B private placement. Compares to Alphabet $GOOGL, Amazon $AMZN, SpaceX $SPCX, Apple $AAPL each holding less than 25% of this, so Anthropic larger than those 4 combined. Also 8x $NVDA cash, 12x $MSFT, 22x $META. Berkshire at $377B. Anthropic has huge cash to deploy.",
+      "zh_summary": "@KobeissiLetter 指出 Anthropic 現金及等價物達創紀錄 2370 億美元，IPO 募集 810 億美元另加 260 億美元私募。對比 Alphabet $GOOGL、Amazon $AMZN、SpaceX $SPCX、Apple $AAPL 各自持有少於該金額的 25%，因此 Anthropic 大於這 4 家公司總和。亦是 $NVDA 現金的 8 倍、$MSFT 的 12 倍、$META 的 22 倍。Berkshire 為 3770 億美元。Anthropic 有大量現金可部署。",
+      "tickers": ["GOOGL", "AMZN", "SPCX", "AAPL", "NVDA", "MSFT", "META"],
+      "stance": "中性",
+      "stance_by_ticker": {"GOOGL": "中性", "AMZN": "中性", "SPCX": "中性", "AAPL": "中性", "NVDA": "中性", "MSFT": "中性", "META": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124282033702916280": {
+      "en_summary": "@RyanDetrick suggests starting Thanksgiving conversation by noting the median stock in the Dow is up since S&P 500 peaked on October 6th and half the names are higher. Of course, $NVDA is down nearly 48% though.",
+      "zh_summary": "@RyanDetrick 建議在感恩節晚餐開始有趣對話，指出道指中位數股票自 10 月 6 日 S&P 500 見頂以來上漲，且一半名稱更高。當然，$NVDA 下跌近 48%。",
+      "tickers": ["NVDA", "SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "睇淡", "SPY": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {"NVDA": "自 S&P 見頂下跌近 48%"}
+    },
+    "2124278722043740543": {
+      "en_summary": "@carlquintanilla quotes FT on solution using offshore shell company not triggering US export restrictions, branded as 'neocloud' provider, becoming Megaspeed. Mentions $NVDA.",
+      "zh_summary": "@carlquintanilla 引用 FT 關於使用不會觸發美國出口限制的離岸空殼公司解決方案，品牌為「新雲端」供應商，成為 Megaspeed。提及 $NVDA。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2124277210156863903": {
+      "en_summary": "@moninvestor says when stock keeps going down it's easy to look for something wrong with the company, did so with $IREN, but other AI stocks followed also down. Would have been down whichever owned. At these prices, IREN still the stock most like to own. Thinks some manipulation, big buyers happy to let people sell so they can buy cheaper.",
+      "zh_summary": "@moninvestor 表示當股票持續下跌時容易開始找公司問題，自己對 $IREN 也這樣做過，但其他跟隨的 AI 股票也下跌。無論持有哪一隻本月都會下跌。在這些價格，IREN 仍是最想持有的股票。認為有些操縱，大買家樂於讓人賣出以便更便宜買入。",
+      "tickers": ["IREN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"IREN": "睇好"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"IREN": "現價仍是最想持有，認為有操縱讓大戶低吸"}
+    }
+  }
+}
