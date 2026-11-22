@@ -1,0 +1,159 @@
+{
+ "t": "QH",
+ "name": "Quhuo Limited",
+ "cik": 1781193,
+ "q": [
+  {
+   "end": "2021-12-31",
+   "label": "FY2020 Q4",
+   "rev": 174782000,
+   "gp": 12050000,
+   "op": -5666000,
+   "ni": -11348000,
+   "eps": -0.25000000000000006,
+   "ocf": 3963000,
+   "capex": -19000,
+   "fcf": 3982000
+  }
+ ],
+ "latest": {
+  "label": "FY2020 Q4",
+  "filed": "2022-09-09",
+  "accn": "0001193125-22-241962",
+  "form": "20-F",
+  "end": "2021-12-31"
+ },
+ "bal": {
+  "end": "2021-12-31",
+  "cash": 4487000,
+  "sti": 28062000,
+  "debt": 23987000
+ },
+ "bank": false,
+ "seg": {
+  "axis": "srt:ProductOrServiceAxis",
+  "basis": "year",
+  "rows": [
+   {
+    "name": "On demand delivery solution services",
+    "val": 600847000.0,
+    "prev": 2536818000.0
+   },
+   {
+    "name": "Mobility Solution Services",
+    "val": 17287000.0,
+    "prev": 31587000.0
+   },
+   {
+    "name": "Housekeeping Services",
+    "val": 12512000.0,
+    "prev": 12405000.0
+   },
+   {
+    "name": "Others",
+    "val": 1008000.0,
+    "prev": null
+   }
+  ],
+  "accn": "0001193125-22-241962"
+ },
+ "rules": 4,
+ "diag": {
+  "newest": "2025-12-31",
+  "rev_last": "2021-12-31",
+  "have": [
+   {
+    "c": "us-gaap:CostOfRevenue",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 2513524000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-04-02"
+   },
+   {
+    "c": "us-gaap:CostOfRevenue",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 359429000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-04-02"
+   },
+   {
+    "c": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 2525897000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-04-02"
+   },
+   {
+    "c": "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 361198000,
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-04-02"
+   }
+  ],
+  "rev_concepts_last": {
+   "Revenues": {
+    "start": "2021-01-01",
+    "end": "2021-12-31",
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2022-09-09"
+   },
+   "RevenueFromContractWithCustomerExcludingAssessedTax": {
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2026-04-02"
+   },
+   "RevenueFromContractWithCustomerIncludingAssessedTax": {
+    "start": "2020-01-01",
+    "end": "2020-12-31",
+    "form": "20-F",
+    "fp": "FY",
+    "filed": "2021-05-17"
+   }
+  },
+  "few": {
+   "Revenues": {
+    "facts": 3,
+    "q": 0,
+    "first": null,
+    "last": null,
+    "labelled": 0
+   },
+   "RevenueFromContractWithCustomerExcludingAssessedTax": {
+    "facts": 8,
+    "q": 0,
+    "first": null,
+    "last": null,
+    "labelled": 0
+   },
+   "RevenueFromContractWithCustomerIncludingAssessedTax": {
+    "facts": 1,
+    "q": 0,
+    "first": null,
+    "last": null,
+    "labelled": 0
+   }
+  }
+ },
+ "mcap": 269367394304,
+ "next": "2025-08-26",
+ "last_report": "2025-08-26",
+ "est": {
+  "eps_act": null,
+  "eps_est": null,
+  "rev_est": null,
+  "rev_est_seen": null
+ },
+ "pending": null
+}
