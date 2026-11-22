@@ -1,1 +1,74 @@
-PLACEHOLDER_TO_REPLACE
+{
+  "posts": {
+    "2124269095810171164": {
+      "en_summary": "GTA is a simulated city. Tesla FSD v15 is your actual city. One is changing the world. Can't wait for FSD v15 on Cyberbeast. FSD is the lubricant to EV adoption as Tesla is the only one that can do it reliably and safely at scale.",
+      "zh_summary": "GTA 是模擬城市。Tesla FSD v15 是你的真實城市。其中一個正在改變世界。迫不及待在 Cyberbeast 上體驗 FSD v15。FSD 是 EV 採用的潤滑劑，因為 Tesla 是世界上唯一能可靠且安全大規模做到的。",
+      "tickers": ["TSLA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TSLA": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TSLA": "FSD v15 key to EV adoption, only reliable at scale"}
+    },
+    "2124268438843687115": {
+      "en_summary": "Fun fact - NVIDIA joined the S&P 500 on November 28 2001. It replaced Enron.",
+      "zh_summary": "有趣事實 - NVIDIA 於2001年11月28日加入標普500。它取代了 Enron。",
+      "tickers": ["NVDA", "SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "SPY": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124268006310130083": {
+      "en_summary": "@saylor-ism Banks have flipped on Bitcoin. Governments have flipped on Bitcoin. That trend will not reverse.",
+      "zh_summary": "@saylor-ism 銀行已轉向比特幣。政府已轉向比特幣。這一趨勢不會逆轉。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124267320197714367": {
+      "en_summary": "@VolSignals If we replay Dec 2018, then forget 35-40. We heading up to 55-60 range! Full porting long SPX if so.",
+      "zh_summary": "@VolSignals 如果我們重演2018年12月，那麼忘記35-40。我們正邁向55-60區間！如果是這樣，全倉做多 SPX。",
+      "tickers": ["SPY"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPY": "睇好"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPY": "if replay Dec 2018, heading to 55-60 range, full long SPX"}
+    },
+    "2124267194267652470": {
+      "en_summary": "BREAKING: Jensen Huang reportedly told NVIDIA employees that if AMD's Minimax Inferact kernels beat NVIDIA's on AgentX performance targets, he would reset every NVIDIA employee's GTA 6 progress. Employees cried. Jensen called it 'high-performance levers of motivation.' Is this what you want from the leader of one of the largest companies? Disgusting. (Source: roommate)",
+      "zh_summary": "突發：Jensen Huang 據報告訴 NVIDIA 員工，如果 AMD 的 Minimax Inferact 核心在 AgentX 表現目標上擊敗 NVIDIA，他會重置每位 NVIDIA 員工的 GTA 6 進度。員工哭了。Jensen 稱之為「高性能激勵槓桿」。這是你希望從地球上最大公司之一的領導者看到的嗎？惡心。（來源：室友）",
+      "tickers": ["NVDA", "AMD"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "AMD": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
