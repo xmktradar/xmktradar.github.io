@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2124259561226096902": {
+      "en_summary": "No wonder promoters like Lucky Palmer want Jensen back, commenting on @CGasparino and quoted FT report that Alice Huang former Megaspeed executive was in a network of shell companies and gaming investors funneling Nvidia chips to China, with Speedmatrix declaring $4.6B imports from Aivres, $3.6B Chinese state funds via linked entities, Century Litong as primary distributor of smuggled chips, Nvidia applied for 40,000 H200 to its HK sub but has halted shipments to China and cut off Megaspeed in 2025.",
+      "zh_summary": "為何像 Lucky Palmer 這樣的推廣者想要 Jensen 回來，評論 @CGasparino 並引用金融時報報導，Alice Huang 前 Megaspeed 高管參與殼公司和遊戲投資者網絡，將 Nvidia 晶片運往中國，Speedmatrix 申報從 Aivres 進口 46 億美元，36 億美元中國國家基金透過關聯實體，Century Litong 作為走私晶片主要分銷商，Nvidia 曾申請向其香港子公司出售 40,000 顆 H200，但已停止向中國出貨並於 2025 年切斷 Megaspeed。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124258900451181028": {
+      "en_summary": "Remember when Warren Buffett's Berkshire Hathaway bought $BYD instead of $TSLA? Quoted POV: You invested $1,000 in Tesla vs BYD back in 2010.",
+      "zh_summary": "還記得 Warren Buffett 的 Berkshire Hathaway 買了 $BYD 而不是 $TSLA 嗎？引用視角：你在 2010 年投資 1,000 美元於 Tesla 對比 BYD。",
+      "tickers": ["TSLA", "BYD"],
+      "stance": "中性",
+      "stance_by_ticker": {"TSLA": "中性", "BYD": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124258739569975766": {
+      "en_summary": "$QQQ Umm..",
+      "zh_summary": "$QQQ 嗯..",
+      "tickers": ["QQQ"],
+      "stance": null,
+      "stance_by_ticker": {"QQQ": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124257796635947010": {
+      "en_summary": "NVIDIA $NVDA is now trading at its cheapest valuation since $4/share...",
+      "zh_summary": "NVIDIA $NVDA 現在以自每股 4 美元以來最便宜的估值交易...",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "cheapest valuation since $4/share"}
+    },
+    "2124252900197028093": {
+      "en_summary": "You’d be a millionaire by the end of the year if you took this list and traded against it. The worst of the worst of FinTwit. The “buy $NBIS bro future demand to 2028 is locked in” types. Wrong at every turn. It’s incredible.",
+      "zh_summary": "如果你拿這份名單並反向交易，年底前你會成為百萬富翁。FinTwit 最差中的最差。那些「買 $NBIS 兄弟，未來需求到 2028 已鎖定」的類型。每一步都錯。太不可思議了。",
+      "tickers": ["NBIS"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NBIS": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
