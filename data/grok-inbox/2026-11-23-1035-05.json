@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2124659946591801812": {
+      "en_summary": "@RedDogT3 says $HPE and $DELL are a major focus for AI this week, and shares game plan link.",
+      "zh_summary": "@RedDogT3 表示$HPE和$DELL是本週AI的主要焦點，並分享遊戲計劃連結。",
+      "tickers": ["HPE", "DELL"],
+      "stance": "中性",
+      "stance_by_ticker": {"HPE": "中性", "DELL": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2124659204254228690": {
+      "en_summary": "@EliteOptions2 $NVDA trade idea: Nov 27 115P trigger 123 targets 113, 104 stop 127. NVDA closed at 125.53. Every pop aggressively sold after Jensen's affair news; on top of resigning, Friday news of SEC launching investigation on potential accounting issues.",
+      "zh_summary": "@EliteOptions2 $NVDA交易想法：11月27日115P，觸發123，目標113、104，止损127。NVDA收於125.53。Jensen外遇新聞後每次反彈都被積極賣出；除辭職外，週五有SEC對潛在會計問題展開調查的消息。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "115P put idea after affair news, resignation, SEC investigation"}
+    },
+    "2124658749000613894": {
+      "en_summary": "@benitoz says Spencer explains the last week between Bessent and Nvidia as a true 180. Odds Jensen comes back just ticked higher. Questions how America leads in AI without its leader. Greater than 51% imo.",
+      "zh_summary": "@benitoz 稱Spencer解釋Bessent與Nvidia上週情況為真正的180度轉變。Jensen回歸的機率剛剛上升。質疑美國如何在沒有其領導者的情況下領導AI。個人認為超過51%。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2124658365087310247": {
+      "en_summary": "@danielnewmanUV agrees with a quote: after predicting a top in the AI trade every month for the last 4 years, the bears finally got their moment last week.",
+      "zh_summary": "@danielnewmanUV 同意引用：在過去4年每月預測AI交易頂部後，空頭終於在上週迎來了他們的時刻。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2124657976900260255": {
+      "en_summary": "@EliteOptions2 $AMD trade idea: Nov 27 380P trigger 400 targets 380, 365 stop 415. AMD closed at 424.39. One of the strongest semi names in relative strength flipped on Thursday with Hunterbrook's short report; market sold off and AMD dropped further.",
+      "zh_summary": "@EliteOptions2 $AMD交易想法：11月27日380P，觸發400，目標380、365，止损415。AMD收於424.39。相對強度最強的半導體名稱之一在週四因Hunterbrook空頭報告而翻轉；市場拋售，AMD進一步下跌。",
+      "tickers": ["AMD"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"AMD": "睇淡"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AMD": "380P put idea after Hunterbrook short report"}
+    }
+  }
+}
