@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2124811366414315712": {
+      "en_summary": "The Panic Selling Reversal Pattern: From the book: 10 Price Action Trading Setups Based on Math: Advanced Trading Strategies for Breakouts, Reversals, and Major Trend Changes: https://link.amazon/B098Fz83r",
+      "zh_summary": "恐慌拋售逆轉模式：來自書籍《基於數學的 10 個價格行動交易設置：突破、逆轉與主要趨勢變化的高級交易策略》：https://link.amazon/B098Fz83r",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124810020294390233": {
+      "en_summary": "S&P 500 back to where it was at 10:45 a.m. ET on Friday",
+      "zh_summary": "標普 500 回到週五美東時間上午 10:45 的位置。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124809262194917725": {
+      "en_summary": "The P/E ratio on stocks has collapsed: Nvidia: 7.8 times",
+      "zh_summary": "股票本益比已崩跌：Nvidia：7.8 倍",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "P/E collapsed to 7.8 times"}
+    },
+    "2124808920765960525": {
+      "en_summary": "See u guys twice today! @WOLF_Financial",
+      "zh_summary": "今天見兩次！ @WOLF_Financial",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124808556843307197": {
+      "en_summary": "TSMC's Hou: Not seeing order adjustment from clients. TSMC's Hou: Trend of AI remains unchanged.",
+      "zh_summary": "TSMC 的 Hou：未見客戶訂單調整。TSMC 的 Hou：AI 趨勢保持不變。",
+      "tickers": ["TSM"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TSM": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TSM": "No order adjustments, AI trend unchanged"}
+    }
+  }
+}
