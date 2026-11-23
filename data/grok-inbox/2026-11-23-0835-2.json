@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2124523842098139388": {
+      "en_summary": "This made me think about $QCOM.",
+      "zh_summary": "這讓我想到$QCOM。",
+      "tickers": ["QCOM"],
+      "stance": "中性",
+      "stance_by_ticker": {"QCOM": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124523814981677424": {
+      "en_summary": "$NVDA The last time Nvidia’s weekly RSI reached 25 was in 2008, at the heart of the financial crisis. Are we in a new financial crisis? The answer is clear: Not even close !!",
+      "zh_summary": "$NVDA 上次Nvidia週線RSI達到25是在2008年金融危機核心時期。我們處於新的金融危機嗎？答案很清楚：根本不是！！",
+      "tickers": ["NVDA"],
+      "stance": "視好",
+      "stance_by_ticker": {"NVDA": "視好"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2124521599520973160": {
+      "en_summary": "$SPX This price action lines up with the extreme oversold $NYMO readings (-87 to -88.5 range). The market is now at a clear technical demand zone while breadth and momentum indicators are stretched to the downside, the exact type of setup where those deep NYMO readings have historically produced relief bounces. A capitulation candle is typically one of the largest down candles in a decline, representing panic selling where remaining holders throw in the towel.",
+      "zh_summary": "$SPX 此價格行為與極端超賣的$NYMO讀數（-87至-88.5區間）相符。市場現在處於明確的技術需求區，而廣度和動能指標向下延伸，這正是那些深度NYMO讀數歷史上產生反彈的設置類型。投降蠟燭通常是下跌中最大的下跌蠟燭之一，代表恐慌性拋售，剩餘持有者認輸。",
+      "tickers": ["SPY"],
+      "stance": "視好",
+      "stance_by_ticker": {"SPY": "視好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    },
+    "2124521400484454637": {
+      "en_summary": "$TSLA invests no marketing behind Cybercab or FSD and with Waymo likely posting lower interventions per mile (and clearly fewer safety monitors), why on earth would Waymo be terrified of TSLA? Once there are 5-6 competing autonomous ride-hailing options per market including $UBER, my guess is Waymo will still be in the lead in miles, trips, etc.",
+      "zh_summary": "$TSLA 在Cybercab或FSD背後沒有投入營銷，而Waymo可能每英里干預次數更低（且安全監控明顯更少），為什麼Waymo會害怕TSLA？一旦每個市場有5-6個競爭的自動駕駛叫車選項，包括$UBER，我猜Waymo在里程、行程等方面仍將領先。",
+      "tickers": ["TSLA", "UBER"],
+      "stance": "中性",
+      "stance_by_ticker": {"TSLA": "中性", "UBER": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124520854683820313": {
+      "en_summary": "A comparison that should make us think: Samsung at ~3x earnings — a mature, cyclical giant trading dirt cheap on profit vs. $ANT at ~20x sales — a high-growth AI name. 20x sales means paying $20 for every $1 of revenue — and if Anthropic's margins hit ~35% in 10 years, that's still effectively ~57x earnings. Quoted post discusses Dan Niles explaining why Anthropic's first day as public company was weaker than the 17% gain suggests, valuation concerns, and data center growth measures.",
+      "zh_summary": "一個值得思考的比較：三星約3倍盈利——成熟、週期性巨頭以盈利計算非常便宜，對比$ANT約20倍銷售——高增長AI名稱。20倍銷售意味著每1美元收入支付20美元——如果Anthropic的利潤率在10年內達到約35%，那仍然有效約57倍盈利。引用帖文討論Dan Niles解釋為什麼Anthropic作為上市公司的第一天比17%漲幅顯示的更弱，估值擔憂，以及數據中心增長措施。",
+      "tickers": ["ANT"],
+      "stance": "視淡",
+      "stance_by_ticker": {"ANT": "視淡"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ANT": "估值過高，20倍銷售"}
+    }
+  }
+}
