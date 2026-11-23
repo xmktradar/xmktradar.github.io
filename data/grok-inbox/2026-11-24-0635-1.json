@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2124678288128033224": {
+      "en_summary": "@joebet68 @BillAckman @SpaceX Correct. But we never talk about the deficit.",
+      "zh_summary": "@joebet68 @BillAckman @SpaceX 正確。但我們從不談論赤字。",
+      "tickers": ["SPCX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPCX": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2124676371528225279": {
+      "en_summary": "Vietnam's PetroVietnam Gas is looking to secure 1.7 million MMBtu of LNG for delivery during December 19-23.",
+      "zh_summary": "越南石油天然氣公司正在尋求確保120萬MMBtu的LNG，於12月19日至23日期間交付。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": true,
+      "macro_theme": "energy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2124676352087580732": {
+      "en_summary": "Nasdaq futures opened up about 2% after the worst week since March 2020.",
+      "zh_summary": "納斯達克期貨開盤上漲約2%，在自2020年3月以來最差的一週之後。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124675239263060459": {
+      "en_summary": "1/ If new inflation target is 3% as @BillAckman advises then all nominal rates must rise commensurately since the Fed does not in the long run control real rates. So SpaceX is going to be paying more, regardless.",
+      "zh_summary": "1/ 如果新通脹目標是3%如@BillAckman建議，那麼所有名義利率必須相應上升，因為聯儲長期並不控制實際利率。因此SpaceX無論如何都將支付更高成本。",
+      "tickers": ["SPCX"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPCX": "睇淡"},
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "rates",
+      "macro_impact": "利淡",
+      "ticker_notes": {"SPCX": "Higher nominal rates from 3% inflation target would increase costs for SpaceX"}
+    },
+    "2124675012582093283": {
+      "en_summary": "Elon says all Tesla models could get Starlink integrated directly into the vehicle by end of 2027. The Cybercabs in Dallas already have this, although it doesn't seem like riders can connect to it yet.",
+      "zh_summary": "Elon表示所有Tesla型號可能在2027年底前直接將Starlink整合到車輛中。達拉斯的Cybercab已經具備此功能，雖然騎手似乎還無法連接。",
+      "tickers": ["TSLA", "SPCX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TSLA": "睇好", "SPCX": "睇好"},
+      "horizon": "長線",
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TSLA": "Starlink integration into all models by end of 2027", "SPCX": "Starlink integration into Tesla vehicles"}
+    }
+  }
+}
