@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2124710058386694416": {
+      "en_summary": "Quick fact check to Tommy: didn't need bailout when SVB under, position to save deposits (not equity) due to contagion seen in other banks. If contagion happened would have been GFC 2. Nuance on deposits vs equity.",
+      "zh_summary": "對Tommy的快速事實檢查：SVB倒閉時不需紓困，立場是拯救存款（非股權）因看到其他銀行的傳染。若傳染發生將是GFC 2。存款與股權的細微差別。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2124709579447845121": {
+      "en_summary": "ES futures now hitting 7100 just like that.. Nasdaq futures up 800 points to start turkey day week. No one thinks a V shaped holiday really can hold which is reason that it can. All about that pressure being released from options expiration gone.",
+      "zh_summary": "ES期貨現在就這樣觸及7100.. 納指期貨上漲800點開啟火雞日週。沒人認為V型假期真能維持，這正是它能的原因。全關乎期權到期壓力釋放。",
+      "tickers": ["SPY", "QQQ"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPY": "睇好", "QQQ": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPY": "ES futures to 7100", "QQQ": "Nasdaq futures +800 points"}
+    },
+    "2124708657019707795": {
+      "en_summary": "3/7 The returns may take time. Horace Dediu from @asymco argues that, as with earlier IT revolutions, AI's broad productivity benefits could take decades to become measurable. Technological promise and investment timing are different questions. Podcast link.",
+      "zh_summary": "3/7 回報可能需要時間。@asymco的Horace Dediu認為，如同早期IT革命，AI廣泛生產力益處可能需數十年才可衡量。技術承諾與投資時機是不同問題。播客連結。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2124707151138652338": {
+      "en_summary": "SpaceX may soon go the way of CoreWeave, crippled by a massive need for ever-more expensive capital.",
+      "zh_summary": "SpaceX可能很快走上CoreWeave的路，被對越來越昂貴資本的巨大需求所拖累。",
+      "tickers": ["SPCX"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPCX": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPCX": "May be crippled by need for ever-more expensive capital like CoreWeave"}
+    },
+    "2124704805994303644": {
+      "en_summary": "Asian stocks continue sliding. South Korea's market is down 4.3% and Taiwan's is 6.2%. It's being driven by memory stocks such as SK Hynix & Samsung are down almost 6%.",
+      "zh_summary": "亞洲股市繼續下滑。韓國市場下跌4.3%，台灣下跌6.2%。由記憶體股如SK Hynix與三星下跌近6%所驅動。",
+      "tickers": [],
+      "stance": "睇淡",
+      "stance_by_ticker": {},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
