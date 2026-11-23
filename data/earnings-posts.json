@@ -407,13 +407,6 @@
    "backlog": true
   },
   {
-   "t": "BBVA",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-29 00:00",
-   "backlog": true
-  },
-  {
    "t": "CNI",
    "end": "2026-09-30",
    "label": "FY2026 Q3",
@@ -505,13 +498,6 @@
    "backlog": true
   },
   {
-   "t": "SMFG",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-11-13 00:00",
-   "backlog": true
-  },
-  {
    "t": "SNY",
    "end": "2026-09-30",
    "label": "FY2026 Q3",
@@ -537,13 +523,6 @@
    "end": "2026-09-30",
    "label": "FY2026 Q3",
    "found_hkt": "2026-11-05 00:00",
-   "backlog": true
-  },
-  {
-   "t": "UBS",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-28 00:00",
    "backlog": true
   },
   {
@@ -2032,6 +2011,33 @@
    "found_hkt": "2026-10-23 00:00",
    "backlog": true,
    "dropped": true
+  },
+  {
+   "t": "SMFG",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-11-13 00:00",
+   "backlog": true,
+   "posted": "2026-11-23",
+   "slot": "1000"
+  },
+  {
+   "t": "UBS",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-28 00:00",
+   "backlog": true,
+   "posted": "2026-11-23",
+   "slot": "1000"
+  },
+  {
+   "t": "BBVA",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-29 00:00",
+   "backlog": true,
+   "posted": "2026-11-23",
+   "slot": "1000"
   }
  ],
  "slots": {
@@ -2048,9 +2054,9 @@
    "items": []
   },
   "1000": {
-   "day": "2026-11-22",
+   "day": "2026-11-23",
    "post_at": "10:00",
-   "made_hkt": "2026-11-22 07:57",
+   "made_hkt": "2026-11-23 08:39",
    "platforms": [
     "x",
     "threads",
@@ -2059,220 +2065,212 @@
    ],
    "items": [
     {
-     "t": "BABA",
-     "name": "Alibaba Group Holding Limited",
+     "t": "SMFG",
+     "name": "Sumitomo Mitsui Financial Group, Inc.",
      "label": "FY2026 Q3",
      "end": "2026-09-30",
-     "mcap": 201706373120,
+     "mcap": 135844233216,
      "backlog": true,
      "tag": "補發",
      "images": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-zh-4.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-en-4.jpg"
       ]
      },
      "images_x": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-zh-4.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-en-4.jpg"
       ]
      },
      "images_fb": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-zh-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-zh-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-zh-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-zh-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-zh-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-zh-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-zh-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-zh-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-zh-4-fb.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-en-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-en-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-en-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-en-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BABA-en-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-en-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-en-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-en-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-SMFG-en-4-fb.jpg"
       ]
      },
      "posts": {
       "zh": {
-       "x": "$BABA 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$408 億，按年 +9.6%\n・經調整 EPS $8.10，預期 $11.03 ❌\n\nX 大神怎麼看（近 28 天）：0 個看多、4 個看空\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #BABA",
-       "threads": "$BABA 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$408 億，按年 +9.6%\n・經調整 EPS $8.10，預期 $11.03 ❌\n・毛利率 38.0%｜淨利率 23.8%\n\nX 大神怎麼看（近 28 天）：0 個看多、4 個看空\n看空 @wallstengine：從2025年10月高點下跌超過50%，因更嚴格美國芯片出口限制\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #BABA",
-       "instagram": "$BABA 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$408 億，按年 +9.6%\n・經調整 EPS $8.10，預期 $11.03 ❌\n・毛利率 38.0%｜淨利率 23.8%\n\nX 大神怎麼看（近 28 天）：0 個看多、4 個看空\n看空 @wallstengine：從2025年10月高點下跌超過50%，因更嚴格美國芯片出口限制\n\n看完 $BABA 這份成績單，你最在意哪個數字？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #BABA",
-       "facebook": "$BABA 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$408 億，按年 +9.6%\n・經調整 EPS $8.10，預期 $11.03 ❌\n・毛利率 38.0%｜淨利率 23.8%\n\nX 大神怎麼看（近 28 天）：0 個看多、4 個看空\n看空 @wallstengine：從2025年10月高點下跌超過50%，因更嚴格美國芯片出口限制\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #BABA"
+       "x": "$SMFG 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$105 億，按年 +10.1%\n・經調整 EPS $0.25，預期 $0.24 ✅\n・淨利率 30.2%\n\n只是整理公開財報數字\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #SMFG",
+       "threads": "$SMFG 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$105 億，按年 +10.1%\n・經調整 EPS $0.25，預期 $0.24 ✅\n・淨利率 30.2%\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SMFG",
+       "instagram": "$SMFG 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$105 億，按年 +10.1%\n・經調整 EPS $0.25，預期 $0.24 ✅\n・淨利率 30.2%\n\n你覺得 $SMFG 這次財報是好是壞？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SMFG",
+       "facebook": "$SMFG 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$105 億，按年 +10.1%\n・經調整 EPS $0.25，預期 $0.24 ✅\n・淨利率 30.2%\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SMFG"
       },
       "en": {
-       "x": "$BABA just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $40.75B, +9.6% YoY\n\nWhat X accounts say (28 days): 0 bullish, 4 bearish\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Earnings #BABA",
+       "x": "$SMFG just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $10.47B, +10.1% YoY\n・Adjusted EPS $0.25 vs $0.24 expected ✅\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #SMFG",
        "threads": "",
        "instagram": "",
-       "facebook": "$BABA just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $40.75B, +9.6% YoY\n・Adjusted EPS $8.10 vs $11.03 expected ❌\n・Gross margin 38.0% | Net margin 23.8%\n\nWhat X accounts say (28 days): 0 bullish, 4 bearish\nBear @wallstengine: Alibaba shares are now down more than 50% from their October 2025 peak, after a fresh sell-off on stricter US…\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #BABA"
+       "facebook": "$SMFG just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $10.47B, +10.1% YoY\n・Adjusted EPS $0.25 vs $0.24 expected ✅\n・Net margin 30.2%\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #SMFG"
       }
      },
      "url": {
-      "zh": "https://thecrowdtape.com/zh/earnings/BABA/",
-      "en": "https://thecrowdtape.com/en/earnings/BABA/"
+      "zh": "https://thecrowdtape.com/zh/earnings/SMFG/",
+      "en": "https://thecrowdtape.com/en/earnings/SMFG/"
      },
      "ig": true
     },
     {
-     "t": "SONY",
-     "name": "Sony Group Corporation",
+     "t": "UBS",
+     "name": "UBS Group AG",
      "label": "FY2026 Q3",
      "end": "2026-09-30",
-     "mcap": 159053053952,
+     "mcap": 131270680576,
      "backlog": true,
      "tag": "補發",
      "images": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-zh-4.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-en-4.jpg"
       ]
      },
      "images_x": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-zh-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-zh-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-zh-4.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-en-4.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-en-5.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-en-4.jpg"
       ]
      },
      "images_fb": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-zh-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-zh-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-zh-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-zh-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-zh-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-zh-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-zh-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-zh-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-zh-4-fb.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-en-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-en-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-en-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-en-4-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-SONY-en-5-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-en-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-en-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-en-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-UBS-en-4-fb.jpg"
       ]
      },
      "posts": {
       "zh": {
-       "x": "$SONY 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$216 億，按年 +10.3%\n・經調整 EPS $0.48，預期 $0.38 ✅\n\nX 大神怎麼看（近 28 天）：1 個看多、0 個看空\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #SONY",
-       "threads": "$SONY 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$216 億，按年 +10.3%\n・經調整 EPS $0.48，預期 $0.38 ✅\n・毛利率 37.0%｜淨利率 13.1%\n・自由現金流（過去 4 季）US$102 億\n\nX 大神怎麼看（近 28 天）：1 個看多、0 個看空\n看多 @michaelsikand：有趣的是看到@citrini今天在GTA 6周圍做空$TTWO並做多$SONY。這正是我在6月提出的論點，並在FinX…\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SONY",
-       "instagram": "$SONY 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$216 億，按年 +10.3%\n・經調整 EPS $0.48，預期 $0.38 ✅\n・毛利率 37.0%｜淨利率 13.1%\n・自由現金流（過去 4 季）US$102 億\n\nX 大神怎麼看（近 28 天）：1 個看多、0 個看空\n看多 @michaelsikand：有趣的是看到@citrini今天在GTA 6周圍做空$TTWO並做多$SONY。這正是我在6月提出的論點，並在FinX…\n\n你覺得 $SONY 這次財報是好是壞？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SONY",
-       "facebook": "$SONY 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$216 億，按年 +10.3%\n・經調整 EPS $0.48，預期 $0.38 ✅\n・毛利率 37.0%｜淨利率 13.1%\n・自由現金流（過去 4 季）US$102 億\n\nX 大神怎麼看（近 28 天）：1 個看多、0 個看空\n看多 @michaelsikand：有趣的是看到@citrini今天在GTA 6周圍做空$TTWO並做多$SONY。這正是我在6月提出的論點，並在FinX…\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SONY"
+       "x": "$UBS 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$134 億，按年 +11.3%\n・經調整 EPS $0.96，預期 $0.96 ❌\n・淨利率 20.1%\n\n只是整理公開財報數字\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #UBS",
+       "threads": "$UBS 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$134 億，按年 +11.3%\n・經調整 EPS $0.96，預期 $0.96 ❌\n・淨利率 20.1%\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #UBS",
+       "instagram": "$UBS 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$134 億，按年 +11.3%\n・經調整 EPS $0.96，預期 $0.96 ❌\n・淨利率 20.1%\n\n你覺得 $UBS 這次財報是好是壞？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #UBS",
+       "facebook": "$UBS 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$134 億，按年 +11.3%\n・經調整 EPS $0.96，預期 $0.96 ❌\n・淨利率 20.1%\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #UBS"
       },
       "en": {
-       "x": "$SONY just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $21.64B, +10.3% YoY\n\nWhat X accounts say (28 days): 1 bullish, 0 bearish\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #SONY",
+       "x": "$UBS just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $13.39B, +11.3% YoY\n\nWhat X accounts say\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Earnings #UBS",
        "threads": "",
        "instagram": "",
-       "facebook": "$SONY just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $21.64B, +10.3% YoY\n・Adjusted EPS $0.48 vs $0.38 expected ✅\n・Gross margin 37.0% | Net margin 13.1%\n・Free cash flow (last 4 quarters) $10.18B\n\nWhat X accounts say (28 days): 1 bullish, 0 bearish\nBull @michaelsikand: Funny to see @citrini today shorting $TTWO and longing $SONY around GTA 6. This is the exact thesis I laid ou…\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #SONY"
+       "facebook": "$UBS just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $13.39B, +11.3% YoY\n・Adjusted EPS $0.96 vs $0.96 expected ❌\n・Net margin 20.1%\n\nWhat X accounts say\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #UBS"
       }
      },
      "url": {
-      "zh": "https://thecrowdtape.com/zh/earnings/SONY/",
-      "en": "https://thecrowdtape.com/en/earnings/SONY/"
+      "zh": "https://thecrowdtape.com/zh/earnings/UBS/",
+      "en": "https://thecrowdtape.com/en/earnings/UBS/"
      },
      "ig": true
     },
     {
-     "t": "BUD",
-     "name": "Anheuser-Busch InBev SA/NV",
+     "t": "BBVA",
+     "name": "Banco Bilbao Vizcaya Argentaria, S.A.",
      "label": "FY2026 Q3",
      "end": "2026-09-30",
-     "mcap": 156014084096,
+     "mcap": 128135692288,
      "backlog": true,
      "tag": "補發",
      "images": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-zh-4.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-zh-4.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-en-4.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-en-4.jpg"
       ]
      },
      "images_x": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-zh-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-zh-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-zh-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-zh-4.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-zh-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-zh-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-zh-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-zh-4.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-en-1.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-en-2.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-en-3.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-en-4.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-en-1.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-en-2.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-en-3.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-en-4.jpg"
       ]
      },
      "images_fb": {
       "zh": [
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-zh-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-zh-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-zh-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-zh-4-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-zh-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-zh-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-zh-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-zh-4-fb.jpg"
       ],
       "en": [
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-en-1-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-en-2-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-en-3-fb.jpg",
-       "https://thecrowdtape.com/og/e/2026-11-22-1000-BUD-en-4-fb.jpg"
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-en-1-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-en-2-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-en-3-fb.jpg",
+       "https://thecrowdtape.com/og/e/2026-11-23-1000-BBVA-en-4-fb.jpg"
       ]
      },
      "posts": {
       "zh": {
-       "x": "$BUD 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$165 億，按年 +9.1%\n・經調整 EPS $1.21，預期 $1.17 ✅\n・毛利率 56.3%｜淨利率 9.7%\n\n只是整理公開財報數字\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #BUD",
-       "threads": "$BUD 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$165 億，按年 +9.1%\n・經調整 EPS $1.21，預期 $1.17 ✅\n・毛利率 56.3%｜淨利率 9.7%\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #BUD",
-       "instagram": "$BUD 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$165 億，按年 +9.1%\n・經調整 EPS $1.21，預期 $1.17 ✅\n・毛利率 56.3%｜淨利率 9.7%\n\n你覺得 $BUD 這次財報是好是壞？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #BUD",
-       "facebook": "$BUD 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$165 億，按年 +9.1%\n・經調整 EPS $1.21，預期 $1.17 ✅\n・毛利率 56.3%｜淨利率 9.7%\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #BUD"
+       "x": "$BBVA 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$120 億，按年 +19.9%\n・經調整 EPS $0.58，預期 $0.62 ❌\n・淨利率 27.6%\n\n只是整理公開財報數字\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#財報 #BBVA",
+       "threads": "$BBVA 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$120 億，按年 +19.9%\n・經調整 EPS $0.58，預期 $0.62 ❌\n・淨利率 27.6%\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #BBVA",
+       "instagram": "$BBVA 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$120 億，按年 +19.9%\n・經調整 EPS $0.58，預期 $0.62 ❌\n・淨利率 27.6%\n\n看完 $BBVA 這份成績單，你最在意哪個數字？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #BBVA",
+       "facebook": "$BBVA 剛公布 FY2026 Q3 財報，重點數字整理如下。\n\n・收入 US$120 億，按年 +19.9%\n・經調整 EPS $0.58，預期 $0.62 ❌\n・淨利率 27.6%\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #BBVA"
       },
       "en": {
-       "x": "$BUD just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $16.51B, +9.1% YoY\n・Adjusted EPS $1.21 vs $1.17 expected ✅\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Earnings #BUD",
+       "x": "$BBVA just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $11.98B, +19.9% YoY\n・Adjusted EPS $0.58 vs $0.62 expected ❌\n・Net margin 27.6%\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Earnings #BBVA",
        "threads": "",
        "instagram": "",
-       "facebook": "$BUD just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $16.51B, +9.1% YoY\n・Adjusted EPS $1.21 vs $1.17 expected ✅\n・Gross margin 56.3% | Net margin 9.7%\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #BUD"
+       "facebook": "$BBVA just reported FY2026 Q3. Here are the numbers that matter.\n\n・Revenue $11.98B, +19.9% YoY\n・Adjusted EPS $0.58 vs $0.62 expected ❌\n・Net margin 27.6%\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #BBVA"
       }
      },
      "url": {
-      "zh": "https://thecrowdtape.com/zh/earnings/BUD/",
-      "en": "https://thecrowdtape.com/en/earnings/BUD/"
+      "zh": "https://thecrowdtape.com/zh/earnings/BBVA/",
+      "en": "https://thecrowdtape.com/en/earnings/BBVA/"
      },
      "ig": false
     }
