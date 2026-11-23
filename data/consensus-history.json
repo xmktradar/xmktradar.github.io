@@ -2183,56 +2183,65 @@
   },
   "2026-11-23": {
    "bull": [
-    "META",
-    "SKHY",
     "AMZN",
-    "AMD",
-    "ONDS",
-    "STRC",
+    "GOOGL",
+    "META",
+    "MSFT",
+    "SKHY",
+    "RKLB",
+    "AAPL",
+    "PLTR",
+    "VOO",
+    "WDC",
+    "WMT",
+    "C",
     "VRT"
    ],
    "bear": [
-    "MSTR",
-    "IWM",
     "SOXL",
-    "CAPR"
+    "ARKK"
    ],
    "split": [
     "NVDA",
-    "SPY",
-    "TSLA",
     "QQQ",
-    "ANT",
-    "SNDK",
-    "TSM",
+    "TSLA",
+    "SPY",
     "MU",
-    "ORCL",
+    "MSTR",
+    "ANT",
+    "SPCX",
+    "SNDK",
+    "AMD",
+    "NBIS",
     "IREN",
-    "GOOGL",
     "CRWV",
+    "IWM",
+    "SMH",
+    "ORCL",
     "JPM",
-    "V"
+    "ASTS",
+    "GS"
    ],
    "window": [
-    "2026-11-21T19:30",
-    "2026-11-23T02:16"
+    "2026-11-22T03:30",
+    "2026-11-23T09:58"
    ],
    "top": [
     "NVDA",
-    "SPY",
     "QQQ",
+    "SPY",
     "ANT",
-    "TSLA",
     "MU",
-    "AMZN",
-    "NBIS",
+    "TSLA",
     "SPCX",
-    "SPX"
+    "AMD",
+    "NBIS",
+    "AMZN"
    ],
    "src": "live",
-   "updated_hkt": "2026-11-23 10:03"
+   "updated_hkt": "2026-11-23 19:50"
   }
  },
- "updated_hkt": "2026-11-23 10:03",
+ "updated_hkt": "2026-11-23 19:50",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
