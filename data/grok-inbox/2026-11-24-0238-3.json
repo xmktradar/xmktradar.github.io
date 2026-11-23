@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2124817969989783907": {
+      "en_summary": "@LenaMDC Democrats wanted this. They only are against it because they are against anything Trump wants. Democrats even started to boycott and vandalize Tesla electric green vehicles while crying climate change will end the Earth in a decade. This is all political performative bullshit.",
+      "zh_summary": "@LenaMDC 民主黨想要這個。他們反對只因反對特朗普任何想要的東西。民主黨甚至開始抵制和破壞 Tesla 電動綠色車輛，同時哭喊氣候變化將在十年內毀滅地球。這全是政治表演性廢話。",
+      "tickers": ["TSLA"],
+      "stance": "中性",
+      "stance_by_ticker": {"TSLA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2124816981689872690": {
+      "en_summary": "BREAKING: Trump says the stock market slide “will only get worse” if Democrats “don’t change, FAST.” “The Market is down more than 6 Trillion Dollars since the Democrats’ rather strange ‘win’ on November 3rd,” Trump posted. “This is 100% due to the fact that the Democrats are ‘BAD.’” Since Nov. 2 close, Nasdaq fallen about 10%, S&P 500 about 8%, Dow about 7%. Nasdaq dropped 5.3% on Friday alone.",
+      "zh_summary": "突發：特朗普稱若民主黨「不快速改變」，股市下跌「只會更糟」。「自民主黨 11 月 3 日相當奇怪的『勝利』以來，市場下跌超過 6 萬億美元」，特朗普發帖。「這 100% 因民主黨『很壞』。」自 11 月 2 日收盤，納斯達克跌約 10%，標普 500 約 8%，道指約 7%。納斯達克週五單日跌 5.3%。",
+      "tickers": ["QQQ", "SPY"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"QQQ": "睇淡", "SPY": "睇淡"},
+      "horizon": "短線",
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "利淡",
+      "ticker_notes": {"QQQ": "Down ~10% since Nov 2, Trump blames Democrats", "SPY": "Down ~8% since Nov 2"}
+    },
+    "2124816518433173911": {
+      "en_summary": "CrowdStrike agrees to buy cybersecurity provider Zscaler in one of the largest-ever deals in the sector. Link to Bloomberg: $44B deal.",
+      "zh_summary": "CrowdStrike 同意收購網絡安全提供商 Zscaler，為該領域史上最大交易之一。Bloomberg 連結：440 億美元交易。",
+      "tickers": ["CRWD", "ZS"],
+      "stance": "中性",
+      "stance_by_ticker": {"CRWD": "中性", "ZS": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"CRWD": "Agrees to buy Zscaler ~$44B", "ZS": "To be acquired by CrowdStrike ~$44B"}
+    },
+    "2124813134536036566": {
+      "en_summary": "CrowdStrike To Buy Zscaler In All Stock Deal Around $43.9B",
+      "zh_summary": "CrowdStrike 將以全股票交易約 439 億美元收購 Zscaler。",
+      "tickers": ["CRWD", "ZS"],
+      "stance": "中性",
+      "stance_by_ticker": {"CRWD": "中性", "ZS": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"CRWD": "All stock deal ~$43.9B for Zscaler", "ZS": "Acquired by CRWD ~$43.9B all stock"}
+    },
+    "2124812927798493243": {
+      "en_summary": "With Senator Dave McCormick and Meta’s Dina Powell McCormick talking football and data centers. Pa. Senator likes both Steelers and Eagles.",
+      "zh_summary": "與參議員 Dave McCormick 及 Meta 的 Dina Powell McCormick 談論足球與數據中心。賓州參議員喜歡 Steelers 與 Eagles。",
+      "tickers": ["META"],
+      "stance": "中性",
+      "stance_by_ticker": {"META": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
