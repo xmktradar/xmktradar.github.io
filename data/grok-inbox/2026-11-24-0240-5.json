@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2124808236847038940": {
+      "en_summary": "Well this is encouraging.",
+      "zh_summary": "這很令人鼓舞。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124807710114009116": {
+      "en_summary": "@options_insight Yea good point. And a realized vol move to upside like this also should keep a floor on IV once this run stalls out. Maybe hard for VIX to get completely vaporized.",
+      "zh_summary": "@options_insight 是啊好點。這種上行實現波動率移動，一旦此輪停滯，也應為 IV 保持底部。VIX 可能難完全蒸發。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2124807619168584178": {
+      "en_summary": "NASDAQ Volatility After signaling to get out (of High Beta US Growth) in Mid October, Vol (VXN) went out at 45 on Friday. This level of volatility perpetuates plenty of up/down moves so be patient and use your Risk Ranges.",
+      "zh_summary": "納斯達克波動率 中旬 10 月發出退出（高貝塔美股成長）信號後，週五 VXN 收於 45。此波動率水平延續大量上下波動，故需耐心並使用風險區間。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"QQQ": "VXN at 45 after mid-Oct exit signal, expect up/down moves"}
+    },
+    "2124806179469856779": {
+      "en_summary": "Today's Key Events (All EST) — 11/23/2026 08:30: Chicago Fed National Activity Index 09:45: S&P Global Manufacturing PMI (Flash) 09:45: S&P Global Services PMI (Flash) 13:00: 2-Year Note Auction 16:00: Fed's Williams After Hours: AMC Hewlett Packard Enterprise (HPE), Agilent (A), Trip.com (TCOM), Zoom (ZM), Symbotic (SYM), Jacobs (J), Semtech (SMTC), Amentum (AMTM)",
+      "zh_summary": "今日關鍵事件（全美東）— 11/23/2026 08:30：芝加哥聯儲全國活動指數 09:45：S&P Global 製造業 PMI（閃報） 09:45：S&P Global 服務業 PMI（閃報） 13:00：2 年期國債拍賣 16:00：聯儲 Williams 盤後：HPE、Agilent (A)、Trip.com (TCOM)、Zoom (ZM)、Symbotic (SYM)、Jacobs (J)、Semtech (SMTC)、Amentum (AMTM)",
+      "tickers": ["HPE", "A", "TCOM", "ZM", "SYM", "J", "SMTC", "AMTM"],
+      "stance": "中性",
+      "stance_by_ticker": {"HPE": "未表態", "A": "未表態", "TCOM": "未表態", "ZM": "未表態", "SYM": "未表態", "J": "未表態", "SMTC": "未表態", "AMTM": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2124806126269063230": {
+      "en_summary": "STOCKS: for context, prior to whatever bounce we get on the open, US Stocks were down for 7 straight days and NASDAQ was -18.1% from its recent #MOAB high in October",
+      "zh_summary": "股票：供參考，在開盤可能反彈之前，美股已連續下跌 7 天，納斯達克較 10 月近期 #MOAB 高點跌 18.1%。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"QQQ": "Down 7 straight days, -18.1% from Oct high"}
+    }
+  }
+}
