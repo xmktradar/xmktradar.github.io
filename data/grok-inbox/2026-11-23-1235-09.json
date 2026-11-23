@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2124628693226271135": {
+      "en_summary": "Cathie Wood bought the top of hottest IPOs and AI names: $CBRS -67.8% (bought ~$256 May), $NVDA -44.8% (bought $227 Sep 29), $SPCX -20.6% (bought ~$161 IPO), $ANT -8.5% (bought ~$97 IPO), sold $110M $AMD to fund NVDA buy, averaged down Cerebras to $82, $ARKK 5yr annualized -9.6% in greatest tech bull run.",
+      "zh_summary": "Cathie Wood 買在最熱 IPO 和 AI 名稱的頂部：$CBRS -67.8%（5 月約 256 美元買入），$NVDA -44.8%（9 月 29 日 227 美元買入），$SPCX -20.6%（IPO 日約 161 美元買入），$ANT -8.5%（IPO 日約 97 美元買入），賣出 1.1 億美元 $AMD 來資助 NVDA 買入，Cerebras 平均下來至 82 美元，$ARKK 5 年年化 -9.6% 在最偉大的科技牛市中。",
+      "tickers": ["CBRS", "NVDA", "SPCX", "ANT", "AMD", "ARKK"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"CBRS": "睇淡", "NVDA": "睇淡", "SPCX": "睇淡", "ANT": "睇淡", "AMD": "中性", "ARKK": "睇淡"},
+      "horizon": null,
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "Bought $227, now -44.8%", "ANT": "Near IPO price break", "SPCX": "Under IPO price"}
+    },
+    "2124628454540759493": {
+      "en_summary": "Digital Equity builds on Digital Capital. During the Bitcoin Standard Era, $MSTR delivered 34% annualized returns, outperforming Bitcoin and the traditional asset benchmarks shown.",
+      "zh_summary": "數字股權建立在數字資本之上。在比特幣標準時代，$MSTR 實現了 34% 的年化回報，超越比特幣和所示的傳統資產基準。",
+      "tickers": ["MSTR"],
+      "stance": "睇好",
+      "stance_by_ticker": {"MSTR": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MSTR": "34% annualized returns in Bitcoin Standard Era"}
+    },
+    "2124627987580510440": {
+      "en_summary": "HSBC: Rolling AI baby bubbles. Today, cheap and unloved healthcare looks primed to catch the next wave. $XLV",
+      "zh_summary": "匯豐：滾動的 AI 嬰兒泡沫。今天，便宜且不受歡迎的醫療保健看起來準備好抓住下一波。$XLV",
+      "tickers": ["XLV"],
+      "stance": "睇好",
+      "stance_by_ticker": {"XLV": "睇好"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    },
+    "2124627614568522022": {
+      "en_summary": "President Trump hosts his $TRUMP memecoin gala dinner tonight, where the top 4 holders with at least 1 million tokens receive an 18K gold Trump watch.",
+      "zh_summary": "川普總統今晚主持他的 $TRUMP 迷因幣盛大晚宴，持有至少 100 萬代幣的前 4 名持有者將獲得一枚 18K 黃金川普手錶。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124626577098932387": {
+      "en_summary": "Goldman Sachs warns that the stock market bottom remains uncertain despite extreme selloff: $QQQ down 19.8% from October peak, $SPY down 12%, $NVDA down 48% since October 6, $VIX near 36 a 19-month high. Systematic traders sold $57 billion in equities past month, net short $19 billion. Desk favors selling put options over outright dip-buying citing Fed rate hikes, AI uncertainty and fragile liquidity. Thin Thanksgiving-week trading could amplify volatility before potential rebound.",
+      "zh_summary": "高盛警告儘管極端拋售，股市底部仍不確定：$QQQ 從 10 月峰值下跌 19.8%，$SPY 下跌 12%，$NVDA 自 10 月 6 日下跌 48%，$VIX 接近 36，為 19 個月高點。系統交易者過去一個月賣出 570 億美元股票，淨空頭 190 億美元。交易台偏好賣出看跌期權而非直接抄底，引用美聯儲加息、AI 不確定性和脆弱流動性。感恩節週薄交易可能放大波動，然後可能反彈。",
+      "tickers": ["QQQ", "SPY", "NVDA", "VIX"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性", "SPY": "中性", "NVDA": "中性", "VIX": "中性"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"NVDA": "Down 48% since Oct 6", "QQQ": "Down 19.8% from peak", "SPY": "Down 12% from peak"}
+    }
+  }
+}
