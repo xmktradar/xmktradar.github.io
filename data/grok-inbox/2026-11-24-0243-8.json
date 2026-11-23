@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2124783794112938241": {
+      "en_summary": "New blog: NVMe much slower than DRAM, yet skipped DRAM tier for vLLM KV cache offloading, 1.8 TB NVMe pool matched 1.8 TB DRAM within 1%. Tested on Kimi-K3, 16× AMD MI355X GPUs, @SemiAnalysis_ AgentX. At capacity, NVMe ahead: 4.6 TB NVMe 5.1× throughput of 1.0 TB DRAM. Link: https://vllm.ai/blog/2026-11-23-skip-the-dram-tier",
+      "zh_summary": "新博客：NVMe 遠慢於 DRAM，但跳過 DRAM 層進行 vLLM KV 快取卸載，1.8 TB NVMe 池匹配 1.8 TB DRAM 在 1% 內。在 Kimi-K3、16× AMD MI355X GPU、@SemiAnalysis_ AgentX 測試。容量重要時 NVMe 領先：4.6 TB NVMe 吞吐量為 1.0 TB DRAM 的 5.1 倍。連結：https://vllm.ai/blog/2026-11-23-skip-the-dram-tier",
+      "tickers": ["AMD"],
+      "stance": "中性",
+      "stance_by_ticker": {"AMD": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124782655329722581": {
+      "en_summary": "Germany S&P Global Manufacturing PMI Nov P: 55.0 (est 54.2; prev 54.2) - Services PMI: 54.0 (est 52.3; prev 52.5) - Composite PMI: 55.0 (est 53.3; prev 53.4)",
+      "zh_summary": "德國 S&P Global 製造業 PMI 11 月初值：55.0（預期 54.2；前值 54.2） - 服務業 PMI：54.0（預期 52.3；前值 52.5） - 綜合 PMI：55.0（預期 53.3；前值 53.4）",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    },
+    "2124781822097637795": {
+      "en_summary": "@J_Bardella The devil is in the details, and in the differences between the 2011 bill and the RN’s golden rule. The latter is stricter in terms of numerical budget targets, enforcement and adjustment path. If the RN tries to amend the bill, it may not be passed before the 2027 election.",
+      "zh_summary": "@J_Bardella 魔鬼在細節中，以及 2011 年法案與 RN 黃金規則之間的差異。後者在數值預算目標、執行與調整路徑上更嚴格。若 RN 試圖修訂法案，可能無法在 2027 年選舉前通過。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2124781762547274201": {
+      "en_summary": "Great to be on @CNN Newsroom with @jessicadean discussing the tech and market sell-off and white knuckle concerns around the AI Revolution buildout in the US with Nvidia/Jensen questions lingering.",
+      "zh_summary": "很高興在 @CNN Newsroom 與 @jessicadean 討論科技與市場拋售，以及美國 AI 革命建設周圍的緊張擔憂，Nvidia/Jensen 問題仍存。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124780920309948871": {
+      "en_summary": "The bill can still be used 15 years later through the same process. Since the RN has proposed its own version of a golden rule, it would be difficult for it to reject this initiative outright. Indeed, @J_Bardella reaction suggests that the party could support it under conditions.",
+      "zh_summary": "該法案可通過相同過程在 15 年後仍使用。由於 RN 已提出自己的黃金規則版本，難以 outright 拒絕此倡議。確實，@J_Bardella 反應表明該黨可能在條件下支持。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    }
+  }
+}
