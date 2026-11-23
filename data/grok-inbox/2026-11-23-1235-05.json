@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2124639351564890533": {
+      "en_summary": "Long-term themes regardless of short-term market: AI food chain with grid and power $PWR $MIR $VRT, Cyber bigger than AI $CRWD $PANW $ZS, Robotics first inning $ROK, Women’s health $NTRA, Quantum $IBM.",
+      "zh_summary": "無論短期市場如何的長期主題：AI 食物鏈的電網和電力 $PWR $MIR $VRT，網絡安全大於 AI 的 $CRWD $PANW $ZS，機器人第一局 $ROK，女性健康 $NTRA，量子 $IBM。",
+      "tickers": ["PWR", "MIR", "VRT", "CRWD", "PANW", "ZS", "ROK", "NTRA", "IBM"],
+      "stance": "睇好",
+      "stance_by_ticker": {"PWR": "睇好", "MIR": "睇好", "VRT": "睇好", "CRWD": "睇好", "PANW": "睇好", "ZS": "睇好", "ROK": "睇好", "NTRA": "睇好", "IBM": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124639100359868908": {
+      "en_summary": "The odds of Jensen Huang returning as $NVDA CEO are starting to pick up.",
+      "zh_summary": "Jensen Huang 回歸擔任 $NVDA CEO 的機率開始上升。",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124638545516318932": {
+      "en_summary": "$ANT went public this week and Tradr is launching 2x long and short ETFs $ANTT $ANTZ on Monday, noting leverage has significant risk.",
+      "zh_summary": "$ANT 本週上市，Tradr 將於週一推出 2 倍多頭和空頭 ETF $ANTT $ANTZ，指出槓桿具有顯著風險。",
+      "tickers": ["ANT", "ANTT", "ANTZ"],
+      "stance": "中性",
+      "stance_by_ticker": {"ANT": "中性", "ANTT": "中性", "ANTZ": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124638322152951820": {
+      "en_summary": "Anthropic is officially public with $ANT now trading on Nasdaq and $ANTT and $ANTZ expected to launch tomorrow for 2x exposure to both sides of the debate, noting leverage involves significant risk.",
+      "zh_summary": "Anthropic 正式上市，$ANT 現在在 Nasdaq 交易，$ANTT 和 $ANTZ 預計明天推出以提供辦論雙方的 2 倍敞口，指出槓桿涉及顯著風險。",
+      "tickers": ["ANT", "ANTT", "ANTZ"],
+      "stance": "中性",
+      "stance_by_ticker": {"ANT": "中性", "ANTT": "中性", "ANTZ": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124638063699857906": {
+      "en_summary": "Citi says even a complete halt to Nvidia ($NVDA) linked financing initiatives would only reduce global DRAM demand by 12% and NAND demand by 7%, suggesting the brutal selloff in memory stocks $MU and $SNDK is significantly overdone, with structural AI demand and tightening supply supporting a strong recovery.",
+      "zh_summary": "花旗表示，即使完全停止與 Nvidia ($NVDA) 相關的融資倡議，也只會將全球 DRAM 需求減少 12%、NAND 需求減少 7%，表明記憶體股票 $MU 和 $SNDK 的殘酷拋售被顯著高估，結構性 AI 需求和供應收緊支持強勁復蘇。",
+      "tickers": ["NVDA", "MU", "SNDK"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "中性", "MU": "睇好", "SNDK": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利好",
+      "ticker_notes": {"MU": "Selloff overdone per Citi, recovery expected", "SNDK": "Selloff overdone per Citi, recovery expected"}
+    }
+  }
+}
