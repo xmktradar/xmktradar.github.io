@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2124683980327075923": {
+      "en_summary": "@StockMarketNerd discussing the AI supercycle stage, the $ANT IPO, and where markets go from here.",
+      "zh_summary": "@StockMarketNerd 討論AI超級週期階段、$ANT IPO以及此後市場走向。",
+      "tickers": ["ANT"],
+      "stance": "中性",
+      "stance_by_ticker": {"ANT": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2124683945845387737": {
+      "en_summary": "@DevotedDividend holds a mix of super growth positions like $AAPL and more income-focused ones such as $TDAQ and $QQQI, having started before COVID and bought heavily on the COVID lows.",
+      "zh_summary": "@DevotedDividend 持有超級成長部位如$AAPL，以及更多收益型如$TDAQ和$QQQI，疫情前開始並在疫情低點大量買入。",
+      "tickers": ["AAPL", "TDAQ", "QQQI"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AAPL": "睇好", "TDAQ": "睇好", "QQQI": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124682382540423171": {
+      "en_summary": "@Mr_Derivatives questions whether to trust the large overnight pump in $SPY and $QQQ.",
+      "zh_summary": "@Mr_Derivatives 質疑是否信任$SPY和$QQQ的大幅隔夜上漲。",
+      "tickers": ["SPY", "QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "QQQ": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124680991784783993": {
+      "en_summary": "$NVDA up over 6%. @StockSavvyShay (quoted) sees no signs of AI overbuild post-earnings, with compute fully utilized, Hopper GPUs recontracting at ~2x original pricing, and cloud backlog growing another $500B; hard to reconcile with peak pricing as buyers are financing supply.",
+      "zh_summary": "$NVDA上漲逾6%。@StockSavvyShay（引用）在財報後仍未見AI過度建設跡象，算力完全利用，Hopper GPU重新簽約約為原價2倍，雲端積壓訂單再增5000億美元；買家正為供應融資，難以與市場定價為頂峰相符。",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    },
+    "2124679686718402958": {
+      "en_summary": "Day 27 of $QQQ short-term down-trend; @WishingWealth's 10:30 weekly chart shows possible beginning of Stage 4 Weinstein down-trend, with GMI=0, concluding cash remains king.",
+      "zh_summary": "$QQQ短期下跌趨勢第27天；@WishingWealth的10:30週線圖顯示可能開始Stage 4 Weinstein下跌趨勢，GMI=0，結論現金為王。",
+      "tickers": ["QQQ"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"QQQ": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
