@@ -1566,9 +1566,168 @@
       "CAPR"
      ]
     }
+   },
+   "intraday_3": {
+    "post_et": "13:30",
+    "post_hkt": "02:30",
+    "generated_at": "2026-11-23T19:42:54-05:00",
+    "date": "2026-11-23",
+    "date_kst": "2026-11-24",
+    "quotes": {
+     "SPY": {
+      "price": 722.29,
+      "prev_close": 689.81,
+      "chg_pct": 4.71,
+      "time": "2026-11-23T16:00:00-05:00"
+     },
+     "QQQ": {
+      "price": 651.03,
+      "prev_close": 608.45,
+      "chg_pct": 7.0,
+      "time": "2026-11-23T16:00:01-05:00"
+     },
+     "DIA": {
+      "price": 495.8,
+      "prev_close": 481.08,
+      "chg_pct": 3.06,
+      "time": "2026-11-23T16:00:00-05:00"
+     },
+     "MU": {
+      "price": 707.7,
+      "prev_close": 594.51,
+      "chg_pct": 19.04,
+      "time": "2026-11-23T16:00:01-05:00"
+     },
+     "TSLA": {
+      "price": 385.46,
+      "prev_close": 345.82,
+      "chg_pct": 11.46,
+      "time": "2026-11-23T16:00:00-05:00"
+     },
+     "SPCX": {
+      "price": 133.35,
+      "prev_close": 127.79,
+      "chg_pct": 4.35,
+      "time": "2026-11-23T16:00:00-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-23T16:00:01-05:00",
+     "hkt": "2026-11-24 05:00"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "QQQ",
+      "chg_pct": 7.0,
+      "bull": 9,
+      "bear": 3,
+      "accounts": [
+       "KobeissiLetter",
+       "PhotonBull",
+       "SamanthaLaDuc",
+       "3PeaksTrading",
+       "johnscharts",
+       "DevotedDividend",
+       "DougKass",
+       "WheelieInvestor"
+      ]
+     },
+     {
+      "ticker": "MU",
+      "chg_pct": 19.04,
+      "bull": 8,
+      "bear": 1,
+      "accounts": [
+       "OptionsMike",
+       "SamanthaLaDuc",
+       "JohnSpall247",
+       "Beth_Kindig",
+       "JasonL_Capital",
+       "PhotonBull",
+       "firstadopter",
+       "Micro2Macr0"
+      ]
+     },
+     {
+      "ticker": "TSLA",
+      "chg_pct": 11.46,
+      "bull": 5,
+      "bear": 2,
+      "accounts": [
+       "SawyerMerritt",
+       "MrMikeInvesting",
+       "OptionsMike",
+       "Micro2Macr0",
+       "StockSavvyShay",
+       "garyblack00",
+       "zeroshorts",
+       "InvestmentGuru_"
+      ]
+     },
+     {
+      "ticker": "SPCX",
+      "chg_pct": 4.35,
+      "bull": 4,
+      "bear": 3,
+      "accounts": [
+       "OptionsMike",
+       "farzyness",
+       "SawyerMerritt",
+       "JohnSpall247",
+       "GaryMarcus",
+       "greg_ip",
+       "JonkooTrades",
+       "stevehou"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Early afternoon · As of 16:00 ET (05:00 HKT)\n\n$SPY +4.7% · $QQQ +7.0% · $DIA +3.1%\n\n$QQQ +7.0%, 9 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #QQQ #MU",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午后觀察 · 截至 16:00 ET（05:00 HKT）\n\n$SPY +4.7% · $QQQ +7.0% · $DIA +3.1%\n\n$QQQ +7.0%，網站 9 個帳號看好\n$MU +19.0%，網站 8 個帳號看好\n$TSLA +11.5%，網站 5 個帳號看好\n$SPCX +4.3%，網站 4 個帳號看好\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #QQQ #MU",
+      "url": ""
+     },
+     "en": {
+      "text": "Early afternoon · As of 16:00 ET (05:00 HKT)\n\n$SPY +4.7% · $QQQ +7.0% · $DIA +3.1%\n\n$QQQ +7.0%, 9 accounts bullish on site\n$MU +19.0%, 8 accounts bullish on site\n$TSLA +11.5%, 5 accounts bullish on site\n$SPCX +4.3%, 4 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #QQQ #MU",
+      "url": ""
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "GOOGL",
+      "CRWD",
+      "AMZN",
+      "MSFT",
+      "RKLB",
+      "META",
+      "PLTR",
+      "WMT",
+      "C",
+      "PANW"
+     ],
+     "bear": [
+      "SOXL",
+      "CAPR"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-23T19:42:50-05:00",
+  "generated_at": "2026-11-23T19:42:54-05:00",
   "generated_hkt": "2026-11-24 08:42"
  }
 }
