@@ -910,9 +910,12 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
 <section class="ap-hero" aria-label="About">
   <div class="wrap">
     <p class="ap-eyebrow">500 accounts · 6 categories · every 8 hours</p>
-    <p class="ap-h"><span class="ap-h1">Today's list is free.</span><span class="ap-grad">Monday names at most eight bullish ideas: the last bullish call beat QQQ and also beat SPY.</span></p>
-    <p class="ap-sub">Newly listed as jointly bullish last week. The previous bullish call beat QQQ and also beat SPY over ten sessions. Names are only in the email.</p>
-    <div class="ap-cta"><a class="ap-btn" href="#view">See today's highlights</a><a class="ap-btn" href="/en/weekly/">Weekly brief and names to watch (USD 5/month)</a></div>
+    <p class="ap-h"><span class="ap-h1">Today's consensus list is free.</span></p>
+    <p class="ap-sub">Monday's email is a written brief plus at most eight names to watch. A name is included only if the last joint bullish call beat both QQQ and SPY over the following ten sessions. That is an inclusion filter, not a performance promise. Tickers are only in the email.</p>
+    <div class="ap-cta"><a class="ap-btn" href="#view">See today's highlights</a><a class="ap-btn" href="/en/weekly/">Get the Monday brief, USD 5 a month (cancel any time)</a></div>
+<!-- settled-home -->
+<section class="wk-summary" id="settled-summary"><h2>Settled results (only one week is public so far)</h2><div class="wk-sum-wrap"><table class="wk-sum"><thead><tr><th>Period</th><th>Listings</th><th>vs QQQ</th><th>vs SPY</th><th>Beat both indexes</th></tr></thead><tbody><tr><td>11/9–11/15</td><td>5</td><td>average -4.0%</td><td>average -4.1%</td><td>0%</td></tr></tbody></table></div><p class="wk-sum-note">A listing does not mean it will rise next time. Full rules and details are on the <a href="/en/weekly/">weekly page</a>.</p><div><div class="wk-row"><span class="wk-t">AMZN</span><span class="wk-side wk-up">Jointly bullish</span><span class="wk-meta">Price -4.3% · <span class="wk-dn">vs QQQ -0.2% behind</span> · <span class="wk-dn">vs SPY -0.3% behind</span></span></div><div class="wk-row"><span class="wk-t">ARM</span><span class="wk-side wk-up">Jointly bullish</span><span class="wk-meta">Price -5.2% · <span class="wk-dn">vs QQQ -1.0% behind</span> · <span class="wk-dn">vs SPY -1.1% behind</span></span></div><div class="wk-row"><span class="wk-t">LITE</span><span class="wk-side wk-up">Jointly bullish</span><span class="wk-meta">Price -8.7% · <span class="wk-dn">vs QQQ -4.5% behind</span> · <span class="wk-dn">vs SPY -4.6% behind</span></span></div><div class="wk-row"><span class="wk-t">AMD</span><span class="wk-side wk-up">Jointly bullish</span><span class="wk-meta">Price -10.8% · <span class="wk-dn">vs QQQ -6.7% behind</span> · <span class="wk-dn">vs SPY -6.8% behind</span></span></div><div class="wk-row"><span class="wk-t">SHOP</span><span class="wk-side wk-up">Jointly bullish</span><span class="wk-meta">Price -11.7% · <span class="wk-dn">vs QQQ -7.5% behind</span> · <span class="wk-dn">vs SPY -7.6% behind</span></span></div></div></section>
+<!-- /settled-home -->
     <div class="meta ap-meta">
       <span>Posts as of <b id="cutoff"></b></span>
       <span>Next update <b id="nextup"></b></span>
@@ -1541,7 +1544,7 @@ function viewWeekly(){
   <h2>This week’s highlights</h2>
   ${daysNote(from,to)}
   <p>${rows.length?`Stocks drawing the most accounts: ${rows.slice(0,3).map(r=>tkBtn(r.t)).join(', ')}. `:'No stocks mentioned this week.'} Strongly aligned: ${aligned.map(r=>tkBtn(r.t)).join(', ')||'none'}; clearly split: ${split.map(r=>tkBtn(r.t)).join(', ')||'none'}. This week’s stance changes: ${chgs.length} times${chgs.length?': '+chgs.slice(0,3).map(y=>`@${esc(y.x.acc)} ${tkBtn(y.x.t)} ${y.ch}`).join('; '):''}. </p>
-  <p class="note">This page only shows how many accounts. Names newly listed last week, whose last bullish call beat QQQ and SPY, are only in the Monday email.<a href="/en/weekly/">Weekly brief and names to watch (USD 5/month)</a></p></section>
+  <p class="note">This page only shows how many accounts. Names newly listed last week, whose last bullish call beat QQQ and SPY, are only in the Monday email.<a href="/en/weekly/">Get the Monday brief, USD 5 a month (cancel any time)</a></p></section>
  ${bpTag(2,consHtml(from,to,'This week',7,'7 d return'))}
  <section class="c4 panel" data-bp="3"><h2>Stance mix <span class="sub">Each account’s latest stance on each stock</span></h2>
   ${distBar({bull:tot.b,neu:tot.m,none:tot.n,bear:tot.r})}
@@ -1574,7 +1577,7 @@ function viewMonthly(){
  <section class="c12 analysis"><div class="range">Covering ${from} to ${to} (28 days)</div><h2>Monthly trends</h2>
   ${daysNote(from,to)}
   <p>28 days, total ${all.length} mentions, bullish ${B} posts, bearish ${X} posts${B+X?`, bullish share ${(B/(B+X)*100).toFixed(0)}%`:', bullish share n/a (no bullish or bearish views)'}. ${rows.length?`Most mentioned: ${rows.slice(0,3).map(r=>tkBtn(r.t)).join(', ')}. `:''}</p>
-  <p class="note">28 days only show mention counts and how many accounts are bullish or bearish. To compare with what you hold, read the Monday email. Names are not on this page.<a href="/en/weekly/">Weekly brief and names to watch (USD 5/month)</a></p></section>
+  <p class="note">28 days only show mention counts and how many accounts are bullish or bearish. To compare with what you hold, read the Monday email. Names are not on this page.<a href="/en/weekly/">Get the Monday brief, USD 5 a month (cancel any time)</a></p></section>
  ${bpTag(2,consHtml(from,to,'This month',28,'28 d return'))}
  <section class="c4 panel" data-bp="3"><h2>Bullish vs bearish <span class="sub">${B+X?`Bullish ${(B/(B+X)*100).toFixed(0)}% (of bull + bear)`:'Not enough data'}</span></h2>${distBar({bull:B,neu:M,none:U,bear:X})}
   <div class="kpis k3" style="margin-top:12px"><div class="kpi"><div class="l">Total mentions</div><div class="v">${all.length}</div></div><div class="kpi"><div class="l">Bullish</div><div class="v up">${B}</div></div><div class="kpi"><div class="l">Bearish</div><div class="v dn">${X}</div></div></div>
@@ -2152,6 +2155,19 @@ header.ap-top{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hd-t
 .ap-grad{background:linear-gradient(90deg,#0071e3,#9f5afd 52%,#e3366e);-webkit-background-clip:text;background-clip:text;color:transparent}
 .ap-sub{margin:18px auto 0;max-width:640px;font:400 21px/1.45 var(--f-body);color:var(--mut)}
 .ap-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.wk-summary{margin:22px auto 0;max-width:720px;text-align:left}
+.wk-summary h2{margin:0 0 10px;font:600 18px/1.3 var(--f-body);color:var(--tx-strong)}
+.wk-sum-wrap{overflow-x:auto}
+.wk-sum{width:100%;border-collapse:collapse;font:400 14px/1.4 var(--f-body);color:var(--tx)}
+.wk-sum th,.wk-sum td{border-top:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.wk-sum th{font-weight:600;color:var(--mut);font-size:12.5px}
+.wk-sum-note{margin:10px 0 0;font:400 14px/1.45 var(--f-body);color:var(--mut)}
+.wk-summary .wk-row{display:grid;grid-template-columns:minmax(72px,auto) minmax(0,1fr);column-gap:12px;row-gap:2px;align-items:baseline;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+.wk-summary .wk-t{font-weight:600}
+.wk-summary .wk-side{font-size:13px;color:var(--mut)}
+.wk-summary .wk-meta{grid-column:1 / -1;color:var(--mut);font-size:13px}
+.wk-summary .wk-up{color:var(--up,#0a7a3e)}
+.wk-summary .wk-dn{color:var(--dn,#c0392b)}
 .ap-btn{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff!important;border:1px solid var(--accent);border-radius:999px;padding:11px 22px;font:500 17px/1.2 var(--f-body);text-decoration:none}
 .ap-btn:hover{filter:brightness(1.08)}
 .ap-btn.ap-ghost{background:transparent;color:var(--link)!important}
@@ -2288,7 +2304,7 @@ function put(cls,html,before){var n=view.querySelector(':scope>.'+cls);if(!n){n=
 function endCard(v,n){var s=document.createElement('section');s.className='c12 panel bk-end';s.setAttribute('data-bp',n);s.setAttribute('data-v',v);
  var more=Object.keys(TABS).filter(function(k){return k!==v}).map(function(k){return '<a href="'+TABS[k][0]+'">'+TABS[k][1]+'</a>'}).join('');
  s.innerHTML='<h2>'+(v==='daily'?'You’re done for today':v==='weekly'?'You’re done for this week':'You’re done for this month')+' 🎉</h2><p>Thanks for reading. The site is free, needs no sign-in and updates every 8 hours. If you find it useful, you’re welcome to buy us a coffee; your support keeps the site running.</p>'+
- '<div class="bk-acts"><a class="bk-weekly" href="/en/weekly/">Weekly brief and names to watch (USD 5/month)</a></div>'+
+ '<div class="bk-acts"><a class="bk-weekly" href="/en/weekly/">Get the Monday brief, USD 5 a month (cancel any time)</a></div>'+
  '<p class="note">See more:</p><div class="bk-more">'+more+'<button type="button" data-jump="stock-index" class="bk-si">Stock pages</button><button type="button" data-bk="1">Start over</button></div>';return s}
 function run(){
  var g=view.querySelector(':scope>.grid'),v=bookView();
