@@ -526,6 +526,7 @@ def build(lang, master):
     s = faq_ld(master, s, lang, {**(tr.get('data') or {}), **(tr.get('ui') or {})})
     s = re.sub(r'(<meta property="og:url" content=")[^"]*', rf'\g<1>{SITE}{lang}/', s, count=1)
     s = s.replace('href="/zh/feed.xml"', f'href="/{lang}/feed.xml"', 1)
+    s = s.replace('href="/zh/weekly/"', f'href="/{lang}/weekly/"')
     alt = (tr.get('meta') or {}).get('image_alt')
     if alt:  # the Chinese alt text changes every day; other versions use a fixed description
         s = re.sub(r'(<meta (?:property="og|name="twitter):image:alt" content=")[^"]*', lambda m: m.group(1) + alt, s)

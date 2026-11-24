@@ -411,6 +411,8 @@ def page(template, lang, issues, disc):
     html_s = apply(html_s, table(lang, 'newsletter'))
     html_s = html_s.replace('{{issues}}', issues)
     html_s = html_s.replace('{{disclaimer}}', esc(disc))
+    if lang != 'zh':
+        html_s = html_s.replace('href="/zh/weekly/"', f'href="/{lang}/weekly/"')
     if '{{' in html_s:
         warn(f'{lang} newsletter page still has a placeholder')
     return html_s
