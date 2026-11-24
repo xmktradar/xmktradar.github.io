@@ -1309,20 +1309,20 @@ const FT_COPY=(()=>{const L=PAGE_LANG;if(L==='en')return{
  th:['Signal','Ticker','Side','10 sessions','Vs QQQ'],
  sideB:'Bullish', sideS:'Bearish'
 };return{
- title:'齊聲之後',
- hint:'新列入共同看多或共同看空之後, 持有 10 個交易日, 與 QQQ 比較. 同一方向連續上榜只計一次. ',
- loading:'正在計算. ',
- fail:'跟進數據暫時無法載入. ',
+ title:'After the consensus',
+ hint:'Once a name newly joins the consensus-bullish or consensus-bearish list, the next 10 sessions versus QQQ. A name that stays on the list is counted once.',
+ loading:'Calculating.',
+ fail:'The follow-through figures could not be loaded.',
  bull:'Consensus bullish',
  bear:'Consensus bearish',
- avg:'平均相對 QQQ',
- settled:'筆已結算',
- beat:'跑贏',
- median:'中位數',
- pending:'未滿 10 日',
- method:'自 {from} 起計, 至收市日 {asof}. 入場價為資料窗結束時, 下一個尚未收市之交易日的收市價. 未滿 10 日者不計入平均. 並非投資建議. ',
- recent:'最近已結算',
- th:['信號日','代號','方向','10 D','相對 QQQ'],
+ avg:'average versus QQQ',
+ settled:'settled',
+ beat:'beat QQQ',
+ median:'median',
+ pending:'not yet 10 sessions',
+ method:'From {from} through the close of {asof}. Entry is the close of the next session that was still open when the window ended. Names short of 10 sessions are left out of the average. Not investment advice.',
+ recent:'Recently settled',
+ th:['Signal','Ticker','Side','10 D','Vs QQQ'],
  sideB:'Bullish', sideS:'Bearish'
 };})();
 function ftHtml(){

@@ -27,5 +27,18 @@ for rel, (link, anchor) in LINKS.items():
     path.write_text(text.replace(anchor, anchor + "\n      " + link, 1), encoding="utf-8")
     print("linked", rel)
 
+# en/board is not regenerated here. Keep its weekly CTA on /en/weekly/. zh/board stays /zh/weekly/.
+en_board = ROOT / "en" / "board" / "index.html"
+if en_board.is_file():
+    board = en_board.read_text(encoding="utf-8")
+    old, new = 'href="/zh/weekly/"', 'href="/en/weekly/"'
+    if old in board:
+        en_board.write_text(board.replace(old, new), encoding="utf-8")
+        print("en board weekly href -> /en/weekly/")
+    else:
+        print("en board weekly href already /en/weekly/")
+else:
+    print("en board missing, skip weekly href")
+
 from pay_moments import inject_all
 inject_all()
