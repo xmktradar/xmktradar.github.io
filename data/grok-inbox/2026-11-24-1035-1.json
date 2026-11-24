@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2125035896991035605": {
+      "en_summary": "$NVDA added $952B in market capitalization in one day, more than double the prior record.",
+      "zh_summary": "$NVDA 單日增加 9520 億美元市值，超過先前紀錄的兩倍。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125031471249498608": {
+      "en_summary": "Strive is guided by maximizing long-term value for $ASST shareholders, reflecting its large balance sheet and deep liquidity, keeping high amplification ratio, paying fair market yields on preferreds, and minimizing common equity issuance when shares are undervalued. Discussion with @BTCtreasuries covers differences with Strategy, Bitcoin drop as buy the dip opportunity.",
+      "zh_summary": "Strive 以最大化 $ASST 股東長期價值為導向，反映其龐大資產負債表與深厚流動性，維持高放大倍率、支付優先股公平市場收益，並在股份被低估時減少普通股發行。與 @BTCtreasuries 的討論涵蓋與 Strategy 的差異、比特幣回調作為買入機會。",
+      "tickers": ["ASST", "SATA", "SATS"],
+      "stance": "視好",
+      "stance_by_ticker": {"ASST": "視好", "SATA": "中性", "SATS": "中性"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ASST": "強調長期價值最大化與高放大倍率策略"}
+    },
+    "2125031358154101156": {
+      "en_summary": "$NVDA post close, watching if it can hold $156.90 moving forward.",
+      "zh_summary": "$NVDA 收市後，觀察能否守住 156.90 美元並繼續前行。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125030841982288032": {
+      "en_summary": "Significant positive sentiment on social media from Nvidia and its employees regarding Jensen's reappointment as CEO. $NVDA",
+      "zh_summary": "Nvidia 及其員工在社交媒體上對 Jensen 重新獲委任為行政總裁表達大量正面情緒。$NVDA",
+      "tickers": ["NVDA"],
+      "stance": "視好",
+      "stance_by_ticker": {"NVDA": "視好"},
+      "horizon": "中線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125030792758010277": {
+      "en_summary": "$DELL earnings is the next big catalyst for the AI trade tomorrow.",
+      "zh_summary": "$DELL 業績是明日 AI 交易的下一個重大催化劑。",
+      "tickers": ["DELL"],
+      "stance": "視好",
+      "stance_by_ticker": {"DELL": "視好"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
