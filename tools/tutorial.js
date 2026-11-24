@@ -51,6 +51,16 @@ async function shoot(page, base, lang, shot, warn) {
   // alone may never come: wait for the page itself, then give the network up to 15 s to settle.
   await page.goto(`${base}/${lang}/${shot.go || ''}`, { waitUntil: 'load', timeout: 60000 });
   await page.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
+  // Same readiness as tools/check.js. The daily view paints Key views and account
+  // cards in a later chunk; a fixed 1.2s is not always enough on /en/.
+  const go = shot.go || '';
+  if (!go || go.startsWith('#') || go.startsWith('?')) {
+    await page.waitForFunction(
+      () => window.__dashReady === true && window.__viewDone !== false,
+      null,
+      { timeout: 60000 }
+    ).catch(() => {});
+  }
   await page.addStyleTag({ content: '.donate-fab{display:none!important}' });
   await page.waitForTimeout(1200);
   if (shot.search) {
