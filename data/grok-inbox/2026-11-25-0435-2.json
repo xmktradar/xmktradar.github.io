@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2125265751456231548": {
+      "en_summary": "Notes $NVDA is down over 8% and is back to levels from Thursday of last week.",
+      "zh_summary": "指出 $NVDA 下跌超過 8%，並回到上週四的水平。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "down over 8%, back to Thursday levels"}
+    },
+    "2125265690517192872": {
+      "en_summary": "Reports $BBY recent analyst price target updates: Jefferies Hold PT $84, BofA Underperform PT $83, UBS Neutral PT $103, Stifel Hold PT $100. Consensus Hold, Low PT $83, Median $95, High $110. 11 Buy, 24 Hold, 6 Sell. Jefferies reiterating Hold at $84, BofA raised to $83, UBS raised to $103.",
+      "zh_summary": "報告 $BBY 最近分析師目標價更新：Jefferies 持有，目標價 84 美元；BofA 表現不佳，目標價 83 美元；UBS 中性，目標價 103 美元；Stifel 持有，目標價 100 美元。共識評級持有，低目標價 83 美元，中位 95 美元，高 110 美元。11 個買入，24 個持有，6 個賣出。Jefferies 重申持有於 84 美元，BofA 上調至 83 美元，UBS 上調至 103 美元。",
+      "tickers": ["BBY"],
+      "stance": "中性",
+      "stance_by_ticker": {"BBY": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"BBY": "PT updates: Jefferies $84 Hold, BofA $83 Underperform, UBS $103 Neutral, median $95"}
+    },
+    "2125265202857857203": {
+      "en_summary": "Someone just loaded $8.8M of $IWM puts in 20 minutes, 20,000+ Dec 31 250 puts.",
+      "zh_summary": "有人在 20 分鐘內載入了 880 萬美元的 $IWM 看跌期權，超過 20,000 張 12 月 31 日 250 看跌期權。",
+      "tickers": ["IWM"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"IWM": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"IWM": "$8.8M of Dec 31 250 puts loaded"}
+    },
+    "2125265126869897670": {
+      "en_summary": "Says I’m long $NVDA commons. But because I asked a few questions, legitimate ones, I get attacked by some pro Nvidia heads on Fintwit. Not my first rodeo guys. I got called worse for less. Meh. I want it to moon as much as the next guy, but got to be realistic too.",
+      "zh_summary": "表示我做多 $NVDA 普通股。但因為我問了一些問題，合法的問題，我被一些支持 Nvidia 的 Fintwit 頭攻擊。不是第一次了。我被罵得更難聽。隨便。我和其他人一樣希望它暴漲，但也必須現實。對吧？",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125264654754849180": {
+      "en_summary": "$SPX 7250 remains the bigger line in the sand into month end with the big 30,000 put position expiring Dec 31 there as a large hedge. That put is a 53 delta now slightly ITM and worth $230 each contract or $700M (was worth more Friday though). Customer still holding that long put so if or when they roll or close that would be a market moving event to upside. No reason to think they will this week but its on watch. Otherwise if SPX stays below 7250 it increases that positions gamma exposure into December. Often when giant ITM puts close its the signal you want as a bigger market reversal having legs to last more than a day or two.",
+      "zh_summary": "$SPX 7250 仍是月底前更大的沙中之線，有大額 30,000 張看跌期權倉位將於 12 月 31 日到期作為大型對沖。該看跌期權現在是 53 delta，略微價內，每份合約價值 230 美元或總計 7 億美元（上週五價值更高）。客戶仍持有該長倉看跌期權，因此如果或當他們滾動或平倉時將是向上的市場移動事件。沒有理由認為他們本週會這樣做，但正在觀察。否則如果 SPX 維持在 7250 以下，將增加該倉位進入十二月的 gamma 暴露。通常當巨型價內看跌期權平倉時，這是你想要的信號，作為更大市場反轉有腿持續超過一兩天。",
+      "tickers": ["SPX"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPX": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPX": "7250 line, 30k Dec 31 puts, $700M hedge"}
+    }
+  }
+}
