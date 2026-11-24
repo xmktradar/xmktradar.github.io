@@ -31,9 +31,17 @@ for rel, (link, anchor) in LINKS.items():
 en_board = ROOT / "en" / "board" / "index.html"
 if en_board.is_file():
     board = en_board.read_text(encoding="utf-8")
-    old, new = 'href="/zh/weekly/"', 'href="/en/weekly/"'
-    if old in board:
-        en_board.write_text(board.replace(old, new), encoding="utf-8")
+    repls = (
+        ('href="/zh/weekly/"', 'href="/en/weekly/"'),
+        ('"weekly_href": "/zh/weekly/"', '"weekly_href": "/en/weekly/"'),
+    )
+    out, changed = board, False
+    for old, new in repls:
+        if old in out:
+            out = out.replace(old, new)
+            changed = True
+    if changed:
+        en_board.write_text(out, encoding="utf-8")
         print("en board weekly href -> /en/weekly/")
     else:
         print("en board weekly href already /en/weekly/")
