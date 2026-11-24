@@ -2,6 +2,662 @@
  "note": "已抓取但未經 Grok 分析嘅帖，只收股票同宏觀帖（閒聊帖唔寫），有股票代號嘅排最前，等超過 24 個鐘就唔再等。",
  "posts": [
   {
+   "id": "2125060379013435756",
+   "handle": "RichardMoglen",
+   "name": "Richard Moglen",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:54:10Z",
+   "url": "https://x.com/RichardMoglen/status/2125060379013435756",
+   "text": "Here are my thoughts on today's gap up\n\n$NVDA $QQQ $CRWD $META and more\n\nhttps://www.youtube.com/watch?v=m60m0xjTFIU",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 1532,
+   "cashtags": [
+    "CRWD",
+    "META",
+    "NVDA",
+    "QQQ"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2125058759705997510",
+   "handle": "charliebilello",
+   "name": "Charlie Bilello",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:47:44Z",
+   "url": "https://x.com/charliebilello/status/2125058759705997510",
+   "text": "The $VIX fell 26% today, its 7th biggest one-day percentage decline in history.\n\nIncredibly, this is the 3rd time this month we've seen the $VIX fall more than 20% in a single day.\n\nThe volatility of volatility has rarely been higher, with markets swinging from complacency to fear and back again in the blink of an eye.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HX25rEIXkAAKgPp.png?name=orig"
+   ],
+   "likes": 19,
+   "views": 3593,
+   "cashtags": [
+    "VIX"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2125058643154632845",
+   "handle": "aleabitoreddit",
+   "name": "Serenity",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:47:16Z",
+   "url": "https://x.com/aleabitoreddit/status/2125058643154632845",
+   "text": "I'd personally revise AI capex estimates back up (beyond accelerators), after Jensen's return to $NVDA. \n\nA lot of revised forecasts where made off him leaving, but his return, can be a lot more confidence in spend with upstream supply chains + bottlenecks. \n\nJensen my ideal game theory troll, he just secures all the capacity of things other programs like $GOOGL or Amazon needs. \n\n> Testing? (Nvidia just secures all the capacity)\n> Substrates? (Nvidia just secures all the capacity)\n> Lasers? (Nvidia just secures all the capacity)\n> Memory? (Nvidia just secures all the capacity)\n\nBefore there was a lot of uncertainty (to the point I had to model major capex cuts)...\n\nBut Jensen's return forces hyperscalers to be much more aggressive again in supply procurement.",
+   "quoted": {
+    "handle": "deepstocktrends",
+    "text": "@aleabitoreddit @aleabitoreddit  doesn't miss a thing.\nIf the AI capex slows i think it will barely impact the laser companies correct ?"
+   },
+   "media": [],
+   "likes": 98,
+   "views": 23904,
+   "cashtags": [
+    "GOOGL",
+    "NVDA"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2125057192340697353",
+   "handle": "BenBajarin",
+   "name": "Ben Bajarin",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:41:30Z",
+   "url": "https://x.com/BenBajarin/status/2125057192340697353",
+   "text": "All consistent with what we hear from supply chain.  Weeks to inventory, in particular, is at or near all time lows.",
+   "quoted": {
+    "handle": "pequityresearch",
+    "text": "Semiconductor Survey:\n\nWidespread Outbidding (86%): Over the past three years, 86% of surveyed Japanese manufacturers lost out on semiconductor orders because competitors or other industries bought up supply slots and inventory first, resulting in delays, shortages, or higher costs.\n\nSevere Supply Shortfalls (12.7%): Only 12.7% of companies are currently getting 100% of the semiconductors they need, and nearly 70% say procurement is difficult across all major chip types.\n\nA Critical \"Time Gap\" (78%): Over half of manufacturers hold less than two months of chip inventory, yet 75% need three months or longer to test, redesign, and approve alternative parts. Among companies with under three months of stock, 78% cannot switch to a backup chip before running out of inventory.\n\nSudden Discontinuations (94.3%): Nearly every company faced disruptions over the last three years from abrupt supplier \"End-of-Life\" (discontinuation) notices, forcing costly last-minute bulk buys, excess inventory, or emergency product redesigns.\n\n$NVDA $AMD $GOOGL $META $MSFT $AMZN $MU"
+   },
+   "media": [],
+   "likes": 8,
+   "views": 1014,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125056333045219562",
+   "handle": "aleabitoreddit",
+   "name": "Serenity",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:38:06Z",
+   "url": "https://x.com/aleabitoreddit/status/2125056333045219562",
+   "text": "Ooo found $SMTC laser disclosures in earnings interesting after their HieFo acquisition: \n\n- UHP 400mW lasers under development (further behind $AAOI in this aspect since AOI has been doing quals).\n\nIn terms of laser revenue: \n-  3-4x capacity expansion EOY, another 3-4x end of next year. \n-> $25M/quarter EOY after 3x\n-> ~$$100M quarter after 4x\n\n- NPO engagement with 4 US hyperscalers and 3 Chinese hyperscalers (Aug 2027–Jan 2028 initial revenue for NPO for timelines)\n\n- \"developing CPO scale-up lasers, but that's a contribution of potential revenue beyond 2027\" in terms of timeline\n\n- \"NPO represents a great near-term opportunity\" relative to CPO\n\n- \"We wanted to catch the next wave, so that is a 3.2T\" (from previous earnings)\n\nIt would be nice if $SIVE learned a thing or two about doing economic disclosures similar to this ($ scale of capacity, engagement scale. \n\nSemtech's strat is probably VHP/UHP lasers for NPO/CPO and 3.2T for pluggables since they missed the initial wave. \n\nAnyway, they look commercially behind compared to the rest (100-150mW only sampling now)... but very credible and interesting competitor emerging in 2028 + additional TAM expansion on top of TIA/Drivers.  \n\nTLDR: HieFo acquisition might be goated (~$300m-$400m exit 2027 annualized capacity revenue opportunity, probably a lot more for 2028)... \n\nIf it were standalone under Semtech I could see it being $1B-$2B+ just based on opportunity alone, but they got it for like ~$34M from US Gov forced divestiture.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HX20PltbsAA_hAH.jpg?name=orig"
+   ],
+   "likes": 73,
+   "views": 31545,
+   "cashtags": [
+    "AAOI",
+    "SIVE",
+    "SMTC"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2125055971659825220",
+   "handle": "OptionsHawk",
+   "name": "Joe Kunkle",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:36:39Z",
+   "url": "https://x.com/OptionsHawk/status/2125055971659825220",
+   "text": "$KYMR sweet payday!",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HX23IJ9XUAAQKst.jpg?name=orig"
+   ],
+   "likes": 1,
+   "views": 2300,
+   "cashtags": [
+    "KYMR"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2125055716926816735",
+   "handle": "OptionsHawk",
+   "name": "Joe Kunkle",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:35:39Z",
+   "url": "https://x.com/OptionsHawk/status/2125055716926816735",
+   "text": "Had to wait a few days, but again, we hit!  $KYMR up huge",
+   "quoted": {
+    "handle": "OptionsHawk",
+    "text": "$CGON Monday\n\n$SLS Tuesday\n\nCan I get a $KYMR Wednesday lol (options imply have to wait for Dec expiry there)"
+   },
+   "media": [],
+   "likes": 2,
+   "views": 2299,
+   "cashtags": [
+    "KYMR"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2125055222712295582",
+   "handle": "paola_rojas",
+   "name": "Paola Rojas 🐝",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:33:41Z",
+   "url": "https://x.com/paola_rojas/status/2125055222712295582",
+   "text": "Thank you, Jensen.\n\n- Copper: $5.62/lb (+2.5%) — rebound on Nvidia CEO return reviving AI-demand bets after prior selloff\n- Gold: $3643/oz (+3.6%) — bounce from 14-month low as dollar pauses and AI-trade recovers\n- Silver: $43/oz (+4.6%) — tracks gold recovery and broader risk-on after recent washout",
+   "quoted": {
+    "handle": "paola_rojas",
+    "text": "Well done $NVDA"
+   },
+   "media": [],
+   "likes": 2,
+   "views": 254,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125054917371212072",
+   "handle": "BarbarianCap",
+   "name": "Barbarian Capital",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:32:28Z",
+   "url": "https://x.com/BarbarianCap/status/2125054917371212072",
+   "text": "Texas Pacific Land to Buy EagleRock Land in $3 Billion All-Stock Deal $TPL https://www.wsj.com/business/energy-oil/texas-pacific-land-to-buy-eaglerock-land-in-3-billion-all-stock-deal-643be79c",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 502,
+   "cashtags": [
+    "TPL"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2125054709480194315",
+   "handle": "BarbarianCap",
+   "name": "Barbarian Capital",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:31:39Z",
+   "url": "https://x.com/BarbarianCap/status/2125054709480194315",
+   "text": "EU Probes Coca-Cola Bottler, Citing Antitrust Concerns $CCEP https://www.wsj.com/world/europe/eu-probes-coca-cola-bottler-citing-antitrust-concerns-7717c957",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 507,
+   "cashtags": [
+    "CCEP"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2125053473829900344",
+   "handle": "PhotonBull",
+   "name": "PhotonBull",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:26:44Z",
+   "url": "https://x.com/PhotonBull/status/2125053473829900344",
+   "text": "A rally strong enough to give Burry FOMO\n\nLong $NVDA",
+   "quoted": {
+    "handle": "liquidtrading",
+    "text": "JUST IN: Michael Burry purchases long-dated, out-of-the-money call options on Nvidia ($NVDA) after closing 75% of his put position."
+   },
+   "media": [],
+   "likes": 12,
+   "views": 2030,
+   "cashtags": [
+    "NVDA"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2125053376605925730",
+   "handle": "InvestmentGuru_",
+   "name": "InvestmentGuru",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:26:21Z",
+   "url": "https://x.com/InvestmentGuru_/status/2125053376605925730",
+   "text": "$NBIS $CRWV $IREN \n\nNeoCloud  ROAR BACK \n\nAfter a brutal week, NeoCloud stocks delivered a powerful relief rally, rebounding sharply alongside a broader AI-led recovery.\n\n$CRWV +22.3% to $48.33\n$NBIS +20.3% to $97.80\n$IREN +23.9% to $14.64\n\nBut don’t confuse a relief rally with a confirmed trend reversal. All three had lost more than 25% the previous week, and today’s price action was driven largely by sentiment, momentum, and Nvidia’s rebound rather than company-specific news.",
+   "quoted": null,
+   "media": [],
+   "likes": 10,
+   "views": 1372,
+   "cashtags": [
+    "CRWV",
+    "IREN",
+    "NBIS"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2125052597908484380",
+   "handle": "edzitron",
+   "name": "Ed Zitron",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:23:15Z",
+   "url": "https://x.com/edzitron/status/2125052597908484380",
+   "text": "Anthropic stock side quest",
+   "quoted": {
+    "handle": "wallstengine",
+    "text": "$NVDA +30%\n$NBIS 32%\n$TSM +18%\n$MU +17%\n$AMD +10%\n$AVGO +5%\n\nChip stocks surge premarket after Nvidia reinstates Jensen Huang as CEO, with Nasdaq 100 futures up 7%"
+   },
+   "media": [
+    "https://pbs.twimg.com/media/HX2z5dQaUAAt0KC.jpg?name=orig",
+    "https://pbs.twimg.com/media/HX2z62wbcAAxHg8.jpg?name=orig",
+    "https://pbs.twimg.com/media/HX20EnCbQAAnRH0.png?name=orig"
+   ],
+   "likes": 52,
+   "views": 5881,
+   "cashtags": [],
+   "n_media": 3
+  },
+  {
+   "id": "2125050543127027772",
+   "handle": "EliteOptions2",
+   "name": "EliteOptionsTrader",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:15:05Z",
+   "url": "https://x.com/EliteOptions2/status/2125050543127027772",
+   "text": "Shorts have a Thanksgiving problem. Since 1997 a green Monday has led to a green week 16 of 17 times\n\n$SPX closed at 7237.17 today, up 4.7%, after falling 8.6% last week. When Thanksgiving Monday closes green:\n\nThe week finished green 16 of 17 times \nMonday's close to Friday's close was higher 14 of 17 times, averaging another 0.8% \nMonday's low held the rest of the week 13 of 17 times\n\nToday's low was 7152. That is the line for this week. Dips toward it have historically been bought, and the weeks that lost it were the rare ones\n\nAbove 7300 is a key level. Get through it and we test the 200 day SMA near 7350, then 7500 comes next. Below 7152, the gap fill sits at 6910\n\nThe closest precedent: November 2008. $SPX fell 8.4% the week before Thanksgiving, Monday was up 6.5%, and the week finished up 12%\n\nThe caveat: a drop of 8% or more in a week is rare. Before last week it had happened 9 times since 1997. 7 bounced the following week, including that 2008 Thanksgiving week. The 2 that did not were early October 2008 and March 2020, and both fell another 15% or more the next week",
+   "quoted": null,
+   "media": [],
+   "likes": 44,
+   "views": 10433,
+   "cashtags": [
+    "SPX"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2125049593431835004",
+   "handle": "KawzInvests",
+   "name": "KawzInvests",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:11:19Z",
+   "url": "https://x.com/KawzInvests/status/2125049593431835004",
+   "text": "Dario Amodei in 2023: \"We must proceed with extreme caution. AI poses an existential threat to humanity.\"\n\nGoldman Sachs in 2026: Dario, your $300M wire just cleared.\n\nDario:",
+   "quoted": {
+    "handle": "AIStockSavvy",
+    "text": "$ANT | Anthropic CEO Amodei Dario sold 3,723,389 shares of Class A Common Stock on 11/19/2026 and 11/20/2026 at $83 per share, totaling approximately $309 million."
+   },
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2125048222288695296/img/4esXXp7nWfBuS7mu.jpg"
+   ],
+   "likes": 28,
+   "views": 6068,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2125048239821045827",
+   "handle": "TradexWhisperer",
+   "name": "Trade Whisperer",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:05:56Z",
+   "url": "https://x.com/TradexWhisperer/status/2125048239821045827",
+   "text": "$NVDA $QQQ flashing a BLUE candle. 4 more days to go.\n\nI guess world leaders have advisors watching the charts too. $QQQ hit the 200 SMA Friday and coincidentally on Monday, Jensen makes his comback. The bounce follows.\n\n300+ charts daily. Try it free:\nhttps://www.patreon.com/posts/133466000",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HX2wG6ZbUAAAqBS.jpg?name=orig"
+   ],
+   "likes": 30,
+   "views": 7981,
+   "cashtags": [
+    "NVDA",
+    "QQQ"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2125046745927393411",
+   "handle": "TrendSpider",
+   "name": "TrendSpider",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:00:00Z",
+   "url": "https://x.com/TrendSpider/status/2125046745927393411",
+   "text": "$IREN down so bad a 24% bounce is barely noticeable on the chart 💀",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HX2CFe9W8AAw8cZ.jpg?name=orig"
+   ],
+   "likes": 196,
+   "views": 22323,
+   "cashtags": [
+    "IREN"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2125046610245624155",
+   "handle": "DevotedDividend",
+   "name": "Devoted Dividend Investor",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:59:27Z",
+   "url": "https://x.com/DevotedDividend/status/2125046610245624155",
+   "text": "Buy & Hold forever income ETF list 📊🔖\n$XLEI: 22.9%\n$SPUC: 15.2%\n$TYLG: 14.1%\n$SOXY: 12.0%\n$JEPQ: 11.7%\n$SPYI: 11.4%\n$QDVO: 11.4%\n$OVL: 10.8%\n$GPIQ: 10.5%\n$OVS: 10.5%\n$KHPI: 9.0%\n$GPIX: 8.5%\n$SEPI: 8.3%\n$KNG: 8.0%\nAll top rated, all with NO price decay 📈",
+   "quoted": null,
+   "media": [],
+   "likes": 27,
+   "views": 1657,
+   "cashtags": [
+    "GPIQ",
+    "GPIX",
+    "JEPQ",
+    "KHPI",
+    "KNG",
+    "OVL",
+    "OVS",
+    "QDVO",
+    "SEPI",
+    "SOXY",
+    "SPUC",
+    "SPYI",
+    "TYLG",
+    "XLEI"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2125046436635328895",
+   "handle": "jukan05",
+   "name": "Jukan",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:58:46Z",
+   "url": "https://x.com/jukan05/status/2125046436635328895",
+   "text": "TrendForce:\n\n- Cuts to enterprise SSD (eSSD) orders from China are large enough to offset rising demand from North American companies.\n- Global NAND bit supply is projected to grow 25–30% year over year in 2027. Demand growth is expected to lag, keeping the NAND market under oversupply pressure throughout the year.\n- NAND prices are expected to be flat to down 5% quarter over quarter in Q1 2027, with prices across all NAND product categories set to decline from Q2 onward.\n\n$SNDK",
+   "quoted": null,
+   "media": [],
+   "likes": 129,
+   "views": 21993,
+   "cashtags": [
+    "SNDK"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2125045488382550079",
+   "handle": "bespokeinvest",
+   "name": "Bespoke",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:55:00Z",
+   "url": "https://x.com/bespokeinvest/status/2125045488382550079",
+   "text": "NVIDIA $NVDA accounted for about 110 of the S&P’s 326 point gain today.  100+ points from one stock!",
+   "quoted": null,
+   "media": [],
+   "likes": 17,
+   "views": 4755,
+   "cashtags": [
+    "NVDA"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2125044544601276669",
+   "handle": "OJRenick",
+   "name": "Oliver Renick",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:51:15Z",
+   "url": "https://x.com/OJRenick/status/2125044544601276669",
+   "text": "One of the most legendary interviews in business news history today, hands down",
+   "quoted": {
+    "handle": "carlquintanilla",
+    "text": "THR: “.. suddenly it seems the most consequential stories of this moment in time are happening on @CNBC.”\n\n@THR $VSNT\nhttps://www.hollywoodreporter.com/business/business-news/cnbc-gains-nvidia-jensen-huang-news-trump-call-1236761408/"
+   },
+   "media": [],
+   "likes": 8,
+   "views": 1014,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125044487835779186",
+   "handle": "Micro2Macr0",
+   "name": "Micro2Macr0",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "HallywoodBTC"
+   },
+   "time_utc": "2026-11-24T01:51:01Z",
+   "url": "https://x.com/Micro2Macr0/status/2125044487835779186",
+   "text": "@HallywoodBTC @AnthropicAI $SPCX will be one of the largest cash flow generating companies on the planet.",
+   "quoted": null,
+   "media": [],
+   "likes": 3,
+   "views": 174,
+   "cashtags": [
+    "SPCX"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2125043507102376264",
+   "handle": "davidgokhshtein",
+   "name": "David Gokhshtein",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:47:08Z",
+   "url": "https://x.com/davidgokhshtein/status/2125043507102376264",
+   "text": "Who’s in $NIGHT?",
+   "quoted": null,
+   "media": [],
+   "likes": 90,
+   "views": 5528,
+   "cashtags": [
+    "NIGHT"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2125043086011043931",
+   "handle": "scottmelker",
+   "name": "The Wolf Of All Streets",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:45:27Z",
+   "url": "https://x.com/scottmelker/status/2125043086011043931",
+   "text": "ETHEREUM FOUNDATION DOUBLES ITS PROTOCOL SECURITY TEAM, SAYING AI HAS EMERGED AS A MORE URGENT RISK THAN QUANTUM COMPUTERS FOR ETHEREUM $ETH",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HX2rWisXkAAcD--.jpg?name=orig"
+   ],
+   "likes": 25,
+   "views": 8770,
+   "cashtags": [
+    "ETH"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2125042729428070524",
+   "handle": "optionflys",
+   "name": "Mo",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:44:02Z",
+   "url": "https://x.com/optionflys/status/2125042729428070524",
+   "text": "$SPX — Weekly Elliott Wave Update\n\nThis is for those who have actually read and studied the Elliott Wave Principle, not those who Google a few images and try to force a wave count onto a chart.\n\nI have two valid wave counts here.\n\nScenario 1: We completed five waves within Wave (3), reaching the 100% Fibonacci relationship, and are now in the higher-degree Orange Wave (4).\n\nThe first leg down was Wave A. We could spend the remainder of 2026 chopping around in Wave B before another leg down in Wave C next year.\n\nScenario 2: We are still in Wave 4 of the diagonal. If price manages to squeeze out one more high, the higher-degree Orange Wave (4) comes into play next year.\n\nLooking at the number of weekly SELL signals and downswings across the market, Scenario 1 makes more sense to me right now.\n\nI need to see new demand and a weekly BUY signal before entertaining Scenario 2.\n\nThe tricky part is determining which degree of Wave 4 we are currently in.\n\nI will track both counts every week. No need to waste too much time debating wave counts or forcing a bullish or bearish narrative.\n\nAs price gives me more clarity, I will adjust my wave count accordingly.\n\nSwings and signals will dictate my execution, not the wave count.\n\nLet price do the talking.\n\n$SPY $QQQ @ToddFGordon",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HX2ojPNWoAAlHg0.png?name=orig",
+    "https://pbs.twimg.com/media/HX2pgu7WoAAm6zq.png?name=orig"
+   ],
+   "likes": 91,
+   "views": 6158,
+   "cashtags": [
+    "QQQ",
+    "SPX",
+    "SPY"
+   ],
+   "n_media": 2
+  },
+  {
+   "id": "2125041458050949503",
+   "handle": "seemacnbc",
+   "name": "Seema Mody",
+   "type": "repost",
+   "reposted_by": "DivesTech",
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:38:59Z",
+   "url": "https://x.com/seemacnbc/status/2125041458050949503",
+   "text": "The dramatic 48 hours that led to @JensenHuang’s return as CEO of Nvidia and the role @realDonaldTrump played in getting the deal signed. Endless calls today, here’s my reporting h/t @_DanMangan $NVDA https://www.cnbc.com/2026/11/23/trump-nvidia-jensen-huang.html",
+   "quoted": null,
+   "media": [],
+   "likes": 47,
+   "views": 6636,
+   "cashtags": [
+    "NVDA"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2125040320714801457",
+   "handle": "InvestmentGuru_",
+   "name": "InvestmentGuru",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:34:28Z",
+   "url": "https://x.com/InvestmentGuru_/status/2125040320714801457",
+   "text": "Nobody knew what was coming today, and without the $NVDA headline, we probably would have seen a very different market. This is a reminder of how unpredictable this tape has become—news, sentiment, positioning and panic are moving markets more than technicals alone. When volatility is this high, conviction can change in minutes. Stay flexible, stay disciplined, and never underestimate how quickly the narrative can shift.",
+   "quoted": {
+    "handle": "ShaneStoffer",
+    "text": "This is actually insane to look at lmao. \n\nThe losing the 700k is not the agony the agony is missing out on the glory that should have been"
+   },
+   "media": [],
+   "likes": 2,
+   "views": 1461,
+   "cashtags": [
+    "NVDA"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2125038585531564089",
+   "handle": "TradexWhisperer",
+   "name": "Trade Whisperer",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:27:34Z",
+   "url": "https://x.com/TradexWhisperer/status/2125038585531564089",
+   "text": "$MU: 75% sold out; talks moving to 2028\n\n$SKHY: >50% signed under LTAs. \"Effectively sold out\" through 2029.\n\nSamsung: ~80% contracted. Tight into 2028.\n\nThe only thing not sold out is the stock. 2x fwd earnings.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HX2mTJObwAA3f9z.jpg?name=orig"
+   ],
+   "likes": 123,
+   "views": 12761,
+   "cashtags": [
+    "MU",
+    "SKHY"
+   ],
+   "n_media": 1
+  },
+  {
+   "id": "2125037701200224750",
+   "handle": "InvestmentGuru_",
+   "name": "InvestmentGuru",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:24:03Z",
+   "url": "https://x.com/InvestmentGuru_/status/2125037701200224750",
+   "text": "$SPY closed at $722.29, still below all three of its daily averages. The 50-day sits near $760 and the 100-day near $759, and the 200-day just above the close. Monday's 5% rally did not take back a single one of them. That is the distance between a bounce and a trend: the trend is defined by the averages, and the price is below all of them. A market below its 50-day, its 100-day and its 200-day at the same time is a market in a downtrend that had a good day, not a market that turned. The averages are the ceiling now, and the ceiling is a long way above the close. The bounce has to climb through all three before the trend changes. One day took back the gap. The averages are still the work.",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 1330,
+   "cashtags": [
+    "SPY"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2125037352208740790",
+   "handle": "InvestmentGuru_",
+   "name": "InvestmentGuru",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:22:40Z",
+   "url": "https://x.com/InvestmentGuru_/status/2125037352208740790",
+   "text": "$META rose 6.55% on the day its target got cut. Morgan Stanley cut its price target to $720 from $820 and kept its Overweight rating, and the stock rallied anyway. The tape did not care about the target, because the target is a guess about the future and the tape is a vote about today. When a stock rallies through a target cut, the sellers are not there, whatever the analysts say. That is worth more than the target itself. Analysts move targets after the price moves, not before. The market moved first on Friday, the analysts followed on Monday, and the stock moved anyway. Targets are not levels. The close is the level, and $META closed strong.",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 1313,
+   "cashtags": [
+    "META"
+   ],
+   "n_media": 0
+  },
+  {
+   "id": "2125036838406529195",
+   "handle": "InvestmentGuru_",
+   "name": "InvestmentGuru",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:20:38Z",
+   "url": "https://x.com/InvestmentGuru_/status/2125036838406529195",
+   "text": "The bounce had a leader, and it was not the index. Semis ran about 13.6% on the day while the S&P rose about 5%, with memory doing the heavy lifting and $NVDA pulling the whole complex with it. That is how a real bounce starts, with the sector that fell hardest leading the way back, not with the defensive names hiding. But leadership on day one is a claim, not a fact. The sector has to hold the move when sellers come back at the first resistance, the way the hottest names faded today. Watch whether semis keep leading on Tuesday, or whether leadership rotates into the names that did not fall as far. Day one belongs to the leaders. Day two decides if they stay leaders.",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 1371,
+   "cashtags": [
+    "NVDA"
+   ],
+   "n_media": 0
+  },
+  {
    "id": "2125025349700661533",
    "handle": "howardlindzon",
    "name": "Howard Lindzon",
@@ -9371,6 +10027,1342 @@
    "n_media": 0
   },
   {
+   "id": "2125060991197356237",
+   "handle": "kevinxu",
+   "name": "Kevin Xu",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:56:36Z",
+   "url": "https://x.com/kevinxu/status/2125060991197356237",
+   "text": "felt bullish until i read why",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HX26tCHaUAATrnF.jpg?name=orig",
+    "https://pbs.twimg.com/media/HX27Q7ea0AAOKnl.jpg?name=orig"
+   ],
+   "likes": 2,
+   "views": 2178,
+   "cashtags": [],
+   "n_media": 2
+  },
+  {
+   "id": "2125059621429895462",
+   "handle": "Globalflows",
+   "name": "Capital Flows",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:51:10Z",
+   "url": "https://x.com/Globalflows/status/2125059621429895462",
+   "text": "A Word Of Caution For Sentiment and NVDA Flows\nhttps://www.capitalflowsresearch.com/p/a-word-of-caution-for-sentiment-and",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 915,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125059553440247843",
+   "handle": "optionflys",
+   "name": "Mo",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "Cap_Puckhaber"
+   },
+   "time_utc": "2026-11-24T02:50:53Z",
+   "url": "https://x.com/optionflys/status/2125059553440247843",
+   "text": "@Cap_Puckhaber SPX ended the 7 down days streak today, so it was due for an over sold bounce.",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 37,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125058351872487495",
+   "handle": "BennettWoodman",
+   "name": "Ben Woodward, CFA",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:46:07Z",
+   "url": "https://x.com/BennettWoodman/status/2125058351872487495",
+   "text": "Risky ≠ return.\n \n\"Volatility is a feature, not a bug\" explains why stocks beat bonds over decades. It says nothing about whether the recent volatility is compensated — at stretched valuations, with concentration and leverage lurking.\n \n27 up days and 27 down days just means high variance. Symmetry in count ≠ symmetry in drawdown.\n \nLong-run truisms don't answer near-term risk. That's not reassurance — it's a motte-and-bailey.",
+   "quoted": {
+    "handle": "charliebilello",
+    "text": "The S&P 500 has now had 27 big down days (>1%) this year and 27 big up days (>1%).\n\nHistory shows that the two go hand in hand.\n\nVolatility is a feature of stock markets, not a bug. It's the primary reason why stocks have earned a higher return than bonds/cash over the long run."
+   },
+   "media": [],
+   "likes": 0,
+   "views": 57,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125057855082655767",
+   "handle": "TradingThomas3",
+   "name": "TT3",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:44:08Z",
+   "url": "https://x.com/TradingThomas3/status/2125057855082655767",
+   "text": "The winning don’t stop 👀",
+   "quoted": {
+    "handle": "FT",
+    "text": "Trump made up to $15mn on Nvidia shares after Huang’s return https://ft.trib.al/0LgTMHx"
+   },
+   "media": [],
+   "likes": 32,
+   "views": 3239,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125057315128967532",
+   "handle": "steve_hanke",
+   "name": "Steve Hanke",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:42:00Z",
+   "url": "https://x.com/steve_hanke/status/2125057315128967532",
+   "text": "According to the FT, President Trump made up to $15 million on the 30% Nvidia rally after telling CNBC he \"made the deal\" to bring back CEO Jensen Huang. \n\nWELCOME TO THE POLITICAL WORLD OF WASHINGTON, D.C.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HX2n3XwXkAAVm37.jpg?name=orig"
+   ],
+   "likes": 6,
+   "views": 3397,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2125056895853740521",
+   "handle": "HFI_Research",
+   "name": "HFI Research",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:40:20Z",
+   "url": "https://x.com/HFI_Research/status/2125056895853740521",
+   "text": "Asking for a friend @FluxOfficials \n\nIs a 1 and 2 market pressure index bullish?",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HX23-8qbIAA45W1.jpg?name=orig",
+    "https://pbs.twimg.com/media/HX23-8mbAAAYPJG.jpg?name=orig"
+   ],
+   "likes": 19,
+   "views": 3219,
+   "cashtags": [],
+   "n_media": 2
+  },
+  {
+   "id": "2125056885946777957",
+   "handle": "amitisinvesting",
+   "name": "amit",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "OndasHoldings"
+   },
+   "time_utc": "2026-11-24T02:40:17Z",
+   "url": "https://x.com/amitisinvesting/status/2125056885946777957",
+   "text": "@OndasHoldings @CeoOndas super bullish",
+   "quoted": null,
+   "media": [],
+   "likes": 5,
+   "views": 769,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125056251721646256",
+   "handle": "LiveSquawk",
+   "name": "LiveSquawk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:37:46Z",
+   "url": "https://x.com/LiveSquawk/status/2125056251721646256",
+   "text": "Bitcoin Fails To Hold Nvidia Bump With Crypto Headwinds In Focus – BBG\n\nhttps://www.bloomberg.com/news/articles/2026-11-24/bitcoin-fails-to-hold-nvidia-bump-with-crypto-headwinds-in-focus",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 4805,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125056006468366482",
+   "handle": "FirstSquawk",
+   "name": "First Squawk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:36:48Z",
+   "url": "https://x.com/FirstSquawk/status/2125056006468366482",
+   "text": "Samsung elevates 131 executives, with semiconductor professionals receiving key promotions",
+   "quoted": null,
+   "media": [],
+   "likes": 3,
+   "views": 10901,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125055781905248312",
+   "handle": "BarbarianCap",
+   "name": "Barbarian Capital",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:35:54Z",
+   "url": "https://x.com/BarbarianCap/status/2125055781905248312",
+   "text": "Amazon faces FAA probe after delivery drone strikes Michigan fiber cable, garage https://www.cnbc.com/2026/11/23/amazon-drone-crash-michigan-faa-investigation.html",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 520,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125055749181309437",
+   "handle": "edzitron",
+   "name": "Ed Zitron",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:35:46Z",
+   "url": "https://x.com/edzitron/status/2125055749181309437",
+   "text": "we still do not know what this was about! That's very strange! What are the terms of the vendor financing Oracle has signed up for? It's clearly with NVIDIA - how large is the deal? TD Cowen reported it about a month ago, and it's wild we don't know much more.",
+   "quoted": {
+    "handle": "Oracle",
+    "text": "Oracle has secured all the funding we need to fulfill our contract with OpenAI. With our final capital raise earlier this month, we became the first hyperscaler fully funded for this investment cycle. The financing we outlined at Oracle Investor Day, including vendor financing, is in place. Any further private discussions with vendors are just additional options. Our ability to deliver on our OpenAI contract does not depend on those discussions. Any media reports that will come out and say the contrary are incorrect and wrong. \n\nOracle and OpenAI are making rapid progress on our infrastructure partnership. Our Abilene campus, where Astra-6 was trained, is nearly complete. Shackelford, our next gigawatt-scale campus, is fully permitted. The handover of NVIDIA Vera Rubin racks in its data halls is on track for the coming weeks.\n\nWe continue to expect positive free cash flow in the second half of FY2028. We are targeting more than $30 billion in free cash flow in FY2029 and expect to self-fund future growth beginning that year."
+   },
+   "media": [
+    "https://pbs.twimg.com/media/HX224jQbAAAUcSR.jpg?name=orig"
+   ],
+   "likes": 93,
+   "views": 5665,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2125055034400657804",
+   "handle": "balajis",
+   "name": "Balaji",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "janecoaston"
+   },
+   "time_utc": "2026-11-24T02:32:56Z",
+   "url": "https://x.com/balajis/status/2125055034400657804",
+   "text": "Jane, I’ve actually seen you be more reasonable than most in your profession. So here’s my attempt to reason with you.\n\nEveryone isn’t the same. Founders produce higher returns than non-founders, just like math Olympiad winners outscore math amateurs. This is a numerical fact; see graph below.\n\nHowever, everyone is the same as a journo. Thus, it is no longer a useful tactic to crop a tweet and post it out of context under the assumption your subject doesn’t see it, as it’ll be directly rebutted. Because citizens now have comparable distribution to corporate journalists. Thus, I quote the full tweet below, which briefly explains why the internet century is different than the centralized century.\n\nBasically: the era of newspaper nepotist heirs is ending. And the era of self-made technologists like Jensen Huang is beginning.\n\nSo, come back to your libertarian and conservative roots; there’s still time to switch sides back to the free Internet.",
+   "quoted": {
+    "handle": "balajis",
+    "text": "All the business school curricula need to be rewritten for the 21st century.\n\nGood corporate governance should be defined as founder control, with dual class stock, not board control. The board is just an advisory board. The shareholder vote is a backup in the event of issues, and shareholder sales are the extreme backup.\n\nThis should be obvious from the financial performance of founder-led global tech companies vs manager-led incumbents. And also obvious in terms of just how much value these boards typically consume rather than produce.\n\nAfter all, typical board members aren’t like execs that a CEO can actually assign tasks. Instead, they have power, and often time to scheme amongst themselves, but lack true operating knowledge of the underlying company. The exception is when there are real founders on the board themselves — but those are exceptions.\n\nTo be clear, the 20th century MBA-style corporate governance playbook was actually fine for the era of General Mills, General Motors, and General Electric. In that time period, the individual didn’t matter that much. They didn’t have the leverage that computers give them.\n\nBut now the Internet has obsolesced all that. So YC, Founders Fund, and a16z are much better business schools than Harvard Business School, which is culturally obsolete because it is technologically obsolete. The world it was implicitly premised on no longer exists.\n\nHowever, all these intuitions and best practices, the conventions that built billion and tril"
+   },
+   "media": [
+    "https://pbs.twimg.com/media/HX22SWraoAAVvT3.jpg?name=orig"
+   ],
+   "likes": 15,
+   "views": 948,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2125055027391631363",
+   "handle": "amitisinvesting",
+   "name": "amit",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "JS_Invests_"
+   },
+   "time_utc": "2026-11-24T02:32:54Z",
+   "url": "https://x.com/amitisinvesting/status/2125055027391631363",
+   "text": "@JS_Invests_ @TslaGroupie Now I need to buy her dinner and a celsius one day to make up for this smh",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 606,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125054531939766649",
+   "handle": "BarbarianCap",
+   "name": "Barbarian Capital",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:30:56Z",
+   "url": "https://x.com/BarbarianCap/status/2125054531939766649",
+   "text": "IMAX to Show Super Bowl LXI in Theaters Through Partnership With Disney, the NFL https://www.wsj.com/business/media/imax-to-show-super-bowl-lxi-in-theaters-through-partnership-with-disney-the-nfl-997dc4be",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 435,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125054384031645953",
+   "handle": "BarbarianCap",
+   "name": "Barbarian Capital",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:30:21Z",
+   "url": "https://x.com/BarbarianCap/status/2125054384031645953",
+   "text": "Trump Asked Vance to Help Persuade Nvidia to Bring Back Jensen Huang https://www.wsj.com/politics/policy/nvidia-ceo-trump-vance-jensen-huang-bdec91c3",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 468,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125054274195403034",
+   "handle": "BarbarianCap",
+   "name": "Barbarian Capital",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:29:55Z",
+   "url": "https://x.com/BarbarianCap/status/2125054274195403034",
+   "text": "Jensen Huang’s Return to Nvidia Draws Heavy Fire From Lawmakers https://www.wsj.com/politics/policy/jensen-huangs-return-to-nvidia-draws-heavy-fire-from-lawmakers-ae698d88",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 453,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125054260895445214",
+   "handle": "FirstSquawk",
+   "name": "First Squawk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:29:52Z",
+   "url": "https://x.com/FirstSquawk/status/2125054260895445214",
+   "text": "Alibaba rejects allegations of chip diversion, saying Apex has never redirected US-restricted advanced processors",
+   "quoted": null,
+   "media": [],
+   "likes": 6,
+   "views": 10740,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125054221414523204",
+   "handle": "FirstSquawk",
+   "name": "First Squawk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:29:42Z",
+   "url": "https://x.com/FirstSquawk/status/2125054221414523204",
+   "text": "Alibaba maintains Apex has never rerouted advanced chips covered by US export restrictions",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 10252,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125053997874917846",
+   "handle": "BarbarianCap",
+   "name": "Barbarian Capital",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:28:49Z",
+   "url": "https://x.com/BarbarianCap/status/2125053997874917846",
+   "text": "Why Amazon’s Rival to Starlink Is Struggling to Catch Up With SpaceX https://www.wsj.com/tech/amazon-leo-starlink-rival-5bb0e6a0",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 450,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125053995706392919",
+   "handle": "FirstSquawk",
+   "name": "First Squawk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:28:48Z",
+   "url": "https://x.com/FirstSquawk/status/2125053995706392919",
+   "text": "Alibaba says US decision to place Apex Enterprise Solutions on Entity List is incorrect",
+   "quoted": null,
+   "media": [],
+   "likes": 4,
+   "views": 11021,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125053562820362686",
+   "handle": "jasonlk",
+   "name": "Jason ✨👾SaaStr.Ai✨ Lemkin",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:27:05Z",
+   "url": "https://x.com/jasonlk/status/2125053562820362686",
+   "text": "New!! How SaaStr Uses Muse for GTM: 5 Jobs We Didn't Want to Build Into Our Own Agents\n\n10K has no browser. Muse does.\n\nAEO audits logged out. Competitor pages checked daily.\n\nhttps://www.saastr.com/how-saastr-uses-muse-for-gtm-5-jobs-we-didnt-want-to-build-into-our-own-agents/",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 675,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125053324739121235",
+   "handle": "onechancefreedm",
+   "name": "EndGame Macro",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "cathynumber5"
+   },
+   "time_utc": "2026-11-24T02:26:08Z",
+   "url": "https://x.com/onechancefreedm/status/2125053324739121235",
+   "text": "Cathy doesn’t like being wrong does she 😢\n\n@grok answer each question individually with a yes or no, using the same statistical series and comparable historical periods. Provide the corresponding figures and sources to substantiate each answer.\n\n1. Are U.S. commercial office vacancy rates in 2026 higher than their respective peaks during the 2008 to 2010 financial crisis and the 2020 pandemic recession?\n\n2. Have subprime auto loan delinquencies of 60 days or more in 2026 exceeded their highest recorded levels during the 2007 to 2009 Great Financial Crisis and the 2020 pandemic?\n\n3. Did large corporate bankruptcy filings during the first half of 2026 match or exceed filings during the first half of 2020, and are they approaching levels last experienced in 2010?\n\n4. Have small business Subchapter V bankruptcy filings through September 2026 exceeded filings during the comparable period in 2020, accounting for changes in eligibility requirements?\n\n5. Are student loan delinquencies of 90 days or more in Q3 2026 comparable to or worse than those recorded immediately before the pandemic payment suspension in Q1 2020?\n\n6. Have credit card delinquencies among younger and subprime borrowers in 2026 reached levels comparable to those experienced during the 2008 to 2010 financial crisis or exceeded their 2020 levels?\n\n7. Has the outstanding dollar value of distressed leveraged loans in November 2026 approached or exceeded the peak recorded during the 2020 pandemic credit crisis?\n\n8. Are office CMBS delinquency rates in 2026 comparable to or higher than their respective peaks during the aftermath of the 2008 financial crisis and the 2020 pandemic?\n\n9. Are corporate default rates in 2026 materially higher when distressed exchanges and qualifying Liability Management Exercises are included, and how do those adjusted rates compare with 2008 to 2010 and 2020?\n\n10. Have total business bankruptcy filings during the 12 months ending September 2026 reached their highest level since 2014, despite no recession having been officially declared?\n\n11. During the 2001 recession and the 2007 to 2009 Great Financial Crisis, did deterioration in corporate profitability, credit conditions and business solvency precede peak unemployment?\n\n12. Given that the December 2007 recession was not officially announced by the NBER until December 2008, does the absence of a recession declaration in November 2026 establish that the economy is not already experiencing one?\n\n13. If multiple consumer and corporate financial distress indicators in November 2026 already match or exceed levels experienced during the 2008 to 2010 financial crisis or the 2020 pandemic, could a substantial increase in unemployment throughout 2027 materially accelerate defaults, bankruptcies and forced liquidations?",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 126,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125052013243453586",
+   "handle": "CGasparino",
+   "name": "Charles Gasparino",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:20:56Z",
+   "url": "https://x.com/CGasparino/status/2125052013243453586",
+   "text": "As I’ve been saying",
+   "quoted": {
+    "handle": "gerardtbaker",
+    "text": "We live in an America where Canadian lumber is a threat to our national health, Greenland’s territory is a menace to our national security and sending high-technology equipment to Communist China is a business opportunity.  \n#Nvidia"
+   },
+   "media": [],
+   "likes": 22,
+   "views": 4340,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125051789049274406",
+   "handle": "BennettWoodman",
+   "name": "Ben Woodward, CFA",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:20:02Z",
+   "url": "https://x.com/BennettWoodman/status/2125051789049274406",
+   "text": "Big up days are a symptom of stress, not strength. Investors often mistake them for bullish signals, but history says they're more often found in the middle or end of bear markets.  A few takeaways:\n1. +5% days are panic-rebound days, not bull-market days. They tend to follow crashes or capitulation, which is why they cluster in bear markets.\n2. The Great Depression dominates — 49 of 73 (~67%). That reflects both the severity and the frequency of 1930s swings (including 1933).\n3. \"Mostly near the end\" of the GFC is consistent with the March 2009 bottom, when huge up days marked capitulation.\n4. COVID's 5 came in a tight window (March 2020), again a volatility spike.\n5. \"Liberation Day Week\" — presumably April 2025 tariff-related turmoil — would be the most recent addition.",
+   "quoted": {
+    "handle": "OddStats",
+    "text": "There have been 73 times in history that the S&P Index had a +5% day.\n\n• 49 of them came during the Great Depression\n• 2 the week of Black Monday\n• 3 during the dot com collapse\n• 9 during the GFC (mostly near the end)\n• 5 during COVID\n• Liberation Day Week\n• 1 each in 1970, 1997, 1998, and 2022"
+   },
+   "media": [],
+   "likes": 7,
+   "views": 329,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125051254376132989",
+   "handle": "Geiger_Capital",
+   "name": "Geiger Capital",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:17:55Z",
+   "url": "https://x.com/Geiger_Capital/status/2125051254376132989",
+   "text": "I missed this viral ICE arrest, but let me break this down so even the far-left understands…\n\nIf I went to Japan on a 90-day tourist visa, and then just never left and started living there for 10+ years, I would fully expect them to arrest me and kick me out of their country.\n\nI lied to them, I broke their laws, and I disrespected them after they allowed me in.\n\nIt doesn’t matter if a woman starts screaming and crying on the ground. I am the one in the wrong, not the Japanese people enforcing their own nation’s laws against a foreigner who broke them.\n\nThe problem with this encounter is not the calm ICE officers arresting an illegal foreigner. It’s that these people feel so entitled and comfortable living in the United States illegally, that they think they can go through airport security and fly inside of our country. This alone shows how weak and insane our immigration policies have become in recent decades.\n\nThe faux outrage over this arrest shows how soft Americans have become to even the most basic immigration enforcement.\n\nActually… yes, we can and should remove foreign citizens who overstay temporary tourist visas by years. We don’t stop being a nation with borders and laws, just because a foreign woman is screaming.",
+   "quoted": {
+    "handle": "CBSNews",
+    "text": "Masked immigration officers arrested two passengers on a crowded airport jet bridge in Seattle as people were boarding Saturday, federal officials said, causing what Alaska Airlines called a “distressing” scene for passengers and employees.\n\nVideos of the incident showed officers dragging away at least one person at Seattle-Tacoma International Airport as a woman screamed that her daughter was being taken and she has a work permit.\n\nIn a statement provided to CBS News Saturday evening, a spokesperson for the Department of Homeland Security said that ICE officers “conducted a targeted enforcement operation” on a Mexican national identified as Ricardo Larrondo Mendoza who had “overstayed his visa.”"
+   },
+   "media": [],
+   "likes": 281,
+   "views": 12113,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125051092211998867",
+   "handle": "DerivativesDon",
+   "name": "Derivatives Don",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "ddfintwitacct"
+   },
+   "time_utc": "2026-11-24T02:17:16Z",
+   "url": "https://x.com/DerivativesDon/status/2125051092211998867",
+   "text": "@ddfintwitacct IMHO - this is not how these people are wired\n\nJensen will outlive DJT and he knows it\n\nThink about Putin and you will get it.",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 67,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125050823722099136",
+   "handle": "BenBajarin",
+   "name": "Ben Bajarin",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "PressieMoonBoy"
+   },
+   "time_utc": "2026-11-24T02:16:12Z",
+   "url": "https://x.com/BenBajarin/status/2125050823722099136",
+   "text": "@PressieMoonBoy @mweinbach Not a publication, research as a service :),  but also i'm sure you get who our target audience is in large firms and enterprises.",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 63,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125050590799487166",
+   "handle": "ylecun",
+   "name": "Yann LeCun",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "FutureJurvetson"
+   },
+   "time_utc": "2026-11-24T02:15:17Z",
+   "url": "https://x.com/ylecun/status/2125050590799487166",
+   "text": "Context:\n\"I've tried to train models to do video prediction for the better part of the last 20 years, and largely failing for the first 15. Until I realized you had to abandon generative models and use joint embedding predictive architectures (JEPA)\" \n\n\"Things started to work in the last few years with JEPA and world models. The main applications are in the physical world, robotics, and industrial process control. Things that Meta is not particularly interested in\" \n\nBut my project always had the support of Zuck, Boz, Schrep, and Chris Cox. \n\nIt's true that, as Chief AI Scientist, I was at senior VP level but was an IC. Best job in the company! \n\nAlso true that I never worked on LLMs. I was very supportive of LLM projects at FAIR (e.g. the project that became Llama), and played a role on convincing Mark to create an AI-first product division around Llama, and pushed to open source Llama-2. But I was never involved at the technical level.",
+   "quoted": null,
+   "media": [],
+   "likes": 3,
+   "views": 284,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125050342790541349",
+   "handle": "FirstSquawk",
+   "name": "First Squawk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:14:17Z",
+   "url": "https://x.com/FirstSquawk/status/2125050342790541349",
+   "text": "Jensen Huang returns as Nvidia CEO after President Trump reportedly pushes for his reinstatement, marking a reversal of his departure following disclosures about extramarital affairs. The move draws backing from Wall Street while attracting criticism from US lawmakers.",
+   "quoted": null,
+   "media": [],
+   "likes": 17,
+   "views": 13299,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125050238931177476",
+   "handle": "jimcramer",
+   "name": "Jim Cramer",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:13:53Z",
+   "url": "https://x.com/jimcramer/status/2125050238931177476",
+   "text": "Thrilled to be a part of CNBC!",
+   "quoted": {
+    "handle": "THR",
+    "text": "The Center of the News Universe Has Shifted to CNBC https://www.hollywoodreporter.com/business/business-news/cnbc-gains-nvidia-jensen-huang-news-trump-call-1236761408/"
+   },
+   "media": [],
+   "likes": 127,
+   "views": 33551,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125049520992182656",
+   "handle": "RpsAgainstTrump",
+   "name": "Republicans against Trump",
+   "type": "repost",
+   "reposted_by": "GaryMarcus",
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:11:01Z",
+   "url": "https://x.com/RpsAgainstTrump/status/2125049520992182656",
+   "text": "CNN: Vance coordinated directly with Huang in pressuring Nvidia’s board to take him back, including working to assure the company’s board that the government hadn’t found any evidence that Huang did anything illegal or untoward that could have threatened national security, the sources said",
+   "quoted": {
+    "handle": "RpsAgainstTrump",
+    "text": "CNN: Donald Trump had been stewing for days over the stock market’s deepening sell-off when he decided there was only one way to stop the slide: Put Jensen Huang back atop Nvidia.\n\nTrump’s conclusion late last week sparked an unprecedented West Wing pressure campaign orchestrated by the president to convince the tech giant to reinstate its scandal-ridden CEO just 11 days after he resigned under pressure, several people familiar with the matter told CNN.\n\nIn a flurry of calls over the weekend, top officials led by Vice President JD Vance privately leaned on Nvidia’s board to bring back Huang. They assured the company he posed no national security risk https://www.cnn.com/2026/11/23/politics/trump-administration-jensen-huang-reinstated?Date=20261123&Profile=CNNPolitics&utm_content=1795477854&utm_medium=social&utm_source=twitter"
+   },
+   "media": [
+    "https://pbs.twimg.com/media/HX2xORvWkAA7G59.jpg?name=orig"
+   ],
+   "likes": 116,
+   "views": 9398,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2125049354428072256",
+   "handle": "BenBajarin",
+   "name": "Ben Bajarin",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:10:22Z",
+   "url": "https://x.com/BenBajarin/status/2125049354428072256",
+   "text": "Picture us poddin.",
+   "quoted": {
+    "handle": "T_h_e_Circuit",
+    "text": "NVDA Earnings, Ecosystem Analysis, Anthropic IPO\n\nWith @benbajarin and @jaygoldberg \n\n(00:00) NVIDIA Earnings & CEO Drama \n(03:50) Neo Clouds & Tighter Credit \n(10:16) Why Hyperscalers Win \n(17:25) Mixed Signals on AI Demand \n(26:46) Slow Enterprise AI Adoption \n(32:48) Anthropic's Rough IPO \n(40:00) Next Catalysts & Cybersecurity"
+   },
+   "media": [],
+   "likes": 8,
+   "views": 1571,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125049326397501695",
+   "handle": "GaryMarcus",
+   "name": "Gary Marcus",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:10:15Z",
+   "url": "https://x.com/GaryMarcus/status/2125049326397501695",
+   "text": "short-tern propping of the market with immense long terms costs … to the market.",
+   "quoted": {
+    "handle": "carlquintanilla",
+    "text": "JPM: \n\nRemoving the Jensen uncertainty “is clearly positive. However, the broader uncertainty around the rules of corporate governance and political involvement just got A LOT worse .. Over time, this should weigh on equity multiples, particularly with a Democratic Congress ..”"
+   },
+   "media": [],
+   "likes": 10,
+   "views": 1922,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125049309632819588",
+   "handle": "FirstSquawk",
+   "name": "First Squawk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:10:11Z",
+   "url": "https://x.com/FirstSquawk/status/2125049309632819588",
+   "text": "Russian forces target drone command posts and Starlink equipment in Ukraine's Sumy region, according to the Defence Ministry",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 12797,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125049304624840831",
+   "handle": "DerivativesDon",
+   "name": "Derivatives Don",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "BlacklionCTA"
+   },
+   "time_utc": "2026-11-24T02:10:10Z",
+   "url": "https://x.com/DerivativesDon/status/2125049304624840831",
+   "text": "@BlacklionCTA I understand the emotion.\n\nI am being pragmatic\n\nHe will do something stupid again\n\nIt will put us all at risk again\n\nIt may or may not be bailed out\n\nBut it is how he is wired\n\nYou think DJT owns him?\n\nHe thinks he owns DJT - he really does",
+   "quoted": null,
+   "media": [],
+   "likes": 4,
+   "views": 221,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125049015741927682",
+   "handle": "LiveSquawk",
+   "name": "LiveSquawk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:09:01Z",
+   "url": "https://x.com/LiveSquawk/status/2125049015741927682",
+   "text": "US Blacklists Alibaba-Owned Company In Setback To AI Ambitions - BBG\n\nhttps://www.bloomberg.com/news/articles/2026-11-24/us-blacklists-alibaba-owned-company-in-setback-to-ai-ambitions",
+   "quoted": null,
+   "media": [],
+   "likes": 6,
+   "views": 6406,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125048997144338455",
+   "handle": "optionflys",
+   "name": "Mo",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "jakewjt"
+   },
+   "time_utc": "2026-11-24T02:08:57Z",
+   "url": "https://x.com/optionflys/status/2125048997144338455",
+   "text": "Yes, an extended Wave 5 is a possibility when Waves 1 and 3 are equal in length, but equality alone does not guarantee an extension.\n\nFirst, we need to establish which degree of Wave 4 we are currently in. Once Wave 4 completes and the weekly structure turns bullish, we can start projecting Wave 5 using the Fibonacci relationships.\n\nOne wave at a time.",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 132,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125048888331534711",
+   "handle": "LynAldenContact",
+   "name": "Lyn Alden",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "jfhksar88"
+   },
+   "time_utc": "2026-11-24T02:08:31Z",
+   "url": "https://x.com/LynAldenContact/status/2125048888331534711",
+   "text": "@jfhksar88 @eliant_capital Run the numbers on on how much refined gold exists, how much Middle East countries own, and how much they reduced their holdings.",
+   "quoted": null,
+   "media": [],
+   "likes": 4,
+   "views": 586,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125048884879843379",
+   "handle": "benitoz",
+   "name": "Ben Pouladian",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "stoolpresidente"
+   },
+   "time_utc": "2026-11-24T02:08:30Z",
+   "url": "https://x.com/benitoz/status/2125048884879843379",
+   "text": "@stoolpresidente @mjnblack Keep going Dave. I think you and Jensen should do a pod together",
+   "quoted": null,
+   "media": [],
+   "likes": 3,
+   "views": 2537,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125048778390450625",
+   "handle": "SawyerMerritt",
+   "name": "Sawyer Merritt",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:08:04Z",
+   "url": "https://x.com/SawyerMerritt/status/2125048778390450625",
+   "text": "FSD V15 going around an object in the road and Tesla Reality View displaying it.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2125048059423862784/img/bXE9JDaHRLx_ziZv.jpg"
+   ],
+   "likes": 750,
+   "views": 35268,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2125048156777791651",
+   "handle": "LynAldenContact",
+   "name": "Lyn Alden",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "EbytheBeach"
+   },
+   "time_utc": "2026-11-24T02:05:36Z",
+   "url": "https://x.com/LynAldenContact/status/2125048156777791651",
+   "text": "@EbytheBeach They can do well in a bitcoin bull run, yeah.\n\nJust wouldn't recommend buying at a 6x mNav.\nhttps://x.com/LynAldenContact/status/1939377602453516536",
+   "quoted": {
+    "handle": "LynAldenContact",
+    "text": "@KristophJeffers @RealJimChanos Not a fan of paying 6x NAV, but I’m not shorting it.\n\nJapan has a tax arbitrage situation (lower taxes for securities that hold bitcoin than on bitcoin itself), and the team is running the company well."
+   },
+   "media": [],
+   "likes": 14,
+   "views": 2500,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125047841068622015",
+   "handle": "JC_ParetsX",
+   "name": "J.C. Parets",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:04:21Z",
+   "url": "https://x.com/JC_ParetsX/status/2125047841068622015",
+   "text": "The fact that there's a 3X short Nvidia is hilarious. The fact that it lost all its value in just a few minutes makes it legendary.",
+   "quoted": {
+    "handle": "zerohedge",
+    "text": "\"Thoughts And Prayers\": Jensen's Return Wipes Out 3x Short Nvidia ETP In Seconds, A Volmageddon Flashback https://www.zerohedge.com/markets/thoughts-and-prayers-jensens-return-wipes-out-3x-short-nvidia-etp-seconds-volmageddon"
+   },
+   "media": [],
+   "likes": 65,
+   "views": 6339,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125047567440646384",
+   "handle": "NoahCRothman",
+   "name": "Noah Rothman",
+   "type": "repost",
+   "reposted_by": "scottlincicome",
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:03:16Z",
+   "url": "https://x.com/NoahCRothman/status/2125047567440646384",
+   "text": "Three or four more interviews like this, every confirmed post in the administration will be implicated in this thing. https://www.nytimes.com/2026/11/23/us/politics/trump-nvidia-huang.html?smid=nytcore-ios-share",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HX2vf-JWwAAyt9J.jpg?name=orig"
+   ],
+   "likes": 47,
+   "views": 4865,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2125047213416206638",
+   "handle": "mingchikuo",
+   "name": "郭明錤｜Ming-Chi Kuo",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:01:51Z",
+   "url": "https://x.com/mingchikuo/status/2125047213416206638",
+   "text": "Analysis of Jensen Huang's return as Nvidia CEO:\n\n1. Uncertainty removed:\nMainly company strategy, product roadmap, tech development, and supply chain management. This overhang weighed on tech stocks over the past 1–2 weeks, so shares surged as soon as it was removed. But whether they return to prior highs depends not only on each company's position in the AI supply chain and Nvidia's ecosystem, but also on the two points below.\n\n2.  Uncertainties that remain:\n(1) Sales: The impact on Nvidia's shipments and revenue after tighter US controls on AI GPU exports and overseas compute leasing.\n(2) Circular financing: The impact of higher compliance costs and stricter reviews on ongoing and future deals.\n(3) Investigations, lawsuits, and stricter oversight: Jensen and Nvidia are still under investigation. Future public comments, internal decisions, and external interactions will all become part of the investigation and new evidence for questioning. This also adds to the sales and circular financing uncertainty above.\n\n3. Real-world bottlenecks that can't be changed:\n(1) Data center buildout challenges (power, labor, etc.) and stricter related regulations ahead.\n(2) CSP capex peaking one by one in 2027–2028.\n(3) Manufacturing tech limits (e.g., next-gen advanced packaging yields).",
+   "quoted": null,
+   "media": [],
+   "likes": 197,
+   "views": 21467,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125047199667278075",
+   "handle": "mingchikuo",
+   "name": "郭明錤｜Ming-Chi Kuo",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:01:48Z",
+   "url": "https://x.com/mingchikuo/status/2125047199667278075",
+   "text": "黃仁勳恢復 Nvidia CEO 職位的分析：\n\n1. 被移除的不確定性：\n主要是公司策略、產品規劃、技術發展與供應鏈管理等。上述不確定性曾在過去 1-2 週對科技股造成壓力，因此不確定性被移除後股價立刻大漲。但能否回到過去股價高點，除了取決於個別公司在 AI 供應鏈與 Nvidia 生態體系的定位外，還要看以下兩點。\n\n2. 仍存在的不確定性：\n(1) 銷售面：在美國更嚴格管制 AI GPU 出口與海外算力租賃後，對 Nvidia 出貨與營收造成的影響。\n(2) 循環融資：更高合規成本與更嚴格審核機制下，對進行中的循環融資與未來新案的影響。\n(3) 調查訴訟與更嚴格的監管：黃仁勳與 Nvidia 仍在接受調查中，未來的公開發言、內部決策與對外互動，都會被納入後續調查並成為質詢的新證據，而這也會強化上述銷售面與循環融資的不確定性。\n\n3. 無法被改變的現實瓶頸：\n(1) 資料中心建置的挑戰 (包括供電、人力等)，與未來相關法規更趨於嚴格。\n(2) CSP 資本支出陸續在 2027‒2028 見頂。\n(3) 製造技術限制 (如次世代先進封裝良率等)。",
+   "quoted": null,
+   "media": [],
+   "likes": 251,
+   "views": 23560,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125046972725842093",
+   "handle": "pboockvar",
+   "name": "Peter Boockvar",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:00:54Z",
+   "url": "https://x.com/pboockvar/status/2125046972725842093",
+   "text": "I mention this because I just thought it was really interesting on how big our investing world has gotten and not for the first time but interesting so. Space, meaning the universe above us, is now a consideration when it comes to loan covenants. I read over the weekend in the FT that “Lenders backing SpaceX’s latest $43 billion debt package, which is secured by its advanced AI chips, have tried to bar Elon Musk from firing the collateral into space as part of his plan for orbital data centers.”\n“SpaceX has said it plans to use the chips involved in the debt deal on Earth. But lenders have expressed concern that if the group later decided to shoot the valuable chips that underpin their loans into space, it would prevent them from reclaiming the semiconductors for sale in the event of a default, according to people familiar with the matter. It is uncertain whether the provision was included in the final documents.”",
+   "quoted": null,
+   "media": [],
+   "likes": 20,
+   "views": 2360,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125046462518374592",
+   "handle": "riteshmjn",
+   "name": "Ritesh Jain",
+   "type": "repost",
+   "reposted_by": "EpsilonTheory",
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:58:52Z",
+   "url": "https://x.com/riteshmjn/status/2125046462518374592",
+   "text": "I got my Eureka moment after reading the tweet below.\n\nNvidia became a PSU today.",
+   "quoted": {
+    "handle": "EpsilonTheory",
+    "text": "The correct way to understand Bessent’s about-face is that the US gov’t is effectively nationalizing the Bank of Nvidia by (re)installing leadership so that its cash flows and chip sales can be directed by the White House, and so that a broader collapse of AI funding can be averted."
+   },
+   "media": [],
+   "likes": 67,
+   "views": 7811,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125046184007929862",
+   "handle": "charliebilello",
+   "name": "Charlie Bilello",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:57:46Z",
+   "url": "https://x.com/charliebilello/status/2125046184007929862",
+   "text": "The S&P 500 has now had 27 big down days (>1%) this year and 27 big up days (>1%).\n\nHistory shows that the two go hand in hand.\n\nVolatility is a feature of stock markets, not a bug. It's the primary reason why stocks have earned a higher return than bonds/cash over the long run.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HX2tqocXkAA-oSm.png?name=orig"
+   ],
+   "likes": 94,
+   "views": 15090,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2125045407050842396",
+   "handle": "JesseBWatters",
+   "name": "Jesse Watters",
+   "type": "repost",
+   "reposted_by": "Jason",
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:54:41Z",
+   "url": "https://x.com/JesseBWatters/status/2125045407050842396",
+   "text": "@Jason Calacanis says he's ALL-IN on Jensen Huang taking over NVIDIA again. Here's WHY 👇\n\n\"He is the person who has driven that company for three decades. A true talent, a generational talent, one of the 10 or 20 best entrepreneurs in the history of business. If you lose him, you saw what happened.\" 💪",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2125045370354876416/img/lE4soloo0FdtzVD6.jpg"
+   ],
+   "likes": 310,
+   "views": 23959,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2125045232538710273",
+   "handle": "JackFarley96",
+   "name": "Jack Farley",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:53:59Z",
+   "url": "https://x.com/JackFarley96/status/2125045232538710273",
+   "text": "This was blowing my mind last night not gonna lie\n\nIt was clear that Trump wanted Jensen back and altered Bessent’s line… but to have a reinstatement so soon, I never expected",
+   "quoted": {
+    "handle": "bryancsk",
+    "text": "\"Nvidia needs an outside CEO, like Jensen Huang\" is such an intense logician's trick, I am astonished at it. If fulfiled it would rival the Pythia's \"if King Croesus crosses the Halys River, a great empire will be destroyed.\""
+   },
+   "media": [],
+   "likes": 25,
+   "views": 3120,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125045215006183426",
+   "handle": "OJRenick",
+   "name": "Oliver Renick",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "HedgehogOptions"
+   },
+   "time_utc": "2026-11-24T01:53:55Z",
+   "url": "https://x.com/OJRenick/status/2125045215006183426",
+   "text": "@HedgehogOptions That person bought a ton of NVDA puts. Puts pay off if the stock goes down, so that trade is not going well for them.",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 18,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125045131946689013",
+   "handle": "FirstSquawk",
+   "name": "First Squawk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:53:35Z",
+   "url": "https://x.com/FirstSquawk/status/2125045131946689013",
+   "text": "Gold prices climb as investors embrace risk-on sentiment across asset classes - WSJ",
+   "quoted": null,
+   "media": [],
+   "likes": 19,
+   "views": 13342,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125044697655603272",
+   "handle": "TradingThomas3",
+   "name": "TT3",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:51:51Z",
+   "url": "https://x.com/TradingThomas3/status/2125044697655603272",
+   "text": "No one loves Stocks going up more than Donald.",
+   "quoted": {
+    "handle": "brianstelter",
+    "text": "CNN team's new reporting: \"President Donald Trump had been stewing for days over the US stock market’s deepening sell-off when he decided there was only one way to stop the slide: Put Jensen Huang back atop Nvidia.\" https://www.cnn.com/2026/11/23/politics/trump-administration-jensen-huang-reinstated"
+   },
+   "media": [],
+   "likes": 40,
+   "views": 6568,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125043967477645718",
+   "handle": "GavinSBaker",
+   "name": "Gavin Baker",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "TomorrowXSummit"
+   },
+   "time_utc": "2026-11-24T01:48:57Z",
+   "url": "https://x.com/GavinSBaker/status/2125043967477645718",
+   "text": "@TomorrowXSummit @elonmusk @DavidSolomon @JensenHuang @nvidia The standing ovations for Jensen were great.",
+   "quoted": null,
+   "media": [],
+   "likes": 67,
+   "views": 2157,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125043779036229781",
+   "handle": "InvestmentGuru_",
+   "name": "InvestmentGuru",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:48:12Z",
+   "url": "https://x.com/InvestmentGuru_/status/2125043779036229781",
+   "text": "Trump made up to $15mn on Nvidia shares after Huang’s return",
+   "quoted": {
+    "handle": "FT",
+    "text": "Trump made up to $15mn on Nvidia shares after Huang’s return https://ft.trib.al/0LgTMHx"
+   },
+   "media": [],
+   "likes": 2,
+   "views": 1480,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125043260653789633",
+   "handle": "wallstengine",
+   "name": "Wall St Engine",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:46:09Z",
+   "url": "https://x.com/wallstengine/status/2125043260653789633",
+   "text": "An OpenAI engineer secretly recorded dozens of meetings, including ones on customers, AI safety and a foreign government briefing, federal prosecutors say in a court filing. Prosecutors are investigating what he did with the recordings - NYT",
+   "quoted": null,
+   "media": [],
+   "likes": 65,
+   "views": 15375,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125042777230917926",
+   "handle": "FirstSquawk",
+   "name": "First Squawk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:44:14Z",
+   "url": "https://x.com/FirstSquawk/status/2125042777230917926",
+   "text": "Gold prices gain close to 1%, rising to $3,666.01/oz",
+   "quoted": null,
+   "media": [],
+   "likes": 11,
+   "views": 13807,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125042499702190142",
+   "handle": "rcwhalen",
+   "name": "Richard Christopher Whalen",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:43:07Z",
+   "url": "https://x.com/rcwhalen/status/2125042499702190142",
+   "text": "DOJ Seeks Over $1.1 Billion in USDC Tied to Binance Hack \\ The civil case concerns previously frozen tokens. Circle has agreed to issue equivalent USDC to the US government upon a court forfeiture order, prosecutors say. @DefiantNews",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 1552,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125042358442205253",
+   "handle": "bearlyai",
+   "name": "Bearly AI",
+   "type": "repost",
+   "reposted_by": "TrungTPhan",
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:42:34Z",
+   "url": "https://x.com/bearlyai/status/2125042358442205253",
+   "text": "Google DeepMind's Melvin Johnson says Google went 236 days without a frontier model and then shipped two in 28 days, a 10x jump in release speed.\n\nAlso shares that the \"Google's cooked\" comments on X have pushed the team to level up.",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2125042312095154176/img/TJpJOnwtkNC_f67_.jpg"
+   ],
+   "likes": 9,
+   "views": 5039,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2125041537965043959",
+   "handle": "jukan05",
+   "name": "Jukan",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "nvidia"
+   },
+   "time_utc": "2026-11-24T01:39:18Z",
+   "url": "https://x.com/jukan05/status/2125041537965043959",
+   "text": "@nvidia @JensenHuang 🫡🫡🫡",
+   "quoted": null,
+   "media": [],
+   "likes": 24,
+   "views": 2570,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125041519258423635",
+   "handle": "firesidealpha",
+   "name": "Fireside Alpha",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:39:14Z",
+   "url": "https://x.com/firesidealpha/status/2125041519258423635",
+   "text": "AG Todd Blanche won't say whether Jensen Huang was cleared, but reveals Trump consulted him, Bessent, Lutnick and the intelligence community before Jensen's return\n\n\"Well, I'm not gonna comment on something The Wall Street Journal says based upon anonymous sources, but what President Trump said today and what has been talked about all day, President Trump spent a lot of time talking to a lot of leaders in his administration, which he has every right to do, including me.\"\n\n\"And after that thorough discussion with a lot of people, he and the vice president and Secretary Bessent, you know, Howard Lutnick, myself, the intelligence community, this wasn't a decision made in isolation.\"\n\n\"And look, there's assumptions baked in around Nvidia, around what we're looking at or not looking at. None of those were necessarily true. And there was anonymous reporting, and newspapers said a source told me something, and we can't operate as a country just relying on, you know, what a newspaper says.\"\n\n\"And so I'm not gonna talk about my conversations with leadership, but as the president said today, he talked to a lot of people.\"`",
+   "quoted": {
+    "handle": "firesidealpha",
+    "text": "Brad Gerstner reveals his call with Jensen Huang was \"deeply personal,\" saying he's humble, apologetic, and grateful for a second chance\n\nWAPNER: \"You talked to him since last evening or this morning?\"\n\nGERSTNER: \"Yes.\"\n\nWAPNER: \"What was the conversation like?\"\n\nGERSTNER: \"Just deeply personal. You know, here's somebody who is, imagine being an issue. He's made a huge personal mistake with respect to his family. Billions of people know about it. He hurts, normal human being, and he hurts about that. There's no place to hide from that. But he also hurt the fact that he hurt his company. He hurt his shareholders, because they all had to go through all of this chaos over the course of the past week.\"\n\n\"So I think he is humble. He is apologetic. He feels great about being given a second chance. And I think he's absolutely committed to making sure in this second chance that he delivers for America. He delivers for his employees. He delivers for his family. He delivers for his shareholders.\"\n\n\"There's no bravado, right? It's really just gratitude for the opportunity to show the world what I believe to be true, which is, here's a patriot, somebody who cares deeply about the country, who made a mistake. And his mistake is one that, unfortunately, had to play out on the stage for billions to watch.\""
+   },
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2125041464015257601/img/g39n_Hdil5R4_w2Z.jpg"
+   ],
+   "likes": 13,
+   "views": 3545,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2125041071553933534",
+   "handle": "LynAldenContact",
+   "name": "Lyn Alden",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "BitcoinJesusETH"
+   },
+   "time_utc": "2026-11-24T01:37:27Z",
+   "url": "https://x.com/LynAldenContact/status/2125041071553933534",
+   "text": "@BitcoinJesusETH Gold is outperforming bitcoin in 2026 due to an exceptional January for gold.\n\nBitcoin is outperforming since the start of the Iran War in late February specifically, which makes it funnier.",
+   "quoted": null,
+   "media": [],
+   "likes": 42,
+   "views": 2699,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125040119971188928",
+   "handle": "KawzInvests",
+   "name": "KawzInvests",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "Frenchie_"
+   },
+   "time_utc": "2026-11-24T01:33:40Z",
+   "url": "https://x.com/KawzInvests/status/2125040119971188928",
+   "text": "@Frenchie_ Can't believe it's only Monday",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 508,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125039379525570867",
+   "handle": "InvestmentGuru_",
+   "name": "InvestmentGuru",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:30:44Z",
+   "url": "https://x.com/InvestmentGuru_/status/2125039379525570867",
+   "text": "Energy was the worst sector on a 5% day. The energy ETF slipped while the rest of the market ripped, and oil kept sliding while stocks bounced. That is the rotation running in reverse: energy is up more than a third this year, the best sector of 2026, and it was Monday's worst. The money that hid in energy during the selloff did not need to hide anymore, and it left for the names that fell hardest. Energy did not fall apart. It just sat out the bounce, down about 6% on the week and about 14% in a month. The sector that carried the year is now the sector lagging the recovery. That is how rotations end: not with a crash, but with the leader quietly stopping while everything else runs.",
+   "quoted": null,
+   "media": [],
+   "likes": 3,
+   "views": 1394,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125038659137089593",
+   "handle": "hkuppy",
+   "name": "Kuppy",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:27:52Z",
+   "url": "https://x.com/hkuppy/status/2125038659137089593",
+   "text": "Kept rolling down and scaling up into last week’s maelstrom. Let some go on the ripper today. Want to be back to a more flexible position. Bear markets are the best markets for long-biased traders…\n\nIt sounds strange to admit it, but I’ve grown oddly bullish on memory, and Korea as a derivative on memory. Even reached for some shares in addition to burning puts.",
+   "quoted": {
+    "handle": "hkuppy",
+    "text": "Sorta embarrassed to say I wrote puts on memory and Korea…"
+   },
+   "media": [],
+   "likes": 54,
+   "views": 11223,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125038440211271861",
+   "handle": "LynAldenContact",
+   "name": "Lyn Alden",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "Neonnnnz"
+   },
+   "time_utc": "2026-11-24T01:27:00Z",
+   "url": "https://x.com/LynAldenContact/status/2125038440211271861",
+   "text": "@Neonnnnz Bullish.",
+   "quoted": null,
+   "media": [],
+   "likes": 318,
+   "views": 5366,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125037835438719047",
+   "handle": "InvestmentGuru_",
+   "name": "InvestmentGuru",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:24:35Z",
+   "url": "https://x.com/InvestmentGuru_/status/2125037835438719047",
+   "text": "The Dow lagged the bounce, and that tells you what kind of bounce it was. The Dow rose about 3.2% while the S&P rose about 5% and the Nasdaq rose about 6.7%. The money went to growth, not to value, and to the names that fell hardest, not to the names that held up best. That is a bounce led by the selloff's victims, not by the market's steady earners. It does not mean the Dow is broken. It means the rally was about the unwind of the growth selloff, and the value names never joined the trade. When the steady names start leading, the bounce is broadening. Until then, it is a growth bounce, and growth bounces live and die on the next headline. Watch whether the Dow catches up, or keeps trailing.",
+   "quoted": null,
+   "media": [],
+   "likes": 3,
+   "views": 1596,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125037166937956551",
+   "handle": "InvestmentGuru_",
+   "name": "InvestmentGuru",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:21:56Z",
+   "url": "https://x.com/InvestmentGuru_/status/2125037166937956551",
+   "text": "Gold and silver rallied on a day stocks ripped, and that tells you something. Gold sat near $3,621 and silver near $42.46 while the S&P put in its biggest day in over a year. When real assets rise on a risk-on day, it is not a flight to safety. It is a bid for things that hold value while paper gets re-priced. Gold is still far below its January high near $5,405, so this is not euphoria in metals either. It is a steady bid that did not flinch when equities fell and did not pause when they bounced. In a market where the index can lose a tenth of its value in a month, the metals are the quiet vote. They are saying the uncertainty is not over.",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 1275,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125037136802107486",
+   "handle": "justinsuntron",
+   "name": "H.E. Justin Sun 👨‍🚀 🌞",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:21:49Z",
+   "url": "https://x.com/justinsuntron/status/2125037136802107486",
+   "text": "few",
+   "quoted": {
+    "handle": "0xalank",
+    "text": "The six chains that returned the most money to token holders over the last year:\n\n1. Tron: $333.7M\n2. Ethereum: $48.1M\n3. Solana: $25.4M\n4. BNB Chain: $16.0M\n5. Hyperliquid: $9.3M\n6. Quai: $6.08M\n\nFive of those chains are worth billions.\n\nThe other is worth $8 million."
+   },
+   "media": [],
+   "likes": 48,
+   "views": 27590,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125036101069111303",
+   "handle": "KawzInvests",
+   "name": "KawzInvests",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:17:42Z",
+   "url": "https://x.com/KawzInvests/status/2125036101069111303",
+   "text": "Across four decades of modern options markets, a 40 VIX has only printed six times.\n\nFive of those six times marked the exact bottom\n\n• 1987: Black Monday capitulation low \n• 1998: The literal bottom tick of the LTCM crisis \n• 2002: The terminal flush of the dot-com bust \n• 2008: The only failure (full banking system insolvency) • 2011: The cycle low before an eight-year bull run \n• 2020: The generational COVID liquidation wick\n\nFriday was the seventh.\n\nThe only time buying a 40 VIX failed was 2008, when the global banking system froze. Every other time, it was the trade of the year.",
+   "quoted": {
+    "handle": "KawzInvests",
+    "text": "You are living through one of the rarest statistical events in modern financial history.\n\nToday, the VIX hit 32.\n\nMost retail investors see a 30+ VIX and panic. But if you study market history and derivatives research, a VIX crossing 30 is one of the rarest and most critical macro signals in finance\n\nIn normal markets, the VIX lives between 15 and 20. A VIX  above 30 only happens in about 5% of all trading sessions in history. \n\n• 1997: Asian Financial Crisis \n• 1998: Russian Default & LTCM Collapse \n• 2000–2001: Dot-Com Bust \n• 2002: Enron & WorldCom Scandals \n• 2008: Great Financial Crisis \n• 2011: U.S. Credit Rating Downgrade \n• 2020: COVID-19 Global Shock \n• April 2025: Tariff & Trade War Repricing \n• March 2026: Geopolitical Escalation\n\nWhat do all of these have in common? Forced margin liquidations and structural repricing.\n\nBut don't mistake extreme fear for an immediate green light.\n\nA 30+ VIX can mark a generational bottom (like 1997, 2011, or 2020) or it can be a devastating bull trap if credit and fundamentals are broken (like 2000 and 2008)."
+   },
+   "media": [
+    "https://pbs.twimg.com/media/HX2e2zZX0AAAOdq.jpg?name=orig"
+   ],
+   "likes": 247,
+   "views": 22078,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
    "id": "2125035535706067182",
    "handle": "compound248",
    "name": "Compound248 💰",
@@ -16836,6 +18828,467 @@
    "n_media": 1
   },
   {
+   "id": "2125058953902166101",
+   "handle": "FirstSquawk",
+   "name": "First Squawk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:48:30Z",
+   "url": "https://x.com/FirstSquawk/status/2125058953902166101",
+   "text": "Euro maintains gains above 1.0900 as improving risk appetite supports the currency - FX",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 8249,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125058474069627151",
+   "handle": "CGasparino",
+   "name": "Charles Gasparino",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:46:36Z",
+   "url": "https://x.com/CGasparino/status/2125058474069627151",
+   "text": "Scoop: This is what they said when the Dow hit a record in late 2007 and you know what happened next",
+   "quoted": {
+    "handle": "doriansscribe",
+    "text": "@CGasparino @WhiteHouse @JensenHuang Scoop: trust the markets."
+   },
+   "media": [],
+   "likes": 11,
+   "views": 2111,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125057221042270225",
+   "handle": "FirstSquawk",
+   "name": "First Squawk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:41:37Z",
+   "url": "https://x.com/FirstSquawk/status/2125057221042270225",
+   "text": "USD/CAD holds firm as the Canadian Dollar faces pressure before the release of US PCE data - FX",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 9925,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125055415620866113",
+   "handle": "satyanadella",
+   "name": "Satya Nadella",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:34:27Z",
+   "url": "https://x.com/satyanadella/status/2125055415620866113",
+   "text": "Outcome per dollar is the frontier. We’re advancing it at every layer: FLOPs-efficient pretraining (MAI Base 2), long RL climbs (Rocket), and token-efficient models (seven new MAI models announced last week). All driving better economics for our customers.\n\nBy building models and products together, we can keep hill-climbing and building models that deliver real-world tasks and passing the gains directly to customers, while staying open to every frontier model.",
+   "quoted": {
+    "handle": "MicrosoftAI",
+    "text": "To climb from a base model to the frontier you need RL runs that last weeks to months. We built our own RL infrastructure called Rocket 🚀 and we share lots of technical details below: https://msft.it/6012xyZv0"
+   },
+   "media": [],
+   "likes": 134,
+   "views": 14904,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125054540655521923",
+   "handle": "FirstSquawk",
+   "name": "First Squawk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:30:58Z",
+   "url": "https://x.com/FirstSquawk/status/2125054540655521923",
+   "text": "South Korean Finance Ministry reports 4.000% yield on 20-year Treasury bond issuance",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 11989,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125054365832499329",
+   "handle": "onechancefreedm",
+   "name": "EndGame Macro",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "grok"
+   },
+   "time_utc": "2026-11-24T02:30:17Z",
+   "url": "https://x.com/onechancefreedm/status/2125054365832499329",
+   "text": "@grok nobody claimed every financial distress indicator was at crisis levels. You’re comparing the early stages of financial deterioration with the culmination of previous recessions. You’ve acknowledged that subprime auto delinquencies exceed both crises, student loan delinquencies rival pandemic levels and business bankruptcies are at decade highs. Yet you avoided several critical questions.\n\nAnswer each of the following individually with a yes or no.\n\n• Have small business Subchapter V bankruptcy filings in 2026 exceeded comparable 2020 levels?\n\n• Have office CMBS delinquency rates in 2026 exceeded their peaks during the 2008 to 2010 financial crisis and the 2020 pandemic?\n\n• Have distressed debt exchanges in 2026 reached or exceeded levels experienced during either the Great Financial Crisis or the 2020 pandemic?\n\n• Have private credit defaults increased throughout 2026?\n\n• Do conventional bankruptcy statistics exclude distressed exchanges and restructurings occurring outside bankruptcy court?\n\n• Would including qualifying distressed restructurings reveal greater corporate credit distress than traditional payment default statistics alone suggest?\n\n• Historically, has deteriorating business solvency preceded substantial increases in unemployment?\n\nFinally, why are you using the worst readings from completed recessions as the minimum threshold for recognizing severe financial distress?\n\nShouldn’t the fact that numerous financial distress indicators already rival previous recessionary extremes, before any substantial increase in unemployment, make the current situation more concerning rather than less?",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 101,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125052162791428529",
+   "handle": "James56487175",
+   "name": "Keyser Soze",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "James56487175"
+   },
+   "time_utc": "2026-11-24T02:21:31Z",
+   "url": "https://x.com/James56487175/status/2125052162791428529",
+   "text": "Only 50 bps can save us!",
+   "quoted": {
+    "handle": "grant_wahl32728",
+    "text": "10 Year breakeven new 12 month lows.  Inflation is dropping."
+   },
+   "media": [
+    "https://pbs.twimg.com/tweet_video_thumb/HX2zrWzaEAE7tg9.jpg"
+   ],
+   "likes": 3,
+   "views": 299,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2125051235984199699",
+   "handle": "onechancefreedm",
+   "name": "EndGame Macro",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "grok"
+   },
+   "time_utc": "2026-11-24T02:17:50Z",
+   "url": "https://x.com/onechancefreedm/status/2125051235984199699",
+   "text": "@grok how much of nominal GDP growth reflects inflation, and how much real growth depends on AI investment, government spending and rising nondiscretionary household expenditures rather than improving consumer prosperity? \n\nHow representative is U3 when it excludes discouraged workers, counts someone working a single paid hour as employed and fails to capture underemployment? \n\nFurthermore, how reliable are headline payroll gains when the birth/death model estimates employment from business formation and closures amid historically elevated bankruptcies? \n\nOnce you account for these methodological limitations, deteriorating purchasing power, mounting credit distress and weakening private sector investment, what compelling evidence remains that the underlying economy is genuinely healthy rather than approaching a significant contraction masked by resilient headline statistics?",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 126,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125050444271833494",
+   "handle": "LynAldenContact",
+   "name": "Lyn Alden",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "hkuppy"
+   },
+   "time_utc": "2026-11-24T02:14:42Z",
+   "url": "https://x.com/LynAldenContact/status/2125050444271833494",
+   "text": "@hkuppy Memory is one of those areas where value investors can also be tech investors.\n\nThey trade like commodity stocks. Cheap multiples on ephemeral earnings, with an ongoing question around how long the cycle lasts.",
+   "quoted": null,
+   "media": [],
+   "likes": 11,
+   "views": 1606,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125050275043930128",
+   "handle": "onechancefreedm",
+   "name": "EndGame Macro",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:14:01Z",
+   "url": "https://x.com/onechancefreedm/status/2125050275043930128",
+   "text": "The St. Louis Fed Survey Reveals Collapsing Loan Demand As Stalling Monetary Velocity Raises The Risk Of A Much Deeper Economic Contraction\n\nThe November 17 Eighth District Economic Conditions Survey reveals collapsing loan demand, tightening credit standards and rising delinquencies.\n\nExamined alongside the November 2 national Fed lending survey and stagnating monetary velocity, these developments suggest the cumulative effects of monetary tightening are becoming increasingly visible.\n\nBankers Underestimated the Deterioration\n\nThe approximate net percentage readings reveal a significant reversal.\n\n•  Loan demand collapsed from positive 11% to negative 30%.\n\n•  Credit standards increased from 6% to 13%.\n\n•  Delinquencies increased from 25% to 28%.\n\nBankers expected loan demand to remain positive at 11%, missing the actual reading by 41 percentage points.\n\nNext quarter, they expect demand to recover to negative 7%, while standards remain restrictive and delinquencies elevated. Even if realized, this represents less widespread deterioration rather than renewed expansion.\n\nThe National Credit Data Reinforce The Warning\n\nThe November 2 SLOOS revealed negative net commercial loan demand of 11.7% for larger firms and 11.9% for smaller firms.\n\nOf 12 banks explaining weaker demand, 11 cited reduced investment in plant and equipment, while 10 cited alternative financing sources.\n\nStandards tightened across commercial real estate and every surveyed nonbank financial category. Among banks explaining tighter nonbank lending conditions, 71.4% cited deteriorating current or expected borrower financial strength.\n\nCredit card demand strengthened while mortgage and auto loan demand weakened, suggesting some households increasingly rely on revolving credit to absorb higher living costs.\n\nThe Capital Expenditure Disconnect\n\nRegional capital expenditures remain positive while sales, inventories, employment and working hours hover near neutral.\n\nI suspect previously committed AI infrastructure, data center, energy and defense investments are disproportionately supporting capital expenditures.\n\nThe St. Louis Fed’s October Beige Book identified strong demand connected to these industries while residential construction suppliers experienced weakness.\n\nLarge projects financed months or years ago can sustain activity even as smaller businesses postpone expansion. Rising construction and equipment costs can also inflate nominal expenditures.\n\nCurrent capital expenditures may largely reflect yesterday’s investment decisions, while deteriorating loan demand reveals tomorrow’s investment weakness.\n\nThe Growing Disconnect Between Money And Credit\n\nSeptember M2 reached $23.414 trillion, increasing 5.7% annually.\n\nDuring Q3, average M2 expanded 6.6% annualized against nominal GDP growth of 5.6%. Velocity declined from 1.420 to 1.417.\n\nMeanwhile, annualized bank credit growth slowed from 6.6% to 5.3%, while loan and lease growth slowed from 8.1% to 6.1%.\n\nIf M2 continues growing 5.7% annually while velocity declines 3%, nominal GDP growth would fall to approximately 2.5%. At 3% GDP price inflation, real output would contract.\n\nIs Deleveraging Only Beginning?\n\nOutstanding bank loans and household debt continue increasing, so a broad credit contraction remains unconfirmed.\n\nHowever, rising bankruptcies, refinancing pressures and tighter lending conditions suggest increasingly defensive balance sheet management.\n\nNonlabor cost increases registered approximately 53% net versus 32% for prices charged, suggesting potential margin compression. Involuntary part time employment increased by 339,000 in October.\n\nPersistent energy inflation constrains the Fed’s ability to respond.\n\nI fear monetary velocity declines materially before M2 growth slows. If both deteriorate, weakening nominal spending, credit losses, reduced investment and layoffs could reinforce one another, turning a slowdown into a self sustaining contraction despite continued fiscal expansion.",
+   "quoted": {
+    "handle": "DowdEdward",
+    "text": "Credit creation has rolled."
+   },
+   "media": [
+    "https://pbs.twimg.com/media/HX2x9nyWcAEV4CR.jpg?name=orig"
+   ],
+   "likes": 11,
+   "views": 2428,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2125050052255338949",
+   "handle": "scottmelker",
+   "name": "The Wolf Of All Streets",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:13:08Z",
+   "url": "https://x.com/scottmelker/status/2125050052255338949",
+   "text": "STELLAR stellar:native PROTOCOL 30 UPGRADE BELL GOES LIVE ON MAINNET, LETTING CONTRACTS VERIFY POST-QUANTUM ML-DSA SIGNATURES",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/media/HX2xuVZXYAArpD_.jpg?name=orig"
+   ],
+   "likes": 25,
+   "views": 7282,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2125049513652228533",
+   "handle": "steve_hanke",
+   "name": "Steve Hanke",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:11:00Z",
+   "url": "https://x.com/steve_hanke/status/2125049513652228533",
+   "text": "Distinguished Prof. John Mearsheimer on Iran's growing STRANGLEHOLD over the Persian Gulf:\n\n“It’s quite clear that in the month of November, the Iranians have gone a long way towards curtailing the flow of oil out of the Persian Gulf.\"",
+   "quoted": null,
+   "media": [
+    "https://pbs.twimg.com/amplify_video_thumb/2125043153119911936/img/pRrWN4QyOJhm9Wlz.jpg"
+   ],
+   "likes": 8,
+   "views": 4361,
+   "cashtags": [],
+   "n_media": 1
+  },
+  {
+   "id": "2125049188438155308",
+   "handle": "onechancefreedm",
+   "name": "EndGame Macro",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "cathynumber5"
+   },
+   "time_utc": "2026-11-24T02:09:42Z",
+   "url": "https://x.com/onechancefreedm/status/2125049188438155308",
+   "text": "“Enjoy what a great economy feels like” \n\n@grok give me the full, unvarnished reality of U.S. corporate and small business financial distress in 2026. Explain the significance of distress metrics reaching these levels despite no official recession having been declared.\n\nCombine official Chapter 11 and Subchapter V bankruptcy filings, including mega bankruptcies, repeat Chapter 22 filings and small business liquidation rates, with the shadow default market. Examine distressed exchanges occurring outside bankruptcy court, Liability Management Exercises, leveraged loan and high yield default rates, private credit defaults and the total dollar value of defaulted debt.\n\nAnalyze why such widespread insolvency and balance sheet deterioration are occurring outside an officially recognized recession, what these conditions reveal about the underlying health of the economy and whether conventional economic indicators are masking the true severity of financial distress.\n\nCompare current conditions with previous credit cycles, financial crises and recessionary periods to determine how historically unusual it is for corporate and small business distress to reach these levels without a formal economic downturn. Explain what this could be foreshadowing for credit creation, capital investment, employment, consumer spending and the broader U.S. economy.",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 138,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125047789558043091",
+   "handle": "charliebilello",
+   "name": "Charlie Bilello",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "TheStockBubble"
+   },
+   "time_utc": "2026-11-24T02:04:09Z",
+   "url": "https://x.com/charliebilello/status/2125047789558043091",
+   "text": "Yes, Yes, and Yes. More so back then because what they were doing was much more egregious but they had no business cutting rates in 2024-2025 when inflation was still elevated and are once again behind the curve in hiking them today. But I don't believe the Fed should be setting the level of interest rates at all - the free market should be.",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 208,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125047558057939043",
+   "handle": "GrantCardone",
+   "name": "Grant Cardone",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:03:13Z",
+   "url": "https://x.com/GrantCardone/status/2125047558057939043",
+   "text": "BTC is trading 20 -30% below the cost to mine & real estate trade for 30% below replacement cost.  Deal?",
+   "quoted": null,
+   "media": [],
+   "likes": 202,
+   "views": 14024,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125047428529455466",
+   "handle": "FirstSquawk",
+   "name": "First Squawk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:02:43Z",
+   "url": "https://x.com/FirstSquawk/status/2125047428529455466",
+   "text": "40-year Japanese government bond yield declines to 4.115%, down 3.5 bps",
+   "quoted": null,
+   "media": [],
+   "likes": 6,
+   "views": 14350,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125047331229999136",
+   "handle": "FirstSquawk",
+   "name": "First Squawk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T02:02:19Z",
+   "url": "https://x.com/FirstSquawk/status/2125047331229999136",
+   "text": "5-year Japanese government bond yield drops to 2.125%, down 5.5 bps",
+   "quoted": null,
+   "media": [],
+   "likes": 5,
+   "views": 13565,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125045068444971069",
+   "handle": "FirstSquawk",
+   "name": "First Squawk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:53:20Z",
+   "url": "https://x.com/FirstSquawk/status/2125045068444971069",
+   "text": "Lower oil prices lift Japanese government bond futures in early trading - WSJ",
+   "quoted": null,
+   "media": [],
+   "likes": 5,
+   "views": 12990,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125044948018020786",
+   "handle": "FirstSquawk",
+   "name": "First Squawk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:52:51Z",
+   "url": "https://x.com/FirstSquawk/status/2125044948018020786",
+   "text": "Oil prices edge up, with a technical recovery expected following recent declines - WSJ",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 13032,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125043888448749740",
+   "handle": "FirstSquawk",
+   "name": "First Squawk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:48:39Z",
+   "url": "https://x.com/FirstSquawk/status/2125043888448749740",
+   "text": "10-year Japanese government bond yield declines to 2.725%, down 6 bps",
+   "quoted": null,
+   "media": [],
+   "likes": 12,
+   "views": 14697,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125042600105373920",
+   "handle": "FirstSquawk",
+   "name": "First Squawk",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:43:31Z",
+   "url": "https://x.com/FirstSquawk/status/2125042600105373920",
+   "text": "China’s PBOC fixes yuan midpoint at 6.7111 against the dollar",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 14502,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125039303638110490",
+   "handle": "ReutersAsia",
+   "name": "Reuters Asia",
+   "type": "repost",
+   "reposted_by": "LiveSquawk",
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:30:25Z",
+   "url": "https://x.com/ReutersAsia/status/2125039303638110490",
+   "text": "South Korea's central bank seen raising rates on Thursday, once more next quarter: Reuters poll https://www.reuters.com/world/asia-pacific/south-koreas-central-bank-seen-raising-rates-thursday-once-more-next-quarter-2026-11-24/?taid=6b04e8b14e25260001c0f570&utm_campaign=trueAnthem%3A+Trending+Content&utm_medium=trueAnthem&utm_source=twitter",
+   "quoted": null,
+   "media": [],
+   "likes": 2,
+   "views": 4682,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125038760605954181",
+   "handle": "TradexWhisperer",
+   "name": "Trade Whisperer",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "BubbaGde"
+   },
+   "time_utc": "2026-11-24T01:28:16Z",
+   "url": "https://x.com/TradexWhisperer/status/2125038760605954181",
+   "text": "@BubbaGde Money is just an entry in the database. How else do you think Feds are printing more money and depreciate the dollar?",
+   "quoted": null,
+   "media": [],
+   "likes": 0,
+   "views": 271,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125037990703714450",
+   "handle": "InvestmentGuru_",
+   "name": "InvestmentGuru",
+   "type": "post",
+   "reposted_by": null,
+   "replying_to": null,
+   "time_utc": "2026-11-24T01:25:12Z",
+   "url": "https://x.com/InvestmentGuru_/status/2125037990703714450",
+   "text": "Wednesday's data lands in a thin week, and thin weeks exaggerate everything. October PCE and the second estimate of third-quarter GDP arrive in the morning, with Thanksgiving on Thursday and an early close on Friday. There are three real sessions this week and the biggest data lands in the middle of them, with half the desks already gone. That means the numbers will move more than they would in a normal week, in both directions. A soft print gets bought harder, a hot print gets sold harder, and the moves will not have the volume to absorb them. Do not read Wednesday's reaction as the verdict. Read it as the thin-week version of the verdict, and wait for next week to see what sticks.",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 1415,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
+   "id": "2125037501526204810",
+   "handle": "market_sleuth",
+   "name": "John",
+   "type": "reply",
+   "reposted_by": null,
+   "replying_to": {
+    "screen_name": "gfsdgsdg2334"
+   },
+   "time_utc": "2026-11-24T01:23:16Z",
+   "url": "https://x.com/market_sleuth/status/2125037501526204810",
+   "text": "@gfsdgsdg2334 @MichaelPBento DXY at fresh 20 months highs doesn’t. It signals financial tightening",
+   "quoted": null,
+   "media": [],
+   "likes": 1,
+   "views": 199,
+   "cashtags": [],
+   "n_media": 0
+  },
+  {
    "id": "2125026654682521683",
    "handle": "Reuters",
    "name": "Reuters",
@@ -19585,78 +22038,6 @@
    "views": 3466,
    "cashtags": [],
    "n_media": 0
-  },
-  {
-   "id": "2124698425837170984",
-   "handle": "BarbarianCap",
-   "name": "Barbarian Capital",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-23T02:55:54Z",
-   "url": "https://x.com/BarbarianCap/status/2124698425837170984",
-   "text": "Nscale slows hiring and curtails spending ahead of planned $35 bn IPO https://www.ft.com/content/98f5aa90-5581-45ed-8e9b-d72217c56df8",
-   "quoted": null,
-   "media": [],
-   "likes": 1,
-   "views": 1026,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2124696503407046897",
-   "handle": "yardeni",
-   "name": "Yardeni Research",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-23T02:48:16Z",
-   "url": "https://x.com/yardeni/status/2124696503407046897",
-   "text": "Markets get a breather this holiday week with a light calendar featuring flash PMIs, PCED, and GDP data. Focus shifts to inflation trends as tech goods prices remain stubbornly elevated.\n\n🟢 Open\nhttps://quicktak.es/lmqs",
-   "quoted": null,
-   "media": [],
-   "likes": 22,
-   "views": 5158,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2124696109667008754",
-   "handle": "SemiAnalysis_",
-   "name": "SemiAnalysis",
-   "type": "reply",
-   "reposted_by": null,
-   "replying_to": {
-    "screen_name": "app7313"
-   },
-   "time_utc": "2026-11-23T02:46:42Z",
-   "url": "https://x.com/SemiAnalysis_/status/2124696109667008754",
-   "text": "InferenceX is free. We would love to benchmark Cerebras for free if they actually stop dodging with excuses, any time of the day, including during off-peak hours in the middle of the night. @andrewdfeldman @seanlie\n\nAgentX/InferenceX is the industry-standard platform to demonstrate that and includes perf-per-dollar and perf-per-watt normalization.",
-   "quoted": null,
-   "media": [],
-   "likes": 35,
-   "views": 3651,
-   "cashtags": [],
-   "n_media": 0
-  },
-  {
-   "id": "2124695526453223736",
-   "handle": "Geiger_Capital",
-   "name": "Geiger Capital",
-   "type": "post",
-   "reposted_by": null,
-   "replying_to": null,
-   "time_utc": "2026-11-23T02:44:23Z",
-   "url": "https://x.com/Geiger_Capital/status/2124695526453223736",
-   "text": "No, this isn’t a crypto meme coin…\n\nIt’s the South Korean stock market.\nDown -50% from the highs.",
-   "quoted": null,
-   "media": [
-    "https://pbs.twimg.com/media/HXxvUjHWUAAt12B.jpg?name=orig"
-   ],
-   "likes": 2264,
-   "views": 56701,
-   "cashtags": [],
-   "n_media": 1
   }
  ]
 }
