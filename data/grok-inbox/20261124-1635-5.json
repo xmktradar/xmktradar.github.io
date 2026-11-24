@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2124978412377010221": {
+      "en_summary": "Jensen's odds of returning to $NVDA on @Polymarket.",
+      "zh_summary": "Jensen 重返 $NVDA 的 @Polymarket 賠率。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124977739614875724": {
+      "en_summary": "$AMD registers 336.9M shares for potential resale, worth ~$152B at today's price. 160M shares for OpenAI from its Oct 2025 warrant, 160M shares for Meta from its Feb 2026 warrant. The rest go to sellers of Taalas and World Labs, which AMD acquired.",
+      "zh_summary": "$AMD 註冊 336.9M 股供潛在轉售，按今日價格價值約 $152B。160M 股給 OpenAI，來自其 2025 年 10 月認股權證，160M 股給 Meta，來自其 2026 年 2 月認股權證。其餘給 Taalas 和 World Labs 的賣方，AMD 已收購這些公司。",
+      "tickers": ["AMD", "META"],
+      "stance": "中性",
+      "stance_by_ticker": {"AMD": "中性", "META": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AMD": "註冊 336.9M 股，價值約 $152B，主要為 OpenAI 和 Meta 認股權證"}
+    },
+    "2124975857534145017": {
+      "en_summary": "$HPE beats on all metrics and raises on strong network and AI server demand. This company has no neocloud credit exposure either. So, it has been quite picky in its AI business and has focused on enterprise deals. A lot to like in these numbers. Records across the board.",
+      "zh_summary": "$HPE 在所有指標上超預期並因強勁的網絡和 AI 伺服器需求上調指引。這家公司也沒有 neocloud 信貸敞口。因此，它在 AI 業務上相當挑剔，專注於企業交易。這些數字有很多值得喜歡的地方。全面創紀錄。",
+      "tickers": ["HPE"],
+      "stance": "睇好",
+      "stance_by_ticker": {"HPE": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"HPE": "全面超預期並上調，專注企業 AI 交易，無 neocloud 敞口"}
+    },
+    "2124974864201048320": {
+      "en_summary": "$NVDA back to where it was right after Jensen was ousted (Nov 12).",
+      "zh_summary": "$NVDA 回到 Jensen 被趕下台後不久的位置（11 月 12 日）。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124974557832327607": {
+      "en_summary": "HEWLETT PACKARD ENTERPRISE $HPE Q4’26 EARNINGS HIGHLIGHTS. Revenue: $14.55B (Est. $14.47B) +50% YoY. Adj. EPS: $1.43 (Est. $1.28) +131% YoY. Gross Margin: 38.2% +180 bps YoY. Server: $8.8B +94.7% YoY. Networking: $3.1B +12.3% YoY. Raises FY27 Guide: Revenue $59.4B-$63.1B, Non-GAAP diluted net EPS $5.05-$5.35, Free Cash Flow at least $5.5B. Q1 FY27 Guide: Revenue $14.0B-$14.6B, EPS $1.30-$1.40. Free Cash Flow $1.9B flat YoY. Capital Return: Dividends and Repurchases $979M, additional $5B authorization. Comments: enter fiscal 2027 in position of strength with significantly higher outlook.",
+      "zh_summary": "HEWLETT PACKARD ENTERPRISE $HPE Q4’26 業績亮點。收入：$14.55B（預期 $14.47B）同比 +50%。調整後 EPS：$1.43（預期 $1.28）同比 +131%。毛利率：38.2% 同比 +180 個基點。伺服器：$8.8B 同比 +94.7%。網絡：$3.1B 同比 +12.3%。上調 FY27 指引：收入 $59.4B-$63.1B，非 GAAP 稀釋 EPS $5.05-$5.35，自由現金流至少 $5.5B。Q1 FY27 指引：收入 $14.0B-$14.6B，EPS $1.30-$1.40。自由現金流 $1.9B 同比持平。資本回報：股息和回購 $979M，額外 $5B 授權。評論：以強勢進入 2027 財年，前景大幅提高。",
+      "tickers": ["HPE"],
+      "stance": "睇好",
+      "stance_by_ticker": {"HPE": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"HPE": "全面超預期，上調 FY27 指引，伺服器收入大增"}
+    }
+  }
+}
