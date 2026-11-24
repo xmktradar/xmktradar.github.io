@@ -96,71 +96,213 @@ def by_move(row):
     return (0, -ret, str(row.get('ticker') or ''))
 
 
-def scorecard_html(t):
-    """Public settled week, sorted by price move. No current-week tickers."""
+def public_settled():
+    """Latest public settled week, plus this-week context for the scorecard."""
     data = dash()
     hist = data.get('cons_hist') or {}
+    out = {
+        'hist': hist,
+        'today': None,
+        'pub_start': None,
+        'pub_end': None,
+        'pub_rows': [],
+        'avg': None,
+        'spy_avg': None,
+        'hit': '—',
+        'current': [],
+        'start': None,
+        'end': None,
+        'bulls': 0,
+        'bears': 0,
+    }
     if not hist:
-        return f'<section class="wk"><p>{t["no_hist"]}</p></section>'
+        return out
     today = max(hist)
+    out['today'] = today
     eps = pay_moments.episodes(hist)
     start = pay_moments.monday(today)
     end = pay_moments.plus_days(start, 6)
     current = pay_moments.week_rows(eps, start, end)
-    bulls = sum(1 for row in current if row['side'] == 'bull')
-    bears = sum(1 for row in current if row['side'] == 'bear')
+    out['start'] = start
+    out['end'] = end
+    out['current'] = current
+    out['bulls'] = sum(1 for row in current if row['side'] == 'bull')
+    out['bears'] = sum(1 for row in current if row['side'] == 'bear')
     ft_path = os.path.join(ROOT, 'data', 'followthrough.json')
     ft = {}
     if os.path.isfile(ft_path):
         ft = json.load(open(ft_path, encoding='utf-8'))
     pub_start, pub_rows = pay_moments.public_score(ft, today)
-    parts = ['<section class="wk" id="settled">', sample_html(t)]
     if pub_start and pub_rows:
         pub_end = pay_moments.plus_days(pub_start, 6)
         xs = [row['xs'] for row in pub_rows if isinstance(row.get('xs'), (int, float))]
         spy_xs = [row['xs_spy'] for row in pub_rows if isinstance(row.get('xs_spy'), (int, float))]
-        directional = [row for row in pub_rows if row.get('side') in ('bull', 'bear') and isinstance(row.get('xs'), (int, float)) and isinstance(row.get('xs_spy'), (int, float))]
+        directional = [
+            row for row in pub_rows
+            if row.get('side') in ('bull', 'bear')
+            and isinstance(row.get('xs'), (int, float))
+            and isinstance(row.get('xs_spy'), (int, float))
+        ]
         hits = [row for row in directional if row['xs'] > 0 and row['xs_spy'] > 0]
-        avg = sum(xs) / len(xs) if xs else None
-        spy_avg = sum(spy_xs) / len(spy_xs) if spy_xs else None
-        hit = f'{round(100 * len(hits) / len(directional))}%' if directional else '—'
-        span = pay_moments.zh_span(pub_start, pub_end) if t['lang'] == 'zh' else f'{pub_start.month}/{pub_start.day}–{pub_end.month}/{pub_end.day}'
+        out['pub_start'] = pub_start
+        out['pub_end'] = pub_end
+        out['pub_rows'] = pub_rows
+        out['avg'] = sum(xs) / len(xs) if xs else None
+        out['spy_avg'] = sum(spy_xs) / len(spy_xs) if spy_xs else None
+        out['hit'] = f'{round(100 * len(hits) / len(directional))}%' if directional else '—'
+    return out
+
+
+def span_for(t, start, end):
+    if t['lang'] == 'zh':
+        return pay_moments.zh_span(start, end)
+    return f'{start.month}/{start.day}–{end.month}/{end.day}'
+
+
+def ticker_rows_html(t, pub_rows):
+    parts = ['<div>']
+    ordered = sorted(pub_rows, key=by_move)
+    for row in ordered:
+        ticker = str(row.get('ticker') or '')
+        if row.get('side') == 'bull':
+            side = f'<span class="wk-side wk-up">{t["bull"]}</span>'
+        elif row.get('side') == 'bear':
+            side = f'<span class="wk-side wk-dn">{t["bear"]}</span>'
+        else:
+            side = f'<span class="wk-side">{t["split"]}</span>'
+        bits = [f'{t["price"]} {pct(row.get("ret"))}']
+        xs_v = row.get('xs')
+        spy_v = row.get('xs_spy')
+        if ticker != 'QQQ':
+            bits.append(vs_html(t, t['vs_qqq'], xs_v))
+        if ticker != 'SPY':
+            bits.append(vs_html(t, t['vs_spy'], spy_v))
+        parts.append(
+            f'<div class="wk-row"><span class="wk-t">{ticker}</span>{side}'
+            f'<span class="wk-meta">{" · ".join(bits)}</span></div>'
+        )
+    parts.append('</div>')
+    return ''.join(parts), ordered
+
+
+def footnote_html(t):
+    note = t['summary_note']
+    href = '/zh/weekly/' if t['lang'] == 'zh' else '/en/weekly/'
+    if t['lang'] == 'zh':
+        note = note.replace('每週頁', f'<a href="{href}">每週頁</a>', 1)
+    else:
+        note = note.replace('weekly page', f'<a href="{href}">weekly page</a>', 1)
+    return f'<p class="wk-sum-note">{note}</p>'
+
+
+def summary_table_html(t, settled, *, homepage=False):
+    parts = ['<section class="wk-summary" id="settled-summary">', f'<h2>{t["summary_h"]}</h2>']
+    if settled['pub_start'] and settled['pub_rows']:
+        span = span_for(t, settled['pub_start'], settled['pub_end'])
+        n = len(settled['pub_rows'])
+        parts.append('<div class="wk-sum-wrap"><table class="wk-sum"><thead><tr>')
+        for col in ('summary_col_period', 'summary_col_n', 'summary_col_qqq', 'summary_col_spy', 'summary_col_both'):
+            parts.append(f'<th>{t[col]}</th>')
+        parts.append('</tr></thead><tbody><tr>')
+        parts.append(f'<td>{span}</td>')
+        parts.append(f'<td>{t["summary_n"].format(n=n)}</td>')
+        parts.append(f'<td>{t["summary_avg"].format(v=pct(settled["avg"]))}</td>')
+        parts.append(f'<td>{t["summary_avg"].format(v=pct(settled["spy_avg"]))}</td>')
+        parts.append(f'<td>{settled["hit"]}</td>')
+        parts.append('</tr></tbody></table></div>')
+        parts.append(footnote_html(t))
+        if homepage:
+            rows, _ = ticker_rows_html(t, settled['pub_rows'])
+            parts.append(rows)
+    else:
+        parts.append(f'<p>{t["no_settled"]}</p>')
+    parts.append('</section>')
+    return ''.join(parts)
+
+
+def settled_sample_html(t):
+    """Fixed settled sample restored from public Weekly digest #4 and #3.
+
+    Not the original email, not live current-week names, and not a holdings form.
+    """
+    if t['lang'] == 'zh':
+        body = (
+            '<h2>週報・潛力觀察（已結算樣本）</h2>'
+            '<p class="wk-sample-label">此為已結算樣本，不是當時電郵原文，不是投資建議。電郵不叫人買，也不叫人賣。</p>'
+            '<p>期間：2026年11月9日至15日</p>'
+            '<p>本週一句話：239 個帳號、1,743 則帖文，看好 701、看淡 330。</p>'
+            '<p>方向最齊：$AMD（共同看好，14 好 0 淡，63 次提及）</p>'
+            '<p>意見最分裂：$NVDA（16 好 36 淡，703 次提及）</p>'
+            '<p>跟上期（11月2日至8日）：帳號由 84 增至 239，帖文由 557 增至 1,743；共同看好由 $SPCX 改為 $AMD，共同看淡由 $ASTS 改為 $MSTR。兩期覆蓋帳號數不同，規模不要直接當同一口徑。</p>'
+            '<p>整體好淡有沒有跟上 QQQ 和 SPY：未核，不報勝率。</p>'
+            '<p>潛力觀察（當時新列入，現已滿十個交易日）：用來對照持倉，不是買入名單。納入條件是上一次共同看好其後十個交易日同時跑贏 QQQ 和 SPY，不是業績承諾。</p>'
+            '<ol>'
+            '<li>$AMZN 共同看好 股價 -4.3% · 相對 QQQ -0.2% 跑輸 · 相對 SPY -0.3% 跑輸</li>'
+            '<li>$ARM 共同看好 股價 -5.2% · 相對 QQQ -1.0% 跑輸 · 相對 SPY -1.1% 跑輸</li>'
+            '<li>$LITE 共同看好 股價 -8.7% · 相對 QQQ -4.5% 跑輸 · 相對 SPY -4.6% 跑輸</li>'
+            '<li>$AMD 共同看好 股價 -10.8% · 相對 QQQ -6.7% 跑輸 · 相對 SPY -6.8% 跑輸</li>'
+            '<li>$SHOP 共同看好 股價 -11.7% · 相對 QQQ -7.5% 跑輸 · 相對 SPY -7.6% 跑輸</li>'
+            '</ol>'
+            '<p>共 5 次列入。相對 QQQ 平均 -4.0%，相對 SPY 平均 -4.1%。當中 0% 同時跑贏兩個指數。</p>'
+        )
+    else:
+        body = (
+            '<h2>Weekly brief and names to watch (settled sample)</h2>'
+            '<p class="wk-sample-label">This is a settled sample, not the original email, and not investment advice. The email does not say buy or sell.</p>'
+            '<p>Period: 9–15 Nov 2026</p>'
+            '<p>The week in one line: 239 accounts, 1,743 posts, 701 bullish vs 330 bearish.</p>'
+            '<p>Most agreed: $AMD (jointly bullish, 14 bull / 0 bear, 63 mentions)</p>'
+            '<p>Most divided: $NVDA (16 bull / 36 bear, 703 mentions)</p>'
+            '<p>Change from last issue (2–8 Nov): Accounts 84 to 239, posts 557 to 1,743; lead jointly bullish name moved from $SPCX to $AMD, jointly bearish from $ASTS to $MSTR. Coverage is not the same size, so do not read the two issues as one consistent sample.</p>'
+            "<p>Whether the crowd's direction matched QQQ and SPY: not checked. No win rate.</p>"
+            '<p>Names to watch (newly listed then; ten session closes now in): For comparing with what you hold, not a buy list. Inclusion required that the previous joint bullish call beat both QQQ and SPY over the following ten sessions. That is a filter, not a performance promise.</p>'
+            '<ol>'
+            '<li>$AMZN jointly bullish Price -4.3% · vs QQQ -0.2% behind · vs SPY -0.3% behind</li>'
+            '<li>$ARM jointly bullish Price -5.2% · vs QQQ -1.0% behind · vs SPY -1.1% behind</li>'
+            '<li>$LITE jointly bullish Price -8.7% · vs QQQ -4.5% behind · vs SPY -4.6% behind</li>'
+            '<li>$AMD jointly bullish Price -10.8% · vs QQQ -6.7% behind · vs SPY -6.8% behind</li>'
+            '<li>$SHOP jointly bullish Price -11.7% · vs QQQ -7.5% behind · vs SPY -7.6% behind</li>'
+            '</ol>'
+            '<p>5 listings. Average versus QQQ -4.0%, average versus SPY -4.1%. 0% beat both indexes.</p>'
+        )
+    return '<section class="wk" id="settled-sample">' + body + '</section>'
+
+
+def scorecard_html(t, settled=None):
+    """Public settled week, sorted by price move. No current-week tickers."""
+    if settled is None:
+        settled = public_settled()
+    if not settled['hist']:
+        return f'<section class="wk"><p>{t["no_hist"]}</p></section>'
+    today = settled['today']
+    start = settled['start']
+    end = settled['end']
+    current = settled['current']
+    bulls = settled['bulls']
+    bears = settled['bears']
+    pub_start = settled['pub_start']
+    pub_rows = settled['pub_rows']
+    parts = ['<section class="wk" id="settled">', sample_html(t)]
+    ordered = []
+    if pub_start and pub_rows:
+        span = span_for(t, pub_start, settled['pub_end'])
         parts.append(f'<h2>{t["settled_h"]} · {span}</h2>')
         parts.append(
-            f'<p>{t["settled_p"].format(n=len(pub_rows), avg=pct(avg), spy=pct(spy_avg), hit=hit)}</p>'
+            f'<p>{t["settled_p"].format(n=len(pub_rows), avg=pct(settled["avg"]), spy=pct(settled["spy_avg"]), hit=settled["hit"])}</p>'
         )
-        parts.append('<div>')
-        ordered = sorted(pub_rows, key=by_move)
-        for row in ordered:
-            ticker = str(row.get('ticker') or '')
-            if row.get('side') == 'bull':
-                side = f'<span class="wk-side wk-up">{t["bull"]}</span>'
-            elif row.get('side') == 'bear':
-                side = f'<span class="wk-side wk-dn">{t["bear"]}</span>'
-            else:
-                side = f'<span class="wk-side">{t["split"]}</span>'
-            bits = [f'{t["price"]} {pct(row.get("ret"))}']
-            xs_v = row.get('xs')
-            spy_v = row.get('xs_spy')
-            if ticker != 'QQQ':
-                bits.append(vs_html(t, t['vs_qqq'], xs_v))
-            if ticker != 'SPY':
-                bits.append(vs_html(t, t['vs_spy'], spy_v))
-            parts.append(
-                f'<div class="wk-row"><span class="wk-t">{ticker}</span>{side}'
-                f'<span class="wk-meta">{" · ".join(bits)}</span></div>'
-            )
-        parts.append('</div>')
+        rows, ordered = ticker_rows_html(t, pub_rows)
+        parts.append(rows)
     else:
         parts.append(f'<h2>{t["settled_h"]}</h2><p>{t["no_settled"]}</p>')
     parts.append('</section>')
+    parts.append(settled_sample_html(t))
     parts.append('<section class="wk" id="this-week">')
-    span = pay_moments.zh_span(start, end) if t['lang'] == 'zh' else f'{start.month}/{start.day}–{end.month}/{end.day}'
+    span = span_for(t, start, end)
     parts.append(f'<h2>{t["week_h"]} · {span}</h2>')
     mentions, posts_by_day = pay_moments.load_mentions()
     focus = pay_moments.focus_rows(current, mentions, posts_by_day)
     shown = today
-    if t['lang'] == 'zh' and len(str(today)) >= 10:
+    if t['lang'] == 'zh' and today and len(str(today)) >= 10:
         shown = f'{int(str(today)[5:7])}月{int(str(today)[8:10])}日'
     parts.append(t['week_p'].format(today=shown, bulls=bulls, bears=bears, focus=len(focus)))
     parts.append('</section>')
@@ -169,11 +311,19 @@ def scorecard_html(t):
     public.add('QQQ')
     public.add('SPY')
     leaked = sorted({row['t'] for row in current if row['t'] not in public})
+    # The settled sample may legally name historical tickers that also appear
+    # in the current unpublished week. Scan the rest of the page only.
+    scan = re.sub(
+        r'<section\b[^>]*\bid="settled-sample"[^>]*>.*?</section>',
+        '',
+        html,
+        flags=re.S,
+    )
     for ticker in leaked:
         # Lower case counts as part of a word. Otherwise ticker P matches PingFang, Plex and Pro, and the whole site update stops before prices are published.
         if len(ticker) < 2:
             continue
-        if re.search(r'(?<![A-Za-z0-9])' + re.escape(ticker) + r'(?![A-Za-z0-9])', html):
+        if re.search(r'(?<![A-Za-z0-9])' + re.escape(ticker) + r'(?![A-Za-z0-9])', scan):
             raise SystemExit('weekly page leaked a current-week name: ' + ticker)
 
     rets = [row.get('ret') for row in ordered] if pub_start and pub_rows else []
@@ -181,6 +331,34 @@ def scorecard_html(t):
     if nums != sorted(nums, reverse=True):
         raise SystemExit('settled rows are not sorted from biggest gain to biggest drop')
     return html
+
+
+HOME_MARK_START = '<!-- settled-home -->'
+HOME_MARK_END = '<!-- /settled-home -->'
+
+
+def fill_home_region(path, inner):
+    html = open(path, encoding='utf-8').read()
+    start = html.find(HOME_MARK_START)
+    end = html.find(HOME_MARK_END)
+    if start < 0 or end < 0 or end < start:
+        raise SystemExit(path + ' is missing settled-home markers')
+    new = html[:start] + HOME_MARK_START + '\n' + inner + '\n' + html[end:]
+    if new != html:
+        open(path, 'w', encoding='utf-8').write(new)
+        print(path)
+
+
+def inject_homepage_tables(settled):
+    """Fill generated language homepages only.
+
+    The Chinese master keeps empty markers so build_langs + test_no_cjk do not
+    need short i18n keys that would collide with dash-data or Follow-through
+    copy (期間, 相對 QQQ, 跑贏).
+    """
+    fill_home_region(os.path.join(ROOT, 'zh/index.html'), summary_table_html(ZH, settled, homepage=True))
+    fill_home_region(os.path.join(ROOT, 'en/index.html'), summary_table_html(EN, settled, homepage=True))
+
 
 
 ZH = {
@@ -191,7 +369,7 @@ ZH = {
     'nav_label': '網站', 'lang_label': '語言', 'nav_tools': '工具', 'nav_support': '支持我們', 'nav_news': '電子報', 'aff_tag': '推廣',
     'h1': '週報・潛力觀察',
     'checkout_ok': '訂閱已完成。下星期一早上開始收到週報，以及最多八隻潛力觀察。',
-    'lead': '今日共識名單免費。星期一電郵是一封週報，另加最多八隻做多的名字：上週才新列入看好，上一次看好之後，十個交易日跑贏 QQQ，也跑贏 SPY。名稱只寫在電郵。',
+    'lead': '今日共識名單免費。星期一電郵另寫簡報，同最多八隻觀察名單。納入條件係：上一次共同看好，其後十個交易日同時跑贏 QQQ 同 SPY。呢個係篩選規則，唔係業績承諾。名稱只寫在電郵。',
     'get_h': '訂閱後，每星期一你會收到',
     'get1': '你自己的持倉，最多八隻，對照這一期群眾怎麼講。沒有填的話，週報仍會寄出，只是沒有那封持倉對照。',
     'get2': '最多八隻做多的名字：上週新列入的共同看好，而且上一次看好之後，十個交易日跑贏 QQQ，也跑贏 SPY。用來對照你的持倉，不是買入名單。',
@@ -218,6 +396,16 @@ ZH = {
     'sample_meta': '上一次做多，十個交易日跑贏 QQQ 和 SPY。這一期新列入。',
     'no_hist': '共識紀錄暫時讀不到。',
     'settled_h': '已結算成績',
+    'summary_h': '已結算成績（目前只有一週公開）',
+    'summary_col_period': '期間',
+    'summary_col_n': '列入次數',
+    'summary_col_qqq': '相對 QQQ',
+    'summary_col_spy': '相對 SPY',
+    'summary_col_both': '同時跑贏兩個指數',
+    'summary_n': '{n} 次',
+    'summary_avg': '平均 {v}',
+    'summary_note': '列入唔等於下次會再升。完整規則同細則見每週頁。',
+    'sample_label': '此為已結算樣本，不是當時電郵原文，不是投資建議。電郵不叫人買，也不叫人賣。',
     'settled_p': '以下是最近一個已滿十個交易日的星期，共 {n} 次列入。相對 QQQ 平均 {avg}，相對 SPY 平均 {spy}。當中 {hit} 同時跑贏兩個指數。次序由股價升幅最高排到跌幅最多。看淡若顯示跑贏，是指那次看淡之後股價弱過指數，不是股價上升。不是投資建議。',
     'bull': '共同看好', 'bear': '共同看淡', 'split': '分歧',
     'price': '股價', 'vs_qqq': '相對 QQQ', 'vs_spy': '相對 SPY', 'beat': '跑贏', 'miss': '跑輸', 'flat': '持平', 'unchecked': '未核',
@@ -236,7 +424,7 @@ EN = {
     'nav_label': 'Site', 'lang_label': 'Language', 'nav_tools': 'Tools', 'nav_support': 'Support', 'nav_news': 'Newsletter', 'aff_tag': 'Affiliate',
     'h1': 'Weekly brief and names to watch',
     'checkout_ok': 'You are subscribed. From next Monday morning you get the brief, plus at most eight names to watch.',
-    'lead': 'Today\'s consensus list is free. Monday\'s email is a written brief plus at most eight bullish names: newly listed as bullish last week, after the previous bullish call beat QQQ and also beat SPY over ten sessions. Tickers are only in the email.',
+    'lead': 'Today\'s consensus list is free. Monday\'s email is a written brief plus at most eight names to watch. A name is included only if the last joint bullish call beat both QQQ and SPY over the following ten sessions. That is an inclusion filter, not a performance promise. Tickers are only in the email.',
     'get_h': 'What you get every Monday',
     'get1': 'Your own holdings, up to eight, set against what the crowd said that week. If you leave them blank, the brief still goes out. You just do not get the separate holdings note.',
     'get2': 'Up to eight bullish names: newly listed as jointly bullish last week, and the previous bullish call beat QQQ and also beat SPY over ten sessions. For comparing with what you hold, not a buy list.',
@@ -263,6 +451,16 @@ EN = {
     'sample_meta': 'The last bullish call beat QQQ and SPY over ten sessions. Newly listed this issue.',
     'no_hist': 'The consensus record is not available.',
     'settled_h': 'Settled results',
+    'summary_h': 'Settled results (only one week is public so far)',
+    'summary_col_period': 'Period',
+    'summary_col_n': 'Listings',
+    'summary_col_qqq': 'vs QQQ',
+    'summary_col_spy': 'vs SPY',
+    'summary_col_both': 'Beat both indexes',
+    'summary_n': '{n}',
+    'summary_avg': 'average {v}',
+    'summary_note': 'A listing does not mean it will rise next time. Full rules and details are on the weekly page.',
+    'sample_label': 'This is a settled sample, not the original email, and not investment advice. The email does not say buy or sell.',
     'settled_p': 'This is the latest week that already has ten session closes: {n} listings. Average versus QQQ {avg}, average versus SPY {spy}. {hit} beat both indexes. Ordered from the biggest price gain to the biggest drop. If a bearish name shows as ahead, the stock lagged the index after that bearish call. It does not mean the stock rose. Not investment advice.',
     'bull': 'Jointly bullish', 'bear': 'Jointly bearish', 'split': 'Split',
     'price': 'Price', 'vs_qqq': 'vs QQQ', 'vs_spy': 'vs SPY', 'beat': 'ahead', 'miss': 'behind', 'flat': 'flat', 'unchecked': 'not checked',
@@ -273,7 +471,7 @@ EN = {
 }
 
 
-def page(template, text, accounts, scorecard):
+def page(template, text, accounts, scorecard, summary_table=''):
     html = template
     for key, value in text.items():
         if key in ('lang',):
@@ -282,6 +480,7 @@ def page(template, text, accounts, scorecard):
     html = html.replace('{{lang}}', text['html_lang'])
     html = html.replace('{{accounts}}', str(accounts))
     html = html.replace('{{scorecard}}', scorecard)
+    html = html.replace('{{summary_table}}', summary_table)
     return html
 
 
@@ -394,6 +593,26 @@ def check(html, root_html, en_html, accounts):
         raise SystemExit('one subscription must include the brief')
     if '<a class="btn"' in html.split('id="settled"')[-1].split('id="this-week"')[0]:
         raise SystemExit('do not put the subscribe button inside a stock row')
+    if '今日共識名單免費' not in html or "Today's consensus list is free" not in en_html:
+        raise SystemExit('weekly lead must use the approved hero copy')
+    if '唔係業績承諾' not in html or 'not a performance promise' not in en_html:
+        raise SystemExit('weekly lead must say the rule is not a performance promise')
+    if '已結算成績（目前只有一週公開）' not in html or 'Settled results (only one week is public so far)' not in en_html:
+        raise SystemExit('weekly page missing settled summary title')
+    if '列入唔等於下次會再升' not in html or 'does not mean it will rise next time' not in en_html:
+        raise SystemExit('weekly page missing settled summary footnote')
+    if '週報・潛力觀察（已結算樣本）' not in html or 'Weekly brief and names to watch (settled sample)' not in en_html:
+        raise SystemExit('weekly page missing settled sample')
+    if '不是當時電郵原文' not in html or 'not the original email' not in en_html:
+        raise SystemExit('settled sample must be labeled as not the original email')
+    if '未核，不報勝率' not in html or 'not checked. No win rate' not in en_html:
+        raise SystemExit('settled sample must say crowd vs QQQ/SPY was not checked')
+    if html.find('class="wk-summary"') < html.find('class="lead-cta"'):
+        raise SystemExit('settled summary must sit under the subscribe button')
+    if html.find('id="book-mail"') < html.find('class="wk-summary"'):
+        raise SystemExit('settled summary must sit above the holdings form')
+    if html.count('$____') != 8 or en_html.count('$____') != 8:
+        raise SystemExit('weekly page must keep eight redacted name slots')
     if REDIRECT not in root_html:
         raise SystemExit('root weekly redirect missing')
 
@@ -402,13 +621,15 @@ def main():
     os.chdir(ROOT)
     accounts = account_count()
     template = open(os.path.join(ROOT, 'tools', 'weekly.html'), encoding='utf-8').read()
-    zh = page(template, ZH, accounts, scorecard_html(ZH))
-    en = page(template, EN, accounts, scorecard_html(EN))
+    settled = public_settled()
+    zh = page(template, ZH, accounts, scorecard_html(ZH, settled), summary_table_html(ZH, settled))
+    en = page(template, EN, accounts, scorecard_html(EN, settled), summary_table_html(EN, settled))
     root_html = with_zh_redirect(zh)
     check(zh, root_html, en, accounts)
     write('zh/weekly/index.html', zh)
     write('en/weekly/index.html', en)
     write('weekly/index.html', root_html)
+    inject_homepage_tables(settled)
     sitemap()
     print('accounts', accounts)
 

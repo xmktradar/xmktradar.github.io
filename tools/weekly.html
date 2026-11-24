@@ -54,6 +54,15 @@ h2{font-family:var(--f-display);font-size:20px;line-height:1.35;margin:26px 0 8p
 p,li{overflow-wrap:anywhere}
 .lead{margin:0 0 14px}
 .lead-cta{margin:0 0 18px}
+.wk-summary{margin:0 0 18px}
+.wk-summary h2{margin:0 0 10px;font-size:18px}
+.wk-sum-wrap{overflow-x:auto}
+.wk-sum{width:100%;border-collapse:collapse;font-size:14px}
+.wk-sum th,.wk-sum td{border-top:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.wk-sum th{font-weight:600;color:var(--mut);font-size:12.5px}
+.wk-sum-note{margin:10px 0 0;color:var(--mut)}
+#settled-sample{margin:0 0 18px}
+#settled-sample .wk-sample-label{color:var(--mut)}
 .wk-get{margin:0 0 16px;padding:14px 16px 8px;border-radius:16px;background:var(--surface)}
 .wk-get h2{margin:0 0 8px;font-size:18px}
 .wk-get ul{margin:0}
@@ -128,6 +137,7 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
     </ul>
   </section>
   <p class="lead-cta"><a class="btn" href="https://buy.stripe.com/cNiaEXfyE8961qM83H2cg02">{{cta}}</a></p>
+  {{summary_table}}
   <form class="book-mail" id="book-mail" data-saved="{{saved}}" data-fail="{{save_fail}}" data-later="{{save_later}}">
     <p>{{form_lead}}</p>
     <label>{{email_label}}<br><input type="email" name="email" required autocomplete="email" placeholder="you@example.com"></label>

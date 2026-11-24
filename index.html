@@ -908,9 +908,11 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
 <section class="ap-hero" aria-label="簡介">
   <div class="wrap">
     <p class="ap-eyebrow">500 帳號｜6 類｜每 8 小時更新</p>
-    <p class="ap-h"><span class="ap-h1">今日名單免費。</span><span class="ap-grad">星期一先寫最多八隻做多：上一次看好之後，跑贏了 QQQ，也跑贏了 SPY。</span></p>
-    <p class="ap-sub">上週新列入的共同看好。上一次看好之後，十個交易日跑贏 QQQ，也跑贏 SPY。名稱只寫在電郵。</p>
+    <p class="ap-h"><span class="ap-h1">今日共識名單免費。</span></p>
+    <p class="ap-sub">星期一電郵另寫簡報，同最多八隻觀察名單。納入條件係：上一次共同看好，其後十個交易日同時跑贏 QQQ 同 SPY。呢個係篩選規則，唔係業績承諾。名稱只寫在電郵。</p>
     <div class="ap-cta"><a class="ap-btn" href="#view">看今日重點</a><a class="ap-btn" href="/zh/weekly/">訂週報・潛力觀察（每月 USD 5）</a></div>
+<!-- settled-home -->
+<!-- /settled-home -->
     <div class="meta ap-meta">
       <span>帖文資料截至 <b id="cutoff"></b></span>
       <span>下次更新 <b id="nextup"></b></span>
@@ -2151,6 +2153,19 @@ header.ap-top{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hd-t
 .ap-grad{background:linear-gradient(90deg,#0071e3,#9f5afd 52%,#e3366e);-webkit-background-clip:text;background-clip:text;color:transparent}
 .ap-sub{margin:18px auto 0;max-width:640px;font:400 21px/1.45 var(--f-body);color:var(--mut)}
 .ap-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.wk-summary{margin:22px auto 0;max-width:720px;text-align:left}
+.wk-summary h2{margin:0 0 10px;font:600 18px/1.3 var(--f-body);color:var(--tx-strong)}
+.wk-sum-wrap{overflow-x:auto}
+.wk-sum{width:100%;border-collapse:collapse;font:400 14px/1.4 var(--f-body);color:var(--tx)}
+.wk-sum th,.wk-sum td{border-top:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.wk-sum th{font-weight:600;color:var(--mut);font-size:12.5px}
+.wk-sum-note{margin:10px 0 0;font:400 14px/1.45 var(--f-body);color:var(--mut)}
+.wk-summary .wk-row{display:grid;grid-template-columns:minmax(72px,auto) minmax(0,1fr);column-gap:12px;row-gap:2px;align-items:baseline;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+.wk-summary .wk-t{font-weight:600}
+.wk-summary .wk-side{font-size:13px;color:var(--mut)}
+.wk-summary .wk-meta{grid-column:1 / -1;color:var(--mut);font-size:13px}
+.wk-summary .wk-up{color:var(--up,#0a7a3e)}
+.wk-summary .wk-dn{color:var(--dn,#c0392b)}
 .ap-btn{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff!important;border:1px solid var(--accent);border-radius:999px;padding:11px 22px;font:500 17px/1.2 var(--f-body);text-decoration:none}
 .ap-btn:hover{filter:brightness(1.08)}
 .ap-btn.ap-ghost{background:transparent;color:var(--link)!important}
