@@ -2,17 +2,17 @@
  "date": "2026-11-28",
  "date_kst": "2026-11-28",
  "frozen": false,
- "made_hkt": "2026-11-24 09:58",
- "from": "2026-11-18",
- "to": "2026-11-24",
+ "made_hkt": "2026-11-25 02:22",
+ "from": "2026-11-19",
+ "to": "2026-11-25",
  "themes": [
   {
    "theme": "rates",
-   "accounts": 12,
-   "n": 12,
+   "accounts": 10,
+   "n": 10,
    "bull": 1,
-   "bear": 8,
-   "neu": 3,
+   "bear": 7,
+   "neu": 2,
    "arrow": "dn",
    "quotes": {
     "zh": {
@@ -31,10 +31,10 @@
   },
   {
    "theme": "inflation",
-   "accounts": 14,
-   "n": 14,
+   "accounts": 13,
+   "n": 13,
    "bull": 3,
-   "bear": 2,
+   "bear": 1,
    "neu": 9,
    "arrow": "up",
    "quotes": {
@@ -77,70 +77,70 @@
   },
   {
    "theme": "growth",
-   "accounts": 27,
-   "n": 27,
+   "accounts": 26,
+   "n": 26,
    "bull": 8,
    "bear": 7,
-   "neu": 12,
-   "arrow": "up",
+   "neu": 11,
+   "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "DeItaone",
+     "acc": "wliang",
      "impact": "bull",
-     "text": "$SPY - RBC 認為標普 500 指數在未來 12 個月將上漲 16.5% 至 8,050。RBC Capital Markets 策略師 Lori Calvasina 預測標普 500 將達到 8,050，意味著從週五收盤價上漲 16.5%。RBC 引用看空投資者情緒、彈性經濟增長和強勁企業盈利作為主要驅動因素，儘管近期市場調整了 11.6%。該公司預期估值將在 2027 年底壓縮至 18.8 倍過去盈利。最大風險：激進的聯儲加息和國債收益率超過 6%。RBC 偏好價值股而非成長股，小型股而非大型股，並維持對金融和醫療保健的超配。該公司警告稱確定性的市場底部尚未得到確認。",
-     "url": "https://x.com/DeItaone/status/2124830744069484727"
+     "text": "懷疑不可避免之事的人數之多令人著迷。Jensen 和 $NVDA 是一體的。對整個美國經濟太重要，不能沒有他復職。對董事會的決定給予高度讚揚。",
+     "url": "https://x.com/wliang/status/2124972502095208862"
     },
     "en": {
-     "acc": "DeItaone",
+     "acc": "wliang",
      "impact": "bull",
-     "text": "$SPY - RBC sees S&P 500 rising 16.5% to 8,050 over next 12 months. RBC Capital Markets strategist Lori Calvasina forecasts the S&P 500 reaching 8,050, implying 16.5% upside from Friday's close. RBC cites bearish investor sentiment, resilient economic growth and strong corporate earnings as key drivers despite the recent 11.6% market correction. The firm expects valuations to compress to 18.8x trailing earnings by late 2027. Biggest risk: Aggressive Fed rate hikes and Treasury yields exceeding 6%. RBC favors value stocks over growth, small caps over large caps, and remains overweight financials and healthcare. The firm cautions that a definitive market bottom has not yet been confirmed.",
-     "url": "https://x.com/DeItaone/status/2124830744069484727"
+     "text": "The amount of people that doubted the inevitable is fascinating. Jensen and $NVDA are one. Too important to the entire US economy to not have him reinstated. Big props to the BoD for their decision.",
+     "url": "https://x.com/wliang/status/2124972502095208862"
     }
    }
   },
   {
    "theme": "yields",
-   "accounts": 9,
-   "n": 9,
-   "bull": 2,
+   "accounts": 10,
+   "n": 10,
+   "bull": 3,
    "bear": 2,
    "neu": 5,
    "arrow": "up",
    "quotes": {
     "zh": {
-     "acc": "MarketRebels",
-     "impact": "neu",
-     "text": "隔夜 #VIX 29.74 #OVX 54.12 #10Year 4.91% 交易員們早上好 週一短週。",
-     "url": "https://x.com/MarketRebels/status/2124821068158513430"
+     "acc": "MikeZaccardi",
+     "impact": "bull",
+     "text": "國債在週五大幅上漲，今天在 GOVT 上微幅上升，標誌著 6 日連勝。",
+     "url": "https://x.com/MikeZaccardi/status/2124966926036115566"
     },
     "en": {
-     "acc": "MarketRebels",
-     "impact": "neu",
-     "text": "Overnight #VIX 29.74 #OVX 54.12 #10Year 4.91% Good Day Traders Monday short week.",
-     "url": "https://x.com/MarketRebels/status/2124821068158513430"
+     "acc": "MikeZaccardi",
+     "impact": "bull",
+     "text": "Treasurys were up huge on Friday and higher fractionally today on GOVT, marking a 6-day winning streak.",
+     "url": "https://x.com/MikeZaccardi/status/2124966926036115566"
     }
    }
   },
   {
    "theme": "fx",
-   "accounts": 9,
-   "n": 9,
+   "accounts": 11,
+   "n": 11,
    "bull": 1,
-   "bear": 3,
-   "neu": 5,
+   "bear": 4,
+   "neu": 6,
    "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "PeterLBrandt",
+     "acc": "KeithMcCullough",
      "impact": "neu",
-     "text": "歐元兌日圓已達到目標，我們認為這筆波段交易已經結帳。",
-     "url": "https://x.com/PeterLBrandt/status/2124672335471153570"
+     "text": "今日圖表：做多美元 $DXY 對做空黃金和比特幣繼續因這些相關性而成為 alpha，來自 @hedgeye。",
+     "url": "https://x.com/KeithMcCullough/status/2124972534743580977"
     },
     "en": {
-     "acc": "PeterLBrandt",
+     "acc": "KeithMcCullough",
      "impact": "neu",
-     "text": "Euro.Yen has met its target and we consider this swing trade to be in the books",
-     "url": "https://x.com/PeterLBrandt/status/2124672335471153570"
+     "text": "CHART OF THE DAY: Long Dollars $DXY Vs. Short Gold and Bitcoin Continue To Be Alpha With These Correlations via @hedgeye.",
+     "url": "https://x.com/KeithMcCullough/status/2124972534743580977"
     }
    }
   },
@@ -169,47 +169,47 @@
   },
   {
    "theme": "policy",
-   "accounts": 58,
-   "n": 58,
-   "bull": 6,
-   "bear": 14,
-   "neu": 38,
+   "accounts": 56,
+   "n": 56,
+   "bull": 7,
+   "bear": 15,
+   "neu": 34,
    "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "modern_rock",
+     "acc": "RenMacLLC",
      "impact": "neu",
-     "text": "@LenaMDC 民主黨想要這個。他們反對只因反對特朗普任何想要的東西。民主黨甚至開始抵制和破壞 Tesla 電動綠色車輛，同時哭喊氣候變化將在十年內毀滅地球。這全是政治表演性廢話。",
-     "url": "https://x.com/modern_rock/status/2124817969989783907"
+     "text": "@JensenHuang，還不是「萬億美元人」，因為$NVDA在他回歸時只增加了9520億美元。那買回了上週約一半的慘烈跌幅。它可能修復了$SPX的損失，但不是聯準會、曲線或現金信貸。",
+     "url": "https://x.com/RenMacLLC/status/2125008055288947052"
     },
     "en": {
-     "acc": "modern_rock",
+     "acc": "RenMacLLC",
      "impact": "neu",
-     "text": "@LenaMDC Democrats wanted this. They only are against it because they are against anything Trump wants. Democrats even started to boycott and vandalize Tesla electric green vehicles while crying climate change will end the Earth in a decade. This is all political performative bullshit.",
-     "url": "https://x.com/modern_rock/status/2124817969989783907"
+     "text": "@JensenHuang , not quite a \"Trillion $ Man\" as $NVDA only gained $952B on his return. That bought back about 1/2 the carnage from last week. It may have fixed the $SPX loss but not the Fed, the curve or cash credit.",
+     "url": "https://x.com/RenMacLLC/status/2125008055288947052"
     }
    }
   },
   {
    "theme": "other",
-   "accounts": 104,
-   "n": 104,
-   "bull": 21,
+   "accounts": 106,
+   "n": 105,
+   "bull": 22,
    "bear": 27,
    "neu": 56,
    "arrow": "flat",
    "quotes": {
     "zh": {
-     "acc": "steve_hanke",
-     "impact": "bear",
-     "text": "高盛的波動恐慌指數在週五飆升至 10 分中的 9.8。對沖基金連續第三週拋售全球股票，美國單股做空達到自 2022 年 6 月以來的最高水平。恐懼 = 重回華爾街。",
-     "url": "https://x.com/steve_hanke/status/2124828809736114582"
+     "acc": "charliebilello",
+     "impact": "neu",
+     "text": "Charlie Bilello 指出 $VIX 今日下跌 26%，是歷史上第七大單日百分比跌幅。這是本月第三次 $VIX 單日下跌超過 20%。波動率的波動性極少如此高，市場從自滿迅速轉為恐懼再轉回。",
+     "url": "https://x.com/charliebilello/status/2125058759705997510"
     },
     "en": {
-     "acc": "steve_hanke",
-     "impact": "bear",
-     "text": "Goldman's Volatility Panic Index SPIKED to 9.8 out of 10 on Friday. Hedge funds dumped global stocks for a THIRD straight week, and US single-stock shorting hit its HIGHEST level since June 2022. FEAR = BACK ON WALL STREET.",
-     "url": "https://x.com/steve_hanke/status/2124828809736114582"
+     "acc": "charliebilello",
+     "impact": "neu",
+     "text": "Charlie Bilello notes the $VIX fell 26% today, its 7th biggest one-day percentage decline in history. This is the 3rd time this month the $VIX has fallen more than 20% in a single day. The volatility of volatility has rarely been higher, with markets swinging from complacency to fear and back again quickly.",
+     "url": "https://x.com/charliebilello/status/2125058759705997510"
     }
    }
   }
@@ -221,46 +221,46 @@
  ],
  "accounts": 500,
  "x_accounts": 499,
- "range": "11/18–11/24",
+ "range": "11/19–11/25",
  "images": {
-  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-28-0958",
-  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-28-0958"
+  "zh": "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-28-0222",
+  "en": "https://thecrowdtape.com/og/macro-en.png?v=2026-11-28-0222"
  },
  "stories": {
-  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-28-0958",
-  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-28-0958"
+  "zh": "https://thecrowdtape.com/og/macro-story-zh.png?v=2026-11-28-0222",
+  "en": "https://thecrowdtape.com/og/macro-story-en.png?v=2026-11-28-0222"
  },
  "posts": {
   "zh": {
-   "instagram": "本週宏觀：最多人講「其他」（利好 21・利空 27）\n\n這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/18–11/24）\n\n1. 其他：利好 21・利空 27・中性 56（同上週差不多）\n@steve_hanke：「高盛的波動恐慌指數在週五飆升至 10 分中的 9.8。對沖基金連續第三週拋售全球股票，美國單股做空達到自 2022 年 6 月以來的最高水平。恐懼 = 重回華爾街。」\n\n2. 關稅／政策／地緣政治：利好 6・利空 14・中性 38（同上週差不多）\n@modern_rock：「@LenaMDC 民主黨想要這個。他們反對只因反對特朗普任何想要的東西。民主黨甚至開始抵制和破壞 Tesla 電動綠色車輛，同時哭喊氣候變化將在十年內毀滅地球。這全是政治表演性廢…」\n\n3. 經濟增長／衰退：利好 8・利空 7・中性 12（比上週轉好 ▲）\n@DeItaone：「$SPY - RBC 認為標普 500 指數在未來 12 個月將上漲 16.5% 至 8,050。RBC Capital Markets 策略師 Lori Calvasina 預…」\n\n這週哪個宏觀消息最影響你的判斷？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SPY",
-   "threads": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/18–11/24）\n\n1. 其他：利好 21・利空 27・中性 56（同上週差不多）\n2. 關稅／政策／地緣政治：利好 6・利空 14・中性 38（同上週差不多）\n3. 經濟增長／衰退：利好 8・利空 7・中性 12（比上週轉好 ▲）\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
-   "x": "這星期大家最常聊的宏觀話題\n\n其他 21/27/56\n關稅／政策／地緣政治 6/14/38\n經濟增長／衰退 8/7/12\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "instagram": "本週宏觀：最多人講「其他」（利好 22・利空 27）\n\n這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/19–11/25）\n\n1. 其他：利好 22・利空 27・中性 56（同上週差不多）\n@charliebilello：「Charlie Bilello 指出 $VIX 今天下跌 26%，是歷史上第七大單日百分比跌幅。這是本月第三次 $VIX 單日下跌超過 20%。波動率的波動性極少如此高，市場從自…」\n\n2. 關稅／政策／地緣政治：利好 7・利空 15・中性 34（同上週差不多）\n@RenMacLLC：「@JensenHuang，還不是「萬億美元人」，因為$NVDA在他回歸時只增加了9520億美元。那買回了上週約一半的慘烈跌幅。它可能修復了$SPX的損失，但不是聯準會、曲線或現金…」\n\n3. 經濟增長／衰退：利好 8・利空 7・中性 11（同上週差不多）\n@wliang：「懷疑不可避免之事的人數之多令人著迷。Jensen 和 $NVDA 是一體的。對整個美國經濟太重要，不能沒有他復職。對董事會的決定給予高度讚揚。」\n\n這週哪個宏觀消息最影響你的判斷？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #VIX #NVDA",
+   "threads": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/19–11/25）\n\n1. 其他：利好 22・利空 27・中性 56（同上週差不多）\n2. 關稅／政策／地緣政治：利好 7・利空 15・中性 34（同上週差不多）\n3. 經濟增長／衰退：利好 8・利空 7・中性 11（同上週差不多）\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "x": "這星期大家最常聊的宏觀話題\n\n其他 22/27/56\n關稅／政策／地緣政治 7/15/34\n經濟增長／衰退 8/7/11\n（利好／利空／中性）\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "reddit": {
-    "title": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/18–11/24）",
-    "body": "1. 其他：利好 21・利空 27・中性 56（同上週差不多）\n@steve_hanke：「高盛的波動恐慌指數在週五飆升至 10 分中的 9.8。對沖基金連續第三週拋售全球股票，美國單股做空達到自 2022 年 6 月以來的最高水平。恐懼 = 重回華爾街。」\n\n2. 關稅／政策／地緣政治：利好 6・利空 14・中性 38（同上週差不多）\n@modern_rock：「@LenaMDC 民主黨想要這個。他們反對只因反對特朗普任何想要的東西。民主黨甚至開始抵制和破壞 Tesla 電動綠色車輛，同時哭喊氣候變化將在十年內毀滅地球。這全是政治表演性廢…」\n\n3. 經濟增長／衰退：利好 8・利空 7・中性 12（比上週轉好 ▲）\n@DeItaone：「$SPY - RBC 認為標普 500 指數在未來 12 個月將上漲 16.5% 至 8,050。RBC Capital Markets 策略師 Lori Calvasina 預…」\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
+    "title": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/19–11/25）",
+    "body": "1. 其他：利好 22・利空 27・中性 56（同上週差不多）\n@charliebilello：「Charlie Bilello 指出 $VIX 今天下跌 26%，是歷史上第七大單日百分比跌幅。這是本月第三次 $VIX 單日下跌超過 20%。波動率的波動性極少如此高，市場從自…」\n\n2. 關稅／政策／地緣政治：利好 7・利空 15・中性 34（同上週差不多）\n@RenMacLLC：「@JensenHuang，還不是「萬億美元人」，因為$NVDA在他回歸時只增加了9520億美元。那買回了上週約一半的慘烈跌幅。它可能修復了$SPX的損失，但不是聯準會、曲線或現金…」\n\n3. 經濟增長／衰退：利好 8・利空 7・中性 11（同上週差不多）\n@wliang：「懷疑不可避免之事的人數之多令人著迷。Jensen 和 $NVDA 是一體的。對整個美國經濟太重要，不能沒有他復職。對董事會的決定給予高度讚揚。」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股"
    },
-   "facebook": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/18–11/24）\n\n1. 其他：利好 21・利空 27・中性 56（同上週差不多）\n@steve_hanke：「高盛的波動恐慌指數在週五飆升至 10 分中的 9.8。對沖基金連續第三週拋售全球股票，美國單股做空達到自 2022 年 6 月以來的最高水平。恐懼 = 重回華爾街。」\n\n2. 關稅／政策／地緣政治：利好 6・利空 14・中性 38（同上週差不多）\n@modern_rock：「@LenaMDC 民主黨想要這個。他們反對只因反對特朗普任何想要的東西。民主黨甚至開始抵制和破壞 Tesla 電動綠色車輛，同時哭喊氣候變化將在十年內毀滅地球。這全是政治表演性廢…」\n\n3. 經濟增長／衰退：利好 8・利空 7・中性 12（比上週轉好 ▲）\n@DeItaone：「$SPY - RBC 認為標普 500 指數在未來 12 個月將上漲 16.5% 至 8,050。RBC Capital Markets 策略師 Lori Calvasina 預…」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "facebook": "這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/19–11/25）\n\n1. 其他：利好 22・利空 27・中性 56（同上週差不多）\n@charliebilello：「Charlie Bilello 指出 $VIX 今天下跌 26%，是歷史上第七大單日百分比跌幅。這是本月第三次 $VIX 單日下跌超過 20%。波動率的波動性極少如此高，市場從自…」\n\n2. 關稅／政策／地緣政治：利好 7・利空 15・中性 34（同上週差不多）\n@RenMacLLC：「@JensenHuang，還不是「萬億美元人」，因為$NVDA在他回歸時只增加了9520億美元。那買回了上週約一半的慘烈跌幅。它可能修復了$SPX的損失，但不是聯準會、曲線或現金…」\n\n3. 經濟增長／衰退：利好 8・利空 7・中性 11（同上週差不多）\n@wliang：「懷疑不可避免之事的人數之多令人著迷。Jensen 和 $NVDA 是一體的。對整個美國經濟太重要，不能沒有他復職。對董事會的決定給予高度讚揚。」\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
    "story": "#美股"
   },
   "en": {
    "instagram": "",
    "threads": "",
-   "x": "What X talked about in macro this week\n\nOther 21/27/56\nTariffs / policy / geopolitics 6/14/38\nGrowth / recession 8/7/12\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
+   "x": "What X talked about in macro this week\n\nOther 22/27/56\nTariffs / policy / geopolitics 7/15/34\nGrowth / recession 8/7/11\n(bullish/bearish/neutral)\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
    "reddit": {
-    "title": "The macro topics the 499 X accounts we follow talked about most this week (11/18–11/24)",
-    "body": "1. Other: bullish 21 · bearish 27 · neutral 56 (about the same as last week)\n@steve_hanke: “Goldman's Volatility Panic Index SPIKED to 9.8 out of 10 on Friday. Hedge funds dumped global stocks for a THIRD straight week, and US single-stock s…”\n\n2. Tariffs / policy / geopolitics: bullish 6 · bearish 14 · neutral 38 (about the same as last week)\n@modern_rock: “@LenaMDC Democrats wanted this. They only are against it because they are against anything Trump wants. Democrats even started to boycott and vandali…”\n\n3. Growth / recession: bullish 8 · bearish 7 · neutral 12 (better than last week ▲)\n@DeItaone: “$SPY - RBC sees S&P 500 rising 16.5% to 8,050 over next 12 months. RBC Capital Markets strategist Lori Calvasina forecasts the S&P 500 reaching 8,050…”\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro"
+    "title": "The macro topics the 499 X accounts we follow talked about most this week (11/19–11/25)",
+    "body": "1. Other: bullish 22 · bearish 27 · neutral 56 (about the same as last week)\n@charliebilello: “Charlie Bilello notes the $VIX fell 26% today, its 7th biggest one-day percentage decline in history. This is the 3rd time this month the $VIX has fa…”\n\n2. Tariffs / policy / geopolitics: bullish 7 · bearish 15 · neutral 34 (about the same as last week)\n@RenMacLLC: “@JensenHuang , not quite a \"Trillion $ Man\" as $NVDA only gained $952B on his return. That bought back about 1/2 the carnage from last week. It may h…”\n\n3. Growth / recession: bullish 8 · bearish 7 · neutral 11 (about the same as last week)\n@wliang: “The amount of people that doubted the inevitable is fascinating. Jensen and $NVDA are one. Too important to the entire US economy to not have him rei…”\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro"
    },
-   "facebook": "The macro topics the 499 X accounts we follow talked about most this week (11/18–11/24)\n\n1. Other: bullish 21 · bearish 27 · neutral 56 (about the same as last week)\n@steve_hanke: “Goldman's Volatility Panic Index SPIKED to 9.8 out of 10 on Friday. Hedge funds dumped global stocks for a THIRD straight week, and US single-stock s…”\n\n2. Tariffs / policy / geopolitics: bullish 6 · bearish 14 · neutral 38 (about the same as last week)\n@modern_rock: “@LenaMDC Democrats wanted this. They only are against it because they are against anything Trump wants. Democrats even started to boycott and vandali…”\n\n3. Growth / recession: bullish 8 · bearish 7 · neutral 12 (better than last week ▲)\n@DeItaone: “$SPY - RBC sees S&P 500 rising 16.5% to 8,050 over next 12 months. RBC Capital Markets strategist Lori Calvasina forecasts the S&P 500 reaching 8,050…”\n\nFull numbers are on our site. Just search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#Macro",
+   "facebook": "The macro topics the 499 X accounts we follow talked about most this week (11/19–11/25)\n\n1. Other: bullish 22 · bearish 27 · neutral 56 (about the same as last week)\n@charliebilello: “Charlie Bilello notes the $VIX fell 26% today, its 7th biggest one-day percentage decline in history. This is the 3rd time this month the $VIX has fa…”\n\n2. Tariffs / policy / geopolitics: bullish 7 · bearish 15 · neutral 34 (about the same as last week)\n@RenMacLLC: “@JensenHuang , not quite a \"Trillion $ Man\" as $NVDA only gained $952B on his return. That bought back about 1/2 the carnage from last week. It may h…”\n\n3. Growth / recession: bullish 8 · bearish 7 · neutral 11 (about the same as last week)\n@wliang: “The amount of people that doubted the inevitable is fascinating. Jensen and $NVDA are one. Too important to the entire US economy to not have him rei…”\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#Macro",
    "story": ""
   }
  },
  "ig_images": {
   "zh": [
-   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-28-0958",
+   "https://thecrowdtape.com/og/macro-zh.png?v=2026-11-28-0222",
    "https://thecrowdtape.com/og/cta/ig-cta-zh.jpg"
   ],
   "en": [
-   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-28-0958",
+   "https://thecrowdtape.com/og/macro-en.png?v=2026-11-28-0222",
    "https://thecrowdtape.com/og/cta/ig-cta-en.jpg"
   ]
  },
@@ -270,7 +270,7 @@
   "video_path": null,
   "video_expected_path": "assets/reels/2026-11-28-macro-week.mp4",
   "caption": {
-   "zh": "本週宏觀：最多人講「其他」（利好 21・利空 27）\n\n這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/18–11/24）\n\n1. 其他：利好 21・利空 27・中性 56（同上週差不多）\n@steve_hanke：「高盛的波動恐慌指數在週五飆升至 10 分中的 9.8。對沖基金連續第三週拋售全球股票，美國單股做空達到自 2022 年 6 月以來的最高水平。恐懼 = 重回華爾街。」\n\n2. 關稅／政策／地緣政治：利好 6・利空 14・中性 38（同上週差不多）\n@modern_rock：「@LenaMDC 民主黨想要這個。他們反對只因反對特朗普任何想要的東西。民主黨甚至開始抵制和破壞 Tesla 電動綠色車輛，同時哭喊氣候變化將在十年內毀滅地球。這全是政治表演性廢…」\n\n3. 經濟增長／衰退：利好 8・利空 7・中性 12（比上週轉好 ▲）\n@DeItaone：「$SPY - RBC 認為標普 500 指數在未來 12 個月將上漲 16.5% 至 8,050。RBC Capital Markets 策略師 Lori Calvasina 預…」\n\n這週哪個宏觀消息最影響你的判斷？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SPY",
+   "zh": "本週宏觀：最多人講「其他」（利好 22・利空 27）\n\n這星期我們追蹤的 499 個 X 帳號，最常聊的宏觀話題是這幾個（11/19–11/25）\n\n1. 其他：利好 22・利空 27・中性 56（同上週差不多）\n@charliebilello：「Charlie Bilello 指出 $VIX 今天下跌 26%，是歷史上第七大單日百分比跌幅。這是本月第三次 $VIX 單日下跌超過 20%。波動率的波動性極少如此高，市場從自…」\n\n2. 關稅／政策／地緣政治：利好 7・利空 15・中性 34（同上週差不多）\n@RenMacLLC：「@JensenHuang，還不是「萬億美元人」，因為$NVDA在他回歸時只增加了9520億美元。那買回了上週約一半的慘烈跌幅。它可能修復了$SPX的損失，但不是聯準會、曲線或現金…」\n\n3. 經濟增長／衰退：利好 8・利空 7・中性 11（同上週差不多）\n@wliang：「懷疑不可避免之事的人數之多令人著迷。Jensen 和 $NVDA 是一體的。對整個美國經濟太重要，不能沒有他復職。對董事會的決定給予高度讚揚。」\n\n這週哪個宏觀消息最影響你的判斷？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #VIX #NVDA",
    "en": ""
   }
  },

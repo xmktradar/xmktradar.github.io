@@ -2240,50 +2240,103 @@
    "bull": [
     "MU",
     "CRWD",
-    "SNDK",
-    "GOOGL",
-    "MSTR",
+    "HPE",
     "CRWV",
-    "RKLB",
+    "GOOGL",
+    "SKHY",
+    "SMH",
+    "META",
+    "MSTR",
     "DELL",
     "MSFT",
+    "ZM",
+    "RKLB",
+    "SYM",
+    "WMT",
+    "PANW",
     "ASST",
     "C",
-    "PANW",
-    "WMT"
+    "LLY"
    ],
-   "bear": [],
+   "bear": [
+    "ANT"
+   ],
    "split": [
     "NVDA",
-    "SPY",
     "QQQ",
+    "SPY",
     "SPCX",
-    "AMD",
+    "SNDK",
     "TSLA",
     "NBIS",
-    "ANT",
+    "AMD",
+    "IREN",
     "AAPL"
    ],
    "window": [
     "2026-11-23T03:30",
-    "2026-11-24T09:16"
+    "2026-11-24T10:54"
    ],
    "top": [
     "NVDA",
     "QQQ",
     "SPY",
-    "SPCX",
     "ANT",
+    "SPCX",
     "MU",
     "AMD",
-    "TSLA",
     "CRWD",
-    "ZS"
+    "ZS",
+    "TSLA"
    ],
    "src": "live",
-   "updated_hkt": "2026-11-24 10:58"
+   "updated_hkt": "2026-11-25 01:45"
+  },
+  "2026-11-25": {
+   "bull": [
+    "HPE",
+    "CRWD",
+    "SKHY",
+    "SYM",
+    "ZM",
+    "LLY"
+   ],
+   "bear": [
+    "ORCL"
+   ],
+   "split": [
+    "NVDA",
+    "SPY",
+    "QQQ",
+    "ANT",
+    "MU",
+    "SPCX",
+    "TSLA",
+    "SNDK",
+    "IWM",
+    "IREN",
+    "NBIS"
+   ],
+   "window": [
+    "2026-11-23T19:30",
+    "2026-11-25T01:44"
+   ],
+   "top": [
+    "NVDA",
+    "SPY",
+    "ANT",
+    "QQQ",
+    "MU",
+    "META",
+    "SPX",
+    "CRWD",
+    "SPCX",
+    "HPE"
+   ],
+   "src": "live",
+   "updated_hkt": "2026-11-25 05:08"
   }
  },
- "updated_hkt": "2026-11-24 10:58",
+ "updated_hkt": "2026-11-25 05:08",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }

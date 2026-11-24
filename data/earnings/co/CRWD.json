@@ -162,9 +162,25 @@
   "debt": 746588000
  },
  "bank": false,
- "seg": null,
+ "seg": {
+  "axis": "srt:ProductOrServiceAxis",
+  "basis": "quarter",
+  "rows": [
+   {
+    "name": "Subscription",
+    "val": 1502926000.0,
+    "prev": 1168705000.0
+   },
+   {
+    "name": "Professional services",
+    "val": 80493000.0,
+    "prev": 65539000.0
+   }
+  ],
+  "accn": "0001535527-26-000038"
+ },
  "rules": 4,
- "mcap": 213971664896,
+ "mcap": 217311592448,
  "next": "2026-11-23",
  "last_report": "2026-11-23",
  "est": {

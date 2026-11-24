@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2125325977027039321": {
+      "en_summary": "@Z22Holding $APP is one.",
+      "zh_summary": "@Z22Holding $APP 是其中之一。",
+      "tickers": ["APP"],
+      "stance": "中性",
+      "stance_by_ticker": {"APP": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125325601267392912": {
+      "en_summary": "Someone just loaded $3.1M of $MU calls that expire TOMORROW. All opening. Open interest was just 91 and 30. They keep adding Semi calls today $AMD $NVDA $SOXL.",
+      "zh_summary": "有人剛買入價值310萬美元的$MU看漲期權，明天到期。全部為開倉。未平倉量僅為91和30。他們今天繼續增加半導體看漲期權 $AMD $NVDA $SOXL。",
+      "tickers": ["MU", "AMD", "NVDA", "SOXL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"MU": "睇好", "AMD": "睇好", "NVDA": "睇好", "SOXL": "睇好"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MU": "$3.1M calls expiring tomorrow"}
+    },
+    "2125325515821289753": {
+      "en_summary": "$TGT longer time let it ride from $88 area moved up the stops with today's move higher.",
+      "zh_summary": "$TGT 較長時間從88美元區域讓它繼續，今日上漲後上調止損。",
+      "tickers": ["TGT"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TGT": "睇好"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TGT": "From $88 area, moved stops higher"}
+    },
+    "2125325500612583730": {
+      "en_summary": "$NFLX Acquires Radford studio lot for ~$380M - Hollywood Reporter.",
+      "zh_summary": "$NFLX 以約3.8億美元收購Radford攝影棚地塊 - Hollywood Reporter。",
+      "tickers": ["NFLX"],
+      "stance": "中性",
+      "stance_by_ticker": {"NFLX": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NFLX": "Acquired studio lot for ~$380M"}
+    },
+    "2125325486029238693": {
+      "en_summary": "There are some concerned 2026 is tracking like 2018, where stocks fell into year-end: parallels are Fed tightening, 2018 “autopilot on hikes” and 2026 “get inflation down to 2%”, midterm election year, Dems gain, stocks already down -10%.",
+      "zh_summary": "有些人擔心2026年走勢類似2018年，股票在年底下跌：相似之處包括聯儲局緊縮、2018年“自動加息”與2026年“將通脹降至2%”、中期選舉年、民主黨獲益、股票已下跌10%。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    }
+  }
+}
