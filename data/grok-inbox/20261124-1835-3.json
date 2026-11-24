@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2124966926036115566": {
+      "en_summary": "Treasurys were up huge on Friday and higher fractionally today on GOVT, marking a 6-day winning streak.",
+      "zh_summary": "國債在週五大幅上漲，今天在 GOVT 上微幅上升，標誌著 6 日連勝。",
+      "tickers": ["GOVT"],
+      "stance": "睇好",
+      "stance_by_ticker": {"GOVT": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "yields",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    },
+    "2124966663124828595": {
+      "en_summary": "StockMarketNerd notes that CRWD remains an elite business with valuation reflecting that, another pretty quarter amid a sea of pretty quarters, great guidance especially the net new ARR raise, a juggernaut.",
+      "zh_summary": "StockMarketNerd 指出 CRWD 仍然是精英業務，估值反映這一點，在一片漂亮季度中又一個漂亮季度，出色指引尤其是淨新增 ARR 上調，是巨頭。",
+      "tickers": ["CRWD"],
+      "stance": "睇好",
+      "stance_by_ticker": {"CRWD": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"CRWD": "精英業務，出色季度及指引，淨新增 ARR 上調"}
+    },
+    "2124966213617123480": {
+      "en_summary": "Much has been written about an undisclosed trader spending 3.4M on NVDA 160 calls expiring today now worth 312M, but much less about how only about 68K of them traded Friday and all open interest is worth about 9M. Check the tape first.",
+      "zh_summary": "許多人寫到一個未披露交易者花費 340 萬美元購買今天到期的 NVDA 160 看漲期權，現值 3.12 億美元，但很少提及週五僅交易約 6.8 萬美元，所有未平倉價值約 900 萬美元。先檢查交易記錄。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "未披露交易者 160 看漲期權故事需檢查交易記錄"}
+    },
+    "2124965457514185074": {
+      "en_summary": "Adyen co-founder and Co-CEO Pieter van der Does will retire on December 31, 2026 after 20 years. Ingo Uytdehaage will become sole CEO. Van der Does remains an advisor. Adyen financial targets remain unchanged.",
+      "zh_summary": "Adyen 聯合創始人兼聯合 CEO Pieter van der Does 將於 2026 年 12 月 31 日退休，服務 20 年。Ingo Uytdehaage 將成為唯一 CEO。Van der Does 繼續擔任顧問。Adyen 財務目標保持不變。",
+      "tickers": ["ADYEN"],
+      "stance": "中性",
+      "stance_by_ticker": {"ADYEN": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2124964822257484032": {
+      "en_summary": "If wondering why BTC retraced its run higher today, it is because the dollar DXY had strong gains and they have an inverse correlation with each other.",
+      "zh_summary": "如果想知道為什麼 BTC 今天回吐漲幅，是因為美元 DXY 有強勁漲幅，兩者呈反相關。",
+      "tickers": ["BTC", "DXY"],
+      "stance": "中性",
+      "stance_by_ticker": {"BTC": "中性", "DXY": "睇好"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "fx",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    }
+  }
+}
