@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2125030457100423315": {
+      "en_summary": "$SPY $ES_F $SPX saw big moves through this volume gap in both directions over the last two weeks.",
+      "zh_summary": "$SPY $ES_F $SPX 過去兩週在此成交量缺口雙向出現大幅波動。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125029947551195328": {
+      "en_summary": "Questioning if $NQ_F $QQQ $NDX is ready for an attempt at a move straight back through the volume gap.",
+      "zh_summary": "詢問 $NQ_F $QQQ $NDX 是否準備好嘗試直接回穿成交量缺口。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125028501900128263": {
+      "en_summary": "Screening names based on close versus high of the day: $SNDK faded -11.4% while $MU was only -1.8% lower; $SPCX faded -6% vs. only -2.1% drop in $TSLA; Neoclouds like $APLD, $IREN and $CRWV generally faded -7% to -11%; $ALAB closed at its highs.",
+      "zh_summary": "根據收盤相對當日高點篩選：$SNDK 回落 11.4%，而 $MU 僅低 1.8%；$SPCX 回落 6%，對比 $TSLA 僅跌 2.1%；Neocloud 如 $APLD、$IREN 和 $CRWV 普遍回落 7% 至 11%；$ALAB 收於當日高點。",
+      "tickers": ["SNDK", "MU", "SPCX", "TSLA", "APLD", "IREN", "CRWV", "ALAB"],
+      "stance": "中性",
+      "stance_by_ticker": {"SNDK": "中性", "MU": "中性", "SPCX": "中性", "TSLA": "中性", "APLD": "中性", "IREN": "中性", "CRWV": "中性", "ALAB": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125025945656377566": {
+      "en_summary": "Don’t mess this up regarding $NVDA $MU.",
+      "zh_summary": "提醒不要搞砸 $NVDA $MU。",
+      "tickers": ["NVDA", "MU"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "MU": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125025475906994679": {
+      "en_summary": "Earnings calendar for Thanksgiving week listing $DELL $DE $BBY $DKS $TUYA $HPE and many others via @MarketAtlas @BearBullTraders.",
+      "zh_summary": "感恩節當週業績日曆，列出 $DELL $DE $BBY $DKS $TUYA $HPE 等多間公司，經由 @MarketAtlas @BearBullTraders。",
+      "tickers": ["DELL", "DE", "BBY", "DKS", "TUYA", "HPE"],
+      "stance": "中性",
+      "stance_by_ticker": {"DELL": "中性", "DE": "中性", "BBY": "中性", "DKS": "中性", "TUYA": "中性", "HPE": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
