@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2125333953280389255": {
+      "en_summary": "$SPX 7200 pin, chop fest day.",
+      "zh_summary": "$SPX 7200點釘住，今日為震盪行情。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125333878042747325": {
+      "en_summary": "Autodesk $ADSK Q3'27 earnings beat with revenue $2.16B versus estimated $2.13B, Adj EPS $3.20 versus $3.07. Raised FY27 revenue guide to $8.36B-$8.38B versus estimated $8.33B and Adj EPS $12.70-$12.76 versus $12.61. Despite dollar headwinds, outlook raised reflecting Q3 outperformance.",
+      "zh_summary": "Autodesk $ADSK 2027年第三季業績超預期，營收21.6億美元，預估21.3億，調整後每股盈餘3.20美元，預估3.07。上調2027財年營收指引至83.6億至83.8億美元，預估83.3億，調整後每股盈餘12.70至12.76美元，預估12.61。儘管美元升值帶來阻力，仍上調展望反映第三季表現優異。",
+      "tickers": ["ADSK"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ADSK": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125333640049750125": {
+      "en_summary": "Antitrust review was the biggest hurdle for Western Union's $16 a share deal for Intermex $IMXI. California approved with conditions on November 10. Western Union walked away using these conditions. Intermex says termination not valid and seeks damages. Stock closed at $6.50 that day.",
+      "zh_summary": "反壟斷審查是Western Union以每股16美元收購Intermex $IMXI的最大障礙。加州於11月10日附條件批准。Western Union利用這些條件退出交易。Intermex認為終止無效並尋求損害賠償。當日股價收於6.50美元。",
+      "tickers": ["IMXI"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"IMXI": "睇淡"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"IMXI": "Deal terminated, stock at $6.50 from $16 offer"}
+    },
+    "2125333528808493184": {
+      "en_summary": "@OrsiTrades @OddStats At this point, willing to risk savings that $SPX will close negative. Savings not much.",
+      "zh_summary": "@OrsiTrades @OddStats 此時願意賭上存款認為$SPX會收跌。存款不多。",
+      "tickers": ["SPY"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPY": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125333034526187927": {
+      "en_summary": "Working on Levels Screener to review on same screen: Momentum Leader or Laggard, Theme Momentum, Theme, Stock+Environment+Options strength, Power Bar, Key support and resistance levels, Expansion, Multi time frame pivots, $QQQ ranking.",
+      "zh_summary": "正在開發Levels Screener，以便在同一畫面檢視：動能領先或落後、主題動能、主題、股票+環境+期權強度、Power Bar、關鍵支撐與阻力位、擴張、多時間框架樞紐、$QQQ排名。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
