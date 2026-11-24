@@ -1418,9 +1418,157 @@
       "CAPR"
      ]
     }
+   },
+   "intraday_2": {
+    "post_et": "12:15",
+    "post_hkt": "01:15",
+    "generated_at": "2026-11-23T19:42:50-05:00",
+    "date": "2026-11-23",
+    "date_kst": "2026-11-24",
+    "quotes": {
+     "SPY": {
+      "price": 722.29,
+      "prev_close": 689.81,
+      "chg_pct": 4.71,
+      "time": "2026-11-23T16:00:00-05:00"
+     },
+     "QQQ": {
+      "price": 651.03,
+      "prev_close": 608.45,
+      "chg_pct": 7.0,
+      "time": "2026-11-23T16:00:01-05:00"
+     },
+     "DIA": {
+      "price": 495.8,
+      "prev_close": 481.08,
+      "chg_pct": 3.06,
+      "time": "2026-11-23T16:00:00-05:00"
+     },
+     "SOXL": {
+      "price": 43.21,
+      "prev_close": 30.88,
+      "chg_pct": 39.93,
+      "time": "2026-11-23T16:00:00-05:00"
+     },
+     "CAPR": {
+      "price": 1.92,
+      "prev_close": 7.59,
+      "chg_pct": -74.7,
+      "time": "2026-11-23T16:00:01-05:00"
+     },
+     "NVDA": {
+      "price": 165.05,
+      "prev_close": 125.53,
+      "chg_pct": 31.48,
+      "time": "2026-11-23T16:00:01-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-23T16:00:01-05:00",
+     "hkt": "2026-11-24 05:00"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "SOXL",
+      "chg_pct": 39.93,
+      "bull": 0,
+      "bear": 2,
+      "accounts": [
+       "KobeissiLetter",
+       "Mr_Derivatives",
+       "JohnSpall247"
+      ]
+     },
+     {
+      "ticker": "CAPR",
+      "chg_pct": -74.7,
+      "bull": 0,
+      "bear": 2,
+      "accounts": [
+       "OptionsMike",
+       "adamfeuerstein"
+      ]
+     },
+     {
+      "ticker": "NVDA",
+      "chg_pct": 31.48,
+      "bull": 18,
+      "bear": 17,
+      "accounts": [
+       "modern_rock",
+       "ftr_investors",
+       "JonahLupton",
+       "nezih_gokay",
+       "benitoz",
+       "aleabitoreddit",
+       "unusual_whales",
+       "SamanthaLaDuc"
+      ]
+     },
+     {
+      "ticker": "SPY",
+      "chg_pct": 4.71,
+      "bull": 12,
+      "bear": 3,
+      "accounts": [
+       "SJosephBurns",
+       "DeItaone",
+       "wallstengine",
+       "lisaabramowicz1",
+       "charliebilello",
+       "3PeaksTrading",
+       "InvestmentGuru_",
+       "DataTrekMB"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Midday · As of 16:00 ET (05:00 HKT)\n\n$SPY +4.7% · $QQQ +7.0% · $DIA +3.1%\n\n$SOXL +39.9%, 2 accounts bearish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #SOXL #CAPR",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午市觀察 · 截至 16:00 ET（05:00 HKT）\n\n$SPY +4.7% · $QQQ +7.0% · $DIA +3.1%\n\n$SOXL +39.9%，網站 2 個帳號看空\n$CAPR -74.7%，網站 2 個帳號看空\n$NVDA +31.5%，網站 18 個帳號看好\n$SPY +4.7%，網站 12 個帳號看好\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #SOXL #CAPR",
+      "url": null
+     },
+     "en": {
+      "text": "Midday · As of 16:00 ET (05:00 HKT)\n\n$SPY +4.7% · $QQQ +7.0% · $DIA +3.1%\n\n$SOXL +39.9%, 2 accounts bearish on site\n$CAPR -74.7%, 2 accounts bearish on site\n$NVDA +31.5%, 18 accounts bullish on site\n$SPY +4.7%, 12 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #SOXL #CAPR",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "GOOGL",
+      "CRWD",
+      "AMZN",
+      "MSFT",
+      "RKLB",
+      "META",
+      "PLTR",
+      "WMT",
+      "C",
+      "PANW"
+     ],
+     "bear": [
+      "SOXL",
+      "CAPR"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-23T19:42:45-05:00",
+  "generated_at": "2026-11-23T19:42:50-05:00",
   "generated_hkt": "2026-11-24 08:42"
  }
 }
