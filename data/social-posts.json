@@ -1878,9 +1878,174 @@
       "CAPR"
      ]
     }
+   },
+   "intraday_close": {
+    "post_et": "15:40",
+    "post_hkt": "04:40",
+    "generated_at": "2026-11-23T19:43:03-05:00",
+    "date": "2026-11-23",
+    "date_kst": "2026-11-24",
+    "quotes": {
+     "SPY": {
+      "price": 722.29,
+      "prev_close": 689.81,
+      "chg_pct": 4.71,
+      "time": "2026-11-23T16:00:00-05:00"
+     },
+     "QQQ": {
+      "price": 651.03,
+      "prev_close": 608.45,
+      "chg_pct": 7.0,
+      "time": "2026-11-23T16:00:01-05:00"
+     },
+     "DIA": {
+      "price": 495.8,
+      "prev_close": 481.08,
+      "chg_pct": 3.06,
+      "time": "2026-11-23T16:00:00-05:00"
+     },
+     "CRWV": {
+      "price": 48.33,
+      "prev_close": 39.51,
+      "chg_pct": 22.32,
+      "time": "2026-11-23T16:00:01-05:00"
+     },
+     "ANT": {
+      "price": 87.64,
+      "prev_close": 88.91,
+      "chg_pct": -1.43,
+      "time": "2026-11-23T16:00:01-05:00"
+     },
+     "NBIS": {
+      "price": 97.8,
+      "prev_close": 81.31,
+      "chg_pct": 20.28,
+      "time": "2026-11-23T16:00:00-05:00"
+     },
+     "MSTR": {
+      "price": 84.4,
+      "prev_close": 77.8,
+      "chg_pct": 8.48,
+      "time": "2026-11-23T16:00:01-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-23T16:00:01-05:00",
+     "hkt": "2026-11-24 05:00"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "CRWV",
+      "chg_pct": 22.32,
+      "bull": 3,
+      "bear": 1,
+      "accounts": [
+       "SamanthaLaDuc",
+       "PhotonBull",
+       "OptionsMike",
+       "capitalflows",
+       "InvestmentGuru_",
+       "StockSavvyShay",
+       "scheplick",
+       "danielnewmanUV"
+      ]
+     },
+     {
+      "ticker": "ANT",
+      "chg_pct": -1.43,
+      "bull": 2,
+      "bear": 2,
+      "accounts": [
+       "philrosenn",
+       "MarketRebels",
+       "JonkooTrades",
+       "Mayhem4Markets",
+       "IUTraders",
+       "InvestmentGuru_",
+       "damnang2",
+       "WallStJesus"
+      ]
+     },
+     {
+      "ticker": "NBIS",
+      "chg_pct": 20.28,
+      "bull": 2,
+      "bear": 1,
+      "accounts": [
+       "SamanthaLaDuc",
+       "PhotonBull",
+       "capitalflows",
+       "InvestmentGuru_",
+       "StockSavvyShay",
+       "SJosephBurns",
+       "Jake__Wujastyk",
+       "itschrisray"
+      ]
+     },
+     {
+      "ticker": "MSTR",
+      "chg_pct": 8.48,
+      "bull": 2,
+      "bear": 2,
+      "accounts": [
+       "PhotonBull",
+       "wliang",
+       "capitalflows",
+       "zeroshorts",
+       "scottmelker",
+       "saylor",
+       "TedHZhang",
+       "SJosephBurns"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Into the close · As of 16:00 ET (05:00 HKT)\n\n$SPY +4.7% · $QQQ +7.0% · $DIA +3.1%\n\n$CRWV +22.3%, 3 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #CRWV #ANT",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "收市前回顧 · 截至 16:00 ET（05:00 HKT）\n\n$SPY +4.7% · $QQQ +7.0% · $DIA +3.1%\n\n$CRWV +22.3%，網站 3 個帳號看好\n$ANT -1.4%，網站 2 個帳號看好\n$NBIS +20.3%，網站 2 個帳號看好\n$MSTR +8.5%，網站 2 個帳號看好\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #CRWV #ANT",
+      "url": ""
+     },
+     "en": {
+      "text": "Into the close · As of 16:00 ET (05:00 HKT)\n\n$SPY +4.7% · $QQQ +7.0% · $DIA +3.1%\n\n$CRWV +22.3%, 3 accounts bullish on site\n$ANT -1.4%, 2 accounts bullish on site\n$NBIS +20.3%, 2 accounts bullish on site\n$MSTR +8.5%, 2 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #CRWV #ANT",
+      "url": ""
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "GOOGL",
+      "CRWD",
+      "AMZN",
+      "MSFT",
+      "RKLB",
+      "META",
+      "PLTR",
+      "WMT",
+      "C",
+      "PANW"
+     ],
+     "bear": [
+      "SOXL",
+      "CAPR"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-23T19:42:59-05:00",
-  "generated_hkt": "2026-11-24 08:42"
+  "generated_at": "2026-11-23T19:43:03-05:00",
+  "generated_hkt": "2026-11-24 08:43"
  }
 }
