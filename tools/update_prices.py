@@ -135,6 +135,9 @@ def chart_ohlcv(sym, rng='2y', interval='1d'):
     for row in rows:
         dedup[row['date']] = row
     rows = [dedup[k] for k in sorted(dedup)]
+    live = unfinished_session(meta, rows[-1]['date'] if rows else None)
+    if live:
+        rows.append({'date': live[0], 'open': None, 'high': None, 'low': None, 'close': live[1], 'volume': None})
     if not rows:
         return None
     return meta, rows
@@ -237,6 +240,18 @@ def hide_unknown(d, ov):
 
 def local_date(ts, meta):
     return datetime.fromtimestamp(ts + (meta.get('gmtoffset') or 0), timezone.utc).date().isoformat()
+
+
+def unfinished_session(meta, last_day):
+    """Yahoo often leaves the latest daily close empty after the cash session (NVDA on 2026-11-23).
+    The last trade is that session's price. Do not invent a day we already have a close for."""
+    price, ts = meta.get('regularMarketPrice'), meta.get('regularMarketTime')
+    if not isinstance(price, (int, float)) or not ts or price <= 0:
+        return None
+    day = local_date(ts, meta)
+    if not day or (last_day and day <= last_day):
+        return None
+    return [day, round(float(price), 4)]
 
 
 def quotes_for(symbols):
@@ -367,6 +382,9 @@ def main():
         for day, v in c:
             dedup[day] = v
         c = [[k, v] for k, v in sorted(dedup.items())]
+        live = unfinished_session(meta, c[-1][0] if c else None)
+        if live:
+            c.append(live)
         old = d['prices'].get(t, {})
         d['prices'][t] = {'source': 'Yahoo Finance', 'name': meta.get('longName') or meta.get('shortName') or old.get('name') or t,
                           'instrument_type': meta.get('instrumentType') or old.get('instrument_type'),
