@@ -912,7 +912,7 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
     <p class="ap-eyebrow">500 accounts · 6 categories · every 8 hours</p>
     <p class="ap-h"><span class="ap-h1">Today's list is free.</span><span class="ap-grad">Monday names at most eight bullish ideas: the last bullish call beat QQQ and also beat SPY.</span></p>
     <p class="ap-sub">Newly listed as jointly bullish last week. The previous bullish call beat QQQ and also beat SPY over ten sessions. Names are only in the email.</p>
-    <div class="ap-cta"><a class="ap-btn" href="#view">See today's highlights</a><a class="ap-btn" href="/zh/weekly/">Weekly brief and names to watch (USD 5/month)</a></div>
+    <div class="ap-cta"><a class="ap-btn" href="#view">See today's highlights</a><a class="ap-btn" href="/en/weekly/">Weekly brief and names to watch (USD 5/month)</a></div>
     <div class="meta ap-meta">
       <span>Posts as of <b id="cutoff"></b></span>
       <span>Next update <b id="nextup"></b></span>
@@ -1309,20 +1309,20 @@ const FT_COPY=(()=>{const L=PAGE_LANG;if(L==='en')return{
  th:['Signal','Ticker','Side','10 sessions','Vs QQQ'],
  sideB:'Bullish', sideS:'Bearish'
 };return{
- title:'齊聲之後',
- hint:'新列入共同看多或共同看空之後, 持有 10 個交易日, 與 QQQ 比較. 同一方向連續上榜只計一次. ',
- loading:'正在計算. ',
- fail:'跟進數據暫時無法載入. ',
+ title:'After the consensus',
+ hint:'Once a name newly joins the consensus-bullish or consensus-bearish list, the next 10 sessions versus QQQ. A name that stays on the list is counted once.',
+ loading:'Calculating.',
+ fail:'The follow-through figures could not be loaded.',
  bull:'Consensus bullish',
  bear:'Consensus bearish',
- avg:'平均相對 QQQ',
- settled:'筆已結算',
- beat:'跑贏',
- median:'中位數',
- pending:'未滿 10 日',
- method:'自 {from} 起計, 至收市日 {asof}. 入場價為資料窗結束時, 下一個尚未收市之交易日的收市價. 未滿 10 日者不計入平均. 並非投資建議. ',
- recent:'最近已結算',
- th:['信號日','代號','方向','10 D','相對 QQQ'],
+ avg:'average versus QQQ',
+ settled:'settled',
+ beat:'beat QQQ',
+ median:'median',
+ pending:'not yet 10 sessions',
+ method:'From {from} through the close of {asof}. Entry is the close of the next session that was still open when the window ended. Names short of 10 sessions are left out of the average. Not investment advice.',
+ recent:'Recently settled',
+ th:['Signal','Ticker','Side','10 D','Vs QQQ'],
  sideB:'Bullish', sideS:'Bearish'
 };})();
 function ftHtml(){
@@ -1541,7 +1541,7 @@ function viewWeekly(){
   <h2>This week’s highlights</h2>
   ${daysNote(from,to)}
   <p>${rows.length?`Stocks drawing the most accounts: ${rows.slice(0,3).map(r=>tkBtn(r.t)).join(', ')}. `:'No stocks mentioned this week.'} Strongly aligned: ${aligned.map(r=>tkBtn(r.t)).join(', ')||'none'}; clearly split: ${split.map(r=>tkBtn(r.t)).join(', ')||'none'}. This week’s stance changes: ${chgs.length} times${chgs.length?': '+chgs.slice(0,3).map(y=>`@${esc(y.x.acc)} ${tkBtn(y.x.t)} ${y.ch}`).join('; '):''}. </p>
-  <p class="note">This page only shows how many accounts. Names newly listed last week, whose last bullish call beat QQQ and SPY, are only in the Monday email.<a href="/zh/weekly/">Weekly brief and names to watch (USD 5/month)</a></p></section>
+  <p class="note">This page only shows how many accounts. Names newly listed last week, whose last bullish call beat QQQ and SPY, are only in the Monday email.<a href="/en/weekly/">Weekly brief and names to watch (USD 5/month)</a></p></section>
  ${bpTag(2,consHtml(from,to,'This week',7,'7 d return'))}
  <section class="c4 panel" data-bp="3"><h2>Stance mix <span class="sub">Each account’s latest stance on each stock</span></h2>
   ${distBar({bull:tot.b,neu:tot.m,none:tot.n,bear:tot.r})}
@@ -1574,7 +1574,7 @@ function viewMonthly(){
  <section class="c12 analysis"><div class="range">Covering ${from} to ${to} (28 days)</div><h2>Monthly trends</h2>
   ${daysNote(from,to)}
   <p>28 days, total ${all.length} mentions, bullish ${B} posts, bearish ${X} posts${B+X?`, bullish share ${(B/(B+X)*100).toFixed(0)}%`:', bullish share n/a (no bullish or bearish views)'}. ${rows.length?`Most mentioned: ${rows.slice(0,3).map(r=>tkBtn(r.t)).join(', ')}. `:''}</p>
-  <p class="note">28 days only show mention counts and how many accounts are bullish or bearish. To compare with what you hold, read the Monday email. Names are not on this page.<a href="/zh/weekly/">Weekly brief and names to watch (USD 5/month)</a></p></section>
+  <p class="note">28 days only show mention counts and how many accounts are bullish or bearish. To compare with what you hold, read the Monday email. Names are not on this page.<a href="/en/weekly/">Weekly brief and names to watch (USD 5/month)</a></p></section>
  ${bpTag(2,consHtml(from,to,'This month',28,'28 d return'))}
  <section class="c4 panel" data-bp="3"><h2>Bullish vs bearish <span class="sub">${B+X?`Bullish ${(B/(B+X)*100).toFixed(0)}% (of bull + bear)`:'Not enough data'}</span></h2>${distBar({bull:B,neu:M,none:U,bear:X})}
   <div class="kpis k3" style="margin-top:12px"><div class="kpi"><div class="l">Total mentions</div><div class="v">${all.length}</div></div><div class="kpi"><div class="l">Bullish</div><div class="v up">${B}</div></div><div class="kpi"><div class="l">Bearish</div><div class="v dn">${X}</div></div></div>
@@ -2288,7 +2288,7 @@ function put(cls,html,before){var n=view.querySelector(':scope>.'+cls);if(!n){n=
 function endCard(v,n){var s=document.createElement('section');s.className='c12 panel bk-end';s.setAttribute('data-bp',n);s.setAttribute('data-v',v);
  var more=Object.keys(TABS).filter(function(k){return k!==v}).map(function(k){return '<a href="'+TABS[k][0]+'">'+TABS[k][1]+'</a>'}).join('');
  s.innerHTML='<h2>'+(v==='daily'?'You’re done for today':v==='weekly'?'You’re done for this week':'You’re done for this month')+' 🎉</h2><p>Thanks for reading. The site is free, needs no sign-in and updates every 8 hours. If you find it useful, you’re welcome to buy us a coffee; your support keeps the site running.</p>'+
- '<div class="bk-acts"><a class="bk-weekly" href="/zh/weekly/">Weekly brief and names to watch (USD 5/month)</a></div>'+
+ '<div class="bk-acts"><a class="bk-weekly" href="/en/weekly/">Weekly brief and names to watch (USD 5/month)</a></div>'+
  '<p class="note">See more:</p><div class="bk-more">'+more+'<button type="button" data-jump="stock-index" class="bk-si">Stock pages</button><button type="button" data-bk="1">Start over</button></div>';return s}
 function run(){
  var g=view.querySelector(':scope>.grid'),v=bookView();
