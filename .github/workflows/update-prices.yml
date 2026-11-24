@@ -1,8 +1,15 @@
 name: Update prices
-# Prices also refresh inside "Update site" every 8 hours; this workflow is manual / tools-path only.
-# Own concurrency group so it does not queue behind or block the 60min site-update group.
+# Prices also refresh inside "Update site" every 8 hours. This workflow is the
+# permanent price schedule (Tim, 2026-11-24): after the US cash close, plus two
+# later catches if GitHub drops a slot. It does not expire. A publish in the last
+# 90 minutes skips the backup so we do not download the same prices twice.
+# Own concurrency group so it does not queue behind or block the site-update group.
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '30 21 * * 1-5'  # 05:30 HKT Tue–Sat, after Mon–Fri US close
+    - cron: '30 23 * * 1-5'  # 07:30 HKT backup
+    - cron: '0 1 * * 2-6'    # 09:00 HKT last catch, still before the 11:00 full rebuild
   push:
     branches: [main]
     paths: ['tools/update_prices.py', '.github/workflows/update-prices.yml']
@@ -12,8 +19,42 @@ concurrency:
   group: update-prices
   cancel-in-progress: false
 jobs:
-  prices:
+  gate:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      run_update: ${{ steps.check.outputs.run_update }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 30
+      - name: Skip when prices were just published
+        id: check
+        run: |
+          set -e
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "run_update=true" >> "$GITHUB_OUTPUT"
+            echo "Non-schedule (${{ github.event_name }}) — always refresh prices."
+            exit 0
+          fi
+          ts=$(git log -40 --format='%ct %s' | grep -E '更新股價|定時重建' | head -1 | awk '{print $1}')
+          ts=${ts:-0}
+          now=$(date +%s)
+          age=$((now - ts))
+          echo "Last price or full publish age=${age}s"
+          if [ "$ts" != 0 ] && [ "$age" -lt 5400 ]; then
+            echo "run_update=false" >> "$GITHUB_OUTPUT"
+            echo "Published within 90 minutes — skip this catch-up."
+            exit 0
+          fi
+          echo "run_update=true" >> "$GITHUB_OUTPUT"
+
+  prices:
+    needs: gate
+    if: needs.gate.outputs.run_update == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
         with:
