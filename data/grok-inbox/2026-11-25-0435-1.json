@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2125268501179101522": {
+      "en_summary": "Howard Lindzon notes now $SPCX below the nvidia intervention day price.",
+      "zh_summary": "Howard Lindzon 指出現在 $SPCX 低於 Nvidia 干預日的價格。",
+      "tickers": ["SPCX"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPCX": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125268268193648943": {
+      "en_summary": "The Kobeissi Letter reports BREAKING: $AMD extends losses to over -12% on the day and falls below $400/share for the first time since May 2026. The stock is now down -30% since Hunterbrook Media suggested the company is illegally selling chips to China. Hunterbrook Capital also disclosed a short position in the stock.",
+      "zh_summary": "The Kobeissi Letter 報告突破：$AMD 當日虧損擴大至超過 -12%，並跌破 400 美元/股，為自 2026 年 5 月以來首次。該股自 Hunterbrook Media 指公司非法向中國出售芯片以來已下跌 -30%。Hunterbrook Capital 亦披露了該股的空頭倉位。",
+      "tickers": ["AMD"],
+      "stance": "中性",
+      "stance_by_ticker": {"AMD": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AMD": "below $400, down -12% day, -30% since Hunterbrook"}
+    },
+    "2125268106205364298": {
+      "en_summary": "Couzin_Vinny analyzes $MSFT with @spotgamma tools, watching the HEDGE WALL. As long as MSFT stays below $497.50, hedge wall dealers remain in negative gamma—upside moves can stall as dealers fade rallies toward $497.50–$500, and any drop back under $490 accelerates downside momentum. A sustained push above $497.50 and $500 flips dealers into net positive gamma. Clearing $500 triggers supportive dealer delta-hedging flows toward the $525 Call Wall (top gamma in Dec 18, 2026 and top delta in Jan 15, 2027).",
+      "zh_summary": "Couzin_Vinny 使用 @spotgamma 工具分析 $MSFT，關注對沖牆。只要 MSFT 維持在 497.50 美元以下，對沖牆交易商保持負 gamma—上行可能停滯，因為交易商在向 497.50–500 美元反彈時淡出，任何跌回 490 美元以下都會加速下行動能。持續推升至 497.50 美元和 500 美元以上會將交易商翻轉為淨正 gamma。清除 500 美元會觸發支持性交易商 delta 對沖流向 525 美元看漲牆（最高 gamma 集中在 2026 年 12 月 18 日，最高 delta 在 2027 年 1 月 15 日）。",
+      "tickers": ["MSFT"],
+      "stance": "中性",
+      "stance_by_ticker": {"MSFT": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MSFT": "below $497.50 negative gamma, above $500 to $525 Call Wall"}
+    },
+    "2125267735827423627": {
+      "en_summary": "RihardJarc fully agrees but thinks that if the gap between the frontier model that $ANT has vs others grows further and outside distillation is limited, $ANT can offer that best cheap model. Also there is a case that at each task if given the same price we would like a model even 0.1% better as 0.1% in each AI worker compounds on a company level.",
+      "zh_summary": "RihardJarc 完全同意，但認為如果 $ANT 擁有的前沿模型與其他模型的差距進一步擴大且外部蒸餾受限，$ANT 可以提供最佳的廉價模型。此外，在每個任務中如果價格相同，我們會希望有一個甚至比其他同價模型好 0.1% 的模型，因為每個 AI 工人的 0.1% 會在公司層面複利。",
+      "tickers": ["ANT"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ANT": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125267452858634741": {
+      "en_summary": "Charles Gasparino says great questions here which is why the rally in $NVDA couldn’t be sustained. Worth raising whether @JensenHuang will have to resign once again as the drip drip drip of these details continues and the Dems have replaced Trump and Lutnick in doing the questioning, quoting a summary of allegations involving Singapore clients smuggling chips to China, an alleged affair, claims about no smuggling, revenue reporting changes, and questioning DOJ conclusion of no unlawful conduct.",
+      "zh_summary": "Charles Gasparino 表示這裡有很好的問題，這就是為什麼 $NVDA 的反彈無法持續。值得提出的是，隨著這些細節不斷滴出以及民主黨取代特朗普和 Lutnick 進行質問，@JensenHuang 是否需要再次辭職，引用了涉及新加坡客戶向中國走私芯片、據稱婚外情、關於無走私的聲稱、收入報告變更以及質疑司法部無非法行為結論的摘要。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
