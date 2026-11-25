@@ -388,6 +388,35 @@ def test_en_title_meta_length():
 
 
 
+def test_announced_quarter_stays_on_recent_list():
+    """Yahoo already has the quarter, the 10-Q does not: keep it in the last 30 days.
+
+    NVDA reported 2026-11-17 (adjusted EPS 2.68). The list used the previous
+    10-Q (filed 2026-08-26), so the name never showed under the recent heading.
+    """
+    import re
+    import earnings_pages as ep
+    from datetime import date, timedelta
+    co = fixture_co()
+    lr = (date.today() - timedelta(days=8)).isoformat()
+    co['last_report'] = lr
+    co['pending'] = {'q': '2026-10-31', 'eps_act': 2.68, 'eps_est': 2.47}
+    assert (date.fromisoformat(lr) - date.fromisoformat(co['latest']['end'])).days > 70
+    assert ep.report_day(co) == lr
+    bare = fixture_co()
+    bare['last_report'] = lr
+    assert ep.report_day(bare) == '2026-08-27'
+    for lang, eps_label in (('zh', 'EPS（經調整）'), ('en', 'EPS (adjusted)')):
+        page = ep.list_page([co], lang, '2026-11-25 12:00')
+        recent, _, _rest = page.partition('id="pv-all"')
+        assert co['t'] in recent and lr in recent and '$2.68' in recent
+        assert '2026-08-27' not in page
+        assert eps_label in recent
+        if lang == 'en':
+            body = re.sub(r'<nav class="lang".*?</nav>', '', page, flags=re.S)
+            assert not re.search(r'[\u4e00-\u9fff]', body), re.findall(r'[\u4e00-\u9fff]+', body)[:8]
+
+
 if __name__ == '__main__':
     for name, fn in list(globals().items()):
         if name.startswith('test_') and callable(fn):

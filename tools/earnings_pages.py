@@ -37,6 +37,7 @@ L = {
         recent='過去 30 日公布', upcoming='未來 14 日將公布', all='全部公司', none='暫時冇。',
         th_date='日期', th_co='公司', th_q='財季', th_rev='收入按年', th_eps='EPS vs 預期',
         reported='公布', find='搵公司（代號或名稱）', no_match='搵唔到。', open_brief='睇完整簡報',
+        ended=lambda q: f'截至 {q}',
         title=lambda t, n, q: f'{t} 財報簡報 {q}：收入、EPS、利潤率同現金流｜{n}｜The Crowd Tape',
         desc=lambda t, n, q, r, y: f'{n}（{t}）{q} 財報：收入 {r}，按年 {y}。對比市場預期、業務線拆解、利潤率同自由現金流，數字來自 SEC 文件。',
         h1=lambda t, q: f'{t} 財報簡報：{q}',
@@ -73,6 +74,7 @@ L = {
         recent='Reported in the last 30 days', upcoming='Reporting in the next 14 days', all='All companies', none='None right now.',
         th_date='Date', th_co='Company', th_q='Quarter', th_rev='Revenue YoY', th_eps='EPS vs est.',
         reported='Reported', find='Find a company (ticker or name)', no_match='No match.', open_brief='Full brief',
+        ended=lambda q: f'Ended {q}',
         title=lambda t, n, q: f'{t} {q} earnings | The Crowd Tape',
         desc=lambda t, n, q, r, y: f'{t} {q} results: revenue {r}, {y} year on year. Estimates, revenue lines, margins and free cash flow from SEC filings.',
         h1=lambda t, q: f'{t} earnings brief: {q}',
@@ -362,7 +364,10 @@ def aff_listeners():
 
 def shell(lang, title, desc, canon_path, body, alt_paths=None, ld=None):
     alt = ''.join(f'<link rel="alternate" hreflang="{LANGS[k]}" href="{SITE}{k}/{canon_path}">' for k in LANGS)
-    switch = ''.join(f'<a href="/{k}/{canon_path}" hreflang="{LANGS[k]}"{" aria-current=\"page\"" if k == lang else ""}>{"中" if k == "zh" else "EN"}</a>' for k in LANGS)
+    cur = ' aria-current="page"'
+    switch = ''.join(
+        f'<a href="/{k}/{canon_path}" hreflang="{LANGS[k]}"{cur if k == lang else ""}>{"中" if k == "zh" else "EN"}</a>'
+        for k in LANGS)
     t = L[lang]
     ldj = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>' if ld else ''
     return f"""<!DOCTYPE html>
@@ -578,17 +583,44 @@ def brief_page(co, lang, stamp, has_stock):
 
 
 def report_day(co):
-    """The day the results came out: Yahoo's results date when it is on or after the quarter end, else the SEC filing day."""
+    """The day the results came out.
+
+    Yahoo's date when it is on or after this quarter's end and within 70 days
+    (a later date belongs to the next announcement, not this filing). Otherwise
+    the SEC filing day. A newer quarter already announced but not yet in a
+    10-Q (pending) uses that announcement date, so it stays in the last-30-days
+    list. Measuring 70 days from the previous quarter end hid NVDA after
+    2026-11-17.
+    """
     lr = co.get('last_report')
-    end = co['latest']['end']
-    if lr and lr > end and (date.fromisoformat(lr) - date.fromisoformat(end)).days <= 70:
+    end = (co.get('latest') or {}).get('end') or ''
+    if co.get('pending') and lr and end and lr > end:
         return lr
-    return co['latest'].get('filed') or end
+    if lr and end and lr > end and (date.fromisoformat(lr) - date.fromisoformat(end)).days <= 70:
+        return lr
+    return (co.get('latest') or {}).get('filed') or end
 
 
 def preview(co, lang):
-    """Small card for the list page: quarter, revenue with YoY, net margin, EPS vs estimate."""
-    t, q = L[lang], co['q'][-1]
+    """Small card for the list page: quarter, revenue with YoY, net margin, EPS vs estimate.
+
+    When the new quarter is out but the 10-Q is not filed, the card shows that
+    announcement (adjusted EPS from Yahoo) instead of the previous filing.
+    """
+    t = L[lang]
+    p = co.get('pending')
+    end = (co.get('latest') or {}).get('end') or ''
+    sep = '・' if lang == 'zh' else ' · '
+    if p and co.get('last_report') and end and co['last_report'] > end:
+        v, _ = verdict(p.get('eps_act'), p.get('eps_est'), lang)
+        rows = [(t['eps_adj'], f'<span class="n">{eps_s(p.get("eps_act"))}</span> {v}')]
+        meta = f'{E(t["ended"](p["q"]))}{sep}{t["reported"]} {E(report_day(co))}　⏳'
+        return (f'<a class="pv" href="/{lang}/earnings/{co["t"]}/" data-k="{E((co["t"] + " " + co["name"]).lower())}">'
+                f'<div class="pv-top"><b>{co["t"]}</b><span>{E(co["name"])}</span></div>'
+                f'<div class="pv-meta">{meta}</div>'
+                f'<dl>{"".join(f"<dt>{E(a)}</dt><dd>{b}</dd>" for a, b in rows)}</dl>'
+                f'<span class="pv-more">{E(t["open_brief"])} ›</span></a>')
+    q = co['q'][-1]
     ya = year_ago(co, q['end'])
     est = co.get('est') or {}
     g = pct(q['rev'], (ya or {}).get('rev'))
@@ -599,7 +631,6 @@ def preview(co, lang):
     if nm is not None:
         rows.append((t['nm'], f'<span class="n {cls(nm)}">{nm:.1f}%</span>'))
     rows.append(('EPS', f'<span class="n">{eps_s(eps)}</span> {v}'))
-    sep = '・' if lang == 'zh' else ' · '
     return (f'<a class="pv" href="/{lang}/earnings/{co["t"]}/" data-k="{E((co["t"] + " " + co["name"]).lower())}">'
             f'<div class="pv-top"><b>{co["t"]}</b><span>{E(co["name"])}</span></div>'
             f'<div class="pv-meta">{E(q["label"])}{sep}{t["reported"]} {report_day(co)}{"　⏳" if co.get("pending") else ""}</div>'
@@ -619,7 +650,7 @@ def list_page(cos, lang, stamp):
     recent = []
     for co in cos:
         rd = report_day(co)
-        if (today - date.fromisoformat(rd)).days <= 30:
+        if rd and 0 <= (today - date.fromisoformat(rd)).days <= 30:
             recent.append((rd, co))
     recent.sort(key=lambda x: (x[0], x[1].get('mcap') or 0), reverse=True)
     rows = ''.join(preview(co, lang) for _, co in recent)
