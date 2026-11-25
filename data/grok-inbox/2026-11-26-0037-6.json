@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2125393750432313723": {
+      "en_summary": "@MebFaber replies to @randomroger that you can make this argument for any asset as it moves in lock step with yields and inflation. Happy hour convo.",
+      "zh_summary": "@MebFaber 回覆 @randomroger 指你可以對任何資產做這個論點，因為它與收益率和通脹同步移動。快樂時光談話。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "yields",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2125392898287861868": {
+      "en_summary": "@charliebilello: Ten months ago 'The Dollar is doomed. Gold and Silver are going to the moon.' Ten months later: US Dollar +10%, Gold -29%, Silver -60%. Narratives follow prices more often than prices follow narratives.",
+      "zh_summary": "@charliebilello：十個月前「美元完蛋了。黃金和白銀將衝向月球。」十個月後：美元 +10%，黃金 -29%，白銀 -60%。敘事跟隨價格多於價格跟隨敘事。",
+      "tickers": ["GLD", "SLV"],
+      "stance": "中性",
+      "stance_by_ticker": {"GLD": "未表態", "SLV": "未表態"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "fx",
+      "macro_impact": "中性",
+      "ticker_notes": {"GLD": "十個月下跌 29%", "SLV": "十個月下跌 60%"}
+    },
+    "2125392336863801690": {
+      "en_summary": "@dee_bosa: Until now open weights meant Chinese source AI, ruling them out for regulated enterprises. This is the first sign American open models can compete on high stakes vertical work. Changes who holds the leverage (not the closed labs).",
+      "zh_summary": "@dee_bosa：直到現在開放權重意味著中國來源 AI，使它們被受監管企業排除。這是美國開放模型能在高風險垂直工作上競爭的第一個跡象。改變誰掌握槓桿（不是封閉實驗室）。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125392337157411185": {
+      "en_summary": "@benitoz replies to @jeremie0117 @AurelionRsch that he doesn't know, market won't get it, best is just doing apple playbook with capital returns and it grinds higher over time.",
+      "zh_summary": "@benitoz 回覆 @jeremie0117 @AurelionRsch 指他不知道，市場不會明白，最好就是做蘋果劇本，用資本回報，隨著時間慢慢上升。",
+      "tickers": ["AAPL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AAPL": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AAPL": "蘋果劇本資本回報長期上升"}
+    },
+    "2125391596678180982": {
+      "en_summary": "@firesidealpha: Ray Dalio says investors mistake great technology for a great investment in a bubble and compares the AI boom with the innovations of the 1920s. Bubble is not just price beyond PV of future cash flows because future cash flows unknown for decades.",
+      "zh_summary": "@firesidealpha：Ray Dalio 指投資者在泡沫中將偉大技術誤認為偉大投資，並將 AI 繁榮與 1920 年代創新比較。泡沫不只是價格超過未來現金流現值，因為未來現金流幾十年未知。",
+      "tickers": [],
+      "stance": "睇淡",
+      "stance_by_ticker": {},
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {}
+    }
+  }
+}
