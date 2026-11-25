@@ -1283,9 +1283,174 @@
       "MSTR"
      ]
     }
+   },
+   "intraday_1": {
+    "post_et": "11:00",
+    "post_hkt": "00:00",
+    "generated_at": "2026-11-25T17:16:43-05:00",
+    "date": "2026-11-25",
+    "date_kst": "2026-11-26",
+    "quotes": {
+     "SPY": {
+      "price": 716.7,
+      "prev_close": 718.78,
+      "chg_pct": -0.29,
+      "time": "2026-11-25T16:00:00-05:00"
+     },
+     "QQQ": {
+      "price": 633.93,
+      "prev_close": 638.1,
+      "chg_pct": -0.65,
+      "time": "2026-11-25T16:00:01-05:00"
+     },
+     "DIA": {
+      "price": 501.27,
+      "prev_close": 499.74,
+      "chg_pct": 0.31,
+      "time": "2026-11-25T16:00:00-05:00"
+     },
+     "CRWD": {
+      "price": 209.3,
+      "prev_close": 210.86,
+      "chg_pct": -0.74,
+      "time": "2026-11-25T16:00:02-05:00"
+     },
+     "DKS": {
+      "price": 158.59,
+      "prev_close": 153.17,
+      "chg_pct": 3.54,
+      "time": "2026-11-25T16:00:02-05:00"
+     },
+     "TGT": {
+      "price": 172.22,
+      "prev_close": 176.06,
+      "chg_pct": -2.18,
+      "time": "2026-11-25T16:01:47-05:00"
+     },
+     "INSM": {
+      "price": 170.31,
+      "prev_close": 170.15,
+      "chg_pct": 0.09,
+      "time": "2026-11-25T16:00:02-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-25T16:01:47-05:00",
+     "hkt": "2026-11-26 05:01"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "CRWD",
+      "chg_pct": -0.74,
+      "bull": 3,
+      "bear": 0,
+      "accounts": [
+       "TradexWhisperer",
+       "StockMarketNerd",
+       "IvanaSpear",
+       "Jason",
+       "MarketRebels",
+       "Brian_Stoffel_",
+       "RichardMoglen"
+      ]
+     },
+     {
+      "ticker": "DKS",
+      "chg_pct": 3.54,
+      "bull": 3,
+      "bear": 0,
+      "accounts": [
+       "Stephanie_Link",
+       "MikeZaccardi",
+       "petenajarian",
+       "Couzin_Vinny",
+       "SJosephBurns",
+       "benitoz"
+      ]
+     },
+     {
+      "ticker": "TGT",
+      "chg_pct": -2.18,
+      "bull": 3,
+      "bear": 0,
+      "accounts": [
+       "SunriseTrader",
+       "TrendSpider",
+       "capitalflows",
+       "traderstewie",
+       "MarketRebels",
+       "IBDinvestors"
+      ]
+     },
+     {
+      "ticker": "INSM",
+      "chg_pct": 0.09,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "petenajarian",
+       "3PeaksTrading",
+       "jonnajarian",
+       "MarketRebels"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Late morning · As of 16:01 ET (05:01 HKT)\n\n$SPY -0.3% · $QQQ -0.7% · $DIA +0.3%\n\n$CRWD -0.7%, 3 accounts bullish on site\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #CRWD #DKS",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "早盤觀察 · 截至 16:01 ET（05:01 HKT）\n\n$SPY -0.3% · $QQQ -0.7% · $DIA +0.3%\n\n$CRWD -0.7%，網站 3 個帳號看好\n$DKS +3.5%，網站 3 個帳號看好\n$TGT -2.2%，網站 3 個帳號看好\n$INSM +0.1%，網站 2 個帳號看好\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #CRWD #DKS",
+      "url": ""
+     },
+     "en": {
+      "text": "Late morning · As of 16:01 ET (05:01 HKT)\n\n$SPY -0.3% · $QQQ -0.7% · $DIA +0.3%\n\n$CRWD -0.7%, 3 accounts bullish on site\n$DKS +3.5%, 3 accounts bullish on site\n$TGT -2.2%, 3 accounts bullish on site\n$INSM +0.1%, 2 accounts bullish on site\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #CRWD #DKS",
+      "url": ""
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "SPCX",
+      "ADSK",
+      "LLY",
+      "WMT",
+      "CRWD",
+      "DKS",
+      "TGT",
+      "INSM",
+      "TGTX",
+      "COHR",
+      "GILD",
+      "NET",
+      "SYM",
+      "WDAY",
+      "ZM",
+      "GME"
+     ],
+     "bear": [
+      "AMBA",
+      "ORCL",
+      "AVGO",
+      "ADI",
+      "MSTR"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-25T17:16:36-05:00",
+  "generated_at": "2026-11-25T17:16:43-05:00",
   "generated_hkt": "2026-11-26 06:16"
  }
 }
