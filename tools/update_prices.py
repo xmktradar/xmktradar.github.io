@@ -319,6 +319,64 @@ def econ_events(stamp):
     return sorted(out, key=lambda e: e['time'])
 
 
+def lite_prices(prices, intraday=None):
+    """Same window as build_langs.lighten: first close plus the last 45 days.
+
+    Language homepages must not ship the full one-year series. The stock page
+    loads that, and the intraday line, from px/<ticker>.json when lite is set.
+    """
+    from datetime import date, timedelta
+    intraday = intraday or {}
+    out = {}
+    for ticker, row in (prices or {}).items():
+        row = dict(row)
+        closes = row.get('c') or []
+        if closes:
+            limit = (date.fromisoformat(closes[-1][0]) - timedelta(days=45)).isoformat()
+            index = max([i for i, bar in enumerate(closes) if bar[0] <= limit], default=0)
+            short = closes[:1] + closes[max(index, 1):]
+            if len(short) < len(closes) or intraday.get(ticker):
+                row['c'] = short
+                row['lite'] = 1
+        out[ticker] = row
+    return out
+
+
+def spread_prices(src):
+    """Visitors open /zh/ and /en/, not the master blob.
+
+    A price run used to refresh only index.html, so those homepages kept the
+    previous series until the next full site rebuild. Copy a 45-day series
+    onto the language pages while they are still the full inline blob
+    (the workflow runs slim_pages --restore first). Do not copy intraday:
+    that blob is what froze the phone. Slim pages are left alone.
+    """
+    import os
+    from slim_pages import is_slim, parse_blob, read_html, write_blob
+    _, src_data = parse_blob(open(src, encoding='utf-8').read(), src)
+    if is_slim(src_data):
+        print(src + ': slim, not spreading prices')
+        return
+    lite = lite_prices(src_data.get('prices') or {}, src_data.get('intraday') or {})
+    for rel in ('zh/index.html', 'en/index.html'):
+        if not os.path.exists(rel):
+            continue
+        html = read_html(rel)
+        match, data = parse_blob(html, rel)
+        if is_slim(data):
+            print(rel + ': slim, skip price spread')
+            continue
+        data['prices'] = lite
+        data.pop('intraday', None)
+        meta = src_data.get('meta') if isinstance(src_data.get('meta'), dict) else {}
+        if 'price_missing' in meta and isinstance(data.get('meta'), dict):
+            data['meta']['price_missing'] = meta['price_missing']
+        if isinstance(src_data.get('quotes'), dict):
+            data['quotes'] = src_data['quotes']
+        write_blob(rel, html, match, data)
+        print('spread lite prices -> ' + rel + ' (%d)' % len(lite))
+
+
 def main():
     s = open(HTML, encoding='utf-8').read()
     m = re.search(r'(<script type="application/json" id="dash-data">)(.*?)(</script>)', s, re.S)
@@ -449,6 +507,7 @@ def main():
     blob = json.dumps(d, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
     s = s[:m.start(2)] + blob + s[m.end(2):]
     open(HTML, 'w', encoding='utf-8').write(s)
+    spread_prices(HTML)
     print(f'tickers {len(tickers)} ok {ok} missing {len(missing)} quotes {len(qs)} macro {len(rows)}')
     print('missing:', ','.join(missing))
     print('auto-matched:', ','.join(matched) or '-', '| 未確認:', ','.join(gave_up) or '-', f'| posts with hidden tickers changed {hidden}')

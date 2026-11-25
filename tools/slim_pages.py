@@ -1,7 +1,9 @@
 """Split the inline dash-data blob out of the homepages, and put it back.
 
 The update pipeline reads the full blob inside index.html (sitedata.load / update_prices).
-Served pages stay under 1MB: the first screen is inline, everything else is in data/dash/.
+Served pages stay under 1MB. Prices, account thumbs and full avatars are separate
+files so a phone can paint prices without parsing the avatar blob. If that
+parse used to fail, every ticker showed 無股價資料.
 
   python3 tools/slim_pages.py --restore [files...]   # external -> inline full blob
   python3 tools/slim_pages.py --slim [files...]      # inline full blob -> external files
@@ -119,43 +121,122 @@ def merge_hist(obj, hist):
     return out
 
 
+def peel_avatars(accounts):
+    """Pull data-URL avatars out of accounts. Returns (lite accounts, avatars or None).
+
+    avatars[handle] = [key_index, data_url] so the avatar key can be put back
+    in its original place. Round-trip must keep dict key order.
+    """
+    if not isinstance(accounts, dict):
+        return accounts, None
+    lite, avatars = {}, {}
+    for handle, row in accounts.items():
+        if (isinstance(row, dict) and isinstance(row.get('avatar'), str)
+                and row['avatar'].startswith('data:')):
+            keys = list(row)
+            index = keys.index('avatar')
+            avatars[handle] = [index, row['avatar']]
+            lite[handle] = {k: row[k] for k in keys if k != 'avatar'}
+        else:
+            lite[handle] = row
+    return lite, (avatars or None)
+
+
+def graft_avatars(accounts, avatars):
+    if not avatars or not isinstance(accounts, dict):
+        return accounts
+    out = {}
+    for handle, row in accounts.items():
+        rec = avatars.get(handle)
+        if not rec or not isinstance(row, dict) or 'avatar' in row:
+            out[handle] = row
+            continue
+        index, url = rec
+        items = list(row.items())
+        items.insert(min(int(index), len(items)), ('avatar', url))
+        out[handle] = dict(items)
+    return out
+
+
+def assemble(slim, core, pages, hist, prices=None, avmini=None, avatars=None):
+    """Rebuild the full dash object from the pieces split_data() returns.
+
+    prices / avmini / avatars are None when that piece was not split out.
+    """
+    ext = slim.get('_ext') or {}
+    posts = list(slim.get('posts') or [])
+    for page in pages or []:
+        posts.extend(page)
+    values = merge_hist(slim, hist)
+    core = core if isinstance(core, dict) else {}
+    accounts = graft_avatars(core.get('accounts'), avatars) if 'accounts' in core else None
+    rebuilt = {}
+    for key in ext.get('order') or []:
+        if key == 'posts':
+            rebuilt['posts'] = posts
+        elif key in values and key not in ('_ext', 'posts'):
+            rebuilt[key] = values[key]
+        elif key == 'prices' and prices is not None:
+            rebuilt['prices'] = prices
+        elif key == 'avmini' and avmini is not None:
+            rebuilt['avmini'] = avmini
+        elif key == 'accounts' and accounts is not None:
+            rebuilt['accounts'] = accounts
+        elif key in core and key != 'accounts':
+            rebuilt[key] = core[key]
+    for key, val in core.items():
+        if key == 'accounts':
+            if 'accounts' not in rebuilt and accounts is not None:
+                rebuilt['accounts'] = accounts
+        elif key not in rebuilt and key != 'posts':
+            rebuilt[key] = val
+    if prices is not None and 'prices' not in rebuilt:
+        rebuilt['prices'] = prices
+    if avmini is not None and 'avmini' not in rebuilt:
+        rebuilt['avmini'] = avmini
+    for key, val in values.items():
+        if key not in rebuilt and key not in ('_ext', 'posts'):
+            rebuilt[key] = val
+    if 'posts' not in rebuilt and ('posts' in values or ext.get('posts') or pages):
+        rebuilt['posts'] = posts
+    return rebuilt
+
+
 def combine(slim):
     """Rebuild the full dash object from a slim blob plus the files it points at."""
     ext = slim['_ext']
-    core = load_json(url_to_path(ext['core'])) if ext.get('core') else {}
-    if not isinstance(core, dict):
-        raise SystemExit('core file is not an object: ' + str(ext.get('core')))
-    values = slim
+    core = {}
+    if ext.get('core'):
+        core = load_json(url_to_path(ext['core']))
+        if not isinstance(core, dict):
+            raise SystemExit('core file is not an object: ' + str(ext.get('core')))
+    prices = avmini = avatars = None
+    if ext.get('prices'):
+        prices = load_json(url_to_path(ext['prices']))
+        if not isinstance(prices, dict):
+            raise SystemExit('prices file is not an object: ' + str(ext.get('prices')))
+    if ext.get('avmini'):
+        avmini = load_json(url_to_path(ext['avmini']))
+        if not isinstance(avmini, dict):
+            raise SystemExit('avmini file is not an object: ' + str(ext.get('avmini')))
+    if ext.get('avatars'):
+        avatars = load_json(url_to_path(ext['avatars']))
+        if not isinstance(avatars, dict):
+            raise SystemExit('avatars file is not an object: ' + str(ext.get('avatars')))
+    hist = None
+    values_hist = None
     if ext.get('hist'):
         hist = load_json(url_to_path(ext['hist']))
         if not isinstance(hist, dict):
             raise SystemExit('hist file is not an object: ' + str(ext.get('hist')))
-        values = merge_hist(slim, hist)
-    posts = list(values.get('posts') or [])
+        values_hist = hist
+    pages = []
     for url in ext.get('posts') or []:
         page = load_json(url_to_path(url))
         if not isinstance(page, list):
             raise SystemExit('posts file is not a list: ' + url)
-        posts.extend(page)
-    order = ext.get('order')
-    out = {}
-    if order:
-        for key in order:
-            if key == 'posts':
-                out['posts'] = posts
-            elif key in values and key not in ('_ext', 'posts'):
-                out[key] = values[key]
-            elif key in core:
-                out[key] = core[key]
-    for key, val in core.items():
-        if key not in out and key != 'posts':
-            out[key] = val
-    for key, val in values.items():
-        if key not in out and key not in ('_ext', 'posts'):
-            out[key] = val
-    if 'posts' not in out and ('posts' in values or ext.get('posts')):
-        out['posts'] = posts
-    return out
+        pages.append(page)
+    return assemble(slim, core, pages, values_hist, prices, avmini, avatars)
 
 
 def full_data(html):
@@ -245,7 +326,27 @@ def split_data(data, lang, shell_len):
     posts = list(data.get('posts') or [])
     order = list(data.keys())
     base = {k: data[k] for k in order if k in INLINE}
-    core = {k: data[k] for k in order if k not in INLINE and k != 'posts'}
+    # Prices, thumbs and full avatars used to share one multi-megabyte core file.
+    # A phone that failed to parse it showed "無股價資料" for every ticker and often froze.
+    # They are separate files so the price series can load on its own.
+    prices = data['prices'] if isinstance(data.get('prices'), dict) else None
+    avmini = data['avmini'] if isinstance(data.get('avmini'), dict) else None
+    accounts_lite, avatars = (None, None)
+    if isinstance(data.get('accounts'), dict):
+        accounts_lite, avatars = peel_avatars(data['accounts'])
+    skip = set()
+    if prices is not None:
+        skip.add('prices')
+    if avmini is not None:
+        skip.add('avmini')
+    if accounts_lite is not None:
+        skip.add('accounts')
+    core = {}
+    for key in order:
+        if key == 'accounts' and accounts_lite is not None:
+            core['accounts'] = accounts_lite
+        elif key not in INLINE and key != 'posts' and key not in skip:
+            core[key] = data[key]
     hist = {}
     if isinstance(base.get('summaries'), dict):
         summaries = {}
@@ -268,6 +369,12 @@ def split_data(data, lang, shell_len):
     ext = {'order': order, 'posts': ['/data/dash/%s-posts-%d.json' % (lang, i) for i in range(len(older))]}
     if core:
         ext['core'] = '/data/dash/%s-core.json' % lang
+    if prices is not None:
+        ext['prices'] = '/data/dash/%s-prices.json' % lang
+    if avmini is not None:
+        ext['avmini'] = '/data/dash/%s-avmini.json' % lang
+    if avatars:
+        ext['avatars'] = '/data/dash/%s-avatars.json' % lang
     if hist:
         ext['hist'] = '/data/dash/%s-hist.json' % lang
     slim = dict(base)
@@ -287,7 +394,7 @@ def split_data(data, lang, shell_len):
     elif 'posts' in data:
         slim['posts'] = posts[:n]
     slim['_ext'] = ext
-    return slim, core, older, hist
+    return slim, core, older, hist, prices, avmini, avatars
 
 
 def shell_len(html, match):
@@ -322,49 +429,28 @@ def slim_file(rel, lang):
     original = combine(raw) if is_slim(raw) else raw
     # Re-parse the original through dumps/loads so the compare matches what we write.
     original = json.loads(dumps(original))
-    slim, core, pages, hist = split_data(original, lang, shell_len(html, match))
-    # Round-trip in memory before touching disk: rebuild from the same pieces.
-    trial = dict(slim)
-    # combine() reads files; check the pieces directly here.
-    posts = list(slim.get('posts') or [])
-    for page in pages:
-        posts.extend(page)
-    ext = slim['_ext']
-    values = merge_hist(slim, hist)
-    rebuilt = {}
-    for key in ext['order']:
-        if key == 'posts':
-            rebuilt['posts'] = posts
-        elif key in values and key not in ('_ext', 'posts'):
-            rebuilt[key] = values[key]
-        elif key in core:
-            rebuilt[key] = core[key]
-    for key, val in core.items():
-        if key not in rebuilt:
-            rebuilt[key] = val
-    for key, val in values.items():
-        if key not in rebuilt and key not in ('_ext', 'posts'):
-            rebuilt[key] = val
+    slim, core, pages, hist, prices, avmini, avatars = split_data(original, lang, shell_len(html, match))
+    rebuilt = assemble(slim, core, pages, hist, prices, avmini, avatars)
     if rebuilt != original:
         raise SystemExit(rel + ': restore(slim(x)) != x before write')
 
     folder = os.path.join(ROOT, 'data', 'dash')
     os.makedirs(folder, exist_ok=True)
     keep = set()
-    if core:
-        core_path = os.path.join(folder, lang + '-core.json')
-        write_json(core_path, core)
-        keep.add(os.path.abspath(core_path))
+
+    def keep_json(name, obj):
+        path_json = os.path.join(folder, name)
+        write_json(path_json, obj)
+        keep.add(os.path.abspath(path_json))
+        return os.path.getsize(path_json)
+
+    core_bytes = keep_json(lang + '-core.json', core) if core else 0
+    price_bytes = keep_json(lang + '-prices.json', prices) if prices is not None else 0
+    avmini_bytes = keep_json(lang + '-avmini.json', avmini) if avmini is not None else 0
+    avatar_bytes = keep_json(lang + '-avatars.json', avatars) if avatars else 0
     for i, page in enumerate(pages):
-        page_path = os.path.join(folder, '%s-posts-%d.json' % (lang, i))
-        write_json(page_path, page)
-        keep.add(os.path.abspath(page_path))
-    hist_bytes = 0
-    if hist:
-        hist_path = os.path.join(folder, lang + '-hist.json')
-        write_json(hist_path, hist)
-        keep.add(os.path.abspath(hist_path))
-        hist_bytes = os.path.getsize(hist_path)
+        keep_json('%s-posts-%d.json' % (lang, i), page)
+    hist_bytes = keep_json(lang + '-hist.json', hist) if hist else 0
     clean_stale(lang, keep)
 
     # The on-disk blob must match `slim` after a read, including key order.
@@ -380,9 +466,9 @@ def slim_file(rel, lang):
         raise SystemExit('%s is still %d bytes (limit 1MB)' % (rel, nbytes))
     n_posts = len(original.get('posts') or [])
     n_inline = len(slim.get('posts') or [])
-    print('%s: %d bytes (blob %d), posts inline %d/%d, core %s, post pages %d, hist %s' % (
+    print('%s: %d bytes (blob %d), posts inline %d/%d, core %d, prices %d, avmini %d, avatars %d, post pages %d, hist %s' % (
         rel, nbytes, blob_bytes, n_inline, n_posts,
-        'yes' if core else 'no', len(pages),
+        core_bytes, price_bytes, avmini_bytes, avatar_bytes, len(pages),
         str(hist_bytes) if hist else 'no'))
     return nbytes
 
