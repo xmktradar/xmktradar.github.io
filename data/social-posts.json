@@ -1790,9 +1790,161 @@
       "MSTR"
      ]
     }
+   },
+   "intraday_4": {
+    "post_et": "14:45",
+    "post_hkt": "03:45",
+    "generated_at": "2026-11-25T17:16:57-05:00",
+    "date": "2026-11-25",
+    "date_kst": "2026-11-26",
+    "quotes": {
+     "SPY": {
+      "price": 716.7,
+      "prev_close": 718.78,
+      "chg_pct": -0.29,
+      "time": "2026-11-25T16:00:00-05:00"
+     },
+     "QQQ": {
+      "price": 633.93,
+      "prev_close": 638.1,
+      "chg_pct": -0.65,
+      "time": "2026-11-25T16:00:01-05:00"
+     },
+     "DIA": {
+      "price": 501.27,
+      "prev_close": 499.74,
+      "chg_pct": 0.31,
+      "time": "2026-11-25T16:00:00-05:00"
+     },
+     "TGTX": {
+      "price": 68.37,
+      "prev_close": 70.13,
+      "chg_pct": -2.51,
+      "time": "2026-11-25T16:00:01-05:00"
+     },
+     "COHR": {
+      "price": 196.19,
+      "prev_close": 196.24,
+      "chg_pct": -0.03,
+      "time": "2026-11-25T16:00:02-05:00"
+     },
+     "GILD": {
+      "price": 176.74,
+      "prev_close": 178.29,
+      "chg_pct": -0.87,
+      "time": "2026-11-25T16:00:02-05:00"
+     },
+     "NET": {
+      "price": 283.3,
+      "prev_close": 287.29,
+      "chg_pct": -1.39,
+      "time": "2026-11-25T16:03:44-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-25T16:03:44-05:00",
+     "hkt": "2026-11-26 05:03"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "TGTX",
+      "chg_pct": -2.51,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "TraderLion",
+       "markminervini",
+       "ivanhoff"
+      ]
+     },
+     {
+      "ticker": "COHR",
+      "chg_pct": -0.03,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "CKCapitalxx",
+       "tenet_research",
+       "josenajarro"
+      ]
+     },
+     {
+      "ticker": "GILD",
+      "chg_pct": -0.87,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "DKellerCMT",
+       "SunriseTrader"
+      ]
+     },
+     {
+      "ticker": "NET",
+      "chg_pct": -1.39,
+      "bull": 2,
+      "bear": 0,
+      "accounts": [
+       "TraderLion",
+       "TradexWhisperer"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Afternoon tape · As of 16:03 ET (05:03 HKT)\n\n$SPY -0.3% · $QQQ -0.7% · $DIA +0.3%\n\n$TGTX -2.5%, 2 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #TGTX #COHR",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "尾盤前 · 截至 16:03 ET（05:03 HKT）\n\n$SPY -0.3% · $QQQ -0.7% · $DIA +0.3%\n\n$TGTX -2.5%，網站 2 個帳號看好\n$COHR -0.0%，網站 2 個帳號看好\n$GILD -0.9%，網站 2 個帳號看好\n$NET -1.4%，網站 2 個帳號看好\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #TGTX #COHR",
+      "url": null
+     },
+     "en": {
+      "text": "Afternoon tape · As of 16:03 ET (05:03 HKT)\n\n$SPY -0.3% · $QQQ -0.7% · $DIA +0.3%\n\n$TGTX -2.5%, 2 accounts bullish on site\n$COHR -0.0%, 2 accounts bullish on site\n$GILD -0.9%, 2 accounts bullish on site\n$NET -1.4%, 2 accounts bullish on site\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #TGTX #COHR",
+      "url": null
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "SPCX",
+      "ADSK",
+      "LLY",
+      "WMT",
+      "CRWD",
+      "DKS",
+      "TGT",
+      "INSM",
+      "TGTX",
+      "COHR",
+      "GILD",
+      "NET",
+      "SYM",
+      "WDAY",
+      "ZM",
+      "GME"
+     ],
+     "bear": [
+      "AMBA",
+      "ORCL",
+      "AVGO",
+      "ADI",
+      "MSTR"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-25T17:16:52-05:00",
+  "generated_at": "2026-11-25T17:16:57-05:00",
   "generated_hkt": "2026-11-26 06:16"
  }
 }
