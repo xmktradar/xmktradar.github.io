@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2125310865306210417": {
+      "en_summary": "I never understand why Mr.Market loves going-nowhere $MGNI & $PUBM, but gives obviously-low valuations to $APP $LFTO, $U, and $EVC despite high growth.",
+      "zh_summary": "我從不理解為什麼市場先生喜歡毫無進展的 $MGNI 和 $PUBM，卻給 $APP $LFTO、$U 和 $EVC 明顯低估值，儘管它們有高增長。",
+      "tickers": ["MGNI", "PUBM", "APP", "LFTO", "U", "EVC"],
+      "stance": "中性",
+      "stance_by_ticker": {"MGNI": "睇淡", "PUBM": "睇淡", "APP": "睇好", "LFTO": "睇好", "U": "睇好", "EVC": "睇好"},
+      "horizon": null,
+      "basis": "估值",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125310607163572569": {
+      "en_summary": "Yup. $NVDA #JensenHuang",
+      "zh_summary": "是的。$NVDA #JensenHuang",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125310418709319915": {
+      "en_summary": "$1.5 TRILLION market cap for this PoS? LOL. $TSLA $TSLAQ #FSD #Robotaxis",
+      "zh_summary": "這垃圾值 1.5 萬億市值？哈哈。$TSLA $TSLAQ #FSD #Robotaxis",
+      "tickers": ["TSLA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"TSLA": "睇淡"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TSLA": "質疑 1.5 萬億市值"}
+    },
+    "2125310394256548253": {
+      "en_summary": "Jensen Huang told $NVDA employees that Trump “is my president” and said he wants to help make both the president and the country successful. He also...",
+      "zh_summary": "Jensen Huang 告訴 $NVDA 員工，特朗普「是我的總統」，並表示他想幫助總統和國家成功。他還...",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2125310259791020219": {
+      "en_summary": "$TSM is my highest-conviction holding into 2027 here's why. 1. I don't have to pick the AI winner. Nvidia's GPUs and the custom chips from Broadcom...",
+      "zh_summary": "$TSM 是我對 2027 年最高信念的持倉，原因如下。1. 我不必挑選 AI 贏家。Nvidia 的 GPU 和博通的定制芯片...",
+      "tickers": ["TSM"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TSM": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TSM": "最高信念持倉至 2027，無需挑選 AI 贏家"}
+    }
+  }
+}
