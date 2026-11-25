@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2125357678491005150": {
+      "en_summary": "🏀🏀🏀",
+      "zh_summary": "🏀🏀🏀",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125356579214032979": {
+      "en_summary": "Special Thanksgiving edition of \"Risk and Return\" with podcast partner @BobSloanS3 of @S3Partners at 5pm today. $NVDA shorts made almost $14 billion in seven days after @JensenHuang's exit, then gave back $11.3 billion on Monday. Discuss who got caught, where markets go next, and whether President Trump is facing an existential crisis after this past weekend's wild events.",
+      "zh_summary": "特別感恩節版「Risk and Return」與播客夥伴@BobSloanS3 of @S3Partners今日下午5點播出。$NVDA空頭在@JensenHuang退出後七天內幾乎賺取140億美元，然後周一回吐113億美元。討論誰被套、市場下一步走向，以及特朗普總統是否在上周末瘋狂事件後面臨生存危機。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125356508682858905": {
+      "en_summary": "$DELL | Dell Earnings Call (Part 3): Traditional Server Units Decline Despite 235% Revenue Growth, Agentic AI Drives Demand, Supply Shortages Expected to Worsen in 2027. AI backlog no rescheduling, financing receivables up ~$500M QoQ on $22B AI shipments. 17G servers replace ~7 older, 18G replace 12-14. Expects demand-supply gap widen in 2027, ~87x token growth by end of decade, tracking over 200 GW data center projects.",
+      "zh_summary": "$DELL | Dell財報電話會議（第3部分）：傳統伺服器單位下降但收入增長235%，代理AI推動需求，預期2027年供應短缺惡化。AI積壓無重排，融資應收帳款環比僅增約5億美元，儘管季度AI出貨220億美元。17G伺服器可取代約7台舊機，18G可取代12-14台。預期2027年需求供應缺口擴大，到十年末token增長約87倍，追蹤超過200 GW數據中心項目。",
+      "tickers": ["DELL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"DELL": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125356477460176987": {
+      "en_summary": "First-ever basketball ETFs with actual NBA team names just got filed from LeagueShares. Assuming licensing deal with league. $NETS $CAVS $HEAT",
+      "zh_summary": "LeagueShares剛提交首批帶有實際NBA球隊名稱的籃球ETF。假設與聯盟有授權協議。$NETS $CAVS $HEAT",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125356286753530307": {
+      "en_summary": "Pairs traders used to need Python for this. Now one line. $NVDA vs $AMD: stretched, snapped back, repeat. Formula: =(NVDA.C / AMD.C - MA(NVDA.C / AMD.C, 20)) / STDEV(NVDA.C / AMD.C, 20). Swap in any pair, chart, alert, backtest.",
+      "zh_summary": "配對交易者以往需要Python。現在一行即可。$NVDA對$AMD：拉伸、回彈、重複。公式：=(NVDA.C / AMD.C - MA(NVDA.C / AMD.C, 20)) / STDEV(NVDA.C / AMD.C, 20)。可換任何配對，圖表、警報、回測。",
+      "tickers": ["NVDA", "AMD"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "AMD": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
