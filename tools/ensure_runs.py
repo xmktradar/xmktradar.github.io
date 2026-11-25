@@ -1,9 +1,10 @@
-"""Start Update site or Update prices when GitHub never started the scheduled run.
+"""Start the site jobs when GitHub never started the scheduled run.
 
-GitHub sometimes drops a cron. This looks at recent workflow runs and dispatches
-the overdue one. It does nothing when a run is already queued or in progress, or
-when one started in the last 90 minutes. Update site covers prices, so a site
-dispatch skips a separate price run.
+Covers the full publish, prices, and 齊聲之後 (follow-through). GitHub sometimes
+drops a cron. This looks at recent runs and dispatches whatever is overdue.
+It does nothing when a run is already queued or in progress, or when one
+started in the last 90 minutes. A full site run refreshes prices and
+follow-through, so those are not dispatched again in the same pass.
 
   python3 tools/ensure_runs.py --self-test
   python3 tools/ensure_runs.py --dry-run
@@ -22,6 +23,7 @@ from zoneinfo import ZoneInfo
 ET = ZoneInfo('America/New_York')
 SITE = 'update-site.yml'
 PRICES = 'update-prices.yml'
+FOLLOW = 'update-followthrough.yml'
 ACTIVE = {'queued', 'in_progress', 'waiting', 'pending', 'requested'}
 SITE_STALE = timedelta(hours=9)
 QUIET = timedelta(minutes=90)
@@ -70,14 +72,19 @@ def price_cutoff(now: datetime) -> datetime | None:
     return close - timedelta(days=1)
 
 
-def plan(site_runs: list, price_runs: list, now: datetime) -> list[str]:
-    """Workflow filenames to dispatch, site first. A site run also refreshes prices."""
+def plan(site_runs: list, price_runs: list, now: datetime, ft_runs: list | None = None) -> list[str]:
+    """Workflow filenames to dispatch. A site run also refreshes prices and follow-through."""
     out = []
     if should_dispatch(site_runs, now, now - SITE_STALE):
         out.append(SITE)
     cutoff = price_cutoff(now)
-    if cutoff and SITE not in out and should_dispatch(price_runs + site_runs, now, cutoff):
+    if not cutoff or SITE in out:
+        return out
+    if should_dispatch(price_runs + site_runs, now, cutoff):
         out.append(PRICES)
+    ft = site_runs if ft_runs is None else ft_runs
+    if should_dispatch(ft + site_runs, now, cutoff):
+        out.append(FOLLOW)
     return out
 
 
@@ -117,8 +124,8 @@ def self_test() -> None:
     assert plan(after_close, after_close, now) == [], plan(after_close, after_close, now)
     assert plan(old, old, now) == [SITE], plan(old, old, now)
     assert plan(running, old, now) == [], plan(running, old, now)
-    # Site ran before the close and is still inside 9 hours. Prices still need the close.
-    assert plan(before_close, old, now) == [PRICES], plan(before_close, old, now)
+    # Site ran before the close and is still inside 9 hours. Prices and 齊聲之後 still need the close.
+    assert plan(before_close, old, now, old) == [PRICES, FOLLOW], plan(before_close, old, now, old)
     sunday = datetime(2026, 11, 22, 15, 0, tzinfo=timezone.utc)
     assert price_cutoff(sunday) is None
     assert plan(after_close, old, sunday) == []
@@ -140,7 +147,8 @@ def main() -> None:
     now = datetime.now(timezone.utc)
     site_runs = runs_of(repo, SITE, token)
     price_runs = runs_of(repo, PRICES, token)
-    todo = plan(site_runs, price_runs, now)
+    ft_runs = runs_of(repo, FOLLOW, token)
+    todo = plan(site_runs, price_runs, now, ft_runs)
     if not todo:
         print(f'nothing overdue at {now.strftime("%Y-%m-%d %H:%M")} UTC')
         return
