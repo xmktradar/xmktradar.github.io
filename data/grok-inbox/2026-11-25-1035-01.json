@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2125395316879061094": {
+      "en_summary": "@damnang2 replies \"2027.06\" to @bftd2025's claim that $TSM is coming after the Koreans and the news should go public by June 2027.",
+      "zh_summary": "@damnang2 回覆「2027.06」，回應 @bftd2025 表示 $TSM 將針對韓國廠商，相關消息應於2027年6月公開。",
+      "tickers": ["TSM"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TSM": "睇好"},
+      "horizon": "中線",
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TSM": "預計2027年6月針對韓國廠商的消息公開"}
+    },
+    "2125394162241671378": {
+      "en_summary": "Ross Gerber says even using a new formula discounting for affairs and every possible risk method and outcome, with Jensen at Nvidia, his Nvidia chips using AI analysis come up with $242 a share for $NVDA.",
+      "zh_summary": "Ross Gerber 表示，即使使用新公式折扣所有事務及各種可能風險方法與結果，在 Jensen 領導 Nvidia 下，其 Nvidia 晶片 AI 分析得出 $NVDA 每股 242 美元。",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "考慮風險折扣後 AI 分析目標價 242 美元，Jensen 回歸"}
+    },
+    "2125394069404749943": {
+      "en_summary": "@EliteOptions2 outlines Wednesday trade plan after tariff news gap down. $SPX closed above 7200, $QQQ at previous ATH 637 after 657+ yesterday. Expects higher attempt next week to $SPX 7300 and $QQQ 650+ before FOMC Dec 9. Buy dips if $SPX holds 7000 and $QQQ above 606. Watch $SMH near 460, $AMD above 450, $MU through 700, $SNDK above 90, $NVDA hold 153. PCE data premarket tomorrow. Tread lightly until after FOMC.",
+      "zh_summary": "@EliteOptions2 概述週三交易計劃，關稅新聞導致缺口下跌後。$SPX 收於 7200 上方，$QQQ 於先前 ATH 637，昨日曾至 657+。預期下週再試高至 $SPX 7300 及 $QQQ 650+，於 12 月 9 日 FOMC 前。若 $SPX 守住 7000 且 $QQQ 高於 606 則買入回調。觀察 $SMH 近 460、$AMD 高於 450、$MU 突破 700、$SNDK 高於 90、$NVDA 守住 153。明日盤前有 PCE 數據。FOMC 前謹慎。",
+      "tickers": ["SPY", "QQQ", "AMD", "MU", "NVDA", "SMH", "SNDK"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPY": "睇好", "QQQ": "睇好", "AMD": "睇好", "MU": "睇好", "NVDA": "睇好", "SMH": "睇好", "SNDK": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {"SPY": "目標 7300，守 7000 可買入回調", "QQQ": "目標 650+，守 606", "AMD": "回升高於 450", "MU": "突破 700", "NVDA": "守住先前 ATH 153", "SMH": "回近 460", "SNDK": "高於 90"}
+    },
+    "2125393527630872819": {
+      "en_summary": "@rubicon59 says AECs was just a preview, IMHO. $CRDO",
+      "zh_summary": "@rubicon59 表示 AECs 只是預覽，個人看法。$CRDO",
+      "tickers": ["CRDO"],
+      "stance": "睇好",
+      "stance_by_ticker": {"CRDO": "睇好"},
+      "horizon": "中線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125392223739236547": {
+      "en_summary": "(Reposted by @JohnSpall247) Dell ($DELL) now has more AI orders to fill than all its sales last year. Customers have ordered $132B of AI servers that Dell has not shipped yet, up from $18B a year ago. Dell's sales last year were $113.5B.",
+      "zh_summary": "(由 @JohnSpall247 轉推) Dell ($DELL) 現有待完成的 AI 訂單超過其去年全部銷售額。客戶已訂購 1320 億美元尚未出貨的 AI 伺服器，較一年前的 180 億美元增加。Dell 去年銷售額為 1135 億美元。",
+      "tickers": ["DELL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"DELL": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"DELL": "AI 伺服器訂單積壓 1320 億美元，超過去年總銷售 1135 億美元"}
+    }
+  }
+}
