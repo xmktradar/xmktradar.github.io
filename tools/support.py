@@ -16,6 +16,7 @@ from build_langs import with_root_redirect
 
 SITE = 'https://thecrowdtape.com/'
 LANGS = {'zh': 'zh-Hant', 'en': 'en'}
+FUTU_LINK = ' · <a href="https://invest.futuhk.com/invite-centre_share?lang=zh-hk&invite_code=MMKAXKFN&inviter=15056112&channel=1287&subchannel=1&global_content=%7B%22promote_content%22%3A%2230%22%2C%22promote_id%22%3A16069%2C%22promote_type%22%3A1%2C%22sub_promote_id%22%3A14%2C%22invite%22%3A15056112%7D" rel="sponsored nofollow noopener" target="_blank" data-tool="futu">富途牛牛 <span class="aff-tag">推廣</span></a>'
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HAN = re.compile(r'[\u4e00-\u9fff]')
 
@@ -41,7 +42,8 @@ def page(template, lang):
     html = html.replace('{{home}}', f'/{lang}/')
     for k, mark in cur.items():
         html = html.replace('{{cur_%s}}' % k, mark)
-    return apply(html, table(lang))
+    html = apply(html, table(lang))
+    return html.replace('{{futu_link}}', FUTU_LINK if lang == 'zh' else '')
 
 
 def write(path, html):
