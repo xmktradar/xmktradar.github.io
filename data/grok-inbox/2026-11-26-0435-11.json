@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2125333678054363212": {
+      "en_summary": "SPX pinning 7200 and VIX futures red on day at the close..",
+      "zh_summary": "SPX钉在7200，VIX期貨當天收盤時下跌..。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPY": "Pinning 7200"}
+    },
+    "2125333144945500185": {
+      "en_summary": "This about to happen at 4pm on @YahooFinance today. So about Nvidia and Jensen and Anthropic… Yahoo Finance link.",
+      "zh_summary": "這將於今天下午4點在@YahooFinance發生。所以關於Nvidia和Jensen和Anthropic… Yahoo Finance鏈接。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125332221108310154": {
+      "en_summary": "@MKoolass always spreads with SPX 0DTE.",
+      "zh_summary": "@MKoolass 總是用SPX 0DTE做價差。",
+      "tickers": ["SPY"],
+      "stance": null,
+      "stance_by_ticker": {"SPY": "未表態"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125332209821200682": {
+      "en_summary": "AMD MOGGING NVIDIA ALERT & NARRATIVE VIOLATION ALERT. NVIDIA spent the whole year marketing how their Vera CPU is designed for Agentic tool use calls requiring high per-thread performance. But according to newly released SPEC CPU benchmarks, AMD VENICE-HF is 11–21% FASTER on a per-thread basis.",
+      "zh_summary": "AMD壓制NVIDIA警報 叙事違反警報。NVIDIA整年都在宣傳他們的Vera CPU是為「代理工具使用調用」設計的，聲稱需要高單線程性能。但根據新發布的官方行業標準SPEC CPU基準測試，AMD VENICE-HF在單線程基礎上快11–21%。",
+      "tickers": ["AMD", "NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AMD": "睇好", "NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AMD": "Faster per-thread on SPEC CPU vs NVIDIA Vera"}
+    },
+    "2125332111083360373": {
+      "en_summary": "Jobs traded his economic ownership for getting rid of the Apple NPC board. Truly a selfless act as he never financially benefited from the rise of Apple he brought about, not even via a salary.",
+      "zh_summary": "Jobs用他的經濟所有權換取擁除蘋果NPC董事會。真正無私的行為，因為他從未從他帶來的蘋果上升中獲得財務利益，甚至通過薪水。",
+      "tickers": ["AAPL"],
+      "stance": "中性",
+      "stance_by_ticker": {"AAPL": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
