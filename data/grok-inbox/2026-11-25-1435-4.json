@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2125316825214783917": {
+      "en_summary": "$AAPL has been the calmest of the Mag 7 this year by a wide margin, with the lowest IVx on 87% of sessions. Its YTD high of 36.0% is below where $MSFT trades today at 36.6% and $TSLA's lowest IVx of the year. AAPL IVx at 26.8%.",
+      "zh_summary": "$AAPL 今年是美股七巨頭中最平靜的，在 87% 的交易日中波動率最低。其年初至今高點 36.0% 低於 $MSFT 今日的 36.6% 以及 $TSLA 今年最低波動率。$AAPL 波動率為 26.8%。",
+      "tickers": ["AAPL", "MSFT", "TSLA"],
+      "stance": "中性",
+      "stance_by_ticker": {"AAPL": "中性", "MSFT": "中性", "TSLA": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125316711255621680": {
+      "en_summary": "$NVDA left a big gap yesterday. To fill the gap NVDA would have to drop to 143.73. If the gap gets filled, SMH and SOXX may undercut last week's low this week.",
+      "zh_summary": "$NVDA 昨天留下一個大缺口。要填補缺口，$NVDA 必須跌至 143.73。如果缺口被填補，SMH 和 SOXX 本週可能跌破上週低點。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "缺口填補需跌至 143.73"}
+    },
+    "2125316660450222532": {
+      "en_summary": "Expect a decent green day tomorrow in the indices before Thanksgiving holiday. Last year $SPX gained 0.69% on the day before. Let’s run it back.",
+      "zh_summary": "預期明天在感恩節假期前指數有不錯的綠盤日。去年 $SPX 在前一天上漲 0.69%。讓我們重演一次。",
+      "tickers": ["SPY"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPY": "睇好"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利好",
+      "ticker_notes": {"SPY": "預期感恩節前一天上漲，去年同日漲 0.69%"}
+    },
+    "2125315768526962954": {
+      "en_summary": "Applied Optoelectronics $AAOI locked in a second hyperscaler. The 2027 piece alone is about two-thirds of what the Street expects AOI to sell next year. Signed a multiyear agreement with an existing Tier-1 hyperscale datacenter customer. Mentions $ANET $COHR $FN $LITE $NVDA.",
+      "zh_summary": "Applied Optoelectronics $AAOI 鎖定了第二家超大規模客戶。僅 2027 年的部分就約佔市場預期 AOI 明年銷售額的三分之二。與現有一級超大規模數據中心客戶簽署了多年協議。提及 $ANET $COHR $FN $LITE $NVDA。",
+      "tickers": ["AAOI", "ANET", "COHR", "FN", "LITE", "NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AAOI": "睇好", "ANET": "未表態", "COHR": "未表態", "FN": "未表態", "LITE": "未表態", "NVDA": "未表態"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AAOI": "鎖定第二家超大規模客戶，2027 年部分約佔預期銷售額三分之二"}
+    },
+    "2125315502788825123": {
+      "en_summary": "$GILD breaking out today from a nice base. None in trade account, do own it in spec/gamble/invest account.",
+      "zh_summary": "$GILD 今天從一個不錯的基礎突破。交易帳戶中沒有，但在投機/賭博/投資帳戶中持有。",
+      "tickers": ["GILD"],
+      "stance": "睇好",
+      "stance_by_ticker": {"GILD": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"GILD": "從基礎突破"}
+    }
+  }
+}
