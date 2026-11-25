@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2125312245093609842": {
+      "en_summary": "Retailers are cashing in! Best Buy $BBY beat on sales and profit and Dick's Sporting Goods $DKS raised its outlook. Shoppers are still spending.",
+      "zh_summary": "零售商正在獲利！百思買 $BBY 銷售和利潤超預期，迪克體育用品 $DKS 上調展望。購物者仍在消費。",
+      "tickers": ["BBY", "DKS"],
+      "stance": "睇好",
+      "stance_by_ticker": {"BBY": "睇好", "DKS": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"BBY": "銷售和利潤超預期", "DKS": "上調展望"}
+    },
+    "2125312119167971374": {
+      "en_summary": "$NVDA is showing strong put skew, with IVx for the put nearest 25Δ, 30DTE trading ~8pts higher than the equidistant call IVx. That's steeper than ~93% of readings.",
+      "zh_summary": "$NVDA 顯示強烈的看跌偏斜，最接近 25Δ、30 天到期的看跌期權隱含波動率比等距看漲期權高約 8 個點。這比約 93% 的讀數更陡峭。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "強烈看跌偏斜，波動率偏斜陡峭"}
+    },
+    "2125311830511993300": {
+      "en_summary": "He writes hit pieces and could care less if he is right or wrong and covers his positions after they hit the market. Definition of smash and grab.",
+      "zh_summary": "他寫抨擊文章，不管對錯，並在它們進入市場後平倉。這就是打砸搶的定義。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125311224242164185": {
+      "en_summary": "Wow, memory names like $SNDK just keep on dropping. At a $89B market cap they have >$89B minimum in LTAs with contractual price floors supporting at least that.",
+      "zh_summary": "哇，像 $SNDK 這樣的記憶體名稱一直在下跌。在 890 億市值下，他們有超過 890 億的最低長期協議，帶有合約價格下限支持至少該金額。",
+      "tickers": ["SNDK"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SNDK": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SNDK": "市值 890 億，但有超過 890 億的最低長期協議帶價格下限"}
+    },
+    "2125310988006429168": {
+      "en_summary": "$ABBV bull vs bear case. Bull: strong 10.3% YoY revenue growth, raised 2026 guidance, robust Skyrizi and Rinvoq sales, expanding oncology.",
+      "zh_summary": "$ABBV 多空案例。多頭：強勁 10.3% 年同比營收增長，上調 2026 指引，Skyrizi 和 Rinvoq 銷售強勁，腫瘤學擴張。",
+      "tickers": ["ABBV"],
+      "stance": "中性",
+      "stance_by_ticker": {"ABBV": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
