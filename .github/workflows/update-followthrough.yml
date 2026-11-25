@@ -1,0 +1,67 @@
+name: Update follow-through
+# 齊聲之後. The 8-hour site job also runs this, but that step is allowed to fail
+# without stopping the publish, so the table can stay on an old file.
+# This job is permanent: after the US cash close, and once more if that slot is
+# dropped. A publish in the last 90 minutes skips the backup.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 22 * * 1-5'   # 06:00 HKT, after Mon–Fri US close
+    - cron: '0 0 * * 2-6'    # 08:00 HKT backup
+permissions:
+  contents: write
+concurrency:
+  group: update-followthrough
+  cancel-in-progress: false
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      run_update: ${{ steps.check.outputs.run_update }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 30
+      - name: Skip when follow-through was just published
+        id: check
+        run: |
+          set -e
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "run_update=true" >> "$GITHUB_OUTPUT"
+            echo "Non-schedule (${{ github.event_name }}) — always recompute."
+            exit 0
+          fi
+          ts=$(git log -40 --format='%ct %s' | grep -E '更新齊聲之後|定時重建' | head -1 | awk '{print $1}')
+          ts=${ts:-0}
+          now=$(date +%s)
+          age=$((now - ts))
+          echo "Last follow-through or full publish age=${age}s"
+          if [ "$ts" != 0 ] && [ "$age" -lt 5400 ]; then
+            echo "run_update=false" >> "$GITHUB_OUTPUT"
+            echo "Published within 90 minutes — skip this catch-up."
+            exit 0
+          fi
+          echo "run_update=true" >> "$GITHUB_OUTPUT"
+
+  follow:
+    needs: gate
+    if: needs.gate.outputs.run_update == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Recompute 齊聲之後
+        run: python3 tools/followthrough.py
+      - name: Publish
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add data/followthrough.json
+          git diff --cached --quiet && exit 0
+          git commit -m "更新齊聲之後 $(TZ=Asia/Hong_Kong date '+%Y-%m-%d %H:%M') HKT"
+          git pull --rebase origin main || { git rebase --abort; echo "::error::main 喺更新期間有新改動，今次唔發佈，下次再試"; exit 1; }
+          git push origin HEAD:main
