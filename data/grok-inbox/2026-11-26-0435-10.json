@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2125333973643727300": {
+      "en_summary": "Huangover. Banger.",
+      "zh_summary": "Huangover。很棒。",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125333942836576462": {
+      "en_summary": "S&P 500 UNOFFICIALLY CLOSES DOWN 38.20 POINTS, OR 0.53 PERCENT, AT 7,198.97.",
+      "zh_summary": "標普500非官方收盤下跌38.20點，或下跌0.53%，報於7198.97。",
+      "tickers": ["SPY"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPY": "睇淡"},
+      "horizon": "短線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125333840096866472": {
+      "en_summary": "Gamma has a calendar. Our QQQ calendarized gamma map shows negative gamma through Thanksgiving and month end, so a rally likely forces more buying. That fuel dies into FOMC on Dec 9. Black Friday promo link.",
+      "zh_summary": "Gamma有日曆。我們的QQQ日曆化gamma圖顯示感恩節到月底負gamma，所以反彈可能迫使更多買入。這種燃料在12月9日FOMC前消耗。黑色星期五促銷鏈接。",
+      "tickers": ["QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2125333706554347993": {
+      "en_summary": "Oracle's credit default swaps are now wider than Bear Stearns' were in January 2008. The bond market is pricing the AI build like it's 2007.",
+      "zh_summary": "Oracle的信用違約掉期合約現在比Bear Stearns在2008年1月時更寬。債券市場正在像2007年那樣為AI建設定價。",
+      "tickers": ["ORCL"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"ORCL": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"ORCL": "CDS wider than Bear Stearns 2008"}
+    },
+    "2125333696421281860": {
+      "en_summary": "Great to be on @CNBCClosingBell with @TheJudgeCNBC discussing our bullish stance and $250 PT on Nvidia with Jensen back as CEO of Nvidia. Link to CNBC video.",
+      "zh_summary": "很高興在@CNBCClosingBell與@TheJudgeCNBC討論我們的看好立場和對Nvidia的250美元目標價，Jensen重返擔任Nvidia首席執行官。CNBC視頻鏈接。",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "$250 PT with Jensen back as CEO"}
+    }
+  }
+}
