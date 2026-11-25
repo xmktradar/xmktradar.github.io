@@ -1,1 +1,93 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2125300192140554313": {
+      "en_summary": "One important thing today different than Friday is the market rotating out of semis and buying everything else again. Cheap and abundant AI is good for everyone else, just like internet infrastructure. For ES futures trading this has been great two way trading since the open. Fade edges on rotation days.",
+      "zh_summary": "今天與星期五不同的重要一點是市場正從半導體板塊輪動出來並再次買入其他所有東西。廉價且充足的人工智能對其他所有人都有好處，就像互聯網基礎設施一樣。對於ES期貨交易，自開盤以來一直是很好的雙向交易。在輪動日上淡出邊緣。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2125299294013927432": {
+      "en_summary": "Meta $META's Muse AI agent can now shop Walmart's Black Friday deals and check out for you, a real test of agents with spending limit. Per Walmart instructions reported by The Verge, set Agent Profile with spending limit like $50 $100 or $200, check out inside Muse conversation at same prices as Walmart.com via Agent Gateway and Sparky. Amazon and eBay blocked AI agents while Walmart opens the door. For Meta this gives path from chat to checkout at biggest retailer during holiday peaks, and every such agent is inference demand. Caveat: details as reported, start date moved between Nov 23 and 24, no usage revenue share or Meta commentary disclosed. $WMT $AMZN $GOOGL $MSFT",
+      "zh_summary": "Meta $META 的 Muse AI 代理現在可以購物 Walmart 的黑色星期五優惠並為你結帳，是帶有支出限額代理的真正測試。根據 The Verge 報導的 Walmart 指示，設定帶有如 $50、$100 或 $200 支出限額的代理檔案，在 Muse 對話內以與 Walmart.com 相同價格結帳，透過代理閘道和 Sparky。Amazon 和 eBay 已阻止 AI 代理，而 Walmart 則開門。對 Meta 而言，這在假期高峰期提供從聊天到最大零售商結帳的路徑，每個這樣的代理都是推理需求。注意：細節如報告所述，開始日期在 11 月 23 日和 24 日間變動，無使用量、收入分成或 Meta 評論披露。$WMT $AMZN $GOOGL $MSFT",
+      "tickers": ["META", "WMT", "AMZN", "GOOGL", "MSFT"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "META": "睇好",
+        "WMT": "睇好",
+        "AMZN": "中性",
+        "GOOGL": "中性",
+        "MSFT": "中性"
+      },
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125299265752940729": {
+      "en_summary": "These are the worst performing stocks in the S&P 500 $SPY right now: $DELL -11%, $MU -10%, $LITE -9.6%, $AMD -9.4%, $MRVL -7.85%, $INTC -6.99%, $NVDA -6.56%. Are you buying the dip?",
+      "zh_summary": "這些是目前標普500指數 $SPY 中表現最差的股票：$DELL -11%，$MU -10%，$LITE -9.6%，$AMD -9.4%，$MRVL -7.85%，$INTC -6.99%，$NVDA -6.56%。你會買低嗎？",
+      "tickers": ["SPY", "DELL", "MU", "LITE", "AMD", "MRVL", "INTC", "NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "SPY": "中性",
+        "DELL": "未表態",
+        "MU": "未表態",
+        "LITE": "未表態",
+        "AMD": "未表態",
+        "MRVL": "未表態",
+        "INTC": "未表態",
+        "NVDA": "未表態"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125299041323843904": {
+      "en_summary": "Cherry-picking alert on $AMD. According to OptionTeller.com, better context vs cherry-picking: largest bearish long puts include $7.83M 34-leg complex spread at $270 and $300 puts 388-423 days out with spot $416.40 (28-35% OTM), $6.80M 4-leg at $250-$300 puts spot $413.76, and others flagged open. Largest bullish mostly short puts include $11.39M $500 put sold 423 days spot $416.54 (about 20% ITM), $8.74M $300 put sold, and others. Also notes incomplete bot/sld open/closed labeling on other trades making them useless for serious consideration.",
+      "zh_summary": "對 $AMD 的 cherry-picking 警報。根據 OptionTeller.com，更好的背景對比 cherry-picking：最大看淡多頭看跌期權包括 $7.83M 的 34 腿複雜價差，使用 $270 和 $300 看跌期權，388-423 天到期，現價 $416.40（28-35% 價外），$6.80M 4 腿在 $250-$300 看跌期權現價 $413.76，以及其他標記為開倉。最大看好多為空頭看跌期權，包括 $11.39M $500 看跌期權賣出 423 天現價 $416.54（約 20% 價內），$8.74M $300 看跌期權賣出，以及其他。亦指出其他交易缺乏 bot/sld 開倉/平倉標籤，對認真考慮無用。",
+      "tickers": ["AMD"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "AMD": "中性"
+      },
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125298751942390116": {
+      "en_summary": "(Reposted by @MohnishPabrai) \"Circle the wagons\" is central to $WAGN’s investment approach. Portfolio Manager @MohnishPabrai explains why finding great businesses and holding them for the long term can be a powerful strategy.",
+      "zh_summary": "(由 @MohnishPabrai 轉帖) 「圍起馬車」是 $WAGN 投資方法的核心。投資組合經理 @MohnishPabrai 解釋為何找到優秀企業並長期持有可以是強大策略。",
+      "tickers": ["WAGN"],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "WAGN": "睇好"
+      },
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
