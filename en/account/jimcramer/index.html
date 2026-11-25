@@ -958,6 +958,19 @@ header.ap-top{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hd-t
 .ap-grad{background:linear-gradient(90deg,#0071e3,#9f5afd 52%,#e3366e);-webkit-background-clip:text;background-clip:text;color:transparent}
 .ap-sub{margin:18px auto 0;max-width:640px;font:400 21px/1.45 var(--f-body);color:var(--mut)}
 .ap-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.wk-summary{margin:22px auto 0;max-width:720px;text-align:left}
+.wk-summary h2{margin:0 0 10px;font:600 18px/1.3 var(--f-body);color:var(--tx-strong)}
+.wk-sum-wrap{overflow-x:auto}
+.wk-sum{width:100%;border-collapse:collapse;font:400 14px/1.4 var(--f-body);color:var(--tx)}
+.wk-sum th,.wk-sum td{border-top:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.wk-sum th{font-weight:600;color:var(--mut);font-size:12.5px}
+.wk-sum-note{margin:10px 0 0;font:400 14px/1.45 var(--f-body);color:var(--mut)}
+.wk-summary .wk-row{display:grid;grid-template-columns:minmax(72px,auto) minmax(0,1fr);column-gap:12px;row-gap:2px;align-items:baseline;padding:10px 0;border-top:1px solid var(--line);font-size:14px}
+.wk-summary .wk-t{font-weight:600}
+.wk-summary .wk-side{font-size:13px;color:var(--mut)}
+.wk-summary .wk-meta{grid-column:1 / -1;color:var(--mut);font-size:13px}
+.wk-summary .wk-up{color:var(--up,#0a7a3e)}
+.wk-summary .wk-dn{color:var(--dn,#c0392b)}
 .ap-btn{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff!important;border:1px solid var(--accent);border-radius:999px;padding:11px 22px;font:500 17px/1.2 var(--f-body);text-decoration:none}
 .ap-btn:hover{filter:brightness(1.08)}
 .ap-btn.ap-ghost{background:transparent;color:var(--link)!important}
@@ -1087,7 +1100,7 @@ header.ap-top{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hd-t
 </div>
 <div class="open-live"><a href="/en/#account/jimcramer">Open the interactive page (all posts)</a></div>
 </main>
-<footer class="wrap foot"><p><a href="/en/">Home</a> · <a href="/en/tools/">Tools</a> · <a href="/en/support/">Support us</a> · <a href="/en/newsletter/">Newsletter</a> · Updated 2026-11-25 01:44 HKT</p></footer>
+<footer class="wrap foot"><p><a href="/en/">Home</a> · <a href="/en/tools/">Tools</a> · <a href="/en/support/">Support us</a> · <a href="/en/newsletter/">Newsletter</a> · Updated 2026-11-25 05:06 HKT</p></footer>
 <script>document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var h='';try{h=new URL(a.href).hostname.toLowerCase()}catch(err){return}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com'))gtag('event','x_outbound',{link_url:a.href,page:'account',lang:document.documentElement.lang||'',transport_type:'beacon'})});</script>
 <button type="button" class="to-top" aria-label="Back to top" title="Back to top">↑</button>
 <style>.to-top{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:30;width:42px;height:42px;padding:0;border-radius:999px;border:1px solid var(--line-strong);background:var(--panel);color:var(--tx-strong);font:700 19px/1 var(--f-body);cursor:pointer;box-shadow:0 3px 10px rgba(59,47,37,.15);opacity:0;pointer-events:none;transition:opacity .2s}
