@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2125426073018200294": {
+      "en_summary": "@JonErlichman tags @Restreamio, @SpaceX, @NASA, @Replit, @OpenRouter, @HubSpot and @investedhq with 'After Hours'.",
+      "zh_summary": "@JonErlichman 標註 @Restreamio、@SpaceX、@NASA、@Replit、@OpenRouter、@HubSpot 及 @investedhq，並註明「After Hours」。",
+      "tickers": ["SPCX", "HUBS"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPCX": "未表態", "HUBS": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125424028467020186": {
+      "en_summary": "@benitoz jokes in reply to @firesidealpha asking if Steve can run Nvidia.",
+      "zh_summary": "@benitoz 回覆 @firesidealpha 開玩笑詢問 Steve 能否經營 Nvidia。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125422089205141733": {
+      "en_summary": "@AmeetRai shares an updated Relative Strength List including TGTX, ROIV, NTSK, FLYW, KVYO, TLS, CRCT, RKT, LFTO, SN, VNT, SPOT, ZIP, BAX, GEN, S, EL, BSY, MDLN, JAN, SARO, VIK, TOST, COMP, GDYN, FBIN, XERS, FISV, BHC, CHYM, U, SG, PCOR, ABNB, LIVN, EW, OKTA, NET, CROX, AXGN, GKOS, LION, MGNI, noting it syncs in real-time on Deepvue.",
+      "zh_summary": "@AmeetRai 分享更新後的相對強度名單，包括 TGTX、ROIV、NTSK、FLYW、KVYO、TLS、CRCT、RKT、LFTO、SN、VNT、SPOT、ZIP、BAX、GEN、S、EL、BSY、MDLN、JAN、SARO、VIK、TOST、COMP、GDYN、FBIN、XERS、FISV、BHC、CHYM、U、SG、PCOR、ABNB、LIVN、EW、OKTA、NET、CROX、AXGN、GKOS、LION、MGNI，並指其在 Deepvue 上即時同步。",
+      "tickers": ["TGTX", "ROIV", "NTSK", "FLYW", "KVYO", "TLS", "CRCT", "RKT", "LFTO", "SN", "VNT", "SPOT", "ZIP", "BAX", "GEN", "S", "EL", "BSY", "MDLN", "JAN", "SARO", "VIK", "TOST", "COMP", "GDYN", "FBIN", "XERS", "FISV", "BHC", "CHYM", "U", "SG", "PCOR", "ABNB", "LIVN", "EW", "OKTA", "NET", "CROX", "AXGN", "GKOS", "LION", "MGNI"],
+      "stance": "眾好",
+      "stance_by_ticker": {"TGTX": "眾好", "ROIV": "眾好", "NTSK": "眾好", "FLYW": "眾好", "KVYO": "眾好", "TLS": "眾好", "CRCT": "眾好", "RKT": "眾好", "LFTO": "眾好", "SN": "眾好", "VNT": "眾好", "SPOT": "眾好", "ZIP": "眾好", "BAX": "眾好", "GEN": "眾好", "S": "眾好", "EL": "眾好", "BSY": "眾好", "MDLN": "眾好", "JAN": "眾好", "SARO": "眾好", "VIK": "眾好", "TOST": "眾好", "COMP": "眾好", "GDYN": "眾好", "FBIN": "眾好", "XERS": "眾好", "FISV": "眾好", "BHC": "眾好", "CHYM": "眾好", "U": "眾好", "SG": "眾好", "PCOR": "眾好", "ABNB": "眾好", "LIVN": "眾好", "EW": "眾好", "OKTA": "眾好", "NET": "眾好", "CROX": "眾好", "AXGN": "眾好", "GKOS": "眾好", "LION": "眾好", "MGNI": "眾好"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125420819346284602": {
+      "en_summary": "@GaryMarcus replies that Nvidia will face enormous scrutiny, and documentation of their chips ending up in Russian military hands (even older ones) will not help their situation.",
+      "zh_summary": "@GaryMarcus 回覆指 Nvidia 將面臨巨大審查，而有關其晶片（即使是舊款）流入俄羅斯軍方的文件不會改善其處境。",
+      "tickers": ["NVDA"],
+      "stance": "眾淡",
+      "stance_by_ticker": {"NVDA": "眾淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "面臨審查及晶片流入俄羅斯軍方的負面影響"}
+    },
+    "2125420037989404840": {
+      "en_summary": "@edzitron says Masayoshi Son will try to merge ARM and OpenAI with an implied valuation of forty trillion, leading to Japanese government barring him from operating a computer. Quoted: SoftBank stock falls over -10% as AI selloff continues in Asian markets.",
+      "zh_summary": "@edzitron 指孫正義將嘗試合併 ARM 與 OpenAI，隱含估值四十萬億，並導致日本政府依法禁止其操作電腦。引用：軟銀股價下跌超過 10%，亞洲市場 AI 拋售持續。",
+      "tickers": ["ARM"],
+      "stance": "眾淡",
+      "stance_by_ticker": {"ARM": "眾淡"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"ARM": "擬以四十萬億估值與 OpenAI 合併，軟銀股價大跌"}
+    }
+  }
+}
