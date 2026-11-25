@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2125286092572356864": {
+      "en_summary": "@johnscharts notes that retail was moving during the morning meeting. Home construction is moving on momentum so short-term view. $XHB is bullish short/intermediate but agrees with added risk below 200.",
+      "zh_summary": "@johnscharts指出早會期間零售股正在動。房屋建築因動能而走強，屬短線看法。$XHB短中線睇好，但同意低於200有額外風險。",
+      "tickers": ["XHB"],
+      "stance": "睇好",
+      "stance_by_ticker": {"XHB": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"XHB": "動能支持短中線睇好，低於200有額外風險"}
+    },
+    "2125285984602411383": {
+      "en_summary": "Unusual activity: someone loaded $4M+ of $MSTR calls in one second across 3 strikes, all opening positions.",
+      "zh_summary": "異常活動：有人在一秒內買入超過400萬美元的$MSTR認購期權，涵蓋3個行使價，全部為開倉。",
+      "tickers": ["MSTR"],
+      "stance": "中性",
+      "stance_by_ticker": {"MSTR": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MSTR": "一秒內大量認購開倉，異常期權流量"}
+    },
+    "2125285410331037766": {
+      "en_summary": "$DELL earnings preview: reports after close today. Focus on AI server demand, backlog conversion, margins, full-year guidance. Q3 revenue expected $49.3B–$50.6B, adj EPS $6.55–$6.70. AI server backlog near $95B. Shares down sharply ahead amid AI hardware weakness. Guidance critical.",
+      "zh_summary": "$DELL盈利預覽：今日收市後公布。焦點在AI伺服器需求、訂單轉化、利潤率及全年指引。Q3收入預期493億至506億美元，調整後EPS 6.55至6.70美元。AI伺服器訂單積壓近950億美元。公布前股價大幅下跌，受AI硬件疲弱影響。指引至關重要。",
+      "tickers": ["DELL"],
+      "stance": "中性",
+      "stance_by_ticker": {"DELL": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"DELL": "AI伺服器訂單積壓近950億，指引將是關鍵"}
+    },
+    "2125285292995195120": {
+      "en_summary": "@OptionsMike shares a nice look at $TSLA for a quick read on Gamma, Put Support and Call Resistance. Bias and how the ODTE options look. Mentions Menthorq Black Friday sale.",
+      "zh_summary": "@OptionsMike分享對$TSLA的觀察，快速了解Gamma、看跌支持及看漲阻力。偏向以及當日到期期權的情況。提及Menthorq黑色星期五優惠。",
+      "tickers": ["TSLA"],
+      "stance": "中性",
+      "stance_by_ticker": {"TSLA": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125284835518279763": {
+      "en_summary": "BREAKING: Global physical gold-backed ETFs posted -20 tonnes outflows last week, largest weekly withdrawal since June. Outflows in 3 of last 5 weeks totaling -30 tonnes net. Driven by $GLD -10 tonnes. US -12 tonnes, China and UK -3 each. On track for first monthly outflow in 5 months. Sentiment extremely pessimistic.",
+      "zh_summary": "突發：全球實物黃金支持ETF上週流出20噸，為6月以來最大單週流出。過去5週中有3週流出，淨流出30噸。由$GLD流出10噸帶動。美國流出12噸，中國及英國各流出3噸。今年有望出現5個月來首次單月流出。貴金屬市場情緒極為悲觀。",
+      "tickers": ["GLD"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"GLD": "睇淡"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"GLD": "上週流出10噸，帶動全球ETF大幅流出，情緒悲觀"}
+    }
+  }
+}
