@@ -1,0 +1,84 @@
+{
+  "posts": {
+    "2125292615503393133": {
+      "en_summary": "$VIX deep in the Chop Bucket:",
+      "zh_summary": "$VIX 深陷 Chop Bucket：",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125292500197978126": {
+      "en_summary": "$SPX 3 times now the RSI divergence has given us a well in advance notice on next move...",
+      "zh_summary": "$SPX 現在 3 次 RSI 背離提前給了我們下一次走勢的通知...",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "SPY": "中性"
+      },
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125292112191091156": {
+      "en_summary": "$IREN gains: DELETED in an instant... ❌",
+      "zh_summary": "$IREN 漲幅：瞬間被刪除... ❌",
+      "tickers": ["IREN"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "IREN": "中性"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125291862345032121": {
+      "en_summary": "All into $SPY",
+      "zh_summary": "全部進入 $SPY",
+      "tickers": ["SPY"],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "SPY": "睇好"
+      },
+      "horizon": "短線",
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125291733290557899": {
+      "en_summary": "Sanofi $SNY just had its best day since 2008 after agreeing to buy Insmed for $41 billion, adding lung disease drug Brinsupri ahead of Dupixent's patent cliff.",
+      "zh_summary": "Sanofi $SNY 在同意以 410 億美元收購 Insmed 後迎來自 2008 年以來最好的一天，在 Dupixent 專利懸崖前加入肺部疾病藥物 Brinsupri。",
+      "tickers": ["SNY"],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "SNY": "睇好"
+      },
+      "horizon": "中線",
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {
+        "SNY": "收購 Insmed $41B 後最佳日 since 2008"
+      }
+    }
+  }
+}
