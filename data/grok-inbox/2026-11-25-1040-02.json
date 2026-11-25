@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2125392126280159681": {
+      "en_summary": "Brian Armstrong says Coinbase has been buying back our stock ($COIN) this quarter. Financial services are now being disrupted by two frontier technologies (crypto and AI) and we're incredibly well positioned to lead here. Most are missing it. Good to take advantage of market dislocations.",
+      "zh_summary": "Brian Armstrong 表示 Coinbase 本季度一直在回購股票（$COIN）。金融服務現正被兩項前沿技術（加密貨幣與 AI）顛覆，而我們處於極佳位置領導此領域。大多數人錯過了。適合利用市場錯位機會。",
+      "tickers": ["COIN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"COIN": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"COIN": "本季度回購股票，受惠於加密貨幣與 AI 對金融服務的顛覆"}
+    },
+    "2125391469049786422": {
+      "en_summary": "@Mr_Derivatives notes when the US gov’t announced they took a stake in $INTC back on Aug 22nd 2025, the stock went up just 5.5% and kinda stayed flat there for the next month or so. For a mini reference, in case they do something similar with $NVDA.",
+      "zh_summary": "@Mr_Derivatives 指出，美國政府於 2025 年 8 月 22 日宣布持有 $INTC 股份時，股價僅上漲 5.5%，並在接下來一個月左右大致持平。作為小型參考，以防對 $NVDA 採取類似行動。",
+      "tickers": ["INTC", "NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"INTC": "中性", "NVDA": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {"INTC": "政府持股宣布後僅漲 5.5% 並持平約一個月", "NVDA": "作為類似政府持股的參考"}
+    },
+    "2125387933675106523": {
+      "en_summary": "$ASTS AST $SPCX SpaceMobile Board Member Adriana Cisneros Purchases Approximately $1M Worth of Shares on the Open Market",
+      "zh_summary": "$ASTS AST $SPCX SpaceMobile 董事會成員 Adriana Cisneros 在公開市場購入約 100 萬美元股份。",
+      "tickers": ["ASTS", "SPCX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"ASTS": "睇好", "SPCX": "睇好"},
+      "horizon": "中線",
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ASTS": "董事會成員公開市場購入約 100 萬美元股份", "SPCX": "同提及於 SpaceMobile 相關"}
+    },
+    "2125387710680772697": {
+      "en_summary": "$MU | Micron Increases CEO Sanjay Mehrotra's Security Spending by Over 2,000% YoY, Citing a Heightened External Threat Environment. CEO security expenses surged from $35,636 to $764,748. Micron also spent $75,175 on security for Chief Business Officer Sumit Sadana.",
+      "zh_summary": "$MU | Micron 將 CEO Sanjay Mehrotra 的安保支出同比增加超過 2000%，理由是外部威脅環境加劇。CEO 安保費用從 35,636 美元激增至 764,748 美元。Micron 亦為首席商務官 Sumit Sadana 花費 75,175 美元安保。",
+      "tickers": ["MU"],
+      "stance": "中性",
+      "stance_by_ticker": {"MU": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MU": "CEO 安保支出同比增超 2000%，從 3.5 萬至 76 萬美元，引用外部威脅加劇"}
+    },
+    "2125386126617899062": {
+      "en_summary": "CNN reports President Trump is open to pardoning Jensen Huang as the DOJ won't say if it's investigating him, after an affair with a suspected Chinese spy. Trump says pardon is always an option but probably not necessary. AG Todd Blanche refused to answer on investigation of Nvidia CEO. Quoted Trump comments on pardon, testimony, and possible government $NVDA stake being probably not too late.",
+      "zh_summary": "CNN 報導總統 Trump 開放考慮赦免 Jensen Huang，因司法部未表明是否正在調查他，此前他與疑似中國間諜有婚外情。Trump 表示赦免始終是選項但可能不必要。司法部長 Todd Blanche 拒絕回答有關 Nvidia CEO 調查的問題。引用 Trump 對赦免、作證及可能政府持有 $NVDA 股份「可能還不太晚」的評論。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {"NVDA": "Trump 開放赦免 Jensen Huang 並考慮政府持股，涉及調查與間諜相關傳聞"}
+    }
+  }
+}

@@ -1,6 +1,8 @@
 name: Site Check
 # Replaces SuperGrok Site Check. Fails if live generated_hkt is older than 9h
 # (Update site is every 8h HKT 03/11/19; Tim/CEO 2026-11-05). No xAI calls.
+# After the check, the same cheap Auto-run helper dispatches overdue jobs
+# (gate-skips do not count as a refresh). The check step still fails when stale.
 on:
   workflow_dispatch:
   schedule:
@@ -8,6 +10,7 @@ on:
     - cron: '20 */2 * * *'
 permissions:
   contents: read
+  actions: write
 concurrency:
   group: site-check
   cancel-in-progress: true
@@ -19,3 +22,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check live generated_hkt age (max 9h)
         run: python3 tools/site_check.py --max-age-h 9
+      - name: Dispatch overdue workflows
+        if: ${{ always() && !cancelled() }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python3 tools/ensure_runs.py
