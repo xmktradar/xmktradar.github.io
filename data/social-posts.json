@@ -1616,9 +1616,183 @@
       "MSTR"
      ]
     }
+   },
+   "intraday_3": {
+    "post_et": "13:30",
+    "post_hkt": "02:30",
+    "generated_at": "2026-11-25T17:16:52-05:00",
+    "date": "2026-11-25",
+    "date_kst": "2026-11-26",
+    "quotes": {
+     "SPY": {
+      "price": 716.7,
+      "prev_close": 718.78,
+      "chg_pct": -0.29,
+      "time": "2026-11-25T16:00:00-05:00"
+     },
+     "QQQ": {
+      "price": 633.93,
+      "prev_close": 638.1,
+      "chg_pct": -0.65,
+      "time": "2026-11-25T16:00:01-05:00"
+     },
+     "DIA": {
+      "price": 501.27,
+      "prev_close": 499.74,
+      "chg_pct": 0.31,
+      "time": "2026-11-25T16:00:00-05:00"
+     },
+     "NVDA": {
+      "price": 149.3,
+      "prev_close": 155.38,
+      "chg_pct": -3.91,
+      "time": "2026-11-25T16:00:01-05:00"
+     },
+     "DELL": {
+      "price": 297.06,
+      "prev_close": 295.28,
+      "chg_pct": 0.6,
+      "time": "2026-11-25T16:03:52-05:00"
+     },
+     "AMD": {
+      "price": 406.03,
+      "prev_close": 413.27,
+      "chg_pct": -1.75,
+      "time": "2026-11-25T16:00:02-05:00"
+     },
+     "ANT": {
+      "price": 82.79,
+      "prev_close": 81.905,
+      "chg_pct": 1.08,
+      "time": "2026-11-25T16:00:02-05:00"
+     }
+    },
+    "quote_time": {
+     "et": "2026-11-25T16:03:52-05:00",
+     "hkt": "2026-11-26 05:03"
+    },
+    "quote_source": "Yahoo Finance",
+    "quotes_ok": true,
+    "fallback": false,
+    "hot": [
+     {
+      "ticker": "NVDA",
+      "chg_pct": -3.91,
+      "bull": 20,
+      "bear": 18,
+      "accounts": [
+       "Jake__Wujastyk",
+       "GerberKawasaki",
+       "EliteOptions2",
+       "KobeissiLetter",
+       "DivesTech",
+       "Beth_Kindig",
+       "sunchartist",
+       "Greenbackd"
+      ]
+     },
+     {
+      "ticker": "DELL",
+      "chg_pct": 0.6,
+      "bull": 14,
+      "bear": 1,
+      "accounts": [
+       "BarbarianCap",
+       "JohnSpall247",
+       "tenet_research",
+       "sunchartist",
+       "JonahLupton",
+       "TradableAstro",
+       "TheValueist",
+       "FirstSquawk"
+      ]
+     },
+     {
+      "ticker": "AMD",
+      "chg_pct": -1.75,
+      "bull": 7,
+      "bear": 3,
+      "accounts": [
+       "Jake__Wujastyk",
+       "EliteOptions2",
+       "SemiAnalysis_",
+       "canuck2usa",
+       "CheddarFlow",
+       "TradingThomas3",
+       "tenet_research",
+       "howardlindzon"
+      ]
+     },
+     {
+      "ticker": "ANT",
+      "chg_pct": 1.08,
+      "bull": 6,
+      "bear": 14,
+      "accounts": [
+       "StockSavvyShay",
+       "ACInvestorBlog",
+       "JonkooTrades",
+       "Beth_Kindig",
+       "3PeaksTrading",
+       "RihardJarc",
+       "edzitron",
+       "BarbarianCap"
+      ]
+     }
+    ],
+    "x": {
+     "en": {
+      "text": "Early afternoon · As of 16:03 ET (05:03 HKT)\n\n$SPY -0.3% · $QQQ -0.7% · $DIA +0.3%\n\n$NVDA -3.9%, 20 accounts bullish on site\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #NVDA #DELL",
+      "url": ""
+     }
+    },
+    "threads": {
+     "zh": {
+      "text": "午后觀察 · 截至 16:03 ET（05:03 HKT）\n\n$SPY -0.3% · $QQQ -0.7% · $DIA +0.3%\n\n$NVDA -3.9%，網站 20 個帳號看好\n$DELL +0.6%，網站 14 個帳號看好\n$AMD -1.8%，網站 7 個帳號看好\n$ANT +1.1%，網站 14 個帳號看空\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #NVDA #DELL",
+      "url": ""
+     },
+     "en": {
+      "text": "Early afternoon · As of 16:03 ET (05:03 HKT)\n\n$SPY -0.3% · $QQQ -0.7% · $DIA +0.3%\n\n$NVDA -3.9%, 20 accounts bullish on site\n$DELL +0.6%, 14 accounts bullish on site\n$AMD -1.8%, 7 accounts bullish on site\n$ANT +1.1%, 14 accounts bearish on site\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #NVDA #DELL",
+      "url": ""
+     }
+    },
+    "has_link": {
+     "x": false,
+     "threads": {
+      "zh": false,
+      "en": false
+     }
+    },
+    "snapshot": {
+     "bull": [
+      "SPCX",
+      "ADSK",
+      "LLY",
+      "WMT",
+      "CRWD",
+      "DKS",
+      "TGT",
+      "INSM",
+      "TGTX",
+      "COHR",
+      "GILD",
+      "NET",
+      "SYM",
+      "WDAY",
+      "ZM",
+      "GME"
+     ],
+     "bear": [
+      "AMBA",
+      "ORCL",
+      "AVGO",
+      "ADI",
+      "MSTR"
+     ]
+    }
    }
   },
-  "generated_at": "2026-11-25T17:16:48-05:00",
+  "generated_at": "2026-11-25T17:16:52-05:00",
   "generated_hkt": "2026-11-26 06:16"
  }
 }
