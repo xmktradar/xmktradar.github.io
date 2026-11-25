@@ -68,8 +68,30 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add index.html data/dash
-          git diff --cached --quiet && exit 0
-          git commit -m "更新股價 $(TZ=Asia/Hong_Kong date '+%Y-%m-%d %H:%M') HKT"
-          git pull --rebase origin main || { git rebase --abort; echo "::error::main 喺更新期間有新改動，今次唔發佈，下次再試"; exit 1; }
-          git push origin HEAD:main
+          publish_once() {
+            git add index.html data/dash
+            git diff --cached --quiet && return 0
+            git commit -m "更新股價 $(TZ=Asia/Hong_Kong date '+%Y-%m-%d %H:%M') HKT"
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              return 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            return 1
+          }
+          if publish_once; then
+            exit 0
+          fi
+          echo "::warning::main 喺更新期間有新改動，改喺最新 main 再算一次股價"
+          for i in 1 2; do
+            git fetch origin main
+            git reset --hard origin/main
+            python3 tools/slim_pages.py --restore
+            python3 tools/update_prices.py index.html
+            python3 tools/slim_pages.py --slim
+            if publish_once; then
+              echo "::warning::Publish succeeded after recomputing on latest main (attempt $i)"
+              exit 0
+            fi
+          done
+          echo "::error::main 喺更新期間有新改動，今次唔發佈，下次再試"
+          exit 1
