@@ -21,6 +21,7 @@ from sitedata import BLOCK, read_json
 
 SITE = 'https://thecrowdtape.com/'
 LANGS = {'zh': 'zh-Hant', 'en': 'en'}
+FUTU_LINK = ' · <a href="https://invest.futuhk.com/invite-centre_share?lang=zh-hk&invite_code=MMKAXKFN&inviter=15056112&channel=1287&subchannel=1&global_content=%7B%22promote_content%22%3A%2230%22%2C%22promote_id%22%3A16069%2C%22promote_type%22%3A1%2C%22sub_promote_id%22%3A14%2C%22invite%22%3A15056112%7D" rel="sponsored nofollow noopener" target="_blank" data-tool="futu">富途牛牛 <span class="aff-tag">推廣</span></a>'
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HAN = re.compile(r'[\u4e00-\u9fff]')
 FAQ_LD = re.compile(r'(<script type="application/ld\+json" id="faq-ld">)(.*?)(</script>)', re.S)
@@ -413,6 +414,7 @@ def page(template, lang, issues, disc):
     html_s = html_s.replace('{{disclaimer}}', esc(disc))
     if lang != 'zh':
         html_s = html_s.replace('href="/zh/weekly/"', f'href="/{lang}/weekly/"')
+    html_s = html_s.replace('{{futu_link}}', FUTU_LINK if lang == 'zh' else '')
     if '{{' in html_s:
         warn(f'{lang} newsletter page still has a placeholder')
     return html_s
