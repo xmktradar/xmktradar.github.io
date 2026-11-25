@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2125254387941732531": {
+      "en_summary": "Trading action in $ANT today…",
+      "zh_summary": "$ANT今天的交易行動……",
+      "tickers": ["ANT"],
+      "stance": "中性",
+      "stance_by_ticker": {"ANT": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125253747119214811": {
+      "en_summary": "$ANT is trading below its IPO price of 83. Its VWAP since going public is currently around 95.",
+      "zh_summary": "$ANT交易價格低於其IPO價格83。自上市以來的VWAP目前約為95。",
+      "tickers": ["ANT"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"ANT": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ANT": "低於IPO價83，VWAP約95"}
+    },
+    "2125253518151856453": {
+      "en_summary": "$6 MILLION of 3x Leveraged Semiconductor $SOXL calls bought into the dip. 4,400+ Dec 31 40 calls vs open interest of 229.",
+      "zh_summary": "有人在下跌中買入600萬美元的3倍槓桿半導體$SOXL認購期權。4400多張12月31日40行使價認購，對比未平倃229。",
+      "tickers": ["SOXL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SOXL": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SOXL": "大量認購入場，遠超未平倃"}
+    },
+    "2125253356239421869": {
+      "en_summary": "$ANT CEO dumping $300M+ of stock at the IPO is a pretty bad look… Quoted: Anthropic CEO Amodei Dario sold 3,723,389 shares of Class A Common Stock on 11/19/2026 and 11/20/2026 at $83 per share, totaling approximately $309 million.",
+      "zh_summary": "$ANT CEO在IPO時拋售超過3億美元股票看起來很糟糕……引用：Anthropic CEO Amodei Dario於2026年11月19日及20日以每股83美元出售3,723,389股A類普通股，總計約3.09億美元。",
+      "tickers": ["ANT"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"ANT": "睇淡"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"ANT": "CEO在IPO價83出售約3.09億美元股票"}
+    },
+    "2125253097979273398": {
+      "en_summary": "The safe haven... $BWET. Quoted: Of course the marine shipping ETF $BWET is curling up again... new-ish buy signal as well (at $620). First BD after getting us out at ~$930. Some resistance right above, but macro should supersede technicals.",
+      "zh_summary": "避風港……$BWET。引用：當然海上航運ETF $BWET再次向上彎曲……也有新的買入信號（在620美元）。在約930美元出場後的第一個BD。上方有一些阻力，但宏觀應凌駕技術面。",
+      "tickers": ["BWET"],
+      "stance": "睇好",
+      "stance_by_ticker": {"BWET": "睇好"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利好",
+      "ticker_notes": {"BWET": "向上彎曲，買入信號在620，宏觀凌駕技術"}
+    }
+  }
+}
