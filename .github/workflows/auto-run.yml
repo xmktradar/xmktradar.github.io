@@ -2,10 +2,12 @@ name: Auto run
 # GitHub sometimes never starts a scheduled workflow (the 03:00 HKT slot on 2026-11-24 did not appear).
 # This job ticks every hour and dispatches Update site, Update prices, or
 # Update follow-through (齊聲之後) when they are overdue and not already running. It does not expire. workflow_dispatch from this token is allowed to start them.
+# Two offsets (:20 and :50) so a dropped hourly tick still has another cheap chance the same hour.
 on:
   workflow_dispatch:
   schedule:
     - cron: '50 * * * *'
+    - cron: '20 * * * *'
 permissions:
   actions: write
   contents: read
