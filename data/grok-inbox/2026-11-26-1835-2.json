@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2125794173693599848": {
+      "en_summary": "Even in a downtrend this long-only algo is finding winning plays $MSFT. Algo: 102%. Buy and hold: 97.6%. Algo Max drawdown: -8%. Buy and hold max drawdown: -36%.",
+      "zh_summary": "即使在下跌趨勢中，這個僅做多的算法仍在找到獲勝交易 $MSFT。算法：102%。買入持有：97.6%。算法最大回撤：-8%。買入持有最大回撤：-36%。",
+      "tickers": ["MSFT"],
+      "stance": "睇好",
+      "stance_by_ticker": {"MSFT": "睇好"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MSFT": "算法回報 102% 優於買入持有，回撤更小"}
+    },
+    "2125726233132449917": {
+      "en_summary": "Not so fast $SPY $QQQ",
+      "zh_summary": "別急 $SPY $QQQ",
+      "tickers": ["SPY", "QQQ"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPY": "睇淡", "QQQ": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125726080656875918": {
+      "en_summary": "Why should they? We’re living in the “golden age”. Quoted: The US Justice Department did not conduct a formal investigation into Jensen Huang before US President Donald Trump pushed for his return. $NVDA",
+      "zh_summary": "為什麼要這樣？我們正生活在「黃金時代」。引用：美國司法部在美國總統唐納德·特朗普推動其回歸前，並未對 Jensen Huang 進行正式調查。$NVDA",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2125725659964281196": {
+      "en_summary": "$NOW #NOW Holding on by a thread on the monthly candle chart.",
+      "zh_summary": "$NOW #NOW 在月線圖上勉強撐住。",
+      "tickers": ["NOW"],
+      "stance": "中性",
+      "stance_by_ticker": {"NOW": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125725006936305749": {
+      "en_summary": "$META #META Still holding up at the October 2023 pivot VWAP zone.",
+      "zh_summary": "$META #META 仍在 2023 年 10 月樞軸 VWAP 區域撐住。",
+      "tickers": ["META"],
+      "stance": "睇好",
+      "stance_by_ticker": {"META": "睇好"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
