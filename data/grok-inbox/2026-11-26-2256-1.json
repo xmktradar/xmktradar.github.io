@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2125921557566415240": {
+      "en_summary": "Fintech is the best place to invest right now. $FINX is down over 50% from last year's peak and in a bear market similar to biotech's past, but companies are still growing robustly at 30%+, offering strong growth at a deep discount.",
+      "zh_summary": "金融科技現在是最好的投資地方。$FINX 從去年高峰下跌超過50%，經歷了類似生物科技過去的熊市，但這些公司仍以30%以上的速度穩健增長，在深度折價下提供強勁增長。",
+      "tickers": ["FINX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"FINX": "睇好"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"FINX": "下跌超50%，公司增長30%+，深度折價"}
+    },
+    "2125920438450590075": {
+      "en_summary": "$META put in the day's best big-cap reversal without a headline. Opened at $575.34, tagged $567.75, closed $609.89 up 3.4% near $611.06 high, a 7.4% round trip off the low. After hours held at $611.43. $550 held as the autumn floor and close reclaimed $597.60. No catalyst, buyers stepped in at lows while rest of tech sold. Cheapest big AI spender on earnings. Test is whether reversal holds above $597.60 into Friday.",
+      "zh_summary": "$META 在沒有新聞的情況下錄得當天最佳大市值反轉。開盤575.34美元，低點567.75美元，收盤609.89美元上漲3.4%接近高點611.06美元，從低點回升7.4%。盤後守住611.43美元。550美元作為秋季支撐位守住，收盤重新收復597.60美元。沒有催化劑，買家在低點介入而其他科技股被拋售。是大型AI支出者中估值最便宜的。測試反轉能否在周五前守住597.60美元以上。",
+      "tickers": ["META"],
+      "stance": "睇好",
+      "stance_by_ticker": {"META": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"META": "無催化劑從低點回升7.4%，測試597.60美元"}
+    },
+    "2125919858500030807": {
+      "en_summary": "Yesterday's chip selling had a specific cause: Commerce Department Nov 16 rule closed the loophole letting Chinese firms rent Nvidia chips remotely through overseas data centers, effective Nov 19. Sellers dumped Blackwell B300 GPUs on secondary market, servers quoted $3M vs $600k list. TSMC suspended previously permitted advanced chip orders from Chinese customers. For $NVDA the read is mixed: demand is real but a slice was Chinese money routed through Southeast Asia now stranded. Market is repricing which AI demand is durable versus regulatory arbitrage.",
+      "zh_summary": "昨天芯片拋售有具體原因：商務部11月16日規則關閉中國公司通過海外數據中心遠程租賃英偉達芯片的漏洞，11月19日生效。賣家在二級市場拋售Blackwell B300 GPU，服務器報價300萬美元對比60萬美元標價。台積電暫停先前許可的中國客戶先進芯片訂單。對$NVDA的解讀是混合的：需求真實，但部分是通過東南亞路由的中國資金現已擱淺。市場正在重新定價哪些AI需求是持久的，哪些是監管套利。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "利淡",
+      "ticker_notes": {"NVDA": "部分需求為監管套利現擱淺，混合解讀"}
+    },
+    "2125918830719275318": {
+      "en_summary": "December calendar decides the next leg. Tuesday Dec 1: $MRVL and $CRDO earnings, market will read the guides not the quarters. Friday Dec 4: November payrolls after hot inflation print, strong number keeps hike path alive. Fed decides Dec 9, hike is the base case. November CPI prints Dec 10 one day after Fed. Following week $MU and $BB earnings Dec 17, JPM collar expires Dec 31. Market needs the first two not to go wrong.",
+      "zh_summary": "十二月日曆決定下一階段走勢。12月1日周二：$MRVL和$CRDO財報，市場將解讀指引而非季度業績。12月4日周五：11月就業數據，在通脹數據偏熱後，強勁數據保持加息路徑。聯儲12月9日決定，加息為基準情況。11月CPI在12月10日聯儲決定後一天公布。隨後一週$MU和$BB於12月17日財報，JPM領口期權12月31日到期。市場需要前兩個不要出錯。",
+      "tickers": ["MRVL", "CRDO", "MU", "BB"],
+      "stance": "中性",
+      "stance_by_ticker": {"MRVL": "未表態", "CRDO": "未表態", "MU": "未表態", "BB": "未表態"},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "jobs",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2125917624122904670": {
+      "en_summary": "The VIX told yesterday's story better than the index. Spiked toward 35 in the morning as tape flushed, then faded to around 28 by close. Fear peaked at price lows and faded on recovery, normal shape of a capitulation day not breakdown. Protection trade grew into close, $VIX still up even as stocks bounced, hedgers buying the rally. Level to watch is 30: above fear in charge, below market healing. Closed under it after morning above. Gold and bonds gained. Tuesday close was 26.36. Friday thin session will tell if fade continues.",
+      "zh_summary": "VIX比指數更好地講述了昨天的故事。早盤在拋售時飆升至接近35，收盤回落至約28。恐懼在價格低點達到頂峰，在反彈時消退，這是正常的投降日形狀而非崩潰。保護交易持續到收盤，$VIX在股票反彈時仍上漲，對沖者在買入反彈。關注水平是30：以上恐懼主導，以下市場正在修復。早盤以上後收於以下。黃金和債券上漲。周二收盤26.36。周五薄交易時段將告訴我們回落是否繼續。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": "情緒",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
