@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2125765288428027906": {
+      "en_summary": "Charles Gasparino believes this is the real bursting of the AI bubble; the $NVDA issues are just one symptom of a sick market.",
+      "zh_summary": "Charles Gasparino 認為這是人工智慧泡沫的真正破裂；$NVDA 的問題只是市場病態的其中一個症狀。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"NVDA": "AI bubble bursting symptom of sick market"}
+    },
+    "2125764711207903706": {
+      "en_summary": "Vulture trades is going heavy tomorrow on a confirmed breakout setup that could go 50-100x like $MRNA, ready by 9:25 AM EST.",
+      "zh_summary": "Vulture trades 計劃明天重倉一個已確認突破的設置，可能像 $MRNA 一樣上漲 50-100 倍，準備在美東時間上午 9:25 進行。",
+      "tickers": ["MRNA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"MRNA": "中性"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125760842096320952": {
+      "en_summary": "$GPIQ Goldman Sachs Nasdaq-100 Premium Income ETF shows ~10.5% yield and ~71% total return since inception 10/24/2023, pays monthly.",
+      "zh_summary": "$GPIQ 高盛納斯達100溢價收益ETF 自 2023 年 10 月 24 日成立以來約 10.5% 收益率、約 71% 總回報，每月派息。",
+      "tickers": ["GPIQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"GPIQ": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"GPIQ": "~10.5% yield, ~71% total return since 10/24/2023"}
+    },
+    "2125760690006999340": {
+      "en_summary": "Sunchartist notes that Kartiik purnima happens once a year.",
+      "zh_summary": "Sunchartist 指出 Kartiik purnima 每年發生一次。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125760196450324668": {
+      "en_summary": "TrendSpider notes a $5 to $336 move; $1,000 in 0DTE $QQQ calls would have turned into $67,000 if sniped at the bottom today.",
+      "zh_summary": "TrendSpider 指出從 5 美元到 336 美元的走勢；如果今天在底部買入 1,000 美元的 0DTE $QQQ 看漲期權，會變成 67,000 美元。",
+      "tickers": ["QQQ"],
+      "stance": "睇好",
+      "stance_by_ticker": {"QQQ": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"QQQ": "0DTE calls from $5 to $336, $1k to $67k"}
+    }
+  }
+}
