@@ -2086,7 +2086,7 @@ function putView(view,html){const tok=++PV_TOK;const tail=PV_TAIL;PV_TAIL=null;w
  if(!same){view.innerHTML=html;g=view.querySelector('.grid');PV_HEAD=html;PV_KEY=current;PV_PARTS=[];PV_NODES=[]}
  const parts=[];let i=0;
  const step=()=>{if(tok!==PV_TOK)return;
-  if(i>=tail.length){window.__viewDone=true;lastViewHtml=PV_HEAD.slice(0,-6)+'\n'+parts.join('\n')+'\n</div>';document.dispatchEvent(new Event('view-done'));return}
+  if(i>=tail.length){window.__viewDone=true;lastViewHtml=PV_HEAD.slice(0,-6)+'\n'+parts.join('\n')+'\n</div>';if(VIEW_CACHE_KEY===viewCacheKey(current))VIEW_CACHE=lastViewHtml;document.dispatchEvent(new Event('view-done'));return}
   const h=tail[i]();parts.push(h);
   if(PV_PARTS[i]!==h){const ns=pvFrag(h),old=PV_NODES[i]||[],anchor=pvAnchor(i);
    ns.forEach(n=>g.insertBefore(n,anchor));old.forEach(n=>n.remove());PV_NODES[i]=ns;PV_PARTS[i]=h;
@@ -2095,7 +2095,10 @@ function putView(view,html){const tok=++PV_TOK;const tail=PV_TAIL;PV_TAIL=null;w
  setTimeout(step,0);return !same}
 function applyViewHtml(html){
  const view=document.getElementById('view');
- if(lastViewKey===current&&lastViewHtml===html&&view.firstChild){if(coreDone){const ld=view.querySelector('#dash-load');if(ld)ld.remove()}mountStatus();mountMore();if(window.__viewDone!==false)window.__viewDone=true;return}
+ // Boot daily html is only the head; the tail is inserted later. Cache must not
+ // re-apply that head (no tail) and wipe later sections after the first paint finishes.
+ const bootHead=!!(lastViewHtml&&html&&html!==lastViewHtml&&html.endsWith('</div>')&&lastViewHtml.startsWith(html.slice(0,-6)));
+ if(lastViewKey===current&&view.firstChild&&(lastViewHtml===html||bootHead)){if(coreDone){const ld=view.querySelector('#dash-load');if(ld)ld.remove()}mountStatus();mountMore();if(window.__viewDone!==false)window.__viewDone=true;return}
  const oldTape=view.querySelector('.mk-live[data-on]');
  if(putView(view,html)){if(oldTape){const nw=view.querySelector('.mk-live');if(nw&&nw!==oldTape)nw.replaceWith(oldTape)}linkHandles(view);fitTables(view);clampLists(view);try{mountTape(view)}catch(e){}}
  else if(coreDone){const ld=view.querySelector('#dash-load');if(ld)ld.remove()}

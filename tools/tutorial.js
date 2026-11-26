@@ -72,6 +72,8 @@ async function shoot(page, base, lang, shot, warn) {
   }
   let top = 0;
   if (shot.sel !== '@top') {
+    await page.waitForSelector(shot.sel, { timeout: 20000 }).catch(() => {});
+
     top = await page.evaluate(([sel, part]) => {
       const el = document.querySelector(sel);
       if (!el) return null;
