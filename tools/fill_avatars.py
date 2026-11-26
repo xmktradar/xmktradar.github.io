@@ -119,7 +119,8 @@ def one(handle):
     try:
         return handle, photo_of(handle), None
     except urllib.error.HTTPError as e:
-        if e.code in (429, 503):
+        # 404 is often a flaky fxtwitter "User not found", not a confirmed missing account.
+        if e.code in (429, 503, 404):
             time.sleep(2)
         return handle, None, e.code
     except Exception as e:
@@ -157,8 +158,8 @@ def main():
                 av[key] = uri
                 miss.pop(key, None)
                 filled += 1
-            elif err in (429, 503):
-                retried += 1  # do not remember a rate limit as "no photo"
+            elif err in (429, 503, 404):
+                retried += 1  # rate limit, or a flaky fxtwitter 404, is not "no photo"
             else:
                 miss[key] = date.today().isoformat()
                 missed += 1
