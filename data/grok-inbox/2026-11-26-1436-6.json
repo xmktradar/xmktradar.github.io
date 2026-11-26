@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2125759254049202465": {
+      "en_summary": "Mr_Derivatives notes $SPY implied move for half day Friday roughly +/- 10pts and $QQQ +/- 13pts, after hours bump could change slightly.",
+      "zh_summary": "Mr_Derivatives 指出周五半天 $SPY 隱含波動約 +/- 10 點，$QQQ 約 +/- 13 點，盤後波動可能稍有改變。",
+      "tickers": ["SPY", "QQQ"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性", "QQQ": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125758754595496445": {
+      "en_summary": "$IREN next major catalyst is securing remaining financing and delivering $4B ARR on schedule; valuable land and power assets, but stock may stay under pressure until funding gap addressed.",
+      "zh_summary": "$IREN 下一個主要催化劑是獲得剩餘融資並按時達成 40 億美元 ARR 目標；擁有寶貴土地和電力資產，但在資金缺口解決前股價可能持續承壓。",
+      "tickers": ["IREN"],
+      "stance": "中性",
+      "stance_by_ticker": {"IREN": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"IREN": "Needs financing for $4B ARR; pressure until gap filled"}
+    },
+    "2125756533866979610": {
+      "en_summary": "BarbarianCap reports Deere quarterly profit falls as large agricultural equipment sales decline $DE.",
+      "zh_summary": "BarbarianCap 報導 Deere 季度利潤下降，因大型農業設備銷售下滑 $DE。",
+      "tickers": ["DE"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"DE": "睇淡"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"DE": "Profit falls on declining large ag equipment sales"}
+    },
+    "2125756446407004664": {
+      "en_summary": "BarbarianCap notes Remy Cointreau shares jump as turnaround efforts progress $REMYY.",
+      "zh_summary": "BarbarianCap 指出 Remy Cointreau 股價上漲，因轉型努力進展 $REMYY。",
+      "tickers": ["REMYY"],
+      "stance": "睇好",
+      "stance_by_ticker": {"REMYY": "睇好"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"REMYY": "Shares jump on turnaround progress"}
+    },
+    "2125756034228592752": {
+      "en_summary": "BarbarianCap reports FTC imposes strict board restrictions on Beretta’s 25% stake in rival Sturm Ruger $RGR.",
+      "zh_summary": "BarbarianCap 報導 FTC 對 Beretta 持有競爭對手 Sturm Ruger 25% 股份施加嚴格董事會限制 $RGR。",
+      "tickers": ["RGR"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"RGR": "睇淡"},
+      "horizon": "中線",
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"RGR": "FTC board restrictions on Beretta 25% stake"}
+    }
+  }
+}
