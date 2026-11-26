@@ -18,6 +18,7 @@ async function ready(p) {
       if (typeof paintChrome === 'function') paintChrome();
       if (typeof render === 'function') render();
     });
+    await p.waitForFunction(() => window.__viewDone === true, null, { timeout: 60000 });
   } catch (e) {
     return (e && e.message) || String(e);
   }

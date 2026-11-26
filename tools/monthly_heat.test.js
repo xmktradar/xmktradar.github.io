@@ -192,7 +192,7 @@ test('every homepage indexes the monthly heatmap and drops the nested day scan',
     assert.match(src, /function groupPostsByTickerDay\(/);
     assert.match(src, /function groupPostsByTicker\(/);
     assert.match(src, /function groupPostsByAccount\(/);
-    const vm = extractFn(src, 'viewMonthly');
+    const vm = ['monthlyCtx','monthlyRow','monthlyCons','monthlyFinish','monthlyHtml','viewMonthly'].map(n => extractFn(src, n)).join('\n');
     assert.match(vm, /const heatRows=/);
     assert.match(vm, /const maxHeat=/);
     assert.doesNotMatch(vm, /all\.filter\(x=>x\.t===r\.t&&x\.d===d\)/);

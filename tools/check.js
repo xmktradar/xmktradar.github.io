@@ -115,6 +115,17 @@ async function checkViewOnce(browser, origin, url, w, h, view) {
     }
     dead();
 
+    // Heavy views (#weekly / #monthly) finish in short slices after render() returns.
+    // Wait until the page is actually drawn; 390px and 1280px #weekly must complete
+    // without relying on teardown retries.
+    try {
+      await p.waitForFunction(() => window.__viewDone === true, null, { timeout: 60000 });
+    } catch (e) {
+      dead(e);
+      evalErr = joinMsg(evalErr, e);
+    }
+    dead();
+
     try { await p.waitForTimeout(300); }
     catch (e) { dead(e); evalErr = joinMsg(evalErr, e); }
     dead();

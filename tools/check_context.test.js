@@ -103,4 +103,6 @@ test('check.js stays requireable and still checks every view', () => {
   assert.match(src, /waitForTimeout\(50\)/);
   assert.match(src, /older posts failed to load/);
   assert.match(src, /prices did not load/);
+  assert.match(src, /__viewDone === true/);
+  assert.match(src, /390px and 1280px #weekly must complete/);
 });
