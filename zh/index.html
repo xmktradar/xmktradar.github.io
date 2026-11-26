@@ -1055,7 +1055,7 @@ function change(prev,cur){if(!prev||!cur||!stanced(cur.s)||prev.s===cur.s)return
 const chgOf=x=>{psIndex();if(CHG_MEMO.has(x))return CHG_MEMO.get(x);const r=change(prevStance(x.acc,x.t,x.ms),x);CHG_MEMO.set(x,r);return r};
 function accsOf(from,to){const w=winOf(from,to);if(!w.accs)w.accs=[...new Set(w.xs.map(x=>x.acc))];return w.accs.slice()}
 // 共識計算（一致程度、共同看多／看空、好淡分歧）計所有追蹤帳號
-function dist(t,from,to,all){const c={bull:0,bear:0,neu:0,none:0,accs:0,mentions:0};accsOf(from,to).filter(a=>all||inCons(a)).forEach(a=>{const x=latest(a,t,from,to);if(x){c[x.s]++;c.accs++}});c.mentions=postsIn(from,to).filter(x=>x.t===t).length;return c}
+function dist(t,from,to,all){const c={bull:0,bear:0,neu:0,none:0,accs:0,mentions:0};accsOf(from,to).filter(a=>all||inCons(a)).forEach(a=>{const x=latest(a,t,from,to);if(x){c[x.s]++;c.accs++}});c.mentions=mentionsOf(t,from,to);return c}
 function agreeLabel(c){const tot=c.bull+c.bear+c.neu+c.none;if(c.bull+c.bear+c.neu<2)return {l:'樣本不足',k:'neu'};if(c.bull>=1&&c.bear>=1&&Math.min(c.bull,c.bear)/(c.bull+c.bear)>=.25)return {l:'明顯分歧',k:'chg'};const r=Math.abs(c.bull-c.bear)/tot;if(r>=.6)return {l:c.bull>c.bear?'高度一致看多':'高度一致看空',k:c.bull>c.bear?'bull':'bear'};return {l:'部分一致',k:'neu'}}
 // 每日窗：優先用寫手分析第一行嘅時間範圍（同今日市場分析一致，包括 Truth Social）；
 // 冇得讀就用同一個抓帖周期：最近一次抓帖時段之前 24 小時至資料截止
@@ -1261,7 +1261,7 @@ function consGroups(from,to){const out={bull:[],bear:[],split:[]};
  TICKERS.forEach(t=>{if(UNC(t)||!isUS(t))return;const rows=accsOf(from,to).filter(inCons).map(a=>latest(a,t,from,to)).filter(Boolean);if(!rows.length)return;
   const nb=rows.filter(x=>x.s==='bull').length,nr=rows.filter(x=>x.s==='bear').length;const k=nb&&nr?'split':nb>=2?'bull':nr>=2?'bear':null;if(!k)return;
   const ord={bull:k==='bear'?1:0,bear:k==='bear'?0:1,neu:2,none:3};rows.sort((a,b)=>ord[a.s]-ord[b.s]||b.ms-a.ms);
-  const nPosts=new Set(postsIn(from,to).filter(x=>x.t===t).map(x=>x.url)).size;out[k].push({t,rows,nb,nr,nPosts})});
+  const nPosts=urlCountOf(t,from,to);out[k].push({t,rows,nb,nr,nPosts})});
  ['bull','bear','split'].forEach(k=>out[k].sort((a,b)=>(b.nb+b.nr)-(a.nb+a.nr)||b.nPosts-a.nPosts||a.t.localeCompare(b.t)));return out}
 function consCard(g,k,days,retLab){const pr=UNC(g.t)?null:D.prices[g.t];const nm=pr&&pr.name?pr.name:(OV[g.t]&&OV[g.t].name&&!UNC(g.t)?OV[g.t].name:'');const v=pchg(g.t,days);
  const ret=UNC(g.t)?'<span class="na">代號未確認</span>':v==null?'<span class="na">無股價資料</span>':`<span class="${v>0?'up':v<0?'dn':''}">${v>0?'+':''}${v.toFixed(1)}%</span>`;
@@ -1275,7 +1275,7 @@ function consHtml(from,to,lab,days,retLab){const G=consGroups(from,to);
 
 // ---------- 每月：每個帳號本月最看好的股票（.fav-grid／.fav） ----------
 function favHtml(from,to){const accs=[...new Set(rawIn(from,to).filter(p=>!p.folded_into).map(p=>p.acc))].filter(inCons);if(!accs.length)return '';
- const cards=accs.map(a=>{const xs=postsIn(from,to).filter(x=>x.acc===a);const by={};xs.forEach(x=>{const o=by[x.t]=by[x.t]||{t:x.t,b:0,n:0,last:0};o.n++;if(x.s==='bull'){o.b++;o.last=Math.max(o.last,x.ms)}});
+ const byA=groupPostsByAccount(postsIn(from,to));const cards=accs.map(a=>{const xs=byA[a]||[];const by={};xs.forEach(x=>{const o=by[x.t]=by[x.t]||{t:x.t,b:0,n:0,last:0};o.n++;if(x.s==='bull'){o.b++;o.last=Math.max(o.last,x.ms)}});
   const top=Object.values(by).filter(o=>o.b>0).sort((p,q)=>q.b-p.b||q.n-p.n||q.last-p.last)[0]||null;return {a,top}}).sort((p,q)=>(!!q.top-!!p.top)||((q.top?q.top.b:0)-(p.top?p.top.b:0))||((q.top?q.top.n:0)-(p.top?p.top.n:0))||p.a.localeCompare(q.a));
  const card=c=>{const who=`<a class="fav-who" href="${xUrl(c.a)}" target="_blank" rel="noopener">${avImg(c.a,'av')}<div style="min-width:0"><b>${esc(nameOf(c.a))}</b><span>@${esc(c.a)} ${platTag(c.a)}</span></div></a>`;
   if(!c.top)return `<div class="fav none">${who}<div class="fav-sub">本月沒有明確看多的股票</div></div>`;const v=pchg(c.top.t,null);
@@ -1530,21 +1530,30 @@ function viewDaily(){
  ()=>accCardsHtml(w,label)])}
 
 // ---------- 每週 ----------
-function viewWeekly(){
+function weeklyCtx(){
  // 2026-10-29: the weekly brief is written for the 7 days ending on its own date (usually yesterday);
  // use that end date for the header and tables too, so they cover the same window.
  const sm0=summaryOf('weekly'),smd=sm0&&sm0.s&&sm0.s.date;
  const to=(smd&&smd<=TODAY&&smd>=addDays(TODAY,-2))?smd:TODAY,from=addDays(to,-6),pf=addDays(from,-7),pt=addDays(from,-1);const hasPrev=POSTS.some(x=>x.d>=pf&&x.d<=pt);
  const days=[...Array(7)].map((_,i)=>addDays(from,i));
- const rows=TICKERS.map(t=>{const c=dist(t,from,to),c0=dist(t,pf,pt),ca=dist(t,from,to,true);const daily=days.map(d=>postsIn(d,d).filter(x=>x.t===t).length);return {t,c,c0,ca,daily,net:c.bull-c.bear,net0:c0.bull-c0.bear}}).filter(r=>r.ca.accs>=1).sort((a,b)=>b.ca.accs-a.ca.accs||b.c.mentions-a.c.mentions||a.t.localeCompare(b.t));
+ const weekPs=postsIn(from,to),byTD=countByTickerDay(weekPs),byA=groupPostsByAccount(weekPs);
+ const weekRaw=rawIn(from,to).filter(p=>!p.folded_into),byRawA=groupPostsByAccount(weekRaw);
+ const wkAccs=[...new Set(weekRaw.map(p=>p.acc))];
+ const sm=summaryOf('weekly');
+ return {sm0,smd,to,from,pf,pt,hasPrev,days,weekPs,byTD,byA,weekRaw,byRawA,wkAccs,sm};
+}
+function weeklyRow(t,ctx){const c=dist(t,ctx.from,ctx.to),c0=dist(t,ctx.pf,ctx.pt),ca=dist(t,ctx.from,ctx.to,true);const daily=ctx.days.map(d=>((ctx.byTD[t]&&ctx.byTD[t][d])||0));return {t,c,c0,ca,daily,net:c.bull-c.bear,net0:c0.bull-c0.bear}}
+function weeklyAccCard(a,ctx){const ps=ctx.byA[a]||[],raw=ctx.byRawA[a]||[];const cnt={};ps.forEach(x=>cnt[x.t]=(cnt[x.t]||0)+1);const top=Object.entries(cnt).sort((x,y)=>y[1]-x[1]||x[0].localeCompare(y[0])).slice(0,3);const chs=ps.filter(x=>chgOf(x)).length;
+  return {a,n:raw.length,html:`<div class="acc-card"><div><b>${esc(nameOf(a))}</b> ${accLink(a)}${accIn(a)}</div><div class="note">${raw.length} 則貼文・${chs} 次立場變化</div><ul class="list">${top.map(([t,n])=>{const x=latest(a,t,ctx.from,ctx.to);return `<li>${tkBtn(t)}${pill(x.s,x.star)}<span class="note">${n} 次</span></li>`}).join('')||'<li class="note">本週沒有提及股票</li>'}</ul></div>`}};
+function weeklyFinish(ctx,rows){
+ rows=rows.slice().sort((a,b)=>b.ca.accs-a.ca.accs||b.c.mentions-a.c.mentions||a.t.localeCompare(b.t));
  const tot=rows.reduce((s,r)=>({b:s.b+r.c.bull,m:s.m+r.c.neu,n:s.n+r.c.none,r:s.r+r.c.bear}),{b:0,m:0,n:0,r:0});
  const aligned=rows.filter(r=>agreeLabel(r.c).l.startsWith('高度')),split=rows.filter(r=>agreeLabel(r.c).l==='明顯分歧'),multi=rows.filter(r=>r.ca.accs>=2);
- const chgs=postsIn(from,to).map(x=>({x,ch:chgOf(x)})).filter(y=>y.ch);
- const sm=summaryOf('weekly');
- const wkAccs=[...new Set(rawIn(from,to).filter(p=>!p.folded_into).map(p=>p.acc))];
- const accCard=a=>{const ps=postsIn(from,to).filter(x=>x.acc===a);const raw=rawIn(from,to).filter(p=>!p.folded_into&&p.acc===a);const cnt={};ps.forEach(x=>cnt[x.t]=(cnt[x.t]||0)+1);const top=Object.entries(cnt).sort((x,y)=>y[1]-x[1]||x[0].localeCompare(y[0])).slice(0,3);const chs=ps.filter(x=>chgOf(x)).length;
-  return {a,n:raw.length,html:`<div class="acc-card"><div><b>${esc(nameOf(a))}</b> ${accLink(a)}${accIn(a)}</div><div class="note">${raw.length} 則貼文・${chs} 次立場變化</div><ul class="list">${top.map(([t,n])=>{const x=latest(a,t,from,to);return `<li>${tkBtn(t)}${pill(x.s,x.star)}<span class="note">${n} 次</span></li>`}).join('')||'<li class="note">本週沒有提及股票</li>'}</ul></div>`}};
- const cards=wkAccs.map(accCard).sort((x,y)=>y.n-x.n||x.a.localeCompare(y.a));
+ const chgs=ctx.weekPs.map(x=>({x,ch:chgOf(x)})).filter(y=>y.ch);
+ return {ctx,rows,tot,aligned,split,multi,chgs};
+}
+function weeklyHtml(m){
+ const {ctx,rows,tot,aligned,split,multi,chgs,cards}=m,{from,to,hasPrev,sm}=ctx;
  return `<div class="grid">
  ${moneyBar()}
  <section class="c12 analysis"><div class="range">彙整 ${from} 至 ${to}（7 天）</div>
@@ -1566,6 +1575,36 @@ function viewWeekly(){
  <section class="c12 panel" data-bp="5"><h2>各帳號本週主要關注方向 <span class="sub">本週有發文的 ${cards.length} 個帳號${HANDLES.length>cards.length?`；其餘 ${HANDLES.length-cards.length} 個追蹤帳號本週沒有發文`:''}</span></h2>
   ${cards.length?`<div class="acc-cards">${cards.map(c=>c.html).join('')}</div>`:empty('本週沒有帳號發文。')}</section>
  </div>`}
+function viewWeekly(){
+ const ctx=weeklyCtx();
+ const rows=TICKERS.map(t=>weeklyRow(t,ctx)).filter(r=>r.ca.accs>=1);
+ const mid=weeklyFinish(ctx,rows);
+ mid.cards=ctx.wkAccs.map(a=>weeklyAccCard(a,ctx)).sort((x,y)=>y.n-x.n||x.a.localeCompare(y.a));
+ return weeklyHtml(mid);
+}
+function buildWeeklySliced(cb){
+ const ctx=weeklyCtx();
+ const rows=[];
+ let i=0;
+ runSlices(function(){
+  if(i>=TICKERS.length)return false;
+  const r=weeklyRow(TICKERS[i++],ctx);
+  if(r.ca.accs>=1)rows.push(r);
+  return true;
+ },function(){
+  const mid=weeklyFinish(ctx,rows);
+  const cards=[];
+  let j=0;
+  runSlices(function(){
+   if(j>=ctx.wkAccs.length)return false;
+   cards.push(weeklyAccCard(ctx.wkAccs[j++],ctx));
+   return true;
+  },function(){
+   mid.cards=cards.sort((x,y)=>y.n-x.n||x.a.localeCompare(y.a));
+   cb(weeklyHtml(mid));
+  });
+ });
+}
 
 // ---------- 每月 ----------
 const HEAT_MIN={acc:3,days:3};
@@ -1587,17 +1626,77 @@ function groupPostsByAccount(ps){
   for(let i=0;i<ps.length;i++){const x=ps[i];(m[x.acc]=m[x.acc]||[]).push(x)}
   return m;
 }
-function viewMonthly(){
+function countByTicker(ps){
+  const m={};
+  for(let i=0;i<ps.length;i++){const t=ps[i].t;m[t]=(m[t]||0)+1}
+  return m;
+}
+function countByTickerDay(ps){
+  const m={};
+  for(let i=0;i<ps.length;i++){
+    const x=ps[i], t=m[x.t]||(m[x.t]={});
+    t[x.d]=(t[x.d]||0)+1;
+  }
+  return m;
+}
+function countUrlsByTicker(ps){
+  const m={};
+  for(let i=0;i<ps.length;i++){
+    const x=ps[i]; if(!x.url)continue;
+    const s=m[x.t]||(m[x.t]=new Set());
+    s.add(x.url);
+  }
+  const n={};
+  for(const t in m)n[t]=m[t].size;
+  return n;
+}
+function mentionsOf(t,from,to){
+  const w=winOf(from,to);
+  if(!w.mentions)w.mentions=countByTicker(w.xs);
+  return w.mentions[t]||0;
+}
+function urlCountOf(t,from,to){
+  const w=winOf(from,to);
+  if(!w.urls)w.urls=countUrlsByTicker(w.xs);
+  return w.urls[t]||0;
+}
+function runSlices(work,done,opts){
+  const budget=(opts&&opts.ms!=null)?opts.ms:10;
+  const maxItems=(opts&&opts.maxItems!=null)?opts.maxItems:1e9;
+  function now(){return (typeof performance!=='undefined'&&performance.now)?performance.now():Date.now()}
+  function step(){
+    const t0=now();
+    let n=0;
+    while(true){
+      if(!work()){done();return}
+      n++;
+      if(n>=maxItems||now()-t0>=budget)break;
+    }
+    setTimeout(step,0);
+  }
+  setTimeout(step,0);
+}
+function monthlyCtx(){
  const to=TODAY,from=addDays(TODAY,-27),all=postsIn(from,to);const DAYS=[...Array(28)].map((_,i)=>addDays(from,i));
  const byT=groupPostsByTicker(all),byTD=groupPostsByTickerDay(all),byA=groupPostsByAccount(all);
- const rows=TICKERS.map(t=>{const ps=byT[t]||[];return {t,n:ps.length,b:ps.filter(x=>x.s==='bull').length,r:ps.filter(x=>x.s==='bear').length,m:ps.filter(x=>x.s==='neu').length,u:ps.filter(x=>x.s==='none').length,c:dist(t,from,to)}}).filter(r=>r.n).sort((a,b)=>b.n-a.n||a.t.localeCompare(b.t));
  const B=all.filter(x=>x.s==='bull').length,X=all.filter(x=>x.s==='bear').length,M=all.filter(x=>x.s==='neu').length,U=all.length-B-X-M;
- const cons=accsOf(from,to).map(a=>{const ps=byA[a]||[];let rev=0,flips=0,same=0;const byTk={};ps.forEach(x=>(byTk[x.t]=byTk[x.t]||[]).push(x));Object.values(byTk).forEach(list=>{list.sort((x,y)=>x.ms-y.ms);for(let i=1;i<list.length;i++){if(list[i].s===list[i-1].s)same++;else{flips++;if(explicit(list[i].s)&&explicit(list[i-1].s))rev++}}});const pairs=same+flips;return {a,n:ps.length,rev,score:pairs?same/pairs*100:null}}).sort((x,y)=>y.n-x.n||x.a.localeCompare(y.a));
+ const sm=summaryOf('monthly');const srcs=[...new Set(Object.entries(D.prices).filter(([t])=>!UNC(t)).map(([,p])=>p.source))];const asof=Object.entries(D.prices).filter(([t])=>isUS(t)).map(([,p])=>p.as_of).sort().pop();
+ return {to,from,all,DAYS,byT,byTD,byA,B,X,M,U,sm,srcs,asof,accList:accsOf(from,to)};
+}
+function monthlyRow(t,ctx){const ps=ctx.byT[t]||[];return {t,n:ps.length,b:ps.filter(x=>x.s==='bull').length,r:ps.filter(x=>x.s==='bear').length,m:ps.filter(x=>x.s==='neu').length,u:ps.filter(x=>x.s==='none').length,c:dist(t,ctx.from,ctx.to)}}
+function monthlyCons(a,ctx){const ps=ctx.byA[a]||[];let rev=0,flips=0,same=0;const byTk={};ps.forEach(x=>(byTk[x.t]=byTk[x.t]||[]).push(x));Object.values(byTk).forEach(list=>{list.sort((x,y)=>x.ms-y.ms);for(let i=1;i<list.length;i++){if(list[i].s===list[i-1].s)same++;else{flips++;if(explicit(list[i].s)&&explicit(list[i-1].s))rev++}}});const pairs=same+flips;return {a,n:ps.length,rev,score:pairs?same/pairs*100:null}}
+function monthlyFinish(ctx,rows,cons){
+ rows=rows.filter(r=>r.n).sort((a,b)=>b.n-a.n||a.t.localeCompare(b.t));
+ cons=cons.slice().sort((x,y)=>y.n-x.n||x.a.localeCompare(y.a));
  // 熱圖只留熱度夠嘅股票：28 天內至少 HEAT_MIN.acc 個帳號、HEAT_MIN.days 天有提及（改數字要同時改下面標題同 i18n 文字）
+ const {byT,byTD,DAYS}=ctx;
  const hot=rows.filter(r=>{const ps=byT[r.t]||[];return new Set(ps.map(x=>x.acc)).size>=HEAT_MIN.acc&&new Set(ps.map(x=>x.d)).size>=HEAT_MIN.days});
  const maxHeat=Math.max(1,...hot.flatMap(r=>DAYS.map(d=>((byTD[r.t]&&byTD[r.t][d])||[]).length)));
  const heatRows=hot.map(r=>`<div style="display:contents"><span>${tkBtn(r.t)}</span>${DAYS.map(d=>{const ps=(byTD[r.t]&&byTD[r.t][d])||[];const b=ps.filter(x=>x.s==='bull').length,s=ps.filter(x=>x.s==='bear').length,net=b-s;const cls=!ps.length?'e':net>0?'b':net<0?'r':(b&&s)?'x':'m';const op=ps.length?(.35+.65*ps.length/maxHeat).toFixed(2):1;return `<i class="hc ${cls}" style="opacity:${op}" title="$${esc(r.t)} ${fmt(d)}：${ps.length} 則，淨看多 ${net}"></i>`}).join('')}</div>`).join('');
- const sm=summaryOf('monthly');const srcs=[...new Set(Object.entries(D.prices).filter(([t])=>!UNC(t)).map(([,p])=>p.source))];const asof=Object.entries(D.prices).filter(([t])=>isUS(t)).map(([,p])=>p.as_of).sort().pop();
+ return {ctx,rows,cons,hot,maxHeat,heatRows};
+}
+function monthlyHtml(m){
+ const {ctx,rows,cons,hot,heatRows}=m,{from,to,all,DAYS,B,X,M,U,sm,srcs,asof}=ctx;
  return `<div class="grid">
  ${moneyBar()}
  <section class="c12 analysis"><div class="range">彙整 ${from} 至 ${to}（28 天）</div><h2>本月趨勢</h2>
@@ -1617,6 +1716,30 @@ function viewMonthly(){
   <span></span>${DAYS.map((d,i)=>`<span style="text-align:center${i===27?';direction:rtl':''}" class="note">${i%7===0||i===27?fmt(d):''}</span>`).join('')}</div></div>
   <div class="legend" style="margin-top:10px"><span><i class="sw b"></i>淨看多</span><span><i class="sw r"></i>淨看空</span><span><i class="sw x"></i>多空相抵</span><span><i class="sw m"></i>中性／未表態</span></div>`:empty(rows.length?'期內沒有股票達到熱度門檻。':'期內沒有股票被提及。')}</section>
  </div>`}
+function viewMonthly(){
+ const ctx=monthlyCtx();
+ const rows=TICKERS.map(t=>monthlyRow(t,ctx));
+ const cons=ctx.accList.map(a=>monthlyCons(a,ctx));
+ return monthlyHtml(monthlyFinish(ctx,rows,cons));
+}
+function buildMonthlySliced(cb){
+ const ctx=monthlyCtx();
+ const rows=[];
+ let i=0;
+ runSlices(function(){
+  if(i>=TICKERS.length)return false;
+  rows.push(monthlyRow(TICKERS[i++],ctx));
+  return true;
+ },function(){
+  const cons=[];
+  let j=0;
+  runSlices(function(){
+   if(j>=ctx.accList.length)return false;
+   cons.push(monthlyCons(ctx.accList[j++],ctx));
+   return true;
+  },function(){cb(monthlyHtml(monthlyFinish(ctx,rows,cons)))});
+ });
+}
 
 // ---------- 價格圖（內嵌 SVG） ----------
 let chartRange='28d';
@@ -1875,6 +1998,7 @@ function rebuildDerived(){
  FOLD={};ALLP.forEach(p=>{if(p.folded_into)(FOLD[p.folded_into]=FOLD[p.folded_into]||[]).push(p)});
  INTRA=D.intraday||{};
  AVMINI=D.avmini||{};
+ DERIVED_GEN++;VIEW_CACHE=null;VIEW_CACHE_KEY=null;
 }
 let coreDone=!(D._ext&&D._ext.core),coreP=null,postCursor=0,pageP=null,postsFailed=false,allP=null;
 let pricesDone=!(D._ext&&D._ext.prices),pricesFailed=false,pricesP=null,facesP=null,avatarsP=null;
@@ -1937,8 +2061,8 @@ function loadDailyCover(){
 function render(){const h=decodeURIComponent((location.hash||'#daily').slice(1)).replace(/^(daily|weekly|monthly)\/\d+$/,'$1');
  if(h==='tracked'||/^account\//.test(h)||/^stock[\/-]/.test(h))loadAvatars();
  const ms=h.match(/^stock[\/-](.+)$/),ma=h.match(/^account\/(.+)$/);
- if((ms||ma||h==='weekly'||h==='monthly'||h==='macro')&&(!postsReady()||!coreDone)){if(!waitT&&!document.getElementById('dash-wait'))waitT=setTimeout(function(){waitT=0;if(postsReady()&&coreDone)return;var v=document.getElementById('view');if(v&&!v.querySelector('#dash-wait'))v.insertAdjacentHTML('afterbegin','<p id="dash-wait" class="note">'+esc(uiText('正在載入其餘資料','Loading the rest'))+'</p>')},400);Promise.all([loadAllPosts(),loadCore()]).then(function(){if(waitT){clearTimeout(waitT);waitT=0}var w=document.getElementById('dash-wait');if(w)w.remove();render()}).catch(function(e){console.error(e);coreDone=true;postsFailed=true;if(waitT){clearTimeout(waitT);waitT=0}render()});return}
- if(!ms&&!ma&&h!=='weekly'&&h!=='monthly'&&h!=='macro'&&h!=='tracked'&&!dailyCovered()){loadDailyCover().then(function(){render()}).catch(function(e){console.error(e);postsFailed=true;render()});return}
+ if((ms||ma||h==='weekly'||h==='monthly'||h==='macro')&&(!postsReady()||!coreDone)){window.__viewDone=false;if(!waitT&&!document.getElementById('dash-wait'))waitT=setTimeout(function(){waitT=0;if(postsReady()&&coreDone)return;var v=document.getElementById('view');if(v&&!v.querySelector('#dash-wait'))v.insertAdjacentHTML('afterbegin','<p id="dash-wait" class="note">'+esc(uiText('正在載入其餘資料','Loading the rest'))+'</p>')},400);Promise.all([loadAllPosts(),loadCore()]).then(function(){if(waitT){clearTimeout(waitT);waitT=0}var w=document.getElementById('dash-wait');if(w)w.remove();render()}).catch(function(e){console.error(e);coreDone=true;postsFailed=true;if(waitT){clearTimeout(waitT);waitT=0}render()});return}
+ if(!ms&&!ma&&h!=='weekly'&&h!=='monthly'&&h!=='macro'&&h!=='tracked'&&!dailyCovered()){window.__viewDone=false;loadDailyCover().then(function(){render()}).catch(function(e){console.error(e);postsFailed=true;render()});return}
  if(ms||ma){if(!document.getElementById('view').innerHTML)drawView();try{ms?openDive(ms[1].toUpperCase()):openAccount(ma[1])}catch(e){console.error(e);document.getElementById('dive').innerHTML='<div class="wrap">'+empty('畫面顯示錯誤：'+esc(e.message))+'</div>';showDive(document.getElementById('dive'))}return}
  closeDive();current=VIEWS[h]?h:'daily';drawView();
  if(h==='donate')setTimeout(()=>{const f=document.querySelector('[data-jump="donate"]');if(f)f.click()},50)}
@@ -1948,6 +2072,7 @@ let lastViewKey=null,lastViewHtml=null;
 // 速度：開頁（PV_BOOT）時只即刻砌頭幾格嘅 HTML，其餘每格嘅 HTML 留到之後逐格砌、逐格放（同上次一樣嘅格唔郁）；
 // 之後任何 render()（包括 check.js／layout_check.js 直接呼叫）都係一次過同步畫完，並取消未補完嘅批次。
 let PV_BOOT=true,PV_TOK=0,PV_TAIL=null,PV_PARTS=null,PV_NODES=null,PV_HEAD=null,PV_KEY=null;
+let DERIVED_GEN=0,VIEW_CACHE=null,VIEW_CACHE_KEY=null,VIEW_JOB=0;
 function whenIdle(f){if(window.requestIdleCallback)requestIdleCallback(f,{timeout:2500});else setTimeout(f,200)}
 function renderChunked(){const o=PV_BOOT;PV_BOOT=true;try{render()}finally{PV_BOOT=o}}
 // 書本式閱讀：data-bp＝今日／本週／本月第幾頁（之後冇標嘅格跟上一格）
@@ -1961,17 +2086,38 @@ function putView(view,html){const tok=++PV_TOK;const tail=PV_TAIL;PV_TAIL=null;w
  if(!same){view.innerHTML=html;g=view.querySelector('.grid');PV_HEAD=html;PV_KEY=current;PV_PARTS=[];PV_NODES=[]}
  const parts=[];let i=0;
  const step=()=>{if(tok!==PV_TOK)return;
-  if(i>=tail.length){window.__viewDone=true;lastViewHtml=PV_HEAD.slice(0,-6)+'\n'+parts.join('\n')+'\n</div>';document.dispatchEvent(new Event('view-done'));return}
+  if(i>=tail.length){window.__viewDone=true;lastViewHtml=PV_HEAD.slice(0,-6)+'\n'+parts.join('\n')+'\n</div>';if(VIEW_CACHE_KEY===viewCacheKey(current))VIEW_CACHE=lastViewHtml;document.dispatchEvent(new Event('view-done'));return}
   const h=tail[i]();parts.push(h);
   if(PV_PARTS[i]!==h){const ns=pvFrag(h),old=PV_NODES[i]||[],anchor=pvAnchor(i);
    ns.forEach(n=>g.insertBefore(n,anchor));old.forEach(n=>n.remove());PV_NODES[i]=ns;PV_PARTS[i]=h;
    ns.forEach(n=>{if(n.nodeType===1){linkHandles(n);fitTables(n);clampLists(n)}});try{mountTape(view)}catch(e){}}
   i++;setTimeout(step,0)};
  setTimeout(step,0);return !same}
+function applyViewHtml(html){
+ const view=document.getElementById('view');
+ // Boot daily html is only the head; the tail is inserted later. Cache must not
+ // re-apply that head (no tail) and wipe later sections after the first paint finishes.
+ const bootHead=!!(lastViewHtml&&html&&html!==lastViewHtml&&html.endsWith('</div>')&&lastViewHtml.startsWith(html.slice(0,-6)));
+ if(lastViewKey===current&&view.firstChild&&(lastViewHtml===html||bootHead)){if(coreDone){const ld=view.querySelector('#dash-load');if(ld)ld.remove()}mountStatus();mountMore();if(window.__viewDone!==false)window.__viewDone=true;return}
+ const oldTape=view.querySelector('.mk-live[data-on]');
+ if(putView(view,html)){if(oldTape){const nw=view.querySelector('.mk-live');if(nw&&nw!==oldTape)nw.replaceWith(oldTape)}linkHandles(view);fitTables(view);clampLists(view);try{mountTape(view)}catch(e){}}
+ else if(coreDone){const ld=view.querySelector('#dash-load');if(ld)ld.remove()}
+ mountStatus();mountMore();lastViewKey=current;lastViewHtml=html;
+}
+function viewCacheKey(name){return name+'|'+DERIVED_GEN+'|'+(typeof LB_SORT!=='undefined'?LB_SORT.k+':'+LB_SORT.dir:'')}
+function buildViewSliced(name,cb){
+ if(name==='weekly')return buildWeeklySliced(cb);
+ if(name==='monthly')return buildMonthlySliced(cb);
+ cb(VIEWS[name]());
+}
 function drawView(){document.querySelectorAll('nav.tabs button[data-v]').forEach(b=>b.setAttribute('aria-selected',b.dataset.v===current));
- try{const html=VIEWS[current]();const view=document.getElementById('view');
-  if(lastViewKey===current&&lastViewHtml===html&&view.firstChild){if(coreDone){const ld=view.querySelector('#dash-load');if(ld)ld.remove()}mountStatus();mountMore()}
-  else{const oldTape=view.querySelector('.mk-live[data-on]');if(putView(view,html)){if(oldTape){const nw=view.querySelector('.mk-live');if(nw&&nw!==oldTape)nw.replaceWith(oldTape)}linkHandles(view);fitTables(view);clampLists(view);try{mountTape(view)}catch(e){}}else if(coreDone){const ld=view.querySelector('#dash-load');if(ld)ld.remove()}mountStatus();mountMore();lastViewKey=current;lastViewHtml=html}}catch(e){console.error(e);document.getElementById('view').innerHTML=empty('畫面顯示錯誤：'+esc(e.message))}}
+ try{
+  const job=++VIEW_JOB,key=viewCacheKey(current);
+  const apply=function(html){if(job!==VIEW_JOB)return;VIEW_CACHE=html;VIEW_CACHE_KEY=key;applyViewHtml(html)};
+  if(VIEW_CACHE_KEY===key&&VIEW_CACHE!=null){applyViewHtml(VIEW_CACHE);return}
+  if(current==='weekly'||current==='monthly'){window.__viewDone=false;buildViewSliced(current,apply);return}
+  apply(VIEWS[current]());
+ }catch(e){console.error(e);window.__viewDone=true;document.getElementById('view').innerHTML=empty('畫面顯示錯誤：'+esc(e.message))}}
 let scrollTabs=false;
 function scrollTabPanel(){const el=document.getElementById('view')||document.querySelector('nav.tabs');if(!el)return;const head=document.querySelector('header.ap-top');const top=(head?head.getBoundingClientRect().height:0)+8;el.style.scrollMarginTop=top+'px';const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;el.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-tk]');if(b){e.preventDefault();location.hash='stock/'+b.dataset.tk;return}
@@ -2027,7 +2173,7 @@ document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&
 function ctGroups(from,to,allow){
   const ok=h=>{if(!inCons(h))return false;if(!allow)return true;const c=CAT[String(h).toLowerCase()];return !c||allow[c]===true};
   const out={bull:[],bear:[],split:[]};
-  TICKERS.forEach(t=>{if(UNC(t)||!isUS(t))return;const rows=accsOf(from,to).filter(ok).map(a=>latest(a,t,from,to)).filter(Boolean);if(!rows.length)return;const nb=rows.filter(x=>x.s==='bull').length,nr=rows.filter(x=>x.s==='bear').length;const k=nb&&nr?'split':nb>=2?'bull':nr>=2?'bear':null;if(!k)return;const nPosts=new Set(postsIn(from,to).filter(x=>x.t===t).map(x=>x.url)).size;out[k].push({t,nb,nr,nPosts})});
+  TICKERS.forEach(t=>{if(UNC(t)||!isUS(t))return;const rows=accsOf(from,to).filter(ok).map(a=>latest(a,t,from,to)).filter(Boolean);if(!rows.length)return;const nb=rows.filter(x=>x.s==='bull').length,nr=rows.filter(x=>x.s==='bear').length;const k=nb&&nr?'split':nb>=2?'bull':nr>=2?'bear':null;if(!k)return;const nPosts=urlCountOf(t,from,to);out[k].push({t,nb,nr,nPosts})});
   ['bull','bear','split'].forEach(k=>out[k].sort((a,b)=>(b.nb+b.nr)-(a.nb+a.nr)||b.nPosts-a.nPosts||a.t.localeCompare(b.t)));
   return out;
 }

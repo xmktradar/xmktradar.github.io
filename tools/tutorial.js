@@ -55,14 +55,16 @@ async function shoot(page, base, lang, shot, warn) {
   // cards in a later chunk; a fixed 1.2s is not always enough on /en/.
   const go = shot.go || '';
   if (!go || go.startsWith('#') || go.startsWith('?')) {
+    // Same bar as check.js after render(): !== false treats undefined as done,
+    // and a swallowed timeout let screenshots run before later daily sections landed.
     await page.waitForFunction(
-      () => window.__dashReady === true && window.__viewDone !== false,
+      () => window.__dashReady === true && window.__viewDone === true,
       null,
       { timeout: 60000 }
-    ).catch(() => {});
+    );
   }
   await page.addStyleTag({ content: '.donate-fab{display:none!important}' });
-  await page.waitForTimeout(1200);
+  await page.waitForTimeout(300);
   if (shot.search) {
     await page.click('#srch-btn');
     await page.fill('#srch-q', shot.search);
@@ -70,9 +72,12 @@ async function shoot(page, base, lang, shot, warn) {
   }
   let top = 0;
   if (shot.sel !== '@top') {
+    await page.waitForSelector(shot.sel, { timeout: 20000 }).catch(() => {});
+
     top = await page.evaluate(([sel, part]) => {
       const el = document.querySelector(sel);
-      if (!el || !el.getBoundingClientRect().height) return null;
+      if (!el) return null;
+      // content-visibility:auto can report 0 height until the section is scrolled on-screen.
       const first = part ? el.children[part[0]] || el : el;
       first.scrollIntoView({ block: 'start' });
       window.scrollTo(0, window.scrollY);  // a wide strip (熱門個股) must not scroll the page sideways
@@ -80,6 +85,7 @@ async function shoot(page, base, lang, shot, warn) {
       const sc = first.closest('#dive') || window;
       sc.scrollBy(0, -64);
       const r = first.getBoundingClientRect();
+      if (!r.height) return null;
       return { top: Math.max(0, r.top - 12), elTop: r.top, h: r.height, part: !!part };
     }, [shot.sel, shot.part || null]);
     if (top === null) {
