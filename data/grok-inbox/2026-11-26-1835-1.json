@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2125811421485379949": {
+      "en_summary": "$GOLD Today felt like a bottom imho. Hit $3,425/oz and now we are nearing $3,600/oz. Would not be surprised we go and retest $4,000 or so in a bear market rally bounce.",
+      "zh_summary": "$GOLD 今天感覺像是底部。觸及 $3,425/盎司，現在接近 $3,600/盎司。在熊市反彈中重新測試 $4,000 左右並不令人意外。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    },
+    "2125810906202570858": {
+      "en_summary": "$MU $SKHY $DRAM $NET $CRWD Token volume on OpenRouter is up 35x in a year and 3.5x in just three months, and agentic workloads are now about 80% of it. $NVDA Q3 call. Agents run long, carry huge context, and that context lives in memory.",
+      "zh_summary": "$MU $SKHY $DRAM $NET $CRWD OpenRouter 的 token 量一年內上升 35 倍，三個月內上升 3.5 倍，代理工作負載現約佔 80%。$NVDA 第三季電話會議。代理運行時間長，攜帶巨大上下文，該上下文存於記憶體中。",
+      "tickers": ["MU", "NET", "CRWD", "NVDA"],
+      "stance": "看好",
+      "stance_by_ticker": {"MU": "看好", "NET": "看好", "CRWD": "看好", "NVDA": "看好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125805495181058145": {
+      "en_summary": "(Reposted by @Micro2Macr0) MICRON $MU HAMMER CANDLE OFF THE LIBERATION DAY AVWAP",
+      "zh_summary": "(由 @Micro2Macr0 轉推) MICRON $MU 在解放日 AVWAP 處出現錘頭蠟燭",
+      "tickers": ["MU"],
+      "stance": "看好",
+      "stance_by_ticker": {"MU": "看好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125805287227691437": {
+      "en_summary": "Nvidia’s demand for CoWoS advanced packaging will continue to rise in 2027, seen up 57% to 1.22 million wafers. Looks like NVDA doesn't have the demand problem that market has been anticipating.",
+      "zh_summary": "Nvidia 對 CoWoS 先進封裝的需求將在 2027 年繼續上升，預期增長 57% 至 122 萬片晶圓。看起來 NVDA 並沒有市場預期的需求問題。",
+      "tickers": ["NVDA", "TSM", "GOOGL", "AMZN", "AVGO"],
+      "stance": "看好",
+      "stance_by_ticker": {"NVDA": "看好", "TSM": "中性", "GOOGL": "中性", "AMZN": "中性", "AVGO": "中性"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "2027 年 CoWoS 需求增長 57% 至 122 萬片"}
+    },
+    "2125797996067746087": {
+      "en_summary": "I pegged Icahn long ago. He just doesn't seem to have great investments skills. Quoted: Seems Icahn Enterprises ($IEP) grew BV ~1.5x since 2003. Trailing the S&P (up 2x+div) badly in same period.",
+      "zh_summary": "我早就看透 Icahn。他似乎沒有出色的投資技能。引用：Icahn Enterprises ($IEP) 自 2003 年以來 BV 增長約 1.5 倍。同期落後標普（上漲 2 倍加股息）。",
+      "tickers": ["IEP"],
+      "stance": "看淡",
+      "stance_by_ticker": {"IEP": "看淡"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"IEP": "BV 自 2003 年僅增長 1.5 倍，落後標普"}
+    }
+  }
+}
