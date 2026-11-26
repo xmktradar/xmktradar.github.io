@@ -15,13 +15,6 @@
    "backlog": true
   },
   {
-   "t": "PSA",
-   "end": "2026-09-30",
-   "label": "FY2026 Q3",
-   "found_hkt": "2026-10-26 00:00",
-   "backlog": true
-  },
-  {
    "t": "HOOD",
    "end": "2026-09-30",
    "label": "FY2026 Q3",
@@ -705,6 +698,38 @@
    "end": "2019-09-30",
    "label": "FY2019 Q3",
    "found_hkt": "2026-10-29 00:00",
+   "backlog": true
+  },
+  {
+   "t": "LOW",
+   "end": "2026-10-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-11-26 11:56"
+  },
+  {
+   "t": "TGT",
+   "end": "2026-10-31",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-11-26 11:56"
+  },
+  {
+   "t": "ADSK",
+   "end": "2026-10-31",
+   "label": "FY2027 Q3",
+   "found_hkt": "2026-11-26 11:56"
+  },
+  {
+   "t": "DE",
+   "end": "2026-08-02",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-11-25 00:00",
+   "backlog": true
+  },
+  {
+   "t": "HSBC",
+   "end": "2026-03-31",
+   "label": "FY2026 Q1",
+   "found_hkt": "2026-10-27 00:00",
    "backlog": true
   }
  ],
@@ -2272,6 +2297,14 @@
    "backlog": true,
    "posted": "2026-11-25",
    "slot": "1000"
+  },
+  {
+   "t": "PSA",
+   "end": "2026-09-30",
+   "label": "FY2026 Q3",
+   "found_hkt": "2026-10-26 00:00",
+   "backlog": true,
+   "dropped": true
   }
  ],
  "slots": {
