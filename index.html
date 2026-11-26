@@ -1567,15 +1567,34 @@ function viewWeekly(){
 
 // ---------- 每月 ----------
 const HEAT_MIN={acc:3,days:3};
+function groupPostsByTicker(ps){
+  const m={};
+  for(let i=0;i<ps.length;i++){const x=ps[i];(m[x.t]=m[x.t]||[]).push(x)}
+  return m;
+}
+function groupPostsByTickerDay(ps){
+  const m={};
+  for(let i=0;i<ps.length;i++){
+    const x=ps[i], t=m[x.t]||(m[x.t]={});
+    (t[x.d]=t[x.d]||[]).push(x);
+  }
+  return m;
+}
+function groupPostsByAccount(ps){
+  const m={};
+  for(let i=0;i<ps.length;i++){const x=ps[i];(m[x.acc]=m[x.acc]||[]).push(x)}
+  return m;
+}
 function viewMonthly(){
  const to=TODAY,from=addDays(TODAY,-27),all=postsIn(from,to);const DAYS=[...Array(28)].map((_,i)=>addDays(from,i));
- const rows=TICKERS.map(t=>{const ps=all.filter(x=>x.t===t);return {t,n:ps.length,b:ps.filter(x=>x.s==='bull').length,r:ps.filter(x=>x.s==='bear').length,m:ps.filter(x=>x.s==='neu').length,u:ps.filter(x=>x.s==='none').length,c:dist(t,from,to)}}).filter(r=>r.n).sort((a,b)=>b.n-a.n||a.t.localeCompare(b.t));
+ const byT=groupPostsByTicker(all),byTD=groupPostsByTickerDay(all),byA=groupPostsByAccount(all);
+ const rows=TICKERS.map(t=>{const ps=byT[t]||[];return {t,n:ps.length,b:ps.filter(x=>x.s==='bull').length,r:ps.filter(x=>x.s==='bear').length,m:ps.filter(x=>x.s==='neu').length,u:ps.filter(x=>x.s==='none').length,c:dist(t,from,to)}}).filter(r=>r.n).sort((a,b)=>b.n-a.n||a.t.localeCompare(b.t));
  const B=all.filter(x=>x.s==='bull').length,X=all.filter(x=>x.s==='bear').length,M=all.filter(x=>x.s==='neu').length,U=all.length-B-X-M;
- const cons=accsOf(from,to).map(a=>{const ps=all.filter(x=>x.acc===a);let rev=0,flips=0,same=0;const byT={};ps.forEach(x=>(byT[x.t]=byT[x.t]||[]).push(x));Object.values(byT).forEach(list=>{list.sort((x,y)=>x.ms-y.ms);for(let i=1;i<list.length;i++){if(list[i].s===list[i-1].s)same++;else{flips++;if(explicit(list[i].s)&&explicit(list[i-1].s))rev++}}});const pairs=same+flips;return {a,n:ps.length,rev,score:pairs?same/pairs*100:null}}).sort((x,y)=>y.n-x.n||x.a.localeCompare(y.a));
+ const cons=accsOf(from,to).map(a=>{const ps=byA[a]||[];let rev=0,flips=0,same=0;const byTk={};ps.forEach(x=>(byTk[x.t]=byTk[x.t]||[]).push(x));Object.values(byTk).forEach(list=>{list.sort((x,y)=>x.ms-y.ms);for(let i=1;i<list.length;i++){if(list[i].s===list[i-1].s)same++;else{flips++;if(explicit(list[i].s)&&explicit(list[i-1].s))rev++}}});const pairs=same+flips;return {a,n:ps.length,rev,score:pairs?same/pairs*100:null}}).sort((x,y)=>y.n-x.n||x.a.localeCompare(y.a));
  // 熱圖只留熱度夠嘅股票：28 天內至少 HEAT_MIN.acc 個帳號、HEAT_MIN.days 天有提及（改數字要同時改下面標題同 i18n 文字）
- const hot=rows.filter(r=>{const ps=all.filter(x=>x.t===r.t);return new Set(ps.map(x=>x.acc)).size>=HEAT_MIN.acc&&new Set(ps.map(x=>x.d)).size>=HEAT_MIN.days});
- const maxHeat=Math.max(1,...hot.flatMap(r=>DAYS.map(d=>all.filter(x=>x.t===r.t&&x.d===d).length)));
- const heatRows=hot.map(r=>`<div style="display:contents"><span>${tkBtn(r.t)}</span>${DAYS.map(d=>{const ps=all.filter(x=>x.t===r.t&&x.d===d);const b=ps.filter(x=>x.s==='bull').length,s=ps.filter(x=>x.s==='bear').length,net=b-s;const cls=!ps.length?'e':net>0?'b':net<0?'r':(b&&s)?'x':'m';const op=ps.length?(.35+.65*ps.length/maxHeat).toFixed(2):1;return `<i class="hc ${cls}" style="opacity:${op}" title="$${esc(r.t)} ${fmt(d)}：${ps.length} 則，淨看多 ${net}"></i>`}).join('')}</div>`).join('');
+ const hot=rows.filter(r=>{const ps=byT[r.t]||[];return new Set(ps.map(x=>x.acc)).size>=HEAT_MIN.acc&&new Set(ps.map(x=>x.d)).size>=HEAT_MIN.days});
+ const maxHeat=Math.max(1,...hot.flatMap(r=>DAYS.map(d=>((byTD[r.t]&&byTD[r.t][d])||[]).length)));
+ const heatRows=hot.map(r=>`<div style="display:contents"><span>${tkBtn(r.t)}</span>${DAYS.map(d=>{const ps=(byTD[r.t]&&byTD[r.t][d])||[];const b=ps.filter(x=>x.s==='bull').length,s=ps.filter(x=>x.s==='bear').length,net=b-s;const cls=!ps.length?'e':net>0?'b':net<0?'r':(b&&s)?'x':'m';const op=ps.length?(.35+.65*ps.length/maxHeat).toFixed(2):1;return `<i class="hc ${cls}" style="opacity:${op}" title="$${esc(r.t)} ${fmt(d)}：${ps.length} 則，淨看多 ${net}"></i>`}).join('')}</div>`).join('');
  const sm=summaryOf('monthly');const srcs=[...new Set(Object.entries(D.prices).filter(([t])=>!UNC(t)).map(([,p])=>p.source))];const asof=Object.entries(D.prices).filter(([t])=>isUS(t)).map(([,p])=>p.as_of).sort().pop();
  return `<div class="grid">
  ${moneyBar()}
@@ -1656,7 +1675,7 @@ function drawChart(t){const el=document.getElementById('chart');if(!el)return;co
 const TV=D.tv_symbols||{};const TV_DELAY={NASDAQ:15,NYSE:15,AMEX:15,ASX:20};
 function tvCard(t){const sym=TV[t];if(!sym)return '';const [ex,code]=sym.split(':');const slug=encodeURIComponent(ex)+'-'+encodeURIComponent(code.replace(/-/g,'.'));const d=TV_DELAY[ex];
  return `<div class="tv-card" data-tv="${esc(sym)}"><div class="tv-h"><b>TradingView 走勢圖</b>${d?`<span class="tv-delay">延遲約 ${d} 分鐘</span>`:'<span class="tv-delay unk">可能有延遲</span>'}<a class="tv-go" href="https://www.tradingview.com/symbols/${slug}/?aff_id=1172819&aff_sub=stock" target="_blank" rel="sponsored nofollow noopener" data-aff="tradingview" data-aff-page="stock">在 TradingView 查看 ↗</a></div><div class="tv-box"></div><a class="tv-full" href="https://www.tradingview.com/symbols/${slug}/?aff_id=1172819&aff_sub=stock" target="_blank" rel="sponsored noopener" data-aff="tradingview" data-aff-page="stock" data-ticker="${esc(t)}" data-placement="widget_below"><span class="pj-tag">推廣</span> 在 TradingView 開完整圖表 ↗</a><div class="tv-f">免費報價，資料來源 TradingView，不構成投資建議。<span class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener" target="_blank">在 TradingView 上追蹤所有市場</a></span></div></div>`}
-function mountTV(root){const card=root.querySelector('.tv-card[data-tv]');if(!card)return;const box=card.querySelector('.tv-box');
+function mountTV(root){if(navigator.webdriver)return;const card=root.querySelector('.tv-card[data-tv]');if(!card)return;const box=card.querySelector('.tv-box');
  const c=document.createElement('div');c.className='tradingview-widget-container';c.innerHTML='<div class="tradingview-widget-container__widget"></div>';
  const sc=document.createElement('script');sc.type='text/javascript';sc.async=true;sc.src='https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js';
  sc.textContent=JSON.stringify({symbols:[[card.dataset.tv]],chartOnly:false,width:'100%',height:'100%',autosize:true,locale:(PAGE_LANG==='en'?'en':'zh_TW'),colorTheme:'light',isTransparent:true,showVolume:false,showMA:false,hideDateRanges:false,hideMarketStatus:false,hideSymbolLogo:true,scalePosition:'right',scaleMode:'Normal',fontFamily:'-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif',fontSize:'10',noTimeScale:false,valuesTracking:'1',changeMode:'price-and-percent',chartType:'area',dateRanges:['1d|1','1m|30','3m|60','12m|1D','60m|1W','all|1M']});
@@ -1739,7 +1758,7 @@ const tapeHtml=()=>`<div class="mk-live" style="display:none"><span class="mk-li
 // 速度：TradingView 跑馬燈等捲到附近先載入（冇 IntersectionObserver 就即刻載）
 function mountTape(root){const box=root&&root.querySelector('.mk-live');if(!box||box.dataset.on)return;box.dataset.on='1';
  if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){io.disconnect();tapeNow(box)}},{rootMargin:'300px 0px'});io.observe(box.closest('section')||box.parentElement||box)}else tapeNow(box)}
-function tapeNow(box){const w=box.querySelector('.mk-live-w');if(!w||!box.isConnected)return;
+function tapeNow(box){if(navigator.webdriver)return;const w=box.querySelector('.mk-live-w');if(!w||!box.isConnected)return;
  const c=document.createElement('div');c.className='tradingview-widget-container';c.innerHTML='<div class="tradingview-widget-container__widget"></div>';
  const sc=document.createElement('script');sc.type='text/javascript';sc.async=true;sc.src='https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
  sc.textContent=JSON.stringify({symbols:TAPE_SYMS,showSymbolLogo:false,isTransparent:true,displayMode:'compact',colorTheme:'light',locale:(PAGE_LANG==='en'?'en':'zh_TW')});
