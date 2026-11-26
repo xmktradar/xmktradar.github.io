@@ -1,0 +1,102 @@
+{
+  "posts": {
+    "2125665889043300645": {
+      "en_summary": "$SPY profit taking.",
+      "zh_summary": "$SPY 獲利了結。",
+      "tickers": [
+        "SPY"
+      ],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "SPY": "中性"
+      },
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125665716162490393": {
+      "en_summary": "$RTY $RSP $INDU nicely green. SPX trying to get there as folks exit for the holiday.",
+      "zh_summary": "$RTY $RSP $INDU 明顯收綠。SPX正試圖追上，因人們為假期離場。",
+      "tickers": [
+        "IWM",
+        "RSP",
+        "DIA",
+        "SPY"
+      ],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "IWM": "睇好",
+        "RSP": "睇好",
+        "DIA": "睇好",
+        "SPY": "中性"
+      },
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125665677532967212": {
+      "en_summary": "$NDX double bottom?",
+      "zh_summary": "$NDX 雙底？",
+      "tickers": [
+        "QQQ"
+      ],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "QQQ": "中性"
+      },
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2125665153844678916": {
+      "en_summary": "$SPCX data centers in space became real. FCC approved SpaceX's Starmind constellation: up to 1 million satellites, each an orbital compute module. First licensed.",
+      "zh_summary": "$SPCX 太空數據中心成為現實。FCC批准SpaceX的Starmind星座：多達100萬顆衛星，每顆都是軌道計算模組。首次獲准。",
+      "tickers": [
+        "SPCX"
+      ],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "SPCX": "睇好"
+      },
+      "horizon": "長線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {
+        "SPCX": "FCC批准Starmind星座百萬顆衛星"
+      }
+    },
+    "2125665101160251787": {
+      "en_summary": "$ASTS: 3 new gateway renewals for Midland, Kapolei, and Thomaston.",
+      "zh_summary": "$ASTS：Midland、Kapolei及Thomaston的3個新網關續期。",
+      "tickers": [
+        "ASTS"
+      ],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "ASTS": "睇好"
+      },
+      "horizon": "中線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
