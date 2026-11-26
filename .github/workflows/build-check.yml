@@ -32,6 +32,10 @@ jobs:
         run: node --test tools/px_chart.test.js
       - name: Hot stocks ranking tests
         run: node --test tools/hot_stocks.test.js
+      - name: Monthly heatmap index tests
+        run: node --test tools/monthly_heat.test.js
+      - name: Page check teardown retry tests
+        run: node --test tools/check_context.test.js
       # IG abandoned 2026-11; skip gate (was failing Build check on #美股 / test_ig_boost.py)
       - name: IG caption rules
         if: false
