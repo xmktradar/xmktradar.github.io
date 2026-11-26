@@ -1,5 +1,5 @@
 {
- "day": "2026-11-26",
+ "day": "2026-11-27",
  "companies": {
   "AAPL": {
    "cik": 320193,
@@ -63,7 +63,7 @@
   },
   "ANT": {
    "cik": 2130357,
-   "name": "Anthropic, PBC Class A Common Stock",
+   "name": "Anthropic, PBC",
    "mcap": 1106624380928
   },
   "WMT": {
@@ -89,7 +89,7 @@
   "MU": {
    "cik": 723125,
    "name": "Micron Technology, Inc.",
-   "mcap": 680268201984
+   "mcap": 682379247616
   },
   "AMD": {
    "cik": 2488,
@@ -204,22 +204,17 @@
   "AZN": {
    "cik": 901832,
    "name": "AstraZeneca PLC",
-   "mcap": 285694558208
-  },
-  "QH": {
-   "cik": 1781193,
-   "name": "Quhuo Limited",
-   "mcap": 8871630
+   "mcap": 285694656512
   },
   "HSBC": {
    "cik": 1089113,
    "name": "HSBC Holdings plc",
-   "mcap": 279508058112
+   "mcap": 279504781312
   },
   "SHEL": {
    "cik": 1306965,
    "name": "Shell plc",
-   "mcap": 265391079424
+   "mcap": 265290874880
   },
   "RTX": {
    "cik": 101829,
@@ -446,11 +441,6 @@
    "name": "Shopify Inc.",
    "mcap": 171622023168
   },
-  "CVNA": {
-   "cik": 1690820,
-   "name": "Carvana Co.",
-   "mcap": 74845224960
-  },
   "SONY": {
    "cik": 313838,
    "name": "Sony Group Corporation",
@@ -471,11 +461,6 @@
    "name": "Pfizer Inc.",
    "mcap": 162217836544
   },
-  "TJX": {
-   "cik": 109198,
-   "name": "The TJX Companies, Inc.",
-   "mcap": 160695205888
-  },
   "SCHW": {
    "cik": 316709,
    "name": "The Charles Schwab Corporation",
@@ -485,6 +470,11 @@
    "cik": 6281,
    "name": "Analog Devices, Inc.",
    "mcap": 160781926400
+  },
+  "TJX": {
+   "cik": 109198,
+   "name": "The TJX Companies, Inc.",
+   "mcap": 160695205888
   },
   "DHR": {
    "cik": 313616,
@@ -574,7 +564,7 @@
   "LOW": {
    "cik": 60667,
    "name": "Lowe's Companies, Inc.",
-   "mcap": 132212375552
+   "mcap": 132210941952
   },
   "IBN": {
    "cik": 1103838,
@@ -761,6 +751,11 @@
    "name": "Duke Energy Corporation",
    "mcap": 102843514880
   },
+  "BNS": {
+   "cik": 9631,
+   "name": "The Bank of Nova Scotia",
+   "mcap": 102735175680
+  },
   "ABNB": {
    "cik": 1559720,
    "name": "Airbnb, Inc.",
@@ -770,11 +765,6 @@
    "cik": 860730,
    "name": "HCA Healthcare, Inc.",
    "mcap": 102568304640
-  },
-  "BNS": {
-   "cik": 9631,
-   "name": "The Bank of Nova Scotia",
-   "mcap": 102735175680
   },
   "GSK": {
    "cik": 1131399,
@@ -1121,6 +1111,11 @@
    "name": "Arthur J. Gallagher & Co.",
    "mcap": 74973184000
   },
+  "CVNA": {
+   "cik": 1690820,
+   "name": "Carvana Co.",
+   "mcap": 74845224960
+  },
   "MELI": {
    "cik": 1099590,
    "name": "MercadoLibre, Inc.",
@@ -1129,7 +1124,7 @@
   "E": {
    "cik": 1002242,
    "name": "Eni S.p.A.",
-   "mcap": 74363035648
+   "mcap": 74339868672
   },
   "AMX": {
    "cik": 1129137,
@@ -1166,20 +1161,25 @@
    "name": "FedEx Corporation",
    "mcap": 72337154048
   },
-  "INTU": {
-   "cik": 896878,
-   "name": "Intuit Inc.",
-   "mcap": 71738155008
-  },
   "RACE": {
    "cik": 1648416,
    "name": "Ferrari N.V.",
    "mcap": 71735484416
   },
+  "ROST": {
+   "cik": 745732,
+   "name": "Ross Stores, Inc.",
+   "mcap": 71617585152
+  },
   "SLB": {
    "cik": 87347,
    "name": "SLB N.V.",
    "mcap": 71616954368
+  },
+  "INTU": {
+   "cik": 896878,
+   "name": "Intuit Inc.",
+   "mcap": 71589896192
   },
   "CI": {
    "cik": 1739940,
@@ -1190,11 +1190,6 @@
    "cik": 773840,
    "name": "Honeywell International Inc.",
    "mcap": 71437410304
-  },
-  "ROST": {
-   "cik": 745732,
-   "name": "Ross Stores, Inc.",
-   "mcap": 71617585152
   },
   "APO": {
    "cik": 1858681,
@@ -1209,7 +1204,7 @@
   "LYG": {
    "cik": 1160106,
    "name": "Lloyds Banking Group plc",
-   "mcap": 70643933184
+   "mcap": 70783672320
   },
   "KMI": {
    "cik": 1506307,
@@ -1249,7 +1244,7 @@
   "COR": {
    "cik": 1140859,
    "name": "Cencora, Inc.",
-   "mcap": 67562356736
+   "mcap": 67403956224
   },
   "KMB": {
    "cik": 55785,
@@ -1269,7 +1264,7 @@
   "NTES": {
    "cik": 1110646,
    "name": "NetEase, Inc.",
-   "mcap": 66754031616
+   "mcap": 66752991232
   },
   "GWW": {
    "cik": 277135,
@@ -1379,7 +1374,7 @@
   "BDX": {
    "cik": 10795,
    "name": "Becton, Dickinson and Company",
-   "mcap": 60262858752
+   "mcap": 59978797056
   },
   "NU": {
    "cik": 1691493,
@@ -1553,7 +1548,7 @@
   },
   "VMRK": {
    "cik": 906107,
-   "name": "Vivmark Residential",
+   "name": "AvalonBay Communities, Inc.",
    "mcap": 50617589760
   },
   "A": {
