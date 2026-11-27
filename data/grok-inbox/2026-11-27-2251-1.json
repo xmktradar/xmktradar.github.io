@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2126304218545844728": {
+      "en_summary": "(Reposted by @BarbarianCap) After reading lab researcher and hyperscaler expert calls on Tegus and building an ANT model, concludes 2027 will be crazy as $ANT base case spends ~6x more on training/RL models by end of '27 (closer to 10x effective with efficiency gains, especially RL) versus current Opus 5.5 class models. Bullish on frontier AI gains given researchers' insatiable compute demand (training held back for inference); debates plateau camp (e.g. coding) versus continued progress, notes ANT + OAI training ~20% of AI GW, questions ROI and whether compute to customers rises massively from ~25% split.",
+      "zh_summary": "（由 @BarbarianCap 轉發）閱讀 Tegus 上的實驗室研究員與超大規模雲端專家通話並建立 ANT 模型後，結論是 2027 年將相當瘋狂，$ANT 基本情境到 27 年底在訓練／RL 模型上的支出約為目前 Opus 5.5 級模型的 6 倍（考慮效率提升尤其 RL 後更接近 10 倍有效訓練）。對前沿 AI 持樂觀態度，因研究員仍有無法滿足的運算需求（訓練被推理服務所限）；討論平台期陣營（如編碼）與持續進步之辯，指出 ANT 與 OAI 訓練約佔 AI GW 的 20%，質疑投資回報以及客戶服務運算占比是否會從約 25% 大幅上升。",
+      "tickers": ["META"],
+      "stance": "睇好",
+      "stance_by_ticker": {"META": "中性"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126303656655966466": {
+      "en_summary": "Clarifies that in 2030 Huawei may have something equivalent to what NVIDIA has today but no way at parity. Surprised that people believe Qwen, DeepSeek etc. advance so quickly without leading-edge AI chips. Beyond access to NVIDIA, China's AI chip ambitions really start and stop with $ASML.",
+      "zh_summary": "澄清到 2030 年華為「可能有」相當於目前 NVIDIA 的東西，但絕無可能達到同等水平。對於人們相信 Qwen、DeepSeek 等在沒有領先 AI 晶片的情況下能如此快速進步感到驚訝。除了取得 NVIDIA 之外，中國 AI 晶片的雄心實際上始於並止於 $ASML。",
+      "tickers": ["NVDA", "ASML"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好", "ASML": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "維持領先地位，2030 年華為無法達到同等水平", "ASML": "中國 AI 晶片進展受限於 ASML"}
+    },
+    "2126303407631933825": {
+      "en_summary": "The more things change the more they stay the same. Many of the same people who were bullish Silver at $125 became bearish Silver sub $40 $SI_F.",
+      "zh_summary": "事情變化越多就越保持不變。許多在白銀 $125 時看多的同一批人，在白銀低於 $40 時變成看空 $SI_F。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126302943796252687": {
+      "en_summary": "Google ($GOOG) is reportedly pursuing custom HBM5 memory for its next-generation AI chips, with MediaTek emerging as a leading candidate to design key components for its 10th-generation TPU, potentially shifting greater control over memory design to AI chip developers.",
+      "zh_summary": "據報 Google ($GOOG) 正為其下一代 AI 晶片追求客製化 HBM5 記憶體，聯發科成為其第 10 代 TPU 關鍵元件設計的領先候選人，可能將記憶體設計的更大控制權轉移給 AI 晶片開發商。",
+      "tickers": ["GOOG"],
+      "stance": "中性",
+      "stance_by_ticker": {"GOOG": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126302779207770485": {
+      "en_summary": "TETHER BUYS ANOTHER 3.72 MILLION SHARES OF BITCOIN MINER BITDEER $BTDR FOR ABOUT $10M, RAISING ITS STAKE TO 17.9%.",
+      "zh_summary": "Tether 再買入比特幣礦商 Bitdeer $BTDR 的 372 萬股，約 1000 萬美元，持股比例提升至 17.9%。",
+      "tickers": ["BTDR"],
+      "stance": "中性",
+      "stance_by_ticker": {"BTDR": "中性"},
+      "horizon": null,
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"BTDR": "Tether 增持至 17.9%，約 1000 萬美元"}
+    }
+  }
+}
