@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2126040728212242703": {
+      "en_summary": "@RichardMoglen DIS same setup as U but a few sessions too early",
+      "zh_summary": "@RichardMoglen DIS與U相同的設置，但早了幾個交易時段",
+      "tickers": ["DIS"],
+      "stance": "中性",
+      "stance_by_ticker": {"DIS": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126040227127181745": {
+      "en_summary": "And S&P 500 free cash flow conversion keeps deteriorating YTD!",
+      "zh_summary": "而且S&P 500的自由現金流轉換率今年迄今持續惡化！",
+      "tickers": ["SPY"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPY": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "利淡",
+      "ticker_notes": {"SPY": "自由現金流轉換率今年迄今持續惡化"}
+    },
+    "2126039863682027649": {
+      "en_summary": "(Reposted by @farzyness) Tesla has surpassed Waymo in Texas. The national lead is next.",
+      "zh_summary": "（由@farzyness轉發）Tesla在德州已超越Waymo。全國領先是下一步。",
+      "tickers": ["TSLA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TSLA": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"TSLA": "在德州超越Waymo，可能取得全國領先"}
+    },
+    "2126038446594744737": {
+      "en_summary": "And yes the S&P 500 is very expensive on FCF (just like in 1999!) but everyone is being fooled by the mirage in *expected forward EPS*:",
+      "zh_summary": "是的，S&P 500在自由現金流基礎上非常昂貴（就像1999年一樣！），但每個人都被*預期遠期EPS*的幻象所迷惑：",
+      "tickers": ["SPY"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPY": "睇淡"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"SPY": "在FCF基礎上非常昂貴，類似1999年"}
+    },
+    "2126038121292689649": {
+      "en_summary": "(Reposted by @farzyness) Parents in the U.S. - follow link to claim your kids’ Trump account. It’s basically a tax-deferred investment account. Money stays generally locked in until 18 years old and then follows traditional IRA rules. SpaceX is donating one SPCX share to every account next month and Elon Musk will donate...",
+      "zh_summary": "（由@farzyness轉發）美國的父母 - 點擊鏈接為您的孩子申請川普帳戶。這基本上是一個稅收遞延投資帳戶。資金通常鎖定到18歲，然後遵循傳統IRA規則。SpaceX下個月將向每個帳戶捐贈一股SPCX股票，埃隆·馬斯克將捐贈……",
+      "tickers": ["SPCX"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPCX": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
