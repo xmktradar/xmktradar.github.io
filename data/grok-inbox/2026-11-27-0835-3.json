@@ -1,1 +1,74 @@
-PLACEHOLDER
+{
+  "posts": {
+    "2126028420576579635": {
+      "en_summary": "The takeaway for traders: Watch /VX futures alongside $SPX, particularly following a volatility spike. Sustained volatility compression can provide a significant tailwind for equities when dealer positioning is supportive. Conversely, renewed volatility expansion can reverse those flows. Volatility isn't just a measure of fear. It's a potential driver of liquidity and market direction.",
+      "zh_summary": "交易者的要點：在波動率飆升後，特別關注 /VX 期貨與 $SPX 的走勢。當做市商倉位支持時，持續的波動率壓縮可為股票提供顯著的順風。相反，重新擴大的波動率可能逆轉這些資金流。波動率不僅是恐懼的衡量標準。它是流動性和市場方向的潛在驅動因素。",
+      "tickers": ["SPY"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2126028415082078568": {
+      "en_summary": "There has been a ton of talk about the $VIX lately with the volatility curve inverting but why does $VIX matter so much at these elevated levels as it starts to subside? When volatility is elevated and investors are heavily hedged, even a 1-point decline in /VX futures can potentially translate into billions of dollars in dealer hedging flows. This is where vanna comes into play.",
+      "zh_summary": "最近關於 $VIX 的討論很多，波動率曲線正在反轉，但為什麼在這些高位 $VIX 開始回落時如此重要？當波動率升高且投資者大量對衝時，/VX 期貨即使下降 1 點也可能轉化為數十億美元的做市商對衝資金流。這就是 vanna 發揮作用的地方。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2126020456805450045": {
+      "en_summary": "Seeing some of these previously credible companies abuse ATM offerings had me thinking... On a decade-long timeframe, some of X's favorite small and mid cap names will cease to exist. The \"safest\" stocks you can own would be names like $GOOGL, $META, $NVDA, $SPCX, and a few more. Sounds odd after the month we just had, but volatility isn't the risk on a longer timeframe... The real risk is that a lot of these smaller names won't compound, have dilution mismanagement, or will get acquired for pieces. This absolutely does not mean they can't be multi-bagger momentum trades on a shorter timeframe. You just need to understand your own approach... what timeline you're investing on, and which basket each position belongs to. I think it's particularly important to have a barbell approach, where a portion of your portfolio compounds slowly but stably... and another portion is left for asymmetric opportunities. If there's a 10% chance you can get a 10x trade, you should probably take it",
+      "zh_summary": "看到一些先前可信的公司濫用 ATM 增發讓我思考……在十年的時間框架內，一些 X 上最受歡迎的中小盤股將不復存在。你能擁有的「最安全」股票會是像 $GOOGL、$META、$NVDA、$SPCX 這樣的名字，以及其他一些。在剛剛經歷的一個月後聽起來很奇怪，但波動率在較長時間框架內並不是風險……真正的風險是許多這些較小的名字不會複利增長、有稀釋管理不善，或者會被收購成碎片。這絕對不意味著它們不能在較短時間框架內成為多倍收益的動量交易。你只需要理解自己的方法……你投資的時間線，以及每個倉位屬於哪個籃子。我認為擁有槓鈴方法特別重要，投資組合的一部分緩慢但穩定地複利……另一部分留給不對稱機會。如果有 10% 的機會你能得到 10 倍交易，你應該會接受它",
+      "tickers": ["GOOGL", "META", "NVDA", "SPCX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"GOOGL": "睇好", "META": "睇好", "NVDA": "睇好", "SPCX": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"GOOGL": "Safest compounder on decade-long timeframe", "META": "Safest compounder on decade-long timeframe", "NVDA": "Safest compounder on decade-long timeframe", "SPCX": "Safest compounder on decade-long timeframe"}
+    },
+    "2126019291489476881": {
+      "en_summary": "Yup! $NVDA",
+      "zh_summary": "對！ $NVDA",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126018733240143952": {
+      "en_summary": "It’s the $MAIN effect: that best-in-class BDC has compounded ~17% despite trading at ~1.6x book value most of its life due partly to the accretion said premium provides:",
+      "zh_summary": "這就是 $MAIN 效應：那隻最佳類別的 BDC 儘管大部分時間以約 1.6 倍賬面價值交易，但仍複利增長約 17%，部分原因是該溢價提供的增值：",
+      "tickers": ["MAIN"],
+      "stance": "睇好",
+      "stance_by_ticker": {"MAIN": "睇好"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MAIN": "Compounded ~17% despite ~1.6x book value due to premium accretion"}
+    }
+  }
+}
