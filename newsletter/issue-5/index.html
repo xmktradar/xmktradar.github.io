@@ -50,7 +50,11 @@ header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-betw
 .aff-tag{display:inline-block;margin-left:4px;padding:1px 8px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--muted);font-size:11px;font-weight:700;vertical-align:middle}
 .site-foot{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;line-height:1.7}
 .site-foot p{margin:0}
-.site-foot a{font-weight:700}
+.site-foot a{font-weight:700;overflow-wrap:break-word;word-break:normal}
+.lang-sw{display:flex;gap:4px;align-items:center;margin:0}
+.lang-sw a{font:600 12.5px/1 var(--f-body);padding:0 10px;min-width:44px;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:999px;color:var(--muted);text-decoration:none;background:var(--surface)}
+.lang-sw a[aria-current]{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+a.long-url{overflow-wrap:break-word;word-break:normal}
 h1{font-family:var(--f-display);font-size:28px;line-height:1.3;margin:0 0 8px;overflow-wrap:anywhere}
 .issue h2{font-family:var(--f-display);font-size:22px;line-height:1.35;margin:22px 0 8px;overflow-wrap:anywhere}
 .issue p{margin:0 0 12px}
@@ -97,6 +101,10 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
     <a href="/en/tools/">Tools</a>
     <a class="nav-donate" href="/en/support/">Support us</a>
   </nav>
+  <nav class="lang-sw" aria-label="Language">
+    <a href="/zh/newsletter/" data-lang="zh">中</a>
+    <a href="/newsletter/issue-5/" data-lang="en" aria-current="page">EN</a>
+  </nav>
 </header>
 <main class="issue">
   <nav class="money-bar" aria-label="Promotion"><span class="aff-tag">Promotion</span><a href="/en/tools/">Tools</a><a href="/en/support/">Support us</a><a href="https://www.tradingview.com/?aff_id=1172819" rel="sponsored noopener" target="_blank" data-tool="tradingview" data-placement="money-bar">TradingView</a><a href="https://www.stockrover.com/thecrowdtape?utm_source=thecrowdtape&utm_medium=tools&utm_campaign=stockrover" rel="sponsored nofollow noopener" target="_blank" data-tool="stockrover" data-placement="money-bar">Stock Rover</a><a href="https://optionstrat.com/thecrowdtape?utm_source=thecrowdtape&utm_medium=tools&utm_campaign=optionstrat" rel="sponsored nofollow noopener" target="_blank" data-tool="optionstrat" data-placement="money-bar">OptionStrat</a></nav>
@@ -117,8 +125,8 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
 <p>Growth / recession: 33 accounts, 7 bearish vs 7 bullish (<a href="https://x.com/Sandeman52" target="_blank" rel="noopener">@Sandeman52</a>: It is mathematically impossible to increase the percentage of total spending devoted to something forever. Literally impossible. Eventually…).</p>
 <h2>中文摘要</h2>
 <p>過去7日（11月16日至22日）：291個帳號、2441則帖文，看好900對看淡725。共同看好最齊心係 <a href="/en/stock/TGT/">$TGT</a>（10好0淡，18次提及），<a href="https://x.com/TrendSpider" target="_blank" rel="noopener">@TrendSpider</a>：AI 交易剛剛被一個紅色購物車超越... <a href="/en/stock/TGT/">$TGT</a>。共同看淡係 <a href="/en/stock/MSTR/">$MSTR</a>（0好6淡）。分歧最大：<a href="/en/stock/NVDA/">$NVDA</a> 31好40淡、<a href="/en/stock/QQQ/">$QQQ</a> 19好20淡。宏觀：關稅／政策／地緣政治 60個帳號，利淡17對利好1；經濟增長／衰退 33個帳號，利淡7對利好7。非投資建議。</p>
-<p>See today&#x27;s tally: <a href="https://thecrowdtape.com/?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=issue5">https://thecrowdtape.com/?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=issue5</a></p>
-<p>Support: <a href="https://thecrowdtape.com/support?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=issue5">https://thecrowdtape.com/support?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=issue5</a> · X: <a href="https://x.com/thecrowdtape" target="_blank" rel="noopener">https://x.com/thecrowdtape</a></p>
+<p>See today&#x27;s tally: <a class="long-url" href="https://thecrowdtape.com/?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=issue5">https:/<wbr>/<wbr>thecrowdtape.com/<wbr>?<wbr>utm_source=<wbr>newsletter&amp;<wbr>utm_medium=<wbr>email&amp;<wbr>utm_campaign=<wbr>issue5</a></p>
+<p>Support: <a class="long-url" href="https://thecrowdtape.com/support?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=issue5">https:/<wbr>/<wbr>thecrowdtape.com/<wbr>support?<wbr>utm_source=<wbr>newsletter&amp;<wbr>utm_medium=<wbr>email&amp;<wbr>utm_campaign=<wbr>issue5</a> · X: <a class="long-url" href="https://x.com/thecrowdtape" target="_blank" rel="noopener">https:/<wbr>/<wbr>x.com/<wbr>thecrowdtape</a></p>
   <aside class="note">
     <b>Not investment advice</b>
     <p>No. The site only organises public posts by third parties, for reference. It is not investment advice and it is not an offer to buy or sell any stock.</p>
@@ -172,6 +180,10 @@ h1{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!imp
 </footer>
 </div>
 <script>
+document.addEventListener("click",function(e){
+  var sw=e.target&&e.target.closest&&e.target.closest(".lang-sw a");
+  if(sw){try{localStorage.setItem("ct-lang",sw.getAttribute("data-lang")||"")}catch(_){}}
+});
 document.addEventListener("click",function(e){
   var a=e.target&&e.target.closest&&e.target.closest("a[href]");
   if(!a||!window.gtag)return;

@@ -124,6 +124,20 @@ def same_site(url):
     return host in ('thecrowdtape.com', 'www.thecrowdtape.com')
 
 
+
+def wrappable_url(url):
+    """Break visible URLs at / ? & =, after escaping, so tokens stay intact."""
+    out, buf = [], ''
+    for ch in url:
+        buf += ch
+        if ch in '/?&=':
+            out.append(esc(buf) + '<wbr>')
+            buf = ''
+    if buf:
+        out.append(esc(buf))
+    return ''.join(out)
+
+
 def linkify(text, stocks):
     out, pos = [], 0
     for m in TOKEN.finditer(text):
@@ -133,7 +147,7 @@ def linkify(text, stocks):
             url = g.rstrip('.,);')
             extra = g[len(url):]
             attrs = '' if same_site(url) else ' target="_blank" rel="noopener"'
-            out.append(f'<a href="{esc(url)}"{attrs}>{esc(url)}</a>')
+            out.append(f'<a class="long-url" href="{esc(url)}"{attrs}>{wrappable_url(url)}</a>')
             out.append(esc(extra))
         elif g.startswith('@'):
             handle = g[1:]
@@ -228,7 +242,11 @@ header{{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-bet
 .aff-tag{{display:inline-block;margin-left:4px;padding:1px 8px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--muted);font-size:11px;font-weight:700;vertical-align:middle}}
 .site-foot{{margin-top:22px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;line-height:1.7}}
 .site-foot p{{margin:0}}
-.site-foot a{{font-weight:700}}
+.site-foot a{{font-weight:700;overflow-wrap:break-word;word-break:normal}}
+.lang-sw{{display:flex;gap:4px;align-items:center;margin:0}}
+.lang-sw a{{font:600 12.5px/1 var(--f-body);padding:0 10px;min-width:44px;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:999px;color:var(--muted);text-decoration:none;background:var(--surface)}}
+.lang-sw a[aria-current]{{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}}
+a.long-url{{overflow-wrap:break-word;word-break:normal}}
 h1{{font-family:var(--f-display);font-size:28px;line-height:1.3;margin:0 0 8px;overflow-wrap:anywhere}}
 .issue h2{{font-family:var(--f-display);font-size:22px;line-height:1.35;margin:22px 0 8px;overflow-wrap:anywhere}}
 .issue p{{margin:0 0 12px}}
@@ -274,6 +292,10 @@ h1{{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!im
     <a href="/en/about/">About</a>
     <a href="/en/tools/">Tools</a>
     <a class="nav-donate" href="/en/support/">Support us</a>
+  </nav>
+  <nav class="lang-sw" aria-label="Language">
+    <a href="/zh/newsletter/" data-lang="zh">中</a>
+    <a href="{issue_path}" data-lang="en" aria-current="page">EN</a>
   </nav>
 </header>
 <main class="issue">
@@ -333,6 +355,10 @@ h1{{font-weight:700;font-size:clamp(30px,5vw,44px)!important;line-height:1.12!im
 </div>
 <script>
 document.addEventListener("click",function(e){{
+  var sw=e.target&&e.target.closest&&e.target.closest(".lang-sw a");
+  if(sw){{try{{localStorage.setItem("ct-lang",sw.getAttribute("data-lang")||"")}}catch(_){{}}}}
+}});
+document.addEventListener("click",function(e){{
   var a=e.target&&e.target.closest&&e.target.closest("a[href]");
   if(!a||!window.gtag)return;
   var u=a.href,h="";
@@ -388,6 +414,7 @@ def issue_page(issue, text, stocks, disclaimer, ui):
         form_btn=esc(ui.get('訂閱', 'Subscribe')),
         form_note=esc(ui.get('免費・每週一封・隨時取消', 'Free · weekly · unsubscribe anytime.')),
         back=esc(ui.get('電子報', 'Newsletter')),
+        issue_path=f'/newsletter/{issue["slug"]}/',
     )
 
 
