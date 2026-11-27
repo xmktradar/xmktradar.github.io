@@ -1025,11 +1025,13 @@ header.ap-top{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hd-t
  .ap-bar{flex-wrap:wrap;gap:0 10px;min-height:0}
  .ap-logo{order:1;height:48px}
  .ap-r{order:2;gap:8px}
- .ap-tools,.ap-don{display:none}
- .ap-top nav.tabs{order:3;flex-basis:100%;gap:8px;padding:2px 0 10px}
+ .ap-don{display:none}
+ .ap-tools{display:inline-flex;align-items:center;min-height:40px;padding:8px 2px;white-space:nowrap}
+ .ap-top nav.tabs{order:3;flex-basis:100%;gap:8px;padding:2px 0 10px;flex-wrap:wrap;overflow:visible;justify-content:flex-start}
  .ap-top nav.tabs button,.ap-top nav.tabs a.tab-earn{background:var(--panel2);opacity:1;padding:8px 14px;font-size:14px}
  .ap-top nav.tabs button[aria-selected="true"]{background:var(--tx-strong);color:var(--bg)}
  .ap-top nav.tabs button[aria-selected="true"] .tab-rng{color:inherit;opacity:.7}
+ .ap-top nav.tabs .tab-cap,.ap-top nav.tabs .tab-rng{display:none}
  .ap-hero{padding:20px 0 16px}
  .ap-eyebrow,.ap-sub{display:none}
  .ap-h{font-size:26px;line-height:1.2}
@@ -1100,7 +1102,7 @@ header.ap-top{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hd-t
 </div>
 <div class="open-live"><a href="/en/#account/Brian_Stoffel_">Open the interactive page (all posts)</a></div>
 </main>
-<footer class="wrap foot"><p><a href="/en/">Home</a> · <a href="/en/tools/">Tools</a> · <a href="/en/support/">Support us</a> · <a href="/en/newsletter/">Newsletter</a> · Updated 2026-11-27 05:01 HKT</p></footer>
+<footer class="wrap foot"><p><a href="/en/">Home</a> · <a href="/en/tools/">Tools</a> · <a href="/en/support/">Support us</a> · <a href="/en/newsletter/">Newsletter</a> · Updated 2026-11-27 09:15 HKT</p></footer>
 <script>document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a||typeof gtag!=='function')return;var h='';try{h=new URL(a.href).hostname.toLowerCase()}catch(err){return}if(h==='x.com'||h.endsWith('.x.com')||h==='twitter.com'||h.endsWith('.twitter.com'))gtag('event','x_outbound',{link_url:a.href,page:'account',lang:document.documentElement.lang||'',transport_type:'beacon'})});</script>
 <button type="button" class="to-top" aria-label="Back to top" title="Back to top">↑</button>
 <style>.to-top{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:30;width:42px;height:42px;padding:0;border-radius:999px;border:1px solid var(--line-strong);background:var(--panel);color:var(--tx-strong);font:700 19px/1 var(--f-body);cursor:pointer;box-shadow:0 3px 10px rgba(59,47,37,.15);opacity:0;pointer-events:none;transition:opacity .2s}
