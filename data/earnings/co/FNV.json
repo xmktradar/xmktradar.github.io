@@ -1,0 +1,251 @@
+{
+ "t": "FNV",
+ "name": "Franco-Nevada Corporation",
+ "cik": 1456346,
+ "q": [
+  {
+   "end": "2017-12-31",
+   "label": "FY2017 Q4",
+   "rev": 167200000,
+   "gp": 68200000,
+   "op": 61200000,
+   "ni": 43500000,
+   "eps": 0.2300000000000001,
+   "ocf": 126300000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2018-03-31",
+   "label": "FY2018 Q1",
+   "rev": 173100000,
+   "gp": 82300000,
+   "op": 77400000,
+   "ni": 64600000,
+   "eps": 0.35,
+   "ocf": 137500000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2018-06-30",
+   "label": "FY2018 Q2",
+   "rev": 161300000,
+   "gp": 71900000,
+   "op": 64900000,
+   "ni": 53600000,
+   "eps": 0.29,
+   "ocf": 111300000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2018-09-30",
+   "label": "FY2018 Q3",
+   "rev": 170600000,
+   "gp": 71200000,
+   "op": 65800000,
+   "ni": 52100000,
+   "eps": 0.28,
+   "ocf": 128200000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2018-12-31",
+   "label": "FY2018 Q4",
+   "rev": 148200000,
+   "gp": 61900000,
+   "op": -19300000,
+   "ni": -31300000,
+   "eps": -0.16000000000000003,
+   "ocf": 97800000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2019-06-30",
+   "label": "FY2019 Q2",
+   "rev": 170500000,
+   "gp": 84200000,
+   "op": 79000000,
+   "ni": 64000000,
+   "eps": 0.34,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2020-06-30",
+   "label": "FY2020 Q2",
+   "rev": 195400000,
+   "gp": 115100000,
+   "op": 105800000,
+   "ni": 94400000,
+   "eps": 0.5,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2021-06-30",
+   "label": "FY2021 Q2",
+   "rev": 347100000,
+   "gp": 222600000,
+   "op": 205300000,
+   "ni": 175300000,
+   "eps": 0.92,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2022-06-30",
+   "label": "FY2022 Q2",
+   "rev": 352300000,
+   "gp": 237200000,
+   "op": 231600000,
+   "ni": 196500000,
+   "eps": 1.02,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2023-06-30",
+   "label": "FY2023 Q2",
+   "rev": 329900000,
+   "gp": 207700000,
+   "op": 200500000,
+   "ni": 184500000,
+   "eps": 0.96,
+   "ocf": null,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2024-06-30",
+   "label": "FY2024 Q2",
+   "rev": 260100000,
+   "gp": 178100000,
+   "op": 169000000,
+   "ni": 79500000,
+   "eps": 0.41,
+   "ocf": 194300000,
+   "capex": null,
+   "fcf": null
+  },
+  {
+   "end": "2025-06-30",
+   "label": "FY2025 Q2",
+   "rev": 369400000,
+   "gp": 271900000,
+   "op": 305800000,
+   "ni": 247100000,
+   "eps": 1.28,
+   "ocf": 430300000,
+   "capex": 100000,
+   "fcf": 430200000
+  }
+ ],
+ "latest": {
+  "label": "FY2025 Q2",
+  "filed": "2025-08-11",
+  "accn": "0001558370-25-010965",
+  "form": "6-K",
+  "end": "2025-06-30"
+ },
+ "bal": {
+  "end": "2025-06-30",
+  "cash": 160300000,
+  "sti": null,
+  "debt": null
+ },
+ "bank": false,
+ "seg": {
+  "none": true,
+  "accn": "0001558370-25-010965"
+ },
+ "rules": 4,
+ "diag": {
+  "newest": "2025-12-31",
+  "rev_last": "2025-06-30",
+  "have": [
+   {
+    "c": "ifrs-full:CostOfSales",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 475500000,
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-03-10"
+   },
+   {
+    "c": "ifrs-full:RevenueFromContractsWithCustomers",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 1822800000,
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-03-10"
+   },
+   {
+    "c": "ifrs-full:TaxEffectOfRevenuesExemptFromTaxation2011",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 7000000,
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-03-10"
+   },
+   {
+    "c": "ifrs-full:ProceedsFromSalesOfInvestmentsOtherThanInvestmentsAccountedForUsingEquityMethod",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 109900000,
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-03-10"
+   },
+   {
+    "c": "ifrs-full:InterestRevenueCalculatedUsingEffectiveInterestMethod",
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "val": 14200000,
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-03-10"
+   }
+  ],
+  "rev_concepts_last": {
+   "Revenue": {
+    "start": "2017-01-01",
+    "end": "2017-12-31",
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2018-03-08"
+   },
+   "RevenueFromContractsWithCustomers": {
+    "start": "2025-01-01",
+    "end": "2025-12-31",
+    "form": "6-K",
+    "fp": "FY",
+    "filed": "2026-03-10"
+   }
+  }
+ },
+ "mcap": 50071207936,
+ "next": "2026-11-11",
+ "last_report": "2026-11-11",
+ "est": {
+  "eps_act": null,
+  "eps_est": null,
+  "rev_est": null,
+  "rev_est_seen": null
+ },
+ "pending": {
+  "q": "2026-09-30",
+  "eps_act": 1.89,
+  "eps_est": 1.73486
+ }
+}
