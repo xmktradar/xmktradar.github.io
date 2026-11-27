@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2126099560132997393": {
+      "en_summary": "Most traders give back their day in the last 30 minutes. Trade the Zones has CALLS PH / PUTS PH tag that prints at 15:30 ET and fades into close. Backtested on $SPX and $SPY: 67-70% on held-back days. Also CALLS OP / PUTS OP for open, 75% hit target on $SPX.",
+      "zh_summary": "大多數交易者在最後30分鐘回吐當日獲利。Trade the Zones有CALLS PH / PUTS PH標籤，於15:30 ET印出並在收盤前回吐。在$SPX和$SPY上回測：被抑制日67-70%。開盤也有CALLS OP / PUTS OP，$SPX目標命中75%。",
+      "tickers": ["SPY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPY": "中性"},
+      "horizon": null,
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126095409248358585": {
+      "en_summary": "Xponential Fitness $XPOF adopted a poison pill as Fund 1 Investments pushes for more aggressive strategic review (on top of Voss Capital and Kanen WM). Strategic review remains ongoing without additional details.",
+      "zh_summary": "Xponential Fitness $XPOF採取毒丸計劃，因Fund 1 Investments推動更積極的戰略審查（在Voss Capital和Kanen WM之上）。戰略審查仍在進行中，無額外細節。",
+      "tickers": ["XPOF"],
+      "stance": "中性",
+      "stance_by_ticker": {"XPOF": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126089212445233225": {
+      "en_summary": "Wall Street focused on analyst downgrades as AMD $AMD and Nvidia $NVDA prepare for major product ramps. Automated traffic surpassing human, competition coming to head next quarter on rack-scale GPUs and CPUs. 2027 could be AMD’s strongest year, Nvidia low valuation. Good time to revisit after selloff.",
+      "zh_summary": "華爾街關注分析師下調，而AMD $AMD和Nvidia $NVDA正準備重要產品爬坡。自動化流量超過人類，下季在機架規模GPU和CPU上競爭將達到高潮。2027年可能是AMD最強年份，Nvidia估值低。拋售後是重新審視的好時機。",
+      "tickers": ["AMD", "NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"AMD": "睇好", "NVDA": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AMD": "2027可能最強年，產品爬坡", "NVDA": "估值異常低，拋售後機會"}
+    },
+    "2126088622436720660": {
+      "en_summary": "Pick ONE to hold for the next 20 years: $VTI whole U.S. market, $SCHG pure growth, $DIVO dividends + covered calls 4.9%, $GPIX S&P 500 premium income 8.5%.",
+      "zh_summary": "選擇一個持有20年：$VTI整個美國市場，$SCHG純增長，$DIVO股息+備兌看漲期權4.9%，$GPIX標普500溢價收入8.5%。",
+      "tickers": ["VTI", "SCHG", "DIVO", "GPIX"],
+      "stance": "中性",
+      "stance_by_ticker": {"VTI": "中性", "SCHG": "中性", "DIVO": "中性", "GPIX": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126088050589802680": {
+      "en_summary": "$MU $SKHY $SNDK $DRAM $DELL Dell sees nothing pointing to lower memory prices. COO Jeff Clarke: nothing suggests price declines in enterprise NAND and DRAM for servers. HBM taking DRAM wafer capacity, crunch into 2027.",
+      "zh_summary": "$MU $SKHY $SNDK $DRAM $DELL Dell看不到記憶體價格下降跡象。COO Jeff Clarke：沒有跡象顯示企業NAND和伺服器DRAM價格會下降。HBM佔據DRAM晶圓產能，短缺持續到2027。",
+      "tickers": ["MU", "SKHY", "SNDK", "DELL"],
+      "stance": "睇好",
+      "stance_by_ticker": {"MU": "睇好", "SKHY": "睇好", "SNDK": "睇好", "DELL": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"MU": "記憶體價格無下降跡象，短缺至2027", "SNDK": "NAND價格支撐", "DELL": "伺服器記憶體需求"}
+    }
+  }
+}
