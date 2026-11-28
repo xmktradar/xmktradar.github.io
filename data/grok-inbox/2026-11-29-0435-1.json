@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2126454486214586406": {
+      "en_summary": "@danielnewmanUV replies to @FosterTraveler that chip smuggling is as old as time. Nvidia didn’t necessarily break a rule; its customer or customer’s customer may have.",
+      "zh_summary": "@danielnewmanUV 回覆 @FosterTraveler，芯片走私自古有之。Nvidia 未必違反規則，可能是其客戶或客戶的客戶所為。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126452510441275719": {
+      "en_summary": "@DanielTNiles notes Samsung Electronics missed revs/EPS and guidance last quarter, SK Hynix missed reported EPS. Memory price increase expectations are being reduced due to datacenter buildout pullback and China's access to external datacenters, so next estimate revisions may be lower. However, valuations have reset with stock declines, and stocks can rise short-term even as estimates are cut, similar to 7 average 28% rallies over two months during the internet bubble semis meltdown (83% peak-to-trough drop).",
+      "zh_summary": "@DanielTNiles 指出 Samsung Electronics 最近一季營收/EPS 及指引未達標，SK Hynix 報告 EPS 未達標。由於數據中心建設回落及中國可接入外部數據中心，記憶體漲價預期正在下調，下一輪盈利預測修訂可能更低。然而股價下跌後估值已重設，即使盈利預測下修，股價短期仍可能上漲，類似互聯網泡沫期間半導體從峰值到谷底下跌 83% 時出現的 7 次平均 28% 為期兩個月的反彈。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": "估值",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2126452172355158156": {
+      "en_summary": "@jasonschips Daily Semi-Cap for Nov 27, 2026: SMH at $440.06 (+4.17%). Restricted Nvidia GB300/GB200 systems in Chinese loan docs tied to Shanghai datacenter (GB300 NVL72 rack ~$14M loan); risk of tighter export enforcement. Texas resumed datacenter permitting after freeze on >1,800 projects (474 GW requests). Trainium3 inference at 135 tokens/s/user with 73.5% modeled margins vs GB300 53% (3yr rental, 60% util); strengthens custom silicon challenge to Nvidia. SK hynix doubled daily share repurchase to 700k shares. Wallonia halted Google Aiseau-Presles datacenter construction over permit dispute on building size and cooling.",
+      "zh_summary": "@jasonschips 2026年11月27日每日半導體摘要：SMH 報 $440.06（較前一交易日收市 +4.17%）。受限 Nvidia GB300/GB200 系統出現在與上海數據中心相關的中國貸款文件中（GB300 NVL72 機架約 $14M 貸款），存在出口執法收緊風險。德州在凍結超過 1,800 個項目後恢復數據中心許可（涉及 474 GW 電力請求）。Trainium3 推理達每用戶每秒 135 個 token，模擬利潤率 73.5%，對比 GB300 的 53%（三年租賃、60% 利用率），強化了對 Nvidia 的客製化芯片挑戰。SK hynix 將每日股份回購加倍至 70 萬股。瓦隆尼亞因建築規模與冷卻方式許可爭議叫停 Google Aiseau-Presles 數據中心建設。",
+      "tickers": ["SMH", "NVDA", "GOOGL"],
+      "stance": "中性",
+      "stance_by_ticker": {"SMH": "中性", "NVDA": "中性", "GOOGL": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "中性",
+      "ticker_notes": {"NVDA": "出口執法可能收緊；Trainium3 競爭加劇", "SMH": "收報 $440.06，單日 +4.17%"}
+    },
+    "2126451855073136922": {
+      "en_summary": "@EricBalchunas notes almost all mega-rich net worth is via the stock market, and non-taxable 100% pure donations (no govt skimming) make the case for Trump Accounts. Suggests changing the name as growth under new admins could be tough due to hate. Quoted thesis that Buffett et al should donate stock shares (e.g. Berkshire) to Trump Accounts targeting low-income areas to shrink wealth gap, boost literacy, curb redistribution policies, expand legacy, with 100% going to recipients and no cap gains tax; mentions $1000 into SPYM.",
+      "zh_summary": "@EricBalchunas 指出超級富豪的淨資產幾乎全部來自股市，且捐贈免稅、100% 純淨（無政府抽成），因此支持 Trump Accounts。建議改名，以免新政府因仇恨而影響其增長。引用的論點認為 Buffett 等人應將股票（例如 Berkshire）捐給針對低收入地區的 Trump Accounts，以縮小財富差距、提升金融素養、遏制再分配政策、延續遺產，且 100% 直達受贈者並免資本利得稅；提及向 SPYM 投入 $1000。",
+      "tickers": ["SPYM", "BRK.B"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPYM": "中性", "BRK.B": "中性"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": true,
+      "macro_theme": "policy",
+      "macro_impact": "利好",
+      "ticker_notes": {}
+    },
+    "2126451250334142467": {
+      "en_summary": "@unusual_whales reports the FCC authorized SpaceX to deploy up to 1 million satellites for its Starmind orbital data center network.",
+      "zh_summary": "@unusual_whales 報導 FCC 授權 SpaceX 部署最多 100 萬顆衛星，用於其 Starmind 軌道數據中心網絡。",
+      "tickers": ["SPCX"],
+      "stance": "看好",
+      "stance_by_ticker": {"SPCX": "看好"},
+      "horizon": "長線",
+      "basis": "催化劑",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPCX": "FCC 授權最多 100 萬顆衛星用於軌道數據中心"}
+    }
+  }
+}
