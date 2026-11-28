@@ -666,8 +666,13 @@ header.top .meta .hdr-duo{flex-basis:100%;width:100%;display:flex;flex-wrap:wrap
 .cc-row .why{color:var(--tx);line-height:1.45;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}.cc-row .why.open{-webkit-line-clamp:unset;display:block}
 .cc-row .src,table.lb .go{font-size:11px;white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--link);text-decoration:none;background:var(--bg)}
 .cc-row .src:hover{border-color:var(--link)}
-.cc-f{margin-top:auto;padding-top:9px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:11.5px;color:var(--mut)}
-.cc-f a{color:var(--link);font-weight:600;text-decoration:none}
+.cc-f{margin-top:auto;padding-top:9px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;font-size:11.5px;color:var(--mut)}
+.cc-f .cc-n{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cc-f-end{display:flex;align-items:center;flex:0 0 auto}
+.cc-share{width:44px;height:44px;min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;margin:-6px 0;padding:0;box-sizing:border-box;border:0;background:transparent;border-radius:50%;color:var(--link);cursor:pointer;flex:0 0 auto}
+.cc-share:hover{background:var(--panel2)}
+.cc-share svg{width:18px;height:18px;display:block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cc-f a{color:var(--link);font-weight:600;text-decoration:none;white-space:nowrap}
 @media(max-width:420px){.cc{grid-template-columns:1fr}.cc-l{border-right:0;border-bottom:1px solid var(--line);flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:8px}.cc-ret{margin:0 0 0 auto}}
 
 
@@ -1344,7 +1349,7 @@ function consCard(g,k,days,retLab){const pr=UNC(g.t)?null:D.prices[g.t];const nm
  const head=k==='bull'?`<span class="g">${g.nb} 個帳號看多</span>`:k==='bear'?`<span class="r">${g.nr} 個帳號看空</span>`:`<span class="g">${g.nb} 看多</span>・<span class="r">${g.nr} 看空</span>`;
  const badge={bull:'共同看多',bear:'共同看空',split:'好淡分歧'}[k];
  const li=g.rows.map(x=>{const r=reasonOf(x);return `<li class="cc-row"><a href="${xUrl(x.acc)}" target="_blank" rel="noopener" title="@${esc(x.acc)}" aria-label="@${esc(x.acc)}">${avImg(x.acc,'av')}</a><span class="st ${STC[x.s]}">${STW[x.s]}</span><span class="why" title="@${esc(x.acc)}：${esc(r.full)}" onclick="this.classList.toggle('open')">${esc(r.t)||'<span class="na">（沒有摘要）</span>'}</span><a class="src" href="${esc(x.url)}" target="_blank" rel="noopener">原帖 ↗</a></li>`}).join('');
- return `<article class="cc ${k}"><div class="cc-l"><div class="cc-tk">${esc(g.t)}</div><div class="cc-nm">${esc(nm)}</div><div class="cc-ret">${ret}</div><div class="cc-ret-l">${retLab}</div></div><div class="cc-r"><div class="cc-h"><b>${head}</b><span class="cc-badge">${badge}</span></div><ul class="cc-rows">${li}</ul><div class="cc-f"><span>${g.nPosts} 篇原帖</span><a href="#stock/${encodeURIComponent(g.t)}">查看詳情 ↗</a></div></div></article>`}
+ return `<article class="cc ${k}"><div class="cc-l"><div class="cc-tk">${esc(g.t)}</div><div class="cc-nm">${esc(nm)}</div><div class="cc-ret">${ret}</div><div class="cc-ret-l">${retLab}</div></div><div class="cc-r"><div class="cc-h"><b>${head}</b><span class="cc-badge">${badge}</span></div><ul class="cc-rows">${li}</ul><div class="cc-f"><span class="cc-n">${g.nPosts} 篇原帖</span><span class="cc-f-end"><button type="button" class="cc-share" data-ct-share-ticker="${esc(g.t)}" data-ct-share-kind="${k}" aria-label="分享此股票" title="分享此股票" aria-haspopup="dialog" aria-controls="ct-share-panel" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.5v10"/><path d="M8.2 7.2 12 3.4l3.8 3.8"/><path d="M6 11.5v6.2A1.8 1.8 0 0 0 7.8 19.5h8.4a1.8 1.8 0 0 0 1.8-1.8v-6.2"/></svg></button><a href="#stock/${encodeURIComponent(g.t)}">查看詳情 ↗</a></span></div></div></article>`}
 function consHtml(from,to,lab,days,retLab){const G=consGroups(from,to);
  const sec=(k,title,note)=>`<div class="cc-sec"><h2>${title}</h2><span class="note">${note}</span></div>${G[k].length?`<div class="cc-grid">${G[k].map(g=>consCard(g,k,days,retLab)).join('')}</div>`:`<div class="cc-empty">${lab}沒有明顯${title}</div>`}`;
  return `<section class="c12 cc-wrap" aria-label="共識">${sec('bull','共同看多','最少 2 個帳號最新立場看多'+noConsNote)}${sec('bear','共同看空','最少 2 個帳號最新立場看空'+noConsNote)}${sec('split','好淡分歧','同一隻股票有帳號看多、亦有帳號看空'+noConsNote)}</section>`}
@@ -2722,6 +2727,8 @@ apply();
       <span data-k="copied">已複製連結</span>
       <span data-k="copy-fail">無法複製連結</span>
       <span data-k="ig-fallback">已下載圖片並複製連結，可以加到限時動態</span>
+      <span data-k="share-one">分享此股票</span>
+      <span data-k="share-page">分享此頁</span>
     </div>
   </div>
 </div>
