@@ -736,87 +736,6 @@
    "suggested_kst": "14:00"
   }
  ],
- "atomic_posts": [
-  {
-   "id": "zh-number-daily-posts",
-   "lang": "zh",
-   "slot_kst": "17:00",
-   "date_kst": "2026-11-27",
-   "format": "text_question",
-   "point_type": "number",
-   "hook": "今天帖文數 306",
-   "text": "今天帖文數 306\n\n你怎麼看這個數？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
-   "hashtags": "#美股",
-   "has_link": false,
-   "first_comment": ""
-  },
-  {
-   "id": "zh-stock-ANT",
-   "lang": "zh",
-   "slot_kst": "20:00",
-   "date_kst": "2026-11-27",
-   "format": "image_card",
-   "point_type": "stock",
-   "hook": "$ANT 11 個帳號看好",
-   "text": "$ANT 11 個帳號看好\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #ANT",
-   "hashtags": "#美股 #ANT",
-   "has_link": false,
-   "ticker": "ANT"
-  },
-  {
-   "id": "zh-expert-TSLA",
-   "lang": "zh",
-   "slot_kst": "22:30",
-   "date_kst": "2026-11-27",
-   "format": "carousel",
-   "point_type": "expert_view",
-   "hook": "@elonmusk 提到 $TSLA",
-   "text": "@elonmusk 提到 $TSLA\n\n8 個帳號看空\n\n@elonmusk：特斯拉具有超人的視力\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #TSLA",
-   "hashtags": "#美股 #TSLA",
-   "has_link": false,
-   "ticker": "TSLA",
-   "first_comment": ""
-  },
-  {
-   "id": "en-number-daily-posts",
-   "lang": "en",
-   "slot_kst": "17:00",
-   "date_kst": "2026-11-27",
-   "format": "text_question",
-   "point_type": "number",
-   "hook": "Posts today 306",
-   "text": "Posts today 306\n\nWhat do you make of this number?\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket",
-   "hashtags": "#StockMarket",
-   "has_link": false
-  },
-  {
-   "id": "en-stock-ANT",
-   "lang": "en",
-   "slot_kst": "20:00",
-   "date_kst": "2026-11-27",
-   "format": "image_card",
-   "point_type": "stock",
-   "hook": "$ANT 11 bullish accounts",
-   "text": "$ANT 11 bullish accounts\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #ANT",
-   "hashtags": "#StockMarket #ANT",
-   "has_link": false,
-   "ticker": "ANT",
-   "first_comment": ""
-  },
-  {
-   "id": "en-expert-TSLA",
-   "lang": "en",
-   "slot_kst": "22:30",
-   "date_kst": "2026-11-27",
-   "format": "carousel",
-   "point_type": "expert_view",
-   "hook": "@elonmusk on $TSLA",
-   "text": "@elonmusk on $TSLA\n\n8 bearish accounts\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket #TSLA",
-   "hashtags": "#StockMarket #TSLA",
-   "has_link": false,
-   "ticker": "TSLA"
-  }
- ],
  "ig_reel": {
   "date_kst": "2026-11-27",
   "slot": "daily",
@@ -1517,5 +1436,240 @@
   },
   "generated_at": "2026-11-27T16:56:04-05:00",
   "generated_hkt": "2026-11-28 05:56"
- }
+ },
+ "weekend": {
+  "date": "2026-11-28",
+  "date_kst": "2026-11-28",
+  "source": "data/writeup-input.json weekly",
+  "posts": [
+   {
+    "id": "weekend-sat-bulls",
+    "format": "image_card",
+    "langs": {
+     "zh": {
+      "threads": "本週最看好\n\n$CRWD 7 個帳號看好\n$AMZN 6 個帳號看好\n$WMT 5 個帳號看好\n$RKLB 4 個帳號看好\n$COHR 4 個帳號看好\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #CRWD #AMZN",
+      "facebook": "本週最看好\n\n$CRWD 7 個帳號看好\n$AMZN 6 個帳號看好\n$WMT 5 個帳號看好\n$RKLB 4 個帳號看好\n$COHR 4 個帳號看好\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #CRWD #AMZN",
+      "instagram": "本週最看好\n\n$CRWD 7 個帳號看好\n$AMZN 6 個帳號看好\n$WMT 5 個帳號看好\n$RKLB 4 個帳號看好\n$COHR 4 個帳號看好\n\n今天這些股票裡，你最留意哪一檔？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股 #CRWD #AMZN",
+      "has_link": {
+       "threads": false,
+       "facebook": false,
+       "instagram": false
+      },
+      "first_comment": {
+       "threads": ""
+      }
+     },
+     "en": {
+      "threads": "",
+      "facebook": "Most bullish this week\n\n$CRWD 7 bullish accounts\n$AMZN 6 bullish accounts\n$WMT 5 bullish accounts\n$RKLB 4 bullish accounts\n$COHR 4 bullish accounts\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket #CRWD #AMZN",
+      "instagram": "",
+      "has_link": {
+       "threads": false,
+       "facebook": false,
+       "instagram": false
+      },
+      "first_comment": {
+       "threads": ""
+      }
+     }
+    },
+    "ticker": "CRWD",
+    "bull": [
+     {
+      "t": "CRWD",
+      "n": 7
+     },
+     {
+      "t": "AMZN",
+      "n": 6
+     },
+     {
+      "t": "WMT",
+      "n": 5
+     },
+     {
+      "t": "RKLB",
+      "n": 4
+     },
+     {
+      "t": "COHR",
+      "n": 4
+     }
+    ],
+    "range": {
+     "from": "2026-11-22",
+     "to": "2026-11-28"
+    },
+    "images": {
+     "zh": {
+      "portrait": "https://thecrowdtape.com/og/weekend-bulls-zh.png?v=2026-11-28",
+      "square": "https://thecrowdtape.com/og/weekend-bulls-zh-sq.png?v=2026-11-28"
+     },
+     "en": {
+      "portrait": "https://thecrowdtape.com/og/weekend-bulls-en.png?v=2026-11-28",
+      "square": "https://thecrowdtape.com/og/weekend-bulls-en-sq.png?v=2026-11-28"
+     }
+    }
+   },
+   {
+    "id": "weekend-sat-totals",
+    "format": "text_question",
+    "langs": {
+     "zh": {
+      "threads": "本週共識數字\n\n看好標的 38 · 看空標的 6\n\n你怎麼看這組數字？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+      "facebook": "本週共識數字\n\n看好標的 38 · 看空標的 6\n\n你怎麼看這組數字？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+      "instagram": "本週共識數字\n\n看好標的 38 · 看空標的 6\n\n你怎麼看這組數字？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+      "has_link": {
+       "threads": false,
+       "facebook": false,
+       "instagram": false
+      },
+      "first_comment": {
+       "threads": ""
+      }
+     },
+     "en": {
+      "threads": "",
+      "facebook": "This week's consensus counts\n\nBullish names 38 · Bearish names 6\n\nWhat do you make of these counts?\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket",
+      "instagram": "",
+      "has_link": {
+       "threads": false,
+       "facebook": false,
+       "instagram": false
+      },
+      "first_comment": {
+       "threads": ""
+      }
+     }
+    }
+   }
+  ]
+ },
+ "atomic_posts": [
+  {
+   "id": "zh-number-daily-posts",
+   "lang": "zh",
+   "slot_kst": "09:00",
+   "date_kst": "2026-11-28",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "今天帖文數 323",
+   "text": "今天帖文數 323\n\n你怎麼看這個數？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "hashtags": "#美股",
+   "has_link": false,
+   "first_comment": ""
+  },
+  {
+   "id": "zh-number-daily-accounts",
+   "lang": "zh",
+   "slot_kst": "11:30",
+   "date_kst": "2026-11-28",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "今天帳號數 117",
+   "text": "今天帳號數 117\n\n你怎麼看這個數？\n\n詳細數據在我們網站，搜尋 The Crowd Tape 就能找到。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "hashtags": "#美股",
+   "has_link": false
+  },
+  {
+   "id": "zh-number-daily-originals",
+   "lang": "zh",
+   "slot_kst": "14:00",
+   "date_kst": "2026-11-28",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "今天原創帖 287",
+   "text": "今天原創帖 287\n\n你怎麼看這個數？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "hashtags": "#美股",
+   "has_link": false,
+   "first_comment": ""
+  },
+  {
+   "id": "zh-number-daily-reposts",
+   "lang": "zh",
+   "slot_kst": "17:00",
+   "date_kst": "2026-11-28",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "今天轉帖 36",
+   "text": "今天轉帖 36\n\n你怎麼看這個數？\n\n想看完整數據，搜尋 The Crowd Tape 就可以。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "hashtags": "#美股",
+   "has_link": false
+  },
+  {
+   "id": "zh-number-daily-bull_views",
+   "lang": "zh",
+   "slot_kst": "20:00",
+   "date_kst": "2026-11-28",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "今天看好觀點 110",
+   "text": "今天看好觀點 110\n\n你怎麼看這個數？\n\n更多細節都整理在 The Crowd Tape 網站上。\n（僅整理公開資料，不構成投資建議）\n\n#美股",
+   "hashtags": "#美股",
+   "has_link": false,
+   "first_comment": ""
+  },
+  {
+   "id": "en-number-daily-posts",
+   "lang": "en",
+   "slot_kst": "09:00",
+   "date_kst": "2026-11-28",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "Posts today 323",
+   "text": "Posts today 323\n\nWhat do you make of this number?\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket",
+   "hashtags": "#StockMarket",
+   "has_link": false
+  },
+  {
+   "id": "en-number-daily-accounts",
+   "lang": "en",
+   "slot_kst": "11:30",
+   "date_kst": "2026-11-28",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "Accounts today 117",
+   "text": "Accounts today 117\n\nWhat do you make of this number?\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket",
+   "hashtags": "#StockMarket",
+   "has_link": false,
+   "first_comment": ""
+  },
+  {
+   "id": "en-number-daily-originals",
+   "lang": "en",
+   "slot_kst": "14:00",
+   "date_kst": "2026-11-28",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "Original posts today 287",
+   "text": "Original posts today 287\n\nWhat do you make of this number?\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket",
+   "hashtags": "#StockMarket",
+   "has_link": false
+  },
+  {
+   "id": "en-number-daily-reposts",
+   "lang": "en",
+   "slot_kst": "17:00",
+   "date_kst": "2026-11-28",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "Reposts today 36",
+   "text": "Reposts today 36\n\nWhat do you make of this number?\n\nWant the full breakdown? Search The Crowd Tape.\n(Based on public info, not investment advice)\n\n#StockMarket",
+   "hashtags": "#StockMarket",
+   "has_link": false,
+   "first_comment": ""
+  },
+  {
+   "id": "en-number-daily-bull_views",
+   "lang": "en",
+   "slot_kst": "20:00",
+   "date_kst": "2026-11-28",
+   "format": "text_question",
+   "point_type": "number",
+   "hook": "Bullish views today 110",
+   "text": "Bullish views today 110\n\nWhat do you make of this number?\n\nMore detail is on The Crowd Tape website.\n(Based on public info, not investment advice)\n\n#StockMarket",
+   "hashtags": "#StockMarket",
+   "has_link": false
+  }
+ ]
 }
