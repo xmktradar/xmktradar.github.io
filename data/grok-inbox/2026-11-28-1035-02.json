@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2126478503772057703": {
+      "en_summary": "moninvestor lists stocks liked at current prices across sectors including $SOFI (fintech), $HIMS (digital health), $CELH (energy drinks), $ADUR (chemical recycling), $MU $SNDK $SKHY (memory), $COHR $AAOI $LITE (optical), $OUST $ONDS $UMAC (drones), $IREN $NBIS $NUAI $WULF (AI cloud), $RKLB $ASTS $PL $RDW (space), $VRT $ETN $VST (data center power), and more.",
+      "zh_summary": "moninvestor列出目前價格下喜歡的股票，包括$SOFI（金融科技）、$HIMS（數位健康）、$CELH（能量飲料）、$ADUR（化學回收）、$MU $SNDK $SKHY（記憶體）、$COHR $AAOI $LITE（光學）、$OUST $ONDS $UMAC（無人機）、$IREN $NBIS $NUAI $WULF（AI雲）、$RKLB $ASTS $PL $RDW（太空）、$VRT $ETN $VST（數據中心電力）等。",
+      "tickers": ["SOFI", "HIMS", "CELH", "ADUR", "MU", "SNDK", "SKHY", "COHR", "AAOI", "LITE", "OUST", "ONDS", "UMAC", "IREN", "NBIS", "NUAI", "WULF", "RKLB", "ASTS", "PL", "RDW", "VRT", "ETN", "VST", "SNAP", "SPOT", "UBER", "NVDA", "AMD", "AVGO", "MRVL", "NFLX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SOFI": "睇好", "HIMS": "睇好", "CELH": "睇好", "ADUR": "睇好", "MU": "睇好", "SNDK": "睇好", "SKHY": "睇好", "COHR": "睇好", "AAOI": "睇好", "LITE": "睇好", "OUST": "睇好", "ONDS": "睇好", "UMAC": "睇好", "IREN": "睇好", "NBIS": "睇好", "NUAI": "睇好", "WULF": "睇好", "RKLB": "睇好", "ASTS": "睇好", "PL": "睇好", "RDW": "睇好", "VRT": "睇好", "ETN": "睇好", "VST": "睇好", "SNAP": "睇好", "SPOT": "睇好", "UBER": "睇好", "NVDA": "睇好", "AMD": "睇好", "AVGO": "睇好", "MRVL": "睇好", "NFLX": "睇好"},
+      "horizon": "中線",
+      "basis": "估值",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126477574821872056": {
+      "en_summary": "DeItaone reports Citigroup understated risk-weighted assets by $35 billion at London operations per WSJ, injected $3 billion into UK subsidiary, and at least two managing directors overseeing regulatory reporting left; raises concerns over controls.",
+      "zh_summary": "DeItaone報導根據WSJ，花旗集團在倫敦業務低估風險加權資產350億美元，向英國子公司注入30億美元，至少兩名監管報告的董事總經理離職；引發對控制的擔憂。",
+      "tickers": ["C"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"C": "睇淡"},
+      "horizon": "短線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"C": "Accounting error on RWA leading to capital injection and personnel changes."}
+    },
+    "2126471796199391633": {
+      "en_summary": "edzitron questions how SpaceX could afford 13GW of Vera Rubin costing $150bn+, quoting Nomura raising Nvidia NVL72 rack forecast to 75k for 2027 driven by SpaceX expansion to 13GW+ by end-2027.",
+      "zh_summary": "edzitron質疑SpaceX如何負擔13GW Vera Rubin約1500億美元以上成本，引述Nomura將Nvidia NVL72機架2027年預測上調至7.5萬，主要由SpaceX擴張至2027年底13GW+驅動。",
+      "tickers": ["NVDA", "SPCX"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "中性", "SPCX": "中性"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126470123901088164": {
+      "en_summary": "aleabitoreddit amplifies a credible $AAPL iOS vulnerability warning from Telegram’s founder that outdated iOS users risk data from just opening a website, while noting broader exploits and AI/tech crash concerns.",
+      "zh_summary": "aleabitoreddit放大來自Telegram創辦人的可信$AAPL iOS漏洞警告，指出過時iOS用戶僅開啟網站即可能數據外洩，同時提及更廣泛的漏洞及AI/科技崩盤擔憂。",
+      "tickers": ["AAPL"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"AAPL": "睇淡"},
+      "horizon": "短線",
+      "basis": "催化劑",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "利淡",
+      "ticker_notes": {"AAPL": "iOS vulnerability risk for outdated versions."}
+    },
+    "2126466105648816167": {
+      "en_summary": "TheTranscript_ quotes $BABA CEO on Qwen4-Max foundation model with 2.4 trillion parameters, advancing in agentic tasks and coding as a leading model, with Apple Intelligence integrated with Qwen set to launch in China in December.",
+      "zh_summary": "TheTranscript_引述$BABA CEO稱Qwen4-Max基礎模型擁有2.4萬億參數，在代理任務和編碼方面領先，與Qwen深度整合的Apple Intelligence將於12月在中國推出。",
+      "tickers": ["BABA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"BABA": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
