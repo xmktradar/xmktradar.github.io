@@ -1,0 +1,95 @@
+{
+  "posts": {
+    "2126614546953687363": {
+      "en_summary": "Personal take on AI is extreme: Claude could eventually replace most software including Microsoft Office. For that, AI needs to get much easier to use. Most people stick with what they know if switching is a hassle. Wonders if AI will be most profitable once it feels so intuitive that people barely need to learn anything.",
+      "zh_summary": "個人對AI的看法有點極端：Claude最終可能取代大多數軟體，包括Microsoft Office。為此，AI需要變得更容易使用。大多數人如果切換有點麻煩就會堅持已知方式。疑問AI是否在使用感覺如此直觀、幾乎無需學習時最有利可圖。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126609166584492501": {
+      "en_summary": "Dayrates for $RIG drillships remain near multi-year highs, yet the stock has fallen sharply because investors think oil price is what matters for Transocean. If no exposure to offshore drilling, this is a real bargain.",
+      "zh_summary": "$RIG 鑽井船日費率仍接近多年高位，但股價因投資者認為油價才是Transocean關鍵而大幅下跌。如果組合中尚無離岸鑽井曝險，這是真正的便宜貨。",
+      "tickers": ["RIG"],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "RIG": "睇好"
+      },
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "energy",
+      "macro_impact": "中性",
+      "ticker_notes": {
+        "RIG": "日費率近多年高位，股價因油價擔憂下跌，視為便宜"
+      }
+    },
+    "2126606281662439684": {
+      "en_summary": "Disagrees that ideas not worth looking at due to drawdown from peak. Being up 477.6% in 2 years managing billions is good. Disagrees some AI takes like $ANT $1T 2027 ARR and exponential spot compute pricing. Directionally shares views on robotics, memory valuations, laser opportunities, where AI is heading.",
+      "zh_summary": "不同意因從高點回撤就認為想法不值得看。管理數十億資金兩年漲477.6%算不錯。不同意一些AI看法如$ANT 2027年1兆美元ARR及指數式即期算力定價。方向上分享對機器人、記憶體估值、雷射機會及AI走向的看法。",
+      "tickers": ["ANT"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "ANT": "中性"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126600942560919834": {
+      "en_summary": "Reading Leopold's Situational Awareness letter: Kioxia (285A) largest holding, trades below 1x 2027 P/E. $SKHY ~2x 2027 earnings, can buy back half by end-2027. By end-2027 $ANT run-rating hundreds of billions, plausibly approaching $1T own. Labs will bid up component prices so $NVDA cannot produce chips profitably. H100 power/processing, earnings rising to $100s/hour with RSI. Market most bearish AI since ChatGPT, pricing 0.3x-0.6x progress year. Robotics ChatGPT moment approaching.",
+      "zh_summary": "閱讀Leopold的Situational Awareness信：Kioxia (285A) 為最大持倉，交易低於2027年1倍P/E。$SKHY 約2027年2倍盈餘，年底可回購一半公司。2027年底$ANT 年化收入數百億，可能接近自身1兆。實驗室將抬高元件價格使$NVDA 無法獲利生產晶片。H100功耗/處理能力，隨RSI收入升至每小時數百美元。市場自ChatGPT以來最看空AI，定價0.3-0.6倍進展年。機器人ChatGPT時刻接近。",
+      "tickers": ["SKHY", "ANT", "NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "SKHY": "睇好",
+        "ANT": "睇好",
+        "NVDA": "睇淡"
+      },
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {
+        "SKHY": "約2倍2027年盈餘，可回購一半公司",
+        "ANT": "2027年底可能接近1兆美元自身收入",
+        "NVDA": "實驗室將抬價使無法獲利生產"
+      }
+    },
+    "2126598093495763305": {
+      "en_summary": "Saturday. Coffee, and this expected confirmation. I’ve said hundred times before, US economy rely on AI now. Of course data centers will not be shut down. Money always talks. -BP Not financial advice. $IREN $NBIS $CIFRA $WULF",
+      "zh_summary": "星期六。咖啡，以及這個預期確認。我之前說過一百次，美國經濟現在依賴AI。當然數據中心不會被關閉。錢總是說話的。-BP 非投資建議。$IREN $NBIS $CIFRA $WULF",
+      "tickers": ["IREN", "NBIS", "CIFRA", "WULF"],
+      "stance": "睇好",
+      "stance_by_ticker": {
+        "IREN": "睇好",
+        "NBIS": "睇好",
+        "CIFRA": "睇好",
+        "WULF": "睇好"
+      },
+      "horizon": "中線",
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "growth",
+      "macro_impact": "利好",
+      "ticker_notes": {
+        "IREN": "數據中心不會關閉，因美國經濟依賴AI"
+      }
+    }
+  }
+}
