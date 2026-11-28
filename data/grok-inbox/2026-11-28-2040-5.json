@@ -1,0 +1,86 @@
+{
+  "posts": {
+    "2126331966295273615": {
+      "en_summary": "GS: USA trades 17.4x P/E... several turns above European bourses $EEM 8.0x",
+      "zh_summary": "GS：美國交易於17.4倍P/E……比歐洲股市高出數轉 $EEM 8.0倍",
+      "tickers": ["EEM"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "EEM": "中性"
+      },
+      "horizon": null,
+      "basis": "估值",
+      "specific": true,
+      "macro": true,
+      "macro_theme": "other",
+      "macro_impact": "中性",
+      "ticker_notes": {
+        "EEM": "8.0倍P/E，相對美國便宜"
+      }
+    },
+    "2126331687176900836": {
+      "en_summary": "$NVDA $157 to $145",
+      "zh_summary": "$NVDA $157 到 $145",
+      "tickers": ["NVDA"],
+      "stance": null,
+      "stance_by_ticker": {
+        "NVDA": "未表態"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126331359732101495": {
+      "en_summary": "$RACE",
+      "zh_summary": "$RACE",
+      "tickers": ["RACE"],
+      "stance": null,
+      "stance_by_ticker": {
+        "RACE": "未表態"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126331218597994879": {
+      "en_summary": "$PROF",
+      "zh_summary": "$PROF",
+      "tickers": ["PROF"],
+      "stance": null,
+      "stance_by_ticker": {
+        "PROF": "未表態"
+      },
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126330987390828668": {
+      "en_summary": "All the recent $NVDA headlines are just noise, @BrianSozzi says. What you really need to keep your eye on is the pace of AI investment.",
+      "zh_summary": "所有近期$NVDA 頭條只是噪音，@BrianSozzi 說。你真正需要關注的是AI投資的步伐。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {
+        "NVDA": "中性"
+      },
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
