@@ -23,6 +23,8 @@
 <meta name="twitter:description" content="每 8 小時整理 X 上美股大神、宏觀分析與市場快訊的觀點，看大家共同看好還是看淡哪檔股票。">
 <meta property="og:url" content="https://thecrowdtape.com/zh/">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="The Crowd Tape">
+<meta property="og:locale" content="zh_HK">
 <meta property="og:image" content="https://thecrowdtape.com/og/2026-11-28.png?v=7d0fed57f8">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -666,8 +668,13 @@ header.top .meta .hdr-duo{flex-basis:100%;width:100%;display:flex;flex-wrap:wrap
 .cc-row .why{color:var(--tx);line-height:1.45;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}.cc-row .why.open{-webkit-line-clamp:unset;display:block}
 .cc-row .src,table.lb .go{font-size:11px;white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--link);text-decoration:none;background:var(--bg)}
 .cc-row .src:hover{border-color:var(--link)}
-.cc-f{margin-top:auto;padding-top:9px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:11.5px;color:var(--mut)}
-.cc-f a{color:var(--link);font-weight:600;text-decoration:none}
+.cc-f{margin-top:auto;padding-top:9px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;font-size:11.5px;color:var(--mut)}
+.cc-f .cc-n{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cc-f-end{display:flex;align-items:center;flex:0 0 auto}
+.cc-share{width:44px;height:44px;min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;margin:-6px 0;padding:0;box-sizing:border-box;border:0;background:transparent;border-radius:50%;color:var(--link);cursor:pointer;flex:0 0 auto}
+.cc-share:hover{background:var(--panel2)}
+.cc-share svg{width:18px;height:18px;display:block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.cc-f a{color:var(--link);font-weight:600;text-decoration:none;white-space:nowrap}
 @media(max-width:420px){.cc{grid-template-columns:1fr}.cc-l{border-right:0;border-bottom:1px solid var(--line);flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:8px}.cc-ret{margin:0 0 0 auto}}
 
 
@@ -921,7 +928,7 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
   <div class="wrap ap-bar"><div class="ap-slim"><a class="ap-logo" href="#daily"><img src="/apple-touch-icon.png" alt="" width="22" height="22"><h1 class="brand">The Crowd Tape</h1></a>
 
 
-    <div class="ap-r"><a class="ap-tools" href="tools/">工具</a><button type="button" class="srch-btn" id="srch-btn" aria-label="搜尋股票" title="搜尋股票" aria-expanded="false" aria-controls="srch">🔍</button><span class="ap-lang"><nav class="lang-sw" aria-label="Language"><a href="/zh/" data-lang="zh" aria-current="page">中</a><a href="/en/" data-lang="en">EN</a></nav></span></div></div>
+    <div class="ap-r"><a class="ap-tools" href="tools/">工具</a><button type="button" class="ct-share-btn" id="ct-share-btn" aria-label="分享此頁" title="分享此頁" aria-expanded="false" aria-controls="ct-share-panel" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.5v10"/><path d="M8.2 7.2 12 3.4l3.8 3.8"/><path d="M6 11.5v6.2A1.8 1.8 0 0 0 7.8 19.5h8.4a1.8 1.8 0 0 0 1.8-1.8v-6.2"/></svg></button><button type="button" class="srch-btn" id="srch-btn" aria-label="搜尋股票" title="搜尋股票" aria-expanded="false" aria-controls="srch">🔍</button><span class="ap-lang"><nav class="lang-sw" aria-label="Language"><a href="/zh/" data-lang="zh" aria-current="page">中</a><a href="/en/" data-lang="en">EN</a></nav></span></div></div>
     <nav class="tabs" role="tablist" aria-label="檢視">
       <button role="tab" data-v="daily" id="tab-daily">每日</button>
       <button role="tab" data-v="weekly" id="tab-weekly">每週<small class="tab-rng">（7 天）</small></button>
@@ -1344,7 +1351,7 @@ function consCard(g,k,days,retLab){const pr=UNC(g.t)?null:D.prices[g.t];const nm
  const head=k==='bull'?`<span class="g">${g.nb} 個帳號看多</span>`:k==='bear'?`<span class="r">${g.nr} 個帳號看空</span>`:`<span class="g">${g.nb} 看多</span>・<span class="r">${g.nr} 看空</span>`;
  const badge={bull:'共同看多',bear:'共同看空',split:'好淡分歧'}[k];
  const li=g.rows.map(x=>{const r=reasonOf(x);return `<li class="cc-row"><a href="${xUrl(x.acc)}" target="_blank" rel="noopener" title="@${esc(x.acc)}" aria-label="@${esc(x.acc)}">${avImg(x.acc,'av')}</a><span class="st ${STC[x.s]}">${STW[x.s]}</span><span class="why" title="@${esc(x.acc)}：${esc(r.full)}" onclick="this.classList.toggle('open')">${esc(r.t)||'<span class="na">（沒有摘要）</span>'}</span><a class="src" href="${esc(x.url)}" target="_blank" rel="noopener">原帖 ↗</a></li>`}).join('');
- return `<article class="cc ${k}"><div class="cc-l"><div class="cc-tk">${esc(g.t)}</div><div class="cc-nm">${esc(nm)}</div><div class="cc-ret">${ret}</div><div class="cc-ret-l">${retLab}</div></div><div class="cc-r"><div class="cc-h"><b>${head}</b><span class="cc-badge">${badge}</span></div><ul class="cc-rows">${li}</ul><div class="cc-f"><span>${g.nPosts} 篇原帖</span><a href="#stock/${encodeURIComponent(g.t)}">查看詳情 ↗</a></div></div></article>`}
+ return `<article class="cc ${k}"><div class="cc-l"><div class="cc-tk">${esc(g.t)}</div><div class="cc-nm">${esc(nm)}</div><div class="cc-ret">${ret}</div><div class="cc-ret-l">${retLab}</div></div><div class="cc-r"><div class="cc-h"><b>${head}</b><span class="cc-badge">${badge}</span></div><ul class="cc-rows">${li}</ul><div class="cc-f"><span class="cc-n">${g.nPosts} 篇原帖</span><span class="cc-f-end"><button type="button" class="cc-share" data-ct-share-ticker="${esc(g.t)}" data-ct-share-kind="${k}" aria-label="分享此股票" title="分享此股票" aria-haspopup="dialog" aria-controls="ct-share-panel" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.5v10"/><path d="M8.2 7.2 12 3.4l3.8 3.8"/><path d="M6 11.5v6.2A1.8 1.8 0 0 0 7.8 19.5h8.4a1.8 1.8 0 0 0 1.8-1.8v-6.2"/></svg></button><a href="#stock/${encodeURIComponent(g.t)}">查看詳情 ↗</a></span></div></div></article>`}
 function consHtml(from,to,lab,days,retLab){const G=consGroups(from,to);
  const sec=(k,title,note)=>`<div class="cc-sec"><h2>${title}</h2><span class="note">${note}</span></div>${G[k].length?`<div class="cc-grid">${G[k].map(g=>consCard(g,k,days,retLab)).join('')}</div>`:`<div class="cc-empty">${lab}沒有明顯${title}</div>`}`;
  return `<section class="c12 cc-wrap" aria-label="共識">${sec('bull','共同看多','最少 2 個帳號最新立場看多'+noConsNote)}${sec('bear','共同看空','最少 2 個帳號最新立場看空'+noConsNote)}${sec('split','好淡分歧','同一隻股票有帳號看多、亦有帳號看空'+noConsNote)}</section>`}
@@ -2661,4 +2668,71 @@ view.addEventListener('touchend',function(e){if(sk||!view.classList.contains('bk
 apply();
 })();</script>
 <script src="/embed/pay-moments.js" defer></script>
+<style id="ct-share">
+#ct-share-btn{width:44px;height:44px;min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:0;box-sizing:border-box;border:0;background:none;border-radius:50%;color:var(--tx);cursor:pointer;flex:0 0 auto}
+#ct-share-btn:hover{background:var(--panel2)}
+#ct-share-btn svg{width:20px;height:20px;display:block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:734px){
+  .ap-slim .ap-logo{flex:0 1 auto;min-width:0}
+  .ap-slim .ap-logo .brand{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .ap-slim .ap-r{flex:0 0 auto;gap:2px}
+}
+#ct-share-panel{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center;padding:12px;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));background:rgba(22,26,33,.4);box-sizing:border-box}
+#ct-share-panel[hidden]{display:none!important}
+.ct-share-card{position:relative;box-sizing:border-box;width:min(380px,100%);margin:0;padding:16px 16px 14px;border:1px solid var(--line);border-radius:16px;background:var(--panel,#fff);color:var(--tx);box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.ct-share-h{margin:0 44px 12px 0;font:700 17px/1.3 var(--f-display,inherit);color:var(--tx-strong)}
+.ct-share-x{position:absolute;top:6px;right:6px;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:none;color:var(--mut);font-size:18px;cursor:pointer}
+.ct-share-x:hover{background:var(--panel2)}
+.ct-share-acts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ct-share-acts button{min-height:44px;padding:8px 10px;border:0;border-radius:12px;background:var(--panel2,#f5f5f7);color:var(--tx);font:600 14px/1.2 var(--f-body,inherit);cursor:pointer}
+.ct-share-acts button:hover{filter:brightness(.97)}
+.ct-share-acts button[data-act="copy"],.ct-share-acts button[data-act="dl"],.ct-share-acts button[data-act="system"]{grid-column:1 / -1}
+.ct-share-acts button[hidden]{display:none!important}
+.ct-share-msg{margin:10px 0 0;font-size:13px;line-height:1.45;color:var(--mut)}
+.ct-share-msg[hidden]{display:none!important}
+@media(min-width:735px){
+  #ct-share-panel{align-items:flex-start;justify-content:flex-end;background:transparent;padding:60px 18px 18px}
+}
+</style>
+<div id="ct-share-panel" hidden>
+  <div class="ct-share-card" role="dialog" aria-modal="true" aria-labelledby="ct-share-h">
+    <button type="button" class="ct-share-x" data-act="close" aria-label="關閉">✕</button>
+    <p class="ct-share-h" id="ct-share-h">分享此頁</p>
+    <div class="ct-share-acts">
+      <button type="button" data-act="ig">Instagram Story</button>
+      <button type="button" data-act="wa">WhatsApp</button>
+      <button type="button" data-act="x">X</button>
+      <button type="button" data-act="fb">Facebook</button>
+      <button type="button" data-act="copy">複製連結</button>
+      <button type="button" data-act="dl">下載圖片</button>
+      <button type="button" data-act="system" hidden>系統分享</button>
+    </div>
+    <p class="ct-share-msg" role="status" hidden></p>
+    <div id="ct-share-dict" hidden>
+      <span data-k="view-daily">每日</span>
+      <span data-k="view-weekly">每週</span>
+      <span data-k="view-monthly">每月</span>
+      <span data-k="view-macro">宏觀</span>
+      <span data-k="view-tracked">追蹤名單</span>
+      <span data-k="badge-bull">共同看多</span>
+      <span data-k="badge-bear">共同看空</span>
+      <span data-k="badge-split">好淡分歧</span>
+      <span data-k="count-bull">個帳號看多</span>
+      <span data-k="count-bear">個帳號看空</span>
+      <span data-k="side-bull">看多</span>
+      <span data-k="side-bear">看空</span>
+      <span data-k="lead-daily">今日共識</span>
+      <span data-k="lead-weekly">本週共識</span>
+      <span data-k="lead-monthly">本月共識</span>
+      <span data-k="lead-macro">宏觀</span>
+      <span data-k="lead-tracked">追蹤名單</span>
+      <span data-k="copied">已複製連結</span>
+      <span data-k="copy-fail">無法複製連結</span>
+      <span data-k="ig-fallback">已下載圖片並複製連結，可以加到限時動態</span>
+      <span data-k="share-one">分享此股票</span>
+      <span data-k="share-page">分享此頁</span>
+    </div>
+  </div>
+</div>
+<script src="/assets/share.js"></script>
 </body></html>

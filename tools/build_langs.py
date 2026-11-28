@@ -463,6 +463,20 @@ def faq_ld(master, s, lang, ui):
     return s[:o.start(2)] + blob + s[o.end(2):]
 
 
+OG_LOCALE = {'zh': 'zh_HK', 'en': 'en_US'}
+
+
+def og_locale(s, lang):
+    """Point og:locale at this page. A later rebuild must not leave /en/ on zh_HK."""
+    loc = OG_LOCALE[lang]
+    if re.search(r'<meta property="og:locale" content="', s):
+        return re.sub(r'(<meta property="og:locale" content=")[^"]*"', rf'\g<1>{loc}"', s, count=1)
+    needle = '<meta property="og:type" content="website">'
+    if needle in s:
+        return s.replace(needle, needle + f'\n<meta property="og:locale" content="{loc}">', 1)
+    return s
+
+
 def twitter_text(s):
     """One twitter:title and one twitter:description, copied from this page's og:title and
     og:description, immediately after og:description and before twitter:card."""
@@ -525,6 +539,7 @@ def build(lang, master):
         s = s.replace('</head>', EN_FONTS + '</head>', 1)
     s = faq_ld(master, s, lang, {**(tr.get('data') or {}), **(tr.get('ui') or {})})
     s = re.sub(r'(<meta property="og:url" content=")[^"]*', rf'\g<1>{SITE}{lang}/', s, count=1)
+    s = og_locale(s, lang)
     s = s.replace('href="/zh/feed.xml"', f'href="/{lang}/feed.xml"', 1)
     s = s.replace('href="/zh/weekly/"', f'href="/{lang}/weekly/"')
     alt = (tr.get('meta') or {}).get('image_alt')
