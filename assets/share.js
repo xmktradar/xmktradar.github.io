@@ -346,31 +346,84 @@ window.CT_SHARE_OG_THEME = {
     return '';
   }
 
-  function excerptCap() {
-    var a = window.CT_SHARE_THEME && window.CT_SHARE_THEME.maxExcerpts;
-    var b = window.CT_SHARE_OG_THEME && window.CT_SHARE_OG_THEME.maxExcerpts;
-    a = a != null ? a : 4;
-    b = b != null ? b : 2;
-    return Math.max(a, b, 0);
+  function themeCap(th, fallback) {
+    var n = th && th.maxExcerpts;
+    return n != null ? n : fallback;
   }
 
-  function packExcerpts(g) {
-    var out = [];
-    var cap = excerptCap();
+  /* Cap is the caller's limit: the 9:16 card passes CT_SHARE_THEME.maxExcerpts,
+     the OG card passes CT_SHARE_OG_THEME.maxExcerpts. A split card with real
+     text on both sides keeps one minority-side row inside that cap. Packing
+     once at the larger cap and slicing the front drops that row on the OG card.
+     Jointly bullish or bearish cards stay in existing row order. Neu/none is
+     not a side. An empty minority side does not take a reserved slot. */
+  function packExcerpts(g, cap) {
+    if (cap == null) cap = themeCap(window.CT_SHARE_THEME, 4);
+    cap = Number(cap);
+    if (!isFinite(cap) || cap <= 0) return [];
+    cap = Math.floor(cap);
     var rows = (g && g.rows) || [];
-    for (var i = 0; i < rows.length && out.length < cap; i++) {
+    var usable = [];
+    for (var i = 0; i < rows.length; i++) {
       var x = rows[i];
       if (!x || !x.acc) continue;
       var text = excerptText(x);
       if (!text) continue;
-      out.push({
-        handle: x.acc,
-        name: personName(x.acc),
-        stance: x.s || '',
-        stanceLabel: stanceWord(x.s),
-        text: text,
-        avatar: avatarSrc(x.acc),
-      });
+      usable.push({ row: x, text: text });
+    }
+    var picked = pickWithinCap(usable, cap, g && g.kind);
+    var out = [];
+    for (var j = 0; j < picked.length; j++) out.push(excerptOf(picked[j]));
+    return out;
+  }
+
+  function excerptOf(item) {
+    var x = item.row;
+    return {
+      handle: x.acc,
+      name: personName(x.acc),
+      stance: x.s || '',
+      stanceLabel: stanceWord(x.s),
+      text: item.text,
+      avatar: avatarSrc(x.acc),
+    };
+  }
+
+  function pickWithinCap(usable, cap, kind) {
+    var nBull = 0;
+    var nBear = 0;
+    var bullAt = -1;
+    var bearAt = -1;
+    for (var i = 0; i < usable.length; i++) {
+      var s = usable[i].row.s;
+      if (s === 'bull') {
+        if (bullAt < 0) bullAt = i;
+        nBull++;
+      } else if (s === 'bear') {
+        if (bearAt < 0) bearAt = i;
+        nBear++;
+      }
+    }
+    var both = nBull > 0 && nBear > 0;
+    var reserve = both && kind !== 'bull' && kind !== 'bear';
+    if (!reserve) return usable.slice(0, cap);
+    var minority = nBull < nBear ? 'bull' : nBear < nBull ? 'bear' : (bearAt > bullAt ? 'bear' : 'bull');
+    var firstMinor = null;
+    for (var k = 0; k < usable.length; k++) {
+      if (usable[k].row.s === minority) { firstMinor = usable[k]; break; }
+    }
+    if (!firstMinor) return usable.slice(0, cap);
+    var out = [];
+    var seen = false;
+    for (var n = 0; n < usable.length && out.length < cap; n++) {
+      var item = usable[n];
+      var last = out.length === cap - 1;
+      if (last && !seen && item.row.s !== minority) {
+        out.push(firstMinor);
+        break;
+      }
+      out.push(item);
+      if (item.row.s === minority) seen = true;
     }
     return out;
   }
@@ -380,6 +433,7 @@ window.CT_SHARE_OG_THEME = {
     var kind = hit.kind;
     var url = stockShareUrl(g.t);
     var badge = badgeText(kind);
+    var rows = (g && g.rows) || [];
     return {
       view: view,
       viewLabel: viewLabel(view),
@@ -390,7 +444,8 @@ window.CT_SHARE_OG_THEME = {
       nb: g.nb,
       nr: g.nr,
       meta: metaText(kind, g.nb, g.nr),
-      excerpts: packExcerpts(g),
+      excerpts: packExcerpts({ rows: rows, kind: kind }, themeCap(window.CT_SHARE_THEME, 4)),
+      _rows: rows,
       url: url,
       displayUrl: displayOf(url),
       text: stockText(g.t, badge),
@@ -811,8 +866,16 @@ window.CT_SHARE_OG_THEME = {
     ].join('~');
   }
 
+  function withThemeExcerpts(data, th) {
+    if (!data || !data._rows) return data;
+    var cap = th && th.maxExcerpts != null ? th.maxExcerpts : 4;
+    return Object.assign({}, data, {
+      excerpts: packExcerpts({ rows: data._rows, kind: data.kind }, cap),
+    });
+  }
+
   function renderThemed(snapshot, th) {
-    var data = snapshot || collect();
+    var data = withThemeExcerpts(snapshot || collect(), th);
     var key = keyOf(data, th);
     if (cache.canvas && cache.key === key) return Promise.resolve(cache.canvas);
     if (cache.pending && cache.key === key) return cache.pending;
@@ -1136,6 +1199,7 @@ window.CT_SHARE_OG_THEME = {
     get theme() { return window.CT_SHARE_THEME; },
     get ogTheme() { return window.CT_SHARE_OG_THEME; },
     collect: collect,
+    packExcerpts: packExcerpts,
     renderCard: renderCard,
     renderOg: renderOg,
     shareSystem: shareSystem,
