@@ -55,15 +55,18 @@ async function ready(p) {
           .filter(e => vis(e) && !e.closest('.lang-sw')).map(e => e.innerText.trim()).filter(t => t && HAN.test(t)).slice(0, 5);
         const cards = document.querySelectorAll('.hl-sec article.hl').length;
         const srch = document.getElementById('srch-btn');
+        const share = document.getElementById('ct-share-btn');
         const bg = getComputedStyle(document.body).backgroundColor.match(/\d+/g).slice(0, 3).map(Number);
         const lum = (0.2126 * bg[0] + 0.7152 * bg[1] + 0.0722 * bg[2]) / 255;
-        return { bad: [...new Set(bad)], ui, cards, srch: !!(srch && vis(srch)), lum,
+        return { bad: [...new Set(bad)], ui, cards, srch: !!(srch && vis(srch)),
+                 share: !!(share && vis(share)), lum,
                  ovf: document.documentElement.scrollWidth > innerWidth + 1 };
       }, { lang, han: HAN.source });
       if (r.bad.length) warn.push(`${where}：頁面出現 ${r.bad.join('、')}`);
       if (r.ui.length) warn.push(`${where}：介面有未翻譯中文：${r.ui.join(' / ')}`);
       if (r.cards !== 3) warn.push(`${where}：今日重點卡有 ${r.cards} 張（應該 3 張）`);
       if (!r.srch) warn.push(`${where}：🔍 搵股票掣唔見咗`);
+      if (!r.share) warn.push(`${where}：分享掣唔見咗`);
       if (r.lum < 0.75) warn.push(`${where}：背景唔係淺色`);
       if (r.ovf) warn.push(`${where}：頁面闊過畫面（打橫撐闊）`);
       if (r.srch && w === 390) {

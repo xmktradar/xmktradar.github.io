@@ -21,6 +21,8 @@
 <meta property="og:description" content="每 8 小時整理 X 上美股大神、宏觀分析與市場快訊的觀點，看大家共同看好還是看淡哪檔股票。">
 <meta property="og:url" content="https://thecrowdtape.com/">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="The Crowd Tape">
+<meta property="og:locale" content="zh_HK">
 <meta property="og:image" content="https://thecrowdtape.com/og/2026-11-28.png?v=7d0fed57f8">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -919,7 +921,7 @@ header.top .meta .social .social-row{flex-wrap:wrap;row-gap:6px}/* narrow phones
   <div class="wrap ap-bar"><div class="ap-slim"><a class="ap-logo" href="#daily"><img src="/apple-touch-icon.png" alt="" width="22" height="22"><h1 class="brand">The Crowd Tape</h1></a>
 
 
-    <div class="ap-r"><a class="ap-tools" href="tools/">工具</a><button type="button" class="srch-btn" id="srch-btn" aria-label="搜尋股票" title="搜尋股票" aria-expanded="false" aria-controls="srch">🔍</button><span class="ap-lang"><nav class="lang-sw" aria-label="Language"><a href="/zh/" data-lang="zh" aria-current="page">中</a><a href="/en/" data-lang="en">EN</a></nav></span></div></div>
+    <div class="ap-r"><a class="ap-tools" href="tools/">工具</a><button type="button" class="ct-share-btn" id="ct-share-btn" aria-label="分享此頁" title="分享此頁" aria-expanded="false" aria-controls="ct-share-panel" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.5v10"/><path d="M8.2 7.2 12 3.4l3.8 3.8"/><path d="M6 11.5v6.2A1.8 1.8 0 0 0 7.8 19.5h8.4a1.8 1.8 0 0 0 1.8-1.8v-6.2"/></svg></button><button type="button" class="srch-btn" id="srch-btn" aria-label="搜尋股票" title="搜尋股票" aria-expanded="false" aria-controls="srch">🔍</button><span class="ap-lang"><nav class="lang-sw" aria-label="Language"><a href="/zh/" data-lang="zh" aria-current="page">中</a><a href="/en/" data-lang="en">EN</a></nav></span></div></div>
     <nav class="tabs" role="tablist" aria-label="檢視">
       <button role="tab" data-v="daily" id="tab-daily">每日</button>
       <button role="tab" data-v="weekly" id="tab-weekly">每週<small class="tab-rng">（7 天）</small></button>
@@ -2659,4 +2661,69 @@ view.addEventListener('touchend',function(e){if(sk||!view.classList.contains('bk
 apply();
 })();</script>
 <script src="/embed/pay-moments.js" defer></script>
+<style id="ct-share">
+#ct-share-btn{width:44px;height:44px;min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:0;box-sizing:border-box;border:0;background:none;border-radius:50%;color:var(--tx);cursor:pointer;flex:0 0 auto}
+#ct-share-btn:hover{background:var(--panel2)}
+#ct-share-btn svg{width:20px;height:20px;display:block;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:734px){
+  .ap-slim .ap-logo{flex:0 1 auto;min-width:0}
+  .ap-slim .ap-logo .brand{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .ap-slim .ap-r{flex:0 0 auto;gap:2px}
+}
+#ct-share-panel{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center;padding:12px;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));background:rgba(22,26,33,.4);box-sizing:border-box}
+#ct-share-panel[hidden]{display:none!important}
+.ct-share-card{position:relative;box-sizing:border-box;width:min(380px,100%);margin:0;padding:16px 16px 14px;border:1px solid var(--line);border-radius:16px;background:var(--panel,#fff);color:var(--tx);box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.ct-share-h{margin:0 44px 12px 0;font:700 17px/1.3 var(--f-display,inherit);color:var(--tx-strong)}
+.ct-share-x{position:absolute;top:6px;right:6px;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:none;color:var(--mut);font-size:18px;cursor:pointer}
+.ct-share-x:hover{background:var(--panel2)}
+.ct-share-acts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ct-share-acts button{min-height:44px;padding:8px 10px;border:0;border-radius:12px;background:var(--panel2,#f5f5f7);color:var(--tx);font:600 14px/1.2 var(--f-body,inherit);cursor:pointer}
+.ct-share-acts button:hover{filter:brightness(.97)}
+.ct-share-acts button[data-act="copy"],.ct-share-acts button[data-act="dl"],.ct-share-acts button[data-act="system"]{grid-column:1 / -1}
+.ct-share-acts button[hidden]{display:none!important}
+.ct-share-msg{margin:10px 0 0;font-size:13px;line-height:1.45;color:var(--mut)}
+.ct-share-msg[hidden]{display:none!important}
+@media(min-width:735px){
+  #ct-share-panel{align-items:flex-start;justify-content:flex-end;background:transparent;padding:60px 18px 18px}
+}
+</style>
+<div id="ct-share-panel" hidden>
+  <div class="ct-share-card" role="dialog" aria-modal="true" aria-labelledby="ct-share-h">
+    <button type="button" class="ct-share-x" data-act="close" aria-label="關閉">✕</button>
+    <p class="ct-share-h" id="ct-share-h">分享此頁</p>
+    <div class="ct-share-acts">
+      <button type="button" data-act="ig">Instagram Story</button>
+      <button type="button" data-act="wa">WhatsApp</button>
+      <button type="button" data-act="x">X</button>
+      <button type="button" data-act="fb">Facebook</button>
+      <button type="button" data-act="copy">複製連結</button>
+      <button type="button" data-act="dl">下載圖片</button>
+      <button type="button" data-act="system" hidden>系統分享</button>
+    </div>
+    <p class="ct-share-msg" role="status" hidden></p>
+    <div id="ct-share-dict" hidden>
+      <span data-k="view-daily">每日</span>
+      <span data-k="view-weekly">每週</span>
+      <span data-k="view-monthly">每月</span>
+      <span data-k="view-macro">宏觀</span>
+      <span data-k="view-tracked">追蹤名單</span>
+      <span data-k="badge-bull">共同看多</span>
+      <span data-k="badge-bear">共同看空</span>
+      <span data-k="badge-split">好淡分歧</span>
+      <span data-k="count-bull">個帳號看多</span>
+      <span data-k="count-bear">個帳號看空</span>
+      <span data-k="side-bull">看多</span>
+      <span data-k="side-bear">看空</span>
+      <span data-k="lead-daily">今日共識</span>
+      <span data-k="lead-weekly">本週共識</span>
+      <span data-k="lead-monthly">本月共識</span>
+      <span data-k="lead-macro">宏觀</span>
+      <span data-k="lead-tracked">追蹤名單</span>
+      <span data-k="copied">已複製連結</span>
+      <span data-k="copy-fail">無法複製連結</span>
+      <span data-k="ig-fallback">已下載圖片並複製連結，可以加到限時動態</span>
+    </div>
+  </div>
+</div>
+<script src="/assets/share.js"></script>
 </body></html>
