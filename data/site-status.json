@@ -1,19 +1,22 @@
 {
  "note": "Written by GitHub Actions on every update. Actions Site Check reads this.",
- "checked_hkt": "2026-11-28 12:30",
- "generated_hkt": "2026-11-28 12:00",
- "cutoff_hkt": "2026-11-28T09:14:48+08:00",
- "posts_on_site": 6996,
+ "checked_hkt": "2026-11-28 19:31",
+ "generated_hkt": "2026-11-28 19:26",
+ "cutoff_hkt": "2026-11-28T11:15:00+08:00",
+ "posts_on_site": 7174,
  "added_this_run": 0,
  "added_without_en_summary": 0,
- "waiting_for_summary": 726,
- "waiting_with_stock": 259,
+ "waiting_for_summary": 555,
+ "waiting_with_stock": 73,
  "expired_unsummarised_this_run": 4,
- "chitchat_skipped_this_run": 162,
- "pruned_this_run": 2,
- "fetch_failed": [],
+ "chitchat_skipped_this_run": 164,
+ "pruned_this_run": 4,
+ "fetch_failed": [
+  "evergreencap3（fxtwitter 冇回應：https://api.fxtwitter.com/2/profile/evergreencap3/statuses?count=100&with_replies=1&since=1795835700）"
+ ],
  "warnings": [
-  "未分析：726 則新帖等待 Grok 分析"
+  "攞帖失敗：evergreencap3",
+  "未分析：555 則新帖等待 Grok 分析"
  ],
  "writeups_applied": [
   "zh/daily 2026-11-27",
@@ -50,5 +53,5 @@
   "en 1280px：今日重點卡有 0 張（應該 3 張）",
   "en 390px：今日重點卡有 0 張（應該 3 張）"
  ],
- "layout_checked_hkt": "2026-11-28 12:33"
+ "layout_checked_hkt": "2026-11-28 19:35"
 }
