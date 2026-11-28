@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2126515171246178726": {
+      "en_summary": "TrendSpider posts 'IN AVWAP WE TRUST' with $NVDA and promotes up to 65% off their service for Black Friday.",
+      "zh_summary": "TrendSpider 發文「IN AVWAP WE TRUST」並提及 $NVDA，同時推廣黑五最多 65% 折扣的服務。",
+      "tickers": ["NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126510296403501551": {
+      "en_summary": "@SpaceInvestor_D notes that Anthropic accepted a 60% increase in the rate it pays SpaceX ($SPCX) for compute in October, per Situational Awareness LP's Q3 investor letter. This aligns with Elon's comments on short-term compute contracts renewing at higher dollars per watt.",
+      "zh_summary": "@SpaceInvestor_D 指出，根據 Situational Awareness LP 第三季投資者信，Anthropic 在十月接受了支付 SpaceX（$SPCX）計算資源費率提高 60%。這與 Elon 關於短期計算合約以更高每瓦美元價續約的說法一致。",
+      "tickers": ["SPCX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPCX": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPCX": "Anthropic 接受 60% 費率上漲，顯示 SpaceX 計算資源需求強勁"}
+    },
+    "2126508809531330873": {
+      "en_summary": "@firesidealpha quotes Aschenbrenner: $SPCX and $TSLA command a premium for Elon but ASI will provide superior leadership at scale. $MSFT Windows and Office lose to superior AI replacements. $AAPL iPhone superiority will be leapfrogged by ASI. $LLY pharma products will be obsoleted by cheaper cures.",
+      "zh_summary": "@firesidealpha 引述 Aschenbrenner：$SPCX 與 $TSLA 因 Elon 享有溢價，但 ASI 將提供更優越的規模化領導。$MSFT 的 Windows 和 Office 將輸給更優的 AI 替代品。$AAPL iPhone 的優越性將被 ASI 超越。$LLY 藥品雖有專利，但將被更便宜的治療方案淘汰。",
+      "tickers": ["SPCX", "TSLA", "MSFT", "AAPL", "LLY"],
+      "stance": "中性",
+      "stance_by_ticker": {"SPCX": "中性", "TSLA": "中性", "MSFT": "睇淡", "AAPL": "睇淡", "LLY": "睇淡"},
+      "horizon": null,
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126508559974445440": {
+      "en_summary": "@firesidealpha quotes Aschenbrenner: $NVDA cannot survive in its current form for more than a few years on the current trajectory of RSI. Labs will bid up component prices so NVDA cannot secure additional components profitably. At Anthropic, bringing up a new chip platform now takes Claude a few days instead of months with dozens of engineers.",
+      "zh_summary": "@firesidealpha 引述 Aschenbrenner：$NVDA 在當前 RSI 軌跡下無法以現有形式存活超過數年。實驗室將抬高元件價格，使 NVDA 無法盈利地獲得額外元件。在 Anthropic，啟動新晶片平台現在只需 Claude 數天，而非數十名工程師數月。",
+      "tickers": ["NVDA"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡"},
+      "horizon": "長線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "ASI/RSI 發展將使 NVDA 難以盈利獲取元件，現有形式難以長期存活"}
+    },
+    "2126506533416738922": {
+      "en_summary": "@firesidealpha quotes Aschenbrenner: $ANT's $SPCX compute deal repriced in October to ~$5.50/kWh, about 60% higher. SpaceX leased Anthropic roughly 325K GPUs for $1.25B per month; either side can walk on 90 days' notice (spot compute). Elon inaugurated the spot compute market; SpaceX can pay back clusters in under a year. H100 earned $1-2/hour, now $5-10/hour, near superintelligence $100s/hour+.",
+      "zh_summary": "@firesidealpha 引述 Aschenbrenner：Anthropic 與 $SPCX 的計算協議在十月重新定價至約 $5.50/kWh，提高約 60%。SpaceX 租賃 Anthropic 約 32.5 萬個 GPU，每月 $12.5 億；雙方可提前 90 天終止（現貨計算）。Elon 開啟了現貨計算市場；SpaceX 可在一年內回本集群。H100 曾賺 $1-2/小時，現為 $5-10/小時，接近超級智能時可達數百美元/小時。",
+      "tickers": ["SPCX"],
+      "stance": "睇好",
+      "stance_by_ticker": {"SPCX": "睇好"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"SPCX": "計算費率提高 60%，租賃 32.5 萬 GPU 每月 12.5 億美元，現貨市場與快速回本顯示強勁需求"}
+    }
+  }
+}
