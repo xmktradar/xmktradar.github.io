@@ -1,1 +1,74 @@
-PLACEHOLDER_TO_BE_REPLACED
+{
+  "posts": {
+    "2126446401013850216": {
+      "en_summary": "@CGasparino criticizes a person calling him a pervy antisemite with few real followers, mocking his 'we' and 'us' as referring to roommates sharing a throttled Pornhub subscription.",
+      "zh_summary": "@CGasparino 批評一名稱他為好色反猶者的人，嘲諷其真實追蹤者很少，並指其「我們」和「我們」實指與室友分攤被限速的 Pornhub 訂閱。",
+      "tickers": [],
+      "stance": null,
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126444455397921108": {
+      "en_summary": "@CGasparino shares his take from an interview on how to fix Venezuela's bolivar, the world's worst currency: get the cancer out of the system, the bolivar; it's time to dollarize Venezuela.",
+      "zh_summary": "@CGasparino 分享其在訪談中關於如何修復委內瑞拉玻利瓦爾（世界上最差貨幣）的看法：必須將系統中的癌症（玻利瓦爾）清除；是時候讓委內瑞拉美元化。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": "宏觀",
+      "specific": false,
+      "macro": true,
+      "macro_theme": "fx",
+      "macro_impact": "中性",
+      "ticker_notes": {}
+    },
+    "2126444084541772139": {
+      "en_summary": "@stephaniestac mentions an episode of Stephanomics talking about AI and holiday shopping.",
+      "zh_summary": "@stephaniestac 提及 Stephanomics 節目一集討論 AI 與假日購物。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126443877871517788": {
+      "en_summary": "@alphaticaio notes that on Dwarkesh’s pod, Jensen said TPU and Trainium wouldn't come to InferenceX benchmark implying poor perf per $. This week both did, and Google & Amazon demonstrated 1.5–2.5x better perf per $ at release compared to implied.",
+      "zh_summary": "@alphaticaio 指出在 Dwarkesh 的播客中，Jensen 表示 TPU 和 Trainium 不會參加 InferenceX 基準測試，暗示每美元性能不佳。本週兩者均參加，且 Google 與 Amazon 展示了發佈時每美元性能比暗示的好 1.5–2.5 倍。",
+      "tickers": ["GOOGL", "AMZN", "NVDA"],
+      "stance": "中性",
+      "stance_by_ticker": {"GOOGL": "睇好", "AMZN": "睇好", "NVDA": "中性"},
+      "horizon": "中線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"GOOGL": "InferenceX 顯示每美元性能優勢", "AMZN": "Trainium 每美元性能更好"}
+    },
+    "2126443734242099469": {
+      "en_summary": "@FactorResearch offers Black Friday quarterly $99 membership for The Factor Report, which comments on trades and emphasizes risk management and process, not a trade signaling service.",
+      "zh_summary": "@FactorResearch 提供黑色星期五季度 $99 會員資格，The Factor Report 評論交易並強調風險管理與流程，而非交易信號服務。",
+      "tickers": [],
+      "stance": "中性",
+      "stance_by_ticker": {},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
