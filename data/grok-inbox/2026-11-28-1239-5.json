@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2126488628612473223": {
+      "en_summary": "User claims they and Trump knew, @CulperResearch first with brilliant report and stock went up. Not the fraud, Jensen cheat since 1990s, need someone to stop it. Real criminal enterprise is $SMCI for a decade. Mentions $NVDA.",
+      "zh_summary": "用戶聲稱他們與特朗普知道，@CulperResearch 首先寫出出色報告後股價上漲。不是欺詐，Jensen 自 1990 年代起就是騙子，需要有人阻止。真正的犯罪企業是 $SMCI，已持續十年。提及 $NVDA。",
+      "tickers": ["NVDA", "SMCI"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"NVDA": "睇淡", "SMCI": "睇淡"},
+      "horizon": "中線",
+      "basis": "基本面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126486611072528813": {
+      "en_summary": "$U is still in play, IMHO.",
+      "zh_summary": "$U 仍然在玩，個人意見。",
+      "tickers": ["U"],
+      "stance": "睇好",
+      "stance_by_ticker": {"U": "睇好"},
+      "horizon": "中線",
+      "basis": "情緒",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126453887788069249": {
+      "en_summary": "$AAPL made another new all time closing high today. Trading at roughly 72% premium above 10 year P/E average and 44% premium above 10 year Forward P/E average. Getting long in the tooth for a decent pullback soon?",
+      "zh_summary": "$AAPL 今日再創新歷史收盤高。交易價約高於 10 年 P/E 平均 72% 溢價，及高於 10 年遠期 P/E 平均 44% 溢價。是否已到適合不錯回調的時候？",
+      "tickers": ["AAPL"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"AAPL": "睇淡"},
+      "horizon": "短線",
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"AAPL": "較 10 年 P/E 平均溢價 72%，遠期 P/E 溢價 44%，可能回調"}
+    },
+    "2126453333959614972": {
+      "en_summary": "Heisenberg buys 1 $SPY put everyday.",
+      "zh_summary": "Heisenberg 每天買 1 張 $SPY 認沽。",
+      "tickers": ["SPY"],
+      "stance": "睇淡",
+      "stance_by_ticker": {"SPY": "睇淡"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126452609393496460": {
+      "en_summary": "$COST another new ATH today, unstoppable force of nature. Concerned with Forward P/E getting close to 45, highest of top 60 largest companies outside $TSLA, $PANW, $PLTR.",
+      "zh_summary": "$COST 今日再創新高，勢不可擋。但擔心遠期 P/E 接近 45，是除 $TSLA、$PANW、$PLTR 外前 60 大公司中最高。",
+      "tickers": ["COST", "TSLA", "PANW", "PLTR"],
+      "stance": "中性",
+      "stance_by_ticker": {"COST": "中性", "TSLA": "未表態", "PANW": "未表態", "PLTR": "未表態"},
+      "horizon": null,
+      "basis": "估值",
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"COST": "遠期 P/E 接近 45，偏高"}
+    }
+  }
+}
