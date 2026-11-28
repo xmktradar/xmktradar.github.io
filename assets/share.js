@@ -93,7 +93,7 @@ window.CT_SHARE_OG_THEME = {
   excerptSize: 22,
   excerptLine: 30,
   excerptLines: 2,
-  maxExcerpts: 2,
+  maxExcerpts: 4,
   excerptGap: 18,
   headerGap: 14,
   sectionGap: 16,
@@ -817,7 +817,7 @@ window.CT_SHARE_OG_THEME = {
     var full = th.width - th.marginX * 2;
     g.fillStyle = th.bg;
     g.fillRect(0, 0, th.width, th.height);
-    var excerpts = (data.excerpts || []).slice(0, th.maxExcerpts != null ? th.maxExcerpts : 2);
+    var excerpts = (data.excerpts || []).slice(0, th.maxExcerpts != null ? th.maxExcerpts : 4);
     var split = !!(data.ticker && excerpts.length && th.colW);
     var leftW = split ? th.colW : full;
     y = drawBrand(g, th, icon, x, y, leftW);
