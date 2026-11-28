@@ -1,0 +1,74 @@
+{
+  "posts": {
+    "2126382363966099640": {
+      "en_summary": "@ACInvestorBlog notes $MNTS had a nice close finally.",
+      "zh_summary": "@ACInvestorBlog 指出 $MNTS 終於有不錯的收盤。",
+      "tickers": ["MNTS"],
+      "stance": "睇好",
+      "stance_by_ticker": {"MNTS": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126381308871888939": {
+      "en_summary": "@CKCapitalxx replies that the IV is insane on any $NBIS calls. Has been wanting to add but they are too expensive.",
+      "zh_summary": "@CKCapitalxx 回覆任何 $NBIS 認購的隱含波動率都瘋狂。一直想加倉但它們太貴了。",
+      "tickers": ["NBIS"],
+      "stance": "中性",
+      "stance_by_ticker": {"NBIS": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126381296016662676": {
+      "en_summary": "@ACInvestorBlog on $TSLA: It closed the week back above its major EMAs (all of which are now turning up) and also broke its short-term downtrend line.",
+      "zh_summary": "@ACInvestorBlog 關於 $TSLA：它本週收盤回到其主要 EMA 之上（所有這些現在都在轉向上），並且也突破了其短期下降趨勢線。",
+      "tickers": ["TSLA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"TSLA": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    },
+    "2126380518887526908": {
+      "en_summary": "@3PeaksTrading notes $NVDA fixed strike IV's down nicely today across a lot of expirations. Implied vols falling there is the first step to stabilizing price in stock, see if that's the start of it.",
+      "zh_summary": "@3PeaksTrading 指出 $NVDA 固定行權價 IV 今日在許多到期日都漂亮下跌。隱含波動率下跌是穩定股價的第一步，看看這是否是開始。",
+      "tickers": ["NVDA"],
+      "stance": "睇好",
+      "stance_by_ticker": {"NVDA": "睇好"},
+      "horizon": "短線",
+      "basis": "技術面",
+      "specific": false,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {"NVDA": "固定行權價 IV 下跌，可能是股價穩定的第一步"}
+    },
+    "2126379276496674947": {
+      "en_summary": "TrendSpider: BLACK FRIDAY BROUGHT THE DEALS TO THE MAG7. % below 52-week high: $NVDA -38%, $GOOG -33%, $TSLA -20%, $META -19%, $MSFT -12%, $AMZN -12%, $AAPL -1%. Promotes up to 65% off TrendSpider.",
+      "zh_summary": "TrendSpider：黑五為 MAG7 帶來了折扣。低於 52 週高點的百分比：$NVDA -38%、$GOOG -33%、$TSLA -20%、$META -19%、$MSFT -12%、$AMZN -12%、$AAPL -1%。推廣 TrendSpider 最多 65% 折扣。",
+      "tickers": ["NVDA", "GOOG", "TSLA", "META", "MSFT", "AMZN", "AAPL"],
+      "stance": "中性",
+      "stance_by_ticker": {"NVDA": "未表態", "GOOG": "未表態", "TSLA": "未表態", "META": "未表態", "MSFT": "未表態", "AMZN": "未表態", "AAPL": "未表態"},
+      "horizon": null,
+      "basis": null,
+      "specific": true,
+      "macro": false,
+      "macro_theme": null,
+      "macro_impact": null,
+      "ticker_notes": {}
+    }
+  }
+}
