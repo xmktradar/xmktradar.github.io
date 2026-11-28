@@ -2458,21 +2458,30 @@
     "SPCX",
     "COHR",
     "SKHY",
-    "FXI",
     "RKLB",
-    "KWEB"
+    "IREN",
+    "FXI",
+    "LITE",
+    "KWEB",
+    "SOFI",
+    "VRT",
+    "WULF"
    ],
    "bear": [],
    "split": [
     "NVDA",
     "SPY",
-    "QQQ",
     "BABA",
-    "MU"
+    "QQQ",
+    "MU",
+    "AAOI",
+    "ASTS",
+    "NFLX",
+    "HIMS"
    ],
    "window": [
     "2026-11-27T03:30",
-    "2026-11-28T06:54"
+    "2026-11-28T09:14"
    ],
    "top": [
     "NVDA",
@@ -2482,14 +2491,14 @@
     "TSLA",
     "MU",
     "SKHY",
+    "NBIS",
     "AMZN",
-    "META",
-    "MSFT"
+    "ASTS"
    ],
    "src": "live",
-   "updated_hkt": "2026-11-28 09:20"
+   "updated_hkt": "2026-11-28 12:00"
   }
  },
- "updated_hkt": "2026-11-28 09:20",
+ "updated_hkt": "2026-11-28 12:00",
  "note": "consensus tickers per HKT day (bull/bear = 2+ accounts' latest stance in that day's window; split = both sides)"
 }
